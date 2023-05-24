@@ -18,39 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 The Kubernetes pack defines the default properties that we use to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
 
-Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
-
-<br />
-
-- Major versions are assessed based on the extent of changes.
-- Minor versions are provided within eight weeks of a new Kubernetes release.
-- Patch versions are provided within four weeks of a new Kubernetes release.
-
-In the period of time following a Kubernetes release, the Kubernetes pack undergoes rigorous vulnerability scans and penetration testing. 
-
-A minor Kubernetes version will be deprecated in Palette when the Kubernetes community announces the version is entering End of Life (EOL). The deprecated version will remain in that state for three months and will be disabled after a quarter and deleted from Palette in the following quarter.
-
-Below are the stages of deprecation:
-
-<br />
-
-- **Deprecate**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
-
-
-- **Disable**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to cut over to the newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the deprecated pack.
-
-
-- **Delete**: When a pack is deleted, you will not be able to create new cluster profiles using the pack or launch new clusters using the existing profiles that contain the pack. Palette displays a message informing you to cut over to the newer version of the pack. There is no disruption to existing cluster workloads and will continue to be functional.
-
-<br />
-
-<InfoBox>
-
-For important guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
-
-
-</InfoBox>
-
+ Review [Maintenance Policy](/integrations/maintenance-policy/maintenance-policy) to learn about pack update and deprecation schedules.
 
 # Versions Supported
 
