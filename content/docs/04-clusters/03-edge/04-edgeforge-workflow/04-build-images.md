@@ -59,7 +59,7 @@ Choose the workflow that fits your needs.
    <br />
 
     ```shell
-    VERSION=3.4.1
+    VERSION=3.4.3
     wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
     chmod +x palette-edge
     ```
