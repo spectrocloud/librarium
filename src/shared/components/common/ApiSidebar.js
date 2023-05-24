@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
-import SidebarTree from "shared/layouts/Default/sidebar/tree";
 import { Select } from "antd";
 import styled from "styled-components";
+import ApiSidebarTree from "../../layouts/Api/apiSideBarTree";
 
 const Wrap = styled.div`
   &:focus {
@@ -46,7 +46,6 @@ const getVersions = (edges) => {
   );
 
   return [...versions].sort().reverse();
-  s;
 };
 
 const extractApiMenu = (edges, selectedVersion) => {
@@ -88,15 +87,28 @@ const extractApiMenu = (edges, selectedVersion) => {
     );
 };
 
-export default function ApiSidebar({ allMdx }) {
+export default function ApiSidebar({ allMdx, branches, initialCount }) {
   const versions = useMemo(() => {
     return getVersions(allMdx.edges);
   }, [allMdx.edges]);
 
   const [selectedVersion, updateSelectedVersion] = useState(versions[0]);
-  const apiMenu = useMemo(() => {
-    return extractApiMenu(allMdx.edges, selectedVersion);
-  }, [allMdx.edges, selectedVersion]);
+
+  const menuBranches = useMemo(() => {
+    const apiMenu = extractApiMenu(allMdx.edges, selectedVersion);
+
+    return apiMenu.reduce((acc, curr) => {
+      const rootUrl = curr.url.replace("/api/v1/", "");
+      const rootRgx = new RegExp(rootUrl, "gm");
+
+      const branchKey = Object.keys(branches).find((branch) => branch.match(rootRgx));
+
+      acc[rootUrl] = branches[branchKey];
+      acc[rootUrl].title = curr.title;
+
+      return acc;
+    }, {});
+  }, [allMdx.edges, branches, selectedVersion]);
 
   return (
     <Wrap>
@@ -109,7 +121,7 @@ export default function ApiSidebar({ allMdx }) {
           ))}
         </StyledSelect>
       </SelectWrap>
-      <SidebarTree menu={{ items: apiMenu }} />
+      <ApiSidebarTree initialCount={initialCount} branches={menuBranches} />
     </Wrap>
   );
 }

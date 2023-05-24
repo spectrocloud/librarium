@@ -68,6 +68,6 @@ Use the steps below to download application logs. The download bundle is a zip f
 8. Click the download link and review the files.
 
 
-## Validation
+## Validate
 
 To review the logs, locate a zip file with file name format `[clusterNameHere]-logs-[currentTimeStamp]` in the downloads folder on your device.

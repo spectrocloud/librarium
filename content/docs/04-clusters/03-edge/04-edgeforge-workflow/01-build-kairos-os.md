@@ -13,17 +13,22 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Edge supports using a different Operating System (OS)  for your Edge host runtime. Building a system using your OS requires creating a Kairos-based image from your raw OS image.
+Edge supports the ability for you to specify a custom Operating System (OS) for your Edge host runtime. Building a system using your choice of OS requires creating a [Kairos-base](https://kairos.io/) image with your custom OS. The Palette feature, [Bring Your Own OS (BYOOS)](/integrations/byoos) allows you to use a custom OS in a cluster profile. 
+
+
+As an example, the following steps will guide you on how to build a Kairos-based Red Hat Enterprise Linux (RHEL) image. Use the same steps for any other operating system.
 
 <br />
 
+
 <InfoBox>
 
-The instructions in this guide are optional if all you want to do is build an Edge artifact from one of Palette's out-of-the-box supported OS.
+BYOOS gives you the flexibility to tailor and manage the OS layer in your cluster profiles, ensuring that clusters perform optimally to meet your environment needs. 
+To learn how to use your own OS images with an Edge cluster profile, refer to the [Model Edge Native Cluster Profile](https://docs.spectrocloud.com/clusters/edge/site-deployment/model-profile) guide.
+
 
 </InfoBox>
 
-As an example, the following steps will guide you through the procedure to build a Kairos-based RHEL image. You can alter the steps as needed for your operating system. 
 # Prerequisites
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
@@ -34,7 +39,7 @@ As an example, the following steps will guide you through the procedure to build
 
 <WarningBox>
 
-Some OS require credentials to download the source image, such as Red Hat Enterprise Linux (RHEL). An RHEL subscription is required in this example to download the RHEL Universal Base Images (UBI) for building the Edge provider image. Ensure you have the credentials necessary to download the OS source image.
+Some operating systems require credentials to download the source image, such as RHEL. An RHEL subscription is required in this example to download the RHEL Universal Base Images (UBI) needed to build the Edge provider image. Ensure you have the necessary credentials to download the OS source image.
 
 
 </WarningBox>
@@ -85,8 +90,13 @@ Some OS require credentials to download the source image, such as Red Hat Enterp
   ```shell
   docker push [your image repository]/rhel8-kairos:1.0
   ```
+---
 
-Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) and become part of your Edge artifact.
+<br />
+
+Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) step and become part of your Edge artifact. The custom OS you created will also be used in the OS layer of the cluster profile by using the [Bring Your Own OS (BYOOS)](/integrations/byoos) pack.
+<br />
+
 
 # Next Steps
 

@@ -69,7 +69,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 6. Click on **Save Changes**.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 

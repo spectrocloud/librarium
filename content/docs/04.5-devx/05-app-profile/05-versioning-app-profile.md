@@ -75,7 +75,7 @@ The following attributes are non-editable during versioning:
 
 6.  Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
 
-## Validation
+## Validate
 
 To validate the App Profile is versioned and available in the target project conduct the following steps:
 
@@ -109,7 +109,7 @@ To validate the App Profile is versioned and available in the target project con
 
 5. The selected App Profile version will be deleted. 
 
-## Validation
+## Validate
 
 
 To validate the App Profile is removed and not available in the target project, conduct the following steps:
@@ -155,7 +155,7 @@ To apply updates to an App follow the below steps:
 
 * An **Apply Updates** wizard will open up with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the app.
 
-## Validation
+## Validate
 
 To validate that the App profile updates are implemented on the target app, conduct the following steps:
 

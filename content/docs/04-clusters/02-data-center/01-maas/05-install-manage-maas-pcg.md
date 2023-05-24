@@ -33,13 +33,18 @@ You can set up the PCG as a single- or three-node cluster based on your requirem
 
 Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
+<br />
+
+
+![An architecture diagram of MaaS with PCG.](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
+
 
 <br />
 
 
 <WarningBox>
 
-The installer does not currently work on MacOS running on Apple Silicon.
+The installer does not work on Apple Mac operating systems with Apple silicon chips.
 
 </WarningBox>
 
@@ -257,7 +262,7 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 <br />
 
-## Validation
+## Validate
 
 Once installed, the gateway registers itself with Palette. To verify the gateway is registered, navigate to **Tenant Settings > Private Cloud Gateways** and ensure the gateway is listed on the **Manage Private Cloud Gateways** page. 
 
@@ -407,7 +412,7 @@ Ensure the MAAS server has two more machines in the **Ready** state in the same 
 </WarningBox>
 
 
-## Validation
+## Validate
 
 You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized gateway instance and click the **Nodes** tab. You will see two additional nodes being deployed along with their health status. Three nodes in total will be listed.
 
@@ -422,12 +427,15 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
 
 <br />
 
-# References 
+# Resources 
 
  - [Install MAAS](https://maas.io/)
+ 
+ 
  - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
+
+
  - [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
 
-<br />
 
 <br />

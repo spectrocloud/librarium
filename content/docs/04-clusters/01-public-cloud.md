@@ -18,6 +18,10 @@ Palette supports provisioning new workload clusters on public clouds using cloud
 
 Workload clusters are instantiated from cloud specific [_Cluster Profiles_](/cluster-profiles) templates that are created with pre-configured layers and components required for cluster deployments. You can use one of the cluster profiles provided out-of-the-box or create a new one.
 
+# Get Started
+
+Learn how to deploy a cluster to a public cloud provider by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
+
 
 # Supported Environments
 

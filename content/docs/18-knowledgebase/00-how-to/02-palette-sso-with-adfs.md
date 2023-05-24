@@ -257,7 +257,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 You have now successfully configured Palette SSO based on OIDC with Microsoft AD FS.
 
 
-# Validation
+# Validate
 
 1. Log in to Palette through SSO as a user that is a member of the `SpectroTeam - Admins` group in Active Directory to verify that users are automatically added to the `Admins` group in Palette.
 

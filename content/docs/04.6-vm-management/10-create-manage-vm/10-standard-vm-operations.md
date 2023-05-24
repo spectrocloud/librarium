@@ -40,7 +40,7 @@ You can access standard VM operations in two ways:
 - From the **Virtual Machines** tab, click the **three-dot Menu** in the row of the VM you want to perform actions on.
 
 
-- Select a VM and click the **Actions drop-down Menu**.
+- Select a VM and click **Actions**.
 
  
 # Resources

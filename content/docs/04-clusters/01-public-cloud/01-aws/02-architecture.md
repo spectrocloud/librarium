@@ -101,3 +101,16 @@ In addition to the custom tags provided by you, Palette-provisioned AWS resource
 | `sigs.k8s.io/cluster-api-provider-aws/role`                  | common        | Used for Palette internal purposes to help manage the lifecycle of the cluster. |
 | `spectro__ownerUid`                                          | [uniqueId]    | The Palette tenant's id. Example: `1356fc37ab1aac03a5d66b4c`. |
 
+
+
+# Automatic Network Discovery
+
+
+You must add a set of specific tags to enable automatic subnet discovery by Palette for integration with the AWS load balancer service. Add the following tags Virtual Private Network (VPC) public subnets. Replace the value `yourClusterName` with your cluster's name.
+
+<br />
+
+- `kubernetes.io/role/elb = 1`
+- `sigs.k8s.io/cluster-api-provider-aws/role = public`
+- `kubernetes.io/cluster/[yourClusterName] = shared` 
+- `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`

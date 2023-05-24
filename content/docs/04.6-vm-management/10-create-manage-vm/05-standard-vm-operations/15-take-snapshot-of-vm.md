@@ -38,10 +38,10 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 # Take a Snapshot
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. From the left **Main Menu**, click **Clusters** and click on your cluster.
+2. From the left **Main Menu**, click **Clusters** and select your cluster.
 
 
 3. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
@@ -71,7 +71,7 @@ Snapshots should not be used as a backup method, as running a VM on a snapshot f
 
 </WarningBox>
 
-# Validation
+# Validate
 
 1. From the **Snapshots** tab, verify the ``vmSnapshot Status`` parameter displays **Succeeded**.
 

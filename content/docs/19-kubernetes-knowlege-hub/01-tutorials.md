@@ -5,7 +5,7 @@ metaDescription: "Kubernetes School with How to"
 icon: "book"
 hideToC: false
 fullWidth: false
-hiddenFromNav: true
+hiddenFromNav: false
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -19,3 +19,9 @@ import Tooltip from "shared/components/ui/Tooltip";
 Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette.
 
 <br />
+
+
+# Core Kubernetes
+
+- [Deploy a Stateless Frontend Application on Kubernetes](/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app)
+
