@@ -34,7 +34,7 @@ In this tutorial, you will containerize a date suggester app built in React and 
 - A Docker account and a [Docker installation](https://docs.docker.com/engine/install/ubuntu/) on your machine.
 
 
-- A running Kubernetes cluster. You can create one on [Spectro Cloud’s Palette](https://docs.spectrocloud.com/getting-started/#deployingyourfirstcluster) or [use other methods to create a cluster](https://www.notion.so/How-To-Create-a-Kubernetes-Cluster-bf707518b6bf4a918d8b11a570eabed6).
+- An active Kubernetes cluster. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
 
 
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on your machine and connected to your cluster.
