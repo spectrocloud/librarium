@@ -74,7 +74,7 @@ The following encryption keys are unique and generated for each installation:
 - **Hash Salt**: Used to hash the user password and email ID.
 
 
-- **Tenant key**: A 64-bit cryptographically secure tenant key encrypts tenant data.
+- **Tenant key**: A 64-bit cryptographically secure tenant key encrypts tenant data stored in the management cluster, such as user account name, user email ID, and tenant cloud credentials.
 
 
 In self-managed deployments, keys are generated during installation and stored as secrets in the management cluster’s etcd key-value store.
@@ -124,7 +124,7 @@ Palette fully supports Role-Based Access Control (RBAC) and two authentication m
 
 Palette uses JWT-based authentication and authorization for REST API access over HTTPS. 
 
-The authentication token is valid for 15 minutes. If the token is about to expire, you can request a token refresh before making other API calls. 
+The authentication token is valid for a limited time. If the token is about to expire, you can request a token refresh before making other API calls. 
 
 Palette has a common API gateway validation service that ensures there are no incorrect parameter values or potential vulnerabilities, such as SQL injection or cross-site scripting.
 
