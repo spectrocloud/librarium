@@ -138,21 +138,25 @@ Below are the stages of deprecation we adhere to.
 
 <br />
 
-- **Deprecated**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
+<!-- - **Deprecated**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack. -->
+
+- **Deprecated**: Deprecated packs are documented in the Release Notes. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
 
   <br />
 
   The pack remains in *Deprecated* state for three months before it moves to *Disabled* state.
 
+<!-- - **Disabled**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to use a newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the pack. -->
 
-- **Disabled**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to use a newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the pack.
+- **Disabled**: You can still deploy new clusters using existing profiles that contain the pack.
 
   <br />
 
   The pack remains in *Disabled* state for three months before it is deleted.
 
+<!-- - **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. Palette displays a message informing you to use a newer version of the pack. Existing clusters are not disturbed and will continue to be functional. -->
 
-- **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. Palette displays a message informing you to use a newer version of the pack. Existing clusters are not disturbed and will continue to be functional.
+- **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. You must use a newer version of the pack. Existing clusters that use the pack are not disturbed and will continue to be functional.
 
 <InfoBox>
 
