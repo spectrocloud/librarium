@@ -157,7 +157,7 @@ You can use the `before-install` stage to remove partitions if needed.
 <br />
 
 ```yaml
-tages:
+stages:
   before-install:
     - name: "Erase Old Partitions on Boot Disk"
       commands:

@@ -33,6 +33,9 @@ The following sections describe these capabilities in detail:
 
 
 
+* [Certificate Management](/clusters/cluster-management/certificate-management) - You can renew cluster certificates on-demand or leverage the automatic cluster update process to handle certificate renewal operations.
+
+
 * [Cluster Monitoring](/clusters/cluster-management/monitoring/deploy-monitor-stack) - Monitor your cluster resources by collecting and reviewing metrics. 
 
 
@@ -43,7 +46,7 @@ The following sections describe these capabilities in detail:
 * [OS Patching](/clusters/cluster-management/os-patching) - Automatically apply the most recent security patches to cluster nodes to stay up to date with the latest OS patches.
 
 
-* [Backup and Restore](/clusters/cluster-management/backup-restore) - Regularly back up your cluster configurations and  any persistent volumes that your applications use. Choose critical namespaces you would like to back up. Restore as required to new or existing clusters.
+* [Backup and Restore](/clusters/cluster-management/backup-restore) - Regularly back up your cluster configurations and any persistent volumes that your applications use. Choose critical namespaces you would like to back up. Restore as required to new or existing clusters.
 
 
 
