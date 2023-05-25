@@ -60,7 +60,7 @@ We use the following design principles to ensure tenant isolation:
 
     #### Data At Rest Encryption
 
-    Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd key-value store. In additon, all message communication uses tenant-specific channels.
+    Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd key-value store. In addition, all message communication uses tenant-specific channels.
 
     <br />
 
