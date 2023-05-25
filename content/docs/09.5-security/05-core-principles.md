@@ -13,11 +13,12 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Our security philosophy is grounded in the following.
+Security is about controlling who can interact with your information, what they can do with it, and when they can interact with it.
 
+We use the Confidentiality, Integrity, and Availability (CIA) Triad as the framework that guides the security and controls we provide in our products and services. This framework is often extended with Authentication, Authorization, and Auditing. Components of the CIA Triad are described below.
 <br />
 
-- **Confidentiality**: Preserve authorized restrictions on information access and disclosure to protect personal privacy and proprietary data. This includes confirming identity and access rights to resources.
+- **Confidentiality**: Preserve authorized restrictions on information access and disclosure to protect personal privacy and proprietary data. This includes confirming identity and access rights to resources. 
 
 
 - **Integrity**: Protect data against unauthorized modification - either accidental or deliberate.
@@ -37,7 +38,7 @@ Our security philosophy is grounded in the following.
 
 ## Core Principles
 
-We apply the following core security principles to our decision-making and product. 
+Our security philosophy is grounded in the following core principles that we apply to our decision-making and product.
 
 <br />
 
