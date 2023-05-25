@@ -37,6 +37,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 <Tabs>
 <Tabs.TabPane tab="Custom OS" key="custom-os">
 
+
 ## Prerequisites
 
 - Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for details.
@@ -134,6 +135,16 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 
 <Tabs.TabPane tab="Without Custom OS" key="without-os">
+
+<br />
+
+<WarningBox>
+
+This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to learn how to use a custom OS with your cluster profile.
+
+</WarningBox>
+
+<br />
 
 ## Prerequisites
 
