@@ -30,7 +30,7 @@ Virtual clusters are powerful and beneficial to teams due to their characteristi
 - Removes the infrastructure overhead for downstream consumers
 - Reduces the need to set up or manage complicated Kubernetes namespaces and roles. Teams can instead receive their own virtual cluster without worrying about permissions or affecting other teams’ resources.
 
-Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters) virtual clusters, which helps significantly in reducing cost. App mode heavily leverages virtual clusters. 
+Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters) virtual clusters, which helps significantly in reducing costs. App mode heavily leverages virtual clusters. 
 
 
 # What is App Mode?
@@ -59,7 +59,7 @@ You might ask yourself, "How do I know which mode I should use?” The answer co
 - Choose app mode if you want to simply deploy an application using Kubernetes without the infrastructure overhead. If you want to simply try out Palette, app mode is a good starting point. 
 
  
-App mode may not meet your needs if your application requires a lot of resources. The Palette-managed cluster group, called Beehive, imposes a resource limitation that could prevent a resource-heavy application from launching successfully. Review the [Resource Quota](https://docs.spectrocloud.com/devx/resource-quota) documentation to understand app mode limits. If you already have Palette-managed Kubernetes host clusters deployed or available to you as a cluster group with Palette Virtual Clusters enabled, then leveraging app mode is a great fit so you can focus on the developer experience aspect.
+App Mode may not meet your needs if your application requires a lot of resources. The Palette-managed cluster group, called Beehive, imposes a resource limitation that could prevent a resource-heavy application from launching successfully. Review the [Resource Quota](/devx/manage-dev-engine/resource-quota) documentation to understand App Mode limits. If you already have Palette-managed Kubernetes host clusters deployed or available to you as a cluster group with Palette Virtual Clusters enabled, then leveraging App Mode is a great fit so you can focus on the developer experience aspect.
 
 Below are some of the characteristics of each mode. Use this to help you better understand the differences between the two modes. 
 

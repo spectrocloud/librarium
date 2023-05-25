@@ -47,10 +47,13 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 The following minimum device requirements must be met to deploy an Edge host successfully.
 
-* 4 Gb of Memory.
+* 2 CPU
 
 
-* 50 Gb of Storage.
+* 8 GB Memory
+
+
+* 60 GB Storage
 
 
 If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.

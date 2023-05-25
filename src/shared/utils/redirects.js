@@ -52,7 +52,7 @@ const redirects = [
     toPath: `/clusters/edge`,
     redirectInBrowser: true,
     isPermanent: true,
-  },  
+  },
   {
     fromPath: `/troubleshooting/palette-namespaces-podes`,
     toPath: `/architecture/palette-namespaces-podes`,
@@ -194,6 +194,40 @@ const redirects = [
   {
     fromPath: `/knowledgebase/tutorials/cks-tutorial`,
     toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine/deploy-app`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app`,
+    toPath: `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/resource-quota`,
+    toPath: `/devx/manage-dev-engine/resource-quota`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },{
+    fromPath: `/devx/registries`,
+    toPath: `/devx/manage-dev-engine/registries`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },{
+    fromPath: `/devx/virtual-clusters`,
+    toPath: `/devx/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
   }

@@ -54,7 +54,7 @@ The airgap installation can be simplified into five major phases.
 5. Palette is ready for usage.
 
 
-This guide focuses on the first two installation phases, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
+This guide focuses on the first two installation phases, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/enterprise-version/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
 
 
 # Prerequisites
@@ -638,7 +638,7 @@ You can review all the logs related to the setup of the private Spectro reposito
 </InfoBox>
 
 
-# Validation
+# Validate
 
 You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance with an SSH key then you can skip to step five.
 

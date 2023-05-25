@@ -3,7 +3,6 @@ title: "Deploy an Application using Palette Dev Engine"
 metaTitle: "Deploy an Application using Palette Dev Engine"
 metaDescription: "Learn how to deploy applications to a Kubernetes cluster without the traditional overhead accompanied by Kubernetes. Palette’s App Mode reduces the deployment time and complexity when deploying applications to Kubernetes. Learn how to get started with Palette’s App Mode in this tutorial. Get started with the free tier of Palette App Mode"
 icon: ""
-category: ["tutorial"]
 hideToC: false
 fullWidth: false
 ---
@@ -28,9 +27,7 @@ To complete this tutorial, you will need the following items.
 - Basic knowledge about containers.
 
 If you select the Terraform workflow, you will need the following software installed.
-- Terraform v1.3.6 or greater
-- Git v2.30.0 or greater 
-
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
 
 There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
 
@@ -94,7 +91,7 @@ In the following screen, you will be prompted for the cluster group, virtual clu
 
   
 
-Palette’s Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](/devx/resource-quota) documentation to learn more about limits.
+Palette Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](/devx/manage-dev-engine/resource-quota) documentation to learn more about limits.
 
   
 
@@ -116,7 +113,7 @@ Click on the **New App Profile** button to start creating your first app profile
 
   
 
-Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.10`. Change the network access to **Public** and add the port `8080`.
+Name the container `ui`, select a public registry, and provide the image URL `ghcr.io/spectrocloud/hello-universe:1.0.12`. Change the network access to **Public** and add the port `8080`.
 
   
 
@@ -327,7 +324,7 @@ Provide the UI container with the following information.
 
 - Registry: Public
 
-- Image: `ghcr.io/spectrocloud/hello-universe:1.0.10`
+- Image: `ghcr.io/spectrocloud/hello-universe:1.0.12`
 
 - Network Access: Public
 
@@ -451,8 +448,52 @@ As you go through the Terraform workflow, be aware that high-level concepts from
 
 </InfoBox>
 
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Docker" key="docker">
+
+
+Ensure Docker Desktop on your local machine is available. Use the following command and ensure you receive an output displaying the version number.
+
+<br />
+
+```bash
+docker version
+```
+
+Download the tutorial image to your local machine.
+<br />
+
+```bash
+docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+```
+
+Next, start the container, and open a bash session into it.
+
+<br />
+
+```shell
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+```
+
+Navigate to the tutorial code.
+
+<br />
+
+```shell
+cd terraform/hello-universe-tf/
+```
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Git" key="git">
+
 
 Open a terminal window to begin the tutorial and download the tutorial code from GitHub. 
+
+<br />
 
 ```shell
 git@github.com:spectrocloud/tutorials.git
@@ -460,24 +501,33 @@ git@github.com:spectrocloud/tutorials.git
 
 Change directory to the tutorial folder.
 
+<br />
+
 ```shell
 cd tutorials/
 ```
 
 Check out the following git tag.
 
+<br />
+
 ```shell
-git checkout v1.0.1
+git checkout v1.0.4
 ```
 
 Change directory to the tutorial code.
+
+<br />
 
 ```shell
 cd terraform/hello-universe-tf/
 ```
 
-Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
 
+</Tabs.TabPane>
+</Tabs>
+
+Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
 ### API Key
 
 To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**. 
@@ -1219,6 +1269,17 @@ terraform destroy -var="token=931A3B02-8DCC-543F-A1B2-69423D1A0B94" -auto-approv
 
 ```shell
 Destroy complete! Resources: 6 destroyed.
+```
+
+<br />
+
+If you are using the tutorial container and want to exit the container, type `exit` in your terminal session and press the **Enter** key. Next, issue the following command to stop the container.
+
+<br />
+
+```shell
+docker stop tutorialContainer && \
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
 ```
 
 <br />

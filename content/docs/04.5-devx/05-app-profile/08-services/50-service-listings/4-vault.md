@@ -85,7 +85,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](/clusters/palette-virtual-clusters/deploy-virtual-cluster#deployavirtualcluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial.
 
 
-## Validation
+## Validate
 
 You can validate the Vault instance deployed successfully by using the following steps. 
 

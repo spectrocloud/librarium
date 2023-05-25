@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-You can use the Edge Installer CLI to create an Edge artifact. The Edge artifacts will include everything you may have created up to this point.
+You can use the Palette Edge CLI to create an Edge artifact. The Edge artifacts will include everything you may have created up to this point.
 
 <br />
 
@@ -23,11 +23,10 @@ You can use the Edge Installer CLI to create an Edge artifact. The Edge artifact
 * Content Bundle
 
 
-
 * User Data
 
 
-![A diagram that illustrates the mentioned pieces making up an Edge artifact created by the Edge Installer CLI](/clusters_edge-forge-workflow_build-images_edge-artifact-result.png)
+![A diagram that illustrates the mentioned pieces making up an Edge artifact created by the Palette Edge CLI](/clusters_edge-forge-workflow_build-images_edge-artifact-result.png)
 
 Use the following steps to create an Edge artifact for your Edge host.
 # Prerequisites
@@ -35,11 +34,18 @@ Use the following steps to create an Edge artifact for your Edge host.
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
 
-- 12 Gib of storage or more. The size requirements may change depending on the size of the content bundle and image sizes of the selected OS and Kubernetes distribution.
+- 8 CPU
 
 
-- Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
+- 16 GB Memory
 
+
+- 150 GB Storage 
+
+  If you experience disk space constraints on the machine where images are built, you can remove unnecessary Docker images and volumes. Or start the process on a machine with more storage allocated.
+
+
+- Access to a container registry with permission to push container images. For guidance on logging in, review the registry login instructions for your respective registry. With docker, use the `docker login` command to log in to the registry.
 
 # Create Artifact
 
@@ -48,14 +54,14 @@ Choose the workflow that fits your needs.
 <br />
 
 
-1. Download Palette Edge Installer CLI and assign the executable bit.
+1. Download the Palette Edge CLI and assign the executable bit.
    
    <br />
 
     ```shell
-    VERSION=3.3.0
-    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-installer
-    chmod +x palette-edge-installer
+    VERSION=3.4.3
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
+    chmod +x palette-edge
     ```
 
 2. Issue the `show` command to review the list of options for Operating System (OS) distribution and versions, Kubernetes distributions and versions, the Spectro Agent Version, and Kairos version.
@@ -63,7 +69,7 @@ Choose the workflow that fits your needs.
     <br />
 
     ```shell
-    ./palette-edge-installer show
+    ./palette-edge show
     ```
 
     ![CLI example output from the show command](/clusters_edge-forge-workflow_build-images_edge-cli-show.png)
@@ -75,20 +81,29 @@ Choose the workflow that fits your needs.
 
 3. Use the `generate` command to create an image scaffolding by providing your choice of OS and Kubernetes distribution. There are several CLI flags you can specify to the `generate` command. The following flags are the most common.
 
-    | Parameter                | Description                                                                                         |
-    |--------------------------|-----------------------------------------------------------------------------------------------------|
-    | `--os-flavor`             | OS flavor                                                                                           |
-    | `--k8s-flavor`            | Kubernetes flavor.                                                                                  |
-    | `--output`                 | Directory for generating build files.                                                              |
-    | `--push-image-repository`  | Repository for generated container images.                                                         |
-    | `--content-path`           | Optional location of the content bundle if preloading content.                                     |
-    | `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
-    | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
+
+
+  | Parameter                | Description                                                                                         |
+|--------------------------|-----------------------------------------------------------------------------------------------------|
+| `--os-flavor`             | OS flavor.                                                                                           |
+| `--k8s-flavor`            | Kubernetes flavor.                                                                                  |
+| `--output`                 | Directory for generating build files.                                                              |
+| `--push-image-repository`  | Repository for generated container images.                                                         |
+| `--content-path`           | Optional location of the content bundle if you preload content.                                     |
+| `--cache-provider-images`  | Additional flag to preload generated provider images into the installer ISO.                       |
+| `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
   <br />
+  
+  <InfoBox>
+
+  When using the `generate` command, the specified registry is where Edge artifacts will be uploaded.
+
+  </InfoBox>
+
 
   ```shell
-   ./palette-edge-installer generate --os-flavor [pick-os] \
+   ./palette-edge generate --os-flavor [pick-os] \
    --k8s-flavor [pick-k8s] \
    --output [output directory] \
    --push-image-repository [your registry path] \
@@ -100,7 +115,7 @@ Choose the workflow that fits your needs.
 
   Example:
   ```shell
-   ./palette-edge-installer generate --os-flavor opensuse-leap \
+   ./palette-edge generate --os-flavor opensuse-leap \
    --k8s-flavor k3s \
    --output opensuse-k3s \
    --push-image-repository gcr.io/my-registry \
@@ -134,7 +149,7 @@ Choose the workflow that fits your needs.
   Example:
 
   ```shell
-   ./palette-edge-installer generate \
+   ./palette-edge generate \
    --base-image-uri quay.io/kairos/core-rockylinux:v1.5.0 \
    --k8s-flavor k3s \ 
    --output rockylinux-k3s \
@@ -158,7 +173,7 @@ Choose the workflow that fits your needs.
   | Use case | Description |
   | --- | --- |
   | Modifying/controlling Kubernetes versions and flavors | You can update the .versions.env file or specify the versions and flavors as arguments to the build command. |
-  | Adding custom packages to target OS images | Edit the respective images' **Dockerfile** to add the install commands using `apt-get` or `zypper`. |
+  | Adding custom packages to target OS images | Edit the **Dockerfile** of the respective OS images to add the install commands using `apt-get` or `zypper`. |
   | Adding custom files or directories into Kubernetes provider container images | Add the custom files or directories in the **overlay/files/** folder. The files directory is copied directly under the */* folder in the target image. |
   | Adding custom content to Edge Install installer ISO | Place the custom content in the **overlay/files-iso** directory. To embed a content bundle, place it under the **overlay/files-iso/opt/spectrocloud/content** folder. This limits the scope to only the Edge Install installer ISO. |
 
@@ -199,7 +214,7 @@ You can use several software tools to create a bootable USB drive, such as [bale
 </InfoBox>
 
 
-# Validation
+# Validate
 
 1. In the build server, validate the output directory containing the ISO file.
 

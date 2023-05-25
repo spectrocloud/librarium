@@ -232,7 +232,7 @@ When you deploy the cluster deployment, you will have a host cluster with the Pr
 
 </Tabs>
 
-# Validation
+# Validate
 
 To validate that the Prometheus agent is successfully installed and sending metrics to the monitoring stack, use the following steps.
 
@@ -265,10 +265,18 @@ To validate that the Prometheus agent is successfully installed and sending metr
 
 ![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
 
+<br />
+
+<WarningBox>
+
+Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
+
+</WarningBox>
+
 
 Use the other dashboard created by Palette to learn more about your environment.
 
 
 # Next Steps
 
-Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. To  learn how to create dashboards tailored to your environment, check out the [Grafana tutorials](https://grafana.com/tutorials/).
+Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. To learn how to create dashboards tailored to your environment, check out the [Grafana tutorials](https://grafana.com/tutorials/).

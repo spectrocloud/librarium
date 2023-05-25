@@ -13,6 +13,248 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+
+# May 22, 2023 - Release 3.4.0
+
+Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) documentation.
+
+
+## Palette
+
+### Breaking Changes
+
+- Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
+
+
+- Self-hosted Palette for Kubernetes now installs Palette Ingress resources in a namespace that Palette manages. Prior versions of Palette installed internal components ingress resources in the default namespace. Review the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) to learn more about this change and how to upgrade.
+
+
+### Features
+
+- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels.
+
+
+- You can now access a customized Amazon Machine Image (AMI) in Palette for Amazon Elastic Kubernetes Service (Amazon EKS) with support for AWS Launch Template. This allows you to personalize your EKS nodes and EBS root volumes by creating your own custom AMI.
+
+
+- Palette now supports using IAM Roles for Service Accounts (IRSA) for AWS clusters. Enable the Palette managed policy *Controllers EKS Policy* to enable this feature. Refer to the [AWS Required Policies](/clusters/public-cloud/aws/required-iam-policies) for more information about the managed policy.
+
+
+- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](/clusters/public-cloud/gcp/create-gcp-gke-cluster) guide to learn how to deploy clusters to GKE with Palette.
+
+
+
+- Palette now supports the ability for you to use image swap to override specific registries, images, or a combination of both. You can add an `imageSwap` configuration to the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](/clusters/cluster-management/image-swap) reference resource to learn more.
+
+
+
+- Deploying a host cluster to AWS with Red Hat Enterprise Linux (RHEL) as the Operating System (OS) is now possible. This can be done by utilizing the *Bring Your Own Operating System* (BYOOS) pack, which allows for the creation of a custom AMI based on RHEL.
+
+
+### Improvements
+
+- OpenID Connect (OIDC) identity provider configuration has now moved to the Kubernetes layer. You can now select the desired OIDC setting when selecting a Kubernetes distribution and version during a cluster profile creation.
+
+
+- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Macros Supported Variables](/registries-and-packs/pack-constraints?System%20Macros=system_macros_syntax#supportedvariables) documentation to learn more.
+
+
+- Cluster profiles can now be filtered by scope such as Tenant and project.
+
+
+- The tenant administrator dashboard now displays the cluster usage and cost information at the tenant scope.
+
+
+- The Cox Edge cluster deployment wizard now populates a Point of Presence (PoP) list to help you select the geographical deployment target.
+
+
+- As a tenant administrator, you can now quickly review all Edge hosts that are deployed in your tenant and quickly identify which project they belong to.
+
+
+- The Cox Edge provider has been updated to support worker nodes' load balancers and customizable volume mounts for virtual machines.
+
+
+- The Metal as a Service (MAAS) provider has been updated to improve the node reconciliation behavior. In scenarios where the Machine Intelligent Platform Management Interface (IPMI) is powered off, the machine is powered on instead of provisioning a new node.
+
+
+
+### Bug Fixes
+
+- A bug that caused issues with the deletion of a cluster's profile manifest has been successfully fixed. Manifests are now correctly deleted when removed from a cluster profile.
+
+
+- The problem with Palette not removing namespaces when removing a layer from a cluster profile has been resolved.
+
+
+
+- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
+
+
+## Edge
+
+### Breaking Changes
+
+- To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
+
+
+- Prior Edge Installer versions are incompatible with Palette 3.4 and newer versions due to product enhancements and security fixes. New Edge clusters deployed with an earlier Edge Installer version will not operate in Palette. Active Edge clusters in Palette will continue to work as expected. Use the latest version of the [Edge Installer](/spectro-downloads#edgeinstallerimage) when creating Edge artifacts and deploying new Edge clusters.
+
+### Features
+
+
+
+- You can now assign a static IP address to an Edge host during deployment. Previously, you could only assign a static IP address through the user-data configuration file. You can now set a static IP address by using the user-data configuration file, the Palette API, Terraform, or the Palette dashboard during the Edge host cluster creation wizard.  
+
+
+- An Edge host ID can now be sourced directly from system files exposed by the BIOS or firmware via the [Desktop Management Interface](https://www.dmtf.org/standards/dmi) (DMI). Ensure that the system file is not empty and does not contain special characters, and the Edge installer will use the value in the file as the Edge host ID. This is an advanced feature and is not required for setting a device ID.
+
+
+
+- To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
+
+
+### Improvements
+
+
+- The events log stream for the Edge host cluster now includes audit messages and critical errors. Logs for an individual Edge host are now also accessible. The Edge host logs are helpful in debugging and monitoring the deployment process of an Edge host.
+
+
+- The upgrade process for Edge cluster has been optimized to avoid extra reboots of the Edge host, whether it's for upgrading the OS or the Kubernetes version.
+
+
+
+- The latest Kairos release information is now appended to the **/etc/os-release** file. Unlike previous versions of Pallette, the Kairos release information no longer replaces the entire content of the OS's release file. This change prevents any issues that may arise with tools like Nvidia's GPU Operator due to the previous overwrite behavior.
+
+
+- The Palette dashboard now displays Edge host clusters undergoing an upgrade process.. 
+
+
+## Palette Dev Engine (PDE)
+
+
+## Features
+
+- Palette PDE is now available in self-hosted installation of Palette.
+
+
+- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/palette-cli/install-palette-cli) documentation page to learn more.
+
+
+## Improvements
+
+- Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means exposed service URLs automatically receive dynamic SSL certificates used for HTTPS.
+
+
+- You can now access a [new dashboard](/devx#manageresources) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
+
+
+- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](/devx/app-profile/container-deployment) guide to learn more about containerized deployments.
+ 
+
+## Terraform
+
+- Version 0.14.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
+
+## Packs
+
+### Operating System Packs
+
+| Pack               | New Version |
+|--------------------|----------|
+| COS GKE            | 1.0.0    |
+| Edge Native BYOI   | 1.0.0    |
+| SLES Libvirt       | 15.4.1   |
+| SLES vSphere       | 15.4.1   |
+| Ubuntu OpenStack   | 22.04    |
+
+
+### Kubernetes Packs
+
+| Pack               | New Version |
+|--------------------|----------|
+| Edge k3s           | 1.25.2   |
+| Edge k8s           | 1.25.2   |
+| Edge microk8s      | 1.25     |
+| Edge RKE2          | 1.25.2   |
+| Kubernetes         | 1.26.3   |
+| Kubernetes EKS     | 1.26     |
+| Kubernetes GKE     | 1.25.8   |
+
+
+### CNI Packs
+
+| Pack                   | New Version |
+|------------------------|----------|
+| CNI Calico             | 3.25.1   |
+| CNI Calico Azure       | 3.25.1   |
+| CNI Cilium             | 1.13.2   |
+| CNI VPC Native GKE     | 1.0.0    |
+| CNI Flannel            | 0.21.4   |
+| CNI Cilium Tetragon    | 0.9.0    |
+
+
+### CSI Packs
+
+| Pack                       | New Version |
+|----------------------------|----------|
+| CSI AWS EBS                | 1.17.0   |
+| CSI GCP Persistent Driver   | 1.10.1   |
+| CSI Longhorn               | 1.4.1    |
+| CSI OpenStack Cinder       | 1.26     |
+| CSI Portworx Generic       | 2.12.0   |
+| GKE CSI GCP Driver         | 1.0.0    |
+| CSI vSphere                | 3.0.0    |
+
+
+
+### Add-on Packs
+
+| Pack                   | New Version |
+|------------------------|----------|
+| Nvidia GPU Operator    | 22.9.2   |
+| AVI Kubernetes Operator| 1.9.2    |
+| Istio                  | 1.17.2   |
+| Cloudanix              | 1.0.0    |
+| CSI Longhorn           | 1.4.1    |
+| CSI Topolvm            | 11.1.1   |
+| External DNS           | 0.13.4   |
+| Flux CD                | 2.6.0    |
+| Kong                   | 2.17.0   |
+| Nginx                  | 1.7.0    |
+| Palette Upgrader       | 3.3.16   |
+| Portworx               | 2.13.0   |
+| Prometheus Agent       | 19.0.2   |
+| Prometheus Operator    | 45.25.0 |
+| Reloader               | 1.0.24   |
+| Spectro k8s Dashboard  | 2.7.1    |
+| HashiCorp Vault        | 0.24.1   |
+
+
+### Pack Notes 
+
+- The CNI Calico pack version 3.25.1 is now available which contains support for IPV6 CIDR support has been added.
+
+- The Nvidia GPU Operator pack is available and can be used to install Nvidia GPU drivers on Nvidia hardware. 
+
+-  The AVI Kubernetes Operator (AKO) pack is now available. You can use this pack to provide L4-L7 load balancing for applications deployed in a Kubernetes cluster for north-south traffic network traffic. This pack is only available for VMware vSphere.
+
+- The vSphere CSI pack version 3.0.0 is available. This versions supports the usage of custom images for vSphere pods.
+
+
+- The CNCF Kubernetes pack is renamed to Palette eXtended Kubernetes.
+
+
+- Kubernetes versions before 1.24 are no longer supported for host clusters targeting Azure Kubernetes Service (AKS). This deprecation is due to Azure's Kubernetes support policy. You can learn more about Azure-supported Kubernetes versions [here](https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli).
+
+
+## Education
+
+-  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](/registries-and-packs/deploy-pack) tutorial.
+
+
+- An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started
+
+
 # March 19, 2023 - Release 3.3.0
 
 This release contains several security fixes and new features for Edge. The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.
@@ -29,7 +271,7 @@ This release contains several security fixes and new features for Edge. The Edge
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
-* Users can now create custom Edge Installer images to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
+* Users can now [create custom Edge Installer images](/clusters/edge/edgeforge-workflow/build-images) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
 * Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 
@@ -52,7 +294,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ## Palette
 
-### Features:
+### Features
 
 * Support for the [Cox Edge](/clusters/public-cloud/cox-edge/) cloud provider is now available in Palette.
 * Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
@@ -69,7 +311,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * Virtual clusters now support the ability to [back up all disk volumes](/clusters/cluster-groups/cluster-group-backups) within the cluster.
 * A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](/clusters/cluster-groups/ingress-cluster-group) for cluster groups.
 
-### Enhancements:
+### Enhancements
 
 * [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
@@ -84,7 +326,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 ## Edge
 
-### Features:
+### Features
 
 * Palette provides the ability to automatically register edge hosts for a specific project when a host authentication token is specified in **Tenant Settings > Registration Tokens**. 
 
@@ -147,8 +389,8 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
 * Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
 * Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
-* Palette leverages [Helm and OCI registries](/devx/registries#custompackregistry) for custom pack management. 
-* Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, MinIO, NATS, etc., for Palette Dev Engine. These services can be specified when creating an App Profile.
+* Palette leverages [Helm and OCI registries](/devx/manage-dev-engine/registries) for custom pack management. 
+* Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 ### Enhancements:
@@ -192,7 +434,6 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * csi-longhorn version 1.3.1 
 * csi-longhorn-addon version 1.3.1 
 * kafka-operator version 0.32.0 
-* minio-operator version 4.5.4 
 * mysql-operator version 0.6.2 
 * nats-operator version 0.18.2 
 * palette-upgrader version 3.0.70 
