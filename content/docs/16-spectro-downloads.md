@@ -73,15 +73,6 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 -------
 
 
-## Edge Installer Image
-
-
-|Version|Docker Image URL| Optical Disk Image (ISO) |
-|---|---|--|
-|3.4.2     | `gcr.io/spectro-images-public/stylus:v3.4.2`| [ISO](https://software.spectrocloud.com/stylus/v3.4.2/stylus-v3.4.2-amd64.iso) |
-
----
-
 # Palette CLI
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
@@ -96,6 +87,6 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 CLI Version| Operating System |  
 -------|---|
-v3.4.1 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.1/cli/linux/palette-edge) |
+v3.4.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.3/cli/linux/palette-edge) |
 
 
