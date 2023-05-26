@@ -62,14 +62,14 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
-|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
-|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12|
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`
 -------
 
 
