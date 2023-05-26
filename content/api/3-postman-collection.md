@@ -29,7 +29,7 @@ To interact with the API, you will need the following:
 * [Postman application](https://www.postman.com/downloads/) v10.2.2 or greater.
 
 
-* A base URL for the Palette API. The default Palette API endpoint is `api.spectrocloud.com`, but the base URL will be different for self-hosted Palette installation. Contact your system administrator to learn more.
+* A base URL for the Palette API. The default Palette API endpoint is `api.spectrocloud.com`, but the base URL will be different for self-hosted Palette installation. Contact your system administrator to find your base URL.
 
 
 * An authentication credential. 
