@@ -60,6 +60,13 @@ Edge is still in active development and is subject to change. Review the Palette
 
 <br />
 
+
+
+# Get Started With Edge
+
+
+To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](/clusters/edge/edgeforge-workflow). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
+
 # Edge Native
 
 Palette's Edge native solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing, along with the operating system and Kubernetes, is installed in the device.
@@ -70,31 +77,13 @@ Palette manages the installation and all the Day-2 activities, such as scaling, 
 
 <InfoBox>
 
-Edge native is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
+Edge is built on top of the open-source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
 
 </InfoBox>
 
-<!-- ### Virtualized Edge
-
-Designed for sites that typically have a single large bare-metal appliance. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
-
-<br />
-
-<WarningBox>
-
-Palette recommends Virtualized Edge deployment only when the user has a single edge appliance and needs HA virtualized Kubernetes Cluster.
-
-[Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
-
-</WarningBox> -->
 
 
 <br />
-
-# Get Started With Edge
-
-
-To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the EdgeForge workflow to configure the installation process to match your environment and organizational needs. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
 
 
 # Resources
