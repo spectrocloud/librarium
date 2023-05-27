@@ -37,6 +37,8 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
       iterations.forEach((iteration) => {
         const [range, color] = iteration.split("|");
         coloredIntervals[range] = color;
+        // set color to have a default value of #666666 regardless of whether it's provided. This is to ensure that the all color highlights used throughout the site are consistent.
+        coloredIntervals[range] = "#666666";
       });
     }
 
