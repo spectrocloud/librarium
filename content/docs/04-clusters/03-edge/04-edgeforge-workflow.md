@@ -37,7 +37,7 @@ Each component plays a critical role in the [lifecycle](/clusters/edge/edge-nati
 
 ## Edge Installer ISO
 
-An ISO file that bootstraps the installation process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The default Edge Installer ISO download URL is in the [Downloads](/spectro-downloads#edgeinstallimages) resource.
+An ISO file that bootstraps the installation is created in the EdgeForge process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation.
 
 <br />
 
@@ -65,7 +65,7 @@ You can specify a custom registry for the Edge Installer to use during installat
 
 # Palette Edge CLI
 
-All organizations have unique environments and different needs. To help you successfully deploy an Edge host in your environment and create an Edge Native host cluster, we provide you with a CLI to help you customize the installation.  
+All organizations have unique environments and different needs. To help you successfully deploy an Edge host in your environment and create an Edge host cluster, we provide you with a CLI to help you customize the installation.  
 
 
 

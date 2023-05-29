@@ -26,35 +26,6 @@ Review the Edge [Install Configuration](/clusters/edge/edge-configuration/instal
 
 You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
 
-
-# Multiple User Data Use Case
-
-If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site deployment flow would look like the following.
-
-![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.png)
-
-Should you need to apply different configurations once the device arrives at the physical site, you can use a secondary user data to support this use case.
-
-Use the additional user data to override configurations from the previous user data that was flashed into the device or to inject new configuration settings. Using secondary user data at the physical site is a common pattern for organizations that need to change settings after powering on the Edge host at the physical location.
-
-To use additional user data, create a bootable device, such as a USB stick, that contains the user data in the form of an ISO image. The Edge Installer will consume the additional user data during the installation process.
-
-![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
-
-When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a USB drive.
-
-In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc. 
-Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the  [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more about applying secondary site-specific user data.
-
-<br />
-
-<InfoBox>
-
-For your initial testing, your user data may include global settings and site-specific properties in a single user data. As you gain more experience, you should evaluate whether secondary site-specific user data is a better design for your use case.
-
-</InfoBox>
-
-
 # User Data Samples
 
 You may encounter the following scenarios when creating an Edge Installer configuration user data file. Use these examples as a starting point to help you create user data configurations that fit your needs. 
@@ -146,15 +117,17 @@ stylus:
       tags:
         city: chicago
         building: building-1
-  stages:
+
+install:
+  poweroff: true
+
+stages:
   initramfs:
       - users:
           kairos:
           groups:
               - sudo
           passwd: kairos
-  install:
-  poweroff: true
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides project information specified in the `edgeHostToken` parameter. You can add optional tags to identify the city, building, and zip-code. If the edge site requires a proxy for an outbound connection, provide it in the network section of the site user data.
@@ -184,15 +157,17 @@ stylus:
         city: chicago
         building: building-1
         zip-code: 95135
-  stages:
-    initramfs:
-      - users:
-          kairos:
-          groups:
-              - sudo
-          passwd: kairos
-  install:
-    poweroff: true
+
+install:
+  poweroff: true
+
+stages:
+  initramfs:
+    - users:
+        kairos:
+        groups:
+            - sudo
+        passwd: kairos
 ```
 
 ## Apply Proxy & Certificate Settings 
@@ -209,16 +184,6 @@ stylus:
         city: chicago
         building: building-1
         zip-code: 95135
-  stages:
-  initramfs:
-      - users:
-          kairos:
-          groups:
-              - sudo
-          passwd: kairos
-  install:
-  poweroff: true
-
   network:
       httpProxy: http://proxy.example.com
       httpsProxy: https://proxy.example.com
@@ -248,6 +213,17 @@ stylus:
         *****************************
         *****************************
         ------END CERTIFICATE------
+
+install:
+  poweroff: true
+
+stages:
+  initramfs:
+      - users:
+          kairos:
+          groups:
+              - sudo
+          passwd: kairos
 ```
 
 ## Load Content From External Registry
@@ -271,6 +247,10 @@ stylus:
         -----BEGIN CERTIFICATE-----
         
         -----END CERTIFICATE-----
+
+install:
+  poweroff: false
+
 stages:
   initramfs:
     - users:
@@ -278,9 +258,37 @@ stages:
           groups:
             - sudo
           passwd: kairos
-install:
-  poweroff: false
 ```
+
+
+# Multiple User Data Use Case
+
+If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site deployment flow would look like the following.
+
+![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.png)
+
+Should you need to apply different configurations once the device arrives at the physical site, you can use a secondary user data to support this use case.
+
+Use the additional user data to override configurations from the previous user data that was flashed into the device or to inject new configuration settings. Using secondary user data at the physical site is a common pattern for organizations that need to change settings after powering on the Edge host at the physical location.
+
+To use additional user data, create a bootable device, such as a USB stick, that contains the user data in the form of an ISO image. The Edge Installer will consume the additional user data during the installation process.
+
+![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
+
+When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a USB drive.
+
+In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc. 
+Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the  [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more about applying secondary site-specific user data.
+
+<br />
+
+<InfoBox>
+
+For your initial testing, your user data may include global settings and site-specific properties in a single user data. As you gain more experience, you should evaluate whether secondary site-specific user data is a better design for your use case.
+
+</InfoBox>
+
+
 
 # Next Steps
 

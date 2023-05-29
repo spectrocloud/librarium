@@ -17,18 +17,18 @@ Palette requires proper Amazon Web Services (AWS) permissions to operate and per
 The following policies include all the permissions needed for cluster provisioning with Palette.
  <br />
 
-* Controllers Policy
+* `PaletteControllersPolicy`
 
 
-* Control Plane Policy
+* `PaletteControlPlanePolicy`
 
 
-* Nodes Policy
+* `PaletteNodesPolicy`
 
 
-* Deployment Policy 
+* `PaletteDeploymentPolicy` 
 
-Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the *Controllers EKS Policy*.
+Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the *PaletteControllersEKSPolicy*.
 
 <br />
 
