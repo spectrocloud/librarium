@@ -1259,7 +1259,7 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 - [Palette Modes](/introduction/palette-modes)
 
 
-- [Cluster Profiles](/cluster_profile)
+- [Cluster Profiles](/cluster-profiles)
 
 
 - [Palette Clusters](/clusters) 
