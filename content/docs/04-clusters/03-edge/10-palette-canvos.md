@@ -58,7 +58,7 @@ To complete this guide, you will need the following items:
 
 # Build Edge Artifacts
 
-You can follow either of the below workflow - Basic or Advanced. Use Basic for a quick start or Advanced for detailed instructions, and learn about customization options to suit your use case. 
+You can follow either of the below workflow - Basic or Advanced. Use Basic for a quick start or use Advanced for detailed instructions, and learn about customization options to suit your needs. 
 <br />
 
 <Tabs>
@@ -172,7 +172,7 @@ You can follow either of the below workflow - Basic or Advanced. Use Basic for a
 8. Issue the following command to execute the **earthly.sh** file to build the Edge artifacts. The `--PE_VERSION` option in the command below signifies the Palette Edge version to use. The current example uses the **v3.3.3** git tag.
   <br />
 
-  ```shell
+  ```bash
   ./earthly.sh +build-all-images --PE_VERSION=$(git describe --abbrev=0 --tags)
   ```
 
@@ -374,7 +374,9 @@ You can follow either of the below workflow - Basic or Advanced. Use Basic for a
   earthly/earthly   v0.7.4                    d771cc8edc38     2 weeks ago    333MB
   ```
   
-  If you want to use these provider OS images in your cluster profile, push them to the image registry mentioned in the **.arg** file. In the current example, use the following commands to push them to the *ttl.sh* image registry. This image registry is ephemeral; images will be accessible for 24 hours. You can, however, use any other registry of your choice and tag the docker images appropriately before pushing them.
+  If you want to use these provider OS images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example uses *ttl.sh* image registry. You can, however, use any other registry of your choice and tag the docker images appropriately.
+
+  In the current example context, use the following commands to push them to the *ttl.sh* image registry. This image registry is ephemeral; images will be accessible for 24 hours. 
   <br />
 
   ```bash

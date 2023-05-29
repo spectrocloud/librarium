@@ -11,6 +11,7 @@ fullWidth: false
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Deploy Edge Native Cluster
 Deploying an Edge native Kubernetes cluster requires all Edge hosts to be provisioned already with Kairos based immutable operating system. In cases where multiple edge hosts require the same configuration, it is challenging for the IT/Site operations team to ensure scale consistency in terms of OS and other configurations, such as networking, proxy, security, tooling, and user privileges. 
@@ -33,19 +34,23 @@ In this tutorial, you will generate edge installer artifacts, create a Virtual M
 To complete this tutorial, you will need the following items:
 <br/>
 
-* A physical or virtual Linux machine with **x86** or **x86_64** (also known as **AMD64**) processor architecture.
+* A physical or virtual Linux machine with **AMD64** (also known as **x86_64**) processor architecture. You can issue the following command in the terminal to check your processor architecture. 
+  <br/>
+
+  ```bash
+  uname -m
+  ```
+
+* Minimum hardware configuration:
+  - 4 CPU
+  - 8 GB memory
+  - 50 GB storage
+ 
+
+* [Git](https://cli.github.com/manual/installation) version 2.30.x or later. You can check your git version using `git --version` command.
 
 
-* Minimum hardware configuration - 4 CPU, 8 GB memory, and 100 GB storage.
-
-
-* Either one of Ubuntu 20.04, Ubuntu 22.04, or openSUSE Leap 15.4 operating system (OS). 
-
-
-* [Git CLI](https://cli.github.com/manual/installation) 2.30.x or later. 
-
-
-* [Docker Engine](https://docs.docker.com/engine/install/) 20.10.x or later. Ensure that you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on your machine.
+* [Docker Engine](https://docs.docker.com/engine/install/) version 20.10.x or later. Using the ' docker version ' command, you can check the Docker Engine version. Ensure you can create [privileged containers](https://docs.docker.com/engine/reference/commandline/run/#privileged) on your machine.
 
 
 * A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a [free trial](https://www.spectrocloud.com/free-tier/).
@@ -79,47 +84,107 @@ git clone https://github.com/spectrocloud/tutorials.git
 ```
 
 
-# Edge Native Artifacts
-This section will guide you to generate an Edge installer ISO image and Edge provider OS images. Referring to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow), the diagram below shows the relationship between the Edge installer ISO, and Edge provider OS images.
+# Build Edge Native Artifacts
+This section will guide you to generate an Edge installer ISO image and  provider OS images. Referring to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow), the diagram below shows the relationship between the Edge installer ISO, and Edge provider OS images.
 
-![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
+![A diagram that displays the relationship between the three components and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
 
 
-## Build Edge Native Artifacts
-The steps below follow the [Build Edge Native Artifacts](clusters/edge/palette-canvos) guide. To get started, change to the **CanvOS** directory.
+
+
+## Starter Code Repository
+To get started, change to the **CanvOS** directory.
 <br />
 
 ```bash
 cd CanvOS
 ```
 
-Checkout the **v3.3.3** tag.
+The files relevant to the current guide are in the **v3.3.3** tag. Check out the desired tag. You can check out a more recent and stable version if available. 
 <br />
 
 ```bash
 git checkout v3.3.3
 ```
 
-Next, open the **.arg** file in any editor you choose, and edit the value for the `CUSTOM_TAG` variable. You can enter your initials as the value. Ensure that it is made up of all lowercase alphanumeric characters. Palette Edge CLI will use this variable as a suffix in the provider image tags. The current example uses `demo` as a value.
+Review the files relevant to the current guide. 
+<br />
 
+```bash
+.
+├── .arg          # Defines mutiple variables
+├── Dockerfile    # Bakes the arguments to use in the image
+├── Earthfile     # Series of commands for creating target images
+├── earthly.sh    # Script to invoke the Earthfile, and generate target images
+└── user-data.template  # A sample user-data file
+```
+<br />
+
+## Modify the Arguments
+Open the **.arg** file in an editor, and define a custom image tag for provider OS images. Skip this step if you use the default tag. The current example uses `demo` as the default tag. 
 <br />
 
 ```bash
 CUSTOM_TAG=demo
 ```
 
-Next, use the following command to create a **user-data** file containing the login credentials for edge hosts and a token to allow edge hosts to register themselves with Palette automatically. 
+To change the image tag, edit the value for the `CUSTOM_TAG` variable. Ensure that it is made up of all lowercase alphanumeric characters. 
 
-
-Before you issue the following command, you must have a registration token generated from Palette. If you do not have it already, you can log in to [Palette](https://console.spectrocloud.com), and navigate to **Tenant Settings** > **Registration Tokens** > **Add New Registration Token** to create a new registration token. 
-
-![Screenshot of a registration token in Palette](/tutorials/palette-canvos/clusters_edge_palette-canvos_registration-token.png)
-
-
-Edit the `edgeHostToken` parameter value with the registration token copied from Palette, and issue the command below to create a **user-data** file. 
+Suppose you want to edit the value of the image registry, image repository, OS distribution, Kubernetes distribution, or ISO file name. In that case, you can further edit the  **.arg** file to define the corresponding arguments. The table below shows the default value for all arguments defined in the  **.arg** file. 
 <br />
 
-```bash
+|**Argument**|**Description**|**Default Value**| **Other Possible Values** |
+|---|---|---|---|
+|`CUSTOM_TAG`|Tag for provider image|demo|Lowercase alphanumeric string without spaces|
+|`IMAGE_REGISTRY`|Image registry name|ttl.sh|Your image registry URL, without http or https <br /> Example: hub.docker.com|
+|`OS_DISTRIBUTION`|OS Distribution |ubuntu | opensuse-leap|
+|`IMAGE_REPO`|Image repository name|`$OS_DISTRIBUTION`|Your image repository name|
+|`OS_VERSION`|OS Version, only applies to Ubuntu |22| 20|
+|`K8S_DISTRIBUTION`|Kubernetes Distribution |k3s| rke2, kubeadm |
+|`ISO_NAME`|Name of the Installer ISO|palette-edge-installer|String without spaces|
+
+Using the default value for all arguments, the provider image name will be named similar to `ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-demo`. Refer to the **Advanced** workflow in the [Build Edge Native Artifacts](clusters/edge/palette-canvos) guide to learn more about customization options, such as, updating the Dockerfile to install tools and dependencies and configure the host as needed.
+
+## Create Registration Token
+Next, create a registration token in Palette using the instructions available in the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide. Copy the newly created token to a clipboard or notepad file to use in the next step. The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section. 
+
+![A screenshot of a registration token in Palette](/tutorials/palette-canvos/clusters_edge_palette-canvos_registration-token.png)
+
+<br />
+
+## Create User Data
+Switch back to the **CanvOS/** directory in the Linux machine to create a **user-data** file that embeds the Edge host's login credentials and registration token in the Edge Installer ISO image.  
+
+
+Issue the command below to create the **user-data** file for the current example. Before you issue this command, ensure to edit the `edgeHostToken` parameter value with the registration token you created in the last step. Also, you can click on the *Points of Interest* numbers below to learn more about main attributes relevant for this example. 
+<br />
+
+<PointsOfInterest
+  points={[
+    {
+      x: 370,
+      y: 160,
+      label: 1,
+      description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
+      tooltipPlacement: "rightTop",
+    },
+    {
+      x: 190,
+      y: 225,
+      label: 2,
+      description: "Instructs the installer to turn the host machine off once the installation is complete.",
+    },
+    {
+      x: 190,
+      y: 300,
+      label: 3,
+      description: "Sets the login credentials for Edge hosts. The login credentials will allow you to SSH log into the edge host for debugging purposes.",
+      tooltipPlacement: "rightTop",
+    },
+  ]}
+>
+
+```shell
 cat <<'EOF' > user-data
 #cloud-config
 stylus:
@@ -133,14 +198,18 @@ users:
 EOF
 ```
 
-Lastly, issue the following command to build the artifacts. 
+</PointsOfInterest>
+<br />
+
+## Build Artifacts
+Issue the following command to execute the **earthly.sh** file to build the Edge artifacts. The `--PE_VERSION` option in the command below signifies the Palette Edge version to use. The current example uses the **v3.3.3** git tag.
 <br />
 
 ```bash
 ./earthly.sh +build-all-images --PE_VERSION=$(git describe --abbrev=0 --tags)
 ```
 
-```bash coloredLines=2-2|#006622
+```bash coloredLines=2-2
 # Output condensed for readability
 ===================== Earthly Build SUCCESS ===================== 
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
@@ -149,7 +218,7 @@ Share your logs with an Earthly account (experimental)! Register for one at http
 This command will take up to 15-20 minutes to finish.
 <br />
 
-## Verify Edge Native Artifacts
+## Verify Artifacts
 List the edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
 <br />
 
@@ -172,7 +241,31 @@ List the Docker images to show two provider OS images, one compatible with light
 docker images
 ```
 
-Later in the tutorial, you will push these provider OS images to an image registry and refer those images in your cluster profile's **OS layer**. 
+
+```bash coloredLines=3-4
+# Output
+REPOSITORY        TAG                       IMAGE ID        CREATED         SIZE
+ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo    b3c4956ccc0a    6 minutes ago   2.49GB
+ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    fe1486da25df    6 minutes ago   2.49GB
+earthly/earthly   v0.7.4                    d771cc8edc38     2 weeks ago    333MB
+```
+
+## Push Provider Images
+To use these provider OS images in your cluster profile later in this tutorial, push them to the image registry mentioned in the **.arg** file. The current example uses *ttl.sh* image registry. You can, however, use any other registry of your choice and tag the docker images appropriately.
+
+Use the following commands to push them to the *ttl.sh* image registry. This image registry is ephemeral; images will be accessible for 24 hours.
+<br />
+
+```bash
+docker push ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-demo
+docker push ttl.sh/ubuntu:k3s-1.24.6-v3.3.3-demo
+```
+
+<WarningBox>
+
+As a reminder, *ttl.sh* is a short-lived image registry. If you do not use these provider OS images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed.
+
+</WarningBox>
 
 After generating Edge native artifacts, the next step is provisioning VMs to act as Edge hosts to test the Edge installer ISO image. This tutorial example uses VMWare vCenter to provision VMs.
 <br />
@@ -220,19 +313,18 @@ docker run --name tutorialContainer --interactive --tty --volume "${ISOFILEPATH}
 The command above will keep STDIN open, bind mount the directory containing your ISO file to the **/edge-native/vmware/packer/build** directory in the container, and 
 allocate a pseudo-TTY to open a bash session into the tutorials container. 
 
-## Create a Virtual Machines Template
-In the tutorials container bash session, define a new file, **env_variables.sh**, to hold the environment variables to use later in the tutorial.
+## Create a Virtual Machine Template
+In the tutorials container bash session, define a new file, **.env**, to hold the environment variables to use later in the tutorial.
 <br />
 
 ```bash
-touch env_variables.sh && vi env_variables.sh
+touch .env && vi .env
 ```
 
-Save the following vCenter details in the **env_variables.sh** file. Enter values for all variables that are marked `"Enter a value"`. This file also creates the environment variables for Packer that should essentially be in the `PKR_VAR_[name]` format. 
+Save the following vCenter environment details in the **.env** file. Enter values for all variables that are marked `"Enter a value"`. This file also creates Packer environment variables, in the `PKR_VAR_[name]` format, pointing to the default environment variables. 
 <br />
 
 ```bash
-#!/bin/bash
 export vcenter_server="Enter a value"       # Example: vcenter.spectrocloud.dev
 export vcenter_username="Enter a value"
 export vcenter_password="Enter a value"
@@ -254,12 +346,11 @@ export PKR_VAR_vcenter_cluster=${vcenter_cluster}
 export PKR_VAR_vcenter_network=${vcenter_network}
 ```
 
-Once the **env_variables.sh** file is ready, execute the following commands to declare the environment variables. 
+Once the **.env** file is ready, execute the following commands to source the environment variables. 
 <br/>
 
 ```bash
-chmod +x env_variables.sh
-source env_variables.sh
+source .env
 ```
 
 After declaring the environment variables, change to the **packer/** directory.
@@ -276,32 +367,18 @@ mv vsphere.hcl.template vsphere.hcl
 cat vsphere.hcl
 ```
 
-You *optionally* define the following custom variables in the **vsphere.hcl** file, if they differ from what you have already defined in the **env_variables.sh** file to meet your environment needs. 
-<br />
+Packer uses the environment variables you have defined in the **.env** file above. If your target environment differs from what you have already defined in the **.env** file, you can redefine those variables in the **vsphere.hcl** file again.
 
-```bash
-# Custom Variables
-vcenter_server   = ""
-vcenter_username = ""
-vcenter_password = ""
-vcenter_datacenter      = ""
-vcenter_datastore       = ""
-vcenter_resource_pool   = ""
-vcenter_folder          = ""
-vcenter_cluster         = ""
-vcenter_network         = ""
-```
-
-After reviewing the details in the **vsphere.hcl** file, use the following command to create a VM template using Packer.
+After reviewing and verifying the details in the **vsphere.hcl** file, use the following command to create a VM template using Packer.
 <br />
 
 ```bash
 packer build --var-file=vsphere.hcl build.pkr.hcl
 ```
 
-The build process can take 7-10 minutes to finish depending on your machine's and network configuration.
+The build process can take up to 7-10 minutes to finish depending on your machine's and network configuration. After the build process is successful, it will create a VM template in the VMWare vCenter data store. 
 
-```bash coloredLines=10-11|#006622
+```bash coloredLines=10-11
 # Sample output
 ==> vsphere-iso.edge-template: Power on VM...
     vsphere-iso.edge-template: Please shutdown virtual machine within 10m0s.
@@ -316,31 +393,31 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 ```
 
 ## Provision VMs
-After the VM template is ready, clone it to provision VMs.
+Once the VM template is ready, clone it to provision as many VMs as you need. The next steps will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool built into the tutorials container to clone the VM template. 
 
-These next steps will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool built into the tutorials container to clone the template. Change to the **clone_vm_template/** directory.
+Change to the **clone_vm_template/** directory.
 <br />
 
 ```bash
 cd ../clone_vm_template/
 ```
 
-This directory has a sample file, **setenv.sh.template**, containing the environment variables for GOVC. Also, it defines the number of VMs to provision and a prefix string for the VM name. Most of the variables in the **setenv.sh.template** file already point to the environment variables you have defined in the **env_variables.sh** file, while you must provide a value for two of them - `NO_OF_VMS` and `VM_PREFIX`. 
+This directory contains a sample file, **setenv.sh.template**, that declares the GOVC environment variables for the target vCenter environment, the number of VMs to provision, a prefix string for the VM name, and the VM template name. 
 
-Rename the **setenv.sh.template** to **setenv.sh**, and open this file in an editor.
+Most of the GOVC environment variables point to the default environment variables you have defined in the **.env** file above. However, you must provide a value for the number of VMs to provision and a prefix string for the VM name. Use the following command to rename the **setenv.sh.template** to **setenv.sh**, and open this file in an editor to provide a value for `NO_OF_VMS` and `VM_PREFIX` variables. 
 <br />
 
 ```bash
 mv setenv.sh.template setenv.sh && vi setenv.sh
 ```
 
-provide a value for `NO_OF_VMS` and `VM_PREFIX` variables. The value for the `NO_OF_VMS` variable is set to create three VMs by default. If you have limited resources, just one VM is sufficient to complete this tutorial. The value for the `VM_PREFIX` variable should be alphanumeric and lowercase. 
+The value for the `NO_OF_VMS` variable is set to create three VMs by default. If you have limited resources, just one VM is sufficient to complete this tutorial. The value for the `VM_PREFIX` variable should be alphanumeric and lowercase. 
 <br />
 
 ```bash
 #!/bin/bash
 
-# GOVC Properties
+# GOVC environment variables
 # vCenter Endpoint
 export GOVC_URL="https://${vcenter_server}"     # Use HTTPS. For example, https://vcenter.company.com
 export GOVC_USERNAME="${vcenter_username}"
@@ -364,7 +441,7 @@ Review and save the **setenv.sh** file, and execute the **deploy-edge-host.sh** 
 ./deploy-edge-host.sh
 ```
 
-```bash coloredLines=7-7|#006622
+```bash coloredLines=7-7
 # Sample output for one VM
 Cloning /Datacenter/vm/sp-sudhanshu/palette-edge-template to demo-1...OK
 Cloned VM demo-1
@@ -375,61 +452,70 @@ Edge Host ID   VM demo-1 : edge-97f2384233b498f6aa8dec90c3437c28
 ```
 The output on the terminal also displays the Edge host ID. VMs will use this host ID to auto-register themselves with Palette. 
 
-## Edge Host Auto-Registeration
+<InfoBox>
+
+Copy the Edge host ID for future reference and manual registration if the auto registration does not work later in this tutorial. 
+
+</InfoBox>
+
+## Verify Host's Registeration
 After provisioning, if you have correctly embedded the registration token in the ISO image, VMs will automatically register themselves with Palette. 
 
-In Palette, navigate to the left **Main Menu** and select **Clusters** and switch to the **Edge Hosts** tab. 
-You should see the VMs registered with Palette automatically.
+Log back into Palette, and navigate to the left **Main Menu** > **Clusters** > **Edge Hosts** tab. You should see the VMs registered with Palette automatically.
 
-![Registered](/tutorials/edge-native/registered_nodes.png)
+![A screenshot showing the VMs registered with Palette automatically. ](/tutorials/edge-native/clusters_edge_palette-canvos_edge-hosts.png)
 
-## Push Provider Images
-The next major steps are to create a cluster profile and deploy a cluster. However, before creating a cluster profile, you must push the provider OS images to an image registry and refer those images in your cluster profile's **OS layer**. 
+<InfoBox>
 
-Perform the following steps in the Linux machine where you built the Edge native artifacts. List the Docker images to show two provider OS images, one compatible with lightweight Kubernetes (K3s) v1.24.6 and another with K3s v1.25.2.
-<br />
+For any reason, if you do not see your Edge hosts registered with Palette automatically, you can register the hosts using the Edge host ID manually. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after issuing the `./deploy-edge-host.sh` command in one of the previous steps.
 
-```bash
-docker images
-```
-
-```bash coloredLines=3-4|#666666
-# Output
-REPOSITORY        TAG                       IMAGE ID        CREATED         SIZE
-ttl.sh/ubuntu     k3s-1.25.2-v3.3.3-demo    b3c4956ccc0a    6 minutes ago   2.49GB
-ttl.sh/ubuntu     k3s-1.24.6-v3.3.3-demo    fe1486da25df    6 minutes ago   2.49GB
-earthly/earthly   v0.7.4                    d771cc8edc38     2 weeks ago    333MB
-```
-
-If you want to use these provider images in your cluster profile, use the following commands to push them to the *ttl.sh*  image registry. This registry is ephemeral; images will only be accessible for 24 hours. You can, however, use any other registry of your choice and tag the docker images appropriately before pushing them.
-<br />
-
-```bash
-docker push ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-demo
-docker push ttl.sh/ubuntu:k3s-1.24.6-v3.3.3-demo
-```
-
-<WarningBox>
-
-If you do not complete this tutorial example within 24 hours of pushing these images to *ttl.sh*, they will no longer exist and must be re-pushed.
-
-</WarningBox>
+</InfoBox>
 
 ## Create a Cluster Profile
+Switch to the **Default** project scope for creating a cluster profile.  
+<br />
 
-Navigate to Palette, and switch to the **Default** project scope.
+![A screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
 
-![Default Project Image](/tutorials/edge-native/default_project.png)
+<br />
 
-
-Navigate to the left **Main Menu** and select **Profiles** to list or create a new cluster profile. Click on the **Add New Profile** to open a wizard to create a new cluster profile.
-
+Select the **Profile** section in the left **Main Menu** to create a cluster profile made up of the core infrastructure layers and a manifest of a sample Kubernetes application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). 
 
 
-Next, add the following custom content within the `options` attribute of the **OS layer** of your cluster profile.    
+Click on the **Add Cluster Profile** button, and provide the details in the wizard that follows. The wizard displays the following sections. 
+<br />
+
+### Basic Information
+Use the following values in the **Basic Information** section. 
+
+|**Field**|**Value**|
+|---|---|
+|Name|docs-ubuntu-k3s|
+|Version|`1.0.0`|
+|Description|Cluster profile as part of the edge cluster deployment tutorial.|
+|Type|Full|
+|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:false`|
+
+Click on **Next** to continue. 
+<br />
+
+
+### Cloud Type
+In the **Cloud Type** section, choose **Edge Native** as the infrastructure provider for this tutorial, and click on **Next** at the bottom to move on to the next section.   
+<br />
+
+### Profile Layers
+In the **Profile Layers** section, first add the following OS layer.
+
+|**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
+|---|---|---|---|
+|OS|Public Repo|BYOS Edge OS|`1.0.0`|
+
+To use one of the provider OS images you pushed to the *ttl.sh* image registry earlier in this tutorial, add the following custom content within the `options` attribute of the **OS layer**.    
 <br />
 
 ```yaml
+options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
   system.registry: ttl.sh
   system.repo: ubuntu
@@ -439,101 +525,96 @@ Next, add the following custom content within the `options` attribute of the **O
   system.customTag: demo
   system.osVersion: 22
 ```
-You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile. 
+The values of the parameters above should be as same as the values defined in the arguments defined in the  **.arg** file while generating the Edge artifacts earlier in this tutorial. You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile. 
+<br />
+
+<WarningBox>
+
+As a second reminder, *ttl.sh* is a short-lived image registry. If you do not use the provider OS images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed.
+
+</WarningBox>
 <br />
 
 The screenshot below shows custom content added to the OS layer of a cluster profile.
 <br />
 
-![Screenshot of k3s OS layer in a cluster profile](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
+![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge-native/clusters_edge_palette-canvos_edit-profile.png)
 
-Select the **Profile** section in the left **Main Menu** to create a cluster profile that will combine the core infrastructure and add-on layers. Click on the **Add Cluster Profile** button, and provide the details in the wizard that follows. The wizard displays the following sections. 
-<br />
 
-### Basic Information
-Use the following values in the **Basic Information** section. 
+Click on the **Next layer** button to add remaining core layers, Kubernetes and Network. 
 
-|**Field**|**Value**|
-|---|---|
-|Name|pack-tutorial-profile|
-|Version|`1.0.0`|
-|Description|Cluster profile as part of the pack tutorial.|
-|Type|Full|
-|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:true`|
-
-Click on **Next** to continue. 
-<br />
-
-### Cloud Type
-In the **Cloud Type** section, choose AWS as the infrastructure provider for this tutorial, and click on **Next** at the bottom to move on to the next section.   
-<br />
-
-<InfoBox>
-
-If you choose a different cloud service provider, the core infrastructure layers options, as outlined in the **Profile Layers** section below, will differ from this tutorial.
-
-</InfoBox>
-
-<br />
-
-### Profile Layers
-In the **Profile Layers** section, add the following core infrastructure layers if you have chosen the AWS cloud service provider. To deploy your resource to Azure or Google Cloud, use the core infrastructure layers outlined in [Cloud Service Provider Configurations](https://github.com/spectrocloud/tutorials/tree/main/terraform/pack-tf/README.md#cloud-service-provider-configurations).
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
-|OS|Public Repo|Ubuntu|`LTS__20.4.x`|
-|Kubernetes|Public Repo|Kubernetes|`1.24.x`|
+|Kubernetes|Public Repo|Palette Optimized K3S|`1.25.x`|
 |Network|Public Repo|Calico|`3.25.x`|
-|Storage|Public Repo|Amazon EBS CSI|`1.16.x`|
+
+
+As you add each layer, click on the **Next layer** button. After you add the **Network** layer, click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. 
+
+
+Next, click on the **Add Manifest** button to add the *Hello Universe* application manifest.  
+
+![A screenshot of the add Manifest button.](/tutorials/edge-native/clusters_edge_palette-canvos_add-manifest.png)
+
+Use the following values to add the manifest metadata.  
+
+|**Field** |**Value**|
+|---|---|
+|Layer name| hello-universe|
+|Layer values (Optional)|Leave default|
+|Install order (Optional)|Leave default|
+|Manifests|hello-universe|
+
+Entering `hello-universe` file name in the **Manifest** field will open a blank file in Palette's text editor. Copy the following manifest and paste it in Palette's text editor. The manifest below defines two Kubernetes objects:
+1. **Deployment**: 
+It pulls a public image, **ghcr.io/spectrocloud/hello-universe:1.0.12**,  and creates a ReplicaSet to bring up two pods running the `hello-universe` application.
+
+2. **Service**: It uses NodePort to expose the `hello-universe` application running on each Node at a random port between 30000-32767. 
 
 
 ```yaml
-system.uri: 'ttl.sh/{{ .spectro.system.clusterprofile.infra.name }}:k3s-{{ .spectro.system.clusterprofile.infra.version}}'
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-universe-service
+spec:
+  type: NodePort
+  selector:
+    app: hello-universe
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-universe-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-universe
+  template:
+    metadata:
+      labels:
+        app: hello-universe
+    spec:
+      containers:
+      - name: hello-universe  
+        image: ghcr.io/spectrocloud/hello-universe:1.0.12     # Static image 
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
 ```
 
 
-As you add each layer, click on the **Next layer** button. After you add the **Storage** layer, click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. You can select any layer to make further edits or change the version if desired. 
-
-Now you are ready to add the add-on layers. Click the **Add New Pack** button. 
-
-Add the Spectro Proxy pack to enable a reverse proxy to connect to the cluster's API. Adding this pack is *optional*, but it will help connect your local machine to the cluster's API for debugging. 
-Refer to the [Spectro Proxy](/integrations/frp/) guide for more details. 
-
-|**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
-|---|---|---|---|
-|Authentication | Public Repo| Spectro Proxy | `1.3.x`|
-
-Click on the **Confirm & Create** button to finish adding the Spectro Proxy pack. Also, add the following certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section to configure the Spectro Proxy pack.
-<br />
-
-```yaml
-certSANs:
-  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
-```
-<br />
-
-![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.png)
-
-<br />
-
-Next, add the following **Hello Universe** pack. This is the custom add-on pack you defined and pushed to the **private-pack-registry** earlier in this tutorial. 
-
-|**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
-|---|---|---|---|
-|App Services | private-pack-registry | Hello Universe | `1.0.x` |
+![A screenshot of Hello Universe application manifest.](/tutorials/edge-native/clusters_edge_palette-canvos_add-manifest-file.png)
 
 
-Click on the **Confirm & Create** button to finish adding the Hello Universe pack. 
+Click on the **Confirm & Create** button to finish adding the manifest. If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click **Next**. 
 
-
-If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click **Next**.    
-
-
-<br />
-
-![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.png)
-
-<br /> <br />
 
 
 ### Review
@@ -542,83 +623,151 @@ Review once more and click **Finish Configuration**  to create the cluster profi
 
 ## Deploy a Cluster
 From the **Profile** page,  click on the newly created cluster profile to view its details page. Palette displays all the layers and allows you to edit any of them. 
-
-Click the **Deploy** button to deploy a new cluster. The cluster deployment wizard will displays the following sections. 
 <br />
+
+![Screenshot of the Profile Layers success.](/tutorials/edge-native/clusters_edge_palette-canvos_profile-success.png)
+
+Click on the **Deploy** button and refer to the [Create an Edge Native Host Cluster](/clusters/edge/site-deployment/site-installation/cluster-deployment) guide to deploy a new Edge cluster. The cluster deployment wizard will display the following sections. 
 
 ### Basic Information
 Use the following values in the first section, **Basic Information**. 
 
 |**Field**|**Value**|
 |---|---|
-|Cluster name| pack-tutorial-cluster |
-|Description| Cluster as part of the pack tutorial.|
-|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:true`|
-|Cloud Account|spectro-cloud|
+|Cluster name| docs-tutorial-cluster |
+|Description| Cluster as part of the Edge tutorial.|
+|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:false`|
 
-Note that the AWS cloud account name in this tutorial example is **spectro-cloud**. If you used a different cloud account name, choose the name configured in your Palette's project settings. 
-
-Click **Next** to continue.    
-
+Click **Next** to continue.
 <br /> 
 
 ### Parameters
-The **Parameters** section allows you to change the profile configurations. For example, clicking on the **Hello Universe 1.0.x** layer allows you to configure the `registry`, `repository`, and `tag` parameters defined in the **values.yaml** file. 
-<br />
+The **Parameters** section allows you to change the profile configurations. For example, clicking on the **BYOS Edge OS 1.0.0** layer allows you to configure the `system.registry`, `system.repo`, and other available parameters. 
 
-![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.png)
-
-<br />
-
-Keep the default values and click **Next**.
-
+Keep the default values for all layers and click **Next**.
 <br />
 
 ### Cluster config
-In the **Cluster config** section, ensure the **Static Placement** field is unchecked. If checked, the **Static Placement** will deploy the cluster in an existing VPC, and you will need the [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) (ARNs) for the existing subnets, roles, and other resources. For this tutorial, we will use dynamic placement, where Palette creates a new VPC and all other resources needed for the cluster. 
-
-For the **Region** field, select the region of your choice. The tutorial example will deploy the cluster in the  **us-east-2** region. For the **SSH Key Pair Name** field, choose the SSH key pair name from the selected region. You must have an SSH key created already in the AWS region where you will deploy the cluster.
+Provide the Virtual IP (VIP) address for the host cluster to be used by the physical site during the cluster configuration process. You can optionally select an SSH key to remote into the host cluster and provide a Network Time Protocol (NTP) server list, if available, with you.  
 
 Click **Next** to continue.    
-
 <br />
 
 ### Nodes config
-In the **Nodes config** section, provide the details for the master and the worker pools. For this tutorial, you can use the following minimal configuration:
+In the **Nodes config** section, provide details for the master pool. 
 
-|**Field** | **Value for the master-pool**| **Value for the worker-pool**|
-|---| --- | ---|
-|Node pool name| master-pool | worker-pool |
-|Number of nodes in the pool| `1` | `1` |
-|Allow worker capability| Checked | Not applicable |
-|Enable Autoscaler | Not applicable | No |
-|Rolling update |  Not applicable | Expand First. <br /> Launch a new node first, then shut down the old one. |
+|**Field** | **Value for the master-pool**| 
+|---| --- | 
+|Node pool name| master-pool | 
+|Allow worker capability| Checked | 
+|Additional Labels (Optional) | None |
+|[Taints](/clusters/cluster-management/taints/)|Off|
+|Pool Configuration > Edge Hosts | Choose one or more registered Edge hosts. |
 
-Keep the **Cloud Configuration** the same for the master and worker pools.
+Similarly, provide details for the worker pool. 
 
-|**Field** | **Value**|
-|---| --- | ---|
-|Instance Type | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores are required for the master node. |
-|Availability zones | Choose any *one* availability zone.<br /> This tutorial example will deploy to the `us-east-2a` availability zone. | 
-|Disk size | 60 GiB | 
+|**Field** | **Value for the worker-pool**| 
+|---| --- | 
+|Node pool name| worker-pool | 
+|Additional Labels (Optional) | None |
+|Taints|Off|
+|Pool Configuration > Edge Hosts | Choose one or more registered Edge hosts. |
 
 Click **Next** to continue.    
 <br /> 
 
 ### Settings 
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding. Use the default values, and click on the **Validate** button.      
-
 <br /> 
 
 ### Review
-Review all configurations in this section. The **Review** page displays the cluster name, tags, cloud account name, node pools, layers, and an estimated hourly cost. If everything looks good, click on the **Finish Configuration** button to finish deploying the cluster. Deployment may take up to *20 minutes* to finish. 
+Review all configurations in this section. The **Review** page displays the cluster name, tags, VIP, node pools, and layers. If everything looks good, click on the **Finish Configuration** button to finish deploying the cluster. Deployment may take up to *20 minutes* to finish. 
 
 While deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**, and **Events**. 
-
 <br /> 
 
 
 # Validate
+In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the cluster Overview page and monitor cluster provisioning progress.  
+
+![Screenshot of the cluster health.]()
+
+
+When cluster status displays **Running** and **Healthy**, you can access the application from the exposed service URL with the port number displayed. For the Hello Universe application, one of the random port random port between 30000-32767 is exposed. Click on the port number to access the application.
+<br />
+
+<WarningBox>
+
+We recommend waiting to click on the service URL, as it takes one to three minutes for DNS to properly resolve the public NodePort URL. This prevents the browser from caching an unresolved DNS request.
+
+</WarningBox>
+
+You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in Palette. 
+
+You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it. 
+
+<br />
+
 # Cleanup
+Delete the cluster, cluster profile, and the Edge hosts. 
+
+The following steps will guide you in cleaning up your environment. Follow the steps for Palette if you used Palette to deploy the cluster. Use Terraform commands to delete the cluster if you used Terraform for deployment. 
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Palette" key="palette_ui_delete">
+
+<br />
+
+##  Delete the Cluster and Profile using Palette
+Navigate to the **Cluster** section in Palette's left **Main Menu**, and view the details page of the cluster. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the delete step. 
+
+The cluster status will turn to **Deleting**. Deletion takes up to 10 minutes.
+<br />
+
+
+After you delete the cluster, go ahead and delete the profile. From the left **Main Menu**, click **Profiles** and select the profile to delete. Choose the **Delete** option in the **three-dot Menu**. Wait for the resources to clean up and ensure they are successfully deleted. 
+<br />
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Terraform Code" key="terraform_ui_delete">
+
+<br />
+
+##  Delete the Cluster and Profile using Terraform
+If you've used Terraform to deploy the cluster, switch back to the tutorials container, and issue the following command from within the **/terraform/pack-tf** directory:
+<br />
+
+```bash
+terraform destroy -auto-approve
+```
+
+Wait for the resources to clean up. Deleting the Terraform resources may take up to 10 minutes. 
+<br />
+
+```bash
+# Output condensed for readability
+Destroy complete! Resources: 2 destroyed.
+```
+
+<br />
+
+</Tabs.TabPane>
+
+</Tabs>
+
+<br />
+
+To remove the container and the image from the local machine, issue the following commands:
+<br />
+
+```bash
+docker container rm --force tutorialContainer
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.3
+```
+
+<br /> 
 
 # Wrap-Up
