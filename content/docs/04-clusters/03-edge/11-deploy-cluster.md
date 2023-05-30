@@ -333,7 +333,7 @@ docker run --name tutorialContainer --interactive --tty --volume "${ISOFILEPATH}
 The command above will keep STDIN open, bind mount the directory containing your ISO file to the **/edge-native/vmware/packer/build** directory in the container, and 
 allocate a pseudo-TTY to open a bash session into the tutorials container. 
 
-## Create a Virtual Machine Template
+## Create a VM Template
 In the tutorials container bash session, define a new file, **.env**, to hold the environment variables to use later in the tutorial.
 <br />
 
@@ -456,13 +456,21 @@ Change to the **clone_vm_template/** directory.
 cd ../clone_vm_template/
 ```
 
-This directory contains a sample file, **setenv.sh.template**, that declares the GOVC environment variables for the target vCenter environment, the number of VMs to provision, a prefix string for the VM name, and the VM template name. 
+This directory contains the following files for GOVC utility. 
 
-Most of the GOVC environment variables point to the default environment variables you have defined in the **.env** file above. However, you must provide a value for the number of VMs to provision and a prefix string for the VM name. Use the following command to rename the **setenv.sh.template** to **setenv.sh**, and open this file in an editor to provide a value for `NO_OF_VMS` and `VM_PREFIX` variables. 
+```bash
+.
+├── delete-edge-host.sh
+├── deploy-edge-host.sh
+└── setenv.sh
+```
+You will use **deploy-edge-host.sh** and **delete-edge-host.sh** files to deploy and delete the VMs, respectively, in the later steps. The **setenv.sh** file declares the GOVC environment variables for the target vCenter environment, the number of VMs to provision, a prefix string for the VM name, and the VM template name. 
+
+Most of the GOVC environment variables point to the default environment variables you have defined in the **.env** file above. However, you must provide a value for the number of VMs to provision and a prefix string for the VM name. Use the following command to open **setenv.sh** file in an editor to provide a value for `NO_OF_VMS` and `VM_PREFIX` variables. 
 <br />
 
 ```bash
-mv setenv.sh.template setenv.sh && vi setenv.sh
+vi setenv.sh
 ```
 
 The value for the `NO_OF_VMS` variable is set to create three VMs by default. If you have limited resources, just one VM is sufficient to complete this tutorial. The value for the `VM_PREFIX` variable should be alphanumeric and lowercase. 
@@ -505,6 +513,7 @@ Getting UUID demo-1
 Edge Host ID   VM demo-1 : edge-97f2384233b498f6aa8dec90c3437c28
 ```
 The output on the terminal also displays the Edge host ID. VMs will use this host ID to auto-register themselves with Palette. 
+<br />
 
 <InfoBox>
 
@@ -512,8 +521,8 @@ Copy the Edge host ID for future reference and manual registration if the auto r
 
 </InfoBox>
 
-## Verify Host's Registeration
-After provisioning, if you have correctly embedded the registration token in the ISO image, VMs will automatically register themselves with Palette. 
+## Verify Host's Registration
+After provisioning, VMs will automatically register themselves with Palette, if you have correctly embedded the registration token in the ISO image.
 
 Log back into Palette, and navigate to the left **Main Menu** > **Clusters** > **Edge Hosts** tab. You should see the VMs registered with Palette automatically.
 
@@ -521,9 +530,13 @@ Log back into Palette, and navigate to the left **Main Menu** > **Clusters** > *
 
 <InfoBox>
 
-For any reason, if you do not see your Edge hosts registered with Palette automatically, you can register the hosts using the Edge host ID manually. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after issuing the `./deploy-edge-host.sh` command in one of the previous steps.
+If you do not see your Edge hosts registered with Palette automatically, you can register the hosts using the Edge host ID manually. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after issuing the `./deploy-edge-host.sh` command in one of the previous steps.
 
 </InfoBox>
+<br />
+
+# Deploy a Cluster
+After building the Edge native artifacts and provisioning VMs as Edge hosts, the next step is to create a cluster profile and deploy a cluster. 
 
 ## Create a Cluster Profile
 Switch to the **Default** project scope for creating a cluster profile.  
@@ -618,56 +631,57 @@ Use the following values to add the manifest metadata.
 |Layer name| hello-universe|
 |Layer values (Optional)|Leave default|
 |Install order (Optional)|Leave default|
-|Manifests|hello-universe|
+|Manifests|Add new manifest, and name it `hello-universe`|
 
 Entering `hello-universe` file name in the **Manifest** field will open a blank file in Palette's text editor. Copy the following manifest and paste it in Palette's text editor. The manifest below defines two Kubernetes objects:
 1. **Deployment**: 
 It pulls a public image, **ghcr.io/spectrocloud/hello-universe:1.0.12**,  and creates a ReplicaSet to bring up two pods running the `hello-universe` application.
 
+
 2. **Service**: It uses NodePort to expose the `hello-universe` application running on each Node at a random port between 30000-32767. 
+<br />
 
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-spec:
-  type: NodePort
-  selector:
-    app: hello-universe
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
+  ```yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: hello-universe-service
+  spec:
+    type: NodePort
+    selector:
       app: hello-universe
-  template:
-    metadata:
-      labels:
+    ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  ---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: hello-universe-deployment
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
         app: hello-universe
-    spec:
-      containers:
-      - name: hello-universe  
-        image: ghcr.io/spectrocloud/hello-universe:1.0.12     # Static image 
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-```
+    template:
+      metadata:
+        labels:
+          app: hello-universe
+      spec:
+        containers:
+        - name: hello-universe  
+          image: ghcr.io/spectrocloud/hello-universe:1.0.12     # Static image 
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8080
+  ```
 
 
-![A screenshot of Hello Universe application manifest.](/tutorials/edge-native/clusters_edge_palette-canvos_add-manifest-file.png)
+  ![A screenshot of Hello Universe application manifest.](/tutorials/edge-native/clusters_edge_palette-canvos_add-manifest-file.png)
 
 
-Click on the **Confirm & Create** button to finish adding the manifest. If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click **Next**. 
+Click on the **Confirm & Create** button to finish adding the manifest. If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click on the **Next** button. 
 
 
 
@@ -675,7 +689,7 @@ Click on the **Confirm & Create** button to finish adding the manifest. If there
 Review once more and click **Finish Configuration**  to create the cluster profile. 
 <br />
 
-## Deploy a Cluster
+## Create a Cluster
 From the **Profile** page,  click on the newly created cluster profile to view its details page. Palette displays all the layers and allows you to edit any of them. 
 <br />
 
@@ -716,9 +730,13 @@ In the **Nodes config** section, provide details for the master pool.
 |Allow worker capability| Checked | 
 |Additional Labels (Optional) | None |
 |[Taints](/clusters/cluster-management/taints/)|Off|
-|Pool Configuration > Edge Hosts | Choose one or more registered Edge hosts. |
+|Pool Configuration > Edge Hosts | Choose one or more registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
 
-Similarly, provide details for the worker pool. 
+
+![Screenshot of adding an Edge host to the master pool.](/tutorials/edge-native/clusters_edge_palette-canvos_add-master-node.png)
+
+
+Similarly, provide details for the worker pool, if you have Edge hosts remaining with you. Otherwise, remove the worker pool. Your master pool has the worker capability already. 
 
 |**Field** | **Value for the worker-pool**| 
 |---| --- | 
@@ -731,11 +749,11 @@ Click **Next** to continue.
 <br /> 
 
 ### Settings 
-The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding. Use the default values, and click on the **Validate** button.      
+The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, cluster role binding, and location. Use the default values, and click on the **Validate** button.      
 <br /> 
 
 ### Review
-Review all configurations in this section. The **Review** page displays the cluster name, tags, VIP, node pools, and layers. If everything looks good, click on the **Finish Configuration** button to finish deploying the cluster. Deployment may take up to *20 minutes* to finish. 
+Review all configurations in this section. The **Review** page displays the cluster name, tags, node pools, and layers. If everything looks good, click on the **Finish Configuration** button to finish deploying the cluster. Deployment may take up to *20 minutes* to finish. 
 
 While deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**, and **Events**. 
 <br /> 
@@ -744,10 +762,11 @@ While deployment is in progress, Palette displays the cluster status as **Provis
 # Validate
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the cluster Overview page and monitor cluster provisioning progress.  
 
-![Screenshot of the cluster health.]()
-
 
 When cluster status displays **Running** and **Healthy**, you can access the application from the exposed service URL with the port number displayed. For the Hello Universe application, one of the random port random port between 30000-32767 is exposed. Click on the port number to access the application.
+
+![Screenshot of highlighted NodePort to access the application.](/tutorials/edge-native/clusters_edge_palette-canvos_access-service.png)
+
 <br />
 
 <WarningBox>
@@ -756,7 +775,15 @@ We recommend waiting to click on the service URL, as it takes one to three minut
 
 </WarningBox>
 
+Clicking on the exposed NodePort will take you to the Hello Universe application. 
+
+
+![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge-native/clusters_edge_palette-canvos_hello-universe.png)
+
+
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in Palette. 
+
+![Screenshot of cluster metrics.](/tutorials/edge-native/clusters_edge_palette-canvos_metrics.png)
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it. 
 
@@ -775,13 +802,23 @@ The following steps will guide you in cleaning up your environment. Follow the s
 <br />
 
 ##  Delete the Cluster and Profile using Palette
-Navigate to the **Cluster** section in Palette's left **Main Menu**, and view the details page of the cluster. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the delete step. 
+To delete the cluster, view the details page of the cluster. Click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the delete step. 
+
+
+![Screenshot of deleting a cluster.](/tutorials/edge-native/clusters_edge_palette-canvos_delete-cluster.png)
+
 
 The cluster status will turn to **Deleting**. Deletion takes up to 10 minutes.
 <br />
 
 
-After you delete the cluster, go ahead and delete the profile. From the left **Main Menu**, click **Profiles** and select the profile to delete. Choose the **Delete** option in the **three-dot Menu**. Wait for the resources to clean up and ensure they are successfully deleted. 
+After you delete the cluster, go ahead and delete the profile. From the left **Main Menu**, click **Profiles** and select the profile to delete. Choose the **Delete** option in the **three-dot Menu**. 
+
+
+![Screenshot of deleting a cluster profile.](/tutorials/edge-native/clusters_edge_palette-canvos_delete-profile.png)
+
+
+Wait for the resources to clean up and ensure they are successfully deleted. 
 <br />
 
 </Tabs.TabPane>
@@ -813,13 +850,58 @@ Destroy complete! Resources: 2 destroyed.
 </Tabs>
 
 <br />
+To delete the Edge hosts, navigate back to the tutorials container environment. If you have closed the terminal session, you can reopen another bash session in the tutorials container using the following command. 
+<br />
 
-To remove the container and the image from the local machine, issue the following commands:
+```bash
+docker exec -it tutorialContainer bash
+```
+If your container is not active, you can reinstantiate the container using the following command. 
+<br />
+
+```bash
+docker start `docker ps -q -l` && docker attach `docker ps -q -l`
+```
+Source the environment varibales again so that the deletion script could read the necessary values. 
+<br />
+
+```bash
+source .env
+```
+
+Change to the **/edge-native/vmware/clone_vm_template** directory containing the **delete-edge-host.sh** script. 
+<br />
+
+```bash
+cd /edge-native/vmware/clone_vm_template
+```
+
+Execute the script to remove all VMs at once. 
+<br />
+
+```bash
+./delete-edge-host.sh
+```
+
+```bash
+# Output
+Cleaning Previous VMs on vSphere
+Getting UUID demo-1
+Deleted demo-1
+```
+
+Exit the container after deleting the VMs.
+<br />
+
+```bash
+exit
+```
+
+To remove the container and the image from the development environment, issue the following command.
 <br />
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.3
 ```
 
 <br /> 
