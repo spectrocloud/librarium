@@ -778,7 +778,7 @@ We recommend waiting to click on the service URL, as it takes one to three minut
 Clicking on the exposed NodePort will take you to the Hello Universe application. 
 
 
-![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge-native/clusters_edge_palette-canvos_hello-universe.png)
+![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge-native/clusters_edge_palette-canvos_hello-universe.png "#width=70%")
 
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in Palette. 
