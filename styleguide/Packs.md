@@ -1,8 +1,16 @@
 # Packs Layout
 
-All Spectro Cloud Packs docs are expected to have the same look and feel. The text and voice must adhere to the Spectro Cloud[ style guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide) for a universal look and feel. The packs doc layout must also feel familiar to the reader and follow the layout standard described on this page.
+All Spectro Cloud Packs docs are expected to have the same look and feel. The text and voice must adhere to the Spectro Cloud [style guide](https://github.com/rahulhazra97/Documentation-Guide/wiki/Spectro-Cloud-Style-Guide) for a universal look and feel. The packs doc layout must also feel familiar to the reader and follow the layout standard described on this page.
 
 A Packs doc is no different than a regular documentation page, except that it includes supported versions and a References section that links to external sources instead of a Resources section.
+
+# Table of Contents
+
+ [Markdown Layout](#markdown-layout)
+
+ [Section Breakdown](#section-breakdown)
+
+ [Examples](#examples)
 
 ## Markdown Layout
 

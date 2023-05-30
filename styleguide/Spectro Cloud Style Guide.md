@@ -320,14 +320,14 @@ Research proven layout choices to make your layout decision before developing yo
 
 We welcome all contributions towards docs and education. The following content layout formats will guide you when contributing to the Spectro Cloud documentation: 
 
-1. [Packs Layout](#packs-layout)
+1. [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout)
 
-Before you begin creating your own Packs page, we highly recommend reviewing the [Packs Layout](#packs-layout) page. Documenting Packs can be challenging due to their complex nature, involving multiple components and dependencies. However, this documentation is immensely valuable to users. It provides practical guidance, pre-configured solutions, and supported versions, saving time and streamlining deployments. Well-documented Packs enable users to simplify their workflows and maximize efficiency to deploy and manage infrastructure, applications, or services easily.
+Before you begin creating your own Packs page, we highly recommend reviewing the [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) page. Documenting Packs can be challenging due to their complex nature, involving multiple components and dependencies. However, this documentation is immensely valuable to users. It provides practical guidance, pre-configured solutions, and supported versions, saving time and streamlining deployments. Well-documented Packs enable users to simplify their workflows and maximize efficiency to deploy and manage infrastructure, applications, or services easily.
 
-The [Packs Layout](#packs-layout) page guides you in maintaining a consistent and user-friendly experience. Align your packs page seamlessly with the rest of the Spectro Cloud documentation to provide users with a familiar and intuitive experience.
+The [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) page guides you in maintaining a consistent and user-friendly experience. Align your packs page seamlessly with the rest of the Spectro Cloud documentation to provide users with a familiar and intuitive experience.
 
 
-2. [How to Layout](#how-to-layout) 
+2. [How to Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/How-to-Layout) 
 
 How-to documentation helps the user perform a particular task correctly. A correctly executed how-to guide,
 
@@ -339,11 +339,11 @@ How-to documentation helps the user perform a particular task correctly. A corre
 
 - Reduces time spent searching for task assistance.
 
-The [How-to Layout](#how-to-layout) page guides you to build how-to documentation that impacts. A how-to guide suggests a simple actionable strategy to build standardized internal processes to operate seamlessly and meet your project goals. How-tos create impact by making them easily discovered, producing applicable results, and allowing accessible user communication.
+The [How-to Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/How-to-Layout) page guides you to build how-to documentation that impacts. A how-to guide suggests a simple actionable strategy to build standardized internal processes to operate seamlessly and meet your project goals. How-tos create impact by making them easily discovered, producing applicable results, and allowing accessible user communication.
 
 As your organization grows and evolves, so do your how-tos. How-tos should be discoverable, i.e., create a centralized knowledge system that answers all questions. Set direct communication channels for users to provide comments and feedback to foster better user collaboration. 
 
-3. [Troubleshooting Layout](#troubleshooting-layout)
+3. [Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout)
 
 Troubleshooting is followed to tackle common work-related interruptions during uncertain problems. Problems can persist and hinder productivity, so users should have a comprehensive solution guide to refer to. 
 
@@ -351,13 +351,13 @@ A troubleshooting guide is a well-organized collection of guidelines that offer 
 
 Create sustainable troubleshooting documentation to solve problems. It eliminates reliance on memory, instils confidence, and builds trust with users. Structured documentation helps resolve problems effortlessly, even without prior knowledge. 
 
-Analyze device performance to diagnose problems effectively. Keep the process simple by opting for easy steps and basic shortcuts. Practice troubleshooting to enhance skills and make the guide more engaging. Utilize automation for quick and effortless guide creation. Learn how to create one for seamless operations on the[ Troubleshooting Layout](#troubleshooting-layout) page.
+Analyze device performance to diagnose problems effectively. Keep the process simple by opting for easy steps and basic shortcuts. Practice troubleshooting to enhance skills and make the guide more engaging. Utilize automation for quick and effortless guide creation. Learn how to create one for seamless operations on the[ Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout) page.
 
-4. [Tutorial Layout](#tutorial-layout) 
+4. [Tutorial Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Layout) 
 
 A tutorial guide is a crucial tool for creating practical tutorials. It acts as a roadmap, preventing errors and optimizing the user's learning experience. It provides clear, concise instructions or demonstrations to help users learn new skills or complete specific tasks. 
 
-By following a standardized tutorial template, you can ensure consistency, efficiency, and a professional image in your tutorial documents. Creating a tutorial plan and obtaining stakeholder approval is essential for alignment. Adhering to the tutorial plan process empowers you to deliver accurate, user-friendly, and impactful tutorials consistently. Learn how to create one for seamless operations on the [Tutorial Layout]((#tutorial-layout)) page.
+By following a standardized tutorial template, you can ensure consistency, efficiency, and a professional image in your tutorial documents. Creating a tutorial plan and obtaining stakeholder approval is essential for alignment. Adhering to the tutorial plan process empowers you to deliver accurate, user-friendly, and impactful tutorials consistently. Learn how to create one for seamless operations on the [Tutorial Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Layout) page.
 
 
 ## Language 

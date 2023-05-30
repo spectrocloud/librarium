@@ -1,4 +1,17 @@
+# Tutorial Layout
+
 To create an impactful tutorial guide, you must create a tutorial plan and obtain stakeholder approval for alignment. Adhere to the [Tutorial Plan](#tutorial-plan) section, and the [Tutorial Layout](#tutorial-layout) section to deliver accurate, user-friendly, and impactful tutorials consistently. 
+
+# Table of Contents
+
+ [Tutorial Plan](#tutorial-plan)
+
+ [Tutorial Layout](#tutorial-layout)
+
+ [Markdown Layout](#markdown_layout)
+
+ [Section Breakdown](#section-breakdown)
+
 
 ## Tutorial Plan
 
@@ -18,7 +31,7 @@ When you are ready for a review, tag the education team or notify the team by dr
 
 ## Tutorial Layout 
 
-All Spectro Cloud tutorials are expected to have the same look and feel. The tutorial text and voice must adhere to the Spectro Cloud[ style guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide) for a universal look and feel. The tutorial layout must also feel familiar to the reader; therefore, all tutorials must follow the layout standard described on this page.
+All Spectro Cloud tutorials are expected to have the same look and feel. The tutorial text and voice must adhere to the Spectro Cloud[ style guide](https://github.com/rahulhazra97/Documentation-Guide/wiki/Spectro-Cloud-Style-Guide) for a universal look and feel. The tutorial layout must also feel familiar to the reader; therefore, all tutorials must follow the layout standard described on this page.
 
 ## Markdown Layout
 
