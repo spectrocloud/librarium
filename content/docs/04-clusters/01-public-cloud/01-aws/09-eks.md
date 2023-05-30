@@ -84,7 +84,7 @@ Use the following steps to provision a new AWS EKS cluster:
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
     |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
-    |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
+    |**Public Access CIDR**: |This setting controls which IP addresse CIDR range can access the cluster. Leaving this setting blank will follow the provider default behavior, which may allow unrestricted access depending on your network configuration. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.| 
     |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](/clusters/public-cloud/aws/eks/#eksclustersecretsencryption) for more details.|
     |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
     
