@@ -1222,7 +1222,7 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 - [Cluster Profiles](/cluster-profiles)
 
 
-- [Palette Clusters](/clusters)
+- [Palette Clusters](/clusters) 
 
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
