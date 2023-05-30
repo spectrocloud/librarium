@@ -19,7 +19,7 @@ You can set up a login banner message that all users must acknowledge and accept
 
 <WarningBox>
 
-The login banner message is only accessible when users attempt to log in to Palette through the tenant URL. Using the default Palette SaaS login URL of `https://console.spectrocloud.com` will not display the login banner message. Users of self-hosted Palette use the login URL defined during the Palette installation. 
+The login banner message is only accessible when users attempt to log in to Palette through the tenant URL. Using the default Palette SaaS login URL of `https://console.spectrocloud.com` will not display the login banner message. Users of self-hosted Palette use the tenant URL defined during the Palette installation. 
 
 </WarningBox>
 
