@@ -41,6 +41,7 @@ To complete this tutorial, you will need the following items:
   uname -m
   ```
 
+
 * Minimum hardware configuration:
   - 4 CPU
   - 8 GB memory
@@ -202,7 +203,7 @@ EOF
 <br />
 
 ## Build Artifacts
-Issue the following command to execute the **earthly.sh** file to build the Edge artifacts. The `--PE_VERSION` option in the command below signifies the Palette Edge version to use. The current example uses the **v3.3.3** git tag.
+Issue the following command to execute the **earthly.sh** file to build the Edge artifacts. The `--PE_VERSION` option in the command below signifies the Palette Edge version to use. The current example uses **v3.3.3**.
 <br />
 
 ```bash
@@ -224,6 +225,12 @@ List the edge installer ISO image and checksum by issuing the following command 
 
 ```bash
 ls build/
+```
+
+```bash
+# Output
+palette-edge-installer.iso      
+palette-edge-installer.iso.sha256
 ```
 
 Export the path to the ISO file, the **build/** directory, in the `ISOFILEPATH` environment variable. Later in the tutorial, you will use this environment variable to mount the **build/** directory to a Docker container. 
@@ -261,6 +268,13 @@ docker push ttl.sh/ubuntu:k3s-1.25.2-v3.3.3-demo
 docker push ttl.sh/ubuntu:k3s-1.24.6-v3.3.3-demo
 ```
 
+```bash
+# Output condensed for readability
+3016c5078681: Pushed
+6515074984c6: Pushed
+k3s-1.25.2-v3.3.3-demo: digest: sha256:864c17f27d039e8930f42b1501d2c787877223e83f96f9f21b213f0ca9902169 size: 9286
+```
+
 <WarningBox>
 
 As a reminder, *ttl.sh* is a short-lived image registry. If you do not use these provider OS images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed.
@@ -278,7 +292,7 @@ Change to the **tutorials/** directory.
 <br />
 
 ```bash
-cd tutorials
+cd ../tutorials
 ```
 
 Use the command below to build the `tutorials` image. This Docker image is pre-configured with the necessary tools, [Packer](https://www.packer.io/) and [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc), for this tutorial. You will use Packer to generate a VM template and GOVC to communicate with VMWare vCenter. 
@@ -286,6 +300,12 @@ Use the command below to build the `tutorials` image. This Docker image is pre-c
 
 ```bash
 docker build --build-arg PALETTE_VERSION=3.3.0 --build-arg PALETTE_CLI_VERSION=3.3.0 -t tutorials .
+```
+
+```bash
+# Output condensed for readability
+Successfully built c1f605f04e85
+Successfully tagged tutorials:latest
 ```
 
 Next, mount the directory containing your ISO file while provisioning a container from the `tutorials` Docker image you created above. Recall that the path to the directory containing your ISO file is stored in the `ISOFILEPATH` environment variable. 
@@ -359,21 +379,55 @@ After declaring the environment variables, change to the **packer/** directory.
 ```bash
 cd edge-native/vmware/packer/
 ```
-This directory has a sample file, **vsphere.hcl.template**, containing the VM template name, VM configuration, and ISO file name to generate the VM template. Rename the **vsphere.hcl.template** to **vsphere.hcl** and review its content.
+This directory has the following files required for Packer build.  
 <br />
 
 ```bash
-mv vsphere.hcl.template vsphere.hcl
-cat vsphere.hcl
+.
+├── build
+│   ├── palette-edge-installer.iso
+│   └── palette-edge-installer.iso.sha256
+├── build.pkr.hcl
+└── vsphere.hcl
 ```
 
-Packer uses the environment variables you have defined in the **.env** file above. If your target environment differs from what you have already defined in the **.env** file, you can redefine those variables in the **vsphere.hcl** file again.
+Packer uses the environment variables you have defined in the **.env** file above. If your target environment differs from what you have already defined in the **.env** file, you can redefine those variables in the **vsphere.hcl** file again. Below is the default file content. It contains the VM template name, VM configuration, and ISO file name from the previous steps. 
 
-After reviewing and verifying the details in the **vsphere.hcl** file, use the following command to create a VM template using Packer.
+Review **vsphere.hcl** file content.
 <br />
 
 ```bash
-packer build --var-file=vsphere.hcl build.pkr.hcl
+# Virtual Machine Settings
+########### DO NOT EDIT #################
+# VM Template Name
+vm_name          = "palette-edge-template"
+
+# VM Settings
+vm_guest_os_type        = "ubuntu64Guest"
+vm_version              = 14
+vm_firmware             = "bios"
+vm_cdrom_type           = "sata"
+vm_cpu_sockets          = 4
+vm_cpu_cores            = 1
+vm_mem_size             = 8192
+vm_disk_size            = 51200
+thin_provision          = true
+disk_eagerly_scrub      = false
+vm_disk_controller_type = ["pvscsi"]
+vm_network_card         = "vmxnet3"
+vm_boot_wait            = "5s"
+
+
+# ISO Objects
+iso                 = "build/palette-edge-installer.iso"
+iso_checksum        = "build/palette-edge-installer.iso.sha256"
+```
+
+After reviewing and verifying the details in the **vsphere.hcl** file, use the following command to create a VM template using Packer. In this command, `--var-file` option is used to input the file containing the variable, and `-force` flag to destroy the existing template, if any. 
+<br />
+
+```bash
+packer build -force --var-file=vsphere.hcl build.pkr.hcl
 ```
 
 The build process can take up to 7-10 minutes to finish depending on your machine's and network configuration. After the build process is successful, it will create a VM template in the VMWare vCenter data store. 
