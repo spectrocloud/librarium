@@ -31,7 +31,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 ### Features
 
-- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels.
+- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels. Refer to the [Login Banner](/tenant-settings/login-banner) reference page to learn more.
 
 
 - You can now access a customized Amazon Machine Image (AMI) in Palette for Amazon Elastic Kubernetes Service (Amazon EKS) with support for AWS Launch Template. This allows you to personalize your EKS nodes and EBS root volumes by creating your own custom AMI.

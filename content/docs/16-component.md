@@ -130,8 +130,6 @@ This page lists the version details of various Palette components and their resp
 
 - Kubernetes: Refer to the Kubernetes [pack documentation](/integrations/kubernetes).
 
-- Kubernetes EKS: Refer to the Kubernetes EKS [pack documentation](/integrations/EKS-D). 
-
 # Operating System Layer Versions
 
 |Operating System |Versions|
