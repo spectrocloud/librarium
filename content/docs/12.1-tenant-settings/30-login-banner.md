@@ -12,7 +12,7 @@ import WarningBox from 'shared/components/WarningBox';
 
 # Overview
 
-You can set up a login banner message that all users must acknowledge and accept before they log in to the Palette. The message is limited to 1300 characters, and only plain text is supported.
+You can set up a login banner message that all users must acknowledge and accept before they log in to Palette. The message is limited to 1300 characters, and only plain text is supported.
 
 <br />
 
