@@ -88,7 +88,7 @@ The following items are optional and not required but may apply to your use case
 
 ## Validate
 
-You can validate the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
+You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
 </Tabs.TabPane>
 
@@ -98,12 +98,6 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 
 <br />
 
-<InfoBox>
-
-
-If you generate an OVF template and want to pre-load a content bundle, you must create a custom installer ISO. Refer to the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create a custom installer image.
-
-</InfoBox>
 
 ## Prerequisites
 
@@ -121,10 +115,12 @@ If you generate an OVF template and want to pre-load a content bundle, you must 
 1. Log in to vCenter Server by Using the vSphere Client.
 
 
-2. Prepare a build server by launching an Ubuntu 20+ VM in your VMware environment.
+2. Prepare a build server by launching a VM with Ubuntu version 20.04 or greater in your VMware environment.
 
 
 3. Issue the following commands to prepare your server for VMDK creation.
+
+  <br />
 
   ```shell
   apt update
@@ -143,11 +139,15 @@ If you generate an OVF template and want to pre-load a content bundle, you must 
 
   If you need a graphical user interface (GUI), add `x11-apps` to the `apt install` command. 
   
+  <br />
+
   ```shell
   apt install x11-apps
   ```
 
 4. You can add additional packages for content creation, compression, and preparing your workspace.
+
+  <br />
 
   ```shell
   curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$( uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
@@ -197,6 +197,8 @@ If you generate an OVF template and want to pre-load a content bundle, you must 
 
   If you are using test or development environments, you may need to enable the following option. This environment variable is not recommended for production environments.
 
+  <br />
+
   ```shell
   export GOVC_INSECURE=1
   ```
@@ -245,7 +247,7 @@ You can ship this OVF template along with the Edge host to the physical site. Us
 
 ## Validate
 
-You can validate the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
+You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
 </Tabs.TabPane>
 
