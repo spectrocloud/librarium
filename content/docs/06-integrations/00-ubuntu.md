@@ -9,76 +9,76 @@ logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a72
 ---
 
 import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
 import Tabs from 'shared/components/ui/Tabs';
 
 
 # Ubuntu Operating System
 
-Ubuntu is a Linux distribution, based on Debian and composed mostly of free and open-source software. It is one of the most popular operating systems across multiple public cloud platforms.
+[Ubuntu](https://ubuntu.com) is an open-source operating system based on the Linux kernel. Developed by Canonical Ltd., Ubuntu is a popular choice for desktops, servers, and cloud environments due to its ease of use, robustness, and versatility.
 
-Palette supports the following Ubuntu versions to run clusters at scale.
-<br />
+Boasting a comprehensive package system, Ubuntu provides a wealth of pre-compiled software directly accessible for installation. With its regular release cycle, Ubuntu ensures updated software and security patches, making it a secure and reliable choice for various use cases.
+
+In addition to its stability, Ubuntu's community support, extensive documentation, and commitment to free software principles make it a widely favored choice among Linux distributions. 
+
+You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when creating a [cluster profile](/cluster-profiles).
+
+
+# Version Supported
+
 <br />
 
-## Version Supported
-
-<br />
-<br />
 
 <Tabs>
-<Tabs.TabPane tab="LTS__20.4.x" key="LTS__20.4.x">
+<Tabs.TabPane tab="22.04.x" key="22.04.x">
 
-**Ubuntu LTS__20.04**
+
+## Prerequisites
+
+- A minimum of 4 CPU and 4GB Memory
+
+
+
+- You can use Ubuntu with a supported Kubernetes version. Kubernetes dependencies as listed in the table.
+
+ |Kubernetes Version | Supports Kubernetes |
+|------------|----------------------------|
+1.26    | ✅                         |
+1.25     | ✅                         |
+1.24      | ❌                         |
+
+
+
+## Usage
+
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="20.04.x" key="20.04.x">
+
+
+- A minimum of 4 CPU and 4GB Memory
+
+
+
+- You can use Ubuntu with a supported Kubernetes version. Kubernetes dependencies as listed in the table.
+
+ |Kubernetes Version | Supports Kubernetes |
+|------------|----------------------------|
+1.26    | ❌                          |
+1.25     | ❌                         |
+1.24      | ✅                        |
+1.23     | ✅                        |
 
 <br />
-<br />
-
-## Ubuntu 20.4.x to Kubernetes Dependency Matrix
-
-| **Ubuntu Version** | **Kubernetes** |
-| ------------------ | -------------- |
-| **LTS__20.04**     | 1.23.4         |
-|                    | 1.22.7         |
-|                    | 1.21.10        |
 
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="LTS__18.4.x" key="LTS__18.4.x">
+<Tabs.TabPane tab="Deprecated" key="deprecated">
 
-**Ubuntu LTS__18.04**
 
-<br />
-<br />
+All versions less than v20.04.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
-## Ubuntu 18.4.x to Kubernetes Dependency Matrix
-
-| **Ubuntu Version** | **Kubernetes** |
-| ------------------ | -------------- |
-| **LTS__18.04**     | 1.21.10        |
-|                    | 1.21.9         |
-|                    | 1.20.14        |
-|                    | 1.20.12        |
-|                    | 1.19.16        |
-|                    | 1.19.15        |
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="LTS-HWE__18.4.x" key="LTS-HWE__18.4.x">
-
-**Ubuntu LTS-HWE__18.04**
-
-<br />
-<br />
-
-## Ubuntu 18.4.x to Kubernetes Dependency Matrix
-
-| **Ubuntu Version** | **Kubernetes** |
-| ------------------ | -------------- |
-| **LTS-HWE__18.04** | 1.21.10        |
-|                    | 1.21.9         |
-|                    | 1.20.14        |
-|                    | 1.20.12        |
-|                    | 1.19.16        |
-|                    | 1.19.15        |
 </Tabs.TabPane>
 </Tabs>
 
@@ -195,13 +195,5 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 
 # References
 
-[Ubuntu 18.04.6 LTS (Bionic Beaver)](https://releases.ubuntu.com/18.04/)
 
-
-[Ubuntu 20.04.4 LTS (Focal Fossa)](https://releases.ubuntu.com/focal/)
-
-
-[Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage)
-
-
-[Common Criteria for Ubuntu](https://ubuntu.com/security/certifications/docs/16-18/cc)
+- [Ubuntu Documentation](https://docs.ubuntu.com)
