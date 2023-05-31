@@ -133,30 +133,26 @@ We provide add-on pack updates as follows:
 ## Packs Deprecation
 
 
-We deprecate and remove packs when a more stable version of the pack is available or when the underlying technology becomes obsolete.
-Below are the stages of deprecation we adhere to.
+<!-- We deprecate and remove packs when a more stable version of the pack is available or when the underlying technology becomes obsolete. -->
+
+<!-- Below are the stages of deprecation we adhere to. -->
+
+We deprecate and remove packs when a more stable version of the pack is available or when the underlying technology becomes obsolete. We deprecate a pack six months before deleting it. Post deprecation, you will still be able to create new cluster profiles using the pack and deploy clusters that use profiles containing the pack. Our Release Notes announce when a pack is deprecated and a replacement pack is available.
+
 
 <br />
 
-<!-- - **Deprecated**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack. -->
-
-- **Deprecated**: Deprecated packs are documented in the Release Notes. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
-
-  <br />
+<!-- - **Deprecated**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
 
   The pack remains in *Deprecated* state for three months before it moves to *Disabled* state.
 
-<!-- - **Disabled**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to use a newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the pack. -->
-
-- **Disabled**: You can still deploy new clusters using existing profiles that contain the pack.
-
-  <br />
+- **Disabled**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to use a newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the pack.
 
   The pack remains in *Disabled* state for three months before it is deleted.
 
-<!-- - **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. Palette displays a message informing you to use a newer version of the pack. Existing clusters are not disturbed and will continue to be functional. -->
+- **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. Palette displays a message informing you to use a newer version of the pack. Existing clusters are not disturbed and will continue to be functional.
 
-- **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. You must use a newer version of the pack. Existing clusters that use the pack are not disturbed and will continue to be functional.
+- **Deleted**: When a pack is deleted, you will not be able to create new cluster profiles that use it or launch new clusters with existing profiles that contain the pack. You must use a newer version of the pack. Existing clusters that use the pack are not disturbed and will continue to be functional. 2 -->
 
 <InfoBox>
 
@@ -174,10 +170,6 @@ A minor Kubernetes version is deprecated in Palette when the Kubernetes communit
 
 Palette supports a minor version of CNI, CSI, and add-on packs until two newer versions are available. At that time, packs in these categories are deprecated.
 
-
-<br />
-
-<br />
 
 <br />
 
