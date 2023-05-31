@@ -26,6 +26,7 @@ const LoadableComponent = Loadable({
 
 /* eslint-disable react/jsx-key */
 const CodeBlock = ({ children: exampleCode, ...props }) => {
+  const lineHighlightDefaultColor = '#666666'
   const language = props?.className?.split("language-")?.[1] || "json";
   if (props["react-live"]) {
     return <LoadableComponent code={exampleCode} />;
@@ -35,8 +36,9 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
     if (props.coloredLines) {
       const iterations = props.coloredLines.split(",");
       iterations.forEach((iteration) => {
-        const [range, color] = iteration.split("|");
-        coloredIntervals[range] = color;
+        const range = iteration.split("|")[0];
+        // Always set color to #666666, regardless of whether "|" exists. This is to ensure consitency.
+        coloredIntervals[range] = lineHighlightDefaultColor;
       });
     }
 
