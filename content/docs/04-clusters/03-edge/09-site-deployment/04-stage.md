@@ -63,7 +63,7 @@ The following items are optional and not required but may apply to your use case
 - USB disk that contains a user data ISO. This is applicable in [multiple user data](/clusters/edge/edgeforge-workflow/prepare-user-data) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
 
 
-- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
+- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
 
 
 

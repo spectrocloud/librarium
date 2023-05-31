@@ -40,7 +40,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 ## Prerequisites
 
-- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide for details.
+- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide for details.
 
 
 ## Enablement
