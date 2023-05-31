@@ -527,6 +527,9 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 
 # Terraform
 
+
+You can reference Kubernetes in Terraform with the following code snippet.
+
 ```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"

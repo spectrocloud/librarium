@@ -51,43 +51,10 @@ You can use Ubuntu as the base Operating System (OS) when deploying a host clust
 
 ## Usage
 
+You can customize the Ubuntu OS pack and take advantage of the [cloud-init](https://cloud-init.io/) hooks to help you achieve additional customization.
 
+You can include custom files to be copied over to the nodes and execute a list of commands before or after kubeadm is initialized.
 
-</Tabs.TabPane>
-<Tabs.TabPane tab="20.04.x" key="20.04.x">
-
-
-- A minimum of 4 CPU and 4GB Memory
-
-
-
-- You can use Ubuntu with a supported Kubernetes version. Kubernetes dependencies as listed in the table.
-
- |Kubernetes Version | Supports Kubernetes |
-|------------|----------------------------|
-1.26    | ❌                          |
-1.25     | ❌                         |
-1.24      | ✅                        |
-1.23     | ✅                        |
-
-<br />
-
-
-</Tabs.TabPane>
-<Tabs.TabPane tab="Deprecated" key="deprecated">
-
-
-All versions less than v20.04.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
-
-</Tabs.TabPane>
-</Tabs>
-
-
-## Customize Your Image File
-
-Spectro Golden images include most of the hardening standards recommended by CIS benchmarking v1.5. You can include custom files to be copied over to the nodes and/or execute the list of commands before or after `kubeadm init`/`join` is executed.
-
-<br />
 <br />
 
 ```yaml
@@ -191,6 +158,178 @@ For more information see the [Ubuntu Advantage for Infrastructure](https://ubunt
 | **CC-EAL** | enable <br /> <br /> <br /> <br /> <br /> disable | After the completion of a Common Criteria (CC) security evaluation, a grade is given <br /> indicating the level the system was tested. Common Criteria evaluated <br /> configuration is currently available for Ubuntu 16.04.4 LTS (Server) and <br /> Ubuntu 18.04.4 LTS (Server). The option shows as disabled for Ubuntu 20 & 20+. <br /> <br /> Do not install the CC artifacts. |
 |||||
 | **CIS**       | enable <br /> <br /> <br /> disable | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with <br /> certified content based off of the published CIS benchmarks. <br /> <br /> Do not access OpenSCAP-based tooling.|
+
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="20.04.x" key="20.04.x">
+
+
+- A minimum of 4 CPU and 4GB Memory
+
+
+
+- You can use Ubuntu with a supported Kubernetes version. Kubernetes dependencies as listed in the table.
+
+ |Kubernetes Version | Supports Kubernetes |
+|------------|----------------------------|
+1.26    | ❌                          |
+1.25     | ❌                         |
+1.24      | ✅                        |
+1.23     | ✅                        |
+
+<br />
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Deprecated" key="deprecated">
+
+
+All versions less than v20.04.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+
+</Tabs.TabPane>
+</Tabs>
+
+
+# Terraform
+
+You can reference Ubuntu in Terraform with the following code snippet.
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="Edge" key="edge">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "edge-native-ubuntu"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="MaaS" key="mass">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-maas"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="vSphere" key="vSphere">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-vsphere"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="OpenStack" key="open-stack">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-openstack"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Cox Edge" key="cox-edge">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-coxedge"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="AWS" key="aws">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-aws"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="Azure" key="azure">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-azure"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="GCP" key="gcp">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "ubuntu" {
+  name    = "ubuntu-gcp"
+  version = "22.04"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+</Tabs>
+
+
+
 
 
 # References
