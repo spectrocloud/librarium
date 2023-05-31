@@ -54,7 +54,7 @@ The login banner message is only accessible when users attempt to log in to Pale
 
   <br />
 
-6. Select **Save Messagge** to save your changes.
+6. Select **Save Message** to save your changes.
 
 <br />
 
