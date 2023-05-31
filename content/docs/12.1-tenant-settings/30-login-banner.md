@@ -35,7 +35,7 @@ The login banner message is only accessible when users attempt to log in to Pale
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Navigate to left **Main Menu** and select **Tenant Settings**.
+2. Navigate to the left **Main Menu** and select **Tenant Settings**.
 
 
 3. Next, click on **Platform Settings** from the **Tenant Settings Menu**.
