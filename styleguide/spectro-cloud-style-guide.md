@@ -10,9 +10,11 @@ This document is by the Spectro Cloud Documentation Team of writers chartered to
 
  [About this guide](#about-this-guide)
 
- - [SpectroCloud Style and Voice](#spectrocloud-style-and-voice)
+[SpectroCloud Style and Voice](#spectrocloud-style-and-voice)
  - [Simplified English](#simplified-english)
  - [SpectroCloud Voice](#spectrocloud-voice)
+ - [Active voice](#active-voice)
+ - [Passive voice](#passive-voice)
 
 [Accessibility and Inclusion](#accessibility-and-inclusion)
 
@@ -34,12 +36,9 @@ This document is by the Spectro Cloud Documentation Team of writers chartered to
 - [InfoBox](#infobox)
 - [Future features](#future-features)
 
-[Content Layout](#content-layout)
-
 [Language](#language)
 
 - [Nouns and Pronouns](#nouns-and-pronouns)
-- [Capitalization](#capitalization)
 - [Prepositions](#prepositions)
 - [Present tense](#present-tense)
 - [Person](#person)
@@ -48,19 +47,13 @@ This document is by the Spectro Cloud Documentation Team of writers chartered to
 
 - [Cross-references](#cross-references)
 - [External URLs](#external-urls)
-- [Image URLs](#image-urls)
+- [Slash](#slash)
 
 [Punctuation and Grammar](#punctuation-and-grammar)
 
-- [Voice](#voice)
-- [Active voice](#active-voice)
-- [Passive voice](#passive-voice)
+- [Capitalization](#capitalization)
 - [Period, Exclamation Mark, and Question Mark](#period-exclamation-mark-and-question-mark)
 - [Colon and Semicolon](#colon-and-semicolon)
-- [Slash](#slash)
-- [Parentheses and Brackets](#parentheses-and-brackets)
-- [Apostrophe](#apostrophe)
-- [Hyphen (-) ](#hyphen)
 
 [UI Elements (naming)](#ui-elements-naming)
 
@@ -69,22 +62,17 @@ This document is by the Spectro Cloud Documentation Team of writers chartered to
 - [Parameters](#parameters)
 
 
-
-
-
-
-
 ## About this guide
 
-The Spectro Cloud style guide is designed to guide you when creating written content for Palette users.  We want to ensure all our written communication feels and reads as one voice. To create the reading experience as a single voice, all written content must follow the following guidelines.
+The Spectro Cloud style guide is designed to guide you to create focused, clean and impactful Spectro Cloud content the best way you can. Everyone across Spectro Cloud can use this guide to help reflect our values in their content’s approach and tone. 
 
 ### SpectroCloud Style and Voice
 
-Our voices reflect what we say and how we say it. We believe in clear, concise, and easy-to-understand communication in our documentation.
+Our brand style and voice reflect what we say and how we say it. We believe in simple, to-the-point, and friendly communication in our documentation.
 
 ### Simplified English
 
-Always use simple English in written material unless this guide explicitly states otherwise.
+Use simple English in Spectro Cloud material unless explicitly stated otherwise in this guide.
 
 
 More importantly, simple language helps the reader retain information and more readily understand concepts. Feel free to review the [simplified English](https://www.simplifiedenglish.net/simplified-english/) resource to understand better how simplified language improves technical documentation.
@@ -95,10 +83,56 @@ More importantly, simple language helps the reader retain information and more r
 | Choose a node to be the cluster master node.                              | Designate a node to be the cluster master node.                                   |
 | Drain the node before a version upgrade.                                  | It is essential to drain the node prior to a version upgrade.                     |
 
+### SpectroCloud Voice
+
+Write in a simple voice. We explain our process and actions with simple messages and to the point. We want our Spectro Cloud content to be:
+
+- Simple: For all users to understand it. 
+
+- Focused and concise: For all users to be encouraged to interact with it.
+
+- Friendly and accessible: For all users to engage with it. 
+
+Here are some tips to implement in your content: 
+
+- Break down complex concepts into concise, bite-size content.
+
+- Use a conversational tone to create more engaging content.
+
+- Address the user as “you” to personalize the content.
+
+- Include practical tips and actionable information to build trust.
+
+- Create content that is needed at the time. 
+
+
+### Active voice
+
+Use the active voice whenever possible. The active voice is usually more direct and vigorous than the passive. When you write a sentence in the active voice, it is also usually shorter than in the passive voice.
+Address the user when creating text content. Use the noun, you. Use, we, when providing the user with recommendations. We want to take ownership of our guidance, so avoid hiding using “it is recommended.”
+
+| Good  ✅                                                              | Bad ❌                                                             |
+|-------------------------------------------------------------------|-----------------------------------------------------------------|
+| Use the kubectl cli to create a namespace titled “mgmt”.                                | The Kubectl CLI can be used to create namespaces titled “mgmt”                         |
+| Prior to upgrading, ensure you have carefully reviewed the release notes for deprecation notices.                          | Release notes should be carefully verified for deprecation notices prior to an upgrade.                                         |
+|We recommended deploying Palette Enterprise in a highly-available configuration of at least three nodes.                           | It is recommended to deploy Palette Enterprise in a highly-available configuration of at least three nodes.                          |
+
+### Passive voice
+
+
+Passive voice is a good fit when the agent or user performs an obvious, unimportant, or unknown action. Passive voice can also be used when you wish to postpone mentioning the agent until the last part of the sentence or avoid mentioning the agent. The passive voice is effective in these situations because it highlights the action and what is acted upon rather than the agent acting.
+
+| Good  ✅                                                              | Bad ❌                                                             |
+|-------------------------------------------------------------------|-----------------------------------------------------------------|
+| The dispatcher is notifying police that three prisoners have escaped.                               | Police are being notified that three prisoners have escaped.                        |
+| Surgeons successfully performed a new experimental liver-transplant operation yesterday.                         | A new experimental liver-transplant operation was performed successfully yesterday.                                         |
+|In this tutorial, you learned how Palette allows operators to manage Kubernetes environments easily.                           | The tutorial explained how Pallete can be used easily to manage Kubernetes environments.                        |
+
+
 
 ## Accessibility and Inclusion
 
-This section overviews the accessibility and inclusion guidelines.
+SpectroCloud content is built for people. This section overviews the accessibility and inclusion guidelines that matter when creating content. 
 
 ### Diverse and Inclusive 
 
@@ -112,7 +146,7 @@ Try to use diverse names, ages, and locations in examples. As a U.S.-based compa
 ### Simplicity Assumption
 
 
-Avoid injecting assumptions into the text. Readers find it frustrating to read the documentation that states an action or set of actions is easy. Show compassion to the reader and make it “easy” by providing clear and concise guidance. Omit the subjective terms.
+Our technology and workflows are complicated. Yes, our product improves the experience and greatly reduces the challenges encountered with Kubernetes. However, at the end of the day, these are complicated workflows. Avoid injecting assumptions into the text. Readers find it frustrating to read the documentation that states an action or set of actions is easy. Show compassion to the reader and make it “easy” by providing clear and concise guidance. Omit the subjective terms.
 
 | Good  ✅                                                               | Bad ❌                                                               |
 |------------------------------------------------------------------------------|------------------------------------------------------------------------------|
@@ -140,14 +174,14 @@ Don't use ableist language. This avoids biases and harm when discussing disabili
 
 ## Content Format
 
-This section outlines the guidelines for how to structure content and how to format the content properly. 
+Your content format defines how you translate the brand style and voice in your content. Create responsive content assuming your content can be refigured based on the user's device. This section outlines the guidelines to help you structure your content and follow a clean formatting style theme. 
 
 ### Headings
 
 
 The heading styles referenced are as follows:
 
-Avoid using an acronym for the first time in a title or heading unless it is a keyword you need to place in the title or heading for SEO. If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelled-out term) in the following body text. Aim for descriptive headings and titles to help users navigate the page. From a user perspective, navigating between pages and sections of a page is simpler if the headings and titles are unique.
+Avoid using an acronym for the first time in a title or heading unless it is a keyword you need to place in the title or heading for SEO. If the first use of the acronym is in a title or heading, introduce the acronym (in parentheses, following the spelt-out term) in the following body text. Aim for descriptive headings and titles to help users navigate the page. From a user perspective, Jumping between pages and sections of a page is easier if the headings and titles are unique.
 
 - If the heading is more in line with a task, start with the plain form of the task’s base form.
 
@@ -181,7 +215,7 @@ Use title case for headings. Below are some helpful tips.
 
 ### Numbers
 
-In the text, spell out single-digit numbers (zero through nine) and use numerals for 10 or greater.
+In the text, spell out single-digit numbers (zero through nine) and use numerals for 10 or greater. The exception is when an action is unimportant, unknown, or hard to identify.
 
 | Good  ✅                                                              | Bad ❌                                                             |
 |-------------------------------------------------------------------|-----------------------------------------------------------------|
@@ -192,7 +226,7 @@ In the text, spell out single-digit numbers (zero through nine) and use numerals
 
 ### Tables
 
-Tables make complex information easier to understand by presenting it more clearly and in a structured manner.
+Tables make complex information easier to understand by presenting it clearly.
 
 All table headings should be in bold.
 
@@ -204,23 +238,21 @@ All table headings should be in bold.
 | Collections of things with two or more attributes| Event dates with times and locations.|
 |  Differentiation                               | A table can often display differantion easier than it would be to use words. |
 
-### Documentation UI Components
+### UI Components
 
 
-For a list of available Markdown UI components, refer to the [Librarium README](https://github.com/spectrocloud/librarium#readme).
+For a list of available UI components refer to the documentation’s repository README.
 Avoid the following behaviors when writing documentation content.
 
 | Component                 | Behavior                                                                                                                         |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Tooltip                   | Avoid using tooltips inline with the text. The recommendation is to use an info box if it makes sense or explain the concept. Alternatively, if the definition is available in the glossary page then link to the definition. |
-| InfoBox/WarningBox  | Avoid overusing info boxes and warning boxes. They have the potential to distract the reader and generate a sense of information overload. Use them sparingly. |
+| Info box and warning box  | Avoid overusing info boxes and warning boxes. They have the potential to distract the reader and generate a sense of information overload. Use them sparingly. |
 
 ### Resources list
 
 
-List links to other documents and guides in a bullet list in the last section of your document. The title is a Level one heading or `#` in markdown. Include two lines between each item.
-
-Example.
+List links to other documents and guides in a bullet list in the last section of your document. The title is a Level 1 heading. Include two lines between each item.
 
 **# Resources** 
 
@@ -246,22 +278,7 @@ Example.
 ### Metadata 
 
 
-All documentation pages have a frontmatter section. The frontmatter controls the behavior of the page, but it's also used to initialize Search Engine Optimization (SEO) properties such as the title, description, and more. 
-
-> Keep each description shorter than 180 characters. 
-
-
-
-The following front matter attributes are available.
-
-| attribute       | type    | description                                                                                                 |
-| --------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| title           | string  | used as the label for navigation                                                                            |
-| metaTitle       | string  | will appear on the browser window / tab as the title                                                        |
-| metaDescription | string  | the text to display when a page is shared in social media platforms                                         |
-| icon            | string  | one of icons from https://fontawesome.com/icons?d=gallery                                                   |
-| hideToC         | boolean | setting this to `false` will hide the page from the navigation                                              |
-| fullWidth       | boolean | setting this to `false` this can se set to use the full width of the page and there is no table of contents |
+End the metaDescription with a period.
 
 ```
 title: "Migrate Cluster to Enterprise Mode"
@@ -274,7 +291,7 @@ metaDescription: "Migrate Cluster to Enterprise Mode."
 ### Directional Language 
 
 
-Avoid directing the user to a previous part of the document. Ideally, the user should be directed to content following the text. By avoiding backtracking, or forcing the reader to scroll back, you improve the user experience.
+Avoid directing the user to previous parts of the document, if possible. Ideally, the user should be directed to content following the text. By avoiding forcing the reader to scroll back, you improve the user experience.
 
 | Good  ✅                                                         |  Bad ❌                                                              |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -282,7 +299,7 @@ Avoid directing the user to a previous part of the document. Ideally, the user s
 
 ### Infobox 
 
-Use the info box to help users save an extra step of finding related information. Include relevant details directly alongside your content to add clarity. Remember, the goal is to conveniently present users with all necessary information within the infobox, minimizing the need to navigate back and forth between different sections. Useful content that is good to know is a great candidate for an infobox. 
+Use the info box to help users save an extra step of finding related information. Include relevant details directly alongside your content to add clarity. Remember, the goal is to conveniently present users with all necessary information within the infobox, minimizing the need to navigate back and forth between different sections. 
 
 | Good  ✅                                                         |  Bad ❌                                                              |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -295,90 +312,25 @@ Do not use emoticons in headlines or text. Emoticons are great for conveying emo
 
 | Good  ✅                                                         |  Bad ❌                                                              |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| In this tutorial, you will understand how to migrate Kubernetes clusters to Palette’s management plane.     | 👋🏻  In this tutorial, you will gain a basic understanding of how to migrate Kubernetes clusters to Palette’s management plane  |
+| In this tutorial, you will understand how to migrate Kubernetes clusters to Palette’s management plane.     | In this tutorial you will gain a basic understanding of how to migrate Kubernetes clusters to Palette’s management plane  |
 
 ### Future Features 
 
 
-Avoid documenting features, products, or behaviors that are currently unavailable.
+Avoid documenting features, products, or behaviours that are currently unavailable.
 
 | Good  ✅                                                         |  Bad ❌                                                              |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | MagicProduct supports JSON input files.    | MagicProduct supports JSON input files. In future releases, YAML file support will be added. |
 
-## Content Layout
-
-To create great content, begin with a plan to present the data cohesively. The more we reflexively add information to the documentation, the more the documentation helps users to accomplish their tasks. Ask the Technical Writing team if you have questions when planning, authoring, documentation, or editing. We’re available on Slack in #docs.  
-
-Build content strategy early. Collaborate with the relevant stakeholders like the PM, design, and marketing partners to develop an outline and preliminary drafts. Identify the content layouts your design needs and solve roadblocks during content strategy planning. 
-
-Research proven layout choices to make your layout decision before developing your content. Try to check which content item fits your design the best. Create opportunities for reader interaction within your content. Adapt content layout elements based on the type of content. 
-
-We welcome all contributions towards docs and education. The following content layout formats will guide you when contributing to the Spectro Cloud documentation: 
-
-1. [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout)
-
-Before you begin creating your own Packs page, we highly recommend reviewing the [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) page. Documenting Packs can be challenging due to their complex nature, involving multiple components and dependencies. However, this documentation is immensely valuable to users. It provides practical guidance, pre-configured solutions, and supported versions, saving time and streamlining deployments. Well-documented Packs enable users to simplify their workflows and maximize efficiency to deploy and manage infrastructure, applications, or services easily.
-
-The [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) page guides you in maintaining a consistent and user-friendly experience. Align your packs page seamlessly with the rest of the Spectro Cloud documentation to provide users with a familiar and intuitive experience.
-
-
-2. [How to Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/How-to-Layout) 
-
-How-to documentation helps the user perform a particular task correctly. A correctly executed how-to guide,
-
-- Addresses knowledge-sharing issues, 
-
-- Eliminates delays caused by knowledge gaps, 
-
-- Prevents chances of human errors, like failure to follow proper instructions, and
-
-- Reduces time spent searching for task assistance.
-
-The [How-to Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/How-to-Layout) page guides you to build how-to documentation that impacts. A how-to guide suggests a simple actionable strategy to build standardized internal processes to operate seamlessly and meet your project goals. How-tos create impact by making them easily discovered, producing applicable results, and allowing accessible user communication.
-
-As your organization grows and evolves, so do your how-tos. How-tos should be discoverable, i.e., create a centralized knowledge system that answers all questions. Set direct communication channels for users to provide comments and feedback to foster better user collaboration. 
-
-3. [Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout)
-
-Troubleshooting is followed to tackle common work-related interruptions during uncertain problems. Problems can persist and hinder productivity, so users should have a comprehensive solution guide to refer to. 
-
-A troubleshooting guide is a well-organized collection of guidelines that offer strategies to identify, diagnose, and resolve a wide range of commonly occurring and unpredictable problems. It is a valuable reference tool to help individuals troubleshoot technical, operational, or functional difficulties effectively. Generally, the guide includes helpful tips, flowcharts or decision trees, and specific actions or solutions for each potential problem. Its purpose is to empower users to independently resolve issues, minimize downtime, and ensure seamless operations.
-
-Create sustainable troubleshooting documentation to solve problems. It eliminates reliance on memory, instils confidence, and builds trust with users. Structured documentation helps resolve problems effortlessly, even without prior knowledge. 
-
-Analyze device performance to diagnose problems effectively. Keep the process simple by opting for easy steps and basic shortcuts. Practice troubleshooting to enhance skills and make the guide more engaging. Utilize automation for quick and effortless guide creation. Learn how to create one for seamless operations on the[ Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout) page.
-
-4. [Tutorial Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Layout) 
-
-A tutorial guide is a crucial tool for creating practical tutorials. It acts as a roadmap, preventing errors and optimizing the user's learning experience. It provides clear, concise instructions or demonstrations to help users learn new skills or complete specific tasks. 
-
-By following a standardized tutorial template, you can ensure consistency, efficiency, and a professional image in your tutorial documents. Creating a tutorial plan and obtaining stakeholder approval is essential for alignment. Adhering to the tutorial plan process empowers you to deliver accurate, user-friendly, and impactful tutorials consistently. Learn how to create one for seamless operations on the [Tutorial Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Layout) page.
-
 
 ## Language 
 
-Use the following language guidelines when writing content. 
+This section guides you to your content using easy and simple-to-understand language.  
 
 ### Nouns and Pronouns
 
 To use nouns, see [Capitalization](#capitalization). Use pronouns to clearly refer to the noun it’s replacing (its antecedent) to avoid ambiguity and confusion. Use gender-neutral pronouns to accommodate all users. See [Gender](#gender), to learn how more about gender-neutral pronouns. Use personal pronouns to offer a friendly tone. To learn more about using pronouns, see [Person](#person). Use relative pronouns: that, which, or who. 
-
-### Capitalization
-
-Capitalize the first word and all proper nouns, such as product names. To learn more about proper nouns, see [Nouns and Pronouns](#nouns-and-pronouns). 
-
-| Good  ✅                                                                          |  Bad ❌                                                                         |
-|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| A common container orchestration platform used in the industry is Kubernetes. | a common container orchestration platform used in the industry is kubernetes. |
-| Navigate to the Pallete console.                                              | Navigate to the pallete console.                                             |
-
-Don’t capitalize common nouns unless required.
-
-- Kubernetes is an open-source container orchestration platform.
-
-
-- Kubectl allows you to connect to, configure and work with your clusters through the command line.
 
 ### Prepositions
 
@@ -399,9 +351,9 @@ Use the preposition on to convey the notion of being on a surface of an entity.
 
 - Enter something on a worksheet.
 
-### Present Tense
+### Present tense
 
-Users read documentation to perform tasks or gather information. For users, these activities occur in their present, so the present tense is proper in most cases. The present tense is also less difficult to read than the past or future tense.
+Users read documentation to perform tasks or gather information. For users, these activities take place in their present, so the present tense is proper in most cases. Additionally, the present tense is easier to read than the past or future tense.
 
 | Good  ✅                                                         |  Bad ❌                                                              |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -415,7 +367,7 @@ Use future tense only when you emphasize that something will occur later (from t
 
 ### Person
 
-Use second-person pronouns you, your, to convey friendliness and human touch to the users. Addressing the user helps you keep the focus on them.
+Use second-person pronouns you, your  to convey friendliness and human touch to the users. Addressing the user as you keeps the focus on them. It implies a supportive tone. If the discussion is about product UI, use second person pronouns as  You can to help the user feel they have a choice to make.  
 
  Good  ✅                                                              | Bad ❌                                                             |
 |-------------------------------------------------------------------|-----------------------------------------------------------------|
@@ -423,20 +375,20 @@ Use second-person pronouns you, your, to convey friendliness and human touch to 
 | You can tailor your OS to your specific needs, ensuring your clusters perform optimally and meet your organization's unique requirements.                            | We can tailor our OS to our specific needs, ensuring our clusters perform optimally and meet our organization's unique requirements.                                           |
 | Alternatively, use the filter buttons to display available options.                               | Alternatively, you can use the filter buttons to display available options.                                |
 
-Be careful when using the following first-person pronouns: we, us, or our.  If your content focuses on Spectro Cloud as the speaker, you can address the user in the first-person plural. Only use "we" when providing a recommendation from Spectro Cloud.
+Be careful when using the following first-person pronouns: we, us, or our.  If your content focuses on Spectro Cloud as the speaker, you can address the user in the first-person plural. 
 
 | Good  ✅                                                                          |  Bad ❌                                                                         |
 |-------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | Our style guide believes in simple and crisp writing. | The following steps will guide us on how to create a cluster profile for Edge. |
-| To avoid this issue, we recommend that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry.                                              | To avoid this issue, we should  authenticate with the Docker registry before pulling images, especially if pulling from a private registry.
+| To avoid this issue, we recommend that you authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry.                                              | To avoid this issue, you should  authenticate with the Docker registry before pulling images, especially if you are pulling from a private registry.
 
 ### Acronyms
 
 Use title case when defining an acronym. Use the same rules that apply to headline styles. Some acronyms are in nature written in a camel case. Example: IaaS, kCh, SaaS.
 
-Although some acronyms are widely understood and preferred to the spelled-out term, others are not well known or are familiar only to a specific group of users. Define the acronym first.
+Although some acronyms are widely understood and preferred to the spelt-out term, others are not well known or are familiar only to a specific group of customers. Define the acronym first.
 
-The exception is when an acronym will appear only once in your content. Spell out the term, and don't introduce it in parentheses after the spelled-out version. If the spelled-out term and acronym are needed for metadata, then it is acceptable to use both.
+The exception is when an acronym will appear only once in your content. Spell out the term. Don't introduce it in parentheses after the spelt-out version. If the spelt-out term and acronym are needed for metadata, then it is okay to use both.
 
 | Good ✅               | Bad ❌                 |
 |--------------------|----------------------|
@@ -447,76 +399,68 @@ The exception is when an acronym will appear only once in your content. Spell ou
 
 ## Links
 
-Use links to guide the user to additional information to learn more about a topic.
+Use links to point to a single source of truth to explain why your information links to it. Generally, practice ensuring that the links remain functional and universally accessible to the users. 
 
 ### Cross-references
 In general, cross-references are links that lead to extra information. Try to offer assistance within the current context whenever feasible rather than redirect to external sources. 
+For example, if the information is short and easily explained, it's better to include it directly instead of using a link.  
 
-- Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+- Log in to **Palette** as a tenant admin.
 
-- To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](https://docs.spectrocloud.com/enterprise-version/helm-chart-install-reference).
+- To learn how to install Palette using the Helm Chart, refer to **Helm Chart Mode**.
 
+- Review the **Environment parameters** section below to learn more. 
 
 ### External URLs
 
-When readers are assumed to have some prior knowledge about third-party standards or software, provide an external link. Ensure any external sites you link to are updated, reliable, and relevant within the context.
+When readers are assumed to have some prior knowledge about third-party standards or software, provide an external link as required. Ensure any external sites you link to are updated, reliable, and relevant within the context.
 
-Link to the most relevant heading so users can have easier access. Test all the links and remove any locale-specific information before publishing your document. Ensure that the links remain functional and universally accessible to readers. Avoid unnecessary redirects to maintain a smooth reading experience. 
+Link to the most relevant heading so users can have easier access. Test all the links and remove any locale-specific information before publishing your document. Ensure that the links remain functional and universally accessible to readers. It avoids unnecessary redirects to maintain a smooth reading experience. 
 
 Examples: 
 
-- For more information on **Add-on** types go to step four.
+- An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console.
 
-- Enable **HTTP Event Collector (HEC)** in Splunk.
+- Enable [HTTP Event Collector (HEC)](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/installation/#enable-http-event-collector-in-splunk) in Splunk.
 
-- Refer to the **Prometheus Operational aspects** documentation for additional guidance. 
+- Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance. 
 
-### Image URLs 
+### Slash
 
-Start the URL with a forward slash ("/") and specify the path relative to the site's root directory. It can help to maintain a standardized format and stability of image references within your web content.  
-Use the following practice to link URLs for images in Markdown. Replace the URL in the parentheses after the image's alt text. 
+We try to avoid using slashes. If required, use forward slashes ( / ) to  to imply a combination or to indicate a file path. 
 
-```
+Use backslashes ( \ ) to list URLs. Omit `http://` unless the URL does not begin with `www` and any trailing slashes at the end of the URL unless the URL requires it. Use  `http://` in reference links as required.
 
-![App Mode and Cluster Mode.](/shared/palette/mode.png)
+Example:
+https://console.spectrocloud.com 
 
-```
 
 ## Punctuation and Grammar
 
 
 Use punctuation and grammar style conventions to localize your content into consistent information. Generally, use punctuation judiciously to preserve the content’s meaning, using it only when necessary.  Tailor your grammar style to reflect the mood and personality to build engaging content for the user. 
 
-### Voice
+### Capitalization
 
-Write in a simple voice. We explain our process and actions with simple messages and to the point.
+Capitalize the first word and all proper nouns, such as product names. To learn more about proper nouns, see [Nouns and Pronouns](#nouns-and-pronouns). 
 
-### Active voice
+| Good  ✅                                                                          |  Bad ❌                                                                         |
+|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| A common container orchestration platform used in the industry is Kubernetes. | a common container orchestration platform used in the industry is kubernetes. |
+| Navigate to the Pallete console.                                              | Navigate to the pallete console.                                             |
 
-Use the active voice whenever possible. The active voice is usually more direct and vigorous than the passive. When you write a sentence in the active voice, it is also usually shorter than in the passive voice.
-Address the user when creating text content. Use the noun, you. Use, we, when providing the user with recommendations. We want to take ownership of our guidance, so avoid hiding using “it is recommended.”
+Don’t capitalize common nouns unless required.
 
-| Good  ✅                                                              | Bad ❌                                                             |
-|-------------------------------------------------------------------|-----------------------------------------------------------------|
-| Use the kubectl cli to create a namespace titled “mgmt”.                                | The Kubectl CLI can be used to create namespaces titled “mgmt”                         |
-| Prior to upgrading, ensure you have carefully reviewed the release notes for deprecation notices.                          | Release notes should be carefully verified for deprecation notices prior to an upgrade.                                         |
-|We recommended deploying Palette Enterprise in a highly-available configuration of at least three nodes.                           | It is recommended to deploy Palette Enterprise in a highly-available configuration of at least three nodes.                          |
-
-### Passive voice
+- Kubernetes is an open-source container orchestration platform.
 
 
-Passive voice is a good fit when the agent or user performs an obvious, unimportant, or unknown action. Passive voice can also be used when you wish to postpone mentioning the agent until the last part of the sentence or avoid mentioning the agent. The passive voice is effective in these situations because it highlights the action and what is acted upon rather than the agent acting.
+- Kubectl allows you to connect to, configure and work with your clusters through the command line.
 
-| Good  ✅                                                              | Bad ❌                                                             |
-|-------------------------------------------------------------------|-----------------------------------------------------------------|
-| The dispatcher is notifying police that three prisoners have escaped.                               | Police are being notified that three prisoners have escaped.                        |
-| Surgeons successfully performed a new experimental liver-transplant operation yesterday.                         | A new experimental liver-transplant operation was performed successfully yesterday.                                         |
-|In this tutorial, you learned how Palette allows operators to manage Kubernetes environments easily.                           | The tutorial explained how Pallete can be used easily to manage Kubernetes environments.                        |
 
 ### Period, Exclamation Mark, and Question Mark
 
 
-Use a period (.) at the end of every sentence. Do not use periods at the end of headings, headlines, UI titles, or UI texts. Put one space after a period. If a sentence includes a title, do not use a period at the title end, but if the title has a question mark ( ? ) or an exclamation mark ( ! ), you should include it. Avoid exclamation marks unless required. 
+Use a period (.) at the end of every sentence. Do not use periods at the end of headings, headlines, UI titles, or UI texts. Put one space after a period. If a sentence includes a title, do not use a period at the title end but if the title has a question mark ( ? ) or an exclamation mark ( ! ), you should include it. Use exclamation marks judicially, if required. 
 
 Examples: 
 
@@ -542,79 +486,6 @@ Remember, the sentence before a colon should always be a complete thought.
 | Use a Deployment instead, and define your application in the spec section. | use a Deployment instead, and define your application in the spec section.   |    
 | Issue the following command:                                        | Issue the following command:                                                 |
 | kubectl get pods                                                   | kubectl get pods                                                            |
-
-### Slash
-
-
-Use forward slashes ( / ) in the following context:
-
-| Context                           | Good  ✅                                                                                                                            | Bad ❌                                                                                                                                 |
-|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Used to imply a combination       | Public Clouds: AWS, Azure, and Google Cloud (both IaaS and managed Kubernetes services EKS/AKS/GKE).                          | Public Clouds: AWS, Azure, and Google Cloud (both IaaS/managed Kubernetes services like EKS, either AKS, or, GKE)                 |
-|                                   | The client/server.                                                                                                             | The client or the server.                                                                                                           |
-| To indicate file path             | N/A                                                                                                                            | Not applicable.                                                                                                                     |
-|                                   | Workspace location for staging runtime configurations and logs (default $HOME/.palette).                                       | Workspace location for staging runtime configurations and logs (default $HOME.palette).                                               |
-
-Use backslashes ( \ ) to list servers and folders. To list URLs. Omit `http://` unless the URL does not benign with `www` and any trailing slashes at the end of the URL unless the URL requires it. Use  `http://` in reference links as required.
-
-Example:
-https://console.spectrocloud.com 
-
-### Parentheses and Brackets
-
-Opt for brackets to structure complex phrases instead of relying on dashes or commas. Maintain consistency in the font style, and use parentheses and brackets that match your main text. Whenever you're inclined to use parentheses, consider whether their need and potential impact on the reader's interest as they may detract from user engagement. 
-Use round brackets ( ) around non-defining phrases to add extra information, explain, clarify, or translate.
-
-
-| Good  ✅                                                              | Bad ❌                                                             |
-|-------------------------------------------------------------------|-----------------------------------------------------------------|
-| The reverse proxy Spectro Cloud manages is the forward reverse proxy (FRP).                              | The reverse proxy managed by Spectro Cloud is also known as FRP-  forward reverse proxy.                        |
-| Use an API client (e.gTerraform provider) to configure.                         |Use an API client, like Terraform provider, to configure.                                         |
-|Palette supports the FIPS-compliant Kubernetes (PXK and PXK-E) for enhanced security.                          | Palette supports the FIPS-compliant versions of Kubernetes for enhanced security.
-
-Use square brackets [ ] to enclose subsequent references, comments, updates, and translations or to denote placeholders or variable values.
-
-
-Examples: 
-- K8s version has been upgraded from 1.21 to 1.22.12 [the latest version in 1.22.]
-
-- Quoted by Luksa [2017, Simon and Schuster.]
-
-Use angle bracket ( > ) to indicate technical prompts, tabs, instructions, placeholders, keywords, and separate sequential steps. 
-
-Examples: 
-
-- Select App registrations > API permissions. 
-- C:>
-- Refer to the <placeholder> icon to navigate next.
-- ```<input type=text>```
-
-
-### Apostrophe
-
-
-Apostrophe (‘s) indicates possession. If a name already ends in s or z, and pronouncing it is difficult if you add an apostrophe, then consider rearranging the sentence to avoid the difficulty. Use it in the following context:
-
-| Context                                              | Good  ✅                                         | Bad ❌                                         |
-|------------------------------------------------------|---------------------------------------------|---------------------------------------------|
-| To form a possessive case for singular and plural nouns | Admins should update the assigned users’ passwords. | Admins should update the assigned user’s passwords. |
-| To denote period with noun phrases, but not adjectival phrases | The Kubernetes deployment was successful. | The Kubernetes’s deployment was successful. |
-| To indicate contractions with omitted letters | It takes a week to update. | It takes a week’s time to update. |
-| Do not use an apostrophe to clarify something if it pronounces odd. Instead, consider italicizing it. | It doesn’t support the OS pack. | It don’t support the OS pack. |
-|                                                     | Subtract all the x from y. | Subtract all the x’s from the y’s. |
-
-### Hyphen (-)
-
-Use a hyphen ( - ) in the following context:
-
-| Context                                                            | Good  ✅                                                     | Bad ❌                                                           |
-|--------------------------------------------------------------------|-----------------------------------------------------------|---------------------------------------------------------------|
-| Before a noun in an adjectival phrase                                | It supports on-prem storage.                             | It supports storage that is on premise.                       |
-| Use a hyphen in an adjectival phrase before the noun with an adverb ending with -ly | The pack list is publicly available on GitHub.        | The pack list is publicly-available on GitHub.                 |
-| Use a hyphen with prefixes only if required to avoid confusion/mispronunciations | jq - A command-line JSON processor.                      | jq is the command-line JSON processor.                         |
-| To indicate a range of numbers                                       | From 2021-2023.                                          | From 2021 to 2023.                                            |
-| To translate text                                                   | As a result, the entire stack - not just the infrastructure - of Kubernetes is deployed. | As a result, the entire stack, and not just the infrastructure, Kubernetes is deployed. |
-
 
 
 ## UI Elements
@@ -696,15 +567,36 @@ Document parameters to provide users with comprehensive and accessible informati
 
 - Offer usage examples for practical understanding. 
 
-- Use a table format for multiple parameters. Include columns for the parameter name, description, type, default values, and requirement status.
+- Use a table format for multiple parameters. Include columns for the parameter name, description, type, and required/optional status.
 
 - Maintain formatting consistency and clarity throughout the documentation.
 
 Using the correct path, specify the main object, sub-object, properties, and any standalone parameter.
 
-| Context                                | Example                    |
-|----------------------------------------|----------------------------|
-| Specify the main object                | `pack:content:`            |
-| Specify the sub-object within the main object   | `pack.content.images:`     |
-| Specify a property within the main object   | `pack.content.images.image:`  |
-| Specify a standalone parameter         | `system.uri`               |
+Here is an example.
+
+| Parameter Name    | Description                                                 | Data Type | Default Value | Allowed Values  | Required/Optional | Dependencies/Interactions  | Usage Example                                |
+|-------------------|-------------------------------------------------------------|-----------|---------------|-----------------|-------------------|----------------------------|----------------------------------------------|
+| internal          | Specifies the MongoDB deployment type                        | Boolean   | n/a           | n/a             | Required          | n/a                        | `internal: true`                            |
+| databaseUrl       | URL for MongoDB                                             | String    | n/a           | n/a             | Required          | n/a                        | `databaseUrl: mongodb://localhost:27017`      |
+| databasePassword  | The password for MongoDB                                    | String    | ""            | n/a             | Optional          | Depends on `internal`      | `databasePassword: mysecretpassword`          |
+| replicas          | Number of MongoDB replicas to start                         | Integer   | 3             | 1 to 10         | Required          | n/a                        | `replicas: 5`                               |
+
+
+The above table includes the following details for each parameter:
+
+**Parameter Name**: Descriptive name for the parameter.
+
+**Description**: Brief explanation of the parameter's purpose.
+
+**Data Type**: The type of data expected for the parameter.
+
+**Default Value**: The default value assigned to the parameter, if applicable.
+
+**Allowed Values**: The valid options or ranges for the parameter.
+
+**Required/Optional**: Indicates whether the parameter is required or optional.
+
+**Dependencies/Interactions**: Any dependencies or interactions with other parameters.
+
+Usage Example: Practical example showcasing how the parameter is used.

@@ -17,7 +17,7 @@ A Packs doc is no different than a regular documentation page, except that it in
 The following is a high-level overview of the markdown structure that packs docs should contain. Note the markdown heading sizes. 
 Since there are several packs categories, headings in green may vary depending on the pack.
 
-```markdown
+```
 # Title
 
 
@@ -114,7 +114,7 @@ Describe the common use case and an example if applicable. Include any customiza
 
 ^ Extra blank line above!
 ```terraform
-data "spectrocloud_registry" "public_registry" {
+    data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
 

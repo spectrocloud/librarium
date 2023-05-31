@@ -17,7 +17,7 @@ To create an impactful tutorial guide, you must create a tutorial plan and obtai
 
 All tutorials require a tutorial plan document with stakeholder signoff before authoring. Writing the plan out prevents incorrect deliverables and reduces the chance of time spent inefficiently. The tutorial plan process will help you create a much higher-quality tutorial.
  
-* To get started, make a copy of the tutorial plan [reference](https://docs.google.com/document/d/1ql_vkaj6dHsobCu0AYuvUXoQ8eojBzetAN3RoGxUepc/edit).
+* To get started, make a copy of the tutorial plan from the [Reference Template](https://github.com/rahulhazra97/Documentation-Guide/wiki/Reference-Template) page.
 * Connect your Google account.  
 * Click on **File >> Make a copy**. 
 > :information_source: We use Google Docs to collaborate asynchronously. Using a Google document lets us review and quickly provide feedback through comments and suggestions. <br />
@@ -28,6 +28,10 @@ All tutorials require a tutorial plan document with stakeholder signoff before a
 ![image](https://github.com/rahulhazra97/Documentation-Guide/assets/126905240/1d2ce48e-ca26-47e5-be2c-4e4774531783)
 
 When you are ready for a review, tag the education team or notify the team by dropping a message in the Slack `education` channel.
+
+### Tutorial Plan Reference
+To get started with your tutorial plan, create a copy of the following template: 
+
 
 ## Tutorial Layout 
 

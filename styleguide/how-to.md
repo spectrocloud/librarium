@@ -72,7 +72,7 @@ List out the required software version or hardware the practitioner must have in
 <td> Enablement </td>
 <td>
 
-This section contains the sequential steps required to enable the feature. The steps may be console actions, commands, or scrips the user must invoke. The reader should be able to follow the steps sequentially and successfully enable the feature. As the author, you can change the title to something that makes sense. Just ensure you follow the style guide and its [guidance](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Headings) for headings. You can use smaller headings in between to help break up the topic. Example: <br /> 
+This section contains the sequential steps required to enable the feature. The steps may be console actions, commands, or scrips the user must invoke. The reader should be able to follow the steps sequentially and successfully enable the feature. As the author, you can change the title to something that makes sense. Just ensure you follow the style guide for headings. You can use smaller headings in between to help break up the topic. Example: <br /> 
 ```terraform
     # Enablement
     Blah Blab Blah
