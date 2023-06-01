@@ -20,10 +20,9 @@ The [Palette eXtended Kubernetes](/glossary-all#paletteextendedkubernetes(pxk)) 
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
-We offer Cloud Native Computing Foundation (CNCF) Kubernetes as a core pack in Palette. 
+We offer PXK as a core pack in Palette. 
 
 Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
-
 
 ## What is PXK?
 
