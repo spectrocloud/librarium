@@ -42,6 +42,6 @@ Usage is calculated as a concept of kilo-Core-hour or kCh. This is a measurement
 
 # Next Steps
 
-To get started with Palette Free Tier, visit [signup link](https://www.spectrocloud.com/free-trial/).
+To get started with Palette Free Tier, visit the [signup link](https://www.spectrocloud.com/free-trial).
 
    
