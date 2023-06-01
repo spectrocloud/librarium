@@ -1,7 +1,7 @@
 ---
 title: "Palette eXtended Kubernetes"
 metaTitle: "Palette eXtended Kubernetes"
-metaDescription: "Kubernetes pack that deploys containers in Palette."
+metaDescription: "Learn more about the Palette eXtended Kubernetes pack and how you can use it with your host clusters."
 hiddenFromNav: true
 type: "integration"
 category: ["kubernetes"]
