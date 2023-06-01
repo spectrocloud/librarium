@@ -1,10 +1,9 @@
 
 # Spectro Cloud Style Guide 
 
-The Spectro Cloud style guide provides standards and guidelines for developing Spectro Cloud-related documentation. The style guide will act as a tool to ensure that the content produced across Spectro Cloud reflects our sense of style and voice.
+The Spectro Cloud style guide provides standards and guidelines for developing Spectro Cloud-related documentation. The style guide will act as a tool to ensure that the content produced reflects our sense of style and voice.
 
 
-This document is by the Spectro Cloud Documentation Team of writers chartered to set and maintain readability, usage, correctness, and consistency for all Spectro Cloud documentation content. 
 
 # Table of Contents
 
@@ -409,13 +408,12 @@ For example, if the information is short and easily explained, it's better to in
 
 - To learn how to install Palette using the Helm Chart, refer to **Helm Chart Mode**.
 
-- Review the **Environment parameters** section below to learn more. 
 
 ### External URLs
 
-When readers are assumed to have some prior knowledge about third-party standards or software, provide an external link as required. Ensure any external sites you link to are updated, reliable, and relevant within the context.
+When readers are assumed to have some prior knowledge about third-party standards or software, provide an external link. Ensure any external sites you link to are updated, reliable, and relevant within the context.
 
-Link to the most relevant heading so users can have easier access. Test all the links and remove any locale-specific information before publishing your document. Ensure that the links remain functional and universally accessible to readers. It avoids unnecessary redirects to maintain a smooth reading experience. 
+Link to the most relevant heading so users can have easier access. Test all the links and remove any locale-specific information before publishing your document. Ensure that the links remain functional and universally accessible to readers. Avoid unnecessary redirects to maintain a smooth reading experience. 
 
 Examples: 
 
@@ -460,7 +458,7 @@ Don’t capitalize common nouns unless required.
 ### Period, Exclamation Mark, and Question Mark
 
 
-Use a period (.) at the end of every sentence. Do not use periods at the end of headings, headlines, UI titles, or UI texts. Put one space after a period. If a sentence includes a title, do not use a period at the title end but if the title has a question mark ( ? ) or an exclamation mark ( ! ), you should include it. Use exclamation marks judicially, if required. 
+Use a period (.) at the end of every sentence. Do not use periods at the end of headings, headlines, UI titles, or UI texts. Put one space after a period. If a sentence includes a title, do not use a period at the title end, but if the title has a question mark ( ? ) or an exclamation mark ( ! ), you should include it. Avoid exclamation marks unless required. 
 
 Examples: 
 
@@ -567,7 +565,7 @@ Document parameters to provide users with comprehensive and accessible informati
 
 - Offer usage examples for practical understanding. 
 
-- Use a table format for multiple parameters. Include columns for the parameter name, description, type, and required/optional status.
+- Use a table format for multiple parameters. Include columns for the parameter name, description, type, default values, and requirement status.
 
 - Maintain formatting consistency and clarity throughout the documentation.
 
