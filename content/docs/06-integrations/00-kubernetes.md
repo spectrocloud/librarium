@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes"
-metaTitle: "Kubernetes in Palette"
+title: "Palette eXtended Kubernetes"
+metaTitle: "Palette eXtended Kubernetes"
 metaDescription: "Kubernetes pack that deploys containers in Palette."
 hiddenFromNav: true
 type: "integration"
@@ -14,15 +14,35 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Kubernetes
+# Palette eXtended Kubernetes
 
-The Kubernetes pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
+The [Palette eXtended Kubernetes](/glossary-all#paletteextendedkubernetes(pxk)) (PXK) pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
 We offer Cloud Native Computing Foundation (CNCF) Kubernetes as a core pack in Palette. 
 
 Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
+
+
+## What is PXK?
+
+Palette eXtended Kubernetes (PXK) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s, Konvoy, and more, should you want to consume a different Kubernetes distribution.
+
+PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common Kubernetes deployment security pitfalls and implements industry best practices.
+
+A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI) plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.
+
+There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open-source Kubernetes distribution.
+
+<br />
+
+
+<InfoBox>
+
+We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the [PXK-E glossary definition](/glossary-all#paletteextendedkubernetesedge(pxk-e)) to learn more about PXK-E.   
+
+</InfoBox>
 
 # Versions Supported
 
