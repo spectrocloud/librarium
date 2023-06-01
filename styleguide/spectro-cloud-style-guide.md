@@ -7,7 +7,7 @@ The Spectro Cloud style guide provides standards and guidelines for developing S
 
 # Table of Contents
 
- [About this guide](#about-this-guide)
+[About this guide](#about-this-guide)
 
 [SpectroCloud Style and Voice](#spectrocloud-style-and-voice)
  - [Simplified English](#simplified-english)

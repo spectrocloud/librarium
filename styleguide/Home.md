@@ -10,9 +10,9 @@ All of our documentation is expected to follow a set of standard templates. The 
 The following list provides a high-level overview of the writing artifacts we use in our documentation.
 * [How-to Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/How-to-Layout) - A how-to’s purpose is to help the user perform a particular task correctly. Refer to the [How-to Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/How-to-Layout) to use the layout and learn how to structure a how-to guide.
 
-* [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) - The Packs Layout provides an overview and guidelines for how to organize and structure a pack documentation page.  Refer to the [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout)  guide to learn more.
+* [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) - The Packs Layout provides an overview and guidelines for how to organize and structure a pack documentation page. Refer to the [Packs Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Packs-Layout) guide to learn more.
   
-* [Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout) - All Spectro Cloud troubleshooting guides are expected to have the same look and feel. The guide must also feel familiar to the reader. Therefore, all troubleshooting guides must follow the layout standard described on this page. Refer to the [Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout) to use the troubleshooting layout.
+* [Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout) - All Spectro Cloud troubleshooting guides are expected to have the same look and feel. The guide must also feel familiar to the reader. Therefore, all troubleshooting guides must follow the layout standard described. Refer to the [Troubleshooting Layout](https://github.com/rahulhazra97/Documentation-Guide/wiki/Troubleshooting-Layout) to use the troubleshooting layout.
 
 
 
