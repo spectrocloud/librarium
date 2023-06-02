@@ -26,7 +26,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 - A cluster profile for the MAAS environment. Review [Cluster Profiles](/cluster-profiles) for more information. 
 
 
-- Available matching base image for the selected OS version in the MAAS configuration. Review [How to use standard images](https://maas.io/docs/how-to-use-standard-images).
+- A verified matching base image for the selected OS of your MAAS configuration. Review [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for more information.
 
 
 # Deploy a MAAS cluster
@@ -123,19 +123,20 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 <br />
 
 
-# Upgrading a MAAS Cluster
+# Upgrade a MAAS Cluster
 
-Upgrading a cluster involves careful planning and executing the upgrade while minimizing disruptions to your applications and services. Spectro Cloud provides an intuitive and streamlined upgrade process through the MAAS, simplifying the entire process.
+If you plan to upgrade your MAAS cluster, you should plan and execute it carefully. It helps minimize disruptions to your applications and services and avoid conflicts when managing a MAAS cluster. 
 
-To learn more about managing a cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates).
+To learn more about managing a MAAS cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates).
+
+<br /> 
 
 <WarningBox>
 
-When you use a new pack for a specific OS version with MAAS, the absence of the corresponding base image for that OS version in your MAAS configuration can cause errors in Palette.
+When you use a new pack for the selected OS version with MAAS, you must obtain and import its correct base image in the MAAS management interface to eliminate errors in Pallete.
 
-Ensure you have obtained and imported the correct base image for the required OS version in the MAAS management interface to fix this problem. By doing this, you can eliminate issues and successfully use the Palette pack for the chosen OS version.
-
-Store the corresponding base image in MAAS to enable seamless integration with the desired OS version and prevent compatibility issues.
+It ensures the base image matches your selected OS version and successfully uses the Palette pack for the chosen OS version. Store the corresponding base image in MAAS to enable seamless integration with the desired OS version and prevent compatibility issues.  To learn more about deploying custom OS images with MAAS, refer to the [How to customise images
+](https://maas.io/docs/how-to-customise-images) guide.
 
 
 
