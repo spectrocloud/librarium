@@ -129,7 +129,7 @@ Upgrading a cluster involves careful planning and executing the upgrade while mi
 
 To learn more about managing a cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates).
 
-<Warning Box>
+<WarningBox>
 
 When you use a new pack for a specific OS version with MAAS, the absence of the corresponding base image for that OS version in your MAAS configuration can cause errors in Palette.
 
@@ -139,7 +139,7 @@ Store the corresponding base image in MAAS to enable seamless integration with t
 
 
 
-</Warning Box>
+</WarningBox>
 
 
 
