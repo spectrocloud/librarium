@@ -44,9 +44,9 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
     <br />
 
     ```shell
-    VERSION=3.3.0
-    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge-content
-    chmod +x palette-edge-content
+    VERSION=3.4.3
+    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
+    chmod +x palette-edge
     ```
 
 2. Log in to [Palette](https://console.spectrocloud.com).
@@ -79,14 +79,14 @@ You can find the project id at the top right side corner of the landing page bel
 
     <InfoBox>
 
-    There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command `./palette-edge-content build --help` to learn more about the available flags.
+    There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command `./palette-edge build --help` to learn more about the available flags.
 
     </InfoBox>
 
     <br />
 
     ```shell
-    ./palette-edge-content build --api-key <API_KEY> \
+    ./palette-edge build --api-key <API_KEY> \
      --project-id <PROJECT_ID> \ 
      --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
      --palette-endpoint <Palette API Endpoint> \
@@ -95,14 +95,15 @@ You can find the project id at the top right side corner of the landing page bel
     ```
 
     ```shell
+    # Output
     INFO[0000] getting hubble export for build
     INFO[0000] Fetching latest version for service 'stylus'
-    INFO[0000] stylus version: 3.3.0
-    INFO[0000] Fetching manifest for service stylus and version 3.3.0 for action resources
-    INFO[0000] Fetching manifest of service stylus and version '3.3.0' for action resources
-    INFO[0000] Fetching manifest from service stylus and version '3.3.0' for action resources with file name images.yaml
+    INFO[0000] stylus version: 3.4.3
+    INFO[0000] Fetching manifest for service stylus and version 3.4.3 for action resources
+    INFO[0000] Fetching manifest of service stylus and version '3.4.3' for action resources
+    INFO[0000] Fetching manifest from service stylus and version '3.4.3' for action resources with file name images.yaml
     INFO[0000] Get manifest with file name: images.yaml
-    INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.3.0
+    INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.4.3
     INFO[0002] successfully pulled image : gcr.io/spectro-images-public/calico/cni:v3.25.0
     ...
     ...
@@ -115,8 +116,13 @@ You can find the project id at the top right side corner of the landing page bel
     INFO[0144] ISO file created successfully
     ```
 
-The result is a content bundle that you can use to preload into your installer. Alternately, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of edge host installation.
+The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of Edge host installation.
 
-# Validation
+# Validate
 
 You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
+
+
+# Next Steps
+
+Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide.

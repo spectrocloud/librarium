@@ -86,7 +86,7 @@ The following items are optional and not required but may apply to your use case
 6. Remove the USB disks and ship your Edge host devices to the site for installation.
 
 
-## Validation
+## Validate
 
 You can validate the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
@@ -243,7 +243,7 @@ If you generate an OVF template and want to pre-load a content bundle, you must 
 
 You can ship this OVF template along with the Edge host to the physical site. Use the OVM template for the site installation.
 
-## Validation
+## Validate
 
 You can validate the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 

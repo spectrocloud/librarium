@@ -34,7 +34,7 @@ Create a cluster profile with the **Spectro VM Dashboard** add-on pack and apply
 
 # Create the VM Dashboard
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
@@ -46,24 +46,24 @@ Create a cluster profile with the **Spectro VM Dashboard** add-on pack and apply
 4. Select type **Add-on**, and click **Next**.
 
 
-5. In the next screen that displays, click **Add New Pack**.
+5. In the next screen that displays, click **Add New Pack**, and use the following information to find the VM Dashboard pack:
 
+    <br />
+    
+    - **Pack Type**: System App
+    - **Registry**: Select the registry you added.
+    - **Pack Name**: Spectro VM Dashboard
+    - **Pack Version**: 3.1.x or newer
 
-6. Choose pack type **System App**. 
-
-
-7. From the **Registry drop-down Menu**, select the registry you added.
-
-
-8. From the **Pack Name drop-down Menu**, select **Spectro VM Dashboard**.
-
-
-9. Select the pack version. 
+    <br /> 
 
     A configuration panel displays Access and Identity Provider (IDP) parameters with pre-defined default settings.
+
     <br /> 
 
 10. Configure the dashboard.
+
+<br />
 
 ## Configure the Dashboard
 
@@ -91,7 +91,7 @@ IDP options are as follows:
 
 - **Specified on Kubernetes layer**: This setting requires you to configure OIDC manually in the Kubernetes pack. Refer to [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) for more information.
 
-# Validation
+# Validate
 
 You can validate the profile is created. 
 

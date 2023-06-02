@@ -638,7 +638,7 @@ You can review all the logs related to the setup of the private Spectro reposito
 </InfoBox>
 
 
-# Validation
+# Validate
 
 You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance with an SSH key then you can skip to step five.
 

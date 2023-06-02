@@ -45,7 +45,7 @@ To enable the Spectro VM Dashboard, apply the profile you created to your cluste
 
 # Enable the VM Dashboard
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and select your cluster. 
@@ -62,7 +62,7 @@ To enable the Spectro VM Dashboard, apply the profile you created to your cluste
 The cluster status displays as **Upgrading** on the cluster overview page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
 
 
-# Validation
+# Validate
 
 When the cluster is finished upgrading, ensure the cluster status displays as **Running** and that a new tab labeled **Virtual Machines** appears on the Cluster's page. 
 

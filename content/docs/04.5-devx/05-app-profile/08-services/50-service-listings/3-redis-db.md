@@ -58,7 +58,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
 6. Save your changes.
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
