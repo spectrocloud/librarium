@@ -127,7 +127,7 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates). 
 
-To protect your data, create a backup of your MAAS cluster before proceeding with any upgrades or changes using the instructions provided in the [Backup and Restore](https://docs.spectrocloud.com/clusters/cluster-management/backup-restore).
+To protect your data, we recommend you create a backup of your MAAS cluster before proceeding with any upgrades or infrastructure changes. Review instructions provided in the [Backup and Restore](https://docs.spectrocloud.com/clusters/cluster-management/backup-restore).
 
 <br /> 
 
