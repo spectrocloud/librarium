@@ -25,6 +25,10 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 - A cluster profile for the MAAS environment. Review [Cluster Profiles](/cluster-profiles) for more information. 
 
+
+- Available matching base image for the selected OS version in the MAAS configuration. Review [How to use standard images](https://maas.io/docs/how-to-use-standard-images).
+
+
 # Deploy a MAAS cluster
 
 To deploy a new MAAS cluster:
@@ -118,17 +122,26 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 <br />
 
-## Force Delete a Cluster
 
-If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scopes. To force delete a cluster, follow the same steps outlined in [Delete a MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters#deleteamaascluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
+# Upgrading a MAAS Cluster
 
-<br />
+Upgrading a cluster involves careful planning and executing the upgrade while minimizing disruptions to your applications and services. Spectro Cloud provides an intuitive and streamlined upgrade process through the MAAS, simplifying the entire process.
 
-<WarningBox>
+To learn more about managing a cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates).
 
-A force delete can result in Palette-provisioned resources being missed during the removal process. Verify that any MAAS machines associated with the cluster have been released. Failure to remove provisioned resources can result in unexpected costs.
+<Warning Box>
 
-</WarningBox>
+When you use a new pack for a specific OS version with MAAS, the absence of the corresponding base image for that OS version in your MAAS configuration can cause errors in Palette.
+
+Ensure you have obtained and imported the correct base image for the required OS version in the MAAS management interface to fix this problem. By doing this, you can eliminate issues and successfully use the Palette pack for the chosen OS version.
+
+Store the corresponding base image in MAAS to enable seamless integration with the desired OS version and prevent compatibility issues.
+
+
+
+</Warning Box>
+
+
 
 # Next Steps
 
