@@ -125,18 +125,15 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 # Upgrade a MAAS Cluster
 
-If you plan to upgrade your MAAS cluster, you should plan and execute it carefully. It helps minimize disruptions to your applications and services and avoid conflicts when managing a MAAS cluster. 
+Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates). 
 
-To learn more about managing a MAAS cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates).
+To protect your data, create a backup of your MAAS cluster before proceeding with any upgrades or changes using the instructions provided in the [Backup and Restore](https://docs.spectrocloud.com/clusters/cluster-management/backup-restore).
 
 <br /> 
 
 <WarningBox>
 
-When you use a new pack for the selected OS version with MAAS, you must obtain and import its correct base image in the MAAS management interface to eliminate errors in Pallete.
-
-It ensures the base image matches your selected OS version and successfully uses the Palette pack for the chosen OS version. To learn more about deploying custom OS images with MAAS, refer to the [How to customise images
-](https://maas.io/docs/how-to-customise-images) guide.
+Ensure that the Operating System (OS) image selected for your cluster are downloaded and available with your MAAS configuration to eliminate errors in Pallete. You can refer to the [How to use standard images](https://maas.io/docs/how-to-customise-images) guide for instructions on downloading OS images compatible with their respective MAAS environment.
 
 
 
