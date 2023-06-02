@@ -26,7 +26,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 - A cluster profile for the MAAS environment. Review [Cluster Profiles](/cluster-profiles) for more information. 
 
 
-- Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in your MaaS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for guidance on downloading OS images for MaaS.
+- Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for guidance on downloading OS images for MAAS.
 
 
 # Deploy a MAAS cluster
