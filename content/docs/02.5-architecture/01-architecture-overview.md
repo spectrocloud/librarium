@@ -23,7 +23,9 @@ Palette is available in three flexible deployment models:
 
 ## Product Security
 
-In addition to our security principles and secure development lifecycle, we also provide a cohesive security architecture for Palette, which addresses the CIA triad core principles: confidentiality, integrity, and availability. To learn more, refer to [Palette Security](/security/security-principles). 
+At Spectro Cloud, we recognize the importance of robust security measures in today's rapidly evolving digital landscape. As the provider of our cutting-edge SaaS and self-hosted product, Palette, our commitment to safeguarding our customers' data and ensuring the integrity of our services is paramount. Learn more about what we do in terms of security in our Security section.
+
+To learn more, refer to [Palette Security](/security).
 
 <br />
 

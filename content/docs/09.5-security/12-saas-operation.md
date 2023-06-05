@@ -19,7 +19,7 @@ Palette is a multi-tenant SaaS system in which each tenant represents a customer
 
 ## Platform Security 
 
-In public cloud environments like AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity). 
+In public cloud environments like AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity).
 
 This allows the SaaS controller to do the following: 
 
@@ -37,50 +37,6 @@ In private cloud environments like VMware vSphere, a Private Cloud Gateway (PCG)
 ## Tenant Cluster Security
 
 [Tenant](/glossary-all#tenant) clusters are deployed in a VPC. Each tenant cluster has a management agent that is deployed as a pod. This agent has an outbound internet connection to Palette using NATS with TLS protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
-
-We use the following design principles to ensure tenant isolation:
-
-<br />
-
-- **Network isolation**: Tenant clusters are created in the tenant’s public cloud accounts or in private data centers. Customers cannot intercept network traffic in other tenant clusters. Access to tenant cluster APIs through the cluster’s kubeconfig file is restricted to the tenant.
-
-
-- **Data isolation**: Palette applies a tenant filter to every operation to ensure users' access is restricted to their own tenant.
-
-
-- **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
-
-
-- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
-
-
-- **Data encryption**: Palette ensures security for data at rest and data in transit as follows.
-
-    <br />
-
-    #### Data At Rest Encryption
-
-    Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd key-value store. In addition, all message communication uses tenant-specific channels.
-
-    <br />
-
-    #### Data In Transit Encryption
-
-   Palette secures data in motion using an encrypted TLS communication channel for all internal and external interactions.<br /><br />
-
-   - **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
-
-    <br />
-    
-    - **Inter-Service Communication**: Services in the management cluster communicate over HTTPS with self-signed certificates and an Rivest–Shamir–Adleman (RSA) 2048-bit key.
-
-    <br />
-    
-    - **Database Communication**: The database connection from Palette internal services active in the management cluster to MongoDB is protected by TLS with Authentication enabled.
-
-    <br />
-    
-    - **Message Bus**: A NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
 
 
 <br />
