@@ -18,6 +18,7 @@ The Private Cloud Gateway (PCG) enables support for private cloud or data center
 PCG is a Kubernetes cluster responsible for supporting Palette in a private network environment. All host clusters deployed through Palette will communicate with PCG.
 
 At a high level, the following occurs during a successful MAAS PCG installation:
+
 - Start the PCG installer on a laptop, workstation, or Bastion host. 
 
 
@@ -430,9 +431,11 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
 # Resources 
 
  - [Install MAAS](https://maas.io/)
+
  
  
  - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
+
 
 
  - [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
