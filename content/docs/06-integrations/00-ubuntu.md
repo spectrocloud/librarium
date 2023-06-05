@@ -50,26 +50,46 @@ You can use Ubuntu as the base Operating System (OS) when deploying a host clust
 
 ## Parameters
 
-The Ubuntu OS pack has no required parameters. There are however a few [Ubuntu Pro](https://ubuntu.com/pro) parameters you can populate if you want to use Ubuntu Pro.
+The Ubuntu OS pack has no required parameters. 
 
 
-| Parameter| Description | Default Value |
-|---|---|----|
-|**esm-apps**| Expanded Security Maintenance for Applications. | Disabled |
+
+You can customize the Ubuntu OS pack to help you achieve additional customization. The following configuration blocks are available for use within the `kubeadmconfig` configuration block in the YAML file:
+
+<br />
+
+| Field | Description | YAML Type | Required |
+| --- | --- | --- | --- |
+| `APIServer` | Extra settings for the Kube API server control plane component | object | No |
+| `ControllerManager` | Extra settings for the controller manager control plane component | object | No |
+| `Scheduler` | Extra settings for the scheduler control plane component | object | No |
+| `KubeletExtraArgs` | Extra arguments for kubelet | map | No |
+| `Files` | Additional files to pass to kubeadmconfig | list | No |
+| `PreKubeadmCommands` | Extra commands to run before kubeadm runs | list | Yes - Auto generated |
+| `PostKubeadmCommands` | Extra commands to run after kubeadm runs | list | Yes - Auto generated |
+| `ImageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
+| `Etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. | object | No |
+| `DNS` | Options for the DNS add-on installed in the cluster. | object | No |
 
 
+
+Palette also supports [Ubuntu Pro](https://ubuntu.com/pro). Refer to the Ubuntu Pro section below for more details.
+
+<br />
 
 ## Usage
 
 
 To use the Ubuntu OS pack, add the pack to your cluster profile when selecting the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
 
+
 <br />
 
-### Cloud Init
+
+### Pack Customization
 
 
-You can customize the Ubuntu OS pack and take advantage of [cloud-init](https://cloud-init.io/) hooks to help you achieve additional customization.
+You can customize the Ubuntu OS pack by using the available configuration parameters exposed in pack in the YAML configuration file. Below are a few use case examples.
 
 <br />
 
@@ -77,7 +97,7 @@ You can customize the Ubuntu OS pack and take advantage of [cloud-init](https://
 #### Add Custom Files
 
 
-You can include custom files to be copied over to the nodes and execute a list of commands before kubeadm is initialized.
+You can create custom files before kubeadm is initialized. Files created during the `files` stage can be used before the `preKubeadmCommands` and `postKubeadmCommands` are executed. This means that the files stage takes place before the invocation of kubeadm commands.
 
 <br />
 
@@ -120,8 +140,6 @@ In the next example, a configuration file is added to a folder.
 
 ```yaml
 kubeadmconfig:
-  preKubeadmCommands:
-    - 'echo "====> Applying pre Kubeadm commands"'
   files:
     - targetPath: /etc/containerd/config.toml
       targetOwner: "root:root"
@@ -143,77 +161,99 @@ kubeadmconfig:
             runtime_type = "io.containerd.runc.v2"
           [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
             SystemdCgroup = true
+  preKubeadmCommands:
+    - 'echo "====> Applying pre Kubeadm commands"'
   postKubeadmCommands:
     - 'echo "====> Applying post Kubeadm commands"'
 ```
 
-# Ubuntu Advantage
 
-Ubuntu Advantage services extend your infrastructure's security, compliance, and productivity requirements. Enable the UA services when modifying the Pack Values in Palette. See below for steps on how to modify the Preset options.
+### Ubuntu Pro
 
-**Benefits with UA**:
+Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and many other security hardening features. The following are some of the many benefits provided by Ubuntu Pro:
+
+<br />
+
 
 - Extended Security Maintenance
+
+
 - Kernel Livepatch service to avoid reboots
+
+
 - FIPS 140-2 Level 1 certified crypto modules
+
+
 - Common Criteria EAL2
 
-For more information see the [Ubuntu Advantage for Infrastructure](https://ubuntu.com/advantage) site.
+For more information, refer to the [Ubuntu Pro](https://ubuntu.com/pro) documentation from Canonical.
+
+
+
+You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS for a cluster profile and expand the preset menu to  
+
+
+| Parameter| Description | Default Value |
+|---|---|----|
+|**token**| The Canonical subscription token for Ubuntu Pro. | `""` |
+|**esm-apps**| Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled |
+| **livepatch** | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details. | Disabled |
+| **fips** |  Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled |
+| **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled |
+| **cis** | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based off of the published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled |
+
+
+To enable Ubuntu Pro, use the following steps.
+
+
+1. Log in to [Palette](https://console.spectrocloud.com)
+
+
+2. Navigate to the left **Main Menu** and select **Profiles**.
+
+
+3. Click on **Add Cluster Profile**.
+
+
+4. Fill out the input fields for **Name**, **Version**, **Description**, **Type** and **Tags**. Click on **Next** to continue.
+
+
+
+5. Select the infrastructure provider and click on **Next**.
+
+
+6. Select the OS layer. You can add Ubuntu by using the following values:
+
+    -  **Pack Type** - OS
+
+    -  **Registry** - Public Repo
+
+    -  **Pack Name** -Ubuntu
+
+    -  **Pack Version** - 20.04 or 22.04
+
+
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML configuration file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+
+  <br />
+
+  ![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
+
+
+6. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
+
+
+7. Toggle on or off to enable or disable the various Ubuntu Pro services.
+
+
+8. Click the **Next layer** button to continue to the next layer.
+
+
+9. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+
 
 <br/>
-<br/>
 
-## Modifying the Presets
-
-
-1. Palette allows you to include the Ubuntu Advantage service in the **Profile Layers** section, when you create a new cluster profile.
-
-
-2. Give the new Pack a **Name**, **Version number**, **Description**, **Type**, and **Tags** and click the **Next** button.
-
-
-3. Choose the cloud provider as the **Infrastructure provider** and click **Next**.
-
-
-4. Edit the Packs with the following parameters:
-    -  **Pack Type** - *OS*
-
-    -  **Registry** - *Public Repo*
-
-    -  **Pack Name** - *Ubuntu*
-
-    -  **Pack Version** - *LTS_ _18.4.x or LTS-HWE__18.04 or LTS_ _20.4.x*
-
-
-5. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML configuration file.  You can also make additional modifications to the original `kubeadmconfig` file.
-
-
-6. Click the **Ubuntu Advantage** checkbox to include the UA parameters listed below in the configuration file.
-
-
-7. Toggle on or off to enable or disable the UA services of your choice. See below for an explanation of the notable parameters that are available to use with Palette.
-
-
-8. Once the file is updated, click the **Next layer** button to continue to the next layer.
-
-
-## Notable Parameters
-
-
-| **Service**  | **Options**    |  **Description**                                                                                                                                                                                                                                                                                                                                                                                |
-| --------------- | -------------- | ------------------------------------------------------------------ | ------------------------------ |
-|  **Token**      |                                    | Enter the token key in the text box. <br /> e.g.: C13RaHQDqgvvG3Ys|
-| **ESM-infra** | enable <br /> <br /> <br /> <br /> <br /> disable | Continue to receive security updates for the Ubuntu base OS, critical software <br /> packages and infrastructure components with Extended Security Maintenance (ESM). <br /> ESM provides five additional years of security maintenance, enabling an organization's <br />continuous vulnerability management. <br /> <br /> Disable the ESM repository. Do not receive security updates for Ubuntu Base OS etc. |
-|||||
-|**Livepatch**| enable <br /> <br /> <br /> <br /> disable| Livepatch eliminates the need for unplanned maintenance windows <br /> for high and critical severity kernel vulnerabilities by patching the Linux <br /> kernel while the system runs. <br /> <br /> Do not enable/manage live kernel patching. The Livepatch service will be disabled. |
-|||||
-| **FIPS** | enable <br /> <br /> <br /> <br /> disable | Federal Information Processing Standards (FIPS) 140 validated cryptography for <br /> Linux workloads on Ubuntu. Install, configure, and enable <br /> FIPS 140 certified modules. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
-|||||
-| **FIPS-updates** | enable <br /> <br /> <br /> disable | The option enables the FIPS-UPDATES. It installs the updated FIPS modules sets <br />it in FIPS mode. <br /><br /> Do not have FIPS 140 validated cryptography for Linux workloads on Ubuntu.|
-|||||
-| **CC-EAL** | enable <br /> <br /> <br /> <br /> <br /> disable | After the completion of a Common Criteria (CC) security evaluation, a grade is given <br /> indicating the level the system was tested. Common Criteria evaluated <br /> configuration is currently available for Ubuntu 16.04.4 LTS (Server) and <br /> Ubuntu 18.04.4 LTS (Server). The option shows as disabled for Ubuntu 20 & 20+. <br /> <br /> Do not install the CC artifacts. |
-|||||
-| **CIS**       | enable <br /> <br /> <br /> disable | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with <br /> certified content based off of the published CIS benchmarks. <br /> <br /> Do not access OpenSCAP-based tooling.|
 
 
 
