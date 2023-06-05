@@ -230,6 +230,24 @@ const redirects = [
     toPath: `/devx/palette-virtual-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-kairos-os`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-content-bundle`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-images`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
