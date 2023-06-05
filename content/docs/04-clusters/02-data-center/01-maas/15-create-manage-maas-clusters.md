@@ -25,6 +25,10 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 - A cluster profile for the MAAS environment. Review [Cluster Profiles](/cluster-profiles) for more information. 
 
+
+- Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for guidance on downloading OS images for MAAS.
+
+
 # Deploy a MAAS cluster
 
 To deploy a new MAAS cluster:
@@ -118,17 +122,24 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 <br />
 
-## Force Delete a Cluster
 
-If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scopes. To force delete a cluster, follow the same steps outlined in [Delete a MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters#deleteamaascluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
+# Upgrade a MAAS Cluster
 
-<br />
+Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates). 
+
+To protect your data, we recommend you create a backup of your MAAS cluster before proceeding with any upgrades or infrastructure changes. Review instructions provided in the [Backup and Restore](https://docs.spectrocloud.com/clusters/cluster-management/backup-restore).
+
+<br /> 
 
 <WarningBox>
 
-A force delete can result in Palette-provisioned resources being missed during the removal process. Verify that any MAAS machines associated with the cluster have been released. Failure to remove provisioned resources can result in unexpected costs.
+Ensure that the Operating System (OS) image selected for your cluster are downloaded and available for your MAAS configuration to eliminate errors in Pallete. You can refer to the [How to use standard images](https://maas.io/docs/how-to-customise-images) guide for instructions on downloading OS images compatible with their respective MAAS environment.
+
+
 
 </WarningBox>
+
+
 
 # Next Steps
 
