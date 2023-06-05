@@ -48,25 +48,41 @@ You can use Ubuntu as the base Operating System (OS) when deploying a host clust
 1.24      | ❌                         |
 
 
+## Parameters
+
+The Ubuntu OS pack has no required parameters. There are however a few [Ubuntu Pro](https://ubuntu.com/pro) parameters you can populate if you want to use Ubuntu Pro.
+
+
+| Parameter| Description | Default Value |
+|---|---|----|
+|**esm-apps**| Expanded Security Maintenance for Applications. | Disabled |
+
+
 
 ## Usage
 
-You can customize the Ubuntu OS pack and take advantage of the [cloud-init](https://cloud-init.io/) hooks to help you achieve additional customization.
 
-You can include custom files to be copied over to the nodes and execute a list of commands before or after kubeadm is initialized.
+To use the Ubuntu OS pack, add the pack to your cluster profile when selecting the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
+
+<br />
+
+### Cloud Init
+
+
+You can customize the Ubuntu OS pack and take advantage of [cloud-init](https://cloud-init.io/) hooks to help you achieve additional customization.
+
+<br />
+
+
+#### Add Custom Files
+
+
+You can include custom files to be copied over to the nodes and execute a list of commands before kubeadm is initialized.
 
 <br />
 
 ```yaml
-
 kubeadmconfig:
-  preKubeadmCommands:
-  - echo "Executing pre kube admin config commands"
-  - update-ca-certificates
-  - 'systemctl restart containerd; sleep 3'
-  - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
-  postKubeadmCommands:
-  - echo "Executing post kube admin config commands"
   files:
   - targetPath: /usr/local/share/ca-certificates/mycom.crt
     targetOwner: "root:root"
@@ -89,6 +105,46 @@ kubeadmconfig:
       b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56
       IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=
       -----END CERTIFICATE-----
+  preKubeadmCommands:
+  - echo "Executing pre kube admin config commands"
+  - update-ca-certificates
+  - 'systemctl restart containerd; sleep 3'
+  - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
+  postKubeadmCommands:
+  - echo "Executing post kube admin config commands"
+```
+
+In the next example, a configuration file is added to a folder.
+
+<br />
+
+```yaml
+kubeadmconfig:
+  preKubeadmCommands:
+    - 'echo "====> Applying pre Kubeadm commands"'
+  files:
+    - targetPath: /etc/containerd/config.toml
+      targetOwner: "root:root"
+      targetPermissions: "0644"
+      content: |
+        ## template: jinja
+
+        # Use config version 2 to enable new configuration fields.
+        # Config file is parsed as version 1 by default.
+        version = 2
+
+        imports = ["/etc/containerd/conf.d/*.toml"]
+
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            sandbox_image = "registry.k8s.io/pause:3.9"
+            device_ownership_from_security_context = true
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+            runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+  postKubeadmCommands:
+    - 'echo "====> Applying post Kubeadm commands"'
 ```
 
 # Ubuntu Advantage
