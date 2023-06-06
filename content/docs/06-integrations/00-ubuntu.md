@@ -1,6 +1,6 @@
 ---
 title: 'Ubuntu'
-metaTitle: 'Ubuntu Operating System'
+metaTitle: 'Ubuntu'
 metaDescription: 'Choosing Ubuntu as an Operating System within the Palette console'
 hiddenFromNav: true
 type: "integration"
@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 import Tabs from 'shared/components/ui/Tabs';
 
 
-# Ubuntu Operating System
+# Ubuntu
 
 [Ubuntu](https://ubuntu.com) is an open-source operating system based on the Linux kernel. Developed by Canonical Ltd., Ubuntu is a popular choice for desktops, servers, and cloud environments due to its ease of use, robustness, and versatility.
 
@@ -30,7 +30,7 @@ You can use Ubuntu as the base Operating System (OS) when deploying a host clust
 
 
 <Tabs>
-<Tabs.TabPane tab="22.04.x" key="22.04.x">
+<Tabs.TabPane tab="22.04.x LTS" key="22.04.x" identifier="22.04.x">
 
 
 ## Prerequisites
@@ -60,20 +60,113 @@ You can customize the Ubuntu OS pack to help you achieve additional customizatio
 
 | Field | Description | YAML Type | Required |
 | --- | --- | --- | --- |
-| `APIServer` | Extra settings for the Kube API server control plane component | object | No |
-| `ControllerManager` | Extra settings for the controller manager control plane component | object | No |
-| `Scheduler` | Extra settings for the scheduler control plane component | object | No |
-| `KubeletExtraArgs` | Extra arguments for kubelet | map | No |
-| `Files` | Additional files to pass to kubeadmconfig | list | No |
-| `PreKubeadmCommands` | Extra commands to run before kubeadm runs | list | Yes - Auto generated |
-| `PostKubeadmCommands` | Extra commands to run after kubeadm runs | list | Yes - Auto generated |
-| `ImageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
-| `Etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. | object | No |
-| `DNS` | Options for the DNS add-on installed in the cluster. | object | No |
+| `apiServer` | Extra settings for the Kube API server control plane component. Refer to [Kube API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) documentation for available options. | object | No |
+| `controllerManager` | Extra settings for the Kubernetes controller manager control plane component. Review the [Kubernetes controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) documentation for more information.  | object | No |
+| `scheduler` | Extra settings for the Kubernetes scheduler control plane component. Refer to the [Kube scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler) documenation for more details. | object | No |
+| `kubeletExtraArgs` | Extra arguments for kubelet. Refer to the [Kubeadm init](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init) documentation for more details. | map | No |
+| `files` | Additional files to pass to kubeadmconfig. Refer to the [Customize Pack](/integrations/ubuntu?22.04.x#customizepack) section to learn more. | list | No |
+| `preKubeadmCommands` | Extra commands to issue before kubeadm starts. | list | Yes - Auto generated |
+| `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | Yes - Auto generated |
+| `imageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
+| `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can speficy configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or your can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authories (CA). | object | No |
+| `dns` | Options for the DNS add-on installed in the cluster. Refer to the [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/) to learn more. | object | No |
 
+The following code snippet is an example YAML using all the `kubeadmconfig` parameters mentioned in the table. The example YAML is only for learning purposes. 
 
+<br />
 
-Palette also supports [Ubuntu Pro](https://ubuntu.com/pro). Refer to the Ubuntu Pro section below for more details.
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      insecure-port: "0"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurityPolicy"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+    extraVolumes:
+      - name: audit-log
+        hostPath: /var/log/apiserver
+        mountPath: /var/log/apiserver
+        pathType: DirectoryOrCreate
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  dns:
+    type: CoreDNS
+    imageRepository: public.ecr.aws/eks-distro/coredns
+    imageTag: v1.7.0-eks-1-18-1
+  etcd:
+    local:
+      dataDir: /var/lib/etcd
+      imageRepository: public.ecr.aws/eks-distro/etcd-io
+      imageTag: v3.4.14-eks-1-18-1
+    external:
+      endpoints:
+         - example.org
+      caFile: myCa.file
+      certFile: myCert.file
+      keyFile: myKey.file
+  imageRepository: public.ecr.aws/eks-distro/kubernetes
+  kubeletExtraArgs:
+    read-only-port : "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/privileged-psp.yaml
+      targetPath: /etc/kubernetes/hardening/privileged-psp.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/90-kubelet.conf
+      targetPath: /etc/sysctl.d/90-kubelet.conf
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    
+  preKubeadmCommands:
+    # For enabling 'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+  postKubeadmCommands:
+    # Apply the privileged PodSecurityPolicy on the first master node ; Otherwise, CNI (and other) pods won't come up
+    - 'export KUBECONFIG=/etc/kubernetes/admin.conf'
+    # Sometimes api server takes a little longer to respond. Retry if applying the pod-security-policy manifest fails
+    - '[ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f /etc/kubernetes/hardening/privileged-psp.yaml > /dev/null ); do echo "Failed to apply PodSecurityPolicies, will retry in 5s" ; sleep 5 ; done ; } || echo "Skipping PodSecurityPolicy for worker nodes"'
+```
+
+<br />
+
+<WarningBox>
+
+Review the proper parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
+
+</WarningBox>
+
+Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu?22.04.x#ubuntupro) section below for more details.
 
 <br />
 
@@ -86,10 +179,10 @@ To use the Ubuntu OS pack, add the pack to your cluster profile when selecting t
 <br />
 
 
-### Pack Customization
+### Customize Pack
 
 
-You can customize the Ubuntu OS pack by using the available configuration parameters exposed in pack in the YAML configuration file. Below are a few use case examples.
+You can customize the Ubuntu OS pack by using the available configuration parameters exposed in pack in the YAML configuration file. Use the exposed parameters to customize the Kubernetes install process
 
 <br />
 
@@ -190,12 +283,12 @@ For more information, refer to the [Ubuntu Pro](https://ubuntu.com/pro) document
 
 
 
-You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS for a cluster profile and expand the preset menu to  
+You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS for a cluster profile and expand the preset menu to reveal the Ubuntu Pro parameters. 
 
 
 | Parameter| Description | Default Value |
 |---|---|----|
-|**token**| The Canonical subscription token for Ubuntu Pro. | `""` |
+|**token**| The Canonical subscription token for Ubuntu Pro. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to aquire a subscription token. | `""` |
 |**esm-apps**| Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more. | Disabled |
 | **livepatch** | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details. | Disabled |
 | **fips** |  Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled |
@@ -240,16 +333,16 @@ To enable Ubuntu Pro, use the following steps.
   ![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
 
 
-6. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
+8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
 
-7. Toggle on or off to enable or disable the various Ubuntu Pro services.
+9. Toggle on or off to enable or disable the various Ubuntu Pro services.
 
 
-8. Click the **Next layer** button to continue to the next layer.
+10. Click the **Next layer** button to continue to the next layer.
 
 
-9. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+11. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 
 <br/>
@@ -258,7 +351,7 @@ To enable Ubuntu Pro, use the following steps.
 
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="20.04.x" key="20.04.x">
+<Tabs.TabPane tab="20.04.x LTS" key="20.04.x" identifier="20.04.x">
 
 
 - A minimum of 4 CPU and 4GB Memory
