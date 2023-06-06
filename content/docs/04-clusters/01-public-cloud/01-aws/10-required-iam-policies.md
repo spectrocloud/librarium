@@ -471,7 +471,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
         "iam:CreateOpenIDConnectProvider",
         "iam:DeleteOpenIDConnectProvider",
         "iam:ListOpenIDConnectProviders",
-        "iam:UpdateOpenIDConnectProviderThumbprint",
+        "iam:UpdateOpenIDConnectProviderThumbprint"
       ],
       "Resource": [
         "*"
