@@ -68,8 +68,8 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -221,8 +221,8 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -387,8 +387,8 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|

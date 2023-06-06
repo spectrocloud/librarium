@@ -23,6 +23,14 @@ In addition to its stability, Ubuntu's community support, extensive documentatio
 
 You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when creating a [cluster profile](/cluster-profiles).
 
+<br />
+
+<InfoBox>
+
+Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn about pack update and deprecation schedules.
+
+</InfoBox>
+
 
 # Version Supported
 
