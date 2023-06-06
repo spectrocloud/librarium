@@ -16,6 +16,10 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 Spectro Cloud supports provisioning and end-to-end lifecycle management of Kubernetes clusters (workload clusters) on various private clouds and bare metal servers (installed in data centers). Provisioning of clusters on private environments like VMware, OpenStack etc requires a Private Cloud Gateway (PCG) to be installed for Spectro Cloud to be able to install Kubernetes clusters.
 
+Palette directly interfaces with the private cloud or bare metal servers for self-hosted installation, enabling streamlined provisioning and lifecycle management of clusters. 
+
+You can refer to [Register and Manage MAAS Cloud Accounts]() to learn more about the self-hosted palette in a MAAS environment.
+
 <br />
 
 <InfoBox>

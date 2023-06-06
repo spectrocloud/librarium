@@ -20,6 +20,11 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
 - An installed PCG. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
 
 
+
+- For Self Hosted Palette, ensure Palette has network access to MAAS server.
+
+
+
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
 
   ``APn53wz232ZwBMxDp5:MHZIbUp3e4DJTjZEKg:mdEv33WAG536MhNC8mIywNLtjcDTnFAQ``
@@ -27,7 +32,7 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
  For details, refer to the MAAS document on [how to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
 
 
-# Register a MAAS cloud account
+# Register a MAAS Cloud Account
 
 Follow these steps to create additional MAAS cloud accounts.
 
@@ -68,6 +73,7 @@ Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and 
 <br />
 
 <br />
+
 
 
 

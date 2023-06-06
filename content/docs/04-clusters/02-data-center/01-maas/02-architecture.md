@@ -29,4 +29,4 @@ The following are some architectural highlights of bare-metal Kubernetes cluster
 
 ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.png)
 
-
+- Self-hosted Palette installation provides a **Use System PCG** feature when you create a cloud account for vSphere, MAAS or OpenStack, so you don't need to install PCG separately. The feature enables direct communication of the Palette instance agent with MAAS. 
