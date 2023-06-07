@@ -125,7 +125,7 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
 
 <br />
 
@@ -133,10 +133,6 @@ Add the following extra certificate Subject Alternative Name (SAN) value to the 
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
-
-The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
-
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
@@ -243,7 +239,7 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
 
 <br />
 
@@ -251,10 +247,6 @@ Add the following extra certificate Subject Alternative Name (SAN) value to the 
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
-
-The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
-
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
@@ -359,17 +351,14 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
+
 <br />
 
 ```yaml
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
-
-The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
-
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
