@@ -36,7 +36,10 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - run: npm test
+      - run: npm ci
+      
+      - name: Test
+        run: npm run test
 
   vale:
     # Image Optimizer docs: https://github.com/calibreapp/image-actions
