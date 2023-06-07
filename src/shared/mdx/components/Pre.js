@@ -14,7 +14,6 @@ const Copy = styled.button`
   opacity: 0.3;
   border-radius: 4px;
   background: #fefefe;
-  cursor: pointer;
   overflow: hidden;
   border: none;
   transition: opacity 0.1s ease-in;
