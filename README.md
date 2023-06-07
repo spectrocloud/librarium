@@ -354,14 +354,14 @@ Example
 ![Example usage of codeblocks with highlighting.](assets/docs/images/readme_codeblocks_example.png)
 
 
-### Hide copy clip button
+#### Hide ClipBoard Button
 
-copy button will be shown by default. you can override by passing hideClipboard in markdown
+The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
 
-_Example_: <pre>
-bash hideClipboard
-Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint 
-</pre>
+Example 
+![Example](assets/docs/images/hide_copy_button_example.png)
+
+Result 
 
 ![Result](assets/docs/images/hide_copy_button.png)
 
