@@ -78,7 +78,7 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack:serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
 ## Usage 
@@ -231,7 +231,7 @@ kubeadmconfig:
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack:serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 ## Usage
   
@@ -397,7 +397,7 @@ kubeadmconfig:
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. |
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack:serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
 ## Usage
