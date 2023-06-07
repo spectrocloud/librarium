@@ -22,7 +22,7 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
 
 
 - For self-hosted Palette, ensure Palette has network access to the MAAS server.
-
+Refer to [Register a Self-Hosted Palette Maas Cloud Account](#register-a-self-hosted-palette-maas-cloud-account) to learn more.
 
 
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
@@ -47,7 +47,7 @@ Follow these steps to create additional MAAS cloud accounts.
 3. Locate **MAAS** on the **Cloud Accounts** page and click **Add MAAS Account**.
 
 
-4. Enter values for properties listed in the following table.
+4. On the **Add maas cloud account** pop-up, enter values for properties listed in the following table based for your PCG registration scenario. 
 
 
 | Property | Description |
@@ -56,6 +56,34 @@ Follow these steps to create additional MAAS cloud accounts.
 | Select Private Cloud Gateway | Select your MAAS cloud gateway from the **drop-down Menu**. |
 | API Endpoint | API Endpoint of the gateway.|
 | API Key | The MAAS API key. |
+
+# Register a Self-Hosted Palette Maas Cloud Account
+
+If you're registering a Maas cloud account using a self-hosted Palette, ensure your self-hosted Palette has network access to the Maas server. 
+Follow these steps to register a Maas cloud account using self-hosted Palette. 
+
+<br />
+
+
+1. Follow steps 1-3 listed in [Register a MAAS Cloud Account](#register-a-maas-cloud-account). 
+
+
+
+2. Once you click **Add MAAS Account**, the **Add maas cloud account** pop-up appears. Enter your **Account name.**
+
+
+3. Select the **Use System PCG** checkbox.
+
+
+<InfoBox>
+
+The system PCG enables direct connectivity between Palette and MAAS since there is no firewall or NAT to traverse. Selecting the **Use System PCG** checkbox ensures you register a Maas cloud account without installing PCG.
+
+</InfoBox>  
+
+
+4. Enter your Maas Credentials in the **API Endpoint** and **API Key**. 
+
 
 
 # Validate
