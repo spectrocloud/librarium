@@ -1,7 +1,8 @@
 ---
 title: 'Ubuntu'
 metaTitle: 'Ubuntu'
-metaDescription: 'Choosing Ubuntu as an Operating System within the Palette console'
+metaDescription: 'Choose Ubuntu Operating System pack in Palette.'
+
 hiddenFromNav: true
 type: "integration"
 category: ['operating system']
@@ -21,7 +22,8 @@ Boasting a comprehensive package system, Ubuntu provides a wealth of pre-compile
 
 In addition to its stability, Ubuntu's community support, extensive documentation, and commitment to free software principles make it a widely favored choice among Linux distributions. 
 
-You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when creating a [cluster profile](/cluster-profiles).
+You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when you create a [cluster profile](/cluster-profiles).
+
 
 <br />
 
@@ -47,7 +49,8 @@ Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn a
 
 
 
-- You can use Ubuntu with a supported Kubernetes version. Kubernetes dependencies as listed in the table.
+- You can use Ubuntu with a supported Kubernetes version. The table lists Kubernetes dependencies.
+
 
  |Kubernetes Version | Supports Kubernetes |
 |------------|----------------------------|
@@ -60,7 +63,8 @@ Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn a
 
 The Ubuntu OS pack has no required parameters. 
 
-You can customize the Ubuntu OS pack to help you achieve additional customization. The following configuration blocks are available for use within the `kubeadmconfig` configuration block in the YAML file:
+You can customize the Ubuntu OS pack. The following configuration blocks are available for use within the `kubeadmconfig` configuration block in the YAML file.
+
 
 <br />
 
@@ -74,10 +78,12 @@ You can customize the Ubuntu OS pack to help you achieve additional customizatio
 | `preKubeadmCommands` | Extra commands to issue before kubeadm starts. | list | Yes - Auto generated |
 | `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | Yes - Auto generated |
 | `imageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
-| `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can speficy configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or your can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authories (CA). | object | No |
+| `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can specify configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or you can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authorities (CA). | object | No |
+
 | `dns` | Options for the DNS add-on installed in the cluster. Refer to the [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/) to learn more. | object | No |
 
-The following code snippet is an example YAML using all the `kubeadmconfig` parameters mentioned in the table. The example YAML is only for learning purposes. 
+The following code snippet is an example YAML using all the `kubeadmconfig` parameters listed in the table. The example YAML is only for learning purposes. 
+
 
 <br />
 
@@ -168,7 +174,8 @@ kubeadmconfig:
 
 <WarningBox>
 
-Review the proper parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
+Review the parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
+
 
 </WarningBox>
 
@@ -179,7 +186,8 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu
 ## Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when selecting the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
+
 
 
 <br />
@@ -188,7 +196,8 @@ To use the Ubuntu OS pack, add the pack to your cluster profile when selecting t
 ### Customize Pack
 
 
-You can customize the Ubuntu OS pack by using the available configuration parameters exposed in pack in the YAML configuration file. Use the exposed parameters to customize the Kubernetes install process.
+You can customize the Ubuntu OS pack using the available configuration parameters in the YAML file. Use the parameters to customize the Kubernetes install process.
+
 
 <br />
 
@@ -196,7 +205,8 @@ You can customize the Ubuntu OS pack by using the available configuration parame
 #### Add Custom Files
 
 
-You can create custom files before kubeadm is initialized. Files defined in the `files` section can be used before the `preKubeadmCommands` and `postKubeadmCommands` are executed during runtime. This means that the file creation process takes place before the invocation of kubeadm commands.
+You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and `postKubeadmCommands` sections. The files are invoked during runtime.
+
 
 <br />
 
@@ -263,7 +273,8 @@ kubeadmconfig:
 
 ### Ubuntu Pro
 
-Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and many other security hardening features.  Ubuntu Pro offers several benefits compared to the free Ubuntu offering:
+Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and many other security hardening features.  Ubuntu Pro offers several more benefits than the free Ubuntu offering:
+
 
 <br />
 
@@ -293,7 +304,8 @@ You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu
 | **livepatch** | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details. | Disabled |
 | **fips** |  Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled |
 | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled |
-| **cis** | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based off of the published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled |
+| **cis** | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled |
+
 
 
 Use the following steps to enable Ubuntu Pro.
@@ -301,7 +313,8 @@ Use the following steps to enable Ubuntu Pro.
 <br />
 
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
+
 
 
 2. Navigate to the left **Main Menu** and select **Profiles**.
@@ -317,7 +330,8 @@ Use the following steps to enable Ubuntu Pro.
 5. Select the infrastructure provider and click on **Next**.
 
 
-6. Select the OS layer. You can add Ubuntu by using the following values:
+6. Select the OS layer and use the following information to find the Ubuntu pack:
+
 
     -  **Pack Type** - OS
 
@@ -328,7 +342,8 @@ Use the following steps to enable Ubuntu Pro.
     -  **Pack Version** - 20.04 or 22.04
 
 
-7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML configuration file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+
 
   <br />
 
@@ -338,7 +353,8 @@ Use the following steps to enable Ubuntu Pro.
 8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
 
-9. Toggle on or off to enable or disable the various Ubuntu Pro services.
+9. Toggle options on or off to enable or disable the various Ubuntu Pro services.
+
 
 
 10. Click the **Next layer** button to continue to the next layer.
@@ -362,7 +378,8 @@ Use the following steps to enable Ubuntu Pro.
 
 
 
-- You can use Ubuntu with a supported Kubernetes version. Kubernetes dependencies as listed in the table.
+- You can use Ubuntu with a supported Kubernetes version. The table lists Kubernetes dependencies.
+
 
  |Kubernetes Version | Supports Kubernetes |
 |------------|----------------------------|
@@ -380,7 +397,8 @@ The Ubuntu OS pack has no required parameters.
 
 
 
-You can customize the Ubuntu OS pack to help you achieve additional customization. The following configuration blocks are available for use within the `kubeadmconfig` configuration block in the YAML file:
+You can customize the Ubuntu OS pack. The following configuration blocks are available for use within the `kubeadmconfig` configuration block in the YAML file.
+
 
 <br />
 
@@ -394,10 +412,12 @@ You can customize the Ubuntu OS pack to help you achieve additional customizatio
 | `preKubeadmCommands` | Extra commands to issue before kubeadm starts. | list | Yes - Auto generated |
 | `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | Yes - Auto generated |
 | `imageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
-| `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can speficy configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or your can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authories (CA). | object | No |
+| `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can specify configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or you can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authorities (CA). | object | No |
+
 | `dns` | Options for the DNS add-on installed in the cluster. Refer to the [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/) to learn more. | object | No |
 
-The following code snippet is an example YAML using all the `kubeadmconfig` parameters mentioned in the table. The example YAML is only for learning purposes. 
+The following code snippet is an example YAML using all the `kubeadmconfig` parameters listed in the table. The example YAML is only for learning purposes. 
+
 
 <br />
 
@@ -488,7 +508,8 @@ kubeadmconfig:
 
 <WarningBox>
 
-Review the proper parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
+Review the parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
+
 
 </WarningBox>
 
@@ -499,7 +520,8 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu
 ## Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when selecting the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
+
 
 
 <br />
@@ -508,7 +530,8 @@ To use the Ubuntu OS pack, add the pack to your cluster profile when selecting t
 ### Customize Pack
 
 
-You can customize the Ubuntu OS pack by using the available configuration parameters exposed in pack in the YAML configuration file. Use the exposed parameters to customize the Kubernetes install process.
+You can customize the Ubuntu OS pack using the available configuration parameters in the YAML file. Use the parameters to customize the Kubernetes install process.
+
 
 <br />
 
@@ -516,7 +539,8 @@ You can customize the Ubuntu OS pack by using the available configuration parame
 #### Add Custom Files
 
 
-You can create custom files before kubeadm is initialized. Files defined in the `files` section can be used before the `preKubeadmCommands` and `postKubeadmCommands` are executed during runtime. This means that the file creation process takes place before the invocation of kubeadm commands.
+You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and `postKubeadmCommands` sections. The files are invoked during runtime.
+
 
 <br />
 
@@ -589,7 +613,8 @@ kubeadmconfig:
 
 ### Ubuntu Pro
 
-Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and many other security hardening features.  Ubuntu Pro offers several benefits compared to the free Ubuntu offering:
+Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and many other security hardening features.  Ubuntu Pro offers several more benefits than the free Ubuntu offering:
+
 
 <br />
 
@@ -619,7 +644,8 @@ You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu
 | **livepatch** | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details. | Disabled |
 | **fips** |  Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled |
 | **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more. | Disabled |
-| **cis** | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based off of the published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled |
+| **cis** | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more. | Disabled |
+
 
 
 Use the following steps to enable Ubuntu Pro.
@@ -627,7 +653,8 @@ Use the following steps to enable Ubuntu Pro.
 <br />
 
 
-1. Log in to [Palette](https://console.spectrocloud.com)
+1. Log in to [Palette](https://console.spectrocloud.com).
+
 
 
 2. Navigate to the left **Main Menu** and select **Profiles**.
@@ -643,7 +670,8 @@ Use the following steps to enable Ubuntu Pro.
 5. Select the infrastructure provider and click on **Next**.
 
 
-6. Select the OS layer. You can add Ubuntu by using the following values:
+6. Select the OS layer and use the following information to find the Ubuntu pack:
+
 
     -  **Pack Type** - OS
 
@@ -654,7 +682,8 @@ Use the following steps to enable Ubuntu Pro.
     -  **Pack Version** - 20.04 or 22.04
 
 
-7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML configuration file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+
 
   <br />
 
@@ -664,7 +693,8 @@ Use the following steps to enable Ubuntu Pro.
 8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
 
-9. Toggle on or off to enable or disable the various Ubuntu Pro services.
+9. Toggle options on or off to enable or disable the various Ubuntu Pro services.
+
 
 
 10. Click the **Next layer** button to continue to the next layer.
