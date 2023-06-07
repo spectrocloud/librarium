@@ -65,8 +65,14 @@ The Ubuntu OS pack has no required parameters.
 
 You can customize the Ubuntu OS pack. The following configuration blocks are available for use within the `kubeadmconfig` configuration block in the YAML file.
 
-
 <br />
+
+<InfoBox>
+
+Palette applies a default set of configuration options when deploying Ubuntu. You can override the defaults configurations by using the following parameters but it's not required.
+
+</InfoBox>
+
 
 | Field | Description | YAML Type | Required |
 | --- | --- | --- | --- |
@@ -75,11 +81,10 @@ You can customize the Ubuntu OS pack. The following configuration blocks are ava
 | `scheduler` | Extra settings for the Kubernetes scheduler control plane component. Refer to the [Kube scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler) documenation for more details. | object | No |
 | `kubeletExtraArgs` | Extra arguments for kubelet. Refer to the [Kubeadm init](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init) documentation for more details. | map | No |
 | `files` | Create or specify additional files for the `kubeadmconfig`. Refer to the [Customize Pack](/integrations/ubuntu?22.04.x#customizepack) section to learn more. | list | No |
-| `preKubeadmCommands` | Extra commands to issue before kubeadm starts. | list | Yes - Auto generated |
-| `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | Yes - Auto generated |
+| `preKubeadmCommands` | Extra commands to issue before kubeadm starts. | list | No |
+| `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | No |
 | `imageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
 | `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can specify configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or you can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authorities (CA). | object | No |
-
 | `dns` | Options for the DNS add-on installed in the cluster. Refer to the [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/) to learn more. | object | No |
 
 The following code snippet is an example YAML using all the `kubeadmconfig` parameters listed in the table. The example YAML is only for learning purposes. 
@@ -333,13 +338,13 @@ Use the following steps to enable Ubuntu Pro.
 6. Select the OS layer and use the following information to find the Ubuntu pack:
 
 
-    -  **Pack Type** - OS
+  -  **Pack Type** - OS
 
-    -  **Registry** - Public Repo
+  -  **Registry** - Public Repo
 
-    -  **Pack Name** -Ubuntu
+  -  **Pack Name** -Ubuntu
 
-    -  **Pack Version** - 20.04 or 22.04
+  -  **Pack Version** - 20.04 or 22.04
 
 
 7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
@@ -402,6 +407,14 @@ You can customize the Ubuntu OS pack. The following configuration blocks are ava
 
 <br />
 
+
+<InfoBox>
+
+Palette applies a default set of configuration options when deploying Ubuntu. You can override the defaults configurations by using the following parameters but it's not required.
+
+</InfoBox>
+
+
 | Field | Description | YAML Type | Required |
 | --- | --- | --- | --- |
 | `apiServer` | Extra settings for the Kube API server control plane component. Refer to [Kube API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) documentation for available options. | object | No |
@@ -413,7 +426,6 @@ You can customize the Ubuntu OS pack. The following configuration blocks are ava
 | `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | Yes - Auto generated |
 | `imageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
 | `etcd` | Configuration for etcd. This value defaults to a Local (stacked) etcd. You can specify configurations using [local etcd configuration files](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/), or you can reference [external etcd configurations](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability) or Certificate Authorities (CA). | object | No |
-
 | `dns` | Options for the DNS add-on installed in the cluster. Refer to the [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/) to learn more. | object | No |
 
 The following code snippet is an example YAML using all the `kubeadmconfig` parameters listed in the table. The example YAML is only for learning purposes. 
@@ -672,14 +684,13 @@ Use the following steps to enable Ubuntu Pro.
 
 6. Select the OS layer and use the following information to find the Ubuntu pack:
 
+  -  **Pack Type** - OS
 
-    -  **Pack Type** - OS
+  -  **Registry** - Public Repo
 
-    -  **Registry** - Public Repo
+  -  **Pack Name** -Ubuntu
 
-    -  **Pack Name** -Ubuntu
-
-    -  **Pack Version** - 20.04 or 22.04
+  -  **Pack Version** - 20.04 or 22.04
 
 
 7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
