@@ -21,7 +21,7 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
 
 
 
-- For Self Hosted Palette, ensure Palette has network access to MAAS server.
+- For self-hosted Palette, ensure Palette has network access to the MAAS server.
 
 
 
