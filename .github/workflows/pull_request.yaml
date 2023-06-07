@@ -20,6 +20,23 @@ jobs:
     # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
     # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
       - run: exit 0
+  
+  run-test:
+    name: Test
+    needs: [run-ci]
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - run: npm test
 
   vale:
     # Image Optimizer docs: https://github.com/calibreapp/image-actions
@@ -43,7 +60,7 @@ jobs:
 
   build:
     name: Build
-    needs: [run-ci]
+    needs: [run-ci, run-test]
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:

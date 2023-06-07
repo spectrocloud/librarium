@@ -23,7 +23,7 @@ An instance is launched and terminated every 30 minutes prior to completion of i
 
 <br />
 
-```bash
+```bash hideClipboard
 Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint
 ```
 
