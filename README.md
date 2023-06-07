@@ -354,6 +354,16 @@ Example
 ![Example usage of codeblocks with highlighting.](assets/docs/images/readme_codeblocks_example.png)
 
 
+### Hide copy clip button
+
+copy button will be shown by default. you can override by passing hideClipboard in markdown
+
+_Example_: <pre>
+bash hideClipboard
+Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint 
+</pre>
+
+![Result](assets/docs/images/hide_copy_button.png)
 
 
 ### Using Warning Box compponent/Info Box component or any component that wraps content

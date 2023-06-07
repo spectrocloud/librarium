@@ -68,7 +68,11 @@
     "@semantic-release/git": "latest",
     "@semantic-release/github": "latest",
     "@semantic-release/npm": "latest",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^12.1.5",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^29.5.0",
+    "babel-preset-gatsby": "^3.10.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.20.2",
@@ -80,6 +84,9 @@
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-react-router-scroll": "^4.0.0",
     "husky": "^8.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "linkinator": "^4.1.0",
     "prettier": "^2.4.1",
     "semantic-release": "^20.1.0",
@@ -95,6 +102,6 @@
     "clean": "gatsby clean",
     "linkinator": "linkinator http://localhost:9000 --recurse --timeout 60000 --retry --retry-errors-count 3 --skip '^http(?!.*spectrocloud\\.com).*$' --format csv >> link_report.csv",
     "test-links": "start-server-and-test serve http://localhost:9000 linkinator",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   }
 }
