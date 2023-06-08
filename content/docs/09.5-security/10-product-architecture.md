@@ -55,7 +55,7 @@ Palette is a multi-tenant SaaS system where every tenant represents a customer. 
 - **Noisy Neighbor Prevention**: In the SaaS deployment models, we use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
 
 
-## Authentication and Authorization
+## Palette Authentication & Authorization
 
 Palette fully supports Role-Based Access Control (RBAC) and two authentication modes:
 

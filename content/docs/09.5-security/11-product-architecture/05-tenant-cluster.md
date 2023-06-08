@@ -41,13 +41,6 @@ Each tenant cluster has a management agent that runs as a pod. This agent has an
 
 In a self-hosted environment, where Palette is typically deployed on-prem behind a firewall, you must ensure security controls in your environment. Palette automatically generates security keys at installation and stores them in the management cluster. You can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN). Palette supports enabling disk encryption policies for management cluster VMs if required.
 
-Self-hosted deployment considerations:
-
-* In deployments that require a proxy internet connection, both the Private Cloud Gateway (PCG) component and the management agent support SOCKS5 or HTTPS proxy.
-
-* Customers manage their own SSH public keys unless an agreement is in place for Spectro Cloud to maintain their environment.
-
-* Palette does not phone home or send telemetry or customer data back to the SaaS platform.
 
 ## Hardened Operating System
 
@@ -94,6 +87,8 @@ You can set a schedule to start Kubernetes conformance and compliance tests usin
 ## Kubernetes Authentication & Authorization
 
 Kubernetes cluster authentication can be optionally integrated with Kubelogin with OIDC-based authentication/authorization against external IDP. This enables group membership-based access control on different namespaces within the tenant Kubernetes cluster. Spectro Cloud’s Terraform provider also supports automatically set role binding on namespaces with users or groups.
+
+<br />
 
 ## Compliance & Security Scans
 
