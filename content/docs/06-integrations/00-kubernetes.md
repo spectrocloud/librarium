@@ -112,7 +112,7 @@ palette:
 
 <br />
 
-#### Configure OIDC Identify Provider
+#### Configure OIDC Identity Provider
 
 When you add the PXK pack to your AWS, EKS, or MAAS cluster profile, Palette displays the following OIDC IDP choices. 
 
@@ -126,7 +126,7 @@ If you do ***not*** choose Palette or your tenant as the IDP, you must manually 
 
   <InfoBox>
 
-  We do not recommend this setting in production environments, as it may disable authenticaiton on add-ons that rely on OIDC.
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
   </InfoBox>
 
@@ -143,26 +143,28 @@ If you do ***not*** choose Palette or your tenant as the IDP, you must manually 
 
 You only need to configure OIDC manually if you select **None** or **Custom** as the IDP. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
 
-<!-- <br />
+<br />
 
 <Tabs>
 
 <Tabs.TabPane tab="Basic OIDC Setup" key="Basic OIDC Setup">
 
-<br /> -->
+<br />
 
-<!-- Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
+Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
+
+</Tabs>
 
 #### Use RBAC with OIDC
 
-All IDP options below require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started with the Kubernetes Dashboard and an IDP.
+All IDP options require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started with the Kubernetes Dashboard and an IDP.
 
 * You can create a custom role by using a manifest file in your cluster profile and specifying the creation of a Role or ClusterRole. You can also specify the roleBinding in the same manifest file. 
 
 
 * Alternatively, you can use the [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) that are available and create a roleBinding for a set of users or groups. As an example, you could assign yourself or another user a roleBinding to the role `view` or `cluster-admin`. By assigning yourself or your users one of the default Kubernetes roles, you will be able to view resources in the Kubernetes Dashboard. Use the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.  
 
-![The two options presented above displayed in a diagram](/integrations_spectro-k8s-dashboard_diagram-flow-users.png) -->
+![The two options presented above displayed in a diagram](/integrations_spectro-k8s-dashboard_diagram-flow-users.png)
 
 
 
@@ -170,7 +172,7 @@ All IDP options below require you to map a set of users or groups to a Kubernete
 
 #### Example Kubeadm Configuration File 
 
-```yaml
+<!-- ```yaml
 pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
@@ -277,98 +279,7 @@ kubeadmconfig:
     #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
     #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
     #oidc-extra-scope: profile,email
-```
-
-<!-- ```yaml
-pack:
-  k8sHardening: True
-  podCIDR: "192.168.0.0/16"
-  serviceClusterIpRange: "10.96.0.0/12"
-
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      secure-port: "6443"
-      anonymous-auth: "true"
-      profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
-      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-    extraVolumes:
-      - name: audit-log
-        hostPath: /var/log/apiserver
-        mountPath: /var/log/apiserver
-        pathType: DirectoryOrCreate
-  controllerManager:
-    extraArgs:
-      profiling: "false"
-      terminated-pod-gc-threshold: "25"
-      pod-eviction-timeout: "1m0s"
-      use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
-  scheduler:
-    extraArgs:
-      profiling: "false"
-  kubeletExtraArgs:
-    read-only-port : "0"
-    event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
-    protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-  files:
-    - path: hardening/audit-policy.yaml
-      targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/90-kubelet.conf
-      targetPath: /etc/sysctl.d/90-kubelet.conf
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - targetPath: /etc/kubernetes/pod-security-standard.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-      content: |
-        apiVersion: apiserver.config.k8s.io/v1
-        kind: AdmissionConfiguration
-        plugins:
-        - name: PodSecurity
-          configuration:
-            apiVersion: pod-security.admission.config.k8s.io/v1
-            kind: PodSecurityConfiguration
-            defaults:
-              enforce: "baseline"
-              enforce-version: "v1.26"
-              audit: "baseline"
-              audit-version: "v1.26"
-              warn: "restricted"
-              warn-version: "v1.26"
-              audit: "restricted"
-              audit-version: "v1.26"
-            exemptions:
-              usernames: []
-              runtimeClasses: []
-              namespaces: [kube-system]
-  preKubeadmCommands:
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
-  postKubeadmCommands:
-    - 'echo "List of post kubeadm commands to be executed"'
-#clientConfig:
-  #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
-  #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-  #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  #oidc-extra-scope: profile,email
 ``` -->
-
 
 </Tabs.TabPane>
 
