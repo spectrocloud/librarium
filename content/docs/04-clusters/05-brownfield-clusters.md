@@ -16,13 +16,17 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments.
 
-Palette also supports generic cluster imports, where the users import their existing clusters to Palette, regardless of the cloud service provider. For example, if Palette does not support the existing cluster's cloud type, those clusters could be imported as Generic clusters.
+Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality, because Palette understands how to interact with the cloud-provider. Conversely, generic clusters are more limited, since Palette is unaware of the underlying cloud provider.
 
-The name _generic_ implies support will be extended to the generic operations on the cluster. The generic operations include scans, backups, etc., which are not specific to the cloud infrastructure. Therefore, for generic-imported clusters, the user will not be able to add cloud-specific, add-on profiles. Instead, they can add profiles of the cloud type, which is supported for all.
-
+<WarningBox>
+The name _generic_ means that support will be extended only to generic operations on the cluster. The generic operations include scans, backups, etc., which are not specific to the cloud provider. There are two major restrictions for imported generic clusters:
+- Users will not be able to use cloud-specific cluster profiles, and are limited to using add-on profiles.
+- Users will not be able to perform cloud-specific cluster management operations such scaling nodes, adding worker pools, etc.
+</WarningBox>
+  
 <br />
 
-- In addition to Palette Generic cluster import, we support public cloud-managed services such as:
+- Palette supports the following cloud providers:
 
   - Amazon
 
@@ -41,19 +45,23 @@ The name _generic_ implies support will be extended to the generic operations on
 
 - Clusters provisioned using orchestration tools (Kubeadm, kOps, etc.)
 
+## Self-hosting support
+
+Self-hosted Palette also supports importing clusters - but the user needs to ensure network connectivity is available between the target import cluster and the Palette instance.
+
 # Prerequisites
 
 - Kubernetes version >= 1.19.X
 
-- Egress internet access (e.g: api.spectrocloud.com)
-
-- DNS configured for public internet name resolution
-
+- Networking
+  - For Palette SaaS or dedicated Palette SaaS: - egress internet access (https://api.spectrocloud.com or https://your-instance.spectrocloud.com)
+  - For self-hosted, egress access to the location of the self-hosted Palette instance, e.g. https://your-self-hosted-palette.somewhere.com
+  - DNS appropriately configured for public internet name resolution and/or private resolution in the case of self-hosting
 - Metrics server (highly recommended for full permissions mode import)
 
 <WarningBox>
 
-While importing EKS clusters, Palette encourages importing Standard clusters over [Autopilot Clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview).
+While importing EKS clusters, Palette encourages importing standard clusters over [Autopilot Clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview).
 
 </WarningBox>
 
@@ -75,17 +83,17 @@ Run the following steps to import a brownfield cluster into the Palette platform
 
 6. Choose from the **Cloud Type** list where the cluster is currently deployed.
 
-   **Note**: If you are importing a Generic cluster, there is an option to provide the proxy/non-proxy information, if applicable.
+   **Note**: If you are importing a generic cluster, there is an option to provide the proxy/non-proxy information, if applicable.
 
 7. Select **Import mode** by choosing the permissions level and clicking the **Create & Open Cluster Instance** button.
 
 <InfoBox>
-<b>Read-Only mode</b>: Starting with minimal permission allows health check monitoring, event logging, cost, and usage analysis. This state is optimal for those who want to restrict the minimal permissions allowed in the initial setup. When you are ready to raise the permissions levels, migrate to full permissions mode.
+<b>Read-Only mode</b>: Starting with minimal permissions allows health check monitoring, event logging, cost, and usage analysis. This state is optimal for those who want to restrict access during initial setup. When you are ready to raise the permissions levels, migrate to full permissions mode.
 
 <br />
 <br />
 
-<b>Full Permission mode</b>: This mode grants Palette the ability to apply Add-on Cluster Profiles to an imported cluster.
+<b>Full Permission mode</b>: This mode grants Palette the ability to apply add-on cluster profiles to an imported cluster.
 </InfoBox>
 
 ## Install the Agent
@@ -157,7 +165,7 @@ When you are ready to expand the permissions or enable day 2 operations, migrate
 
 # Attach Add-on Profiles
 
-Add-on cluster profiles can be attached to brownfield clusters, after an import, to install and manage various applications/integrations above the Core Infrastructure layers. The following steps need to be performed to attach Add-on profiles to existing clusters:
+Add-on cluster profiles can be attached to brownfield clusters following import in order to install and manage various applications/integrations. The following steps need to be performed to attach add-on profiles to existing clusters:
 
 <br />
 
