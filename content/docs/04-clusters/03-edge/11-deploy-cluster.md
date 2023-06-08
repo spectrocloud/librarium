@@ -112,11 +112,11 @@ This section will guide you to generate an Edge installer ISO image and  provide
 cd CanvOS
 ```
 
-View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
+View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
 <br />
 
 ```bash
-git tags
+git tag
 ```
 
 Check out the repository tag that matches your Palette product version. Your Palette product version is displayed in the top left corner, as shown in the screenshot below. 
