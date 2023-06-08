@@ -33,7 +33,7 @@ Spectro Cloud provides several packs out-of-the-box for all the layers and at th
 
 We ensure our out-of-the-box core layers are secure. Customers are responsible for security if they bring their own packs. Palette provides defaults for its out-of-the-box add-on layers based on third-party best practices. Customers have the flexibility to tune the configuration to best fit their needs, making it a shared responsibility.
 
-## Cloud Infrastructure
+## Cloud Infrastructure Security
 
 When deployed in a public cloud, Kubernetes nodes from tenant clusters are deployed within a logically isolated virtual network (e.g., VPC in AWS) that has private and public subnets. The control plane and worker nodes for the Kubernetes cluster are launched in a private network. All ports on the nodes are protected from external access.
 

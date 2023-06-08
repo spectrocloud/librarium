@@ -29,9 +29,9 @@ Palette supports three different architecture models: multi-tenant SaaS, dedicat
 
 - **Self-hosted**: The management plane is hosted in your environment. It can be on-prem VMware vSphere, OpenStack, bare metal, or in a public cloud that manages your compute instances, or a managed Kubernetes cluster such as Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE).
 
-Palette’s robust security measures safeguard your data and ensure the integrity of our services. We adhere to industry-leading standards and continuously refine our practices to provide the highest level of security. Palette infrastructure safeguards data in your Kubernetes production environment with its zero-trust architecture, granular Role-Based Access Control (RBAC), immutable Linux distributions ([Kairos](https://kairos.io/)), and hardened clusters and Kubernetes packs. Review [Hardened Infrastructure](/security/hardened-infrastructure) to learn more.
+Palette’s robust security measures safeguard your data and ensure the integrity of our services. We adhere to industry-leading standards and continuously refine our practices to provide the highest level of security. Palette infrastructure safeguards data in your Kubernetes production environment with its zero-trust architecture, granular Role-Based Access Control (RBAC), immutable Linux distributions ([Kairos](https://kairos.io/)), and hardened clusters and Kubernetes packs.
 
-Palette's security controls ensure data protection in SaaS operation at the management platform level and the [tenant](/glossary-all#tenant) cluster level. To learn more, refer to [SaaS Operation](/security/saas-operation). In self-hosted operation, you must ensure security controls in your environment. Find out more about self-hosted deployment in [Self-Hosted Operation](/security/self-hosted-operation).
+Palette's security controls ensure data protection in SaaS operation at the management platform level and the [tenant](/glossary-all#tenant) cluster level. To learn more, refer to [SaaS Operation](/security/product-architecture/saas-operation). In self-hosted operation, you must ensure security controls in your environment. Find out more about self-hosted deployment in [Self-Hosted Operation](/security/product-architecture/self-hosted-operation).
 
 
 ## Multi-tenancy
@@ -52,7 +52,7 @@ Palette is a multi-tenant SaaS system where every tenant represents a customer. 
 - **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
 
 
-- **Noisy Neighbor Prevention**: We use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
+- **Noisy Neighbor Prevention**: In the SaaS deployment models, we use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
 
 
 ## Authentication and Authorization
