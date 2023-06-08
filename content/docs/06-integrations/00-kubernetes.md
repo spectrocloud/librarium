@@ -54,6 +54,13 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 - A minimum of 4 CPU and 4GB Memory.
 
+
+- Configured OpenID Connect (OIDC) Identify Provider (IDP).
+
+
+- Users or groups mapped to a Kubernetes RBAC role.
+
+
 - Operating System (OS) dependencies as listed in the table.
 
 | OS Distribution | OS Version | Supports Kubernetes 1.26.x |
@@ -153,26 +160,64 @@ You only need to configure OIDC manually if you select **None** or **Custom** as
 
 Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
+<br />
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="AWS EKS" key="AWS EKS Setup">
+
+<br />
+
+To enable OIDC manually for EKS clusters, follow these steps:
+
+<br />
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+
+```yaml
+oidcIdentityProvider:
+    identityProviderConfigName: 'Spectro-docs'
+    issuerUrl: 'issuer-url'
+    clientId: 'user-client-id-from-Palette'
+    usernameClaim: "email"
+    usernamePrefix: "-"
+    groupsClaim: "groups"
+    groupsPrefix: ""
+    requiredClaims:
+```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+```yaml
+clientConfig:
+  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-extra-scope: profile,email
+```
+
+</Tabs.TabPane>
+
 </Tabs>
 
 #### Use RBAC with OIDC
 
 All IDP options require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started with the Kubernetes Dashboard and an IDP.
 
+<br />
+
 * You can create a custom role by using a manifest file in your cluster profile and specifying the creation of a Role or ClusterRole. You can also specify the roleBinding in the same manifest file. 
 
 
 * Alternatively, you can use the [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) that are available and create a roleBinding for a set of users or groups. As an example, you could assign yourself or another user a roleBinding to the role `view` or `cluster-admin`. By assigning yourself or your users one of the default Kubernetes roles, you will be able to view resources in the Kubernetes Dashboard. Use the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.  
 
-![The two options presented above displayed in a diagram](/integrations_spectro-k8s-dashboard_diagram-flow-users.png)
-
-
+![The two options presented above displayed in a diagram.](/integrations_spectro-k8s-dashboard_diagram-flow-users.png)
 
 <br />
 
 #### Example Kubeadm Configuration File 
 
-<!-- ```yaml
+```yaml
 pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
@@ -279,7 +324,7 @@ kubeadmconfig:
     #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
     #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
     #oidc-extra-scope: profile,email
-``` -->
+```
 
 </Tabs.TabPane>
 
@@ -290,6 +335,7 @@ kubeadmconfig:
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
+
 
 - Operating System (OS) dependencies as listed in the table.
 
