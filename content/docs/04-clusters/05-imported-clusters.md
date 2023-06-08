@@ -1,7 +1,7 @@
 ---
-title: "Brownfield Clusters"
-metaTitle: "Managing brownfield clusters on Palette"
-metaDescription: "Importing and managing brownfield clusters provisioned on any CSP using other orchestration tools"
+title: "Imported Clusters"
+metaTitle: "Imported Clusters"
+metaDescription: "Learn how to manage imported clusters and what operations are supported with Palette."
 icon: "cloud-download-alt"
 hideToC: false
 fullWidth: false
@@ -14,15 +14,21 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Existing Kubernetes clusters that Palette has not deployed can be imported into the Palette platform for visibility, management, and additional capabilities such as application lifecycle management. Palette allows the import and management of Kubernetes clusters in various public, private, and bare-metal environments.
+Existing Kubernetes clusters that were not deployed through Palette can be imported into the Palette for visibility, limited Day -2 management, and additional capabilities such as application lifecycle management. You can import Kubernetes clusters from various public cloud, private cloud, and bare-metal environments.
 
-Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality, because Palette understands how to interact with the cloud-provider. Conversely, generic clusters are more limited, since Palette is unaware of the underlying cloud provider.
+Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality because Palette understands how to interact with the cloud provider. Generic clusters are more limited because Palette is unaware of the underlying cloud provider. 
 
-<WarningBox>
-The name _generic_ means that support will be extended only to generic operations on the cluster. The generic operations include scans, backups, etc., which are not specific to the cloud provider. There are two major restrictions for imported generic clusters:
-- Users will not be able to use cloud-specific cluster profiles, and are limited to using add-on profiles.
-- Users will not be able to perform cloud-specific cluster management operations such scaling nodes, adding worker pools, etc.
-</WarningBox>
+
+The generic cluster operations include scans, backups, and other Day-2 operations which are not specific to the cloud provider. There are two major restrictions for imported generic clusters:
+
+<br />
+
+- Users will not be able to use cloud-specific cluster profiles and are limited to using add-on profiles.
+
+
+- Users cannot perform cloud-specific cluster management operations such as scaling nodes, adding worker pools, or any operations that require Palette to have knowledge of the underlying infrastructure.
+
+
   
 <br />
 
@@ -39,24 +45,32 @@ The name _generic_ means that support will be extended only to generic operation
   - OpenShift
 
   - EKS-Anywhere
-    <br />
 
-- Clusters provisioned through other management platforms (Rancher, CCP, etc.)
 
-- Clusters provisioned using orchestration tools (Kubeadm, kOps, etc.)
+- Clusters that are provisioned through other management platforms such as Rancher, CCP, etc.
 
-## Self-hosting support
 
-Self-hosted Palette also supports importing clusters - but the user needs to ensure network connectivity is available between the target import cluster and the Palette instance.
+- Clusters that are provisioned using orchestration tools such as Kubeadm, kOps, etc.
 
-# Prerequisites
+## Self-Hosted Support
+
+Self-hosted Palette also supports importing clusters. You must ensure network connectivity is available between the target import cluster and the Palette instance.
+
+
+# Import a Cluster
+
+
+## Prerequisites
 
 - Kubernetes version >= 1.19.X
 
 - Networking
   - For Palette SaaS or dedicated Palette SaaS: - egress internet access (https://api.spectrocloud.com or https://your-instance.spectrocloud.com)
+
   - For self-hosted, egress access to the location of the self-hosted Palette instance, e.g. https://your-self-hosted-palette.somewhere.com
+
   - DNS appropriately configured for public internet name resolution and/or private resolution in the case of self-hosting
+
 - Metrics server (highly recommended for full permissions mode import)
 
 <WarningBox>
@@ -65,7 +79,7 @@ While importing EKS clusters, Palette encourages importing standard clusters ove
 
 </WarningBox>
 
-# Importing a Brownfield Cluster
+## Import Steps
 
 Run the following steps to import a brownfield cluster into the Palette platform:
 

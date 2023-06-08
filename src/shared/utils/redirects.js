@@ -236,6 +236,12 @@ const redirects = [
     toPath: `/integrations/ubuntu`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/brownfield-clusters`,
+    toPath: `/clusters/imported-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
