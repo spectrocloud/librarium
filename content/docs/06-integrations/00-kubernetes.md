@@ -92,14 +92,14 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Configure OpenID Connect (OIDC) parameters to specify a third-party Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
+- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, refer to the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- If you do not select Palette as the OIDC IDP, and you you want to use a reverse proxy with your Kubernetes cluster, you must add a certificate for the Spectro Proxy pack. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 #### Configuration Changes
 
-When applied to AWS, MAAS, and EKS cluster profiles, the PXK Kubeadm configuration has been updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. The IDP you select from options displayed in the OIDC options drawer are automatically  
+When applied to AWS, MAAS, and EKS cluster profiles, the PXK Kubeadm configuration has been updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. The IDP you select from options displayed in the **OIDC Identity Provider** options drawer are automatically added to the `identityProvider` parameter. 
 
 <br />
 
@@ -107,24 +107,37 @@ When applied to AWS, MAAS, and EKS cluster profiles, the PXK Kubeadm configurati
 palette:
    config:
      dashboard:
-       identityProvider:
+       identityProvider: <your_idp_selection>
 ```
 
 <br />
 
-#### Configure Kubernetes OIDC
+#### Configure OIDC Identify Provider
 
 When you add the PXK pack to your AWS, EKS, or MAAS cluster profile, Palette displays the following OIDC IDP choices. 
 
-If you do ***not*** choose Palette or your tenant as the IDP, you must manually configure OIDC parameters to specify a third-party IDP. 
+If you do ***not*** choose Palette or your tenant as the IDP, you must manually configure OIDC parameters in the pack to specify a third-party IDP. 
 
-- **None**: This setting requires you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the YAML file. 
+<br />
 
-- **Custom**: This setting requires you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the YAML file.
+- **None**: This setting requires you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file.
+
+  <br />
+
+  <InfoBox>
+
+  We do not recommend this setting in production environments, as it may disable authenticaiton on add-ons that rely on OIDC.
+
+  </InfoBox>
+
+- **Custom**: This setting requires you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file.
+
 
 - **Palette**: This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. 
 
+
 - **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+
 
 #### Manually Configure OIDC (is this needed??)
 
@@ -157,8 +170,116 @@ All IDP options below require you to map a set of users or groups to a Kubernete
 
 #### Example Kubeadm Configuration File 
 
-
 ```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+  palette:
+    config:
+      dashboard:
+        identityProvider: palette
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      default-not-ready-toleration-seconds: "60"
+      default-unreachable-toleration-seconds: "60"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+    extraVolumes:
+      - name: audit-log
+        hostPath: /var/log/apiserver
+        mountPath: /var/log/apiserver
+        pathType: DirectoryOrCreate
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+      - name: pod-security-standard
+        hostPath: /etc/kubernetes/pod-security-standard.yaml
+        mountPath: /etc/kubernetes/pod-security-standard.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port: "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/90-kubelet.conf
+      targetPath: /etc/sysctl.d/90-kubelet.conf
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - targetPath: /etc/kubernetes/pod-security-standard.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+      content: |
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: AdmissionConfiguration
+        plugins:
+        - name: PodSecurity
+          configuration:
+            apiVersion: pod-security.admission.config.k8s.io/v1
+            kind: PodSecurityConfiguration
+            defaults:
+              enforce: "baseline"
+              enforce-version: "v1.26"
+              audit: "baseline"
+              audit-version: "v1.26"
+              warn: "restricted"
+              warn-version: "v1.26"
+              audit: "restricted"
+              audit-version: "v1.26"
+            exemptions:
+              # Array of authenticated usernames to exempt.
+              usernames: []
+              # Array of runtime class names to exempt.
+              runtimeClasses: []
+              # Array of namespaces to exempt.
+              namespaces: [kube-system]
+
+    preKubeadmCommands:
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+    postKubeadmCommands:
+    - 'echo "List of post kubeadm commands to be executed"'
+
+    # Client configuration to add OIDC based authentication flags in kubeconfig
+    #clientConfig:
+    #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+    #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+    #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    #oidc-extra-scope: profile,email
+```
+
+<!-- ```yaml
 pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
@@ -246,7 +367,7 @@ kubeadmconfig:
   #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
   #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
   #oidc-extra-scope: profile,email
-```
+``` -->
 
 
 </Tabs.TabPane>
@@ -572,6 +693,7 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 
 
 You can reference Kubernetes in Terraform with the following code snippet.
+
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
