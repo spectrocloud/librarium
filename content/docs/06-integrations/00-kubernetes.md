@@ -99,15 +99,18 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-When applied to AWS, MAAS, and EKS cluster profiles, the PXK Kubeadm configuration has been updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter.
+When applied to AWS, MAAS, and EKS cluster profiles, the PXK Kubeadm configuration has been updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. The IDP you select from options displayed in the OIDC options drawer are automatically  
 
-```bash
+<br />
+
+```yaml
 palette:
    config:
      dashboard:
        identityProvider:
 ```
 
+<br />
 
 #### Configure Kubernetes OIDC
 
@@ -127,15 +130,15 @@ If you do ***not*** choose Palette or your tenant as the IDP, you must manually 
 
 You only need to configure OIDC manually if you select **None** or **Custom** as the IDP. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
 
-<br />
+<!-- <br />
 
 <Tabs>
 
 <Tabs.TabPane tab="Basic OIDC Setup" key="Basic OIDC Setup">
 
-<br />
+<br /> -->
 
-Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
+<!-- Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 #### Use RBAC with OIDC
 
@@ -146,7 +149,7 @@ All IDP options below require you to map a set of users or groups to a Kubernete
 
 * Alternatively, you can use the [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) that are available and create a roleBinding for a set of users or groups. As an example, you could assign yourself or another user a roleBinding to the role `view` or `cluster-admin`. By assigning yourself or your users one of the default Kubernetes roles, you will be able to view resources in the Kubernetes Dashboard. Use the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.  
 
-![The two options presented above displayed in a diagram](/integrations_spectro-k8s-dashboard_diagram-flow-users.png)
+![The two options presented above displayed in a diagram](/integrations_spectro-k8s-dashboard_diagram-flow-users.png) -->
 
 
 
