@@ -191,54 +191,7 @@ Add-on cluster profiles can be attached to brownfield clusters following import 
 
 4. Click **Save**. The cluster configuration and the new layers from the attached profiles will then be installed on the cluster.
 
-# Deleting an Imported Cluster
 
-<br />
-
-The deletion of the imported cluster results in the removal of the workspace, cloud infrastructure, control plane nodes, and worker nodes created for the cluster.
-
-The following tasks need to be performed to delete an imported cluster:
-
-<br />
-
-1. Go to the **Clusters** tab from the slide menu.
-
-2. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
-
-3. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete Cluster**.
-
-4. Type the name of the cluster you wish to delete.
-
-5. Click **Confirm** and delete.
-
-<InfoBox>
-In Read-Only mode, if user want to delete/detach cluster then they need to run the following command manually on the cluster.
-
-       kubectl delete -n cluster-xxxxxx
-
-</InfoBox>
-
-Cluster status is updated to _Deleting_ while cluster resources are being deleted. In addition, the cluster status is updated with the ongoing progress of the delete operation. This deletion state can go up to 15 minutes.
-
-Once all resources are successfully deleted, the cluster status changes to _Deleted_ and is removed from the unfiltered list of clusters. Toggle the **Deleted only** checkbox to view the deleted clusters from the last 72 hours.
-
-# Force Delete a Cluster
-
-A cluster stuck in the **Deletion** state can be force deleted by the user through the user interface (UI). The user can go for a force deletion of the cluster, only if it is stuck in a deleting state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
-
-## To force delete a cluster:
-
-1. Log in to the Palette Management Console.
-
-2. Navigate to the **Cluster Details** page of the cluster stuck in a deleting mode.
-
-   - If the deleting mode is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
-
-   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the force delete button.
-
-<WarningBox>
-If there are any cloud resources still on the cloud, the user should clean up those resources before going for the force deletion.
-</WarningBox>
 
 # Example Cluster Imports Illustration
 
