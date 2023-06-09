@@ -46,7 +46,6 @@ In self-hosted Palette installations, customers manage their own SSH public keys
 
 # Resources
 
-[Self-Hosted Operation](/security/product-architecture/self-hosted-operation)
 [Tenant Cluster Security](/security/product-architecture/tenant-cluster)
 
 <br />

@@ -13,8 +13,6 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Tenant Kubernetes clusters can be launched in the tenant’s choice of public cloud, private cloud, or bare metal environment.
-
 Tenant clusters are Kubernetes clusters deployed by Palette for customers and can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](/cluster-profiles). 
 
 Cluster profiles are cluster construction templates for the tenant cluster. Palette deploys a Kubernetes cluster based on what the profile specifies.
@@ -78,8 +76,6 @@ We assess major Kubernetes versions based on the extent of changes.
 
 Kubernetes run-time security support is achieved through a variety of add-on packages, such as Sysdig Falco and Twistlock.
 
-Kubernetes cluster authentication can be optionally integrated with Kubelogin using OpenID Connect (OIDC) authentication and authorization against an external Identity Provider (IDP).
-
 You can set a schedule to start Kubernetes conformance and compliance tests using kube-bench, kube-hunter, and Sonobuoy. These tests ensure tenant clusters are secure, compliant, and up to date.
 
 <br />
@@ -92,6 +88,6 @@ Kubernetes cluster authentication can be optionally integrated with Kubelogin wi
 
 ## Compliance & Security Scans
 
-Palette provides a way to run compliance, security, conformance, and software bill of materials (SBOM) scans on tenant clusters. These scans ensure clusters adhere to specific compliance and security standards. The scans also detect potential vulnerabilities by performing penetration tests.
+You can initiate multiple scans on tenant clusters. These scans ensure clusters adhere to specific compliance and security standards. The scans also detect potential vulnerabilities by performing penetration tests.
 
-Palette supports four types of scans. Each scan generates reports with details specific to the type of scan. You can initiate multiple scans of each type over time. In addition, Palette keeps a history of previous scans for comparison purposes.
+Palette supports four types of scans: compliance, security, conformance, and software bill of materials (SBOM). Each scan generates reports with details specific to the type of scan. You can initiate multiple scans of each type over time. In addition, Palette keeps a history of previous scans for comparison purposes.

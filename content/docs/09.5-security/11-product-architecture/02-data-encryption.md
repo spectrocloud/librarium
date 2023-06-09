@@ -62,15 +62,3 @@ Palette secures data in motion using an encrypted Transport Layer Security (TLS)
 
 - **Message Bus**: A NATS message bus is used for asynchronous communication between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect to the message bus. Authentication and authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
 
-
-## Secure Communications
-
-Palette secures data in transit using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions.
-
-Public certificates are created using a certificate manager for external API and UI communication. For self-hosted deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
-
-Services in the management cluster communicate over HTTPS with self-signed certificates and are signed using a Rivest–Shamir–Adleman (RSA) 2048-bit key.
-
-The database connection from Palette internal services active in the management cluster to MongoDB is protected by TLS with Authentication enabled.
-
-Static Network Address Translation (NATS) messages are exchanged using TLS protocol, and each tenant cluster uses dedicated credentials to connect a message bus facilitated and managed by Palette. Authentication and Authorization policies are enforced in the NATS deployment to ensure message and data isolation across tenants.
