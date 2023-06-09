@@ -524,7 +524,7 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 
 
 
-7. Log in with the user `agent` and use the password you specified in the htpasswd file.
+8. Log in with the user `agent` and use the password you specified in the htpasswd file.
 
 
 <InfoBox>
