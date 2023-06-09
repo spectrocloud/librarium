@@ -14,11 +14,7 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # Data Center Clusters 
 
-Palette supports provisioning and end-to-end lifecycle management of Kubernetes workload clusters on various private clouds, bare metal servers installed in data centers, and in self-hosted environments.
-
-Clusters provisioned in private environments, such as VMware and OpenStack, require a Private Cloud Gateway (PCG) to be installed to allow Palette to launch Kubernetes clusters. However, in self-hosted environments, Palette can interface directly with the private cloud or bare metal servers to provision clusters and provide lifecycle management.
-
-Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts) to learn more about the self-hosted palette in a MAAS environment.
+Palette supports provisioning and end-to-end lifecycle management of Kubernetes workload clusters on various private clouds, bare metal servers installed in data centers, and in self-hosted environments. Palette simplifies the process, making it easy for users to deploy and manage Kubernetes clusters efficiently using data center clusters.
 
 <br />
 

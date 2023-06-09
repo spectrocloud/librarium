@@ -13,9 +13,10 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Palette supports integration with Canonical MAAS to give a cloud-like experience to deploying, running, and managing Kubernetes clusters directly on top of bare metal servers. Palette achieves this using its Private Cloud Gateway (PCG) application to facilitate communication with and manage a MAAS bare metal cloud. 
+Palette enables seamless integration with Canonical MAAS, allowing users to deploy and manage Kubernetes clusters directly on bare metal servers. Palette achieves this through the Private Cloud Gateway (PCG), establisheing a secure connection from the internal network to the internet-accessible Palette instance, and effectively bypassing NAT gateways and firewalls.
 
-Palette also offers self-hosted deployment of Kubernetes clusters in the MAAS environment. In self-hosted deployments, Palette enables direct access to MAAS through a private network without the need to install a PCG. This setup also ensures network connectivity and flexibility for managing Kubernetes clusters on bare metal servers. To learn how to deploy Kubernetes clusters using self-hosted Palette, refer to [Create and Manage MAAS Clusters.](/clusters/data-center/maas/create-and-manage-maas-clusters)
+
+Palette supports self-hosted deployment of Kubernetes clusters in the MAAS environment, allowing direct access to MAAS through a private network without needing a PCG. This setup ensures network connectivity and flexibility in managing Kubernetes clusters on bare metal servers, either through a VPN or by directly accessing the Palette instance via a private network.
 
 <br />
 
