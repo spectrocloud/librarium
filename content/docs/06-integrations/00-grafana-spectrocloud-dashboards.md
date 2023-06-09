@@ -1,7 +1,7 @@
 ---
 title: 'Spectro Cloud Grafana Dashboards'
 metaTitle: 'Spectro Cloud Grafana Dashboards'
-metaDescription: 'Learn more about the Spectro Cloud Grafana dashboard and how to use them.'
+metaDescription: 'Learn more about the Spectro Cloud Grafana dashboard and how to use it.'
 hiddenFromNav: true
 type: "integration"
 category: ['monitoring']
