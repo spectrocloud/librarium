@@ -611,7 +611,7 @@ spec:
     spec:
       containers:
       - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.11
+        image: ghcr.io/spectrocloud/hello-universe:1.0.12
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -771,7 +771,7 @@ Download the tutorial image to your local machine.
 <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+docker pull ghcr.io/spectrocloud/tutorials:1.0.5
 ```
 
 Next, start the container, and open a bash session into it.
