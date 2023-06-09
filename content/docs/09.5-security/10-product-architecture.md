@@ -1,7 +1,7 @@
 ---
 title: "Secure Product Architecture"
 metaTitle: "Secure Product Architecture"
-metaDescription: "Lorem ipsum dolor"
+metaDescription: "Learn about the integrity of Palette's secure architecture."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,17 +13,17 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Outside of our security principles and secure development lifecycle, Spectro Cloud also provides a cohesive security architecture for Palette.
+In addition to the security principles we adhere to and our secure development lifecycle, we provide a cohesive security architecture for Palette.
 
 ## Secure Product Architecture
 
-Palette uses a micro services-based architecture, and we take steps to ensure each service is secured. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, that Palette hosts and manages in SaaS mode or that users can host and manage in a self-hosted environment.
+Palette uses a microservices-based architecture, and we take steps to ensure each service is secured. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, which Palette hosts and manages in Software as a Service (SaaS) mode or that users can host and manage in a self-hosted environment.
 
 Palette supports three different architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support for air gaped environment. These flexible deployment models allow us to adapt to existing requirements in terms of separating responsibilities and network restrictions.
 
 <br />
 
-- **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions that Spectro Cloud manages: us-east-1, us-west-1, and us-west-2. Each customer occupies a tenant in our multi-tenant cloud environment. Our  Operations team controls when to upgrade the management plane.
+- **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions that Spectro Cloud manages: us-east-1, us-west-1, and us-west-2. Each customer occupies a tenant in our multi-tenant cloud environment. Our Operations team controls when to upgrade the management plane.
 
 - **Dedicated SaaS**: The management plane is hosted in a cloud or region that you specify in Spectro Cloud’s cloud account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.
 
@@ -36,7 +36,7 @@ Palette's security controls ensure data protection in SaaS operation at the mana
 
 ## Multi-tenancy
 
-Palette is a multi-tenant SaaS system where every tenant represents a customer. We ensure tenant isolation through the following design principles and techniques:
+Palette is a multi-tenant SaaS platform in which every tenant represents a customer. We ensure tenant isolation through the following design principles and techniques:
 
 <br />
 
@@ -52,7 +52,7 @@ Palette is a multi-tenant SaaS system where every tenant represents a customer. 
 - **Audit Policies**:  We record all actions taken on the platform and provide a comprehensive report for tracking purposes.
 
 
-- **Noisy Neighbor Prevention**: In the SaaS deployment models, we use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
+- **Noisy Neighbor Prevention**: In the SaaS deployment model, we use AWS Load Balancers and AWS CloudFront with a web application firewall (WAF) for all our public-facing services. These services benefit from the protections of AWS Shield Standard, which defends against the most common and frequently occurring network and transport layer Distributed Denial-of-Service (DDoS) attacks that target applications. This ensures that excessive calls from a tenant do not adversely affect other tenants' use of the platform.
 
 
 ## Palette Authentication & Authorization
@@ -68,7 +68,7 @@ Palette fully supports Role-Based Access Control (RBAC) and two authentication m
 
 - *Single Sign-On (SSO)* and *Multi-Factor Authentication (MFA)* <br />
 
-    In these modes, the tenant is configured to have Security Assertion Markup Language (SAML) 2.0 IDP integrations. If the IDP requires MFA, you are redirected to the IDP’s authentication page. SSO can also map a user to one or more user groups in the tenant automatically.
+    In these modes, the tenant is configured to have Security Assertion Markup Language (SAML) 2.0 IDP integrations. If the IDP requires MFA, you are redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the tenant.
 
 
 ## API Security

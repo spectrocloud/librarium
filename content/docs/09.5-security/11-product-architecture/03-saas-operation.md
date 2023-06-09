@@ -19,7 +19,7 @@ Palette can be deployed as a multi-tenant SaaS system in which each tenant repre
 
 ## Cloud Infrastructure Security
 
-In public cloud environments like AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity).
+In public cloud environments such as AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity).
 
 This allows the SaaS controller to do the following:
 
@@ -30,13 +30,15 @@ This allows the SaaS controller to do the following:
 
 - Act as an orchestrator to initiate SaaS controller requests for deployments.
 
-When a Palette SaaS deployment must connect on-premises (for VMware or MAAS environments) to deploy target Kubernetes clusters, a Private Cloud Gateway (PCG) component is deployed in the self-hosted environment as a virtual appliance (OVA). Private Cloud Gateway is Palette's on-premises component to enable support for isolated, private cloud or Datacenter environments. The PCG component installed on-premises automatically pairs with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Spectro Cloud SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS).
+When a Palette SaaS deployment such as VMware or MAAS environments must connect on-prem to deploy target Kubernetes clusters, a Private Cloud Gateway (PCG) component is deployed in the self-hosted environment as a virtual appliance (OVA). The PCG is Palette's on-prem component to enable support for isolated, private cloud or Datacenter environments. 
+
+The PCG pairs automatically with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Palette SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS).
 
 <br />
 
 ## Control Plane and Worker Nodes
 
-Control plane nodes and worker nodes in the Kubernetes cluster that hosts the Palette SaaS platform are launched in private subnets. All ports on the nodes are protected from external access.
+Control plane nodes and worker nodes in the Kubernetes cluster hosting Palette SaaS are launched in private subnets. All ports on the nodes are protected from external access.
 
 In self-hosted Palette installations, customers manage their own SSH public keys unless an agreement is in place for Spectro Cloud to maintain their environment.
 

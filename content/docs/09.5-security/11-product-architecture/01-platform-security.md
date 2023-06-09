@@ -21,7 +21,7 @@ For SaaS deployment models, cloud and Virtual Machine (VM) security are handled 
 
 ## Operating Systems
 
-The operating system used for instances that form the Spectro Cloud Management Platform Kubernetes cluster is Ubuntu 20.04 LTS. Spectro Cloud follows CIS standard to harden the operating system.
+The operating system that Palette uses for its Kubernetes management cluster is Ubuntu 20.04 LTS. We follow CIS standards to harden the operating system.
 
 These hardened images are used to launch control planes and worker nodes for the Kubernetes cluster hosting Palette. Additionally, all OS images are scanned for vulnerabilities prior to being published to a repository.
 
@@ -35,4 +35,4 @@ All container images are scanned for vulnerabilities prior to being published to
 
 ## Kubernetes Hardening
 
-Kubernetes version used for Spectro Cloud’s platform is secured per CIS Kubernetes Benchmark. Several additional rules are also enforced on components such as the API Server, Controller Manager, Scheduler, and Kubelet.
+We secure Palette's Kubernetes version based on Center for Internet Security (CIS) Kubernetes benchmarks. Several additional rules are also enforced on components such as the API Server, Controller Manager, Scheduler, and Kubelet.

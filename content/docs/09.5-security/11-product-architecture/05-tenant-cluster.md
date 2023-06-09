@@ -15,13 +15,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 Tenant Kubernetes clusters can be launched in the tenant’s choice of public cloud, private cloud, or bare metal environment.
 
-Palette has security controls for the operating system, containers, and Kubernetes. Tenant clusters are Kubernetes clusters deployed by Palette for customers (tenants) in their choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control for designing these tenant clusters through a construct called [Cluster Profiles](/cluster-profiles).
+Tenant clusters are Kubernetes clusters deployed by Palette for customers and can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](/cluster-profiles). 
 
-Cluster profiles are cluster construction templates that enable customers to construct a blueprint for the tenant cluster. Palette’s provisioning engine deploys a Kubernetes cluster based on what the profile specifies.
+Cluster profiles are cluster construction templates for the tenant cluster. Palette deploys a Kubernetes cluster based on what the profile specifies.
 
-A cluster profile definition consists of various system layers like Operating System (OS), Kubernetes Distro, Storage, Networking, Monitoring, Logging, and more. The OS and Kubernetes layers are considered core layers, whereas layers such as Logging, Monitoring, and others are add-on layers. Several choices are presented for each layer in the profile in the form of Packs.
+A cluster profile consists of core layers that consist of an Operating System (OS), a Kubernetes distribution, networking, and storage, and any add-on layers such as monitoring, logging, and more. Palette offers several choices for each profile layer in the form of Packs.
 
-Spectro Cloud provides several packs out-of-the-box for all the layers and at the same time provides extensibility by allowing customers to bring their own packs. The flexibility and extensibility of the platform make the security of the tenant clusters a shared responsibility.
+We offer several packs out-of-the-box and the flexibility for you to bring your own pack for use in Palette cluster profiles. Palette's flexibility and extensibility make the security of tenant clusters a shared responsibility, as shown in the table. 
 
 |Layer            |Out of the box Pack | Custom Pack|
 |:---------------|:---------|:--------------|
@@ -31,11 +31,11 @@ Spectro Cloud provides several packs out-of-the-box for all the layers and at th
 |Networking|Spectro Cloud Responsibility|Customer Responsibility|
 |Add-Ons|Spectro Cloud & Customer Responsibility|Customer Responsibility|
 
-We ensure our out-of-the-box core layers are secure. Customers are responsible for security if they bring their own packs. Palette provides defaults for its out-of-the-box add-on layers based on third-party best practices. Customers have the flexibility to tune the configuration to best fit their needs, making it a shared responsibility.
+We ensure our out-of-the-box core layer packs are secure. You ensure security for custom packs and add-on packs you bring to Palette. Palette provides defaults for its out-of-the-box add-on layers based on third-party best practices. You have the flexibility to tune the configuration to fit your needs, making security a shared responsibility.
 
 ## Cloud Infrastructure Security
 
-When deployed in a public cloud, Kubernetes nodes from tenant clusters are deployed within a logically isolated virtual network (e.g., VPC in AWS) that has private and public subnets. The control plane and worker nodes for the Kubernetes cluster are launched in a private network. All ports on the nodes are protected from external access.
+In a public cloud, Kubernetes nodes in tenant clusters are deployed within a logically isolated virtual network that has private and public subnets. The control plane and worker nodes for the Kubernetes cluster are launched in a private network. All ports on the nodes are protected from external access.
 
 Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using static Network Address Translation (NAT) with Transport Layer Security (TLS) protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
 
@@ -58,7 +58,7 @@ Palette's OS hardening utility performs the following tasks:
 
 - Removes legacy services and graphical user interface (GUI) packages.
 
-Palette allows you to set up OS patching policies. You can patch the base OS when you deploy the cluster. Refer to the [OS Patching](/clusters/cluster-management/os-patching) documentation to learn more.
+Palette allows you to set up OS patching policies. You can patch the base OS when you deploy the cluster. Refer to [OS Patching](/clusters/cluster-management/os-patching) to learn more.
 
 <br />
 
@@ -86,7 +86,7 @@ You can set a schedule to start Kubernetes conformance and compliance tests usin
 
 ## Kubernetes Authentication & Authorization
 
-Kubernetes cluster authentication can be optionally integrated with Kubelogin with OIDC-based authentication/authorization against external IDP. This enables group membership-based access control on different namespaces within the tenant Kubernetes cluster. Spectro Cloud’s Terraform provider also supports automatically set role binding on namespaces with users or groups.
+Kubernetes cluster authentication can be optionally integrated with Kubelogin with OIDC-based authentication/authorization against external IDP. This enables group membership-based access control on different namespaces within the tenant Kubernetes cluster. Our Terraform provider also supports automatically set role binding on namespaces with users or groups.
 
 <br />
 

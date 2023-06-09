@@ -18,7 +18,7 @@ In [self-hosted operation](/enterprise-version), where Palette is typically depl
 In self-hosted deployments, the Open Virtualization Appliance (OVA) can operate in stand-alone mode for quick Proof of Concept (POC) or in enterprise mode, which launches a three-node High Availability (HA) cluster as the Palette management cluster. The management cluster provides a browser-based web interface that allows you to set up a tenant and provision and manage tenant clusters. You can also deploy Palette to a Kubernetes cluster by using the Palette Helm Chart. Refer to the [Install Using Helm Chart](/enterprise-version/deploying-palette-with-helm) guide to learn more.
 
 
-Self-hosted deployment considerations:
+The following points apply to self-hosted deployments:
 
 * In deployments that require a proxy internet connection, both the Private Cloud Gateway (PCG) component and the management agent support SOCKS5 or HTTPS proxy.
 

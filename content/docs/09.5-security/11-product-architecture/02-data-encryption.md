@@ -1,7 +1,7 @@
 ---
 title: "Data Encryption"
 metaTitle: "Data Encryption"
-metaDescription: "Description to adapt."
+metaDescription: "Learn about Palette security controls for data and communications."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -20,7 +20,7 @@ Palette has security controls for the operating system, containers, and Kubernet
 
 ## Data At Rest Encryption
 
-Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in cluster’s etcd key-value store. In addition, all message communication uses tenant-specific channels.
+Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each tenant. The tenant key is encrypted using the system root key and is stored in the database. The system root key is stored in the cluster’s etcd key-value store. All message communication uses tenant-specific channels.
 
 ### Secure Keys
 
@@ -46,9 +46,9 @@ In self-managed deployments, keys are generated during installation and stored a
 
 ## Data In Transit Encryption
 
-Palette secures data in motion using an encrypted TLS communication channel for all internal and external interactions.<br /><br />
+Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal and external interactions.<br /><br />
 
-- **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. For on-prem deployment, you can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN).
+- **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. In on-prem deployments, you can import an optional certificate and private key to match the Fully Qualified Domain Name (FQDN) management cluster.
 
 <br />
 
@@ -56,7 +56,7 @@ Palette secures data in motion using an encrypted TLS communication channel for 
 
 <br />
 
-- **Database Communication**: The database connection from Palette internal services active in the management cluster to MongoDB is protected by TLS with Authentication enabled.
+- **Database Communication**: The database connection between Palette internal services that are active in the management cluster and MongoDB is protected by TLS with Authentication enabled.
 
 <br />
 
