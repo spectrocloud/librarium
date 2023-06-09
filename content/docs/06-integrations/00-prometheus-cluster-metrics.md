@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The Prometheus Cluster Metrics pack exposes Palette-specific metrics data from host clusters to Prometheus. You can use this data to learn more about the state of your clusters, resource utilization, and more. Use the [Spectro Cloud Grafana Dashboards](/integrations/grafana-spectrocloud-dashboards) pack to access the metric data through Grafana dashboards.
+The Prometheus Cluster Metrics pack exposes Palette-specific host cluster metrics to Prometheus. You can use this data to learn about the state of your clusters, resource utilization, and more. Use the [Spectro Cloud Grafana Dashboards](/integrations/grafana-spectrocloud-dashboards) pack to access the metric data through Grafana dashboards.
 
 
 # Versions Supported

@@ -140,13 +140,13 @@ The Prometheus Operator pack will install an unsecured Prometheus server by defa
 21. Click on **Add New Cluster**. Select **Deploy New Cluster**.
 
 
-22. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
+22. Choose the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-23. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster to. Click on **Next**.
+23. Assign a name to the host cluster and select the registered account you will deploy it to. Click on **Next**.
 
 
-24. Pick the cluster profile you created earlier and complete the remainder of the cluster creation process.
+24. Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
 
 When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from Prometheus agents.
 
@@ -351,20 +351,20 @@ In this guide, the following domains are used to expose the monitoring stack:
 26. Click on **Add New Cluster**. Select **Deploy New Cluster**.
 
 
-27. Pick the infrastructure provider you selected for the cluster profile you created earlier. 
+27. Choose the infrastructure provider you selected for the cluster profile you created earlier. 
 
 
-28. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster. Click on **Next**.
+28. Assign a name to the host cluster and select the registered account you will deploy it to. Click on **Next**.
 
 
-29. Pick the cluster profile you created earlier and complete the remainder of the cluster creation process.
+29. Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
 
 
 30. Once the host cluster is deployed, navigate to the left **Main Menu** and select **Clusters**. Click on your cluster to display the details page and ensure its status is **Running**. 
 
 
 
-31. Download the Kubernetes config file. Click on the URL that has the name of your cluster followed by a period and the word *kubeconfig*. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#accessclusterwithcli) for additional guidance.
+31. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period and the word *kubeconfig*. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#accessclusterwithcli) for additional guidance.
 
 
 32. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
@@ -375,7 +375,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
   ```
 
-33. Create a htpasswd file for the user `agent` and assign a password. You can choose a different username if you prefer something else. 
+33. Create an htpasswd file for the user `agent` and assign a password. You can choose a different username if you prefer. 
 
   <br />
 
@@ -407,7 +407,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 35. Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left **Main Menu** > **Profiles** > select your cluster profile. Click on the Prometheus operator layer to edit the YAML.
 
 
-36. Locate the `prometheus.ingress` section located towards the end of the file. Update the ingress configuration with the values provided below. Replace the `hosts` parameter with your custom domain.
+36. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values provided below. Replace the `hosts` parameter with your custom domain.
 
   <br />
 
@@ -446,7 +446,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   </WarningBox>
 
 
-41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the CNAME's record value. Use the table below to identify what domain to map each load balancer hostname.
+41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the CNAME's record value. Use the table below to identify which mapping to use between the domain and each load balancer hostname.
 
   | Service | Domain| CNAME Value Example |
   |---|---|---|
@@ -474,7 +474,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 
   </InfoBox>
 
-42. Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate manager service to generate a public certificate that you can attach to the load balancers with minimal friction. On-prem, use the default certificate manager used by your organization. 
+42. Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate manager service to generate a public certificate that you can attach to the load balancers with minimal overhead. On-prem, use the default certificate manager used by your organization. 
 
 
 
@@ -491,7 +491,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   |443| `metrics.example.com`| Use the same instance port the original entry for port 80 is using.| `nginx-ingress-controller` |
 
 
-45. Wait for the DNS changes to propagate. This could take between one to five minutes.
+45. Wait for the DNS changes to propagate. This can take up to five minutes.
 
 
 Your monitoring stack is now enabled with authentication and network encryption. 

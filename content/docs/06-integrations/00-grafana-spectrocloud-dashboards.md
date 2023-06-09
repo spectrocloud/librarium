@@ -39,7 +39,7 @@ The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal clus
 
 # Prerequisites
 
-* A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) `v45.4.X` or greater installed. Check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) for instructions on how to deploy a monitoring stack.
+* A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) `v45.4.X` or greater installed. Check out [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) for instructions on how to deploy a monitoring stack.
 
 
 * A cluster profile with the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack `v3.4.X` or greater installed.
@@ -55,7 +55,7 @@ You can learn how to add the Spectro Cloud Grafana Dashboards to your cluster by
 
 <WarningBox>
 
-Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
+Pods without the defined attributes `request` and `limit` will not display metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
 
 </WarningBox>
 
