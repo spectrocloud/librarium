@@ -437,8 +437,8 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
  - [Install MAAS](https://maas.io/)
 
 
- - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
+ - [MAAS Fresh Install](https://maas.io/docs/how-to-install-maas)
 
 
- - [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
+ - [Manage MAAS User Accounts](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
 

@@ -19,7 +19,7 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
 
 - An installed PCG if you do not have a direct connection to the MAAS environment. 
 
-  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**.
+  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the table in the [Architecture](/clusters/data-center/maas/architecture) guide.
 
 
 

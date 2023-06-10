@@ -51,10 +51,6 @@ The table below lists when you would use Palette's PCG or the System Private Gat
 | Environment requires internet access. |   ✅  | ❌ |
 | Requires Dedicated Infrastructure | ✅| ❌ |
 | Reduces Network Hops | ❌ | ✅ |
-| Enabled during Cluster Deployment | ✅ | ✅ |
-| Enabled during Cluster Deletion | ✅ | ✅ |
-| Separate PCG Installation | ✅ | ❌ |
-| Environment supports Virtual Private Network (VPN) connectivity. |  ❌  | ✅ |
 
 
 <br />
