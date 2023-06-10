@@ -27,7 +27,7 @@ Canonical MAAS is an open-source tool that lets you discover, commission, deploy
 
   <br />
 
-  Refer to image below for MAAS Cluster Architecture.
+  The diagram below illustrates how MAAS works with Palette using a PCG.
 
   <br />
 
@@ -35,26 +35,26 @@ Canonical MAAS is an open-source tool that lets you discover, commission, deploy
 
 
 
-- Self-hosted Palette instances can communicate directly with the MAAS environment if both resources are reachable from a networking perspective. You can enable this behavior when registering a MAAS account with Palette. In the Palette MAAS account wizard, select the **Use System Private Gateway** option to enable direct communication between Palette and MAAS.  Refer to the [Register and Manage MAAS Cloud Account](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more.
+- Self-hosted Palette instances can communicate directly with the MAAS environment if both resources can access each other directly over the network. In this scenario, you can use the system PCG. When you register a MAAS account with Palette, you would select **Use System Private Gateway** to enable direct communication between Palette and MAAS. Refer to the [Register and Manage MAAS Cloud Account](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more.
 
   
 
-The table below distinguishes between the properties of PCG and System Private Gateway: 
+The table below lists when you would use Palette's PCG or the System Private Gateway. 
 
 <br />
 
-| Property | PCG | System Private Gateway |
+| Attribute | PCG | System Private Gateway |
 |-----------|----|----------------|
-| Connects to SaaS Environment| ✅ | ❌ |
-| Connects to Self-hosted Environment | ✅ | ✅ |
-| Direct Network Access to MAAS from Self-hosted Palette |  ❌ | ✅ |
-| Requires Internet Access |   ✅  | ❌ |
+| Connects to Palette SaaS. | ✅ | ❌ |
+| Connects to self-hosted Palette. | ✅ | ✅ |
+| Direct network access to MAAS from self-hosted Palette.  |  ❌ | ✅ |
+| Environment requires internet access. |   ✅  | ❌ |
 | Requires Dedicated Infrastructure | ✅| ❌ |
 | Reduces Network Hops | ❌ | ✅ |
 | Enabled during Cluster Deployment | ✅ | ✅ |
 | Enabled during Cluster Deletion | ✅ | ✅ |
 | Separate PCG Installation | ✅ | ❌ |
-| Supports VPN or Private Network Connectivity |  ❌  | ✅ |
+| Environment supports Virtual Private Network (VPN) connectivity. |  ❌  | ✅ |
 
 
 <br />

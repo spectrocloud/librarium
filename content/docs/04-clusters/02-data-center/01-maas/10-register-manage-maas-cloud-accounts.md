@@ -45,17 +45,17 @@ Follow these steps to create additional MAAS cloud accounts.
 3. Locate **MAAS** on the **Cloud Accounts** page and click **Add MAAS Account**.
 
 
-4. On the **Add maas cloud account** pop-up, enter values for properties listed in the following table.
+4. In the next window that displays, enter values for properties listed in the following table.
 
-    For a self-hosted environment, you can register a MAAS cloud account without installing a PCG. Toggle **Use System Private Gateway** to register without a PCG.
+    In a self-hosted environment where Palette has direct network access to MAAS, you can register a MAAS cloud account without installing the PCG. Note the **Use System Private Gateway** setting listed in the table.
 
 
 | Property | Description |
 |-----------|-------------|
 | Account Name | Custom name for the cloud name. |
-| Use System Private Gateway | Toggle this option to bypass PCG install. |
-| Select Private Cloud Gateway | Select your MAAS cloud gateway from the drop-down menu. |
-| API Endpoint | API Endpoint of the gateway. |
+| Use System Private Gateway | This setting is for self-hosted environments that do not require a PCG. Toggle this option to bypass installing the PCG.|
+| Select Private Cloud Gateway | Select your MAAS cloud gateway from the **drop-down Menu**. |
+| API Endpoint | API endpoint of the gateway. |
 | API Key | The MAAS API key. |
 
 5. Click **Confirm** to register your MAAS cloud account. 
