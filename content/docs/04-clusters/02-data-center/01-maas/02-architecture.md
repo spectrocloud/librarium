@@ -23,7 +23,7 @@ Canonical MAAS is an open-source tool that lets you discover, commission, deploy
 - Palette provides a cloud-like experience for deploying clusters on bare metal servers. The result is increased performance at minimal cost and operational effort.
 
 
-- A Private Cloud Gateway (PCG) that you install into a MAAS cloud using a local installer will facilitate communication between Palette and MAAS. This is necessary because Palette needs to communicate with a specific MAAS server. However, MAAS environments are typically in a private network without a central endpoint. The PCG provides this endpoint and also wraps the MAAS environment into a cloud account that you can target for cluster deployment in Palette.  
+- A Private Cloud Gateway (PCG) that you install into a MAAS cloud using a local installer facilitates communication between Palette and MAAS. The PCG is necessary in MAAS environments where Palette does not have direct network access to the MAAS server. Since MAAS environments are typically in a private network without a central endpoint, the PCG provides this endpoint and also wraps the MAAS environment into a cloud account that you can target for cluster deployment in Palette.  
 
   <br />
 
@@ -49,8 +49,6 @@ The table below lists when you would use Palette's PCG or the System Private Gat
 | Connects to self-hosted Palette. | ✅ | ✅ |
 | Direct network access to MAAS from self-hosted Palette.  |  ❌ | ✅ |
 | Environment requires internet access. |   ✅  | ❌ |
-| Requires Dedicated Infrastructure | ✅| ❌ |
-| Reduces Network Hops | ❌ | ✅ |
 
 
 <br />

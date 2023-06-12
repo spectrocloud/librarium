@@ -29,7 +29,7 @@ The following pages provide detailed instructions for setting up new workload cl
 
 <br />
 
-- [Canonical MAAS](/clusters/data-center/maa)
+- [Canonical MAAS](/clusters/data-center/maas)
 
 
 - [OpenStack](/clusters/data-center/openstack)
