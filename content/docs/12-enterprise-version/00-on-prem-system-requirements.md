@@ -24,7 +24,7 @@ Palette is available as a self-hosted application that you install in your envir
 | **VMWare Quick Start Mode**  | A single VM deployment of the platform that is ideal for use in Proofs of Concept (PoCs). |
 | **Helm Chart Mode**  | Install Palette in an existing Kubernetes cluster using a Helm Chart. |
 
-The next sections below describe the standard requirements and highlight specific requirements for all modes.
+The next sections below describe specific requirements for all modes.
 
 <br />
 
