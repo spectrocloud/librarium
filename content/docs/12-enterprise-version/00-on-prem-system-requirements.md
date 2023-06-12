@@ -1,7 +1,7 @@
 ---
 title: "System Requirements"
 metaTitle: "System Requirements"
-metaDescription: "An overview of the self-hosted Palette system requirements"
+metaDescription: "An overview of the self-hosted Palette system requirements."
 icon: ""
 hideToC: true
 fullWidth: false
@@ -24,7 +24,7 @@ Palette is available as a self-hosted application that you install in your envir
 | **VMWare Quick Start Mode**  | A single VM deployment of the platform that is ideal for use in Proofs of Concept (PoCs). |
 | **Helm Chart Mode**  | Install Palette in an existing Kubernetes cluster using a Helm Chart. |
 
-The next sections below describe specific requirements for all modes.
+The next sections describe specific requirements for all modes.
 
 <br />
 
@@ -221,7 +221,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
   #### VM Storage Policies Privileges
 
-  -   View  access for VM storage policies is required, ensure the privilege `StorageProfile.View` is available. Refer to the [VM Storage Policies Privileges](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-DECEAE60-58CB-4B30-8874-FA273573E6B5.html) reference resource to learn more.
+  -   View  access for VM storage policies is required. Ensure the privilege `StorageProfile.View` is available. Refer to the [VM Storage Policies Privileges](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-DECEAE60-58CB-4B30-8874-FA273573E6B5.html) resource to learn more.
 
 </Tabs.TabPane>
 
