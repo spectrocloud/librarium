@@ -35,7 +35,7 @@ Canonical MAAS is an open-source tool that lets you discover, commission, deploy
 
 
 
-- Self-hosted Palette instances can communicate directly with the MAAS environment if both resources can access each other directly over the network. In this scenario, you can use the system PCG. When you register a MAAS account with Palette, you would select **Use System Private Gateway** to enable direct communication between Palette and MAAS. Refer to the [Register and Manage MAAS Cloud Account](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more. For the self-hosted Palette instance, MAAS on port 5240 is reachable.
+- Self-hosted Palette instances can communicate directly with the MAAS environment if both resources can access each other directly over the network. In this scenario, you can use the system PCG. When you register a MAAS account with Palette, you would select **Use System Private Gateway** to enable direct communication between Palette and MAAS. Refer to the [Register and Manage MAAS Cloud Account](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more. For the self-hosted Palette instance, MAAS is reachable on port 5240.
 
   
 
