@@ -14,7 +14,7 @@ import Tooltip from 'shared/components/ui/Tooltip';
 
 # Data Center Clusters 
 
-Palette supports provisioning and end-to-end lifecycle management of Kubernetes workload clusters on various private clouds, bare metal servers installed, and in self-hosted environments.
+Palette supports provisioning and end-to-end lifecycle management of Kubernetes workload clusters on various private clouds, bare metal servers, and in self-hosted environments.
 
 <br />
 
