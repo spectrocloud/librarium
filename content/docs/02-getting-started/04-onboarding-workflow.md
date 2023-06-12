@@ -18,14 +18,10 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Palette Onboarding Workflow
 
-Palette has a well-organized product onboarding process to streamline user-product adoption. The two significant steps of our onboarding workflow are:
-
-* Product Tour
-
-* Palette Experience
+Palette offers a product tour to help you get familiar with the console and many of its key components.
 
 ## Product Tour
-Upon a successful sign in to our platform, we start the onboarding process with a product tour—an introduction to the platform, to familiarize the users with our Palette features.
+Upon a successful sign-in to our platform, we start the onboarding process with a product tour—an introduction to the platform, to familiarize the users with our Palette features.
 
 
 ## Start your Palette Experience
