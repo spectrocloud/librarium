@@ -127,12 +127,12 @@ The root-level role privileges are applied to root object and Datacenter objects
 |**Cns**|Searchable|
 |**Datastore**|Browse datastore
 |**Host**|Configuration
-||* Storage partition configuration
+|| Storage partition configuration
 |**vSphere** **Tagging**|Create vSphere Tag|
 ||Edit vSphere Tag|
 |**Network**|Assign network|
 |**Sessions**|Validate session|
-|**Profile-driven storage**|Profile-driven storage view|
+|**VM Storage Policies**|View VM storage policies|
 |**Storage views**|View|
 
 <br />
@@ -217,10 +217,11 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Profile Driven Storage" key="Profile Driven Storager">
+<Tabs.TabPane tab="Storage Policies" key="storage-policies">
 
-  #### Profile Driven Storage
-  - Profile-driven storage view
+  #### VM Storage Policies Privileges
+
+  -   View  access for VM storage policies is required, ensure the privilege `StorageProfile.View` is available. Refer to the [VM Storage Policies Privileges](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-DECEAE60-58CB-4B30-8874-FA273573E6B5.html) reference resource to learn more.
 
 </Tabs.TabPane>
 
@@ -343,7 +344,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 |**Cns**|Searchable|
 |**Datastore**|Browse datastore
 |**Host**|Configuration
-||* Storage partition configuration
+|| Storage partition configuration
 |**vSphere** **Tagging**|Create vSphere Tag|
 ||Edit vSphere Tag|
 |**Network**|Assign network|
@@ -560,7 +561,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 |**Cns**|Searchable|
 |**Datastore**|Browse datastore
 |**Host**|Configuration
-||* Storage partition configuration
+|| Storage partition configuration
 |**vSphere** **Tagging**|Create vSphere Tag|
 ||Edit vSphere Tag|
 |**Network**|Assign network|
@@ -825,11 +826,12 @@ The following section provides the hardware requirements for Palette Platform VM
 
 
 <br />
+
 <InfoBox>
 The size of the Tenant Cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity guidance below.
 </InfoBox>
 
-## On-premise Configurations
+## Self-Hosted Configuration
 
 | **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
 | ---------------------- | ------------------------------------------- | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
