@@ -31,7 +31,7 @@ Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a *Role* or a *ClusterRole*. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more. 
+- Users or groups must be mapped to a Kubernetes RBAC role, either a *Role* or a *ClusterRole*. You can create a custom role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more. 
 
 
 ## Parameters

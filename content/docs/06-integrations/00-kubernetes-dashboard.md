@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes Dashboard"
 metaTitle: "Kubernetes Dashboard"
-metaDescription: "Kubernetes Dashboard Monitoring pack in Spectro Cloud"
+metaDescription: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Dashboard Monitoring pack."
 hiddenFromNav: true
 type: "integration"
 hideToC: false
@@ -17,18 +17,18 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Kubernetes Dashboard
 
-[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them and manage the cluster itself. 
+The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack is a general-purpose, web-based UI that allows you to manage clusters and the applications deployed in them. 
 
-The Kubernetes Dashboard pack you can use to access the dashboard requires the Spectro Proxy pack to expose the dashboard.
+The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack. Learn more about enabling this capability by reviewing the [Spectro Proxy](/integrations/frp) guide.
 <br /> 
 
-<InfoBox>
+<!-- <InfoBox>
 
-Palette supports provisioning a reverse proxy that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability. 
+Palette supports provisioning a reverse proxy that can expose the Kubernetes dashboard. Learn more about enabling this capability by reviewing the [Spectro Proxy](/integrations/frp) guide. 
 
-</InfoBox>
+</InfoBox> -->
 
-A user-friendly version of this pack is available, Spectro Kubernetes Dashboard, which requires minimal configuration when used with the default settings. To learn more, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
+A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
 
 
 <br />
@@ -41,21 +41,19 @@ A user-friendly version of this pack is available, Spectro Kubernetes Dashboard,
 
 <Tabs.TabPane tab="2.7.x" key="2.7.x">
 
-* **2.7.0**
+2.7.x Text here
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="2.6.x" key="2.6.x">
 
-* **2.7.0**
-* **2.6.1**
-* **2.6.0**
+2.6.x text here
 
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="2.5.x" key="2.5.x">
 
-* **2.5.1**
+2.5.1**
 
 </Tabs.TabPane>
 
