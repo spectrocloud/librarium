@@ -87,7 +87,7 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 **Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 <br />
 
-### Naming conventions for vSphere Region and Zone Tags
+### Tag Requirements
 The following points needs to be taken care while creating the Tags:
 * A valid tag must consist of alphanumeric characters
 * The tag must start and end with an alphanumeric characters
@@ -116,7 +116,7 @@ Select the tab that corresponds with your vSphere versions.
 <Tabs.TabPane tab="8.0.x" key="8.0.x" >
 
 
-## Privileges Under Root-Level Role
+## Root-Level Role Privileges
 
 <br />
 
@@ -137,7 +137,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Privileges Under the Spectro Role
+## Spectro Role Privileges
 
 
 <Tabs>
@@ -333,7 +333,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 <Tabs.TabPane tab="7.0.x" key="7.0.x" >
 
 
-## Privileges Under Root-Level Role
+## Root-Level Role Privileges
 
 <br />
 
@@ -354,7 +354,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Privileges Under the Spectro Role
+## Spectro Role Privileges
 
 
 <Tabs>
@@ -550,7 +550,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 <Tabs.TabPane tab="6.0.x" key="6.0.x" >
 
 
-## Privileges Under Root-Level Role
+## Root-Level Role Privileges
 
 <br />
 
@@ -571,7 +571,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Privileges Under the Spectro Role
+## Spectro Role Privileges
 
 
 <Tabs>
