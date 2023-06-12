@@ -36,6 +36,7 @@ You can set up the PCG as a single- or three-node cluster based on your requirem
 
 As the following diagram shows, Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
+
 <br />
 
 
