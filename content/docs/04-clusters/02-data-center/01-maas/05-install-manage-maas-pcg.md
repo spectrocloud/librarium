@@ -15,7 +15,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and a private cloud behind a NAT gateway or firewall. The PCG traverses any NAT gateways or firewalls to establish a permanent connection with Palette. In this way, the function of the PCG is similar to that of a reverse proxy.
 
-PCG is a Kubernetes cluster responsible for supporting Palette in a private network environment. All host clusters deployed through Palette will communicate with PCG.
+The PCG is a Kubernetes cluster that supports Palette in a private network environment. All host clusters deployed through Palette communicate with PCG.
 
 At a high level, the following occurs during a successful MAAS PCG installation:
 
