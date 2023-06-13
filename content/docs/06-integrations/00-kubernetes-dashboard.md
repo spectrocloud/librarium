@@ -48,13 +48,19 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 <WarningBox>
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the Spectro Kubernetes Dashboard integrated pack. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the Spectro Kubernetes Dashboard pack. 
 
 </WarningBox>
 
 ## Usage
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+
+Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Kubernetes Dashboard
+- **Pack Version**: 2.0.x or higher
 
 A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
 
@@ -62,7 +68,7 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080. 
 
 <br />
 
@@ -163,7 +169,7 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080. 
 
 <br />
 
@@ -265,7 +271,7 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080. 
 
 <br />
 
@@ -369,7 +375,7 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 80. 
 
 <br />
 
@@ -471,7 +477,7 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 80. 
 
 <br />
 
@@ -574,7 +580,7 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 80. 
 
 <br />
 
@@ -645,17 +651,17 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 # Troubleshooting
 
-* If the Kubernetes Dashboard is not accessible, check the Dashboard pod for errors and ensure the Dashboard service is in the **Running** state.
+- If the Kubernetes Dashboard is not accessible, check the Dashboard pod for errors and ensure the Dashboard service is in the **Running** state.
 
 
-* When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the commands shown above.
+- When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the commands shown above.
 
 
 # Terraform
 
 You can reference the Kubernetes Dashboard pack in Terraform with a data resource.
 
-```
+```tf
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }

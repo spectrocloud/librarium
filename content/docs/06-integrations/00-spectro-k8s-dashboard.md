@@ -1,7 +1,7 @@
 ---
 title: 'Spectro Kubernetes Dashboard'
-metaTitle: "Spectro Cloud's Preconfigured Kubernetes Dashboard"
-metaDescription: 'Palette's preconfigured Kubernetes Dashboard Monitoring pack reduces the complexity of standing up the Kubernetes dashboard for a cluster.'
+metaTitle: "Spectro Cloud's Pre-configured Kubernetes Dashboard"
+metaDescription: 'Palette's pre-configured Kubernetes Dashboard Monitoring pack reduces the complexity of standing up the Kubernetes dashboard for a cluster.'
 hiddenFromNav: true
 type: "integration"
 category: ["monitoring"]
@@ -37,6 +37,7 @@ Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto
 ## Parameters
 
 The Spectro Kubernetes Dashboard supports the following parameters. 
+
 <br />
 
 #### User Selections
@@ -65,6 +66,12 @@ These settings are also included in the manifest as `access` and `identityProvid
 ## Usage
 
 To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. Spectro Kubernetes Dashboard supports several public cloud and data center cloud environments. To learn more, refer to [Clusters](/clusters).
+
+Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Spectro Kubernetes Dashboard
+- **Pack Version**: 2.7.0 or higher
 
 Spectro Kubernetes Dashboard has the following **Access** options.
 
@@ -136,6 +143,7 @@ data "spectrocloud_pack_simple" "k8s-dashboard" {
 # References
 
 - [Microsoft Access Control Using Kubernetes RBAC](https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.micro[…]icrosoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json&tabs=portal)
+
 
 - [Terraform Data Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)
 
