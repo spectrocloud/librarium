@@ -70,7 +70,7 @@ The BYOS Edge OS pack supports the following parameters.
 BYOOS enables you to use a custom OS for your Edge host. You can use this feature to customize the desired specifications of your OS layer in the Edge host. You can reference the custom OS through the BYOOS pack.
 
 
-To use a custom OS, you must include all the Edge artifacts and provider images required by the Edge Installer in the custom OS. Refer to the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide for steps on how to create a custom OS that includes all the required components for the Edge Installer.
+To use a custom OS, you must include all the Edge artifacts and provider images required by the Edge Installer in the custom OS. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide for steps on how to create a custom OS that includes all the required components for the Edge Installer.
 
 
 Select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The `system.uri` parameter specifies the location of the BYOOS image. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create Edge Artifacts.
