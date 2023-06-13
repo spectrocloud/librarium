@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "@reach/router";
 import styled, { css } from "styled-components";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import spectrocloudLogo from "assets/spectrocloud-logo.png";
 import Sidebar from "./sidebar";
 import Header from "./Header";
 
@@ -109,21 +108,6 @@ export default function Layout({
   const [expanded, showNavbar] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-
-  useEffect(() => {
-    window.Mendable &&
-      window.Mendable.initialize({
-        anon_key: process.env.GATSBY_MENDABLE_API_KEY,
-        type: "floatingButton",
-        dialogPlaceholder: "What is Palette?",
-        floatingButtonStyle: {
-          color: "#fff",
-          backgroundColor: "#3E4FB5",
-        },
-        icon: spectrocloudLogo,
-        style: { accentColor: "#3E4FB5" },
-      });
-  }, []);
 
   return (
     <Wrapper>
