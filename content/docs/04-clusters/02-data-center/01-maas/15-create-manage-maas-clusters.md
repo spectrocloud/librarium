@@ -17,9 +17,9 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 # Prerequisites
 
-- An installed PCG if you do not have a direct connection to the MAAS environment. 
+- An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
 
-  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. 
+  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the [Architecture](/clusters/data-center/maas/architecture#deploywithprivatecloudgateway(pcg)andsystemprivategateway) page to learn more.
 
 
 - A MAAS account registered in Palette. Refer to the [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts) if you need to register a MAAS account in Palette.
