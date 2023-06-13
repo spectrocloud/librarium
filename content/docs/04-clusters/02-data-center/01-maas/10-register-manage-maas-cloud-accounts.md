@@ -17,7 +17,10 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
 
 # Prerequisites
 
-- An installed PCG. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
+- An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
+
+  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the [Architecture](/clusters/data-center/maas/architecture) page.
+
 
 
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
@@ -27,7 +30,7 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
  For details, refer to the MAAS document on [how to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
 
 
-# Register a MAAS cloud account
+# Register a MAAS Cloud Account
 
 Follow these steps to create additional MAAS cloud accounts.
 
@@ -42,15 +45,31 @@ Follow these steps to create additional MAAS cloud accounts.
 3. Locate **MAAS** on the **Cloud Accounts** page and click **Add MAAS Account**.
 
 
-4. Enter values for properties listed in the following table.
+4. In the next window that displays, enter values for properties listed in the following table.
 
+    In a self-hosted environment where Palette has direct network access to MAAS, you can register a MAAS cloud account without installing the PCG. Note the **Use System Private Gateway** setting listed in the table. refer to the System Private Gateway section in the [Architecture](/clusters/data-center/maas/architecture) page to learn more about System Private Gateway.
+
+Refer to the Deploy with PCG and system PCG in the [Architecture](/clusters/data-center/maas/architecture) page to learn more about system PCG.
+
+<br />
+
+<InfoBox>
+
+For the self-hosted Palette instance, MAAS is reachable on port 5240.
+
+</InfoBox>
+
+<br />
 
 | Property | Description |
 |-----------|-------------|
 | Account Name | Custom name for the cloud name. |
+| Use System Private Gateway | This setting is for self-hosted environments that do not require a PCG. Toggle this option to bypass installing the PCG.|
 | Select Private Cloud Gateway | Select your MAAS cloud gateway from the **drop-down Menu**. |
-| API Endpoint | API Endpoint of the gateway.|
+| API Endpoint | API endpoint of the gateway. |
 | API Key | The MAAS API key. |
+
+5. Click **Confirm** to register your MAAS cloud account. 
 
 
 # Validate
@@ -68,6 +87,7 @@ Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and 
 <br />
 
 <br />
+
 
 
 
