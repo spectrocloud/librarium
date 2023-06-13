@@ -38,7 +38,7 @@ Refer to the table below
 
 
 
-# Deploy with Private Cloud Gateway (PCG) and System Private Gateway
+# PCG Deployment Options
 
 You can deploy MaaS using the following deployment options.
 
@@ -48,7 +48,9 @@ You can deploy MaaS using the following deployment options.
 - Using the **Private Cloud Gateway (PCG)**
 
 
-  You will need a PCG when you're deploying a cluster or deleting a cluster. Once the target cluster is deployed and running, the target cluster connects to Palette directly without needing the PCG anymore. PCG connects to both Palette SaaS environments and self-hosted Palette instances. 
+Palette-deployed host clusters need to communicate with Palette throughout their entire lifecycle. When host clusters are deployed into private networks, accessing the Palette SaaS platform can be a challenge due to network restrictions. To address these network challenges, you can deploy a PCG and allow the PCG cluster to access the internet and receive inbound communication from the Palette SaaS platform. This solution lets you secure your private network by centralizing all Palette inbound communication with a dedicated instance. 
+  
+All Palette deployed clusters will use the PCG cluster during the creation and deletion phase. Once a host cluster is available, the internal Palette agent will communicate with Palette directly. The Palette agent is the originator of all communication, so the network requests are outbound towards Palette. The exception is a host cluster creation or deletion request, as those requests are sourced from Palette SaaS and are directed to the PCG.   
 
   Deploy a separate PCG for a self-hosted Palette instance when Palette does not have access to your target network due to firewalls or NAT blocking inbound traffic. 
 
@@ -58,7 +60,7 @@ You can deploy MaaS using the following deployment options.
 - Using the **System Private Gateway**
 
 
-  Self-hosted Palette instances can communicate directly with the MAAS environment if both resources can access each other directly over the network. In this scenario, you can use the System Private Gateway. The System Private Gateway directly communicates between MaaS and Palette. 
+ Self-hosted Palette instances can communicate directly with the MAAS environment if both resources can access each other directly over the network. In this scenario, you can use the System Private Gateway. The System Private Gateway communicates directly with the MaaS environment. 
 
   When registering a MAAS account with Palette, toggle on **Use System Private Gateway** to enable direct communication between Palette and MAAS. Refer to the [Register and Manage MAAS Cloud Account](/clusters/data-center/maas/register-manage-maas-cloud-accounts) guide to learn more.
 
@@ -67,16 +69,16 @@ The following table explains the different use cases between PCG and System Priv
 <br />
 
 
-- Connects to Palette SaaS: Defines if the PCG or the System PCG connects to Palette SaaS environments.  
+- Connects to Palette SaaS: Defines if the PCG or the System PCG requires connectivity to the Palette SaaS environments.  
 
 
-- Connects to self-hosted Palette: If PCG or System PCG connects to self-hosted Palette instance. 
+- Connects to self-hosted Palette: If a PCG or a System PCG supports an architecture where it can communicate with a self-hosted Palette instance. 
 
 
-- Supports direct communication between MAAS and Palette: If PCG or System PCG supports direct communicaton between MaaS and Palette. Direct communication happens if both resources can directly access each other over the network. 
+- Supports direct communication with MAAS : If direct communication with the MaaS environment is supported without the need for an intermediary. Direct communication happens if both resources can directly access each other over the network. 
 
 
-- Requires internet access: If PCG or System Private Gateway requires the Palette environment to have internet access. 
+- Internet access required: If the component PCG or System PCG requires public internet access. 
 
 <br />
 
@@ -84,8 +86,8 @@ The following table explains the different use cases between PCG and System Priv
 |-----------|----|----------------|
 | Connects to Palette SaaS. | ✅ | ❌ |
 | Connects to self-hosted Palette. | ✅ | ✅ |
-| Supports direct communication between MAAS and Palette. |  ❌ | ✅ |
-| Requires internet access. |   ✅  | ❌ |
+| Supports direct communication with MAAS. |  ❌ | ✅ |
+| Internet access required. |   ✅  | ❌ |
 
 
 <br />
