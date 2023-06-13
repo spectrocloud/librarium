@@ -59,20 +59,21 @@ A pre-configured version of the Kubernetes Dashboard pack is available, called S
 <br />
 
 ### Access Kubernetes Dashboard
-  
-When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080:
+
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080: 
 
 <br />
-  
+
 ```bash
 kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
-To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
-  
-From the Kubernetes Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
-<!-- <br />
-  
+To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
+
+From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
+
+<br />
+
 ```bash
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
@@ -81,7 +82,7 @@ The following example shows the command output with the token value.
 
 <br />
   
-```yaml
+<!-- ```yaml
 Name:         kubernetes-dashboard-token-h4lnf
 Namespace:    kubernetes-dashboard
 Labels:       <none>
@@ -95,9 +96,7 @@ Data
 ca.crt:     1029 bytes
 namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
-```
-
-<br /> -->
+``` -->
 
 ### Configure Ingress
 
