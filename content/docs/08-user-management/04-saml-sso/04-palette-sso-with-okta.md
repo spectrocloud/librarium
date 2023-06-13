@@ -233,9 +233,11 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
 1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that users are automatically added to the `palette-tenant-admins` group in Palette.
 
-If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at top right.
+If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User  Drop-down Menu** at the top right.
 
-![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
+  <br />
+
+  ![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
 
 <br />
 
