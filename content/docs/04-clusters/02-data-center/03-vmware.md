@@ -114,9 +114,9 @@ The exact values for the k8s-region and k8s-zone tags can be different from the 
 
 
 The vSphere user account that is deploying Palette must have the following minimum vSphere privileges. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
-Permissions and privilieges vary depending on the vSphere version you are using. 
+Permissions and privileges vary depending on the vSphere version you are using. 
 
-Select the tab that corresponds with your vSphere versions.
+Select the tab that corresponds with your vSphere version.
 
 <br />
 
