@@ -1,7 +1,7 @@
 ---
-title: "Kubernetes"
-metaTitle: "Kubernetes in Palette"
-metaDescription: "Kubernetes pack that deploys containers in Palette."
+title: "Palette eXtended Kubernetes"
+metaTitle: "Palette eXtended Kubernetes"
+metaDescription: "Learn more about the Palette eXtended Kubernetes pack and how you can use it with your host clusters."
 hiddenFromNav: true
 type: "integration"
 category: ["kubernetes"]
@@ -14,43 +14,34 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Kubernetes
+# Palette eXtended Kubernetes
 
-The Kubernetes pack defines the default properties that we use to deploy Kubernetes clusters. Most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends are enabled by default. The Kubernetes pack supports most [cloud and data center infrastructure providers](/clusters).
+The [Palette eXtended Kubernetes](/glossary-all#paletteextendedkubernetes(pxk)) (PXK) pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
 
-Spectro Cloud offers Cloud Native Computing Foundation (CNCF) Kubernetes as a core infrastructure pack in Palette. We release Kubernetes updates as follows:
+We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
-<br />
+We offer PXK as a core pack in Palette. 
 
-- Major versions are assessed based on the extent of changes.
-- Minor versions are provided within eight weeks of a new Kubernetes release.
-- Patch versions are provided within four weeks of a new Kubernetes release.
+Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
-In the period of time following a Kubernetes release, the Kubernetes pack undergoes rigorous vulnerability scans and penetration testing. 
+## What is PXK?
 
-A minor Kubernetes version will be deprecated in Palette when the Kubernetes community announces the version is entering End of Life (EOL). The deprecated version will remain in that state for three months and will be disabled after a quarter and deleted from Palette in the following quarter.
+Palette eXtended Kubernetes (PXK) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s, Konvoy, and more, should you want to consume a different Kubernetes distribution.
 
-Below are the stages of deprecation:
+PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common Kubernetes deployment security pitfalls and implements industry best practices.
 
-<br />
+A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI) plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.
 
-- **Deprecate**: When a pack is deprecated, Palette displays a warning. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
-
-
-- **Disable**: When a pack is disabled, you will no longer be allowed to create new cluster profiles using the pack. Palette displays a message informing you to cut over to the newer version of the pack. However, you can still deploy new clusters using existing profiles that contain the deprecated pack.
-
-
-- **Delete**: When a pack is deleted, you will not be able to create new cluster profiles using the pack or launch new clusters using the existing profiles that contain the pack. Palette displays a message informing you to cut over to the newer version of the pack. There is no disruption to existing cluster workloads and will continue to be functional.
+There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open-source Kubernetes distribution.
 
 <br />
+
 
 <InfoBox>
 
-For important guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
-
+We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the [PXK-E glossary definition](/glossary-all#paletteextendedkubernetesedge(pxk-e)) to learn more about PXK-E.   
 
 </InfoBox>
-
 
 # Versions Supported
 
@@ -77,8 +68,8 @@ For important guidelines on updating pack versions, review [Update the Pack Vers
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -87,7 +78,7 @@ For important guidelines on updating pack versions, review [Update the Pack Vers
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack:serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
 ## Usage 
@@ -230,8 +221,8 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -240,7 +231,7 @@ kubeadmconfig:
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack:serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 ## Usage
   
@@ -396,8 +387,8 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack:podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack:serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -406,7 +397,7 @@ kubeadmconfig:
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. |
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack:serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
 ## Usage
@@ -526,6 +517,9 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 
 
 # Terraform
+
+
+You can reference Kubernetes in Terraform with the following code snippet.
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {

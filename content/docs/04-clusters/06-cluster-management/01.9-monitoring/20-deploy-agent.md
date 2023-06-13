@@ -11,7 +11,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The steps below will teach you how to create a Prometheus agent cluster add-on profile. Creating an add-on profile makes it easier for you to deploy the Prometheus agent to other host clusters in the future. You will use this add-on profile when deploying a new host cluster, but you can also apply the add-on profile to an existing cluster to send metrics to the monitoring stack.
+Observability (O11y) of Kubernetes clusters and their metrics is an important operational capability. Palette provides a pack that collects metrics from host clusters, which can be scraped by a monitoring stack.
+
+The steps below will teach you how to create a Prometheus agent cluster add-on profile to deploy on the host clusters you would like to monitor. Creating an add-on profile makes it easier for you to deploy the Prometheus agent to other host clusters in the future. You will use this add-on profile when deploying a new host cluster, but you can also apply the add-on profile to an existing cluster to send metrics to the monitoring stack.
 
 # Prerequisites
 
