@@ -77,7 +77,7 @@ Spectro Kubernetes Dashboard has the following **Access** options.
 
 <br /> 
 
-- **Proxied**: This option provides private access to your cluster when the cluster is in a private cloud. This option requires the Spectro Proxy pack. The latest version of the Spectro Proxy pack is automatically installed when you create the cluster. To learn more, check out the [Spectro Proxy](/integrations/frp) guide.
+- **Proxied**: This option provides private access to your cluster when the cluster is in a private cloud. This option requires the Spectro Proxy pack, which is integrated with the Spectro Kubernetes Dashboard. The latest version of the Spectro Proxy pack is automatically installed when you create the cluster. To learn more, check out the [Spectro Proxy](/integrations/frp) guide.
 
 - **Direct**: This option provides direct access to your cluster when the cluster is in a public cloud.
 

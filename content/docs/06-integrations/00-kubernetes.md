@@ -119,36 +119,36 @@ palette:
 
 <br />
 
-#### Configure OIDC Identity Provider
+### Configure OIDC Identity Provider
 
 When you add the PXK pack to your AWS, EKS, or MAAS cluster profile, Palette displays the following OIDC IDP choices. 
 
-If you do ***not*** choose Palette or your tenant as the IDP, you must manually configure OIDC parameters in the pack to specify a third-party IDP. 
+<!-- If you do ***not*** choose Palette or your tenant as the IDP, you must manually configure OIDC parameters in the pack to specify a third-party IDP.  -->
 
 <br />
 
-- **None**: This setting requires you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file.
+- **None**: This is the default setting and requires no OIDC configuration.
 
   <br />
 
-  <InfoBox>
+  <WarningBox>
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
-  </InfoBox>
+  </WarningBox>
 
-- **Custom**: This setting requires you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file.
-
-
-- **Palette**: This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. 
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file.
 
 
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings > SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. 
 
 
-#### Manually Configure OIDC (is this needed??)
+- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
 
-You only need to configure OIDC manually if you select **None** or **Custom** as the IDP. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
+
+### Configure Custom OIDC
+
+When you select **Custom** as the as the OIDC Identity Provider, you must manually configure OIDC. The basic method to enable OIDC can be used for all cloud services except Amazon EKS. 
 
 <br />
 
@@ -158,7 +158,7 @@ You only need to configure OIDC manually if you select **None** or **Custom** as
 
 <br />
 
-Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
+Follow steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) guide.
 
 <br />
 
@@ -168,7 +168,7 @@ Follow the steps in the [Use RBAC With OIDC](/clusters/cluster-management/cluste
 
 <br />
 
-To enable OIDC manually for EKS clusters, follow these steps:
+To configure OIDC for EKS clusters, follow these steps:
 
 <br />
 
@@ -200,7 +200,7 @@ clientConfig:
 
 </Tabs>
 
-#### Use RBAC with OIDC
+### Use RBAC with OIDC
 
 All IDP options require you to map a set of users or groups to a Kubernetes RBAC role. There are two options you can use to get started with the Kubernetes Dashboard and an IDP.
 
