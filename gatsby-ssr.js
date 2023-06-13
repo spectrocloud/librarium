@@ -34,7 +34,15 @@ const HeadComponents = [
       crossOrigin="anonymous"
     />
   ),
-  process.env.GATSBY_FULLSTORY_TOKEN && <script dangerouslySetInnerHTML={{ __html: fsScript }} />,
+  process.env.GATSBY_FULLSTORY_TOKEN && (
+    <script key="full-story" dangerouslySetInnerHTML={{ __html: fsScript }} />
+  ),
+  process.env.GATSBY_MENDABLE_API_KEY && (
+    <script
+      key="mendable"
+      src="https://unpkg.com/@mendable/search@0.0.109/dist/umd/mendable-bundle.min.js"
+    ></script>
+  ),
 ].filter(Boolean);
 
 const onRenderBody = ({ setHeadComponents }) => {
