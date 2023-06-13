@@ -124,13 +124,13 @@ To ensure Okta issues OIDC tokens with the correct claims, you must create a cus
 | u_first_name | ID Token (Always) | Expression | `user.firstName` | Unchecked | Any scope |
 | u_last_name | ID Token (Always) | Expression | `user.lastName` | Unchecked | Any scope |
 
-Next, create a claim for group membership.
+Next, create a claim for group membership. The example below will include the names of any groups that the Okta user is a member of, that start with `palette-`, in the `groups` claim of the ticket. For Palette SSO, Palette will make the user a member of Teams in Palette that have the identical name.
 
 | Claim Name | Include in token type | Value Type | Filter | Disable claim | Include In |
 |------------|-----------------------|------------|-------|---------------|------------|
 | groups | ID Token (Always) | Groups | Starts with: `palette-` | Unchecked | Any scope |
 
-The example above will include the names of any groups that the Okta user is a member of, that start with `palette-`, in the `groups` claim of the ticket. For Palette SSO, Palette will make the user a member of Teams in Palette that have the identical name.
+<br />
 
 ![Claims Result](/oidc-okta-images/oidc-okta_claims-result.png)
 
@@ -246,7 +246,9 @@ If you're still logged into Palette with a non-SSO user, log out by selecting **
 
 Click on the **Sign in** button to log in via SSO.
 
-![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.png)
+  <br />
+
+  ![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.png)
 
 <br />
 
