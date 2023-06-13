@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes Dashboard"
 metaTitle: "Kubernetes Dashboard"
-metaDescription: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Dashboard Monitoring pack."
+metaDescription: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Kubernetes Dashboard Monitoring pack."
 hiddenFromNav: true
 type: "integration"
 hideToC: false
@@ -166,6 +166,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 
 * When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the commands shown above.
+
 
 # References
 
