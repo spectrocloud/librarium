@@ -40,6 +40,7 @@ const HeadComponents = [
   process.env.GATSBY_MENDABLE_API_KEY && (
     <script
       key="mendable"
+      async
       src="https://unpkg.com/@mendable/search@0.0.109/dist/umd/mendable-bundle.min.js"
     ></script>
   ),
