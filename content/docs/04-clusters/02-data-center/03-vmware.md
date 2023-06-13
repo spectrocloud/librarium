@@ -38,7 +38,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 The following prerequisites must be met before deploying a Kubernetes clusters in VMware:
 
-1. vSphere [6.7U3](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-67u3-release-notes.html) or later (recommended).
+1. vSpehre version 7.0 or above. vSphere 6.7 is supported but not recommended.
 
 
 2. Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
@@ -110,11 +110,13 @@ The exact values for the k8s-region and k8s-zone tags can be different from the 
 
 <br />
 
-# VMware Cloud Account Permissions
+# VMware Privileges
 
-**Last Update**: August 18, 2022
 
-The vSphere user account used in the various Palette tasks must have the minimum vSphere privileges required to perform the task. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
+The vSphere user account that is deploying Palette must have the following minimum vSphere privileges. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
+Permissions and privilieges vary depending on the vSphere version you are using. 
+
+Select the tab that corresponds with your vSphere versions.
 
 <br />
 
@@ -122,15 +124,184 @@ The vSphere user account used in the various Palette tasks must have the minimum
 If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
 </InfoBox>
 
-## Privileges Under Root-Level Role
+
+
+<Tabs identifier="vm-privileges">
+
+<Tabs.TabPane tab="8.0.x" key="8.0.x" >
+
+## Root-Level Role Privileges
 
 <br />
 
+
 <WarningBox>
+
 The root-level role privileges are applied to root object and Datacenter objects only.
+
 </WarningBox>
 
+<br />
+
+**vSphere Object**    |**Privileges**|
+|---------------|----------|
+|**Cns**|Searchable|
+|**Datastore**|Browse datastore
+|**Host**|Configuration
+||* Storage partition configuration
+|**vSphere** **Tagging**|Create vSphere Tag|
+||Edit vSphere Tag|
+|**Network**|Assign network|
+|**Sessions**|Validate session|
+|**VM Storage Policies**|View VM storage policies|
+|**Storage views**|View|
+
+<br />
+
+## Spectro Role Privileges
+
+<br />
+
+<InfoBox>
+
+The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
+
+</InfoBox>
+
 |**vSphere Object**    |**Privileges**|
+|---------------|----------|
+|**Cns**|Searchable
+|**Datastore**|Allocate space|
+||Browse datastore|
+||Low level file operations|
+||Remove file|
+||Update virtual machine files|
+||Update virtual machine metadata|
+|**Folder**|Create folder|
+||Delete folder|
+||Move folder|
+||Rename folder|
+|**Host**|Local operations|
+||Reconfigure virtual machine|
+|**vSphere Tagging**|Assign or Unassign vSphere Tag|
+||Create vSphere Tag|
+||Delete vSphere Tag|
+||Edit vSphere Tag|
+|**Network**|Assign network|
+|**Resource**|Apply recommendation|
+||Assign virtual machine to resource pool|
+||Migrate powered off virtual machine|
+||Migrate powered on virtual machine|
+||Query vMotion|
+|**Sessions**|Validate session|
+|**VM Storage Policies**|View VM storage policies|
+|**Storage views**|Configure service|
+||View|
+|**Tasks**|Create task|
+||Update task|
+|**vApp**|Export|
+||Import|
+||View OVF environment|
+||vApp application configuration|
+||vApp instance configuration|
+|**Virtual machines**|**Change Configuration**|
+||* Acquire disk lease|
+||* Add existing disk|
+||* Add new disk|
+||* Add or remove device|
+||* Advanced configuration|
+||* Change CPU count|
+||* Change Memory|
+||* Change Settings|
+||* Change Swapfile placement|
+||* Change resource|
+||* Configure Host USB device|
+||* Configure Raw device|
+||* Configure managedBy|
+||* Display connection settings|
+||* Extend virtual disk|
+||* Modify device settings|
+||* Query Fault Tolerance compatibility|
+||* Query unowned files|
+||* Reload from path|
+||* Remove disk|
+||* Rename|
+||* Reset guest information|
+||* Set annotation|
+||* Toggle disk change tracking|
+||* Toggle fork parent|
+||* Upgrade virtual machine compatibility|
+||**Edit Inventory**|
+||* Create from existing|
+||* Create new|
+||* Move|
+||* Register|
+||* Remove|
+||* Unregister|
+||**Guest operations**|
+||* Guest operation alias modification|
+||* Guest operation alias query|
+||* Guest operation modifications|
+||* Guest operation program execution|
+||* Guest operation queries|
+||**Interaction**|
+||* Console interaction|
+||* Power off|
+||* Power on|
+||**Provisioning**|
+||* Allow disk access|
+||* Allow file access|
+||* Allow read-only disk access|
+||* Allow virtual machine download|
+||* Allow virtual machine files upload|
+||* Clone template|
+||* Clone virtual machine|
+||* Create template from virtual machine|
+||* Customize guest|
+||* Deploy template|
+||* Mark as template|
+||* Mark as virtual machine|
+||* Modify customization specification|
+||* Promote disks|
+||* Read customization specifications|
+||**Service configuration**|
+||* Allow notifications|
+||* Allow polling of global event notifications|
+||* Manage service configurations|
+||* Modify service configuration|
+||* Query service configurations|
+||* Read service configuration|
+||**Snapshot management**|
+||* Create snapshot|
+||* Remove snapshot|
+||* Rename snapshot|
+||* Revert to snapshot|
+||**vSphere Replication**|
+||* Configure replication|
+||* Manage replication|
+||* Monitor replication|
+|**vSAN**|Cluster|
+||ShallowRekey|
+
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="7.0.x" key="7.0.x" >
+
+## Root-Level Role Privileges
+
+<br />
+
+
+<WarningBox>
+
+The root-level role privileges are applied to root object and Datacenter objects only.
+
+</WarningBox>
+
+<br />
+
+**vSphere Object**    |**Privileges**|
 |---------------|----------|
 |**Cns**|Searchable|
 |**Datastore**|Browse datastore
@@ -145,11 +316,14 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Privileges Under the Spectro Role
+## Spectro Role Privileges
+
 <br />
 
 <InfoBox>
+
 The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
+
 </InfoBox>
 
 |**vSphere Object**    |**Privileges**|
@@ -266,6 +440,171 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 ||* Monitor replication|
 |**vSAN**|Cluster|
 ||ShallowRekey|
+
+
+</Tabs.TabPane>
+<Tabs.TabPane tab="6.0.x" key="6.0.x" >
+
+## Root-Level Role Privileges
+
+<br />
+
+
+<WarningBox>
+
+The root-level role privileges are applied to root object and Datacenter objects only.
+
+</WarningBox>
+
+<br />
+
+**vSphere Object**    |**Privileges**|
+|---------------|----------|
+|**Cns**|Searchable|
+|**Datastore**|Browse datastore
+|**Host**|Configuration
+||* Storage partition configuration
+|**vSphere** **Tagging**|Create vSphere Tag|
+||Edit vSphere Tag|
+|**Network**|Assign network|
+|**Sessions**|Validate session|
+|**Profile-driven storage**|Profile-driven storage view|
+|**Storage views**|View|
+
+<br />
+
+## Spectro Role Privileges
+
+<br />
+
+<InfoBox>
+
+The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
+
+</InfoBox>
+
+|**vSphere Object**    |**Privileges**|
+|---------------|----------|
+|**Cns**|Searchable
+|**Datastore**|Allocate space|
+||Browse datastore|
+||Low level file operations|
+||Remove file|
+||Update virtual machine files|
+||Update virtual machine metadata|
+|**Folder**|Create folder|
+||Delete folder|
+||Move folder|
+||Rename folder|
+|**Host**|Local operations|
+||Reconfigure virtual machine|
+|**vSphere Tagging**|Assign or Unassign vSphere Tag|
+||Create vSphere Tag|
+||Delete vSphere Tag|
+||Edit vSphere Tag|
+|**Network**|Assign network|
+|**Resource**|Apply recommendation|
+||Assign virtual machine to resource pool|
+||Migrate powered off virtual machine|
+||Migrate powered on virtual machine|
+||Query vMotion|
+|**Sessions**|Validate session|
+|**Profile-driven storage**|Profile-driven storage view|
+|**Storage views**|Configure service|
+||View|
+|**Tasks**|Create task|
+||Update task|
+|**vApp**|Export|
+||Import|
+||View OVF environment|
+||vApp application configuration|
+||vApp instance configuration|
+|**Virtual machines**|**Change Configuration**|
+||* Acquire disk lease|
+||* Add existing disk|
+||* Add new disk|
+||* Add or remove device|
+||* Advanced configuration|
+||* Change CPU count|
+||* Change Memory|
+||* Change Settings|
+||* Change Swapfile placement|
+||* Change resource|
+||* Configure Host USB device|
+||* Configure Raw device|
+||* Configure managedBy|
+||* Display connection settings|
+||* Extend virtual disk|
+||* Modify device settings|
+||* Query Fault Tolerance compatibility|
+||* Query unowned files|
+||* Reload from path|
+||* Remove disk|
+||* Rename|
+||* Reset guest information|
+||* Set annotation|
+||* Toggle disk change tracking|
+||* Toggle fork parent|
+||* Upgrade virtual machine compatibility|
+||**Edit Inventory**|
+||* Create from existing|
+||* Create new|
+||* Move|
+||* Register|
+||* Remove|
+||* Unregister|
+||**Guest operations**|
+||* Guest operation alias modification|
+||* Guest operation alias query|
+||* Guest operation modifications|
+||* Guest operation program execution|
+||* Guest operation queries|
+||**Interaction**|
+||* Console interaction|
+||* Power off|
+||* Power on|
+||**Provisioning**|
+||* Allow disk access|
+||* Allow file access|
+||* Allow read-only disk access|
+||* Allow virtual machine download|
+||* Allow virtual machine files upload|
+||* Clone template|
+||* Clone virtual machine|
+||* Create template from virtual machine|
+||* Customize guest|
+||* Deploy template|
+||* Mark as template|
+||* Mark as virtual machine|
+||* Modify customization specification|
+||* Promote disks|
+||* Read customization specifications|
+||**Service configuration**|
+||* Allow notifications|
+||* Allow polling of global event notifications|
+||* Manage service configurations|
+||* Modify service configuration|
+||* Query service configurations|
+||* Read service configuration|
+||**Snapshot management**|
+||* Create snapshot|
+||* Remove snapshot|
+||* Rename snapshot|
+||* Revert to snapshot|
+||**vSphere Replication**|
+||* Configure replication|
+||* Manage replication|
+||* Monitor replication|
+|**vSAN**|Cluster|
+||ShallowRekey|
+
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+---
 
 # Creating a VMware Cloud Gateway
 
