@@ -20,7 +20,7 @@ We use semantic versioning for releases, where release versions follow the *Majo
 
 ## Checklist
 
-Our SaaS release process includes a checklist of the features planned for release to ensure their completion or to ensure a completion plan is in place. 
+Our release process includes a checklist of the features planned for release to ensure their completion or to ensure a completion plan is in place. 
 
 When all pre-deployment checklist items are complete, stakeholders review the checklist to make an informed decision about the state of the release and do the following: 
 
