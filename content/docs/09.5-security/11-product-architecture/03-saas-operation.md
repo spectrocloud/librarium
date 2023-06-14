@@ -30,9 +30,9 @@ This allows the SaaS controller to do the following:
 
 - Act as an orchestrator to initiate SaaS controller requests for deployments.
 
-When a Palette SaaS deployment such as VMware or MAAS environments must connect on-prem to deploy target Kubernetes clusters, a Private Cloud Gateway (PCG) component is deployed in the self-hosted environment as a virtual appliance (OVA). The PCG is Palette's on-prem component to enable support for isolated, private cloud or Datacenter environments. 
+When a Palette SaaS deployment such as VMware or MAAS environments must connect on-prem to deploy target Kubernetes clusters, a Private Cloud Gateway (PCG) component is deployed in the self-hosted environment as a virtual appliance (OVA). The PCG is Palette's on-prem component to enable support for isolated, private cloud or data center environments. 
 
-The PCG pairs automatically with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Palette SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS).
+The PCG pairs automatically with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing process and acts as a proxy between Palette SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security (TLS). Refer to the [System Private Gateway](/clusters/data-center/maas/architecture#systemprivategateway) reference page to learn more.
 
 <br />
 

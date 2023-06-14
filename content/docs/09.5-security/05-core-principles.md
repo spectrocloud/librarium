@@ -56,7 +56,7 @@ We believe that security should be the default setting for all of our systems an
 
 ## Never Rely Just on Obscurity
 
-We believe that using security through obscurity by itself is the absence of a security strategy. While some organizations use this method as their main security method, it puts their network at risk if an attacker gains access to it. 
+We believe that using security through obscurity by itself is the absence of a security strategy. While some organizations use this method as their main security method, it puts their network at risk if an attacker gains access to obscure resources. 
 
 Determined attackers use various methods to discover the hidden details of a system, and discovery eventually happens - either accidentally or deliberately. We believe that while obscurity alone is not a robust security strategy, it can be layered with security policies and controls. This is the principle of Defense in Depth.
 
@@ -70,7 +70,7 @@ We believe security should be layered and redundant with multiple defenses in pl
 
 ## Least Privilege
 
-This principle encourages system designers and implementers to allow running code with only the permissions needed to complete the required tasks and no more. 
+This principle encourages system designers and implementers to allow runtime code with only the permissions needed to complete the required tasks and no more. 
 
 We use the principle of least privilege to ensure that all users have only the necessary access rights to fulfill their job roles. To ensure the security of our users and systems, we use mechanisms such as defined access rights, regular reviews, restricted privileges, and system monitoring.
 

@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 Tenant clusters are Kubernetes clusters that Palette deploys for customers. Tenant clusters can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](/cluster-profiles). 
 
-Cluster profiles are cluster construction templates. Palette deploys a Kubernetes cluster based on what the profile specifies.
+[Cluster profiles](/cluster-profiles) are cluster construction templates. Palette deploys a Kubernetes cluster based on what the profile specifies.
 
 A cluster profile consists of core layers that consist of an Operating System (OS), a Kubernetes distribution, networking, and storage, and any add-on layers such as monitoring, logging, and more. Palette offers several out-of-the-box choices for each profile layer in the form of packs and the flexibility for you to bring your own pack for use in Palette cluster profiles.
 
@@ -37,7 +37,7 @@ We ensure our out-of-the-box core layer packs are secure. You ensure security fo
 
 In a public cloud, Kubernetes nodes in tenant clusters are deployed within a logically isolated virtual network that has private and public subnets. The control plane and worker nodes for the Kubernetes cluster are launched in a private network. All ports on the nodes are protected from external access.
 
-Each tenant cluster has a management agent that runs as a pod. This agent has an outbound internet connection to Palette using static Network Address Translation (NAT) with Transport Layer Security (TLS) protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
+Each tenant cluster has a management agent that is deployed as a pod. This agent has an outbound internet connection to Palette using static Network Address Translation (NAT) with Transport Layer Security (TLS) protocol v1.2 or higher and a hardened cipher suite. The agent periodically reports health, heartbeat, and statistics and connects to Palette's public repository over HTTPS for any out-of-the-box integration packs.
 
 In a self-hosted environment, where Palette is typically deployed on-prem behind a firewall, you must ensure security controls in your environment. Palette automatically generates security keys at installation and stores them in the management cluster. You can import an optional certificate and private key to match the management cluster Fully Qualified Domain Name (FQDN). Palette supports enabling disk encryption policies for management cluster Virtual Machines (VMs) if required.
 
