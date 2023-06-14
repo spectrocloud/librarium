@@ -90,11 +90,11 @@ We use the following methods for secrets handling, which contribute to a robust 
 
 - MFA and Single Sign-On (SSO).
 
-<br />
+
 
 ## Continuous Improvement
 
-We believe security is an ongoing process and are committed to constantly improving our security posture through regular assessment and testing.
+We believe security is an ongoing process, and we are committed to constantly improving our security posture through regular assessment and testing.
 
 We review and audit our internal setup regularly to ensure our employees have access to the tools they need while maintaining strong security standards.
 

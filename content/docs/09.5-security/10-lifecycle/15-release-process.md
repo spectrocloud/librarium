@@ -32,7 +32,7 @@ When all pre-deployment checklist items are complete, stakeholders review the ch
 - Request additional information.
 
 
-- Follow up as appropriate. 
+- Follow up as needed. 
 
 
 ## Signoff

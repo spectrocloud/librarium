@@ -19,15 +19,17 @@ In addition to the security principles we adhere to and our secure development l
 
 Palette uses a microservices-based architecture, and we take steps to ensure each service is secured. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, which Palette hosts and manages in Software as a Service (SaaS) mode or that users can host and manage in a self-hosted environment.
 
-Palette supports three different architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support for air gaped environment. These flexible deployment models allow us to adapt to existing requirements in terms of separating responsibilities and network restrictions.
+Palette supports three different architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support for air-gapped environments. These flexible deployment models allow us to adapt to existing requirements in terms of separating responsibilities and network restrictions.
 
 <br />
 
-- **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions that Spectro Cloud manages: us-east-1, us-west-1, and us-west-2. Each customer occupies a tenant in our multi-tenant cloud environment. Our Operations team controls when to upgrade the management plane.
+- **Multi-tenant SaaS**: The management plane is hosted in AWS across three regions that we manage: us-east-1, us-west-1, and us-west-2. Each customer occupies a tenant in our multi-tenant cloud environment. Our Operations team controls when to upgrade the management plane.
 
-- **Dedicated SaaS**: The management plane is hosted in a cloud or region that you specify in Spectro Cloud’s cloud account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.
 
-- **Self-hosted**: The management plane is hosted in your environment. It can be on-prem VMware vSphere, OpenStack, bare metal, or in a public cloud that manages your compute instances, or a managed Kubernetes cluster such as Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE).
+- **Dedicated SaaS**: The management plane is hosted in a cloud or region that you specify in our Spectro Cloud cloud account with a dedicated instance that we manage. In this scenario, you decide when to upgrade the management plane.
+
+
+- **Self-hosted**: The management plane is hosted in your environment. It can be on-prem VMware vSphere, OpenStack, bare metal, in a public cloud that manages your compute instances, or a managed Kubernetes cluster such as Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE).
 
 Palette’s robust security measures safeguard your data and ensure the integrity of our services. We adhere to industry-leading standards and continuously refine our practices to provide the highest level of security. Palette infrastructure safeguards data in your Kubernetes production environment with its zero-trust architecture, granular Role-Based Access Control (RBAC), immutable Linux distributions ([Kairos](https://kairos.io/)), and hardened clusters and Kubernetes packs.
 
@@ -57,7 +59,7 @@ Palette is a multi-tenant SaaS platform in which every tenant represents a custo
 
 ## Palette Authentication & Authorization
 
-Palette fully supports Role-Based Access Control (RBAC) and two authentication modes:
+Palette fully supports RBAC and two authentication modes:
 
 <br />
 
@@ -68,16 +70,16 @@ Palette fully supports Role-Based Access Control (RBAC) and two authentication m
 
 - *Single Sign-On (SSO)* and *Multi-Factor Authentication (MFA)* <br />
 
-    In these modes, the tenant is configured to have Security Assertion Markup Language (SAML) 2.0 IDP integrations. If the IDP requires MFA, you are redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the tenant.
+    In these modes, the tenant is configured to have Security Assertion Markup Language (SAML) 2.0 Identify Provider (IDP) integrations. If the IDP requires MFA, you are redirected to the IDP’s authentication page. SSO can also automatically map a user to one or more user groups in the tenant.
 
 
 ## API Security
 
-Palette uses JWT-based authentication and authorization for REST API access over HTTPS. 
+Palette uses JSON Web Token (JWT)-based authentication and authorization for Representational State Transfer (REST) API access over HTTPS. 
 
 The authentication token is valid for a limited time. If the token is about to expire, you can request a token refresh before making other API calls. 
 
-Palette has a common API gateway validation service that ensures there are no incorrect parameter values or potential vulnerabilities, such as SQL injection or cross-site scripting.
+Palette has a common API gateway validation service that ensures there are no incorrect parameter values or potential vulnerabilities, such as Structured Query Language (SQL) injection or cross-site scripting.
 
 You can use the gateway validation service log to trace APIs with a unique ID, Tenant UID, or Session UID. To avoid revealing unnecessary information, all UIDs are 48-bit random hex strings.
 
