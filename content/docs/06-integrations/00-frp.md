@@ -24,17 +24,18 @@ The reverse proxy has a server component and a client component. The reverse pro
 
 - The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy.
 
-    ```yaml
-    apiVersion: v1
-    clusters
-    - cluster:
-    certificate-authority-dataLSOtLa....
-    server: https://cluster-11111111111111.proxy.stage.spectrocloud.com:443
-    name: vsphere-proxy
-    contexts:
-    - context:
-    cluster: vsphere-proxy
+  <br />
 
+    ```yaml hideClipboard
+      apiVersion: v1
+      clusters
+      - cluster:
+      certificate-authority-dataLSOtLa....
+      server: https://cluster-11111111111111.proxy.stage.spectrocloud.com:443
+      name: vsphere-proxy
+      contexts:
+      - context:
+      cluster: vsphere-proxy
     ```
 
 - Any requests to the Kubernetes API server, such as kubectl commands, will be routed to the reverse proxy. The reverse proxy forwards the request to the intended client, which is the cluster's API server. The cluster's API server authenticates the request and replies with the proper response.
@@ -125,7 +126,7 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
 
 <br />
 
@@ -133,6 +134,7 @@ Add the following extra certificate Subject Alternative Name (SAN) value to the 
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
+
 
 The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
 
@@ -243,7 +245,7 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
 
 <br />
 
@@ -359,7 +361,8 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
+
 <br />
 
 ```yaml
@@ -466,7 +469,7 @@ Be aware that if this pack is added as a Day-2 operation, meaning not during the
 
 </WarningBox>
 
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section.
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `kubeadmconfig.apiServer` parameter section.
 <br />
 
 ```yaml
@@ -477,6 +480,7 @@ certSANs:
 The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN value:
 
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
+
 
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
@@ -563,5 +567,6 @@ data "spectrocloud_pack_simple" "spectro-proxy" {
 # References
 
 - [Enable Kubernetes Dashboard](/clusters/cluster-management/kubernetes-dashboard)
+
 
 - [Terraform Data Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)

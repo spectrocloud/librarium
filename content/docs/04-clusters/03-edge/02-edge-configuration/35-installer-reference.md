@@ -27,7 +27,6 @@ The Edge Installer is configured with a set of default values.
 | `PaletteEndpoint`| `api.console.spectrocloud.com`| The Palette API endpoint. |
 | `Prefix`| `edge`| The default prefix to apply to the unique identifier. |
 | `RegistrationURL`| `https://edge-registration-generic.vercel.app`| The URL that operators should use when registering the Edge host with Palette.| 
-|  `installHarbor`| `false`| Set to `true` to enable the usage of a Harbor registry.|
 
 The default values assume you are installing the Edge host in an environment without a network proxy, do not require remote access to the Edge host, and are using Palette SaaS. If you have requirements different from the default values, you must provide the Edge Installer with additional information. 
 

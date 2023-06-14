@@ -121,3 +121,8 @@ The result is a content bundle that you can use to preload into your installer. 
 # Validate
 
 You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
+
+
+# Next Steps
+
+Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide.

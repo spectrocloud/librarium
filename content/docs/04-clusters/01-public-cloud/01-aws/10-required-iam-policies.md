@@ -17,18 +17,18 @@ Palette requires proper Amazon Web Services (AWS) permissions to operate and per
 The following policies include all the permissions needed for cluster provisioning with Palette.
  <br />
 
-* Controllers Policy
+* **PaletteControllersPolicy**
 
 
-* Control Plane Policy
+* **PaletteControlPlanePolicy**
 
 
-* Nodes Policy
+* **PaletteNodesPolicy**
 
 
-* Deployment Policy 
+* **PaletteDeploymentPolicy**
 
-Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the *Controllers EKS Policy*.
+Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](/clusters/public-cloud/aws/required-iam-policies#controllersekspolicy) section to review the IAM policy.
 
 <br />
 
@@ -228,182 +228,6 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Controllers EKS Policy" key="Controllers EKS Policy">
-
-**Last Update**: April 20, 2023
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "ssm:GetParameter"
-      ],
-      "Resource": [
-        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "eks.amazonaws.com"
-        }
-      },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
-        }
-      },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "eks-fargate.amazonaws.com"
-        }
-      },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Action": [
-        "iam:AddClientIDToOpenIDConnectProvider",
-        "iam:CreateOpenIDConnectProvider",
-        "iam:DeleteOpenIDConnectProvider""iam:ListOpenIDConnectProviders",
-        "iam:UpdateOpenIDConnectProviderThumbprint",
-      ],
-      "Resource": [
-        "*"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Action": [
-        "iam:GetRole",
-        "iam:ListAttachedRolePolicies",
-        "iam:DetachRolePolicy",
-        "iam:DeleteRole",
-        "iam:CreateRole",
-        "iam:TagRole",
-        "iam:AttachRolePolicy"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Action": [
-        "iam:GetPolicy"
-      ],
-      "Resource": [
-        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Action": [
-        "eks:DescribeCluster",
-        "eks:ListClusters",
-        "eks:CreateCluster",
-        "eks:TagResource",
-        "eks:UpdateClusterVersion",
-        "eks:DeleteCluster",
-        "eks:UpdateClusterConfig",
-        "eks:UntagResource",
-        "eks:UpdateNodegroupVersion",
-        "eks:DescribeNodegroup",
-        "eks:DeleteNodegroup",
-        "eks:UpdateNodegroupConfig",
-        "eks:CreateNodegroup",
-        "eks:AssociateEncryptionConfig",
-        "eks:ListIdentityProviderConfigs",
-        "eks:AssociateIdentityProviderConfig",
-        "eks:DescribeIdentityProviderConfig",
-        "eks:DisassociateIdentityProviderConfig"
-      ],
-      "Resource": [
-        "arn:*:eks:*:*:cluster/*",
-        "arn:*:eks:*:*:nodegroup/*/*/*"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Action": [
-        "ec2:AssociateVpcCidrBlock",
-        "ec2:DisassociateVpcCidrBlock",
-        "eks:ListAddons",
-        "eks:CreateAddon",
-        "eks:DescribeAddonVersions",
-        "eks:DescribeAddon",
-        "eks:DeleteAddon",
-        "eks:UpdateAddon",
-        "eks:TagResource",
-        "eks:DescribeFargateProfile",
-        "eks:CreateFargateProfile",
-        "eks:DeleteFargateProfile"
-      ],
-      "Resource": [
-        "*"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Condition": {
-        "StringEquals": {
-          "iam:PassedToService": "eks.amazonaws.com"
-        }
-      },
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "*"
-      ],
-      "Effect": "Allow"
-    },
-    {
-      "Condition": {
-        "ForAnyValue:StringLike": {
-          "kms:ResourceAliases": "alias/cluster-api-provider-aws-*"
-        }
-      },
-      "Action": [
-        "kms:CreateGrant",
-        "kms:DescribeKey"
-      ],
-      "Resource": [
-        "*"
-      ],
-      "Effect": "Allow"
-    }
-  ]
-}
-```
-</Tabs.TabPane>
-
 <Tabs.TabPane tab="Control Plane Policy" key="Control Plane Policy">
 
 **Last Update**: April 20, 2023
@@ -578,6 +402,185 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 </Tabs.TabPane>
 
 </Tabs>
+
+
+## Controllers EKS Policy
+
+If you plan to deploy host clusters to AWS EKS, make sure to attach the **PaletteControllersEKSPolicy**.
+
+**Last Update**: April 20, 2023
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ssm:GetParameter"
+      ],
+      "Resource": [
+        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks.amazonaws.com"
+        }
+      },
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
+        }
+      },
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks-fargate.amazonaws.com"
+        }
+      },
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "iam:AddClientIDToOpenIDConnectProvider",
+        "iam:CreateOpenIDConnectProvider",
+        "iam:DeleteOpenIDConnectProvider",
+        "iam:ListOpenIDConnectProviders",
+        "iam:UpdateOpenIDConnectProviderThumbprint"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "iam:GetRole",
+        "iam:ListAttachedRolePolicies",
+        "iam:DetachRolePolicy",
+        "iam:DeleteRole",
+        "iam:CreateRole",
+        "iam:TagRole",
+        "iam:AttachRolePolicy"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "iam:GetPolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "eks:CreateCluster",
+        "eks:TagResource",
+        "eks:UpdateClusterVersion",
+        "eks:DeleteCluster",
+        "eks:UpdateClusterConfig",
+        "eks:UntagResource",
+        "eks:UpdateNodegroupVersion",
+        "eks:DescribeNodegroup",
+        "eks:DeleteNodegroup",
+        "eks:UpdateNodegroupConfig",
+        "eks:CreateNodegroup",
+        "eks:AssociateEncryptionConfig",
+        "eks:ListIdentityProviderConfigs",
+        "eks:AssociateIdentityProviderConfig",
+        "eks:DescribeIdentityProviderConfig",
+        "eks:DisassociateIdentityProviderConfig"
+      ],
+      "Resource": [
+        "arn:*:eks:*:*:cluster/*",
+        "arn:*:eks:*:*:nodegroup/*/*/*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "ec2:AssociateVpcCidrBlock",
+        "ec2:DisassociateVpcCidrBlock",
+        "eks:ListAddons",
+        "eks:CreateAddon",
+        "eks:DescribeAddonVersions",
+        "eks:DescribeAddon",
+        "eks:DeleteAddon",
+        "eks:UpdateAddon",
+        "eks:TagResource",
+        "eks:DescribeFargateProfile",
+        "eks:CreateFargateProfile",
+        "eks:DeleteFargateProfile"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "eks.amazonaws.com"
+        }
+      },
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "ForAnyValue:StringLike": {
+          "kms:ResourceAliases": "alias/cluster-api-provider-aws-*"
+        }
+      },
+      "Action": [
+        "kms:CreateGrant",
+        "kms:DescribeKey"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}
+```
 
 # Restricting Palette VPC Permissions
 

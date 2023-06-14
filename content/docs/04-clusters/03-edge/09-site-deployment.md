@@ -30,7 +30,9 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 1. [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile)
 
+
 2. [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
+
 
 3. [Perform Site Install](/clusters/edge/site-deployment/site-installation)
 
@@ -45,10 +47,14 @@ In a lab environment, you must perform all the steps. In a non-learning environm
 
 - [Model Cluster Profile](/clusters/edge/site-deployment/model-profile)
 
+
 - [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
+
 
 - [Perform Site Install](/clusters/edge/site-deployment/site-installation)
 
+
 - [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration)
+
 
 - [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment)

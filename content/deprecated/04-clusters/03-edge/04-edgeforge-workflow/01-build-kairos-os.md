@@ -94,13 +94,13 @@ Some operating systems require credentials to download the source image, such as
 
 <br />
 
-Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) step and become part of your Edge artifact. The custom OS you created will also be used in the OS layer of the cluster profile by using the [Bring Your Own OS (BYOOS)](/integrations/byoos) pack.
+Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) step and become part of your Edge artifact. The custom OS you created will also be used in the OS layer of the cluster profile by using the [Bring Your Own OS (BYOOS)](/integrations/byoos) pack.
 <br />
 
 
 # Next Steps
 
 
-Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the [Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.
+Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the [Build Content Bundle](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
 
 <br />

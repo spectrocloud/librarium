@@ -126,21 +126,9 @@ This page lists the version details of various Palette components and their resp
 |2.3|1.0.9|
 -------
 
-
-# Edge Installer Image Version
-
-|Palette Release| Version|
-|--|---|
-|3.4|3.4.1|
-|3.|3.3.3|
--------
-
-
 # Kubernetes Versions
 
 - Kubernetes: Refer to the Kubernetes [pack documentation](/integrations/kubernetes).
-
-- Kubernetes EKS: Refer to the Kubernetes EKS [pack documentation](/integrations/EKS-D). 
 
 # Operating System Layer Versions
 
