@@ -38,7 +38,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 The following prerequisites must be met before deploying a Kubernetes clusters in VMware:
 
-1. vSpehre version 7.0 or above. vSphere 6.7 is supported but not recommended.
+1. vSphere version 7.0 or above. vSphere 6.7 is supported but not recommended as it reached end of general support in 2022.
 
 
 2. Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
@@ -128,7 +128,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 <Tabs identifier="vm-privileges">
 
-<Tabs.TabPane tab="8.0.x" key="8.0.x" >
+<Tabs.TabPane tab="8.0" key="8.0" >
 
 ## Root-Level Role Privileges
 
@@ -286,7 +286,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="7.0.x" key="7.0.x" >
+<Tabs.TabPane tab="7.0" key="7.0" >
 
 ## Root-Level Role Privileges
 
@@ -443,7 +443,7 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 
 </Tabs.TabPane>
-<Tabs.TabPane tab="6.0.x" key="6.0.x" >
+<Tabs.TabPane tab="6.7" key="6.7" >
 
 ## Root-Level Role Privileges
 

@@ -31,7 +31,7 @@ The next sections describe specific requirements for all modes.
 ## Prerequisites
 
 The following are prerequisites for deploying a Kubernetes cluster in VMware:
-* vCenter version 7.0 or above. vSphere 6.7 is supported but not recommended.
+* vSphere version 7.0 or above. vSphere 6.7 is supported but not recommended as it reached end of general support in 2022.
 
 
 * Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to use high-availability control planes. Network Time Protocol (NTP) must be configured on each ESXi host.
