@@ -50,7 +50,7 @@ Your data security is a core business requirement, not just a technical feature.
 
 ## Secure by Default
 
-We believe that security should be the default setting for all of our systems and software. Our products are secure to use out-of-the-box with little or no configuration needed and at no additional cost – such as Multi-Factor authentication (MFA), audit logs, and access control for sensitive information.
+We believe that security should be the default setting for all of our systems and software. Our products are secure to use out-of-the-box with little or no configuration needed and at no additional cost – such as audit logs and access control for sensitive information. Palette also supports Multi-Factor authentication (MFA) using external Identify Providers (IDP), such as Okta. 
 
 <br />
 

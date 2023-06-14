@@ -19,7 +19,7 @@ In addition to the security principles we adhere to and our secure development l
 
 Palette uses a microservices-based architecture, and we take steps to ensure each service is secured. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, which Palette hosts and manages in Software as a Service (SaaS) mode or that users can host and manage in a self-hosted environment.
 
-Palette supports three different architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support for air-gapped environments. These flexible deployment models allow us to adapt to existing requirements in terms of separating responsibilities and network restrictions.
+Palette supports three architecture models: multi-tenant SaaS, dedicated SaaS, and self-hosted, which includes support for air-gapped environments. These flexible deployment models allow us to adapt to existing requirements in terms of separating responsibilities and network restrictions.
 
 <br />
 

@@ -1,7 +1,7 @@
 ---
 title: "SaaS Operation"
 metaTitle: "SaaS Operation"
-metaDescription: "Learn about Palette security in a SaaS environment."
+metaDescription: "Learn about Palette security in a SaaS deployment."
 icon: ""
 hideToC: false
 fullWidth: false

@@ -13,9 +13,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Based on the deployment model, Spectro Cloud Platform is composed of a multi-layer deployment stack: Cloud > VM > OS > Container Runtime > Kubernetes > Pods.
+Based on the deployment model, Palette is composed of a multi-layer deployment stack: Cloud > VM > OS > Container Runtime > Kubernetes > Pods.
 
-Spectro Cloud follows defense-in-depth principles that prescribe securing each layer in a multi-layer deployment stack to ensure maximum security.
+To ensure maximum security, we follow defense-in-depth principles that prescribe securing each layer in a multi-layer deployment stack.
 
 For SaaS deployment models, cloud and Virtual Machine (VM) security are handled by SaaS platform operation security controls. For on-prem deployment models, the customer’s data center infrastructure team typically handles cloud and VM security.
 
@@ -27,9 +27,9 @@ These hardened images are used to launch control planes and worker nodes for the
 
 ## Container Security
 
-Spectro Cloud uses containerd for container runtime. Containerd is an industry-standard container runtime that emphasizes simplicity, robustness, and portability in managing the complete container lifecycle. It runs as a demon on the Ubuntu instances.
+Spectro Cloud uses Containerd for container runtime. Containerd is an industry-standard container runtime that emphasizes simplicity, robustness, and portability in managing the complete container lifecycle. It runs as a demon on Ubuntu instances.
 
-Container images for various application services are built using distroless images, which have significantly fewer packages and improve security by reducing the attack surface.
+Container images for various application services are built using distroless images, which have significantly fewer packages and improve security by reducing attack surface.
 
 All container images are scanned for vulnerabilities prior to being published to a repository or deployed to the SaaS platform.
 
