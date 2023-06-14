@@ -10,7 +10,6 @@ export default function MendableAIWidget() {
     script.async = true;
 
     document.body.appendChild(script);
-
     script.onload = () => {
       if (window.Mendable) {
         window.Mendable.initialize({
