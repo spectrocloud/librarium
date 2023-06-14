@@ -12,7 +12,7 @@ import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Quick Start Installation
+# VMware Quick Start Installation
 
 The Palette On-Prem Quick Start Mode is a single node installation of the Palette platform, used for PoC environments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments (see Enterprise Mode for production deployments).
 

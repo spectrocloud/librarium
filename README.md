@@ -354,6 +354,16 @@ Example
 ![Example usage of codeblocks with highlighting.](assets/docs/images/readme_codeblocks_example.png)
 
 
+#### Hide ClipBoard Button
+
+The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
+
+Example 
+![Example](assets/docs/images/hide_copy_button_example.png)
+
+Result
+
+![Result](assets/docs/images/hide_copy_button.png)
 
 
 ### Using Warning Box compponent/Info Box component or any component that wraps content

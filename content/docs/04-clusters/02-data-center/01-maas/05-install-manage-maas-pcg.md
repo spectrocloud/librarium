@@ -13,11 +13,14 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview 
 
-The Private Cloud Gateway (PCG) enables support for private cloud or data center environments. The primary function of the PCG is to facilitate connectivity between Palette and MAAS, even if MAAS is behind a NAT gateway or a firewall. The PCG connects to Palette and establishes a permanent connection, traversing any NAT gateways or firewalls, rather than Palette attempting to connect to MAAS directly and being blocked by a firewall. In this way, the function of the PCG is somewhat similar to that of a reverse proxy.
+The Private Cloud Gateway (PCG) supports private cloud and data center environments. Its function is similar to that of a reverse proxy. The PCG facilitates connectivity between Palette and a private cloud that exists behind a NAT gateway or firewall. It traverses any NAT gateways or firewalls to establish a permanent connection with Palette.
 
-PCG is a Kubernetes cluster responsible for supporting Palette in a private network environment. All host clusters deployed through Palette will communicate with PCG.
+The PCG is a Kubernetes cluster that supports Palette in a private network environment. All host clusters deployed through Palette communicate with PCG.
 
 At a high level, the following occurs during a successful MAAS PCG installation:
+
+<br />
+
 - Start the PCG installer on a laptop, workstation, or Bastion host. 
 
 
@@ -31,7 +34,8 @@ At a high level, the following occurs during a successful MAAS PCG installation:
 
 You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA).  
 
-Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
+As the following diagram shows, Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
+
 
 <br />
 
@@ -148,7 +152,7 @@ If you have already installed the PCG and are experiencing issues that you want 
 <Tabs.TabPane tab="Install PCG" key="install_pcg"> 
 
 
-## Install the Gateway
+## Install the PCG
 
 The following steps will guide you to install the PCG. 
 <br />
@@ -418,6 +422,7 @@ You can validate your your PCG has been resized by navigating to the **Private C
 
 <br />
 
+
 # Next Steps
 
 You can now create tenant clusters in the auto-created cloud account.  To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
@@ -427,15 +432,15 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
 
 <br />
 
+
 # Resources 
 
  - [Install MAAS](https://maas.io/)
- 
- 
- - [Install MAAS How-To](https://maas.io/docs/how-to-install-maas)
 
 
- - [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
+ - [MAAS Fresh Install](https://maas.io/docs/how-to-install-maas)
 
 
-<br />
+ - [Manage MAAS User Accounts](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
+
+

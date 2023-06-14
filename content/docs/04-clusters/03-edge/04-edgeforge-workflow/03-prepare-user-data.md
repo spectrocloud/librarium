@@ -292,4 +292,4 @@ For your initial testing, your user data may include global settings and site-sp
 
 # Next Steps
 
-The last step of the EdgeForce workflow is to build the Edge artifact. Check out the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide to learn how to build your images with the Edge Installer Builder CLI and create an Edge artifact.
+The last step of the EdgeForce workflow is to build the Edge artifacts. Check out the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create the Edge artifacts.
