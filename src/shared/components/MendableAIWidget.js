@@ -18,7 +18,7 @@ export default function MendableAIWidget() {
           type: "floatingButton",
           dialogPlaceholder: "What is Palette?",
           floatingButtonStyle: {
-            color: "#fff",
+            color: "#FFFFFF",
             backgroundColor: "#3E4FB5",
           },
           icon: spectrocloudLogo,
