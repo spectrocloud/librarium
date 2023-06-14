@@ -34,9 +34,7 @@ const HeadComponents = [
       crossOrigin="anonymous"
     />
   ),
-  process.env.GATSBY_FULLSTORY_TOKEN && (
-    <script key="full-story" dangerouslySetInnerHTML={{ __html: fsScript }} />
-  ),
+  process.env.GATSBY_FULLSTORY_TOKEN && <script dangerouslySetInnerHTML={{ __html: fsScript }} />,
 ].filter(Boolean);
 
 const onRenderBody = ({ setHeadComponents }) => {

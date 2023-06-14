@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import spectrocloudLogo from "assets/spectrocloud-logo.png";
 export const MENDABLE_SCRIPT_URL =
-  "https://unpkg.com/@mendable/search@0.0.109-beta.9/dist/umd/mendable-bundle.min.js";
+  "https://unpkg.com/@mendable/search@0.0.109/dist/umd/mendable-bundle.min.js";
 
 export default function MendableAIWidget() {
   useEffect(() => {
