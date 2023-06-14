@@ -1,7 +1,7 @@
 ---
-title: 'Spectro Kubernetes Dashboard'
+title: "Spectro Kubernetes Dashboard"
 metaTitle: "Spectro Cloud's Pre-configured Kubernetes Dashboard"
-metaDescription: 'Palette's pre-configured Kubernetes Dashboard Monitoring pack reduces the complexity of standing up the Kubernetes dashboard for a cluster.'
+metaDescription: "Palette's pre-configured Kubernetes Dashboard Monitoring pack reduces the complexity of standing up the Kubernetes dashboard for a cluster."
 hiddenFromNav: true
 type: "integration"
 category: ["monitoring"]
@@ -73,59 +73,21 @@ Use the following information to find the Kubernetes Dashboard pack.
 - **Pack Name**: Spectro Kubernetes Dashboard
 - **Pack Version**: 2.7.0 or higher
 
-Spectro Kubernetes Dashboard has the following **Access** options.
+Spectro Kubernetes Dashboard has the following OIDC Identity Provider options.
 
 <br /> 
 
 - **Proxied**: This option provides private access to your cluster when the cluster is in a private cloud. This option requires the Spectro Proxy pack, which is integrated with the Spectro Kubernetes Dashboard. The latest version of the Spectro Proxy pack is automatically installed when you create the cluster. To learn more, check out the [Spectro Proxy](/integrations/frp) guide.
 
+
 - **Direct**: This option provides direct access to your cluster when the cluster is in a public cloud.
 
-<br /> 
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="AWS EKS" key="AWS EKS">
-
-To enable OIDC manually for EKS clusters, follow these steps: 
-
-<br />
-
-1. In the Kubernetes pack, uncomment the lines in the ``oidcIdentityProvider`` parameter section of the Kubernetes pack, and enter your third-party provider details.
-<br />
-
-  ```
-    oidcIdentityProvider:
-      identityProviderConfigName: 'Spectro-docs'
-      issuerUrl: 'issuer-url'
-      clientId: 'user-client-id-from-Palette'
-      usernameClaim: "email"
-      usernamePrefix: "-"
-      groupsClaim: "groups"
-      groupsPrefix: ""
-      requiredClaims:
-  ```
-
-<br />
-
-
-2. Under the ``clientConfig`` parameter section of Kubernetes pack, uncomment the ``oidc-`` configuration lines. <br /><br />
-
-  ```
-  clientConfig:
-    oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-    oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-    oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-    oidc-extra-scope: profile,email
-  ``` 
-
-</Tabs.TabPane>
-
-</Tabs>
 
 # Terraform
 
 You can reference the Spectro Proxy pack in Terraform with a data resource.
+
+<br />
 
 ```tf
 data "spectrocloud_registry" "public_registry" {
