@@ -150,8 +150,7 @@ The Product UID serves as a unique identifier for Edge Hosts. The default produc
 
 | Parameter         | Description                                           |
 |-------------------|-------------------------------------------------------|
-| `deviceUIDPaths`    | Specifies the paths and associated regular expressions |
-|                   | to extract the UID.                                   |
+| `deviceUIDPaths`    | Specifies the paths and associated regular expressions to extract the UID. |                                |
 | `name`              | The path of the file containing the UID.              |
 | `regex`             | The regular expression pattern to match the UID.      |
 | `/etc/edge-configs/metadata` | The path to the file where the UID is stored.     |
