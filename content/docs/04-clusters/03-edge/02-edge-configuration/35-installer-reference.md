@@ -144,6 +144,15 @@ Network settings specific to the network interface of the edge host. You can con
 | `networkInterface.gateway` | The network gatway IP address. |
 | `networkInterface.nameserver` | The IP address of the DNS nameserver this interface should route requests to.| 
 
+# Customizing Product UID
+
+The Product UID serves as a unique identifier for Edge Hosts. To integrate the customized Edge Host into the system, generate a registration token in the tenant settings. This token serves as a unique identifier for the Edge Host. 
+
+The system determines the UID in a priority sequence.
+First, it uses a preferred name for the Edge Host. If that is not available, it attempts to extract the UID from specified files using regular expressions. It reads the product UUID from the ```/sys/class/dmi/id/product_uuid``` file if still unsuccessful. Finally, if no UID is obtained, the system generates a random UUID prefixed with "edge-". The UID is checked for unsupported characters, and files with the characters ``` /?#&+%,$~!@*(){}|=`;:<>’.^"" ``` are skipped. Additionally, the UID is truncated to a maximum length of 128 characters if it exceeds this limit.
+
+
+
 # Example Configuration
 
 The following example shows how user data configuration is used to customize the edge host installation process.
