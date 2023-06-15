@@ -12,8 +12,6 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-
-# Role-Based Access Control(RBAC)
 ## Overview
 
 RBAC stands for Role-Based Access Control. RBAC allows a single user to have different types of access control based on the resource being accessed. RBAC is the scenario that allows the Tenant Admin to grant full and unrestricted access to some parts of the system and withhold it for some others.
@@ -70,6 +68,13 @@ Palette resources can be allocated to roles under **Three Scopes**:
 
 * **Project**
 
+
+<br />
+
+
+![A diagram of Palette's RBAC model](/user-management_palette-rback_palette-rbac-model.png)
+
+<br />
 
 ### Permissions
 
