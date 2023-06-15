@@ -19,6 +19,13 @@ Palette is available in three flexible deployment models:
 
 * **Self-hosted**: The management plane is hosted in the customer’s environment. It can be the customer’s on-prem VMware vSphere, OpenStack, bare metal, or in a public cloud using the customer’s cloud account.
 
+<br />
+
+## Product Security
+
+At Spectro Cloud, we recognize the importance of robust security measures in today's rapidly evolving digital landscape. As the provider of our cutting-edge SaaS and self-hosted Palette product, our commitment to safeguarding your data and ensuring the integrity of our services is paramount. Learn more about Palette security by reviewing the [Security](/security) section.
+
+<br />
 
 ## SaaS Architecture and Data Flow
 

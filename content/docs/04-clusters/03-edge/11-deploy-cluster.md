@@ -1,9 +1,8 @@
 ---
 title: "Deploy Edge Cluster"
-metaTitle: "Deploy Edge Cluster using VMWare vSphere"
-metaDescription: "Learn how to use the Edge installer ISO image to prepare Edge hosts, create a cluster profile using provider OS image, and deploy a cluster on those Edge devices."
+metaTitle: "Deploy Edge Cluster on VMWare VMs"
+metaDescription: "Learn how to use the Edge installer ISO image to prepare Edge hosts, create a cluster profile using the provider OS image, and deploy a cluster on those Edge hosts."
 icon: ""
-category: ["tutorial"]
 hideToC: false
 fullWidth: false
 ---
@@ -14,27 +13,27 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Deploy Edge Cluster
-Deploying an Edge native Kubernetes cluster requires all Edge hosts to be provisioned already with Kairos based immutable operating system. In cases where multiple edge hosts require the same configuration, it is challenging for the IT/Site operations team to ensure scale consistency in terms of OS and other configurations, such as networking, proxy, security, tooling, and user privileges. 
+Deploying a Kubernetes (K3s) cluster on Edge requires all hosts to be ready with the required dependencies, user data configurations, and an operating system (OS). 
 
-Here are the primary phases of deploying an Edge native Kubernetes cluster in production:  
-
-- IT administrators prepare and test the edge installer ISO image for a consistent deployment at scale.
-
-- Site operators provision edge hosts and identify the additional user-data to install on a set of edge hosts.
-
-- Development team prepares a cluster profile using the provider OS image and the Infrastructure team deploys cloud native clusters.
+In cases where multiple Edge devices require the same configuration, it is challenging for the IT/Site operations team to ensure scale consistency regarding dependencies, user data configurations, and the OS. For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. Your job is to deploy K3s clusters on Edge for each new store. Assuming all Edge devices have the same configuration, you must prepare all Edge devices so the development/infrastructure team can deploy clusters on all those devices.
 
 
-For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. Your job is to deploy single-node Kubernetes clusters at the edge for each new store. Assuming all edge devices have the same configuration, you must prepare an Edge installer ISO image and prepare edge devices so the Dev/Infra team can deploy clusters on all those devices.
+Here are the primary stages of deploying a K3s cluster on Edge in production:  
+
+- IT administrators build the Edge artifacts - an installer ISO and the provider OS image. 
+
+- Site operators prepare Edge devices with the installer ISO and identify the additional user data to install on those hosts.
+
+- The development/infrastructure team prepares a cluster profile using the provider OS image and deploys the clusters.
 
 
+In this tutorial, you will generate Edge artifacts, prepare Edge hosts, and deploy a K3s cluster on those hosts. 
 
-Setting up Virtual Machines (VMs) as Edge hosts and deploying the Edge native K3s cluster on those VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge device. This tutorial example uses VMWare vCenter to provision VMs.
+
+Setting up Virtual Machines (VMs) as Edge hosts and deploying the K3s cluster on those VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge device. Therefore, this tutorial uses VMWare VMs as Edge hosts to test the installer ISO image's ease of use for consistent deployments across all sites in production. 
 
 
-In this tutorial, you will generate Edge artifacts, prepare VMWare VMs as Edge hosts, and deploy an Edge cluster on those VMs. This guide uses VMs as Edge hosts to test the installer ISO image's ease of use for consistent deployments across all sites in production.      
-
-The diagram below shows the main steps to prepare Edge hosts and deploy cluster on them.
+The diagram below shows the main steps to prepare Edge hosts and deploy a cluster.
 
 
 ![An overarching diagram showing the tutorial workflow.](/tutorials/edge-native/clusters_edge_deploy-cluster_overarching.png)
@@ -47,7 +46,7 @@ To complete this tutorial, you will need the following items:
 * VMWare vCenter details where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and network.
 
 
-* A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture. You can issue the following command in the terminal to check your processor architecture. 
+* A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
   <br/>
 
   ```bash
@@ -85,18 +84,17 @@ To complete this tutorial, you will need the following items:
 
 
 # Clone GitHub Repositories
-Use the Linux machine as a development environment for generating edge artifacts in this tutorial. Later, you will set up a Docker container as a testing environment to test and use the generated installer ISO.
+Use the following instructions on your Linux machine to create all the required Edge artifacts. 
 
-In your Linux machine, clone the [CanvOS](https://github.com/spectrocloud/CanvOS.git) repository containing the starter code. 
+Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code for building Edge artifacts.  
 <br />
 
 ```bash
 git clone https://github.com/spectrocloud/CanvOS.git
 ```
-CanvOS repository follows [EdgeForge workflow](clusters/edge/edgeforge-workflow) and leverages [Earthly](https://earthly.dev/) and Kairos to build all artifacts. 
 
 
-Clone the [Tutorials](https://github.com/spectrocloud/tutorials.git) repository containing the starter code for building a VM template and scripts to provision/delete VMs. 
+Clone the [Tutorials](https://github.com/spectrocloud/tutorials.git) repository containing the starter code and tools for building a VM template and provision/delete VMs. 
 <br />
 
 ```bash
@@ -105,7 +103,11 @@ git clone https://github.com/spectrocloud/tutorials.git
 
 
 # Build Edge Artifacts
-This section will guide you to generate an Edge installer ISO image and  provider OS images. To get started, change to the **CanvOS** directory.
+
+In this section, you will use the utility, [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md), to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile.
+
+## Checkout the Starter Code
+To get started, change to the **CanvOS** directory.
 <br />
 
 ```bash
@@ -119,7 +121,7 @@ View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
 git tag
 ```
 
-Check out the repository tag that matches your Palette product version. Your Palette product version is displayed in the top left corner, as shown in the screenshot below. 
+Check out the repository tag that closely matches your Palette product version. Your Palette product version is displayed in the top left corner, as shown in the screenshot below. 
 
 ![Screenshot displaying the Palette product version.](/tutorials/palette-canvos/clusters_edge_palette-canvos_palette-version.png)
 
@@ -130,7 +132,7 @@ You must check out a matching git tag so the Edge installer you generate will be
 git checkout v3.4.3
 ```
 
-## Define Customization
+## Review Arguments
 Review the files relevant for this guide. 
   - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process. 
   - **Dockerfile** - Embeds the arguments and other configurations in the image.
@@ -138,6 +140,8 @@ Review the files relevant for this guide.
   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
   - **user-data.template** - A sample user-data file.
 
+
+The **.arg.template** sample file contains customizable arguments, such as image tag, registry, repository, and OS distribution. This guide uses the default values for all arguments, for example, the operating system as `ubuntu` and the tag as `demo`. As a result, the provider OS image will name as `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the [Build Edge Artifacts](/clusters/edge/palette-canvos) guide to learn more about customizing arguments, Dockerfile, and the user data.
 
 
 Rename the sample **.arg.template** file to **.arg**. 
@@ -147,22 +151,6 @@ Rename the sample **.arg.template** file to **.arg**.
 mv .arg.template .arg
 ```
 
-The **.arg** file contains the customizable arguments, such as image tag, image registry, image repository, and OS distribution. 
-Suppose you want to edit the value of these arguments, you can update the corresponding value in the **.arg** file. The table below shows all arguments, their default value, and allowed values.
-<br />
-
-|**Argument**|**Description**|**Default Value**| **Allowed Values** |
-|---|---|---|---|
-|`CUSTOM_TAG`|Tag for the provider images|demo|Lowercase alphanumeric string without spaces.|
-|`IMAGE_REGISTRY`|Image registry name|ttl.sh|Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud|
-|`OS_DISTRIBUTION`|OS Distribution |ubuntu | ubuntu, opensuse-leap|
-|`IMAGE_REPO`|Image repository name.<br /> It is the same as the OS distribution.|`$OS_DISTRIBUTION`|Your image repository name.|
-|`OS_VERSION`|OS version, only applies to Ubuntu |22| 20, 22|
-|`K8S_DISTRIBUTION`|Kubernetes Distribution |k3s| k3s, rke2, kubeadm |
-|`ISO_NAME`|Name of the Installer ISO|palette-edge-installer|Lowercase alphanumeric string without spaces. The charaters `-` and `_` are allowed. |
-<br />
-
-Using the default value for all arguments, for example, the operating system as `ubuntu` and the tag as `demo`, the provider OS image will name as `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the **Advanced** workflow in the [Build Edge Native Artifacts](clusters/edge/palette-canvos) guide for further customization options.
 
 ## Create User Data
 Next, you will create a **user-data** file that embeds the Edge host's login credentials and registration token in the Edge Installer ISO image.  
@@ -206,11 +194,11 @@ Use the following command to create the **user-data** file containing the tenant
 >
 
 ```shell
-cat <<'EOF' > user-data
+cat << EOF > user-data
 #cloud-config
 stylus:
   site:
-    edgeHostToken: aUAxxxxxxxxx0ChYCrO
+    edgeHostToken: $token
 install:
   poweroff: true
 users:
@@ -220,27 +208,32 @@ EOF
 ```
 
 </PointsOfInterest>
+
+View the newly created user data file to ensure the token is set correctly.
 <br />
 
-## Build Artifacts
-The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to invoke the Earthly build process. The `--PE_VERSION` option in the command below signifies the Palette product version to use, which refers to the git tag you checked out in the previous step. <br />
-
 ```bash
-sudo ./earthly.sh +build-all-images --PE_VERSION=$(git describe --abbrev=0 --tags)
+cat user-data
 ```
 
-```bash coloredLines=2-2
+## Build Artifacts
+CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process. 
+<br />
+
+```bash
+sudo ./earthly.sh +build-all-images
+```
+
+```bash coloredLines=2-2 hideClipboard
 # Output condensed for readability
 ===================== Earthly Build SUCCESS ===================== 
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
 
-This command may take up to 15-20 minutes to finish depending on the resources of the host machine.
-
-## Save the output attributes to use later in the Cluster Profile
+This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Save the output attributes to use later in the Cluster Profile.
 <br />
 
-## Verify Artifacts
+## View Artifacts
 List the edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
 <br />
 
@@ -254,7 +247,7 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-Export the path to the ISO file, the **build/** directory, in the `ISOFILEPATH` environment variable. Later in the tutorial, you will use this environment variable to mount the **build/** directory to a Docker container. 
+Export the path to the ISO file, the **build** directory, in the `ISOFILEPATH` environment variable. Later in the tutorial, you will use this environment variable to bind mount the **build** directory to a Docker container. 
 <br />
 
 ```bash
@@ -262,28 +255,33 @@ export ISOFILEPATH=$PWD/build
 echo $ISOFILEPATH
 ```
 
+
 List the Docker images to review the provider OS images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` variable. 
 <br />
 
 ```shell
-docker images --filter=reference='*/*:*palette-learn'
+docker images --filter=reference='*/*:*demo'
 ```
 
 ```bash coloredLines=3-4
 # Output
-REPOSITORY        TAG                                IMAGE ID       CREATED         SIZE
-ttl.sh/ubuntu     k3s-1.25.2-v3.4.3-palette-learn    b3c4956ccc0a   6 minutes ago   2.49GB
-ttl.sh/ubuntu     k3s-1.24.6-v3.4.3-palette-learn    fe1486da25df   6 minutes ago   2.49GB
+REPOSITORY      TAG                      IMAGE ID       CREATED          SIZE
+ttl.sh/ubuntu   k3s-1.24.6-v3.4.3-demo   3a672a023bd3   45 minutes ago   4.61GB
+ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
 ```
 <br />
 
-## Push Provider Images
-To use the provider OS images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  Use the following commands to push the provider OS image to the *ttl.sh* image registry.  
+
+# Push Provider Images
+To use the provider OS images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  
+
+
+Use the following commands to push the provider OS image to the *ttl.sh* image registry.  
 <br />
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-palette-learn
-docker push ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-palette-learn
+docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
+docker push ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br />
 
@@ -295,11 +293,16 @@ As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you
 <br />
 
 
-After generating Edge artifacts, the next step is provisioning VMs as Edge hosts to test the Edge installer ISO image. 
+The next step is provisioning VMs as Edge hosts to test the Edge installer ISO image. 
 <br />
 
 # Provision Virtual Machines
-In this section, you will set up a tutorials container as a testing environment to use the generated installer ISO and pre-configured tools and scripts to provision VMs in VMWare vCenter.
+In this section, you will provision VMs as Edge hosts using the existing Packer and Go templates. However, it requires [Packer](https://www.packer.io/) and [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) installed on your Linux machine. 
+
+To make it convenient, we offer you a Docker container environment pre-configured with the necessary tools. The container will use the generated installer ISO artifact, existing tools (Packer, GOVC), and scripts to provision/delete VMs in VMWare vCenter. You will use Packer to generate a VM template and GOVC to communicate with VMWare vCenter.
+
+
+In this section, you will create a tutorial container within your Linux machine. 
 
 ## Create a Container
 Change to the **tutorials/** directory.
@@ -309,17 +312,15 @@ Change to the **tutorials/** directory.
 cd ../tutorials
 ```
 
-Use the command below to build the `tutorials` image. This Docker image is pre-configured with the necessary tools, [Packer](https://www.packer.io/) and [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc), for this tutorial. You will use Packer to generate a VM template and GOVC to communicate with VMWare vCenter. 
+Use the command below to build the `tutorials` image. This Docker image will be pre-configured with the necessary tools for this tutorial.  
 <br />
 
 ```bash
-docker build --build-arg PALETTE_VERSION=3.4.3 --build-arg PALETTE_CLI_VERSION=3.4.3 -t tutorials .
+docker build --build-arg PALETTE_VERSION=3.3.0 --build-arg PALETTE_CLI_VERSION=3.3.0 -t tutorials .
 ```
 
 
-Next, bind mount the directory containing your ISO file while provisioning a container from the `tutorials` Docker image you created above. Recall that the path to the directory containing your ISO file is stored in the `ISOFILEPATH` environment variable. 
-
-Issue the following command to ensure the `ISOFILEPATH` variable has the correct path. 
+Next, before you create a container from the image you ve just built, issue the following command to ensure the `ISOFILEPATH` variable has the correct path. Recall that the path to the directory containing your ISO file is stored in the `ISOFILEPATH` environment variable. 
 <br />
 
 ```bash
@@ -331,6 +332,10 @@ echo $ISOFILEPATH
 The environment variable set using `export [var-name]=[var-value]` will not persist across terminal sessions. If you have opened a new terminal session in your development environment, you will lose the `ISOFILEPATH` variable and have to set it again.  
 
 </InfoBox>
+
+
+Next, you will bind mount the directory in the Linux machine containing your ISO file with the **/edge-native/vmware/packer/build** directory in the container. 
+
 
 After verifying the value of the `ISOFILEPATH` variable, issue the following command to create a container from the `tutorials` image and open a bash session into it.
 <br />
