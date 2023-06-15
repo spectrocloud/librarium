@@ -1,7 +1,7 @@
 ---
 title: "Deploy Edge Cluster"
 metaTitle: "Deploy Edge Cluster on VMWare VMs"
-metaDescription: "Learn how to use the Edge installer ISO image to prepare Edge hosts, create a cluster profile using the provider OS image, and deploy a cluster on those Edge hosts."
+metaDescription: "Learn how to use the Edge installer ISO image to prepare Edge hosts, create a cluster profile using the provider image, and deploy a cluster on those Edge hosts."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -20,11 +20,11 @@ In cases where multiple Edge devices require the same configuration, it is chall
 
 Here are the primary stages of deploying a K3s cluster on Edge in production:  
 
-- IT administrators build the Edge artifacts - an installer ISO and the provider OS image. 
+- IT administrators build the Edge artifacts - an installer ISO and the provider image. 
 
 - Site operators prepare Edge devices with the installer ISO and identify the additional user data to install on those hosts.
 
-- The development/infrastructure team prepares a cluster profile using the provider OS image and deploys the clusters.
+- The development/infrastructure team prepares a cluster profile using the provider image and deploys the clusters.
 
 
 In this tutorial, you will generate Edge artifacts, prepare Edge hosts, and deploy a K3s cluster on those hosts. 
@@ -84,7 +84,7 @@ To complete this tutorial, you will need the following items:
 
 
 # Clone GitHub Repositories
-Use the following instructions on your Linux machine to create all the required Edge artifacts. 
+Use the following instructions on your Linux machine. 
 
 Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code for building Edge artifacts.  
 <br />
@@ -93,18 +93,11 @@ Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository
 git clone https://github.com/spectrocloud/CanvOS.git
 ```
 
-
-Clone the [Tutorials](https://github.com/spectrocloud/tutorials.git) repository containing the starter code and tools for building a VM template and provision/delete VMs. 
-<br />
-
-```bash
-git clone https://github.com/spectrocloud/tutorials.git
-```
-
-
 # Build Edge Artifacts
 
-In this section, you will use the utility, [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md), to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile.
+In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile. 
+
+The current tutorial will build and use the provider image compatible with K3s v1.25 as an example. 
 
 ## Checkout the Starter Code
 To get started, change to the **CanvOS** directory.
@@ -121,11 +114,7 @@ View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
 git tag
 ```
 
-Check out the repository tag that closely matches your Palette product version. Your Palette product version is displayed in the top left corner, as shown in the screenshot below. 
-
-![Screenshot displaying the Palette product version.](/tutorials/palette-canvos/clusters_edge_palette-canvos_palette-version.png)
-
-You must check out a matching git tag so the Edge installer you generate will be compatible with your Palette product version. This guide uses **v3.4.3** tag as an example. 
+Check out the newest available tag. This guide uses **v3.4.3** tag as an example. 
 <br />
 
 ```shell
@@ -133,45 +122,47 @@ git checkout v3.4.3
 ```
 
 ## Review Arguments
-Review the files relevant for this guide. 
-  - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process. 
+Review the files relevant for the build process. 
+  - **.arg.template** - A sample **.arg** file that defines customizable arguments to use during the build process. 
   - **Dockerfile** - Embeds the arguments and other configurations in the image.
   - **Earthfile** - Contains a series of commands to create target artifacts.
   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
   - **user-data.template** - A sample user-data file.
 
 
-The **.arg.template** sample file contains customizable arguments, such as image tag, registry, repository, and OS distribution. This guide uses the default values for all arguments, for example, the operating system as `ubuntu` and the tag as `demo`. As a result, the provider OS image will name as `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the [Build Edge Artifacts](/clusters/edge/palette-canvos) guide to learn more about customizing arguments, Dockerfile, and the user data.
-
-
-Rename the sample **.arg.template** file to **.arg**. 
+The **.arg.template** sample file contains customizable arguments, such as image tag, registry, repository, and OS distribution. Rename the sample **.arg.template** file to **.arg** and review the arguments to use in the build process.
 <br />
 
 ```bash
-mv .arg.template .arg
+mv .arg.template .arg && cat .arg
 ```
 
 
+CanvOS allows you to customize arguments defined in the **.arg** file. However, this tutorial will use the default values for all arguments, for example, the operating system as `ubuntu` and the tag as `demo`. As a result, the provider image will name as `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. 
+
+Refer to the [Build Edge Artifacts](/clusters/edge/palette-canvos) guide to learn more about customizing arguments, **Dockerfile**, and **user-data** .
+
+
 ## Create User Data
-Next, you will create a **user-data** file that embeds the Edge host's login credentials and registration token in the Edge Installer ISO image.  
+Next, you will create a **user-data** file that embeds the tenant registration token and Edge host's login credentials in the Edge Installer ISO image.  
 
 
-Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with your actual registration token. 
+Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` placeholder with your actual registration token. 
 <br />
 
 ```bash
 export token=[your_token_here]
 ```
-<br />
-  
-Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example. 
 
+  
+Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example.
 <br />
+
 
 <PointsOfInterest
   points={[
     {
-      x: 370,
+      x: 270,
       y: 160,
       label: 1,
       description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
@@ -230,11 +221,30 @@ sudo ./earthly.sh +build-all-images
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
 
-This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Save the output attributes to use later in the Cluster Profile.
+This command may take up to 15-20 minutes to finish depending on the hardware resources of the host machine. It will also display the configuration to use in your cluster profile later in this tutorial. See an example below. Notice that the `system.xxxxx` attribute values in the configuration bellow will be as same as what you defined in the **.arg** file earlier.
+
+Copy and save the output attributes in a notepad or clipboard to use later in the cluster profile.
+<br />
+
+```bash
+pack:
+  content:
+    images:
+      - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+options:
+  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+  system.registry: ttl.sh
+  system.repo: ubuntu
+  system.k8sDistribution: k3s
+  system.osName: ubuntu
+  system.peVersion: v3.4.3
+  system.customTag: demo
+  system.osVersion: 22
+```
 <br />
 
 ## View Artifacts
-List the edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
+After completing the build process, list the edge installer ISO image and checksum by issuing the following command from the **CanvOS** directory.
 <br />
 
 ```bash
@@ -243,11 +253,12 @@ ls build/
 
 ```bash
 # Output
-palette-edge-installer.iso      
+palette-edge-installer.iso       
 palette-edge-installer.iso.sha256
 ```
 
-Export the path to the ISO file, the **build** directory, in the `ISOFILEPATH` environment variable. Later in the tutorial, you will use this environment variable to bind mount the **build** directory to a Docker container. 
+
+Export the path to the ISO file, the **build** directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you will use this local variable to bind mount the **build** directory to a Docker container. 
 <br />
 
 ```bash
@@ -256,7 +267,7 @@ echo $ISOFILEPATH
 ```
 
 
-List the Docker images to review the provider OS images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` variable. 
+List the Docker images to review the provider images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` variable. 
 <br />
 
 ```shell
@@ -272,55 +283,57 @@ ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
 <br />
 
 
-# Push Provider Images
-To use the provider OS images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  
+## Push Provider Images
+To use the provider image in your cluster profile, push it to the image registry mentioned in the **.arg** file. The current example and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  
 
 
-Use the following commands to push the provider OS image to the *ttl.sh* image registry.  
+Use the following commands to push the provider image compatible with K3s v1.25 to the *ttl.sh* image registry.  
 <br />
 
 ```bash
 docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
-docker push ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br />
 
 <WarningBox>
 
-As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider OS images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. Refer to the Advanced workflow in the current guide to learn how to use another registry, such as Docker Hub, and tag the docker images accordingly.
+As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. Refer to the Advanced workflow in the current guide to learn how to use another registry, such as Docker Hub, and tag the docker images accordingly.
 
 </WarningBox>
 <br />
 
 
-The next step is provisioning VMs as Edge hosts to test the Edge installer ISO image. 
-<br />
-
 # Provision Virtual Machines
-In this section, you will provision VMs as Edge hosts using the existing Packer and Go templates. However, it requires [Packer](https://www.packer.io/) and [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) installed on your Linux machine. 
+In this section, you will prepare a VM template using the Edge installer ISO image you built in the previous step and provision VMs by cloning that VM template. Note that the VMs will act as Edge hosts during cluster deployment. 
 
-To make it convenient, we offer you a Docker container environment pre-configured with the necessary tools. The container will use the generated installer ISO artifact, existing tools (Packer, GOVC), and scripts to provision/delete VMs in VMWare vCenter. You will use Packer to generate a VM template and GOVC to communicate with VMWare vCenter.
+Cloning the VM template will ensure the installation of the required dependencies and [user data](/clusters/edge/edge-configuration/installer-reference) configurations on the VMs. 
 
+Creating a VM template needs [Packer](https://www.packer.io/), and cloning the VM template to provision VMs in VMWare vCenter needs [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) installed on your Linux machine. 
 
-In this section, you will create a tutorial container within your Linux machine. 
+You do not have to install these tools (Packer, GOVC) on your Linux machine. Instead, this section will use Spectro Cloud's tutorials container as a jump host with already installed tools. 
 
-## Create a Container
-Change to the **tutorials/** directory.
+## Create a VM Template
+Use the following heredoc script to create a file, **.packerenv**, containing the VMWare vCenter details as environment variables. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and network. 
 <br />
 
 ```bash
-cd ../tutorials
+cat << EOF > .packerenv
+PKR_VAR_vcenter_server=$(read -p 'Enter vCenter Server URL without http:// or https://, for example: vcenter.spectrocloud.dev ' vcenter_server && echo $vcenter_server)
+PKR_VAR_vcenter_username=$(read -p 'Enter vCenter Username value: ' vcenter_username && echo $vcenter_username)
+PKR_VAR_vcenter_password=$(read -p 'Enter vCenter Password value: ' vcenter_password && echo $vcenter_password)
+PKR_VAR_vcenter_datacenter=$(read -p 'Enter vCenter Datacenter name: ' vcenter_datacenter && echo $vcenter_datacenter)
+PKR_VAR_vcenter_datastore=$(read -p 'Enter vCenter Datastore name: ' vcenter_datastore && echo $vcenter_datastore)
+PKR_VAR_vcenter_resource_pool=$(read -p 'Enter vCenter Resource Pool name: ' vcenter_resource_pool && echo $vcenter_resource_pool)
+PKR_VAR_vcenter_folder=$(read -p 'Enter vCenter Folder name: ' vcenter_folder && echo $vcenter_folder)
+PKR_VAR_vcenter_cluster=$(read -p 'Enter vCenter Cluster name: ' vcenter_cluster && echo $vcenter_cluster)
+PKR_VAR_vcenter_network=$(read -p 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
+EOF
 ```
 
-Use the command below to build the `tutorials` image. This Docker image will be pre-configured with the necessary tools for this tutorial.  
-<br />
 
-```bash
-docker build --build-arg PALETTE_VERSION=3.3.0 --build-arg PALETTE_CLI_VERSION=3.3.0 -t tutorials .
-```
+The `docker run --env-file ...` command will read in this file.
 
-
-Next, before you create a container from the image you ve just built, issue the following command to ensure the `ISOFILEPATH` variable has the correct path. Recall that the path to the directory containing your ISO file is stored in the `ISOFILEPATH` environment variable. 
+Next, verify that the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable to bind mount the host's **build** directory to the container. 
 <br />
 
 ```bash
@@ -334,88 +347,19 @@ The environment variable set using `export [var-name]=[var-value]` will not pers
 </InfoBox>
 
 
-Next, you will bind mount the directory in the Linux machine containing your ISO file with the **/edge-native/vmware/packer/build** directory in the container. 
-
-
-After verifying the value of the `ISOFILEPATH` variable, issue the following command to create a container from the `tutorials` image and open a bash session into it.
-<br />
-
-```bash
-docker run --name tutorialContainer --interactive --tty --volume "${ISOFILEPATH}:/edge-native/vmware/packer/build" tutorials
-```
-
-The command above will keep STDIN open, bind mount the directory containing your ISO file to the **/edge-native/vmware/packer/build** directory in the container, and 
-allocate a pseudo-TTY to open a bash session into the tutorials container. 
-
-## Create a VM Template
-In the tutorials container bash session, define a new file, **.env**, to hold the environment variables to use later in the tutorial.
-<br />
-
-```bash
-touch .env && vi .env
-```
-
-Save the following vCenter environment details in the **.env** file. Enter values for all variables that are marked `"Enter a value"`. This file also creates Packer environment variables, in the `PKR_VAR_[name]` format, pointing to the default environment variables. 
-<br />
-
-```bash
-export vcenter_server="Enter a value"       # Example: vcenter.spectrocloud.dev
-export vcenter_username="Enter a value"
-export vcenter_password="Enter a value"
-export vcenter_datacenter="Enter a value"
-export vcenter_datastore="Enter a value"
-export vcenter_resource_pool="Enter a value"
-export vcenter_folder="Enter a value"
-export vcenter_cluster="Enter a value"
-export vcenter_network="Enter a value"
-
-export PKR_VAR_vcenter_server=${vcenter_server}
-export PKR_VAR_vcenter_username=${vcenter_username}
-export PKR_VAR_vcenter_password=${vcenter_password}
-export PKR_VAR_vcenter_datacenter=${vcenter_datacenter}
-export PKR_VAR_vcenter_datastore=${vcenter_datastore}
-export PKR_VAR_vcenter_resource_pool=${vcenter_resource_pool}
-export PKR_VAR_vcenter_folder=${vcenter_folder}
-export PKR_VAR_vcenter_cluster=${vcenter_cluster}
-export PKR_VAR_vcenter_network=${vcenter_network}
-```
-
-Once the **.env** file is ready, execute the following commands to source the environment variables. 
+Issue the following command to create a VM template in the VMWare vCenter. The `--env-file` option in the command below will read the environment file, `--volume ` option will mount the local directory to the **/edge-native/vmware/packer/build** directory in the container, and ultimately, it executes the `packer build ...` command to create the VM template. 
 <br/>
 
 ```bash
-source .env
+docker run -it --rm --env-file .packerenv --volume "${ISOFILEPATH}:/edge-native/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.6 sh -c "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
-After declaring the environment variables, change to the **packer/** directory.
+In the `packer build` command above, the `--var-file` option accepts an environment file, and the `-force` flag destroys the existing template, if any. It uses the **vsphere.hcl** as the environment file that defines the VM template name, VM configuration, and ISO file name to use. Here is the **vsphere.hcl** file content for your reference; however, you do not have to modify any configuration in this tutorial.  
 <br />
 
-```bash
-cd edge-native/vmware/packer/
-```
-This directory has the following files required for Packer build.  
-<br />
-
-```bash
-.
-├── build
-│   ├── palette-edge-installer.iso
-│   └── palette-edge-installer.iso.sha256
-├── build.pkr.hcl
-└── vsphere.hcl
-```
-
-Packer uses the environment variables you have defined in the **.env** file above. If your target environment differs from what you have already defined in the **.env** file, you can redefine those variables in the **vsphere.hcl** file again. Below is the default file content. It contains the VM template name, VM configuration, and ISO file name from the previous steps. 
-
-Review **vsphere.hcl** file content.
-<br />
-
-```bash
-# Virtual Machine Settings
-########### DO NOT EDIT #################
+```bash hideClipboard
 # VM Template Name
-vm_name          = "palette-edge-template"
-
+vm_name                 = "palette-edge-template"
 # VM Settings
 vm_guest_os_type        = "ubuntu64Guest"
 vm_version              = 14
@@ -430,23 +374,24 @@ disk_eagerly_scrub      = false
 vm_disk_controller_type = ["pvscsi"]
 vm_network_card         = "vmxnet3"
 vm_boot_wait            = "5s"
-
-
 # ISO Objects
 iso                 = "build/palette-edge-installer.iso"
 iso_checksum        = "build/palette-edge-installer.iso.sha256"
 ```
 
-After reviewing and verifying the details in the **vsphere.hcl** file, use the following command to create a VM template using Packer. In this command, `--var-file` option is used to input the file containing the variable, and `-force` flag to destroy the existing template, if any. 
+
+<InfoBox>
+
+To change these configurations, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository, edit the **edge-native/vmware/packer/vsphere.hcl** file, rebuild the image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds), and use that image in the previous `docker run` command. The **vsphere.hcl** file customization is out of the scope for this tutorial. 
+
+</InfoBox>
 <br />
 
-```bash
-packer build -force --var-file=vsphere.hcl build.pkr.hcl
-```
 
 The build process can take up to 7-10 minutes to finish depending on your machine's and network configuration. After the build process is successful, it will create a VM template in the VMWare vCenter data store. 
+<br />
 
-```bash coloredLines=10-11
+```bash coloredLines=10-11 hideClipboard
 # Sample output
 ==> vsphere-iso.edge-template: Power on VM...
     vsphere-iso.edge-template: Please shutdown virtual machine within 10m0s.
@@ -463,21 +408,30 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 ## Provision VMs
 Once the VM template is ready, you can clone it to provision as many VMs as you need. The next steps will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to clone the VM template and provision VMs. 
 
-Change to the **clone_vm_template/** directory.
-<br />
 
 ```bash
-cd ../clone_vm_template/
+source .packerenv
+echo $PKR_VAR_vcenter_server
 ```
-
-This directory contains the following files for GOVC utility. 
 
 ```bash
-.
-├── delete-edge-host.sh
-├── deploy-edge-host.sh
-└── setenv.sh
+cat << EOF > .goenv
+vcenter_server=$PKR_VAR_vcenter_server
+vcenter_username=$PKR_VAR_vcenter_username
+vcenter_password=$PKR_VAR_vcenter_password
+vcenter_datacenter=$PKR_VAR_vcenter_datacenter
+vcenter_datastore=$PKR_VAR_vcenter_datastore
+vcenter_resource_pool=$PKR_VAR_vcenter_resource_pool
+vcenter_folder=$PKR_VAR_vcenter_folder
+vcenter_cluster=$PKR_VAR_vcenter_cluster
+vcenter_network=$PKR_VAR_vcenter_network
+EOF
 ```
+
+```bash
+docker run -it --rm --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.6 sh -c "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
+```
+
 You will use **deploy-edge-host.sh** and **delete-edge-host.sh** files to deploy and delete the VMs, respectively, in the later steps. The **setenv.sh** file declares the GOVC environment variables for the target vCenter environment, the number of VMs to provision, a prefix string for the VM name, and the VM template name. 
 
 Most of the GOVC environment variables point to the default environment variables you have defined in the **.env** file above. However, you must provide a value for the number of VMs to provision and a prefix string for the VM name. Use the following command to open **setenv.sh** file in an editor to provide a value for `NO_OF_VMS` and `VM_PREFIX` variables. 
@@ -592,7 +546,7 @@ In the **Profile Layers** section, first add the following OS layer.
 |---|---|---|---|
 |OS|Public Repo|BYOS Edge OS|`1.0.0`|
 
-To use one of the provider OS images you pushed to the *ttl.sh* image registry earlier in this tutorial, add the following custom content within the `options` attribute of the **OS layer**.    
+To use one of the provider images you pushed to the *ttl.sh* image registry earlier in this tutorial, add the following custom content within the `options` attribute of the **OS layer**.    
 <br />
 
 ```yaml
@@ -611,7 +565,7 @@ The values of the parameters above should be as same as the values defined in th
 
 <WarningBox>
 
-As a second reminder, *ttl.sh* is a short-lived image registry. If you do not use the provider OS images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed.
+As a second reminder, *ttl.sh* is a short-lived image registry. If you do not use the provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed.
 
 </WarningBox>
 <br />
