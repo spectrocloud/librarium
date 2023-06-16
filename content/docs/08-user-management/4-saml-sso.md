@@ -34,3 +34,6 @@ Enable SSO by following our [Enable SSO in Palette](/user-management/saml-sso/en
 
 
 - [Enable SSO with Microsoft Active Directory Federation Service (AD FS)](/user-management/saml-sso/palette-sso-with-adfs)
+
+
+- [Palette SSO with Okta](/user-management/saml-sso/palette-sso-with-okta)
