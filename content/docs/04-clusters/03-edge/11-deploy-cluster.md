@@ -13,27 +13,29 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Deploy Edge Cluster
-Deploying a Kubernetes (K3s) cluster on Edge requires all Edge devices to be ready with the required dependencies, user data configurations, and an operating system (OS). It becomes challenging for the IT/Site operations team to prepare Edge hosts if there are many devices. The challenge here is to ensure scale consistency regarding dependencies, user data configurations, and the OS on all those devices. 
+Deploying a Kubernetes (K3s) cluster on Edge, also called Edge cluster, requires all Edge devices to be ready with the required dependencies, user data configurations, and an operating system (OS). 
 
+Maintaining consistency while preparing Edge devices at scale is always challenging for the IT/Site operations team. For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. The company wants to deploy K3s clusters on Edge for each new store. Assuming all Edge devices have the same configuration, your job is to prepare all Edge devices so the development team can deploy clusters on all those devices. 
+ 
+As an IT administrator, you will prepare a small set of Edge devices and deploy a sample cluster to check readiness for consistent deployment across all sites. After a successful sample deployment, here are the primary stages of deploying an Edge cluster in production:  
 
-For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. The company wants to deploy K3s clusters on Edge for each new store. Assuming all Edge devices have the same configuration, your job is to prepare all Edge devices so the development team can deploy clusters on all those devices. Here are the primary stages of deploying a K3s cluster on Edge in production:  
+- IT administrators build the Edge artifacts. 
 
-- IT administrators build the Edge artifacts - an installer ISO and the provider image. 
-
-- Site operators prepare Edge devices with the installer ISO and identify the additional user data to install on those hosts.
+- Site operators prepare Edge devices with the installer ISO and identify the additional user data to install on those devices.
 
 - The development team prepares a cluster profile using the provider image and deploys the clusters.
 
 
-In this tutorial, you will first build Edge artifacts (Edge installer ISO image and provider images) and use the installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a K3s cluster on those Edge hosts. 
+In this tutorial, similar to the primary stages outlined above, you will first build Edge artifacts (Edge installer ISO image and provider images) and use the installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a cluster on those Edge hosts. 
 
-The diagram below shows the main steps to prepare Edge hosts and deploy a cluster.
+
+Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on those VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge device. Therefore, this tutorial uses VMWare VMs as Edge hosts to test the installer ISO image's correctness and ease of use. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
 
 
 ![An overarching diagram showing the tutorial workflow.](/tutorials/edge-native/clusters_edge_deploy-cluster_overarching.png)
 
 
-Setting up Virtual Machines (VMs) as Edge hosts and deploying the K3s cluster on those VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge device. Therefore, this tutorial uses VMWare VMs as Edge hosts to test the installer ISO image's ease of use for consistent deployments across all sites in production. 
+
  
 # Prerequisites
 To complete this tutorial, you will need the following items:
@@ -79,10 +81,10 @@ To complete this tutorial, you will need the following items:
 
 
 
-# Clone GitHub Repositories
-Use the following instructions on your Linux machine. 
+# Clone GitHub Repository
+Issue the following and subsequent command-line instructions on your Linux machine.
 
-Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code for building Edge artifacts.  
+To start, clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code for building Edge artifacts. 
 <br />
 
 ```bash
@@ -93,10 +95,11 @@ git clone https://github.com/spectrocloud/CanvOS.git
 
 In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile. 
 
-The current tutorial will build and use the provider image compatible with K3s v1.25 as an example. 
+The current tutorial will build and use the provider image compatible with K3s v1.25.2 as an example. 
+<br />
 
 ## Checkout the Starter Code
-To get started, change to the **CanvOS** directory.
+Change to the **CanvOS** directory.
 <br />
 
 ```bash
@@ -116,17 +119,10 @@ Check out the newest available tag. This guide uses **v3.4.3** tag as an example
 ```shell
 git checkout v3.4.3
 ```
+<br />
 
 ## Review Arguments
-Review the files relevant for the build process. 
-  - **.arg.template** - A sample **.arg** file that defines customizable arguments to use during the build process. 
-  - **Dockerfile** - Embeds the arguments and other configurations in the image.
-  - **Earthfile** - Contains a series of commands to create target artifacts.
-  - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
-  - **user-data.template** - A sample user-data file.
-
-
-The **.arg.template** sample file contains customizable arguments, such as image tag, registry, repository, and OS distribution. Rename the sample **.arg.template** file to **.arg** and review the arguments to use in the build process.
+The **.arg.template** sample file in the current directory contains customizable arguments, such as image tag, registry, repository, and OS distribution. Rename the sample **.arg.template** file to **.arg** and review the arguments to use in the build process.
 <br />
 
 ```bash
@@ -136,8 +132,8 @@ mv .arg.template .arg && cat .arg
 
 CanvOS allows you to customize arguments defined in the **.arg** file. However, this tutorial will use the default values for all arguments, for example, the operating system as `ubuntu` and the tag as `demo`. As a result, the provider image will name as `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. 
 
-Refer to the [Build Edge Artifacts](/clusters/edge/palette-canvos) guide to learn more about customizing arguments, **Dockerfile**, and **user-data** .
-
+Refer to the [Build Edge Artifacts](/clusters/edge/palette-canvos) guide to learn more about customizing arguments.
+<br />
 
 ## Create User Data
 Next, you will create a **user-data** file that embeds the tenant registration token and Edge host's login credentials in the Edge Installer ISO image.  
@@ -202,6 +198,7 @@ View the newly created user data file to ensure the token is set correctly.
 ```bash
 cat user-data
 ```
+<br/>
 
 ## Build Artifacts
 CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process. 
@@ -263,7 +260,7 @@ echo $ISOFILEPATH
 ```
 
 
-List the Docker images to review the provider images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` variable. 
+List the Docker images to review the provider images created. By default, provider images for all the Palette-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` variable. 
 <br />
 
 ```shell
@@ -277,7 +274,6 @@ ttl.sh/ubuntu   k3s-1.24.6-v3.4.3-demo   3a672a023bd3   45 minutes ago   4.61GB
 ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
 ```
 <br />
-
 
 ## Push Provider Images
 To use the provider image in your cluster profile, push it to the image registry mentioned in the **.arg** file. The current example and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  
@@ -340,7 +336,9 @@ The environment variable set using `export [var-name]=[var-value]` will not pers
 </InfoBox>
 
 
-Issue the following command to create a VM template in the VMWare vCenter. The `--env-file` option in the command below will read the environment file, `--volume ` option will mount the local directory to the **/edge-native/vmware/packer/build** directory in the container, and ultimately, it changes to the **edge-native/vmware/packer/** directory in the container and executes the `packer build ...` command to create the VM template. 
+Issue the following command to create a VM template in the VMWare vCenter. The `--env-file` option in the command below will read the environment file, `--volume ` option will mount the local directory to the **/edge-native/vmware/packer/build** directory in the container, and ultimately, it changes to the **edge-native/vmware/packer/** directory in the container and executes the `packer build` command to create the VM template. 
+
+In the `packer build` command below, the `--var-file` option accepts an environment file, and the `-force` flag destroys the existing template, if any. It uses the **vsphere.hcl** as the environment file that defines the VM template name, VM configuration, and ISO file name to use. 
 <br/>
 
 ```bash
@@ -363,8 +361,8 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 ==> Builds finished. The artifacts of successful builds are:
 --> vsphere-iso.edge-template: palette-edge-template
 ```
+<br />
 
-In the `packer build` command above, the `--var-file` option accepts an environment file, and the `-force` flag destroys the existing template, if any. It uses the **vsphere.hcl** as the environment file that defines the VM template name, VM configuration, and ISO file name to use. 
 
 Here is the **vsphere.hcl** file content for your reference; however, you do not have to modify these configuration in this tutorial.  
 <br />
@@ -508,7 +506,7 @@ If you do not see your Edge hosts registered with Palette automatically, you can
 Switch to the **Default** project scope for creating a cluster profile.  
 <br />
 
-![A screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
+![A screenshot of Palette's Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
 
 <br />
 
