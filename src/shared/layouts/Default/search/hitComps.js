@@ -13,9 +13,9 @@ const SearchResultLink = styled.div`
 `;
 
 export const PageHit = ({ hit, onClick }) => (
-  <Wrap>
+  <Wrap onClick={onClick}>
     <div>
-      <SearchResultLink onClick={onClick}>
+      <SearchResultLink>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </SearchResultLink>
     </div>
