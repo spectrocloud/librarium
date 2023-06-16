@@ -1,21 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import { Highlight, Snippet } from "react-instantsearch-dom";
-import { Link } from "gatsby";
 
 const Wrap = styled.div`
-  a {
-    font-size: 18px;
-    color: #206cd1;
-  }
+  cursor: pointer;
+`;
+
+const SearchResultLink = styled.div`
+  color: #206cd1;
+  font-weight: 500;
+  font-size: 18px;
 `;
 
 export const PageHit = ({ hit, onClick }) => (
   <Wrap>
     <div>
-      <Link to={hit.slug} onClick={onClick}>
+      <SearchResultLink onClick={onClick}>
         <Highlight attribute="title" hit={hit} tagName="mark" />
-      </Link>
+      </SearchResultLink>
     </div>
     <Snippet attribute="excerpt" hit={hit} tagName="mark" />
   </Wrap>

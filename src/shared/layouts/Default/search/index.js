@@ -14,6 +14,7 @@ import { PoweredBy } from "./styles";
 import Input from "./input";
 import * as hitComps from "./hitComps";
 import { useLocation } from "@reach/router";
+import { navigate } from "gatsby";
 
 const PoweredByWrapper = styled.div`
   display: flex;
@@ -191,7 +192,17 @@ function SearchBar({ indices = [], collapse, hitsAsGrid, searchClient, focusInpu
               <Hits
                 hitComponent={
                   Component
-                    ? (props) => <Component {...props} onClick={() => setFocus(false)} />
+                    ? (props) => (
+                        <Component
+                          {...props}
+                          onClick={() => {
+                            setFocus(false);
+                            if (props?.hit?.slug) {
+                              navigate(props.hit.slug);
+                            }
+                          }}
+                        />
+                      )
                     : () => null
                 }
               />
