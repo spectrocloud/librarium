@@ -158,16 +158,21 @@ The Product UID serves as a unique identifier for Edge Hosts. The default produc
 
 
 ```yaml
-  stylus:
-    site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: yourEdgeRegistrationTokenHere
-
-      deviceUIDPaths:
-        - name: /etc/palette/metadata-metadata-invalid
-        - name: /etc/edge-configs/metadata-regex
-          regex: "edge-*"
-        - name: /etc/palette/metadata-no-regex
+stylus:
+  debug: true
+  site:
+    insecureSkipVerify: false
+    paletteEndpoint: api.dev.spectrocloud.com
+    deviceUIDPaths:
+      - name: /etc/palette/metadata-regex
+        regex: "edge.*"
+stages:
+  initramfs:
+    - users:
+        kairos:
+          groups:
+            - sudo
+          passwd: kairos
 
 ```
 
