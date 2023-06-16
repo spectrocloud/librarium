@@ -76,7 +76,7 @@ This table contains the required Google Cloud Platform (GCP) permissions to crea
 | `storage.objects.list`                              | List all objects in a specified Google Cloud Storage bucket. |
 | `iam.serviceAccounts.actAs`                         | Act as the service account specified, allowing access to its resources. |
 | `iam.serviceAccounts.get`                           | Get details of a specified service account. |
-| `iam.serviceAccounts.getAccessToken`                | Get the Oauth2 access token for the service account |
+| `iam.serviceAccounts.getAccessToken`                | Get the Oauth2 access token for the service account. |
 | `iam.serviceAccounts.list`                          | List all service accounts available to the user. |
 | `serviceusage.quotas.get`                           | Get quota information for a specified Google Cloud service. |
 | `serviceusage.services.get`                         | Get details of a specified Google Cloud service. |
