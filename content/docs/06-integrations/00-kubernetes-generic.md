@@ -1,7 +1,7 @@
 ---
-title: "Palette eXtended Kubernetes"
-metaTitle: "Palette eXtended Kubernetes"
-metaDescription: "Learn about the Palette eXtended Kubernetes pack and how you can use it with your host clusters."
+title: "Kubernetes"
+metaTitle: "Kubernetes"
+metaDescription: "Learn about the Kubernetes pack and how you can use it with your host clusters."
 hiddenFromNav: true
 type: "integration"
 category: ["kubernetes"]
@@ -14,34 +14,17 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Palette eXtended Kubernetes
+# Kubernetes
 
-The [Palette eXtended Kubernetes](/glossary-all#paletteextendedkubernetes(pxk)) (PXK) pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
+The Kubernetes pack supports several cloud and data center infrastructure providers. This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends.
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
-We offer PXK as a core pack in Palette. 
+We offer Kubernetes as a core pack in Palette. 
 
 Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
-## What is PXK?
-
-Palette eXtended Kubernetes (PXK) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s, Konvoy, and more, should you want to consume a different Kubernetes distribution.
-
-PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common Kubernetes deployment security pitfalls and implements industry best practices.
-
-A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI) plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.
-
-There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open-source Kubernetes distribution.
-
 <br />
-
-
-<InfoBox>
-
-We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the [PXK-E glossary definition](/glossary-all#paletteextendedkubernetesedge(pxk-e)) to learn more about PXK-E.   
-
-</InfoBox>
 
 # Versions Supported
 
@@ -99,142 +82,12 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
-
-
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 
 #### Configuration Changes
 
-The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
-
-<br />
-
-```yaml
-palette:
-   config:
-     dashboard:
-       identityProvider: <your_idp_selection>
-```
-
-<br />
-
-### Configure OIDC Identity Provider
-
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to cluster profile, Palette displays the following OIDC IDP options. 
-
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
-
-Alternatively, you can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
-
-<br />
-
-- **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
-
-  <br />
-
-  <WarningBox>
-
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
-
-  </WarningBox>
-
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file. This setting displays in the YAML file as `none`. 
-
-
-- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
-
-
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
-
-
-### Configure Custom OIDC and RBAC
-
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
-
-<br />
-
-<Tabs>
-
-<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
-
-
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and Amazon [EKS](/integrations/oidc-eks/) clusters. Azure AKS and Amazon EKS require different configurations.
-
-<br />
-
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
-
-
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
- 
-2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
-
-
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
-
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
-
-
-Follow these steps to configure OIDC for managed EKS clusters.
-
-<br />
-
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
-
-```yaml
-oidcIdentityProvider:
-    identityProviderConfigName: 'Spectro-docs'
-    issuerUrl: 'issuer-url'
-    clientId: 'user-client-id-from-Palette'
-    usernameClaim: "email"
-    usernamePrefix: "-"
-    groupsClaim: "groups"
-    groupsPrefix: ""
-    requiredClaims:
-```
-
-2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
-
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  oidc-extra-scope: profile,email
-```
-
-</Tabs.TabPane>
-
-</Tabs>
-
-3. Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
-
-  Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
-
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
-
-
-  In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
+The Kubeadm config is updated with hardening improvements, and a pod security policy has been removed.
 
 <br />
 
@@ -397,142 +250,12 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
-
-
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 
 #### Configuration Changes
 
-The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
-
-<br />
-
-```yaml
-palette:
-   config:
-     dashboard:
-       identityProvider: <your_idp_selection>
-```
-
-<br />
-
-### Configure OIDC Identity Provider
-
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to cluster profile, Palette displays the following OIDC IDP options. 
-
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
-
-Alternatively, you can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
-
-<br />
-
-- **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
-
-  <br />
-
-  <WarningBox>
-
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
-
-  </WarningBox>
-
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file. This setting displays in the YAML file as `none`. 
-
-
-- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
-
-
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
-
-
-### Configure Custom OIDC and RBAC
-
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
-
-<br />
-
-<Tabs>
-
-<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
-
-
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and Amazon [EKS](/integrations/oidc-eks/) clusters. Azure AKS and Amazon EKS require different configurations.
-
-<br />
-
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
-
-
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
- 
-2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
-
-
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
-
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
-
-
-Follow these steps to configure OIDC for managed EKS clusters.
-
-<br />
-
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
-
-```yaml
-oidcIdentityProvider:
-    identityProviderConfigName: 'Spectro-docs'
-    issuerUrl: 'issuer-url'
-    clientId: 'user-client-id-from-Palette'
-    usernameClaim: "email"
-    usernamePrefix: "-"
-    groupsClaim: "groups"
-    groupsPrefix: ""
-    requiredClaims:
-```
-
-2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
-
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  oidc-extra-scope: profile,email
-```
-
-</Tabs.TabPane>
-
-</Tabs>
-
-3. Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
-
-  Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
-
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
-
-
-  In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
+The Kubeadm config is updated with hardening improvements, as a pod security policy has been removed.
 
 <br />
 
@@ -655,6 +378,7 @@ kubeadmconfig:
 
 - A minimum of 4 CPU and 4GB Memory.
 
+
 - Operating System (OS) dependencies as listed in the table.
 
 | OS Distribution | OS Version | Supports Kubernetes 1.24.x |
@@ -693,142 +417,12 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
-
-
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 
 #### Configuration Changes
 
-The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
-
-<br />
-
-```yaml
-palette:
-   config:
-     dashboard:
-       identityProvider: <your_idp_selection>
-```
-
-<br />
-
-### Configure OIDC Identity Provider
-
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to cluster profile, Palette displays the following OIDC IDP options. 
-
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
-
-Alternatively, you can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
-
-<br />
-
-- **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
-
-  <br />
-
-  <WarningBox>
-
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
-
-  </WarningBox>
-
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file. This setting displays in the YAML file as `none`. 
-
-
-- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
-
-
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
-
-
-### Configure Custom OIDC and RBAC
-
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
-
-<br />
-
-<Tabs>
-
-<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
-
-
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and Amazon [EKS](/integrations/oidc-eks/) clusters. Azure AKS and Amazon EKS require different configurations.
-
-<br />
-
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
-
-
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
- 
-2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
-
-
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
-
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
-
-
-Follow these steps to configure OIDC for managed EKS clusters.
-
-<br />
-
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
-
-```yaml
-oidcIdentityProvider:
-    identityProviderConfigName: 'Spectro-docs'
-    issuerUrl: 'issuer-url'
-    clientId: 'user-client-id-from-Palette'
-    usernameClaim: "email"
-    usernamePrefix: "-"
-    groupsClaim: "groups"
-    groupsPrefix: ""
-    requiredClaims:
-```
-
-2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
-
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  oidc-extra-scope: profile,email
-```
-
-</Tabs.TabPane>
-
-</Tabs>
-
-3. Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
-
-  Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
-
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
-
-
-  In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
+The Kubeadm configuration is changed to include a pod security policy, and an unsecured port is removed. 
 
 <br />
 
