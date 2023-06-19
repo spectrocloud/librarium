@@ -322,7 +322,7 @@ EOF
 ```
 
 
-The `docker run --env-file ...` command ahead will read in this file. 
+You will use the **.packerenv** file later in the tutorial when you start Packer.
 
 Next, verify that the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable to bind mount the host's **build** directory to the container. 
 <br />
@@ -401,10 +401,10 @@ The **vsphere.hcl** file customization is out of the scope of this tutorial. To 
 
 
 ## Provision VMs
-Once the VM template is ready, you can clone it to provision VMs. Note that these VMs will act as Edge hosts during cluster deployment. The next steps will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to clone the VM template and provision VMs. 
+Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VMs and reference the VM template that Packer created.  Keep in mind that the VM instances you are deploying are simulating bare metal devices.
 
 
-GOVC will also require the same VMWare vCenter details as environment variables, as you defined earlier in the **.packerenv** file. Use the following command to source the **.packerenv** file and echo one of the variables to ensure the variables are accessible on your host machine. 
+GOVC requires the same VMWare vCenter details as the environment variables you defined earlier in the **.packerenv** file. Use the following command to source the **.packerenv** file and echo one of the variables to ensure the variables are accessible on your host machine. 
 <br />
 
 ```bash
@@ -412,7 +412,7 @@ source .packerenv
 echo $PKR_VAR_vcenter_server
 ```
 
-Use the following heredoc script to create a file, **.goenv**, containing the VMWare vCenter details as environment variables. The script will reuse the values sourced from the **.packerenv** file.
+Use the following command to create an environment file titled **.goenv**. The  **.goenv** file contains the required VMWare vCenter credentials and information required to deploy VMs in your VMware environment. 
 <br />
 
 ```bash
@@ -430,7 +430,7 @@ EOF
 ```
 
 
-Issue the following command to clone the VM template and provision three VMs in the VMWare vCenter. The `--env-file` option in the command below will read the environment file. Then it changes to the **edge-native/vmware/clone_vm_template/** directory in the container and executes the **deploy-edge-host.sh** script to provision three VMs. 
+Issue the following command to deploy three VMs in the VMWare vCenter. 
 <br />
 
 ```bash
@@ -492,30 +492,30 @@ The **setenv.sh** file customization is out of the scope of this tutorial. To ch
 
 
 # Deploy a Cluster
-After building the Edge artifacts and provisioning VMs as Edge hosts, the next step is to verify the host registration, create a cluster profile, and deploy a cluster. 
+After building the Edge artifacts and provisioning VMs as Edge hosts, the next step is to verify the Edge host registration status, create a cluster profile, and deploy a cluster that is made up of the Edge hosts. 
 <br />
 
 ## Verify Host Registration
-Ideally, VMs should automatically register with Palette if you correctly embed the registration token in the ISO image. Log back into Palette to verify, and navigate to the left **Main Menu** > **Clusters** > **Edge Hosts** tab. You should see the VMs registered with Palette automatically.
+Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left **Main Menu** and select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs created are registered with Palette.
 
 ![A screenshot showing the VMs registered with Palette automatically. ](/tutorials/edge-native/clusters_edge_deploy-cluster_edge-hosts.png)
 
 
-If you do not see your Edge hosts registered with Palette automatically, you can register the hosts using the Edge host ID manually. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after provisioning the VMs in one of the previous steps.
+If the three Edge hosts are not displayed in the list then the automatic registration failed. You can register the Edge hosts manually by using each Edge host's ID. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after provisioning the VMs in one of the previous steps. The Edge host IDs can be found in the GOVC output that was generated when you deployed the VMs.
 <br />
 
 ## Create a Cluster Profile
-Switch to the **Default** project scope for creating a cluster profile.  
+Validate you are in the **Default** project scope before creating a cluster profile.  
 <br />
 
 ![A screenshot of Palette's Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
 
 <br />
 
-Select the **Profile** section in the left **Main Menu** to create a cluster profile comprising the core infrastructure layers and a manifest of a sample Kubernetes application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). 
 
 
-Click on the **Add Cluster Profile** button, and provide the details in the wizard that follows. The wizard displays the following sections. 
+Next, create a cluster profile comprising the core infrastructure layers and a manifest of a sample application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). 
+Navigate to the left **Main Menu** and select **Profile**. Click on the **Add Cluster Profile** button, and fill out the required input fields. The cluster profile wizard contains the following sections. 
 <br />
 
 ### Basic Information
@@ -586,10 +586,10 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 |Kubernetes|Public Repo|Palette Optimized K3s|`1.25.x`|
 
 
-Choose the K3s version 1.25.x because you pushed the provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry earlier in this tutorial. BYOOS pack's `system.uri` attribute will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](/clusters/cluster-management/macros).
+Select the K3s version 1.25.x. 1.25.X is used because you pushed a provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry earlier in this tutorial. BYOOS pack's `system.uri` attribute will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](/clusters/cluster-management/macros).
 
 
-Click on the **Next layer** button, and add the following network layer. This example uses Calico Container Network Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom CNI. 
+Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom CNI. 
 
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
@@ -599,7 +599,7 @@ Click on the **Next layer** button, and add the following network layer. This ex
 
 Finally, click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. 
 
-Next, click on the **Add Manifest** button on the top to add the *Hello Universe* application manifest.  
+Next, click on the **Add Manifest** button on the top to add the Hello Universe application manifest.  
 
 ![A screenshot of the add Manifest button.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-manifest.png)
 
@@ -612,7 +612,7 @@ Use the following values to add the Hello Universe manifest metadata.
 |Install order (Optional)|Leave default|
 |Manifests|Add new manifest, and name it `hello-universe`|
 
-Entering `hello-universe` file name in the **Manifest** field will open a blank file in Palette's text editor. Copy the following manifest and paste it in Palette's text editor. 
+When you provide the value `hello-universe` in the **Manifest** field, a blank text editor will open o the righthand side of the screen. Copy the following manifest and paste it into the text editor. 
 <br />
 
 ```yaml
@@ -645,7 +645,7 @@ spec:
     spec:
       containers:
       - name: hello-universe  
-        image: ghcr.io/spectrocloud/hello-universe:1.0.12     # Static image 
+        image: ghcr.io/spectrocloud/hello-universe:1.0.12 
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -669,12 +669,11 @@ It pulls a public image, **ghcr.io/spectrocloud/hello-universe:1.0.12**, and cre
 If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click on the **Next** button. 
 <br />
 
-### Review
 Review all layers and click **Finish Configuration** to create the cluster profile. 
 <br />
 
 ## Create a Cluster
-Click on the newly created cluster profile to view its details page. Palette displays all the layers again and allows you to edit any of them. Click on the **Deploy** button and refer to the [Create an Edge Native Host Cluster](/clusters/edge/site-deployment/site-installation/cluster-deployment) guide to deploy a new Edge cluster. 
+Click on the newly created cluster profile to view its details page.  Click the **Deploy** button to deploy a new Edge cluster. 
 <br />
 
 ![Screenshot of the Profile Layers success.](/tutorials/edge-native/clusters_edge_deploy-cluster_profile-success.png)
