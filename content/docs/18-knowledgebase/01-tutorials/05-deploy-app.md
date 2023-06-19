@@ -467,7 +467,7 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.0.1
+git checkout v1.0.6
 ```
 
 Change directory to the tutorial code.
