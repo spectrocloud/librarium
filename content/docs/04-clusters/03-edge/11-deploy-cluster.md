@@ -830,14 +830,11 @@ docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 <br /> 
 
 # Wrap-Up
-Building Edge artifacts is the core component of preparing Edge hosts and deploying Palette managed Edge cluster. Edge artifacts include an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An installer ISO helps to prepare the Edge hosts, and the provider image is referred to in the cluster profile. In this tutorial, you learned how to build Edge artifacts, prepare Edge hosts, and deploy a cluster in the following order:
-- You built Edge artifacts using the CanvOS utility. 
-- You used the installer ISO image to prepare Edge hosts, ensuring all hosts have consistent installation.
-- You created a cluster profile utilizing the provider image. In the cluster profile, you referred to the provider image compatible with a specific Kubernetes version, K3s v1.25.2.
-- You deployed a cluster on the Edge hosts.
+The core component of preparing Edge hosts and deploying Palette-managed Edge clusters is building and utilizing Edge artifacts. Edge artifacts include an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO helps to prepare the Edge hosts, and the provider image is referred to in the cluster profile. 
 
+In this tutorial, you learned how to build Edge artifacts, prepare Edge hosts, create a cluster profile that references a provider image, and deploy a cluster.
 
-Palette's Edge solution allows you to prepare your edge devices with the desired OS, dependencies, and user data configurations. With Palette, you can test and validate your device's state to ensure it meets your requirements. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, so you can choose the one that matches your needs. Furthermore, it maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. To learn more about deploying Edge clusters, we encourage you to check out the reference resources below.
+Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. With Palette, you can test and validate your device's state to ensure it meets your requirements. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, so you can choose the one that matches your needs. Furthermore, it maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. Please check out the reference resources below to learn more about deploying Edge clusters.
 <br />
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
