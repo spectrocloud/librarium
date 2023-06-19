@@ -867,7 +867,7 @@ A host of hotfixes were applied for a smoother on-premises operation:
 
 | Version | Feature                                                                                       |
 | ------- | --------------------------------------------------------------------------------------------- |
-| 1.5.6   | Added improvements for faster [kCh](https://www.spectrocloud.com/pricing/) usage calculation. |
+| 1.5.6   | Added improvements for faster kCh usage calculation. |
 | 1.5.5   | Patched the `govc vm.info` command to allow spaces in datacenter names.                       |
 | 1.5.4   | Changes to use client updates instead of patches for _vendorcrd_ installations.               |
 | 1.5.3   | Improved resource utilization by deleting a machine when a node is not available.             |

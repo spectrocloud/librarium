@@ -13,13 +13,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette can be deployed as a multi-tenant SaaS system in which each tenant represents a customer. Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
+Palette can be deployed as a multi-tenant SaaS system in which each tenant represents a customer. Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/product-architecture/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
 
 <br />
 
 ## Cloud Infrastructure Security
 
-In public cloud environments such as AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/saas-operation/#tenantclustersecurity).
+In public cloud environments such as AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API endpoint for access using cloud credentials specified in the tenant. The tenant clusters can be deployed in a virtual private cloud (VPC), as described in [Tenant Cluster Security](/security/product-architecture/tenant-cluster).
 
 This allows the SaaS controller to do the following:
 
