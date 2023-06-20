@@ -191,14 +191,7 @@ function SearchBar({ indices = [], collapse, hitsAsGrid, searchClient, focusInpu
               <Hits
                 hitComponent={
                   Component
-                    ? (props) => (
-                        <Component
-                          {...props}
-                          onClick={() => {
-                            setFocus(false);
-                          }}
-                        />
-                      )
+                    ? (props) => <Component {...props} onClick={() => setFocus(false)} />
                     : () => null
                 }
               />
