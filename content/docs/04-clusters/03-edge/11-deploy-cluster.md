@@ -13,19 +13,17 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Deploy Edge Cluster
-Palette supports deploying Kubernetes clusters in remote locations to support edge computing workloads. To deploy Kubernetes on the edge with Palette, you can use the Palette Edge solution and deploy your edge devices, also referred to as Edge hosts, that contain all the required software dependencies to support deploying a Kubernetes cluster on the edge that is fully managed by Palette. 
+Palette supports deploying Kubernetes clusters in remote locations to support edge computing workloads. To deploy Kubernetes on edge, you can use Palette's Edge solution and deploy your edge devices, also called Edge hosts, that contain all the required software dependencies to support Palette-managed Kubernetes cluster deployment.  
 
-Maintaining consistency while preparing edge devices at scale can be challenging for operation teams. For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. The company needs you to deploy Kubernetes clusters in each new store using edge devices, such as Intel NUC or similar, and ensure each device has the same software and security configurations. Your job is to prepare each device so the development team can deploy Kubernetes clusters on all those devices. 
- 
-You have decided to use Palette's Edge solution to help you meet the organizational requirements. You will prepare a small set of Edge devices and deploy a Kubernetes cluster to verify readiness for consistent deployment across all physical sites.
+Maintaining consistency while preparing edge devices at scale can be challenging for operation teams. For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. The company needs you to deploy Kubernetes clusters in each new store using edge devices, such as Intel NUC or similar, and ensure each device has the same software and security configurations. Your job is to prepare each device so the development team can deploy Kubernetes clusters on all those devices. You have decided to use Palette's Edge solution to help you meet the organizational requirements. You will prepare a small set of Edge devices and deploy a Kubernetes cluster to verify readiness for consistent deployment across all physical sites.
 
 For an overview, here are the stages of deploying an Edge cluster to a production environment:  
 
-- The Edge artifacts, such as the Edge Installer ISO, the provider images, and content bundles are created. 
+- The Edge artifacts, such as the Edge Installer ISO, the provider images, and content bundles, are created. 
 
 - The Edge device is initialized with the Edge installer ISO.
 
-- A cluster profile is created to ensure consistency in all the Edge hosts. The cluster profile allows you to declare all the desired software dependencies each Kubernetes should have installed.
+- A cluster profile is created to ensure consistency in all the Edge hosts. The cluster profile lets you declare all the desired software dependencies each Kubernetes should have installed.
 
 
 In this tutorial, similar to the primary stages outlined above, you will first build the Edge artifacts (Edge installer ISO image and provider images) and use the Edge installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a cluster on those Edge hosts. You will use VMware to deploy the Edge hosts to simulate a bare metal environment.
@@ -336,9 +334,9 @@ The next step is to use the following `docker run` command to trigger Packer to 
 - The `--env-file` option will read the **.packerenv** file.
 - The `--volume ` option will mount a local directory to the container.
 - It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`, as a jump host.
-- The `sh "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command will change to the **edge-native/vmware/packer/** directory in the container and execute `packer build` to create the VM template. In the `packer build` command: 
+- The `sh -c "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command will change to the **edge-native/vmware/packer/** directory in the container and execute `packer build` to create the VM template. In the `packer build` command: 
   - The `-force` flag will destroy the existing template, if any. 
-  - The `--var-file` option will read the **vsphere.hcl** file from the container. It contains the VM template name, VM configuration, and ISO file name to use. 
+  - The `--var-file` option will read the **vsphere.hcl** file from the container. It contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](https://docs.spectrocloud.com/clusters/edge/architecture/#minimumdevicerequirements).
 
 Here is the **vsphere.hcl** file content for your reference; however, you do not have to modify these configurations in this tutorial.  
 <br />
@@ -379,7 +377,7 @@ docker run -it --rm \
   --env-file .packerenv \
   --volume "${ISOFILEPATH}:/edge-native/vmware/packer/build" \
   ghcr.io/spectrocloud/tutorials:1.0.6 \
-  sh "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  sh -c "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 The build process can take up to 7-10 minutes to finish depending on your machine's and network configuration. 
@@ -434,7 +432,7 @@ EOF
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
 - The `--env-file` option will read the **.goenv** file.
 - It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`, as a jump host.
-- The `sh  "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command will change to the **edge-native/vmware/clone_vm_template/** directory in the container and execute the **deploy-edge-host.sh** shell script. 
+- The `sh -c "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command will change to the **edge-native/vmware/clone_vm_template/** directory in the container and execute the **deploy-edge-host.sh** shell script. 
 
 The **edge-native/vmware/clone_vm_template/** directory in the container has the following files:
 - **deploy-edge-host.sh** - Provisions the VMs.
@@ -473,23 +471,21 @@ Issue the following command to clone the VM template and provision three VMs.
 docker run -it --rm \
   --env-file .goenv \
   ghcr.io/spectrocloud/tutorials:1.0.6 \
-  sh  "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
+  sh -c "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
-The cloning process can take 3-4 minutes to finish and display an output similar to the one below for each VM. 
+The cloning process can take 3-4 minutes to finish and display an output similar to the one below. The output will display the Edge host ID for each VM, as highlighted in the sample output below. VMs will use this host ID to auto-register themselves with Palette.
 <br />
 
-```bash coloredLines=6-6 hideClipboard
-# Sample output
+```bash coloredLines=7-7 hideClipboard
+# Sample output for one VM
+Cloning /Datacenter/vm/sp-sudhanshu/palette-edge-template to demo-1...OK
 Cloned VM demo-1
 Powering on VM demo-1
-Powering on VirtualMachine:vm-9919... OK
+Powering on VirtualMachine:vm-13436... OK
 Getting UUID demo-1
 Edge Host ID   VM demo-1 : edge-97f2384233b498f6aa8dec90c3437c28
-```
-
-The output on the terminal will display the Edge host ID for all VMs. VMs will use this host ID to auto-register themselves with Palette. 
-<br />
+``` 
 
 <InfoBox>
 
@@ -511,7 +507,7 @@ Open a web browser and log in to [Palette](https://console.spectrocloud.com). Na
 ![A screenshot showing the VMs registered with Palette automatically. ](/tutorials/edge-native/clusters_edge_deploy-cluster_edge-hosts.png)
 
 
-If the three Edge hosts are not displayed in the list then the automatic registration failed. You can register the Edge hosts manually by using each Edge host's ID. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after provisioning the VMs in one of the previous steps. The Edge host IDs can be found in the GOVC output that was generated when you deployed the VMs.
+If the three Edge hosts are not displayed in the list then the automatic registration failed. You can register the Edge hosts manually by using each Edge host's ID. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after provisioning the VMs in previous step. The Edge host IDs can be found in the GOVC output that was generated when you deployed the VMs.
 <br />
 
 ## Create a Cluster Profile
@@ -548,7 +544,7 @@ In the **Cloud Type** section, choose **Edge Native** as the infrastructure prov
 <br />
 
 ### Profile Layers
-In the **Profile Layers** section, first add the [BYOS Edge OS](/integrations/byoos) pack to the OS layer
+In the **Profile Layers** section, first add the following [BYOS Edge OS](/integrations/byoos) pack to the OS layer.
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
@@ -607,7 +603,7 @@ Click on the **Next layer** button, and add the following network layer. This ex
 |Network|Public Repo|Calico|`3.25.x`|
 
 
-Finally, click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. 
+Finally, click on the **Confirm** button to complete the core infrastructure stack. Palette will display the newly created infrastructure profile as a layered diagram. 
 
 Next, click on the **Add Manifest** button on the top to add the Hello Universe application manifest.  
 
@@ -666,7 +662,7 @@ The screenshot below shows the manifest pasted into the text editor. Click on th
   ![A screenshot of Hello Universe application manifest.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-manifest-file.png)
 
 
-If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click on the **Next** button. 
+If there are no errors or compatibility issues, Palette will display the newly created full cluster profile for review. Verify the layers you added, and click on the **Next** button. 
 <br />
 
 Review all layers and click **Finish Configuration** to create the cluster profile. 
@@ -721,7 +717,7 @@ The screenshot below shows adding an Edge host to the master pool.
 ![Screenshot of adding an Edge host to the master pool.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-master-node.png)
 
 
-Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool. If you do not have Edge hosts remaining, remove the worker pool. Your master pool has the worker capability already. 
+Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool. Suppose you do not have Edge hosts remaining; in that case, you can remove the worker pool. Your master pool has the worker capability already. 
 
 |**Field** | **Value for the worker-pool**| 
 |---| --- | 
@@ -729,6 +725,10 @@ Similarly, provide details for the worker pool, and add the remaining two Edge h
 |Additional Labels (Optional) | None |
 |Taints|Off|
 |Pool Configuration > Edge Hosts | Choose one or more registered Edge hosts. |
+
+The screenshot below shows adding two Edge hosts to the worker pool.
+
+![Screenshot of adding Edge hosts to the worker pool.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-worker-node.png)
 
 Click **Next** to continue.    
 <br /> 
@@ -800,7 +800,9 @@ Switch back to the **CanvOS** directory in the Linux machine containing the **.g
 <br />
 
 ```bash
-docker run -it --rm --env-file .goenv tutorials sh -c "cd edge-native/vmware/clone_vm_template/ && ./delete-edge-host.sh"
+docker run -it --rm --env-file .goenv \
+  ghcr.io/spectrocloud/tutorials:1.0.6 \
+  sh -c "cd edge-native/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
 ##  Delete Edge Artifacts
@@ -832,9 +834,10 @@ docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 # Wrap-Up
 The core component of preparing Edge hosts and deploying Palette-managed Edge clusters is building and utilizing Edge artifacts. Edge artifacts include an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO helps to prepare the Edge hosts, and the provider image is referred to in the cluster profile. 
 
-In this tutorial, you learned how to build Edge artifacts, prepare Edge hosts, create a cluster profile that references a provider image, and deploy a cluster.
+In this tutorial, you learned how to build Edge artifacts, prepare VMWare VMs as Edge hosts using Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
 
-Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. With Palette, you can test and validate your device's state to ensure it meets your requirements. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, so you can choose the one that matches your needs. Furthermore, it maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. Please check out the reference resources below to learn more about deploying Edge clusters.
+Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. 
+It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles so that you can choose a desired version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once it satisfies your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. Furthermore, it maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. With all these benefits, you can conveniently deploy and manage Edge clusters with Palette. Please check out the reference resources below to learn more about deploying Edge clusters.
 <br />
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
