@@ -41,7 +41,7 @@ Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the E
 To complete this tutorial, you will need the following items:
 <br/>
 
-* Access to a VMWare vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and network.
+* Access to a VMWare vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
 
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
@@ -296,7 +296,7 @@ In this section, you will create a VM template in VMWare vCenter from the Edge i
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO image, and later, the guide will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to provision three VMs. You do not have to install these tools (Packer, GOVC) on your Linux machine. Instead, this section will use our official tutorials container as a jump host with already installed tools. <br />
 
 ## Create a VM Template
-Use the following heredoc script to create a file, **.packerenv**, containing the VMWare vCenter details as environment variables. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and network. 
+Use the following heredoc script to create a file, **.packerenv**, containing the VMWare vCenter details as environment variables. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
 <br />
 
 ```bash
@@ -832,12 +832,11 @@ docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 <br /> 
 
 # Wrap-Up
-The core component of preparing Edge hosts and deploying Palette-managed Edge clusters is building and utilizing Edge artifacts. Edge artifacts include an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO helps to prepare the Edge hosts, and the provider image is referred to in the cluster profile. 
+The core component of preparing Edge hosts and deploying Palette-managed Edge clusters is building and utilizing Edge artifacts. Edge artifacts consist of an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO assists to prepare the Edge hosts, while the provider image is referred to in the cluster profile. 
 
 In this tutorial, you learned how to build Edge artifacts, prepare VMWare VMs as Edge hosts using Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
 
-Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. 
-It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles so that you can choose a desired version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once it satisfies your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. Furthermore, it maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. With all these benefits, you can conveniently deploy and manage Edge clusters with Palette. Please check out the reference resources below to learn more about deploying Edge clusters.
+Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, enabling you to choose the desired Kubernetes version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. With all these benefits, you can conveniently deploy and manage Edge clusters with Palette. Please check out the reference resources below to learn more about deploying Edge clusters.
 <br />
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
