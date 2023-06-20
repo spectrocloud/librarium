@@ -28,17 +28,15 @@ Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
 - Users or groups must be mapped to a Kubernetes RBAC role, either a *Role* or a *ClusterRole*. You can create a custom role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more. 
 
 
-## Parameters
+## Parameters 
 
-The Spectro Kubernetes Dashboard supports the following parameters. 
-
-<br />
+<!-- <br />
 
 #### User Selections
 
@@ -46,22 +44,22 @@ These settings are also included in the manifest as `access` and `identityProvid
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| Access | Controls cluster access. Private access means that nodes and pods are isolated from the internet. | Private |
-| Identity Provider | You can use Palette as the IDP or a third-party application as the IDP. | Palette |
+| **Proxieds** | Controls cluster access. Private access means that nodes and pods are isolated from the internet. | Private |
+| **Direct** | You can use Palette as the IDP or a third-party application as the IDP. | Palette |
 
-#### Internal Manifest Parameters
+#### Internal Manifest Parameters -->
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| namespace | The Kubernetes namespace to install the dashboard. | `kubernetes-dashboard` |
-| ClusterRole | The ClusterRole to assign to the Kubernetes Dashboard. | `read-only` |
-| certDuration | Self-signed certificate duration in hours. | 8760h (365d) |
-| certRenewal | Self-signed certificate renewal in hours | 720h (30d) |
-| enableInsecureLogin | RBAC ensures secure login. | `false` |
-| serviceType | The service type for the dashboard. Supported values are ClusterIP, LoadBalancer, and NodePort. | `ClusterIP` |
-| skipLogin | Enables or disables the skip login option on the dashboard. | `false` |
-| enableInsecureLogin | Enables non-Secure Sockets Layer (SSL) login. Dashboard login is always restricted to HTTP(S) + localhost or HTTPS and external domain. | `false` |
-| ingress.enabled | Ingress configuration to access the ClusterIP, loadBalancer, or nodePort. | `false` |
+| `namespace` | The Kubernetes namespace to install the dashboard. | `kubernetes-dashboard` |
+| `ClusterRole` | The ClusterRole to assign to the Spectro Kubernetes Dashboard. | `read-only` |
+| `certDuration` | Self-signed certificate duration in hours. | 8760h (365d) |
+| `certRenewal` | Self-signed certificate renewal in hours | 720h (30d) |
+| `enableInsecureLogin` | RBAC ensures secure login. | `false` |
+| `serviceType` | The service type for the dashboard. Supported values are `ClusterIP`, `LoadBalancer`, and `NodePort`. | `ClusterIP` |
+| `skipLogin` | Enables or disables the skip login option on the Spectro Kubernetes Dashboard. | `false` |
+| `enableInsecureLogin` | Enables non-Secure Sockets Layer (SSL) login. Dashboard login is always restricted to HTTP(S) + localhost or HTTPS and external domain. | `false` |
+| `ingress.enabled` | Ingress configuration to access the `ClusterIP`, `LoadBalancer`, or `NodePort`. | `false` |
 
 ## Usage
 
@@ -73,7 +71,7 @@ Use the following information to find the Kubernetes Dashboard pack.
 - **Pack Name**: Spectro Kubernetes Dashboard
 - **Pack Version**: 2.7.0 or higher
 
-Spectro Kubernetes Dashboard has the following OIDC Identity Provider options.
+Spectro Kubernetes Dashboard has the following Access options.
 
 <br /> 
 

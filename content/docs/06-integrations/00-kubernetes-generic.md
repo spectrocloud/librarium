@@ -22,7 +22,7 @@ We also support managed Kubernetes distributions for Elastic Kubernetes Service 
 
 We offer Kubernetes as a core pack in Palette. 
 
-Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
+Review the [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
 <br />
 
@@ -36,9 +36,6 @@ Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pac
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
-
-
-- Configured OpenID Connect (OIDC) Identify Provider (IDP).
 
 
 - Users or groups mapped to a Kubernetes RBAC role.
@@ -98,10 +95,6 @@ pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
   serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: palette
 kubeadmconfig:
   apiServer:
     extraArgs:
@@ -266,10 +259,6 @@ pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
   serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: palette
 kubeadmconfig:
   apiServer:
     extraArgs:
@@ -433,10 +422,6 @@ pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
   serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: noauth
 kubeadmconfig:
   apiServer:
     extraArgs:
@@ -527,6 +512,8 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 
 
 You can reference Kubernetes in Terraform with the following code snippet.
+
+<br />
 
 
 ```hcl

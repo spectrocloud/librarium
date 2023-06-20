@@ -16,13 +16,13 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Palette eXtended Kubernetes
 
-The [Palette eXtended Kubernetes](/glossary-all#paletteextendedkubernetes(pxk)) (PXK) pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
+The Palette eXtended Kubernetes (PXK) pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
 We offer PXK as a core pack in Palette. 
 
-Review [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
+Review our [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
 ## What is PXK?
 
@@ -55,7 +55,7 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 - A minimum of 4 CPU and 4GB Memory.
 
 
-- Configured OpenID Connect (OIDC) Identify Provider (IDP).
+<!-- - Configured OpenID Connect (OIDC) Identity Provider (IDP). -->
 
 
 - Users or groups mapped to a Kubernetes RBAC role.
@@ -75,16 +75,18 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.podCIDR`` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.palette.config.dashboard.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
-| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on the apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
 | ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
 | ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
+| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). |
 | ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
@@ -99,7 +101,7 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
+- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
 
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
@@ -122,7 +124,7 @@ palette:
 
 ### Configure OIDC Identity Provider
 
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to cluster profile, Palette displays the following OIDC IDP options. 
+Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to a cluster profile, Palette displays the following OIDC IDP options. 
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
@@ -140,7 +142,7 @@ Alternatively, you can create a role binding that maps individual users or a gro
 
   </WarningBox>
 
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file. This setting displays in the YAML file as `none`. 
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).  This setting displays in the YAML file as `none`.
 
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
@@ -374,16 +376,18 @@ kubeadmconfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.podCIDR`` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.palette.config.dashboard.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
-| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on the apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
 | ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
 | ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
+| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). |
 | ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 ## Usage 
@@ -397,7 +401,7 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
+- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
 
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
@@ -420,7 +424,7 @@ palette:
 
 ### Configure OIDC Identity Provider
 
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to cluster profile, Palette displays the following OIDC IDP options. 
+Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to a cluster profile, Palette displays the following OIDC IDP options. 
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
@@ -438,14 +442,13 @@ Alternatively, you can create a role binding that maps individual users or a gro
 
   </WarningBox>
 
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file. This setting displays in the YAML file as `none`. 
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).  This setting displays in the YAML file as `none`.
 
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
 
 - **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
-
 
 ### Configure Custom OIDC and RBAC
 
@@ -693,7 +696,7 @@ The Kubeadm configuration file is where you can do the following:
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identify Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). 
 
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
@@ -716,7 +719,7 @@ palette:
 
 ### Configure OIDC Identity Provider
 
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to cluster profile, Palette displays the following OIDC IDP options. 
+Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to a cluster profile, Palette displays the following OIDC IDP options. 
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
@@ -734,7 +737,7 @@ Alternatively, you can create a role binding that maps individual users or a gro
 
   </WarningBox>
 
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements at the bottom of the Kubeadm configuration file. This setting displays in the YAML file as `none`. 
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).  This setting displays in the YAML file as `none`.
 
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
@@ -933,6 +936,17 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 
 
 You can reference Kubernetes in Terraform with the following code snippet.
+
+<Tabs>
+
+<Tabs.TabPane tab="AWS" key="AWS">
+
+Text
+
+</Tabs.TabPane>
+
+</Tabs>
+
 
 
 ```hcl

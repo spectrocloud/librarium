@@ -1,9 +1,9 @@
 ---
-title: "Kubernetes Dashboard"
-metaTitle: "Kubernetes Dashboard"
-metaDescription: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Kubernetes Dashboard Monitoring pack."
+title: "Spectro Kubernetes Dashboard"
+metaTitle: "Spectro Kubernetes Dashboard"
+metaDescription: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Spectro Kubernetes Dashboard Monitoring pack."
 hiddenFromNav: true
-type: "integration"
+type: ""
 hideToC: false
 category: ['monitoring']
 logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
@@ -29,46 +29,42 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 ## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
-| k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
-| | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
-| k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
-| k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.namespace` | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
+| `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
+| `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
+| `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
 <WarningBox>
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the Spectro Kubernetes Dashboard pack. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
 
 </WarningBox>
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
-
-Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
-<br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080. 
+When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080. 
 
 <br />
 
@@ -122,7 +118,7 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes. 
 
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
 
@@ -140,36 +136,43 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 ## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
-| k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
-| | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
-| k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
-| k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.namespace` | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
+| `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
+| `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
+| `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
-<br />
+<WarningBox>
+
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+
+</WarningBox>
 
 ## Usage
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Kubernetes Dashboard
+- **Pack Version**: 2.0.x or higher
 
-A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080. 
+When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080. 
 
 <br />
 
@@ -223,7 +226,7 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes. 
 
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
 
@@ -242,30 +245,37 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 ## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
-| k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
-| | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
-| k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
-| k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.namespace` | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
+| `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
+| `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
+| `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
-<br />
+<WarningBox>
+
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+
+</WarningBox>
 
 ## Usage
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Kubernetes Dashboard
+- **Pack Version**: 2.0.x or higher
 
-A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -325,7 +335,7 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes. 
 
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
 
@@ -346,30 +356,38 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 ## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
-| k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
-| | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
-| k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
-| k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.namespace` | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
+| `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
+| `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
+| `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
-<br />
+<WarningBox>
+
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+
+</WarningBox>
+
 
 ## Usage
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Kubernetes Dashboard
+- **Pack Version**: 2.0.x or higher
 
-A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -429,7 +447,7 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes. 
 
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
 
@@ -448,30 +466,37 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 ## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
-| k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
-| | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
-| k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
-| k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.namespace` | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
+| `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
+| `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
+| `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
-<br />
+<WarningBox>
+
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+
+</WarningBox>
 
 ## Usage
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Kubernetes Dashboard
+- **Pack Version**: 2.0.x or higher
 
-A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -531,7 +556,7 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes. 
 
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
 
@@ -551,30 +576,37 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the Create a Role Binding guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 ## Parameters
 
 | Name | Supported Values | Default Values | Description |
 | --- | --- | --- | --- |
-| k8s-dashboard.namespace | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
-| k8s-dashboard.clusterRole | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources. |
-| | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
-| k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
-| k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.namespace` | | kubernetes-dashboard | The namespace where you want to run the Kubernetes Dashboard deployment |
+| `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
+| `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
+| `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
 
-<br />
+<WarningBox>
+
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+
+</WarningBox>
 
 ## Usage
 
-The Kubernetes Dashboard pack requires the Spectro Proxy pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the [Spectro Proxy](/integrations/frp) pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+- **Pack Type**: Monitoring
+- **Registry**: Public Repo
+- **Pack Name**: Kubernetes Dashboard
+- **Pack Version**: 2.0.x or higher
 
-A pre-configured version of the Kubernetes Dashboard pack is available, called Spectro Kubernetes Dashboard. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -634,7 +666,7 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the Ingress Controller exposes. 
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes. 
 
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
 
@@ -651,7 +683,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 # Troubleshooting
 
-- If the Kubernetes Dashboard is not accessible, check the Dashboard pod for errors and ensure the Dashboard service is in the **Running** state.
+- If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in the **Running** state.
 
 
 - When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the commands shown above.
@@ -660,6 +692,8 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 # Terraform
 
 You can reference the Kubernetes Dashboard pack in Terraform with a data resource.
+
+<br />
 
 ```tf
 data "spectrocloud_registry" "public_registry" {
