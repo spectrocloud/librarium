@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Highlight, Snippet } from "react-instantsearch-dom";
 import { Link } from "gatsby";
 
-const Wrap = styled.div`
+const StyledLink = styled(Link)`
   cursor: pointer;
-  a:hover {
+  display: block;
+  &:hover {
     color: unset;
   }
 `;
@@ -17,14 +18,12 @@ const SearchResultLink = styled.div`
 `;
 
 export const PageHit = ({ hit, onClick }) => (
-  <Wrap>
-    <Link to={hit.slug}>
-      <div>
-        <SearchResultLink>
-          <Highlight attribute="title" hit={hit} tagName="mark" />
-        </SearchResultLink>
-      </div>
-      <Snippet attribute="excerpt" hit={hit} tagName="mark" />
-    </Link>
-  </Wrap>
+  <StyledLink to={hit.slug} onClick={onClick}>
+    <div>
+      <SearchResultLink>
+        <Highlight attribute="title" hit={hit} tagName="mark" />
+      </SearchResultLink>
+    </div>
+    <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+  </StyledLink>
 );
