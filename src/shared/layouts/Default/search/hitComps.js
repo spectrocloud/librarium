@@ -6,6 +6,7 @@ import { Link } from "gatsby";
 const StyledLink = styled(Link)`
   cursor: pointer;
   display: block;
+  font-weight: unset;
   &:hover {
     color: unset;
   }
