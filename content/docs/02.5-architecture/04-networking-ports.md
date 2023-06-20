@@ -55,7 +55,7 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 
 # Self-Hosted Network Communications and Ports
 
-The following ports must be reachable from a network perspective for Palette Sefl-Hosted to function correctly.
+The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
 
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
