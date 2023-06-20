@@ -13,7 +13,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Overview
 
-Content bundles are archives of all the required container images. The content bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster. [Cluster Profiles](/cluster-profiles) are the primary source for building these content bundles.
+Content bundles are archives of all the required container images required for a cluster profiles. The content bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster. [Cluster Profiles](/cluster-profiles) are the primary source for building these content bundles.
 
 <br />
 
@@ -23,6 +23,23 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
 
 </WarningBox>
 
+
+# Benefits of Content Bundle
+
+Creating a content bundle provides several benefits that may address common use cases related to deploying Edge hosts.
+
+<br />
+
+* Preloading required software dependencies removes the need to download assets during cluster deployment.
+
+
+* If connectivity to a container registry is unstable or bandwidth limited, preloading the software dependencies can address these concerns.
+
+
+* Preloading required software dependencies optimizes the Edge host deployment process when the Edge host is in an internet bandwidth-constrained environment. 
+
+
+* Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure that only approved software is consumed.
 
 
 # Prerequisites
@@ -65,7 +82,7 @@ You can find the project id at the top right side corner of the landing page bel
 6. Click on the cluster profile you want to include in the content bundle.
 
 
-7. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile id is the last value in the URL. Repeat this step for all the cluster profiles you want to specify in the content bundle.
+7. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last value in the URL. Repeat this step for all the cluster profiles you want to specify in the content bundle.
 
     <br />
 
@@ -94,7 +111,7 @@ You can find the project id at the top right side corner of the landing page bel
      --iso
     ```
 
-    ```shell
+    ```shell hideClipboard
     # Output
     INFO[0000] getting hubble export for build
     INFO[0000] Fetching latest version for service 'stylus'

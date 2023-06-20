@@ -19,6 +19,13 @@ Palette is available in three flexible deployment models:
 
 * **Self-hosted**: The management plane is hosted in the customer’s environment. It can be the customer’s on-prem VMware vSphere, OpenStack, bare metal, or in a public cloud using the customer’s cloud account.
 
+<br />
+
+## Product Security
+
+At Spectro Cloud, we recognize the importance of robust security measures in today's rapidly evolving digital landscape. As the provider of our cutting-edge SaaS and self-hosted Palette product, our commitment to safeguarding your data and ensuring the integrity of our services is paramount. Learn more about Palette security by reviewing the [Security](/security) section.
+
+<br />
 
 ## SaaS Architecture and Data Flow
 
@@ -45,7 +52,7 @@ For private clouds like VMware, since the Palette SaaS platform does not have di
 ![spectro_cloud](/architecture_architecture-overview_on-prem.png)
 
 
-## Self-hosted Architecture and Data Flow
+## Self-Hosted Architecture and Data Flow
 Although the Palette SaaS platform fully supports both public clouds and data centers, for some customers, especially with regulated industry or air-gapped environments, they may prefer to install Palette in their own environment behind the firewall, so that they can control the platform upgrade cycles and ensure no sensitive data are exposed. For these use cases Palette supports a self-hosted on-premises installation. The platform updates and add-on integration contents can be optionally downloaded from an on-prem private repository instead of pulling from Palette’s hosted public repository.
 
 ![spectro_cloud](/architecture_architecture-on-prem-detailed.png)

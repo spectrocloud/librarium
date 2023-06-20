@@ -60,7 +60,7 @@ The Edge host agent container image contains the Palette Edge host agent. The ag
 
 These are [Kairos](https://kairos.io/)-based container images for each supported Operating System (OS) and Kubernetes combination. These container images are downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
 
-Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's container registries and automatically downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process. However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](/clusters/edge/edgeforge-workflow/palette-canvos) optimization.
+Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's container registries and automatically downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process. However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) optimization.
 
 
 <br />
@@ -110,6 +110,9 @@ For environments that require a different runtime OS, you can specify another OS
 
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
+
+
+- [Build Preloaded Content Bundles](/clusters/edge/edgeforge-workflow/build-content-bundle)
 
 
 - [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data)
