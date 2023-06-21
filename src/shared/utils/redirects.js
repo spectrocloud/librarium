@@ -236,6 +236,12 @@ const redirects = [
     toPath: `/integrations/ubuntu`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/oidc-eks/`,
+    toPath: `/integrations/kubernetes#configurecustomoidc`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 
