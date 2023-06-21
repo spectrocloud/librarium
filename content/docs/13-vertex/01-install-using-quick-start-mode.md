@@ -2,7 +2,7 @@
 title: "Install Using Quick-Start Mode"
 metaTitle: "Install Palette Using Quick-Start Mode"
 metaDescription: "Install Palette Using Quick-Start Mode."
-icon: " "
+icon: ""
 hideToC: false
 fullWidth: false
 ---

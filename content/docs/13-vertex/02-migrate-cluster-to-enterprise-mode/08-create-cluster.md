@@ -2,7 +2,7 @@
 title: "Create a Cluster"
 metaTitle: "Create a Cluster Profile"
 metaDescription: "Learn how to deploy a FIPS-enabled cluster."
-icon: " "
+icon: ""
 hideToC: false
 fullWidth: false
 ---
