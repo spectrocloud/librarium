@@ -428,7 +428,7 @@ Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack t
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
-Alternatively, you can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
+You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
 
 <br />
 
@@ -448,7 +448,7 @@ Alternatively, you can create a role binding that maps individual users or a gro
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
 
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
 
 ### Configure Custom OIDC and RBAC
 
@@ -937,11 +937,118 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 
 You can reference Kubernetes in Terraform with the following code snippet.
 
+<br />
+
 <Tabs>
 
 <Tabs.TabPane tab="AWS" key="AWS">
 
-Text
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="Azure" key="Azure">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="GCP" key="GCP">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="MAAS" key="MAAS">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="Openstack" key="Openstack">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="VMware" key="VMware">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
 
 </Tabs.TabPane>
 
@@ -949,7 +1056,7 @@ Text
 
 
 
-```hcl
+<!-- ```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -960,7 +1067,7 @@ data "spectrocloud_pack_simple" "k8s" {
   type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
-```
+``` -->
 
 # Resources
 

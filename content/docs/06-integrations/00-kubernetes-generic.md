@@ -516,7 +516,88 @@ You can reference Kubernetes in Terraform with the following code snippet.
 <br />
 
 
+<Tabs>
+
+<Tabs.TabPane tab="AKS" key="AKS">
+
 ```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes-aks"
+  version = "1.26"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+
+<Tabs.TabPane tab="EKS" key="EKS">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes-eks"
+  version = "1.24"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+
+<Tabs.TabPane tab="GKE" key="GKE">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes-gke"
+  version = "1.25.8"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+
+
+
+<Tabs.TabPane tab="TKE" key="TKE">
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes-gke"
+  version = "1.24.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+<!-- ```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -527,7 +608,7 @@ data "spectrocloud_pack_simple" "k8s" {
   type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
-```
+``` -->
 
 # Resources
 
