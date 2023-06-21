@@ -34,8 +34,6 @@ Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the E
 
 ![An overarching diagram showing the tutorial workflow.](/tutorials/edge-native/clusters_edge_deploy-cluster_overarching.png)
 
-
-
  
 # Prerequisites
 To complete this tutorial, you will need the following items:
@@ -275,7 +273,7 @@ ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
 ## Push Provider Images
 Push the provider images to the image registry mentioned in the **.arg** file so that you can reference the provider image in your cluster profile later. 
 
-This example will use the provider image compatible with K3s v1.25 in the cluster profile. Therefore, use the following command to push the provider image compatible with K3s v1.25 to the image registry. If you want to use the provider image compatible with K3s v1.24 instead, push that version to the image registry. The current example and default behavior use the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will expire after the 24 hrs time limit.  
+This example will use the provider image compatible with K3s v1.25 in the cluster profile. Therefore, use the following command to push the provider image compatible with K3s v1.25 to the image registry. If you want to use the other provider image compatible with K3s v1.24 instead, push that version to the image registry. The current example and default behavior use the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will expire after the 24 hrs time limit.  
 <br />
 
 ```bash
@@ -301,15 +299,15 @@ Use the following heredoc script to create a file, **.packerenv**, containing th
 
 ```bash
 cat << EOF > .packerenv
-PKR_VAR_vcenter_server=$(read -p 'Enter vCenter Server URL without http:// or https://, for example: vcenter.spectrocloud.dev ' vcenter_server && echo $vcenter_server)
-PKR_VAR_vcenter_username=$(read -p 'Enter vCenter Username value: ' vcenter_username && echo $vcenter_username)
-PKR_VAR_vcenter_password=$(read -p 'Enter vCenter Password value: ' vcenter_password && echo $vcenter_password)
-PKR_VAR_vcenter_datacenter=$(read -p 'Enter vCenter Datacenter name: ' vcenter_datacenter && echo $vcenter_datacenter)
-PKR_VAR_vcenter_datastore=$(read -p 'Enter vCenter Datastore name: ' vcenter_datastore && echo $vcenter_datastore)
-PKR_VAR_vcenter_resource_pool=$(read -p 'Enter vCenter Resource Pool name: ' vcenter_resource_pool && echo $vcenter_resource_pool)
-PKR_VAR_vcenter_folder=$(read -p 'Enter vCenter Folder name: ' vcenter_folder && echo $vcenter_folder)
-PKR_VAR_vcenter_cluster=$(read -p 'Enter vCenter Cluster name: ' vcenter_cluster && echo $vcenter_cluster)
-PKR_VAR_vcenter_network=$(read -p 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
+PKR_VAR_vcenter_server=$(read -ep 'Enter vCenter Server URL without http:// or https://, for example: vcenter.spectrocloud.dev ' vcenter_server && echo $vcenter_server)
+PKR_VAR_vcenter_username=$(read -ep 'Enter vCenter Username value: ' vcenter_username && echo $vcenter_username)
+PKR_VAR_vcenter_password=$(read -ep 'Enter vCenter Password value: ' vcenter_password && echo $vcenter_password)
+PKR_VAR_vcenter_datacenter=$(read -ep 'Enter vCenter Datacenter name: ' vcenter_datacenter && echo $vcenter_datacenter)
+PKR_VAR_vcenter_datastore=$(read -ep 'Enter vCenter Datastore name: ' vcenter_datastore && echo $vcenter_datastore)
+PKR_VAR_vcenter_resource_pool=$(read -ep 'Enter vCenter Resource Pool name: ' vcenter_resource_pool && echo $vcenter_resource_pool)
+PKR_VAR_vcenter_folder=$(read -ep 'Enter vCenter Folder name: ' vcenter_folder && echo $vcenter_folder)
+PKR_VAR_vcenter_cluster=$(read -ep 'Enter vCenter Cluster name: ' vcenter_cluster && echo $vcenter_cluster)
+PKR_VAR_vcenter_network=$(read -ep 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
 EOF
 ```
 
@@ -836,7 +834,7 @@ The core component of preparing Edge hosts and deploying Palette-managed Edge cl
 
 In this tutorial, you learned how to build Edge artifacts, prepare VMWare VMs as Edge hosts using Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
 
-Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, enabling you to choose the desired Kubernetes version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. With all these benefits, you can conveniently deploy and manage Edge clusters with Palette. Please check out the reference resources below to learn more about deploying Edge clusters.
+Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, enabling you to choose the desired Kubernetes version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. In addition to all these benefits, you can conveniently manage the entire lifecycle of Edge clusters with Palette. Please check out the reference resources below to learn more about deploying Edge clusters.
 <br />
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
