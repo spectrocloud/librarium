@@ -128,7 +128,7 @@ Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack t
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
-Alternatively, you can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
+You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
 
 <br />
 
@@ -148,10 +148,10 @@ Alternatively, you can create a role binding that maps individual users or a gro
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
 
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
 
 
-### Configure Custom OIDC and RBAC
+### Configure Custom OIDC
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
 
@@ -229,14 +229,17 @@ clientConfig:
 
 </Tabs>
 
-3. Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
 
-  Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
 
 
-  In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
+In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
 <br />
 
@@ -528,14 +531,16 @@ clientConfig:
 
 </Tabs>
 
-3. Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+### Use RBAC with OIDC
 
-  Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
 
 
-  In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
+In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
 <br />
 
@@ -723,7 +728,7 @@ Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack t
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
-Alternatively, you can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
+You can create a role binding that maps individual users or a group assigned within the OIDC provider's configuration to a role. To learn more, refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac).
 
 <br />
 
@@ -743,7 +748,7 @@ Alternatively, you can create a role binding that maps individual users or a gro
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
 
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
 
 
 ### Configure Custom OIDC and RBAC
@@ -824,9 +829,11 @@ clientConfig:
 
 </Tabs>
 
-3. Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+### Use RBAC with OIDC
 
-  Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
 
