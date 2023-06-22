@@ -75,7 +75,7 @@ Spectro Kubernetes Dashboard has the following Access options.
 
 <br /> 
 
-- **Proxied**: This option provides private access to your cluster when the cluster is in a private cloud. This option requires the Spectro Proxy pack, which is integrated with the Spectro Kubernetes Dashboard. The latest version of the Spectro Proxy pack is automatically installed when you create the cluster. To learn more, check out the [Spectro Proxy](/integrations/frp) guide.
+- **Proxied**:  This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured as ClusterIP and is only accessible through the proxy. To learn more, check out the [Spectro Proxy](/integrations/frp) guide.
 
 
 - **Direct**: This option is meant for a private configuration where a proxy is not implemented or not desired. The Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This option requires you to be on a network that can reach the IP address given to the LoadBalancer service.
