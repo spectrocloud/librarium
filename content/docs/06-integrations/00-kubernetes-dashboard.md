@@ -80,7 +80,8 @@ From the Dashboard login page, run the following command from the terminal windo
 <br />
 
 ```bash
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namesoace kubernetes-dashboard describe secret  \
+$(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
   
 The following example shows the command output with the token value.
