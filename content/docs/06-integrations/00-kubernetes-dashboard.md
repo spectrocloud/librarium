@@ -42,8 +42,8 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 | `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk. |
 
 <WarningBox>
 
@@ -151,9 +151,8 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
-
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk. |
 <WarningBox>
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
@@ -260,9 +259,8 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
-
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 <WarningBox>
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
@@ -371,8 +369,8 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 
 <WarningBox>
 
@@ -481,8 +479,8 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 
 <WarningBox>
 
@@ -591,8 +589,8 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.clusterRole` | Any valid clusterRole from the Kubernetes cluster | `k8s-dashboard-readonly` | The ClusterRole to be attached to the ServiceAccount which  defines RBAC to the cluster resources.<br /><br />By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | `k8s-dashboard.certDuration` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
+| `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 
 <WarningBox>
 

@@ -132,7 +132,7 @@ You can create a role binding that maps individual users or groups assigned with
 
 <br />
 
-- **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
+- **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
   <br />
 
@@ -142,7 +142,7 @@ You can create a role binding that maps individual users or groups assigned with
 
   </WarningBox>
 
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
 
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.

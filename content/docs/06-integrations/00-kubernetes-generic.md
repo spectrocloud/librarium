@@ -20,8 +20,6 @@ The Kubernetes pack supports several cloud and data center infrastructure provid
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
-We offer Kubernetes as a core pack in Palette. 
-
 Review the [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
 <br />
@@ -88,112 +86,10 @@ The Kubeadm config is updated with hardening improvements, and a pod security po
 
 <br />
 
-#### Example Kubeadm Configuration File 
+#### Kubeadm Configuration File 
 
-```yaml
-pack:
-  k8sHardening: True
-  podCIDR: "192.168.0.0/16"
-  serviceClusterIpRange: "10.96.0.0/12"
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      secure-port: "6443"
-      anonymous-auth: "true"
-      profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
-      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-    extraVolumes:
-      - name: audit-log
-        hostPath: /var/log/apiserver
-        mountPath: /var/log/apiserver
-        pathType: DirectoryOrCreate
-      - name: audit-policy
-        hostPath: /etc/kubernetes/audit-policy.yaml
-        mountPath: /etc/kubernetes/audit-policy.yaml
-        readOnly: true
-        pathType: File
-      - name: pod-security-standard
-        hostPath: /etc/kubernetes/pod-security-standard.yaml
-        mountPath: /etc/kubernetes/pod-security-standard.yaml
-        readOnly: true
-        pathType: File
-  controllerManager:
-    extraArgs:
-      profiling: "false"
-      terminated-pod-gc-threshold: "25"
-      pod-eviction-timeout: "1m0s"
-      use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
-  scheduler:
-    extraArgs:
-      profiling: "false"
-  kubeletExtraArgs:
-    read-only-port: "0"
-    event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
-    protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-  files:
-    - path: hardening/audit-policy.yaml
-      targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/90-kubelet.conf
-      targetPath: /etc/sysctl.d/90-kubelet.conf
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - targetPath: /etc/kubernetes/pod-security-standard.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-      content: |
-        apiVersion: apiserver.config.k8s.io/v1
-        kind: AdmissionConfiguration
-        plugins:
-        - name: PodSecurity
-          configuration:
-            apiVersion: pod-security.admission.config.k8s.io/v1
-            kind: PodSecurityConfiguration
-            defaults:
-              enforce: "baseline"
-              enforce-version: "v1.26"
-              audit: "baseline"
-              audit-version: "v1.26"
-              warn: "restricted"
-              warn-version: "v1.26"
-              audit: "restricted"
-              audit-version: "v1.26"
-            exemptions:
-              # Array of authenticated usernames to exempt.
-              usernames: []
-              # Array of runtime class names to exempt.
-              runtimeClasses: []
-              # Array of namespaces to exempt.
-              namespaces: [kube-system]
+The default pack YAML contains minimal configurations offered by the managed provider.
 
-    preKubeadmCommands:
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
-    postKubeadmCommands:
-    - 'echo "List of post kubeadm commands to be executed"'
-
-    # Client configuration to add OIDC based authentication flags in kubeconfig
-    #clientConfig:
-    #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
-    #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-    #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-    #oidc-extra-scope: profile,email
-```
 
 </Tabs.TabPane>
 
@@ -252,110 +148,9 @@ The Kubeadm config is updated with hardening improvements, as a pod security pol
 
 <br />
 
-#### Example Kubeadm Configuration File 
+#### Kubeadm Configuration File 
 
-```yaml
-pack:
-  k8sHardening: True
-  podCIDR: "192.168.0.0/16"
-  serviceClusterIpRange: "10.96.0.0/12"
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      secure-port: "6443"
-      anonymous-auth: "true"
-      profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
-      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-    extraVolumes:
-      - name: audit-log
-        hostPath: /var/log/apiserver
-        mountPath: /var/log/apiserver
-        pathType: DirectoryOrCreate
-      - name: audit-policy
-        hostPath: /etc/kubernetes/audit-policy.yaml
-        mountPath: /etc/kubernetes/audit-policy.yaml
-        readOnly: true
-        pathType: File
-      - name: pod-security-standard
-        hostPath: /etc/kubernetes/pod-security-standard.yaml
-        mountPath: /etc/kubernetes/pod-security-standard.yaml
-        readOnly: true
-        pathType: File
-  controllerManager:
-    extraArgs:
-      profiling: "false"
-      terminated-pod-gc-threshold: "25"
-      pod-eviction-timeout: "1m0s"
-      use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
-  scheduler:
-    extraArgs:
-      profiling: "false"
-  kubeletExtraArgs:
-    read-only-port: "0"
-    event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
-    protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-  files:
-    - path: hardening/audit-policy.yaml
-      targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/90-kubelet.conf
-      targetPath: /etc/sysctl.d/90-kubelet.conf
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - targetPath: /etc/kubernetes/pod-security-standard.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-      content: |
-        apiVersion: apiserver.config.k8s.io/v1
-        kind: AdmissionConfiguration
-        plugins:
-        - name: PodSecurity
-          configuration:
-            apiVersion: pod-security.admission.config.k8s.io/v1
-            kind: PodSecurityConfiguration
-            defaults:
-              enforce: "baseline"
-              enforce-version: "v1.25"
-              audit: "baseline"
-              audit-version: "v1.25"
-              warn: "restricted"
-              warn-version: "v1.25"
-              audit: "restricted"
-              audit-version: "v1.25"
-            exemptions:
-              # Array of authenticated usernames to exempt.
-              usernames: []
-              # Array of runtime class names to exempt.
-              runtimeClasses: []
-              # Array of namespaces to exempt.
-              namespaces: [kube-system]
-
-  preKubeadmCommands:
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
-
-    # Client configuration to add OIDC based authentication flags in kubeconfig
-    #clientConfig:
-    #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
-    #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-    #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-    #oidc-extra-scope: profile,email
-  ```
+The default pack YAML contains minimal configurations offered by the managed provider.
 
 </Tabs.TabPane>
 
@@ -415,81 +210,9 @@ The Kubeadm configuration is changed to include a pod security policy, and an un
 
 <br />
 
-#### Example Kubeadm Configuration File 
+#### Kubeadm Configuration File 
 
-```yaml
-pack:
-  k8sHardening: True
-  podCIDR: "192.168.0.0/16"
-  serviceClusterIpRange: "10.96.0.0/12"
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      secure-port: "6443"
-      anonymous-auth: "true"
-      profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurityPolicy"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-    extraVolumes:
-      - name: audit-log
-        hostPath: /var/log/apiserver
-        mountPath: /var/log/apiserver
-        pathType: DirectoryOrCreate
-      - name: audit-policy
-        hostPath: /etc/kubernetes/audit-policy.yaml
-        mountPath: /etc/kubernetes/audit-policy.yaml
-        readOnly: true
-        pathType: File
-  controllerManager:
-    extraArgs:
-      profiling: "false"
-      terminated-pod-gc-threshold: "25"
-      pod-eviction-timeout: "1m0s"
-      use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
-  scheduler:
-    extraArgs:
-      profiling: "false"
-  kubeletExtraArgs:
-    read-only-port: "0"
-    event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
-    protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-  files:
-    - path: hardening/audit-policy.yaml
-      targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/privileged-psp.yaml
-      targetPath: /etc/kubernetes/hardening/privileged-psp.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/90-kubelet.conf
-      targetPath: /etc/sysctl.d/90-kubelet.conf
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-  preKubeadmCommands:
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
-  postKubeadmCommands:
-    - 'export KUBECONFIG=/etc/kubernetes/admin.conf && [ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f /etc/kubernetes/hardening/privileged-psp.yaml > /dev/null ); do echo "Failed to apply PodSecurityPolicies, will retry in 5s" ; sleep 5 ; done ; } || echo "Skipping PodSecurityPolicy for worker nodes"'
-  # Client configuration to add OIDC based authentication flags in kubeconfig
-  #clientConfig:
-  #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
-  #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-  #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  #oidc-extra-scope: profile,email
-  ```
+The default pack YAML contains minimal configurations offered by the managed provider.
 
 
 </Tabs.TabPane>
