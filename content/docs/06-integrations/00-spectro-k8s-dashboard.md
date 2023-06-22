@@ -17,7 +17,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Spectro Kubernetes Dashboard
 
-Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using secure ports and conveniently includes [Spectro Proxy](/integrations/frp). 
+Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using secure ports and conveniently includes the [Spectro Proxy](/integrations/frp) pack. 
 
 
 # Versions Supported
