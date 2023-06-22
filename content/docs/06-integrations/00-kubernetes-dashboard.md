@@ -64,7 +64,8 @@ The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pa
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080. 
+When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080. 
+
 
 <br />
 
