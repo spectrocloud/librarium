@@ -31,6 +31,14 @@ Palette supports three architecture models: multi-tenant SaaS, dedicated SaaS, a
 
 - **Self-hosted**: The management plane is hosted in your environment. It can be on-prem VMware vSphere, OpenStack, bare metal, in a public cloud that manages your compute instances, or a managed Kubernetes cluster such as Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE).
 
+
+<br />
+
+![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.png)
+
+<br />
+
+
 Palette’s robust security measures safeguard your data and ensure the integrity of our services. We adhere to industry-leading standards and continuously refine our practices to provide the highest level of security. Palette infrastructure safeguards data in your Kubernetes production environment with its zero-trust architecture, granular Role-Based Access Control (RBAC), immutable Linux distributions ([Kairos](https://kairos.io/)), and hardened clusters and Kubernetes packs.
 
 Palette's security controls ensure data protection in SaaS operation at the management platform level and the [tenant](/glossary-all#tenant) cluster level. To learn more, refer to [SaaS Operation](/security/product-architecture/saas-operation). In self-hosted operation, you must ensure security controls in your environment. Find out more about self-hosted deployment in [Self-Hosted Operation](/security/product-architecture/self-hosted-operation).
