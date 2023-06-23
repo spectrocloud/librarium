@@ -82,7 +82,7 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-The Kubeadm config is updated with hardening improvements, and a pod security policy has been removed.
+The Kubeadm config is updated with hardening improvements, as a pod security policy has been removed.
 
 <br />
 

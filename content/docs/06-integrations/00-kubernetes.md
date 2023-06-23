@@ -124,7 +124,9 @@ palette:
 
 ### Configure OIDC Identity Provider
 
-Platforms that use PXK can use the OIDC IDP feature. When you add the PXK pack to a cluster profile, Palette displays the following OIDC IDP options. 
+Platforms that use PXK can use the OIDC IDP feature, which offers the convenience of managing OIDC at the Kubernetes layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK pack to a cluster profile, Palette displays the following OIDC IDP options. 
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
@@ -781,7 +783,7 @@ The custom method to configure OIDC and apply RBAC for an OIDC provider can be u
 <Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
 
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and Amazon [EKS](/integrations/oidc-eks/) clusters. Azure AKS and Amazon EKS require different configurations.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure AAD to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 <br />
 
