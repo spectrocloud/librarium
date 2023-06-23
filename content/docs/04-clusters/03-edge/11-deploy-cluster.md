@@ -367,7 +367,8 @@ Here is the **vsphere.hcl** file content for your reference; however, you do not
 
   </InfoBox>
 
-Issue the following command to trigger Packer to create a VM template in the VMWare vCenter.   
+Issue the following command to trigger Packer to create a VM template in the VMWare vCenter. It will also upload and keep a copy of **palette-edge-installer.iso** in the **packer_cache/** directory in VMWare vCenter. 
+  
 <br />
 
 ```bash
@@ -802,6 +803,8 @@ docker run -it --rm --env-file .goenv \
   ghcr.io/spectrocloud/tutorials:1.0.6 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
+
+Also, delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in VMWare vCenter.
 
 ##  Delete Edge Artifacts
 If you further want to delete Edge artifacts from your Linux machine, delete the Edge installer ISO image and its checksum by executing the following commands from the **CanvOS/** directory.
