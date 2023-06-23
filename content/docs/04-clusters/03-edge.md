@@ -57,7 +57,8 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 
 
-Palette's Edge solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing, along with the operating system and Kubernetes, is installed in the device.
+Palette's Edge solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
+
 
 <br />
 
