@@ -238,7 +238,7 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/integrations/oidc-eks/`,
+    fromPath: `/integrations/oidc-eks`,
     toPath: `/integrations/kubernetes#configurecustomoidc`,
     redirectInBrowser: true,
     isPermanent: true,
