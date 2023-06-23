@@ -32,7 +32,7 @@ In this tutorial, similar to the primary stages outlined above, you will first b
 Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the Edge host VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge devices. Therefore, this tutorial uses VMWare VMs as Edge hosts to test the installer ISO image's correctness and ease of use. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
 
 
-![An overarching diagram showing the tutorial workflow.](/tutorials/edge-native/clusters_edge_deploy-cluster_overarching.png)
+![An overarching diagram showing the tutorial workflow.](/tutorials/edge/clusters_edge_deploy-cluster_overarching.png)
 
  
 # Prerequisites
@@ -75,7 +75,7 @@ To complete this tutorial, you will need the following items:
 
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in Palette. 
 
-  ![A screenshot of a registration token in Palette](/tutorials/edge-native/clusters_edge_deploy-cluster_registration-token.png)
+  ![A screenshot of a registration token in Palette](/tutorials/edge/clusters_edge_deploy-cluster_registration-token.png)
 
 
 # Build Edge Artifacts
@@ -332,7 +332,7 @@ The next step is to use the following `docker run` command to trigger Packer to 
 - The `--env-file` option will read the **.packerenv** file.
 - The `--volume ` option will mount a local directory to the container.
 - It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`, as a jump host.
-- The `sh -c "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command will change to the **edge-native/vmware/packer/** directory in the container and execute `packer build` to create the VM template. In the `packer build` command: 
+- The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command will change to the **edge/vmware/packer/** directory in the container and execute `packer build` to create the VM template. In the `packer build` command: 
   - The `-force` flag will destroy the existing template, if any. 
   - The `--var-file` option will read the **vsphere.hcl** file from the container. It contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](https://docs.spectrocloud.com/clusters/edge/architecture/#minimumdevicerequirements).
 
@@ -363,7 +363,7 @@ Here is the **vsphere.hcl** file content for your reference; however, you do not
 
   <InfoBox>
 
-  Should you need to review the Packer script or modify the **vsphere.hcl** file, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository and change to the **edge-native/vmware/packer/** directory to make the modifications, rebuild the tutorials image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds) and use that image in the following `docker run` command.  
+  Should you need to review the Packer script or modify the **vsphere.hcl** file, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository and change to the **edge/vmware/packer/** directory to make the modifications, rebuild the tutorials image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds) and use that image in the following `docker run` command.  
 
   </InfoBox>
 
@@ -373,9 +373,9 @@ Issue the following command to trigger Packer to create a VM template in the VMW
 ```bash
 docker run -it --rm \
   --env-file .packerenv \
-  --volume "${ISOFILEPATH}:/edge-native/vmware/packer/build" \
+  --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
   ghcr.io/spectrocloud/tutorials:1.0.6 \
-  sh -c "cd edge-native/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 The build process can take up to 7-10 minutes to finish depending on your machine's and network configuration. 
@@ -430,9 +430,9 @@ EOF
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
 - The `--env-file` option will read the **.goenv** file.
 - It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`, as a jump host.
-- The `sh -c "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command will change to the **edge-native/vmware/clone_vm_template/** directory in the container and execute the **deploy-edge-host.sh** shell script. 
+- The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command will change to the **edge/vmware/clone_vm_template/** directory in the container and execute the **deploy-edge-host.sh** shell script. 
 
-The **edge-native/vmware/clone_vm_template/** directory in the container has the following files:
+The **edge/vmware/clone_vm_template/** directory in the container has the following files:
 - **deploy-edge-host.sh** - Provisions the VMs.
 - **delete-edge-host.sh** - Deletes the VMs.
 - **setenv.sh** - Defines the GOVC environment variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment variables refer to the variables you have defined in the **.goenv** file. 
@@ -460,7 +460,7 @@ Here is the **setenv.sh** file content for your reference; however, you do not h
   export GOVC_FOLDER="${vcenter_folder}"
   ```
 
-Should you need to review the GOVC commands in the **deploy-edge-host.sh** script or modify the number of VMs to provision, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository and modify the **edge-native/vmware/clone_vm_template/setenv.sh** file, rebuild the image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds) and use that image in the following `docker run` command. 
+Should you need to review the GOVC commands in the **deploy-edge-host.sh** script or modify the number of VMs to provision, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository and modify the **edge/vmware/clone_vm_template/setenv.sh** file, rebuild the image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds) and use that image in the following `docker run` command. 
 
 Issue the following command to clone the VM template and provision three VMs.
 <br />
@@ -469,7 +469,7 @@ Issue the following command to clone the VM template and provision three VMs.
 docker run -it --rm \
   --env-file .goenv \
   ghcr.io/spectrocloud/tutorials:1.0.6 \
-  sh -c "cd edge-native/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
+  sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
 The cloning process can take 3-4 minutes to finish and display an output similar to the one below. The output will display the Edge host ID for each VM, as highlighted in the sample output below. VMs will use this host ID to auto-register themselves with Palette.
@@ -502,7 +502,7 @@ After building the Edge artifacts and provisioning VMs as Edge hosts, the next s
 ## Verify Host Registration
 Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left **Main Menu** and select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs created are registered with Palette.
 
-![A screenshot showing the VMs registered with Palette automatically. ](/tutorials/edge-native/clusters_edge_deploy-cluster_edge-hosts.png)
+![A screenshot showing the VMs registered with Palette automatically. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts.png)
 
 
 If the three Edge hosts are not displayed in the list then the automatic registration failed. You can register the Edge hosts manually by using each Edge host's ID. Click on the **Add Edge Hosts** button, and paste the Edge host ID returned after provisioning the VMs in previous step. The Edge host IDs can be found in the GOVC output that was generated when you deployed the VMs.
@@ -572,7 +572,7 @@ options:
 The screenshot below shows you how to reference your provider OS image in a cluster profile by using the utility build output with the BYOOS pack. 
 <br />
 
-![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge-native/clusters_edge_deploy-cluster_edit-profile.png)
+![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_edit-profile.png)
 
 
 <WarningBox>
@@ -605,7 +605,7 @@ Finally, click on the **Confirm** button to complete the core infrastructure sta
 
 Next, click on the **Add Manifest** button on the top to add the Hello Universe application manifest.  
 
-![A screenshot of the add Manifest button.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-manifest.png)
+![A screenshot of the add Manifest button.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest.png)
 
 Use the following values to add the Hello Universe manifest metadata.  
 
@@ -657,7 +657,7 @@ spec:
 
 The screenshot below shows the manifest pasted into the text editor. Click on the **Confirm & Create** button to finish adding the manifest. 
 
-  ![A screenshot of Hello Universe application manifest.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-manifest-file.png)
+  ![A screenshot of Hello Universe application manifest.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest-file.png)
 
 
 If there are no errors or compatibility issues, Palette will display the newly created full cluster profile for review. Verify the layers you added, and click on the **Next** button. 
@@ -670,7 +670,7 @@ Review all layers and click **Finish Configuration** to create the cluster profi
 Click on the newly created cluster profile to view its details page.  Click the **Deploy** button to deploy a new Edge cluster. 
 <br />
 
-![Screenshot of the Profile Layers success.](/tutorials/edge-native/clusters_edge_deploy-cluster_profile-success.png)
+![Screenshot of the Profile Layers success.](/tutorials/edge/clusters_edge_deploy-cluster_profile-success.png)
 
 The cluster deployment wizard will display the following sections. 
 <br />
@@ -712,7 +712,7 @@ In this section, provide details for the master pool.
 
 The screenshot below shows adding an Edge host to the master pool.
 
-![Screenshot of adding an Edge host to the master pool.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-master-node.png)
+![Screenshot of adding an Edge host to the master pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.png)
 
 
 Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool. Suppose you do not have Edge hosts remaining; in that case, you can remove the worker pool. Your master pool has the worker capability already. 
@@ -726,7 +726,7 @@ Similarly, provide details for the worker pool, and add the remaining two Edge h
 
 The screenshot below shows adding two Edge hosts to the worker pool.
 
-![Screenshot of adding Edge hosts to the worker pool.](/tutorials/edge-native/clusters_edge_deploy-cluster_add-worker-node.png)
+![Screenshot of adding Edge hosts to the worker pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-worker-node.png)
 
 Click **Next** to continue.    
 <br /> 
@@ -750,7 +750,7 @@ When cluster status displays **Running** and **Healthy**, you can access the app
 
 The screenshot below highlights the NodePort to access the application.
 
-![Screenshot of highlighted NodePort to access the application.](/tutorials/edge-native/clusters_edge_deploy-cluster_access-service.png)
+![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/clusters_edge_deploy-cluster_access-service.png)
 
 
 
@@ -764,7 +764,7 @@ We recommend waiting to click on the service URL, as it takes one to three minut
 </WarningBox>
 
 
-![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge-native/clusters_edge_deploy-cluster_hello-universe.png)
+![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe.png)
 
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it. 
@@ -779,7 +779,7 @@ The following steps will guide you in cleaning up your environment, including th
 To delete the cluster, view the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option, as shown in the screenshot below
 
 
-![Screenshot of deleting a cluster.](/tutorials/edge-native/clusters_edge_deploy-cluster_delete-cluster.png)
+![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster.png)
 
 
 Palette will prompt you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the delete step. The cluster status will turn to **Deleting**. Deletion takes up to 10 minutes.
@@ -788,7 +788,7 @@ Palette will prompt you to enter the cluster name and confirm the delete action.
 After you delete the cluster, click **Profiles** on the left **Main Menu**, and select the profile to delete. Choose the **Delete** option in the **three-dot Menu**, as shown in the screenshot below.
 
 
-![Screenshot of deleting a cluster profile.](/tutorials/edge-native/clusters_edge_deploy-cluster_delete-profile.png)
+![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile.png)
 
 
 Please wait until Palette deletes the resources successfully. 
@@ -800,7 +800,7 @@ Switch back to the **CanvOS** directory in the Linux machine containing the **.g
 ```bash
 docker run -it --rm --env-file .goenv \
   ghcr.io/spectrocloud/tutorials:1.0.6 \
-  sh -c "cd edge-native/vmware/clone_vm_template/ && ./delete-edge-host.sh"
+  sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
 ##  Delete Edge Artifacts
