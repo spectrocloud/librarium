@@ -22,6 +22,13 @@ Palette provisions workload clusters on Edge hosts from the Palette management c
 Edge computing brings computing and data storage closer to the source, reducing latency and bandwidth issues that result from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to their applications. 
 
 
+<br />
+
+![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.png)
+
+<br />
+
+
 
 The following are some highlights of the comprehensive Palette Edge Solution:
 
@@ -48,6 +55,21 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 * Support for pre-provisioned and on-site device registration 
 
 
+
+
+Palette's Edge solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
+
+
+<br />
+
+<InfoBox>
+
+Edge is built on top of the open-source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
+
+</InfoBox>
+
+Palette manages the installation and all the Day-2 activities, such as scaling, upgrades, and reconfiguration.
+
 <br />
 
 <WarningBox>
@@ -66,22 +88,6 @@ Edge is still in active development and is subject to change. Review the Palette
 
 
 To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](/clusters/edge/edgeforge-workflow). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
-
-# Edge Native
-
-Palette's Edge native solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing, along with the operating system and Kubernetes, is installed in the device.
-
-Palette manages the installation and all the Day-2 activities, such as scaling, upgrades, and reconfiguration.
-
-<br />
-
-<InfoBox>
-
-Edge is built on top of the open-source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
-
-</InfoBox>
-
-
 
 <br />
 
