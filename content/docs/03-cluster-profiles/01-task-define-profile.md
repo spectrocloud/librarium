@@ -1,6 +1,6 @@
 ---
-title: "Create an Cluster Profiles"
-metaTitle: "Create an Cluster Profiles"
+title: "Create a Cluster Profile"
+metaTitle: "Create a Cluster Profile"
 metaDescription: "Learn how to create a cluster profile in Palette."
 icon: ""
 hideToC: true

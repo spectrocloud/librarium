@@ -1,7 +1,7 @@
 ---
 title: "Migrate to Full Permissions"
 metaTitle: "Migrate to Full Permissions"
-metaDescription: "Learn how to migrate an imported cluster in read-only mode to full-permissions mode."
+metaDescription: "Learn how to migrate an imported cluster from read-only mode to full-permissions mode."
 hideToC: false
 fullWidth: false
 ---
@@ -40,11 +40,11 @@ fullWidth: false
 
   <br />
 
-5. A side view drawer will slide out from the right-hand side of the cluster details page. Copy the command displayed to your clipboard.
+5. A side view drawer will slide out from the right side of the cluster details page. Copy the displayed command to your clipboard.
 
 
 
-6. Open up a terminal on your local workstation and validate you are in the correct Kubernete context. You can use the following command to verify the Kubernetes context. If you find yourself in an incorrect Kubernetes context, switch to the proper context so you are interacting with the imported cluster when using kubectl.
+6. Open a terminal on your local workstation and validate you are in the correct Kubernete context. You can use the following command to verify the Kubernetes context. If you find yourself in an incorrect Kubernetes context, switch to the proper context so you are interacting with the imported cluster when using kubectl.
 
   <br />
 
@@ -93,7 +93,7 @@ fullWidth: false
   ```
 
   
-8. In a few moments, the side drawer will disappear. The **Profile**, **Workloads**, **Scan**, and **Backups** tabs will become unlocked and available for interaction.
+8. In a few minutes, the side drawer will disappear, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs will become unlocked and available for interaction.
 
   <br />
 
@@ -113,4 +113,4 @@ You now have successfully migrated a read-only mode cluster to full-permissions 
 3. Select your imported cluster from the cluster list.
 
 
-4. Review the **Cluster Status** row from the cluster details view. A successful cluster import will have the cluster status **Running**.
+4. Review the **Cluster Status** row from the cluster details view. A successful cluster import displays cluster status as **Running**.

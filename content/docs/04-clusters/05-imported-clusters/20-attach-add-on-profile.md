@@ -1,7 +1,7 @@
 ---
 title: "Attach an Add-on Profile"
 metaTitle: "Attach an Add-on Profile"
-metaDescription: "Learn how to attach an add-on profile to an imported cluster."
+metaDescription: "Learn how to attach an add-on profile to an imported cluster in Palette."
 hideToC: false
 fullWidth: false
 ---
@@ -43,17 +43,17 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
 
   <br />
 
-  ![The view of a cluster details when the profile tab is selected](/clusters_imported-clusters_attach-add-on-profile_cluster-details-profile-tab.png)
+  ![The cluster details view when the profile tab is selected](/clusters_imported-clusters_attach-add-on-profile_cluster-details-profile-tab.png)
 
   <br />
 
 5. Select an add-on profile and click on **Confirm**.
 
 
-6. In the following screen, you can update the add-on profile if desired. Click on **Save** to deploy the add-on cluster profile
+6. In the following screen, you can update the add-on profile if desired. Click on **Save** to deploy the add-on cluster profile.
 
 
-7. Navigate to the **Overview** tab to monitor the deployment. Once the add-on cluster profile is deployed, the page's **Cluster Profiles** section will display a green circle next to the layer.
+7. Navigate to the **Overview** tab to monitor the deployment. When the add-on cluster profile is deployed, the  **Cluster Profile** status displays as a green circle next to the layer.
   <br />
 
   ![A cluster profile with an add-on profile deployed successfully](/clusters_imported-clusters_attach-add-on-profile_cluster-details-app-deployed.png)
