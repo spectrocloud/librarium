@@ -26,14 +26,13 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
 * An add-on cluster profile. Refer to the [Create an Add-on Profile](/cluster-profiles/create-add-on-profile) to learn how to create an add-on cluster profile.
 
 
-# Add an Add-on Profile
+# Attach an Add-on Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
-
-2. Navigate to left **Main Menu** and select **Clusters**.
 
 
 3. Select your imported cluster to access its details page.

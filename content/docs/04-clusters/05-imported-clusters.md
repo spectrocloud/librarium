@@ -16,7 +16,13 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Existing Kubernetes clusters not deployed through Palette can be imported into Palette for visibility, limited Day -2 management, and additional capabilities such as application lifecycle management. You can import Kubernetes clusters from various infrastructure providers, such as public and private clouds and bare-metal environments.
 
-Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality because Palette understands how to interact with the cloud provider's API. Generic clusters are more limited because Palette is unaware of the underlying cloud provider. 
+Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality because Palette understands how to interact with the infrastructure provider's API. Cloud-specific clusters provide the same experience as Palette deployed clusters. 
+
+The generic type is for a cluster that is deployed in an environment where Palette lacks integration with the underlying infrastructure provider's API. Palette can support basic operations for generic clusters, such as reporting metrics, conducting scans, scheduling backups, and applying and managing add-on profiles. However, Day-2 activities are not supported in generic clusters. 
+
+
+ Refer to the [Supported Infrastructure Providers](/clusters/imported-clusters#supportedinfrastructureproviders) section to learn more about supported infrastructure environments.
+
 
 To get started with a cluster import, refer to the [Import a Cluster](/clusters/imported-clusters/cluster-import) guide to learn more.
 
@@ -33,21 +39,22 @@ To determine Palette's control over the imported cluster, you can choose the man
 
 
 ## Supported Infrastructure Providers
+
+
+The following infrastructure providers are supported for cluster imports. If an environment is not listed below, select the **Generic** type when importing a cluster. 
+
   
 <br />
 
 | Infrastructure Provider | Type 
 |---|---| 
-| AWS IaaS | Cloud Specific |
-| AWS EKS  | Cloud Specific| 
-| Azure IaaS | Cloud Specific | 
-| Azure AKS  | Cloud Specific| 
-| Google Cloud IaaS | Cloud Specific |
+| AWS | Cloud Specific |
+| Azure | Cloud Specific | 
+| Google Cloud Platform | Cloud Specific |
 | VMware | Cloud Specific | 
 |OpenShift |Cloud Specific | 
 | AWS EKS-Anywhere | Cloud Specific | 
-| Other management platforms such as Rancher, CCP, etc | Generic |
-| Self-deployed and managed clusters  | Generic |
+| Generic| Generic|
 
 ### Self-Hosted Support
 
