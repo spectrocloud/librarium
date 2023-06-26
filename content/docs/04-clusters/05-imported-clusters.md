@@ -46,7 +46,7 @@ The following infrastructure providers are supported for cluster imports. If an 
   
 <br />
 
-| Infrastructure Provider | Type 
+| Infrastructure Provider | Type |
 |---|---| 
 | AWS | Cloud Specific |
 | Azure | Cloud Specific | 
@@ -56,10 +56,14 @@ The following infrastructure providers are supported for cluster imports. If an 
 | AWS EKS-Anywhere | Cloud Specific | 
 | Generic| Generic|
 
+
+<br />
+
 ### Self-Hosted Support
 
 Self-hosted Palette also supports importing clusters. You must ensure network connectivity is available between the target import cluster and the Palette instance.
 
+<br />
 
 ## Limitations
 
