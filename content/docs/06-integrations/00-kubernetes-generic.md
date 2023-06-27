@@ -82,7 +82,57 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-The Kubeadm config is updated with hardening improvements, as a pod security policy has been removed.
+The Kubeadm config is updated with hardening improvements that do the following: 
+
+<br />
+
+- Meet CIS standards for operating systems (OS).
+
+
+- Enable a Kubernetes audit policy in the pack that you can customize by adjusting API server flags. 
+
+
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+
+  <br />
+
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+
+  <br />
+
+	- **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission. 
+
+    <br />
+
+    ```yaml
+    kubeadmconfig:
+    apiServer:
+      extraArgs:
+        secure-port: "6443"
+        anonymous-auth: "true"
+        profiling: "false"
+        disable-admission-plugins: "AlwaysAdmit"
+        default-not-ready-toleration-seconds: "60"
+        default-unreachable-toleration-seconds: "60"
+        enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+	      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+        audit-log-path: /var/log/apiserver/audit.log
+        audit-policy-file: /etc/kubernetes/audit-policy.yaml
+    ```
+
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+
+    <br />
+
+	  You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+
+    <br />
+
+    ```yaml
+	  pod-security.kubernetes.io/enforce: privileged	
+    pod-security.kubernetes.io/enforce-version: v1.26
+	  ``` 
+
 
 <br />
 
@@ -144,7 +194,59 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-The Kubeadm config is updated with hardening improvements, as a pod security policy has been removed.
+
+The Kubeadm config is updated with hardening improvements that do the following: 
+
+<br />
+
+- Meet CIS standards for operating systems (OS).
+
+
+- Enable a Kubernetes audit policy in the pack that you can customize by adjusting API server flags. 
+
+
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+
+  <br />
+
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+
+  <br />
+
+	- **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission. 
+
+    <br />
+
+    ```yaml
+    kubeadmconfig:
+    apiServer:
+      extraArgs:
+        secure-port: "6443"
+        anonymous-auth: "true"
+        profiling: "false"
+        disable-admission-plugins: "AlwaysAdmit"
+        default-not-ready-toleration-seconds: "60"
+        default-unreachable-toleration-seconds: "60"
+        enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+	      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+        audit-log-path: /var/log/apiserver/audit.log
+        audit-policy-file: /etc/kubernetes/audit-policy.yaml
+    ```
+
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+
+    <br />
+
+	  You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+
+    <br />
+
+    ```yaml
+	  pod-security.kubernetes.io/enforce: privileged	
+    pod-security.kubernetes.io/enforce-version: v1.25
+	  ``` 
+
+<br />
 
 <br />
 
@@ -206,7 +308,58 @@ The Kubeadm configuration file is where you can do the following:
 
 #### Configuration Changes
 
-The Kubeadm configuration is changed to include a pod security policy, and an unsecured port is removed. 
+The Kubeadm config is updated with hardening improvements that do the following: 
+
+<br />
+
+- Meet CIS standards for operating systems (OS).
+
+
+- Enable a Kubernetes audit policy in the pack that you can customize by adjusting API server flags. 
+
+
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+
+  <br />
+
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+
+  <br />
+
+	- **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission. 
+
+    <br />
+
+    ```yaml
+    kubeadmconfig:
+    apiServer:
+      extraArgs:
+        secure-port: "6443"
+        anonymous-auth: "true"
+        profiling: "false"
+        disable-admission-plugins: "AlwaysAdmit"
+        default-not-ready-toleration-seconds: "60"
+        default-unreachable-toleration-seconds: "60"
+        enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+	      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+        audit-log-path: /var/log/apiserver/audit.log
+        audit-policy-file: /etc/kubernetes/audit-policy.yaml
+    ```
+
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+
+    <br />
+
+	  You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+
+    <br />
+
+    ```yaml
+	  pod-security.kubernetes.io/enforce: privileged	
+    pod-security.kubernetes.io/enforce-version: v1.24
+	  ``` 
+
+<br />
 
 <br />
 
