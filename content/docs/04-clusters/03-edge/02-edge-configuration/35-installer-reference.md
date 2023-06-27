@@ -16,6 +16,14 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 The Edge Installer configuration user data accepts a parameter named `stylus`. In addition to the `stylus` parameter, the user data file also supports the use of cloud-init stages and other Kairos-supported parameters. The `stylus.site` parameter is how you primarily configure the Edge host, but you can also use cloud-init stages to customize the installation. Refer to the [General Parameters](/clusters/edge/edge-configuration/installer-reference#generalparameters) for a list of all the parameters supported in the `stylus.site` parameter block. 
 
+<br />
+
+<InfoBox>
+
+The `#cloud-config` value is a required cloud-init header required by the [cloud-init](https://cloudinit.readthedocs.io/en/latest/explanation/format.html) standard.
+
+</InfoBox>
+
 # User Data Parameters
 
 ## Defaults
@@ -43,6 +51,7 @@ You can enable the `debug` and `trace` parameters when you need to troubleshoot 
 | `imageOverride`| You can specify a different Edge Installer image versus the default image. |
 
 ```yaml
+#cloud-config
 stylus:
   debug: true
   trace: true
@@ -68,6 +77,7 @@ You can specify the mode the Edge Installer should prepare the installation for.
 <br />
 
 ```yaml
+#cloud-config
 stylus:
   installationMode: "connected"
 ```
@@ -92,6 +102,7 @@ You can point the Edge Installer to a non-default registry to load content from 
 
 
 ```yaml
+#cloud-config
 stylus:
   registryCredentials:
     domain: 10.10.254.254:8000/spectro-images
@@ -197,6 +208,7 @@ The following example shows how user data configuration is used to customize the
 <br />
 
 ```yaml
+#cloud-config
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
@@ -252,25 +264,26 @@ The following is an example Edge installer configuration that is using the `inst
 <br />
 
 ```yaml
-  stylus:
-    site:
-      paletteEndpoint: api.spectrocloud.com
-      registrationURL: https://edge-registration.vercel.app 
-      projectUid: yourProjectIdHere
-      edgeHostToken: yourEdgeRegistrationTokenHere
-      tags:
-        myTag: myValue
-        myOtherTag: myOtherValue
-    reboot: false
+#cloud-config
+stylus:
+  site:
+    paletteEndpoint: api.spectrocloud.com
+    registrationURL: https://edge-registration.vercel.app 
+    projectUid: yourProjectIdHere
+    edgeHostToken: yourEdgeRegistrationTokenHere
+    tags:
+      myTag: myValue
+      myOtherTag: myOtherValue
+  reboot: false
 
-  stages:
-    initramfs:
-      - users:
-          palette:
-            groups:
-              - sudo
-            passwd: palette
+stages:
+  initramfs:
+    - users:
+        palette:
+          groups:
+            - sudo
+          passwd: palette
 
-  install:
-    poweroff: true
+install:
+  poweroff: true
 ```
