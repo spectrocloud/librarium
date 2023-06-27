@@ -250,6 +250,12 @@ const redirects = [
     isPermanent: true,
   },
   {
+    fromPath: `/clusters/brownfield-clusters`,
+    toPath: `/clusters/imported-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
     fromPath: `/integrations/oidc-eks`,
     toPath: `/integrations/kubernetes#configurecustomoidc`,
     redirectInBrowser: true,
