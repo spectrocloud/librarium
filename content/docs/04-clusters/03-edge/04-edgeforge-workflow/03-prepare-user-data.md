@@ -32,6 +32,7 @@ You may encounter the following scenarios when creating an Edge Installer config
 
 ## Sample User Data
 ```yaml
+#cloud-config
 stylus:
   site:
     # The Palette API endpoint to use. The default value is api.spectrocloud.com.
@@ -110,6 +111,7 @@ In this example, two configuration user user data files are used. The first one 
 **Staging** - included with the Edge Installer.
 
 ```yaml
+#cloud-config
 stylus:
   site:
       paletteEndpoint: api.spectrocloud.com
@@ -133,6 +135,7 @@ stages:
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides project information specified in the `edgeHostToken` parameter. You can add optional tags to identify the city, building, and zip-code. If the edge site requires a proxy for an outbound connection, provide it in the network section of the site user data.
 
 ```yaml
+#cloud-config
 stylus:
   site:
     projectName: edge-sites
@@ -148,6 +151,7 @@ In this scenario, only a single Edge Installer configuration user data is used f
 <br />
 
 ```yaml
+#cloud-config
 stylus:
   site:
       paletteEndpoint: api.spectrocloud.com
@@ -175,6 +179,7 @@ stages:
 This example showcases how you can include network settings in a user data configuration.
 
 ```yaml
+#cloud-config
 stylus:
   site:
       paletteEndpoint: api.spectrocloud.com
@@ -231,6 +236,7 @@ stages:
 In this example, content is downloaded from an external registry.
 
 ```yaml
+#cloud-config
 stylus:
   registryCredentials:
     domain: 10.10.254.254:8000/spectro-images
@@ -292,4 +298,4 @@ For your initial testing, your user data may include global settings and site-sp
 
 # Next Steps
 
-The last step of the EdgeForce workflow is to build the Edge artifact. Check out the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide to learn how to build your images with the Edge Installer Builder CLI and create an Edge artifact.
+The last step of the EdgeForce workflow is to build the Edge artifacts. Check out the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create the Edge artifacts.

@@ -40,7 +40,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 ## Prerequisites
 
-- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for details.
+- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide for details.
 
 
 ## Enablement
@@ -77,7 +77,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
   ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
 
 
-10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
+10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
 
 
   <br />

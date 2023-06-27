@@ -18,6 +18,9 @@ CLI
 reject
 disable
 modify
+subnet
+subnets
+VMs
 VNet
 Kubelet
 We

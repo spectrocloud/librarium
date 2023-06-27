@@ -232,6 +232,18 @@ const redirects = [
     isPermanent: true,
   },
   {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-kairos-os`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-images`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
     fromPath: `/integrations/ubuntu-k3s`,
     toPath: `/integrations/ubuntu`,
     redirectInBrowser: true,
