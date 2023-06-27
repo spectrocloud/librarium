@@ -89,7 +89,7 @@ The Kubeadm config is updated with hardening improvements that do the following:
 - Meet CIS standards for operating systems (OS).
 
 
-- Enable a Kubernetes audit policy in the pack that you can customize by adjusting API server flags. 
+- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit policy. If you want to apply your custom audit policy, refer to the [Enable Audit Logging](/audit-logs/kube-api-audit-logging)  guide to learn how to create your custom audit policy by adjusting API server flags. 
 
 
 - Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
