@@ -911,7 +911,7 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 # July 3, 2020 - Release 1.0.1
 
 - New Regions for AWS > Spectro Cloud is now available for deploying AWS clusters in the European regions.
-- Changes to the pricing structures > more usage = lesser price per [kCh](https://www.spectrocloud.com/pricing/).
+- Changes to the pricing structures > more usage = lesser price per kCh.
 
 # June 23, 2020 - Release 1.0
 
