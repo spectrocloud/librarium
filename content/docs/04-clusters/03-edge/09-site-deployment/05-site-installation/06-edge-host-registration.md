@@ -35,6 +35,23 @@ A registration token is required for the Edge host registration process. Without
 To register the Edge host, you are required to use a registration token with all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project in the Edge Installer [user data](/clusters/edge/edge-configuration/installer-reference) configuration file.
 
 
+By default, devices automatically register during the site installation process. Set the `disableAutoRegister` parameter to true in the configuration to disable auto registration and require manual device registration.
+
+
+<br />
+
+
+```yaml
+stylus:
+  site:
+    edgeHostToken: MjBhNTQxYzZjZTViNGFhM2RlYTU3ZXXXXXXXXXX
+    disableAutoRegister: true
+```
+
+
+<br />
+
+
 
 Select the registration method that best fits your organizational needs and review the steps to get started.
 
