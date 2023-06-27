@@ -859,7 +859,7 @@ In addition to the default cloud account already associated with the private clo
 
 # Deploy a VMware Cluster
 
-`video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4`
+<!-- `video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4` -->
 
 The following steps need to be performed to provision a new VMware cluster:
 
