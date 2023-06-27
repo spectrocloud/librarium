@@ -254,6 +254,12 @@ const redirects = [
     toPath: `/clusters/imported-clusters`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/oidc-eks`,
+    toPath: `/integrations/kubernetes#configurecustomoidc`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

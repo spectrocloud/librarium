@@ -83,7 +83,7 @@ Select the mode you want to use when importing a cluster into Palette.
    <br />
 
    ```shell hideClipboard
-   kubectl apply --file https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
+   kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
    ```
 
    Output
@@ -188,7 +188,7 @@ You now have imported a cluster into Palette with full permissions.
    <br />
 
    ```shell hideClipboard
-   kubectl apply -f https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
+   kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
    ```
 
    Output
