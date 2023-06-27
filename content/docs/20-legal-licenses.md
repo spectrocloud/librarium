@@ -398,12 +398,12 @@ The following table lists the open-source licenses tied to the libraries and mod
 |pty                                                                            |       [MIT](https://opensource.org/license/mit/)        |
 |run-node                                                                       |       [MIT](https://opensource.org/license/mit/)        |
 |stack                                                                          |       [MIT](https://opensource.org/license/mit/)        |
+|sigs.k8s.io/yaml                                                               |  [MIT](https://github.com/kubernetes-sigs/yaml/blob/master/LICENSE)   |
 |bou.ke/monkey                                                                  |      [monkey](https://github.com/bouk/monkey/blob/master/LICENSE.md)      |
 |github.com/hashicorp/go-multierror                                             |     [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)      |
 |github.com/hashicorp/go-version                                                |     [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)      |
 |github.com/hashicorp/hcl                                                       |     [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)      |
 |golang-lru                                                                     |     [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)      |
-|sigs.k8s.io/yaml                                                               |  [Multi-license](https://github.com/kubernetes-sigs/yaml/blob/master/LICENSE)   |
 |github.com/xi2/xz                                                              |  [public-domain](https://github.com/xi2/xz/blob/master/LICENSE)   |
 
 
