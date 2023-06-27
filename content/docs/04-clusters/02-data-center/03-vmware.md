@@ -613,7 +613,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 # Create VMware Cloud Gateway
 
-<!-- `video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4` -->
+`video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
 <br />
 
@@ -885,7 +885,7 @@ In addition to the default cloud account already associated with the private clo
 
 # Deploy a VMware Cluster
 
-<!-- `video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4` -->
+`video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4`
 
 Use the following steps to provision a new VMware cluster.
 
