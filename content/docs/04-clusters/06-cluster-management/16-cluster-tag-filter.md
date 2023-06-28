@@ -33,7 +33,7 @@ To get started with an attribute access control through tags, check out the [Cre
 
   * [Palette Global Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#paletteglobalresourceroles)
 
-  * [Palette Resource Custom Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles)
+  * [Palette Custom Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles)
 
     * [Create Custom Role](/user-management/new-user#createcustomrole)
 
