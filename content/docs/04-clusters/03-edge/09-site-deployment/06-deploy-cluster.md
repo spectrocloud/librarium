@@ -54,7 +54,7 @@ To complete this tutorial, you will need the following items:
 
   <WarningBox>
 
-  The Linux machine must have network connectivity to your VMWare Center environment. 
+  The Linux machine must have network connectivity to your VMWare vCenter environment. 
 
   </WarningBox>
 
@@ -305,7 +305,25 @@ This tutorial example will use [Packer](https://www.packer.io/) to create a VM t
 
 ## Create a VM Template
 
-Use the following heredoc script to create a file, **.packerenv**, containing the VMWare vCenter details as environment variables. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
+The forthcoming heredoc script will prompt you to enter your VMWare vCenter environment details and save them as environment variables in a file, **.packerenv**. Packer will read those environment variables during the build process. 
+
+Therefore, be ready with the values of the following VMWare vCenter environment variables in a notepad before executing the forthcoming heredoc script. 
+<br /> 
+
+|**Variable**|**Description**| **How to find its value?**|
+|---|---|---|
+| `PKR_VAR_vcenter_server` | vCenter Server URL |Check with your VMWare datacenter administrator. Omit `http://` or `https://` in the URL; for example, use `vcenter.spectrocloud.dev`. |
+|`PKR_VAR_vcenter_username`| vSphere client username |Request credentials from your VMWare datacenter administrator. Here is an example username, `myusername@vsphere.local`|
+|`PKR_VAR_vcenter_password`|vSphere client password|--|
+|`PKR_VAR_vcenter_datacenter`|Datacenter name |Expand your vSphere client's main menu and select the **Inventory** > **Hosts and Clusters** menu item. You will find the datacenter name in the left navigation tree.|
+|`PKR_VAR_vcenter_cluster`|Cluster name | Expand the datacenter inventory to view the cluster name in the left navigation tree. |
+|`PKR_VAR_vcenter_resource_pool`|Resource pool name | Expand the cluster inventory to view the resource pool name. |
+|`PKR_VAR_vcenter_folder`|Folder name | Switch to the **VMs and Templates** view in your vSphere client. You will find the folder name in the left navigation tree.|
+|`PKR_VAR_vcenter_datastore`|Datastore name | Switch to the **Storage** view in your vSphere client. You will find your datastore name in the left navigation tree.|
+|`PKR_VAR_vcenter_network`| Network name | Switch to the **Networking** view in your vSphere client. You will find the network name in the left navigation tree.|
+
+
+Use the following heredoc script to create a file, **.packerenv**, containing the VMWare vCenter details as environment variables.
 <br />
 
 ```bash
@@ -314,10 +332,10 @@ PKR_VAR_vcenter_server=$(read -ep 'Enter vCenter Server URL without http:// or h
 PKR_VAR_vcenter_username=$(read -ep 'Enter vCenter Username value: ' vcenter_username && echo $vcenter_username)
 PKR_VAR_vcenter_password=$(read -ep 'Enter vCenter Password value: ' vcenter_password && echo $vcenter_password)
 PKR_VAR_vcenter_datacenter=$(read -ep 'Enter vCenter Datacenter name: ' vcenter_datacenter && echo $vcenter_datacenter)
-PKR_VAR_vcenter_datastore=$(read -ep 'Enter vCenter Datastore name: ' vcenter_datastore && echo $vcenter_datastore)
+PKR_VAR_vcenter_cluster=$(read -ep 'Enter vCenter Cluster name: ' vcenter_cluster && echo $vcenter_cluster)
 PKR_VAR_vcenter_resource_pool=$(read -ep 'Enter vCenter Resource Pool name: ' vcenter_resource_pool && echo $vcenter_resource_pool)
 PKR_VAR_vcenter_folder=$(read -ep 'Enter vCenter Folder name: ' vcenter_folder && echo $vcenter_folder)
-PKR_VAR_vcenter_cluster=$(read -ep 'Enter vCenter Cluster name: ' vcenter_cluster && echo $vcenter_cluster)
+PKR_VAR_vcenter_datastore=$(read -ep 'Enter vCenter Datastore name: ' vcenter_datastore && echo $vcenter_datastore)
 PKR_VAR_vcenter_network=$(read -ep 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
 EOF
 ```
@@ -344,7 +362,7 @@ The environment variable set using `export [var-name]=[var-value]` will not pers
 </InfoBox>
 <br />
 
-The next step is to use the following `docker run` command to trigger Packer to create a VM template. Here is an explanation of the options and sub-command used below:
+The next step is to use the following `docker run` command to trigger Packer build process to create a VM template. Here is an explanation of the options and sub-command used below:
 - The `--env-file` option will read the **.packerenv** file.
 - The `--volume ` option will mount a local directory to the container.
 - It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`.
@@ -355,35 +373,37 @@ The next step is to use the following `docker run` command to trigger Packer to 
 Here is the **vsphere.hcl** file content for your reference; however, you do not have to modify these configurations in this tutorial.  
 <br />
 
-  ```bash hideClipboard
-  # VM Template Name
-  vm_name                 = "palette-edge-template"
-  # VM Settings
-  vm_guest_os_type        = "ubuntu64Guest"
-  vm_version              = 14
-  vm_firmware             = "bios"
-  vm_cdrom_type           = "sata"
-  vm_cpu_sockets          = 4
-  vm_cpu_cores            = 1
-  vm_mem_size             = 8192
-  vm_disk_size            = 51200
-  thin_provision          = true
-  disk_eagerly_scrub      = false
-  vm_disk_controller_type = ["pvscsi"]
-  vm_network_card         = "vmxnet3"
-  vm_boot_wait            = "5s"
-  # ISO Objects
-  iso                 = "build/palette-edge-installer.iso"
-  iso_checksum        = "build/palette-edge-installer.iso.sha256"
-  ```
+```bash hideClipboard
+# VM Template Name
+vm_name                 = "palette-edge-template"
+# VM Settings
+vm_guest_os_type        = "ubuntu64Guest"
+vm_version              = 14
+vm_firmware             = "bios"
+vm_cdrom_type           = "sata"
+vm_cpu_sockets          = 4
+vm_cpu_cores            = 1
+vm_mem_size             = 8192
+vm_disk_size            = 51200
+thin_provision          = true
+disk_eagerly_scrub      = false
+vm_disk_controller_type = ["pvscsi"]
+vm_network_card         = "vmxnet3"
+vm_boot_wait            = "5s"
+# ISO Objects
+iso                 = "build/palette-edge-installer.iso"
+iso_checksum        = "build/palette-edge-installer.iso.sha256"
+```
+<br />
 
-  <InfoBox>
+<InfoBox>
 
-  Should you need to review the Packer script or modify the **vsphere.hcl** file, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository and change to the **edge/vmware/packer/** directory to make the modifications. After modifications, rebuild the tutorials image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds) and use that image in the following `docker run` command.  
+Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer script, you must open a bash session into the container using `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.6 bash` command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the modifications, execute the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build process.   
 
-  </InfoBox>
+</InfoBox>
+<br />
 
-Issue the following command to trigger Packer to create a VM template in the VMWare vCenter. It will also upload and keep a copy of **palette-edge-installer.iso** in the **packer_cache/** directory in the VMWare vCenter datastore. 
+Issue the following command to trigger the Packer build process to create a VM template in the VMWare vCenter. It will also upload and keep a copy of **palette-edge-installer.iso** in the **packer_cache/** directory in the specified datastore. 
   
 <br />
 
@@ -464,27 +484,33 @@ The **edge/vmware/clone_vm_template/** directory in the container has the follow
 Here is the **setenv.sh** file content for your reference; however, you do not have to modify these configuration in this tutorial. 
 <br />
 
-  ```bash hideClipboard
-  #!/bin/bash
-  # Number of VMs to provision
-  export NO_OF_VMS=3
-  export VM_PREFIX="demo"
-  export INSTALLER_TEMPLATE="palette-edge-template"
+```bash hideClipboard
+#!/bin/bash
+# Number of VMs to provision
+export NO_OF_VMS=3
+export VM_PREFIX="demo"
+export INSTALLER_TEMPLATE="palette-edge-template"
 
-  #### DO NOT MODIFY BELOW HERE ####################
-  # GOVC Properties
-  export GOVC_URL="https://${vcenter_server}"     # Use HTTPS. For example, https://vcenter.company.com
-  export GOVC_USERNAME="${vcenter_username}"
-  export GOVC_PASSWORD="${vcenter_password}"
-  export GOVC_INSECURE=1 #1 if insecure
-  export GOVC_DATACENTER="${vcenter_datacenter}"
-  export GOVC_DATASTORE="${vcenter_datastore}"
-  export GOVC_NETWORK="${vcenter_network}"
-  export GOVC_RESOURCE_POOL="${vcenter_resource_pool}"
-  export GOVC_FOLDER="${vcenter_folder}"
-  ```
+#### DO NOT MODIFY BELOW HERE ####################
+# GOVC Properties
+export GOVC_URL="https://${vcenter_server}"     # Use HTTPS. For example, https://vcenter.company.com
+export GOVC_USERNAME="${vcenter_username}"
+export GOVC_PASSWORD="${vcenter_password}"
+export GOVC_INSECURE=1 #1 if insecure
+export GOVC_DATACENTER="${vcenter_datacenter}"
+export GOVC_DATASTORE="${vcenter_datastore}"
+export GOVC_NETWORK="${vcenter_network}"
+export GOVC_RESOURCE_POOL="${vcenter_resource_pool}"
+export GOVC_FOLDER="${vcenter_folder}"
+```
+<br />
 
-Should you need to review the GOVC commands in the **deploy-edge-host.sh** script or modify the number of VMs to provision, you must clone the [tutorials](https://github.com/spectrocloud/tutorials.git) repository and modify the **edge/vmware/clone_vm_template/setenv.sh** file, rebuild the image using these [local build steps](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#local-builds) and use that image in the following `docker run` command. 
+<InfoBox>
+
+Suppose you have changed the VM template name in the previous step, or need to change the number of VMs to provision. In that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the previous step; if it is still active, or open another bash session into the container using `docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.6 bash` command. If you use an existing container bash session, create the **.goenv** file described above and source it in your container environment. Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and execute the `./deploy-edge-host.sh` command to deploy the VMs. 
+
+</InfoBox>
+<br />
 
 Issue the following command to clone the VM template and provision three VMs.
 <br />
@@ -514,7 +540,7 @@ Copy the Edge host ID, similar to `edge-97f2384233b498f6aa8dec90c3437c28`, for e
 
 <WarningBox>
 
-It is essential to copy the Edge host ID for future reference, manual registration in Palette UI, and use in the Terraform workflow. 
+You must copy the Edge host IDs for future reference. Besides, if the auto registration fails, you will need Edge host IDs for manual registration in Palette UI. 
 
 </WarningBox>
 
@@ -528,7 +554,8 @@ Open a web browser and log in to [Palette](https://console.spectrocloud.com). Na
 ![A screenshot showing the VMs registered with Palette automatically. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts.png)
 
 
-The automatic registration fails if the three Edge hosts are not displayed in the list. In that case, you can manually register by clicking on the **Add Edge Hosts** button, and paste the Edge host ID returned after provisioning the VMs in the last step. Repeat the host registration process of each of the three VMs. 
+The automatic registration fails if the three Edge hosts are not displayed in the list. In that case, you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. 
+If you need help, the detailed instructions are available in the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) guide. Repeat this host registration process for each of the three VMs. 
 <br />
 
 # Deploy a Cluster
@@ -742,14 +769,18 @@ Use the default values for all attributes across all layers and click **Next**.
 
 ### Cluster config
 
-Provide the Virtual IP (VIP) address for the host cluster to use during the cluster configuration process. You can optionally select an SSH key to remote into the host cluster and provide a Network Time Protocol (NTP) server list, if available, with you.  
+Provide the Virtual IP (VIP) address for the host cluster to use during the cluster configuration process. A virtual IP in Edge clusters is the IP address that represents the entire cluster, and external clients or applications can use it to access the services provided by the Edge cluster. You must check with your system administrator for the desirable IP address to use. It should be unique and not conflict with any other IP addresses in the network.
+
+You can optionally select an SSH key to remote into the host cluster and provide a Network Time Protocol (NTP) server list, if available, with you.  
 
 Click **Next** to continue.    
 <br />
 
 ### Nodes config
 
-In this section, provide details for the master pool. 
+In this section, you will use the Edge hosts to make up the cluster nodes. Use one of the Edge hosts as the control plane node and the remaining two as worker nodes. In this example, the set of control plane nodes is called the master pool, and the set of worker nodes is the worker pool. 
+
+First, provide details for the master pool. 
 
 |**Field** | **Value for the master-pool**| 
 |---| --- | 
@@ -1032,7 +1063,7 @@ After you delete the cluster, click **Profiles** on the left **Main Menu**, and 
 ![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile.png)
 
 
-Please wait until Palette deletes the resources successfully. 
+Wait until Palette deletes the resources successfully. 
 <br />
 
 </Tabs.TabPane>
@@ -1091,6 +1122,7 @@ docker run -it --rm --env-file .goenv \
 ```
 
 Also, delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the VMWare vCenter datastore.
+<br />
 
 ##  Delete Edge Artifacts
 
@@ -1118,6 +1150,12 @@ docker image rm -f ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
 docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br /> 
+
+##  Cleanup VMWare vCenter Environment
+Navigate to **Inventory** > **VMs and Templates** in your vSphere client, and delete the **palette-edge-template** VM template. 
+
+Switch to the **Storage** view in your vSphere client, and delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the datastore.
+<br />
 
 # Wrap-Up
 
