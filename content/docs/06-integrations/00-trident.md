@@ -28,7 +28,7 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 
 ## Prerequisites
 
-- All worker nodes in the Kubernetes cluster must be able to mount the volumes you have provisioned for your pods. To prepare the worker nodes, you must install NFS or iSCSI tools based on your driver selection. See https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools
+- All worker nodes in the Kubernetes cluster must be able to mount the volumes you have provisioned for your pods. To prepare the worker nodes, you must install NFS or iSCSI tools based on your driver selection. The docs on selecting the right tools, can be found [here](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools).
 
 - Port requirements as listed in the table. 
 
@@ -199,4 +199,5 @@ spec:
 
 # References
 - [NetApp Astra Trident Docs](https://docs.netapp.com/us-en/trident/index.html)
+- [Necessary tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools)
 - [Trident Github](https://github.com/NetApp/trident)
