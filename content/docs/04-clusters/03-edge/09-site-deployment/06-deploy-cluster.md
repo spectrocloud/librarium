@@ -560,17 +560,7 @@ If you need help, the detailed instructions are available in the [Register Edge 
 
 # Deploy a Cluster
 
-Once you verify the host registration, the next step is to deploy a cluster. This tutorial provides two workflows to deploy a cluster - Palette UI and Terraform. You can choose either of the workflows below.
-
-<br />
-
-<Tabs>
-
-<Tabs.TabPane tab="Palette UI" key="palette_ui_delete">
-
-<br />
-
-In this workflow, you will use the User Interface (UI) to deploy a cluster that is made up if the three Edge hosts you deployed.
+Once you verify the host registration, the next step is to deploy a cluster. In this section, you will use the Palette User Interface (UI) to deploy a cluster that is made up of the three Edge hosts you deployed.
 <br />
 
 ## Create a Cluster Profile
@@ -823,188 +813,6 @@ Review all configurations in this section. The **Review** page displays the clus
 While deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**, and **Events**. 
 <br /> 
 
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Terraform" key="terraform_ui_delete">
-
-<br />
-
-In this workflow, you will deploy a cluster on the Edge hosts using Terraform commands. First, familiarize yourself with the Spectro Cloud Terraform provider and Terraform configuration files. 
-<br />
-
-The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) allows you to interact with the Spectro Cloud management API using Terraform. It provides resources that enable you to provision and manage Palette resources. With the provider, you can define your infrastructure as code using Terraform configuration files and use the Terraform CLI to create, update, and delete resources in Palette. The provider supports various features such as cluster provisioning, cloud account management, and more. Using Terraform for deploying Palette resources offers advantages such as automating infrastructure, facilitating collaboration, documenting infrastructure, and keeping all infrastructure in a single source of truth.
-
-
-You will need the following items before getting started with Terraform code:
-<br />
-
-1. Spectro Cloud API key to authenticate and interact with the Palette API endpoint. The following sub-section outlines the steps to create a new API key. 
-
-2. Palette project name where you will deploy your resources. For most users, you can use the **Default** project. 
-
-3. Virtual IP address for your Edge cluster. 
-
-4. Three Edge host IDs, similar to `edge-97f2384233b498f6aa8dec90c3437c28`, one for the master pool node and two for worker pool nodes. 
-
-
-## Create Spectro Cloud API Key
-
-To create a new API key, log in to [Palette](https://console.spectrocloud.com), click on the user **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. 
-
-<br />
-
-![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png )
-
-<br />
-
-Palette will present you with a pop-up box and ask for details, such as the API key name and expiration date. Fill in the required fields, and confirm your changes. Copy the key value to your clipboard for the next step. 
-
-<br />
-
-## Checkout Starter Code
-
-The Terraform code for the current section is available in our official tutorials container, and you will have to provide values for a few Terraform input variables before executing the Terraform commands. Therefore, start the container, and open a bash session to view the starter code.
-<br />
-
-```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.6 bash
-```
-
-If port 7000 on your local machine is unavailable, you can use any other port you choose. 
-
-Once you have opened a bash session into the tutorials container, change to the **/terraform/edge-tf** directory, which contains the Terraform code for this tutorial. 
-<br />
-
-```bash
-cd /terraform/edge-tf
-```
-<br />
-
-## Review Terraform Files
-
-We recommend that you explore all Terraform files and read through this [README](https://github.com/spectrocloud/tutorials/tree/main/terraform/edge-tf/README.md) before executing the commands ahead. Below is a high-level overview of each file:
-<br />
-
-- **provider.tf** contains the provider configuration and version.
-
--  **profile.tf** contains the configuration for the `spectrocloud_cluster_profile` resource. The cluster profile is made up of the following core layers and [Hello Universe](https://github.com/spectrocloud/hello-universe#readme) application as an add-on layer. The Hello Universe application manifest is available in the **manifests/hello-universe.yaml** file.  
-
-  |**Layer**|**Registry**|**Pack Name**|**Pack Version**| 
-  |---|---|---|---|
-  |OS|Public Repo|BYOS Edge OS|`1.0.0`|
-  |Kubernetes|Public Repo|Palette Optimized K3s|`1.25.x`|
-  |Network|Public Repo|Calico|`3.25.x`|
-
-  Here is a brief explanation of each of the core layers. 
-
-    - The OS layer references to the manifest defined in the **manifests/custom-content.yaml** file. This file contains the following custom attributes to pull the provider image from the *ttl.sh* image registry. Recall that CanvOS returned these attributes after building the Edge artifacts. The `system.xxxxx` attribute values are as same as what you defined in the **.arg** file while building the Edge artifacts. You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile.     
-    <br />
-
-    ```yaml hideClipboard
-    pack:
-      content:
-        images:
-          - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-    options:
-      system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
-      system.registry: ttl.sh
-      system.repo: ubuntu
-      system.k8sDistribution: k3s
-      system.osName: ubuntu
-      system.peVersion: v3.4.3
-      system.customTag: demo
-      system.osVersion: 22
-    ``` 
-
-    - For Kubernetes layer, this example uses Palette Optimized K3s version 1.25.x because you pushed a provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry earlier in this tutorial. BYOOS pack's `system.uri` attribute will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](/clusters/cluster-management/macros).
-
-    - For the network layer, this example uses the Calico v3.25.x Container Network Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom CNI. 
-    <br /> 
-
--  **cluster.tf** contains the configuration for the `spectrocloud_cluster_edge_native` resource, such as the cluster's virtual IP and machine pool configuration. The cluster resource depends upon the `spectrocloud_cluster_profile` resource. 
-
-
-- **data.tf** contains the data resource definition, such as pre-defined layer names and versions, to retrieve from Palette dynamically. 
-
-
-- **inputs.tf** contains the list of all variables used in the tutorial, such as the name of cluster profile, cluster, and declarations for all other user-defined variables. Some variables have a default value, but you *must* provide the values for those marked with a `#ToDo` tag, in a separate file, **terraform.tfvars**. 
-
-
-## Provide Input Variables
-
-The **terraform.tfvars** file contains the following user-defined variables. You *must* provide a value for each one of them. 
-<br />
-
-  - `sc_api_key` holds the Spectro Cloud API Key. Provide the API key you created in the previous step. 
-  - `sc_project_name` declares the Palette project name. The default project name is "Default`. Change the default value if you want to deploy your cluster in a different project. 
-  - `sc_vip` saves the cluster's virtual IP. Provide value as you desire. 
-  - `sc_host_one`, `sc_host_two`, and `sc_host_three` contain the Edge host IDs for three hosts, similar to `edge-97f2384233b498f6aa8dec90c3437c28`, one for the master pool node and two for worker pool nodes. Provide the Edge host IDs as you received after provisioning VMs in one of the previous steps. 
-  <br />
-
-Open the **terraform.tfvars** file in an editor.
-<br />
-
-```bash
-vi terraform.tfvars
-```
-
-Specify values for the following variables marked with the `"REPLACE ME"` placeholder. The inline comments show an example value for each variable. 
-<br />
-
-```bash
-sc_api_key      = "REPLACE_ME"            # Example: "Weoh2xxxxxxxXXXXXXXxxxxx"
-sc_project_name = "REPLACE_ME"            # Example: "Default"
-sc_vip          = "REPLACE_ME"            # Example: "10.10.146.146"
-sc_host_one     = "REPLACE_ME"            # Example: edge-ae4c3842a651f6e671cca5901b831edf
-sc_host_two     = "REPLACE_ME"
-sc_host_three   = "REPLACE_ME"
-```
-<br /> 
-
-## Deploy Terraform
-
-After you update the **terraform.tfvars** file and, carefully review the other files, initialize the Terraform provider.
-<br />
-
-```bash
-terraform init
-```
-
-The `init` command downloads plugins and providers from the **provider.tf** file. Next, preview the resources Terraform will create. 
-<br />
-
-```bash
-terraform plan
-```
-
-The output displays the resources Terraform will create in an actual implementation. 
-<br />
-
-```bash hideClipboard
-# Output condensed for readability
-Plan: 2 to add, 0 to change, 0 to destroy.
-```
-
-Finish creating all the resources. 
-<br />
-
-```bash
-terraform apply -auto-approve
-```
-
-It can take up to 20 minutes to provision the cluster. When cluster provisioning completes, the following message displays. 
-<br />
-
-```bash hideClipboard
-# Output condensed for readability
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-```
-<br /> 
-
-</Tabs.TabPane>
-
-</Tabs>
-
 # Validate
 
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Choose your cluster to display the cluster **Overview** page and monitor cluster provisioning progress.  
@@ -1037,13 +845,7 @@ You have successfully provisioned an Edge cluster and deployed the Hello Univers
 
 # Cleanup
 
-The following steps will guide you in cleaning up your environment, including the cluster, cluster profile, and Edge hosts. Follow the steps for Palette if you used Palette to deploy the cluster. Use Terraform commands to delete the cluster if you used Terraform for deployment. 
-<br />
-
-<Tabs>
-
-<Tabs.TabPane tab="Palette UI" key="palette_ui_delete">
-
+The following steps will guide you in cleaning up your environment, including the cluster, cluster profile, and Edge hosts. 
 <br />
 
 ##  Delete the Cluster and Profile using Palette UI
@@ -1065,50 +867,6 @@ After you delete the cluster, click **Profiles** on the left **Main Menu**, and 
 
 Wait until Palette deletes the resources successfully. 
 <br />
-
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="Terraform" key="terraform_ui_delete">
-
-<br />
-
-##  Delete the Cluster and Profile using Terraform
-
-Switch back to the tutorials container. If you have closed the terminal session, you can reopen another bash session in the tutorials container using the following command. 
-<br />
-
-```bash
-docker exec -it tutorialContainer bash
-``` 
-
-Issue the following command from within the **/terraform/edge-tf** directory.
-<br />
-
-```bash
-terraform destroy -auto-approve
-```
-
-Wait for the resources to clean up. Deleting the Terraform resources may take up to 10 minutes. 
-<br />
-
-```bash hideClipboard
-# Output condensed for readability
-Destroy complete! Resources: 2 destroyed.
-```
-
-Exit from the tutorials container to come back to the Linux development environment.
-<br />
-
-```bash
-exit
-```
-
-
-<br />
-
-</Tabs.TabPane>
-
-</Tabs>
 
 ##  Delete Edge Hosts
 
