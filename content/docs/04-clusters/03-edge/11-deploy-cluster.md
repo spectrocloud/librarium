@@ -54,7 +54,7 @@ To complete this tutorial, you will need the following items:
 
   <WarningBox>
 
-  The Linux machine should have connectivity to your VMWare vCenter. 
+  The Linux machine must have network connectivity to your VMWare Center environment. 
 
   </WarningBox>
 
@@ -301,7 +301,7 @@ As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you
 
 In this section, you will create a VM template in VMWare vCenter from the Edge installer ISO image and clone that VM template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot modify templates after you create them, so cloning the VM template will ensure all VMs have *consistent* guest OS, dependencies, and user data configurations installed. 
 
-This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO image, and later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to provision three VMs. You do not have to install these tools (Packer, GOVC) on your Linux development environment. Instead, this section will use our official tutorials container as a jump host with already installed tools. <br />
+This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO image, and later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to provision three VMs. You do not have to install these tools (Packer, GOVC) on your Linux development environment. You will use our official tutorials container that already contains the required tools. <br />
 
 ## Create a VM Template
 
@@ -347,7 +347,7 @@ The environment variable set using `export [var-name]=[var-value]` will not pers
 The next step is to use the following `docker run` command to trigger Packer to create a VM template. Here is an explanation of the options and sub-command used below:
 - The `--env-file` option will read the **.packerenv** file.
 - The `--volume ` option will mount a local directory to the container.
-- It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`, as a jump host.
+- It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`.
 - The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command will change to the **edge/vmware/packer/** directory in the container and execute `packer build` to create the VM template. In the `packer build` command: 
   - The `-force` flag will destroy the existing template, if any. 
   - The `--var-file` option will read the **vsphere.hcl** file from the container. It contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](https://docs.spectrocloud.com/clusters/edge/architecture/#minimumdevicerequirements).
@@ -453,7 +453,7 @@ cat .goenv
 
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
 - The `--env-file` option will read the **.goenv** file.
-- It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`, as a jump host.
+- It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`.
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command will change to the **edge/vmware/clone_vm_template/** directory in the container and execute the **deploy-edge-host.sh** shell script. 
 
 The **edge/vmware/clone_vm_template/** directory in the container has the following files:
@@ -543,7 +543,7 @@ Once you verify the host registration, the next step is to deploy a cluster. Thi
 
 <br />
 
-In this workflow, you will deploy a cluster on the Edge hosts using Palette UI.
+In this workflow, you will use the User Interface (UI) to deploy a cluster that is made up if the three Edge hosts you deployed.
 <br />
 
 ## Create a Cluster Profile
@@ -551,7 +551,7 @@ In this workflow, you will deploy a cluster on the Edge hosts using Palette UI.
 Validate you are in the **Default** project scope before creating a cluster profile.  
 <br />
 
-![A screenshot of Palette's Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
+![A screenshot of Palette's Default scope selected.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
 
 <br />
 
@@ -563,7 +563,7 @@ Navigate to the left **Main Menu** and select **Profile**. Click on the **Add Cl
 
 ### Basic Information
 
-Use the following values in the **Basic Information** section. 
+Use the following values when filling out the **Basic Information** section. 
 
 |**Field**|**Value**|
 |---|---|
@@ -579,7 +579,7 @@ Click on **Next** to continue.
 
 ### Cloud Type
 
-In the **Cloud Type** section, choose **Edge Native** as the infrastructure provider for this tutorial, and click on **Next** at the bottom to move on to the next section.   
+In the **Cloud Type** section, choose **Edge Native** and click on **Next** at the bottom to move on to the next section.   
 <br />
 
 ### Profile Layers
@@ -590,7 +590,9 @@ In the **Profile Layers** section, first add the following [BYOS Edge OS](/integ
 |---|---|---|---|
 |OS|Public Repo|BYOS Edge OS|`1.0.0`|
 
-Replace the OS layer manifest with the following custom manifest so that the cluster profile can pull the provider image from the *ttl.sh* image registry. Recall that CanvOS returned the following custom manifest after building the Edge artifacts. The `system.xxxxx` attribute values in the manifest below are as same as what you defined in the **.arg** file while building the Edge artifacts. You must verify and change these attributes' values, as applicable to you, before using them in your cluster profile.     
+Replace the OS layer manifest with the following custom manifest so that the cluster profile can pull the provider image from the *ttl.sh* image registry. You may recall that the CanvOS script returned an output containing a custom manifest after building the Edge artifacts. The CanvOS output is intended to get copied into the cluster profile's BYOOS pack YAML. 
+
+ The `system.xxxxx` attribute values in the manifest below are as same as what you defined in the **.arg** file while building the Edge artifacts.  Copy the code snippet below into the YAML editor for the BYOOS pack.  
 <br />
 
 ```yaml
@@ -619,7 +621,7 @@ The screenshot below shows you how to reference your provider OS image in a clus
 
 <WarningBox>
 
-As a second reminder, *ttl.sh* is a short-lived image registry. If you do not use the provider image in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed.
+ *ttl.sh* is a short-lived image registry. If you do not use the provider image in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed. In a production environment, use a custom registry for hosting provider images.
 
 </WarningBox>
 <br />
