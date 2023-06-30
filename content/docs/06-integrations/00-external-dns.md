@@ -28,12 +28,19 @@ Providers have to be set up for this pack to get deployed and work seamlessly. F
 ## Versions Supported
 <Tabs>
 
-<Tabs.TabPane tab="0.12.x" key="0.12.x">
+<Tabs.TabPane tab="0.13.x" key="0.13.x">
 
 * **0.13.1**
+* **0.13.4**
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="0.12.x" key="0.12.x">
+
 * **0.12.2**
 
 </Tabs.TabPane>
+
 <Tabs.TabPane tab="0.7.x" key="0.7.x">
 
 * **0.7.2**

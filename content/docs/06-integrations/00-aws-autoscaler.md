@@ -91,4 +91,4 @@ managedMachinePool:
 
 ## References
 
-https://github.com/splunk/splunk-connect-for-kubernetes
+[Cluster Autoscaler on AWS](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
