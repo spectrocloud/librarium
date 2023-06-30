@@ -38,7 +38,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
   
-  ![Search for OpenID Connect](/oidc-onelogin-images//search-oidc.png)
+  ![Search for OpenID Connect](/oidc-onelogin-images/search-oidc.png)
 
 <br />
 
@@ -46,7 +46,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//oidc-app-name.png)
+  ![Enter Display Name](/oidc-onelogin-images/oidc-app-name.png)
 
 <br />
 
@@ -66,7 +66,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//callbackurl.png)
+  ![Copy Callback URL](/oidc-onelogin-images/callbackurl.png)
 
 <br />
 
@@ -74,7 +74,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//login-redirect-uris.png)
+  ![Add Login URL and Redirect URL](/oidc-onelogin-images/login-redirect-uris.png)
 
 <br />
 
@@ -82,7 +82,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//logout-uri.png)
+  ![Add Logout URL](/oidc-onelogin-images/logout-uri.png)
 
 <br />
 
@@ -90,7 +90,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//uri-config.png)
+  ![URI Config](/oidc-onelogin-images/uri-config.png)
 
 <br />
 
@@ -98,7 +98,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-![](/oidc-onelogin-images//group-field.png)
+![Check MemberOf field](/oidc-onelogin-images/group-field.png)
 
 <br />
 
@@ -106,7 +106,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//clientid-clientsecret.png)
+  ![ClientID & Client Secret](/oidc-onelogin-images/clientid-clientsecret.png)
 
 <br />
 
@@ -116,7 +116,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//app-role.png)
+  ![Add Role](/oidc-onelogin-images/app-role.png)
 
 <br />
 
@@ -126,7 +126,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
   
-  ![](/oidc-onelogin-images//group-sec-policy.png)
+  ![Add Security Policy](/oidc-onelogin-images/group-sec-policy.png)
 
 <br />
 
@@ -134,7 +134,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//mapping-role-group.png)
+  ![Add Mapping](/oidc-onelogin-images/mapping-role-group.png)
 
 <br />
 
@@ -142,7 +142,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//user-auth-group.png)
+  ![Add User to Group](/oidc-onelogin-images/user-auth-group.png)
 
 <br />
 
@@ -151,7 +151,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//oidc-full-palette.png)
+  ![Full OIDC Config](/oidc-onelogin-images/oidc-full-palette.png)
 
 <br />
 
@@ -161,7 +161,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//new-team.png)
+  ![Create New Team](/oidc-onelogin-images/new-team.png)
 
 <br />
 
@@ -169,7 +169,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![](/oidc-onelogin-images//tenant-admin-role.png)
+  ![Add Tenant Role](/oidc-onelogin-images/tenant-admin-role.png)
 
 <br />
 
@@ -177,7 +177,7 @@ Click **Confirm** and you should have a configuration similar to this.
 
 <br />
 
-  ![](/oidc-onelogin-images//roles-full.png)
+  ![Permissions](/oidc-onelogin-images/roles-full.png)
 
 <br />
 
@@ -187,7 +187,7 @@ Click **Confirm** and you should have a configuration similar to this.
 
 <br />
 
-  ![](/oidc-onelogin-images//logout.png)
+  ![Logout](/oidc-onelogin-images/logout.png)
 
 <br />
 
@@ -195,7 +195,7 @@ Click **Confirm** and you should have a configuration similar to this.
 
 <br />
 
-  ![](/oidc-onelogin-images//login-screen.png)
+  ![SSO Login Screen](/oidc-onelogin-images/login-screen.png)
 
 <br />
 
@@ -204,16 +204,16 @@ Click **Confirm** and you should have a configuration similar to this.
 
 <br />
 
-  ![](/oidc-onelogin-images//team-member.png)
+  ![Check Team Member](/oidc-onelogin-images/team-member.png)
 
 <br />
 
 # Troubleshooting
-With the OpenID Connect Instpector, you can send requests to OneLogin and check what is sent in the payload. This way you can make sure that you are using the right claims and scopes. When using this, you will need to add the Inspector callback URL to your applications Redirect URIs list. 
+With the OpenID Connect Inspector, you can send requests to OneLogin and check what is sent in the payload. This way you can make sure that you are using the right claims and scopes. When using this, you will need to add the Inspector callback URL to your applications Redirect URIs list. 
 [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8)
 [OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector)
 
 # References
-[OneLogin]https://www.onelogin.com/)
+[OneLogin](https://www.onelogin.com/)
 [Documentation](https://developers.onelogin.com/)
 [OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector)
