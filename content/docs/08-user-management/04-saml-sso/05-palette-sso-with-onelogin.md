@@ -38,7 +38,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
   
-  ![](/oidc-onelogin-images//search-oidc.png)
+  ![Search for OpenID Connect](/oidc-onelogin-images//search-oidc.png)
 
 <br />
 
