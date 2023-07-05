@@ -30,7 +30,7 @@ For an overview, here are the stages of deploying an Edge cluster to a productio
 In this tutorial, similar to the primary stages outlined above, you will first build the Edge artifacts (Edge installer ISO image and provider images) and use the Edge installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a cluster on those Edge hosts. You will use VMware to deploy the Edge hosts to simulate a bare metal environment.
 
 
-Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the Edge host VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge devices. Therefore, this tutorial uses VMWare VMs as Edge hosts to test the installer ISO image's correctness and ease of use. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
+Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the Edge host VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge devices. Therefore, this tutorial uses VMware VMs as Edge hosts to test the installer ISO image's correctness and ease of use. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
 
 
 ![An overarching diagram showing the tutorial workflow.](/tutorials/edge/clusters_edge_deploy-cluster_overarching.png)
@@ -41,7 +41,7 @@ Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the E
 To complete this tutorial, you will need the following items:
 <br/>
 
-* Access to a VMWare vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
+* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
 
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
@@ -54,7 +54,7 @@ To complete this tutorial, you will need the following items:
 
   <WarningBox>
 
-  The Linux machine must have network connectivity to your VMWare vCenter environment. 
+  The Linux machine must have network connectivity to your VMware vCenter environment. 
 
   </WarningBox>
 
@@ -299,21 +299,21 @@ As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you
 
 # Provision Virtual Machines
 
-In this section, you will create a VM template in VMWare vCenter from the Edge installer ISO image and clone that VM template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot modify templates after you create them, so cloning the VM template will ensure all VMs have *consistent* guest OS, dependencies, and user data configurations installed. 
+In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot modify templates after you create them, so cloning the VM template will ensure all VMs have *consistent* guest OS, dependencies, and user data configurations installed. 
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO image, and later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to provision three VMs. You do not have to install these tools (Packer, GOVC) on your Linux development environment. You will use our official tutorials container that already contains the required tools. <br />
 
 ## Create a VM Template
 
-The forthcoming heredoc script will prompt you to enter your VMWare vCenter environment details and save them as environment variables in a file, **.packerenv**. Packer will read those environment variables during the build process. 
+The forthcoming heredoc script will prompt you to enter your VMware vCenter environment details and save them as environment variables in a file, **.packerenv**. Packer will read those environment variables during the build process. 
 
-Therefore, be ready with the values of the following VMWare vCenter environment variables in a notepad before executing the forthcoming heredoc script. 
+Therefore, be ready with the values of the following VMware vCenter environment variables in a notepad before executing the forthcoming heredoc script. 
 <br /> 
 
 |**Variable**|**Description**| **How to find its value?**|
 |---|---|---|
-| `PKR_VAR_vcenter_server` | vCenter Server URL |Check with your VMWare datacenter administrator. Omit `http://` or `https://` in the URL; for example, use `vcenter.spectrocloud.dev`. |
-|`PKR_VAR_vcenter_username`| vSphere client username |Request credentials from your VMWare datacenter administrator. Here is an example username, `myusername@vsphere.local`|
+| `PKR_VAR_vcenter_server` | vCenter Server URL |Check with your VMware datacenter administrator. Omit `http://` or `https://` in the URL; for example, use `vcenter.spectrocloud.dev`. |
+|`PKR_VAR_vcenter_username`| vSphere client username |Request credentials from your VMware datacenter administrator. Here is an example username, `myusername@vsphere.local`|
 |`PKR_VAR_vcenter_password`|vSphere client password|--|
 |`PKR_VAR_vcenter_datacenter`|Datacenter name |Expand your vSphere client's main menu and select the **Inventory** > **Hosts and Clusters** menu item. You will find the datacenter name in the left navigation tree.|
 |`PKR_VAR_vcenter_cluster`|Cluster name | Expand the datacenter inventory to view the cluster name in the left navigation tree. |
@@ -323,7 +323,7 @@ Therefore, be ready with the values of the following VMWare vCenter environment 
 |`PKR_VAR_vcenter_network`| Network name | Switch to the **Networking** view in your vSphere client. You will find the network name in the left navigation tree.|
 
 
-Use the following heredoc script to create a file, **.packerenv**, containing the VMWare vCenter details as environment variables.
+Use the following heredoc script to create a file, **.packerenv**, containing the VMware vCenter details as environment variables.
 <br />
 
 ```bash
@@ -403,7 +403,7 @@ Should you need to change the VM template name or VM settings defined in the **v
 </InfoBox>
 <br />
 
-Issue the following command to trigger the Packer build process to create a VM template in the VMWare vCenter. It will also upload and keep a copy of **palette-edge-installer.iso** in the **packer_cache/** directory in the specified datastore. 
+Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also upload and keep a copy of **palette-edge-installer.iso** in the **packer_cache/** directory in the specified datastore. 
   
 <br />
 
@@ -439,7 +439,7 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VMs and reference the VM template that Packer created.  Keep in mind that the VM instances you are deploying are simulating bare metal devices.
 
 
-GOVC requires the same VMWare vCenter details as the environment variables you defined earlier in the **.packerenv** file. Use the following command to source the **.packerenv** file and echo one of the variables to ensure the variables are accessible on your host machine. 
+GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the **.packerenv** file. Use the following command to source the **.packerenv** file and echo one of the variables to ensure the variables are accessible on your host machine. 
 <br />
 
 ```bash
@@ -447,7 +447,7 @@ source .packerenv
 echo $PKR_VAR_vcenter_server
 ```
 
-Use the following command to create an environment file titled **.goenv**. The  **.goenv** file contains the required VMWare vCenter credentials and information required to deploy VMs in your VMware environment. 
+Use the following command to create an environment file titled **.goenv**. The  **.goenv** file contains the required VMware vCenter credentials and information required to deploy VMs in your VMware environment. 
 <br />
 
 ```bash
@@ -879,7 +879,7 @@ docker run -it --rm --env-file .goenv \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
-Also, delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the VMWare vCenter datastore.
+Also, delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the VMware vCenter datastore.
 <br />
 
 ##  Delete Edge Artifacts
@@ -909,7 +909,7 @@ docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br /> 
 
-##  Cleanup VMWare vCenter Environment
+##  Cleanup VMware vCenter Environment
 Navigate to **Inventory** > **VMs and Templates** in your vSphere client, and delete the **palette-edge-template** VM template. 
 
 Switch to the **Storage** view in your vSphere client, and delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the datastore.
@@ -919,7 +919,7 @@ Switch to the **Storage** view in your vSphere client, and delete the **palette-
 
 The core component of preparing Edge hosts and deploying Palette-managed Edge clusters is building and utilizing Edge artifacts. Edge artifacts consist of an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO assists to prepare the Edge hosts, while the provider image is referred to in the cluster profile. 
 
-In this tutorial, you learned how to build Edge artifacts, prepare VMWare VMs as Edge hosts using Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
+In this tutorial, you learned how to build Edge artifacts, prepare VMware VMs as Edge hosts using Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
 
 Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, enabling you to choose the desired Kubernetes version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. In addition to all these benefits, you can conveniently manage the entire lifecycle of Edge clusters with Palette.
 
