@@ -1,7 +1,7 @@
 ---
-title: "Import Clusters to Tenant"
-metaTitle: "Import Clusters to Tenant"
-metaDescription: "Learn how to import clusters to your tenant in Palette."
+title: "Allow Cluster Import"
+metaTitle: "Allow Cluster Import"
+metaDescription: "Learn how to import clusters to Palette VerteX."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -18,14 +18,12 @@ You can allow users to import clusters that were not deployed through Palette.
 
 # Prerequisites
 
-<br />
 
 Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-import#prerequisites).
 
 
 # Allow non-FIPS Cluster Import
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
@@ -40,8 +38,6 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 
 
 # Validate
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 

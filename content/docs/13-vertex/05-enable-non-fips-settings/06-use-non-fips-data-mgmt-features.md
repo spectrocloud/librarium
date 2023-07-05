@@ -1,7 +1,7 @@
 ---
-title: "Use non-FIPS Data Management Features"
-metaTitle: "Use non-FIPS Data Management Features"
-metaDescription: "Use non-FIPS data management features such as backup, restore, and scans."
+title: "Use non-FIPS Features"
+metaTitle: "Use non-FIPS Features"
+metaDescription: "Use non-FIPS features such as backup, restore, and scans."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -41,7 +41,6 @@ You can allow users to add non-FIPS-compliant features such as tenant cluster ba
 
 # Validate
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
