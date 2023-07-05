@@ -1,7 +1,7 @@
 ---
 title: "VMware"
-metaTitle: "Creating new clusters on Spectro Cloud"
-metaDescription: "The methods of creating clusters for a speedy deployment on any CSP"
+metaTitle: "Create VMware clusters in Palette"
+metaDescription: "Learn how to configure VMware to create VMware clusters in Palette."
 hideToC: false
 fullWidth: false
 ---
@@ -17,20 +17,22 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 The following are some architectural highlights of Kubernetes clusters provisioned by Palette on VMware:
 
-1. Kubernetes nodes can be distributed across multiple-compute clusters which serve as distinct fault domains.
+<br />
+
+- Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
 
 
-2. Support for static IP as well as DHCP.
-   *  If using DHCP, Dynamic DNS is required.
+- Support for static IP as well as DHCP. If your are using DHCP, Dynamic DNS is required.
 
 
-3. IP pool management for assigning blocks of IPs dedicated to clusters or projects.
+- IP pool management for assigning blocks of IPs dedicated to clusters or projects.
 
 
-4. To facilitate communications between the Palette management platform and vCenter installed in the private Datacenter, set up a Private Cloud Gateway (PCG) within the environment.
+- A Private Cloud Gateway (PCG) that you set up within the environment facilitates communications between the Palette management platform and vCenter installed in the private data center.
 
-
-5. Private Cloud Gateway is Palette's on-premises component to enable support for isolated, private cloud or Datacenter environments. The Palette Gateway, once installed on-premises, registers itself with Palette's SaaS portal and enables secure communications between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
+  <br />
+  
+  The PCG is Palette's on-prem component to enable support for isolated, private cloud, or data center environments. When the PCG is installed on-prem, it registers itself with Palette's SaaS portal and enables secure communications between the SaaS portal and private cloud environment. 
 
 ![vmware_arch_oct_2020.png](/vmware_arch_oct_2020.png)
 
@@ -38,64 +40,74 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 The following prerequisites must be met before deploying a Kubernetes clusters in VMware:
 
-1. vSphere version 7.0 or above. vSphere 6.7 is supported but not recommended as it reached end of general support in 2022.
+<br />
+
+- vSphere version 7.0 or above. vSphere 6.7 is supported but we do not recommend it, as it reached end of general support in 2022.
 
 
-2. Configuration Requirements - A Resource Pool needs to be configured across the hosts, onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to be able to make use of high-availability control planes. Network Time Protocol (NTP) must be configured on each of the ESXi hosts.
+- A Resource Pool configured across the hosts onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to be able to make use of high-availability (HA) control planes. 
 
 
-3. You need an active vCenter account with all the permissions listed below in the **VMware Cloud Account Permissions** section.
+- Network Time Protocol (NTP) configured on each ESXi host.
 
 
-4. Install a Private Cloud Gateway for VMware as described in the [Creating a VMware Cloud Gateway](/clusters/data-center/vmware/#creatingavmwarecloudgateway) section. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Creating a VMware Cloud account](/clusters/data-center/vmware#creatingavmwarecloudaccount) section.
+- An active vCenter account with all the permissions listed in [VMware Privileges](/clusters/data-center/vmware#vmwareprivileges).
 
 
-5. Subnet with egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+- Installed PCG for VMware. Installing the PCG will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Create VMware Cloud Account](/clusters/data-center/vmware#createavmwarecloudaccount) section.
 
 
-6. The Private cloud gateway IP requirements are:
-    - One (1) node - one (1) IP or three (3) nodes - three (3) IPs.
-    - One (1) Kubernetes control-plane VIP.
-    - One (1) Kubernetes control-plane extra.
+- A subnet with egress access to the internet (direct or via proxy):
+
+    - For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
+    - Outgoing internet connection on port 443 to api.spectrocloud.com.
 
 
-7. IPs for application workload services (e.g.: LoadBalancer services).
+- PCG IP requirements are:
+
+    - One node with one IP address or three nodes for HA with three IP addresses.
+    - One Kubernetes control-plane (VIP).
+    - One Kubernetes control-plane (extra).
 
 
-8. A DNS to resolve public internet names (e.g.: api.spectrocloud.com).
+- IPs for application workload services, such as LoadBalancer service.
 
 
-9. Shared Storage between vSphere hosts.
+- A DNS to resolve public internet names, such as `api.spectrocloud.com`.
 
 
-10. A cluster profile created in Palette for VMWare.
+- Shared Storage between vSphere hosts.
 
 
-11. Zone Tagging: A dynamic storage allocation for persistent storage.
+- A cluster profile created in Palette for VMWare.
+
+
+- Zone tagging for dynamic storage allocation for persistent storage.
 
 
 <InfoBox>
 
-### Naming conventions for vSphere Region and Zone Tags
-The following points needs to be taken care while creating the Tags:
-* A valid tag must consist of alphanumeric characters
-* The tag must start and end with an alphanumeric characters
-* The regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+The following naming conventions apply to vSphere Region and Zone tags:
 
-**Example Tags:**
-* MyValue
-* my_value
-* 12345
+<br />
+
+- Valid tags consist of alphanumeric characters.
+
+
+- Tags must start and end with an alphanumeric character.
+
+
+- The regex used for validation is `(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?`
+
+Some example Tags are: `MyValue`, `my_value`, and `12345`.
 
 </InfoBox>
 
 ## Zone Tagging
 
-Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required for installation of Palette Platform itself and also useful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on Datacenters (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+Zone tagging is required for dynamic storage allocation across fault domains when you provision workloads that require persistent storage. This is required for Palette installation and is also useful for workloads deployed in the tenant clusters that require persistent storage. Use unique vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. Tag values must be unique.
 
-  As an example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of Datacenter dc-1. You can tag them as follows:
+  For example, assume your vCenter environment includes three compute clusters (cluster-1, cluster-2, and cluster-3) that are part of data center dc-1. You can tag them as follows:
 
 | **vSphere Object**       | **Tag Category**     | **Tag Value**     |
 | :-------------       | :----------      | :-----------  |
@@ -104,44 +116,37 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 | cluster-2            | k8s-zone         | az2           |
 | cluster-3            | k8s-zone         | az3           |
 
-**Note:**
-
-The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, as long as they are unique.
 
 <br />
 
 # VMware Privileges
 
-
-The vSphere user account that is deploying Palette must have the following minimum vSphere privileges. The **Administrator** role provides super-user access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on the tasks being performed by the user.
+The vSphere user account that deploys Palette must have the minimum toot-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
 Permissions and privileges vary depending on the vSphere version you are using. 
 
-Select the tab that corresponds with your vSphere version.
+Select the tab for your vSphere version.
 
 <br />
 
-<InfoBox>
-If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
-</InfoBox>
+<WarningBox>
 
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” is required.
 
+</WarningBox>
+
+<br />
 
 <Tabs identifier="vm-privileges">
 
 <Tabs.TabPane tab="8.0" key="8.0" >
 
+<br />
+
 ## Root-Level Role Privileges
 
-<br />
+Root-level role privileges listed in the table are applied only to root object and data center objects.
 
 
-<WarningBox>
-
-The root-level role privileges are applied to root object and Datacenter objects only.
-
-</WarningBox>
-
-<br />
 
 **vSphere Object**    |**Privileges**|
 |---------------|----------|
@@ -160,16 +165,21 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 ## Spectro Role Privileges
 
+
+The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects. 
+
 <br />
 
 <InfoBox>
 
-The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
 
 </InfoBox>
 
+
 |**vSphere Object**    |**Privileges**|
 |---------------|----------|
+|**spectro-templates** |Read only|  
 |**Cns**|Searchable
 |**Datastore**|Allocate space|
 ||Browse datastore|
@@ -288,18 +298,11 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 </Tabs.TabPane>
 <Tabs.TabPane tab="7.0" key="7.0" >
 
+<br />
+
 ## Root-Level Role Privileges
 
-<br />
-
-
-<WarningBox>
-
-The root-level role privileges are applied to root object and Datacenter objects only.
-
-</WarningBox>
-
-<br />
+Root-level role privileges listed in the table are applied only to root object and data center objects.
 
 **vSphere Object**    |**Privileges**|
 |---------------|----------|
@@ -318,16 +321,20 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 ## Spectro Role Privileges
 
+
+The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects. 
+
 <br />
 
 <InfoBox>
 
-The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
 
 </InfoBox>
 
 |**vSphere Object**    |**Privileges**|
 |---------------|----------|
+|**spectro-templates** |Read only| 
 |**Cns**|Searchable
 |**Datastore**|Allocate space|
 ||Browse datastore|
@@ -445,18 +452,13 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 </Tabs.TabPane>
 <Tabs.TabPane tab="6.7" key="6.7" >
 
+<br />
+
 ## Root-Level Role Privileges
 
-<br />
 
+Root-level role privileges listed in the table are applied only to root object and data center objects.
 
-<WarningBox>
-
-The root-level role privileges are applied to root object and Datacenter objects only.
-
-</WarningBox>
-
-<br />
 
 **vSphere Object**    |**Privileges**|
 |---------------|----------|
@@ -475,16 +477,19 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 ## Spectro Role Privileges
 
+The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects. 
+
 <br />
 
 <InfoBox>
 
-The Spectro role privileges are applied to hosts, clusters, virtual machines, templates, datastore and network objects.
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
 
 </InfoBox>
 
 |**vSphere Object**    |**Privileges**|
 |---------------|----------|
+|**spectro-templates** |Read only| 
 |**Cns**|Searchable
 |**Datastore**|Allocate space|
 ||Browse datastore|
@@ -606,124 +611,152 @@ The Spectro role privileges are applied to hosts, clusters, virtual machines, te
 
 ---
 
-# Creating a VMware Cloud Gateway
+# Create VMware Cloud Gateway
 
 `video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
 <br />
-<br />
+
+You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA). The minimum capacity required for a PCG are:
+
+  <br />
+
+  - Single-node cluster: 2 vCPU, 4 GB memory, 60 GB storage.
+
+
+  - High-Availability (HA) three-node cluster: 6 vCPU, 12 GB memory, 70 GB storage.
+
+  <br />
+
+
+The following points give an overview of what you will do to set up the PCG:
+
+  <br />
+
+  - Initiate the installation from the tenant portal.
+
+
+  - Deploy the gateway installer VM in vSphere.
+
+
+  - Launch the cloud gateway from the tenant portal.
 
 <InfoBox>
-For self hosted version, a system gateway is provided out of the box and typically installing a Private Cloud Gateway is not required. However, additional gateways can be created as required to support provisioning into remote Datacenter that do not have direct incoming connection from the management console.
+
+Self-hosted Palette installations provide a system gateway out-of-the-box and typically do not require a PCG. However, you can create additional gateways as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console.
+
 </InfoBox>
-
-<br />
-
-* Minimum capacity required for a Private Cloud Gateway:
-  + One (1) node - two (2) vCPU, 4 GB memory, 60 GB storage.
-  + Three (3)nodes - six (6) vCPU, 12GB memory, 70GB storage.
-
-
-* Setting up a cloud gateway involves:
-
-  * Initiating the install from the tenant portal
-  * Deploying gateway installer VM in vSphere
-  * Launching the cloud gateway from the tenant portal
 
 <br />
 
 ## Tenant Portal - Initiate Install
 
-1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under settings and click the dialogue to create a new Private Cloud Gateway.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Notate the link to the Palette Gateway Installer OVA and PIN displayed on the dialogue.
+
+2. Navigate to **Tenant Settings** > **Private Cloud Gateway**.
+
+
+3. Click the **Create Private Cloud Gateway** button and select **VMware**. Private Gateway installation instructions are displayed.
+
+
+4. Copy the gateway-installer link. Alternatively, you can download the OVA and upload it to an accessible location and import it as a local file.
 
 
 <br />
 
 ## vSphere - Deploy Gateway Installer
 
-1. Initiate deployment of a new OVF template by providing a link to the installer OVA as the URL.
+1. Deploy a new OVF template by providing the link to the installer OVA as the URL.
 
 
-2. Proceed through the OVF deployment wizard by choosing the desired Name, Placement, Compute, Storage, and Network options.
+2. Proceed through the OVF deployment wizard, selecting the desired Name, Placement, Compute, Storage, and Network options.
 
 
 3. At the **Customize Template** step, specify Palette properties as follows:
 
 <br />
 
-| **Parameter** | **Value** | **Remarks** |
+| **Parameter** | **Value** | **Description** |
 |---|---|---|
-|**Installer Name** | Desired Palette Gateway Name | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed, however, multiple gateways might be required for managing clusters across multiple vCenters. Choose a name that can easily identify the environment that this gateway instance is being configured for.|
-| **Console endpoint** | URL to Palette management platform portal | https://console.spectrocloud.com by default |
+|**Installer Name** | Desired Palette Gateway Name. | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed. However, multiple gateways may be required to manage clusters across multiple vCenters. We recommend choosing a name that readily identifies the environment for which this gateway instance is being configured.|
+| **Console endpoint** | URL to Palette management platform portal. | Default: https://console.spectrocloud.com |
 |**Pairing Code** | PIN displayed on the Palette management platform portal's 'Create a new gateway' dialogue. | |
-| **SSH Public Key** | Optional key, useful for troubleshooting purposes (Recommended) | Enables SSH access to the VM as 'ubuntu' user |
-| **Pod CIDR** | Optional - IP range exclusive to pods | This range should be different to prevent an overlap with your network CIDR. |
-| **Service cluster IP range** | Optional - IP range in the CIDR format exclusive to the service clusters | This range also must not overlap with either the pod CIDR or your network CIDR. |
+| **SSH Public Key** | Optional key for troubleshooting purposes. | We recommended having an SSH key, as it enables SSH access to the VM as 'ubuntu' user. |
+| **Pod CIDR** | Optional IP range exclusive to pods. | This range should be different to prevent an overlap with your network CIDR. |
+| **Service cluster IP range** | Optional IP range in the CIDR format exclusive to the service clusters. | This range also must not overlap with either the pod CIDR or your network CIDR. |
 
 
-Additional properties that are required to be set only for a proxy environment. Each of the proxy properties may or may not have the same value but all the three properties are mandatory.
+Proxy environments require additional property settings. Each of the proxy properties may or may not have the same value but all the three properties are required.
 
 
 | **Parameter** | **Value** | **Remarks** |
 |---|---|---|
-|HTTP PROXY | The endpoint for the HTTP proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT` |
-| HTTPS PROXY | The endpoint for the HTTPS proxy server | This setting will be propagated to all the nodes launched in the proxy network. e.g., `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT` |
-| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be excluded from proxying | This setting will be propagated to all the nodes to bypass the proxy server . e.g., vcenter.company.com, .company.org, 10.10.0.0/16 |
-| Certificate | The base64 encoded value of the proxy server's cerficate OR the base64 encoded root and issuing certificate authority (CA) certificates used to sign the proxy server's certificate | Depending on how the certificate is decoded, an additonal `=` character may appear at the tailend of the value. The following command can be used to encode the certificate properly base64 -w0 &vert; sed "s/=$//"
+|HTTP PROXY | Endpoint for the HTTP proxy server. | This setting will be propagated to all the nodes launched in the proxy network. For example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT` |
+| HTTPS PROXY | Endpoint for the HTTPS proxy server. | This setting will be propagated to all the nodes launched in the proxy network. For example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT` |
+| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, and domain names that should be excluded from proxying. | This setting will be propagated to all the nodes to bypass the proxy server. For example: `vcenter.company.com`, `.company.org`, and `10.10.0.0/16` |
+| Certificate | The base64-encoded value of the proxy server's cerficate OR the base64-encoded root and issuing certificate authority (CA) certificates used to sign the proxy server's certificate. | Depending on how the certificate is decoded, an additonal `=` character may appear at the end of the value. You can use this command to properly encode the certificate: `base64 -w0 &vert; sed "s/=$//"`.
 
-4. Finish the OVF deployment wizard and wait for the OVA to be imported and virtual machine to be deployed.
+4. Complete the OVF deployment wizard and wait for the OVA to be imported and the Virtual Machine (VM) to be deployed.
 
 
-5. Power on the virtual machine.
+5. Power on the VM.
+
 
 ## Tenant Portal - Launch Cloud Gateway
 
-1. Close the **Create New Gateway** dialog box if it is still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
+1. Close the **Create New Gateway** installation instructions and navigate to the Private Cloud Gateway page under **Tenant Settings** if you have navigated away or logged out.
 
 
-2. Wait for a gateway widget to be displayed on the page and for the **Configure** option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the Virtual Machine is powered on. Failure of the installer to register with the Palette Management Platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
+2. Wait for a gateway widget to display on the page and for the **Configure** option to become available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the VM is powered on. Failure of the installer to register with Palette within 10 minutes of powering on the Virtual Machine on vSphere might indicate an error. Follow steps in [Troubleshooting](/clusters/data-center/vmware#troubleshooting) to identify and resolve the issue.
 
 
 3. Click on the **Configure** button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
 
 
-4. Choose the desired values for the Datacenter, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys and/or NTP server addresses.
+4. Choose the desired values for the Data Center, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys or NTP server addresses.
 
 
-5. Choose the IP Allocation Scheme - Static IP or DHCP. If static IP is selected, an option to create an IP pool is enabled. Proceed to create an IP pool by providing an IP range (start and end IP addresses) or a subnet. The IP addresses from this IP Pool will be assigned to the gateway cluster. By default, the IP Pool is available for use by other tenant clusters. This can be prevented by enabling the **Restrict to a single cluster** button. A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
+5. Choose the IP Allocation Scheme - Static IP or DHCP. Selecting static IP enables the option to create an IP pool. To create an IP pool, provide an IP range or a subnet. The IP addresses from the IP pool will be assigned to the gateway cluster. By default, the IP pool is available for use by other tenant clusters. You can prevent this by toggling on the **Restrict to a single cluster** option. 
+
+<!-- A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement). -->
 
 
-6. Click on **Confirm**, to initiate provisioning of the gateway cluster. The status of the cluster on the UI should change to **Provisioning** and eventually **Running**, when the gateway cluster is fully provisioned. This process might take several minutes (typically 8 to 10 mins).
-   You can observe a detailed provisioning sequence on the **Cluster Details** page, by clicking on the gateway widget on the UI. If provisioning of the gateway cluster runs into errors or gets stuck, relevant details can be found on the **Summary** tab or the events tab of the cluster details page.
+6. Click on **Confirm** to initiate gateway cluster provisioning. Cluster status should change to **Provisioning** and eventually to **Running**, when the gateway cluster is fully provisioned. This process can take about 10 minutes.
 
-   In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, the process can be reset from the Cloud Gateway Widget on the UI.
+  You can click on the Cloud Gateway widget in the UI to view a detailed provisioning sequence on the **Cluster Details** page. If gateway cluster provisioning results in errors or gets stuck, you can view the details on the **Summary** tab or the **Events** tab of the **Cluster Details** page.
 
-7. Once the Gateway transitions to the **Running** state, it is fully provisioned and ready to bootstrap tenant cluster requests.
+  In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, you can reset the process from the Cloud Gateway widget.
+
+
+7. When the Gateway transitions to the **Running** state, it is fully provisioned and ready to bootstrap tenant cluster requests.
+
+
+8. Power off the installer OVA that you initially imported at the start of this installation process.
 
 <InfoBox>
-A Gateway cluster installation automatically creates a cloud account behind the scenes, using the credentials entered at the time of deploying the gateway cluster. This account may be used for the provisioning of clusters across all Tenant Projects.
+
+A Gateway cluster installation automatically creates a cloud account using the credentials entered at the time the gateway cluster is deployed. You can use this account to provision clusters across all tenant projects.
+
 </InfoBox>
 
-## vSphere - Clean up installer
-
-Power off the installer OVA which was initially imported at the start of this installation process.
 
 # Troubleshooting
 <br />
 
-### Gateway installer - Unable to register with the Tenant Portal
+### Gateway Installer - Unable to register with the Tenant Portal
 
-The installer VM, when powered on, goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes five to ten minutes. Failure of the installer to register with the Tenant Portal, within this duration, might be indicative of a bootstrapping error.
+When powered on, the installer VM goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes 5 to 10 minutes. If the installer fails to register with the Tenant Portal within this timeframe, it could indicate a bootstrapping error.
 
-SSH into the installer virtual machine using the username "ubuntu" and the key provided during OVA import and inspect the log file located at **/var/log/cloud-init-output.log**. This log file will contain error messages in the event there are failures with connecting to the Palette Management platform portal, authenticating, or downloading installation artifacts. A common cause for these errors is that the Palette Management platform console endpoint or the pairing code is typed incorrectly.
+SSH into the installer virtual machine using the username "ubuntu" and the key provided during OVA import and inspect the log file located at **/var/log/cloud-init-output.log**. This log file will contain error messages in the event there are failures with connecting to Palette, authenticating, or downloading installation artifacts. A common cause for these errors is the Palette console endpoint or the pairing code was mistyped.
 
 Ensure that the Tenant Portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and relaunch with the correct values.
 
-Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch in a network that enables outgoing connections.
+Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch it in a network that enables outgoing connections.
 
-If the above steps do not resolve your issues, copy the following script to the installer VM and execute to generate a logs archive. Open a support ticket and attach the logs archive to the ticket to allow the Palette Support team to troubleshoot and provide further guidance:
+If the above steps do not resolve your issues, you can copy the following script to the installer VM and invoke it to generate a logs archive. Please contact our support team by sending an email to support@spectrocloud.com and attach the logs archive to the ticket so our Support team can troubleshoot the issue and provide further guidance.
+
+<br />
 
 ``` bash
 #!/bin/bash
@@ -752,20 +785,20 @@ fi
 ```
 <br />
 
-### Gateway Cluster - Provisioning stalled/failure
+### Gateway Cluster - Provisioning Stalled or Failed
 
-An installation of the gateway cluster may run into errors or might get stuck in the provisioning state for a variety of reasons like lack of infrastructure resources, IP addresses not being available, unable to perform NTP sync, etc.
+An installation of the gateway cluster may run into errors or might get stuck in the provisioning state due to several reasons, such as lack of infrastructure resources, unavailable IP addresses, inability to perform a Network Time Protocol (NTP) sync.
 
 While these are most common, some other issue might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed.
 
-Any intermittent errors will be displayed on this page next to the relevant orchestration task. The Events tab on this page, also provides a useful resource to look at lower-level operations being performed for the various orchestration steps.
+Any intermittent errors will be displayed on this page next to the relevant orchestration task. The **Events** tab on this page, also provides a useful resource to look at lower-level operations being performed for the various orchestration steps.
 
-If you think that the orchestration is stuck or failed due to an invalid selection of infrastructure resources or an intermittent problem with the infrastructure, you may reset the gateway by clicking on the **Reset** button on the gateway widget. This will reset the gateway state to **Pending** allowing you to reconfigure the gateway and start provisioning of a new gateway cluster.
+If you think that the orchestration is stuck or failed due to incorrectly selected infrastructure resources or an intermittent problem with the infrastructure, you can reset the gateway by clicking on the **Reset** button on the gateway widget. This resets the gateway state to **Pending** and allows you to reconfigure the gateway and start provisioning a new gateway cluster.
 
-If the problem persists, please contact Palette support, via the Service Desk.
+If the problem persists, please contact our support team by sending an email to support@spectrocloud.com.
 <br />
 
-### Upgrading a VMware Cloud Gateway
+### Upgrade VMware Cloud Gateway
 
 Palette maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 
@@ -774,7 +807,7 @@ Administrators should review the changes and apply them at a suitable time. Upgr
 
 <br />
 
-### Deleting a VMware Cloud Gateway
+### Delete a VMware Cloud Gateway
 
 The following steps need to be performed to delete a cloud gateway:
 
@@ -791,7 +824,7 @@ The following steps need to be performed to delete a cloud gateway:
 
 <br />
 
-### Resizing a VMware Cloud Gateway
+### Resize a VMware Cloud Gateway
 
 A cloud gateway can be set up as a 1-node or a 3-node cluster.  For production environments, it is recommended that three (3) nodes are set up. A cloud gateway can be initially set up with one (1) node and resized to three (3) nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
 
@@ -830,7 +863,7 @@ The following is a description of various IP Pool properties:
 | **Name server addresses** | A comma-separated list of name servers. e.g., 8.8.8.8 |
 | **Restrict to a Single Cluster** | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
-# Creating a VMware Cloud Account
+# Create a VMware Cloud Account
 
 <InfoBox>
 Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
@@ -850,13 +883,15 @@ In addition to the default cloud account already associated with the private clo
 | **Username** | vCenter username|
 | **Password** | vCenter password|
 
-# Deploying a VMware Cluster
+# Deploy a VMware Cluster
 
 `video: title: "vmware-cluster-creation": ./cluster-creation-videos/vmware.mp4`
 
-The following steps need to be performed to provision a new VMware cluster:
+Use the following steps to provision a new VMware cluster.
 
-1. Provide the basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the Virtual Machines (VMs) deployed on the cloud/Datacenter environments.
+<br />
+
+1. Provide the basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the Virtual Machines (VMs) deployed on the cloud/data center environments.
 
 
 2. Select a Cluster Profile created for the VMware environment. The profile definition will be used as the cluster construction template.
@@ -870,7 +905,7 @@ The following steps need to be performed to provision a new VMware cluster:
     |**Parameter**                            | **Description**|
     |-----------------------------------------|----------------|
         | **Cloud Account** | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the cloud gateway setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator.|
-        | **Datacenter** |The vSphere Datacenter where the cluster nodes will be launched.|
+        | **Datacenter** |The vSphere data center where the cluster nodes will be launched.|
         | **Deployment Folder**      | The vSphere VM Folder where the cluster nodes will be launched.|                                                                                                                                                                                                                                                     |
         | **Image Template Folder**  | The vSphere folder to which the Spectro templates are imported.|
         | **SSH Keys (Optional)** | Public key to configure remote SSH access to the nodes (User: spectro).|
@@ -897,7 +932,7 @@ The following steps need to be performed to provision a new VMware cluster:
 |**Parameter**     | **Description**|
 |------------------|---------------|
 |**Name**          |A descriptive name for the node pool.|
-|**Enable Autoscaler**|You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.|
+|**Enable Autoscaler**|You can enable the autoscaler by toggling the **Enable Autoscaler** button. Autoscaler scales resources up and down between the defined minimum and maximum number of nodes to optimize resource utilization.|
 ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
 |**Size**          |Number of VMs to be provisioned for the node pool.|
 |**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
@@ -913,7 +948,7 @@ The following steps need to be performed to provision a new VMware cluster:
 New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with 4 CPUs, 8 GB of memory for general-purpose workloads, and another worker pool with 8 CPUs, 16 GB of memory for advanced workloads that demand larger resources.
 </InfoBox>
 
-# Deleting a VMware Cluster
+# Delete a VMware Cluster
 
 The deletion of a VMware cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete a VMware cluster:
 

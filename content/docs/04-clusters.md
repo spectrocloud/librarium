@@ -285,4 +285,5 @@ Clusters are launched from within Projects in Palette, and they belong to a sing
 # Additional Resources 
 
 The next section provides details for setting workload clusters in various environments.
+
 <br />
