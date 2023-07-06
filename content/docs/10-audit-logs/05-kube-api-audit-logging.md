@@ -19,6 +19,8 @@ Kubernetes auditing is a feature of the Kubernetes cluster management system tha
 
 You can also meet internal security control requirements by enabling audit logging. Many security controls require the following capabilities.
 
+<br />
+
 - ensuring administrators can trace the actions of individual users back to a specific person.
 
 
@@ -162,7 +164,7 @@ You can also add the following Kubernetes API parameters to fine-tune the audit 
 
 | Parameter                         | Type     | Description                                                                                                                   |
 |-----------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------|
-| -`-audit-log-batch-max-wait`        | duration | The amount of time to wait before force writing the batch that hadn't reached the max size. Only used in batch mode. Ex: `"5s"` |
+| `--audit-log-batch-max-wait`        | duration | The amount of time to wait before force writing the batch that hadn't reached the max size. Only used in batch mode. Ex: `"5s"` |
 | `--audit-log-batch-throttle-enable` |   boolean       | Whether batching throttling is enabled. Only used in batch mode.                                                              |
 | `--audit-log-batch-throttle-qps`    | float    | The maximum average number of batches per second. Only used in batch mode                                                     |
 
@@ -171,7 +173,9 @@ To learn more about each of the Kubernetes API server flags, visit the Kubernete
 
 # Validate
 
-You can validate that audit logs are captured by navigating to the specified audit folder in the `--audit-log-path` parameter. 
+You can validate that audit logs are captured by navigating to the specified audit folder in the `--audit-log-path` parameter.
+
+<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

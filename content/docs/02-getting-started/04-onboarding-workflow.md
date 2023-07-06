@@ -67,7 +67,7 @@ templates created with preconfigured layers that define the required dependencie
 * [Create your Cluster](/clusters)
 
 
-* [Import Brownfield Clusters](/clusters/brownfield-clusters/#overview)
+* [Imported Clusters](/clusters/imported-clusters)
 
 
 * [Cluster Management](/clusters/cluster-management/#managecl)

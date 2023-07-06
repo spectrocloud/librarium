@@ -1,7 +1,7 @@
 ---
-title: "Creating Cluster Profiles"
-metaTitle: "Creating Cluster Profiles"
-metaDescription: "The method for creating a Cluster Profile on Spectro Cloud"
+title: "Create a Cluster Profile"
+metaTitle: "Create a Cluster Profile"
+metaDescription: "Learn how to create a cluster profile in Palette."
 icon: ""
 hideToC: true
 fullWidth: false

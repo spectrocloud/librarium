@@ -22,7 +22,7 @@ Palette provisions and orchestrates virtual clusters to make the lightweight Kub
 
 Palette also supports Day 2 operations such as upgrades, backup, and restore to keep virtual clusters secure, compliant, and up to date. Additionally, Palette provides visibility into the workloads running inside your virtual clusters and the associated costs.
 
-To get started, refer to [Add Virtual Clusters to a Host Cluster](/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster).
+To get started, refer to [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster).
 
 
 <br />
