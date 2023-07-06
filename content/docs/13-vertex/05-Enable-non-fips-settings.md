@@ -21,11 +21,11 @@ If desired, you can allow the use of certain non-FIPS functionality in Palette V
 
 # Resources
 
-- [Use non-FIPS Add-On Packs](/vertex/enable-non-fips-settings)
+- [Use non-FIPS Add-On Packs](/vertex/enable-non-fips-settings/use-non-fips-addon-packs)
 
 
-- [Use non-FIPS Data Management Features](/vertex/enable-non-fips-resources/use-non-fips-data-mgmt-features)
+- [Use non-FIPS Features](/vertex/enable-non-fips-settings/use-non-fips-features)
 
 
-- [Import Clusters to Tenant](/vertex/enable-non-fips-resources/import-clusters)
+- [Import Clusters to Tenant](/vertex/enable-non-fips-settings/allow-cluster-import)
 
