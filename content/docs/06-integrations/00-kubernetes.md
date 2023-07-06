@@ -86,7 +86,7 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). |
+| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
 | ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
@@ -398,7 +398,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC and RBAC](/integrations/kubernetes#configurecustomoidcandrbac). |
+| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
 | ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 ## Usage 
@@ -566,7 +566,7 @@ You can create a role binding that maps individual users or groups assigned with
 
   </WarningBox>
 
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc)). This setting displays in the YAML file as `none`.
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
 
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
@@ -580,7 +580,7 @@ If your IDP uses Security Assertion Markup Language (SAML) authentication, then 
 
 </InfoBox>
 
-### Configure Custom OIDC and RBAC
+### Configure Custom OIDC
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
 

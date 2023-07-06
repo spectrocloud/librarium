@@ -1,0 +1,1184 @@
+---
+title: "Palette eXtended Kubernetes Edge"
+metaTitle: "Palette eXtended Kubernetes Edge"
+metaDescription: "Learn about the Palette eXtended Kubernetes Edge pack and how you can use it your host clusters in an edge environment."
+hiddenFromNav: true
+type: "integration"
+category: ["kubernetes"]
+logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
+---
+
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+import Tooltip from "shared/components/ui/Tooltip";
+
+# Palette eXtended Kubernetes Edge
+
+The Palette eXtended Kubernetes (PXK-E) pack supports Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment.
+
+We offer PXK-E as a core pack in Palette. 
+
+Review our [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
+
+<br />
+
+## What is PXK-E?
+
+Palette eXtended Kubernetes Edge (PXK-E) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes distribution is customized and optimized for edge computing environments and can be deployed through Palette. PXK-E is the Kubernetes distribution Palette defaults to when deploying Edge clusters.
+
+PXK-E differs from the upstream open-source Kubernetes version by optimizing for operations in an edge computing environment. PXK-E also differentiates itself by using the Kairos open-source project as the base operating system (OS). PXK-E’s use of Kairos means the OS is immutable, which significantly improves the security posture and reduces potential attack surfaces.
+
+Another differentiator of PXK-E is the carefully reviewed and applied hardening of the OS and Kubernetes. The hardening ranges from removing unused OS kernel modules to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common deployment security pitfalls and implements industry best practices.
+
+With PXK-E, you can manage automatic OS upgrades while retaining immutability and the flexibility to roll out changes safely. The A/B partition architecture of Kairos allows for new OS and dependency versions to be installed in a separate partition and mounted at runtime. You can fall back to use the previous partition if issues are identified in the new partition.
+
+PXK-E manages the underlying OS and the Kubernetes layer together, which reduces the challenge of upgrading and maintaining two separate components.
+
+PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces (CNI). Other open-source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and complexity.
+
+There are no changes to the Kubernetes source code used in PXK-E, and it follows the same versioning schema as the upstream open-source Kubernetes distribution.
+
+<br />
+
+
+<InfoBox>
+
+We also offer Palette eXtended Kubernetes (PXK) for cloud and data center deployments. For more information, refer to the [Palette eXtended Kubernetes](/integrations/kubernetes) guide to learn more about PXK.    
+
+</InfoBox>
+
+# Versions Supported
+
+
+<Tabs>
+
+<Tabs.TabPane tab="1.26.x" key="k8s_v1.26">
+
+## Prerequisites
+
+- A minimum of 4 CPU and 4GB Memory.
+
+
+<!-- - Configured OpenID Connect (OIDC) Identity Provider (IDP). -->
+
+
+- Users or groups mapped to a Kubernetes RBAC role.
+
+
+- Operating System (OS) dependencies as listed in the table.
+
+| OS Distribution | OS Version | Supports Kubernetes 1.26.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ✅                         |
+| Ubuntu        | 22.04      | ✅                         |
+| Ubuntu        | 20.04      | ❌                         |
+| Ubuntu        | 18.04      | ❌                         |
+
+
+## Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| ``pack.podCIDR`` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.palette.config.oidc.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on the apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
+| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+
+
+## Usage 
+  
+The Kubeadm configuration file is where you can do the following:
+
+<br />
+
+<!-- - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).  -->
+
+
+- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
+
+
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+
+#### Configuration Changes
+
+The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
+
+<br />
+
+```yaml
+pack: 
+  palette:
+   config:
+    oidc:
+       identityProvider: <your_idp_selection>
+```
+
+<br />
+
+#### Example Kubeadm Configuration File 
+
+```yaml
+cluster:
+  config: |
+    clusterConfiguration:
+      apiServer:
+        extraArgs:
+          advertise-address: "0.0.0.0"
+          anonymous-auth: "true"
+          audit-log-maxage: "30"
+          audit-log-maxbackup: "10"
+          audit-log-maxsize: "100"
+          audit-log-path: /var/log/apiserver/audit.log
+          audit-policy-file: /etc/kubernetes/audit-policy.yaml
+          authorization-mode: RBAC,Node
+          default-not-ready-toleration-seconds: "60"
+          default-unreachable-toleration-seconds: "60"
+          disable-admission-plugins: AlwaysAdmit
+          enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
+          profiling: "false"
+          secure-port: "6443"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+        extraVolumes:
+        - hostPath: /var/log/apiserver
+          mountPath: /var/log/apiserver
+          name: audit-log
+          pathType: DirectoryOrCreate
+        - hostPath: /etc/kubernetes/audit-policy.yaml
+          mountPath: /etc/kubernetes/audit-policy.yaml
+          name: audit-policy
+          pathType: File
+          readOnly: true
+        timeoutForControlPlane: 10m0s
+      controllerManager:
+        extraArgs:
+          feature-gates: RotateKubeletServerCertificate=true
+          pod-eviction-timeout: 1m0s
+          profiling: "false"
+          terminated-pod-gc-threshold: "25"
+          use-service-account-credentials: "true"
+      dns: {}
+      kubernetesVersion: v1.26.4
+      etcd:
+        local:
+          dataDir: "/etc/kubernetes/etcd"
+          extraArgs:
+            listen-client-urls: "https://0.0.0.0:2379"
+      networking:
+        podSubnet: 192.168.0.0/16
+        serviceSubnet: 192.169.0.0/16
+      scheduler:
+        extraArgs:
+          profiling: "false"
+    initConfiguration:
+      localAPIEndpoint: {}
+      nodeRegistration:
+        kubeletExtraArgs:
+          event-qps: "0"
+          feature-gates: RotateKubeletServerCertificate=true
+          protect-kernel-defaults: "true"
+          read-only-port: "0"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+    joinConfiguration:
+      discovery: {}
+      nodeRegistration:
+        kubeletExtraArgs:
+          event-qps: "0"
+          feature-gates: RotateKubeletServerCertificate=true
+          protect-kernel-defaults: "true"
+          read-only-port: "0"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+stages:
+  initramfs:
+    - sysctl:
+        vm.overcommit_memory: 1
+        kernel.panic: 10
+        kernel.panic_on_oops: 1
+      commands:
+        - ln -s /etc/kubernetes/admin.conf /run/kubeconfig
+      files:
+        - path: /etc/hosts
+          permission: "0644"
+          content: |
+            127.0.0.1 localhost
+        - path: "/etc/kubernetes/audit-policy.yaml"
+          owner_string: "root"
+          permission: 0600
+          content: |
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+              - level: None
+                users: ["system:kube-proxy"]
+                verbs: ["watch"]
+                resources:
+                  - group: "" # core
+                    resources: ["endpoints", "services", "services/status"]
+              - level: None
+                users: ["system:unsecured"]
+                namespaces: ["kube-system"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["configmaps"]
+              - level: None
+                users: ["kubelet"] # legacy kubelet identity
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes", "nodes/status"]
+              - level: None
+                userGroups: ["system:nodes"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes", "nodes/status"]
+              - level: None
+                users:
+                  - system:kube-controller-manager
+                  - system:kube-scheduler
+                  - system:serviceaccount:kube-system:endpoint-controller
+                verbs: ["get", "update"]
+                namespaces: ["kube-system"]
+                resources:
+                  - group: "" # core
+                    resources: ["endpoints"]
+              - level: None
+                users: ["system:apiserver"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["namespaces", "namespaces/status", "namespaces/finalize"]
+              - level: None
+                users: ["cluster-autoscaler"]
+                verbs: ["get", "update"]
+                namespaces: ["kube-system"]
+                resources:
+                  - group: "" # core
+                    resources: ["configmaps", "endpoints"]
+              # Don't log HPA fetching metrics.
+              - level: None
+                users:
+                  - system:kube-controller-manager
+                verbs: ["get", "list"]
+                resources:
+                  - group: "metrics.k8s.io"
+              # Don't log these read-only URLs.
+              - level: None
+                nonResourceURLs:
+                  - /healthz*
+                  - /version
+                  - /swagger*
+              # Don't log events requests.
+              - level: None
+                resources:
+                  - group: "" # core
+                    resources: ["events"]
+              # node and pod status calls from nodes are high-volume and can be large, don't log responses for expected updates from nodes
+              - level: Request
+                users: ["kubelet", "system:node-problem-detector", "system:serviceaccount:kube-system:node-problem-detector"]
+                verbs: ["update","patch"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes/status", "pods/status"]
+                omitStages:
+                  - "RequestReceived"
+              - level: Request
+                userGroups: ["system:nodes"]
+                verbs: ["update","patch"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes/status", "pods/status"]
+                omitStages:
+                  - "RequestReceived"
+              # deletecollection calls can be large, don't log responses for expected namespace deletions
+              - level: Request
+                users: ["system:serviceaccount:kube-system:namespace-controller"]
+                verbs: ["deletecollection"]
+                omitStages:
+                  - "RequestReceived"
+              # Secrets, ConfigMaps, and TokenReviews can contain sensitive & binary data,
+              # so only log at the Metadata level.
+              - level: Metadata
+                resources:
+                  - group: "" # core
+                    resources: ["secrets", "configmaps"]
+                  - group: authentication.k8s.io
+                    resources: ["tokenreviews"]
+                omitStages:
+                  - "RequestReceived"
+              # Get repsonses can be large; skip them.
+              - level: Request
+                verbs: ["get", "list", "watch"]
+                resources:
+                  - group: "" # core
+                  - group: "admissionregistration.k8s.io"
+                  - group: "apiextensions.k8s.io"
+                  - group: "apiregistration.k8s.io"
+                  - group: "apps"
+                  - group: "authentication.k8s.io"
+                  - group: "authorization.k8s.io"
+                  - group: "autoscaling"
+                  - group: "batch"
+                  - group: "certificates.k8s.io"
+                  - group: "extensions"
+                  - group: "metrics.k8s.io"
+                  - group: "networking.k8s.io"
+                  - group: "policy"
+                  - group: "rbac.authorization.k8s.io"
+                  - group: "settings.k8s.io"
+                  - group: "storage.k8s.io"
+                omitStages:
+                  - "RequestReceived"
+              # Default level for known APIs
+              - level: RequestResponse
+                resources:
+                  - group: "" # core
+                  - group: "admissionregistration.k8s.io"
+                  - group: "apiextensions.k8s.io"
+                  - group: "apiregistration.k8s.io"
+                  - group: "apps"
+                  - group: "authentication.k8s.io"
+                  - group: "authorization.k8s.io"
+                  - group: "autoscaling"
+                  - group: "batch"
+                  - group: "certificates.k8s.io"
+                  - group: "extensions"
+                  - group: "metrics.k8s.io"
+                  - group: "networking.k8s.io"
+                  - group: "policy"
+                  - group: "rbac.authorization.k8s.io"
+                  - group: "settings.k8s.io"
+                  - group: "storage.k8s.io"
+                omitStages:
+                  - "RequestReceived"
+              # Default level for all other requests.
+              - level: Metadata
+                omitStages:
+                  - "RequestReceived"
+pack:
+  palette:
+    config:
+      oidc:
+        identityProvider: palette
+```
+
+<br />
+
+### Configure OIDC Identity Provider
+
+The OIDC IDP feature offers the convenience of managing OIDC at the Kubernetes layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK-E pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
+
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+
+You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](/integrations/kubernetes#userbacwithoidc).
+
+<br />
+
+- **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
+
+  <br />
+
+  <WarningBox>
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
+
+  </WarningBox>
+
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+
+
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
+
+
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+
+<InfoBox>
+
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
+
+</InfoBox>
+
+
+### Configure Custom OIDC
+
+Follow these steps to configure a third-party OIDC IDP.
+
+<br />
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
+```
+
+
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+
+In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="1.25.x" key="k8s_v1.25">
+
+## Prerequisites
+
+- A minimum of 4 CPU and 4GB Memory.
+
+
+- Operating System (OS) dependencies as listed in the table.
+
+| OS Distribution | OS Version | Supports Kubernetes 1.25.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ✅                         |
+| Ubuntu        | 22.04      | ✅                         |
+| Ubuntu        | 20.04      | ❌                         |
+| Ubuntu        | 18.04      | ❌                         |
+
+
+## Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| ``pack.podCIDR`` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``pack.palette.config.oidc.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on the apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
+| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+
+## Usage 
+  
+The Kubeadm configuration file is where you can do the following:
+
+<br />
+
+<!-- - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).  -->
+
+
+- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). 
+
+
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+
+#### Configuration Changes
+
+The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
+
+<br />
+
+```yaml
+palette:
+   config:
+     dashboard:
+       identityProvider: <your_idp_selection>
+```
+
+<br />
+
+#### Example Kubeadm Configuration File 
+
+```yaml
+cluster:
+  config: |
+    clusterConfiguration:
+      apiServer:
+        extraArgs:
+          advertise-address: "0.0.0.0"
+          anonymous-auth: "true"
+          audit-log-maxage: "30"
+          audit-log-maxbackup: "10"
+          audit-log-maxsize: "100"
+          audit-log-path: /var/log/apiserver/audit.log
+          audit-policy-file: /etc/kubernetes/audit-policy.yaml
+          authorization-mode: RBAC,Node
+          default-not-ready-toleration-seconds: "60"
+          default-unreachable-toleration-seconds: "60"
+          disable-admission-plugins: AlwaysAdmit
+          enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
+          profiling: "false"
+          secure-port: "6443"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+        extraVolumes:
+        - hostPath: /var/log/apiserver
+          mountPath: /var/log/apiserver
+          name: audit-log
+          pathType: DirectoryOrCreate
+        - hostPath: /etc/kubernetes/audit-policy.yaml
+          mountPath: /etc/kubernetes/audit-policy.yaml
+          name: audit-policy
+          pathType: File
+          readOnly: true
+        timeoutForControlPlane: 10m0s
+      controllerManager:
+        extraArgs:
+          feature-gates: RotateKubeletServerCertificate=true
+          pod-eviction-timeout: 1m0s
+          profiling: "false"
+          terminated-pod-gc-threshold: "25"
+          use-service-account-credentials: "true"
+      dns: {}
+      kubernetesVersion: v1.25.2
+      etcd:
+        local:
+          dataDir: "/etc/kubernetes/etcd"
+          extraArgs:
+            listen-client-urls: "https://0.0.0.0:2379"
+      networking:
+        podSubnet: 192.168.0.0/16
+        serviceSubnet: 192.169.0.0/16
+      scheduler:
+        extraArgs:
+          profiling: "false"
+    initConfiguration:
+      localAPIEndpoint: {}
+      nodeRegistration:
+        kubeletExtraArgs:
+          event-qps: "0"
+          feature-gates: RotateKubeletServerCertificate=true
+          protect-kernel-defaults: "true"
+          read-only-port: "0"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+    joinConfiguration:
+      discovery: {}
+      nodeRegistration:
+        kubeletExtraArgs:
+          event-qps: "0"
+          feature-gates: RotateKubeletServerCertificate=true
+          protect-kernel-defaults: "true"
+          read-only-port: "0"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+
+stages:
+  initramfs:
+    - sysctl:
+        vm.overcommit_memory: 1
+        kernel.panic: 10
+        kernel.panic_on_oops: 1
+      commands:
+        - "ln -s /etc/kubernetes/admin.conf /run/kubeconfig"
+      files:
+        - path: /etc/hosts
+          permission: "0644"
+          content: |
+            127.0.0.1 localhost
+        - path: "/etc/kubernetes/audit-policy.yaml"
+          owner_string: "root"
+          permission: 0600
+          content: |
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+              - level: None
+                users: ["system:kube-proxy"]
+                verbs: ["watch"]
+                resources:
+                  - group: "" # core
+                    resources: ["endpoints", "services", "services/status"]
+              - level: None
+                users: ["system:unsecured"]
+                namespaces: ["kube-system"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["configmaps"]
+              - level: None
+                users: ["kubelet"] # legacy kubelet identity
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes", "nodes/status"]
+              - level: None
+                userGroups: ["system:nodes"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes", "nodes/status"]
+              - level: None
+                users:
+                  - system:kube-controller-manager
+                  - system:kube-scheduler
+                  - system:serviceaccount:kube-system:endpoint-controller
+                verbs: ["get", "update"]
+                namespaces: ["kube-system"]
+                resources:
+                  - group: "" # core
+                    resources: ["endpoints"]
+              - level: None
+                users: ["system:apiserver"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["namespaces", "namespaces/status", "namespaces/finalize"]
+              - level: None
+                users: ["cluster-autoscaler"]
+                verbs: ["get", "update"]
+                namespaces: ["kube-system"]
+                resources:
+                  - group: "" # core
+                    resources: ["configmaps", "endpoints"]
+              # Don't log HPA fetching metrics.
+              - level: None
+                users:
+                  - system:kube-controller-manager
+                verbs: ["get", "list"]
+                resources:
+                  - group: "metrics.k8s.io"
+              # Don't log these read-only URLs.
+              - level: None
+                nonResourceURLs:
+                  - /healthz*
+                  - /version
+                  - /swagger*
+              # Don't log events requests.
+              - level: None
+                resources:
+                  - group: "" # core
+                    resources: ["events"]
+              # node and pod status calls from nodes are high-volume and can be large, don't log responses for expected updates from nodes
+              - level: Request
+                users: ["kubelet", "system:node-problem-detector", "system:serviceaccount:kube-system:node-problem-detector"]
+                verbs: ["update","patch"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes/status", "pods/status"]
+                omitStages:
+                  - "RequestReceived"
+              - level: Request
+                userGroups: ["system:nodes"]
+                verbs: ["update","patch"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes/status", "pods/status"]
+                omitStages:
+                  - "RequestReceived"
+              # deletecollection calls can be large, don't log responses for expected namespace deletions
+              - level: Request
+                users: ["system:serviceaccount:kube-system:namespace-controller"]
+                verbs: ["deletecollection"]
+                omitStages:
+                  - "RequestReceived"
+              # Secrets, ConfigMaps, and TokenReviews can contain sensitive & binary data,
+              # so only log at the Metadata level.
+              - level: Metadata
+                resources:
+                  - group: "" # core
+                    resources: ["secrets", "configmaps"]
+                  - group: authentication.k8s.io
+                    resources: ["tokenreviews"]
+                omitStages:
+                  - "RequestReceived"
+              # Get repsonses can be large; skip them.
+              - level: Request
+                verbs: ["get", "list", "watch"]
+                resources:
+                  - group: "" # core
+                  - group: "admissionregistration.k8s.io"
+                  - group: "apiextensions.k8s.io"
+                  - group: "apiregistration.k8s.io"
+                  - group: "apps"
+                  - group: "authentication.k8s.io"
+                  - group: "authorization.k8s.io"
+                  - group: "autoscaling"
+                  - group: "batch"
+                  - group: "certificates.k8s.io"
+                  - group: "extensions"
+                  - group: "metrics.k8s.io"
+                  - group: "networking.k8s.io"
+                  - group: "policy"
+                  - group: "rbac.authorization.k8s.io"
+                  - group: "settings.k8s.io"
+                  - group: "storage.k8s.io"
+                omitStages:
+                  - "RequestReceived"
+              # Default level for known APIs
+              - level: RequestResponse
+                resources:
+                  - group: "" # core
+                  - group: "admissionregistration.k8s.io"
+                  - group: "apiextensions.k8s.io"
+                  - group: "apiregistration.k8s.io"
+                  - group: "apps"
+                  - group: "authentication.k8s.io"
+                  - group: "authorization.k8s.io"
+                  - group: "autoscaling"
+                  - group: "batch"
+                  - group: "certificates.k8s.io"
+                  - group: "extensions"
+                  - group: "metrics.k8s.io"
+                  - group: "networking.k8s.io"
+                  - group: "policy"
+                  - group: "rbac.authorization.k8s.io"
+                  - group: "settings.k8s.io"
+                  - group: "storage.k8s.io"
+                omitStages:
+                  - "RequestReceived"
+              # Default level for all other requests.
+              - level: Metadata
+                omitStages:
+                  - "RequestReceived"
+                  pack:
+  palette:
+    config:
+      oidc:
+        identityProvider: palette
+  ```
+
+  <br />
+
+### Configure OIDC Identity Provider
+
+The OIDC IDP feature offers the convenience of managing OIDC at the Kubernetes layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK-E pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
+
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+
+You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](/integrations/kubernetes#userbacwithoidc).
+
+<br />
+
+- **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
+
+  <br />
+
+  <WarningBox>
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
+
+  </WarningBox>
+
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc)). This setting displays in the YAML file as `none`.
+
+
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
+
+
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+
+<InfoBox>
+
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
+
+</InfoBox>
+
+### Configure Custom OIDC
+
+Follow these steps to configure a third-party OIDC IDP.
+
+<br />
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
+```
+
+
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+
+In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="1.24.x" key="k8s_v1.24">
+
+## Prerequisites
+
+- A minimum of 4 CPU and 4GB Memory.
+
+- Operating System (OS) dependencies as listed in the table.
+
+| OS Distribution | OS Version | Supports Kubernetes 1.24.x |
+|---------------|------------|----------------------------|
+| CentOS        | 7.7        | ✅                           |
+| Ubuntu        | 22.04      | ❌                         |
+| Ubuntu        | 20.04      | ✅                         |
+| Ubuntu        | 18.04      | ❌                         |
+
+
+## Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
+| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
+| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
+| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
+| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
+| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. |
+| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
+| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
+| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+
+
+## Usage 
+  
+The Kubeadm configuration file is where you can do the following:
+
+<br />
+
+- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+
+
+- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).  
+
+
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+
+#### Configuration Changes
+
+The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
+
+<br />
+
+```yaml
+palette:
+   config:
+     dashboard:
+       identityProvider: <your_idp_selection>
+```
+
+<br />
+
+#### Example Kubeadm Configuration File 
+
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+  palette:
+    config:
+      dashboard:
+        identityProvider: noauth
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      default-not-ready-toleration-seconds: "60"
+      default-unreachable-toleration-seconds: "60"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurityPolicy"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+    extraVolumes:
+      - name: audit-log
+        hostPath: /var/log/apiserver
+        mountPath: /var/log/apiserver
+        pathType: DirectoryOrCreate
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port: "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/privileged-psp.yaml
+      targetPath: /etc/kubernetes/hardening/privileged-psp.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/90-kubelet.conf
+      targetPath: /etc/sysctl.d/90-kubelet.conf
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+  preKubeadmCommands:
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+  postKubeadmCommands:
+    - 'export KUBECONFIG=/etc/kubernetes/admin.conf && [ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f /etc/kubernetes/hardening/privileged-psp.yaml > /dev/null ); do echo "Failed to apply PodSecurityPolicies, will retry in 5s" ; sleep 5 ; done ; } || echo "Skipping PodSecurityPolicy for worker nodes"'
+  # Client configuration to add OIDC based authentication flags in kubeconfig
+  #clientConfig:
+  #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+  #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+  #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  #oidc-extra-scope: profile,email
+  ```
+<br />
+
+### Configure OIDC Identity Provider
+
+The OIDC IDP feature offers the convenience of managing OIDC at the Kubernetes layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK-E pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
+
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+
+You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](/integrations/kubernetes#userbacwithoidc).
+
+<br />
+
+- **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
+
+  <br />
+
+  <WarningBox>
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
+
+  </WarningBox>
+
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+
+
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
+
+
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+
+<InfoBox>
+
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
+
+</InfoBox>
+
+
+### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
+
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+<br />
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
+```
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
+
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+<br />
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+
+```yaml
+oidcIdentityProvider:
+    identityProviderConfigName: 'Spectro-docs'
+    issuerUrl: 'issuer-url'
+    clientId: 'user-client-id-from-Palette'
+    usernameClaim: "email"
+    usernamePrefix: "-"
+    groupsClaim: "groups"
+    groupsPrefix: ""
+    requiredClaims:
+```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+```yaml
+clientConfig:
+  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-extra-scope: profile,email
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
+
+In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="Deprecated" key="deprecated">
+
+<WarningBox>
+
+All versions less than v1.23.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+
+</WarningBox>
+
+
+</Tabs.TabPane>
+</Tabs>
+
+
+# Terraform
+
+You can reference Kubernetes in Terraform with the following code snippet.
+
+<br />
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "edge-k8s" {
+  name    = "kubernetes (or edge-k8s)?"
+  version = "1.26.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+# Resources
+
+- [Kubernetes](https://kubernetes.io/)
+
+
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
+
+
+
+- [Image Swap with Palette](/clusters/cluster-management/image-swap)
+
