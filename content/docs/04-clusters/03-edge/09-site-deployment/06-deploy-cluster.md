@@ -14,20 +14,20 @@ import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Deploy Edge Cluster
 
-Palette supports deploying Kubernetes clusters in remote locations to support edge computing workloads. To deploy Kubernetes on edge, you can use Palette's Edge solution and deploy your edge devices, also called Edge hosts, that contain all the required software dependencies to support Palette-managed Kubernetes cluster deployment.  
+Palette supports deploying Kubernetes clusters in remote locations to support edge computing workloads. Palette's Edge solution enables you to deploy your edge devices, also called Edge hosts, which contain all the required software dependencies to support Palette-managed Kubernetes cluster deployment.  
 
-Maintaining consistency while preparing edge devices at scale can be challenging for operation teams. For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. The company needs you to deploy Kubernetes clusters in each new store using edge devices, such as Intel NUC or similar, and ensure each device has the same software and security configurations. Your job is to prepare each device so the development team can deploy Kubernetes clusters on all those devices. You have decided to use Palette's Edge solution to help you meet the organizational requirements. You will prepare a small set of Edge devices and deploy a Kubernetes cluster to verify readiness for consistent deployment across all physical sites.
+Maintaining consistency while preparing edge devices at scale can be challenging for operation teams. For example, imagine you are an IT administrator for a retail company that has decided to expand to 1000 new stores this year. The company needs you to deploy Kubernetes clusters in each new store using edge devices, such as Intel NUC, and ensure each device has the same software and security configurations. Your job is to prepare each device so the development team can deploy Kubernetes clusters on each device. You have decided to use Palette's Edge solution to help you meet the organizational requirements. You will prepare a small set of Edge devices and deploy a Kubernetes cluster to verify readiness for consistent deployment across all physical sites.
 
-For an overview, here are the stages of deploying an Edge cluster to a production environment:  
+The following points summarize the primary stages of Edge cluster deployment to a production environment:  
 
-- The Edge artifacts, such as the Edge Installer ISO, the provider images, and content bundles, are created. 
+- Create Edge artifacts such as the Edge Installer ISO, provider images, and content bundles. 
 
-- The Edge device is initialized with the Edge installer ISO, which includes a base OS and other configurations, such as networking, proxy, security, tooling, and user privileges. 
+- Initialize the Edge device with the Edge installer ISO. The ISO includes a base Operating System (OS) and other configurations such as networking, proxy, security, tooling, and user privileges. 
 
-- A cluster profile is created to ensure consistency in all the Edge hosts. The cluster profile lets you declare all the desired software dependencies each Kubernetes should have installed.
+- Create a cluster profile to ensure consistency in all the Edge hosts. The cluster profile lets you declare the desired software dependencies for each Kubernetes cluster.
 
 
-In this tutorial, similar to the primary stages outlined above, you will first build the Edge artifacts (Edge installer ISO image and provider images) and use the Edge installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a cluster on those Edge hosts. You will use VMware to deploy the Edge hosts to simulate a bare metal environment.
+Following the primary stages outlined above, this tutorial will guide you to build the Edge artifacts (Edge installer ISO image and provider images) and use the Edge installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a cluster on those Edge hosts. You will use VMware to deploy the Edge hosts to simulate a bare metal environment.
 
 
 Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the Edge host VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge devices. Therefore, this tutorial uses VMware VMs as Edge hosts to test the installer ISO image's correctness and ease of use. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
@@ -38,7 +38,7 @@ Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the E
  
 # Prerequisites
 
-To complete this tutorial, you will need the following items:
+To complete this tutorial, you will need the following:
 <br/>
 
 * Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
