@@ -30,7 +30,7 @@ The following points summarize the primary stages of Edge cluster deployment to 
 Following the primary stages outlined above, this tutorial will guide you to build the Edge artifacts (Edge installer ISO image and provider images) and use the Edge installer ISO image to prepare Edge hosts. Next, you will use the provider image to create a cluster profile and then deploy a cluster on those Edge hosts. You will use VMware to deploy the Edge hosts to simulate a bare metal environment.
 
 
-Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the Edge host VMs is a less complex path to learning and gaining experience with Edge due to not having to connect to a physical Edge devices. Therefore, this tutorial uses VMware VMs as Edge hosts to test the installer ISO image's correctness and ease of use. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
+For learning purposes, you will set up Virtual Machines (VMs) as Edge hosts and deploy a cluster on Edge host VMs. VMs provide a more accessible Edge learning experience, as you do not require connecting to physical Edge devices. The diagram below shows the main steps to prepare Edge hosts and deploy a cluster. 
 
 
 ![An overarching diagram showing the tutorial workflow.](/tutorials/edge/clusters_edge_deploy-cluster_overarching.png)
@@ -41,7 +41,7 @@ Setting up Virtual Machines (VMs) as Edge hosts and deploying a cluster on the E
 To complete this tutorial, you will need the following:
 <br/>
 
-* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP enabled network.
+* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP-enabled network.
 
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
@@ -305,15 +305,15 @@ This tutorial example will use [Packer](https://www.packer.io/) to create a VM t
 
 ## Create a VM Template
 
-The forthcoming heredoc script will prompt you to enter your VMware vCenter environment details and save them as environment variables in a file, **.packerenv**. Packer will read those environment variables during the build process. 
+You will use the **heredoc** script to create a VM template. The script prompts you to enter your VMWare vCenter environment details and saves them as environment variables in a file named **.packerenv**. Packer reads the environment variables during the build process.
 
-Therefore, be ready with the values of the following VMware vCenter environment variables in a notepad before executing the forthcoming heredoc script. 
+Before you invoke the **heredoc** script, have values handy in a notepad for the VMWare vCenter environment variables listed in the table.  
 <br /> 
 
 |**Variable**|**Description**| **How to find its value?**|
 |---|---|---|
-| `PKR_VAR_vcenter_server` | vCenter Server URL |Check with your VMware datacenter administrator. Omit `http://` or `https://` in the URL; for example, use `vcenter.spectrocloud.dev`. |
-|`PKR_VAR_vcenter_username`| vSphere client username |Request credentials from your VMware datacenter administrator. Here is an example username, `myusername@vsphere.local`|
+| `PKR_VAR_vcenter_server` | vCenter server URL |Check with your VMware data center administrator. Omit `http://` or `https://` in the URL. Example, use `vcenter.spectrocloud.dev`. |
+|`PKR_VAR_vcenter_username`| vSphere client username |Request credentials from your VMware data center administrator. Example:  `myusername@vsphere.local`|
 |`PKR_VAR_vcenter_password`|vSphere client password|--|
 |`PKR_VAR_vcenter_datacenter`|Data center name |Expand your vSphere client's main menu and select **Inventory** > **Hosts and Clusters**. The data center name is displayed in the left navigation tree.|
 |`PKR_VAR_vcenter_cluster`|Cluster name | Expand the data center inventory to view the cluster name in the left navigation tree. |
@@ -323,7 +323,7 @@ Therefore, be ready with the values of the following VMware vCenter environment 
 |`PKR_VAR_vcenter_network`| Network name | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.|
 
 
-Use the following heredoc script to create a file, **.packerenv**, containing the VMware vCenter details as environment variables.
+Use the **heredoc** script to create the **.packerenv** file shown below that contains the VMware vCenter details as environment variables.
 <br />
 
 ```bash
@@ -802,7 +802,7 @@ The screenshot below shows an Edge host added to the master pool.
 ![Screenshot of an Edge host added to the master pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.png)
 
 
-Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool. If you do not have any remaining Edge hosts, you can remove the worker pool because your master pool has worker capability. 
+Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool.  
 
 |**Field** | **Value for the worker-pool**| 
 |---| --- | 
@@ -926,9 +926,9 @@ docker image rm --force ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 <br /> 
 
 ##  Clean up VMware vCenter Environment
-Navigate to **Inventory** > **VMs and Templates** in your vSphere client, and delete the **palette-edge-template** VM template. 
+Navigate to **Inventory** > **VMs and Templates** in your vSphere client. To delete the **palette-edge-template** VM template, right-click on it and choose **Delete** option from the **drop-down Menu**.
 
-Switch to the **Storage** view in your vSphere client, and delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the datastore.
+Switch to the **Storage** view in your vSphere client. To delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the **drop-down Menu**.
 <br />
 
 # Wrap-Up
