@@ -58,7 +58,7 @@ To complete this tutorial, you will need the following:
 
   </WarningBox>
 
-* A Linux machine with the following minimum hardware configuration:
+* The following minimum hardware configuration:
   - 4 CPU
   - 8 GB memory
   - 50 GB storage
@@ -254,7 +254,7 @@ palette-edge-installer.iso.sha256
 ```
 
 
-Export the path to the ISO file, the **build** directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you will use this local variable to bind mount the **build** directory to a Docker container. 
+Export the path to the ISO file, the **build** directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you will use this local variable to mount the **build** directory to a Docker container. 
 <br />
 
 ```bash
@@ -363,10 +363,16 @@ The environment variable you set using `export [var-name]=[var-value]` will not 
 <br />
 
 The next step is to use the following `docker run` command to trigger Packer build process to create a VM template. Here is an explanation of the options and sub-command used below:
+<br />
+
 - The `--env-file` option reads the **.packerenv** file.
-- The `--volume ` option will mount a local directory to the container.
-- It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`.
+
+
+- The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`.
+
+
 - The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
+
   - The `-force` flag destroys any existing template. 
   - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](https://docs.spectrocloud.com/clusters/edge/architecture/#minimumdevicerequirements).
 
@@ -472,14 +478,25 @@ cat .goenv
 
 
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
-- The `--env-file` option will read the **.goenv** file.
-- It uses our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.6`.
+<br />
+
+- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.0.6` tutorials container.
+
+
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's **edge/vmware/clone_vm_template/** directory and invokes the **deploy-edge-host.sh** shell script. 
 
+
 The **edge/vmware/clone_vm_template/** directory in the container has the following files:
+<br />
+
 - **deploy-edge-host.sh** - Provisions the VMs.
+
+
 - **delete-edge-host.sh** - Deletes the VMs.
+
+
 - **setenv.sh** - Defines the GOVC environment variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment variables refer to the variables you have defined in the **.goenv** file. 
+
 
 Below is the **setenv.sh** file content for your reference. This tutorial does not require you to modify these configurations. 
 <br />
@@ -903,8 +920,8 @@ Note the provider image name and tags, and use the following command syntax to r
 <br />
 
 ```bash
-docker image rm -f ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
-docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
+docker image rm --force ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
+docker image rm --force ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br /> 
 
