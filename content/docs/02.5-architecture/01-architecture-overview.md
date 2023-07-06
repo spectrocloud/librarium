@@ -21,6 +21,11 @@ Palette is available in three flexible deployment models:
 
 <br />
 
+![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.png)
+
+<br />
+
+
 ## Product Security
 
 At Spectro Cloud, we recognize the importance of robust security measures in today's rapidly evolving digital landscape. As the provider of our cutting-edge SaaS and self-hosted Palette product, our commitment to safeguarding your data and ensuring the integrity of our services is paramount. Learn more about Palette security by reviewing the [Security](/security) section.
