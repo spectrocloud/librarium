@@ -879,12 +879,11 @@ docker run --interactive --tty --rm --env-file .goenv \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
-Also, delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the VMware vCenter datastore.
 <br />
 
 ##  Delete Edge Artifacts
 
-If you further want to delete Edge artifacts from your Linux development environment, delete the Edge installer ISO image and its checksum by executing the following commands from the **CanvOS/** directory.
+If you want to delete Edge artifacts from your Linux development environment, delete the Edge installer ISO image and its checksum by issuing the following commands from the **CanvOS/** directory.
 <br />
 
 ```bash
@@ -909,7 +908,7 @@ docker image rm -f ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br /> 
 
-##  Cleanup VMware vCenter Environment
+##  Clean up VMware vCenter Environment
 Navigate to **Inventory** > **VMs and Templates** in your vSphere client, and delete the **palette-edge-template** VM template. 
 
 Switch to the **Storage** view in your vSphere client, and delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the datastore.
@@ -917,11 +916,13 @@ Switch to the **Storage** view in your vSphere client, and delete the **palette-
 
 # Wrap-Up
 
-The core component of preparing Edge hosts and deploying Palette-managed Edge clusters is building and utilizing Edge artifacts. Edge artifacts consist of an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO assists to prepare the Edge hosts, while the provider image is referred to in the cluster profile. 
+Building Edge artifacts allows you to prepare Edge hosts and deploy Palette-managed Edge clusters. Edge artifacts consist of an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO assists in preparing the Edge hosts, and the provider image is used in the cluster profile. 
 
-In this tutorial, you learned how to build Edge artifacts, prepare VMware VMs as Edge hosts using Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
+In this tutorial, you learned how to build Edge artifacts, prepare VMware VMs as Edge hosts using the Edge installer ISO, create a cluster profile referencing a provider image, and deploy a cluster.
 
-Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, enabling you to choose the desired Kubernetes version for your cluster deployment. Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. In addition to all these benefits, you can conveniently manage the entire lifecycle of Edge clusters with Palette.
+Palette's Edge solution allows you to prepare your Edge hosts with the desired OS, dependencies, and user data configurations. It supports multiple Kubernetes versions while building the Edge artifacts and creating cluster profiles, enabling you to choose the desired Kubernetes version for your cluster deployment. 
+
+Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and to validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. In addition, you can use Palette to manage the entire lifecycle of Edge clusters.
 
 To learn more about Edge,  check out the resources below.
 <br />
