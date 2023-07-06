@@ -84,14 +84,14 @@ To complete this tutorial, you will need the following:
 
 In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile. 
 
-The current tutorial will build and use the provider image compatible with K3s v1.25.2 as an example. 
+This tutorial builds and uses the provider image compatible with K3s v1.25.2. 
 <br />
 
-## Checkout the Starter Code
+## Check Out Starter Code
 
-Issue the following and subsequent command-line instructions on your Linux machine, referred to as the development environment in this tutorial.
+Issue the following and subsequent command-line instructions on your Linux machine, which this tutorial refers to as the development environment.
 
-Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code for building Edge artifacts. 
+Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts. 
 <br />
 
 ```bash
@@ -122,7 +122,7 @@ git checkout v3.4.3
 
 ## Review Arguments
 
-The **.arg.template** sample file in the current directory contains customizable arguments, such as image tag, registry, repository, and OS distribution. Rename the sample **.arg.template** file to **.arg** and review the arguments to use in the build process.
+The **.arg.template** sample file in the current directory contains customizable arguments, such as image tag, registry, repository, and OS distribution. Rename the sample **.arg.template** file to **.arg** and review the arguments to use during the build process.
 <br />
 
 ```bash
@@ -130,9 +130,9 @@ mv .arg.template .arg && cat .arg
 ```
 
 
-CanvOS allows you to customize arguments defined in the **.arg** file. However, this tutorial will use the default values for all arguments, for example, the operating system as `ubuntu` and the tag as `demo`. As a result, the provider image will name as `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. 
+CanvOS allows you to customize arguments defined in the **.arg** file. However, this tutorial will use the default values for all arguments. For example, `ubuntu` is the default operating system, and `demo` is the default tag. As a result, the provider image is named `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. 
 
-Refer to the [Build Edge Artifacts](/clusters/edge/palette-canvos) guide to learn more about customizing arguments.
+Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about customizing arguments.
 <br />
 
 ## Create User Data
@@ -148,7 +148,7 @@ export token=[your_token_here]
 ```
 
   
-Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example.
+Use the following command to create the **user-data** file containing the tenant registration token. You can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example.
 <br />
 
 
@@ -171,7 +171,7 @@ Use the following command to create the **user-data** file containing the tenant
       x: 190,
       y: 300,
       label: 3,
-      description: "Sets the login credentials for Edge hosts. The login credentials will allow you to SSH log into the edge host for debugging purposes.",
+      description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
       tooltipPlacement: "rightTop",
     },
   ]}
@@ -193,7 +193,7 @@ EOF
 
 </PointsOfInterest>
 
-View the newly created user data file to ensure the token is set correctly.
+Review the newly created user data file to ensure the token is set correctly.
 <br />
 
 ```bash
@@ -203,7 +203,7 @@ cat user-data
 
 ## Build Artifacts
 
-CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process. 
+The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process. 
 <br />
 
 ```bash
@@ -216,9 +216,9 @@ sudo ./earthly.sh +build-all-images
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
 
-This command may take up to 15-20 minutes to finish depending on the hardware resources of the host machine. It will also display the manifest to use in your cluster profile later in this tutorial. See an example below. Notice that the `system.xxxxx` attribute values in the manifest below will be as same as what you defined in the **.arg** file earlier.
+This command may take 15-20 minutes to finish depending on the hardware resources of the host machine. Upon completion, the command will display the manifest, as shown in the example below, that you will use in your cluster profile later in this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what you defined earlier in the **.arg** file.
 
-Copy and save the output attributes in a notepad or clipboard to use later in the cluster profile.
+Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 <br />
 
 ```bash
@@ -263,7 +263,7 @@ echo $ISOFILEPATH
 ```
 
 
-List the Docker images to review the provider images created. By default, provider images for all the Palette-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` variable. 
+List the Docker images to review the created provider images. By default, provider images are created for all the Palette-supported Kubernetes versions. You can identify the provider images by the image tag value you used in the **.arg** file's `CUSTOM_TAG` variable. 
 <br />
 
 ```shell
@@ -280,7 +280,7 @@ ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
 
 ## Push Provider Images
 
-Push the provider images to the image registry mentioned in the **.arg** file so that you can reference the provider image in your cluster profile later. 
+Push the provider images to the image registry indicated in the **.arg** file so that you can reference the provider image later in your cluster profile. 
 
 This example will use the provider image compatible with K3s v1.25 in the cluster profile. Therefore, use the following command to push the provider image compatible with K3s v1.25 to the image registry. If you want to use the other provider image compatible with K3s v1.24 instead, push that version to the image registry. The current example and default behavior use the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will expire after the 24 hrs time limit.  
 <br />
