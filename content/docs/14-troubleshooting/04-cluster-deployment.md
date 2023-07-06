@@ -23,7 +23,7 @@ An instance is launched and terminated every 30 minutes prior to completion of i
 
 <br />
 
-```bash
+```bash hideClipboard
 Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint
 ```
 
@@ -95,7 +95,7 @@ Common reasons for why a service may fail are:
 6. Check stdout for errors. You can also open a support ticket. Visit our [support page](http://support.spectrocloud.io/).
 
 
-## Scenario - Gateway Installer Registration Failures
+## Gateway Installer Registration Failures
 
 There are a couple reasons the Gateway Installer might fail: 
 
@@ -139,7 +139,7 @@ else
 fi
 ```
 
-## Scenario - Gateway Cluster Provisioning Failures
+## Gateway Cluster Provisioning Failures
 
 Installation of the Gateway cluster may run into errors or get stuck in the provisioning state for various reasons like lack of infrastructure resources, lack of availability of IP addresses, inability to perform NTP sync, etc. 
 

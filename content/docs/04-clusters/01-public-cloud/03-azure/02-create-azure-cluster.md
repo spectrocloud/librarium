@@ -191,7 +191,7 @@ Failure in removing provisioned resources can result in unexpected costs.
 
 </WarningBox>
 
-## Validation
+## Validate
 
 To validate the Azure cluster creation and deletion status
 

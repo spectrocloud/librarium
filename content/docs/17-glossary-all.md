@@ -28,16 +28,21 @@ App Profiles are templates created with preconfigured services required for Pale
 Palette on-prem installation supports Air-Gapped, a security measure in which its management platform is installed on VMware environments with no direct or indirect connectivity to any other devices or networks of the outside world. This feature provides airtight security to the platform without the risk of compromise or disaster. In addition, it ensures the total isolation of a given system from other networks, especially those that are not secure.
 ## Attach Manifests
 
-For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets or Custome Resource Definisions may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach Manifests can be added to a layer in a cluster profile.
+For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets or Custom Resource Definitions may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach Manifests can be added to a layer in a cluster profile.
+
+## Bring Your Own Operating System (BYOOS)
+
+A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYOOS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYOOS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
+
 ## Chart Repositories
 
-Chart Repositories are public or private web servers that host Helm Charts. A few popular chart registries, such as Bitnami, are mapped into Palette by default. Users may add additional public or private chart repositories as an administration setting to leverage charts from those repositories.
+Chart Repositories are web servers, either public or private, that host Helm Charts. By default, Palette includes several popular chart registries such as Bitnami. As an administrator, you can add additional public or private chart repositories to leverage charts from those sources. This feature provides greater flexibility in managing and deploying applications, allowing you to access and use Helm Charts from various sources in your Palette environment
 ## Cloud Account
 
 Cloud Accounts are where access credentials are stored for public and private clouds. It is used by the system to provide new cluster infrastructure and cluster resources. Cloud account information is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
 
 ## Cluster Mode
-Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can deploy Kubernetes clusters to public cloud providers, on-prem datacenters, and on the edge. 
+Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can deploy Kubernetes clusters to public cloud providers, on-prem data centers, and on the edge. 
 
 ## Cluster Profile
 
@@ -96,7 +101,7 @@ Palette eXtended Kubernetes (PXK) is a customized version of the open-source Clo
 PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI) plugins and container network interface (CNI) plugins.
-Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interface. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.  
+Other open-source Kubernetes distributions, such as MicroK8s, RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional overhead or complexity needed from your side.  
 
 There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open-source Kubernetes distribution.
 

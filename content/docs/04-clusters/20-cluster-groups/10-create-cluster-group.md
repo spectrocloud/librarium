@@ -117,7 +117,7 @@ To enable virtual clusters for OpenShift, review the OpenShit [instructions belo
 
 8. Click **Finish Configuration**.
 
-## Validation
+## Validate
 
 To review your cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Your newly created cluster group is now displayed and ready for use. 
 

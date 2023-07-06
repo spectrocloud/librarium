@@ -4,7 +4,6 @@ metaTitle: "Create and Manage AWS Cluster"
 metaDescription: "Learn how to add and manage a cluster deployed to AWS."
 hideToC: false
 fullWidth: false
-category: ["how-to"]
 ---
 
 import Tabs from 'shared/components/ui/Tabs';
@@ -21,9 +20,17 @@ Palette supports creating and managing Kubernetes clusters deployed to an AWS ac
 The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account 
-- Palette integration with AWS account. Review the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) for guidance.
+
+
+- You have added an AWS account in Palette. Review the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) for guidance.
+
+
 - An infrastructure cluster profile. Review the [Create Cluster Profiles](/cluster-profiles/task-define-profile) for guidance.
+
+
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
+
+
 - Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
     - vCPU
     - VPC
@@ -48,13 +55,11 @@ The following tags should be added to the virtual private network (VPC) public s
 </InfoBox>
 
 
-# Deploying an AWS Cluster
-
-<!-- `video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4` -->
+# Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
 
-1. Ensure you are in the correct project scope.
+1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
 
 
 2. Navigate to the left **Main Menu** and click on **Clusters**
@@ -69,7 +74,7 @@ Use the following steps to provision a new AWS cluster:
 5. Select **AWS** and click on **Start AWS Configuration**
 
 
-6. Populate the wizard page with the following information: name, description, tags and AWS account. Tags on a cluster are propagated to the VMs deployed on the cloud/data center environments. Click on **Next** after you have filled out all the required information.
+6. Populate the wizard page with the following information: name, description, tags and select AWS account. Tags on a cluster are propagated to the VMs deployed to the computing environments. Click on **Next** after you have filled out all the required information.
 
 
 7. Select a cluster profile. Click on **Next**.
@@ -80,34 +85,46 @@ Use the following steps to provision a new AWS cluster:
 
 9. Provide the AWS cloud account and placement information.
 
-    |**Parameter**| **Description**|
-    |-------------|---------------|
-    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
-    |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.<br /> If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
-    ||**Virtual Network**: Select the virtual network from dropdown menu.
-    ||**Control plane subnet**: Select the control plane network from the drop-down menu.
-    ||**Worker Network**: Select the worker network from the dropdown menu. |
-    
+  <br />
 
-10. Make the choice of updating the worker pool in parallel, if required. Click on **Next**.
+  |**Parameter**| **Description**|
+  |-------------|---------------|
+  |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
+  |**Region** | Choose the preferred AWS region where you would like to provision clusters.|
+  |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.|
+  |**Static Placement** | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](/clusters/public-cloud/aws/create-cluster#staticplacement) table below to learn more about the required input fields.|
+  
+  <br />
 
+  #### Static Placement
 
-11. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes.
-
-<InfoBox>
-
-You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
-
-</InfoBox>
-
- 
-
-12. An optional taint label can be applied to a node pool during the cluster creation. For a an existing cluster, the taint label can be edited, review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label.
+  |Parameter|Description|
+  |---|---|
+  |**Virtual Network**: Select the virtual network from **drop-down Menu**.|
+  |**Control plane subnet**: Select the control plane network from the **drop-down Menu**.|
+  |**Worker Network**: Select the worker network from the **drop-down Menu**. |
+  
 
 
-13. Enable or disable node pool taints. If tainting is enabled then you need provide values for the following parameters:
+10. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes. Click on **Next** after you have completed configuring the node pool.
+
+  <br />
+
+  <InfoBox>
+
+  You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
+
+  </InfoBox>
+
+
+
+
+
+
+12. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the taint label can be edited, review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label.
+
+
+13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters:
     
     |**Parameter**| **Description**|
     |-------------|---------------|
@@ -125,68 +142,29 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 
 14. Click on **Next**.  
     
-15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
 
 # Validate
 
-You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
+You can validate that your cluster is up and available by reviewing the cluster details page. 
+
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 
-
-# Delete an AWS IaaS Cluster
-
-
-The deletion of an AWS cluster results in removing all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps. 
+2. Navigate to the left **Main Menu** and click on **Clusters**. 
 
 
-1. Ensure you are in the correct project scope.
+3. The **Clusters** page contains a list of the available clusters Palette manages. Click on the row for the cluster you wish to review its details page. 
 
 
-2. Navigate to the left **Main Menu** and click on **Clusters**
 
-
-3. Click on the cluster that you want to remove.
-
-
-4. Click on the **Settings** drop-down menu.
-
-
-5. Click on **Delete Cluster**
-
-
-6. Type in the name of the cluster and click on **OK**
-
-The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
-
-## Force Delete a Cluster
-
-If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
-To force delete a cluster follow the same steps outlined in [Deleting an AWS IaaS Cluster](#deleting-an-aws-iaas-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu will provide you with an estimated time left before the force deletion becomes available..
-
-<br />
-
-<WarningBox>
- 
-
-A force delete can result in resources Palette provisioned to be missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
-
-- VPC
-- Elastic IP
-- Elastic Network Interfaces
-- Internet Gateway
-- Elastic Load Balancers
-- EBS Volumes
-- NAT Gateway
-
-Failure in removing provisioned resources can result in unexpected costs.   
-
-</WarningBox>
+4. From the cluster details page, verify the **Cluster Status** field displays **Running**.
 
 
 # Next Steps

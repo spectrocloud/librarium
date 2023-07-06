@@ -31,7 +31,7 @@ To enable PDE for downstream users, start by reviewing the following resources.
 2. Create and Manage the [Cluster Group](/clusters/cluster-groups).
 
 
-3. Allocate [User Quota](/devx/resource-quota).
+3. Allocate [User Quota](/devx/manage-dev-engine/resource-quota).
 
 
 The next set of references are not required but good for Palette administrators to be aware of.

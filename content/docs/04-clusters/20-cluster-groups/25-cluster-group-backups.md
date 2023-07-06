@@ -76,7 +76,7 @@ Setting the `podSecurityStandard` to `privileged` can introduce privilege escala
 
 All virtual clusters deployed in this cluster group will now include disk storage during backup operations.
 
-# Validation
+# Validate
 
 
 You can validate the disk backups are occurring by deploying a virtual cluster and taking a backup. 

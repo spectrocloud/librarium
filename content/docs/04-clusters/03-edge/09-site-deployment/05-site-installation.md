@@ -78,7 +78,7 @@ When the Edge host finishes rebooting, the *Cluster Provisioning* phase begins. 
 
 Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -145,7 +145,7 @@ After the reboot, the *Cluster Provisioning* phase begins. In this phase, the sy
 
 Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

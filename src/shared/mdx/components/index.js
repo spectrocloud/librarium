@@ -1,8 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import ClipboardJS from "clipboard";
-import { CopyOutlined } from "@ant-design/icons";
-import { Tooltip } from "antd";
+import Pre from "./Pre";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,14 +9,6 @@ import AnchorTag from "./anchor";
 
 import { useTabsContext } from "shared/components/ui/Tabs";
 
-const PreContainer = styled.div`
-  position: relative;
-
-  pre {
-    max-height: 450px;
-  }
-`;
-
 const VideoWrap = styled.div`
   max-width: 840px;
   video {
@@ -26,28 +16,9 @@ const VideoWrap = styled.div`
   }
 `;
 
-const Copy = styled.button`
-  opacity: 0.3;
-  border-radius: 4px;
-  background: #fefefe;
-  overflow: hidden;
-  border: none;
-  transition: opacity 0.1s ease-in;
-
-  :hover {
-    opacity: 0.9;
-  }
-`;
-
 const Anchor = styled.div`
   position: absolute;
   top: -120px;
-`;
-
-const ButtonWrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
 `;
 
 const HeaderWrap = styled.div`
@@ -101,33 +72,7 @@ function generateHeadingId(children) {
     }, "");
   }
 
-  return title.replace(/\s+/g, "").toLowerCase();
-}
-
-function Pre(props) {
-  const preRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  useEffect(() => {
-    new ClipboardJS(buttonRef.current, {
-      text: (trigger) => {
-        return preRef.current.innerText;
-      },
-    });
-  }, []);
-
-  return (
-    <PreContainer>
-      <div ref={preRef} {...props} />
-      <ButtonWrapper>
-        <Tooltip title="Copy to clipboard" placement="top">
-          <Copy ref={buttonRef}>
-            <CopyOutlined />
-          </Copy>
-        </Tooltip>
-      </ButtonWrapper>
-    </PreContainer>
-  );
+  return title?.replace?.(/\s+/g, "")?.toLowerCase?.();
 }
 
 const Header1 = (props) => {

@@ -52,7 +52,7 @@ const redirects = [
     toPath: `/clusters/edge`,
     redirectInBrowser: true,
     isPermanent: true,
-  },  
+  },
   {
     fromPath: `/troubleshooting/palette-namespaces-podes`,
     toPath: `/architecture/palette-namespaces-podes`,
@@ -163,8 +163,8 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/edge/installer-image`,
-    toPath: `/clusters/edge/install/installer-image`,
+    fromPath: `/clusters/edge/install/installer-image`,
+    toPath: `/clusters/edge/site-deployment/site-installation`,
     redirectInBrowser: true,
     isPermanent: true,
   },
@@ -176,16 +176,17 @@ const redirects = [
   },
   {
     fromPath: `/clusters/edge/installer-image`,
-    toPath: `/clusters/edge/site-deployment/installer`,
+    toPath: `/clusters/edge/site-deployment/site-installation`,
     redirectInBrowser: true,
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/edge/native`,
-    toPath: `/clusters/edge/site-deployment/installer`,
+    fromPath: `/clusters/edge/site-deployment/installer`,
+    toPath: `/clusters/edge/site-deployment/site-installation`,
     redirectInBrowser: true,
     isPermanent: true,
-  },{
+  },
+  {
     fromPath: `/knowledgebase/tutorials/terraform-tutorial`,
     toPath: `/terraform`,
     redirectInBrowser: true,
@@ -194,6 +195,70 @@ const redirects = [
   {
     fromPath: `/knowledgebase/tutorials/cks-tutorial`,
     toPath: `/introduction`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/knowledgebase/tutorials/dev-engine/deploy-app`,
+    toPath: `/knowledgebase/tutorials`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app`,
+    toPath: `/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/devx/resource-quota`,
+    toPath: `/devx/manage-dev-engine/resource-quota`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },{
+    fromPath: `/devx/registries`,
+    toPath: `/devx/manage-dev-engine/registries`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },{
+    fromPath: `/devx/virtual-clusters`,
+    toPath: `/devx/palette-virtual-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-kairos-os`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/edge/edgeforge-workflow/build-images`,
+    toPath: `/clusters/edge/edgeforge-workflow/palette-canvos`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/ubuntu-k3s`,
+    toPath: `/integrations/ubuntu`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/brownfield-clusters`,
+    toPath: `/clusters/imported-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/oidc-eks`,
+    toPath: `/integrations/kubernetes#configurecustomoidc`,
     redirectInBrowser: true,
     isPermanent: true,
   }

@@ -1,3 +1,18 @@
+# [3.4.0](https://github.com/spectrocloud/librarium/compare/v3.3.0...v3.4.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([#1282](https://github.com/spectrocloud/librarium/issues/1282)) ([b20c684](https://github.com/spectrocloud/librarium/commit/b20c684005cff71784c81e0ee517c6aa68f0c467))
+* upgrade antd from 4.24.8 to 4.24.9 ([#1290](https://github.com/spectrocloud/librarium/issues/1290)) ([d5f9771](https://github.com/spectrocloud/librarium/commit/d5f9771fca1dfe144236a1fdca38eba2cd663556))
+* upgrade react-instantsearch-dom from 6.39.0 to 6.39.1 ([#1238](https://github.com/spectrocloud/librarium/issues/1238)) ([678b82b](https://github.com/spectrocloud/librarium/commit/678b82b0b2434cd12d1b0997477c09d8c003d2f2))
+* upgrade sharp from 0.30.5 to 0.32.0 ([#1243](https://github.com/spectrocloud/librarium/issues/1243)) ([7167c1b](https://github.com/spectrocloud/librarium/commit/7167c1be0e3ed1e21fea1a6edabfacac580cc0cb))
+
+
+### Features
+
+* release 3.4 ([#1229](https://github.com/spectrocloud/librarium/issues/1229)) ([e2bf1cb](https://github.com/spectrocloud/librarium/commit/e2bf1cb439487fb420c549f7d1f59cc564facb88)), closes [#1246](https://github.com/spectrocloud/librarium/issues/1246) [#906](https://github.com/spectrocloud/librarium/issues/906) [#1248](https://github.com/spectrocloud/librarium/issues/1248) [#1247](https://github.com/spectrocloud/librarium/issues/1247)
+
 # [3.3.0](https://github.com/spectrocloud/librarium/compare/v3.2.1...v3.3.0) (2023-03-19)
 
 

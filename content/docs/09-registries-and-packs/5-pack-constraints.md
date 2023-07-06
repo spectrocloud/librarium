@@ -562,28 +562,34 @@ user:
  name: "{{ .spectro.system.[VARIABLE_NAME] }}"
 ```
 
-**Supported Variables**
+### Supported Variables
 
-* user.name
-* user.uid
-* user.email
-* tenant.uid
-* project.name
-* project.uid
-* clusterprofile.name
-* clusterprofile.uid
-* cluster.name
-* cluster.uid
-* cloudaccount.name
-* cloudaccount.uid
-* kubernetes.version
-* reverseproxy.server
-* reverseproxy.port
-* reverseproxy.protocol
-* reverseproxy.vhostport
-* cloud.type
-* cloud.region
 
+| Macro | Description |
+|-------|-------------|
+| `{{.spectro.system.user.name}}`| The name of the user currently logged in. |
+| `{{.spectro.system.user.uid}}`  | The unique identifier of the user currently logged in. |
+| `{{.spectro.system.user.email}}`  | The email address of the user currently logged in. |
+| `{{.spectro.system.tenant.uid}}`  | The unique identifier of the current tenant. |
+| `{{.spectro.system.project.name}}`  | The name of the project. |
+| `{{.spectro.system.project.uid}}`  | The unique identifier of the project. |
+| `{{.spectro.system.clusterprofile.name}}`| The name of the cluster profile associated with the current project. |
+| `{{.spectro.system.clusterprofile.uid}}` | The unique identifier of the cluster profile the pack is part of. |
+| `{{.spectro.system.clusterprofile.version}}`| The current version of the cluster profile the pack is part of.|
+| `{{.spectro.system.cluster.name}}`  | The name of the cluster. |
+| `{{.spectro.system.cluster.uid}}`  | The unique identifier of the cluster. |
+| `{{.spectro.system.cloudaccount.name}}`  | The name of the cloud account associated with the current project. |
+| `{{.spectro.system.cloudaccount.uid}}`  | The unique identifier of the cloud account associated with the current project. |
+| `{{.spectro.system.kubernetes.version}}`  | The version of Kubernetes currently running on the cluster. |
+| `{{.spectro.system.reverseproxy.server}}`  | The hostname of the reverse proxy server. |
+| `{{.spectro.system.reverseproxy.port}}`  | The port number of the reverse proxy server. |
+| `{{.spectro.system.reverseproxy.protocol}}`  | The protocol used by the reverse proxy server, either HTTP or HTTPS. |
+| `{{.spectro.system.reverseproxy.vhostport}}`  | The port number used by the virtual host on the reverse proxy server. |
+| `{{.spectro.system.cloud.type }}`  | The type of cloud provider being used, such as AWS, GCP, Azure or other providers. |
+| `{{.spectro.system.cloud.region }}`   | The region where the cloud resources are located. |
+| `{{.spectro.system.clusterprofile.infra.name}}`    | The name of the cluster profile. |
+| `{{.spectro.system.clusterprofile.infra.uid}}`   | The unique identifier of the cluster profile. |
+| `{{.spectro.system.clusterprofile.infra.version}}`  | The version of the cluster profile. |
 
 </Tabs.TabPane>
 

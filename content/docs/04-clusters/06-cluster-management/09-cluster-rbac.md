@@ -117,6 +117,8 @@ Palette roles do not automatically map to a Kubernetes role. You must create a r
 
 To create a role binding the role must exist inside the host cluster. You can use any of the [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
 
+If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](/integrations/kubernetes#userbacwithoidc).
+
 ## Enablement
 
 You can create role bindings during the cluster creation process or after the host cluster is deployed. 
@@ -165,7 +167,7 @@ A ClusterRoleBinding will be created in your host cluster. Keep in mind that you
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="Assigne a Namespace Role" key="roleBinding">
+<Tabs.TabPane tab="Assign a Namespace Role" key="roleBinding">
 
 1. From the cluster settings view, select the **RBAC** tab.
 
@@ -203,7 +205,7 @@ A role binding will be created in the listed namespaces. Keep in mind that you c
 
 </Tabs>
 
-## Validation
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -233,44 +235,3 @@ kubectl get clusterrole <yourRoleNameHere> --output yaml
 kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
 ```
 
-
-# Use RBAC With OIDC
-
-
-This section explains how to use RBAC with OIDC providers. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters. Azure AKS and AWS EKS require different configurations. 
-
-Add the following parameters to your Kubernetes pack when creating a cluster profile.
-
-<br />
-
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
- 
-The `clientConfig` parameter is required to properly use the OIDC IDP. 
-
-<br />
-
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
-
-Next, you can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
-
-Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
-
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
-
-
-In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.

@@ -29,15 +29,24 @@ EdgeForge contains three critical components.
 
 
 
-Each component plays a critical role in the [lifecycle](/clusters/edge/edge-native-lifecycle) of an Edge deployment. Review the following sections to learn more about each component.
+Each component plays a critical role in the [lifecycle](/clusters/edge/edge-native-lifecycle) of an Edge deployment. Review the [Edge Artifacts](/clusters/edge/edgeforge-workflow#edgeartifacts) section to learn more about each component.
 
 ![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
 
 
+# Get Started
+
+
+To start building a custom Edge artifact, use the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
+
+
+<br />
+
+# Edge Artifacts
 
 ## Edge Installer ISO
 
-An ISO file that bootstraps the installation process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The default Edge Installer ISO download URL is in the [Downloads](/spectro-downloads#edgeinstallimages) resource.
+An ISO file that bootstraps the installation is created in the EdgeForge process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation.
 
 <br />
 
@@ -62,37 +71,13 @@ You can specify a custom registry for the Edge Installer to use during installat
 
 </InfoBox>
 
-
-# Edge Installation Support Tools
-
-All organizations have unique environments and different needs. To help you successfully deploy an Edge host in your environment and create an Edge Native host cluster, we provide two Edge CLIs to help you customize the installation.  
-
 <br />
 
-* Palette Edge Content Builder
 
 
-* Palette Edge Image Builder
 
-Each CLI has a unique purpose and will help you create the proper resources to deploy your Edge host successfully. 
 
-<br />
 
-## Palette Edge Content Builder
-
-The Palette Edge Content Builder CLI helps you create content bundles. A content bundle is a compressed ZST file you can include with the Edge Installer for bandwidth optimization. The CLI can also build the content bundle in optical disk image (ISO) format. In ISO format, the content is not baked into the installer but can be supplied as an additional USB drive during installation. 
-
-To learn how to use Palette Edge Content Builder CLI to create content bundles, check out the [Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.
-
-<br />
-
-## Palette Edge Image Builder
-
-The Palette Edge Image Builder CLI is a tool for creating custom Edge artifacts. You can use the CLI to address common deployment concerns about required packages, software restrictions, bandwidth concerns, and more. By using your Edge artifacts, you gain complete control over the deployment, and you can manage the software in your Edge clusters to best suit your organization's needs.
-
-Follow the instructions in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide to learn more about creating custom Edge artifacts.
-
-<br />
 
 # Deployment Scenarios
 
@@ -117,23 +102,17 @@ You can embed the Edge Installer configuration user data into the Edge Installer
 
 
 - **Bring Your Own OS (BYOOS)**:
-Palette provides the following runtime OS out-of-the-box for all Edge Hosts. For environments that require a different runtime OS, you can specify another OS through the BYOOS option. Follow the instructions in the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide to learn more about BYOOS.
-
-# Build a Custom Edge Artifact
-
-
-
-To start building a custom Edge artifact, use the following guides. You should review each guide sequentially, although some guides may not apply to your Edge deployment.
+For environments that require a different runtime OS, you can specify another OS through the [BYOOS](/integrations/byoos) option. Follow the instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about how you can customize the OS used in an Edge deployment.
 
 <br />
 
-- [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os)
+# Resources
 
 
-- [Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle)
+- [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
+
+
+- [Build Preloaded Content Bundles](/clusters/edge/edgeforge-workflow/build-content-bundle)
 
 
 - [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data)
-
-
-- [Build Images](/clusters/edge/edgeforge-workflow/build-images)
