@@ -17,7 +17,7 @@ Canonical MAAS is an open-source tool that lets you discover, commission, deploy
 
 <br />
 
-- Palette integrates with MAAS through Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF) [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas).
+- Palette integrates with MAAS through Spectro Cloud’s open-source Cloud Native Computing Foundation (CNCF) [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas).
 Refer to the table below
 
 
@@ -40,7 +40,7 @@ Refer to the table below
 
 # PCG Deployment Options
 
-Palette can communicate with MaaS using the following deployment options.
+Palette can communicate with MAAS using the following deployment options.
 
 <br />
 
@@ -52,17 +52,17 @@ Palette can communicate with MaaS using the following deployment options.
 
 ## Private Cloud Gateway
 
-When a user wants to deploy a new cluster on a bare metal cloud using MAAS with Palette, Palette needs connectivity to MAAS. Often, MAAS is behind a firewall and/or NAT gateway, and Palette cannot reach MAAS directly. 
+When a user wants to deploy a new cluster on a bare metal cloud using MAAS with Palette, Palette needs connectivity to MAAS. Often, MAAS is behind a firewall or a Network Address Translation (NAT) gateway, and Palette needs help to reach MAAS directly. 
 
-To address these network challenges, you can deploy a PCG. The PCG optionally supports using a proxy server to access the internet. The PCG will maintain a connection to Palette, and have direct connectivty to MAAS. This allows Palette to create clusters by utilising the PCG to facilitate communication with MAAS.
+To address these network challenges, you can deploy a PCG. The PCG will maintain a connection to Palette and directly connect to MAAS. The direct communication channel allows Palette to create clusters using the PCG to facilitate communication with MAAS. The PCG also supports using a proxy server to access the internet if needed.
 
-Once clusters are deployed by Palette, the clusters require connectivity to Palette. They do this either directly via internet gateways or, if a proxy has been configured on the PCG, they will inherit this configuration. At this point, the clusters maintain their own connectivity with Palette. Operations performed on these clusters via Palette will be done without PCG involvement. This means that if the PCG goes down, any clusters that are currently deployed will remain operational and still be managed by Palette, with the exception of full deletion of these clusters.
+Once Palette deploys clusters, the clusters require connectivity to Palette. The clusters communicate with Palette directly via an internet gateway, or if a proxy has been configured on the PCG, the clusters will inherit the proxy configuration. Deployed and active clusters maintain their connectivity with Palette. Any actions taken on these clusters using Palette will not require PCG's participation. This means that if the PCG becomes unavailable, any clusters that are currently deployed will remain operational and still be managed by Palette. 
 
-All Palette deployed clusters will use the PCG cluster during the creation and deletion phase. Once a host cluster is available, the internal Palette agent will communicate with Palette directly. A Palette agent inside each cluster is the originator of all communication, so the network requests are outbound towards Palette. The exception is a host cluster creation or deletion request, where the PCG must be involved because it needs to acquire and release machines provided by MAAS.
+All Palette deployed clusters will use the PCG cluster during the creation and deletion phase. Once a host cluster is available, the internal Palette agent will communicate with Palette directly. The Palette agent inside each cluster is the originator of all communication, so the network requests are outbound toward Palette. The exception is a host cluster creation or deletion request, where the PCG must be involved because it needs to acquire and release machines provided by MAAS.
 
-Typically, the PCG is used with Palette SaaS. However, if you have a self-hosted Palette instance and it does not have direct access to MAAS, then a PCG is also required. If there is direct access, then you can utilise the System Private Gateway, detailed below.
+Typically, the PCG is used with Palette SaaS. However, if you have a self-hosted Palette instance and it does not have direct access to MAAS, then a PCG is also required. If there is direct access, then you can utilize the System Private Gateway. Refer to the [System Private Gateway](/clusters/data-center/maas/architecture/#systemprivategateway) section to learn more.
 
-  <br />
+<br />
 
 
 ## System Private Gateway
