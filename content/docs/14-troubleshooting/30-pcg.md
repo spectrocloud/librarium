@@ -25,6 +25,8 @@ During the installation of a PCG cluster, one of the internal Palette components
 
 ## Debug Steps
 
+<br />
+
 Complete the PCG installation so that the internal component receives the proper authorization token from Palette and completes the initialization successfully.
 
 <br />
@@ -35,6 +37,7 @@ When the PCG installer instance is powered on, the PCG installer goes through a 
 
 ## Debug Steps
 
+<br />
 
 1. SSH into the PCG installer virtual machine using the username `ubuntu` and the SSH key provided during OVA import.
 
