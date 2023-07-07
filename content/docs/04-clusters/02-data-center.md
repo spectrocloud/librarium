@@ -35,7 +35,7 @@ The following pages provide detailed instructions for setting up new workload cl
 - [OpenStack](/clusters/data-center/openstack)
 
 
-- [VMWare](/clusters/data-center/vmware)
+- [VMware](/clusters/data-center/vmware)
 
 <br />
 
