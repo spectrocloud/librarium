@@ -1,7 +1,7 @@
 ---
-title: "Palette eXtended Kubernetes Edge"
-metaTitle: "Palette eXtended Kubernetes Edge"
-metaDescription: "Learn about the Palette eXtended Kubernetes Edge pack and how you can use it your host clusters in an edge environment."
+title: "Palette eXtended Kubernetes - Edge"
+metaTitle: "Palette eXtended Kubernetes - Edge"
+metaDescription: "Learn about the Palette eXtended Kubernetes - Edge pack and how you can use it your host clusters in an edge environment."
 hiddenFromNav: true
 type: "integration"
 category: ["kubernetes"]
@@ -14,9 +14,9 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Palette eXtended Kubernetes Edge
+# Palette eXtended Kubernetes - Edge
 
-The Palette eXtended Kubernetes (PXK-E) pack supports Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. We offer PXK-E as a core pack in Palette. 
+The Palette eXtended Kubernetes - Edge (PXK-E) pack supports Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores, restaurants, and similar locations, versus a data center or cloud environment. We offer PXK-E as a core pack in Palette. 
 
 Review our [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
 
@@ -56,13 +56,11 @@ We also offer Palette eXtended Kubernetes (PXK) for cloud and data center deploy
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 2 CPU and 4GB Memory.
 
 
-- Configured OpenID Connect (OIDC) Identity Provider (IDP).
 
 
-- Users or groups mapped to a Kubernetes RBAC role.
 
 
 
@@ -92,10 +90,6 @@ You can also use pack settings described in the [Palette eXtended Kubernetes](/i
 The Kubeadm configuration file is where you can do the following:
 
 <br />
-
-- Change the default ``podSubnet`` and ``serviceSubnet`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
-
-  As you build your cluster, check that the ``podSubnet`` value does not overlap with any hosts or with the service network and the ``serviceSubnet`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
 
 - Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc).
