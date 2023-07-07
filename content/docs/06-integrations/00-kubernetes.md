@@ -54,13 +54,6 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 - A minimum of 4 CPU and 4GB Memory.
 
-
-<!-- - Configured OpenID Connect (OIDC) Identity Provider (IDP). -->
-
-
-- Users or groups mapped to a Kubernetes RBAC role.
-
-
 - Operating System (OS) dependencies as listed in the table.
 
 | OS Distribution | OS Version | Supports Kubernetes 1.26.x |
@@ -373,7 +366,6 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 ## Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory.
-
 
 - Operating System (OS) dependencies as listed in the table.
 

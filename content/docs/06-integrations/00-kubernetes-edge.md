@@ -59,11 +59,6 @@ We also offer Palette eXtended Kubernetes (PXK) for cloud and data center deploy
 - A minimum of 2 CPU and 4GB Memory.
 
 
-
-
-
-
-
 ## Parameters
 
 | Parameter                                                | Description                                        |
@@ -90,7 +85,6 @@ You can also use pack settings described in the [Palette eXtended Kubernetes](/i
 The Kubeadm configuration file is where you can do the following:
 
 <br />
-
 
 - Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc).
 
@@ -377,8 +371,6 @@ You can create a role binding that maps individual users or groups assigned with
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
-  <br />
-
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -416,7 +408,7 @@ cluster:
           oidc-username-claim: "email"
 ```
  
-2. Add the following `kubeadmconfig.clientConfig` section with OIDC parameters to your Kubernetes YAML file. 
+2. Add the following `kubeadmconfig.clientConfig` section that contains OIDC parameters to your Kubernetes YAML file. 
 
 
 ```yaml
@@ -450,13 +442,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
-
-
-- Configured OpenID Connect (OIDC) Identity Provider (IDP).
-
-
-- Users or groups mapped to a Kubernetes RBAC role.
+- A minimum of 2 CPU and 4GB Memory.
 
 
 ## Parameters
@@ -484,11 +470,6 @@ You can also use pack settings described in the [Palette eXtended Kubernetes](/i
 The Kubeadm configuration file is where you can do the following:
 
 <br />
-
-- Change the default ``podSubnet`` and ``serviceSubnet`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
-
-  As you build your cluster, check that the ``podSubnet`` value does not overlap with any hosts or with the service network and the ``serviceSubnet`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).
-
 
 - Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc). 
 
@@ -775,13 +756,6 @@ You can create a role binding that maps individual users or groups assigned with
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
-  <br />
-
-  <WarningBox>
-
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
-
-  </WarningBox>
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -818,7 +792,7 @@ cluster:
           oidc-username-claim: "email"
 ```
  
-2. Add the following `kubeadmconfig.clientConfig` section with OIDC parameters to your Kubernetes YAML file. 
+2. Add the following `kubeadmconfig.clientConfig` section that contains OIDC parameters to your Kubernetes YAML file. 
 
 
 ```yaml
@@ -851,13 +825,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
-
-
-- Configured OpenID Connect (OIDC) Identity Provider (IDP).
-
-
-- Users or groups mapped to a Kubernetes RBAC role.
+- A minimum of 2 CPU and 4GB Memory.
 
 
 ## Parameters
@@ -884,11 +852,6 @@ You can also use pack settings described in the [Palette eXtended Kubernetes](/i
 The Kubeadm configuration file is where you can do the following:
 
 <br />
-
-- Change the default ``podSubnet`` and ``serviceSubnet`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
-
-  As you build your cluster, check that the ``podSubnet`` value does not overlap with any hosts or with the service network and the ``serviceSubnet`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).
-
 
 - Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc). 
 
@@ -1169,13 +1132,6 @@ You can create a role binding that maps individual users or groups assigned with
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
-  <br />
-
-  <WarningBox>
-
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
-
-  </WarningBox>
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -1213,7 +1169,7 @@ cluster:
           oidc-username-claim: "email"
 ```
  
-2. Add the following `kubeadmconfig.clientConfig` section with OIDC parameters to your Kubernetes YAML file. 
+2. Add the following `kubeadmconfig.clientConfig` section that contains OIDC parameters to your Kubernetes YAML file. 
 
 
 ```yaml
