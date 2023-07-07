@@ -622,7 +622,7 @@ kubeadmconfig:
     oidc-extra-scope: profile,email,openid
 ```
 
-3. Provide third-party OIDC IDP details.
+3. Provide third-party OIDC IDP details. Refer to the [SAML & SSO Setup](/user-management/saml-sso) for guidance on configuring a third party IDP with Palette.
 
 </Tabs.TabPane>
 
