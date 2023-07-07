@@ -523,7 +523,7 @@ The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on y
 ```yaml
 palette:
    config:
-     dashboard:
+     oidc:
        identityProvider: <your_idp_selection>
 ```
 
@@ -901,18 +901,18 @@ The Kubeadm configuration file is where you can do the following:
 
 <br />
 
-- Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+<!-- - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).  -->
 
 
-- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).  
+<!-- - Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).   -->
 
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 
-#### Configuration Changes
+<!-- #### Configuration Changes
 
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
 
@@ -923,92 +923,255 @@ palette:
    config:
      dashboard:
        identityProvider: <your_idp_selection>
-```
+``` -->
 
 <br />
 
 #### Example Kubeadm Configuration File 
 
 ```yaml
-pack:
-  k8sHardening: True
-  podCIDR: "192.168.0.0/16"
-  serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: noauth
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      secure-port: "6443"
-      anonymous-auth: "true"
-      profiling: "false"
-      disable-admission-plugins: "AlwaysAdmit"
-      default-not-ready-toleration-seconds: "60"
-      default-unreachable-toleration-seconds: "60"
-      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurityPolicy"
-      audit-log-path: /var/log/apiserver/audit.log
-      audit-policy-file: /etc/kubernetes/audit-policy.yaml
-      audit-log-maxage: "30"
-      audit-log-maxbackup: "10"
-      audit-log-maxsize: "100"
-      authorization-mode: RBAC,Node
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-    extraVolumes:
-      - name: audit-log
-        hostPath: /var/log/apiserver
-        mountPath: /var/log/apiserver
-        pathType: DirectoryOrCreate
-      - name: audit-policy
-        hostPath: /etc/kubernetes/audit-policy.yaml
-        mountPath: /etc/kubernetes/audit-policy.yaml
-        readOnly: true
-        pathType: File
-  controllerManager:
-    extraArgs:
-      profiling: "false"
-      terminated-pod-gc-threshold: "25"
-      pod-eviction-timeout: "1m0s"
-      use-service-account-credentials: "true"
-      feature-gates: "RotateKubeletServerCertificate=true"
-  scheduler:
-    extraArgs:
-      profiling: "false"
-  kubeletExtraArgs:
-    read-only-port: "0"
-    event-qps: "0"
-    feature-gates: "RotateKubeletServerCertificate=true"
-    protect-kernel-defaults: "true"
-    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
-  files:
-    - path: hardening/audit-policy.yaml
-      targetPath: /etc/kubernetes/audit-policy.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/privileged-psp.yaml
-      targetPath: /etc/kubernetes/hardening/privileged-psp.yaml
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-    - path: hardening/90-kubelet.conf
-      targetPath: /etc/sysctl.d/90-kubelet.conf
-      targetOwner: "root:root"
-      targetPermissions: "0600"
-  preKubeadmCommands:
-    - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
-  postKubeadmCommands:
-    - 'export KUBECONFIG=/etc/kubernetes/admin.conf && [ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f /etc/kubernetes/hardening/privileged-psp.yaml > /dev/null ); do echo "Failed to apply PodSecurityPolicies, will retry in 5s" ; sleep 5 ; done ; } || echo "Skipping PodSecurityPolicy for worker nodes"'
-  # Client configuration to add OIDC based authentication flags in kubeconfig
-  #clientConfig:
-  #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
-  #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-  #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  #oidc-extra-scope: profile,email
+cluster:
+  config: |
+    clusterConfiguration:
+      apiServer:
+        extraArgs:
+          advertise-address: "0.0.0.0"
+          anonymous-auth: "true"
+          audit-log-maxage: "30"
+          audit-log-maxbackup: "10"
+          audit-log-maxsize: "100"
+          audit-log-path: /var/log/apiserver/audit.log
+          audit-policy-file: /etc/kubernetes/audit-policy.yaml
+          authorization-mode: RBAC,Node
+          default-not-ready-toleration-seconds: "60"
+          default-unreachable-toleration-seconds: "60"
+          disable-admission-plugins: AlwaysAdmit
+          enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
+          profiling: "false"
+          secure-port: "6443"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+        extraVolumes:
+        - hostPath: /var/log/apiserver
+          mountPath: /var/log/apiserver
+          name: audit-log
+          pathType: DirectoryOrCreate
+        - hostPath: /etc/kubernetes/audit-policy.yaml
+          mountPath: /etc/kubernetes/audit-policy.yaml
+          name: audit-policy
+          pathType: File
+          readOnly: true
+        timeoutForControlPlane: 10m0s
+      controllerManager:
+        extraArgs:
+          feature-gates: RotateKubeletServerCertificate=true
+          pod-eviction-timeout: 1m0s
+          profiling: "false"
+          terminated-pod-gc-threshold: "25"
+          use-service-account-credentials: "true"
+      dns: {}
+      kubernetesVersion: v1.24.6
+      etcd:
+        local:
+          dataDir: "/etc/kubernetes/etcd"
+          extraArgs:
+            listen-client-urls: "https://0.0.0.0:2379"
+      networking:
+        podSubnet: 192.168.0.0/16
+        serviceSubnet: 192.169.0.0/16
+      scheduler:
+        extraArgs:
+          profiling: "false"
+    initConfiguration:
+      localAPIEndpoint: {}
+      nodeRegistration:
+        kubeletExtraArgs:
+          event-qps: "0"
+          feature-gates: RotateKubeletServerCertificate=true
+          protect-kernel-defaults: "true"
+          read-only-port: "0"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+    joinConfiguration:
+      discovery: {}
+      nodeRegistration:
+        kubeletExtraArgs:
+          event-qps: "0"
+          feature-gates: RotateKubeletServerCertificate=true
+          protect-kernel-defaults: "true"
+          read-only-port: "0"
+          tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+
+stages:
+  initramfs:
+    - sysctl:
+        vm.overcommit_memory: 1
+        kernel.panic: 10
+        kernel.panic_on_oops: 1
+      commands:
+        - "ln -s /etc/kubernetes/admin.conf /run/kubeconfig"
+      files:
+        - path: /etc/hosts
+          permission: "0644"
+          content: |
+            127.0.0.1 localhost
+        - path: "/etc/kubernetes/audit-policy.yaml"
+          owner_string: "root"
+          permission: 0600
+          content: |
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+              - level: None
+                users: ["system:kube-proxy"]
+                verbs: ["watch"]
+                resources:
+                  - group: "" # core
+                    resources: ["endpoints", "services", "services/status"]
+              - level: None
+                users: ["system:unsecured"]
+                namespaces: ["kube-system"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["configmaps"]
+              - level: None
+                users: ["kubelet"] # legacy kubelet identity
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes", "nodes/status"]
+              - level: None
+                userGroups: ["system:nodes"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes", "nodes/status"]
+              - level: None
+                users:
+                  - system:kube-controller-manager
+                  - system:kube-scheduler
+                  - system:serviceaccount:kube-system:endpoint-controller
+                verbs: ["get", "update"]
+                namespaces: ["kube-system"]
+                resources:
+                  - group: "" # core
+                    resources: ["endpoints"]
+              - level: None
+                users: ["system:apiserver"]
+                verbs: ["get"]
+                resources:
+                  - group: "" # core
+                    resources: ["namespaces", "namespaces/status", "namespaces/finalize"]
+              - level: None
+                users: ["cluster-autoscaler"]
+                verbs: ["get", "update"]
+                namespaces: ["kube-system"]
+                resources:
+                  - group: "" # core
+                    resources: ["configmaps", "endpoints"]
+              # Don't log HPA fetching metrics.
+              - level: None
+                users:
+                  - system:kube-controller-manager
+                verbs: ["get", "list"]
+                resources:
+                  - group: "metrics.k8s.io"
+              # Don't log these read-only URLs.
+              - level: None
+                nonResourceURLs:
+                  - /healthz*
+                  - /version
+                  - /swagger*
+              # Don't log events requests.
+              - level: None
+                resources:
+                  - group: "" # core
+                    resources: ["events"]
+              # node and pod status calls from nodes are high-volume and can be large, don't log responses for expected updates from nodes
+              - level: Request
+                users: ["kubelet", "system:node-problem-detector", "system:serviceaccount:kube-system:node-problem-detector"]
+                verbs: ["update","patch"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes/status", "pods/status"]
+                omitStages:
+                  - "RequestReceived"
+              - level: Request
+                userGroups: ["system:nodes"]
+                verbs: ["update","patch"]
+                resources:
+                  - group: "" # core
+                    resources: ["nodes/status", "pods/status"]
+                omitStages:
+                  - "RequestReceived"
+              # deletecollection calls can be large, don't log responses for expected namespace deletions
+              - level: Request
+                users: ["system:serviceaccount:kube-system:namespace-controller"]
+                verbs: ["deletecollection"]
+                omitStages:
+                  - "RequestReceived"
+              # Secrets, ConfigMaps, and TokenReviews can contain sensitive & binary data,
+              # so only log at the Metadata level.
+              - level: Metadata
+                resources:
+                  - group: "" # core
+                    resources: ["secrets", "configmaps"]
+                  - group: authentication.k8s.io
+                    resources: ["tokenreviews"]
+                omitStages:
+                  - "RequestReceived"
+              # Get repsonses can be large; skip them.
+              - level: Request
+                verbs: ["get", "list", "watch"]
+                resources:
+                  - group: "" # core
+                  - group: "admissionregistration.k8s.io"
+                  - group: "apiextensions.k8s.io"
+                  - group: "apiregistration.k8s.io"
+                  - group: "apps"
+                  - group: "authentication.k8s.io"
+                  - group: "authorization.k8s.io"
+                  - group: "autoscaling"
+                  - group: "batch"
+                  - group: "certificates.k8s.io"
+                  - group: "extensions"
+                  - group: "metrics.k8s.io"
+                  - group: "networking.k8s.io"
+                  - group: "policy"
+                  - group: "rbac.authorization.k8s.io"
+                  - group: "settings.k8s.io"
+                  - group: "storage.k8s.io"
+                omitStages:
+                  - "RequestReceived"
+              # Default level for known APIs
+              - level: RequestResponse
+                resources:
+                  - group: "" # core
+                  - group: "admissionregistration.k8s.io"
+                  - group: "apiextensions.k8s.io"
+                  - group: "apiregistration.k8s.io"
+                  - group: "apps"
+                  - group: "authentication.k8s.io"
+                  - group: "authorization.k8s.io"
+                  - group: "autoscaling"
+                  - group: "batch"
+                  - group: "certificates.k8s.io"
+                  - group: "extensions"
+                  - group: "metrics.k8s.io"
+                  - group: "networking.k8s.io"
+                  - group: "policy"
+                  - group: "rbac.authorization.k8s.io"
+                  - group: "settings.k8s.io"
+                  - group: "storage.k8s.io"
+                omitStages:
+                  - "RequestReceived"
+              # Default level for all other requests.
+              - level: Metadata
+                omitStages:
+                  - "RequestReceived"
   ```
 <br />
 
-### Configure OIDC Identity Provider
+<!-- ### Configure OIDC Identity Provider
 
 The OIDC IDP feature offers the convenience of managing OIDC at the Kubernetes layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a different IDP by adding the OIDC configuration to your cluster profile.
 
@@ -1056,7 +1219,7 @@ The custom method to configure OIDC and apply RBAC for an OIDC provider can be u
 <Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
 
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. 
 
 <br />
 
@@ -1131,10 +1294,10 @@ Assume you created a group named `dev-east-2` within an OIDC provider. If you co
 
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)-->
 
 
-</Tabs.TabPane>
+</Tabs.TabPane> 
 
 
 
