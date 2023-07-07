@@ -14,6 +14,8 @@ env:
   GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.DEV_GATSBY_ALGOLIA_SEARCH_KEY }}
   GATSBY_ALGOLIA_APP_ID: ${{ secrets.DEV_GATSBY_ALGOLIA_APP_ID }}
   ALGOLIA_ADMIN_KEY: ${{ secrets.DEV_ALGOLIA_ADMIN_KEY }}
+  GATSBY_MENDABLE_API_KEY:  ${{ secrets.GATSBY_MENDABLE_API_KEY }}
+  # The GATSBY_FULLSTORY_ORGID is removed so that preview builds don't get recorded in FullStory
 
 concurrency:
   group: preview-${{ github.ref }}

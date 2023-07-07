@@ -33,7 +33,7 @@ Using your custom OS provides several benefits, including the ability to control
 
 <br />
 
-- Edge Provider images you have created and uploaded to a container registry. Refer to the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide to learn how to create a custom OS. Refer to the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide for steps on how to create the Edge artifacts and how to upload your custom OS to a registry.
+- The Edge Provider images you have created and uploaded to a container registry. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide for steps on how to create the Edge artifacts and how to upload your custom OS to a registry.
 
 
 - Palette 3.3.0 or greater.
@@ -70,10 +70,10 @@ The BYOS Edge OS pack supports the following parameters.
 BYOOS enables you to use a custom OS for your Edge host. You can use this feature to customize the desired specifications of your OS layer in the Edge host. You can reference the custom OS through the BYOOS pack.
 
 
-To use a custom OS, you must include all the Edge artifacts and provider images required by the Edge Installer in the custom OS. Refer to the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide for steps on how to create a custom OS that includes all the required components for the Edge Installer.
+To use a custom OS, you must include all the Edge artifacts and provider images required by the Edge Installer in the custom OS. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide for steps on how to create a custom OS that includes all the required components for the Edge Installer.
 
 
-Select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The `system.uri` parameter specifies the location of the BYOOS image. Refer to the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide to learn how to create Edge Artifacts.
+Select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The `system.uri` parameter specifies the location of the BYOOS image. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create Edge Artifacts.
 
 ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
 
@@ -88,7 +88,7 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 <br />
 
-- A custom OS that you created. Refer to the [Create Images with Image Builder](/cluster-profiles/byoos/image-builder) guide to learn how to create a custom OS for Palette.
+- A custom OS that you created. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create a custom OS for Palette.
 
 ## Parameters
 
@@ -143,7 +143,7 @@ pack:
 
 
 
-Check out the [Create Images with Image Builder](/cluster-profiles/byoos/image-builder/) guide to learn to create a custom image for Palette. 
+Check out the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn to create a custom image for Palette. 
 
 
 ---
@@ -221,6 +221,9 @@ data "spectrocloud_pack_simple" "byoos" {
 # References
 
 - [Create a Custom Cluster Profile with BYOOS](/clusters/edge/site-deployment/model-profile)
+
+
+- [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
 
 
 - [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile)

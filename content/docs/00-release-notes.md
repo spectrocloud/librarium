@@ -271,7 +271,7 @@ This release contains several security fixes and new features for Edge. The Edge
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
-* Users can now [create custom Edge Installer images](/clusters/edge/edgeforge-workflow/build-images) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
+* Users can now [create custom Edge Installer images](/clusters/edge/edgeforge-workflow/palette-canvos) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
 * Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 
@@ -588,7 +588,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 Spectro Cloud Palette 2.7 is released with advanced features supporting Windows Worker Node Pools, Canonical Ubuntu Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and more.
 
 **Features:**
-* Spectro Cloud Palette has enhanced the import cluster functionality with ["minimal permission"](/clusters/brownfield-clusters#importingabrownfieldcluster) mode and the "full permission" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
+* Spectro Cloud Palette has enhanced the import cluster functionality with ["Read-Only Mode"](/clusters/imported-clusters/cluster-import) mode and the "Full Permission Mode" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
 * Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
 * Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
 * Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.
@@ -867,7 +867,7 @@ A host of hotfixes were applied for a smoother on-premises operation:
 
 | Version | Feature                                                                                       |
 | ------- | --------------------------------------------------------------------------------------------- |
-| 1.5.6   | Added improvements for faster [kCh](https://www.spectrocloud.com/pricing/) usage calculation. |
+| 1.5.6   | Added improvements for faster kCh usage calculation. |
 | 1.5.5   | Patched the `govc vm.info` command to allow spaces in datacenter names.                       |
 | 1.5.4   | Changes to use client updates instead of patches for _vendorcrd_ installations.               |
 | 1.5.3   | Improved resource utilization by deleting a machine when a node is not available.             |
@@ -911,7 +911,7 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 # July 3, 2020 - Release 1.0.1
 
 - New Regions for AWS > Spectro Cloud is now available for deploying AWS clusters in the European regions.
-- Changes to the pricing structures > more usage = lesser price per [kCh](https://www.spectrocloud.com/pricing/).
+- Changes to the pricing structures > more usage = lesser price per kCh.
 
 # June 23, 2020 - Release 1.0
 

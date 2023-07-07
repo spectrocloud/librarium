@@ -18,6 +18,9 @@ CLI
 reject
 disable
 modify
+subnet
+subnets
+VMs
 VNet
 Kubelet
 We
@@ -111,3 +114,4 @@ Palette Upgrader
 imageSwap
 subcommand
 subcommands
+MAAS
