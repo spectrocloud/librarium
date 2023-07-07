@@ -346,6 +346,8 @@ clientConfig:
   oidc-extra-scope: profile,email
 ```
 
+3. Provide third-party OIDC IDP details.
+
 </Tabs.TabPane>
 
 </Tabs>
@@ -620,6 +622,7 @@ kubeadmconfig:
     oidc-extra-scope: profile,email,openid
 ```
 
+3. Provide third-party OIDC IDP details.
 
 </Tabs.TabPane>
 
@@ -896,6 +899,7 @@ kubeadmconfig:
     oidc-extra-scope: profile,email,openid
 ```
 
+3. Provide third-party OIDC IDP details.
 
 </Tabs.TabPane>
 
