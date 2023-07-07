@@ -355,7 +355,7 @@ clientConfig:
 
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
@@ -663,7 +663,7 @@ clientConfig:
 
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
@@ -940,7 +940,7 @@ clientConfig:
 
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration.
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
