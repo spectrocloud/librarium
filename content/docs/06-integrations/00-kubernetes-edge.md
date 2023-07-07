@@ -379,11 +379,6 @@ You can create a role binding that maps individual users or groups assigned with
 
   <br />
 
-  <WarningBox>
-
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
-
-  </WarningBox>
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](/integrations/kubernetes-edge#configurecustomoidc). This setting displays in the YAML file as `none`.
 
