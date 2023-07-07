@@ -22,7 +22,7 @@ Following are some highlights of OpenStack clusters provisioned by Palette:
 2. In order to facilitate communication between the Palette management platform and the OpenStack controllers installed in the private data center, a Private Cloud Gateway needs to be set up within the environment.
 
 
-3. Private Cloud Gateway (PCG) is Palette's on-premise component to enable support for isolated private cloud or data center environments. Palette Gateway, once installed on-premise registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
+3. Private Cloud Gateway (PCG) is Palette's on-premise component to enable support for isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
 ![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
@@ -361,11 +361,12 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 # Installing Private Cloud Gateway - OpenStack
 
-The following system requirements should be met in order to install a private cloud gateway for OpenStack:
+The following system prerequisites are required to install an OpenStack PCG:
 
-* Private cloud gateway IP requirements:
-    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
-    * 1 IP for Kubernetes control-plane
+* PCG IP requirements:
+    * Either one or three node IP addresses, depending on topology: single node PCG vs. three node (HA) PCG
+    * One IP for the Kubernetes control-plane (VIP).
+    * One additional Kubernetes control-plane IP (required for rolling upgrade).
 
 Palette provides an installer in the form of a command line interface (CLI). This installer can be run on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
@@ -419,7 +420,7 @@ palette pcg install
 | **Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
 | **Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
-### OpenStack Account Information:
+### OpenStack Account Information
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
@@ -428,22 +429,16 @@ palette pcg install
 |**OpenStack Account Password** | OpenStack account password|
 |**Allow Insecure Connection (Bypass x509 Verification)** |Enter 'y' if using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
 |**CA Certificate (base 64 encoded)** |Enter a base64 encoded CA certificate for your OpenStack instance. Only required when using TLS.|
-|**Default Domain** | Default OpenStack domain. e.g. Default|
-|**Default Region** | Default OpenStack region. e.g. RegionOne|
-|**Default Project** | Default OpenStack project. e.g. dev|
 
+### OpenStack Private Cloud Gateway cluster configuration
 
-### Enter OpenStack cluster configuration for the Private Cloud Gateway:
-
-1. Verify the following parameters:
-    * Default Domain
-    * Default Region
-    * Default Project
-
-2. Enter the values for:
+Enter values for the following properties:
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
+| **Default Domain** | OpenStack Domain, e.g., Default|
+| **Default Region** | OpenStack Region, e.g., RegionOne|
+| **Default Project** | OpenStack Project, e.g., dev|
 | **Placement Type (Static or Dynamic)** | For static placement, VMs are placed into existing networks whereas, for dynamic placement, new network is created.|
 | **Network** | Select an existing network. Only required for static placement.|
 | **Subnet** | Select an existing subnet. Only required for static placement.|
@@ -451,15 +446,29 @@ palette pcg install
 | **Node CIDR** | Enter a node CIDR. e.g. 10.55.0.0/24. Only required for dynamic placement.|
 | **SSH Public Key** | Select a key.|
 | **Patch OS on boot** | Whether or not to patch the OS of the PCG hosts on first boot.|
+| **Reboot node(s) once OS patch is applied (if required)** | Whether or not to reboot PCG nodes after OS patches are complete. Only applies if Patch OS on boot is enabled.|
 
-### Enter OpenStack Machine configuration for the Private Cloud Gateway:
+### OpenStack Private Cloud Gateway machine configuration
 
 * Select the availability zone
 * Choose flavor
-* Number of nodes: Choose either **1** or **3**
+* PCG cluster size: **1** or **3** nodes (HA)
 
-After this step, a new gateway configuration file is generated and its location is displayed on the console.
-e.g.: Config created:/opt/spectrocloud//install-pcg-ar-dev-os-gw-02-aug-01-20210802062349/pcg.yaml
+After this step, a new PCG configuration file is generated and its location is displayed on the console, e.g.:
+```bash
+==== PCG config saved ====
+Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+```
+
+<br />
+
+The installer then provisions a PCG cluster in your OpenStack environment. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
+
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and redeploy using PCG Configuration File** section below.
+
+If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+<br />
 
 ## Edit and redeploy using PCG Configuration File
 
@@ -484,7 +493,7 @@ palette pcg install -s -f /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 ## Upgrading an OpenStack Private Cloud Gateway
 Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the PCG.
 
-Administrators should review the changes and apply them at a suitable time. Upgrading a PCG does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded, and are processed as soon as the PCG upgrade is complete.
+Administrators should review the changes and apply them at a suitable time. Upgrading a PCG does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the PCG is being upgraded, and are processed as soon as the PCG upgrade is complete.
 
 ## Deleting an OpenStack Private Cloud Gateway
 The following steps need to be performed to delete a PCG:
@@ -553,7 +562,7 @@ The following steps need to be performed to provision a new OpenStack cluster:
 
 4. Provide an OpenStack Cloud account and placement information.
 
-   * **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
+   * **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be preconfigured in project settings. An account is auto-created as part of the PCG setup and is available for provisioning of tenant clusters if permitted by the administrator.
         * Domain
         * Region
         * Project
