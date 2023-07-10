@@ -23,14 +23,14 @@ If you receive the following error message when attempting to upgrade to Palette
 
 <br />
 
-```text
+```text hideClipboard
 Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "_" and path "/v1/oidc" is already defined in ingress default/hubble-auth-oidc-ingress-resource
 ```
 
 
-## Debugging Steps
+## Debug Steps
 
-1. Connect to the cluster using the cluster's kubeconfig file.
+1. Connect to the cluster using the cluster's kubeconfig file. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) for additional guidance.
 
 
 
