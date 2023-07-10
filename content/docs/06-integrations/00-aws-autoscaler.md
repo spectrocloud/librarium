@@ -16,17 +16,31 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # AWS Cluster Autoscaler
 
-Palette supports Autoscaling for our **EKS clusters** to maximise the benefits of the AWS Cloud utilization. Palette Auto Scaling ensures that instances are launched propotional to the workload on the EKS cluster. The resources are scaled up and down based on the changing workload on the cluster by continously monitoring the applications and automatically adjusts the capacity to maintain steady, predictable performance at the lowest possible cost.
+Palette supports autoscaling for AWS EKS clusters, ensuring cluster nodes launch according to the workload. 
+
+The AWS cluster autoscaler dynamically scales resources up or down based on the changing cluster workload. It monitors the workload and provisions or shuts down cluster nodes to maintain consistent cluster utilization. It resizes the Kubernetes cluster under the following conditions:
+
+* Insufficient resources leading to multiple pod failures in the cluster. The AWS cluster autoscaler redistributes these pods to different nodes in such cases.
+
+* Underutilized cluster nodes for a specific period. In this scenario, the AWS cluster autoscaler migrates the pods from underutilized nodes to other available nodes.
+
+# Versions Supported
+
+<Tabs>
+
+<Tabs.TabPane tab="1.24+" key="1.24.x">
+
+**1.24+**
+
+You can use AWS cluster autoscaler with the Kubernetes control plane (previously referred to as *master*) version 1.24.x or higher. 
+
+
 
 
 # Prerequisite
 
-* Kubernetes version 1.19.x and above.
-* Full Cluster Autoscaler Policy for the service account.
-* Update the Kubernetes Pack node group `managedMachinePool` with the **ARN** of the autoscaler policy created for the service account.
-
-
-## Full Cluster Autoscaler Features Policy (Recommended)
+* Kubernetes version 1.24.x and above.
+* A full cluster autoscaler policy applied to the cluster in AWS console as an inline policy. Below is the recommended full cluster autoscaler policy.
 
 ```json
 {
@@ -38,6 +52,7 @@ Palette supports Autoscaling for our **EKS clusters** to maximise the benefits o
         "autoscaling:DescribeAutoScalingGroups",
         "autoscaling:DescribeAutoScalingInstances",
         "autoscaling:DescribeLaunchConfigurations",
+        "autoscaling:DescribeScalingActivities",
         "autoscaling:DescribeTags",
         "ec2:DescribeInstanceTypes",
         "ec2:DescribeLaunchTemplateVersions"
@@ -49,7 +64,8 @@ Palette supports Autoscaling for our **EKS clusters** to maximise the benefits o
       "Action": [
         "autoscaling:SetDesiredCapacity",
         "autoscaling:TerminateInstanceInAutoScalingGroup",
-        "ec2:DescribeInstanceTypes",
+        "ec2:DescribeImages",
+        "ec2:GetInstanceTypesFromInstanceRequirements",
         "eks:DescribeNodegroup"
       ],
       "Resource": ["*"]
@@ -57,9 +73,8 @@ Palette supports Autoscaling for our **EKS clusters** to maximise the benefits o
   ]
 }
 ```
-<InfoBox>
 
-To deploy AWS Autoscaler, update the Kubernetes pack `managedMachinePool` node group with the **ARN** of the autoscaler policy created for the service account.
+* Update the Kubernetes pack's  `managedMachinePool` node group with the **ARN** of the autoscaler policy created for the service account. Here is an example YAML configuration. 
 
 ```yaml
 managedMachinePool:
@@ -69,16 +84,15 @@ managedMachinePool:
   roleAdditionalPolicies:
   - "arn:aws:iam::012345678910:policy/autoscalingpolicy"
 ```
-</InfoBox>
 
+## Usage
 
-## Versions Supported
+Deploy an EKS cluster with a cluster autoscaler pack. Ensure that your worker pool is made up of instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher, and then manually scale the instance size down to **t3.medium** (2 vCPUs, 8 GB RAM). Scaling down the instance size will result in insufficient resources for some pods. 
 
-<Tabs>
+Suppose you have configured the AWS cluster autoscaler correctly. In that case, it will recognize the node's unscheduled pods and scale up the cluster by creating an additional node to accommodate them.
 
-<Tabs.TabPane tab="1.22.x" key="1.22.x">
+To confirm the creation of the new node, review the pod logs.
 
-**1.22.2**
 
 </Tabs.TabPane>
 
@@ -89,6 +103,9 @@ managedMachinePool:
 </Tabs.TabPane>
 </Tabs>
 
-## References
 
-https://github.com/splunk/splunk-connect-for-kubernetes
+
+# References
+
+[Cluster Autoscaler on AWS](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
+
