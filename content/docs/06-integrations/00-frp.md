@@ -52,6 +52,10 @@ This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/
 
 <br />
 
+</InfoBox>
+
+<br />
+
 # Versions Supported
 
 <Tabs>
