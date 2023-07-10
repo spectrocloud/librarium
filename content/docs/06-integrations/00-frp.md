@@ -54,6 +54,60 @@ This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/
 
 </InfoBox>
 
+## Proxy Network Path
+
+
+Depending on the network configuration of the environment the host cluster is deployed to, the Spectro Proxy may be required. To learn more about how the Spectro Proxy interacts with clusters in a public or private network environment and when the Spectro Proxy is required, select the tab that matches your use case.
+
+
+<br />
+
+
+<Tabs>
+
+<Tabs.TabPane tab="Connection - Public Cluster" key="public-cluster">
+
+
+Clusters deployed in a network with both inbound and outbound access to the internet are considered public. These clusters can have both public and private endpoints. The endpoint is considered private if deployed in a private subnet. A private subnet may have outbound internet access, but inbound access is denied if the request originated outside of the local network.
+
+<br />
+
+<InfoBox>
+
+ Clusters deployed in a public network do not require the Spectro Proxy pack.
+
+</InfoBox>
+
+When a cluster has public endpoints, you can query the cluster's Kubernetes API server from any network with internet access. There is no need for a Virtual Private Network (VPN) connection tunnel. The following diagram displays the network connection flow of a cluster deployed to a public cloud in a public network. Users in both **Network 1** and **Network 2** can connect to the cluster.
+
+
+![An example diagram displaying the network flow to a public cluster](/integrations_frp_public-cluster-flow.png)
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="Connection - Private Cluster" key="private-cluster">
+
+
+
+![An example diagram displaying the network flow to a private cluster](/integrations_frp_private-cluster-flow.png)
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="Workstation Access - Private Cluster" key="private-cluster">
+
+
+assasasaas
+
+</Tabs.TabPane>
+
+
+</Tabs>
+
+----
+
 
 <br />
 
