@@ -22,7 +22,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   height: 52px;
   width: 100%;
-  margin: 10px 0 15px;
+  margin: 5px 0 5px;
 
   > img {
     max-height: 100%;
