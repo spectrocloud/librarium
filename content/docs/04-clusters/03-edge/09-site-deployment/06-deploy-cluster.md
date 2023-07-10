@@ -152,7 +152,7 @@ platform=linux/amd64
 EOF
 ```
 
-View the newly created file to ensure the customized variables are set correctly.
+View the newly created file to ensure the arguments are defined per your requirements.
 <br />
 
 ```bash
@@ -615,7 +615,7 @@ Open a web browser and log in to [Palette](https://console.spectrocloud.com). Na
 ![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts.png)
 
 
-If the three Edge hosts are not displayed in the Edge hosts tab, the automatic registration failed. In this happens, you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host registration process for each of the three VMs.
+If the three Edge hosts are not displayed in the Edge hosts tab, the automatic registration failed. If this happens, you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host registration process for each of the three VMs.
 If you need help, the detailed instructions are available in the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) guide.
 <br />
 
