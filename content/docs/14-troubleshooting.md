@@ -20,9 +20,27 @@ Use the following troubleshooting resources to help you address issues that may 
 <br />
 
 - [Kubernetes Debugging](/troubleshooting/kubernetes-tips)
+
+
 - [Cluster Deployment](/troubleshooting/cluster-deployment)
+
+
 - [Nodes & Clusters](/troubleshooting/nodes)
+
+
 - [Packs](/troubleshooting/pack-issues)
+
+
+- [Palette Dev Engine](/troubleshooting/palette-dev-engine)
+
+
+- [Edge](/troubleshooting/edge)
+
+
+- [Private Cloud Gateway](/troubleshooting/pcg)
+
+
+- [Palette Upgrade](/troubleshooting/palette-upgrade)
 
 
 
