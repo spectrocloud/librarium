@@ -61,12 +61,12 @@ The PCG installer is only compatible with Linux x86-64 systems.
 - A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
 
-- PCG IP requirements:
+- PCG IP address requirements: <br /><br />
 
     - Either one or three node IP addresses, depending on topology: single node PCG vs. three node (HA) PCG
     - One IP for the Kubernetes control-plane (VIP).
     - One additional Kubernetes control-plane IP (required for rolling upgrade).
-
+    <br />
 
 - Sufficient available IPs within the configured MAAS subnets.
 
