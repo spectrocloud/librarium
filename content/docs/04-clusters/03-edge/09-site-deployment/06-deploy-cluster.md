@@ -120,17 +120,46 @@ git checkout v3.4.3
 ```
 <br />
 
-## Review Arguments
+## Define Arguments
 
-The **.arg.template** sample file in the current directory contains customizable arguments, such as image tag, registry, repository, and OS distribution. Rename the sample **.arg.template** file to **.arg** and review the arguments to use during the build process.
+CanvOS requires arguments, such as image tag, registry, repository, and OS distribution, defined in the  **.arg** file. In this step, you will create the  **.arg** file and define all these arguments.
+
+
+Issue the command below to assign an image tag value for the provider images. This guide uses the default value `demo` as an example. However, you can assign any lowercase and alphanumeric string to the `CUSTOM_TAG` variable. 
 <br />
 
 ```bash
-mv .arg.template .arg && cat .arg
+export CUSTOM_TAG=demo
+```
+<br />
+
+Issue the command below to create the **.arg** file with the custom tag. It uses the default values for all arguments. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit. 
+
+Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. To know the list of arguments you can define or find their default values, refer to the **.arg.template** sample file in the current directory. 
+<br /> 
+
+```bash
+cat << EOF > .arg
+CUSTOM_TAG=$CUSTOM_TAG
+IMAGE_REGISTRY=ttl.sh
+OS_DISTRIBUTION=ubuntu
+IMAGE_REPO=ubuntu
+OS_VERSION=22
+K8S_DISTRIBUTION=k3s
+ISO_NAME=palette-edge-installer
+PE_VERSION=$(git describe --abbrev=0 --tags)
+platform=linux/amd64
+EOF
 ```
 
+View the newly created file to ensure the customized variables are set correctly.
+<br />
 
-CanvOS allows you to customize arguments defined in the **.arg** file. However, this tutorial will use the default values for all arguments. For example, `ubuntu` is the default operating system, and `demo` is the default tag. As a result, the provider image is named `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. 
+```bash
+cat .arg
+```
+<br />
+
 
 Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about customizing arguments.
 <br />
@@ -155,15 +184,15 @@ Use the following command to create the **user-data** file containing the tenant
 <PointsOfInterest
   points={[
     {
-      x: 270,
+      x: 250,
       y: 160,
       label: 1,
       description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
       tooltipPlacement: "rightTop",
     },
     {
-      x: 190,
-      y: 225,
+      x: 170,
+      y: 224,
       label: 2,
       description: "Instructs the installer to turn the host machine off once the installation is complete.",
     },
@@ -173,7 +202,7 @@ Use the following command to create the **user-data** file containing the tenant
       label: 3,
       description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
       tooltipPlacement: "rightTop",
-    },
+    }
   ]}
 >
 
@@ -193,12 +222,27 @@ EOF
 
 </PointsOfInterest>
 
-Review the newly created user data file to ensure the token is set correctly.
+Review the newly created user data file.
 <br />
 
 ```bash
 cat user-data
 ```
+The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The `edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register themselves with Palette automatically. Below is a sample output with a dummy token value. 
+<br />
+
+```bash hideClipboard
+#cloud-config
+stylus:
+  site:
+    edgeHostToken: 62ElvdMeX5MdOESgTleBjjKQg8YkaIN3
+install:
+  poweroff: true
+users:
+  - name: kairos
+    passwd: kairos
+```
+
 <br/>
 
 ## Build Artifacts
@@ -247,8 +291,8 @@ After completing the build process, list the edge installer ISO image and checks
 ls build/
 ```
 
-```bash
-# Output hideClipboard
+```bash hideClipboard
+# Output 
 palette-edge-installer.iso       
 palette-edge-installer.iso.sha256
 ```
