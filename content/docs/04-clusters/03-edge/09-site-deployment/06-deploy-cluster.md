@@ -122,7 +122,7 @@ git checkout v3.4.3
 
 ## Define Arguments
 
-CanvOS requires arguments, such as image tag, registry, repository, and OS distribution, defined in the  **.arg** file. In this step, you will create the  **.arg** file and define all these arguments.
+CanvOS requires arguments, such as image tag, registry, repository, and OS distribution. The arguments are defined in the  **.arg** file. In this step, you will create the  **.arg** file and define all the required arguments.
 
 
 Issue the command below to assign an image tag value for the provider images. This guide uses the default value `demo` as an example. However, you can assign any lowercase and alphanumeric string to the `CUSTOM_TAG` variable. 
@@ -133,9 +133,9 @@ export CUSTOM_TAG=demo
 ```
 <br />
 
-Issue the command below to create the **.arg** file with the custom tag. It uses the default values for all arguments. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit. 
+Issue the command below to create the **.arg** file with the custom tag. The remaining arguments will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. The default image registry, ttl.sh, is free to use and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will expire after the 24 hrs time limit. 
 
-Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. To know the list of arguments you can define or find their default values, refer to the **.arg.template** sample file in the current directory. 
+Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the **.arg.template** sample file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values. 
 <br /> 
 
 ```bash
