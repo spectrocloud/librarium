@@ -33,7 +33,7 @@ Complete the PCG installation so that the internal component receives the proper
 
 # Scenario - PCG Installer Unable to Register With Palette
 
-When the PCG installer instance is powered on, the PCG installer goes through a bootstrap process and attempts to register itself with Palette. This process typically takes between five to ten minutes. If the installer fails to register with the Palette within the timeframe, it could indicate a bootstrapping error.
+When the PCG installer instance is powered on, it goes through a bootstrap process and attempts to register itself with Palette. This process typically takes between five to ten minutes. If the installer fails to register with Palette within the timeframe, it could indicate a bootstrapping error.
 
 ## Debug Steps
 
@@ -60,7 +60,7 @@ When the PCG installer instance is powered on, the PCG installer goes through a 
 4. Another potential issue may be a lack of outbound connectivity from the PCG installer VM to Palette. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust the proxy settings, if applicable, to fix the connectivity or power down and delete the installer VM and relaunch a new VM  in a network that supports outbound connections to Palette.
 
 
-5. If the above steps do not resolve your issues, issue the following command in the installer VM to create a script that will generate a log bundle.  
+5. If the above steps do not resolve the problems, issue the following command in the installer VM to create a script that will generate a log bundle.  
 
   <br />
 
@@ -88,7 +88,7 @@ When the PCG installer instance is powered on, the PCG installer goes through a 
 
 
 
-6. Start the script to generate a log archive. By default, the script will place the log archive in the **/tmp/** folder. The log archive file name starts with the prefix **spectro-logs-** followed by a timestamp value.
+6. Start the script to generate a log archive. By default, the script places the log archive in the **/tmp/** folder. The log archive file name starts with the prefix **spectro-logs-** followed by a timestamp value.
 
   <br />
 
@@ -102,7 +102,7 @@ When the PCG installer instance is powered on, the PCG installer goes through a 
 
 # Scenario - Gateway Cluster Provisioning Stalled or Failed
 
-The installation of a gateway cluster may encounter errors or get stuck in the provisioning state due to several reasons, such as a lack of infrastructure resources, unavailable IP addresses, or the inability to perform a Network Time Protocol (NTP) sync.
+The installation of a gateway cluster may encounter errors or get stuck in the provisioning state due to such reasons as a lack of infrastructure resources, unavailable IP addresses, or the inability to perform a Network Time Protocol (NTP) sync.
 
 While these are the most common errors, some other issues might be related to the underlying VMware environment. 
 
@@ -110,7 +110,7 @@ While these are the most common errors, some other issues might be related to th
 
 <br />
 
-1. Review the cluster details page, which can be accessed by clicking anywhere on the gateway widget. The details page contains information of every orchestration step including an indication of the current task being performed. Any intermittent errors will be displayed on the cluster details page next to the relevant orchestration task. 
+1. Review the cluster details page, which can be accessed by clicking anywhere on the gateway widget. The details page contains information about every orchestration step, including the current task. Any intermittent errors will be displayed on the cluster details page next to the relevant orchestration task. 
 
 
 2. Click on the **Events** tab to review lower-level operations being performed for the various orchestration steps.
