@@ -40,50 +40,55 @@ You can use AWS cluster autoscaler with the Kubernetes control plane (previously
 # Prerequisite
 
 * Kubernetes version 1.24.x and above.
-* A full cluster autoscaler policy applied to the cluster in AWS console as an inline policy. Below is the recommended full cluster autoscaler policy.
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "autoscaling:DescribeAutoScalingGroups",
-        "autoscaling:DescribeAutoScalingInstances",
-        "autoscaling:DescribeLaunchConfigurations",
-        "autoscaling:DescribeScalingActivities",
-        "autoscaling:DescribeTags",
-        "ec2:DescribeInstanceTypes",
-        "ec2:DescribeLaunchTemplateVersions"
-      ],
-      "Resource": ["*"]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "autoscaling:SetDesiredCapacity",
-        "autoscaling:TerminateInstanceInAutoScalingGroup",
-        "ec2:DescribeImages",
-        "ec2:GetInstanceTypesFromInstanceRequirements",
-        "eks:DescribeNodegroup"
-      ],
-      "Resource": ["*"]
-    }
-  ]
-}
-```
+
+* A full cluster autoscaler policy applied to the cluster in AWS console as an inline policy. Below is the recommended full cluster autoscaler policy.
+<br />
+
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "autoscaling:DescribeAutoScalingGroups",
+          "autoscaling:DescribeAutoScalingInstances",
+          "autoscaling:DescribeLaunchConfigurations",
+          "autoscaling:DescribeScalingActivities",
+          "autoscaling:DescribeTags",
+          "ec2:DescribeInstanceTypes",
+          "ec2:DescribeLaunchTemplateVersions"
+        ],
+        "Resource": ["*"]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "autoscaling:SetDesiredCapacity",
+          "autoscaling:TerminateInstanceInAutoScalingGroup",
+          "ec2:DescribeImages",
+          "ec2:GetInstanceTypesFromInstanceRequirements",
+          "eks:DescribeNodegroup"
+        ],
+        "Resource": ["*"]
+      }
+    ]
+  }
+  ```
+
 
 * Update the Kubernetes pack's  `managedMachinePool` node group with the **ARN** of the autoscaler policy created for the service account. Here is an example YAML configuration. 
+<br />
 
-```yaml
-managedMachinePool:
-  #roleName: {{ name of the self-managed role | format "${string}" }}
+  ```yaml
+  managedMachinePool:
+    #roleName: {{ name of the self-managed role | format "${string}" }}
 
-  ## A list of additional policies to attach to the node group role
-  roleAdditionalPolicies:
-  - "arn:aws:iam::012345678910:policy/autoscalingpolicy"
-```
+    ## A list of additional policies to attach to the node group role
+    roleAdditionalPolicies:
+    - "arn:aws:iam::012345678910:policy/autoscalingpolicy"
+  ```
 
 ## Usage
 
@@ -96,11 +101,6 @@ To confirm the creation of the new node, review the pod logs.
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="1.0.x" key="1.0.x">
-
-**1.0.0**
-
-</Tabs.TabPane>
 </Tabs>
 
 
