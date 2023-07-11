@@ -366,7 +366,7 @@ The following system prerequisites are required to install an OpenStack PCG:
 * PCG IP requirements:
     * Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
     * One IP for the Kubernetes control-plane (VIP).
-    * One additional Kubernetes control-plane IP (required for rolling upgrade).
+    * One additional Kubernetes control-plane IP for rolling upgrades.
 
 Palette provides an installer in the form of a command line interface (CLI). This installer can be run on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
