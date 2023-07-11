@@ -886,7 +886,7 @@ A PCG cluster installation automatically creates a cloud account using the crede
 </InfoBox>
 
 
-### Upgrade VMware Private Cloud Gateway
+### Upgrade PCG
 
 Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the PCG.
 
