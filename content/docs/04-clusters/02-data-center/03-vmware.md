@@ -661,7 +661,7 @@ When prompted, enter the information listed in the following table.
 
 ### Invoke PCG Installer CLI
 
-Once you have authenticated successfully, invoke the PCG installer by executing the following command. When prompted, enter the information listed in each of the following tables.
+When you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
 ```bash
 palette pcg install
 ```
