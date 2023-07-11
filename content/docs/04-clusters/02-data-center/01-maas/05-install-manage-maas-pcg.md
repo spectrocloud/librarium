@@ -141,7 +141,7 @@ If you have already installed the PCG and are experiencing issues that you want 
     The installer needs access to your Palette account and to your MAAS environment. Additionally, one (no HA) or three (HA) machines must be in ready state and have internet access in MAAS. If you select one machine in step 3, then you need one in MAAS. Likewise, if you select three machines in step 3, you need three in MAAS.
     <br />
 
-5. The installer provisions the MAAS machines and deploys a new kubernetes cluster to host the PCG application.
+5. The installer CLI provisions the MAAS machines and deploys a new Kubernetes cluster to host the PCG.
 
 <br />
 
