@@ -720,7 +720,7 @@ palette pcg install
 | **IP End range** | Enter the last address in the PCG IP pool range.|
 | **Network Prefix** | Enter the network prefix for the IP pool range, e.g. 18. Valid values are in [0, 32].|
 | **Gateway IP Address** | .|
-| **Name server(s)** | Comma separated list of DNS name server IP addresses.|
+| **Name server(s)** | Comma-separated list of DNS name server IP addresses.|
 | **Name server search suffixes (optional)** | Comma separated list of DNS search domains.|
 
 ##### DDNS Placement Configuration
