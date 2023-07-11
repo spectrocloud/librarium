@@ -824,7 +824,7 @@ The following points give an overview of what you will do to set up the PCG:
 
 | **Parameter** | **Value** | **Description** |
 |---|---|---|
-|**Installer Name** | Desired Palette Gateway Name. | The name will be used to identify the PCG instance. Typical environments may only require a single PCG to be deployed. However, multiple PCG may be required to manage clusters across multiple vCenters. We recommend choosing a name that readily identifies the environment for which this PCG instance is being configured.|
+|**Installer Name** | Desired Palette Gateway Name. | The name will be used to identify the PCG instance. Typical environments may only require a single PCG to be deployed. However, multiple PCGs may be required to manage clusters across multiple vCenters. We recommend you choose a name that clearly identifies the environment for which this PCG instance is being configured.|
 | **Console endpoint** | URL to Palette management platform portal. | Default: https://console.spectrocloud.com |
 |**Pairing Code** | PIN displayed on the Palette management platform portal's 'Create a new Private Cloud Gateway' dialogue. | |
 | **SSH Public Key** | Optional key for troubleshooting purposes. | We recommended having an SSH key, as it enables SSH access to the VM as 'ubuntu' user. |
