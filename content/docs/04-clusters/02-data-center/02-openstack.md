@@ -372,7 +372,7 @@ Palette provides an installer in the form of a command line interface (CLI). Thi
 
 ## Set up the PCG Installer CLI
 
-Download the PCG installer CLI and authenticate with Palette by executing the following code snippet in a terminal.
+Copy the following code snippet to a terminal to download the PCG installer CLI and authenticate with Palette.
 ```bash
 wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette -O /usr/local/bin/palette
 chmod +x /usr/local/bin/palette
