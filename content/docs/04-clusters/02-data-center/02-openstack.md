@@ -490,7 +490,7 @@ vi /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 palette pcg install -s -f /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 ```
 
-## Upgrading an OpenStack Private Cloud Gateway
+## Upgrade PCG
 Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the PCG.
 
 Administrators should review the changes and apply them at a suitable time. Upgrading a PCG does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the PCG is being upgraded, and are processed as soon as the PCG upgrade is complete.
