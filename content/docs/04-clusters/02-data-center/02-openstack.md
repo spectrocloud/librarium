@@ -427,7 +427,7 @@ palette pcg install
 |**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`|
 |**OpenStack Account Username**  | OpenStack account username|
 |**OpenStack Account Password** | OpenStack account password|
-|**Allow Insecure Connection (Bypass x509 Verification)** |Enter 'y' if using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
+|**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
 |**CA Certificate (base 64 encoded)** |Enter a base64 encoded CA certificate for your OpenStack instance. Only required when using TLS.|
 
 ### OpenStack Private Cloud Gateway cluster configuration
