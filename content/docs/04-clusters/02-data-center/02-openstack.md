@@ -446,7 +446,7 @@ Enter values for the following properties:
 | **Node CIDR** | Enter a node CIDR. e.g. 10.55.0.0/24. Only required for dynamic placement.|
 | **SSH Public Key** | Select a key.|
 | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
-| **Reboot node(s) once OS patch is applied (if required)** | Whether or not to reboot PCG nodes after OS patches are complete. Only applies if Patch OS on boot is enabled.|
+| **Reboot node(s) once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
 ### OpenStack Private Cloud Gateway machine configuration
 
