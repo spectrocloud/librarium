@@ -638,7 +638,7 @@ There are two supported PCG installation methods for VMware vSphere: command lin
 ## Install PCG Using CLI
 Palette provides an installer in the form of a CLI. This installer can be run on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as VMware vSphere.
 
-### Setup the PCG installer CLI
+### Set up PCG installer CLI
 Download the PCG installer CLI and authenticate with Palette by executing the following code snippet in a terminal.
 ```bash
 wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette -O /usr/local/bin/palette
