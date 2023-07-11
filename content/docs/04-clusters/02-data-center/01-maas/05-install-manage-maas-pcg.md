@@ -222,7 +222,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
 |**Parameter**| **Description**|
 |-------------|----------------|
-| **MAAS API Endpoint** |Enter the MAAS API endpoint (syntax is important). This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS``.|
+| **MAAS API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS``.|
 | **MAAS API Key** |Enter an active MAAS API key to use for authentication.|
 
 <br />
