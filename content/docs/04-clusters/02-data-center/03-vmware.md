@@ -931,7 +931,7 @@ A PCG can be deployed as a 1-node or a 3-node cluster.  For production environme
 Scaling a three-node cluster down to a single-node cluster is not permitted.<p></p> A load balancer instance is launched even for a single-node PCG to support future expansion.
 </InfoBox>
 
-# IP Address Management (IPAM)
+# IP Address Management
 
 Palette supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined, using a range or a subnet. Administrators can define one or more IP pools linked to a PCG.
 
