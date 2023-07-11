@@ -302,7 +302,7 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 <br />
 
-# Update and Manage the MAAS Private Cloud Gateway
+# Update and Manage the PCG
 
 Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification when you click on the PCG in the **Manage Cloud Gateways** page.
 
