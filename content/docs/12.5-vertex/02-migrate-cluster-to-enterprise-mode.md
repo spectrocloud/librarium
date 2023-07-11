@@ -1,5 +1,5 @@
 ---
-title: "Migrate Cluster to Enterprise Mode"
+title: "Migrate Cluster to Enterprise Mode (Delete)"
 metaTitle: "Migrate Cluster to Enterprise Mode"
 metaDescription: "Learn how to convert a self-hosted single node cluster to a highly available three-node cluster."
 icon: ""

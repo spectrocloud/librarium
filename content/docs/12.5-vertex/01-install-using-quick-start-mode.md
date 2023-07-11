@@ -1,5 +1,5 @@
 ---
-title: "Install Using Quick-Start Mode"
+title: "Install Using Quick-Start Mode (Delete)"
 metaTitle: "Install Palette Using Quick-Start Mode"
 metaDescription: "Install Palette Using Quick-Start Mode."
 icon: ""
