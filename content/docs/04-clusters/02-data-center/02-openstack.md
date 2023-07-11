@@ -448,7 +448,7 @@ Enter values for the following properties:
 | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
 | **Reboot node(s) once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
-### OpenStack Private Cloud Gateway machine configuration
+### OpenStack Private Cloud Gateway Machine Configuration
 
 * Select the availability zone
 * Choose flavor
