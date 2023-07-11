@@ -992,7 +992,7 @@ Use the following steps to provision a new VMware cluster.
 
     |**Parameter**                            | **Description**|
     |-----------------------------------------|----------------|
-        | **Cloud Account** | Select the desired cloud account. <br />VMware cloud accounts with credentials need to be preconfigured <br /> in the Project Settings section. An account is auto-created as <br /> part of the PCG setup and is available for <br /> provisioning of Tenant Clusters if permitted by the administrator.|
+        | **Cloud Account** | Select the desired cloud account. Preconfigure VMware cloud accounts with credentials in **Project Settings**. An account is auto-created as part of the PCG setup and is available for tenant cluster provisioning if the administrator permits it.|
         | **Datacenter** |The vSphere data center where the cluster nodes will be launched.|
         | **Deployment Folder**      | The vSphere VM Folder where the cluster nodes will be launched.|                                                                                                                                                                                                                                                     |
         | **Image Template Folder**  | The vSphere folder to which the Spectro templates are imported.|
