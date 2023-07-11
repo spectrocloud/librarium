@@ -848,7 +848,7 @@ Proxy environments require additional property settings. Each of the proxy prope
 5. Power on the VM.
 
 
-## Tenant Portal - Launch Private Cloud Gateway
+## Launch PCG
 
 1. Close the **Create New Gateway** installation instructions and navigate to the Private Cloud Gateway page under **Tenant Settings** if you have navigated away or logged out.
 
