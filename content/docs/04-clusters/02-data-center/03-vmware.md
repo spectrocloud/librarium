@@ -928,7 +928,7 @@ A PCG can be deployed as a 1-node or a 3-node cluster.  For production environme
 4. The PCG upgrade begins shortly after the update. Two new nodes are created on vSphere, and the PCG is upgraded to a three-node cluster.
 
 <InfoBox>
-Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for a 1-node PCG to support future expansion.
+Scaling a three-node cluster down to a single-node cluster is not permitted.<p></p> A load balancer instance is launched even for a single-node PCG to support future expansion.
 </InfoBox>
 
 # IP Address Management (IPAM)
