@@ -364,7 +364,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 The following system prerequisites are required to install an OpenStack PCG:
 
 * PCG IP requirements:
-    * Either one or three node IP addresses, depending on topology: single node PCG vs. three node (HA) PCG
+    * Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
     * One IP for the Kubernetes control-plane (VIP).
     * One additional Kubernetes control-plane IP (required for rolling upgrade).
 
