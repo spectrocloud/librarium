@@ -759,7 +759,7 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 <br />
 
-### Edit and redeploy using PCG Configuration File
+### Edit and Redeploy PCG
 
 Use the following steps if you want to edit the PCG configuration file directly and use it to redeploy a PCG.
 
