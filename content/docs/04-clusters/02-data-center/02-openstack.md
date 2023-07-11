@@ -387,7 +387,7 @@ When prompted, enter the information listed in the following table.
 |**Parameter**       | **Description**|
 |:-----------------------------|---------------|
 |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
-|**Allow Insecure Connection (Bypass x509 Verification)** |Enter 'y' if using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
+|**Allow Insecure Connection** | Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'. |
 |**Spectro Cloud API Key** |Enter your Palette API Key.|
 |**Spectro Cloud Organization** |Enter your Palette Organization.|
 |**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
