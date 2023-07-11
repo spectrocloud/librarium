@@ -522,7 +522,7 @@ When you delete the PCG, the PCG instance registered in the management console i
 </InfoBox>
 
 ## Resizing an OpenStack Private Cloud Gateway
-You can set up the PCG as a single-node or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to 3 nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
+You can set up the PCG as a single-node or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 

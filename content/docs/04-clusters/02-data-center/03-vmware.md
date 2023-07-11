@@ -63,11 +63,18 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
     - Outgoing internet connection on port 443 to api.spectrocloud.com.
 
 
-- PCG IP requirements are:
+- PCG IP address requirements: <br /><br />
 
-    - Either one or three node IP addresses, depending on topology: single node PCG vs. three node (HA) PCG
-    - One IP for the Kubernetes control-plane (VIP).
-    - One additional Kubernetes control-plane IP (required for rolling upgrade).
+    - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
+
+
+    - One IP address for the Kubernetes control plane.
+
+
+    - One additional Kubernetes control plane IP address for rolling upgrades.
+    <br />
+
+- Sufficient available IP addresses within the configured vSphere subnets.
 
 
 - IPs for application workload services, such as LoadBalancer service.
@@ -718,7 +725,7 @@ palette pcg install
 |-----------------------------------------|----------------|
 | **IP Start range** | Enter the first address in the PCG IP pool range.|
 | **IP End range** | Enter the last address in the PCG IP pool range.|
-| **Network Prefix** | Enter the network prefix for the IP pool range, e.g. 18. Valid values are in [0, 32].|
+| **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`.|
 | **Gateway IP Address** | .|
 | **Name server(s)** | Comma-separated list of DNS name server IP addresses.|
 | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.|
@@ -732,8 +739,8 @@ palette pcg install
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| **Patch OS on boot** | Whether or not to patch the OS of the PCG hosts on first boot.|
-| **Reboot node(s) once OS patch is applied (if required)** | Whether or not to reboot PCG nodes after OS patches are complete. Only applies if Patch OS on boot is enabled.|
+| **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
+| **Reboot node(s) once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
 4. Specify machine configuration.
 
@@ -913,8 +920,7 @@ Use the following steps to delete the PCG:
 <br />
 
 ### Resize PCG
-
-A PCG can be deployed as a 1-node or a 3-node cluster.  For production environments, it is recommended that three (3) nodes are set up. A PCG can be initially set up with one (1) node and resized to three (3) nodes at a later time. The following steps need to be performed to resize a 1-node PCG cluster to a 3-node PCG cluster:
+You can set up the PCG as a single-node or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under **Settings**.
 
