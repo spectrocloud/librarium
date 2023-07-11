@@ -370,7 +370,7 @@ The following system prerequisites are required to install an OpenStack PCG:
 
 Palette provides an installer in the form of a command line interface (CLI). This installer can be run on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
-## Setup the PCG installer CLI
+## Set up the PCG Installer CLI
 
 Download the PCG installer CLI and authenticate with Palette by executing the following code snippet in a terminal.
 ```bash
