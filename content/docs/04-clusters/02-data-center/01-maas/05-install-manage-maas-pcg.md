@@ -131,7 +131,7 @@ If you have already installed the PCG and are experiencing issues that you want 
 2. Use the CLI to start PCG installation on the installer host.
 
 
-3. Provide the installer with all necessary information that it prompts you for.
+3. Provide the installer CLI with the information it prompts you for.
 
 
 4. The installer generates a PCG configuration file from information you provide in step **3**.
