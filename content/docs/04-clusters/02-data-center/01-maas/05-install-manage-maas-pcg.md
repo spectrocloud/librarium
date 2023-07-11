@@ -188,7 +188,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 |**Spectro Cloud Organization** |Enter your Palette Organization.|
 |**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
 
-5. Once you have authenticated successfully, invoke the PCG installer by executing the following command. When prompted, enter the information listed in each of the following tables.
+5. When you authenticate successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
     <br />
     ```bash
     palette pcg install
