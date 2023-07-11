@@ -779,7 +779,7 @@ vi /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 palette pcg install -s -f /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 ```
 
-## OVA / OVF Template Installation
+## Install PCG Using OVA / OVF Template
 The following points give an overview of what you will do to set up the PCG:
 
   <br />
