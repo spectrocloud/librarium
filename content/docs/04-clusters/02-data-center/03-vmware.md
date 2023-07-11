@@ -743,7 +743,7 @@ palette pcg install
 | **Memory (MiB)** | Memory per PCG node in mebibytes.|
 | **Hard disk (GB)** | Size of hard disk per PCG node in gigabytes.|
 
-After this step, a new PCG configuration file is generated and its location is displayed on the console, e.g.:
+Upon completing this step, a new PCG configuration file is generated, and its location is displayed in the console.
 ```bash
 ==== PCG config saved ====
 Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
