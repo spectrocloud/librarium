@@ -925,7 +925,7 @@ A PCG can be deployed as a 1-node or a 3-node cluster.  For production environme
 3. Update the size from one (1) to three (3).
 
 
-4. The PCG upgrade begins shortly after the update. Two new nodes are created on vSphere and the PCG is upgraded to a 3-node cluster.
+4. The PCG upgrade begins shortly after the update. Two new nodes are created on vSphere, and the PCG is upgraded to a three-node cluster.
 
 <InfoBox>
 Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for a 1-node PCG to support future expansion.
