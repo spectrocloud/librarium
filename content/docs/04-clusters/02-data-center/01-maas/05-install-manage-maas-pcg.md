@@ -312,7 +312,7 @@ Updating the PCG does not result in any downtime for the tenant clusters. During
 
 <br />
 
-# Delete the MAAS Private Cloud Gateway
+# Delete the PCG
 
 Follow these steps to delete a MAAS PCG.
 <br />
