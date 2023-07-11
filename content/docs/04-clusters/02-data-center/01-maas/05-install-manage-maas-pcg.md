@@ -1,5 +1,5 @@
 ---
-title: "Install and Manage MAAS Gateway"
+title: "Install and Manage MAAS Private Cloud Gateway"
 metaTitle: "Install and Manage MAAS Private Cloud Gateway"
 metaDescription: "Learn how to install and manage the MAAS Private Cloud Gateway in Palette."
 hideToC: false
@@ -64,11 +64,9 @@ The PCG installer is only compatible with Linux x86-64 systems.
 - PCG IP address requirements: <br /><br />
 
     - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
-
-
+    
     - One IP address for the Kubernetes control plane.
-
-
+    
     - One additional Kubernetes control plane IP address for rolling upgrades.
     <br />
 
@@ -119,7 +117,7 @@ The diagram shows an example of using an external DNS server for servers that MA
 ![Image showing external DNS server machines that MAAS deploys in addition to a DNS delegation](/clusters_maas_maas-dns-setup.png)
 
 
-## Understand the Gateway Installation Process
+## Understand the PCG Installation Process
 
 The following steps outline the overall process to install the PCG. 
 
@@ -163,7 +161,7 @@ The following steps will guide you to install the PCG.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. If you have Single or Social Sign-On (SSO) enabled, you will need to use or create a local non-SSO tenant admin account in Palette and use the API key for that account in step **5**.
+2. If you have Single or Social Sign-On (SSO) enabled, you will need to use or create a local non-SSO tenant admin account in Palette and use the API key for that account in step **4**.
 
 <WarningBox>
 
@@ -176,7 +174,6 @@ The installer does not work with SSO or Social sign on credentials. You must use
 ```bash
 wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette --output-document=/usr/local/bin/palette
 chmod +x /usr/local/bin/palette
-
 palette login
 ```
 
@@ -193,10 +190,11 @@ palette login
 |**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
 
 5. When you authenticate successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
-    <br />
-    ```bash
-    palette pcg install
-    ```
+
+```bash
+palette pcg install
+```
+
 #### Palette PCG Parameters
 
 |**Parameter**       | **Description**|
@@ -308,7 +306,7 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 # Update and Manage the PCG
 
-Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification when you click on the PCG in the **Manage Cloud Gateways** page.
+Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification when you click on the PCG in the **Manage Cloud Private Cloud Gateways** page.
 
 Review the changes in the update notification, and apply the update when you are ready. 
 
@@ -336,7 +334,7 @@ Follow these steps to delete a MAAS PCG.
 
 <br />
 
-# Resize the MAAS Private Cloud Gateway
+# Resize the PCG
 
 You can set up a PCG as a single-node (no HA) or three-node (HA) cluster. You can set up a PCG initially with one node and resize it to three nodes at a later time.
 

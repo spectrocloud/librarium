@@ -647,10 +647,10 @@ Palette provides an installer in the form of a CLI. This installer can be run on
 
 ### Set up PCG installer CLI
 Download the PCG installer CLI and authenticate with Palette by executing the following code snippet in a terminal.
-```bash
-wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette -O /usr/local/bin/palette
-chmod +x /usr/local/bin/palette
 
+```bash
+wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette --output-document=/usr/local/bin/palette
+chmod +x /usr/local/bin/palette
 palette login
 ```
 
@@ -669,9 +669,11 @@ When prompted, enter the information listed in the following table.
 ### Invoke PCG Installer CLI
 
 When you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
+
 ```bash
 palette pcg install
 ```
+
 #### Palette PCG Parameters
 
 |**Parameter**       | **Description**|
@@ -726,7 +728,7 @@ palette pcg install
 | **IP Start range** | Enter the first address in the PCG IP pool range.|
 | **IP End range** | Enter the last address in the PCG IP pool range.|
 | **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`.|
-| **Gateway IP Address** | .|
+| **Gateway IP Address** | Enter the IP address of the static IP gateway.|
 | **Name server(s)** | Comma-separated list of DNS name server IP addresses.|
 | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.|
 
@@ -750,7 +752,8 @@ palette pcg install
 | **Memory (MiB)** | Memory per PCG node in mebibytes.|
 | **Hard disk (GB)** | Size of hard disk per PCG node in gigabytes.|
 
-Upon completing this step, a new PCG configuration file is generated, and its location is displayed in the console.
+Upon completing this step, a new PCG configuration file is generated and its location is displayed in the console. Example:
+
 ```bash
 ==== PCG config saved ====
 Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
@@ -760,7 +763,7 @@ Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 
 The installer then provisions a PCG cluster in your VMware vSphere environment. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and redeploy using PCG Configuration File** section below.
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** tab.
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
@@ -783,7 +786,7 @@ vi /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 2. To redeploy the PCG, copy the following code snippet to your terminal:
 
 ```bash
-palette pcg install -s -f /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+palette pcg install --silent --config-file /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 ```
 
 ## Install PCG Using OVA / OVF Template

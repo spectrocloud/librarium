@@ -404,9 +404,11 @@ When prompted, enter the information listed in the following table.
 ## Invoke the PCG installer CLI
 
 Once you have authenticated successfully, invoke the PCG installer by executing the following command. When prompted, enter the information listed in each of the following tables.
+
 ```bash
 palette pcg install
 ```
+
 ### Palette PCG Parameters
 
 |**Parameter**       | **Description**|
@@ -457,13 +459,14 @@ Enter values for the following properties:
 | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
 | **Reboot node(s) once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
-### OpenStack Private Cloud Gateway Machine Configuration
+### OpenStack PCG Machine Configuration
 
 * Select the availability zone
 * Choose flavor
 * PCG cluster size: **1** or **3** nodes (HA)
 
-After this step, a new PCG configuration file is generated and its location is displayed on the console, e.g.:
+After this step, a new PCG configuration file is generated and its location is displayed on the console. Example:
+
 ```bash
 ==== PCG config saved ====
 Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
@@ -473,13 +476,13 @@ Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 
 The installer then provisions a PCG cluster in your OpenStack environment. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and redeploy using PCG Configuration File** section below.
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** tab.
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 <br />
 
-## Edit and Redeploy Using PCG Configuration File
+## Edit and Redeploy PCG
 
 Use the following steps if you want to edit the PCG configuration file directly and use it to redeploy a PCG.
 
