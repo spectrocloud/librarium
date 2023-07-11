@@ -721,7 +721,7 @@ palette pcg install
 | **Network Prefix** | Enter the network prefix for the IP pool range, e.g. 18. Valid values are in [0, 32].|
 | **Gateway IP Address** | .|
 | **Name server(s)** | Comma-separated list of DNS name server IP addresses.|
-| **Name server search suffixes (optional)** | Comma separated list of DNS search domains.|
+| **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.|
 
 ##### DDNS Placement Configuration
 |**Parameter**                            | **Description**|
