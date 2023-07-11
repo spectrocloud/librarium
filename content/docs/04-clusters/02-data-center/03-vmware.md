@@ -895,7 +895,7 @@ Administrators should review the changes and apply them at a suitable time. Upgr
 
 <br />
 
-### Delete a VMware Private Cloud Gateway
+### Delete PCG
 
 The following steps need to be performed to delete a PCG:
 
