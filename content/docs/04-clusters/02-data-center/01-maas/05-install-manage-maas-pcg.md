@@ -167,7 +167,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
 </WarningBox>
 
-3. Download the installer and authenticate with Palette by executing the following code snippet in a terminal.
+3. Download the installer and authenticate with Palette by copying the following code snippet to a terminal.
     <br />
     ```bash
     wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette -O /usr/local/bin/palette
