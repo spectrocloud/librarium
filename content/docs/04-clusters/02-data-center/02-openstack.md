@@ -501,7 +501,7 @@ The following steps need to be performed to delete a PCG:
 1. As a tenant admin, navigate to the Private Cloud Gateway page under settings.
 
 
-2. Invoke the **Delete** action on the PCG instance that needs to be deleted.
+2. Invoke the **Delete** action on the PCG instance you are deleting.
 
 
 3. The system performs a validation to ensure that there are no running tenant clusters associated with the PCG instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the PCG.
