@@ -363,18 +363,27 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 The following system prerequisites are required to install an OpenStack PCG:
 
-* PCG IP requirements:
-    * Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
-    * One IP for the Kubernetes control-plane (VIP).
-    * One additional Kubernetes control-plane IP for rolling upgrades.
+- PCG IP address requirements: <br /><br />
+
+    - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
+
+
+    - One IP address for the Kubernetes control plane.
+
+
+    - One additional Kubernetes control plane IP address for rolling upgrades.
+    <br />
+
+- Sufficient available IP addresses within the configured OpenStack subnets.
 
 Palette provides an installer in the form of a command line interface (CLI). This installer can be run on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
 ## Set up the PCG Installer CLI
 
 Copy the following code snippet to a terminal to download the PCG installer CLI and authenticate with Palette.
+
 ```bash
-wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette -O /usr/local/bin/palette
+wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette --output-document=/usr/local/bin/palette
 chmod +x /usr/local/bin/palette
 
 palette login
@@ -487,7 +496,7 @@ vi /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 2. To redeploy the PCG, copy the following code snippet to your terminal:
 
 ```bash
-palette pcg install -s -f /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+palette pcg install --silent --config-file /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 ```
 
 ## Upgrade PCG
