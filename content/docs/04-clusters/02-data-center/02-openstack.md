@@ -430,7 +430,7 @@ palette pcg install
 |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
 |**CA Certificate** |This is only required when using TLS, in which case you would enter a base64-encoded CA certificate for your OpenStack instance. |
 
-### OpenStack Private Cloud Gateway cluster configuration
+### OpenStack Private Cloud Gateway Cluster Configuration
 
 Enter values for the following properties:
 
