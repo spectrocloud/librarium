@@ -912,7 +912,7 @@ Use the following steps to delete the PCG:
 
 <br />
 
-### Resize a VMware Private Cloud Gateway
+### Resize PCG
 
 A PCG can be deployed as a 1-node or a 3-node cluster.  For production environments, it is recommended that three (3) nodes are set up. A PCG can be initially set up with one (1) node and resized to three (3) nodes at a later time. The following steps need to be performed to resize a 1-node PCG cluster to a 3-node PCG cluster:
 
