@@ -509,7 +509,7 @@ The following steps need to be performed to delete a PCG:
 4. Delete the PCG.
 
 <InfoBox>
-The delete PCG operation deletes the PCG instance registered in the management console, however the PCG infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. must be deleted on the OpenStack console
+When you delete the PCG, the PCG instance registered in the management console is deleted. However, the PCG infrastructure such as Load Balancers, VMs, Networks if you chose dynamic provision, and other resources must be deleted in the OpenStack console.
 </InfoBox>
 
 ## Resizing an OpenStack Private Cloud Gateway
