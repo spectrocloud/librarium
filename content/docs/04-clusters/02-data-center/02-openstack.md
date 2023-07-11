@@ -521,7 +521,7 @@ You can set up the PCG as a single-node or as a three-node cluster for high avai
 
 3. Update the size from 1 to 3.
 
-4. The PCG upgrade begins shortly after the update. Two new nodes are created, and the PCG is upgraded to a 3-node cluster.
+4. The PCG upgrade begins shortly after the update. Two new nodes are created, and the PCG is upgraded to a three-node cluster.
 
 
 # Creating an OpenStack Cloud Account
