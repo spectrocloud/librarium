@@ -524,7 +524,7 @@ You can set up the PCG as a single-node or as a three-node cluster for high avai
 4. The PCG upgrade begins shortly after the update. Two new nodes are created, and the PCG is upgraded to a three-node cluster.
 
 
-# Creating an OpenStack Cloud Account
+# Create an OpenStack Cloud Account
 
 A default cloud account is automatically created when the PCG is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same PCG.
 
