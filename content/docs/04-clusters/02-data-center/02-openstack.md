@@ -445,7 +445,7 @@ Enter values for the following properties:
 | **DNS Server(s)** | Enter a comma-separated list of DNS server IPs . This is only required for dynamic placement.|
 | **Node CIDR** | Enter a node CIDR. e.g. 10.55.0.0/24. Only required for dynamic placement.|
 | **SSH Public Key** | Select a key.|
-| **Patch OS on boot** | Whether or not to patch the OS of the PCG hosts on first boot.|
+| **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
 | **Reboot node(s) once OS patch is applied (if required)** | Whether or not to reboot PCG nodes after OS patches are complete. Only applies if Patch OS on boot is enabled.|
 
 ### OpenStack Private Cloud Gateway machine configuration
