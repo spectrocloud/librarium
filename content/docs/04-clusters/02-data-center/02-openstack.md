@@ -442,7 +442,7 @@ Enter values for the following properties:
 | **Placement Type** | Placement can be static or dynamic. For static placement, VMs are placed into existing networks. For dynamic placement, a new network is created.|
 | **Network** | Select an existing network. This is only required for static placement.|
 | **Subnet** | Select an existing subnet. This is only required for static placement.|
-| **DNS Server(s)** | Enter a list of DNS server IPs (comma-separated). Only required for dynamic placement.|
+| **DNS Server(s)** | Enter a comma-separated list of DNS server IPs . This is only required for dynamic placement.|
 | **Node CIDR** | Enter a node CIDR. e.g. 10.55.0.0/24. Only required for dynamic placement.|
 | **SSH Public Key** | Select a key.|
 | **Patch OS on boot** | Whether or not to patch the OS of the PCG hosts on first boot.|
