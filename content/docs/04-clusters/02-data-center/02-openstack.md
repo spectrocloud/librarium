@@ -428,7 +428,7 @@ palette pcg install
 |**OpenStack Account Username**  | OpenStack account username|
 |**OpenStack Account Password** | OpenStack account password|
 |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
-|**CA Certificate (base 64 encoded)** |Enter a base64 encoded CA certificate for your OpenStack instance. Only required when using TLS.|
+|**CA Certificate** |This is only required when using TLS, in which case you would enter a base64-encoded CA certificate for your OpenStack instance. |
 
 ### OpenStack Private Cloud Gateway cluster configuration
 
