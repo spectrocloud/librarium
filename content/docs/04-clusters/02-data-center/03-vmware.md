@@ -63,7 +63,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
     - Outgoing internet connection on port 443 to api.spectrocloud.com.
 
 
-- PCG IP address requirements: <br /><br />
+- PCG IP address requirements: <br />
 
     - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
 
@@ -652,7 +652,7 @@ chmod +x /usr/local/bin/palette
 palette login
 ```
 
-When prompted, enter the information listed in the following table.
+When prompted, enter the information listed in the following table.<br /><br />
 
 #### Palette Login Parameters
 
@@ -703,7 +703,7 @@ palette pcg install
 |**vSphere Password** | vSphere account password|
 |**Allow Insecure Connection (Bypass x509 Verification)** |Enter 'y' if using a vSphere instance with self-signed TLS certificates. Otherwise, enter 'n'.|
 
-#### VMware vSphere Private Cloud Gateway cluster configuration
+#### VMware vSphere PCG Cluster Configuration
 
 1. Select and/or specify values for the following properties:
   * Datacenter
@@ -761,7 +761,7 @@ Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 
 The installer then provisions a PCG cluster in your VMware vSphere environment. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** tab.
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** section below.
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 

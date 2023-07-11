@@ -363,7 +363,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 The following system prerequisites are required to install an OpenStack PCG:
 
-- PCG IP address requirements: <br /><br />
+- PCG IP address requirements: <br />
 
     - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
 
@@ -439,7 +439,7 @@ palette pcg install
 |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
 |**CA Certificate** |This is only required when using TLS, in which case you would enter a base64-encoded CA certificate for your OpenStack instance. |
 
-### OpenStack Private Cloud Gateway Cluster Configuration
+### OpenStack PCG Cluster Configuration
 
 Enter values for the following properties:
 
@@ -474,7 +474,7 @@ Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 
 The installer then provisions a PCG cluster in your OpenStack environment. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** tab.
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** section below.
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
@@ -522,7 +522,7 @@ The following steps need to be performed to delete a PCG:
 When you delete the PCG, the PCG instance registered in the management console is deleted. However, the PCG infrastructure such as Load Balancers, VMs, Networks if you chose dynamic provision, and other resources must be deleted in the OpenStack console.
 </InfoBox>
 
-## Resizing an OpenStack Private Cloud Gateway
+## Resize the PCG
 You can set up the PCG as a single-node or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
