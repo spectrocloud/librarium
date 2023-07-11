@@ -436,7 +436,7 @@ Enter values for the following properties:
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| **Default Domain** | OpenStack Domain, e.g., Default|
+| **Default Domain** | OpenStack Domain. Example: `Default`|
 | **Default Region** | OpenStack Region, e.g., RegionOne|
 | **Default Project** | OpenStack Project, e.g., dev|
 | **Placement Type (Static or Dynamic)** | For static placement, VMs are placed into existing networks whereas, for dynamic placement, new network is created.|
