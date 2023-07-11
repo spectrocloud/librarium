@@ -495,7 +495,7 @@ Palette maintains the OS image and all configurations for the PCG. Periodically,
 
 Administrators should review the changes and apply them at a suitable time. Upgrading a PCG does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the PCG is being upgraded and are processed as soon as the PCG upgrade is complete.
 
-## Deleting an OpenStack Private Cloud Gateway
+## Delete the PCG
 The following steps need to be performed to delete a PCG:
 
 1. As a tenant admin, navigate to the Private Cloud Gateway page under settings.
