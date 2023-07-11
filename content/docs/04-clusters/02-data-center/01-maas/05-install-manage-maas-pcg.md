@@ -128,7 +128,7 @@ If you have already installed the PCG and are experiencing issues that you want 
 1. You obtain the Palette PCG installer CLI.
 
 
-2. Use the installer to start the installation on the installer host.
+2. Use the CLI to start PCG installation on the installer host.
 
 
 3. Provide the installer with all necessary information that it prompts you for.
