@@ -726,7 +726,7 @@ palette pcg install
 ##### DDNS Placement Configuration
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| **Search domain(s)** | Comma separated list of DNS search domains.|
+| **Search domain(s)** | Comma-separated list of DNS search domains.|
 
 3. Specify cluster boot configuration
 
