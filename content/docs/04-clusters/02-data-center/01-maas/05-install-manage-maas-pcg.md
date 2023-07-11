@@ -34,7 +34,7 @@ At a high level, the following occurs during a successful MAAS PCG installation:
 
 You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA).  
 
-As the following diagram shows, Palette provides a command line interface (CLI) that is executed on your laptop, workstation, or jump box. You can use the CLI on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
+As the following diagram shows, Palette provides a command line interface (CLI) that you invoke on your laptop, workstation, or jump box. You can use the CLI on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
 
 
 <br />
