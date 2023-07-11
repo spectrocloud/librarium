@@ -65,7 +65,7 @@ The PCG installer is only compatible with Linux x86-64 systems.
 
     - Either one or three node IP addresses, depending on topology: single node PCG vs. three node (HA) PCG
     - One IP for the Kubernetes control-plane (VIP).
-    - One additional Kubernetes control-plane IP (required for rolling upgrade).
+    - One additional Kubernetes control-plane IP for rolling upgrades.
     <br />
 
 - Sufficient available IPs within the configured MAAS subnets.
