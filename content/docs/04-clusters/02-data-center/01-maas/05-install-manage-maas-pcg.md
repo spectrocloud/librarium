@@ -63,12 +63,16 @@ The PCG installer is only compatible with Linux x86-64 systems.
 
 - PCG IP address requirements: <br /><br />
 
-    - Either one or three node IP addresses, depending on topology: single node PCG vs. three node (HA) PCG
-    - One IP for the Kubernetes control-plane (VIP).
-    - One additional Kubernetes control-plane IP for rolling upgrades.
+    - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
+
+
+    - One IP address for the Kubernetes control plane.
+
+
+    - One additional Kubernetes control plane IP address for rolling upgrades.
     <br />
 
-- Sufficient available IPs within the configured MAAS subnets.
+- Sufficient available IP addresses within the configured MAAS subnets.
 
 <WarningBox>
 
@@ -167,14 +171,14 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
 </WarningBox>
 
-3. Download the installer and authenticate with Palette by copying the following code snippet to a terminal.
-    <br />
-    ```bash
-    wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette -O /usr/local/bin/palette
-    chmod +x /usr/local/bin/palette
+3. Download the installer and authenticate with Palette by copying the following code snippet to a terminal. <br />
 
-    palette login
-    ```
+```bash
+wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette --output-document=/usr/local/bin/palette
+chmod +x /usr/local/bin/palette
+
+palette login
+```
 
 4. When prompted, enter the information listed in the following table.
 
@@ -289,7 +293,7 @@ vi /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 2. To redeploy the PCG, copy the following code snippet to your terminal:
 
 ```bash
-palette pcg install -s -f /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+palette pcg install --silent --config-file /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 ```
 
 The installer requests available bare metal machines in your MAAS environment on which to install the PCG.
