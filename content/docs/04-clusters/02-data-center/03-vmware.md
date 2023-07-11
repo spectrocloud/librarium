@@ -897,7 +897,7 @@ Administrators should review the changes and apply them at a suitable time. Upgr
 
 ### Delete PCG
 
-The following steps need to be performed to delete a PCG:
+Use the following steps to delete the PCG:
 
 1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under **Settings**.
 
