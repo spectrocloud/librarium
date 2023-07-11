@@ -504,7 +504,7 @@ The following steps need to be performed to delete a PCG:
 2. Invoke the **Delete** action on the PCG instance you are deleting.
 
 
-3. The system performs a validation to ensure that there are no running tenant clusters associated with the PCG instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the PCG.
+3. The system verifies there are no running tenant clusters associated with the PCG instance you are deleting. If any instances are found, the system will display an error. Delete any running tenant clusters and retry deleting the PCG.
 
 4. Delete the PCG.
 
