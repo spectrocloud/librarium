@@ -735,7 +735,7 @@ palette pcg install
 | **Patch OS on boot** | Whether or not to patch the OS of the PCG hosts on first boot.|
 | **Reboot node(s) once OS patch is applied (if required)** | Whether or not to reboot PCG nodes after OS patches are complete. Only applies if Patch OS on boot is enabled.|
 
-4. Specify machine configuration
+4. Specify machine configuration.
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
