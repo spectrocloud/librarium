@@ -424,7 +424,7 @@ palette pcg install
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-|**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />e.g. https://openstack.mycompany.com/identity|
+|**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`|
 |**OpenStack Account Username**  | OpenStack account username|
 |**OpenStack Account Password** | OpenStack account password|
 |**Allow Insecure Connection (Bypass x509 Verification)** |Enter 'y' if using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
