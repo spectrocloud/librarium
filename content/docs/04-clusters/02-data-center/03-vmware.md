@@ -67,9 +67,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
     - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
 
-
     - One IP address for the Kubernetes control plane.
-
 
     - One additional Kubernetes control plane IP address for rolling upgrades.
     <br />

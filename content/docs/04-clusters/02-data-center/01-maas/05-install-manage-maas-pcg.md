@@ -64,9 +64,9 @@ The PCG installer is only compatible with Linux x86-64 systems.
 - PCG IP address requirements: <br /><br />
 
     - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
-    
+
     - One IP address for the Kubernetes control plane.
-    
+
     - One additional Kubernetes control plane IP address for rolling upgrades.
     <br />
 
