@@ -404,7 +404,7 @@ palette pcg install
 |:-----------------------------|---------------|
 |**Cloud Type**| Choose OpenStack.|
 |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``openstack-pcg-1``.|
-|**Share PCG Cloud Account across platform Projects** |Enter 'y' if you want the Cloud Account associated with the PCG to be available from all Projects within your Organization. Enter 'n' if you want the Cloud Account to be available at the tenant admin scope only.|
+|**Share PCG Cloud Account across platform Projects** |Enter 'y' if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter 'n' if you want the Cloud Account to only be available at the tenant admin scope.|
 
 <br />
 
