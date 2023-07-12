@@ -68,6 +68,8 @@ export default function Technologies({ data }) {
       categories.forEach((category) => {
         accumulator.add(category);
       });
+      // Sort categories alphabetically
+      accumulator = new Set([...accumulator].sort());
       return accumulator;
     }, new Set(["all"]));
   }, [data]);
