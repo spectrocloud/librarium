@@ -63,16 +63,15 @@ export default function Technologies({ data }) {
   const [searchValue, setSearchValue] = useState("");
 
   let categories = useMemo(() => {
-    return data.reduce((accumulator, technology) => {
+    const categoriesSet = data.reduce((accumulator, technology) => {
       const categories = technology.fields.category || [];
       categories.forEach((category) => {
         accumulator.add(category);
       });
-      // Sort categories alphabetically
-      accumulator = new Set([...accumulator].sort());
       return accumulator;
     }, new Set(["all"]));
-  }, [data]);
+    return new Set([...categoriesSet].sort());
+}, [data]);
 
   let technologies = useMemo(() => {
     let technologies = [...data].sort((pack1, pack2) => {
