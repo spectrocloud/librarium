@@ -4,7 +4,7 @@ metaTitle: 'kube-hunter'
 metaDescription: 'kube-hunter monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['monitoring']
+category: ['monitoring', 'amd64']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/kubehunter/blobs/sha256:6b6b9138fa056677646712a888192498247f71aa421edd27b25458a8fbf8af0c?type=image/png'
 ---
 

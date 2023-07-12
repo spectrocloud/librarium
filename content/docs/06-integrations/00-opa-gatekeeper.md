@@ -4,7 +4,7 @@ metaTitle: 'OpenPolicyAgent'
 metaDescription: 'OpenPolicyAgent security pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['security']
+category: ['security', 'amd64']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/open-policy-agent/blobs/sha256:fcbad202dc9ca5e7a756562d8f9fc180ee77474034447dabc302d8a5a2bbe148?type=image/png" alt="OpenPolicyAgent logo'
 ---
 

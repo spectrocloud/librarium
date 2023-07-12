@@ -4,7 +4,7 @@ metaTitle: 'cilium-Tetragon'
 metaDescription: 'Cilium Tetragon monitoring pack for Spectro Cloud Palette'
 hiddenFromNav: true
 type: "integration"
-category: ['monitoring']
+category: ['monitoring', 'amd64']
 logoUrl: 'https://soak.stage.spectrocloud.com/assets/monitoring_layer.3b14cf5b.svg'
 ---
 

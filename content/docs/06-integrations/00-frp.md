@@ -5,7 +5,7 @@ metaDescription: 'Fast Reverse Proxy Authentication pack in Spectro Cloud-Spectr
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['authentication']
+category: ['authentication', 'amd64']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'
 ---
 
