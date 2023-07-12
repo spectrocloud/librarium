@@ -64,7 +64,10 @@ export default function Technologies({ data }) {
 
   let categories = useMemo(() => {
     return data.reduce((accumulator, technology) => {
-      accumulator.add(...(technology.fields.category || []));
+      const categories = technology.fields.category || [];
+      categories.forEach((category) => {
+        accumulator.add(category);
+      });
       return accumulator;
     }, new Set(["all"]));
   }, [data]);
