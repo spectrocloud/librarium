@@ -377,6 +377,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "ec2:DescribeSnapshots",
         "ec2:DescribeTags",
         "ec2:DescribeVolumesModifications",
+        "ec2:DescribeKeyPairs",
         "iam:AttachGroupPolicy",
         "iam:CreatePolicy",
         "iam:CreatePolicyVersion",
@@ -391,7 +392,16 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "iam:ListPolicyVersions",
         "pricing:GetProducts",
         "sts:AssumeRole",
-        "sts:GetServiceBearerToken"
+        "sts:GetServiceBearerToken",
+        "iam:AddRoleToInstanceProfile",
+        "iam:AddUserToGroup",
+        "iam:CreateGroup",
+        "iam:CreateInstanceProfile",
+        "iam:CreateUser",
+        "iam:DeleteGroup",
+        "iam:DeleteInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:RemoveUserFromGroup"
       ],
       "Resource": "*"
     }
