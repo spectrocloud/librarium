@@ -1,6 +1,6 @@
 ---
 title: "Required IAM Policies"
-metaTitle: "Required IAM Policies or Palette"
+metaTitle: "Required IAM Policies for Palette"
 metaDescription: "A list of required IAM policies that Palette requires."
 hideToC: false
 fullWidth: false

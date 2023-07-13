@@ -1,0 +1,97 @@
+---
+title: "Cluster IAM Roles and Policies"
+metaTitle: "Cluster IAM Roles and Policies"
+metaDescription: "A list of IAM roles that Palette attaches to the Cluster."
+hideToC: false
+fullWidth: false
+---
+
+import Tabs from 'shared/components/ui/Tabs';
+import WarningBox from 'shared/components/WarningBox';
+import InfoBox from 'shared/components/InfoBox';
+import PointsOfInterest from 'shared/components/common/PointOfInterest';
+
+## Roles and Policies for an EKS Cluster 
+
+When you deploy an EKS cluster using Palette, Palette creates two IAM roles automatically - one for the cluster and another for the node group.
+
+The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM role is named as `ng-role_worker-pool-[random-string]`. These IAM roles are made up of customer-managed as well as AWS-managed IAM policies, as outlined in the table below. You can, however, attach more IAM policies to any of these IAM roles per your specific requirements. 
+
+|**Policy name**|**Type**|Attached to the cluster's IAM role?|Attached to the node group's IAM role?|
+|---|---|---|---|
+|PaletteBackupRestore| Customer-managed|✅ |✅ |
+|PaletteControlPlanePolicy| Customer-managed|✅ |✅ |
+|PaletteControllerPolicy| Customer-managed|✅ |✅ |
+|PaletteDeploymentPolicy| Customer-managed|✅ |✅ |
+|PaletteNodesPolicy| Customer-managed|✅ |✅ |
+|AmazonEKSClusterPolicy|AWS managed|✅ |--|
+|AmazonEBSCSIDriverPolicy^^|AWS managed|✅ |✅ |
+|AmazonEC2ContainerRegistryReadOnly|AWS managed|--|✅ |
+|AmazonEKS_CNI_Policy|AWS managed|--|✅ |
+|AmazonEKSWorkerNodePolicy|AWS managed|--|✅ |
+|AmazonSSMManagedInstanceCore|AWS managed|--|✅ |
+
+
+^^ This policy will get attached if you have chosen Amazon CSI layer in your cluster profile. This IAM Policy will allows the CSI driver service account to make calls to related services such as EC2 on your behalf.
+
+
+## Roles and Policies for an EKS Cluster 
+
+**control-plane.cluster-api-provider-aws.sigs.k8s.io**
+
+control-plane.cluster-api-provider-aws.sigs.k8s.io	Customer managed	
+For the Kubernetes Cloud Provider AWS Control Plane
+
+controllers-eks.cluster-api-provider-aws.sigs.k8s.io	Customer managed	
+For the Kubernetes Cluster API Provider AWS Controllers
+
+controllers.cluster-api-provider-aws.sigs.k8s.io	Customer managed	
+For the Kubernetes Cluster API Provider AWS Controllers
+
+nodes.cluster-api-provider-aws.sigs.k8s.io	Customer managed	
+For the Kubernetes Cloud Provider AWS nodes
+
+PaletteBackupRestore	Customer managed	
+
+PaletteControllerPolicy	Customer managed	
+
+PaletteControlPlanePolicy	Customer managed	
+
+PaletteDeploymentPolicy	Customer managed	
+
+PaletteEBSPolicy	Customer managed	
+
+PaletteKMSPolicy	Customer managed	
+
+PaletteNodesPolicy	Customer managed	
+
+AmazonEBSCSIDriverPolicy	AWS managed	
+
+
+**nodes.cluster-api-provider-aws.sigs.k8s.io**
+
+nodes.cluster-api-provider-aws.sigs.k8s.io	Customer managed	
+For the Kubernetes Cloud Provider AWS nodes
+
+PaletteBackupRestore	Customer managed	
+
+PaletteControllerPolicy	Customer managed	
+
+PaletteControlPlanePolicy	Customer managed	
+
+PaletteDeploymentPolicy	Customer managed	
+
+PaletteEBSPolicy	Customer managed	
+
+PaletteKMSPolicy	Customer managed	
+
+PaletteNodesPolicy	Customer managed	
+
+AmazonEKS_CNI_Policy	AWS managed	
+This policy provides the Amazon VPC CNI Plugin (amazon-vpc-cni-k8s) the permissions it requires to modify the IP address configuration on your EKS worker nodes. This permission set allows the CNI to list, describe, and modify Elastic Network Interfaces on your behalf. More information on the AWS VPC CNI Plugin is available here: https://github.com/aws/amazon-vpc-cni-k8s
+
+AmazonEKSWorkerNodePolicy	AWS managed	
+This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.
+
+AmazonEBSCSIDriverPolicy	AWS managed	
+IAM Policy that allows the CSI driver service account to make calls to related services such as EC2 on your behalf.
