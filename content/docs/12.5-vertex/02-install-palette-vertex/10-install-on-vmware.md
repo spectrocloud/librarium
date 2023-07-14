@@ -26,10 +26,10 @@ The PCG creates a three-node enterprise cluster for high availability (HA): 6 vC
 - Downloaded PCG installer CLI.
 
 
-- An Ubuntu Pro Subscription.
+- An Ubuntu Pro Subscription. Ubuntu Pro is FIPS 140-2 certified.
 
 
-- An Ubuntu Advantage token.
+- An Ubuntu Pro token.
 
 
 - In VMware environments with internet connectivity, you will need added port permissions to inbound rules for security groups to provide Palette VerteX connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication.
@@ -49,19 +49,33 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 1. Download the PCG installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
-2. Invoke the installer by using the following command. The installer prompts with questions and initiates the installation.
+2. Invoke the installer by using the following command. The installer prompts you for details to create the PCG configuration file and then initiates the installation.
 
   <br />
 
-  ```shell
-
- palette ec install
-
+  ```bash
+  palette pcg install
   ```
 
   <br />
 
-3. 
+3. When prompted to enable Ubuntu Pro, type `y` and provide your Ubuntu Pro token.  
+
+
+4. When prompted to enable FIPS, type `y`. The repository location is displayed. 
+
+
+5. Type your Palette username and password.
+
+
+6. When prompted, enter the information listed in each of the following tables.
+
+
+#### Palette PCG Parameters
+
+
+
+
   
 
 
