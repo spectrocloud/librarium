@@ -14,8 +14,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Palette VerteX on VMware vSphere
 
-Use the following steps to install and set up the Palette VerteX Private Cloud Gateway (PCG) installer.
+Palette provides an installer command line interface (CLI) that prompts you for details and creates the Private Cloud Gateway (PCG) configuration file needed to establish a secure connection from your internal network to the internet-accessible Palette VerteX instance. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere. 
 
+The PCG creates a three-node enterprise cluster for high availability (HA): 6 vCPU, 12 GB memory, 70 GB storage.
 
 # Prerequisites
 
@@ -36,15 +37,33 @@ Use the following steps to install and set up the Palette VerteX Private Cloud G
 
 - A new or existing SSH key pair to access the PCG installer for any troubleshooting.
 
+<!-- <InfoBox>
+
+Self-hosted Palette installations provide a system PCG out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console.
+
+</InfoBox> -->
+
 
 # Install the PCG
-
-Palette provides an installer in the form of a CLI that prompts you for details and creates the PCG configuration file needed to establish a secure connection from your internal network to the internet-accessible Palette VerteX instance. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere.
 
 1. Download the PCG installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
-2. 
+2. Invoke the installer by using the following command. The installer prompts with questions and initiates the installation.
+
+  <br />
+
+  ```shell
+
+ palette ec install
+
+  ```
+
+  <br />
+
+3. 
+  
+
 
 
 
