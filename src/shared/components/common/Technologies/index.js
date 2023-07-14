@@ -22,7 +22,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   height: 52px;
   width: 100%;
-  margin: 10px 0 15px;
+  margin: 5px 0 5px;
 
   > img {
     max-height: 100%;
@@ -63,10 +63,14 @@ export default function Technologies({ data }) {
   const [searchValue, setSearchValue] = useState("");
 
   let categories = useMemo(() => {
-    return data.reduce((accumulator, technology) => {
-      accumulator.add(...(technology.fields.category || []));
+    const categoriesSet = data.reduce((accumulator, technology) => {
+      const categories = technology.fields.category || [];
+      categories.forEach((category) => {
+        accumulator.add(category);
+      });
       return accumulator;
     }, new Set(["all"]));
+    return new Set([...categoriesSet].sort());
   }, [data]);
 
   let technologies = useMemo(() => {

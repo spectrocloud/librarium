@@ -309,6 +309,8 @@ Use the info box to help users save an extra step of finding related information
 
 Do not use emoticons in headlines or text. Emoticons are great for conveying emotions and making the text more welcoming, but at the cost of reducing the sense of the formality of the text. Our technical documentation is a place that all customers should trust. As a result, we want to convey as much professionalism as possible so that the text and its content are highly trusted.
 
+The exception to this rule is the usage of ✅ and ❌ in markdown tables. These two symbols help the reader scan the information faster and reduce the cognitive burden of interpreting the information. 
+
 | Good  ✅                                                         |  Bad ❌                                                              |
 |-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | In this tutorial, you will understand how to migrate Kubernetes clusters to Palette’s management plane.     | In this tutorial you will gain a basic understanding of how to migrate Kubernetes clusters to Palette’s management plane  |
