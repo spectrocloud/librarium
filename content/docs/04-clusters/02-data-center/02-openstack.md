@@ -361,8 +361,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 # Installing Private Cloud Gateway - OpenStack
 
-
-
+The Palette CLI can be used on any Linux x86-64 system that has the Docker daemon installed and has connectivity to Palette and the OpenStack environment.
 
 ## Prerequisites
 
@@ -378,7 +377,7 @@ The following system prerequisites are required to install an OpenStack PCG:
     - One additional Kubernetes control plane IP address for rolling upgrades.
 
 
-- A Linux x86-64 host.
+- A Linux x86-64 host with the Docker daemon installed.
 
 
 - Sufficient available IP addresses within the configured OpenStack subnets.

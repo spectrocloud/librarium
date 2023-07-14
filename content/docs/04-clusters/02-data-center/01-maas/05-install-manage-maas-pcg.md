@@ -21,10 +21,10 @@ At a high level, the following occurs during a successful MAAS PCG installation:
 
 <br />
 
-- Start the PCG installer on a laptop, workstation, or Bastion host. 
+- Use the Palette CLI on a laptop, workstation, or Bastion host. 
 
 
-- Provide information to the installer so that it can connect both to a local MAAS installation and a Palette account.
+- Provide information to the CLI so that it can connect both to a local MAAS installation and a Palette account.
 
 
 - The installer uses MAAS to obtain machines and install a PCG on them.
@@ -42,39 +42,10 @@ As the following diagram shows, Palette provides a command line interface (CLI) 
 
 ![An architecture diagram of MaaS with PCG.](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
 
-## PCG Install Overview
-
-The following steps outline the overall process to install the PCG. 
-
-For detailed steps, refer to the **Install PCG** tab below, which describes a single-step installation that creates the PCG configuration file and installs the PCG.
-
-If you have already installed the PCG and are experiencing issues that you want to fix by editing the PCG configuration file directly, refer to the **Edit PCG Config** tab.
-
-<br />
-
-1. You obtain the Palette PCG installer CLI.
-
-
-2. Use the CLI to start PCG installation on the installer host.
-
-
-3. Provide the installer CLI with the information it prompts you for.
-
-
-4. The installer generates a PCG configuration file from information you provide in step **3**.
-
-    <br />
-
-    The installer needs access to your Palette account and to your MAAS environment. Additionally, one (no HA) or three (HA) machines must be in ready state and have internet access in MAAS. If you select one machine in step 3, then you need one in MAAS. Likewise, if you select three machines in step 3, you need three in MAAS.
-    <br />
-
-5. The installer CLI provisions the MAAS machines and deploys a new Kubernetes cluster to host the PCG.
-
 
 # Install PCG
 
-
-
+Use the following steps to install a PCG cluster in your MAAS environment. The Palette CLI can be used on any Linux x86-64 system that has the Docker daemon installed and has connectivity to Palette and the MAAS environment.
 ## Prerequisites
 
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
@@ -157,10 +128,10 @@ The diagram shows an example of using an external DNS server for servers that MA
 The following steps will guide you on how to install a PCG cluster. 
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. In an x86 Linux host, open up a terminal session.
 
 
-2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+2. Use the [Palette CLI](/palette-cli/install-palette-cli) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
 
     <br />
 

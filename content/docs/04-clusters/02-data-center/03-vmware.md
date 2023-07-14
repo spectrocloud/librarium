@@ -655,7 +655,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 ## Install PCG
 
-There are two supported PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. The Palette CLI can be used on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as VMware vSpher
+There are two supported PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. The Palette CLI can be used on any Linux x86-64 system that has the Docker daemon installed and has connectivity to the Palette and the VMware environment.
 
 <br />
 
