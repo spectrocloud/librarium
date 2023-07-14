@@ -22,7 +22,7 @@ Use the following steps to install and set up the Palette VerteX Private Cloud G
 - A Palette VerteX account. Refer to [Access Palette VerteX](/vertex#accesspalettevertex).
 
 
-- Downloaded PCG installer.
+- Downloaded PCG installer CLI.
 
 
 - An Ubuntu Pro Subscription.
@@ -31,54 +31,23 @@ Use the following steps to install and set up the Palette VerteX Private Cloud G
 - An Ubuntu Advantage token.
 
 
-- Added port permissions to inbound rules for security groups to provide Palette VerteX connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication. >TAKEN FROM QUICKSTART OVA DRAFT.
+- In VMware environments with internet connectivity, you will need added port permissions to inbound rules for security groups to provide Palette VerteX connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication.
 
 
-- A new or existing SSH key pair to access the PCG installer for any troubleshooting. >TAKEN FROM QUICKSTART OVA DRAFT.
+- A new or existing SSH key pair to access the PCG installer for any troubleshooting.
 
 
-# Download and Set Up
+# Install the PCG
 
->STEPS ARE FROM PALETTE CLI INSTALL
+Palette provides an installer in the form of a CLI that prompts you for details and creates the PCG configuration file needed to establish a secure connection from your internal network to the internet-accessible Palette VerteX instance. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere.
 
-1. Open up a terminal session on your local system.
-
-
-2. Navigate to your default download folder. For Mac and Linux environments the default location is **~/Downloads**.
+1. Download the PCG installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
-3. Move the binary to a folder that is part of your system's PATH environment variable. Use the following command to move the binary to the /usr/local/bin folder.
-
-  <br />
-
-  ```shell
-  sudo mv ~/Downloads/palette /usr/local/bin/palette && \
-  chmod +x /usr/local/bin/palette
-  ``` 
-
-<br />
+2. 
 
 
-## Validate
 
-Verify the Palette CLI is part of your system path by issuing the Palette CLI `version` command. 
-
-  <br />
-
-  ```shell
-  palette version
-  ```
-
-  Output:
-  ```shell
-  Palette CLI version: 3.4.0
-  ```
-
-# Install PCG
-
-Palette provides an installer in the form of a CLI. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere.
-
-1. 
 
 
 

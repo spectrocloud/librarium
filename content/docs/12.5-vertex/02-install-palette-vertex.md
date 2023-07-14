@@ -12,6 +12,34 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Install Using Installer CLI
+# Overview
 
-Palette provides an installer in the form of a CLI that prompts you for details and creates the Private Cloud Gateway (PCG) configuration file needed to establish a secure connection from your internal network to the internet-accessible Palette VerteX instance. >IS VERTEX CONNECTED TO THE INTERNET?
+Palette VerteX can be deployed as follows.
+
+<br />
+
+- Self-hosted on VMware with internet connectivity.
+
+
+- Self-hosted on VMware in an air-gapped environment.
+
+
+- Self-hosted using the Palette Helm Chart in EKS clusters.
+
+
+A Private Cloud Gateway (PCG) installer command line interface (CLI) is available for VMware vSphere environments.
+
+
+
+
+# Resources
+
+- [Install on VMware vSphere](/vertex/install-palette-vertex/install-on-vmware)
+
+
+- [Install Using Help Chart](/vertex/install-palette-vertex/install-using-helm-chart)
+
+
+<br />
+
+<br />
