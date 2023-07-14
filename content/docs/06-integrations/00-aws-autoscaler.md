@@ -114,9 +114,11 @@ Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Ama
 
 To use the Cluster Autoscaler pack, you must first define an IAM policy in the AWS account associated with Palette. 
 
-Next, update the cluster profile to specify the IAM policy ARN in the Kubernetes pack's manifest. Palette will attach that IAM policy to your cluster's node group during deployment. Note that Palette automatically creates two IAM roles in the AWS account when you deploy an EKS cluster. One role is for the cluster, and another for the cluster's node group. The cluster's IAM role name will have the following naming convention, `[your-cluster-name]-iam-service-role`, and the node group's IAM role name will follow the `ng-role_worker-pool-[random-string]` naming convention.  
+Next, update the cluster profile to specify the IAM policy ARN in the Kubernetes pack's manifest. Palette will attach that IAM policy to your cluster's node group during deployment. Note that Palette automatically creates two IAM roles in the AWS account when you deploy an EKS cluster. One role is for the cluster, and another for the cluster's node group. The cluster's IAM role name will have the following naming convention, `[your-cluster-name]-iam-service-role`, and the node group's IAM role name will follow the `ng-role_worker-pool-[random-string]` naming convention. 
+<br />
 
-Lastly, add the Cluster Autoscaler pack to your cluster profile and deploy the cluster. The following steps provide more detailed instructions.
+### Customization Instructions
+The following steps provide the customization details discussed above.
 <br />
 
 1. Define the new IAM policy, using the IAM policy outlined in the prerequisites section above, and give it a name, for example, *PaletteEKSClusterAutoscaler*. 
@@ -125,22 +127,7 @@ Lastly, add the Cluster Autoscaler pack to your cluster profile and deploy the c
 2. Copy the IAM policy ARN to the clipboard for the next step. For example, the policy ARN will be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`. 
 
 
-3. Log in to [Palette](https://console.spectrocloud.com), and navigate to the left **Main Menu** and select **Profiles**. 
-
-
-4. Click on **Add Cluster Profile** to start the wizard to create a new cluster profile.
-
-
-5. Provide the **Basic Information**, and click on **Next** to move on to the next section.
-
-
-6. In the **Cloud Type** section, choose AWS EKS managed Kubernetes cluster, and click on **Next** to continue.
-
-
-7. In the **Profile Layers** section, add the OS layer. You can choose an OS pack of your choice. 
-
-
-8. Add the Kubernetes layer, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below shows the section to update with the policy ARN. 
+3.  In your cluster profile, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below shows the section to update with the policy ARN. 
 
   ![A snapshot showing the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.png)
 
@@ -162,47 +149,24 @@ Lastly, add the Cluster Autoscaler pack to your cluster profile and deploy the c
 
   </InfoBox>
 
-9. Add the Network and Storage layers per your requirements. 
 
+4. In the cluster deployment wizard, when you are in the **Nodes configuration** section, you must enter the minimum and maximum number of worker pool nodes, and the instance type (size) that suits your requirement.
 
-10. Add an add-on pack, and select AWS Cluster Autoscaler in the System App category. Click on the **Confirm & Create** button to finish adding the add-on pack.
-
-
-11. Review all layers and click **Finish Configuration**  to create the cluster profile. 
-
-
-12. View the newly created cluster profile, and click the **Deploy** button to start the cluster deployment wizard. 
-
-
-13. In the cluster deployment wizard, provide the **Basic Information**, and select the AWS cloud account where you created the IAM policy. Click on **Next** to move on to the next section.
-
-
-14. Edit the **Parameters** section if you need, otherwise, use defaults. 
-
-
-15. Provide AWS region, SSH key, cluster endpoint access, and other details in the **Cluster configuration** section.
-
-
-16. In the **Nodes configuration**, you must enter the minimum and maximum number of worker pool nodes, and the instance type (size). You need to enter the count limits because Cluster Autoscaler uses Auto Scaling Group to manage the cluster's node group. Auto Scaling Group requires a minimum and maximum count and the instance type. Also, specify the instance type (size). You can choose an instance type that suits your requirement. 
+  You need to enter these node count limits because Cluster Autoscaler uses Auto Scaling Group to manage the cluster's node group. Auto Scaling Group requires a minimum and maximum count and the instance type. Also, specify the instance type (size). You can choose an instance type that suits your requirement. 
 
   For example, the snapshot below shows the minimum one and maximum three node count for the Cluster Autoscaler. 
 
   ![A snapshot showing the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
 
-
-
-17. In the **Nodes configuration**, specify the instance type (size). You can choose an instance type that suits your requirement. 
-
-
-18. Review the remaining settings, and click **Finish Configuration**  to deploy the cluster. 
 <br />
+
+### Use Cases 
 
 After your cluster is deployed, the Cluster Autoscaler will automatically adjust the number of nodes in your cluster when multiple pods fail due to resource contention or nodes are underutilized for a specific period. In the former case, Cluster Autoscaler will provision more nodes. Whereas, in the latter, Cluster Autoscaler will reschedule the pods onto other nodes, and shut down the underutilized node. 
 <br />
 
-### Validate
-
-The easiest way to validate the Cluster Autoscaler working is to manually trigger the pod rescheduling event using the steps below:
+### Example
+Manually trigger the pod rescheduling event using the step below to validate the Cluster Autoscaler working:
 <br />
 
 1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher. 
@@ -221,13 +185,11 @@ The easiest way to validate the Cluster Autoscaler working is to manually trigge
 
 4. Wait up to 5 minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
   
-  For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. This resultant action will validate that Cluster Autoscaler is working correctly.
+  For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. 
 
   ![A snapshot showing new nodes of size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
   <br />
 
-
-To summarize, Cluster Autoscaler dynamically scales cluster nodes to maximize cluster utilization by monitoring the workload. If nodes are overutilized, it will provision new nodes to accommodate unscheduled pods. On the other hand, if nodes are underutilized, it will migrate the pods from underutilized to other available nodes and shut down underutilized ones.   
 
 # Troubleshooting
 
