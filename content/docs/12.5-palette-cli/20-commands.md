@@ -25,7 +25,7 @@ The complete list of subcommands is:
   * `help`       -   Help with any command.
 
 
-  * [`login`](#login)      -  Login to Spectro Cloud Palette.
+  * [`login`](#login)      -  Login to Palette.
 
 
   * [`pcg`](#pcg)        -   Private Cloud Gateway installation & pre-validation.
@@ -50,20 +50,20 @@ Palette CLI supports the following global flags.
 
 # Login
 
-The `login` subcommand can be used to authenticate the Palette CLI with Palette. The `login` subcommand can be used in an interactive mode that will prompt you for required values. Or, you can use flags to provide the subcommand with all the required values such as the API key, the organization ID, and the Palette URL.
+The `login` subcommand authenticates the Palette CLI with Palette. The `login` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the subcommand with all the required values such s the API key, the organization ID, and the Palette URL.
 
   <br />
 
 | Flag                  | Description                                                                          | Type    |  |
 |-----------------------|--------------------------------------------------------------------------------------|---------|
-| `--api-key`           | Palette API key (omit for interactive login)                                         | string  |
-| `--cluster-group-name`| Palette Cluster Group name (optional). Specifies active Cluster Group.               | string  |
-| `--cluster-group-scope`| Palette Cluster Group scope. Required with `--cluster-group-name``. Allowed values are: `project`, `tenant` ,`system` |string |
-| `--console-url`       | Palette console URL (omit for interactive login)                                    | string  |
-| `--help`              | help for login                                                                       | -       |
-| `--insecure`          | Skip TLS (bypass x509 verification)                                                  | -       |
-| `--org`               | Palette Organization name (omit for interactive login)                               | string  |
-| `--project`           | Palette Project name (optional). Specifies active Project.                           | string  |
+| `--api-key`           | Palette API key (omit for interactive login).                                         | string  |
+| `--cluster-group-name`| Palette Cluster Group name (optional). Specifies the active Cluster Group.               | string  |
+| `--cluster-group-scope`| Palette Cluster Group scope. Required with `--cluster-group-name`. Allowed values are: `project`, `tenant` , and `system`. |string |
+| `--console-url`       | Palette console URL (omit for interactive login).                                    | string  |
+| `--help`              | Help for the `login` subcommand.                                                                       | -       |
+| `--insecure`          | Skip Transport Layer Security (TLS) (bypass x509 verification).                                                  | -       |
+| `--org`               | Palette Organization name (omit for interactive login).                               | string  |
+| `--project`           | Palette Project name (optional). Specifies the active Project.                           | string  |
 
 
 
@@ -88,7 +88,7 @@ palette login  \
 ```
 
 
-A local configuration file named **palette.yaml** is created upon successful login. This file contains the metadata for CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an example of a **palette.yaml** configuration file.
+Upon successful login, a local configuration file named **palette.yaml** is created. This file contains the metadata for CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an example of a **palette.yaml** configuration file.
 
 <br />
 
@@ -119,7 +119,7 @@ workspaceLoc: /Users/demo/.palette
 
 # PCG
 
-The `pcg` subcommand supports Private Cloud Gateway (PCG) operations such as the installation of PCG cluster and validating the cluster is installed correctly. The `pcg` command exposes the following subcommands.
+The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. The `pcg` command exposes the following subcommand.
 
   <br />
 
