@@ -25,13 +25,13 @@ The complete list of subcommands is:
   * `help`       -   Help with any command.
 
 
-  * `login`      -  Login to Spectro Cloud Palette.
+  * [`login`](#login)      -  Login to Spectro Cloud Palette.
 
 
-  * `pcg`        -   Private Cloud Gateway installation & pre-validation.
+  * [`pcg`](#pcg)        -   Private Cloud Gateway installation & pre-validation.
 
 
-  * `pde`        -   Palette Developer Experience.
+  * [`pde`](#pde)        -   Palette Developer Experience.
 
 
 
@@ -123,11 +123,26 @@ The `pcg` subcommand supports Private Cloud Gateway (PCG) operations such as the
 
   <br />
 
-  * `install` - Install a Private Cloud Gateway.
+  * `install` - Install a Private Cloud Gateway through an interactive wizard. 
 
 
 <br />
 
+## Install
+
+Use the `install` subcommand to install a PCG cluster in the following environments.
+
+<br />
+
+
+| Platform | Install Guide |
+|---|---|
+| MAAS | [Link](/clusters/data-center/maas/install-manage-maas-pcg) |
+| OpenStack | [Link](/clusters/data-center/openstack#installingprivatecloudgateway-openstack) |
+| VMware | [Link](/clusters/data-center/vmware#createvmwareprivatecloudgateway(pcg)) |
+
+
+To learn more about installing a PCG cluster. Refer to each platform's respective PCG Install guide.
 
 # PDE
 
