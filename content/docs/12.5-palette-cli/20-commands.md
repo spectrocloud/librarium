@@ -139,7 +139,7 @@ Use the `install` subcommand to install a PCG cluster in the following environme
 |---|---|
 | MAAS | [Link](/clusters/data-center/maas/install-manage-maas-pcg) |
 | OpenStack | [Link](/clusters/data-center/openstack#installingprivatecloudgateway-openstack) |
-| VMware | [Link](/clusters/data-center/vmware#createvmwareprivatecloudgateway(pcg)) |
+| VMware | [Link](/clusters/data-center/vmware#installpcg) |
 
 
 To learn more about installing a PCG cluster. Refer to each platform's respective PCG install guide.

@@ -405,11 +405,11 @@ The following system prerequisites are required to install an OpenStack PCG:
     |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
     |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
     |**Spectro Cloud API Key** |Enter your Palette API Key.|
-    |**Spectro Cloud Organization** |Enter your Palette Organization.|
-    |**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
+    |**Spectro Cloud Organization** |Enter your Palette Organization name.|
+    |**Spectro Cloud Project** |Enter your desired Project name within the selected Organization.|
 
 
-2. Once you have authenticated successfully, invoke the PCG installer by executing the following command. When prompted, enter the information listed in each of the following tables.
+2. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
 
     <br />
 
@@ -426,7 +426,7 @@ The following system prerequisites are required to install an OpenStack PCG:
     |**Share PCG Cloud Account across platform Projects** |Enter `y`` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter 'n' if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
-3. Next, provide environment configuration for the cluster. Refer to the following table for information about each option.
+3. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
 
   <br />
 
@@ -469,7 +469,7 @@ The following system prerequisites are required to install an OpenStack PCG:
   | **Node CIDR** | Enter a node CIDR. This is only required for dynamic placement. Example: `10.55.0.0/24`|
   | **SSH Public Key** | Select a key.|
   | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
-  | **Reboot node(s) once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
+  | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
 
 6. Configure the OpenStack PCG Machine by answering the following prompts.

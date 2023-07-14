@@ -42,21 +42,56 @@ As the following diagram shows, Palette provides a command line interface (CLI) 
 
 ![An architecture diagram of MaaS with PCG.](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
 
+## PCG Install Overview
+
+The following steps outline the overall process to install the PCG. 
+
+For detailed steps, refer to the **Install PCG** tab below, which describes a single-step installation that creates the PCG configuration file and installs the PCG.
+
+If you have already installed the PCG and are experiencing issues that you want to fix by editing the PCG configuration file directly, refer to the **Edit PCG Config** tab.
 
 <br />
 
+1. You obtain the Palette PCG installer CLI.
 
-<WarningBox>
 
-The PCG installer is only compatible with Linux x86-64 systems.
+2. Use the CLI to start PCG installation on the installer host.
 
-</WarningBox>
+
+3. Provide the installer CLI with the information it prompts you for.
+
+
+4. The installer generates a PCG configuration file from information you provide in step **3**.
+
+    <br />
+
+    The installer needs access to your Palette account and to your MAAS environment. Additionally, one (no HA) or three (HA) machines must be in ready state and have internet access in MAAS. If you select one machine in step 3, then you need one in MAAS. Likewise, if you select three machines in step 3, you need three in MAAS.
+    <br />
+
+5. The installer CLI provisions the MAAS machines and deploys a new Kubernetes cluster to host the PCG.
+
+
+# Install PCG
+
 
 
 ## Prerequisites
 
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
+
+- Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page and install the CLI. Refer to the [Palette CLI Install](/palette-cli/install-palette-cli) guide to learn more.
+
+
+- A Palette API key. Refer to the [Create API Key](/user-management/user-authentication#apikey) page for guidance.
+
+  <br />
+
+  <WarningBox>
+
+  The installer does not work with Single Sign-On (SSO) credentials. You must use an API key from a local tenant admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used to keep the PCG connected to Palette, so you can disable the account if desired.
+
+  </WarningBox>
 
 - A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
@@ -117,130 +152,90 @@ The diagram shows an example of using an external DNS server for servers that MA
 ![Image showing external DNS server machines that MAAS deploys in addition to a DNS delegation](/clusters_maas_maas-dns-setup.png)
 
 
-## Understand the PCG Installation Process
+## Install
 
-The following steps outline the overall process to install the PCG. 
-
-For detailed steps, refer to the **Install PCG** tab below, which describes a single-step installation that creates the PCG configuration file and installs the PCG.
-
-If you have already installed the PCG and are experiencing issues that you want to fix by editing the PCG configuration file directly, refer to the **Edit PCG Config** tab.
-
-<br />
-
-1. You obtain the Palette PCG installer CLI.
-
-
-2. Use the CLI to start PCG installation on the installer host.
-
-
-3. Provide the installer CLI with the information it prompts you for.
-
-
-4. The installer generates a PCG configuration file from information you provide in step **3**.
-
-    <br />
-
-    The installer needs access to your Palette account and to your MAAS environment. Additionally, one (no HA) or three (HA) machines must be in ready state and have internet access in MAAS. If you select one machine in step 3, then you need one in MAAS. Likewise, if you select three machines in step 3, you need three in MAAS.
-    <br />
-
-5. The installer CLI provisions the MAAS machines and deploys a new Kubernetes cluster to host the PCG.
-
-<br />
-
-
-<Tabs>
-
-<Tabs.TabPane tab="Install PCG" key="install_pcg"> 
-
-
-## Install the PCG
-
-The following steps will guide you to install the PCG. 
+The following steps will guide you on how to install a PCG cluster. 
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. If you have Single or Social Sign-On (SSO) enabled, you will need to use or create a local non-SSO tenant admin account in Palette and use the API key for that account in step **4**.
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
 
-<WarningBox>
+    <br />
 
-The installer does not work with SSO or Social sign on credentials. You must use an API key from a local tenant admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used to keep the PCG connected to Palette, so you can disable the account if desired.
+    ```shell
+    palette login
+    ```
 
-</WarningBox>
+    <br />
 
-3. Download the installer and authenticate with Palette by copying the following code snippet to a terminal. <br />
-
-```bash
-wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette --output-document=/usr/local/bin/palette
-chmod +x /usr/local/bin/palette
-palette login
-```
-
-4. When prompted, enter the information listed in the following table.
-
-#### Palette Login Parameters
-
-|**Parameter**       | **Description**|
-|:-----------------------------|---------------|
-|**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
-|**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
-|**Spectro Cloud API Key** |Enter your Palette API Key.|
-|**Spectro Cloud Organization** |Enter your Palette Organization.|
-|**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
-
-5. When you authenticate successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
-
-```bash
-palette pcg install
-```
-
-#### Palette PCG Parameters
-
-|**Parameter**       | **Description**|
-|:-----------------------------|---------------|
-|**Cloud Type**| Choose MAAS.|
-|**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``maas-pcg-1``.|
-|**Share PCG Cloud Account across platform Projects** |Enter 'y' if you want the Cloud Account associated with the PCG to be available from all Projects within your organization. Enter 'n' if you want the Cloud Account to be available at the tenant admin scope only.|
-
-<br />
-
-#### Environment Configuration
+    |**Parameter**       | **Description**|
+    |:-----------------------------|---------------|
+    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
+    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
+    |**Spectro Cloud API Key** |Enter your Palette API Key.|
+    |**Spectro Cloud Organization** |Enter your Palette Organization name.|
+    |**Spectro Cloud Project** |Enter your desired Project name within the selected Organization.|
 
 
-|**Parameter**| **Description**|
-|:-------------|----------------|
-|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
-|**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
-|**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
-|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
-
-<br />
-
-
-#### MAAS Account Information
-
-|**Parameter**| **Description**|
-|-------------|----------------|
-| **MAAS API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: ``http://10.11.12.13:5240/MAAS``.|
-| **MAAS API Key** |Enter an active MAAS API key to use for authentication.|
-
-<br />
-
-#### MAAS PCG Placement Information
-
-1. When the installer prompts you, select the appropriate option for each of the following items to define which machines should be selected on the MAAS server for deployment as a PCG:
-
-    - Domain
-    - Patch OS on boot
-    - Reboot node(s) once OS patch is applied (if OS patching is enabled)
-    - Availability Zone
-    - Resource Pool
-    - Number of nodes (One node (no HA) or three nodes (HA))
+3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
 
   <br />
+
+  ```bash
+  palette pcg install
+  ```
+
+  <br />
+
+  |**Parameter**       | **Description**|
+  |:-----------------------------|---------------|
+  |**Cloud Type**| Choose OpenStack.|
+  |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: `openstack-pcg-1`.|
+  |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n`` if you want the Cloud Account to only be available at the tenant admin scope.|
+
+
+
+4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
+
+  <br />
+
+  |**Parameter**| **Description**|
+  |:-------------|----------------|
+  |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+  |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
+  |**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
+  |**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+  |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|.|
+
+<br />
+
+
+5. After the environment options, the next set of prompts is for configuring the PCG cluster for the MAAS environment. The following table contains information about each prompt.
+
+  <br />
+
+  |**Parameter**| **Description**|
+  |-------------|----------------|
+  | **MAAS API Endpoint** |Enter the MAAS API endpoint. This can be a domain or IP address. Example: `http://10.11.12.13:5240/MAAS`.|
+  | **MAAS API Key** |Enter an active MAAS API key to use for authentication.|
+
+
+
+6. Next, select the appropriate option for each of the following items to define which machines should be selected on the MAAS server for deployment as a PCG. 
+
+  <br />
+
+  |**Parameter**| **Description**|
+  |-------------|----------------|
+  | **Domain**  | Select the MAAS domain. |
+  | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
+  | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are 
+  | **Availability Zone** |   Select the availbilty zones for the PCG cluster.   |
+  | **Resource Pool** | Select the MAAS resource pool.   | 
+  | **Cluster Size** |  Number of nodes that will make up the cluster. Available options are **1** or **3**. Use three nodes for a High Avaiability (HA) cluster. |                        |
   
   <WarningBox>
 
@@ -249,19 +244,25 @@ palette pcg install
 
   </WarningBox>
 
-When you have entered all the configuration values, the installer saves the PCG configuration file to disk and prints its location before proceeding with the installation. For example:
 
-``/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml``
+7. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
 
-<br />
+  <br />
 
-The installer then requests available bare metal machines in your MAAS environment on which to install the PCG. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
+  ```bash hideClipboard
+  ==== PCG config saved ====
+  Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit PCG Configuration File** section below.
+  <InfoBox>
 
-If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
 
-<br />
+  </InfoBox>
+
+
+The Palette CLI will now provision a PCG cluster in your OpenStack environment. 
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the Edit and Redeploy PCG section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 ## Validate
 
@@ -269,9 +270,9 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
-</Tabs.TabPane>
 
-<Tabs.TabPane tab="Edit PCG Config" key="edit_pcg_config">
+
+
 
 
 ## Edit PCG Configuration File
@@ -298,9 +299,6 @@ The installer requests available bare metal machines in your MAAS environment on
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
-</Tabs.TabPane>
-
-</Tabs>
 
 <br />
 

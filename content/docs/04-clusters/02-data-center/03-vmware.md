@@ -680,12 +680,12 @@ There are two supported PCG installation methods for VMware vSphere. You can use
     |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
     |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
     |**Spectro Cloud API Key** |Enter your Palette API Key.|
-    |**Spectro Cloud Organization** |Enter your Palette Organization.|
-    |**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
+    |**Spectro Cloud Organization** |Enter your Palette Organization name.|
+    |**Spectro Cloud Project** |Enter your desired Project name within the selected Organization.|
 
 
 
-2. Once you have authenticated successfully, invoke the PCG installer by executing the following command. When prompted, enter the information listed in each of the following tables.
+2. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
 
     <br />
 
@@ -702,7 +702,7 @@ There are two supported PCG installation methods for VMware vSphere. You can use
     |**Share PCG Cloud Account across platform Projects** |Enter `y`` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter 'n' if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
-3. Next, provide environment configuration for the cluster. Refer to the following table for information about each option.
+3. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
 
   <br />
 
