@@ -25,7 +25,14 @@ The complete list of subcommands is:
   * `help`       -   Help with any command.
 
 
-  * `pde`        -   Palette Developer Experience.
+  * [`login`](#login)      -  Login to Spectro Cloud Palette.
+
+
+  * [`pcg`](#pcg)        -   Private Cloud Gateway installation & pre-validation.
+
+
+  * [`pde`](#pde)        -   Palette Developer Experience.
+
 
 
 
@@ -41,6 +48,101 @@ Palette CLI supports the following global flags.
 | `-w`       | `--workspace`   | Workspace location for staging runtime configurations and logs (default `$HOME/.palette`) |   string      |      
 
 
+# Login
+
+The `login` subcommand can be used to authenticate the Palette CLI with Palette. The `login` subcommand can be used in an interactive mode that will prompt you for required values. Or, you can use flags to provide the subcommand with all the required values such as the API key, the organization ID, and the Palette URL.
+
+  <br />
+
+| Flag                  | Description                                                                          | Type    |  |
+|-----------------------|--------------------------------------------------------------------------------------|---------|
+| `--api-key`           | Palette API key (omit for interactive login)                                         | string  |
+| `--cluster-group-name`| Palette Cluster Group name (optional). Specifies active Cluster Group.               | string  |
+| `--cluster-group-scope`| Palette Cluster Group scope. Required with `--cluster-group-name``. Allowed values are: `project`, `tenant` ,`system` |string |
+| `--console-url`       | Palette console URL (omit for interactive login)                                    | string  |
+| `--help`              | help for login                                                                       | -       |
+| `--insecure`          | Skip TLS (bypass x509 verification)                                                  | -       |
+| `--org`               | Palette Organization name (omit for interactive login)                               | string  |
+| `--project`           | Palette Project name (optional). Specifies active Project.                           | string  |
+
+
+
+Example:
+
+<br />
+
+```shell hideClipboard
+palette login --api-key 123456789 --org demo-org --console-url https://console.spectrocloud.com
+```
+
+If you want to target a specific project when using the `login` command, use the `--project` flag.
+
+<br />
+
+```shell hideClipboard
+palette login  \
+ --api-key 123456789 \
+ --org demo-org  \
+ --console-url https://console.spectrocloud.com \
+ --project dev-team
+```
+
+
+A local configuration file named **palette.yaml** is created upon successful login. This file contains the metadata for CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an example of a **palette.yaml** configuration file.
+
+<br />
+
+```yaml hideClipboard
+paletteConfig:
+  organization: demo-org
+  scope: tenant
+  projectName: dev-team
+  projectUid: 6342eab2faa0813ead9082e0
+  clusterGroupName: beehive
+  clusterGroupUid: 635669ba4583891d109fe6c0
+  tenantUid: 40b8a9a7f724831be814e5734ea744ed 
+  ubuntuConfig:
+    enablefips: false
+    token: ""
+  scarConfig:
+    scarLoc: ""
+    scarUsername: ""
+    scarPassword: ""
+  mgmt:
+    apikey: 123456789
+    endpoint: https://console.spectrocloud.com
+    insecure: false
+    pairingcode: ""
+runLoc: /Users/demo/.palette/
+workspaceLoc: /Users/demo/.palette
+```
+
+# PCG
+
+The `pcg` subcommand supports Private Cloud Gateway (PCG) operations such as the installation of PCG cluster and validating the cluster is installed correctly. The `pcg` command exposes the following subcommands.
+
+  <br />
+
+  * `install` - Install a Private Cloud Gateway through an interactive wizard. 
+
+
+<br />
+
+## Install
+
+Use the `install` subcommand to install a PCG cluster in the following environments.
+
+<br />
+
+
+| Platform | Install Guide |
+|---|---|
+| MAAS | [Link](/clusters/data-center/maas/install-manage-maas-pcg) |
+| OpenStack | [Link](/clusters/data-center/openstack#installingprivatecloudgateway-openstack) |
+| VMware | [Link](/clusters/data-center/vmware#createvmwareprivatecloudgateway(pcg)) |
+
+
+To learn more about installing a PCG cluster. Refer to each platform's respective PCG install guide.
 
 # PDE
 
