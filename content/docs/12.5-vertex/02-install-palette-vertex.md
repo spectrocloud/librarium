@@ -14,23 +14,23 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette VerteX can be deployed as follows.
+Palette VerteX can be deployed in self-hosted environments as follows:
 
 <br />
 
-- Self-hosted on VMware with internet connectivity.
+- On VMware with internet connectivity.
 
 
-- Self-hosted on VMware in an air-gapped environment.
+- On VMware in an air-gapped environment.
 
 
-- Self-hosted using the Palette Helm Chart in EKS clusters.
+- Using the Palette Helm Chart in EKS clusters.
 
 
 A Private Cloud Gateway (PCG) installer command line interface (CLI) is available for VMware vSphere environments.
 
 
-
+<br />
 
 # Resources
 

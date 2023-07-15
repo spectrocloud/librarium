@@ -51,13 +51,10 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 2. Invoke the installer by using the following command. The installer prompts you for details to create the PCG configuration file and then initiates the installation.
 
-  <br />
+```bash
+palette pcg install
+```
 
-  ```bash
-  palette pcg install
-  ```
-
-  <br />
 
 3. When prompted to enable Ubuntu Pro, type `y` and provide your Ubuntu Pro token.  
 
@@ -71,7 +68,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 6. Choose ``VMware vSphere`` as the cloud type.
 
 
-6. When prompted, enter the information listed in each of the following tables.
+7. When prompted, enter the information listed in each of the following tables.
 
 
 <!-- #### Palette PCG Parameters >DOES THIS SECTION APPLY?
@@ -89,12 +86,12 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
-|**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
-|**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
-|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
+|`HTTPS Proxy`|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|`HTTP Proxy`|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|`No Proxy`|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
+|`Proxy CA Certificate Filepath`|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
+|`Pod CIDR`|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+|`Service IP Range`|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
 <br />
 
@@ -102,10 +99,10 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-|**vSphere Endpoint** | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as ``https://``. Example: `vcenter.mycompany.com`.|
-|**vSphere Username**  | vSphere account username.|
-|**vSphere Password** | vSphere account password.|
-|**Allow Insecure Connection (Bypass x509 Verification)** |Enter ``y`` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, enter ``n``.|
+|`vSphere Endpoint` | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as ``https://``. Example: `vcenter.mycompany.com`.|
+|`vSphere Username`  | vSphere account username.|
+|`vSphere Password`| vSphere account password.|
+|`Allow Insecure Connection`  | Bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, enter `n`.|
 
 <br />
 
@@ -113,76 +110,88 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-|**Datacenter** | |
-|**Folder**  | |
-|**Fault Domain(s)** | Configure one or more fault domains by selecting values for the following properties: Cluster <br /> Network <br /> Resource Pool <br /> Storage Type (Datastore or VM Storage Policy) <br /> NTP server(s) <br /> |
-|**NTP Server(s)** | |
-|**SSH Public Key(s)** | |
-|**PCG cluster size** | Specify **1** or **3** nodes (HA). |
-
-    
-    -
-    - Fault Domain(s). Configure one or more fault domains by selecting values for the following properties:
-      - Cluster
-    * Network
-    * Resource Pool
-    * Storage Type (Datastore or VM Storage Policy)
-  * NTP server(s)
-  * SSH Public Key(s)
-  * PCG cluster size: **1** or **3** nodes (HA)
+|``Datacenter``| |
+|``Folder``  | |
+|``Fault Domain(s)`` | Configure one or more fault domains by selecting values for these properties: Cluster, Network, Resource Pool, and Storage Type (Datastore or VM Storage Policy). |
+|``NTP Server(s)`` | You can provide a list of Network Time Protocol (NTP) servers.  |
+|``SSH Public Key(s)`` | Provide any public SSH keys you will use to access clusters in your project. |
+|``PCG cluster size`` | Specify **1** or **3** nodes (HA). |
 
 
-2. Specify IP Pool configuration
-  * Placement Type (Static or DDNS). With static placement, an IP pool is created and VMs are assigned IPs from that pool. With DDNS, VMs are assigned IPs via DNS.
+<!-- any SSH keys in case you need to remote into the host cluster.  -->
 
-##### Static Placement Configuration
+
+8. Specify the IP pool configuration. The placement type can be Static or DDNS. Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IPs using DNS.
+
+
+#### Static Placement Configuration
+| Parameter                                 | Description                                                |
+|-------------------------------------------|------------------------------------------------------------|
+| `IP Start range`                          | Enter the first address in the PCG IP pool range.           |
+| `IP End range`                            | Enter the last address in the PCG IP pool range.            |
+| `Network Prefix`                          | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
+| `Gateway IP Address`                      | Enter the IP address of the static IP gateway.              |
+| `Name server(s)`                          | Comma-separated list of DNS name server IP addresses.       |
+| `Name server search suffixes`  | An optional comma-separated list of DNS search domains. |
+
+<br />
+
+#### DDNS Placement Configuration
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| **IP Start range** | Enter the first address in the PCG IP pool range.|
-| **IP End range** | Enter the last address in the PCG IP pool range.|
-| **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`.|
-| **Gateway IP Address** | Enter the IP address of the static IP gateway.|
-| **Name server(s)** | Comma-separated list of DNS name server IP addresses.|
-| **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.|
-
-##### DDNS Placement Configuration
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-| **Search domain(s)** | Comma-separated list of DNS search domains.|
+| `Search domain(s)` | Comma-separated list of DNS search domains.|
 
 
+Upon completion, a new PCG configuration file is generated and its location is displayed in the console.
+
+<br />
+
+```bash
+==== PCG config saved EEEE
+Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+```
+
+<br />
+
+Installation details are displayed in the console, including default username and password.
+
+<br />
+
+```bash
+log. InfoCLI("===== You, 3 months ago • PLT-430: Display
+log. InfoCLI("==== Enterprise Cluster Details
+log. InfoCLI("=======
+log. InfoCLI ("Console URL: %s://%s/system", apiServerURL. Scheme, apiServerURL.Hostname
+log. InfoCLI ("Username: f admin")
+log. InfoCLI(" Password: admin")
+```
+
+The installer prompts you to reset the username and password and provides a URL to access the Palette VerteX System Console.
+
+PLACEHOLDER FOR VERTEX SYSTEM CONSOLE SCREENSHOT.
+
+<br />
+
+9.  Click the URL to access the System Console, and type `admin` in the **Username** and **Password** fields. 
 
 
+10. Reset the password.
+
+
+
+<!-- provisions a PCG cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the pcg.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette pcg install. -->
+
+<!-- If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the Edit and Redeploy PCG section below. -->
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Next Steps
 
-Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality, so you will want to keep it updated by downloading the newest version and replacing the current binary.
+Now you are ready to create a tenant. When the tenant is created, you can configure authentication types in Tenant Settings and create users and teams.
+
+
+# Resources
+
+- Create Tenant
 
 <br />
    
