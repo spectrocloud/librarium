@@ -115,10 +115,8 @@ Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Ama
 To use the Cluster Autoscaler pack, you must first define an IAM policy in the AWS account associated with Palette. 
 
 Next, update the cluster profile to specify the IAM policy ARN in the Kubernetes pack's manifest. Palette will attach that IAM policy to your cluster's node group during deployment. Note that Palette automatically creates two IAM roles in the AWS account when you deploy an EKS cluster. One role is for the cluster, and another for the cluster's node group. The cluster's IAM role name will have the following naming convention, `[your-cluster-name]-iam-service-role`, and the node group's IAM role name will follow the `ng-role_worker-pool-[random-string]` naming convention. 
-<br />
 
-### Customization Instructions
-The following steps provide the customization details discussed above.
+The following steps provide detailed instructions and examples of the prerequisites discussed above.
 <br />
 
 1. Define the new IAM policy, using the IAM policy outlined in the prerequisites section above, and give it a name, for example, *PaletteEKSClusterAutoscaler*. 
@@ -162,11 +160,18 @@ The following steps provide the customization details discussed above.
 
 ### Use Cases 
 
-After your cluster is deployed, the Cluster Autoscaler will automatically adjust the number of nodes in your cluster when multiple pods fail due to resource contention or nodes are underutilized for a specific period. In the former case, Cluster Autoscaler will provision more nodes. Whereas, in the latter, Cluster Autoscaler will reschedule the pods onto other nodes, and shut down the underutilized node. 
+This subsection outlines how the pack works. The Cluster Autoscaler will automatically adjust the number of nodes in your cluster when either of these events occur:
+<br />
+
+- Multiple pods fail due to resource contention. In this case, Cluster Autoscaler will provision more nodes. 
+
+
+- Nodes are underutilized for a specific period.  In this case, Cluster Autoscaler will reschedule the pods onto other nodes, and shut down the underutilized node. 
 <br />
 
 ### Example
-Manually trigger the pod rescheduling event using the step below to validate the Cluster Autoscaler working:
+
+This subsection shows an example to validate the Cluster Autoscaler working. Use the following steps to manually trigger the pod rescheduling event:
 <br />
 
 1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher. 
