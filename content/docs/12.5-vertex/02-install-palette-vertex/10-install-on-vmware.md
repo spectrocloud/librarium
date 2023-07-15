@@ -182,11 +182,14 @@ PLACEHOLDER FOR VERTEX SYSTEM CONSOLE SCREENSHOT.
 <!-- provisions a PCG cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the pcg.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette pcg install. -->
 
 <!-- If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the Edit and Redeploy PCG section below. -->
+
+
+# Validate
   
 
 # Next Steps
 
-Now you are ready to create a tenant. When the tenant is created, you can configure authentication types in Tenant Settings and create users and teams.
+Now you are ready to create a tenant. When the tenant is created, you can configure authentication types in tenant settings and create users and teams.
 
 
 # Resources
