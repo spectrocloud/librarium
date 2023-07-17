@@ -142,7 +142,7 @@ palette-edge show
 ## Create an Offline Content Bundle
 
 ```bash
-export API_KEY="Weoh2vlISeaUnp6Kzd4EZkJWWOESRZk8"
+export API_KEY="[USE-YOUR-API-KEY_HERE]"
 ```
 
 ```bash
