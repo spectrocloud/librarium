@@ -710,7 +710,7 @@ There are two supported PCG installation methods for VMware vSphere. You can use
   |:-------------|----------------|
   |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
   |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
+  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``my.company.com,10.10.0.0/16``.|
   |**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
   |**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
   |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
@@ -775,47 +775,66 @@ There are two supported PCG installation methods for VMware vSphere. You can use
   | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
 
-8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
+
+
+8. Enter the vSphere Machine configuration for the Private Cloud Gateway.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **CPU**                                 | The number of CPUs in the Virtual Machine. |
+  | **Memory**                              | The number of memory to allocate to the Virtual Machine.|
+  | **Storage**                             | The amount of storage to allocate to the Virtual Machine. |
+
+9. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
 
   <br />
 
   ```bash hideClipboard
   ==== PCG config saved ====
-  Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+  Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
   ```
 
   <InfoBox>
 
   The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
-
   </InfoBox>
 
 
 The Palette CLI will now provision a PCG cluster in your VMware environment. 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the Edit and Redeploy PCG section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+If the deployment fails due to misconfiguration, update the PCG configuration file and restart the installer. Refer to the [Edit and Redeploy PCG](/clusters/data-center/vmware#editandredeploypcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
-
-<br />
 
 ## Edit and Redeploy PCG
 
-Use the following steps if you want to edit the PCG configuration file directly and use it to redeploy a PCG.
+To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process.
 
 <br />
 
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation. Use a text editor, such as vi or nano.
+1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
 
-```bash hideClipboard
-vi /home/demo-user/.palette/pcg/pcg-20230706150945/pcg.yaml
-```
+  <br />
 
-<br />
+  ```shell hideClipboard
+  ==== Create PCG reference config ====
+  ==== PCG config saved ====
+  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
+  ```
 
-2. To redeploy the PCG, use the `install` command with the flags `--silent` and `--config-file` . Replace the PCG configuration file path with your respective file.
+  ```bash hideClipboard
+  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
 
-```bash hideClipboard
-palette pcg install --silent --config-file /home/demo-user/.palette/pcg/pcg-20230706150945/pcg.yaml
-```
+
+
+2. To redeploy the PCG, use the `install` command with the flags `--silent` and `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
+
+  <br />
+
+  ```bash hideClipboard
+  palette pcg install --silent --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
 
 
 </Tabs.TabPane>
@@ -824,6 +843,7 @@ palette pcg install --silent --config-file /home/demo-user/.palette/pcg/pcg-2023
 <Tabs.TabPane tab="OVA/OVF Template" key="ova-ovf-template">
 
 
+## Install PCG
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
