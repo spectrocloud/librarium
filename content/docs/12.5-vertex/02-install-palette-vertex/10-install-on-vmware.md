@@ -52,7 +52,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 2. Invoke the installer by using the following command. The installer prompts you for details to create the PCG configuration file and then initiates the installation.
 
 ```bash
-palette pcg install
+palette ec install
 ```
 
 

@@ -31,10 +31,13 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 2. Navigate to the left Main Menu and click on Tenant Settings. Next, on the Tenant Settings Menu, click on Platform Settings.
 
 
-3. Enable the Allow non-FIPS cluster import option.
+3. Enable the Allow non-FIPS cluster import option. When you enable this option, you are prompted to confirm importing clusters into the tenant that may have profiles with non-FIPS-compliant packs.
 
+![Diagram showing the Allow non-FIPS cluster import toggle enabled.](https://vertex_use-non-fips-settings_nonFips-cluster-import.png)
 
-4. Use the listed Resources for guidance on creating and restoring backups and initiating scans. 
+To disable the setting, toggle this option off and confirm you want to disable it.
+
+Use the listed Resources for guidance on creating and restoring backups and initiating scans. 
 
 
 # Validate
