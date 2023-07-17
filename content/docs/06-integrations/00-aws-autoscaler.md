@@ -26,7 +26,8 @@ The Cluster Autoscaler dynamically scales cluster resources. It monitors the wor
 * Underutilized cluster nodes for a specific period. In this scenario, the Cluster Autoscaler migrates the pods from underutilized nodes to other available nodes.
 
 
-Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Amazon EC2 Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) to manage node groups. If you want to know the internal details of the pack, you can review the pack manifest [here](https://github.com/spectrocloud/pax/tree/master/stable/addon/systemapps).
+Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Amazon EC2 Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) to manage node groups. To know the internal details of the pack, check out the pack manifest [here](https://github.com/spectrocloud/pax/tree/master/stable/addon/systemapps).
+
 
 
 # Versions Supported
@@ -116,7 +117,8 @@ To use the Cluster Autoscaler pack, you must first define an IAM policy in the A
 
 Next, update the cluster profile to specify the IAM policy ARN in the Kubernetes pack's manifest. Palette will attach that IAM policy to your cluster's node group during deployment. Note that Palette automatically creates two IAM roles in the AWS account when you deploy an EKS cluster. One role is for the cluster, and another for the cluster's node group. The cluster's IAM role name will have the following naming convention, `[your-cluster-name]-iam-service-role`, and the node group's IAM role name will follow the `ng-role_worker-pool-[random-string]` naming convention. 
 
-The following steps provide detailed instructions and examples of the prerequisites discussed above.
+The following steps provide detailed instructions for the prerequisites discussed above.
+
 <br />
 
 1. Define the new IAM policy, using the IAM policy outlined in the prerequisites section above, and give it a name, for example, *PaletteEKSClusterAutoscaler*. 
@@ -188,7 +190,8 @@ This subsection shows an example to validate the Cluster Autoscaler working. Use
   ![A snapshot showing how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
 
 
-4. Wait up to 5 minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
+4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
+
   
   For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. 
 
