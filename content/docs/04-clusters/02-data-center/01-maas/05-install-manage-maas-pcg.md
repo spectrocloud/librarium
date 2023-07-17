@@ -45,7 +45,7 @@ As the following diagram shows, Palette provides a command line interface (CLI) 
 
 # Install PCG
 
-Use the following steps to install a PCG cluster in your MAAS environment. You can use the Palette CLI or the PCG Installer Image to deploy a PCG cluster. Review the prerequisites for each option before selecting an option.
+Use the following steps to install a PCG cluster in your MAAS environment. You can use the [Palette CLI](/palette-cli) or the PCG Installer Image to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct install method.
 
 <br />
 
@@ -259,7 +259,7 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 2. Navigate to the left **Main Menu** and select **Tenant Settings**
 
 
-3. From the **tenant settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
+3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
 
 
 4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
