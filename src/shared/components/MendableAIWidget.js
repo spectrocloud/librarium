@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import spectrocloudLogo from "assets/spectrocloud-logo.png";
+import spectrologoUser from "assets/spectrocloud-logo-black.svg";
 export const MENDABLE_SCRIPT_URL =
-  "https://unpkg.com/@mendable/search@0.0.109/dist/umd/mendable-bundle.min.js";
+  "https://unpkg.com/@mendable/search@0.0.125/dist/umd/mendable-bundle.min.js";
 
 export default function MendableAIWidget() {
   useEffect(() => {
@@ -20,6 +21,8 @@ export default function MendableAIWidget() {
             color: "#FFFFFF",
             backgroundColor: "#3E4FB5",
           },
+          botIcon: spectrologoUser,
+          isPinnable: true,
           icon: spectrocloudLogo,
           style: { accentColor: "#3E4FB5" },
         });
