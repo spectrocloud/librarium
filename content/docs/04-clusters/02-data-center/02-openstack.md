@@ -232,10 +232,15 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 <Tabs.TabPane tab="Keystone Service" key="keyston-service">
 
+### Keystone Service
+
+**Last Update**: July 20, 2023
+
+
 ```json
 "list_domains": "role:admin and system_scope:all",
 "get_domain": "role:reader and system_scope:all or token.domain.id:%(target.domain.id)s or token.project.domain.id:%(target.domain.id)s",
-"list_projects": "role:reader and system_scope:all or (role:reader and domain_id:%(target.user.domain_id)s) or user_id:%(target.user.id)s",
+"list_projects": "role:reader and system_scope:all or role:reader and domain_id:%(target.user.domain_id)s or user_id:%(target.user.id)s",
 "get_project": "role:reader and system_scope:all or role:reader and domain_id:%(target.project.domain_id)s or project_id:%(target.project.id)s",
 "list_endpoints": "role:admin and system_scope:all",
 "get_endpoint": "role:admin and system_scope:all"
