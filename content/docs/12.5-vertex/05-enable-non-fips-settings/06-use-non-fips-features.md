@@ -39,7 +39,7 @@ You can allow users on the tenant to use features that are *not* FIPS-compliant,
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-The [Resources](/vertex/enable-non-fips-settings/use-non-fips-addon-packs#resources) will guide you to configure and schedule cluster backups and describe available scans you can schedule during cluster deployment.  
+[Resources](/vertex/enable-non-fips-settings/use-non-fips-features#resources) listed below will guide you to configure and schedule cluster backups and describe available scans you can schedule during cluster deployment.
 
 
 # Validate

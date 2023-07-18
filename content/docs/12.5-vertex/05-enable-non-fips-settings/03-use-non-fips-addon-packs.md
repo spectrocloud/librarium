@@ -46,8 +46,7 @@ There are no prerequisites.
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-The [Resources](/vertex/enable-non-fips-settings/use-non-fips-addon-packs#resources) below provide a searchable list of packs that can be added to a cluster profile and steps to create an add-on profile.  
-
+[Resources](/vertex/enable-non-fips-settings/use-non-fips-addon-packs#resources) listed below provide a searchable list of packs that can be added to a cluster profile and steps to create an add-on profile.  
 
 
 # Validate

@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow users to import clusters that were not deployed through Palette.
+You can allow users to import clusters that were not deployed through Palette, and their FIPS copliance cannot be confirmed.
 
 # Prerequisites
 
@@ -28,10 +28,10 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
 
-2. Navigate to the left Main Menu and click on Tenant Settings. Next, on the Tenant Settings Menu, click on Platform Settings.
+2. Navigate to the left Main Menu and click on **Tenant Settings**. Next, on the **Tenant Settings Menu**, select **Platform Settings**.
 
 
-3. Enable the Allow non-FIPS cluster import option. When you enable this option, you are prompted to confirm importing clusters into the tenant that may have profiles with non-FIPS-compliant packs.
+3. Enable the **Allow non-FIPS cluster import** option. When you enable this option, you are prompted to confirm importing clusters into the tenant that may not be FIPS-compliant.
 
 ![Diagram showing the Allow non-FIPS cluster import toggle enabled.](/vertex_use-non-fips-settings_nonFips-cluster-import.png)
 
@@ -39,6 +39,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 
 Use the listed Resources for guidance on creating and restoring backups and initiating scans. 
 
+[Resources](/vertex/enable-non-fips-settings/allow-cluster-import#resources) listed below will guide you on how to import a cluster and import modes and limitations to be aware of. 
 
 # Validate
 
@@ -53,10 +54,12 @@ Use the listed Resources for guidance on creating and restoring backups and init
 
 # Resources
 
+- [Import a Cluster](/clusters/imported-clusters/cluster-import)
+
+
 - [Import Modes](/clusters/imported-clusters#importmodes)
 
 
 - [Cluster Import Limitations](/clusters/imported-clusters#limitations)
 
 
-- [Import a Cluster](/clusters/imported-clusters/cluster-import)
