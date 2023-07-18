@@ -17,6 +17,20 @@ import PointsOfInterest from "shared/components/common/PointOfInterest";
 # Build Edge Artifacts with Content Bundle
 
 
+Palette's Edge solution supports creating Edge artifacts for devices having low Internet bandwidth or deployed in *air-gapped* environments. Deployment sites with no direct or indirect connectivity to other devices or outside networks are called *air-gapped* environments. Palette supports creating the Edge artifacts using a content bundle to prepare edge devices for such environments. 
+
+A content bundle in Palette is an archive that includes all the required container images, Helm charts, packs, and manifest files needed to deploy an Edge cluster. It can also include artifacts from your applications that you wish to deploy to the Edge cluster. 
+
+
+Content bundles provide several benefits, such as preloading required software dependencies to remove the need for downloading assets during cluster deployment, optimizing the deployment process in bandwidth-constrained environments, and ensuring that only authorized tools or software are installed on Edge hosts. 
+
+
+In this how-to guide, you will first build the provider images using the CanvOS utility and create a cluster profile using one of the provider images. Once your cluster profile is ready, you will use it to create a content bundle using the Palette Edge Content CLI. The Palette Edge CLI provides a command-line utility to interact with Palette and perform specific tasks, such as creating a content bundle.
+
+
+Lastly, when your content bundle is ready, you will again use the CanvOS utility to embed the site-specific Edge installer configuration and user data into a bootable Edge installer ISO image. This bootable ISO image can install the necessary dependencies and configurations on a bare host machine. During installation, the host machine will boot from the Edge installer ISO, partition the disk, copy the image content to the disk, install the Palette Edge host agent and metadata, and perform several other configuration steps. 
+
+
 
 # Prerequisites
 
@@ -110,18 +124,129 @@ Use the following instructions on your Linux machine to customize the arguments 
 
 
 
+5. Review the files relevant for this guide. 
+    - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process. 
+    - **Dockerfile** - Embeds the arguments and other configurations in the image.
+    - **Earthfile** - Contains a series of commands to create target artifacts.
+    - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
+    - **user-data.template** - A sample user-data file.
+  <br />
+
+
+6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the `CUSTOM_TAG` variable. 
+<br />
+
+  ```bash
+  export CUSTOM_TAG=palette-learn
+  ```
+  <br />
+
+7. Issue the command below to create the **.arg** file with the custom tag. It uses the default values for the remaining variables. You can refer to the existing **.arg.template** file to learn more about the available customizable variables.  
+<br /> 
+
+  ```bash
+  cat << EOF > .arg
+  CUSTOM_TAG=$CUSTOM_TAG
+  IMAGE_REGISTRY=ttl.sh
+  OS_DISTRIBUTION=ubuntu
+  IMAGE_REPO=ubuntu
+  OS_VERSION=22
+  K8S_DISTRIBUTION=k3s
+  ISO_NAME=palette-edge-installer
+  PE_VERSION=$(git describe --abbrev=0 --tags)
+  platform=linux/amd64
+  EOF
+  ```
+  
+  View the newly created file to ensure the customized variables are set correctly.
+  <br />
+
+  ```bash
+  cat .arg
+  ```
+  <br />
+
+8. Issue the command below to save your tenant registration token to an environment variable. Replace `[your_token_here]` with your actual registration token. 
+<br />
+
+  ```bash
+  export token=[your_token_here]
+  ```
+  <br />
+  
+9. Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example. 
+  <br />
+
+  <PointsOfInterest
+    points={[
+      {
+        x: 260,
+        y: 187,
+        label: 1,
+        description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
+        tooltipPlacement: "rightTop",
+      },
+      {
+        x: 190,
+        y: 262,
+        label: 2,
+        description: "Instructs the installer to turn the host machine off once the installation is complete.",
+      },
+      {
+        x: 190,
+        y: 340,
+        label: 3,
+        description: "Sets the login credentials for Edge hosts. The login credentials will allow you to SSH log into the edge host for debugging purposes.",
+        tooltipPlacement: "rightTop",
+      },
+    ]}
+  >
+
+  ```shell
+  cat << EOF > user-data
+  #cloud-config
+  stylus:
+    site:
+      edgeHostToken: $token
+  install:
+    poweroff: true
+  users:
+    - name: kairos
+      passwd: kairos
+  EOF
+  ```
+
+  </PointsOfInterest>
+  <br />
+
+  View the newly created user data file to ensure the token is set correctly.
+<br />
+
+  ```bash
+  cat user-data
+  ``` 
+  <br />
+
+10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process.
+<br />
+
+  ```bash
+  sudo ./earthly.sh +build-provider-images
+  ```
+
+
 ```bash
-sudo ./earthly.sh +build-all-images
+docker images --filter=reference='*/*:*palette-learn'
 ```
 
 ```bash
-docker images --filter=reference='*/*:*demo'
+docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-palette-learn
 ```
 
-```bash
-docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
-```
+## Create a Cluster Profile
 
+## Download and Install the Palette Edge CLI
+Download the Edge CLI for your OS type.
 
 ```bash
 curl https://software.spectrocloud.com/stylus/v3.4.3/cli/linux/palette-edge -o palette-edge
@@ -138,6 +263,7 @@ sudo mv palette-edge /bin/
 ```bash
 palette-edge show
 ```
+
 
 ## Create an Offline Content Bundle
 
