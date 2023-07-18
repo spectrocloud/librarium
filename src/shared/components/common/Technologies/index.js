@@ -71,7 +71,7 @@ export default function Technologies({ data }) {
       return accumulator;
     }, new Set(["all"]));
     return new Set([...categoriesSet].sort());
-}, [data]);
+  }, [data]);
 
   let technologies = useMemo(() => {
     let technologies = [...data].sort((pack1, pack2) => {
