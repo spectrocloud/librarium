@@ -41,7 +41,7 @@ There are no prerequisites.
 3. Enable the **Allow non-FIPS add-on packs** option. When you enable this option, you are prompted to confirm the use of non-FIPS add-on packs for the tenant.
 
 
-![Diagram showing the Allow non-FIPS add-on packs toggle enabled.](https://vertex_use-non-fips-settings_nonFips-addon-packs)
+![Diagram showing the Allow non-FIPS add-on packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-addon-packs.png)
 
 
 To disable the setting, toggle this option off and confirm you want to disable it.
