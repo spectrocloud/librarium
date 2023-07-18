@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Private Cloud Gateway (PCG)
 
-The following are scenarios you may encounter when deploying and using a Private Cloud Gateway.
+You may encounter one of the following scenarios when deploying and using a Private Cloud Gateway in your data center. Some of the scenarios below apply to any data center, whereas others apply to specific data centers, such as VMware. Each scenario covers a specific problem, including an overview of the issue and its possible causes, followed by a detailed set of debug steps to help identify and resolve the underlying problem.  
 
 <br />
 
@@ -22,6 +22,7 @@ The following are scenarios you may encounter when deploying and using a Private
 # Scenairo - Jet Crashback Loop
 
 During the installation of a PCG cluster, one of the internal Palette components will continue to undergo a CrashLoopBackOff until the PCG is configured correctly in the User Interface (UI). The internal component, *Jet*, will transition to a healthy state once the PCG cluster is successfully registered with Palette.
+<br />
 
 ## Debug Steps
 
@@ -34,6 +35,7 @@ Complete the PCG installation so that the internal component receives the proper
 # Scenario - PCG Installer Unable to Register With Palette
 
 When the PCG installer instance is powered on, it goes through a bootstrap process and attempts to register itself with Palette. This process typically takes between five to ten minutes. If the installer fails to register with Palette within the timeframe, it could indicate a bootstrapping error.
+<br />
 
 ## Debug Steps
 
@@ -105,6 +107,7 @@ When the PCG installer instance is powered on, it goes through a bootstrap proce
 The installation of a gateway cluster may encounter errors or get stuck in the provisioning state due to such reasons as a lack of infrastructure resources, unavailable IP addresses, or the inability to perform a Network Time Protocol (NTP) sync.
 
 While these are the most common errors, some other issues might be related to the underlying VMware environment. 
+<br />
 
 ## Debug Steps
 
@@ -122,3 +125,134 @@ While these are the most common errors, some other issues might be related to th
 
 4. If the problem persists, contact our support team by sending an email to [support@spectrocloud.com](mailto:support@spectrocloud.com).
 <br />
+
+
+# Scenario - IP Address Not Assigned During PCG Creation
+
+When deploying a PCG in VMware vCenter, the IP address fails to get assigned to the new node. This can be caused by networking errors such as DHCP issues or improper execution of cloud-init.
+<br />
+
+## Debug Steps
+<br />
+
+1. Verify the network connectivity between the new node and the DHCP server. Ensure that the DHCP server is operational and has available IP addresses in its pool.
+
+
+2. Check the network configuration on the new node and ensure that it is set to obtain an IP address automatically via DHCP.
+
+
+3. Review the cloud-init logs on the new node for any errors or warnings related to the IP address assignment process.
+<br />
+
+# Scenario - Cluster Provisioning Failure: "No Route to Host" to Kube API Server
+
+While provisioning a cluster, the event shows `no route to host` to the Kube API Server. This issue can occur due to improper networking configuration, errors in the cloud-init logs on the newly created VM, or sys logs indicating errors in the newly created VM.
+<br />
+
+## Debug Steps
+<br />
+
+1. Review the networking configuration for the cluster and ensure that it is properly set up with the correct IP addresses, subnets, and gateways.
+
+
+2. Check the cloud-init logs on the newly created VM for any errors or warnings that might indicate a problem with network configuration or initialization.
+
+
+3. Examine the sys logs on the newly created VM for any errors or issues that might be causing network connectivity problems.
+<br />
+
+# Scenario - VM Not Showing in Palette Console After Running
+
+<InfoBox>
+
+This scenario is applicable to deploying PCG in VMware environment.
+
+</InfoBox>
+
+After a virtual machine (VM) reaches the running state, it fails to appear in the Palette console. This can occur due to network connectivity issues with the Spectro Console, incorrect pairing code, or an incorrect endpoint configuration for the Palette in the Installer OVA VApp properties.
+<br />
+
+## Debug Steps
+<br />
+
+1. Verify the network connectivity between the VM and the Spectro Console. Check for any network restrictions or firewall rules that may be blocking communication.
+
+
+2. Double-check the accuracy of the pairing code used for the VM. Confirm that it matches the expected value.
+
+
+3. Verify the correctness of the Palette endpoint specified in the Installer OVA VApp properties.
+<br />
+
+# Scenario - Cluster Cloning Provisioning Failure Due to Permission Denial
+
+<InfoBox>
+
+This scenario is applicable to deploying PCG in VMware environment.
+
+</InfoBox>
+
+
+The provisioning of cluster cloning fails due to permission denial. This can occur when the users involved in the cluster cloning operation have inadequate permissions.
+<br />
+
+## Debug Steps
+<br />
+
+1. Review the documentation and ensure that the users involved have been granted the proper permissions for cluster cloning. Check for any missing or incorrect permissions.
+
+
+2. Verify the assigned permissions for the specific vCenter objects and actions required for cluster cloning.
+
+
+3. Contact the vCenter administrator or the access management team to rectify any permission discrepancies or grant the necessary permissions as per the documentation.
+<br />
+
+
+# Scenario - PCG Provisioning Stuck after "Created Container Manager"
+
+<InfoBox>
+
+This scenario is applicable to deploying PCG in VMware environment.
+
+</InfoBox>
+
+
+During the provisioning of a PCG, the process gets stuck in events without any progress after the "Created container manager" step. This can occur when the Gateway Installer fails to connect to the Spectro Cloud image URL, or when proper permissions are not set for the **spectro-templates** folder.
+<br />
+
+## Debug Steps
+<br />
+
+1. Check the network connectivity from the Gateway Installer to the Spectro Cloud image URL bucket. Ensure that there are no network issues or firewall restrictions blocking the connection.
+
+
+2. Verify that the proper permissions are set for the **spectro-templates** folder, allowing the Gateway Installer to access and download the required OVA.
+
+
+3. Review the logs and error messages related to the provisioning process to identify any specific errors or issues. Consult the VMware vCenter documentation or contact support for assistance if needed.
+<br />
+
+
+
+# Scenario - Failed to Deploy Image
+
+<InfoBox>
+
+This scenario is applicable to deploying PCG in VMware environment.
+
+</InfoBox>
+
+In Palette events, the error `failed to deploy image: Failed to create govomiClient` occurs. This issue can be caused by the user providing vCenter details with "https://" or "http://", which should not be provided, or by connectivity issues to vCenter from within the VM.
+<br />
+
+## Debug Steps
+<br />
+
+1. Verify that the vCenter details provided during provisioning do not include "https://" or "http://". The connection to vCenter should be specified without these prefixes.
+
+
+2. Check the connectivity to vCenter from within the VM. Ensure that there are no network issues or firewall restrictions blocking the connection.
+
+
+3. Review the logs and error messages related to the failed image deployment in Palette to identify any specific errors or issues. Consult the VMware vCenter documentation or contact support for further assistance if needed.
