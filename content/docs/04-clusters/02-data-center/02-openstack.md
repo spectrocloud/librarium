@@ -16,13 +16,14 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 Following are some highlights of OpenStack clusters provisioned by Palette:
 
-1. Palette provides public cloud like experience to deploying clusters on OpenStack.
+1. Palette enables the ability to use OpenStack as an application platform for engineering team.
 
 
-2. In order to facilitate communication between the Palette management platform and the OpenStack controllers installed in the private data center, a Private Cloud Gateway needs to be set up within the environment.
+
+2. To facilitate communication between Palette and the OpenStack controllers installed in the private data center, a Private Cloud Gateway (PCG) needs to be set up within the environment.
 
 
-3. Private Cloud Gateway (PCG) is Palette's on-prem component to support isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
+3. Private Cloud Gateway (PCG) is Palette's self-hosted component to support isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 
 ![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
@@ -46,7 +47,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 5. You should have an Infrastructure cluster profile created in Palette for OpenStack.
 
 
-6. You should install a Private Cloud Gateway for OpenStack as described in the "**Installing Private Cloud Gateway - OpenStack**" section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Palette. You can register your additional OpenStack cloud accounts in Palette as described in the "**Creating a OpenStack Cloud account**" section below.
+6. Install a Private Cloud Gateway for OpenStack as described in the **Installing Private Cloud Gateway - OpenStack** section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Palette. You can register your additional OpenStack cloud accounts in Palette as described in the **Creating a OpenStack Cloud account** section below.
 
 
 7. Egress access to the internet (direct or via proxy):
@@ -361,7 +362,30 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 # Installing Private Cloud Gateway - OpenStack
 
-The following system prerequisites are required to install an OpenStack PCG:
+
+Use the following steps to install a PCG cluster in your OpenStack environment. You can use the [Palette CLI](/palette-cli) or the PCG Installer Image to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct install method.
+
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Palette CLI" key="palette-cli">
+
+
+## Prerequisites
+
+
+The following system prerequisites are required to install an OpenStack PCG.
+
+- Palette version 4.0.X or greater.
+
+
+- A Palette API key. Refer to the [Create API Key](/user-management/user-authentication#apikey) page for guidance.
+
+
+- Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page and install the CLI. Refer to the [Palette CLI Install](/palette-cli/install-palette-cli) guide to learn more.
+
 
 - PCG IP address requirements: <br />
 
@@ -370,135 +394,315 @@ The following system prerequisites are required to install an OpenStack PCG:
     - One IP address for the Kubernetes control plane.
 
     - One additional Kubernetes control plane IP address for rolling upgrades.
-    <br />
+
+
+- A Linux x86-64 host with the Docker daemon installed.
+
 
 - Sufficient available IP addresses within the configured OpenStack subnets.
 
-Palette provides an installer in the form of a command line interface (CLI). This installer can be run on any Linux x86-64 system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
-## Set up the PCG Installer CLI
+## Install PCG
 
-Copy the following code snippet to a terminal to download the PCG installer CLI and authenticate with Palette.
 
-```bash
-wget https://software.spectrocloud.com/palette-pcg-installer-cli/v3.4.0/linux/cli/palette --output-document=/usr/local/bin/palette
-chmod +x /usr/local/bin/palette
+1. In an x86 Linux host, open up a terminal session.
 
-palette login
-```
 
-When prompted, enter the information listed in the following table.
 
-### Palette Login Parameters
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
 
-|**Parameter**       | **Description**|
-|:-----------------------------|---------------|
-|**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
-|**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
-|**Spectro Cloud API Key** |Enter your Palette API Key.|
-|**Spectro Cloud Organization** |Enter your Palette Organization.|
-|**Spectro Cloud Project** |Enter your desired Project within the selected Organization.|
+    <br />
 
-## Invoke the PCG installer CLI
+    ```shell
+    palette login
+    ```
 
-Once you have authenticated successfully, invoke the PCG installer by executing the following command. When prompted, enter the information listed in each of the following tables.
+    <br />
 
-```bash
-palette pcg install
-```
+    |**Parameter**       | **Description**|
+    |:-----------------------------|---------------|
+    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a self-hosted instance of Palette, enter the URL for that instance. |
+    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter `n`.|
+    |**Spectro Cloud API Key** |Enter your Palette API Key.|
+    |**Spectro Cloud Organization** |Enter your Palette Organization name.|
+    |**Spectro Cloud Project** |Enter your desired project name within the selected Organization.|
 
-### Palette PCG Parameters
 
-|**Parameter**       | **Description**|
-|:-----------------------------|---------------|
-|**Cloud Type**| Choose OpenStack.|
-|**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``openstack-pcg-1``.|
-|**Share PCG Cloud Account across platform Projects** |Enter 'y' if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter 'n' if you want the Cloud Account to only be available at the tenant admin scope.|
+3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
+
+    <br />
+
+    ```bash
+    palette pcg install
+    ```
+
+    <br />
+
+    |**Parameter**       | **Description**|
+    |:-----------------------------|---------------|
+    |**Cloud Type**| Choose OpenStack.|
+    |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: `openstack-pcg-1`.|
+    |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
+
+
+4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
+
+  <br />
+
+  |**Parameter**| **Description**|
+  |:-------------|----------------|
+  |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`.|
+  |**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
+  |**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+  |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
+
+
+
+5. After the environment options, the next set of prompts is for configuring the PCG cluster for the OpenStack environment. The following table contains information about each prompt.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  |**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`|
+  |**OpenStack Account Username**  | OpenStack account username.|
+  |**OpenStack Account Password** | OpenStack account password.|
+  |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.|
+  |**CA Certificate** |This is only required when using TLS, in which case you would provide a base64-encoded CA certificate for your OpenStack instance. |
+
+6. Next, fill out additional OpenStack configurations.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Default Domain** | OpenStack Domain. Example: `Default`.|
+  | **Default Region** | OpenStack Region. Example: `RegionOne`.|
+  | **Default Project** | OpenStack Project. Example: `dev`.|
+  | **Placement Type** | Placement can be static or dynamic. For static placement, VMs are placed into existing networks. For dynamic placement, a new network is created.|
+  | **Network** | Select an existing network. This is only required for static placement.|
+  | **Subnet** | Select an existing subnet. This is only required for static placement.|
+  | **DNS Server(s)** | Enter a comma-separated list of DNS server IPs . This is only required for dynamic placement.|
+  | **Node CIDR** | Enter a node CIDR. This is only required for dynamic placement. Example: `10.55.0.0/24`.|
+  | **SSH Public Key** | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments.|
+  | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
+  | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
+
+
+7. Configure the OpenStack PCG Machine by answering the following prompts.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Availability Zone**  | Select the availability zone. |
+  | **PCG Cluster Size** | Select the node size of the PCG cluster. You can choose between **1** node or **3** nodes for High Availbility (HA). |
+
+
+8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
+
+  <br />
+
+  ```bash hideClipboard
+  ==== PCG config saved ====
+  Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
+
+  <InfoBox>
+
+  The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+
+  </InfoBox>
 
 <br />
 
-### Environment Configuration
-
-
-|**Parameter**| **Description**|
-|:-------------|----------------|
-|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
-|**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
-|**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
-|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
-
-### OpenStack Account Information
-
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-|**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`|
-|**OpenStack Account Username**  | OpenStack account username|
-|**OpenStack Account Password** | OpenStack account password|
-|**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter 'n'.|
-|**CA Certificate** |This is only required when using TLS, in which case you would enter a base64-encoded CA certificate for your OpenStack instance. |
-
-### OpenStack PCG Cluster Configuration
-
-Enter values for the following properties:
-
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-| **Default Domain** | OpenStack Domain. Example: `Default`|
-| **Default Region** | OpenStack Region. Example: `RegionOne`|
-| **Default Project** | OpenStack Project. Example: `dev`|
-| **Placement Type** | Placement can be static or dynamic. For static placement, VMs are placed into existing networks. For dynamic placement, a new network is created.|
-| **Network** | Select an existing network. This is only required for static placement.|
-| **Subnet** | Select an existing subnet. This is only required for static placement.|
-| **DNS Server(s)** | Enter a comma-separated list of DNS server IPs . This is only required for dynamic placement.|
-| **Node CIDR** | Enter a node CIDR. This is only required for dynamic placement. Example: `10.55.0.0/24`|
-| **SSH Public Key** | Select a key.|
-| **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
-| **Reboot node(s) once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
-
-### OpenStack PCG Machine Configuration
-
-* Select the availability zone
-* Choose flavor
-* PCG cluster size: **1** or **3** nodes (HA)
-
-After this step, a new PCG configuration file is generated and its location is displayed on the console. Example:
-
-```bash
-==== PCG config saved ====
-Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
-```
+The Palette CLI will now provision a PCG cluster in your OpenStack environment. 
+If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the [Edit and Redeploy PCG](/clusters/data-center/openstack#editandredeploypcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 <br />
 
-The installer then provisions a PCG cluster in your OpenStack environment. The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the ``pcg.yaml`` are encrypted and cannot be manually updated. To change these values, rerun the installer using ``palette pcg install``.
 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the **Edit and Redeploy PCG** section below.
+## Validate
 
-If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+Once installed, the PCG registers itself with Palette. To verify the PCG is registered, use the following steps.
 
-<br />
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. Navigate to the left **Main Menu** and select **Tenant Settings**
+
+
+3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
+
+
+4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **OpenStack** in the table. Verify your OpenStack account is listed.
+
+
 
 ## Edit and Redeploy PCG
 
-Use the following steps if you want to edit the PCG configuration file directly and use it to redeploy a PCG.
+To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process. 
 
 <br />
 
-1. Make the necessary changes to the configuration file.
+1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
+
+  <br />
+
+  ```shell hideClipboard
+  ==== Create PCG reference config ====
+  ==== PCG config saved ====
+  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
+  ```
+
+  ```bash hideClipboard
+  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
+
+
+
+2. To redeploy the PCG, use the `install` command with the flags `--silent` and `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
+
+  <br />
+
+  ```bash hideClipboard
+  palette pcg install --silent --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="PCG Installer Image" key="pcg-installer-image">
+
+
+ `video: title: "openstack-pcg-creation": /pcg-creation-video/openstack.mp4`
+
+
+
+## Prerequisites
+
+The following system requirements are required to deploy a PCG cluster.
+
+- Palette version 3.4.X or older. 
+
+- A Linux environment with a Docker daemon installed and a connection to Palette and the OpenStack environment. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
+
+
+- Private cloud gateway IP requirements:
+    * One IP address for a single-node PCG or three IP addresses for a three-node PCG cluster.
+    * One IP address for the Kubernetes control plane.
+
+
+## Generate pairing code
+
+Navigate to the Private Cloud Gateway page under Administration and Create a new OpenStack gateway. Copy the pairing code displayed on the page. This will be used in subsequent steps.
+
+## Generate gateway config
+
+Invoke the gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Palette Management, OpenStack cloud account, Environment and Placement information as requested.
 
 ```bash
-vi /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+docker run -it --rm \
+ --net=host \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v /tmp:/opt/spectrocloud \
+ gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
+ -o true
 ```
 
-<br />
+#### Enter Palette Management Information:
 
-2. To redeploy the PCG, copy the following code snippet to your terminal:
+|**Parameter**| **Description**|
+|----------------------------------------|:----------------|
+|**Palette Console** | Management Console endpoint e.g. https://console.spectrocloud.com|
+|**Palette Username** | Login email address <br /> e.g. user1@company.com|
+|**Palette Password** | Login password|
+|**Private Cloud Gateway pairing code**| The unique authentication code <br />generated in the previous step.|
+
+#### Enter Environment Configuration:
+
+| **Parameter**                          | **Description** |
+    |------------------------------------|----------------|
+    |**HTTPS Proxy(--https_proxy)**|The endpoint for the HTTPS proxy server. This setting will be <br /> propagated to all the nodes launched in the proxy network.<br /> e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT|
+    |**HTTP Proxy(--http_proxy)**|The endpoint for the HTTP proxy server. This setting will be  <br /> propagated to all the nodes launched in the proxy network.<br /> e.g., http://USERNAME:PASSWORD@PROXYIP:PROXYPORT|
+    |**No Proxy(--no_proxy)** |A comma-separated list of local network CIDRs, hostnames,<br /> domain  names that should be excluded from proxying. <br />This setting will be  propagated to all the nodes to bypass the proxy server.<br /> e.g., maas.company.com,10.10.0.0/16|
+    |**Pod CIDR (--pod_cidr)**|The CIDR pool is used to assign IP addresses to pods in the cluster.<br /> This setting will be used to assign IP <br />addresses to pods in Kubernetes clusters. <br /> The pod IP addresses should be unique and<br /> should notoverlap with any <br /> Virtual Machine IPs in the environment.|
+    |**Service IP Range (--svc_ip_range)**|The IP address that will be assigned to <br />services created on Kubernetes. This setting will be used<br />to assign IP addresses to services in Kubernetes clusters.<br /> The service IP addresses should be unique and not <br /> overlap with any virtual machine IPs in the environment.|
+
+#### Enter OpenStack Account Information:
+
+|**Parameter**                            | **Description**|
+|-----------------------------------------|----------------|
+|**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />e.g. https://openstack.mycompany.com/identity|
+|**OpenStack Account Username**  | OpenStack account username|
+|**OpenStack Account Password** | OpenStack account password|
+|**Default Domain** | Default OpenStack domain. e.g. Default|
+|**Default Region** | Default OpenStack region. e.g. RegionOne|
+|**Default Project** | Default OpenStack project. e.g. dev|
+
+
+#### Enter OpenStack cluster configuration for the Private Cloud Gateway:
+
+1. Verify the following parameters:
+    * Default Domain
+    * Default Region
+    * Default Project
+
+
+2. Enter the values for:
+
+|**Parameter**                            | **Description**|
+|-----------------------------------------|----------------|
+    | **SSH Key** | Select a key.|
+    | **Placement option as Static or Dynamic** | For static placement, VMs are placed into existing <br />networks whereas, for dynamic placement, new network is created.|
+    | **Network** | Select an existing network. |
+    | **Sub Network** | Select a sub network.|
+
+#### Enter OpenStack Machine configuration for the Private Cloud Gateway:
+
+* Select the availability zone
+* Choose flavor
+* Number of nodes: Choose between **1** and **3**
+
+After this step, a new gateway configuration file is generated and its location is displayed on the console.
+e.g.: Config created:/opt/spectrocloud//install-pcg-ar-dev-os-gw-02-aug-01-20210802062349/pcg.yaml
+
+
+## Copy configuration file to known location:
+
+Copy the pcg.yaml file to a known location for easy access and updates.
+
 
 ```bash
-palette pcg install --silent --config-file /home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+cp /tmp/install-pcg-xxx/pcg.yaml /tmp
 ```
+
+
+## Deploy Private Cloud Gateway
+
+Invoke the gateway installer in *silent mode*, providing the gateway config file as input to deploy the gateway. New VM(s) will be launched in your OpenStack environment and a gateway will be installed on those VM(s). If deployment fails due to misconfiguration, update the gateway configuration file and rerun the command.
+
+```bash
+docker run -it --rm \
+ --net=host \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v /tmp:/opt/spectrocloud \
+ gcr.io/spectro-images-public/release/spectro-installer:1.0.12 \
+ -s true \
+ -c //opt/spectrocloud/pcg.yaml
+```
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+
+
 
 ## Upgrade PCG
 Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and in an upgrade notification on the PCG.

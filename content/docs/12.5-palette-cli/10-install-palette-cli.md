@@ -46,6 +46,7 @@ Use the following steps to install and set up the Palette CLI.
   ``` 
 
 <br />
+   
 
 ## Validate
 
