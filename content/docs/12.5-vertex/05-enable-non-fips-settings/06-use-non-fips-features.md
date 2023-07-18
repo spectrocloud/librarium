@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow users on the tenant to add non-FIPS-compliant features such as tenant cluster backup and restore and compliance scans for security, validation, and software bill of materials (SBOM).
+You can allow users on the tenant to use features that are *not* FIPS-compliant, such as tenant cluster backup and restore or various scanning capabilities for compliance, security, validation, and software bill of materials (SBOM).
 
 # Prerequisites
 
@@ -39,8 +39,7 @@ You can allow users on the tenant to add non-FIPS-compliant features such as ten
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-
-Use the listed Resources to guide you to create and restore backups and initiate scans. 
+The [Resources](/vertex/enable-non-fips-settings/use-non-fips-addon-packs#resources) will guide you to configure and schedule cluster backups and describe available scans you can schedule during cluster deployment.  
 
 
 # Validate
