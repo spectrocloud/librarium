@@ -219,7 +219,7 @@ The following steps will guide you on how to install a PCG cluster.
   | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are applied.|
   | **Availability Zone** |   Select the availbilty zones for the PCG cluster.   |
   | **Resource Pool** | Select the MAAS resource pool.   | 
-  | **Cluster Size** |  Number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Avaiability (HA) cluster. |                        |
+  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Avaiability (HA) cluster. |                        |
   
   <WarningBox>
 

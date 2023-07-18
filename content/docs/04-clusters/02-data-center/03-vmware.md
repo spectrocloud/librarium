@@ -726,24 +726,26 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   |**Allow Insecure Connection (Bypass x509 Verification)** |Enter `y` if using a vSphere instance with self-signed TLS certificates. Otherwise, enter `n`.|
 
 
-6. Next, fill VMware account configurations. You will have the option to select or specify values for the following properties.
+6. Next, fill out VMware account configurations. Specify values for the following properties.
 
   <br />
 
-    * Datacenter
-    * Folder
-    * Fault Domains. Configure one or more fault domains by selecting values for the following properties:
-      * Cluster
-      * Network
-      * Resource Pool
-      * Storage Type (Datastore or VM Storage Policy)
-    * NTP servers
-    * SSH Public Keys
-    * PCG cluster size: **1** node or **3** nodes for High Availability (HA)
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Datacenter** | The data center to target.|
+  | **Folder**| The folder to target.|
+  | **Fault Domains**| Specify any fault domains you would like to use.|
+  | **Cluster**| The compute cluster to use for the PCG deployment.|
+  | **Network**| The network the PCG cluster will use. |
+  | **Resource Pool** | The resource pool to target when deploying the PCG cluster.|
+  | **Storage Type**| Select the datastore and VM Storage policy to apply to the PCG cluster. |
+  | **NTP Servers**| Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference.|
+  | **SSH Public Keys**| Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. | 
+  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Avaiability (HA) cluster. | 
 
 
 
-7. Specify the Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and VMs are assigned IPs from that pool. With DDNS, VMs are assigned IPs via DNS. Review the following tables to learn more about each parameter.
+7. Specify the Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and the VMs are assigned IP addresses from the selected pool. With DDNS, VMs are assigned IP addresses via DNS. Review the following tables to learn more about each parameter.
 
   <br />
 

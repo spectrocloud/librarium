@@ -485,8 +485,8 @@ The following system prerequisites are required to install an OpenStack PCG.
   | **Network** | Select an existing network. This is only required for static placement.|
   | **Subnet** | Select an existing subnet. This is only required for static placement.|
   | **DNS Server(s)** | Enter a comma-separated list of DNS server IPs . This is only required for dynamic placement.|
-  | **Node CIDR** | Enter a node CIDR. This is only required for dynamic placement. Example: `10.55.0.0/24`|
-  | **SSH Public Key** | Select a key.|
+  | **Node CIDR** | Enter a node CIDR. This is only required for dynamic placement. Example: `10.55.0.0/24`.|
+  | **SSH Public Key** | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments.|
   | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
   | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
