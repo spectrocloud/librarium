@@ -42,7 +42,7 @@ Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Ama
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="1.24.x" key="1.24.x">
+<Tabs.TabPane tab="1.22.x" key="1.22.x">
 
 ## Prerequisites
 
@@ -50,13 +50,9 @@ Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Ama
 
 </Tabs.TabPane>
 
-<Tabs.TabPane tab="1.0.x" key="1.0.x">
 
-## Prerequisites
 
-* Kubernetes 1.19.x or higher. 
 
-</Tabs.TabPane>
 
 </Tabs>
 
@@ -178,7 +174,8 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
 ### Resize the Cluster
 
-This section illustrates a use case to bring the Cluster Autoscaler into action. In this example, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and  multiple pod failures in the cluster. As a result, Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
+This section illustrates a use case to bring the Cluster Autoscaler into action. In this example, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and multiple pod failures in the cluster. As a result, Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
+
 
 For the current example, use the following steps to trigger the pod rescheduling event manually:
 <br />
