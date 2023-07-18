@@ -88,7 +88,7 @@ palette login  \
 ```
 
 
-Upon successful login, a local configuration file named **palette.yaml** is created. This file contains the metadata for CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an example of a **palette.yaml** configuration file.
+Upon successful login, a local configuration file named **palette.yaml** is created. This file contains the metadata for CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an example of a **palette.yaml** configuration file. Sensitive values, such as passwords, tokens, and API keys are encrypted at rest.
 
 <br />
 
@@ -109,7 +109,7 @@ paletteConfig:
     scarUsername: ""
     scarPassword: ""
   mgmt:
-    apikey: 123456789
+    apikey: 2abVsxDfFcJpYZ08+6dNWhkk
     endpoint: https://console.spectrocloud.com
     insecure: false
     pairingcode: ""
@@ -119,7 +119,10 @@ workspaceLoc: /Users/demo/.palette
 
 # PCG
 
-The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. The `pcg` command exposes the following subcommand.
+The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to faciliate the creation the of PCG cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster. 
+
+
+The `pcg` command exposes the following subcommand.
 
   <br />
 
@@ -137,9 +140,9 @@ Use the `install` subcommand to install a PCG cluster in the following environme
 
 | Platform | Install Guide |
 |---|---|
-| MAAS | [Link](/clusters/data-center/maas/install-manage-maas-pcg) |
+| MAAS | [Link](/clusters/data-center/maas/install-manage-maas-pcg#installpcg) |
 | OpenStack | [Link](/clusters/data-center/openstack#installingprivatecloudgateway-openstack) |
-| VMware | [Link](/clusters/data-center/vmware#installpcg) |
+| VMware | [Link](/clusters/data-center/vmware/#createvmwareprivatecloudgateway(pcg)) |
 
 
 To learn more about installing a PCG cluster. Refer to each platform's respective PCG install guide.
