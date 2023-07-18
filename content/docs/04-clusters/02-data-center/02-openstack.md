@@ -404,7 +404,12 @@ The following system prerequisites are required to install an OpenStack PCG.
 
 ## Install PCG
 
-1. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+
+1. In an x86 Linux host, open up a terminal session.
+
+
+
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
 
     <br />
 
@@ -416,14 +421,14 @@ The following system prerequisites are required to install an OpenStack PCG.
 
     |**Parameter**       | **Description**|
     |:-----------------------------|---------------|
-    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
-    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
+    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a self-hosted instance of Palette, enter the URL for that instance. |
+    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter `n`.|
     |**Spectro Cloud API Key** |Enter your Palette API Key.|
     |**Spectro Cloud Organization** |Enter your Palette Organization name.|
-    |**Spectro Cloud Project** |Enter your desired Project name within the selected Organization.|
+    |**Spectro Cloud Project** |Enter your desired project name within the selected Organization.|
 
 
-2. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
+3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
 
     <br />
 
@@ -436,46 +441,46 @@ The following system prerequisites are required to install an OpenStack PCG.
     |**Parameter**       | **Description**|
     |:-----------------------------|---------------|
     |**Cloud Type**| Choose OpenStack.|
-    |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``openstack-pcg-1``.|
-    |**Share PCG Cloud Account across platform Projects** |Enter `y`` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter 'n' if you want the Cloud Account to only be available at the tenant admin scope.|
+    |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: `openstack-pcg-1`.|
+    |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
-3. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
+4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
 
   <br />
 
   |**Parameter**| **Description**|
   |:-------------|----------------|
-  |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-  |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``my.company.com,10.10.0.0/16``.|
+  |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`.|
   |**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
   |**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
   |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
 
 
-4. After the environment options, the next set of prompts is for configuring the PCG cluster for the OpenStack environment. The following table contains information about each prompt.
+5. After the environment options, the next set of prompts is for configuring the PCG cluster for the OpenStack environment. The following table contains information about each prompt.
 
   <br />
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
   |**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`|
-  |**OpenStack Account Username**  | OpenStack account username|
-  |**OpenStack Account Password** | OpenStack account password|
-  |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.|
-  |**CA Certificate** |This is only required when using TLS, in which case you would enter a base64-encoded CA certificate for your OpenStack instance. |
+  |**OpenStack Account Username**  | OpenStack account username.|
+  |**OpenStack Account Password** | OpenStack account password.|
+  |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.|
+  |**CA Certificate** |This is only required when using TLS, in which case you would provide a base64-encoded CA certificate for your OpenStack instance. |
 
-5. Next, fill out additional OpenStack configurations.
+6. Next, fill out additional OpenStack configurations.
 
   <br />
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  | **Default Domain** | OpenStack Domain. Example: `Default`|
-  | **Default Region** | OpenStack Region. Example: `RegionOne`|
-  | **Default Project** | OpenStack Project. Example: `dev`|
+  | **Default Domain** | OpenStack Domain. Example: `Default`.|
+  | **Default Region** | OpenStack Region. Example: `RegionOne`.|
+  | **Default Project** | OpenStack Project. Example: `dev`.|
   | **Placement Type** | Placement can be static or dynamic. For static placement, VMs are placed into existing networks. For dynamic placement, a new network is created.|
   | **Network** | Select an existing network. This is only required for static placement.|
   | **Subnet** | Select an existing subnet. This is only required for static placement.|
@@ -486,17 +491,17 @@ The following system prerequisites are required to install an OpenStack PCG.
   | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
 
 
-6. Configure the OpenStack PCG Machine by answering the following prompts.
+7. Configure the OpenStack PCG Machine by answering the following prompts.
 
   <br />
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
   | **Availability Zone**  | Select the availability zone. |
-  | **PCG Cluster Size** | Select the node size of the PCG cluster. You can choose between **1** or **3** nodes (HA). |
+  | **PCG Cluster Size** | Select the node size of the PCG cluster. You can choose between **1** node or **3** nodes for High Availbility (HA). |
 
 
-7. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
+8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
 
   <br />
 
@@ -507,7 +512,7 @@ The following system prerequisites are required to install an OpenStack PCG.
 
   <InfoBox>
 
-  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+  The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
 
   </InfoBox>
 

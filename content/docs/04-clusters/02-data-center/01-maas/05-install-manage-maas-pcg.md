@@ -156,11 +156,11 @@ The following steps will guide you on how to install a PCG cluster.
 
     |**Parameter**       | **Description**|
     |:-----------------------------|---------------|
-    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a dedicated instance of Palette, enter the URL for that instance. |
-    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter 'y' if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter 'n'.|
+    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter ``https://console.spectrocloud.com``. When using a self-hosted instance of Palette, enter the URL for that instance. |
+    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter `n`.|
     |**Spectro Cloud API Key** |Enter your Palette API Key.|
     |**Spectro Cloud Organization** |Enter your Palette Organization name.|
-    |**Spectro Cloud Project** |Enter your desired Project name within the selected Organization.|
+    |**Spectro Cloud Project** |Enter your desired project name within the selected Organization.|
 
 
 3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
@@ -177,7 +177,7 @@ The following steps will guide you on how to install a PCG cluster.
   |:-----------------------------|---------------|
   |**Cloud Type**| Choose OpenStack.|
   |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: `openstack-pcg-1`.|
-  |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n`` if you want the Cloud Account to only be available at the tenant admin scope.|
+  |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
 
@@ -216,10 +216,10 @@ The following steps will guide you on how to install a PCG cluster.
   |-------------|----------------|
   | **Domain**  | Select the MAAS domain. |
   | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
-  | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are 
+  | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are applied.|
   | **Availability Zone** |   Select the availbilty zones for the PCG cluster.   |
   | **Resource Pool** | Select the MAAS resource pool.   | 
-  | **Cluster Size** |  Number of nodes that will make up the cluster. Available options are **1** or **3**. Use three nodes for a High Avaiability (HA) cluster. |                        |
+  | **Cluster Size** |  Number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Avaiability (HA) cluster. |                        |
   
   <WarningBox>
 

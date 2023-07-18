@@ -658,7 +658,10 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 ## Install PCG
 
-1. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+1. In an x86 Linux host, open up a terminal session.
+
+
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
 
     <br />
 
@@ -670,15 +673,15 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
     |**Parameter**       | **Description**|
     |:-----------------------------|---------------|
-    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a dedicated instance of Palette, enter the URL for that instance. |
+    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance. |
     |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter `n`.|
     |**Spectro Cloud API Key** |Enter your Palette API Key.|
     |**Spectro Cloud Organization** |Enter your Palette Organization name.|
-    |**Spectro Cloud Project** |Enter your desired Project name within the selected Organization.|
+    |**Spectro Cloud Project** |Enter your desired project name within the selected Organization.|
 
 
 
-2. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
+3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
 
     <br />
 
@@ -695,7 +698,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
     |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
-3. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
+4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
 
   <br />
 
@@ -711,7 +714,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 
 
-4. After the environment options, the next set of prompts is for configuring the PCG cluster for the VMware environment. The following table contains information about each prompt.
+5. After the environment options, the next set of prompts is for configuring the PCG cluster for the VMware environment. The following table contains information about each prompt.
 
   <br />
 
@@ -723,22 +726,24 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   |**Allow Insecure Connection (Bypass x509 Verification)** |Enter `y` if using a vSphere instance with self-signed TLS certificates. Otherwise, enter `n`.|
 
 
-5. Next, fill VMware account configurations. You will have the option to select or specify values for the following properties.
+6. Next, fill VMware account configurations. You will have the option to select or specify values for the following properties.
 
-  * Datacenter
-  * Folder
-  * Fault Domain(s). Configure one or more fault domains by selecting values for the following properties:
-    * Cluster
-    * Network
-    * Resource Pool
-    * Storage Type (Datastore or VM Storage Policy)
-  * NTP server(s)
-  * SSH Public Key(s)
-  * PCG cluster size: **1** or **3** nodes (HA)
+  <br />
+
+    * Datacenter
+    * Folder
+    * Fault Domains. Configure one or more fault domains by selecting values for the following properties:
+      * Cluster
+      * Network
+      * Resource Pool
+      * Storage Type (Datastore or VM Storage Policy)
+    * NTP servers
+    * SSH Public Keys
+    * PCG cluster size: **1** node or **3** nodes for High Availability (HA)
 
 
 
-6. Specify the Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and VMs are assigned IPs from that pool. With DDNS, VMs are assigned IPs via DNS. Review the following tables to learn more about each parameter.
+7. Specify the Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and VMs are assigned IPs from that pool. With DDNS, VMs are assigned IPs via DNS. Review the following tables to learn more about each parameter.
 
   <br />
 
@@ -758,7 +763,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
     | **Search domains** | Comma-separated list of DNS search domains.|
 
 
-7. Specify the cluster boot configuration. 
+8. Specify the cluster boot configuration. 
 
   <br />
 
@@ -770,7 +775,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 
 
-8. Enter the vSphere Machine configuration for the Private Cloud Gateway.
+9. Enter the vSphere Machine configuration for the Private Cloud Gateway.
 
   <br />
 
@@ -780,7 +785,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   | **Memory**                              | The number of memory to allocate to the Virtual Machine.|
   | **Storage**                             | The amount of storage to allocate to the Virtual Machine. |
 
-9. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
+10. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
 
   <br />
 
