@@ -25,7 +25,6 @@ The complete list of subcommands is:
   * `help`       -   Help with any command.
 
 
-
   * [`ec`](#ec)         - Palette Enterprise Cluster installation & pre-validation.
 
 
