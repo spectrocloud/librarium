@@ -1,5 +1,5 @@
 ---
-title: "Install and Manage MAAS Private Cloud Gateway"
+title: "Install and Manage MAAS Gateway"
 metaTitle: "Install and Manage MAAS Private Cloud Gateway"
 metaDescription: "Learn how to install and manage the MAAS Private Cloud Gateway in Palette."
 hideToC: false
@@ -24,7 +24,7 @@ At a high level, the following occurs during a successful MAAS PCG installation:
 - Use the Palette CLI on a laptop, workstation, or Bastion host. 
 
 
-- Provide information to the CLI so that it can connect both to a local MAAS installation and a Palette account.
+- Provide information to the CLI so that it can connect to both a local MAAS installation and a Palette account.
 
 
 - The installation process uses MAAS to obtain machines and install a PCG on them.
@@ -34,7 +34,7 @@ At a high level, the following occurs during a successful MAAS PCG installation:
 
 You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA).  
 
-As the following diagram shows, Palette provides a command line interface (CLI) that you invoke on your laptop, workstation, or jump box. You can use the CLI on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint.
+As the following diagram shows, Palette provides an installer in the form of a Docker container that is temporarily deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker daemon installed and connectivity to Palette and the MAAS identity endpoint. 
 
 
 <br />
@@ -80,16 +80,15 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 - A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installation must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
 
-- PCG IP address requirements: <br /><br />
-
-    - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
-
-    - One IP address for the Kubernetes control plane.
-
-    - One additional Kubernetes control plane IP address for rolling upgrades.
+-  PCG IP address requirements: <br /><br /> 
+    
+    - For a single-node gateway, one IP address must be available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
     <br />
 
-- Sufficient available IP addresses within the configured MAAS subnets.
+    - One IP address must be available in the MAAS subnet for the Kubernetes api-server endpoint when deploying a three-node gateway.
+
+
+- Sufficient available IPs within the configured MAAS subnets.
 
 <WarningBox>
 
@@ -105,7 +104,7 @@ By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (
     - Memory: 8192 MiB
     - Storage: 60 GiB
 
-    For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can run out of 60 GiB with prolonged use. If you initially set up the PCG with one node, you can resize it at a later time. 
+    For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can run out of 60 GiB with prolonged use. If you initially set up the gateway with one node, you can resize it at a later time. 
 
 
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
@@ -144,7 +143,7 @@ The following steps will guide you on how to install a PCG cluster.
 1. In an x86 Linux host, open up a terminal session.
 
 
-2. Use the [Palette CLI](/palette-cli/install-palette-cli) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+2. Use the [Palette CLI](/palette-cli/install-palette-cli) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
 
     <br />
 
@@ -594,17 +593,17 @@ If you need assistance, please visit our [Customer Support](https://spectrocloud
 
 # Update and Manage the PCG
 
-Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification when you click on the PCG in the **Manage Cloud Private Cloud Gateways** page.
+Palette maintains the Operating System (OS) image and all configurations for the PCG. Periodically, the OS images, configurations, and other components need to be updated to resolve security or functionality issues. Palette releases updates when required, and informs you with an update notification when you click on the gateway in the **Manage Cloud Gateways** page.
 
 Review the changes in the update notification, and apply the update when you are ready. 
 
-Updating the PCG does not result in any downtime for the tenant clusters. During the update process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the PCG update is complete.
+Updating the cloud gateway does not result in any downtime for the tenant clusters. During the update process, new cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway update is complete.
 
 <br />
 
-# Delete the PCG
+# Delete the MAAS Gateway
 
-Follow these steps to delete a MAAS PCG.
+Follow these steps to delete a MAAS gateway.
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
@@ -613,16 +612,16 @@ Follow these steps to delete a MAAS PCG.
 2. Navigate to the **Main menu** and select **Tenant Settings > Private Cloud Gateways**.
 
 
-3. Click the **three-dot Menu** for the PCG instance you want to delete and choose **Delete**.
+3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**.
 
-    Palette checks for running tenant clusters associated with the PCG instance and displays an error message if it detects any. 
+    Palette checks for running tenant clusters associated with the gateway instance and displays an error message if it detects any. 
     <br />
 
-4. If there are running clusters, delete them and retry deleting the PCG instance.
+4. If there are running clusters, delete them and retry deleting the gateway instance.
 
 <br />
 
-# Resize the PCG
+# Resize the MAAS Gateway
 
 You can set up a PCG as a single-node (no HA) or three-node (HA) cluster. You can set up a PCG initially with one node and resize it to three nodes at a later time.
 
@@ -642,7 +641,7 @@ For production environments, we recommend setting up three nodes.
     - 8192 MiB memory
     - 60 GiB storage
 
-Follow these steps to resize a single-node PCG to three nodes.
+Follow these steps to resize a single-node gateway to three nodes.
 
 <br />
 
@@ -652,7 +651,7 @@ Follow these steps to resize a single-node PCG to three nodes.
 2. Navigate to the **Main Menu** and select **Tenant Settings > Private Cloud Gateways**.
 
 
-3. Click the **three-dot Menu** for the PCG instance you want to resize and choose **Set number of nodes**.
+3. Click the **three-dot Menu** for the gateway instance you want to resize and choose **Set number of nodes**.
 
 
 4. Change the number of nodes to 3.
@@ -671,14 +670,14 @@ Ensure the MAAS server has two more machines in the **Ready** state in the same 
 
 ## Validate
 
-You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized PCG instance and click the **Nodes** tab. You will see two additional nodes being deployed along with their health status. Three nodes in total will be listed.
+You can validate your your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized gateway instance and click the **Nodes** tab. You will see two additional nodes being deployed along with their health status. Three nodes in total will be listed.
 
 <br />
 
 
 # Next Steps
 
-You can now create tenant clusters in the auto-created cloud account. To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
+You can now create tenant clusters in the auto-created cloud account.  To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
 
 You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts).
 
@@ -695,3 +694,5 @@ You can also create additional cloud accounts if you need them. Refer to [Regist
 
 
  - [Manage MAAS User Accounts](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
+
+

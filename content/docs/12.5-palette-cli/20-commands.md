@@ -65,7 +65,7 @@ The `ec` subcommand exposes the following subcommands.
 
 # Login
 
-The `login` subcommand authenticates the Palette CLI with Palette. The `login` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the subcommand with all the required values such s the API key, the organization ID, and the Palette URL.
+The `login` subcommand authenticates the Palette CLI with Palette. The `login` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the subcommand with all the required values such as the API key, the organization ID, and the Palette URL.
 
   <br />
 
@@ -134,14 +134,14 @@ workspaceLoc: /Users/demo/.palette
 
 # PCG
 
-The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to faciliate the creation the of PCG cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster. 
+The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to facilitate creating the PCG cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster. 
 
 
 The `pcg` command exposes the following subcommand.
 
   <br />
 
-  * `install` - Install a Private Cloud Gateway through an interactive wizard. 
+  * `install` - Install a PCG through an interactive wizard. 
 
 
 <br />
