@@ -723,7 +723,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   |**vSphere Endpoint** | vSphere endpoint: FQDN or IP address, without the HTTP scheme `https://` or `http://`. <br />Example: `vcenter.mycompany.com`|
   |**vSphere Username**  | vSphere account username.|
   |**vSphere Password** | vSphere account password.|
-  |**Allow Insecure Connection (Bypass x509 Verification)** |Enter `y` if using a vSphere instance with self-signed TLS certificates. Otherwise, enter `n`.|
+  |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed TLS certificates. Otherwise, enter `n`.|
 
 
 6. Next, fill out VMware account configurations. Specify values for the following properties.
@@ -745,7 +745,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 
 
-7. Specify the Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and the VMs are assigned IP addresses from the selected pool. With DDNS, VMs are assigned IP addresses via DNS. Review the following tables to learn more about each parameter.
+7. Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and the VMs are assigned IP addresses from the selected pool. With DDNS, VMs are assigned IP addresses via DNS. Review the following tables to learn more about each parameter.
 
   <br />
 
