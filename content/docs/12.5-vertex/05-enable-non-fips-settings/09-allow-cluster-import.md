@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow users to import clusters that were not deployed through Palette, and their FIPS copliance cannot be confirmed.
+You can allow users to import Kubernetes clusters that were not deployed through Palette, including some that are *not* FIPS-compliant. , and their FIPS copliance cannot be confirmed.
 
 # Prerequisites
 
