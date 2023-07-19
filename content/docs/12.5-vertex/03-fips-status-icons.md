@@ -29,7 +29,7 @@ The icons shown below indicate FIPS compliance status.
 
 Icons are displayed next to packs in the cluster profile and on the Clusters page and on the Cluster Details page to indicate when a cluster has been deployed from VerteX or imported. 
 
-
+<<<< SCREENSHOT PLACEHOLDER >>>>
 <br />
 
 <br />
