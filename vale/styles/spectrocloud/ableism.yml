@@ -1,5 +1,5 @@
 extends: substitution
-message: Avoid using ableism terms '%s'
+message: Avoid using ableism terms. Use '%s' instead of '%s'.
 level: error
 ignorecase: true
 swap:

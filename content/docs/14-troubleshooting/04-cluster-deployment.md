@@ -33,7 +33,7 @@ Common reasons for why a service may fail are:
 - The specified image could not be pulled from the image repository.
 - The cloud init process failed.
 
-### Debugging Steps
+### Debug Steps
 
 1. Initiate an SSH session with the Kubernetes instance using the SSH key provided during provisioning, and log in as user `spectro`. If you are initiating an SSH session into an installer instance, log in as user `ubuntu`.
 

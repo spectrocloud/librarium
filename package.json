@@ -1,6 +1,6 @@
 {
   "name": "root",
-  "version": "3.4.0",
+  "version": "4.0.0",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.18.10",
