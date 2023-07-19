@@ -74,7 +74,7 @@ The `login` subcommand authenticates the Palette CLI with Palette. The `login` s
 | `--api-key`           | Palette API key (omit for interactive login).                                         | string  |
 | `--cluster-group-name`| Palette Cluster Group name (optional). Specifies the active Cluster Group.               | string  |
 | `--cluster-group-scope`| Palette Cluster Group scope. Required with `--cluster-group-name`. Allowed values are: `project`, `tenant` , and `system`. |string |
-| `--console-url`       | Palette console URL (omit for interactive login).                                    | string  |
+| `--console-url`       | Palette URL (omit for interactive login).                                    | string  |
 | `--help`              | Help for the `login` subcommand.                                                                       | -       |
 | `--insecure`          | Skip Transport Layer Security (TLS) (bypass x509 verification).                                                  | -       |
 | `--org`               | Palette Organization name (omit for interactive login).                               | string  |
