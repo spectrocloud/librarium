@@ -41,7 +41,7 @@ For learning purposes, you will set up Virtual Machines (VMs) as Edge hosts and 
 To complete this tutorial, you will need the following:
 <br/>
 
-* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP-enabled network.
+* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP-enabled network. The VMs you will prepare as Edge hosts using the Edge installer ISO image must be DHCP-enabled. 
 
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
