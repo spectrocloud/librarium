@@ -1,7 +1,7 @@
 ---
 title: "Install Using Helm Chart"
 metaTitle: "Install Palette Using a Helm Chart"
-metaDescription: "Learn how to deploy Palette in a Kubernetes cluster using a Helm Chart.."
+metaDescription: "Learn how to deploy Palette in a Kubernetes cluster using a Helm Chart."
 icon: ""
 hideToC: false
 fullWidth: false

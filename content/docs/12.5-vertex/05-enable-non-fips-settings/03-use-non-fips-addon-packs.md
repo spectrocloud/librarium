@@ -14,12 +14,15 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette VerteX provides FIPS-compliant infrastructure components in cluster profiles. These components are:
+Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components are listed below. To learn more, refer to [FIPS-Compliant Components]().
     
 - Operating System (OS)
+
 - Kubernetes
+
 - Container Network Interface (CNI)
-- Container Storage Interface (CSI) 
+
+- Container Storage Interface (CSI)
 
 You can allow users on the tenant to customize their cluster profiles by using add-on packs, which may *not* be FIPS-compliant. Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security, monitoring, logging, and more.
 

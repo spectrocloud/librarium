@@ -13,3 +13,8 @@ import WarningBox from 'shared/components/WarningBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 import Tabs from 'shared/components/ui/Tabs';
+
+
+
+# Install Palette VerteX in an Air Gap Environment
+
