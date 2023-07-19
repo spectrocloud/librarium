@@ -615,7 +615,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 `video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
-There are two supported PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
+You can use two different PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
 
 <br />
 
@@ -738,7 +738,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   | **Storage Type**| Select the datastore and VM Storage policy to apply to the PCG cluster. |
   | **NTP Servers**| Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference.|
   | **SSH Public Keys**| Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. | 
-  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Avaiability (HA) cluster. | 
+  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. | 
 
 
 

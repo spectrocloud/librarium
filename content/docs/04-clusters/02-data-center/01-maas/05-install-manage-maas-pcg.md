@@ -82,10 +82,10 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
 -  PCG IP address requirements: <br /><br /> 
     
-    - For a single-node gateway, one IP address must be available in the MaaS subnet for the PCG, or three available IP addresses for a three-node gateway.
+    - For a single-node gateway, one IP address must be available in the MAAS subnet for the PCG, or three available IP addresses for a three-node gateway.
     <br />
 
-    - One IP address must be available in the MAAS subnet for the Kubernetes api-server endpoint when deploying a three-node gateway.
+    - One IP address must be available in the MAAS subnet for the Kubernetes API-server endpoint when deploying a three-node gateway.
 
 
 - Sufficient available IPs within the configured MAAS subnets.
@@ -104,7 +104,7 @@ By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (
     - Memory: 8192 MiB
     - Storage: 60 GiB
 
-    For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can run out of 60 GiB with prolonged use. If you initially set up the gateway with one node, you can resize it at a later time. 
+    For production environments, we recommend using three nodes, each with 100 GiB of storage, as nodes can exhaust the 60 GiB storage with prolonged use. If you initially set up the gateway with one node, you can resize it at a later time. 
 
 
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) can be generated in the MAAS web console under **My Preferences** > **API keys**. The following is an example key:
@@ -216,9 +216,9 @@ The following steps will guide you on how to install a PCG cluster.
   | **Domain**  | Select the MAAS domain. |
   | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
   | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are applied.|
-  | **Availability Zone** |   Select the availbilty zones for the PCG cluster.   |
+  | **Availability Zone** |   Select the availability zones for the PCG cluster.   |
   | **Resource Pool** | Select the MAAS resource pool.   | 
-  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Avaiability (HA) cluster. |                        |
+  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. |                        |
   
   <WarningBox>
 
@@ -271,7 +271,7 @@ To change the PCG install values, restart the installation process using the `pa
 
 <br />
 
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
+1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as Vi or Nano to update the PCG install configuration file.
 
   <br />
 

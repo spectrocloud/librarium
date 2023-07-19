@@ -499,7 +499,7 @@ Palette provides an installer in the form of a docker container. This installer 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
   | **Availability Zone**  | Select the availability zone. |
-  | **PCG Cluster Size** | Select the node size of the PCG cluster. You can choose between **1** node or **3** nodes for High Availbility (HA). |
+  | **PCG Cluster Size** | Select the node size of the PCG cluster. You can choose between **1** node or **3** nodes for High Availability (HA). |
 
 
 8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
@@ -548,7 +548,7 @@ To change the PCG install values, restart the installation process using the `pa
 
 <br />
 
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
+1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as Vi or Nano to update the PCG install configuration file.
 
   <br />
 
