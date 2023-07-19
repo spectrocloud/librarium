@@ -590,6 +590,7 @@ user:
 | `{{.spectro.system.clusterprofile.infra.name}}`    | The name of the cluster profile. |
 | `{{.spectro.system.clusterprofile.infra.uid}}`   | The unique identifier of the cluster profile. |
 | `{{.spectro.system.clusterprofile.infra.version}}`  | The version of the cluster profile. |
+| `{{.spectro.system.cluster.kubevip}}`| The IP address of the virtual IP (VIP) assigned to the cluster and load balancer for the control plane. This macro is only available for Edge and vSphere cluster deployments. |
 
 </Tabs.TabPane>
 
