@@ -53,9 +53,9 @@ Palette CLI supports the following global flags.
 
 # EC
 
-The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to faciliate the creation the of the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster. You can use the `ec` command to install self-hosted Palette instance or a self-hosted [VerteX](/vertex/install-palette-vertex) instance. 
+The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to stand up the kind cluster. You can use the `ec` command to install a self-hosted Palette instance or a self-hosted [VerteX](/vertex/install-palette-vertex) instance. 
 
-The `ec` subcommand exposes the following subcommands.
+The `ec` subcommand exposes the following subcommand.
 
   <br />
 
@@ -165,7 +165,7 @@ To learn more about installing a PCG cluster. Refer to each platform's respectiv
 
 The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. 
 
-The `pde` command exposes the following subcommands.
+The `pde` command exposes the following subcommand.
 
   <br />
 
