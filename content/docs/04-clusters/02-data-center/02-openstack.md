@@ -387,11 +387,13 @@ The following system prerequisites are required to install an OpenStack PCG.
 - Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page and install the CLI. Refer to the [Palette CLI Install](/palette-cli/install-palette-cli) guide to learn more.
 
 
-- PCG IP address requirements: <br />
+The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
-    - Depending on topology, either one IP address for a single-node PCG or three IP addresses for a three-node HA PCG.
+* Private cloud gateway IP requirements:
+    * 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
+    * 1 IP for Kubernetes control-plane
 
-    - One IP address for the Kubernetes control plane.
+Palette provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
     - One additional Kubernetes control plane IP address for rolling upgrades.
 
@@ -399,7 +401,6 @@ The following system prerequisites are required to install an OpenStack PCG.
 - A Linux x86-64 host with the Docker daemon installed.
 
 
-- Sufficient available IP addresses within the configured OpenStack subnets.
 
 
 ## Install PCG
@@ -521,7 +522,6 @@ The following system prerequisites are required to install an OpenStack PCG.
 The Palette CLI will now provision a PCG cluster in your OpenStack environment. 
 If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the [Edit and Redeploy PCG](/clusters/data-center/openstack#editandredeploypcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
-<br />
 
 
 ## Validate
@@ -715,15 +715,16 @@ The following steps need to be performed to delete a PCG:
 1. As a tenant admin, navigate to the Private Cloud Gateway page under settings.
 
 
-2. Invoke the **Delete** action on the PCG instance you are deleting.
+2. Invoke the **Delete** action on the cloud gateway instance that needs to be deleted.
 
 
-3. The system verifies there are no running tenant clusters associated with the PCG instance you are deleting. If any instances are found, the system will display an error. Delete any running tenant clusters and retry deleting the PCG.
+3. The system performs a validation to ensure that there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
 
-4. Delete the PCG.
+
+4. Delete the gateway.
 
 <InfoBox>
-When you delete the PCG, the PCG instance registered in the management console is deleted. However, the PCG infrastructure such as Load Balancers, VMs, Networks if you chose dynamic provision, and other resources must be deleted in the OpenStack console.
+The delete gateway operation deletes the gateway instance registered in the management console, however the gateway infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. need to be deleted on the OpenStack console
 </InfoBox>
 
 ## Resize the PCG
@@ -731,28 +732,32 @@ You can set up the PCG as a single-node or three-node cluster for high availabil
 
 1. As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 
-2. Invoke the resize action for the relevant PCG instance.
+
+2. Invoke the resize action for the relevant cloud gateway instance.
+
 
 3. Update the size from 1 to 3.
 
-4. The PCG upgrade begins shortly after the update. Two new nodes are created, and the PCG is upgraded to a three-node cluster.
+
+4. The gateway upgrade begins shortly after the update. Two new nodes are created, and the gateway is upgraded to a 3-node cluster.
 
 
-# Create an OpenStack Cloud Account
+# Creating an OpenStack Cloud Account
 
-A default cloud account is automatically created when the PCG is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same PCG.
+A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
 
 1. To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack.
+
 
 2. Fill the following values to the cloud account creation wizard.
 
     |**Property**|**Description** |
     |:---------------|:-----------------------|
     |  **Account Name** |  Custom name for the cloud account   |
-    |   **Private cloud gateway**|    Reference to a running PCG |
+    |   **Private cloud gateway**|    Reference to a running cloud gateway |
     | **Username**  |    OpenStack Username |
     |   **Password**|   OpenStack Password  |
-    |  **Identity Endpoint** |  Identity Endpoint of the PCG   |
+    |  **Identity Endpoint** |  Identity Endpoint of the gateway   |
     |  **CA Certificate** |   Digital certificate of authority  |
     |  **Parent Region** | OpenStack Region to be used |
     | **Default Domain**  | Default OpenStack domain    |
@@ -776,7 +781,7 @@ The following steps need to be performed to provision a new OpenStack cluster:
 
 4. Provide an OpenStack Cloud account and placement information.
 
-   * **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be preconfigured in project settings. An account is auto-created as part of the PCG setup and is available for provisioning of tenant clusters if permitted by the administrator.
+   * **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
         * Domain
         * Region
         * Project
