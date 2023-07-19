@@ -615,18 +615,243 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 `video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
 
+You can use two different PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
+
 <br />
 
-You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA). The minimum capacity required for a PCG are:
+<Tabs>
+
+<Tabs.TabPane tab="Palette CLI" key="palette-cli">
+
+
+## Prerequisites
+
+
+- Palette version 4.0.X or greater.
+
+
+- A Palette API key. Refer to the [Create API Key](/user-management/user-authentication#apikey) page for guidance.
+
+
+- Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page and install the CLI. Refer to the [Palette CLI Install](/palette-cli/install-palette-cli) guide to learn more.
+
+- You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
 
   <br />
 
   - Single-node cluster: 2 vCPU, 4 GB memory, 60 GB storage.
 
-
   - High-Availability (HA) three-node cluster: 6 vCPU, 12 GB memory, 70 GB storage.
 
+
+- Sufficient available IP addresses within the configured OpenStack subnets.
+
+
+<InfoBox>
+
+Self-hosted Palette installations provide a system PCG out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console. 
+
+</InfoBox>
+
+## Install PCG
+
+1. In an x86 Linux host, open up a terminal session.
+
+
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+
+    <br />
+
+    ```shell
+    palette login
+    ```
+
+    <br />
+
+    |**Parameter**       | **Description**|
+    |:-----------------------------|---------------|
+    |**Spectro Cloud Console** |Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance. |
+    |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using a self-hosted Palette instance with self-signed TLS certificates. Otherwise, enter `n`.|
+    |**Spectro Cloud API Key** |Enter your Palette API Key.|
+    |**Spectro Cloud Organization** |Enter your Palette Organization name.|
+    |**Spectro Cloud Project** |Enter your desired project name within the selected Organization.|
+
+
+
+3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
+
+    <br />
+
+    ```bash
+    palette pcg install
+    ```
+
+    <br />
+
+    |**Parameter**       | **Description**|
+    |:-----------------------------|---------------|
+    |**Cloud Type**| Choose OpenStack.|
+    |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``openstack-pcg-1``.|
+    |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
+
+
+4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
+
   <br />
+
+  |**Parameter**| **Description**|
+  |:-------------|----------------|
+  |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`.|
+  |**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
+  |**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+  |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
+
+
+
+
+5. After the environment options, the next set of prompts is for configuring the PCG cluster for the VMware environment. The following table contains information about each prompt.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  |**vSphere Endpoint** | vSphere endpoint: FQDN or IP address, without the HTTP scheme `https://` or `http://`. <br />Example: `vcenter.mycompany.com`|
+  |**vSphere Username**  | vSphere account username.|
+  |**vSphere Password** | vSphere account password.|
+  |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed TLS certificates. Otherwise, enter `n`.|
+
+
+6. Next, fill out VMware account configurations. Specify values for the following properties.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Datacenter** | The data center to target.|
+  | **Folder**| The folder to target.|
+  | **Fault Domains**| Specify any fault domains you would like to use.|
+  | **Cluster**| The compute cluster to use for the PCG deployment.|
+  | **Network**| The network the PCG cluster will use. |
+  | **Resource Pool** | The resource pool to target when deploying the PCG cluster.|
+  | **Storage Type**| Select the datastore and VM Storage policy to apply to the PCG cluster. |
+  | **NTP Servers**| Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference.|
+  | **SSH Public Keys**| Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. | 
+  | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. | 
+
+
+
+7. Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and the VMs are assigned IP addresses from the selected pool. With DDNS, VMs are assigned IP addresses via DNS. Review the following tables to learn more about each parameter.
+
+  <br />
+
+  ##### Static Placement Configuration
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **IP Start range** | Enter the first address in the PCG IP pool range.|
+  | **IP End range** | Enter the last address in the PCG IP pool range.|
+  | **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are network CIDR subnet masks from the range `0 - 32`. Example: `18`.|
+  | **Gateway IP Address** | Enter the IP address of the static IP gateway.|
+  | **Name servers** | Comma-separated list of DNS name server IP addresses.|
+  | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.|
+
+    ##### DDNS Placement Configuration
+    |**Parameter**                            | **Description**|
+    |-----------------------------------------|----------------|
+    | **Search domains** | Comma-separated list of DNS search domains.|
+
+
+8. Specify the cluster boot configuration. 
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Patch OS on boot** | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.|
+  | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.|
+
+
+
+
+9. Enter the vSphere Machine configuration for the Private Cloud Gateway.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **CPU**                                 | The number of CPUs in the Virtual Machine. |
+  | **Memory**                              | The number of memory to allocate to the Virtual Machine.|
+  | **Storage**                             | The amount of storage to allocate to the Virtual Machine. |
+
+10. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
+
+  <br />
+
+  ```bash hideClipboard
+  ==== PCG config saved ====
+  Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
+
+  <InfoBox>
+
+  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+  </InfoBox>
+
+
+The Palette CLI will now provision a PCG cluster in your VMware environment. 
+If the deployment fails due to misconfiguration, update the PCG configuration file and restart the installer. Refer to the [Edit and Redeploy PCG](/clusters/data-center/vmware#editandredeploypcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+
+## Validate
+
+Once installed, the PCG registers itself with Palette. To verify the PCG is registered, use the following steps.
+
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+
+2. Navigate to the left **Main Menu** and select **Tenant Settings**
+
+
+3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
+
+
+## Edit and Redeploy PCG
+
+To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process.
+
+<br />
+
+1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
+
+  <br />
+
+  ```shell hideClipboard
+  ==== Create PCG reference config ====
+  ==== PCG config saved ====
+  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
+  ```
+
+  ```bash hideClipboard
+  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
+
+
+
+2. To redeploy the PCG, use the `install` command with the flags `--silent` and `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
+
+  <br />
+
+  ```bash hideClipboard
+  palette pcg install --silent --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  ```
+
+
+</Tabs.TabPane>
+
+
+<Tabs.TabPane tab="OVA/OVF Template" key="ova-ovf-template">
 
 
 The following points give an overview of what you will do to set up the PCG:
@@ -636,7 +861,7 @@ The following points give an overview of what you will do to set up the PCG:
   - Initiate the installation from the tenant portal.
 
 
-  - Deploy the gateway installer VM in vSphere.
+  - Deploy the gateway installer VM in VMware vSphere.
 
 
   - Launch the cloud gateway from the tenant portal.
@@ -647,14 +872,26 @@ Self-hosted Palette installations provide a system gateway out-of-the-box and ty
 
 </InfoBox>
 
-<br />
 
-## Tenant Portal - Initiate Install
+`video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
+
+## Prerequisites
+
+
+- Palette version 3.4.X or older. 
+
+
+- You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
+  - Single-node cluster: 2 vCPU, 4 GB memory, 60 GB storage.
+
+  - High-Availability (HA) three-node cluster: 6 vCPU, 12 GB memory, 70 GB storage.
+
+## Install PCG
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Navigate to **Tenant Settings** > **Private Cloud Gateway**.
+2. Navigate to the left **Main Menu** and select **Tenant Settings** > **Private Cloud Gateway**.
 
 
 3. Click the **Create Private Cloud Gateway** button and select **VMware**. Private Gateway installation instructions are displayed.
@@ -662,8 +899,6 @@ Self-hosted Palette installations provide a system gateway out-of-the-box and ty
 
 4. Copy the gateway-installer link. Alternatively, you can download the OVA and upload it to an accessible location and import it as a local file.
 
-
-<br />
 
 ## vSphere - Deploy Gateway Installer
 
@@ -740,8 +975,18 @@ A Gateway cluster installation automatically creates a cloud account using the c
 
 </InfoBox>
 
+</Tabs.TabPane>
 
-### Upgrade VMware Cloud Gateway
+</Tabs>
+
+
+<br />
+
+---
+
+
+
+# Upgrade PCG
 
 Palette maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 
@@ -757,19 +1002,18 @@ The following steps need to be performed to delete a cloud gateway:
 1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under **Settings**.
 
 
-2. Invoke the **Delete** action on the cloud gateway instance that needs to be deleted.
+2. Invoke the **Delete** action on the PCG instance you want to delete.
 
 
-3. The system performs a validation to ensure there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
+3. The system performs a validation to ensure there are no running tenant clusters associated with the PCG instance being deleted. If such instances are found, an error is displayed. Delete any running tenant clusters and retry deleting the PCG.
 
 
 4. Delete the Gateway Virtual Machines from vSphere.
 
 <br />
 
-### Resize a VMware Cloud Gateway
-
-A cloud gateway can be set up as a 1-node or a 3-node cluster.  For production environments, it is recommended that three (3) nodes are set up. A cloud gateway can be initially set up with one (1) node and resized to three (3) nodes at a later time. The following steps need to be performed to resize a 1-node cloud gateway cluster to a 3-node gateway cluster:
+### Resize PCG
+You can set up the PCG as a single-node cluster or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under **Settings**.
 
@@ -788,9 +1032,9 @@ Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A loa
 
 # IP Address Management
 
-Palette supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined, using a range or a subnet. Administrators can define one or more IP pools linked to a private cloud gateway.
+Palette supports both DHCP and Static IP-based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a PCG.
 
-Clusters created using a private cloud gateway can select from the IP pools linked to the corresponding private cloud gateway. By default, IP Pools are shared across multiple clusters, but can optionally be restricted to a cluster.
+Clusters created using a PCG can select from the IP pools linked to the corresponding PCG. By default, IP Pools are shared across multiple clusters but can optionally be restricted to a cluster.
 
 The following is a description of various IP Pool properties:
 
