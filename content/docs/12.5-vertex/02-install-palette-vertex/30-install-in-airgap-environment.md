@@ -18,3 +18,4 @@ import Tabs from 'shared/components/ui/Tabs';
 
 # Install Palette VerteX in an Air Gap Environment
 
+TBS
