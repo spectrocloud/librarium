@@ -24,7 +24,7 @@ At a high level, the following occurs during a successful MAAS PCG installation:
 - Use the Palette CLI on a laptop, workstation, or Bastion host. 
 
 
-- Provide information to the CLI so that it can connect both to a local MAAS installation and a Palette account.
+- Provide information to the CLI so that it can connect to both a local MAAS installation and a Palette account.
 
 
 - The installation process uses MAAS to obtain machines and install a PCG on them.
@@ -144,7 +144,7 @@ The following steps will guide you on how to install a PCG cluster.
 1. In an x86 Linux host, open up a terminal session.
 
 
-2. Use the [Palette CLI](/palette-cli/install-palette-cli) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+2. Use the [Palette CLI](/palette-cli/install-palette-cli) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
 
     <br />
 

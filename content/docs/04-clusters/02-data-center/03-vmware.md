@@ -618,7 +618,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 # Create VMware Private Cloud Gateway (PCG)
 
-There are two supported PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct install method.
+There are two supported PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
 
 <br />
 
@@ -1005,10 +1005,10 @@ Use the following steps to delete the PCG:
 1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under **Settings**.
 
 
-2. Invoke the **Delete** action on the PCG instance that needs to be deleted.
+2. Invoke the **Delete** action on the PCG instance you want to delete.
 
 
-3. The system performs a validation to ensure there are no running tenant clusters associated with the PCG instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the PCG.
+3. The system performs a validation to ensure there are no running tenant clusters associated with the PCG instance being deleted. If such instances are found, an error is displayed. Delete any running tenant clusters and retry deleting the PCG.
 
 
 4. Delete the PCG Virtual Machines within vSphere.
@@ -1016,7 +1016,7 @@ Use the following steps to delete the PCG:
 <br />
 
 ### Resize PCG
-You can set up the PCG as a single-node or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
+You can set up the PCG as a single-node cluster or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a Tenant Administrator, navigate to the **Private Cloud Gateway** page under **Settings**.
 
@@ -1035,9 +1035,9 @@ Scaling a three-node cluster down to a single-node cluster is not permitted.<p><
 
 # IP Address Management
 
-Palette supports DHCP as well as Static IP based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined, using a range or a subnet. Administrators can define one or more IP pools linked to a PCG.
+Palette supports both DHCP and Static IP-based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a PCG.
 
-Clusters created using a PCG can select from the IP pools linked to the corresponding PCG. By default, IP Pools are shared across multiple clusters, but can optionally be restricted to a cluster.
+Clusters created using a PCG can select from the IP pools linked to the corresponding PCG. By default, IP Pools are shared across multiple clusters but can optionally be restricted to a cluster.
 
 The following is a description of various IP Pool properties:
 

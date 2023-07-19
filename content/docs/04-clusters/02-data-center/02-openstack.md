@@ -20,7 +20,7 @@ Following are some highlights of OpenStack clusters provisioned by Palette:
 
 
 
-2. To facilitate communication between Palette and the OpenStack controllers installed in the private data center, a Private Cloud Gateway (PCG) needs to be set up within the environment.
+2. To facilitate communication between Palette and the OpenStack controllers installed in the private data center, a Private Cloud Gateway (PCG) must be set up within the environment.
 
 
 3. Private Cloud Gateway (PCG) is Palette's self-hosted component to support isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
@@ -363,7 +363,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 # Installing Private Cloud Gateway - OpenStack
 
 
-Use the following steps to install a PCG cluster in your OpenStack environment. You can use the [Palette CLI](/palette-cli) or the PCG Installer Image to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct install method.
+Use the following steps to install a PCG cluster in your OpenStack environment. You can use the [Palette CLI](/palette-cli) or the PCG Installer Image to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct installation method.
 
 
 <br />
@@ -466,7 +466,7 @@ The following system prerequisites are required to install an OpenStack PCG.
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  |**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`|
+  |**OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. <br />Example: `https://openstack.mycompany.com/identity`.|
   |**OpenStack Account Username**  | OpenStack account username.|
   |**OpenStack Account Password** | OpenStack account password.|
   |**Allow Insecure Connection** |Enabling this option bypasses x509 verification. Enter `y` if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.|
@@ -592,7 +592,7 @@ The following system requirements are required to deploy a PCG cluster.
 - A Linux environment with a Docker daemon installed and a connection to Palette and the OpenStack environment. The installer must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not supported.
 
 
-- Private cloud gateway IP requirements:
+- Private Cloud Gateway IP requirements:
     * One IP address for a single-node PCG or three IP addresses for a three-node PCG cluster.
     * One IP address for the Kubernetes control plane.
 
@@ -727,7 +727,7 @@ When you delete the PCG, the PCG instance registered in the management console i
 </InfoBox>
 
 ## Resize the PCG
-You can set up the PCG as a single-node or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
+You can set up the PCG as a single-node or three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 
