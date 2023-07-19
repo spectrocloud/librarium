@@ -1,5 +1,5 @@
 extends: substitution
-message: "Use gender-neutral pronouns. Avoid '%s'."
+message: "Use gender-neutral pronouns. Use '%s' instead of '%s'."
 level: error
 ignorecase: true
 swap:
@@ -9,4 +9,4 @@ swap:
   she: 'they'
   her: 'them'
   'he/she': 'they'
-  '(s)he': 'they'
+  '(?:)he': 'they'
