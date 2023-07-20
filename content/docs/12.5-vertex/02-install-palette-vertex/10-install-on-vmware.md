@@ -1,7 +1,7 @@
 ---
 title: "Install on VMware vSphere"
 metaTitle: "Install on VMware vSphere"
-metaDescription: "Install Palette on VMware vSphere."
+metaDescription: "Learn how to install Palette on VMware vSphere."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -14,9 +14,8 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Palette VerteX on VMware vSphere
 
-Palette provides an installer command line interface (CLI) that prompts you for details and creates the Private Cloud Gateway (PCG) configuration file needed to establish a secure connection from your internal network to the internet-accessible Palette VerteX instance. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere. 
+You install Palette VerteX using a Command Line Interface (CLI) that guides you for details. The installer creates a three-node enterprise cluster for high availability (HA): 6 vCPU, 12 GB memory, 70 GB storage. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere. 
 
-The PCG creates a three-node enterprise cluster for high availability (HA): 6 vCPU, 12 GB memory, 70 GB storage.
 
 # Prerequisites
 
@@ -49,7 +48,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 1. Download the PCG installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
-2. Invoke the installer by using the following command. The installer prompts you for details to create the PCG configuration file and then initiates the installation.
+2. Invoke the installer by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
 
 ```bash
 palette ec install
