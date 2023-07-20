@@ -16,17 +16,17 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # AWS Cluster Autoscaler 
 
-Palette supports autoscaling for EKS clusters by using the AWS Cluster Autoscaler pack. 
-The Cluster Autoscaler dynamically scales cluster resources. It monitors the workload and provisions or shuts down cluster nodes to maximize cluster utilization. It resizes the Kubernetes cluster under the following conditions:
+Palette supports autoscaling for AWS EKS clusters by using the AWS Cluster Autoscaler pack. 
+The Cluster Autoscaler dynamically scales cluster resources. It monitors the workload and provisions or shuts down cluster nodes to maximize the cluster's performance and make it more resilient to failures. It resizes the Kubernetes cluster in the following two conditions:
 <br />
 
-* Insufficient resources leading to multiple pod failures in the cluster. The Cluster Autoscaler redistributes these pods to different nodes in such cases.
+* Scale-up: Cluster Autoscaler triggers a scale-up operation if insufficient cluster resources lead to multiple pod failures, and those pods can be scheduled on new nodes. Cluster Autoscaler will check for such pods every 30 seconds and schedule those pods on new nodes. Scaling up will not happen when given pods have node affinity. 
 
 
-* Underutilized cluster nodes for a specific period. In this scenario, the Cluster Autoscaler migrates the pods from underutilized nodes to other available nodes.
+* Scale-down: Cluster Autoscaler triggers a scale-down operation if nodes are underutilized for 10 continuous minutes, and their pods can be rescheduled on other available nodes. The node utilization threshold defaults to 50% of the node's capacity. Cluster Autoscaler calculates the node utilization threshold based on the CPU and memory utilization. In this scenario, the Cluster Autoscaler will migrate the pods from underutilized nodes to other available nodes and then shut down the underutilized nodes.  
 
 
-Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Amazon EC2 Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) to manage node groups. 
+Cluster Autoscaler pack is deployed as a [*Deployment*](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) in your cluster and utilizes [Amazon EC2 Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) to manage node groups. 
 
 
 
@@ -40,21 +40,6 @@ Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Ama
 
 * Kubernetes 1.24.x or higher. 
 
-</Tabs.TabPane>
-
-<Tabs.TabPane tab="1.22.x" key="1.22.x">
-
-## Prerequisites
-
-* Kubernetes 1.19.x or higher. 
-
-</Tabs.TabPane>
-
-
-
-
-
-</Tabs>
 
 * Permission to create an IAM policy in the AWS account you use with Palette. 
 
@@ -78,16 +63,13 @@ Cluster Autoscaler pack runs as a `Deployment` in your cluster and utilizes [Ama
 
 ## Usage
 
-Cluster Autoscaler helps improve your cluster's performance and makes your cluster more resilient to failures. It automatically adjusts the number of nodes in your cluster based on the current workload. In other words, Cluster Autoscaler monitors the resource utilization, such as CPU and memory, and the number of pods running in your cluster and scales the cluster when either of these events occurs:
+Cluster Autoscaler helps improve your cluster's performance and makes your cluster more resilient to failures. It automatically adjusts the number of nodes in your cluster based on the current workload. In other words, Cluster Autoscaler monitors the resource utilization, such as CPU and memory, and the number of pods active in your cluster and scales the cluster when either of these events occurs:
 <br />
 
-- Multiple pods fail due to resource contention. In this case, Cluster Autoscaler will provision more nodes. 
+- Multiple pods fail due to resource contention. In this case, the Cluster Autoscaler will provision more nodes. 
 
 
-- Nodes are underutilized for a specific period. In this case, Cluster Autoscaler will reschedule the pods onto other nodes and shut down the underutilized node. 
-
-
-To know the internal details of the pack, check out the pack manifest [here](https://github.com/spectrocloud/pax/tree/master/stable/addon/systemapps). If you want to customize the pack to use custom metrics, you must modify the existing pack and follow the instructions in the [Create and Deploy a Custom Add-On Pack](/registries-and-packs/deploy-pack) guide to deploy your custom pack. 
+- Nodes are underutilized for a specific period. In this case, the Cluster Autoscaler will reschedule the pods onto other nodes and shut down the underutilized node. 
 <br />
 
 
@@ -164,7 +146,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
 4. In the cluster deployment wizard, when you are in the **Nodes configuration** section, you must enter the minimum and maximum number of worker pool nodes, and the instance type (size) that suits your requirement.
 
-  You need to enter these node count limits because Cluster Autoscaler uses Auto Scaling Group to manage the cluster's node group. Auto Scaling Group requires a minimum and maximum count and the instance type. Also, specify the instance type (size). You can choose an instance type that suits your requirement. 
+  You must provide the node count limits because the Cluster Autoscaler uses an Auto Scaling Group to manage the cluster's node group. An Auto Scaling Group requires a minimum and maximum count and the selection of an instance type.  You can choose an instance type that suits your requirement. 
 
   For example, the snapshot below shows the minimum one and maximum three node count for the Cluster Autoscaler. 
 
@@ -185,13 +167,13 @@ For the current example, use the following steps to trigger the pod rescheduling
 
 2. After your cluster is successfully deployed, navigate to the **Nodes** tab in the cluster details page in Palette, and note the count and size of nodes. For example, the snapshot below shows one node of type **t3.2xlarge** in the worker pool of a successfully deployed cluster.   
 
-  ![A snapshot showing one node of type **t3.2xlarge** in the worker pool.](/integrations_aws-cluster-autoscaler_one-node.png)
+  ![A snapshot displaying one node of the type **t3.2xlarge** in the worker pool.](/integrations_aws-cluster-autoscaler_one-node.png)
 
 
 
 3. Manually reduce the instance size in the worker-pool configuration. For example, reduce the instance size to **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below shows how to edit the instance size in the node pool configuration.
 
-  ![A snapshot showing how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
+  ![A snapshot displaying how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
 
 
 4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
@@ -199,13 +181,171 @@ For the current example, use the following steps to trigger the pod rescheduling
   
   For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. 
 
-  ![A snapshot showing new nodes of size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
+  ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
+  <br />
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="1.22.x" key="1.22.x">
+
+## Prerequisites
+
+* Kubernetes 1.19.x or higher. 
+
+
+
+
+* Permission to create an IAM policy in the AWS account you use with Palette. 
+
+
+* IAM policy - A [Full Cluster Autoscaler Features](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md#full-cluster-autoscaler-features-policy-recommended) IAM policy must be attached to the EKS cluster's node group. The policy must allow the Cluster Autoscaler to scale the cluster's node groups. 
+
+  There are two ways to achieve this prerequisite. You can define the policy  as a *customer-managed* policy in the AWS account and use its Amazon Resource Name (ARN) in the cluster profile. Alternatively, you can attach the  IAM policy as an *inline* policy to the node group if you have already deployed your cluster. Refer to the [Usage](#usage) section below to learn more. 
+
+
+* Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy ARN. The YAML code block below shows the `managedMachinePool.roleAdditionalPolicies` section to update in the Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. 
+<br />
+
+  ```yaml
+  managedMachinePool:
+    #roleName: {{ name of the self-managed role | format "${string}" }}
+    ## A list of additional policies to attach to the node group role
+    roleAdditionalPolicies:
+    - {{ arn for the policy1 | format "${string}" }}
+  ```
+<br />
+
+## Usage
+
+Cluster Autoscaler helps improve your cluster's performance and makes your cluster more resilient to failures. It automatically adjusts the number of nodes in your cluster based on the current workload. In other words, Cluster Autoscaler monitors the resource utilization, such as CPU and memory, and the number of pods active in your cluster and scales the cluster when either of these events occurs:
+<br />
+
+- Multiple pods fail due to resource contention. In this case, the Cluster Autoscaler will provision more nodes. 
+
+
+- Nodes are underutilized for a specific period. In this case, the Cluster Autoscaler will reschedule the pods onto other nodes and shut down the underutilized node. 
+<br />
+
+
+### Deploy Cluster Autoscaler
+To deploy the Cluster Autoscaler pack, you must first define an IAM policy in the AWS account associated with Palette. 
+
+Next, update the cluster profile to specify the IAM policy ARN in the Kubernetes pack's manifest. Palette will attach that IAM policy to your cluster's node group during deployment. Note that Palette automatically creates two IAM roles in the AWS account when you deploy an EKS cluster. One role is for the cluster, and another for the cluster's node group. The cluster's IAM role name will have the following naming convention, `[your-cluster-name]-iam-service-role`, and the node group's IAM role name will follow the `ng-role_worker-pool-[random-string]` naming convention. 
+
+The following steps provide detailed instructions for deploying the Cluster Autoscaler pack.
+
+<br />
+
+1. Define the new IAM policy using the policy outlined below, and give it a name, for example, *PaletteEKSClusterAutoscaler*. 
+<br />
+
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "autoscaling:DescribeAutoScalingGroups",
+          "autoscaling:DescribeAutoScalingInstances",
+          "autoscaling:DescribeLaunchConfigurations",
+          "autoscaling:DescribeScalingActivities",
+          "autoscaling:DescribeTags",
+          "ec2:DescribeInstanceTypes",
+          "ec2:DescribeLaunchTemplateVersions"
+        ],
+        "Resource": ["*"]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "autoscaling:SetDesiredCapacity",
+          "autoscaling:TerminateInstanceInAutoScalingGroup",
+          "ec2:DescribeImages",
+          "ec2:GetInstanceTypesFromInstanceRequirements",
+          "eks:DescribeNodegroup"
+        ],
+        "Resource": ["*"]
+      }
+    ]
+  }
+  ```
+
+
+2. Copy the IAM policy ARN to the clipboard for the next step. For example, the policy ARN will be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`. 
+
+
+3.  In your cluster profile, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below shows the specific section to update with the policy ARN. 
+
+  ![A snapshot showing the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.png)
+
+  For example, the code block below shows the updated `managedMachinePool.roleAdditionalPolicies` section with a sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block, replace the ARN below with yours. 
+<br />
+
+  ```yaml
+  managedMachinePool:
+    # roleName: {{ name of the self-managed role | format "${string}" }}
+    # A list of additional policies to attach to the node group role
+    roleAdditionalPolicies:
+    - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
+  ```
+  <br />
+
+  <InfoBox>
+
+  If you do not want to update the Kubernetes pack's manifest, you can add an *inline* IAM policy to the cluster's node group post deployment. Refer to this [AWS guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#add-policies-console) on how to embed an inline policy for a user or role. Refer to the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html) for the differences between managed and inline policies.
+
+  </InfoBox>
+
+
+4. In the cluster deployment wizard, when you are in the **Nodes configuration** section, you must enter the minimum and maximum number of worker pool nodes, and the instance type (size) that suits your requirement.
+
+  You must provide the node count limits because the Cluster Autoscaler uses an Auto Scaling Group to manage the cluster's node group. An Auto Scaling Group requires a minimum and maximum count and the selection of an instance type.  You can choose an instance type that suits your requirement. 
+
+  For example, the snapshot below shows the minimum one and maximum three node count for the Cluster Autoscaler. 
+
+  ![A snapshot showing the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
+
+<br />
+
+### Resize the Cluster
+
+This section illustrates a use case to bring the Cluster Autoscaler into action. In this example, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and multiple pod failures in the cluster. As a result, Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
+
+
+For the current example, use the following steps to trigger the pod rescheduling event manually:
+<br />
+
+1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher. 
+
+
+2. After your cluster is successfully deployed, navigate to the **Nodes** tab in the cluster details page in Palette, and note the count and size of nodes. For example, the snapshot below shows one node of type **t3.2xlarge** in the worker pool of a successfully deployed cluster.   
+
+  ![A snapshot displaying one node of the type **t3.2xlarge** in the worker pool.](/integrations_aws-cluster-autoscaler_one-node.png)
+
+
+
+3. Manually reduce the instance size in the worker-pool configuration. For example, reduce the instance size to **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below shows how to edit the instance size in the node pool configuration.
+
+  ![A snapshot displaying how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
+
+
+4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
+
+  
+  For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. 
+
+  ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
   <br />
 
 
+</Tabs.TabPane>
+
+</Tabs>
+
 # Troubleshooting
 
-If you are facing the `LimitExceeded: Cannot exceed quota for PoliciesPerRole:10` error in the cluster deployment logs, it may be because the default IAM role Palette creates for the node group already has 10 policies attached to it, and you are trying to attach one more. By default, your AWS account will have a quota of 10 managed policies per IAM role. To fix the error, follow the instruction on this [AWS guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entities) to request a quota increase. 
+If you are facing the `LimitExceeded: Cannot exceed quota for PoliciesPerRole:10` error in the cluster deployment logs, it may be because the default IAM role Palette creates for the node group already has 10 policies attached to it, and you are trying to attach one more. By default, your AWS account will have a quota of 10 managed policies per IAM role. To fix the error, follow the instruction in this [AWS guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entities) to request a quota increase. 
 
 
 
@@ -219,3 +359,6 @@ If you encounter an `executable aws-iam-authenticator not found` error in your t
 
 
 - [Amazon EKS Autoscaling](https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html)
+
+
+- [AWS IAM Authenticator Plugin](https://github.com/kubernetes-sigs/aws-iam-authenticator)
