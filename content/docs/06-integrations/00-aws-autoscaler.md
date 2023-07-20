@@ -302,7 +302,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
   You must provide the node count limits because the Cluster Autoscaler uses an Auto Scaling Group to manage the cluster's node group. An Auto Scaling Group requires a minimum and maximum count and the selection of an instance type.  You can choose an instance type that suits your requirement. 
 
-  For example, the snapshot below shows the minimum one and maximum three node count for the Cluster Autoscaler. 
+  For example, the snapshot below displays the cluster's minimum and maximum capacity.
 
   ![A snapshot showing the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
 
@@ -310,30 +310,35 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
 ### Resize the Cluster
 
-This section illustrates a use case to bring the Cluster Autoscaler into action. In this example, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and multiple pod failures in the cluster. As a result, Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
+To better understand the scaling behavior of the Cluster Autoscaler and its impact on a cluster, do the following exercise to gain firsthand experience with the scaling behavior. 
+
+In the following example scenario, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and multiple pod failures in the cluster. As a result, the Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
 
 
-For the current example, use the following steps to trigger the pod rescheduling event manually:
+Use the following steps to trigger the pod rescheduling event manually:
 <br />
 
 1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher. 
 
 
-2. After your cluster is successfully deployed, navigate to the **Nodes** tab in the cluster details page in Palette, and note the count and size of nodes. For example, the snapshot below shows one node of type **t3.2xlarge** in the worker pool of a successfully deployed cluster.   
+2. After your cluster is successfully deployed, navigate to the **Nodes** tab in the cluster details page in Palette, and note the count and size of nodes. The snapshots below display one node of the type **t3.2xlarge** in the worker pool of a successfully deployed cluster.   
+
 
   ![A snapshot displaying one node of the type **t3.2xlarge** in the worker pool.](/integrations_aws-cluster-autoscaler_one-node.png)
 
 
 
-3. Manually reduce the instance size in the worker-pool configuration. For example, reduce the instance size to **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below shows how to edit the instance size in the node pool configuration.
+3. Manually reduce the instance size in the worker-pool configuration to a **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below shows how to edit the instance size in the node pool configuration.
 
   ![A snapshot displaying how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
 
 
-4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
+4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new node count will be within the minimum and maximum limit you specified for the worker pool configuration wizard. 
+
 
   
-  For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. 
+The following snapshot displays two new nodes of the size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the same workload as a single larger-sized node. 
+
 
   ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
   <br />
@@ -349,8 +354,8 @@ If you are facing the `LimitExceeded: Cannot exceed quota for PoliciesPerRole:10
 
 
 
-If you encounter an `executable aws-iam-authenticator not found` error in your terminal while trying to access your EKS cluster from your local machine, you can resolve it by installing the 
-[aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) plugin on your local machine. 
+If you encounter an `executable aws-iam-authenticator not found` error in your terminal when attempting to access your EKS cluster from your local machine, it may be due to the [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) plugin missing from your local environment. You can find the installation steps for the 
+aws-iam-authenticator in the following [install guide](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html). 
 
 
 # References
