@@ -1,7 +1,7 @@
 ---
 title: "Build Edge Artifacts using Content Bundle"
 metaTitle: "Build Edge Artifacts using Content Bundle"
-metaDescription: "Learn how to build Edge artifacts, such as the provider images and Edge Installer ISO using Spectro Cloud's CanvOS and Palette Edge CLI utilities."
+metaDescription: "Learn how to build Edge Installer ISO using Spectro Cloud's CanvOS and Palette Edge CLI utilities."
 icon: ""
 hideToC: false
 fullWidth: false
