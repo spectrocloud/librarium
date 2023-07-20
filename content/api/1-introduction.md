@@ -11,6 +11,8 @@ hideToCSidebar: false
 import {Intro, IntroButtons} from "shared/components"
 import {Layout} from "shared"
 import InfoBox from "shared/components/InfoBox"
+import WarningBox from "shared/components/WarningBox"
+
 
 <Intro>
 
@@ -102,21 +104,59 @@ The version information is included in the API URI, such as `v1alpha1` or `v1`. 
 
 Palette groups resources under either a Tenant or Project scope. When making API requests targeting resources belonging to a project, the project scope should be specified. To specify the project scope, use the HTTP header key `ProjectUid` with the value `<Project Uid>` in the API request. The `ProjectUid` needs to be specified for a request to be applied under a specific project scope.
 
-**Example**:
+Example:
 
-```shell
+```shell hideClipboard
  curl --location --request \
  GET 'https://api.spectrocloud.com/v1/edgehosts/ad3d90ab-de6e-3e48-800f-4d663cec3060?resolvePackValues=false' \
  --header 'Accept: application/json' \
- --header 'ProjectUid: ad3d90ab-de6e-3e48-800f-4d663cec3060'
+ --header 'ProjectUid: yourProjectUid'
 ```
+<br />
 
-<InfoBox>
+<WarningBox>
 
-If you do not provide the ProjectUid header, then the assumed scope is of the tenant.
+If you do not provide the `ProjectUid` header, then the assumed scope is of the tenant.
 
-</InfoBox>
+</WarningBox>
 
 # Pagination
 
-The resources list APIs are limited to 50 items, and therefore pagination is required to retrieve the complete resources list. The list API response includes listMeta with the continue token. To perform pagination, check the presence of the continue token value in the API response. For subsequent requests, use the continue token as a query parameter to paginate the remaining resource items.
+API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the continue token. To perform pagination, you need to check whether the continue token value is present in the API response. For subsequent requests, use the continue token as a query parameter to paginate the remaining resource items.
+
+<br />
+
+```json hideClipboard
+    "listmeta": {
+        "continue": "eyJvZmZzZXQiOjUwLCJjb3VudCI6MTE3LCJ0b2tlbiI6IiJ9",
+        "count": 117,
+        "limit": 50,
+        "offset": 50
+    }
+```
+
+<br />
+
+Example of a subsequent request using the continue token.
+
+<br />
+
+```shell hideClipboard
+curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUwLCJjb3VudCI6MTE3LCJ0b2tlbiI6IiJ9' \
+ --header 'Accept: application/json' \
+ --header 'ProjectUid: yourProjectUid' \
+ --header 'apiKey: yourAPIKey'
+```
+
+
+# Rate Limits
+
+The API rate limits are as follows:
+
+* There is a limit of ten API requests per second for each source IP address.
+
+
+* The API request limits are categorized by the parent resources such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can find a list of all resource types in the [API documentation](/api/introduction). If you make multiple requests to the same resource type, but use different sub-resources, the requests are counted together. For example, if you make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are counted together as ten requests to the resource `clusterprofiles`.
+
+
+* In case of too many requests, the user will receive an error with HTTP code `429` - `TooManyRequests.` In that event, we recommended retrying the API call after a few moments.

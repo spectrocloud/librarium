@@ -1,7 +1,7 @@
 ---
 title: "Palette Resource Limits"
 metaTitle: "Default Palette Resource Limits"
-metaDescription: "Palette Resource Limit table "
+metaDescription: "This topic describes the default resource limits for Palette and how to set resource limits for your Palette tenant."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -9,7 +9,9 @@ fullWidth: false
 
 import InfoBox from 'shared/components/InfoBox';
 
-# Default Palette Resource Limits Per Tenant 
+# Default Palette Resource Limits
+
+The following table lists the default resource limits for Palette:
 
 |Resources           |  Max Limit | Scope | 
 |--------------------|----------------------|  ---- |
@@ -33,31 +35,35 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Set Resource Limit 
 
-To set resource limit:
+Use the following steps to set or update resource limits for your Palette tenant.
 
-<br />
+## Prerequisites
 
-* Login to Palette console as `Tenant Admin`.
-
-
-* Select `Tenant Settings` from the left ribbon menu.
+* You must have access to the Tenant Admin role.
 
 
-* Select `Resource Limits` tab and set the values for different Palette resources as per tenant resource requirements.
- 
-<InfoBox>
-The resource limit can be customized according to per tenant resource requirements 
-</InfoBox>
+## Update Limits
 
-# Palette API Rate Limits
-
-* API operations are limited to 10 requests per second for an IP Address.
+1. Login to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
 
 
-* The API request limits are categorized by resources such as /v1/cloudconfig/:uid and /v1/cloudconfig/:uid/machinepools. Both API requests are counted for the same rate limits as both belong to the same cluster's cloud config resource.
+2. Navigate to the left **Main Menu** and select **Tenant Settings**.
 
 
-* In case of too many requests, the user will receive an error with HTTP code 429 - `TooManyRequests.` In that event, it is recommended to retry the API call after a specific interval.
+3. Select **Resource Limits** from the **Tenant Settings Menu**.
+
+
+4. Set the values for the different Palette resources. Ensure you do not 
+
+
+5. Click **Save changes**.
+
+
+## Validate
+
+You can validate the updated resource limits by attempting to create a resource of the resource type you updated. For example, if you updated the **API Key** to five, you can create five API keys. If you attempt to create a sixth API key, you will receive an error message.
+
+
 
 <br />
 <br />
