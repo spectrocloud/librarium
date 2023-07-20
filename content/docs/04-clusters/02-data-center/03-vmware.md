@@ -658,7 +658,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 1. In an x86 Linux host, open up a terminal session.
 
 
-2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
 
     <br />
 
