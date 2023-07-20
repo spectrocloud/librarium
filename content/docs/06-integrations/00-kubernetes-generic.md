@@ -145,7 +145,7 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password. 
 
-OIDC requires a *roleBinding* for the users or groups you want to provide cluster access. You must create a roleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a roleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+OIDC requires a *RoleBinding* for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
 <br />
 
@@ -347,7 +347,7 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password. 
 
-OIDC requires a *roleBinding* for the users or groups you want to provide cluster access. You must create a roleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a roleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+OIDC requires a *RoleBinding* for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
 <br />
 
@@ -548,7 +548,7 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password. 
 
-OIDC requires a *roleBinding* for the users or groups you want to provide cluster access. You must create a roleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a roleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+OIDC requires a *RoleBinding* for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
 <br />
 
