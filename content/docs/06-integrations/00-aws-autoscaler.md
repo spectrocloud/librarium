@@ -49,7 +49,7 @@ Cluster Autoscaler pack is deployed as a [*Deployment*](https://kubernetes.io/do
   There are two ways to achieve this prerequisite. You can define the policy  as a *customer-managed* policy in the AWS account and use its Amazon Resource Name (ARN) in the cluster profile. Alternatively, you can attach the  IAM policy as an *inline* policy to the node group if you have already deployed your cluster. Refer to the [Usage](#usage) section below to learn more. 
 
 
-* Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy ARN. The YAML code block below shows the `managedMachinePool.roleAdditionalPolicies` section to update in the Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. 
+* Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy ARN. The YAML code block below displays the `managedMachinePool.roleAdditionalPolicies` section to update in the Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. 
 <br />
 
   ```yaml
@@ -121,11 +121,11 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 2. Copy the IAM policy ARN to the clipboard for the next step. For example, the policy ARN will be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`. 
 
 
-3.  In your cluster profile, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below shows the specific section to update with the policy ARN. 
+3.  In your cluster profile, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below displays the specific section to update with the policy ARN. 
 
-  ![A snapshot showing the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.png)
+  ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.png)
 
-  For example, the code block below shows the updated `managedMachinePool.roleAdditionalPolicies` section with a sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block, replace the ARN below with yours. 
+  For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block, replace the ARN below with yours. 
 <br />
 
   ```yaml
@@ -148,38 +148,39 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
   You must provide the node count limits because the Cluster Autoscaler uses an Auto Scaling Group to manage the cluster's node group. An Auto Scaling Group requires a minimum and maximum count and the selection of an instance type.  You can choose an instance type that suits your requirement. 
 
-  For example, the snapshot below shows the minimum one and maximum three node count for the Cluster Autoscaler. 
+  For example, the snapshot below displays the cluster's minimum and maximum capacity. 
 
-  ![A snapshot showing the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
+  ![A snapshot displaying the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
 
 <br />
 
 ### Resize the Cluster
 
-This section illustrates a use case to bring the Cluster Autoscaler into action. In this example, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and multiple pod failures in the cluster. As a result, Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
+To better understand the scaling behavior of the Cluster Autoscaler and its impact on a cluster, do the following exercise to gain firsthand experience with the scaling behavior. 
+
+In the following example scenario, you will first create a cluster with large-sized worker pool instances. Next, you will manually reduce the instance size, leading to insufficient resources for existing pods and multiple pod failures in the cluster. As a result, the Cluster Autoscaler will provision new smaller-sized nodes with enough capacity to accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool.
 
 
-For the current example, use the following steps to trigger the pod rescheduling event manually:
+Use the following steps to trigger the pod rescheduling event manually:
 <br />
 
 1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher. 
 
 
-2. After your cluster is successfully deployed, navigate to the **Nodes** tab in the cluster details page in Palette, and note the count and size of nodes. For example, the snapshot below shows one node of type **t3.2xlarge** in the worker pool of a successfully deployed cluster.   
+2. After your cluster is successfully deployed, navigate to the **Nodes** tab in the cluster details page in Palette, and note the count and size of nodes. The snapshots below display one node of the type **t3.2xlarge** in the worker pool of a successfully deployed cluster.   
 
   ![A snapshot displaying one node of the type **t3.2xlarge** in the worker pool.](/integrations_aws-cluster-autoscaler_one-node.png)
 
 
 
-3. Manually reduce the instance size in the worker-pool configuration. For example, reduce the instance size to **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below shows how to edit the instance size in the node pool configuration.
+3. Manually reduce the instance size in the worker-pool configuration to a **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below displays how to edit the instance size in the node pool configuration.
 
   ![A snapshot displaying how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
 
 
-4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new nodes' count will be within the minimum and maximum limit you specified for the worker pool. 
-
+4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new node count will be within the minimum and maximum limit you specified for the worker pool configuration wizard. 
   
-  For example, the snapshot below shows two new nodes of size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the workload just as well as the single large-sized node. 
+  The following snapshot displays two new nodes of the size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the same workload as a single larger-sized node.  
 
   ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
   <br />
@@ -193,8 +194,6 @@ For the current example, use the following steps to trigger the pod rescheduling
 * Kubernetes 1.19.x or higher. 
 
 
-
-
 * Permission to create an IAM policy in the AWS account you use with Palette. 
 
 
@@ -203,7 +202,7 @@ For the current example, use the following steps to trigger the pod rescheduling
   There are two ways to achieve this prerequisite. You can define the policy  as a *customer-managed* policy in the AWS account and use its Amazon Resource Name (ARN) in the cluster profile. Alternatively, you can attach the  IAM policy as an *inline* policy to the node group if you have already deployed your cluster. Refer to the [Usage](#usage) section below to learn more. 
 
 
-* Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy ARN. The YAML code block below shows the `managedMachinePool.roleAdditionalPolicies` section to update in the Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. 
+* Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy ARN. The YAML code block below displays the `managedMachinePool.roleAdditionalPolicies` section to update in the Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. 
 <br />
 
   ```yaml
@@ -275,11 +274,11 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 2. Copy the IAM policy ARN to the clipboard for the next step. For example, the policy ARN will be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`. 
 
 
-3.  In your cluster profile, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below shows the specific section to update with the policy ARN. 
+3.  In your cluster profile, and update the `managedMachinePool.roleAdditionalPolicies` section in the Kubernetes pack's manifest with the newly created IAM policy ARN. The snapshot below displays the specific section to update with the policy ARN. 
 
-  ![A snapshot showing the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.png)
+  ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.png)
 
-  For example, the code block below shows the updated `managedMachinePool.roleAdditionalPolicies` section with a sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block, replace the ARN below with yours. 
+  For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block, replace the ARN below with yours. 
 <br />
 
   ```yaml
@@ -304,7 +303,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
   For example, the snapshot below displays the cluster's minimum and maximum capacity.
 
-  ![A snapshot showing the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
+  ![A snapshot displaying the minimum and maximum node count in Palette.](/integrations_aws-cluster-autoscaler_node-count.png)
 
 <br />
 
@@ -327,17 +326,14 @@ Use the following steps to trigger the pod rescheduling event manually:
   ![A snapshot displaying one node of the type **t3.2xlarge** in the worker pool.](/integrations_aws-cluster-autoscaler_one-node.png)
 
 
-
-3. Manually reduce the instance size in the worker-pool configuration to a **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below shows how to edit the instance size in the node pool configuration.
+3. Manually reduce the instance size in the worker-pool configuration to a **t3.medium** (2 vCPUs, 8 GB RAM). The snapshot below displays how to edit the instance size in the node pool configuration.
 
   ![A snapshot displaying how to edit node pool configuration.](/integrations_aws-cluster-autoscaler_edit-node.png)
 
 
 4. Wait for a few minutes for the new nodes to provision. Reducing the node size will make the Cluster Autoscaler shut down the large node and provision smaller-sized nodes with enough capacity to accommodate the current workload. Also, the new node count will be within the minimum and maximum limit you specified for the worker pool configuration wizard. 
-
-
   
-The following snapshot displays two new nodes of the size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the same workload as a single larger-sized node. 
+  The following snapshot displays two new nodes of the size **t3.medium** spin up automatically. These two smaller-sized nodes will be able to handle the same workload as a single larger-sized node. 
 
 
   ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
