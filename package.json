@@ -13,7 +13,7 @@
     "@mdx-js/react": "^1.6.22",
     "@philpl/buble": "^0.19.7",
     "algoliasearch": "^3.35.1",
-    "antd": "^4.24.9",
+    "antd": "^4.24.11",
     "babel-plugin-styled-components": "^1.10.7",
     "body-scroll-lock": "^3.0.1",
     "clipboard": "^2.0.6",
