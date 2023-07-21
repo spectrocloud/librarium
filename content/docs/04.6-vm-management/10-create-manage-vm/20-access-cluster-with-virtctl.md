@@ -24,7 +24,7 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 - An active virtual cluster with Palette Virtual Machine Orchestrator (VMO).
 
 
-- Access to the virutal cluster.
+- Access to the virtual cluster.
 
 
 
