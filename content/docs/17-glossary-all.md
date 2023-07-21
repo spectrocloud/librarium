@@ -179,6 +179,10 @@ Tenant represents a customer or an organization in Palette. Palette is a multi-t
 ## User
 
 Users are members of a [tenant](#tenant) who are assigned [roles](#role) that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all [projects](#project) in the tenant whereas users assigned project roles, only get specific permission within the associated projects. The user's personal information (email, name) is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
+
+## VMO
+Palette [Virtual Machine Orchestrator](/vm-management) provides a unified platform for managing containerized and virtualized applications. Palette VM Orchestrator allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications. 
+
 ## Workload
 An application running on the Kubernetes cluster is called a Workload. It can be a set of components that work together or a single independent component, run as a set of pods. In Kubernetes terms, a Pod is a set of running containers on your cluster.
 ## Workload Cluster
