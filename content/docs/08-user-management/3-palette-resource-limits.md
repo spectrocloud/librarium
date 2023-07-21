@@ -11,6 +11,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Default Palette Resource Limits
 
+
+Tenant admins can set and update resource limits for Palette. The resource limits determine the maximum number of resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects in the tenant.
+
 The following table lists the default resource limits for Palette:
 
 |Resources           |  Max Limit | Scope | 
@@ -30,7 +33,7 @@ The following table lists the default resource limits for Palette:
 |Macros              |      200              | Project|
 |SSH Keys            |      300              | Tenant |
 |Alerts or Webhook   |       100            | Project|
-|Clusters            |      12,000          | Tenant |
+|Clusters            |      10,000          | Tenant |
 |Edge Hosts          |      200            |  Tenant |
 
 # Set Resource Limit 
@@ -39,12 +42,12 @@ Use the following steps to set or update resource limits for your Palette tenant
 
 ## Prerequisites
 
-* You must have access to the Tenant Admin role.
+* You must have access to the *tenant admin* role.
 
 
 ## Update Limits
 
-1. Login to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
+1. Login to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
 2. Navigate to the left **Main Menu** and select **Tenant Settings**.
