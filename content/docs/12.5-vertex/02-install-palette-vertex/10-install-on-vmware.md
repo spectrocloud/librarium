@@ -45,7 +45,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 # Install the PCG
 
-1. Download the PCG installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
+1. Download the Palette installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
 2. Invoke the installer by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
@@ -55,7 +55,7 @@ palette ec install
 ```
 
 
-3. When prompted to enable Ubuntu Pro, type `y` and provide your Ubuntu Pro token.  
+3. When prompted to enable Ubuntu Pro, type `y` and provide your Ubuntu Pro token. This enables the Ubuntu license.  
 
 
 4. When prompted to enable FIPS, type `y`. The repository location is displayed. 
@@ -85,12 +85,12 @@ palette ec install
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|`HTTPS Proxy`|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|`HTTP Proxy`|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|`No Proxy`|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
-|`Proxy CA Certificate Filepath`|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
-|`Pod CIDR`|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
-|`Service IP Range`|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
+|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
+|**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
+|**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
 <br />
 
@@ -98,10 +98,10 @@ palette ec install
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-|`vSphere Endpoint` | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as ``https://``. Example: `vcenter.mycompany.com`.|
-|`vSphere Username`  | vSphere account username.|
-|`vSphere Password`| vSphere account password.|
-|`Allow Insecure Connection`  | Bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, enter `n`.|
+|**vSphere Endpoint** | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as ``https://``. Example: `vcenter.mycompany.com`.|
+|**vSphere Username** | vSphere account username.|
+|**vSphere Password**| vSphere account password.|
+|**Allow Insecure Connection** | Bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, enter `n`.|
 
 <br />
 
@@ -109,15 +109,18 @@ palette ec install
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-|``Datacenter``| |
-|``Folder``  | |
-|``Fault Domain(s)`` | Configure one or more fault domains by selecting values for these properties: Cluster, Network, Resource Pool, and Storage Type (Datastore or VM Storage Policy). |
-|``NTP Server(s)`` | You can provide a list of Network Time Protocol (NTP) servers.  |
-|``SSH Public Key(s)`` | Provide any public SSH keys you will use to access clusters in your project. |
-|``PCG cluster size`` | Specify **1** or **3** nodes (HA). |
+|**Datacenter**| |
+|**Folder** | |
+|**Fault Domain(s)** | Configure one or more fault domains by selecting values for these properties: Cluster, Network, Resource Pool, and Storage Type (Datastore or VM Storage Policy). |
+|**NTP Server(s)** | You can provide a list of Network Time Protocol (NTP) servers.  |
+|**SSH Public Key(s)** | Provide any public SSH keys you will use to access clusters in your project. |
+|**PCG cluster size** | Specify **1** or **3** nodes (HA). |
 
+<InfoBox>
 
-<!-- any SSH keys in case you need to remote into the host cluster.  -->
+Rough - revise: Any SSH keys in case you need to remote into the host cluster. To learn about basic vi commands, check out [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html).
+
+</InfoBox>
 
 
 8. Specify the IP pool configuration. The placement type can be Static or DDNS. Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IPs using DNS.
@@ -126,19 +129,19 @@ palette ec install
 #### Static Placement Configuration
 | Parameter                                 | Description                                                |
 |-------------------------------------------|------------------------------------------------------------|
-| `IP Start range`                          | Enter the first address in the PCG IP pool range.           |
-| `IP End range`                            | Enter the last address in the PCG IP pool range.            |
-| `Network Prefix`                          | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
-| `Gateway IP Address`                      | Enter the IP address of the static IP gateway.              |
-| `Name server(s)`                          | Comma-separated list of DNS name server IP addresses.       |
-| `Name server search suffixes`  | An optional comma-separated list of DNS search domains. |
+| **IP Start range**                          | Enter the first address in the PCG IP pool range.           |
+| **IP End range**                            | Enter the last address in the PCG IP pool range.            |
+| **Network Prefix**                          | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
+| **Gateway IP Address**                      | Enter the IP address of the static IP gateway.              |
+| **Name server(s)**                          | Comma-separated list of DNS name server IP addresses.       |
+| **Name server search suffixes**  | An optional comma-separated list of DNS search domains. |
 
 <br />
 
 #### DDNS Placement Configuration
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| `Search domain(s)` | Comma-separated list of DNS search domains.|
+| **Search domain(s)** | Comma-separated list of DNS search domains.|
 
 
 Upon completion, a new PCG configuration file is generated and its location is displayed in the console.
