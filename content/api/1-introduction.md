@@ -122,7 +122,7 @@ If you do not provide the `ProjectUid` header, then tenant is the assumed scope.
 
 # Pagination
 
-API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the continue token. To perform pagination, you need to check whether the continue token value is present in the API response. For subsequent requests, use the continue token as a query parameter to paginate the remaining resource items.
+API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the continue token. To perform pagination, you need to check whether the continue token value is present in the API response. For subsequent requests, use the `continue` token as a query parameter to paginate the remaining resource items.
 
 <br />
 
@@ -137,7 +137,7 @@ API endpoints that return a list have a limit of 50 items per return payload. Pa
 
 <br />
 
-Example of a subsequent request using the continue token.
+Example of a subsequent request using the `continue` token.
 
 <br />
 
