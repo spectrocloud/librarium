@@ -65,11 +65,7 @@ If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
 
 # Supported Architectures
 
-Palette supports AMD64 and ARM64 architectures for Edge installations. There are many types of ARM64 and AMD64 devices available in the market. The following table lists the devices that have been tested with Palette.
-
-| **Device**  | **Architecture** |
-|-|-|
-| Nvida Jetson Nano | ARM64 | 
+Palette supports AMD64 and ARM64 architectures for Edge installations. However, we cannot guarantee that all hardware and software configurations will work due to the various options available in the market. We recommend that you test your hardware configuration before deploying to production.
 
 <br />
 
