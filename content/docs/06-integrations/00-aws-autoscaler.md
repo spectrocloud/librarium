@@ -20,10 +20,10 @@ Palette supports autoscaling for AWS EKS clusters by using the AWS Cluster Autos
 The Cluster Autoscaler dynamically scales cluster resources. It monitors the workload and provisions or shuts down cluster nodes to maximize the cluster's performance and make it more resilient to failures. It resizes the Kubernetes cluster in the following two conditions:
 <br />
 
-* Scale-up: Cluster Autoscaler triggers a scale-up operation if insufficient cluster resources lead to multiple pod failures, and those pods can be scheduled on new nodes. Cluster Autoscaler checks for such pods every 30 seconds and schedules those pods on new nodes. Scaling up will not happen when given pods have node affinity. 
+* Scale-up: The Cluster Autoscaler triggers a scale-up operation if insufficient cluster resources lead to multiple pod failures. The pods become eligible for scheduling on the new nodes. The Cluster Autoscaler checks for pod failures every 30 seconds and schedules impacted pods on new nodes. Scaling up will not happen when the given pods have node affinity. 
 
 
-* Scale-down: Cluster Autoscaler triggers a scale-down operation if nodes are underutilized for 10 continuous minutes, and their pods can be rescheduled on other available nodes. The node utilization threshold defaults to 50% of the node's capacity. Cluster Autoscaler calculates the node utilization threshold based on CPU and memory utilization. In such scenarios, the Cluster Autoscaler migrates the pods from underutilized nodes to other available nodes and then shuts down the underutilized nodes.  
+* Scale-down: The Cluster Autoscaler triggers a scale-down operation if nodes are underutilized for ten continuous minutes, and their pods are eligible for rescheduling on other available nodes. The node utilization threshold for scaling down a node defaults to 50% of the node's capacity. The Cluster Autoscaler calculates the node utilization threshold based on CPU and memory utilization. In scenarios where the node is underutilized, the Cluster Autoscaler migrates the pods from underutilized nodes to other available nodes and then shuts down the underutilized nodes. 
 
 
 Cluster Autoscaler pack is deployed as a [*Deployment*](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) in your cluster and utilizes [Amazon EC2 Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) to manage node groups. 
