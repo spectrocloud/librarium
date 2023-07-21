@@ -1,7 +1,7 @@
 ---
 title: "Palette Resource Limits"
 metaTitle: "Default Palette Resource Limits"
-metaDescription: "This topic describes the default resource limits for Palette and how to set resource limits for your Palette tenant."
+metaDescription: "Understand the default resource limits for Palette and learn how to set resource limits for your Palette tenant."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -16,7 +16,7 @@ Tenant admins can set and update resource limits for Palette. The resource limit
 
 The following table lists the default resource limits for Palette:
 
-|Resources           |  Max Limit | Scope | 
+|**Resources**           |  **Max Limit** | **Scope** | 
 |--------------------|----------------------|  ---- |
 |Users               |     300              | Tenant|
 |Teams               |     100              | Tenant| 
@@ -47,7 +47,7 @@ Use the following steps to set or update resource limits for your Palette tenant
 
 ## Update Limits
 
-1. Login to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
 2. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -56,15 +56,15 @@ Use the following steps to set or update resource limits for your Palette tenant
 3. Select **Resource Limits** from the **Tenant Settings Menu**.
 
 
-4. Set the values for the different Palette resources. Ensure you do not 
+4. Set the values for the different Palette resources. 
 
 
-5. Click **Save changes**.
+5. Save your changes.
 
 
 ## Validate
 
-You can validate the updated resource limits by attempting to create a resource of the resource type you updated. For example, if you updated the **API Key** to five, you can create five API keys. If you attempt to create a sixth API key, you will receive an error message.
+You can validate the updated resource limits by creating a resource of the same type you updated. For example, you can create five API keys if you updated the **API Key** to five. If you attempt to create a sixth API key, you will receive an error message.
 
 
 
