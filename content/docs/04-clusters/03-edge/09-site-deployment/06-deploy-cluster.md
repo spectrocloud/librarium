@@ -636,7 +636,7 @@ Validate you are in the **Default** project scope before creating a cluster prof
 
 
 Next, create a cluster profile with the core infrastructure layers and a manifest of a sample application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe). 
-Navigate to the left **Main Menu** and select **Profile**. Click on the **Add Cluster Profile** button, and fill out the required input fields. The cluster profile wizard contains the following sections. 
+Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill out the required input fields. The cluster profile wizard contains the following sections. 
 <br />
 
 ### Basic Information
