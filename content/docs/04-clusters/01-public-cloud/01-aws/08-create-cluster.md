@@ -142,7 +142,7 @@ Use the following steps to provision a new AWS cluster:
     | **NoExecute**|  New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint. |
 
 
-14. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker group nodes. Use the **Additional Security Groups (Optional)** drop-down Menu to select additional security groups.
+14. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
 
 
 15. Click on **Next**.  
