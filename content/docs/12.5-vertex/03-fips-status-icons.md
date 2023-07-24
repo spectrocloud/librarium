@@ -1,7 +1,7 @@
 ---
-title: "FIPS-status Icons"
-metaTitle: "FIPS-Status Icons"
-metaDescription: "TBD."
+title: "FIPS Status Icons"
+metaTitle: "FIPS Status Icons"
+metaDescription: "Learn how icons can help you identify FIPS compliance when you consume features that are not FIPS-compliant."
 icon: ""
 hideToC: false
 fullWidth: false

@@ -29,5 +29,8 @@ If desired, you can allow the consumption of certain non-FIPS functionality in P
 
 - [Allow Cluster Import](/vertex/enable-non-fips-settings/allow-cluster-import)
 
+
+- [Spectro Cloud FIPS 140-2 Certification](/compliance#fips140-2)
+
 <br />
 
