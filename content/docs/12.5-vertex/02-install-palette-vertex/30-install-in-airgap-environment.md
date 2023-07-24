@@ -1,7 +1,7 @@
 ---
 title: "Install in an Air Gap Environment"
-metaTitle: "Install in an Air Gap Environment"
-metaDescription: "Learn how to deploy Palette in a Kubernetes cluster in an air gap environment."
+metaTitle: "Install Palette VerteX in an Air Gap Environment"
+metaDescription: "Learn how to deploy Palette VerteX in a Kubernetes cluster in an air gap environment."
 icon: ""
 hideToC: false
 fullWidth: false

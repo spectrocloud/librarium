@@ -129,8 +129,8 @@ Rough - revise: Any SSH keys in case you need to remote into the host cluster. T
 #### Static Placement Configuration
 | Parameter                                 | Description                                                |
 |-------------------------------------------|------------------------------------------------------------|
-| **IP Start range**                          | Enter the first address in the PCG IP pool range.           |
-| **IP End range**                            | Enter the last address in the PCG IP pool range.            |
+| **IP Start range**                          | Enter the first address in the EC IP pool range.           |
+| **IP End range**                            | Enter the last address in the EC IP pool range.            |
 | **Network Prefix**                          | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
 | **Gateway IP Address**                      | Enter the IP address of the static IP gateway.              |
 | **Name server(s)**                          | Comma-separated list of DNS name server IP addresses.       |
@@ -144,13 +144,13 @@ Rough - revise: Any SSH keys in case you need to remote into the host cluster. T
 | **Search domain(s)** | Comma-separated list of DNS search domains.|
 
 
-Upon completion, a new PCG configuration file is generated and its location is displayed in the console.
+Upon completion, a new EC configuration file is generated and its location is displayed in the console.
 
 <br />
 
 ```bash
-==== PCG config saved EEEE
-Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+==== EC config saved EEEE
+Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
 
 <br />
@@ -181,9 +181,9 @@ PLACEHOLDER FOR VERTEX SYSTEM CONSOLE SCREENSHOT.
 
 
 
-<!-- provisions a PCG cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the pcg.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette pcg install. -->
+<!-- provisions a EC cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the ec.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette ec install. -->
 
-<!-- If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the Edit and Redeploy PCG section below. -->
+<!-- If the deployment fails due to misconfiguration, update the ec.yaml file and rerun the installer. Refer to the Edit and Redeploy EC section below. -->
 
 
 # Validate
