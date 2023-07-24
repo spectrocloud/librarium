@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Palette VerteX on VMware vSphere
 
-You install Palette VerteX using a Command Line Interface (CLI) that guides you for details. The installer creates a three-node enterprise cluster for high availability (HA): 6 vCPU, 12 GB memory, 70 GB storage. You can invoke the installer on any Linux x86-64 system that has the docker daemon installed and connectivity to the Palette Management console or VMware vSphere. 
+You install Palette VerteX using a Command Line Interface (CLI) that guides you for details. The installer creates a three-node enterprise cluster for high availability (HA): 6 vCPU, 12 GB memory, 70 GB storage. You can invoke the installer on any Linux x86-64 system with the docker daemon installed and connectivity to the Palette Management console and the VMware vSphere where Palette VerteX will be deployed. 
 
 
 # Prerequisites
