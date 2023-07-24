@@ -179,10 +179,17 @@ The installer provides a URL to access the Palette VerteX System Console.
 
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console)
 
+
+10. Upon logging in, a Click the Go to Tenant Management button.
+
+
+![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management)
+
 <!-- provisions a EC cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the ec.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette ec install. -->
 
 <!-- If the deployment fails due to misconfiguration, update the ec.yaml file and rerun the installer. Refer to the Edit and Redeploy EC section below. -->
 
+10. Upon logging in, a Summary page is displayed. Click the **Go to Tenant** button to start setting up your tenant.
 
 # Validate
 
@@ -198,12 +205,12 @@ The installer provides a URL to access the Palette VerteX System Console.
 
 # Next Steps
 
-Now you are ready to create a tenant. When the tenant is created, you can configure authentication types in tenant settings and create users and teams.
+Now you can configure authentication types in tenant settings and create users and teams.
 
 
 # Resources
 
-- Create Tenant
+TBS
 
 <br />
    
