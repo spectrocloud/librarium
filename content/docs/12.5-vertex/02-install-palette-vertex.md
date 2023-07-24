@@ -18,16 +18,16 @@ Palette VerteX can be deployed in self-hosted environments as follows:
 
 <br />
 
-- On VMware with internet connectivity.
+- On VMware vSphere with internet connectivity.
 
 
-- On VMware in an air-gapped environment.
+- On VMware vSphere in an air-gapped environment.
 
 
 - Using the Palette Helm Chart in EKS clusters.
 
 
-A Private Cloud Gateway (PCG) installer command line interface (CLI) is available for VMware vSphere environments.
+An Enterprise Cluster (EC) installer command line interface (CLI) is available for VMware vSphere environments.
 
 
 <br />

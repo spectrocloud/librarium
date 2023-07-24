@@ -32,7 +32,7 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
 - Kubernetes
   - Palette eXtended Kubernetes (PXK) 
-  - Palette eXtended Kubernetes (PXK) - Edge
+  - Palette eXtended Kubernetes - Edge (PXK-E)
   - RKE2
 
 
@@ -60,7 +60,7 @@ What should be listed?
 
 ## Kubernetes
 
-Our security-hardened PXK and PXK - Edge packs support the following.
+Our security-hardened PXK and PXK-E packs support the following.
 
 <br />
 

@@ -1,7 +1,7 @@
 ---
 title: "Install on VMware vSphere"
-metaTitle: "Install on VMware vSphere"
-metaDescription: "Learn how to install Palette on VMware vSphere."
+metaTitle: "Install Palette VerteX on VMware vSphere"
+metaDescription: "Learn how to install Palette VerteX on VMware vSphere."
 icon: ""
 hideToC: false
 fullWidth: false
