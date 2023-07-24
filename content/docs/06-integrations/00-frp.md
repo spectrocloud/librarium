@@ -22,7 +22,7 @@ The reverse proxy has a server component and a client component. The reverse pro
 
 <br />
 
-- The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy.
+- The kubeconfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy.
 
   <br />
 
@@ -271,7 +271,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -389,7 +389,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -505,7 +505,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -613,7 +613,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -670,11 +670,11 @@ If you encounter an x509 unknown authority error when deploying a cluster with t
 
 <br />
 
-```shell
+```shell hideClipboard
 Unable to connect to connect the server: X509: certiticate signed by unknown authorit signed by
 ```
 
-The workaround for this error is to wait a few moments for all the kubeconfig configurations to get propagted to Palette. The Palette cluster agent sends the original kubeconfig to Palette, followed by the modified kubeconfig containing the reverse proxy settings. If you attempt to open up a web shell session or interact with cluster API during the initialization process, you will receive an x509 error. Once Palette receives the kubeconfig file containing the cluster's reverse proxy configurations from the cluster agent, the x509 errors will disappear.
+The workaround for this error is to wait a few moments for all the kubeconfig configurations to get propagated to Palette. The Palette cluster agent sends the original kubeconfig to Palette, followed by the modified kubeconfig containing the reverse proxy settings. If you attempt to open up a web shell session or interact with cluster API during the initialization process, you will receive an x509 error. Once Palette receives the kubeconfig file containing the cluster's reverse proxy configurations from the cluster agent, the x509 errors will disappear.
 
 
 # Terraform
