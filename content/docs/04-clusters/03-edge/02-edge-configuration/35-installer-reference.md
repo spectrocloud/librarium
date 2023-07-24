@@ -48,7 +48,7 @@ You can enable the `debug` and `trace` parameters when you need to troubleshoot 
 | Parameter | Description | 
 | --- | --- |
 | `debug` | Enable this parameter for debug output. Allowed values are `true` or `false`. Default value is `false`. |
-| `trace` | Enable this paramter to display trace output. Allowed values are `true` or `false`. Default value is `false`.|
+| `trace` | Enable this parameter to display trace output. Allowed values are `true` or `false`. Default value is `false`.|
 | `imageOverride`| You can specify a different Edge Installer image versus the default image. |
 
 ```yaml
@@ -131,6 +131,8 @@ The `stylus.site` blocks accept the following parameters.
 | `clusterId` | The id of the host cluster the edge host belongs to. | 
 | `clusterName` | The name of the host cluster the edge host belongs to. |
 | `tags` | A parameter object you use to provide optional key-value pairs. Refer to the [Tags](#tags) section to learn more. | 
+| `tagsFromFile` | Specify tags from a file. Refer to the [Tags](#tags) section to learn more. | 
+| `tagsFromScript` | Use a script to generate the tags. Refer to the [Tags](#tags) section to learn more. |  
 | `deviceUIDPaths` | Specify the file path for reading in product or board serial that can be used to set the device ID. The default file path is **/sys/class/dmi/id/product_uuid**. Refer to the [Device ID (UID) Parameters](/clusters/edge/edge-configuration/installer-reference#deviceid(uid)parameters) section to learn more.|
 
 ## Site Network Parameters
@@ -154,7 +156,7 @@ Network settings specific to the network interface of the edge host. You can con
 | `networkInterface.ipAddress` | The assigned IP address to the network interface. | 
 | `networkInterface.mask` | The network mask for the assigned IP address. | 
 | `networkInterface.type` | Defines how the IP address is assigned. Allowed values are `dhcp` or `static`. Defaults to `dhcp`. | 
-| `networkInterface.gateway` | The network gatway IP address. |
+| `networkInterface.gateway` | The network gateway IP address. |
 | `networkInterface.nameserver` | The IP address of the DNS nameserver this interface should route requests to.| 
 
 ## Device ID (UID) Parameters
@@ -201,7 +203,7 @@ The length of the UID truncates to a maximum allowed length of 128 characters. T
 
 ## Tags
 
-You can assign tags to the Edge host by specifying tags manually in the configuration file by providing a tags object. The tags object accepts key-value pairs. The following example shows how to assign tags to the Edge host.
+You can assign tags to the Edge host by specifying tags manually in the configuration file. The tags object accepts key-value pairs. The following example shows how to assign tags manually to the Edge host.
 
 <br />
 
@@ -224,11 +226,13 @@ You can also specify tags through alternative methods that are more dynamic, suc
 The order of precedence for tags is as follows:
 <br />
 
-1. Manually provides tags.
+1. Manually provided tags - `tags`.
 
-2. Tags from a script.
+2. Tags from a script - `tagsFromScript`.
 
-3. Tags from a file.
+3. Tags from a file - `tagsFromFile`.
+
+Tags from higher priority orders override tags from lower priority. For example, if you specify a tag manually and also specify the same tag in a `tagsFromFile`, the tag from the `tag` object is what the Edge installer will use.
 
 </InfoBox>
 
@@ -252,15 +256,15 @@ stylus:
   site:
     tags:
       department: 'sales'
-      tagsFromFile:
-        fileName: "/etc/palette/tags.txt"
-        delimiter: ";"
-        separator: ":"
+    tagsFromFile:
+      fileName: "/etc/palette/tags.txt"
+      delimiter: ";"
+      separator: ":"
 ```
 
 Example: 
 
-Assume the file **/etc/palette/tags.txt** contains the following content. You can specify different delimiters and separators to parse the content depending on how the content is formatted.
+You can specify different delimiters and separators to parse the content depending on how the content is formatted. Assume the file **/etc/palette/tags.txt** contains the following content. 
 
 <br />
 
@@ -278,11 +282,20 @@ You can specify tags from a script by using the `tagsFromScript` parameter objec
 
 ```json hideClipboard
 {
-  "tag1": "value1",
-  "tag2": "value2"
+  "key": "value",
 }
 ```
 
+Example: 
+
+<br />
+
+```json
+{
+  "department": "sales",
+  "owner": "p78125d"
+}
+```
 
 
 
@@ -301,9 +314,9 @@ stylus:
   site:
     tags:
       department: 'sales'
-      tagsFromScript:
-        scriptName: "/etc/palette/tags.py"
-        timeout: 60
+    tagsFromScript:
+      scriptName: "/etc/palette/tags.py"
+      timeout: 60
 ```
 
 
@@ -380,9 +393,9 @@ stylus:
     tags:
       myTag: myValue
       myOtherTag: myOtherValue
-      tagsFromScript:
-        scriptName: /etc/palette/tags.sh
-        timeout: 30
+    tagsFromScript:
+      scriptName: /etc/palette/tags.sh
+      timeout: 30
   reboot: false
 
 stages:
