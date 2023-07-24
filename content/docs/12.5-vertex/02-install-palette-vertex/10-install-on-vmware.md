@@ -22,19 +22,19 @@ You install Palette VerteX using a Command Line Interface (CLI) that guides you 
 - A Palette VerteX account. Refer to [Access Palette VerteX](/vertex#accesspalettevertex).
 
 
-- Downloaded PCG installer CLI.
+- Downloaded Palette CLI.
 
 
-- An Ubuntu Pro Subscription. Ubuntu Pro is FIPS 140-2 certified.
+- An Ubuntu Pro Subscription. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
 
 - An Ubuntu Pro token.
 
 
-- In VMware environments with internet connectivity, you will need added port permissions to inbound rules for security groups to provide Palette VerteX connectivity and outbound connections. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication.
+- In VMware environments with internet connectivity, you will need to configure firewall ports to allow relevant traffic for Palette to function correctly. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication.
 
 
-- A new or existing SSH key pair to access the PCG installer for any troubleshooting.
+- A new or existing SSH key pair to access the installer for any troubleshooting.
 
 <!-- <InfoBox>
 
@@ -43,12 +43,12 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 </InfoBox> -->
 
 
-# Install the PCG
+# Install the Enterprise Cluster
 
-1. Download the Palette installer. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
+1. Download the Palette CLI. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
-2. Invoke the installer by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
+2. Invoke Palette CLI by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
 
 ```bash
 palette ec install
@@ -75,7 +75,7 @@ palette ec install
 |**Parameter**       | **Description**|
 |:-----------------------------|---------------|
 |**Cloud Type**| Choose ``VMware vSphere``.|
-|**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``vmware-vsphere-pcg-1``.|
+|**Enterprise Cluster Name** | Enter a custom name for the Enterprise Cluster. Example: ``palette-vertex-us-1``.|
 |**Share PCG Cloud Account across platform Projects** |Enter 'y' if you want the Cloud Account associated with the PCG to be available from all Projects within your Organization. Enter 'n' if you want the Cloud Account to be available at the tenant admin scope only.| -->
 
 <br />
@@ -85,12 +85,12 @@ palette ec install
 
 |**Parameter**| **Description**|
 |:-------------|----------------|
-|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
-|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: ``https://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
+|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: ``http://USERNAME:PASSWORD@PROXYIP:PROXYPORT``.|
 |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: ``maas.company.com,10.10.0.0/16``.|
 |**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
-|**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
-|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
+|**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
 <br />
 
