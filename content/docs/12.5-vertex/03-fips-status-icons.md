@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Although Palette VerteX is FIPS-compliant, it provides the capability to use some features that are not FIPS-compliant. For example, when the **Allow non-FIPS cluster import** option is enabled, it allows users to import any type of Kubernetes cluster, including some that are not FIPS-compliant. 
+Although Palette VerteX brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters, it provides the capability to consume features that are not FIPS-compliant. For example, when the **Allow non-FIPS cluster import** option is enabled, it allows users to import any type of Kubernetes cluster, including some that are not FIPS-compliant. 
 Similarly, when the  **Allow non-FIPS add-on packs** option is enabled, users can add add-on packs in cluster profiles that are not FIPS-compliant.
 
 To avoid confusion and compliance issues, Palette VerteX displays icons to indicate the FIPS compliance status of clusters and profile layers. 
