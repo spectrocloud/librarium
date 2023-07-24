@@ -36,11 +36,11 @@ You install Palette VerteX using a Command Line Interface (CLI) that guides you 
 
 - A new or existing SSH key pair to access the installer for any troubleshooting.
 
-<!-- <InfoBox>
+<InfoBox>
 
-Self-hosted Palette installations provide a system PCG out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console.
+Self-hosted Palette installations provide a system PCG out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console. To learn how to install a PCG on VMware, check out the [VMware](/clusters/data-center/vmware) guide.
 
-</InfoBox> -->
+</InfoBox>
 
 
 # Install the Enterprise Cluster
@@ -107,6 +107,8 @@ palette ec install
 
 #### VMware vSphere PCG Cluster Configuration
 
+This information is used to determine where the Palette VerteX management plane nodes for the enterprise cluster will be running.
+
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
 |**Datacenter**| |
@@ -118,7 +120,7 @@ palette ec install
 
 <InfoBox>
 
-Rough - revise: Any SSH keys in case you need to remote into the host cluster. To learn about basic vi commands, check out [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html).
+SSH keys that you provide allow you to access the host cluster remotely for maintenance purposes. To learn about basic vi commands, check out [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html).
 
 </InfoBox>
 
@@ -144,7 +146,7 @@ Rough - revise: Any SSH keys in case you need to remote into the host cluster. T
 | **Search domain(s)** | Comma-separated list of DNS search domains.|
 
 
-Upon completion, a new EC configuration file is generated and its location is displayed in the console.
+Upon completion, a new EC configuration file is generated and its location is displayed in the terminal. 
 
 <br />
 
@@ -155,31 +157,27 @@ Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 
 <br />
 
-Installation details are displayed in the console, including default username and password.
+Installation details are also displayed in the terminal, including default username and password.
 
 <br />
 
 ```bash
-log. InfoCLI("===== You, 3 months ago • PLT-430: Display
-log. InfoCLI("==== Enterprise Cluster Details
-log. InfoCLI("=======
-log. InfoCLI ("Console URL: %s://%s/system", apiServerURL. Scheme, apiServerURL.Hostname
-log. InfoCLI ("Username: f admin")
-log. InfoCLI(" Password: admin")
+log. InfoCLI("====================================")
+log. InfoCLI("==== Enterprise Cluster Details ====")
+log. InfoCLI("====================================")
+log. InfoCLI("Console URL: %s://%s/system", apiServerURL.Scheme, apiServerURL.Hostname())
+log. InfoCLI("Username: admin")
+log. InfoCLI("Password: admin")
 ```
 
-The installer prompts you to reset the username and password and provides a URL to access the Palette VerteX System Console.
+<!-- The installer prompts you to reset the username and password and provides a URL to access the Palette VerteX System Console. -->
 
-PLACEHOLDER FOR VERTEX SYSTEM CONSOLE SCREENSHOT.
+The installer provides a URL to access the Palette VerteX System Console.
 
-<br />
-
-9.  Click the URL to access the System Console, and type `admin` in the **Username** and **Password** fields. 
+9.  Click the URL to access the System Console. The default credentials are ``admin / admin``. Reset the password in the System Console. 
 
 
-10. Reset the password.
-
-
+![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console)
 
 <!-- provisions a EC cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the ec.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette ec install. -->
 
@@ -187,7 +185,16 @@ PLACEHOLDER FOR VERTEX SYSTEM CONSOLE SCREENSHOT.
 
 
 # Validate
-  
+
+1. The 
+
+<!-- 1. Connect to the system console as a tenant admin. 
+
+
+2. Access the tenant, and navigate to the left **Main Menu** and select **Clusters**. 
+
+
+3. On the cluster Overview page, verify the cluster health status. While the cluster is being deployed, the **Cluster Status** field displays **Provisioning**. When provisioning is complete, ensure cluster status displays **Running**. -->
 
 # Next Steps
 

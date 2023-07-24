@@ -40,6 +40,9 @@ An Enterprise Cluster (EC) installer command line interface (CLI) is available f
 - [Install Using Help Chart](/vertex/install-palette-vertex/install-using-helm-chart)
 
 
+- [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-in-airgap-environment)
+
+
 <br />
 
 <br />

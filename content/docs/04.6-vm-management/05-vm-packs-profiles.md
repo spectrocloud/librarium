@@ -21,7 +21,7 @@ The components of the pack are described below. Two essential components are the
 
 <br />
 
-- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Management is enabled. The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. To learn more about the web console, refer to [Spectro VM Dashboard](/vm-management/vm-packs-profiles/vm-dashboard).
+- **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster Overview page in Palette when VM Management is enabled. The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. To learn more about the web console, refer to [Spectro VM Dashboard](/vm-management/vm-packs-profiles/vm-dashboard).
 
 
 - **Spectro Proxy**: An add-on pack that enables the use of a reverse proxy with a Kubernetes cluster. This pack is automatically added when you use the default dashboard configuration. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. 
