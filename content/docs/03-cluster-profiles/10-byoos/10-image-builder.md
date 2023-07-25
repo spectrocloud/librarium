@@ -162,7 +162,7 @@ The following steps will guide you through creating your image. You will create 
 
     <InfoBox>
 
-    The file **packer.json** contains many user variables use can use to customize the image. We recommend you review the KIB [documentation](https://image-builder.sigs.k8s.io/capi/capi.html) for your provider as it explains each variable.
+    The file **packer.json** contains many variables you can use to customize the image. We recommend you review the KIB [documentation](https://image-builder.sigs.k8s.io/capi/capi.html) for your provider as it explains each variable.
 
     </InfoBox>
 
