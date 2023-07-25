@@ -14,12 +14,18 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Palette VerteX on VMware vSphere
 
-You install Palette VerteX using a Command Line Interface (CLI) that guides you for details. The installer creates a three-node enterprise cluster for high availability (HA): 6 vCPU, 12 GB memory, 70 GB storage. You can invoke the installer on any Linux x86-64 system with the docker daemon installed and connectivity to the Palette Management console and the VMware vSphere where Palette VerteX will be deployed. 
+You install Palette VerteX using a Command Line Interface (CLI) that guides you for details. The installer creates a three-node enterprise cluster for high availability (HA): 
+
+- 6 vCPU
+- 12 GB memory
+- 70 GB storage
+
+You can invoke the installer on any Linux x86-64 system with the docker daemon installed and connectivity to the Palette console and the VMware vSphere where Palette VerteX will be deployed. 
 
 
 # Prerequisites
 
-- A Palette VerteX account. Refer to [Access Palette VerteX](/vertex#accesspalettevertex).
+- A Palette VerteX account and repository credentials. Refer to [Access Palette VerteX](/vertex#accesspalettevertex).
 
 
 - Downloaded Palette CLI.
@@ -34,11 +40,11 @@ You install Palette VerteX using a Command Line Interface (CLI) that guides you 
 - In VMware environments with internet connectivity, you will need to configure firewall ports to allow relevant traffic for Palette to function correctly. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication.
 
 
-- A new or existing SSH key pair to access the installer for any troubleshooting.
+- A new or existing SSH key pair to access the cluster remotely for maintenance and troubleshooting.
 
 <InfoBox>
 
-Self-hosted Palette installations provide a system PCG out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console. To learn how to install a PCG on VMware, check out the [VMware](/clusters/data-center/vmware) guide.
+Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the [VMware](/clusters/data-center/vmware) guide.
 
 </InfoBox>
 
@@ -48,7 +54,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 1. Download the Palette CLI. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
 
 
-2. Invoke Palette CLI by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
+2. Invoke the Palette CLI by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
 
 ```bash
 palette ec install
