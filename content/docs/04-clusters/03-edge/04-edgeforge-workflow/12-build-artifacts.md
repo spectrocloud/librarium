@@ -1,7 +1,7 @@
 ---
-title: "Build Edge Artifacts using Content Bundle"
-metaTitle: "Build Edge Artifacts using Content Bundle"
-metaDescription: "Learn how to build Edge Installer ISO using Spectro Cloud's Palette Edge CLI and CanvOS utilities."
+title: "Build Edge Artifacts using a Content Bundle"
+metaTitle: "Build Edge Artifacts using a Content Bundle"
+metaDescription: "Learn how to build an Edge Installer ISO using the Palette Edge CLI and the CanvOS utilities."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -14,33 +14,33 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from "shared/components/common/PointOfInterest";
 
-# Build Edge Artifacts using Content Bundle
+# Build Edge Artifacts using a Content Bundle
 
-Palette's Edge solution supports creating Edge artifacts for edge devices having low or zero internet bandwidth or deployed in an *air-gapped* environment. An *air-gapped* environment is a deployment site with no direct or indirect connectivity to other devices or outside networks. In such environments, you prepare edge devices using the Edge artifacts built using a *content bundle*.
+Palette's Edge solution supports creating Edge artifacts for edge devices deployed in a low internet bandwidth environment or deployed in an *air-gapped* environment. An air-gapped environment is a deployment site with no direct internet access. You can optimize the Edge installation for these types of environments by using a content bundle and including it with the Edge installation.
 
 
-A content bundle is an archive that includes the operating system image, Kubernetes distribution, additional layers, and packs and manifest files specified in your cluster profile that you want to deploy to the Edge cluster. A content bundle provides several benefits, such as:
+A content bundle is an archive that includes the Operating System (OS) image, the Kubernetes distribution, the Network Container Interface (CNI), and all other dependencies specified in the cluster profiles that you want to deploy to the Edge cluster. A content bundle provides several benefits, such as:
 <br />
 
-- Preloads required software dependencies to remove the need for downloading assets during cluster deployment, 
+- Software dependencies are pre-loaded into the installer image.
 
 
-- Optimizes the deployment process in bandwidth-constrained environments 
+- Optimizes the deployment process for bandwidth-constrained environments or air-gapped environments.
 
 
-- Installs only authorized tools or software on Edge devices. 
+- The ability to more granularly manage the software dependencies available to Edge clusters. 
 
-The current guide provides instructions to create and use a content bundle to build the Edge installer ISO image. However, before you proceed with the current guide, you must build provider images by following the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide. 
+This how-to guide provides instructions for you to create and use a content bundle to build the Edge artifacts. However, before you create Edge artifacts that include a content bundle, you must build provider images by following the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide. 
 <br />
 
 <WarningBox>
 
-This guide extends the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) workflow. Therefore, you must follow the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to build the provider images for all the Palette-supported Kubernetes versions and push one of them to an image registry of your choice. This guide uses a provider image compatible with K3s v1.25.x pushed to the [ttl.sh](https://ttl.sh/) image registry. However, you can use any other provider image or registry per your requirements.
+This guide extends the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) workflow. Therefore, you must follow the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to build the provider images for all the Palette-supported Kubernetes versions and push one of them to an image registry of your choice. This guide uses a provider image compatible with k3s v1.25.x that is pushed to the [ttl.sh](https://ttl.sh/) image registry and available for download as an example. However, you can use any other provider image or registry per your requirements.
 
 </WarningBox>
 <br />
 
-In this guide, you will begin with installing the necessary tool, the Palette Edge CLI, on your development machine. Next, you will create a cluster profile in Palette referencing one of the provider images you built using the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) workflow. Then, you will access the cluster profile using the Palette Edge CLI utility to create a content bundle. Lastly, when your content bundle is ready, you will use the CanvOS utility to embed the content bundle, site-specific configuration, and user data into the Edge installer ISO image.  
+In this guide, you will begin with installing the necessary tool, the Palette Edge CLI, on your development machine. Next, you will create a cluster profile in Palette referencing one of the provider images you built using the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) workflow. Next, you will download all the software dependencies used in your cluster profiles by using the Palette Edge CLI utility to create a content bundle. Lastly, when your content bundle is ready, you will use the CanvOS utility to embed the content bundle and user data into the Edge installer ISO image.  
   
 
 The diagram below displays the high-level steps to build the Edge installer ISO image using a content bundle.
@@ -56,7 +56,7 @@ To complete this how-to guide, you will need the following items:
 * All prerequisites outlined in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide, except for this guide, your Linux machine must have 100 GB of storage or higher. The actual storage will depend on the size of the content bundle you will use to build the Edge installer ISO image.
 
 
-* Provider images are built following the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
+* The required provider images for your cluster must be readily available. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create provider images.
 
 
 * One of the provider images is pushed to an image registry. This guide uses a provider image compatible with K3s v1.25.x pushed to the [ttl.sh](https://ttl.sh/) image registry. However, you can use any other provider image and registry per your requirements.
@@ -67,9 +67,13 @@ To complete this how-to guide, you will need the following items:
 Use the following instructions on your Linux machine, which this guide refers to as the development environment.
 <br />
 
-1. The first few steps will guide you to download, install, and verify the Palette Edge CLI. The Palette Edge CLI is a command-line utility to interact with Palette and perform specific tasks in your development environment, such as creating a content bundle. 
+1.  Visit the [Downloads](https://docs.spectrocloud.com/spectro-downloads#paletteedgecli) page and download the latest Palette Edge CLI. You can download the Palette Edge CLI by clicking on the available URL.  The Palette Edge CLI is a command-line utility to interact with Palette and perform specific tasks in your development environment, such as creating a content bundle. 
 
-  Issue the following command to download the Palette Edge CLI. This command uses `curl` to download the Palette Edge CLI binary from the specified URL and save it as **palette-edge** in the current directory. 
+ 2. Open up a terminal session and navigate to the **Downloads** folder.
+ 
+ 
+ 3. Set the executable permissions for the palette-edge binary by issuing the following command.
+
 <br />
 
   ```bash
@@ -85,15 +89,15 @@ Use the following instructions on your Linux machine, which this guide refers to
   ```
 
 
-3. Use the following command to move the **palette-edge** binary to the **/bin/** directory. You will need elevated privileges to perform this operation. This step will allow you to issue the `palette-edge` command from any directory in your development environment.
+3. Use the following command to move the palette-edge binary to the **/usr/local/bin** directory so that the binary is available in your system $PATH.  This will allow you to issue the `palette-edge` command from any directory in your development environment.
 <br /> 
 
   ```bash
-  sudo mv palette-edge /bin/
+  sudo mv palette-edge /usr/local/bin
   ```
 
 
-4. Verify the installation of the Palette Edge CLI by issuing the following command. The output will display information about the installed version of the Palette Edge CLI. 
+4. Verify the installation of the Palette Edge CLI by issuing the following command. The output will display information about the currently supported OS and Kubernetes distributions. 
 <br />
 
   ```bash
@@ -123,9 +127,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 <br />
 
 
-5. The next few steps will guide you to create a cluster profile referencing the provider image you must have already pushed to an image registry. Check the **Prerequisites** section if you do not have a provider image in an image registry. 
-
-  Open a web browser and log in to [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a cluster profile. 
+5. Open a web browser and log in to [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a cluster profile. 
 
 
 6. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill out the required basic information fields to create a cluster profile for Edge. 
@@ -211,7 +213,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 
   
 
-14. Set the API key by issuing the following command. Replace the `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate itself when interacting with the Spectro Cloud API. Once authenticated, the Palette Edge CLI can access and manage resources in your Spectro Cloud account.
+14. Set the API key as an environment variable by issuing the following command. Replace the `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate itself when interacting with the Spectro Cloud API. Once authenticated, the Palette Edge CLI can interact with your Palette account.
 <br />
 
   ```bash
@@ -227,7 +229,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 
 
 
-16. Set the profile ID using the following command. Replace the `[USE-YOUR-PROFILE-ID_HERE]` placeholder with your cluster profile ID. This command sets the profile ID, which identifies the specific cluster profile that you want to use for creating the offline content bundle. 
+16. Set the cluster profile ID using the following command. Replace the `[USE-YOUR-PROFILE-ID_HERE]` placeholder with your cluster profile ID. The Palette Edge CLI uses the cluster profile ID to reference the correct cluster profile and download all of its software dependencies. 
 <br />
 
   ```bash
@@ -235,8 +237,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   ```
 
 
-17. Set the project ID by issuing the following command. Replace the `[USE-YOUR-PROJECT-ID_HERE]` placeholder with your cluster profile ID.
-The offline content bundle will be associated with the project ID you will use in the following command. 
+17. Set the project ID by issuing the following command. Replace the `[USE-YOUR-PROJECT-ID_HERE]` placeholder with your project ID.
 <br />
 
   ```bash
@@ -244,9 +245,7 @@ The offline content bundle will be associated with the project ID you will use i
   ```
 
 
-18. Build the offline content bundle using the following command. The content bundle will have the configuration and settings for the Edge cluster, including the operating system image, Kubernetes distribution, any additional packs, and manifest files specified in your cluster profile you wish to deploy to the Edge cluster.
-
-  The command below uses the palette-edge tool to build the offline content bundle. The `--api-key`, `--project-id`, and `--cluster-profile-ids` options specify the necessary parameters for the build process. The `--palette-endpoint` option specifies the endpoint URL for the Spectro Cloud API. The `--outfile` option specifies the name of the output file for the content bundle.
+18.  The `build` command creates the content bundle However, the command requires a set of parameters to start. The `--api-key`, `--project-id`, `--cluster-profile-ids`, and  `--palette-endpoint` are required flags.  Use the `--outfile` option to specify the name of the output file for the content bundle. Issue the following command to start the content bundle build process.
 <br />
 
   ```bash
@@ -282,7 +281,7 @@ The offline content bundle will be associated with the project ID you will use i
   ```
 
 
-22. List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
+22. Once the build process is complete, list the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
 <br />
 
   ```shell
