@@ -76,15 +76,23 @@ The following steps will guide you through creating your image. You will create 
 
     <br />
 
+    <Tabs>
+    <Tabs.TabPane tab="HTTPS" key="https">
+
     ```shell
-    git@github.com:snehala27/image-builder.git
+    git clone https://github.com/kubernetes-sigs/image-builder.git
     ```
 
-    <InfoBox>
+    </Tabs.TabPane>
+    <Tabs.TabPane tab="SSH" key="ssh">
 
-    A modified KIB repository is used to address GitHub issue [#1141](https://github.com/kubernetes-sigs/image-builder/issues/1132). This guide will be updated to point back to the community repository once the [pull request](https://github.com/kubernetes-sigs/image-builder/pull/1141) addressing the issue is accepted and merged into the code base.
+    ```shell
+    git clone git@github.com:kubernetes-sigs/image-builder.git
+    ```
+    </Tabs.TabPane>
 
-    </InfoBox>
+    </Tabs>
+
 
 2. Switch the directory into the image builder folder.
 
@@ -128,7 +136,7 @@ The following steps will guide you through creating your image. You will create 
 
     <br />
 
-    ```json
+    ```json hideClipboard
      "variables": {
     ...
     "ami_groups": "",
@@ -173,7 +181,7 @@ The following steps will guide you through creating your image. You will create 
     ```
 
     Output:
-    ```shell
+    ```shell hideClipboard
     build-ami-rhel-8                     Builds RHEL-8 AMI
     build-azure-sig-rhel-8               Builds RHEL 8 Azure managed image in Shared Image Gallery
     build-azure-vhd-rhel-8               Builds RHEL 8 VHD image for Azure
@@ -191,7 +199,7 @@ The following steps will guide you through creating your image. You will create 
     ```
 
     Output:
-    ```shell
+    ```shell hideClipboard
     amazon-ebs.{{user `build_name`}}: output will be in this color.
 
     ==> amazon-ebs.{{user `build_name`}}: Prevalidating any provided VPC information
@@ -209,7 +217,7 @@ The following steps will guide you through creating your image. You will create 
 
     <br />
 
-    ```shell
+    ```shell hideClipboard
      Build 'amazon-ebs.{{user `build_name`}}' finished after 22 minutes 29 seconds.
 
      ==> Wait completed after 22 minutes 29 seconds
@@ -253,7 +261,7 @@ The following steps will guide you through creating your image. You will create 
 
     <br />
 
-    ```
+    ```shell hideClipboard
     ==> amazon-ebs.{{user `build_name`}}: Creating AMI tags
     amazon-ebs.{{user `build_name`}}: Adding tag: "build_date": "2023-05-10T17:19:37Z"
     amazon-ebs.{{user `build_name`}}: Adding tag: "build_timestamp": "1683739177"
@@ -271,7 +279,7 @@ The following steps will guide you through creating your image. You will create 
 
     <br />
 
-    | Parameter | Description | Type | 
+    | **Parameter** | **Description** | **Type** | 
     |---|----|----|
     | `osImageOverride` | The ID of the image to use as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string|
     | `osName` | The name of the OS distribution. Example: `rhel`. | string |
