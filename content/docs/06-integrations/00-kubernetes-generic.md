@@ -141,6 +141,94 @@ The Kubeadm config is updated with hardening improvements that do the following:
 The default pack YAML contains minimal configurations offered by the managed provider.
 
 
+### Configure OIDC Identity Provider
+
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password. 
+
+OIDC requires a *RoleBinding* for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+
+<br />
+
+#### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
+
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+<br />
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
+```
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
+
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+<br />
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+
+```yaml
+oidcIdentityProvider:
+    identityProviderConfigName: 'Spectro-docs'
+    issuerUrl: 'issuer-url'
+    clientId: 'user-client-id-from-Palette'
+    usernameClaim: "email"
+    usernamePrefix: "-"
+    groupsClaim: "groups"
+    groupsPrefix: ""
+    requiredClaims:
+```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+```yaml
+clientConfig:
+  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-extra-scope: profile,email
+```
+
+3. Provide third-party OIDC IDP details.
+
+</Tabs.TabPane>
+</Tabs>
+
+
 </Tabs.TabPane>
 
 
@@ -253,6 +341,94 @@ The Kubeadm config is updated with hardening improvements that do the following:
 #### Kubeadm Configuration File 
 
 The default pack YAML contains minimal configurations offered by the managed provider.
+
+
+### Configure OIDC Identity Provider
+
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password. 
+
+OIDC requires a *RoleBinding* for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+
+<br />
+
+#### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
+
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+<br />
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
+```
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
+
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+<br />
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+
+```yaml
+oidcIdentityProvider:
+    identityProviderConfigName: 'Spectro-docs'
+    issuerUrl: 'issuer-url'
+    clientId: 'user-client-id-from-Palette'
+    usernameClaim: "email"
+    usernamePrefix: "-"
+    groupsClaim: "groups"
+    groupsPrefix: ""
+    requiredClaims:
+```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+```yaml
+clientConfig:
+  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-extra-scope: profile,email
+```
+
+3. Provide third-party OIDC IDP details.
+
+</Tabs.TabPane>
+</Tabs>
 
 </Tabs.TabPane>
 
@@ -368,6 +544,94 @@ The Kubeadm config is updated with hardening improvements that do the following:
 The default pack YAML contains minimal configurations offered by the managed provider.
 
 
+### Configure OIDC Identity Provider
+
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password. 
+
+OIDC requires a *RoleBinding* for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+
+<br />
+
+#### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Custom OIDC Setup" key="Custom OIDC Setup">
+
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+<br />
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+
+```yaml
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+    oidc-issuer-url: "provider URL"
+    oidc-client-id: "client-id"
+    oidc-groups-claim: "groups"
+    oidc-username-claim: "email"
+```
+ 
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+
+
+```yaml
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
+```
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Amazon EKS" key="Amazon EKS Setup">
+
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+<br />
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+
+```yaml
+oidcIdentityProvider:
+    identityProviderConfigName: 'Spectro-docs'
+    issuerUrl: 'issuer-url'
+    clientId: 'user-client-id-from-Palette'
+    usernameClaim: "email"
+    usernamePrefix: "-"
+    groupsClaim: "groups"
+    groupsPrefix: ""
+    requiredClaims:
+```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+```yaml
+clientConfig:
+  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-extra-scope: profile,email
+```
+
+3. Provide third-party OIDC IDP details.
+
+</Tabs.TabPane>
+</Tabs>
+
+
 </Tabs.TabPane>
 
 <Tabs.TabPane tab="Deprecated" key="deprecated">
@@ -472,19 +736,6 @@ data "spectrocloud_pack_simple" "k8s" {
 </Tabs.TabPane>
 
 </Tabs>
-
-<!-- ```hcl
-data "spectrocloud_registry" "public_registry" {
-  name = "Public Repo"
-}
-
-data "spectrocloud_pack_simple" "k8s" {
-  name    = "kubernetes"
-  version = "1.26.1"
-  type = "helm"
-  registry_uid = data.spectrocloud_registry.public_registry.id
-}
-``` -->
 
 # Resources
 
