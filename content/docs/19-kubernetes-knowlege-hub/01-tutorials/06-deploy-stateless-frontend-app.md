@@ -53,7 +53,7 @@ Use the command shown below to clone the application from GitHub.
 <br />
 
 ```bash
-git clone https://github.com/spectrocloud/date-buddy
+git clone https://github.com/Princesso/date-buddy
 ```
 
 If you prefer to use a different stateless frontend app, you can do so. You may, however, get different results than in this tutorial. This tutorial only serves as a guide.
