@@ -27,7 +27,7 @@ Palette VerteX can be deployed in self-hosted environments as follows:
 - Using the Palette Helm Chart in EKS clusters.
 
 
-An Enterprise Cluster (EC) installer command line interface (CLI) is available for VMware vSphere environments.
+An Enterprise Cluster (EC) Command Line Interface (CLI) installer is available for VMware vSphere environments.
 
 
 <br />
