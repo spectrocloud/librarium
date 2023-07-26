@@ -41,7 +41,11 @@ For learning purposes, you will set up Virtual Machines (VMs) as Edge hosts and 
 To complete this tutorial, you will need the following:
 <br/>
 
-* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP-enabled network. The VMs you will prepare as Edge hosts using the Edge installer ISO image must be DHCP-enabled. 
+* Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP-enabled network. 
+
+
+* The VMs you will prepare as Edge hosts image must be attached to a DHCP-enabled network. To ensure DHCP is enabled on the network, review the network settings on your ESXi Host.
+You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-9D8333F5-5F5B-4658-8166-119B44895098.html) guide from VMware to configure the DHCP server on the network. 
 
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
