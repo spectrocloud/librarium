@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette Virtual Machine (VM) Management provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. 
+Palette Virtual Machine Orchestrator (VMO) provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. 
 
 The components of the pack are described below. Two essential components are the **Spectro VM Dashboard** pack and **Spectro Proxy** pack. When you create the cluster profile, you only need to add the **Spectro VM Dashboard** pack.
 

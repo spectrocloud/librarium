@@ -115,3 +115,4 @@ imageSwap
 subcommand
 subcommands
 MAAS
+nameserver
