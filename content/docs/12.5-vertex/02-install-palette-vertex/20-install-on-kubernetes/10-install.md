@@ -1,6 +1,6 @@
 ---
-title: "Configuration Reference"
-metaTitle: "Install "
+title: "Instructions"
+metaTitle: "Install VerteX"
 metaDescription: "Learn how to install Palette VerteX on VMware vSphere."
 icon: ""
 hideToC: false

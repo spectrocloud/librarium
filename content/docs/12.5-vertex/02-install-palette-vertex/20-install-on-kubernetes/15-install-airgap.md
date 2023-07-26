@@ -1,5 +1,5 @@
 ---
-title: "Helm Instructions Airgap"
+title: "Instructions Airgap"
 metaTitle: "Install "
 metaDescription: "Learn how to install Palette VerteX on VMware vSphere."
 icon: ""
