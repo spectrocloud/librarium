@@ -193,23 +193,23 @@ Password: admin
 9.  Click the URL to access the System Console.  
 
 
-![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console)
+![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
+
+<br />
+
+10. Upon logging in, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out [](). 
 
 
-10. Upon logging in, click the **Go to Tenant Management** button.
-
-
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management)
+![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
 
 <!-- provisions a EC cluster in your VMware vSphere environment. The CloudAccount.apiKey and Mgmt.apiKey values in the ec.yaml are encrypted and cannot be manually updated. To change these values, rerun the installer using palette ec install. -->
 
 <!-- If the deployment fails due to misconfiguration, update the ec.yaml file and rerun the installer. Refer to the Edit and Redeploy EC section below. -->
 
-10. Upon logging in, a Summary page is displayed. Click the **Go to Tenant** button to start setting up your tenant.
 
 # Validate
 
-1. The 
+1. Use Enterprise Cluster Details provided at the completion of the installatation. 
 
 <!-- 1. Connect to the system console as a tenant admin. 
 
@@ -221,7 +221,7 @@ Password: admin
 
 # Next Steps
 
-Now you can configure authentication types in tenant settings and create users and teams.
+Once the tenant is created, you can configure authentication types in tenant settings and create users and teams.
 
 
 # Resources
