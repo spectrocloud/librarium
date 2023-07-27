@@ -34,7 +34,7 @@ Exercise caution when changing system settings as the changes will be applied to
 
 # Resources
 
-* [Tenant Mangement](/vertex/system-management/tenant-management)
+* [Tenant Management](/vertex/system-management/tenant-management)
 
 
 
