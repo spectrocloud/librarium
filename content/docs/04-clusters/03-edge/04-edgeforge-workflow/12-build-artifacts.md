@@ -202,7 +202,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   
 
 
-16. Use the command below to list all files in the current directory to verify that you successfully created the content bundle. The content bundle will have the following naming convention, `content-[randon-string]`, for example, **content-8e61a9e5**. 
+16. Use the command below to list all files in the current directory to verify that you created the content bundle successfully. The content bundle will have the following naming convention, `content-[randon-string]`, for example, **content-8e61a9e5**. 
 <br />
 
   ```bash
@@ -265,6 +265,9 @@ Finally, you must deploy an Edge cluster to test the edge device you prepare usi
 
 
 # Next Steps
+
+Palette's Edge solution allows you to create Edge artifacts using a content bundle for edge devices deployed in low internet bandwidth or air-gapped environments. You created a content bundle using the Palette Edge CLI in this guide. Next, you used the CanvOS utility to embed the content bundle and user data into an Edge installer ISO.
+
 
 The next step is to use the Edge installer ISO to prepare your Edge host. To learn more about utilizing the Edge artifacts to prepare Edge hosts and deploy Palette-managed Edge clusters, we encourage you to check out the reference resources below.
 <br />
