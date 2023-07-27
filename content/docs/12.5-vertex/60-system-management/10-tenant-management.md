@@ -39,7 +39,7 @@ You can create a tenant in Palette VerteX by following these steps.
 3. Click **Create New Tenant**.
 
 
-4. Fill out the **Org Name** and the properties of the admin user by providing the **First Name**, **Last Name**, **Email**.
+4. Fill out the **Org Name** and the properties of the admin user by providing the **First Name**, **Last Name**, and **Email**.
 
 
 5. Confirm your changes.
@@ -51,7 +51,8 @@ You can create a tenant in Palette VerteX by following these steps.
 
   ![View of a tenant activation option](/vertex_system-management_tenant-management_activate-tenant.png)
 
-7. A popup box will present you with an activation URL. Copy the URL and paste it into your browser to activate the tenant.
+<br />
+7. A pop-up box will present you with an activation URL. Copy the URL and paste it into your browser to activate the tenant.
 
 
 8. Provide the admin user with a new password.
@@ -91,7 +92,7 @@ You can remove a tenant in Palette VerteX using the following steps.
 4. Select **Delete** to prepare the tenant for removal.
 
 
-5. Click on your tenant tile's **three dots Menu** and select **Clean up** to remove all the tenant's resources.
+5. Click on your tenant's **three dots Menu** and select **Clean up** to remove all the tenant's resources.
 
 <br />
 
@@ -102,12 +103,12 @@ You can remove a tenant in Palette VerteX using the following steps.
 
   <WarningBox>
 
-  If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways, the tenant will remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with the deletion without manually cleanup tenant resources.
+  If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with deletion without manually cleaning up tenant resources.
 
   </WarningBox>
 
 
-After the cleanup process is completed, the tenant will be removed from the tenant list view.
+After the cleanup process completes, the tenant will be removed from the tenant list view.
 
 ## Validate
 
