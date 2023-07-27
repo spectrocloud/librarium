@@ -15,13 +15,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Palette VerteX on VMware vSphere
 
-You install Palette VerteX using a Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA) with the following resources: 
+You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA) with the following resources: 
 
 - 6 vCPU
 - 12 GB memory
 - 70 GB storage
 
-You can invoke the installer on any Linux x86-64 system with the docker daemon installed and connectivity to the Palette console and the VMware vSphere where Palette VerteX will be deployed. 
+You can invoke the Palette CLI on any Linux x86-64 system with the docker daemon installed and connectivity to the Palette console and the VMware vSphere where Palette VerteX will be deployed. 
 
 
 # Prerequisites
@@ -42,6 +42,15 @@ You can invoke the installer on any Linux x86-64 system with the docker daemon i
 
 
 - In VMware environments with internet connectivity, you will need to configure firewall ports to allow relevant traffic for Palette to function correctly. Refer to [Network Ports](/architecture/networking-ports/#self-hostednetworkcommunicationsandports) for a list of required ports that must enabled for inbound or outbound communication.
+
+
+- Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
+
+  - SSL certificate file in base64 format.
+
+  - SSL certificate key file in base64 format.
+
+  - SSL certificate authority file in base64 format. This file is optional.
 
 
 You can provide an optional SSH key pair to access the cluster remotely for maintenance and troubleshooting.
@@ -183,7 +192,7 @@ This information is used to determine where the Palette VerteX management plane 
 | **Search domain(s)** | Comma-separated list of DNS search domains.|
 
 
-  The installation process stands up a kind cluster locally that will orchestrate the remainder of the installation. This will take some time.
+  The installation process stands up a kind cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
 
 
   Upon completion, a new EC configuration file named ``ec.yaml`` is generated and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
@@ -225,7 +234,7 @@ The first time you visit the Palette VerteX system console, you may see a warnin
 <br />
   
 
-16. Upon logging in, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out [](). 
+16. Upon logging in, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
 
 
 ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
