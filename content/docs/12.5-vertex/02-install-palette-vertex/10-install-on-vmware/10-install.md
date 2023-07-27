@@ -215,9 +215,9 @@ Password: admin
 
 <InfoBox>
 
-  The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can safely ignore this warning message. Either click on **Advanced** and then click on **Proceed to <your domain name>**. Or type `thisisunsafe` anywhere on the page and click on **Continue to <your domain name>**.
+The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can safely ignore this warning message. Depending on your browser, accept the message and proceed to the page.
 
-  </InfoBox> 
+</InfoBox> 
 
 
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
