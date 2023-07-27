@@ -16,7 +16,7 @@ import PointsOfInterest from "shared/components/common/PointOfInterest";
 
 # Build Edge Artifacts using a Content Bundle
 
-Palette's Edge solution supports creating Edge artifacts for edge devices deployed in a low internet bandwidth environment or an *air-gapped* environment. An air-gapped environment is a deployment site with no direct internet access. You can build the Edge artifacts for installation in these environments by using a content bundle and including it with the Edge installer ISO.
+Palette's Edge solution supports creating Edge artifacts for edge devices deployed in a low internet bandwidth environment or an *air-gapped* environment. An air-gapped environment is a deployment site with no direct internet access. Using a content bundle, you can build Edge artifacts for installation in such environments.
 
 
 A content bundle is an archive that includes the Operating System (OS) image, the Kubernetes distribution, the Network Container Interface (CNI), and all other dependencies specified in the cluster profiles you want to deploy to the Edge cluster. A content bundle provides several benefits, such as:
@@ -33,7 +33,7 @@ A content bundle is an archive that includes the Operating System (OS) image, th
 
 This how-to guide provides instructions for creating and using a content bundle to build the Edge artifacts. You will begin with installing a necessary tool, the Palette Edge CLI, on your development machine. The Palette Edge CLI is a command-line utility to interact with Palette and perform specific tasks in your development environment, such as creating a content bundle. Next, you will download all the software dependencies mentioned in your cluster profile using the Palette Edge CLI and create a content bundle. Lastly, when your content bundle is ready, you will use the CanvOS utility to embed the content bundle and user data into the Edge installer ISO image.    
 
-The diagram below displays the high-level workflow to build the Edge installer ISO using a content bundle, including the prerequisites.
+The diagram below displays the overarching steps to build the Edge installer ISO using a content bundle. The diagram also highlights the primary prerequisites to create a content bundle.
 
 ![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching.png)
 
@@ -266,7 +266,7 @@ Finally, you must deploy an Edge cluster to test the edge device you prepare usi
 
 # Next Steps
 
-The next step is to use the Edge installer ISO to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy Palette-managed Edge clusters, we encourage you to check out the reference resources below.
+The next step is to use the Edge installer ISO to prepare your Edge host. To learn more about utilizing the Edge artifacts to prepare Edge hosts and deploy Palette-managed Edge clusters, we encourage you to check out the reference resources below.
 <br />
 
 - [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) 
