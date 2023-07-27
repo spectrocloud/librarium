@@ -121,7 +121,7 @@ palette ec install
 |**vSphere Endpoint** | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as ``https://``. Example: `vcenter.mycompany.com`.|
 |**vSphere Username** | vSphere account username.|
 |**vSphere Password**| vSphere account password.|
-|**Allow Insecure Connection** | Bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, enter `n`.|
+|**Allow Insecure Connection** | Bypasses x509 verification. Type `y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, enter `n`.|
 
 <br />
 
@@ -131,16 +131,15 @@ This information is used to determine where the Palette VerteX management plane 
 
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-|**Datacenter**| |
-|**Folder** | |
+|**Datacenter**| The installer retrieves the Datacenter automatically. |
+|**Folder** | Select the folder that contains the VM instance. |
 |**Fault Domain(s)** | Configure one or more fault domains by selecting values for these properties: Cluster, Network, Resource Pool, and Storage Type (Datastore or VM Storage Policy). |
 |**NTP Server(s)** | You can provide a list of Network Time Protocol (NTP) servers.  |
-|**SSH Public Key(s)** | Provide any public SSH keys you will use to access clusters in your project. |
-|**PCG cluster size** | Specify **1** or **3** nodes (HA). |
+|**SSH Public Key(s)** | Provide any public SSH keys you will use to access clusters in your project for maintenance and troubleshooting. |
 
 <InfoBox>
 
-SSH keys that you provide allow you to access the host cluster remotely for maintenance purposes. To learn about basic vi commands, check out [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html).
+To learn about basic vi commands, check out [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html).
 
 </InfoBox>
 
@@ -150,12 +149,12 @@ SSH keys that you provide allow you to access the host cluster remotely for main
 
 #### Static Placement Configuration
 | Parameter                                 | Description                                                |
-|-------------------------------------------|------------------------------------------------------------|
-| **IP Start range**                          | Enter the first address in the EC IP pool range.           |
-| **IP End range**                            | Enter the last address in the EC IP pool range.            |
-| **Network Prefix**                          | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
-| **Gateway IP Address**                      | Enter the IP address of the static IP gateway.              |
-| **Name server(s)**                          | Comma-separated list of DNS name server IP addresses.       |
+|---------------------------|-----------------------------------------|
+| **IP Start range** | Enter the first address in the EC IP pool range.           |
+| **IP End range** | Enter the last address in the EC IP pool range.            |
+| **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
+| **Gateway IP Address** | Enter the IP address of the static IP gateway.              |
+| **Name server(s)** | Comma-separated list of DNS name server IP addresses.       |
 | **Name server search suffixes**  | An optional comma-separated list of DNS search domains. |
 
 <br />
@@ -171,36 +170,33 @@ Upon completion, a new EC configuration file is generated and its location is di
 <br />
 
 ```bash
-==== EC config saved EEEE
+==== Enterprise Cluster config saved ====
 Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
 
 <br />
 
-Installation details are also displayed in the terminal, including default username and password.
+When the installation is complete, Enterprise Cluster Details are displayed in the terminal: A URL and default credentials to access the Palette VerteX system console.
 
 <br />
 
 ```bash
-log. InfoCLI("====================================")
-log. InfoCLI("==== Enterprise Cluster Details ====")
-log. InfoCLI("====================================")
-log. InfoCLI("Console URL: %s://%s/system", apiServerURL.Scheme, apiServerURL.Hostname())
-log. InfoCLI("Username: admin")
-log. InfoCLI("Password: admin")
+====================================
+==== Enterprise Cluster Details ====
+====================================
+Console URL: https://10.10.189.100/system
+Username: admin
+Password: admin
 ```
 
-<!-- The installer prompts you to reset the username and password and provides a URL to access the Palette VerteX System Console. -->
 
-The installer provides a URL to access the Palette VerteX System Console.
-
-9.  Click the URL to access the System Console. The default credentials are ``admin / admin``. Reset the password in the System Console. 
+9.  Click the URL to access the System Console.  
 
 
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console)
 
 
-10. Upon logging in, a Click the Go to Tenant Management button.
+10. Upon logging in, click the **Go to Tenant Management** button.
 
 
 ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management)
