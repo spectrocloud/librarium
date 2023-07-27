@@ -209,7 +209,29 @@ Password: admin
 
 # Validate
 
-1. Use Enterprise Cluster Details provided at the completion of the installatation. 
+You can verify the installation is successful if you can access the system console using the IP address provided in Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
+
+You can validate that a three-node Kubernetes cluster is launched and Palette VerteX is deployed on it.
+
+1. Log in to the vCenter Server using vSphere Client.
+
+
+2. Navigate to the Datacenter and locate your VM instance. Click on the VM to access its details page.
+
+
+3. Power on the VM instance if it is not already on.
+
+
+4. Click **View all 6 IP Addresses** to display a pop-up box that presents three IPv4 addresses and three equivalent IPv6 addresses.
+
+<!-- 1. Use the IP address provided in Enterprise Cluster Details at the completion of the installatation to access the system console.
+
+
+2. Log in using the default credentials, and click the **Go to Tenant Management** button.
+
+
+OR -->
+
 
 <!-- 1. Connect to the system console as a tenant admin. 
 
@@ -217,11 +239,11 @@ Password: admin
 2. Access the tenant, and navigate to the left **Main Menu** and select **Clusters**. 
 
 
-3. On the cluster Overview page, verify the cluster health status. While the cluster is being deployed, the **Cluster Status** field displays **Provisioning**. When provisioning is complete, ensure cluster status displays **Running**. -->
+3. On the cluster Overview page, verify the cluster health status. While the cluster is being deployed, the **Cluster Status** field displays **Provisioning**. When provisioning is complete, ensure cluster status displays **Running**. --> -->
 
 # Next Steps
 
-Once the tenant is created, you can configure authentication types in tenant settings and create users and teams.
+After you create the tenant, you are ready to configure authentication types in tenant settings and create users and teams.
 
 
 # Resources
