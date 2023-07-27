@@ -211,7 +211,13 @@ Password: admin
 ```
 
 
-15.  Click the URL to access the System Console. You will be prompted to reset the password. 
+15.  Command-click the URL if you are on a Mac or copy it to a browser to access the System Console. You will be prompted to reset the password.
+
+<InfoBox>
+
+  The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can safely ignore this warning message. Either click on **Advanced** and then click on **Proceed to <your domain name>**. Or type `thisisunsafe` anywhere on the page and click on **Continue to <your domain name>**.
+
+  </InfoBox> 
 
 
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
