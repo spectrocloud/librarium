@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Private Cloud Gateway (PCG)
 
-You may encounter one of the following scenarios when deploying and using a Private Cloud Gateway in your data center. Some of the scenarios below apply to any data center, whereas others apply to specific data centers, such as VMware. Each scenario covers a specific problem, including an overview of the issue and its possible causes, followed by a detailed set of debug steps to help identify and resolve the underlying problem.  
+When deploying and using a Private Cloud Gateway in your computing environment, you may encounter one of the following scenarios. Some of the scenarios below apply to all compute environments, whereas others apply to specific self-hosted environments, such as VMware. Each scenario covers a specific problem, including an overview of the issue and its possible causes, followed by a detailed set of debug steps to help identify and resolve the underlying problem.  
 
 <br />
 
@@ -129,7 +129,7 @@ While these are the most common errors, some other issues might be related to th
 
 # Scenario - IP Address Not Assigned During PCG Creation
 
-When deploying a PCG in VMware vCenter, the IP address fails to get assigned to the new node. This can be caused by networking errors such as DHCP issues or improper execution of cloud-init.
+When deploying a PCG in VMware vCenter, the IP address fails to get assigned to the new node. This can be caused by networking errors such as DHCP issues or an incomplete cloud-init.
 <br />
 
 ## Debug Steps
@@ -144,9 +144,9 @@ When deploying a PCG in VMware vCenter, the IP address fails to get assigned to 
 3. Review the cloud-init logs on the new node for any errors or warnings related to the IP address assignment process.
 <br />
 
-# Scenario - Cluster Provisioning Failure: "No Route to Host" to Kube API Server
+# Scenario -Missing Network Route to Kube API Server
 
-While provisioning a cluster, the event shows `no route to host` to the Kube API Server. This issue can occur due to improper networking configuration, errors in the cloud-init logs on the newly created VM, or sys logs indicating errors in the newly created VM.
+While provisioning a cluster, you may encounter an event log message stating `no route to host`.  This indicates an issue when the PCG cluster nodes are attempting to connect to the Kube API Server. This issue can occur due to improper networking configuration, or errors in the cloud-init process in the newly created VM. Use the following steps to resolve the route error.
 <br />
 
 ## Debug Steps
