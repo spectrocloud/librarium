@@ -46,11 +46,11 @@ You can invoke the Palette CLI on any Linux x86-64 system with the docker daemon
 
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
 
-  - SSL certificate file in base64 format.
+  - x509 SSL certificate file in base64 format.
 
-  - SSL certificate key file in base64 format.
+  - x509 SSL certificate key file in base64 format.
 
-  - SSL certificate authority file in base64 format. This file is optional.
+  - x509 SSL certificate authority file in base64 format. This file is optional.
 
 
 You can provide an optional SSH key pair to access the cluster remotely for maintenance and troubleshooting.
