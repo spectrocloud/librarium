@@ -28,6 +28,11 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 - Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette VerteX. We recommend using a role with cluster-admin permissions to install Palette VerteX.
 
 
+
+- The Kubernetes cluster must be using Kubernetes version 1.25 or greater.
+
+
+
 - [Helm](https://helm.sh/docs/intro/install/) is installed and available.
 
 
@@ -117,7 +122,15 @@ The following instructions are written agnostic to the Kubernetes distribution y
     | `mongo.password` | A base64 encoded password for the MongoDB database. | string |
     | `env.rootDomain` | The the domain name you will use for the Palette VerteX installation. | string |
     | `ociRegistry` | The OCI registry credentials for Palette VerteX images. Use the parameter `ociEcrRegistry` if deploying Palette VerteX in an AWS environment. These credentials are provided by our support team.| object |
-    | `scar` | The SCAR credentials for Palette VerteX images. These credentials are provided by our support team. | object |
+    | `scar` | The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
+
+    <br />
+
+    <InfoBox>
+    
+    You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page.
+
+    </InfoBox>
 
 
 
@@ -154,7 +167,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
   <InfoBox>
 
-  The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can safely ignore this warning message.
+  The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
 
   </InfoBox>
 
@@ -172,6 +185,8 @@ You now have a self-hosted instance of Palette VerteX installed in a Kubernetes 
 # Validate
 
 Use the following steps to validate the Palette VerteX installation.
+
+<br />
 
 
 1. Open up a web browser and navigate to the Palette VerteX system console. To access the system console, open a web browser and paste the following URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. 
@@ -220,3 +235,13 @@ Use the following steps to validate the Palette VerteX installation.
 
 
 # Next Steps
+
+You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by enabling HTTPS for your Palette VerteX environment. You can also create the first tenant to host your users. Use the following links to learn more:
+
+<br />
+
+
+- [SSL Certificate Management](/vertex/system-management/ssl-certificate-management)
+
+
+- [Create a Tenant](/vertex/system-management/tenant-management#createatenant)
