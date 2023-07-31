@@ -38,11 +38,11 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
 - The Kubernetes cluster must have the following minimum resources:
 
-    - 4 CPUs per node.
+    - 8 CPUs per node.
 
-    - 12 GB Memory per node.
+    - 16 GB Memory per node.
 
-    - 100 GB Disk Space per node.
+    - 120 GB Disk Space per node.
     
     - A Container Storage Interface (CSI) for persistent data.
 
@@ -176,7 +176,10 @@ The following instructions are written agnostic to the Kubernetes distribution y
   ![A view of the Palette System Console login screen.](/vertex_install-on-kubernetes_install_system-console.png)
 
 
-8. Log in to the system console using the provided credentials you received from our support team. After login in, you will be prompted to create a new password. Enter a new password and save yor changes. You will be redirected to the Palette VerteX system console.
+8. Log in to the system console using the provided credentials you received from our support team. After login in, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+
+
+9. Configure HTTPS encryption for Palette VerteX. To configure HTTPS encryption, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
 
 
 You now have a self-hosted instance of Palette VerteX installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
