@@ -66,7 +66,7 @@ To complete this guide, you will need the following items:
 * You must have completed the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to build the provider images and create a cluster profile referencing one of the provider images. 
 
 
-* A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with the Palette. Refer to the [User Authentication](https://docs.spectrocloud.com/user-management/user-authentication/#apikey) guide to create a new API key. 
+* A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with Palette. Refer to the [User Authentication](https://docs.spectrocloud.com/user-management/user-authentication/#apikey) guide to create a new API key. 
 
 
 # Instructions
@@ -133,7 +133,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 
 
 
-6. Set the Spectro Cloud API key as an environment variable by issuing the following command. Replace the `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate itself when interacting with the Spectro Cloud API. Once authenticated, the Palette Edge CLI can interact with your Palette account.
+6. Set the Spectro Cloud API key as an environment variable by issuing the following command. Replace the `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate with Palette. Once authenticated, the Palette Edge CLI can interact with your Palette account.
 <br />
 
   ```bash
@@ -144,7 +144,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 7. Log in to [Palette](https://console.spectrocloud.com).
 
 
-8. Copy the Palette project ID to use later in this guide. The project ID is on the top-right corner of your Palette project overview page. For example, the screenshot below highlights a project ID.
+8. Copy your Palette project ID.  You will use this ID in a later step. The project ID is on the top-right corner of your Palette project overview page. Use the following screenshot to help you find your project ID.
 
   ![A screenshot highlighting the project ID in Palette project overview page](/clusters_edge_edge-forge-workflow_build-images_build-project_id.png)
 
@@ -152,7 +152,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 9. Navigate to the left **Main Menu** and select **Profiles**. 
 
 
-10. Click on the specific cluster profile to view its details. 
+10. Select the cluster profile you want to include in the content bundle. Click on the target cluster profile to access its details page.
 
 
 11. Examine the cluster details page URL. The cluster details page URL follows the `[Palette-URL]/projects/[PROJECT-ID]/profiles/cluster/[CLUSTER-PROFILE-ID]` syntax. The cluster details page URL has your project ID and the cluster profile ID. For example, the screenshot below highlights the project ID and the cluster profile ID in a cluster details page URL. 
@@ -180,7 +180,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   ```
 
 
-15. Use the command below to create the content bundle. The command uses the following flags:
+15. Issue the command below to create the content bundle. The `build` command uses the following flags:
 
   |**Command Flag**|**Value**|
   |---|---|
@@ -214,7 +214,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 <br />
 
   ```bash
-  ls -l content-[randon-string]
+  ls -la content-*/
   ```
   ```bash hideClipboard
   # Sample output   
@@ -224,7 +224,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   ```
 
 
-18. Issue the following command to execute the **earthly.sh** script with elevated privileges. The `+iso` option specifies the build target. This command will generate an ISO image from the content bundle and other configurations you have specified in the **.arg** and **user-data** files. 
+18. Issue the following command to build the Edge artifacts with your content bundle. The `+iso` option specifies the build target. This command will generate an ISO image from the content bundle and other configurations you have specified in the **.arg** and **user-data** files. 
 <br />
 
   ```bash
@@ -255,13 +255,19 @@ To validate, you can prepare an edge device using the Edge installer ISO by foll
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive will validate the ISO image.
 
 
-2. Select a physical or virtual host machine to emulate as an edge device. Enable (Dynamic Host Configuration Protocol) DHCP on the edge device before proceeding with the installation process. Enabling DHCP is necessary for the device to obtain an IP address automatically from the network. 
+2. Select a physical or virtual host machine to emulate as an edge device. Enable (Dynamic Host Configuration Protocol) DHCP on the host before proceeding with the installation process. Enabling DHCP is necessary for the device to obtain an IP address automatically from the network. 
 
 
 3. Flash the edge device with a bootable USB drive. 
 
 
-Finally, you must deploy an Edge cluster to test the edge device you prepare using the Edge installer ISO. 
+The last step is to power the edge device and start the installation process. For more information, refer to the [Perform Site Install](/clusters/edge/site-deployment/site-installation) documentation.
+
+<InfoBox>
+
+We recommend you check out the end-to-end tutorial [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) for a detailed walkthrough on deploying an Edge environment using VMware to simulate bare metal hosts. You can use your VMware environment to validate the Edge artifacts and that you have all the required dependencies included in your content bundle. 
+
+</InfoBox>
 
 
 # Next Steps
