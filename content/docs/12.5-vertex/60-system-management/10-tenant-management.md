@@ -52,6 +52,7 @@ You can create a tenant in Palette VerteX by following these steps.
   ![View of a tenant activation option](/vertex_system-management_tenant-management_activate-tenant.png)
 
 <br />
+
 7. A pop-up box will present you with an activation URL. Copy the URL and paste it into your browser to activate the tenant.
 
 

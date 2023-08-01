@@ -31,15 +31,15 @@ As shown in the screenshots below, FIPS status icons are displayed next to packs
  
 <!-- For example, in the wizard used to build a profile, in the cluster profile stack, on the **Profiles** page, the **Clusters Overview** page.  -->
 
-![Diagram showing FIPS-compliant icons in profile stack.](/vertex_system-management_enable-non-fips-settings_icons-in-profile-stack.png)
+![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png)
 
 <br />
 
-![Diagram showing FIPS status icons on profile page.](/vertex_system-management_enable-non-fips-settings_icons-on-profile-page.png)
+![Diagram showing FIPS status icons on profile page.](/vertex_fips-status-icons_icons-on-profile-page.png)
 
 <br />
 
-![Diagram showing FIPS status icons on Cluster Overview page.](/vertex_system-management_enable-non-fips-settings_icons-in-cluster-overview.png)
+![Diagram showing FIPS status icons on Cluster Overview page.](/vertex_fips-status-icons_icons-in-cluster-overview.png)
 
 <br />
 

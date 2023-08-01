@@ -29,7 +29,7 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
 The screenshot shows the FIPS-compliant icon used to indicate full FIPS compliance next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
 
-![Diagram showing FIPS-compliant icons in profile stack.](/vertex_system-management_enable-non-fips-settings_icons-in-profile-stack.png) 
+![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png) 
 
 You can allow tenant users to customize their cluster profiles by using add-on packs, which *may not* be FIPS-compliant. Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security, monitoring, logging, and more.
 
