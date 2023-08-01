@@ -1,6 +1,6 @@
 ---
-title: "VMware Cloud Account Permissions and Role Privileges"
-metaTitle: "VMware Cloud Account Permissions and Role Privileges"
+title: "VMware System Requirements"
+metaTitle: "VMware System Requirements"
 metaDescription: "Review VMware system requirements."
 icon: ""
 hideToC: false
