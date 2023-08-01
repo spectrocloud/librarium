@@ -192,9 +192,11 @@ The size of the Tenant Cluster, in terms of the number or size of the nodes, doe
 
 # VMware Cloud Account Permissions
 
-The vSphere user account that deploys Palette must have the minimum toot-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
+The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
 
 Select the tab for your vSphere version.
+
+<br />
 
 <WarningBox>
 
@@ -202,13 +204,15 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 </WarningBox>
 
+<br />
+
 <Tabs>
 
 <Tabs.TabPane tab="8.0.x" key="8.0.x">
 
 ## Root-Level Role Privileges
 
-Root-level role privileges are applied to root object and Data center objects only.
+Root-level role privileges are only applied to root objects and Data center objects.
 
 | **vSphere Object** | **Privilege**                           |
 |--------------------|-----------------------------------------|
@@ -224,15 +228,15 @@ Root-level role privileges are applied to root object and Data center objects on
 
 ## Spectro Role Privileges
 
-ORIGINAL: The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects.
+Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
+
+<br />
 
 <InfoBox>
 
-Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes. 
 
 </InfoBox>
-
-GENERAL: Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
 
 <br />
 
@@ -276,7 +280,7 @@ The following table lists Spectro Cloud role privileges for VMs by category.
 
 ## Root-Level Role Privileges
 
-Root-level role privileges are applied to root object and Data center objects only.
+Root-level role privileges are only applied to root objects and Data center objects.
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
@@ -292,7 +296,7 @@ Root-level role privileges are applied to root object and Data center objects on
 
 ## Spectro Role Privileges
 
-ORIGINAL: The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects.
+Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
 
 <InfoBox>
 
@@ -300,25 +304,29 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 </InfoBox>
 
-GENERAL: Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
+<br />
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
 | CNS               | Searchable                                  |
 | Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
 | Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations<br />Reconfigure VM        |
-| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| Host              | Local operations: Reconfigure VM        |
 | Network           | Assign network                              |
 | Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
-| Profile-driven storage | View                                   |
+| Profile-driven storage | Profile-driven storage view            |
 | Sessions          | Validate session                            |
 | spectro-templates | Read only                                   |
 | Storage views     | Configure service<br />View                 |
 | Tasks             | Create task<br />Update task                |
-| vApp              | Export<br />Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+| vApp              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
+<InfoBox>
 
+For Network privileges, if the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+
+</InfoBox>
 
 The following table lists Spectro Cloud role privileges for VMs by category.
 
@@ -343,7 +351,7 @@ The following table lists Spectro Cloud role privileges for VMs by category.
 
 ## Root-Level Role Privileges
 
-Root-level role privileges are applied to root object and Data center objects only.
+Root-level role privileges are only applied to root objects and Data center objects.
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
@@ -359,7 +367,7 @@ Root-level role privileges are applied to root object and Data center objects on
 
 ## Spectro Role Privileges
 
-ORIGINAL: The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects.
+Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
 
 <InfoBox>
 
@@ -367,25 +375,33 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 </InfoBox>
 
-GENERAL: Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
+<br .>
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
 | CNS               | Searchable                                  |
 | Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
 | Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations<br />Reconfigure VM        |
-| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| Host              | Local operations: Reconfigure VM            |
 | Network           | Assign network                              |
 | Profile-driven storage | Profile-driven storage view            |
 | Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
 | Sessions          | Validate session                            |
 | spectro-templates | Read only                                   |
-| Storage views     | Configure service<br />View                 |
+| Storage views     | View                                        |
 | Tasks             | Create task<br />Update task                |
-| vApp              | Export<br />Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+| vApp              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
+<br >
 
+<InfoBox>
+
+For Network privileges, if the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” needs to be provided.
+
+</InfoBox>
+
+<br />
 
 The following table lists Spectro Cloud role privileges for VMs by category.
 
