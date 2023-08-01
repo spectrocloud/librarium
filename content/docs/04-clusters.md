@@ -269,6 +269,7 @@ This table lists the proxy requirements for enabling the Palette management cons
 | quay.io                   | 443  | Container image registry access.            |
 | grafana.com               | 443  | To provide access to the dashboard metrics. |
 | github.com                | 443  |                                             |
+| ghcr.io                   | 443  |                                             |
 
 # Scope
 
