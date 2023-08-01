@@ -27,9 +27,20 @@ The icons shown below indicate FIPS compliance status.
 | ![Not FIPS-compliant](/vertex_fips-status-icons_not-compliant.png) | Not FIPS-compliant. None of the packs in the cluster are FIPS compliant.| 
 |![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. |
 
-Icons are displayed next to packs in the cluster profile and on the Clusters page and on the Cluster Details page to indicate when a cluster has been deployed from VerteX or imported. 
+As shown in the screenshots below, FIPS status icons are displayed next to packs throughout Palette VerteX. 
+ 
+<!-- For example, in the wizard used to build a profile, in the cluster profile stack, on the **Profiles** page, the **Clusters Overview** page.  -->
 
-<<<< SCREENSHOT PLACEHOLDER >>>>
+![Diagram showing FIPS-compliant icons in profile stack.](/vertex_system-management_enable-non-fips-settings_icons-in-profile-stack.png)
+
+<br />
+
+![Diagram showing FIPS status icons on profile page.](/vertex_system-management_enable-non-fips-settings_icons-on-profile-page.png)
+
+<br />
+
+![Diagram showing FIPS status icons on Cluster Overview page.](/vertex_system-management_enable-non-fips-settings_icons-in-cluster-overview.png)
+
 <br />
 
 <br />
