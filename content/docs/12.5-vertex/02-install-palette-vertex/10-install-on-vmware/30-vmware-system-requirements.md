@@ -18,8 +18,8 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Self-hosted Palette is available in the following modes:
 
-| Self-Hosted Modes      | Description                    |
-|------------------------|------------------------------------------|
+| **Self-Hosted Modes**  | **Description**                    |
+|------------------------|------------------------------------|
 | VMware Enterprise Mode | A multi-node, highly available version for production purposes. |
 | Helm Chart Mode        | Install Palette in an existing Kubernetes cluster using a Helm Chart. |
 
@@ -80,12 +80,12 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
   
 For example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of vSphere Object, Tag Category, and Tag value as shown in the table.
 
-| vSphere Object | Tag Category | Tag Value |
-|---------------|--------------|-----------|
-| dc-1          | k8s-region   | region1   |
-| cluster-1     | k8s-zone     | az1       |
-| cluster-2     | k8s-zone     | az2       |
-| cluster-3     | k8s-zone     | az3       |
+| **vSphere Object** | **Tag Category** | **Tag Value** |
+|--------------------|------------------|---------------|
+| dc-1               | k8s-region       | region1       |
+| cluster-1          | k8s-zone         | az1           |
+| cluster-2          | k8s-zone         | az2           |
+| cluster-3          | k8s-zone         | az3           |
 
 
 
@@ -140,19 +140,19 @@ Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCID
 
 - Allow connectivity to domains and ports in the table.
 
-| Top-Level Domain            | Port | Description                                     |
-|----------------------------|------|-------------------------------------------------|
-| spectrocloud.com            | 443  | Spectro Cloud content repository and pack registry |
-| s3.amazonaws.com            | 443  | Spectro Cloud VMware OVA files                  |
-| gcr.io                     | 443  | Spectro Cloud and common third party container images |
-| docker.io                  | 443  | Common third party content                       |
-| googleapis.com             | 443  | For pulling Spectro Cloud images                 |
-| docker.com                 | 443  | Common third party container images              |
-| raw.githubusercontent.com  | 443  | Common third party content                       |
-| projectcalico.org          | 443  | Calico container images                          |
-| quay.io                    | 443  | Common 3rd party container images                |
-| grafana.com                | 443  | Grafana container images and manifests           |
-| github.com                 | 443  | Common third party content                       |
+| **Top-Level Domain**       | **Port** | **Description**                                 |
+|----------------------------|----------|-------------------------------------------------|
+| spectrocloud.com           | 443      | Spectro Cloud content repository and pack registry |
+| s3.amazonaws.com           | 443      | Spectro Cloud VMware OVA files                  |
+| gcr.io                     | 443      | Spectro Cloud and common third party container images |
+| docker.io                  | 443      | Common third party content                       |
+| googleapis.com             | 443      | For pulling Spectro Cloud images                 |
+| docker.com                 | 443      | Common third party container images              |
+| raw.githubusercontent.com  | 443      | Common third party content                       |
+| projectcalico.org          | 443      | Calico container images                          |
+| quay.io                    | 443      | Common 3rd party container images                |
+| grafana.com                | 443      | Grafana container images and manifests           |
+| github.com                 | 443      | Common third party content                       |
 
 
 # Hardware Requirements
@@ -168,39 +168,45 @@ This section lists hardware requirements for Palette Platform VMs for various ca
 
 The size of the Tenant Cluster, in terms of the number or size of the nodes, does not impact the capacity guidance in the tables below.
 
-| Configuration Name | Concurrent Cluster<br />Launch Limit | Max Nodes | CPUs | Memory | Storage | MongoDB Limit      |
+| **Configuration Name** | **Concurrent Cluster<br />Launch Limit** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      |
 |--------------------|------------------------|-----------|------|--------|---------|--------------------|
-| Small             | 4                       | 1000      | 4    | 8 GB    | 60 GB    | 20 GB, 1 CPU, 2 GB Memory   |
-| Medium (default)  | 8                       | 3000      | 8    | 16 GB   | 120 GB   | 60 GB, 2 CPU, 4 GB Memory   |
-| Large             | 12                      | 5000      | 12   | 32 GB   | 150 GB   | 80 GB, 2 CPU, 5 GB Memory   |
+| Small             | 4                       | 1000      | 4    | 8 GB    | 60 GB    | 20 GB, 1 CPU, 2 GB Memory    |
+| Medium (default)  | 8                       | 3000      | 8    | 16 GB   | 120 GB   | 60 GB, 2 CPU, 4 GB Memory    |
+| Large             | 12                      | 5000      | 12   | 32 GB   | 150 GB   | 80 GB, 2 CPU, 5 GB Memory    |
 
 
 #### Instance Sizing
 
-| Configuration       | Running Workload Limit                    |
-|---------------------|------------------------------------------|
+| **Configuration**       | **Running Workload Limit**                    |
+|---------------------|---------------------------------------------------|
 | Small               | Up to 1000 Nodes each with 30 Pods (30,000)       |
 | Medium (default)    | Up to 3000 Nodes each with 30 Pods (90,000 pods)  |
 | Large               | Up to 5000 Nodes each with 30 Pods (150,000)      |
 
 #### Enterprise Configuration
 
-| Size   | Concurrent<br />Tenant Clusters | Total<br />Managed Clusters | VMs | Memory | CPUs | Storage |
+| **Size**   | **Concurrent<br />Tenant Clusters** | **Total<br />Managed Clusters** | **VMs** | **Memory** | **CPUs** | **Storage** |
 |--------|----------------------------|-----------------------|-----|--------|-----------|---------|
 | Medium | 8                          | 500                   | 3   | 16 GB  | 8 Virtual CPUs | 120 GB  |
 
 
 # VMware Cloud Account Permissions
 
-The vSphere user account used in the various Palette tasks must have the minimum vSphere
-privileges required to perform the task. The Administrator role provides super-user access to
-all vSphere objects. For users without the Administrator role, based on the tasks being
-performed by the user.
+The vSphere user account that deploys Palette must have the minimum toot-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
 
-If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),
-ReadOnly access to the VDS without “Propagate to children” must be provided.
+Select the tab for your vSphere version.
 
-## Privileges Under Root-Level Role
+<WarningBox>
+
+If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” is required.
+
+</WarningBox>
+
+<Tabs>
+
+<Tabs.TabPane tab="8.0.x" key="8.0.x">
+
+## Root-Level Role Privileges
 
 Root-level role privileges are applied to root object and Data center objects only.
 
@@ -216,30 +222,35 @@ Root-level role privileges are applied to root object and Data center objects on
 | Storage views      | View                                    |
 
 
-## Privileges Under the Spectro Cloud Role
+## Spectro Role Privileges
 
-Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
+ORIGINAL: The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects.
+
+<InfoBox>
+
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
+
+</InfoBox>
+
+GENERAL: Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
 
 <br />
-
-<Tabs>
-
-<Tabs.TabPane tab="8.0.x" key="8.0.x">
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
 | CNS               | Searchable                                  |
-| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata         |
-| Folder            | Create vSphere Tag<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations<br />Reconfigure VM        |
-| vSphere Tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                         |
+| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
+| Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
+| Host              | Local operations: Reconfigure VM        |
 | Network           | Assign network                              |
-| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion              |
+| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
 | Sessions          | Validate sessions                           |
+| Storage policies  | View access for VM storage policies is required. Ensure ``StorageProfile.View`` is available. |
 | spectro-templates | Read only                                   |
-| Storage views     | Configure service<br />View                 |
+| Storage views     | View                 |
 | Tasks             | Create task<br />Update task                |
-| vApp              | Export<br />Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance                          |
+| vApp              | Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance |
+| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
 
 The following table lists Spectro Cloud role privileges for VMs by category.
@@ -250,13 +261,12 @@ The following table lists Spectro Cloud role privileges for VMs by category.
 |                   | Edit Inventory       | Create from existing<br />Create new<br />Move<br />Register<br />Remove<br />Unregister     |
 |                   | Guest Operations     | Alias modification<br />Alias query<br />Modify guest operations<br />Invoke programs<br />Queries |
 |                   | Interaction          | Console Interaction<br />Power on/off |
-|                   | Provisioning         | Allow disk access<br />Allow file access<br />Allow read-only disk access<br />Allow VM download<br />Allow VM files upload<br />Clone template<br />Clone VM<br />Create template from VM<br />Customize guest<br />Deploy template<br />Mark as template<br />Modify customization specification<br />Promote disks<br />Read customization specifications |
-|                   | Service Configuration| Allow notifications<br />Allow polling of global event notifications<br />Manage servcie configurations<br />Modify service configuration<br />Query service configurations<br />Read service configuration |
-|                   | Snapshot Management  | Create snapshot<br />Remove snapshot<br />Rename snapshot<br />Revert snapshot |
-|                   | vSphere Replication  | Configure replicaiton<br />Manage replication<br />Monitor replication |
-|                    | vSAN  | Cluster<br />ShallowRedey |
+|                   | Provisioning         | Allow disk access<br />Allow file access<br />Allow read-only disk access<br />Allow VM download<br />Allow VM files upload<br />Clone template<br />Clone VM<br />Create template from VM<br />Customize guest<br />Deploy template<br />Mark as template<br />Mark as VM<br />Modify customization specification<br />Promote disks<br />Read customization specifications |
+|                   | Service Configuration| Allow notifications<br />Allow polling of global event notifications<br />Manage service configurations<br />Modify service configurations<br />Query service configurations<br />Read service configurations |
+|                   | Snapshot Management  | Create snapshot<br />Remove snapshot<br />Rename snapshot<br />Revert to snapshot |
+|                   | vSphere Replication  | Configure replication<br />Manage replication<br />Monitor replication |
+|                   | vSAN  | Cluster: ShallowRekey |
  
-
 </Tabs.TabPane>
 
 
@@ -264,55 +274,132 @@ The following table lists Spectro Cloud role privileges for VMs by category.
 
 <Tabs.TabPane tab="7.0.x" key="7.0.x">
 
+## Root-Level Role Privileges
+
+Root-level role privileges are applied to root object and Data center objects only.
+
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
 | CNS               | Searchable                                  |
-| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata         |
-| Folder            | Create vSphere Tag<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations<br />Reconfigure VM        |
-| vSphere Tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                         |
+| Datastore         | Browse datastore                            |
+| Host              | Configuration<br />Storage partition configuration|
+| vSphere tagging   | Create vSphere Tag<br />Edit vSphere Tag    |
 | Network           | Assign network                              |
-| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion              |
-| Sessions          | Validate sessions                           |
+| Profile-driven storage | View                                   |        
+| Sessions          | Validate session                            |
+| Storage views     | View                                        |
+
+
+## Spectro Role Privileges
+
+ORIGINAL: The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects.
+
+<InfoBox>
+
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
+
+</InfoBox>
+
+GENERAL: Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
+
+| **vSphere Object**| **Privileges**                              |
+|-------------------|---------------------------------------------|
+| CNS               | Searchable                                  |
+| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
+| Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
+| Host              | Local operations<br />Reconfigure VM        |
+| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| Network           | Assign network                              |
+| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
+| Profile-driven storage | View                                   |
+| Sessions          | Validate session                            |
 | spectro-templates | Read only                                   |
 | Storage views     | Configure service<br />View                 |
 | Tasks             | Create task<br />Update task                |
-| vApp              | Export<br />Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance                          |
+| vApp              | Export<br />Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+
 
 
 The following table lists Spectro Cloud role privileges for VMs by category.
 
 | **vSphere Object**| **Category**         | **Privileges**     |
 |-------------------|----------------------|--------------------|
-| Virtual Machines  | Change Configuration | Acquire disk lease<br />Add existing disk<br />Add new disk<br />Add or remove device<br />Advanced configuration<br />Change CPU count<br />Change memory<br />Change settings<br />Change swapfile placement<br />Change resource<br />Change host USB device<br />Configure raw device<br />Configure managedBy<br />Display connection settings<br />Extend virtual disk<br />Modify device settings<br />Query fault tolerance compatibity<br />Query unowned files<br />Reload from path<br />Remove disk<br />Rename<br />Reset guest information<br />Set annotation<br />Toggle disk change tracking<br />Toggle fork parent<br />Upgrade VM compatibility|
+| Virtual Machines  | Change Configuration | Acquire disk lease<br />Add existing disk<br />Add new disk<br />Add or remove device<br />Advanced configuration<br />Change CPU count<br />Change memory<br />Change Settings<br />Change Swapfile placement<br />Change resource<br />Change host USB device<br />Configure Raw device<br />Configure managedBy<br />Display connection settings<br />Extend virtual disk<br />Modify device settings<br />Query fault tolerance compatibity<br />Query unowned files<br />Reload from path<br />Remove disk<br />Rename<br />Reset guest information<br />Set annotation<br />Toggle disk change tracking<br />Toggle fork parent<br />Upgrade VM compatibility|
 |                   | Edit Inventory       | Create from existing<br />Create new<br />Move<br />Register<br />Remove<br />Unregister     |
-|                   | Guest Operations     | Alias modification<br />Alias query<br />Modify guest operations<br />Invoke programs<br />Queries |
+|                   | Guest Operations     | Alias modification<br />Alias query<br />Modify guest operations<br />Invoke programs<br />Query guest operations |
 |                   | Interaction          | Console Interaction<br />Power on/off |
-|                   | Provisioning         | Allow disk access<br />Allow file access<br />Allow read-only disk access<br />Allow VM download<br />Allow VM files upload<br />Clone template<br />Clone VM<br />Create template from VM<br />Customize guest<br />Deploy template<br />Mark as template<br />Modify customization specification<br />Promote disks<br />Read customization specifications |
-|                   | Service Configuration| Allow notifications<br />Allow polling of global event notifications<br />Manage servcie configurations<br />Modify service configuration<br />Query service configurations<br />Read service configuration |
-|                   | Snapshot Management  | Create snapshot<br />Remove snapshot<br />Rename snapshot<br />Revert snapshot |
-|                   | vSphere Replication  | Configure replicaiton<br />Manage replication<br />Monitor replication |
-|                    | vSAN  | Cluster<br />ShallowRedey |
+|                   | Provisioning         | Allow disk access<br />Allow file access<br />Allow read-only disk access<br />Allow VM download<br />Allow VM upload<br />Clone template<br />Clone VM<br />Create template from VM<br />Customize guest<br />Deploy template<br />Mark as template<br />Modify customization specifications<br />Promote disks<br />Read customization specifications |
+|                   | Service Configuration| Allow notifications<br />Allow polling of global event notifications<br />Manage service configurations<br />Modify service configurations<br />Query service configurations<br />Read service configurations |
+|                   | Snapshot Management  | Create snapshot<br />Remove snapshot<br />Rename snapshot<br />Revert to snapshot |
+|                   | vSphere Replication  | Configure replication<br />Manage replication<br />Monitor replication |
+|                    | vSAN  | Cluster<br />ShallowRekey |
+
 
 </Tabs.TabPane>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <Tabs.TabPane tab="6.0.x" key="6.0.x">
 
-Text
+## Root-Level Role Privileges
+
+Root-level role privileges are applied to root object and Data center objects only.
+
+| **vSphere Object**| **Privileges**                              |
+|-------------------|---------------------------------------------|
+| CNS               | Searchable                                  |
+| Datastore         | Browse datastore                            |
+| Host              | Configuration<br />Storage partition configuration|
+| vSphere tagging   | Create vSphere Tag<br />Edit vSphere Tag    |
+| Network           | Assign network                              | 
+| Profile-driven storage | Profile-driven storage view            |       
+| Sessions          | Validate session                            |
+| Storage views     | View                                        |
+
+
+## Spectro Role Privileges
+
+ORIGINAL: The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects.
+
+<InfoBox>
+
+Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
+
+</InfoBox>
+
+GENERAL: Spectro Cloud role privileges are applied to vSphere objects listed in the tables. Role privileges are for VMs are listed in a separate by category.
+
+| **vSphere Object**| **Privileges**                              |
+|-------------------|---------------------------------------------|
+| CNS               | Searchable                                  |
+| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
+| Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
+| Host              | Local operations<br />Reconfigure VM        |
+| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| Network           | Assign network                              |
+| Profile-driven storage | Profile-driven storage view            |
+| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
+| Sessions          | Validate session                            |
+| spectro-templates | Read only                                   |
+| Storage views     | Configure service<br />View                 |
+| Tasks             | Create task<br />Update task                |
+| vApp              | Export<br />Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+
+
+
+The following table lists Spectro Cloud role privileges for VMs by category.
+
+| **vSphere Object**| **Category**         | **Privileges**     |
+|-------------------|----------------------|--------------------|
+| Virtual Machines  | Change Configuration | Acquire disk lease<br />Add existing disk<br />Add new disk<br />Add or remove device<br />Advanced configuration<br />Change CPU count<br />Change memory<br />Change Settings<br />Change Swapfile placement<br />Change resource<br />Change host USB device<br />Configure Raw device<br />Configure managedBy<br />Display connection settings<br />Extend virtual disk<br />Modify device settings<br />Query fault tolerance compatibity<br />Query unowned files<br />Reload from path<br />Remove disk<br />Rename<br />Reset guest information<br />Set annotation<br />Toggle disk change tracking<br />Toggle fork parent<br />Upgrade VM compatibility|
+|                   | Edit Inventory       | Create from existing<br />Create new<br />Move<br />Register<br />Remove<br />Unregister     |
+|                   | Guest Operations     | Alias modification<br />Alias query<br />Modify guest operations<br />Invoke programs<br />Query guest operations |
+|                   | Interaction          | Console Interaction<br />Power on/off |
+|                   | Provisioning         | Allow disk access<br />Allow file access<br />Allow read-only disk access<br />Allow VM download<br />Allow VM upload<br />Clone template<br />Clone VM<br />Create template from VM<br />Customize guest<br />Deploy template<br />Mark as template<br />Modify customization specifications<br />Promote disks<br />Read customization specifications |
+|                   | Service Configuration| Allow notifications<br />Allow polling of global event notifications<br />Manage service configurations<br />Modify service configurations<br />Query service configurations<br />Read service configurations |
+|                   | Snapshot Management  | Create snapshot<br />Remove snapshot<br />Rename snapshot<br />Revert to snapshot |
+|                   | vSphere Replication  | Configure replication<br />Manage replication<br />Monitor replication |
+|                    | vSAN  | Cluster<br />ShallowRekey |
 
 </Tabs.TabPane>
 
