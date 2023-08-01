@@ -53,9 +53,9 @@ Cloud Account Permissions section.
 
 
 - The Private cloud gateway IP requirements are:
-  - One (1) node - one (1) IP or three (3) nodes - three (3) IPs.
-  - One (1) Kubernetes control-plane VIP.
-  - One (1) Kubernetes control-plane extra.
+  - One node - one (1) IP or three (3) nodes - three (3) IPs.
+  - One Kubernetes control-plane VIP.
+  - One Kubernetes control-plane extra.
 
   <br />
 
@@ -218,8 +218,8 @@ Root-level role privileges are only applied to root objects and Data center obje
 |--------------------|-----------------------------------------|
 | CNS                | Searchable                              |
 | Datastore          | Browse datastore                        |
-| Host               | Configuration<br /><br />Storage partition configuration |
-| vSphere Tagging    | Create vSphere Tag<br /><br />Edit vSphere Tag |
+| Host               | Configuration<br />Storage partition configuration |
+| vSphere Tagging    | Create vSphere Tag<br />Edit vSphere Tag |
 | Network            | Assign network                          |
 | Sessions           | Validate session                        |
 | VM Storage Policies| View VM storage policies                |
@@ -238,7 +238,6 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 </InfoBox>
 
-<br />
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
@@ -249,7 +248,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 | Network           | Assign network                              |
 | Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
 | Sessions          | Validate sessions                           |
-| Storage policies  | View access for VM storage policies is required. Ensure ``StorageProfile.View`` is available. |
+| Storage policies  | View access for VM storage policies is required.<br />Ensure ``StorageProfile.View`` is available. |
 | spectro-templates | Read only                                   |
 | Storage views     | View                 |
 | Tasks             | Create task<br />Update task                |
@@ -298,6 +297,8 @@ Root-level role privileges are only applied to root objects and Data center obje
 
 Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
 
+<br />
+
 <InfoBox>
 
 Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
@@ -322,13 +323,9 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 | vApp              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
 | vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
-<InfoBox>
+<br />
 
-For Network privileges, if the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” needs to be provided.
-
-</InfoBox>
-
-The following table lists Spectro Cloud role privileges for VMs by category.
+The following table lists Spectro role privileges for VMs by category.
 
 | **vSphere Object**| **Category**         | **Privileges**     |
 |-------------------|----------------------|--------------------|
@@ -369,13 +366,14 @@ Root-level role privileges are only applied to root objects and Data center obje
 
 Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
 
+<br />
+
 <InfoBox>
 
 Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
 
 </InfoBox>
 
-<br .>
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
@@ -393,17 +391,9 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 | vApp              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
 | vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
-<br >
-
-<InfoBox>
-
-For Network privileges, if the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” needs to be provided.
-
-</InfoBox>
-
 <br />
 
-The following table lists Spectro Cloud role privileges for VMs by category.
+The following table lists Spectro role privileges for VMs by category.
 
 | **vSphere Object**| **Category**         | **Privileges**     |
 |-------------------|----------------------|--------------------|
