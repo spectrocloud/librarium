@@ -7,6 +7,10 @@ hideToC: false
 fullWidth: false
 ---
 
+import InfoBox from 'shared/components/InfoBox';
+import WarningBox from 'shared/components/WarningBox';
+import Tabs from 'shared/components/ui/Tabs';
+
 # Overview
 
 You can use the Palette VerteX Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference page lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation.
@@ -22,8 +26,8 @@ The following parameters are required for a successful installation of Palette V
 | --- | --- | --- |
 | `mongo.databasePassword` | The base64 encoded MongoDB password. Refer to the [MongoDB](#mongodb) section for more information. | String |
 | `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this by using a wild card `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
-| `config.env.ociRegistry`/`config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. Refer to the [Registry and Palette Artifact Repository parameters](#registryandpaletteartifactrepository(par)) for more information. | Object |
-| `scar`| The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. Refer to the [Registry and Palette Artifact Repository parameters](#registryandpaletteartifactrepository(par)) for more information. | Object |
+| `config.env.ociRegistry`/`config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. Refer to the [Registry](#registries) section for more information. | Object |
+| `scar`| The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. Refer to the [Registry](#registries) section for more information. | Object |
 
 
 ## MongoDB 
@@ -85,20 +89,20 @@ mongo:
 
 # Config 
 
-The configuration file contains the following sections.
+The configuration section contains the following parameters.
 
 ## SSO 
 
-The table lists parameters to configure SSO SAML authentication in Palette.
+To configure SSO, you must provide the following parameters.
 
-| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
+| **Parameters** | **Description** |  **Type** | **Default value** |
 | --- | --- | --- | --- | --- |
-| `saml.enabled` | `false` | Boolean | Specifies whether to enable SSO SAML configuration by setting it to true. | Optional|
-| `saml.acsUrlRoot` | `myfirstpalette.spectrocloud.com` | String | Root URL of the Assertion Consumer Service (ACS).| Optional|
-| `saml.acsUrlScheme` | `https` | String | URL scheme of the ACS either http or https. | Optional |
-| `saml.audienceUrl` | `https://www.spectrocloud.com` | String | URL of the intended audience for the SAML response.| Optional|
-| `saml.entityID` | `https://www.spectrocloud.com` | String | Entity ID of the Service Provider.| Optional |
-| `saml.apiVersion` | `v1` | String |SSO SAML API version to use.| Optional |
+| `saml.enabled` | Specifies whether to enable SSO SAML configuration by setting it to true. | Boolean | `false` |
+| `saml.acsUrlRoot` | The root URL of the Assertion Consumer Service (ACS).| String | `myfirstpalette.spectrocloud.com`|
+| `saml.acsUrlScheme` | The URL scheme of the ACS either http or https. | String | `https` |
+| `saml.audienceUrl` | The URL of the intended audience for the SAML response.| String| `https://www.spectrocloud.com` | 
+| `saml.entityID` | The Entity ID of the Service Provider.| String | `https://www.spectrocloud.com`|
+| `saml.apiVersion` | Specify the SSO SAML API version to use.| String | `v1` |
 
 ```yaml
 config:
@@ -114,17 +118,17 @@ config:
 
 ## Email
 
-The table lists the parameters to configure email settings in Palette's self-hosted mode. 
+Use the following parameters to configure email settings for Palette VerteX.
 
-| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
-| --- | --- | --- | --- | --- |
-| `enabled` | `false` | Boolean | Specifies whether to enable email configuration. | Optional|
-| `emailID ` | `""` | String | Email address for sending mail.| Optional|
-| `smtpServer` | `smtp.gmail.com` | String | Simple Mail Transfer Protocol (SMTP) server used for sending mail. | Optional |
-| `smtpPort` | `587` | Integer | SMTP port used for sending mail.| Optional|
-| `insecureSkipVerifyTIs` | `true` | Boolean | Specifies whether to skip Transport Layer Security (TLS) verification for the SMTP connection.| Optional |
-| `fromEmailID` | `noreply@spectrocloud.com` | String |Email address of the ***From*** address.| Optional |
-| `password` | `""` | String |The base64-encoded SMTP password when sending emails.| Optional |
+| **Parameters** |  **Description** |  **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `enabled` | Specifies whether to enable email configuration. | Boolean| `false`|
+| `emailID ` |  The Email address for sending mail.| String| `""` |
+| `smtpServer` |  Simple Mail Transfer Protocol (SMTP) server used for sending mail. | String | `smtp.gmail.com` |
+| `smtpPort` | SMTP port used for sending mail.| Integer | `587` |
+| `insecureSkipVerifyTLS` | Specifies whether to skip Transport Layer Security (TLS) verification for the SMTP connection.| Boolean | `true` |
+| `fromEmailID` | Email address of the ***From*** address.| String | `noreply@spectrocloud.com` |
+| `password` | The base64-encoded SMTP password when sending emails.| String | `""` |
 
 ```yaml
 config:
@@ -140,13 +144,13 @@ config:
 
 ## Environment 
 
-The table lists environment variables required to deploy Palette.
+The following parameters are used to configure the environment.
 
-| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
-| --- | --- | --- | --- | --- |
-| `env.rootDomain` | `""` | String | Specifies the default Domain Name System (DNS) record mapped to the *ingress-nginx-controller* load balancer. It is required if false. Otherwise, leave it empty. | Required|
-| `env.installerMode` | `self-hosted` | String | Specifies the installer mode. Do not modify the value.| Required|
-| `env.installerCloud` | `""` | String | Specifies the cloud provider. It should be left empty. | Optional |
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `env.rootDomain` | Specifies the domain name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to the *ingress-nginx-controller* load balancer's IP address. | String| `""` |
+| `env.installerMode` | Specifies the installer mode. Do not modify the value.| String| `self-hosted` |
+| `env.installerCloud` | Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette VerteX.  | String | `""` |
 
 ```yaml
 config:
@@ -155,15 +159,22 @@ config:
     installerMode: "self-hosted"
     installerCloud: ""
 ```
+<br />
+
+<WarningBox>
+
+As you create tenants in Palette VerteX, the tenant name is prefixed to the domain name you assigned to Palette VerteX. For example, if you create a tenant named tenant1 and the domain name you assigned to Palette VerteX is `vertex.example.com`, the tenant URL will be `tenant1.vertex.example.com`. We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette VerteX load balancer. For example, `*.vertex.example.com`.
+
+</WarningBox>
 
 ## Cluster 
 
-The cluster parameter specifies how the Kubernetes cluster is deployed.
+Use the following parameters to configure the cluster.
 
 
-| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
-| --- | --- | --- | --- | --- |
-| `stableEndpointAccess` | `false` | Boolean | False indicates the Kubernetes cluster is deployed in a private network through a stable private endpoint. True indicates the cluster is deployed through a public endpoint. | Optional|
+| **Parameters** | **Description** |  **Type** | **Default value** | 
+| --- | --- | --- | --- |
+| `stableEndpointAccess` | Set to `true` if the Kubernetes cluster is deployed in a public endpoint. If the cluster is deployed in a private network through a stable private endpoint, set to `false`.  | Boolean | `false` |
 
 ```yaml
 config:
@@ -171,72 +182,294 @@ config:
     stableEndpointAccess: false
 ```
 
-## Registry and Palette Artifact Repository (PAR) 
+## Registries
 
-The table lists Registry and Palette Artifact Repository (PAR) parameters to install Palette using Helm Chart.
+Palette VerteX requires credentials to access the required Palette VerteX images. You can configure different types of registries for Palette VerteX to download the required images. The credentials for the registries are provided by the Spectro Cloud support team.
 
-| **Parameters** | **Default value** | **Type** | **Description** | **Required/Optional** |
-| --- | --- | --- | --- | --- |
-| `registry.endpoint` | `""` | String | The endpoint URL for the registry. | Required|
-| `registry.name` | `""` | String | The name of the registry. | Required|
-| `registry.password` | `""` | String | The password for the registry.  | Required|
-| `registry.username` | `""` | String | The username for the registry. | Required|
-| `scar.endpoint` | `""` | String | The endpoint URL of the PAR. | Required|
-| `scar.username` | `""` | String | The username for the PAR. | Required|
-| `scar.password` | `""` | String | The password for the PAR.   | Required|
+<br />
+
+<WarningBox>
+
+You must configure at least one Open Container Initiative (OCI) registry for Palette VerteX to install successfully. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required FIPS images.
+
+</WarningBox>
+
+### Registry
+
+This is a non-OCI registry. If you are installing a self-hosted Palette VerteX, you must configure the registry credentials for an OCI registry. Use [`ociRegistry`](#ociregistry) or [`ociEcrRegistry`](#ociecrregistry) to configure the OCI registry credentials.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- | 
+| `registry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `registry.name` |  The name of the registry. | String| `""` |
+| `registry.password` | The base64 encoded password for the registry.  | String| `""` |
+| `registry.username` |  The username for the registry. | String| `""` |
+| `registry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `registry.caCert` | The base64-encoded certificate authority (CA) certificate for the registry. | String | `""` |
+
 
 ```yaml
 config:
-    registry:
-    endpoint: "<Contact Spectro Cloud Sales for More info>"
-    name: "<Contact Spectro Cloud Sales for More info>"
-    password: "<Contact Spectro Cloud Sales for More info>"
-    username: "<Contact Spectro Cloud Sales for More info>"
-
-    scar:
-    endpoint: "<Contact Spectro Cloud Sales for More info>"
-    username: "<Contact Spectro Cloud Sales for More info>"
-    password: "<Contact Spectro Cloud Sales for More info>"
+  registry:
+    endpoint: ""
+    name: ""
+    password: ""
+    username: ""
+    insecureSkipVerify: false
+    caCert: ""
 ```
 
-Contact support@spectrocloud.com to gain access to the Helm Chart.
+### OCI Registry
+
+OCI registry credentials are required to download the required Palette VerteX images. The credentials for the OCI registry are provided by the Spectro Cloud support team. If you are installing Palette VerteX in Amazon Web Services (AWS) consider using `ociEcrRegistry` to consume the images from the AWS Elastic Container Registry (ECR).
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- | 
+| `ociRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociRegistry.name` |  The name of the registry. | String| `""` |
+| `ociRegistry.password` | The base64 encoded password for the registry.  | String| `""` |
+| `ociRegistry.username` |  The username for the registry. | String| `""` |
+| `ociRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociRegistry.caCert` | The base64-encoded certificate authority (CA) certificate for the registry. | String | `""` |
+
+
+```yaml
+config:
+  ociRegistry:
+    endpoint: ""
+    name: ""
+    password: ""
+    username: ""
+    insecureSkipVerify: false
+    caCert: ""
+```
+
+
+### OCI ECR Registry
+
+The OCI Elastic Container Registry (ECR) is different from the [`ociRegistry`](#ociregistry) in that the FIPS-required images are hosted in an AWS ECR registry. The credentials for the OCI ECR registry are provided by the Spectro Cloud support team.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `ociEcrRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociEcrRegistry.name` |  The name of the registry. | String| `""` |
+| `ociEcrRegistry.password` | The base64 encoded password for the registry.  | String| `""` |
+| `ociEcrRegistry.username` |  The username for the registry. | String| `""` |
+| `ociEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociEcrRegistry.caCert` | The base64-encoded certificate authority (CA) certificate for the registry. | String | `""` |
+
+```yaml
+config:
+  ociEcrRegistry:
+    endpoint: ""
+    name: ""
+    password: ""
+    username: ""
+    insecureSkipVerify: false
+    caCert: ""
+```
+
+### Spectro Cloud Artifact Repository (SCAR)
+
+SCAR credentials are required to download the required FIPS images. The credentials for the SCAR are provided by the Spectro Cloud support team.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- | 
+| `scar.endpoint` | The endpoint URL of SCAR. | String| `""` |
+| `scar.username` |The username for SCAR. | String| `""` |
+| `scar.password` | The base64 encoded password for the SCAR. | String| `""` |
+| `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean | `false` |
+| `scar.caCert` | The base64-encoded certificate authority (CA) certificate for the SCAR. | String | `""` |
+
+```yaml
+config:
+  scar:
+    endpoint: ""
+    username: ""
+    password: ""
+    insecureSkipVerify: false
+    caCert: ""
+```
+
+
+# Accounts
+
+The account sections contain the registry endpoints for images required by Palette VerteX to support the deployment of FIPS-compliant clusters in non-public cloud environments. Do not modify the `config.accounts` section unless explicitly instructed by the Spectro Cloud support team or if you are installing Palette VerteX in an airgap environment.
+
+
+## Devops
+
+Palette VerteX conducts a series of automation tasks to support the deployment of FIPS-compliant clusters. Use the following parameters to configure the registry endpoints for the images required by the DevOps automation tasks.
+
+
+### OpenStack
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `imagesHostEndpoint`| The registry endpoint for the OpenStack images. | String | `https://openstackgoldenimage.s3.amazonaws.com` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the OpenStack images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the OpenStack images. | String | `""` |
+
+```yaml
+config:
+  accounts:
+    devops:
+      openstack:
+        imagesHostEndpoint: "https://openstackgoldenimage.s3.amazonaws.com"
+        insecureSkipVerify: false
+        caCert: ""
+```
+
+
+### Edge
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `imagesHostEndpoint`| The registry endpoint for the Edge images. | String | `gcr.io/spectro-images-public/release/edge/node` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the Edge images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the Edge images. | String | `""` |
+
+```yaml
+config:
+  accounts:
+    devops:
+      edge:
+        imagesHostEndpoint: "gcr.io/spectro-images-public/release/edge/node"
+        insecureSkipVerify: false
+        caCert: ""
+```
+
+### Edge Native
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the Edge Native images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the Edge Native images. | String | `""` |
+
+```yaml
+config:
+  accounts:
+    devops:
+      edgeNative:
+        insecureSkipVerify: false
+        caCert: ""
+```
+
+### Libvirt
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `imagesHostEndpoint`| The registry endpoint for the Libvirt images. | String | `https://edgegoldenimage.s3.amazonaws.com` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the Libvirt images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the Libvirt images. | String | `""` |
+
+```yaml
+config:
+  accounts:
+    devops:
+      libvirt:
+        imagesHostEndpoint: "https://edgegoldenimage.s3.amazonaws.com"
+        insecureSkipVerify: false
+        caCert: ""
+```
+
+### MAAS
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `imagesHostEndpoint`| The registry endpoint for the MAAS images. | String | `https://maasgoldenimage.s3.amazonaws.com` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the MAAS images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the MAAS images. | String | `""` |
+
+```yaml
+config:
+  accounts:
+    devops:
+      maas:
+        imagesHostEndpoint: "https://maasgoldenimage.s3.amazonaws.com"
+        insecureSkipVerify: false
+        caCert: ""
+```
+
+### VMware Vsphere
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `imagesHostEndpoint`| The registry endpoint for the VMware Vsphere images. | String | `https://vmwaregoldenimage.s3.amazonaws.com` |
+| `overlordOvaLocation`| The location of the overlord OVA file. This URL is provided by the support team. | String | `""` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the VMware Vsphere images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the VMware Vsphere images. | String | `""` |
+
+```yaml
+config:
+  accounts:
+    devops:
+      vsphere:
+        imagesHostEndpoint: "https://vspheregoldenimage.s3.amazonaws.com"
+        overlordOvaLocation: "Provided by the support team"
+        insecureSkipVerify: false
+        caCert: ""
+```
+
 
 # Network Address Translation (NATS) 
 
-The table lists Network Address Translation (NATS) parameters that Palette uses for communication between the tenant and management clusters. The internal flag determines whether NATS uses a new load balancer or the existing ingress service. To learn about NATS cluster configuration map properties, refer to [NATS clustering configuration.](https://docs.nats.io/running-a-nats-service/configuration/clustering/cluster_config)
+NATS is not used by Palette VerteX, gRPC is used instead. Refer to the [gRPC](#grpc) section for more information.
 
-| **Parameters **  | **Default Value** | **Type **   | **Description**                                                                                                               | **Required/Optional** |
-| ------------ | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `internal`   | `true`        | Boolean | `true` means NATS shares the ingress load balancer or uses hostNetwork. `false` means a cloud load balancer is used.      | Optional           |
-| `natsUrl`    |     `""`    | String  | Comma-separated list of <dns_name:port> mappings for NATS load balancer service. Required if `nats.internal` is false.     | Required           |
-| `annotations`| `{}`          | Map     | A map of key-value pairs that specify the load balancer annotations for NATS. These annotations vary depending on the cloud provider.                                                                                           | Optional           |
-| `routes`     | `[]`          | List    | List of server URLs for clustering (excluding self-routes) that can include authentication via token or username/password in the URL.                                               | Optional           |
-| `natsStaticIP`| `""`         | String  | Static IP for the NATS load balancer service. If empty, a dynamic IP address will be generated.                                   | Optional           |
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `enabled`| Specifies whether to enable NATS. | Boolean | `false` |
+
+
+# gRPC
+
+gRPC is used for communication between Palette VerteX components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette VerteX use the load balancer to communicate with the Palette VerteX control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option.
+
+If you want to use an external gRPC endpoint, you must provide a valid x509 certificate for the endpoint. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the IP address of the load balancer. For example, if your Palette VerteX domain name is `vertex.example.com`, you could create a CNAME DNS record for `grpc.vertex.example.com` that points to the IP address of the load balancer dedicated to gRPC. 
+
+
+The gRPC configuration is required for Palette VerteX to function properly.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `external`| Specifies whether to use an external gRPC endpoint. | Boolean | `false` |
+| `endpoint`| The gRPC endpoint. | String | `""` |
+| `caCertificateBase64`| The base64-encoded certificate authority (CA) certificate for the gRPC endpoint. | String | `""` |
+| `serverCrtBase64`| The base64-encoded server certificate for the gRPC endpoint. | String | `""` |
+| `serverKeyBase64`| The base64-encoded server key for the gRPC endpoint. | String | `""` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint. | Boolean | `false` |
+
+
+
 
 ```yaml
-nats:
-  internal: true
-  natsUrl: ""
-  annotations: {}
-  routes: []
-  natsStaticIP: ""
+grpc:
+  external: false
+  endpoint: "" 
+  caCertificateBase64: "" 
+  serverCrtBase64: ""
+  serverKeyBase64: ""
+  insecureSkipVerify: false
 ```
 
 # Ingress 
 
-The table lists parameters used to configure the NGINX Ingress Controller, which provides an external HTTP load balancer for Kubernetes services. Refer to [Set Up Ingress](/clusters/cluster-groups/ingress-cluster-group) for more guidance.
+Palette VerteX by default deploys an NGINX Ingress Controller. This controller is used to route traffic to the Palette VerteX control plane. 
 
-| **Parameters**                     | **Default Value** | **Type**    | **Description**                                                                                                                                       | **Required/Optional** |
-|--------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `Internal`                     | `false`       | Boolean |Specify whether to use a cloud load balancer or host network.                   | Required           |
-| `certificate`                  | `""`          | String  | Default SSL certificate for NGINX Ingress Controller. If left blank, the NGINX Ingress Controller will generate a self-signed certificate.                  | Optional           |
-| `key`                          | `""`          | String  | Default SSL key for the NGINX Ingress Controller.                                                                                        | Optional           |
-| `annotations`                  | `{}`          | Map     | A map of key-value pairs that specifies load balancer annotations for ingress.                                                                      | Optional           |
-| `ingressStaticIP`              | `""`          | String  | Static IP for the ingress load balancer service. If empty, a dynamic IP address will be generated.                                                        | Optional           |
-| `terminateHTTPSAtLoadBalancer` | `false`       | Boolean | Specify whether to terminate HTTPS at the load balancer.                 | Optional           |
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `enabled`| Specifies wheater deploy an nginx controller. Set to `false` if you don't want an nginx controller deployed.  | Boolean | `true` |
+| `ingress.internal`| Specifies whether to deploy a load balancer or use the host network. | Boolean | `false` |
+| `ingress.certificate`| Specify the base64 encoded x509 SSL certificate for the NGINX Ingress Controller. If left blank, the NGINX Ingress Controller will generate a self-signed certificate. | String | `""` |
+| `ingress.key`| Specify the base64 encoded x509 SSL certificate key for the NGINX Ingress Controller. | String | `""` |
+| `ingress.annotations`| A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the nginx configuration. This is an advanced setting, we recommend you consult with your assigned support team representative prior to modification. | Object | `{}` |
+| `ingress.ingressStaticIP`| Specify a static IP for the ingress load balancer service. If empty, a dynamic IP address will be generated. | String | `""` |
+| `ingress.terminateHTTPSAtLoadBalancer`| Specifies whether to terminate HTTPS at the load balancer. | Boolean | `false` |
+
 
 ```yaml
 ingress:
+  enabled: true
   ingress:
     internal: false
     certificate: ""
@@ -250,44 +483,48 @@ ingress:
 
 The table lists parameters to configure the Spectro server-side proxy.
 
-| **Parameters**          | **Default Value**                | **Type**    | **Description**                                                   | **Required/Optional** |
-|---------------------|------------------------------|---------|---------------------------------------------------------------|--------------------|
-| `enabled`      | `false`                      | Boolean | Specifies whether Spectro Proxy is enabled or not.                       | Optional           |
-| `frpHostURL`   | `proxy.sample.spectrocloud.com` | String  | The URL of the Spectro proxy host.                                 | Optional           |
-| `server.crt`   |   `"LS0..."`                            | String  | Specifies the certificate file for the Spectro Proxy server.             | Optional           |
-| `server.key`   |    `"LS0..."`                           | String  | Specifies the private key file for the Spectro Proxy server.             | Optional           |
-| `ca`           |      `"LS0..."`                         | String  | Specifies the Certificate Authority (CA) for the Spectro Proxy server.  | Optional           |
-| `ca.crt`       |  `"LS0..."`                             | String  | Specifies the CA certificate file for the Spectro Proxy server.         | Optional           |
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `frps.enabled`| Specifies whether to enable the Spectro server-side proxy. | Boolean | `false` |
+| `frps.frpHostURL`| The Spectro server-side proxy URL. | String | `""` |
+| `frps.server.crt`| The base64-encoded server certificate for the Spectro server-side proxy. | String | `""` |
+| `frps.server.key`| The base64-encoded server key for the Spectro server-side proxy. | String | `""` |
+| `frps.ca.crt`| The base64-encoded certificate authority (CA) certificate for the Spectro server-side proxy. | String | `""` |
 
 ```yaml
 frps:
   frps:
     enabled: false
-    frpHostURL: proxy.sample.spectrocloud.com
+    frpHostURL: ""
     server:
-      crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-      key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+      crt: ""
+      key: ""
     ca:
-      crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+      crt : ""
 ```
 
 # UI System 
 
-The table lists parameters for the Network Operations Center User Interface (NOC  UI). Palette's NOC UI enables easy location monitoring of multi-location clusters through an intuitive UI.
+The table lists parameters to configure the Palette VerteX User Interface (UI) behavior.
 
-| **Parameters **          | **Default Value** | **Type**    | **Description**                                          | **Required/Optional** |
-|---------------------|---------------|---------|------------------------------------------------------|--------------------|
-| `enabled`           | `false`       | Boolean | Specifies if the NOC UI is enabled or not.          | Optional           |
-| `mapBoxAccessToken` | `""`          | String  | Access token for the MapBox API.                          | Optional           |
-| `mapBoxStyledLayerID`| `""`          | String  | ID for the MapBox style layer.                            | Optional           |
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `enabled`| Specifies whether to enable the Palette VerteX UI. | Boolean | `true` |
+| `ui.nocUI.enable`| Specifies whether to enable the Palette VerteX Network Operations Center (NOC) UI. | Boolean | `false` |
+| `ui.nocUI.mapBoxAccessToken`| The MapBox access token for the Palette VerteX NOC UI. | String | `""` |
+| `ui.nocUI.mapBoxStyledLayerID`| The MapBox style layer ID for the Palette VerteX NOC UI. | String | `""` |
+
+
 
 ```yaml
 ui-system:
+  enabled: true
   ui:
     nocUI:
       enable: false
       mapBoxAccessToken: ""
-      mapBoxStyledLayerID: ""  
+      mapBoxStyledLayerID: "" 
 ```
 
 

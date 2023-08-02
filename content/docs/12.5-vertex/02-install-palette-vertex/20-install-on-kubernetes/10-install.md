@@ -9,8 +9,6 @@ fullWidth: false
 
 import InfoBox from 'shared/components/InfoBox';
 import WarningBox from 'shared/components/WarningBox';
-import PointsOfInterest from 'shared/components/common/PointOfInterest';
-import Tooltip from "shared/components/ui/Tooltip";
 import Tabs from 'shared/components/ui/Tabs';
 
 # Overview
@@ -115,7 +113,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     ``` 
 
 
-3. Open the **values.yaml** with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters but there are a few parameters you must populate before installing Palette VerteX. 
+3. Open the **values.yaml** with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters but there are a few parameters you must populate before installing Palette VerteX. Refer to the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page for a complete list of parameters and their descriptions.
 
     <br />
 
