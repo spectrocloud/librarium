@@ -24,10 +24,10 @@ The following parameters are required for a successful installation of Palette V
 
 | **Parameters** | **Description** | **Type** |
 | --- | --- | --- |
-| `mongo.databasePassword` | The base64 encoded MongoDB password. Refer to the [MongoDB](#mongodb) section for more information. | String |
-| `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this by using a wild card `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
-| `config.env.ociRegistry`/`config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. Refer to the [Registry](#registries) section for more information. | Object |
-| `scar`| The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. Refer to the [Registry](#registries) section for more information. | Object |
+| `mongo.databasePassword` | The base64 encoded MongoDB password. For more information, refer to the [MongoDB](#mongodb) section. | String |
+| `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
+| `config.env.ociRegistry`/`config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. For more information, refer to the [Registry](#registries) section. | Object |
+| `scar`| The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 
 ## MongoDB 
@@ -44,7 +44,7 @@ The table below lists the parameters used to configure a MongoDB deployment.
 | **Parameters** | **Description** |  **Type** | **Default value** |
 | --- | --- | --- | --- |
 | `internal` | Specifies the MongoDB deployment either in-cluster or using Mongo Atlas. | Boolean | `true` | 
-| `opsManager`| The settings for the MongoDB Ops Manager. Refer to the [Ops Manager](#opsmanager) for more information. | Object | - |
+| `opsManager`| The settings for the MongoDB Ops Manager. For more information, refer to the [Ops Manager](#opsmanager). | Object | - |
 | `database` | The settings for the MongoDB Enterprise database. Refer to the [Database](#database) section for more information. | Object | - |
 | `databasePassword`| The base64 encoded MongoDB Enterprise password. You must provide this value for Palette VerteX to deploy successfully. | String | `""` |
 | `databaseUrl`| The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. | String | `mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local` |
@@ -54,7 +54,7 @@ The table below lists the parameters used to configure a MongoDB deployment.
 
 | **Parameters** | **Description** |  **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `adminSecret.password`| The base64 encoded MongoDB Ops Manager password. This value is provided by the support team. | String | - |
+| `adminSecret.password`| The base64 encoded MongoDB Ops Manager password. The support team provides this value. | String | - |
 | `opsma.podIpCIDR`| The CIDR block for the Ops Manager automation pod IP address range. | String | `192.168.0.0/16`
 
 ### Database
@@ -73,7 +73,7 @@ mongo:
   internal: true
   opsManager:
     adminSecret:
-      password: "Provided by support team"
+      password: "Provided by the support team."
     opsma:
       podIpCIDR: 192.168.0.0/16
   database:
@@ -89,7 +89,7 @@ mongo:
 
 # Config 
 
-The configuration section contains the following parameters.
+Review the following parameters to configure Palette VerteX for your environment. The `config` section contains the following sub-sections:
 
 ## SSO 
 
@@ -99,7 +99,7 @@ To configure SSO, you must provide the following parameters.
 | --- | --- | --- | --- | --- |
 | `saml.enabled` | Specifies whether to enable SSO SAML configuration by setting it to true. | Boolean | `false` |
 | `saml.acsUrlRoot` | The root URL of the Assertion Consumer Service (ACS).| String | `myfirstpalette.spectrocloud.com`|
-| `saml.acsUrlScheme` | The URL scheme of the ACS either http or https. | String | `https` |
+| `saml.acsUrlScheme` | The URL scheme of the ACS either `http` or `https`. | String | `https` |
 | `saml.audienceUrl` | The URL of the intended audience for the SAML response.| String| `https://www.spectrocloud.com` | 
 | `saml.entityID` | The Entity ID of the Service Provider.| String | `https://www.spectrocloud.com`|
 | `saml.apiVersion` | Specify the SSO SAML API version to use.| String | `v1` |
@@ -148,13 +148,13 @@ The following parameters are used to configure the environment.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `env.rootDomain` | Specifies the domain name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to the *ingress-nginx-controller* load balancer's IP address. | String| `""` |
+| `env.rootDomain` | Specifies the domain name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to the ingress-nginx-controller load balancer's IP address. | String| `""` |
 | `env.installerMode` | Specifies the installer mode. Do not modify the value.| String| `self-hosted` |
 | `env.installerCloud` | Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette VerteX.  | String | `""` |
 
 ```yaml
 config:
-    env:
+  env:
     rootDomain: ""
     installerMode: "self-hosted"
     installerCloud: ""
@@ -169,7 +169,7 @@ As you create tenants in Palette VerteX, the tenant name is prefixed to the doma
 
 ## Cluster 
 
-Use the following parameters to configure the cluster.
+Use the following parameters to configure the Kubernetes cluster.
 
 
 | **Parameters** | **Description** |  **Type** | **Default value** | 
@@ -184,13 +184,13 @@ config:
 
 ## Registries
 
-Palette VerteX requires credentials to access the required Palette VerteX images. You can configure different types of registries for Palette VerteX to download the required images. The credentials for the registries are provided by the Spectro Cloud support team.
+Palette VerteX requires credentials to access the required Palette VerteX images. You can configure different types of registries for Palette VerteX to download the required images. Our support team provides the credentials for the registries.
 
 <br />
 
 <WarningBox>
 
-You must configure at least one Open Container Initiative (OCI) registry for Palette VerteX to install successfully. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required FIPS images.
+To install Palette VerteX successfully, you must configure at least one Open Container Initiative (OCI) registry for Palette VerteX. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required FIPS images.
 
 </WarningBox>
 
@@ -221,7 +221,7 @@ config:
 
 ### OCI Registry
 
-OCI registry credentials are required to download the required Palette VerteX images. The credentials for the OCI registry are provided by the Spectro Cloud support team. If you are installing Palette VerteX in Amazon Web Services (AWS) consider using `ociEcrRegistry` to consume the images from the AWS Elastic Container Registry (ECR).
+OCI registry credentials are required to download the required Palette VerteX images. The credentials for the OCI registry are provided by the Spectro Cloud support team. If you are installing Palette VerteX in Amazon Web Services (AWS), consider using `ociEcrRegistry` to consume the AWS Elastic Container Registry (ECR) images.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- | 
@@ -230,7 +230,7 @@ OCI registry credentials are required to download the required Palette VerteX im
 | `ociRegistry.password` | The base64 encoded password for the registry.  | String| `""` |
 | `ociRegistry.username` |  The username for the registry. | String| `""` |
 | `ociRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociRegistry.caCert` | The base64-encoded certificate authority (CA) certificate for the registry. | String | `""` |
+| `ociRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
 
 
 ```yaml
@@ -247,7 +247,7 @@ config:
 
 ### OCI ECR Registry
 
-The OCI Elastic Container Registry (ECR) is different from the [`ociRegistry`](#ociregistry) in that the FIPS-required images are hosted in an AWS ECR registry. The credentials for the OCI ECR registry are provided by the Spectro Cloud support team.
+The OCI Elastic Container Registry (ECR) is different from the [`ociRegistry`](#ociregistry) in that the FIPS-required images are hosted in an AWS ECR registry. Our support team provides the credentials for the OCI ECR registry.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
@@ -256,7 +256,7 @@ The OCI Elastic Container Registry (ECR) is different from the [`ociRegistry`](#
 | `ociEcrRegistry.password` | The base64 encoded password for the registry.  | String| `""` |
 | `ociEcrRegistry.username` |  The username for the registry. | String| `""` |
 | `ociEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociEcrRegistry.caCert` | The base64-encoded certificate authority (CA) certificate for the registry. | String | `""` |
+| `ociEcrRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
 
 ```yaml
 config:
@@ -271,7 +271,7 @@ config:
 
 ### Spectro Cloud Artifact Repository (SCAR)
 
-SCAR credentials are required to download the required FIPS images. The credentials for the SCAR are provided by the Spectro Cloud support team.
+SCAR credentials are required to download the necessary FIPS images. The Spectro Cloud support team provides the credentials for the SCAR.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- | 
@@ -308,7 +308,7 @@ Palette VerteX conducts a series of automation tasks to support the deployment o
 | --- | --- | --- | --- |
 | `imagesHostEndpoint`| The registry endpoint for the OpenStack images. | String | `https://openstackgoldenimage.s3.amazonaws.com` |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the OpenStack images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the OpenStack images. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the OpenStack enpoint. | String | `""` |
 
 ```yaml
 config:
@@ -327,7 +327,7 @@ config:
 | --- | --- | --- | --- |
 | `imagesHostEndpoint`| The registry endpoint for the Edge images. | String | `gcr.io/spectro-images-public/release/edge/node` |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the Edge images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the Edge images. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the Edge endoint. | String | `""` |
 
 ```yaml
 config:
@@ -344,7 +344,7 @@ config:
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the Edge Native images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the Edge Native images. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the Edge Native endpoint. | String | `""` |
 
 ```yaml
 config:
@@ -361,7 +361,7 @@ config:
 | --- | --- | --- | --- |
 | `imagesHostEndpoint`| The registry endpoint for the Libvirt images. | String | `https://edgegoldenimage.s3.amazonaws.com` |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the Libvirt images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the Libvirt images. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the Libvirt endpoint. | String | `""` |
 
 ```yaml
 config:
@@ -379,7 +379,7 @@ config:
 | --- | --- | --- | --- |
 | `imagesHostEndpoint`| The registry endpoint for the MAAS images. | String | `https://maasgoldenimage.s3.amazonaws.com` |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the MAAS images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the MAAS images. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the MAAS endpoint. | String | `""` |
 
 ```yaml
 config:
@@ -396,9 +396,9 @@ config:
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
 | `imagesHostEndpoint`| The registry endpoint for the VMware Vsphere images. | String | `https://vmwaregoldenimage.s3.amazonaws.com` |
-| `overlordOvaLocation`| The location of the overlord OVA file. This URL is provided by the support team. | String | `""` |
+| `overlordOvaLocation`| The location of the overlord OVA file. The support team provides this URL. | String | `""` |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the VMware Vsphere images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the VMware Vsphere images. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the VMware Vsphere endpoint. | String | `""` |
 
 ```yaml
 config:
@@ -406,7 +406,7 @@ config:
     devops:
       vsphere:
         imagesHostEndpoint: "https://vspheregoldenimage.s3.amazonaws.com"
-        overlordOvaLocation: "Provided by the support team"
+        overlordOvaLocation: "Provided by the support team."
         insecureSkipVerify: false
         caCert: ""
 ```
@@ -414,7 +414,7 @@ config:
 
 # Network Address Translation (NATS) 
 
-NATS is not used by Palette VerteX, gRPC is used instead. Refer to the [gRPC](#grpc) section for more information.
+Palette VerteX does not use NATS. gRPC is used to communicate between the various Palette VerteX components. For more information, refer to the [gRPC](#grpc) section.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
@@ -425,10 +425,8 @@ NATS is not used by Palette VerteX, gRPC is used instead. Refer to the [gRPC](#g
 
 gRPC is used for communication between Palette VerteX components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette VerteX use the load balancer to communicate with the Palette VerteX control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option.
 
-If you want to use an external gRPC endpoint, you must provide a valid x509 certificate for the endpoint. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the IP address of the load balancer. For example, if your Palette VerteX domain name is `vertex.example.com`, you could create a CNAME DNS record for `grpc.vertex.example.com` that points to the IP address of the load balancer dedicated to gRPC. 
+If you want to use an external gRPC endpoint, you must provide a domain name for the gRPC endpoint and a valid x509 certificate. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the IP address of the gRPC load balancer. For example, if your Palette VerteX domain name is `vertex.example.com`, you could create a CNAME DNS record for `grpc.vertex.example.com` that points to the IP address of the load balancer dedicated to gRPC. 
 
-
-The gRPC configuration is required for Palette VerteX to function properly.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
@@ -454,16 +452,16 @@ grpc:
 
 # Ingress 
 
-Palette VerteX by default deploys an NGINX Ingress Controller. This controller is used to route traffic to the Palette VerteX control plane. 
+Palette VerteX deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette VerteX control plane. You can change the default behavior and omit the deployment of an Nginx Ingress Controller. 
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `enabled`| Specifies wheater deploy an nginx controller. Set to `false` if you don't want an nginx controller deployed.  | Boolean | `true` |
+| `enabled`| Specifies whether deploy an Nginx controller. Set to `false` if you don't want an nginx controller deployed.  | Boolean | `true` |
 | `ingress.internal`| Specifies whether to deploy a load balancer or use the host network. | Boolean | `false` |
-| `ingress.certificate`| Specify the base64 encoded x509 SSL certificate for the NGINX Ingress Controller. If left blank, the NGINX Ingress Controller will generate a self-signed certificate. | String | `""` |
-| `ingress.key`| Specify the base64 encoded x509 SSL certificate key for the NGINX Ingress Controller. | String | `""` |
-| `ingress.annotations`| A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the nginx configuration. This is an advanced setting, we recommend you consult with your assigned support team representative prior to modification. | Object | `{}` |
-| `ingress.ingressStaticIP`| Specify a static IP for the ingress load balancer service. If empty, a dynamic IP address will be generated. | String | `""` |
+| `ingress.certificate`| Specify the base64 encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the NGINX Ingress Controller will generate a self-signed certificate. | String | `""` |
+| `ingress.key`| Specify the base64 encoded x509 SSL certificate key for the Nginx Ingress Controller. | String | `""` |
+| `ingress.annotations`| A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification. | Object | `{}` |
+| `ingress.ingressStaticIP`| Specify a static IP for the ingress load balancer service. If empty, a dynamic IP address will be assigned to the load balancer. | String | `""` |
 | `ingress.terminateHTTPSAtLoadBalancer`| Specifies whether to terminate HTTPS at the load balancer. | Boolean | `false` |
 
 
