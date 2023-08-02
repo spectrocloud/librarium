@@ -479,7 +479,8 @@ ingress:
 
 # Spectro Proxy
 
-The table lists parameters to configure the Spectro server-side proxy.
+You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](/integrations/frp) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](/vertex/system-management/reverse-proxy) documentation to learn more about setting up a reverse proxy server for Palette VerteX.
+
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
