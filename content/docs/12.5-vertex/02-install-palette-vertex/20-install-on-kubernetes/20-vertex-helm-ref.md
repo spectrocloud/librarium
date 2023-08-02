@@ -27,7 +27,7 @@ The following parameters are required for a successful installation of Palette V
 | `mongo.databasePassword` | The base64 encoded MongoDB password. For more information, refer to the [MongoDB](#mongodb) section. | String |
 | `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
 | `config.env.ociRegistry`/`config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. For more information, refer to the [Registry](#registries) section. | Object |
-| `scar`| The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
+| `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 
 ## MongoDB 
@@ -148,7 +148,7 @@ The following parameters are used to configure the environment.
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `env.rootDomain` | Specifies the domain name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to the ingress-nginx-controller load balancer's IP address. | String| `""` |
+| `env.rootDomain` | Specifies the domain name assigned to Palette Vertex. The value assigned should have a Domain Name System (DNS) CNAME record mapped to the ingress-nginx-controller load balancer IP address. | String| `""` |
 | `env.installerMode` | Specifies the installer mode. Do not modify the value.| String| `self-hosted` |
 | `env.installerCloud` | Specifies the cloud provider. Leave this parameter empty if you are installing a self-hosted Palette VerteX.  | String | `""` |
 
@@ -308,7 +308,7 @@ Palette VerteX conducts a series of automation tasks to support the deployment o
 | --- | --- | --- | --- |
 | `imagesHostEndpoint`| The registry endpoint for the OpenStack images. | String | `https://openstackgoldenimage.s3.amazonaws.com` |
 | `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the OpenStack images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the OpenStack enpoint. | String | `""` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the OpenStack endpoint. | String | `""` |
 
 ```yaml
 config:
@@ -395,10 +395,10 @@ config:
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `imagesHostEndpoint`| The registry endpoint for the VMware Vsphere images. | String | `https://vmwaregoldenimage.s3.amazonaws.com` |
+| `imagesHostEndpoint`| The registry endpoint for the VMware vSphere images. | String | `https://vmwaregoldenimage.s3.amazonaws.com` |
 | `overlordOvaLocation`| The location of the overlord OVA file. The support team provides this URL. | String | `""` |
-| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the VMware Vsphere images. | Boolean | `false` |
-| `caCert`| The base64-encoded certificate authority (CA) certificate for the VMware Vsphere endpoint. | String | `""` |
+| `insecureSkipVerify`| Specifies whether to skip Transport Layer Security (TLS) verification for the VMware vSphere images. | Boolean | `false` |
+| `caCert`| The base64-encoded certificate authority (CA) certificate for the VMware vSphere endpoint. | String | `""` |
 
 ```yaml
 config:
@@ -456,9 +456,9 @@ Palette VerteX deploys an Nginx Ingress Controller. This controller is used to r
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `enabled`| Specifies whether deploy an Nginx controller. Set to `false` if you don't want an nginx controller deployed.  | Boolean | `true` |
+| `enabled`| Specifies whether deploy an Nginx controller. Set to `false` if you don't want an Nginx controller deployed.  | Boolean | `true` |
 | `ingress.internal`| Specifies whether to deploy a load balancer or use the host network. | Boolean | `false` |
-| `ingress.certificate`| Specify the base64 encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the NGINX Ingress Controller will generate a self-signed certificate. | String | `""` |
+| `ingress.certificate`| Specify the base64 encoded x509 SSL certificate for the Nginx Ingress Controller. If left blank, the Nginx Ingress Controller will generate a self-signed certificate. | String | `""` |
 | `ingress.key`| Specify the base64 encoded x509 SSL certificate key for the Nginx Ingress Controller. | String | `""` |
 | `ingress.annotations`| A map of key-value pairs that specifies load balancer annotations for ingress. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification. | Object | `{}` |
 | `ingress.ingressStaticIP`| Specify a static IP for the ingress load balancer service. If empty, a dynamic IP address will be assigned to the load balancer. | String | `""` |

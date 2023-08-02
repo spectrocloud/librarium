@@ -122,7 +122,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     | `mongo.password` | A base64 encoded password for the MongoDB database. | string |
     | `env.rootDomain` | The the domain name you will use for the Palette VerteX installation. | string |
     | `ociRegistry` | The OCI registry credentials for Palette VerteX images. Use the parameter `ociEcrRegistry` if deploying Palette VerteX in an AWS environment. These credentials are provided by our support team.| object |
-    | `scar` | The Spectro Cloud Artifactory Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
+    | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
     <br />
 
@@ -175,7 +175,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
   <InfoBox>
 
-  The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
+  The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
 
   </InfoBox>
 
