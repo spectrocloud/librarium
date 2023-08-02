@@ -24,16 +24,18 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available.
 
 
+- [Helm](https://helm.sh/docs/intro/install/) is installed and available.
+
 
 - Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette VerteX. We recommend using a role with cluster-admin permissions to install Palette VerteX.
-
 
 
 - The Kubernetes cluster must be using Kubernetes version 1.25 or greater.
 
 
 
-- [Helm](https://helm.sh/docs/intro/install/) is installed and available.
+- The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette VerteX requires a CSI to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+
 
 
 - The Kubernetes cluster must have the following minimum resources:
@@ -160,6 +162,14 @@ The following instructions are written agnostic to the Kubernetes distribution y
     kubectl get service ingress-nginx-controller --namespace ingress-nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
+    <br />
+
+    <InfoBox>
+
+    As you create tenants in Palette VerteX, the tenant name is prefixed to the domain name you assigned to Palette VerteX. For example, if you create a tenant named `tenant1` and the domain name you assigned to Palette VerteX is `vertex.example.com`, the tenant URL will be `tenant1.vertex.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to the Palette VerteX load balancer.
+
+    </InfoBox>
+
 
 7. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the system console, open a web browser and paste the following URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. 
 
@@ -196,7 +206,7 @@ Use the following steps to validate the Palette VerteX installation.
 
 
 
-2. Log in using the credentials you received from our support team. After login in, you will be prompted to create a new password. Enter a new password and save yor changes. You will be redirected to the Palette VerteX system console.
+2. Log in using the credentials you received from our support team. After login in, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
 
 
 3. Open a terminal session and issue the following command to verify the Palette VerteX installation. The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` namespaces.
@@ -204,47 +214,58 @@ Use the following steps to validate the Palette VerteX installation.
     <br />
 
     ```shell
-    kubectl get deployments --all-namespaces
+    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+    | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
     ```
 
     Your output should look similar to the following.
 
     ```shell hideClipboard
-    NAMESPACE       NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
-    cert-manager    cert-manager                  1/1     1            1           2d2h
-    cert-manager    cert-manager-cainjector       1/1     1            1           2d2h
-    cert-manager    cert-manager-webhook          1/1     1            1           2d2h
-    cp-system       spectro-cp-ui                 1/1     1            1           44h
-    hubble-system   auth                          2/2     2            2           44h
-    hubble-system   cloud                         2/2     2            2           44h
-    hubble-system   configserver                  1/1     1            1           44h
-    hubble-system   event                         2/2     2            2           44h
-    hubble-system   foreq                         1/1     1            1           44h
-    hubble-system   hashboard                     2/2     2            2           44h
-    hubble-system   hutil                         2/2     2            2           44h
-    hubble-system   mgmt                          1/1     1            1           44h
-    hubble-system   mongodb-enterprise-operator   1/1     1            1           44h
-    hubble-system   msgbroker                     1/1     1            1           44h
-    hubble-system   oci-proxy                     1/1     1            1           44h
-    hubble-system   spectrocluster                3/3     3            3           44h
-    hubble-system   system                        2/2     2            2           44h
-    hubble-system   timeseries                    3/3     3            3           44h
-    hubble-system   user                          2/2     2            2           44h
-    jet-system      jet                           1/1     1            1           44h
-    kube-system     coredns                       2/2     2            2           2d2h
-    kube-system     ebs-csi-controller            2/2     2            2           2d
-    ui-system       spectro-ui                    1/1     1            1           44h
+    cp-system       spectro-cp-ui-67847957-8rqpb                   Running
+    hubble-system   auth-5797cf677d-rc5v6                          Running
+    hubble-system   auth-5797cf677d-xdzzc                          Running
+    hubble-system   cloud-5bbf77786b-5pfq2                         Running
+    hubble-system   cloud-5bbf77786b-l9bv7                         Running
+    hubble-system   configserver-84594b5586-6tx6c                  Running
+    hubble-system   event-64676974c7-49hgz                         Running
+    hubble-system   event-64676974c7-7t2rm                         Running
+    hubble-system   foreq-644f9645b6-4bdnk                         Running
+    hubble-system   hashboard-696656644-l5qfd                      Running
+    hubble-system   hashboard-696656644-ztr5j                      Running
+    hubble-system   hutil-664bbc47d8-28glx                         Running
+    hubble-system   hutil-664bbc47d8-4b8fs                         Running
+    hubble-system   mgmt-7695c774c6-86qt7                          Running
+    hubble-system   mongo-0                                        Running
+    hubble-system   mongo-1                                        Running
+    hubble-system   mongo-2                                        Running
+    hubble-system   mongodb-enterprise-operator-5749cd6d5c-bqvp2   Running
+    hubble-system   mongoops-0                                     Running
+    hubble-system   mongoops-db-0                                  Running
+    hubble-system   mongoops-db-1                                  Running
+    hubble-system   mongoops-db-2                                  Running
+    hubble-system   msgbroker-69ff688569-llkn9                     Running
+    hubble-system   oci-proxy-745797f84d-hb55v                     Running
+    hubble-system   packsync-28182360-tv4zf                        Succeeded
+    hubble-system   spectrocluster-7648978fdb-6jcfb                Running
+    hubble-system   spectrocluster-7648978fdb-klk2g                Running
+    hubble-system   spectrocluster-7648978fdb-wjtl5                Running
+    hubble-system   system-5c7db5d788-nwwgr                        Running
+    hubble-system   system-5c7db5d788-w86w2                        Running
+    hubble-system   timeseries-6fc87b7d88-fbmbs                    Running
+    hubble-system   timeseries-6fc87b7d88-hssd4                    Running
+    hubble-system   timeseries-6fc87b7d88-wstng                    Running
+    hubble-system   user-cdfb8bcb6-j2vnl                           Running
+    hubble-system   user-cdfb8bcb6-knzz9                           Running
+    ingress-nginx   ingress-nginx-admission-create-qjbvp           Succeeded
+    ingress-nginx   ingress-nginx-admission-patch-rh6vp            Succeeded
+    ingress-nginx   ingress-nginx-controller-4sclg                 Running
+    ingress-nginx   ingress-nginx-controller-dllvg                 Running
+    ingress-nginx   ingress-nginx-controller-tjfzt                 Running
+    jet-system      jet-549656486c-2dnft                           Running
+    ui-system       spectro-ui-66648bfbb8-r25x2                    Running
     ```
 
 
 # Next Steps
 
-You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by enabling HTTPS for your Palette VerteX environment. You can also create the first tenant to host your users. Use the following links to learn more:
-
-<br />
-
-
-- [SSL Certificate Management](/vertex/system-management/ssl-certificate-management)
-
-
-- [Create a Tenant](/vertex/system-management/tenant-management#createatenant)
+You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](/vertex/system-management/tenant-management#createatenant) page for instructions on how to create a tenant.
