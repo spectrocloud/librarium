@@ -14,17 +14,17 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow users on the tenant to use features that are *not* FIPS-compliant, such as tenant cluster backup and restore or various scanning capabilities for compliance, security, validation, and software bill of materials (SBOM).
+You can allow users on the tenant to use features that are *not* FIPS-compliant, such as tenant cluster backup and restore or various scanning capabilities for compliance, security, validation, and software bill of materials (SBOM). Prior to enabling non-FIPS features, the **Scan** and **Backups** tabs are not displayed on the Cluster overview page. 
 
 # Prerequisites
 
-- Palette can back up clusters to several locations. For Backup prerequisites, refer to [Backup-Restore](/clusters/cluster-management/backup-restore#prerequisites).
+- Palette can back up clusters to several locations. To learn more, review [Backup-Restore](/clusters/cluster-management/backup-restore).
 
 
 - There are no prerequisites for restoring clusters or performing scans.
 
 
-# Allow non-FIPS features
+# Allow non-FIPS Features
 
 
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
@@ -37,10 +37,10 @@ You can allow users on the tenant to use features that are *not* FIPS-compliant,
 
 ![Diagram showing the Allow non-FIPS features toggle enabled.](/vertex_use-non-fips-settings_nonFips-features.png)
 
+
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-[Resources](/vertex/enable-non-fips-settings/use-non-fips-features#resources) listed below will guide you to configure and schedule cluster backups and describe available scans you can schedule during cluster deployment.
-
+Use the [Resources](/vertex/system-management/enable-non-fips-settings/use-non-fips-features#resources) listed below for guidance on creating and restoring backups and initiating scans.
 
 # Validate
 
@@ -48,10 +48,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu** and select **Project Tenant Settings** (?). The **Backup Locations** menu choice is displayed in the **Tenant Settings** Menu. 
-
-
-3. Navigate to the left **Main Menu** and click on **Clusters**. The **Backups** and **Scan** tabs are displayed. 
+2. Navigate to the left **Main Menu** and select **Clusters**. The **Scan** and **Backups** tabs are displayed on the **Cluster Overview** page. These tabs *are not* displayed when the **Allow non-FIPS features** option is disabled.
 
 
 # Resources 

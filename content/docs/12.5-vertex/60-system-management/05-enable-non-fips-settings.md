@@ -21,13 +21,13 @@ If desired, you can allow the consumption of certain non-FIPS functionality in P
 
 # Resources
 
-- [Use non-FIPS Add-On Packs](/vertex/enable-non-fips-settings/use-non-fips-addon-packs)
+- [Use non-FIPS Add-On Packs](/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs)
 
 
-- [Use non-FIPS Features](/vertex/enable-non-fips-settings/use-non-fips-features)
+- [Use non-FIPS Features](/vertex/system-management/enable-non-fips-settings/use-non-fips-features)
 
 
-- [Allow Cluster Import](/vertex/enable-non-fips-settings/allow-cluster-import)
+- [Allow Cluster Import](/vertex/system-management/enable-non-fips-settings/allow-cluster-import)
 
 
 - [Spectro Cloud FIPS 140-2 Certification](/compliance#fips140-2)

@@ -14,7 +14,10 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components are listed below. To learn more, refer to [FIPS-Compliant Components]().
+Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components are listed below. To learn more about these and other Palette VerteX components, refer to [FIPS-Compliant Components](/vertex/fips-compliant%20components).
+
+<br />
+
     
 - Operating System (OS)
 
@@ -24,7 +27,11 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
 - Container Storage Interface (CSI)
 
-You can allow users on the tenant to customize their cluster profiles by using add-on packs, which may *not* be FIPS-compliant. Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security, monitoring, logging, and more.
+The screenshot shows the FIPS-compliant icon used to indicate full FIPS compliance next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
+
+![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png) 
+
+You can allow tenant users to customize their cluster profiles by using add-on packs, which *may not* be FIPS-compliant. Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security, monitoring, logging, and more.
 
 
 # Prerequisites
@@ -45,11 +52,11 @@ There are no prerequisites.
 
 
 ![Diagram showing the Allow non-FIPS add-on packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-addon-packs.png)
-
+ 
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-[Resources](/vertex/enable-non-fips-settings/use-non-fips-addon-packs#resources) listed below provide a searchable list of packs that can be added to a cluster profile and steps to create an add-on profile.  
+[Resources](/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs#resources) listed below provide a searchable list of packs that users can to a cluster profile. Palette VerteX will apply the appropriate icon next to packs and imported clusters to indicate their FIPS compliance status.   
 
 
 # Validate
@@ -71,6 +78,9 @@ To disable the setting, toggle this option off and confirm you want to disable i
 
 
 - [Create an Add-on Profile](/cluster-profiles/create-add-on-profile)
+
+
+- [FIPS Status Icons](/vertex/fips-status-icons)
 
 
 

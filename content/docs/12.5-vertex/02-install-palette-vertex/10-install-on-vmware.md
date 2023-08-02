@@ -19,7 +19,7 @@ Use the instructions listed below to install Palette VerteX On VMware vSphere wi
 
 # Resources
 
-- [Install on VMware vSphere with Internet Connectivity](/vertex/install-palette-vertex/install-on-vmware/install)
+- [Install on VMware vSphere](/vertex/install-palette-vertex/install-on-vmware/install)
 
 
 - [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-on-vmware/install-airgap)

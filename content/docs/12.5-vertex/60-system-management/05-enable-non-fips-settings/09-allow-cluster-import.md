@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow users to import Kubernetes clusters that were not deployed through Palette, including some that are *not* FIPS-compliant, and their FIPS compliance cannot be confirmed.
+You can allow tenant users to import Kubernetes clusters that were not deployed through Palette, including some that *are not* or are only *partially* FIPS-compliant. Palette VerteX uses icons to indicate FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
 
 # Prerequisites
 
@@ -35,11 +35,10 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 
 ![Diagram showing the Allow non-FIPS cluster import toggle enabled.](/vertex_use-non-fips-settings_nonFips-cluster-import.png)
 
-To disable the setting, toggle this option off and confirm you want to disable it.
+To disable the setting, toggle this option off and confirm you want to disable it. 
 
-Use the listed Resources for guidance on creating and restoring backups and initiating scans. 
+[Resources](/vertex/system-management/enable-non-fips-settings/allow-cluster-import#resources) listed below will guide you on how to import a cluster, and they describe the import modes and limitations to be aware of. 
 
-[Resources](/vertex/enable-non-fips-settings/allow-cluster-import#resources) listed below will guide you on how to import a cluster and import modes and limitations to be aware of. 
 
 # Validate
 
@@ -49,7 +48,7 @@ Use the listed Resources for guidance on creating and restoring backups and init
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-3. Select your imported cluster from the cluster list. A successful cluster import will have the cluster status Running.
+3. Click on **Add New Cluster**. The **Import Cluster** option is displayed on the **Create a New Cluster** page. When **Allow non-FIPS cluster import** is disabled, the **Import Cluster** option is not available.
 
 
 # Resources

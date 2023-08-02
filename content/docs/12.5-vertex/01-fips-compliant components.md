@@ -12,13 +12,12 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# FIPS 140-2 Compliance in Palette VerteX
+# Overview
 
 Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of Standards and Technology (NIST) in the United States for computer security and encryption algorithms. 
 
 FIPS 140-2 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these modules must meet to ensure their security and integrity. 
 
-<br />
 
 ## FIPS Support in Clusters
 
@@ -43,20 +42,11 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 - Container Storage Interface (CSI)
   - vSphere CSI
 
-<br />
 
-## Management Platform
+## Management Plane
 
-The Palette VerteX management platform consists of the following FIPS-compliant components. 
+All services in the management plane are FIPS compiled with Go 1.19 using BoringCrypto libraries and static linking. 
 
-What should be listed?
-
-- etcd
-- ??
-- ??
-
-
-<br />
 
 ## Kubernetes
 
@@ -64,13 +54,13 @@ Our security-hardened PXK and PXK-E packs support the following.
 
 <br />
 
-What should be listed here?
-
-- API Server
-- Controller Manager
-- Scheduler
-- Kubelet
-- Kubectl
+- Helm
+- Open Container Initiative (OCI) Registry As Storage (ORAS)
+- DevSpace open-source developer tool for Kubernetes
+- Kubectl command line tool
+- Kustomize to enable customizing YAML files
+- Amazon Web Services (AWS) IAM Authenticator
+- etcd
 
 
 
