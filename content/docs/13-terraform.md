@@ -42,9 +42,9 @@ The Spectro Cloud provider has the following requirements:
 
 ## Usage
 
-For an end-to-end cluster provisioning example, please follow the appropriate guide: [Spectro Cloud E2E Examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e).
+For an end-to-end cluster provisioning example, check out the [end-to-end examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e).
 
-Specific resource examples are available directory in the [Spectro Cloud Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud) Terraform provider documentation. One usage example on `spectrocloud_cloudaccount_vsphere` linked for quick reference: [spectrocloud_cloudaccount_vsphere](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_vsphere).
+You can find resource examples in the  [resource directory](https://registry.terraform.io/providers/spectrocloud/spectrocloud).
 
 
 ## Modules
