@@ -249,17 +249,32 @@ spectro registry login --insecure http://example.com:5000
     curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
     ```
 
-# Configure a Custom Pack Registry on the Palette Console
+# Configure a Custom Pack Registry in Palette
 
-Once the deployment of the pack registry server is complete, configure it with the console as follows:
+Once you deploy the pack registry server, use the following steps to configure the custom pack registry in Palette. 
+<br />
 
-1. As a Tenant Administrator, navigate to **Admin Settings** > **Registries** > **Pack Registries**.
-
-
-2. Click on **Add New Pack Registry** and provide the pack registry name, endpoint, and user credentials.
+1. Log in to Palette, and switch to the Tenant admin view. 
 
 
-3. Click on **Confirm** once the details are filled.
+2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
+
+
+3. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a custom pack registry, as highlighted in the screenshot below. 
+
+  ![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+
+
+4. Provide the pack registry name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry endpoint. 
+
+
+5. If you want a TLS verification for a secure HTTPS connection while communicating with your pack registry server, upload your TLS certificate issued from a certificate authority (CA). 
+
+
+6. If you do not want a TLS verification, select the **Insecure Skip TLS Verify** checkbox. 
+
+
+7. Click the **Confirm** button after providing all details.
 
 # Upload the CA Certificate to Palette
 
