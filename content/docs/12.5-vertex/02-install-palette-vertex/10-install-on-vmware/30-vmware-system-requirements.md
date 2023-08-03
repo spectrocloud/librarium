@@ -37,7 +37,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 ## Root-Level Role Privileges
 
-Root-level role privileges are only applied to root objects and Data center objects.
+Root-level role privileges are only applied to root objects and data center objects.
 
 | **vSphere Object** | **Privilege**                           |
 |--------------------|-----------------------------------------|
@@ -54,6 +54,10 @@ Root-level role privileges are only applied to root objects and Data center obje
 ## Spectro Role Privileges
 
 Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
+
+<br />
+
+<<< With mention of OVA, this InfoBox doesn't seem to apply. Is the spectro-templates in SCAR now? >>>
 
 <br />
 
@@ -236,3 +240,7 @@ The following table lists Spectro role privileges for VMs by category.
 
 
 </Tabs>
+
+<br />
+
+<br />

@@ -14,11 +14,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow users on the tenant to use features that are *not* FIPS-compliant, such as tenant cluster backup and restore or various scanning capabilities for compliance, security, validation, and software bill of materials (SBOM). Prior to enabling non-FIPS features, the **Scan** and **Backups** tabs are not displayed on the Cluster overview page. 
+You can allow tenant users access to Palette features that are *not* FIPS-compliant, such as tenant cluster backup and restore or various scanning capabilities for compliance, security, validation, and software bill of materials (SBOM). Prior to enabling non-FIPS features, the **Scan** and **Backups** tabs are not displayed on the **Cluster Overview** page. 
 
 # Prerequisites
 
-- Palette can back up clusters to several locations. To learn more, review [Backup-Restore](/clusters/cluster-management/backup-restore).
+- Palette can back up clusters to several locations. To learn about backup requirements, review [Backup-Restore](/clusters/cluster-management/backup-restore).
 
 
 - There are no prerequisites for restoring clusters or performing scans.
@@ -48,7 +48,7 @@ Use the [Resources](/vertex/system-management/enable-non-fips-settings/use-non-f
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu** and select **Clusters**. The **Scan** and **Backups** tabs are displayed on the **Cluster Overview** page. These tabs *are not* displayed when the **Allow non-FIPS features** option is disabled.
+2. Navigate to the left **Main Menu** and select **Clusters**. The **Scan** and **Backups** tabs are now displayed on the **Cluster Overview** page.
 
 
 # Resources 

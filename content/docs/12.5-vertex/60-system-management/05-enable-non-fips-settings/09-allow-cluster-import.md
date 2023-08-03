@@ -14,7 +14,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can allow tenant users to import Kubernetes clusters that were not deployed through Palette, including some that *are not* or are only *partially* FIPS-compliant. Palette VerteX uses icons to indicate FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
+You can allow tenant users to import Kubernetes clusters that were not deployed through Palette, including some that *are not* FIPS compliant or are only *partially* compliant. Prior to enabling cluster import, the **Import Cluster** option is not available. 
+
+Palette VerteX displays icons next to clusters to indicate their FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
+
+
 
 # Prerequisites
 
@@ -28,7 +32,7 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
 
-2. Navigate to the left Main Menu and click on **Tenant Settings**. Next, on the **Tenant Settings Menu**, select **Platform Settings**.
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**. Next, on the **Tenant Settings Menu**, select **Platform Settings**.
 
 
 3. Enable the **Allow non-FIPS cluster import** option. When you enable this option, you are prompted to confirm importing clusters into the tenant that may not be FIPS-compliant.
@@ -37,7 +41,7 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 
 To disable the setting, toggle this option off and confirm you want to disable it. 
 
-[Resources](/vertex/system-management/enable-non-fips-settings/allow-cluster-import#resources) listed below will guide you on how to import a cluster, and they describe the import modes and limitations to be aware of. 
+[Resources](/vertex/system-management/enable-non-fips-settings/allow-cluster-import#resources) listed below will guide you on how to import a cluster and describe the import modes and limitations to be aware of. 
 
 
 # Validate
@@ -48,7 +52,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
 
-3. Click on **Add New Cluster**. The **Import Cluster** option is displayed on the **Create a New Cluster** page. When **Allow non-FIPS cluster import** is disabled, the **Import Cluster** option is not available.
+3. Click on **Add New Cluster**. The **Import Cluster** option is now displayed on the **Create a New Cluster** page.
 
 
 # Resources

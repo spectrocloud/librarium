@@ -1,7 +1,7 @@
 ---
 title: "Instructions"
 metaTitle: "Install Palette VerteX"
-metaDescription: "Learn how to install Palette VerteX on VMware vSphere."
+metaDescription: "Learn how to deploy Palette VerteX on VMware vSphere." 
 icon: ""
 hideToC: false
 fullWidth: false
@@ -17,9 +17,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA) with the following resources: 
 
-- 6 vCPU
+- 8 vCPU
+- 16 GB memory
+- 120 GB storage
+
+<!-- - 6 vCPU
 - 12 GB memory
-- 70 GB storage
+- 70 GB storage -->
 
 You can invoke the Palette CLI on any Linux x86-64 system with the docker daemon installed and connectivity to the Palette console and the VMware vSphere where Palette VerteX will be deployed. 
 
@@ -66,70 +70,67 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 
 # Install the Enterprise Cluster
 
-1. Download the Palette CLI. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup).
+1. Download the Palette CLI. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup) for guidance.
 
 
 2. Log in to the vCenter Server by using the vSphere Client.
 
 
-3. Navigate to the Datacenter and select the cluster you want to use for the installation. Right-click on the cluster and select **vertex-installer**. 
+3. Navigate to the Datacenter and select the cluster you want to use for the installation.
 
 
-4. Click the **Power On** icon to create a Virtual Machine (VM) instance. The installer will provide a DNS name and IP address for the instance, which you will use to SSH into the instance. This may take a few minutes. 
+4. Select **vertex-installer**. 
+
+
+5. Click the **Power On** icon to create a Virtual Machine (VM) instance. The installer will provide a DNS name and IP address for the instance, which you will use to SSH into the instance. This may take a few minutes. 
 
 ![Screenshot of the DNS name and IP address displayed when a VM instance is created.](/vertex_installation_install-on-vmware_dns-and-ip.png)
 
 <br />
 
 
-5. Open a terminal window and SSH into the instance using the DNS name and IP address the vertex-installer provides. For example `ssh -i ~/.ssh/vertex_id_rsa ubuntu@10.10.139.195`.
+6. Open a terminal window and SSH into the instance using the DNS name and IP address the vertex-installer provides. For example `ssh -i ~/.ssh/vertex_id_rsa ubuntu@10.10.139.195`.
 
 ```bash hideClipboard
 ssh -i ~/.ssh/vertex_id_rsa <dns_name>@<ip_address>
 ```
 
 
-6. Invoke the Palette CLI by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
+7. Invoke the Palette CLI by using the following command. The installer prompts you for configuration details and then initiates the installation. For more information about the ``ec`` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
 
 ```bash
 palette ec install
 ```
 
+8. At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
-  The first prompts to enable Ubuntu Pro and provide its token, enable FIPS, and provide the required repository URL and password will give you access to Palette VerteX.
 
-  <br />
-
-```bash hideClipboard
-No palette CLI config file detected. One will be created.
-Enable Ubuntu Pro: y
-Ubuntu Pro token: *****
-Enable FIPS? [y/N]: y
-Spectro Cloud repository location: < repository_URL >
-Spectro Cloud repository password: ****************
-```
+9. Type `y` to enable Ubuntu Pro and provide your Ubuntu Pro token. This enables the Ubuntu license.
 
 <br />
 
-7. When prompted to enable Ubuntu Pro, type `y` and provide your Ubuntu Pro token. This enables the Ubuntu license.  
+<WarningBox>
+
+To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
+
+</WarningBox>
+
+<br />
 
 
-8. When prompted to enable FIPS, type `y`. The repository location is displayed. 
+10. Provide the repository URL you received from our support team.
 
 
-9. Enter the repository URL you received from our Support team.
+11. Enter the repository password.
 
 
-10. Enter the repository password.
+12. Choose ``VMware vSphere`` as the cloud type. This is the default.
 
 
-11. Choose ``VMware vSphere`` as the cloud type. This is the default.
+13. Type an enterprise cluster name.
 
 
-12. Type an enterprise cluster name.
-
-
-13. When prompted, enter the information listed in each of the following tables.
+14. When prompted, enter the information listed in each of the following tables.
 
 <br />
 
@@ -171,7 +172,7 @@ This information is used to determine where the Palette VerteX management plane 
 |**SSH Public Key(s)** | Provide any public SSH keys you will use to access clusters in your project for maintenance and troubleshooting. This option opens a vi file. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference. |
 
 
-14. Specify the IP pool configuration. The placement type can be Static or DDNS. Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IPs using DNS.
+15. Specify the IP pool configuration. The placement type can be Static or DDNS. Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IPs using DNS.
 
 
 #### Static Placement Configuration
@@ -220,11 +221,11 @@ Password: admin
 ```
 
 
-15.  Command-click the URL if you are on a Mac or copy it to a browser to access the System Console. You will be prompted to reset the password.
+16.  Command-click the URL if you are on a Mac or copy it to a browser to access the System Console. You will be prompted to reset the password.
 
 <InfoBox>
 
-The first time you visit the Palette VerteX system console, you may see a warning message about the SSL certificate. This is expected, as you have not yet uploaded the SSL certificate to Palette VerteX. You can safely ignore this warning message. Depending on your browser, accept the message and proceed to the page.
+The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
 
 </InfoBox> 
 
@@ -232,9 +233,12 @@ The first time you visit the Palette VerteX system console, you may see a warnin
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
 
 <br />
+
+
+17. Log in to the system console using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
   
 
-16. Upon logging in, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
+18. After login, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
 
 
 ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
@@ -250,7 +254,9 @@ You can verify the installation is successful if you can access the system conso
 
 You can validate that a three-node Kubernetes cluster is launched and Palette VerteX is deployed on it.
 
-1. Log in to the vCenter Server using vSphere Client.
+<br />
+
+1. Log in to the vCenter Server by using vSphere Client.
 
 
 2. Navigate to the Datacenter and locate your VM instance, and select the VM to access its details page.
@@ -271,7 +277,7 @@ You can validate that a three-node Kubernetes cluster is launched and Palette Ve
 7. Log in using the default credentials, and reset the password when prompted. 
 
 
-8. A Summary page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the Summary page shows there are zero tenants.
+8. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
 
 
 
@@ -285,12 +291,14 @@ You can validate that a three-node Kubernetes cluster is launched and Palette Ve
 
 # Next Steps
 
+You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Refer to [Create a Tenant](/vertex/system-management/tenant-management) for instructions. 
+
 After you create the tenant, you are ready to configure authentication types in tenant settings and create users and teams.
 
 
 # Resources
 
-TBS
+- [Create a Tenant](/vertex/system-management/tenant-management) 
 
 <br />
    
