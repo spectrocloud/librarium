@@ -50,9 +50,9 @@ All services in the management plane are FIPS compiled with Go 1.19 using Boring
 
 ## Kubernetes
 
-Our security-hardened PXK and PXK-E packs support the following.
+Refer to the [Palette eXtended Kubernetes (PXK)](/integrations/kubernetes) and [Palette eXtended Kubernetes-Edge (PXK-E)](/integrations/kubernetes-edge)  to learn about these security-hardened packs.
 
-<br />
+<!-- <br />
 
 - Helm
 - Open Container Initiative (OCI) Registry As Storage (ORAS)
@@ -60,7 +60,7 @@ Our security-hardened PXK and PXK-E packs support the following.
 - Kubectl command line tool
 - Kustomize to enable customizing YAML files
 - Amazon Web Services (AWS) IAM Authenticator
-- etcd
+- etcd -->
 
 
 
