@@ -28,7 +28,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 - Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette VerteX. We recommend using a role with cluster-admin permissions to install Palette VerteX.
 
 
-- The Kubernetes cluster must be using Kubernetes version 1.25 or greater.
+- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes version v1.25 to v1.27.
 
 
 
@@ -56,7 +56,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
   - TCP/6443: Outbound traffic from the Palette VerteX management cluster to the deployed clusters' Kubernetes API server.
 
 
-- Ensure [Cert Manager](https://cert-manager.io/docs) v1.11.0 or greater is installed in the Kubernetes cluster. Use the official Cert Manager [installation guide](https://cert-manager.io/docs/installation/) for additional guidance.
+- Ensure [Cert Manager](https://cert-manager.io/docs) v1.12.0 or greater is installed in the Kubernetes cluster. Use the official Cert Manager [installation guide](https://cert-manager.io/docs/installation/) for additional guidance.
 
 
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
@@ -119,9 +119,8 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
     | **Parameter** | **Description** | **Type** |
     | --- | --- | --- |
-    | `mongo.password` | A base64 encoded password for the MongoDB database. | string |
-    | `env.rootDomain` | The domain name you will use for the Palette VerteX installation. | string |
-    | `ociRegistry` | The OCI registry credentials for Palette VerteX images. Use the `ociEcrRegistry` parameter if deploying Palette VerteX in an AWS environment. Our support team provides these credentials.| object |
+    | `env.rootDomain` | The URL name or IP address you will use for the Palette VerteX installation. | string |
+    | `ociRegistry` or `ociEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs.| object |
     | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
     <br />
