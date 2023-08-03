@@ -23,26 +23,26 @@ The following are the high-level steps of deploying a PCG in a private data cent
 2. Deploy the cloud gateway installer in the data center environment.
 3. Configure the cloud gateway in Palette, and launch the cloud gateway cluster.
 
-While deploying a PCG, you may encounter one of the following scenarios during the abovementioned stages. Some scenarios below apply to all data center environments, whereas others apply to specific data center environments, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
+While deploying a PCG, you may encounter one of the following scenarios during the abovementioned steps. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
 <br />
 
 # Scenairo - Jet Crashback Loop
 
-After you finish configuring the cloud gateway in Palette, Palette starts provisioning the cloud gateway cluster. During provisioning, one of the internal Palette components may undergo a *CrashLoopBackOff* state. 
+After you finish configuring the PCG in Palette, Palette starts provisioning the PCG cluster. During the provisioning, one of the internal Palette components may undergo a *CrashLoopBackOff* state. 
 
 The internal component, *Jet*, will transition to a healthy state once the PCG cluster is successfully registered with Palette. 
 <br />
 
 ## Debug Steps
 
-Wait 10-15 minutes for the PCG installation to finish so that the internal component receives the required authorization token from Palette. Once the internal component is authorized, the cloud gateway cluster will provision successfully. 
+Wait 10-15 minutes for the PCG installation to finish so that the internal component receives the required authorization token from Palette. Once the internal component is authorized, the PCG cluster will complete the initalization successfully. 
 <br />
 
-# Scenario - Gateway Installer VM Unable to Register with Palette
+# Scenario - Gateway Installer VM Unable to Register With Palette
 
-When deploying the gateway installer in VMware vSphere, you deploy the OVF template and then power on the gateway installer Virtual Machine (VM). After powering it on, the gateway installer goes through a bootstrap process and attempts to register with Palette. This process typically takes between five to ten minutes. 
+When deploying the PCG installer in VMware vSphere, you use an OVF template and then power on the gateway installer Virtual Machine (VM). After powering it on, the gateway installer goes through a bootstrap process and attempts to register with Palette. This process typically takes between five to ten minutes. 
 
-If the installer fails to register with Palette within the stipulated timeframe, it could indicate a bootstrapping error. The error can occur due to network connectivity issues, incorrect pairing code, or an incorrect endpoint configuration for the Palette in the gateway installer template settings.
+If the installer fails to register with Palette within the expected timeframe, it could indicate a bootstrapping error. The error can occur due to network connectivity issues, incorrect pairing code, or an incorrect endpoint configuration for Palette in the gateway installer template settings.
 <br />
 
 ## Debug Steps
@@ -62,7 +62,7 @@ If the installer fails to register with Palette within the stipulated timeframe,
 
   The **cloud-init-output.log** file will contain error messages if there are failures with connecting to Palette, authenticating, or downloading installation artifacts. A common cause for these errors is incorrect values provided to the OVF template deployment wizard, such as the Palette endpoint or a mistyped pairing code. 
   
-  The screenshot below highlights the OVF template properties you configure and must be careful about while deploying a gateway installer VM.
+  The screenshot below highlights the OVF template properties you must carefully configure and verify before deploying a gateway installer VM.
 
   ![A screenshot displaying the OVF template properties you  configure while deploying the gateway installer VM](/troubleshooting-pcg-template_properties.png)
 
@@ -70,7 +70,7 @@ If the installer fails to register with Palette within the stipulated timeframe,
 3. Double-check the accuracy of the pairing code used for the gateway installer VM. A pairing code is a unique authentication code Palette generates for each gateway installer instance. Confirm that it matches the value you copied from Palette. 
 
 
-4. Ensure the Palette endpoint is correct and has no trailing slash "`/`". If you use Palette SaaS, the default endpoint is `https://console.spectrocloud.com`. If you are using Palette deployed in a self-hosted environment, use the endpoint as applicable to you. If the Palette endpoint is incorrectly specified, relaunch a new gateway installer VM with the correct values.
+4. Ensure the Palette endpoint is correct and has no trailing slash "`/`". If you use Palette SaaS, the default endpoint is `https://console.spectrocloud.com`. If you are using a self-hosted Palette instance, use the domain name as applicable to you. If the Palette endpoint is incorrectly specified, relaunch a new gateway installer VM with the correct values.
   
 
 5. Another potential issue may be a lack of outbound connectivity from the gateway installer VM to Palette. The installer VM needs to have outbound connectivity directly or via a proxy to download the installation artifacts from Spectro Cloud. Check for any network restrictions or firewall rules in the network settings that may block communication. Adjust the proxy settings, if applicable, to fix the connectivity. Alternatively, you can relaunch a new gateway installer VM in a network that supports outbound connections to Palette.
@@ -115,57 +115,62 @@ If the installer fails to register with Palette within the stipulated timeframe,
 
 <br />
 
-# Scenario - Gateway Installer VM Fails to Get an IP Address
+# Scenario - Gateway Installer VM IP Address Assignment Error
 
-When deploying the gateway installer in VMware vSphere, you deploy the OVF template and then power on the gateway installer VM. After powering it on, the gateway installer VM may fail to get an IP address.
+When deploying the PCG installer in VMware vSphere, you use an OVF template and then power on the gateway installer VM. After powering it on, the gateway installer VM may fail to get an IP address.
 
-If the gateway installer VM fails to get an IP address, it implies a networking error or an incomplete cloud-init. The selected IP allocation scheme specified in the network settings of the gateway installer OVF template assigns an IP address to the gateway installer VM. The IP allocation scheme offers two options - static IP or DHCP. You must check the selected IP allocation scheme for troubleshooting.
+If the gateway installer VM fails to get an IP address assigned, it implies a networking error or an incomplete cloud-init. The selected IP allocation scheme specified in the network settings of the gateway installer OVF template assigns an IP address to the gateway installer VM. The IP allocation scheme offers two options - static IP or DHCP. You must check the selected IP allocation scheme for troubleshooting.
 <br />
 
 ## Debug Steps
 <br />
 
-1. If you have chosen the static IP allocation scheme, ensure you have correctly provided the values for the gateway IP address, DNS addresses, and static IP subnet prefix. Check that the subnet prefix you provided allows the creation of an IP pool with sufficient IP addresses to allocate to the new gateway installer VM. 
+1. If you chose the static IP allocation scheme, ensure you have correctly provided the values for the gateway IP address, DNS addresses, and static IP subnet prefix. Check that the subnet prefix you provided allows the creation of an IP pool with sufficient IP addresses to allocate to the new gateway installer VM. 
 
 
-2. If you have chosen the DHCP allocation scheme, check that the DHCP service is running on the DHCP server. Restart the service if it is not running already.
+2. If you chose the DHCP allocation scheme, check that the DHCP service is available on the DHCP server. Restart the service if it's not in an active state.
 
 
-3. If the DHCP server is running, recheck the DHCP scope and the DHCP reservations. The DHCP scope defines the range of IP addresses that the DHCP server allocates on the selected network. You must have sufficient IP addresses from the DHCP scope for dynamic allocation. 
+3. If the DHCP server is active, recheck the DHCP scope and the DHCP reservations. The DHCP scope defines the range of IP addresses that the DHCP server allocates on the selected network. You must have sufficient IP addresses from the DHCP scope for dynamic allocation. 
 
 
-4. If you have chosen the DHCP allocation scheme, ensure the Dynamic DNS is enabled in the DHCP server. A Dynamic DNS is only required if you are using DHCP. It is not required for a static IP allocation scheme.
+4. If you chose the DHCP allocation scheme, ensure Dynamic DNS is enabled in the DHCP server. A Dynamic DNS is only required if you are using DHCP. Dynamic DNS is not required for a static IP allocation scheme.
 
 
-5. If there are no network-related issues, SSH into the gateway installer VM using the username `ubuntu` and the SSH key you provided during the OVA import. Alternatively, open the web console of the gateway installer VM. 
+5. If there are no network-related issues, SSH into the gateway installer VM using the username `ubuntu` and the SSH public key you provided during the OVA import step. Alternatively, you can open the web console of the gateway installer VM. 
 
 
 6. Inspect the log files in the **/var/log** directory. 
 
  
-6. Examine the cloud-init logs for potential errors or warnings related to the IP address assignment.
+7. Examine the cloud-init logs for potential errors or warnings related to the IP address assignment.
+
+8. If the problem persists, email the log files to Spectro Cloud's support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
 <br />
 
 # Scenario - Cloud Gateway Installer Deployment Failed
 
-When deploying the gateway installer in VMware, you deploy the OVF template and power on the gateway installer VM. After powering it on, the gateway installer VM gets a public IP address, but the deployment does not succeed even after waiting more than ten minutes. A failed deployment of the cloud gateway installer will cause trouble configuring the cloud gateway in Palette.
+When deploying the gateway installer in VMware, you deploy the OVF template and power on the gateway installer VM. If the VM instance is supposed to receive a public IP address and the deployment fails, you cannot configure the cloud gateway in Palette. 
 
-The gateway installer deployment can fail due to internet connectivity or internal misconfigurations, such as a misconfigured pairing code. 
+The gateway installer deployment can fail due to internet connectivity or internal misconfigurations, such as an incorrect pairing code. 
 <br />
 
 ## Debug Steps
 
-If the gateway installer VM has a public IP address, you can access the cloud gateway installer's deployment status and system logs from the monitoring console. Follow the steps below to review the deployment status and logs:
+If the gateway installer VM has a public IP address assigned, you can access the cloud gateway installer's deployment status and system logs from the monitoring console. Follow the steps below to review the deployment status and logs.
 <br />
 
 1. Open a web browser on your local machine and visit the `https://[IP-ADDRESS]:5080` URL. Replace the `[IP-ADDRESS]` placeholder with your gateway installer VM's public IP address. 
 
 
-2. Provide the username and password when it prompts. 
-You can use the default credentials, `{username: admin, password:admin}`, saved in the gateway installer OVF template. If you have not changed the credentials during the template configuration, use the values as applicable. 
+2. Provide the username and password when prompted. 
+You can use the default installation credentials:
+-  username: admin
+- password: admin 
 
 
-3. Once logged in, review the cloud gateway installer's deployment status, system logs, and diagnostic tasks, as highlighted in the screenshot below. The monitoring console allows you to check the high-level status and download the individual log files to your local. 
+3. Once you are logged in, review the cloud gateway installer's deployment status, system logs, and diagnostic tasks, as highlighted in the screenshot below. The monitoring console allows you to check the high-level status and download the individual log files. 
 
   ![A screenshot of the monitoring console of the gateway installer.](/troubleshooting-pcg-monioring_console.png)
 
@@ -186,7 +191,7 @@ You can use the default credentials, `{username: admin, password:admin}`, saved 
 
 # Scenario - Cloud Gateway Cluster Provisioning Stalled or Failed
 
-After you finish configuring the cloud gateway in Palette, the PCG cluster provisioning process should take up to 15 minutes to finish the PCG cluster deployment. 
+After you finish configuring the cloud gateway in Palette, the PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. 
 
 However, if the PCG cluster provisioning gets stuck, it could hint incorrect cloud gateway configurations, unavailable IP addresses for the worker nodes, or the inability to perform a Network Time Protocol (NTP) sync. 
 <br />
@@ -200,13 +205,13 @@ However, if the PCG cluster provisioning gets stuck, it could hint incorrect clo
 2. Click on the newly provisioned gateway cluster to review its details page. 
 
 
-3. Switch to the **Events** tab. 
+3. Click on the **Events** tab. 
 
 
 4. Examine all events in the **Events** tab to identify specific errors or issues. Each event will have a status, timestamp, associated service name, and orchestration details. 
 
 
-5. The table below outlines the most common error events discovered in the **Events** tab and the corresponding reference section for remediation steps. 
+5. The table below outlines the most common error events discovered in the **Events** tab and the corresponding reference section containing remediation steps. 
 <br />
 
   |**Event**|**Reference Section**|
@@ -242,15 +247,15 @@ However, if the PCG cluster provisioning gets stuck, it could hint incorrect clo
 
 
 # Scenario - No Progress After Creating the Container Manager
-Suppose the PCG events in Palette display no progress after the specific event, `Created container manager`. 
+If the PCG events in Palette display no progress after the specific event, `Created container manager`. 
 
-The issue can occur when the gateway installer VM fails to connect to the Spectro Cloud API, [https://api.spectrocloud.com](https://api.spectrocloud.com), to download the installation artifacts. Another potential reason is that the gateway installer may not have the required permissions to store the installation artifacts in the **spectro-templates** folder. The installer downloads the images for the worker nodes and stores them in the **spectro-templates** folder during the cluster provisioning.
+This issue can occur when the gateway installer VM fails to connect to the Palette API endpoint and download the installation artifacts. Another potential reason is that the gateway installer may not have the required permissions to store the installation artifacts in the **spectro-templates** folder. The installer downloads the images for the worker nodes and stores them in the **spectro-templates** folder during the cluster provisioning.
 <br />
 
 ## Debug Steps
 <br />
 
-1. Check the network connectivity from the gateway installer VM to the Spectro Cloud API. Ensure that no network issues or firewall restrictions are blocking the connection.
+1. Check the network connectivity from the gateway installer VM to the Palette API endpoint, `https://api.spectrocloud.com`, or your self-hosted Palette's API endpoint. Ensure that no network issues or firewall restrictions are blocking the connection.
 
 
 2. Ensure you have the necessary write permissions for the **spectro-templates** folder. 
@@ -272,15 +277,15 @@ The error can occur if there is a preceding "https://" or "http://" string in th
 2. Check the internet connectivity from within the gateway installer VM. Ensure that no network issues or firewall restrictions are blocking the connection.
 
 
-3. Suppose the gateway installer VM does not have outbound internet access. In that case, you can either provision the gateway installer VM in a network that supports outbound connectivity or fix the firewall rules of the existing network.
+3. If the gateway installer VM does not have outbound internet access. Either provision the gateway installer VM in a network that supports outbound connectivity, or fix the firewall rules of the existing network to allow outbound internet access for the gateway installer.
 <br />
 
 
-# Scenario - No Route to the Kube API Server
+# Scenario - No Route to the Kubernetes API Server
 
-While deploying the cloud gateway cluster, the Palette events display the `No route to host` error. 
+While deploying the cloud gateway cluster, if events logs display the error message `No route to host.` 
 
-The error indicates an issue with the PCG cluster nodes attempting to connect to the Kube API server. This issue can occur due to improper networking configuration or an error in the cloud-init process. 
+The error indicates an issue with the PCG cluster nodes attempting to connect to the cluster's Kubernetes API server. This issue can occur due to improper networking configuration or an error in the cloud-init process. 
 <br />
 
 ## Debug Steps
@@ -295,28 +300,28 @@ The error indicates an issue with the PCG cluster nodes attempting to connect to
 3. Suppose the gateway installer VM does not have outbound internet access. In that case, you can either provision the gateway installer VM in a network that supports outbound connectivity or fix the firewall rules of the existing network.
 
 
-4. If the gateway cluster VM has a public IP address, SSH into the gateway installer VM using the username `ubuntu` and the SSH key you provided during the OVA import.
+4. If the gateway cluster VM has a public IP address assigned, SSH into the gateway installer VM using the username `ubuntu` and the public SSH key you provided during the OVA import.
 
 
 5. Inspect the log files in the **/var/log** directory. 
 
  
-6. Examine the cloud-init and sys logs for potential errors or warnings.
+6. Examine the cloud-init and system logs for potential errors or warnings.
 <br />
 
 # Scenario - Permission Denied to Provision
 
-A user must have the necessary permissions to provision a PCG cluster in the VMware data center. 
+You must have the necessary permissions to provision a PCG cluster in the VMware environment. 
 
-Suppose you do not have adequate permissions. In that case, the PCG cluster provisioning will fail, and you will get the "*Permission to perform this operation denied*" error. 
+If you do not have adequate permissions, the PCG cluster provisioning will fail, and you will get the `Permission to perform this operation denied` error message in the event log. 
 <br />
 
 ## Debug Steps
 <br />
 
-1. Ensure you have all the permissions listed in the [VMware Privileges](https://docs.spectrocloud.com/clusters/data-center/vmware/#vmwareprivileges) section before proceeding to provision a PCG cluster. 
+1. Ensure you have all the permissions listed in the [VMware Privileges](/clusters/data-center/vmware/#vmwareprivileges) section before proceeding to provision a PCG cluster. 
 
 
-2. Contact your vCenter administrator if you need permission.
+2. Contact your VMware administrator if you are missing any of the required permissions.
 
 <br />
