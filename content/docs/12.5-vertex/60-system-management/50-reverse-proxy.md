@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 You can configure a reverse proxy for Palette VerteX. The reverse proxy can be used by host clusters deployed in a private network. Host clusters deployed in a private network are not accessible from the public internet or by users in different networks. You can use a reverse proxy to access the cluster's Kubernetes API server from a different network.
 
-When you provide a custom reverse proxy server, clusters that use the [Spectro Proxy pack](/integrations/frp) will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file
+When you provide a custom reverse proxy server, clusters that use the [Spectro Proxy pack](/integrations/frp) will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
 
 You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy server is designed to be deployed in a Kubernetes cluster. Use the instructions below to deploy a Spectro Proxy server.
 
@@ -43,12 +43,13 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 
   - x509 SSL certificate authority file in base64 format.
 
+
 - The Spectro Proxy server must have internet access and network connectivity to the private network where the Kubernetes clusters are deployed.
 
 
 # Enablement
 
-1. Open up a terminal session and navigate to the directory where you want to download the Spectro Proxy Helm chart.
+1. Open a terminal session and navigate to the directory where you want to download the Spectro Proxy Helm chart.
 
 
 2. Download the Spectro Proxy Helm chart. Use the following command to download the Helm chart.
@@ -106,7 +107,9 @@ You now have a Spectro Proxy server that you can use for Palette VerteX clusters
 
 Use the following command to validate that the Spectro Proxy server is active.
 
-1. Open up a terminal session.
+<br />
+
+1. Open a terminal session.
 
 
 2. Verify the Spectro Proxy pod is up and available.

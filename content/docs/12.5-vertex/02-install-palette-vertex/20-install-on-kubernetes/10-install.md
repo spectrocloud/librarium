@@ -95,7 +95,7 @@ Use the following steps to install Palette VerteX on Kubernetes.
 
 <InfoBox>
 
-The following instructions are written agnostic to the Kubernetes distribution you are using. Depending on the underlying infrastructure provider and the Kubernetes distribution you are using, you may need to modify the instructions to match your environment. Reach out to our support team if you need assistance.
+The following instructions are written agnostic to the Kubernetes distribution you are using. Depending on the underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your environment. Reach out to our support team if you need assistance.
 
 </InfoBox>
 
@@ -104,7 +104,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 
 
-2.  Extract the **values.yaml** from the Helm Chart with the following command. Replace the path in the command to match your local path of the downloaded Palette VerteX Helm Chart. Use the command below as a reference.
+2.  Extract the **values.yaml** from the Helm Chart with the following command. Replace the path in the command to match your local path to the downloaded Palette VerteX Helm Chart. Use the command below as a reference.
 
     <br />
 
@@ -113,15 +113,15 @@ The following instructions are written agnostic to the Kubernetes distribution y
     ``` 
 
 
-3. Open the **values.yaml** with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters but there are a few parameters you must populate before installing Palette VerteX. Refer to the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page for a complete list of parameters and their descriptions.
+3. Open the **values.yaml** with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters, but you must populate a few parameters before installing Palette VerteX. Refer to the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page for a complete list of parameters and their descriptions.
 
     <br />
 
     | **Parameter** | **Description** | **Type** |
     | --- | --- | --- |
     | `mongo.password` | A base64 encoded password for the MongoDB database. | string |
-    | `env.rootDomain` | The the domain name you will use for the Palette VerteX installation. | string |
-    | `ociRegistry` | The OCI registry credentials for Palette VerteX images. Use the parameter `ociEcrRegistry` if deploying Palette VerteX in an AWS environment. These credentials are provided by our support team.| object |
+    | `env.rootDomain` | The domain name you will use for the Palette VerteX installation. | string |
+    | `ociRegistry` | The OCI registry credentials for Palette VerteX images. Use the `ociEcrRegistry` parameter if deploying Palette VerteX in an AWS environment. Our support team provides these credentials.| object |
     | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
     <br />
@@ -134,7 +134,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 
 
-4. Install the Helm Chart using the following command. Replace the path in the command to match your local path of the Palette VerteX Helm Chart. 
+4. Install the Helm Chart using the following command. Replace the path in the command to match your local path to the Palette VerteX Helm Chart. 
 
     <br />
 
@@ -143,7 +143,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     ```
 
 
-5. Monitor the deployment using the command below. Palette VerteX is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the *Ready* state. The installation process can take up to 20 - 30 minutes to complete. Use the following command to track the installation process.
+5. Track the installation process using the command below. Palette VerteX is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the *Ready* state. The installation process can take 20 - 30 minutes to complete.
 
     <br />
 
@@ -184,7 +184,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
   ![A view of the Palette System Console login screen.](/vertex_install-on-kubernetes_install_system-console.png)
 
 
-8. Log in to the system console using the provided credentials you received from our support team. After login in, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+8. Log in to the system console using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
 
 
 9. Configure HTTPS encryption for Palette VerteX. To configure HTTPS encryption, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
@@ -204,7 +204,7 @@ Use the following steps to validate the Palette VerteX installation.
 
 
 
-2. Log in using the credentials you received from our support team. After login in, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+2. Log in using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
 
 
 3. Open a terminal session and issue the following command to verify the Palette VerteX installation. The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` namespaces.

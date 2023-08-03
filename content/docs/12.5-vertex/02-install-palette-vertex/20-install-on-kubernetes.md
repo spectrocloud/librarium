@@ -9,7 +9,7 @@ fullWidth: false
 
 # Overview
 
-Palette VerteX can be installed on Kubernetes. You can install Palette VerteX in an environment with internet connectivity or in an airgap environment. A Helm chart is used to install Palette VerteX on Kubernetes. When you install Palette VerteX on Kubernetes, a three-node cluster is created. The Helm Chart is provided by our support team. Refer to the [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on how to request access to the Helm Chart.
+Palette VerteX can be installed on Kubernetes with internet connectivity or an airgap environment. When you install Palette VerteX, a three-node cluster is created. You use a Helm chart our support team provides to install Palette VerteX on Kubernetes. Refer to [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on requesting access to the Helm Chart.
 
 
 To get started with Palette VerteX on Kubernetes, refer to the [Install Instructions](/vertex/install-palette-vertex/install-on-kubernetes/install) guide.
