@@ -355,13 +355,13 @@ frps:
 
 # UI System 
 
-The table lists parameters to configure the Palette VerteX User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refert to the [MapBox Access tokens](https://docs.mapbox.com/help/getting-started/access-tokens) guide.
+The table lists parameters to configure the Palette VerteX User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refer to the [MapBox Access tokens](https://docs.mapbox.com/help/getting-started/access-tokens) guide. 
 
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
 | `enabled`| Specifies whether to enable the Palette VerteX UI. | Boolean | `true` |
-| `ui.nocUI.enable`| Specifies whether to enable the Palette VerteX Network Operations Center (NOC) UI. | Boolean | `false` |
+| `ui.nocUI.enable`| Specifies whether to enable the Palette VerteX Network Operations Center (NOC) UI. Enabling this parameter requires the `ui.nocUI.mapBoxAccessToken`. Once enabled, all cluster locations will be reported to MapBox. This feature is not FIPS compliant.  | Boolean | `false` |
 | `ui.nocUI.mapBoxAccessToken`| The MapBox access token for the Palette VerteX NOC UI. | String | `""` |
 | `ui.nocUI.mapBoxStyledLayerID`| The MapBox style layer ID for the Palette VerteX NOC UI. | String | `""` |
 
