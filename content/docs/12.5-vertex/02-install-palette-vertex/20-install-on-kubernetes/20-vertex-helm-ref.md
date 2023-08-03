@@ -26,7 +26,7 @@ The following parameters are required for a successful installation of Palette V
 | --- | --- | --- |
 | `mongo.databasePassword` | The base64-encoded MongoDB password. For more information, refer to the [MongoDB](#mongodb) section. | String |
 | `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
-| `config.env.ociRegistry`/`config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. For more information, refer to the [Registry](#registries) section. | Object |
+| `config.env.ociRegistry` or `config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an OCI registry or an OCI registry hosted in AWS ECR if you are using AWS. For more information, refer to the [Registry](#registries) section. | Object |
 | `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Reverse Proxy"
-metaTitle: "Reverse Proxy"
+title: "Configure Reverse Proxy"
+metaTitle: "Configure Reverse Proxy"
 metaDescription: "Learn how to configure a reverse proxy for Palette VerteX."
 icon: ""
 hideToC: false
@@ -106,6 +106,8 @@ You now have a Spectro Proxy server that you can use for Palette VerteX clusters
 # Validate
 
 Use the following command to validate that the Spectro Proxy server is active.
+
+<br />
 
 <br />
 
