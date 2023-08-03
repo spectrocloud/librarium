@@ -1,7 +1,7 @@
 ---
 title: "Helm Configuration Reference"
 metaTitle: "Helm Configuration Reference"
-metaDescription: "Reference for Palette VerteX Helm Chart installation parameters."
+metaDescription: "Reference resource for the Palette VerteX Helm Chart installation parameters."
 icon: ""
 hideToC: false
 fullWidth: false
