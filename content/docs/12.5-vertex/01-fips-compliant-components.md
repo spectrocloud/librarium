@@ -45,7 +45,7 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
 ## Management Plane
 
-All services in the management plane are FIPS compiled with Go 1.19 using BoringCrypto libraries and static linking. 
+All services in the management plane are FIPS compiled with Go using BoringCrypto libraries and static linking. 
 
 
 ## Kubernetes

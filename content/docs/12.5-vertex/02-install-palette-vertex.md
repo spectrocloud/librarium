@@ -16,14 +16,14 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Self-hosted Palette is available in the following modes:
 
-| **Self-Hosted Modes**  | **Description**                    |
+| **Supported Platform** | **Description**                    |
 |------------------------|------------------------------------|
-| VMware Enterprise Mode | A multi-node, highly available version for production purposes. |
-| Helm Chart Mode        | Install Palette in an existing Kubernetes cluster using a Helm Chart. |
+| VMware                 | Install Palette VerteX in VMware environment. |
+| Kubernetes             | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. |
 
-The next sections describe specific requirements for both modes.
+The next sections describe specific requirements for installing Palette VerteX.
 
-# Prerequisites
+<!-- # Prerequisites
 
 The following are prerequisites for deploying a Kubernetes cluster in VMware:
 
@@ -69,10 +69,10 @@ Cloud Account Permissions section.
 - A cluster profile created in Palette for VMware.
 
 
-- Zone Tagging: A dynamic storage allocation for persistent storage.
+- Zone Tagging: A dynamic storage allocation for persistent storage. -->
 
 
-# Zone Tagging
+<!-- # Zone Tagging
 
 Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required to install the Palette Platform itself and is also helpful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers(k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
   
@@ -128,7 +128,7 @@ for rolling upgrades.
 
 Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
 
-</InfoBox>
+</InfoBox> -->
 
 
 # Proxy Requirements
@@ -155,7 +155,7 @@ Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCID
 
 # Hardware Requirements
 
-This section lists hardware requirements for Palette Platform VMs for various capacity levels. Capacity levels are defined as follows:
+This section lists resource requirements for Palette VerteX for various capacity levels. Capacity levels are defined as follows:
 
 <br />
 
