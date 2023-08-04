@@ -137,20 +137,24 @@ registry instance in the event of restarts and failures.
 Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 
 
-7. Pull the latest Palette pack registry Docker image using the docker CLI.
+7. Issue the following command to pull the Docker image provided by Spectro Cloud. The image will help you instantiate a Docker container as a pack registry server.  
 <br />
 
   ```shell
   docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
   ```
 
-8. Create the Docker container using the docker `run` command:
+8. Use the following `docker run` command to instantiate a Docker container. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips. 
+
+    * Spectro Cloud CLI registry login command fails with the error message `x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs`. The error occurs when a self-signed certificate is created using an IP address rather than a hostname. To resolve the error, recreate the certificate to include an IP SAN or use a DNS name instead of an IP address.
+
+    * Spectro Cloud CLI registry login command fails with the error message `x509: certificate signed by unknown authority`. The error occurs when the self-signed certificate is invalid. To resolve the error, you must configure the host where Spectro Cloud CLI is installed to trust the certificate.
 
 <Tabs>
 
 <Tabs.TabPane tab="HTTPS" key="https-1">
 
-    
+
 ```bash
 docker run -d \
     -p 443:5000 \
@@ -199,29 +203,20 @@ Registry servers configured in HTTP mode require the `--insecure` CLI flag when 
 spectro registry login --insecure http://example.com:5000
 ```
 
-
 </WarningBox>
 
 </Tabs.TabPane>
 
-
 </Tabs> 
-
-    
+ 
 <br />
 
-9. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips. 
 
-    * Spectro Cloud CLI registry login command fails with the error message in the case of self-signed certificates created using an IP address, rather than a hostname. `x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs`. Either the certificate must be recreated to include an IP SAN, or you must use a DNS name as the Common Name, rather than an IP address.
-
-    * Spectro Cloud CLI registry login command fails with the error message in case of self-signed certificates or if the certificate is invalid. `x509: certificate signed by unknown authority`. The host where Spectro Cloud CLI is installed must be configured to trust the certificate.
-
-
-10. Expose the container host's port publicly to allow the console to interact with the pack registry.
+9. Expose the container host's port publicly to allow the console to interact with the pack registry.
    This would be typically done via environment-specific constructs like Security Groups, Firewalls, etc.
 
 
-11. Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
+10. Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
 
 <Tabs>
 
@@ -264,11 +259,11 @@ Once you deploy the pack registry server, use the following steps to configure t
 4. Provide the pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry server endpoint. 
 
 
-5. If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload the certificate in the **TLS Configuration** section. The certificate file must be in the PEM format and must have a complete trust chain. 
+5. If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload the certificate in the **TLS Configuration** section. The certificate file must be in the PEM format and have a complete trust chain. 
 
-  If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA on obtaining a certificate chain from them. 
+  If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA to obtain a certificate chain from them in the PEM format.
   
-  If you used a self-signed certificate, create and upload the entire certificate trust chain that includes the server, intermediate, and root certificates. To create a new *.pem* file, use a text editor. In the *.pem* file, paste the following syntax and concatenate your individual certificates in the order mentioned below. Do not remove the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` comments from your final *.pem* file. Save the certificate file using any meaningful name, for example, **fullchain.pem**. 
+  If you used a self-signed certificate, upload the entire certificate trust chain as a *.pem* file. If you do not already have one, use a text editor to create a new *.pem* file. Use the following syntax to create the file. The file content must have the server, intermediate, and root certificates concatenated in the specific order mentioned below. The syntax below separates the different certificates using the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` comments. Therefore, do not remove those comments from your *.pem* file.  
   <br />
 
   ```
