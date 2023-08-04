@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The sections below describe system requirements for VMware environments hosting Palette VerteX.
+The sections below describe system requirements and cloud account permissions for VMware environments hosting Palette VerteX.
 
 # Zone Tagging
 
