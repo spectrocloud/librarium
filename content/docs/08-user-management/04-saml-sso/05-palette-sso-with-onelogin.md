@@ -166,7 +166,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-19. Next you need to give the members of this team a set of permissions. In this example we will give all members *Tenant Admin* permissions, since this is the Administrators team. Of course, you can define these permissions fully to your liking. In order to set the correct permissions, you can select the team you just created (**Tenant Settings** --> **Users & Teams** --> **Teams** --> **Your team**), then select **Tenant Roles** --> **Add Tenant Role** and select the **Tenant Admin** box. This will auto-select all other boxes. 
+19. Next, you need to give the members of this team a set of permissions. Assign all members *Tenant Admin* permissions because this is the Administrators team. You can define permissions fully to your liking. To set the correct permissions, navigate to left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams**. Select the team you created. Click on **Tenant Roles** --> **Add Tenant Role** and select the **Tenant Admin** box. This will auto-select all other permission boxes.  Click **Confirm**.
 
 <br />
 
