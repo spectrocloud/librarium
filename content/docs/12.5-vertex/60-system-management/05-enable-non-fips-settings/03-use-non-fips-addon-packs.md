@@ -27,7 +27,7 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 
 - Container Storage Interface (CSI)
 
-As shown in the screenshot, the FIPS-compliant icon used to indicate full FIPS compliance is displayed next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
+As shown in the screenshot below, the FIPS-compliant icon used to indicate full FIPS compliance is displayed next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png) 
 
@@ -36,19 +36,22 @@ You can allow tenant users to customize their cluster profiles by using add-on p
 
 # Prerequisites
 
-There are no prerequisites.
+- You need tenant admin permission to enable this feature.
 
 
 # Allow Non-FIPS Add-On Packs
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
+1. Log in to [Palette VerteX](https://console.spectrocloud.com/) as a tenant admin.
 
 
-2. Navigate to the left **Main Menu** and click on **Tenant Settings**. Next, on the **Tenant Settings Menu**, select **Platform Settings**.
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**. 
 
 
-3. Enable the **Allow non-FIPS add-on packs** option. When you enable this option, you are prompted to confirm the use of non-FIPS add-on packs for the tenant.
+3. On the **Tenant Settings Menu**, select **Platform Settings**.
+
+
+4. Enable the **Allow non-FIPS add-on packs** option. When you enable this option, you are prompted to confirm the use of non-FIPS add-on packs for the tenant.
 
 
 ![Diagram showing the Allow non-FIPS add-on packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-addon-packs.png)
@@ -62,7 +65,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 # Validate
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
 
 
 2. Navigate to the left **Main Menu** and select **Profiles**. When you select a profile, the **Add New Pack** option is available.

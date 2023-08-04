@@ -22,14 +22,16 @@ Palette VerteX displays icons next to clusters to indicate their FIPS compliance
 
 # Prerequisites
 
+- You need tenant admin permission to enable this feature.
 
-Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-import#prerequisites).
+
+- Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-import#prerequisites).
 
 
 # Allow non-FIPS Cluster Import
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
+1. Log in to [Palette VerteX](https://console.spectrocloud.com/) as a tenant admin.
 
 
 2. Navigate to the left **Main Menu** and click on **Tenant Settings**. Next, on the **Tenant Settings Menu**, select **Platform Settings**.
@@ -41,12 +43,12 @@ Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-impo
 
 To disable the setting, toggle this option off and confirm you want to disable it. 
 
-[Resources](/vertex/system-management/enable-non-fips-settings/allow-cluster-import#resources) listed below will guide you on how to import a cluster and describe the import modes and limitations to be aware of. 
+Refer to [Import a Cluster](/clusters/imported-clusters/cluster-import) for guidance. Check out [Import Modes](/clusters/imported-clusters#importmodes) to learn about various import modes and limitations to be aware of.
 
 
 # Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
 
 
 2. Navigate to the left **Main Menu** and select **Clusters**.

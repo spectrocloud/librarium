@@ -78,7 +78,7 @@ Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCID
 
 # VMware Cloud Account Permissions
 
-The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
+The vSphere user account that deploys Palette VerteX must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
 
 Select the tab for your vSphere version.
 

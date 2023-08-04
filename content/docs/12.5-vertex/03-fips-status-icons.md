@@ -20,7 +20,7 @@ To avoid confusion and compliance issues, Palette VerteX displays icons to indic
 
 The icons shown below are used to indicate FIPS compliance status.
 
-| Icon | Description | 
+| **Icon** | **Description** | 
 |---------------|------------|
 | ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. | 
 | ![Partial FIPS compliance](/vertex_fips-status-icons_partial.png) | Partial FIPS compliance. Some packs are FIPS compliant, but there is at least one that is not.|  

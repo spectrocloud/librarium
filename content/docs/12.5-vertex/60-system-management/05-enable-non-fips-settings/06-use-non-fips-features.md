@@ -18,6 +18,9 @@ You can allow tenant users access to Palette features that are *not* FIPS-compli
 
 # Prerequisites
 
+- You need tenant admin permission to enable this feature.
+
+
 - Palette can back up clusters to several locations. To learn about backup requirements, review [Backup-Restore](/clusters/cluster-management/backup-restore).
 
 
@@ -27,13 +30,16 @@ You can allow tenant users access to Palette features that are *not* FIPS-compli
 # Allow non-FIPS Features
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
+1. Log in to [Palette VerteX](https://console.spectrocloud.com/) as a tenant admin.
 
 
-2. Navigate to the left **Main Menu** and click on **Tenant Settings**. Next, on the **Tenant Settings Menu**, select **Platform Settings**.
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**. 
 
 
-3. Enable the **Allow non-FIPS features** option. When you enable this option, you are prompted to confirm the use of non-FIPS features for the tenant.
+3. On the **Tenant Settings Menu**, select **Platform Settings**.
+
+
+4. Enable the **Allow non-FIPS features** option. When you enable this option, you are prompted to confirm the use of non-FIPS features for the tenant.
 
 ![Diagram showing the Allow non-FIPS features toggle enabled.](/vertex_use-non-fips-settings_nonFips-features.png)
 
@@ -45,10 +51,13 @@ Use the [Resources](/vertex/system-management/enable-non-fips-settings/use-non-f
 # Validate
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu** and select **Clusters**. The **Scan** and **Backups** tabs are now displayed on the **Cluster Overview** page.
+2. Navigate to the left **Main Menu** and click on **Clusters**. 
+
+
+3. Select your cluster in the list. The **Scan** and **Backups** tabs are now displayed on the **Cluster Overview** page.
 
 
 # Resources 
