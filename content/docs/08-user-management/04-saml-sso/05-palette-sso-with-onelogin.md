@@ -31,7 +31,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 ## Create a OneLogin Application
 
-1. Log in to your OneLogin account with administrative credentials.
+1. Log in to your [OneLogin account](https://www.onelogin.com/) with administrative credentials.
 
 2. Go to the **Applications** section of your OneLogin admin dashboard and click on the **Add App** button to create a new application. 
 
