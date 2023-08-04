@@ -103,7 +103,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-11. Select the **SSO** tab and copy the **Client ID**, **Client Secret** and **Issuer URL** values, because you will need those values to further configure Palette. These are important credentials that Palette will use to authenticate with OneLogin. Make sure to save them securely. Click the **Save** button, to save all changes. 
+11. Navigate to the left **Main Menu** and select **SSO**. From the SSO settings page, copy the **Client ID**, **Client Secret**, and **Issuer URL** values. These values are important credentials that Palette will use to authenticate with OneLogin. Make sure to save them securely. Click the **Save** button to save all changes. 
 
 <br />
 
