@@ -71,7 +71,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-7. Now paste the **Callback URL** value in the **Login Url** and **Redirect URI's** sections. 
+7. Next, paste the **Callback URL** value in the **Login Url** and **Redirect URI's** sections. 
 
 <br />
 
