@@ -79,7 +79,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-8. You can do the same for the **Logout Redirect URIs** and copy the **Logout URL** value which sits below the **Callback URL** from Palette. 
+8. Next, do the same for the **Logout Redirect URIs** and copy the **Logout URL** value which sits below the **Callback URL** from Palette. 
 
 <br />
 
