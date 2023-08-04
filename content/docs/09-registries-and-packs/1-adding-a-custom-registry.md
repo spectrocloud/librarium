@@ -251,7 +251,7 @@ spectro registry login --insecure http://example.com:5000
 
 # Configure a Custom Pack Registry on the Palette Console
 
-Once the deployment of the pack registry server is complete, configure it with the console as follows:
+Once you deploy the pack registry server, use the following steps to configure the custom pack registry in Palette.
 
 1. As a Tenant Administrator, navigate to **Admin Settings** > **Registries** > **Pack Registries**.
 
