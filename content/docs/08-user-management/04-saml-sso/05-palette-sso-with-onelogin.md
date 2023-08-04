@@ -91,7 +91,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![URI Config](/oidc-onelogin-images/uri-config.png)
+  ![URI config](/oidc-onelogin-images/uri-config.png)
 
 <br />
 
@@ -121,7 +121,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-13. You can optionally create a security policy if desired. To create a Security Policy,  navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy."  Continue to configure the policy to your needs. Click **Save** to contiue. 
+13. You can optionally create a security policy if desired. To create a Security Policy,  navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy."  Continue to configure the policy to your needs. Click **Save** to continue. 
 
 14. Apply the policy to a group of users, but first, you will need a group. Go to **Users** --> **Groups** and select **New Group**. Assign the new group a name, select your security policy, and click **Save**.  
 
@@ -152,7 +152,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-  ![Full OIDC Config](/oidc-onelogin-images/oidc-full-palette.png)
+  ![Full OIDC config](/oidc-onelogin-images/oidc-full-palette.png)
 
 <br />
 
