@@ -58,7 +58,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 |Field|Description|
 |--------|--------|
 |Login URL|This is the URL where users are sent to log in.|
-|Redirect URIs|These are the URIs (Uniform Resource Identifiers) to which the identity provider (in this case, OneLogin) will redirect the user after successful authentication.|
+|Redirect URIs|These are the Uniform Resource Identifiers (URI) to which OneLogin will redirect the user after successful authentication.|
 |Post Logout Redirect URIs|These are the URIs where the user will be redirected after they successfully log out from their session.|
 
 <br />
