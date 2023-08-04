@@ -186,7 +186,7 @@ You have now configured Palette to use OneLogin as a third-party IDP. Use the ab
 
 Use the following steps to validate the configuration.
 
-<br /
+<br />
 
 1. Log out of Palette. You will be redirected to a new login screen.
 
