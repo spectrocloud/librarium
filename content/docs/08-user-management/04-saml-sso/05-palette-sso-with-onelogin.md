@@ -196,7 +196,7 @@ Use the following steps to validate the configuration.
 
 <br />
 
-2. The login screen now defaults to a **Sign In** button. If you are already signed in into OneLogin, once you click on **Sign In** you will be automatically signed in and should have the correct permissions set. If you are unable to sign in, you can always use a username and password. 
+2. The login screen now defaults to a **Sign In** button. Click on **Sign In**. You will be required to authenticate with OneLogin. If you are already authenticated with OneLogin you will be automatically signed in to Palette with the proper permissions inherited from the respective Palette team you are a member of. If you cannot sign in, you can use the username and password method. 
 
 <br />
 
