@@ -121,7 +121,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-13. (Optional) - Now you'll need to create a Security Policy (or use the Default). Go to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name (for this example we'll use "Admin policy") and if needed continue to configure the policy to your needs. The default settings are fine for this example, so you can click **Save**. 
+13. You can optionally create a security policy if desired. To create a Security Policy,  navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy."  Continue to configure the policy to your needs. Click **Save** to contiue. 
 
 14. Now you need to apply the policy to a group of people, but first you'll need a group. Go to **Users** --> **Groups** and select **New Group**. Give the new group a name, select your security policy and click **Save**.  
 
