@@ -210,9 +210,8 @@ Click **Confirm** and you should have a configuration similar to this.
 <br />
 
 # Troubleshooting
-With the OpenID Connect Inspector, you can send requests to OneLogin and check what is sent in the payload. This way you can make sure that you are using the right claims and scopes. When using this, you will need to add the Inspector callback URL to your applications Redirect URIs list. 
+If you encounter issues while setting up OIDC, you can use OneLogin's [OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector) tool to help you debug. You can use the tool to send requests to OneLogin and check what is sent in the payload. Use the tool to verify you are using the correct claims and scopes. When using this, you will need to add the Inspector callback URL to your application Redirect URIs list. 
 [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8)
-[OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector)
 
 # References
 [OneLogin](https://www.onelogin.com/)
