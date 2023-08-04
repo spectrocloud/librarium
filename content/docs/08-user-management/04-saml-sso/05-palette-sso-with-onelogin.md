@@ -184,7 +184,11 @@ Click **Confirm** and you should have a configuration similar to this.
 You have now configured Palette to use OneLogin as a third-party IDP. Use the above steps to create additional groups in OneLogin and Palette. As you start deploying clusters, keep in mind that if you use Palette's Extended Kubernetes distribution, you can configure the cluster to inherit OIDC configurations from the tenant. Refer to the [Palette eXtended Kubernetes](/integrations/kubernetes#configureoidcidentityprovider) reference page to learn more about out-of-the-box support for OIDC.
 # Validate
 
-1. The SSO configuration is now complete and it's time to test all of our efforts. You can logout out of Palette and you'll be redirected to a new login screen. 
+Use the following steps to validate the configuration.
+
+<br /
+
+1. Log out of Palette. You will be redirected to a new login screen.
 
 <br />
 
