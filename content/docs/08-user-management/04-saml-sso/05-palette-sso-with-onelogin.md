@@ -113,7 +113,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 ## Create Role, Security Policy and Group
 
-12. Go to your OneLogin dashboard and select **Users** --> **Roles** and select **New Role**. Create an **Admin** role and select your **Role App**. In this example it's the **Spectro Cloud Palette OIDC** app. When selecting the app, a green checkmark will appear behind the name. Click the **Save** button. 
+12. Go to your OneLogin dashboard and select **Users** --> **Roles** and select **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used in this example. When selecting the app, a green checkmark will appear behind the name. Click the **Save** button. 
 
 <br />
 
