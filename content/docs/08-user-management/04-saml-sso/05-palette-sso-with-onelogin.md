@@ -148,7 +148,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 <br />
 
 ## Enable OIDC in Palette 
-17. You're done configuring OneLogin, now you can navigate back to Palette and fill in the **Client ID**, **Client Secret** and **Issuer URL** values. Also add the **groups** scope to the **Scopes** field. Without this Palette won't receive the group name. With everything filled in, you can now click **Enable**. 
+17. Navigate back to Palette and fill in the **Client ID**, **Client Secret**, and **Issuer URL** values. Add the **groups** scope to the **Scopes** field. Without the proper scopes, Palette won't receive the group name. Click **Enable** to continue. 
 
 <br />
 
