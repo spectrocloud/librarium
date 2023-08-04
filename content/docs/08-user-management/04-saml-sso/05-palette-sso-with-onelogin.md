@@ -131,7 +131,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-15. For this example we will automate the mapping of a user to a role and group, by creating a Mapping. Go to **Users** --> **Mappings** and select **New Mapping**. We'll give the mapping a name and set it to map every member of the *Administrators* group to automatically get the *Admin* role and set the **MemberOf** value to *Administrators*. The latter is essential so the response from OneLogin contains the group name, which we will match with a Team in Palette. Without explicitly setting the *MemberOf* value, Palette will not get the group name and won't be able to set the correct RBAC settings for your user. 
+15. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users** --> **Mappings** and select **New Mapping**. Assign the mapping a name and set it to map every member of the *Administrators* group to get the *Admin* role automatically. Set the **MemberOf** value to *Administrators*. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a *Team* in Palette. Without explicitly setting the *MemberOf* value, Palette will not get the group name and won't be able to set the correct RBAC settings for your user. 
 
 <br />
 
