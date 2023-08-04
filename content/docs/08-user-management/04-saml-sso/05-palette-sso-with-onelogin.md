@@ -214,6 +214,8 @@ If you encounter issues while setting up OIDC, you can use OneLogin's [OpenID Co
 [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8)
 
 # References
-[OneLogin](https://www.onelogin.com/)
-[Documentation](https://developers.onelogin.com/)
-[OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector)
+- [OneLogin](https://www.onelogin.com/)
+
+- [Documentation](https://developers.onelogin.com/)
+
+- [OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector)
