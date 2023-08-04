@@ -105,7 +105,7 @@ Some example Tags are: `MyValue`, `my_value`, and `12345`.
 
 ## Zone Tagging
 
-Zone tagging is required for dynamic storage allocation across fault domains when you provision workloads that require persistent storage. This is required for Palette installation and is also useful for workloads deployed in the tenant clusters that require persistent storage. Use unique vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. Tag values must be unique.
+Zone tagging is required for dynamic storage allocation across fault domains when you provision workloads that require persistent storage. This is required for Palette installation and useful for workloads deployed in tenant clusters that require persistent storage. Use unique vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. Tag values must be unique.
 
   For example, assume your vCenter environment includes three compute clusters (cluster-1, cluster-2, and cluster-3) that are part of data center dc-1. You can tag them as follows:
 
@@ -121,7 +121,7 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 
 # VMware Privileges
 
-The vSphere user account that deploys Palette must have the minimum toot-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
+The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
 Permissions and privileges vary depending on the vSphere version you are using. 
 
 Select the tab for your vSphere version.
@@ -144,7 +144,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 ## Root-Level Role Privileges
 
-Root-level role privileges listed in the table are applied only to root object and data center objects.
+Root-level role privileges listed in the table are applied only to root objects and data center objects.
 
 
 
@@ -183,7 +183,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 |**Cns**|Searchable
 |**Datastore**|Allocate space|
 ||Browse datastore|
-||Low level file operations|
+||Low-level file operations|
 ||Remove file|
 ||Update virtual machine files|
 ||Update virtual machine metadata|
@@ -740,63 +740,6 @@ A Gateway cluster installation automatically creates a cloud account using the c
 
 </InfoBox>
 
-
-# Troubleshooting
-<br />
-
-### Gateway Installer - Unable to register with the Tenant Portal
-
-When powered on, the installer VM goes through a bootstrap process and registers itself with the Tenant Portal. This process typically takes 5 to 10 minutes. If the installer fails to register with the Tenant Portal within this timeframe, it could indicate a bootstrapping error.
-
-SSH into the installer virtual machine using the username "ubuntu" and the key provided during OVA import and inspect the log file located at **/var/log/cloud-init-output.log**. This log file will contain error messages in the event there are failures with connecting to Palette, authenticating, or downloading installation artifacts. A common cause for these errors is the Palette console endpoint or the pairing code was mistyped.
-
-Ensure that the Tenant Portal console endpoint does not have a trailing slash. If these properties were incorrectly specified, power down and delete the installer VM and relaunch with the correct values.
-
-Another potential issue is a lack of outgoing connectivity from the VM. The installer VM needs to have outbound connectivity directly or via a proxy. Adjust proxy settings (if applicable) to fix the connectivity or power down and delete the installer VM and relaunch it in a network that enables outgoing connections.
-
-If the above steps do not resolve your issues, you can copy the following script to the installer VM and invoke it to generate a logs archive. Please contact our support team by sending an email to support@spectrocloud.com and attach the logs archive to the ticket so our Support team can troubleshoot the issue and provide further guidance.
-
-<br />
-
-``` bash
-#!/bin/bash
-
-DESTDIR="/tmp/"
-
-CONTAINER_LOGS_DIR="/var/log/containers/"
-CLOUD_INIT_OUTPUT_LOG="/var/log/cloud-init-output.log"
-CLOUD_INIT_LOG="/var/log/cloud-init.log"
-KERN_LOG="/var/log/kern.log"
-KUBELET_LOG="/tmp/kubelet.log"
-SYSLOGS="/var/log/syslog*"
-
-FILENAME=spectro-logs-$(date +%-Y%-m%-d)-$(date +%-HH%-MM%-SS).tgz
-
-journalctl -u kubelet > $KUBELET_LOG
-
-tar --create --gzip -h --file=$DESTDIR$FILENAME $CONTAINER_LOGS_DIR $CLOUD_INIT_LOG $CLOUD_INIT_OUTPUT_LOG $KERN_LOG $KUBELET_LOG $SYSLOGS
-
-retVal=$?
-if [ $retVal -eq 1 ]; then
-    echo "Error creating spectro logs package"
-else
-    echo "Successfully extracted spectro cloud logs: $DESTDIR$FILENAME"
-fi
-```
-<br />
-
-### Gateway Cluster - Provisioning Stalled or Failed
-
-An installation of the gateway cluster may run into errors or might get stuck in the provisioning state due to several reasons, such as lack of infrastructure resources, unavailable IP addresses, inability to perform a Network Time Protocol (NTP) sync.
-
-While these are most common, some other issue might be related to the underlying VMware environment. The Cluster Details page, which can be accessed by clicking anywhere on the gateway widget, contains details of every orchestration step including an indication of the current task being executed.
-
-Any intermittent errors will be displayed on this page next to the relevant orchestration task. The **Events** tab on this page, also provides a useful resource to look at lower-level operations being performed for the various orchestration steps.
-
-If you think that the orchestration is stuck or failed due to incorrectly selected infrastructure resources or an intermittent problem with the infrastructure, you can reset the gateway by clicking on the **Reset** button on the gateway widget. This resets the gateway state to **Pending** and allows you to reconfigure the gateway and start provisioning a new gateway cluster.
-
-If the problem persists, please contact our support team by sending an email to support@spectrocloud.com.
-<br />
 
 ### Upgrade VMware Cloud Gateway
 
