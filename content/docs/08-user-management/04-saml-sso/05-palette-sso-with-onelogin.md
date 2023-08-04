@@ -43,7 +43,7 @@ The following steps will walk you through the process of setting up Palette SSO 
   
 <br />  
 
-4. Select the "OpenID Connect" app connector to add it to your account. Now, you'll be taken to the application configuration page where you can provide a **Display Name** and click the **Save** button. In this example, we will be using the display name **Spectro Cloud Palette OIDC**.  
+4. Select the "OpenID Connect" app connector to add it to your account. Next, you will be taken to the application configuration page where you can provide a **Display Name** and click the **Save** button. You will use the display name **Spectro Cloud Palette OIDC**in this example.  
 
 <br />
 
