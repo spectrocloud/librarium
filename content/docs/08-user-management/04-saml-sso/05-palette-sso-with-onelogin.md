@@ -87,7 +87,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 <br />
 
-9. Your configuration should look similar to this. 
+9. Your configuration should look similar to the following screenshot. 
 
 <br />
 
