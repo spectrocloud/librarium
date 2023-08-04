@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Enable SSO with OneLogin
 
-OneLogin is a cloud-based identity and access management (IAM) provider that designs and develops enterprise-level identity management solutions. It's an Identity Provider (IdP) tool designed to secure, manage, and facilitate user access across multiple networks, applications, and devices. OneLogin's platform offers a variety of features including single sign-on (SSO), multi-factor authentication (MFA), user provisioning, compliance reporting, and end-user self-service. 
+OneLogin is a cloud-based Identity and Access Management (IAM) provider that designs and develops enterprise-level identity management solutions. It's an Identity Provider (IdP) tool designed to secure, manage, and facilitate user access across multiple networks, applications, and devices. OneLogin's platform offers a variety of features, including Single Sign-On (SSO), Multi-Factor Authentication (MFA), user provisioning, compliance reporting, and end-user self-service. 
 
 The following steps will walk you through the process of setting up Palette SSO with OneLogin based on OpenID Connect (OIDC).
 
