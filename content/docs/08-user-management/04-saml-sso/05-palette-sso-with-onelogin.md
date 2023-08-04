@@ -158,7 +158,7 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 ## Creating Teams in Palette
 
-18. In order for Palette to map the groups configured in OneLogin, you need to create a Team in Palette. This Team name needs to match with the value that is returned for the groups configured in OneLogin. In this example we'll be creating an **Administrators** team. This also matches with the Administrators value that is assigned to each member of the Administrators group. In Palette, go to **Tenant Settings** --> **Users & Teams** --> **Teams** and select **Create team**. You only need to fill in the Team name and don't have to manually add members. This will happen automatically, because the users will belong to a certain group and that group is mapped to a team with certain permissions in Palette. After filling in the Team name, you can click *confirm*. 
+18. In order for Palette to map the groups configured in OneLogin, you need to create a Team in Palette. This Team name needs to match the value that is returned for the groups configured in OneLogin. In this example, you will create an **Administrators** team. This also matches with the Administrators value that is assigned to each member of the Administrators group in OneLogin. In Palette, navigate to left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams**, and select **Create team**. You only need to fill in the Team name. Don't manually add members, as OneLogin will manage the users. In OneLogin, users who are part of the mapped group, administrators, will be automatically added to the team. Click **Confirm** to continue. 
 
 <br />
 
