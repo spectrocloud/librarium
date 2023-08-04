@@ -23,7 +23,8 @@ The following steps will walk you through the process of setting up Palette SSO 
 
 - You will need an active OneLogin subscription and administrator-level permissions. If you're using this for testing purposes, OneLogin provides a [developer subscription](https://developers.onelogin.com/). 
 
-- If you would like to use the same OneLogin application for OIDC-based SSO into your Kubernetes cluster, you will need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle the retrieval of access tokens for your cluster.
+
+- If you would like to use the same OneLogin application for OIDC-based SSO in your Kubernetes cluster, you will need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle the retrieval of access tokens for your cluster.
 
 
 # Setup 
