@@ -1,7 +1,7 @@
 ---
-title: "VMware System Requirements"
-metaTitle: "VMware System Requirements"
-metaDescription: "Review VMware system requirements."
+title: "VMware System and Permission Requirements"
+metaTitle: "VMware System and Permission Requirements"
+metaDescription: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -12,6 +12,10 @@ import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
+
+# Overview
+
+The sections below describe system requirements for VMware environments hosting Palette VerteX.
 
 # Zone Tagging
 
@@ -50,12 +54,12 @@ The following requirements apply to tags:
 
 
 
-# Network Requirements <<< MOVE TO INSTALL DOC PREREQS >>>
+# Network Requirements 
 
 - Outgoing access from the platform VMs to the internet either directly or via a proxy.
 
 
-- An IP Address (static or DHCP) for the virtual machine.
+- An IP Address (static or DHCP) for the virtual machine (VM).
 
 
 - A block of five (5) IP addresses reserved for an enterprise cluster: One IP address for each
@@ -70,7 +74,6 @@ for rolling upgrades.
 Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
 
 </InfoBox>
-
 
 
 # VMware Cloud Account Permissions
@@ -112,10 +115,6 @@ Root-level role privileges are only applied to root objects and data center obje
 ## Spectro Role Privileges
 
 Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
-
-<br />
-
-<<< With mention of OVA, this InfoBox doesn't seem to apply. Is the spectro-templates in SCAR now? >>>
 
 <br />
 

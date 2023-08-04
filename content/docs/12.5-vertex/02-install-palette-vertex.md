@@ -153,39 +153,50 @@ Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCID
 | github.com                 | 443      | Common third party content                       |
 
 
-# Hardware Requirements
+# Self-Hosted Configuration
 
 This section lists resource requirements for Palette VerteX for various capacity levels. Capacity levels are defined as follows:
 
 <br />
 
-- **Capacity Level**: The number of concurrent tenant clusters provisioning or deletion requests.
+- **Capacity Level**: The number of concurrent provisioning or deletion requests for enterprise clusters.
 
 
-- **Total managed clusters**: The number of tenant clusters running in parallel.
+- **Total managed clusters**: The number of deployed enterprise clusters that are active in parallel.
 
-The size of the Tenant Cluster, in terms of the number or size of the nodes, does not impact the capacity guidance in the tables below.
+In Palette, the terms *small*, *medium*, and *large* are used to describe the instance size of worker pools. 
 
-| **Configuration Name** | **Concurrent Cluster<br />Launch Limit** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      |
+<br />
+
+<InfoBox>
+
+The size of the enterprise cluster, in terms of the number or size of the clusters, does not impact the capacity guidance in the tables below.
+
+</InfoBox>
+
+
+| **Configuration**  | **CPUs**| **Memory**| **Storage**                    | **Max Clusters** | 
+|--------------------|--------|-----------|---------------------------------|------------------|
+| Small              | 8      | 16 GB RAM | 120 GB (MongoDB: 60 GB) Storage | Up to 8          |
+| Medium (default)   | 12     | 32 GB RAM | 150 GB (MongoDB: 80 GB) Storage | Up to 12         |
+| Large              | ??     | ?? GB RAM | ??  GB (MongoDB: ?? GB) Storage | Up to ??         |
+
+
+<!-- 
+| **Configuration** | **Concurrent Cluster Launch Limit** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      |
 |--------------------|------------------------|-----------|------|--------|---------|--------------------|
 | Small              | 4                      | 1000      | 8    | 16 GB  | 120 GB  | 20 GB, 1 CPU, 2 GB Memory    |
 | Medium (default)   | 8                      | 3000      | 12   | 32 GB  | 150 GB  | 60 GB, 2 CPU, 4 GB Memory    |
-| Large              | 12                     | 5000      | ??   | ?? GB  | ??  GB  | 80 GB, 2 CPU, 5 GB Memory    |
+| Large              | 12                     | 5000      | ??   | ?? GB  | ??  GB  | 80 GB, 2 CPU, 5 GB Memory    | -->
 
 
 #### Instance Sizing
 
-| **Configuration**       | **Running Workload Limit**                    |
+| **Configuration** | **Active Workload Limit**                           |
 |---------------------|---------------------------------------------------|
-| Small               | Up to 3000 Nodes each with 30 Pods (90,000)       |
-| Medium (default)    | Up to 5000 Nodes each with 30 Pods (150,000 pods) |
-| Large               | Up to ???? Nodes each with 30 Pods (???,000)      |
-
-#### Enterprise Configuration
-
-| **Size**   | **Concurrent<br />Tenant Clusters** | **Total<br />Managed Clusters** | **VMs** | **Memory** | **CPUs** | **Storage** |
-|--------|----------------------------|-----------------------|-----|--------|-----------|---------|
-| Medium | 8                          | 500                   | 3   | 16 GB  | 8 Virtual CPUs | 120 GB  |
+| Small               | Up to 1000 Nodes each with 30 Pods (30,000 Pods)  |
+| Medium (default)    | Up to 3000 Nodes each with 30 Pods (90,000 Pods)  |
+| Large               | Up to 5000 Nodes each with 30 Pods (150,000 Pods) |
 
 
 <br />
