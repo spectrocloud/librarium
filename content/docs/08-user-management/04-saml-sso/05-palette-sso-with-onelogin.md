@@ -201,7 +201,7 @@ Click **Confirm** and you should have a configuration similar to this.
 <br />
 
 
-3. You can check which teams you've been mapped to, by going to **Tenant Settings** --> **Users & Teams** --> **Users** and you'll directly see which teams you belong to.  
+3. You can check what teams you are mapped to by navigating to the left **Main Menu** and selecting **Tenant Settings**. Select **Users & Teams** --> **Users**. Find your user name to review the teams you are a member of. 
 
 <br />
 
