@@ -7,7 +7,6 @@ Set Height 500
 Set TypingSpeed 0.1
 Set WindowBar Colorful
 Set Margin 20
-# Set MarginFill "#6a5d9d"
 Set BorderRadius 10
 
 Show
@@ -19,17 +18,13 @@ Sleep 1s
 Enter
 Type@500ms "y"
 Enter
-Type "REPLACE_ME" # Ubuntu Pro Token
+Type "${UBUNTU_PRO}" # Ubuntu Pro Token
 Enter
 Type "https://repo-dev-fips.dev.spectrocloud.com"
 Enter
-Type "exampleUser"
-Hide
-Backspace 20
-Type "spectro"
+Type@300ms "spectro"
 Enter
-Show
-Type "REPLACE_ME" # FIPS Packs Repository Password
+Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
 Enter
 Sleep 1s
 Enter
@@ -54,21 +49,13 @@ Sleep 1s
 Type "y"
 Enter
 Sleep 1s
-Type "example.vcenter.com"
-Hide
-Backspace 20
 Type "vcenter.spectrocloud.dev"
 Enter
-Show
 Sleep 1s
-Type "demo@vsphere.local"
-Hide
-Backspace 20
-Type "REPLACE_ME" # vCenter Password
+Type "${VCENTER_USER}" # vCenter User
 Enter
-Show
 Sleep 1s
-Type "REPLACE_ME" # vCenter Password
+Type "${VCENTER_PASSWORD}" # vCenter Password
 Enter
 Sleep 1s
 Type "y" # Allow Insecure
@@ -126,4 +113,4 @@ Sleep 1s
 Enter # Disk Size
 
 
-Sleep 30s
+Sleep 25s

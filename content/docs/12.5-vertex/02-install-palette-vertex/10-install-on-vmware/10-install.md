@@ -1,7 +1,7 @@
 ---
 title: "Instructions"
-metaTitle: "Install Palette VerteX on VMware vSphere"
-metaDescription: "Learn how to deploy Palette VerteX on VMware vSphere." 
+metaTitle: "Install Palette VerteX on VMware"
+metaDescription: "Learn how to deploy Palette VerteX on VMware." 
 icon: ""
 hideToC: false
 fullWidth: false
@@ -92,7 +92,7 @@ The video below provides a demonstration of the installation wizard and the prom
 
   <br />
 
-  `video: title: "vertex-cli-install": /vertex-install.mp4`
+  `video: title: "vertex-cli-install": /./vertex-install.mp4`
 
 Use the following steps to install the Palette VerteX. 
 

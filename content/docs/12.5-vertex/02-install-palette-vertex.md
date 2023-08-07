@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Self-hosted Palette is available in the following modes:
+Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Palette VerteX is available in the following modes:
 
 | **Supported Platform** | **Description**                    |
 |------------------------|------------------------------------|
@@ -37,7 +37,7 @@ The next sections describe specific requirements for installing Palette VerteX.
   | spectrocloud.com           | 443      | Spectro Cloud content repository and pack registry |
   | s3.amazonaws.com           | 443      | Spectro Cloud VMware OVA files                  |
   | gcr.io                     | 443      | Spectro Cloud and common third party container images |
-  | ghcr.io                    | 443      | Kubernetes VIP          image                    |
+  | ghcr.io                    | 443      | Kubernetes VIP images                             |
   | docker.io                  | 443      | Common third party content                       |
   | googleapis.com             | 443      | For pulling Spectro Cloud images                 |
   | docker.com                 | 443      | Common third party container images              |
