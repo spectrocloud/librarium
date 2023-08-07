@@ -26,7 +26,7 @@ The following are the high-level steps of deploying a PCG in a private data cent
 While deploying a PCG, you may encounter one of the following scenarios during the above-mentioned steps. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
 <br />
 
-# Scenario - Jet Crashback Loop
+# Scenario - Jet CrashLoopBackOff
 
 After you finish configuring the PCG in Palette, Palette starts provisioning the PCG cluster. During the provisioning, one of the internal Palette components may undergo a *CrashLoopBackOff* state. 
 
