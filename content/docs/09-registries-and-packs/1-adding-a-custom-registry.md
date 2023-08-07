@@ -283,7 +283,7 @@ Once you deploy the pack registry server, use the following steps to configure t
   Once you upload the *.pem* certificate file and click the **Validate** button, Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
 
 
-6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server. Suppose you upload a TLS certificate and select the **Insecure Skip TLS Verify** checkbox as well. The **Insecure Skip TLS Verify** checkbox value will take precedence in that case. 
+6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server. Suppose you upload a TLS certificate and also select the **Insecure Skip TLS Verify** checkbox. In that case, the **Insecure Skip TLS Verify** checkbox value will take precedence. 
 
 
 7. Click the **Confirm** button to finish configuring the pack registry server. After you finish the configuration, Palette will periodically synchronize with the pack registry server to download pack updates, if any.  
