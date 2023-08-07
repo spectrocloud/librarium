@@ -23,7 +23,7 @@ The following are the high-level steps of deploying a PCG in a private data cent
 2. Deploy the PCG installer in the data center environment.
 3. Configure the cloud gateway in Palette, and launch the PCG cluster.
 
-While deploying a PCG, you may encounter one of the following scenarios during the abovementioned steps. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
+While deploying a PCG, you may encounter one of the following scenarios during the above-mentioned steps. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
 <br />
 
 # Scenario - Jet Crashback Loop
@@ -111,7 +111,7 @@ If the installer fails to register with Palette within the expected timeframe, i
   ```
 
 
-8. Contact Spectro Cloud's support team by emailing [support@spectrocloud.com](mailto:support@spectrocloud.com) and attach the logs archive to the ticket so the support team can troubleshoot the issue and provide you with further guidance.
+8. Contact our support team by emailing [support@spectrocloud.com](mailto:support@spectrocloud.com) and attach the logs archive to the ticket so the support team can troubleshoot the issue and provide you with further guidance.
 
 <br />
 
@@ -146,7 +146,7 @@ If the PCG installer VM fails to get an IP address assigned, it implies a networ
 7. Examine the cloud-init logs for potential errors or warnings related to the IP address assignment.
 
 
-8. If the problem persists, email the log files to Spectro Cloud's support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
+8. If the problem persists, email the log files to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
 <br />
 
@@ -242,7 +242,7 @@ However, if the PCG cluster provisioning gets stuck, it could hint at incorrect 
   ![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.png)
 
 
-10. Share the logs with Spectro Cloud's support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
+10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 <br />
 
 
@@ -387,7 +387,7 @@ The error indicates an issue with the PCG cluster nodes attempting to connect to
 After you finish configuring the cloud gateway in Palette, Palette starts provisioning the PCG cluster. The PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. You can navigate to the cluster details page and review the progressive events in the **Events** tab while the cluster is provisioning. Suppose one of the events displays the  `Permission to perform this operation denied` error. 
 
 
-You must have the necessary permissions to provision a PCG cluster in the VMware environment. If you do not have adequate permissions, the PCG cluster provisioning will fail, and you will get the abovementioned error in the events log. 
+You must have the necessary permissions to provision a PCG cluster in the VMware environment. If you do not have adequate permissions, the PCG cluster provisioning will fail, and you will get the above-mentioned error in the events log. 
 <br />
 
 ## Debug Steps
