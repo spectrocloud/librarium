@@ -64,7 +64,7 @@ Sleep 1s
 Type "demo@vsphere.local"
 Hide
 Backspace 20
-Type "karl@vsphere.local"
+Type "REPLACE_ME" # vCenter Password
 Enter
 Show
 Sleep 1s
