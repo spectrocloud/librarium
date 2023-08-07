@@ -48,6 +48,14 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
     - A minimum of three worker nodes or three untainted control plane nodes.
 
+  <br />
+
+  <InfoBox>
+
+  Refer to the Palette VerteX [size guidelines](/vertex/install-palette-vertex#sizeguidelines) resource for additional sizing information.
+
+  </InfoBox>
+
 
 - The following network ports must be accessible for Palette VerteX to operate successfully.
 

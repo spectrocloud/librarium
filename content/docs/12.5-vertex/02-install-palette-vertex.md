@@ -30,22 +30,25 @@ The next sections describe specific requirements for installing Palette VerteX.
 
 - Allow connectivity to domains and ports in the table.
 
-| **Top-Level Domain**       | **Port** | **Description**                                 |
-|----------------------------|----------|-------------------------------------------------|
-| spectrocloud.com           | 443      | Spectro Cloud content repository and pack registry |
-| s3.amazonaws.com           | 443      | Spectro Cloud VMware OVA files                  |
-| gcr.io                     | 443      | Spectro Cloud and common third party container images |
-| docker.io                  | 443      | Common third party content                       |
-| googleapis.com             | 443      | For pulling Spectro Cloud images                 |
-| docker.com                 | 443      | Common third party container images              |
-| raw.githubusercontent.com  | 443      | Common third party content                       |
-| projectcalico.org          | 443      | Calico container images                          |
-| quay.io                    | 443      | Common 3rd party container images                |
-| grafana.com                | 443      | Grafana container images and manifests           |
-| github.com                 | 443      | Common third party content                       |
+  <br />
+
+  | **Top-Level Domain**       | **Port** | **Description**                                 |
+  |----------------------------|----------|-------------------------------------------------|
+  | spectrocloud.com           | 443      | Spectro Cloud content repository and pack registry |
+  | s3.amazonaws.com           | 443      | Spectro Cloud VMware OVA files                  |
+  | gcr.io                     | 443      | Spectro Cloud and common third party container images |
+  | ghcr.io                    | 443      | Kubernetes VIP          image                    |
+  | docker.io                  | 443      | Common third party content                       |
+  | googleapis.com             | 443      | For pulling Spectro Cloud images                 |
+  | docker.com                 | 443      | Common third party container images              |
+  | raw.githubusercontent.com  | 443      | Common third party content                       |
+  | projectcalico.org          | 443      | Calico container images                          |
+  | quay.io                    | 443      | Common 3rd party container images                |
+  | grafana.com                | 443      | Grafana container images and manifests           |
+  | github.com                 | 443      | Common third party content                       |
 
 
-# Self-Hosted Configuration
+# Size Guidelines
 
 This section lists resource requirements for Palette VerteX for various capacity levels. Capacity levels are defined as follows:
 

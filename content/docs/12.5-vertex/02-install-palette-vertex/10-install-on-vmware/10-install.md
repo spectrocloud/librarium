@@ -27,13 +27,13 @@ You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon
 - An AMD64 Linux environment with connectivity to the VMware environment. 
 
 
-- Downloaded Palette CLI. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup) for guidance.
+- Palette CLI installed and available. Refer to the Palette CLI [Install](/palette-cli/install-palette-cli#downloadandsetup) page for guidance.
 
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
 
-- Review required VMware [permissions]().
+- Review required VMware [permissions](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements).
 
 
 - The Kubernetes cluster must have the following minimum resources:
@@ -41,6 +41,14 @@ You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon
   - 8 vCPU
   - 16 GB memory
   - 120 GB storage
+
+  <br />
+
+  <InfoBox>
+
+    Refer to the Palette VerteX [size guidelines](/vertex/install-palette-vertex#sizeguidelines) resource for additional sizing information.
+
+  </InfoBox>
 
 
 - The following network ports must be accessible for Palette VerteX to operate successfully.
@@ -99,13 +107,13 @@ You can also provide an optional SSH key pair to access the cluster remotely for
 
 3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted. This enables the Ubuntu license.
 
-<br />
+  <br />
 
-<WarningBox>
+  <WarningBox>
 
-To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
+  To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
 
-</WarningBox>
+  </WarningBox>
 
 <br />
 
