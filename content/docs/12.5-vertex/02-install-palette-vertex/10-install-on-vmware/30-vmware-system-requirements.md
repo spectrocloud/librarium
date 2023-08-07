@@ -1,7 +1,7 @@
 ---
-title: "VMware System Requirements"
-metaTitle: "VMware System Requirements"
-metaDescription: "Review VMware system requirements."
+title: "VMware System and Permission Requirements"
+metaTitle: "VMware System and Permission Requirements"
+metaDescription: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hideToC: false
 fullWidth: false
@@ -13,11 +13,72 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
+# Overview
+
+The sections below describe system requirements and cloud account permissions for VMware environments hosting Palette VerteX.
+
+# Zone Tagging
+
+Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required to install the Palette Platform itself and is also helpful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers(k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+  
+For example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of vSphere Object, Tag Category, and Tag value as shown in the table.
+
+| **vSphere Object** | **Tag Category** | **Tag Value** |
+|--------------------|------------------|---------------|
+| dc-1               | k8s-region       | region1       |
+| cluster-1          | k8s-zone         | az1           |
+| cluster-2          | k8s-zone         | az2           |
+| cluster-3          | k8s-zone         | az3           |
+
+
+
+<InfoBox>
+
+The exact values for the k8s-region and k8s-zone tags can be different from the ones described in the above example, if they are unique.
+
+</InfoBox>
+
+## Naming Conventions for vSphere Region and Zone Tags
+
+The following requirements apply to tags:
+
+<br />
+
+- A valid tag must consist of alphanumeric characters.
+
+
+- The tag must start and end with an alphanumeric characters.
+
+
+- The regex used for validation is ``(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?``
+
+
+
+# Network Requirements 
+
+- Outgoing access from the platform VMs to the internet either directly or via a proxy.
+
+
+- An IP Address (static or DHCP) for the virtual machine (VM).
+
+
+- A block of five (5) IP addresses reserved for an enterprise cluster: One IP address for each
+of the three enterprise cluster VMs, an IP to be used as a VIP, and an additional IP reserved
+for rolling upgrades.
+
+
+- Interconnectivity across all three (3) VMs on all ports. Connectivity from the VMs to the vCenter.
+
+<InfoBox>
+
+Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
+
+</InfoBox>
 
 
 # VMware Cloud Account Permissions
 
-The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
+The vSphere user account that deploys Palette VerteX must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
 
 Select the tab for your vSphere version.
 
@@ -37,7 +98,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 ## Root-Level Role Privileges
 
-Root-level role privileges are only applied to root objects and Data center objects.
+Root-level role privileges are only applied to root objects and data center objects.
 
 | **vSphere Object** | **Privilege**                           |
 |--------------------|-----------------------------------------|
@@ -236,3 +297,7 @@ The following table lists Spectro role privileges for VMs by category.
 
 
 </Tabs>
+
+<br />
+
+<br />

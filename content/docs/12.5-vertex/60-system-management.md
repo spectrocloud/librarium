@@ -34,8 +34,13 @@ Exercise caution when changing system settings as the changes will be applied to
 
 # Resources
 
+* [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings)
+
+
 * [Tenant Management](/vertex/system-management/tenant-management)
 
 
+
+<br />
 
 <br />
