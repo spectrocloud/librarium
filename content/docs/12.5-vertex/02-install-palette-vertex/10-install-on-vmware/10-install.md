@@ -88,9 +88,14 @@ Self-hosted Palette VerteX installations provide a system Private Cloud Gateway 
 
 # Install the Enterprise Cluster
 
-Before you begin, it is helpful to install Kind, as it stands up a local Kind cluster that will orchestrate part of the installation. For more information, refer to the [kind installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) reference.
+The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment.
 
-You can also provide an optional SSH key pair to access the cluster remotely for maintenance and troubleshooting.
+  <br />
+
+  `video: title: "vertex-cli-install": /vertex-install.mp4`
+
+Use the following steps to install the Palette VerteX. 
+
 
 <br />
 
@@ -105,7 +110,7 @@ You can also provide an optional SSH key pair to access the cluster remotely for
 2. At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
 
-3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted. This enables the Ubuntu license.
+3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted. 
 
   <br />
 
@@ -118,10 +123,10 @@ You can also provide an optional SSH key pair to access the cluster remotely for
 <br />
 
 
-4. Provide the repository URL you received from our support team.
+4. Provide the FIPS repository URL you received from our support team.
 
 
-5. Enter the repository password.
+5. Enter the FIPS repository password.
 
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
@@ -189,10 +194,13 @@ This information determines where Palette VerteX will be deployed in your VMware
 
 <br />
 
-#### DDNS Placement Configuration
+#### vSphere Machine Configuration
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| **Search domains** | Comma-separated list of DNS search domains.|
+| **Number of CPUs** | The number of CPUs allocated to each VM node instance.|
+| **Memory** | The amount of memory allocated to each VM node instance.|
+| **Disk Size** | The size of the disk allocated to each VM node instance.|
+
 
 
   The installation process stands up a kind cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
@@ -265,7 +273,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 3. Select the VM to access its details page, and verify three nodes are listed.
 
 
-4. Open a local terminal window, and use the IP address provided in Enterprise Cluster Details at the completion of the installatation to connect to the Palette VerteX System Console. If you are using a web browser, copy the IP address to the address bar and append `/system`.
+4. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette VerteX System Console. Copy the IP address to the address bar and append `/system`.
 
 
 5. Log in using your credentials.
