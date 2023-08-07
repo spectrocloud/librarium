@@ -26,7 +26,7 @@ The following are the high-level steps of deploying a PCG in a private data cent
 While deploying a PCG, you may encounter one of the following scenarios during the abovementioned steps. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
 <br />
 
-# Scenairo - Jet Crashback Loop
+# Scenario - Jet Crashback Loop
 
 After you finish configuring the PCG in Palette, Palette starts provisioning the PCG cluster. During the provisioning, one of the internal Palette components may undergo a *CrashLoopBackOff* state. 
 
@@ -70,7 +70,7 @@ If the installer fails to register with Palette within the expected timeframe, i
 3. Double-check the accuracy of the pairing code used for the PCG installer VM. A pairing code is a unique authentication code Palette generates for each PCG installer instance. Confirm that it matches the value you copied from Palette. 
 
 
-4. Ensure the Palette endpoint is correct and has no trailing slash "`/`". If you use Palette SaaS, the default endpoint is `https://console.spectrocloud.com`. If you are using a self-hosted Palette instance, use the domain name as applicable to you. If the Palette endpoint is incorrectly specified, relaunch a new PCG installer VM with the correct values.
+4. Ensure the Palette endpoint is correct and has no trailing slash `/`. If you use Palette SaaS, the default endpoint is `https://console.spectrocloud.com`. If you are using a self-hosted Palette instance, use the domain name as applicable to you. If the Palette endpoint is incorrectly specified, relaunch a new PCG installer VM with the correct values.
   
 
 5. Another potential issue may be a lack of outbound connectivity from the PCG installer VM to Palette. The installer VM needs to have outbound connectivity directly or via a proxy to download the installation artifacts from Spectro Cloud. Check for any network restrictions or firewall rules in the network settings that may block communication. Adjust the proxy settings, if applicable, to fix the connectivity. Alternatively, you can relaunch a new PCG installer VM in a network that supports outbound connections to Palette.
@@ -198,7 +198,7 @@ If the PCG installer VM has a public IP address assigned, you can access the PCG
 7. Check for any network restrictions or firewall rules in the data center's network settings that may block communication. Adjust the proxy settings, if applicable, to fix the connectivity. Alternatively, you can power down and delete the PCG installer VM and relaunch a new one in a network that supports outbound internet connections.
 
 
-8. If the problem persists, email the log files to Spectro Cloud's support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
+8. If the problem persists, email the log files to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 <br />
 
 # Scenario - PCG Cluster Provisioning Stalled or Failed
@@ -226,7 +226,7 @@ However, if the PCG cluster provisioning gets stuck, it could hint at incorrect 
 5. Examine all events in the **Events** tab to identify specific errors or issues. Each event will have a status, timestamp, associated service name, and orchestration details. 
 
 
-6.  If you encounter one of the following error events - `Failed to deploy image: Failed to create govomiClient` or `No route to host`, refer to the remediation steps outlined in the [Scenario - Failed to Deploy Image](#scenario---failed-to-deploy-image) or the [Scenario - No Route to the Kubernetes API Server](#scenario---no-route-to-the-kubernetes-api-server) section, respectively.
+6.  If you encounter one of the following error events - `Failed to deploy image: Failed to create govomiClient` or `No route to host`, refer to the remediation steps outlined in the [Scenario - Failed to Deploy Image](#scenario-failedtodeployimage) or the [Scenario - No Route to the Kubernetes API Server](#scenario-noroutetothekubernetesapiserver) section, respectively.
 
 
 7. If you encounter errors other than the ones mentioned in the previous step, it is possible that the cluster configuration or the DNS settings are not set correctly. You can review and edit the cluster configuration in the cluster settings. The screenshot below highlights the cluster configuration section in the cluster settings blade. 
@@ -353,11 +353,11 @@ The error indicates an issue with the PCG cluster nodes attempting to connect to
 
     - Click on the newly provisioned PCG cluster to review its details. 
 
-    - Download the PCG cluster's Kubeconfig file from the **Overview** tab. Click on the Kubeconfig file name to download it to your local machine, as highlighted in the screenshot below. 
+    - Download the PCG cluster's kubeconfig file from the **Overview** tab. Click on the kubeconfig file name to download it to your local machine, as highlighted in the screenshot below. 
   
       ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.png)
     
-    - After you download the PCG cluster's Kubeconfig file, use the following commands to make a GET request to one of the [Kubernetes API server endpoints](https://kubernetes.io/docs/reference/using-api/health-checks/#api-endpoints-for-health), `/readyz` or `'/livez'`. Replace `[path_to_kubeconfig]` placeholder with the path to the Kubeconfig file you downloaded in the previous step. A status code `ok` or `200` indicates the Kubernetes API server is healthy. 
+    - After you download the PCG cluster's kubeconfig file, use the following commands to make a GET request to one of the [Kubernetes API server endpoints](https://kubernetes.io/docs/reference/using-api/health-checks/#api-endpoints-for-health), `/readyz` or `'/livez'`. Replace `[path_to_kubeconfig]` placeholder with the path to the kubeconfig file you downloaded in the previous step. A status code `ok` or `200` indicates the Kubernetes API server is healthy. 
     <br />
 
       ```bash
@@ -399,6 +399,6 @@ You must have the necessary permissions to provision a PCG cluster in the VMware
 2. Contact your VMware administrator if you are missing any of the required permissions.
 
 
-3. Delete the existing PCG cluster and redeploy a new one for new permissions to take effect. 
+3. Delete the existing PCG cluster and redeploy a new one so that the new permissions take effect.
 
 <br />
