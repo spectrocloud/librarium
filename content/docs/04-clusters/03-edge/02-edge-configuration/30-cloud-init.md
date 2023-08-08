@@ -293,12 +293,12 @@ boot.after:
 
 When your edge hosts are ready for installation, you perform a site installation using a USB stick that includes the Edge Installer and the user data. The [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process. During the site installation, the file contents from the USB stick are copied to the edge hosts, typically to the **/run/stylus/userdata** or the **/oem/userdata** file. The exact file path will vary based on the underlying operating system. 
 
-Suppose you plan to use sensitive information, such as credentials for patching the OS on your edge hosts, in any of your user data stages. In that case, you may not want to copy the sensitive information on edge hosts. 
+Suppose you plan to use sensitive information, such as credentials for patching the OS on your edge hosts, in any of your user data stages. In that case, you may not want to copy the sensitive information to edge hosts. 
 
 In such scenarios, you must use the `skip-copy-[string]` naming convention for your user data stages. Replace the `[string]` placeholder with any meaningful string per your requirements. The Edge Installer will skip copying the stages whose name matches the regular expression `skip-copy-*` to the edge hosts. The stages that follow the `skip-copy-[string]` naming convention will execute as long as the USB drive is mounted to the edge hosts. However, if you unmount the USB stick, those stages will no longer be available to the edge hosts. 
 
 
-For example, the code block below presents a `network.after` stage that follows the `skip-copy-[string]` naming convention. In this example, the `skip-copy-subscribe` stage will execute as long as the USB stick is mounted to the edge hosts. If you no longer want the stage to execute, you can unmount or eject the USB stick and reboot the edge host device. 
+For example, the code block below presents a `network.after` stage that follows the `skip-copy-[string]` naming convention. In this example, the `skip-copy-subscribe` stage will execute as long as the USB stick is mounted on the edge hosts. If you no longer want the stage to execute, you can unmount or eject the USB stick and reboot the edge host device. 
 <br />
 
 ```yaml
