@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add Custom Registries
 
-Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a Docker image provided by Spectro Cloud. While deploying a pack registry server, you can employ a TLS certificate from a Certificate Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS and self-signed certificates. You can check out the [Advanced Configuration](/registries-and-packs/advanced-configuration) guide to learn about the customization options while deploying a pack registry server.
+Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a Docker image provided by us. While deploying a pack registry server, you can employ a TLS certificate from a Certificate Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS and self-signed certificates. You can check out the [Advanced Configuration](/registries-and-packs/advanced-configuration) guide to learn about the customization options while deploying a pack registry server.
 
 After deploying a pack registry server, the next step is configuring the pack registry server in Palette. Once you finish configuring the pack registry server in Palette, Palette will synchronize the pack contents from the pack registry server periodically. 
 
@@ -40,7 +40,7 @@ Please ensure that the ports 443 and 80 are exclusively allocated to the registr
 
 # Deploy Pack Registry Server with Let's Encrypt
 
-Spectro Cloud provides a Docker image for setting up a pack registry server. Use the following steps to deploy a pack registry server using the designated Docker image and a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
+We provide a Docker image for setting up a pack registry server. Use the following steps to deploy a pack registry server using the designated Docker image and a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 <br />
 
 1. Create a folder that contains an httppasswd file.
@@ -58,7 +58,7 @@ Spectro Cloud provides a Docker image for setting up a pack registry server. Use
   ```
 
 
-3. Create a pax registry configuration file titled **myconfig.yml** in the **spectropaxconfig** directory. The YAML code block below displays the sample content for the **myconfig.yml** file. The current example assumes that your pack registry server will host at `yourhost.companydomain.com` and the email id for notifications is `you@companydomain.com`. Replace the `host` and `email` attribute value as applicable to you. 
+3. Create a pax registry configuration file titled **myconfig.yml** in the **spectropaxconfig** directory. The YAML code block below displays the sample content for the **myconfig.yml** file. The current example assumes that your pack registry server will be hosted at `yourhost.companydomain.com` and the email id for notifications is `you@companydomain.com`. Replace the `host` and `email` attribute values as applicable to you. 
 <br />
 
   ```yaml
@@ -128,7 +128,7 @@ The following steps need to be performed to deploy the pack registry server usin
   mkdir -p /root/certs
   ```
 
-5. Copy the `tls.crt` and `tls.key` files from the CA into the `/roots/certs` directory. This directory will be mounted inside the registry Docker container. 
+5. Copy the **tls.crt** and **tls.key** files from the CA into the **/roots/certs** directory. This directory will be mounted inside the registry Docker container. 
 
 
 6. Pack contents in a pack registry can be stored locally on the host or an external file system.
@@ -137,18 +137,18 @@ registry instance in the event of restarts and failures.
 Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 
 
-7. Issue the following command to pull the Docker image provided by Spectro Cloud. The image will help you instantiate a Docker container as a pack registry server.  
+7. Issue the following command to pull the pack registry server image. The image will help you instantiate a Docker container as a pack registry server.  
 <br />
 
   ```shell
   docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
   ```
 
-8. Use the following `docker run` command to instantiate a Docker container. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips. 
+8. Use the `docker run` command to instantiate a Docker container. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips. 
 
-    * Spectro Cloud CLI registry login command fails with the error message `x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs`. The error occurs when a self-signed certificate is created using an IP address rather than a hostname. To resolve the error, recreate the certificate to include an IP SAN or use a DNS name instead of an IP address.
+    * The Registry CLI login command fails with the error message `x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs`. The error occurs when a self-signed certificate is created using an IP address rather than a hostname. To resolve the error, recreate the certificate to include an IP SAN or use a DNS name instead of an IP address.
 
-    * Spectro Cloud CLI registry login command fails with the error message `x509: certificate signed by unknown authority`. The error occurs when the self-signed certificate is invalid. To resolve the error, you must configure the host where Spectro Cloud CLI is installed to trust the certificate.
+    * The Registry CLI login command fails with the error message `x509: certificate signed by unknown authority`. The error occurs when the self-signed certificate is invalid. To resolve the error, you must configure the host where CLI is installed to trust the certificate.
 
 <Tabs>
 
@@ -244,19 +244,17 @@ spectro registry login --insecure http://example.com:5000
 
 # Configure a Custom Pack Registry in Palette
 
-<<<<<<< HEAD
 Once you deploy the pack registry server, use the following steps to configure the pack registry server in Palette.
 <br />
 
 1. Log in to Palette, and switch to the tenant admin view. 
 
-=======
 # Configure a Custom Pack Registry in Palette
 
 Once you deploy the pack registry server, use the following steps to configure the pack registry server in Palette.
 <br />
 
-1. Log in to Palette, and switch to the Tenant admin view. 
+1. Log in to Palette, and switch to the tenant admin view. 
 
 
 2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
@@ -271,7 +269,6 @@ Once you deploy the pack registry server, use the following steps to configure t
 
 
 5. If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload your TLS certificate issued from a Certificate Authority (CA) in the **TLS Configuration** section. Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
->>>>>>> 5f11c0ce (docs: resolve conflict)
 
 2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
 
@@ -316,7 +313,7 @@ Once you deploy the pack registry server, use the following steps to configure t
   Once you upload the *.pem* certificate file and click the **Validate** button, Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
 
 
-6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server. Suppose you upload a TLS certificate and also select the **Insecure Skip TLS Verify** checkbox. In that case, the **Insecure Skip TLS Verify** checkbox value will take precedence. 
+6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server. If you upload a TLS certificate and also select the **Insecure Skip TLS Verify** checkbox. The **Insecure Skip TLS Verify** checkbox value will take precedence in that case. 
 
 
 7. Click the **Confirm** button to finish configuring the pack registry server. After you finish the configuration, Palette will periodically synchronize with the pack registry server to download pack updates, if any.  
