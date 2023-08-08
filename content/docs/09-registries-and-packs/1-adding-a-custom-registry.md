@@ -263,9 +263,7 @@ Once you deploy the pack registry server, use the following steps to configure t
 
 5. If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload the certificate in the **TLS Configuration** section. The certificate file must be in the PEM format and have a complete trust chain. 
 
-  If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA to obtain a certificate chain from them in the PEM format.
-  
-  If you used a self-signed certificate, upload the entire certificate trust chain as a *.pem* file. The file content must have the server, the intermediate, and the root certificates. 
+  If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA to obtain a certificate chain. If you used a self-signed certificate, upload the entire certificate trust chain. The file content must have the server, the intermediate, and the root certificates. 
 
   Once you upload the *.pem* certificate file and click the **Validate** button, Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
 
