@@ -13,7 +13,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add Custom Registries
 
-Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a Docker image provided by Spectro Cloud. While deploying a pack registry server, you can employ a TLS certificate from a Certificate Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS and self-signed certificates.
+Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a Docker image provided by Spectro Cloud. While deploying a pack registry server, you can employ a TLS certificate from a Certificate Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS and self-signed certificates. You can check out the [Advanced Configuration](/registries-and-packs/advanced-configuration) guide to learn about the customization options while deploying a pack registry server.
 
 After deploying a pack registry server, the next step is configuring the pack registry server in Palette. Once you finish configuring the pack registry server in Palette, Palette will synchronize the pack contents from the pack registry server periodically. 
 
@@ -239,6 +239,8 @@ spectro registry login --insecure http://example.com:5000
 </Tabs.TabPane>
 
 </Tabs> 
+
+
 
 # Configure a Custom Pack Registry in Palette
 
