@@ -56,17 +56,19 @@ This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/
 ## Network Connectivity
 
 
-The environment network configuration of the host cluster dictates the behavior you and other users experience when attempting to connect to a host cluster. Clusters deployed in a network that does not allow inbound internet access are considered private. The host cluster may require the deployment of the Spectro proxy pack. The following are the three different network connectivity scenarios:
+The host cluster's network configuration defines who can access the host cluster from a network perspective. If a user is in the same network as the cluster, the user may be able to access the host cluster without needing a forward proxy. However, if the user is on a different network, the host cluster's network configuration may limit the user's ability to connect to the host cluster and may require the use of a forward proxy. 
+
+From a network configuration perspective, a cluster can be in a private or a public network. Host clusters deployed in a network that does not allow inbound internet access are considered private. Whereas the clusters deployed in a network with both inbound and outbound access to the internet are considered public. The following are the three possible network connectivity scenarios:
 
 <br />
 
-* Connectivity to a private cluster in the same network.
+* The cluster and the user are in the same private network.
 
 
-* Connectivity to a private cluster in a different network.
+* The cluster and the user are in different private networks. 
 
 
-* Connectivity to a public cluster.
+* The cluster is in a public network.
 
 <br />
 
