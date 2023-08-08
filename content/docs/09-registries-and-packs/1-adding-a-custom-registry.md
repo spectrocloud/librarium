@@ -265,22 +265,7 @@ Once you deploy the pack registry server, use the following steps to configure t
 
   If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA to obtain a certificate chain from them in the PEM format.
   
-  If you used a self-signed certificate, upload the entire certificate trust chain as a *.pem* file. If you do not already have one, use a text editor to create a new *.pem* file. Use the following syntax to create the file. The file content must have the server, intermediate, and root certificates concatenated in the specific order mentioned below. The syntax below separates the different certificates using the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` comments. Therefore, do not remove those comments from your *.pem* file.  
-  <br />
-
-  ```
-  -----BEGIN CERTIFICATE-----
-  (Your server certificate)
-  -----END CERTIFICATE-----
-
-  -----BEGIN CERTIFICATE-----
-  (Your intermediate certificate)
-  -----END CERTIFICATE-----
-  
-  -----BEGIN CERTIFICATE-----
-  (Your root certificate)
-  -----END CERTIFICATE-----
-  ```
+  If you used a self-signed certificate, upload the entire certificate trust chain as a *.pem* file. The file content must have the server, the intermediate, and the root certificates. 
 
   Once you upload the *.pem* certificate file and click the **Validate** button, Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
 
