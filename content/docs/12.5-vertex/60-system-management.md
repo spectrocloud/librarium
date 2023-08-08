@@ -40,6 +40,7 @@ Exercise caution when changing system settings as the changes will be applied to
 * [Tenant Management](/vertex/system-management/tenant-management)
 
 
+* [SSL Certificate Management](/vertex/system-management/ssl-certificate-management)
 
 <br />
 

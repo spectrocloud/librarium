@@ -1,12 +1,11 @@
 ---
 title: "Instructions"
-metaTitle: "Install Palette VerteX on VMware vSphere"
-metaDescription: "Learn how to deploy Palette VerteX on VMware vSphere." 
+metaTitle: "Install Palette VerteX on VMware"
+metaDescription: "Learn how to deploy Palette VerteX on VMware." 
 icon: ""
 hideToC: false
 fullWidth: false
 ---
-
 
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
@@ -28,13 +27,13 @@ You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon
 - An AMD64 Linux environment with connectivity to the VMware environment. 
 
 
-- Downloaded Palette CLI. Refer to [Download and Setup](/palette-cli/install-palette-cli#downloadandsetup) for guidance.
+- Palette CLI installed and available. Refer to the Palette CLI [Install](/palette-cli/install-palette-cli#downloadandsetup) page for guidance.
 
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
 
-- Review required VMware [permissions]().
+- Review required VMware [permissions](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements).
 
 
 - The Kubernetes cluster must have the following minimum resources:
@@ -42,6 +41,14 @@ You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon
   - 8 vCPU
   - 16 GB memory
   - 120 GB storage
+
+  <br />
+
+  <InfoBox>
+
+    Refer to the Palette VerteX [size guidelines](/vertex/install-palette-vertex#sizeguidelines) resource for additional sizing information.
+
+  </InfoBox>
 
 
 - The following network ports must be accessible for Palette VerteX to operate successfully.
@@ -81,38 +88,45 @@ Self-hosted Palette VerteX installations provide a system Private Cloud Gateway 
 
 # Install the Enterprise Cluster
 
-Before you begin, it is helpful to install kind, as it stands up a local kind cluster that will orchestrate part of the installation. For more information, refer to the [kind installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) reference.
+The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment.
 
-You can also provide an optional SSH key pair to access the cluster remotely for maintenance and troubleshooting.
+  <br />
+
+  `video: title: "vertex-cli-install": /./vertex-install.mp4`
+
+Use the following steps to install the Palette VerteX. 
+
 
 <br />
 
 1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
 
-```bash
-palette ec install
-```
+  <br />
+
+  ```bash
+  palette ec install
+  ```
 
 2. At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
 
-3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted. This enables the Ubuntu license.
+3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted. 
+
+  <br />
+
+  <WarningBox>
+
+  To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
+
+  </WarningBox>
 
 <br />
 
-<WarningBox>
 
-To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
-
-</WarningBox>
-
-<br />
+4. Provide the FIPS repository URL you received from our support team.
 
 
-4. Provide the repository URL you received from our support team.
-
-
-5. Enter the repository password.
+5. Enter the FIPS repository password.
 
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
@@ -180,47 +194,52 @@ This information determines where Palette VerteX will be deployed in your VMware
 
 <br />
 
-#### DDNS Placement Configuration
+#### vSphere Machine Configuration
 |**Parameter**                            | **Description**|
 |-----------------------------------------|----------------|
-| **Search domains** | Comma-separated list of DNS search domains.|
+| **Number of CPUs** | The number of CPUs allocated to each VM node instance.|
+| **Memory** | The amount of memory allocated to each VM node instance.|
+| **Disk Size** | The size of the disk allocated to each VM node instance.|
+
 
 
   The installation process stands up a kind cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
 
 
-  Upon completion, the enterprise cluster configuration file named ``ec.yaml`` contains the information you provided, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
+  Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
 
-<br />
+  <br />
 
-```bash hideClipboard
-==== Enterprise Cluster config saved ====
-Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
-```
+  ```bash hideClipboard
+  ==== Enterprise Cluster config saved ====
+  Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+  ```
 
 <br />
 
 When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette VerteX System Console.
 
-<br />
+  <br />
 
-```bash hideClipboard
-====================================
-==== Enterprise Cluster Details ====
-====================================
-Console URL: https://10.10.189.100/system
-Username: admin
-Password: admin
-```
+  ```bash hideClipboard
+  ====================================
+  ==== Enterprise Cluster Details ====
+  ====================================
+  Console URL: https://10.10.189.100/system
+  Username: admin
+  Password: admin
+  ```
 
 
 10.  Copy the URL to the browser to access the System Console. You will be prompted to reset the password.
 
-<InfoBox>
+  <br />
 
-The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
+  <InfoBox>
 
-</InfoBox> 
+  The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
+
+  </InfoBox> 
 
 
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
@@ -254,7 +273,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 3. Select the VM to access its details page, and verify three nodes are listed.
 
 
-4. Open a local terminal window, and use the IP address provided in Enterprise Cluster Details at the completion of the installatation to connect to the Palette VerteX System Console. If you are using a web browser, copy the IP address to the address bar and append `/system`.
+4. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette VerteX System Console. Copy the IP address to the address bar and append `/system`.
 
 
 5. Log in using your credentials.
