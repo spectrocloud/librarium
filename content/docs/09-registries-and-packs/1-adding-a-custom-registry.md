@@ -242,10 +242,19 @@ spectro registry login --insecure http://example.com:5000
 
 # Configure a Custom Pack Registry in Palette
 
+<<<<<<< HEAD
 Once you deploy the pack registry server, use the following steps to configure the pack registry server in Palette.
 <br />
 
 1. Log in to Palette, and switch to the tenant admin view. 
+
+=======
+# Configure a Custom Pack Registry in Palette
+
+Once you deploy the pack registry server, use the following steps to configure the pack registry server in Palette.
+<br />
+
+1. Log in to Palette, and switch to the Tenant admin view. 
 
 
 2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
@@ -254,6 +263,28 @@ Once you deploy the pack registry server, use the following steps to configure t
 3. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a pack registry server, as highlighted in the screenshot below. 
 
   ![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+
+
+4. Provide the custom pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry server endpoint. 
+
+
+5. If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload your TLS certificate issued from a Certificate Authority (CA) in the **TLS Configuration** section. Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
+>>>>>>> 5f11c0ce (docs: resolve conflict)
+
+2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
+
+<<<<<<< HEAD
+=======
+6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server.  
+>>>>>>> 5f11c0ce (docs: resolve conflict)
+
+3. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a pack registry server, as highlighted in the screenshot below. 
+
+<<<<<<< HEAD
+  ![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+=======
+7. Click the **Confirm** button to finish configuring the custom pack registry server.
+>>>>>>> 5f11c0ce (docs: resolve conflict)
 
 
 4. Provide the pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry server endpoint. 
