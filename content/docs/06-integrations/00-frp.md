@@ -18,25 +18,24 @@ import Tooltip from "shared/components/ui/Tooltip";
 # Spectro Proxy
 Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP).
 
-The reverse proxy has a server component and a client component. The reverse proxy server is publicly available and managed by Spectro Cloud. The client runs inside your Palette-managed Kubernetes cluster and connects to the reverse proxy server. When you add the Spectro Proxy pack to a cluster profile, a couple of things happen:
+The reverse proxy has a server component and a client component. The reverse proxy server is publicly available and managed by Spectro Cloud. The client is deployed inside your Palette-managed Kubernetes cluster and connects to the reverse proxy server. When you add the Spectro Proxy pack to a cluster profile, a couple of things happen:
 
 <br />
 
-- The KubeConfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy.
+- The kubeconfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy.
 
   <br />
 
-    ```yaml hideClipboard
-      apiVersion: v1
-      clusters
-      - cluster:
-      certificate-authority-dataLSOtLa....
-      server: https://cluster-11111111111111.proxy.stage.spectrocloud.com:443
-      name: vsphere-proxy
-      contexts:
-      - context:
-      cluster: vsphere-proxy
-    ```
+  ```yaml hideClipboard coloredLines=4-5
+  apiVersion: v1
+    clusters:
+    - cluster:
+      certificate-authority-data: LS......
+      server: https://cluster-61a578b5259452b88941a1.proxy.spectrocloud.com:443
+    name: example-server
+  contexts:
+  # The remainder configuration is omitted for brevity.
+  ```
 
 - Any requests to the Kubernetes API server, such as kubectl commands, will be routed to the reverse proxy. The reverse proxy forwards the request to the intended client, which is the cluster's API server. The cluster's API server authenticates the request and replies with the proper response.
 
@@ -53,6 +52,140 @@ This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/
 <br />
 
 </InfoBox>
+
+## Network Connectivity
+
+
+The host cluster's network configuration defines who can access the host cluster from a network perspective. If a user is in the same network as the cluster, the user may be able to access the host cluster without needing a forward proxy. However, if the user is on a different network, the host cluster's network configuration may limit the user's ability to connect to the host cluster and may require the use of a forward proxy. 
+
+From a network configuration perspective, a cluster can be in a private or a public network. Host clusters deployed in a network that does not allow inbound internet access are considered private. Whereas the clusters deployed in a network with both inbound and outbound access to the internet are considered public. The following are the three possible network connectivity scenarios:
+
+<br />
+
+* The cluster and the user are in the same private network.
+
+
+* The cluster and the user are in different private networks. 
+
+
+* The cluster is in a public network.
+
+<br />
+
+![An overview of the three different connectivity scenarios](/integrations_frp_conection_overview.png)
+
+<br />
+
+
+The following table summarizes the network connectivity requirements for each scenario and whether the Spectro Proxy is required.
+
+<br />
+
+| **Scenario** | **Description** | **Requires Spectro Proxy?** |
+|----------|-------------|------------------------|
+| Private cluster in the same network | The cluster is deployed with a private endpoint, and the user is also in the same network. | ❌ |
+| Private cluster in a different network | The cluster is deployed with a private endpoint, and the user is in a different network. | ✅ |
+| Public cluster in a different network | The cluster is deployed with a public endpoint, and the user is in a different network. | ❌ |
+
+<br />
+
+To learn more about how the Spectro Proxy interacts with clusters in a public or private network environment and when the Spectro Proxy is required, select the tab that matches your use case.
+
+
+<br />
+
+<Tabs>
+
+
+<Tabs.TabPane tab="Private Cluster in Different Network" key="private-cluster-diff-network">
+
+
+Networks labeled as private do not allow inbound internet access. Inbound network requests to the network are allowed only if the connection originated from the internal network. If you are in a different network than the cluster, you can connect to the cluster's API server through the Spectro Proxy. The Spectro Proxy allows you to connect to the cluster's API server although you are not in the same network as the cluster. 
+
+
+<br />
+
+<WarningBox>
+
+Users that are in a different network than the cluster require the Spectro Proxy server to connect to the cluster's API server. Otherwise, requests to the cluster's API server will fail due to a lack of network connectivity.
+
+</WarningBox>
+
+
+The Spectro Proxy client is installed by the Spectro Proxy pack. The client is deployed in the cluster and connects to the Spectro Proxy server. The Spectro Proxy server is a managed service that is publicly available and managed by Spectro Cloud. The Spectro Proxy server forwards the request to the cluster's API server. The cluster's API server authenticates the request and replies with the proper response.  
+
+The kubeconfig files generated for the host cluster are updated with the Spectro Proxy server's address. When you or other users issue a kubectl command, the request is routed to the Spectro Proxy server. The following is an example of a kubeconfig file where the SSL certificate and server address attribute point to the Spectro Proxy.
+
+
+The following diagram displays the network connection flow of a user attempting to connect to a cluster with private endpoints. The user is in a different network than the cluster.
+
+<br />
+
+1. The user issues a kubectl command to the cluster's API server.
+
+
+2. The request is routed to the Spectro Proxy server. The Spectro Proxy client inside the host cluster has an established connection with the cluster's API server.
+
+
+3. The Spectro Proxy server forwards the request to the cluster's API server located in a different network. The cluster's API server authenticates the request and replies with the proper response.
+
+
+![Private cluster in a different network.](/integrations_frp_conection_private-different-network.png)
+
+Depending on what type of infrastructure provider you are deploying the host cluster in, you may have to specify the Spectro Proxy server's SSL certificate in the Kubernetes cluster's configuration. Refer to the [Usage](#usage) section below for more information.
+
+
+</Tabs.TabPane>
+
+
+
+
+
+<Tabs.TabPane tab="Private Cluster in Same Network" key="private-cluster-same-network">
+
+Networks labeled as private do not allow inbound internet access. Inbound network requests to the network are allowed only if the connection originated from the internal network. If you are in the same network as the cluster, you can connect directly to the cluster's API server. The term "same network" means that from a network perspective, requests can reach the cluster's API server without having to traverse the internet. 
+
+
+<br />
+
+<InfoBox>
+
+Users in the same network as the cluster do not require the Spectro Proxy server to connect to the cluster's API server.
+
+</InfoBox>
+
+![Private cluster in the same network.](/integrations_frp_conection_private-same-network.png)
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Public Cluster" key="public-cluster">
+
+
+Clusters deployed in a network with both inbound and outbound access to the internet are considered public. 
+
+<br />
+
+<InfoBox>
+
+ Clusters deployed in a public network do not require the Spectro Proxy to connect to the cluster's API server.
+
+</InfoBox>
+
+When a cluster has public endpoints, you can query the cluster's Kubernetes API server from any network with internet access.  The following diagram displays the network connection flow of a user attempting to connect to a cluster with public endpoints. Any user with access to the internet can connect to the cluster's API server.
+
+![A public cluster connection path](/integrations_frp_conection_public_connection.png)
+
+
+
+</Tabs.TabPane>
+
+
+</Tabs>
+
+----
+
 
 <br />
 
@@ -140,7 +273,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -258,7 +391,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -374,7 +507,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -482,7 +615,7 @@ The following is an example configuration of the Kubernetes Pack manifest gettin
 
 
 
-For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config` parameter section.
 <br />
 
 ```yaml
@@ -539,11 +672,11 @@ If you encounter an x509 unknown authority error when deploying a cluster with t
 
 <br />
 
-```shell
+```shell hideClipboard
 Unable to connect to connect the server: X509: certiticate signed by unknown authorit signed by
 ```
 
-The workaround for this error is to wait a few moments for all the kubeconfig configurations to get propagted to Palette. The Palette cluster agent sends the original kubeconfig to Palette, followed by the modified kubeconfig containing the reverse proxy settings. If you attempt to open up a web shell session or interact with cluster API during the initialization process, you will receive an x509 error. Once Palette receives the kubeconfig file containing the cluster's reverse proxy configurations from the cluster agent, the x509 errors will disappear.
+The workaround for this error is to wait a few moments for all the kubeconfig configurations to get propagated to Palette. The Palette cluster agent sends the original kubeconfig to Palette, followed by the modified kubeconfig containing the reverse proxy settings. If you attempt to open up a web shell session or interact with cluster API during the initialization process, you will receive an x509 error. Once Palette receives the kubeconfig file containing the cluster's reverse proxy configurations from the cluster agent, the x509 errors will disappear.
 
 
 # Terraform
