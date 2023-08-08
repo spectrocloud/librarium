@@ -105,7 +105,7 @@ Some example Tags are: `MyValue`, `my_value`, and `12345`.
 
 ## Zone Tagging
 
-Zone tagging is required for dynamic storage allocation across fault domains when you provision workloads that require persistent storage. This is required for Palette installation and is also useful for workloads deployed in the tenant clusters that require persistent storage. Use unique vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. Tag values must be unique.
+Zone tagging is required for dynamic storage allocation across fault domains when you provision workloads that require persistent storage. This is required for Palette installation and useful for workloads deployed in tenant clusters that require persistent storage. Use unique vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment. Tag values must be unique.
 
   For example, assume your vCenter environment includes three compute clusters (cluster-1, cluster-2, and cluster-3) that are part of data center dc-1. You can tag them as follows:
 
@@ -121,7 +121,7 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 
 # VMware Privileges
 
-The vSphere user account that deploys Palette must have the minimum toot-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
+The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
 Permissions and privileges vary depending on the vSphere version you are using. 
 
 Select the tab for your vSphere version.
@@ -144,7 +144,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 ## Root-Level Role Privileges
 
-Root-level role privileges listed in the table are applied only to root object and data center objects.
+Root-level role privileges listed in the table are applied only to root objects and data center objects.
 
 
 
@@ -183,7 +183,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 |**Cns**|Searchable
 |**Datastore**|Allocate space|
 ||Browse datastore|
-||Low level file operations|
+||Low-level file operations|
 ||Remove file|
 ||Update virtual machine files|
 ||Update virtual machine metadata|
