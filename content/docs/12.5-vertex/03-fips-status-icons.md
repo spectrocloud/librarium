@@ -29,7 +29,6 @@ The icons shown below are used to indicate FIPS compliance status.
 
 As shown in the screenshots below, FIPS status icons are displayed next to packs throughout Palette VerteX. 
  
-<!-- For example, in the wizard used to build a profile, in the cluster profile stack, on the **Profiles** page, the **Clusters Overview** page.  -->
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png)
 
