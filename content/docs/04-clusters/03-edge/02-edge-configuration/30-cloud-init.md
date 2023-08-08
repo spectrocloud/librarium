@@ -288,3 +288,22 @@ boot.after:
     sftp  -i /credentials/ssh/id_rsa.pub@cv543.example.internal.abc:/inventory/2023/site-inventory.json
     mv site-inventory.json /location/inventory/
 ```
+
+# How to Use Sensitive Information in a Stage?
+
+When your edge hosts are ready for installation, you perform a [site installation](/clusters/edge/site-deployment/site-installation) using a USB stick that includes the Edge Installer and the user data. 
+
+During the site installation, the file contents from the USB stick are copied to the edge hosts, typically in the **/run/stylus/userdata** or the **/oem/userdata** path. 
+
+Suppose you plan to use sensitive information, such as credentials for patching the OS on your edge hosts, in any of your user data stages. In that case, you may not want to store that piece of sensitive information on edge hosts. 
+
+In such scenarios, you must use the `skip-copy-[string]` naming convention for your user data stages. The Edge Installer will skip copying the stages whose name matches the regular expression `skip-copy-*` to the edge hosts. The stages named `skip-copy-[string]` will execute as long as the USB drive is mounted to the edge hosts. However, if you unmount the USB stick, those stages will not execute. 
+
+
+For example, the code block below presents an example stage whose name starts with the `skip-copy-` string. 
+<br />
+
+```bash
+stages:  network.after:  name: skip-copy-subscribe  - if: [ -f "/usr/sbin/subscription-manager" ]  commands:  - subscription-manager register --username "name" --password 'password'  
+```
+
