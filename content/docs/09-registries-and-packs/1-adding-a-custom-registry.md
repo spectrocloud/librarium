@@ -272,18 +272,10 @@ Once you deploy the pack registry server, use the following steps to configure t
 
 2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
 
-<<<<<<< HEAD
-=======
-6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server.  
->>>>>>> 5f11c0ce (docs: resolve conflict)
 
 3. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a pack registry server, as highlighted in the screenshot below. 
 
-<<<<<<< HEAD
   ![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
-=======
-7. Click the **Confirm** button to finish configuring the custom pack registry server.
->>>>>>> 5f11c0ce (docs: resolve conflict)
 
 
 4. Provide the pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry server endpoint. 
