@@ -291,7 +291,7 @@ boot.after:
 
 # How to Use Sensitive Information in the User Data?
 
-You get two opportunities to apply user data to edge hosts in the edge deployment lifecycle. The steps below describe the events when you can apply user data. 
+In the edge deployment lifecycle, you can apply user data to edge hosts in the following two steps. 
 <br />
 
 - **Installer Handoff Step** - When you prepare your edge hosts for the initial installation, you use a USB stick to boot the edge hosts. The USB stick contains an ISO that includes the Edge Installer, the user data, and, optionally, a content bundle. In this step, the edge host boots from the USB stick, and the entire USB stick data is copied to the edge host. The edge host will reboot by default upon the installation completion unless you specify `powerOff: true` in the install section of the user data. Once the edge host is prepared with the initial installation, you remove the USB stick, and ship your devices to the site for installation. This step is also called the *installer handoff* step. You can refer to the [Prepare Edge Host
