@@ -4,7 +4,7 @@ metaTitle: 'OpenStackCinder'
 metaDescription: 'OpenStackCinder storage pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['storage']
+category: ['storage', 'amd64']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-openstack-cinder/blobs/sha256:ebb9650566d2cdfe9b0fc7d474a1cdcd562a9020807e49f891df199379ab8961?type=image/png'
 ---
 

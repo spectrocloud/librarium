@@ -4,7 +4,7 @@ metaTitle: 'Portworx storage CSI (Essentials/PAYG/Enterprise)'
 metaDescription: 'Portworx storage CSI for all use cases'
 hiddenFromNav: true
 type: "integration"
-category: ['storage']
+category: ['storage', 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
 ---
 
