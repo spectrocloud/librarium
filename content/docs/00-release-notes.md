@@ -13,6 +13,100 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
+# August 18, 2023 - Release 4.0.0
+
+TBD
+
+
+## Palette
+
+### Features
+
+- The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to faciliate the management of virtual machines. You can review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
+
+
+- Custom Pack registries now support the ability for you to upload your own SSL Certificate Authority (CA) certificate. This allows you to use HTTPS to connect to your private registries. Refer to the [Configure a Custom Pack Registry in Palette](/registries-and-packs/adding-a-custom-registry) documentation to learn more.
+
+
+- A new Pack User Interface (UI) is available in Palette. This new UI allows you to search for packs accross registries while providing you with important metadata. The new search experience improves the user experience for finding and installing packs.
+
+
+- Pack registries now support the Open Container Initiative (OCI) image format. This allows you to use OCI images in your custom pack registries instead of the previous Palette specific format.
+
+
+- Palette's internal message communitcation between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture in the [Network Ports](/architecture/networking-ports) page.
+
+
+- Pack deprecated status is now available in Palette. This allows you to identigy what packs are deprecated and will be removed in a future release. You can review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
+
+
+### Improvements
+
+- You can now download different kubeconfig files for your host clusters in Palette. You can download an admin kubeconfig file or a user kubeconfig file. The admin kubeconfig file allows you to perform all actions on the cluster while the user kubeconfig file is only accessible to those that have the proper Palette permissions to access the cluster. Check out the Palette [kubeconfig](/clusters/cluster-management/kubeconfig) documentation to learn more.
+
+- You can now install self-hosted Palette through the Palette CLI. The CLI provides you with an interactive installation experience that allows you to configure Palette's installation parameters. Refer to the Palette [EC command](/palette-cli/commands/#ec) documentation to learn more.
+
+
+- The loggin banner message in Palette is now also exposed in the Palette CLI. Users that log in to Palette through the CLI will receive the same message as users that log in through the UI. Refer to the [Login Banner](/tenant-settings/login-banner) documentation to learn more.
+
+
+- You can now configure the logout timer for users in Palette. This allows you to set the amount of time a user can be inactive before they are automatically logged out of Palette. By default this is set to 240 minutes.
+
+
+- You can now access Palette documentation directly from the Palette UI. This allows you to quickly access the documentation for the page you are currently on. You can find the documentation link in the top right corner of the Palette UI.
+
+
+- Palette now supports the ability for you to configure the the time interval for node repeval. In the scenario of a node repavement, the time interval is the amount of time that Palette waits before it starts the node replacement process on other nodes in the cluster. The default time interval is 15 minutes.
+
+
+## Edge
+
+### Features
+
+
+### Improvements
+
+
+## Palette Dev Engine (PDE)
+
+### Breaking Changes
+
+### Features
+
+### Improvements
+
+### Bug Fixes
+
+## Vertex
+
+### Breaking Changes
+
+### Features
+
+### Improvements
+
+### Bug Fixes
+
+## Terraform
+- List the version available with the release and a link to the release notes.
+
+## Packs
+
+### Operating Systems
+
+
+### Kubernetes
+
+### CNI
+
+### CSI
+
+### Add-on Packs
+
+### Pack Notes
+
+## Education
+
 
 # May 22, 2023 - Release 3.4.0
 

@@ -27,14 +27,25 @@ The following ports must be reachable from a network perspective for Palette Saa
 ![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
 
 
+<br />
+
+
+<WarningBox>
+
+NATS is deprecated and will be removed in a future release. Starting with Palette 4.0.0, gRPC is used for all communication between the management platform and the workload cluster.
+
+</WarningBox>
+
+
 The following ports must be reachable from a network perspective for Palette to operate properly.
 
 ## Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
-|HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
-|NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform|
+|HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform .|
+|HTTPS (tcp/443) |INBOUND        |gRPC communicataion between Palette and the workload cluster.|
+|NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform [Deprecated]|
 
 
 ## Workload Cluster
@@ -42,9 +53,9 @@ The following ports must be reachable from a network perspective for Palette to 
 
 |Port            |Direction | Purpose|
 |:---------------|:---------|:--------------|
-|HTTPS (tcp/443) |OUTBOUND | API access to management platform|
-|NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
-|NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
+|HTTPS (tcp/443) |OUTBOUND | API access to management platform and gRPC|
+|HTTPS (tcp/443) |OUTBOUND | gRPC, Registry (packs, integrations), Pack containers, Application Updates|
+|NATS (tcp/4222) |OUTBOUND |Registry (packs, integrations), Pack containers, Application Updates [Deprecated]|
 
 <InfoBox>
 
@@ -60,13 +71,22 @@ The following ports must be reachable from a network perspective for Palette sel
 
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
 
+<br />
+
+
+<WarningBox>
+
+NATS is deprecated and will be removed in a future release. Starting with Palette 4.0.0, gRPC is used for all communication between the management platform and the workload cluster.
+
+</WarningBox>
+
 ## Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
-|HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
-|NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters|
-|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
+|HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform, gRPC|
+|NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters [Deprecated]|
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates, gRPC|
 |HTTPS (tcp/6443)|OUTBOUND       |Workload K8s cluster API Server|
 
 
@@ -76,8 +96,8 @@ The following ports must be reachable from a network perspective for Palette sel
 |Port |Direction | Purpose|
 |:---------------|:---------|:--------------|
 |HTTPS (tcp/443) |OUTBOUND | API access to management platform|
-|NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus |
-|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+|NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus. [Deprecated] |
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, gRPC, Registry (packs, integrations), Pack containers, Application updates|
 
 <InfoBox>
 
