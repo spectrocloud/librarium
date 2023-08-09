@@ -161,7 +161,7 @@ You can validate your cluster is up and running by reviewing the cluster details
 # EKS Cluster Secrets Encryption
 
 Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
-a defense-in-depth security strategy to protect the sensitive data  such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
+a defense-in-depth security strategy to protect sensitive data such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
 
 ## Prerequisites
 
@@ -169,12 +169,15 @@ a defense-in-depth security strategy to protect the sensitive data  such as pass
 * KMS key is of the type symmetric.
 * KMS key policy permits the following actions; encrypt and decrypt.
 
-## Configure KMS:
+## Configure KMS
 
 The IAM User or IAM role that Palette is using must have the following IAM permissions.
 
-```json
-kms:CreateGrant
+```json hideClipboard
+kms:CreateGrant,
+kms:ListAliases,
+kms:ListKeys,
+kms:DescribeKeys
 ```
 Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
-You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the amazon resource name (ARN) of the encryption key. The encryption option is available on the **Cluster Config** page of the cluster creation wizard.
+You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page.

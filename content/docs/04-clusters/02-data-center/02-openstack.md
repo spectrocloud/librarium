@@ -410,7 +410,7 @@ Palette provides an installer in the form of a docker container. This installer 
 
 
 
-2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
 
     <br />
 
