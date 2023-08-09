@@ -291,21 +291,34 @@ boot.after:
 
 # How to Use Sensitive Information in the User Data?
 
-When your edge hosts are ready for installation, you perform a site installation using a USB stick that includes the Edge Installer and the user data. The [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process. During the site installation, the file contents from the USB stick are copied to the edge hosts, typically to the **/run/stylus/userdata** or the **/oem/userdata** file. The exact file path will vary based on the underlying operating system. 
-
-Suppose you plan to use sensitive information, such as credentials for patching the OS on your edge hosts, in any of your user data stages. In that case, you may not want to copy the sensitive information to edge hosts. 
-
-In such scenarios, you must use the `skip-copy-[string]` naming convention for your user data stages. Replace the `[string]` placeholder with any meaningful string per your requirements. The Edge Installer will skip copying the stages whose name matches the regular expression `skip-copy-*` to the edge hosts. The stages that follow the `skip-copy-[string]` naming convention will execute as long as the USB drive is mounted to the edge hosts. However, if you unmount the USB stick, those stages will no longer be available to the edge hosts. 
-
-
-For example, the code block below presents a `network.after` stage that follows the `skip-copy-[string]` naming convention. In this example, the `skip-copy-subscribe` stage will execute as long as the USB stick is mounted on the edge hosts. If you no longer want the stage to execute, you can unmount or eject the USB stick and reboot the edge host device. 
+You get two opportunities to apply user data to edge hosts in the edge deployment lifecycle. The steps below describe the events when you can apply user data. 
 <br />
 
-```yaml
-stages:
-  network.after:
-    - name: skip-copy-subscribe
-      - if: [ -f "/usr/sbin/subscription-manager" ]
+- **Installer Handoff Step** - When you prepare your edge hosts for the initial installation, you use a USB stick to boot the edge hosts. The USB stick contains an ISO that includes the Edge Installer, the user data, and, optionally, a content bundle. In this step, the edge host boots from the USB stick, and the entire USB stick data is copied to the edge host. The edge host will reboot by default upon the installation completion unless you specify `powerOff: true` in the install section of the user data. Once the edge host is prepared with the initial installation, you remove the USB stick, and ship your devices to the site for installation. This step is also called the *installer handoff* step. You can refer to the [Prepare Edge Host
+](/clusters/edge/site-deployment/stage#prepareedgehost) guide to learn more about driving the installer handoff step. 
+
+
+- **Site Installation Step** - When your devices arrive at the site, you perform the site installation if you need to apply any unique configurations to a set of devices. In this step, you create another USB using an ISO that contains your additional user data. You plug the USB into the device. Then, you power on the device to allow the Edge Installer to complete the site installation process and apply the additional user data. The [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase) guide describes the use cases when you should utilize the additional user data, and the [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process in detail. 
+
+
+In either of the steps mentioned above, the installer handoff step or the site installation step, the user data from the USB stick is copied to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. 
+
+Suppose you plan to use sensitive information in any of your user data stages. In that case, you may not want to expose the sensitive information to edge hosts. The points below will help you decide how to use sensitive information before the installer handoff step and during the site installation step. 
+<br />
+
+- **Use Sensitive Information Before the Installer Handoff Step** - If you want to pass some sensitive information in the user data before the installer handoff step. In that case, you must specify `powerOff: true` in the install section of user data. You can name your stages per your choice. After preparing the user data, you build the Edge Installer ISO. When the edge host boots from the Edge Installer ISO, all your user data stages will be persisted into configuration files on the edge host.
+
+
+- **Use Sensitive Information During the Site Installation Step** - If you want to use sensitive information, such as credentials for patching the OS on your edge hosts, in any user data stage during the site installation step. In such scenarios, you must use the `skip-copy-[string]` naming convention for your user data stages. Replace the `[string]` placeholder with any meaningful string per your requirements. The Edge Installer will skip copying the stages whose name matches the regular expression `skip-copy-*` to the edge hosts. The stages will execute as long as the USB drive is mounted to the edge hosts.  
+
+  For example, assume you have prepared a USB stick containing your user data and plugged it into an edge device to perform the site installation. The example stage below presents one of the stages of your user data. In the example below, the `skip-copy-subscribe` stage follows the `skip-copy-[string]` naming convention. Therefore, the Edge Installer will skip copying the stage to the edge device. However, the stage will execute as long as you have plugged in the USB stick. You must unmount the USB stick from the edge device after the device registers with Palette and before you deploy a Kubernetes cluster on the device.  
+  <br />
+
+  ```yaml
+  stages:
+    network.after:
+      - name: skip-copy-subscribe
+        if: [ -f "/usr/sbin/subscription-manager" ]
         commands:
           - subscription-manager register --username "name" --password 'password' 
-```
+  ```
