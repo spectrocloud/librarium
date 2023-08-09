@@ -20,6 +20,11 @@ TBD
 
 ## Palette
 
+
+## Breaking Changes
+
+- Deploying Virtual Clusters directly into host clusters is no longer a supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on how to deploy Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
+
 ### Features
 
 - The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to faciliate the management of virtual machines. You can review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
@@ -61,34 +66,41 @@ TBD
 
 ## Edge
 
+
+
 ### Features
 
+- Palette Edge now supports ARM64 architecture. You can now deploy Palette Edge on ARM64 architecture such as Nvidia Jetson (Orin) in addition to AMD64 architecture. Review the list of available [ARM64 packs](/integrations) in Palette prior to deploying Palette Edge on ARM64 architecture.
+
+
+- Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
 
 ### Improvements
 
+- You can now assign dynamic tags to your edge hosts by specifying files or invoking a script that return a JSON payload containing the tag values. This allows you to dynamically assign tags to your Edge hosts based on the host's local environment. Refer to the [Edge Installer Configuration Tags](/clusters/edge/edge-configuration/installer-reference#tags) documentation to learn more.
 
+
+- You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to disable auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
 ## Palette Dev Engine (PDE)
 
-### Breaking Changes
-
 ### Features
 
-### Improvements
+- A Visual Studio Code (VS Code) extension is now available for Palette Dev Engine (PDE). This extension allows you deploy and manage virtual clusters directly from VS Code. You can review the [Palette PDE Plugin](https://marketplace.visualstudio.com/items?itemName=SpectroCloud.extension-palette) documentation to learn more.
 
-### Bug Fixes
+
+- The Palette CLI now supports the ability for you to manage App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update, and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app` commands to manage App Profiles and Apps. Refer to the [Palette CLI](/palette-cli) documentation or use the `--help` flag to learn more.
+
 
 ## Vertex
 
-### Breaking Changes
-
 ### Features
 
-### Improvements
+- [Palette VerteX](https://www.spectrocloud.com/news/spectro-cloud-announces-palette-vertex-for-government) is now available and brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters. Palette VerteX is available to all government and private sector organizations that value strong data protection, backed by the Spectro Cloud Government practice, a growing ecosystem of specialist channel partners, and continental US technical support. Refer to the [Palette VerteX](/vertex) documentation to learn more.
 
-### Bug Fixes
 
 ## Terraform
-- List the version available with the release and a link to the release notes.
+
+- Version 0.14.3 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
 
 ## Packs
 

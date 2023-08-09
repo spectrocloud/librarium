@@ -71,7 +71,7 @@ We also offer Palette eXtended Kubernetes (PXK) for cloud and data center deploy
 | `cluster.config.clusterConfiguration.networking.serviceSubnet` | The IP subnet range to assign to services. Default: 192.169.0.0/16 |
 | `cluster.config.clusterConfiguration.scheduler.extraArgs` | This parameter contains extra arguments for the Kubernetes scheduler, such as disabling profiling. |
 | `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port. |
-| ``pack.palette.config.oidc.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes-edge#configureoidcidentityprovider). |
+| `pack.palette.config.oidc.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes-edge#configureoidcidentityprovider). |
 
 You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source project. For more information, check out the [Cloud Init Stages](/clusters/edge/edge-configuration/cloud-init) reference.
 

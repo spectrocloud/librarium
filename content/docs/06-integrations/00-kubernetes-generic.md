@@ -53,6 +53,7 @@ Review the [Maintenance Policy](/integrations/maintenance-policy) to learn about
 
 | Parameter | Description |
 |-----------|-------------|
+| `pack.palette.config.oidcidentityProvider`| OIDC identity provider configuration. |
 | ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
@@ -164,30 +165,45 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 <br />
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
 
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
+  <br />
+
+  ```yaml
+  pack:
+    palette:
+      config:
+        oidc:
+          identityProvider: yourIdentityProviderNameHere
+  ```
+
+2. Add the following `kubeadmconfig` parameters. Replace the values with your OIDC provider values.
+
+  <br />
+
+  ```yaml
+  kubeadmconfig:
+    apiServer:
+      extraArgs:
+        oidc-issuer-url: "provider URL"
+        oidc-client-id: "client-id"
+        oidc-groups-claim: "groups"
+        oidc-username-claim: "email"
+  ```
  
-2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+3. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
 
+  <br />
 
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
+  ```yaml
+  kubeadmconfig:
+    clientConfig:
+      oidc-issuer-url: "<OIDC-ISSUER-URL>"
+      oidc-client-id: "<OIDC-CLIENT-ID>"
+      oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+      oidc-extra-scope: profile,email,openid
+  ```
 
 
 </Tabs.TabPane>
@@ -254,6 +270,7 @@ clientConfig:
 
 | Parameter | Description |
 |-----------|-------------|
+| `pack.palette.config.oidcidentityProvider`| OIDC identity provider configuration. |
 | ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
@@ -366,20 +383,35 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 <br />
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
+
+  <br />
+
+  ```yaml
+  pack:
+    palette:
+      config:
+        oidc:
+          identityProvider: palette
+  ```
 
 
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
+2. Add the following `kubeadmconfig` parameters. Replace the values with your OIDC provider values.
+
+  <br />
+
+  ```yaml
+  kubeadmconfig:
+    apiServer:
+      extraArgs:
+        oidc-issuer-url: "provider URL"
+        oidc-client-id: "client-id"
+        oidc-groups-claim: "groups"
+        oidc-username-claim: "email"
+  ```
+
  
-2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+3. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
 
 
 ```yaml
@@ -403,27 +435,31 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
-```yaml
-oidcIdentityProvider:
-    identityProviderConfigName: 'Spectro-docs'
-    issuerUrl: 'issuer-url'
-    clientId: 'user-client-id-from-Palette'
-    usernameClaim: "email"
-    usernamePrefix: "-"
-    groupsClaim: "groups"
-    groupsPrefix: ""
-    requiredClaims:
-```
+  <br />
+
+  ```yaml
+  oidcIdentityProvider:
+      identityProviderConfigName: 'Spectro-docs'
+      issuerUrl: 'issuer-url'
+      clientId: 'user-client-id-from-Palette'
+      usernameClaim: "email"
+      usernamePrefix: "-"
+      groupsClaim: "groups"
+      groupsPrefix: ""
+      requiredClaims:
+  ```
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
 
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  oidc-extra-scope: profile,email
-```
+  <br />
+
+  ```yaml
+  clientConfig:
+    oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+    oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+    oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    oidc-extra-scope: profile,email
+  ```
 
 3. Provide third-party OIDC IDP details.
 
@@ -455,17 +491,18 @@ clientConfig:
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
-| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
-| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
-| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
-| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. |
-| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
-| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| `pack.palette.config.oidcidentityProvider`| OIDC identity provider configuration. |
+| `pack.podCIDR` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
+| `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on apiServer.|
+| `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
+| `kubeadmconfig.scheduler.extraArgs` | A list of additional Kube scheduler flags to set.|
+| `kubeadmconfig.kubeletExtraArgs` | A list of kubelet arguments to set and copy to the nodes.|
+| `kubeadmconfig.files` | A list of additional files to copy to the nodes. |
+| `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
+| `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
+| `pack.serviceDomain` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
 
 
 ## Usage 
@@ -567,30 +604,46 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 <br />
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
+
+  <br />
+
+  ```yaml
+  pack:
+    palette:
+      config:
+        oidc:
+          identityProvider: palette
+  ```
 
 
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-    oidc-issuer-url: "provider URL"
-    oidc-client-id: "client-id"
-    oidc-groups-claim: "groups"
-    oidc-username-claim: "email"
-```
+2. Add the following `kubeadmconfig` parameters. Replace the values with your OIDC provider values.
+
+  <br />
+
+  ```yaml
+  kubeadmconfig:
+    apiServer:
+      extraArgs:
+        oidc-issuer-url: "provider URL"
+        oidc-client-id: "client-id"
+        oidc-groups-claim: "groups"
+        oidc-username-claim: "email"
+  ```
  
-2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
+3. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
 
+  <br />
 
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
+  ```yaml
+  kubeadmconfig:
+    clientConfig:
+      oidc-issuer-url: "<OIDC-ISSUER-URL>"
+      oidc-client-id: "<OIDC-CLIENT-ID>"
+      oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+      oidc-extra-scope: profile,email,openid
+  ```
 
 
 </Tabs.TabPane>
@@ -604,27 +657,31 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
-```yaml
-oidcIdentityProvider:
-    identityProviderConfigName: 'Spectro-docs'
-    issuerUrl: 'issuer-url'
-    clientId: 'user-client-id-from-Palette'
-    usernameClaim: "email"
-    usernamePrefix: "-"
-    groupsClaim: "groups"
-    groupsPrefix: ""
-    requiredClaims:
-```
+  <br />
+
+  ```yaml
+  oidcIdentityProvider:
+      identityProviderConfigName: 'Spectro-docs'
+      issuerUrl: 'issuer-url'
+      clientId: 'user-client-id-from-Palette'
+      usernameClaim: "email"
+      usernamePrefix: "-"
+      groupsClaim: "groups"
+      groupsPrefix: ""
+      requiredClaims:
+  ```
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
 
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
-  oidc-extra-scope: profile,email
-```
+  <br />
+
+  ```yaml
+  clientConfig:
+    oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+    oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+    oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    oidc-extra-scope: profile,email
+  ```
 
 3. Provide third-party OIDC IDP details.
 

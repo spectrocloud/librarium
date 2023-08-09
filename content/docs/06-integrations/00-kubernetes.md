@@ -68,19 +68,20 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack.podCIDR`` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| `pack.palette.config.dashboard.identityProvider`| OIDC identity provider configuration. |
+| `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
 | ``pack.palette.config.dashboard.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
-| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
-| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on the apiServer.|
-| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
-| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
-| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
-| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
-| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
-| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
+| `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
+| `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
+| `kubeadmconfig.scheduler.extraArgs` | A list of additional Kube scheduler flags to set.|
+| `kubeadmconfig.kubeletExtraArgs` | A list of kubelet arguments to set and copy to the nodes.|
+| `kubeadmconfig.files` | A list of additional files to copy to the nodes.|
+| `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
+| `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
+| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
+| `pack.serviceDomain` | The DNS name for the service domain in the cluster. Default: `cluster.local`.|
 
 
 ## Usage 
