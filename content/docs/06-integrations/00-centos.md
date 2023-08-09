@@ -4,7 +4,7 @@ metaTitle: 'CentOS Operating System'
 metaDescription: 'Choosing CentOS as an Operating System within the Spectro Cloud Console'
 hiddenFromNav: true
 type: "integration"
-category: ['operating system']
+category: ['operating system', 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/centos-vsphere/blobs/sha256:fe51960e2a05745b7b9217e244e47fac401edcdb184b500d75cc537cecb81ef1?type=image/png'
 ---
 

@@ -5,7 +5,7 @@ metaDescription: 'Integration of the Vault add on into Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['security']
+category: ['security', 'amd64', 'arm64']
 logoUrl: 'https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image/png'
 ---
 

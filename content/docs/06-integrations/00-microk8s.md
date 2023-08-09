@@ -4,7 +4,7 @@ metaTitle: 'MicroK8s Integration with Palette'
 metaDescription: 'MicroK8s pack in Palette'
 hiddenFromNav: true
 type: "integration"
-category: ["kubernetes"]
+category: ["kubernetes", 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/kubernetes-microk8s/blobs/sha256:b971b64f62e2e67b0a166316f96e6f4211aacea6e28459bb89275e8882ade985?type=image/png'
 ---
 
