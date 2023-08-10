@@ -28,7 +28,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 - Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette VerteX. We recommend using a role with cluster-admin permissions to install Palette VerteX.
 
 
-- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes version v1.25 to v1.27.
+- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
 
 
 

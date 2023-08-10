@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette VerteX provides the following FIPS-compliant infrastructure components in Kubernetes clusters it deploys. Review [FIPS-Compliant Components](/vertex/fips-compliant-components) to learn more.
+Palette VerteX provides the following FIPS-compliant infrastructure components in Kubernetes clusters it deploys. Review [FIPS-Compliant Components](/vertex/fips/fips-compliant-components) to learn more.
 
 <br />
 
@@ -27,7 +27,7 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 
 - Container Storage Interface (CSI)
 
-As shown in the screenshot below, the FIPS-compliant icon used to indicate full FIPS compliance is displayed next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
+As shown in the screenshot below, the FIPS-compliant icon used to indicate full FIPS compliance is displayed next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips/fips-status-icons).
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png) 
 
@@ -59,7 +59,7 @@ You can allow tenant users to customize their cluster profiles by using add-on p
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-[Resources](/vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs#resources) listed below provide a searchable list of packs that users can add to a cluster profile. Palette VerteX will apply the appropriate icon next to packs and imported clusters to indicate their FIPS compliance status.   
+When you or other users add a pack to a cluster profile. Palette VerteX will apply the appropriate icon next to packs and imported clusters to indicate their FIPS compliance status.   
 
 
 # Validate
@@ -89,7 +89,7 @@ Palette VerteX will display the appropriate FIPS status icon next to the pack la
 - [Create an Add-on Profile](/cluster-profiles/create-add-on-profile)
 
 
-- [FIPS Status Icons](/vertex/fips-status-icons)
+- [FIPS Status Icons](/vertex/fips/fips-status-icons)
 
 
 

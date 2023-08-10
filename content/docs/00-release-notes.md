@@ -62,13 +62,13 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 - The login banner message in Palette is now also exposed in the Palette CLI. Users logging in to Palette through the CLI will receive the same message as those logging in through the UI. Refer to the [Login Banner](/tenant-settings/login-banner) documentation to learn more.
 
 
-- You can now configure the logout timer for users in Palette. This allows you to set the amount of time a user can be inactive before they are automatically logged out of Palette. By default this is set to 240 minutes.
+- You can now configure the logout timer for users in Palette. This allows you to set the time a user can be inactive before they are automatically logged out of Palette. The default value is 240 minutes.
 
 
 - You can now access Palette documentation directly from the Palette UI. This allows you to quickly access the documentation for the page you are currently on. You can find the documentation link in the top right corner of the Palette UI.
 
 
-- Palette now supports the ability for you to configure the the time interval for node repeval. In the scenario of a node repavement, the time interval is the amount of time that Palette waits before it starts the node replacement process on other nodes in the cluster. The default time interval is 15 minutes.
+- Palette now supports configuring the time interval for node repaves. In the scenario of a node repavement, the time interval is the amount of time that Palette waits before it starts the node replacement process on other nodes in the cluster. The default time interval is 15 minutes.
 
 
 ## Edge
@@ -77,14 +77,14 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 
 ### Features
 
-- Palette Edge now supports ARM64 architecture. You can now deploy Palette Edge on ARM64 architecture such as Nvidia Jetson (Orin) in addition to AMD64 architecture. Review the list of available [ARM64 packs](/integrations) in Palette prior to deploying Palette Edge on ARM64 architecture.
+- Palette Edge now supports ARM64 architecture. You can now deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
 
 
 - Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
 
 ### Improvements
 
-- You can now assign dynamic tags to your edge hosts by specifying files or invoking a script that return a JSON payload containing the tag values. This allows you to dynamically assign tags to your Edge hosts based on the host's local environment. Refer to the [Edge Installer Configuration Tags](/clusters/edge/edge-configuration/installer-reference#tags) documentation to learn more.
+- You can now assign dynamic tags to your edge hosts by specifying files or invoking a script that returns a JSON payload containing the tag values. This allows you to dynamically assign tags to your Edge hosts based on the host's local environment. Refer to the [Edge Installer Configuration Tags](/clusters/edge/edge-configuration/installer-reference#tags) documentation to learn more.
 
 
 - You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to disable auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
@@ -92,10 +92,10 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 
 ### Features
 
-- A Visual Studio Code (VS Code) extension is now available for Palette Dev Engine (PDE). This extension allows you deploy and manage virtual clusters directly from VS Code. You can review the [Palette PDE Plugin](https://marketplace.visualstudio.com/items?itemName=SpectroCloud.extension-palette) documentation to learn more.
+- A Visual Studio Code (VS Code) extension is now available for Palette Dev Engine (PDE). This extension allows you to deploy and manage virtual clusters directly from VS Code. To learn more, you can review the [Palette PDE Plugin](https://marketplace.visualstudio.com/items?itemName=SpectroCloud.extension-palette) documentation.
 
 
-- The Palette CLI now supports the ability for you to manage App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update, and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app` commands to manage App Profiles and Apps. Refer to the [Palette CLI](/palette-cli) documentation or use the `--help` flag to learn more.
+- The Palette CLI now supports managing App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update, and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app` commands to manage App Profiles and Apps. Refer to the [Palette CLI](/palette-cli) documentation or use the `--help` flag to learn more.
 
 
 ## Vertex
@@ -105,13 +105,13 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 - [Palette VerteX](https://www.spectrocloud.com/news/spectro-cloud-announces-palette-vertex-for-government) is now available and brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters. Palette VerteX is available to all government and private sector organizations that value strong data protection, backed by the Spectro Cloud Government practice, a growing ecosystem of specialist channel partners, and continental US technical support. Refer to the [Palette VerteX](/vertex) documentation to learn more.
 
 
-- You can install Palette VerteX in a VMware environment through the Palette CLI. The CLI provides you with an interactive installation experience that allows you to configure Palette VerteX's installation parameters. Refer to the Palette [VMware install instructions](/vertex/install-palette-vertex/install-on-vmware/install) documentation to learn more. You can also install Palette VerteX in a FIPS certified Kubernetes cluster. Check out the [Kubernetes install instructions](/vertex/install-palette-vertex/install-on-kubernetes/install) for more details.
+- You can install Palette VerteX in a VMware environment through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette VerteX's installation parameters. To learn more, refer to the Palette [VMware install instructions](/vertex/install-palette-vertex/install-on-vmware/install) documentation. You can also install Palette VerteX in a FIPS-certified Kubernetes cluster. Check out the [Kubernetes install instructions](/vertex/install-palette-vertex/install-on-kubernetes/install) for more details.
 
 
 
 ## Terraform
 
-- Version 0.15.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
+- Version 0.15.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 ## Packs
 
@@ -186,14 +186,14 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 
 ### Pack Notes
 
-- A new community pack repository is available. The Palette Community Repository is where partners and customers can contribute and share their own packs. Refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central) for more details.
+- A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
 
 ## Education
 
-- A new Edge tutorial is available for you to learn how to deplou an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through the process of creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
+- A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
 
 
-- The documentation site for Palette now provides you with a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette and it will provide you with relevant answers and documentation links.
+- The documentation site for Palette now provides a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette, and it will provide you with relevant answers and documentation links.
 
 
 # May 22, 2023 - Release 3.4.0
