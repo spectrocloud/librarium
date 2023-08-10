@@ -23,7 +23,7 @@ TBD
 
 ## Breaking Changes
 
-- Deploying Virtual Clusters directly into host clusters is no longer a supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on how to deploy Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
+- Deploying Virtual Clusters directly into host clusters is no longer supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on how to deploy Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
 
 ### Features
 
@@ -43,6 +43,9 @@ TBD
 
 
 - Pack deprecated status is now available in Palette. This allows you to identigy what packs are deprecated and will be removed in a future release. You can review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
+
+
+- Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
 
 
 ### Improvements
@@ -98,6 +101,12 @@ TBD
 - [Palette VerteX](https://www.spectrocloud.com/news/spectro-cloud-announces-palette-vertex-for-government) is now available and brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters. Palette VerteX is available to all government and private sector organizations that value strong data protection, backed by the Spectro Cloud Government practice, a growing ecosystem of specialist channel partners, and continental US technical support. Refer to the [Palette VerteX](/vertex) documentation to learn more.
 
 
+- You can install Palette VerteX in a VMware environment through the Palette CLI. The CLI provides you with an interactive installation experience that allows you to configure Palette's installation parameters. Refer to the Palette [VMware install instructions](/vertex/install-palette-vertex/install-on-vmware/install) documentation to learn more. You can also install Palette VerteX in a FIPS certified Kubernetes cluster. Check out the [Kubernetes install instructions](/vertex/install-palette-vertex/install-on-kubernetes/install)
+
+
+-
+
+
 ## Terraform
 
 - Version 0.14.3 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
@@ -118,6 +127,11 @@ TBD
 ### Pack Notes
 
 ## Education
+
+- A new Edge tutorial is available for you to learn how to deplou an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through the process of creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
+
+
+- The documentation site for Palette now provides you with a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette and it will provide you with relevant answers and documentation links.
 
 
 # May 22, 2023 - Release 3.4.0
