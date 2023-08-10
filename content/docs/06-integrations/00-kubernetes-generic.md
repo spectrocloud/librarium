@@ -235,7 +235,7 @@ oidcIdentityProvider:
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-client-secret: yourSecretKeyHere
   oidc-extra-scope: profile,email
 ```
 
@@ -457,7 +457,7 @@ Follow these steps to configure OIDC for managed EKS clusters.
   clientConfig:
     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-    oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    oidc-client-secret: yourSecretKeyHere
     oidc-extra-scope: profile,email
   ```
 
@@ -679,7 +679,7 @@ Follow these steps to configure OIDC for managed EKS clusters.
   clientConfig:
     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-    oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    oidc-client-secret: yourSecretKeyHere
     oidc-extra-scope: profile,email
   ```
 

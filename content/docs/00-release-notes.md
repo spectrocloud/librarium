@@ -15,7 +15,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # August 18, 2023 - Release 4.0.0
 
-TBD
+Palette 4.0.0 is a major release that introduces new features and improvements to Palette, including the official release of Palette VerteX. 
 
 
 ## Palette
@@ -23,36 +23,40 @@ TBD
 
 ## Breaking Changes
 
-- Deploying Virtual Clusters directly into host clusters is no longer a supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on how to deploy Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
+- Deploying Virtual Clusters directly into host clusters is no longer supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on deploying Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
 
 ### Features
 
-- The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to faciliate the management of virtual machines. You can review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
+- The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to facilitate the management of virtual machines. Review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
 
 
-- Custom Pack registries now support the ability for you to upload your own SSL Certificate Authority (CA) certificate. This allows you to use HTTPS to connect to your private registries. Refer to the [Configure a Custom Pack Registry in Palette](/registries-and-packs/adding-a-custom-registry) documentation to learn more.
+- Custom Pack registries now support the ability for you to upload your own SSL Certificate Authority (CA). You can use HTTPS to connect to your private registries by providing your SSL certificate. Refer to the [Configure a Custom Pack Registry in Palette](/registries-and-packs/adding-a-custom-registry) documentation to learn more.
 
 
-- A new Pack User Interface (UI) is available in Palette. This new UI allows you to search for packs accross registries while providing you with important metadata. The new search experience improves the user experience for finding and installing packs.
+- A new Pack User Interface (UI) is available in Palette. This new UI allows you to search for packs across registries while providing you with important metadata. The new search experience improves the user experience for finding and installing packs.
 
 
-- Pack registries now support the Open Container Initiative (OCI) image format. This allows you to use OCI images in your custom pack registries instead of the previous Palette specific format.
+- Pack registries now support the Open Container Initiative (OCI) image format. This allows you to use OCI images in your custom pack registries instead of the previous Palette-specific format.
 
 
-- Palette's internal message communitcation between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture in the [Network Ports](/architecture/networking-ports) page.
+- Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page.
 
 
-- Pack deprecated status is now available in Palette. This allows you to identigy what packs are deprecated and will be removed in a future release. You can review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
+- Pack deprecated status is now available in the Palette UI. This lets you identify what packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
+
+
+- Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
 
 
 ### Improvements
 
-- You can now download different kubeconfig files for your host clusters in Palette. You can download an admin kubeconfig file or a user kubeconfig file. The admin kubeconfig file allows you to perform all actions on the cluster while the user kubeconfig file is only accessible to those that have the proper Palette permissions to access the cluster. Check out the Palette [kubeconfig](/clusters/cluster-management/kubeconfig) documentation to learn more.
-
-- You can now install self-hosted Palette through the Palette CLI. The CLI provides you with an interactive installation experience that allows you to configure Palette's installation parameters. Refer to the Palette [EC command](/palette-cli/commands/#ec) documentation to learn more.
+- You can now download different kubeconfig files for your host clusters in Palette. You can download an admin kubeconfig file or a user kubeconfig file. The admin kubeconfig file allows you to perform all actions on the cluster. In contrast, the user kubeconfig file is only accessible to those with the proper Palette permissions to access the cluster. To learn more, check out the Palette [kubeconfig](/clusters/cluster-management/kubeconfig) documentation.
 
 
-- The loggin banner message in Palette is now also exposed in the Palette CLI. Users that log in to Palette through the CLI will receive the same message as users that log in through the UI. Refer to the [Login Banner](/tenant-settings/login-banner) documentation to learn more.
+- You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Learn more about the Palette [EC command](/palette-cli/commands/#ec) documentation.
+
+
+- The login banner message in Palette is now also exposed in the Palette CLI. Users logging in to Palette through the CLI will receive the same message as those logging in through the UI. Refer to the [Login Banner](/tenant-settings/login-banner) documentation to learn more.
 
 
 - You can now configure the logout timer for users in Palette. This allows you to set the amount of time a user can be inactive before they are automatically logged out of Palette. By default this is set to 240 minutes.
@@ -98,26 +102,95 @@ TBD
 - [Palette VerteX](https://www.spectrocloud.com/news/spectro-cloud-announces-palette-vertex-for-government) is now available and brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters. Palette VerteX is available to all government and private sector organizations that value strong data protection, backed by the Spectro Cloud Government practice, a growing ecosystem of specialist channel partners, and continental US technical support. Refer to the [Palette VerteX](/vertex) documentation to learn more.
 
 
+- You can install Palette VerteX in a VMware environment through the Palette CLI. The CLI provides you with an interactive installation experience that allows you to configure Palette VerteX's installation parameters. Refer to the Palette [VMware install instructions](/vertex/install-palette-vertex/install-on-vmware/install) documentation to learn more. You can also install Palette VerteX in a FIPS certified Kubernetes cluster. Check out the [Kubernetes install instructions](/vertex/install-palette-vertex/install-on-kubernetes/install) for more details.
+
+
+
 ## Terraform
 
-- Version 0.14.3 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
+- Version 0.15.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
 
 ## Packs
 
-### Operating Systems
 
 
 ### Kubernetes
 
+| Pack               | New Version |
+|--------------------|----------|
+| K3s                | 1.27.2   |
+| Kubernetes AKS     | 1.27.0   |
+| Kubernetes Coxedge | 1.25.10 |
+| Kubernetes Coxedge | 1.26.5 |
+| Kubernetes Coxedge | 1.27.2 |
+| Kubernetes EKS     | 1.27.0   |
+| Kubernetes GKE  | 1.24.14 |
+| Kubernetes GKE | 1.25.10 |
+| Kubernetes GKE  | 1.26.5 |
+| Kubernetes GKE  | 1.27.2 |
+| MicroK8s | 1.27.0 |
+| Palette eXtended  Kubernetes|  1.24.14  |
+| Palette eXtended  Kubernetes| 1.25.10  |
+| Palette eXtended  Kubernetes| 1.26.5   |
+| Palette eXtended  Kubernetes|  1.27.1   |
+| Palette eXtended  Kubernetes - Edge |  1.27.2   |
+| RKE2 | 1.25.10 |
+| RKE2 | 1.26.3 |
+| RKE2 | 1.26.5 |
+
 ### CNI
+
+| Pack               | New Version |
+|--------------------|----------|
+| AWS VPC CNI        | 1.13.0   |
+| Calico             | 3.26.0   |
+| Cilium OSS         | 1.14.0   |
+| Flannel            | 0.22.0   |
 
 ### CSI
 
+| Pack               | New Version |
+|--------------------|----------|
+| AWS EBS CSI        | 1.20.0   |
+| AWS EFS CSI        | 1.5.06  |
+| Azure Disk CSI     | 1.26.3  |
+| Portworx CSI       | 3.0.0   |
+| Rook Ceph          | 1.11.9  |
+| vSphere CSI        | 3.0.2   |
+
+
 ### Add-on Packs
+
+| Pack               | New Version |
+|--------------------|----------|
+| AWS ALB            | 2.5.1    |
+| AWS Cluster Autoscaler | 1.26.3 |
+| External Secrets Operator | 0.8.1|
+| Image Swap         | 1.5.2  |
+| MetalLB            | 0.13.10 |
+| Nvidia GPU Operator | 23.3.2 |
+| Open Policy Agent  | 3.12.0  |
+| Prometheus Grafana  | 46.4.0 |
+| Vault              | 0.25.0  |
+
+
+
+### Community Packs
+
+| Pack               | New Version |
+|--------------------|----------|
+| Ngrok Ingerss Controller | 0.9.0    |
 
 ### Pack Notes
 
+- A new community pack repository is available. The Palette Community Repository is where partners and customers can contribute and share their own packs. Refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central) for more details.
+
 ## Education
+
+- A new Edge tutorial is available for you to learn how to deplou an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through the process of creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
+
+
+- The documentation site for Palette now provides you with a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette and it will provide you with relevant answers and documentation links.
 
 
 # May 22, 2023 - Release 3.4.0
