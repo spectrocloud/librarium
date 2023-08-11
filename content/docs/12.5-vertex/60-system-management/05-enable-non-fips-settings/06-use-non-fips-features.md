@@ -46,15 +46,13 @@ You can allow tenant users access to Palette features that are *not* FIPS-compli
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 
-Use the [Resources](/vertex/system-management/enable-non-fips-settings/use-non-fips-features#resources) listed below for guidance on creating and restoring backups and initiating scans.
-
 # Validate
 
 
 1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu** and click on **Clusters**. 
+2. Navigate to the left **Main Me[Title](http://localhost:9000/vertex/system-management/enable-non-fips-settings/use-non-fips-features)nu** and click on **Clusters**. 
 
 
 3. Select your cluster in the list. The **Scan** and **Backups** tabs are now displayed on the **Cluster Overview** page.

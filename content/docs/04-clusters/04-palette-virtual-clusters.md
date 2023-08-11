@@ -16,7 +16,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Palette Virtual Clusters Overview
 
-Palette Virtual Clusters run as nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster resources, such as CPU, memory, and storage, container network interface (CNI), and container storage interface (CSI). By default, virtual clusters use [k3s](https://github.com/k3s-io/k3s), a highly available, certified Kubernetes distribution designed for production workloads.
+Palette Virtual Clusters are nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI). By default, virtual clusters use [k3s](https://github.com/k3s-io/k3s), a highly available, certified Kubernetes distribution designed for production workloads.
 
 Palette provisions and orchestrates virtual clusters to make the lightweight Kubernetes technology stack and tools ecosystem available to you. Deploy virtual clusters on both new and imported Host Clusters and attach application profiles.
 

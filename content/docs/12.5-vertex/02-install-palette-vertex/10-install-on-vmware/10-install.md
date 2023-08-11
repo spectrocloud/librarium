@@ -27,6 +27,11 @@ You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon
 - An AMD64 Linux environment with connectivity to the VMware environment. 
 
 
+
+- [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux host.
+
+
+
 - Palette CLI installed and available. Refer to the Palette CLI [Install](/palette-cli/install-palette-cli#downloadandsetup) page for guidance.
 
 
