@@ -223,7 +223,7 @@ kubeadmconfig:
     #clientConfig:
     #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
     #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-    #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    #oidc-client-secret: yourSecretClientSecretGoesHere
     #oidc-extra-scope: profile,email
 ```
 
@@ -534,7 +534,7 @@ kubeadmconfig:
     #clientConfig:
     #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
     #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-    #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    #oidc-client-secret: yourSecretClientSecretGoesHere
     #oidc-extra-scope: profile,email
 ```
 
@@ -646,7 +646,7 @@ oidcIdentityProvider:
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-client-secret: yourSecretClientSecretGoesHere
   oidc-extra-scope: profile,email
 ```
 
@@ -843,7 +843,7 @@ kubeadmconfig:
     #clientConfig:
     #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
     #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-    #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+    #oidc-client-secret: yourSecretClientSecretGoesHere
     #oidc-extra-scope: profile,email
   ```
 
@@ -955,7 +955,7 @@ oidcIdentityProvider:
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-client-secret: yourSecretClientSecretGoesHere
   oidc-extra-scope: profile,email
 ```
 
@@ -1119,7 +1119,7 @@ kubeadmconfig:
   #clientConfig:
   #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
   #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
-  #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  #oidc-client-secret: yourSecretClientSecretGoesHere
   #oidc-extra-scope: profile,email
   ```
 <br />
@@ -1230,7 +1230,7 @@ oidcIdentityProvider:
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-client-secret: yourSecretClientSecretGoesHere
   oidc-extra-scope: profile,email
 ```
 
