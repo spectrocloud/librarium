@@ -61,12 +61,11 @@ You may ask yourself where to use cloud-init stages, as both the Edge Installer 
 
 # Sensitive Information in the User Data Stages
 
-Suppose you plan to use sensitive information in your user data stages. In the edge deployment lifecycle, you can apply user data to edge hosts during the staging and site installation steps, as highlighted in the diagram below.  
+Suppose you must add sensitive information, such as credentials, in your user data configuration file. In the Edge deployment lifecycle, you have two opportunities to apply user data to edge hosts. The first is during the staging phase, where you add the Edge installer to the Edge host. The second opportunity is during the site installation phase, where you can provide additional user-data configurations if needed. The diagram below highlights the two mentioned stages in the Edge lifecycle.  
 
 ![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.png)
 <br />
 
-Generally, the user data is copied to the edge hosts in the above-mentioned steps, described briefly in the points below. 
 <br />
 
 - **Staging Step** - In the staging step, you prepare your edge hosts using the organization-level configurations. The organization-level configurations include the Edge Installer, the user data, and, optionally, a content bundle. 
@@ -78,7 +77,7 @@ You bundle the organization-level configurations into an ISO and prepare a boota
 
 - **Site Installation Step** - In the site installation step, you use supplementary user data to apply site-specific configurations to the edge devices. In this step, you create another USB flash drive using an ISO that contains your additional user data. You use the USB flash drive to install the site-specific configurations. The entire USB flash drive data is copied to the edge host during the installation unless you follow the specific naming convention for your user data stages as described below. 
 
-  The [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process in detail. The site installation step is optional. You can refer to the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase) guide to learn about the use cases for the site installation step.
+ The [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process in detail.  If you need to apply a supplementary user-data configuration file,  refer to the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase) guide to learn more.
 
 
 In both steps mentioned above,  the Edge Installer copies the user data from the USB flash drive to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. Suppose you want to keep some user data stages off the edge hosts. In such scenarios, we recommend applying the user data during the site installation step and using the specific naming convention for your user data stages, as described in the [Sensitive Information During the Site Installation](#sensitiveinformationduringthesiteinstallation) section below.
@@ -89,12 +88,12 @@ In both steps mentioned above,  the Edge Installer copies the user data from the
 <br />
 <WarningBox>
 
-We do not recommend using sensitive information during the installer handoff step. Instead, you must consider using sensitive information during the site installation step.
+We do not recommend inserting sensitive information in the user data configuration file provided in the installer handoff phase. Use a supplementary user data configuration file and apply it at the Site Installation phase. 
 
 </WarningBox>
 <br />
 
-In the installer handoff step, the Edge Installer copies and persists *all* your user data stages into the configuration files on the edge hosts. Copying sensitive information to the edge hosts may pose security risks. Therefore, we do not recommend using sensitive information during the installer handoff step. Instead, you must consider using sensitive information during the site installation step.
+In the installer handoff step, the Edge Installer copies and persists *all* your user data stages into the configuration files on the edge hosts. Copying sensitive information to the edge hosts may pose security risks. Therefore, we recommend you avoid inserting sensitive information in the user data configuration file provided in the installer handoff phase. Use a supplementary user data configuration file and apply it at the Site Installation phase.
 
 
 Suppose you consciously want to pass some sensitive information in the user data during the installer handoff step. In that case, you must specify `powerOff: true` in the install section of user data to ensure the devices are shut down when you ship them to the site. 
@@ -102,9 +101,9 @@ Suppose you consciously want to pass some sensitive information in the user data
 
 ## Sensitive Information in the Site Installation
 
-If you want to use sensitive information, such as credentials for patching the OS on your edge hosts, in any user data stage during the site installation step. In such scenarios, you must use the `skip-copy-[string]` naming convention for your user data stages. Replace the `[string]` placeholder with any meaningful string per your requirements. The Edge Installer will skip copying the stages whose name matches the regular expression `skip-copy-*` to the edge hosts. The stages will execute as long as the USB flash drive is mounted to the edge hosts.  
+If you want to use sensitive information, such as credentials for patching the OS on your edge hosts, in any user data stage during the site installation step. In such scenarios, you must use the `skip-copy-[string]` naming convention for your user data stages. Replace the `[string]` placeholder with any meaningful string per your requirements. The Edge Installer will skip copying the stages whose name matches the regular expression `skip-copy-*` to the edge host. The stages will execute as long as the USB flash drive is mounted to the edge hosts.  
 
-For example, the `skip-copy-subscribe` stage below follows the `skip-copy-[string]` naming convention. Therefore, the Edge Installer will skip copying the stage to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. However, the stage will execute as long as you have plugged in the USB flash drive containing your user data. You must unmount the USB flash drive from the edge device after the device registers with Palette and before you deploy a Kubernetes cluster on the device. 
+For example, the `skip-copy-subscribe` stage below follows the `skip-copy-[string]` naming convention. Therefore, the Edge Installer will skip copying the stage to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge host. However, the stage will execute as long as you have plugged in the USB flash drive containing your user data. You must unmount the USB flash drive from the edge device after the device registers with Palette and before you deploy a Kubernetes cluster on the device. 
 <br />
 
 ```yaml
