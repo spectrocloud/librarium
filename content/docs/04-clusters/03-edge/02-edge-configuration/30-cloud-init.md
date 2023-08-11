@@ -66,7 +66,7 @@ Suppose you plan to use sensitive information in your user data stages. In the e
 ![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.png)
 <br />
 
-In general, the user data stages containing your sensitive information are copied to the edge hosts in the abovementioned steps. However, you can avoid copying particular stages during site installation if you follow the naming convention described in the [Sensitive Information During the Site Installation](#sensitiveinformationduringthesiteinstallation) section below. The following points provide a brief overview of the steps. 
+Generally, the user data is copied to the edge hosts in the above-mentioned steps, described briefly in the points below. 
 <br />
 
 - **Staging Step** - In the staging step, you prepare your edge hosts using the organization-level configurations. The organization-level configurations include the Edge Installer, the user data, and, optionally, a content bundle. 
@@ -81,7 +81,7 @@ You bundle the organization-level configurations into an ISO and prepare a boota
   The [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process in detail. The site installation step is optional. You can refer to the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase) guide to learn about the use cases for the site installation step.
 
 
-In both steps mentioned above, the user data from the USB flash drive is copied to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. Suppose you plan to use sensitive information in your user data. In that case, you may not want the Edge Installer to copy and store the sensitive information on the edge hosts. In such scenarios, we recommend applying the user data during the site installation step and using the specific naming convention for your user data stages, as described in the [Sensitive Information During the Site Installation](#sensitiveinformationduringthesiteinstallation) section below.
+In both steps mentioned above,  the Edge Installer copies the user data from the USB flash drive to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. Suppose you want to keep some user data stages off the edge hosts. In such scenarios, we recommend applying the user data during the site installation step and using the specific naming convention for your user data stages, as described in the [Sensitive Information During the Site Installation](#sensitiveinformationduringthesiteinstallation) section below.
 <br />
 
 ## Sensitive Information in the Installer Handoff
