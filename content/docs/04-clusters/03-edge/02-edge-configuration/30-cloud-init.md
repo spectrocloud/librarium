@@ -80,7 +80,7 @@ You bundle the organization-level configurations into an ISO and prepare a boota
  The [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide describes the site installation process in detail.  If you need to apply a supplementary user-data configuration file,  refer to the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase) guide to learn more.
 
 
-In both steps mentioned above,  the Edge Installer copies the user data from the USB flash drive to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. Suppose you want to keep some user data stages off the edge hosts. In such scenarios, we recommend applying the user data during the site installation step and using the specific naming convention for your user data stages, as described in the [Sensitive Information During the Site Installation](#sensitiveinformationduringthesiteinstallation) section below.
+In both steps mentioned above,  the Edge Installer copies the user data configuration file provided to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. If you want to prevent some user data stages from getting copied to the edge host's storage, you can use a specific naming convention to disable the default copy behavior. However, be aware that different persistence behaviors apply depending on which stage of the Edge deployment life cycle you provide sensitive data in the user data configuration file. Refer to the [Sensitive Information During the Site Installation](#sensitiveinformationduringthesiteinstallation) section below to learn more.
 <br />
 
 ## Sensitive Information in the Installer Handoff
@@ -96,7 +96,6 @@ We do not recommend inserting sensitive information in the user data configurati
 In the installer handoff step, the Edge Installer copies and persists *all* your user data stages into the configuration files on the edge hosts. Copying sensitive information to the edge hosts may pose security risks. Therefore, we recommend you avoid inserting sensitive information in the user data configuration file provided in the installer handoff phase. Use a supplementary user data configuration file and apply it at the Site Installation phase.
 
 
-Suppose you consciously want to pass some sensitive information in the user data during the installer handoff step. In that case, you must specify `powerOff: true` in the install section of user data to ensure the devices are shut down when you ship them to the site. 
 <br />
 
 ## Sensitive Information in the Site Installation
