@@ -7,6 +7,9 @@ tokens:
   - 'spectrocloud'
   - 'spectro cloud'
   - 'SpectroCloud'
+  - 'SpectroCloud'
+  - 'Spectro cloud'
+  - 'spectro Cloud'
 scope: sentence
 exceptions:
   - '\w*\.spectrocloud\.\w*'
