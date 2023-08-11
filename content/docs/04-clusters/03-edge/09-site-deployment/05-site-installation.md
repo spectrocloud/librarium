@@ -21,7 +21,7 @@ The Edge host site installation has three stages, as described in the table.
 
 | Phase| Description| Required |
 | ---| ---| --- |
-| Apply Site User Data |  As described in the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase), you can apply a secondary Edge Installer configuration user date to apply additonal settings or override global values. This is optional but may be required for certain use cases. Refer to the [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more. | No |
+| Apply Site User Data |  As described in the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase), you can apply a secondary Edge Installer configuration user date to apply additional settings or override global values. This is optional but may be required for certain use cases. Refer to the [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more. | No |
 | Registration |  The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete. The *Registration* phase has a unique set of instructions. Refer to [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) for guidance.| Yes|
 |Cluster Provisioning | The Edge host boots into the specified provider Operating System and proceeds with the cluster deployment. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource | Yes |
 

@@ -47,7 +47,7 @@ You can enable the `debug` and `trace` parameters when you need to troubleshoot 
 | Parameter | Description | 
 | --- | --- |
 | `debug` | Enable this parameter for debug output. Allowed values are `true` or `false`. Default value is `false`. |
-| `trace` | Enable this paramter to display trace output. Allowed values are `true` or `false`. Default value is `false`.|
+| `trace` | Enable this parameter to display trace output. Allowed values are `true` or `false`. Default value is `false`.|
 | `imageOverride`| You can specify a different Edge Installer image versus the default image. |
 
 ```yaml
@@ -153,7 +153,7 @@ Network settings specific to the network interface of the edge host. You can con
 | `networkInterface.ipAddress` | The assigned IP address to the network interface. | 
 | `networkInterface.mask` | The network mask for the assigned IP address. | 
 | `networkInterface.type` | Defines how the IP address is assigned. Allowed values are `dhcp` or `static`. Defaults to `dhcp`. | 
-| `networkInterface.gateway` | The network gatway IP address. |
+| `networkInterface.gateway` | The network gateway IP address. |
 | `networkInterface.nameserver` | The IP address of the DNS nameserver this interface should route requests to.| 
 
 ## Device ID (UID) Parameters
