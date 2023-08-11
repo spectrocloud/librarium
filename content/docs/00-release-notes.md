@@ -10,12 +10,11 @@ fullWidth: false
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
-import PointsOfInterest from 'shared/components/common/PointOfInterest';
-import Tooltip from "shared/components/ui/Tooltip";
+
 
 # August 18, 2023 - Release 4.0.0
 
-Palette 4.0.0 is a major release that introduces new features and improvements to Palette, including the official release of Palette VerteX. 
+Palette 4.0.0 introduces new features and improvements, including [Palette VerteX](/vertex) - a FIPS-compliant edition - and the [Virtual Machine Orchestrator](/vm-management) (VMO) which enables unified management of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User Interface (UI) that improves the user experience for finding and installing packs. Check out the release notes below to learn more about the new features and improvements in Palette 4.0.0.
 
 
 ## Palette
@@ -46,10 +45,6 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 
 
 - Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
-
-
-- Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
-
 
 ### Improvements
 
@@ -87,7 +82,7 @@ Palette 4.0.0 is a major release that introduces new features and improvements t
 - You can now assign dynamic tags to your edge hosts by specifying files or invoking a script that returns a JSON payload containing the tag values. This allows you to dynamically assign tags to your Edge hosts based on the host's local environment. Refer to the [Edge Installer Configuration Tags](/clusters/edge/edge-configuration/installer-reference#tags) documentation to learn more.
 
 
-- You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to disable auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
+- You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
 ## Palette Dev Engine (PDE)
 
 ### Features
