@@ -66,7 +66,7 @@ The following steps need to be performed to provision a new Azure cluster:
 6. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile. Click on **Next**.
 
 
-7. Provide the Azure Cloud account placement information for cluster configuration. If you have custom storage accounts or storage container available, they will be eligble for attachment. To learn more about attaching custom storage to a cluster, check out the [Azure storage](/clusters/public-cloud/azure/architecture#azurestorage) page.
+7. Provide the Azure Cloud account placement information for cluster configuration. If you have custom storage accounts or storage container available, they will be eligible for attachment. To learn more about attaching custom storage to a cluster, check out the [Azure storage](/clusters/public-cloud/azure/architecture#azurestorage) page.
 
 
 <WarningBox>
