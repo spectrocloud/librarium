@@ -62,14 +62,14 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
-|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`|
 ---------
 
 ## OpenStack PCG Image
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
-|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`
+|1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`|
 -------
 
 
@@ -79,15 +79,17 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 |Version| Operating System |  Checksum (SHA256) |
 |---|---|---|
-|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/linux/cli/palette)| `9dd1e1c70b0b30c2a35b54d1cb54b230593842a114f8d7cbeebe4e882fa2795e`
-|3.4.0| [OSX-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/osx/cli/palette)| `88b9e74705a0d66f9b34481002a8d33889c94ef7788a590807b1538e8513c62a`
+|4.0.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.0/linux/cli/palette)| ``
+|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/linux/cli/palette)| `9dd1e1c70b0b30c2a35b54d1cb54b230593842a114f8d7cbeebe4e882fa2795e`|
+|3.4.0| [OSX-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/osx/cli/palette)| `88b9e74705a0d66f9b34481002a8d33889c94ef7788a590807b1538e8513c62a`|
 
 
 
 # Palette Edge CLI
 
-CLI Version| Operating System |  Checksum (SHA256) |
--------|---| --- |
-v3.4.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.3/cli/linux/palette-edge) | `b53ccd28ea2a36a6eda43e0e7884c97bebd7d78922374168e1819b768df54f16`
+|Version| Operating System |  Checksum (SHA256) |
+|-------|---| --- |
+|4.0.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v4.0.0/cli/linux/palette-edge) | ``|
+|3.4.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.3/cli/linux/palette-edge) | `b53ccd28ea2a36a6eda43e0e7884c97bebd7d78922374168e1819b768df54f16`|
 
 

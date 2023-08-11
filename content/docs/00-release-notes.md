@@ -183,6 +183,9 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
 
+
+- Kubernetes versions 1.22.x and 1.23.x are deprecated.
+
 ## Education
 
 - A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
