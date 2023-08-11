@@ -44,7 +44,7 @@ The following ports must be reachable from a network perspective for Palette to 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform .|
-|HTTPS (tcp/443) |INBOUND        |gRPC communicataion between Palette and the workload cluster.|
+|HTTPS (tcp/443) |INBOUND        |gRPC communication between Palette and the workload cluster.|
 |NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform [Deprecated]|
 
 

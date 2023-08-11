@@ -1,0 +1,12 @@
+extends: existence
+message: "Avoid using 'spectrocloud' outside of a URL format. Use 'Spectro Cloud' instead."
+level: error
+ignorecase: true
+nonword: true
+tokens:
+  - 'spectrocloud'
+  - 'spectro cloud'
+  - 'SpectroCloud'
+scope: sentence
+exceptions:
+  - '\w*\.spectrocloud\.\w*'

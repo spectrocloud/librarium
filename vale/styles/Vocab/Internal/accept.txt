@@ -116,3 +116,5 @@ subcommand
 subcommands
 MAAS
 nameserver
+uncomment
+OAuth
