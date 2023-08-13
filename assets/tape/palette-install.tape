@@ -4,9 +4,9 @@
 # Source a .env file with the variables or export them in your shell.
 # You can use the following command to generate the file. 
 # Assuming you have a .env file in the current directory.
-# source .env && envsubst < vertex-install.tape > vertex-install-creds.tape
+# source .env && envsubst < palette-install.tape > palette-install-creds.tape
 Require palette
-Output ../../content/docs/12.5-vertex/02-install-palette-vertex/vertex-install.mp4
+Output ../../content/docs/12-enterprise-version/palette-install.mp4
 
 Set FontSize 14
 Set Width 950
@@ -19,19 +19,19 @@ Set BorderRadius 10
 Show
 Type "palette ec install"
 Enter
-Sleep 1s
-Down 1
-Sleep 1s
+Sleep 3s
 Enter
-Type@500ms "y"
+Type@500ms "n"
+Sleep 2s
 Enter
-Type "${UBUNTU_PRO}" # Ubuntu Pro Token
-Enter
-Type "https://repo-dev-fips.dev.spectrocloud.com"
+Type@200ms "https://saas-repo.console.spectrocloud.com"
 Enter
 Type@300ms "spectro"
 Enter
-Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
+Type "${SAAS_PROD_SCAR_REPO_PASSWORD}" # Packs Repository Password
+Enter
+Sleep 3s
+Type "y"
 Enter
 Sleep 1s
 Enter
@@ -49,19 +49,19 @@ Enter # Proxy CA Cert
 Sleep 2s
 Type "172.16.0.0/20"
 Enter
-Sleep 1s
+Sleep 2s
 Type "10.155.0.0/24"
 Enter
-Sleep 1s
+Sleep 2s
 Type "y"
 Enter
-Sleep 1s
+Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
-Sleep 1s
+Sleep 2s
 Type "${VCENTER_USER}" # vCenter User
 Enter
-Sleep 1s
+Sleep 2s
 Type "${VCENTER_PASSWORD}" # vCenter Password
 Enter
 Sleep 1s
@@ -120,4 +120,4 @@ Sleep 1s
 Enter # Disk Size
 
 
-Sleep 25s
+Sleep 35s

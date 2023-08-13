@@ -14,9 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Install Palette VerteX on VMware vSphere
 
-You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA): 
-
-You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the Palette console and the VMware vSphere where Palette VerteX will be deployed. 
+You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA). You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where Palette VerteX will be deployed. 
 
 
 # Prerequisites
@@ -39,13 +37,6 @@ You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon
 
 
 - Review required VMware [permissions](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements).
-
-
-- The Kubernetes cluster must have the following minimum resources:
-  
-  - 8 vCPU
-  - 16 GB memory
-  - 120 GB storage
 
   <br />
 
@@ -231,8 +222,8 @@ When the installation is complete, Enterprise Cluster Details that include a URL
   ==== Enterprise Cluster Details ====
   ====================================
   Console URL: https://10.10.189.100/system
-  Username: admin
-  Password: admin
+  Username: **********
+  Password: **********
   ```
 
 
