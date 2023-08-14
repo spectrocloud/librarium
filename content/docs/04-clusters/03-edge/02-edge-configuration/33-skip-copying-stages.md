@@ -1,6 +1,6 @@
 ---
-title: "Sensitive Information in the User Data Stages"
-metaTitle: "Sensitive Information in the User Data Stages"
+title: "Sensitive User Data Handling"
+metaTitle: "Sensitive User Data Handling"
 metaDescription: "Learn how to make the Edge installer skip copying the specific user data stages to the edge hosts so that you can use sensitive information in the user data stages."
 hideToC: false
 fullWidth: false
