@@ -135,11 +135,15 @@ We provide add-on pack updates as follows:
 
 We deprecate and remove packs when a more stable version of the pack is available or when the underlying technology becomes obsolete. When a pack is deprecated, you will still be able to create new cluster profiles using the pack and deploy clusters that use profiles containing the pack. Our Release Notes announce when a pack is deprecated and a replacement pack is available.
 
-Palette displays the deprecation stage when you click the information icon next to the pack name during profile creation. An information icon in the profile stack also displays a message that instructs about required pack versions. 
+Palette displays the deprecation stage when you click the information icon next to the pack name during profile creation. 
 
-![Screenshot showing how Palette indicates a pack's stage of deprecation.](integrations_deprecation-stage.png)
+![Screenshot showing how Palette indicates a pack's stage of deprecation.](/integrations_deprecation-stage.png)
 
-We adhere to the following stages of deprecation. 
+An information icon in the profile stack also displays a message that instructs about required pack versions.
+
+![Screenshot showing message in profile stack that tells you the required pack version to use.](/integrations_deprecation-profile-stack-msg.png)
+
+We adhere to the following stages of deprecation: 
 
 <br />
 
@@ -147,9 +151,13 @@ We adhere to the following stages of deprecation.
 
    The pack remains in *Deprecated* state for three months before it moves to *Disabled* state.
 
+   <br />
+
 - **Disabled**: When a pack is disabled, it is no longer available for selection in Palette. When creating new profiles, you must use a newer version of the pack.
 
   The pack remains in *Disabled* state for three months before it is deleted.
+
+  <br />
 
 - **Deleted**: When a pack is deleted, it is removed from Palette. However, existing clusters that use profiles which contain the deleted pack will continue to function. 
 
