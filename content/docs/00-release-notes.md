@@ -46,6 +46,9 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
 
+
+- Self-hosted Palette now provides a new installation method using the [Palette CLI](/palette-cli). You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
+
 ### Improvements
 
 - You can now download different kubeconfig files for your host clusters in Palette. You can download an admin kubeconfig file or a user kubeconfig file. The admin kubeconfig file allows you to perform all actions on the cluster. In contrast, the user kubeconfig file is only accessible to those with the proper Palette permissions to access the cluster. To learn more, check out the Palette [kubeconfig](/clusters/cluster-management/kubeconfig) documentation.
