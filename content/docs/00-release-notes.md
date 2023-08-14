@@ -38,16 +38,23 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Pack registries now support the Open Container Initiative (OCI) image format. This allows you to use OCI images in your custom pack registries instead of the previous Palette-specific format.
 
 
+- Palette now supports VMware vSphere 8.0. You can now deploy host clusters with VMware vSphere 8.0.
+
+
+- Host clusters deployed to VMware now support [VMware NSX](https://www.vmware.com/products/nsx.html) overlay networking. 
+
+
 - Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page.
 
 
 - Pack deprecated status is now available in the Palette UI. This lets you identify what packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
 
 
-- Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
-
 
 - Self-hosted Palette now provides a new installation method using the [Palette CLI](/palette-cli). You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
+
+
+- You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. If the namespace does not exist, Palette will create the namespace with the specified labels and annotations. 
 
 ### Improvements
 
@@ -61,6 +68,15 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 - You can now configure the logout timer for users in Palette. This allows you to set the time a user can be inactive before they are automatically logged out of Palette. The default value is 240 minutes.
+
+
+- Palette Cloud Gateway (PCG) deployments and self-hosted Palette Enterprise Clusters (EC) are now deployed with Kubernetes version 1.25.
+
+
+- Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
+
+
+- The Cox Edge provider is upgraded to version 0.5.0.
 
 
 - You can now access Palette documentation directly from the Palette UI. This allows you to quickly access the documentation for the page you are currently on. You can find the documentation link in the top right corner of the Palette UI.
