@@ -23,7 +23,7 @@ You have two options for installing Palette. You can use the Palette CLI to inst
 <WarningBox>
 
 
-Starting with Palette 4.0.0, the Palette CLI is the only supported method for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier.
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the CLI tab below, or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)  guide for additional guidance on how to install Palette.
 
 </WarningBox>
 
@@ -246,7 +246,7 @@ When the installation is complete, Enterprise Cluster Details that include a URL
   </InfoBox> 
 
 
-![Screenshot of the Palette system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
+![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
 
 <br />
 
@@ -257,7 +257,7 @@ When the installation is complete, Enterprise Cluster Details that include a URL
 12. After login, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
 
 
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
+![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
 
 
 # Validate
@@ -346,3 +346,4 @@ Deployment of an enterprise cluster is a migration process from the quick start 
 
 - [Airgap Install Instructions](/enterprise-version/air-gap-repo)
 
+<br />

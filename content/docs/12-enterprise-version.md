@@ -19,7 +19,7 @@ Palette is available as a self-hosted platform offering. You can install the sel
 <WarningBox>
 
 
-Starting with Palette 4.0.0, the Palette CLI is the only supported method for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) guide for additional guidance on how to install Palette using the CLI.
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)  guides for additional guidance on how to install Palette.
 
 </WarningBox>
 
