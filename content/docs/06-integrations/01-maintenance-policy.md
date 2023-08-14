@@ -159,7 +159,7 @@ We adhere to the following stages of deprecation:
 
   <br />
 
-- **Deleted**: When a pack is deleted, it is removed from Palette. However, existing clusters that use profiles which contain the deleted pack will continue to function. 
+- **Deleted**: When a pack is deleted, it is removed from Palette. An active cluster that contains the deleted pack will continue to operate. However, you will not be able to deploy a new cluster profile that contains the deleted pack. 
 
 <InfoBox>
 
