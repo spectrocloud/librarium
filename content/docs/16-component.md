@@ -21,6 +21,7 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release| Recommended CLI Version|
 |---------------------------|----|
+|Release 4.0.0     |4.0.0 |
 |Release 3.4.0     |3.4.0 |
 |Release 3.3.0     |3.3.0 |
 
@@ -29,23 +30,12 @@ This page lists the version details of various Palette components and their resp
 
 |Palette Release|CLI Version| 
 |---|-------|
+|Release 4.0.0 |v4.0.0 |
 |Release 3.4.0 |v3.4.2 |
 |Release 3.3.0 |v3.3.0 |
 |Release 3.2.0 |v3.2.0 | 
 
 
-<br />
-
-|Palette Release| Docker Image Version|
-|---------------------------|----|
-|Release 3.3.0     | 3.4.0 |
-|Release 3.3.0     | 3.3.0 |
-|Release 3.2.0     |3.2.0 |
-|Release 3.1.0     |3.1.0 |
-|Release 3.0.0     |3.0.0 |
-|Release 2.8.0     |2.8.0 |
-|Release 2.7.0     |2.7.0 |
-|Release 2.6.0     |2.6.0 |
 
 # On-Premises Installer Version
 
@@ -137,10 +127,10 @@ This page lists the version details of various Palette components and their resp
 |Ubuntu| 22.04|
 |Ubuntu| 20.04|
 |Ubuntu| 18.04|
-|CentOS| 7.7|
-|CentOS| 7.9|
 |CentOS| 8.0|
-|OpenSuSE|14.4|
+|CentOS| 7.9|
+|CentOS| 7.7|
+|OpenSuSE|15.4|
 
 
 # Network Layer Versions
@@ -169,6 +159,7 @@ This page lists the version details of various Palette components and their resp
 # Resources
 
 - [Packs List](/integrations#integrations)
+
 
 - [Downloads](/spectro-downloads#palettedynamicartifacts)
 

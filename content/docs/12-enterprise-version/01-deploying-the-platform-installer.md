@@ -14,9 +14,16 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # VMware Quick Start Installation
 
-The Palette On-Prem Quick Start Mode is a single node installation of the Palette platform, used for PoC environments to quickly understand the capabilities of the Palette platform. It is not recommended for Production deployments (see Enterprise Mode for production deployments).
+The Palette On-Prem Quick Start Mode is a single node installation of the Palette platform, used for PoC environments to quickly understand the capabilities of the Palette platform. We do not recommended for Production deployments as it does not provide high availability or scalability.
 
-As a prerequisite, download the platform installer OVA using the <Tooltip trigger={<u>link</u>}>Please <a href="https://www.spectrocloud.com/contact/">contact us</a> to receive download instructions.</Tooltip> provided, and upload it into vCenter.
+<br />
+
+<WarningBox>
+
+
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)  guides for additional guidance on how to install Palette.
+
+</WarningBox>
 
 # Deploy Platform Installer
 

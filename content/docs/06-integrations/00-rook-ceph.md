@@ -4,7 +4,7 @@ metaTitle: 'rook-ceph'
 metaDescription: 'Rook Ceph storage pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['storage']
+category: ['storage', 'amd64']
 logoUrl: ' https://registry.dev.spectrocloud.com/v1/csi-rook-ceph/blobs/sha256:2817270f4eecbc2eea0740c55c7611d1a538a3e17da610a3487bb11b067076d1?type=image/png'
 ---
 

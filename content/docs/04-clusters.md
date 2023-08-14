@@ -261,6 +261,7 @@ This table lists the proxy requirements for enabling the Palette management cons
 | spectrocloud.com          | 443  | For the Palette SaaS.                       |
 | s3.amazonaws.com          | 443  | To access the Palette VMware OVA files.     |
 | gcr.io                    | 443  | To access the Palette image files.          |
+| ghcr.io                   | 443  | To access kube vip image                    |
 | docker.io                 | 443  | To access the Palette Pack Registries.      |
 | googleapis.com            | 443  | For pulling Palette images.                 |
 | docker.com                | 443  | To access the Palette docker images.        |

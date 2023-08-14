@@ -5,7 +5,7 @@ metaDescription: 'Kibana Monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['logging']
+category: ['logging', 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/elastic-fluentd-kibana/blobs/sha256:3b6d6486eb216d46164fc8b7cb784b0be6b851a85726f18bdf4450d5ed1386eb?type=image/png'
 ---
 

@@ -5,7 +5,7 @@ metaDescription: "Learn how to manage Kubernetes clusters and applications deplo
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['monitoring']
+category: ['monitoring', 'amd64']
 logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
 ---
 

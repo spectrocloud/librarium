@@ -261,6 +261,12 @@ const redirects = [
     toPath: `/integrations/kubernetes#configurecustomoidc`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster`,
+    toPath: `/clusters/palette-virtual-clusters/deploy-virtual-cluster`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

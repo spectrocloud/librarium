@@ -93,7 +93,7 @@ docker run -d \
     -e REGISTRY_LOG_LEVEL=debug \
     -e REGISTRY_AUTH=htpasswd \
     -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
-    gcr.io/spectro-images-public/release/spectro-registry:3.2.0
+    gcr.io/spectro-images-public/release/spectro-registry:3.4.0
 ```
 
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server command to the configuration file.
@@ -106,7 +106,7 @@ docker run -d \
     --port 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
-    gcr.io/spectro-images-public/release/spectro-registry:3.3.0 \
+    gcr.io/spectro-images-public/release/spectro-registry:3.4.0 \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
 ## Storage Backend

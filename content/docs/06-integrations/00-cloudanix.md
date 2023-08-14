@@ -5,7 +5,7 @@ metaDescription: 'The Cloudanix security pack provides a dashboard that displays
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['security']
+category: ['security', 'amd64']
 logoUrl: 'https://cloudanix-assets.s3.amazonaws.com/static/cloudanix-logo-p.png'
 ---
 

@@ -5,7 +5,7 @@ metaDescription: 'Dex Authentication pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['authentication']
+category: ['authentication', 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed94c7c19cd6f6fc4e896ec66485364644dc1a40229fcf9d90d?type=image/png'
 ---
 
