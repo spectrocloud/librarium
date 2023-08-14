@@ -38,7 +38,7 @@ In this tutorial, you will containerize a date suggester app built in React and 
 
 
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on your machine and connected to your cluster.
-- A LoadBalancer. You can [create a LoadBanlacer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) with a public cloud provider, or use the [minikube tunnel](https://minikube.sigs.k8s.io/docs/commands/tunnel/) to trick a local cluster into exposing a resource.
+- A LoadBalancer. You can [create a LoadBalancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/) with a public cloud provider, or use the [minikube tunnel](https://minikube.sigs.k8s.io/docs/commands/tunnel/) to trick a local cluster into exposing a resource.
 
 ## About the Application
 

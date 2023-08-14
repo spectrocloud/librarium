@@ -104,66 +104,65 @@ The following details are required to configure a backup location in AWS:
 
 #### AWS S3 Permissions
 
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "ec2:DescribeVolumes",
-                    "ec2:DescribeSnapshots",
-                    "ec2:CreateTags",
-                    "ec2:CreateVolume",
-                    "ec2:CreateSnapshot",
-                    "ec2:DeleteSnapshot"
-                ],
-                "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "s3:GetObject",
-                    "s3:DeleteObject",
-                    "s3:PutObject",
-                    "s3:AbortMultipartUpload",
-                    "s3:ListMultipartUploadParts"
-                ],
-                "Resource": [
-                    "arn:aws:s3:::BUCKET-NAME/*"
-                ]
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "s3:ListBucket"
-                ],
-                "Resource": [
-                    "arn:aws:s3:::BUCKET-NAME"
-                ]
-            }
-        ]
-    }
-     
-    ```
+ ```json
+ {
+     "Version": "2012-10-17",
+     "Statement": [
+         {
+             "Effect": "Allow",
+             "Action": [
+                 "ec2:DescribeVolumes",
+                 "ec2:DescribeSnapshots",
+                 "ec2:CreateTags",
+                 "ec2:CreateVolume",
+                 "ec2:CreateSnapshot",
+                 "ec2:DeleteSnapshot"
+             ],
+             "Resource": "*"
+         },
+         {
+             "Effect": "Allow",
+             "Action": [
+                 "s3:GetObject",
+                 "s3:DeleteObject",
+                 "s3:PutObject",
+                 "s3:AbortMultipartUpload",
+                 "s3:ListMultipartUploadParts"
+             ],
+             "Resource": [
+                 "arn:aws:s3:::BUCKET-NAME/*"
+             ]
+         },
+         {
+             "Effect": "Allow",
+             "Action": [
+                 "s3:ListBucket"
+             ],
+             "Resource": [
+                 "arn:aws:s3:::BUCKET-NAME"
+             ]
+         }
+     ]
+ }
+ ```
 
 #### Trust Setup Example
 
-    ```json
-    {
-      "Version": "2012-10-17",
-      "Statement": [
-        {
-          "Effect": "Allow",
-          "Principal": {
-            "AWS": "arn:aws:iam::141912899XX99:root"
-          },
-          "Action": "sts:AssumeRole",
-          "Condition": {}
-        }
-      ]
-    }
-    ```
+ ```json
+ {
+   "Version": "2012-10-17",
+   "Statement": [
+     {
+       "Effect": "Allow",
+       "Principal": {
+         "AWS": "arn:aws:iam::141912899XX99:root"
+       },
+       "Action": "sts:AssumeRole",
+       "Condition": {}
+     }
+   ]
+ }
+ ```
 
 ## Configure your Backup in GCP Bucket
 

@@ -138,10 +138,10 @@ Use the following steps to manually register an Edge host in Palette.
     
     Example Output:
     ```shell
-    tіме="2022-11-03T11:30:10Z" level=info Msg="starting stylus reset plugin"
-    t¡me="2022-11-03T11:30:102" level=info Msg="reset cached site name from uuid, cached: edge-03163342f7f0e6fe20de095ed8548c93"
+    time="2022-11-03T11:30:10Z" level=info Msg="starting stylus reset plugin"
+    time="2022-11-03T11:30:102" level=info Msg="reset cached site name from uuid, cached: edge-03163342f7f0e6fe20de095ed8548c93"
     time="2022-11-03T11:30:102" level=info Msg="reset cached site name from unid, new: edge-9e8e3342bafa9eb6d45f81c1f6714ea2" MachineD: edge-9eBe3342bafaeb6d45f81c1fb714ea2
-    tіме="2022-11-03T11:30:192" level=info Msg="MachineIP: 10.239.10.145"
+    time="2022-11-03T11:30:192" level=info Msg="MachineIP: 10.239.10.145"
     ```
 
     <InfoBox>
