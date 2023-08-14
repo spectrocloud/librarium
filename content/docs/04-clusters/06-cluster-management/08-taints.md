@@ -66,7 +66,7 @@ The following parameters are available for specifying Namespace labels and annot
 
 
 
-The following example shows how to specify Namespace labels and annotations for an Add-on Pack, a CSI pack, and a CNI pack. In the example configuration, the `wordpress` pack is deployed to the `wordpress` Namespace. An additonal Namespace titled `wordpress-storage` is created. The `wordpress` Namespace has the `monitoring` label with the value `org=spectro,team=dev`, and the `wordpress-storage` Namespace has the `user` label with the value `demo-user`. The `default` Namespace has the `user` label with the value `demo-user`. The `monitoring` Namespace has the `monitoring.io/enable` annotation with the value `true`, and the `wordpress-storage` Namespace has the `storage.metrics.io/format` annotation with the value `json`.
+The following example displays how to specify Namespace labels and annotations for an Add-on Pack, a CSI pack, and a CNI pack. In the example configuration, the `wordpress` pack is deployed to the `wordpress` Namespace. An additonal Namespace titled `wordpress-storage` is created. In the parameters `namespaceLabels`, and `namespaceAnnotations`, each entry is made up of a key and a value. The key is the name of the label or annotation, and the value is the value of the label or annotation.
 
 
 <br />
