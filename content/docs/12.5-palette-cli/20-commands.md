@@ -75,6 +75,30 @@ The `install` subcommand installs a Palette Enterprise Cluster in your target en
   | `-p`       | `--update-passwords`   | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided. |   string      |
 
 
+  ### Examples
+
+  Install a Palette Enterprise Cluster in interactive mode.
+
+  <br />
+
+  ```shell
+  palette ec install
+  ```
+
+
+  Create a configuration file for the Enterprise Cluster installation.
+
+  <br />
+
+  ```shell
+  palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml
+  ```
+  
+  <br />
+
+
+
+
 ### Custom Value File
 
 You can customize the [Cluster Profile](/glossary-all#clusterprofile) that makes up the Enterprise Cluster by providing a custom **values.yaml** file. The custom **values.yaml** file is a YAML file that contains the values for the various Cluster Profile layers that make up the Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs. This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
@@ -173,8 +197,7 @@ The `login` subcommand authenticates the Palette CLI with Palette. The `login` s
 | `--project`           | Palette Project name (optional). Specifies the active Project.                           | string  |
 
 
-
-Example:
+### Examples
 
 <br />
 
@@ -258,7 +281,7 @@ To learn more about installing a PCG cluster. Refer to each platform's respectiv
 
 The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. 
 
-The `pde` command exposes the following subcommand.
+The `pde` command exposes the following subcommands.
 
   <br />
 
@@ -274,9 +297,9 @@ The `pde` command exposes the following subcommand.
   * `virtual-cluster` - Manage Palette Virtual Clusters.
 
 
-## `cluster-group`
+## Cluster Group
 
-Use this command to change the target cluster group commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
+Use the `cluster-group` command to change the target cluster group commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
 
   <br />
 
@@ -288,9 +311,9 @@ Use this command to change the target cluster group commands will target. You ca
 
 
 
-## `login`
+## Login
 
-Use this command to authenticate with Palette. This command requires a [Palette API key](/user-management/user-authentication/#api-key). The `login` command has no subcommands but exposes a set of flags to help you log in to the correct Palette environment and scope. The following CLI flags are available for the `login` command.
+Use the `login` subcommand to authenticate with Palette. This command requires a [Palette API key](/user-management/user-authentication/#api-key). The `login` command has no additona;  subcommands but exposes a set of flags to help you log in to the correct Palette environment and scope. The following CLI flags are available for the `login` command.
 
   <br />
 
@@ -304,15 +327,15 @@ Use this command to authenticate with Palette. This command requires a [Palette 
 
 
 
-  Example:
+  ### Examples
 
-  ```shell
+  ```shell hideClipboard
   palette pde login --api-key yourApiKeyHere --console-url https://console.spectrocloud.com
   ```
 
-## `project`
+## Project
 
-Use this command to change the project scope and list all available projects. You can also deactivate a project with this command. The `project` command supports the following subcommands.
+Use the `project` subcommand to change the project scope and list all available projects. You can also deactivate a project with this command. The `project` command supports the following subcommands.
 
 
   <br />
@@ -326,9 +349,9 @@ Use this command to change the project scope and list all available projects. Yo
   * `switch` -      Switch your active Palette project.
 
 
-## `virtual-cluster`
+## Virtual Cluster
 
-You can use the `virtual-cluster` command to manage virtual cluster resources. Below is a list of all the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
+You can use the `virtual-cluster` subcommand to manage virtual cluster resources. Below is a list of all the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
 
   <br />
 
