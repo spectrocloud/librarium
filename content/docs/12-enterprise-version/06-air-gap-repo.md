@@ -171,7 +171,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   <br />
 
   ```shell
-  sudo /bin/airgap-setup.sh X.X.X.X
+  sudo /opt/spectro/airgap-setup.sh X.X.X.X
   ```
 
   Record the output of the setup command as you will use it when deploying the Quick Start appliance later on in the installation process.
