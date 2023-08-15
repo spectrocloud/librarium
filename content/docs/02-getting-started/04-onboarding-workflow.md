@@ -37,7 +37,7 @@ The product tour is followed by a Palette experience session.  Here we make sure
 
   * A system-level cluster profile is included for the users to explore the Palette functionalities easier and faster.
 
-* [Import Cluster](/clusters/brownfield-clusters#overview)
+* [Import Cluster](/clusters/imported-clusters)
   * Bring your own cluster into Palette in two easy steps.
 
 * Out-of-the-box (OOTB) Configurations:
@@ -67,7 +67,7 @@ templates created with preconfigured layers that define the required dependencie
 * [Create your Cluster](/clusters)
 
 
-* [Import Brownfield Clusters](/clusters/brownfield-clusters/#overview)
+* [Imported Clusters](/clusters/imported-clusters)
 
 
 * [Cluster Management](/clusters/cluster-management/#managecl)

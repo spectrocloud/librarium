@@ -114,3 +114,5 @@ Palette Upgrader
 imageSwap
 subcommand
 subcommands
+MAAS
+unsecure

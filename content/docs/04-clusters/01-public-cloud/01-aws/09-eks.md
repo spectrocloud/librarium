@@ -83,8 +83,8 @@ Use the following steps to provision a new AWS EKS cluster:
     |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
-    |**Public Access CIDR**: |This setting controls which IP addresse CIDR range can access the cluster. Leaving this setting blank will follow the provider default behavior, which may allow unrestricted access depending on your network configuration. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.| 
+    |**Cluster Endpoint Access**| Select Private, Public or Private & Public, in order to control communication with the Kubernetes API endpoint. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide. <WarningBox> If you set the cluster endpoint to Public, specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely.  </WarningBox>|
+    |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.| 
     |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](/clusters/public-cloud/aws/eks/#eksclustersecretsencryption) for more details.|
     |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
     
@@ -161,7 +161,7 @@ You can validate your cluster is up and running by reviewing the cluster details
 # EKS Cluster Secrets Encryption
 
 Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
-a defense-in-depth security strategy to protect the sensitive data  such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
+a defense-in-depth security strategy to protect sensitive data such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
 
 ## Prerequisites
 
@@ -169,12 +169,15 @@ a defense-in-depth security strategy to protect the sensitive data  such as pass
 * KMS key is of the type symmetric.
 * KMS key policy permits the following actions; encrypt and decrypt.
 
-## Configure KMS:
+## Configure KMS
 
 The IAM User or IAM role that Palette is using must have the following IAM permissions.
 
-```json
-kms:CreateGrant
+```json hideClipboard
+kms:CreateGrant,
+kms:ListAliases,
+kms:ListKeys,
+kms:DescribeKeys
 ```
 Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
-You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the amazon resource name (ARN) of the encryption key. The encryption option is available on the **Cluster Config** page of the cluster creation wizard.
+You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page.

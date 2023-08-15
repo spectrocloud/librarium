@@ -82,7 +82,7 @@ The default installation of Portworx will deploy the following components in the
 * CSI Provisioner
 
 
-* [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new)
+* [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/)
 
 
 * [Stork](https://github.com/libopenstorage/stork) and [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)

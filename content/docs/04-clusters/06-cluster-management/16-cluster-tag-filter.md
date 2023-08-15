@@ -29,16 +29,16 @@ To get started with an attribute access control through tags, check out the [Cre
   * [Add Resource Role](/clusters/cluster-management/cluster-tag-filter/create-add-filter#addresourcerole)
 
 
-* [Palette Resource Roles](http://localhost:9000/user-management/palette-rbac/resource-scope-roles-permissions)
+* [Palette Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions)
 
   * [Palette Global Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#paletteglobalresourceroles)
 
-  * [Palette Resource Custom Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles)
+  * [Palette Custom Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles)
 
     * [Create Custom Role](/user-management/new-user#createcustomrole)
 
 
-* [Create New User in Palette](http://localhost:9000/user-management/new-user#createanewuser)
+* [Create New User in Palette](/user-management/new-user#createanewuser)
 
 
 <br />
