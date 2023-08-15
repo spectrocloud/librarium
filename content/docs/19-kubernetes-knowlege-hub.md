@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes Knowledge Hub"
 metaTitle: "Kubernetes Knowledge Hub"
-metaDescription: "Kubernetes Knowledge Hub Respository"
+metaDescription: "Kubernetes Knowledge Hub Repository"
 icon: "bookmark"
 hideToCSidebar: true
 hideToC: true
