@@ -48,4 +48,4 @@ Palette enables our users to Label the nodes of a master and worker pool by usin
 
 ## Apply Labels to nodes
 
-Labels are specified in an optional field called 'Additional Labels' in the node pool configuration form. The values are specified as 'key:value'. Multiple such labels may be specified. Labels may be specified from the node pool conifguration form initially during cluster provisioning and updated any time by editing a node pool from the 'Nodes' tab of the cluster details page.
+Labels are optional and can be specified in the **Additional Labels** field of the node pool configuration form. Specify one or more values as 'key:value'. You can specify labels initially during cluster provisioning and update them any time by editing a node pool from the **Nodes** tab of the cluster details page.
