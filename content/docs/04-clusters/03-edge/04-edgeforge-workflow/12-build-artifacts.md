@@ -198,7 +198,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   
 
 
-15. Use the command below to list all files in the current directory to verify that you created the content bundle successfully. The content bundle will have the following naming convention, `content-[randon-string]`, for example, **content-8e61a9e5**. 
+15. Use the command below to list all files in the current directory to verify that you created the content bundle successfully. The content bundle will have the following naming convention, `content-[random-string]`, for example, **content-8e61a9e5**. 
 <br />
 
   ```bash
