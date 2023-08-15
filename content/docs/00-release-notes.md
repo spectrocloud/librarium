@@ -53,7 +53,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Self-hosted Palette now provides a new installation method using the [Palette CLI](/palette-cli). You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
 
 
-- You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. If the namespace does not exist, Palette will create the namespace with the specified labels and annotations. 
+- You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to the [Add-on Profile](/cluster-profiles/create-add-on-profile#packlabelsandannotations) documentation.
 
 ### Improvements
 
