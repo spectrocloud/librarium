@@ -19,9 +19,6 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
 
 # Prerequisites
 
-- A Palette VerteX account and repository credentials. Refer to [Access Palette VerteX](/vertex#accesspalettevertex).
-
-
 - An AMD64 Linux environment with connectivity to the VMware environment. 
 
 

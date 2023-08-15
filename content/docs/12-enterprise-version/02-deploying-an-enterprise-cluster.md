@@ -39,8 +39,6 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 
 ## Prerequisites
 
-- A Palette account and repository credentials. Refer to [Access Palette](/enterprise-version/#downloadpaletteinstaller).
-
 
 - An AMD64 Linux environment with connectivity to the VMware environment. 
 
