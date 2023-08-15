@@ -47,7 +47,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page.
 
 
-- Pack deprecated status is now available in the Palette UI. This lets you identify what packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
+- Pack deprecated status is now available in the Palette UI. This lets you identify which packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
 
 
 - Self-hosted Palette now provides a new installation method using the [Palette CLI](/palette-cli). You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
@@ -69,10 +69,10 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can now configure the logout timer for users in Palette. This allows you to set the time a user can be inactive before they are automatically logged out of Palette. The default value is 240 minutes.
 
 
-- Palette Cloud Gateway (PCG) deployments and self-hosted Palette Enterprise Clusters (EC) are now deployed with Kubernetes version 1.25.
+- Private Cloud Gateway (PCG) deployments and self-hosted Palette Enterprise Clusters (EC) are now deployed with Kubernetes version 1.25.
 
 
-- Palette now supports Kubernetes 1.27.x. You can now deploy host clusters with Kubernetes 1.27.x. 
+- Palette now supports Kubernetes 1.27.x. You can deploy host clusters with Kubernetes 1.27.x. 
 
 
 - The Cox Edge provider is upgraded to version 0.5.0.
