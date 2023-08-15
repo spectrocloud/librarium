@@ -25,7 +25,7 @@ Following are some highlights of OpenStack clusters provisioned by Palette:
 
 3. Private Cloud Gateway (PCG) is Palette's self-hosted component to support isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-
+<br />
 
 ![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
 
