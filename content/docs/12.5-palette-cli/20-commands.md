@@ -25,6 +25,9 @@ The complete list of subcommands is:
   * `help`       -   Help with any command.
 
 
+  * [`ec`](#ec)         - Palette Enterprise Cluster installation & pre-validation.
+
+
   * [`login`](#login)      -  Login to Palette.
 
 
@@ -46,6 +49,17 @@ Palette CLI supports the following global flags.
 | `-h`       | `--help`               | Help with any command.                                                         | N/A     |
 | `-l`       | `--log-level`   | Log level. Allowed values: `panic` `fatal` `error` `warn` `info` `debug` `trace` (default `info`) | string |
 | `-w`       | `--workspace`   | Workspace location for staging runtime configurations and logs (default `$HOME/.palette`) |   string      |      
+
+
+# EC
+
+The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to stand up the kind cluster. You can use the `ec` command to install a [self-hosted Palette](/enterprise-version/deploying-an-enterprise-cluster) instance or a self-hosted [VerteX](/vertex/install-palette-vertex) instance. 
+
+The `ec` subcommand exposes the following subcommand.
+
+  <br />
+
+  * `install` - Install a Palette Enterprise Cluster through an interactive wizard.
 
 
 # Login
@@ -149,7 +163,9 @@ To learn more about installing a PCG cluster. Refer to each platform's respectiv
 
 # PDE
 
-The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. The `pde` command exposes the following subcommands.
+The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. 
+
+The `pde` command exposes the following subcommand.
 
   <br />
 

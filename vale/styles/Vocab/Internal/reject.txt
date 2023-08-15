@@ -1,6 +1,4 @@
-spectro cloud
 datacenter
-spectrocloud
 cli
 ribbon menu
 left ribbon menu

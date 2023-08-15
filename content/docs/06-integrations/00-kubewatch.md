@@ -4,7 +4,7 @@ metaTitle: 'kube-watch'
 metaDescription: 'kube-watch monitoring pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['monitoring']
+category: ['monitoring', 'amd64']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/kubewatch/blobs/sha256:a277fb90357df9cbffe98eea1ed100fba1b17970b8fc056d210c4f7bfe4f17a3?type=image/png'
 ---
 

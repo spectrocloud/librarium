@@ -1,7 +1,7 @@
 ---
 title: "VM Performance"
 metaTitle: "VM Performance"
-metaDescription: "Learn how to improve VM performance by maximizing virtual machine CPU and Memory using Palette."
+metaDescription: "Learn how to improve VM performance by maximizing virtual machine CPU and memory using Palette."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette Virtual Machine Management allows administrators to oversubscribe the physical resources on a host to maximize the number of active workloads. 
+Palette Virtual Machine Orchestrator (VMO) allows administrators to oversubscribe the physical resources on a host to maximize the number of active workloads. 
 
 VM workloads typically have varying resource demands and peak utilization patterns. By oversubscribing resources, it is possible to allocate them flexibly and take advantage of the fact that not all VMs will require their maximum allocation simultaneously. 
 
