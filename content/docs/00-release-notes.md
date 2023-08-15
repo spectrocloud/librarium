@@ -50,7 +50,6 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Pack deprecated status is now available in the Palette UI. This lets you identify what packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
 
 
-
 - Self-hosted Palette now provides a new installation method using the [Palette CLI](/palette-cli). You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
 
 
