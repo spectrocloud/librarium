@@ -132,7 +132,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Kubernetes
 
-| Pack               | New Version |
+| **Pack**               | **New Version** |
 |--------------------|----------|
 | K3s                | 1.27.2   |
 | Kubernetes AKS     | 1.27.0   |
@@ -156,7 +156,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### CNI
 
-| Pack               | New Version |
+| **Pack**               | **New Version** |
 |--------------------|----------|
 | AWS VPC CNI        | 1.13.0   |
 | Calico             | 3.26.0   |
@@ -165,7 +165,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### CSI
 
-| Pack               | New Version |
+| **Pack**               | **New Version** |
 |--------------------|----------|
 | AWS EBS CSI        | 1.20.0   |
 | AWS EFS CSI        | 1.5.06  |
@@ -177,7 +177,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Add-on Packs
 
-| Pack               | New Version |
+| **Pack**               | **New Version** |
 |--------------------|----------|
 | AWS ALB            | 2.5.1    |
 | AWS Cluster Autoscaler | 1.26.3 |
@@ -193,7 +193,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Community Packs
 
-| Pack               | New Version |
+| **Pack**               | **New Version** |
 |--------------------|----------|
 | Ngrok Ingerss Controller | 0.9.0    |
 
