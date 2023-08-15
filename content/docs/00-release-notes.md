@@ -366,6 +366,17 @@ The following packs are marked as deprecated and will be disabled in three month
 | Open Policy Agent          | 3.5.1           | Deprecated   |
 | Open Policy Agent          | 3.6.0           | Deprecated   |
 | Prometheus Operator        | 12.3.0          | Deprecated   |
+| Prometheus Operator        | 19.2.3          | Deprecated   |
+| Prometheus Operator        | 30.0.3          | Deprecated   |
+| Prometheus Operator        | 30.2.0          | Deprecated   |
+| Prometheus Operator        | 35.5.1          | Deprecated   |
+| Prometheus Operator        | 37.2.0          | Deprecated   |
+| Kubernetes Dashboard       | 2.0.1           | Deprecated   |
+| Kubernetes Dashboard       | 2.1.0           | Deprecated   |
+| Kubernetes Dashboard       | 2.4.0           | Deprecated   |
+| Kubernetes Dashboard       | 2.5.1           | Deprecated   |
+| AWS Cluster Autoscaler     | 1.0.0           | Deprecated   |
+
 
 
 
