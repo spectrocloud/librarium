@@ -6,3 +6,5 @@ icon: ""
 hideToC: false
 fullWidth: false
 ---
+
+Palette VerteX can be installed in an air-gapped environment. 
