@@ -1,7 +1,7 @@
 ---
-title: "Node Labels and Taints"
-metaTitle: "Label and Taint the nodes"
-metaDescription: "Apply taints on node pools for appropriate node to pod scheduling."
+title: "Labels and Taints"
+metaTitle: "Labels and Taints"
+metaDescription: "Learn how to apply labels and taints to nodes in a cluster, and how to specify Namespace labels and annotations to Add-on packs and packs for Container Storage Interface (CSI) and Container Network Interface (CNI) drivers."
 hideToC: false
 fullWidth: false
 ---
@@ -11,7 +11,7 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
-# Overview on Taints
+# Taints
 
 Node affinity is a property of Pods that attracts them to a set of nodes (either as a preference or a hard requirement. Taints are the opposite -- they allow a node to repel a set of pods.
 
@@ -40,7 +40,7 @@ Eg: Key = key1;
 
 Taints can also be updated on a running cluster by editing a worker node pool from the 'Nodes' tab of the cluster details page.
 
-# Overview on Labels
+# Labels
 
 You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the recommended approaches such as, nodeSelector, node affinity, etc all use label selectors to facilitate the selection. Generally, such constraints are unnecessary, as the scheduler will automatically do a reasonable placement (e.g. spread your pods across nodes so as not place the pod on a node with insufficient free resources, etc.) but there are some circumstances where you may want to control which node the pod deploys to - for example to ensure that a pod ends up on a machine with an SSD attached to it, or to co-locate pods from two different services that communicate a lot into the same availability zone.
 
@@ -48,4 +48,4 @@ Palette enables our users to Label the nodes of a master and worker pool by usin
 
 ## Apply Labels to nodes
 
-Labels are specified in an optional field called 'Additional Labels' in the node pool configuration form. The values are specified as 'key:value'. Multiple such labels may be specified. Labels may be specified from the node pool conifguration form initially during cluster provisioning and updated any time by editing a node pool from the 'Nodes' tab of the cluster details page.
+Labels are optional and can be specified in the **Additional Labels** field of the node pool configuration form. Specify one or more values as 'key:value'. You can specify labels initially during cluster provisioning and update them any time by editing a node pool from the **Nodes** tab of the cluster details page.
