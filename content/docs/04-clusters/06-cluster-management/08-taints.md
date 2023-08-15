@@ -1,7 +1,7 @@
 ---
 title: "Labels and Taints"
 metaTitle: "Labels and Taints"
-metaDescription: "Learn how to apply labels and taints to nodes in a cluster, and how to specify Namespace labels and annotations to Add-on packs, and packs that are for Container Storage Interfaces (CSI) and Container Network Interfaces (CNI) drivers."
+metaDescription: "Learn how to apply labels and taints to nodes in a cluster, and how to specify Namespace labels and annotations to Add-on packs and packs for Container Storage Interface (CSI) and Container Network Interface (CNI) drivers."
 hideToC: false
 fullWidth: false
 ---
