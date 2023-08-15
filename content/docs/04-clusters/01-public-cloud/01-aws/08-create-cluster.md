@@ -93,6 +93,7 @@ Use the following steps to provision a new AWS cluster:
   |**Region** | Choose the preferred AWS region where you would like to provision clusters.|
   |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.|
   |**Static Placement** | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](/clusters/public-cloud/aws/create-cluster#staticplacement) table below to learn more about the required input fields.|
+  | **Private API Server LB**| Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](/clusters/data-center/maas/install-manage-maas-pcg) deployed in the environment.|
   
   <br />
 
@@ -100,7 +101,7 @@ Use the following steps to provision a new AWS cluster:
 
   |Parameter|Description|
   |---|---|
-  |**Virtual Network**: Select the virtual network from **drop-down Menu**.|
+  |**VPCID**: Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**.|
   |**Control plane subnet**: Select the control plane network from the **drop-down Menu**.|
   |**Worker Network**: Select the worker network from the **drop-down Menu**. |
   
@@ -140,11 +141,16 @@ Use the following steps to provision a new AWS cluster:
     | **PreferNoSchedule**| The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
     | **NoExecute**|  New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint. |
 
-14. Click on **Next**.  
-    
-15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
+14. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
+
+
+15. Click on **Next**.  
+
+
+16. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
+
+17. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 

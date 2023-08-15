@@ -163,8 +163,8 @@ const redirects = [
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/edge/installer-image`,
-    toPath: `/clusters/edge/install/installer-image`,
+    fromPath: `/clusters/edge/install/installer-image`,
+    toPath: `/clusters/edge/site-deployment/site-installation`,
     redirectInBrowser: true,
     isPermanent: true,
   },
@@ -176,16 +176,17 @@ const redirects = [
   },
   {
     fromPath: `/clusters/edge/installer-image`,
-    toPath: `/clusters/edge/site-deployment/installer`,
+    toPath: `/clusters/edge/site-deployment/site-installation`,
     redirectInBrowser: true,
     isPermanent: true,
   },
   {
-    fromPath: `/clusters/edge/native`,
-    toPath: `/clusters/edge/site-deployment/installer`,
+    fromPath: `/clusters/edge/site-deployment/installer`,
+    toPath: `/clusters/edge/site-deployment/site-installation`,
     redirectInBrowser: true,
     isPermanent: true,
-  },{
+  },
+  {
     fromPath: `/knowledgebase/tutorials/terraform-tutorial`,
     toPath: `/terraform`,
     redirectInBrowser: true,
@@ -246,6 +247,18 @@ const redirects = [
   {
     fromPath: `/integrations/ubuntu-k3s`,
     toPath: `/integrations/ubuntu`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/clusters/brownfield-clusters`,
+    toPath: `/clusters/imported-clusters`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/integrations/oidc-eks`,
+    toPath: `/integrations/kubernetes#configurecustomoidc`,
     redirectInBrowser: true,
     isPermanent: true,
   }
