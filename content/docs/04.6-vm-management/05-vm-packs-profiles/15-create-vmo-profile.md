@@ -29,7 +29,6 @@ Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack a
 
 - A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
 
-<<< IS NAMESPACE CREATION STILL NEEDED OR DOES PALETTE ORGANIZE VMs IN THE 'VIRTUAL MACHINES' TAB WITHOUT USER CREATING A NAMESPACE? >>>
 
 # Create the Profile
 
