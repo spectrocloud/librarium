@@ -232,14 +232,11 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
-| Ngrok Ingerss Controller | 0.9.0    |
+| Ngrok Ingerss Controller | 0.9.0  |
 
 ### Pack Notes
 
 - A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
-
-
-- Kubernetes versions 1.22.x and 1.23.x are deprecated.
 
 ### Deprecations and Removals
 
