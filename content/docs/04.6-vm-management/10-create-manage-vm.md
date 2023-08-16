@@ -14,10 +14,10 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines alongside containerized applications.
+Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
 
 
-There are three ways you can create a new VM:
+You can create a VM three ways:
 
 
 <br />
@@ -35,6 +35,8 @@ Administrators can also import VMs from their existing VMware vSphere environmen
 Although no additional components are required in VMs, the **QEMU Guest Agent** is an optional component that runs inside a VM and provides runtime information. 
 
 Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is deployed in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
+
+<<< DO VIRTIO AND QEMU GUEST AGENT STILL APPLY? >>>
 
 <br />
 

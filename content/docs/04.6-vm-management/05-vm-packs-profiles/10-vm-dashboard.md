@@ -18,6 +18,8 @@ The Spectro VM Dashboard offers a web console accessible from the **Virtual Mach
 
 The first time you enable the dashboard, the default view will appear blank. As a best practice, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Namespace Management](/clusters/cluster-management/namespace-management). Namespaces you create will be listed in the **drop-down Menu** at the top of the dashboard. VMs that you deploy within a namespace are listed on the dashboard. 
 
+<<< DETERMINE WHERE TO MOVE NAMESPACE CREATION INFO ABOVE - ADD AS PREREQ TO DEPLOY VM FROM A TEMPLATE?  >>>
+
 You can select a VM to view its details and perform standard VM operations. VM operations are accessible from the **three-dot Menu** at the right of each listed VM or when you click **Actions** from the VM details page.
 
 When you click on a VM in the list, the following tabs display. Tabs are specific to the selected VM.
