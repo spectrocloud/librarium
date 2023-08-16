@@ -1,5 +1,5 @@
 ---
-title: "Spectro VM Dashboard Pack"
+title: "Spectro VM Dashboard Pack (REMOVE doc & move content elsewhere)"
 metaTitle: "Spectro VM Dashboard Pack"
 metaDescription: "Learn about the Palette Spectro VM Dashboard ... Virtual Machine Orchestrator Pack to manage VMs alongside containerized applications."
 icon: " "
