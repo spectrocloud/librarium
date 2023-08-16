@@ -84,7 +84,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can now access Palette documentation directly from the Palette UI. This allows you to quickly access the documentation for the page you are currently on. You can find the documentation link in the top right corner of the Palette UI.
 
 
-- Palette now supports configuring the time interval for node repaves. In the scenario of a node repavement, the time interval is the amount of time that Palette waits before it starts the node replacement process on other nodes in the cluster. The default time interval is 15 minutes.
+- Palette now supports configuring the time interval for node repavement. The time interval is the amount of time that Palette waits before it starts the node replacement process on nodes in the cluster. The default time interval is 15 minutes. Refer to the [Node Pool](/clusters/cluster-management/node-pool/) documentation to learn more.
 
 
 
