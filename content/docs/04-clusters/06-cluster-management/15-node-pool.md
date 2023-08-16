@@ -29,7 +29,7 @@ Ensure you exercise caution when modifying node pools. We recommend creating a [
 
 In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](/glossary-all#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool. 
 
-The ability to configure the repave time interval for all node pools except the master pool. The repave time interval is set to 900 seconds (15 minutes) by default. You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
+The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 900 seconds (15 minutes). You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
 
 
 <br />
@@ -87,7 +87,7 @@ Some features may not be available for all infrastructure providers. Review each
 ### Prerequisites
 
 
-* A Palette deployed cluster.
+* A Palette-deployed cluster.
 
 
 * Sufficient permissions to edit the cluster.
@@ -164,7 +164,7 @@ You can apply changes to a node pool after a cluster is created and deployed. Yo
 2. Navigate to the left **Main Menu** and click on **Clusters**.
 
 
-3. Click on the row of the cluster you want to edit the node pool.
+3. Select a cluster to edit the node pool.
 
 
 4. Click on the **Nodes** tab.
@@ -188,7 +188,7 @@ After you have modified a new node pool, you can validate the node pool by follo
 2. Navigate to the left **Main Menu** and click on **Clusters**.
 
 
-3. Click on the row of the cluster you added the new node pool.
+3. Select the cluster with the new node pool.
 
 
 4. Click on the **Nodes** tab.
