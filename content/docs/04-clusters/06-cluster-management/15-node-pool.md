@@ -98,7 +98,7 @@ Some features may not be available for all infrastructure providers. Review each
 
 You can create a new node pool for an active cluster. To create a new node pool follow the steps below.
 
-1. Ensure you are in the correct scope or project.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to the left **Main Menu** and click on **Clusters**.
