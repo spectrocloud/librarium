@@ -351,7 +351,7 @@ _Components_:
 Example 
 
 
-![Example usage of codeblocks with highlighting.](assets/docs/images/readme_codeblocks_example.png)
+![Example usage of codeblocks with highlighting.](/readme_codeblocks_example.png)
 
 
 #### Hide ClipBoard Button
