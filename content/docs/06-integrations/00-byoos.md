@@ -44,25 +44,44 @@ The BYOS Edge OS pack supports the following parameters.
 
 ### Parameters
 
-| Parameter            | Description                                            | Type |
-|----------------------|--------------------------------------------------------|------|
-| `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. | map |
-| `pack.content.images` | Specifies a list of OS images to use with the pack. | list |
-| `pack.content.images.image` | An OS image to use with the pack. | string|
+| Parameter            | Description                                            | Type | Default Value |
+|----------------------|--------------------------------------------------------|------| ------------- |
+| `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. | map | N/A |
+| `pack.content.images` | Specifies a list of OS images to use with the pack. | list | N/A |
+| `pack.content.images.image` | An OS image to use with the pack. | string| `'{{.spectro.pack.edge-native-byoi.options.system.uri}}'`|
+| `pack.drain:` | Specifies the drain configuration for the node. | map | N/A
+| `pack.drain.cordon` | Specifies whether to cordon the node. | boolean | `false` | 
+| `pack.drain.timeout` | The amount of time in seconds to attempt draining the node before aborting the operation. A zero value indicates no timeout window and continue waiting indefinitly.   | integer | `60` |
+| `pack.drain.gracePeriod` | The amount of time in seconds provided to each pod to terminate gracefully. If negative, the default value specified in the pod will be used. | integer | `60` |
+| `pack.drain.ignoreDaemonSets` | Specifies whether to ignore DaemonSets. | boolean | `false` |
+| `pack.drain.deleteLocalData` | Specifies whether to continue if there are pods using the emptyDir volume. If enabled local data will be deleted during a drainage operation. | boolean | `false` |
+| `pack.drain.force` | Specifies whether to continue if there are pods that do not declare a controller. | boolean | `false` |
+| `pack.drain.disableEviction` | Specifies whether to allow a force drain and use delete, including if pod eviction is supported. This option will bypass checking if [*PodDisruptionBudgets*](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#pod-disruption-budgets) are allocated. Use this option with caution. | boolean | `false` |
+| `pack.drain.skipWaitForDeleteTimeout` | Specifies whether to skip waiting for the pod to terminate if the pod *DeletionTimestamp* is older than the specified number of seconds. The number of seconds must be greater than zero to skip. | integer | `60` |
 | `system.uri` | The system URI specifies the location of BYOOS image. | string|  
 
 
+<br />
 
-  ```yaml
+
+  ```yaml hideClipboard
   pack:
-  content:
-    images: 
-      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
-      # - image: example.io/my-other-images/example:v1.0.0 
-      # - image: example.io/my-super-other-images/example:v1.0.0 
-    
-  options: 
-    system.uri: example.io/my-images/example-custom-os:v1.4.5
+    content:
+      images:
+        - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+    # Below config is default value, please uncomment if you want to modify default values
+    #drain:
+      #cordon: true
+      #timeout: 60 # The length of time to wait before giving up, zero means infinite
+      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+      #ignoreDaemonSets: true
+      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+      #force: true # Continue even if there are pods that do not declare a controller
+      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+  options:
+    system.uri: ""
+      system.uri: example.io/my-images/example-custom-os:v1.4.5
   ```
 
 ## Usage
@@ -76,6 +95,23 @@ To use a custom OS, you must include all the Edge artifacts and provider images 
 Select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The `system.uri` parameter specifies the location of the BYOOS image. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create Edge Artifacts.
 
 ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
+
+
+
+### Node Drainage
+
+The BYOOS pack supports node drainage. Node drainage is the process of cordoning and removing workloads from a node. Cordoning a node prevents new pods from being scheduled on the node. Draining a node gracefully terminates all pods on the node and reschedules them on other healthy nodes.
+
+To enable node drainage, you must include the `pack.drain` parameter block and set the `pack.drain.cordon` parameter to `true`. 
+
+<br />
+
+  ```yaml
+  pack:
+    drain:
+      cordon: true
+  ```
+
 
 
 </Tabs.TabPane>
