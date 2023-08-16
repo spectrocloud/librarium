@@ -1,7 +1,7 @@
 ---
-title: "Spectro VM Dashboard"
-metaTitle: "Spectro VM Dashboard"
-metaDescription: "Learn about the Spectro VM Dashboard web interface to manage VMs."
+title: "Spectro VM Dashboard Pack"
+metaTitle: "Spectro VM Dashboard Pack"
+metaDescription: "Learn about the Palette Spectro VM Dashboard ... Virtual Machine Orchestrator Pack to manage VMs alongside containerized applications."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -56,9 +56,4 @@ When you click on a VM in the list, the following tabs display. Tabs are specifi
 <br />
 
 <br />
-
-<br />
-
-<br />
-
 
