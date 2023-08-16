@@ -14,6 +14,8 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 # Overview
 
+<!-- Update Node Pool Repavement Behavior -->
+
 You have the ability to update node pools for active clusters and the option to create a new node pool for the cluster.
 
 <br />
@@ -104,3 +106,4 @@ Palette allows its users to apply changes to a node pool, including its taints l
 
 
 7. Click on **Confirm** to update the node pool.
+
