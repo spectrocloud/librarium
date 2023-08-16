@@ -37,9 +37,12 @@ The complete list of subcommands is:
   * [`pde`](#pde)        -   Palette Developer Experience.
 
 
+  * [`project`](#project) -  Manage Palette Projects.
 
 
-# Global Flags
+
+
+## Global Flags
 
 Palette CLI supports the following global flags.
 
@@ -51,7 +54,7 @@ Palette CLI supports the following global flags.
 | `-w`       | `--workspace`   | Workspace location for staging runtime configurations and logs (default `$HOME/.palette`) |   string      |      
 
 
-# EC
+## EC
 
 The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to stand up the kind cluster. You can use the `ec` command to install a [self-hosted Palette](/enterprise-version/deploying-an-enterprise-cluster) instance or a self-hosted [VerteX](/vertex/install-palette-vertex) instance. 
 
@@ -59,9 +62,9 @@ The `ec` subcommand exposes the following subcommand.
 
   <br />
 
-  * `install` - Install a Palette Enterprise Cluster through an interactive wizard.
+  * `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to install an EC cluster.
 
-## Install
+### Install
 
 The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide a configuration file.
 
@@ -70,31 +73,49 @@ The `install` subcommand installs a Palette Enterprise Cluster in your target en
   | Short Flag | Long Flag              | Description                                                              | Type    |
   |------------|------------------------|--------------------------------------------------------------------------|---------|
   | `-f`       | `--config-file`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
-  | `-o`       | `--config-only`      | Generate configuration file only. This command will not proceed wit installation.     | boolean    |
+  | `-o`       | `--config-only`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
   | `-v`       | `--custom-values-file`  | Enterprise Cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#customvaluefile) section for more information. | string |
   | `-p`       | `--update-passwords`   | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided. |   string      |
 
 
-  ### Examples
+  #### Examples
 
-  Install a Palette Enterprise Cluster in interactive mode.
+  Install an Enterprise Cluster in interactive mode.
 
   <br />
 
   ```shell
   palette ec install
   ```
-
+  <br />
 
   Create a configuration file for the Enterprise Cluster installation.
 
   <br />
 
   ```shell
-  palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml
+  palette ec install --config-only
   ```
   
   <br />
+
+  Install an Enterprise Cluster using a configuration file. The configuration file is generated using the `--config-only` flag.
+
+  <br />
+
+  ```shell hideCliboard
+  palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml
+  ```
+
+  <br />
+
+  Update the passwords of an Enterprise Cluster using a configuration file. The configuration file is generated using the `--config-only` flag.
+
+  <br />
+
+  ```shell hideCliboard
+  palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml --update-passwords
+  ```
 
 
 
@@ -179,7 +200,7 @@ The following example shows a custom **values.yaml** file that contains the `os`
         -----END CERTIFICATE-----
   ```
 
-# Login
+## Login
 
 The `login` subcommand authenticates the Palette CLI with Palette. The `login` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the subcommand with all the required values such as the API key, the organization ID, and the Palette URL.
 
@@ -197,7 +218,7 @@ The `login` subcommand authenticates the Palette CLI with Palette. The `login` s
 | `--project`           | Palette Project name (optional). Specifies the active Project.                           | string  |
 
 
-### Examples
+#### Examples
 
 <br />
 
@@ -247,21 +268,21 @@ runLoc: /Users/demo/.palette/
 workspaceLoc: /Users/demo/.palette
 ```
 
-# PCG
+## PCG
 
-The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to facilitate creating the PCG cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster. 
+The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to facilitate creating the PCG cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster.  
 
 
 The `pcg` command exposes the following subcommand.
 
   <br />
 
-  * `install` - Install a PCG through an interactive wizard. 
+  * `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.
 
 
 <br />
 
-## Install
+### Install
 
 Use the `install` subcommand to install a PCG cluster in the following environments.
 
@@ -277,7 +298,7 @@ Use the `install` subcommand to install a PCG cluster in the following environme
 
 To learn more about installing a PCG cluster. Refer to each platform's respective PCG install guide.
 
-# PDE
+## PDE
 
 The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. 
 
@@ -288,16 +309,13 @@ The `pde` command exposes the following subcommands.
   * `cluster-group` -   Manage Palette Cluster Groups.
 
 
-  * `login`         -   Log in to Spectro Cloud Palette. 
-
-
   * `project`       -   Manage Palette Projects. 
 
 
   * `virtual-cluster` - Manage Palette Virtual Clusters.
 
 
-## Cluster Group
+### Cluster Group
 
 Use the `cluster-group` command to change the target cluster group commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
 
@@ -311,45 +329,7 @@ Use the `cluster-group` command to change the target cluster group commands will
 
 
 
-## Login
-
-Use the `login` subcommand to authenticate with Palette. This command requires a [Palette API key](/user-management/user-authentication/#api-key). The `login` command has no additona;  subcommands but exposes a set of flags to help you log in to the correct Palette environment and scope. The following CLI flags are available for the `login` command.
-
-  <br />
-
-  | Flag                    | Description                                          | Type | Required |
-  |-------------------------|------------------------------------------------------|------|----------|
-  | `--api-key`             | The Palette API key.                                  |  string    | Yes |
-  | `--cluster-group-name`  | The Palette Cluster Group name.                        |  string    |   No       |
-  | `--cluster-group-scope` | Palette Cluster Group scope.                           |   string   | No |
-  | `--console-url`         | The Palette login URL. The default value is `https://console.spectrocloud.com`                             |  string    | No |
-  | `--project`             | The Palette Project name. Defaults to `Default`.    |    string  |     No     |
-
-
-
-  ### Examples
-
-  ```shell hideClipboard
-  palette pde login --api-key yourApiKeyHere --console-url https://console.spectrocloud.com
-  ```
-
-## Project
-
-Use the `project` subcommand to change the project scope and list all available projects. You can also deactivate a project with this command. The `project` command supports the following subcommands.
-
-
-  <br />
-
-  * `deactivate` -  Deactivate your active Palette project and switch to the tenant admin scope.
-
-
-  * `list`   -      List Palette projects.
-
-
-  * `switch` -      Switch your active Palette project.
-
-
-## Virtual Cluster
+### Virtual Cluster
 
 You can use the `virtual-cluster` subcommand to manage virtual cluster resources. Below is a list of all the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
 
@@ -375,6 +355,19 @@ You can use the `virtual-cluster` subcommand to manage virtual cluster resources
 
 - `resize` - Resize a Palette Virtual Cluster.
 
+## Project
 
+Use the `project` command to manage projects, the project scope for the CLI, and list all available projects.  The `project` command supports the following subcommands.
+
+
+  <br />
+
+  * `deactivate` -  Deactivate your active Palette project. This command requires you to have tenant admin privileges.
+
+
+  * `list`   -      List Palette projects. Only projects you have access to are listed.
+
+
+  * `switch` -      Switch your active Palette project. You can only switch to projects you have access to.
 
 <br />
