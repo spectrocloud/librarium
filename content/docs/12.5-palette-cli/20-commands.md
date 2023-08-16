@@ -66,7 +66,7 @@ The `ec` subcommand exposes the following subcommand.
 
 ### Install
 
-The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide a configuration file.
+The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts you for required values. Alternatively, you can use flags to generate a configuration file.
 
   <br />
 
@@ -122,7 +122,7 @@ The `install` subcommand installs a Palette Enterprise Cluster in your target en
 
 ### Custom Value File
 
-You can customize the [Cluster Profile](/glossary-all#clusterprofile) that makes up the Enterprise Cluster by providing a custom **values.yaml** file. The custom **values.yaml** file is a YAML file that contains the values for the various Cluster Profile layers that make up the Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs. This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
+You can customize the [Cluster Profile](/glossary-all#clusterprofile) that makes up the Enterprise Cluster by providing a custom **values.yaml** file that contains values for the various Cluster Profile layers that make up the Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs. This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
 
 
 The **values.yaml** file is made up of the following components:
@@ -145,7 +145,7 @@ The **values.yaml** file is made up of the following components:
 
 
 
-  You can provide one or more layers in the **values.yaml** file. Once a layer configration is provided, the new configuration will be used instead of the default configuration. For example, if you provide a custom **values.yaml** file that contains the `os` layer, the default operating system configuration will be replaced with the configuration provided in the custom **values.yaml** file. The Enterprise Cluster profile as follows The **values.yaml** must use the following format:
+  You can provide one or more layers in the **values.yaml** file. When you provide a layer configuration, the new configuration will be used instead of the default configuration. For example, if you provide a custom **values.yaml** file that contains the `os` layer, it will replace the default operating system configuration. The Enterprise Cluster profile as follows The **values.yaml** must use the following format:
 
 <br />
 
@@ -317,7 +317,7 @@ The `pde` command exposes the following subcommands.
 
 ### Cluster Group
 
-Use the `cluster-group` command to change the target cluster group commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
+Use the `cluster-group` command to change the cluster group that commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
 
   <br />
 
@@ -331,7 +331,7 @@ Use the `cluster-group` command to change the target cluster group commands will
 
 ### Virtual Cluster
 
-You can use the `virtual-cluster` subcommand to manage virtual cluster resources. Below is a list of all the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
+You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters. Below is a list of the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
 
   <br />
 
