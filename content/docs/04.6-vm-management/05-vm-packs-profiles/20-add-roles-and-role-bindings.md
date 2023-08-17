@@ -14,9 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You must configure roles and cluster role bindings before users can access Palette Virtual Machine Orchestrator (VMO). When you have configured roles and role bindings, the **Virtual Machines** tab will display on the **Cluster Overview** page. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. 
-
-<<< WHEN DOES VIRTUAL MACHINES TAB DISPLAY? >>>
+You must configure roles and cluster role bindings before users can access Palette Virtual Machine Orchestrator. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. 
 
 
 # Prerequisites
@@ -53,22 +51,24 @@ You must configure roles and cluster role bindings before users can access Palet
 2. From the left **Main Menu**, click **Clusters** and select your cluster. 
 
 
-3. Navigate to the **Profiles** tab and click **+** next to **Addon Layers**, then select the VMO profile you created.
+3. Navigate to the **Profiles** tab and click **+** next to **Addon Layers**.
 
 
-4. Click on **Settings** and choose **RBAC** to add role bindings. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+4. Select the VMO profile you created.
 
 
-5. Click **Confirm** to update the cluster.
+5. Click on **Settings** and choose **RBAC** to add role bindings. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
+
+
+6. Click **Confirm** to update the cluster.
 	
-The cluster status displays as **Upgrading** on the **Cluster Overview** page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
+The cluster status displays as **Updating** on the **Cluster Overview** page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
 
 
 # Validate
 
-When the cluster is finished upgrading, ensure the cluster status displays as **Running** and that a new tab labeled **Virtual Machines** appears on the Cluster's page. 
+To verify role creation and role binding is successful, review the [Validation](/clusters/cluster-management/cluster-rbac#validate) steps in [Cluster Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings).
 
-<<< DOES ADDING ROLES & BINDINGS CAUSE THE TAB TO DISPLAY? >>>
 
 # Next Steps
 

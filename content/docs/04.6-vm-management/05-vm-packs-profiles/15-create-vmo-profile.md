@@ -16,10 +16,6 @@ import InfoBox from 'shared/components/InfoBox';
 
 The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster profile conveniently includes several components and automatically installs the Spectro Proxy pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
 
-Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack and apply it to your cluster. When the cluster updates, a **Virtual Machines** tab appears. 
-
-<<< IS THE STATEMENT TRUE ABOUT WHEN VMS TAB APPEARS? OR IS IT ALWAYS VISIBLE? >>>
-
 
 # Prerequisites
 
@@ -56,22 +52,12 @@ Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack a
     - **Pack Type**: System App
     - **Registry**: Public Repo
     - **Pack Name**: Virtual Machine Orchestrator
-    - **Pack Version**: 4.1 or newer  
-    
-    <br />
-    
-    <<< IS VERSION CORRECT? >>>
+    - **Pack Version**: 1.0
 
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the MAAS cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
 
-    <br />
-
-    <<< WHAT ADDITIONAL CONFIGURATION WOULD BE NEEDED IF USER SPECIFIES DIRECT? >>>
-
-    <br />
-
-    The **Direct** option is meant for a private configuration where a proxy is not implemented or not desired.
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
 
 <WarningBox>
@@ -86,7 +72,11 @@ We recommend using the pack defaults. Default settings provide best practices fo
 9. In the following screen, click **Next**. 
 
 
-10. Review the profile and click **Finish Configuration**. 
+10. Review the profile and click **Finish Configuration**.
+
+
+11. Apply the profile to your MAAS cluster.
+
 
 <!-- IDP options are as follows:
 
@@ -111,9 +101,16 @@ You can validate the profile is created.
 
 2. Locate the newly created profile in the list.
 
+
+3. From the left **Main Menu**, click **Clusters** and select your MAAS cluster.
+
+
+4. Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview** page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
+
+
 # Next Steps
 
-You can now apply the profile to your MAAS cluster. You must configure roles and role bindings so that users can access virtual clusters.
+You must configure roles and role bindings so that users can access virtual clusters.
 
 
 # Resources

@@ -1,7 +1,7 @@
 ---
-title: "Standard VM Operations (ADDED content from above to this doc)"
+title: "Standard VM Operations"
 metaTitle: "Standard VM Operations"
-metaDescription: "Learn about standard VM operations that can be performed using Spectro VM Dashboard."
+metaDescription: "Learn about standard VM operations that you can perform using Spectro VM Dashboard."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -31,9 +31,7 @@ Virtual Machine Orchestrator supports standard power operations for Virtual Mach
 - **Restart** 
  
 
-From the **Virtual Machines** tab, you can select a VM to view its details and perform standard VM operations, such as live migration (vMotion), snapshots, and cloning. VM operations are accessible from the **three-dot Menu** at the right of each listed VM or when you click Actions from the VM details page. 
-
-<<< DELETE ACTIONS MENU ABOVE? >>>
+From the **Virtual Machines** tab, you can select a VM to view its details and perform standard VM operations, such as live migration (vMotion), snapshots, and cloning. VM operations are accessible from the **three-dot Menu** at the right of each listed VM.
 
 When you select a VM from the **Clusters** > **Virtual Machines** tab, the following tabs display. Tabs are specific to the selected VM.
 

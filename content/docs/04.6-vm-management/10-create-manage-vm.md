@@ -51,19 +51,13 @@ We recommend installing ``qemu-guest-agent`` to improve VM management. We also r
 - [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
 
 
+- [Deploy VM from a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+
+
 - [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
 
 
 <br />
 
-
 <br />
-
-<br />
-
-
-<br />
-
-<br />
-
 
