@@ -22,7 +22,7 @@ Palette VerteX can be installed on VMware with internet connectivity or an airga
 - [Install on VMware](/vertex/install-palette-vertex/install-on-vmware/install)
 
 
-- [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-on-vmware/install-airgap)
+<!-- - [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-on-vmware/install-airgap) -->
 
 
 - [VMware System Requirements](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements)

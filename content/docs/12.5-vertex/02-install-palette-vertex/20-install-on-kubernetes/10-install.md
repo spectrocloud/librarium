@@ -105,15 +105,11 @@ The following instructions are written agnostic to the Kubernetes distribution y
 </InfoBox>
 
 
-1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support. We recommend you place all three downloaded files into the same directory. You should have the following three Helm Charts:
+1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support. We recommend you place all three downloaded files into the same directory. You should have the following  Helm Charts:
 
-  - Spectro Management Plan Helm Chart.
+  - Spectro Management Plane Helm Chart.
 
   - Cert Manager Helm Chart.
-
-  - Image Swap Helm Chart (Optional).
-
-
 
 
 2. Extract the **values.yaml** from each Helm Chart. Use the command below as a reference. Replace the path in the command to match your local path to the downloaded Palette VerteX Helm Chart. Do this for all the provided Helm Charts.
@@ -121,8 +117,14 @@ The following instructions are written agnostic to the Kubernetes distribution y
     <br />
 
     ```shell hideClipboard
-    tar xzvf /path/to/spectro-mgmt-plane-0.0.0.tgz spectro-mgmt-plane/values.yaml
+    tar xzvf spectro-mgmt-plane-*.tgz
     ``` 
+
+    <br />
+
+    ```yaml
+    tar xzvf cert-manager-*.tgz
+    ```
 
 
 3. Open the **values.yaml** with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters, but you must populate a few parameters before installing Palette VerteX. Refer to the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page for a complete list of parameters and their descriptions.

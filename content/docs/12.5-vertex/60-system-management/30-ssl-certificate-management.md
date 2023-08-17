@@ -39,7 +39,7 @@ You can upload an SSL certificate in Palette VerteX by using the following steps
 - You need to have an x509 certificate and a key file in PEM format. The certificate file must contain the full certificate chain. Reach out to your network administrator or security team if you do not have these files.
 
 
-- Ensure the certificate is created for the custom domain name you specified for your Palette VerteX installation. If you did not specify a custom domain name, the certificate must be created for the Palette VerteX system console's IP address.
+- Ensure the certificate is created for the custom domain name you specified for your Palette VerteX installation. If you did not specify a custom domain name, the certificate must be created for the Palette VerteX system console's IP address. You can also specify a load balancer's IP address if you are using a load balancer to access Palette VerteX.
  
 
 ## Enablement
