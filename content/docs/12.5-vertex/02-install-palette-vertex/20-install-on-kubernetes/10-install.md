@@ -64,9 +64,6 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
   - TCP/6443: Outbound traffic from the Palette VerteX management cluster to the deployed clusters' Kubernetes API server.
 
 
-- Ensure [Cert Manager](https://cert-manager.io/docs) v1.12.0 or greater is installed in the Kubernetes cluster. Use the official Cert Manager [installation guide](https://cert-manager.io/docs/installation/) for additional guidance.
-
-
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
 
   - x509 SSL certificate file in base64 format.
@@ -108,11 +105,18 @@ The following instructions are written agnostic to the Kubernetes distribution y
 </InfoBox>
 
 
-1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Chart.
+1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support. We recommend you place all three downloaded files into the same directory. You should have the following three Helm Charts:
+
+  - Spectro Management Plan Helm Chart.
+
+  - Cert Manager Helm Chart.
+
+  - Image Swap Helm Chart (Optional).
 
 
 
-2.  Extract the **values.yaml** from the Helm Chart with the following command. Replace the path in the command to match your local path to the downloaded Palette VerteX Helm Chart. Use the command below as a reference.
+
+2. Extract the **values.yaml** from each Helm Chart. Use the command below as a reference. Replace the path in the command to match your local path to the downloaded Palette VerteX Helm Chart. Do this for all the provided Helm Charts.
 
     <br />
 
