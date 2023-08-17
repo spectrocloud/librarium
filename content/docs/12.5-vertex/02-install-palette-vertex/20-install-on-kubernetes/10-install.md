@@ -32,6 +32,9 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
 
 
+- Ensure the Kubernetes cluster does not have Cert Manager installed. Palette VerteX requires a unique Cert Manager configuration to be installed as part of the installation process. If Cert Manager is already installed, you must uninstall it before installing Palette VerteX.
+
+
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette VerteX requires a CSI to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
 
@@ -105,18 +108,22 @@ The following instructions are written agnostic to the Kubernetes distribution y
 </InfoBox>
 
 
-1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support. We recommend you place all three downloaded files into the same directory. You should have the following  Helm Charts:
+1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support. We recommend you place all the downloaded files into the same directory. You should have the following Helm Charts:
+    
+    <br />
 
-  - Spectro Management Plane Helm Chart.
-
-  - Cert Manager Helm Chart.
-
-
-2. Extract the **values.yaml** from each Helm Chart. Use the command below as a reference. Replace the path in the command to match your local path to the downloaded Palette VerteX Helm Chart. Do this for all the provided Helm Charts.
+    - Spectro Management Plane Helm Chart.
 
     <br />
 
-    ```shell hideClipboard
+    - Cert Manager Helm Chart.
+
+
+2. Extract each Helm Chart into its directory. Use the commands below as a reference. Do this for all the provided Helm Charts.
+
+    <br />
+
+    ```shell
     tar xzvf spectro-mgmt-plane-*.tgz
     ``` 
 
@@ -127,7 +134,24 @@ The following instructions are written agnostic to the Kubernetes distribution y
     ```
 
 
-3. Open the **values.yaml** with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters, but you must populate a few parameters before installing Palette VerteX. Refer to the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page for a complete list of parameters and their descriptions.
+3. Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with the one you downloaded, as the version number may be different.
+
+    <br />
+
+    ```shell
+     helm upgrade --values cert-manager/values.yaml cert-manager cert-manager-1.11.0.tgz --install
+    ```
+
+    <br />
+
+    <InfoBox>
+
+    The Cert Manager Helm Chart provided by our support team is configured for Palette VerteX. Do not modify the **values.yaml** file unless instructed to do so by our support team. 
+
+    </InfoBox>
+
+
+4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters, however, you must populate the following parameters before installing Palette VerteX. 
 
     <br />
 
@@ -137,7 +161,10 @@ The following instructions are written agnostic to the Kubernetes distribution y
     | `ociRegistry` or `ociEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs.| object |
     | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
-    <br />
+  
+    Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
+
+     <br />
 
     <InfoBox>
     
@@ -147,16 +174,16 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 
 
-4. Install the Helm Chart using the following command. Replace the path in the command to match your local path to the Palette VerteX Helm Chart. 
+5. Install the Palette VerteX Helm Chart using the following command.
 
     <br />
 
     ```shell
-    helm upgrade --values values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
+    helm upgrade --values spectro-mgmt-plane/values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
     ```
 
 
-5. Track the installation process using the command below. Palette VerteX is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the *Ready* state. The installation process can take 20 - 30 minutes to complete.
+6. Track the installation process using the command below. Palette VerteX is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the *Ready* state. The installation takes between two to three minutes to complete.
 
     <br />
 
@@ -165,7 +192,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     ```
 
 
-6. Create a DNS CNAME record that is mapped to the Palette VerteX `ingress-nginx-controller` load balancer. You can use the following command to retrieve the load balancer IP address. You may require the assistance of your network administrator to create the DNS record.
+7. Create a DNS CNAME record that is mapped to the Palette VerteX `ingress-nginx-controller` load balancer. You can use the following command to retrieve the load balancer IP address. You may require the assistance of your network administrator to create the DNS record.
 
     <br />
 
@@ -182,7 +209,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     </InfoBox>
 
 
-7. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the system console, open a web browser and paste the following URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. 
+8. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/`system` to access the system console.
 
   <br />
 
@@ -197,10 +224,22 @@ The following instructions are written agnostic to the Kubernetes distribution y
   ![A view of the Palette System Console login screen.](/vertex_install-on-kubernetes_install_system-console.png)
 
 
-8. Log in to the system console using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+9. Log in to the system console using the following default credentials. 
 
+    <br />
 
-9. Configure HTTPS encryption for Palette VerteX. To configure HTTPS encryption, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+    | **Parameter** | **Value** |
+    | --- | --- |
+    | Username | `admin` |
+    | Password | `admin` |
+
+    <br />
+
+  After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+
+<br />
+
+10. Configure HTTPS encryption for Palette VerteX. To configure HTTPS encryption, you must upload an SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
 
 
 You now have a self-hosted instance of Palette VerteX installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
@@ -232,48 +271,41 @@ Use the following steps to validate the Palette VerteX installation.
     Your output should look similar to the following.
 
     ```shell hideClipboard
-    cp-system       spectro-cp-ui-67847957-8rqpb                   Running
-    hubble-system   auth-5797cf677d-rc5v6                          Running
-    hubble-system   auth-5797cf677d-xdzzc                          Running
-    hubble-system   cloud-5bbf77786b-5pfq2                         Running
-    hubble-system   cloud-5bbf77786b-l9bv7                         Running
-    hubble-system   configserver-84594b5586-6tx6c                  Running
-    hubble-system   event-64676974c7-49hgz                         Running
-    hubble-system   event-64676974c7-7t2rm                         Running
-    hubble-system   foreq-644f9645b6-4bdnk                         Running
-    hubble-system   hashboard-696656644-l5qfd                      Running
-    hubble-system   hashboard-696656644-ztr5j                      Running
-    hubble-system   hutil-664bbc47d8-28glx                         Running
-    hubble-system   hutil-664bbc47d8-4b8fs                         Running
-    hubble-system   mgmt-7695c774c6-86qt7                          Running
-    hubble-system   mongo-0                                        Running
-    hubble-system   mongo-1                                        Running
-    hubble-system   mongo-2                                        Running
-    hubble-system   mongodb-enterprise-operator-5749cd6d5c-bqvp2   Running
-    hubble-system   mongoops-0                                     Running
-    hubble-system   mongoops-db-0                                  Running
-    hubble-system   mongoops-db-1                                  Running
-    hubble-system   mongoops-db-2                                  Running
-    hubble-system   msgbroker-69ff688569-llkn9                     Running
-    hubble-system   oci-proxy-745797f84d-hb55v                     Running
-    hubble-system   packsync-28182360-tv4zf                        Succeeded
-    hubble-system   spectrocluster-7648978fdb-6jcfb                Running
-    hubble-system   spectrocluster-7648978fdb-klk2g                Running
-    hubble-system   spectrocluster-7648978fdb-wjtl5                Running
-    hubble-system   system-5c7db5d788-nwwgr                        Running
-    hubble-system   system-5c7db5d788-w86w2                        Running
-    hubble-system   timeseries-6fc87b7d88-fbmbs                    Running
-    hubble-system   timeseries-6fc87b7d88-hssd4                    Running
-    hubble-system   timeseries-6fc87b7d88-wstng                    Running
-    hubble-system   user-cdfb8bcb6-j2vnl                           Running
-    hubble-system   user-cdfb8bcb6-knzz9                           Running
-    ingress-nginx   ingress-nginx-admission-create-qjbvp           Succeeded
-    ingress-nginx   ingress-nginx-admission-patch-rh6vp            Succeeded
-    ingress-nginx   ingress-nginx-controller-4sclg                 Running
-    ingress-nginx   ingress-nginx-controller-dllvg                 Running
-    ingress-nginx   ingress-nginx-controller-tjfzt                 Running
-    jet-system      jet-549656486c-2dnft                           Running
-    ui-system       spectro-ui-66648bfbb8-r25x2                    Running
+    cp-system       spectro-cp-ui-689984f88d-54wsw             Running
+    hubble-system   auth-85b748cbf4-6drkn                      Running
+    hubble-system   auth-85b748cbf4-dwhw2                      Running
+    hubble-system   cloud-fb74b8558-lqjq5                      Running
+    hubble-system   cloud-fb74b8558-zkfp5                      Running
+    hubble-system   configserver-685fcc5b6d-t8f8h              Running
+    hubble-system   event-68568f54c7-jzx5t                     Running
+    hubble-system   event-68568f54c7-w9rnh                     Running
+    hubble-system   foreq-6b689f54fb-vxjts                     Running
+    hubble-system   hashboard-897bc9884-pxpvn                  Running
+    hubble-system   hashboard-897bc9884-rmn69                  Running
+    hubble-system   hutil-6d7c478c96-td8q4                     Running
+    hubble-system   hutil-6d7c478c96-zjhk4                     Running
+    hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
+    hubble-system   mongo-0                                    Running
+    hubble-system   mongo-1                                    Running
+    hubble-system   mongo-2                                    Running
+    hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
+    hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
+    hubble-system   packsync-28205220-bmzcg                    Succeeded
+    hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
+    hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
+    hubble-system   spectrocluster-6c57f5775d-sxks5            Running
+    hubble-system   system-686d77b947-8949z                    Running
+    hubble-system   system-686d77b947-cgzx6                    Running
+    hubble-system   timeseries-7865bc9c56-5q87l                Running
+    hubble-system   timeseries-7865bc9c56-scncb                Running
+    hubble-system   timeseries-7865bc9c56-sxmgb                Running
+    hubble-system   user-5c9f6c6f4b-9dgqz                      Running
+    hubble-system   user-5c9f6c6f4b-hxkj6                      Running
+    ingress-nginx   ingress-nginx-controller-2txsv             Running
+    ingress-nginx   ingress-nginx-controller-55pk2             Running
+    ingress-nginx   ingress-nginx-controller-gmps9             Running
+    jet-system      jet-6599b9856d-t9mr4                       Running
+    ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
     ```
 
 
