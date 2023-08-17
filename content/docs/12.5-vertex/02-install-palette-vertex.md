@@ -93,7 +93,7 @@ The size of the enterprise cluster, in terms of the number or size of the cluste
 - [Install on VMware vSphere](/vertex/install-palette-vertex/install-on-vmware)
 
 
-- [Install Using Help Chart](/vertex/install-palette-vertex/install-using-helm-chart)
+- [Install Using Helm Chart](/vertex/install-palette-vertex/install-using-helm-chart)
 
 
 - [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-in-airgap-environment)
