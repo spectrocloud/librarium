@@ -16,9 +16,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 The Spectro VM Dashboard offers a web console accessible from the **Virtual Machines** tab that appears on the cluster overview page when VM Management is enabled. 
 
-<<< REMOVE "DASHBOARD" AND "WEB CONSOLE" MENTIONS? >>>
+<<< REMOVED "DASHBOARD" AND "WEB CONSOLE" MENTIONS. >>>
 
-The first time you enable the dashboard, the default view will appear blank. As a best practice, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Namespace Management](/clusters/cluster-management/namespace-management). Namespaces you create will be listed in the **drop-down Menu** at the top of the dashboard. VMs that you deploy within a namespace are listed on the dashboard. 
+The first time you enable the dashboard, the default view will appear blank. As a best practice, we recommend creating at least one namespace dedicated to VMs. To learn how, refer to [Namespace Management](/clusters/cluster-management/namespace-management). Namespaces you create will be listed in the **drop-down Menu** at the top of the dashboard. VMs that you deploy within a namespace are listed on the dashboard.
+
+<<<NAMESPACE INFO IS ADDED AS A PREREQUISITE IN "CREATE A VMO PROFILE" WITH LINK TO HOW-TO. >>>
+
+<<< MOVED CONTENT BELOW TO "STANDARD VM OPERATIONS" >>>
 
 You can select a VM to view its details and perform standard VM operations. VM operations are accessible from the **three-dot Menu** at the right of each listed VM or when you click **Actions** from the VM details page.
 

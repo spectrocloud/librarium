@@ -16,7 +16,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster profile conveniently includes several components and automatically installs the Spectro Proxy pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
 
-Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack and apply it to your cluster. When the cluster updates, a **Virtual Machines** tab appears. <<< IS THIS TRUE? >>>
+Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack and apply it to your cluster. When the cluster updates, a **Virtual Machines** tab appears. 
+
+<<< IS THE STATEMENT TRUE ABOUT WHEN VMS TAB APPEARS? OR IS IT ALWAYS VISIBLE? >>>
 
 
 # Prerequisites
@@ -54,7 +56,11 @@ Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack a
     - **Pack Type**: System App
     - **Registry**: Public Repo
     - **Pack Name**: Virtual Machine Orchestrator
-    - **Pack Version**: 4.1 or newer
+    - **Pack Version**: 4.1 or newer  
+    
+    <br />
+    
+    <<< IS VERSION CORRECT? >>>
 
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the MAAS cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 

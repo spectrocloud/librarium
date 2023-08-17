@@ -15,7 +15,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The **Virtual Machine Orchestrator** pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. The pack's components are described below. All the components except for the **Spectro Proxy** pack are enabled by default in the `charts:` section of the pack YAML configuration file. 
+The **Virtual Machine Orchestrator** (VMO) pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. You use **Virtual Machine Orchestrator** pack to create a VMO cluster profile. the The pack's components are described below. All the components are enabled by default in the `charts:` section of the pack YAML configuration file. 
+
+The **Spectro Proxy** pack is a separate pack that is installed during profile creation when you use the default profile setting as described below.
 
 <br />
 

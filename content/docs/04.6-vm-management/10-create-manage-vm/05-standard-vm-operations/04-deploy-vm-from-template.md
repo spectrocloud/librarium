@@ -52,6 +52,8 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
     - To deploy from a template, select one of the VM templates. These can be Palette's out-of-the-box templates or templates that you or your administrator created.
 
+    <br />
+
     - To create an empty VM, close the templates choice page and install the OS using a different method.
 
     <br />

@@ -34,7 +34,6 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Migrate VM to a Different Node
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -50,7 +49,6 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 5. Click **Migrate Node to Node**.  
 
-<br />
 
 
 ## Validate
