@@ -14,7 +14,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You must configure roles and cluster role bindings before users can create Palette Virtual Machine Orchestrator (VMO). When you have configured roles and role bindings, the **Virtual Machines** tab will display on the **Cluster Overview** page. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. 
+You must configure roles and cluster role bindings before users can access Palette Virtual Machine Orchestrator (VMO). When you have configured roles and role bindings, the **Virtual Machines** tab will display on the **Cluster Overview** page. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. 
+
+<<< WHEN DOES VIRTUAL MACHINES TAB DISPLAY? >>>
 
 
 # Prerequisites

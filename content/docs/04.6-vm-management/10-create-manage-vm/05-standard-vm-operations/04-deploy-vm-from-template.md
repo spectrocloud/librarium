@@ -14,13 +14,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You can deploy a virtual machine (VM) using Palette's out-of-the-box templates or templates that your organization's administrator provides.
+You can deploy a Virtual Machine (VM) using Palette's out-of-the-box templates or from templates that your organization's administrator provides.
 
 # Prerequisites
 
 - Configured Spectro VM Dashboard profile applied to your cluster. 
 
-    Review [Create Spectro VM Dashboard Profile](/vm-management/vm-packs-profiles/create-vm-dashboard-profile) to configure the dashboard. To learn how to access the dashboard, refer to [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard).
+    Review [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) to configure the dashboard.
 
 # Deploy VM from a Template
 
@@ -70,7 +70,6 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
 12. Click **Create Virtual Machine**.
 
-    <br />
 
 VM status will display as **Starting** for several minutes while the required resources are built and the image is pulled from the registry. If you did not enable the checkbox to start the VM automatically, VM status displays as **Stopped** until the VM is fully deployed. 
 
@@ -102,7 +101,7 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 
 # Next Steps
 
-Try installing your applications. If the Guest Agent was not installed as part of the VM deployment, you can install the Guest Agent now. The Guest Agent displays additional details in the **Virtual Machines > Details** tab. 
+Try installing your applications. If the Guest Agent was not installed as part of the VM deployment, you can install the Guest Agent now. The Guest Agent displays additional details in the **Virtual Machines** > **Details** tab. 
 
 You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you can make in the [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration) guide.
 

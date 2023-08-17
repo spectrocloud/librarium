@@ -47,6 +47,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 4. Select the VM to migrate and click either the **three-dot Menu** or **Actions**.
 
+
 5. Click **Migrate Node to Node**.  
 
 <br />

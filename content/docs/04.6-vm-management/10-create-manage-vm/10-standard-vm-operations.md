@@ -1,5 +1,5 @@
 ---
-title: "Standard VM Operations (ADD above removed content here)"
+title: "Standard VM Operations (ADDED content from above to this doc)"
 metaTitle: "Standard VM Operations"
 metaDescription: "Learn about standard VM operations that can be performed using Spectro VM Dashboard."
 icon: " "
@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Virtual Machine Management supports standard power operations for Virtual Machines (VMs): 
+Virtual Machine Orchestrator supports standard power operations for Virtual Machines (VMs): 
 
 <br />
 
@@ -35,7 +35,7 @@ From the **Virtual Machines** tab, you can select a VM to view its details and p
 
 <<< DELETE ACTIONS MENU ABOVE? >>>
 
-When you select a VM on the **Clusters** > **Virtual Machines** tab, the following tabs display. Tabs are specific to the selected VM.
+When you select a VM from the **Clusters** > **Virtual Machines** tab, the following tabs display. Tabs are specific to the selected VM.
 
 <br />
 
@@ -54,13 +54,13 @@ When you select a VM on the **Clusters** > **Virtual Machines** tab, the followi
 - **Console**: Allows you to access and interact with the VM through its console. If you are not using a template, you can configure the VM using the console.
 
 
-- **Network Interfaces**: Allows you to add and manage network interfaces. By default, the Pod Networking interface is a masquerade type interface, or in simple terms, it's a one-to-many IP address translation. You can change this to be a Bridge or other type interface.
+- **Network Interfaces**: Allows you to add and manage network interfaces. By default, the Pod Networking interface is a masquerade type interface, or in simple terms, it's a one-to-many IP address translation. You can change this to be a Bridge or other interface type.
 
 
 - **Disks**: Allows you to add and manage disks. You can update the disk size, specify type `Disk`, `CD-ROM`, or `LUN`, and specify the interface `virtuo`, `sata`, or `scsi`.  By default, `spectro-storage-class` is applied to the disk.
 
 
-- **Snapshots**: Allows you to take a new snapshot and manage existing ones. 
+- **Snapshots**: Allows you to take a new snapshot of a VM's disk file at a given point in time and manage existing snapshots. 
 
 
 

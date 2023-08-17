@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster profile conveniently includes several components and automatically adds the Spectro Proxy pack when you use the default profile configuration.
+The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster profile conveniently includes several components and automatically installs the Spectro Proxy pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
 
 Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack and apply it to your cluster. When the cluster updates, a **Virtual Machines** tab appears. <<< IS THIS TRUE? >>>
 
@@ -46,7 +46,8 @@ Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack a
 
 5. In the following screen, click **Add New Pack**. 
 
-6. Use the following information to find the **Virtual Machine Orchestrator** pack:
+
+6. Use the information below to find the **Virtual Machine Orchestrator** pack:
 
     <br />
     
@@ -56,7 +57,7 @@ Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack a
     - **Pack Version**: 4.1 or newer
 
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the Spectro Proxy pack when you create the MAAS cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
+7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the MAAS cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
 
     <br />
 
@@ -64,9 +65,8 @@ Create a cluster profile with the **Virtual Machine Orchestrator** add-on pack a
 
     <br />
 
-    The **Direct** option is meant for a private configuraiton where a proxy is not implemented or not desired.
+    The **Direct** option is meant for a private configuration where a proxy is not implemented or not desired.
 
-    <br />
 
 <WarningBox>
 
@@ -108,3 +108,8 @@ You can validate the profile is created.
 # Next Steps
 
 You can now apply the profile to your MAAS cluster. You must configure roles and role bindings so that users can access virtual clusters.
+
+
+# Resources
+
+- [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings)

@@ -36,8 +36,6 @@ Although no additional components are required in VMs, the **QEMU Guest Agent** 
 
 Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device driver knows it is deployed in a virtual environment, and cooperates with the hypervisor. This enables guests to receive high performance network and disk operations and provides most of the performance benefits of paravirtualization.
 
-<<< DO VIRTIO AND QEMU GUEST AGENT STILL APPLY? >>>
-
 <br />
 
 <WarningBox>
