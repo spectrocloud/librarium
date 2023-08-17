@@ -159,13 +159,15 @@ Use the following steps to install the Palette VerteX.
   | **Parameter**             | **Description**                         |
   |---------------------------|-----------------------------------------|
   | **Use Default Pack Registry URL** | The default is `https://registry-fips.spectrocloud.com`. Select `y` to use the default registry URL.  |
-  | **Registry Type** | Specify the type of registry. Allowed values are `OCI` or `OCI ECR` |
+  | **Registry Type** | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. |
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
   | **Registry Base Path** | Enter the registry base path. |
   |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
-  | **Registry Username** | Enter the registry username. |
-  | **Registry Password** | Enter the registry password. |
+  | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
+  | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
+  | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
+  | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
   | **Use Registry for Images** | Type `y` to use the same registry for images. Type `n` to use a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 <br />
@@ -174,7 +176,7 @@ Use the following steps to install the Palette VerteX.
 
 
 
-11. The next set of prompts are for the VMware vSphere account information. Enter the information listed in the following table.
+11. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
 
   <br />
 
@@ -182,7 +184,7 @@ Use the following steps to install the Palette VerteX.
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  |**vSphere Endpoint** | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
+  |**vSphere Endpoint** | vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
   |**vSphere Username** | vSphere account username.|
   |**vSphere Password**| vSphere account password.|
   |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
