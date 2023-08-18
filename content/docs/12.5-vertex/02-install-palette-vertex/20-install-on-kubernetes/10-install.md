@@ -82,7 +82,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette VerteX.
 
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on how to request access to the Helm Chart
+- Access to the Palette Helm Charts. Refer to the [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on how to request access to the Helm Chart.
 
 
 
@@ -108,7 +108,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 </InfoBox>
 
 
-1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support. We recommend you place all the downloaded files into the same directory. You should have the following Helm Charts:
+1. Open a terminal session and navigate to the directory where you downloaded the Palette VerteX Helm Charts provided by our support team. We recommend you place all the downloaded files within the same directory. You should have the following Helm Charts:
     
     <br />
 
@@ -151,7 +151,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     </InfoBox>
 
 
-4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters, however, you must populate the following parameters before installing Palette VerteX. 
+4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the Palette VerteX installation parameters. You must populate the following parameters in the YAML file before installing Palette VerteX. 
 
     <br />
 
@@ -162,7 +162,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
   
-    Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
+    Save the **values.yaml** file after you have populated the required parameters listed in the table.
 
      <br />
 
@@ -209,7 +209,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     </InfoBox>
 
 
-8. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/`system` to access the system console.
+8. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the System Console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/`system` to access the system console.
 
   <br />
 

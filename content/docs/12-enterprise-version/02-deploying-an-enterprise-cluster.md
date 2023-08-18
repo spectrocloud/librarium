@@ -193,10 +193,10 @@ Use the following steps to install Palette.
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  |**vSphere Endpoint** | vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
-  |**vSphere Username** | vSphere account username.|
-  |**vSphere Password**| vSphere account password.|
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  |**vSphere Endpoint** | VMware vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
+  |**vSphere Username** | VMware vSphere account username.|
+  |**vSphere Password**| VMware vSphere account password.|
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
 
   <br />
 

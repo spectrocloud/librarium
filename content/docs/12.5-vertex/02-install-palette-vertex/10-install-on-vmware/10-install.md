@@ -81,7 +81,7 @@ Self-hosted Palette VerteX installations provide a system Private Cloud Gateway 
 
 # Install the Enterprise Cluster
 
-The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the three-dots icon in the lower right corner of the video to expand the video to full screen and to change the playback speed.
+The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
   <br />
 
@@ -163,7 +163,7 @@ Use the following steps to install Palette VerteX.
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
   | **Registry Base Path** | Enter the registry base path. |
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
   | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
@@ -184,10 +184,10 @@ Use the following steps to install Palette VerteX.
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  |**vSphere Endpoint** | vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
-  |**vSphere Username** | vSphere account username.|
-  |**vSphere Password**| vSphere account password.|
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  |**vSphere Endpoint** | VMware vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
+  |**vSphere Username** | VMware vSphere account username.|
+  |**vSphere Password**| VMware vSphere account password.|
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
 
   <br />
 
@@ -228,7 +228,7 @@ Use the following steps to install Palette VerteX.
 <br />
 
 
-13. The last set of prompts is for the vSphere machine configuration. Enter the information listed in the following table.
+13. The last set of prompts is for the VMware vSphere machine configuration. Enter the information listed in the following table.
 
   <br />
 
@@ -290,7 +290,7 @@ Use the following steps to install Palette VerteX.
 <br />
 
 
-15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+15. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
   
 
 16. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
