@@ -52,7 +52,7 @@ The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster p
     - **Pack Type**: System App
     - **Registry**: Public Repo
     - **Pack Name**: Virtual Machine Orchestrator
-    - **Pack Version**: 1.0
+    - **Pack Version**: 1.0 or higher
 
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the MAAS cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
