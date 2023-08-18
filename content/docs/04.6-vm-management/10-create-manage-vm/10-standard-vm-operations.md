@@ -37,13 +37,13 @@ When you select a VM from the **Clusters** > **Virtual Machines** tab, the follo
 
 <br />
 
-- **Overview**: Provides general information about the VM, such as its IP address, operating system, creation date and time zone, running status, active users, whether the guest agent is installed or not, the quantity of Network Interface Cards (NIC) and disks, and any recent events. 
+- **Overview**: Provides general information about the VM, such as its IP address, operating system, creation date and time zone, status, active users, whether the guest agent is installed or not, the quantity of Network Interface Cards (NIC) and disks, and any recent events. 
 
 
 - **Details**: Provides additional VM details such as labels associated with the VM, pod information, scheduling and resource requirements, and CPU and memory. If the QEMU Guest Agent is not installed, **Not Available** displays in place of details that would otherwise be available to you.
 
 
-- **YAML**: From here you can view and change the VM configuration.
+- **YAML**: You can review and change the VM configuration from here.
 
 
 - **Events**: Displays streaming events in the VM. Any standard operations you perform on the VM are captured here.  

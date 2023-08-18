@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster profile conveniently includes several components and automatically installs the Spectro Proxy pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
+The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster profile conveniently includes several components and automatically installs the [Spectro Proxy](/integrations/frp) pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
 
 
 # Prerequisites
