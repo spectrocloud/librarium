@@ -19,6 +19,19 @@ The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster p
 
 # Prerequisites
 
+Palette VM Orchestrator requires the following:
+
+<br />
+
+- Palette version 3.3.0 or higher.
+
+
+- Production VMs are supported on bare metal Kubernetes clusters deployed on Canonical MAAS. To learn how to configure MAAS and create MAAS clusters in Palette, refer to the [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) guide.
+
+
+- VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports ``ReadWriteMany`` (``RWX``) access mode for seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
+
+
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
@@ -59,12 +72,13 @@ The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster p
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
+    <br />
 
-<WarningBox>
+    <WarningBox>
 
-We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack. 
+    We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack. 
 
-</WarningBox> 
+    </WarningBox> 
 
 8. Click **Confirm & Create**. 
 
@@ -96,21 +110,24 @@ You can validate the profile is created.
 
 <br />
 
-1. Navigate to **Profiles** from the left **Main Menu**. 
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. Locate the newly created profile in the list.
+2. Navigate to **Profiles** from the left **Main Menu**. 
 
 
-3. From the left **Main Menu**, click **Clusters** and select your MAAS cluster.
+3. Locate the newly created profile in the list.
 
 
-4. Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview** page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
+4. From the left **Main Menu**, click **Clusters** and select your MAAS cluster.
+
+
+5. Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview** page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
 
 
 # Next Steps
 
-You must configure roles and role bindings so that users can access virtual clusters.
+You will need to configure roles and role bindings to give users access virtual clusters. You can use VM user roles and permissions or standard Kubernetes roles. For configuration guidance, refer to [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings). The [VM User Roles and Permissions](/vm-management/vm-roles-permissions) reference lists Cluster Roles and equivalent Palette Roles.
 
 
 # Resources

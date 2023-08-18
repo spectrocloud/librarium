@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You must configure roles and cluster role bindings before users can access Palette Virtual Machine Orchestrator. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. 
+You must configure permissions for actions that users can perform on Virtual Machines (VMs) deployed using Palette Virtual Machine Orchestrator, such as cloning, updating, and migrating VMs. You can do this by creating roles and cluster role bindings to determine access permissions. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. To learn more about Cluster RBAC in Palette, review the [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) guide. 
 
 
 # Prerequisites
@@ -67,7 +67,38 @@ The cluster status displays as **Upgrading** on the **Cluster Overview** page. U
 
 # Validate
 
-To verify role creation and role binding is successful, review the [Validation](/clusters/cluster-management/cluster-rbac#validate) steps in [Cluster Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings).
+You can verify role creation and role binding is successful by following the steps below.
+
+<br />
+
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+
+3. Select the cluster you created the role binding in to view its details page.
+
+
+4. Download the **kubeconfig** file for the cluster or use the web shell to access the host cluster.
+
+
+5. Use the following commands to review details about the role and to ensure the role binding was successful.  
+
+
+#### Cluster Role:
+
+```shell
+kubectl get clusterrole <yourRoleNameHere> --output yaml
+```
+
+
+#### Role
+
+```shell
+kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
+```
 
 
 # Next Steps
