@@ -6,7 +6,7 @@
 # Assuming you have a .env file in the current directory.
 # source .env && envsubst < vertex-install.tape > vertex-install-creds.tape
 Require palette
-Output ../../content/docs/12.5-vertex/02-install-palette-vertex/10-install-on-vmware/vertex-install.mp4
+Output ../../content/docs/12.5-vertex/02-install-palette-vertex/vertex-install.mp4
 
 Set FontSize 14
 Set Width 950
@@ -25,17 +25,20 @@ Sleep 1s
 Enter
 Type@500ms "y"
 Enter
-Type "${UBUNTU_PRO}" # Ubuntu Pro Token
+Type "C13rMFtedpHypRYhjb8G6iVfXt3aMk" # Ubuntu Pro Token
 Enter
-Type "https://repo-fips-rc40.rc.spectrocloud.com"
+Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}"
 Enter
 Type@300ms "spectro"
 Enter
 Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
 Enter
-Sleep 1s
+Sleep 3s
+Type "y" #Bypass X509 Verification
 Enter
-Sleep 1s
+Sleep 3s
+Enter # Select Infrastructure Provider
+Sleep 2s
 Type "spectro-mgmt-cluster"
 Enter
 Sleep 2s
@@ -52,26 +55,28 @@ Enter
 Sleep 1s
 Type "10.155.0.0/24"
 Enter
-Sleep 1s
-Type "y"
+Sleep 3s
+Type "y" # Use Default Pack Registry
 Enter
-Sleep 1s
+Sleep 3s
+Enter # Database Configurtion size
+Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
-Sleep 1s
+Sleep 3s
 Type "${VCENTER_USER}" # vCenter User
 Enter
-Sleep 1s
+Sleep 3s
 Type "${VCENTER_PASSWORD}" # vCenter Password
 Enter
-Sleep 1s
+Sleep 3s
 Type "y" # Allow Insecure
 Enter
 Sleep 4s
 Enter
 Sleep 4s
-Type "sp-karl"
-Sleep 1s
+Type "sp-karl" # vSphere folder
+Sleep 3s
 Enter
 Sleep 3s
 Down 1
@@ -85,7 +90,7 @@ Sleep 3s
 Enter  # VM Storage Policy
 Sleep 3s
 Enter # Datastore
-Sleep 1s
+Sleep 3s
 Type "n" # Fault Domain
 Sleep 2s
 Enter # NPT servers
@@ -99,12 +104,12 @@ Escape
 Sleep 3s
 Type@500ms ":wq"
 Enter
-Sleep 1s 
+Sleep 3s 
 Type@300ms "10.1.1.0" # IP Start Range
 Enter
 Type@300ms "10.1.63.255" # IP End Range
 Enter
-Sleep 1s
+Sleep 3s
 Enter # Network CIDR
 Type@300ms "10.10.128.1" # Gateway
 Enter
@@ -114,10 +119,10 @@ Type@300ms "spectrocloud.dev"
 Enter
 Sleep 1s
 Enter # Number of CPUs
-Sleep 1s
+Sleep 2s
 Enter # Memory
-Sleep 1s
+Sleep 2s
 Enter # Disk Size
 
 
-Sleep 25s
+Sleep 35s

@@ -33,7 +33,7 @@ Type@200ms "spectro"
 Enter
 Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
 Enter
-Sleep 1s
+Sleep 2s
 Type "y" # Allow Insecure Connection
 Enter
 Sleep 3s
@@ -84,7 +84,7 @@ Sleep 2s
 Type "y" # Is Registry private?
 Enter
 Sleep 2s
-Type@500ms "n" # Use OCI Registry for images?
+Type@500ms "y" # Pull images from public registry?
 Enter
 Sleep 3s
 Enter # Database Size
@@ -103,7 +103,7 @@ Enter
 Sleep 4s
 Enter
 Sleep 4s
-Type "sp-karl"
+Type "sp-karl" # vSphere folder
 Sleep 2s
 Enter
 Sleep 3s
@@ -132,12 +132,12 @@ Escape
 Sleep 3s
 Type@500ms ":wq"
 Enter
-Sleep 1s 
+Sleep 2s 
 Type@300ms "10.1.1.0" # IP Start Range
 Enter
 Type@300ms "10.1.63.255" # IP End Range
 Enter
-Sleep 1s
+Sleep 2s
 Enter # Network CIDR
 Type@300ms "10.10.128.1" # Gateway
 Enter
@@ -145,12 +145,12 @@ Type@300ms "10.10.128.8" # DNS
 Enter
 Type@300ms "spectrocloud.dev"
 Enter
-Sleep 1s
+Sleep 3s
 Enter # Number of CPUs
-Sleep 1s
+Sleep 3s
 Enter # Memory
-Sleep 1s
+Sleep 3s
 Enter # Disk Size
 
 
-Sleep 25s
+Sleep 35s
