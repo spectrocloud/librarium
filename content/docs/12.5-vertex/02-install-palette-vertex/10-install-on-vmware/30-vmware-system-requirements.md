@@ -15,13 +15,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The sections below describe system requirements and cloud account permissions for VMware environments hosting Palette VerteX.
+The sections below describe system requirements and cloud account permissions for VMware vSphere environments hosting Palette VerteX.
 
 
 
 # VMware Cloud Account Permissions
 
-The vSphere user account that deploys Palette VerteX must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
+The vSphere user account that deploys Palette VerteX must have the minimum root-level VMware vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
 
 Select the tab for your vSphere version.
 
@@ -280,26 +280,3 @@ The following requirements apply to tags:
 
 
 - The regex used for validation is ``(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?``
-
-
-
-<!-- # Network Requirements 
-
-- Outgoing access from the platform VMs to the internet either directly or via a proxy.
-
-
-- An IP Address (static or DHCP) for the virtual machine (VM).
-
-
-- A block of five (5) IP addresses reserved for an enterprise cluster: One IP address for each
-of the three enterprise cluster VMs, an IP to be used as a VIP, and an additional IP reserved
-for rolling upgrades.
-
-
-- Interconnectivity across all three (3) VMs on all ports. Connectivity from the VMs to the vCenter.
-
-<InfoBox>
-
-Ensure your data center's CIDR IP address does not overlap the Kubernetes PodCIDR range. During installation, you can change the Kubernetes PodCIDR range settings.
-
-</InfoBox> -->

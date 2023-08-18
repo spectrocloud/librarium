@@ -90,7 +90,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Deprecations and Removals
 
-- The Palette OVA Installer is deprecated and unavailable in this release. You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more.
+- The Palette OVA Installer is deprecated and no longer provided as of this release. Self-hosted Palette now provides a new installation method using the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more.
 
 
 
@@ -107,7 +107,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Features
 
-- Palette Edge now supports ARM64 architecture. You can now deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
+- Palette Edge now supports ARM64 architecture. This is a beta feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
 
 
 - Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
@@ -118,6 +118,14 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 - You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
+
+
+### Known Issues
+
+
+- An Edge host cannot be repurposed to another Edge cluster without preparatory steps. To repurpose an Edge host from an existing cluster with another Edge cluster, the device must be re-flashed with the Palette Edge installer and the required Edge installation artifacts.
+
+
 ## Palette Dev Engine (PDE)
 
 ### Features
@@ -240,15 +248,31 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Deprecations and Removals
 
-The following packs are marked as deprecated and will be disabled in three months. Refer to the [Maintenance Policy](integrations/maintenance-policy) for more details.
+The following packs are marked as deprecated, disabled, or deleted. Refer to the [Maintenance Policy](integrations/maintenance-policy) for more details on the deprecation and removal process.
 
 <br />
+
+#### Operating Systems
+
+| **Pack**                                  | **Version** | **Status**   |
+|-------------------------------------------|-------------|--------------|
+| OpenSuse Leap                             | 15.4        | Disabled     |
+| Ubuntu (For Edge)                         | 20.04       | Disabled     |
+| Ubuntu (For Edge)                         | 22.04       | Disabled     |
 
 #### Kubernetes
 
 | **Pack**                                  | **Version** | **Status**   |
 |-------------------------------------------|-------------|--------------|
 | MicroK8s                                  | 1.23        | Deprecated   |
+| Konvoy                                    | 1.19.10     | Disabled     |
+| Konvoy                                    | 1.19.15     | Disabled     |
+| Konvoy                                    | 1.20.8      | Disabled     |
+| Konvoy                                    | 1.20.11     | Disabled     |
+| Konvoy                                    | 1.21.6      | Disabled     |
+| Kubernetes AKS                            | 1.22        | Deleted      |
+| Kubernetes AKS                            | 1.23        | Deleted      |
+| Kubernetes AKS                            | 1.24        | Deleted      |
 | Kubernetes Coxedge                        | 1.21.14     | Deprecated   |
 | Kubernetes Coxedge                        | 1.22.12     | Deprecated   |
 | Kubernetes Coxedge                        | 1.23.9      | Deprecated   |
@@ -260,6 +284,18 @@ The following packs are marked as deprecated and will be disabled in three month
 | Kubernetes EKS                            | 1.21        | Deprecated   |
 | Kubernetes EKS                            | 1.22        | Deprecated   |
 | Kubernetes EKS                            | 1.23        | Deprecated   |
+| Kubernetes EKSD                           | 1.18.9      | Disabled     |
+| Kubernetes EKSD                           | 1.19.6      | Disabled     |
+| Kubernetes EKSD                           | 1.20.8      | Disabled     |
+| Kubernetes EKSD                           | 1.21.6      | Disabled     |
+| Kubernetes GKE                            | 1.24.10     | Deleted      |
+| Kubernetes GKE                            | 1.25.7      | Deleted      |
+| Kubernetes GKE                            | 1.26.4      | Deleted      |
+| K3s                                       | 1.22.13     | Deprecated   |
+| K3s                                       | 1.22.15     | Deprecated   |
+| K3s                                       | 1.23.10     | Deprecated   |
+| K3s                                       | 1.23.12     | Deprecated   |
+| K3s                                       | 1.24.6      | Deprecated   |
 | Palette eXtended Kubernetes (PXK)         | 1.19.0      | Deprecated   |
 | Palette eXtended Kubernetes (PXK)         | 1.19.4      | Deprecated   |
 | Palette eXtended Kubernetes (PXK)         | 1.19.5      | Deprecated   |
@@ -302,16 +338,13 @@ The following packs are marked as deprecated and will be disabled in three month
 | Palette eXtended Kubernetes (PXK)         | 1.23.9      | Deprecated   |
 | Palette eXtended Kubernetes (PXK)         | 1.23.16     | Deprecated   |
 | Palette eXtended Kubernetes (PXK)         | 1.23.17     | Deprecated   |
-| K3s                                       | 1.22.13     | Deprecated   |
-| K3s                                       | 1.22.15     | Deprecated   |
-| K3s                                       | 1.23.10     | Deprecated   |
-| K3s                                       | 1.23.12     | Deprecated   |
-| K3s                                       | 1.24.6      | Deprecated   |
 | Palette eXtended Kubernetes - Edge (PXKE) | 1.22.15     | Deprecated   |
 | Palette eXtended Kubernetes - Edge (PXKE) | 1.23.12     | Deprecated   |
 | Palette eXtended Kubernetes - Edge (PXKE) | 1.24.6      | Deprecated   |
+| RKE2                                      | 1.22.12     | Disabled     |
 | RKE2                                      | 1.22.13     | Deprecated   |
 | RKE2                                      | 1.22.15     | Deprecated   |
+| RKE2                                      | 1.23.9      | Disabled     |
 | RKE2                                      | 1.23.10     | Deprecated   |
 | RKE2                                      | 1.23.12     | Deprecated   |
 | RKE2                                      | 1.24.6      | Deprecated   |
@@ -330,49 +363,100 @@ The following packs are marked as deprecated and will be disabled in three month
 | Cilium OSS    | 1.10.9        | Deprecated   |
 | Cilium OSS    | 1.12.3        | Deprecated   |
 | Cilium OSS    | 1.12.4        | Deprecated   |
+| Flannel CNI   | 0.10.0        | Deprecated   |
 
 
 
 #### CSI
 
-| **Pack**              | **Version**  | **Status**   |
-|-----------------------|--------------|--------------|
-| AWS EBS CSI           | 1.5.1        | Deprecated   |
-| AWS EBS CSI           | 1.8.0        | Deprecated   |
-| AWS EBS CSI           | 1.10.0       | Deprecated   |
-| AWS EBS CSI           | 1.12.0       | Deprecated   |
-| Openstack Cinder      | 1.18         | Deprecated   |
-| Openstack Cinder      | 1.19         | Deprecated   |
-| Openstack Cinder      | 1.20         | Deprecated   |
-| Openstack Cinder      | 1.21         | Deprecated   |
-| Openstack Cinder      | 1.22         | Deprecated   |
-| Openstack Cinder      | 1.23         | Deprecated   |
+| **Pack**                                    | **Version**  | **Status**   |
+|---------------------------------------------|--------------|--------------|
+| AWS EBS CSI                                 | 1.0.0        | Deprecated   |
+| AWS EBS CSI                                 | 1.5.1        | Deprecated   |
+| AWS EBS CSI                                 | 1.8.0        | Deprecated   |
+| AWS EBS CSI                                 | 1.10.0       | Deprecated   |
+| AWS EBS CSI                                 | 1.12.0       | Deprecated   |
+| AWS EFS CSI                                 | 1.3.6        | Deprecated   |
+| Azure CSI Driver                            | 1.20.0       | Deprecated   |
+| Azure Disk                                  | 1.0.0        | Deprecated   |
+| GCE Persistent Disk CSI                     | 1.7.1        | Deprecated   |
+| GCE Persistent Disk                         | 1.0.0        | Deprecated   |
+| Openstack Cinder                            | 1.18         | Deprecated   |
+| Openstack Cinder                            | 1.19         | Deprecated   |
+| Openstack Cinder                            | 1.20         | Deprecated   |
+| Openstack Cinder                            | 1.21         | Deprecated   |
+| Openstack Cinder                            | 1.22         | Deprecated   |
+| Openstack Cinder                            | 1.23         | Deprecated   |
+| Portworx CSI AWS                            | 2.9.0        | Deprecated   |
+| Portworx CSI AWS                            | 2.10         | Deprecated   |
+| Portworx CSI GCP                            | 2.6.1        | Deprecated   |
+| Portworx CSI Generic                        | 2.11.2      | Deprecated   |
+| Portworx CSI Generic                        | 2.11.4      | Deprecated   |
+| Portworx CSI Vsphere                        | 2.8.0       | Deprecated   |
+| Portworx CSI Vsphere                        | 2.9.0       | Deprecated   |
+| Portworx CSI Vsphere                        | 2.10        | Deprecated   |
+| Rook-Ceph CSI                               | 1.5.9        | Deprecated   |
+| VSphere CSI                                 | 1.0.0        | Deprecated   |
+| VSphere CSI                                 | 2.3.0        | Deprecated   |
+| VSphere CSI                                 | 2.5.2        | Deprecated   |
+| VSphere Volume                              | 1.0.0        | Deprecated   |
+
+
 
 
 
 #### Add-on
 
-| **Pack**                   | **Version**     | **Status**   |
-|----------------------------|-----------------|--------------|
-| Hashicorp Vault            | 0.3.1           | Deprecated   |
-| Hashicorp Vault            | 0.6.0           | Deprecated   |
-| Hashicorp Vault            | 0.9.0           | Deprecated   |
-| Hashicorp Vault            | 0.11.0          | Deprecated   |
-| Hashicorp Vault            | 0.17.1          | Deprecated   |
-| Hashicorp Vault            | 0.20.1          | Deprecated   |
-| Open Policy Agent          | 3.5.1           | Deprecated   |
-| Open Policy Agent          | 3.6.0           | Deprecated   |
-| Prometheus Operator        | 12.3.0          | Deprecated   |
-| Prometheus Operator        | 19.2.3          | Deprecated   |
-| Prometheus Operator        | 30.0.3          | Deprecated   |
-| Prometheus Operator        | 30.2.0          | Deprecated   |
-| Prometheus Operator        | 35.5.1          | Deprecated   |
-| Prometheus Operator        | 37.2.0          | Deprecated   |
-| Kubernetes Dashboard       | 2.0.1           | Deprecated   |
-| Kubernetes Dashboard       | 2.1.0           | Deprecated   |
-| Kubernetes Dashboard       | 2.4.0           | Deprecated   |
-| Kubernetes Dashboard       | 2.5.1           | Deprecated   |
-| AWS Cluster Autoscaler     | 1.0.0           | Deprecated   |
+| **Pack**                      | **Version**     | **Status**   |
+|-------------------------------|-----------------|--------------|
+| AWS Cluster Autoscaler        | 1.0.0           | Deprecated   |
+| AWS EFS Addon                 | 1.3.6           | Deprecated   |
+| Dex                           | 2.21.0          | Deprecated   |
+| Dex                           | 2.25.0          | Deprecated   |
+| Dex                           | 2.28.0          | Deprecated   |
+| External DNS                  | 0.7.2           | Deprecated   |
+| External Secrets              | 8.5.0           | Deprecated   |
+| External Secrets Operator     | 0.5.6           | Deprecated   |
+| External Secrets Operator     | 0.6.0           | Deprecated   |
+| Hashicorp Vault               | 0.3.1           | Deprecated   |
+| Hashicorp Vault               | 0.6.0           | Deprecated   |
+| Hashicorp Vault               | 0.9.0           | Deprecated   |
+| Hashicorp Vault               | 0.11.0          | Deprecated   |
+| Hashicorp Vault               | 0.17.1          | Deprecated   |
+| Hashicorp Vault               | 0.20.1          | Deprecated   |
+| Image Swap                    | 1.4.2           | Deprecated   |
+| Istio                         | 1.6.2           | Deprecated   |
+| Kong                          | 1.4             | Deprecated   |
+| Kubernetes Dashboard          | 2.0.1           | Deprecated   |
+| Kubernetes Dashboard          | 2.1.0           | Deprecated   |
+| Kubernetes Dashboard          | 2.4.0           | Deprecated   |
+| Kubernetes Dashboard          | 2.5.1           | Deprecated   |
+| MetalLB                       | 0.8.3           | Deprecated   |
+| MetalLB                       | 0.9.5           | Deprecated   |
+| Nginx                         | 0.26.1          | Deprecated   |
+| Nginx                         | 0.43.0          | Deprecated   |
+| Nginx                         | 1.0.4           | Deprecated   |
+| Nginx                         | 1.2.1           | Deprecated   |
+| Nginx                         | 1.3.0           | Deprecated   |
+| Nvidia GPU Operator           | 1.9.1           | Deprecated   |
+| Open Policy Agent             | 3.5.1           | Deprecated   |
+| Open Policy Agent             | 3.6.0           | Deprecated   |
+| Palette Upgrader              | 3.0.51          | Deprecated   |
+| Palette Upgrader              | 3.0.70          | Deprecated   |
+| Palette Upgrader              | 3.0.95          | Deprecated   |
+| Palette Upgrader              | 3.1.26          | Deprecated   |
+| Portworx Generic Addon        | 2.11.2          | Deprecated   |
+| Portworx Generic Addon        | 2.11.4          | Deprecated   |
+| Prometheus Operator           | 12.3.0          | Deprecated   |
+| Prometheus Operator           | 19.2.3          | Deprecated   |
+| Prometheus Operator           | 30.0.3          | Deprecated   |
+| Prometheus Operator           | 30.2.0          | Deprecated   |
+| Prometheus Operator           | 35.5.1          | Deprecated   |
+| Prometheus Operator           | 37.2.0          | Deprecated   |
+| Reloader                      | 0.0.104         | Deprecated   |
+| Spectro Proxy                 | 1.0.0           | Deprecated   |
+| Spectro Proxy                 | 1.1.0           | Deprecated   |
+
 
 
 

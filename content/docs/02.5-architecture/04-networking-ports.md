@@ -12,8 +12,21 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
+# Network Communication and Ports
 
-# SaaS Network Communications and Ports
+
+Depending on what version of Palette you are using, the internal architecture and network communication will be different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with Palette 4.0.0, the management platform communicates with the workload cluster via gRPC. Use the tabs below to view the network communication and ports for each architecture.
+
+
+<br />
+
+<Tabs>
+<Tabs.TabPane tab="gRPC" key="gRPC">
+
+## SaaS Network Communications and Ports
+
+
+
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
@@ -64,7 +77,7 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 </InfoBox>
 
 
-# Self-Hosted Network Communications and Ports
+## Self-Hosted Network Communications and Ports
 
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
@@ -104,3 +117,86 @@ NATS is deprecated and will be removed in a future release. Starting with Palett
 You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
 
 </InfoBox>
+
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="NATS" key="nats">
+
+## SaaS Network Communications and Ports
+
+The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
+
+![SaaS Network Diagram with ports](/architecture_networking-ports_network-diagram_nats.png "title=SaaS Network Diagram with ports")
+
+<br />
+
+#### SaaS Managed
+
+
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge_nats.png)
+
+
+The following ports must be reachable from a network perspective for Palette to operate properly.
+
+## Management Platform
+
+|Port            |Direction|Purpose                   |    
+|:---------------|:---------|:-----------------------|
+|HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
+|NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform|
+
+
+## Workload Cluster
+
+
+|Port            |Direction | Purpose|
+|:---------------|:---------|:--------------|
+|HTTPS (tcp/443) |OUTBOUND | API access to management platform|
+|NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
+|NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
+
+<InfoBox>
+
+You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
+
+</InfoBox>
+
+
+## Self-Hosted Network Communications and Ports
+
+The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
+
+
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram.png "#title="network diagram")
+
+## Management Platform
+
+|Port            |Direction|Purpose                   |    
+|:---------------|:---------|:-----------------------|
+|HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
+|NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters|
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API,  Registry (packs, integrations), Pack containers, app updates.|
+|HTTPS (tcp/6443)|OUTBOUND       |Workload K8s cluster API Server|
+
+
+## Workload Cluster
+
+
+|Port |Direction | Purpose|
+|:---------------|:---------|:--------------|
+|HTTPS (tcp/443) |OUTBOUND | API access to management platform|
+|NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus |
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+
+<InfoBox>
+
+You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
+
+</InfoBox>
+
+</Tabs.TabPane>
+</Tabs>
+
+
