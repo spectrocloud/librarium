@@ -87,7 +87,7 @@ The video below provides a demonstration of the installation wizard and the prom
 
   `video: title: "vertex-cli-install": /./vertex-install.mp4`
 
-Use the following steps to install the Palette VerteX. 
+Use the following steps to install Palette VerteX. 
 
 
 <br />
@@ -168,7 +168,7 @@ Use the following steps to install the Palette VerteX.
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
   | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
-  | **Use Registry for Images** | Type `y` to use the same registry for images. Type `n` to use a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
+  | **Use Registry for Images** | Type `y` to use a different registry for images. Type `n` to use the same registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 <br />
 
@@ -228,7 +228,7 @@ Use the following steps to install the Palette VerteX.
 <br />
 
 
-13. The last set of prompts are for the vSphere machine configuration. Enter the information listed in the following table.
+13. The last set of prompts is for the vSphere machine configuration. Enter the information listed in the following table.
 
   <br />
 
@@ -293,7 +293,7 @@ Use the following steps to install the Palette VerteX.
 15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
   
 
-16. After login, a Summary page is displayed. Configure HTTPS encryption for Palette VerteX. To configure HTTPS encryption, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+16. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
 
 
 17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 

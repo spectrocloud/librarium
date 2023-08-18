@@ -6,7 +6,7 @@
 # Assuming you have a .env file in the current directory.
 # source .env && envsubst < vertex-install.tape > vertex-install-creds.tape
 Require palette
-Output ../../content/docs/12.5-vertex/02-install-palette-vertex/vertex-install.mp4
+Output ../../content/docs/12.5-vertex/02-install-palette-vertex/10-install-on-vmware/vertex-install.mp4
 
 Set FontSize 14
 Set Width 950
@@ -27,7 +27,7 @@ Type@500ms "y"
 Enter
 Type "${UBUNTU_PRO}" # Ubuntu Pro Token
 Enter
-Type "https://repo-dev-fips.dev.spectrocloud.com"
+Type "https://repo-fips-rc40.rc.spectrocloud.com"
 Enter
 Type@300ms "spectro"
 Enter

@@ -15,7 +15,7 @@ import Tabs from 'shared/components/ui/Tabs';
 
 # Install Enterprise Cluster
 
-You have two options for installing Palette. You can use the Palette CLI to install a new self-hosted Palette instance or convert an existing single node cluster (Quick-Start Mode) to a highly available three node cluster. Select the tab below that corresponds to your installation type.
+You have two options for installing Palette. You can use the Palette CLI to install a new self-hosted Palette instance or convert an existing single-node cluster (Quick-Start Mode) to a highly available three-node cluster. Select the tab below that corresponds to your installation type.
 
 
 <br />
@@ -23,7 +23,7 @@ You have two options for installing Palette. You can use the Palette CLI to inst
 <WarningBox>
 
 
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the CLI tab below, or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)  guide for additional guidance on how to install Palette.
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the CLI tab below, or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart) guide for additional guidance on how to install Palette.
 
 </WarningBox>
 
@@ -40,7 +40,7 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 ## Prerequisites
 
 
-- An AMD64 Linux environment with connectivity to the VMware environment. 
+- An AMD64 Linux environment with connectivity to the VMware vSphere environment. 
 
 
 
@@ -52,7 +52,7 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 
 
 
-- Review required VMware [permissions](/enterprise-version/on-prem-system-requirements#vmwareprivileges).
+- Review required VMware vSphere [permissions](/enterprise-version/on-prem-system-requirements#vmwareprivileges).
 
   <br />
 
@@ -85,7 +85,7 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
 
-- Shared Storage between vSphere hosts.
+- Shared Storage between VMware vSphere hosts.
 
 <br />
 
@@ -106,7 +106,7 @@ The video below provides a demonstration of the installation wizard and the prom
 
   `video: title: "palette-cli-install": /./palette-install.mp4`
 
-Use the following steps to install the Palette. 
+Use the following steps to install Palette. 
 
 
 <br />
@@ -122,13 +122,13 @@ Use the following steps to install the Palette.
 2. At the **Enterprise Cluster Type** prompt, choose **Palette**.
 
 
-3. You have the option to install Palette on Ubuntu Pro. If you want to use Ubuntu Pro, type `y` and provide your Ubuntu Pro token when prompted. Otherwise, type `n` to continue.
+3. Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted to enter your Ubuntu Pro token.
 
 
 4. Provide the repository URL you received from our support team.
 
 
-5. Enter the repository password.
+5. Enter the repository credentials.
 
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
@@ -139,74 +139,123 @@ Use the following steps to install the Palette.
 
 8. When prompted, enter the information listed in each of the following tables.
 
-<br />
+  <br />
 
-#### Environment Configuration
+  #### Environment Configuration
 
-
-|**Parameter**| **Description**|
-|:-------------|----------------|
-|**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
-|**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
-|**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `maas.company.com,10.10.0.0/16`.|
-|**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
-|**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
-|**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
-
-<br />
-
-#### VMware vSphere Account Information
-
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-|**vSphere Endpoint** | vSphere endpoint: FQDN or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
-|**vSphere Username** | vSphere account username.|
-|**vSphere Password**| vSphere account password.|
-|**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  |**Parameter**| **Description**|
+  |:-------------|----------------|
+  |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
+  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `maas.company.com,10.10.0.0/16`.|
+  |**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
+  |**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
+  |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
 
 <br />
 
-#### VMware vSphere Cluster Configuration
 
-This information determines where Palette will be deployed in your VMware environment. The Palette CLI will use the provided VMware credentials to retrieve information from your VMware environment and present options for you to select from.
-
-
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-|**Datacenter**| The installer retrieves the Datacenter automatically. |
-|**Folder** | Select the folder that contains the VM instance. |
-|**Fault Domains** | Configure one or more fault domains by selecting values for these properties: Cluster, Network (with network connectivity), Resource Pool, and Storage Type (Datastore or VM Storage Policy). Note that when configuring the Network, if you are using a distributed switch, choose the network that contains the switch. |
-|**NTP Servers** | You can provide a list of Network Time Protocol (NTP) servers.  |
-|**SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference. |
-
-
-9. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
 
 <br />
 
-#### Static Placement Configuration
-| **Parameter**             | **Description**                         |
-|---------------------------|-----------------------------------------|
-| **IP Start range** | Enter the first address in the EC IP pool range.           |
-| **IP End range** | Enter the last address in the EC IP pool range.            |
-| **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
-| **Gateway IP Address** | Enter the IP address of the static IP gateway.              |
-| **Name servers** | Comma-separated list of DNS name server IP addresses.       |
-| **Name server search suffixes**  | An optional comma-separated list of DNS search domains. |
+
+9. Provide the Pack & Image Registry configuration values. Use the default registry URL unless you are using a custom registry. If you are using a custom registry, enter the URL, file path, and credentials for the registry.
+
+  <br />
+
+  #### Pack & Image Registry Configuration
+
+  | **Parameter**             | **Description**                         |
+  |---------------------------|-----------------------------------------|
+  | **Use Default Pack Registry URL** | The default is `https://registry.spectrocloud.com`. Select `y` to use the default registry URL.  |
+  | **Registry Type** | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. |
+  | **Registry Name** | Enter the name of the registry. |
+  | **Registry Endpoint** | Enter the registry endpoint. |
+  | **Registry Base Path** | Enter the registry base path. |
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
+  | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
+  | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
+  | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
+  | **Use Registry for Images** | Type `y` to use a different registry for images. Type `n` to use the same registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 <br />
 
-#### vSphere Machine Configuration
-|**Parameter**                            | **Description**|
-|-----------------------------------------|----------------|
-| **Number of CPUs** | The number of CPUs allocated to each VM node instance.|
-| **Memory** | The amount of memory allocated to each VM node instance.|
-| **Disk Size** | The size of the disk allocated to each VM node instance.|
+10. Next, specify the database storage size to allocate for Palette. The default is 20 GB. Refer to the [size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional information.
 
 
 
-  The installation process stands up a kind cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
+11. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
 
+  <br />
+
+  #### VMware vSphere Account Information
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  |**vSphere Endpoint** | vSphere endpoint. Must be a fully qualified domain name (FQDN) or IP address without a scheme - that is, without an IP protocol, such as `https://`. Example: `vcenter.mycompany.com`.|
+  |**vSphere Username** | vSphere account username.|
+  |**vSphere Password**| vSphere account password.|
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+
+  <br />
+
+  #### VMware vSphere Cluster Configuration
+
+  This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you to select from.
+
+  <br />
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  |**Datacenter**| The installer retrieves the Datacenter automatically. |
+  |**Folder** | Select the folder that contains the VM instance. |
+  | **Cluster** | Select the cluster where you want to deploy Palette. |
+  | **Network** | Select the network where you want to deploy Palette. |
+  | **Resource Pool** | Select the resource pool where you want to deploy Palette. |
+  | **Datastore** | Select the datastore where you want to deploy Palette. |
+  |**Fault Domains** | Configure one or more fault domains by selecting values for these properties: Cluster, Network (with network connectivity), Resource Pool, and Storage Type (Datastore or VM Storage Policy). Note that when configuring the Network, if you are using a distributed switch, choose the network that contains the switch. |
+  |**NTP Servers** | You can provide a list of Network Time Protocol (NTP) servers.  |
+  |**SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference. |
+
+
+12. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
+
+  <br />
+
+  #### Static Placement Configuration
+  | **Parameter**             | **Description**                         |
+  |---------------------------|-----------------------------------------|
+  | **IP Start range** | Enter the first address in the EC IP pool range.           |
+  | **IP End range** | Enter the last address in the EC IP pool range.            |
+  | **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are in [0, 32]. Example: `18`. |
+  | **Gateway IP Address** | Enter the IP address of the static IP gateway.              |
+  | **Name servers** | Comma-separated list of DNS name server IP addresses.       |
+  | **Name server search suffixes**  | An optional comma-separated list of DNS search domains. |
+
+
+<br />
+
+
+13. The last set of prompts is for the vSphere machine configuration. Enter the information listed in the following table.
+
+  <br />
+
+  #### vSphere Machine Configuration
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Number of CPUs** | The number of CPUs allocated to each VM node instance.|
+  | **Memory** | The amount of memory allocated to each VM node instance.|
+  | **Disk Size** | The size of the disk allocated to each VM node instance.|
+
+
+  <br />
+
+
+  The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
+
+  <br />
 
   Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
 
@@ -217,9 +266,9 @@ This information determines where Palette will be deployed in your VMware enviro
   Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
   ```
 
-<br />
+  <br />
 
-When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette System Console.
+  When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette System Console.
 
   <br />
 
@@ -233,7 +282,7 @@ When the installation is complete, Enterprise Cluster Details that include a URL
   ```
 
 
-10.  Copy the URL to the browser to access the System Console. You will be prompted to reset the password.
+14. Copy the URL to the browser to access the System Console. You will be prompted to reset the password.
 
   <br />
 
@@ -243,19 +292,24 @@ When the installation is complete, Enterprise Cluster Details that include a URL
 
   </InfoBox> 
 
+  <br />
 
-![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+  ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
 
 <br />
 
 
-11. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
   
 
-12. After login, a Summary page is displayed. Click the **Go to Tenant Management** button to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
+16. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette.
 
 
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
+17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
+
+  <br />
+
+  ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
 
 
 # Validate

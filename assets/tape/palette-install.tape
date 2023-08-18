@@ -18,22 +18,25 @@ Set BorderRadius 10
 
 Show
 Type "palette ec install"
-Enter
-Sleep 3s
-Enter
-Type@500ms "n"
 Sleep 2s
 Enter
-Type@200ms "https://saas-repo.console.spectrocloud.com"
+Sleep 1s
 Enter
-Type@300ms "spectro"
+Type "n"
+Sleep 2s
+# Enter
+# Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
 Enter
-Type "${SAAS_PROD_SCAR_REPO_PASSWORD}" # Packs Repository Password
+Type "https://repo-fips-rc40.rc.spectrocloud.com"
 Enter
-Sleep 3s
-Type "y"
+Type@200ms "spectro"
+Enter
+Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
 Enter
 Sleep 1s
+Type "y" # Allow Insecure Connection
+Enter
+Sleep 3s
 Enter
 Sleep 1s
 Type "spectro-mgmt-cluster"
@@ -49,12 +52,42 @@ Enter # Proxy CA Cert
 Sleep 2s
 Type "172.16.0.0/20"
 Enter
-Sleep 2s
+Sleep 1s
 Type "10.155.0.0/24"
 Enter
-Sleep 2s
-Type "y"
+Sleep 1s
+# Type "y" # The Packs & Image repository configurations.
+Down 1 # Registry Type OCI ECR
 Enter
+Sleep 1s
+Type "Palette Registry"
+Enter
+Sleep 2s
+Type "${NON_FIPS_OCI_ECR_URL}"
+Enter
+Sleep 2s
+Type "${NON_FIPS_OCI_ECR_BASE_PATH}"
+Enter
+Sleep 2s
+Type "y"  # Allow Insecure Connection
+Enter
+Sleep 2s
+Type "${NON_FIPS_OCI_ECR_ACCESS_KEY}" # AWS Access Key
+Enter
+Sleep 2s
+Type "${NON_FIPS_OCI_ECR_SECRET_KEY}"
+Enter
+Sleep 2s
+Type "${NON_FIPS_OCI_ECR_REGION}"
+Enter
+Sleep 2s
+Type "y" # Is Registry private?
+Enter
+Sleep 2s
+Type@500ms "n" # Use OCI Registry for images?
+Enter
+Sleep 3s
+Enter # Database Size
 Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
@@ -64,14 +97,14 @@ Enter
 Sleep 2s
 Type "${VCENTER_PASSWORD}" # vCenter Password
 Enter
-Sleep 1s
-Type "y" # Allow Insecure
+Sleep 2s
+Type@500ms "y" # Allow Insecure
 Enter
 Sleep 4s
 Enter
 Sleep 4s
 Type "sp-karl"
-Sleep 1s
+Sleep 2s
 Enter
 Sleep 3s
 Down 1
@@ -85,8 +118,8 @@ Sleep 3s
 Enter  # VM Storage Policy
 Sleep 3s
 Enter # Datastore
-Sleep 1s
-Type "n" # Fault Domain
+Sleep 2s
+Type@500ms "n" # Fault Domain
 Sleep 2s
 Enter # NPT servers
 Enter
@@ -120,4 +153,4 @@ Sleep 1s
 Enter # Disk Size
 
 
-Sleep 35s
+Sleep 25s
