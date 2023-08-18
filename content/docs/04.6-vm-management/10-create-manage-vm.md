@@ -16,9 +16,33 @@ import InfoBox from 'shared/components/InfoBox';
 
 Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
 
+# Prerequisites
+
+Palette Virtual Machine Orchestrator requires the following:
+
+<br />
+
+- Palette version 3.3.0 or higher.
+
+
+- Production VMs are supported on bare metal Kubernetes clusters deployed on Canonical MAAS. To learn how to configure MAAS and create MAAS clusters in Palette, refer to the [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) guide.
+
+
+- VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports ``ReadWriteMany`` (``RWX``) access mode for seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
+
+
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
+
+
+- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+
+
+- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
+
+
+# VM Creation
 
 You can create a VM three ways:
-
 
 <br />
 
@@ -40,11 +64,9 @@ Additionally, Virtio is a virtualization standard for network and disk device dr
 
 <WarningBox>
 
-We recommend installing the QEMU guest agent to display additional details in Palette Virtual Machine Orchestrator. We also recommend installing VirtIO drivers to ensure you can use the paravirtualized hardware properly. To learn how to install the guest agent and drivers, refer to the [RedHat](https://docs.openshift.com/container-platform/4.8/virt/virtual_machines/virt-installing-qemu-guest-agent.html) reference.
+We recommend installing the QEMU guest agent to display additional details in Palette Virtual Machine Orchestrator. We also recommend installing VirtIO drivers to ensure you can use the paravirtualized hardware properly. To learn how to install the guest agent and drivers, refer to the [Red Hat](https://docs.openshift.com/container-platform/4.8/virt/virtual_machines/virt-installing-qemu-guest-agent.html) reference.
 
 </WarningBox>
-
-
 
 # Resources
 

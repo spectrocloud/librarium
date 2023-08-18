@@ -19,26 +19,7 @@ The **Virtual Machine Orchestrator** pack that you use to create a VMO cluster p
 
 # Prerequisites
 
-Palette VM Orchestrator requires the following:
-
-<br />
-
-- Palette version 3.3.0 or higher.
-
-
-- Production VMs are supported on bare metal Kubernetes clusters deployed on Canonical MAAS. To learn how to configure MAAS and create MAAS clusters in Palette, refer to the [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) guide.
-
-
-- VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports ``ReadWriteMany`` (``RWX``) access mode for seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
-
-
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
-
-
-- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
-
-
-- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
+- A Palette permission key `create` for the resource `clusterProfile`.
 
 
 # Create the Profile
