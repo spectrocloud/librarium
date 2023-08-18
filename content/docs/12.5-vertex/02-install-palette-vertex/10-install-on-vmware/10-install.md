@@ -147,7 +147,7 @@ Use the following steps to install Palette VerteX.
 
 
 
-9. Select the OCI registry type and provide the configuration values. Review the following table for more informatio
+9. Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
   <br />
 
