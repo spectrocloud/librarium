@@ -168,7 +168,7 @@ Use the following steps to install Palette VerteX.
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
   | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
-  | **Use Public Registry for Images** | Type `y` to use a a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
+  | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 <br />
 

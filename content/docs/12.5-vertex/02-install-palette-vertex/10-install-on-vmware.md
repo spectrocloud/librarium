@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette VerteX can be installed on VMware with internet connectivity or an airgap environment. When you install Palette VerteX, a three-node cluster is created. You use the interactive Palette CLI to install Palette VerteX on VMware. Refer to [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on requesting repository access.
+Palette VerteX can be installed on VMware vSphere with internet connectivity or an airgap environment. When you install Palette VerteX, a three-node cluster is created. You use the interactive Palette CLI to install Palette VerteX on VMware vSphere. Refer to [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on requesting repository access.
 
 # Resources
 

@@ -209,7 +209,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     </InfoBox>
 
 
-8. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the System Console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/`system` to access the system console.
+8. Use the custom domain name or the IP address of the load balancer to visit the Palette VerteX system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/`system` to access the system console.
 
   <br />
 
@@ -221,7 +221,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
   <br />
 
-  ![A view of the Palette System Console login screen.](/vertex_install-on-kubernetes_install_system-console.png)
+  ![A view of the Palette system console login screen.](/vertex_install-on-kubernetes_install_system-console.png)
 
 
 9. Log in to the system console using the following default credentials. 

@@ -100,7 +100,7 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 ## Deployment
 
 
-The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the three-dots icon in the lower right corner of the video to expand the video to full screen and to change the playback speed.
+The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
   <br />
 
@@ -177,7 +177,7 @@ Use the following steps to install Palette.
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
   | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
-  | **Use Public Registry for Images** | Type `y` to use a a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
+  | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 <br />
 
@@ -268,7 +268,7 @@ Use the following steps to install Palette.
 
   <br />
 
-  When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette System Console.
+  When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette system console.
 
   <br />
 
@@ -282,7 +282,7 @@ Use the following steps to install Palette.
   ```
 
 
-14. Copy the URL to the browser to access the System Console. You will be prompted to reset the password.
+14. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
   <br />
 
@@ -329,7 +329,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 3. Select the VM to access its details page, and verify three nodes are listed.
 
 
-4. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette System Console. Copy the IP address to the address bar and append `/system`.
+4. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
 
 
 5. Log in using your credentials.

@@ -107,7 +107,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Features
 
-- Palette Edge now supports ARM64 architecture. You can now deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
+- Palette Edge now supports ARM64 architecture. This is a beta feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
 
 
 - Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
@@ -118,6 +118,14 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 - You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
+
+
+### Known Issues
+
+
+- An Edge host cannot be repurposed to another Edge cluster without preparatory steps. To repurpose an Edge host from an existing cluster with another Edge cluster, the device must be re-flashed with the Palette Edge installer and the required Edge installation artifacts.
+
+
 ## Palette Dev Engine (PDE)
 
 ### Features
