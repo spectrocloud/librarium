@@ -155,11 +155,7 @@ Use the following steps to install Palette.
 <br />
 
 
-
-<br />
-
-
-9. Provide the Pack & Image Registry configuration values. Use the default registry URL unless you are using a custom registry. If you are using a custom registry, enter the URL, file path, and credentials for the registry.
+9. Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
   <br />
 
@@ -167,7 +163,6 @@ Use the following steps to install Palette.
 
   | **Parameter**             | **Description**                         |
   |---------------------------|-----------------------------------------|
-  | **Use Default Pack Registry URL** | The default is `https://registry.spectrocloud.com`. Select `y` to use the default registry URL.  |
   | **Registry Type** | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. |
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
