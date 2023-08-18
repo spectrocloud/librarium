@@ -12,7 +12,7 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# August 18, 2023 - Release 4.0.0
+# August 27, 2023 - Release 4.0.0
 
 Palette 4.0.0 introduces new features and improvements, including [Palette VerteX](/vertex) - a FIPS-compliant edition - and the [Virtual Machine Orchestrator](/vm-management) (VMO) which enables unified management of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User Interface (UI) that improves the user experience for finding and installing packs. Check out the release notes below to learn more about the new features and improvements in Palette 4.0.0.
 
@@ -53,6 +53,9 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Self-hosted Palette now provides a new installation method using the [Palette CLI](/palette-cli). You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
 
 
+- Private Cloud Gateway (PCG) deployments are now available through the Palette CLI. You can now install a PCG through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure the PCG installation parameters. Check out the Palette CLI [PCG install command](/palette-cli/commands/#pcg) documentation to learn more. The previous installation method using the PCG Docker image is deprecated and unavailable in this release.
+
+
 - You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to the [Add-on Profile](/cluster-profiles/create-add-on-profile#packlabelsandannotations) documentation.
 
 ### Improvements
@@ -81,7 +84,21 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can now access Palette documentation directly from the Palette UI. This allows you to quickly access the documentation for the page you are currently on. You can find the documentation link in the top right corner of the Palette UI.
 
 
-- Palette now supports configuring the time interval for node repaves. In the scenario of a node repavement, the time interval is the amount of time that Palette waits before it starts the node replacement process on other nodes in the cluster. The default time interval is 15 minutes.
+- Palette now supports configuring the time interval for node repavement. The time interval is the amount of time that Palette waits before it starts the node replacement process on nodes in the cluster. The default time interval is 15 minutes. Refer to the [Node Pool](/clusters/cluster-management/node-pool/) documentation to learn more.
+
+
+
+### Deprecations and Removals
+
+- The Palette OVA Installer is deprecated and unavailable in this release. You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more.
+
+
+
+- The Palette PCG Docker installation method is deprecated and not available in this release. You can now install a PCG through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the Palette CLI [PCG install command](/palette-cli/commands/#pcg) documentation to learn more.
+### Known Issues
+
+- With the deprecation of deploying Virtual Clusters directly into host clusters. The ability to specify an Add-on profile to a Palette Virtual Cluster is currently unavailable. This will be addressed in a future release.
+
 
 
 ## Edge
@@ -111,6 +128,19 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - The Palette CLI now supports managing App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update, and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app` commands to manage App Profiles and Apps. Refer to the [Palette CLI](/palette-cli) documentation or use the `--help` flag to learn more.
 
 
+## Virtual Machine Orchestrator (VMO)
+
+### Features
+
+
+- Host clusters supporting Virtual Machine (VM) workloads can now be placed in host maintenance mode, with the ability to choose which Kubernetes node to place in maintenance mode. When a node is placed in maintenance mode, also known as “cordoned”, the VM workload is automatically migrated without any disruptions to another healthy node in the cluster.
+
+
+- VMO supports the ability to import a VMware OVA template from VMware vSphere into Palette. This allows you to import a VM template from VMware vSphere into Palette and deploy it as a VM workload in a host cluster.
+
+
+- You can now migrate a VM from VMware vSphere to a host cluster in Palette through the Palette CLI. The CLI provides an interactive migration experience allowing you to configure the VM migration parameters.
+
 ## Vertex
 
 ### Features
@@ -126,9 +156,16 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - Version 0.15.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
+
+## Education
+
+- A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
+
+
+- The documentation site for Palette now provides a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette, and it will provide you with relevant answers and documentation links.
+
+
 ## Packs
-
-
 
 ### Kubernetes
 
@@ -195,21 +232,149 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
-| Ngrok Ingerss Controller | 0.9.0    |
+| Ngrok Ingerss Controller | 0.9.0  |
 
 ### Pack Notes
 
 - A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
 
+### Deprecations and Removals
 
-- Kubernetes versions 1.22.x and 1.23.x are deprecated.
+The following packs are marked as deprecated and will be disabled in three months. Refer to the [Maintenance Policy](integrations/maintenance-policy) for more details.
 
-## Education
+<br />
 
-- A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
+#### Kubernetes
+
+| **Pack**                                  | **Version** | **Status**   |
+|-------------------------------------------|-------------|--------------|
+| MicroK8s                                  | 1.23        | Deprecated   |
+| Kubernetes Coxedge                        | 1.21.14     | Deprecated   |
+| Kubernetes Coxedge                        | 1.22.12     | Deprecated   |
+| Kubernetes Coxedge                        | 1.23.9      | Deprecated   |
+| Kubernetes EKS                            | 1.17        | Deprecated   |
+| Kubernetes EKS                            | 1.18        | Deprecated   |
+| Kubernetes EKS                            | 1.18        | Deprecated   |
+| Kubernetes EKS                            | 1.19        | Deprecated   |
+| Kubernetes EKS                            | 1.20        | Deprecated   |
+| Kubernetes EKS                            | 1.21        | Deprecated   |
+| Kubernetes EKS                            | 1.22        | Deprecated   |
+| Kubernetes EKS                            | 1.23        | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.0      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.4      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.5      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.6      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.7      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.8      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.9      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.10     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.11     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.12     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.13     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.14     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.15     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.19.16     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.0      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.1      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.2      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.4      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.5      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.6      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.7      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.8      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.9      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.10     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.11     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.12     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.20.14     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.0      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.1      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.2      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.3      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.5      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.6      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.8      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.10     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.21.14     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.22.7      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.22.12     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.23.4      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.23.9      | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.23.16     | Deprecated   |
+| Palette eXtended Kubernetes (PXK)         | 1.23.17     | Deprecated   |
+| K3s                                       | 1.22.13     | Deprecated   |
+| K3s                                       | 1.22.15     | Deprecated   |
+| K3s                                       | 1.23.10     | Deprecated   |
+| K3s                                       | 1.23.12     | Deprecated   |
+| K3s                                       | 1.24.6      | Deprecated   |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.22.15     | Deprecated   |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.23.12     | Deprecated   |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.24.6      | Deprecated   |
+| RKE2                                      | 1.22.13     | Deprecated   |
+| RKE2                                      | 1.22.15     | Deprecated   |
+| RKE2                                      | 1.23.10     | Deprecated   |
+| RKE2                                      | 1.23.12     | Deprecated   |
+| RKE2                                      | 1.24.6      | Deprecated   |
 
 
-- The documentation site for Palette now provides a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette, and it will provide you with relevant answers and documentation links.
+
+### CNI
+
+| **Pack**      | **Version**   | **Status**   |
+|---------------|---------------|--------------|
+| Calico        | 3.9           | Deprecated   |
+| Calico        | 3.10          | Deprecated   |
+| Calico        | 3.16          | Deprecated   |
+| Calico        | 3.19          | Deprecated   |
+| Calico        | 3.22          | Deprecated   |
+| Cilium OSS    | 1.10.9        | Deprecated   |
+| Cilium OSS    | 1.12.3        | Deprecated   |
+| Cilium OSS    | 1.12.4        | Deprecated   |
+
+
+
+#### CSI
+
+| **Pack**              | **Version**  | **Status**   |
+|-----------------------|--------------|--------------|
+| AWS EBS CSI           | 1.5.1        | Deprecated   |
+| AWS EBS CSI           | 1.8.0        | Deprecated   |
+| AWS EBS CSI           | 1.10.0       | Deprecated   |
+| AWS EBS CSI           | 1.12.0       | Deprecated   |
+| Openstack Cinder      | 1.18         | Deprecated   |
+| Openstack Cinder      | 1.19         | Deprecated   |
+| Openstack Cinder      | 1.20         | Deprecated   |
+| Openstack Cinder      | 1.21         | Deprecated   |
+| Openstack Cinder      | 1.22         | Deprecated   |
+| Openstack Cinder      | 1.23         | Deprecated   |
+
+
+
+#### Add-on
+
+| **Pack**                   | **Version**     | **Status**   |
+|----------------------------|-----------------|--------------|
+| Hashicorp Vault            | 0.3.1           | Deprecated   |
+| Hashicorp Vault            | 0.6.0           | Deprecated   |
+| Hashicorp Vault            | 0.9.0           | Deprecated   |
+| Hashicorp Vault            | 0.11.0          | Deprecated   |
+| Hashicorp Vault            | 0.17.1          | Deprecated   |
+| Hashicorp Vault            | 0.20.1          | Deprecated   |
+| Open Policy Agent          | 3.5.1           | Deprecated   |
+| Open Policy Agent          | 3.6.0           | Deprecated   |
+| Prometheus Operator        | 12.3.0          | Deprecated   |
+| Prometheus Operator        | 19.2.3          | Deprecated   |
+| Prometheus Operator        | 30.0.3          | Deprecated   |
+| Prometheus Operator        | 30.2.0          | Deprecated   |
+| Prometheus Operator        | 35.5.1          | Deprecated   |
+| Prometheus Operator        | 37.2.0          | Deprecated   |
+| Kubernetes Dashboard       | 2.0.1           | Deprecated   |
+| Kubernetes Dashboard       | 2.1.0           | Deprecated   |
+| Kubernetes Dashboard       | 2.4.0           | Deprecated   |
+| Kubernetes Dashboard       | 2.5.1           | Deprecated   |
+| AWS Cluster Autoscaler     | 1.0.0           | Deprecated   |
+
+
 
 
 # May 22, 2023 - Release 3.4.0
