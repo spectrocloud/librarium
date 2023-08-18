@@ -22,7 +22,7 @@ Palette allows you to schedule and take a backup of a specific cluster or an ent
 
 Before you create a backup, the initial step is to configure a backup location in Palette. A backup location is an object storage in the cloud. Palette supports the following object storages as the backup location.
 
-- Amazon Web Services (AWS) S3 bucket
+- Amazon Web Services (AWS) Simple Storage Service (S3) bucket
 
 - Google Cloud Platform (GCP) bucket
 
@@ -103,14 +103,14 @@ The following section will describe the prerequisites and the steps to configure
 	}
 	```
 
-<br /> <br />	
+<br /> 	
 
 ## Configure an AWS S3 Bucket as the Backup Location
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** > **Backup Locations** page and 
+2. Navigate to the **Project Settings** > **Backup Locations** page. 
 
 
 3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as highlighted in the screenshot below. 
@@ -120,17 +120,17 @@ The following section will describe the prerequisites and the steps to configure
 
 4. Provide the following configuration in the wizard to configure an AWS S3 Bucket as the backup location. 
 
-	|**Palette Configuration Field**|**Value**|
+	|**Configuration Field**|**Value**|
 	|---|---|
-	|Location Name|Name of your choice.|
-	|Location Provider|Select AWS from the drop-down field. |
-	|Certificate|It is optional for AWS, and required only for MinIO.|
-	|S3 Bucket|S3 bucket name must be pre-created on the object-store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.|
-	|Region|Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.|
-	|S3 URL|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
+	|**Location Name**|Name of your choice.|
+	|**Location Provider**|Select AWS from the drop-down field. |
+	|**Certificate**|It is optional for AWS, and required only for MinIO.|
+	|**S3 Bucket**|S3 bucket name must be pre-created in the object-store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.|
+	|**Region**|Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.|
+	|**S3 URL**|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
 
 
-5. Next, choose a validation method, *Credentials* or *STS*. This step will validate the AWS account to store the backup. <br /> <br />
+5. Next, choose a validation method, **Credentials** or **STS**. This step will validate the AWS account to store the backup. <br /> <br />
 
 	<Tabs>
 
@@ -219,7 +219,9 @@ The following section will describe the prerequisites and the steps to configure
   }
   ```
 
-<br /> <br />	
+8. Click **Create** to finish the location creation wizard. 
+
+<br /> 
 
 
 </Tabs.TabPane>
@@ -230,31 +232,35 @@ The following section will describe the prerequisites and the steps to configure
 
 * GCP service account with a `storage admin` role.
 
+
 * Pre-created bucket at the GCP object storage.
 
-<br /> <br />	
+<br /> 
 
 ## Configure a GCP Bucket as the Backup Location
 
-These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
-
-The following details are required to configure a backup location in GCP:
-
-1. **Location Name**: Name of your choice.
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. **Location Provider**: Google Cloud (Choose this option when backing up to the GCP bucket object store).
+2. Navigate to the **Project Settings** > **Backup Locations** page. 
 
 
-3. **Bucket**: The name of the bucket name pre-created on the object store.
+3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location.
 
 
-4. **JSON Credentials**: For external authentication of the GCP storage.
+4. Use the following details to configure a backup location in GCP.
+
+	|**Field**|**Value**|
+	|---|---|
+	|**Location Name**|Name of your choice.|
+	|**Location Provider**|Select GCP from the drop-down field. |
+	| **Bucket** | The name of the bucket pre-created in the GCP object store.|
+	| **JSON Credentials** | Provide the JSON credentials for the external authentication of the GCP storage.|
 
 
-5. Click Create to complete the location creation wizard.
+5. Click **Create** to finish the backup location creation wizard.
 
-<br /> <br />	
+<br /> 	
 
 </Tabs.TabPane>
 
@@ -264,44 +270,45 @@ The following details are required to configure a backup location in GCP:
 
 * S3 bucket with Read/Write Access
 
+
 * A unique access key (username) and corresponding secret key (password) from MinIO Console. 
+
 
 * Service provider certificate (Optional)
 
-<br /> <br />	
+<br /> 
 
 ## Configure a MinIO Bucket as the Backup Location
 
 
-The following details are required to configure a backup location in MinIO:
-
-1. **Location Name**: Name of your choice.
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. **Location Provider**: Minio
+2. Navigate to the **Project Settings** > **Backup Locations** page. 
 
 
-3. **Certificate**: Optionally required for MinIO.
+3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location.
 
 
-4. **S3 Bucket**: S3 bucket name must be pre-created on the MinIO object-store.
+4. Use the following details to configure a backup location in MinIO. 
+
+	|**Field**|**Value**|
+	|---|---|
+	|**Location Name**|Name of your choice.|
+	|**Location Provider**|Select MinIO from the drop-down field. |
+	|**Certificate**|Required for MinIO.|
+	|**S3 Bucket**|S3 bucket name must be pre-created in the MinIO object-store. |
+	| **Region** | Region in which Minio server is configured. Example: `us-east-1` |
+	|**S3 URL** | URL of the MinIO object storage console. Example: `http://12.123.234.567:0000`|
+	|**Force S3 path style** | To force S3 path style addressing or else the URL will be converted to virtual-hosted style addressing with bucket name appended to the URL. This is an optional setting. |
 
 
-5. **Region**: Region in which Minio server is configured. Example: us-east-1
+5. Next, provide the MiniIO unique **Access Key** and **Secret Key**. You can procure a unique access key (username) and the corresponding secret key (password) from the MinIO console.
 
 
-6. **S3 URL**: Url of the MinIO object storage console. Example: `http://12.123.234.567:0000'
+6. Click **Create** to finish the location creation wizard. 
 
-
-7. **Force S3 path style** : To force S3 path style addressing or else the url will be converted to virtual-hosted style addressing with bucket name appended to the url.This is an optional setting.
-
-
-8. Provide the MiniIO unique **Access Key** and **Secret Key**. An unique access key (username) and corresponding secret key (password) can be obtained for every MinIO user account from MinIO console.
-
-
-9. Click **Create** to complete the location creation wizard. 
-
-<br /> <br />	
+<br />	
 
 </Tabs.TabPane>
 
@@ -327,41 +334,35 @@ The following details are required to configure a backup location in MinIO:
 
 ## Configure the Backup in Azure Blob
 
-The following details are required to configure a backup location in Azure:
 
-1. **Location Name**: A custom name for the storage location getting created.
-
-
-2. **Location Provider:** Select **Azure** from the drop-down.
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-3. **Container Name:** The container created in Azure Storage.
+2. Navigate to the **Project Settings** > **Backup Locations** page. 
 
 
-4. **Storage Name**: Name of the Azure storage created.
+3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location.
 
 
-5. **Stock-Keeping Unit**: Information from the Azure storage.
+4. Use the following details to configure a backup location in Azure. 
+
+	|**Field**|**Value**|
+	|---|---|
+	|**Location Name**|Name of your choice.|
+	|**Location Provider**|Select Azure from the drop-down field. |
+	|**Container Name:** | Provide the container created in the Azure Storage. |
+	| **Storage Name** | Name of the Azure Storage resource. |
+	| **Stock-Keeping Unit** | Get this information from the Azure Storage resource. |
+	| **Resource Group:** | Provide the Azure Resource Group name. |
+	|**Tenant ID** | Provide the Azure tenant ID.|
+	| **Client ID** | Provide the Azure client ID of the service principal. |
+	| **Subscription ID** |Provide the Azure subscription ID where you have created the Resource Group and the Azure Storgae resource.|
+	| **Client Secret** | Provide the Azure client secret for the service principal you created for Palette to assume. |
 
 
-6. **Resource Group:** Azure Resource Group name
+5. Click **Create** to finish the backup location creation wizard.
 
-
-7. **Tenant ID:** Azure Account Credential.
-
-
-8. **Client ID:** Azure Account Credential.
-
-
-9. **Subscription ID**: Azure Account Credential.
-
-
-10. **Client Secret:** Secret created in the Azure console needs to be validated.
-
-
-11. Click **Create** to complete the location creation wizard.
-
-<br /> <br />	
+<br /> 
 
 </Tabs.TabPane>
 
@@ -369,74 +370,134 @@ The following details are required to configure a backup location in Azure:
 
 ## Create a Cluster Backup
 
-Backups can be scheduled or initiated on demand during cluster creation. Backups can also be scheduled for a running cluster. The following information is required to configure a cluster backup:
+You can schedule a backup or initiate a backup on demand. You can define a backup schedule in the cluster configuration for an existing cluster or while deploying a cluster. Palette supports scheduling a backup for a specific timestamp or scheduling it a specific frequency. You can also specify the backup expiry period, meaning the duration after which Palette will delete the backup automatically. For example, you can schedule a backup for every week on Sunday at midnight and trigger it will expire after 3 months from the backup date. You can also initiate a backup on demand for an existing cluster. 
 
-1. **Backup Prefix / Backup Name**:
-	* For scheduled backup, a name will be generated internally, add a prefix of our choice to append with the generated name.
-	* For an on demand Backup, a name of user choice can be used.
+Use the following instructions in Palette to create a backup for an existing cluster. Choose the applicable use case - schedule a backup or initiate an on-demand backup. 
 
+<br />
 
-2. Select the **Backup location**.
+<Tabs>
+<Tabs.TabPane tab="Schedule a backup" key="schedulebackup">
 
+<br />
 
-3. **Backup Schedule**: Create a backup schedule of your choice from the drop-down, applicable only to scheduled backups.
-
-
-4. **Expiry Date**: Select an expiry date for the backups. The backup will be automatically removed on the expiry date.
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-5. **Include all disks**: Optionally backup persistent disks as part of the backup.
+2. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
 
 
-6. **Include Cluster Resources**: Select or deselect on your choice.
+3. Select the specific cluster to view its details. It should be the cluster for which you want to schedule a backup. Ensure that the cluster status shows *Healthy*. 
 
 
-7. **Namespaces**: Provide namespaces that need to be backed up. If left empty then all the Namespaces will be backed up.
-
-|On Demand Backup   |
-|-------------------|
-|Select the cluster from **Backup** > **Settings** > **Cluster Settings** > **Schedule Backups**|
-
-|Scheduled Backup |
-|-----------------|
-|**Cluster Creation** > **Policies** > **Backup Policies**|
+4. Click on the **Settings drop-down Menu** on the top right corner, and select **Cluster Settings**. Palette will open a collapsible blade containing the cluster settings on the right. 
 
 
-### Backup Scheduling Options
+5. Next, on the **Settings Menu**, select the **Schedule Backups** menu item. The screenshot below highlights the fields for scheduling a backup. 
 
-Both the cluster and workspace backup support the following scheduling options:
+	![A screenshot highlighting the fields for scheduling a backup for an existing cluster.](/clusters_cluster-management_backup-restore_scheduled-backup.png)
 
-* Customize your backup for the exact month, day, hour, and minute of the user's choice
-* Every week on Sunday at midnight
-* Every two weeks at midnight
-* Every month on the 1st at midnight
-* Every two months on the 1st at midnight
 
-<br /> <br />	
+6. Use the following information to configure a scheduled backup.
+
+	|**Field**|**Description**|
+	|---|---|
+	|**Backup prefix**|Palette will generate a name automatically. Provide a prefix string you want to prepend to the auto-generated name. |
+	|**Select backup location**|Choose a backup location. You must configure a location before creating a backup. |
+	|**Backup schedule**|Create a backup schedule of your choice from the **drop-down Menu**. You can review the cheduling options below the current table.|
+	|**Select period until expiry**|Select an expiry duration for the backups. Palette will delete the backup after the expiry duration.|
+	|**Include all disks**|Your choice.|
+	|**Include cluster resources**|Your choice.|
+	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can unselect specific namespaces per your choice. |
+
+	A cluster backup supports the following scheduling options:	
+
+	* Customize your backup for the exact month, day, hour, and minute of the user's choice
+	* Every week on Sunday at midnight
+	* Every two weeks at midnight
+	* Every month on the 1st at midnight
+	* Every two months on the 1st at midnight
+	* Never
+
+
+7. Click on the **Save Changes** button at the bottom. 
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Initiate an on-demand backup" key="initiateondemand">
+
+<br />
+
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+
+2. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
+
+
+3. Select the specific cluster to view its details. It should be the cluster for which you want to schedule a backup. Ensure that the cluster status shows *Healthy*. 
+
+
+4. Navigate to the **Backups** tab and click on the **Create Backup** button. The screenshot below highlights a popup window that Palette will open after clicking the button. The popup windows will contain the fields for initiating an on-demand backup. 
+
+	![A screenshot highlighting the fields for an on-demand backup for an existing cluster.](/clusters_cluster-management_backup-restore_ondemand-backup.png)
+
+
+
+5. Use the following information to configure a scheduled backup.
+
+	|**Field**|**Description**|
+	|---|---|
+	|**Backup name**|Provide a name of your choice. |
+	|**Select backup location**|Choose a backup location. You must configure a location before creating a backup. |
+	|**Select period until expiry**|Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration.|
+	|**Include all disks**|Your choice.|
+	|**Include cluster resources**|Your choice.|
+	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can unselect specific namespaces per your choice. |
+
+
+6. Click on the **Create Backup** button at the bottom. 
+
+
+</Tabs.TabPane>
+</Tabs>
+
+<br />
 
 ## Restore a Backup
 
-Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. 
+You can restore a backup to any target cluster with supporting infrastructure in the same project. In other words, the target cluster and the backup's originating cluster must belong to the same project. 
+<br />
 
-1. Restore operation can be initiated by selecting the restore option for a specific backup. 
-
-
-2. Next, you would be prompted to select a target cluster where you would like the backup to be restored. The progress of the restore operation can be tracked from the target cluster's backup/restore page. 
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-3. Finally, restore operation can be done to the cluster running on the same project.
+2. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
 
 
-<WarningBox>
-Some manual steps might be required, when restoring backups to a cluster running on a cloud different from the source cluster. For example, you might need to pre-create a storage class on the cluster before initiating restore procedures:
-  For EKS, please specify <b>gp2 storage class</b>.
-  For other cloud environments, please specify <b>spectro-storage-class</b>.
-</WarningBox>
+3. Select the specific cluster to view its details. It should be the cluster for which you want to restore a backup. 
 
-<WarningBox>
-When restoring your backup to a cluster launched using a cloud account different from the one used for the source account, permissions need to be granted before restoration is initiated to the new cluster.  
-</WarningBox>
 
-<InfoBox>
-    This operation can be performed on all cluster types across all clouds.
-</InfoBox>
+4. Navigate to the **Backups** tab and click on the **Restores** in the nested tabs. 
+
+
+5. Palette will display a list of all available backups in the  **Restores** section. The list will display both the scheduled and on-demand backups. 
+
+
+6. Select a specific backup to restore. Palette will open a wizard for the restore operation. 
+
+
+7. In the restore operation wizard, select the target cluster where you want the backup to be restored. For example, you can select the current or a different cluster, if desired. You can initiate a restore operation on all cluster types across all clouds if the target cluster belongs to the same project.  <br /> <br />
+
+	<WarningBox>
+
+	Suppose the target cluster is deployed in a different cloud account than the backup location. In that case, you must pre-create a storage class on the target cluster before initiating the restore operation. While creating a storage class for the target cluster on EKS,  specify **gp2 storage class**. Whereas for all other cloud environments, specify **spectro-storage-class**. In addition, you must ensure that the backup location has authorized	the target cloud account using the necessary IAM permissions to access the backup files. 
+
+	</WarningBox>
+
+
+8. Review and confirm the backup and the target cluster, and click on the **Restore** button. 
+
+
+9. To track the restoration progress, navigate to the target cluster. Palette will display the restoration progress in the **Backups** > **Restores** tab. 
