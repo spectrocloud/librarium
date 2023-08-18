@@ -40,7 +40,7 @@ Additionally, Virtio is a virtualization standard for network and disk device dr
 
 <WarningBox>
 
-We recommend installing ``qemu-guest-agent`` to improve VM management. We also recommend installing Virtio drivers to ensure you can use the paravirtualized hardware properly.
+We recommend installing the QEMU guest agent to display additional details in Palette Virtual Machine Orchestrator. We also recommend installing VirtIO drivers to ensure you can use the paravirtualized hardware properly. To learn how to install the guest agent and drivers, refer to the [RedHat](https://docs.openshift.com/container-platform/4.8/virt/virtual_machines/virt-installing-qemu-guest-agent.html) reference.
 
 </WarningBox>
 
