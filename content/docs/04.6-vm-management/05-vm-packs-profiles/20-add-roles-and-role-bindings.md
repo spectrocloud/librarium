@@ -62,7 +62,7 @@ You must configure roles and cluster role bindings before users can access Palet
 
 6. Click **Confirm** to update the cluster.
 	
-The cluster status displays as **Updating** on the **Cluster Overview** page. Updating can take several minutes depending on your environment. You can track events from the **Events** tab.
+The cluster status displays as **Upgrading** on the **Cluster Overview** page. Upgrading can take several minutes depending on your environment. You can track events from the **Events** tab.
 
 
 # Validate
