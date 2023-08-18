@@ -100,7 +100,7 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 ## Deployment
 
 
-The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment.
+The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the three-dots icon in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
   <br />
 
