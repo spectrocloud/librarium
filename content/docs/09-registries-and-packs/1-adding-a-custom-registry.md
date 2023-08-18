@@ -90,7 +90,7 @@ auth:
 ```
 docker run  \
     --rm \
-    --port 443:5000 \
+    --publish 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
     gcr.io/spectro-images-public/release/spectro-registry:3.3.0  \
