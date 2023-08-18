@@ -266,7 +266,7 @@ Once the deployment of the pack registry server is complete, configure it with t
 In order to establish a trusted secure connection between Palette and your registry
 you will need to upload your certificate to the console.
 
-1. Click on **Tenant Settings** > **Certificates** > **Add A New Certificate**
+1. From the **Tenant Admin** view, click on **Tenant Settings** > **Certificates** > **Add A New Certificate**
 
    Provide the content of your CA Cert (that will be the content of `tls.crt` if
    you followed this tutorial.
