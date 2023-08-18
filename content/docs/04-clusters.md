@@ -258,20 +258,20 @@ This table lists the proxy requirements for enabling the Palette management cons
 
 | Top-level Domain          | Port | Description                                  |
 | ------------------------- | ---- | -------------------------------------------- |
-| docker.io                 | 443  | 3rd party container images                   |
-| docker.com                | 443  | 3rd party container images                   |
-| gcr.io                    | 443  | Spectro Cloud and 3rd party container images |
-| ghcr.io                   | 443  | 3rd party container images                   |
-| github.com                | 443  | 3rd party content                            |
-| googleapis.com            | 443  | Spectro Cloud images                         |
-| grafana.com               | 443  | Grafana container images and manifests       |
-| k8s.gcr.io                | 443  | 3rd party container images                   |
-| projectcalico.org         | 443  | Calico container images                      |
-| registry.k8s.io           | 443  | 3rd party container images                   |
-| raw.githubusercontent.com | 443  | 3rd party content                            |
-| spectrocloud.com          | 443  | Spectro Cloud Palette SaaS                   |
-| s3.amazonaws.com          | 443  | Spectro Cloud VMware OVA files               |
-| quay.io                   | 443  | 3rd party container images                   |
+| docker.io                 | 443  | Third party container images.                   |
+| docker.com                | 443  | Third party container images.                   |
+| gcr.io                    | 443  | Spectro Cloud and 3rd party container images. |
+| ghcr.io                   | 443  | Third party container images.                   |
+| github.com                | 443  | Third party content.                            |
+| googleapis.com            | 443  | Spectro Cloud images.                         |
+| grafana.com               | 443  | Grafana container images and manifests.       |
+| k8s.gcr.io                | 443  | Third party container images.                   |
+| projectcalico.org         | 443  | Calico container images.                      |
+| registry.k8s.io           | 443  | Third party container images.                   |
+| raw.githubusercontent.com | 443  | Third party content.                           |
+| spectrocloud.com          | 443  | Spectro Cloud Palette SaaS.                   |
+| s3.amazonaws.com          | 443  | Spectro Cloud VMware OVA files.               |
+| quay.io                   | 443  | Third party container images.                   |
 
 
 # Scope
