@@ -38,7 +38,7 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
     <InfoBox>
 
-    Palette VerteX consumes RKE 2 images directly. As a result, Palette VerteX displays an unknown state of FIPS compliance for imported RKE 2 clusters. Review <<Link to FIPS status icons>> for a list of Palette VerteX status icons and descriptions.
+    Palette VerteX uses FIPS-compiled images directly from RKE 2. As a result, it displays the status of RKE 2 clusters as FIPS compliant. For information about Palette VerteX status icons, review [FIPS Status Icons](/vertex/fips/fips-status-icons).
 
     </InfoBox>
 
