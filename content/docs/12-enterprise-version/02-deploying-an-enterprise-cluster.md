@@ -54,13 +54,15 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 
 - Review required VMware vSphere [permissions](/enterprise-version/on-prem-system-requirements#vmwareprivileges).
 
-  <br />
 
-  <InfoBox>
 
-    Refer to the Palette [Self-Hosted Configuration](/enterprise-version/on-prem-system-requirements#self-hostedconfiguration) resource for additional sizing information.
+- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/enterprise-version/on-prem-system-requirements#self-hostedconfiguration) for additional sizing information.
 
-  </InfoBox>
+  - 8 CPUs per VM.
+
+  - 16 GB Memory per VM.
+
+  - 100 GB Disk Space per VM.
 
 
 - The following network ports must be accessible for Palette to operate successfully.
