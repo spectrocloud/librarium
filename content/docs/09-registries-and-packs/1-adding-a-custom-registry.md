@@ -81,6 +81,7 @@ We provide a Docker image for setting up a pack registry server. Use the followi
   ```
 
 3. Start the container image with the following flags.
+
 <br />
 
   ```bash
