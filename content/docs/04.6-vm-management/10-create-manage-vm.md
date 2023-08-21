@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette’s VM Management solution allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
+Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
 
 
 There are three ways you can create a new VM:

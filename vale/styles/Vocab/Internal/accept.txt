@@ -115,4 +115,11 @@ imageSwap
 subcommand
 subcommands
 MAAS
+nameserver
+uncomment
+OAuth
 unsecure
+repavement
+Repavement
+repave
+Repave
