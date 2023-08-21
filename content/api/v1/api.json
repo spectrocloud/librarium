@@ -22,6 +22,16 @@
     },
     "v1.AzureAccountEntitySpec": {
       "properties": {
+        "clientCloud": {
+          "default": "public",
+          "description": "Contains configuration for Azure cloud",
+          "enum": [
+            "azure-china",
+            "azure-government",
+            "public"
+          ],
+          "type": "string"
+        },
         "clientId": {
           "type": "string"
         },
@@ -547,6 +557,14 @@
     "v1AppDeploymentClusterRef": {
       "description": "Application deployment cluster reference",
       "properties": {
+        "deploymentClusterType": {
+          "description": "Application deployment source cluster type[ \"virtualCluster\", \"hostCluster\" ]",
+          "enum": [
+            "virtual",
+            "host"
+          ],
+          "type": "string"
+        },
         "name": {
           "description": "Application deployment cluster name",
           "type": "string"
@@ -557,6 +575,27 @@
         }
       },
       "type": "object"
+    },
+    "v1AppDeploymentClusterRefSummary": {
+      "description": "Application deployment cluster reference",
+      "properties": {
+        "deploymentClusterType": {
+          "description": "Application deployment source cluster type[ \"virtualCluster\", \"hostCluster\" ]",
+          "enum": [
+            "virtual",
+            "host"
+          ],
+          "type": "string"
+        },
+        "name": {
+          "description": "Application deployment source cluster name",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Application deployment source cluster uid",
+          "type": "string"
+        }
+      }
     },
     "v1AppDeploymentClusterStatus": {
       "description": "Application deployment cluster status",
@@ -852,7 +891,7 @@
       "description": "Application deployment target config summary",
       "properties": {
         "clusterRef": {
-          "$ref": "#/definitions/v1UidSummary"
+          "$ref": "#/definitions/v1AppDeploymentClusterRefSummary"
         }
       }
     },
@@ -1672,6 +1711,14 @@
         }
       }
     },
+    "v1ArchType": {
+      "default": "amd64",
+      "enum": [
+        "amd64",
+        "arm64"
+      ],
+      "type": "string"
+    },
     "v1AsyncOperationIdEntity": {
       "description": "Async operation id",
       "properties": {
@@ -1865,6 +1912,37 @@
       },
       "type": "object"
     },
+    "v1AuthCertsGet": {
+      "description": "Auth certs get",
+      "properties": {
+        "caCert": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "insecureSkipVerify": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1AuthEdgeJetKeyRequest": {
+      "properties": {
+        "edgeAuthToken": {
+          "type": "string"
+        },
+        "edgeHostUid": {
+          "type": "string"
+        },
+        "spectroClusterUid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "edgeAuthToken",
+        "edgeHostUid"
+      ],
+      "type": "object"
+    },
     "v1AuthJetKeyRequest": {
       "properties": {
         "allyAuthToken": {
@@ -2006,6 +2084,19 @@
         }
       },
       "type": "object"
+    },
+    "v1AuthTokenSettings": {
+      "description": "System auth token settings",
+      "properties": {
+        "expiryTimeMinutes": {
+          "description": "Auth token expiry time in minutes",
+          "format": "int32",
+          "maximum": 1440,
+          "minimum": 15,
+          "type": "integer",
+          "x-omitempty": false
+        }
+      }
     },
     "v1AwsAMI": {
       "properties": {
@@ -2573,6 +2664,13 @@
     },
     "v1AwsMachinePoolCloudConfigEntity": {
       "properties": {
+        "additionalSecurityGroups": {
+          "description": "Additional Security groups",
+          "items": {
+            "$ref": "#/definitions/v1AwsResourceReference"
+          },
+          "type": "array"
+        },
         "azs": {
           "items": {
             "type": "string"
@@ -2624,6 +2722,13 @@
           "description": "additionalLabels",
           "type": "object"
         },
+        "additionalSecurityGroups": {
+          "description": "Additional Security groups",
+          "items": {
+            "$ref": "#/definitions/v1AwsResourceReference"
+          },
+          "type": "array"
+        },
         "additionalTags": {
           "additionalProperties": {
             "type": "string"
@@ -2647,14 +2752,6 @@
           ],
           "type": "string"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -2674,6 +2771,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -2686,6 +2786,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "rootDeviceSize": {
           "description": "rootDeviceSize in GBs",
@@ -2738,9 +2843,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -2751,6 +2853,13 @@
     "v1AwsMachineSpec": {
       "description": "AWS cloud VM definition spec",
       "properties": {
+        "additionalSecurityGroups": {
+          "description": "Additional Security groups",
+          "items": {
+            "$ref": "#/definitions/v1AwsResourceReference"
+          },
+          "type": "array"
+        },
         "ami": {
           "type": "string"
         },
@@ -3006,6 +3115,35 @@
       ],
       "type": "object"
     },
+    "v1AwsSecurityGroups": {
+      "properties": {
+        "groups": {
+          "items": {
+            "$ref": "#/definitions/v1AwsSecuritygroup"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "groups"
+      ],
+      "type": "object"
+    },
+    "v1AwsSecuritygroup": {
+      "description": "Aws security group",
+      "properties": {
+        "groupId": {
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsStorageTypes": {
       "properties": {
         "storageTypes": {
@@ -3147,6 +3285,31 @@
       ],
       "type": "object"
     },
+    "v1AzValidateEntity": {
+      "description": "Az validate entity",
+      "properties": {
+        "azs": {
+          "description": "Gcp Azs",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "project": {
+          "description": "Gcp project",
+          "type": "string"
+        },
+        "region": {
+          "description": "Gcp region",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Cloud account uid",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AzureAccount": {
       "description": "Azure account information",
       "properties": {
@@ -3200,6 +3363,16 @@
     },
     "v1AzureCloudAccount": {
       "properties": {
+        "clientCloud": {
+          "default": "public",
+          "description": "Contains configuration for Azure cloud",
+          "enum": [
+            "azure-china",
+            "azure-government",
+            "public"
+          ],
+          "type": "string"
+        },
         "clientId": {
           "description": "Client ID(Directory ID) is a unique identifier generated by Azure AD that is tied to an application",
           "type": "string"
@@ -3517,14 +3690,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -3549,6 +3714,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -3561,6 +3729,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "osDisk": {
           "$ref": "#/definitions/v1AzureOSDisk"
@@ -3611,9 +3784,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -4098,15 +4268,29 @@
         "auth": {
           "$ref": "#/definitions/v1RegistryAuth"
         },
+        "baseContentPath": {
+          "description": "OCI registry content base path",
+          "type": "string"
+        },
+        "basePath": {
+          "description": "OCI registry api base path",
+          "type": "string"
+        },
         "endpoint": {
+          "description": "OCI registry endpoint",
           "type": "string"
         },
         "providerType": {
           "default": "helm",
           "enum": [
             "helm",
-            "zarf"
+            "zarf",
+            "pack"
           ],
+          "type": "string"
+        },
+        "registryUid": {
+          "description": "Basic oci registry uid",
           "type": "string"
         },
         "scope": {
@@ -4129,6 +4313,45 @@
           "$ref": "#/definitions/v1TierPrice"
         }
       }
+    },
+    "v1BrokerLogin": {
+      "description": "Request for broker login request",
+      "properties": {
+        "subscriberSubjects": {
+          "description": "subjects that client need to subscribe",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1BrokerToken": {
+      "description": "Response for broker login request",
+      "properties": {
+        "msgCtxData": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "message context data can be used as contextual information for the message exchange"
+        },
+        "publisherSubjects": {
+          "description": "subjects that client can publish",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "subscriberSubjects": {
+          "description": "subjects that client has subscribed",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
     },
     "v1BulkDeleteFailure": {
       "properties": {
@@ -4431,6 +4654,16 @@
       },
       "type": "object"
     },
+    "v1CloudAccountUidEntity": {
+      "description": "Cloud account uid entity",
+      "properties": {
+        "uid": {
+          "description": "Cloud account uid",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1CloudAccountsMetadata": {
       "properties": {
         "items": {
@@ -4566,6 +4799,9 @@
             "Unknown"
           ],
           "type": "string"
+        },
+        "maintenanceStatus": {
+          "$ref": "#/definitions/v1MachineMaintenanceStatus"
         }
       },
       "type": "object"
@@ -5014,9 +5250,6 @@
           "description": "ControlPlaneHealthCheckTimeout is the timeout to check for ready state of the control plane nodes. If the node is not ready within the time out set, the node will be deleted and a new node will be launched.",
           "type": "string"
         },
-        "fips": {
-          "$ref": "#/definitions/v1FipsConfig"
-        },
         "hostClusterConfig": {
           "$ref": "#/definitions/v1HostClusterConfig",
           "description": "HostClusterConfiguration defines the configuration of host clusters, where virtual clusters be deployed"
@@ -5041,8 +5274,8 @@
     },
     "v1ClusterConfigEntity": {
       "properties": {
-        "fips": {
-          "$ref": "#/definitions/v1FipsConfig"
+        "controlPlaneHealthCheckTimeout": {
+          "type": "string"
         },
         "hostClusterConfig": {
           "$ref": "#/definitions/v1HostClusterConfig"
@@ -5101,6 +5334,23 @@
           "type": "string"
         }
       }
+    },
+    "v1ClusterFips": {
+      "properties": {
+        "mode": {
+          "$ref": "#/definitions/v1ClusterFipsMode"
+        }
+      }
+    },
+    "v1ClusterFipsMode": {
+      "default": "none",
+      "enum": [
+        "full",
+        "none",
+        "partial",
+        "unknown"
+      ],
+      "type": "string"
     },
     "v1ClusterGroup": {
       "description": "Cluster group information",
@@ -5321,19 +5571,6 @@
         "memory": {
           "$ref": "#/definitions/v1ClusterGroupResource",
           "description": "Deprecated"
-        },
-        "nestedClusters": {
-          "description": "Deprecated. Use virtualClustersCount",
-          "items": {
-            "$ref": "#/definitions/v1ObjectResReference"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "nestedClustersCount": {
-          "description": "Deprecated. Use field 'virtualClustersCount'",
-          "type": "integer",
-          "x-omitempty": false
         },
         "scope": {
           "type": "string"
@@ -6051,6 +6288,9 @@
           "type": "array",
           "uniqueItems": true
         },
+        "fips": {
+          "$ref": "#/definitions/v1ClusterFipsMode"
+        },
         "profileName": {
           "$ref": "#/definitions/v1FilterString"
         },
@@ -6069,6 +6309,14 @@
         },
         "version": {
           "$ref": "#/definitions/v1FilterVersionString"
+        }
+      }
+    },
+    "v1ClusterProfileFips": {
+      "description": "Cluster profile fips compliance status",
+      "properties": {
+        "mode": {
+          "$ref": "#/definitions/v1ClusterFipsMode"
         }
       }
     },
@@ -6168,6 +6416,27 @@
         },
         "status": {
           "$ref": "#/definitions/v1PackSummaryStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1ClusterProfilePackSummary": {
+      "description": "Cluster profile packs summary about the deprecated, disabled, deleted packs count",
+      "properties": {
+        "deleted": {
+          "description": "Total count of deleted packs in a cluster profile",
+          "type": "number",
+          "x-omitempty": false
+        },
+        "deprecated": {
+          "description": "Total count of deprecated packs in a cluster profile",
+          "type": "number",
+          "x-omitempty": false
+        },
+        "disabled": {
+          "description": "Total count of disabled packs in a cluster profile",
+          "type": "number",
+          "x-omitempty": false
         }
       },
       "type": "object"
@@ -6331,6 +6600,9 @@
     "v1ClusterProfileStatusSummary": {
       "description": "ClusterProfileStatusSummary defines the observed state of ClusterProfile",
       "properties": {
+        "fips": {
+          "$ref": "#/definitions/v1ClusterProfileFips"
+        },
         "inUseClusterUids": {
           "description": "Deprecated. Use inUseClusters",
           "items": {
@@ -6347,6 +6619,9 @@
         "isPublished": {
           "type": "boolean",
           "x-omitempty": false
+        },
+        "pack": {
+          "$ref": "#/definitions/v1ClusterProfilePackSummary"
         }
       },
       "type": "object"
@@ -8165,6 +8440,15 @@
       },
       "type": "object"
     },
+    "v1ControlPlaneHealthCheckTimeoutEntity": {
+      "properties": {
+        "controlPlaneHealthCheckTimeout": {
+          "description": "ControlPlaneHealthCheckTimeout is the timeout to check for ready state of the control plane nodes",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1CoxEdgeAccount": {
       "description": "CoxEdge cloud account information",
       "properties": {
@@ -8551,14 +8835,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -8573,6 +8849,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -8585,6 +8864,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "persistentStorages": {
           "description": "Array of coxedge load persistent storages",
@@ -8637,9 +8921,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -9148,12 +9429,6 @@
           "type": "number",
           "x-omitempty": false
         },
-        "nestedClustersLimit": {
-          "description": "Deprecated. Use field 'virtualClustersLimit'",
-          "format": "int32",
-          "type": "number",
-          "x-omitempty": false
-        },
         "storageGiB": {
           "description": "storage in GiB",
           "format": "int32",
@@ -9171,6 +9446,15 @@
     "v1DeviceSpec": {
       "description": "DeviceSpec defines the desired state of Device",
       "properties": {
+        "archType": {
+          "default": "amd64",
+          "description": "Architecture type of the edge host",
+          "enum": [
+            "arm64",
+            "amd64"
+          ],
+          "type": "string"
+        },
         "cpu": {
           "$ref": "#/definitions/v1CPU"
         },
@@ -9197,9 +9481,6 @@
         },
         "os": {
           "$ref": "#/definitions/v1OS"
-        },
-        "type": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -9291,6 +9572,10 @@
     "v1EcrRegistrySpec": {
       "description": "Ecr registry spec",
       "properties": {
+        "baseContentPath": {
+          "description": "OCI ecr registry content base path",
+          "type": "string"
+        },
         "credentials": {
           "$ref": "#/definitions/v1AwsCloudAccount"
         },
@@ -9303,8 +9588,23 @@
         "isPrivate": {
           "type": "boolean"
         },
+        "providerType": {
+          "default": "helm",
+          "enum": [
+            "helm",
+            "pack"
+          ],
+          "type": "string"
+        },
+        "registryUid": {
+          "description": "Ecr registry uid",
+          "type": "string"
+        },
         "scope": {
           "type": "string"
+        },
+        "tls": {
+          "$ref": "#/definitions/v1TlsConfiguration"
         }
       },
       "required": [
@@ -9402,6 +9702,11 @@
     "v1EdgeHost": {
       "description": "EdgeHost is the underlying appliance",
       "properties": {
+        "disableAutoRegister": {
+          "description": "Set to true if auto register is disabled for the device",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "hostAddress": {
           "description": "HostAddress is a FQDN or IP address of the Host",
           "type": "string"
@@ -9559,6 +9864,9 @@
     "v1EdgeHostDeviceSpecEntity": {
       "description": "Edge host device spec",
       "properties": {
+        "archType": {
+          "$ref": "#/definitions/v1ArchType"
+        },
         "hostPairingKey": {
           "format": "password",
           "type": "string"
@@ -9983,14 +10291,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "isControlPlane": {
           "description": "whether this pool is for control plane",
           "type": "boolean"
@@ -10001,6 +10301,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
         },
         "maxSize": {
           "description": "max size of the pool, for scaling",
@@ -10014,6 +10317,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "size": {
           "description": "size of the pool, number of machines",
@@ -10049,9 +10357,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "type": "object"
@@ -10394,14 +10699,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "isControlPlane": {
           "description": "whether this pool is for control plane",
           "type": "boolean"
@@ -10413,6 +10710,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
         },
         "maxSize": {
           "description": "max size of the pool, for scaling",
@@ -10426,6 +10726,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "osType": {
           "description": "the os type for the pool, must be supported by the provider",
@@ -10464,9 +10769,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "type": "object"
@@ -10948,14 +11250,6 @@
           "description": "flag to know if aws launch template is enabled",
           "type": "boolean"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -10975,6 +11269,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -10987,6 +11284,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "rootDeviceSize": {
           "description": "rootDeviceSize in GBs",
@@ -11457,17 +11759,17 @@
       ],
       "type": "object"
     },
-    "v1FipsConfig": {
+    "v1FipsSettings": {
       "description": "FIPS configuration",
       "properties": {
-        "mode": {
-          "default": "fipsDisabled",
-          "description": "enable or disable the FIPS complaint",
-          "enum": [
-            "fipsEnabled",
-            "fipsDisabled"
-          ],
-          "type": "string"
+        "fipsClusterFeatureConfig": {
+          "$ref": "#/definitions/v1NonFipsConfig"
+        },
+        "fipsClusterImportConfig": {
+          "$ref": "#/definitions/v1NonFipsConfig"
+        },
+        "fipsPackConfig": {
+          "$ref": "#/definitions/v1NonFipsConfig"
         }
       }
     },
@@ -11918,14 +12220,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -11943,6 +12237,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -11955,6 +12252,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "rootDeviceSize": {
           "description": "Size of root volume in GB. Default is 30GB",
@@ -12007,9 +12309,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -12523,6 +12822,46 @@
       },
       "type": "object"
     },
+    "v1GrpcConfiguration": {
+      "description": "Describes the response that contains the grpc configuration to establish connection",
+      "properties": {
+        "preferredServer": {
+          "$ref": "#/definitions/v1GrpcEndpoint"
+        },
+        "servers": {
+          "items": {
+            "$ref": "#/definitions/v1GrpcEndpoint"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "v1GrpcEndpoint": {
+      "properties": {
+        "endpoint": {
+          "description": "Describes the URL where the client has to connect to the grpc server",
+          "type": "string"
+        },
+        "tls": {
+          "description": "Describes the Grpc tls config which client will use to make a request to the grpc server",
+          "properties": {
+            "caCert": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "insecureSkipVerify": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "v1HealthCheck": {
       "properties": {
         "isHealthy": {
@@ -12670,6 +13009,10 @@
           "x-omitempty": false
         },
         "name": {
+          "type": "string"
+        },
+        "registryUid": {
+          "description": "Helm registry uid",
           "type": "string"
         },
         "scope": {
@@ -12925,9 +13268,6 @@
     },
     "v1ImportClusterConfig": {
       "properties": {
-        "fips": {
-          "$ref": "#/definitions/v1FipsConfig"
-        },
         "importMode": {
           "description": "If the importMode is empty then cluster is imported with full permission mode. By default importMode is empty and cluster is imported in full permission mode.",
           "enum": [
@@ -14155,6 +14495,10 @@
           "description": "RootDiskInGB is the size of a vm's root disk, in GiB",
           "format": "int32",
           "type": "integer"
+        },
+        "xslTemplate": {
+          "description": "XSLTemplate defines a base64-encoded raw xsl template which will be included in the machine definition",
+          "type": "string"
         }
       },
       "required": [
@@ -14179,14 +14523,6 @@
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceType": {
           "$ref": "#/definitions/v1LibvirtInstanceType",
           "description": "InstanceType defines the instance configuration of the vms in the machine pool"
@@ -14202,6 +14538,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -14214,6 +14553,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "nonRootDisksInGB": {
           "description": "NonRootDisksInGB is the list of additional disks, if required, in GB",
@@ -14254,6 +14598,10 @@
         "useControlPlaneAsWorker": {
           "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
+        },
+        "xslTemplate": {
+          "description": "XSLTemplate defines a base64-encoded raw xsl template which will be included in the machine definition",
+          "type": "string"
         }
       },
       "required": [
@@ -14270,9 +14618,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "type": "object"
@@ -14424,6 +14769,13 @@
       "properties": {
         "dataStoragePool": {
           "type": "string"
+        },
+        "gpuDevices": {
+          "description": "GPUDevices defines an array of gpu device for a specific edge host. This will be overridden by edge host GPU devices if configured during registration.",
+          "items": {
+            "$ref": "#/definitions/v1GPUDeviceSpec"
+          },
+          "type": "array"
         },
         "hostUid": {
           "type": "string"
@@ -14638,6 +14990,11 @@
           "description": "Set to 'true' if login banner has to be displayed for user",
           "type": "boolean",
           "x-omitempty": false
+        },
+        "title": {
+          "description": "Banner title displayed to the user",
+          "type": "string",
+          "x-omitempty": false
         }
       }
     },
@@ -14667,6 +15024,10 @@
         },
         "rootDomain": {
           "description": "Describes the domain url on which the saas is available",
+          "type": "string"
+        },
+        "securityMode": {
+          "description": "Describes which security mode is enabled",
           "type": "string"
         },
         "ssoLogins": {
@@ -14999,14 +15360,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceType": {
           "$ref": "#/definitions/v1MaasInstanceType",
           "description": "InstanceType defines the required CPU, Memory"
@@ -15022,6 +15375,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -15034,6 +15390,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "resourcePool": {
           "type": "string"
@@ -15072,9 +15433,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -15334,6 +15692,34 @@
       },
       "type": "object"
     },
+    "v1MachineMaintenance": {
+      "properties": {
+        "action": {
+          "description": "Machine maintenance mode action",
+          "enum": [
+            "cordon",
+            "uncordon"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1MachineMaintenanceStatus": {
+      "description": "Machine maintenance status",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1MachineManagementConfig": {
       "properties": {
         "osPatchConfig": {
@@ -15372,6 +15758,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "Max size of the pool, for scaling",
           "format": "int32",
@@ -15384,6 +15773,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "size": {
           "description": "Size of the pool, number of nodes/machines",
@@ -15437,6 +15831,12 @@
           },
           "type": "array"
         },
+        "maintenanceMode": {
+          "description": "number of machines under maintenance",
+          "format": "int32",
+          "type": "integer",
+          "x-omitempty": false
+        },
         "size": {
           "description": "size of the pool, number of machines",
           "format": "int32",
@@ -15446,23 +15846,15 @@
       },
       "type": "object"
     },
-    "v1MachinePoolProfileConfigEntity": {
+    "v1MachinePoolProperties": {
+      "description": "Machine pool specific properties",
       "properties": {
-        "infraProfileUid": {
-          "description": "InfraClusterProfile uid for the machine pool",
-          "type": "string"
-        },
-        "packValues": {
-          "items": {
-            "$ref": "#/definitions/v1PackValuesEntity"
-          },
-          "type": "array",
-          "uniqueItems": true
+        "archType": {
+          "$ref": "#/definitions/v1ArchType",
+          "description": "Architecture type of the pool. Default value is 'amd64'",
+          "x-omitempty": false
         }
       },
-      "required": [
-        "infraProfileUid"
-      ],
       "type": "object"
     },
     "v1MachinePoolRate": {
@@ -17298,7 +17690,7 @@
       "type": "object"
     },
     "v1NestedCloudConfigStatus": {
-      "description": "NestedCloudConfigStatus defines the observed state of NestedCloudConfig",
+      "description": "Defines the status of virtual cloud config",
       "properties": {
         "conditions": {
           "items": {
@@ -17353,6 +17745,20 @@
         "isEnabled": {
           "type": "boolean",
           "x-omitempty": false
+        }
+      }
+    },
+    "v1NonFipsConfig": {
+      "description": "Non-FIPS configuration",
+      "properties": {
+        "mode": {
+          "default": "nonFipsDisabled",
+          "description": "enable or disable the non FIPS complaint",
+          "enum": [
+            "nonFipsEnabled",
+            "nonFipsDisabled"
+          ],
+          "type": "string"
         }
       }
     },
@@ -17725,6 +18131,38 @@
       },
       "type": "object"
     },
+    "v1OciImageRegistry": {
+      "description": "Oci Image Registry",
+      "properties": {
+        "baseContentPath": {
+          "description": "baseContentPath is the root path for the registry content",
+          "type": "string"
+        },
+        "caCert": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
+        },
+        "mirrorRegistries": {
+          "description": "mirrorRegistries contains the array of image sources like gcr.io, ghcr.io, docker.io",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1OciRegistries": {
       "properties": {
         "items": {
@@ -17748,6 +18186,9 @@
         },
         "spec": {
           "$ref": "#/definitions/v1OciRegistrySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1OciRegistryStatusSummary"
         }
       },
       "type": "object"
@@ -17814,6 +18255,14 @@
         }
       },
       "type": "object"
+    },
+    "v1OciRegistryStatusSummary": {
+      "description": "OCI registry status summary",
+      "properties": {
+        "sync": {
+          "$ref": "#/definitions/v1RegistrySyncStatus"
+        }
+      }
     },
     "v1OidcAuth": {
       "properties": {
@@ -18370,14 +18819,6 @@
         "image": {
           "type": "string"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "isControlPlane": {
           "description": "whether this pool is for control plane",
           "type": "boolean"
@@ -18388,6 +18829,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
         },
         "maxSize": {
           "description": "max size of the pool, for scaling",
@@ -18401,6 +18845,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "size": {
           "description": "size of the pool, number of machines",
@@ -18439,9 +18888,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -18814,20 +19260,12 @@
         "isSystem": {
           "type": "boolean"
         },
-        "registryUid": {
-          "type": "string",
-          "x-omitempty": false
-        },
         "spectroClusterUid": {
           "type": "string",
           "x-omitempty": false
         },
         "tenantUid": {
           "type": "string"
-        },
-        "useQualifiedNetworkName": {
-          "type": "boolean",
-          "x-omitempty": false
         }
       },
       "type": "object"
@@ -18918,6 +19356,13 @@
         "clusterConfig": {
           "$ref": "#/definitions/v1MaasClusterConfig"
         },
+        "clusterProfiles": {
+          "description": "Cluster profiles pack configuration for private gateway cluster",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+          },
+          "type": "array"
+        },
         "clusterSettings": {
           "$ref": "#/definitions/v1ClusterConfigEntity",
           "description": "clusterSettings is the generic configuration related to a cluster like OS patch, Rbac, Namespace allocation"
@@ -18982,6 +19427,13 @@
         "clusterConfig": {
           "$ref": "#/definitions/v1OpenStackClusterConfig"
         },
+        "clusterProfiles": {
+          "description": "Cluster profiles pack configuration for private gateway cluster",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+          },
+          "type": "array"
+        },
         "clusterSettings": {
           "$ref": "#/definitions/v1ClusterConfigEntity",
           "description": "clusterSettings is the generic configuration related to a cluster like OS patch, Rbac, Namespace allocation"
@@ -19008,10 +19460,6 @@
         "shareWithProjects": {
           "type": "boolean",
           "x-omitempty": false
-        },
-        "useQualifiedNetworkName": {
-          "type": "boolean",
-          "x-omitempty": false
         }
       }
     },
@@ -19023,10 +19471,6 @@
         "shareWithProjects": {
           "type": "boolean",
           "x-omitempty": false
-        },
-        "useQualifiedNetworkName": {
-          "type": "boolean",
-          "x-omitempty": false
         }
       }
     },
@@ -19034,6 +19478,13 @@
       "properties": {
         "clusterConfig": {
           "$ref": "#/definitions/v1VsphereOverlordClusterConfigEntity"
+        },
+        "clusterProfiles": {
+          "description": "Cluster profiles pack configuration for private gateway cluster",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+          },
+          "type": "array"
         },
         "clusterSettings": {
           "$ref": "#/definitions/v1ClusterConfigEntity",
@@ -19218,6 +19669,10 @@
           "type": "array",
           "uniqueItems": true
         },
+        "isFips": {
+          "description": "isFips compliant",
+          "type": "boolean"
+        },
         "layer": {
           "description": "Pack layer",
           "items": {
@@ -19231,6 +19686,22 @@
         },
         "registryUid": {
           "description": "Pack registry uid",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "source": {
+          "description": "The source filter describes the creation origin/source of the pack. Ex. source can be \"spectrocloud\" or \"community\"",
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "state": {
+          "description": "Pack state such as deprecated or disabled",
           "items": {
             "type": "string"
           },
@@ -19934,6 +20405,10 @@
           "type": "boolean",
           "x-omitempty": false
         },
+        "registryUid": {
+          "description": "Pack registry uid",
+          "type": "string"
+        },
         "scope": {
           "type": "string"
         }
@@ -20214,7 +20689,7 @@
       "type": "object"
     },
     "v1PackTagEntity": {
-      "description": "Pack oject",
+      "description": "Pack object",
       "properties": {
         "addonSubType": {
           "description": "Pack add-on sub type such as monitoring, db etc",
@@ -20427,6 +20902,13 @@
     },
     "v1PackUidValues": {
       "properties": {
+        "annotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Pack annotations is used to allow pack to add more arbitrary configurations",
+          "type": "object"
+        },
         "dependencies": {
           "description": "Pack dependencies array",
           "items": {
@@ -21523,9 +22005,6 @@
     },
     "v1ProjectClusterSettings": {
       "properties": {
-        "fips": {
-          "$ref": "#/definitions/v1FipsConfig"
-        },
         "nodesAutoRemediationSetting": {
           "$ref": "#/definitions/v1NodesAutoRemediationSettings"
         },
@@ -21990,6 +22469,9 @@
           "format": "password",
           "type": "string"
         },
+        "tls": {
+          "$ref": "#/definitions/v1TlsConfiguration"
+        },
         "token": {
           "format": "password",
           "type": "string"
@@ -22047,6 +22529,10 @@
     "v1RegistryMetadata": {
       "description": "Registry meta",
       "properties": {
+        "isDefault": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "isPrivate": {
           "type": "boolean",
           "x-omitempty": false
@@ -22075,6 +22561,10 @@
           },
           "description": "Pack annotations is used to allow pack to add more arbitrary configurations",
           "type": "object"
+        },
+        "latestPackUid": {
+          "description": "Latest pack uid",
+          "type": "string"
         },
         "latestVersion": {
           "description": "Pack latest version",
@@ -22554,7 +23044,8 @@
         "spectrocluster",
         "edgehost",
         "appprofile",
-        "appdeployment"
+        "appdeployment",
+        "edgetoken"
       ],
       "type": "string"
     },
@@ -23443,11 +23934,11 @@
       "properties": {
         "default": {
           "type": "string",
-          "x-order": 5
+          "x-order": 6
         },
         "displayName": {
           "type": "string",
-          "x-order": 1
+          "x-order": 2
         },
         "enum": {
           "items": {
@@ -23455,7 +23946,7 @@
           },
           "type": "array",
           "x-omitempty": true,
-          "x-order": 3
+          "x-order": 4
         },
         "enumValues": {
           "items": {
@@ -23463,27 +23954,31 @@
           },
           "type": "array",
           "x-omitempty": true,
-          "x-order": 4
+          "x-order": 5
+        },
+        "hideDisplay": {
+          "type": "boolean",
+          "x-order": 1
         },
         "maxFloatVal": {
           "format": "float64",
           "type": "number",
-          "x-order": 9
+          "x-order": 10
         },
         "maxIntVal": {
           "format": "int32",
           "type": "integer",
-          "x-order": 7
+          "x-order": 8
         },
         "minFloatVal": {
           "format": "float64",
           "type": "number",
-          "x-order": 8
+          "x-order": 9
         },
         "minIntVal": {
           "format": "int32",
           "type": "integer",
-          "x-order": 6
+          "x-order": 7
         },
         "name": {
           "type": "string",
@@ -23491,7 +23986,7 @@
         },
         "type": {
           "type": "string",
-          "x-order": 2
+          "x-order": 3
         }
       }
     },
@@ -24551,6 +25046,18 @@
         "specSummary": {
           "description": "Spectro cluster meta summary",
           "properties": {
+            "archType": {
+              "description": "Architecture type of the cluster",
+              "items": {
+                "default": "amd64",
+                "enum": [
+                  "arm64",
+                  "amd64"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            },
             "cloudAccountUid": {
               "type": "string"
             },
@@ -24587,6 +25094,9 @@
             "cost": {
               "$ref": "#/definitions/v1ClusterMetaStatusCost"
             },
+            "fips": {
+              "$ref": "#/definitions/v1ClusterFips"
+            },
             "health": {
               "$ref": "#/definitions/v1ClusterMetaStatusHealth"
             },
@@ -24607,7 +25117,7 @@
         "environment": {
           "$ref": "#/definitions/v1CloudType"
         },
-        "includeNested": {
+        "includeVirtual": {
           "default": false,
           "type": "boolean"
         },
@@ -25148,12 +25658,11 @@
           },
           "type": "array"
         },
+        "fips": {
+          "$ref": "#/definitions/v1ClusterFips"
+        },
         "location": {
           "$ref": "#/definitions/v1ClusterLocation"
-        },
-        "nested": {
-          "$ref": "#/definitions/v1Virtual",
-          "description": "Deprecated. Use field 'virtual'"
         },
         "packs": {
           "items": {
@@ -25198,6 +25707,13 @@
         "specSummary": {
           "description": "Spectro cluster spec summary",
           "properties": {
+            "archTypes": {
+              "description": "Architecture type of the cluster",
+              "items": {
+                "$ref": "#/definitions/v1ArchType"
+              },
+              "type": "array"
+            },
             "cloudAccountMeta": {
               "$ref": "#/definitions/v1CloudAccountMeta"
             },
@@ -25231,6 +25747,9 @@
             "cost": {
               "$ref": "#/definitions/v1ResourceCost"
             },
+            "fips": {
+              "$ref": "#/definitions/v1ClusterFips"
+            },
             "health": {
               "$ref": "#/definitions/v1SpectroClusterHealthStatus"
             },
@@ -25242,10 +25761,6 @@
             },
             "metrics": {
               "$ref": "#/definitions/v1SpectroClusterMetrics"
-            },
-            "nested": {
-              "$ref": "#/definitions/v1Virtual",
-              "description": "Deprecated. Use field 'virtual'"
             },
             "notifications": {
               "$ref": "#/definitions/v1SpectroClusterNotifications"
@@ -25306,6 +25821,9 @@
         "cost": {
           "$ref": "#/definitions/v1ResourceCost"
         },
+        "fips": {
+          "$ref": "#/definitions/v1ClusterFips"
+        },
         "health": {
           "$ref": "#/definitions/v1SpectroClusterHealthStatus"
         },
@@ -25320,10 +25838,6 @@
         },
         "metrics": {
           "$ref": "#/definitions/v1SpectroClusterMetrics"
-        },
-        "nested": {
-          "$ref": "#/definitions/v1Virtual",
-          "description": "Deprecated. Use field 'virtual'"
         },
         "notifications": {
           "$ref": "#/definitions/v1SpectroClusterNotifications"
@@ -25373,6 +25887,13 @@
         "spec": {
           "description": "Spectro cluster spec summary",
           "properties": {
+            "archTypes": {
+              "description": "Architecture types of the cluster",
+              "items": {
+                "$ref": "#/definitions/v1ArchType"
+              },
+              "type": "array"
+            },
             "cloudConfig": {
               "$ref": "#/definitions/v1CloudConfigMeta"
             },
@@ -27259,6 +27780,9 @@
         "crt": {
           "type": "string"
         },
+        "insecureSkipVerify": {
+          "type": "boolean"
+        },
         "key": {
           "type": "string"
         }
@@ -27273,6 +27797,15 @@
           "x-omitempty": false
         },
         "enforceTlsVerify": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1SystemConfigCluster": {
+      "description": "System config cluster",
+      "properties": {
+        "stableEndpointAccess": {
           "type": "boolean",
           "x-omitempty": false
         }
@@ -27349,8 +27882,14 @@
     "v1SystemEdgeImageSpec": {
       "description": "system edge account specifications",
       "properties": {
+        "caCert": {
+          "type": "string"
+        },
         "imagesHostEndpoint": {
           "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
         }
       }
     },
@@ -27366,8 +27905,14 @@
     "v1SystemEdgeNativeImageSpec": {
       "description": "system edge-native account specifications",
       "properties": {
+        "caCert": {
+          "type": "string"
+        },
         "imagesHostEndpoint": {
           "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
         },
         "stylusImagesEndpoint": {
           "type": "string"
@@ -27490,8 +28035,14 @@
     "v1SystemLibvirtImageSpec": {
       "description": "system libvirt account specifications",
       "properties": {
+        "caCert": {
+          "type": "string"
+        },
         "imagesHostEndpoint": {
           "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
         }
       }
     },
@@ -27519,10 +28070,46 @@
     "v1SystemMaasImageSpec": {
       "description": "system maas account specifications",
       "properties": {
+        "caCert": {
+          "type": "string"
+        },
         "imagesHostEndpoint": {
           "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
         }
       }
+    },
+    "v1SystemOciImageRegistry": {
+      "description": "system web kubectl config spec",
+      "properties": {
+        "baseContentPath": {
+          "type": "string"
+        },
+        "caCert": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
+        },
+        "mirrorRegistries": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1SystemOidcClaims": {
       "properties": {
@@ -27906,8 +28493,17 @@
     "v1SystemScarSpec": {
       "description": "system scar config spec",
       "properties": {
+        "baseContentPath": {
+          "type": "string"
+        },
+        "caCert": {
+          "type": "string"
+        },
         "endpoint": {
           "type": "string"
+        },
+        "insecureVerify": {
+          "type": "boolean"
         },
         "password": {
           "type": "string"
@@ -27927,6 +28523,14 @@
       },
       "type": "object"
     },
+    "v1SystemSecurityMode": {
+      "description": "System service mode",
+      "properties": {
+        "securityMode": {
+          "type": "string"
+        }
+      }
+    },
     "v1SystemServiceLogin": {
       "description": "System service login input",
       "properties": {
@@ -27936,6 +28540,9 @@
         },
         "isSystem": {
           "type": "boolean"
+        },
+        "overlordUid": {
+          "type": "string"
         },
         "serviceName": {
           "type": "string"
@@ -28129,8 +28736,14 @@
     "v1SystemVsphereImageSpec": {
       "description": "system vsphere account specifications",
       "properties": {
+        "caCert": {
+          "type": "string"
+        },
         "imagesHostEndpoint": {
           "type": "string"
+        },
+        "insecureSkipVerify": {
+          "type": "boolean"
         },
         "overlordOvaLocation": {
           "type": "string"
@@ -28609,9 +29222,6 @@
     },
     "v1TenantClusterSettings": {
       "properties": {
-        "fips": {
-          "$ref": "#/definitions/v1FipsConfig"
-        },
         "nodesAutoRemediationSetting": {
           "$ref": "#/definitions/v1NodesAutoRemediationSettings"
         }
@@ -29509,14 +30119,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceConfig": {
           "$ref": "#/definitions/v1InstanceConfig"
         },
@@ -29535,6 +30137,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -29547,6 +30152,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "rootDeviceSize": {
           "description": "rootDeviceSize in GBs",
@@ -29875,6 +30485,29 @@
         },
         "subnetId": {
           "description": "Tencent Subnet",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1TlsConfiguration": {
+      "description": "TLS configuration",
+      "properties": {
+        "ca": {
+          "type": "string"
+        },
+        "certificate": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "insecureSkipVerify": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "key": {
           "type": "string"
         }
       },
@@ -30864,6 +31497,7 @@
           "type": "string"
         },
         "roles": {
+          "description": "Deprecated. Use 'v1/users/{uid}/roles' API to assign roles.",
           "items": {
             "type": "string"
           },
@@ -30971,6 +31605,9 @@
       "properties": {
         "email": {
           "type": "string"
+        },
+        "insecureVerify": {
+          "type": "boolean"
         },
         "password": {
           "type": "string"
@@ -31097,13 +31734,6 @@
         "lifecycleStatus": {
           "$ref": "#/definitions/v1LifecycleStatus",
           "description": "cluster life cycle status of virtual cluster"
-        },
-        "nestedClusters": {
-          "description": "Deprecated. Use field 'virtualClusters'",
-          "items": {
-            "$ref": "#/definitions/v1ObjectResReference"
-          },
-          "type": "array"
         },
         "state": {
           "description": "cluster virtual host status",
@@ -31318,14 +31948,6 @@
           },
           "type": "array"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceType": {
           "$ref": "#/definitions/v1VirtualInstanceType",
           "description": "InstanceType defines the required CPU, Memory"
@@ -31340,6 +31962,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
         },
         "maxSize": {
           "description": "max size of the pool, for scaling",
@@ -35219,14 +35844,6 @@
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
         },
-        "infraProfileRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "InfraProfileRef point to the ClusterProfile which contains InfraProfileTemplate"
-        },
-        "infraProfileTemplate": {
-          "$ref": "#/definitions/v1ClusterProfileTemplate",
-          "description": "InfraProfile contains OS/Kernel for this NodePool"
-        },
         "instanceType": {
           "$ref": "#/definitions/v1VsphereInstanceType",
           "description": "InstanceType defines the required CPU, Memory, Storage"
@@ -35243,6 +35860,9 @@
           },
           "type": "array"
         },
+        "machinePoolProperties": {
+          "$ref": "#/definitions/v1MachinePoolProperties"
+        },
         "maxSize": {
           "description": "max size of the pool, for scaling",
           "format": "int32",
@@ -35255,6 +35875,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "nodeRepaveInterval": {
+          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
+          "format": "int32",
+          "type": "integer"
         },
         "placements": {
           "description": "Placements configuration Placements If defined, will replace default values defined in VsphereClusterConfig Array means one MachinePool can span across multiple vsphere compute cluster",
@@ -35299,9 +35924,6 @@
         },
         "poolConfig": {
           "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        },
-        "profileConfig": {
-          "$ref": "#/definitions/v1MachinePoolProfileConfigEntity"
         }
       },
       "required": [
@@ -36496,7 +37118,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 3.4",
+    "title": "Palette APIs - 4.0",
     "version": "v1"
   },
   "paths": {
@@ -45213,6 +45835,156 @@
         ]
       }
     },
+    "/v1/cloudconfigs/{cloudType}/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}/maintenance": {
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine uid",
+          "in": "path",
+          "name": "machineUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "all",
+          "description": "Cloud type",
+          "enum": [
+            "all",
+            "aws",
+            "azure",
+            "gcp",
+            "vsphere",
+            "openstack",
+            "maas",
+            "nested",
+            "baremetal",
+            "eks",
+            "aks",
+            "edge",
+            "edge-native",
+            "libvirt",
+            "tencent",
+            "tke",
+            "coxedge",
+            "generic",
+            "gke"
+          ],
+          "in": "path",
+          "name": "cloudType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsMachinePoolsMachineUidMaintenanceUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1MachineMaintenance"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified machine maintenance",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/{cloudType}/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}/maintenance/status": {
+      "parameters": [
+        {
+          "description": "Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Machine uid",
+          "in": "path",
+          "name": "machineUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "default": "all",
+          "description": "Cloud type",
+          "enum": [
+            "all",
+            "aws",
+            "azure",
+            "gcp",
+            "vsphere",
+            "openstack",
+            "maas",
+            "nested",
+            "baremetal",
+            "eks",
+            "aks",
+            "edge",
+            "edge-native",
+            "libvirt",
+            "tencent",
+            "tke",
+            "coxedge",
+            "generic",
+            "gke"
+          ],
+          "in": "path",
+          "name": "cloudType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1CloudConfigsMachinePoolsMachineUidMaintenanceStatusUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1MachineMaintenanceStatus"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified machine maintenance",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/cloudconfigs/{configUid}/machinePools/machineUids": {
       "get": {
         "operationId": "v1CloudConfigsMachinePoolsMachineUidsGet",
@@ -45933,6 +46705,45 @@
           }
         },
         "summary": "Validate the AWS S3 bucket",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/aws/securitygroups": {
+      "get": {
+        "operationId": "V1AwsSecurityGroups",
+        "parameters": [
+          {
+            "description": "Uid for the specific AWS cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "type": "string"
+          },
+          {
+            "description": "Region for which security groups are requested",
+            "in": "query",
+            "name": "region",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Vpc Id for which security groups are requested",
+            "in": "query",
+            "name": "vpcId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsSecurityGroups"
+            }
+          }
+        },
+        "summary": "Retrieves a list of AWS security groups for the specified account",
         "tags": [
           "v1"
         ]
@@ -46672,6 +47483,12 @@
             "type": "string"
           },
           {
+            "description": "CoxEdge organization id",
+            "in": "query",
+            "name": "organizationId",
+            "type": "string"
+          },
+          {
             "description": "CoxEdge service name",
             "in": "query",
             "name": "service",
@@ -46748,6 +47565,12 @@
             "name": "cloudAccountUid",
             "required": true,
             "type": "string"
+          },
+          {
+            "description": "OrganizationId for the specific CoxEdge account",
+            "in": "query",
+            "name": "organizationId",
+            "type": "string"
           }
         ],
         "responses": {
@@ -46816,6 +47639,37 @@
           }
         },
         "summary": "Validate the specified GCP account credentials",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/gcp/azs/validate": {
+      "post": {
+        "operationId": "V1GcpAzValidate",
+        "parameters": [
+          {
+            "description": "Uid for the specific GCP cloud account",
+            "in": "body",
+            "name": "entity",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AzValidateEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Validate the specified GCP az",
         "tags": [
           "v1"
         ]
@@ -47048,6 +47902,44 @@
           }
         },
         "summary": "Retrieves a list of GCP zones for the specified account and region",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clouds/gcp/projects/{project}/validate": {
+      "post": {
+        "operationId": "V1GcpProjectValidate",
+        "parameters": [
+          {
+            "description": "GCP project uid",
+            "in": "path",
+            "name": "project",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Uid for the specific GCP cloud account",
+            "in": "body",
+            "name": "cloudAccountUid",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloudAccountUidEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Validate the specified GCP project",
         "tags": [
           "v1"
         ]
@@ -51919,6 +52811,35 @@
         ]
       }
     },
+    "/v1/edgehosts/{uid}/reset": {
+      "parameters": [
+        {
+          "description": "Edge host uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "V1EdgeHostsUidReset",
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Reset the cluster through edge host",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/edgehosts/{uid}/spc/download": {
       "get": {
         "operationId": "v1EdgeHostDevicesUidSpcDownload",
@@ -53001,6 +53922,31 @@
         ]
       }
     },
+    "/v1/overlords/maas/{uid}/clusterprofile": {
+      "get": {
+        "operationId": "v1OverlordsUidMaasClusterProfile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfile"
+            }
+          }
+        },
+        "summary": "Returns the specified maas private gateway cluster profile",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/overlords/migrate": {
       "post": {
         "operationId": "V1OverlordsMigrate",
@@ -53211,6 +54157,31 @@
           "v1"
         ]
       }
+    },
+    "/v1/overlords/openstack/{uid}/clusterprofile": {
+      "get": {
+        "operationId": "v1OverlordsUidOpenStackClusterProfile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfile"
+            }
+          }
+        },
+        "summary": "Returns the specified OpenStack private gateway cluster profile",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
     },
     "/v1/overlords/pairing/code": {
       "get": {
@@ -53446,6 +54417,31 @@
         ]
       }
     },
+    "/v1/overlords/vsphere/{uid}/clusterprofile": {
+      "get": {
+        "operationId": "v1OverlordsUidVsphereClusterProfile",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfile"
+            }
+          }
+        },
+        "summary": "Returns the specified vsphere private gateway cluster profile",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/overlords/vsphere/{uid}/pools": {
       "get": {
         "operationId": "v1OverlordsUidPoolsList",
@@ -53584,11 +54580,6 @@
           "name": "computecluster",
           "required": true,
           "type": "string"
-        },
-        {
-          "in": "query",
-          "name": "useQualifiedNetworkName",
-          "type": "boolean"
         }
       ]
     },
@@ -53883,6 +54874,53 @@
           "description": "Pack layer",
           "in": "query",
           "name": "layer",
+          "type": "string"
+        },
+        {
+          "description": "Comma seperated pack states. Example values are \"deprecated\" \"deprecated,disabled\". If states is not specified or empty then by default API will return all packs except \"disabled\" packs",
+          "in": "query",
+          "name": "states",
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/packs/{packUid}/logo": {
+      "get": {
+        "operationId": "v1PacksPackUidLogo",
+        "produces": [
+          "image/png",
+          "image/gif",
+          "image/jpeg"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Cache-Control": {
+                "description": "Cache control directive for the response",
+                "type": "string"
+              },
+              "Expires": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Returns the logo for a specified pack",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Pack uid",
+          "in": "path",
+          "name": "packUid",
+          "required": true,
           "type": "string"
         }
       ]
@@ -54564,43 +55602,6 @@
         }
       ]
     },
-    "/v1/projects/{uid}/preferences/clusterSettings/fips": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1ProjectClusterFipsSettingUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1FipsConfig"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Update project clusters fips setting",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/projects/{uid}/preferences/clusterSettings/nodesAutoRemediationSetting": {
       "parameters": [
         {
@@ -55076,6 +56077,12 @@
         "operationId": "v1BasicOciRegistriesCreate",
         "parameters": [
           {
+            "default": false,
+            "in": "query",
+            "name": "skipPackSync",
+            "type": "boolean"
+          },
+          {
             "in": "body",
             "name": "body",
             "schema": {
@@ -55103,10 +56110,47 @@
         ]
       }
     },
+    "/v1/registries/oci/basic/validate": {
+      "post": {
+        "description": "Returns no contents if oci registry is valid else error.",
+        "operationId": "v1BasicOciRegistriesValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1BasicOciRegistrySpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Check if oci registry is valid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/registries/oci/ecr": {
       "post": {
         "operationId": "v1EcrRegistriesCreate",
         "parameters": [
+          {
+            "default": false,
+            "in": "query",
+            "name": "skipPackSync",
+            "type": "boolean"
+          },
           {
             "in": "body",
             "name": "body",
@@ -55130,6 +56174,54 @@
           }
         },
         "summary": "Creates a ecr registry",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/registries/oci/ecr/validate": {
+      "post": {
+        "description": "Returns no contents if ecr registry is valid else error.",
+        "operationId": "v1EcrRegistriesValidate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EcrRegistrySpec"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Check if ecr registry is valid",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/registries/oci/image": {
+      "get": {
+        "operationId": "v1OciImageRegistryGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1OciImageRegistry"
+            }
+          }
+        },
+        "summary": "Creates a image registry",
         "tags": [
           "v1"
         ]
@@ -55240,6 +56332,61 @@
         ]
       }
     },
+    "/v1/registries/oci/{uid}/basic/sync": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "description": "Sync all the content from the oci registry",
+        "operationId": "v1BasicOciRegistriesUidSync",
+        "responses": {
+          "202": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Sync oci registry",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/registries/oci/{uid}/basic/sync/status": {
+      "get": {
+        "description": "Get sync status for the oci specified registry",
+        "operationId": "v1BasicOciRegistriesUidSyncStatus",
+        "responses": {
+          "200": {
+            "description": "Oci registry sync status",
+            "schema": {
+              "$ref": "#/definitions/v1RegistrySyncStatus"
+            }
+          }
+        },
+        "summary": "Get oci registry sync status",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/registries/oci/{uid}/ecr": {
       "delete": {
         "operationId": "v1EcrRegistriesUidDelete",
@@ -55297,6 +56444,61 @@
           "v1"
         ]
       }
+    },
+    "/v1/registries/oci/{uid}/ecr/sync": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "description": "Sync all the content from the ecr registry",
+        "operationId": "v1EcrRegistriesUidSync",
+        "responses": {
+          "202": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Sync ecr registry",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/registries/oci/{uid}/ecr/sync/status": {
+      "get": {
+        "description": "Get sync status for the ecr specified registry",
+        "operationId": "v1EcrRegistriesUidSyncStatus",
+        "responses": {
+          "200": {
+            "description": "Ecr registry sync status",
+            "schema": {
+              "$ref": "#/definitions/v1RegistrySyncStatus"
+            }
+          }
+        },
+        "summary": "Get ecr registry sync status",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
     },
     "/v1/registries/pack": {
       "get": {
@@ -58198,6 +59400,41 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/assets/adminKubeconfig": {
+      "get": {
+        "operationId": "v1SpectroClustersUidAdminKubeConfig",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "download file",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Returns the specified cluster's kube config file",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/assets/frpKubeconfig": {
       "delete": {
         "operationId": "v1SpectroClustersUidFrpKubeConfigDelete",
@@ -58473,6 +59710,38 @@
           }
         },
         "summary": "Deprecated. Updates the specified cluster's Cluster Role bindings",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/clusterConfig/controlPlaneHealthCheckTimeout": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "V1ControlPlaneHealthCheckTimeoutUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ControlPlaneHealthCheckTimeoutEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified cluster controlPlane health check timeout",
         "tags": [
           "v1"
         ]
@@ -60030,6 +61299,12 @@
           "name": "uid",
           "required": true,
           "type": "string"
+        },
+        {
+          "default": false,
+          "in": "query",
+          "name": "skipEmptyNamespaces",
+          "type": "boolean"
         }
       ]
     },
@@ -62497,6 +63772,58 @@
         ]
       }
     },
+    "/v1/tenants/{tenantUid}/authTokenSettings": {
+      "get": {
+        "operationId": "v1TenantUidAuthTokenSettingsGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AuthTokenSettings"
+            }
+          }
+        },
+        "summary": "Get tenant auth token settings",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TenantUidAuthTokenSettingsUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AuthTokenSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Update tenant auth token settings",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/tenants/{tenantUid}/contract/accept": {
       "parameters": [
         {
@@ -62883,6 +64210,58 @@
         }
       ]
     },
+    "/v1/tenants/{tenantUid}/loginBanner": {
+      "get": {
+        "operationId": "v1TenantUidLoginBannerGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1LoginBannerSettings"
+            }
+          }
+        },
+        "summary": "Get tenant login banner settings",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TenantUidLoginBannerUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1LoginBannerSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Update tenant login banner settings",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/tenants/{tenantUid}/macros": {
       "delete": {
         "operationId": "v1TenantsUidMacrosDeleteByMacroName",
@@ -63140,43 +64519,6 @@
         }
       ]
     },
-    "/v1/tenants/{tenantUid}/preferences/clusterSettings/fips": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "tenantUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1TenantClusterFipsSettingUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1FipsConfig"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Update tenant clusters fips setting",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/tenants/{tenantUid}/preferences/clusterSettings/nodesAutoRemediationSetting": {
       "parameters": [
         {
@@ -63255,6 +64597,58 @@
           }
         },
         "summary": "update developer credit for a specific tenant",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/tenants/{tenantUid}/preferences/fips": {
+      "get": {
+        "operationId": "v1TenantFipsSettingsGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1FipsSettings"
+            }
+          }
+        },
+        "summary": "Get tenant fips settings",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tenantUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1TenantFipsSettingsUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1FipsSettings"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Update tenant fips setting",
         "tags": [
           "v1"
         ]
@@ -64021,7 +65415,7 @@
         ]
       },
       "get": {
-        "operationId": "v1UsersAssetSshGet",
+        "operationId": "v1UsersAssetSshGetUid",
         "responses": {
           "200": {
             "description": "(empty)",
@@ -64229,14 +65623,6 @@
     "/v1/users/config/scar": {
       "get": {
         "operationId": "V1UsersConfigScarGet",
-        "parameters": [
-          {
-            "default": false,
-            "in": "query",
-            "name": "fips",
-            "type": "boolean"
-          }
-        ],
         "responses": {
           "200": {
             "description": "(empty)",
