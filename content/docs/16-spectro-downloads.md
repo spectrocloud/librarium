@@ -38,7 +38,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 <WarningBox>
 
-Starting with Palette 4.0, the installation of PCG is done through the Palette CLI. Refer to the Palette CLI [pcg command](/palette-cli/commands/#pcg) document for installation guidance.
+Starting with Palette 4.0, the installation of PCG is done through the Palette CLI. Refer to the Palette CLI [PCG command](/palette-cli/commands/#pcg) document for installation guidance.
 
 </WarningBox>
 
