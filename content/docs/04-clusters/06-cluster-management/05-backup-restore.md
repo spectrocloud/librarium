@@ -356,7 +356,7 @@ The following section will describe the prerequisites and the steps to configure
 	| **Resource Group:** | Provide the Azure Resource Group name. |
 	|**Tenant ID** | Provide the Azure tenant ID.|
 	| **Client ID** | Provide the Azure client ID of the service principal. |
-	| **Subscription ID** |Provide the Azure subscription ID where you have created the Resource Group and the Azure Storgae resource.|
+	| **Subscription ID** |Provide the Azure subscription ID where you have created the Resource Group and the Azure Storage resource.|
 	| **Client Secret** | Provide the Azure client secret for the service principal you created for Palette to assume. |
 
 
@@ -404,19 +404,19 @@ Use the following instructions in Palette to create a backup for an existing clu
 	|---|---|
 	|**Backup prefix**|Palette will generate a name automatically. Provide a prefix string you want to prepend to the auto-generated name. |
 	|**Select backup location**|Choose a backup location. You must configure a location before creating a backup. |
-	|**Backup schedule**|Create a backup schedule of your choice from the **drop-down Menu**. You can review the cheduling options below the current table.|
+	|**Backup schedule**|Create a backup schedule of your choice from the **drop-down Menu**. You can review the scheduling options below the current table.|
 	|**Select period until expiry**|Select an expiry duration for the backups. Palette will delete the backup after the expiry duration.|
 	|**Include all disks**|Your choice.|
 	|**Include cluster resources**|Your choice.|
-	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can unselect specific namespaces per your choice. |
+	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can remove specific namespaces per your choice. |
 
 	A cluster backup supports the following scheduling options:	
 
 	* Customize your backup for the exact month, day, hour, and minute of the user's choice
 	* Every week on Sunday at midnight
 	* Every two weeks at midnight
-	* Every month on the 1st at midnight
-	* Every two months on the 1st at midnight
+	* Every month on the first at midnight
+	* Every two months on the first at midnight
 	* Never
 
 
@@ -454,7 +454,7 @@ Use the following instructions in Palette to create a backup for an existing clu
 	|**Select period until expiry**|Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration.|
 	|**Include all disks**|Your choice.|
 	|**Include cluster resources**|Your choice.|
-	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can unselect specific namespaces per your choice. |
+	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can remove specific namespaces per your choice. |
 
 
 6. Click on the **Create Backup** button at the bottom. 
