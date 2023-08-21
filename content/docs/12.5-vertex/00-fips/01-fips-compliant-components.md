@@ -32,7 +32,15 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 - Kubernetes
   - Palette eXtended Kubernetes (PXK) 
   - Palette eXtended Kubernetes - Edge (PXK-E)
-  - RKE2
+  - RKE 2
+
+    <br />
+
+    <InfoBox>
+
+    Palette VerteX consumes RKE 2 images directly. As a result, Palette VerteX displays an unknown state of FIPS compliance for imported RKE 2 clusters. Review <<Link to FIPS status icons>> for a list of Palette VerteX status icons and descriptions.
+
+    </InfoBox>
 
 
 - Container Network Interface (CNI) 
