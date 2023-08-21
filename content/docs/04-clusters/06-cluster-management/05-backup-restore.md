@@ -14,13 +14,13 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Cluster Backup and Restore
 
-A backup is a persistent state of Kubernetes clusters, including the native objects such as Pods, DaemonSets, Services, and persistent volumes. A backup allows you to save the current state of a cluster and restore it at a later point in time if needed. You can restore a backup to the same or a different cluster. Internally, Palette leverages an open-source tool called *Velero* to provide backup and restore capabilities. 
+A backup is a persistent state of Kubernetes resources, ranging from objects such as Pods, DaemonSets, Services, to persistent volumes. A backup allows you to save the current state of a cluster and restore it at a later point in time if needed. You can restore a backup to the same or a different cluster. 
 
 
-Palette allows you to schedule and take a backup of a specific cluster or an entire [workspace](/workspace). Also, you can maintain multiple backups of a cluster or a workspace. This guide provides the instructions for creating and restoring a cluster backup. You can refer to the [Manage Palette Workspace](/workspace/workload-features#managepaletteworkspace) guide to create and restore a workspace backup. 
+You can schedule and take a backup of a specific cluster or an entire [workspace](/workspace). Also, you can maintain multiple backups of a cluster or a workspace. This guide provides instructions for creating and restoring a cluster backup. You can refer to the [Manage Palette Workspace](/workspace/workload-features#managepaletteworkspace) guide to learn more about backup and restore actions for a workspace. 
 
 
-Before you create a backup, the initial step is to configure a backup location in Palette. A backup location is an object storage in the cloud. Palette supports the following object storages as the backup location.
+Before you create a backup, the initial step is to configure a backup location in Palette. A backup location is an object storage. Palette supports the following object storages as the backup location.
 
 - Amazon Web Services (AWS) Simple Storage Service (S3) bucket
 
@@ -30,7 +30,7 @@ Before you create a backup, the initial step is to configure a backup location i
 
 - Azure blob storage
 
-While configuring a backup location, you authorize Palette to perform S3 operations in the cloud account. An outstanding use case is when the backup cloud account differs from the one where Palette deploys the clusters. In such scenarios, you must also authorize the latter cloud account, as the diagram below highlights. The numerical points 1, 2, and 3 highlighted in the diagram below signify the following sequence you follow in Palette.
+When you create a backup location, you authorize Palette to perform S3 operations in the environment the object storage resides. A common use case is to back up a cloud account that is different from the one where Palette deploys clusters. In this scenario, you must authorize the latter cloud account, as the diagram below highlights. The numerical points 1, 2, and 3 highlighted in the diagram below signify the following sequence you follow in Palette.
 <br />
 
 1. When registering a primary cloud account with Palette, you authorize Palette to deploy clusters in the cloud account. 
