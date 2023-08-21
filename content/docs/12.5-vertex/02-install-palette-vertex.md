@@ -50,31 +50,26 @@ The next sections describe specific requirements for installing Palette VerteX.
 
 # Size Guidelines
 
-This section lists resource requirements for Palette VerteX for various capacity levels. Capacity levels are defined as follows:
+This section lists resource requirements for Palette VerteX for various capacity levels. In Palette VerteX, the terms *small*, *medium*, and *large* are used to describe the instance size of worker pools that Palette VerteX is installed on. The following table lists the resource requirements for each size. 
+
 
 <br />
 
-- **Capacity Level**: The number of concurrent provisioning or deletion requests for enterprise clusters.
+<WarningBox>
 
+The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested the performance of Palette VerteX with the recommended maximum number of deployed nodes and clusters. Exceeding these limits can negatively impact performance and result in instability. The active workload limit refers to the maximum number of active nodes and pods at any given time. Exceeding these limits may potentially negatively impact performance and result in instability.
 
-- **Total managed clusters**: The number of deployed enterprise clusters that are active in parallel.
-
-In Palette, the terms *small*, *medium*, and *large* are used to describe the instance size of worker pools. 
+</WarningBox>
 
 <br />
 
-<InfoBox>
-
-The size of the enterprise cluster, in terms of the number or size of the clusters, does not impact the capacity guidance in the tables below.
-
-</InfoBox>
 
 
-| **Configuration**  | **CPUs**| **Memory**| **Storage**                    | **Max Clusters** | 
-|--------------------|--------|-----------|---------------------------------|------------------|
-| Small              | 8      | 16 GB RAM | 120 GB (MongoDB: 60 GB) Storage | Up to 8          |
-| Medium (default)   | 12     | 32 GB RAM | 150 GB (MongoDB: 80 GB) Storage | Up to 12         |
-| Large              | ??     | ?? GB RAM | ??  GB (MongoDB: ?? GB) Storage | Up to ??         |
+| **Size** | **Nodes**| **CPU**| **Memory**| **Storage**| **MongoDB Storage Limit**| **MongoDB Memory Limit**| **MongoDB CPU Limit**  |**Total Deployed Nodes**| **Deployed Clusters with 10 Nodes**|
+|----------|----------|--------|-----------|------------|--------------------|-------------------|------------------|----------------------------|----------------------|
+| Small    | 3     | 8      | 16 GB  | 60 GB     | 20 GB             | 4 GB              | 2 | 1000 | 100 |
+| Medium (Recommended)  | 3     | 16     | 32 GB  | 100 GB     | 60 GB | 8 GB              | 4 | 3000 | 300 |               
+| Large    | 3     | 32     | 64 GB  | 120 GB | 80 GB | 12 GB | 6 | 5000 | 500 |
 
 
 #### Instance Sizing
@@ -82,7 +77,7 @@ The size of the enterprise cluster, in terms of the number or size of the cluste
 | **Configuration** | **Active Workload Limit**                           |
 |---------------------|---------------------------------------------------|
 | Small               | Up to 1000 Nodes each with 30 Pods (30,000 Pods)  |
-| Medium (default)    | Up to 3000 Nodes each with 30 Pods (90,000 Pods)  |
+| Medium (Recommended)    | Up to 3000 Nodes each with 30 Pods (90,000 Pods)|
 | Large               | Up to 5000 Nodes each with 30 Pods (150,000 Pods) |
 
 

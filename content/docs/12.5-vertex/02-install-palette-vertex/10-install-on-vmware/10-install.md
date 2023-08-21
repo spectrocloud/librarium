@@ -35,14 +35,16 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
 
 - Review required VMware vSphere environment [permissions](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements).
 
-  <br />
 
-  <InfoBox>
 
-    Refer to the Palette VerteX [size guidelines](/vertex/install-palette-vertex#sizeguidelines) resource for additional sizing information.
+- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
 
-  </InfoBox>
+    - 8 CPUs per VM.
 
+    - 16 GB Memory per VM.
+
+    - 100 GB Disk Space per VM.
+    
 
 - The following network ports must be accessible for Palette VerteX to operate successfully.
 

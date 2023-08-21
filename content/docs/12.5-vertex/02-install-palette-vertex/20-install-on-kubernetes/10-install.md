@@ -39,13 +39,13 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
 
 
-- The Kubernetes cluster must have the following minimum resources:
+- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
 
     - 8 CPUs per node.
 
     - 16 GB Memory per node.
 
-    - 120 GB Disk Space per node.
+    - 100 GB Disk Space per node.
     
     - A Container Storage Interface (CSI) for persistent data.
 
