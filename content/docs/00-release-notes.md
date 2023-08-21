@@ -149,7 +149,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - You can now migrate a VM from VMware vSphere to a host cluster in Palette through the Palette CLI. The CLI provides an interactive migration experience allowing you to configure the VM migration parameters.
 
-## Vertex
+## VerteX
 
 ### Features
 
