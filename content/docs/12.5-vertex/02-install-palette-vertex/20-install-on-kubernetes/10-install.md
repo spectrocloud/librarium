@@ -39,7 +39,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
 
 
-- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
+- We recommend the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
 
     - 8 CPUs per node.
 
