@@ -120,11 +120,6 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
 
 
-### Known Issues
-
-
-- An Edge host cannot be repurposed to another Edge cluster without preparatory steps. To repurpose an Edge host from an existing cluster with another Edge cluster, the device must be re-flashed with the Palette Edge installer and the required Edge installation artifacts.
-
 
 ## Palette Dev Engine (PDE)
 
