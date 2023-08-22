@@ -1,7 +1,7 @@
 ---
 title: "Take a VM Snapshot"
 metaTitle: "Take a Snapshot of the VM"
-metaDescription: "Learn how to snapshot a VM using Spectro VM Dashboard."
+metaDescription: "Learn how to snapshot a VM using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false

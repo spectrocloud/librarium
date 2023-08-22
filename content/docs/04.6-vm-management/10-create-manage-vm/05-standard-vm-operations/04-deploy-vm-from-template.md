@@ -1,7 +1,7 @@
 ---
 title: "Deploy VM From a Template"
 metaTitle: "Deploy VM From a Template"
-metaDescription: "Learn how to deploy a VM from a template using Spectro VM Dashboard."
+metaDescription: "Learn how to deploy a VM from a template using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -29,7 +29,7 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
-2. From the left **Main Menu**, click **Clusters** and select the cluster you used to enable the Spectro VM Dashboard.
+2. From the left **Main Menu**, click **Clusters** and select the cluster in which you deploy VMs.
 
 
 3. Click the **Virtual Machines** tab.
@@ -38,7 +38,7 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 4. Select the appropriate namespace from the **drop-down Menu**.
 
 
-5. From the **Virtual Machines** tab that appears when the Spectro VM Dashboard is enabled, click **New Virtual Machine**.
+5. From the **Virtual Machines** tab that appears, click **New Virtual Machine**.
 
 
 6. Click the **New Virtual Machine** button. Available templates are displayed based on supported Operating Systems (OS).

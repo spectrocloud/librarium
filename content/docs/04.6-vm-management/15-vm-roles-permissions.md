@@ -1,7 +1,7 @@
 ---
 title: "VM User Roles and Permissions"
 metaTitle: "VM User Roles and Permissions"
-metaDescription: "Learn about roles and permissions to apply to VMs when using Spectro VM Dashboard."
+metaDescription: "Learn about roles and permissions to apply to VMs when using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false

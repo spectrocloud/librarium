@@ -1,7 +1,7 @@
 ---
 title: "Migrate a VM"
 metaTitle: "Migrate a VM to a Different Node"
-metaDescription: "Learn how to migrate a VM to another physical host in the cluster using Palette."
+metaDescription: "Learn how to migrate a VM to another physical host in the cluster using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false
