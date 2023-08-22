@@ -15,16 +15,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-The **Virtual Machine Orchestrator** (VMO) pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. You use **Virtual Machine Orchestrator** pack to create a VMO cluster profile. the The pack's components are described below. All the components are enabled by default in the `charts:` section of the pack YAML configuration file. 
-
-The **Spectro Proxy** pack is a separate pack that is installed during profile creation when you use the default profile setting as described below.
+The **Virtual Machine Orchestrator** (VMO) pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. You use **Virtual Machine Orchestrator** pack to create a VMO cluster profile. The pack's components are described below. All the components are enabled by default in the `charts:` section of the pack YAML configuration file. 
 
 <br />
 
-<!-- - **Spectro VM Dashboard**: An add-on pack that enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Orchestrator is enabled. The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. To learn more about the web console, refer to [Spectro VM Dashboard](/vm-management/vm-packs-profiles/vm-dashboard). -->
+- **Spectro VM Dashboard**: Enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page in Palette when VM Orchestrator is enabled. The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. 
 
-
-- **Spectro Proxy** pack: Enables the use of a reverse proxy with a Kubernetes cluster. This pack is automatically installed when you create the cluster with the default **Proxied** setting for **Access** during cluster profile creation. Check out the [Spectro Proxy](/integrations/frp) pack documentation to learn more. 
+<!-- To learn more about the web console, refer to [Spectro VM Dashboard](/vm-management/vm-packs-profiles/vm-dashboard). -->
 
 
 - **KubeVirt**: Allows you to create VMs within a Kubernetes cluster using open-source [KubeVirt](https://kubevirt.io). KubeVirt provides feature gates you can enable in the Virtual Machine Orchestrator pack YAML file. To learn which feature gates Palette enables by default and how you can enable additional feature gates, check out the [Feature Gates](/vm-management#featuregates) section.
@@ -41,7 +38,14 @@ The **Spectro Proxy** pack is a separate pack that is installed during profile c
 - **Multus CNI**: A Controller Network Interface (CNI) plugin that enables multiple network interfaces to attach to Kubernetes pods. In this context, it is used to attach VM networks to the launched VM.
 
 
-Administrators can configure the Virtual Machine Orchestrator pack, cluster profiles, and VM templates that include commonly used operating systems, or they can define their own VM templates to share with users.
+<InfoBox>
+
+The **Spectro Proxy** pack enables the use of a reverse proxy with a Kubernetes cluster and is automatically installed when you create the cluster with the default **Proxied** setting for **Access** during cluster profile creation. Check out the [Spectro Proxy](/integrations/frp) pack documentation to learn more. 
+
+</InfoBox>
+
+
+Administrators can configure the out-of-the-box add-on packs, cluster profiles, and VM templates that include commonly used operating systems, or they can define their own VM templates to share with users.
 
 
 # Resources

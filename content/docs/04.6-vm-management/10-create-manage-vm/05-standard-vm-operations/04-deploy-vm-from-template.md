@@ -18,9 +18,7 @@ You can deploy a Virtual Machine (VM) using Palette's out-of-the-box templates o
 
 # Prerequisites
 
-- Configured Spectro VM Dashboard profile applied to your cluster. 
-
-    Review [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) to configure the dashboard.
+- Configured Virtual Machine Orchestrator profile applied to your cluster. Review [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) to configure the dashboard.
 
 # Deploy VM from a Template
 
@@ -103,7 +101,7 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 
 # Next Steps
 
-Try installing your applications. If you did not install the QEMU guest agent as part of the VM deployment, you can install it now. The guest agent displays additional details in the **Virtual Machines** > **Details** tab. To learn how to install the guest agent, review the [Red Hat](https://docs.openshift.com/container-platform/4.8/virt/virtual_machines/virt-installing-qemu-guest-agent.html) reference.
+Try installing your applications. If you did not install the QEMU guest agent as part of the VM deployment, you can install it now. The guest agent displays additional details in the **Virtual Machines** > **Details** tab. 
 
 You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you can make in the [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration) guide.
 

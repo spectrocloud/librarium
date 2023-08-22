@@ -51,16 +51,10 @@ You must configure permissions for actions that users can perform on Virtual Mac
 2. From the left **Main Menu**, click **Clusters** and select your cluster. 
 
 
-3. Navigate to the **Profiles** tab and click **+** next to **Addon Layers**.
+3. Click on **Settings** and choose **RBAC** to add role bindings. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
 
 
-4. Select the VMO profile you created.
-
-
-5. Click on **Settings** and choose **RBAC** to add role bindings. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
-
-
-6. Click **Confirm** to update the cluster.
+4. Click **Confirm** to update the cluster.
 	
 The cluster status displays as **Upgrading** on the **Cluster Overview** page. Upgrading can take several minutes depending on your environment. You can track events from the **Events** tab.
 

@@ -1,7 +1,7 @@
 ---
 title: "Standard VM Operations"
 metaTitle: "Standard VM Operations"
-metaDescription: "Learn about standard VM operations that you can perform using Spectro VM Dashboard."
+metaDescription: "Learn about standard VM operations that you can perform using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Virtual Machine Orchestrator supports standard power operations for Virtual Machines (VMs): 
+Palette Virtual Machine Orchestrator supports standard power operations for Virtual Machines (VMs): 
 
 <br />
 
