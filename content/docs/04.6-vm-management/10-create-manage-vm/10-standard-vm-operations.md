@@ -15,7 +15,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette Virtual Machine Orchestrator supports standard power operations for Virtual Machines (VMs): 
+Palette Virtual Machine Orchestrator (VMO) supports standard VM power operations: 
 
 <br />
 

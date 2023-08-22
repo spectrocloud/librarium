@@ -14,7 +14,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You must configure permissions for actions that users can perform on Virtual Machines (VMs) deployed using Palette Virtual Machine Orchestrator, such as cloning, updating, and migrating VMs. You can do this by creating roles and cluster role bindings to determine access permissions. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. To learn more about Cluster RBAC in Palette, review the [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) guide. 
+You must configure permissions for actions that users can perform on Virtual Machines (VMs) deployed using Palette Virtual Machine Orchestrator (VMO), such as cloning, updating, and migrating VMs. You can do this by creating roles and cluster role bindings to determine access permissions. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. To learn more about Cluster RBAC in Palette, review the [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) guide. 
 
 
 # Prerequisites
