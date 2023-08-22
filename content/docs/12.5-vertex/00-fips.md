@@ -22,10 +22,10 @@ Something to note when using RKE2 and K3s:
 
 <br />
 
-- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Some internal RKE2 components may not be FIPS-compliant. Palette displays RKE2 cluster status as FIPS-compliant. 
+- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Some internal RKE2 components may not be FIPS-compliant. Palette displays RKE2 as a FIPS-compliant layer. 
 
 
-- Although K3s is not available as a FIPS-certified distribution, Palette VerteX supports K3s edge clusters.
+- Although K3s is not available as a FIPS-certified distribution, Palette VerteX supports K3s as a Kubernetes distribution for Edge clusters.
 
 Palette VerteX uses icons to show FIPS compliance status. For information about Palette VerteX status icons, review [FIPS Status Icons](/vertex/fips/fips-status-icons).
 
