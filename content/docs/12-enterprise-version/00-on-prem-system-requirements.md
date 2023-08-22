@@ -796,22 +796,7 @@ Ensure your data center CIDR IP address does not overlap with the Kubernetes Pod
 ##  Proxy Requirements
 *  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
-
-*   Connectivity to the following domains and ports should be allowed:
-
-    | **Top-level Domain**      | **Port** | **Description**                                     |
-    | ------------------------- | -------- | --------------------------------------------------- |
-    | spectrocloud.com          | 443      | Spectro Cloud content repository and pack registry  |
-    | s3.amazonaws.com          | 443      | Spectro Cloud VMware OVA files                      |
-    | gcr.io                    | 443      | Spectro Cloud and common 3rd party container images |
-    | docker.io                 | 443      | Common 3rd party container images                   |
-    | googleapis.com            | 443      | For pulling Spectro Cloud images                    |
-    | docker.com                | 443      | Common 3rd party container images                   |
-    | raw.githubusercontent.com | 443      | Common 3rd party content                            |
-    | projectcalico.org         | 443      | Calico container images                             |
-    | quay.io                   | 443      | Common 3rd party container images                   |
-    | grafana.com               | 443      | Grafana container images and manifests              |
-    | github.com                | 443      | Common 3rd party content                            |
+*   Connectivity to all [Proxy Whitelist](/clusters#proxywhitelist) domains must be allowed
 
 
 ## Hardware Requirements
