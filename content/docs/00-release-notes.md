@@ -20,7 +20,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 ## Palette
 
 
-## Breaking Changes
+### Breaking Changes
 
 - Deploying Virtual Clusters directly into host clusters is no longer supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on deploying Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
 
@@ -108,7 +108,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Features
 
-- Palette Edge now supports ARM64 architecture. This is a beta feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
+- Palette Edge now supports ARM64 architecture. This is a preview feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
 
 
 - Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
@@ -261,11 +261,11 @@ The following packs are marked as deprecated, disabled, or deleted. Refer to the
 | **Pack**                                  | **Version** | **Status**   |
 |-------------------------------------------|-------------|--------------|
 | MicroK8s                                  | 1.23        | Deprecated   |
-| Konvoy                                    | 1.19.10     | Disabled     |
-| Konvoy                                    | 1.19.15     | Disabled     |
-| Konvoy                                    | 1.20.8      | Disabled     |
-| Konvoy                                    | 1.20.11     | Disabled     |
-| Konvoy                                    | 1.21.6      | Disabled     |
+| Konvoy                                    | 1.19.10     | Deleted     |
+| Konvoy                                    | 1.19.15     | Deleted     |
+| Konvoy                                    | 1.20.8      | Deleted     |
+| Konvoy                                    | 1.20.11     | Deleted     |
+| Konvoy                                    | 1.21.6      | Deleted     |
 | Kubernetes AKS                            | 1.22        | Deleted      |
 | Kubernetes AKS                            | 1.23        | Deleted      |
 | Kubernetes AKS                            | 1.24        | Deleted      |

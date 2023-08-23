@@ -40,7 +40,7 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 * Low touch, plug-and-play setup
 
 
-* Support for AMD64 and ARM64 (beta) architectures  
+* Support for AMD64 and ARM64 architectures  
 
 
 * Immutable update for Kubernetes and operating system (OS) with zero downtime
