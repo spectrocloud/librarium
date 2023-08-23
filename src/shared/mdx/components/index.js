@@ -139,18 +139,18 @@ const mdxComponents = {
   h2: Header2,
   h3: Header3,
   h4: (props) => (
-    <h4 id={props.id ? `#${props.id}` : generateHeadingId(props.children)} {...props}>
+    <h4 id={generateHeadingId(props.children)} {...props}>
       {props.children}
     </h4>
   ),
   h5: (props) => (
-    <h5 id={props.id ? `#${props.id}` : generateHeadingId(props.children)} {...props}>
+    <h5 id={generateHeadingId(props.children)} {...props}>
       {" "}
       {props.children}
     </h5>
   ),
   h6: (props) => (
-    <h6 id={props.id ? `#${props.id}` : generateHeadingId(props.children)} {...props}>
+    <h6 id={generateHeadingId(props.children)} {...props}>
       {props.children}
     </h6>
   ),
