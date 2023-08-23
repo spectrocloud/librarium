@@ -21,7 +21,7 @@ Palette supports four types of scans. Each scan generates reports with details s
 
 <InfoBox>
 
-Scans may not work as expected when a node is in maintainence mode. Before scheduling a scan, we recommend you turn off maintenance mode if it is enabled. To verify if a node is in maintenance mode, navigate to **Clusters** > **Nodes** and check the **Health** column for a **Maintenance mode** icon. To turn off maintenance mode, click the **three-dot** Menu in the row of the node you want to scan, and select **Turn off maintenance mode**. 
+Scans may not work as expected when a node is in maintenance mode. Before scheduling a scan, we recommend you turn off maintenance mode if it is enabled. To verify if a node is in maintenance mode, navigate to **Clusters** > **Nodes** and check the **Health** column for a **Maintenance mode** icon. To turn off maintenance mode, click the **three-dot** Menu in the row of the node you want to scan, and select **Turn off maintenance mode**. 
 
 </InfoBox>
 
