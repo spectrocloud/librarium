@@ -21,6 +21,8 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 ## Palette
 
+### Breaking Changes
+
 - Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
 
 
