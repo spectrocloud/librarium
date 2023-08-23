@@ -67,15 +67,33 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Evacuate a Host
 
-Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the `drain`command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
+Compute nodes can be placed into maintenance mode using Palette or manually using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the `drain`command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
 
 
 ## Prerequisites
 
 - Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode, this feature allows for a smooth and uninterrupted migration process.   
 
+## Evacuate VMs in Palette
 
-## Migrate VMs Manually
+<br />
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. From the left **Main Menu**, choose **Clusters** and click on the **Nodes** tab. 
+
+
+3. Click the **three-dot Menu** in the row of the node you want to evacuate and select **Turn on maintenance mode**. 
+
+    <br />
+
+    This evacuates all workloads from the node to other nodes in the worker pool.
+
+
+4. When maintenance mode displays as completed in the **Health** column, click the **three-dot Menu** in the row of the evacuated node and select **Turn off maintenance mode**. 
+
+## Evacuate VMs Manually
 
 <br />
 
