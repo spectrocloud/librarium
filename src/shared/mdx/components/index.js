@@ -93,15 +93,18 @@ const Header1 = (props) => {
 
 const Header2 = (props) => {
   const tabsIdentifierData = useTabsContext();
-
   return (
     <HeaderWrap>
-      <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+      <a
+        href={
+          props.id ? `#${props.id}` : generatePermalinkAnchor(props.children, tabsIdentifierData)
+        }
+      >
         <FontAwesomeIcon icon="link" />
       </a>
       <h2 {...props}>
         {props.children}
-        <Anchor id={generateHeadingId(props.children)} />
+        <Anchor id={props.id ? props.id : generateHeadingId(props.children)} />
       </h2>
     </HeaderWrap>
   );
@@ -112,12 +115,16 @@ const Header3 = (props) => {
 
   return (
     <HeaderWrap>
-      <a href={generatePermalinkAnchor(props.children, tabsIdentifierData)}>
+      <a
+        href={
+          props.id ? `#${props.id}` : generatePermalinkAnchor(props.children, tabsIdentifierData)
+        }
+      >
         <FontAwesomeIcon icon="link" />
       </a>
       <h3 {...props}>
         {props.children}
-        <Anchor id={generateHeadingId(props.children)} />
+        <Anchor id={props.id ? props.id : generateHeadingId(props.children)} />
       </h3>
     </HeaderWrap>
   );
