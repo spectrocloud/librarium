@@ -29,7 +29,7 @@ Use the following steps to configure a reverse proxy server for Palette VerteX.
 - [Helm](https://helm.sh/docs/intro/install/) is installed and available.
 
 
-- Access to the Palette VerteX Kubernetes cluster's kubeconfig file. You can download the Kubeconfig file from the Palette VerteX system console. Navigate to **Enterprise System Migration**, select the Palette VerteX cluster, and click the **Download Kubeconfig** button for the cluster.
+- Access to the Palette VerteX Kubernetes cluster's kubeconfig file. You can download the kubeconfig file from the Palette VerteX system console. Navigate to **Enterprise System Migration**, select the Palette VerteX cluster, and click the **Download Kubeconfig** button for the cluster.
 
 
 - A domain name that you can use for the reverse proxy server. You will also need access to the DNS records for the domain so that you can create a CNAME DNS record for the reverse proxy server load balancer.
