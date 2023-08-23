@@ -144,7 +144,7 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 <Tabs.TabPane tab="AWS GovCloud Account" key="AWS GovCloud Account">
 
-Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc). Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. To get started with AWS GovClud and Palette, use the following steps.
+Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc). Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. To get started with AWS GovCloud and Palette, use the following steps.
 <br />
 
 <Tabs>

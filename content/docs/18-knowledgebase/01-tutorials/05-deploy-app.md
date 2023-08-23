@@ -1252,4 +1252,4 @@ To learn more about Palette Dev Engine and its capabilities, check out the refer
 - [App Profiles](/devx/app-profile)
 - [App Services](/devx/app-profile/services)
 - [Palette Virtual Clusters](/devx/palette-virtual-clusters) 
-- [Hello Universe GitHub respository](https://github.com/spectrocloud/hello-universe)
+- [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
