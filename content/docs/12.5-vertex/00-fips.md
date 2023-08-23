@@ -16,13 +16,12 @@ Palette VerteX is FIPS 140-2 compliant. This means that Palette VerteX uses FIPS
 
 You can deploy non-FIPS-compliant components in your Palette VerteX environment by enabling non-FIPS settings. Refer to the [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings) documentation for more information.
 
-<!-- Palette VerteX consumes certain images with components that are not compiled using FIPS, and it supports a non-FIPS-certified K3s distribution as follows: -->
 
 Something to note when using RKE2 and K3s:
 
 <br />
 
-- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Some internal RKE2 components may not be FIPS-compliant. Palette displays RKE2 as a FIPS-compliant layer. 
+- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer. 
 
 
 - Although K3s is not available as a FIPS-certified distribution, Palette VerteX supports K3s as a Kubernetes distribution for Edge clusters.
