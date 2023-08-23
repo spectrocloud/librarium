@@ -49,7 +49,7 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 <WarningBox>
 
-In some situations, such as with the Fedora operating system, SELinux on the guest prevents the QEMU guest agent from [*quiescing*](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-64B866EF-7636-401C-A8FF-2B4584D9CA72.html?hWord=N4IghgNiBcII4FcCWBTAzgYxSAvkA) the target filesystem. As a workaround, you can do one of the following:
+In some situations, such as with the Fedora operating system, SELinux on the guest prevents the QEMU guest agent from quiescing the target filesystem. As a workaround, you can do one of the following:
 
 - Generate an appropriate local security module that permits `qemu-ga` to operate correctly. This is the preferred workaround.
 
