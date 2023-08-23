@@ -26,6 +26,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 ### Features
 
+
 - The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to facilitate the management of virtual machines. Review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
 
 

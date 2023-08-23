@@ -21,8 +21,6 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 
 # Prerequisites
 
-- A Kubernetes cluster with sufficient resources to host the Spectro Proxy server. The Spectro Proxy server requires 1 CPU and 256 MB of memory.
-
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available.
 
@@ -30,7 +28,7 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 - [Helm](https://helm.sh/docs/intro/install/) is installed and available.
 
 
-- Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette VerteX. We recommend using a role with cluster-admin permissions to install Palette VerteX.
+- Access to the Palette Kubernetes cluster's kubeconfig file. You can download the Kubeconfig file from the Palette system console. Navigate to **Enterprise System Migration**, select the Palette VerteX cluster, and click the **Download Kubeconfig** button for the cluster.
 
 
 - A domain name that you can use for the reverse proxy server. You will also need access to the DNS records for the domain so that you can create a CNAME DNS record for the reverse proxy server load balancer.
@@ -49,32 +47,16 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 
 # Enablement
 
-1. Open a terminal session and navigate to the directory where you want to download the Spectro Proxy Helm chart.
+1. Open a terminal session and navigate to the directory where you stored the **values.yaml** for the Palette VerteX installation.
 
 
-2. Download the Spectro Proxy Helm chart. Use the following command to download the Helm chart.
-
-  <br />
-
-  ```bash
-  wget https://s3.amazonaws.com/manifests.spectrocloud.com/frps/v1.1.0/frps.tgz
-  ```
-
-3. Extract the Helm chart. Use the following command to extract the Helm chart.
+2. Use a text editor and open the **values.yaml** file. Locate the `frps` section and update the following values in the **values.yaml** file. Refer to the [Spectro Proxy Helm Configuration](/enterprise-version/helm-chart-install-reference/#spectroproxy) to learn more about the configuration options.
 
   <br />
 
-  ```bash
-  tar -xvf frps.tgz && cp frps/values.yaml .
-  ```
-
-
-4. Use your preferred text editor and update the **values.yaml** file. Update the following values in the **values.yaml** file.
-
-  <br />
-
-  | **Parameter** | **Description** |
-  | --- | --- |
+  | **Parameter** | **Description** | **Type** |
+  | --- | --- | ---|
+  | `enabled`| Set to `true` to enable the Spectro Proxy server. | boolean |
   | `frps.frpHostURL`| The domain name you will use for the Spectro Proxy server. For example, `frps.example.com`. |
   | `server.crt`| The x509 SSL certificate file in base64 format. |
   | `server.key`| The x509 SSL certificate key file in base64 format. |
@@ -82,25 +64,133 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 
   <br />
 
-5. After you have updated the values, use the following command to install the Spectro Proxy server.
+  The following is an example of the `frps` section in the **values.yaml** file. The SSL certificate files are truncated for brevity.
+
+  <br />
+
+  ```yaml
+  frps:
+    frps:
+      enabled: false
+      frpHostURL: "frps.palette.example.com"
+      server:
+        crt: "LS0tLS1CRU...........tCg=="
+        key: "LS0tLS1CRU...........tCg=="
+      ca:
+        crt : "LS0tLS1CRU...........tCg=="
+  ```
+
+
+3. Issue the `helm upgrade` command to update the Palette Kubernetes configuration. The command below assumes are in the folder that contains the **values.yaml** file and the Palette VerteX Helm chart. Replace the **values.yaml** file name with the name of your file.
 
   <br />
 
   ```bash
-  helm install --values values.yaml proxy-system frps.tgz
+  helm upgrade --values values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
   ```
 
-6. After the installation, use the following command to get the Spectro Proxy server's load balancer IP address.
+
+4. After the new configurations are accepted, use the following command to get the Spectro Proxy server's load balancer IP address.
 
   <br />
 
   ```bash
   kubectl get svc --namespace proxy-system spectro-proxy-svc
   ```
-7. Update the DNS records for the domain name you used for the Spectro Proxy server. Create a CNAME record that points to the Spectro Proxy server's load balancer IP address.
+5. Update the DNS records for the domain name you used for the Spectro Proxy server. Create a CNAME record that points to the Spectro Proxy server's load balancer IP address.
 
 
-You now have a Spectro Proxy server that you can use for Palette VerteX clusters deployed in a private network. 
+6. Log in to the Palette VerteX System API by using the `/v1/auth/syslogin` endpoint. Use the `curl` command below and replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. Ensure you replace the credentials below with your system console credentials.
+
+  <br />
+
+  ```bash
+  curl --insecure --location 'https://palette.example.com/v1/auth/syslogin' \
+   --header 'Content-Type: application/json' \
+   --data '{
+    "password": "**********",
+    "username": "**********"
+   }'
+  ```
+  Output
+  ```json hideClipboard
+  {
+    "Authorization": "**********.",
+    "IsPasswordReset": true
+  }
+  ```
+
+7. Using the output you received, copy the authorization value to your clipboard and assign it to a shell variable. Replace the authorization value below with the value from the output.
+
+  <br />
+
+  ```shell hideClipboard
+  TOKEN=**********
+  ```
+
+8. Next, prepare a payload for the`/v1/system/config/` endpoint. This endpoint is used to configure Palette VerteX to use a reverse proxy. The payload requires the following parameters:
+
+  <br />
+
+  | **Parameter** | **Description** | **Type** |
+  | --- | --- | --- |
+  | `caCert`| The x509 SSL certificate authority file in base64 format. | string |
+  | `clientCert`| The x509 SSL certificate file in base64 format. | string |
+  | `clientKey`| The x509 SSL certificate key file in base64 format. | string |
+  | `port` | The port number for the reverse proxy server. We recommend using port `443`. | integer |
+  | `protocol` | The protocol to use for the reverse proxy server. We recommend using `https`. | string |
+  | `server`| The domain name you will use for the Spectro Proxy server. For example, `frps.example.com`. Don't include the HTTP schema in the value. | string |
+
+  The following is an example payload. The SSL certificate files are truncated for brevity.
+
+  <br />
+
+  ```json hideClipboard
+    {
+      "caCert": "-----BEGIN CERTIFICATE-----\n.............\n-----END CERTIFICATE-----",
+      "clientCert": "-----BEGIN CERTIFICATE-----\n..........\n-----END CERTIFICATE-----",
+      "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n........\n-----END RSA PRIVATE KEY-----",
+      "port": 443,
+      "protocol": "https",
+      "server": "frps.palette.example.com.com"
+    }
+  ```
+
+  <InfoBox>
+
+  You can save the payload to a file and use the `cat` command to read the file contents into the `curl` command. For example, if you save the payload to a file named `payload.json`, you can use the following command to read the file contents into the `curl` command. You can also save the payload as a shell variable and use the variable in the `curl` command.
+
+  </InfoBox>
+
+
+  <br />
+
+9. Issue a PUT request using the following `curl` command. Replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. You can use `TOKEN` variable you created earlier for the authorization header. Ensure you replace the payload below with the payload you created in the previous step.
+
+  <br />
+
+  ```bash
+    curl --insecure --silent --include --output /dev/null -w "%{http_code}" --location --request PUT 'https://palette.example.com/v1/system/config/reverseproxy' \
+    --header "Authorization: $TOKEN" \
+    --header 'Content-Type: application/json' \
+    --data '    {
+        "caCert": "-----BEGIN CERTIFICATE-----\n................\n-----END CERTIFICATE-----\n",
+        "clientCert": "-----BEGIN CERTIFICATE-----\n.............\n-----END CERTIFICATE-----",
+        "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n............\n-----END RSA PRIVATE KEY-----\n",
+        "port": 443,
+        "protocol": "https",
+        "server": "frps.palette.example.com.com"
+    }'
+  ```
+
+  A successful response returns a `204` status code.
+
+  Output
+  ```shell hideClipboard
+  204
+  ```
+
+You now have a Spectro Proxy server that you can use to access Palette VerteX clusters deployed in a different network. Make sure you add the [Spectro Proxy pack](/integrations/frp) to the clusters you want to access using the Spectro Proxy server.
 
 
 # Validate
@@ -109,7 +199,7 @@ Use the following command to validate that the Spectro Proxy server is active.
 
 <br />
 
-<br />
+
 
 1. Open a terminal session.
 
