@@ -15,9 +15,10 @@ import InfoBox from 'shared/components/InfoBox';
 
 You can configure a reverse proxy for Palette VerteX. The reverse proxy can be used by host clusters deployed in a private network. Host clusters deployed in a private network are not accessible from the public internet or by users in different networks. You can use a reverse proxy to access the cluster's Kubernetes API server from a different network.
 
-When you provide a custom reverse proxy server, clusters that use the [Spectro Proxy pack](/integrations/frp) will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
+When you configure reverse proxy server for Palette VerteX, clusters that use the [Spectro Proxy pack](/integrations/frp) will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
 
-You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy server is designed to be deployed in a Kubernetes cluster. Use the instructions below to deploy a Spectro Proxy server.
+
+Use the following steps to configure a reverse proxy server for Palette VerteX.
 
 # Prerequisites
 
@@ -28,7 +29,7 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 - [Helm](https://helm.sh/docs/intro/install/) is installed and available.
 
 
-- Access to the Palette Kubernetes cluster's kubeconfig file. You can download the Kubeconfig file from the Palette system console. Navigate to **Enterprise System Migration**, select the Palette VerteX cluster, and click the **Download Kubeconfig** button for the cluster.
+- Access to the Palette VerteX Kubernetes cluster's kubeconfig file. You can download the Kubeconfig file from the Palette VerteX system console. Navigate to **Enterprise System Migration**, select the Palette VerteX cluster, and click the **Download Kubeconfig** button for the cluster.
 
 
 - A domain name that you can use for the reverse proxy server. You will also need access to the DNS records for the domain so that you can create a CNAME DNS record for the reverse proxy server load balancer.
@@ -71,8 +72,8 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
   ```yaml
   frps:
     frps:
-      enabled: false
-      frpHostURL: "frps.palette.example.com"
+      enabled: true
+      frpHostURL: "frps.vertex.example.com"
       server:
         crt: "LS0tLS1CRU...........tCg=="
         key: "LS0tLS1CRU...........tCg=="
@@ -81,7 +82,7 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
   ```
 
 
-3. Issue the `helm upgrade` command to update the Palette Kubernetes configuration. The command below assumes are in the folder that contains the **values.yaml** file and the Palette VerteX Helm chart. Replace the **values.yaml** file name with the name of your file.
+3. Issue the `helm upgrade` command to update the Palette VerteX Kubernetes configuration. The command below assumes you in the folder that contains the **values.yaml** file and the Palette VerteX Helm chart. Change the directory path if needed.
 
   <br />
 
@@ -105,7 +106,7 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
   <br />
 
   ```bash
-  curl --insecure --location 'https://palette.example.com/v1/auth/syslogin' \
+  curl --insecure --location 'https://vertex.example.com/v1/auth/syslogin' \
    --header 'Content-Type: application/json' \
    --data '{
     "password": "**********",
@@ -152,7 +153,7 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
       "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n........\n-----END RSA PRIVATE KEY-----",
       "port": 443,
       "protocol": "https",
-      "server": "frps.palette.example.com.com"
+      "server": "frps.vertex.example.com.com"
     }
   ```
 
@@ -165,12 +166,12 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
 
   <br />
 
-9. Issue a PUT request using the following `curl` command. Replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. You can use `TOKEN` variable you created earlier for the authorization header. Ensure you replace the payload below with the payload you created in the previous step.
+9. Issue a PUT request using the following `curl` command. Replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. You can use the `TOKEN` variable you created earlier for the authorization header. Ensure you replace the payload below with the payload you created in the previous step.
 
   <br />
 
   ```bash
-    curl --insecure --silent --include --output /dev/null -w "%{http_code}" --location --request PUT 'https://palette.example.com/v1/system/config/reverseproxy' \
+    curl --insecure --silent --include --output /dev/null -w "%{http_code}" --location --request PUT 'https://vertex.example.com/v1/system/config/reverseproxy' \
     --header "Authorization: $TOKEN" \
     --header 'Content-Type: application/json' \
     --data '    {
@@ -179,7 +180,7 @@ You can deploy and maintain your own Spectro Proxy server. The Spectro Proxy ser
         "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n............\n-----END RSA PRIVATE KEY-----\n",
         "port": 443,
         "protocol": "https",
-        "server": "frps.palette.example.com.com"
+        "server": "frps.vertex.example.com.com"
     }'
   ```
 
@@ -204,19 +205,54 @@ Use the following command to validate that the Spectro Proxy server is active.
 1. Open a terminal session.
 
 
-2. Verify the Spectro Proxy pod is up and available.
+2. Log in to the Palette VerteX System API by using the `/v1/auth/syslogin` endpoint. Use the `curl` command below and replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. Ensure you replace the credentials below with your system console credentials.
 
   <br />
 
   ```bash
-  kubectl get pods --namespace proxy-system
+  curl --insecure --location 'https://vertex.example.com/v1/auth/syslogin' \
+   --header 'Content-Type: application/json' \
+   --data '{
+    "password": "**********",
+    "username": "**********"
+   }'
+  ```
+  Output
+  ```json hideClipboard
+  {
+    "Authorization": "**********.",
+    "IsPasswordReset": true
+  }
   ```
 
-  Your output should look similar to the following.
+3. Using the output you received, copy the authorization value to your clipboard and assign it to a shell variable. Replace the authorization value below with the value from the output.
 
   <br />
 
   ```shell hideClipboard
-  NAME                            READY   STATUS    RESTARTS   AGE
-  spectro-proxy-9568fcdc9-pngr8   1/1     Running   0          3h25m
+  TOKEN=**********
+  ```
+
+4. Query the system API endpoint `/v1/system/config/reverseproxy` to verify the current reverse proxy settings applied to Palette VerteX. Use the `curl` command below and replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. You can use the `TOKEN` variable you created earlier for the authorization header.
+
+  <br />
+
+  ```bash
+  curl --location --request GET 'https://vertex.example.com/v1/system/config/reverseproxy' \
+   --header "Authorization: $TOKEN"
+  ```
+
+  If the proxy server is configured correctly, you will receive an output similar to the following containing your settings. The SSL certificate outputs are truncated for brevity.
+
+  <br />
+
+  ```json hideClipboard
+  {
+    "caCert": "-----BEGIN CERTIFICATE-----\n...............\n-----END CERTIFICATE-----\n",
+    "clientCert": "-----BEGIN CERTIFICATE-----\n...........\n-----END CERTIFICATE-----",
+    "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n........\n-----END RSA PRIVATE KEY-----\n",
+    "port": 443,
+    "protocol": "https",
+    "server": "frps.vertex.example.com"
+  }
   ```
