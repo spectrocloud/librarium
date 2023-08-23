@@ -89,7 +89,7 @@ const Header1 = (props) => {
       </a>
       <h1 {...props}>
         {props.children}
-        <Anchor id={generateHeadingId(props.children)} />
+        <Anchor id={props.id ? props.id : generateHeadingId(props.children)} />
       </h1>
     </HeaderWrap>
   );
