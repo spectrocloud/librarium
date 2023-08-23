@@ -96,7 +96,7 @@ Choose the applicable use case - *Schedule a backup* or *Initiate an on-demand b
 3. Select the specific cluster to view its details. It should be the cluster for which you want to schedule a backup. Ensure that the cluster status shows *Healthy*. 
 
 
-4. Navigate to the **Backups** tab and click on the **Create Backup** button. The screenshot below highlights a popup window that Palette will open after clicking the button. The popup windows will contain the fields for initiating an on-demand backup. 
+4. Navigate to the **Backups** tab and click on the **Create Backup** button. The screenshot below highlights a popup window that Palette will open after clicking the button. The popup windows will contain the fields for initiating an on-demand backup. <br /><br />
 
 	![A screenshot highlighting the fields for an on-demand backup for an existing cluster.](/clusters_cluster-management_backup-restore_ondemand-backup.png)
 
@@ -123,22 +123,18 @@ Choose the applicable use case - *Schedule a backup* or *Initiate an on-demand b
 
 # Validate
 
-You can follow the steps outlined below to validate creating a backup.
+You can follow the steps below to validate creating a backup in Palette.
 <br />
 
-1. Switch to Palette.
+1. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
 
 
-2. Select the specific project scope from the **drop-down Menu** at the top-left corner. You must select the same project scope within which you created the backup. 
+2. Select the cluster from where you created the backup. Palette will display the details of the selected cluster. 
 
 
-3. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
+3. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette will display a list of all available backups for the current cluster, including the newly created one. The screenshot below highlights an example backup. This step validates that you have successfully created the backup. 
+
+  ![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.png)
 
 
-4. Select the cluster from where you created the backup. Palette will display the details of the selected cluster. 
-
-
-5. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette will display a list of all available backups for the current cluster, including the newly created one, in the  **Backups** nested tab. This step validates that you have successfully created the backup. 
-
-
-6. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources. 
+4. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources. 
