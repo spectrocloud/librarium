@@ -25,7 +25,7 @@ The following parameters are required for a successful installation of Palette V
 | **Parameters** | **Description** | **Type** |
 | --- | --- | --- |
 | `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
-| `config.env.ociRegistry` or `config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section. | Object |
+| `config.env.ociPackRegistry` or `config.env.ociPackEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section. | Object |
 | `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 
@@ -176,7 +176,7 @@ Palette VerteX requires credentials to access the required Palette VerteX images
 ### OCI Registry
 
 
-Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the [`ociEcrRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
+Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the [`ociPackRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
 
 
 <br />
@@ -191,21 +191,23 @@ If you are using a self-hosted OCI registry, you must provide the required FIPS 
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- | 
-| `ociRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
-| `ociRegistry.name` |  The name of the registry. | String| `""` |
-| `ociRegistry.password` | The base64-encoded password for the registry.  | String| `""` |
-| `ociRegistry.username` |  The username for the registry. | String| `""` |
-| `ociRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
+| `ociPackRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociPackRegistry.name` |  The name of the registry. | String| `""` |
+| `ociPackRegistry.password` | The base64-encoded password for the registry.  | String| `""` |
+| `ociPackRegistry.username` |  The username for the registry. | String| `""` |
+| `ociPackRegistry.baseContentPath`| The base path for the registry. | String | `""` |
+| `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociPackRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
 
 
 ```yaml
 config:
-  ociRegistry:
+  ociPackRegistry:
     endpoint: ""
     name: ""
     password: ""
     username: ""
+    baseContentPath: ""
     insecureSkipVerify: false
     caCert: ""
 ```
@@ -217,20 +219,24 @@ The OCI Elastic Container Registry (ECR) is hosted in an AWS ECR registry. Our s
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `ociEcrRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
-| `ociEcrRegistry.name` |  The name of the registry. | String| `""` |
-| `ociEcrRegistry.password` | The base64-encoded password for the registry.  | String| `""` |
-| `ociEcrRegistry.username` |  The username for the registry. | String| `""` |
-| `ociEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociEcrRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
+| `ociPackEcrRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociPackEcrRegistry.name` |  The name of the registry. | String| `""` |
+| `ociPackEcrRegistry.accessKey` | The base64-encoded access key for the registry.  | String| `""` |
+| `ociPackEcrRegistry.secretKey` |  The base64-encoded secret key for the registry. | String| `""` |
+| `ociPackEcrRegistry.baseContentPath`| The base path for the registry. | String | `""` |
+| `ociPackEcrRegistry.isPrivate` | Specifies whether the registry is private. | Boolean | `true` |
+| `ociPackEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociPackEcrRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
 
 ```yaml
 config:
-  ociEcrRegistry:
-    endpoint: ""
-    name: ""
-    password: ""
-    username: ""
+  ociPackEcrRegistry:
+    endpoint: "" 
+    name: "" 
+    accessKey: "" 
+    secretKey: "" 
+    baseContentPath: ""
+    isPrivate: true
     insecureSkipVerify: false
     caCert: ""
 ```
