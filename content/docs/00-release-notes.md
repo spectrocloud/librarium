@@ -46,7 +46,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Host clusters deployed to VMware now support [VMware NSX](https://www.vmware.com/products/nsx.html) overlay networking. 
 
 
-- Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page. If you are using network proxies, we encourage you to review the [gRPC and Proxi](/architecture/grps-proxy) to review for potential issues.
+- Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page. If you are using network proxies, we encourage you to review the [gRPC and Proxies](/architecture/grps-proxy) documentation for potential issues.
 
 
 - Pack deprecated status is now available in the Palette UI. This lets you identify which packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
