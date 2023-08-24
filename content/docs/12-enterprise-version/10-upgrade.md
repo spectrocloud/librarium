@@ -45,7 +45,7 @@ A certificate, key, and CA certificate are required to upgrade to Palette 4.0 an
 1.  If you do not already have a certificate from a legitimate Certificate Authority, you must generate one for the IP address or Fully Qualified Domain Name (FQDN) used to access the Enterprise cluster.
 
 
-2. Convert the generated certificate, key, or CA certificate to base64 format.
+2. Convert the generated certificate, key, and CA certificate to base64 format.
 
 
 3. In the system console, navigate to **Administration** > **Certificates**.
