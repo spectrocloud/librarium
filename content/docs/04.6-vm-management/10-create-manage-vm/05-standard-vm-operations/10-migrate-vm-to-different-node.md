@@ -90,11 +90,11 @@ Compute nodes can be placed into maintenance mode using Palette or manually usin
 
     <br />
 
-    <InfoBox>
+    <WarningBox>
 
-    Turning off maintenance mode ensures operations, such as scheduling scans, work as expected.
+    Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
 
-    </InfoBox>
+    </WarningBox>
 
 
 ## Validate
