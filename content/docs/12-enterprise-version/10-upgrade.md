@@ -23,20 +23,22 @@ Palette 4.0 includes the following major enhancements that require user interven
 
   <br />
 
-  If you already have an SSL certificate, key, and Certificate Authority (CA) certificate, you can use them when upgrading to Palette 4.0.0. To learn how to add a certificate to Palette, refer to [Add Certificate](/enterprise-version/upgrade#addcertificate).
+  If you already have an SSL certificate, key, and Certificate Authority (CA) certificate, you can use them when upgrading to Palette 4.0.0. To learn how to upload SSL certificates to Palette, refer to [SSL Certificate Management](/enterprise-version/ssl-certificate-management).
 
 
-- **Upgraded on-prem Palette Kubernetes** - the Kubernetes version used for on-prem Palette is upgraded from 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will need to manually adjust custom values and include any additional configuration in the upgraded YAML that we provide. Refer to [Upgrade Kubernetes](/enterprise-version/upgrade#upgradekubernetes.)
+- **Self-hosted Palette Kubernetes Upgrade** - If you installed Palette using the Helm Chart method, the Kubernetes version used for Palette is upgraded from version 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will need to manually adjust custom values and include any additional configuration in the upgraded YAML that we provide. Refer to [Upgrade Kubernetes](/enterprise-version/upgrade#upgradekubernetes).
 
 ## Upgrade from Palette 3.x to 4.0
 
-From the Enterprise cluster system console, click the **Update version** button. Palette will be temporarily unavailable while system services update.
+From the Palette system console, click the **Update version** button. Palette will be temporarily unavailable while system services update.
 
 ![Screenshot of the "Update version" button in the system consoles.](/enterprise-version_sys-console-update-palette-version.png)
 
 <br />
 
-## Add Certificate
+<!-- ## Upload Certificate
+
+For steps on how to upload an SSL certificate, refer to 
 
 A certificate, key, and CA certificate are required to upgrade to Palette 4.0 and access the Palette console.
 
@@ -56,11 +58,13 @@ A certificate, key, and CA certificate are required to upgrade to Palette 4.0 an
 
 5. Save your changes.
 
-<br />
+<br /> -->
 
 ## Upgrade Kubernetes
 
-The steps below will guide you in upgrading Kubernetes.
+Follow the steps below to upgrade Kubernetes.
+
+<br />
 
 1. To obtain the upgraded Kubernetes YAML file for Palette 4.0, contact our support team by sending an email to support@spectrocloud.com.
 
