@@ -34,7 +34,6 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 # Migrate VM to a Different Node
 
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
@@ -72,11 +71,11 @@ Compute nodes can be placed into maintenance mode using Palette or manually usin
 
 ## Prerequisites
 
-- Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode, this feature allows for a smooth and uninterrupted migration process.   
+- Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode, this feature allows for a smooth and uninterrupted migration process. 
+
 
 ## Evacuate VMs in Palette
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -84,14 +83,35 @@ Compute nodes can be placed into maintenance mode using Palette or manually usin
 2. From the left **Main Menu**, choose **Clusters** and click on the **Nodes** tab. 
 
 
-3. Click the **three-dot Menu** in the row of the node you want to evacuate and select **Turn on maintenance mode**. 
+3. Click the **three-dot Menu** in the row of the node you want to evacuate and select **Turn on maintenance mode**. This evacuates all workloads from the node to other nodes in the worker pool. 
+
+
+4. Turn off maintenance mode by clicking the **three-dot Menu** in the row of the evacuated node and select **Turn off maintenance mode**.
 
     <br />
 
-    This evacuates all workloads from the node to other nodes in the worker pool.
+    <InfoBox>
+
+    Turning off maintenance mode ensures operations, such as scheduling scans, work as expected.
+
+    </InfoBox>
 
 
-4. When maintenance mode displays as completed in the **Health** column, click the **three-dot Menu** in the row of the evacuated node and select **Turn off maintenance mode**. 
+## Validate
+
+You can validate evacuation completed by following the steps below. 
+
+<br />
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+
+2. From the left **Main Menu**, choose **Clusters**.
+
+
+3. Verify the **Health** column displays the **Maintenance mode: Completed** icon. 
+
+
 
 ## Evacuate VMs Manually
 
@@ -155,13 +175,6 @@ Compute nodes can be placed into maintenance mode using Palette or manually usin
 
 
 <br />
-
-
-<br />
-
-
-<br />
-
 
 <br />
 
