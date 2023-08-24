@@ -179,6 +179,21 @@ stages:
         - snap install amazon-ssm-agent --classic
 ```
 
+#### Pass a Sensitive Information
+
+If you need to transmit sensitive information, such as credentials, during the site installation phase, you can make the Edge installer skip copying specific stages to the edge hosts. The Edge installer will skip copying the stages that follow the `skip-copy-[string]` naming convention. Refer to the [Sensitive Information in the User Data Stages](/clusters/edge/edge-configuration/skip-copying-stages) guide to learn more. 
+<br />
+
+```yaml
+stages:
+  network.after:
+    - name: skip-copy-subscribe
+      if: [ -f "/usr/sbin/subscription-manager" ]
+      commands:
+        - subscription-manager register --username "myname" --password 'mypassword' 
+```
+
+
 #### Complete Example
 
 This is an Edge Installer user data configuration that configures the user `kairos` and prepares the edge host by providing network settings and adding SSL certificates.
