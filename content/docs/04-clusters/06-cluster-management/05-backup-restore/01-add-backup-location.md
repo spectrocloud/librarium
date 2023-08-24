@@ -1,6 +1,6 @@
 ---
-title: "Add a Backup Location"
-metaTitle: "Add a Backup Location"
+title: "Add Backup Location"
+metaTitle: "Add Backup Location"
 metaDescription: "Learn how to add a backup location in Palette. Adding a backup location is a standard step whether you want to create a cluster backup or a workspace backup."
 hideToC: false
 fullWidth: false
@@ -13,11 +13,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add a Backup Location
 
-This how-to guide provides instructions on how to add a backup location in Palette. 
-You must add a backup location before creating a backup of a cluster or workspace.
-The following sections describe the prerequisites and the steps to add a backup location in Palette. You can refer to the [Cluster Backup and Restore](/clusters/cluster-management/backup-restore) guide to learn more about the fundamentals of backup and restore. 
+This how-to guide provides instructions on how to add a backup location in Palette. You must add a backup location before creating a backup of a cluster or workspace. For the backup location, you can add the same cloud account where you deployed the Kubernetes cluster or a different one. The following sections describe the prerequisites and the steps to add a backup location in Palette. You can refer to the [Cluster Backup and Restore](/clusters/cluster-management/backup-restore) guide to learn more about the fundamentals of backup and restore. 
 
-Select the tab that matches the environment you want to create a backup.
+Select the tab that matches the environment where you want to create a backup.
 <br />
 
 <Tabs>
@@ -25,111 +23,119 @@ Select the tab that matches the environment you want to create a backup.
 
 ## Prerequisites
 
+* An AWS account. 
+
 * An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces. 
 
 
-* Add the following IAM policy to your AWS account. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name.  Refer to the [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for additional guidance. 
+* Add the following IAM policy to your AWS account. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name.  Refer to the [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for additional guidance. <br /> <br />
 
 	```json
 	{
-			"Version": "2012-10-17",
-			"Statement": [
-					{
-							"Effect": "Allow",
-							"Action": [
-									"ec2:DescribeVolumes",
-									"ec2:DescribeSnapshots",
-									"ec2:CreateTags",
-									"ec2:CreateVolume",
-									"ec2:CreateSnapshot",
-									"ec2:DeleteSnapshot"
-							],
-							"Resource": "*"
-					},
-					{
-							"Effect": "Allow",
-							"Action": [
-									"s3:GetObject",
-									"s3:DeleteObject",
-									"s3:PutObject",
-									"s3:AbortMultipartUpload",
-									"s3:ListMultipartUploadParts"
-							],
-							"Resource": [
-									"arn:aws:s3:::BUCKET-NAME/*"
-							]
-					},
-					{
-							"Effect": "Allow",
-							"Action": [
-									"s3:ListBucket"
-							],
-							"Resource": [
-									"arn:aws:s3:::BUCKET-NAME"
-							]
-					}
-			]
+		"Version": "2012-10-17",
+		"Statement": [
+			{
+				"Effect": "Allow",
+				"Action": [
+					"ec2:DescribeVolumes",
+					"ec2:DescribeSnapshots",
+					"ec2:CreateTags",
+					"ec2:CreateVolume",
+					"ec2:CreateSnapshot",
+					"ec2:DeleteSnapshot"
+				],
+				"Resource": "*"
+			},
+			{
+				"Effect": "Allow",
+				"Action": [
+					"s3:GetObject",
+					"s3:DeleteObject",
+					"s3:PutObject",
+					"s3:AbortMultipartUpload",
+					"s3:ListMultipartUploadParts"
+				],
+				"Resource": [
+					"arn:aws:s3:::BUCKET-NAME/*"
+				]
+			},
+			{
+				"Effect": "Allow",
+				"Action": [
+					"s3:ListBucket"
+				],
+				"Resource": [
+					"arn:aws:s3:::BUCKET-NAME"
+				]
+			}
+		]
 	}
 	```
 
 <br /> 	
 
-## Add an AWS S3 Bucket as the Backup Location
+## Add an AWS S3 Bucket 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** > **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
 
 
-3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as highlighted in the screenshot below. 
+3. Click on the **Add New Backup Location** button. Palette will open a wizard to add the new backup location, as highlighted in the screenshot below. 
 
 	![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
 
 
-4. Fill out the required input fields. 
+4. Fill out the following input fields. 
 
 	|**Configuration Field**|**Value**|
 	|---|---|
 	|**Location Name**|Name of your choice.|
 	|**Location Provider**|Select AWS from the drop-down field. |
-	|**Certificate**|It is optional for AWS, and required only for MinIO.|
+	|**Certificate**|Service provider certificate. It is optional for AWS.|
 	|**S3 Bucket**|S3 bucket name must be pre-created in the object-store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.|
 	|**Region**|Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.|
 	|**S3 URL**|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
 
 
-5. Next, choose a validation method, **Credentials** or **STS**. This step will validate the AWS account to store the backup. <br /> <br />
+5. Next, choose a validation method, **Credentials** or **STS**. 
+
+
+6. Provide the IAM user's access key if you chose the Credentials method. Otherwise, provide the IAM role ARN if you chose the STS method. Checkout one of the tabs below that matches your use case. <br /> <br />
 
 	<Tabs>
 
   <Tabs.TabPane tab="Credentials" key="credentials">
 
-  If you choose the Credentials method, provide an IAM user's access key. The IAM user must have the above permissions to allow Palette create a backup in the S3 bucket. You can use the following steps to create a new IAM user and generate the access key. <br /> <br />
-	- Switch to the AWS console. Use the AWS account that hosts the S3 bucket.
-	- Navigate to the IAM service, and select **Users** from the left **Main Menu**. 
-	- Click on the **Create user** button to create a new user. 
-	- Provide a name for the user. Ensure that the user has programmatic access.
-	- Attach the IAM policy you defined above to the IAM user. Alternatively, you can add it as an inline policy. 
-	- Review the user permissions and finish creating the user. 
-	- AWS will generate and display the access key for the newly created user. Copy the newly generated access key id and secret access key, and paste them into Palette.
+  If you choose the Credentials method, provide an IAM user's access key. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The policy will allow Palette to create a backup in the S3 bucket. 
+  
+  If you do not have an IAM user, refer to the [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) document to learn how to create an IAM user. While creating the IAM user, ensure to attach the IAM policy you defined in the prerequisites section above. After creating the new IAM user, AWS will automatically generate and display an access key. 
 
+  Alternatively, you can create a new access key for an existing IAM user. Refer to the [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) document to learn about creating an access key for a particular IAM user. 
+	
   </Tabs.TabPane>
 
   <Tabs.TabPane tab="STS" key="sts">
 
-  Palette supports the STS credentials method for adding only the AWS cloud as the backup location. Palette does not support the STS credentials method for adding other backup location providers, such as Azure, GCP, or MinIO. 
+	<br />
+
+	<WarningBox>
+
+	The steps below are applicable only if your backup location AWS account also hosts the Kubernetes cluster. In the other case, refer to the advanced use case described in the [Add a different AWS Account using STS Method](/clusters/cluster-management/backup-restore/add-backup-separate-aws) guide. 
+
+	</WarningBox>
+
+	<br />
+
+	If you choose the STS method, you must create a new IAM role and provide its ARN. The IAM role must have the necessary IAM policy attached, which you defined in the prerequisites section above. 
 	
-	If you use the STS method, you must create a new IAM role and provide its ARN. The IAM role must have the necessary IAM permissions defined above and a trust relationship. You can use the following steps to create the IAM role. <br /> <br />
-	- Switch to the AWS console. Use the AWS account that hosts the S3 bucket.
-	- Navigate to the IAM service, and select **Roles** from the left **Main Menu**. 
-	- Click on the **Create role** button to create a new role. 
-	- Use the following configuration while creating the IAM role in the AWS console. 
+	Refer to the [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) document to learn about creating an IAM role. Use the following configuration while creating the IAM role. 
 
     |**AWS Console Field**|**Value**|
     |---|---|
     |Trusted entity type| AWS account.|
-    |An AWS account|Select the Another AWS account radio button.|
+    |AWS account|Select the *Another AWS account* radio button.|
     |AWS Account ID|Use the one displayed in Palette. It is Palette SaaS account ID.|
     |Options|Select the Require external ID checkbox.|
     |External ID|Use the one displayed in Palette. Palette generates the external ID.|
@@ -137,60 +143,15 @@ Select the tab that matches the environment you want to create a backup.
     |Role name|Your choice.|
     |Role description|Your choice.|
     
-	- Review the trusted entities and the attached permissions. 
-	- Finish creating the IAM role.
-	- Copy the IAM role ARN and paste it into Palette.
-
   </Tabs.TabPane>
 
 	</Tabs>
 
 
+7. Click on the **Validate** button. 
 
-6. Click on the **Validate** button after providing the IAM user's access key or the IAM role ARN. 
 
-
-7. If the backup cloud account differs from the one where Palette deploys the clusters. In such a scenario, you must also authorize the latter cloud account. You must update the existing trust policy by appending the following permission. The permission below will authorize the AWS account where Palette deploys the clusters to assume the current IAM role. <br /> <br />	
-
-	```json
-	{
-		"Effect": "Allow",
-		"Principal": {
-				"AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-WHERE-PALETTE-DEPLOYS-THE-CLUSTERS]:root"
-		},
-		"Action": "sts:AssumeRole"
-	}
-	```
-	If you want to establish a trust relationship with a specific IAM role, say *SpectroCloudRole*, located within the AWS account that hosts your clusters. You can use the `"arn:aws:iam::[YOUR-AWS-ACCOUNT-ID-WHERE-PALETTE-DEPLOYS-THE-CLUSTERS]:role/SpectroCloudRole"` ARN instead. Your final trust policy will become similar to the policy defined below. It has two trust relationships, one for the Palette SaaS account and another for the AWS account that hosts your clusters. <br /> <br />
-
-  ```json
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE-SaaS]:root"
-        },
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            "StringEquals": {
-                "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
-            }
-        }
-      }
-      {
-        "Effect": "Allow",
-        "Principal": {
-            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-WHERE-PALETTE-DEPLOYS-THE-CLUSTERS]:root"
-        },
-        "Action": "sts:AssumeRole"
-      }
-    ]
-  }
-  ```
-
-8. Click **Create** to finish the location creation wizard. 
+8. Click **Create** to complete the backup location addition.
 
 <br /> 
 
@@ -201,14 +162,20 @@ Select the tab that matches the environment you want to create a backup.
 
 ## Prerequisites
 
-* A service account with the Storage Admin assigned role.
+* A GCP account. 
 
 
-* An available storage bucket.
+* A storage bucket in the GCP account.
+
+
+* A service account with sufficient permissions to perform the required read and write operations on the bucket. For simplicity, you can assign the storage administrator role to the service account to grant full control of the storage bucket. Refer to the [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles) document to know about the availble roles. 
+
+
+* JSON credentials for the service account. Refer to the [Create access credentials](https://developers.google.com/workspace/guides/create-credentials#service-account) to learn how to create the credentials for the service account. 
 
 <br /> 
 
-## Add a GCP Bucket as the Backup Location
+## Add a GCP Bucket 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -229,7 +196,7 @@ Select the tab that matches the environment you want to create a backup.
 	| **JSON Credentials** | Provide the JSON credentials for the external authentication of the GCP storage. Ensure the associated service account has sufficient permissions to perform the required bucket operations. |
 
 
-5. Click **Create** to finish the backup location creation wizard.
+5. Click **Create** to complete the backup location addition.
 
 <br /> 	
 
@@ -239,45 +206,54 @@ Select the tab that matches the environment you want to create a backup.
 
 ## Prerequisites
 
-* S3 bucket with Read/Write Access
+* A MinIO account.
 
 
-* A unique access key (username) and corresponding secret key (password) from MinIO Console. 
+* An S3-compliant bucket in the MinIO account. 
 
 
-* Service provider certificate (Optional)
+* IAM policy in your MinIO account to authorize a MinIO user to perform the required read and write operations on the MinIO bucket. A principal is an IAM identity. MinIO uses Policy-Based Access Control (PBAC) to control which IAM identities can access the resources and what actions the IAM identities are authorized to perform on the specific resources.
+
+
+* A MinIO user assigned with the IAM policy defined above. You can learn more about MinIO access management in the [MinIO object storage for Kubernetes](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html) official documentation.
+
+
+* An access key for the MinIO user. You can create an access key from the MinIO console. Refer to the [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys) to learn about creating access keys. 
+
+
+* (Optional) Service provider certificate, if your organization prefers it.
 
 <br /> 
 
-## Add a MinIO Bucket as the Backup Location
+## Add a MinIO Bucket 
 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** > **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
 
 
-3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location.
+3. Click on the **Add New Backup Location** button.
 
 
-4. Use the following details to configure a backup location in MinIO. 
+4. Fill out the following input fields. 
 
 	|**Field**|**Value**|
 	|---|---|
 	|**Location Name**|Name of your choice.|
 	|**Location Provider**|Select MinIO from the drop-down field. |
-	|**Certificate**|Required for MinIO.|
+	|**Certificate**|Service provider certificate, if your organization prefers it.|
 	|**S3 Bucket**|S3 bucket name must be pre-created in the MinIO object-store. |
 	| **Region** | Region in which Minio server is configured. Example: `us-east-1` |
 	|**S3 URL** | URL of the MinIO object storage console. Example: `http://12.123.234.567:0000`|
 	|**Force S3 path style** | To force S3 path style addressing or else the URL will be converted to virtual-hosted style addressing with bucket name appended to the URL. This is an optional setting. |
 
 
-5. Next, provide the MiniIO unique **Access Key** and **Secret Key**. You can procure a unique access key and the corresponding secret key from the MinIO console. Ensure that the MinIO user has sufficient permissions to perform the required bucket operations. You can refer to the [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys) to know more.
+5. Next, provide the access key for the MiniIO user. The access key will have two parts - the access key ID and the secret key.  
 
 
-6. Click **Create** to complete the backup location creation. 
+6. Click **Create** to complete the backup location addition.
 
 <br />	
 
@@ -287,51 +263,56 @@ Select the tab that matches the environment you want to create a backup.
 
 ## Prerequisites
 
-* An active Azure cloud account with the following pieces of information noted down:
-  * Tenant Id
-  * Client Id
-  * Subscription Id
-  * Client Secret created
+* An active Azure cloud account. Note down the following information for the cloud account:
+  * Tenant ID
+  * Subscription ID
 
 
-* An [Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) created with the following information to be noted down for Palette use:
-  * Storage Name: Custom name given to the Azure storage created.
-  * Stock-keeping unit
+* An Azure storage account in the Azure account. Refer to the [Azure documentations](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) to learn how to create an Azure storage account. Note down the following information for the Azure storage account.
+  * Resource group name
+	* Storage account name
+  * Stock-Keeping Unit (SKU)
+	
+
+* A container in the Azure Storage account. 
 
 
-* A container to be created in the Azure Storage account
+* A service principal with sufficient permissions to perform the required read and write operations on the container. Note down the following information for the cloud account:
+  * Client ID
+  * Client Secret	
 
-<br /> <br />	
+<br /> 	
 
-## Add the Backup in Azure Blob
+## Add an Azure Blob Container
 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** > **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
 
 
-3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location.
+3. Click on the **Add New Backup Location** button. 
 
 
-4. Use the following details to configure a backup location in Azure. 
+4. Fill out the following input fields. 
 
 	|**Field**|**Value**|
 	|---|---|
 	|**Location Name**|Name of your choice.|
 	|**Location Provider**|Select Azure from the drop-down field. |
-	|**Container Name:** | Provide the container created in the Azure Storage. |
-	| **Storage Name** | Name of the Azure Storage resource. |
-	| **Stock-Keeping Unit** | Get this information from the Azure Storage resource. |
-	| **Resource Group:** | Provide the Azure Resource Group name. |
-	|**Tenant ID** | Provide the Azure tenant ID.|
-	| **Client ID** | Provide the Azure client ID of the service principal. Ensure the service principal has sufficient permissions to perform the required bucket operations. |
-	| **Subscription ID** |Provide the Azure subscription ID where you have created the Resource Group and the Azure Storage resource.|
-	| **Client Secret** | Provide the Azure client secret for the service principal you created for Palette to assume. |
+	|**Container Name:** | Name of the container created in the Azure storage. |
+	| **Storage Name** | Name of the Azure storage resource. |
+	| **Stock-Keeping Unit** | Azure storage resource SKU. |
+	|**Tenant ID** | Azure tenant ID.|
+	| **Subscription ID** | Azure subscription ID where you have created the Azure storage resource.|
+	| **Resource Group:** | Azure resource group name. |
+	| **Client ID** | Azure client ID of the service principal. |
+	| **Client Secret** | Azure client secret for the service principal you created for Palette to assume. |
+	
 
 
-5. Click **Create** to finish the backup location creation wizard.
+5. Click **Create** to complete the backup location addition.
 
 <br /> 
 
@@ -342,15 +323,13 @@ Select the tab that matches the environment you want to create a backup.
 
 # Validate
 
-You can follow the steps outlined below to validate adding a backup location.
+When you finish adding a backup location, Palette will display the newly added backup location on the **Backup Locations** page. Follow the steps below to validate adding the new backup location.
 <br />
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Navigate to the **Project Settings** and click on **Backup Locations** page. 
 
 
-2. Select the desired project scope from the **drop-down Menu** at the top-left corner. 
+2. The **Backup Locations** page will display a list of all backup locations configured for the current project. 
 
 
-3. Navigate to the **Project Settings** > **Backup Locations** page. Palette will display all backup locations configured for the current project on this page, including the newly added one. This step validates that you have successfully added the backup location. 
-
-
+3. Search for the newly added backup location in the list. If you find the backup location, it will validate that you have successfully added the backup location. 

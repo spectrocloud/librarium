@@ -1,7 +1,7 @@
 ---
-title: "Create a Cluster Backup"
-metaTitle: "Create a Cluster Backup"
-metaDescription: "Create a Cluster Backup"
+title: "Create Cluster Backup"
+metaTitle: "Create Cluster Backup"
+metaDescription: "Learn how to create a cluster backup to an existing backup location."
 hideToC: false
 fullWidth: false
 ---
@@ -23,7 +23,7 @@ You can initiate a backup on demand for an existing cluster. The following secti
 
 # Prerequisites
 
-- A backup location added for the current project in Palette. Refer to the [Add a Backup Location](/clusters/cluster-management/backup-restore/add-backup-location) guide to learn about adding a backup location. 
+- A backup location added in Palette. Refer to the [Add a Backup Location](/clusters/cluster-management/backup-restore/add-backup-location) guide to learn about adding a backup location. 
 
 
 # Instructions

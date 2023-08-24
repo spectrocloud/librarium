@@ -1,7 +1,7 @@
 ---
-title: "Restore a Cluster Backup"
-metaTitle: "Restore a Cluster Backup"
-metaDescription: "Restore a Cluster Backup"
+title: "Restore Cluster Backup"
+metaTitle: "Restore Cluster Backup"
+metaDescription: "Learn how to restore a cluster backup to the source or a different cluster."
 hideToC: false
 fullWidth: false
 ---
