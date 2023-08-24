@@ -28,7 +28,7 @@ Palette 4.0 includes the following major enhancements that require user interven
 
 - **Upgraded on-prem Palette Kubernetes** - the Kubernetes version used for on-prem Palette is upgraded from 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will need to manually adjust custom values and include any additional configuration in the upgraded YAML we provide. Refer to [Upgrade Kubernetes](/enterprise-version/upgrade#upgradekubernetes.)
 
-## Upgrade to Palette 4.0
+## Upgrade from Palette 3.x to 4.0
 
 From the Enterprise cluster system console, click the **Update version** button. Palette will be temporarily unavailable while system services update.
 
