@@ -13,11 +13,11 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add a Backup Location
 
-This how-to guide provides instructions to add a backup location in Palette. 
-You must add a backup location before you plan to create a cluster backup or a workspace backup.
-The following sections will describe the prerequisites and the steps to add a backup location in Palette. You can refer to the [Cluster Backup and Restore](/clusters/cluster-management/backup-restore) guide to learn about the fundamentals of backup and restore. 
+This how-to guide provides instructions on how to add a backup location in Palette. 
+You must add a backup location before creating a backup of a cluster or workspace.
+The following sections describe the prerequisites and the steps to add a backup location in Palette. You can refer to the [Cluster Backup and Restore](/clusters/cluster-management/backup-restore) guide to learn more about the fundamentals of backup and restore. 
 
-This guide provides instructions for the following environments - AWS, GCP, MinIO, and Azure. You can choose an environment that suits your needs.
+Select the tab that matches the environment you want to create a backup.
 <br />
 
 <Tabs>
@@ -28,7 +28,7 @@ This guide provides instructions for the following environments - AWS, GCP, MinI
 * An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces. 
 
 
-* The following customer-managed IAM policy in the AWS account. You can give the policy a name of your choice. The policy should allow the principal to perform certain S3 and EC2 operations. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name. <br /> <br />
+* Add the following IAM policy to your AWS account. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name.  Refer to the [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for additional guidance. 
 
 	```json
 	{
@@ -87,7 +87,7 @@ This guide provides instructions for the following environments - AWS, GCP, MinI
 	![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
 
 
-4. Provide the following configuration in the wizard to configure an AWS S3 Bucket as the backup location. 
+4. Fill out the required input fields. 
 
 	|**Configuration Field**|**Value**|
 	|---|---|
@@ -201,7 +201,7 @@ This guide provides instructions for the following environments - AWS, GCP, MinI
 
 ## Prerequisites
 
-* GCP service account with a `storage admin` role.
+* A service account with the Storage Admin assigned role.
 
 
 * Pre-created bucket at the GCP object storage.
@@ -213,13 +213,13 @@ This guide provides instructions for the following environments - AWS, GCP, MinI
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** > **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
 
 
-3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location.
+3. Click on the **Add New Backup Location** button. 
 
 
-4. Use the following details to configure a backup location in GCP.
+4. Fill out the following input fields.
 
 	|**Field**|**Value**|
 	|---|---|
@@ -277,7 +277,7 @@ This guide provides instructions for the following environments - AWS, GCP, MinI
 5. Next, provide the MiniIO unique **Access Key** and **Secret Key**. You can procure a unique access key and the corresponding secret key from the MinIO console. Ensure that the MinIO user has sufficient permissions to perform the required bucket operations. You can refer to the [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys) to know more.
 
 
-6. Click **Create** to finish the location creation wizard. 
+6. Click **Create** to complete the backup location creation. 
 
 <br />	
 
@@ -345,7 +345,7 @@ This guide provides instructions for the following environments - AWS, GCP, MinI
 You can follow the steps outlined below to validate adding a backup location.
 <br />
 
-1. Switch to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Select the desired project scope from the **drop-down Menu** at the top-left corner. 
@@ -354,4 +354,3 @@ You can follow the steps outlined below to validate adding a backup location.
 3. Navigate to the **Project Settings** > **Backup Locations** page. Palette will display all backup locations configured for the current project on this page, including the newly added one. This step validates that you have successfully added the backup location. 
 
 
-4. Optionally, you can click on the **three-dot Menu** against the newly added backup location to edit, delete, or set the location as the default for the current project. 
