@@ -204,7 +204,7 @@ Select the tab that matches the environment you want to create a backup.
 * A service account with the Storage Admin assigned role.
 
 
-* Pre-created bucket at the GCP object storage.
+* An available storage bucket.
 
 <br /> 
 
