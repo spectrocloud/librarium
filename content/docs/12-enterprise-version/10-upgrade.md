@@ -19,11 +19,11 @@ Palette 4.0 includes the following major enhancements that require user interven
 
 <br />
 
-- **Enhanced security for Palette microservices** - To enhance security, all microservices within Palette now use `insecure-skip-tls-verify` set to `false`. When upgrading to Palette 4.0, you must provide a certificate in the system console. 
+- **Enhanced security for Palette microservices** - To enhance security, all microservices within Palette now use `insecure-skip-tls-verify` set to `false`. When upgrading to Palette 4.0, you must provide a valid SSL certificate in the system console. 
 
   <br />
 
-  If you already have a configured certificate, key, and Certificate Authority (CA) certificate, you can use them when upgrading to Palette 4.0. To learn how to add a certificate to Palette, refer to [Add Certificate](/enterprise-version/upgrade#addcertificate).
+  If you already have an SSL certificate, key, and Certificate Authority (CA) certificate, you can use them when upgrading to Palette 4.0.0. To learn how to add a certificate to Palette, refer to [Add Certificate](/enterprise-version/upgrade#addcertificate).
 
 
 - **Upgraded on-prem Palette Kubernetes** - the Kubernetes version used for on-prem Palette is upgraded from 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will need to manually adjust custom values and include any additional configuration in the upgraded YAML that we provide. Refer to [Upgrade Kubernetes](/enterprise-version/upgrade#upgradekubernetes.)
@@ -75,6 +75,10 @@ The steps below will guide you in upgrading Kubernetes.
 
 
 5. Copy the Kubernetes YAML you received from our support team and paste it into the editor.
+
+  <br />
+
+  ![Screenshot of the Kubernetes YAML editor.](/enterprise-version_upgrade_ec-cluster-profile.png)
 
 
 6. If you have made any additional configuration changes or additions, add your customizations to the new YAML.
