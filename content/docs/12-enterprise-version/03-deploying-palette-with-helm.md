@@ -241,7 +241,16 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 <br />
 
-10. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette.
+10. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette.
+
+
+<br />
+
+<WarningBox>
+
+If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](/enterprise-version/reverse-proxy) guide for instructions on how to configure a reverse proxy for Palette VerteX.
+
+</WarningBox>
 
 
 You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
