@@ -48,7 +48,11 @@ To start building a custom Edge artifact, use the [Build Edge Artifacts](/cluste
 
 An ISO file that bootstraps the installation is created in the EdgeForge process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation.
 
-<br />
+  <br />
+
+  ![A diagram breaking up the internal components of the ISO image](/clusters_edge_edgeforge-workflow_iso-diagram.png)
+
+
 
 ## Edge Host Agent Container Image
 
@@ -60,7 +64,12 @@ The Edge host agent container image contains the Palette Edge host agent. The ag
 
 These are [Kairos](https://kairos.io/)-based container images for each supported Operating System (OS) and Kubernetes combination. These container images are downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
 
-Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's container registries and automatically downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process. However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) optimization.
+Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's public container registries, or a private self-hosted OCI registry and automatically downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process. However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) optimization.
+
+<br />
+
+  ![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.png)
+
 
 
 <br />
