@@ -248,7 +248,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 <WarningBox>
 
-If you are planning on deploying host clusters into different networks, you may require a reverse proxy, check out the [Configure Reverse Proxy](/enterprise-version/reverse-proxy) guide for instructions on how to configure a reverse proxy for Palette VerteX.
+If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](/enterprise-version/reverse-proxy) guide for instructions on how to configure a reverse proxy for Palette VerteX.
 
 </WarningBox>
 
