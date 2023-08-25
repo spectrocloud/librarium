@@ -18,35 +18,37 @@ Similarly, when the option to add non-FIPS add-on packs is enabled, users can ad
 
 To avoid confusion and compliance issues, Palette VerteX displays icons to indicate the FIPS compliance status of clusters and profile layers. 
 
-The icons shown below are used to indicate FIPS compliance status.
+The table lists icons used to indicate FIPS compliance status and shows how they apply to packs and clusters. The partial FIPS compliance icon applies only to clusters because cluster profiles may contain packs with an unknown or non-FIPS-compliant status. Individual packs are compliant or not, or their status is unknown. 
 
-| **Icon** | **Description** | 
-|---------------|------------|
-| ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. |
-| ![Partial FIPS compliance](/vertex_fips-status-icons_partial.png) | Partial FIPS compliance. Some packs are FIPS compliant, but there is at least one that is not.|  
-| ![Not FIPS-compliant](/vertex_fips-status-icons_not-compliant.png) | Not FIPS compliant. None of the packs in the cluster are FIPS-compliant.| 
-|![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. | 
+| **Icon** | **Description** | **Applies to Clusters** | **Applies to Packs** |
+|---------------|------------|----------------|----------------|
+| ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. | ✅ | ✅ |
+| ![Partial FIPS compliance](/vertex_fips-status-icons_partial.png) | Partial FIPS compliance. Some packs are FIPS compliant, but there is at least one that is not.| ✅ | ❌ |
+| ![Not FIPS-compliant](/vertex_fips-status-icons_not-compliant.png) | Not FIPS compliant. None of the packs in the cluster are FIPS-compliant.| ✅ | ✅ |
+|![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. | ✅ | ✅ |
 
+<!-- As shown in the screenshots below, FIPS status icons are displayed next to packs throughout Palette VerteX.  -->
 
-<!-- | **Icon** | **Description** | **Applies to** |
-|---------------|------------|----------------|
-| ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. |  Packs and Clusters |
-| ![Partial FIPS compliance](/vertex_fips-status-icons_partial.png) | Partial FIPS compliance. Some packs are FIPS compliant, but there is at least one that is not.| Clusters | 
-| ![Not FIPS-compliant](/vertex_fips-status-icons_not-compliant.png) | Not FIPS compliant. None of the packs in the cluster are FIPS-compliant.| Packs and Clusters |
-|![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. | Packs and Clusters | -->
+The screenshots below show how Palette VerteX applies FIPS status icons. 
 
-As shown in the screenshots below, FIPS status icons are displayed next to packs throughout Palette VerteX. 
- 
+When you create a profile, icons display next to packs.
+
+![Diagram showing FIPS status icons on profile page.](/vertex_fips-status-icons_icons-in-cluster-overview.png)
+
+<!-- (/vertex_fips-status-icons_icons-on-profile-page.png) -->
+
+<br />
+
+Icons appear next to each profile layer to indicate FIPS compliance. 
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png)
 
 <br />
 
-![Diagram showing FIPS status icons on profile page.](/vertex_fips-status-icons_icons-on-profile-page.png)
-
-<br />
+In this screenshot, Palette VerteX shows FIPS status for the cluster is partially compliant because one pack in the profile is not FIPS-compliant. 
 
 ![Diagram showing FIPS status icons on Cluster Overview page.](/vertex_fips-status-icons_icons-in-cluster-overview.png)
+
 
 <br />
 
