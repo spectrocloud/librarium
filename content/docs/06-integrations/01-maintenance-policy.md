@@ -153,7 +153,7 @@ We adhere to the following stages of deprecation:
 
    <br />
 
-- **Disabled**: When a pack is disabled, it is no longer available for selection in Palette. When creating new profiles, you must use a newer version of the pack.
+- **Disabled**: When a pack is disabled, it is no longer available for selection in Palette. When creating new profiles, you must use a newer version of the pack. You can still launch clusters using existing profiles that contain the disabled pack.
 
   The pack remains in *Disabled* state for three months before it is deleted.
 
