@@ -6,7 +6,7 @@
 # Assuming you have a .env file in the current directory.
 # source .env && envsubst < vertex-install.tape > vertex-install-creds.tape
 Require palette
-Output ../../content/docs/12.5-vertex/02-install-palette-vertex/vertex-install.mp4
+Output ../../content/docs/12.5-vertex/02-install-palette-vertex/10-install-on-vmware/vertex-install.mp4
 
 Set FontSize 14
 Set Width 950
@@ -19,23 +19,29 @@ Set BorderRadius 10
 Show
 Type "palette ec install"
 Enter
-Sleep 1s
+Sleep 2s
 Down 1
 Sleep 1s
 Enter
-Type@500ms "y"
+Type "y"
+Sleep 1s
 Enter
+Sleep 2s
 Type "${UBUNTU_PRO}" # Ubuntu Pro Token
 Enter
-Type "https://repo-dev-fips.dev.spectrocloud.com"
+Sleep 2s
+Type "${FIPS_PALETTE_ARTIFACT_REPOSITORY_URL}" # Artifact Repository
 Enter
-Type@300ms "spectro"
+Type@300ms "${FIPS_PALETTE_ARTIFACT_REPOSITORY_USERNAME}"
 Enter
-Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
+Type "${FIPS_PALETTE_ARTIFACT_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
 Enter
-Sleep 1s
+Sleep 3s
+Type "y" #Bypass X509 Verification
 Enter
-Sleep 1s
+Sleep 3s
+Enter # Select Infrastructure Provider
+Sleep 2s
 Type "spectro-mgmt-cluster"
 Enter
 Sleep 2s
@@ -52,26 +58,55 @@ Enter
 Sleep 1s
 Type "10.155.0.0/24"
 Enter
-Sleep 1s
-Type "y"
+Sleep 3s
+Down 1 # Select OCI ECR
 Enter
 Sleep 1s
+Type "Palette Registry"
+Enter
+Sleep 2s
+Type "${FIPS_OCI_ECR_URL}"
+Enter
+Sleep 2s
+Type "${FIPS_OCI_ECR_BASE_PATH}"
+Enter
+Sleep 2s
+Type "y"  # Allow Insecure Connection
+Enter
+Sleep 2s
+Type "${FIPS_OCI_ECR_ACCESS_KEY}" # AWS Access Key
+Enter
+Sleep 2s
+Type "${FIPS_OCI_ECR_SECRET_KEY}"
+Enter
+Sleep 2s
+Type "${FIPS_OCI_ECR_REGION}"
+Enter
+Sleep 2s
+Type "y" # Is Registry private?
+Enter
+Sleep 2s
+Type@500ms "y" # Pull images from public registry?
+Enter
+Sleep 3s
+Enter # Database Configurtion size
+Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
-Sleep 1s
+Sleep 3s
 Type "${VCENTER_USER}" # vCenter User
 Enter
-Sleep 1s
+Sleep 3s
 Type "${VCENTER_PASSWORD}" # vCenter Password
 Enter
-Sleep 1s
+Sleep 3s
 Type "y" # Allow Insecure
 Enter
 Sleep 4s
-Enter
+Enter  # Datacenter
 Sleep 4s
-Type "sp-karl"
-Sleep 1s
+Type "sp-karl" # vSphere folder
+Sleep 3s
 Enter
 Sleep 3s
 Down 1
@@ -85,8 +120,8 @@ Sleep 3s
 Enter  # VM Storage Policy
 Sleep 3s
 Enter # Datastore
-Sleep 1s
-Type "n" # Fault Domain
+Sleep 3s
+Type@500ms "n" # Fault Domain
 Sleep 2s
 Enter # NPT servers
 Enter
@@ -99,12 +134,12 @@ Escape
 Sleep 3s
 Type@500ms ":wq"
 Enter
-Sleep 1s 
+Sleep 3s 
 Type@300ms "10.1.1.0" # IP Start Range
 Enter
 Type@300ms "10.1.63.255" # IP End Range
 Enter
-Sleep 1s
+Sleep 3s
 Enter # Network CIDR
 Type@300ms "10.10.128.1" # Gateway
 Enter
@@ -112,12 +147,12 @@ Type@300ms "10.10.128.8" # DNS
 Enter
 Type@300ms "spectrocloud.dev"
 Enter
-Sleep 1s
+Sleep 3s
 Enter # Number of CPUs
-Sleep 1s
+Sleep 3s
 Enter # Memory
-Sleep 1s
+Sleep 3s
 Enter # Disk Size
 
 
-Sleep 25s
+Sleep 70s

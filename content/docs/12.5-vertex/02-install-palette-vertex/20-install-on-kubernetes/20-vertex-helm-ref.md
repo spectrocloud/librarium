@@ -25,8 +25,16 @@ The following parameters are required for a successful installation of Palette V
 | **Parameters** | **Description** | **Type** |
 | --- | --- | --- |
 | `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
-| `config.env.ociRegistry` or `config.env.ociEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section. | Object |
+| `config.env.ociPackRegistry` or `config.env.ociPackEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section. | Object |
 | `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
+
+
+<WarningBox>
+
+If you are installing an air-gapped version of Palette VerteX, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#imageswapconfiguration) section.
+
+
+</WarningBox>
 
 
 ## MongoDB 
@@ -43,54 +51,32 @@ The table below lists the parameters used to configure a MongoDB deployment.
 | **Parameters** | **Description** |  **Type** | **Default value** |
 | --- | --- | --- | --- |
 | `internal` | Specifies the MongoDB deployment either in-cluster or using Mongo Atlas. | Boolean | `true` | 
-| `opsManager`| The settings for the MongoDB Ops Manager. For more information, refer to the [Ops Manager](#opsmanager). | Object | - |
-| `database` | The settings for the MongoDB Enterprise database. Refer to the [Database](#database) section for more information. | Object | - |
+| `databaseUrl`| The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if `mongo.internal` is set to `false`. | String | `mongo-0.mongo,mongo-1.mongo,mongo-2.mongo` |
 | `databasePassword`| The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated. | String | `""` |
-| `databaseUrl`| The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if `mongo.internal` is set to `false`. | String | `mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local` |
-
-
-### Ops Manager
-
-| **Parameters** | **Description** |  **Type** | **Default value** |
-| --- | --- | --- | --- |
-| `adminSecret.password`| The base64-encoded MongoDB Ops Manager password. Our support team provides this value. | String | - |
-| `opsma.podIpCIDR`| The CIDR block for the Ops Manager automation pod IP address range. | String | `192.168.0.0/16`
-
-### Database
-
-| **Parameters** | **Description** |  **Type** | **Default value** |
-| --- | --- | --- | --- |
-| `members`| The number of MongoDB replicas to start. | Integer | `3` |
-| `storage`| The storage settings for the MongoDB Enterprise database. Use increments of `5Gi` when specifying the storage size. The storage size applies to each member instance. The total storage size for the cluster is `database.members` * `database.storage`. | Object | `20Gi`|
-| `enableFips`| Specifies whether to enable FIPS mode for MongoDB Enterprise. | Boolean | `true` |
+| `replicas`| The number of MongoDB replicas to start. | Integer | `3` |
+| `memoryLimit`| Specifies the memory limit for each MongoDB Enterprise replica.| String | `4Gi` |
 | `cpuLimit` | Specifies the CPU limit for each MongoDB Enterprise member.| String | `2000m` |
-| `memorylimit`| Specifies the memory limit for each MongoDB Enterprise member.| String | `4Gi` | 
+| `pvcSize`| The storage settings for the MongoDB Enterprise database. Use increments of `5Gi` when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is `replicas` * `pvcSize`. | string | `20Gi`|
+| `storageClass`| The storage class for the MongoDB Enterprise database. | String | `""` |
 
 
 ```yaml
 mongo:
   internal: true
-  opsManager:
-    adminSecret:
-      password: "Provided by the support team."
-    opsma:
-      podIpCIDR: 192.168.0.0/16
-  database:
-    members: 3  
-    storage: 20Gi
-    enableFips: true
-    cpuLimit:  2000m
-    memoryLimit: 4Gi
-
+  databaseUrl: "mongo-0.mongo,mongo-1.mongo,mongo-2.mongo"
   databasePassword: ""
-  databaseUrl: "mongo-0.mongo.hubble-system.svc.cluster.local,mongo-1.mongo.hubble-system.svc.cluster.local,mongo-2.mongo.hubble-system.svc.cluster.local"
+  replicas: 3
+  cpuLimit: "2000m"
+  memoryLimit: "4Gi"
+  pvcSize: "20Gi"
+  storageClass: ""
 ```
 
-# Config 
+## Config 
 
 Review the following parameters to configure Palette VerteX for your environment. The `config` section contains the following subsections:
 
-## SSO 
+### SSO 
 
 You can configure Palette VerteX to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette VerteX. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](/user-management/saml-sso) documentation for additional guidance.
 
@@ -117,7 +103,7 @@ config:
       apiVersion: "v1"
 ```
 
-## Email
+### Email
 
 Palette VerteX uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](/clusters/cluster-management/health-alerts#overview) are triggered. Use the following parameters to configure email settings for Palette VerteX.
 
@@ -143,7 +129,7 @@ config:
     password: ""
 ```
 
-## Environment 
+### Environment 
 
 The following parameters are used to configure the environment.
 
@@ -157,8 +143,6 @@ The following parameters are used to configure the environment.
 config:
   env:
     rootDomain: ""
-    installerMode: "self-hosted"
-    installerCloud: ""
 ```
 <br />
 
@@ -168,7 +152,7 @@ As you create tenants in Palette VerteX, the tenant name is prefixed to the doma
 
 </WarningBox>
 
-## Cluster 
+### Cluster 
 
 Use the following parameters to configure the Kubernetes cluster.
 
@@ -179,7 +163,7 @@ Use the following parameters to configure the Kubernetes cluster.
 
 ```yaml
 config:
-    cluster:
+  cluster:
     stableEndpointAccess: false
 ```
 
@@ -192,7 +176,7 @@ Palette VerteX requires credentials to access the required Palette VerteX images
 ### OCI Registry
 
 
-Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the [`ociEcrRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
+Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the [`ociPackRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
 
 
 <br />
@@ -207,21 +191,23 @@ If you are using a self-hosted OCI registry, you must provide the required FIPS 
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- | 
-| `ociRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
-| `ociRegistry.name` |  The name of the registry. | String| `""` |
-| `ociRegistry.password` | The base64-encoded password for the registry.  | String| `""` |
-| `ociRegistry.username` |  The username for the registry. | String| `""` |
-| `ociRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
+| `ociPackRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociPackRegistry.name` |  The name of the registry. | String| `""` |
+| `ociPackRegistry.password` | The base64-encoded password for the registry.  | String| `""` |
+| `ociPackRegistry.username` |  The username for the registry. | String| `""` |
+| `ociPackRegistry.baseContentPath`| The base path for the registry. | String | `""` |
+| `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociPackRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
 
 
 ```yaml
 config:
-  ociRegistry:
+  ociPackRegistry:
     endpoint: ""
     name: ""
     password: ""
     username: ""
+    baseContentPath: ""
     insecureSkipVerify: false
     caCert: ""
 ```
@@ -233,20 +219,24 @@ The OCI Elastic Container Registry (ECR) is hosted in an AWS ECR registry. Our s
 
 | **Parameters** | **Description** | **Type** | **Default value** |
 | --- | --- | --- | --- |
-| `ociEcrRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
-| `ociEcrRegistry.name` |  The name of the registry. | String| `""` |
-| `ociEcrRegistry.password` | The base64-encoded password for the registry.  | String| `""` |
-| `ociEcrRegistry.username` |  The username for the registry. | String| `""` |
-| `ociEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociEcrRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
+| `ociPackEcrRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociPackEcrRegistry.name` |  The name of the registry. | String| `""` |
+| `ociPackEcrRegistry.accessKey` | The base64-encoded access key for the registry.  | String| `""` |
+| `ociPackEcrRegistry.secretKey` |  The base64-encoded secret key for the registry. | String| `""` |
+| `ociPackEcrRegistry.baseContentPath`| The base path for the registry. | String | `""` |
+| `ociPackEcrRegistry.isPrivate` | Specifies whether the registry is private. | Boolean | `true` |
+| `ociPackEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociPackEcrRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
 
 ```yaml
 config:
-  ociEcrRegistry:
-    endpoint: ""
-    name: ""
-    password: ""
-    username: ""
+  ociPackEcrRegistry:
+    endpoint: "" 
+    name: "" 
+    accessKey: "" 
+    secretKey: "" 
+    baseContentPath: ""
+    isPrivate: true
     insecureSkipVerify: false
     caCert: ""
 ```
@@ -263,17 +253,42 @@ SCAR credentials are required to download the necessary FIPS manifests. Our supp
 | `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean | `false` |
 | `scar.caCert` | The base64-encoded certificate authority (CA) certificate for SCAR. | String | `""` |
 
-```yaml
-config:
-  scar:
-    endpoint: ""
-    username: ""
-    password: ""
-    insecureSkipVerify: false
-    caCert: ""
-```
+<br />
 
-# gRPC
+  ```yaml
+  config:
+    scar:
+      endpoint: ""
+      username: ""
+      password: ""
+      insecureSkipVerify: false
+      caCert: ""
+  ```
+
+### Image Swap Configuration
+
+You can configure Palette VerteX to use image swap to download the required images. This is an advanced configuration option, and it is only required for air-gapped deployments. You must also install the Palette VerteX Image Swap Helm chart to use this option, otherwise, Palette VerteX will ignore the configuration.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `imageSwapInitImage` | The image swap init image. | String | `gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2` |
+| `imageSwapImage` | The image swap image. | String | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2` |
+| `imageSwapConfig`| The image swap configuration for specific environments. | String | `""` |
+| `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean | `true` |
+
+  <br />
+
+  ```yaml
+  config:
+    imageSwapImages:
+    imageSwapInitImage: "gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2"
+    imageSwapImage: "gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2"
+
+    imageSwapConfig:
+      isEKSCluster: true
+  ```
+
+## gRPC
 
 gRPC is used for communication between Palette VerteX components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette VerteX use the load balancer to communicate with the Palette VerteX control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option.
 
@@ -301,7 +316,7 @@ grpc:
   insecureSkipVerify: false
 ```
 
-# Ingress 
+## Ingress 
 
 Palette VerteX deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette VerteX control plane. You can change the default behavior and omit the deployment of an Nginx Ingress Controller. 
 
@@ -328,7 +343,7 @@ ingress:
     terminateHTTPSAtLoadBalancer: false
 ```
 
-# Spectro Proxy
+## Spectro Proxy
 
 You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](/integrations/frp) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](/vertex/system-management/reverse-proxy) documentation to learn more about setting up a reverse proxy server for Palette VerteX.
 
@@ -353,7 +368,7 @@ frps:
       crt : ""
 ```
 
-# UI System 
+## UI System 
 
 The table lists parameters to configure the Palette VerteX User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refer to the [MapBox Access tokens](https://docs.mapbox.com/help/getting-started/access-tokens) guide. 
 

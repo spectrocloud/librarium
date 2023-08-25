@@ -65,13 +65,13 @@ If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
 
 # Supported Architectures
 
-Palette supports AMD64 and ARM64 architectures for Edge installations. However, we cannot guarantee that all hardware and software configurations will work due to the various options available in the market. We recommend that you test your hardware configuration before deploying to production.
+Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all hardware and software configurations will work due to the various options available in the market. We recommend that you test your hardware configuration before deploying to production.
 
 <br />
 
 <WarningBox>
 
-  ARM64 support requires Palette version 4.0.0 or later.
+  ARM64 support is a preview feature and requires Palette version 4.0.0 or later.
 
 </WarningBox>
 

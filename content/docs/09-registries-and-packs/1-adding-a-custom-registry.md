@@ -81,6 +81,7 @@ We provide a Docker image for setting up a pack registry server. Use the followi
   ```
 
 3. Start the container image with the following flags.
+
 <br />
 
   ```bash
@@ -290,7 +291,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
 
 <br />
 
-  ```text
+  ```text hideClipboard
   Country Name (2 letter code) [XX]:
   State or Province Name (full name) []:
   Locality Name (eg, city) [Default City]:
@@ -301,5 +302,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
   
   Example:
   REGISTRY_HOST_DNS - registry.com
+  ```
+
 
 <br />

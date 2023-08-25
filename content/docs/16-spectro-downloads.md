@@ -1,7 +1,7 @@
 ---
 title: "Downloads"
-metaTitle: "Spectro Downloads Artifacts"
-metaDescription: "Spectro Cloud Artifacts Downloads "
+metaTitle: "Downloads"
+metaDescription: "Overview of Palette downloads and their respective URL and checksums."
 icon: "cloud-download-alt"
 hideToC: false
 fullWidth: false
@@ -10,46 +10,41 @@ fullWidth: false
 import Tabs from 'shared/components/ui/Tabs';
 import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
-import PointsOfInterest from 'shared/components/common/PointOfInterest';
-import Tooltip from "shared/components/ui/Tooltip";
+
+The following Palette downloads are available:
 
 
+## Self-Hosted
 
-# Overview
+You can deploy a self-hosted Palette to your environment. Refer to the [Self-Hosted Installation](/enterprise-version/) documentation for additional guidance on how to install Palette. Palette VerteX installation guide can be found in the [Palette VerteX install](/vertex/install-palette-vertex) document.
 
+<br />
 
-Use the following resources to support your on-prem and SaaS operations when using Palette. 
-
-
-# Self-Hosted
-
-You can deploy a self-hosted flavor of Palette to your own environment. The following resources are available for self-hosted environments.
+<WarningBox>
 
 
-## Self-Hosted Palette Installer 
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart) guides for additional guidance on how to install Palette.
 
-To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+</WarningBox>
 
-- Your full name
-- Organization name (if applicable)
-- Email address
-- Phone number (optional)
-- A brief description of your intended use for the Palette Self-host installer image.
+<br />
 
-Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image. 
-
-If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
-
-# Air-Gapped Installation
-
-You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
-
-# SAAS - Private Cloud Gateway (PCG)
+## SAAS - Private Cloud Gateway (PCG)
 
 
 Palette supports on-prem environments through the Private Cloud Gateway (PCG) component. PCG provides support for isolated private cloud or data center environments. When installed on-prem, PCG registers itself with Palette, allowing for secure communication between the SaaS portal and the private cloud environment. The gateway also enables end-to-end lifecycle management of Kubernetes clusters in private cloud environments directly from the SaaS portal. 
 
-## vSphere PCG Image
+<br />
+
+<WarningBox>
+
+Starting with Palette 4.0, the installation of PCG is done through the Palette CLI. Refer to the Palette CLI [PCG command](/palette-cli/commands/#pcg) document for installation guidance.
+
+</WarningBox>
+
+<br />
+
+### vSphere PCG Image
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
@@ -58,14 +53,14 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 |1.4.0|https://software.spectrocloud.com/pcg/installer/v1.4.0/gateway-installer-v1.4.0.ova| `67973c6ada136f64d9316dc05cda81d419997487c8007b6d58802bec12fb80dd` |
 ------
 
-## MAAS PCG Image
+### MAAS PCG Image
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
 |1.0.12|https://gcr.io/spectro-images-public/release/spectro-installer:1.0.12| `a229d2f7593d133a40c559aa0fb45feca8b0cd1b2fcebfe2379d76f60bfe038b`|
 ---------
 
-## OpenStack PCG Image
+### OpenStack PCG Image
 
 |Version|URL| Checksum (SHA256) |
 |---|---|---|
@@ -73,7 +68,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 -------
 
 
-# Palette CLI
+## Palette CLI
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
 
@@ -85,7 +80,7 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 
 
-# Palette Edge CLI
+## Palette Edge CLI
 
 |Version| Operating System |  Checksum (SHA256) |
 |-------|---| --- |
