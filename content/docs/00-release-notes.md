@@ -224,6 +224,7 @@ The following news packs are available in Palette 4.0.0.
 | Palette eXtended  Kubernetes| 1.26.5   |
 | Palette eXtended  Kubernetes|  1.27.1   |
 | Palette eXtended  Kubernetes - Edge |  1.27.2   |
+| RKE2 | 1.24.6 |
 | RKE2 | 1.25.10 |
 | RKE2 | 1.26.3 |
 | RKE2 | 1.26.5 |
@@ -235,6 +236,8 @@ The following news packs are available in Palette 4.0.0.
 | **Pack**               | **New Version** |
 |--------------------|----------|
 | AWS VPC CNI        | 1.13.0   |
+| AWS VPC CNI        | 1.17.0   |
+| Calico             | 3.25.1   |
 | Calico             | 3.26.0   |
 | Cilium OSS         | 1.14.0   |
 | Flannel            | 0.22.0   |
@@ -244,11 +247,14 @@ The following news packs are available in Palette 4.0.0.
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
+| AWS EBS CSI        | 1.17.0   |
 | AWS EBS CSI        | 1.20.0   |
 | AWS EFS CSI        | 1.5.06  |
 | Azure Disk CSI     | 1.26.3  |
+| Longhorn CSI       | 1.4.1   |
 | Portworx CSI       | 3.0.0   |
 | Rook Ceph          | 1.11.9  |
+| vSphere CSI        | 3.0.0   |
 | vSphere CSI        | 3.0.2   |
 
 
