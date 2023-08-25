@@ -71,3 +71,7 @@ check-writing: ## Run Vale lint checks
 fix-server:
 	@echo "fixing server"
 	rm -rfv node_modules && rm -rfv .cache/ && npm ci
+
+pdf:
+	@echo "generating pdf"
+	npx docs-to-pdf docusaurus --initialDocURLs="https://docs.spectrocloud.com" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" --protocolTimeout=900000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" --coverImage=https://new.docs-test.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
