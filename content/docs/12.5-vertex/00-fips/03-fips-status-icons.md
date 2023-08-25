@@ -22,10 +22,18 @@ The icons shown below are used to indicate FIPS compliance status.
 
 | **Icon** | **Description** | 
 |---------------|------------|
-| ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. | 
+| ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. |
 | ![Partial FIPS compliance](/vertex_fips-status-icons_partial.png) | Partial FIPS compliance. Some packs are FIPS compliant, but there is at least one that is not.|  
 | ![Not FIPS-compliant](/vertex_fips-status-icons_not-compliant.png) | Not FIPS compliant. None of the packs in the cluster are FIPS-compliant.| 
-|![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. |
+|![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. | 
+
+
+<!-- | **Icon** | **Description** | **Applies to** |
+|---------------|------------|----------------|
+| ![Full FIPS compliance](/vertex_fips-status-icons_compliant.png) | Full FIPS compliance. All packs in the cluster are FIPS compliant. |  Packs and Clusters |
+| ![Partial FIPS compliance](/vertex_fips-status-icons_partial.png) | Partial FIPS compliance. Some packs are FIPS compliant, but there is at least one that is not.| Clusters | 
+| ![Not FIPS-compliant](/vertex_fips-status-icons_not-compliant.png) | Not FIPS compliant. None of the packs in the cluster are FIPS-compliant.| Packs and Clusters |
+|![Unknown FIPS state](/vertex_fips-status-icons_unknown.png) | Unknown state of FIPS compliance. This applies to imported clusters that were not deployed by Palette. | Packs and Clusters | -->
 
 As shown in the screenshots below, FIPS status icons are displayed next to packs throughout Palette VerteX. 
  

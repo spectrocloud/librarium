@@ -14,7 +14,9 @@ Palette VerteX is FIPS 140-2 compliant. This means that Palette VerteX uses FIPS
 
 ## Non-FIPS Enablement
 
-You can deploy non-FIPS-compliant components in your Palette VerteX environment by enabling non-FIPS settings. Refer to the [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings) documentation for more information.
+You can deploy non-FIPS-compliant components in your Palette VerteX environment by enabling non-FIPS settings. Refer to the [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings) guide for more information.
+
+<!-- When Palette VerteX consumes upstream binaries, it displays FIPS status based on the FIPS rating given to the third-party image.   -->
 
 
 Something to note when using RKE2 and K3s:
