@@ -51,14 +51,14 @@ The BYOS Edge OS pack supports the following parameters.
 | `pack.content.images.image` | An OS image to use with the pack. | string| `'{{.spectro.pack.edge-native-byoi.options.system.uri}}'`|
 | `pack.drain:` | Specifies the drain configuration for the node. | map | N/A
 | `pack.drain.cordon` | Specifies whether to cordon the node. | boolean | `false` | 
-| `pack.drain.timeout` | The amount of time in seconds to attempt draining the node before aborting the operation. A zero value indicates no timeout window and continue waiting indefinitely.   | integer | `60` |
-| `pack.drain.gracePeriod` | The amount of time in seconds provided to each pod to terminate gracefully. If negative, the default value specified in the pod will be used. | integer | `60` |
+| `pack.drain.timeout` | The time in seconds to attempt draining the node before aborting the operation. A zero value indicates no timeout window and to continue waiting indefinitely.   | integer | `60` |
+| `pack.drain.gracePeriod` | The time in seconds each pod has to terminate gracefully. If negative, the default value specified in the pod will be used. | integer | `60` |
 | `pack.drain.ignoreDaemonSets` | Specifies whether to ignore DaemonSets. | boolean | `false` |
 | `pack.drain.deleteLocalData` | Specifies whether to continue if there are pods using the emptyDir volume. If enabled local data will be deleted during a drainage operation. | boolean | `false` |
 | `pack.drain.force` | Specifies whether to continue if there are pods that do not declare a controller. | boolean | `false` |
 | `pack.drain.disableEviction` | Specifies whether to allow a force drain and use delete, including if pod eviction is supported. This option will bypass checking if [*PodDisruptionBudgets*](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#pod-disruption-budgets) are allocated. Use this option with caution. | boolean | `false` |
 | `pack.drain.skipWaitForDeleteTimeout` | Specifies whether to skip waiting for the pod to terminate if the pod *DeletionTimestamp* is older than the specified number of seconds. The number of seconds must be greater than zero to skip. | integer | `60` |
-| `system.uri` | The system URI specifies the location of BYOOS image. | string|  
+| `system.uri` | The system URI specifies the location of the BYOOS image. | string|  
 
 
 <br />
