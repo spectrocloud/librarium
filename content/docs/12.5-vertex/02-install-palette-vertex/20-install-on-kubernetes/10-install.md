@@ -158,7 +158,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
     | **Parameter** | **Description** | **Type** |
     | --- | --- | --- |
     | `env.rootDomain` | The URL name or IP address you will use for the Palette VerteX installation. | string |
-    | `ociRegistry` or `ociEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs.| object |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs.| object |
     | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
     <br />

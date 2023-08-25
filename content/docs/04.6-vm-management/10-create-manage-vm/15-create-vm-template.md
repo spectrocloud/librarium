@@ -1,7 +1,7 @@
 ---
 title: "Create a VM Template"
 metaTitle: "Create a VM Template"
-metaDescription: "Learn how to create a VM template using Spectro VM Dashboard."
+metaDescription: "Learn how to create a VM template using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -49,7 +49,7 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 8. Click **Finish Configuration**. 
 
-<br />
+<br /> 
 
 #### Example YAML for a VM template
 
@@ -125,4 +125,4 @@ spec:
 
 # Next Steps
 
-Try applying the template to your cluster. Review [Enable Spectro VM Dashboard](/vm-management/vm-packs-profiles/enable-vm-dashboard) to apply a profile to your cluster. 
+Try applying the template to your cluster. Navigate to **Clusters** and click `+` next to Addon Layers, then select the VMO profile you created.
