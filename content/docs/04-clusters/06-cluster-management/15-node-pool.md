@@ -65,7 +65,7 @@ The following tables contain the configuration settings for node pools. Dependin
 | **Rolling update** |  Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones. |
 | **Instance Option** | AWS options for compute capacity. **On Demand** gives you full control over the instance lifecycle without long-term commitment. **Spot** allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed. |
 | **Instance Type** |The compute size. |
-| **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. If you select public subnets, ensure those subnets have automatic public IP addresses assigned, otherwise node deployment errors will occur. Automatic public IP address assignment is typically handled by the infrastructure provider Palette is deploying a cluster to. Discuss this with your network team for additional guidance. |
+| **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. If you select public subnets, ensure those subnets have automatic public IP addresses assigned. Otherwise, node deployment errors will occur. Automatic public IP address assignment is typically handled by the infrastructure provider Palette is deploying a cluster to. Discuss this with your network team for additional guidance. |
 | **Disk Size** | Give the required storage size. |
  
 

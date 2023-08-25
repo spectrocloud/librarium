@@ -188,7 +188,7 @@ When a cluster has public endpoints, you can query the cluster's Kubernetes API 
 
 ## FIPS Support
 
-Starting with version 1.3.0, the Spectro Proxy pack is compiled using FIPS approved libraries and components. Previous versions of the Spectro Proxy pack are not FIPS compiled and are not considered FIPS compliant.
+Starting with version 1.3.0, the Spectro Proxy pack is compiled using FIPS-approved libraries and components. Previous versions of the Spectro Proxy pack are not FIPS compiled and are not considered FIPS compliant.
 
 # Versions Supported
 
