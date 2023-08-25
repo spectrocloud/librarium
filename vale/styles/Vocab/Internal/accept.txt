@@ -119,8 +119,10 @@ nameserver
 uncomment
 OAuth
 unsecure
+vMotion
 repavement
 Repavement
 repave
 Repave
 K3s
+boolean

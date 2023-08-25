@@ -21,7 +21,7 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 
 
-* Support for AMD64 and ARM64 (beta) architectures.
+* Support for AMD64 and ARM64 architectures.
 
 
 * Support for bare metal and virtualized edge devices.
@@ -71,7 +71,7 @@ Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. Ho
 
 <WarningBox>
 
-  ARM64 support is a beta feature and requires Palette version 4.0.0 or later.
+  ARM64 support is a preview feature and requires Palette version 4.0.0 or later.
 
 </WarningBox>
 

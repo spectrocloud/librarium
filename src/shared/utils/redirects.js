@@ -267,6 +267,24 @@ const redirects = [
     toPath: `/clusters/palette-virtual-clusters/deploy-virtual-cluster`,
     redirectInBrowser: true,
     isPermanent: true,
+  },
+  {
+    fromPath: `/vm-management/vm-packs-profiles/enable-vm-dashboard`,
+    toPath: `/vm-management/vm-packs-profiles/add-roles-and-role-bindings`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/vm-management/vm-packs-profiles/vm-dashboard`,
+    toPath: `/vm-management/create-manage-vm/standard-vm-operations`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  },
+  {
+    fromPath: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile`,
+    toPath: `/vm-management/vm-packs-profiles/create-vmo-profile`,
+    redirectInBrowser: true,
+    isPermanent: true,
   }
 ];
 

@@ -5,7 +5,7 @@ metaDescription: 'Fast Reverse Proxy Authentication pack in Spectro Cloud-Spectr
 hiddenFromNav: true
 type: "integration"
 hideToC: false
-category: ['authentication', 'amd64']
+category: ['authentication', 'amd64', 'fips']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'
 ---
 
@@ -138,9 +138,6 @@ Depending on what type of infrastructure provider you are deploying the host clu
 </Tabs.TabPane>
 
 
-
-
-
 <Tabs.TabPane tab="Private Cluster in Same Network" key="private-cluster-same-network">
 
 Networks labeled as private do not allow inbound internet access. Inbound network requests to the network are allowed only if the connection originated from the internal network. If you are in the same network as the cluster, you can connect directly to the cluster's API server. The term "same network" means that from a network perspective, requests can reach the cluster's API server without having to traverse the internet. 
@@ -188,6 +185,10 @@ When a cluster has public endpoints, you can query the cluster's Kubernetes API 
 
 
 <br />
+
+## FIPS Support
+
+Starting with version 1.3.0, the Spectro Proxy pack is compiled using FIPS-approved libraries and components. Previous versions of the Spectro Proxy pack are not FIPS compiled and are not considered FIPS compliant.
 
 # Versions Supported
 

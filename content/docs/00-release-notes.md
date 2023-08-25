@@ -12,19 +12,22 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# August 27, 2023 - Release 4.0.0
+<h1 id="release-4-0"> August 27, 2023 - Release 4.0.0</h1>
 
-Palette 4.0.0 introduces new features and improvements, including [Palette VerteX](/vertex) - a FIPS-compliant edition - and the [Virtual Machine Orchestrator](/vm-management) (VMO) which enables unified management of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User Interface (UI) that improves the user experience for finding and installing packs. Check out the release notes below to learn more about the new features and improvements in Palette 4.0.0.
-
-
-## Palette
+Palette 4.0.0 introduces new features and improvements, including [Palette VerteX](/vertex) - a FIPS-compliant edition - and the [Virtual Machine Orchestrator](/vm-management) (VMO) which enables unified management of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User Interface (UI) that improves the user experience for finding and installing packs. Check out the [Upgrade Notes](/enterprise-version/upgrade) and release notes below to learn more about the new features and improvements in Palette 4.0.0.
 
 
-## Breaking Changes
+<h2 id="release-4-0-palette">Palette</h2>
+
+
+
+<h3 id="release-4-0-palette-breaking-changes">Breaking Changes</h3>
 
 - Deploying Virtual Clusters directly into host clusters is no longer supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on deploying Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
 
-### Features
+
+<h3 id="release-4-0-palette-features">Features</h3>
+
 
 - The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to facilitate the management of virtual machines. Review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
 
@@ -44,7 +47,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Host clusters deployed to VMware now support [VMware NSX](https://www.vmware.com/products/nsx.html) overlay networking. 
 
 
-- Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page.
+- Palette's internal message communication between components now uses the gRPC protocol. The previous usage of [NATS](https://nats.io/) has been deprecated and will be removed in a future release. You can review a network diagram of Palette's communication architecture on the [Network Ports](/architecture/networking-ports) page. If you are using network proxies, we encourage you to review the [gRPC and Proxies](/architecture/grps-proxy) documentation for potential issues.
 
 
 - Pack deprecated status is now available in the Palette UI. This lets you identify which packs are deprecated and will be removed in future releases. Review the [Maintenance Policy](/integrations/maintenance-policy) documentation to learn more.
@@ -58,7 +61,9 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to the [Add-on Profile](/cluster-profiles/create-add-on-profile#packlabelsandannotations) documentation.
 
-### Improvements
+
+
+<h3 id="release-4-0-palette-improvements">Improvements</h3>
 
 - You can now download different kubeconfig files for your host clusters in Palette. You can download an admin kubeconfig file or a user kubeconfig file. The admin kubeconfig file allows you to perform all actions on the cluster. In contrast, the user kubeconfig file is only accessible to those with the proper Palette permissions to access the cluster. To learn more, check out the Palette [kubeconfig](/clusters/cluster-management/kubeconfig) documentation.
 
@@ -88,31 +93,34 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-### Deprecations and Removals
+<h3 id="release-4-0-palette-deprecation-removal">Deprecations and Removals</h3>
 
 - The Palette OVA Installer is deprecated and no longer provided as of this release. Self-hosted Palette now provides a new installation method using the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more.
 
 
 
 - The Palette PCG Docker installation method is deprecated and not available in this release. You can now install a PCG through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the Palette CLI [PCG install command](/palette-cli/commands/#pcg) documentation to learn more.
-### Known Issues
+
+
+<h3 id="release-4-0-palette-known-issues">Known Issues</h3>
 
 - With the deprecation of deploying Virtual Clusters directly into host clusters. The ability to specify an Add-on profile to a Palette Virtual Cluster is currently unavailable. This will be addressed in a future release.
 
 
 
-## Edge
+<h2 id="release-4-0-edge">Edge</h2>
 
 
 
-### Features
+<h3 id="release-4-0-edge-features">Features</h3>
 
-- Palette Edge now supports ARM64 architecture. This is a beta feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
+- Palette Edge now supports ARM64 architecture. This is a preview feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
 
 
 - Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
 
-### Improvements
+
+<h3 id="release-4-0-edge-improvements">Improvements</h3>
 
 - You can now assign dynamic tags to your edge hosts by specifying files or invoking a script that returns a JSON payload containing the tag values. This allows you to dynamically assign tags to your Edge hosts based on the host's local environment. Refer to the [Edge Installer Configuration Tags](/clusters/edge/edge-configuration/installer-reference#tags) documentation to learn more.
 
@@ -120,15 +128,15 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
 
 
-### Known Issues
+- You can configure the node drainage behavior for your Edge hosts. To learn more about configuring node drainage, refer to the [Bring Your Own OS (BYOOS) pack](/integrations/byoos#nodedrainage) documentation.
 
 
-- An Edge host cannot be repurposed to another Edge cluster without preparatory steps. To repurpose an Edge host from an existing cluster with another Edge cluster, the device must be re-flashed with the Palette Edge installer and the required Edge installation artifacts.
+
+<h2 id="release-4-0-pde">Palette Dev Engine (PDE)</h2>
 
 
-## Palette Dev Engine (PDE)
 
-### Features
+<h3 id="release-4-0-pde-features">Features</h3>
 
 - A Visual Studio Code (VS Code) extension is now available for Palette Dev Engine (PDE). This extension allows you to deploy and manage virtual clusters directly from VS Code. To learn more, you can review the [Palette PDE Plugin](https://marketplace.visualstudio.com/items?itemName=SpectroCloud.extension-palette) documentation.
 
@@ -136,9 +144,11 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - The Palette CLI now supports managing App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update, and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app` commands to manage App Profiles and Apps. Refer to the [Palette CLI](/palette-cli) documentation or use the `--help` flag to learn more.
 
 
-## Virtual Machine Orchestrator (VMO)
 
-### Features
+<h2 id="release-4-0-vmo">Virtual Machine Orchestrator (VMO)</h2>
+
+
+<h3 id="release-4-0-vmo-features">Features</h3>
 
 
 - Host clusters supporting Virtual Machine (VM) workloads can now be placed in host maintenance mode, with the ability to choose which Kubernetes node to place in maintenance mode. When a node is placed in maintenance mode, also known as “cordoned”, the VM workload is automatically migrated without any disruptions to another healthy node in the cluster.
@@ -149,9 +159,12 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - You can now migrate a VM from VMware vSphere to a host cluster in Palette through the Palette CLI. The CLI provides an interactive migration experience allowing you to configure the VM migration parameters.
 
-## VerteX
 
-### Features
+
+<h2 id="release-4-0-vertex">VerteX</h2>
+
+
+<h3 id="release-4-0-vertex-features">Features</h3>
 
 - [Palette VerteX](https://www.spectrocloud.com/news/spectro-cloud-announces-palette-vertex-for-government) is now available and brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters. Palette VerteX is available to all government and private sector organizations that value strong data protection, backed by the Spectro Cloud Government practice, a growing ecosystem of specialist channel partners, and continental US technical support. Refer to the [Palette VerteX](/vertex) documentation to learn more.
 
@@ -160,12 +173,13 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-## Terraform
+<h2 id="release-4-0-terraform">Terraform</h2>
 
 - Version 0.15.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 
-## Education
+
+<h2 id="release-4-0-education">Education</h2>
 
 - A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
 
@@ -173,9 +187,26 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - The documentation site for Palette now provides a chatbot capable of answering your questions about Palette. The chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about Palette, and it will provide you with relevant answers and documentation links.
 
 
-## Packs
 
-### Kubernetes
+<h2 id="release-4-0-packs">Packs</h2>
+
+
+<h3 id="release-4-0-packs-pack-notes">Pack Notes</h3>
+
+- A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
+
+
+- This release introduces the start of a formal maintance policy for packs. Several packs are now marked as deprecated, disabled, and deleted. A completed list of packs that are deprecated, disabled, and deleted is available in the [Deprecations and Removals](#release-4-0-packs-pack-deprecation-removals) section below. To learn more about the pack maintenance policy, refer to the [Maintenance Policy](/integrations/maintenance-policy) documentation.
+
+
+
+
+The following news packs are available in Palette 4.0.0. 
+
+<br />
+
+
+<h3 id="release-4-0-packs-kubernetes">Kubernetes</h3>
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
@@ -195,32 +226,42 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 | Palette eXtended  Kubernetes| 1.26.5   |
 | Palette eXtended  Kubernetes|  1.27.1   |
 | Palette eXtended  Kubernetes - Edge |  1.27.2   |
+| RKE2 | 1.24.6 |
 | RKE2 | 1.25.10 |
 | RKE2 | 1.26.3 |
 | RKE2 | 1.26.5 |
+| RKE2 | 1.27.2 |
 
-### CNI
+
+<h3 id="release-4-0-packs-cni">CNI</h3>
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
 | AWS VPC CNI        | 1.13.0   |
+| AWS VPC CNI        | 1.17.0   |
+| Calico             | 3.25.1   |
 | Calico             | 3.26.0   |
 | Cilium OSS         | 1.14.0   |
 | Flannel            | 0.22.0   |
 
-### CSI
+
+<h3 id="release-4-0-packs-csi">CSI</h3>
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
+| AWS EBS CSI        | 1.17.0   |
 | AWS EBS CSI        | 1.20.0   |
 | AWS EFS CSI        | 1.5.06  |
 | Azure Disk CSI     | 1.26.3  |
+| Longhorn CSI       | 1.4.1   |
 | Portworx CSI       | 3.0.0   |
 | Rook Ceph          | 1.11.9  |
+| vSphere CSI        | 3.0.0   |
 | vSphere CSI        | 3.0.2   |
 
 
-### Add-on Packs
+
+<h3 id="release-4-0-packs-add-on-packs">Add-on Packs</h3>
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
@@ -236,17 +277,48 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-### Community Packs
+<h3 id="release-4-0-packs-community-packs">Community Packs</h3>
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
 | Ngrok Ingerss Controller | 0.9.0  |
 
-### Pack Notes
 
-- A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
+<h3 id="release-4-0-packs-fips-packs">FIPS Packs</h3>
 
-### Deprecations and Removals
+| **Pack**               | **New Version** |
+|-------------------------------------------|---------------|
+| AWS EBS CSI                               | 1.17.0        |
+| AWS VPC CNI                               | 1.1.17        |
+| Calico                                    | 3.25.1        |
+| Calico                                    | 3.4.1         |
+| Longhorn CSI                              | 1.4.1         |
+| Palette eXtended Kubernetes               | 1.24.10       |
+| Palette eXtended Kubernetes               | 1.24.13       |
+| Palette eXtended Kubernetes               | 1.24.14       |
+| Palette eXtended Kubernetes               | 1.25.6        |
+| Palette eXtended Kubernetes               | 1.25.9        |
+| Palette eXtended Kubernetes               | 1.25.10       |
+| Palette eXtended Kubernetes               | 1.26.3        |
+| Palette eXtended Kubernetes               | 1.26.4        |
+| Palette eXtended Kubernetes               | 1.26.5        |
+| Palette eXtended Kubernetes               | 1.27.1        |
+| Palette eXtended Kubernetes               | 1.27.2        |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.24.13       |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.25.9        |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.26.4        |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.27.2        |
+| RKE2                                      | 1.24.6        |
+| RKE2                                      | 1.25.0        |
+| RKE2                                      | 1.25.2        |
+| RKE2                                      | 1.25.10       |
+| RKE2                                      | 1.26.4        |
+| RKE2                                      | 1.26.5        |
+| RKE2                                      | 1.27.2        |
+| vSphere CSI                               | 3.0           |
+
+
+<h3 id="release-4-0-packs-pack-deprecation-removals">Deprecations and Removals</h3>
 
 The following packs are marked as deprecated, disabled, or deleted. Refer to the [Maintenance Policy](integrations/maintenance-policy) for more details on the deprecation and removal process.
 
@@ -265,11 +337,11 @@ The following packs are marked as deprecated, disabled, or deleted. Refer to the
 | **Pack**                                  | **Version** | **Status**   |
 |-------------------------------------------|-------------|--------------|
 | MicroK8s                                  | 1.23        | Deprecated   |
-| Konvoy                                    | 1.19.10     | Disabled     |
-| Konvoy                                    | 1.19.15     | Disabled     |
-| Konvoy                                    | 1.20.8      | Disabled     |
-| Konvoy                                    | 1.20.11     | Disabled     |
-| Konvoy                                    | 1.21.6      | Disabled     |
+| Konvoy                                    | 1.19.10     | Deleted     |
+| Konvoy                                    | 1.19.15     | Deleted     |
+| Konvoy                                    | 1.20.8      | Deleted     |
+| Konvoy                                    | 1.20.11     | Deleted     |
+| Konvoy                                    | 1.21.6      | Deleted     |
 | Kubernetes AKS                            | 1.22        | Deleted      |
 | Kubernetes AKS                            | 1.23        | Deleted      |
 | Kubernetes AKS                            | 1.24        | Deleted      |

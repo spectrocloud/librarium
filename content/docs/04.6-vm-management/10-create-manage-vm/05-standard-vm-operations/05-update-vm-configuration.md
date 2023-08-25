@@ -1,7 +1,7 @@
 ---
 title: "Update VM Configuration"
 metaTitle: "Update VM Configuration"
-metaDescription: "Learn how to add disk storage and network interfaces to a VM using Palette."
+metaDescription: "Learn how to add disk storage and network interfaces to a VM using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false

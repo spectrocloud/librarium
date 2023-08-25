@@ -39,13 +39,13 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
 
 
-- The Kubernetes cluster must have the following minimum resources:
+- We recommend the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
 
     - 8 CPUs per node.
 
     - 16 GB Memory per node.
 
-    - 120 GB Disk Space per node.
+    - 100 GB Disk Space per node.
     
     - A Container Storage Interface (CSI) for persistent data.
 
@@ -158,9 +158,10 @@ The following instructions are written agnostic to the Kubernetes distribution y
     | **Parameter** | **Description** | **Type** |
     | --- | --- | --- |
     | `env.rootDomain` | The URL name or IP address you will use for the Palette VerteX installation. | string |
-    | `ociRegistry` or `ociEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs.| object |
+    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette VerteX FIPS packs.| object |
     | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images. These credentials are provided by our support team. | object |
 
+    <br />
   
     Save the **values.yaml** file after you have populated the required parameters listed in the table.
 
@@ -239,7 +240,15 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 <br />
 
-10. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+10. After login, a summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+
+<br />
+
+<WarningBox>
+
+If you are planning to deploy host clusters into different networks, you may require a reverse proxy.  Check out the [Configure Reverse Proxy](/vertex/system-management/reverse-proxy) guide for instructions on configuring a reverse proxy for Palette VerteX.
+
+</WarningBox>
 
 
 You now have a self-hosted instance of Palette VerteX installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
@@ -311,4 +320,4 @@ Use the following steps to validate the Palette VerteX installation.
 
 # Next Steps
 
-You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](/vertex/system-management/tenant-management#createatenant) page for instructions on how to create a tenant.
+You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](/vertex/system-management/tenant-management#createatenant) page for instructions on how to create a tenant. 
