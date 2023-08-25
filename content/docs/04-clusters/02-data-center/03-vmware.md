@@ -44,6 +44,14 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 - vSphere version 7.0 or above. vSphere 6.7 is supported but we do not recommend it, as it reached end of general support in 2022.
 
+  <br />
+
+  Palette supports port groups as follows. Opaque networks in vCenter Server are *not* supported.
+  
+  - Virtual machine port groups on vSphere standard switch
+  - Distributed port groups on vSphere distributed switch 
+  - NSX-T distributed virtual port group 
+
 
 - A Resource Pool configured across the hosts onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to be able to make use of high-availability (HA) control planes. 
 
@@ -950,6 +958,10 @@ Proxy environments require additional property settings. Each of the proxy prope
 
 
 4. Choose the desired values for the Data Center, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys or NTP server addresses.
+
+  <br />
+
+  Virtual machine port groups and distributed port groups are listed with their names. NSX-T distributed virtual port groups that exist in vSphere will be listed with their name and segment IDs.
 
 
 5. Choose the IP Allocation Scheme - Static IP or DHCP. Selecting static IP enables the option to create an IP pool. To create an IP pool, provide an IP range or a subnet. The IP addresses from the IP pool will be assigned to the gateway cluster. By default, the IP pool is available for use by other tenant clusters. You can prevent this by toggling on the **Restrict to a single cluster** option. 
