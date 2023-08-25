@@ -189,6 +189,21 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 <h2 id="release-4-0-packs">Packs</h2>
 
 
+<h3 id="release-4-0-packs-pack-notes">Pack Notes</h3>
+
+- A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
+
+
+- This release introduces the start of a formal maintance policy for packs. Several packs are now marked as deprecated, disabled, and deleted. A completed list of packs that are deprecated, disabled, and deleted is available in the [Deprecations and Removals](#release-4-0-packs-pack-deprecation-removals) section below. To learn more about the pack maintenance policy, refer to the [Maintenance Policy](/integrations/maintenance-policy) documentation.
+
+
+
+
+The following news packs are available in Palette 4.0.0. 
+
+<br />
+
+
 <h3 id="release-4-0-packs-kubernetes">Kubernetes</h3>
 
 | **Pack**               | **New Version** |
@@ -209,9 +224,11 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 | Palette eXtended  Kubernetes| 1.26.5   |
 | Palette eXtended  Kubernetes|  1.27.1   |
 | Palette eXtended  Kubernetes - Edge |  1.27.2   |
+| RKE2 | 1.24.6 |
 | RKE2 | 1.25.10 |
 | RKE2 | 1.26.3 |
 | RKE2 | 1.26.5 |
+| RKE2 | 1.27.2 |
 
 
 <h3 id="release-4-0-packs-cni">CNI</h3>
@@ -219,6 +236,8 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 | **Pack**               | **New Version** |
 |--------------------|----------|
 | AWS VPC CNI        | 1.13.0   |
+| AWS VPC CNI        | 1.17.0   |
+| Calico             | 3.25.1   |
 | Calico             | 3.26.0   |
 | Cilium OSS         | 1.14.0   |
 | Flannel            | 0.22.0   |
@@ -228,11 +247,14 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
+| AWS EBS CSI        | 1.17.0   |
 | AWS EBS CSI        | 1.20.0   |
 | AWS EFS CSI        | 1.5.06  |
 | Azure Disk CSI     | 1.26.3  |
+| Longhorn CSI       | 1.4.1   |
 | Portworx CSI       | 3.0.0   |
 | Rook Ceph          | 1.11.9  |
+| vSphere CSI        | 3.0.0   |
 | vSphere CSI        | 3.0.2   |
 
 
@@ -260,9 +282,38 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 | Ngrok Ingerss Controller | 0.9.0  |
 
 
-<h3 id="release-4-0-packs-pack-notes">Pack Notes</h3>
+<h3 id="release-4-0-packs-fips-packs">FIPS Packs</h3>
 
-- A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
+| **Pack**               | **New Version** |
+|-------------------------------------------|---------------|
+| AWS EBS CSI                               | 1.17.0        |
+| AWS VPC CNI                               | 1.1.17        |
+| Calico                                    | 3.25.1        |
+| Calico                                    | 3.4.1         |
+| Longhorn CSI                              | 1.4.1         |
+| Palette eXtended Kubernetes               | 1.24.10       |
+| Palette eXtended Kubernetes               | 1.24.13       |
+| Palette eXtended Kubernetes               | 1.24.14       |
+| Palette eXtended Kubernetes               | 1.25.6        |
+| Palette eXtended Kubernetes               | 1.25.9        |
+| Palette eXtended Kubernetes               | 1.25.10       |
+| Palette eXtended Kubernetes               | 1.26.3        |
+| Palette eXtended Kubernetes               | 1.26.4        |
+| Palette eXtended Kubernetes               | 1.26.5        |
+| Palette eXtended Kubernetes               | 1.27.1        |
+| Palette eXtended Kubernetes               | 1.27.2        |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.24.13       |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.25.9        |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.26.4        |
+| Palette eXtended Kubernetes - Edge (PXKE) | 1.27.2        |
+| RKE2                                      | 1.24.6        |
+| RKE2                                      | 1.25.0        |
+| RKE2                                      | 1.25.2        |
+| RKE2                                      | 1.25.10       |
+| RKE2                                      | 1.26.4        |
+| RKE2                                      | 1.26.5        |
+| RKE2                                      | 1.27.2        |
+| vSphere CSI                               | 3.0           |
 
 
 <h3 id="release-4-0-packs-pack-deprecation-removals">Deprecations and Removals</h3>
