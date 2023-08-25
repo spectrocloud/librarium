@@ -51,7 +51,7 @@ The BYOS Edge OS pack supports the following parameters.
 | `pack.content.images.image` | An OS image to use with the pack. | string| `'{{.spectro.pack.edge-native-byoi.options.system.uri}}'`|
 | `pack.drain:` | Specifies the drain configuration for the node. | map | N/A
 | `pack.drain.cordon` | Specifies whether to cordon the node. | boolean | `false` | 
-| `pack.drain.timeout` | The amount of time in seconds to attempt draining the node before aborting the operation. A zero value indicates no timeout window and continue waiting indefinitly.   | integer | `60` |
+| `pack.drain.timeout` | The amount of time in seconds to attempt draining the node before aborting the operation. A zero value indicates no timeout window and continue waiting indefinitely.   | integer | `60` |
 | `pack.drain.gracePeriod` | The amount of time in seconds provided to each pod to terminate gracefully. If negative, the default value specified in the pod will be used. | integer | `60` |
 | `pack.drain.ignoreDaemonSets` | Specifies whether to ignore DaemonSets. | boolean | `false` |
 | `pack.drain.deleteLocalData` | Specifies whether to continue if there are pods using the emptyDir volume. If enabled local data will be deleted during a drainage operation. | boolean | `false` |
