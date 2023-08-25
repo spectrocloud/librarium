@@ -4,7 +4,7 @@ metaTitle: 'AWS EBS Integration with Spectro Cloud'
 metaDescription: 'AWS EBS storage add on into Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['storage', 'amd64']
+category: ['storage', 'amd64','arm64']
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
 ---
 
