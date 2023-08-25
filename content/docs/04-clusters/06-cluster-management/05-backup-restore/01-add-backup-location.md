@@ -1,6 +1,6 @@
 ---
-title: "Add Backup Location"
-metaTitle: "Add Backup Location"
+title: "Add Backup Location using Access Credentials"
+metaTitle: "Add Backup Location using Access Credentials"
 metaDescription: "Learn how to add a backup location in Palette. Adding a backup location is a standard step whether you want to create a cluster backup or a workspace backup."
 hideToC: false
 fullWidth: false
@@ -11,11 +11,24 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Add a Backup Location
+# Add a Backup Location using Access Credentials
 
-This how-to guide provides instructions on how to add a backup location in Palette. You must add a backup location before creating a backup of a cluster or workspace. For the backup location, you can add the same cloud account where you deployed the Kubernetes cluster or a different one. The following sections describe the prerequisites and the steps to add a backup location in Palette. You can refer to the [Cluster Backup and Restore](/clusters/cluster-management/backup-restore) guide to learn more about the fundamentals of backup and restore. 
+Suppose you want to add a backup location in Palette using long-term access credentials. In that case, you must accomplish the following actions. 
+<br />
 
-Select the tab that matches the environment where you want to create a backup.
+1. Create a storage bucket to store the backup files. For example, if you configure the backup location in AWS, you will need an S3 bucket. Another example is if you configure the backup location in Azure, you will need a container in the Azure Storage account.
+
+
+2. Define the access permissions for the storage bucket and associate the permissions with an IAM entity. Depending on your cloud or data center platform, the IAM entity can be a user, service principal, or role. 
+
+
+3. Generate the long-term access credentials for the IAM entity with sufficient permissions to perform the bucket-related operations.
+When you generate the long-term access credentials for an IAM entity, you do not embed the application's identity that will use the credentials. 
+Therefore, any application that has the credentials can assume the IAM entity. In the current case, you will share the credentials with Palette so that it can assume the IAM entity's role to perform the bucket-related operations.  
+
+
+The following sections will provide more detailed instructions. Select the tab that matches the environment where you want to create a backup.
+
 <br />
 
 <Tabs>
@@ -24,6 +37,7 @@ Select the tab that matches the environment where you want to create a backup.
 ## Prerequisites
 
 * An AWS account. 
+
 
 * An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces. 
 
@@ -82,9 +96,7 @@ Select the tab that matches the environment where you want to create a backup.
 2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
 
 
-3. Click on the **Add New Backup Location** button. Palette will open a wizard to add the new backup location, as highlighted in the screenshot below. 
-
-	![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
+3. Click on the **Add New Backup Location** button. 
 
 
 4. Fill out the following input fields. 
@@ -99,53 +111,15 @@ Select the tab that matches the environment where you want to create a backup.
 	|**S3 URL**|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
 
 
-5. Next, choose a validation method, **Credentials** or **STS**. 
+5. Next, choose the **Credentials** validation method. If you want to chose the STS method instead, refer to the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) for guided instructions. 
 
 
-6. Provide the IAM user's access key if you chose the Credentials method. Otherwise, provide the IAM role ARN if you chose the STS method. Checkout one of the tabs below that matches your use case. <br /> <br />
-
-	<Tabs>
-
-  <Tabs.TabPane tab="Credentials" key="credentials">
-
-  If you choose the Credentials method, provide an IAM user's access key. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The policy will allow Palette to create a backup in the S3 bucket. 
+6. Provide the IAM user's access key if you chose the Credentials method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The policy will allow Palette to create a backup in the S3 bucket. 
   
   If you do not have an IAM user, refer to the [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) document to learn how to create an IAM user. While creating the IAM user, ensure to attach the IAM policy you defined in the prerequisites section above. After creating the new IAM user, AWS will automatically generate and display an access key. 
 
   Alternatively, you can create a new access key for an existing IAM user. Refer to the [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) document to learn about creating an access key for a particular IAM user. 
-	
-  </Tabs.TabPane>
 
-  <Tabs.TabPane tab="STS" key="sts">
-
-	<br />
-
-	<WarningBox>
-
-	The steps below are applicable only if your backup location AWS account also hosts the Kubernetes cluster. In the other case, refer to the advanced use case described in the [Add a different AWS Account using STS Method](/clusters/cluster-management/backup-restore/add-backup-separate-aws) guide. 
-
-	</WarningBox>
-
-	<br />
-
-	If you choose the STS method, you must create a new IAM role and provide its ARN. The IAM role must have the necessary IAM policy attached, which you defined in the prerequisites section above. 
-	
-	Refer to the [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) document to learn about creating an IAM role. Use the following configuration while creating the IAM role. 
-
-    |**AWS Console Field**|**Value**|
-    |---|---|
-    |Trusted entity type| AWS account.|
-    |AWS account|Select the *Another AWS account* radio button.|
-    |AWS Account ID|Use the one displayed in Palette. It is Palette SaaS account ID.|
-    |Options|Select the Require external ID checkbox.|
-    |External ID|Use the one displayed in Palette. Palette generates the external ID.|
-    |Permissions policies| Attach the IAM policy defined above.|
-    |Role name|Your choice.|
-    |Role description|Your choice.|
-    
-  </Tabs.TabPane>
-
-	</Tabs>
 
 
 7. Click on the **Validate** button. 

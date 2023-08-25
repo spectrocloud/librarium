@@ -1,6 +1,6 @@
 ---
-title: "Add Backup Location - Advanced Use Case"
-metaTitle: "Add Backup Location - Advanced Use Case"
+title: "Add Backup Location using Security Token Service"
+metaTitle: "Add Backup Location using Security Token Service"
 metaDescription: "Learn how to add an AWS account as the backup location in Palette using the STS method."
 hideToC: false
 fullWidth: false
@@ -11,39 +11,53 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Add a Backup Location - Advanced Use Case
+# Add a Backup Location using the Security Token Service
 
-Suppose you have deployed a Kubernetes cluster in an AWS account and want to create the backup in another AWS account. For convenient referencing, this guide will refer to the former cloud account as *AWS Account A* and the latter as *AWS Account B*. 
-
-Before you create a backup, the initial step is configuring the backup location in Palette. In AWS, backups are stored and retrieved from S3 buckets. While configuring an S3 bucket in AWS Account B as the backup location, Palette will provide two methods to validate the cloud account - Credentials and STS. If you choose the STS method for validating AWS Account B, you must ensure the specific authorizations are in place, as discussed in the [Required Authorizations](#requiredauthorizations) section below. Otherwise, if you prefer the Credentials method, refer to the [Add a Backup Location](/clusters/cluster-management/backup-restore/add-backup-location) guide to know more. 
+Platte supports the Security Token Service (STS) authentication method only when both the following conditions are met:
 <br />
 
+1. Your Palette instance is hosted in AWS. If you use Palette SaaS or have an on-premises or self-hosted Palette deployed in AWS, you will get the STS option while adding a backup location. In all other cases, Palette does not support the STS method. 
 
-## Required Authorizations
 
-In the specific scenario described above, you must ensure the following authorizations are in place in the specific order mentioned below:
-<br />
+2. You want to add an AWS account as the backup location provider. The AWS account can be the same or different than your Palette instance. 
 
-1. Authorize Palette to administer the cluster in AWS Account A. When you register a primary cloud account in Palette, you authorize Palette to deploy clusters in the cloud account. Refer to the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) guide to learn more. 
 
-2. Authorize Palette to access the S3 buckets in AWS Account B. You update the storage bucket's access management policy to authorize Palette to access the storage bucket.
-
-3. Authorize the cluster to access the backup location. You update the storage bucket's access management policy to authorize the cluster to access the storage bucket.
-
-The following diagram illustrates the abovementioned order of operations you must complete in Palette.
+An example will help you better understand the steps you will learn in this guide. Suppose, your Kubernetes cluster is deployed in *AWS Account A*, and you want to create the backup in *AWS Account B*, whereas the Palette instance is hosted in *AWS Account C*. This scenario is a *generic* use case when you can use the STS method to add a backup location. The diagram below presents the generic use case and highlights the specific order of authentication you must follow. 
 
 ![A diagram highlighting the use-case when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.png)
 
+<br />
+<InfoBox>
 
-To summarize, you must establish authorization between the three entities - the backup location, the cloud deployment location, and the Palette SaaS account.
-Considering the scenario described above, the following sections will outline the prerequisites and the steps to add AWS Account B as the backup location.
+The steps you will learn in this guide will apply even if any two or more entities, the cluster, the bucket, or Palette, share the cloud accounts. 
+
+</InfoBox>
+<br />
+
+
+## Overview of the Authentication Mechanism
+In the generic scenario described in the diagram above, you must ensure to implement the following order of authentication:
+<br />
+
+1. Authenticate Palette to administer the cluster in AWS Account A. When you register a primary cloud account in Palette, you authenticate and authorize Palette to deploy clusters in the cloud account. Refer to the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) guide to learn more. 
+
+
+2. Authenticate Palette to access the S3 buckets in AWS Account B. You achieve this step by defining the access permissions for the storage bucket and associate the permissions with an IAM role. Next, you define a trust relationship in the IAM role to allow Palette to assume the role. 
+
+
+3. Authenticate the cluster to access the S3 buckets in AWS Account B. You define another trust relationship in the IAM role to allow the cluster to assume the role. 
+
+
+
+The following sections will outline the prerequisites and the detailed steps to add an S3 bucket as the backup location in AWS Account B using the STS authentication method. 
+<br />
 
 # Prerequisites
 
 * An *AWS Account A*. It is the AWS account where you have deployed the Kubernetes cluster. 
 
 
-* An *AWS Account B*. You will create an S3 bucket in this AWS account and add it as the backup location. 
+* An *AWS Account B*. It is the AWS account where you want to create the backup location. 
 
 
 * An S3 bucket in the AWS Account B. The bucket will store the backup of your clusters or workspaces. 
@@ -124,7 +138,9 @@ Considering the scenario described above, the following sections will outline th
 5. Next, choose the **STS** validation method. 
 
 
-6. Swicth to the AWS Account B to create a new IAM role. The IAM role must have the necessary IAM policy attached, which you defined in the prerequisites section above. Refer to the [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) document to learn about creating an IAM role. Use the following configuration while creating the IAM role. 
+6. When you choose the STS method, you must create a new IAM role and provide its ARN. 
+
+  Swicth to the AWS Account B to create a new IAM role. The IAM role must have the necessary IAM policy attached, which you defined in the prerequisites section above. Refer to the [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) document to learn about creating an IAM role. Use the following configuration while creating the IAM role. 
 
   |**AWS Console Field**|**Value**|
   |---|---|
@@ -133,7 +149,7 @@ Considering the scenario described above, the following sections will outline th
   |AWS Account ID|Use the one displayed in Palette. It is Palette SaaS account ID.|
   |Options|Select the Require external ID checkbox.|
   |External ID|Use the one displayed in Palette. Palette generates the external ID.|
-  |Permissions policies| Attach the IAM policy defined above.|
+  |Permissions policies| Attach the IAM policy defined in the prerequisites section above.|
   |Role name|Your choice.|
   |Role description|Your choice.|
 
@@ -208,6 +224,8 @@ Considering the scenario described above, the following sections will outline th
     ]
   }
   ```
+  You can refer to the [How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/) blog by AWS to learn more.
+  
 
 10. Copy the ARN of the newly created IAM role from AWS.
 

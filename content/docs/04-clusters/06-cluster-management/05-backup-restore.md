@@ -21,26 +21,48 @@ You can schedule and take a backup of a specific cluster or an entire [workspace
 
 ## Backup Location
 
-A backup location is an object storage where you store and retrieve the backup files. Before you create a backup, the initial step is to configure a backup location in Palette. You can configure a backup location in a public cloud or a data center environment. A backup location can be the same or different than the cluster deployment location. Palette supports the following object storages as the backup location.
+A backup location is an object storage, such as AWS Simple Storage Service (S3) buckets, where you store and retrieve the backup files. Before you create a backup, the initial step is to configure a backup location in Palette. You can configure a backup location in a public cloud or a data center environment. A backup location can be the same or different than the cluster deployment location. Palette supports the following object storages as the backup location.
 
-- Amazon Web Services (AWS) Simple Storage Service (S3) bucket
+- Amazon Web Services (AWS) S3 bucket
 
 - Google Cloud Platform (GCP) bucket
 
 - MinIO S3 bucket
 
 - Azure blob storage
+<br />
 
-One of the main prerequisites to configuring a backup location is that the storage bucket is created where you want to store the backup files. For example, if you configure the backup location in AWS, you will need an S3 bucket. Another example is if you configure the backup location in Azure, you will need a container in the Azure Storage account.
+## Add a Backup Location - Overview
 
-After creating the storage bucket, you define the access permissions for the storage bucket and associate the permissions with an Identity Access Management (IAM) entity. Depending on your cloud or data center platform, the IAM entity can be a user, service principal, or role,  Next, you generate the access credentials for the IAM entity. When you configure a backup location in Palette, you provide Palette the access credentials so that it can assume the IAM entity's role to perform the bucket-related operations.  
+You can add a backup location in the same cloud account where you deployed the Kubernetes cluster or a different one. In either case, you must create an Identity Access Management (IAM) entity in the cloud account and generate the access credentials for the IAM entity. 
+Next, you share the access credentials with Palette. 
+Palette uses the access credentials to authenticate itself while accessing the bucket. 
+Palette supports the following access credentials to authenticate with the different cloud account types.
+<br />
+
+|**Backup Location Provider**|**Does Palette supports long-term credentials?**|**Does Palette supports on-demand temporary security credentials or tokens?**|
+|---|---|---|
+|AWS|✅|✅|
+|GCP|✅|❌|
+|MinIO|✅|❌|
+|Azure|✅|❌|
+
+
+You can use the long-term access credentials for all backup location providers. AWS, GCP, and Azure offer different types of long-term credentials for access. You do not use Palette's instance identity while generating the access credentials. The long-term credentials remain valid until you explicitly revoke or rotate them from your cloud account. Refer to the [Add a Backup Location using Access Credentials](/clusters/cluster-management/backup-restore/add-backup-location) guide for more detials. 
+
+
+However, if you use AWS's on-demand temporary security credentials service, the Security Token Service (STS), there are certain conditions you must fulfill to create and restore a backup. Refer to the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide for more details. 
+<br />
 
 
 # Resources
 The following resources will help you configure a backup location and create and restore a cluster backup.
 <br />
 
-- [Add a Backup Location](/clusters/cluster-management/backup-restore/add-backup-location)
+- [Add a Backup Location using Access Credentials](/clusters/cluster-management/backup-restore/add-backup-location)
+
+
+- [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts)
 
 
 - [Create a Cluster Backup](/clusters/cluster-management/backup-restore/create-backup)
