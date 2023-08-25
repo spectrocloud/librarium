@@ -44,6 +44,14 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 - vSphere version 7.0 or above. vSphere 6.7 is supported but we do not recommend it, as it reached end of general support in 2022.
 
+  <br />
+
+  Palette supports port groups as follows. Opaque networks in vCenter Server are *not* supported.
+  
+  - Virtual machine port groups on vSphere standard switch
+  - Distributed port groups on vSphere distributed switch 
+  - NSX-T distributed virtual port group 
+
 
 - A Resource Pool configured across the hosts onto which the workload clusters will be provisioned. Every host in the Resource Pool will need access to shared storage, such as vSAN, to be able to make use of high-availability (HA) control planes. 
 
