@@ -188,6 +188,10 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 <h2 id="release-4-0-packs">Packs</h2>
 
+The following news packs are available in Palette 4.0.0. 
+
+<br />
+
 
 <h3 id="release-4-0-packs-kubernetes">Kubernetes</h3>
 
@@ -212,6 +216,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 | RKE2 | 1.25.10 |
 | RKE2 | 1.26.3 |
 | RKE2 | 1.26.5 |
+| RKE2 | 1.27.2 |
 
 
 <h3 id="release-4-0-packs-cni">CNI</h3>

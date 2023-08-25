@@ -4,7 +4,7 @@ metaTitle: 'vSphere CSI Integration with Spectro Cloud'
 metaDescription: 'vSphere CSI storage add on into Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['storage', 'amd64','arm64']
+category: ['storage', 'amd64','fips']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-vsphere-volume/blobs/sha256:2cd106b353cb492d4647a1562fe59db6a1aeb792333900fe4e15237f899298b5?type=image/png'
 ---
 
