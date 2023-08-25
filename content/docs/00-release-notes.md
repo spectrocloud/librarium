@@ -128,6 +128,8 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can now skip the auto registration of Edge hosts in Palette. This allows you to manually register your Edge hosts in Palette by either using the QR code method or by providing the machine ID in Palette. Set the Edge Installer configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the [Edge Installer Configuration](/clusters/edge/edge-configuration/installer-reference) documentation to learn more.
 
 
+- You can configure the node drainage behavior for your Edge hosts. To learn more about configuring node drainage, refer to the [Bring Your Own OS (BYOOS) pack](/integrations/byoos#nodedrainage) documentation.
+
 
 
 <h2 id="release-4-0-pde">Palette Dev Engine (PDE)</h2>

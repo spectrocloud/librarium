@@ -46,7 +46,7 @@ The BYOS Edge OS pack supports the following parameters.
 
 | Parameter            | Description                                            | Type | Default Value |
 |----------------------|--------------------------------------------------------|------| ------------- |
-| `pack:content:` | Specifies the content of the **BYOS Edge OS** pack. | map | N/A |
+| `pack:content` | Specifies the content of the **BYOS Edge OS** pack. | map | N/A |
 | `pack.content.images` | Specifies a list of OS images to use with the pack. | list | N/A |
 | `pack.content.images.image` | An OS image to use with the pack. | string| `'{{.spectro.pack.edge-native-byoi.options.system.uri}}'`|
 | `pack.drain:` | Specifies the drain configuration for the node. | map | N/A
@@ -96,7 +96,7 @@ Select the BYOOS pack and fill out the required parameters during the cluster pr
 
 ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
 
-
+<br />
 
 ### Node Drainage
 
@@ -111,6 +111,19 @@ To enable node drainage, you must include the `pack.drain` parameter block and s
     drain:
       cordon: true
   ```
+
+You can customize the node drainage process by using the additional parameters in the `pack.drain` parameter block. Refer to the [parameters](#parameters) section for a list of the supported parameters.
+
+You can change the node drainage behavior after a cluster is deployed by updating the cluster profile and applying the changes to the cluster. 
+
+<br />
+
+<WarningBox>
+
+Changing the node drainage behavior after a cluster is deployed will trigger a rolling update on the cluster nodes. Each node will reboot so that the new node drainage behavior can be applied.
+
+</WarningBox>
+
 
 
 
