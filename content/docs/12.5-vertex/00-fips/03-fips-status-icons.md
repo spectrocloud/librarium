@@ -18,7 +18,7 @@ Similarly, when the option to add non-FIPS add-on packs is enabled, users can ad
 
 To avoid confusion and compliance issues, Palette VerteX displays icons to indicate the FIPS compliance status of clusters, profiles, and packs. 
 
-The table lists icons used to indicate FIPS compliance status. The partial FIPS compliance icon applies only to clusters and profiles because these may contain packs with an unknown or non-FIPS-compliant status. Individual packs are compliant or not, or their status is unknown. 
+The table lists icons used to indicate FIPS compliance status. The partial FIPS compliance icon applies only to clusters and profiles because these may contain packs with an *Unknown* or *Not FIPS-compliant* status. 
 
 | **Icon** | **Description** | **Applies to Clusters** | **Applies to Profiles** | **Applies to Packs** |
 |---------------|------------|----------------|----------------|----------------|

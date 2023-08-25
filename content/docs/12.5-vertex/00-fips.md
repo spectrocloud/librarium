@@ -23,7 +23,24 @@ Something to note when using RKE2 and K3s:
 
 <br />
 
-- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer. 
+<!-- - Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer.  -->
+
+- Rancher considers RKE2 to be FIPS-compliant, as described in it's RKE2 [FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support) security documentation. Therefore, Palette VerteX designates RKE2 as FIPS-compliant. 
+
+  <br />
+  
+  When we scan the binaries, which we consume directly from Rancher's RKE2 repository, issues are reported for the following components.  This is because they are built with the Go Programming Language (Golang) compiler, which is not FIPS-compliant.
+
+  - container-suseconnect
+  - container-suseconnect-zypp
+  - susecloud
+
+  <br />
+
+  Since these components are unrelated to Kubernetes and are instead used to access SUSE’s repositories during the docker build process, RKE2 itself remains fully compliant. We recommend using RKE2 [FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support) security documentation as the official source of FIPS compliance.
+
+
+<!-- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer.  -->
 
 
 - Although K3s is not available as a FIPS-certified distribution, Palette VerteX supports K3s as a Kubernetes distribution for Edge clusters.
@@ -42,3 +59,6 @@ Spectro Cloud has performed a categorization under FIPS 199 with (client/tenant)
 
 
 - [FIPS-Compliant Components](/vertex/fips/fips-compliant-components) 
+
+
+- [RKE2 FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support)
