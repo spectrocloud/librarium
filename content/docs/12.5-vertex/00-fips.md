@@ -25,7 +25,7 @@ Something to note when using RKE2 and K3s:
 
 <!-- - Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer.  -->
 
--RKE2 is designated as FIPS compliant per official  Rancher [FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support) security documentation. Therefore, Palette VerteX designates RKE2 as FIPS-compliant. 
+- RKE2 is designated as FIPS-compliant per official Rancher [FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support) security documentation. Therefore, Palette VerteX designates RKE2 as FIPS-compliant. 
 
   <br />
   
