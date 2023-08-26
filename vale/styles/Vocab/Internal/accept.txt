@@ -124,4 +124,5 @@ repavement
 Repavement
 repave
 Repave
+K3s
 boolean

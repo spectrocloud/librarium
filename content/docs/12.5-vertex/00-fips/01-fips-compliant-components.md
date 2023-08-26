@@ -32,7 +32,6 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 - Kubernetes
   - Palette eXtended Kubernetes (PXK) 
   - Palette eXtended Kubernetes - Edge (PXK-E)
-  - RKE2
 
 
 - Container Network Interface (CNI) 
