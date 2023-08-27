@@ -84,7 +84,7 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 |Version| Operating System |  Checksum (SHA256) |
 |-------|---| --- |
-|4.0.0 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v4.0.0/cli/linux/palette-edge) | ``|
+|4.0.2 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v4.0.2/cli/linux/palette-edge) | `257d868b490979915619969815fd78aa5c7526faba374115f8d7c9d4987ba05d`|
 |3.4.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.3/cli/linux/palette-edge) | `b53ccd28ea2a36a6eda43e0e7884c97bebd7d78922374168e1819b768df54f16`|
 
 
