@@ -29,7 +29,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 <h3 id="release-4-0-palette-features">Features</h3>
 
 
-- The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to facilitate the management of virtual machines. Review the [VMO](/integrations/virtual-machine-orchestrator) documentation to learn more.
+- The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to facilitate the management of virtual machines. Review the [VMO](/vm-management) documentation to learn more.
 
 
 - Custom Pack registries now support the ability for you to upload your own SSL Certificate Authority (CA). You can use HTTPS to connect to your private registries by providing your SSL certificate. Refer to the [Configure a Custom Pack Registry in Palette](/registries-and-packs/adding-a-custom-registry) documentation to learn more.
@@ -194,6 +194,9 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 <h3 id="release-4-0-packs-pack-notes">Pack Notes</h3>
 
 - A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
+
+
+- The Spectro-VM-Dashboard pack is renamed to Virtual Machine Orchestrator.
 
 
 - This release introduces the start of a formal maintance policy for packs. Several packs are now marked as deprecated, disabled, and deleted. A completed list of packs that are deprecated, disabled, and deleted is available in the [Deprecations and Removals](#release-4-0-packs-pack-deprecation-removals) section below. To learn more about the pack maintenance policy, refer to the [Maintenance Policy](/integrations/maintenance-policy) documentation.
