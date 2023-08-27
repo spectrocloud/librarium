@@ -199,6 +199,9 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - The Spectro-VM-Dashboard pack is renamed to Virtual Machine Orchestrator.
 
 
+- Palette eXtended Kubernetes - Edge (PXKE) and RKE2 cannot be upgraded from version 1.26.4 to 1.27.2 in an active cluster. Create a new Cluster Profile with the latest version of PXKE or RKE2 to upgrade to version 1.27.2. Or, update the cluster profile Kubernetes layer and apply the cluster profile changes to the cluster. 
+
+
 - This release introduces the start of a formal maintance policy for packs. Several packs are now marked as deprecated, disabled, and deleted. A completed list of packs that are deprecated, disabled, and deleted is available in the [Deprecations and Removals](#release-4-0-packs-pack-deprecation-removals) section below. To learn more about the pack maintenance policy, refer to the [Maintenance Policy](/integrations/maintenance-policy) documentation.
 
 
