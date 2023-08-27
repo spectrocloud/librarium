@@ -284,10 +284,18 @@ The `pcg` command exposes the following subcommand.
 
 ### Install
 
-Use the `install` subcommand to install a PCG cluster in the following environments.
+Use the `install` subcommand to install a PCG cluster in the following environments. The following flags are supported by the `install` subcommand.
 
-<br />
+  <br />
 
+  | Short Flag | Long Flag              | Description                                                              | Type    |
+  |------------|------------------------|--------------------------------------------------------------------------|---------|
+  | `-f`       | `--config-file`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
+  | `-o`       | `--config-only`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
+  | `-i`       | `--inspect-only`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
+
+
+To learn more about installing a PCG cluster. Refer to each platform's respective PCG install guide.
 
 | Platform | Install Guide |
 |---|---|
@@ -295,8 +303,6 @@ Use the `install` subcommand to install a PCG cluster in the following environme
 | OpenStack | [Link](/clusters/data-center/openstack#installingprivatecloudgateway-openstack) |
 | VMware | [Link](/clusters/data-center/vmware/#createvmwareprivatecloudgateway(pcg)) |
 
-
-To learn more about installing a PCG cluster. Refer to each platform's respective PCG install guide.
 
 ## PDE
 

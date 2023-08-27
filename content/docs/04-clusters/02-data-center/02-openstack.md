@@ -565,12 +565,12 @@ To change the PCG install values, restart the installation process using the `pa
 
 
 
-2. To redeploy the PCG, use the `install` command with the flags `--silent` and `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
+2. To redeploy the PCG, use the `install` command with the flag `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
 
   <br />
 
   ```bash hideClipboard
-  palette pcg install --silent --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+  palette pcg install --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
   ```
 
 </Tabs.TabPane>
