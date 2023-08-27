@@ -4,7 +4,7 @@ metaTitle: 'external-secrets-operator'
 metaDescription: 'external-secrets-operator pack in Palette'
 hiddenFromNav: true
 type: "integration"
-category: ['authentication']
+category: ['authentication', 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/external-secrets-operator/blobs/sha256:ee6f7f347d381852582f688c70b2564b0a346c2b2ed1221310889075a4453c6d?type=image/png'
 ---
 

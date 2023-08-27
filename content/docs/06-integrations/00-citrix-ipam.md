@@ -4,7 +4,7 @@ metaTitle: 'Citrix IPAM'
 metaDescription: 'Citrix IPAM Load Balancer pack in Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['load balancers']
+category: ['load balancers', 'amd64']
 logoUrl: 'https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image/png'
 ---
 

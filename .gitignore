@@ -9,4 +9,6 @@ vale/styles/Google/
 vale/styles/write-good/
 .idea/
 link_report.*
+*-creds.tape
 palette-docs.pdf
+

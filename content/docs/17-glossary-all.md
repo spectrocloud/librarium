@@ -158,6 +158,12 @@ Projects provide a way for grouping clusters together for logical separation. Ro
 ## Public Pack Registry
 
 Palette maintains a public pack registry containing various [packs](#pack) that can be used in any [cluster profile](#cluster-profile). The pack content in this registry is constantly updated with new integrations.
+
+
+## Repavement
+
+Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves draining the node, or in other words, migrating active workloads to another healthy node, and removing it from the cluster. A new node is created and configured with the same settings as the old node and added back to the cluster. The process is fully automated and does not require any manual intervention.
+
 ## Role
 
 A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: *tenant roles* and *project roles*. *Tenant roles* are a collection of tenant-level permissions such as create a new user, add a new project, etc. *Project roles* consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster, etc.
@@ -179,6 +185,10 @@ Tenant represents a customer or an organization in Palette. Palette is a multi-t
 ## User
 
 Users are members of a [tenant](#tenant) who are assigned [roles](#role) that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all [projects](#project) in the tenant whereas users assigned project roles, only get specific permission within the associated projects. The user's personal information (email, name) is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
+
+## VMO
+Palette [Virtual Machine Orchestrator](/vm-management) provides a unified platform for managing containerized and virtualized applications. Palette VM Orchestrator allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications. 
+
 ## Workload
 An application running on the Kubernetes cluster is called a Workload. It can be a set of components that work together or a single independent component, run as a set of pods. In Kubernetes terms, a Pod is a set of running containers on your cluster.
 ## Workload Cluster
