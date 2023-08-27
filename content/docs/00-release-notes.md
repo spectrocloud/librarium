@@ -104,8 +104,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 <h3 id="release-4-0-palette-known-issues">Known Issues</h3>
 
-- With the deprecation of deploying Virtual Clusters directly into host clusters. The ability to specify an Add-on profile to a Palette Virtual Cluster is currently unavailable. This will be addressed in a future release.
-
+- With the deprecation of deploying Virtual Clusters directly into host clusters. The ability to specify an Add-on profile to a Palette Virtual Cluster is currently unavailable. This will be addressed in an upcoming release.
 
 
 <h2 id="release-4-0-edge">Edge</h2>
@@ -130,6 +129,10 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 - You can configure the node drainage behavior for your Edge hosts. To learn more about configuring node drainage, refer to the [Bring Your Own OS (BYOOS) pack](/integrations/byoos#nodedrainage) documentation.
 
+
+<h3 id="release-4-0-edge-known-issues">Known Issues</h3>
+
+- Palette eXtended Kubernetes - Edge (PXKE) and RKE2 cannot be upgraded from version 1.26.4 to 1.27.2 in an active cluster. Create a new cluster profile with the latest version of PXKE or RKE2 to upgrade to version 1.27.2. This will be addressed in an upcoming release.
 
 
 <h2 id="release-4-0-pde">Palette Dev Engine (PDE)</h2>
@@ -196,10 +199,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
 
 
-- The Spectro-VM-Dashboard pack is renamed to Virtual Machine Orchestrator.
-
-
-- Palette eXtended Kubernetes - Edge (PXKE) and RKE2 cannot be upgraded from version 1.26.4 to 1.27.2 in an active cluster. Create a new Cluster Profile with the latest version of PXKE or RKE2 to upgrade to version 1.27.2. Or, update the cluster profile Kubernetes layer and apply the cluster profile changes to the cluster. 
+- The Spectro-VM-Dashboard pack is renamed to Virtual Machine Orchestrator. 
 
 
 - This release introduces the start of a formal maintance policy for packs. Several packs are now marked as deprecated, disabled, and deleted. A completed list of packs that are deprecated, disabled, and deleted is available in the [Deprecations and Removals](#release-4-0-packs-pack-deprecation-removals) section below. To learn more about the pack maintenance policy, refer to the [Maintenance Policy](/integrations/maintenance-policy) documentation.
