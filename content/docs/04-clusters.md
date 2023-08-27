@@ -272,7 +272,8 @@ This table lists the proxy requirements for enabling the Palette management cons
 | spectrocloud.com          | 443  | Spectro Cloud Palette SaaS.                   |
 | s3.amazonaws.com          | 443  | Spectro Cloud VMware OVA files.               |
 | quay.io                   | 443  | Third party container images.                   |
-
+| ecr.us-east-1.amazonaws.com | 443  | OCI Pack images.         |
+| 
 
 # Scope
 
