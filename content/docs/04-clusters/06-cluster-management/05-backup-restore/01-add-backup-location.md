@@ -11,9 +11,9 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Add a Backup Location using Access Credentials
+# Add a Backup Location using the Access Credentials
 
-Suppose you want to add a backup location in Palette using long-term access credentials. In that case, you must accomplish the following actions. 
+This how-to guide presents instructions for adding a backup location in Palette using the long-term access credentials method. Below is an overview of the steps involved:
 <br />
 
 1. Create a storage bucket to store the backup files. For example, if you configure the backup location in AWS, you will need an S3 bucket. Another example is if you configure the backup location in Azure, you will need a container in the Azure Storage account.
@@ -22,13 +22,10 @@ Suppose you want to add a backup location in Palette using long-term access cred
 2. Define the access permissions for the storage bucket and associate the permissions with an IAM entity. Depending on your cloud or data center platform, the IAM entity can be a user, service principal, or role. 
 
 
-3. Generate the long-term access credentials for the IAM entity with sufficient permissions to perform the bucket-related operations.
-When you generate the long-term access credentials for an IAM entity, you do not embed the application's identity that will use the credentials. 
-Therefore, any application that has the credentials can assume the IAM entity. In the current case, you will share the credentials with Palette so that it can assume the IAM entity's role to perform the bucket-related operations.  
+3. Generate the long-term access credentials for the IAM entity with sufficient permissions to perform the bucket-related operations. When you generate the long-term access credentials for an IAM entity, you do not embed the application's identity that will use the credentials. In your case, you do not use Palette's identity while generating the access credentials. Therefore, any application with access to the credentials can assume the IAM entity's role. Next, you will share the credentials with Palette so that it can assume the IAM entity's role to perform the bucket-related operations.   
 
 
 The following sections will provide more detailed instructions. Select the tab that matches the environment where you want to create a backup.
-
 <br />
 
 <Tabs>
@@ -111,7 +108,7 @@ The following sections will provide more detailed instructions. Select the tab t
 	|**S3 URL**|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
 
 
-5. Next, choose the **Credentials** validation method. If you want to chose the STS method instead, refer to the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) for guided instructions. 
+5. Next, choose the **Credentials** validation method. If you want to choose the STS method instead, refer to the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) for guided instructions. 
 
 
 6. Provide the IAM user's access key if you chose the Credentials method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The policy will allow Palette to create a backup in the S3 bucket. 

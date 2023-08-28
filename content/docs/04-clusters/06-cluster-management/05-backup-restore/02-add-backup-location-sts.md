@@ -13,10 +13,10 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add a Backup Location using the Security Token Service
 
-Platte supports the Security Token Service (STS) authentication method only when both the following conditions are met:
+This how-to guide provides instructions for adding a backup location in Palette using AWS's on-demand temporary security credentials service, the Security Token Service (STS). Platte supports the STS authentication method only when both the following conditions are met:
 <br />
 
-1. Your Palette instance is hosted in AWS. If you use Palette SaaS or have an on-premises or self-hosted Palette deployed in AWS, you will get the STS option while adding a backup location. In all other cases, Palette does not support the STS method. 
+1. Your Palette instance is hosted in AWS. If you use Palette SaaS or have a self-hosted Palette deployed in AWS, you will get the STS option while adding a backup location. In all other cases, Palette does not support the STS method. 
 
 
 2. You want to add an AWS account as the backup location provider. The AWS account can be the same or different than your Palette instance. 
@@ -146,7 +146,7 @@ The following sections will outline the prerequisites and the detailed steps to 
   |---|---|
   |Trusted entity type| AWS account.|
   |AWS account|Select the *Another AWS account* radio button.|
-  |AWS Account ID|Use the one displayed in Palette. It is Palette SaaS account ID.|
+  |AWS Account ID|Use the one displayed in Palette. It is the Palette's account ID.|
   |Options|Select the Require external ID checkbox.|
   |External ID|Use the one displayed in Palette. Palette generates the external ID.|
   |Permissions policies| Attach the IAM policy defined in the prerequisites section above.|
@@ -166,7 +166,7 @@ The following sections will outline the prerequisites and the detailed steps to 
       {
         "Effect": "Allow",
         "Principal": {
-            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE-SaaS]:root"
+            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
         },
         "Action": "sts:AssumeRole",
         "Condition": {
@@ -179,7 +179,7 @@ The following sections will outline the prerequisites and the detailed steps to 
   }
   ```
 
-  In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE-SaaS]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you used while creating the IAM role. 
+  In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you used while creating the IAM role. 
 
 
 9. Edit the existing trust policy of the newly created IAM role in AWS Account B. Append the following permission to the existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace the `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` placeholder with the AWS account ID for AWS Account A. <br /> <br />	
@@ -196,7 +196,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 	
 	If you want to establish a trust relationship with a specific IAM role in AWS Account A, say *SpectroCloudRole*, you can use the `"arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:role/SpectroCloudRole"` ARN instead. 
   
-  Your final trust policy will become similar to the policy defined below. It has two trust relationships, one for the Palette SaaS account and another for the AWS Account A. <br /> <br />
+  Your final trust policy will become similar to the policy defined below. It has two trust relationships, one for the Palette and another for the AWS Account A. <br /> <br />
 
   ```json
   {
@@ -205,7 +205,7 @@ The following sections will outline the prerequisites and the detailed steps to 
       {
         "Effect": "Allow",
         "Principal": {
-            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE-SaaS]:root"
+            "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
         },
         "Action": "sts:AssumeRole",
         "Condition": {

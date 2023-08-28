@@ -18,7 +18,7 @@ This how-to guide provides instructions to create a cluster backup using Palette
 
 You can define a backup schedule in the cluster configuration for an existing cluster or while deploying a cluster. Palette supports scheduling a backup for a specific timestamp or a specific frequency. You can also specify the backup expiry period, meaning the duration, after which Palette will delete the backup automatically. For example, you can schedule a backup for every week on Sunday at midnight and trigger it will expire after three months from the backup date. 
 
-You can initiate a backup on demand for an existing cluster. The following sections will describe the prerequisites and the steps to create a cluster backup using Palette.
+You can initiate a backup on demand for an existing cluster. The following sections will describe the prerequisites and the detailed instructions to create a cluster backup.
 
 
 # Prerequisites
@@ -28,9 +28,7 @@ You can initiate a backup on demand for an existing cluster. The following secti
 
 # Instructions
 
-The instructions below will guide you to create a backup for an existing cluster.
-You can create a cluster backup either on a specified schedule or on-demand. 
-Choose the applicable use case - *Schedule a backup* or *Initiate an on-demand backup*. 
+You can create a cluster backup either on a specified schedule or on-demand. Choose the applicable use case - *Schedule a backup* or *Initiate an on-demand backup*. 
 <br />
 
 <Tabs>
