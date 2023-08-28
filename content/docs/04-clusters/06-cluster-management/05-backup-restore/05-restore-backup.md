@@ -47,7 +47,7 @@ The following sections will outline the prerequisites and the steps to restore a
 - A destination cluster. The destination cluster must belong to the same project as the source cluster. 
 
 
-- Ensure that the destination cluster has a default [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/). A storage class is a Kubernetes resource that helps provision persistent volumes dynamically. When you restore a cluster with persistent volumes, you will need the storage class. 
+- Ensure that the destination cluster has a default [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/). A storage class is a Kubernetes resource that helps provision persistent volumes dynamically. When you restore a backup with persistent volumes, you will need the storage class. 
 
   You can review the cluster profile's storage layer and check for the storage class. Otherwise, if you are connected to your cluster via [kubectl](/clusters/cluster-management/palette-webctl), you can execute the following command to get the list of storage classes. <br /> <br />
 
@@ -62,7 +62,7 @@ The following sections will outline the prerequisites and the steps to restore a
 - If the destination cluster is an AWS EKS cluster, ensure the storage class type is `gp2`. 
 
 
-- If the backup location is configured using the Security Token Service (STS) authentication method, ensure to define a trust relationship with the destination cluster. The trust relationship will allow the destination cluster to assume the necessary IAM permissions to access the backup files. You can define a trust relationship for your destination cluster similar to the one explained in the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
+- If the backup location is configured using the Security Token Service (STS) authentication method, ensure to define a trust relationship with the destination cluster. The trust relationship will allow the destination cluster to assume the necessary IAM role to access the backup files. You can define a trust relationship for your destination cluster similar to the one explained in the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
 
 
 # Instructions
@@ -125,7 +125,7 @@ You can follow the steps below to validate restoring a backup in Palette.
   <br />
   <InfoBox>
 
-  A restore operation does not copy the cluster profile to the destination cluster. 
+  Remember, a backup does not back up the source cluster profile. Therefore, the restore operation will not include the source cluster profile either.
 
   </InfoBox>
   <br />
