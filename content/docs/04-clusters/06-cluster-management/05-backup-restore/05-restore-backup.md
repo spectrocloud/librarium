@@ -59,7 +59,7 @@ The following sections will outline the prerequisites and the steps to restore a
 
 
 
-- If the destination cluster is an AWS EKS cluster, ensure that the storgae class type is `gp2`. 
+- If the destination cluster is an AWS EKS cluster, ensure the storage class type is `gp2`. 
 
 
 - If the backup location is configured using the Security Token Service (STS) authentication method, ensure to define a trust relationship with the destination cluster. The trust relationship will allow the destination cluster to assume the necessary IAM permissions to access the backup files. You can define a trust relationship for your destination cluster similar to the one explained in the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 

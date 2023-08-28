@@ -140,7 +140,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 
 6. When you choose the STS method, you must create a new IAM role and provide its ARN. 
 
-  Swicth to the AWS Account B to create a new IAM role. The IAM role must have the necessary IAM policy attached, which you defined in the prerequisites section above. Refer to the [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) document to learn about creating an IAM role. Use the following configuration while creating the IAM role. 
+  Switch to AWS Account B to create a new IAM role. The IAM role must have the necessary IAM policy attached, which you defined in the prerequisites section above. Refer to the [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) document to learn about creating an IAM role. Use the following configuration while creating the IAM role. 
 
   |**AWS Console Field**|**Value**|
   |---|---|
@@ -157,7 +157,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 7. Review the details of the newly created IAM role in AWS Account B. 
 
 
-8. In the **Trust relationships** section of the IAM role, a relationship will already be defined for Palette so that Palette can assume this role under specified conditions. The codeblock below displays an example trust relationship. <br /> <br />
+8. In the IAM role's **Trust relationships** section, a relationship will already be defined for Palette so that Palette can assume this role under specified conditions. The code block below displays an example of a trust relationship. <br /> <br />
 
   ```json
   {

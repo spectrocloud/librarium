@@ -139,7 +139,7 @@ The following sections will provide more detailed instructions. Select the tab t
 * A storage bucket in the GCP account.
 
 
-* A service account with sufficient permissions to perform the required read and write operations on the bucket. For simplicity, you can assign the storage administrator role to the service account to grant full control of the storage bucket. Refer to the [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles) document to know about the availble roles. 
+* A service account with sufficient permissions to perform the required read and write operations on the bucket. For simplicity, you can assign the storage administrator role to the service account to grant complete control of the storage bucket. Refer to the [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles) document to learn about the available roles. 
 
 
 * JSON credentials for the service account. Refer to the [Create access credentials](https://developers.google.com/workspace/guides/create-credentials#service-account) to learn how to create the credentials for the service account. 
