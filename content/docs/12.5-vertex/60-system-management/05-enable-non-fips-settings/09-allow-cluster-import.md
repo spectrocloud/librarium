@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 You can allow tenant users to import Kubernetes clusters that were not deployed through Palette, including some that *are not* FIPS compliant or are only *partially* compliant. Prior to enabling cluster import, the **Import Cluster** option is not available. 
 
-Palette VerteX displays icons next to clusters to indicate their FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips-status-icons).
+Palette VerteX displays icons next to clusters to indicate their FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips/fips-status-icons).
 
 
 

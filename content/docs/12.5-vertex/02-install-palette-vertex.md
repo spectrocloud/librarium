@@ -88,10 +88,10 @@ The recommended maximum number of deployed nodes and clusters in the environment
 - [Install on VMware vSphere](/vertex/install-palette-vertex/install-on-vmware)
 
 
-- [Install Using Helm Chart](/vertex/install-palette-vertex/install-using-helm-chart)
+- [Install Using Helm Chart](/vertex/install-palette-vertex/install-on-kubernetes/install)
 
 
-- [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-in-airgap-environment)
+<!-- - [Install in an Air Gap Environment](/vertex/install-palette-vertex/install-in-airgap-environment) -->
 
 
 <br />
