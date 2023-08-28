@@ -44,7 +44,7 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
 ## Management Plane
 
-All services in the management plane are FIPS compiled with Go using [BoringCrypto libraries](https://pkg.go.dev/crypto/internal/boring) and static linking. Refer to the [Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) to learn more.
+All services in the management plane are FIPS compiled with Go using [BoringCrypto libraries](https://pkg.go.dev/crypto/internal/boring) and static linking. Refer to the [Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) resource to learn about our NIST certificate.
 
 
 ## Kubernetes
