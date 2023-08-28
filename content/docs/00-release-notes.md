@@ -326,7 +326,7 @@ The following news packs are available in Palette 4.0.0.
 
 <h3 id="release-4-0-packs-pack-deprecation-removals">Deprecations and Removals</h3>
 
-The following packs are marked as deprecated, disabled, or deleted. Refer to the [Maintenance Policy](integrations/maintenance-policy) for more details on the deprecation and removal process.
+The following packs are marked as deprecated, disabled, or deleted. Refer to the [Maintenance Policy](/integrations/maintenance-policy) for more details on the deprecation and removal process.
 
 <br />
 
@@ -1373,7 +1373,7 @@ On the VMware front, we have:
 Other new features:
 
 - New customers can now sign up for free trials of Spectro Cloud. When ready, it is easy to upgrade plans and set up automatic payments using credit/debit cards.
-- <Tooltip trigger={<u>Pack constraints</u>}> <a href="/integrations/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
+- <Tooltip trigger={<u>Pack constraints</u>}> <a href="/registries-and-packs/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
 - Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for [Kubernetes](/integrations/kubernetes/).
 
 # December 03, 2020 - Hotfix 1.5.7
