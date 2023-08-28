@@ -6,12 +6,9 @@
  
     "targetBranchChoices": ["master", "version-4-0", "version-3-4", "version-3-4"],
   
-    // Optional: automatically merge backport PR
     "autoMerge": true,
     "autoMergeMethod": "squash",
   
-    // Optional: Automatically detect which branches a pull request should be backported to based on the pull request labels.
-    // In this case, adding the label "auto-backport-to-production" will backport the PR to the "production" branch
     "branchLabelMapping": {
       "^backport-(.+)$": "$1"
     }
