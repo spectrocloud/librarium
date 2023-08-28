@@ -14,11 +14,22 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Create a Cluster Backup
 
-This how-to guide provides instructions to create a cluster backup using Palette. You can schedule a cluster backup or initiate a backup on demand. 
+This how-to guide provides instructions to create a cluster backup using Palette. You can refer to the cluster from where you create the backup as the *source cluster*. 
 
-You can define a backup schedule in the cluster configuration for an existing cluster or while deploying a cluster. Palette supports scheduling a backup for a specific timestamp or a specific frequency. You can also specify the backup expiry period, meaning the duration, after which Palette will delete the backup automatically. For example, you can schedule a backup for every week on Sunday at midnight and trigger it will expire after three months from the backup date. 
+A backup operation will only back up specific namespaces, cluster resources, and persistent volumes from the source cluster. It does not copy the source cluster profile to the backup object. A backup operation can only back up the cluster resources defined [here](https://velero.io/docs/main/restore-reference/#restore-order). Refer to the [How Velero Works](https://velero.io/docs/main/how-velero-works/) and [Backup Reference](https://velero.io/docs/main/backup-reference/) documentation by Velero to learn more.
+<br/>
+<InfoBox>
 
-You can initiate a backup on demand for an existing cluster. The following sections will describe the prerequisites and the detailed instructions to create a cluster backup.
+A backup operation does not copy the source cluster profile to the backup object. 
+
+</InfoBox>
+<br />
+
+You can schedule a cluster backup or initiate a backup on demand. You can define a backup schedule in the cluster configuration for an existing cluster or while deploying a cluster. Palette supports scheduling a backup for a specific timestamp or a specific frequency. You can also specify the backup expiry period, meaning the duration, after which Palette will delete the backup automatically. For example, you can schedule a backup for every week on Sunday at midnight and trigger it will expire after three months from the backup date. In addition, you can initiate a backup on demand for an existing cluster. 
+
+
+
+The following sections will describe the prerequisites and the detailed instructions to create a cluster backup.
 
 
 # Prerequisites

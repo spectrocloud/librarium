@@ -11,14 +11,16 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Restore a Cluster Backup
 
-This how-to guide provides instructions to restore a backup to a cluster in Palette. You can restore a backup to the same cluster from where you created it or to a different cluster within the same project. 
-For simplicity, this guide uses the following terminology while referencing the clusters:
+This how-to guide provides instructions to restore a backup to a cluster in Palette. You can restore a backup to the same cluster from where you created it or to a different cluster within the same project. For simplicity, this guide uses the following terminology while referencing the clusters:
 <br />
 
 - *Source cluster* - The cluster from where you created the backup.
 
 
 - *Destination cluster* - The cluster where you want to restore the backup
+
+
+A restore operation will only restore the specified namespaces, cluster resources, and persistent volumes from the backup. Refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero to learn more about the restore workflow and the default restore order.
 
 The following sections will outline the prerequisites and the steps to restore a backup to a destination cluster in Palette. 
 
@@ -43,6 +45,24 @@ The following sections will outline the prerequisites and the steps to restore a
 
 
 - A destination cluster. The destination cluster must belong to the same project as the source cluster. 
+
+
+- Ensure that the destination cluster has a default [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/). A storage class is a Kubernetes resource that helps provision persistent volumes dynamically. When you restore a cluster with persistent volumes, you will need the storage class. 
+
+  You can review the cluster profile's storage layer and check for the storage class. Otherwise, if you are connected to your cluster via [kubectl](/clusters/cluster-management/palette-webctl), you can execute the following command to get the list of storage classes. <br /> <br />
+
+  ```bash
+  kubectl get storageclasses -A
+  ```
+
+  The default storage class in Palette-managed clusters is the `spectro-storage-class`. 
+
+
+
+- If the destination cluster is an AWS EKS cluster, ensure that the storgae class type is `gp2`. 
+
+
+- If the backup location is configured using the Security Token Service (STS) authentication method, ensure to define a trust relationship with the destination cluster. The trust relationship will allow the destination cluster to assume the necessary IAM permissions to access the backup files. You can define a trust relationship for your destination cluster similar to the one explained in the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
 
 
 # Instructions
@@ -72,14 +92,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster if desired. You can initiate a restore operation on any destination cluster in the same project as the source cluster. 
 
-  A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster.   <br /> <br />
-
-  <WarningBox>
-
-  Suppose the destination cluster is deployed in a different cloud account than the backup location. In that case, you must pre-create a storage class on the destination cluster before initiating the restore operation. While creating a storage class for the destination cluster on EKS,  specify **gp2 storage class**. Whereas for all other cloud environments, specify **spectro-storage-class**. In addition, you must ensure that the backup location has authorized	the destination cloud account using the necessary IAM permissions to access the backup files. 
-
-  </WarningBox>
-  <br />
+  A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
 
   In addition, select the namespaces you want to restore. You can also select all persistent volumes (PVs) and cluster resources, as highlighted in the example screenshot below.
 
@@ -109,11 +122,18 @@ You can follow the steps below to validate restoring a backup in Palette.
   ![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
 
   You restored the backup successfully when the backup status displays *Completed*.
+  <br />
+  <InfoBox>
+
+  A restore operation does not copy the cluster profile to the destination cluster. 
+
+  </InfoBox>
+  <br />
 
 
-5. To review the logs, navigate to the **Events** tab. 
+5. We encourage you to review the logs to understand the restore events better. To review the logs, navigate to the **Events** tab. 
 
 
 6. Examine the logs. Each log will display the verbose status message. When the restoration is completed, you will notice all the cluster resources and the persistent volumes contain your desired backed-up data. 
 
-  Alternatively, if you are connected to the cluster, you can print the logs on the console using utilities like [kubectl](/clusters/cluster-management/palette-webctl) or [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
+  Alternatively, if you are connected to the cluster, you can print the logs on the console using utilities like [kubectl](/clusters/cluster-management/palette-webctl) or [Kubernetes dashboard](/integrations/kubernetes-dashboard). 
