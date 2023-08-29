@@ -20,18 +20,56 @@ This how-to guide provides instructions to restore a backup to a cluster in Pale
 - *Destination cluster* - The cluster where you want to restore the backup
 
 
-A restore operation will only restore the specified namespaces, cluster resources, and persistent volumes from the backup. Refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero to learn more about the restore workflow and the default restore order.
+Before you restore a backup, an important consideration is regarding the storage classes in the destination cluster. The following section will provide more details. 
 
-The following sections will outline the prerequisites and the steps to restore a backup to a destination cluster in Palette. 
 
+## Storage Class
+
+A [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) is a Kubernetes resource that helps provision persistent volumes dynamically. In the case of a restore, you will need the storage classes in the destination cluster when you restore a backup with persistent volumes. It is necessary to have the storage classes in the destination cluster match the storage classes in the source cluster. 
+<br />
+
+### Default Storage Class
+When you create a cluster profile, Palette *usually* creates a storage class, `spectro-storage-class`, by default. In some cases, Palette does not create a storage class by default. Such scenarios arise when you create a cluster profile for specific cloud providers' managed Kubernetes service. For example, when you create a cluster profile for GCP GKE using the  [GKE Managed GCE Persistent Disk Driver](https://docs.spectrocloud.com/integrations/gce) storage pack, Palette will not create a storage class by default. In such cases, you can define a custom storage class in the cluster profile or create one after deploying the cluster. 
+
+<br />
+
+### Identify Storage Classes
+Below are the different methods to identify the storage classes of your source and destination clusters. 
+<br />
+
+- You can review the cluster profile's storage layer manifest. If the storage layer manifest defines the storage classes, you will find them within the `storageClasses` attribute, as the code snippet below highlights. <br /> <br />
+
+  ```yaml
+  storageClasses: 
+    # Default Storage Class
+      - name: spectro-storage-class
+      # annotation metadata
+        annotations:
+          storageclass.kubernetes.io/is-default-class: "true"
+        # EBS volume type: io1, io2, gp2, gp3, sc1, st1, standard
+          type: "gp2"
+    # Additional Storage Class 
+      # - name: addon-storage-class
+  ```
+
+
+- If you are connected to your cluster via [kubectl](/clusters/cluster-management/palette-webctl) and your cluster is active. In that case, you can execute the following command to get the list of storage classes. <br /> <br />
+
+  ```bash
+  kubectl get storageclasses -A
+  ```
+
+<br />
+
+### Create Storage Classes
+If there is a mismatch between the storage classes in the destination cluster and the source cluster, create the required new storage classes in the destination cluster. To define a new storage class in the destination cluster, you'll need to define a [StorageClass resource](https://kubernetes.io/docs/concepts/storage/storage-classes/#the-storageclass-resource) manifest and apply it using the kubectl. Another way is to define the storage classes in the cluster profile and apply the updates to the cluster before initiating a restore.  
+<br />
+
+A restore operation will only restore the specified namespaces, cluster resources, and persistent volumes from the backup. Refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero to learn more about the restore workflow and the default restore order. The following sections will outline the prerequisites and the steps to restore a backup.
 
 # Prerequisites
 
-- The source cluster. You can use the following steps to review the list of available clusters in Palette:
-  - Log in to [Palette](https://console.spectrocloud.com/).
-  - Verify you are in the desired project scope. 
-  - Navigate to the left **Main Menu**, and click on the **Clusters** menu item. Palette will display the list of available clusters. 
-
+- The source cluster. 
   <br />
 
   <WarningBox>
@@ -41,25 +79,13 @@ The following sections will outline the prerequisites and the steps to restore a
   </WarningBox>
 
 
-- A backup created for the source cluster. Refer to the [Create a Cluster Backup](/clusters/cluster-management/backup-restore/create-backup) guide to learn about creating a backup. 
-
-
 - A destination cluster. The destination cluster must belong to the same project as the source cluster. 
 
 
-- Ensure that the destination cluster has a default [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/). A storage class is a Kubernetes resource that helps provision persistent volumes dynamically. When you restore a backup with persistent volumes, you will need the storage class. 
-
-  You can review the cluster profile's storage layer and check for the storage class. Otherwise, if you are connected to your cluster via [kubectl](/clusters/cluster-management/palette-webctl), you can execute the following command to get the list of storage classes. <br /> <br />
-
-  ```bash
-  kubectl get storageclasses -A
-  ```
-
-  The default storage class in Palette-managed clusters is the `spectro-storage-class`. 
+- A backup is created for the source cluster. Refer to the [Create a Cluster Backup](/clusters/cluster-management/backup-restore/create-backup) guide to learn about creating a backup. 
 
 
-
-- If the destination cluster is an AWS EKS cluster, ensure the storage class type is `gp2`. 
+- Ensure the storage classes in the destination cluster match the storage classes in the source cluster. 
 
 
 - If the backup location is configured using the Security Token Service (STS) authentication method, ensure to define a trust relationship with the destination cluster. The trust relationship will allow the destination cluster to assume the necessary IAM role to access the backup files. You can define a trust relationship for your destination cluster similar to the one explained in the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
@@ -90,9 +116,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 
 
-7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster if desired. You can initiate a restore operation on any destination cluster in the same project as the source cluster. 
-
-  A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
+7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster if desired. You can initiate a restore operation on any destination cluster in the same project as the source cluster. A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
 
   In addition, select the namespaces you want to restore. You can also select all persistent volumes (PVs) and cluster resources, as highlighted in the example screenshot below.
 
@@ -125,7 +149,7 @@ You can follow the steps below to validate restoring a backup in Palette.
   <br />
   <InfoBox>
 
-  Remember, a backup does not back up the source cluster profile. Therefore, the restore operation will not include the source cluster profile either.
+  Remember, a backup does not includes the cluster profile of the source cluster. Therefore, the restore operation will not change the cluster profile of the destination cluster.
 
   </InfoBox>
   <br />
