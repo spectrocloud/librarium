@@ -57,12 +57,12 @@ Our customized version of Kubernetes is FIPS-compliant. Both [Palette eXtended K
 
 <InfoBox>
 
-Refer to the [Palette eXtended Kubernetes (PXK)](/integrations/kubernetes) and [Palette eXtended Kubernetes-Edge (PXK-E)](/integrations/kubernetes-edge)  to learn about these security-hardened packs.
+Refer to the [Palette eXtended Kubernetes (PXK)](/integrations/kubernetes) and [Palette eXtended Kubernetes-Edge (PXK-E)](/integrations/kubernetes-edge) documentation to learn more about the each Kubernetes distribution.
 
 
 </InfoBox>
 
-All PXK & PXKE components and supporting open-source components are compiled in their native programming language using language specific FIPS-compliant libraries and static linking. If the component is not available in the form of a FIPS-compliant binary, we compile it with FIPS-compliant compiler and libraries. The following tables list the FIPS-compliant components in PXK and PXK-E:
+All PXK and PXKE components and supporting open-source components are compiled in their native programming language using language specific FIPS-compliant libraries and static linking. If the component is not available in the form of a FIPS-compliant binary, we compile it with FIPS-compliant compiler and libraries. The following tables list the FIPS-compliant components in PXK and PXK-E:
 
 <br />
 
