@@ -84,12 +84,12 @@ All PXK and PXKE components and supporting open-source components are compiled i
 
 | **Component** | **Description** |
 | --- | --- |
-| CoreDNS | CoreDNS is a DNS server that is deployed as a cluster DNS service. |
-| Etcd | Etcd is a distributed key-value store that is used as Kubernetes’ backing store for all cluster data. |
+| CoreDNS | CoreDNS is a Domain Name System (DNS) server deployed as a cluster DNS service. |
+| Etcd | Etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data. |
 | Metrics Server | Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines. |
-| Ingress Controller| Nginx is used as the ingress controller. An ingress controller is a piece of software that provides reverse proxy, configurable traffic routing, and TLS termination for Kubernetes services. |
+| Ingress Controller| Nginx is used as the ingress controller. An ingress controller is a piece of software that provides reverse proxy, configurable traffic routing, and Transport Layer Security (TLS) termination for Kubernetes services. |
 | Nginx Server| The Nginx server is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache. |
-| Nginx Ingress Controller| The Nginx ingress controller is an ingress controller that uses ConfigMap to store the Nginx configuration. |
+| Nginx Ingress Controller| The Nginx ingress controller uses ConfigMap to store the Nginx configuration. |
 
 
 ### Runtime Components
@@ -109,7 +109,7 @@ All PXK and PXKE components and supporting open-source components are compiled i
 
 | **Component** | **Description** |
 | --- | --- |
-| Calico | Calico is a CNI plugin that provides networking and network policy for Kubernetes clusters. |
+| Calico | Calico is a Container Network Interface plugin that provides networking and network policy for Kubernetes clusters. |
 
 ### Container Storage Interface Components
 
@@ -149,7 +149,7 @@ All PXK and PXKE components and supporting open-source components are compiled i
 | Liveness probe            | Monitors health of CSI components. |
 | Longhorn engine           | Core component that handles read and write operations to the storage backend. |
 | Longhorn instance manager | Manages Longhorn engine and replica instances. |
-| Longhorn share manager    | Manages shared volumes and exposes them via protocols like NFS. |
+| Longhorn share manager    | Manages shared volumes and exposes them via protocols like Network File System (NFS). |
 | Longhorn UI               | User interface for managing Longhorn components and resources. |
 | Longhorn support bundle kit| Collects logs and system information for debugging. |
 
@@ -157,7 +157,7 @@ All PXK and PXKE components and supporting open-source components are compiled i
 
 <InfoBox>
 
-The Longhorn Manager component is partially FIPS-compliant. This component uses utiltities that are not using a FIPS- compliant version of OpenSSL. The following utilities are not FIPS-compliant:
+The Longhorn Manager component is partially FIPS-compliant. This component uses utiltities that are not using a FIPS-compliant version of OpenSSL. The following utilities are not FIPS-compliant:
 
 - openssl
 - curl
