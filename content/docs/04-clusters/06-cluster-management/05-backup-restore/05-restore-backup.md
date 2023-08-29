@@ -21,7 +21,7 @@ This how-to guide provides instructions to restore a backup to a cluster in Pale
 
 
 Before you restore a backup, an important consideration is regarding the storage classes in the destination cluster. The following section will provide more details. 
-
+<br />
 
 ## Storage Class
 
@@ -69,7 +69,7 @@ A restore operation will only restore the specified namespaces, cluster resource
 
 # Prerequisites
 
-- The source cluster. 
+- The source cluster is available in Palette. 
   <br />
 
   <WarningBox>
@@ -79,7 +79,7 @@ A restore operation will only restore the specified namespaces, cluster resource
   </WarningBox>
 
 
-- A destination cluster. The destination cluster must belong to the same project as the source cluster. 
+- A destination cluster is available in Palette. The destination cluster must belong to the same project as the source cluster. 
 
 
 - A backup is created for the source cluster. Refer to the [Create a Cluster Backup](/clusters/cluster-management/backup-restore/create-backup) guide to learn about creating a backup. 
