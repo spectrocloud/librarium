@@ -307,7 +307,7 @@ Add the Spectro Proxy pack to a cluster profile without making any configuration
 <InfoBox>
 
 Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard.
-Review the [Enable Kubernetes Dashboard](/clusters/cluster-management/reverse-proxy-dashboard) guide for more information.
+Review the [Enable Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide for more information.
 
 </InfoBox>
 
