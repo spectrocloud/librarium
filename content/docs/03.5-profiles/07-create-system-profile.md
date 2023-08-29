@@ -1,7 +1,7 @@
 ---
-title: "System Profiles"
-metaTitle: "Understanding System Profiles"
-metaDescription: "Understanding the System Profiles Concept and how they make Palette powerful"
+title: "Create a System Profile"
+metaTitle: "Create a System Profile"
+metaDescription: "Learn how to create Palette system profiles and apply them to your clusters."
 icon: ""
 hideToC: true
 fullWidth: false
