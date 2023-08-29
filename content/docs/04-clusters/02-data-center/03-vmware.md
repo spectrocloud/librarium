@@ -621,8 +621,6 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 # Create VMware Cloud Gateway
 
-`video: title: "vsphere-pcg-creation": /pcg-creation-video/vmware.mp4`
-
 You can use two different PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
 
 <br />
