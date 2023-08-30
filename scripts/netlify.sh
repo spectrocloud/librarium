@@ -3,10 +3,11 @@
 # List of branches to NOT create a Netlify preview
 allowed_branches=("master" "version-*", "release-*")
 
-# Read the environment variable
-branch_name=$BRANCH
 
 echo "Branch name: $branch_name"
+
+# Read the environment variable
+branch_name=$BRANCH
 
 # Initialize a flag to check if the branch is not allowed
 not_allowed=0
