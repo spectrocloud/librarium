@@ -29,6 +29,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        
+
+      - name: Omit Netlify Preview
+        run: |
+          cat > netlify.toml <<EOF
+          [build]
+          ignore = "exit 0"
+          EOF
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
