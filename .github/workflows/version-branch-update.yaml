@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - 'version-*'
+  pull_request:
+    branches:
+      - 'version-*'
 
 concurrency:
   group: version-${{ github.ref }}
@@ -30,13 +33,6 @@ jobs:
 
     - run: npm ci
 
-
-    - name: Omit Netlify Preview
-      run: |
-       cat > netlify.toml
-       [build]
-        ignore = "exit 0" 
-       <<EOF
 
     - name: Build
       run: |
