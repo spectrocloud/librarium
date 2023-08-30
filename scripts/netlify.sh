@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # List of branches to NOT create a Netlify preview
-allowed_branches=("master" "version-*" "release-*" "backport-updates")
+# Master branch does not need a preview
+# Release branches get a preview through docs-latest.spectrocloud.com
+allowed_branches=("master" "release-*")
 
 echo "Branch name: $HEAD"
 
