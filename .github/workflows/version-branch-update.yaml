@@ -1,12 +1,10 @@
 name: Version Branch Update
 
 on:
-  push:
-    branches:
-      - 'version-*'
   pull_request:
     branches:
-      - 'version-*'
+      - 'backport/version-*'
+
 
 concurrency:
   group: version-${{ github.ref }}
