@@ -13,20 +13,17 @@ import InfoBox from 'shared/components/InfoBox';
 import PointsOfInterest from 'shared/components/common/PointOfInterest';
 import Tooltip from "shared/components/ui/Tooltip";
 
-# Overview
+# Update Cluster Profiles
 
 You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
 
-# Prerequisites
+## Prerequisites
 
 There are no prerequisites.
 
+## Modify Basic Profile Information
 
-# Modify Basic Profile Information
-
-The following steps will guide you in updating basic profile information.
-
-## Enablement
+Follow these steps to update basic profile information.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -73,11 +70,10 @@ The following steps will guide you in updating basic profile information.
 
 
 
-# Update a Pack Layer
+## Update a Pack Layer
 
 The following steps will guide you in making updates to a layer in the profile.
 
-## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -152,7 +148,7 @@ Clusters that use the updated profile are notified of the changes. You can updat
 
 
 
-# Update the Pack Version
+## Update the Pack Version
 
 Packs typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
 
@@ -262,7 +258,7 @@ We do not recommend downgrading packs to the previous version.
 10. Confirm your updates.
 
 
-# Validate
+## Validate
 
  
 
@@ -288,16 +284,9 @@ We do not recommend downgrading packs to the previous version.
 6. Repeat the process until Palette indicates the configuration works.
 
 
+<br />
 
 <br />
 
 
-<br />
-
-
-<br />
-
-
-
-<br />
 

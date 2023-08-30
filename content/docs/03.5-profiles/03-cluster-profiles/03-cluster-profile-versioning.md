@@ -26,7 +26,7 @@ Palette displays multiple profile versons under one cluster profile name. For ex
 
 <WarningBox>
 
-When you delete a profile that has multiple versions, navigate to **Profiles** > **Cluster Profiles**, select the profile ....
+When you delete a profile that has multiple versions, navigate to **Profiles** > **Cluster Profiles**, select the profile.
           
-<<<COME BACK TO THIS>>>
+<<< COME BACK TO THIS >>>
 
