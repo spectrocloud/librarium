@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of branches to NOT create a Netlify preview
-allowed_branches=("master" "version-*" "release-*")
+allowed_branches=("master" "version-*" "release-*" "backport-updates")
 
 echo "Branch name: $HEAD"
 
