@@ -6,6 +6,8 @@ allowed_branches=("master" "version-*", "release-*")
 # Read the environment variable
 branch_name=$BRANCH
 
+echo "Branch name: $branch_name"
+
 # Initialize a flag to check if the branch is not allowed
 not_allowed=0
 
@@ -21,7 +23,9 @@ done
 
 # Exit accordingly
 if [ $not_allowed -eq 1 ]; then
+  echo "Not allowed to create a Netlify preview"
   exit 0
 else
+  echo "Allowed to create a Netlify preview"
   exit 1
 fi
