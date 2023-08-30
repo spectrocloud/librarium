@@ -135,15 +135,18 @@ You can create a cluster backup either on a specified schedule or on-demand. Cho
 You can follow the steps below to validate creating a backup in Palette.
 <br />
 
-1. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Select the cluster from where you created the backup. Palette will display the details of the selected cluster. 
+2. Navigate to the left **Main Menu**, and select **Clusters**. 
 
 
-3. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette will display a list of all available backups for the current cluster, including the newly created one. The screenshot below highlights an example backup. This step validates that you have successfully created the backup. 
+3. Select the cluster from where you created the backup. Palette will display the details of the selected cluster. 
+
+
+4. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette will display a list of all available backups for the current cluster, including the newly created one. The screenshot below highlights an example backup. This step validates that you have successfully created the backup. 
 
   ![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.png)
 
 
-4. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources. 
+5. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources. 

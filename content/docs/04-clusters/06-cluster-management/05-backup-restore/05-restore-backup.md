@@ -11,7 +11,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Restore a Cluster Backup
 
-This how-to guide provides instructions to restore a backup to a cluster in Palette. You can restore a backup to the same cluster from where you created it or to a different cluster within the same project. For simplicity, this guide uses the following terminology while referencing the clusters:
+This guide provides instructions for how to restore a backup to a cluster in Palette. You can restore a backup to the same cluster from where you created it or to a different cluster within the same project. For simplicity, this guide uses the following terminology while referencing the clusters:
 <br />
 
 - *Source cluster* - The cluster from where you created the backup.
@@ -46,9 +46,9 @@ Below are the different methods to identify the storage classes of your source a
       # annotation metadata
         annotations:
           storageclass.kubernetes.io/is-default-class: "true"
-        # EBS volume type: io1, io2, gp2, gp3, sc1, st1, standard
+          # EBS volume type: io1, io2, gp2, gp3, sc1, st1, standard
           type: "gp2"
-    # Additional Storage Class 
+      # Additional Storage Class 
       # - name: addon-storage-class
   ```
 
@@ -88,7 +88,7 @@ A restore operation will only restore the specified namespaces, cluster resource
 - Ensure the storage classes in the destination cluster match the storage classes in the source cluster. 
 
 
-- If the backup location is configured using the AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
+- If the backup location is configured using the dynamic credentials, such as AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
 
 
 # Instructions
@@ -132,16 +132,19 @@ Use the following instructions in Palette to restore a backup to a destination c
 Use the following steps to validate the backup restoration in Palette.
 <br />
 
-1. Navigate to the left **Main Menu**, and select **Clusters** 
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Select the destination cluster you restored. You will land on the cluster's **Overview** tab. Palette will display the details of the selected cluster. 
+2. Navigate to the left **Main Menu**, and select **Clusters**. 
 
 
-3. Notice the cluster's **Last Modified** field. It will display the timestamp when the cluster is last modified. 
+3. Select the destination cluster you restored. You will land on the cluster's **Overview** tab. Palette will display the details of the selected cluster. 
 
 
-4. Navigate to the **Backups** > **Restores** tab. Palette will display the status, restoration timestamp, the source cluster, and the backup name for each restore operation you performed for the current cluster. The screenshot below highlights an example restore operation.  
+4. Notice the cluster's **Last Modified** field. It will display the timestamp when the cluster is last modified. 
+
+
+5. Navigate to the **Backups** > **Restores** tab. Palette will display the status, restoration timestamp, the source cluster, and the backup name for each restore operation you performed for the current cluster. The screenshot below highlights an example restore operation.  
 
   ![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
 
@@ -155,9 +158,9 @@ Use the following steps to validate the backup restoration in Palette.
   <br />
 
 
-5. To review the backup logs, navigate to the **Events** tab. 
+6. To review the backup logs, navigate to the **Events** tab. 
 
 
-6. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the cluster resources and the persistent volumes contain your desired backed-up data. 
+7. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the cluster resources and the persistent volumes contain your desired backed-up data. 
 
   Alternatively, if you are connected to the cluster, you can print the logs on the console using utilities like [kubectl](/clusters/cluster-management/palette-webctl) or [Kubernetes dashboard](/integrations/kubernetes-dashboard). 

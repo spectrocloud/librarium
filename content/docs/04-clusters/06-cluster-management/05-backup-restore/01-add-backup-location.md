@@ -1,7 +1,7 @@
 ---
 title: "Add Backup Location using Static Credentials"
 metaTitle: "Add Backup Location using Static Credentials"
-metaDescription: "Learn how to add a backup location in Palette. Adding a backup location is a standard step whether you want to create a cluster backup or a workspace backup."
+metaDescription: "Learn how to add a backup location in Palette using static access credentials."
 hideToC: false
 fullWidth: false
 ---
@@ -11,9 +11,9 @@ import WarningBox from 'shared/components/WarningBox';
 import InfoBox from 'shared/components/InfoBox';
 
 
-# Add a Backup Location using the Access Credentials
+# Add a Backup Location using the Static Access Credentials
 
-This how-to guide presents instructions for adding a backup location in Palette using static credentials. Below is an overview of the steps involved:
+This guide provides instructions for how to add a backup location in Palette using static credentials. Below is an overview of the steps involved:
 <br />
 
 1. Create a storage bucket to store the backup files. For example, if you configure the backup location in AWS, you will need an S3 bucket.
@@ -22,7 +22,10 @@ This how-to guide presents instructions for adding a backup location in Palette 
 2. Define the access permissions for the storage bucket and associate the permissions with an IAM entity. The IAM entity may be a user, service principal, or role depending on your infrastructure provider. 
 
 
-3. Generate the long-term access credentials for the IAM entity with sufficient permissions to perform the bucket-related operations. When you generate the long-term access credentials for an IAM entity, you do not embed the application's identity that will use the credentials. In your case, you do not use Palette's identity while generating the access credentials. Therefore, any application with access to the credentials can assume the IAM entity's role. Next, you will share the credentials with Palette so that it can assume the IAM entity's role to perform the bucket-related operations.   
+3. Generate the static credentials for the IAM entity with sufficient permissions to perform the bucket-related operations. 
+
+
+4. Share the static credentials with Palette so that it can assume the IAM entity's role to perform the bucket-related operations.
 
 
 The following sections will provide more detailed instructions. Select the tab that matches the environment where you want to create a backup.
@@ -83,6 +86,13 @@ The following sections will provide more detailed instructions. Select the tab t
 	}
 	```
 
+* Create an IAM user in your AWS account. While creating the IAM user, attach the IAM policy you defined in the previous prerequisite item. Refer to the [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) document to learn how to create an IAM user. 
+
+
+* AWS will generate and display an access key for the newly created IAM user. An access key is made of up two parts - an *access key ID* and a *secret access key*. Copy both parts of the access key to a clipboard to use later in this guide. AWS will not display the secret access key again. 
+
+	If you skip copying the secret access key, refer to the [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) guide to learn about creating a new access key for an IAM user.
+
 <br /> 	
 
 ## Add an AWS S3 Bucket 
@@ -90,7 +100,7 @@ The following sections will provide more detailed instructions. Select the tab t
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations**. 
 
 
 3. Click on the **Add New Backup Location** button. 
@@ -100,7 +110,7 @@ The following sections will provide more detailed instructions. Select the tab t
 
 	|**Configuration Field**|**Value**|
 	|---|---|
-	|**Location Name**|Name of your choice.|
+	|**Location Name**|Name of your choice. |
 	|**Location Provider**|Select AWS from the drop-down field. |
 	|**Certificate**|Service provider certificate. It is optional for AWS.|
 	|**S3 Bucket**|S3 bucket name must be pre-created in the object-store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.|
@@ -112,17 +122,12 @@ The following sections will provide more detailed instructions. Select the tab t
 
 
 6. Provide the IAM user's access key if you chose the **Credentials** method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The specified policy allows Palette to create a backup in the S3 bucket. 
-  
-  If you do not have an IAM user, refer to the [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) document to learn how to create an IAM user. While creating the IAM user, ensure to attach the IAM policy you defined in the prerequisites section above. After creating the new IAM user, AWS will automatically generate and display an access key. 
-
-  Alternatively, you can create a new access key for an existing IAM user. Refer to the [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) document to learn about creating an access key for a particular IAM user. 
 
 
+7. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. Otherwise, you must review and verify the provided credentials. 
 
-7. Click on the **Validate** button. 
 
-
-8. Click **Create** to complete the backup location addition.
+8. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project.
 
 <br /> 
 
@@ -167,7 +172,10 @@ The following sections will provide more detailed instructions. Select the tab t
 	| **JSON Credentials** | Provide the JSON credentials for the external authentication of the GCP storage. Ensure the associated service account has sufficient permissions to perform the required bucket operations. |
 
 
-5. Click **Create** to complete the backup location addition.
+5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. Otherwise, you must review and verify the provided credentials. 
+
+
+6. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project.
 
 <br /> 	
 
@@ -183,7 +191,7 @@ The following sections will provide more detailed instructions. Select the tab t
 * An S3-compliant bucket in the MinIO account. 
 
 
-* IAM policy in your MinIO account to authorize a MinIO user to perform the required read and write operations on the MinIO bucket. A principal is an IAM identity. MinIO uses Policy-Based Access Control (PBAC) to control which IAM identities can access the resources and what actions the IAM identities are authorized to perform on the specific resources.
+* IAM policy in your MinIO account to authorize a MinIO user to perform the required read and write operations on the MinIO bucket. MinIO uses Policy-Based Access Control (PBAC) to control which IAM identities can access the resources and what actions the IAM identities are authorized to perform on the specific resources. Refer to the [MinIO Access Management] guide to learn more about the IAM policy requirements.
 
 
 * A MinIO user assigned with the IAM policy defined above. You can learn more about MinIO access management in the [MinIO object storage for Kubernetes](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html) official documentation.
@@ -224,7 +232,7 @@ The following sections will provide more detailed instructions. Select the tab t
 5. Next, provide the access key for the MiniIO user. The access key will have two parts - the access key ID and the secret key.  
 
 
-6. Click **Create** to complete the backup location addition.
+6. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project.
 
 <br />	
 
@@ -288,7 +296,10 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 	
 
 
-5. Click **Create** to complete the backup location addition.
+5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. Otherwise, you must review and verify the provided credentials and other configurations based on the validation status message. 
+
+
+6. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project and display the newly added backup location on the **Backup Locations** page. 
 
 <br /> 
 
@@ -299,13 +310,16 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 
 # Validate
 
-When you finish adding a backup location, Palette will display the newly added backup location on the **Backup Locations** page. Follow the steps below to validate adding the new backup location.
+Follow the steps below to validate adding the new backup location.
 <br />
 
-1. Navigate to the **Project Settings** and click on **Backup Locations** page. 
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. The **Backup Locations** page will display a list of all backup locations configured for the current project. 
+2. Navigate to the **Project Settings** and click on **Backup Locations**. 
 
 
-3. Search for the newly added backup location in the list. If you find the backup location, it will validate that you have successfully added the backup location. 
+3. The **Backup Locations** page will display a list of all backup locations configured for the current project. 
+
+
+4. Search for the newly added backup location in the list. The presence of the backup location validates that you have successfully added a new backup location.  
