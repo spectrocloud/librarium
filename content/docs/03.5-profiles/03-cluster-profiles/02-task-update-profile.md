@@ -41,9 +41,18 @@ The following steps will guide you in updating basic profile information.
 
     <br />
     
-    You can modify the name, version, description, and tags. Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
+    You can modify the name, version, description, and tags.
+    
+    
+    <br />
 
-  <br />
+    <br />
+
+  <InfoBox>
+
+  Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
+
+  </InfoBox>
 
 
 5. Save your changes.
@@ -86,6 +95,8 @@ The following steps will guide you in making updates to a layer in the profile.
     - **Add New Pack**
     - **Import from cluster**
     - **Add Manifest**
+    - **Add Helm chart**
+    - **Add Zarf**
 
 
 5. You can do the following:
@@ -95,6 +106,10 @@ The following steps will guide you in making updates to a layer in the profile.
     - Edit pack settings in the YAML file.
 
     - Add, edit, or remove a manifest.
+
+    - Add a Helm chart.
+
+    - In air-gapped environments, use Zarf to add applications.
 
     - Remove non-core pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
 

@@ -23,7 +23,7 @@ Create a cluster profile by adding core infrastructure layers (OS, Kubernetes, N
 
 There are no prerequisites.
 
-## Create a Profile
+## Enablement
 
 Use these steps to create a cluster profile.
 
@@ -106,104 +106,86 @@ Use these steps to create a cluster profile.
 	
 <br />
 
-11. When you create a Full or Add-On profile, you can use the options in the tabs below to customize the cluster profile.
+11. When you create a Full or Add-On profile, you can use options described in the tabs below to customize the cluster profile.
 
-
-<Tabs>
-
-<Tabs.TabPane tab="Add New Pack" key="Add New Pack"> 
-
-**Add New Pack** - Add a Palette pack from a pack registry or a Helm Chart from a chart registry. Palette's public pack registry and a few popular Helm chart repositories are available out-of-the-box. Additional pack registries or public or private chart registries can be added to Palette.
-     
-</Tabs.TabPane>   
-    
-
-<Tabs.TabPane tab="Import from cluster" key="Import from cluster">
-    
-**Import from cluster** - Charts can be discovered from an existing Kubernetes cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories available with Palette. You can provide the registry information for these charts during the import process.
-        
-</Tabs.TabPane>
-
-
-    
-<Tabs.TabPane tab="Add Manifest" key="Add Manifest">
-
-**Add Manifest** - You can construct a layer using raw manifest to provision Kubernetes resources that are not available in Palette or Helm Charts. Pack manifests provide a pass-through mechanism that orchestrates additional Kubernetes resources onto a cluster along with the rest of stack.
-
-</Tabs.TabPane>
-
-
-
-<Tabs.TabPane tab="Add Helm Chart" key="Add Helm Chart">
-    
-**Add Helm Chart** - Select from the available Helm Charts to add applications to a your cluster profile.
-        
-</Tabs.TabPane>
-
-
-<Tabs.TabPane tab="Add Zarf" key="Add Zarf">
-    
-**Add Zarf** - Zarf is an open-source packaging strategy for packaging Kubernetes manifests and Helm Charts and deploying them in air-gapped and semi-connected environments.
-        
-</Tabs.TabPane>
-
-
-</Tabs>
-    
-
-<!-- Configure each layer as follows:
-
-<Tabs>
-
-<Tabs.TabPane tab="Versions" key="Versions">
-<a href="Version"></a>Versions- Choose the desired version. Choices include pinning to a specific version (e.g. 1.1.1) or picking a major or minor train such as 1.x or 1.1.x. Picking a major/minor train results in a dynamic version association. The latest release from that train is linked to the pack at any given point. Future release updates on the train will result in the pack being relinked to the newest version. This allows clusters to always be at the latest released version, without having to make subsequent updates to the profile.
+  <br />
   
-</Tabs.TabPane>
+  <Tabs>
+  
+  <Tabs.TabPane tab="Add New Pack" key="Add New Pack">
+  
+  **Add New Pack** - Add a Palette pack from a pack registry or a Helm Chart from a chart registry. Palette's public pack registry and a few popular Helm chart repositories are available out-of-the-box. You can add pack registries or public or private Helm chart registries to Palette.
+  
+  </Tabs.TabPane>
+  
+  
+  <Tabs.TabPane tab="Import from cluster" key="Import from cluster">
+  
+  **Import from cluster** - Charts can be discovered from an existing Kubernetes cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories available with Palette. You can provide the registry information for these charts during the import process.
+  
+  </Tabs.TabPane>
+  
+  
+  <Tabs.TabPane tab="Add Manifest" key="Add Manifest">
+  
+  **Add Manifest** - You can construct a layer using raw manifest to provision Kubernetes resources that are not available in Palette or Helm Charts. Pack manifests provide a pass-through mechanism that orchestrates additional Kubernetes resources onto a cluster along with the rest of stack.
+  
+  </Tabs.TabPane>
+  
+  
+  
+  <Tabs.TabPane tab="Add Helm Chart" key="Add Helm Chart">
+  
+  **Add Helm Chart** - Select from the available Helm Charts to add applications to a your cluster profile.
 
-<Tabs.TabPane tab="Configuration Parameters" key="Configuration Parameters">    
-<b>Configuration Parameters</b> - The configuration option and version selected might provide configuration parameters to provide granular control or fine-tune certain aspects of the functionality. For the packs provided out of the box, the configuration parameters are set to values based on common best practices. Users may override these parameters as desired. Additionally, for certain layers, Palette provides a bunch of presets to quickly enable or configure a feature within the add-on. These presets are a group of properties presets with defaults to provide a quick and easy way to modify a set of relevant properties. If available, users can also enable one or more presets as appropriate.
-    
-</Tabs.TabPane>
-        
-<Tabs.TabPane tab="Manifest" key="Manifest">
-<b>Manifest</b> - Attach additional manifests to the layer if desired. Attached manifests provide a way for provisioning additional Kubernetes resources that support an integration or an add-on. Certain integrations offered through packs or charts, may require creation of resources like Secrets or CustomResourceDefinition (CRDs) in order to complete the installation end to end. This can be achieved by adding one or more Attach Manifests to the layer.
-    
-</Tabs.TabPane>
-    
-</Tabs> -->
 
-<br/>
+  
+  </Tabs.TabPane>
+  
+  
+
+  <Tabs.TabPane tab="Add Zarf" key="Add Zarf">
+  
+  **Add Zarf** - Zarf is an open-source packaging strategy for packaging Kubernetes manifests and Helm Charts and deploying them in air-gapped and semi-connected environments.
+  
+  </Tabs.TabPane>
+  
+  </Tabs>
+    
+## Validate
+
+
+## Deploy a Pack Multiple Times in a Profile
+
+You can deploy the same integration multiple times in a cluster profile. This can be required in scenarios where you want to install an integration more than once with a different configuration. For example, you may have two or more applications in the profile that need to use the Postgres database. You will need to launch the Postgres database twice with different configurations.
+
+Follow the steps below to allow adding a pack multiple times in a profile:
+
+1. Using the YAML editor, add the `spectrocloud.com/display-name: <custom_name>` key to the pack values, as shown in the example below. Replace `custom_name` with a pack name that is unique in the profile and across the cluster. 
+
+
+```yaml hideClipboard
+pack:
+  # The namespace (on the target cluster) to install this chart
+  # When not found, a new namespace will be created
+  namespace: "external-dns"
+  # Custom pack name for multi-layer support
+  spectrocloud.com/display-name: "dns-1"
+```
+  
+2. If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Display names used for a pack across layers must be unique.
+
+
+
+<!-- <br />
 
 <InfoBox>
-Palette allows users to deploy the same pack to multiple layers which can be required in certain scenarios, where an integration needs to be installed multiple times with different configuration. As an example, you may have two or more applications in the profile that need to use the Postgres database. You will be required to launch the Postgres database twice in this case with different configurations.
 
-In order to allow packs to be added multiple times in a profile, add the following key to the pack values in the yaml editor:
+By default Palette uses Helm chart release names in the format `packName-chartName`. In cases where a long chart release name causes issues, you can customize the chart name using the `releaseNameOverride` property as shown in the example below.
 
-      spectrocloud.com/display-name: <custom_name>
-
-   where `<custom_name>` is a name unique across a cluster profile and the cluster.
-
-  **Example:**
-
-    pack:
-      # The namespace (on the target cluster) to install this chart
-      # When not found, a new namespace will be created
-      namespace: "external-dns"
-      # Custom pack name for multi-layer support
-      spectrocloud.com/display-name: "dns-1"
-  
-  If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Display names used for a pack across layers should be unique.
-</InfoBox>
-
-<br />   
-
-<InfoBox>
-By default Palette uses Helm chart release name in the format ``packName-chartName``. In cases where a lengthy release name causes some complicacy we can customize Helm chart releaseNames using the format below:
-
- 
-**Example:**
+<br />
        
-```yaml
+```yaml hideClipboard
 pack:
   namespace: kube-system
   releaseNameOverride:
@@ -211,7 +193,11 @@ pack:
     actual_chart_name2: custom_name2
 ```
 
-</InfoBox>
+</InfoBox> -->
+
+<br />   
+
+<br />
 
 
       
