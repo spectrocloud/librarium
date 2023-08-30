@@ -3,7 +3,7 @@ title: "Create a Cluster Profile"
 metaTitle: "Create a Cluster Profile"
 metaDescription: "Learn how to create a cluster profile in Palette."
 icon: ""
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
@@ -117,6 +117,7 @@ Use these steps to create a cluster profile.
   **Add New Pack** - Add a Palette pack from a pack registry or a Helm Chart from a chart registry. Palette's public pack registry and a few popular Helm chart repositories are available out-of-the-box. You can add pack registries or public or private Helm chart registries to Palette.
   
   </Tabs.TabPane>
+
   
   
   <Tabs.TabPane tab="Import from cluster" key="Import from cluster">
@@ -124,6 +125,7 @@ Use these steps to create a cluster profile.
   **Import from cluster** - Charts can be discovered from an existing Kubernetes cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories available with Palette. You can provide the registry information for these charts during the import process.
   
   </Tabs.TabPane>
+
   
   
   <Tabs.TabPane tab="Add Manifest" key="Add Manifest">
@@ -138,7 +140,17 @@ Use these steps to create a cluster profile.
   
   **Add Helm Chart** - Select from the available Helm Charts to add applications to a your cluster profile.
 
+  By default Palette uses Helm chart release names in the format `packName-chartName`. In cases where a long chart release name causes issues, you can customize the chart name using the `releaseNameOverride` property as shown in the example below.
 
+  <br />
+
+  ```yaml hideClipboard
+  pack:
+    namespace: kube-system
+    releaseNameOverride:
+      actual_chart_name1: custom_name1
+      actual_chart_name2: custom_name2
+  ```
   
   </Tabs.TabPane>
   
@@ -151,11 +163,12 @@ Use these steps to create a cluster profile.
   </Tabs.TabPane>
   
   </Tabs>
+
     
 ## Validate
 
 
-## Deploy a Pack Multiple Times in a Profile
+## Add a Pack Multiple Times in a Profile
 
 You can deploy the same integration multiple times in a cluster profile. This can be required in scenarios where you want to install an integration more than once with a different configuration. For example, you may have two or more applications in the profile that need to use the Postgres database. You will need to launch the Postgres database twice with different configurations.
 

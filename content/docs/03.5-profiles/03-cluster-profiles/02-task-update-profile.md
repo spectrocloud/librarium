@@ -3,7 +3,7 @@ title: 'Update Cluster Profiles'
 metaTitle: 'Update Cluster Profiles'
 metaDescription: 'Learn how to update cluster profiles in Palette.'
 icon: ''
-hideToC: true
+hideToC: false
 fullWidth: false
 ---
 
