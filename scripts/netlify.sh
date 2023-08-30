@@ -4,10 +4,10 @@
 allowed_branches=("master" "version-*", "release-*")
 
 
-echo "Branch name: $branch_name"
+echo "Branch name: $HEAD"
 
 # Read the environment variable
-branch_name=$BRANCH
+branch_name=$HEAD
 
 # Initialize a flag to check if the branch is not allowed
 not_allowed=0

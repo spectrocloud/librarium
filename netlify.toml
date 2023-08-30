@@ -1,4 +1,4 @@
-# This file is removed in braches that need a Netlify preview.
 [build]
-  command = "scripts/netlify.sh"
+  ignore = "./scripts/netlify.sh"
+
 
