@@ -36,10 +36,11 @@ jobs:
 
     - name: Omit Netlify Preview
       run: |
-       cat > netlify.toml
-       [build]
-        ignore = "exit 0" 
-       <<EOF
+        cat > netlify.toml <<EOF
+        [build]
+        ignore = "exit 0"
+        EOF
+
 
     - name: Build
       run: |
