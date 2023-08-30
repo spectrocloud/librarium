@@ -18,8 +18,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. From the left **Main Menu**, click **Profiles**.
-Go to ‘Profiles’ and open the ‘System Profile’.
+2. From the left **Main Menu**, click **Profiles**. Go to ‘Profiles’ and open the ‘System Profile’.
 
 
 3. Click the **System Profile** tab, and select system profile you want to download.
@@ -29,7 +28,7 @@ Go to ‘Profiles’ and open the ‘System Profile’.
 
 <br />
 
-![system-profile-4.png](/system-profile-4.png)
+<!-- ![system-profile-4.png](/system-profile-4.png) -->
 
 ## Validate
 

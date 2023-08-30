@@ -14,6 +14,7 @@ import PointsOfInterest from 'shared/components/common/PointOfInterest';
 
 # Create a Cluster Profile
 
+
 Create a cluster profile by adding core infrastructure layers (OS, Kubernetes, Network, and Storage) and special purpose functionality that integrations provide.
 
 <!-- `video: /aws-full-profile.mp4` -->
@@ -63,18 +64,6 @@ Use these steps to create a cluster profile.
 7. Click **Next**.
 
 
-<!-- Provide the **Basic Information** such as:
-
-<br />
-
-  |**Parameter**  |**Description**  |
-  |---------|---------|
-  |**Name**     |    Give a name for the new cluster.     |
-  |**Version**    |   Include the [Cluster Profile Version](/cluster-profiles/task-define-profile#clusterprofileversioning) number for the cluster under which the cluster profile needs to be created.  See below for more information.      |
-  |**Description**     |   Provide quick description of your cluster. This is optional. |
-  |**Profile Type (Full, Infrastructure, Add-on)**| Dictates the layers that can be configured in the cluster profile.  If the cluster profile type is Infrastructure or Full, you are able to select a Cloud Type or Data Center environments. For more information on [Add-on](/cluster-profiles/task-define-profile#Addon) types go to step four.  |
-  |**Tags**     |  Tags on a cluster profile are propagated to the VMs deployed on the cloud/data center environments when clusters are created from the cluster profile. This is optional.      | -->
-
 
 8. At the **Cloud Type** stage of the wizard, select the **Infrastructure Provider** and click **Next**.
   
@@ -94,6 +83,7 @@ Use these steps to create a cluster profile.
 	- When you create an add-on profile, you choose from available integrations, and not core layers. Core layers do not apply to Add-On profiles. Refer to [Add-on Profiles](/profiles/add-on-profiles) for more information.
 
 
+
 10. Select the **Registry**, **Pack Name**, and **Pack Version**. You can add Container Storage Interface (CSI) and Container Network Interface (CNI) layers as Helm Charts from customized Helm registries and link them to Spectro Registry packs. **Pack Values** are displayed as a YAML configuration file at right. You can modify values in most YAML files. 
 
 	<br />
@@ -106,63 +96,65 @@ Use these steps to create a cluster profile.
 	
 <br />
 
+
+
 11. When you create a Full or Add-On profile, you can use options described in the tabs below to customize the cluster profile.
 
-  <br />
-  
-  <Tabs>
-  
-  <Tabs.TabPane tab="Add New Pack" key="Add New Pack">
-  
-  **Add New Pack** - Add a Palette pack from a pack registry or a Helm Chart from a chart registry. Palette's public pack registry and a few popular Helm chart repositories are available out-of-the-box. You can add pack registries or public or private Helm chart registries to Palette.
-  
-  </Tabs.TabPane>
 
   
-  
-  <Tabs.TabPane tab="Import from cluster" key="Import from cluster">
-  
-  **Import from cluster** - Charts can be discovered from an existing Kubernetes cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories available with Palette. You can provide the registry information for these charts during the import process.
-  
-  </Tabs.TabPane>
+<Tabs>
 
-  
-  
-  <Tabs.TabPane tab="Add Manifest" key="Add Manifest">
-  
-  **Add Manifest** - You can construct a layer using raw manifest to provision Kubernetes resources that are not available in Palette or Helm Charts. Pack manifests provide a pass-through mechanism that orchestrates additional Kubernetes resources onto a cluster along with the rest of stack.
-  
-  </Tabs.TabPane>
-  
-  
-  
-  <Tabs.TabPane tab="Add Helm Chart" key="Add Helm Chart">
-  
-  **Add Helm Chart** - Select from the available Helm Charts to add applications to a your cluster profile.
+<Tabs.TabPane tab="Add New Pack" key="Add New Pack">
 
-  By default Palette uses Helm chart release names in the format `packName-chartName`. In cases where a long chart release name causes issues, you can customize the chart name using the `releaseNameOverride` property as shown in the example below.
+**Add New Pack** - Add a Palette pack from a pack registry or a Helm Chart from a chart registry. Palette's public pack registry and a few popular Helm chart repositories are available out-of-the-box. You can add pack registries or public or private Helm chart registries to Palette.
 
-  <br />
+</Tabs.TabPane>
 
-  ```yaml hideClipboard
-  pack:
-    namespace: kube-system
-    releaseNameOverride:
-      actual_chart_name1: custom_name1
-      actual_chart_name2: custom_name2
-  ```
-  
-  </Tabs.TabPane>
-  
-  
 
-  <Tabs.TabPane tab="Add Zarf" key="Add Zarf">
-  
-  **Add Zarf** - Zarf is an open-source packaging strategy for packaging Kubernetes manifests and Helm Charts and deploying them in air-gapped and semi-connected environments.
-  
-  </Tabs.TabPane>
-  
-  </Tabs>
+
+<Tabs.TabPane tab="Import from cluster" key="Import from cluster">
+
+**Import from cluster** - Charts can be discovered from an existing Kubernetes cluster. One or more of these discovered charts can be added to the cluster profile. During discovery, charts discovered from a cluster may not be available in any of the chart repositories available with Palette. You can provide the registry information for these charts during the import process.
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="Add Manifest" key="Add Manifest">
+
+**Add Manifest** - You can construct a layer using raw manifest to provision Kubernetes resources that are not available in Palette or Helm Charts. Pack manifests provide a pass-through mechanism that orchestrates additional Kubernetes resources onto a cluster along with the rest of stack.
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="Add Helm Chart" key="Add Helm Chart">
+
+**Add Helm Chart** - Select from the available Helm Charts to add applications to a your cluster profile.
+
+By default Palette uses Helm chart release names in the format `packName-chartName`. In cases where a long chart release name causes issues, you can customize the chart name using the `releaseNameOverride` property as shown in the example below.
+
+<br />
+
+```yaml hideClipboard
+pack:
+  namespace: kube-system
+  releaseNameOverride:
+    actual_chart_name1: custom_name1
+    actual_chart_name2: custom_name2
+```
+
+</Tabs.TabPane>
+
+
+
+<Tabs.TabPane tab="Add Zarf" key="Add Zarf">
+
+**Add Zarf** - Zarf is an open-source packaging strategy for packaging Kubernetes manifests and Helm Charts and deploying them in air-gapped and semi-connected environments.
+
+</Tabs.TabPane>
+
+</Tabs>
 
     
 ## Validate
@@ -190,7 +182,7 @@ pack:
 
 
 
-<!-- <br />
+<br />
 
 <InfoBox>
 
@@ -206,12 +198,11 @@ pack:
     actual_chart_name2: custom_name2
 ```
 
-</InfoBox> -->
+</InfoBox> 
 
 <br />   
 
 <br />
-
 
       
  

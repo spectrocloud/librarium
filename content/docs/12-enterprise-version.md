@@ -67,6 +67,19 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
+## Access Palette VerteX
+
+To set up a Palette account, contact our support team by sending an email to support@spectrocloud.com. Include the following information in your email:
+
+Your full name
+Organization name (if applicable)
+Email address
+Phone number (optional)
+Target Platform (VMware or Kubernetes)
+A brief description of your intended use of Palette
+Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image, credentials, and an endpoint URL to access the packs registry.
+
+
 
 # Upgrade Notes
 
