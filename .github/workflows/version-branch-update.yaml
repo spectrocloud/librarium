@@ -8,9 +8,6 @@ on:
     branches:
       - 'version-*'
 
-env:
-  NETLIFY_PREVIEW: true
-
 concurrency:
   group: version-${{ github.ref }}
   cancel-in-progress: true
