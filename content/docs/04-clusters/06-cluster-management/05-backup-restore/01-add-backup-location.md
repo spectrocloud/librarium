@@ -1,6 +1,6 @@
 ---
-title: "Add Backup Location using Access Credentials"
-metaTitle: "Add Backup Location using Access Credentials"
+title: "Add Backup Location using Static Credentials"
+metaTitle: "Add Backup Location using Static Credentials"
 metaDescription: "Learn how to add a backup location in Palette. Adding a backup location is a standard step whether you want to create a cluster backup or a workspace backup."
 hideToC: false
 fullWidth: false
@@ -13,13 +13,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add a Backup Location using the Access Credentials
 
-This how-to guide presents instructions for adding a backup location in Palette using the long-term access credentials method. Below is an overview of the steps involved:
+This how-to guide presents instructions for adding a backup location in Palette using static credentials. Below is an overview of the steps involved:
 <br />
 
-1. Create a storage bucket to store the backup files. For example, if you configure the backup location in AWS, you will need an S3 bucket. Another example is if you configure the backup location in Azure, you will need a container in the Azure Storage account.
+1. Create a storage bucket to store the backup files. For example, if you configure the backup location in AWS, you will need an S3 bucket.
 
 
-2. Define the access permissions for the storage bucket and associate the permissions with an IAM entity. Depending on your cloud or data center platform, the IAM entity can be a user, service principal, or role. 
+2. Define the access permissions for the storage bucket and associate the permissions with an IAM entity. The IAM entity may be a user, service principal, or role depending on your infrastructure provider. 
 
 
 3. Generate the long-term access credentials for the IAM entity with sufficient permissions to perform the bucket-related operations. When you generate the long-term access credentials for an IAM entity, you do not embed the application's identity that will use the credentials. In your case, you do not use Palette's identity while generating the access credentials. Therefore, any application with access to the credentials can assume the IAM entity's role. Next, you will share the credentials with Palette so that it can assume the IAM entity's role to perform the bucket-related operations.   
@@ -96,7 +96,7 @@ The following sections will provide more detailed instructions. Select the tab t
 3. Click on the **Add New Backup Location** button. 
 
 
-4. Fill out the following input fields. 
+4. Fill out the following input fields. Refer to the table below for more information.
 
 	|**Configuration Field**|**Value**|
 	|---|---|
@@ -108,10 +108,10 @@ The following sections will provide more detailed instructions. Select the tab t
 	|**S3 URL**|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
 
 
-5. Next, choose the **Credentials** validation method. If you want to choose the STS method instead, refer to the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) for guided instructions. 
+5. Next, choose the *Credentials* validation method. If you want to use dynamic credentials through the AWS STS service, refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-sts) for guided instructions. 
 
 
-6. Provide the IAM user's access key if you chose the Credentials method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The policy will allow Palette to create a backup in the S3 bucket. 
+6. Provide the IAM user's access key if you chose the **Credentials** method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The specified policy allows Palette to create a backup in the S3 bucket. 
   
   If you do not have an IAM user, refer to the [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) document to learn how to create an IAM user. While creating the IAM user, ensure to attach the IAM policy you defined in the prerequisites section above. After creating the new IAM user, AWS will automatically generate and display an access key. 
 
@@ -151,13 +151,13 @@ The following sections will provide more detailed instructions. Select the tab t
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations**. 
 
 
 3. Click on the **Add New Backup Location** button. 
 
 
-4. Fill out the following input fields.
+4. Fill out the following input fields. Refer to the table below to learn more.
 
 	|**Field**|**Value**|
 	|---|---|
@@ -192,7 +192,7 @@ The following sections will provide more detailed instructions. Select the tab t
 * An access key for the MinIO user. You can create an access key from the MinIO console. Refer to the [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys) to learn about creating access keys. 
 
 
-* (Optional) Service provider certificate, if your organization prefers it.
+* (Optional) A service provider x509 certificate.
 
 <br /> 
 
@@ -202,13 +202,13 @@ The following sections will provide more detailed instructions. Select the tab t
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations**. 
 
 
 3. Click on the **Add New Backup Location** button.
 
 
-4. Fill out the following input fields. 
+4. Fill out the following input fields. Refer to the table below to learn more.
 
 	|**Field**|**Value**|
 	|---|---|
@@ -234,23 +234,28 @@ The following sections will provide more detailed instructions. Select the tab t
 
 ## Prerequisites
 
-* An active Azure cloud account. Note down the following information for the cloud account:
+* An active Azure cloud account. You will need to be aware of the values for the following items:
   * Tenant ID
   * Subscription ID
 
 
-* An Azure storage account in the Azure account. Refer to the [Azure documentations](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) to learn how to create an Azure storage account. Note down the following information for the Azure storage account.
+* An Azure storage account in the Azure account. You will need to be aware of the values for the following Azure storage items:
   * Resource group name
-	* Storage account name
+  * Storage account name
   * Stock-Keeping Unit (SKU)
+  
+Refer to the [Create a storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) guide to learn how to create an Azure storage account
+ 
 	
 
-* A container in the Azure Storage account. 
+* A container in the Azure Storage account. Refer to the [Manage blob containers using the Azure portal](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal) guide to learn how to create an Azure storage container.
 
 
-* A service principal with sufficient permissions to perform the required read and write operations on the container. Note down the following information for the cloud account:
+* An Azure service principal with sufficient permissions to perform the required read and write operations on the container.  You will need the values of the following items:
   * Client ID
   * Client Secret	
+  
+Check out the [Work with Azure service principal using the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli#what-is-an-azure-service-principal) guide to learn more about Azure service principals.
 
 <br /> 	
 
@@ -260,13 +265,13 @@ The following sections will provide more detailed instructions. Select the tab t
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the **Project Settings** and click on **Backup Locations** page. 
+2. Navigate to the **Project Settings** and click on **Backup Locations**. 
 
 
 3. Click on the **Add New Backup Location** button. 
 
 
-4. Fill out the following input fields. 
+4. Fill out the following input fields. Refer to the table below to learn more.
 
 	|**Field**|**Value**|
 	|---|---|

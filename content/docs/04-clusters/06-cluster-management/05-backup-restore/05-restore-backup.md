@@ -98,16 +98,16 @@ Use the following instructions in Palette to restore a backup to a destination c
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
+2. Navigate to the left **Main Menu**, and click on **Clusters**. 
 
 
-3. Select the source cluster to view its details.
+3. Select the source cluster to view its details page.
 
 
-4. Navigate to the **Backups** tab and click on the **Backups** in the nested tabs. Palette will display a list of all available backups for the current cluster in the  **Backups** nested tab. The list will display both the scheduled and on-demand backups. 
+4. Navigate to the **Backups** tab and click on the **Backups** in the nested tabs. Palette will display a list of all available backups for the current cluster in the **Backups** nested tab. The list will display both the scheduled and on-demand backups. 
 
 
-5. Click on a particular backup you want to restore from the list. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources.  
+5. Select a backup you want to restore from the list. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources.  
 
 
 6. Click on the **Restore Backup** button at the bottom, as highlighted in the screenshot below. Palette will open a wizard for the restore operation. <br /> <br />
@@ -129,10 +129,10 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 # Validate
 
-You can follow the steps below to validate restoring a backup in Palette.
+Use the following steps to validate the backup restoration in Palette.
 <br />
 
-1. Navigate to the left **Main Menu**, and click on the **Clusters** menu item. 
+1. Navigate to the left **Main Menu**, and select **Clusters** 
 
 
 2. Select the destination cluster you restored. You will land on the cluster's **Overview** tab. Palette will display the details of the selected cluster. 
@@ -155,9 +155,9 @@ You can follow the steps below to validate restoring a backup in Palette.
   <br />
 
 
-5. We encourage you to review the logs to understand the restore events better. To review the logs, navigate to the **Events** tab. 
+5. To review the backup logs, navigate to the **Events** tab. 
 
 
-6. Examine the logs. Each log will display the verbose status message. When the restoration is completed, you will notice all the cluster resources and the persistent volumes contain your desired backed-up data. 
+6. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the cluster resources and the persistent volumes contain your desired backed-up data. 
 
   Alternatively, if you are connected to the cluster, you can print the logs on the console using utilities like [kubectl](/clusters/cluster-management/palette-webctl) or [Kubernetes dashboard](/integrations/kubernetes-dashboard). 

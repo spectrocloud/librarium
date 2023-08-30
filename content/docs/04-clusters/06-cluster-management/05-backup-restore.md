@@ -34,13 +34,12 @@ A backup location is an object storage, such as an AWS Simple Storage Service (S
 - Azure blob storage
 <br />
 
-## Overview - Add a Backup Location
 
-You can add a backup location in the same cloud account where you deployed the Kubernetes cluster or a different one. In either case, you must create an Identity Access Management (IAM) entity in the cloud account and generate the access credentials for the IAM entity. 
-Next, you share the access credentials with Palette. Palette uses the access credentials to authenticate itself while accessing the bucket. Palette supports the long-term credentials for all cloud service providers, whereas it supports the on-demand temporary security credentials only for AWS. The table below summarizes the Palette-supported access credentials methods for different cloud service providers.
+You can add a backup location to the same cloud account you deploy Kubernetes clusters or use a different account. In either case, you must create an Identity Access Management (IAM) entity in the cloud account and generate the access credentials for the IAM entity. 
+Next, you share the access credentials with Palette. Palette uses the access credentials to authenticate itself while accessing the storage bucket. Palette supports static credentials for all cloud service providers. Review the table below to learn more about what cloud providers and credentials methods are supported.
 <br />
 
-|**Cloud Service Provider**|**Does Palette supports long-term access credentials?**|**Does Palette supports on-demand temporary security credentials or tokens?**|
+|**Service Provider**|**Static Credentials Support**|**Dynamic Credentials Support**|
 |---|---|---|
 |AWS|✅|✅ |
 |GCP|✅|❌|
@@ -48,7 +47,7 @@ Next, you share the access credentials with Palette. Palette uses the access cre
 |Azure|✅|❌|
 
 
-You can use the long-term access credentials for all cloud service providers. The long-term credentials remain valid until you explicitly revoke or rotate them from your cloud account. Refer to the [Add a Backup Location using Access Credentials](/clusters/cluster-management/backup-restore/add-backup-location) guide for more details. 
+You can use static credentials for all supported cloud providers. Dynamic credentials remain valid until you explicitly revoke or alter the renewal mechanism configuration. For more details, refer to the [Add a Backup Location using Access Credentials](/clusters/cluster-management/backup-restore/add-backup-location) guide. 
 
 
 You can use the on-demand temporary security credentials only for AWS. AWS's on-demand temporary security credentials service is called the Security Token Service (STS). If you use the STS, there are certain conditions you must fulfill before adding a backup location. Refer to the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide for more details. 
