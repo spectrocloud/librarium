@@ -1,0 +1,43 @@
+name: Version Branch Update
+
+on:
+  push:
+    branches:
+      - 'version-*'
+
+concurrency:
+  group: version-${{ github.ref }}
+  cancel-in-progress: true
+
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+
+    - run: npm ci
+
+
+    - name: Omit Netlify Preview
+      run: |
+       cat > netlify.toml
+       [build]
+        ignore = "exit 0" 
+       <<EOF
+
+    - name: Build
+      run: |
+        make build
