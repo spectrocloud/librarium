@@ -10,7 +10,8 @@ concurrency:
 
 jobs:
   run-ci:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     defaults:
       run:
         shell: bash
@@ -24,7 +25,8 @@ jobs:
   run-test:
     name: Test
     needs: [run-ci]
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
@@ -45,7 +47,8 @@ jobs:
     # Image Optimizer docs: https://github.com/calibreapp/image-actions
     name: Writing Checks
     needs: [run-ci]
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
+    # runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
@@ -64,7 +67,8 @@ jobs:
   build:
     name: Build
     needs: [run-ci, run-test]
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
