@@ -88,7 +88,7 @@ A restore operation will only restore the specified namespaces, cluster resource
 - Ensure the storage classes in the destination cluster match the storage classes in the source cluster. 
 
 
-- If the backup location is configured using the Security Token Service (STS) authentication method, ensure to define a trust relationship with the destination cluster. The trust relationship will allow the destination cluster to assume the necessary IAM role to access the backup files. You can define a trust relationship for your destination cluster similar to the one explained in the [Add a Backup Location using Security Token Service](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
+- If the backup location is configured using the AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
 
 
 # Instructions
