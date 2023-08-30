@@ -38,7 +38,7 @@ Use these steps to create a cluster profile.
 3. Click on the **Add Cluster Profile** button. 
 
 
-4. Enter basic information for the profile: name, version if desired, and optional description. You only need to specify a version if you create multiple versions of a profile using the same profile name. To learn more about creating multiple profile versions, check out [Cluster Profile Versioning](/profiles/cluster-profiles/create-manage-cluster-profile#clusterprofileversioning).
+4. Enter basic information for the profile: name, version if desired, and optional description. You only need to specify a version if you create multiple versions of a profile using the same profile name. To learn more about creating multiple profile versions, check out [Cluster Profile Versioning](/profiles/cluster-profiles/cluster-profile-versioning).
 
 
 5. Select the profile type:
@@ -91,7 +91,7 @@ Use these steps to create a cluster profile.
 
 	<br />
 
-	- When you create an add-on profile, you choose from available integrations, and not core layers. Core layers do not apply to Add-On profiles. Refer to [Add-on Profiles]() for more information.
+	- When you create an add-on profile, you choose from available integrations, and not core layers. Core layers do not apply to Add-On profiles. Refer to [Add-on Profiles](/profiles/add-on-profiles) for more information.
 
 
 10. Select the **Registry**, **Pack Name**, and **Pack Version**. You can add Container Storage Interface (CSI) and Container Network Interface (CNI) layers as Helm Charts from customized Helm registries and link them to Spectro Registry packs. **Pack Values** are displayed as a YAML configuration file at right. You can modify values in most YAML files. 
