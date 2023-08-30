@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NETLIFY_PREVIEW: false
+  NETLIFY_PREVIEW: true
 
 jobs:
   run-ci:
