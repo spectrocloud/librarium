@@ -13,8 +13,7 @@ concurrency:
 jobs:
   build:
     name: Build
-    # runs-on: ubuntu-latest
-    runs-on: [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check out repository
