@@ -8,6 +8,9 @@ on:
     branches:
       - 'version-*'
 
+env:
+  NETLIFY_PREVIEW: true
+
 concurrency:
   group: version-${{ github.ref }}
   cancel-in-progress: true
@@ -32,14 +35,6 @@ jobs:
 
 
     - run: npm ci
-
-
-    - name: Omit Netlify Preview
-      run: |
-        cat > netlify.toml <<EOF
-        [build]
-        ignore = "exit 0"
-        EOF
 
 
     - name: Build

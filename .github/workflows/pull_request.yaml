@@ -8,6 +8,9 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  NETLIFY_PREVIEW: false
+
 jobs:
   run-ci:
     runs-on: ubuntu-latest
@@ -30,13 +33,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         
-
-      - name: Omit Netlify Preview
-        run: |
-          cat > netlify.toml <<EOF
-          [build]
-          ignore = "exit 0"
-          EOF
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
