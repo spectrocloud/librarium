@@ -127,7 +127,10 @@ The following sections will provide more detailed instructions. Select the tab t
 7. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-8. Click on the **Create** button.  This step completes configuring and adding a backup location using the using static access credentials method.  
+8. Click on the **Create** button.  
+
+
+You have completed configuring and adding a backup location to Palette with static credentials.  
 
 <br /> 
 
@@ -175,7 +178,10 @@ The following sections will provide more detailed instructions. Select the tab t
 5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-6. Click on the **Create** button.  This step completes configuring and adding a backup location using the using static access credentials method.  
+6. Click on the **Create** button.  
+
+
+You have completed configuring and adding a backup location to Palette with static credentials. 
 
 <br /> 	
 
@@ -232,7 +238,10 @@ The following sections will provide more detailed instructions. Select the tab t
 5. Next, provide the access key for the MiniIO user. The access key will have two parts - the access key ID and the secret key.  
 
 
-6. Click on the **Create** button. This step completes configuring and adding a backup location using the using static access credentials method.  
+6. Click on the **Create** button. 
+
+
+You have completed configuring and adding a backup location to Palette with static credentials.   
 
 <br />	
 
@@ -299,7 +308,10 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-6. Click on the **Create** button. This step completes configuring and adding a backup location using the using static access credentials method.   
+6. Click on the **Create** button.
+
+
+You have completed configuring and adding a backup location to Palette with static credentials.  
 
 <br /> 
 
@@ -323,3 +335,5 @@ Use the following steps to validate adding the new backup location.
 
 
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you have successfully added a new backup location.  
+
+<br />

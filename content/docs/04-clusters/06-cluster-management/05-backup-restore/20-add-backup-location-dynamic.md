@@ -13,15 +13,121 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Add a Backup Location using the Dynamic Access Credentials
 
-This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider, for example, AWS. Refer to the [Backup Location](/clusters/cluster-management/backup-restore#backuplocation) section to learn more about the supported service providers.  
+This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](/clusters/cluster-management/backup-restore#backuplocation) section to learn more about the supported service providers.
 
 
-Palette supports the dynamic access credentials method while adding a backup location only when your Palette’s hosting environment and the backup location service provider are the same. For example, suppose you want to set up an S3 bucket as the backup location in an AWS account. In that case, Palette will display the option to use AWS’s dynamic access credentials service, the Security Token Service (STS), only if your Palette instance is also hosted on AWS. In this example, if you use Palette SaaS or have a self-hosted Palette deployed in AWS, you will get the STS option while adding a backup location. 
+Palette supports dynamic access credentials for backup locations. Depending on the infrastructure provider there may be limitations or different prerequisites. The following sections outline the prerequisites and the detailed steps to add a backup location using dynamic access credentials.
 
-The following detailed scenario will help you better understand the steps you will learn in this guide. 
+
+## Dynamic Credentials with AWS STS
+
+To support dynamic credentials with AWS, Palette uses the AWS Security Token Service (STS) authentication method. You can use AWS STS when adding an S3 bucket as the backup location. The following sections will outline the prerequisites and the detailed steps to add an S3 bucket as the backup location using the STS authentication method.
+
 <br />
 
-## Example - Add a Backup Location using AWS STS
+<WarningBox>
+
+Palette supports AWS STS only when your Palette’s hosting environment and the backup location service provider are the same. Palette SaaS is hosted on AWS, so you can use AWS STS to add an S3 bucket as the backup location. Similarly, if you have a self-hosted Palette or Palette VerteX deployed in AWS, you can use AWS STS to add an S3 bucket as the backup location. Otherwise, you cannot use AWS STS to add an S3 bucket as the backup location.
+
+</WarningBox>
+
+
+<br />
+
+<Tabs>
+
+<Tabs.TabPane tab="Single Cloud Account with AWS STS" key="aws-sts-single">
+
+
+### Single Cloud Account with AWS STS
+
+Use the following steps to add an S3 bucket as the backup location using the STS authentication method.
+
+
+#### Prerequisites
+
+* Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to self-hosted Palette and Palette VerteX customers. 
+
+
+* An AWS account. This account is assumed to be the same account where you deploy Kubernetes clusters. Refer to the [Multiple Cloud Accounts with AWS STS](/clusters/cluster-management/backup-restore/add-backup-location-dynamic#multiple-cloud-accounts-with-aws-sts) section to learn how to add a backup location when the cluster deployment cloud account differs from the backup cloud account. 
+ 
+
+
+* An S3 bucket in the AWS account. The bucket will store the backup of your clusters or workspaces.
+
+
+* The following IAM policy must be created in your AWS Account. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name.  Refer to the [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for additional guidance. 
+
+	```json
+	{
+		"Version": "2012-10-17",
+		"Statement": [
+			{
+				"Effect": "Allow",
+				"Action": [
+					"ec2:DescribeVolumes",
+					"ec2:DescribeSnapshots",
+					"ec2:CreateTags",
+					"ec2:CreateVolume",
+					"ec2:CreateSnapshot",
+					"ec2:DeleteSnapshot"
+				],
+				"Resource": "*"
+			},
+			{
+				"Effect": "Allow",
+				"Action": [
+					"s3:GetObject",
+					"s3:DeleteObject",
+					"s3:PutObject",
+					"s3:AbortMultipartUpload",
+					"s3:ListMultipartUploadParts"
+				],
+				"Resource": [
+					"arn:aws:s3:::BUCKET-NAME/*"
+				]
+			},
+			{
+				"Effect": "Allow",
+				"Action": [
+					"s3:ListBucket"
+				],
+				"Resource": [
+					"arn:aws:s3:::BUCKET-NAME"
+				]
+			}
+		]
+	}
+	```
+
+<br /> 	
+
+### Instructions
+
+
+
+#### Validate
+
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+
+2. Navigate to the **Project Settings** and click on **Backup Locations**. 
+
+
+3. The **Backup Locations** page will display a list of all backup locations configured for the current project. 
+
+
+4. Search for the newly added backup location in the list. The presence of the backup location validates that you have successfully added a new backup location. 
+
+
+<br />
+
+
+</Tabs.TabPane>
+
+<Tabs.TabPane tab="Multiple Cloud Accounts with AWS STS" key="aws-sts-multiple">
+
 Suppose your Kubernetes cluster is deployed in *AWS Account A*, and you want to create the backup in *AWS Account B*, whereas the Palette instance is hosted in *AWS Account C*. In this scenario, Palette will allow you to use the STS authentication method to add a backup location. The diagram below presents the scenario under discussion and highlights the specific order of authentication you must follow. 
 
 ![A diagram highlighting the use-case when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.png)
@@ -41,9 +147,10 @@ Referring to the scenario depicted in the diagram above, you must implement the 
 
 
 The following sections will outline the prerequisites and the detailed steps to add an S3 bucket as the backup location in AWS Account B using the STS authentication method.  
+
 <br />
 
-# Prerequisites
+### Prerequisites
 
 * Your Palette instance is hosted on AWS. 
 
@@ -54,17 +161,10 @@ The following sections will outline the prerequisites and the detailed steps to 
 * Another AWS account where you want to create the backup location. This account will be referred to as  *AWS Account B*.  This is the AWS account where you want to create the backup location. 
 
 
-* An S3 bucket in the AWS Account B. The bucket will store the backup of your clusters or workspaces. <br /> <br />
-
-  <InfoBox>
-
-  The steps you will learn in this guide are relevant regardless of whether any two or more entities, including Palette, the cluster, or the bucket, share AWS cloud accounts.
-
-  </InfoBox>
+* An S3 bucket in the AWS Account B. The bucket will store the backup of your clusters or workspaces. 
 
 
-
-* The following IAM policy must be created in your AWS Account B. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name.  Refer to the [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for additional guidance. <br /> <br />
+* The following IAM policy must be created in your AWS Account B. Replace the `BUCKET-NAME` placeholder in the policy below with your bucket name.  Refer to the [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for additional guidance. 
 
 	```json
 	{
@@ -111,7 +211,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 <br /> 	
 
 
-# Instructions
+### Instructions
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -222,9 +322,11 @@ The following sections will outline the prerequisites and the detailed steps to 
 13. Click on the **Create** button. This step completes configuring and adding a backup location using the STS authentication method. 
 
 
-# Validate
+### Validate
 
 Use the following steps to validate adding the new backup location.
+
+
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -237,3 +339,16 @@ Use the following steps to validate adding the new backup location.
 
 
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you have successfully added a new backup location. 
+
+
+<br />
+
+</Tabs.TabPane>
+
+</Tabs>
+
+
+
+
+
+
