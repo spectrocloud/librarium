@@ -82,13 +82,13 @@ A restore operation will only restore the specified namespaces, cluster resource
 - A destination cluster is available in Palette. The destination cluster must belong to the same project as the source cluster. 
 
 
-- A backup is created for the source cluster. Refer to the [Create a Cluster Backup](/clusters/cluster-management/backup-restore/create-backup) guide to learn about creating a backup. 
+- A backup is created for the source cluster. Refer to the [Create Cluster Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) guide to learn about creating a backup. 
 
 
 - Ensure the storage classes in the destination cluster match the storage classes in the source cluster. 
 
 
-- If the backup location is configured using the dynamic credentials, such as AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-sts) guide. 
+- If the backup location is configured using the dynamic credentials, such as AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide. 
 
 
 # Instructions
@@ -118,7 +118,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster if desired. You can initiate a restore operation on any destination cluster in the same project as the source cluster. A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
 
-  In addition, select the namespaces you want to restore. You can also select all persistent volumes (PVs) and cluster resources, as highlighted in the example screenshot below.
+  In addition, select the namespaces you want to restore. You can also select all Persistent Volumes (PVs) and cluster resources to include in the restore, as highlighted in the example screenshot below.
 
   ![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.png)
 
@@ -141,10 +141,10 @@ Use the following steps to validate the backup restoration in Palette.
 3. Select the destination cluster you restored. You will land on the cluster's **Overview** tab. Palette will display the details of the selected cluster. 
 
 
-4. Notice the cluster's **Last Modified** field. It will display the timestamp when the cluster is last modified. 
+4. In the  **Overview** tab, notice the cluster's **Last Modified** field. It will display the timestamp when the cluster is last modified. 
 
 
-5. Navigate to the **Backups** > **Restores** tab. Palette will display the status, restoration timestamp, the source cluster, and the backup name for each restore operation you performed for the current cluster. The screenshot below highlights an example restore operation.  
+5. Navigate to the **Backups** tab and click on the **Restores** nested tab. Palette will display the status, restoration timestamp, the source cluster, and the backup name for each restore operation you performed for the current cluster. The screenshot below highlights an example restore operation.  
 
   ![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
 

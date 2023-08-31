@@ -110,7 +110,7 @@ The following sections will provide more detailed instructions. Select the tab t
 
 	|**Configuration Field**|**Value**|
 	|---|---|
-	|**Location Name**|Name of your choice. |
+	|**Location Name**|Provide a name of your choice. |
 	|**Location Provider**|Select AWS from the drop-down field. |
 	|**Certificate**|Service provider certificate. It is optional for AWS.|
 	|**S3 Bucket**|S3 bucket name must be pre-created in the object-store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.|
@@ -118,16 +118,16 @@ The following sections will provide more detailed instructions. Select the tab t
 	|**S3 URL**|It is an optional field. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, select the **Force S3 path style** checkbox.|
 
 
-5. Next, choose the *Credentials* validation method. If you want to use dynamic credentials through the AWS STS service, refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-sts) for guided instructions. 
+5. Next, choose the *Credentials* validation method. If you want to use dynamic credentials through the AWS STS service, refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) for guided instructions. 
 
 
 6. Provide the IAM user's access key if you chose the **Credentials** method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The specified policy allows Palette to create a backup in the S3 bucket. 
 
 
-7. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. Otherwise, you must review and verify the provided credentials. 
+7. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-8. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project.
+8. Click on the **Create** button.  This step completes configuring and adding a backup location using the using static access credentials method. In this backup location, you can store the backup of clusters and workspaces in the current project scope. 
 
 <br /> 
 
@@ -166,16 +166,16 @@ The following sections will provide more detailed instructions. Select the tab t
 
 	|**Field**|**Value**|
 	|---|---|
-	|**Location Name**|Name of your choice.|
+	|**Location Name**|Provide a name of your choice.|
 	|**Location Provider**|Select GCP from the drop-down field. |
 	| **Bucket** | The name of the bucket pre-created in the GCP object store.|
 	| **JSON Credentials** | Provide the JSON credentials for the external authentication of the GCP storage. Ensure the associated service account has sufficient permissions to perform the required bucket operations. |
 
 
-5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. Otherwise, you must review and verify the provided credentials. 
+5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-6. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project.
+6. Click on the **Create** button.  This step completes configuring and adding a backup location using the using static access credentials method. In this backup location, you can store the backup of clusters and workspaces in the current project scope. 
 
 <br /> 	
 
@@ -220,7 +220,7 @@ The following sections will provide more detailed instructions. Select the tab t
 
 	|**Field**|**Value**|
 	|---|---|
-	|**Location Name**|Name of your choice.|
+	|**Location Name**|Provide a name of your choice.|
 	|**Location Provider**|Select MinIO from the drop-down field. |
 	|**Certificate**|Service provider certificate, if your organization prefers it.|
 	|**S3 Bucket**|S3 bucket name must be pre-created in the MinIO object-store. |
@@ -232,7 +232,7 @@ The following sections will provide more detailed instructions. Select the tab t
 5. Next, provide the access key for the MiniIO user. The access key will have two parts - the access key ID and the secret key.  
 
 
-6. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project.
+6. Click on the **Create** button. This step completes configuring and adding a backup location using the using static access credentials method. In this backup location, you can store the backup of clusters and workspaces in the current project scope. 
 
 <br />	
 
@@ -283,7 +283,7 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 
 	|**Field**|**Value**|
 	|---|---|
-	|**Location Name**|Name of your choice.|
+	|**Location Name**|Provide a name of your choice.|
 	|**Location Provider**|Select Azure from the drop-down field. |
 	|**Container Name:** | Name of the container created in the Azure storage. |
 	| **Storage Name** | Name of the Azure storage resource. |
@@ -296,10 +296,10 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 	
 
 
-5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. Otherwise, you must review and verify the provided credentials and other configurations based on the validation status message. 
+5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-6. Click **Create** to finish configuring the backup location. Palette will add the backup location for the current project and display the newly added backup location on the **Backup Locations** page. 
+6. Click on the **Create** button. This step completes configuring and adding a backup location using the using static access credentials method. In this backup location, you can store the backup of clusters and workspaces in the current project scope.  
 
 <br /> 
 
@@ -310,7 +310,7 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 
 # Validate
 
-Follow the steps below to validate adding the new backup location.
+Use the following steps to validate adding the new backup location.
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
