@@ -65,7 +65,7 @@ Below are the different methods to identify the storage classes of your source a
 If there is a mismatch between the storage classes in the destination cluster and the source cluster, create the required new storage classes in the destination cluster. To define a new storage class in the destination cluster, you'll need to define a [StorageClass resource](https://kubernetes.io/docs/concepts/storage/storage-classes/#the-storageclass-resource) manifest and apply it using the kubectl. Another way is to define the storage classes in the cluster profile and apply the updates to the cluster before initiating a restore.  
 <br />
 
-A restore operation will only restore the specified namespaces, cluster resources, and persistent volumes from the backup. Refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero to learn more about the restore workflow and the default restore order. The following sections will outline the prerequisites and the steps to restore a backup.
+A restore operation will only restore the specified namespaces, cluster-scoped resources, and persistent volumes from the backup. Refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero to learn more about the restore workflow and the default restore order. The following sections will outline the prerequisites and the steps to restore a backup.
 
 # Prerequisites
 
@@ -107,7 +107,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 4. Navigate to the **Backups** tab and click on the **Backups** in the nested tabs. Palette will display a list of all available backups for the current cluster in the **Backups** nested tab. The list will display both the scheduled and on-demand backups. 
 
 
-5. Select a backup you want to restore from the list. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources.  
+5. Select a backup you want to restore from the list. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources.  
 
 
 6. Click on the **Restore Backup** button at the bottom, as highlighted in the screenshot below. Palette will open a wizard for the restore operation. <br /> <br />
@@ -118,18 +118,18 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster if desired. You can initiate a restore operation on any destination cluster in the same project as the source cluster. A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
 
-  In addition, select the namespaces you want to restore. You can also select all Persistent Volumes (PVs) and cluster resources to include in the restore, as highlighted in the example screenshot below.
+  In addition, select the namespaces you want to restore. You can also select all Persistent Volumes (PVs) and cluster-scoped resources to include in the restore, as highlighted in the example screenshot below.
 
   ![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.png)
 
 
-8. Review the restore operation configurations, and click on the **Confirm Restore** button at the bottom. 
+8. Review the restore operation configurations, and click on the **Confirm Restore** button at the bottom. This step completes restoring a cluster backup.
 
 
 
 # Validate
 
-Use the following steps to validate the backup restoration in Palette.
+Use the following steps to validate the restoring a cluster backup.
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -161,6 +161,6 @@ Use the following steps to validate the backup restoration in Palette.
 6. To review the backup logs, navigate to the **Events** tab. 
 
 
-7. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the cluster resources and the persistent volumes contain your desired backed-up data. 
+7. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the namespace-scoped resources contain your desired backed-up data. 
 
   Alternatively, if you are connected to the cluster, you can print the logs on the console using utilities like [kubectl](/clusters/cluster-management/palette-webctl) or [Kubernetes dashboard](/integrations/kubernetes-dashboard). 

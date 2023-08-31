@@ -47,10 +47,10 @@ Next, you share the access credentials with Palette. Palette uses the access cre
 |Azure|✅|❌|
 
 
-You can use static credentials for all supported cloud providers. Dynamic credentials remain valid until you explicitly revoke or alter the renewal mechanism configuration. For more details, refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) guide. 
+You can use static credentials for all supported cloud providers. Static credentials remain valid until you explicitly revoke or rotate the credentials. For more details, refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) guide. 
 
 
-You can use the on-demand temporary security credentials only for AWS. AWS's on-demand temporary security credentials service is called the Security Token Service (STS). If you use the STS, there are certain conditions you must fulfill before adding a backup location. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide for more details. 
+You can use dynamic credentials only for AWS. AWS's dynamic credentials service is called the Security Token Service (STS). If you use the STS, there are certain conditions you must fulfill before adding a backup location. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide for more details. 
 <br />
 
 

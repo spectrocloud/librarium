@@ -16,12 +16,12 @@ import InfoBox from 'shared/components/InfoBox';
 
 This guide provides instructions for how to create a cluster backup using Palette. You can refer to the cluster from where you create the backup as the *source cluster*. 
 
-A backup operation will only back up specified namespaces, cluster resources, and Persistent Volumes (PVs) from the source cluster. It does not copy the source cluster profile to the backup object. 
+A backup operation can only back up specified namespaces, cluster-scoped resources, and Persistent Volumes (PVs) from the source cluster. It does not copy the source cluster profile to the backup object. 
 
 <br/>
 <InfoBox>
 
-Palette leverages an open-source tool called Velero to provide backup and restore capabilities. To know about the list of cluster resources Velero backs up, refer to the [Restore order](https://velero.io/docs/main/restore-reference/#restore-order) section in the Velero documentation. To learn more about the backup process, refer to the [How Velero Backup Works](https://velero.io/docs/main/how-velero-works/) guide.
+Palette leverages an open-source tool called Velero to provide backup and restore capabilities. To know about the list of Kubernetes resources Velero backs up, refer to the [Restore order](https://velero.io/docs/main/restore-reference/#restore-order) section in the Velero documentation. To learn more about the backup process, refer to the [How Velero Backup Works](https://velero.io/docs/main/how-velero-works/) guide.
 
 </InfoBox>
 <br />
@@ -74,9 +74,20 @@ You can create a cluster backup either on a specified schedule or on-demand. Cho
 	|**Backup schedule**|Create a backup schedule of your choice. You can review the scheduling options below the current table.|
 	|**Select period until expiry**|Select an expiry duration for the backups. Palette will delete the backup after the expiry duration.|
 	|**Include all disks**|Select this checkbox if you want to include all the disks in the backup.|
-	|**Include cluster resources**|Select this checkbox if you want to include the cluster resources in the backup.|
+	|**Include cluster resources**|Select the checkbox if you want Palette to back up the cluster-scoped and the namespace-scoped resources. However, if you do not select the checkbox, Palette will back up only the namespace-scoped resources. Refer to the information box below to learn about the differences between the cluster-scoped and the namespace-scoped resources.|
 	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can remove specific namespaces per your choice. |
 
+	<br />
+  <InfoBox>
+
+  The cluster-scoped resources are Kubernetes objects that are visible and accessible to all users in the cluster, regardless of the namespaces. 
+  Examples of cluster-scoped resources include StorageClasses, ClusterRoles, ClusterRoleBinding, CustomResourceDefinitions, and ClusterResourceSets. 
+
+  On the other hand, the namespace-scoped resources are Kubernetes objects that belong to a specific namespace. Only users with the necessary permissions can access the namespace-scoped resources. For example, Pods, Deployments, Services, ConfigMaps, and Secrets are a few namespace-scoped resources. 
+
+  </InfoBox>
+  <br />
+	
 	A cluster backup supports the following scheduling options:	
 
 	* Customize your backup for the exact month, day, hour, and minute of the user's choice
@@ -120,11 +131,22 @@ You can create a cluster backup either on a specified schedule or on-demand. Cho
 	|**Select backup location**|Choose a backup location. You must configure a location before creating a backup. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guides to learn about adding a backup location using the static or dynamic credentials, respectively. |
 	|**Select period until expiry**|Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration.|
 	|**Include all disks**|Select this checkbox if you want to take the backup of all your PVs and volume snapshots.|
-	|**Include cluster resources**|Select this checkbox if you want the backup to include the cluster resources.|
+	|**Include cluster resources**|Select the checkbox if you want Palette to back up the cluster-scoped and the namespace-scoped resources. However, if you do not select the checkbox, Palette will back up only the namespace-scoped resources. Refer to the information box below to learn about the differences between the cluster-scoped and the namespace-scoped resources.|
 	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can remove specific namespaces per your choice. |
 
+	<br />
+	<InfoBox>
 
-6. Click on the **Create Backup** button at the bottom. 
+	The cluster-scoped resources are Kubernetes objects that are visible and accessible to all users in the cluster, regardless of the namespaces. 
+  Examples of cluster-scoped resources include StorageClasses, ClusterRoles, ClusterRoleBinding, CustomResourceDefinitions, and ClusterResourceSets. 
+
+  On the other hand, the namespace-scoped resources are Kubernetes objects that belong to a specific namespace. Only users with the necessary permissions can access the namespace-scoped resources. For example, Pods, Deployments, Services, ConfigMaps, and Secrets are a few namespace-scoped resources. 
+
+	</InfoBox>
+	<br />
+
+
+6. Click on the **Create Backup** button at the bottom. This step completes creating a cluster backup. 
 
 
 </Tabs.TabPane>
@@ -133,7 +155,7 @@ You can create a cluster backup either on a specified schedule or on-demand. Cho
 
 # Validate
 
-You can follow the steps below to validate creating a backup in Palette.
+Use the following steps to validate creating a backup in Palette.
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -150,4 +172,4 @@ You can follow the steps below to validate creating a backup in Palette.
   ![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.png)
 
 
-5. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster resources. 
+5. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources. 

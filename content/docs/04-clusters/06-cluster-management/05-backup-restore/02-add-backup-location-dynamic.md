@@ -210,7 +210,7 @@ The following sections will outline the prerequisites and the detailed steps to 
   </InfoBox>
   
 
-10. Copy the IAM role ARN from AWS Account B.
+10. Copy the IAM role ARN from the AWS Account B.
 
 
 11. Switch back to Palette, where you were configuring the new backup location. Paste the copied IAM role ARN into the **ARN** field. 
@@ -219,7 +219,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 12. Click on the **Validate** button. Palette will display a validation status message. If the validation status message indicates a success, proceed to the next step. If the validation status message indicates an error, you must review the error message and verify the configurations you have provided.  
 
 
-13. Click on the **Create** button. This step completes configuring and adding a backup location using the STS authentication method. In this backup location, you can store the backup of clusters and workspaces in the current project scope.
+13. Click on the **Create** button. This step completes configuring and adding a backup location using the STS authentication method. 
 
 
 # Validate
