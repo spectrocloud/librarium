@@ -32,6 +32,9 @@ Palette supports AWS STS only when your Palette’s hosting environment and the 
 </WarningBox>
 
 
+You can use the same AWS account in which you deploy your Kubernetes cluster to add an S3 bucket as the backup location. You can also use a different AWS account to add an S3 bucket as the backup location. Select the tab below that best matches your use case.
+
+
 <br />
 
 <Tabs>
@@ -39,14 +42,12 @@ Palette supports AWS STS only when your Palette’s hosting environment and the 
 <Tabs.TabPane tab="Single Cloud Account with AWS STS" key="aws-sts-single">
 
 
-### Single Cloud Account with AWS STS
-
 Use the following steps to add an S3 bucket as the backup location using the STS authentication method.
 
 
-#### Prerequisites
+## Prerequisites
 
-* Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to self-hosted Palette and Palette VerteX customers. 
+* Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to self-hosted Palette and Palette VerteX customers. Palette SaaS in hosted in an AWS environment. 
 
 
 * An AWS account. This account is assumed to be the same account where you deploy Kubernetes clusters. Refer to the [Multiple Cloud Accounts with AWS STS](/clusters/cluster-management/backup-restore/add-backup-location-dynamic#multiple-cloud-accounts-with-aws-sts) section to learn how to add a backup location when the cluster deployment cloud account differs from the backup cloud account. 
@@ -102,11 +103,11 @@ Use the following steps to add an S3 bucket as the backup location using the STS
 
 <br /> 	
 
-### Instructions
+## Instructions
 
 
 
-#### Validate
+## Validate
 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -150,7 +151,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 
 <br />
 
-### Prerequisites
+## Prerequisites
 
 * Your Palette instance is hosted on AWS. 
 
@@ -211,7 +212,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 <br /> 	
 
 
-### Instructions
+## Instructions
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -322,7 +323,7 @@ The following sections will outline the prerequisites and the detailed steps to 
 13. Click on the **Create** button. This step completes configuring and adding a backup location using the STS authentication method. 
 
 
-### Validate
+## Validate
 
 Use the following steps to validate adding the new backup location.
 
