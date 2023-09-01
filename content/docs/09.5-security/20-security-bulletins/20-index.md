@@ -27,13 +27,13 @@ The following is an index of all Palette-related CVEs and their disclosure year.
 - [September 01, 2023 - CVE-2023-24538 - HTML Template Vulnerability - Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-24538-htmltemplatevulnerability-securityadvisory-9.8cvss)
 
 
-- [September 01, 2023 - CVE-2023-29404 - Go get Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29404-cgoldflagsvulnerabilitysecurityadvisory-9.8cvss)
+- [September 01, 2023 - CVE-2023-29404 - CGO LDFLAGS Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29404-cgoldflagsvulnerabilitysecurityadvisory-9.8cvss)
 
 
-- [September 01, 2023 - CVE-2023-29402 - Go get Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29402-gomodulesvulnerabilitysecurityadvisory-9.8cvss)
+- [September 01, 2023 - CVE-2023-29402 - Go Modules Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29402-gomodulesvulnerabilitysecurityadvisory-9.8cvss)
 
 
-- [September 01, 2023 - CVE-2023-29402 - Go get Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29402-gogetvulnerabilitysecurityadvisory-9.8cvss)
+- [eptember 01, 2023 - CVE-2023-29402 - Go get Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29402-gogetvulnerabilitysecurityadvisory-9.8cvss)
 
 
 - [September 01, 2023 - CVE-2023-24540 - HTML Template Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-24540-htmltemplatesecurityadvisory-9.8cvss)
