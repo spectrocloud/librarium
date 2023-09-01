@@ -230,7 +230,7 @@ You have completed configuring and adding a backup location to Palette with stat
 	|**Location Provider**|Select MinIO from the drop-down field. |
 	|**Certificate**|Service provider certificate, if your organization prefers it.|
 	|**S3 Bucket**|S3 bucket name must be pre-created in the MinIO object-store. |
-	| **Region** | Region in which Minio server is configured. Example: `us-east-1` |
+	| **Region** | Region in which MinIO server is configured. Example: `us-east-1` |
 	|**S3 URL** | URL of the MinIO object storage console. Example: `http://12.123.234.567:0000`|
 	|**Force S3 path style** | To force S3 path style addressing or else the URL will be converted to virtual-hosted style addressing with bucket name appended to the URL. This is an optional setting. |
 
@@ -337,3 +337,8 @@ Use the following steps to validate adding the new backup location.
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you have successfully added a new backup location.  
 
 <br />
+
+
+## Next Steps
+
+You can now use the newly added backup location to create a backup of your clusters or workspaces. Refer to the [Create a Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) guide to learn how to create a backup of your clusters or workspaces.

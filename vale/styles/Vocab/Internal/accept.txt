@@ -116,3 +116,5 @@ subcommand
 subcommands
 MAAS
 unsecure
+Velero
+MinIO
