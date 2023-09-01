@@ -12,6 +12,33 @@ The following is an index of all Palette-related CVEs and their disclosure year.
 
 # 2023
 
+- [September 01, 2023 - CVE-2023-22809 Sudo Vulnerability - 7.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-22809sudovulnerability-7.8cvss)
+
+
+- [September 01, 2023 - CVE-2023-38408 OpenSSH Vulnerability - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-38408opensshvulnerability-9.8cvss)
+
+
+- [September 01, 2023 - CVE-2023-29400 - HTML Template Vulnerability Security Advisory](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29400-htmltemplatevulnerabilitysecurityadvisory-7.3cvss)
+
+
+- [September 01, 2023 - CVE-2023-24539 - HTML Template Vulnerability Security Advisory - 7.3 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-24539-htmltemplatevulnerabilitysecurityadvisory-7.3cvss)
+
+
+- [September 01, 2023 - CVE-2023-24538 - HTML Template Vulnerability - Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-24538-htmltemplatevulnerability-securityadvisory-9.8cvss)
+
+
+- [September 01, 2023 - CVE-2023-29404 - Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29404-vulnerabilitysecurityadvisory-9.8cvss)
+
+
+- [September 01, 2023 - CVE-2023-29402 - Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29402-vulnerabilitysecurityadvisory-9.8cvss)
+
+
+- [September 01, 2023 - CVE-2023-29402 - Vulnerability Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-29402-vulnerabilitysecurityadvisory-9.8cvss)
+
+
+- [September 01, 2023 - CVE-2023-24540 - HTML Template Security Advisory - 9.8 CVSS](/security/security-bulletins/cve-reports#september01,2023-cve-2023-24540-htmltemplatesecurityadvisory-9.8cvss)
+
+
 - [March 20, 2023 - CVE-2023-22809 Sudo Vulnerability in Palette - 7.8 CVSS](/security/security-bulletins/cve-reports#march20,2023-cve-2023-22809sudovulnerabilityinpalette-7.8cvss)
 
 
