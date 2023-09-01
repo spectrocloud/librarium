@@ -8,11 +8,6 @@ sidebar_custom_props:
 ---
 
 
-
-
-
-# Cluster Overview
-
 Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster definition in Palette consists of a reference to a cluster profile, cloud configuration, as well as the cluster size and placement configuration. The following high-level tasks are performed as part of the cluster creation:
 
 * Orchestration of computing, network, and storage resources on the cloud environments along with the required placement infrastructure.
@@ -29,33 +24,33 @@ Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster
 
 * Deployment of additional Add-ons such as Prometheus, Permissions Manager, or Vault, as specified in the Cluster Profile.
 
-# Images
+## Images
 
 Palette provides Virtual Machine (VM) images for cluster-computing infrastructure out of the box for the most recent versions of Operating Systems such as Ubuntu or CentOS. These images are security-hardened based on the respective CIS Benchmarks. In addition, Kubernetes components such as kubelet, kubeadm, etc. are preinstalled in these images. The specific image for a cluster is derived from the Operating System and Kubernetes packs configured in the cluster profile.
 
 The out-of-the-box images are hosted in the public cloud (AWS - AMI, Azure - VHD) or Palette's storage repository (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a private data center.
 
-## Customization
+### Customization
 
 Palette provides various forms of customization options for VM images. All these customization options require a private pack registry to be set up with customized OS packs.
 
-### Customize Out-of-the Box Images
+#### Customize Out-of-the Box Images
 
 The Palette out-of-the-box images are security-hardened and have Kubernetes components preinstalled. Additional components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack. Palette's orchestration engine creates a new image by instantiating a VM instance from the out-of-the-box image and executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The customized image is tagged with a unique signature generated from the pack definition so that it can be reused for future cluster provisioning requests.
 
-# Security
+## Security
 
 Palette secures the Kubernetes clusters provisioned by following security best practices at the Operating System, Kubernetes, and Cloud Infrastructure levels.
 
-## Operating System
+### Operating System
 
 The Palette out-of-the-box VM images are hardened in accordance with the relevant OS CIS benchmark. Additionally, the images are scanned for vulnerabilities regularly, and fixes are applied to these images when available from the provider. The upgraded images are released in the form of updated OS packs in the Palette Pack Registry and are available to the users to apply to their existing clusters at a time convenient to them.
 
-## Kubernetes
+### Kubernetes
 
 Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Palette executes Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master and worker nodes are configured securely.
 
-## Cloud Infrastructure
+### Cloud Infrastructure
 
 Palette follows security best practices recommended by the various cloud providers when provisioning and configuring the computing, network, and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains and limiting access through the use constructs like security groups.
 
@@ -63,7 +58,7 @@ Palette follows security best practices recommended by the various cloud provide
   The security measures mentioned above are implemented for Palette's out-of-the-box OS and Kubernetes packs. For customized OS Kubernetes packs, users are responsible for taking the relevant measures to secure their clusters.
 :::
 
-# Day-2 Management
+## Day-2 Management
 
 Palette provides several options to manage Kubernetes clusters on an ongoing basis. These include opportunities to scale up/down the cluster by adding/reducing the number of nodes in a node pool, add extra worker pools, resizing nodes in a node pool by modifying the instance type, and adding additional fault domains such as availability zones to a node pool.
 
@@ -71,7 +66,7 @@ Palette provides several options to manage Kubernetes clusters on an ongoing bas
   Cluster management operations result updating cluster definitions in Palette's database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated clusters to their desired state.
 :::
 
-# Cluster Health
+## Cluster Health
 
 Palette monitors the cluster infrastructure regularly and reports health on the management console.
 
@@ -111,13 +106,13 @@ Palette continuously monitors cluster resources and reports the usage for the cl
 
 Additionally, usage metrics for individual nodes and node conditions are accessible from the Node Details page.
 
-# Application Services
+## Application Services
 
 Palette enables quick access to the application services installed on the Kubernetes clusters by providing a link to those on the management console. These include the applications and services deployed through Palette and the ones deployed through any other means. Services are monitored on an ongoing basis, and all services of the type LoadBalancer or NodePort are displayed on the management console.
 
 ![Cluster Update Details](/cluster_services.png "#width=500px")
 
-# Troubleshooting
+## Troubleshooting
 
 Typically, when a cluster lifecycle action such as provisioning, upgrade, or deletion runs into a failure, it does not result in an outright error on the cluster. Instead, the Palette orchestration engine follows the reconciliation pattern, wherein the system repeatedly tries to perform various orchestration tasks to bring the cluster to its desired state until it succeeds. Initial cluster provisioning or subsequent updates can run into various issues related to cloud infrastructure availability, lack of resources, or networking issues.
 
@@ -249,7 +244,7 @@ At times, you may be required to work with the Palette Support Team to troublesh
 
 :::
 
-# Proxy Whitelist
+## Proxy Whitelist
 
 This table lists the proxy requirements for enabling the Palette management console.
 
@@ -272,20 +267,16 @@ This table lists the proxy requirements for enabling the Palette management cons
 | ecr.us-east-1.amazonaws.com | 443  | OCI Pack images.         |
 | ecr.us-west-2.amazonaws.com | 443  | OCI Pack images.         |
 
-# Scope
+## Scope
 
 Clusters are launched from within Projects in Palette, and they belong to a single project. In the **Project** view, all clusters that are launched from that project are listed for users with the Project Administrator role or Cluster Administrator role. A Tenant Administrator can get an aggregated view of clusters running across all projects from the **Organization** view, as follows:
-<br />
 
 1.    Log in to the **Palette Management Console** as a Tenant Administrator.
 
-
 2.    Go to the **Clusters** option from the sidebar to list all the clusters belonging to all the users under that Tenant Administrator.
 
-<br />
 
 # Additional Resources 
 
 The next section provides details for setting workload clusters in various environments.
 
-<br />

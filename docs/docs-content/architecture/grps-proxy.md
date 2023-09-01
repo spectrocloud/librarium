@@ -12,7 +12,6 @@ sidebar_custom_props:
 
 Palette uses [gRPC](https://grpc.io) to communicate between the management platform and the workload cluster. gRPC is a high-performance, open-source universal Remote Procedure Call (RPC) framework. It is used to build distributed applications and services. gRPC is based on HTTP/2 and uses protocol buffers ([protobuf](https://protobuf.dev/)) as the underlying data serialization framework. 
 
-<br />
 
 :::info
 
@@ -20,7 +19,6 @@ Refer to the [Network Ports](/architecture/networking-ports) documentation for a
 
 :::
 
-<br />
 
 When gRPC is used with network proxies, the proxy servers may or may not support gRPC or require additional configuration to allow gRPC traffic to pass through. The following table summarizes the different scenarios and whether or not the proxy server supports gRPC.
 
@@ -34,13 +32,11 @@ When gRPC is used with network proxies, the proxy servers may or may not support
 
 The following sections provide more information about gRPC and proxies.
 
-<br />
 
 ## Proxy Without SSL Bump
 
 Because gRPC is based on HTTP/2, any proxy server that supports the [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) method can be used to forward gRPC traffic. No configuration is required for this scenario. The exception is when the proxy server performs an SSL bump, discussed in the [Proxy With SSL Bump](/architecture/grps-proxy#proxywithsslbump) section.
 
-<br />
 
 :::info
 
@@ -72,7 +68,3 @@ When you review the vendor documentation, search for information about gRPC and 
 A common open-source proxy server is [Squid](https://wiki.squid-cache.org). Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. Squid supports gRPC but requires additional configuration. gRPC with SSL bump does not work with all versions of Squid, such as versions 5 and 6. Review the [SSL Bump issue](https://bugs.squid-cache.org/show_bug.cgi?id=5245) to learn more about the issue and track the progress of the fix.
 
 If you are using a Squid version not affected by the issue, you can configure Squid with SSL bump to support gRPC. Use the [Configuring SSL Bumping in the Squid service](https://support.kaspersky.com/KWTS/6.1/en-US/166244.htm) guide to learn how to configure Squid with SSL bump. Additionally, you may have to configure exclusion rules when using SSL bumping with gRPC. Refer to the [Adding exclusions for SSL Bumping](https://support.kaspersky.com/KWTS/6.1/en-US/193664.htm) to learn more.
-
-
-
-<br /> 

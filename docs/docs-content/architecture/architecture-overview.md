@@ -17,7 +17,6 @@ Palette is available in three flexible deployment models:
 
 * **Self-hosted**: The management plane is hosted in the customer’s environment. It can be the customer’s on-prem VMware vSphere, OpenStack, bare metal, or in a public cloud using the customer’s cloud account.
 
-<br />
 
 ![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.png)
 
@@ -56,6 +55,7 @@ For private clouds like VMware, since the Palette SaaS platform does not have di
 
 
 ## Self-Hosted Architecture and Data Flow
+
 Although the Palette SaaS platform fully supports both public clouds and data centers, some customers, especially with regulated industry or air-gapped environments, may prefer to install Palette in their own environment behind the firewall, so that they can control the platform upgrade cycles and ensure no sensitive data are exposed. For these use cases, Palette supports a self-hosted on-premises installation. The platform updates and add-on integration contents can be optionally downloaded from an on-prem private repository instead of pulling from Palette’s hosted public repository.
 
 ![Self-hosted Palette architecture diagram](/architecture_architecture-on-prem-detailed.png)
