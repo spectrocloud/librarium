@@ -12,8 +12,6 @@ Kubernetes auditing is a feature of the Kubernetes cluster management system tha
 
 You can also meet internal security control requirements by enabling audit logging. Many security controls require the following capabilities.
 
-<br />
-
 - ensuring administrators can trace the actions of individual users back to a specific person.
 
 
@@ -46,7 +44,6 @@ Enabling audit logging causes the API server to consume more memory, as it needs
 The Kubernetes API Audit policies define the rules for capturing events and specifying the level of detail to include.
 The audit policy you create will capture all requests at the *metadata* level. To learn more about the various audit levels, visit the Kubernetes API [Audit Policy](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy) documentation.
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -168,7 +165,6 @@ To learn more about each of the Kubernetes API server flags, visit the Kubernete
 
 You can validate that audit logs are captured by navigating to the specified audit folder in the `--audit-log-path` parameter.
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

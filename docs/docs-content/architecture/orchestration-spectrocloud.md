@@ -21,10 +21,6 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 ![workload_cluster_provisioning.png](/architecture_orchestartion-spectrocloud_provision-flow.png)
 
 
-<br />
-
-<br />
-
 1. New K8S cluster request from user submitted to the cluster management system.
 
 
@@ -42,11 +38,11 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 6. The Palette agent will install all the additional add-ons as specified by the cluster's cluster profile (e.g: logging, monitoring, security).
 
-:::info
+  :::info
 
-We do not hard code credentials. Palette uses the *cloud-init* process to inject the user-defined SSH keys into the clusters. 
+  We do not hard code credentials. Palette uses the *cloud-init* process to inject the user-defined SSH keys into the clusters. 
 
-:::
+  :::
 
 
 ## Why Palette Pivots?
@@ -54,12 +50,9 @@ We do not hard code credentials. Palette uses the *cloud-init* process to inject
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
 
-<br />
 
-![distributed_orchestration.png](/architecture_orchestartion-spectrocloud_distributed-flow.png)
+  ![distributed_orchestration.png](/architecture_orchestartion-spectrocloud_distributed-flow.png)
 
-
-<br />
 
 As part of the workload K8s cluster provisioning, only the first control-plane node is launched by Cluster API, running in the Palette management cluster. Once the control-plane node is operational, Cluster API resources are _pivoted_ from the management platform into the target workload cluster.
 
@@ -72,6 +65,3 @@ Palette pivots these clusters for several reasons, related to scalability and av
 * **Resiliency** - Even if the management platform were to experience an outage, the workload clusters would retain their resiliency capabilities, auto-recovery, launching of new nodes on failures, auto-scaling, and other policies still work!
 
 * **Intermittent network resiliency** - The design supports use cases where the workload clusters can still operate in intermittent and disconnected network availability situations.
-
-
-<br />
