@@ -1,14 +1,13 @@
 ---
 sidebar_label: "Overview"
-title: "Spectro Cloud Architecture"
+title: "Deployment Architecture Overview"
 description: "Spectro Cloud Architecture Overview"
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 ---
 
 
-# Deployment Architecture Overview
 
 Palette is available in three flexible deployment models:
 
@@ -20,7 +19,7 @@ Palette is available in three flexible deployment models:
 
 <br />
 
-![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.png)
+![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.png)
 
 <br />
 
@@ -40,9 +39,9 @@ The Palette SaaS platform can manage public clouds (AWS, Azure, Google Cloud) an
 The following diagram illustrates the data flow for the Palette SaaS platform to manage the EKS cluster using the user's cloud account in AWS:
 
 
-![spectro_cloud](/architecture_architecture-overview_saas.png)
+![A diagram of the Palette SaaS architecture eager-load](/architecture_architecture-overview_saas.png)
 
-There are two main data flows represented in provisioning flow (red) and monitoring flow (green).
+There are two main data flows represented in the provisioning flow (red) and monitoring flow (green).
 
 * **Provisioning data flow**: A tenant user from the browser or API client (e.g., Terraform provider) to configure Cluster Profile, Cloud Configuration (e.g., which cloud account to use, cloud-specific placement settings like VPC, subnet), and cluster specifications (e.g., cluster size, node instance type, etc.). This information is sent to Palette. In turn, Palette will invoke the cloud API to talk to the cloud endpoint using the cloud credentials specified to provision the Kubernetes cluster. Once the cluster is provisioned, a Palette management agent will be pushed and installed in the cluster. This agent will receive the Cluster Profile and Cluster Specifications as the desired state from SaaS. The agent will further inspect the desired state and pull additional add-on integrations from Palette's public package registry, or optionally a private package registry hosted by the tenant user. Once all required add-on integrations are installed, the agent will send a message to SaaS to indicate the full-stack K8s provisioning is completed.
 
@@ -53,10 +52,10 @@ There are two main data flows represented in provisioning flow (red) and monitor
 For private clouds like VMware, since the Palette SaaS platform does not have direct access to the private cloud endpoint (e.g., vCenter), there is one extra component, Palette Private Cloud Gateway, to be deployed in a private cloud environment to act as the local orchestrator and the proxy between Palette’s SaaS platform and cloud endpoint. The following diagram illustrates the data flow for the Palette SaaS platform to manage an on-prem VMware private data center:
 
 
-![spectro_cloud](/architecture_architecture-overview_on-prem.png)
+![Palette SaaS architecture diagram with connections to private data centers](/architecture_architecture-overview_on-prem.png)
 
 
 ## Self-Hosted Architecture and Data Flow
-Although the Palette SaaS platform fully supports both public clouds and data centers, for some customers, especially with regulated industry or air-gapped environments, they may prefer to install Palette in their own environment behind the firewall, so that they can control the platform upgrade cycles and ensure no sensitive data are exposed. For these use cases Palette supports a self-hosted on-premises installation. The platform updates and add-on integration contents can be optionally downloaded from an on-prem private repository instead of pulling from Palette’s hosted public repository.
+Although the Palette SaaS platform fully supports both public clouds and data centers, some customers, especially with regulated industry or air-gapped environments, may prefer to install Palette in their own environment behind the firewall, so that they can control the platform upgrade cycles and ensure no sensitive data are exposed. For these use cases, Palette supports a self-hosted on-premises installation. The platform updates and add-on integration contents can be optionally downloaded from an on-prem private repository instead of pulling from Palette’s hosted public repository.
 
-![spectro_cloud](/architecture_architecture-on-prem-detailed.png)
+![Self-hosted Palette architecture diagram](/architecture_architecture-on-prem-detailed.png)

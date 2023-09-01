@@ -1,13 +1,12 @@
 ---
 sidebar_label: "Namespaces and Pods"
-title: "Palette specific namespaces and pods mapping"
+title: "Palette Specific Namespaces and Pods"
 description: "Palette specific namespaces and pods mapping"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
 ---
  
-# Palette Specific Namespaces and Pods 
 
 The page encompasses the set of Palette specific namespaces and pods belonging to each of these individual namespaces. 
 The information is organised as follows:
@@ -16,7 +15,7 @@ The information is organised as follows:
 * Namespace-Pod mapping for Palette Gateways (PCG)
 * Namespace-Pod mapping for Palette On-Prem Enterprise Cluster
 
-# Palette Tenant Cluster NameSpaces with Pods
+## Palette Tenant Cluster NameSpaces with Pods
 
 The following table gives the namespace to pod mapping for Palette Tenant Cluster.
 
@@ -48,7 +47,7 @@ The following table gives the namespace to pod mapping for Palette Tenant Cluste
                    
 
 
-# Palette PCG NameSpaces with Pods
+## Palette PCG NameSpaces with Pods
 
 The following table gives the  namespace to pod mapping for Palette vSphere Gateway.
 
@@ -84,7 +83,7 @@ The following table gives the  namespace to pod mapping for Palette vSphere Gate
 |  |                 vsphere-csi-node-< UUID >      ||                                       
 |reach-system    |          reach-controller-manager-< UUID >  |                    
 
-# Enterprise NameSpaces with Pods
+## Enterprise NameSpaces with Pods
 
 The following table gives the namespace to pod mapping for Palette On-Prem Enterprise Clusters.
 

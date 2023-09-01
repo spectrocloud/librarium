@@ -2,7 +2,7 @@
 sidebar_label: "Architecture"
 title: "Palette Architecture"
 description: "A deep dive into Palette's architecture and technical concepts"
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_custom_props: 
     icon: "cubes"
 tags: 
@@ -12,9 +12,16 @@ tags:
 
 # Architecture
 
+
 Palette supports three different architecture models; multi-tenant SaaS, dedicated SaaS, and self-hosted. To learn more about Palette's architecture and the various components that make up the model, visit the resources listed below.
 
 <br />
+
+![Architecture image with on-prem and Saas  eager-load](/docs_architecture-overview_components-overview.png)
+
+<br />
+
+## Resources
 
 - [Architecture Overview](/architecture/architecture-overview/)
 
@@ -30,4 +37,3 @@ Palette supports three different architecture models; multi-tenant SaaS, dedicat
 
 - [IP Addresses](/architecture/palette-public-ips)
 
-![Architecture image with on-prem, sass](/docs_architecture-overview_components-overview.png)

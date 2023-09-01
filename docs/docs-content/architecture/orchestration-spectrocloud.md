@@ -1,13 +1,12 @@
 ---
 sidebar_label: "Order of Operations"
-title: "Provision and Order of Operations in Palette"
+title: "Order of Operations"
 description: "The methods of workload cluster provisioning for K8S clusters with Palette"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
 ---
 
-# Order of Operations
 
 Spectro Cloud Palette provisions standard, upstream Kubernetes clusters using [Cluster API](https://cluster-api.sigs.k8s.io/).
  
@@ -45,21 +44,17 @@ Cluster API demonstratively manages the lifecycle of a cluster (creation, scalin
 
 :::info
 
-We do not hard code credentials. Palette uses the <strong>cloud-init</strong> process to inject the user-defined SSH keys into the clusters. 
-Login using the command: 
-
-```
-ssh -i sshKeyHere spectro@host
-```
+We do not hard code credentials. Palette uses the *cloud-init* process to inject the user-defined SSH keys into the clusters. 
 
 :::
 
 
-## Why Palette Pivots
+## Why Palette Pivots?
 
-<br />
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
+
+<br />
 
 ![distributed_orchestration.png](/architecture_orchestartion-spectrocloud_distributed-flow.png)
 
