@@ -17,6 +17,14 @@ Palette provides a way to run compliance, security, conformance, and software bi
 
 Palette supports four types of scans. Each scan generates reports with details specific to the type of scan. You can initiate multiple scans of each type over time. In addition, Palette keeps a history of previous scans for comparison purposes. To learn more about each scan type, refer to the following sections.
 
+<br />
+
+<InfoBox>
+
+Scans may not work as expected when a node is in maintenance mode. Before scheduling a scan, we recommend you turn off maintenance mode if enabled. To verify if a node is in maintenance mode, navigate to **Clusters** > **Nodes** and check the **Health** column for a **Maintenance mode** icon. To turn off maintenance mode, click on the **three-dot Menu** in the row of the node you want to scan, and select **Turn off maintenance mode**. 
+
+</InfoBox>
+
 # Configuration Security
 
 This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source tool called KubeBench from Aqua Security to perform this scan. Scans are run against master and worker nodes of the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the master or worker results if required.

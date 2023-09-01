@@ -9,3 +9,12 @@ vale/styles/Google/
 vale/styles/write-good/
 .idea/
 link_report.*
+*-creds.tape
+palette-docs.pdf
+
+
+# Local Netlify folder
+.netlify
+# @netlify/plugin-gatsby ignores start
+netlify/functions/gatsby
+# @netlify/plugin-gatsby ignores end

@@ -102,20 +102,11 @@ The following steps will guide you through creating your image. You will create 
     cd image-builder/images/capi
     ```
 
-3. Check out the following git branch.
-
-  <br />
-
-  ```shell
-  git fetch && git checkout rhelIssueAWSCLI
-  ```
-
-
-4. Open up the image builder [documentation site](https://image-builder.sigs.k8s.io/introduction.html) in your web browser and review the steps for the infrastructure provider you want to build an image for.
+3. Open up the image builder [documentation site](https://image-builder.sigs.k8s.io/introduction.html) in your web browser and review the steps for the infrastructure provider you want to build an image for.
 
 
 
-5. If you are using a commercial OS such as RHEL, set the required environment variables per the KIB documentation. For RHEL, the following environment variables are required. Replace the placeholder values with your actual credentials.
+4. If you are using a commercial OS such as RHEL, set the required environment variables per the KIB documentation. For RHEL, the following environment variables are required. Replace the placeholder values with your actual credentials.
 
     <br />
 
@@ -132,7 +123,7 @@ The following steps will guide you through creating your image. You will create 
     export PACKER_FLAGS=-on-error=ask
     ```
 
-6. Navigate to the **packer** folder and open up the folder for the target infrastructure provider. Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You must make changes in the file's `variables` section. Only a condensed version of the 'variables' object below is used for illustrative purposes to enhance the reader's experience. 
+5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider. Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You must make changes in the file's `variables` section. Only a condensed version of the 'variables' object below is used for illustrative purposes to enhance the reader's experience. 
 
     <br />
 
@@ -168,11 +159,11 @@ The following steps will guide you through creating your image. You will create 
 
 
 
-7. Set the credentials for your infrastructure provider. Each infrastructure provider supports different methods for providing credentials to Packer. You can review each infrastructure provider's authentication section by visiting the [Packer plugins site](https://developer.hashicorp.com/packer/plugins) and selecting your provider on the left **Main Menu**.
+6. Set the credentials for your infrastructure provider. Each infrastructure provider supports different methods for providing credentials to Packer. You can review each infrastructure provider's authentication section by visiting the [Packer plugins site](https://developer.hashicorp.com/packer/plugins) and selecting your provider on the left **Main Menu**.
 
 
 
-8. Next, find the `make` command for your provider. You can use the following command to get a list of all available RHEL options. Replace the `grep` filter with the provider you are creating an image for.
+7. Next, find the `make` command for your provider. You can use the following command to get a list of all available RHEL options. Replace the `grep` filter with the provider you are creating an image for.
 
     <br />
 
@@ -190,7 +181,7 @@ The following steps will guide you through creating your image. You will create 
     ... 
     ```
 
-9. Issue the `make` command that aligns with your target provider. In this example, `build-ami-rhel-8 ` is the correct command for an RHEL AWS AMI creation.
+8. Issue the `make` command that aligns with your target provider. In this example, `build-ami-rhel-8 ` is the correct command for an RHEL AWS AMI creation.
 
     <br />
 
@@ -213,7 +204,7 @@ The following steps will guide you through creating your image. You will create 
     ....
     ```
 
-10. Once the build process is complete, note the image ID.
+9. Once the build process is complete, note the image ID.
 
     <br />
 
@@ -231,33 +222,33 @@ The following steps will guide you through creating your image. You will create 
     ```
 
 
-11. Login to [Palette](https://console.spectrocloud.com).
+10. Login to [Palette](https://console.spectrocloud.com).
 
 
 
-12. Navigate to the left **Main Menu** and select **Profiles**. 
+11. Navigate to the left **Main Menu** and select **Profiles**. 
 
 
 
-13. Click on the **Add Cluster Profile** to create a new cluster profile that uses your new custom image.
+12. Click on the **Add Cluster Profile** to create a new cluster profile that uses your new custom image.
 
 
 
-14. Fill out the inputs fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
+13. Fill out the inputs fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
 
 
-15. Select your infrastructure provider. In this example, **AWS** is selected.
+14. Select your infrastructure provider. In this example, **AWS** is selected.
 
 
 
-16. Select the **BYOOS** pack. Use the following information to find the BYOOS pack.
+15. Select the **BYOOS** pack. Use the following information to find the BYOOS pack.
 
 * Pack Type: OS
 * Registry: Public Repo
 * Pack Name: Bring Your Own OS (BYO-OS)
 * Pack Version: 1.0.x or higher
 
-17. Update the pack YAML to point to your custom image. You can use the tag values Packer assigns to the image to help you identify the correct value to provide the pack YAML. In the example output below, the tag values `distribution_version` and `distribution` are used to determine the correct values for the YAML.
+16. Update the pack YAML to point to your custom image. You can use the tag values Packer assigns to the image to help you identify the correct value to provide the pack YAML. In the example output below, the tag values `distribution_version` and `distribution` are used to determine the correct values for the YAML.
 
     <br />
 
@@ -298,13 +289,13 @@ The following steps will guide you through creating your image. You will create 
   ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.png)
 
 
-18. Click on **Next layer** to add the Kubernetes layer.
+17. Click on **Next layer** to add the Kubernetes layer.
 
 
-19. Select the desired Kubernetes distribution and version. Click on the **</\>** button to reveal the YAML editor.
+18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to reveal the YAML editor.
 
 
-20. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+19. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
 

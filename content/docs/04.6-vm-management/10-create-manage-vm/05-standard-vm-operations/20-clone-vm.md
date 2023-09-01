@@ -1,7 +1,7 @@
 ---
 title: "Clone a VM"
 metaTitle: "Clone a VM"
-metaDescription: "Learn how to clone a VM from a template using Spectro VM Dashboard."
+metaDescription: "Learn how to clone a VM from a template using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false

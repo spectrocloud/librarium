@@ -33,7 +33,7 @@ Use the following steps to install and set up the Palette CLI.
 2. Open up a terminal session on your local system.
 
 
-3. Navigate to your default download folder. For Mac and Linux environments the default location is **~/Downloads**.
+3. Navigate to your default download folder. For Mac and Linux environments, the default location is **~/Downloads**.
 
 
 4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to move the binary to the **/usr/local/bin** folder.
@@ -48,14 +48,6 @@ Use the following steps to install and set up the Palette CLI.
 <br />
    
 
-5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to [Validation](/palette-cli/install-palette-cli/#validation). Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
-
-  <br />
-
-  ```shell
-  palette pde login --api-key <YOUR-API-KEY> --console-url https://console.spectrocloud.com/
-  ```
-
 ## Validate
 
 Verify the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
@@ -66,9 +58,9 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
   palette version
   ```
 
-  Output:
-  ```shell
-  Palette CLI version: 3.4.0
+  
+  ```shell hideClipboard
+  Palette CLI version: 4.0.0
   ```
 
 

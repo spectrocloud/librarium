@@ -796,65 +796,42 @@ Ensure your data center CIDR IP address does not overlap with the Kubernetes Pod
 ##  Proxy Requirements
 *  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
+*   Connectivity to all [Proxy Whitelist](/clusters#proxywhitelist) domains must be allowed
 
-*   Connectivity to the following domains and ports should be allowed:
-
-    | **Top-level Domain**      | **Port** | **Description**                                     |
-    | ------------------------- | -------- | --------------------------------------------------- |
-    | spectrocloud.com          | 443      | Spectro Cloud content repository and pack registry  |
-    | s3.amazonaws.com          | 443      | Spectro Cloud VMware OVA files                      |
-    | gcr.io                    | 443      | Spectro Cloud and common 3rd party container images |
-    | docker.io                 | 443      | Common 3rd party container images                   |
-    | googleapis.com            | 443      | For pulling Spectro Cloud images                    |
-    | docker.com                | 443      | Common 3rd party container images                   |
-    | raw.githubusercontent.com | 443      | Common 3rd party content                            |
-    | projectcalico.org         | 443      | Calico container images                             |
-    | quay.io                   | 443      | Common 3rd party container images                   |
-    | grafana.com               | 443      | Grafana container images and manifests              |
-    | github.com                | 443      | Common 3rd party content                            |
-
-
-## Hardware Requirements
-
-The following section provides the hardware requirements for Palette Platform VMs for various capacity levels.
-
-
-| **Capacity Levels**            | **Description**                                                            |
-| ------------------------------ | -------------------------------------------------------------------------- |
-| **Concurrent Tenant Clusters** | The number of concurrent tenant cluster provisioning or deletion requests. |
-| **Total Managed Clusters**     | The number of parallel running tenant clusters.                            |
-
-
-<br />
-
-<InfoBox>
-The size of the Tenant Cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity guidance below.
-</InfoBox>
 
 ## Self-Hosted Configuration
 
-| **Configuration Name** | **Concurrent <br /> Cluster <br /> Launch** | **Max Nodes** | **CPUs** | **Memory** | **Storage** | **MongoDB Limit**      | **Running Workload**                              |
-| ---------------------- | ------------------------------------------- | ------------- | -------- | ---------- | ----------- | ---------------------- | ------------------------------------------------- |
-| **Small**              | 4                                           | 1000          | 4        | 8 GB       | 80 GB       | 20 GB, 1 CPU, 2 GB Mem | Up to 1000 Nodes each with 30 Pods (30,000 pods)  |
-| **Medium(Default)**    | 8                                           | 3000          | 8        | 16 GB      | 120 GB      | 60 GB, 2 CPU, 4 GB Mem | Up to 3000 Nodes each with 30 Pods (90,000 pods)  |
-| **Large**              | 12                                          | 5000          | 12       | 32 GB      | 150 GB      | 80 GB, 2 CPU, 6 GB Mem | Up to 5000 Nodes each with 30 Pods (150,000 pods) |
+This section lists resource requirements for Palette VerteX for various capacity levels. In Palette VerteX, the terms *small*, *medium*, and *large* are used to describe the instance size of worker pools that Palette VerteX is installed on. The following table lists the resource requirements for each size. 
 
 
 <br />
 
-## Quick Start and Enterprise Configurations
+<WarningBox>
 
-|                 | **Category** | **Concurrent <br /> Tenant <br /> Clusters** | **Total <br /> Managed <br /> Clusters**                        | **No. <br /> of <br /> VMs** | **Memory** | **CPUs**       | **Storage** |
-| --------------- | ------------ | -------------------------------------------- | --------------------------------------------------------------- | ---------------------------- | ---------- | -------------- | ----------- |
-| **Quick Start** | Small        | 4                                            | 20                                                              | 1                            | 8 GB       | 4 Virtual CPUs | 80 GB       |
-| **Enterprise**  | Medium       | 8                                            | 500* (Cluster having 6 nodes <br /> and each node with 30 pods) | 3                            | 16 GB      | 8 Virtual CPUs | 120 GB      |
+The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested the performance of Palette VerteX with the recommended maximum number of deployed nodes and clusters. Exceeding these limits can negatively impact performance and result in instability. The active workload limit refers to the maximum number of active nodes and pods at any given time.
 
-
+</WarningBox>
 
 <br />
-  <InfoBox>
-  For high availability purposes, it is recommended that you deploy the three (3) VMs across three (3) compute clusters.
-  </InfoBox>
+
+
+
+| **Size** | **Nodes**| **CPU**| **Memory**| **Storage**| **MongoDB Storage Limit**| **MongoDB Memory Limit**| **MongoDB CPU Limit**  |**Total Deployed Nodes**| **Deployed Clusters with 10 Nodes**|
+|----------|----------|--------|-----------|------------|--------------------|-------------------|------------------|----------------------------|----------------------|
+| Small    | 3     | 8      | 16 GB  | 60 GB     | 20 GB             | 4 GB              | 2 | 1000 | 100 |
+| Medium (Recommended)  | 3     | 16     | 32 GB  | 100 GB     | 60 GB | 8 GB              | 4 | 3000 | 300 |               
+| Large    | 3     | 32     | 64 GB  | 120 GB | 80 GB | 12 GB | 6 | 5000 | 500 |
+
+
+#### Instance Sizing
+
+| **Configuration** | **Active Workload Limit**                           |
+|---------------------|---------------------------------------------------|
+| Small               | Up to 1000 Nodes each with 30 Pods (30,000 Pods)  |
+| Medium (Recommended)    | Up to 3000 Nodes each with 30 Pods (90,000 Pods)|
+| Large               | Up to 5000 Nodes each with 30 Pods (150,000 Pods) |
+
+<br />
 
 
 ## Best Practices

@@ -1,7 +1,7 @@
 ---
 title: "VM User Roles and Permissions"
 metaTitle: "VM User Roles and Permissions"
-metaDescription: "Learn about roles and permissions to apply to VMs when using Spectro VM Dashboard."
+metaDescription: "Learn about roles and permissions to apply to VMs when using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -14,9 +14,9 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-You must configure roles and role binding before any user, including you as administrator, can access the VM Management functionality in Palette. There are two sets of roles: Cluster Roles and Palette Roles, along with the required bindings configuration.
+You must configure roles and role binding before any user, including you as administrator, can access Palette Virtual Machine Orchestrator (VMO). There are two sets of roles: Cluster Roles and Palette Roles, along with the required bindings configuration.
 
-Palette provides the following four out-of-the-box Cluster roles for VM Management. The table also lists the corresponding Palette roles. 
+Palette provides the following four out-of-the-box Cluster roles for Palette Virtual Machine Orchestrator. The table also lists the corresponding Palette roles. 
 
 <br />
 
@@ -32,7 +32,7 @@ Palette provides the following four out-of-the-box Cluster roles for VM Manageme
 
 <WarningBox>
 
-These roles are currently only relevant to access VM Management APIs. To access the Virtual Machines console, users must have permissions to access the host clusters. These permissions can be granted through the [default Kubernetes roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) Admin/Editor/Viewer.
+These roles are currently only relevant to access Palette Virtual Machine Orchestrator APIs. To access the Virtual Machines console, users must have permissions to access the host clusters. These permissions can be granted through the [default Kubernetes roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) Admin/Editor/Viewer.
 
 </WarningBox>
 

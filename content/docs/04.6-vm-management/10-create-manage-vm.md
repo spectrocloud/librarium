@@ -1,7 +1,7 @@
 ---
 title: "Create and Manage VMs"
 metaTitle: "Create and Manage VMs"
-metaDescription: "Learn methods to create VMs using Palette's Spectro VM Dashboard."
+metaDescription: "Learn methods to create VMs using Palette Virtual Machine Orchestrator."
 icon: " "
 hideToC: false
 fullWidth: false
@@ -14,11 +14,22 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Overview
 
-Palette’s VM Management solution allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
+Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
+
+# Prerequisites
+
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
-There are three ways you can create a new VM:
+- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
+
+- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
+
+
+# VM Creation
+
+You can create a VM three ways:
 
 <br />
 
@@ -40,15 +51,16 @@ Additionally, Virtio is a virtualization standard for network and disk device dr
 
 <WarningBox>
 
-We recommend installing ``qemu-guest-agent`` to improve VM management. We also recommend installing Virtio drivers to ensure you can use the paravirtualized hardware properly.
+We recommend installing the QEMU guest agent to display additional details in Palette Virtual Machine Orchestrator. We also recommend installing VirtIO drivers to ensure you can use the paravirtualized hardware properly.
 
 </WarningBox>
-
-
 
 # Resources
 
 - [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
+
+
+- [Deploy VM from a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
 
 
 - [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
@@ -56,14 +68,5 @@ We recommend installing ``qemu-guest-agent`` to improve VM management. We also r
 
 <br />
 
-
 <br />
-
-<br />
-
-
-<br />
-
-<br />
-
 

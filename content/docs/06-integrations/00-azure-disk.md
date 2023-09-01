@@ -4,7 +4,7 @@ metaTitle: 'Azure Disk Integration with Spectro Cloud'
 metaDescription: 'Azure Disk storage add on into Spectro Cloud'
 hiddenFromNav: true
 type: "integration"
-category: ['storage']
+category: ['storage', 'amd64']
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-azure/blobs/sha256:0787b7943741181181823079533cd363884a28aa0651715ea43408bdc77a5c51?type=image/png'
 ---
 
