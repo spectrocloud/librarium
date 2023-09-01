@@ -3,6 +3,7 @@ sidebar_label: "Tencent TKE"
 title: "Tencent TKE"
 description: "The methods of creating clusters for a speedy deployment on Tencent-TKE"
 hide_table_of_contents: false
+tags: ["public cloud", "tencent", "tke"]
 sidebar_position: 40
 ---
 

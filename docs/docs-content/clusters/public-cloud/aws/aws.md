@@ -1,17 +1,13 @@
 ---
 sidebar_label: "AWS"
-title: "Creating new clusters on Palette"
+title: "Amazon Web Services (AWS)"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
+tags: ["public cloud", "aws"]
 hide_table_of_contents: false
 ---
 
 
-
-
-
-# Overview
-
-Palette supports integration with [Amazon Web Services](https://aws.amazon.com/). You can deploy and manage [Host Clusters](/glossary-all#hostcluster) in AWS. To get started check out the [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts). 
+Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage [Host Clusters](/glossary-all#hostcluster) in AWS. To get started check out the [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts). 
 
 
 
@@ -19,9 +15,6 @@ Palette supports integration with [Amazon Web Services](https://aws.amazon.com/)
 
 Learn how to deploy a cluster to AWS by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
 
-
-
-<br />
 
 # Resources
 

@@ -1,21 +1,16 @@
 ---
 sidebar_label: "Create and Manage AWS EKS Cluster"
-title: "Creating new AWS EKS clusters on Palette"
+title: "Create and Manage AWS EKS Cluster"
 description: "Learn how to deploy and manage AWS EKS clusters with Palette"
 hide_table_of_contents: false
+tags: ["public cloud", "aws"]
 sidebar_position: 30
 ---
 
 
-
-
-
-
-# Create and Manage AWS EKS Cluster
-
 Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an AWS EKS cluster in AWS that is managed by Palette.
 
-# Prerequisites
+## Prerequisites
 
 The following prerequisites must be met before deploying a cluster to AWS:
 
@@ -34,11 +29,7 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
 :::info
 
-
 The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name.
-
-<br />
-
 - `kubernetes.io/role/elb = 1`
 - `sigs.k8s.io/cluster-api-provider-aws/role = public`
 - `kubernetes.io/cluster/[yourClusterName] = shared` 
@@ -46,7 +37,7 @@ The following tags should be added to the virtual private network (VPC) public s
 
 :::
 
-# Deploy an AWS Cluster
+## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS EKS cluster:
 
@@ -151,23 +142,23 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
 
-# Validate
+## Validate
 
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
-# EKS Cluster Secrets Encryption
+## EKS Cluster Secrets Encryption
 
 Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
 a defense-in-depth security strategy to protect sensitive data such as passwords, docker registry credentials, and TLS keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
 
-## Prerequisites
+### Prerequisites
 
 * KMS key created in the AWS account.
 * KMS key is of the type symmetric.
 * KMS key policy permits the following actions; encrypt and decrypt.
 
-## Configure KMS
+### Configure KMS
 
 The IAM User or IAM role that Palette is using must have the following IAM permissions.
 

@@ -3,16 +3,14 @@ sidebar_label: "Create and Manage AWS IaaS Cluster"
 title: "Create and Manage AWS Cluster"
 description: "Learn how to add and manage a cluster deployed to AWS."
 hide_table_of_contents: false
+tags: ["public cloud", "aws"]
 sidebar_position: 20
 ---
 
 
-
-# Create and Manage AWS IaaS Cluster
-
 Palette supports creating and managing Kubernetes clusters deployed to an AWS account. This section guides you on how to create a Kubernetes cluster in AWS that is managed by Palette.
 
-# Prerequisites
+## Prerequisites
 
 The following prerequisites must be met before deploying a cluster to AWS:
 
@@ -36,23 +34,21 @@ The following prerequisites must be met before deploying a cluster to AWS:
     - Elastic Load Balancers
     - NAT Gateway
 
+  <br />
 
-:::info
+  :::info
 
+  The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name.
 
-The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name.
+  - `kubernetes.io/role/elb = 1`
+  - `sigs.k8s.io/cluster-api-provider-aws/role = public`
+  - `kubernetes.io/cluster/[yourClusterName] = shared` 
+  - `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
 
-<br />
-
-- `kubernetes.io/role/elb = 1`
-- `sigs.k8s.io/cluster-api-provider-aws/role = public`
-- `kubernetes.io/cluster/[yourClusterName] = shared` 
-- `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
-
-:::
+  :::
 
 
-# Deploy an AWS Cluster
+## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
 
@@ -152,7 +148,7 @@ Use the following steps to provision a new AWS cluster:
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
 
-# Validate
+## Validate
 
 You can validate that your cluster is up and available by reviewing the cluster details page. 
 
@@ -170,6 +166,6 @@ You can validate that your cluster is up and available by reviewing the cluster 
 4. From the cluster details page, verify the **Cluster Status** field displays **Running**.
 
 
-# Next Steps
+## Next Steps
 
 Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about day two responsibilities. 

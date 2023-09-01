@@ -888,7 +888,7 @@ The **provider.tf** file contains the Terraform providers and their respective v
 <br />
 
 
-```terraform
+```hcl
 terraform {
   required_providers {
     spectrocloud = {
@@ -921,7 +921,7 @@ The first listed `pack {}` block must be the OS, followed by Kubernetes, the con
 
 <br />
 
-```terraform
+```hcl
 resource "spectrocloud_cluster_profile" "aws-profile" {
   name        = "tf-aws-profile"
   description = "A basic cluster profile for AWS"
@@ -980,7 +980,7 @@ You may have noticed that each `pack {}` block contains references to a data res
 <br />
 
 
-```terraform
+```hcl
   pack {
     name   = data.spectrocloud_pack.aws_csi.name
     tag    = data.spectrocloud_pack.aws_csi.version
@@ -996,7 +996,7 @@ Below is the data resource used to query Palette for information about the Kuber
 
 <br />
 
-```terraform
+```hcl
 data "spectrocloud_pack" "aws_k8s" {
   name    = "kubernetes"
   version = "1.24.10"
@@ -1025,7 +1025,7 @@ Using the `spectrocloud_cluster_azure` resource in this tutorial as an example, 
 
 <br />
 
-```terraform
+```hcl
 resource "spectrocloud_cluster_azure" "cluster" {
   name             = "azure-cluster"
   tags             = concat(var.tags, ["env:azure"])
@@ -1080,7 +1080,7 @@ In the example AWS section below, you would change `deploy-aws = false` to `depl
 
 <br />
 
-```terraform
+```hcl
 ###########################
 # AWS Deployment Settings
 ############################
