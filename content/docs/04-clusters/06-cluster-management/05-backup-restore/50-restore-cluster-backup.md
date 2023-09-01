@@ -20,7 +20,8 @@ This guide provides instructions for how to restore a backup to a cluster in Pal
 - *Destination cluster* - The cluster where you want to restore the backup
 
 
-Before you restore a backup, an important consideration is regarding the storage classes in the destination cluster. The following section will provide more details. 
+Before you restore a backup, take a moment and review the storage classes in the destination cluster. The following section will provide more details about the storage classes and how to identify them.
+
 <br />
 
 ## Storage Class
@@ -34,42 +35,54 @@ When you create a cluster profile, Palette *usually* creates a storage class, `s
 <br />
 
 ### Identify Storage Classes
+
 Below are the different methods to identify the storage classes of your source and destination clusters. 
+
+
+You can review the cluster profile's Container Storage Interface (CSI) layer configuration YAML. If the CSI YAML defines the storage classes, you will find them within the `storageClasses` attribute. Below is an example of a CSI YAML that defines two storage classes, `spectro-storage-class` and `addon-storage-class`.
+
 <br />
 
-- You can review the cluster profile's storage layer manifest. If the storage layer manifest defines the storage classes, you will find them within the `storageClasses` attribute, as the code snippet below highlights. <br /> <br />
 
-  ```yaml
-  storageClasses: 
-    # Default Storage Class
-      - name: spectro-storage-class
-      # annotation metadata
-        annotations:
-          storageclass.kubernetes.io/is-default-class: "true"
-          # EBS volume type: io1, io2, gp2, gp3, sc1, st1, standard
-          type: "gp2"
-      # Additional Storage Class 
-      # - name: addon-storage-class
-  ```
+```yaml
+storageClasses: 
+    - name: spectro-storage-class
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+        type: "gp2"
+    - name: addon-storage-class
+```
 
 
-- If you are connected to your cluster via [kubectl](/clusters/cluster-management/palette-webctl) and your cluster is active. In that case, you can execute the following command to get the list of storage classes. <br /> <br />
 
-  ```bash
-  kubectl get storageclasses -A
-  ```
+Another method to identify the storage classes in the destination cluster is to use the kubectl CLI. If you have access to the destination cluster, you can execute the following command to get the list of storage classes.
+
+<br />
+
+```bash
+kubectl get storageclasses --all-namespaces
+```
+
+Review the output from the above command. If the output contains the storage classes you need, you can proceed with the restore operation. Otherwise, you can create the required storage classes in the destination cluster.
 
 <br />
 
 ### Create Storage Classes
-If there is a mismatch between the storage classes in the destination cluster and the source cluster, create the required new storage classes in the destination cluster. To define a new storage class in the destination cluster, you'll need to define a [StorageClass resource](https://kubernetes.io/docs/concepts/storage/storage-classes/#the-storageclass-resource) manifest and apply it using the kubectl. Another way is to define the storage classes in the cluster profile and apply the updates to the cluster before initiating a restore.  
+If there is a mismatch between the storage classes in the destination cluster and the source cluster, create the required new storage classes in the destination cluster. To define a new storage class in the destination cluster, you will need to define a [StorageClass resource](https://kubernetes.io/docs/concepts/storage/storage-classes/#the-storageclass-resource) manifest and apply it using the kubectl. Another way is to define the storage classes in the cluster profile through a manifest layer and apply the updates to the cluster before initiating a restore. 
+
 <br />
 
-A restore operation will only restore the specified namespaces, cluster-scoped resources, and persistent volumes from the backup. Refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero to learn more about the restore workflow and the default restore order. The following sections will outline the prerequisites and the steps to restore a backup.
+
+<InfoBox>
+
+A restore operation will only restore the specified namespaces, cluster-scoped resources, and persistent volumes from the backup. To learn more about the inner workings of a restore operation, refer to the [Restore Reference](https://velero.io/docs/main/restore-reference) documentation by Velero.
+
+</InfoBox>
 
 # Prerequisites
 
-- The source cluster is available in Palette. 
+- The source cluster is available and healthy in Palette. 
+
   <br />
 
   <WarningBox>
@@ -79,51 +92,63 @@ A restore operation will only restore the specified namespaces, cluster-scoped r
   </WarningBox>
 
 
-- A destination cluster is available in Palette. The destination cluster must belong to the same project as the source cluster. 
+- A destination cluster is available and healthy in Palette. 
 
 
-- A backup is created for the source cluster. Refer to the [Create Cluster Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) guide to learn about creating a backup. 
+- The destination cluster must belong to the same project as the source cluster. 
+
+
+- A backup is created for the source cluster. Check out the [Create Cluster Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) for guidance on how to create a backup.
 
 
 - Ensure the storage classes in the destination cluster match the storage classes in the source cluster. 
 
 
-- If the backup location is configured using the dynamic credentials, such as AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide. 
+- If the backup location is configured using dynamic credentials, such as the AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide. 
 
 
 # Instructions
+
 Use the following instructions in Palette to restore a backup to a destination cluster. 
+
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu**, and click on **Clusters**. 
+2. Navigate to the left **Main Menu** and click on **Clusters**. 
 
 
 3. Select the source cluster to view its details page.
 
 
-4. Navigate to the **Backups** tab and click on the **Backups** in the nested tabs. Palette will display a list of all available backups for the current cluster in the **Backups** nested tab. The list will display both the scheduled and on-demand backups. 
+4. Navigate to the **Backups** tab and click on the **Backups** in the nested tabs. A list of available backups are displayed.
 
 
-5. Select a backup you want to restore from the list. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources.  
+
+5. Select a backup you want to restore from the list.
 
 
-6. Click on the **Restore Backup** button at the bottom, as highlighted in the screenshot below. Palette will open a wizard for the restore operation. <br /> <br />
+6. Click on the **Restore Backup** button at the bottom, as highlighted in the screenshot below. 
+
+  <br />
+
 
   ![A screenshot highlighting the details of a specific backup.](/clusters_cluster-management_backup-restore_restore.png)
 
 
 
-7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster if desired. You can initiate a restore operation on any destination cluster in the same project as the source cluster. A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
+7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example, you can select the current or a different cluster. You can initiate a restore operation on any destination cluster in the same project as the source cluster. A backup does not store infrastructure-related information, such as, the node pools and configuration. Therefore, the destination cluster can have a different infrastructure provider than the source cluster. 
 
-  In addition, select the namespaces you want to restore. You can also select all Persistent Volumes (PVs) and cluster-scoped resources to include in the restore, as highlighted in the example screenshot below.
+  You have the option to include specific namespaces, Persistent Volumes (PVs) and cluster-scoped resources.
 
   ![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.png)
 
 
-8. Review the restore operation configurations, and click on the **Confirm Restore** button at the bottom. This step completes restoring a cluster backup.
+8. Review the restore operation configurations, and click on the **Confirm Restore** button at the bottom. 
+
+
+You now have successfully initiated a restore operation. Palette will display the status of the restore operation in the **Restores** nested tab. You can navigate to the **Events** tab to view the logs for the restore operation.
 
 
 
@@ -135,32 +160,33 @@ Use the following steps to validate the restoring a cluster backup.
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Menu**, and select **Clusters**. 
+2. Navigate to the left **Main Menu** and select **Clusters**. 
 
 
-3. Select the destination cluster you restored. You will land on the cluster's **Overview** tab. Palette will display the details of the selected cluster. 
+3. Select the destination cluster you initiated a backup restore operation. 
 
 
-4. In the  **Overview** tab, notice the cluster's **Last Modified** field. It will display the timestamp when the cluster is last modified. 
+4. In the cluster details **Overview** tab, take note of the cluster's **Last Modified** field. The cluster's last modified timestamp will be updated to the time when you initiated the restore operation. 
 
 
-5. Navigate to the **Backups** tab and click on the **Restores** nested tab. Palette will display the status, restoration timestamp, the source cluster, and the backup name for each restore operation you performed for the current cluster. The screenshot below highlights an example restore operation.  
+5. Navigate to the **Backups** tab and click on the **Restores** nested tab. Palette displays the status, restoration timestamp, the source cluster, and the backup name for each restore operation you performed for the current cluster. The screenshot below highlights an example restore operation. 
+
+  <br />
 
   ![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
 
   You restored the backup successfully when the backup status displays *Completed*.
+
   <br />
+
   <InfoBox>
 
-  Remember, a backup does not includes the cluster profile of the source cluster. Therefore, the restore operation will not change the cluster profile of the destination cluster.
+  Remember, a backup does not include the cluster profile of the source cluster. Therefore, the restore operation will not change the cluster profile of the destination cluster.
 
   </InfoBox>
-  <br />
 
 
 6. To review the backup logs, navigate to the **Events** tab. 
 
 
-7. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the namespace-scoped resources contain your desired backed-up data. 
-
-  Alternatively, if you are connected to the cluster, you can print the logs on the console using utilities like [kubectl](/clusters/cluster-management/palette-webctl) or [Kubernetes dashboard](/integrations/kubernetes-dashboard). 
+7. Examine the logs. Each log contains a status message. When the restoration is completed, you will notice all the namespace-scoped resources contain your desired backed-up data.

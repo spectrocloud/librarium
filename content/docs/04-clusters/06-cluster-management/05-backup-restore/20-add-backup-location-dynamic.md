@@ -16,7 +16,7 @@ import InfoBox from 'shared/components/InfoBox';
 This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](/clusters/cluster-management/backup-restore#backuplocation) section to learn more about the supported service providers.
 
 
-Palette supports dynamic access credentials for backup locations. Depending on the infrastructure provider there may be limitations or different prerequisites. The following sections outline the prerequisites and the detailed steps to add a backup location using dynamic access credentials.
+Depending on the infrastructure provider there may be limitations or different prerequisites. The following sections outline the prerequisites and the detailed steps to add a backup location using dynamic credentials.
 
 
 ## Dynamic Credentials with AWS STS
