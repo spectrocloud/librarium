@@ -10,7 +10,7 @@ mkdir .cache && \
 npm ci && \
 chown -R node:node /librarium
 
-EXPOSE 9000
+EXPOSE 3000
 USER node
 ENTRYPOINT ["/entry.sh"]
 CMD ["npm", "run", "start"]

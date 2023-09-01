@@ -1,0 +1,37 @@
+{
+  // This file is not used in compilation. It is here just for a nice editor experience.
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "include": ["src", "declarations.d.ts", "utils"],
+  "exclude": ["src/deprecated"],
+  "compilerOptions": {
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "esModuleInterop": true,
+    "target": "es6",
+    "module": "esnext",
+    "jsx": "react",
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "paths": {
+      "@theme/IdealImage": [
+        "node_modules/@docusaurus/plugin-ideal-image/src/theme/IdealImage/index.tsx"
+      ],
+      "@site/src/*": ["src/*"],
+      "@site/static/*": ["static/*"],
+      "@theme-original/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],
+      "@theme-init/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],
+      "@theme/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],
+      "@docusaurus/*": ["./node_modules/@docusaurus/core/src/client/exports/*"],
+      "@site/*": ["./*"],
+      "@generated/*": ["./.docusaurus/*"]
+    }
+  }
+}
