@@ -3,10 +3,9 @@ sidebar_label: "Create an Add-on Profile"
 title: "Create an Add-on Profile"
 description: "Learn how to create an add-on cluster profile."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 10
 ---
-# Overview
 
 
 Add-on cluster profiles offer a range of benefits for workload cluster deployments. These profiles provide enhanced functionality by allowing the addition of various layers such as system apps, authentication, security, monitoring, logging, ingress, and load balancers to the cluster. 
@@ -53,17 +52,17 @@ pack:
 
 
 
-# Create an Add-on Profile
+## Create an Add-on Profile
 
 Use the following steps to learn how to create an add-on cluster profile.
 
 
-## Prerequisites
+### Prerequisites
 
 * Your Palette account role must have the `clusterProfile.create` permission to create an Add-on cluster profile. Refer to the [Cluster Profile](/user-management/palette-rbac/project-scope-roles-permissions#clusterprofile) permissions documentation for more information about roles and permissions.
 
 
-## Create Steps
+### Create Steps
 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -120,7 +119,7 @@ Use the following steps to learn how to create an add-on cluster profile.
 You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. You can also update a cluster profile and decide what clusters to apply the new version to. Refer to the [Update Cluster Profile](/cluster-profiles/task-update-profile) guide for more information about update operations.
 
 
-# Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
