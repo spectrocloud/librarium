@@ -3,27 +3,28 @@ sidebar_label: "Release Notes"
 title: "Release Notes"
 description: "Spectro Cloud release notes for Palette and its sub-components."
 hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 3
 sidebar_position: 0
 sidebar_custom_props: 
   icon: "audits"
 ---
  
 
-<h1 id="release-4-0"> August 27, 2023 - Release 4.0.0</h1>
+## August 27, 2023 - Release 4.0.0 {#release-4-0}
 
 Palette 4.0.0 introduces new features and improvements, including [Palette VerteX](/vertex) - a FIPS-compliant edition - and the [Virtual Machine Orchestrator](/vm-management) (VMO) which enables unified management of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User Interface (UI) that improves the user experience for finding and installing packs. Check out the [Upgrade Notes](/enterprise-version/upgrade) and release notes below to learn more about the new features and improvements in Palette 4.0.0.
 
 
-<h2 id="release-4-0-palette">Palette</h2>
+### Palette {#release-4-0-palette}
 
 
-
-<h3 id="release-4-0-palette-breaking-changes">Breaking Changes</h3>
+#### Breaking Changes {#release-4-0-palette-breaking-changes}
 
 - Deploying Virtual Clusters directly into host clusters is no longer supported. Use Cluster Groups to deploy Virtual Clusters in host clusters. For guidance on deploying Virtual Clusters into a Cluster Group, check out the [Add Virtual Clusters to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) documentation.
 
 
-<h3 id="release-4-0-palette-features">Features</h3>
+#### Features {#release-4-0-palette-features}
 
 
 - The Virtual Machine Orchestrator (VMO) is now available in Palette. You can natively manage virtual machines from Palette. Palette uses kubevirt under the hood to facilitate the management of virtual machines. Review the [VMO](/vm-management) documentation to learn more.
@@ -60,7 +61,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-<h3 id="release-4-0-palette-improvements">Improvements</h3>
+#### Improvements {#release-4-0-palette-improvements}
 
 - You can now download different kubeconfig files for your host clusters in Palette. You can download an admin kubeconfig file or a user kubeconfig file. The admin kubeconfig file allows you to perform all actions on the cluster. In contrast, the user kubeconfig file is only accessible to those with the proper Palette permissions to access the cluster. To learn more, check out the Palette [kubeconfig](/clusters/cluster-management/kubeconfig) documentation.
 
@@ -90,7 +91,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-<h3 id="release-4-0-palette-deprecation-removal">Deprecations and Removals</h3>
+#### Deprecations and Removals {#release-4-0-palette-deprecation-removals}
 
 - The Palette OVA Installer is deprecated and no longer provided as of this release. Self-hosted Palette now provides a new installation method using the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster) documentation to learn more.
 
@@ -99,17 +100,19 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - The Palette PCG Docker installation method is deprecated and not available in this release. You can now install a PCG through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation parameters. Check out the Palette CLI [PCG install command](/palette-cli/commands/#pcg) documentation to learn more.
 
 
-<h3 id="release-4-0-palette-known-issues">Known Issues</h3>
+#### Known Issues {#release-4-0-palette-known-issues}
 
 - With the deprecation of deploying Virtual Clusters directly into host clusters. The ability to specify an Add-on profile to a Palette Virtual Cluster is currently unavailable. This will be addressed in an upcoming release.
 
 
 
-<h2 id="release-4-0-edge">Edge</h2>
 
 
+### Edge {#release-4-0-edge}
 
-<h3 id="release-4-0-edge-features">Features</h3>
+
+#### Features {#release-4-0-edge-features}
+
 
 - Palette Edge now supports ARM64 architecture. This is a preview feature and still active in development. You can deploy Palette Edge on ARM64 architecture, such as Nvidia Jetson (Orin). Review the list of available [ARM64 packs](/integrations) in Palette before deploying Palette Edge on ARM64 architecture.
 
@@ -117,7 +120,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Palette Edge now supports the ability for you to configure OIDC Identity Providers (IDP) at the Kubernetes layer of a Cluster Profile. Refer to the Kubernetes distributions [pack documentation](/integrations) to learn more.
 
 
-<h3 id="release-4-0-edge-improvements">Improvements</h3>
+#### Improvements {#release-4-0-edge-improvements}
 
 - You can now assign dynamic tags to your edge hosts by specifying files or invoking a script that returns a JSON payload containing the tag values. This allows you to dynamically assign tags to your Edge hosts based on the host's local environment. Refer to the [Edge Installer Configuration Tags](/clusters/edge/edge-configuration/installer-reference#tags) documentation to learn more.
 
@@ -128,15 +131,16 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - You can configure the node drainage behavior for your Edge hosts. To learn more about configuring node drainage, refer to the [Bring Your Own OS (BYOOS) pack](/integrations/byoos#nodedrainage) documentation.
 
 
-<h3 id="release-4-0-edge-known-issues">Known Issues</h3>
+#### Known Issues {#release-4-0-edge-known-issues}
 
 - Palette eXtended Kubernetes - Edge (PXKE) and RKE2 cannot be upgraded from version 1.26.4 to 1.27.2 in an active cluster. Create a new cluster profile with the latest version of PXKE or RKE2 to upgrade to version 1.27.2. This will be addressed in an upcoming release.
 
-<h2 id="release-4-0-pde">Palette Dev Engine (PDE)</h2>
 
 
+### Palette Dev Engine (PDE) {#release-4-0-pde}
 
-<h3 id="release-4-0-pde-features">Features</h3>
+
+#### Features {#release-4-0-pde-features}
 
 - A Visual Studio Code (VS Code) extension is now available for Palette Dev Engine (PDE). This extension allows you to deploy and manage virtual clusters directly from VS Code. To learn more, you can review the [Palette PDE Plugin](https://marketplace.visualstudio.com/items?itemName=SpectroCloud.extension-palette) documentation.
 
@@ -144,11 +148,11 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - The Palette CLI now supports managing App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update, and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app` commands to manage App Profiles and Apps. Refer to the [Palette CLI](/palette-cli) documentation or use the `--help` flag to learn more.
 
 
+### Virtual Machine Orchestrator (VMO) {#release-4-0-vmo}
 
-<h2 id="release-4-0-vmo">Virtual Machine Orchestrator (VMO)</h2>
 
 
-<h3 id="release-4-0-vmo-features">Features</h3>
+#### Features {#release-4-0-vmo-features}
 
 
 - Host clusters supporting Virtual Machine (VM) workloads can now be placed in host maintenance mode, with the ability to choose which Kubernetes node to place in maintenance mode. When a node is placed in maintenance mode, also known as “cordoned”, the VM workload is automatically migrated without any disruptions to another healthy node in the cluster.
@@ -161,10 +165,10 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-<h2 id="release-4-0-vertex">VerteX</h2>
+### VerteX {#release-4-0-vertex}
 
 
-<h3 id="release-4-0-vertex-features">Features</h3>
+#### Features {#release-4-0-vertex-features}
 
 - [Palette VerteX](https://www.spectrocloud.com/news/spectro-cloud-announces-palette-vertex-for-government) is now available and brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters. Palette VerteX is available to all government and private sector organizations that value strong data protection, backed by the Spectro Cloud Government practice, a growing ecosystem of specialist channel partners, and continental US technical support. Refer to the [Palette VerteX](/vertex) documentation to learn more.
 
@@ -173,13 +177,13 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-<h2 id="release-4-0-terraform">Terraform</h2>
+### Terraform {#release-4-0-terraform}
 
 - Version 0.15.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 
 
-<h2 id="release-4-0-education">Education</h2>
+### Education {#release-4-0-education-features}
 
 - A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster) provides an end-to-end tutorial that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
 
@@ -188,10 +192,10 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 
 
 
-<h2 id="release-4-0-packs">Packs</h2>
+### Packs {#release-4-0-packs}
 
 
-<h3 id="release-4-0-packs-pack-notes">Pack Notes</h3>
+#### Pack Notes {#release-4-0-packs-pack-notes}
 
 - A new community pack repository is available. The Palette Community Repository allows partners and customers to contribute and share their packs. For more details, refer to the Palette Community Repository [README](https://github.com/spectrocloud/pack-central).
 
@@ -207,7 +211,8 @@ The following news packs are available in Palette 4.0.0.
 <br />
 
 
-<h3 id="release-4-0-packs-kubernetes">Kubernetes</h3>
+
+#### Kubernetes {#release-4-0-packs-kubernetes}
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
@@ -234,7 +239,8 @@ The following news packs are available in Palette 4.0.0.
 | RKE2 | 1.27.2 |
 
 
-<h3 id="release-4-0-packs-cni">CNI</h3>
+
+#### CNI {#release-4-0-packs-cni}
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
@@ -246,7 +252,9 @@ The following news packs are available in Palette 4.0.0.
 | Flannel            | 0.22.0   |
 
 
-<h3 id="release-4-0-packs-csi">CSI</h3>
+
+
+#### CSI {#release-4-0-packs-csi}
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
@@ -262,7 +270,7 @@ The following news packs are available in Palette 4.0.0.
 
 
 
-<h3 id="release-4-0-packs-add-on-packs">Add-on Packs</h3>
+#### Add-on Packs {#release-4-0-packs-add-on-packs}
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
@@ -278,14 +286,14 @@ The following news packs are available in Palette 4.0.0.
 
 
 
-<h3 id="release-4-0-packs-community-packs">Community Packs</h3>
+#### Community Packs {#release-4-0-packs-community-packs}
 
 | **Pack**               | **New Version** |
 |--------------------|----------|
 | Ngrok Ingerss Controller | 0.9.0  |
 
 
-<h3 id="release-4-0-packs-fips-packs">FIPS Packs</h3>
+#### FIPS Packs {#release-4-0-packs-fips-packs}
 
 | **Pack**               | **New Version** |
 |-------------------------------------------|---------------|
@@ -319,13 +327,14 @@ The following news packs are available in Palette 4.0.0.
 | vSphere CSI                               | 3.0           |
 
 
-<h3 id="release-4-0-packs-pack-deprecation-removals">Deprecations and Removals</h3>
+
+#### Deprecations and Removals {#release-4-0-packs-pack-deprecation-removals}
 
 The following packs are marked as deprecated, disabled, or deleted. Refer to the [Maintenance Policy](/integrations/maintenance-policy) for more details on the deprecation and removal process.
 
 <br />
 
-#### Operating Systems
+#### Operating Systems 
 
 | **Pack**                                  | **Version** | **Status**   |
 |-------------------------------------------|-------------|--------------|
@@ -424,7 +433,7 @@ The following packs are marked as deprecated, disabled, or deleted. Refer to the
 
 
 
-### CNI
+#### CNI
 
 | **Pack**      | **Version**   | **Status**   |
 |---------------|---------------|--------------|
@@ -534,14 +543,14 @@ The following packs are marked as deprecated, disabled, or deleted. Refer to the
 
 
 
-# May 22, 2023 - Release 3.4.0
+## May 22, 2023 - Release 3.4.0
 
 Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) documentation.
 
 
-## Palette
+### Palette
 
-### Breaking Changes
+#### Breaking Changes
 
 - Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
 
@@ -549,7 +558,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Self-hosted Palette for Kubernetes now installs Palette Ingress resources in a namespace that Palette manages. Prior versions of Palette installed internal components ingress resources in the default namespace. Review the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) to learn more about this change and how to upgrade.
 
 
-### Features
+#### Features
 
 - Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels. Refer to the [Login Banner](/tenant-settings/login-banner) reference page to learn more.
 
@@ -571,7 +580,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Deploying a host cluster to AWS with Red Hat Enterprise Linux (RHEL) as the Operating System (OS) is now possible. This can be done by utilizing the *Bring Your Own Operating System* (BYOOS) pack, which allows for the creation of a custom AMI based on RHEL.
 
 
-### Improvements
+#### Improvements
 
 - OpenID Connect (OIDC) identity provider configuration has now moved to the Kubernetes layer. You can now select the desired OIDC setting when selecting a Kubernetes distribution and version during a cluster profile creation.
 
@@ -598,7 +607,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 
-### Bug Fixes
+#### Bug Fixes
 
 - A bug that caused issues with the deletion of a cluster's profile manifest has been successfully fixed. Manifests are now correctly deleted when removed from a cluster profile.
 
@@ -610,16 +619,16 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
 
 
-## Edge
+### Edge
 
-### Breaking Changes
+#### Breaking Changes
 
 - To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
 
 
 - Prior Edge Installer versions are incompatible with Palette 3.4 and newer versions due to product enhancements and security fixes. New Edge clusters deployed with an earlier Edge Installer version will not operate in Palette. Active Edge clusters in Palette will continue to work as expected. Use the latest version of the [Edge Installer](/spectro-downloads#edgeinstallerimage) when creating Edge artifacts and deploying new Edge clusters.
 
-### Features
+#### Features
 
 
 
@@ -633,7 +642,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
 
 
-### Improvements
+#### Improvements
 
 
 - The events log stream for the Edge host cluster now includes audit messages and critical errors. Logs for an individual Edge host are now also accessible. The Edge host logs are helpful in debugging and monitoring the deployment process of an Edge host.
@@ -649,10 +658,10 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - The Palette dashboard now displays Edge host clusters undergoing an upgrade process.. 
 
 
-## Palette Dev Engine (PDE)
+### Palette Dev Engine (PDE)
 
 
-## Features
+### Features
 
 - Palette PDE is now available in self-hosted installation of Palette.
 
@@ -660,7 +669,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/palette-cli/install-palette-cli) documentation page to learn more.
 
 
-## Improvements
+### Improvements
 
 - Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means exposed service URLs automatically receive dynamic SSL certificates used for HTTPS.
 
@@ -671,13 +680,13 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](/devx/app-profile/container-deployment) guide to learn more about containerized deployments.
  
 
-## Terraform
+### Terraform
 
 - Version 0.14.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. Refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) for more details.
 
-## Packs
+### Packs
 
-### Operating System Packs
+#### Operating System Packs
 
 | Pack               | New Version |
 |--------------------|----------|
@@ -688,7 +697,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 | Ubuntu OpenStack   | 22.04    |
 
 
-### Kubernetes Packs
+#### Kubernetes Packs
 
 | Pack               | New Version |
 |--------------------|----------|
@@ -701,7 +710,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 | Kubernetes GKE     | 1.25.8   |
 
 
-### CNI Packs
+#### CNI Packs
 
 | Pack                   | New Version |
 |------------------------|----------|
@@ -713,7 +722,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 | CNI Cilium Tetragon    | 0.9.0    |
 
 
-### CSI Packs
+#### CSI Packs
 
 | Pack                       | New Version |
 |----------------------------|----------|
@@ -727,7 +736,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 
-### Add-on Packs
+#### Add-on Packs
 
 | Pack                   | New Version |
 |------------------------|----------|
@@ -750,7 +759,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 | HashiCorp Vault        | 0.24.1   |
 
 
-### Pack Notes 
+#### Pack Notes 
 
 - The CNI Calico pack version 3.25.1 is now available which contains support for IPV6 CIDR support has been added.
 
@@ -767,7 +776,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Kubernetes versions before 1.24 are no longer supported for host clusters targeting Azure Kubernetes Service (AKS). This deprecation is due to Azure's Kubernetes support policy. You can learn more about Azure-supported Kubernetes versions [here](https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli).
 
 
-## Education
+### Education
 
 -  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](/registries-and-packs/deploy-pack) tutorial.
 
@@ -775,19 +784,19 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started
 
 
-# March 19, 2023 - Release 3.3.0
+## March 19, 2023 - Release 3.3.0
 
 This release contains several security fixes and new features for Edge. The Edge installation process has been improved to allow users greater flexibility and more control over the installation process.
 
-## Palette
+### Palette
 
-### Enhancements:
+#### Enhancements:
 
 * Users can now download all the clusters listed when applying a filter to the clusters list. 
 
-## Edge
+### Edge
 
-### Features:
+#### Features:
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
@@ -795,7 +804,7 @@ This release contains several security fixes and new features for Edge. The Edge
 * Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 
-## Packs
+### Packs
 
 * CNI Packs:
   * Calico CNI 3.25.0
@@ -808,13 +817,13 @@ This release contains several security fixes and new features for Edge. The Edge
   * MetalLB 0.13.9
   * Spectro Proxy 1.3.0
 
-# February 28, 2023 - Release 3.2.0
+## February 28, 2023 - Release 3.2.0
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
 
-## Palette
+### Palette
 
-### Features
+##### Features
 
 * Support for the [Cox Edge](/clusters/public-cloud/cox-edge/) cloud provider is now available in Palette.
 * Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
@@ -831,7 +840,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * Virtual clusters now support the ability to [back up all disk volumes](/clusters/cluster-groups/cluster-group-backups) within the cluster.
 * A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](/clusters/cluster-groups/ingress-cluster-group) for cluster groups.
 
-### Enhancements
+#### Enhancements
 
 * [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
@@ -840,19 +849,20 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * The App profile container service layer contains additional [output variables](/devx/app-profile/app-profile-macros#containerserviceoutputvariables) to help services connect. Refer to the [service connectivity](/devx/app-profile/services/connectivity) document for additional guidance.
 * We optimized the Spectro Cloud Postman [collection](/api/postman-collection) to circumvent a nested levels [bug](https://github.com/postmanlabs/postman-app-support/issues/10928) in Postman.
 
-### Deprecations
+#### Deprecations
 
 * Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward. Cluster groups are also now supported at the [project](/projects) scope.
 
-## Edge
+### Edge
 
-### Features
+#### Features
 
 * Palette provides the ability to automatically register edge hosts for a specific project when a host authentication token is specified in **Tenant Settings > Registration Tokens**. 
 
 * Bring Your Own OS (BYOS) support.
 
-## Packs
+### Packs
+
 * OS packs:
   * Ubuntu 22.04 on AWS, Azure, GCP
 * K8s packs:
@@ -889,17 +899,17 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 
 
 
-# December 28, 2022 - Release 3.1.0
+## December 28, 2022 - Release 3.1.0
 
 Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and PXK-E Kubernetes versions. This release also features Autoscalers for IaaS clusters, FIPS enablement at the scope level, cluster tagging, and the ability to use tags for resource filtering and access control. The Palette Developer Experience (PDE) product also contains several enhancements that improve the user experience, such as the ability to pause and resume clusters, new services for app profiles, and more. 
 
-## Palette
+### Palette
 
-### Upgrade Notes:
+#### Upgrade Notes:
 
 * MaaS cluster's initialization configuration has been updated to disable memory swap. This will result in MaaS cluster nodes becoming repaved when applying the new configuration.
 
-### Features: 
+#### Features: 
 
 * Palette supports integration with [AWS GovCloud services](/clusters/public-cloud/aws/add-aws-accounts#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
 * [Autoscaling](/clusters/cluster-management/node-pool#workerpool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
@@ -913,7 +923,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
-### Enhancements:
+#### Enhancements:
 
 * [OS patch reboot](/clusters/cluster-management/os-patching#rebootifrequired) allows clusters to reboot to apply system updates if required.
 
@@ -923,33 +933,33 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 * Palette Virtual Clusters now support ephemeral storage.
 
-### Deprecations:
+#### Deprecations:
 
 * Deprecated API : GET/v1/dashboard/projects , new API: POST /v1/dashboard/projects
 
 * Deprecated API: POST /v1/dashboard/spectroclusters , new API: POST /v1/dashboard/spectroclusters/search
 
-### Known Issues:
+#### Known Issues:
 
 * Palette does not allow scaling of control plane nodes for the Microk8s pack. The workaround is to remove the scaling limit of the control plane.
 
 * Currently, Microk8s does not support an out-of-box service load balancer.
   * Work Around: To avoid this, you can install the [AWS Application Load Balancer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/service/nlb/) pack. The packs containing service type as a load balancer will require annotation and `loadBalancerClass` changes.
 
-## Edge
+### Edge
 
-### Features:
+#### Features:
 
 * Palette supports the provision of [MicroK8s clusters](/integrations/microk8s#microk8soverview). Microk8s deployments are quick and ideal when creating disposal Kubernetes clusters. The MicroK8s pack supports automatic updates, security configuration, and the ability to self-update Kubernetes dependencies.
 
-## [Spectro Image Updates](/spectro-downloads#on-premartifacts):
+#### [Spectro Image Updates](/spectro-downloads#on-premartifacts):
 
 * Private Cloud Gateway Installer updated to version 1.4.0.
 * On-Prem Installer updated to version 2.4.0.
 * Air Gap Repo Appliance updated to version 2.1.0.
 * EDGE Installer version 2.2.23.
 
-## [Packs and Integrations](/integrations):
+#### [Packs and Integrations](/integrations):
 
 * csi-longhorn version 1.3.1 
 * csi-longhorn-addon version 1.3.1 
@@ -961,7 +971,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * spectro-k8s-dashboard version 2.6.0 
 
 
-# October 24, 2022 - Release 3.0.0
+## October 24, 2022 - Release 3.0.0
 
 Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
 
@@ -1026,7 +1036,7 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge), [Pal
   * Delete the stuck App.
   * Fix the App with the error.
   * Redeploy the App again.  
-# September 10, 2022 - Release 2.8.0
+## September 10, 2022 - Release 2.8.0
 Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual Clusters, Web-Based Kubectl, Import and Export of Profiles, Terraform Releases, and many exciting enhancements. 
 
 **Features**
@@ -1104,7 +1114,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 
 
 
-# July 17, 2022 - Release 2.7.0
+## July 17, 2022 - Release 2.7.0
 Spectro Cloud Palette 2.7 is released with advanced features supporting Windows Worker Node Pools, Canonical Ubuntu Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and more.
 
 **Features:**
@@ -1127,7 +1137,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
   * Selective [Resource Restore](/workspace/workload-features#restoreyourbackup) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
 * Palette provides visibility into [Role Binding and Cluster Role Binding](/clusters/cluster-management/workloads#overview) resources running inside our workload clusters.
 
-# May 30, 2022 - Release 2.6.0
+## May 30, 2022 - Release 2.6.0
 
 Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Secret Encryption, CSI Storageclass, and added Parameters capabilities.
 
@@ -1148,7 +1158,7 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 * We request our users to add the `ec2:ReplaceRoute` permission to the [AWS](/clusters/public-cloud/aws/required-iam-policies) and [EKS-AWS](/clusters/public-cloud/aws/required-iam-policies) cloud account Controller Policy to replace an existing route, within a route table in a Virtual Private Cloud, to facilitate the cluster deletion process.
 
 
-# April 26, 2022 - Release 2.5.0
+## April 26, 2022 - Release 2.5.0
 
 Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Engine (TKE), Palette free service offerings, many enhancements, and bug fixes.
 
@@ -1175,7 +1185,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 - [Ubuntu 20.04](/integrations/ubuntu)- A long term support release of highly popular Ubuntu Linux Operating System.
 - Imageswap-webhook—a mutating webhook integration that intercepts pod requests and changes to the container image location.
 
-# February 26, 2022 - Release 2.3.0
+## February 26, 2022 - Release 2.3.0
 
 Palette 2.3.0 includes the following enhancements:
 
@@ -1192,13 +1202,13 @@ Palette 2.3.0 includes the following enhancements:
 - Enable deployment of the single pack across [**multiple layers**](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles) cluster profile layers.
 - Palette introduces a VM operator to allow Virtual Machine based applications to be modeled as Cluster Profile layers.
 
-# January 20, 2022 - Hotfix 2.2.26
+## January 20, 2022 - Hotfix 2.2.26
 
 - Palette Hotfix 2.2.26 supports custom Helm chart registry in Private Networks.
 - [Helm registries](/registries-and-packs/helm-charts) can now be set up in **Protected** mode also. In protected mode, charts are configured in cluster profiles without being synchronized into the management console.
 - For the tenant clusters deployed in a private network, these charts from the protected Helm registries are downloaded and deployed by the Palette orchestrator.
 
-# December 24, 2021 - Release 2.2.0
+## December 24, 2021 - Release 2.2.0
 
 Palette 2.2.0 is released with the beta version of Edge Clusters along with upgraded Cluster API support.
 
@@ -1211,7 +1221,7 @@ The 2.2.0 Palette enhancements are:
   - vSphere CSI storage driver 1.0.x version is no longer supported for new Cluster Provisioning. Please upgrade your CSI Pack to 2.3.x for enhanced performance.
 - As part of Palette upgrade to 2.2.0, control plane node(s) of any existing vSphere cluster will be replaced.
 
-# November 20, 2021 - Release 2.1.0
+## November 20, 2021 - Release 2.1.0
 
 Palette 2.1.0 is released with the following key improvements:
 
@@ -1219,7 +1229,7 @@ Palette 2.1.0 is released with the following key improvements:
 - Spectro Cloud users can now join more than one tenant. Users belonging to multiple organizations must choose the desired tenant to log in to. This feature is also supported for SSO-enabled tenants.
 - Improved the UI of the Cluster Overview page. Visibility into basic cluster properties as well as cluster management actions such as configuration overrides, machine management, scan and backup policies, cluster deletion are now arranged under the **Settings** menu on the top right-hand side.
 
-# November 1, 2021 - Release 2.0.0
+## November 1, 2021 - Release 2.0.0
 
 We are excited to announce the Spectro Cloud platform's new name - "PALETTE". In addition, version 2.0 of our platform brings additional cost visibility, optimization features, enhanced governance, and control with **Workspaces**.
 
@@ -1232,7 +1242,7 @@ Our latest list of features includes:
 - Granular usage cost break down by namespaces, workspaces, and projects based on actual resource utilization by pods, jobs, stateful sets, PVCs, etc.
 - Detailed visibility of resource utilization by cluster, namespaces, projects, and workspaces.
 
-# September 14, 2021 - Release 1.14.0
+## September 14, 2021 - Release 1.14.0
 
 Spectro Cloud 1.14 is released with additional health alert conveyances, secured log storage, transparent cost features, and scalable enterprise cluster backup.
 
@@ -1243,11 +1253,11 @@ Spectro Cloud 1.14 is released with additional health alert conveyances, secured
 - Spectro Proxy authentication pack to provision reverse proxy aided communication for clusters deployed in a private network belonging to local data centers.
 - Spectro Cloud has stepped up to an upgraded and stable API version for better automation, integration, and efficiency.
 
-# August 14, 2021 - Release 1.13.0
+## August 14, 2021 - Release 1.13.0
 
 Spectro Cloud users can now convert their bare-metal servers into flexible, cohesive, and distributed instances of virtual machines with the slightest efforts utilizing Metal as a Service (MAAS).
 
-# July 23, 2021 - Release 1.12.0
+## July 23, 2021 - Release 1.12.0
 
 Spectro Cloud 1.12 is released with generic cluster import, OpenID Connect (OIDC) support to handle identify management securely and seamlessly, and support for AKS—a managed Kubernetes Service offering from Azure cloud.
 
@@ -1256,14 +1266,14 @@ Spectro Cloud 1.12 is released with generic cluster import, OpenID Connect (OIDC
 - Spectro Cloud extends its SSO support by providing integration with OpenID Connect (OIDC). OIDC is the de facto standard to handling application authentication in the modern world. Through this integration, Spectro Cloud enables users to integrate single sign on, using various identify providers such as Amazon Cognito, Keycloak etc.
 - Kubernetes upgraded to version 1.19 for enterprise clusters.
 
-# June 28, 2021 - Release 1.11.0
+## June 28, 2021 - Release 1.11.0
 
 Spectro Cloud 1.11 is released with the support of OpenStack cloud and support for OIDC based authentication into Kubernetes clusters.
 
 - Spectro now supports deployment and management of Kubernetes clusters in OpenStack based private data centers.
 - Support for OIDC based authentication into Kubernetes clusters and preconfigured kubeconfig file to easily authenticate when using kubectl.
 
-# June 1, 2021 - Release 1.10.0
+## June 1, 2021 - Release 1.10.0
 
 Spectro Cloud 1.10 released with support for Amazon Elastic Kubernetes Service (EKS), cluster management policies to measure cluster compliance and perform backups and restores.
 
@@ -1314,14 +1324,14 @@ Add the following permissions to the IAM policy called ControllerPolicy if it wa
 }
 ```
 
-# May 4, 2021 - Release 1.9.0
+## May 4, 2021 - Release 1.9.0
 
 Spectro Cloud 1.9.0 released with advanced support of security, availability and updates.
 
 - Spectro Cloud ensures users to start, run and scale highly-available and secure clusters with automated key tasks such as patching, node provisioning and updates with EKS support.
 - Now create and gain permission to your AWS cloud account by just using role ARN, without sharing long-term credentials.
 
-# March 29, 2021 - Release 1.8.0
+## March 29, 2021 - Release 1.8.0
 
 Spectro Cloud 1.8.0 released with advanced support for deploying & discovering Helm Charts and several usability enhancements!
 
@@ -1346,11 +1356,11 @@ The following features and enhancements were released as part of 1.7.0
 - Optimize AWS cloud cost utilizing spot instance pricing for cluster worker node pools.
 - Selectively upgrade on-premises Spectro Cloud instance to a desired version, as opposed to always having to upgrade to the latest version.
 
-# December 23, 2020 - Hotfix 1.6.4
+## December 23, 2020 - Hotfix 1.6.4
 
 This release adds a fix for the permissions of vSphere GET folders.
 
-# December 13, 2020 - Release 1.6.0
+## December 13, 2020 - Release 1.6.0
 
 Our on-premises version gets attention to finer details with this release:
 
@@ -1371,7 +1381,7 @@ Other new features:
 - <Tooltip trigger={<u>Pack constraints</u>}> <a href="/registries-and-packs/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
 - Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for [Kubernetes](/integrations/kubernetes/).
 
-# December 03, 2020 - Hotfix 1.5.7
+## December 03, 2020 - Hotfix 1.5.7
 
 In this hotfix, we added:
 
@@ -1381,7 +1391,7 @@ In this hotfix, we added:
 
 The IP ranges for the pods, service clusters, and your IP network must not overlap with one another. This hotfix provides options to prevent node creation errors due to IP conflicts.
 
-# November 05, 2020 - Hotfixes 1.5.1 through 1.5.6
+## November 05, 2020 - Hotfixes 1.5.1 through 1.5.6
 
 A host of hotfixes were applied for a smoother on-premises operation:
 
@@ -1394,7 +1404,7 @@ A host of hotfixes were applied for a smoother on-premises operation:
 | 1.5.2   | Updates to keep sessions alive for SOAP and REST clients using the `keepalive` command.       |
 | 1.5.1   | Fixed a bug that caused a trailing line to be added in the `vsphere.conf` file.               |
 
-# October 23, 2020 - Release 1.5.0
+## October 23, 2020 - Release 1.5.0
 
 The 1.5.0 release of the Spectro Cloud platform consists of the following features and enhancements:
 
@@ -1404,7 +1414,7 @@ The 1.5.0 release of the Spectro Cloud platform consists of the following featur
 - SSH Public Key management to easily select the desired keys and share them across Kubernetes clusters within a project.
 - Improvements to cloud settings interface to simplify the creation of multiple failure domains during cluster provisioning.
 
-# September 10, 2020 - Release 1.2.0
+## September 10, 2020 - Release 1.2.0
 
 With release 1.2.0, users get more control and added support:
 
@@ -1412,7 +1422,7 @@ With release 1.2.0, users get more control and added support:
 - For VMware, multi-domain support for private gateways is now available.
 - Also for VMware, layout changes have been made to improve usability.
 
-# August 21, 2020 - Release 1.1.0
+## August 21, 2020 - Release 1.1.0
 
 Release 1.1.0 is all about enhancing the user experience, providing tighter controls on clusters, and important bug fixes.
 
@@ -1422,18 +1432,18 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 - Updates to the CLI tool include more [flags](/registries-and-packs/spectro-cli-reference?cliCommands=cli_push#flags) to the `PUSH` command for forcibly overwriting registry packs.
 - Bug Fixes: BET-806 related to SSO login and BET-403 related to validation of dependencies for availability zones have been resolved.
 
-# July 3, 2020 - Release 1.0.2
+## July 3, 2020 - Release 1.0.2
 
 - Minor bug fixes for release 1.0.1.
 - Updates to the [orchestration engine](https://www.spectrocloud.com/webinars/cluster-api-and-the-spectro-cloud-orchestration-engine/) for the new regions.
 - Minor updates to the Istio integration.
 
-# July 3, 2020 - Release 1.0.1
+## July 3, 2020 - Release 1.0.1
 
 - New Regions for AWS > Spectro Cloud is now available for deploying AWS clusters in the European regions.
 - Changes to the pricing structures > more usage = lesser price per kCh.
 
-# June 23, 2020 - Release 1.0
+## June 23, 2020 - Release 1.0
 
 The following features are included as part of Spectro Cloud 1.0:
 
