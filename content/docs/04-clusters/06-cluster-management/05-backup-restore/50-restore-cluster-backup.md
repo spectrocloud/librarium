@@ -11,7 +11,7 @@ import InfoBox from 'shared/components/InfoBox';
 
 # Restore a Cluster Backup
 
-This guide provides instructions for how to restore a backup to a cluster in Palette. You can restore a backup to the same cluster from where you created it or to a different cluster within the same project. For simplicity, this guide uses the following terminology while referencing the clusters:
+This guide provides instructions for how to restore a backup to a cluster in Palette. You can restore a backup to the same cluster from where you created it or to a different cluster within the same project. To help you better understand the restore process, the following terminology will be used:
 <br />
 
 - *Source cluster* - The cluster from where you created the backup.
