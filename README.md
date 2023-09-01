@@ -440,6 +440,11 @@ make verify-url-links-local
 
 An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
 
+## Netlify Previews
+
+By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In the [netlify.toml](./netlify.toml) file, a custom script is used to determine if a Netlify preview should be created. The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If you need to disable Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh) file.
+
+
 ### Cron Job
 
 Every Monday at 6 AM UTC a GitHub Actions cron job is triggered. The cron job logic can be found in the file [url-checks.yaml](.github/workflows/url-checks.yaml). The core logic resides in [url-checker.sh](/scripts/url-checker.sh). The Slackbot application **Docs bot** is used to post the messages to the `#docs` channel.

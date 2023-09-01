@@ -1,0 +1,4 @@
+[build]
+  ignore = "./scripts/netlify.sh"
+  command = "npm run build"
+
