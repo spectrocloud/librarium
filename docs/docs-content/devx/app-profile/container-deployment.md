@@ -1,24 +1,18 @@
 ---
 sidebar_label: "Container Deployment"
-title: "Palette Dev Engine App Profile Container Deployment"
+title: "Container Deployment"
 description: "Palette Dev Engine App Profile Container Deployment"
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["devx", "app mode", "pde"]
 ---
-
-
-
-
-
-# Container Deployment
 
 Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. Containers contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile, follow the steps below. 
 
-<br />
 
-# Prerequisite
+## Prerequisite
 
-* [Spectro Cloud Palette account](https://www.spectrocloud.com/get-started/)
+* Access to Palette Dev Engine App Mode.
 
 
 ## Add Container to App Profile
@@ -100,9 +94,6 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 6. Click the **Review** button when you have filled out the information and are ready to conclude the wizard. 
 
 Once the container is added as a layer to the App Profile, continue with the remaining steps of the [App Profile creation](/devx/app-profile/create-app-profile) wizard. You can add more services as layers if needed.
-
-
-
 
 ## Validate
 

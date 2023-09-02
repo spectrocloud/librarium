@@ -1,17 +1,12 @@
 ---
 sidebar_label: "App Profile Versioning"
-title: "Palette Dev Engine App Profile Versioning"
+title: "App Profile Versioning"
 description: "Learn about App Profile Versioning, what it is, how to create a version, and how to manage a version."
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["devx", "app mode", "pde"]
 ---
 
-
-
-
-
-
-# App Profile Versioning
 
 Palette enables users to create multiple versions of an App Profile within the scope of a single profile name. The **Version** field of the app profile takes a semantic versioning format (only numbers supported) as below: 
 
@@ -46,14 +41,14 @@ The following attributes are non-editable during versioning:
 :::
 
 
-# Apply Version to a Profile
+## Apply Version to a Profile
 
 
-## Prerequisites 
+### Prerequisites 
 
 - An App Profile
 
-## Create Version
+### Create Version
 
 1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
@@ -72,7 +67,7 @@ The following attributes are non-editable during versioning:
 
 6.  Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
 
-## Validate
+### Validate
 
 To validate the App Profile is versioned and available in the target project conduct the following steps:
 
@@ -84,13 +79,13 @@ To validate the App Profile is versioned and available in the target project con
 
 3. This page will list all the App Profiles available to you. In addition, this should list all the versioned App Profiles as well. Use the versioned App Profile for App deployment under the target scope.
 
-# Delete an App Profile
+## Delete an App Profile
 
-## Prerequisites 
+### Prerequisites 
 
 - An App Profile
 
-## Delete Profile
+### Delete Profile
 
 1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
 
@@ -106,7 +101,7 @@ To validate the App Profile is versioned and available in the target project con
 
 5. The selected App Profile version will be deleted. 
 
-## Validate
+### Validate
 
 
 To validate the App Profile is removed and not available in the target project, conduct the following steps:
@@ -120,13 +115,17 @@ To validate the App Profile is removed and not available in the target project, 
 3. Verify the app profile is not in the list of available profiles.
 
 
-# Update an App Profile
+## Update an App Profile
 
 You can make changes to the app profile, such as version updates, manifest updates, app tier additions and removals.
 
 App Profile changes will generate an update notification on all the Apps that are created from  the app profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply the update to the Apps individually at any time.
 
-# Apply Updates to the App
+### Prerequisites
+
+- An App Profile
+
+### Apply Updates to the App
 
 To apply updates to an App follow the below steps:
 
@@ -152,7 +151,7 @@ To apply updates to an App follow the below steps:
 
 * An **Apply Updates** wizard will open up with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the app.
 
-## Validate
+### Validate
 
 To validate that the App profile updates are implemented on the target app, conduct the following steps:
 

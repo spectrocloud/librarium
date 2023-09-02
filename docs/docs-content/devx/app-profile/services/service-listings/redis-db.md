@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Redis"
-title: "Palette Dev Engine Redis Database Service"
+title: "Redis"
 description: "Palette Dev Engine Redis Database Service"
 hide_table_of_contents: false
 type: "appTier"
@@ -8,29 +8,21 @@ category: ['databases']
 hiddenFromNav: false
 sidebar_position: 30
 logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M2p1W4t8H70OKpRY2breg&usqp=CAU"
+tags: ["devx", "app mode", "pde", "databases"]
 ---
 
 
-
-
-
-# Redis
-
 [Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a data cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction, transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
 
-# Add Redis to an App Profile
+## Add Redis to an App Profile
 
 Use the following steps to add Redis to an app profile.
 
-<br />
+### Prerequisite
 
-## Prerequisite
+- Access to Palette Dev Engine.
 
-A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
-
-<br />
-
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com)
 
@@ -57,7 +49,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
   * **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. 
 
 6. Save your changes.
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
@@ -79,7 +71,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 |Red  | Error State|
 
 
-# Output Variables
+## Output Variables
 
 The exposed output variables. Use these variables when connecting higher-level services with the database:
 
@@ -94,7 +86,7 @@ The exposed output variables. Use these variables when connecting higher-level s
 | Namespace           | `{{.spectro.app.$appDeploymentName.<service-name>.REDISMSTR_NS}}` | The Kubernetes namespace the Redis database is deployed to.              |
 
 
-# Database Password
+## Database Password
 
 You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format. 
 
@@ -108,7 +100,7 @@ Replace the values with the respective names.
   * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-#### Example: 
+#### Example
 
 - App Name: `app-tarfful`
 
@@ -119,16 +111,16 @@ Replace the values with the respective names.
 kubectl get secret  app-tarfful-redis-4-redis-auth \
  --namespace app-tarfful-redis-4-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
-#### Output:
-```shell
+#### Output
+```shell hideClipboard
  .Hr1}%DrA2MFf
 ```
 
-# Next Steps
+## Next Steps
 
 You can add Redis to your application profile and start integrating Redis with your applications. To learn more about integrating Redis with your applications, check out the [Using Redis](https://redis.io/docs/manual/) documentation from Redis.
 
 
-# Resources
+## Resources
 
 - [Using Redis](https://redis.io/docs/manual/) 

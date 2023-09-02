@@ -1,16 +1,12 @@
 ---
 sidebar_label: "Databases"
-title: "Palette Dev Engine Database Services"
+title: "Databases"
 description: "Explore Palette Dev Engine Database Services"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["devx", "app mode", "pde"]
 ---
-
-
-
-
-# Overview
 
 Palette Dev Engine facilitates database service setup, operation, and scaling without installing physical hardware, software, or performance configurations. Instead, Palette takes care of all the administrative and maintenance tasks so that you can use and access the database quickly.
 
@@ -25,8 +21,6 @@ StatefulSet lets you run one or more related pods that track the state. The data
 ## Storage
 
 You must allocate storage to the database service based on the available storage within the Virtual Cluster. 
-
-<br />
 
 :::caution
 
@@ -49,7 +43,7 @@ The following code snippet is an example of the output variables exposed by the 
 <br />
 
 
-```
+```hideClipboard
 env:
    - name: USER_NAME
      value: "{{.spectro.app.$appDeploymentName.mongodb-1.USERNAME}}"

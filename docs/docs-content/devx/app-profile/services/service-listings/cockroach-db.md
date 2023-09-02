@@ -8,12 +8,8 @@ category: ['databases']
 hiddenFromNav: false
 sidebar_position: 50
 logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Cockroach_Labs_Logo.png/220px-Cockroach_Labs_Logo.png"
+tags: ["devx", "app mode", "pde", "databases"]
 ---
-
-
-
-
-# CockroachDB
 
 CockroachDB is a [distributed SQL database](https://www.cockroachlabs.com/blog/what-is-distributed-sql/) designed for cloud-native environments. CockroachDB provides a reliable and scalable solution for managing data across multiple nodes and regions. Its architecture automates data replication, sharding, and rebalancing, By simplifying operational tasks, Cockroach enables developers to concentrate on building their applications.
 
@@ -21,14 +17,11 @@ With a focus on strong consistency and horizontal scalability, CockroachDB suppo
 
 
 
-# Deploy CockroachDB
+## Deploy CockroachDB
 
 Palette users can deploy CockroachDB to a virtual cluster by using the following steps.
 
-## Prerequisite
-
-- A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
-
+### Prerequisite
 
 - A Virtual Cluster with the following minimum resources.
     - 8 CPU 
@@ -36,7 +29,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
     - 8 GB of Storage.
 
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -82,7 +75,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](/clusters/palette-virtual-clusters/deploy-virtual-cluster#deployavirtualcluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial.
 
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
@@ -104,7 +97,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 |Red  | Error State|
 
 
-# Output Variables
+## Output Variables
 
 The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
 
@@ -118,7 +111,7 @@ The exposed output variables of this service layer may be used in other service 
 | Service Namespace       | `{{.spectro.app.$appDeploymentName.database-<service-name>.COCKROACHDBMSTR_SVC_NAMESPACE}}` | The namespace of the service.              |
 
 
-# Database Password
+## Database Password
 
 You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format. 
 
@@ -134,7 +127,8 @@ Replace the values with the respective names.
   * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-#### Example: 
+
+### Example 
 
 - App Name: `app-tion-medon`
 
@@ -145,16 +139,16 @@ Replace the values with the respective names.
 kubectl get secret  app-tion-medon-cockroachdb-1-user \
  --namespace app-tion-medon-cockroachdb-1-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
-#### Output:
+Output:
 ```shell
 .Hr1}%DrA2MFf
 ```
-# Next Steps
+## Next Steps
 
 To learn more about developing with CockroachDB, check out the [CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html). The developer guide is a great resource for understanding how to get started with CockroachDB and build applications that are scalable, resilient, and secure.
 
 
-# Resources
+## Resources
 
 - [CockroachDB Official Documentation](https://www.cockroachlabs.com/docs/)
 
