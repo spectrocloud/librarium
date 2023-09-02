@@ -4,13 +4,8 @@ title: "Create and Manage Cox IaaS Cluster"
 description: "Learn how to add and manage a cluster deployed to Cox Edge."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["public cloud", "cox edge"]
 ---
-
-
-
-
-# Create and Manage Cox Edge IaaS Cluster
-
 
 Palette supports creating and managing Kubernetes clusters deployed to a Cox Edge account. This section guides you on how to create a Kubernetes cluster in Cox Edge that is managed by Palette.
 
@@ -49,22 +44,17 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
 
 6. Select a cluster profile that is compatible with Cox Edge. If you need guidance creating a cluster profile, check out the [Creating Cluster Profiles](/cluster-profiles/task-define-profile) guide.
 
-:::caution
+  :::caution
 
-If you want to use the Kubernetes cluster autoscaler feature and you are using [Longhorn](/integrations/longhorn) for the storage container interface. Set the `charts.longhorn.defaultSettings.kubernetesClusterAutoscalerEnabled` parameter to `true`.
+  If you want to use the Kubernetes cluster autoscaler feature and you are using [Longhorn](/integrations/longhorn) for the storage container interface. Set the `charts.longhorn.defaultSettings.kubernetesClusterAutoscalerEnabled` parameter to `true`.
 
-<br />
-
-
-```yaml
-charts:
-  longhorn:
-    defaultSettings:
-      kubernetesClusterAutoscalerEnabled: true
-```
-
-
-:::
+  ```yaml
+  charts:
+    longhorn:
+      defaultSettings:
+        kubernetesClusterAutoscalerEnabled: true
+  ```
+  :::
 
 
 7. Review the cluster profile and all of its manifest files. Click **Next** to continue.
@@ -92,11 +82,11 @@ charts:
     
   <br />
 
-    :::caution
+  :::caution
 
-    Use the network rules specified in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation. If you fail to add the required network rules, Palette will be unable to deploy the cluster to Cox Edge.
+  Use the network rules specified in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation. If you fail to add the required network rules, Palette will be unable to deploy the cluster to Cox Edge.
 
-    :::
+  :::
 
   #### Worker Pool configuration:
 
@@ -120,7 +110,7 @@ The cluster details page contains the status and details of the deployment. Use 
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click **Clusters**. The **Clusters** page contains a list of all available clusters Palette manages. Select the cluster to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
-# Delete a Cox Edge IaaS Cluster
+## Delete a Cox Edge IaaS Cluster
 
 When you delete a Cox Edge cluster, all instances and associated resources created for the cluster are removed. To delete a cluster, use the following steps. 
 
@@ -147,6 +137,5 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 ## Force Delete a Cluster
 
 If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
-To force delete a cluster follow the same steps outlined in [Delete a Cox Edge IaaS Cluster](#delete-a-cox-edge-iaas-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu provides you with an estimated time left before the force deletion becomes available.
+To force delete a cluster follow the same steps outlined in [Delete a Cox Edge IaaS Cluster](#delete-a-cox-edge-iaas-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down Menu**. The **Settings** drop-down menu provides you with an estimated time left before the force deletion becomes available.
 
-<br />

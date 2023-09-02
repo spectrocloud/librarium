@@ -1,23 +1,19 @@
 ---
 sidebar_label: "Register and Manage Cox Edge Accounts"
-title: "Add a Cox Edge Account to Palette"
+title: "Register and Manage Cox Edge Accounts"
 description: "Learn how to add and manage a Cox Edge account in Palette."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["public cloud", "cox edge"]
 ---
-
-
-
-
-# Overview
 
 Palette supports integration with Cox Edge accounts and account environments. This section explains how to create a Cox Edge account in Palette. 
 
-# Add Cox Edge Account
+## Add Cox Edge Account
 
 To add a Cox Edge account to Palette, use the following instructions.
 
-# Prerequisites
+## Prerequisites
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account.
 
@@ -27,22 +23,22 @@ To add a Cox Edge account to Palette, use the following instructions.
 
 - Your Cox Edge organization id. Ask your system administrator for this value or use the API endpoint `api/v2/organizations` to retrieve the organization id.
 
-```
-curl --silent  "https://portal.coxedge.com/api/v2/organizations" \
-   -H "MC-Api-Key: YourAPIkeyHere" | jq '.data[] | {id}'
-```
+  ```shell
+  curl --silent  "https://portal.coxedge.com/api/v2/organizations" \
+  --header "MC-Api-Key: YourAPIkeyHere" | jq '.data[] | {id}'
+  ```
 
-```
-{
-  "id": "268ce256-15ef-465f-bc0f-952fac3e7c1e"
-}
-```
+  ```shell hideClipboard
+  {
+    "id": "268ce256-15ef-465f-bc0f-952fac3e7c1e"
+  }
+  ```
 
-# Enablement
+## Enablement
 
 You can use the steps below or the interactive guide to help you add a Cox Edge account to Palette. Click on the first image link to navigate the destination site with the tutorial at right.
 
-<iframe src="https://scribehow.com/embed/Add_Cox_Edge_Account_to_Palette__kgxQ9zckTo2aIM587hmdYw?removeLogo=true" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+<iframe src="https://scribehow.com/embed/Add_Cox_Edge_Account_to_Palette__kgxQ9zckTo2aIM587hmdYw?removeLogo=true" width="800" height="640" allowfullscreen frameborder="0"></iframe>
 
 1. Log in to the [Cox Edge](https://portal.coxedge.com/login) portal.
 
@@ -100,7 +96,7 @@ You can use the steps below or the interactive guide to help you add a Cox Edge 
 15. Select **Confirm** to add the Cox Edge account to Palette.
 
 
-# Validate
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant admin.
 
