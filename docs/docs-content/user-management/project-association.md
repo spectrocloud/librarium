@@ -6,17 +6,16 @@ hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-# Overview
 
 Associating a user or team with a specific project creates a clear distinction between who is allowed in the project and their access control permissions. By grouping resources together, you ensure that only designated members have access to and control over the project resources, preventing others from accidentally or intentionally modifying them. This improves resource accountability, reduces confusion and conflicts, and helps maintain the integrity and security of the project.
 
 User permissions are determined by the combination of their tenant and project roles, as well as any roles inherited from their team association. If a user is a *Tenant Admin*, they have admin permissions in all projects. A user with the *Project Viewer* role at the tenant level has *View* permissions for all projects. However, if a user or team has the *Project Viewer* role assigned to a specific project, they only have view access to that project. The extent of user permissions, either at the tenant or project level, determines the number of projects they can access.
 
-# Associate a User or Team
+## Associate a User or Team
 
 To associate a user or team with a project, use the following steps.
 
-# Prerequisites
+## Prerequisites
 
 * Tenant Admin access.
 
@@ -24,7 +23,7 @@ To associate a user or team with a project, use the following steps.
 
 * A user or a team.
 
-# Enablement
+## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -53,7 +52,7 @@ To associate a user or team with a project, use the following steps.
 Click **Confirm** to create the project role and complete the project association process.
 
 
-# Validate 
+## Validate 
 
 1. Have a user or a user assigned to a team log in to [Palette](https://console.spectrocloud.com).
 

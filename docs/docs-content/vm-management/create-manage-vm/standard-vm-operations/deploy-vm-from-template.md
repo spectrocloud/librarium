@@ -8,15 +8,13 @@ sidebar_position: 0
 ---
 
 
-# Overview
-
 You can deploy a Virtual Machine (VM) using Palette's out-of-the-box templates or from templates that your organization's administrator provides.
 
-# Prerequisites
+## Prerequisites
 
 - Configured Virtual Machine Orchestrator profile applied to your cluster. Review [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) to configure the dashboard.
 
-# Deploy VM from a Template
+## Deploy VM from a Template
 
 These steps will help guide you to deploy a VM from an out-of-the-box VM template.
 
@@ -78,7 +76,7 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 :::
 
 
-# Validate
+## Validate
 
 1. Log in to [Palette](https://console.spectroloud.com).
 
@@ -95,7 +93,7 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 5. Review the list of VMs and ensure the new VM is displayed and has the status **Running**. 
 
 
-# Next Steps
+## Next Steps
 
 Try installing your applications. If you did not install the QEMU guest agent as part of the VM deployment, you can install it now. The guest agent displays additional details in the **Virtual Machines** > **Details** tab. 
 

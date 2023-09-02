@@ -10,15 +10,11 @@ sidebar_custom_props:
 
 
 
-
-
-# Overview
-
 Palette supports the open-source Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to provide consistent CLI workflow support to multiple cloud services. 
 
 Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files, checks whether the execution plan for a configuration matches your expectations (before deployment), and applies the changes to all the managed resources. 
 
-# Spectro Cloud Provider
+## Spectro Cloud Provider
 
 Spectro Cloud Palette's SaaS and On-Premise management API can be used with the Spectro Cloud Terraform provider. The provider is available in the HashiCorp Terraform registry as [Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). 
 <br />

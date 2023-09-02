@@ -7,8 +7,6 @@ sidebar_custom_props:
   icon: "lock"
 ---
 
-# Overview
-
 We view security as more than a feature. It is a fundamental aspect of our business and culture through transparency, continuous learning, and a security-first mindset. 
 
 By instilling a sense of collective responsibility for security, everyone at Spectro Cloud contributes to our overall security posture. Our dedication to security helps protect your interests and enhances the quality and reliability of our software and services.
@@ -46,7 +44,7 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 
 <br />
 
-# Resources
+## Resources
 
 
 - [Core Principles](/security/core-principles)

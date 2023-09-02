@@ -16,7 +16,7 @@ We recommend you review the [Release Notes](/release-notes) and the [Upgrade Not
 
 
 
-# Ingress Errors
+## Ingress Errors
 
 If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in a Kubernetes environment, use the debugging steps to address the issue.
 

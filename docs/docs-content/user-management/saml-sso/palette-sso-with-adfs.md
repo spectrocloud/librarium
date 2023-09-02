@@ -12,7 +12,7 @@ hiddenFromNav: false
 
 
 
-# Enable SSO with Microsoft Active Directory Federation Service (AD FS)
+## Enable SSO with Microsoft Active Directory Federation Service (AD FS)
 
 Single sign-on (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO works upon a trust relationship established and maintained between the service provider (SP) and an identity provider (IdP) using certificates. Palette supports SSO based on either SAML or OIDC.
 
@@ -27,7 +27,7 @@ The following steps will guide you to enable Palette SSO with [Microsoft AD FS](
 :::
 
 
-# Prerequisites
+## Prerequisites
 In order to setup OIDC-based SSO with Microsoft AD FS, you need to use one of the following versions:
 * Microsoft AD FS 2022 (comes with Windows Server 2022)
 * Microsoft AD FS 2019 (comes with Windows Server 2019)
@@ -36,7 +36,7 @@ In order to setup OIDC-based SSO with Microsoft AD FS, you need to use one of th
 If you need to be able to your AD FS service from outside your corporate network, you will also need an AD FS Reverse Proxy. An official Microsoft tutorial for setting up an AD FS Reverse Proxy is not available, but you can use this blog post from [Matrixpost](https://blog.matrixpost.net/set-up-active-directory-federation-services-ad-fs-5-0-adfs-reverse-proxy-part-2/) for additional guidance.
 
 
-# Enablement
+## Enablement
 ## Create the AD FS Application Group for Palette
 
 1. Open the AD FS Management console on your Windows Server and add a new Application Group for Palette:
@@ -255,7 +255,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 You have now successfully configured Palette SSO based on OIDC with Microsoft AD FS.
 
 
-# Validate
+## Validate
 
 1. Log in to Palette through SSO as a user that is a member of the `SpectroTeam - Admins` group in Active Directory to verify that users are automatically added to the `Admins` group in Palette.
 
@@ -286,7 +286,7 @@ Make sure you log in as a user that is a member of the `SpectroTeam - Admins` gr
 The user you logged in as has automatically been added to this team.
 
 
-# Resources
+## Resources
 
 - [Microsoft AD FS](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/development/ad-fs-openid-connect-oauth-concepts)
 

@@ -7,8 +7,6 @@ hide_table_of_contents: false
 sidebar_position: 10
 ---
 
-# Overview
-
 Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of Standards and Technology (NIST) in the United States for computer security and encryption algorithms. 
 
 FIPS 140-2 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these modules must meet to ensure their security and integrity. 

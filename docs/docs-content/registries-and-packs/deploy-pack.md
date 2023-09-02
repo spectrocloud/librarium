@@ -25,7 +25,7 @@ In this tutorial, you will create a custom add-on pack to package a sample Kuber
 After defining the custom pack, you will set up a registry server, publish the pack to that registry, and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform.  
 
 
-# Prerequisites
+## Prerequisites
 To complete the tutorial, you will need the following items:
 <br />
 
@@ -49,7 +49,7 @@ To complete the tutorial, you will need the following items:
 
 
 
-# Set Up the Tutorial Environment
+## Set Up the Tutorial Environment
 You will work in a Docker container pre-configured with the necessary tools for this tutorial. However, you can practice this tutorial in any `linux/amd64` or `x86_64` environment by installing the [necessary tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. Here are the steps to start the tutorials container. 
 <br />
 
@@ -126,7 +126,7 @@ Examine the directories that pertain to the current tutorial in the **root** dir
 The **packs** directory contains the pack files. The **terraform** directory contains the Terraform files used to create Spectro Cloud resources, which you will use later in this tutorial.
 
 
-# Build a Pack
+## Build a Pack
 
 Building a custom pack requires defining specific files. 
 As outlined in the [Adding Add-on Packs](/registries-and-packs/adding-add-on-packs) guide, you can define a custom pack in two ways: using manifest files or Helm charts. The file structure varies for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each:
@@ -276,7 +276,7 @@ After finalizing all files in the pack directory, the next step is to set up a r
 
 <br />
 
-# Set Up the Registry Server
+## Set Up the Registry Server
 
 The tutorials environment already has the Spectro registry service and other necessary tools available. The following sections will guide you to start the registry server, expose the service to the external world using [Ngrok](https://ngrok.com/) reverse proxy, and log in to the registry server to push your custom add-on pack to it.   
 
@@ -410,7 +410,7 @@ Palette syncs the registry server periodically. However, you can sync it manuall
 <br />
 
 
-# Create a Cluster Profile and Deploy a Cluster
+## Create a Cluster Profile and Deploy a Cluster
 
 This tutorial guides you to create a cluster profile for AWS. However, you can choose any other cloud service provider, provided you configure the following two items:
 <br /> 
@@ -794,7 +794,7 @@ Log into the [Palette](https://console.spectrocloud.com/), and navigate to the *
 
 <br /> 
 
-# Validate
+## Validate
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the cluster Overview page and monitor cluster provisioning progress.  
 
 <br /> 
@@ -830,7 +830,7 @@ Using your custom pack in the cluster, you have successfully deployed the Hello 
 
 <br />
 
-# Cleanup
+## Cleanup
 Delete the cluster, cluster profile, and registry server, and remove the registry service configuration from Palette's settings. 
 
 The following steps will guide you in cleaning up your environment. Follow the steps for Palette if you used Palette to deploy the cluster. Use Terraform commands to delete the cluster if you used Terraform for deployment. 
@@ -923,7 +923,7 @@ docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.3
 <br /> 
 
 
-# Wrap-Up
+## Wrap-Up
 
 In this tutorial, you learned how to create a custom pack using manifest files. You packaged up an application in a custom pack that you pushed to a private registry server and added to Palette.
 

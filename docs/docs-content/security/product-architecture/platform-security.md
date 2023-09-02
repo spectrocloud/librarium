@@ -8,10 +8,6 @@ sidebar_position: 0
 ---
 
 
-
-
-# Overview
-
 Based on the deployment model, Palette is composed of a multi-layer deployment stack: Cloud > VM > OS > Container Runtime > Kubernetes > Pods.
 
 To ensure maximum security, we follow defense-in-depth principles that prescribe securing each layer in a multi-layer deployment stack.

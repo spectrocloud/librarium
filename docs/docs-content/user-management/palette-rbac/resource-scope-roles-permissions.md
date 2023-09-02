@@ -9,10 +9,6 @@ sidebar_position: 20
 
 
 
-
-
-# Overview
-
 Palette support two types of resource roles, global resource roles and custom resource roles:
 
 <br />
@@ -24,7 +20,7 @@ Palette support two types of resource roles, global resource roles and custom re
 To learn how to create a custom role. Review the [Create Custom Role](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles) guide.
 
 
-# Palette Global Resource Roles 
+## Palette Global Resource Roles 
 
 Palette provides the following built-in global resource roles:
 
@@ -262,7 +258,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 
 
-# Palette Custom Resource Roles
+## Palette Custom Resource Roles
 
 <br / >
 

@@ -8,10 +8,6 @@ sidebar_position: 10
 
 
 
-
-
-# Overview
-
 You start the Palette CLI with a single command, `palette`. The CLI accepts various subcommands such as `pde`, `help`, and more. The Palette CLI will return a non-zero exit status during error scenarios. You can use the CLI flags `-h` and `--help` to learn more about each subcommand.
 
 The complete list of subcommands is:

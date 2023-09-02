@@ -11,7 +11,7 @@ sidebar_position: 20
 
 This page covers common debugging scenarios for nodes and clusters after they have been deployed.
 
-# Nodes
+## Nodes
 
 ## Scenario - Repaved Nodes
 
@@ -31,7 +31,7 @@ For detailed information, review the cluster upgrades [page](/clusters/#clusteru
 
 <br />
 
-# Clusters
+## Clusters
 
 ## Scenario -  vSphere Cluster and Stale ARP Table
 

@@ -10,10 +10,6 @@ sidebar_position: 0
 
 
 
-
-
-# Overview
-
 Palette VerteX provides the following FIPS-compliant infrastructure components in Kubernetes clusters it deploys. Review [FIPS-Compliant Components](/vertex/fips/fips-compliant-components) to learn more.
 
 <br />
@@ -34,12 +30,12 @@ As shown in the screenshot below, the FIPS-compliant icon used to indicate full 
 You can allow tenant users to customize their cluster profiles by using add-on packs, which *may not* be FIPS compliant. Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security, monitoring, logging, and more.
 
 
-# Prerequisites
+## Prerequisites
 
 - You need tenant admin permission to enable this feature.
 
 
-# Allow Non-FIPS Add-On Packs
+## Allow Non-FIPS Add-On Packs
 
 
 1. Log in to [Palette VerteX](https://console.spectrocloud.com/) as a tenant admin.
@@ -62,7 +58,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 When you or other users add a pack to a cluster profile. Palette VerteX will apply the appropriate icon next to packs and imported clusters to indicate their FIPS compliance status.   
 
 
-# Validate
+## Validate
 
 
 1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
@@ -81,7 +77,7 @@ When you or other users add a pack to a cluster profile. Palette VerteX will app
 Palette VerteX will display the appropriate FIPS status icon next to the pack layer and in the profile stack.
    
 
-# Resources
+## Resources
 
 - [Packs List](/integrations)
 

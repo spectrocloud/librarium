@@ -8,12 +8,6 @@ hide_table_of_contents: false
 ---
 
 
-
-
-
-
-# Overview
-
 Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Palette VerteX is available in the following modes:
 
 | **Supported Platform** | **Description**                    |
@@ -23,7 +17,7 @@ Palette VerteX is available as a self-hosted application that you install in you
 
 The next sections describe specific requirements for installing Palette VerteX.
 
-# Proxy Requirements
+## Proxy Requirements
 
 - A proxy used for outgoing connections should support both HTTP and HTTPS traffic.
 
@@ -48,7 +42,7 @@ The next sections describe specific requirements for installing Palette VerteX.
   | github.com                 | 443      | Common third party content                       |
 
 
-# Size Guidelines
+## Size Guidelines
 
 This section lists resource requirements for Palette VerteX for various capacity levels. In Palette VerteX, the terms *small*, *medium*, and *large* are used to describe the instance size of worker pools that Palette VerteX is installed on. The following table lists the resource requirements for each size. 
 
@@ -83,7 +77,7 @@ The recommended maximum number of deployed nodes and clusters in the environment
 
 <br />
 
-# Resources
+## Resources
 
 - [Install on VMware vSphere](/vertex/install-palette-vertex/install-on-vmware)
 

@@ -18,10 +18,10 @@ Palette also supports creating custom Helm registries. You can add your own publ
 
 The Helm Chart registry synchronizes charts with Palette, so you can use them when you create cluster profiles.
 
-# Prerequisite
+## Prerequisite
 For security, Palette requires Helm OCI version 3.7.0 and higher.
 
-# Add a Helm Chart Registry to Palette
+## Add a Helm Chart Registry to Palette
 
 To add your private Helm Chart registry to Palette:
 
@@ -62,7 +62,7 @@ To add your private Helm Chart registry to Palette:
 
 Your chart is now deployed in Palette's Helm Chart registry and is ready to model in cluster profiles.
 
-# Validate
+## Validate
 
 You can find your Helm registry listed in the **Helm Registries** tab in **Tenant Settings > Registries**. Use charts from Helm registries in your cluster profiles.
 
@@ -71,7 +71,7 @@ The following applies when adding Helm charts to cluster profiles.
 * When using charts from protected registries, you must type the chart name and version you want to use. These must match the name and version hosted in the Helm registry.
 * For unprotected Helm registries, charts are synchronized in Palette, which allows you to select them from lists and dropdowns.
 
-# Resources
+## Resources
 
 [Create Cluster Profiles](https://docs.spectrocloud.com/cluster-profiles/task-define-profile)
 

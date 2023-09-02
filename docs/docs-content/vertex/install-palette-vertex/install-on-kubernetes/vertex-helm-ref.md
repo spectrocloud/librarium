@@ -8,11 +8,6 @@ sidebar_position: 10
 ---
 
 
-
-
-
-# Overview
-
 You can use the Palette VerteX Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference page lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation.
 
 To learn how to install Palette VerteX using the Helm Chart, refer to the Kubernetes [Instructions](/vertex/install-palette-vertex/install-on-kubernetes/install).
@@ -395,7 +390,7 @@ ui-system:
 
 
 
-# Reach System
+## Reach System
 
 You can configure Palette VerteX to use a proxy server to access the internet. Set the parameter `reach-system.reachSystem.enabled` to `true` to enable the proxy server. Proxy settings are configured in the `reach-system.reachSystem.proxySettings` section.
 

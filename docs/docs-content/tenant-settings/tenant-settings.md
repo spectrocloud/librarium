@@ -10,8 +10,6 @@ sidebar_custom_props:
 
 
 
-# Overview
-
 In Palette, the *tenant admin* role can access tenant settings. This role is the equivalent of a system administrator. As a tenant admin, you can configure Palette and its features to behave in a manner that best fits your organization and its users. 
 
 <br />
@@ -26,7 +24,7 @@ To learn more about the permissions and privileges available to the tenant role,
 Use the following resources to become familiar with the available tenant settings and how to change the tenant settings.
 
 
-# Resources
+## Resources
 
 - [Login Banner](/tenant-settings/login-banner)
 

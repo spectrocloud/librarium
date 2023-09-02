@@ -13,7 +13,7 @@ sidebar_custom_props:
 
 This page lists the version details of various Palette components and their respective Palette releases. Visit the [Downloads](/spectro-downloads) resource to access the download URLs.
 
-# Palette CLI Versions
+## Palette CLI Versions
 
 |Palette Release| Recommended CLI Version|
 |---------------------------|----|
@@ -22,7 +22,7 @@ This page lists the version details of various Palette components and their resp
 |Release 3.3.0     |3.3.0 |
 
 
-# Palette Edge CLI Versions
+## Palette Edge CLI Versions
 
 |Palette Release|CLI Version| 
 |---|-------|
@@ -33,7 +33,7 @@ This page lists the version details of various Palette components and their resp
 
 
 
-# On-Premises Installer Version
+## On-Premises Installer Version
 
 |Palette Release|On-Prem Installer Version|
 |--|---|
@@ -48,7 +48,7 @@ This page lists the version details of various Palette components and their resp
 |2.5|2.0.2|
 |2.3|2.0.2|
 
-# Latest Air Gapped OVA Version
+## Latest Air Gapped OVA Version
 
 |Palette Release|Air Gapped Version|
 |--|---|
@@ -62,7 +62,7 @@ This page lists the version details of various Palette components and their resp
 |2.5|2.0.1|
 |2.3|2.0.1|
 
-# Private Cloud Gateways (PCG) Images
+## Private Cloud Gateways (PCG) Images
 
 ## vSphere PCG Image Version
 
@@ -112,11 +112,11 @@ This page lists the version details of various Palette components and their resp
 |2.3|1.0.9|
 -------
 
-# Kubernetes Versions
+## Kubernetes Versions
 
 - Kubernetes: Refer to the Kubernetes [pack documentation](/integrations/kubernetes).
 
-# Operating System Layer Versions
+## Operating System Layer Versions
 
 |Operating System |Versions|
 |--|--|
@@ -129,7 +129,7 @@ This page lists the version details of various Palette components and their resp
 |OpenSuSE|15.4|
 
 
-# Network Layer Versions
+## Network Layer Versions
 
 - Calico: Refer to the Calico [pack documentation](/integrations/calico).
 
@@ -141,7 +141,7 @@ This page lists the version details of various Palette components and their resp
 |1.10.x|1.10.8|
 
 
-# Storage Layer Version
+## Storage Layer Version
 
 - Azure Disk: Refer to the [pack documentation](/integrations/azure-disk).
 - GCE Persistent Disk: Refer to the [pack documentation](/integrations/gce).
@@ -152,7 +152,7 @@ This page lists the version details of various Palette components and their resp
 - vSphere CSI: Refer to the [pack documentation](/integrations/vsphere-csi).
 - vSphere Volume: Refer to the [pack documentation](/integrations/vsphere-volume).
 
-# Resources
+## Resources
 
 - [Packs List](/integrations#integrations)
 

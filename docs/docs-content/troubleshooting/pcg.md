@@ -22,7 +22,7 @@ The following are the high-level steps of deploying a PCG in a private data cent
 While deploying a PCG, you may encounter one of the following scenarios during the above-mentioned steps. Some scenarios below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware. Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.  
 <br />
 
-# Scenario - Jet CrashLoopBackOff
+## Scenario - Jet CrashLoopBackOff
 
 After you finish configuring the PCG in Palette, Palette starts provisioning the PCG cluster. During the provisioning, one of the internal Palette components may undergo a *CrashLoopBackOff* state. 
 
@@ -34,7 +34,7 @@ The internal component, *Jet*, will transition to a healthy state once the PCG c
 Wait 10-15 minutes for the PCG installation to finish so that the internal component receives the required authorization token from Palette. Once the internal component is authorized, the PCG cluster will complete the initialization successfully. 
 <br />
 
-# Scenario - PCG Installer VM Unable to Register With Palette
+## Scenario - PCG Installer VM Unable to Register With Palette
 
 When deploying the PCG installer in VMware vSphere, you use an OVF template and then power on the PCG installer Virtual Machine (VM). After powering it on, the PCG installer goes through a bootstrap process and attempts to register with Palette. This process typically takes between five to ten minutes. 
 
@@ -111,7 +111,7 @@ If the installer fails to register with Palette within the expected timeframe, i
 
 <br />
 
-# Scenario - PCG Installer VM IP Address Assignment Error
+## Scenario - PCG Installer VM IP Address Assignment Error
 
 When deploying the PCG installer in VMware vSphere, you use an OVF template and then power on the PCG installer VM. After powering it on, the PCG installer VM may fail to get an IP address.
 
@@ -146,7 +146,7 @@ If the PCG installer VM fails to get an IP address assigned, it implies a networ
 
 <br />
 
-# Scenario - PCG Installer Deployment Failed
+## Scenario - PCG Installer Deployment Failed
 
 When deploying the PCG installer in VMware, you deploy the OVF template and power on the PCG installer VM. If the VM instance is supposed to receive a public IP address and the deployment fails, you cannot configure the cloud gateway in Palette. 
 
@@ -197,7 +197,7 @@ If the PCG installer VM has a public IP address assigned, you can access the PCG
 8. If the problem persists, email the log files to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 <br />
 
-# Scenario - PCG Cluster Provisioning Stalled or Failed
+## Scenario - PCG Cluster Provisioning Stalled or Failed
 
 After you finish configuring the cloud gateway in Palette, the PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. 
 
@@ -242,7 +242,7 @@ However, if the PCG cluster provisioning gets stuck, it could hint at incorrect 
 <br />
 
 
-# Scenario - No Progress After Creating the Container Manager
+## Scenario - No Progress After Creating the Container Manager
 After you finish configuring the cloud gateway in Palette, Palette starts provisioning the PCG cluster. The PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. You can navigate to the cluster details page and review the progressive events in the **Events** tab while the cluster is provisioning. Suppose the PCG events display no progress after the specific event, `Created container manager`. 
 
 This issue can occur when the PCG installer VM fails to connect to the Palette API endpoint and download the installation artifacts. Another potential reason is that the PCG installer may not have the required permissions to store the installation artifacts in the **spectro-templates** folder. The installer downloads the images for the worker nodes and stores them in the **spectro-templates** folder during the cluster provisioning.
@@ -269,7 +269,7 @@ This issue can occur when the PCG installer VM fails to connect to the Palette A
 3. Ensure you have the necessary write permissions for the **spectro-templates** folder in the data center environment. 
 <br />
 
-# Scenario - Failed to Deploy Image
+## Scenario - Failed to Deploy Image
 
 After you finish configuring the cloud gateway in Palette, Palette starts provisioning the PCG cluster. The PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. You can navigate to the cluster details page and review the progressive events in the **Events** tab while the cluster is provisioning. Suppose one of the events displays the `Failed to deploy image: Failed to create govomiClient` error. 
 
@@ -322,7 +322,7 @@ The error can occur if there is a preceding "https://" or "http://" string in th
 <br />
 
 
-# Scenario - No Route to the Kubernetes API Server
+## Scenario - No Route to the Kubernetes API Server
 
 After you finish configuring the cloud gateway in Palette, Palette starts provisioning the PCG cluster. The PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. You can navigate to the cluster details page and review the progressive events in the **Events** tab while the cluster is provisioning. Suppose one of the events displays the  `No route to host.` error. 
 
@@ -378,7 +378,7 @@ The error indicates an issue with the PCG cluster nodes attempting to connect to
 7. Examine the cloud-init and system logs for potential errors or warnings.
 <br />
 
-# Scenario - Permission Denied to Provision
+## Scenario - Permission Denied to Provision
 
 After you finish configuring the cloud gateway in Palette, Palette starts provisioning the PCG cluster. The PCG cluster provisioning process may take up to 15 minutes to finish the PCG cluster deployment. You can navigate to the cluster details page and review the progressive events in the **Events** tab while the cluster is provisioning. Suppose one of the events displays the  `Permission to perform this operation denied` error. 
 

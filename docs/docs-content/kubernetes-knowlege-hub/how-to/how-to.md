@@ -11,11 +11,11 @@ sidebar_custom_props:
 
 
 
-# How To
+## How To
 
 Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette.
 
-# Core Kubernetes
+## Core Kubernetes
 - [How To Retrieve Images from a Private Registry in Kubernetes](/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry)
 
   

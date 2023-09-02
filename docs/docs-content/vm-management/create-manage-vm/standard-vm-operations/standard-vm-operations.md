@@ -9,8 +9,6 @@ hide_table_of_contents: false
 
 
 
-# Overview
-
 Palette Virtual Machine Orchestrator (VMO) supports standard VM power operations: 
 
 <br />
@@ -59,7 +57,7 @@ When you select a VM from the **Clusters** > **Virtual Machines** tab, the follo
 
 
  
-# Resources
+## Resources
 
 - [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
 

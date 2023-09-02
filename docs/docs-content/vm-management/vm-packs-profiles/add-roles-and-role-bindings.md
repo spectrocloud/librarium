@@ -8,16 +8,10 @@ sidebar_position: 10
 ---
 
 
-
-
-
-
-# Overview
-
 You must configure permissions for actions that users can perform on Virtual Machines (VMs) deployed using Palette Virtual Machine Orchestrator (VMO), such as cloning, updating, and migrating VMs. You can do this by creating roles and cluster role bindings to determine access permissions. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles. To learn more about Cluster RBAC in Palette, review the [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) guide. 
 
 
-# Prerequisites
+## Prerequisites
 
 - A cluster profile with the **Virtual Machine Orchestrator** add-on pack configured. Check out the [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) guide to learn more.
 
@@ -43,7 +37,7 @@ You must configure permissions for actions that users can perform on Virtual Mac
 - Assigned permissions to access Palette clusters. 
 
 
-# Add Roles and Role Bindings
+## Add Roles and Role Bindings
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -59,7 +53,7 @@ You must configure permissions for actions that users can perform on Virtual Mac
 The cluster status displays as **Upgrading** on the **Cluster Overview** page. Upgrading can take several minutes depending on your environment. You can track events from the **Events** tab.
 
 
-# Validate
+## Validate
 
 You can verify role creation and role binding is successful by following the steps below.
 
@@ -95,11 +89,11 @@ kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
 ```
 
 
-# Next Steps
+## Next Steps
 
 Now you are ready to deploy a VM. Review the [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template) guide to get started with the deployment process.
 	
 
-# Resources
+## Resources
 
 - [VM User Roles and Permissions](/vm-management/vm-roles-permissions)

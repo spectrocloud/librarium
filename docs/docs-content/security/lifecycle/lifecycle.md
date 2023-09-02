@@ -10,9 +10,6 @@ hide_table_of_contents: false
 
 
 
-
-# Overview
-
 Our comprehensive approach to security is ingrained in each stage of our development lifecycle. From initial design and coding to testing and deployment, our processes are designed to identify, prevent, and mitigate security risks to ensure we deliver reliable and secure solutions. 
 
 ![Secure development flow from feature definition and design to development and release](/security_dev_lifecycle.png)
@@ -21,7 +18,7 @@ Our Security team reviews early in the design process and identifies real and po
 
 
 
-# Resources
+## Resources
 
 - [Secure Development](/security/lifecycle/secure-development)
 

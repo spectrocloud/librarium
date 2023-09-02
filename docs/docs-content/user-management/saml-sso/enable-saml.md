@@ -8,13 +8,12 @@ hiddenFromNav: false
 sidebar_position: 0
 ---
 
-# Overview
 
 With Spectro Cloud Palette, you can use SAML 2.0 protocols for single sign-on (SSO) authentication using your IdP.
 
 <br />
 
-# Set Up SAML-based SSO
+## Set Up SAML-based SSO
 
 To set up Spectro Cloud Palette with an identity provider (IdP) SAML based SSO:<p></p><br />
 1. Log in to the Palette console as a Tenant Admin.<p></p><br />
@@ -42,7 +41,7 @@ To set up Spectro Cloud Palette with an identity provider (IdP) SAML based SSO:<
 <br />
 
 
-# Set Up OIDC-based SSO
+## Set Up OIDC-based SSO
 
 Spectro Cloud Palette supports OpenID Connect (OIDC), a de facto standard of contemporary authentication that provides secured identity management in a highly interoperable format.<p></p><br />
 

@@ -9,23 +9,19 @@ sidebar_position: 20
 
 
 
-
-
-# Overview
-
 The virtctl command-line interface (CLI) tool facilitates some of the virtual machine (VM) operations you will perform by providing convenient commands for copying and pasting into the virtual console, starting and stopping VMs, live migrating VMs, and uploading VM disk images.
 
 The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client with the `virtctl scp` command, which you can use to transfer files to and from a VM. Its usage is similar to the ssh command.
 
 
-# Prerequisites
+## Prerequisites
 
 - An active virtual cluster with Palette Virtual Machine Orchestrator (VMO).
 
 
 - Access to the virtual cluster.
 
-# Download and Connect virtctl
+## Download and Connect virtctl
 
 1. Download the most recent virtctl artifact based on your machine type from the official [KubeVirt Assets](https://github.com/kubevirt/kubevirt/releases/tag/v0.60.0-alpha.0). Scroll down to the **Assets** section.
 
@@ -74,7 +70,7 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 
 You can now issue virtctl commands against the VM in your Kubernetes cluster.
 
-# Validate
+## Validate
 
 Verify you have access to your virtual machine by issuing virtctl commands against it, as shown in the example below.
 

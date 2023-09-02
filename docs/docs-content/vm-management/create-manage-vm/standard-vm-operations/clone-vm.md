@@ -9,10 +9,6 @@ sidebar_position: 40
 
 
 
-
-# Overview
-
-
 A VM clone is a copy of an existing, or parent, virtual machine (VM). The cloned VM has the same configuration settings and identifiers as the parent VM. After you clone a VM, it as a separate virtual machine.
 
 Cloning is a quick way to create a new virtual machine that shares the same properties as the parent. You may want to clone a VM for the following reasons:
@@ -25,11 +21,11 @@ Cloning is a quick way to create a new virtual machine that shares the same prop
 - Forensics - security administators can clone an infected machine and connect it to an air-gaped network to investigate the source of the infection while the parent VM can be destroyed or remediated.
 
 
-# Prerequisites
+## Prerequisites
 
 There are no requirements.
 
-# Clone a VM
+## Clone a VM
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -49,12 +45,6 @@ There are no requirements.
 6. Optionally, you can enable the checkbox to start the cloned VM automatically when cloning is complete.
 
 
-# Validate
+## Validate
 
 From the **Virtual Machines** tab, verify the cloned VM is listed and displays **Running** status.  
-
-
-
-
-
-

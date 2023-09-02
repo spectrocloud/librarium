@@ -8,10 +8,6 @@ sidebar_position: 20
 ---
 
 
-
-
-# Overview
-
 Palette can be deployed as a multi-tenant SaaS system in which each tenant represents a customer. Palette SaaS infrastructure is hosted in the public cloud within a logically isolated virtual network that has a private and a public subnet. The [control plane and worker nodes](/security/product-architecture/saas-operation#controlplaneandworkernodes) for the Kubernetes cluster are launched in the private network.
 
 <br />
@@ -43,7 +39,7 @@ In self-hosted Palette installations, customers manage their own SSH public keys
 
 <br />
 
-# Resources
+## Resources
 
 [Tenant Cluster Security](/security/product-architecture/tenant-cluster)
 

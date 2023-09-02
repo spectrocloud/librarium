@@ -3,8 +3,7 @@ import spectrocloudLogo from "@site/static/assets/spectrocloud-logo.png";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import spectrologoUser from "@site/static/assets/spectrocloud-logo-black.svg";
 
-export const MENDABLE_SCRIPT_URL =
-  "https://unpkg.com/@mendable/search@0.0.125/dist/umd/mendable-bundle.min.js";
+export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.155/dist/umd/mendable-bundle.min.js";
 
 export default function MendableAIWidget() {
   const {
@@ -26,6 +25,7 @@ export default function MendableAIWidget() {
           anon_key: customFields?.mendableKey,
           type: "floatingButton",
           dialogPlaceholder: "What is Palette?",
+          cmdShortcutKey: "l",
           floatingButtonStyle: {
             color: "#FFFFFF",
             backgroundColor: "#3E4FB5",

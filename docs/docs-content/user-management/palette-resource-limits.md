@@ -9,7 +9,7 @@ sidebar_position: 40
 
 
 
-# Default Palette Resource Limits
+## Default Palette Resource Limits
 
 
 Tenant admins can set and update resource limits for Palette. The resource limits determine the maximum number of resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects in the tenant.
@@ -36,7 +36,7 @@ The following table lists the default resource limits for Palette:
 |Clusters            |      10,000          | Tenant |
 |Edge Hosts          |      200            |  Tenant |
 
-# Set Resource Limit 
+## Set Resource Limit 
 
 Use the following steps to set or update resource limits for your Palette tenant.
 

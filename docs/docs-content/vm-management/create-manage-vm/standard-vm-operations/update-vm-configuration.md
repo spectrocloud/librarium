@@ -10,14 +10,10 @@ sidebar_position: 10
 
 
 
-
-# Overview
-
-
 You can add storage and additional network interfaces to your virtual machines (VMs).
 
 
-# Add Disk Storage
+## Add Disk Storage
 
 KubeVirt allows hot plugging additional storage into a running VM. Both block and file system volume types are supported.
 
@@ -61,7 +57,7 @@ The **Disks** tab lists the newly added disk as ``PersistingHotplug``.
 
 <br />
 
-# Add Network Interfaces
+## Add Network Interfaces
 
 You can add additional network interfaces to a VM. By default, VMs use the native networking already configured in the pod. Typically, this means using the Bridge option, and your VM has the same IP address as the pod. This approach makes interoperability possible. The VM can integrate with different cases like sidecar containers and pod masquerading. 
 

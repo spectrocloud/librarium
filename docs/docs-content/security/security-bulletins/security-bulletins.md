@@ -7,7 +7,6 @@ hide_table_of_contents: false
 
 ---
 
-# Overview
 
 The following are security advisories for Palette and other Spectro Cloud-related resources.
 
@@ -25,7 +24,7 @@ Our security advisories follow the [CVSS standards](https://www.first.org/cvss/v
 You can review Common Vulnerabilities and Exposures (CVE) for Palette in [CVE Reports](/security/security-bulletins/cve-reports). An index of all Palette-related CVEs is availaable in the [CVE Index](/security/security-bulletins/index). 
 
 
-# Resources
+## Resources
 
 
 - [CVE Reports](/security/security-bulletins/cve-reports)

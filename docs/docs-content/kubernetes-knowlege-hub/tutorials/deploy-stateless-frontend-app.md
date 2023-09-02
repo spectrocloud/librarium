@@ -21,7 +21,7 @@ Deploying a stateless frontend application with Kubernetes can be a straightforw
 
 In this tutorial, you will containerize a date suggester app built in React and deploy it with Kubernetes. This application is bootstrapped with [Create React App](https://create-react-app.dev/). 
 
-# Requirements
+## Requirements
 
 - An installation of [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine. Node is a Javascript runtime environment and will enable React to run on your machine.
 
@@ -226,7 +226,7 @@ kubectl get service date-suggestions-service --output=jsonpath='{.status.loadBal
 
 This will display the URL of your app that you can use to can access it in a web browser.
 
-# Next Steps
+## Next Steps
 
 Deploying a stateless frontend application with Kubernetes can be a straightforward process if you understand the fundamental concepts of Kubernetes. 
 

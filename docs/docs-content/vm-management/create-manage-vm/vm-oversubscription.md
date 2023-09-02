@@ -9,10 +9,6 @@ sidebar_position: 30
 
 
 
-
-
-# Overview
-
 Palette Virtual Machine Orchestrator (VMO) allows administrators to oversubscribe the physical resources on a host to maximize the number of active workloads. 
 
 VM workloads typically have varying resource demands and peak utilization patterns. By oversubscribing resources, it is possible to allocate them flexibly and take advantage of the fact that not all VMs will require their maximum allocation simultaneously. 
@@ -82,7 +78,7 @@ You can make several changes to reduce the memory footprint and overcommit the p
 
 - Enable implicit memory overcommit by setting `spec.configuration.developerConfiguration.memoryOvercommit` in the KubeVirt CRD to a percentage of the desired memory overcommit.
 
-# Resources
+## Resources
 
 - [Dedicated CPU Resources](https://kubevirt.io/user-guide/virtual_machines/dedicated_cpu_resources/)
 

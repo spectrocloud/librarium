@@ -9,10 +9,6 @@ sidebar_position: 0
 
 
 
-
-
-# Overview
-
 While Palette VerteX brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters, it also provides the capability to consume features that are not FIPS compliant. For example, when the cluster import option is enabled, it allows users to import any type of Kubernetes cluster, including some that are not fully FIPS compliant. 
 Similarly, when the option to add non-FIPS add-on packs is enabled, users can add packs in cluster profiles that are not FIPS compliant. For more information about these tenant-level settings, refer to [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings).
 

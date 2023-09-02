@@ -23,7 +23,7 @@ The following sections describe these capabilities in detail:
 <TabItem label="Workload Visibility" value="Workload Visibility">
 
 
-#  Workload Visibility
+##  Workload Visibility
 
 Workspace provides visibility into workloads deployed across clusters. 
 
@@ -43,7 +43,7 @@ Workspace provides visibility into workloads deployed across clusters.
 <TabItem label="Backups and Restore" value="Backups and Restore">
 
 
-# Workspace Backup and Restore
+## Workspace Backup and Restore
 
 Palette users can create cluster backups from within a workspace (usually consisting of multiple clusters) and restore them later time as desired. Palette allows granular controls within a workspace for users to perform specific tasks within the workspace, without having the ability to update workspace details. To provide granular access within a workspace for specific actions, Palette provides the following two Roles:
 
@@ -96,7 +96,7 @@ Palette leverages the BackUps to the following locations:
 
 #### Azure Blob: [Prerequisites](/workspace/workload-features#forazureblobbackup), [Configure your Backup](/workspace/workload-features#configureyourbackupinazure:azureblob)
 
-# Prerequisites
+## Prerequisites
 
 ## For an Amazon Web Services (AWS) Bucket as Backup Location
 
@@ -118,7 +118,7 @@ Palette leverages the BackUps to the following locations:
 
 * Service provider certificate (Optional)
 
-## For Azure Blob Backup
+#### For Azure Blob Backup
 
 * An active Azure cloud account with the following pieces of information noted down:
   * Tenant Id
@@ -134,11 +134,11 @@ Palette leverages the BackUps to the following locations:
 
 * A container to be created in the Azure Storage account
 
-# Backup Locations
+## Backup Locations
 
 AWS Simple Cloud Storage (S3) and other S3 compliant object stores such as MinIO and GCP Buckets are currently supported as backup locations. These locations can be configured and managed under the **Project** > **Settings** option and can be selected as a backup location, while backing up any cluster in the project.
 
-## Configure your Backup in AWS S3 
+### Configure your Backup in AWS S3 
 
 The following details are required to configure a backup location in AWS:
 
@@ -316,7 +316,7 @@ The following details are required to configure a backup location in Azure:
 
 Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
 
-# Create a Workspace Backup
+## Create a Workspace Backup
 
 Backups can be scheduled or initiated in an on demand basis, during the workspace creation. The following information is required for configuring a Workspace Backup, on demand-
 
@@ -358,7 +358,7 @@ Both the cluster and workspace backup support the following scheduling options:
 * Every month on the 1st at midnight
 * Every two months on the 1st at midnight
 
-# Restore a Backup
+## Restore a Backup
 
 Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. 
 
@@ -407,7 +407,7 @@ To initiate a restore operation:
 
 <TabItem label="Workspace Quota" value="Workspace Quota">
 
-# Workspace Quota
+## Workspace Quota
  
 Palette enables the users to limit resource usage within the workspace optionally. The Quota is specified in terms of the maximum CPU and memory. Therefore, the resource utilization within the namespace should be below the Quota allocated across all the clusters.
 
@@ -442,7 +442,7 @@ Palette enables the users to limit resource usage within the workspace optionall
 </TabItem>
 <TabItem label="Regex for Namespaces" value="Regex for Namespaces">
 
-# Regex for Namespaces
+## Regex for Namespaces
 
 Palette leverages Regex Pattern matching to select multiple namespaces to apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a Regex pattern matching multiple namespaces instead of giving a single namespace. This will help select all the namespaces matching the given Regex pattern to be selected together for role binding. 
 
@@ -463,7 +463,7 @@ Palette leverages Regex Pattern matching to select multiple namespaces to apply 
 
 <TabItem label="Workspace Role Binding" value="Workspace Role Binding">
 
-# Workspace Role Binding
+## Workspace Role Binding
 
 Workspace Role Binding is a Project scope operation. There are two available options for setting up Roll Binding for a Workspace:
 
@@ -541,7 +541,7 @@ A single RoleBinding can have multiple subjects.
 <TabItem label="Restricted Container Images" value="Restricted Container Images">
 
 
-# Restricted Container Images
+## Restricted Container Images
 
 Palette users can restrict a few container images from getting deployed into a specific Namespace. This helps the tenants from accidentally installing a delisted or unwanted container to that specific namespace.
 

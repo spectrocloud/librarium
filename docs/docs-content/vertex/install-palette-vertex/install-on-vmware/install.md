@@ -17,7 +17,7 @@ sidebar_position: 0
 You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA). You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where Palette VerteX will be deployed. 
 
 
-# Prerequisites
+## Prerequisites
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment. 
 
@@ -81,7 +81,7 @@ Self-hosted Palette VerteX installations provide a system Private Cloud Gateway 
 :::
 
 
-# Install the Enterprise Cluster
+## Install the Enterprise Cluster
 
 The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
@@ -302,7 +302,7 @@ Use the following steps to install Palette VerteX.
   ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
 
 
-# Validate
+## Validate
 
 You can verify the installation is successful if you can access the system console using the IP address provided in Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
 
@@ -328,13 +328,13 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 6. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
  
 
-# Next Steps
+## Next Steps
 
 You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Refer to [Create a Tenant](/vertex/system-management/tenant-management) for instructions. 
 
 After you create the tenant, you are ready to configure authentication types in tenant settings and create users and teams.
 
-# Resources
+## Resources
 
 - [Create a Tenant](/vertex/system-management/tenant-management) 
 

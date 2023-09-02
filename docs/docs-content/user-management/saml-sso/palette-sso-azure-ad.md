@@ -8,7 +8,7 @@ sidebar_position: 20
 hiddenFromNav: false
 ---
 
-# Azure Active Directory and OIDC-Based Setup
+## Azure Active Directory and OIDC-Based Setup
 
 After configuration, your organization can integrate Microsoft Azure Active Directory to authenticate access to Spectro Cloud Palette.
 

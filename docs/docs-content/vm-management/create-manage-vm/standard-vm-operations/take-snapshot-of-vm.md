@@ -8,10 +8,6 @@ sidebar_position: 30
 ---
 
 
-
-
-# Overview
-
 A snapshot is a copy of a virtual machine's (VM) disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time. 
 
 You can take a snapshot of a VM that is online (**Running** state) or offline (**Stopped** state). When you take a snapshot of an active VM, the controller checks for the QEMU guest agent in the VM. If the guest agent is present, the controller freezes the VM file system before it takes the snapshot and unfreezes the file system afterwards. This provides for crash consistency.
@@ -30,12 +26,12 @@ To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentCon
 
 You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk is found, the **Snapshot** action is not possible.
 
-# Prerequisites
+## Prerequisites
 
 - A deployed VM. 
 
 
-# Take a Snapshot
+## Take a Snapshot
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -70,7 +66,7 @@ Snapshots should not be used as a backup method, as running a VM on a snapshot f
 
 :::
 
-# Validate
+## Validate
 
 1. From the **Snapshots** tab, verify the ``vmSnapshot Status`` parameter displays **Succeeded**.
 

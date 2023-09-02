@@ -270,7 +270,7 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
 }
 ```
 
-# Create a Custom Pack
+## Create a Custom Pack
 
 Follow the steps below to create a custom pack.
 
@@ -353,7 +353,7 @@ Parameters for all charts, manifests, and Ansible roles defined in the pack are 
      spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
     ```
 
-# Adding an OS Pack
+## Adding an OS Pack
 
 The OS is one of the Core Layers in a cluster profile. An OS pack can be built to use a custom OS image for cluster nodes. This might be desirable if an organization wants to use an approved hardened OS image for their infrastructure. There are typically the following two scenarios for the OS image:
 
@@ -368,7 +368,7 @@ Additionally, for both scenarios additional components or packages may need to b
 
 A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for images that do not have Kubernetes components pre-installed. Palette installs these components at the time of provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInstall` to true.
 
-# Examples
+## Examples
 
 <Tabs>
 
@@ -493,7 +493,7 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 </Tabs>
 
-# Ansible Roles
+## Ansible Roles
 
 In all the previous examples, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
 
