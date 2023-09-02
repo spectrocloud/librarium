@@ -14,8 +14,8 @@ Depending on what version of Palette you are using, the internal architecture an
 
 <br />
 
-<Tabs>
-<TabItem label="gRPC" value="gRPC">
+<Tabs queryString="networking-ports">
+<TabItem label="gRPC" value="gRPC" que>
 
 ## SaaS Network Communications and Ports
 
