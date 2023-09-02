@@ -12,7 +12,7 @@ Palette enables cluster profiles to be exported and then imported across multipl
 
 ## Prerequisites
 
-* [Export](/cluster-profiles/cluster-profile-import-export#exportclusterprofile) the cluster profile file in JSON format from the Palette console.
+* [Export](/cluster-profiles/cluster-profile-import-export#exportclusterprofile) the cluster profile file in JSON format from Palette.
 
 
 * The packs in the exported profile should be available in the target environment during import.
@@ -31,11 +31,11 @@ The Export/Import Cluster Profile use cases:
 
 ## Export Cluster Profile
 
-To Import Palette cluster profiles the existing profile needs to be first exported as json file from the Palette console. To export follow the steps as below:
+To Import Palette cluster profiles the existing profile needs to be first exported as json file from Palette. To export follow the steps as below:
 
 <br />
 
-* As a `Tenant` or `Project` administrator login to the Palette console. 
+* As a `Tenant` or `Project` administrator login to Palette. 
 
 
 * Select the `Profiles` option from the left ribbon menu.
@@ -82,7 +82,7 @@ To import a cluster profile:
    * Click the `Upload file` button to upload the already exported profile JSON file.
    * Validate the file contents to avoid duplicate profile names and versions. In the case of a profile already existing with the same name and version combination, an error message is displayed. Customize the name or version number to avoid conflicts and ambiguities. 
    * Once the file contents are validated, a wizard to `Select Repositories` is open, If there are multiple repositories with the imported profile packs at the destination. Select the repository from which the packs need to be fetched from the UI drop down and confirm. 
-   * Once all the information is provided, confirm the profile creation process to have the profile created and listed. This profile can be used in the same way as any cluster profile for every cluster operations such as deployments, updations, etc.
+   * Once all the information is provided, confirm the profile creation process to have the profile created and listed. This profile can be used in the same way as any cluster profile for every cluster operations such as deployments, updates and so on.
 
 :::info
 

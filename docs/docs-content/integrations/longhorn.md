@@ -109,4 +109,4 @@ data "spectrocloud_pack_simple" "csi-longhorn" {
 
 - [Longhorn Home](https://longhorn.io/)
 
-- [Lonhorn Documentation](https://longhorn.io/docs)
+- [Longhorn Documentation](https://longhorn.io/docs)

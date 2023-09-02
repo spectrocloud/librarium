@@ -35,7 +35,7 @@ The product tour is followed by a Palette experience session.  Here we make sure
   <br />
 
   :::info
-  Once the user experience session is finished, the user will be familiar with Palette's workflow and deployment pipeline. This section of the document is a quick start to the deployment process with simple instructions to jump start the Palette journey. The different Palette features and Day-2 operations are detailed in the remainder of this documentation site.
+  Once the user experience session is finished, the user will be familiar with Palette's workflow and deployment pipeline. This section of the document is a quick start to the deployment process. The different Palette features and Day-2 operations are detailed in the remainder of this documentation site.
   :::
 
 

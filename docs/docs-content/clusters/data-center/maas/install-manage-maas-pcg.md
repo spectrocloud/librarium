@@ -653,7 +653,7 @@ Ensure the MAAS server has two more machines in the **Ready** state in the same 
 
 ### Validate
 
-You can validate that your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized gateway instance and click the **Nodes** tab. You will see two additional nodes being deployed along with their health status. Three nodes in total will be listed.
+You can validate that your PCG has been resized by navigating to the **Private Cloud Gateways** page. Select the resized gateway instance and click the **Nodes** tab. Two additional nodes are displayed along with their health status. Three nodes in total will be listed.
 
 
 ## Next Steps

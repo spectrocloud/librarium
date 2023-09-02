@@ -126,3 +126,19 @@ repave
 Repave
 K3s
 boolean
+vCluster
+Fluentbit
+Dex
+Falco
+Kibana
+Fluentd
+Libvirt
+kubenet
+Metadata Syncer
+Kubernetes NFS Subdir External Provisioner
+Splunk
+Kubevious
+Citrix
+Disable
+Hotfixes
+Hotfix

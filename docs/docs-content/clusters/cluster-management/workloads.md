@@ -19,7 +19,7 @@ These resources are displayed on the cluster details page. Following is the list
 | DeploymentSets | DeploymentSets are a way to create and manage groups of identical pods. |
 | DaemonSets | DaemonSets are a way to create and manage pods that are deployed on all, or some nodes. |
 | StatefulSets | StatefulSets are a way to create and manage pods that have persistent storage and are deployed in order. |
-| Jobs | Jobs are a way to create and manage pods that are actove until completion. |
+| Jobs | Jobs are a way to create and manage pods that are active until completion. |
 | CronJobs | CronJobs are a way to create and manage pods that deploy on a schedule. |
 | Role Bindings | Role Bindings are a way to create and manage access to cluster resources. |
 | Cluster Role Bindings | Cluster Role Bindings are a way to create and manage access to cluster resources. |

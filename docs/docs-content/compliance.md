@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["compliance", "soc2", "fips"]
 ---
 
-We have twp Security Operations Center (SOC) certificatiosn and a FIPS certificate for a Cryptographic Module. 
+We have two Security Operations Center (SOC) certifications and a FIPS certificate for a Cryptographic Module. 
 
 ## SOC 2 Type II
 

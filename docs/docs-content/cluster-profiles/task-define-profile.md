@@ -107,7 +107,7 @@ In order to allow packs to be added multiple times in a profile, add the `spectr
 
 <br />   
 
-By default Palette uses Helm chart release name in the format packName-chartName. In cases where a lengthy release name causes some complicacy we can customize Helm chart releaseNames using the format below.
+By default Palette uses Helm chart release name in the format packName-chartName. In cases where a lengthy release name causes some complicacy we can customize Helm chart `releaseNames` using the format below.
 
 <br />
 

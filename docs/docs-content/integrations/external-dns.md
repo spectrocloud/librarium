@@ -156,5 +156,5 @@ Integration deploys the following components:
 
 ## References
 
-* [Exteral DNS Home](https://github.com/kubernetes-sigs/external-dns)
+* [External DNS Home](https://github.com/kubernetes-sigs/external-dns)
 * [External DNS Helm Chart](https://github.com/bitnami/charts/tree/master/bitnami/external-dns)

@@ -19,7 +19,7 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 2. Navigate to the top-right **User Dropdown Menu** and select **App Mode**.
 
-3. Select the `Palette Virtual Clusters` from the left ribbon menu, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
+3. Select the `Palette Virtual Clusters` from the **left Main Menu**, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
    * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster.
    * Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    * Provide the resource limit in terms of CPU, memory, and storage.

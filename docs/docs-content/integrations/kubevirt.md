@@ -60,4 +60,4 @@ manifests:
 
 - [Installing KubeVirt on Kubernetes](https://KubeVirt.io/user-guide/operations/installation/#installing-KubeVirt-on-kubernetes)
 
-- [Github KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)
+- [GitHub KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)

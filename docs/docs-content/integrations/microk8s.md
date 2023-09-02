@@ -70,7 +70,7 @@ If you are using or want to use a different kubectl command, you can configure i
 
 :::caution
 
-When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack node.kubelet values from `/var/lib/kubelet` to `/var/snap/microk8s/common/var/lib/kubelet`.
+When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack `node.kubelet`` values from `/var/lib/kubelet` to `/var/snap/microk8s/common/var/lib/kubelet`.
 
 ```yaml
     node:

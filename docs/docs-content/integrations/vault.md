@@ -109,7 +109,7 @@ With these config changes, you can access Vault service on the Ingress Controlle
 - [Injecting Vault Secrets Into Kubernetes Pods via a Sidecar - Blog](https://www.hashicorp.com/blog/injecting-vault-secrets-into-kubernetes-pods-via-a-sidecar/)
 
 
-- [Vaut Agent Injector Examples](https://www.vaultproject.io/docs/platform/k8s/injector/examples/)
+- [Vault Agent Injector Examples](https://www.vaultproject.io/docs/platform/k8s/injector/examples/)
 
 
 - [Vault on Kubernetes Guide](https://www.vaultproject.io/docs/platform/k8s/helm/run)

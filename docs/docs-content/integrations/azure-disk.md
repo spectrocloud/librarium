@@ -43,7 +43,7 @@ Azure Disk storage is designed to be used with Azure virtual machines for the te
 
 ## Troubleshooting
 
-Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+Storage classes created by Palette are named `spectro-storage-class` and can be fetched from kubectl using the following CLI command:
 
 ```bash
 kubectl get storageclass --all-namespaces

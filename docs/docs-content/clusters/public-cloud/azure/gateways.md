@@ -23,7 +23,7 @@ Palette enables the provisioning of private AKS clusters within Azure Virtual ne
 
 ## Create a Virtual Network in the Azure Console
 
-Log in to the [Azure portal](https://portal.azure.com/) and create a [Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) (VNet). Ensure the VNET contains the following network settings.
+Log in to the [Azure portal](https://portal.azure.com/) and create a [Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) (VNet). Ensure the VNet contains the following network settings.
 
 1. Three subnets. Each of the subnets should have a minimum of **333 available 
    IPs**. (Note: 333 IP's are required if you want to use Azure Container Networking Interface (CNI) networking and 

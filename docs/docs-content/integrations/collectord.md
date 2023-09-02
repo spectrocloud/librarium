@@ -62,5 +62,5 @@ The following workloads gets deployed on collectorforkubernetes namespace, by de
 
 ## References
 
-- [Offical Doumentation](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5)
+- [Official Documentation](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5)
 - [Install Guide](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/installation)
