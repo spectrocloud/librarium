@@ -1,20 +1,15 @@
 ---
 sidebar_label: "Resource Quotas"
-title: "Palette Dev Engine for Enterprise developers"
-description: "Explore Palette Dev Engine as a Free developer"
+title: "Resource Quotas"
+description: "Learn about Palette Dev Engine resource quotas."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["devx", "app mode", "pde"]
 ---
-
-
-
-
-
-# Overview
 
 This section covers the available deployment environments for Palette Virtual Clusters and the resource quotas that apply to users and virtual clusters.
 
-# Available Environments
+## Available Environments
 
 Palette Dev Engine users have access to a Palette-managed cluster group named *beehive*. The beehive cluster group is also a *system-level cluster group*, meaning that Spectro Cloud manages it. The beehive cluster group falls under the free tier of Palette and comes with its own set of resource limits. All users are subject to the following resource quotas when using the beehive cluster group.
 
@@ -33,7 +28,7 @@ Palette administrators can remove the beehive cluster, and other system-level cl
 You can change tenant developer settings by switching to the tenant scope and navigating from the left **Main Menu** to **Tenant Settings > Developers Settings**. Toggle the **Hide system-level cluster groups from tenant users** button.
 
 
-# Virtual Cluster Resource Quota
+## Virtual Cluster Resource Quota
 
 Virtual clusters inherit resource quotas from the parent cluster group. The cluster group's virtual cluster settings determine the maximum resources per virtual cluster, and can be used to limit the number of resources a virtual cluster can claim from the group. By default, each virtual cluster requires at least 4 CPU, 4 GiB of memory, and 2 GiB of storage. Keep the required minimum values in mind when deploying virtual clusters or when defining the cluster group's virtual cluster settings.
 
@@ -71,7 +66,7 @@ If a user attempts to create a virtual cluster that needs more resources than th
 Refer to the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) to learn more about adjusting cluster group's virtual cluster settings.
 
 
-# User Resource Quotas
+## User Resource Quotas
 
 All Palette users are subject to resource quotas. The two entities that impact a user's resource quotas when interacting with virtual clusters are the tenant developer user quotas and the cluster group virtual cluster settings. 
 
@@ -100,7 +95,7 @@ To change tenant user quotas, switch the scope to **Tenant Admin** and navigate 
 
 :::
 
-# Quota Evaluation
+## Quota Evaluation
 
 Palette evaluates each virtual cluster creation request to verify the requesting user has enough resource quotas remaining based on the defined tenant user quota and if the virtual cluster request falls within the allowed limits of the parent cluster group.
 
@@ -138,7 +133,7 @@ To better understand this concept, use the following examples.
     * 60 GiB of Storage
 
 
-#### Scenario 1
+### Scenario 1
 
 User A is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:
 * 8 CPU
@@ -151,7 +146,7 @@ User A is creating a request to deploy a virtual cluster to the dev-special clus
 
 <br />
 
-#### Scenario 2
+### Scenario 2
 
 User B is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:
 * 4 CPU
@@ -164,7 +159,7 @@ User B is creating a request to deploy a virtual cluster to the dev-special clus
 
 <br />
 
-#### Scenario 3
+### Scenario 3
 
 User B is creating a request to deploy a virtual cluster to the beehive cluster group. The virtual cluster is requesting the following resources:
 * 4 CPU
@@ -174,7 +169,4 @@ User B is creating a request to deploy a virtual cluster to the beehive cluster 
 **Request**: ✅
  
 **Explanation**: The request is accepted because it targets a system-level cluster group, the beehive cluster group and not a cluster group managed by the tenant. Based on the cluster group quota, the number of requested resources falls within the within the approved limits of the system-level quota.
-
-
-<br />
 
