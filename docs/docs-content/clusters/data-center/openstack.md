@@ -1,16 +1,15 @@
 ---
 sidebar_label: "OpenStack"
-title: "Creating new clusters on Spectro Cloud"
+title: "OpenStack"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
 sidebar_position: 20
+toc_min_heading_level: 2
+toc_max_heading_level: 3
+tags: ["data center", "openstack"]
 ---
 
-
-
-# Overview
-
-Following are some highlights of OpenStack clusters provisioned by Palette:
+The following are some highlights of OpenStack clusters provisioned by Palette:
 
 1. Palette enables the ability to use OpenStack as an application platform for engineering team.
 
@@ -21,11 +20,9 @@ Following are some highlights of OpenStack clusters provisioned by Palette:
 
 3. Private Cloud Gateway (PCG) is Palette's self-hosted component to support isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-<br />
-
 ![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
 
-# Prerequisites
+## Prerequisites
 
 The following prerequisites must be met before deploying a Kubernetes clusters in OpenStack:
 
@@ -63,10 +60,10 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
     * One (1) Kubernetes control-plane VIP
 
 
-# OpenStack Cloud Account Permissions
+## OpenStack Cloud Account Permissions
 
 
-<Tabs>
+<Tabs queryString="permissions">
 
 <TabItem label="Cinder Service" value="Cinder Service">
 
@@ -357,7 +354,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 
 
-# Installing Private Cloud Gateway - OpenStack
+## Installing Private Cloud Gateway - OpenStack
 
 
 Use the following steps to install a PCG cluster in your OpenStack environment. You can use the [Palette CLI](/palette-cli) or the PCG Installer Image to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct installation method.
@@ -365,12 +362,12 @@ Use the following steps to install a PCG cluster in your OpenStack environment. 
 
 <br />
 
-<Tabs>
+<Tabs queryString="pcg-install-methods">
 
 <TabItem label="Palette CLI" value="palette-cli">
 
 
-## Prerequisites
+### Prerequisites
 
 
 The following system prerequisites are required to install an OpenStack PCG.
@@ -391,16 +388,13 @@ The following system requirements should be met in order to install a private cl
     * 1 IP for Kubernetes control-plane
 
 Palette provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
-
-    - One additional Kubernetes control plane IP address for rolling upgrades.
-
-
+- One additional Kubernetes control plane IP address for rolling upgrades.
 - A Linux x86-64 host with the Docker daemon installed.
 
 
 
 
-## Install PCG
+### Install PCG
 
 
 1. In an x86 Linux host, open up a terminal session.
@@ -521,7 +515,7 @@ If the deployment fails due to misconfiguration, update the PCG configuration fi
 
 
 
-## Validate
+### Validate
 
 Once installed, the PCG registers itself with Palette. To verify the PCG is registered, use the following steps.
 
@@ -539,7 +533,7 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 
 
-## Edit and Redeploy PCG
+### Edit and Redeploy PCG
 
 To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process. 
 
@@ -579,7 +573,9 @@ To change the PCG install values, restart the installation process using the `pa
  <video title="openstack-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/openstack.mp4"></video>
 
 
-## Prerequisites
+## PCG Installer Image
+
+### Prerequisites
 
 The following system requirements are required to deploy a PCG cluster.
 
@@ -593,11 +589,11 @@ The following system requirements are required to deploy a PCG cluster.
     * One IP address for the Kubernetes control plane.
 
 
-## Generate pairing code
+### Generate pairing code
 
 Navigate to the Private Cloud Gateway page under Administration and Create a new OpenStack gateway. Copy the pairing code displayed on the page. This will be used in subsequent steps.
 
-## Generate gateway config
+### Generate gateway config
 
 Invoke the gateway installer in interactive mode to generate the gateway configuration file. Follow the prompts to provide the Palette Management, OpenStack cloud account, Environment and Placement information as requested.
 
@@ -668,7 +664,7 @@ After this step, a new gateway configuration file is generated and its location 
 e.g.: Config created:/opt/spectrocloud//install-pcg-ar-dev-os-gw-02-aug-01-20210802062349/pcg.yaml
 
 
-## Copy configuration file to known location:
+## Copy Configuration File 
 
 Copy the pcg.yaml file to a known location for easy access and updates.
 
@@ -858,8 +854,6 @@ Delete action is only available for clusters that are fully provisioned. For clu
 # Force Delete a Cluster
 
 A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
-
-## To force delete a cluster:
 
 1. Log in to the Palette Management Console.
 

@@ -3,16 +3,14 @@ sidebar_label: "Create and Manage MAAS Clusters"
 title: "Create and Manage MAAS Clusters"
 description: "Learn how to create and manage MAAS clusters in Palette."
 hide_table_of_contents: false
-
+tags: ["data center", "maas"]
 ---
 
 
 
-# Overview 
-
 Palette supports creating and managing Kubernetes clusters deployed to a MAAS account. This section guides you on how to create a Kubernetes cluster in MAAS that is managed by Palette.
 
-# Prerequisites
+## Prerequisites
 
 - An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
 
@@ -28,11 +26,9 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 - Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for guidance on downloading OS images for MAAS.
 
 
-# Deploy a MAAS Cluster
+## Deploy a MAAS Cluster
 
 To deploy a new MAAS cluster:
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -62,8 +58,6 @@ To deploy a new MAAS cluster:
 
 
 10. Configure the master and worker node pools. The following input fields apply to MAAS master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page. Click **Next** when you are done.
-
-    <br />
 
     #### Master Pool configuration
 
@@ -98,7 +92,7 @@ You can validate your cluster is available by reviewing the cluster details page
 
 <br />
 
-# Delete a MAAS Cluster
+## Delete a MAAS Cluster
 
 When you delete a MAAS cluster, all machines and associated storage disks that were created for the cluster are removed. 
 
@@ -122,7 +116,7 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 <br />
 
 
-# Upgrade a MAAS Cluster
+## Upgrade a MAAS Cluster
 
 Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS cluster, refer to [Manage Clusters](https://docs.spectrocloud.com/clusters/cluster-management/cluster-updates). 
 
@@ -140,12 +134,6 @@ Ensure that the Operating System (OS) image selected for your cluster are downlo
 
 
 
-# Next Steps
+## Next Steps
 
 Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the Day-2 operations and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about Day-2 responsibilities.
-
-
-
-<br />
-
-<br />

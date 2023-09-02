@@ -1,15 +1,17 @@
 ---
 sidebar_label: "VMware"
-title: "Create VMware clusters in Palette"
+title: "VMware"
 description: "Learn how to configure VMware to create VMware clusters in Palette."
 hide_table_of_contents: false
 sidebar_position: 30
+toc_min_heading_level: 2
+toc_max_heading_level: 3
+tags: ["data center", "vmware"]
 ---
-# Overview
+
 
 The following are some architectural highlights of Kubernetes clusters provisioned by Palette on VMware:
 
-<br />
 
 - Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
 
@@ -21,14 +23,12 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 
 - A Private Cloud Gateway (PCG) that you set up within the environment facilitates communications between the Palette management platform and vCenter installed in the private data center.
-
-  <br />
   
   The PCG is Palette's on-prem component to enable support for isolated, private cloud, or data center environments. When the PCG is installed on-prem, it registers itself with Palette's SaaS portal and enables secure communications between the SaaS portal and private cloud environment. 
 
-![vmware_arch_oct_2020.png](/vmware_arch_oct_2020.png)
+  ![vmware_arch_oct_2020.png](/vmware_arch_oct_2020.png)
 
-# Prerequisites
+## Prerequisites
 
 The following prerequisites must be met before deploying a Kubernetes clusters in VMware:
 
@@ -119,7 +119,7 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 
 <br />
 
-# VMware Privileges
+## VMware Privileges
 
 The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
 Permissions and privileges vary depending on the vSphere version you are using. 
@@ -136,7 +136,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 <br />
 
-<Tabs identifier="vm-privileges">
+<Tabs queryString="vm-privileges">
 
 <TabItem label="8.0" value="8.0" >
 
@@ -611,7 +611,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 ---
 
-# Create VMware Cloud Gateway
+## Create VMware Cloud Gateway
 
 <video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></video>
 
@@ -625,7 +625,7 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 <TabItem label="Palette CLI" value="palette-cli">
 
 
-## Prerequisites
+### Prerequisites
 
 
 - Palette version 4.0.X or greater.
@@ -654,7 +654,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 :::
 
-## Install PCG
+### Install PCG
 
 1. In an x86 Linux host, open up a terminal session.
 
@@ -804,7 +804,7 @@ The Palette CLI will now provision a PCG cluster in your VMware environment.
 If the deployment fails due to misconfiguration, update the PCG configuration file and restart the installer. Refer to the [Edit and Redeploy PCG](/clusters/data-center/vmware#editandredeploypcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 
-## Validate
+### Validate
 
 Once installed, the PCG registers itself with Palette. To verify the PCG is registered, use the following steps.
 
@@ -818,7 +818,7 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
 
 
-## Edit and Redeploy PCG
+### Edit and Redeploy PCG
 
 To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process.
 
@@ -854,6 +854,8 @@ To change the PCG install values, restart the installation process using the `pa
 
 <TabItem label="OVA/OVF Template" value="ova-ovf-template">
 
+## PCG Install With OVA/OVF
+
 
 The following points give an overview of what you will do to set up the PCG:
 
@@ -877,7 +879,7 @@ Self-hosted Palette installations provide a system gateway out-of-the-box and ty
 <video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></video>
 
 
-## Prerequisites
+### Prerequisites
 
 
 - Palette version 3.4.X or older. 
@@ -888,7 +890,7 @@ Self-hosted Palette installations provide a system gateway out-of-the-box and ty
 
   - High-Availability (HA) three-node cluster: 6 vCPU, 12 GB memory, 70 GB storage.
 
-## Install PCG
+### Install PCG
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -902,7 +904,7 @@ Self-hosted Palette installations provide a system gateway out-of-the-box and ty
 4. Copy the gateway-installer link. Alternatively, you can download the OVA and upload it to an accessible location and import it as a local file.
 
 
-## vSphere - Deploy Gateway Installer
+### vSphere - Deploy Gateway Installer
 
 1. Deploy a new OVF template by providing the link to the installer OVA as the URL.
 
@@ -985,21 +987,13 @@ A Gateway cluster installation automatically creates a cloud account using the c
 
 </Tabs>
 
-
-<br />
-
 ---
-
-
-
-# Upgrade PCG
+## Upgrade PCG
 
 Palette maintains the OS image and all configurations for the cloud gateway. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and communication about the same is presented in the form of an upgrade notification on the gateway.
 
 Administrators should review the changes and apply them at a suitable time. Upgrading a cloud gateway does not result in any downtime for the Tenant Clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the gateway is being upgraded and are processed as soon as the gateway upgrade is complete.
 
-
-<br />
 
 ### Delete a VMware Cloud Gateway
 
@@ -1016,7 +1010,6 @@ The following steps need to be performed to delete a cloud gateway:
 
 4. Delete the Gateway Virtual Machines from vSphere.
 
-<br />
 
 ### Resize PCG
 You can set up the PCG as a single-node cluster or as a three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
@@ -1036,7 +1029,7 @@ You can set up the PCG as a single-node cluster or as a three-node cluster for h
 Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for a 1-node gateway to support future expansion.
 :::
 
-# IP Address Management
+## IP Address Management
 
 Palette supports both DHCP and Static IP-based allocation strategies for the VMs that are launched during cluster creation. IP Pools can be defined using a range or a subnet. Administrators can define one or more IP pools linked to a PCG.
 
@@ -1056,15 +1049,18 @@ The following is a description of various IP Pool properties:
 | **Name server addresses** | A comma-separated list of name servers. e.g., 8.8.8.8 |
 | **Restrict to a Single Cluster** | Select this option to reserve the pool for the first cluster that uses this pool. By default, IP pools can be shared across clusters.|
 
-# Create a VMware Cloud Account
+## Create a VMware Cloud Account
 
-:::info
-Configuring the private cloud gateway is a prerequisite task. A default cloud account is created when the private cloud gateway is configured. This cloud account can be used to create a cluster.
-:::
+Use the following steps to create a VMware cloud account.
 
-:::info
-Enterprise version users should choose the <i>Use System Gateway</i> option.
-:::
+
+### Prerequisites
+
+- A VMware cloud gateway must be configured. Refer to the [Create VMware Cloud Gateway](/clusters/data-center/vmware#createvmwarecloudgateway) section for guidance.
+
+  :::info
+  Enterprise version users should choose the <i>Use System Gateway</i> option.
+  :::
 
 In addition to the default cloud account already associated with the private cloud gateway, new user cloud accounts can be created for the different vSphere users.
 

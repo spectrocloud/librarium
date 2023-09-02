@@ -1,18 +1,15 @@
 ---
 sidebar_label: "Architecture"
-title: "MAAS Architecture with Palette"
+title: "Architecture"
 description: "Learn about the architecture used to support MAAS using Palette"
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["data center", "maas", "architecture"]
 ---
 
 
-
-# MAAS Bare-Metal Kubernetes Architecture
-
 Canonical MAAS is an open-source tool that lets you discover, commission, deploy and re-deploy operating systems to physical servers. The following are some architectural highlights of bare-metal Kubernetes clusters that Palette deploys using Canonical MAAS. Refer to the PCG deployment options section below to learn more about PCG deployment.
 
-<br />
 
 - Palette integrates with MAAS through Spectro Cloud’s open-source Cloud Native Computing Foundation (CNCF) [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas).
 Refer to the table below
@@ -26,16 +23,13 @@ Refer to the table below
 
 - When the PCG is installed, it registers itself with a Palette instance and enables secure communication between the SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-
-  <br />
-
   The diagram below illustrates how MAAS works with Palette using a PCG.
 
   ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.png)
 
   <br />
 
-# PCG Deployment Options
+## PCG Deployment Options
 
 Palette can communicate with MAAS using the following deployment options.
 
@@ -47,7 +41,7 @@ Palette can communicate with MAAS using the following deployment options.
 
 - **System Private Gateway**
 
-## Private Cloud Gateway
+### Private Cloud Gateway
 
 When a user wants to deploy a new cluster on a bare metal cloud using MAAS with Palette, Palette needs connectivity to MAAS. Often, MAAS is behind a firewall or a Network Address Translation (NAT) gateway, and Palette needs help to reach MAAS directly. 
 
@@ -62,7 +56,7 @@ Typically, the PCG is used with Palette SaaS. However, a PCG is also required if
 <br />
 
 
-## System Private Gateway
+### System Private Gateway
 
 A System Private Gateway can be used if a self-hosted Palette instance can communicate directly with a MAAS installation. A System Private Gateway is a PCG service that is enabled inside the self-hosted Palette instance. 
 
@@ -86,6 +80,3 @@ The following table explains the different use cases for when a PCG and System P
 |-----------|----|----------------|
 | Firewall or NAT between MAAS and a self-hosted Palette instance | ✅ | ❌ |
 | Direct connectivity between MAAS and a Palette instance | ✅ | ✅ |
-
-
-<br />

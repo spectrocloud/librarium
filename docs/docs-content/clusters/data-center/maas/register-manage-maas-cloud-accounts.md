@@ -4,15 +4,13 @@ title: "Register and Manage MAAS Cloud Accounts"
 description: "Learn how to register and manage your MAAS cloud accounts in Palette."
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["data center", "maas"]
 ---
 
 
-
-# Overview 
-
 When you install the Private Cloud Gateway (PCG), a cloud account is auto-created in every project in Palette. You can use this cloud account to create clusters at either the tenant or the project level. If desired, you can create additional cloud accounts that reference specific PCGs. 
 
-# Prerequisites
+## Prerequisites
 
 - An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
 
@@ -27,7 +25,7 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
  For details, refer to the MAAS document on [how to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
 
 
-# Register a MAAS Cloud Account
+## Register a MAAS Cloud Account
 
 Follow these steps to create additional MAAS cloud accounts.
 
@@ -69,22 +67,13 @@ For the self-hosted Palette instance, MAAS is reachable on port 5240.
 5. Click **Confirm** to register your MAAS cloud account. 
 
 
-# Validate
+## Validate
 
 You can validate your MAAS cloud account is registered by reviewing the **Cloud Accounts** page. Ensure your account is listed under **MAAS**. 
 
-# Next Steps
+## Next Steps
 
 Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters) for guidance.
-
-# References 
-
-- [How to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key)
-
-<br />
-
-<br />
-
 
 
 
