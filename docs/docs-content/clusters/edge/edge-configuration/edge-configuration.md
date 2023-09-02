@@ -3,16 +3,13 @@ sidebar_label: "Install Configuration"
 title: "Install Configuration"
 description: "Learn about the possible Palette Edge install configurations available."
 hide_table_of_contents: false
-
+tags: ["edge"]
 ---
-
-# Overview
 
 The Edge Installer is responsible for preparing the Edge host to be ready for workloads. The Edge Installer supports the ability to specify a user data configuration file. You can use this configuration file to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly in your environment.
 
 To better understand the Edge installation process, review the order of operations.
 
-<br />
 
 ### Order of Operations:
 
@@ -56,18 +53,15 @@ The Edge installation process accepts two types of configurations that you can u
 
 
 
-# Edge Installer Configuration
+## Edge Installer Configuration
 
 The Edge installation process expects you to specify installation parameters. You can supply the install parameters in multiple stages. You can provide common installation configurations for all your sites during the manufacturing or staging phases.
 
 You can also specify additional location-specific configurations at the site during the installation. The install configurations provided in various stages are merged to create the edge host's final configuration.
 
-# Edge OS Configuration
+## Edge OS Configuration
 
 The Edge installation process supports the ability for you to customize your operating system (OS) through the usage of cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer and at the Operating System (OS) layer by customizing the OS pack. Once the edge host installation process is complete, the OS stages take effect during the boot-up process.
-
-<br />
-
 
 
 To effectively use the Edge Installer, we recommend you review the Edge [installer configuration](/clusters/edge/edge-configuration/installer-reference) page so you gain an overview of all the available parameters.
@@ -75,7 +69,7 @@ To effectively use the Edge Installer, we recommend you review the Edge [install
 
 
 
-# Resources
+## Resources
 
 - [Edge OS Configuration: Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init)
 

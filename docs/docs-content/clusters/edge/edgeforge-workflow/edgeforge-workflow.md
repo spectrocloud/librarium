@@ -1,19 +1,15 @@
 ---
 sidebar_label: "EdgeForge Workflow"
-title: "Edge Artifact Builder Workflow"
+title: "EdgeForge Workflow"
 description: "Learn how to build your own Edge artifacts customized to your specific needs."
 hide_table_of_contents: false
-
+tags: ["edge"]
 ---
 
-
-# Overview
 
 *EdgeForge* is the process or workflow of preparing an Edge host with all the required components and dependencies. The EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a successful site deployment. 
 
 EdgeForge contains three critical components.
-
-<br />
 
 * Edge Installer ISO.
 
@@ -30,17 +26,16 @@ Each component plays a critical role in the [lifecycle](/clusters/edge/edge-nati
 ![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
 
 
-# Get Started
+## Get Started
 
 
 To start building a custom Edge artifact, use the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
 
-
 <br />
 
-# Edge Artifacts
+## Edge Artifacts
 
-## Edge Installer ISO
+### Edge Installer ISO
 
 An ISO file that bootstraps the installation is created in the EdgeForge process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation.
 
@@ -48,13 +43,13 @@ An ISO file that bootstraps the installation is created in the EdgeForge process
 
 ![A diagram breaking up the internal components of the ISO image](/clusters_edge_edgeforge-workflow_iso-diagram.png)
 
-## Edge Host Agent Container Image
+### Edge Host Agent Container Image
 
 The Edge host agent container image contains the Palette Edge host agent. The agent is responsible for Day-2 operations and management of the Edge host. The Edge host agent also provides ongoing support during cluster runtime.
 
 <br />
 
-## Edge Provider Container Images
+### Edge Provider Container Images
 
 These are [Kairos](https://kairos.io/)-based container images for each supported Operating System (OS) and Kubernetes combination. These container images are downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
 
@@ -71,15 +66,7 @@ You can specify a custom registry for the Edge Installer to use during installat
 
 :::
 
-<br />
-
-
-
-
-
-
-
-# Deployment Scenarios
+## Deployment Scenarios
 
 The Edge Installer supports various deployment scenarios. You can customize your Edge host deployment by using the Edge Installer configuration user data, creating content bundles, and creating a custom Edge artifact. Below are a few common scenarios that organizations encounter when deploying an Edge host that requires customization. If you have a similar scenario, use the CLIs to help you with the customization.
 
@@ -106,7 +93,7 @@ For environments that require a different runtime OS, you can specify another OS
 
 <br />
 
-# Resources
+## Resources
 
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
