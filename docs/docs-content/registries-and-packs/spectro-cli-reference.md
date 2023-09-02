@@ -14,11 +14,11 @@ sidebar_position: 10
 
 The Spectro CLI tool is a command-line interface for the Spectro Cloud Pack Registry server to upload or download the packs using commands.
 
-# Prerequisites
+## Prerequisites
 
 - A custom pack registry server must be up and running.
 
-# Installation
+## Installation
 
 The Spectro CLI tool is currently available for OSX and Linux.
 
@@ -50,17 +50,17 @@ The Spectro CLI tool is currently available for OSX and Linux.
     chmod +x spectro
     ```
 
-# Global Arguments
+## Global Arguments
 
 List of Arguments available to all the Spectro CLI commands:
 
-# Global Flags
+## Global Flags
 
 * List of Flags available to all the Spectro CLI commands:
 
     * h, --help - help for each command
 
-# Commands
+## Commands
 
 <Tabs queryString="cliCommands">
 
