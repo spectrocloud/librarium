@@ -1,14 +1,12 @@
 ---
 sidebar_label: "Register Edge Host"
-title: "Register your edge hosts with the Palette Management Console"
+title: "Register Edge Host"
 description: "Learn how to register your edge hosts with the Palette Management Console"
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 20
+tags: ["edge"]
 ---
 
-
-
-# Overview
 
 To use an Edge host with a host cluster, you must first register it with Palette. A registration token in the user data is required to complete the registration process. You have three options to register the Edge host with Palette. 
 
@@ -27,7 +25,7 @@ A registration token is required for the Edge host registration process. Without
 
 
 
-# Registration Method
+## Registration Method
 
 To register the Edge host, you are required to use a registration token with all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project in the Edge Installer [user data](/clusters/edge/edge-configuration/installer-reference) configuration file.
 
@@ -55,7 +53,7 @@ Select the registration method that best fits your organizational needs and revi
 
 <br />
 
-<Tabs>
+<Tabs queryString="registration">
 
 <TabItem label="Auto Registration" value="auto-registration">
 
@@ -305,6 +303,6 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 </Tabs>
 
-# Next Steps
+## Next Steps
 
 The next step in the installation process is to add the Edge host to a cluster or to create an Edge Native host cluster. Check out the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) guide to complete the last step of the installation process.

@@ -2,8 +2,9 @@
 sidebar_label: "Prepare Edge Hosts for Installation"
 title: "Stage common user data and prepare edge host for installation"
 description: "Learn how to prepare edge hosts for installation before shipping them out to site for site installation"
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 10
+tags: ["edge"]
 ---
 
 # Overview
@@ -28,7 +29,7 @@ You can ship your Edge hosts after you complete this step. Use the following ste
 
 <br />
 
-# Prepare Edge Host
+## Prepare Edge Host
 
 Pick the target environment for your Edge host.
 
@@ -38,7 +39,7 @@ Pick the target environment for your Edge host.
 
 <TabItem label="Bare Metal" value="bare-metal">
 
-## Prerequisites
+### Prerequisites
 
 - Edge Installer ISO file. Check out the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow/palette-canvos/) to learn how to create an Edge Installer image or use the default Edge Installer image.
 
@@ -62,7 +63,7 @@ The following items are optional and not required but may apply to your use case
 
 
 
-## Installer Handoff
+### Installer Handoff
 
 1. Insert the USB drive containing the Edge Installer ISO and potentially your user data.
 
@@ -81,7 +82,7 @@ The following items are optional and not required but may apply to your use case
 6. Remove the USB disks and ship your Edge host devices to the site for installation.
 
 
-## Validate
+### Validate
 
 You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
@@ -94,7 +95,7 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 <br />
 
 
-## Prerequisites
+### Prerequisites
 
 - Edge Installer ISO file. Check out the [build images](/clusters/edge/edgeforge-workflow/palette-canvos/) guide to learn how to create an Edge Installer image or use the default Edge Installer image.
 
@@ -105,7 +106,7 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 
 
 
-## Installer Handoff
+### Installer Handoff
 
 1. Log in to vCenter Server by Using the vSphere Client.
 
@@ -240,7 +241,7 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 
 You can ship this OVF template along with the Edge host to the physical site. Use the OVM template for the site installation.
 
-## Validate
+### Validate
 
 You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
@@ -249,6 +250,6 @@ You can validate that the Edge host is ready for the site installation by simula
 </Tabs>
 
 
-# Next Steps
+## Next Steps
 
 Now that you have completed the staging process, you can ship the Edge hosts to the destination site. Proceed to the [Perform Site Install](/clusters/edge/site-deployment/site-installation) step.

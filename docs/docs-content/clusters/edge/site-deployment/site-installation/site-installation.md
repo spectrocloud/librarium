@@ -1,12 +1,10 @@
 ---
 sidebar_label: "Perform Site Install"
-title: "Run the Palette edge installer on all your edge hosts "
-description: "Learn how to run the Palette Edge installer on your edge hosts "
-hide_table_of_contents: false
-
+title: "Perform Site Install"
+description: "Learn how to deploy the Palette Edge installer on your edge hosts "
+hide_table_of_contents: true
+tags: ["edge"]
 ---
-
-# Overview
 
 You perform a site installation by powering on the Edge host. The Edge Installer will start and begin the installation process, which may vary depending on your environment and Edge host type.  
 
@@ -21,11 +19,10 @@ The Edge host site installation has three stages, as described in the table.
 |Cluster Provisioning | The Edge host boots into the specified provider Operating System and proceeds with the cluster deployment. You can find the instructions in the [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment) resource | Yes |
 
 
-# Installation
+## Installation
 
 Use the following steps to complete the Edge host installation.
 
-<br />
 
 :::info
 
@@ -159,6 +156,6 @@ You can also use `kubectl` to issue commands against the cluster. Check out the 
 
 </Tabs>
 
-# Next Steps
+## Next Steps
 
 Your Edge host is now registered with Palette and is part of a host cluster. You can repeat the steps from [Prepare Edge Host for Installation](/clusters/edge/site-deployment/stage) and [Perform Site Install](/clusters/edge/site-deployment/site-installation) for any additional Edge host you want to add to the host cluster. The next step is for you to become more familiar with Day-2 responsibilities. Check out the [Manage Clusters](/clusters/cluster-management) guide to learn more about Day-2 responsibilities.

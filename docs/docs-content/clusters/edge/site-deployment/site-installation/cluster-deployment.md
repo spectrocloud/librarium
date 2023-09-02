@@ -2,20 +2,19 @@
 sidebar_label: "Create Cluster Definition"
 title: "Create Cluster Definition"
 description: "Define your Edge cluster using the Edge hosts that are registered and available."
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 30
+tags: ["edge"]
 ---
 
 
-
-# Overview
 
 To complete the Edge Installation process, an Edge host must become a member of a host cluster. You can add an Edge host to an existing host cluster of type Edge Native, or you can create a new host cluster for Edge hosts and make the Edge host a member.
 
 
 <br />
 
-<Tabs>
+<Tabs queryString="deploy-host">
 
 <TabItem label="Create an Edge Native Host Cluster" value="create-cluster">
 

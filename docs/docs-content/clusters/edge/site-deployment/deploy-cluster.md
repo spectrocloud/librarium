@@ -5,9 +5,9 @@ description: "Learn how to deploy an Edge host using VMware as the deployment pl
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["edge", "tutorial"]
 ---
 
-# Deploy Edge Cluster
 
 Palette supports deploying Kubernetes clusters in remote locations to support edge computing workloads. Palette's Edge solution enables you to deploy your edge devices, also called Edge hosts, which contain all the required software dependencies to support Palette-managed Kubernetes cluster deployment.  
 
@@ -31,10 +31,9 @@ For learning purposes, you will set up Virtual Machines (VMs) as Edge hosts and 
 ![An overarching diagram showing the tutorial workflow.](/tutorials/edge/clusters_edge_deploy-cluster_overarching.png)
 
  
-# Prerequisites
+## Prerequisites
 
 To complete this tutorial, you will need the following:
-<br/>
 
 * Access to a VMware vCenter environment where you will provision VMs as Edge hosts. You will need the server URL, login credentials, and names of the data center, data store, resource pool, folder, cluster, and DHCP-enabled network. 
 
@@ -79,14 +78,14 @@ You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.c
   ![A screenshot of a registration token in Palette](/tutorials/edge/clusters_edge_deploy-cluster_registration-token.png)
 
 
-# Build Edge Artifacts
+## Build Edge Artifacts
 
 In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile. 
 
 This tutorial builds and uses the provider image compatible with K3s v1.25.2. 
 <br />
 
-## Check Out Starter Code
+### Check Out Starter Code
 
 Issue the following and subsequent command-line instructions on your Linux machine, which this tutorial refers to as the development environment.
 
@@ -147,7 +146,7 @@ OS_VERSION=22
 K8S_DISTRIBUTION=k3s
 ISO_NAME=palette-edge-installer
 PE_VERSION=$(git describe --abbrev=0 --tags)
-platform=linux/amd64
+ARCH=amd64
 EOF
 ```
 
@@ -340,13 +339,13 @@ As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you
 <br />
 
 
-# Provision Virtual Machines
+## Provision Virtual Machines
 
 In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot modify templates after you create them, so cloning the VM template will ensure all VMs have *consistent* guest OS, dependencies, and user data configurations installed. 
 
 This tutorial example will use [Packer](https://www.packer.io/) to create a VM template from the Edge installer ISO image. Later, it will use [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) to clone the VM template to provision three VMs. You do not have to install Packer or GOVC in your Linux development environment. You will use our official tutorials container that already contains the required tools. <br />
 
-## Create a VM Template
+### Create a VM Template
 
 You will use the **heredoc** script to create a VM template. The script prompts you to enter your VMWare vCenter environment details and saves them as environment variables in a file named **.packerenv**. Packer reads the environment variables during the build process.
 
@@ -422,7 +421,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 The **vsphere.hcl** file content is shown below for your reference. This tutorial does not require you to modify these configurations. 
 <br />
 
-```hideClipboard bash 
+```bash hideClipboard 
 # VM Template Name
 vm_name                 = "palette-edge-template"
 # VM Settings
@@ -483,7 +482,7 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 <br />
 
 
-## Provision VMs
+### Provision VMs
 
 Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VM and reference the VM template that Packer created.  Remember that the VM instances you are deploying simulate bare metal devices.
 
@@ -544,7 +543,7 @@ The **edge/vmware/clone_vm_template/** directory in the container has the follow
 Below is the **setenv.sh** file content for your reference. This tutorial does not require you to modify these configurations. 
 <br />
 
-```hideClipboard bash
+```bash hideClipboard
 #!/bin/bash
 # Number of VMs to provision
 export NO_OF_VMS=3
@@ -585,7 +584,7 @@ docker run -it --rm \
 The cloning process can take 3-4 minutes to finish and displays output similar to that shown below. The output displays the Edge host ID for each VM, as highlighted in the sample output below. VMs use this host ID to auto-register themselves with Palette.
 <br />
 
-```hideClipboard bash {7}
+```bash hideClipboard {7}
 # Sample output for one VM
 Cloning /Datacenter/vm/sp-sudhanshu/palette-edge-template to demo-1...OK
 Cloned VM demo-1
@@ -596,7 +595,6 @@ Edge Host ID   VM demo-1 : edge-97f2384233b498f6aa8dec90c3437c28
 ``` 
 
 For each of the three VMs, copy the Edge host ID. An Edge host ID looks similar to `edge-97f2384233b498f6aa8dec90c3437c28`. 
-<br />
 
 :::caution
 
@@ -605,7 +603,7 @@ You must copy the Edge host IDs for future reference. In addition, if auto regis
 :::
 
 
-# Verify Host Registration
+## Verify Host Registration
 
 Before deploying a cluster, you must verify Edge host registration status in Palette. 
 
@@ -618,7 +616,7 @@ If the three Edge hosts are not displayed in the **Edge hosts** tab, the automat
 If you need help, the detailed instructions are available in the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) guide.
 <br />
 
-# Deploy a Cluster
+## Deploy a Cluster
 
 Once you verify the host registration, the next step is to deploy a cluster. In this section, you will use the Palette User Interface (UI) to deploy a cluster that is made up of the three Edge hosts you deployed.
 <br />
@@ -873,7 +871,7 @@ Review all configurations in this section. The **Review** page displays the clus
 While deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**, and **Events**. 
 <br /> 
 
-# Validate
+## Validate
 
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Select your cluster to display the cluster **Overview** page and monitor cluster provisioning progress.  
 
@@ -903,12 +901,12 @@ You have successfully provisioned an Edge cluster and deployed the Hello Univers
 
 <br />
 
-# Cleanup
+## Cleanup
 
 The following steps will guide you in cleaning up your environment, including the cluster, cluster profile, and Edge hosts. 
 <br />
 
-##  Delete Cluster and Profile
+###  Delete Cluster and Profile
 
 In Palette, display the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option, as shown in the screenshot below.
 
@@ -928,7 +926,7 @@ After you delete the cluster, click **Profiles** on the left **Main Menu**, and 
 Wait for Palette to successfully delete the resources. 
 <br />
 
-##  Delete Edge Hosts
+###  Delete Edge Hosts
 
 Switch back to the **CanvOS** directory in the Linux development environment containing the **.goenv** file, and use the following command to delete the Edge hosts. 
 <br />
@@ -941,7 +939,7 @@ docker run --interactive --tty --rm --env-file .goenv \
 
 <br />
 
-##  Delete Edge Artifacts
+###  Delete Edge Artifacts
 
 If you want to delete Edge artifacts from your Linux development environment, delete the Edge installer ISO image and its checksum by issuing the following commands from the **CanvOS/** directory.
 <br />
@@ -968,13 +966,14 @@ docker image rm --force ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 <br /> 
 
-##  Clean up VMware vCenter Environment
+### Delete VMware vSphere Resources
+
 Navigate to **Inventory** > **VMs and Templates** in your vSphere client. To delete the **palette-edge-template** VM template, right-click on it and choose **Delete** option from the **drop-down Menu**.
 
 Switch to the **Storage** view in your vSphere client. To delete the **palette-edge-installer.iso** file from the **packer_cache/** directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the **drop-down Menu**.
 <br />
 
-# Wrap-Up
+## Wrap-Up
 
 Building Edge artifacts allows you to prepare Edge hosts and deploy Palette-managed Edge clusters. Edge artifacts consist of an Edge installer ISO and provider images for all the Palette-supported Kubernetes versions. An Edge installer ISO assists in preparing the Edge hosts, and the provider image is used in the cluster profile. 
 
@@ -985,7 +984,6 @@ Palette's Edge solution allows you to prepare your Edge hosts with the desired O
 Before you plan a production-level deployment at scale, you can prepare a small set of Edge devices for development testing and to validate the devices' state and installed applications. Once the validation is satisfactory and meets your requirements, you can roll out Edge artifacts and cluster profiles for deployment in production. This approach maintains consistency while deploying Kubernetes clusters at scale across all physical sites, be it 1000 or more sites. In addition, you can use Palette to manage the entire lifecycle of Edge clusters.
 
 To learn more about Edge,  check out the resources below.
-<br />
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
 

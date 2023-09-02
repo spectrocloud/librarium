@@ -1,13 +1,11 @@
 ---
 sidebar_label: "Deployment"
-title: "Edge Site Deployment"
+title: "Deployment"
 description: "Learn about the Palette Edge installation process."
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["edge"]
 ---
-
-# Overview
-
 
 The Edge host deployment process consists of four phases described in the following table.
 
@@ -31,14 +29,14 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 3. [Perform Site Install](/clusters/edge/site-deployment/site-installation)
 
-:::info
+  :::info
 
-In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](/clusters/edge/edge-native-lifecycle) resource, highlighting the various roles involved.
+  In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](/clusters/edge/edge-native-lifecycle) resource, highlighting the various roles involved.
 
-:::
+  :::
 
 
-# Resources
+## Resources
 
 - [Model Cluster Profile](/clusters/edge/site-deployment/model-profile)
 
