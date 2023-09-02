@@ -328,7 +328,6 @@ const config = {
           dark: "rgb(50, 50, 50)",
         },
         config: {
-          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
         },
       },
     }),
