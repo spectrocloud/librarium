@@ -3,11 +3,11 @@ sidebar_label: "Try Palette for Free"
 title: "About Free Tier"
 description: "Palette Free Tier, Freemium, Free Tier"
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 ---
 
-# Try Palette for Free
+## Try Palette for Free
 
 **Palette Free Tier** encourages new users to explore Palette, without having to make a purchase decision, before they are ready. With unlimited kilo-Core-hour usage the first month, there is full access to the Spectro Cloud Palette Platform to create, deploy, and manage Palette resources. 
 
@@ -36,11 +36,11 @@ The Free Cloud Credit ends when the $100 of the free cloud credit, granted by Sp
 Upgrade to a Cloud Account at any time after trying the Free Cloud Credit service. Create your own Cloud Account and replace the Free Cloud Credit with your own Cloud Account information.
 
 
-# Kilo-Core-hour Calculations
+### Kilo-Core-hour Calculations
 
 Usage is calculated as a concept of kilo-Core-hour or kCh. This is a measurement of the number of CPU Cores multiplied by Time. For instance, for a 4-node cluster which has 16 CPU cores each, one day of management will equate to 4 x 16 CPU cores x 24 hours = 1.54 kCh.
 
-# Next Steps
+## Next Steps
 
 To get started with Palette Free Tier, visit the [signup link](https://www.spectrocloud.com/free-trial).
 

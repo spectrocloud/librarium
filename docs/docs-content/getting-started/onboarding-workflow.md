@@ -3,11 +3,9 @@ sidebar_label: "Palette Onboarding Workflow"
 title: "Palette Onboarding Workflow"
 description: "Palette Onboarding Workflow"
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 20
 ---
-
-# Palette Onboarding Workflow
 
 Palette offers a product tour to help you get familiar with the console and many of its key components.
 
@@ -34,9 +32,11 @@ The product tour is followed by a Palette experience session.  Here we make sure
 * Out-of-the-box (OOTB) Configurations:
   * Try one of our out-of-the-box cluster profile configurations applicable on your own cluster or in our Palette Virtual Cluster environment.
 
-:::info
-Once the user experience session is finished, the user will be familiar with Palette's workflow and deployment pipeline. This section of the document is a quick start to the deployment process with simple instructions to jump start the Palette journey. The different Palette features and Day-2 operations are detailed in the remainder of this documentation site.
-:::
+  <br />
+
+  :::info
+  Once the user experience session is finished, the user will be familiar with Palette's workflow and deployment pipeline. This section of the document is a quick start to the deployment process with simple instructions to jump start the Palette journey. The different Palette features and Day-2 operations are detailed in the remainder of this documentation site.
+  :::
 
 
 ### Connect with us
@@ -45,12 +45,12 @@ Once the user experience session is finished, the user will be familiar with Pal
 * support@spectrocloud.com
 
 
-# Palette Workflow
+## Palette Workflow
 
 Palette requires the creation of a cluster profile before a workload cluster can be created. This is because [cluster profiles](/cluster-profiles) are
 templates created with preconfigured layers that define the required dependencies, such as the Operating System (OS) and Kubernetes version for your cluster.  The cluster profile is a core component of Palette. You can learn more about cluster profiles by reviewing the [cluster profile](/cluster-profiles) reference page.
 
-# Resources
+## Resources
 
 * [Create your Cluster Profile](/cluster-profiles/task-define-profile/#creatingclusterprofiles)
 
