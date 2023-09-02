@@ -22,7 +22,6 @@ start: ## Start a local development server
 
 build: ## Run npm build
 	@echo "building site"
-	npm run generate-api-docs
 	npm run clear
 	rm -rf build
 	npm run build
