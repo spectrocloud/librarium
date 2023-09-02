@@ -4,6 +4,7 @@ title: "Create a New User in Palette "
 description: "Create a new user in Palette "
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["user-management"]
 ---
 
 

@@ -5,6 +5,7 @@ description: "Learn how to create and remove tenants in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["vertex", "management"]
 ---
 
 

@@ -5,6 +5,7 @@ description: "Troubleshooting steps for errors encountered with upgrade actions.
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
+tags: ["troubleshooting", "palette-upgrade"]
 ---
 
 

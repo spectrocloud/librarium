@@ -8,6 +8,7 @@ toc_max_heading_level: 3
 sidebar_position: 0
 sidebar_custom_props: 
   icon: "audits"
+tags: ["release-notes"]
 ---
  
 

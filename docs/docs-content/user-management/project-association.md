@@ -4,6 +4,7 @@ title: "Associate a User or Team with a Project"
 description: "Associate a User or Team with a Project"
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["user-management"]
 ---
 
 

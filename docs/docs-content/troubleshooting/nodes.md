@@ -1,13 +1,12 @@
 ---
 sidebar_label: "Nodes & Clusters"
-title: "Troubleshooting steps for Kubernetes nodes and clusters"
+title: "Nodes and Clusters"
 description: "Troubleshooting steps for Kubernetes nodes and clusters when managed by Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["troubleshooting", "nodes", "clusters"]
 ---
-
-# Nodes & Clusters
 
 This page covers common debugging scenarios for nodes and clusters after they have been deployed.
 

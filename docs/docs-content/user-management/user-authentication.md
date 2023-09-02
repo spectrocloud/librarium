@@ -5,6 +5,7 @@ description: "Palette's API key for user authentication for API access "
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["user-management"]
 ---
 
 

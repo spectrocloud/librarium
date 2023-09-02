@@ -5,6 +5,7 @@ description: "Learn how to migrate a VM to another physical host in the cluster 
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["vmo"]
 ---
 
 

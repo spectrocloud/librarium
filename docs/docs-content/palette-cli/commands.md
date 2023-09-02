@@ -4,6 +4,7 @@ title: "Commands"
 description: "Reference resource for all the supported Palette CLI commands."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["palette-cli"]
 ---
 
 

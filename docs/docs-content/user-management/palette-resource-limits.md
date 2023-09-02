@@ -5,6 +5,7 @@ description: "Understand the default resource limits for Palette and learn how t
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["user-management"]
 ---
 
 

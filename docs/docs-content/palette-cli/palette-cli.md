@@ -5,6 +5,7 @@ description: "Learn how to use the Palette CLI."
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "terminal"
+tags: ["palette-cli"]
 ---
 
 

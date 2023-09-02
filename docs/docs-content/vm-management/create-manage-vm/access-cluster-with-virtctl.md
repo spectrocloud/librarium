@@ -5,6 +5,7 @@ description: "Set up KubeVirt virtctl to facilitate VM operations in Palette Vir
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["vmo"]
 ---
 
 

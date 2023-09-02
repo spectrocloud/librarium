@@ -5,6 +5,7 @@ description: "Learn how icons can help you identify FIPS compliance when you con
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["vertex", "fips"]
 ---
 
 

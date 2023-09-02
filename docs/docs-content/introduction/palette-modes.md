@@ -3,16 +3,17 @@ sidebar_label: "App Mode and Cluster Mode"
 title: "App Mode and Cluster Mode"
 description: "Learn about the two modes available in Palette and how they benefit your Kubernetes experience."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
+tags: ["app mode", "cluster mode"]
 ---
 
-# Palette Modes
+## Palette Modes
 Palette supports two consumption modes - each aimed at different use cases and, potentially, different personas. The two modes are _App Mode_ and _Cluster Mode_.  These modes can be used separately but often work together by sharing resources or relying on resources that each provides. 
 
 ![App Mode and Cluster Mode](/docs_introduction_palette-modes.png)
 
-# What is Cluster Mode?
+### What is Cluster Mode?
 
 Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a [_Host Cluster_](/glossary-all#hostcluster). 
 
@@ -33,7 +34,7 @@ Virtual clusters are powerful and beneficial to teams due to their characteristi
 Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters) virtual clusters, which helps significantly in reducing costs. App mode heavily leverages virtual clusters. 
 
 
-# What is App Mode?
+### What is App Mode?
 
 App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](/devx/app-profile). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
 
@@ -46,12 +47,12 @@ Alternatively, you could use app mode to offer your own Palette-managed host clu
 As the consumer of app mode, you simply focus on deploying your application to a Kubernetes cluster by specifying the app profile. The overhead of managing infrastructure has essentially been removed for you, thus freeing up your time to focus on what matters the most, developing an application that solves business problems.   
 
 
-# How to Access Each Mode? 
+### How to Access Each Mode? 
 
 You can quickly toggle between **App Mode** and **Cluster Mode** by navigating to the **User Menu** at top right and selecting the mode you want.
  
 
-# App Mode or Cluster Mode?
+### App Mode or Cluster Mode?
 
 You might ask yourself, "How do I know which mode I should use?” The answer comes down to your objective. 
 
@@ -63,7 +64,6 @@ App Mode may not meet your needs if your application requires a lot of resources
 
 Below are some of the characteristics of each mode. Use this to help you better understand the differences between the two modes. 
 
-<br />
 
 - App Mode 
     - Optimized for the developer experience
@@ -72,7 +72,6 @@ Below are some of the characteristics of each mode. Use this to help you better 
     - Deploy applications without worrying about Kubernetes infrastructure
     - Scope of concerns limited to app profiles
 
-<br />
 
 - Cluster Mode
     - Optimized for power users and those that are comfortable with deploying Kubernetes clusters
@@ -87,6 +86,6 @@ Below are some of the characteristics of each mode. Use this to help you better 
     - Configure registries
 
 
-# Next Steps
+## Next Steps
 
 Get started with [Palette](https://console.spectrocloud.com/) today and deploy an application though [app mode](/devx). Or create a Kubernetes cluster on your favorite platform and let Palette handle the challenges of maintaining Kubernetes clusters by leveraging cluster mode and [cluster profiles](/cluster-profiles).

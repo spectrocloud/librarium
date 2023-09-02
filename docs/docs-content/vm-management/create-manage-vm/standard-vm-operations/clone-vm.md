@@ -5,6 +5,7 @@ description: "Learn how to clone a VM from a template using Palette Virtual Mach
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["vmo"]
 ---
 
 

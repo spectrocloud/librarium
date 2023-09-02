@@ -5,6 +5,7 @@ description: "Common issues and their solutions in the deployment of Spectro Clo
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "screwdriver-wrench"
+tags: ["troubleshooting"]
 ---
 
 

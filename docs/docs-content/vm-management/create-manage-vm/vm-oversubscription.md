@@ -5,6 +5,7 @@ description: "Learn how to improve VM performance by maximizing virtual machine 
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["vmo"]
 ---
 
 

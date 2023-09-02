@@ -4,7 +4,7 @@ title: "Install Palette VerteX on VMware"
 description: "Learn how to install Palette VerteX on VMware."
 icon: ""
 hide_table_of_contents: false
-
+tags: ["vertex", "vmware"]
 ---
 
 

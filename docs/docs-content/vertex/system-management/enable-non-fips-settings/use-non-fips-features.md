@@ -5,6 +5,7 @@ description: "Use non-FIPS features such as backup, restore, and scans."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["vertex", "non-fips"]
 ---
 
 

@@ -5,6 +5,7 @@ description: "Learn about roles and permissions to apply to VMs when using Palet
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["vmo"]
 ---
 
 

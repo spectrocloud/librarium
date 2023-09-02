@@ -5,6 +5,7 @@ description: "Dive into Palette's user management capabilities and how to manage
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "roles"
+tags: ["user-management"]
 ---
 
 

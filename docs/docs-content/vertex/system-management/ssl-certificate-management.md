@@ -5,6 +5,7 @@ description: "Upload and manage SSL certificates in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["vertex", "management"]
 ---
 
 

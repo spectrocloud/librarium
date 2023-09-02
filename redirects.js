@@ -183,6 +183,18 @@ const redirects = [
     from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile`,
     to: `/vm-management/vm-packs-profiles/create-vmo-profile`,
   },
+  {
+    from: `/knowledgebase`,
+    to: `/tags`,
+  },
+  {
+    from: `/knowledgebase/tutorials`,
+    to: `/tags/tutorial`,
+  },
+  {
+    from: `/knowledgebase/how-to`,
+    to: `/tags/how-to`,
+  }
 ];
 
 module.exports = redirects;
