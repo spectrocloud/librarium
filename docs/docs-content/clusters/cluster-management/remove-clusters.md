@@ -1,22 +1,22 @@
 ---
 sidebar_label: "Cluster Removal"
-title: "Remove Cluster"
+title: "Cluster Removal"
 description: "Learn how to remove a cluster deployed and managed by Palette."
 hide_table_of_contents: false
 sidebar_position: 220
+tags: ["clusters", "cluster management"]
 ---
 
-# Delete a Cluster
 
 When you delete a cluster it results in the removal of all compute instances and associated resources created for the cluster. Use the following steps to delete a cluster. 
 
-# Prerequisites
+### Prerequisites
 
 * A host cluster.
 
 
 
-# Removal
+## Removal
 
 1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
 
@@ -38,7 +38,7 @@ When you delete a cluster it results in the removal of all compute instances and
 The cluster status is updated to **Deleting** while cluster resources are removed. When all resources are successfully deleted, the cluster status is updated to **Deleted**, and the cluster is removed from the cluster list.
 
 
-# Validate
+## Validate
 
 To validate the host cluster is deleted, use the following steps.
 
@@ -54,7 +54,7 @@ The cluster you deleted is now listed along with other previously deleted cluste
 
 
 
-# Force Delete a Cluster
+## Force Delete a Cluster
 
 If a cluster is stuck in the **Deleting** state for a minimum of 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
 
