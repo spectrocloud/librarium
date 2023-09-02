@@ -2,17 +2,13 @@
 sidebar_label: 'Spectro Cloud Grafana Dashboards'
 title: 'Spectro Cloud Grafana Dashboards'
 description: 'Learn more about the Spectro Cloud Grafana dashboard and how to use it.'
-
 type: "integration"
 category: ['monitoring', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/spectrocloud-grafana-dashboards/blobs/sha256:a48c9929480a8c463e409e7563279f97d80e674c5cc91cb81c47454aea2c203d?type=image/png'
+tags: ['packs', 'spectrocloud-grafana-dashboards', 'monitoring']
 ---
 
-
-
-
-# Overview
 
 The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal cluster resource metrics. You can access the information exposed by the pack in Grafana by visiting the **Spectro Cloud / Spectro Clusters** dashboard. The following information is exposed by the Spectro Cloud Grafana Dashboards. <br /> <br />
 
@@ -33,11 +29,11 @@ The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal clus
 ![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
 
 
-# Versions Supported
+## Versions Supported
 
 **1.0.X**
 
-# Prerequisites
+## Prerequisites
 
 * A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) `v45.4.X` or greater installed. Check out [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) for instructions on how to deploy a monitoring stack.
 
@@ -45,7 +41,7 @@ The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal clus
 * A cluster profile with the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack `v3.4.X` or greater installed.
 
 
-# Usage
+## Usage
 
 The Spectro Cloud Grafana Dashboards require no additional configuration and the pack is designed to work out-of-the-box. 
 
@@ -61,10 +57,10 @@ Pods without the defined attributes `request` and `limit` will not display metri
 
 
 
-# Terraform
+## Terraform
 
 
-```terraform
+```terraform hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -79,7 +75,7 @@ data "spectrocloud_pack_simple" "spectro-cloud-grafana-dashboards" {
 
 
 
-# References
+## References
 
 - [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
 

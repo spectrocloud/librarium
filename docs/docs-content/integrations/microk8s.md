@@ -1,18 +1,14 @@
 ---
 sidebar_label: 'MicroK8s'
-title: 'MicroK8s Integration with Palette'
+title: 'MicroK8s'
 description: 'MicroK8s pack in Palette'
-
+hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/kubernetes-microk8s/blobs/sha256:b971b64f62e2e67b0a166316f96e6f4211aacea6e28459bb89275e8882ade985?type=image/png'
+tags: ['packs', 'microk8s', 'kubernetes']
 ---
-
-
-
-
-# MicroK8s Overview
 
 MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubernetes deployment that runs entirely on your workstation or edge device. It runs all Kubernetes services natively without virtual machines and packs all the required libraries and binaries.
 
@@ -39,7 +35,7 @@ If your environment doesn't meet these requirements, there are alternative ways 
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.25.x" value="1.25.x">
 
@@ -70,18 +66,17 @@ If you are using or want to use a different kubectl command, you can configure i
 
 <br />
 
+
+
 :::caution
 
-### Caveat for MicroK8s with AWS EBS pack
-
-When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack node.kubelet values from:
+When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack node.kubelet values from `/var/lib/kubelet` to `/var/snap/microk8s/common/var/lib/kubelet`.
 
 ```yaml
     node:
       env: []
       kubeletPath: /var/lib/kubelet
 ```
-to the below yaml content:
 
 ```yaml
     node:
@@ -90,6 +85,6 @@ to the below yaml content:
 ```
 :::
 
-# References
+## References
 
-[MicroK8s](https://microk8s.io/docs)
+- [MicroK8s ](https://microk8s.io/docs)

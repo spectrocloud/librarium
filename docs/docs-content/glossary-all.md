@@ -6,6 +6,7 @@ hide_table_of_contents: false
 sidebar_position: 250
 sidebar_custom_props: 
   icon: "about"
+tags: ["glossary"]
 ---
 
 # Glossary

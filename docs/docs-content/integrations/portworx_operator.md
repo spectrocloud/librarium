@@ -1,28 +1,21 @@
 ---
 sidebar_label: 'Portworx /w Operator'
-title: 'Portworx storage CSI (Essentials/PAYG/Enterprise)'
+title: 'Portworx Operator'
 description: 'Portworx storage CSI for all use cases'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['storage', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
+tags: ['packs', 'portworx', 'storage']
 ---
-
-
-
-
-# Portworx /w Operator
 
 [Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers via container orchestrators such as Kubernetes. You can use Palette to install Portworx on a cloud platform, on-premises, or at the edge.
 
 ## Versions Supported
 
-<br />
 
-<Tabs>
-
-
+<Tabs queryString="versions">
 <TabItem label="2.11.x" value="2.11.x">
 
 * **2.11.x**
@@ -62,9 +55,10 @@ Optionally, you can enable [Lighthouse](https://legacy-docs.portworx.com/enterpr
 
 <br />
 
-## Notable Parameters
+## Parameters
 
 ### Charts - Portworx:
+
 ```yaml
 charts:
   portworx-generic:
@@ -122,9 +116,9 @@ charts:
         # sharedv4: true
         # Add additional parameters as needed (https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/create-pvcs/dynamic-provisioning/)
 ```
-# Selecting a license model
+# License Model
 
-This pack can install Portworx in 3 different licensing modes:
+This pack can install Portworx in three different licensing modes:
 
 * **Essentials**: a free Portworx license with limited functionality that allows you to run small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully-featured Portworx Enterprise version of Portworx.
 
@@ -139,7 +133,7 @@ Use the presets in the pack user interface to select which license model you wan
 
 <br />
 
-<Tabs>
+<Tabs queryString="license">
 <TabItem label="PX Essentials" value="PX Essentials">
 
 ```yaml
@@ -187,7 +181,7 @@ Use the presets in the pack user interface to select which license model you wan
 </Tabs>
 
 
-# Selecting a storage specification
+## Storage Specification
 
 This pack can install Portworx in various different storage environment:
 
@@ -213,7 +207,7 @@ Use the presets in the pack user interface to select which storage specification
 
 <br />
 
-<Tabs>
+<Tabs queryString="storage">
 <TabItem label="Generic" value="Generic">
 
 ```yaml
@@ -520,7 +514,7 @@ kubectl create secret generic px-pure-secret --namespace kube-system --from-file
 </TabItem>
 </Tabs>
 
-# Integrating into an External Etcd
+## Integration With External Etcd
 
 Portworx Enterprise supports multiple Etcd scenarios.
 
@@ -556,7 +550,7 @@ These are the three types of Presets that can be selected and modified. The pack
 
 <br />
 
-<Tabs>
+<Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
 
 ```yaml

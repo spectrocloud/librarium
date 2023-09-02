@@ -2,17 +2,13 @@
 sidebar_label: 'generic-vm-vsphere'
 title: 'Generic Virtual Machine vSphere'
 description: 'Choosing vSphere Generic Virtual Machine within the Palette console'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['system app', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3b121dca3cbc7fed0153d3e1c8c3df20076ec200e091085a3a281ba08cb2261e?type=image/png'
+tags: ['packs', 'generic-vm-vsphere', 'system app']
 ---
-
-
-
-
-# Overview
 
 Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
 
@@ -20,7 +16,7 @@ Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtu
 
 ## Version Supported
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="1.0.x" value="1.0.x">
 
 * **1.0.4**
@@ -31,7 +27,7 @@ Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtu
 
 <br/>
 
-## Configuring Palette Generic-VM-vSphere  Add-on
+## Configuring Generic-VM-vSphere
 
 To configure the Generic-VM-vSphere Add-on pack for the application cluster, the namespace value should be as follows:
 
@@ -198,10 +194,9 @@ charts:
     #     echo "I am post exec"
 ```
 
-<br />
-<br />
 
-# Virtual Machine Hooks
+
+## Virtual Machine Hooks
 
 The Generic-VM-vSphere pack supports various hooks while deploying VM applications and supports multiple use-cases of customizing workflow, as customers require.
 

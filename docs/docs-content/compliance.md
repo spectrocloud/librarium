@@ -6,16 +6,10 @@ hide_table_of_contents: false
 sidebar_position: 220
 sidebar_custom_props: 
   icon: "user-shield"
+tags: ["compliance", "soc2", "fips"]
 ---
 
-
-
-
-
-# Compliance
-
-
-Spectro Cloud has SOC two certification and a FIPS certificate for its Cryptographic Module.
+We have twp Security Operations Center (SOC) certificatiosn and a FIPS certificate for a Cryptographic Module. 
 
 ## SOC 2 Type II
 
@@ -48,8 +42,3 @@ The module is tested against these configurations:
 * SUSE Linux Enterprise Server 15 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
 * Ubuntu 18.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
 * Ubuntu 20.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
-
-
-<br />
-
-<br />

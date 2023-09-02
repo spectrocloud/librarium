@@ -2,24 +2,19 @@
 sidebar_label: 'Kong'
 title: 'Kong'
 description: 'Kong Ingress pack in Spectro Cloud'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['ingress', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/kong/blobs/sha256:600f20583f85ccad4c515e51542f74aa9acb851d5b03ecb0e7b3435eb51ecf56?type=image/png'
+tags: ['packs', 'kong', 'network']
 ---
-
-
-
-
-
-# Kong Ingress Controller
 
 The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. You can use the Kong as an application load balancer for your application.
 
 ## Version Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="2.13.x" value="2.13.x">
 
@@ -41,5 +36,7 @@ The integration adds the Kong Ingress Controller, which exposes a Kubernetes ser
 
 ## References
 
-[Kong Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) <br />
-https://github.com/Kong/kubernetes-ingress-controller
+- [Kong Ingress Controller Documentation ](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) 
+
+
+- [Kong GitHub](https://github.com/Kong/kubernetes-ingress-controller)

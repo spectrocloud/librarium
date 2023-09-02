@@ -2,19 +2,14 @@
 sidebar_label: "Kubernetes Dashboard"
 title: "Kubernetes Dashboard"
 description: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Kubernetes Dashboard Monitoring pack."
-
 type: "integration"
-hide_table_of_contents: false
+hide_table_of_contents: true
 category: ['monitoring', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
+tags: ['packs', 'kubernetes-dashboard', 'monitoring']
 ---
 
-
-
-
-
-# Kubernetes Dashboard
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack is a general-purpose, web-based UI that allows you to manage clusters and the applications deployed in them. 
 
@@ -22,7 +17,7 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="2.7.x" value="2.7.x">
 
@@ -694,7 +689,7 @@ You can reference the Kubernetes Dashboard pack in Terraform with a data resourc
 
 <br />
 
-```tf
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }

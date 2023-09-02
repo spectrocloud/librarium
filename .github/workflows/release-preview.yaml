@@ -14,7 +14,8 @@ env:
   MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
   FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
-  NETLIFY_PREVIEW: false
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   # The GATSBY_FULLSTORY_ORGID is removed so that preview builds don't get recorded in FullStory
 
 concurrency:

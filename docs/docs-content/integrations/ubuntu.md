@@ -2,18 +2,14 @@
 sidebar_label: 'Ubuntu'
 title: 'Ubuntu'
 description: 'Choose Ubuntu Operating System pack in Palette.'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['operating system', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image/png'
+tags: ['packs', 'ubuntu', 'operating system']
 ---
 
-
-
-
-
-# Ubuntu
 
 [Ubuntu](https://ubuntu.com) is an open-source operating system based on the Linux kernel. Developed by Canonical Ltd., Ubuntu is a popular choice for desktops, servers, and cloud environments due to its ease of use, robustness, and versatility.
 
@@ -33,7 +29,7 @@ Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn a
 :::
 
 
-# Version Supported
+## Version Supported
 
 <br />
 
@@ -42,7 +38,7 @@ Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn a
 <TabItem label="22.04.x LTS" value="22.04.x" queryString="22.04.x">
 
 
-## Prerequisites
+### Prerequisites
 
 - A minimum of 4 CPU and 4GB Memory
 
@@ -58,7 +54,7 @@ Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn a
 1.24      | ❌                         |
 
 
-## Parameters
+### Parameters
 
 The Ubuntu OS pack has no required parameters. 
 
@@ -187,7 +183,7 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu
 
 <br />
 
-## Usage
+### Usage
 
 
 To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
@@ -197,7 +193,7 @@ To use the Ubuntu OS pack, add the pack to your cluster profile when you select 
 <br />
 
 
-### Customize Pack
+#### Customize Pack
 
 
 You can customize the Ubuntu OS pack using the available configuration parameters in the YAML file. Use the parameters to customize the Kubernetes install process.
@@ -206,7 +202,7 @@ You can customize the Ubuntu OS pack using the available configuration parameter
 <br />
 
 
-#### Add Custom Files
+##### Add Custom Files
 
 
 You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and `postKubeadmCommands` sections. The files are invoked during runtime.
@@ -275,7 +271,7 @@ kubeadmconfig:
 ```
 
 
-### Ubuntu Pro
+#### Ubuntu Pro
 
 Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and many other security hardening features.  Ubuntu Pro offers several more benefits than the free Ubuntu offering:
 
@@ -726,13 +722,13 @@ All Ubuntu versions less than v20.04.x are considered deprecated. Upgrade to a n
 </Tabs>
 
 
-# Terraform
+## Terraform
 
 You can reference Ubuntu in Terraform with the following code snippet.
 
 <br />
 
-<Tabs>
+<Tabs queryString="platform">
 <TabItem label="Edge" value="edge">
 
 ```hcl
@@ -867,7 +863,7 @@ data "spectrocloud_pack_simple" "ubuntu" {
 
 
 
-# References
+## References
 
 
 - [Create a Cluster Profile](/cluster-profiles/task-define-profile)

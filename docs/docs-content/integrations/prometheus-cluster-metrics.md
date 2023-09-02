@@ -2,35 +2,31 @@
 sidebar_label: 'Prometheus Cluster Metrics'
 title: 'Prometheus Cluster Metrics'
 description: "Use the Prometheus Cluster Metrics addon pack to expose Palette resource metrics"
-
 type: "integration"
-hide_table_of_contents: false
+hide_table_of_contents: true
 category: ['monitoring','amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png'
+tags: ['packs', 'prometheus-cluster-metrics', 'monitoring']
 ---
 
-
-
-
-# Overview
 
 The Prometheus Cluster Metrics pack exposes Palette-specific host cluster metrics to Prometheus. You can use this data to learn about the state of your clusters, resource utilization, and more. Use the [Spectro Cloud Grafana Dashboards](/integrations/grafana-spectrocloud-dashboards) pack to access the metric data through Grafana dashboards.
 
 
-# Versions Supported
+## Versions Supported
 
 **3.4.X**
 
 
-# Prerequisites
+## Prerequisites
 
 * A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) `v45.4.X` or greater installed. Check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) for instructions on how to deploy a monitoring stack.
 
 
 * A cluster profile with the [Prometheus Agent](/integrations/prometheus-agent) pack `v19.0.X` or greater installed.
 
-# Usage
+## Usage
 
 The Prometheus Cluster Metrics requires no additional configuration and is designed to work out-of-the-box. 
 
@@ -38,9 +34,9 @@ You can learn how to add the Prometheus Cluster Metrics to your cluster by follo
 
 Use the [Spectro Cloud Grafana Dashboards](/integrations/grafana-spectrocloud-dashboards) pack to access the metric data through Grafana dashboards. 
 
-# Terraform
+## Terraform
 
-```terraform
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -53,7 +49,7 @@ data "spectrocloud_pack_simple" "cluster-metrics" {
 }
 ```
 
-# References
+## References
 
 - [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
 

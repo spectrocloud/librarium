@@ -2,18 +2,13 @@
 sidebar_label: 'Prometheus Agent'
 title: 'Prometheus Agent'
 description: 'Prometheus Agent Monitoring Pack'
-
 type: "integration"
-hide_table_of_contents: false
+hide_table_of_contents: true
 category: ['monitoring', 'amd64', 'arm64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png'
+tags: ['packs', 'prometheus-agent', 'monitoring']
 ---
-
-
-
-
-# Prometheus Agent
 
 Prometheus is an open-source monitoring and alerting system that is designed to collect and analyze metrics from various systems and services. 
 
@@ -24,15 +19,15 @@ Prometheus can be used to monitor a wide range of systems and services, includin
 The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/integrations/prometheus-operator). Check out the guides [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) and [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 
-# Versions Supported
+## Versions Supported
 
 **19.0.X**
 
-# Prerequisites
+## Prerequisites
 
 * A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) installed.
 
-# Parameters
+## Parameters
 
 The Prometheus agent supports all the parameters exposed by the Prometheus Helm Chart. Refer to the [Prometheus Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus#configuration) documentation for details.
 
@@ -79,7 +74,7 @@ charts:
             password: <PASSWORD>
 ```
 
-# Usage
+## Usage
 
 The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](/cluster-profiles/task-update-profile) by adding the Prometheus agent pack.
 
@@ -118,11 +113,11 @@ Use the filters to narrow down the information displayed. All Palette dashboards
 
 We encourage you to check out the [Grafana](https://grafana.com/tutorials/) tutorials and learning resources to learn more about Grafana.
 
-# Terraform
+## Terraform
 
 You can retrieve details about the Prometheus agent pack by using the following Terraform code.
 
-```tf
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }

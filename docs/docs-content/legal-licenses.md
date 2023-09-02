@@ -6,6 +6,7 @@ sidebar_position: 280
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "gavel"
+tags: ["legal", "licenses"]
 ---
 
 

@@ -1,18 +1,14 @@
 ---
 sidebar_label: 'Multus CNI'
-title: 'Multus CNI'
+title: 'Multus'
 description: 'Choosing Multus CNI within the Palette console'
-
 type: "integration"
 category: ['network', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
+hide_table_of_contents: true
 logoUrl: 'https://registry.spectrocloud.com/v1/cni-multus/blobs/sha256:3727499ea41784a17c818b7269c27918b8664766c40d1b1f3cd90c34d5154676?type=image/png'
+tags: ['packs', 'multus', 'network']
 ---
-
-
-
-
-# Overview
 
 The Multus Container Network Interface (CNI) plugin enables multiple, network interfaces to attach to pods within Kubernetes. Palette provisions the CNI-Multus 3.8.0 Add-on pack, so you can create a multi-homed pod for Kubernetes right within the orchestrator.
 
@@ -20,7 +16,7 @@ The Multus Container Network Interface (CNI) plugin enables multiple, network in
 
 ## Version Supported
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="3.8.0" value="3.8.x">
 
 **cni-multus 3.8.0**
@@ -57,4 +53,4 @@ The Multus Container Network Interface (CNI) plugin enables multiple, network in
 - [Multus-CNI Quickstart Guide](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md)
 
 - [Mutltus Configuration](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/configuration.md)
-<br />
+

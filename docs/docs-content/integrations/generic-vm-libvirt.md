@@ -2,23 +2,20 @@
 sidebar_label: 'generic-vm-libvirt'
 title: 'Generic Virtual Machines Libvirt'
 description: 'Choosing Libvirt Generic Virtual Machine within the Palette console'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['system app', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image/png'
+tags: ['packs', 'generic-vm-libvirt', 'system app']
 ---
 
-
-
-
-# Overview
 
 Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
 
 ## Version Supported
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="1.0.x" value="1.0.x">
 
 * **1.0.2**
@@ -173,11 +170,8 @@ charts:
     #     echo "I am post exec"
 ```
 
-<br />
-<br />
 
-
-# Virtual Machine Hooks
+## Virtual Machine Hooks
 
 The Generic-VM-Libvirt pack supports various hooks, while deploying VM applications and supports multiple use-cases of customizing workflow, as customers require.
 
@@ -250,18 +244,18 @@ Files presented in this section will be added to the pod, where the pre-and-post
 
 ```yaml
 files:
-# - name: pre-exec.sh
-#   content: |
-#     #!/bin/bash
-#     echo "I am pre exec"
-# - name: post-exec.sh
-#   content: |
-#     #!/bin/bash
-#     echo "I am post exec"
-# extraDomainHclConfig: |
-#   cpu {
-#     mode = "host-passthrough"
-#   }
+- name: pre-exec.sh
+  content: |
+    #!/bin/bash
+    echo "I am pre exec"
+- name: post-exec.sh
+  content: |
+    #!/bin/bash
+    echo "I am post exec"
+extraDomainHclConfig: |
+  cpu {
+    mode = "host-passthrough"
+  }
 ```
 
 <br />
@@ -276,15 +270,15 @@ Mount the data inside the existing configuration maps or secrets into the pod as
 ```yaml
 mounts:
    configMap:
- #     - name: system-config
- #       path: /data/system-config
- #     - name: system-config-2
- #       path: /data/system-config-2
+    - name: system-config
+      path: /data/system-config
+    - name: system-config-2
+      path: /data/system-config-2
    secret:
- #     - name: system-config
- #       path: /data/system-config
- #     - name: system-config-2
- #       path: /data/system-config-2
+    - name: system-config
+      path: /data/system-config
+    - name: system-config-2
+      path: /data/system-config-2
 ```
 
 <br />
@@ -298,19 +292,18 @@ The ENVS section can inject data inside the existing config maps or secrets into
 ```yaml
 envs:
   configMap:
-    #     - name: database-app-config
-    #       env: DATABASE_USER
-    #       dataKey: "db.user"
+  - name: database-app-config
+    env: DATABASE_USER
+    dataKey: "db.user"
   secret:
-    #     - name: database-app-secret
-    #       env: DATABASE_PASSWORD
-    #       dataKey: "db.password"
+  - name: database-app-secret
+    env: DATABASE_PASSWORD
+    dataKey: "db.password"
 ```
 
 
 ## References
 
-[Libvirt Apps](https://libvirt.org/apps.html)
+- [Libvirt Apps](https://libvirt.org/apps.html)
 
-<br />
-<br />
+

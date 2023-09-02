@@ -2,26 +2,21 @@
 sidebar_label: 'Permission Manager'
 title: 'Permission Manager'
 description: 'Permission Manager Authentication pack in Spectro Cloud'
-
 type: "integration"
-hide_table_of_contents: false
+hide_table_of_contents: true
 category: ['authentication','amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/permission-manager/blobs/sha256:15d08b02d78823c12616b72d1b5adb0520940016b89bae1f758e6f1a105597ff?type=image/png'
+tags: ['packs', 'permission-manager', 'security']
 ---
 
-
-
-
-
-# Permission Manager
 
 This integration provides a graphical user interface for RBAC management in Kubernetes. You can create users, assign namespaces/permissions, and distribute Kubeconfig YAML files quickly.
 
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="1.0.x" value="1.0.x">
 
 * **1.0.0**
@@ -40,7 +35,7 @@ This integration provides a graphical user interface for RBAC management in Kube
 
 Create a ClusterRole starting with `template-namespaced-resources___` or `template-cluster-resources___` and apply it to the cluster. Permission manager will honor any custom resources with this naming convention and will populate on the user interface.
 
-# Ingress
+## Ingress
 
 Follow below steps to configure Ingress on Permission Manager
 
@@ -53,4 +48,4 @@ With these config changes, you can access Permission manager service on the Ingr
 
 ## References
 
-<https://github.com/sighupio/permission-manager>
+- [Permission Manager GitHub](https://github.com/sighupio/permission-manager)

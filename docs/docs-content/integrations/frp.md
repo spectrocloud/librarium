@@ -1,25 +1,21 @@
 ---
 sidebar_label: 'Spectro Proxy'
-title: 'Spectro Cloud Fast Reverse Proxy'
+title: 'Spectro Proxy'
 description: 'Fast Reverse Proxy Authentication pack in Spectro Cloud-Spectro Proxy'
-
+hide_table_of_contents: true
 type: "integration"
-hide_table_of_contents: false
-category: ['authentication', 'amd64', 'fips']
+category: ['authentication', 'amd64', 'fips', "network"]
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png'
+tags: ['packs', 'spectro-proxy', 'network']
 ---
 
-# Spectro Proxy
+
 Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP).
 
 The reverse proxy has a server component and a client component. The reverse proxy server is publicly available and managed by Spectro Cloud. The client is deployed inside your Palette-managed Kubernetes cluster and connects to the reverse proxy server. When you add the Spectro Proxy pack to a cluster profile, a couple of things happen:
 
-<br />
-
 - The kubeconfig file is updated with the reverse proxy address instead of pointing directly to the cluster's API address. The following is an example of a kubeconfig file where the `server` attribute points to the reverse proxy.
-
-  <br />
 
   ```hideClipboard yaml {4-5}
   apiVersion: v1
@@ -41,12 +37,11 @@ You can attach this pack to a [cluster profile](/cluster-profiles). The pack ins
 
 :::info
 
-
 This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the [Enable Kubernetes Dashboard](/clusters/cluster-management/kubernetes-dashboard) guide.
 
-<br />
-
 :::
+
+<br />
 
 ## Network Connectivity
 
@@ -89,7 +84,7 @@ To learn more about how the Spectro Proxy interacts with clusters in a public or
 
 <br />
 
-<Tabs>
+<Tabs queryString="network-path">
 
 
 <TabItem label="Private Cluster in Different Network" value="private-cluster-diff-network">
@@ -184,9 +179,9 @@ When a cluster has public endpoints, you can query the cluster's Kubernetes API 
 
 <br />
 
-# Versions Supported
+## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.3.x" value="1.3.x">
 
@@ -656,7 +651,7 @@ Review the [Enable Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) gu
 </Tabs>
 
 
-# Troubleshooting
+## Troubleshooting
 
 Troubleshooting scenarios related to the Spectro Proxy.
 <br />
@@ -674,11 +669,11 @@ Unable to connect to connect the server: X509: certiticate signed by unknown aut
 The workaround for this error is to wait a few moments for all the kubeconfig configurations to get propagated to Palette. The Palette cluster agent sends the original kubeconfig to Palette, followed by the modified kubeconfig containing the reverse proxy settings. If you attempt to open up a web shell session or interact with cluster API during the initialization process, you will receive an x509 error. Once Palette receives the kubeconfig file containing the cluster's reverse proxy configurations from the cluster agent, the x509 errors will disappear.
 
 
-# Terraform
+## Terraform
 
 You can reference the Spectro Proxy pack in Terraform with a data resource.
 
-```tf
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }

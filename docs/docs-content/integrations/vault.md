@@ -1,26 +1,20 @@
 ---
 sidebar_label: 'Vault'
-title: 'Vault Integration with Spectro Cloud'
+title: 'Vault'
 description: 'Integration of the Vault add on into Spectro Cloud'
-
+hide_table_of_contents: true
 type: "integration"
-hide_table_of_contents: false
 category: ['security', 'amd64', 'arm64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image/png'
+tags: ['packs', 'vault', 'security']
 ---
-
-
-
-
-
-# Vault
 
 [Vault](https://www.vaultproject.io/) helps secure, store, and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets, and other sensitive data using a UI, CLI, or HTTP API.
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="0.22.x" value="0.22.x">
 
@@ -92,7 +86,7 @@ vault.hashicorp.com/role: "<role using which the secret can be fetced>"
 
 More information on consuming Vault secrets can be found in [Vault docs](https://www.vaultproject.io/docs/platform/k8s/injector)
 
-# Ingress
+## Ingress
 
 Follow below steps to configure Ingress on Vault Server
 
@@ -109,7 +103,13 @@ With these config changes, you can access Vault service on the Ingress Controlle
 
 ## References
 
-* [Vault Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/).
-* Injecting Vault Secrets Into Kubernetes Pods via a Sidecar - [Blog](https://www.hashicorp.com/blog/injecting-vault-secrets-into-kubernetes-pods-via-a-sidecar/).
-* Vault Agent injector - [Examples](https://www.vaultproject.io/docs/platform/k8s/injector/examples/).
-* https://www.vaultproject.io/docs/platform/k8s/helm/run
+- [Vault Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/)
+
+
+- [Injecting Vault Secrets Into Kubernetes Pods via a Sidecar - Blog](https://www.hashicorp.com/blog/injecting-vault-secrets-into-kubernetes-pods-via-a-sidecar/)
+
+
+- [Vaut Agent Injector Examples](https://www.vaultproject.io/docs/platform/k8s/injector/examples/)
+
+
+- [Vault on Kubernetes Guide](https://www.vaultproject.io/docs/platform/k8s/helm/run)
