@@ -61,15 +61,15 @@ const columns: PacksColumn[] = [
     width: 150,
   },
   {
-    title: "Last updated",
-    dataIndex: "packCreateDate",
-    key: "packCreateDate",
+    title: "Last Updated",
+    dataIndex: "packLastModifiedDate",
+    key: "packLastModifiedDate",
     sorter: (a: Pack, b: Pack) =>
-      new Date(a.packCreateDate).getTime() - new Date(b.packCreateDate).getTime(),
+      new Date(a.packLastModifiedDate).getTime() - new Date(b.packLastModifiedDate).getTime(),
     width: 150,
   },
   {
-    title: "LastModified",
+    title: "Last Modified",
     dataIndex: "timeLastUpdated",
     key: "timeLastUpdated",
     sorter: (a: Pack, b: Pack) =>
