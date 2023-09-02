@@ -133,8 +133,8 @@ const FilteredTable: React.FC = () => {
         columns={columns}
         dataSource={filteredPacks}
         loading={loading}
-        scrollY={500}
-        pagination={{ pageSize: 50 }}
+        scrollY={250}
+        pagination={{ pageSize: 250 }}
       />
       {error && <div className={styles.error}>Failed to load Deprecated Packs</div>}
     </div>
