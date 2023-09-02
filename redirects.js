@@ -117,19 +117,19 @@ const redirects = [
   },
   {
     from: `/knowledgebase/tutorials/terraform-tutorial`,
-    to: `/tags/tutorials`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/knowledgebase/tutorials/cks-tutorial`,
-    to: `/tags/tutorials`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/knowledgebase/tutorials/dev-engine`,
-    to: `/tags/tutorials`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/knowledgebase/tutorials/dev-engine/deploy-app`,
-    to: `/tags/tutorials`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app`,
