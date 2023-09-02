@@ -1,17 +1,12 @@
 ---
 sidebar_label: "Create and Manage Azure IaaS Cluster"
-title: "Creating new Azure clusters on Palette"
+title: "Create and Manage Azure IaaS Cluster"
 description: "The methods of creating an Azure cluster in Palette"
 hide_table_of_contents: false
+tags: ["public cloud", "azure"]
 sidebar_position: 20
 ---
 
-
-
-
-
-
-# Deploy an Azure Cluster
 
 You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
 
@@ -23,7 +18,7 @@ Azure clusters can be created under the following scopes:
 
 Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
-# Prerequisites
+## Prerequisites
 
 The following prerequisites must be met before deploying a workload cluster in Azure:
 
@@ -35,9 +30,8 @@ The following prerequisites must be met before deploying a workload cluster in A
 
 3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
 
-## Video Demonstration
 
-<video title="azure-cluster-creation" src="/videos/clusters/public-cloud/cluster-creation-videos/azure.mp4"></video>
+<video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video>
 
 ## Deploy an Azure Cluster with Palette
 
@@ -138,10 +132,10 @@ You can add new worker pools to customize certain worker nodes to run specialize
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
 
-# Validate
+## Validate
 
 You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
-# Deleting an Azure IaaS Cluster
+## Deleting an Azure IaaS Cluster
 
 The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps.
 
