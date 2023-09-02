@@ -40,7 +40,7 @@ docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
 docker-start: docker-image ## Start a local development container
-	docker run --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 3000:3000 $(IMAGE)
+	docker run --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
 
 
 sync-vale: ## Install Vale plugins
