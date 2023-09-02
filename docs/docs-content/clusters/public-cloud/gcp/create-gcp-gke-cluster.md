@@ -1,19 +1,15 @@
 ---
 sidebar_label: "Create and Manage GCP GKE Cluster"
-title: "Create and Manage GKE IaaS Cluster"
+title: "Create and Manage GCP GKE Cluster"
 description: "Learn how to add and manage a GKE cluster deployed to GCP with Palette."
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["public cloud", "gcp"]
 ---
-
-
-
-# Create and Manage GCP IaaS Cluster
-
 
 Palette supports creating and managing Kubernetes clusters using Google Kubernetes Engine (GKE). This section guides you to create a Kubernetes cluster that is deployed to GKE and that Palette manages.
 
-# Prerequisites
+## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP.
 
@@ -38,7 +34,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   - Cloud Router
 
 
-# Deploy a GKE Cluster
+## Deploy a GKE Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
 
@@ -121,9 +117,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 You can monitor cluster deployment progress on the cluster details page.
 
 
-# Validate
+## Validate
 
-<br />
 
 You can validate that your cluster is up and available by reviewing the cluster details page. 
 

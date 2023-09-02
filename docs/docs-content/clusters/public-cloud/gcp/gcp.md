@@ -1,27 +1,19 @@
 ---
 sidebar_label: "GCP"
-title: "Creating new clusters on Spectro Cloud"
+title: "Google Cloud Platform"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
-tags: 
-   - Public Cloud
+tags: ["public cloud", "gcp"]
 ---
-
-
-
-
-
-
-# Overview
 
 Palette supports integration with Google Cloud Platform (GCP). You can deploy and manage Host Clusters in GCP. To get started with GCP, start by adding your GCP account in Palette. Check out the [Register and Manage GCP Accounts](/clusters/public-cloud/gcp/add-gcp-accounts).
 
 
-# Get Started
+## Get Started
 
 Learn how to deploy a cluster to a GCP by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
 
-# Resources
+## Resources
 
 To learn more about Palette and GCP clusters, check out the following resources:
 

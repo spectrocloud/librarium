@@ -6,14 +6,9 @@ hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-
-
-# Create and Manage GCP IaaS Cluster
-
-
 Palette supports creating and managing Kubernetes clusters deployed to a Google Cloud Platform (GCP) account. This section guides you to create an IaaS Kubernetes cluster in GCP that Palette manages.
 
-# Prerequisites
+## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP:
 
@@ -39,7 +34,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   - Cloud Router
 
 
-# Deploy a GCP Cluster
+## Deploy a GCP Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
 
@@ -136,7 +131,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 You can monitor cluster deployment progress on the cluster details page.
 
 
-# Validate
+## Validate
 
 You can validate that your cluster is up and available by reviewing the cluster details page. 
 
@@ -148,7 +143,6 @@ You can validate that your cluster is up and available by reviewing the cluster 
 
 
 3. The **Clusters** page lists the available clusters that Palette manages. Select your cluster to review its details. 
-
 
 
 4. From the cluster details page, verify the **Cluster Status** field displays **Running**.

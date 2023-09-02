@@ -4,11 +4,10 @@ title: "Required IAM Permissions"
 description: "A list of required IAM permissions that Palette requires for GCP deployments."
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["public cloud", "gcp", "iam"]
 ---
 
 
-
-# Overview
 
 This table contains the required Google Cloud Platform (GCP) permissions to create a custom GCP role tailored for usage with Palette. When creating a custom role, ensure you include all the permissions listed below to prevent Palette from having issues when deploying a host cluster.
 
