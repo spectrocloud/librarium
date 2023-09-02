@@ -5,6 +5,7 @@ description: "Learn about Palette security in a SaaS deployment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["security"]
 ---
 
 

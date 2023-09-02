@@ -5,6 +5,7 @@ description: "Add non-FIPS add-on packs to VerteX cluster profiles."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["vertex", "non-fips"]
 ---
 
 

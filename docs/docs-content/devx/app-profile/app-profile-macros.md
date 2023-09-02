@@ -1,16 +1,12 @@
 ---
 sidebar_label: "Output Variables"
-title: "Palette Dev Engine Output Variables"
+title: "Output Variables"
 description: "Explore Palette Dev Engine App Profile Macros"
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["devx", "app mode", "pde"]
 ---
 
-
-
-
-
-# Output Variables
 
 Palette Dev Engine output variables are defined in the [app profile](/glossary-all#appprofile) and are only resolved at cluster deployment time. The output variables have the following properties:
 
@@ -21,7 +17,6 @@ Palette Dev Engine output variables are defined in the [app profile](/glossary-a
 * Each service type exposes a set of unique output variables. 
 
 
-
 The variables are generated when the server layer is deployed. Output variables can be consumed by the higher layers in the app profile. 
 
 Check out the [Services Connectivity](/devx/app-profile/services/connectivity) page to learn how to use output variables for establishing network connectivity between services.
@@ -30,11 +25,11 @@ Check out the [Services Connectivity](/devx/app-profile/services/connectivity) p
 <br /> 
 
 
-```
+```hideClipboard
 {{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}}
 ```
 
-# System Output Variables
+## System Output Variables
 
 The following output variables are globally available for all services.
 
@@ -64,7 +59,7 @@ The following output variables are globally available for all services.
 | `spectro.system.appdeployment.tiername` | The name of the service layer from the context of the app deployment. |
 | `spectro.system.appdeployment.ingress.host` | The ingress host pattern for a cluster group with ingress enabled. This value is dynamically generated. |
 
-# Container Service Output Variables
+## Container Service Output Variables
 
 The container service type exposes the following output variables. Replace **[service-name]** with the respective name of the service layer.
 
@@ -76,11 +71,11 @@ The container service type exposes the following output variables. Replace **[se
 | `spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME`| The Kubernetes DNS hostname of the load balancer. This value is available if the service's  to **Public** and deployed to a public cloud provider environment. |
 |`spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP`| The public URL of the load balancer. This value is available if the service's access is set to **Public** and deployed to a private cloud provider environment.|
 
-# Database Service Output Variables
+## Database Service Output Variables
 
 Each database service exposes a set of output variables. Review each database service for more details. You can find information about each database service by checking out the [Available Services](/devx/app-profile/services/service-listings) resource.
 
-# Resources
+## Resources
 
 * [Palette System Macros](/registries-and-packs/pack-constraints#packmacros)
 

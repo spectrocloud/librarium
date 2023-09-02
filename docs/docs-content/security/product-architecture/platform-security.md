@@ -5,6 +5,7 @@ description: "Learn how Palette provides platform infrastructure security."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["security"]
 ---
 
 

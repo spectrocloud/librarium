@@ -1,28 +1,13 @@
 ---
 sidebar_label: "Register and Manage Azure Cloud Account"
-title: "Register and manage an Azure cloud account in Palette"
+title: "Register and Manage Azure Cloud Account"
 description: "This guide will help you register and manage an Azure cloud account in Palette"
 hide_table_of_contents: false
+tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-
-
-
-
-
-# Register an Azure Cloud Account
-
-Palette supports deployment and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that is managed by Palette.
-
-## Video Demonstration
-
-The following video demonstrates the integration of Azure Cloud with the Palette console.
-
-<video title="Azure-cloud-account" src="/videos/clusters/public-cloud/cluster-creation-videos/azure.mp4"></video>
-
-
-This guide will provide steps for how you can integrate your Azure account with Palette.
+Palette supports deploying and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that is managed by Palette.
 
 ## Prerequisites
 
@@ -86,7 +71,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 <br />
 
-# Validate
+## Validate
 
 To validate the Azure Cloud account creation in Palette console:
 
@@ -106,10 +91,10 @@ To validate the Azure Cloud account creation in Palette console:
 
 <br />
 
-# Manage Azure Account
+## Manage Azure Accounts
 After an Azure cloud account has been registered with Palette, you can change the integration settings or remove the Azure account with **Edit and Delete** capabilities respectively.
 
-## Edit the Azure Cloud Account
+### Edit an Azure Account
 
 To edit the Azure Cloud account created in Palette console:
 
@@ -125,16 +110,16 @@ To edit the Azure Cloud account created in Palette console:
 4. From the Tenant Settings go to **Cloud Accounts**
 
 
-5. Towards the name of the cloud account to be delete, click the **3 dots** kebab menu and select **Edit**.
+5. Towards the name of the cloud account you want to remove, click the **three-dots Menu** and select **Edit**.
 
 
 6. Make the required changes and click on the **Confirm** button to complete the wizard.
 
 <br />
 
-## Delete the Azure Cloud Account
+### Remove an Azure Account
 
-To delete the Azure Cloud account created in Palette console:
+Use the following steps to delete an Azure cloud account from Palette,.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -148,9 +133,9 @@ To delete the Azure Cloud account created in Palette console:
 4. From the Tenant Settings go to **Cloud Accounts**
 
 
-5. Towards the name of the cloud account to be delete, click the **3 dots** kebab menu and select **Edit**.
+5. Towards the name of the cloud account you want to remove, click the **three-dots Menu** and select **Edit**.
 
 
-6. Towards the name of the cloud account to be delete, click the **3 dots** kebab menu and select **Delete**.
+6. Towards the name of the cloud account you want to remove, click the **three-dots Menu** and select **Delete**.
 
 

@@ -5,6 +5,7 @@ description: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["vertex", "vmware"]
 ---
 
 

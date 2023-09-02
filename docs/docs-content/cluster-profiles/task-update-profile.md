@@ -3,24 +3,33 @@ sidebar_label: 'Update Cluster Profiles'
 title: 'Update Cluster Profiles'
 description: 'Learn how to update cluster profiles in Palette.'
 icon: ''
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-# Overview
 
 You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
 
-# Prerequisites
+## Update a Cluster Profile
 
-There are no prerequisites.
+Use the following steps to learn how to update a cluster profile.
+
+<br />
+
+### Prerequisites
+
+- An existing cluster profile.
 
 
-# Modify Basic Profile Information
+- Permission to update the profile.
+
+
+
+### Enablement
 
 The following steps will guide you in updating basic profile information.
 
-## Enablement
+
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -43,7 +52,7 @@ The following steps will guide you in updating basic profile information.
 5. Save your changes.
 
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -58,11 +67,11 @@ The following steps will guide you in updating basic profile information.
 
 
 
-# Update a Pack Layer
+## Update a Pack Layer
 
 The following steps will guide you in making updates to a layer in the profile.
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -110,7 +119,7 @@ The following steps will guide you in making updates to a layer in the profile.
 Clusters that use the updated profile are notified of the changes. You can update clusters to use the latest profile definition at any time.
 
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -131,7 +140,7 @@ Clusters that use the updated profile are notified of the changes. You can updat
 
 
 
-# Update the Pack Version
+## Update the Pack Version
 
 Packs typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
 
@@ -156,7 +165,7 @@ We do not recommend downgrading packs to the previous version.
 
 <br />
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -241,7 +250,7 @@ We do not recommend downgrading packs to the previous version.
 10. Confirm your updates.
 
 
-# Validate
+## Validate
 
  
 
@@ -265,16 +274,6 @@ We do not recommend downgrading packs to the previous version.
 
 
 6. Repeat the process until Palette indicates the configuration works.
-
-
-
-<br />
-
-
-<br />
-
-
-<br />
 
 
 

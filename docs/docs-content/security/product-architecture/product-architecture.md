@@ -4,7 +4,7 @@ title: "Secure Product Architecture"
 description: "Learn about the integrity of Palette's secure architecture."
 icon: ""
 hide_table_of_contents: false
-
+tags: ["security"]
 ---
 
 

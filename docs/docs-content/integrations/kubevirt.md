@@ -2,17 +2,13 @@
 sidebar_label: 'KubeVirt'
 title: 'KubeVirt'
 description: 'Choosing KubeVirt within the Palette console'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['system app', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/kubevirt/blobs/sha256:185e7a7658c05ab478f2822b080a7e21da9113b4a8bf5fb7fb3338d9a5796eed?type=image/png'
+tags: ['packs', 'kubevirt', 'system app']
 ---
-
-
-
-
-# Overview
 
 KubeVirt is a virtual machine management add-on for Kubernetes clusters. Create predefine virtual machines using KubeVirt, and Palette will provision KubeVirt as an Add-on Pack to manage the VM resources within the orchestrator.
 
@@ -20,7 +16,7 @@ KubeVirt is a virtual machine management add-on for Kubernetes clusters. Create 
 
 ## Version Supported
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="0.51.x" value="0.51.x">
 
 **0.51.0**
@@ -62,6 +58,6 @@ manifests:
 
 ## References
 
-[Installing KubeVirt on Kubernetes](https://KubeVirt.io/user-guide/operations/installation/#installing-KubeVirt-on-kubernetes)
+- [Installing KubeVirt on Kubernetes](https://KubeVirt.io/user-guide/operations/installation/#installing-KubeVirt-on-kubernetes)
 
-[Github KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)
+- [GitHub KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)

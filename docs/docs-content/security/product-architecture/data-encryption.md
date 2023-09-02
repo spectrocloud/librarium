@@ -5,6 +5,7 @@ description: "Learn about Palette security controls for data and communications.
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["security"]
 ---
 
 

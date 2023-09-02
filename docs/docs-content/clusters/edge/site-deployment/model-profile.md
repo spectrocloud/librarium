@@ -1,16 +1,14 @@
 ---
 sidebar_label: "Model Edge Native Cluster Profile"
-title: "Instructions for creating an Edge Native Cluster Profile"
+title: "Model Edge Native Cluster Profile"
 description: "Instructions for creating an Edge Native Cluster Profile"
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 0
+tags: ["edge"]
 ---
 
-# Overview
 
 [Cluster profiles](/cluster-profiles) contain the desired specifications the Kubernetes cluster  Edge host makes up. The cluster profile defines the following components.
-
-<br />
 
 - Kubernetes flavor and version
 
@@ -26,10 +24,7 @@ You define these components in an Edge Native Infrastructure profile. As with an
 
 The following steps will guide you on how to create a cluster profile for Edge. Choose the tab that matches your use case.
 
-
-<br />
-
-<Tabs>
+<Tabs queryString="os-install">
 <TabItem label="Custom OS" value="custom-os">
 
 
@@ -73,9 +68,6 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 
 10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
-
-
-  <br />
 
   ```yaml
   pack:
@@ -141,15 +133,12 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 <TabItem label="Without Custom OS" value="without-os">
 
-<br />
-
 :::caution
 
 This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to learn how to use a custom OS with your cluster profile.
 
 :::
 
-<br />
 
 ## Prerequisites
 
@@ -177,11 +166,11 @@ No prerequisites.
 
 7. In the profile layers screen, for the OS layer, choose the desired OS type and  OS version. Click on **Next layer**.
 
-:::info
+  :::info
 
-You can select **Bring Your Own OS (BYOOS)** if you build your enterprise Edge artifacts. Specify the registry that hosts your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack YAML file to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about the cloud-init stages.
+  You can select **Bring Your Own OS (BYOOS)** if you build your enterprise Edge artifacts. Specify the registry that hosts your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack YAML file to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) resource to learn more about the cloud-init stages.
 
-:::
+  :::
 
 
 8. Choose the desired Kubernetes distribution and version. Click on **Next layer**.
@@ -198,7 +187,7 @@ Consider creating additional profiles with out-of-the-box packs for monitoring, 
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
-# Validate
+## Validate
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
 
@@ -225,7 +214,7 @@ You can view your newly created cluster profile on the **Cluster Profiles** page
 
 
 
-# Next Steps
+## Next Steps
 
 Your next step in the deployment lifecycle is to prepare the Edge host for the installation. Use the [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) guide to continue.
 

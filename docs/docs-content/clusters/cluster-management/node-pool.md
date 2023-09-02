@@ -4,13 +4,11 @@ title: "Node Pools"
 description: "Learn about the node pools and applying changes to a node pool."
 hide_table_of_contents: false
 sidebar_position: 190
+tags: ["clusters", "cluster management"]
 ---
-# Node Pools
-
 
 A node pool is a group of nodes within a cluster that all have the same configuration. Node pools allow you to create pools of nodes that can be used for different workloads. For example, you can create a node pool for your production workloads and another node pool for your development workloads. You can update node pools for active clusters or create a new node pool for the cluster. 
 
-<br />
 
 :::caution
 
@@ -24,8 +22,6 @@ In Kubernetes, the term "repave" refers to the process of replacing a node with 
 
 The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 900 seconds (15 minutes). You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
 
-
-<br />
 
 ## Node Pool Configuration Settings
 
@@ -109,10 +105,6 @@ You can create a new node pool for an active cluster. To create a new node pool 
 6. Fill out the input fields in the **Add node pool** page. Refer to the [Node Pool Configuration Settings](#nodepoolconfigurationsettings) tables for more information on each field.
 
 
-
-
-<br />
-
 7. Click on **Confirm** to create the new node pool.
 
 
@@ -188,5 +180,3 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 
 5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy status. 
-
-<br />

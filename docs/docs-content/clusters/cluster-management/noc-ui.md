@@ -1,20 +1,19 @@
 ---
 sidebar_label: "NOC-UI"
 title: "Clusters Location view on Map - NOC UI"
-description: "Clusters Location view on Map - NOC UI"
+description: "Clusters Location View on Map - NOC UI"
 hide_table_of_contents: false
 sidebar_position: 180
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
 
 Palette provides an intuitive user interface (UI) based on location monitoring for the clusters running at multiple locations. The Palette 
 UI displays the region set during the cluster creation process for public cloud clusters and the location on the UI map. You can set the location for private cloud clusters through the Palette UI. You can also monitor the location details of all the clusters running under a specific scope. 
 
-# Set the Cluster Location
+## Set the Cluster Location
 
 The private cloud clusters must set the location explicitly. To set the location:
-<br />
 
 * Login to [Palette](https://console.spectrocloud.com).
 
@@ -31,12 +30,11 @@ The private cloud clusters must set the location explicitly. To set the location
 * The location is then visualized on the UI map display.
 
 
-# Monitor your Cluster Location
+## Monitor your Cluster Location
 
 
 To monitor the cluster location follow the below steps:
 
-<br />
 
 * Log in to Palette and select **Clusters** from the left **Main Menu**.
 
@@ -46,11 +44,11 @@ To monitor the cluster location follow the below steps:
 
 The map will display all the cluster locations under that user’s scope. 
 
-# Map Filters
+## Map Filters
 
 Palette Map Filters filter out specific clusters using built-in or custom filters for an enhanced user experience. The map filter allows you to narrow down clusters that may be dispersed geographically, across multiple scopes, or different cloud providers. You have two types of filters:- **Built-in Filters** and **Custom Filters**.
 
-## Built-In Filters
+### Built-In Filters
 
 Built-in filters are available in the Palette console by default and can be selected from the **Add Filter** drop-down menu. You can use the following built-in filters.
 
@@ -62,7 +60,7 @@ Built-in filters are available in the Palette console by default and can be sele
 |Updates Pending| To display the clusters with pending updates| 
 
 
-## Custom Filters
+### Custom Filters
 
 Palette supports a wide range of custom filters in a fixed format. To add a custom filter:
 <br />
@@ -102,12 +100,16 @@ You can apply these filters for both map view and cluster listing view.
 |and/or|Region| [operator](/clusters/cluster-management/noc-ui#operators)|Custom value|
 
 
-## Operators
-is <br />
-is not  <br />
-contains  <br />
-does not contain  <br />
-begins with  <br />
-does not begin  <br /> 
+### Operators
+
+
+| **Operator** | **Description** |
+|----------|-------------|
+|is|The value is equal to the custom value.|
+|is not|The value is not equal to the custom value.|
+|contains|The value contains the custom value.|
+|does not contain|The value does not contain the custom value.|
+|begins with|The value begins with the custom value.|
+|does not begin|The value does not begin with the custom value.|
 
 

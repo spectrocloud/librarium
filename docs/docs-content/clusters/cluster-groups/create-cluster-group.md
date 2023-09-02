@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Create and Manage Cluster Groups"
-title: "Create and Manage Palette Cluster Group"
+title: "Create and Manage Cluster Groups"
 description: "Learn how to create and manage Palette Cluster Groups"
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["clusters", "cluster groups"]
 ---
 
-# Create a Cluster Group
 
 Use the instructions below to create a cluster group.
 
@@ -42,7 +42,7 @@ Use the instructions below to create a cluster group.
 
 3. Select **Next** to continue.
 
-
+s
 
 4. Use the **Select clusters** drop-down menu to add available host clusters. 
  
@@ -111,26 +111,26 @@ To enable virtual clusters for OpenShift, review the OpenShit [instructions belo
 
 8. Click **Finish Configuration**.
 
-## Validate
+### Validate
 
 To review your cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Your newly created cluster group is now displayed and ready for use. 
 
 
-# Manage your Cluster Group
+## Manage your Cluster Group
 
 Once the cluster group is created, the day two operations can be performed from the cluster group's **Settings** options. To access cluster group settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select a cluster group, and click the **Settings** button.
 
 
-## Add a Host Cluster to the Group
+### Add a Host Cluster to the Group
 
 You can add additional host clusters to a cluster group. Navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to add additional host clusters. Click on the **+ Add Host Cluster**. Select the desired host clusters and verify the oversubscription and cluster endpoint type settings.
 
-## Delete your Cluster Group
+### Delete your Cluster Group
 
 To delete a cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to review or modify the settings. Click on the **Settings** button. Select **Delete Cluster**, enter the cluster name, and confirm the delete operation.
 
 
-# Enable Virtual Clusters for OpenShift 
+## Enable Virtual Clusters for OpenShift 
 
 To deploy a virtual cluster on OpenShift:
 
@@ -179,7 +179,3 @@ securityContext:
 openshift:
   enable: true
 ```
-
-
-
-<br />

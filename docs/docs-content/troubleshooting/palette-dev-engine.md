@@ -5,6 +5,7 @@ description: "Troubleshooting steps for errors encountered with Palette Dev Engi
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["troubleshooting", "pde", "app mode"]
 ---
 
 

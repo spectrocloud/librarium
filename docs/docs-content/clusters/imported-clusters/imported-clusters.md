@@ -5,10 +5,8 @@ description: "Learn how to manage imported clusters and what operations are supp
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "cloud-arrow-down"
+tags: ["clusters", "imported clusters"]
 ---
-
-
-# Overview
 
 Existing Kubernetes clusters not deployed through Palette can be imported into Palette for visibility, limited Day -2 management, and additional capabilities such as application lifecycle management. You can import Kubernetes clusters from various infrastructure providers, such as public and private clouds and bare-metal environments.
 
@@ -89,7 +87,7 @@ Imported generic clusters lack many Day-2 management operations such as scaling 
 You can remove a cluster by following the standard cluster removal steps. Refer to the [Delete a Cluster](/clusters/cluster-management/remove-clusters) for instructions. Be aware that Palette will not delete the actual cluster. Palette will remove the link to the imported cluster and instruct the Palette agent to remove itself from the cluster and all of the agent's dependencies that were installed during the import process. To delete the cluster, you must manually perform the delete action in the hosting infrastructure provider. 
 
 
-# Resources
+## Resources
 
 - [Import a Cluster](/clusters/imported-clusters/cluster-import)
 
@@ -99,6 +97,5 @@ You can remove a cluster by following the standard cluster removal steps. Refer 
 
 - [Migrate to Full Permissions](/clusters/imported-clusters/migrate-full-permissions)
 
-<br />
 
 

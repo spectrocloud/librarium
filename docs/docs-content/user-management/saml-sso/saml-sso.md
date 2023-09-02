@@ -4,7 +4,7 @@ title: "SAML and SSO Setup"
 description: "Detailed instructions on creating Single Sign-on to log in to Palette using SAML 2.0"
 icon: ""
 hide_table_of_contents: false
-
+tags: ["user-management", "saml-sso"]
 ---
 
 

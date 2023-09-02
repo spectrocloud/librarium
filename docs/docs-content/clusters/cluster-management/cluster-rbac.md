@@ -1,12 +1,12 @@
 ---
-sidebar_label: "RBAC and NS Support"
-title: "Cluster Level RBAC and NS Support"
+sidebar_label: "RBAC and Namespace Support"
+title: "RBAC and Namespace Support"
 description: "Cluster Level RBAC and NS Support for Access Control"
 hide_table_of_contents: false
 sidebar_position: 110
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
 
 [*RoleBindings*](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) and *ClusterRoleBindings* are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources. Palette provides you the ability to specify bindings to configure granular RBAC rules.
 
@@ -90,7 +90,7 @@ Use the steps below to create a RoleBinding or ClusterRoleBinding for your host 
 
 <br />
 
-# Palette Roles and Kubernetes Roles
+## Palette Roles and Kubernetes Roles
 
 Palette offers a set of [default roles](/user-management/palette-rbac#palettespecific(default)roles:) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, and more.
 
@@ -106,15 +106,15 @@ Palette roles do not automatically map to a Kubernetes role. You must create a r
 
 :::
 
-# Create Role Bindings
+## Create Role Bindings
 
-## Prerequisites
+### Prerequisites
 
 To create a role binding the role must exist inside the host cluster. You can use any of the [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
 
 If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](/integrations/kubernetes#userbacwithoidc).
 
-## Enablement
+### Enablement
 
 You can create role bindings during the cluster creation process or after the host cluster is deployed. 
 
@@ -135,7 +135,7 @@ The RBAC settings view contains two tabs:
 
 Select the tab for your specific role scope to learn how to create the appropriate role binding.
 
-<Tabs>
+<Tabs queryString="role">
 <TabItem label="Assign a Cluster Role" value="clusterRoleBinding">
 
 1. From the cluster settings view, select the **RBAC** tab.
@@ -145,6 +145,7 @@ Select the tab for your specific role scope to learn how to create the appropria
 
 
 3. Fill out the following details:
+
   * Role Name: Define a custom role name to identify the cluster role.
   * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
   * Subject Name: Custom name to identify a subject.
@@ -200,7 +201,7 @@ A role binding will be created in the listed namespaces. Keep in mind that you c
 
 </Tabs>
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

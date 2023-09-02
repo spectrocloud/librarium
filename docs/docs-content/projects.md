@@ -6,6 +6,7 @@ hide_table_of_contents: false
 sidebar_position: 110
 sidebar_custom_props: 
   icon: "cog"
+tags: ["projects"]
 ---
 
 

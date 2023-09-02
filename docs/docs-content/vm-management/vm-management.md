@@ -5,6 +5,7 @@ description: "Learn about the Palette's Virtual Machine Orchestrator solution fo
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "server"
+tags: ["vmo"]
 ---
 
 Palette Virtual Machine Orchestrator (VMO) provides a unified platform for managing containerized and virtualized applications. This solution allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications. Palette VM Orchestrator simplifies managing infrastructure, improves resource utilization, and removes the cost of having a hypervisor.

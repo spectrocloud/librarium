@@ -1,14 +1,11 @@
 ---
 sidebar_label: "Required IAM Policies"
-title: "Required IAM Policies or Palette"
+title: "Required IAM Policies"
 description: "A list of required IAM policies that Palette requires."
 hide_table_of_contents: false
+tags: ["public cloud", "aws", "iam"]
 sidebar_position: 40
 ---
-
-
-
-# Required IAM Policies
 
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
 The following policies include all the permissions needed for cluster provisioning with Palette.
@@ -27,7 +24,6 @@ The following policies include all the permissions needed for cluster provisioni
 
 Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](/clusters/public-cloud/aws/required-iam-policies#controllersekspolicy) section to review the IAM policy.
 
-<br />
 
 :::caution
 
@@ -36,7 +32,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 :::
 
-<Tabs>
+<Tabs queryString="iam-policies">
 
 <TabItem label="Controllers Policy" value="Controllers Policy">
 
@@ -589,7 +585,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
 }
 ```
 
-# Restricting Palette VPC Permissions
+## Restricting Palette VPC Permissions
 
 You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the [Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
@@ -597,7 +593,7 @@ You can choose to have Palette operate in a static or dynamic environment. You c
 <br />
 <br />
 
-<Tabs>
+<Tabs queryString="min-permissions">
 <TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
 
 This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
@@ -851,13 +847,14 @@ The following are important points to be aware of.
 
 :::
 
-# Global Role Additional Policies:
+## Global Role Additional Policies:
 
 There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 <br />
 
 ** AmazonEBSCSIDriverPolicy:**
+
 ```yml
 roleName: "custom-ng-role"
   roleAdditionalPolicies:

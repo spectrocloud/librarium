@@ -5,13 +5,9 @@ description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster us
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["self-hosted", "enterprise"]
 ---
 
-
-
-
-
-# Helm Chart Mode
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 
@@ -22,7 +18,7 @@ Depending on what version of Palette you are using, the available parameters wil
 
 <br />
 
-<Tabs>
+<Tabs queryString="version">
 <TabItem label="4.0.0 or greater" value="gRPC">
 
 ## Prerequisites
@@ -99,7 +95,6 @@ Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette
 
 Use the following steps to install Palette on Kubernetes.
 
-<br />
 
 :::info
 
@@ -110,11 +105,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 1. Open a terminal session and navigate to the directory where you downloaded the Palette Helm Charts provided by our support. We recommend you place all the downloaded files into the same directory. You should have the following Helm Charts:
     
-    <br />
-
     - Spectro Management Plane Helm Chart.
-
-    <br />
 
     - Cert Manager Helm Chart.
 
@@ -676,5 +667,3 @@ Start exploring the Palette system dashboard so that you become familiar with th
 
 </TabItem>
 </Tabs>
-
-<br />

@@ -5,16 +5,12 @@ description: "Understanding, installing and operating Spectro Cloud's Enterprise
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "warehouse"
+tags: ["self-hosted", "enterprise"]
 ---
 
 
-
-
-# Self-Hosted Installation
-
 Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. You can install Palette by using the following four methods:
 
-<br />
 
 :::caution
 
@@ -51,7 +47,7 @@ Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm C
 
 Palette can be installed in a VMware environment without internet access, known as an air gap installation, requiring pre-download of platform manifests, required platform packages, container images for core components, third-party dependencies, and Palette Packs, all sourced from a private rather than the default public Palette repository.
 
-# Download Palette Installer
+## Download Palette Installer
 
 To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
 
@@ -66,17 +62,14 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
 
-# Upgrade Notes
+## Upgrade Notes
 
 Review the [Upgrade Notes](/enterprise-version/upgrade) before attempting to upgrade Palette.
 
 
 <br />
 
-
----
-
-# Resources 
+## Resources 
 
 
 * [System Requirements](/enterprise-version/on-prem-system-requirements)

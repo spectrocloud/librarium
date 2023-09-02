@@ -6,11 +6,6 @@ hide_table_of_contents: false
 sidebar_position: 60
 ---
 
-
-
-
-
-
 # Palette Helm Registry
 Helm Charts are a collection of Kubernetes resource files capable of deploying services of varying complexity. Palette provides some stable default Helm charts in its public Helm Chart Registry. 
 

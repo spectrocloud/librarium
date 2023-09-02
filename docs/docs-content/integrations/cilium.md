@@ -1,19 +1,15 @@
 ---
 sidebar_label: 'Cilium'
-title: 'cilium'
+title: 'Cilium'
 description: 'Cilium network pack for Spectro Cloud Palette'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['network', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/cni-cilium/blobs/sha256:dbc239ac739ea2939ef41dd0743b82281bc82c360326cd7c536f73f0053e2cd2?type=image/png'
+tags: ["packs", "cilium", "network"]
 ---
 
-
-
-
-
-# Cilium
 
 Palette Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. For more Kubernetes network model design goals visit [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
@@ -42,4 +38,4 @@ The Cilium agent runs on all clusters and servers to provide networking, securit
 
 ## References
 
-https://docs.cilium.io/en/stable/
+- [Cilium Documentation](https://docs.cilium.io/en/stable)

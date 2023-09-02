@@ -1,21 +1,18 @@
 ---
-sidebar_label: "Self Hosted PCG"
-title: "Creating a Self Hosted PCG on Palette"
+sidebar_label: "Self-Hosted PCG"
+title: "Self-Hosted PCG"
 description: "The methods of creating Self Hosted PCG on Palette for secured cluster deployment"
 icon: ""
 hide_table_of_contents: false
+tags: ["public cloud", "azure"]
 sidebar_position: 40
 ---
 
 
-# Overview
-<br />
+
 Palette enables the provisioning of private AKS clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a Private Cloud Gateway deployed within the same account as the private AKS clusters. This private cloud gateway (Self Hosted PCGs) is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. The following sections discuss the prerequisites and detailed steps towards deploying Palette self-hosted PCG for Azure Cloud Accounts. Once the self-hosted PCG is created and linked with an Azure cloud account in Palette, any Azure clusters provisioned using that cloud account will be orchestrated via the self-hosted PCG, thereby enabling the provisioning of Private AKS clusters. 
 
-<br />
-
-
-# Prerequisites
+## Prerequisites
 
 * An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
@@ -26,8 +23,7 @@ Palette enables the provisioning of private AKS clusters within Azure Virtual ne
 
 ## Create a Virtual Network in the Azure Console
 
-Log in to the [Azure portal](https://portal.azure.com/) and create a [Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) (VNet). Ensure the VNET contains the following network settings:
-<br />
+Log in to the [Azure portal](https://portal.azure.com/) and create a [Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) (VNet). Ensure the VNet contains the following network settings.
 
 1. Three subnets. Each of the subnets should have a minimum of **333 available 
    IPs**. (Note: 333 IP's are required if you want to use Azure Container Networking Interface (CNI) networking and 
@@ -41,11 +37,13 @@ Log in to the [Azure portal](https://portal.azure.com/) and create a [Virtual Ne
     * Azure Kubernetes Cluster
     * Azure Bastion Host (Jump Box Virtual Machine) to connect to the Azure target Kubernetes cluster securely.
 
-:::info
+  <br />
 
-  **Note**: A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do not require a bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer required. 
+  :::info
 
-:::
+    **Note**: A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do not require a bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer required. 
+
+  :::
 
 
 ## Create an Azure Kubernetes Target Cluster in the Azure Console
@@ -111,7 +109,7 @@ To establish the external connectivity for the private Kubernetes cluster, launc
 Port Prerequisite:
 Add an inbound network security group rule with destination port 22.
 :::
-<br />
+
 
 1. Open the client terminal of your choice to execute:
 <br />
@@ -119,34 +117,32 @@ Add an inbound network security group rule with destination port 22.
 
 2. Ensure you have read-only access to the private key. Chmod is only supported on Linux subsystems (e.g. WSL on Windows or Terminal on Mac).
 
-```
-  chmod 400 <keyname>.pem
-```
+  ```shell
+    chmod 400 <keyname>.pem
+  ```
 
-3. Run the example command below to connect to your VM.
-<br />
+3. Issue the command below to connect to your VM. Replace the `<private key path>` with the path to your private key and `public-ip-address-of-bastion-jump-box` with the public IP address of your VM.
 
-```
-  ssh -i <private key path> azureuser@public-ip-address-of-bastion-jump-box
-```
+  ```shell
+    ssh -i <private key path> azureuser@public-ip-address-of-bastion-jump-box
+  ```
 
 
 ### Get connected to the Target Azure Kubernetes cluster
 
 After getting connected to the Bastion host, establish a connection to the Target Azure Kubernetes cluster. Refer to the below sample instructions:
-<br />
 
- ```
+ ```shell
    az login
  ```
-   <br />
 
-  ```
+
+  ```shell
     az account set --subscription 8710ff2b-e468-434a-9a84-e522999f6b81
   ```
-<br />   
+ 
 
-  ``` 
+  ```shell 
     az aks get-credentials --resource-group resource-group-name --nametarget-cluster-name 
   ```
 ## Deploy Palette Self Hosted PCG to Palette Console
@@ -166,25 +162,23 @@ After getting connected to the Bastion host, establish a connection to the Targe
 
 5.Install the Palette agent (also check for  prerequisites and instructions on Palette UI)
 
-**Example:**
-```
-  kubectl apply -f endpoint/v1/pcg/12345678901234/services/jet/manifest
-```
-```
-  kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
-```
+  **Example:**
+  ```shell
+    kubectl apply -f endpoint/v1/pcg/12345678901234/services/jet/manifest
+  ```
+
+  ```shell
+    kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
+  ```
 
 6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migration](/enterprise-version/enterprise-cluster-management#palettepcgmigration) for the public cloud self-hosted PCGs as well. 
 
-:::info
+  :::info
 
-Palette users can launch Azure clusters without a PCG also. To enjoy the additional benefits of this private cloud Self-hosted PCG, users need to attach it to the Palette Azure cloud account.
+  Palette users can launch Azure clusters without a PCG also. To enjoy the additional benefits of this private cloud Self-hosted PCG, users need to attach it to the Palette Azure cloud account.
 
-:::
+  :::
 
 ## Attach the Self Hosted PCG to the Azure Cloud Account
 
 The self-hosted PCG can be attached to an existing Azure Palette cloud account or while creating a new Azure Palette cloud account. Refer to the [Azure Cloud Account](/clusters/public-cloud/azure#creatinganazurecloudaccount) creation. 
-
-<br /> 
-<br /> 

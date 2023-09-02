@@ -1,12 +1,11 @@
 ---
 sidebar_label: "Cloud Init Stages"
-title: "Edge Install Cloud Init Stages"
+title: "Cloud Init Stages"
 description: "Learn how to use cloud-init stages when installing an Edge device with Palette."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["edge"]
 ---
-
-# Cloud-Init Stages
 
 The installation process supports all the cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/). Kairos is an open-source project that is used to create immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before locking down the image. 
 
@@ -38,12 +37,12 @@ You can read more about Kairos and cloud-init by reviewing [Kairo's cloud-init](
 
 :::info
 
- Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use `network.after` to verify network connectivity.
+Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use `network.after` to verify network connectivity.
 
- :::
+:::
 
 
-# Where to Apply Cloud-Init Stages
+## Where to Apply Cloud-Init Stages?
 
 You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of cloud-init stages. Use the following statements to help you decide. 
 <br />
@@ -54,7 +53,7 @@ You may ask yourself where to use cloud-init stages, as both the Edge Installer 
 
 * If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations. 
 
-# Example Use Cases
+## Example Use Cases
 
 
 To help you become familiar with the cloud-init stages and better understand how to use them to achieve your goals, check out the following use cases. 
@@ -68,14 +67,8 @@ You can use countless combinations of the Edge Installer and OS cloud-init stage
 
 :::
 
-<br />
-
-## Edge Configuration Stages
-
 Use the Edge Installer user data to apply specific site configurations to the edge host. 
 
-
-<br />
 
 #### Set the User Password
 

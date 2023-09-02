@@ -1,29 +1,23 @@
 ---
 sidebar_label: "Palette Dev Engine"
-title: "Palette Dev Engine "
+title: "Palette Dev Engine (PDE)"
 description: "Explore Palette Dev Engine"
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "users"
+tags: ["devx", "app mode", "pde"]
 ---
 
-
-
-
-
-# Overview
 
 Palette provides two different modes for deploying and managing applications. The first mode is *Cluster Mode* - this mode enables you to create, deploy, and manage Kubernetes clusters and applications. The second mode is *App Mode* - a mode optimized for a simpler and streamlined developer experience that allows you to only focus on the building, maintenance, testing, deployment, and monitoring of your applications.
 
 You can leverage Spectro Cloud's complementary managed Kubernetes cluster when using App Mode. The complementary resources have a limit of 12 vCPU, 16 GiB of memory, and 20 GiB of free storage. Alternatively, you may deploy applications on Kubernetes clusters that belong to your organization and are managed by Palette.
 
+:::info
 Check out the in-depth explanation of [App Mode and Cluster Mode](/introduction/palette-modes) to learn more about each mode.
+:::
 
-
-<br />
-
-
-# Get Started
+## Get Started
 
 To get started with App Mode, give the tutorial [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) a try so that you can learn how to use App Mode with Palette Dev Engine.
 
@@ -70,7 +64,10 @@ You can manage PDE resources through the [Palette API](/api/introduction), [Spec
 
 ![A view of the Palette CLI menu from a terminal](/devx_devx_cli-display.png)
 
-Check out the [Palette CLI](/palette-cli/install-palette-cli) for installation guidance. 
+:::tip
+
+Check out the Palette CLI [install guide](/palette-cli/install-palette-cli) for more information on how to install and configure the CLI.
+:::
 
 <br />
 
@@ -79,7 +76,7 @@ Check out the [Palette CLI](/palette-cli/install-palette-cli) for installation g
 You can create and manage lightweight Kubernetes clusters from within Visual Studio (VS) Code by using the PDE VS Code Extension. The plugin accelerates developing and testing your containerized applications and integrates with the Kubernetes Extension for VS Code. To learn about features of PDE VS Code Extension and how to install and activate it, check out [PDE Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=SpectroCloud.extension-palette).
 
 
-# Resources
+## Resources
 
 - [Use Cases](/devx/enterprise-user)
 
@@ -93,9 +90,4 @@ You can create and manage lightweight Kubernetes clusters from within Visual Stu
 - [Palette Virtual Clusters](/devx/palette-virtual-clusters)
 
 
-
 - [Manage Dev Engine](/devx/manage-dev-engine)
-
-
-
-<br />

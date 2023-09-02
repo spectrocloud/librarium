@@ -4,9 +4,9 @@ title: "Namespace Management"
 description: "Learn how to create and delete a namespace and assign resource quotas."
 hide_table_of_contents: false
 sidebar_position: 120
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
 
 In Kubernetes, namespaces provide a way to isolate groups of resources within a single cluster. Some of the benefits of namespaces are: 
 
@@ -28,13 +28,13 @@ In Kubernetes, namespaces provide a way to isolate groups of resources within a 
 
 
 
-# Create a Namespace
+## Create a Namespace
 
 The following steps will guide you on how to create a namespace.
 
 
 
-## Prerequisites
+### Prerequisites
 
 - An active cluster.
 
@@ -46,7 +46,7 @@ The following steps will guide you on how to create a namespace.
 
 
 
-## Create a Namespace in a Cluster
+### Create a Namespace in a Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -78,7 +78,7 @@ The following steps will guide you on how to create a namespace.
 
 
 
-## Validate
+### Validate
 
 Validate that the namespace was successfully created.
 
@@ -101,19 +101,19 @@ Validate that the namespace was successfully created.
 
 
 
-# Assign Resource Quotas
+## Assign Resource Quotas
 
 You can assign resource quotas for resource sharing among multiple users who have access to a namespace.
 
 
 
-## Prerequisites
+### Prerequisites
 
 - A running cluster with at least one namespace.
 
 
 
-## Assign Resource Quotas to a Namespace
+### Assign Resource Quotas to a Namespace
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -141,17 +141,17 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 
 
-# Delete a Namespace
+## Delete a Namespace
 
 When you delete a namespace, all the resources that were created within the namespace will also be deleted, such as pods, services and endpoints, config maps, and more. 
 
 
 
-## Prerequisites
+### Prerequisites
 
 - Ensure that no other resources depend on the namespace being deleted.
 
-## Delete a Namespace from a Cluster
+### Delete a Namespace from a Cluster
 
 1. Navigate to the left **Main Menu** and click on **Clusters**.
 
@@ -159,21 +159,15 @@ When you delete a namespace, all the resources that were created within the name
 2. Select the cluster in which you want to create a namespace. 
 
 
-3. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button.
-
-    <br />
-
-     The **Settings** pane displays with **RBAC** preselected and the **Namespaces** tab opened by default.
+3. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button. The **Settings** pane displays with **RBAC** preselected and the **Namespaces** tab opened by default.
 
 
 4. Select the namespace you want to delete, which is listed in the **Workspace Quota** section, and click the trash can icon. 
 
 
-## Validate
+### Validate
 
 Validate that the namespace was successfully deleted. 
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -184,11 +178,9 @@ Validate that the namespace was successfully deleted.
 3. Select the cluster that contains the namespace you want to delete and view its details.
 
 
-4. In the **Settings** pane, click **RBAC** > **Namespaces** tab.
+4. In the **Settings** pane, click **RBAC** > **Namespaces** tab. 
 
-    <br />
-
-    The namespace you created is no longer listed under **Workspace Quota**.
+The namespace you created is no longer listed under **Workspace Quota**.
     
 
 

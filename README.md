@@ -92,7 +92,7 @@ make commit MESSAGE="<your message here>"
 
 This will open your browser with the commit. Once the pull request is created a link will be added in the comments to preview the change in a staging environment.
 
-## Creating pages
+## Creating Pages
 
 The documentation website is structured in a sidebar with main pages and sub-pages. Main pages will contain an overview of the its sub pages.
 
@@ -107,7 +107,7 @@ On it's right there will be a **table of contents** menu that will extract all o
 This will follow the user as he scroll the page.
 On top of the table of contents there will be a **github link** to the content of the file. This can be used by users to submit changes to different sections of our documentation
 
-### Main pages
+### Main Pages
 
 Create a page with the filename `<url-using-dashes>.md` in the `docs-content` folder of the `content` directory. For positioning the document in the sidebar, you can use `sidebar_position: 1` in the front matter. To manage folders, create a `_category_.json` file with `{position: 1}` inside the desired directory.
 
@@ -124,14 +124,22 @@ sidebar_custom_props:
 ---
 ```
 
+
+
+#### Front Matter Attributes
+
 | attribute                      | type    | description                                                                                                 |
 | ------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------- |
-| sidebar_label                  | string  | used as the label for navigation                                                                            |
-| title                          | string  | will appear on the browser window / tab as the title                                                        |
-| description                    | string  | the text to display when a page is shared in social media platforms                                         |
-| `sidebar_custom_props:`<br>` icon: "graph"`  | string  | one of icons from https://fontawesome.com/icons?d=gallery                                                   |      
-| hide_table_of_contents         | boolean | setting this to `false` will hide the page from the navigation                                              |
-
+| `sidebar_label`                  | string  | used as the label for navigation                                                                            |
+| `title`                          | string  | will appear on the browser window / tab as the title                                                        |
+| `description`                    | string  | the text to display when a page is shared in social media platforms                                         |
+| `sidebar_custom_props:`<br>` icon: "graph"`  | string  | one of icons from https://fontawesome.com/icons?d=gallery                                       |      
+| `hide_table_of_contents`         | boolean | setting this to `false` will hide the page from the navigation                                              |
+| `sidebar_position`               | number  | the position of the page in the navigation sidebar. The pages are sorted ascending by this value            |
+| `toc_min_heading_level`          | number | the minimum heading level to show in the table of contents.                                                  |
+| `toc_max_heading_level`          | number | the maximum heading level to show in the table of contents.                                                  | 
+| `tags`                           | array  |  A list of string that can be used for additonal categorization of content.                                  | 
+| `keywords`                      | array  |  A list of strings that areused for SEO purposes.                                                             |
 ### Sub pages
 
 Create a folder using the **same name** of the main page. Inside of it use the same name convention (`<url-using-dashes>.md`) to create subpages.
@@ -217,7 +225,7 @@ To use the tabs component you have to import it from the _shared_ folder
 After that, you can use it like this
 
 ```js
-<Tabs>
+<Tabs queryString="platform">
   <TabItem label="AWS" value="aws">
     # AWS cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </TabItem>
@@ -310,7 +318,7 @@ Possible placements are: _topLeft_, _top_, _topRight_, _rightTop_, _right_ (defa
 Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 ```
 
-### Code lines highlighter
+### Code Lines Highlighter
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
@@ -375,6 +383,7 @@ To add a video, use the following syntax:
 
 ## Netlify Previews
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In the [netlify.toml](./netlify.toml) file, a custom script is used to determine if a Netlify preview should be created. The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If you need to disable Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh) file.
+
 
 ## Approvers/Reviewers
 

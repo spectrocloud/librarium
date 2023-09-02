@@ -5,11 +5,12 @@ description: "An overview of the self-hosted Palette system requirements."
 icon: ""
 hide_table_of_contents: true
 sidebar_position: 0
+tags: ["self-hosted", "enterprise"]
 ---
 
 
 
-# System Requirements
+## System Requirements
 
 Palette is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette environment hosted on VMware instances or in an existing Kubernetes cluster. Self-hosted Palette is available in the following three modes:
 
@@ -79,7 +80,12 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 | cluster-3          | k8s-zone         | az3           |
 
 
-**Note**: The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
+:::note
+
+The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
+
+:::
+
 <br />
 
 ### Tag Requirements
@@ -106,7 +112,7 @@ Select the tab that corresponds with your vSphere versions.
 
 <br />
 
-<Tabs identifier="vm-privileges">
+<Tabs queryString="vm-privileges">
 
 <TabItem label="8.0.x" value="8.0.x" >
 
@@ -135,7 +141,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 ## Spectro Role Privileges
 
 
-<Tabs>
+<Tabs queryString="vsphere-objects">
 
 <TabItem label="Cns" value="Cns">
 
@@ -352,7 +358,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 ## Spectro Role Privileges
 
 
-<Tabs>
+<Tabs queryString="vsphere-object">
 
 <TabItem label="Cns" value="Cns">
 
@@ -569,7 +575,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 ## Spectro Role Privileges
 
 
-<Tabs>
+<Tabs queryString="vsphere-objects">
 
 <TabItem label="Cns" value="Cns">
 

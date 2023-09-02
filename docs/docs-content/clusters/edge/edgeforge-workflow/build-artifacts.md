@@ -5,15 +5,14 @@ description: "Learn how to build an Edge installer ISO using the Palette Edge CL
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["edge"]
 ---
 
-# Build Edge Artifacts using a Content Bundle
 
 Palette's Edge solution supports creating Edge artifacts for edge devices deployed in a low internet bandwidth environment or an *air-gapped* environment. An air-gapped environment is a deployment site with no direct internet access. Using a content bundle, you can build Edge artifacts for installation in such environments.
 
 
 A content bundle is an archive that includes the Operating System (OS) image, the Kubernetes distribution, the Network Container Interface (CNI), and all other dependencies specified in the cluster profiles you want to deploy to the Edge cluster. A content bundle provides several benefits, such as:
-<br />
 
 - Software dependencies are pre-loaded into the installer image.
 
@@ -41,10 +40,9 @@ The diagram below displays the overarching steps to build the Edge installer ISO
   
 
 To complete this guide, you will need the following items:
-<br />
+
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge installer ISO image. You can issue the following command in the terminal to check your processor architecture. 
-  <br/>
 
   ```bash
   uname -m
@@ -62,10 +60,10 @@ To complete this guide, you will need the following items:
 * A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with Palette. Refer to the [User Authentication](https://docs.spectrocloud.com/user-management/user-authentication/#apikey) guide to create a new API key. 
 
 
-# Instructions
+## Instructions
 
 Use the following instructions on your Linux machine, which this guide refers to as the development environment. 
-<br />
+
 
 1.  Visit the [Downloads](https://docs.spectrocloud.com/spectro-downloads#paletteedgecli) page and download the latest Palette Edge CLI. You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL. 
 <br />
@@ -222,7 +220,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   This command may take up to 15-20 minutes to finish depending on the resources of the host machine. 
 
 
-# Validate
+## Validate
 
 List the Edge installer ISO and checksum by issuing the following command from the **CanvOS/** directory.
 <br />
@@ -232,7 +230,6 @@ ls build/
 ```
 
 ```hideClipboard shell 
-# Output
 palette-edge-installer.iso      
 palette-edge-installer.iso.sha256
 ```
@@ -253,17 +250,17 @@ To validate, you can prepare an edge device using the Edge installer ISO. You ca
 4. The last step is to power on the edge device and start the installation process. For more information, refer to the [Perform Site Install](/clusters/edge/site-deployment/site-installation) documentation.
 <br />
 
-# Next Steps
+## Next Steps
 
 Palette's Edge solution allows you to create Edge artifacts using a content bundle for edge devices deployed in low internet bandwidth or air-gapped environments. You created a content bundle using the Palette Edge CLI in this guide. Next, you used the CanvOS utility to embed the content bundle and user data into an Edge installer ISO.
-<br />
+
 
 
 As the next step, we recommend you check out the end-to-end tutorial, [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster). The tutorial provides a detailed walkthrough on deploying an Edge cluster in a VMware environment. 
 
 
 Check out the reference resources below to learn more about preparing an Edge host. 
-<br />
+
 
 - [Prepare Edge Host for Installation](/clusters/edge/site-deployment/stage)
 

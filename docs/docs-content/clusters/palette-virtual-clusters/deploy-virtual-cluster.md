@@ -1,22 +1,21 @@
 ---
 sidebar_label: "Deploy a Virtual Cluster to a Cluster Group"
-title: "Deploy a Virtual Clusters to a Cluster Group"
-description: "How to add Palette Virtual Clusters to a Cluster Group"
+title: "Deploy a Virtual Cluster to a Cluster Group"
+description: "Learn how to add Palette Virtual Clusters to a Cluster Group"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["clusters", "cluster groups", "virtual clusters"]
 ---
-
-# Add Virtual Clusters to a Cluster Group
 
 
 You can deploy Palette Virtual Clusters to a [cluster group](/clusters/cluster-groups). The advantages of a virtual cluster environment are:
 - You can operate with admin-level privileges while ensuring strong isolation.
 - Virtual clusters reduce operational overhead and improve resource utilization.
 
-Use the followings steps to deploy a virtual cluster.
+Use the following steps to deploy a virtual cluster.
 
-# Prerequisites
+## Prerequisites
 
 - A Spectro Cloud account.
 
@@ -26,11 +25,13 @@ Use the followings steps to deploy a virtual cluster.
   - For AWS, refer to the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies#globalroleadditionalpolicies) documentation.
   - For Azure, no additional policies are required.
 
-:::info
+  <br />
 
-Palette doesn't support _Usage_ and _Cost_ metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
+  :::note
 
-:::
+  Palette does not support _Usage_ and _Cost_ metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
+
+  :::
 
 ## Add Node-Level Policies in your Cloud Account
 
@@ -54,7 +55,7 @@ To add node-level policies:
 
 5. Confirm your changes.
 
-# Deploy a Virtual Cluster
+## Deploy a Virtual Cluster
 
 Follow these steps to deploy a virtual cluster to a cluster group:
 
@@ -76,14 +77,13 @@ Follow these steps to deploy a virtual cluster to a cluster group:
 6. Deploy the cluster.
 
 
+## Validate
 
-# Validate
-
-To validate your virtual cluster is available and ready for use. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
+To validate that your virtual cluster is available and ready for use. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 Select **Virtual Clusters** from the left **Main Menu**. Your cluster is ready for use if the status is **Running**.
 
 
-# Resources
+## Resources
 
 - [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 

@@ -7,23 +7,19 @@ type: "integration"
 category: ['system app', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/argo-cd/blobs/sha256:647cd3df6fec421e6580589ea7229762d8e828c77036f835f14f4c15c2a44c4c?type=image/png'
+tags: ["packs", "argo-cd", "system app"]
 ---
-
-
-
-
-# Overview
 
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. Argo CD automates the deployment of the desired application states in the specified target environments. Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit. Start using Argo CD with Palette today by consuming this pack.
 
 
-# Prerequisites
+## Prerequisites
 
 - Kubernetes 1.7+
 
-# Version Supported
+## Version Supported
 
-<Tabs>
+<Tabs queryString="version">
 <TabItem label="3.3.x" value="3.3.x">
 
 * **3.3.5**
@@ -40,7 +36,7 @@ logoUrl: 'https://registry.spectrocloud.com/v1/argo-cd/blobs/sha256:647cd3df6fec
 </Tabs>
 
 
-# Notable Parameters
+## Notable Parameters
 
 | Parameter             | Description                                                                                    |
 |-----------------------|------------------------------------------------------------------------------------------------|
@@ -53,6 +49,6 @@ logoUrl: 'https://registry.spectrocloud.com/v1/argo-cd/blobs/sha256:647cd3df6fec
 
 
 
-# References
+## References
 
-[Argo CD](https://argo-cd.readthedocs.io/en/stable/)
+- [Argo CD](https://argo-cd.readthedocs.io/en/stable/)

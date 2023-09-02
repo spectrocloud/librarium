@@ -2,11 +2,12 @@
 sidebar_label: 'Citrix IPAM'
 title: 'Citrix IPAM'
 description: 'Citrix IPAM Load Balancer pack in Spectro Cloud'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['load balancers', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image/png'
+tags: ["packs", "citrix-ipam", "network"]
 ---
 
 
@@ -19,7 +20,7 @@ The integration helps with IP address management and provides load balancing cap
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="1.7.x" value="1.7.x">
 
 * **1.7.6**
@@ -34,7 +35,7 @@ Integration deploys the following components:
 * IPAM controller.
 * Ingress controller.
 
-## Notable parameters
+## Parameters
 
 | Name | Default Value | Description |
 | --- | --- | --- |
@@ -48,6 +49,6 @@ Integration deploys the following components:
 
 ## References
 
-[Citrix IPAM Controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/crds/vip/)
+- [Citrix IPAM Controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/crds/vip)
 
-[Citrix Ingress controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/network/type_loadbalancer/#expose-services-of-type-loadbalancer-using-an-ip-address-from-the-citrix-ipam-controller)
+- [Citrix Ingress controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/network/type_loadbalancer/#expose-services-of-type-loadbalancer-using-an-ip-address-from-the-citrix-ipam-controller)

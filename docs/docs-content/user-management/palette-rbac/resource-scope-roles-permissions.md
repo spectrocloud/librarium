@@ -4,6 +4,7 @@ title: "Palette Global and Custom Resource Roles "
 description: "Palette contains global resource roles and supports the ability to create custom resource roles."
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["user-management", "rbac"]
 ---
 
 

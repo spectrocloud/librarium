@@ -8,7 +8,6 @@ import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
-import { faLaptop } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGavel } from '@fortawesome/free-solid-svg-icons';
@@ -29,7 +28,6 @@ export const fontAwesomeIcons = {
   "user-shield": faUserShield,
   "users": faUsers,
   "warehouse": faWarehouse,
-  "laptop": faLaptop,
   "book": faBook,
   "bookmark": faBookmark,
   "gavel": faGavel,

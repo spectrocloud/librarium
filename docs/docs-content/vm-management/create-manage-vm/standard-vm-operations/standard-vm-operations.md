@@ -4,7 +4,7 @@ title: "Standard VM Operations"
 description: "Learn about standard VM operations that you can perform using Palette Virtual Machine Orchestrator."
 icon: " "
 hide_table_of_contents: false
-
+tags: ["vmo"]
 ---
 
 

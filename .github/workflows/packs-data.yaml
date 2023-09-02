@@ -33,9 +33,20 @@ jobs:
         with:
           args: cp gs://docs-education-automation/packs_inventory/packs_report.json  ./packs_report.json
           cli: gsutil
+
       - name: Upload to S3
         run: |
           aws s3 cp ./packs_report.json s3://docs.spectrocloud.com/packs-data/
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/packs-data/packs_report.json"
           aws s3 cp ./packs_report.json s3://docs-latest.spectrocloud.com/packs-data/
           aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/packs-data/packs_report.json"
+
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'The Docs cron job that generates the `packs.json` file failed. Please check the logs for more details.'

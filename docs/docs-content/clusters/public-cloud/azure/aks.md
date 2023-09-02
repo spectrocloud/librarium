@@ -1,17 +1,12 @@
 ---
 sidebar_label: "Create and Manage Azure AKS Cluster"
-title: "Creating new clusters on Palette"
+title: "Create and Manage Azure AKS Cluster"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
+tags: ["public cloud", "azure"]
 sidebar_position: 30
 ---
 
-
-
-
-
-
-# Overview
 
 Palette supports creating and managing Kubernetes clusters deployed to an Azure subscription. This section guides you on how to create an IaaS Kubernetes cluster in Azure that is managed by Palette.
 
@@ -62,19 +57,16 @@ There are additional prerequisites if you want to set up Azure Active Directory 
 
   3. You can configure these permissions from the Azure cloud console under **App registrations** > **API permissions** for the specified application.
 
-:::info
+  :::info
 
-Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. [Click here for more..](/clusters/public-cloud/azure/gateways#overview)
+  Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. [Click here for more..](/clusters/public-cloud/azure/gateways#overview)
 
-:::
+  :::
 
-# Create an Azure Cloud Account
 
-<video title="azure-cluster-creation" src="/videos/clusters/public-cloud/cluster-creation-videos/azure.mp4"></video>
+  <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></video>
 
-To create an Azure cloud account, we need:
-
-A custom Account Name
+To create an Azure cloud account you need the following Azure account information:
 * Client ID
 * Tenant ID
 * Client Secret
@@ -97,7 +89,7 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 
 3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
-# Deploy an AKS Cluster
+## Deploy an AKS Cluster
 
 <br />
 
@@ -162,7 +154,7 @@ managedMachinePool:
 
 
 
-# Node Pools
+## Node Pools
 
 This section guides you to through configuring Node Pools. As you set up the cluster, the **Nodes config** section will allow you to customize node pools. AKS Clusters are comprised of System and User node pools, and all pool types can be configured to use the Autoscaler, which scales out pools horizontally based on per node workload counts. 
 
@@ -270,7 +262,7 @@ A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes
 
 <br />
 
-# Configure an Azure Active Directory
+## Configure an Azure Active Directory
 
 
 The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette Platform, using a simple check box. Once the cloud account is created, you can create the Azure AKS cluster. The AAD-enabled AKS cluster will have its Admin *kubeconfig* file created and can be downloaded from our Palette UI as the 'Kubernetes config file'. You need to manually create  the user's *kubeconfig* file to enable AAD completely. The following are the steps to create the custom user *kubeconfig* file:
@@ -303,11 +295,9 @@ The above step can also be completed using Spectro RBAC pack available under the
 
 <br />
 
-# References:
+## Resources
 
-[Use Kubernetes RBAC with Azure AD integration](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Faks%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+- [Use Kubernetes RBAC with Azure AD integration](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Faks%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)
+- [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)
 
-
-<br />

@@ -5,6 +5,7 @@ description: "Troubleshooting steps for errors during a cluster deployment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["troubleshooting", "packs"]
 ---
 
 

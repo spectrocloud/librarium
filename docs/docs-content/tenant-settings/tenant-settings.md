@@ -5,6 +5,7 @@ description: "Familiarize yourself with the available Tenant settings and how yo
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "gears"
+tags: ["tenant-administration"]
 ---
 
 

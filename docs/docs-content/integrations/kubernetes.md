@@ -2,15 +2,13 @@
 sidebar_label: "Palette eXtended Kubernetes"
 title: "Palette eXtended Kubernetes"
 description: "Learn about the Palette eXtended Kubernetes pack and how you can use it with your host clusters."
-
+hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", 'amd64', 'fips']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
+tags: ["packs", "kubernetes", "pxk"]
 ---
-
-
-# Palette eXtended Kubernetes
 
 The Palette eXtended Kubernetes (PXK) pack supports several [cloud and data center infrastructure providers](/clusters). This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends. 
 
@@ -42,7 +40,7 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 # Versions Supported
 
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.27.x" value="k8s_v1.27">
 
@@ -1262,7 +1260,7 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 </Tabs>
 
 
-# Terraform
+## Terraform
 
 You can reference Kubernetes in Terraform with the following code snippet.
 
@@ -1281,7 +1279,7 @@ data "spectrocloud_pack_simple" "k8s" {
 }
 ```
 
-# Resources
+## Resources
 
 - [Kubernetes](https://kubernetes.io/)
 

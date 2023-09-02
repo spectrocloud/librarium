@@ -1,17 +1,15 @@
 ---
 sidebar_label: "Cost Visibility"
-title: "Calculate Cloud Cost in Spectro Cloud"
+title: "Cost Visibility"
 description: "Calculate Cloud Cost in Palette"
 hide_table_of_contents: false
 sidebar_position: 80
+tags: ["clusters", "cluster management", "cost management"]
 ---
-
-
-# Overview
 
 Palette calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools and usage cost breakdown by namespaces based on actual resource utilization within the namespace.
 
-# Cloud Cost
+## Cloud Cost
 
 Cluster cloud cost is the sum of the estimated cost of all the nodes launched in the cluster. The cost calculation is done based on the instance type and storage type selected for each machine pool.
 
@@ -36,11 +34,11 @@ Let's assume that a cluster ‘demo’ is launched with two machine pools with t
 |Cluster Cloud Cost = $0.1572 + $0.306 = $0.4632/hour|
 
 :::info
-    For private clouds like VMware, OpenStack, MaaS, etc., the unit rate for CPU and Memory can be configured as an administrative setting. These rates are used in place of instance-type rates for cost calculation.
+For private clouds like VMware, OpenStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an administrative setting. These rates are used in place of instance-type rates for cost calculation.
 :::
 
 
-# Usage Cost
+## Usage Cost
 Usage cost is calculated based on the pods' actual CPU & Memory usage, including the claimed PVC storage size. The pod cost calculation is done by dividing the instance type rate into CPU and memory rates proportional to the instance type category. 
 
 |Instance Type Category| CPU: Memory |

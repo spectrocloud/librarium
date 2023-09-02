@@ -1,18 +1,13 @@
 ---
 sidebar_label: 'RKE2'
-title: 'RKE2 Integration with Palette'
+title: 'RKE2'
 description: 'RKE2 pack in Palette'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['kubernetes', 'amd64', 'fips']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/kubernetes-rke2/blobs/sha256:47cde61005d9996f1571c132ba9f753982134a7a0d8e445e27001ab8519e6051?type=image/png'
 ---
-
-
-
-
-# RKE2 Overview
 
 [RKE2](https://docs.rke2.io/) is a fully conformant Kubernetes distribution focusing on security and compliance within the U.S. Federal Government sector. To meet the Kubernetes security and compliance goals required by the U.S. Federal Government, RKE2 establishes the following:
 
@@ -40,13 +35,13 @@ RKE2 is only available for Edge host deployments. Refer to the [Edge](/clusters/
 
 :::
 
-# Versions Supported
+## Versions Supported
 
 The following RKE2 versions are supported to work with Palette.
 
 <br />
 
-<Tabs>
+<Tabs queryString="versions">
 <TabItem label="1.26.x" value="k8s_rke2_1.26.x">
 
 
@@ -182,9 +177,8 @@ The following major versions of RKE2 are deprecated.
 </Tabs>
 
 
-<br />
 
-# Terraform
+## Terraform
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
@@ -199,7 +193,7 @@ data "spectrocloud_pack_simple" "k8s" {
 }
 ```
 
-# Resources
+## Resources
 
 - [RKE2 Documentation](https://docs.rke2.io)
 

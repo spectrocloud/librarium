@@ -1,14 +1,12 @@
 ---
 sidebar_label: "Cluster Groups"
-title: "Palette Devx for Enterprise Developers"
+title: "Cluster Groups"
 description: "Explore Palette Devx as Free Developer"
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "object-group"
+tags: ["clusters", "cluster groups"]
 ---
-
-
-# Overview
 
 A *Cluster Group* is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette virtual clusters. Downstream consumers can use the cluster group when using Palette in [*App Mode*](/introduction/palette-modes#whatisappmode?). 
 
@@ -28,14 +26,16 @@ Cluster groups support two network endpoints: load balancer and ingress. All hos
 
 ![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.png)
 
+## Get Started
+
 Learn how to create a cluster group by reviewing the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) guide.
 
-# Resources
+<br />
+
+## Resources
 
 - [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group)
 
 - [Enable Disk Backup on Virtual Clusters](/clusters/cluster-groups/cluster-group-backups)
 
 - [Set up Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group)
-
-<br />

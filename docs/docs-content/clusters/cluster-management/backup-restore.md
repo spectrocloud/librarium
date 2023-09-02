@@ -1,49 +1,48 @@
 ---
 sidebar_label: "BackUp and Restore"
-title: "Managing Cluster Update Events on Palette"
-description: "Events and Notifications on Cluster Updates"
+title: "BackUp and Restore"
+description: "Learn how to back up and restore your clusters in Palette."
 hide_table_of_contents: false
 sidebar_position: 70
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
 
 Palette provides two ways to back up and restore Kubernetes clusters:
 
 * Cluster Backup and Restore for a single cluster which is managed from within the cluster.
 * [Workspace](/workspace/workload-features#workspaceoperator) Backup and Restore for multiple clusters managed from workspaces.
 
-# Cluster Backup and Restore
+## Cluster Backup and Restore
 
 Palette provides a convenient backup option to back up the Kubernetes cluster state into object storage and restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects such as Pods, DaemonSets, and Services, persistent volumes can also be snapshotted and maintained as part of the Backup. Internally, Palette leverages an open-source tool called Velero to provide these capabilities. In addition, multiple backups of a cluster can be maintained simultaneously.
 
 Palette leverages the BackUps to the following locations:
 
-<br />
 
-#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#foranamazonwebservices(aws)bucketasbackuplocation), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinawss3)
+- Amazon Web Services (AWS) S3 Buckets
 
-#### Google Cloud Platform (GCP) Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#foragooglecloudplatform(gcp)backuplocation), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket)
+- Google Cloud Platform (GCP) Buckets
 
-#### MinIO S3 Buckets: [Prerequisites](/clusters/cluster-management/backup-restore#forminios3backup), [Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinminio)
+- MinIO S3 Buckets
 
-#### Azure Blob:[Prerequisites](/clusters/cluster-management/backup-restore#forazureblobbackup),[Configure your Backup](/clusters/cluster-management/backup-restore#configureyourbackupinazure:azureblob)
+- Azure Blob
 
-# Prerequisites
+## Prerequisites
 
-## For an Amazon Web Services (AWS) Bucket as Backup Location
+### For an Amazon Web Services (AWS) Bucket as Backup Location
 
 * The Amazon Simple Storage Service (S3) permissions listed in the next section need to be configured in the AWS account to provision Backup through Palette.
 
 * Pre-created bucket at the AWS Console.
 
-## For a Google Cloud Platform (GCP) Backup Location
+### For a Google Cloud Platform (GCP) Backup Location
 
 * GCP service account with a `storage admin` role.
 
 * Pre-created bucket at the GCP object storage.
 
-## For MinIO S3 Backup
+### For MinIO S3 Backup
 
 * S3 bucket with Read/Write Access
 
@@ -51,7 +50,7 @@ Palette leverages the BackUps to the following locations:
 
 * Service provider certificate (Optional)
 
-## For Azure Blob Backup
+### For Azure Blob Backup
 
 * An active Azure cloud account with the following pieces of information noted down:
   * Tenant Id
@@ -67,11 +66,11 @@ Palette leverages the BackUps to the following locations:
 
 * A container to be created in the Azure Storage account
 
-# Backup Locations
+## Backup Locations
 
 Creating the backup location is identical for both cluster and workspace backup. AWS S3 and other S3 compliant object stores such as MinIO and GCP Buckets are currently supported as backup locations. These locations can be configured and managed under the **Project** > **Settings** option and can be selected as a backup location, while backing up any cluster in the project.
 
-## Configure your Backup in AWS S3 
+### Configure your Backup in AWS S3 
 
 The following details are required to configure a backup location in AWS:
 
@@ -158,7 +157,7 @@ The following details are required to configure a backup location in AWS:
  }
  ```
  
-## Configure your Backup in GCP Bucket
+### Configure your Backup in GCP Bucket
 
 These locations can be configured and managed from the 'Settings' option under 'Project' and can be selected as a backup location while backing up any cluster in the project.
 
@@ -178,7 +177,7 @@ The following details are required to configure a backup location in GCP:
 
 5. Click Create to complete the location creation wizard.
 
-## Configure your Backup in MinIO
+### Configure your Backup in MinIO
 
 The following details are required to configure a backup location in MinIO:
 
@@ -209,7 +208,7 @@ The following details are required to configure a backup location in MinIO:
 9. Click **Create** to complete the location creation wizard. 
 
 
-## Configure your Backup in Azure: Azure Blob
+### Configure your Backup in Azure: Azure Blob
 
 The following details are required to configure a backup location in Azure:
 
@@ -250,8 +249,6 @@ The following details are required to configure a backup location in Azure:
 
 Go to **Project Settings** > **Backup locations** > **Add a New Backup location**.
 
-
-# Create a Cluster Backup
 
 Backups can be scheduled or initiated on demand during cluster creation. Backups can also be scheduled for a running cluster. The following information is required to configure a cluster backup:
 
@@ -296,7 +293,7 @@ Both the cluster and workspace backup support the following scheduling options:
 * Every month on the 1st at midnight
 * Every two months on the 1st at midnight
 
-# Restore a Backup
+## Restore a Backup
 
 Backups created manually or as part of the schedule are listed under the Backup/Restore page of the cluster. 
 

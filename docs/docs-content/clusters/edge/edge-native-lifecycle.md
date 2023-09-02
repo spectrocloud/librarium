@@ -1,16 +1,15 @@
 ---
-sidebar_label: "Lifecycle"
+sidebar_label: "Deployment Lifecycle"
 title: "Edge Deployment Lifecycle"
 description: "Learn about the Edge Deployment Lifecycle"
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["edge"]
 ---
 
-# Edge Deployment Lifecycle
 
 The typical end-to-end lifecycle of deploying clusters at edge locations involves several distinct phases in which different organizations or teams need to perform specific tasks.
- 
- <br />
+
 
  ![A flow of the lifecycle, starting with model, staging, install, and finally register. Once all phases are complete the cluster provision occurs.](/native-edge-deployment-lifecycle.png)
 
@@ -35,9 +34,6 @@ The Palette Edge Management agent inside the Edge host waits for the configurati
 
 If the edge location configuration is known and predictable, then the IT/Ops team can combine staging, installation, and registration into one step and ship the fully configured Edge hosts to the edge location. The site operator at the edge location only needs to hook up the power and network cables without further device configuration. The Edge cluster will be ready to be centrally managed for future upgrades.
 
-# Next Steps
+## Next Steps
 
 Now that you have an understanding of the deployment lifecycle, start the deployment of your Edge host by reviewing the [Site Deployment](/clusters/edge/site-deployment) instructions.
-
-
-<br />

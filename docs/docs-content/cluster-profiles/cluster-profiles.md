@@ -2,7 +2,7 @@
 sidebar_label: "Cluster Profiles"
 title: "Understanding Cluster Profiles"
 description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_custom_props: 
     icon: "bundles"
 ---
@@ -10,7 +10,9 @@ sidebar_custom_props:
 
 
 # Overview
-**Cluster Profiles** are like templates that are created with preconfigured layers/components that are required for 
+
+
+[Cluster Profiles](/glossary-all#cluster-profile) are like templates that are created with preconfigured layers/components that are required for 
 workload cluster deployments. Cluster Profiles provide a way for driving consistency across workload cluster 
 deployments. You can create as many profiles as required. 
 
@@ -22,7 +24,7 @@ You may also build Special Purpose Profiles to deploy Workload Clusters for use 
 
 Cluster creation requires an Infrastructure or Full Cluster Profile to be selected, and optionally, one or more Add-on profile(s).  The same Add-on Layer category may exist in more than one of the Add-on profiles. The Profile would then read, for example: OS, Kubernetes, Networking, Storage, Monitoring, Ingress.
 
-# Layers
+## Layers
 
 Cluster Profile Layers are built using content packages which contain integration-specific templates, charts, and manifest. These content packages can either be of two types:
 
@@ -31,12 +33,14 @@ Cluster Profile Layers are built using content packages which contain integratio
 
  * **Helm Charts** - These charts are a collection of Kubernetes resource files capable of deploying services ranging in varying complexities. Palette provides a few stable public Helm registries out of the box. Tenants can also add any public or private Helm registries to leverage charts from those registries. Palette promotes Container Storage Interface (CSI) and Container Network Interface (CNI) layers to be added as Helm Charts from customized Helm registries and linked to Spectro Registry packs. 
 
-# Core Infrastructure Cluster Profile
+## Core Infrastructure Cluster Profile
+
 A **Core Infrastructure Cluster Profile** is constructed using the four Core Infrastructure layers: the OS, Kubernetes, the networking, and the storage layers. These profiles are environment specific and are constructed using cloud-specific layers.
 
 ![Core Infra Profile - Azure](/cluster_profile_azure.png)
 
-# Add-On Cluster Profile
+## Add-On Cluster Profile
+
 An **Add-on Cluster Profile** consists of various integrations and can be constructed using layers such as:
 
 - System apps
@@ -50,7 +54,8 @@ An **Add-on Cluster Profile** consists of various integrations and can be constr
 
 ![Add-On Profile](/addon_profile.png)
 
-# Full Cluster Profile
+## Full Cluster Profile
+
 A **Full Cluster Profile** consists of the Core Infrastructure layers and as many additional Add-on layers as required. The Core Infrastructure layers are cloud specific.
 
 ![Full Cluster Profile](/full_profile.png)

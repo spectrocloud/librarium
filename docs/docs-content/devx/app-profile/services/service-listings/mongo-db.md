@@ -1,35 +1,31 @@
 ---
 sidebar_label: "MongoDB"
-title: "Palette Dev Engine MongoDB Service"
+title: "MongoDB"
 description: "Palette Dev Engine MongoDB Service"
 hide_table_of_contents: false
 type: "appTier"
 category: ['databases']
 sidebar_position: 0
 logoUrl: "https://newrelic.com/sites/default/files/styles/800w/public/2021-10/mongo_logo.jpg?itok=Z1PabBZB"
+tags: ["devx", "app mode", "pde", "databases"]
 ---
 
 
-
-
-
-# Mongo DB
-
 [MongoDB](https://www.mongodb.com/) is a developer data platform that quickly builds applications with optimal performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition, this multi-cloud database service provides you with resilience, data privacy, and security.
 
-# Add MongoDB to an App Profile
+## Add MongoDB to an App Profile
 
 Use the following steps to add MongoDB to an app profile.
 
 <br />
 
-## Prerequisite
+### Prerequisite
 
 A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 <br />
 
-## Enablement
+### Enablement
 
 You can use the following steps to learn how to add MongoDB to your app profile.
 
@@ -61,7 +57,7 @@ You can use the following steps to learn how to add MongoDB to your app profile.
   * **Version:** Select the version from the **Version** drop-down. 
 
 6. Click **Save Changes**.
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
@@ -83,7 +79,7 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 |Red  | Error State|
 
 
-# Output Variables
+## Output Variables
 
 The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes.
 
@@ -95,7 +91,7 @@ The exposed output variables of this service layer may be used in other service 
 | DNS Seed           | `{{.spectro.app.$appDeploymentName.<service-name>.MONGO_URI_SRV}}` | Represents the MongoDB DNS seed list connection format. The SRV indicates to the client that the host name that follows corresponds to a DNS SRV record. Contains the prefix `mongodb+srv` |
 
 
-# Database Password
+## Database Password
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the MongoDB database user, use the following command format. 
 
@@ -111,7 +107,7 @@ Replace the values with the respective names.
   * user-name: The name of the database user.
 
 
-#### Example: 
+### Example: 
 
 - App Name: `app-tarfful`
 
@@ -124,17 +120,17 @@ kubectl get secret app-tarfful-mongodb-1-myuser  \
  --namespace app-tarfful-mongodb-1-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
 #### Output:
-```shell
+```shell hideClipboard
 .Hr1}%DrA2MFf
 ```
 
 
-# Next Steps
+## Next Steps
 
 Palette Dev Engine removes the traditional challenges encountered when deploying a MongoDB instance. You can add MongoDB to your application profile and get started with MongoDB today. Check out the [MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/) to learn how to integrate MongoDB with your applications.
 
 
-# Resources
+## Resources
 
 
 - [MongoDB Documentation](https://www.mongodb.com/docs/)

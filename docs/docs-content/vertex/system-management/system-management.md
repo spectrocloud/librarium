@@ -5,6 +5,7 @@ description: "Manage your Palette VerteX system settings."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["vertex", "management"]
 ---
 
 Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are available at the system level and are applied to all [tenants](/glossary-all#tenant) in the system. 

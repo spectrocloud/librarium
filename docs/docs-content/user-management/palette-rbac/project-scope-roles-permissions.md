@@ -5,6 +5,7 @@ description: "The list of Global Project Roles under Project Scope"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["user-management", "rbac"]
 ---
 
 

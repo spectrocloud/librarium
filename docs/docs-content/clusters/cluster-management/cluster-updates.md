@@ -1,33 +1,23 @@
 ---
 sidebar_label: "Cluster Updates"
-title: "Managing Cluster Update Events on Palette"
+title: "Cluster Updates"
 description: "Events and Notifications on Cluster Updates"
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
 
 Palette supports various kinds of updates to running clusters, such as upgrade of Kubernetes version, upgrade of add-on versions, the addition of new add-ons, removing existing ones, etc. Based on the nature of the change, one of the following two mechanisms can be used to apply cluster updates to the cluster.
 
-# Cluster profile based updates
-
-:::info
-
-**Kubernetes Version Upgrades:** We recommend our users to go for single-step upgrades of Kubernetes minor versions. E.g., Kubernetes version 1.18.x is to be updated to 1.19.x, not a direct upgrade to 1.20.x
-
-**Kubernetes Version Downgrades:** We do not recommend downgrading the Kubernetes versions.
-
-:::
-
+## Cluster Profile Updates
 
 Fundamental changes to the cluster’s definition, such as upgrading Kubernetes versions, installing new packs, uninstalling previously installed packs, and updating default pack configuration, are initiated through the cluster profile. These changes result in update notifications on all the clusters that are instantiated from the cluster profile. Update notifications consist of detailed information about all the changes applied to the profile since the initial installation or the previous update. In addition, users can update the clusters individually at an appropriate time. 
 
 :::info
 
-**Note:** Cluster Profile Changes will not be shown or allowed on clusters when the cluster is in a provisioning state until worker node additions are completed. This is done to prevent the Kubernetes clusters from going into an unrecoverable state due to the changes in core components. 
+Cluster Profile Changes will not be displayed or allowed on clusters when the cluster is provisioning and all worker node additions are completed. This is done to prevent the Kubernetes clusters from becoming unstable and transitioning into an unrecoverable state due to the changes in core components. 
 :::
-
 
 ![Cluster Notification - Update Available](/cluster_list_update_available.png)
 
@@ -38,7 +28,8 @@ Updates to pack configuration might result in a conflict if the configuration wa
 
 
 
-## Instructions:
+## Instructions
+
 * Navigate to the cluster profiles page and choose the profile to be updated. 
 * Make the desired changes. These include add/delete layers, change pack version, change pack values, etc. Save your changes. 
 * On the Clusters page, observe the  ‘Updates Available’ tag on every previously launched cluster using the updated cluster profile.
@@ -50,9 +41,9 @@ Updates to pack configuration might result in a conflict if the configuration wa
 * Repeat this process for other clusters to be upgraded.
 
 
-## Examples - Update Notifications
+### Examples - Update Notifications
 
-|Update Type     |Description|Notification Example                   |
+|**Update Type**     |**Description**|**Notification Example** |
 |:---------------|:---------|:-----------------------|
 Pack Version Upgrade |The existing pack version is upgraded to a different version in the cluster profile     |Kubernetes version is updated 1.18.16 > 1.20.0|
 |Pack Values Update |The existing pack values are updated in the cluster profile       |Kubernetes  1.20.0 values are updated|
@@ -62,10 +53,14 @@ Pack Version Upgrade |The existing pack version is upgraded to a different versi
 |Update Pack Manifest|The attached pack manifest content is updated in the cluster profile|manifest security is updated in the pack Kubernetes|
 |Delete Pack Manifest |The attached pack manifest is deleted from the cluster profile|manifest security is deleted in the pack Kubernetes|
 
-**Note:**
+:::note
+
 Prior to applying the notifications resulting from a profile update, the notification is automatically cleared if the corresponding changes are reverted. 
  
-## Examples - Notification settings
+:::
+
+
+### Examples - Notification settings
 
 As described above, notifications originate from changes to pack settings or manifest. They are accompanied by a settings dialog with a split pane showing differences in values. Following are a few examples of such scenarios:
 
@@ -78,13 +73,8 @@ As described above, notifications originate from changes to pack settings or man
 |Pack Version Changed|No|Original pack settings| Updated pack settings| Yes| Review and/or modify if desired|
 |Pack Version Changed|Yes|Updated settings from Cluster Profile| Current settings from cluster| No| Resolve all conflicts|
 
-# Configuration overrides
+## Configuration overrides
 
 Every pack installed via cluster profile provides a set of out-of-the-box default settings. These can be overridden at the time of launching a new cluster or any time afterward for a running cluster. Besides basic defaults, Palette also provides useful presets. Presets are preconfigured configuration blocks logically grouped. Can leverage these to turn a feature on/off quickly. For example, enabling ingress for a Prometheus/Grafana pack requires many settings to be added. However, the Ingres preset for the Prometheus pack makes it easy to make this change. 
 
 ![Cluster Update Details](/cluster_config_override.png)
-
-
-:::info
-    Supported for all cluster types (new, imported) and cloud types (public, private, managed)
-:::

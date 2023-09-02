@@ -1,19 +1,15 @@
 ---
 sidebar_label: "Prepare User Data"
-title: "Prepare User Data - Stage user data"
+title: "Prepare User Data"
 description: "Learn about building your staging user data"
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["edge"]
 ---
 
 
 
-# Overview
-
 The Edge Installer supports using a custom configuration file in the format of a YAML that you can use to customize the installation process. You can provide the customized configuration to the Edge Installer as a user data file. 
-
-<br />
-
 
 :::info
 
@@ -23,11 +19,10 @@ Review the Edge [Install Configuration](/clusters/edge/edge-configuration/instal
 
 You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
 
-# User Data Samples
+## User Data Samples
 
 You may encounter the following scenarios when creating an Edge Installer configuration user data file. Use these examples as a starting point to help you create user data configurations that fit your needs. 
 
-## Sample User Data
 ```yaml
 #cloud-config
 stylus:
@@ -101,7 +96,7 @@ stages:
           passwd: kairos
 ```
 
-## Connected Sites - Multiple User Data Configuration
+### Connected Sites - Multiple User Data Configuration
 
 In this example, two configuration user user data files are used. The first one is used in the staging phase and is included with the Edge Installer image. Note how the first user data contains the registration information and creates a user group. A bootable USB stick applies the second user data at the physical site. The secondary user data includes network configurations specific to the edge location.
 
@@ -140,7 +135,7 @@ stylus:
       zip-code: 95135
 ```
 
-## Connected Sites - Single User Data
+### Connected Sites - Single User Data
 
 This example configuration is for a *connected site*.
 In this scenario, only a single Edge Installer configuration user data is used for the entire deployment process.
@@ -171,7 +166,7 @@ stages:
         passwd: kairos
 ```
 
-## Apply Proxy & Certificate Settings 
+### Apply Proxy & Certificate Settings 
 
 This example showcases how you can include network settings in a user data configuration.
 
@@ -228,7 +223,7 @@ stages:
           passwd: kairos
 ```
 
-## Load Content From External Registry
+### Load Content From External Registry
 
 In this example, content is downloaded from an external registry.
 
@@ -264,7 +259,7 @@ stages:
 ```
 
 
-# Multiple User Data Use Case
+## Multiple User Data Use Case
 
 If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site deployment flow would look like the following.
 
@@ -283,7 +278,7 @@ When creating your Edge Installer, you can embed the user data into the installe
 In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc. 
 Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the  [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more about applying secondary site-specific user data.
 
-<br />
+
 
 :::info
 
@@ -293,6 +288,6 @@ For your initial testing, your user data may include global settings and site-sp
 
 
 
-# Next Steps
+## Next Steps
 
 The last step of the EdgeForce workflow is to build the Edge artifacts. Check out the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create the Edge artifacts.

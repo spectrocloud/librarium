@@ -1,26 +1,22 @@
 ---
 sidebar_label: 'Longhorn'
-title: 'Longhorn Integration with Palette'
+title: 'Longhorn'
 description: 'Longhorn pack in Palette'
-
+hide_table_of_contents: true
 type: "integration"
 category: ["storage", 'amd64', 'fips']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-longhorn/blobs/sha256:8257bd6697941139cea8ace907e25b3859cb8de48f965a5b6011d518cad0a2db?type=image/png'
+tags: ['packs', 'longhorn', 'storage']
 ---
-
-
-
-
-# Longhorn Overview
 
 Longhorn is a lightweight distributed block storage system for cloud native storage Kubernetes that allows you to replicate storage to Kubernetes clusters. Once Longhorn is installed, it adds persistent volume support to the Kubernetes cluster using containers and microservices.
 
 Longhorn creates a dedicated storage controller for each block device volume and replicates the volume across multiple nodes.
 
-# Version Supported
+## Version Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.4.x" value="1.4.x">
 
@@ -91,11 +87,11 @@ For more information, check out Longhorn guide on [How to Create Volumes](https:
 </TabItem>
 </Tabs>
 
-# Terraform
+## Terraform
 
 When using this Pack as a base layer, you need the following terraform code.
 
-```
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -109,6 +105,8 @@ data "spectrocloud_pack_simple" "csi-longhorn" {
 ```
 
 
-# References
+## References
 
-[Longhorn](https://longhorn.io/)
+- [Longhorn Home](https://longhorn.io/)
+
+- [Longhorn Documentation](https://longhorn.io/docs)

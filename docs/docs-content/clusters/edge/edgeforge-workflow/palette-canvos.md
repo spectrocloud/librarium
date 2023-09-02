@@ -4,29 +4,30 @@ title: "Build Edge Artifacts"
 description: "Learn how to build Edge artifacts, such as the Edge Installer ISO and provider images using Spectro Cloud's CanvOS utility."
 icon: ""
 sidebar_position: 10
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 hide_table_of_contents: false
-
-
-hiddenFromNav: false
+tags: ["edge"]
 ---
 
 
-# Build Edge Artifacts
 Palette's Edge solution requires Edge hosts to be ready with the required dependencies and [user data](/clusters/edge/edge-configuration/installer-reference) configurations before deploying a Kubernetes cluster. An Edge host requires the following artifacts to prepare for successful cluster deployment:
 
-<br />
-
 * **Edge installer ISO image** - This bootable ISO image installs the necessary dependencies and configurations on a bare host machine. During installation, the host machine will boot from the Edge installer ISO, partition the disk, copy the image content to the disk, install the Palette Edge host agent and metadata, and perform several configuration steps. These configuration steps include registering the host with Palette, setting user privileges, and configuring network or security settings. 
-<br />
 
 * **Provider Images** - These are [Kairos](https://kairos.io/)-based images containing the OS and the desired Kubernetes versions. These images install an immutable Operating System (OS) and software dependencies compatible with a specific Kubernetes version at runtime, i.e., during the cluster deployment. A provider image is used in the OS and the Kubernetes layer when creating a cluster profile. 
 
 
 In this guide, you will use the utility, [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md), to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile.
 
+:::note
+
+CanvOS is a utility that helps you build Edge artifacts. CanvOS is part of the EdgeForge workflow.
+
+:::
+
 
 The diagram below shows the high-level steps to building the Edge artifacts and pushing the provider images to an image registry.
-
 
 
 ![Overarching diagram showing the workflow in the current guide.](/tutorials/palette-canvos/clusters_edge_palette-canvos_artifacts.png)
@@ -39,21 +40,20 @@ The basic workflow has minimal customizations and offers a quick start to build 
 The advanced workflow uses more customization options. This workflow builds an openSUSE based Edge installer ISO and provider images. You will push the provider images to your Docker Hub image registry. 
 
 You can follow either of the workflows below that suits your use case.
-<br />
 
-<Tabs>
+
+<Tabs queryString="difficulty">
 
 <TabItem label="Basic" value="basic_create_artifacts" >
-<br />
 
-## Prerequisites
+
+### Prerequisites
 
 To complete this basic guide, you will need the following items:
-<br/>
+
 
 * A physical or virtual Linux machine with *AMD64* (also known as *x86_64*) processor architecture to build the Edge artifacts. You can issue the following command in the terminal to check your processor architecture. 
-  <br/>
-
+ 
   ```bash
   uname -m
   ```
@@ -77,7 +77,7 @@ To complete this basic guide, you will need the following items:
 
 
 
-## Instructions
+### Instructions
 
 Use the following instructions on your Linux machine to create all the required Edge artifacts with minimal customization. 
 <br />
@@ -128,15 +128,13 @@ Use the following instructions on your Linux machine to create all the required 
 
 
 6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the `CUSTOM_TAG` argument. 
-<br />
 
   ```bash
   export CUSTOM_TAG=palette-learn
   ```
   <br />
 
-7. Issue the command below to create the **.arg** file containing the custom tag. The remaining arguments in the **.arg** file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing **.arg.template** file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the available customizable arguments.  
-<br /> 
+7. Issue the command below to create the **.arg** file containing the custom tag. The remaining arguments in the **.arg** file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing **.arg.template** file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the available customizable arguments.
 
   :::info
 
@@ -145,7 +143,6 @@ Use the following instructions on your Linux machine to create all the required 
   :::
 
   Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`.   
-<br /> 
 
   ```bash
   cat << EOF > .arg
@@ -157,28 +154,25 @@ Use the following instructions on your Linux machine to create all the required 
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   PE_VERSION=$(git describe --abbrev=0 --tags)
-  platform=linux/amd64
+  ARCH=amd64
   EOF
   ```
   
   View the newly created file to ensure the customized arguments are set correctly.
-  <br />
-
+ 
   ```bash
   cat .arg
   ```
-  <br />
+
 
 8. Issue the command below to save your tenant registration token to an environment variable. Replace `[your_token_here]` with your actual registration token. 
-<br />
 
   ```bash
   export token=[your_token_here]
   ```
-  <br />
+
   
 9. Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example. 
-  <br />
 
   <PointsOfInterest
     points={[
@@ -220,10 +214,10 @@ Use the following instructions on your Linux machine to create all the required 
   ```
 
   </PointsOfInterest>
+
   <br />
 
   View the newly created user data file to ensure the token is set correctly.
-<br />
 
   ```bash
   cat user-data
@@ -231,18 +225,15 @@ Use the following instructions on your Linux machine to create all the required 
   <br />
 
 10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process.
-<br />
 
   ```bash
   sudo ./earthly.sh +build-all-images
   ```
 
-  ```hideClipboard bash {2}
-  # Output condensed for readability
+  ```bash hideClipboard
   ===================== Earthly Build SUCCESS ===================== 
   Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
   ```
-  <br />
 
   :::info
 
@@ -253,7 +244,6 @@ Use the following instructions on your Linux machine to create all the required 
   This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion, the command will display the manifest, as shown in the example below, that you will use in your cluster profile later in this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what you defined earlier in the **.arg** file.
 
   Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
-  <br />
 
   ```bash
   pack:
@@ -371,7 +361,7 @@ Use the following instructions on your Linux machine to create all the required 
 <br />
 
 
-## Validate
+### Validate
 List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
 <br />
 
@@ -391,9 +381,9 @@ You can validate the ISO image by creating a bootable USB flash drive using any 
 </TabItem>
 
 <TabItem label="Advanced" value="advanced_create_artifacts" queryString="advanced">
-<br />
 
-## Prerequisites
+
+### Prerequisites
 
 To complete this advanced guide, you will need the following items:
 <br />
@@ -436,7 +426,7 @@ To complete this advanced guide, you will need the following items:
 * A public repository named `opensuse-leap` in your image registry. Refer to the [Create a repository](https://docs.docker.com/docker-hub/repos/create/#create-a-repository) instructions for creating a Docker Hub repository and setting the repository's visibility to `public`. 
 
 
-## Instructions
+### Instructions
 
 Use the following instructions on your Linux machine to customize the arguments and Dockerfile and then create all the required Edge artifacts.
 
@@ -536,7 +526,7 @@ Use the following instructions on your Linux machine to customize the arguments 
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   PE_VERSION=$(git describe --abbrev=0 --tags)
-  platform=linux/amd64
+  ARCH=amd64
   EOF
   ```
   
@@ -782,7 +772,7 @@ Use the following instructions on your Linux machine to customize the arguments 
 <br />
 
 
-## Validate
+### Validate
 List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
 <br />
 
@@ -802,7 +792,7 @@ You can validate the ISO image by creating a bootable USB flash drive using any 
 
 </Tabs>
 
-# Next Steps
+## Next Steps
 
 After building the Edge artifacts and creating an Edge cluster profile, the next step is to use the Edge installer ISO image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy Palette-managed Edge clusters, we encourage you to check out the reference resources below.
 <br />

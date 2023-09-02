@@ -7,11 +7,10 @@ hide_table_of_contents: true
 sidebar_position: 0
 ---
 
-# Overview
 
 <video src="/videos/cluster-profiles/aws-full-profile.mp4"></video>
 
-# Basic Information and Core Layers
+## Basic Information and Core Layers
 
 Cluster profiles are created by configuring various layers of the Kubernetes infrastructure stack. To create a **New Cluster Profile**, follow these steps:
 
@@ -87,36 +86,32 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
 
 <br/>
 
-:::info
+----
+
 Palette allows users to deploy the same pack to multiple layers which can be required in certain scenarios, where an integration needs to be installed multiple times with different configuration. As an example, you may have two or more applications in the profile that need to use the Postgres database. You will be required to launch the Postgres database twice in this case with different configurations.
 
-In order to allow packs to be added multiple times in a profile, add the following key to the pack values in the yaml editor:
-
-      spectrocloud.com/display-name: <custom_name>
-
-   where `<custom_name>` is a name unique across a cluster profile and the cluster.
+In order to allow packs to be added multiple times in a profile, add the `spectrocloud.com/display-name: <custom_name>` key to the pack values in the YAML editor. The key `<custom_name>` is a name unique across a cluster profile and the cluster.
 
   **Example:**
 
-    pack:
-      # The namespace (on the target cluster) to install this chart
-      # When not found, a new namespace will be created
-      namespace: "external-dns"
-      # Custom pack name for multi-layer support
-      spectrocloud.com/display-name: "dns-1"
+  <br />
+
+  ```yaml hideClipboard
+  pack:
+  namespace: "external-dns"
+  spectrocloud.com/display-name: "dns-1"
+  ```
+
   
   If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Display names used for a pack across layers should be unique.
-:::
 
 <br />   
 
-:::info
-By default Palette uses Helm chart release name in the format packName-chartName. In cases where a lengthy release name causes some complicacy we can customize Helm chart releaseNames using the format below:
+By default Palette uses Helm chart release name in the format packName-chartName. In cases where a lengthy release name causes some complicacy we can customize Helm chart `releaseNames` using the format below.
 
- 
-**Example:**
-       
-```yaml
+<br />
+
+```yaml hideClipboard
 pack:
   namespace: kube-system
   releaseNameOverride:
@@ -124,23 +119,9 @@ pack:
     actual_chart_name2: custom_name2
 ```
 
-:::
 
-<!-- ## Cluster Profile Versioning
-
-Palette enables users to create multiple versions of a cluster profile within the scope of a single profile name. The **Version** field of the cluster profile takes a semantic versioning format (only numbers supported) as below: 
-
-  **`major.minor.patch`** represented as: Version 1.1.2
-         
- Profile versioning is an optional field with a default value of **1.0.0** . The users can create multiple versions of a cluster profile under a single profile name and each of these versions can have its own pack configurations.
- 
-Cluster profile versions are grouped under their unique names and their uniqueness is decided by the name and version within the scope and promotes backward compatibility to profile changes.
-
- **Example:** Profile-1 can have multiple versions like 1.0.0 and 2.0.1. These versions are grouped under the **Cluster Profile Name** Profile-1. The menu next to the cluster profile name contains the different versions under that name.
-          
- The version numbers can be edited from the **Settings > Edit Info** option from the Cluster Profile page. While deleting the profile, select the version to be deleted.
+<br />
       
-  -->
 
 
 

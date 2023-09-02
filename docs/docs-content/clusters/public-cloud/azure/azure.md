@@ -1,23 +1,18 @@
 ---
 sidebar_label: "Azure"
-title: "Creating new clusters on Palette"
+title: "Azure"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
 tags: 
-   - Public Cloud
+- "public cloud"
+- azure
 ---
-
-
-
-
-
-# Overview
 
 Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us/). You can deploy and manage [Host Clusters](/glossary-all#hostcluster) in Azure. To get  started check out the [Register and Manage Azure Cloud Account](/clusters/public-cloud/azure/azure-cloud). 
 
 <br />
 
-# Resources
+## Resources
 
 To learn more about Palette and Azure cluster creation and its capabilities check out the following resources:
 

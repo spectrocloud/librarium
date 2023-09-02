@@ -3,10 +3,10 @@ sidebar_label: "Create Images with Image Builder"
 title: "Create Images with Image Builder"
 description: "Learn how to use the Image Builder project to create images for Palette"
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 ---
-# Overview
+
 
 You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure providers have tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) (KBI) project.
 
@@ -36,7 +36,7 @@ You can use the custom images created by KIB with Palette, assuming the infrastr
 
 This guide will teach you how to use the Kubernetes Image Builder to create images for your infrastructure provider so that you can use the custom image in a cluster profile.
 
-# Prerequisites
+### Prerequisites
 
 
 * Palette v3.4.0 or greater.
@@ -61,7 +61,7 @@ To use a commercial OS, you must provide the license before starting the image c
 
 :::
 
-# Create an Image
+### Create an Image
 
 The following steps will guide you through creating your image. You will create a custom Red Hat Enterprise Linux (RHEL) for Amazon Web Services (AWS). RHEL is a commercial product, so you will need license subscription credentials, but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using KIB to create the image. 
 
@@ -302,7 +302,7 @@ When deploying a host cluster, choosing the appropriate cloud provider and regio
 
 :::
 
-# Validate
+### Validate
 
 Use the following steps to validate your custom image.
 

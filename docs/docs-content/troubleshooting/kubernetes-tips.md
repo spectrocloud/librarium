@@ -5,6 +5,7 @@ description: "Learn tips and tricks related to Kubernetes dubbging."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["k8s-tips", "troubleshooting"]
 ---
 
 

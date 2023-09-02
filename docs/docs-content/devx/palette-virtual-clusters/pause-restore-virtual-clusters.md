@@ -4,23 +4,17 @@ title: "Pause and Resume Virtual Clusters"
 description: "Learn how to pause and resume Palette Virtual Clusters."
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["devops"]
+tags: ["devx", "app mode", "pde"]
 ---
 
 
-
-
-
-
-# Overview
-
 To optimize resource utilization, Palette allows you to pause and resume virtual clusters that are not in use. This adds significant flexibility in managing operating costs and resource management for virtual clusters. 
 
-# Prerequisite
+## Prerequisite
 
 * A Running [Palette Virtual Cluster](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
 
-#  Pause and Resume a Palette Virtual Cluster
+##  Pause and Resume a Palette Virtual Cluster
 
 Invoke the pause and resume operations from the Palette Console.
 
@@ -35,7 +29,7 @@ Invoke the pause and resume operations from the Palette Console.
 
 4. Click **Settings** and select the **Pause** option. To resume a paused virtual cluster, select the **Resume** option.
 
-# Validate Pause/Resume
+## Validate Pause/Resume
 
 You can verify the state of a cluster by reviewing the cluster details. To review the state of a cluster and its details, do the following steps.
 
@@ -50,5 +44,6 @@ You can verify the state of a cluster by reviewing the cluster details. To revie
 *  **Paused**: For a paused virtual cluster
 *  **Running**: For a resumed or running virtual cluster
 
-**Note:** The status of a Palette Virtual cluster can also be viewed against the cluster name, in the existing cluster listing page of Palette Dev Engine console.
-
+:::tip
+The status of a virtual cluster can also be viewed on the cluster listing page. The health column displays the status of the virtual cluster.
+:::

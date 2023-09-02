@@ -4,7 +4,7 @@ title: "Palette User Access using RBAC "
 description: "Palette User Access control using RBAC"
 icon: ""
 hide_table_of_contents: false
-
+tags: ["user-management", "rbac"]
 ---
 
 

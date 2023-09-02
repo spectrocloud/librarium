@@ -1,33 +1,28 @@
 ---
 sidebar_label: 'AWS-EBS'
-title: 'AWS EBS Integration with Spectro Cloud'
+title: 'AWS EBS'
 description: 'AWS EBS storage add on into Spectro Cloud'
-
 type: "integration"
 category: ['storage', 'amd64','fips']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
+tags: ["packs", "aws-ebs", "storage"]
 ---
 
 
-
-
-
-# AWS EBS
-
 AWS Elastic Block Store is an easy to use, high performance block storage at any scale. It helps in the easy deployment, management, and scaling of the most demanding and high-performance tenant workloads. AWS EBS also ensures availability with replication and durability.
 
-# Prerequisites
+## Prerequisites
 
-The following permissions needs to be attached to the AWS cloud account:
+Palette requires the following IAM policies to be attached to the IAM role that is used to create the cluster:
 
 - The AWS managed policy `AmazonEBSCSIDriverPolicy`.
 
-- [EBSCSIKMSEncryptionPolicy](/integrations/aws-ebs#ebscsikmsencryptionpolicy) (custom policy name), if the user wants to enable EBS encryption.
+- For AWS Key Management Service (KMS) encryption, refer to the [KMS Encryption Policy](#kms-encryption-policy) section.
 
-# Versions Supported
+## Versions Supported
 
-<Tabs>
+<Tabs queryString="version">
 
 <TabItem label="1.12.x" value="1.12.x">
 
@@ -55,11 +50,11 @@ The following permissions needs to be attached to the AWS cloud account:
 </Tabs>
 
 
-## EBSCSIKMSEncryptionPolicy
+## KMS Encryption Policy
 
-<br />
+If you want to use KMS encryption, you must attach the following IAM policy to the Palette IAM role that is used to create the cluster.
 
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -92,16 +87,17 @@ The following permissions needs to be attached to the AWS cloud account:
 You can view the full parameter list [here](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters).
 
 
-Storage classes that Palette creates are named "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
-<br />
+Storage classes that Palette creates are named `spectro-storage-class` and can be fetched from kubectl using the following CLI command:
+
 
 ```bash
-kubectl get storageclass
+kubectl get storageclass --all-namespaces
 ```
 
-# References
 
-[AWS EBS](https://aws.amazon.com/ebs/)
+## References
+
+- [AWS EBS](https://aws.amazon.com/ebs/)
 
 
-[AWS EBS Storage Class Details](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs)
+- [AWS EBS Storage Class Details](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs)

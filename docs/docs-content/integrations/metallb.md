@@ -2,19 +2,13 @@
 sidebar_label: 'MetalLB'
 title: 'MetalLB'
 description: 'MetalLB Load Balancer pack in Spectro Cloud'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['load balancers', 'amd64', 'arm64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab856a03d5b821062dcd1da624256e8f1e2ede404d88cb088d3adb945?type=image/png'
+tags: ['packs', 'metallb', 'network']
 ---
-
-
-
-
-
-
-# MetalLB
 
 MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters, using standard routing protocols. This integration is recommended for the on-prem cloud(s) and will help external service(s) get an IP address when the service type is set as LoadBalancer.
 
@@ -35,7 +29,7 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="0.13.x" value="0.13.x">
 
@@ -68,5 +62,6 @@ MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://ku
 
 ## References
 
-https://metallb.universe.tf/ <br />
-https://github.com/metallb/metallb
+- [MetalLB Home](https://metallb.universe.tf)
+
+- [MetalLB GitHub](https://github.com/metallb/metallb)

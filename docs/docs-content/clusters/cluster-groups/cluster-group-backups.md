@@ -1,17 +1,15 @@
 ---
 sidebar_label: "Enable Disk Backup on Virtual Clusters"
-title: "Enable Disk Backup on Virtual Clusters."
+title: "Enable Disk Backup on Virtual Clusters"
 description: "Learn how to configure disk and volume backup for virtual clusters in a cluster group."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["clusters", "cluster groups"]
 ---
-
-
-# Overview
 
 Palette [Virtual Clusters](/clusters/palette-virtual-clusters) are a capability that cluster groups support and that you can enable when creating a cluster group. By default, the virtual cluster settings in a cluster group disable disk backups. You can back up all the volumes within a virtual cluster using the following steps. 
 
-# Prerequisites
+## Prerequisites
 
 * A project or tenant backup location. Refer to the [cluster backup and restore](/clusters/cluster-management/backup-restore#clusterbackupandrestore) document to learn how to configure a backup location.
 
@@ -27,7 +25,7 @@ You can also enable virtual cluster disk backup during the cluster group creatio
 :::
 
 
-# Enable Backup for Virtual Clusters
+## Enable Backup for Virtual Clusters
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -71,10 +69,10 @@ Setting the `podSecurityStandard` to `privileged` can introduce privilege escala
 
 All virtual clusters deployed in this cluster group will now include disk storage during backup operations.
 
-# Validate
+## Validate
 
 
-You can validate the disk backups are occurring by deploying a virtual cluster and taking a backup. 
+You can validate that the disk backups are occurring by deploying a virtual cluster and taking a backup. 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

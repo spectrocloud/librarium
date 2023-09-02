@@ -1,14 +1,11 @@
 ---
 sidebar_label: "Apply Site User Data"
-title: "Site User Data"
+title: "Apply Site User Data"
 description: "Learn how to create a secondary Edge Installer configuration user data."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["edge"]
 ---
-
-
-
-# Overview
 
 You can provide site-specific Edge Installer configuration user data if you need to apply new values or override default values from the Edge Installer user data you created in the [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) step or, as often referenced, the *Installer Handoff* phase.
 
@@ -78,6 +75,6 @@ Use the following steps to create an ISO file containing the additional user dat
 
 You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
 
-# Next Steps
+## Next Steps
 
 Before you register your Edge host with Palette you must have a tenant registration token. Review the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for steps on how to create a tenant registration token.

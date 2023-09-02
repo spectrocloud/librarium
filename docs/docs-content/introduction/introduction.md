@@ -6,8 +6,7 @@ icon: ""
 hide_table_of_contents: false
 slug: /
 ---
- 
-# What is Palette?
+
 
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center or the cloud.
  
@@ -18,6 +17,9 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 ![Palette product high level overview eager-load](/docs_introduction_product-overview.png)
  
 ## What Makes Palette Different?
+
+<br />
+
  
 ### Full-Stack Management
 
@@ -47,7 +49,11 @@ With Palette’s Cluster Profiles, teams can define full-stack clusters that inc
 ![2-what-is-sc](/docs_introduction_palette-components.png)
  
 ## Who Can Benefit From Palette?
+
+
+<br />
  
+
 ### Developers
 
 Development teams will get the flexibility and freedom they are looking for to increase the speed of innovation, whether it is the cluster template with the add-on application services or choosing a Kubernetes version with integrations like logging, monitoring, and service mesh for your application development. They need not worry about Kubernetes configurations but focus on the stuff that matters.
@@ -62,11 +68,11 @@ Declarative management makes life easier for IT teams, with consistency, repeata
 With an open and enterprise-grade platform, IT leaders can get peace of mind without being locked into proprietary orchestration technologies or one-size-fits-all solutions. This helps lower the total cost of ownership (TCO) and reduce operational risk.
 
 
-# Next Steps
+## Next Steps
 Learn more about Palette and how it can improve your Kubernetes experience and those in your organization. Try [Palette](https://console.spectrocloud.com/) for free today and experience a better way of working with Kubernetes. 
 
-<br />
-
 - [Try Palette for Free](/getting-started/palette-freemium)
+
 - [App Mode and Cluster Mode](/introduction/palette-modes)
-- [Palette Architecture](/architecture/architecture-overview/)
+
+- [Palette Architecture](/architecture/architecture-overview)

@@ -1,18 +1,16 @@
 ---
 sidebar_label: "Network Ports"
-title: "Network Communication and Ports Management Platform on Prem"
+title: "Network Communication and Ports"
 description: "Port-Direction-Purpose Management Platform and Workload Clusters"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
 ---
-# Network Communication and Ports
 
 
 Depending on what version of Palette you are using, the internal architecture and network communication will be different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with Palette 4.0.0, the management platform communicates with the workload cluster via gRPC. Use the tabs below to view the network communication and ports for each architecture.
 
 
-<br />
 
 <Tabs queryString="networking-ports">
 <TabItem label="gRPC" value="gRPC" que>
@@ -26,7 +24,7 @@ The following ports must be reachable from a network perspective for Palette Saa
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
 
-<br />
+
 
 #### SaaS Managed
 
@@ -34,7 +32,6 @@ The following ports must be reachable from a network perspective for Palette Saa
 ![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
 
 
-<br />
 
 
 :::caution
@@ -78,7 +75,7 @@ The following ports must be reachable from a network perspective for Palette sel
 
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
 
-<br />
+
 
 
 :::caution
@@ -125,7 +122,7 @@ The following ports must be reachable from a network perspective for Palette Saa
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_network-diagram_nats.png "title=SaaS Network Diagram with ports")
 
-<br />
+
 
 #### SaaS Managed
 

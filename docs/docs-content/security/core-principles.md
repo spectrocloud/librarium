@@ -5,6 +5,7 @@ description: "Learn about Spectro Cloud security principles for Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["security"]
 ---
 
 

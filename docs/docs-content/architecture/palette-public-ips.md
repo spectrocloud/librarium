@@ -6,11 +6,12 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
 ---
- # Overview
 
 
- In this section, you can find the public IP addresses that support Spectro Cloud SaaS operations. These IP addresses are essential to ensure seamless communication between your infrastructure and our platform.
+In this section, you can find the public IP addresses that support Spectro Cloud SaaS operations. These IP addresses are essential to ensure seamless communication between your infrastructure and our platform.
 
+
+## IP Address Ranges
 
 Allow the following IP address ranges in your network configuration to enable traffic to and from the Spectro Cloud SaaS platform.
 

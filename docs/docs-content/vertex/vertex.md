@@ -5,6 +5,7 @@ description: "Learn how Palette VerteX enables regulated industries to meet stri
 hide_table_of_contents: false
 sidebar_custom_props: 
     icon: "shield"
+tags: ["vertex"]
 ---
 
 

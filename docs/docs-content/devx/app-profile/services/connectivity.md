@@ -1,16 +1,11 @@
 ---
 sidebar_label: "Service Connectivity"
-title: "Palette Dev Engine Database Connectivity"
+title: "Service Connectivity"
 description: "Palette Dev Engine Database Connectivity"
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["devx", "app mode", "pde"]
 ---
-
-
-
-
-
-# Service Connectivity
 
 
 Using the exposed output variables, you can connect different service layers. For example, assume you have one application and database defined in an app profile. You can connect the two using the exposed output variable containing the Kubernetes service hostname.
@@ -19,7 +14,6 @@ It's important to consider the order of service layers. Using the previous examp
 
 The order of the service layers is important because the output variables used in services follow a usage hierarchy. The output variables for a service are only available if the service comes after the service that exposes the output variable. Output variables from the first services you add, which become the first layer in the app profile stack, can be consumed by other services after it. However, output variables cannot be passed downwards from the top service layers.
 
-<br />
 
 ## Connectivity Example
 

@@ -5,6 +5,7 @@ description: "Troubleshooting steps for deploying a Private Cloud Gateway."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
+tags: ["troubleshooting", "pcg"]
 ---
 
 

@@ -1,23 +1,17 @@
 ---
 sidebar_label: "MySQL"
-title: "Palette Dev Engine MySQL Service"
+title: "MySQL"
 description: "Palette Dev Engine MySQL Service"
 hide_table_of_contents: false
 type: "appTier"
 category: ['databases']
 sidebar_position: 10
 logoUrl: "https://registry.dev.spectrocloud.com/v1/mysql-operator/blobs/sha256:2d59bc428916752528280eac03330d712164163e2f3c476409f5c25d8a7c2778?type=image/png"
+tags: ["devx", "app mode", "pde", "databases"]
 ---
 
 
-
-
-
-# MySQL
-
 [MySQL](https://www.mysql.com/) is an open-source relational database management system commonly used in web applications and other software that requires a database. It is known for its reliability, ease of use, and flexibility. MySQL is covered under the GNU license and uses structured query language (SQL) to manage data with the following properties:
-
-<br />
 
 * Creates a database for storing and manipulating data and defining the relationship of each table.
 
@@ -33,11 +27,11 @@ Use the following steps to add MySQL to an app profile.
 
 ## Prerequisite
 
-A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
+- Access to Palette Dev Engine.
 
 <br />
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -68,7 +62,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
 6. Click on **Save Changes**.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
@@ -90,7 +84,7 @@ A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 |Red  | Error State|
 
 
-# Output Variables
+## Output Variables
 
 The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
 
@@ -103,7 +97,7 @@ The exposed output variables of this service layer may be used in other service 
 
 
 
-# Database Password
+## Database Password
 
 You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve the password for the MySQL database root user, use the following command format. 
 
@@ -117,7 +111,7 @@ Replace the values with the respective names.
   * app-name: represents the name of the app provided during the app creation process.
   * service-name: The name of the service layer in the app profile.
 
-#### Example: 
+#### Example 
 
 - App Name: `app-tarfful`
 
@@ -128,18 +122,18 @@ Replace the values with the respective names.
 kubectl get secret app-tarfful-mysql-2-user \
  --namespace app-tarfful-mysql-2-ns --output jsonpath='{.data.ROOT_PASSWORD}' | base64 --decode
 ```
-#### Output:
-```shell
+#### Output
+```shell hideClipboard
 ,U31nQ@T2tN4uM
 ```
 
-# Next Steps
+## Next Steps
 
 You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about integrating MySQL with your applications, check out the [MySQL](https://redis.io/docs/manual/) documentation from Oracle.
 
 
 
-# Resources
+## Resources
 
 - [MySQL Documentation](https://dev.mysql.com/doc/)
 

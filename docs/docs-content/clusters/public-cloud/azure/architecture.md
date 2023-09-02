@@ -1,12 +1,15 @@
 ---
 sidebar_label: "Architecture"
-title: "Azure Architecture with Palette"
+title: "Azure Architecture"
 description: "Learn about how Palette integrates with Azure and the architecture that powers the integration"
 hide_table_of_contents: false
+tags: ["public cloud", "azure", "architecture"]
 sidebar_position: 0
 ---
 
-# Azure IaaS Architecture
+Palette supports the deployment of host clusters in both Azure and Azure Kubernetes Service (AKS). This page covers the architecture of the integration between Palette and Azure.
+
+## IaaS Architecture
 
 The following are some architectural highlights of Azure clusters deployed by Palette:
 
@@ -26,7 +29,7 @@ The following are some architectural highlights of Azure clusters deployed by Pa
 
 
 
-# Azure AKS Architecture
+## AKS Architecture
 
 The integration between Palette and Azure AKS unlocks the following capabilities.
 
@@ -48,7 +51,7 @@ The integration between Palette and Azure AKS unlocks the following capabilities
 ![An Azure AKS architecture diagram](/clusters_azure_architecture_aks-diagram.png)
 
 
-# Azure Storage
+## Azure Storage
 
 During an Azure cluster deployment, Palette creates an [Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and storage container. Palette copies the base virtual hard disk (VHD) image to the Palette default storage container in the default Palette storage account. The storage account Palette created has unrestricted access and has an auto-generated name. You can attach a custom storage account or storage containers to the Azure cluster.
 
@@ -71,7 +74,7 @@ To restrict the user access to the storage resource, apply custom policies, or l
 Clusters that use a Palette self-hosted [Private Cloud Gateway](/clusters/public-cloud/azure/gateways/) (PCG), should use a custom storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access and use private access for the Azure storage account.
 
 
-# Tags
+## Tags
 
 You can assign tags to clusters deployed to Azure. Tags can help you with user access control management and more granularly restrict access to various Palette resources, including clusters. Check out the [Resource Filters](/clusters/cluster-management/cluster-tag-filter/create-add-filter) documentation page to learn more about using tags to restrict resource access. 
 
@@ -81,9 +84,6 @@ The custom tags you create are assigned to the clusters during the creation proc
 ### Reserved Tags
 
 The following tags are reserved for internal purposes and are not available for usage. Palette will return an error if you use any of the following tags.
-
-<br />
-
 
 - `azure`
 

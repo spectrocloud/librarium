@@ -5,6 +5,7 @@ description: "Learn how to deploy a VM from a template using Palette Virtual Mac
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["vmo"]
 ---
 
 

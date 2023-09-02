@@ -1,16 +1,12 @@
 ---
-sidebar_label: "Tencent-TKE"
-title: "Creating TKE clusters in Palette"
+sidebar_label: "Tencent TKE"
+title: "Tencent TKE"
 description: "The methods of creating clusters for a speedy deployment on Tencent-TKE"
 hide_table_of_contents: false
+tags: ["public cloud", "tencent", "tke"]
 sidebar_position: 40
 ---
 
-
-
-
-
-# Overview
 
 Palette supports the deployment of tenant workloads with Tencent Kubernetes Engine (TKE). The following are the detailing of the Tencent TKE cluster provisioning through Palette:
 
@@ -22,9 +18,9 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 3. The Palette-supported TKE architecture is represented diagrammatically as below:
 
-![tencent-diagram.png](/tencent-diagram.png)
+    ![tencent-diagram.png](/tencent-diagram.png)
 
-# Prerequisites
+## Prerequisites
 
 * A Tencent Cloud account with appropriate [permissions](/clusters/public-cloud/tke#permissionsfortkeclustercrudoperations).
 
@@ -44,7 +40,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 * Create a security group for network security isolation and add Inbound traffic rule that allows the TCP/HTTPS protocol for port 443 from all IPv6 and IPv4 sources through this security group.
 
 
-# Tencent Cloud Account Permissions
+## Tencent Cloud Account Permissions
 
 **Last Update**: April 26, 2022
 
@@ -144,7 +140,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 ```
 
 
-# Create a Tencent Cloud Account
+## Create a Tencent Cloud Account
 
 Create a Tencent Cloud account in Palette from the Tenant Admin or Project Admin scope. To create the cloud account:
 
@@ -169,7 +165,7 @@ Create a Tencent Cloud account in Palette from the Tenant Admin or Project Admin
 
 **Note**: The cloud account can be created during the first step of cluster creation when you fill in the basic information by clicking the **+** next to **Cloud Account**.
 
-# Deploy a Tencent Cluster
+## Deploy a Tencent Cluster
 
 The following steps need to be performed to provision a new TKS cluster:
 
@@ -184,43 +180,37 @@ The following steps need to be performed to provision a new TKS cluster:
 2. Select the cluster profile created for Tencent Cloud. The profile definition will be used as the cluster deployment template.
 
 
-3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile.
+3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile. While configuring the Operating System layer of the TKE cluster profile, configure the value of the OS pack file with any one of the following images:
 
-:::info
+    ```yaml
+    "OsName": "centos7.6.0_x64"
+    ```
+    ```yaml
+    "OsName": "centos7.6.0_x64 GPU"
+    ```
+    ```yaml
+    "OsName": "ubuntu18.04.1x86_64"
+    ```
+    ```yaml
+    "OsName": "ubuntu18.04.1x86_64 GPU"
+    ```
 
-While configuring the Operating System layer of the TKE cluster profile, configure the value of the OS pack file with any one of the following images:
+    :::caution
 
-```yaml
-"OsName": "centos7.6.0_x64"
-```
-```yaml
-"OsName": "centos7.6.0_x64 GPU"
-```
-```yaml
-"OsName": "ubuntu18.04.1x86_64"
-```
-```yaml
-"OsName": "ubuntu18.04.1x86_64 GPU"
-```
+    While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in multiples of 10.
 
-:::
+    Example:
 
-:::caution
+    ```yaml
+    master:
+    persistence:
+        enabled: true
+        accessModes:
+        - ReadWriteOnce
+        size: 20Gi
+    ```
 
-While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in multiples of 10.
-
-Example:
-
-```yaml
-master:
-persistence:
-    enabled: true
-    accessModes:
-    - ReadWriteOnce
-    size: 20Gi
-```
-
-:::
+    :::
 
 4. Provide the Tencent Cloud account and placement information:
 
@@ -235,9 +225,9 @@ persistence:
     |**Cluster Endpoint Access**| Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.|
     |**Public Security Group**|A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. |
 
-:::info
-Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported in the near future.
-:::
+    :::info
+    Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported in the near future.
+    :::
 
 5. Public Access CIDRs - To enable access restrictions.
 
@@ -286,7 +276,8 @@ In Tenant Admin and Project Admin scope, Palette allows you to force the deletio
 
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
+    :::caution
 
-:::caution
-If any resources remain in the cloud, you should clean them up before initiating a forced delete.
-:::
+    If any resources remain in the cloud, you should clean them up before initiating a forced delete.
+
+    :::

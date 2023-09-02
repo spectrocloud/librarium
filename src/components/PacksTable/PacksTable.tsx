@@ -61,15 +61,15 @@ const columns: PacksColumn[] = [
     width: 150,
   },
   {
-    title: "Last updated",
-    dataIndex: "packCreateDate",
-    key: "packCreateDate",
+    title: "Last Updated",
+    dataIndex: "packLastModifiedDate",
+    key: "packLastModifiedDate",
     sorter: (a: Pack, b: Pack) =>
-      new Date(a.packCreateDate).getTime() - new Date(b.packCreateDate).getTime(),
+      new Date(a.packLastModifiedDate).getTime() - new Date(b.packLastModifiedDate).getTime(),
     width: 150,
   },
   {
-    title: "LastModified",
+    title: "Last Modified",
     dataIndex: "timeLastUpdated",
     key: "timeLastUpdated",
     sorter: (a: Pack, b: Pack) =>
@@ -133,8 +133,8 @@ const FilteredTable: React.FC = () => {
         columns={columns}
         dataSource={filteredPacks}
         loading={loading}
-        scrollY={500}
-        pagination={{ pageSize: 50 }}
+        scrollY={250}
+        pagination={{ pageSize: 250 }}
       />
       {error && <div className={styles.error}>Failed to load Deprecated Packs</div>}
     </div>

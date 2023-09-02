@@ -4,6 +4,7 @@ title: "Create and Manage VMs"
 description: "Learn methods to create VMs using Palette's Virtual Machine Orchestrator.."
 icon: " "
 hide_table_of_contents: false
+tags: ["vmo"]
 ---
 
 

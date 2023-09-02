@@ -4,10 +4,10 @@ title: "Set Up Ingress for Cluster Groups"
 description: "Learn how to configure Ingress for a Palette Cluster Group"
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["clusters", "cluster groups"]
 ---
 
 
-# Overview
 
 Cluster Groups may have a cluster endpoint type of either Load Balancer or Ingress. The cluster endpoint type determines how Palette Virtual Clusters deployed in a Cluster Group are exposed. You specify the cluster endpoint in Cluster Group Settings.
 
@@ -15,7 +15,7 @@ Using **Ingress** as the cluster endpoint type is a more cost effective way to a
 
 When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) add-on profile, such as NGINX, on each host cluster in the Cluster Group. The Ingress Controller provides the necessary routing functionality for external traffic to reach the Kubernetes API server of each virtual cluster, as well as any apps each virtual cluster contains. 
 
-# Prerequisites
+## Prerequisites
 
 - At least one infrastructure or cloud-based cluster you’ve created.
 
@@ -29,7 +29,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
         extraArgs: 
           enable-ssl-passthrough: true  
   ```
-    <br />
+ 
 
  - Palette's ```nginx-ingress``` add-on profile automatically reroutes inbound requests from port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
  
@@ -42,13 +42,14 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
       6443: "nginx/nginx-ingress-controller:443"  
     ```
 
-# Set Up Ingress
+## Set Up Ingress
 
 The following steps describe how to enable an Ingress Controller for a Cluster Group. You will use the `nginx-ingress` add-on profile, but you may choose another ingress controller.
-<br />
+
 
 1. Log in to Palette as **Tenant Admin**.
-<br />
+
+
 2. Identify each host cluster that requires the addition of an NGINX Ingress Controller profile.
 
     This can be:
@@ -58,11 +59,8 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     
     - Existing host clusters that you will add to a new Cluster Group. <br /><br />
 
-3. Either add the ```nginx-ingress``` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the 
-[Prerequisites](/clusters/cluster-groups/ingress-cluster-group/#prerequisites) section. 
+3. Either add the `nginx-ingress` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](/clusters/cluster-groups/ingress-cluster-group/#prerequisites) section. 
   
-  <br /> 
-
   a. From the **Main Menu**, choose **Clusters** and select a cluster.
 
   b. In the **Profile** tab, click **Add add-on profile (+)** and select `nginx-ingress`. 
@@ -86,22 +84,20 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     <br />
 
     e. Close the web shell.
-    <br />
+
 
 5. Use your DNS provider to create a wildcard CNAME record that maps to the External-IP for the NGINX Ingress Controller. Paste the External-IP you copied from the web shell to create the CNAME record.
-<br />
 
-:::info
+  :::info
 
-The CNAME record is also known as the host cluster DNS pattern.
+  The CNAME record is also known as the host cluster DNS pattern.
 
-::: 
+  ::: 
 
 <br />
 
 6. Copy the CNAME record to your clipboard.
 
-<br />
 
 7. Ensure you are in Palette's Cluster Mode, under the Tenant Admin scope. From the **Main Menu**, select **Cluster Groups**, then select the Cluster Group that requires ingress. <br /> <br />
     a. From the **Host Clusters** tab, select **Settings > Clusters**.    
@@ -110,11 +106,11 @@ The CNAME record is also known as the host cluster DNS pattern.
 
     c. Paste the name of the wildcard CNAME record into the **Host DNS** field.
 
-:::info
-If you haven’t yet created a Cluster Group, you can configure each host cluster as described and add them to a new Cluster Group later.
-:::
+  :::info
+  If you haven’t yet created a Cluster Group, you can configure each host cluster as described and add them to a new Cluster Group later.
+  :::
 
-# Validate
+## Validate
 
 To validate that ingress is functioning as expected, do the following: 
 
@@ -148,10 +144,6 @@ If an error message displays, it indicates something is wrong with the configura
 - The CNAME record correctly maps to the External-IP of the NGINX Ingress Controller’s LoadBalancer Service.
 
 - Cluster Group Settings specify the Cluster endpoint type as **Ingress**, and **Host DNS** specifies the CNAME record you created.
-
-# Resources
-
-- [Cluster Groups](/clusters/cluster-groups)
 
 
 

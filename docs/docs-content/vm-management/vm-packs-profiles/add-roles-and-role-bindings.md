@@ -5,6 +5,7 @@ description: "Learn how to configure user roles and cluster role bindings for Vi
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["vmo"]
 ---
 
 

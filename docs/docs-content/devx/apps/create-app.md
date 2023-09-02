@@ -4,30 +4,22 @@ title: "Create and Manage Apps"
 description: "Learn how to create and manage an app in Palette Dev Engine."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["devx", "app mode", "pde"]
 ---
-
-
-
-
-
-
-# Overview
 
 Use the following steps to create and deploy an app to a virtual cluster.
 
 
-# Prerequisite 
+## Prerequisite 
 
 - An application profile. Use the guide [Create an App Profile](/devx/app-profile/create-app-profile) to learn how to create an app profile.
 
-<br />
 
+:::info
 
-  :::info
+A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) to get started with Palette Dev Engine.
 
-  A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) to get started with Palette Dev Engine.
-
-  :::
+:::
 
 ## Create a New App
 
@@ -69,7 +61,7 @@ The application will begin the deployment process. This may take a few minutes, 
 
 
 
-# Validate
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

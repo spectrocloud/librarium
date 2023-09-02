@@ -1,19 +1,15 @@
 ---
 sidebar_label: "Postgres"
-title: "Palette Dev Engine Postgres Service"
+title: "Postgres"
 description: "Palette Dev Engine Postgres Service"
 hide_table_of_contents: false
 type: "appTier"
 category: ['databases']
 sidebar_position: 20
 logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg'
+tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-
-
-
-
-# Deploy Postgres
 
 Palette supports [Postgres](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
 
@@ -32,14 +28,8 @@ The following are the requirements for using Postgres in Palette:
 * Clients must set `sslMode=require` or a stricter setting, as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
 
 
-# Add Postgres to an App Profile
+## Add Postgres to an App Profile
 
-
-## Prerequisite
-
-A Spectro Cloud [account](https://www.spectrocloud.com/get-started/)
-
-## Enablement
 
 You can use the following steps to learn how to add Postgres to your app profile.
 
@@ -108,7 +98,7 @@ You can use the default system-generated password. If the default password is us
 |Red  | Error State|
 
 
-# Output Variables
+## Output Variables
 
 The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
 
@@ -120,7 +110,7 @@ The exposed output variables of this service layer may be used in other service 
 | Service Port           | `{{.spectro.app.$appDeploymentName.database-<service-name>.POSTGRESMSTR_SVC_PORT}}` | The exposed ports for the database service.              |
 
 
-# Database Password
+## Database Password
 
 You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format. 
 
@@ -136,7 +126,7 @@ Replace the values with the respective names.
   * user-name: The name of the database user.
 
 
-#### Example: 
+#### Example 
 
 - App Name: `app-tarfful`
 
@@ -148,17 +138,17 @@ Replace the values with the respective names.
 kubectl get secret app-tarfful-postgresql-3-postgres-pguser-credentials \
  --namespace app-tarfful-postgresql-3-ns --output jsonpath='{.data.password}' | base64 --decode
 ```
-#### Output:
-```shell
+#### Output
+```shell hideClipnoard
 zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 ```
 
-# Next Steps
+## Next Steps
 
 Add Postgres to your application profile and explore all the capabilities Postgres has to offer. The official Postgres documentation has several [tutorials](https://www.postgresql.org/docs/online-resources/) to help you learn more about Postgres and how to leverage Postgres with your applications.
 
 
-# Resources
+## Resources
 
 - [Postgres Documentation](https://www.postgresql.org/docs/)
 

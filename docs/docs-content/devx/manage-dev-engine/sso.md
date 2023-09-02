@@ -5,21 +5,16 @@ description: "Learn how to configure SSO for Palette Dev Engine."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["devx", "app mode", "pde"]
 ---
 
 
 
-
-# Overview
-
 Palette supports the ability to use Single Sign-On (SSO) and third-party Social Sign-In Providers, such as Google and GitHub. Use the following steps to either enable or disable the feature. 
 
-# Enable SSO
+## Enable SSO
 
 To enable SSO with third-party Social Sign-In Providers use the following steps.
-
-<br />
-
 
 :::info
 
@@ -28,12 +23,12 @@ To learn more about the Sign-In Flow, refer to the [User Authentication](/user-m
 :::
 
 
-## Prerequisites
+### Prerequisites
 
 * Palette Tenant Administrator access.
 
 
-## Enable SSO
+### Enable SSO
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
 
@@ -52,7 +47,7 @@ To learn more about the Sign-In Flow, refer to the [User Authentication](/user-m
 
 
 
-## Validate
+### Validate
 
 You can validate SSO is enabled by attempting to log into your Palette tenant through SSO. Select the third-party provider you enabled for SSO.
 
@@ -60,18 +55,18 @@ You can validate SSO is enabled by attempting to log into your Palette tenant th
 ![Palette's login view with the SSO providers highlighted.](/devx_manage-dev-engine_sso_palette-login-view.png)
 
 
-# Disable SSO
+## Disable SSO
 
 Palette provides the flexibility to disable SSO to restrict this capability. Use the following steps to disable SSO for Palette.
 
 
-## Prerequisites
+### Prerequisites
 
 * Palette Tenant Administrator access.
 
 
 
-## Disable Steps
+### Disable Steps
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
 
@@ -85,7 +80,7 @@ Palette provides the flexibility to disable SSO to restrict this capability. Use
 4. Log out of Palette.
 
 
-## Validate
+### Validate
 
 You can validate SSO is disabled by attempting to log into your Palette tenant through SSO. Any SSO attempts will fail due to SSO being disabled at the tenant level.
 

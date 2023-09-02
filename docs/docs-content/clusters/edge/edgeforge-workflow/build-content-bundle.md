@@ -1,18 +1,15 @@
 ---
 sidebar_label: "Build Content Bundle"
-title: "Build Content Bundle - Optimize Edge Deployments"
+title: "Build Content Bundle"
 description: "Learn about building your edge content bundles in order to optimize cluster deployments"
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["edge"]
 ---
 
 
-
-# Overview
-
 Content bundles are archives of all the required container images required for a cluster profiles. The content bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster. [Cluster Profiles](/cluster-profiles) are the primary source for building these content bundles.
 
-<br />
 
 :::caution
 
@@ -21,11 +18,10 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
 :::
 
 
-# Benefits of Content Bundle
+## Benefits of Content Bundle
 
 Creating a content bundle provides several benefits that may address common use cases related to deploying Edge hosts.
 
-<br />
 
 * Preloading required software dependencies removes the need to download assets during cluster deployment.
 
@@ -39,7 +35,7 @@ Creating a content bundle provides several benefits that may address common use 
 * Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure that only approved software is consumed.
 
 
-# Prerequisites
+## Prerequisites
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
@@ -52,13 +48,13 @@ Creating a content bundle provides several benefits that may address common use 
 
 - Content tags in your profiles highlight the exact location of container images to be downloaded.
 
-# Create Content Bundle
+## Create Content Bundle
 
 1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
     <br />
 
     ```shell
-    VERSION=3.4.3
+    VERSION=4.0.2
     wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
     chmod +x palette-edge
     ```
@@ -132,11 +128,11 @@ You can find the project id at the top right side corner of the landing page bel
 
 The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at the time of Edge host installation.
 
-# Validate
+## Validate
 
 You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
 
 
-# Next Steps
+## Next Steps
 
 Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide.

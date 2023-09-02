@@ -2,20 +2,13 @@
 sidebar_label: 'Prometheus Operator'
 title: 'Prometheus Operator'
 description: 'Prometheus Operator Monitoring pack in Spectro Cloud'
-
 type: "integration"
-hide_table_of_contents: false
+hide_table_of_contents: true
 category: ['monitoring', 'amd64', 'arm64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png'
+tags: ['packs', 'prometheus-operator', 'monitoring']
 ---
-
-
-
-
-
-
-# Prometheus Operator
 
 Prometheus is an open-source monitoring system that is designed to collect and analyze metrics from various sources, such as applications, servers, and networks. It is widely used in the DevOps world to monitor the health and performance of applications and infrastructure. Prometheus stores metrics in a time-series database and provides a query language for analyzing the data. It also includes a powerful alerting system that can notify operators when thresholds are breached.
 
@@ -33,7 +26,10 @@ We recommend you use version v44.3.x or greater moving forward for a simplified 
 :::
 
 ## Versions Supported
-<Tabs>
+
+<br />
+
+<Tabs queryString="versions">
 
 <TabItem label="45.25.x" value="45.25.x">
 
@@ -970,13 +966,13 @@ All versions less than v30.2.X are considered deprecated. Upgrade to a newer ver
 
 </Tabs>
 
-# Terraform
+## Terraform
 
 You can retrieve details about the Prometheus operator pack by using the following Terraform code.
 
 <br />
 
-```terraform
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -989,7 +985,7 @@ data "spectrocloud_pack_simple" "pack-info" {
 }
 ```
 
-# References
+## References
 
 - [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
 

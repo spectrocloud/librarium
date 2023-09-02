@@ -4,23 +4,16 @@ title: "Sensitive User Data Handling"
 description: "Learn how to make the Edge installer skip copying the specific user data stages to the edge hosts so that you can use sensitive information in the user data stages."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["edge"]
 ---
 
 
-
-
-
-
-
-# Sensitive Information in the User Data Stages
-
 Suppose you must add sensitive information, such as credentials, in your user data configuration file. In the Edge deployment lifecycle, you have two opportunities to apply user data to edge hosts. The first is during the staging phase, where you add the Edge installer to the Edge host. The second opportunity is during the site installation phase, where you can provide supplementary user-data configurations if needed. The diagram below highlights the two mentioned phases in the Edge lifecycle.  
-<br />
 
-![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.png)
-<br />
 
-<br />
+  ![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.png)
+
+
 
 - **Staging Phase** - In the staging phase, you prepare your edge hosts using the organization-level configurations. The configurations include the Edge Installer, the user data, and, optionally, a content bundle. You boot the edge hosts using the Edge Installer and apply the configurations. All the configurations, including the user data, are copied to the edge host during installation. 
 
@@ -37,13 +30,13 @@ In both steps mentioned above, the Edge Installer copies the user data configura
 
 ## Sensitive Information in the Installer Handoff
 
-<br />
+
 :::caution
 
 We do not recommend inserting sensitive information in the user data configuration file provided in the installer handoff phase. Use a supplementary user data configuration file and apply it at the site installation phase. 
 
 :::
-<br />
+
 
 In the installer handoff step, the Edge Installer copies and persists *all* your user data stages into the configuration files on the edge hosts. Copying sensitive information to the edge hosts may pose security risks. Therefore, we recommend you avoid inserting sensitive information in the user data configuration file provided in the installer handoff phase. Use a supplementary user data configuration file and apply it at the site installation phase.
 

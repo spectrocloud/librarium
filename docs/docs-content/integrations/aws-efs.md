@@ -1,30 +1,22 @@
 ---
-sidebar_label: 'AWS-EFS'
-title: 'AWS EFS Integration with Palette'
+sidebar_label: 'AWS EFS'
+title: 'AWS EFS'
 description: 'AWS EFS storage add on into Spectro Cloud'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['storage', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image/png'
-
+tags: ["packs", "aws-efs", "storage"]
 ---
 
-
-
-
-
-
-
-# AWS EFS
-
- You can access information from an Amazon Elastic File System (Amazon EFS) volume within a specific region, no matter which availability zone it's in. The cluster can be distributed across availability zones instead of having it in one location and replicating it multiple times.
+You can access information from an Amazon Elastic File System (Amazon EFS) volume within a specific region, no matter which availability zone it's in. The cluster can be distributed across availability zones instead of having it in one location and replicating it multiple times.
 
 Palette handles setting up the AWS EFS as a volume with ease when adding the PersistentVolume storage container. Palette will dynamically provision the AWS EFS storage layer for the worker node.
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.4.x" value="1.4.x">
 
@@ -307,7 +299,7 @@ Mounted By:  <none>
 </Tabs>
 
 
-# Troubleshooting 
+## Troubleshooting 
 
 Some basic troubleshooting steps you can take if you receive errors in your pods when mounting an Amazon EFS volume in your Amazon EKS cluster are to verify you have the following:
 <br />
@@ -374,11 +366,11 @@ The following list provides more specific details to help you troubleshoot issue
 You can find more information in Amazon's [Troubleshoot Amazon EFS](https://aws.amazon.com/premiumsupport/knowledge-center/eks-troubleshoot-efs-volume-mount-issues/) guide.
 
 
-# Terraform
+## Terraform
 
-When using this Pack as a base layer, you need the following terraform code.
+You can reference the AWS EFS pack in Terraform with a data resource.
 
-```
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -391,10 +383,14 @@ data "spectrocloud_pack_simple" "csi-aws-efs" {
 }
 ```
 
-# References
+## References
 
-[Amazon EFS CSI Driver](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html)<br />
-[Amazon Elastic File System](https://aws.amazon.com/efs/)<br />
-[Amazon EFS Tutorial and Examples](https://github.com/aws-samples/amazon-efs-tutorial)<br />
-[IAM Policy Example](https://raw.githubusercontent.com/kubernetes-sigs/aws-ebs-csi-driver/master/docs/example-iam-policy.json)<br />
-[Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)<br />
+- [Amazon EFS CSI Driver](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html)
+
+- [Amazon Elastic File System](https://aws.amazon.com/efs/)
+
+- [Amazon EFS Tutorial and Examples](https://github.com/aws-samples/amazon-efs-tutorial)
+
+- [IAM Policy Example](https://raw.githubusercontent.com/kubernetes-sigs/aws-ebs-csi-driver/master/docs/example-iam-policy.json)
+
+- [Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)<br />

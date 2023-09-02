@@ -4,17 +4,14 @@ title: "Required Network Rules"
 description: "Cox Edge deployments require the following network rules for a successful Palette deployment."
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["public cloud", "cox edge"]
 ---
 
-
-
-
-# Overview
 
 To successfully deploy a host cluster to Cox Edge with Palette, you must add the following network rules to each deployment.
 
 
-# Inbound
+## Inbound
 
 The following inbound network rules are required for Palette to deploy and manage a Cox Edge cluster.
 

@@ -2,25 +2,20 @@
 sidebar_label: 'Nginx'
 title: 'Nginx'
 description: 'Nginx Ingress pack in Spectro Cloud'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['ingress', 'amd64', 'arm64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/nginx/blobs/sha256:a36bf7e8023f018298ddbf0c82a49c38e872db4b0e480a39c285ae002916a83f?type=image/png'
+tags: ['packs', 'nginx', 'network']
 ---
 
-
-
-
-
-
-# Nginx
 
 Ingress resource(s) in Kubernetes helps provide Service(s) externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting. NGINX integration is an [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic.
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.4.x" value="1.4.x">
 
@@ -85,7 +80,7 @@ Integration creates the following components:
 * Ingress Controller.
 * Default Backend.
 
-## Default SSL certificate
+## Default SSL Certificate
 
 NGINX Ingress controller provides an option to set a default SSL certificate to be used for requests that do not match any of the configured server names. The default certificate will also be used for ingress tls: sections that do not have a secretName option.
 Below steps will come in handy to set the default certificate.

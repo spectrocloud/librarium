@@ -5,14 +5,8 @@ description: "Spectro Cloud Getting Started"
 hide_table_of_contents: false
 sidebar_custom_props: 
     icon: "overview"
+tags: ["getting-started"]
 ---
-
-
-
-
-
-
-## Quick Start with Spectro Cloud Palette
 
 This page gives an overview of getting started with Spectro Cloud Palette quickly. We introduce Palette's complimentary subscription plans, features, workflow, and user experience session to our users.
 

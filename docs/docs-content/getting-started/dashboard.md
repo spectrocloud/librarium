@@ -5,9 +5,8 @@ description: "Spectro Cloud Palette Dashboard"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["getting-started"]
 ---
-
-# Palette Dashboards
 
 This section is a tour of the two main dashboards of the Tenant console–the **Project Dashboard** and the **Admin Dashboard**. The Project Dashboard is used to perform operations related to setting up your Kubernetes clusters such as setting up Cluster Profiles, Creating Cloud Accounts, and deploying clusters. The Admin Dashboard is used for performing administrative tasks such as setting up Single Sign On (SSO), creating user, teams and setting up Role-Based Access Control (RBAC), and setting up additional package registries. The Admin Dashboard is only available to the users who have the Tenant Admin role. Admin users can toggle between the Project Dashboard and Tenant Admin Dashboard. Users without the Tenant Admin role can only see the Project Dashboard.
 
@@ -40,9 +39,6 @@ Upon login, the dashboard shows the views available for a non-admin user.
 
 6. The **Settings** section (7) of the Default dashboard relates to the Cloud Account settings, Backup Location settings, and Alerts. This is an important distinction from the settings under the Admin Dashboard. It also allows the user to upload SSH keys for safekeeping. These key(s) can be recalled when deploying a cluster.
 
-
-
-
  ![project-dashboard](/project-dashboard.png)
 
 
@@ -64,6 +60,4 @@ The menu within the Tenant Admin Dashboard contains the Projects button. This is
 
 4. Finally, the Tenant Admin settings (10) under the Admin Dashboard provide access to the <Tooltip trigger={<u>pack registries</u>}>A <a href="/registries-and-packs">pack</a> is a collection of files such as manifests, Helm charts, ansible roles, configuration files, etc.</Tooltip>; <Tooltip trigger={<u>private cloud gateways</u>}>A <a href="/glossary-all/#privatecloudgateway">Private Cloud Gateway</a> is a Palette component that enables the communication between Palette's management console and a VMware based private data center.</Tooltip> and [SAML SSO](/user-management/saml-sso) configurations.
 
-
-
-![admin-dashboard](/admin-dashboard.png)
+  ![admin-dashboard](/admin-dashboard.png)

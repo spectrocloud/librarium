@@ -1,14 +1,13 @@
 ---
 sidebar_label: "Edge"
-title: "Creating new clusters on Spectro Cloud"
+title: "Edge"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "hdd"
+tags: ["edge"]
 ---
 
-
-# Overview
 
 Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or virtual machines and are managed by operators at remote sites. 
 
@@ -27,8 +26,6 @@ Edge computing brings computing and data storage closer to the source, reducing 
 
 
 The following are some highlights of the comprehensive Palette Edge Solution:
-
-<br />
 
 * Centralized Full Stack Management
 
@@ -54,12 +51,8 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 * Support for pre-provisioned and on-site device registration 
 
 
-
-
 Palette's Edge solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
 
-
-<br />
 
 :::info
 
@@ -69,7 +62,6 @@ Edge is built on top of the open-source project [Kairos](https://kairos.io), whi
 
 Palette manages the installation and all the Day-2 activities, such as scaling, upgrades, and reconfiguration.
 
-<br />
 
 :::caution
 
@@ -79,19 +71,15 @@ Edge is still in active development and is subject to change. Review the Palette
 :::
 
 
-<br />
 
-
-
-# Get Started With Edge
+## Get Started With Edge
 
 
 To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](/clusters/edge/edgeforge-workflow). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
 
-<br />
 
 
-# Resources
+## Resources
 
 - [Edge Native Architecture](/clusters/edge/architecture)
 
@@ -107,4 +95,3 @@ To start with Edge, review the [architecture](/clusters/edge/architecture) and t
 
 - [Site Deployment](/clusters/edge/site-deployment)
 
-<br />

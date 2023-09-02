@@ -5,6 +5,7 @@ description: "The list of Global Tenant Roles under Tenant Scope"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["user-management", "rbac"]
 ---
 
 

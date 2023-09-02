@@ -2,19 +2,19 @@
 sidebar_label: "Palette eXtended Kubernetes - Edge"
 title: "Palette eXtended Kubernetes - Edge"
 description: "Learn about the Palette eXtended Kubernetes - Edge pack and how you can use it your host clusters in an edge environment."
-
+hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", 'amd64', 'fips']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
+tags: ["packs", "kubernetes", "pxke", "edge"]
 ---
-
-
-# Palette eXtended Kubernetes - Edge
 
 The Palette eXtended Kubernetes - Edge (PXK-E) pack supports Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores, restaurants, and similar locations, versus a data center or cloud environment. We offer PXK-E as a core pack in Palette. 
 
+:::info
 Review our [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
+:::
 
 <br />
 
@@ -46,7 +46,7 @@ We also offer Palette eXtended Kubernetes (PXK) for cloud and data center deploy
 # Versions Supported
 
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.27.x" value="k8s_v1.27">
 
@@ -1593,7 +1593,7 @@ All versions less than v1.23.x are considered deprecated. Upgrade to a newer ver
 </Tabs>
 
 
-# Terraform
+## Terraform
 
 You can reference Kubernetes in Terraform with the following code snippet.
 
@@ -1612,7 +1612,7 @@ data "spectrocloud_pack_simple" "edge-k8s" {
 }
 ```
 
-# Resources
+## Resources
 
 - [Kubernetes](https://kubernetes.io/)
 

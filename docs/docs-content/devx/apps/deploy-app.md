@@ -5,16 +5,14 @@ description: "Learn how to deploy applications to a Kubernetes cluster without t
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["devx", "app mode", "pde", "tutorial"]
 ---
-
-
-# Deploy an Application using Palette Dev Engine
 
 Palette’s mission is to reduce the challenges you, as a user, face when interacting with Kubernetes. Whether you are a system administrator or an application developer, Kubernetes can introduce overhead that slows down the development process. One of Palette’s core components, *Dev Engine*, focuses on reducing the application development time by enabling builders to deploy applications to Kubernetes with minimal friction. 
 
 This tutorial will teach you how to deploy single and multiple applications to Kubernetes through Palette’s Dev Engine experience. You will learn about *App Mode*, *App Profiles*, and *Palette Virtual Clusters* and understand how they enable you to deploy applications to Kubernetes quickly with minimal overhead. 
 
-# Prerequisites
+## Prerequisites
 
 To complete this tutorial, you will need the following items.
 
@@ -27,7 +25,7 @@ If you select the Terraform workflow, you will need the following software insta
 There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
 
 
-# Architecture 
+## Architecture 
 
 The tutorial includes two scenarios, and for each scenario, you will deploy a separate Kubernetes environment. The following diagram illustrates the different layers that will power the tutorial environment.
 
@@ -35,7 +33,7 @@ The tutorial includes two scenarios, and for each scenario, you will deploy a se
 
 The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out the [App Mode and Cluster Mode](/introduction/palette-modes) documentation.
 
-# Deploy The Environment
+## Deploy The Environment
 
 The following steps will guide you through deploying the two scenarios. You will start with the single application scenario to build up your knowledge before deploying the multiple applications scenario.
 
@@ -55,7 +53,7 @@ You can complete this tutorial by using the Palette console, simulating a manual
 <br />
 
 
-<Tabs>
+<Tabs queryString="workflow">
 
 <TabItem label="UI" value="UI">
 
@@ -412,17 +410,11 @@ Next, in the left **Main Menu**, click on the **Cluster** link to access the clu
 
 Click on **cluster-1** to access its details page. Click on **Settings** from the details page to expand the settings menu. Click on **Delete** to delete the cluster. You will be asked to enter the cluster name to confirm the delete action. Type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
 
-  
-
-![Delete a cluster view with arrow](/tutorials/deploy-app/devx_apps_deploy-apps_delete-cluster-view.png)
-
-  
+  ![Delete a cluster view with arrow](/tutorials/deploy-app/devx_apps_deploy-apps_delete-cluster-view.png)
 
 :::info
- 
 
 If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for **Force Delete**. To trigger a force delete, navigate to the respective cluster’s details page and click on **Settings**. Click on the **Force Delete Cluster** to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
-
 
 :::
 
@@ -1277,28 +1269,25 @@ docker stop tutorialContainer && \
 docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
 ```
 
-<br />
-
 :::info
-
 
 If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for **Force Delete**. To trigger a force delete, navigate to the respective cluster’s details page and click on **Settings**. Click on the **Force Delete Cluster** to delete the cluster. Palette will automatically remove clusters stuck in the cluster deletion phase for over 24 hours.
 
 :::
 
-<br />
+
 
 </TabItem>
 
 </Tabs>
 
 
-# Wrap-Up
+## Wrap-Up
 
 In this tutorial, you learned about Palette’s Dev Engine and App Mode. You deployed two virtual clusters, each containing a different architecture and configuration of the Hello Universe application. Palette’s Dev Engine enables developers to quickly deploy applications into a Kubernetes environment without requiring Kubernetes knowledge. In a matter of minutes, you deployed a new Kubernetes cluster and all its applications without having to write Kubernetes configuration files.
 
 To learn more about Palette Dev Engine and its capabilities, check out the references resource below.
-<br />
+
 
 - [Palette Modes](/introduction/palette-modes)
 - [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)

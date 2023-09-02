@@ -3,11 +3,10 @@ sidebar_label: "Cluster Profile Examples"
 title: "Cluster Profile Examples"
 description: "The method for creating a Cluster Profile for AWS on Spectro Cloud"
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 40
 ---
 
-# Examples
 
 Cluster profiles can be built to launch clusters for specific use cases. Clusters launched for development purposes are typically minimal and do not require advanced integrations. Production clusters on the other hand tend to be more comprehensive with many more integrations. The following are examples of cluster profiles built for development and production purposes:
 

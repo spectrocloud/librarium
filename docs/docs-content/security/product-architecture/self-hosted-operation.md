@@ -5,6 +5,7 @@ description: "Learn about Palette security in a self-Hosted deployment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
+tags: ["security"]
 ---
 
 

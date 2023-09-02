@@ -4,9 +4,9 @@ title: "Attach an Add-on Profile"
 description: "Learn how to attach an add-on profile to an imported cluster in Palette."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["clusters", "imported clusters"]
 ---
 
-# Overview
 
 Imported clusters lack the ability for Palette to manage the core layers found in a cluster profile, such as the Operating System, Kubernetes distribution and version, along with the container network interface and storage interface. 
 You can, however, use add-on cluster profiles to deploy additional software dependencies into your cluster and have Palette manage these dependencies through the normal cluster profile lifecycle. 
@@ -15,7 +15,7 @@ You can, however, use add-on cluster profiles to deploy additional software depe
 In this how-to, you learn how to add an add-on cluster profile to an imported cluster.
 
 
-# Prerequisites
+## Prerequisites
 
 * An imported cluster with full permissions. Refer to the [Migrate to Full Permissions](/clusters/imported-clusters/migrate-full-permissions) to learn how to migrate an imported cluster from read-only mode to full-permissions mode.
 
@@ -23,7 +23,7 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
 * An add-on cluster profile. Refer to the [Create an Add-on Profile](/cluster-profiles/create-add-on-profile) to learn how to create an add-on cluster profile.
 
 
-# Attach an Add-on Profile
+## Attach an Add-on Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -62,7 +62,7 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
 You now have an add-on cluster profile deployed onto your imported cluster. Use the steps above to add your custom add-on cluster profile to an imported cluster.
 
 
-# Validate
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -78,5 +78,3 @@ You now have an add-on cluster profile deployed onto your imported cluster. Use 
 
 4. Verify the **Cluster Profile** section of the page has a green circle next to each layer. If your application exposes a service URL, use the URL to visit the application and verify it's operational.
 
-
-<br />

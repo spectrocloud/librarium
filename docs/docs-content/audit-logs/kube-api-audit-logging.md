@@ -3,20 +3,14 @@ sidebar_label: "Enable Audit Logging"
 title: "Enable API Audit Logging"
 description: "Learn how to configure the kube-apiserver audit logging feature for Palette."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 ---
 
 
-
-
-# Enable Kubernetes API Audit Logging
-
 Kubernetes auditing is a feature of the Kubernetes cluster management system that allows administrators to track and log events within the cluster. Administrators can review actions taken by users and applications and changes to the cluster's configuration or state. By enabling auditing, organizations and system administrators can better understand their users' actions and behaviors. The audit log answers common questions about what, where, when, and who.
 
 You can also meet internal security control requirements by enabling audit logging. Many security controls require the following capabilities.
-
-<br />
 
 - ensuring administrators can trace the actions of individual users back to a specific person.
 
@@ -33,7 +27,7 @@ Enabling audit logging causes the API server to consume more memory, as it needs
 
 :::
 
-# Prerequisites
+## Prerequisites
 
 - Access to a Kubernetes cluster node.
 
@@ -45,12 +39,11 @@ Enabling audit logging causes the API server to consume more memory, as it needs
 
 
 
-# Enable Auditing
+## Enable Auditing
 
 The Kubernetes API Audit policies define the rules for capturing events and specifying the level of detail to include.
 The audit policy you create will capture all requests at the *metadata* level. To learn more about the various audit levels, visit the Kubernetes API [Audit Policy](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy) documentation.
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -168,11 +161,10 @@ You can also add the following Kubernetes API parameters to fine-tune the audit 
 
 To learn more about each of the Kubernetes API server flags, visit the Kubernetes API parameter [documentation page](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
 
-# Validate
+## Validate
 
 You can validate that audit logs are captured by navigating to the specified audit folder in the `--audit-log-path` parameter.
 
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -196,11 +188,11 @@ You can validate that audit logs are captured by navigating to the specified aud
   ``` 
 
   Example Output.
-  ```shell
+  ```shell hideClipboard
   {"kind":"Event","apiVersion":"audit.k8s.io/v1","level":"Metadata","auditID":"3cb20ec3-e944-4059-873c-078342b38fec","stage":"ResponseComplete","requestURI":"/apis/coordination.k8s.io/v1/namespaces/cluster-63a1ee9100663777ef2f75c8/leases/kubeadm-bootstrap-manager-leader-election-capi","verb":"update","user":{"username":"system:serviceaccount:cluster-63a1ee9100663777ef2f75c8:palette-manager","uid":"e728f219-d5e8-4a44-92c4-5ddcf22ce476","groups":["system:serviceaccounts","system:serviceaccounts:cluster-63a1ee9100663777ef2f75c8","system:authenticated"],"extra":{"authentication.kubernetes.io/pod-name":["capi-kubeadm-bootstrap-controller-manager-688596bc4b-pxmmh"],"authentication.kubernetes.io/pod-uid":["a0e9a0fd-0812-434e-a1a4-b8af9bb98a87"]}},"sourceIPs":["192.168.161.18"],"userAgent":"manager/v0.0.0 (linux/amd64) kubernetes/$Format/leader-election","objectRef":{"resource":"leases","namespace":"cluster-63a1ee9100663777ef2f75c8","name":"kubeadm-bootstrap-manager-leader-election-capi","uid":"8e70db1f-a26c-4af5-a558-78e860ae9903","apiGroup":"coordination.k8s.io","apiVersion":"v1","resourceVersion":"13660827"},"responseStatus":{"metadata":{},"code":200},"requestReceivedTimestamp":"2023-01-18T20:35:29.755649Z","stageTimestamp":"2023-01-18T20:35:29.760586Z","annotations":{"authorization.k8s.io/decision":"allow","authorization.k8s.io/reason":"RBAC: allowed by ClusterRoleBinding "palette-manager-admin-rolebinding" of ClusterRole "cluster-admin" to ServiceAccount "palette-manager/cluster-63a1ee9100663777ef2f75c8""}}
   ```
 
-# Resources
+## Resources
 
 - [Kubernetes API parameters](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 

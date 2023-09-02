@@ -4,7 +4,7 @@ title: "Kubernetes"
 description: "Learn how to install Palette VerteX on Kubernetes."
 icon: ""
 hide_table_of_contents: false
-
+tags: ["vertex", "kubernetes"]
 ---
 
 

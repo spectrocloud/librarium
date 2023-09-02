@@ -1,16 +1,14 @@
 ---
 sidebar_label: "Cluster Resource Filter"
-title: "Create and Add Cluster Resource Filter "
+title: "Cluster Resource Filter"
 description: "Create and Add Cluster Resource Filter"
 hide_table_of_contents: false
-
+tags: ["clusters", "cluster management", "filters"]
 ---
-
-# Overview
 
 The page guides you on how to create a Palette Resource Filter and add these filters to the users to establish cluster access restrictions.
 
-# Create Resource Filter
+## Create Resource Filter
 
 You must create a Resource Filter in Palette to establish user-based access restrictions to clusters across multiple projects. The resource filters are created under the scope of Tenant Admin. To create a resource filter, follow the steps below:
  
@@ -37,7 +35,7 @@ You must create a Resource Filter in Palette to establish user-based access rest
 
 **Note:** The tags are case-sensitive.
 
-## Validate
+### Validate
 
 Upon creating a filter, a display message will pop up to confirm the successful creation of the tag. You can also use the following steps to review the filter is available for use.
 
@@ -45,9 +43,9 @@ Upon creating a filter, a display message will pop up to confirm the successful 
 
 2. Access the **Manage Filters** page to find the filter name listed. 
 
-3. You can **Edit** and **Delete** filters by clicking on the three-dots at the end of the row.
+3. You can **Edit** and **Delete** filters by clicking on the **three-dot Menu** at the end of the row.
 
-# Add Resource Role
+## Add Resource Role
 
 You can assign the resource filter created, in combination with roles, to a [user](/user-management/new-user#createanewuser) to enforce access restriction. Palette provisions two types of roles:
 
@@ -55,7 +53,7 @@ You can assign the resource filter created, in combination with roles, to a [use
 
 * [Custom Resource Roles](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles),  can be generated according to your requirements from the available set of permissions and operations. 
 
-## Prerequisites
+### Prerequisites
 
 * A [Palette account](https://www.spectrocloud.com/get-started/) with Tenant scope privileges.
 
@@ -88,7 +86,7 @@ To remove or edit an attached role:
 1. Log in to Palette as Tenant Admin
 
 
-2. From the left ** Main Menu** click on **Users & Teams**. This will take you to the **User Details** page.
+2. From the left **Main Menu** click on **Users & Teams**. This will take you to the **User Details** page.
 
 
 3. From the **Resource Roles** tab, click the **three-dot** menu towards the role name.
@@ -96,7 +94,7 @@ To remove or edit an attached role:
 
 4. Click **Edit** or **Remove** option from the drop-down menu.
 
-## Validate
+### Validate
 
 Upon creating a filter, a display message will pop up to confirm the successful role assignment. You can also use the following steps to review the roles created:
 

@@ -5,6 +5,7 @@ description: "Get an overview of Palette's security controls, security-aware cul
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "lock"
+tags: ["security"]
 ---
 
 We view security as more than a feature. It is a fundamental aspect of our business and culture through transparency, continuous learning, and a security-first mindset. 

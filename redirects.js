@@ -117,19 +117,19 @@ const redirects = [
   },
   {
     from: `/knowledgebase/tutorials/terraform-tutorial`,
-    to: `/terraform`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/knowledgebase/tutorials/cks-tutorial`,
-    to: `/`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/knowledgebase/tutorials/dev-engine`,
-    to: `/knowledgebase/tutorials`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/knowledgebase/tutorials/dev-engine/deploy-app`,
-    to: `/knowledgebase/tutorials`,
+    to: `/tags/tutorial`,
   },
   {
     from: `/kubernetes-knowlege-hub/how-to/deploy-stateless-frontend-app`,
@@ -183,6 +183,18 @@ const redirects = [
     from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile`,
     to: `/vm-management/vm-packs-profiles/create-vmo-profile`,
   },
+  {
+    from: `/knowledgebase`,
+    to: `/tags`,
+  },
+  {
+    from: `/knowledgebase/tutorials`,
+    to: `/tags/tutorial`,
+  },
+  {
+    from: `/knowledgebase/how-to`,
+    to: `/tags/how-to`,
+  }
 ];
 
 module.exports = redirects;

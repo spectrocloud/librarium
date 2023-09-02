@@ -1,16 +1,14 @@
 ---
 sidebar_label: "Architecture"
-title: "Palette Edge Architecture"
+title: "Architecture"
 description: "Learn about Palette Edge and the architecture used to suppport edge clusters."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["edge", "architecture"]
 ---
-
-# Overview
 
 The following are architectural highlights of Palette-provisioned Edge native clusters.
 
-<br />
 
 * Kubernetes is natively installed on the host.
 
@@ -39,10 +37,10 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 * Palette Edge Distribution supports use cases that require customizing OS packages, device drivers, and more.
 
-![Architecture diagram of Edge](/native-edge.png "#title=An architecture diagram of Palette and all of the components.")
+  ![Architecture diagram of Edge](/native-edge.png "#title=An architecture diagram of Palette and all of the components.")
 
 
-# Minimum Device Requirements
+## Minimum Device Requirements
 
 The following minimum device requirements must be met to deploy an Edge host successfully.
 
@@ -58,7 +56,7 @@ The following minimum device requirements must be met to deploy an Edge host suc
 If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
 
 
-# Supported Architectures
+## Supported Architectures
 
 Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all hardware and software configurations will work due to the various options available in the market. We recommend that you test your hardware configuration before deploying to production.
 
@@ -71,7 +69,7 @@ Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. Ho
 :::
 
 
-# Palette Edge Distribution
+## Palette Edge Distribution
 
 Palette provides the following distributions for edge installations.
 
@@ -82,7 +80,7 @@ Palette provides the following distributions for edge installations.
 |[Palette eXtended Kubernetes Edge (PXK-E)](/glossary-all#paletteextendedkubernetesedge(pxk-e))|openSUSE, Ubuntu|CNCF|Calico, Flannel|Rook Ceph|
 
 
-# Supported Configurations
+## Supported Configurations
 
 Palette offers complete flexibility in deploying clusters at edge sites with various aspects you can customize. The table below describes these aspects and the available options.
 
@@ -99,7 +97,7 @@ Palette offers complete flexibility in deploying clusters at edge sites with var
 <br />
 
 
-# Kubernetes Defaults
+## Kubernetes Defaults
 
 The Kubernetes Packs for Edge Native deployments disable a few items by default to allow users to install those items independently or to avoid duplication. The following items are disabled by default.
 

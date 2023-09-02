@@ -4,7 +4,7 @@ title: "Installation"
 description: "Review Palette VerteX system requirements."
 icon: ""
 hide_table_of_contents: false
-
+tags: ["vertex"]
 ---
 
 

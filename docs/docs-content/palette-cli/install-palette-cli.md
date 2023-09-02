@@ -4,6 +4,7 @@ title: "Install"
 description: "Learn how to install the Palette CLI and how you can use the CLI with Palette Dev Engine."
 hide_table_of_contents: false
 sidebar_position: 0
+tags: ["palette-cli"]
 ---
 
 

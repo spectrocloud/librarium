@@ -5,13 +5,12 @@ description: 'How to create and deploy an add-on pack using the manifest files o
 icon: ''
 hide_table_of_contents: true
 sidebar_position: 40
+tags: ["packs", "tutorial"]
 ---
 
 
+# Deploy an Add-On Pack
 
-
-
-# Create and Deploy a Custom Add-On Pack
 Custom add-on packs allow you to deploy Kubernetes applications in clusters and reuse them in multiple deployments. This ensures uniformity across your clusters. The primary use cases for creating custom packs are:
 
 - Aggregated configuration and application dependencies simplify deployment and consumption.
@@ -932,7 +931,7 @@ Next, you created a cluster profile that included all the core infrastructure la
 Packs are the building blocks of cluster profiles, allowing you to customize your Kubernetes clusters. Palette enables you to use different packs to create multiple cluster profiles, each for specific purposes. As a result, you can ensure all Kubernetes deployments contain all the required dependencies and applications without developing complicated deployment scripts. All you need to do is maintain the cluster profiles.  
 
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
-<br />
+
 
 - [Custom OS Pack](/registries-and-packs/add-custom-packs#addinganospack)
 
@@ -942,4 +941,3 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 
 - [Pack Constraints](/registries-and-packs/pack-constraints)
 
-<br /> <br />

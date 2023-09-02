@@ -4,12 +4,10 @@ title: "Migrate to Full Permissions"
 description: "Learn how to migrate an imported cluster from read-only mode to full-permissions mode."
 hide_table_of_contents: false
 sidebar_position: 20
+tags: ["clusters", "imported clusters"]
 ---
 
-# Overview
-
-
-# Prerequisites
+## Prerequisites
 
 * An imported cluster in read-only mode. Refer to the [Import a Cluster](/clusters/imported-clusters/cluster-import) guide to learn how to import a cluster into Palette.
 
@@ -20,7 +18,7 @@ sidebar_position: 20
 - Access to your cluster environment through kubectl. 
 
 
-# Migrate to Full Permissions
+## Migrate to Full Permissions
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -102,7 +100,7 @@ sidebar_position: 20
 
 You now have successfully migrated a read-only mode cluster to full-permissions mode. Imported clusters in full-permissions mode allow Palette to manage more Day-2 activities. You can also now deploy add-on cluster profiles to the cluster. Refer to the [Attach an Add-on Profile](/clusters/imported-clusters/attach-add-on-profile) guide to learn more.
 
-# Validate
+## Validate
 
 1. Log in to [Palette](https://spectrocloud.com).
 

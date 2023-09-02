@@ -1,19 +1,15 @@
 ---
 sidebar_label: "Register and Manage GCP Accounts"
-title: "Add a GCP Account to Palette"
+title: "Register and Manage GCP Accounts"
 description: "Learn how to add a GCP account to Palette."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["public cloud", "gcp"]
 ---
-
-
-
-# Add GCP Account
-
 
 Palette supports integration with Google Cloud Platform (GCP) accounts. This section explains how to create a GCP cloud account in Palette. 
 
-# Prerequisites
+## Prerequisites
 
 * You must have a GCP service account available for use with Palette. For detailed instructions on creating a service account, refer to [Creating and managing service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 
@@ -42,7 +38,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
 * Ensure you have access to the JSON credential file for your service account. For additional guidance, refer to the [GCP Credentials](https://developers.google.com/workspace/guides/create-credentials) documentation.
 
-# Create Account
+## Create Account
 
 
 1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
@@ -73,7 +69,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
 6. When the credentials are validated, click on **Confirm** to save your changes.
 
-# Validate
+## Validate
 
 You can validate the account is available in Palette by reviewing the list of cloud accounts. 
 
@@ -88,7 +84,7 @@ You can validate the account is available in Palette by reviewing the list of cl
 3. Next, click on **Cloud Accounts**. Your newly added GCP account is listed under the GCP section.
 
 
-# Next Steps
+## Next Steps
 
 
 Now that you have added an AWS account to Palette, you deploy clusters to your GCP account. To learn how to get started with deploying Kubernetes clusters to GCP, check out the [Create and Manage GCP IaaS Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS GKE Cluster](/clusters/public-cloud/aws/eks) guide.
