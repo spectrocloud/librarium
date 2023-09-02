@@ -1,18 +1,16 @@
 ---
 sidebar_label: "Compliance Scan"
-title: "Managing Cluster Update Events on Palette"
-description: "Events and Notifications on Cluster Updates"
+title: "Compliance Scan"
+description: "Learn how to apply compliance scans on your clusters."
 hide_table_of_contents: false
 sidebar_position: 50
+tags: ["clusters", "cluster management"]
 ---
-
- # Overview
 
 Palette provides a way to run compliance, security, conformance, and software bill of materials (SBOM) scans on tenant clusters. These scans ensure cluster adherence to specific compliance and security standards. The scans also detect potential vulnerabilities by performing penetration tests.
 
 Palette supports four types of scans. Each scan generates reports with details specific to the type of scan. You can initiate multiple scans of each type over time. In addition, Palette keeps a history of previous scans for comparison purposes. To learn more about each scan type, refer to the following sections.
 
-<br />
 
 :::info
 
@@ -20,7 +18,7 @@ Scans may not work as expected when a node is in maintenance mode. Before schedu
 
 :::
 
-# Configuration Security
+## Configuration Security
 
 This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source tool called KubeBench from Aqua Security to perform this scan. Scans are run against master and worker nodes of the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the master or worker results if required.
 
@@ -28,13 +26,13 @@ All the tests in the report are marked as Scored or Not Scored. The ones marked 
 
 ![kcs.png](/kcs.png)
 
-# Penetration Testing
+## Penetration Testing
 
 Kubernetes penetration testing scans Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security concerns. Internally Palette leverages an open-source tool called KubeHunter from Aqua Security to perform this scan. Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of the API server, whereas, in external mode, the external public-facing endpoint is used for testing. A combined report of vulnerabilities found in both modes is shown on the Palette UI. Users can filter the report to view just the internal or external report if required.
 
 ![kpt.png](/kpt.png)
 
-# Conformance Testing
+## Conformance Testing
 
 Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that they are conformant to the CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.  Automatically select a subset of relevant tests for execution based on the type of cloud (public, private) and the type of deployment infrastructure (IaaS, managed cloud service). Each test can take up to 2 hours to complete. If a cluster has a single worker node, a few tests may fail due to resources. For accurate assessment of conformance for distribution of Kubernetes, set up a cluster with at least two worker nodes. These tests are not destructive. However, they do launch several workloads in test namespaces as part of the tests. As a result, the consumption of cluster resources during the test run duration increases and may impact other workloads running on the cluster.
 
@@ -42,7 +40,7 @@ The scan summary of total passed and failed tests are displayed while the test i
 
 ![conformance.png](/conformance.png)
 
-# SBOM: Dependencies & Vulnerabilities
+## SBOM: Dependencies & Vulnerabilities
 
 ## What is an SBOM?
 An SBOM is a comprehensive list of the components, libraries, and other assets that make up a software application. It details the various third-party components and dependencies used in the software and helps to manage security and compliance risks associated with those components.
@@ -93,7 +91,7 @@ For each identified vulnerability, you can view the name, severity level, vulner
 
 ![sbom_vulnerabilities.png](/sbom_vulnerabilities.png)
 
-# Scan Options
+## Scan Options
 
 The following options are available for running cluster scans:
    
@@ -117,12 +115,9 @@ You can set a schedule for each scan type when you deploy the cluster, and you c
 
 ### Schedule Options Available
 
-Schedule your compliance scan for month, day, hour, or minute. For example: 
+This operation can be performed on all cluster types across all clouds. Schedule your compliance scan for month, day, hour, or minute. The following options are available: 
 * Every week on Sunday at midnight.
 * Every two weeks at midnight.
 * Every month on the first day of the month at midnight.
 * Every two months on the first day of the month at midnight
 
-:::info
-    This operation can be performed on all cluster types across all clouds.
-:::

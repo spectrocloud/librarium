@@ -3,16 +3,17 @@ sidebar_label: 'Enable Monitoring on Host Cluster'
 title: 'Enable Monitoring on Host Cluster'
 description: 'Learn how to configure your host cluster to forward metrics to a Prometheus server.'
 hiddenFromNav: false
+hide_table_of_contents: true
 sidebar_position: 10
+tags: ["clusters", "cluster management", "monitoring"]
 ---
 
-# Overview
 
 Observability (O11y) of Kubernetes clusters and their metrics is an important operational capability. Palette provides a pack that collects metrics from host clusters, which can be scraped by a monitoring stack.
 
 The steps below will teach you how to create a Prometheus agent cluster add-on profile to deploy on the host clusters you would like to monitor. Creating an add-on profile makes it easier for you to deploy the Prometheus agent to other host clusters in the future. You will use this add-on profile when deploying a new host cluster, but you can also apply the add-on profile to an existing cluster to send metrics to the monitoring stack.
 
-# Prerequisites
+## Prerequisites
 
 
 - A monitoring stack. Check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide to learn how to deploy a monitoring stack in your Palette environment.
@@ -20,9 +21,9 @@ The steps below will teach you how to create a Prometheus agent cluster add-on p
 
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
-# Create Add-on Profile and Deploy Cluster
+## Create Add-on Profile and Deploy Cluster
 
-<Tabs>
+<Tabs queryString="security">
 
 <TabItem label="Without Authentication" value="without-auth-agent">
 
@@ -231,7 +232,7 @@ When you deploy the cluster deployment, you will have a host cluster with the Pr
 
 </Tabs>
 
-# Validate
+## Validate
 
 To validate that the Prometheus agent is successfully installed and sending metrics to the monitoring stack, use the following steps.
 
@@ -276,6 +277,6 @@ Pods without the defined attributes `request` and `limit` will display no metric
 Use the other dashboard created by Palette to learn more about your environment.
 
 
-# Next Steps
+## Next Steps
 
 Visit your Grafana dashboard and explore the Palette-created dashboard to learn more about your environment. To learn how to create dashboards tailored to your environment, check out the [Grafana tutorials](https://grafana.com/tutorials/).

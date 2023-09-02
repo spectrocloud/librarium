@@ -4,9 +4,9 @@ title: "SSH Keys"
 description: "Learn how to create and manage SSH keys in Palette."
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
 
 Palette supports SSH (Secure Shell) to establish, administer, and communicate with remote clusters. This section describes creating and managing SSH Keys in the Palette Management Console.
 
@@ -14,7 +14,7 @@ Palette supports SSH (Secure Shell) to establish, administer, and communicate wi
 
 Palette groups clusters for logical separation into [Projects](/projects). Users and teams can be assigned roles within a project for granular control over permissions within the project scope. SSH key authentication is scoped to a project. Multiple users can gain access to a single project. To access a cluster with SSH, you need a public SSH key registered in Palette.
 
-# Prerequisites
+## Prerequisites
 
 * Access to a terminal window.
 
@@ -22,7 +22,7 @@ Palette groups clusters for logical separation into [Projects](/projects). Users
 * The utility ssh-keygen or similar SSH key generator software.
 
 
-# Create and Upload an SSH Key
+## Create and Upload an SSH Key
 
 Follow these steps to create an SSH key using the terminal and upload it to Palette:
 
@@ -92,7 +92,7 @@ You can edit or delete SSH keys later by using the **three-dot Menu** to the rig
 
 During cluster creation, assign your SSH key to a cluster. You can use multiple keys to a project, but only one key can be assigned to an individual cluster.
 
-# Validate
+## Validate
 
-You can validate the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance.
+You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance.
 

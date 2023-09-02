@@ -3,10 +3,10 @@ sidebar_label: 'Deploy Monitoring Stack'
 title: 'Deploy Monitoring Stack'
 description: 'Learn how to deploy a monitoring stack in your Palette environment.'
 hiddenFromNav: false
+hide_table_of_contents: true
 sidebar_position: 0
+tags: ["clusters", "cluster management", "monitoring"]
 ---
-
-# Overview
 
 The monitoring stack you will deploy uses the open-source tool, [Prometheus](https://prometheus.io/docs/introduction/overview/), to support your environment's monitoring requirements. The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment. 
 
@@ -22,7 +22,7 @@ We recommend you avoid installing applications in your monitoring stack. The mon
 
 :::
 
-# Deploy a Monitoring Stack
+## Deploy a Monitoring Stack
 
 The steps below will deploy a new host cluster with the Prometheus Operator pack. You can add the Prometheus Operator pack to an existing cluster if you already have a host cluster deployed in your environment.
 
@@ -30,7 +30,7 @@ The Prometheus Operator pack will install an unsecured Prometheus server by defa
 
 <br />
 
-<Tabs>
+<Tabs queryString="security">
 
 <TabItem label="Without Authentication" value="without-auth">
 
@@ -536,6 +536,6 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 </Tabs>
 
 
-# Next Steps
+## Next Steps
 
 Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to new and existing clusters. Check out the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to get started.

@@ -1,16 +1,15 @@
 ---
 sidebar_label: "Palette Macros"
-title: "Palette Macros Support"
+title: "Macros Support"
 description: "Apply Palette Macros to Cluster Profiles."
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 130
+tags: ["clusters", "cluster management"]
 ---
-
-# Overview
 
 Palette supports placeholder variables as Macros in our cluster profile layers. These macros make regression and update of variables, across multiple-running clusters, easier. We encourage creating these macros and using them within any of our cluster profile layers. Hence, changes to the existing Macros get updated to the corresponding cluster profile and the clusters with these profiles attached. 
 
-# Scope of Palette Macros
+## Scope of Palette Macros
 
 Palette users can declare the Macros under three different scopes:
 
@@ -28,17 +27,13 @@ The Macros must have unique names within a given application, but Macros with a 
   **Project Scope** > **Tenant Scope** > **System Scope**
 
 
-# Create your Macro
+## Create your Macro
 
 Palette users can use Macros in three different Scopes. Following the user preferences and privileges, log in as a Tenant Admin or Project Admin, to create macros under Tenant Admin scope and Project Scope, respectively. System Scope Macros can be created via API's. The steps to create a macro are as below:
-
-<br />
-<br />
 
 <Tabs>
 <TabItem label="Tenant Scope Macro" value="Tenant Scope Macro">
 
-<br />
 
 1. Log in to the Palette Management Console as a **Tenant Admin**.
 
@@ -91,7 +86,6 @@ Create and list your System Level macros via an API.
 ```yaml
 manifests:
   aws_ebs:
-    #Storage type should be one of io1, gp2, sc1, st1 types          #Checkhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html for more details
     storageType: "gp2"
     #Allowed reclaim policies are Delete, Retain
     reclaimPolicy: "Delete"
@@ -103,7 +97,7 @@ manifests:
     #Setting this to WaitForFirstConsumer for AWS, so that the volumes gets created in the same AZ as that of the pods
     volumeBindingMode: "{{.spectro.macro.volumeBindingMode}}"
 ```
-# Use your Macros
+## Use your Macros
 
 The Macros are overridden into the Cluster Profile layers:
 * During a Cluster Profile creation.
@@ -111,11 +105,10 @@ The Macros are overridden into the Cluster Profile layers:
 
 * For a Cluster Profile used by a running cluster or during cluster provisioning.
 
-<br />
-<Tabs>
+<Tabs queryString="scope">
 
 <TabItem label="Add a Macro to a Cluster Profile Pack" value="Add a Macro to a Cluster Profile Pack">
-<br />
+
 
 ## Add a Macro to a Cluster Profile Pack:
 
@@ -163,8 +156,8 @@ The Macros are overridden into the Cluster Profile layers:
 
 </Tabs>
 
-# Delete Macros
-<Tabs>
+## Delete Macros
+<Tabs queryString="delete-scope">
 
 <TabItem label="Tenant Scope Macro" value="Tenant Scope Macro">
 
@@ -205,7 +198,6 @@ Delete your system level macros via an API.
 
 </Tabs>
 
-<br />
 :::caution
 When a Macro is deleted from the UI, it needs to be cleared from the cluster profile to avoid Macro deletion anomalies in the running cluster.
 :::

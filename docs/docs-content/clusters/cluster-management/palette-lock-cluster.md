@@ -4,30 +4,31 @@ title: "Platform Settings"
 description: "Platform Settings on Palette"
 hide_table_of_contents: false
 sidebar_position: 170
+tags: ["clusters", "cluster management"]
 ---
 
-
-# Manage Platform Settings
+Palette provides the following platform settings:
 
 * [Pause Platform Updates](/clusters/cluster-management/palette-lock-cluster#pauseplatformupdates)
 * [Auto Remediation](/clusters/cluster-management/palette-lock-cluster#autoremediation)
 
-# Pause Platform Updates
+## Pause Platform Updates
 
 Palette supports the **Pause Platform Updates** feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded. The use cases of this feature are:
 
-<br />
+
 
 * Pause Updates for Single Cluster
 * Pause Updates for all the Clusters within the Project Scope
 * Pause Updates for all Clusters within the Tenant Scope
 
+
 <br />
 
-## Pause Updates for Single Cluster
+### Pause Updates for Single Cluster
 
 Individual cluster under Project scope and Tenant scope can be locked to restrict them from the Palette upgrades. To lock a cluster follow the below steps:
-<br />
+
 
 1. Log in to Palette console as Tenant or Project administrator.
 
@@ -45,7 +46,7 @@ Individual cluster under Project scope and Tenant scope can be locked to restric
 
 <br />
 
-## Pause Updates for all the Clusters within the Project Scope
+### Pause Updates for all the Clusters within the Project Scope
 
 All the clusters under a Project can be paused for updates to restrict them from the Palette upgrades. To pause updates for all clusters under Project scope:
 
@@ -60,7 +61,10 @@ All the clusters under a Project can be paused for updates to restrict them from
 
 4. To unpause the clusters updates, toggle the `Pause Platform Updates` back and deselect. 
 
-## Pause Updates for all Clusters within the Tenant Scope
+
+<br />
+
+### Pause Updates for all Clusters within the Tenant Scope
 
 
 All the clusters under a Tenant can be update paused to restrict them from the Palette upgrades. To lock all clusters under a Tenant scope:
@@ -79,7 +83,9 @@ All the clusters under a Tenant can be update paused to restrict them from the P
 4. To unlock the clusters, toggle the `Pause Platform Updates` back and deselect. 
 
 
-# Auto Remediation
+<br />
+
+## Auto Remediation
 
 Palette provides Cluster Auto Remediation as a node reconciliation operation. When Cluster Auto Remediation is on, unhealthy nodes in all the Palette-provisioned clusters will automatically be replaced with new nodes. Turning off this feature will disable auto remediation. 
 This feature can work under the scope of:

@@ -1,13 +1,16 @@
 ---
 sidebar_label: "Node Labels and Taints"
-title: "Labels and Taints"
+title: "Node Labels and Taints"
 description: "Learn how to apply labels and taints to nodes in a cluster, and how to specify Namespace labels and annotations to Add-on packs and packs for Container Storage Interface (CSI) and Container Network Interface (CNI) drivers."
 hide_table_of_contents: false
 sidebar_position: 100
+tags: ["clusters", "cluster management"]
 ---
 
 
-# Taints
+
+
+## Taints
 
 Node affinity is a property of Pods that attracts them to a set of nodes (either as a preference or a hard requirement. Taints are the opposite -- they allow a node to repel a set of pods.
 
@@ -17,9 +20,9 @@ Taints and tolerations work together to ensure that pods are not scheduled onto 
 
 Palette enables Taints to be applied to a node pool to restrict a set of intolerant pods getting scheduled to a Palette node pool. Taints can be applied during initial provisioning of the cluster and modified later.
 
-## Apply Taints to nodes
+### Apply Taints to Nodes
 
-Taints can be applied to worker pools while creation of a new cluster from the node pool configuration page as follows:
+Taints can be applied to worker pools while creating a new cluster from the node pool configuration page as follows:
 
 * Enable the “Taint” select button.
 * To apply the Taint, set the following parameters:
@@ -36,12 +39,12 @@ Eg: Key = key1;
 
 Taints can also be updated on a running cluster by editing a worker node pool from the 'Nodes' tab of the cluster details page.
 
-# Labels
+## Labels
 
 You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the recommended approaches such as, nodeSelector, node affinity, etc all use label selectors to facilitate the selection. Generally, such constraints are unnecessary, as the scheduler will automatically do a reasonable placement (e.g. spread your pods across nodes so as not place the pod on a node with insufficient free resources, etc.) but there are some circumstances where you may want to control which node the pod deploys to - for example to ensure that a pod ends up on a machine with an SSD attached to it, or to co-locate pods from two different services that communicate a lot into the same availability zone.
 
 Palette enables our users to Label the nodes of a master and worker pool by using key/value pairs. These labels do not directly imply anything to the semantics of the core system but are intended to be used by users to drive use cases where pod affinity to specific nodes is desired. Labels can be attached to node pools in a cluster during creation and can be subsequently added and modified at any time. Each node pool can have a set of key/value labels defined. The key must be unique across all node pools for a given cluster.
 
-## Apply Labels to nodes
+### Apply Labels to Nodes
 
 Labels are optional and can be specified in the **Additional Labels** field of the node pool configuration form. Specify one or more values as 'key:value'. You can specify labels initially during cluster provisioning and update them any time by editing a node pool from the **Nodes** tab of the cluster details page.

@@ -1,11 +1,10 @@
 ---
 sidebar_label: 'Cluster Monitoring'
-title: 'Palette Cluster Monitoring'
+title: 'Cluster Monitoring'
 description: 'Learn how to set up cluster monitoring with Prometheus'
 hiddenFromNav: false
+tags: ["clusters", "cluster management", "monitoring"]
 ---
-
-# Cluster Monitoring
 
 Palette exposes a set of [workload metrics](/clusters/cluster-management/workloads) out-of-the-box to help cluster administrators better understand the resource utilization of the cluster. The workload metrics Palette exposes are a snapshot in time and offer a limited ability to review past values. Administrators who want more information or a better understanding of their cluster metrics should consider using a dedicated monitoring system.
 
@@ -13,7 +12,7 @@ Several Packs are available in the [monitoring](/integrations) category that you
 
 To help you get started with deploying a monitoring stack to your Palette environment, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) and the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) guide.
 
-# Resources
+## Resources
 
 - [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
 

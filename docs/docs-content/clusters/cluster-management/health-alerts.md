@@ -1,12 +1,13 @@
 ---
 sidebar_label: "Cluster Health Alerts"
-title: "Cluster Health Alerts on Palette"
+title: "Cluster Health Alerts"
 description: "Cluster Health Alerts"
 hide_table_of_contents: false
 sidebar_position: 40
+tags: ["clusters", "cluster management"]
 ---
 
-# Overview
+
 Palette monitors the health of all Workload Clusters and raises an alert when the Cluster goes to an unhealthy state. Besides displaying the alert on the User Interface (UI) console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up simple email alerts to receive a notice when the Health Status of their cluster changes. Additionally, they can set up Webhooks to integrate alerts with a variety of IT Service Management (ITSM) tools such as ServiceNow, Slack, or Microsoft Teams. These alerts are set up at the Project level and apply to all Clusters within the Project.
 
 The Palette Management Server relies on the following to trigger Cluster-health Alerts:
@@ -20,7 +21,7 @@ The Palette Management Server relies on the following to trigger Cluster-health 
   * Both workload clusters and management cluster of public cloud.
   * Management clusters of on-premises, enterprise infrastructure.
 
-# Email Alerts
+## Email Alerts
 1. As the Project Administrator, navigate to Project Settings.
 
 
@@ -35,7 +36,7 @@ The Palette Management Server relies on the following to trigger Cluster-health 
 
 5. Save the settings to start receiving the health alerts from your workload cluster.
 
-# Webhook Alerts
+## Webhook Alerts
 
 1.    As **Project Administrator**, navigate to **Project Settings**.
 

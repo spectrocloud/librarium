@@ -1,13 +1,12 @@
 ---
 sidebar_label: "Manage Clusters"
-title: "Managing Cluster Update Events on Palette"
+title: "Manage Clusters"
 description: "Events and Notifications on Cluster Updates"
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "envelope-open-text"
+tags: ["clusters", "cluster management"]
 ---
-
-# Manage Clusters
 
 Palette supports several Day-2 operations to manage the end-to-end lifecycle of Kubernetes clusters launched through Palette. It also provides several capabilities across new and imported clusters to perform ongoing management operations like backup/restore and to keep your clusters secure, compliant, and up to date. Additionally, Palette gives you visibility into the workloads running inside your cluster and cluster costs. 
 
@@ -76,5 +75,3 @@ The following sections describe these capabilities in detail:
 
 
 * [Image Swap](/clusters/cluster-management/image-swap) - Learn how to use image swap capabilities with Palette. 
-
-<br />

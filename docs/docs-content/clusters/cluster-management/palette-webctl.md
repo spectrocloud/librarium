@@ -1,21 +1,20 @@
 ---
 sidebar_label: "Kubectl"
-title: "Web kubectl CLI on Palette"
-description: "Web kubectl CLI on Palette for cluster access"
+title: "Kubectl"
+description: "Learn how to access your Kubernetes cluster with the kubectl CLI."
 hide_table_of_contents: false
 sidebar_position: 160
+tags: ["clusters", "cluster management", "kubectl"]
 ---
 
-# Overview
 
 You can access your Kubernetes cluster by using the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Palette automatically generates a **kubeconfig** file for your cluster that you can download and use to connect with your host cluster.
 
 
-# Access Cluster with CLI
+## Access Cluster with CLI
 
 Use the following steps to connect to your host cluster with the kubectl CLI.
 
-<br />
 
 :::info
 
@@ -23,7 +22,7 @@ If you are using Palette Virtual Machine (VM) Management, you can find steps on 
 
 :::
 
-# Prerequisites
+### Prerequisites
 
 - Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for additional guidance.
 
@@ -38,7 +37,7 @@ If you are using [OIDC](/clusters/cluster-management/cluster-rbac#userbacwithoid
 :::
 
 
-# Set up Kubectl
+### Set up Kubectl
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -56,9 +55,8 @@ If you are using [OIDC](/clusters/cluster-management/cluster-rbac#userbacwithoid
 
 5. Click on the kubeconfig link to download the file.
 
-![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.png)
+  ![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.png)
 
-<br />
 
 6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
   
@@ -71,7 +69,7 @@ If you are using [OIDC](/clusters/cluster-management/cluster-rbac#userbacwithoid
 You can now issue kubectl commands against your host cluster.
 
 
-# Validate
+### Validate
 
 Verify you have access to your host cluster by issuing kubectl commands against it. 
 
