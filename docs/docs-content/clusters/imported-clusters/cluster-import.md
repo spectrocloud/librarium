@@ -2,11 +2,10 @@
 sidebar_label: "Import a Cluster"
 title: "Import a Cluster"
 description: "Learn how to import clusters and which Palette operations you can use to manage them."
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 0
+tags: ["clusters", "imported clusters"]
 ---
-
-# Overview
 
 When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You can choose between read-only mode or full permission. Refer to the [Imported Clusters](/clusters/imported-clusters#importmodes) reference page to learn more about each mode.
 
@@ -16,7 +15,7 @@ Select the mode you want to use when importing a cluster into Palette.
 <br />
 
 
-<Tabs>
+<Tabs queryString="mode">
 <TabItem label="Full Permission Mode" value="full-permission-mod">
 
 ## Prerequisites
@@ -235,6 +234,6 @@ You now have imported a cluster into Palette in read-only mode. Keep in mind tha
 </Tabs>
 
 
-# Next Steps
+## Next Steps
 
 Depending on what mode you selected for the migration, your next step is to either [Attach an Add-on Profile](/clusters/imported-clusters/attach-add-on-profile) or you can [Migrate to Full Permissions](/clusters/imported-clusters/migrate-full-permissions).
