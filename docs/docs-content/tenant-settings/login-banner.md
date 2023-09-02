@@ -8,10 +8,6 @@ sidebar_position: 0
 ---
 
 
-
-
-# Overview
-
 You can set up a login banner message that all users must acknowledge and accept before they log in to Palette. The message is limited to 1300 characters, and only plain text is supported.
 
 <br />
@@ -25,12 +21,12 @@ The login banner message is only accessible when users attempt to log in to Pale
 
 
 
-# Prerequisite
+## Prerequisite
 
 * Tenant admin access.
 
 
-# Set Up Login Banner
+## Set Up Login Banner
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -61,7 +57,7 @@ The login banner message is only accessible when users attempt to log in to Pale
 
 
 
-# Validate
+## Validate
 
 You can validate the banner message is set up correctly by using the following steps.
 

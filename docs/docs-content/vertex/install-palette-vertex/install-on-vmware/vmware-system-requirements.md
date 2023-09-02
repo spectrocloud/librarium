@@ -10,16 +10,11 @@ sidebar_position: 10
 
 
 
-
-
-
-# Overview
-
 The sections below describe system requirements and cloud account permissions for VMware vSphere environments hosting Palette VerteX.
 
 
 
-# VMware Cloud Account Permissions
+## VMware Cloud Account Permissions
 
 The vSphere user account that deploys Palette VerteX must have the minimum root-level VMware vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform. Permissions and privileges vary depending on the vSphere version you are using.
 
@@ -246,7 +241,7 @@ The following table lists Spectro role privileges for VMs by category.
 <br />
 
 
-# Zone Tagging
+## Zone Tagging
 
 Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required to install the Palette Platform itself and is also helpful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers(k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
   

@@ -2,15 +2,12 @@
 sidebar_label: "System Profiles"
 title: "Understanding System Profiles"
 description: "Understanding the System Profiles Concept and how they make Palette powerful"
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 50
 sidebar_custom_props: 
   icon: "bundles"
 ---
 
-
-
-# Overview
 
 System profiles provide a way to bootstrap an edge appliance with an initial set of virtual and containerized applications. Similar to [cluster profiles](/cluster-profiles), system profiles are templates created using one or more layers that are based on packs or helm charts.
 

@@ -8,10 +8,6 @@ hide_table_of_contents: false
 ---
 
 
-
-
-# Overview
-
 In addition to the security principles we adhere to and our secure development lifecycle, we provide a cohesive security architecture for Palette.
 
 ## Secure Product Architecture

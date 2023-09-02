@@ -15,7 +15,7 @@ sidebar_custom_props:
 
 A **Project** helps you organize the cluster resources in a logical grouping. The resources that are created within a project are scoped to that project and not available to other projects. You can also assign users and teams with specific roles to specific projects.
 
-# Project Dashboard
+## Project Dashboard
 
 The **Tenant Admin** > **Projects** page displays the project-related dashboard cards for all projects in the tenant. 
 
@@ -28,7 +28,7 @@ The **Project card** shows the status and relevant details of a cluster, groupin
 By default, the active worker node usage of CPU **Cores** is grouped across all projects and shown as an hourly interval. You can change the interval value to days or months.
 
 
-# Create a Project
+## Create a Project
 
 Use the following steps to create a new project.
 
@@ -64,7 +64,7 @@ You can associate users and teams with a project. Check out the [Project Associa
 Your newly created project is listed along with other existing projects.
 
 
-# Delete a Project
+## Delete a Project
 
 
 You can remove projects by following these steps.

@@ -71,7 +71,7 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
   ```
 
 
-  # Next Steps
+  ## Next Steps
 
 Start exploring the Palette CLI by using the `--help` command with the various commands. The Palette CLI will continue to receive more functionality, so you will want to keep it updated by downloading the newest version and replacing the current binary.
 

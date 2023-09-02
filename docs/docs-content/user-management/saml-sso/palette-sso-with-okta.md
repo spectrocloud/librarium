@@ -19,7 +19,7 @@ Single Sign-On (SSO) is an authentication method that enables users to log in to
 The following steps will guide you on how to enable Palette SSO with [Okta Workforce Identity Cloud](https://www.okta.com/products/single-sign-on/) based on OIDC.
 
 
-# Prerequisites
+## Prerequisites
 
 - You need to have either a free or paid subscription with Okta. Okta provides free [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
@@ -27,7 +27,7 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 - If you want to use the same Okta application for OIDC-based SSO into your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
 
 
-# Enablement
+## Enablement
 ## Create the Okta Application
 
 1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
@@ -289,7 +289,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 You have now successfully configured Palette SSO based on OIDC with Okta.
 
 
-# Validate
+## Validate
 
 1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that users are automatically added to the `palette-tenant-admins` group in Palette. If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User  Drop-down Menu** at the top right.
 
@@ -324,7 +324,7 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
 
 
-# Resources
+## Resources
 
 - [Okta Workforce Identity Cloud](https://www.okta.com/products/single-sign-on/)
 

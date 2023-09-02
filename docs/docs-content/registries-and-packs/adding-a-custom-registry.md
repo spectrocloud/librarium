@@ -15,7 +15,7 @@ Setting up a custom pack registry is a two-step process. The first step is to de
 
 After deploying a pack registry server, the next step is configuring the pack registry server in Palette. Once you finish configuring the pack registry server in Palette, Palette will synchronize the pack contents from the pack registry server periodically. 
 
-# Prerequisites
+## Prerequisites
 
 * Ensure you have a Docker container runtime Docker to be installed on the machine.
 
@@ -36,7 +36,7 @@ Please ensure that the ports 443 and 80 are exclusively allocated to the registr
 
 :::
 
-# Deploy Pack Registry Server with Let's Encrypt
+## Deploy Pack Registry Server with Let's Encrypt
 
 We provide a Docker image for setting up a pack registry server. Use the following steps to deploy a pack registry server using the designated Docker image and a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 <br />
@@ -95,7 +95,7 @@ We provide a Docker image for setting up a pack registry server. Use the followi
 You can now access the pack registry at `https://yourhost.companydomain.com/v1/`.
 You will be prompted to give the user admin and the password of your choice.
 
-# Deploy a Pack Registry Server with Self-Signed Certificates
+## Deploy a Pack Registry Server with Self-Signed Certificates
 
 The following steps need to be performed to deploy the pack registry server using self-signed certificates:
 
@@ -241,7 +241,7 @@ spectro registry login --insecure http://example.com:5000
 
 
 
-# Configure a Custom Pack Registry in Palette
+## Configure a Custom Pack Registry in Palette
 
 Once you deploy the pack registry server, use the following steps to configure the pack registry server in Palette.
 <br />

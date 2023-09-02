@@ -7,12 +7,9 @@ hide_table_of_contents: false
 ---
 
 
-
-# Overview
-
 Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines (VMs) alongside containerized applications.
 
-# Prerequisites
+## Prerequisites
 
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
@@ -23,7 +20,7 @@ Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtu
 - A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
 
 
-# VM Creation
+## VM Creation
 
 You can create a VM three ways:
 
@@ -51,7 +48,7 @@ We recommend installing the QEMU guest agent to display additional details in Pa
 
 :::
 
-# Resources
+## Resources
 
 - [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
 

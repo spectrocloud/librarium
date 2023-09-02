@@ -8,21 +8,15 @@ sidebar_position: 0
 ---
 
 
-
-
-
-
-# Overview
-
 The **Virtual Machine Orchestrator** pack that you use to create a cluster profile conveniently includes several components and automatically installs the [Spectro Proxy](/integrations/frp) pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
 
 
-# Prerequisites
+## Prerequisites
 
 - A Palette permission key `create` for the resource `clusterProfile`.
 
 
-# Create the Profile
+## Create the Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -85,7 +79,7 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
 
 - **Specified on Kubernetes layer**: This setting requires you to configure OIDC manually in the Kubernetes pack. Refer to [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) for more information. -->
 
-# Validate
+## Validate
 
 You can validate the profile is created. 
 
@@ -106,11 +100,11 @@ You can validate the profile is created.
 5. Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview** page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
 
 
-# Next Steps
+## Next Steps
 
 You will need to configure roles and role bindings to give users access virtual clusters. You can use VM user roles and permissions or standard Kubernetes roles. For configuration guidance, refer to [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings). The [VM User Roles and Permissions](/vm-management/vm-roles-permissions) reference lists Cluster Roles and equivalent Palette Roles.
 
 
-# Resources
+## Resources
 
 - [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings)

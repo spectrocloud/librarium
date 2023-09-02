@@ -8,11 +8,6 @@ sidebar_position: 20
 ---
 
 
-
-
-
-# Overview
-
 You must configure roles and role binding before any user, including you as administrator, can access Palette Virtual Machine Orchestrator (VMO). There are two sets of roles: Cluster Roles and Palette Roles, along with the required bindings configuration.
 
 Palette provides the following four out-of-the-box Cluster roles for Palette Virtual Machine Orchestrator. The table also lists the corresponding Palette roles. 
@@ -49,7 +44,3 @@ Palette leverages Regex Pattern matching so you can select multiple namespaces t
 <br />
 
 <br />
-
-
-
-

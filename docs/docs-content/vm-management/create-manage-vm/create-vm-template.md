@@ -8,18 +8,13 @@ sidebar_position: 10
 ---
 
 
-
-
-
-# Overview
-
 Although Palette provides out-of-the box templates, we recommend that you create and manage your own templates.
 
-# Prerequisites
+## Prerequisites
 
 - Valid YAML that defines your VM template.
 
-# Create a VM Template
+## Create a VM Template
 
 Create a template by adding a YAML file as a manifest in an add-on profile.
 
@@ -115,13 +110,13 @@ spec:
 ```
 
 
-# Validate
+## Validate
 
 1. Navigate to the left **Main Menu** and click **Profiles**. 
 
 
 2. Verify your newly added manifest is listed. 
 
-# Next Steps
+## Next Steps
 
 Try applying the template to your cluster. Navigate to **Clusters** and click `+` next to Addon Layers, then select the VMO profile you created.

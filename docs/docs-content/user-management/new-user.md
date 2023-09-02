@@ -8,23 +8,18 @@ sidebar_position: 10
 
 
 
-
-
-
-# Overview
-
 The section guides you on how to create a user in Palette.
 
 <br />
 
-# Prerequisites 
+## Prerequisites 
 
 - A [Palette account](https://console.spectrocloud.com).
 - Tenant Admin access.
 
 < br />
 
-# Create a New User
+## Create a New User
 
 To create a new user in Palette:
 
@@ -53,7 +48,7 @@ To create a new user in Palette:
 * Click the **Users & Teams** tab from the **Left Menu**. This page will list all the users under the Tenant scope.
 
 
-# Create Custom Role
+## Create Custom Role
 
 Use the following steps to create a custom resource role:
 

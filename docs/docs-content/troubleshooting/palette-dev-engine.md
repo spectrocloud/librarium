@@ -17,7 +17,7 @@ Use the following content to help you troubleshoot issues you may encounter when
 <br />
 
 
-# Resource Requests
+## Resource Requests
 
 All [Cluster Groups](/clusters/cluster-groups) are configured with a default [*LimitRange*](https://kubernetes.io/docs/concepts/policy/limit-range/). The LimitRange configuration is in the Cluster Group's Virtual Cluster configuration section. Packs deployed to a virtual cluster should have the `resources:` section defined in the **values.yaml** file. Pack authors must specify the `requests` and `limits` or omit the section entirely to let the system manage the resources.
 

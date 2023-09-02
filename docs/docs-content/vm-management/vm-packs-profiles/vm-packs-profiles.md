@@ -7,9 +7,6 @@ hide_table_of_contents: false
 
 ---
 
-
-# Overview
-
 The **Virtual Machine Orchestrator** pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. You use **Virtual Machine Orchestrator** pack to create a VMO cluster profile. The pack's components are described below. All the components are enabled by default in the `charts:` section of the pack YAML configuration file. 
 
 <br />

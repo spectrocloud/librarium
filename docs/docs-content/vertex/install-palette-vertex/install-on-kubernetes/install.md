@@ -9,15 +9,11 @@ sidebar_position: 0
 
 
 
-
-
-# Overview
-
 Use the Palette VerteX Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment. Palette VerteX is a FIPS-compliant product that must be installed in a FIPS-compliant environment. This means that Operating System (OS) the Kubernetes cluster you are installing Palette VerteX into must be FIPS-compliant. 
 
 Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
 
-# Prerequisites
+## Prerequisites
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available.
 
@@ -95,7 +91,7 @@ Do not use a Palette-managed Kubernetes cluster when installing Palette VerteX. 
 :::
 
 
-# Install Palette VerteX
+## Install Palette VerteX
 
 Use the following steps to install Palette VerteX on Kubernetes.
 
@@ -254,7 +250,7 @@ If you are planning to deploy host clusters into different networks, you may req
 You now have a self-hosted instance of Palette VerteX installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
 
 
-# Validate
+## Validate
 
 Use the following steps to validate the Palette VerteX installation.
 
@@ -318,6 +314,6 @@ Use the following steps to validate the Palette VerteX installation.
     ```
 
 
-# Next Steps
+## Next Steps
 
 You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](/vertex/system-management/tenant-management#createatenant) page for instructions on how to create a tenant. 

@@ -8,9 +8,6 @@ hide_table_of_contents: false
 ---
 
 
-
-## Overview
-
 RBAC stands for Role-Based Access Control. RBAC allows a single user to have different types of access control based on the resource being accessed. RBAC is the scenario that allows the Tenant Admin to grant full and unrestricted access to some parts of the system and withhold it for some others.
 
 Palette enforces a very well-structured RBAC design on how to grant granular access to resources and their operations within our management console. We maintain precise Roles and Resource Access Control List. Role-based access control primarily focuses on assigning permissions to roles instead of individual users and then assigning these roles to users. Multiple roles can be assigned to a user, which defines the permitted actions on the resource. This module lists and enumerates all the roles available within the Palette console within specific scopes.

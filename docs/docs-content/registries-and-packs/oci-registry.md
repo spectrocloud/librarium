@@ -9,12 +9,9 @@ sidebar_position: 70
 
 
 
-
-
-# Overview
 Palette supports OCI registries to serve the “filesystem bundle” unpacked on disk as helm registries. Helm charts hosted in OCI registries can be added to cluster profiles and deployed to Kubernetes clusters. We support all OCI complaint registries.
 
-# Setup OCI Registry:
+## Setup OCI Registry:
 
 * Login as **Tenant Admin**.
 
@@ -59,7 +56,7 @@ In Azure portal:
     * Password : Azure Container Registry Password
     * Authentication type : Basic
 
-# Amazon ECR Authentication
+## Amazon ECR Authentication
 
 Choose among one of the following ECR protection modes:
 * Un-protected Mode: No credentials required.
@@ -137,7 +134,7 @@ Palette supports the parameterization of AWS ECR registry endpoint to support cr
 Specify a default region to fall back to when the deployment region does not contain the requested helm chart.
 (Eg:, Default region: us-west-1)
 
-# Use Your OCI Registry
+## Use Your OCI Registry
 Charts from the OCI registry can be used in your **Add on** cluster profiles as follows:
 * From the Repository menu, select the desired OCI registry.
 

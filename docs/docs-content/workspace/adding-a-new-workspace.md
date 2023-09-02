@@ -8,22 +8,16 @@ sidebar_position: 0
 ---
 
 
-
-
-
-
-# Overview
-
 Palette enables multi-cluster management and governance capabilities by introducing Workspaces. This section explains how a workspace can be created in the Palette console.
 
-# Prerequisites
+## Prerequisites
 
   * One or more running workload clusters within the project.
   * Cluster must not be imported with read-only mode.
   * RBAC should not be set at cluster level but to be included at workspace level.
   * Palette Virtual Clusters cannot be part of the workspace.
 
-# Create Your Workspace
+## Create Your Workspace
 
 #### 1. Add the Basic Information
 Provide the basic information for the workspace such as:

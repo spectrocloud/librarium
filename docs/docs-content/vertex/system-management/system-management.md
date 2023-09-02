@@ -7,13 +7,6 @@ hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-
-
-
-
-
-## Overview
-
 Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are available at the system level and are applied to all [tenants](/glossary-all#tenant) in the system. 
 
 You can access the system setting by visiting the IP address or the custom domain name assigned to your Palette VerteX cluster and appending the `/system` path to the URL. For example, if your Palette VerteX cluster is hosted at `https://vertex.abc.com`, you can access the system settings at `https://vertex.abc.com/system`.
@@ -32,7 +25,7 @@ Exercise caution when changing system settings as the changes will be applied to
 :::
 
 
-# Resources
+## Resources
 
 * [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings)
 

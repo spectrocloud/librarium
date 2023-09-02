@@ -10,8 +10,6 @@ sidebar_position: 50
 
 
 
-# Overview
-
 Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster *before* it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
 
 <br />
@@ -23,7 +21,7 @@ You can find information about the JSON schema for the pack metadata file in the
 :::
 
 
-# Pack Values Constraints
+## Pack Values Constraints
 
 A Spectro Pack currently supports various configurations through a configuration file called `values.yaml`. The values defined in the config file are applied while deploying the Kubernetes cluster. The values defined in the pack are default values and can be overridden in the Cluster Profile or during the Cluster deployment.
 
@@ -221,7 +219,7 @@ type-zeroedthick, size=s → invalid
 
 </Tabs>
 
-# Pack Dependency Constraints
+## Pack Dependency Constraints
 
 Spectro Cloud provides the flexibility to choose any pack of any version in the profile. Clusters are deployed based on the packs selected in the profile. While this works for most of the cases, it is sometimes required to select a minimum or maximum pack version, or to have dependencies between the packs to ensure the Kubernetes cluster is deployed successfully as desired.
 
@@ -343,7 +341,7 @@ If the minimum and maximum versions are not mentioned, the validation is skipped
 
 </Tabs>
 
-# Pack Resource Constraints
+## Pack Resource Constraints
 
 A successful Kubernetes Cluster deployment is possible only when the cluster has sufficient hardware requirements. We consider the CPU, Memory, and Disk size as the hardware requirements. The minimum resource requests can be varied depending on the workload to be deployed in the cluster. Spectro Cloud users are allowed to select the desired instance type, and the disk size while configuring the machine pool in the Cluster deployment procedure. If the user selects the instance type which does not satisfy the minimum CPU or Memory or Disk size requirements, then there is a high probability that the cluster deployment may not succeed due to insufficient CPU or Memory or Disk size.
 
@@ -463,7 +461,7 @@ Kubernetes provides a way to schedule the pods on master/worker nodes or both. P
 
 </Tabs>
 
-# Pack Presets
+## Pack Presets
 
 Pack Presets are the predefined values in a file called `presets.yaml` in the pack. It contains an array of the presets for the pack, and is visible in the pack parameters of the Cluster profile and the Cluster. Users can select any preset from the available pack presets, and the predefined values of a selected preset are applied automatically by the Spectro Cloud UI. Presets make pack configuration much easier as multiple pack values are updated at a time and the user does not need to understand all the configuration parameters which get changed depending on various factors.
 
@@ -538,7 +536,7 @@ One or more presets can be categorized into a common group, but only one preset 
 
 </Tabs>
 
-# Pack Macros
+## Pack Macros
 
 Pack macros are the variables defined in the Cluster profile or in Cluster pack values, and these variables are resolved only at the cluster deployment time.
 

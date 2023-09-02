@@ -276,10 +276,10 @@ const config = {
       ],
       algolia: {
         // The application ID provided by Algolia
-        appId: "6W0Y0YE76K",
+        appId: process.env.APPLICATION_ID,
 
         // Public API key: it is safe to commit it
-        apiKey: "69f57f2702bfb61e2ea3be429aba074e",
+        apiKey: process.env.ALGOLIA_SEARCH_KEY,
 
         indexName: "prod-docusaurus-librarium",
 

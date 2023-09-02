@@ -10,7 +10,7 @@ sidebar_position: 0
 
 
 
-# Global Tenant Scope
+## Global Tenant Scope
 
 Tenant is an isolated workspace within the Palette Console. Users and teams with specific roles can be associated with the [tenants](/glossary-all#organization) and [projects](/glossary-all#project) you create.
 
@@ -30,7 +30,7 @@ All users can view tags assigned to a resource. In technical terms, all users in
 
 <br />
 
-# Tenants 
+## Tenants 
 ----------------------------
 
 |Role Names   | Description  |
@@ -247,7 +247,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 <br />
 
 
-# Tenants Cluster Group
+## Tenants Cluster Group
 ----------------------------
 
 |Role Names   | Description  |

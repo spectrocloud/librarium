@@ -8,7 +8,6 @@ hide_table_of_contents: false
 ---
 
 
-# Overview
 
 Palette supports Single Sign-On (SSO) with a variety of Identity Providers (IDP). You can enable SSO in Palette by using the following protocols for authentication and authorization.
 
@@ -22,7 +21,7 @@ Palette supports Single Sign-On (SSO) with a variety of Identity Providers (IDP)
 
 Enable SSO by following our [Enable SSO in Palette](/user-management/saml-sso/enable-saml) guide. 
 
-# Resources
+## Resources
 
 - [Enable SSO in Palette](/user-management/saml-sso/enable-saml)
 

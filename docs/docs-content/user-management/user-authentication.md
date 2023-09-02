@@ -9,9 +9,6 @@ sidebar_position: 0
 
 
 
-
-# Overview
-
 Palette supports three types of user authentication methods. 
 
 * [User Interface (UI)](/user-management/user-authentication/#au-authentication) authentication
@@ -23,7 +20,7 @@ Palette supports three types of user authentication methods.
 The API key and the authorization token method can be used when interacting with Palette REST APIs for automation and programmatic purposes.
 
 
-# UI Authentication
+## UI Authentication
 <!-- vale off -->
 You can log into Palette by visiting the Palette at [http://console.spectrocloud.com](https://console.spectrocloud.com). If you are a user of a Palette Enterprise instance, then you should use the URL provided by your Palette system 
 administrator, such as `example-company.console.spectrocloud.com.` 
@@ -49,7 +46,7 @@ Ask your Palette system administrator for the custom Palette URL.
 
 :::
 
-# API Key
+## API Key
 
 Palette API can also use API Keys to authenticate requests. This is the method of accessing the API without referring to the actual user.
 
@@ -129,7 +126,7 @@ You copy your API key from the Palette dashboard and use it for making REST API 
   * Key: ApiKey
   * Value: API key copied from the Palette Console. E.g.: QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
 
-# Authorization Token
+## Authorization Token
 
 <!-- * All requests must be authenticated with an API token that is passed using the HTTP request header `Authorization`.
 * Users can use the [`/auth/authenticate`](/api/v1/auth) API to authenticate and obtain the authorization token by supplying their username and password.

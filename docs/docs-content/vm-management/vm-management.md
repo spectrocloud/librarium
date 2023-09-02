@@ -7,16 +7,13 @@ sidebar_custom_props:
   icon: "server"
 ---
 
-
-# Overview
-
 Palette Virtual Machine Orchestrator (VMO) provides a unified platform for managing containerized and virtualized applications. This solution allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications. Palette VM Orchestrator simplifies managing infrastructure, improves resource utilization, and removes the cost of having a hypervisor.
 
 
 ![A drawing of VMs deployed to Palette](/docs_vm-mangement_vmo-diagram.png)
 
 
-# Use Cases
+## Use Cases
 
 Palette VM Orchestrator is particularly suitable in the following scenarios: 
 
@@ -28,7 +25,7 @@ Palette VM Orchestrator is particularly suitable in the following scenarios:
 - Edge locations with a few VMs deployed and where a hypervisor is no longer desired.
 
 
-# Prerequisites
+## Prerequisites
 
 Palette Virtual Machine Orchestrator requires the following:
 
@@ -52,7 +49,7 @@ Palette Virtual Machine Orchestrator requires the following:
   :::
 
 
-# Get Started With VM Orchestrator
+## Get Started With VM Orchestrator
 
 To get started, review [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles) to learn about its components. 
 
@@ -61,7 +58,7 @@ Review [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profil
 Palette VM Orchestrator provides various methods to quickly deploy VMs from out-of-the-box templates or from your organization's templates. To learn more about using and creating templates, review [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template) and [Create a VM Template](/vm-management/create-manage-vm/create-vm-template). 
 
 
-# Feature Gates
+## Feature Gates
 
 Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machnine Orchestrator** pack to manage VMs and enables the following KubeVirt feature gates by default:
 
@@ -79,7 +76,7 @@ KubeVirt offers other feature gates you may find useful and which you can enable
 
 For more information on KubeVirt feature gates, refer to the [KubeVirt user guide](https://kubevirt.io/user-guide/operations/activating_feature_gates/).
 
-# Resources
+## Resources
 
 - [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles)
 

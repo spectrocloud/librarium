@@ -9,9 +9,6 @@ sidebar_position: 0
 
 
 
-
-# Overview
-
 Security is about controlling who can interact with your information, what they can do with it, and when they can interact with it.
 
 We use the Confidentiality, Integrity, and Availability (CIA) Triad as the framework that guides the security and controls we provide in our products and services. This framework is often extended with Authentication, Authorization, and Auditing. Components of the CIA Triad are described below.

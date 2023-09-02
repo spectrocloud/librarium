@@ -11,7 +11,7 @@ hiddenFromNav: false
 
 
 
-# How To Retrieve Images from a Private Registry in Kubernetes
+## How To Retrieve Images from a Private Registry in Kubernetes
 
 Kubernetes is an open-source container orchestration platform that enables efficient management, deployment, and scaling of containerized applications.
 
@@ -25,7 +25,7 @@ To log into a Docker registry from Kubernetes, you must create a secret that con
 
 In this how-to guide, you will log into a private docker registry to pull existing images of an application that you will deploy in Kubernetes.
 
-# Prerequisites
+## Prerequisites
 
 - The kubectl [command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/). Kubectl allows you to connect to, configure and work with your clusters through the command line.
 - Access to a private registry.  [DockerHub](https://hub.docker.com/) offers a single private registry on the free tier. If you do not have a personal registry account, you can use DockerHub.
@@ -195,7 +195,7 @@ kubectl run <deployment-name> \
 
 The line above will create a new deployment using the image specified from the private registry.
 
-# Next Steps
+## Next Steps
 
 Accessing images from a private registry in Kubernetes can be challenging due to the need to authenticate with the registry. 
 

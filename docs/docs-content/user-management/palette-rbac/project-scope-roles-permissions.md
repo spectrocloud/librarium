@@ -25,7 +25,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 <br />
 
 
-# App Deployment
+## App Deployment
 --------------------------------
 
 |Role Name   | Description  |
@@ -143,7 +143,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 <br />
 
 
-# App Profile
+## App Profile
 --------------------------------
 
 |Role Names   | Description  |
@@ -233,7 +233,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 <br />
 
 
-# Project
+## Project
 --------------------------------
 
 |Role Names   | Description  |
@@ -360,7 +360,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 <br />
 
 
-# Cluster Profile
+## Cluster Profile
 -----------------------------
 
 The user with these permissions can manage the Cluster Profiles within a project.
@@ -453,7 +453,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 <br />
 
-# Cluster
+## Cluster
 --------------------------------------
 <br />
 
@@ -577,7 +577,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 <br />
 
-# Cloud Account
+## Cloud Account
 -----------------------------
 
 <br />
@@ -659,7 +659,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 </TabItem>
 </Tabs>
 
-# Workspace
+## Workspace
 ------------------------------------
 
 <br />
@@ -721,7 +721,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 </Tabs>
 
 
-# Virtual Cluster
+## Virtual Cluster
 --------------------------------
 
 |Role Names   | Description  |
