@@ -4,9 +4,9 @@ title: "Packs Maintenance Policy"
 description: "Learn about Palette pack update and deprecation schedules."
 icon: ""
 hide_table_of_contents: false
+sidebar_position: 0
+tags: ["packs", "deprecation"]
 ---
-
-# Overview
 
 Palette supports two pack categories: *Core* and *Add-on*. Core packs, which we often source from third parties, are infrastructure related or have prominence in container-based environments. They create the layers in Palette profiles. Core packs are grouped as follows:
 
@@ -165,8 +165,3 @@ A minor Kubernetes version is deprecated in Palette when the Kubernetes communit
 ### CNI / CSI / Add-on Packs
 
 Palette supports a minor version of CNI, CSI, and add-on packs until two newer versions are available. At that time, packs in these categories are deprecated.
-
-
-<br />
-
-<br />

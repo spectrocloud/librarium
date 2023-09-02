@@ -2,32 +2,24 @@
 sidebar_label: 'Antrea CNI'
 title: 'Antrea CNI'
 description: 'Antrea CNI network pack for Palette Kubernetes Clusters'
-
 type: "integration"
 category: ['network', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/antrea/blobs/sha256:3c5704caf6652c63374282cbf413f8e73a77c4efbc49f375c19c73f8e2ec4148?type=image/png'
+tags: ["packs", "antrea", "cni", "network"]
 ---
 
-
-
-
-
-# Antrea CNI
 
 Palette supports Antrea controller network interface (CNI) for VMware Kubernetes clusters. Antrea CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility. 
 
 Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod networking and security features. Open vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 
-<br />
 
-# Supported Versions
+## Supported Versions
 
 **1.9.x**
 
-<br />
-
-# Prerequisites
+## Prerequisites
 
 - Enable the integrated NodeIPAM controller in the Antrea manifest: ``NodeIPAM:enable``.
 <br />
@@ -59,7 +51,7 @@ To avoid overlapping your pod network with any of your host networks, you should
 - The Open vSwitch kernel module must be present on every Kubernetes node.
 
 
-# Parameters
+## Parameters
 
 The Antrea CNI pack supports the following parameters.
 
@@ -75,7 +67,7 @@ The Antrea CNI pack supports the following parameters.
 | ServiceExternalIP | The feature toggle for ``antrea-agent`` and ``antrea-controller``. If you use the LoadBalancer service, set this to ``true``. | N |
 
 
-# Usage
+## Usage
 
 Kubernetes network policies are supported by default.
 
@@ -108,11 +100,11 @@ If you wish to use Antrea CIDRs and have deployed a cluster using Palette, ensur
 
 <br />
 
-# Terraform 
+## Terraform 
 
 You can reference the Antrea CNI pack in Terraform with a data resource.
 
-```tf
+```hcl
 data "spectrocloud_registry" "public_registry" {
  name = "Public Repo"
 }
@@ -126,15 +118,11 @@ data "spectrocloud_pack_simple" "antrea" {
 ```
 
 
-# References
+## References
 
 - [Antrea Service of type LoadBalancer](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer)
 - [MetalLB](https://metallb.universe.tf)
 - [Antrea](https://antrea.io/)
 - [Antrea IPAM Capabilities](https://antrea.io/docs/v1.6.1/docs/antrea-ipam/)
 - [Using MetalLB with Antrea](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer/#using-metallb-with-antrea)
-
-<br />
-
-<br />
 

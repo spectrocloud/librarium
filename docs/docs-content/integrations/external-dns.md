@@ -1,25 +1,20 @@
 ---
 sidebar_label: 'ExternalDNS'
-title: 'ExternalDNS'
+title: 'External DNS'
 description: 'ExternalDNS pack in Spectro Cloud'
-
 type: "integration"
-hide_table_of_contents: false
+hide_table_of_contents: true
 category: ['load balancers', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.spectrocloud.com/v1/external-dns/blobs/sha256:1bfd6dceb0b50efee4068cd6321511f6b24be86e2d613e0a8206e716ba7aea3f?type=image/png'
+tags: ["packs", "external-dns", "network"]
 ---
 
 
 
-
-
-
-# ExternalDNS
-
 The integration helps configure public DNS servers with information about Kubernetes services to make them discoverable.
 
-# Prerequisites
+## Prerequisites
 
 Providers have to be set up for this pack to get deployed and work seamlessly. For a list of supported providers and the prerequisites to be set up, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
 
@@ -45,10 +40,6 @@ Providers have to be set up for this pack to get deployed and work seamlessly. F
 Integration deploys the following components:
 * External DNS
 
-## References
-
-* https://github.com/kubernetes-sigs/external-dns
-* https://github.com/bitnami/charts/tree/master/bitnami/external-dns
 
 ## ExternalDNS for Services on AWS Route53 Example
 
@@ -151,13 +142,19 @@ Integration deploys the following components:
 ### Verify ExternalDNS (Ingress example)
 
   * If all goes well, after 2 minutes, ExternalDNS would have inserted 2 records on your hosted zone
+  
     ```bash
     aws route53 list-resource-record-sets --output json --hosted-zone-id "/hostedzone/ZEWFWZ4R16P7IB" \
         --query "ResourceRecordSets[?Name == 'grafana.external-dns-test.my-org.com.']|[?Type == 'A']"
     ```
-  * After which, if you access http://grafana.external-dns-test.my-org.com on your browser, you should be able to see Grafana login page
+  * After which, if you access http://grafana.external-dns-test.my-org.com on your browser, you will be able to view the Grafana login page
 
 ### Troubleshooting
 
 * Make sure Ingress resource gets created for the Applications deployed and a LoadBalancer hostname / IP address is set on the Ingress resource
 * Check the `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change `logLevel` to debug to see additional info on the logs
+
+## References
+
+* [Exteral DNS Home](https://github.com/kubernetes-sigs/external-dns)
+* [External DNS Helm Chart](https://github.com/bitnami/charts/tree/master/bitnami/external-dns)

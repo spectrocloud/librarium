@@ -2,22 +2,19 @@
 sidebar_label: 'AWS Cluster Autoscaler'
 title: 'AWS Cluster Autoscaler'
 description: 'AWS Cluster Autoscaler for Spectro Cloud Palette'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['system app', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/aws-cluster-autoscaler/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png'
+tags: ["packs", "aws-cluster-autoscaler", "system app", "network"]
 ---
 
 
 
-
-
-# AWS Cluster Autoscaler 
-
 Palette supports autoscaling for AWS EKS clusters by using the AWS Cluster Autoscaler pack. 
 The Cluster Autoscaler dynamically scales cluster resources. It monitors the workload and provisions or shuts down cluster nodes to maximize the cluster's performance and make it more resilient to failures. It resizes the Kubernetes cluster in the following two conditions:
-<br />
+
 
 * Scale-up: The Cluster Autoscaler triggers a scale-up operation if insufficient cluster resources lead to multiple pod failures. The pods become eligible for scheduling on the new nodes. The Cluster Autoscaler checks for pod failures every 30 seconds and schedules impacted pods on new nodes. Scaling up will not happen when the given pods have node affinity. 
 
@@ -29,9 +26,9 @@ Cluster Autoscaler pack is deployed as a [*Deployment*](https://kubernetes.io/do
 
 
 
-# Versions Supported
+## Versions Supported
 
-<Tabs>
+<Tabs queryString="version">
 
 <TabItem label="1.26.x" value="1.26.x">
 
@@ -343,7 +340,7 @@ Use the following steps to trigger the pod rescheduling event manually:
 
 </Tabs>
 
-# Troubleshooting
+## Troubleshooting
 
 If you are facing the `LimitExceeded: Cannot exceed quota for PoliciesPerRole:10` error in the cluster deployment logs, it may be because the default IAM role Palette creates for the node group already has 10 policies attached to it, and you are trying to attach one more. By default, your AWS account will have a quota of 10 managed policies per IAM role. To fix the error, follow the instruction in this [AWS guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entities) to request a quota increase. 
 
@@ -353,7 +350,25 @@ If you encounter an `executable aws-iam-authenticator not found` error in your t
 aws-iam-authenticator in the following [install guide](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html). 
 
 
-# References
+## Terraform
+
+You can reference the AWS Cluster Autoscaler pack in Terraform with a data resource.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+ name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "aws-cluster-autoscaler" {
+ name    = "aws-cluster-autoscaler"
+ version = "1.26.3"
+ type = "helm"
+ registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
+
+## References
 
 - [Cluster Autoscaler on AWS](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
 

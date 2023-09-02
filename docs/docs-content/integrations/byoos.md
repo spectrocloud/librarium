@@ -2,11 +2,12 @@
 sidebar_label: "Bring Your Own OS (BYOOS)"
 title: "Bring your own OS (BYOOS)"
 description: "Bring Your Own OS (BYOOS) pack in Palette."
-
+hide_table_of_contents: true
 type: "integration"
 category: ['operating system', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png"
+tags: ["packs", "byoos", "operating system"]
 ---
 
 
@@ -18,13 +19,13 @@ The [Bring Your Own Operating System (BYOOS)](/cluster-profiles/byoos) enables y
 
 Using your custom OS provides several benefits, including the ability to control your own dependencies, improve performance, and ensure compatibility with your existing applications. With BYOOS, you can choose the OS that best fits your needs, whether it's a commercial or open-source distribution, and integrate it with your Kubernetes clusters. The BYOOS pack can be used with both Edge and non-Edge environments. 
 
-# Versions Supported
+## Versions Supported
 
 **1.0.x**
 
 <br />
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="Edge" value="edge">
 
@@ -171,9 +172,9 @@ Image creation tools are available to help you create custom OS images for the i
 </Tabs>
 
 
-# Terraform 
+## Terraform 
 
-<Tabs>
+<Tabs queryString="platform">
 <TabItem label="Edge" value="edge">
 
 You can retrieve details about the BYOOS Edge OS agent pack using the following Terraform code.
@@ -181,7 +182,7 @@ You can retrieve details about the BYOOS Edge OS agent pack using the following 
 <br />
 
 
-```terraform
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -202,7 +203,7 @@ You can retrieve details about the BYOOS pack by using the following Terraform c
 
 <br />
 
-```terraform
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -218,7 +219,7 @@ data "spectrocloud_pack_simple" "byoos" {
 
 </Tabs>
 
-# References
+## References
 
 - [Create a Custom Cluster Profile with BYOOS](/clusters/edge/site-deployment/model-profile)
 

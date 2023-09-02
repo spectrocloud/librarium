@@ -16,7 +16,7 @@ Palette supports three types of user authentication methods.
 
 * [User Interface (UI)](/user-management/user-authentication/#au-authentication) authentication
 
-* [API Key](/user-management/user-authentication/#api-key)
+* [API Key](#apikey)
 
 * [Authorization Token](/user-management/user-authentication/#authorization-token)
 

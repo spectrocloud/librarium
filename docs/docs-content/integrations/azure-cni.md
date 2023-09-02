@@ -2,19 +2,14 @@
 sidebar_label: 'Azure CNI'
 title: 'Azure CNI'
 description: 'Azure CNI network pack for Palette AKS Clusters'
-
+hide_table_of_contents: true
 type: "integration"
 category: ['network', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://registry.dev.spectrocloud.com/v1/csi-azure/blobs/sha256:0787b7943741181181823079533cd363884a28aa0651715ea43408bdc77a5c51?type=image/png'
+tags: ["packs", "azure-cni", "cni", "network"]
 ---
 
-
-
-
-
-
-# Azure CNI
 
 Palette supports Azure Container Network Interface (CNI) networking for Azure Kubernetes Service (AKS) clusters. Azure CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility.
 
@@ -23,7 +18,7 @@ To allocate unique IP addresses to individual pods, advanced forethought needs t
 
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.4.x" value="1.4.x">
 
@@ -57,7 +52,7 @@ pack:
 ```
 <br />
 
- :::info
+:::info
  Provide the networkPolicy value as none if no policy to be applied.
 :::
 
@@ -77,13 +72,16 @@ pack:
 |Logging|Rules added or deleted in IP Tables are logged on every host under `/var/log/azure-npm.log`|For more information, see [Calico component logs](https://projectcalico.docs.tigera.io/maintenance/troubleshoot/component-logs)|
 
 :::caution
-Make sure to use Azure CNI with the Windows operating system as the
-kubenet is not available for the Windows environment.
+
+Make sure to use Azure CNI with the Windows operating system as the kubenet is not available for the Windows environment.
+
 :::
 
 <br />
-<br />
 
 ## References
-* [Azure CNI Git](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md)
-* [Azure CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)
+
+- [Azure CNI Git](https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md)
+
+
+- [Azure CNI](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)

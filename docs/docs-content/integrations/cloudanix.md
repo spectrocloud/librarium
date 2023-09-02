@@ -1,23 +1,17 @@
 ---
 sidebar_label: 'Cloudanix'
-title: 'cloudanix'
+title: 'Cloudanix'
 description: 'The Cloudanix security pack provides a dashboard that displays threats and unusual behavior in Kubernetes containers in Palette' 
-
+hide_table_of_contents: true
 type: "integration"
-hide_table_of_contents: false
 category: ['security', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: 'https://cloudanix-assets.s3.amazonaws.com/static/cloudanix-logo-p.png'
+tags: ["packs", "cloudanix", "security"]
 ---
 
 
-
-
-# Cloudanix
-
 The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Cloudanix detects the following.
-
-<br />
 
 - Files added or modified in sensitive directories
 
@@ -37,9 +31,9 @@ The Cloudanix dashboard provides an interactive interface that displays the mapp
 
 You can also start Jira workflows and target specific workloads from the Cloudanix dashboard. 
 
-# Versions Supported
+## Versions Supported
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="1.0.x" value="1.0.x">
 
@@ -114,53 +108,11 @@ Below is the YAML file for the **Spectro Namespace Labeler** add-on pack. No act
 As a final step, apply the cluster profile to your cluster.
 
 </TabItem>
-
-<TabItem label="0.0.x" value="0.0.x">
-
-## Prerequisites
-
-- CPUs: 0.5
-- Memory: 256 MiB
-- Kubernetes 1.19.x to 1.24.x
-- Kernel version 4.5 and higher
-
-## Parameters
-
-The Cloudanix pack has the following parameters, which are auto-filled based on Palette user information.
-
-| Name | Description |
-| --- | --- |
-| ``userEmail`` | The email address of the user who created the cluster and cluster profile. |
-| ``partnerIdentifier`` | A Cloudanix unique identifier for Spectro Cloud. |
-| ``organizationId`` | The organization tenant ID in Palette. |
-| ``userName`` | Palette user name. |
-| ``accountName`` | Palette cloud account name. |
-| ``accountType`` | Cloud account type such as AWS or GCP, Azure, or others. |
-| ``accountId`` | The user's cloud account ID. |
-| ``clusterName`` | The name of the cluster. |
-| ``clusterIdentifier`` | The cluster's unique identifier. |
-| ``clusterDomain`` | The Palette cloud account type such as AWS, GCP, Azure, or others. |
-
-## Usage
-
-This Helm Chart installs four Cloudanix services to enable container security capabilities:
-
-<br/>
-
-- **config-cron**: A job that runs periodically in a Kubernetes cluster to maintain the configuration of Cloudanix inventory and threat services.
-- **misconfig-cron**: A job that captures Kubernetes misconfigurations and displays them on the Cloudanix dashboard.
-- **inventory-service**: An inventory service that detects any new Kubernetes resources and displays them on the Cloudanix dashboard.
-- **threat-service**: A threat service that exports threat events and affected Kubernetes resources which are visible on the Cloudanix dashboard.
-
-From the **Workloads** page, click the **Risks** tab to view a list of failed threat rules. You can exclude resources, such as pods and containers, from the risk findings.
-
-</TabItem>
-
 </Tabs>
 
-# Terraform
+## Terraform
 
-``` hcl
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
@@ -173,19 +125,9 @@ data "spectrocloud_pack_simple" "cloudanix" {
 }
 ```
 
-# References
+## References
 
-[Cloudanix](https://docs.cloudanix.com/introduction)
-
-<br/>
-
-<br />
-
-<br/>
-
-
-<br />
-<br />
+- [Cloudanix Documentation](https://docs.cloudanix.com/introduction)
 
 
 
