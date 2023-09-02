@@ -5,13 +5,8 @@ description: "Learn how to install Palette into an air gap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 70
+tags: ["self-hosted", "enterprise", "air-gap"]
 ---
-
-
-
-
-# Overview
-
 
 You can install a self-hosted version of Palette into a VMware environment without direct internet access. This type of installation is referred to as an *air gap* installation. 
 
@@ -36,7 +31,6 @@ The following diagram is a high-level overview of the order of operations requir
 
 The airgap installation can be simplified into five major phases. 
 
-<br />
 
 1. Download the Open Virtual Appliance (OVA) image and deploy the instance hosting the private repository that supports the airgap environment.
 
@@ -56,7 +50,7 @@ The airgap installation can be simplified into five major phases.
 This guide focuses on the first two installation phases, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/enterprise-version/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
 
 
-# Prerequisites
+## Prerequisites
 
 * The following minimum resources are required to deploy Palette.
     * 2 vCPU
@@ -82,10 +76,8 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
-<br />
 
-
-# Deploy Air Gapped Appliance
+## Deploy Air Gapped Appliance
 
 
 1. Log in to vCenter Server by using the vSphere Client.
@@ -131,8 +123,6 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 12. Configure a static IP address on the node by editing **/etc/netplan/50-cloud-init.yaml**. 
 
-  <br />
-
   ```shell
   sudo vi /etc/netplan/50-cloud-init.yaml
   ```
@@ -176,7 +166,7 @@ If you have any questions or concerns, please feel free to contact support@spect
   Record the output of the setup command as you will use it when deploying the Quick Start appliance later on in the installation process.
 
   Example Output: 
-  ```shell
+  ```shell hideClipboard
   Setting up Manifests
   Setting up Manifests
   Setting up SSL Certs
@@ -220,7 +210,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <br />
 
-<Tabs>
+<Tabs queryString="install-method">
 
 <TabItem label="Palette Installer" value="palette-installer">
 
@@ -362,7 +352,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 <br />
 
-<Tabs>
+<Tabs queryString="versions">
 
 <TabItem label="Ubuntu 22.04 - K3s " value="ubuntu-22-k3s">
 
@@ -613,11 +603,8 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 </Tabs>
 
-<br />
 
 ----
-
-<br />
 
 
 The next step of the installation process is to begin the deployment of an appliance using the instructions in the [Migrate Cluster to Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster). If you need to review the Spectro Cloud Repository details, issue the following command for detailed output.
@@ -637,7 +624,7 @@ You can review all the logs related to the setup of the private Spectro reposito
 :::
 
 
-# Validate
+## Validate
 
 You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance with an SSH key then you can skip to step five.
 
@@ -699,7 +686,7 @@ You can validate that the Spectro Repository you deployed is available and ready
   ```
 
   Output:
-  ```html
+  ```html hideClipboard
   <!DOCTYPE html>
   <html>
   <head>
@@ -726,5 +713,3 @@ You can validate that the Spectro Repository you deployed is available and ready
   </body>
   </html>
   ```
-
-<br />

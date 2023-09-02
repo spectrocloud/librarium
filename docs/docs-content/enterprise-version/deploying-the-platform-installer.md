@@ -1,23 +1,18 @@
 ---
 sidebar_label: "Install Using Quick-Start Mode"
-title: "Install Using Quick-Start Mode"
+title: "VMware Quick Start Installatio"
 description: "Learn how to install self-hosted Palette by deploying a single node instance."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
+tags: ["self-hosted", "enterprise"]
 ---
 
-
-
-
-
-# VMware Quick Start Installation
 
 The Palette On-Prem Quick Start Mode is a single node installation of the Palette platform, used for PoC environments to quickly understand the capabilities of the Palette platform. We do not recommended for Production deployments as it does not provide high availability or scalability.
 
 As a prerequisite, download the platform installer OVA using the <Tooltip trigger={<u>link</u>}>Please <a href="https://www.spectrocloud.com/contact/">contact us</a> to receive download instructions.</Tooltip> provided, and upload it into vCenter.
 
-<br />
 
 :::caution
 
@@ -26,7 +21,7 @@ Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only s
 
 :::
 
-# Deploy Platform Installer
+## Deploy Platform Installer
 
 1. Log in to the vSphere console and navigate to VMs and Templates.
 2. Navigate to the Datacenter and folder you would like to use for the installation.
@@ -58,7 +53,7 @@ Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only s
     * Finish the OVF deployment wizard and wait for the template to be created. This may take a few minutes as the template is initially downloaded.
 5. Power on the VM.
 
-# Monitor Installation
+## Monitor Installation
 
 The platform installer contains a web application called the Supervisor, to provide detailed progress of the installation. After the VM is powered on, perform the following steps to ensure installation is completed successfully.
 
@@ -73,16 +68,23 @@ The platform installer contains a web application called the Supervisor, to prov
 Typically, the installation takes around 10 mins after powering on the virtual machine. If the installation fails or takes an unusually long time, please look for failure messages in the install status page, or access system logs from the "Logs" tab to get detailed information about the failure.
 :::
 
-# Configure System for First Time
+## Initial Configuration
 
 The On-Prem System Console provides options for performing various administrative setup tasks. Most of these are optional and can be performed at any later time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.
 
-1. Open the On-Prem System Console application in a browser window by navigating to https://&lt;VM IP Address&gt;/system.
+1. Open the system console. You can access the system console by opening a browser window and typing in the IP address of the platform installer VM or the custom domain name if configured. Append `/system` to the URL to access the system console.  Example `https://10.10.10.100/system`.
+
 2. Log in using username: 'admin' and password: 'admin'.
+
 3. Reset the default password.
+
 4. Choose "Quick Start" when prompted for a choice for the startup mode.
+
 5. Navigate to the Tenant Management section and create your first tenant.
+
 6. Copy the tenant activation link and invoke it in a browser window to activate the newly created tenant.
+
 7. Enter the desired password and proceed and login as a tenant into the Management Console.
+
 
 Next, continue to perform various tasks as desired from the management console like creating gateways, cloud accounts, cluster profiles, and launching of clusters.

@@ -1,29 +1,24 @@
 ---
 sidebar_label: "Enterprise  Management"
-title: "On-Premises Enterprise Management"
-description: " Features to enhance the enterprise clusters"
+title: "Enterprise  Management"
+description: "Learn how to manage your enterprise clusters."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
+tags: ["self-hosted", "enterprise"]
 ---
 
 
 
-
-
-# Overview
-
 Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette On-Premises Enterprise Mode. It provides several capabilities across clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore and cluster migration across Private Cloud Gateway (PCGs).
 
-<br />
-<br />
 
-<Tabs>
+<Tabs queryString="pcg">
 
 <TabItem label="Palette PCG Migration" value="Palette PCG Migration">
 
 
-# Palette PCG Migration
+## Palette PCG Migration
 
 Palette enables PCG migration to route the traffic between PCGs to ensure uninterrupted PCG service availability. If a PCG goes unhealthy, it can be deleted after migrating the clusters launched through that PCG to another healthy PCG. This ensures that cluster operations such as deletion are carried out without interruption.  
 
@@ -69,7 +64,7 @@ To migrate the traffic from a PCG:
 
 <TabItem label="Backup and Restore" value="Backup and Restore">
 
-# Backup and Restore for Enterprise Clusters
+## Backup and Restore for Enterprise Clusters
 
 Palette provides convenient backup options to backup the Enterprise Kubernetes cluster state into object storage. It restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., a snapshot of the persistent volume is taken and maintained as part of the backup. The two options of backup creation are:
 
@@ -82,7 +77,7 @@ FTP mode backup is sending the backup data of your enterprise cluster to a dedic
 
 S3 buckets for backup make it trivial for everyone to use Amazon’s infrastructure for remote backups and secure cluster objects online. In addition, this feature provides the advantages of scheduling, strong encryption, compression, easy access to your backup files. 
 
-## Instructions
+### Instructions
 
 1. Log in to enterprise mode as administrator:
 
@@ -101,7 +96,7 @@ S3 buckets for backup make it trivial for everyone to use Amazon’s infrastruct
 
 
 5. Select the mode of backup from the two available options: 
-    	* FTP 
+    * FTP 
 	* S3
 
 
@@ -148,26 +143,29 @@ The following permissions need to be enabled.
 :::
 
 #### Permission Sets
-Ensure that the IAM user or the ROOT user role created should have the following two IAM policies included:
+Ensure that the IAM user or the `root` user role created should have the following two IAM policies included:
 
 **EC2-Policy**
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-	{
-            "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:DeleteObject",
-                "s3:PutObject",
-                "s3:AbortMultipartUpload",
-                "s3:ListMultipartUploadParts"
-            ],
-            "Resource": ["<EC2-LOG-GROUP-ARN>;"
-            ]
-        }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:DeleteObject",
+        "s3:PutObject",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts"
+      ],
+      "Resource": [
+        "<EC2-LOG-GROUP-ARN>;"
+      ]
+    }
+  ]
+}
 ```
 
 
@@ -175,20 +173,22 @@ Ensure that the IAM user or the ROOT user role created should have the following
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeVolumes",
-                "ec2:DescribeSnapshots",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:CreateSnapshot",
-                "ec2:DeleteSnapshot"
-            ],
-            "Resource": "<S3-LOG-GROUP-ARN>"
-        }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeVolumes",
+        "ec2:DescribeSnapshots",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:CreateSnapshot",
+        "ec2:DeleteSnapshot"
+      ],
+      "Resource": "<S3-LOG-GROUP-ARN>"
+    }
+  ]
+}
 ```
 
 The following information is needed:
@@ -235,6 +235,3 @@ The saved configuration details can be used to create multiple backup locations.
 </TabItem>
 
 </Tabs>
-
-<br />
-<br />

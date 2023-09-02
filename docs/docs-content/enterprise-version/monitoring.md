@@ -5,12 +5,9 @@ description: "Enterprise Cluster Monitoring Metrics for Palette's Enterprise (on
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
+tags: ["self-hosted", "enterprise", "monitoring"]
 ---
-
-
-
-
-# Enterprise Cluster Monitoring Metrics    
+  
 ## Pods Monitoring Metrics
 ### Namespaces to Monitor Pods
 
@@ -27,10 +24,14 @@ sidebar_position: 60
 
 The below pods are dynamically created from jobs and can be excluded from monitoring.
 
-* ingress-nginx-admission-patch-* [ ns: ingress-nginx ]
-* ingress-nginx-admission-create-* [ ns: ingress-nginx ]
-* packsync-* [ ns: hubble-system ]
-* cleanup-* [ ns: hubble-system ]
+
+|**Pods Prefix** |**Namespace**|
+|-----------|--------------|
+|ingress-nginx-admission-patch- |ingress-nginx|
+|ingress-nginx-admission-create- |ingress-nginx|
+|packsync- |hubble-system|
+|cleanup- |hubble-system|
+
 
 
 ## CPU and Memory Monitoring Metrics
@@ -52,7 +53,4 @@ The below pods are dynamically created from jobs and can be excluded from monito
 * Node up
 * Node down
 * Node unreachable
-
-<br />
-<br />
 

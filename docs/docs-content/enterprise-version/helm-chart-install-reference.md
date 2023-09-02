@@ -3,11 +3,11 @@ sidebar_label: "Helm Chart Install Reference"
 title: "Helm Chart Install References"
 description: "Reference for Palette Helm Chart installation parameters."
 icon: ""
-hide_table_of_contents: False
+hide_table_of_contents: true
 sidebar_position: 40
+tags: ["self-hosted", "enterprise"]
 ---
 
-# Helm Chart Install Reference 
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm).
 
@@ -16,7 +16,7 @@ Depending on what version of Palette you are using, the available parameters wil
 
 <br />
 
-<Tabs>
+<Tabs queryString="version">
 <TabItem label="4.0.0 or greater" value="gRPC">
 
 
@@ -695,14 +695,6 @@ ui-system:
       mapBoxAccessToken: ""
       mapBoxStyledLayerID: ""  
 ```
-
-
-
-
-
-
-
-
 
 </TabItem>
 </Tabs>

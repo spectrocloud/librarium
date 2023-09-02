@@ -3,15 +3,10 @@ sidebar_label: "Install Enterprise Cluster"
 title: "Install Enterprise Cluster"
 description: "Learn how to install self-hosted Palette or convert a self-hosted single node cluster to a highly available three node cluster."
 icon: ""
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 20
+tags: ["self-hosted", "enterprise"]
 ---
-
-
-
-
-
-# Install Enterprise Cluster
 
 You have two options for installing Palette. You can use the Palette CLI to install a new self-hosted Palette instance or convert an existing single-node cluster (Quick-Start Mode) to a highly available three-node cluster. Select the tab below that corresponds to your installation type.
 
@@ -110,11 +105,7 @@ The video below provides a demonstration of the installation wizard and the prom
 Use the following steps to install Palette. 
 
 
-<br />
-
 1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
-
-  <br />
 
   ```bash
   palette ec install
@@ -308,7 +299,7 @@ Use the following steps to install Palette.
   ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
 
 
-# Validate
+## Validate
 
 You can verify the installation is successful if you can access the system console using the IP address provided in Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
 
@@ -387,11 +378,9 @@ Deployment of an enterprise cluster is a migration process from the quick start 
 
 <br />
 
-# Resources
+## Resources
 
 - [Palette CLI](/palette-cli/install-palette-cli#downloadandsetup)
 
 
 - [Airgap Install Instructions](/enterprise-version/air-gap-repo)
-
-<br />
