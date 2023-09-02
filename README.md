@@ -41,11 +41,11 @@ The local development server is ready when the following output is displayed in 
 ```shell
 You can now view root in the browser.
 ⠀
-  Local:            http://localhost:3000/
-  On Your Network:  http://172.17.0.2:3000/
+  Local:            http://localhost:9000/
+  On Your Network:  http://172.17.0.2:9000/
 ⠀
 
-Visit [http://localhost:3000](http://localhost:3000) to view the local development documentation site.
+Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
 
 To exit from the local development Docker container. Press `Ctrl + Z`.
 
@@ -80,7 +80,7 @@ To preview your changes use the following.
 make start
 ```
 
-This will open your browser to this address: http://localhost:3000
+This will open your browser to this address: http://localhost:9000
 
 Open `~/Work/librarium/content/docs` in your editor and make changes. They should be synced up in the browser window.
 
@@ -146,7 +146,7 @@ The index document for a folder follows the naming convention below. Here are so
 
 The url of a page will be composed from the path of the file relative to the `content` directory.
 
-**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:3000/introduction/what-is as the url
+**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:9000/introduction/what-is as the url
 
 In markdown you can reference this page relatively to the root of the domain using this syntax:
 
