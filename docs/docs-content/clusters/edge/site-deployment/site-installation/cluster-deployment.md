@@ -2,7 +2,7 @@
 sidebar_label: "Create Cluster Definition"
 title: "Create Cluster Definition"
 description: "Define your Edge cluster using the Edge hosts that are registered and available."
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 30
 tags: ["edge"]
 ---
@@ -11,21 +11,24 @@ tags: ["edge"]
 
 To complete the Edge Installation process, an Edge host must become a member of a host cluster. You can add an Edge host to an existing host cluster of type Edge Native, or you can create a new host cluster for Edge hosts and make the Edge host a member.
 
+Select the workflow that best fits your needs.
 
-<br />
+- [Create an Edge Native Host Cluster](#create-an-edge-native-host-cluster)
 
-<Tabs queryString="deploy-host">
+- [Add an Edge Host to a Host Cluster](#add-an-edge-host-to-a-host-cluster)
 
-<TabItem label="Create an Edge Native Host Cluster" value="create-cluster">
+
+## Create an Edge Native Host Cluster
+
 
 
 Use the following steps to create a new host cluster so that you can add Edge hosts to the node pools.
 
-## Prerequisites
+### Prerequisites
 
 - A registered Edge host.
 
-## Create Cluster
+### Create Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -60,7 +63,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the *Events* tab to review detailed logs.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -75,14 +78,13 @@ After you create the cluster, the Palette Edge Host agent will start the install
 
 You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) guide to learn how to use `kubectl` with a host cluster.
 
-</TabItem>
 
 
-<TabItem label="Add an Edge Host to a Host Cluster" value="add-to-cluster">
+## Add an Edge Host to a Host Cluster
 
 You can add Edge hosts to the node pool of an existing host cluster. Use the following steps to add the Edge host to the node pool.
 
-## Prerequisites
+### Prerequisites
 
 - A registered Edge host.
 
@@ -95,7 +97,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 
 :::
 
-## Add Edge Host to Node Pool
+### Add Edge Host to Node Pool
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -122,7 +124,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 
 The Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the **Events** tab to review detailed logs.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -138,11 +140,7 @@ The Palette Edge Host agent will start the installation process. You can track t
 You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
 
 
-</TabItem>
-
-</Tabs>
 
 
-<br />
 
 

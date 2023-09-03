@@ -2,7 +2,7 @@
 sidebar_label: "Model Edge Native Cluster Profile"
 title: "Model Edge Native Cluster Profile"
 description: "Instructions for creating an Edge Native Cluster Profile"
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 tags: ["edge"]
 ---
@@ -22,18 +22,21 @@ You define these components in an Edge Native Infrastructure profile. As with an
 
 
 
-The following steps will guide you on how to create a cluster profile for Edge. Choose the tab that matches your use case.
+The following steps will guide you on how to create a cluster profile for Edge. Choose the workflow that best fits your needs. 
 
-<Tabs queryString="os-install">
-<TabItem label="Custom OS" value="custom-os">
+- [Custom OS](#custom-os)
+
+- [Without Custom OS](#without-custom-os)
 
 
-## Prerequisites
+## Custom OS
+
+### Prerequisites
 
 - Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide for details.
 
 
-## Enablement
+### Enablement
 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -109,7 +112,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 You have successfully created a cluster profile that you can use to deploy Edge clusters. 
 
-## Validate
+### Validate
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
 
@@ -128,10 +131,9 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 5. Your newly created cluster profile is displayed along with other cluster profiles of the same type.
 
 
-</TabItem>
 
 
-<TabItem label="Without Custom OS" value="without-os">
+## Without Custom OS
 
 :::caution
 
@@ -140,11 +142,11 @@ This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to
 :::
 
 
-## Prerequisites
+### Prerequisites
 
 No prerequisites.
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -187,7 +189,7 @@ Consider creating additional profiles with out-of-the-box packs for monitoring, 
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](/registries-and-packs/helm-charts) or [OCI](/registries-and-packs/oci-registry) registry to learn more.
 
-## Validate
+### Validate
 
 Verify you created a cluster profile for Edge hosts by using the following steps.
 
@@ -207,9 +209,6 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 You can view your newly created cluster profile on the **Cluster Profiles** page.
 
 
-</TabItem>
-
-</Tabs>
 
 
 

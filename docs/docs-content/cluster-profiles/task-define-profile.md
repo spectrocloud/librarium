@@ -3,7 +3,7 @@ sidebar_label: "Create a Cluster Profile"
 title: "Create a Cluster Profile"
 description: "Learn how to create a cluster profile in Palette."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 ---
 
@@ -44,7 +44,7 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
 
 4. **Add-on Layers** are additional layers such as **Monitoring**, **Security**, **Load Balancers**, **Ingress**, **Logging**, **Monitoring**, **Security**, **Authentication**, **Service Mesh** etc. may be added and configured as desired. These layers may be configured for the profiles of the type **Full** or **Add-On**. These add-on layers can be added in one of the following ways:
 
-    <Tabs>
+    <Tabs queryString="type">
     <TabItem label="Add New Pack" value="Add New Pack"> 
     <b>Add New Pack</b> - Add a Palette Pack from a pack registry or a Helm Chart from a chart registry. The public Palette Pack registry and a few popular Helm chart repositories are already available out of the box. Additional pack registries or public/private chart registries can be added to Palette.
      

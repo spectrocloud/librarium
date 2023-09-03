@@ -6,8 +6,8 @@ icon: ""
 category: ["tutorial"]
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "azure", "gcp", "tutorial"]
-# toc_min_heading_level: 2
-# toc_max_heading_level: 2
+toc_min_heading_level: 2
+toc_max_heading_level: 3
 sidebar_position: 50
 ---
 
@@ -29,12 +29,17 @@ As you navigate the tutorial, refer to this diagram to help you understand how P
 
 ### Deploy the Cluster and the Application
 
-Select the tab for the workflow you want to learn more about.
+Select the workflow you want to learn more about.
+
+- [UI Workflow](#ui-workflow)
+
+- [Terraform Workflow](#terraform-workflow)
 
 <br />
 
-<Tabs queryString="workflow">
-<TabItem label="UI Workflow" value="ui">
+
+
+## UI Workflow
 
 
 You can create and manage clusters directly from the Palette dashboard. Use the following steps to learn how to deploy a host cluster to multiple cloud providers.
@@ -120,7 +125,7 @@ You can modify cluster profiles after you create them by adding, removing, or ed
 <br />
 
 
-### Create a New Cluster
+#### Create a New Cluster
 
 Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on the **Add New Cluster** button.
 
@@ -697,11 +702,8 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile. 
 
 
-</TabItem>
-<TabItem label="Terraform" value="terraform">
 
-
-###  Terraform
+##  Terraform Workflow
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). Some notable reasons why you would want to utilize IaC are: 
 
@@ -1236,9 +1238,6 @@ docker stop tutorialContainer && \
 docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
 ```
 
-
-</TabItem>
-</Tabs>
 
 ## Wrap-up
 

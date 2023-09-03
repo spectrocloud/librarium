@@ -3,7 +3,7 @@ sidebar_label: "Helm Chart Install Reference"
 title: "Helm Chart Install References"
 description: "Reference for Palette Helm Chart installation parameters."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 40
 tags: ["self-hosted", "enterprise"]
 ---
@@ -12,15 +12,19 @@ tags: ["self-hosted", "enterprise"]
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm).
 
 
-Depending on what version of Palette you are using, the available parameters will be different. Select the tab below that corresponds to the version of Palette you are using.
+Depending on what version of Palette you are using, the available parameters will be different. Select the version below that corresponds to the version of Palette you are using.
+
+- [4.0.0 or greater](#400-or-greater)
+
+- [3.4.0 or earlier](#340-or-earlier)
 
 <br />
 
-<Tabs queryString="version">
-<TabItem label="4.0.0 or greater" value="gRPC">
 
 
-## Required Parameters
+## 4.0.0 or Greater
+
+### Required Parameters
 
 The following parameters are required for a successful installation of Palette.
 
@@ -40,7 +44,7 @@ If you are installing an air-gapped version of Palette, you must provide the ima
 :::
 
 
-## MongoDB 
+### MongoDB 
 
 Palette uses MongoDB Enterprise as its internal database and supports two modes of deployment: <br /> <br />
 
@@ -75,11 +79,11 @@ mongo:
   storageClass: ""
 ```
 
-## Config 
+### Config 
 
 Review the following parameters to configure Palette for your environment. The `config` section contains the following subsections:
 
-### SSO 
+#### SSO 
 
 You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](/user-management/saml-sso) documentation for additional guidance.
 
@@ -106,7 +110,7 @@ config:
       apiVersion: "v1"
 ```
 
-### Email
+#### Email
 
 Palette uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](/clusters/cluster-management/health-alerts#overview) are triggered. Use the following parameters to configure email settings for Palette.
 
@@ -132,7 +136,7 @@ config:
     password: ""
 ```
 
-### Environment 
+#### Environment 
 
 The following parameters are used to configure the environment.
 
@@ -155,7 +159,7 @@ As you create tenants in Palette, the tenant name is prefixed to the domain name
 
 :::
 
-### Cluster 
+#### Cluster 
 
 Use the following parameters to configure the Kubernetes cluster.
 
@@ -170,13 +174,13 @@ config:
     stableEndpointAccess: false
 ```
 
-## Registries
+### Registries
 
 Palette requires credentials to access the required Palette images. You can configure different types of registries for Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required FIPS images.
 
 <br />
 
-### OCI Registry
+#### OCI Registry
 
 
 Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide. Refer to the [`ociPackEcrRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
@@ -206,7 +210,7 @@ config:
     caCert: ""
 ```
 
-### OCI ECR Registry
+#### OCI ECR Registry
 
 We expose a public OCI ECR registry that you can configure Palette to reference. If you want to host your own OCI registry, refer to the [OCI Registry](#oci-registry) section.
 The OCI Elastic Container Registry (ECR) is hosted in an AWS ECR registry. Our support team provides the credentials for the OCI ECR registry.
@@ -235,7 +239,7 @@ config:
     caCert: ""
 ```
 
-### Spectro Cloud Artifact Repository (SCAR)
+#### Spectro Cloud Artifact Repository (SCAR)
 
 SCAR credentials are required to download the necessary FIPS manifests. Our support team provides the SCAR credentials.
 
@@ -259,7 +263,7 @@ SCAR credentials are required to download the necessary FIPS manifests. Our supp
       caCert: ""
   ```
 
-### Image Swap Configuration
+#### Image Swap Configuration
 
 You can configure Palette to use image swap to download the required images. This is an advanced configuration option, and it is only required for air-gapped deployments. You must also install the Palette Image Swap Helm chart to use this option, otherwise, Palette will ignore the configuration.
 
@@ -309,7 +313,7 @@ Palette uses [NATS](https://nats.io) and gRPC for communication between Palette 
 
   
 
-## gRPC
+### gRPC
 
 gRPC is used for communication between Palette components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option. Dual support for NATS and gRPC is available.
 
@@ -337,7 +341,7 @@ grpc:
   insecureSkipVerify: false
 ```
 
-## Ingress 
+### Ingress 
 
 Palette deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette control plane. You can change the default behavior and omit the deployment of an Nginx Ingress Controller. 
 
@@ -364,7 +368,7 @@ ingress:
     terminateHTTPSAtLoadBalancer: false
 ```
 
-## Spectro Proxy
+### Spectro Proxy
 
 You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](/integrations/frp) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](/enterprise-version/reverse-proxy) documentation to learn more about setting up a reverse proxy server for Palette.
 
@@ -389,7 +393,7 @@ frps:
       crt : ""
 ```
 
-## UI System 
+### UI System 
 
 The table lists parameters to configure the Palette User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refer to the [MapBox Access tokens](https://docs.mapbox.com/help/getting-started/access-tokens) guide. 
 
@@ -416,7 +420,7 @@ ui-system:
 
 
 
-## Reach System
+### Reach System
 
 You can configure Palette to use a proxy server to access the internet. Set the parameter `reach-system.reachSystem.enabled` to `true` to enable the proxy server. Proxy settings are configured in the `reach-system.reachSystem.proxySettings` section.
 
@@ -439,12 +443,13 @@ You can configure Palette to use a proxy server to access the internet. Set the 
       no_proxy:
  ``` 
 
+---
 
+<br />
 
-</TabItem>
-<TabItem label="3.4.0 or earlier" value="nats">
+## 3.4.0 or Earlier
 
-## Required Parameters
+### Required Parameters
 
 The following parameters in the **values.yaml** file are required: <br /> <br />
 
@@ -456,7 +461,7 @@ The following parameters in the **values.yaml** file are required: <br /> <br />
  
 - **Registry and Palette Artifact Repository** - Specifies the Docker registry where chart images are stored and the Palette Artifact Repository (PAR). Refer to the [Registry and Palette Artifact Repository parameters](/enterprise-version/helm-chart-install-reference#registryandpaletteartifactrepository(par)).
 
-## MongoDB 
+### MongoDB 
 
 Palette uses MongoDB as its database and supports two modes of deployment: <br /> <br />
 
@@ -489,11 +494,11 @@ mongo:
   storageClass: ""
 ```
 
-## Config 
+### Config 
 
 The configuration file contains the following sections.
 
-### SSO 
+#### SSO 
 
 The table lists parameters to configure SSO SAML authentication in Palette.
 
@@ -518,7 +523,7 @@ config:
       apiVersion: "v1"
 ```
 
-### Email
+#### Email
 
 The table lists the parameters to configure email settings in Palette's self-hosted mode. 
 
@@ -544,7 +549,7 @@ config:
     password: ""
 ```
 
-### Environment 
+#### Environment 
 
 The table lists environment variables required to deploy Palette.
 
@@ -562,7 +567,7 @@ config:
     installerCloud: ""
 ```
 
-### Cluster 
+#### Cluster 
 
 The cluster parameter specifies how the Kubernetes cluster is deployed.
 
@@ -577,7 +582,7 @@ config:
     stableEndpointAccess: false
 ```
 
-### Registry and Palette Artifact Repository (PAR) 
+#### Registry and Palette Artifact Repository (PAR) 
 
 The table lists Registry and Palette Artifact Repository (PAR) parameters to install Palette using Helm Chart.
 
@@ -607,7 +612,7 @@ config:
 
 Contact support@spectrocloud.com to gain access to the Helm Chart.
 
-# Network Address Translation (NATS) 
+### Network Address Translation (NATS) 
 
 The table lists Network Address Translation (NATS) parameters that Palette uses for communication between the tenant and management clusters. The internal flag determines whether NATS uses a new load balancer or the existing ingress service. To learn about NATS cluster configuration map properties, refer to [NATS clustering configuration.](https://docs.nats.io/running-a-nats-service/configuration/clustering/cluster_config)
 
@@ -628,7 +633,7 @@ nats:
   natsStaticIP: ""
 ```
 
-## Ingress 
+### Ingress 
 
 The table lists parameters used to configure the NGINX Ingress Controller, which provides an external HTTP load balancer for Kubernetes services. Refer to [Set Up Ingress](/clusters/cluster-groups/ingress-cluster-group) for more guidance.
 
@@ -652,7 +657,7 @@ ingress:
     terminateHTTPSAtLoadBalancer: false
 ```
 
-## Spectro Proxy
+### Spectro Proxy
 
 The table lists parameters to configure the Spectro server-side proxy.
 
@@ -677,7 +682,7 @@ frps:
       crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
 ```
 
-## UI System 
+### UI System 
 
 The table lists parameters for the Network Operations Center User Interface (NOC  UI). Palette's NOC UI enables easy location monitoring of multi-location clusters through an intuitive UI.
 
@@ -696,7 +701,6 @@ ui-system:
       mapBoxStyledLayerID: ""  
 ```
 
-</TabItem>
-</Tabs>
+
 
 

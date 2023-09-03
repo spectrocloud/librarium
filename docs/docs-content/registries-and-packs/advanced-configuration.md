@@ -3,15 +3,10 @@ sidebar_label: 'Advanced Configuration'
 title: 'Advanced Configuration'
 description: 'Learn how to apply advanced concepts by customizing the deployments of the Packs registry.'
 icon: ''
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 80
 ---
 
-
-
-
-
-# Advanced Configuration
 
 You can modify the deployment of the pack registry by providing a YAML configuration file. You can also override default configuration options through the usage of environment variables.
 

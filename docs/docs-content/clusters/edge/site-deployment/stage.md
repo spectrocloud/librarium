@@ -1,13 +1,12 @@
 ---
 sidebar_label: "Prepare Edge Hosts for Installation"
-title: "Stage common user data and prepare edge host for installation"
+title: "Prepare Edge Hosts for Installation"
 description: "Learn how to prepare edge hosts for installation before shipping them out to site for site installation"
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 10
 tags: ["edge"]
 ---
 
-# Overview
 
 In this step, you will prepare the Edge host for installation. You will copy the following items to the storage device of the Edge host.
 
@@ -27,17 +26,18 @@ If you need to create any of the items mentioned above, review the [EdgeForge Wo
 
 You can ship your Edge hosts after you complete this step. Use the following steps to prepare your Edge host for installation.
 
-<br />
 
 ## Prepare Edge Host
 
-Pick the target environment for your Edge host.
+Pick the target environment for your Edge host. 
 
-<br />
+- [Bare Metal](#bare-metal)
 
-<Tabs queryString="environment">
+- [VMware](#vmware)
 
-<TabItem label="Bare Metal" value="bare-metal">
+
+
+## Bare Metal
 
 ### Prerequisites
 
@@ -86,9 +86,8 @@ The following items are optional and not required but may apply to your use case
 
 You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
-</TabItem>
 
-<TabItem label="VMware" value="vmware">
+## VMware
 
 You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and upload it to a vCenter environment. In the vCenter environment, you will convert the VMDK to a VM template, and export it out as an OVF template.
 
@@ -245,9 +244,7 @@ You can ship this OVF template along with the Edge host to the physical site. Us
 
 You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
-</TabItem>
 
-</Tabs>
 
 
 ## Next Steps

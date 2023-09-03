@@ -3,7 +3,9 @@ sidebar_label: "System Requirements"
 title: "System Requirements"
 description: "An overview of the self-hosted Palette system requirements."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 3
 sidebar_position: 0
 tags: ["self-hosted", "enterprise"]
 ---
@@ -117,7 +119,7 @@ Select the tab that corresponds with your vSphere versions.
 <TabItem label="8.0.x" value="8.0.x" >
 
 
-## Root-Level Role Privileges
+#### Root-Level Role Privileges
 
 <br />
 
@@ -138,21 +140,21 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Spectro Role Privileges
+#### Spectro Role Privileges
 
 
 <Tabs queryString="vsphere-objects">
 
 <TabItem label="Cns" value="Cns">
 
-#### Cns Privileges
+##### Cns Privileges
   - Searchable
 
 </TabItem>
 
 <TabItem label="Datastore" value="Datastore">
 
-#### Datastore Privileges
+##### Datastore Privileges
   - Allocate Space
   - Browse Datastore
   - Low level file operations
@@ -165,7 +167,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <TabItem label="Folder" value="Folder">
 
-  #### Folder Privileges
+  ##### Folder Privileges
   - Create folder
   - Delete folder
   - Move folder
@@ -334,7 +336,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 <TabItem label="7.0.x" value="7.0.x" >
 
 
-## Root-Level Role Privileges
+#### Root-Level Role Privileges
 
 <br />
 
@@ -355,7 +357,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Spectro Role Privileges
+#### Spectro Role Privileges
 
 
 <Tabs queryString="vsphere-object">
@@ -551,7 +553,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 <TabItem label="6.0.x" value="6.0.x" >
 
 
-## Root-Level Role Privileges
+#### Root-Level Role Privileges
 
 <br />
 
@@ -572,7 +574,7 @@ The root-level role privileges are applied to root object and Datacenter objects
 
 <br />
 
-## Spectro Role Privileges
+#### Spectro Role Privileges
 
 
 <Tabs queryString="vsphere-objects">

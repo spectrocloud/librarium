@@ -3,7 +3,9 @@ sidebar_label: 'Deploy an Add-On Pack'
 title: 'Deploy an Add-On Pack'
 description: 'How to create and deploy an add-on pack using the manifest files or Helm charts in Spectro Cloud.'
 icon: ''
-hide_table_of_contents: true
+hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 sidebar_position: 40
 tags: ["packs", "tutorial"]
 ---
@@ -49,6 +51,7 @@ To complete the tutorial, you will need the following items:
 
 
 ## Set Up the Tutorial Environment
+
 You will work in a Docker container pre-configured with the necessary tools for this tutorial. However, you can practice this tutorial in any `linux/amd64` or `x86_64` environment by installing the [necessary tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. Here are the steps to start the tutorials container. 
 <br />
 
@@ -85,7 +88,7 @@ Wait to exit the container until the tutorial is complete. Otherwise, you may lo
 
 
 
-## Tools and Starter Code
+### Tools and Starter Code
 After opening a bash session in the active container, verify that the tools necessary for this tutorial are installed. 
 <br />
 
@@ -204,7 +207,7 @@ Ensure you have the following files in the current directory.
 ```
 <br />
 
-## Pack File Structure
+### Pack File Structure
 
 Go ahead and review each of the following five files in the pack.
 <br />
@@ -279,7 +282,7 @@ After finalizing all files in the pack directory, the next step is to set up a r
 
 The tutorials environment already has the Spectro registry service and other necessary tools available. The following sections will guide you to start the registry server, expose the service to the external world using [Ngrok](https://ngrok.com/) reverse proxy, and log in to the registry server to push your custom add-on pack to it.   
 
-## Start and Expose the Registry Server
+### Start and Expose the Registry Server
 Start the registry server by issuing the following command from the bash session you opened into the tutorials container. 
 <br />
 
@@ -309,7 +312,7 @@ Verify the registry server is accessible from outside the tutorials container by
 
 <br /> 
 
-## Log in to the Registry Server
+### Log in to the Registry Server
 Once the registry server's `/health` endpoint shows `UP` status, the next step is to log in and then push the pack to it. The pack you will push is in the tutorials container. Open another bash session into the tutorials container from your local terminal.  
 <br/>
 
@@ -343,7 +346,7 @@ Login Succeeded
 <br />
 
 
-## Push the Pack to the Registry Server
+### Push the Pack to the Registry Server
 When you are logged in, push the pack to the registry server using the following command. 
 <br />
 
@@ -369,7 +372,7 @@ Verify the pack you pushed is listed, as shown in the screenshot below.
 If you need help with the Spectro CLI commands, such as deleting a pack, refer to the [Spectro CLI commands](/registries-and-packs/spectro-cli-reference#commands) guide. 
 <br /> 
 
-## Configure the Registry Server in Palette
+### Configure the Registry Server in Palette
 After you push the pack to the registry server, log in to Palette and configure the registry service so that you can access it when you create your cluster profile.   
 
 
@@ -409,7 +412,7 @@ Palette syncs the registry server periodically. However, you can sync it manuall
 <br />
 
 
-## Create a Cluster Profile and Deploy a Cluster
+### Create a Cluster Profile and Deploy a Cluster
 
 This tutorial guides you to create a cluster profile for AWS. However, you can choose any other cloud service provider, provided you configure the following two items:
 <br /> 
@@ -432,14 +435,19 @@ This tutorial guides you to create a cluster profile for AWS. However, you can c
 <br /> 
 
 Create a cluster profile and deploy it to a cluster using either Palette or Terraform code.
-<br /> 
 
-<Tabs>
+- [UI Workflow](#ui-workflow)
 
-<TabItem label="Palette" value="palette_ui">
+- [Terraform Workflow](#terraform-workflow)
+
+---
+
+<br />
+
+## UI Workflow
 
 
-## Create a Cluster Profile
+### Create a Cluster Profile
 Switch to the **Default** project scope for creating a cluster profile.  
 <br />
 
@@ -450,7 +458,7 @@ Switch to the **Default** project scope for creating a cluster profile.
 Select the **Profile** section in the left **Main Menu** to create a cluster profile that will combine the core infrastructure and add-on layers. Click on the **Add Cluster Profile** button, and provide the details in the wizard that follows. The wizard displays the following sections. 
 <br />
 
-### Basic Information
+#### Basic Information
 Use the following values in the **Basic Information** section. 
 
 |**Field**|**Value**|
@@ -464,7 +472,7 @@ Use the following values in the **Basic Information** section.
 Click on **Next** to continue. 
 <br />
 
-### Cloud Type
+#### Cloud Type
 In the **Cloud Type** section, choose AWS as the infrastructure provider for this tutorial, and click on **Next** at the bottom to move on to the next section.   
 <br />
 
@@ -476,7 +484,7 @@ If you choose a different cloud service provider, the core infrastructure layers
 
 <br />
 
-### Profile Layers
+#### Profile Layers
 In the **Profile Layers** section, add the following core infrastructure layers if you have chosen the AWS cloud service provider. To deploy your resource to Azure or Google Cloud, use the core infrastructure layers outlined in [Cloud Service Provider Configurations](https://github.com/spectrocloud/tutorials/tree/main/terraform/pack-tf/README.md#cloud-service-provider-configurations).
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
@@ -530,11 +538,11 @@ If there are no errors or compatibility issues, Palette displays the newly creat
 <br /> <br />
 
 
-### Review
+#### Review
 Review once more and click **Finish Configuration**  to create the cluster profile. 
 <br />
 
-## Create a Cluster
+### Create a Cluster
 From the **Profile** page,  click on the newly created cluster profile to view its details page. Palette displays all the layers and allows you to edit any of them. 
 
 Click the **Deploy** button to deploy a new cluster. The cluster deployment wizard will displays the following sections. 
@@ -556,7 +564,8 @@ Click **Next** to continue.
 
 <br /> 
 
-### Parameters
+#### Parameters
+
 The **Parameters** section allows you to change the profile configurations. For example, clicking on the **Hello Universe 1.0.x** layer allows you to configure the `registry`, `repository`, and `tag` parameters defined in the **values.yaml** file. 
 <br />
 
@@ -568,7 +577,8 @@ Keep the default values and click **Next**.
 
 <br />
 
-### Cluster config
+#### Cluster config
+
 In the **Cluster config** section, ensure the **Static Placement** field is unchecked. If checked, the **Static Placement** will deploy the cluster in an existing VPC, and you will need the [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) (ARNs) for the existing subnets, roles, and other resources. For this tutorial, we will use dynamic placement, where Palette creates a new VPC and all other resources needed for the cluster. 
 
 For the **Region** field, select the region of your choice. The tutorial example will deploy the cluster in the  **us-east-2** region. For the **SSH Key Pair Name** field, choose the SSH key pair name from the selected region. You must have an SSH key created already in the AWS region where you will deploy the cluster.
@@ -577,7 +587,7 @@ Click **Next** to continue.
 
 <br />
 
-### Nodes config
+#### Nodes config
 In the **Nodes config** section, provide the details for the master and the worker pools. For this tutorial, you can use the following minimal configuration:
 
 |**Field** | **Value for the master-pool**| **Value for the worker-pool**|
@@ -599,25 +609,28 @@ Keep the **Cloud Configuration** the same for the master and worker pools.
 Click **Next** to continue.    
 <br /> 
 
-### Settings 
+#### Settings 
+#
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding. Use the default values, and click on the **Validate** button.      
 
 <br /> 
 
-### Review
+#### Review
 Review all configurations in this section. The **Review** page displays the cluster name, tags, cloud account name, node pools, layers, and an estimated hourly cost. If everything looks good, click on the **Finish Configuration** button to finish deploying the cluster. Deployment may take up to *20 minutes* to finish. 
 
 While deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**, and **Events**. 
 
 <br /> 
 
-</TabItem>
+<!-- </TabItem>
 
-<TabItem label="Terraform Code" value="terraform_code">
+<TabItem label="Terraform Workflow" value="terraform_code"> -->
+
+## Terraform Workflow
 
 The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) allows you to create and manage Palette resources using Infrastructure as Code (IaC). This offers such advantages as automating infrastructure, facilitating collaboration, documenting infrastructure, and keeping all infrastructure in a single source of truth.
 
-## Starter Code
+### Starter Code
 Navigate back to your tutorials container bash session to locate the starter Terraform files. If you have closed the terminal session, you can reopen another bash session in the tutorials container using the following command. 
 <br />
 
@@ -632,7 +645,7 @@ Switch to the **/terraform/pack-tf** directory, which contains the Terraform cod
 cd /terraform/pack-tf
 ```
 
-## Set Up the Spectro Cloud API Key
+### Set Up the Spectro Cloud API Key
 
 To get started with Terraform code, you need a Spectro Cloud API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the user **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. 
 
@@ -661,7 +674,7 @@ Below are the steps to add and export an API key:
   ```
 <br />
 
-## Review Terraform Files
+### Review Terraform Files
 Ensure you have the following files in the current working directory.
 <br />
 
@@ -736,7 +749,7 @@ We recommend you explore all Terraform files. Below is a high-level overview of 
 
 <br /> 
 
-## Deploy Terraform
+### Deploy Terraform
 After you update the **terraform.tfvars** file and carefully review the other files, initialize the Terraform provider.
 <br />
 
@@ -778,7 +791,7 @@ You can observe the cluster deployment progress in Palette by navigating back to
 <br /> 
 
 
-## Check the In-Progress Deployment
+#### Check the In-Progress Deployment
 Log into the [Palette](https://console.spectrocloud.com/), and navigate to the **Profile** section in the left **Main Menu**. If the Terraform deployment is successful, the newly created cluster profile is displayed as shown in the screenshot below. 
 
 <br />
@@ -787,9 +800,9 @@ Log into the [Palette](https://console.spectrocloud.com/), and navigate to the *
 
 <br /> 
 
-</TabItem>
+<!-- </TabItem>
 
-</Tabs>
+</Tabs> -->
 
 <br /> 
 
@@ -842,7 +855,7 @@ The following steps will guide you in cleaning up your environment. Follow the s
 
 <br />
 
-##  Delete the Cluster and Profile using Palette
+####  Delete the Cluster and Profile using Palette
 Navigate to the **Cluster** section in Palette's left **Main Menu**, and view the details page of the **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the delete step. 
 
 <br />
@@ -879,7 +892,7 @@ Wait for the resources to clean up and ensure they are successfully deleted.
 
 <br />
 
-##  Delete the Cluster and Profile using Terraform
+####  Delete the Cluster and Profile using Terraform
 If you've used Terraform to deploy the cluster, switch back to the tutorials container, and issue the following command from within the **/terraform/pack-tf** directory:
 <br />
 
@@ -903,7 +916,7 @@ Destroy complete! Resources: 2 destroyed.
 
 <br />
 
-##  Delete the Registry Server
+####  Delete the Registry Server
 After deleting the cluster and cluster profile, navigate to **Tenant Settings** > **Registries** > **Pack Registries** to delete the registry service configuration from Palette.
 <br />
 

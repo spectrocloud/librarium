@@ -2,7 +2,7 @@
 sidebar_label: "Perform Site Install"
 title: "Perform Site Install"
 description: "Learn how to deploy the Palette Edge installer on your edge hosts "
-hide_table_of_contents: true
+hide_table_of_contents: false
 tags: ["edge"]
 ---
 
@@ -30,13 +30,18 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
 
 :::
 
-<br />
 
-<Tabs queryString="environment">
+Select the target environment for your Edge host.
 
-<TabItem label="Bare Metal" value="bare-metal">
+- [Bare Metal](#bare-metal)
 
-## Prerequisites
+- [VMware](#vmware)
+
+
+
+### Bare Metal
+
+#### Prerequisites
 
 - Access to Palette and the ability to register an Edge host.
 
@@ -44,7 +49,7 @@ The community resource, [Painting with Palette](https://www.paintingwithpalette.
 
 - Physical access to the Edge host.
 
-## Site Install
+#### Site Install
 
 1. If you have a site-specific user data ISO, then insert the USB stick into the Edge host.
 
@@ -70,7 +75,7 @@ When the Edge host finishes rebooting, the *Cluster Provisioning* phase begins. 
 
 Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
-## Validate
+#### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -85,13 +90,11 @@ Any content bundles you provided are extracted and loaded into the container run
 
 You can also use `kubectl` to issue commands against the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
 
-</TabItem>
-
-<TabItem label="VMware" value="vmware">
+### VMware
 
 Use the following steps to complete the Edge host installation in a VMware environment.
 
-## Prerequisites
+#### Prerequisites
 
 - Access to Palette and the ability to register an Edge host.
 
@@ -101,7 +104,7 @@ Use the following steps to complete the Edge host installation in a VMware envir
 
 - An Edge Installer OVF template. Check out the [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) for guidance on how to create an Edge Installer OVF template.
 
-## Site Install
+#### Site Install
 
 Perform the following steps to proceed with the installation at the site in your VMware environment.
 
@@ -137,7 +140,7 @@ After the reboot, the *Cluster Provisioning* phase begins. In this phase, the sy
 
 Any content bundles you provided are extracted and loaded into the container runtime process. Refer to the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn more about content bundles. Any [cloud-init](/clusters/edge/edge-configuration/cloud-init) stages defined in the OS pack will also be invoked as the OS initializes.
 
-## Validate
+#### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -152,9 +155,6 @@ Any content bundles you provided are extracted and loaded into the container run
 
 You can also use `kubectl` to issue commands against the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
 
-</TabItem>
-
-</Tabs>
 
 ## Next Steps
 

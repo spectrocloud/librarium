@@ -3,12 +3,16 @@ sidebar_label: "Install Enterprise Cluster"
 title: "Install Enterprise Cluster"
 description: "Learn how to install self-hosted Palette or convert a self-hosted single node cluster to a highly available three node cluster."
 icon: ""
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 20
 tags: ["self-hosted", "enterprise"]
 ---
 
-You have two options for installing Palette. You can use the Palette CLI to install a new self-hosted Palette instance or convert an existing single-node cluster (Quick-Start Mode) to a highly available three-node cluster. Select the tab below that corresponds to your installation type.
+You have two options for installing Palette. You can use the Palette CLI to install a new self-hosted Palette instance or convert an existing single-node cluster (Quick-Start Mode) to a highly available three-node cluster. Select the method below that corresponds to your installation type.
+
+- [Install With CLI](#install-with-cli)
+
+- [Install With OVA](#install-with-ova)
 
 
 <br />
@@ -23,14 +27,14 @@ Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only s
 
 <br />
 
-<Tabs>
 
-<TabItem label="CLI" value="cli">
+
+## Install With CLI
 
 You install Palette using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA). You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to VMware vSphere where Palette will be deployed. 
 
 
-## Prerequisites
+### Prerequisites
 
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment. 
@@ -92,7 +96,7 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 
 <br />
 
-## Deployment
+### Deployment
 
 
 The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
@@ -299,7 +303,7 @@ Use the following steps to install Palette.
   ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
 
 
-## Validate
+### Validate
 
 You can verify the installation is successful if you can access the system console using the IP address provided in Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
 
@@ -326,12 +330,10 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
  
 
 
-</TabItem>
 
-<TabItem label="OVA" value="ova">
+## Install With OVA
 
-
-## Enterprise Mode
+### Enterprise Mode
 
 The Palette Enterprise Mode is a multi-node, highly-available installation of the Palette platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](/enterprise-version/deploying-the-platform-installer/) steps to deploy the installer VM and observe the [monitoring console](/enterprise-version/deploying-the-platform-installer/#monitorinstallation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
 
@@ -371,9 +373,9 @@ Deployment of an enterprise cluster is a migration process from the quick start 
 
 8. Once Enterprise Cluster is fully deployed, the On-Prem System and Management Console should be accessed on this new cluster. The platform installer VM can be safely powered off at this point.
 
-</TabItem>
+<!-- </TabItem>
 
-</Tabs>
+</Tabs> -->
 
 
 <br />

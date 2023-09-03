@@ -2,7 +2,7 @@
 sidebar_label: "Certificate Management"
 title: "Certificate Management"
 description: "Learn how to manage the cluster certificates through Palette."
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 50
 tags: ["clusters", "cluster management"]
 ---
@@ -64,22 +64,19 @@ Review the following sections to learn more about manually renewing the cluster 
 
 <br />
 
-<Tabs queryString="workflow">
-
-<TabItem label="UI" value="ui">
-
 
 Use the following steps to update the cluster PKI certificates through the Palette UI.
 
+## UI
 
-## Prerequisites
+### Prerequisites
 
 - A deployed host cluster.
 
 
 - Access to the host cluster.
 
-## Renew Cluster Certificate
+### Renew Cluster Certificate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -105,7 +102,7 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 The renewal process may take several minutes, depending on the number of cluster nodes.
 
-## Validate
+### Validate
 
 Using the following steps, you can validate that the cluster's PKI certificates were renewed.
 
@@ -126,15 +123,11 @@ Using the following steps, you can validate that the cluster's PKI certificates 
 5. Review the expiration date for each component. Each component's expiration date will have a status of **365d** with a date that is one year away. 
 
 
-</TabItem>
-
-<TabItem label="API" value="api">
-
+## API
 
 Use the following steps to update the cluster PKI certificates through the Palette API.
 
-
-## Prerequisites
+### Prerequisites
 
 - A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](/user-management/user-authentication/) documentation.
 
@@ -145,7 +138,7 @@ Use the following steps to update the cluster PKI certificates through the Palet
 - Access to the host cluster.
 
 
-## Renew Cluster Certificate
+### Renew Cluster Certificate
 
 
 1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
@@ -198,7 +191,7 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 The renewal process may take several minutes, depending on the number of cluster nodes.
 
-## Validate
+### Validate
 
 
 Using the following steps, you can validate that the cluster's PKI certificates were renewed.
@@ -312,9 +305,9 @@ Using the following steps, you can validate that the cluster's PKI certificates 
   ```
 
 
-</TabItem>
+<!-- </TabItem>
 
-</Tabs>
+</Tabs> -->
 
 <br />
 

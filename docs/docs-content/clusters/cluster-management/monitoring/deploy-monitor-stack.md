@@ -3,7 +3,7 @@ sidebar_label: 'Deploy Monitoring Stack'
 title: 'Deploy Monitoring Stack'
 description: 'Learn how to deploy a monitoring stack in your Palette environment.'
 hiddenFromNav: false
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 tags: ["clusters", "cluster management", "monitoring"]
 ---
@@ -28,13 +28,17 @@ The steps below will deploy a new host cluster with the Prometheus Operator pack
 
 The Prometheus Operator pack will install an unsecured Prometheus server by default. Use the **With Authentication and Encryption** tab for guidance on how to enable authentication.
 
+You can choose to deploy the monitoring stack with or without authentication. 
+- [Without Authentication](#without-authentication)
+- [With Authentication and Encryption](#with-authentication-and-encryption)
+
+
 <br />
 
-<Tabs queryString="security">
 
-<TabItem label="Without Authentication" value="without-auth">
+### Without Authentication
 
-## Prerequisites
+#### Prerequisites
 
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
@@ -58,7 +62,7 @@ The Prometheus Operator pack will install an unsecured Prometheus server by defa
 
   Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
 
-## Create Cluster Profile and Deploy
+#### Create Cluster Profile and Deploy
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -148,7 +152,7 @@ The Prometheus Operator pack will install an unsecured Prometheus server by defa
 When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from Prometheus agents.
 
 
-## Validate
+#### Validate
 
 To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
 
@@ -170,9 +174,8 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 6. Log in to the Grafana dashboard using the user `admin` and the password you specified in the cluster profile. 
 
 
-</TabItem>
 
-<TabItem label="With Authentication and Encryption" value="with-auth">
+### With Authentication and Encryption
 
 To enable Hypertext Transfer Protocol Secure (HTTPS), you must make several architectural decisions and decide on various options for setting up the environment. These options range from choosing what will generate the Secure Socket Layer (SSL) certificates to how incoming requests for Grafana or Prometheus are handled. 
 
@@ -189,7 +192,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 |`metrics.example.com`| The endpoint that all host clusters will forward Prometheus metrics. |
 | `monitoring.example.com` | The Grafana dashboard.|
 
-## Prerequisites
+#### Prerequisites
 
 
 - Experience with DNS and setting up custom domains that use SSL certificates are required for this guide. In addition, the following actions are needed.
@@ -225,7 +228,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
 
 
-## Create Cluster Profile and Deploy 
+#### Create Cluster Profile and Deploy 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -494,7 +497,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 Your monitoring stack is now enabled with authentication and network encryption. 
 
 
-## Validate
+#### Validate
 
 To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
 
@@ -530,10 +533,6 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 
 :::
 
-
-</TabItem>
-
-</Tabs>
 
 
 ## Next Steps

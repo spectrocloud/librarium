@@ -3,7 +3,7 @@ sidebar_label: 'Enable Monitoring on Host Cluster'
 title: 'Enable Monitoring on Host Cluster'
 description: 'Learn how to configure your host cluster to forward metrics to a Prometheus server.'
 hiddenFromNav: false
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 10
 tags: ["clusters", "cluster management", "monitoring"]
 ---
@@ -13,7 +13,17 @@ Observability (O11y) of Kubernetes clusters and their metrics is an important op
 
 The steps below will teach you how to create a Prometheus agent cluster add-on profile to deploy on the host clusters you would like to monitor. Creating an add-on profile makes it easier for you to deploy the Prometheus agent to other host clusters in the future. You will use this add-on profile when deploying a new host cluster, but you can also apply the add-on profile to an existing cluster to send metrics to the monitoring stack.
 
-## Prerequisites
+
+## Create Add-on Profile and Deploy Cluster
+
+Use the following steps to create an add-on profile and deploy a host cluster with the Prometheus agent installed. You can choose to deploy the Prometheus agent with or without authentication and encryption.
+
+- [Without Authentication](#without-authentication)
+
+- [With Authentication and Encryption](#with-authentication-and-encryption)
+
+
+### Prerequisites
 
 
 - A monitoring stack. Check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide to learn how to deploy a monitoring stack in your Palette environment.
@@ -21,11 +31,11 @@ The steps below will teach you how to create a Prometheus agent cluster add-on p
 
 - An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
-## Create Add-on Profile and Deploy Cluster
+<!-- <Tabs queryString="security">
 
-<Tabs queryString="security">
+<TabItem label="Without Authentication" value="without-auth-agent"> -->
 
-<TabItem label="Without Authentication" value="without-auth-agent">
+### Without Authentication
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -118,9 +128,9 @@ charts:
 
 After the cluster deployment process, you will have a host cluster with the Prometheus agent installed and ready to send metrics to the monitoring stack.
 
-</TabItem>
+ Refer to the [Validate](#validate) section to learn how to validate the Prometheus agent is successfully installed and sending metrics to the monitoring stack.
+### With Authentication and Encryption
 
-<TabItem label="With Authentication and Encryption" value="with-auth-agent">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -228,11 +238,7 @@ charts:
 When you deploy the cluster deployment, you will have a host cluster with the Prometheus agent installed and ready to send metrics to the monitoring stack.
 
 
-</TabItem>
-
-</Tabs>
-
-## Validate
+### Validate
 
 To validate that the Prometheus agent is successfully installed and sending metrics to the monitoring stack, use the following steps.
 

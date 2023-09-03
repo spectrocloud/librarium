@@ -2,7 +2,7 @@
 sidebar_label: "Register Edge Host"
 title: "Register Edge Host"
 description: "Learn how to register your edge hosts with the Palette Management Console"
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 20
 tags: ["edge"]
 ---
@@ -10,7 +10,7 @@ tags: ["edge"]
 
 To use an Edge host with a host cluster, you must first register it with Palette. A registration token in the user data is required to complete the registration process. You have three options to register the Edge host with Palette. 
 
-| Method | Description | Set up Effort |
+| **Method** | **Description** | **Set up Effort** |
 |---|---|---|
 | Auto Registration | Edge hosts can automatically register with Palette by using a *Registration Token*. This method requires you to specify the registration token in the user data.  | Low |
 | Manual Registration | You can manually enter a unique Edge host ID into Palette. | Low |
@@ -49,15 +49,17 @@ stylus:
 
 Select the registration method that best fits your organizational needs and review the steps to get started.
 
+- [Auto Registration](#auto-registration)
+
+- [Manual Registration](#manual-registration)
+
+- [QR Code Registration](#qr-code-registration)
 
 
-<br />
 
-<Tabs queryString="registration">
+### Auto Registration
 
-<TabItem label="Auto Registration" value="auto-registration">
 
-## Auto Registration
 
 You can automate the registration process by using registration tokens.  
 
@@ -73,13 +75,13 @@ stylus:
     edgeHostToken: yourEdgeRegistrationTokenHere
 ```
 
-## Prerequisites
+#### Prerequisites
 
 - Tenant admin access.
 
 
 - A tenant registration token is required. Refer to the [Create a Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
-## Create Registration Token
+#### Create Registration Token
 
 To create a registration token, use the following steps.
 
@@ -110,7 +112,7 @@ To create a registration token, use the following steps.
 
 Your next step is to decide how you want to provide the registration token. You can include the registration token in the user data added to the device before shipping. Or you can create a user data ISO and have the registration token in the secondary user data. Check out the [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data/) resource to learn more about creating site-specific user data.
 
-## Validate
+#### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -125,19 +127,14 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 
 
-</TabItem>
-
-
-<TabItem label="Manual Registration" value="manual-registration">
-
-## Manual Registration
+### Manual Registration
 
 In this mode, you must manually register the Edge host in Palette by providing the Edge host's unique identifier. Optionally, you can specify a project name to associate the Edge host with a particular project. 
 
 
 Use the following steps to manually register an Edge host in Palette.
 
-## Prerequisites
+#### Prerequisites
 
 - Tenant admin access
 
@@ -161,7 +158,7 @@ Use the following steps to manually register an Edge host in Palette.
 
     :::
 
-## Register the Edge Host in Palette
+#### Register the Edge Host in Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -183,7 +180,7 @@ Use the following steps to manually register an Edge host in Palette.
 
 7. Confirm your changes to register the Edge host.
 
-## Validate
+#### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -197,12 +194,7 @@ Use the following steps to manually register an Edge host in Palette.
 Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 
-</TabItem>
-
-
-<TabItem label="QR Code" value="qr-code">
-
-## QR Code Registration
+### QR Code Registration
 
 You can provide a QR case-based automated registration to simplify the registration process. Upon boot up, a QR code is displayed on the Edge host's console if enabled during the installation phase. 
 
@@ -210,11 +202,7 @@ Site operators scan the QR code to visit the registration page. This web page pr
 
 Site operators can select a site and submit a registration request. The web application automatically creates the Edge host entry in Palette and defines a cluster with that Edge host. This workflow also supports adding Edge hosts to an existing host cluster.
 
-<br />
-
-
-
-## Prerequisites
+#### Prerequisites
 
 - A tenant registration token is required. Refer to the [Create a Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for more information.
 
@@ -233,7 +221,7 @@ Site operators can select a site and submit a registration request. The web appl
 
 - git v2.39.0 or greater.
 
-## Enable Palette Edge Registration App
+#### Enable Palette Edge Registration App
 
 
 We provide you with a sample serverless application, the Palette Edge Registration App. The Palette Edge Registration App is built on Next.js and deployed using the Vercel platform. 
@@ -283,7 +271,7 @@ Use the following steps to enable this workflow.
 
 11. Fill out the required information in the web application and submit the registration request.
 
-## Validate
+#### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -296,12 +284,6 @@ Use the following steps to enable this workflow.
 
 Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
-
-
-
-</TabItem>
-
-</Tabs>
 
 ## Next Steps
 

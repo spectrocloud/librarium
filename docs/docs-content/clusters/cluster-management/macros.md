@@ -2,7 +2,7 @@
 sidebar_label: "Palette Macros"
 title: "Macros Support"
 description: "Apply Palette Macros to Cluster Profiles."
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 130
 tags: ["clusters", "cluster management"]
 ---
@@ -81,7 +81,7 @@ Create and list your System Level macros via an API.
 
 </Tabs>
 
-## Example
+
 
 ```yaml
 manifests:
@@ -105,12 +105,10 @@ The Macros are overridden into the Cluster Profile layers:
 
 * For a Cluster Profile used by a running cluster or during cluster provisioning.
 
-<Tabs queryString="scope">
-
-<TabItem label="Add a Macro to a Cluster Profile Pack" value="Add a Macro to a Cluster Profile Pack">
 
 
-## Add a Macro to a Cluster Profile Pack:
+
+### Add a Macro to a Cluster Profile Pack:
 
 1. Log in to the Palette console and navigate to **Profiles**.
 
@@ -127,12 +125,7 @@ The Macros are overridden into the Cluster Profile layers:
 
 4. Save the changes to the **Cluster Profile**. This Macro can be replaced or edited later.
 
-
-</TabItem>
-
-<TabItem label="Replace or Add a Macro to a running Cluster" value="Replace or Add a Macro to a running Cluster">
-
-## Replace or Add a Macro to a running Cluster:
+### Replace or Add a Macro to a running Cluster:
 
 1. ​​Log in to Palette Console and go to the **Clusters** tab.
 
@@ -149,12 +142,6 @@ The Macros are overridden into the Cluster Profile layers:
 
 
 5. Save the changes to the **Cluster Profile**.
-
-
-
-</TabItem>
-
-</Tabs>
 
 ## Delete Macros
 <Tabs queryString="delete-scope">

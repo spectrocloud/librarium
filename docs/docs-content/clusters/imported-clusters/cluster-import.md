@@ -2,7 +2,7 @@
 sidebar_label: "Import a Cluster"
 title: "Import a Cluster"
 description: "Learn how to import clusters and which Palette operations you can use to manage them."
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 0
 tags: ["clusters", "imported clusters"]
 ---
@@ -12,13 +12,14 @@ When importing a cluster into Palette, you can select the mode you want Palette 
 
 Select the mode you want to use when importing a cluster into Palette.
 
-<br />
+- [Full Permissions](#full-permissions)
+
+- [Read-Only Mode](#read-only-mode)
 
 
-<Tabs queryString="mode">
-<TabItem label="Full Permission Mode" value="full-permission-mod">
+## Full Permissions
 
-## Prerequisites
+### Prerequisites
 
 - Kubernetes version >= 1.19.X
 
@@ -32,7 +33,7 @@ Select the mode you want to use when importing a cluster into Palette.
 - Access to your cluster environment through kubectl. 
 
 
-## Import a Cluster
+### Import a Cluster
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -109,7 +110,7 @@ You now have imported a cluster into Palette with full permissions.
 
 
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -123,10 +124,9 @@ You now have imported a cluster into Palette with full permissions.
 4. Review the **Cluster Status** row from the cluster details view. A successful cluster import will have the cluster status **Running**.
 
 
-</TabItem>
-<TabItem label="Read-Only Mode" value="read-only-mod">
+## Read-only Mode
 
-## Prerequisites
+### Prerequisites
 
 - Kubernetes version >= 1.19.X
 
@@ -139,7 +139,7 @@ You now have imported a cluster into Palette with full permissions.
 
 - Access to your cluster environment through kubectl. 
 
-## Import a Cluster
+### Import a Cluster
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -215,7 +215,7 @@ You now have imported a cluster into Palette in read-only mode. Keep in mind tha
 
 
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -227,11 +227,6 @@ You now have imported a cluster into Palette in read-only mode. Keep in mind tha
 
 
 4. Review the **Cluster Status** row from the cluster details view. A successful cluster import displays cluster status as **Running**.
-
-
-</TabItem>
-
-</Tabs>
 
 
 ## Next Steps

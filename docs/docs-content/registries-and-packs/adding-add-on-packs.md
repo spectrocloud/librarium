@@ -3,15 +3,10 @@ sidebar_label: 'Add an Add-on Pack'
 title: 'Add an Add-on Pack'
 description: 'How to create custom made packs using Helm Charts and Manifests in Spectro Cloud'
 icon: ''
-hide_table_of_contents: true
+hide_table_of_contents: false
 sidebar_position: 30
 ---
 
-
-
-
-
-# Add-on Packs
 
 An Add-on Pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster. Palette provides several Add-on packs out of the box for various layers of the Kubernetes stack. For example:
 
@@ -32,11 +27,16 @@ An Add-on Pack defines deployment specifics of a Kubernetes application to be in
 
 
 Custom Add-on packs can be built to extend the list of integrations. Two different methods are used in the following examples to create custom add-on packs.
+
+- [Helm Charts](#helm-charts)
+
+- [Manifests](#manifests)
+
 <br />
 
-<Tabs>
 
-<TabItem label="Using Helm Charts" value="add_on_packs_helm_charts">
+
+## Helm Charts
 
 The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using the Spectro Cloud CLI:
 
@@ -250,9 +250,11 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 
 <br />
 
-</TabItem>
+<!-- </TabItem>
 
-<TabItem label="Using Manifests" value="add_on_packs_manifests">
+<TabItem label="Using Manifests" value="add_on_packs_manifests"> -->
+
+## Manifests
 
 Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for Kubernetes objects like pods, services, deployments, namespaces, or secrets.
 
@@ -419,8 +421,4 @@ The example below shows how to build the Permission Manager auth pack and push t
     ```bash
      spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
     ```
-
-</TabItem>
-
-</Tabs>
 

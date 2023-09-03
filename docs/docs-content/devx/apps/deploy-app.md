@@ -50,18 +50,15 @@ Virtual clusters are standalone Kubernetes environments that sit on top of what 
 
 You can complete this tutorial by using the Palette console, simulating a manual workflow. Or you may leverage infrastructure as code and complete the tutorial using Terraform.
 
+- [UI Workflow](#ui-workflow)
+
+- [Terraform Workflow](#terraform-workflow)
+
 <br />
 
 
-<Tabs queryString="workflow">
-
-<TabItem label="UI" value="UI">
-
-  
-
-## UI Workflow.
-
-  
+## UI Workflow
+ 
 
 Start by logging in to Palette. From the landing page, click on the user **drop-down Menu** and click on **App Mode**.
 
@@ -184,7 +181,7 @@ You have deployed your first application to Palette. Your first application is a
 
   
 
-## Deploy Multiple Applications
+### Deploy Multiple Applications
 
   
 
@@ -394,7 +391,7 @@ The global counter is no longer available. Instead, you have a counter that star
 
   
 
-## Cleanup
+### Cleanup
 
   
 
@@ -418,12 +415,11 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 
 :::
 
-</TabItem>
-
-<TabItem label="Terraform" value="terraform">
+<br />
 
 
-##  Terraform Workflow
+## Terraform Workflow
+
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). There are many reasons why you would want to utilize IaC. A few reasons worth highlighting are: the ability to automate infrastructure, improve collaboration related to infrastructure changes, self-document infrastructure through codification, and track all infrastructure in a single source of truth. If you need to become more familiar with Terraform, check out the [Why Terraform](https://developer.hashicorp.com/terraform/intro) explanation from HashiCorp. 
 
@@ -858,7 +854,7 @@ Welcome to Hello Universe, a demo application to help you learn more about Palet
 You have deployed your first app profile to Palette. Your first application is a single container application with no upstream dependencies. In a production environment, you often deploy applications that consume other services and require connectivity with other resources. The following scenario expands on the single application scenario by adding an API server and Postgres database to simulate a common application architecture encountered in a production environment.
 
   
-## Deploy Multiple Applications
+### Deploy Multiple Applications
 
 
 The second scenario contains two additional microservices, an API, and a Postgres database. This time, instead of using a the global API for storing clicks, you will instead deploy your own API server and Postgres database. The following diagram illustrates the network connectivity path and behavior discussed.
@@ -1244,7 +1240,7 @@ It takes between one to three minutes for DNS to properly resolve the public loa
 The global counter is no longer available. Instead, you have a counter that starts at zero. Each time you click on the center image, the counter is incremented and stored in the Postgres database along with metadata.
 
 
-## Cleanup
+### Cleanup
 
 To remove all resources created in this tutorial, issue the `terraform destroy` command.
 
@@ -1275,11 +1271,6 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 
 :::
 
-
-
-</TabItem>
-
-</Tabs>
 
 
 ## Wrap-Up
