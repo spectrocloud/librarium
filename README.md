@@ -1,7 +1,7 @@
 <!-- vale off -->
 # Overview
 
-![Spectro Cloud logo with docs inline](/assets/logo_landscape_for_white.png)
+![Spectro Cloud logo with docs inline](/static/img/spectrocloud-logo-light.svg)
 
 Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README. 
 
@@ -44,14 +44,6 @@ You can now view root in the browser.
   Local:            http://localhost:9000/
   On Your Network:  http://172.17.0.2:9000/
 ⠀
-View GraphiQL, an in-browser IDE, to explore your site's data and schema
-⠀
-  Local:            http://localhost:9000/___graphql
-  On Your Network:  http://172.17.0.2:9000/___graphql
-⠀
-Note that the development build is not optimized.
-To create a production build, use gatsby build
-```
 
 Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
 
@@ -100,7 +92,7 @@ make commit MESSAGE="<your message here>"
 
 This will open your browser with the commit. Once the pull request is created a link will be added in the comments to preview the change in a staging environment.
 
-## Creating pages
+## Creating Pages
 
 The documentation website is structured in a sidebar with main pages and sub-pages. Main pages will contain an overview of the its sub pages.
 
@@ -108,48 +100,59 @@ The documentation website is structured in a sidebar with main pages and sub-pag
 
 The **navigation** sidebar will be something across all pages.
 
-The **header** will have a search bar and some links to different other sections of the documentation (api, glossary, integrations)
+The **header** will have a search bar and some links to different other sections of the documentation (api)
 
 The page **content** will be displayed under the header and next to the sidebar.
 On it's right there will be a **table of contents** menu that will extract all of the headers inside the content and display them in a list.
 This will follow the user as he scroll the page.
 On top of the table of contents there will be a **github link** to the content of the file. This can be used by users to submit changes to different sections of our documentation
 
-### Main pages
+### Main Pages
 
-You can create a main page by creating a `<number>-<url-using-dashes>.md` file in the root of the `content` directory.
-The number will be the position of the item in the menu. Each of the main pages can be configured by sending attributes at the start of the file"s content.
+Create a page with the filename `<url-using-dashes>.md` in the `docs-content` folder of the `content` directory. For positioning the document in the sidebar, you can use `sidebar_position: 1` in the front matter. To manage folders, create a `_category_.json` file with `{position: 1}` inside the desired directory.
 
 **Example of attributes**
 
 ```markdown
 ---
-title: "Home"
-metaTitle: "spectrocloud docs"
-metaDescription: "This is the meta description"
-icon: "home"
-hideToC: true
-fullWidth: true
+title: "Introduction"
+sidebar_label: "Introduction"
+description: "Palette API Introduction"
+hide_table_of_contents: false
+sidebar_custom_props: 
+  icon: "graph"
 ---
 ```
 
-| attribute       | type    | description                                                                                                 |
-| --------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| title           | string  | used as the label for navigation                                                                            |
-| metaTitle       | string  | will appear on the browser window / tab as the title                                                        |
-| metaDescription | string  | the text to display when a page is shared in social media platforms                                         |
-| icon            | string  | one of icons from https://fontawesome.com/icons?d=gallery                                                   |
-| hideToC         | boolean | setting this to `false` will hide the page from the navigation                                              |
-| fullWidth       | boolean | setting this to `false` this can se set to use the full width of the page and there is no table of contents |
 
+
+#### Front Matter Attributes
+
+| attribute                      | type    | description                                                                                                 |
+| ------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------- |
+| `sidebar_label`                  | string  | used as the label for navigation                                                                            |
+| `title`                          | string  | will appear on the browser window / tab as the title                                                        |
+| `description`                    | string  | the text to display when a page is shared in social media platforms                                         |
+| `sidebar_custom_props:`<br>` icon: "graph"`  | string  | one of icons from https://fontawesome.com/icons?d=gallery                                       |      
+| `hide_table_of_contents`         | boolean | setting this to `false` will hide the page from the navigation                                              |
+| `sidebar_position`               | number  | the position of the page in the navigation sidebar. The pages are sorted ascending by this value            |
+| `toc_min_heading_level`          | number | the minimum heading level to show in the table of contents.                                                  |
+| `toc_max_heading_level`          | number | the maximum heading level to show in the table of contents.                                                  | 
+| `tags`                           | array  |  A list of string that can be used for additonal categorization of content.                                  | 
+| `keywords`                      | array  |  A list of strings that areused for SEO purposes.                                                             |
 ### Sub pages
 
-Create a folder using the **same name** of the main page. Inside of it use the same name convention (`<number>-<url-using-dashes>.md`) to create subpages.
-These pages will have the same attributes as for the main page.
+Create a folder using the **same name** of the main page. Inside of it use the same name convention (`<url-using-dashes>.md`) to create subpages.
+
+The index document for a folder follows the naming convention below. Here are some examples:
+
+- Named as index (case-insensitive): `docs/Guides/index.md`
+- Named as README (case-insensitive): `docs/Guides/README.mdx`
+- Same name as the parent folder: `docs/Guides/Guides.md`
 
 #### Referencing a page
 
-The url of a page will be composed from the path of the file relative to the `content` directory. The "number" used for ordering the menu will be stripped.
+The url of a page will be composed from the path of the file relative to the `content` directory.
 
 **Example** docs/content/1-introduction/1-what-is.md will have http://localhost:9000/introduction/what-is as the url
 
@@ -159,7 +162,7 @@ In markdown you can reference this page relatively to the root of the domain usi
 [Go to introduction](/introduction/what-is)
 ```
 
-You can also reference pages that reside in the root `/docs` folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
+You can also reference pages that reside in the document folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
 
 ```md
 [Go to Dev Enging](/devx)
@@ -170,10 +173,8 @@ To add a redirect to an existing documentation page you must add an entry to the
 
 ```js
   {
-    fromPath: `/clusters/nested-clusters/`,
-    toPath: `/clusters/sandbox-clusters`,
-    redirectInBrowser: true,
-    isPermanent: true,
+    from: `/clusters/nested-clusters/`,
+    to: `/clusters/sandbox-clusters`,
   },
 ```
 
@@ -207,40 +208,36 @@ All images must reside in the [`assets/docs/images`](./assets/docs/images/) fold
 You can add a directory to to the images folder.
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
+![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
 
-**Image size**
-Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
+**Image Loading**
+Image size loading can be customised. You can provide eager-load to images in the first fold of the image with high priority as LCP (Largest contentful Paint) for the page will not be affected
 
 ```md
-![alt text](/clusterprofiles.png "#width=120px")
+![alt text eager-load](/clusterprofiles.png)
 ```
 
 #### Tabs component
 
 To use the tabs component you have to import it from the _shared_ folder
 
-```js
-import Tabs from "shared/components/ui/Tabs";
-```
-
 After that, you can use it like this
 
 ```js
-<Tabs>
-  <Tabs.TabPane tab="AWS" key="aws">
+<Tabs queryString="platform">
+  <TabItem label="AWS" value="aws">
     # AWS cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </Tabs.TabPane>
-  <Tabs.TabPane tab="VMware" key="vmware">
+  </TabItem>
+  <TabItem label="VMware" value="vmware">
     # VMware cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </Tabs.TabPane>
+  </TabItem>
 </Tabs>
 ```
 
 **Note**: If you want to navigate from one page to another(which has tabs) and default tab to specific key then you must
 
-- provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>`
+- provide an identifier to the `Tabs` component `<Tabs queryString="clusterType">...</Tabs>`
 - when creating the link to this page, include (in the query) the identifier provided and the **value** you want (eg: /clusters?clusterType=aws#section1)
 - the values can be one of the tab panel keys
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
@@ -249,26 +246,13 @@ After that, you can use it like this
 
 To use a Youtube video us the YouTube component.
 
-First import the component.
-
-```js
-import YouTube from 'shared/components/Video';
-```
-
-Next, in your markdown file, use the component and ensure you specify a URL.
+In your markdown file, use the component and ensure you specify a URL.
 
 ```js
 <YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
 ```
 ### Points of interest component
 
-To use this components you will have to import if from the _shared_ folder
-
-```js
-import PointsOfInterest from "shared/components/common/PointOfInterest";
-```
-
-After that you can use it like this
 
 ```js
 <PointsOfInterest
@@ -308,8 +292,6 @@ Possible placements are: _topLeft_, _top_, _topRight_, _rightTop_, _right_ (defa
 
 ### Tooltip
 
-import Tooltip from "shared/components/ui/Tooltip";
-
 ```js
 <Tooltip>tooltip content</Tooltip>
 ```
@@ -336,12 +318,12 @@ import Tooltip from "shared/components/ui/Tooltip";
 Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 ```
 
-### Code lines highlighter
+### Code Lines Highlighter
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
-_Example_: ` ```js coloredLines=2-4|#fff,5-7|#fe1234 `.
-This will color the lines from 2 to 4 and from 5 to 7 with the specified colors
+_Example_: ` ```js {2-4,5-7}`.
+This will color the lines from 2 to 4 and from 5 to 7.
 
 _Components_:
 
@@ -350,83 +332,60 @@ _Components_:
 - `#fff` - hex color (colors can also be added as **rgb** format)
 - `,` - separator for different colored lines intervals
 
-### Using Warning Box compponent/Info Box component or any component that wraps content
+Example 
 
-To use these components you will have to import them from the shared folder:
 
-```js
-import WarningBox from "@librarium/shared/src/components/WarningBox";
-import InfoBox from "@librarium/shared/src/components/InfoBox";
-```
+https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comments
 
-After that you can use them like this:
 
-```js
-<InfoBox>
+#### Hide ClipBoard Button
 
-  *Markdown cotent*
+The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
 
-</InfoBox>
+Example 
+![Example](assets/docs/images/hide_copy_button_example.png)
 
-<WarningBox>
+Result
 
-  *Markdown content*
+![Result](assets/docs/images/hide_copy_button.png)
 
-</WarningBox>
-```
+
+### Admonitions - Warning / Info Box
+
+:::note
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+
+:::caution
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+https://docusaurus.io/docs/markdown-features/admonitions
+
 
 The content must have a new line at the beginning and at the end of the tag like this:
 
-Example:
-
-```js
-  <InfoBox>
-
-  - Point 1
-  - Point 2
-  - ...
-
-  </InfoBox>
-
-  <WarningBox>
-
-  - Point 1
-  - Point 2
-  - ...
-
-  </WarningBox>
-```
 ### Video
 
 To add a video, use the following syntax:
 
 ```
-`video: title: "<video title>": <path/to/video`
+<video src="/aws-full-profile.mp4"></video>
 ```
 
 
 ```
-`video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4`
-```
-## Check for Broken URLs
-
-To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
-
-```shell
-make verify-url-links
+<video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></video>
 ```
 
-If you want to check against your current local branch then use the following command. **Ensure the local server is stopped prior to issuing the command**. 
+## Netlify Previews
+By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In the [netlify.toml](./netlify.toml) file, a custom script is used to determine if a Netlify preview should be created. The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If you need to disable Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh) file.
 
-```shell
-make verify-url-links-local
-```
-
-An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
-
-### Cron Job
-
-Every Monday at 6 AM UTC a GitHub Actions cron job is triggered. The cron job logic can be found in the file [url-checks.yaml](.github/workflows/url-checks.yaml). The core logic resides in [url-checker.sh](/scripts/url-checker.sh). The Slackbot application **Docs bot** is used to post the messages to the `#docs` channel.
 
 ## Approvers/Reviewers
 

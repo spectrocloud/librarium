@@ -1,0 +1,14 @@
+.mobilePrimaryMenu {
+  position: absolute;
+  bottom: 0px;
+  background: var(--ifm-background-color);
+  border-top: 1px solid #f0f0f0;
+  width: 100%;
+  padding: 0.5rem 0;
+  overflow-x: scroll;
+  .mobileMenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

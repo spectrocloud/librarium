@@ -1,3 +1,25 @@
+# Dependencies
+/node_modules
+
+# Production
+build
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
+.env
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 public
 .cache
 node_modules
@@ -9,4 +31,7 @@ vale/styles/Google/
 vale/styles/write-good/
 .idea/
 link_report.*
-.vscode/
+*-creds.tape
+palette-docs.pdf
+
+docs/api-content/api-docs/v1/*.mdx

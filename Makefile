@@ -8,7 +8,7 @@ help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 clean: ## Clean build artifacts
-	rm -rf node_modules build public .cache
+	rm -rf node_modules build public .cache .docusaurus
 	docker image rm $(IMAGE)
 
 ##@ npm Targets
@@ -22,8 +22,8 @@ start: ## Start a local development server
 
 build: ## Run npm build
 	@echo "building site"
-	npm run clean
-	rm -rf public
+	npm run clear
+	rm -rf build
 	npm run build
 
 ##@ Git Targets
@@ -40,27 +40,8 @@ docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
 docker-start: docker-image ## Start a local development container
-	docker run --rm -it -v $(CURDIR)/content:/librarium/content/ -p 9000:9000 $(IMAGE)
+	docker run --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
 
-##@ Lint Targets
-
-verify-url-links: ## Check for broken URLs in production
-	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format csv > temp_report.csv && sleep 2
-	grep -E '^[^,]*,[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' temp_report.csv > link_report.csv && rm temp_report.csv
-
-
-verify-url-links-ci: ## Check for broken URLs in production
-	rm link_report.json || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format json > temp_report.json
-	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
-	rm temp_report.json
-	mv link_report.json scripts/
-
-
-verify-url-links-local: build ## Check for broken URLs locally
-	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	npm run test-links
 
 sync-vale: ## Install Vale plugins
 	vale sync
@@ -68,6 +49,10 @@ sync-vale: ## Install Vale plugins
 check-writing: ## Run Vale lint checks
 	vale $(CHANGED_FILE) 
 
-fix-server:
+fix-server: ## Fix server issues by removing the cache folder and reinstalling node modules
 	@echo "fixing server"
 	rm -rfv node_modules && rm -rfv .cache/ && npm ci
+
+pdf: ## Generate PDF from docs
+	@echo "generating pdf"
+	npx docs-to-pdf docusaurus --initialDocURLs="https://docs.spectrocloud.com" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" --protocolTimeout=e00 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" --coverImage=https://docs.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
