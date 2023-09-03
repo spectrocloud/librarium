@@ -35,11 +35,9 @@ html {
   --ifm-alert-border-width: 1px;
   --ifm-alert-border-left-width: 1px;
   --ifm-alert-shadow: unset;
+  --openapi-demo-font-size-code: 10px;
+  --openapi-demo-font-size-input: 10px;
 }
-
-// .markdown > p {
-// margin-bottom: 0px;
-// }s
 
 .markdown h1:first-child {
   --ifm-h1-font-size: 2rem;
@@ -190,6 +188,6 @@ pre code {
 }
 
 h2.openapi__method-endpoint-path {
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 8px;
 }
