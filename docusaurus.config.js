@@ -109,7 +109,7 @@ const config = {
             });
             return sidebarItems;
           },
-          editUrl: "https://github.com/spectrocloud/librarium",
+          editUrl: "https://github.com/spectrocloud/librarium/blob/master",
         },
         sitemap: {
           changefreq: "weekly",
@@ -333,8 +333,7 @@ const config = {
           light: "rgb(255, 255, 255)",
           dark: "rgb(50, 50, 50)",
         },
-        config: {
-        },
+        config: {},
       },
     }),
 };
