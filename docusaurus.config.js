@@ -257,6 +257,12 @@ const config = {
           logoClass: "bash",
         },
         {
+          highlight: "python",
+          language: "python",
+          logoClass: "python",
+          variant: "requests",
+        },
+        {
           highlight: "go",
           language: "go",
           logoClass: "go",
