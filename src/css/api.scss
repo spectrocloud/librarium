@@ -1,0 +1,62 @@
+/* Sidebar Method labels */
+.api-method > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before {
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  margin-right: var(--ifm-spacing-horizontal);
+  text-align: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.get > .menu__link::before {
+  content: "get";
+  background-color: var(--openapi-code-green);
+}
+
+.post > .menu__link::before {
+  content: "post";
+  background-color: var(--openapi-code-orange);
+}
+
+.delete > .menu__link::before {
+  content: "del";
+  background-color: var(--openapi-code-red);
+}
+
+.put > .menu__link::before {
+  content: "put";
+  background-color: var(--openapi-code-blue);
+}
+
+.patch > .menu__link::before {
+  content: "patch";
+  background-color: var(--ifm-color-primary);
+}
+
+.head > .menu__link::before {
+  content: "head";
+  background-color: var(--ifm-color-secondary-darkest);
+}
+
+.event > .menu__link::before {
+  content: "event";
+  background-color: var(--ifm-color-secondary-darkest);
+}
+
+.openapi-tabs__code-list-container {
+  .tabs__item {
+    border-radius: 8px !important;
+  }
+}

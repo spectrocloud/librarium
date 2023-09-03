@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true
+  },
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx", "./.eslintrc.js", "*.d.ts"],
+  "exclude": ["**/node_modules", "deprecated"]
+}

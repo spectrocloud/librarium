@@ -1,0 +1,18 @@
+name: Algolia Crawler
+
+on:
+  workflow_run:
+    workflows: [Release to Production]
+    types: [completed]
+jobs:
+  docsearch:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Run scraper
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+        run: docker run  -e APPLICATION_ID=$APPLICATION_ID  -e API_KEY=$API_KEY  -e "CONFIG=$(cat ./docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
