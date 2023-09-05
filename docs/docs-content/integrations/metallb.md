@@ -12,7 +12,7 @@ tags: ['packs', 'metallb', 'network']
 
 MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters, using standard routing protocols. This integration is recommended for the on-prem cloud(s) and will help external service(s) get an IP address when the service type is set as LoadBalancer.
 
-MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonSet that runs on all nodes.
+MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonSet on all nodes.
 
 
 ## Versions Supported
@@ -23,13 +23,13 @@ MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonS
 
 ## Prerequisites
 
-- A Kubernetes cluster running Kubernetes 1.13.0 or later that does not already have network load-balancing functionality.
+- A Kubernetes cluster with Kubernetes version 1.13.0 or later that does not already have network load-balancing functionality.
 
 
-- A cluster network configuration that can co-exist with MetalLB.
+- A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation
 
 
-- Some IPv4 addresses for MetalLB to hand out.
+- Ensure sufficient IPv4 addresses for MetalLB are available.
 
 
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
@@ -69,7 +69,7 @@ manifests:
     namespace: "metallb-system"
     avoidBuggyIps: true
     addresses:
-		- 192.168.250.48-192.168.250.55
+    - 192.168.250.48-192.168.250.55
 ```
 
 <br />
@@ -114,11 +114,12 @@ The `charts:metallb-full:metallb` parameter section provides access to all the o
 
 ```yaml
 charts:
-	metallb-full:
-		metallb:
-			speaker:
-				frr:
-					enabled: true
+charts:
+  metallb-full:
+    metallb:
+      speaker:
+        frr:
+          enabled: true
 ```
 
 
@@ -133,13 +134,14 @@ charts:
 
 ## Prerequisites
 
-- A Kubernetes cluster running Kubernetes 1.13.0 or later that does not already have network load-balancing functionality.
+- A Kubernetes cluster with Kubernetes version 1.13.0 or later that does not already have network load-balancing functionality.
 
 
-- A cluster network configuration that can co-exist with MetalLB.
+
+- A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation.
 
 
-- Some IPv4 addresses for MetalLB to hand out.
+- Ensure sufficient IPv4 addresses for MetalLB are available.
 
 
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
@@ -175,7 +177,7 @@ manifests:
     namespace: "metallb-system"
     avoidBuggyIps: true
     addresses:
-		- 192.168.250.48-192.168.250.55
+    - 192.168.250.48-192.168.250.55
 ```
 
 
@@ -202,14 +204,14 @@ All versions of the manifest-based pack less than v0.9.x are considered deprecat
 
 If controller and speaker pods are not assigning new IP addresses that you provided in the MetalLB pack, it is likely pods in existing deployments do not have the latest configMap file. 
 
-Addresses you specify in MetalLB pack values go into a configMap called `config` in the `metallb-system` namespace. The MetalLB controller and speakers use the configMap as a volume mount.
+IP addresses you specify in MetalLB pack values go into a configMap called `config` in the `metallb-system` namespace. The MetalLB controller and speakers use the configMap as a volume mount.
 
 Any changed IP addresses will get updated in the configMap. You can confirm this by issuing the following command.
 
 <br />
 
 ```bash
-kubectl describe cm config -n metallb-system
+kubectl describe cm config --namespace metallb-system
 ```
 
 <br />
@@ -225,8 +227,8 @@ To ensure updated addresses are reflected in the configMap, you need to restart 
 
 
 ```bash
-	kubectl rollout restart deploy controller -n metallb-system
-	kubectl rollout restart ds speaker -n metallb-system
+kubectl rollout restart deploy controller --namespace metallb-system
+kubectl rollout restart ds speaker --namespace metallb-system
 ```
 
 
@@ -249,4 +251,4 @@ data "spectrocloud_pack" "MetalLB-Helm" {
 - [MetalLB](https://metallb.universe.tf/) 
 
 
-- [MetalLB-GitHub ](https://github.com/metallb/metallb)
+- [MetalLB GitHub ](https://github.com/metallb/metallb)
