@@ -243,7 +243,7 @@
     },
     {
       "name": "aws-cluster-autoscaler",
-      "displayName": "AWS Cluster Autoscaler testing override",
+      "displayName": "AWS Cluster Autoscaler",
       "layer": "addon",
       "addonType": "system app",
       "cloudTypesFormatted": "eks",
