@@ -12,6 +12,7 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGavel } from '@fortawesome/free-solid-svg-icons';
 import { faTerminal } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,6 +31,7 @@ export const fontAwesomeIcons = {
   "bookmark": faBookmark,
   "gavel": faGavel,
   "terminal": faTerminal,
+  "lock": faLock,
   "cloud-arrow-down": faCloudArrowDown,
   "screwdriver-wrench": faScrewdriverWrench
 };
