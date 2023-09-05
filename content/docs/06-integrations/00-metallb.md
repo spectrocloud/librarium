@@ -42,7 +42,7 @@ MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonS
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
 
 
-- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [Hashicorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed. 
+- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed. 
 
 
 ## Parameters
@@ -152,7 +152,7 @@ charts:
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
 
 
-- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [Hashicorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed. 
+- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed. 
 
 
 ## Parameters

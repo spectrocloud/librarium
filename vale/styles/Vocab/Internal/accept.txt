@@ -128,3 +128,4 @@ K3s
 boolean
 Layer 2
 L2
+HashiCorp
