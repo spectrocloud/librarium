@@ -114,7 +114,6 @@ The `charts:metallb-full:metallb` parameter section provides access to all the o
 
 ```yaml
 charts:
-charts:
   metallb-full:
     metallb:
       speaker:
