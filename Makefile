@@ -56,3 +56,23 @@ fix-server: ## Fix server issues by removing the cache folder and reinstalling n
 pdf: ## Generate PDF from docs
 	@echo "generating pdf"
 	npx docs-to-pdf docusaurus --initialDocURLs="https://docs.spectrocloud.com" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" --excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" --protocolTimeout=e00 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" --coverImage=https://docs.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
+
+###@ URL Checks
+
+verify-url-links: ## Check for broken URLs in production
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format csv > temp_report.csv && sleep 2
+	grep -E '^[^,]*,[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' temp_report.csv > link_report.csv && rm temp_report.csv
+
+
+verify-url-links-ci: ## Check for broken URLs in production
+	rm link_report.json || echo "No report exists. Proceeding to scan step"
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format json > temp_report.json
+	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
+	rm temp_report.json
+	mv link_report.json scripts/
+
+
+verify-url-links-local: build ## Check for broken URLs locally
+	rm link_report.csv || echo "No report exists. Proceeding to scan step"
+	npm run test-links
