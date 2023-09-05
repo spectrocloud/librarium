@@ -12,16 +12,16 @@ tags: ["self-hosted", "enterprise"]
 Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. You can install Palette by using the following four methods:
 
 
-- [VMware Quick Start](/enterprise-version#vmwarequickstart)
+- [VMware Quick Start](/enterprise-version/deploying-the-platform-installer)
 
 
-- [VMware Enterprise](/enterprise-version#vmwareenterprise)
+- [VMware Enterprise](/enterprise-version/deploying-an-enterprise-cluster)
 
 
-- [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)
+- [Kubernetes Install Helm Chart](/enterprise-version/deploying-palette-with-helm)
 
 
-- [AirGap Install](/enterprise-version#airgapinstall)
+- [AirGap Install](/enterprise-version/air-gap-repo)
 
 ## VMware Quick Start
 
