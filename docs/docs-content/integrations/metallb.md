@@ -19,7 +19,7 @@ MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonS
 
 <Tabs queryString="versions">
 
-<Tabs.TabPane tab="0.13.x" key="0.13.x">
+<TabItem label="0.13.x" value="0.13.x">
 
 ## Prerequisites
 
@@ -126,9 +126,9 @@ charts:
 
 
 
-</Tabs.TabPane>
+</TabItem>
 
-<Tabs.TabPane tab="0.11.x" key="0.11.x">
+<TabItem label="0.11.x" value="0.11.x">
 
 
 ## Prerequisites
@@ -182,9 +182,9 @@ manifests:
 
 
 
-</Tabs.TabPane>
+</TabItem>
 
-<Tabs.TabPane tab="Deprecated" key="Deprecated">
+<TabItem label="Deprecated" value="Deprecated">
 
 <WarningBox>
 
@@ -193,7 +193,7 @@ All versions of the manifest-based pack less than v0.9.x are considered deprecat
 </WarningBox>
 
 
-</Tabs.TabPane>
+</TabItem>
 </Tabs>
 
 
