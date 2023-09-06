@@ -17,7 +17,7 @@ The following is a high-level overview of the markdown structure that all troubl
 
 <Intro paragraph with an overview of the scenarior and cause.>
 
-## Debug Steps
+## Debugging Steps
 <Step 1 ...>
 <Step N ...>
 ```
@@ -28,6 +28,6 @@ The following is a high-level overview of the markdown structure that all troubl
 |----------------|-------------|
 | Scenario (Title)   | The name assigned to the troubleshooting scenario. Aim for a brief title, ideally less than five words. |
 | Intro Paragraph  | The introduction sets the context for the troubleshooting guide and explains the issue. |
-| Debug Steps  |  The step-by-step flow of how to address the issue or how to identify the problem. |
+| Debugging Steps  |  The step-by-step flow of how to address the issue or how to identify the problem. |
 
 For questions or concerns, please ask in the  Slack channel `education`. 

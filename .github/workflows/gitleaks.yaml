@@ -30,6 +30,6 @@ jobs:
           if [ "$total_failed_tests" -gt 0 ]; then
             echo "GitLeaks validation check failed with above findings..."
             exit 1
-          else 
+          else
             echo "GitLeaks validation check passed"
           fi

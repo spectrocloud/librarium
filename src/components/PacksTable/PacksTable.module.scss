@@ -1,0 +1,97 @@
+.searchIcon {
+  color: var(--ifm-font-color-base);
+  z-index: 10;
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 48px;
+  padding: 0px 8px;
+  margin: 8px 4px;
+  box-shadow:
+    0px 0px 2px rgb(0 0 0 / 20%),
+    0px 2px 0px rgb(0 0 0 / 3%);
+  border-radius: 4px;
+  border: 1px solid var(--ifm-breadcrumb-item-background-active);
+  transition: all 0.3s;
+  .searchInput {
+    width: 100%;
+    padding-left: 16px;
+    outline: none;
+    background: rgba(0, 0, 0, -0.9);
+    border-color: rgba(0, 0, 0, -0.9);
+    border-right-width: 0px !important;
+  }
+  .searchInput:focus {
+    box-shadow: 0 0 0 0px rgb(0 0 0 / 0%);
+  }
+  .searchInput::placeholder {
+    font-size: 13px;
+    color: var(--ifm-font-color-base);
+    opacity: 0.5;
+  }
+
+  &:focus-within {
+    border-color: #40a9ff8c;
+    border-right-width: 1px !important;
+    outline: 0;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 3%);
+  }
+  &:hover {
+    border-color: #40a9ff8c;
+    border-right-width: 1px !important;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 3%);
+  }
+}
+
+.green {
+  background-color: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.red {
+  background-color: var(--ifm-color-danger-contrast-background);
+  color: var(--ifm-color-danger-contrast-foreground);
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.tableWrapper {
+  border: 1px solid var(--ifm-toc-border-color);
+  padding: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.disabled {
+  background-color: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.deleted {
+  background-color: var(--ifm-color-danger-contrast-background);
+  color: var(--ifm-color-danger-contrast-foreground);
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.deprecated {
+  background-color: var(--ifm-color-info-contrast-background);
+  color: var(--ifm-color-info-contrast-foreground);
+  padding: 4px 8px;
+  border-radius: 16px;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: red;
+}

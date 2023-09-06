@@ -128,3 +128,19 @@ K3s
 boolean
 Velero
 MinIO
+vCluster
+Fluentbit
+Dex
+Falco
+Kibana
+Fluentd
+Libvirt
+kubenet
+Metadata Syncer
+Kubernetes NFS Subdir External Provisioner
+Splunk
+Kubevious
+Citrix
+Disable
+Hotfixes
+Hotfix
