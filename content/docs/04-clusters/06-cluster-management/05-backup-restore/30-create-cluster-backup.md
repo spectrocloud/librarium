@@ -16,13 +16,13 @@ import InfoBox from 'shared/components/InfoBox';
 
 This guide provides instructions for how to create a cluster backup using Palette. You can refer to the cluster from where you created the backup as the *source cluster*. 
 
-A backup operation can only backup specified namespaces, cluster-scoped resources, and Persistent Volumes (PVs) from the source cluster. The backup operation does include the source cluster profile in the final backup object that Palette creates. 
+A backup operation can only back up specified namespaces, cluster-scoped resources, and Persistent Volumes (PVs) from the source cluster. The backup operation includes the source cluster profile in Palette's final backup object. 
 
 <br/>
 
 <InfoBox>
 
-Palette uses the open-source, Velero, to provide backup and restore capabilities. You can learn more about Velero by checking out their [Restore Reference](https://velero.io/docs/main/restore-reference/) and [Backup Reference](https://velero.io/docs/main/backup-reference/) documentation.  
+Palette uses open-source Velero to provide backup and restore capabilities. You can learn more about Velero by checking out their [Restore Reference](https://velero.io/docs/main/restore-reference/) and [Backup Reference](https://velero.io/docs/main/backup-reference/) documentation.  
 
 
 </InfoBox>
@@ -61,7 +61,7 @@ Select the tab that matches the type of backup you want to create. You can sched
 2. Navigate to the left **Main Menu** and select **Clusters**. 
 
 
-3. Select a cluster to view its details page. It should be the cluster for which you want to schedule a backup. Ensure that the cluster status is *Healthy*. 
+3. Select a cluster you want to back up. Ensure the cluster status is *Healthy*. 
 
 
 4. Click on the **Settings drop-down Menu** in the top right corner, and select **Cluster Settings**.
@@ -84,7 +84,7 @@ Select the tab that matches the type of backup you want to create. You can sched
 	|**Select period until expiry**|Select an expiry duration for the backups. Palette will delete the backup after the expiry duration.|
 	|**Include all disks**|Select this checkbox if you want to include all the disks in the backup.|
 	|**Include cluster resources**|Select the checkbox if you want Palette to back up the cluster-scoped and the namespace-scoped resources. However, if you do not select the checkbox, Palette will back up only the namespace-scoped resources.|
-	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can remove specific namespaces per your choice. |
+	|**Include Namespaces** (Optional)| Palette will back up all namespaces by default. However, you can specify any namespaces you do not want backed up.|
 
 	<br />
   <InfoBox>
@@ -108,9 +108,9 @@ Select the tab that matches the type of backup you want to create. You can sched
 	* Never
 
 
-7. Click on the **Create Backup**. 
+7. Click on the **Create Backup** button.
 
-You now have successfully created a scheduled backup for the selected cluster. You can view the status of the backups in the **Backups** tab.
+You now have successfully created a scheduled backup for the selected cluster. You can view the status of the backup in the **Backups** tab.
 
 
 </Tabs.TabPane>
@@ -126,10 +126,10 @@ You now have successfully created a scheduled backup for the selected cluster. Y
 2. Navigate to the left **Main Menu** and select **Clusters**. 
 
 
-3. Select the cluster you want to schedule a backup. Ensure the cluster status is *Healthy*. 
+3. Select a cluster you want to back up. Ensure the cluster status is *Healthy*. 
 
 
-4. Navigate to the **Backups** tab and click on the **Create Backup** button. The screenshot below highlights a popup window that Palette will open after clicking the button. The popup contains the fields for initiating an on-demand backup. <br /><br />
+4. Navigate to the **Backups** tab and click on the **Create Backup** button. The screenshot below shows the popup window Palette opens to initiate an on-demand backup. <br /><br />
 
 	<br />
 
@@ -142,11 +142,11 @@ You now have successfully created a scheduled backup for the selected cluster. Y
 	|**Field**|**Description**|
 	|---|---|
 	|**Backup name**|Provide a name for the backup. |
-	|**Select backup location**|Choose a backup location. You must configure a backup location before creating a backup. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guides to learn about adding a backup location using the static or dynamic credentials, respectively. |
+	|**Select backup location**|Choose a backup location. You must configure a backup location before creating a backup. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guides to learn about adding a backup location using static or dynamic credentials. |
 	|**Select period until expiry**|Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration.|
 	|**Include all disks**|Select this checkbox if you want to include PVs and volume snapshots in the backup.|
 	|**Include cluster resources**|Select the checkbox if you want to include cluster-scoped resources in the backuo. If you do not select the checkbox, Palette will back up only the namespace-scoped resources.|
-	|**Include Namespaces** (Optional)| Palette will backup all namespaces by default. However, you can remove specific namespaces per your choice. |
+	|**Include Namespaces** (Optional)| Palette will back up all namespaces by default. However, you can specify namespaces you do not want backed up. |
 
 	<br />
 
@@ -163,7 +163,7 @@ You now have successfully created a scheduled backup for the selected cluster. Y
 	<br />
 
 
-6. Click on the **Create Backup**. 
+6. Click on the **Create Backup** button.
 
 You now have successfully created a backup for the selected cluster. Depending on the size of the cluster, the backup process may take some time to complete. You can view the status of the backup in the **Backups** tab.
 
@@ -183,20 +183,20 @@ Use the following steps to validate creating a backup in Palette.
 2. Navigate to the left **Main Menu**, and select **Clusters**. 
 
 
-3. Select the cluster from where you created the backup. Palette will display the details of the selected cluster. 
+3. Select the cluster from where you created the backup. Palette displays the details of the selected cluster. 
 
 
-4. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette will display a list of all available backups for the current cluster, including the newly created one. The screenshot below highlights an example backup. This step validates that you have successfully created the backup. 
+4. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette displays a list of all available backups for the current cluster, including the newly created one. The screenshot below shows an example backup. This step validates that you have successfully created the backup. 
 
   ![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.png)
 
 
-5. You can optionally click on the newly created backup from the list to view its details. Palette will display the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources. 
+5. You can click on the newly created backup from the list to view its details. Palette displays the backup name, status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup includes all disks and cluster-scoped resources. 
 
 
 ## Next Steps
 
-Once a backup is available, you can restore it to the same or a different cluster. Refer to the [Restore a Cluster Backup](/clusters/cluster-management/backup-restore/restore-cluster-backup) guide to learn more about restoring a backup.
+When the backup is available, you can restore it to the same or to a different cluster. Refer to the [Restore a Cluster Backup](/clusters/cluster-management/backup-restore/restore-cluster-backup) guide to learn more about restoring a backup.
 
 
 <br />

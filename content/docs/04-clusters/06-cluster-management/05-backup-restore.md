@@ -63,7 +63,7 @@ A backup location is an object storage, such as an AWS Simple Storage Service (S
 
 <InfoBox>
 
-Palette uses the open-source, Velero, to provide backup and restore capabilities. You can learn more about Velero by checking out their [Restore Reference](https://velero.io/docs/main/restore-reference/) and [Backup Reference](https://velero.io/docs/main/backup-reference/) documentation.  
+Palette uses open-source Velero to provide backup and restore capabilities. You can learn more about Velero by checking out the Velero [Restore Reference](https://velero.io/docs/main/restore-reference/) and [Backup Reference](https://velero.io/docs/main/backup-reference/).  
 
 
 </InfoBox>
