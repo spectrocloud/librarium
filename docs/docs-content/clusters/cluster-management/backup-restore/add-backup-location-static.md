@@ -264,7 +264,15 @@ Use the following steps to validate adding the new backup location.
 	|**S3 Bucket**|The name of the S3 bucket you created in the MinIO object store. |
 	| **Region** | The region where the MinIO server is configured. Example: `us-east-1` |
 	|**S3 URL** | The MinIO object storage console URL. Example: `http://12.123.234.567:0000`|
-	|**Force S3 path style** | An optional setting that forces S3 path style addressing. Otherwise, the URL will be converted to virtual-host style addressing with the bucket name appended to the URL.|
+	|**Force S3 path style** | This value is required for MinIO.|
+
+	<br />
+
+	:::caution
+
+	Ensure you check the **Force S3 path style** checkbox. S3 path style is required by Velero to access the MinIO object storage. Palette uses [Velero](https://velero.io/docs) to create backups.
+
+	:::
 
 
 5. Next, provide the access key for the MiniIO user. The access key has two parts - the *access key ID* and the *secret key*.  
