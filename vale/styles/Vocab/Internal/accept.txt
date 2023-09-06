@@ -138,3 +138,6 @@ Citrix
 Disable
 Hotfixes
 Hotfix
+Layer 2
+L2
+HashiCorp
