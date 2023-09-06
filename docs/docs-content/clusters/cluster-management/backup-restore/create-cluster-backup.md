@@ -170,7 +170,7 @@ Use the following instructions to create an on-demand backup for an existing clu
 	|**Select backup location**|Choose a backup location. You must configure a backup location before creating a backup. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guides to learn about adding a backup location using static or dynamic credentials. |
 	|**Select period until expiry**|Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration.|
 	|**Include all disks**|Select this checkbox if you want to include PVs and volume snapshots in the backup.|
-	|**Include cluster resources**|Select the checkbox if you want to include cluster-scoped resources in the backuo. If you do not select the checkbox, Palette will back up only the namespace-scoped resources.|
+	|**Include cluster resources**|Select the checkbox if you want to include cluster-scoped resources in the backup. If you do not select the checkbox, Palette will back up only the namespace-scoped resources.|
 	|**Include Namespaces** (Optional)| Palette will back up all namespaces by default. However, you can specify namespaces you do not want backed up. |
 
 	<br />
