@@ -10,7 +10,7 @@ logoUrl: 'https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab
 tags: ['packs', 'metallb', 'network']
 ---
 
-MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters, using standard routing protocols. This integration is recommended for the on-prem cloud(s) and will help external service(s) get an IP address when the service type is set as LoadBalancer.
+MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters that uses standard routing protocols. This integration is recommended for self-hosted clouds and helps external services obtain an IP address when the service type is set to LoadBalancer.
 
 MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonSet on all nodes.
 
@@ -35,7 +35,7 @@ MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonS
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
 
 
-- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed. 
+- When using the Layer 2 (L2) operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed. 
 
 
 ## Parameters
@@ -48,7 +48,7 @@ The `addresses` parameter applies to the manifest-based MetalLB pack. You can pr
 
 ## Usage
 
-The *lb-metallb* manifest-based pack supports direct configuration of a Layer 2 (L2) IP address set. The *lb-metallb-helm* Helm-based pack provides an L2 address pool.
+The *lb-metallb* manifest-based pack supports direct configuration of an L2 IP address set. The *lb-metallb-helm* Helm-based pack provides an L2 address pool.
 
 <br />
 
@@ -159,9 +159,7 @@ The `addresses` parameter applies to the manifest-based MetalLB pack. You can pr
 
 ## Usage
 
-The *lb-metallb* manifest-based pack supports direct configuration of a Layer 2 (L2) IP address set.
-
-Manifest-based MetalLB supports direct configuration of an L2 IP address set. You can set either a range of addresses or use CIDR format, such as `192.168.250.48/29`. A more advanced MetalLB configuration, such as Border Gateway Protocol (BGP) routing requires you to write your own manifests and add them to the Palette cluster profile.
+The *lb-metallb* manifest-based pack supports direct configuration of an L2 IP address set. You can set either a range of addresses or use CIDR format, such as `192.168.250.48/29`. A more advanced MetalLB configuration, such as Border Gateway Protocol (BGP) routing requires you to write your own manifests and add them to the Palette cluster profile.
 
 The example shows the syntax used to set an address range.
 
@@ -187,17 +185,17 @@ manifests:
 
 <TabItem label="Deprecated" value="Deprecated">
 
-<WarningBox>
+:::caution
 
 All versions of the manifest-based pack less than v0.9.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
-</WarningBox>
+:::
 
 
 </TabItem>
 </Tabs>
 
-
+<br />
 
 ## Troubleshooting
 
@@ -230,6 +228,7 @@ kubectl rollout restart deploy controller --namespace metallb-system
 kubectl rollout restart ds speaker --namespace metallb-system
 ```
 
+<br />
 
 ## Terraform
 
@@ -244,6 +243,7 @@ data "spectrocloud_pack" "MetalLB-Helm" {
 }
 ```
 
+<br />
 
 ## References
 
