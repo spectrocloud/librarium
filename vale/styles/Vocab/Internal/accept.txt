@@ -126,6 +126,8 @@ repave
 Repave
 K3s
 boolean
+Velero
+MinIO
 vCluster
 Fluentbit
 Dex
