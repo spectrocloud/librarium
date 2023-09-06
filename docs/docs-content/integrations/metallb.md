@@ -29,7 +29,7 @@ MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonS
 - A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation
 
 
-- Ensure sufficient IPv4 addresses for MetalLB are available.
+- Ensure sufficient IPv4 addresses for MetalLB are available for the number of services in each cluster.
 
 
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
