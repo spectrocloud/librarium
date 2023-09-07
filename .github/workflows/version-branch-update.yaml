@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - 'backport/version-*'
+    types: [opened, synchronize, reopened]
 
 
 concurrency:
