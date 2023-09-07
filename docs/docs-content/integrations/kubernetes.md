@@ -28,9 +28,6 @@ A benefit of Palette when used with PXK is the ability to apply different flavor
 
 There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open-source Kubernetes distribution.
 
-<br />
-
-
 :::info
 
 We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the [PXK-E glossary definition](/glossary-all#paletteextendedkubernetesedge(pxk-e)) to learn more about PXK-E.   
@@ -64,7 +61,7 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 |-----------|-------------|
 | `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. |
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
 | `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
 | `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
 | `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
@@ -84,31 +81,31 @@ The Kubeadm configuration file is where you can do the following:
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.27#change-cluster-dns-service-domain).
 
-- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
-
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changeed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
-```yaml
+```yaml hideClipboard
 pack:
   k8sHardening: True
   podCIDR: "172.16.0.0/16"
   serviceClusterIPRange: "10.96.0.0/12"
-  serviceDomain: "<your_cluster_DNS_service_domain>
+  serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
 :::caution
 
-You can only specify the service domain at cluster creation. When cluster creation completes, you cannot update the value. Attempting to update it results in a `serviceDomain update is forbidden for existing cluster` error. 
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
 :::
 
-For more information about domain names, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
+For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
 ### Configuration Changes
 
@@ -127,7 +124,7 @@ palette:
 
 #### Example Kubeadm Configuration File 
 
-```yaml
+```yaml hideClipboard
 pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
@@ -379,10 +376,10 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 | Parameter | Description |
 |-----------|-------------|
-| `pack.palette.config.dashboard.identityProvider`| OIDC identity provider configuration. |
 | `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| ``pack.palette.config.dashboard.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.26#change-cluster-dns-service-domain-1) section. |
+| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
 | `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
 | `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
 | `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
@@ -392,24 +389,40 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
 | `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
 | `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
-| `pack.serviceDomain` | The DNS name for the service domain in the cluster. Default: `cluster.local`.|
-
 
 ## Usage 
   
 The Kubeadm configuration file is where you can do the following:
 
-<br />
-
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
 
-- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
-
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.26#change-cluster-dns-service-domain-1).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+### Change Cluster DNS Service Domain
+
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "172.16.0.0/16"
+  serviceClusterIPRange: "10.96.0.0/12"
+  serviceDomain: "<your_cluster_DNS_service_domain>"
+```
+
+:::caution
+
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
+
+:::
+
+For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
 
 #### Configuration Changes
@@ -549,11 +562,7 @@ When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP op
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
 
-<br />
-
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
-
-  <br />
 
   :::caution
 
@@ -628,7 +637,7 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
-```yaml
+```yaml hideClipboard
 oidcIdentityProvider:
     identityProviderConfigName: 'Spectro-docs'
     issuerUrl: 'issuer-url'
@@ -642,7 +651,7 @@ oidcIdentityProvider:
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
 
-```yaml
+```yaml hideClipboard
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
@@ -692,35 +701,53 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 | Parameter | Description |
 |-----------|-------------|
-| ``pack.podCIDR`` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
-| ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| ``pack.palette.config.dashboard.identityProvider`` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
-| ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
-| ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on the apiServer.|
-| ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
-| ``kubeadmconfig.scheduler.extraArgs`` | A list of additional Kube scheduler flags to set.|
-| ``kubeadmconfig.kubeletExtraArgs`` | A list of kubelet arguments to set and copy to the nodes.|
-| ``kubeadmconfig.files`` | A list of additional files to copy to the nodes.|
-| ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
-| ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``kubeadmconfig.clientConfig`` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
-| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
+| `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
+| `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.25#change-cluster-dns-service-domain) section. |
+| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
+| `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
+| `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
+| `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
+| `kubeadmconfig.scheduler.extraArgs` | A list of additional Kube scheduler flags to set.|
+| `kubeadmconfig.kubeletExtraArgs` | A list of kubelet arguments to set and copy to the nodes.|
+| `kubeadmconfig.files` | A list of additional files to copy to the nodes.|
+| `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
+| `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
+| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
 
 ## Usage 
   
 The Kubeadm configuration file is where you can do the following:
 
-<br />
-
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). 
 
-- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). 
-
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.25#change-cluster-dns-service-domain).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+### Change Cluster DNS Service Domain
+
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "172.16.0.0/16"
+  serviceClusterIPRange: "10.96.0.0/12"
+  serviceDomain: "<your_cluster_DNS_service_domain>"
+```
+
+:::caution
+
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
+
+:::
+
+For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
 
 #### Configuration Changes
@@ -729,7 +756,7 @@ The PXK Kubeadm configuration is updated to dynamically enable OIDC based on you
 
 <br />
 
-```yaml
+```yaml hideClipboard
 palette:
    config:
      dashboard:
@@ -740,7 +767,7 @@ palette:
 
 #### Example Kubeadm Configuration File 
 
-```yaml
+```yaml hideClipboard
 pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
@@ -858,11 +885,7 @@ When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP op
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
 
-<br />
-
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
-
-  <br />
 
   :::caution
 
@@ -902,7 +925,7 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 
 
-```yaml
+```yaml hideClipboard
 kubeadmconfig:
   apiServer:
     extraArgs:
@@ -915,7 +938,7 @@ kubeadmconfig:
 2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines. 
 
 
-```yaml
+```yaml hideClipboard
 kubeadmconfig:
   clientConfig:
     oidc-issuer-url: "<OIDC-ISSUER-URL>"
@@ -938,7 +961,7 @@ Follow these steps to configure OIDC for managed EKS clusters.
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
 ```yaml
-oidcIdentityProvider:
+oidcIdentityProvider: hideClipboard
     identityProviderConfigName: 'Spectro-docs'
     issuerUrl: 'issuer-url'
     clientId: 'user-client-id-from-Palette'
@@ -1000,6 +1023,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 |-----------|-------------|
 | ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.24#change-cluster-dns-service-domain) section. |
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -1008,24 +1032,40 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | ``kubeadmconfig.files`` | A list of additional files to copy to the nodes. |
 | ``kubeadmconfig.preKubeadmCommands`` | A list of additional commands to invoke **before** running kubeadm commands.|
 | ``kubeadmconfig.postKubeadmCommands`` | A list of additional commands to invoke **after** running kubeadm commands.|
-| ``pack.serviceDomain`` | The DNS name for the service domain in the cluster. Default: ``cluster.local``.|
-
 
 ## Usage 
   
 The Kubeadm configuration file is where you can do the following:
 
-<br />
-
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
 
-- Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).  
-
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.24#change-cluster-dns-service-domain). 
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+
+### Change Cluster DNS Service Domain
+
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+
+```yaml
+pack:
+  k8sHardening: True
+  podCIDR: "172.16.0.0/16"
+  serviceClusterIPRange: "10.96.0.0/12"
+  serviceDomain: "<your_cluster_DNS_service_domain>"
+```
+
+:::caution
+
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
+
+:::
+
+For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
 
 #### Configuration Changes
@@ -1132,11 +1172,7 @@ When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
 
-<br />
-
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
-
-  <br />
 
   :::caution
 
