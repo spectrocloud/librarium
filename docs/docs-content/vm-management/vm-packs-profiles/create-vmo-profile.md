@@ -35,8 +35,6 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
 
 
 6. Use the information below to find the **Virtual Machine Orchestrator** pack:
-
-    <br />
     
     - **Pack Type**: System App
     - **Registry**: Public Repo
@@ -44,11 +42,9 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
     - **Pack Version**: 1.0 or higher
 
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
+7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
 
-    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
-
-    <br />
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired. The Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This option requires you to be on a network that can reach the IP address given to the LoadBalancer service.
 
     :::caution
 
@@ -104,6 +100,8 @@ You can validate the profile is created.
 ## Next Steps
 
 You will need to configure roles and role bindings to give users access virtual clusters. You can use VM user roles and permissions or standard Kubernetes roles. For configuration guidance, refer to [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings). The [VM User Roles and Permissions](/vm-management/vm-roles-permissions) reference lists Cluster Roles and equivalent Palette Roles.
+
+If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](https://docs.spectrocloud.com/integrations/kubernetes/#use-rbac-with-oidc).
 
 
 ## Resources

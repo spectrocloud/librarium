@@ -22,8 +22,6 @@ You must configure permissions for actions that users can perform on Virtual Mac
 
 - Additional cluster roles, based on the user's persona, must be associated with the user by specifying a cluster role binding or a namespace-restricted role binding:
 
-    <br />
-
     - ``spectro-vm-admin``
 
     - ``spectro-vm-power-user``
@@ -48,6 +46,8 @@ You must configure permissions for actions that users can perform on Virtual Mac
 
 3. Click on **Settings** and choose **RBAC** to add role bindings. Refer to [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) for guidance. Refer to [VM User Roles and Permissions](/vm-management/vm-roles-permissions) for a list of Cluster Roles and equivalent Palette Roles.
 
+    If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](https://docs.spectrocloud.com/integrations/kubernetes/#use-rbac-with-oidc).
+
 
 4. Click **Confirm** to update the cluster.
 	
@@ -57,9 +57,6 @@ The cluster status displays as **Upgrading** on the **Cluster Overview** page. U
 ## Validate
 
 You can verify role creation and role binding is successful by following the steps below.
-
-<br />
-
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
