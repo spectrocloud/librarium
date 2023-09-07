@@ -3,16 +3,20 @@ const parser = require('@babel/parser');
 const generate = require('@babel/generator').default;
 const t = require('@babel/types');
 
+
+const docusaurusConfigFile = require('docusaurus.config.js');
+const versionsJSONFile = require('versions.json');
+
 let versionsArray = [];
 try {
-  const versionsJson = fs.readFileSync('versions.json', 'utf8');
+  const versionsJson = fs.readFileSync(versionsJSONFile, 'utf8'); // Read the versions.json file
   versionsArray = JSON.parse(versionsJson);
 } catch (err) {
   console.error('Could not read versions.json:', err);
 }
 
 // Read and parse the existing docusaurus.config.js
-const configCode = fs.readFileSync('docusaurus.config.js', 'utf8');
+const configCode = fs.readFileSync(docusaurusConfigFile, 'utf8'); // Read the docusaurus.config.js file
 const ast = parser.parse(configCode, {
   sourceType: 'module',
 });
