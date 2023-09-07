@@ -87,15 +87,20 @@ const config = {
         docs: {
           path: "docs/docs-content",
           showLastUpdateAuthor: false,
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
           routeBasePath: "/",
-          // lastVersion: "current",
-          // versions: {
-          //   current: {
-          //     label: "v3.4.0",
-          //   },
-          // },
-          exclude: ["api/v1/palette-apis-3-4"],
+          lastVersion: "current",
+          includeCurrentVersion: true,
+          versions: {
+            current: {
+              label: "Latest",
+            },
+          //   "4.0.0": {
+          //     label: "4.0.0",
+          //     banner: "none",
+          //   }
+          },
+          // exclude: ["api/v1/palette-apis-3-4"],
 
           sidebarPath: require.resolve("./sidebars.js"),
           async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
@@ -246,6 +251,10 @@ const config = {
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'left',
           },
         ],
         hideOnScroll: true,
