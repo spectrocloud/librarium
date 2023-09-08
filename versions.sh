@@ -64,6 +64,8 @@ for branch in $(git branch --format '%(refname:short)'); do
 
     sleep 5
 
+    ls -l
+
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
     mkdir -p $tempdir/staging_docs/version-$extracted_version
