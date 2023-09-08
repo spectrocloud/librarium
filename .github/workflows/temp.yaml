@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4.0.0
+        uses: actions/checkout@v4
         with:
          fetch-depth: '0'
 
@@ -43,7 +43,9 @@ jobs:
 
       - name: Build
         run: |
+          git for-each-ref --format '%(refname:short)' refs/heads/
           make versions-ci
+          
 
       # - name: Deploy Preview
       #   run: |
