@@ -1,4 +1,4 @@
 [build]
   ignore = "./scripts/netlify.sh"
-  command = "./scripts/versions.sh /tmp"
+  command = "cp scripts/update_docusaurs_config.js . && ./scripts/versions.sh /tmp"
 
