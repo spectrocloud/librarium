@@ -33,7 +33,7 @@ versions: ## Create Docusarus content versions
 	./scripts/versions.sh $(TMPDIR)
 
 
-versions-ci: ## Create Docusarus content versions in a CI environment
+versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environment
 	@echo "creating versions"
 	./scripts/versions.sh $$RUNNER_TEMP
 	npm run build
