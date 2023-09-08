@@ -29,20 +29,27 @@ exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD 
 
 # Save the current branch name
 current_branch=$(git branch --show-current)
+
+# If current branch is empty, then use HEAD
+if [ -z "$current_branch" ]; then
+    current_branch=$HEAD
+fi
+
 echo "Current branch: $current_branch"
 echo "HEAD: $HEAD"
+echo "Branch: $branch"
 
 # Fetch all branches from the remote
 git fetch -p origin
 branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
 
 # Loop through each branch to fetch it locally
-for branch in $branches; do
+for b in $branches; do
   # Remove leading spaces and remote prefix (if any)
-  branch=$(echo $branch | sed 's/ *//;s/remotes\/origin\///')
+  b=$(echo $b | sed 's/ *//;s/remotes\/origin\///')
 
   # Fetch the remote branch to corresponding local branch
-  git fetch origin $branch:$branch
+  git fetch origin $b:$b
 done
 
 
@@ -62,19 +69,19 @@ echo '[]' > $tempdir/temp_versions.json  # Initialize as an empty array if it do
 echo "Entering the loop to generate the versioned documentation"
 
 # Loop through all local branches
-for branch in $(git branch --format '%(refname:short)'); do
+for item in $(git branch --format '%(refname:short)'); do
 
   echo "Checking branch: $branch"
   
   # Check if the branch is in the exclude list
-  if [[ " ${exclude_branches[@]} " =~ " ${branch} " ]]; then
-    echo "Skipping excluded branch: $branch"
+  if [[ " ${exclude_branches[@]} " =~ " ${item} " ]]; then
+    echo "Skipping excluded branch: $item"
     continue
   fi
   
   # Check if the branch name starts with 'version-' followed by numbers
-  if [[ $branch =~ ^version-[0-9]+(-[0-9]+)*$ ]]; then
-    echo "Found branch: $branch"
+  if [[ $item =~ ^version-[0-9]+(-[0-9]+)*$ ]]; then
+    echo "Found branch: $item"
 
     # Extract the version and replace '-' with '.'
     version=${branch#version-}
@@ -99,10 +106,10 @@ for branch in $(git branch --format '%(refname:short)'); do
 
 
     # Switch to the version branch
-    git checkout $branch
+    git checkout $item
 
     # Pull the latest changes 
-    git pull origin $branch
+    git pull origin $item
 
     # Run the npm command
     echo "Running: npm run docusaurus docs:version $extracted_versionX"
