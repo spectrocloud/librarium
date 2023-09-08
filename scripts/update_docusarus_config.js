@@ -7,6 +7,7 @@ const t = require('@babel/types');
 const docusaurusConfigFile = 'docusaurus.config.js';
 const versionsJSONFile = 'versions.json';
 const tempDirectory = process.argv[2] // The first argument is the path to the temp directory
+const baseDirectory = process.argv[3] // The second argument is the path to the base directory
 
 let versionsArray = [];
 try {
@@ -17,7 +18,7 @@ try {
 }
 
 // Read and parse the existing docusaurus.config.js
-const configCode = fs.readFileSync(docusaurusConfigFile, 'utf8'); // Read the docusaurus.config.js file
+const configCode = fs.readFileSync(`${baseDirectory}/${docusaurusConfigFile}`, 'utf8'); // Read the docusaurus.config.js file
 const ast = parser.parse(configCode, {
   sourceType: 'module',
 });

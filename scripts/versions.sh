@@ -1,10 +1,22 @@
 #!/bin/bash
 
+###################################################################################################
+# This script is used to generate the versioned documentation for Docusaurus.                      
+# The script first loops through all version-* branches and runs the Docusaurus command            
+# to generate the versioned documentation.                                                        
+# The version folders and their content are moved to a temp directory specified by you through the first argument to the script. 
+# Once all the version folder are generated, the script moves the versioned folders from the temp directory to the root directory. 
+# Lastly, a nodeJS script is run to update the docusarus.config.js file.
+# The docusarus.config.js file is updated to remove the default Docusarus banner for old versions that states it's no longer maintained. 
+# The script also updates the versions.json file to include the new versions.
+###################################################################################################                      
+
 tempdir=$1
-baseDir=$(pwd)
+baseDir=$(dirname "$PWD") # Get the parent directory of the current directory
 
 # List of version branches to exclude
-exclude_branches=("version-3-4" ) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+# exclude_branches=("version-3-4")
 
 # Save the current branch name
 current_branch=$(git branch --show-current)
@@ -13,9 +25,9 @@ current_branch=$(git branch --show-current)
 git fetch
 
 # Remove the existing versioned directories in the temp directory.
-rm -rfv $tempdir/staging_docs
-rm -rfv $tempdir/staging_sidebars
-rm -rfv $tempdir/temp_versions.json
+rm -rf $tempdir/staging_docs
+rm -rf $tempdir/staging_sidebars
+rm -rf $tempdir/temp_versions.json
 
 
 # Create the staging directory for all the versions
@@ -49,7 +61,7 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Extracted version: $extracted_version"
 
     # Add version to temp_versions.json and sort it
-    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > temp.json && mv temp.json $tempdir/temp_versions.json
+    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json && rm $tempdir/temp.json
 
     # Switch to the version branch
     git checkout $branch
@@ -61,14 +73,21 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
 
+
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
-    cp -R versioned_docs/version-$extracted_version/* $tempdir/staging_docs/version-$extracted_version
-    cp -R versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/version-$extracted_version
+    mkdir -p $tempdir/staging_docs/version-$extracted_version
+    mkdir -p $tempdir/staging_sidebars/version-$extracted_version
+    
+    cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version
+    cp -R versioned_sidebars/version-$extracted_version $tempdir/staging_sidebars/version-$extracted_version
+    cp versioned_sidebars/version-$extracted_version-sidebars.json $tempdir/staging_sidebars/version-$extracted_version-sidebars.json
 
-    rm -rfv versioned_docs/
-    rm -rfv versioned_sidebars/
-    rm temp.json
+
+    rm -rf versioned_docs/
+    rm -rf versioned_sidebars/
+
+    rm versions.json
 
     # Switch back to the original branch
     git checkout $current_branch
@@ -77,12 +96,19 @@ done
 
 # Rename the staging directory to the expected Docusarus versioned directory names
 cp -R $tempdir/staging_docs $baseDir/versioned_docs
-cp -$ $tempdir/staging_sidebars $baseDir/versioned_sidebars
+cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 
 # Remove the existing versions.json if it exists
 [ -e versions.json ] && rm versions.json
 
 # Rename temp_versions.json to versions.json
-mv temp_versions.json $baseDir/versions.json
+mv $tempdir/temp_versions.json $baseDir/versions.json
 
-# node update_docusarus_config.js
+node update_docusarus_config.js $tempdir $baseDir
+
+if [ $? -ne 0 ]; then
+  echo "Error updating docusarus.config.js"
+  exit 1
+fi
+
+mv $tempdir/temp.docusaurus.config.js $baseDir/docusaurus.config.js
