@@ -20,7 +20,7 @@ Ensure you exercise caution when modifying node pools. We recommend creating a [
 
 In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](/glossary-all#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool. 
 
-The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 900 seconds (15 minutes). You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
+The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 0 seconds. You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
 
 
 ## Node Pool Configuration Settings
