@@ -57,11 +57,11 @@ for branch in $(git branch --format '%(refname:short)'); do
 
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
-    mv versioned_docs/version-$extracted_version/* $tempdir/staging_docs/
-    mv versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/
+    cp -R versioned_docs/version-$extracted_version/* $tempdir/staging_docs/version-$extracted_version
+    cp -R versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/version-$extracted_version
 
-    rm -rfv versioned_docs/version-$extracted_version
-    rm -rfv versioned_sidebars/version-$extracted_version
+    rm -rfv versioned_docs/
+    rm -rfv versioned_sidebars/
     rm temp.json
 
     # Switch back to the original branch
@@ -70,8 +70,8 @@ for branch in $(git branch --format '%(refname:short)'); do
 done
 
 # Rename the staging directory to the expected Docusarus versioned directory names
-mv $tempdir/staging_docs versioned_docs
-mv $tempdir/staging_sidebars versioned_sidebars
+cp -R $tempdir/staging_docs $baseDir/versioned_docs
+cp -$ $tempdir/staging_sidebars $baseDir/versioned_sidebars
 
 # Remove the existing versions.json if it exists
 [ -e versions.json ] && rm versions.json
