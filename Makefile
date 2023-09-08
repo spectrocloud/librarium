@@ -35,17 +35,7 @@ versions: ## Create Docusarus content versions
 
 versions-ci: ## Create Docusarus content versions in a CI environment
 	@echo "creating versions"
-	find . -maxdepth 1 ! -name '.' ! -name 'node_modules' -exec rm -rf {} +
-	ls -ll
-	git clone https://github.com/spectrocloud/librarium.git work
-	cd work && cp -r * ../ && cd .. && rm -rf work
-	git fetch
-	git for-each-ref --format '%(refname:short)' refs/heads/
-	git checkout $$HEAD
 	./scripts/versions.sh /tmp
-	cat versions.json
-	npm run build
-	cat docusaurus.config.js
 
 ##@ Git Targets
 
