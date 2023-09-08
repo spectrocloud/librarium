@@ -71,6 +71,7 @@ for branch in $(git branch --format '%(refname:short)'); do
     cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version && \
     cp -R versioned_sidebars/version-$extracted_version $tempdir/staging_sidebars/version-$extracted_version
 
+
     # rm -rf versioned_docs/
     # rm -rf versioned_sidebars/
 
