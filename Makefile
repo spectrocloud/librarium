@@ -4,6 +4,8 @@ IMAGE:=spectrocloud/librarium
 # Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
 CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
 
+TEMP_DIR=$(shell $TMPDIR)
+
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
@@ -28,7 +30,7 @@ build: ## Run npm build
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"
-	./scripts/versions.sh $(TEMP_DIR)
+	./scripts/versions.sh $(TMPDIR)
 	npm run build
 
 ##@ Git Targets
