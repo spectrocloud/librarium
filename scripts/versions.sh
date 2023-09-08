@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ###################################################################################################
 # This script is used to generate the versioned documentation for Docusaurus.                      
 # The script first loops through all version-* branches and runs the Docusaurus command            
@@ -119,6 +121,7 @@ cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 # Rename temp_versions.json to versions.json
 mv $tempdir/temp_versions.json $baseDir/versions.json
 
+echo "Updating docusarus.config.js through node script"
 node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir
 
 if [ $? -ne 0 ]; then
@@ -127,3 +130,5 @@ if [ $? -ne 0 ]; then
 fi
 
 mv $tempdir/temp.docusaurus.config.js $baseDir/docusaurus.config.js
+
+echo "Versioned documentation generated successfully"
