@@ -31,7 +31,7 @@ exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD 
 current_branch=$(git branch --show-current)
 
 # Fetch all branches
-git fetch
+git fetch --unshallow
 
 # Remove the existing versioned directories in the temp directory.
 rm -rf $tempdir/staging_docs

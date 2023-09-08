@@ -1,5 +1,5 @@
 [build]
   ignore = "./scripts/netlify.sh"
   # command = "npm run build"
-  command = "git clone --depth 1 && make versions-ci"
+  command = "make versions-ci"
 
