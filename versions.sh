@@ -61,7 +61,7 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
 
-    ls -ll versioned_sidebars
+    tree
 
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
@@ -90,6 +90,6 @@ cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 [ -e versions.json ] && rm versions.json
 
 # Rename temp_versions.json to versions.json
-mv temp_versions.json $baseDir/versions.json
+mv $tempdir/temp_versions.json $baseDir/versions.json
 
 # node update_docusarus_config.js
