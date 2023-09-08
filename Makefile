@@ -36,7 +36,9 @@ versions: ## Create Docusarus content versions
 versions-ci: ## Create Docusarus content versions in a CI environment
 	@echo "creating versions"
 	./scripts/versions.sh /tmp
+	cat versions.json
 	npm run build
+	cat docusaurus.config.js
 
 ##@ Git Targets
 
