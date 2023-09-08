@@ -35,9 +35,10 @@ versions: ## Create Docusarus content versions
 
 versions-ci: ## Create Docusarus content versions in a CI environment
 	@echo "creating versions"
+	pwd
 	cd .. && rm -rfv librarium
 	ls -ll
-	git clone https://github.com/spectrocloud/librarium.git --depth 0
+	git clone https://github.com/spectrocloud/librarium.git --depth 1
 	cd librarium && git fetch && \
 	git for-each-ref --format '%(refname:short)' refs/heads/
 	git checkout $$HEAD
