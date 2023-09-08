@@ -1,4 +1,6 @@
 [build]
   ignore = "./scripts/netlify.sh"
-  command = "./scripts/versions.sh /tmp"
+  # command = "./scripts/versions.sh /tmp && npm run build"
+  command = "make versions && npm run build"
+
 

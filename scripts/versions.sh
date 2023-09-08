@@ -148,7 +148,6 @@ cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 mv $tempdir/temp_versions.json $baseDir/versions.json
 
 echo "Updating docusarus.config.js through the node script."
-ls -ll $baseDir/scripts 
 node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir
 
 if [ $? -ne 0 ]; then
