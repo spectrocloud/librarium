@@ -55,8 +55,8 @@ for branch in $(git branch --format '%(refname:short)'); do
     version=${branch#version-}
     version=${version//-/.}
 
-    # Append .0 to the version
-    version="$version.0"
+    # Append .x to the version
+    version="$version.x"
 
     # Store in a variable
     extracted_version=$version
