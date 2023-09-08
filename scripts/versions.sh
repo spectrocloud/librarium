@@ -45,8 +45,13 @@ mkdir -p $tempdir/staging_sidebars
 touch $tempdir/temp_versions.json
 echo '[]' > $tempdir/temp_versions.json  # Initialize as an empty array if it doesn't exist
 
+
+echo "Entering the loop to generate the versioned documentation"
+
 # Loop through all local branches
 for branch in $(git branch --format '%(refname:short)'); do
+
+  echo "Checking branch: $branch"
   
   # Check if the branch is in the exclude list
   if [[ " ${exclude_branches[@]} " =~ " ${branch} " ]]; then
