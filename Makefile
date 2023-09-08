@@ -32,6 +32,11 @@ versions: ## Create Docusarus content versions
 	@echo "creating versions"
 	./scripts/versions.sh $(TMPDIR)
 
+
+versions-ci: ## Create Docusarus content versions in a CI environment
+	@echo "creating versions"
+	./scripts/versions.sh /tmp
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
