@@ -36,7 +36,7 @@ versions: ## Create Docusarus content versions
 versions-ci: ## Create Docusarus content versions in a CI environment
 	@echo "creating versions"
 	pwd
-	cd .. && rm -rfv librarium
+	cd .. && rm -rfv  /opt/build/repo
 	ls -ll
 	git clone https://github.com/spectrocloud/librarium.git --depth 1
 	cd librarium && git fetch && \
