@@ -61,6 +61,12 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
 
+    # Check if the npm command was successful, otherwise exit
+    if [ $? -ne 0 ]; then
+      echo "Error running npm command"
+      exit 1
+    fi
+
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
     mkdir -p $tempdir/staging_docs/version-$extracted_version
