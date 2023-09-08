@@ -30,8 +30,22 @@ exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD 
 # Save the current branch name
 current_branch=$(git branch --show-current)
 
-# Fetch all branches
-git fetch
+# Fetch all branches from the remote
+git fetch origin
+
+# Get the list of all branches and filter them using grep and the provided regex
+branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
+
+# Loop through each branch and check it out locally
+for branch in $branches; do
+  # Remove leading spaces and remote prefix (if any)
+  branch=$(echo $branch | sed 's/ *//;s/remotes\/origin\///')
+  
+  # Create local branch and set it to track remote branch
+  git checkout -b $branch origin/$branch 2>/dev/null || git checkout $branch
+done
+
+git checkout $current_branch
 
 
 # Remove the existing versioned directories in the temp directory.
