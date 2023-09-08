@@ -68,12 +68,13 @@ for branch in $(git branch --format '%(refname:short)'); do
     mkdir -p $tempdir/staging_docs/version-$extracted_version
     mkdir -p $tempdir/staging_sidebars/version-$extracted_version
     
-    cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version && \
+    cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version
     cp -R versioned_sidebars/version-$extracted_version $tempdir/staging_sidebars/version-$extracted_version
+    cp versioned_sidebars/version-$extracted_version/version-$extracted_version-sidebars.json $tempdir/staging_sidebars/version-$extracted_version/version-$extracted_version-sidebars.json
 
 
-    # rm -rf versioned_docs/
-    # rm -rf versioned_sidebars/
+    rm -rf versioned_docs/
+    rm -rf versioned_sidebars/
 
     rm versions.json
 
