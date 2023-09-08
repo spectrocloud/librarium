@@ -48,7 +48,7 @@ The following tables contain the configuration settings for node pools. Dependin
 |-----------|-------------|
 | **Node pool name** | A descriptive name for the worker pool. |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. |
-| **Node repave interval** | The time interval in seconds between repaves. The default value is 900 seconds (15 minutes). |
+| **Node repave interval** | The time interval in seconds between repaves. The default value is 0 seconds. |
 | **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
 | **Rolling update** |  Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones. |
