@@ -12,11 +12,8 @@
 ###################################################################################################                      
 
 tempdir=$1
-baseDir=$(dirname "$PWD") # Get the parent directory of the current directory
-
-# Exit the script folder.
-cd ..
-
+baseDir=$($PWD) # Get the parent directory of the current directory
+echo "Base directory: $baseDir"
 # List of version branches to exclude
 exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
