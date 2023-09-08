@@ -31,8 +31,7 @@ exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD 
 current_branch=$(git branch --show-current)
 
 # Fetch all branches from the remote
-git fetch origin
-
+git fetch -p origin
 branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
 
 # Loop through each branch to fetch it locally
