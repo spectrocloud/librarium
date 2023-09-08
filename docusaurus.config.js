@@ -87,7 +87,7 @@ const config = {
       includeCurrentVersion: true,
       versions: {
         current: {
-          label: "Latest"
+          label: "latest"
         }
       },
       // exclude: ["api/v1/palette-apis-3-4"],
