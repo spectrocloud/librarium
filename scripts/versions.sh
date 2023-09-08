@@ -32,7 +32,8 @@ current_branch=$(git branch --show-current)
 
 # Fetch all branches
 # git fetch --filter=tree:0
-git fetch origin '+refs/heads/*:refs/remotes/origin/*'
+git remote update
+git fetch --depth=1
 
 
 # Remove the existing versioned directories in the temp directory.
