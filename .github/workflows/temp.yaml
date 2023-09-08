@@ -43,7 +43,7 @@ jobs:
 
       - name: Build
         run: |
-          ./scripts/versions.sh $RUNNER_TEMP
+          make versions-ci
           
 
       # - name: Deploy Preview
