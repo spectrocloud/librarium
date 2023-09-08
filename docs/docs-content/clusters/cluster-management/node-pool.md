@@ -20,7 +20,7 @@ Ensure you exercise caution when modifying node pools. We recommend creating a [
 
 In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](/glossary-all#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool. 
 
-The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 900 seconds (15 minutes). You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
+The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 0 seconds. You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
 
 
 ## Node Pool Configuration Settings
@@ -48,7 +48,7 @@ The following tables contain the configuration settings for node pools. Dependin
 |-----------|-------------|
 | **Node pool name** | A descriptive name for the worker pool. |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. |
-| **Node repave interval** | The time interval in seconds between repaves. The default value is 900 seconds (15 minutes). |
+| **Node repave interval** | The time interval in seconds between repaves. The default value is 0 seconds. |
 | **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
 | **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
 | **Rolling update** |  Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones. |
