@@ -43,7 +43,8 @@ jobs:
 
       - name: Build
         run: |
-          make versions-ci
+           cd .. && mkdir temp && cd -
+          ./scripts/versions.sh ../temp
           git for-each-ref --format '%(refname:short)' refs/heads/
           
 
