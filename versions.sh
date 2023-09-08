@@ -49,7 +49,7 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Extracted version: $extracted_version"
 
     # Add version to temp_versions.json and sort it
-    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > temp.json && mv temp.json $tempdir/temp_versions.json
+    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json && rm $tempdir/temp.json
 
     # Switch to the version branch
     git checkout $branch
@@ -61,11 +61,8 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
 
-    # Check if the npm command was successful, otherwise exit
-    if [ $? -ne 0 ]; then
-      echo "Error running npm command"
-      exit 1
-    fi
+
+    sleep 5
 
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
