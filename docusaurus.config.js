@@ -85,11 +85,7 @@ const config = {
       routeBasePath: "/",
       lastVersion: "current",
       includeCurrentVersion: true,
-      versions: {
-        current: {
-          label: "Latest"
-        }
-      },
+      versions: {},
       // exclude: ["api/v1/palette-apis-3-4"],
 
       sidebarPath: require.resolve("./sidebars.js"),

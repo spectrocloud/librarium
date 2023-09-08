@@ -39,6 +39,10 @@ ast.program.body.forEach((node) => {
   }
 });
 
+// Update the default behavior of displaying the "current" for the latest version and use the term "latest" instead.
+const latestProperty = t.objectProperty(t.stringLiteral("current"), t.objectExpression([t.objectProperty(t.identifier('label'), t.stringLiteral('Latest'))]));
+configObject.properties.push(latestProperty);
+
 // Add versions to 'configObject'
 versionsArray.forEach((version) => {
   const versionProperty = t.objectProperty(

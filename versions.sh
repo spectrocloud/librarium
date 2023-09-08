@@ -15,7 +15,7 @@ tempdir=$1
 baseDir=$(pwd)
 
 # List of version branches to exclude
-exclude_branches=() # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
 
 # Save the current branch name
