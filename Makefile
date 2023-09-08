@@ -38,7 +38,7 @@ commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
 	git commit -am "$(MESSAGE)"
 	git push origin HEAD
 	./scripts/open-pr.sh
-.
+
 ##@ Docker Targets
 
 docker-image: ## Build the docker image
