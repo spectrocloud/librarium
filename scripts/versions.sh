@@ -36,8 +36,8 @@ if [ -z "$current_branch" ]; then
 fi
 
 echo "Current branch: $current_branch"
-echo "HEAD: $HEAD"
-echo "Branch: $branch"
+echo "HEAD Branch: $HEAD"
+
 
 # Fetch all branches from the remote
 git fetch -p origin
