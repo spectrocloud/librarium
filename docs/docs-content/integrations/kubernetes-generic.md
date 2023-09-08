@@ -78,7 +78,7 @@ The Kubeadm configuration file is where you can do the following:
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml hideClipboard
 pack:
@@ -288,7 +288,7 @@ The Kubeadm configuration file is where you can do the following:
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml
 pack:
@@ -492,7 +492,7 @@ The Kubeadm configuration file is where you can do the following:
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml
 pack:
@@ -704,7 +704,7 @@ The Kubeadm configuration file is where you can do the following:
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and it's value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml
 pack:
