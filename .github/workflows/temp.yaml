@@ -44,7 +44,6 @@ jobs:
       - name: Build
         run: |
           ./scripts/versions.sh $RUNNER_TEMP
-          git for-each-ref --format '%(refname:short)' refs/heads/
           
 
       # - name: Deploy Preview
