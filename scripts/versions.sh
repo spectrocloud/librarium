@@ -29,6 +29,8 @@ exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD 
 
 # Save the current branch name
 current_branch=$(git branch --show-current)
+echo "Current branch: $current_branch"
+echo "HEAD: $HEAD"
 
 # Fetch all branches from the remote
 git fetch -p origin
@@ -124,6 +126,7 @@ for branch in $(git branch --format '%(refname:short)'); do
 
     # Switch back to the original branch
     git checkout $current_branch
+    echo "Switched back to branch: $current_branch"
   fi
 done
 
@@ -139,7 +142,7 @@ mv $tempdir/temp_versions.json $baseDir/versions.json
 
 echo "Updating docusarus.config.js through the node script."
 ls -ll $baseDir/scripts 
-node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir || node $baseDir/update_docusarus_config.js $tempdir $baseDir || node update_docusarus_config.js $tempdir $baseDir
+node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir
 
 if [ $? -ne 0 ]; then
   echo "Error updating docusarus.config.js"
