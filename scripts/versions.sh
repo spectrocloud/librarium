@@ -48,6 +48,9 @@ for branch in $(git branch --format '%(refname:short)'); do
     # Switch to the version branch
     git checkout $branch
 
+    # Pull the latest changes 
+    git pull origin $branch
+
     # Run the npm command
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
