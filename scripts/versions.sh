@@ -14,6 +14,11 @@
 tempdir=$1
 baseDir="$PWD" # Get the parent directory of the current directory
 
+# Check if the temp directory is specified, otherwise use /tmp
+if [ -z "$tempdir" ]; then
+  tempdir="/tmp"
+fi
+
 echo "Temp directory: $tempdir"
 echo "Base directory: $baseDir"
 # List of version branches to exclude
