@@ -13,7 +13,7 @@ current_branch=$(git branch --show-current)
 git fetch
 
 # Create the staging directory for all the versions
-mkdir -p $tempdir/taging_docs
+mkdir -p $tempdir/staging_docs
 mkdir -p $tempdir/staging_sidebars
 touch $tempdir/temp_versions.json
 echo '[]' > $tempdir/temp_versions.json  # Initialize as an empty array if it doesn't exist
@@ -54,7 +54,7 @@ for branch in $(git branch --format '%(refname:short)'); do
 
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
-    mv versioned_docs/version-$extracted_version/* $tempdir/taging_docs/
+    mv versioned_docs/version-$extracted_version/* $tempdir/staging_docs/
     mv versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/
 
     rm -rfv versioned_docs/version-$extracted_version
