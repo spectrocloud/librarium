@@ -114,7 +114,8 @@ for branch in $(git branch --format '%(refname:short)'); do
     
     cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/version-$extracted_versionX
     cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/version-$extracted_versionX
-    cp versioned_sidebars/version-{$extracted_versionX}-sidebars.json $tempdir/staging_sidebars/version-{$extracted_versionX}-sidebars.json
+    cp -R versioned_sidebars/* $tempdir/staging_sidebars
+    # cp versioned_sidebars/version-{$extracted_versionX}-sidebars.json $tempdir/staging_sidebars/version-{$extracted_versionX}-sidebars.json
 
 
     rm -rf versioned_docs/
