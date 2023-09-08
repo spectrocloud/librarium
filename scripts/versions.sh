@@ -12,6 +12,12 @@ current_branch=$(git branch --show-current)
 # Fetch all branches
 git fetch
 
+# Remove the existing versioned directories in the temp directory.
+rm -rfv $tempdir/staging_docs
+rm -rfv $tempdir/staging_sidebars
+rm -rfv $tempdir/temp_versions.json
+
+
 # Create the staging directory for all the versions
 mkdir -p $tempdir/staging_docs
 mkdir -p $tempdir/staging_sidebars
