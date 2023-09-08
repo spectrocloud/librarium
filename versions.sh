@@ -13,9 +13,9 @@ current_branch=$(git branch --show-current)
 git fetch
 
 # Remove the existing versioned directories in the temp directory.
-rm -rfv $tempdir/staging_docs
-rm -rfv $tempdir/staging_sidebars
-rm -rfv $tempdir/temp_versions.json
+rm -rf $tempdir/staging_docs
+rm -rf $tempdir/staging_sidebars
+rm -rf $tempdir/temp_versions.json
 
 
 # Create the staging directory for all the versions
@@ -75,9 +75,8 @@ for branch in $(git branch --format '%(refname:short)'); do
     cp -R versioned_docs/version-$extracted_version/* $tempdir/staging_docs/version-$extracted_version
     cp -R versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/version-$extracted_version
 
-    rm -rfv versioned_docs/
-    rm -rfv versioned_sidebars/
-    rm temp.json
+    rm -rf versioned_docs/
+    rm -rf versioned_sidebars/
 
     # Switch back to the original branch
     git checkout $current_branch
