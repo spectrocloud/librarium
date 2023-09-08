@@ -61,22 +61,18 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
 
-
-    sleep 5
-
-    ls -l
+    ls -ll versioned_sidebars
 
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
     mkdir -p $tempdir/staging_docs/version-$extracted_version
     mkdir -p $tempdir/staging_sidebars/version-$extracted_version
     
-    cp -R versioned_docs/version-$extracted_version/* $tempdir/staging_docs/version-$extracted_version
-    sleep 1
-    cp -R versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/version-$extracted_version
+    cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version && \
+    cp -R versioned_sidebars/version-$extracted_version $tempdir/staging_sidebars/version-$extracted_version
 
-    rm -rf versioned_docs/
-    rm -rf versioned_sidebars/
+    # rm -rf versioned_docs/
+    # rm -rf versioned_sidebars/
 
     rm versions.json
 
