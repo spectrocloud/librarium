@@ -63,7 +63,7 @@ for branch in $(git branch --format '%(refname:short)'); do
     # Store in a variable
     extracted_version=$version
     extracted_versionX=$versionX
-    echo "Extracted version: $extracted_versionX"
+    echo "Extracted version: $extracted_version"
 
     # Add version to temp_versions.json and sort it
     jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json && rm $tempdir/temp.json
@@ -78,18 +78,18 @@ for branch in $(git branch --format '%(refname:short)'); do
     git pull origin $branch
 
     # Run the npm command
-    echo "Running: npm run docusaurus docs:version $extracted_version"
-    npm run docusaurus docs:version $extracted_version
+    echo "Running: npm run docusaurus docs:version $extracted_versionX"
+    npm run docusaurus docs:version $extracted_versionX
 
 
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
-    mkdir -p $tempdir/staging_docs/version-$extracted_version
-    mkdir -p $tempdir/staging_sidebars/version-$extracted_version
+    mkdir -p $tempdir/staging_docs/version-$extracted_versionX
+    mkdir -p $tempdir/staging_sidebars/version-$extracted_versionX
     
-    cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version
-    cp -R versioned_sidebars/version-$extracted_version $tempdir/staging_sidebars/version-$extracted_version
-    cp versioned_sidebars/version-$extracted_version-sidebars.json $tempdir/staging_sidebars/version-$extracted_version-sidebars.json
+    cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/version-$extracted_versionX
+    cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/version-$extracted_versionX
+    cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
 
 
     rm -rf versioned_docs/
