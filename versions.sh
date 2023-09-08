@@ -72,10 +72,13 @@ for branch in $(git branch --format '%(refname:short)'); do
     mkdir -p $tempdir/staging_sidebars/version-$extracted_version
     
     cp -R versioned_docs/version-$extracted_version/* $tempdir/staging_docs/version-$extracted_version
+    sleep 1
     cp -R versioned_sidebars/version-$extracted_version/* $tempdir/staging_sidebars/version-$extracted_version
 
     rm -rf versioned_docs/
     rm -rf versioned_sidebars/
+
+    rm versions.json
 
     # Switch back to the original branch
     git checkout $current_branch
@@ -84,7 +87,7 @@ done
 
 # Rename the staging directory to the expected Docusarus versioned directory names
 cp -R $tempdir/staging_docs $baseDir/versioned_docs
-cp -$ $tempdir/staging_sidebars $baseDir/versioned_sidebars
+cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 
 # Remove the existing versions.json if it exists
 [ -e versions.json ] && rm versions.json
