@@ -113,9 +113,8 @@ for branch in $(git branch --format '%(refname:short)'); do
     mkdir -p $tempdir/staging_sidebars/version-$extracted_versionX
     
     cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/version-$extracted_versionX
-    cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/version-$extracted_versionX
-    cp -R versioned_sidebars/* $tempdir/staging_sidebars
-    # cp versioned_sidebars/version-{$extracted_versionX}-sidebars.json $tempdir/staging_sidebars/version-{$extracted_versionX}-sidebars.json
+    cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/version-$extracted_versionX || true
+    cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
 
 
     rm -rf versioned_docs/
