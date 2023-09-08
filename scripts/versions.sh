@@ -31,8 +31,7 @@ exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD 
 current_branch=$(git branch --show-current)
 
 # Fetch all branches
-git fetch origin '+refs/heads/*:refs/remotes/origin/*' \
-                 '+refs/remotes/*:refs/remotes/upstream/*'
+git fetch --all
 
 
 # Remove the existing versioned directories in the temp directory.

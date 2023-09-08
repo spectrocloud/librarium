@@ -30,7 +30,11 @@ build: ## Run npm build
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"
-	./scripts/versions.sh $(TMPDIR)
+	cd .. && rm -rfv librarium
+	git clone git@github.com:spectrocloud/librarium.git
+	cd librarium && git fetch -all && \
+	git checkout $HEAD
+	./scripts/versions.sh /tmp
 
 
 versions-ci: ## Create Docusarus content versions in a CI environment
