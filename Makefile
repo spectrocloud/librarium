@@ -28,7 +28,7 @@ build: ## Run npm build
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"
-	./scripts/versions.sh
+	./scripts/versions.sh $(TEMP_DIR)
 	npm run build
 
 ##@ Git Targets
