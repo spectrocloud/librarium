@@ -57,10 +57,13 @@ for branch in $(git branch --format '%(refname:short)'); do
 
     # Append .0 to the version
     version="$version.0"
+    # Append .x to the version
+    versionX="$version.x"
 
     # Store in a variable
     extracted_version=$version
-    echo "Extracted version: $extracted_version"
+    extracted_versionX=$versionX
+    echo "Extracted version: $extracted_versionX"
 
     # Add version to temp_versions.json and sort it
     jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json && rm $tempdir/temp.json
