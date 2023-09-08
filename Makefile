@@ -26,6 +26,11 @@ build: ## Run npm build
 	rm -rf build
 	npm run build
 
+versions: ## Create Docusarus content versions
+	@echo "creating versions"
+	./scripts/versions.sh
+	npm run build
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
@@ -33,7 +38,7 @@ commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
 	git commit -am "$(MESSAGE)"
 	git push origin HEAD
 	./scripts/open-pr.sh
-
+.
 ##@ Docker Targets
 
 docker-image: ## Build the docker image
@@ -43,15 +48,22 @@ docker-start: docker-image ## Start a local development container
 	docker run --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
 
 
+##@ Writing Checks
+
 sync-vale: ## Install Vale plugins
 	vale sync
 
 check-writing: ## Run Vale lint checks
 	vale $(CHANGED_FILE) 
 
+
+##@ Clean Server Artifacts
+
 fix-server: ## Fix server issues by removing the cache folder and reinstalling node modules
 	@echo "fixing server"
-	rm -rfv node_modules && rm -rfv .cache/ && npm ci
+	rm -rfv node_modules && npm ci && npm run clear
+
+###@ PDF Generation
 
 pdf: ## Generate PDF from docs
 	@echo "generating pdf"
