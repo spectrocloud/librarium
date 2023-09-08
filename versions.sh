@@ -15,7 +15,8 @@ tempdir=$1
 baseDir=$(pwd)
 
 # List of version branches to exclude
-exclude_branches=("version-3-4" ) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=("version-3-4") # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+# exclude_branches=("version-3-4")
 
 # Save the current branch name
 current_branch=$(git branch --show-current)
@@ -72,8 +73,6 @@ for branch in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_version"
     npm run docusaurus docs:version $extracted_version
 
-    tree
-
     # Copy the generated files to the staging directory
     echo "Copying files to staging directory"
     mkdir -p $tempdir/staging_docs/version-$extracted_version
@@ -81,7 +80,7 @@ for branch in $(git branch --format '%(refname:short)'); do
     
     cp -R versioned_docs/version-$extracted_version $tempdir/staging_docs/version-$extracted_version
     cp -R versioned_sidebars/version-$extracted_version $tempdir/staging_sidebars/version-$extracted_version
-    cp versioned_sidebars/version-$extracted_version/version-$extracted_version-sidebars.json $tempdir/staging_sidebars/version-$extracted_version/version-$extracted_version-sidebars.json
+    cp versioned_sidebars/version-$extracted_version-sidebars.json $tempdir/staging_sidebars/version-$extracted_version-sidebars.json
 
 
     rm -rf versioned_docs/
