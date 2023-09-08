@@ -84,7 +84,7 @@ for item in $(git branch --format '%(refname:short)'); do
     echo "Found branch: $item"
 
     # Extract the version and replace '-' with '.'
-    version=${branch#version-}
+    version=${item#version-}
     version=${version//-/.}
 
        # Append .x to the version
