@@ -1,5 +1,16 @@
 #!/bin/bash
 
+###################################################################################################
+# This script is used to generate the versioned documentation for Docusaurus.                      
+# The script first loops through all version-* branches and runs the Docusaurus command            
+# to generate the versioned documentation.                                                        
+# The version folders and their content are moved to a temp directory specified by you through the first argument to the script. 
+# Once all the version folder are generated, the script moves the versioned folders from the temp directory to the root directory. 
+# Lastly, a nodeJS script is run to update the docusarus.config.js file.
+# The docusarus.config.js file is updated to remove the default Docusarus banner for old versions that states it's no longer maintained. 
+# The script also updates the versions.json file to include the new versions.
+###################################################################################################                      
+
 tempdir=$1
 baseDir=$(pwd)
 
@@ -93,4 +104,11 @@ cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 # Rename temp_versions.json to versions.json
 mv $tempdir/temp_versions.json $baseDir/versions.json
 
-# node update_docusarus_config.js
+node update_docusarus_config.js $tempdir
+
+if [ $? -ne 0 ]; then
+  echo "Error updating docusarus.config.js"
+  exit 1
+fi
+
+mv $tempdir/temp.docusaurus.config.js $baseDir/docusaurus.config.js

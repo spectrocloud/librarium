@@ -4,8 +4,9 @@ const generate = require('@babel/generator').default;
 const t = require('@babel/types');
 
 
-const docusaurusConfigFile = require('docusaurus.config.js');
-const versionsJSONFile = require('versions.json');
+const docusaurusConfigFile = 'docusaurus.config.js';
+const versionsJSONFile = 'versions.json';
+const tempDirectory = process.argv[2] // The first argument is the path to the temp directory
 
 let versionsArray = [];
 try {
@@ -53,4 +54,4 @@ versionsArray.forEach((version) => {
 const updatedCode = generate(ast).code;
 
 // Write the updated code back to docusaurus.config.js
-fs.writeFileSync('temp.docusaurus.config.js', updatedCode);
+fs.writeFileSync(`${tempDirectory}/temp.docusaurus.config.js`, updatedCode);
