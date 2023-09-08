@@ -138,7 +138,7 @@ cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 mv $tempdir/temp_versions.json $baseDir/versions.json
 
 echo "Updating docusarus.config.js through the node script."
-node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir
+node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir || node $baseDir/update_docusarus_config.js $tempdir $baseDir 
 
 if [ $? -ne 0 ]; then
   echo "Error updating docusarus.config.js"
