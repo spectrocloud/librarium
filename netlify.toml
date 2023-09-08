@@ -1,3 +1,4 @@
 [build]
   ignore = "./scripts/netlify.sh"
+  command = "./scripts/versions.sh /tmp"
 
