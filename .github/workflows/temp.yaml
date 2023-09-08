@@ -41,7 +41,7 @@ jobs:
 
       - name: Build
         run: |
-          make version-ci
+          make versions-ci
           make build
 
       - name: Deploy Preview
