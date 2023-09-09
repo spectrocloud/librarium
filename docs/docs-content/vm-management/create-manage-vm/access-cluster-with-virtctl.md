@@ -17,7 +17,10 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
 
 ## Prerequisites
 
-- An active virtual cluster with Palette VM Management and access to it.
+- An active virtual cluster with Palette Virtual Machine Orchestrator (VMO).
+
+
+- Access to the virtual cluster.
 
 ## Download and Connect virtctl
 
@@ -33,7 +36,7 @@ The virtctl CLI also provides a lightweight Secure Copy Protocol (SCP) client wi
   ```
 <br />
 
-3. Next, log in to [Palette](https://console.spectrocloud.com) as a tenant admin to connect your host cluster with the virtctl CLI.
+3. Next, log in to [Palette](https://console.spectrocloud.com) to connect your host cluster with the virtctl CLI.
 
 
 4. Navigate to the left **Main Menu** and select **Clusters**. 

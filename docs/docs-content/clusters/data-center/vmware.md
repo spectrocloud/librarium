@@ -113,9 +113,10 @@ The vSphere user account used in the various Palette tasks must have the minimum
 
 <br />
 
-<InfoBox>
+:::info
 If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS),  ReadOnly access to the VDS without “Propagate to children” needs to be provided.
-</InfoBox>
+
+:::
 
 ## Privileges Under Root-Level Role
 
@@ -728,9 +729,7 @@ A Gateway cluster installation automatically creates a cloud account using the c
 
 :::
 
-</TabItem>
 
-</Tabs>
 
 ---
 ## Upgrade PCG
@@ -919,5 +918,7 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
 
 :::caution
+
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
+
 :::

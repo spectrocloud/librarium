@@ -11,9 +11,9 @@ sidebar_position: 0
 
 # Add Custom Registries
 
-Setting up a custom pack registry involves the installation of a registry server and configuring it with Palette.
-Once the registry server is installed, use the Spectro Cloud CLI tool to manage the contents of the pack registry.
-Pack contents are periodically synchronized with Palette.
+Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a Docker image provided by us. While deploying a pack registry server, you can employ a TLS certificate from a Certificate Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS and self-signed certificates. You can check out the [Advanced Configuration](/registries-and-packs/advanced-configuration) guide to learn about the customization options while deploying a pack registry server.
+
+After deploying a pack registry server, the next step is configuring the pack registry server in Palette. Once you finish configuring the pack registry server in Palette, Palette will synchronize the pack contents from the pack registry server periodically. 
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Pack contents are periodically synchronized with Palette.
 
 * Firewall ports 443/80 are required to be opened on the machine to allow traffic from the Palette console and Spectro CLI tool.
 
-* [OpenSSL](https://www.openssl.org/source/) if creating a self-signed certificate. Refer to the [Self-Signed Certificates](#self-signed-certificates) section for more guidance.
+* [OpenSSL](https://www.openssl.org/source/) if creating a self-signed certificate. Refer to the [Self-Signed Certificates](#self-signedcertificates) section below for more guidance.
 
 :::caution
 
@@ -38,62 +38,59 @@ Please ensure that the ports 443 and 80 are exclusively allocated to the registr
 
 ## Deploy Pack Registry Server with Let's Encrypt
 
-The following section demonstrates how you can deploy a registry server secured with a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
-
-Check out the [advanced configuration](/registries-and-packs/adding-a-custom-registry#deploypackregistryserverwithlet'sencrypt) section
-for more advanced configuration and deployment with self-signed certificates.
-
-Palette provides a Docker image for the pack registry server.
-
-The following steps need to be performed to deploy the pack registry server using this docker image:
-
+We provide a Docker image for setting up a pack registry server. Use the following steps to deploy a pack registry server using the designated Docker image and a TLS certificate issued by [Let's Encrypt](https://letsencrypt.org/).
 <br />
 
 1. Create a folder that contains an httppasswd file.
+<br />
 
-```
-mkdir spectropaxconfig
-```
+  ```bash
+  mkdir spectropaxconfig
+  ```
 
-2. Create the htpasswd file:
+2. Create a htpasswd file.
+<br />
 
-```shell
-htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
-```
+  ```shell
+  htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
+  ```
 
 
-3. Create a pax registry configuration file titled **myconfig.yml**. This file should be in the **spectropaxconfig** directory.
+3. Create a pax registry configuration file titled **myconfig.yml** in the **spectropaxconfig** directory. The YAML code block below displays the sample content for the **myconfig.yml** file. The current example assumes that your pack registry server will be hosted at `yourhost.companydomain.com` and the email id for notifications is `you@companydomain.com`. Replace the `host` and `email` attribute values as applicable to you. 
+<br />
 
-```yaml
-version: 0.1
-log:
-  level: debug
-storage: inmemory
-http:
-  addr: :5000
-  tls:
-    letsencrypt:
-      cachefile: /etc/spectropaxconfig/le-cache
-      email: you@companydomain.com
-      hosts: 
-      - yourhost.companydomain.com 
-auth:
-  htpasswd:
-    realm: basic-realm
-    path: /etc/spectropaxconfig/htpasswd-basic
-```
+  ```yaml
+  version: 0.1
+  log:
+    level: debug
+  storage: inmemory
+  http:
+    addr: :5000
+    tls:
+      letsencrypt:
+        cachefile: /etc/spectropaxconfig/le-cache
+        email: you@companydomain.com
+        hosts: 
+        - yourhost.companydomain.com 
+  auth:
+    htpasswd:
+      realm: basic-realm
+      path: /etc/spectropaxconfig/htpasswd-basic
+  ```
 
 3. Start the container image with the following flags.
 
-```
-docker run  \
-    --rm \
-    --port 443:5000 \
-    --name spectro-registry \
-    --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
-    gcr.io/spectro-images-public/release/spectro-registry:3.3.0  \
-    serve /etc/spectropaxconfig/myconfig.yml
-```
+<br />
+
+  ```bash
+  docker run  \
+      --rm \
+      --port 443:5000 \
+      --name spectro-registry \
+      --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
+      gcr.io/spectro-images-public/release/spectro-registry:4.0.2  \
+      serve /etc/spectropaxconfig/myconfig.yml
+  ```
 
 You can now access the pack registry at `https://yourhost.companydomain.com/v1/`.
 You will be prompted to give the user admin and the password of your choice.
@@ -103,38 +100,34 @@ You will be prompted to give the user admin and the password of your choice.
 The following steps need to be performed to deploy the pack registry server using self-signed certificates:
 
 1. Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file will be mounted inside the pack registry docker container.
+<br />
 
-    <br />
-
-    ```bash
-    mkdir -p /root/auth
-    ```
+  ```bash
+  mkdir -p /root/auth
+  ```
 
 2. For admin users, the command below has a placeholder to specify your unique secure password for admin users.
+<br />
 
-    <br />
-
-    ```bash
-    htpasswd -Bbn admin "yourPasswordHere" > /root/auth/htpasswd-basic
-    ```
+  ```bash
+  htpasswd -Bbn admin "yourPasswordHere" > /root/auth/htpasswd-basic
+  ```
 
 3. For other users. The following command has the placeholder to specify your unique secure password for read-only users.
+<br />
 
-    <br />
-
-    ```bash
-    htpasswd -Bbn spectro "yourPasswordHere" >> /root/auth/htpasswd-basic
-    ```
+  ```bash
+  htpasswd -Bbn spectro "yourPasswordHere" >> /root/auth/htpasswd-basic
+  ```
 
 4. If HTTPS mode is used, create a directory called `certs`.
+<br />
 
-    <br />
+  ```shell
+  mkdir -p /root/certs
+  ```
 
-    ```shell
-    mkdir -p /root/certs
-    ```
-
-5. Copy the `tls.crt` and `tls.key` files from the Certificate Authority into the `/roots/certs` directory. This directory will be mounted inside the registry Docker container. 
+5. Copy the **tls.crt** and **tls.key** files from the CA into the **/roots/certs** directory. This directory will be mounted inside the registry Docker container. 
 
 
 6. Pack contents in a pack registry can be stored locally on the host or an external file system.
@@ -143,22 +136,24 @@ registry instance in the event of restarts and failures.
 Create a directory or mount an external volume to the desired storage location. Example: `/root/data`
 
 
-7. Pull the latest Palette pack registry Docker image using the docker CLI.
+7. Issue the following command to pull the pack registry server image. The image will help you instantiate a Docker container as a pack registry server.  
+<br />
 
-    <br />
+  ```shell
+  docker pull gcr.io/spectro-images-public/release/spectro-registry:3.4.0
+  ```
 
-    ```shell
-    docker pull gcr.io/spectro-images-public/release/spectro-registry:3.3.0
-    ```
+8. Use the `docker run` command to instantiate a Docker container. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips. 
 
-8. Create the Docker container using the docker `run` command:
+    * The Registry CLI login command fails with the error message `x509: cannot validate certificate for ip_address, because it doesn't contain any IP SANs`. The error occurs when a self-signed certificate is created using an IP address rather than a hostname. To resolve the error, recreate the certificate to include an IP SAN or use a DNS name instead of an IP address.
+
+    * The Registry CLI login command fails with the error message `x509: certificate signed by unknown authority`. The error occurs when the self-signed certificate is invalid. To resolve the error, you must configure the host where CLI is installed to trust the certificate.
 
 <Tabs>
 
 <TabItem label="HTTPS" value="https-1">
 
 
-    
 ```bash
 docker run -d \
     -p 443:5000 \
@@ -173,7 +168,7 @@ docker run -d \
     -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
     -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/tls.crt \
     -e REGISTRY_HTTP_TLS_KEY=/certs/tls.key \
-    gcr.io/spectro-images-public/release/spectro-registry:3.3.0
+    gcr.io/spectro-images-public/release/spectro-registry:4.0.2
 ```
 
 </TabItem>
@@ -192,7 +187,7 @@ docker run -d \
     -e  REGISTRY_AUTH=htpasswd \
     -e  REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm" \
     -e  REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd-basic \
-    gcr.io/spectro-images-public/release/spectro-registry/spectro-registry:3.3.0
+    gcr.io/spectro-images-public/release/spectro-registry:4.0.2
   ```
 
 <br />
@@ -211,12 +206,9 @@ spectro registry login --insecure http://example.com:5000
 
 </TabItem>
 
-
 </Tabs> 
-
-    
+ 
 <br />
-
 
 
 9. Expose the container host's port publicly to allow the console to interact with the pack registry.
@@ -225,17 +217,23 @@ spectro registry login --insecure http://example.com:5000
 
 10. Verify the installation by invoking the pack registry APIs using the curl command. This should result in a 200 response.
 
-  * **HTTPS mode**
+<Tabs>
 
 <TabItem label="HTTPS" value="https-2">
 
-  * **HTTP mode**
+  ```bash
+  curl --cacert tls.crt -v [REGISTRY_SERVER]/health
+  curl --cacert tls.crt -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
+  ```
 
 </TabItem>
 
 <TabItem label="HTTP" value="http-2">
 
-Once the deployment of the pack registry server is complete, configure it with the console as follows:
+  ```bash
+  curl -v [REGISTRY_SERVER]/health
+  curl -v -u [USERNAME] [REGISTRY_SERVER]/v1/_catalog
+  ```
 
 </TabItem>
 
@@ -251,27 +249,29 @@ Once you deploy the pack registry server, use the following steps to configure t
 1. Log in to Palette, and switch to the tenant admin view. 
 
 
-3. Click on **Confirm** once the details are filled.
+2. Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section.
 
-# Upload the CA Certificate to Palette
 
-In order to establish a trusted secure connection between Palette and your registry
-you will need to upload your certificate to the console.
+3. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a pack registry server, as highlighted in the screenshot below. 
 
-1. Click on **Tenant Settings** > **Certificates** > **Add A New Certificate**
+  ![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
 
-   Provide the content of your CA Cert (that will be the content of `tls.crt` if
-   you followed this tutorial.
 
-   After you saved the content of the certificate, it will take a few minutes for your
-   custom packs to appear in the available packs list.
+4. Provide the pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an "https://" prefix in the pack registry server endpoint.  
 
-Upon successful registration, users can build and deploy custom packs on to the custom pack registry and
-use these packs in their cluster profiles.
 
-**Note:**
+5. If you want Palette to establish a secure and encrypted HTTPS connection with your pack registry server, upload the certificate in the **TLS Configuration** section. The certificate file must be in the PEM format and have a complete trust chain. 
 
-To know more about the use of Spectro CLI to push packs to a custom registry and sync it to Palette [click here..](/registries-and-packs/spectro-cli-reference/?cliCommands=cli_push#push)
+  If you used a TLS certificate issued by a CA while configuring the pack registry server, check with your CA to obtain a certificate chain. If you used a self-signed certificate, upload the entire certificate trust chain. The file content must have the server, the intermediate, and the root certificates. 
+
+  Once you upload the *.pem* certificate file and click the **Validate** button, Palette will perform the TLS verification to affirm the certificate's authenticity before establishing a communication channel. 
+
+
+6. Select the **Insecure Skip TLS Verify** checkbox if you do not want an HTTPS connection between Palette and your pack registry server. If you upload a TLS certificate and also select the **Insecure Skip TLS Verify** checkbox. The **Insecure Skip TLS Verify** checkbox value will take precedence in that case. 
+
+
+7. Click the **Confirm** button to finish configuring the pack registry server. After you finish the configuration, Palette will periodically synchronize with the pack registry server to download pack updates, if any.  
+
 
 # Self-Signed Certificates
 
@@ -289,7 +289,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
 
 <br />
 
-  ```text
+  ```text hideClipboard
   Country Name (2 letter code) [XX]:
   State or Province Name (full name) []:
   Locality Name (eg, city) [Default City]:
@@ -300,5 +300,7 @@ Provide the appropriate values while ensuring that the Common Name matches the r
   
   Example:
   REGISTRY_HOST_DNS - registry.com
+  ```
+
 
 <br />

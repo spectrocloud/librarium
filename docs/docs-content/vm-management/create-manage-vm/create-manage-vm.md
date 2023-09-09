@@ -15,7 +15,7 @@ Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtu
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
-There are three ways you can create a new VM:
+- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
 
 
 - A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
@@ -45,7 +45,7 @@ Additionally, Virtio is a virtualization standard for network and disk device dr
 
 :::caution
 
-We recommend installing ``qemu-guest-agent`` to improve VM management. We also recommend installing Virtio drivers to ensure you can use the paravirtualized hardware properly.
+We recommend installing the QEMU guest agent to display additional details in Palette Virtual Machine Orchestrator. We also recommend installing VirtIO drivers to ensure you can use the paravirtualized hardware properly.
 
 :::
 
@@ -54,10 +54,12 @@ We recommend installing ``qemu-guest-agent`` to improve VM management. We also r
 - [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
 
 
+- [Deploy VM from a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+
+
 - [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
 
 
 <br />
-
 
 <br />

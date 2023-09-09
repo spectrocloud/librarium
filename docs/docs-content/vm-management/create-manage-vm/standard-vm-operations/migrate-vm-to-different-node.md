@@ -12,7 +12,7 @@ tags: ["vmo"]
 
 Palette supports virtual machine (VM) migration to another physical host in the cluster. This is known as *live migration*. During live migration, the VM and its memory, storage, and CPU resources are moved from one cluster compute node to another without any noticeable downtime. 
 
-Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` section of the KubeVirt configuration file that is part of the **Spectro VM Dashboard** pack. Refer to [Feature Gates](/vm-management#featuregates) for more information.
+Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled as a feature gate. Live migration is enabled by default in the ``feature-gates`` section of the KubeVirt configuration file that is part of the **Virtual Machine Orchestrator** pack. Refer to [Feature Gates](/vm-management#featuregates) for more information.
 
 Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node is placed into maintenance or upgraded, all VM instances require a ``LiveMigrate`` eviction strategy.
 
@@ -30,9 +30,7 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 ## Migrate VM to a Different Node
 
-<br />
-
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, choose **Clusters** and click on your cluster. 
@@ -41,14 +39,16 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 3. Click on the **Virtual Machines** tab.
 
 
-4. Select the VM to migrate and use either the **three-dot Menu** or the **Actions drop-down Menu**, and click **Migrate Node to Node**.  
+4. Select the VM to migrate and click either the **three-dot Menu** or **Actions**.
 
-<br />
+
+5. Click **Migrate Node to Node**.  
+
 
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. From the left **Main Menu**, click **Clusters** and select the cluster. 
@@ -62,12 +62,12 @@ Live migration is used with rolling Kubernetes upgrades and workload balancing. 
 
 ## Evacuate a Host
 
-Compute nodes can be placed into maintenance mode using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the `drain`command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
+Compute nodes can be placed into maintenance mode using Palette or manually using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the `drain`command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service) Kubernetes resource.  
 
 
 ## Prerequisites
 
-- Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode, this feature allows for a smooth and uninterrupted migration process.   
+- Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode, this feature allows for a smooth and uninterrupted migration process. 
 
 
 ## Evacuate VMs in Palette
@@ -171,12 +171,5 @@ You can validate evacuation completed by following the steps below.
 
 
 <br />
-
-
-<br />
-
-
-<br />
-
 
 <br />

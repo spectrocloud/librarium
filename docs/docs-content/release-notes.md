@@ -11,14 +11,6 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
  
-
-import Tabs from 'shared/components/ui/Tabs';
-import WarningBox from 'shared/components/WarningBox';
-import InfoBox from 'shared/components/InfoBox';
-import PointsOfInterest from 'shared/components/common/PointOfInterest';
-import Tooltip from "shared/components/ui/Tooltip";
-
-
 ## May 22, 2023 - Release 3.4.0
 
 Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) documentation.
@@ -36,7 +28,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 #### Features
 
-- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels.
+- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels. Refer to the [Login Banner](/tenant-settings/login-banner) reference page to learn more.
 
 
 - You can now access a customized Amazon Machine Image (AMI) in Palette for Amazon Elastic Kubernetes Service (Amazon EKS) with support for AWS Launch Template. This allows you to personalize your EKS nodes and EBS root volumes by creating your own custom AMI.
@@ -101,7 +93,10 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 - To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
 
-### Features
+
+- Prior Edge Installer versions are incompatible with Palette 3.4 and newer versions due to product enhancements and security fixes. New Edge clusters deployed with an earlier Edge Installer version will not operate in Palette. Active Edge clusters in Palette will continue to work as expected. Use the latest version of the [Edge Installer](/spectro-downloads#edgeinstallerimage) when creating Edge artifacts and deploying new Edge clusters.
+
+#### Features
 
 
 
@@ -273,7 +268,7 @@ This release contains several security fixes and new features for Edge. The Edge
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
-* Users can now [create custom Edge Installer images](/clusters/edge/edgeforge-workflow/build-images) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
+* Users can now [create custom Edge Installer images](/clusters/edge/edgeforge-workflow/palette-canvos) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
 * Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 
@@ -591,7 +586,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 Spectro Cloud Palette 2.7 is released with advanced features supporting Windows Worker Node Pools, Canonical Ubuntu Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and more.
 
 **Features:**
-* Spectro Cloud Palette has enhanced the import cluster functionality with ["minimal permission"](/clusters/brownfield-clusters#importingabrownfieldcluster) mode and the "full permission" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
+* Spectro Cloud Palette has enhanced the import cluster functionality with ["Read-Only Mode"](/clusters/imported-clusters/cluster-import) mode and the "Full Permission Mode" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
 * Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
 * Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
 * Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.
@@ -851,7 +846,7 @@ On the VMware front, we have:
 Other new features:
 
 - New customers can now sign up for free trials of Spectro Cloud. When ready, it is easy to upgrade plans and set up automatic payments using credit/debit cards.
-- <Tooltip trigger={<u>Pack constraints</u>}> <a href="/integrations/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
+- <Tooltip trigger={<u>Pack constraints</u>}> <a href="/registries-and-packs/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.</Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values being set.
 - Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for [Kubernetes](/integrations/kubernetes/).
 
 ## December 03, 2020 - Hotfix 1.5.7
@@ -870,7 +865,7 @@ A host of hotfixes were applied for a smoother on-premises operation:
 
 | Version | Feature                                                                                       |
 | ------- | --------------------------------------------------------------------------------------------- |
-| 1.5.6   | Added improvements for faster [kCh](https://www.spectrocloud.com/pricing/) usage calculation. |
+| 1.5.6   | Added improvements for faster kCh usage calculation. |
 | 1.5.5   | Patched the `govc vm.info` command to allow spaces in datacenter names.                       |
 | 1.5.4   | Changes to use client updates instead of patches for _vendorcrd_ installations.               |
 | 1.5.3   | Improved resource utilization by deleting a machine when a node is not available.             |
@@ -914,7 +909,7 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 ## July 3, 2020 - Release 1.0.1
 
 - New Regions for AWS > Spectro Cloud is now available for deploying AWS clusters in the European regions.
-- Changes to the pricing structures > more usage = lesser price per [kCh](https://www.spectrocloud.com/pricing/).
+- Changes to the pricing structures > more usage = lesser price per kCh.
 
 ## June 23, 2020 - Release 1.0
 

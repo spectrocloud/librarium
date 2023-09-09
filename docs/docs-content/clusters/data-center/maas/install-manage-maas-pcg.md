@@ -264,7 +264,7 @@ Once installed, the gateway registers itself with Palette. To verify the gateway
 
 When you install the gateway, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
-<TabsItem>
+</TabsItem>
 
 <TabsItem label="Edit PCG Config" value="edit_pcg_config">
 

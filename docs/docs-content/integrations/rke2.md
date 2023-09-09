@@ -45,7 +45,11 @@ The following RKE2 versions are supported to work with Palette.
 <Tabs queryString="versions">
 <TabItem label="1.26.x" value="k8s_rke2_1.26.x">
 
-<Tabs.TabPane tab="RKE2 1.23.x" key="k8s_rke2_1.23.x">
+* **k8s_rke2_1.26.4**
+
+</TabItem>
+
+<TabItem tab="RKE2 1.23.x" key="k8s_rke2_1.23.x">
 
 * **k8s_rke2_1.23.9**
 
