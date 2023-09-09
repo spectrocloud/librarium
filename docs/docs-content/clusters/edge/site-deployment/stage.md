@@ -93,12 +93,12 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 
 <br />
 
-<InfoBox>
+:::info
 
 
 If you generate an OVF template and want to pre-load a content bundle, you must create a custom installer ISO. Refer to the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create a custom installer image.
 
-</InfoBox>
+:::
 
 ### Prerequisites
 

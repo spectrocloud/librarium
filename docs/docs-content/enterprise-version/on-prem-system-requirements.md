@@ -827,9 +827,10 @@ The following section provides the hardware requirements for Palette Platform VM
 
 
 <br />
-<InfoBox>
+
+:::info
 The size of the Tenant Cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity guidance below.
-</InfoBox>
+:::
 
 ## On-premise Configurations
 
@@ -839,13 +840,6 @@ The size of the Tenant Cluster, in terms of the number of nodes or size of the n
 | **Medium(Default)**    | 8                                           | 3000          | 8        | 16 GB      | 120 GB      | 60 GB, 2 CPU, 4 GB Mem | Up to 3000 Nodes each with 30 Pods (90,000 pods)  |
 | **Large**              | 12                                          | 5000          | 12       | 32 GB      | 150 GB      | 80 GB, 2 CPU, 6 GB Mem | Up to 5000 Nodes each with 30 Pods (150,000 pods) |
 
-
-<br />
-
-:::caution
-
-
-:::
 
 <br />
 
@@ -867,9 +861,12 @@ The size of the Tenant Cluster, in terms of the number of nodes or size of the n
 | Large               | Up to 5000 Nodes each with 30 Pods (150,000 Pods) |
 
 <br />
-  <InfoBox>
-  For high availability purposes, it is recommended that you deploy the three (3) VMs across three (3) compute clusters.
-  </InfoBox>
+
+:::info
+
+For high availability purposes, it is recommended that you deploy the three (3) VMs across three (3) compute clusters.
+
+:::
 
 
 ## Best Practices

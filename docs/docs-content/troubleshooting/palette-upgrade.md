@@ -23,11 +23,8 @@ If you receive the following error message when attempting to upgrade to Palette
 
 <br />
 
-<<<<<<<< HEAD:docs/docs-content/troubleshooting/15-palette-upgrade.md
-```text
-========
+
 ```hideClipboard text
->>>>>>>> 9a17cd79 (chore: docusaurus migration :rocket):docs/docs-content/troubleshooting/palette-upgrade.md
 Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "_" and path "/v1/oidc" is already defined in ingress default/hubble-auth-oidc-ingress-resource
 ```
 

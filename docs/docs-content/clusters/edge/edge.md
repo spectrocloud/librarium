@@ -58,25 +58,11 @@ Palette manages the installation and all the Day-2 activities, such as scaling, 
 
 <br />
 
-<InfoBox>
+:::info
 
 Edge native is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
 
-</InfoBox>
-
-<!-- ### Virtualized Edge
-
-Designed for sites that typically have a single large bare-metal appliance. Virtualized nodes are instantiated on the appliance using libvirt, and the desired version of OS and Kubernetes is deployed on the nodes. Each Virtual Machine (VM) represents a Kubernetes node. Users can specify placement settings for these virtual machines to ensure they are launched in the desired network and storage pools. Users can also configure VM hardware settings such as CPU, Memory, Disk size, etc.
-
-<br />
-
-<WarningBox>
-
-Palette recommends Virtualized Edge deployment only when the user has a single edge appliance and needs HA virtualized Kubernetes Cluster.
-
-[Contact Spectro support via the Service Desk](http://support.spectrocloud.io/) for more details on the deployment of Virtualized Edge Architecture.
-
-</WarningBox> -->
+:::
 
 
 <br />

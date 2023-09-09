@@ -19,57 +19,11 @@ The Cluster Autoscaler dynamically scales cluster resources. It monitors the wor
 * Scale-up: The Cluster Autoscaler triggers a scale-up operation if insufficient cluster resources lead to multiple pod failures. The pods become eligible for scheduling on the new nodes. The Cluster Autoscaler checks for pod failures every 30 seconds and schedules impacted pods on new nodes. Scaling up will not happen when the given pods have node affinity. 
 
 
-# Prerequisite
-
-* Kubernetes version 1.19.x and above.
-* Full Cluster Autoscaler Policy for the service account.
-* Update the Kubernetes Pack node group `managedMachinePool` with the **ARN** of the autoscaler policy created for the service account.
+* Scale-down: The Cluster Autoscaler triggers a scale-down operation if nodes are underutilized for ten continuous minutes, and their pods are eligible for rescheduling on other available nodes. The node utilization threshold for scaling down a node defaults to 50% of the node's capacity. The Cluster Autoscaler calculates the node utilization threshold based on CPU and memory utilization. In scenarios where the node is underutilized, the Cluster Autoscaler migrates the pods from underutilized nodes to other available nodes and then shuts down the underutilized nodes. 
 
 
-## Full Cluster Autoscaler Features Policy (Recommended)
+Cluster Autoscaler pack is deployed as a [*Deployment*](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) in your cluster and utilizes [Amazon EC2 Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) to manage node groups. 
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "autoscaling:DescribeAutoScalingGroups",
-        "autoscaling:DescribeAutoScalingInstances",
-        "autoscaling:DescribeLaunchConfigurations",
-        "autoscaling:DescribeTags",
-        "ec2:DescribeInstanceTypes",
-        "ec2:DescribeLaunchTemplateVersions"
-      ],
-      "Resource": ["*"]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "autoscaling:SetDesiredCapacity",
-        "autoscaling:TerminateInstanceInAutoScalingGroup",
-        "ec2:DescribeInstanceTypes",
-        "eks:DescribeNodegroup"
-      ],
-      "Resource": ["*"]
-    }
-  ]
-}
-```
-<InfoBox>
-
-To deploy AWS Autoscaler, update the Kubernetes pack `managedMachinePool` node group with the **ARN** of the autoscaler policy created for the service account.
-
-```yaml
-managedMachinePool:
-  #roleName: {{ name of the self-managed role | format "${string}" }}
-
-  ## A list of additional policies to attach to the node group role
-  roleAdditionalPolicies:
-  - "arn:aws:iam::012345678910:policy/autoscalingpolicy"
-```
-</InfoBox>
 
 
 ## Versions Supported
@@ -384,11 +338,6 @@ Use the following steps to trigger the pod rescheduling event manually:
 
 </TabItem>
 
-<Tabs.TabPane tab="1.0.x" key="1.0.x">
-
-**1.0.0**
-
-</Tabs.TabPane>
 </Tabs>
 
 ## Troubleshooting

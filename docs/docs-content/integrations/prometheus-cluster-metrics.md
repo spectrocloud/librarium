@@ -49,11 +49,11 @@ You can learn how to add the Prometheus Cluster Metrics to your cluster by follo
 
 <br />
 
-<WarningBox>
+:::caution
 
 Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
 
-</WarningBox>
+:::
 
 
 ## Terraform

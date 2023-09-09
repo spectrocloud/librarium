@@ -46,9 +46,11 @@ To set resource limit:
 
 * Select `Resource Limits` tab and set the values for different Palette resources as per tenant resource requirements.
  
-<InfoBox>
-The resource limit can be customized according to per tenant resource requirements 
-</InfoBox>
+:::info
+
+The resource limit can be customized according to per tenant resource requirements. 
+
+:::
 
 # Palette API Rate Limits
 

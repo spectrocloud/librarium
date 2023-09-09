@@ -55006,7 +55006,7 @@
         },
         "summary": "Update project clusters fips setting",
         "tags": [
-          "v1"
+          "projects"
         ]
       }
     },
@@ -63942,7 +63942,7 @@
         },
         "summary": "Update tenant clusters fips setting",
         "tags": [
-          "v1"
+          "tenants"
         ]
       }
     },

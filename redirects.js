@@ -148,20 +148,8 @@ const redirects = [
     to: `/devx/palette-virtual-clusters`,
   },
   {
-    from: `/clusters/edge/edgeforge-workflow/build-kairos-os`,
-    to: `/clusters/edge/edgeforge-workflow/palette-canvos`,
-  },
-  {
-    from: `/clusters/edge/edgeforge-workflow/build-images`,
-    to: `/clusters/edge/edgeforge-workflow/palette-canvos`,
-  },
-  {
     from: `/integrations/ubuntu-k3s`,
     to: `/integrations/ubuntu`,
-  },
-  {
-    from: `/clusters/brownfield-clusters`,
-    to: `/clusters/imported-clusters`,
   },
   {
     from: `/integrations/oidc-eks`,

@@ -18,8 +18,6 @@ Currently, the content bundles include Helm charts and Packs. However, keep in m
 :::
 
 
-<<<<<<<< HEAD:docs/docs-content/clusters/edge/edgeforge-workflow/02-build-content-bundle.md
-========
 ## Benefits of Content Bundle
 
 Creating a content bundle provides several benefits that may address common use cases related to deploying Edge hosts.
@@ -36,7 +34,6 @@ Creating a content bundle provides several benefits that may address common use 
 
 * Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure that only approved software is consumed.
 
->>>>>>>> 9a17cd79 (chore: docusaurus migration :rocket):docs/docs-content/clusters/edge/edgeforge-workflow/build-content-bundle.md
 
 ## Prerequisites
 
@@ -107,11 +104,8 @@ You can find the project id at the top right side corner of the landing page bel
      --iso
     ```
 
-<<<<<<<< HEAD:docs/docs-content/clusters/edge/edgeforge-workflow/02-build-content-bundle.md
-    ```shell
-========
+
     ```hideClipboard shell
->>>>>>>> 9a17cd79 (chore: docusaurus migration :rocket):docs/docs-content/clusters/edge/edgeforge-workflow/build-content-bundle.md
     # Output
     INFO[0000] getting hubble export for build
     INFO[0000] Fetching latest version for service 'stylus'
@@ -138,11 +132,8 @@ The result is a content bundle that you can use to preload into your installer. 
 ## Validate
 
 You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that creates a bootable device will validate the ISO image before the flash process.
-<<<<<<<< HEAD:docs/docs-content/clusters/edge/edgeforge-workflow/02-build-content-bundle.md
-========
 
 
 ## Next Steps
 
-Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
->>>>>>>> 9a17cd79 (chore: docusaurus migration :rocket):docs/docs-content/clusters/edge/edgeforge-workflow/build-content-bundle.md
+Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](/clusters/edge/

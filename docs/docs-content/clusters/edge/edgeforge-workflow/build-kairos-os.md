@@ -3,15 +3,10 @@ sidebar_label: "Bring Your Own OS"
 title: "Bring Your Own OS - Create Kairos Image"
 description: "Learn about building your own Kairos Image"
 hide_table_of_contents: false
-
+sidebar_position: 10
+tags: ["edge"]
 ---
 
-
-
-
-
-
-# Overview
 
 Edge supports the ability for you to specify a custom Operating System (OS) for your Edge host runtime. Building a system using your choice of OS requires creating a [Kairos-base](https://kairos.io/) image with your custom OS. The Palette feature, [Bring Your Own OS (BYOOS)](/integrations/byoos) allows you to use a custom OS in a cluster profile. 
 
@@ -29,7 +24,7 @@ To learn how to use your own OS images with an Edge cluster profile, refer to th
 
 :::
 
-# Prerequisites
+## Prerequisites
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
@@ -45,7 +40,7 @@ Some operating systems require credentials to download the source image, such as
 :::
 
 
-# Build Image
+## Build Image
 
 1. Issue the following commands to prepare your server. You can also add more packages to the `apt install` command if needed.
   <br />
@@ -98,7 +93,7 @@ Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/
 <br />
 
 
-# Next Steps
+## Next Steps
 
 
 Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the [Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.

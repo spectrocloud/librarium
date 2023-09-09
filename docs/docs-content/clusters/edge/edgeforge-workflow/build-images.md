@@ -3,15 +3,12 @@ sidebar_label: "Build Images"
 title: "Build Images"
 description: "Learn about building your eterprise edge artifacts"
 hide_table_of_contents: false
-
+sidebar_position: 40
+tags: ["edge"]
 ---
 
 
 
-
-
-
-# Overview
 
 You can use the Palette Edge CLI to create an Edge artifact. The Edge artifacts will include everything you may have created up to this point.
 
@@ -47,7 +44,7 @@ Use the following steps to create an Edge artifact for your Edge host.
 
 - Access to a container registry with permission to push container images. For guidance on logging in, review the registry login instructions for your respective registry. With docker, use the `docker login` command to log in to the registry.
 
-# Create Artifact
+## Create Artifact
 
 Choose the workflow that fits your needs.
 
@@ -94,12 +91,12 @@ Choose the workflow that fits your needs.
 | `--cloud-init-file`        | Specify the Edge Installer configuration user data file to include in the Edge artifact.          |
 
   <br />
-  
-  :::info
 
-  When using the `generate` command, the specified registry is where Edge artifacts will be uploaded.
+:::info
 
-  :::
+When using the `generate` command, the specified registry is where Edge artifacts will be uploaded.
+
+:::
 
 
   ```shell
@@ -214,7 +211,7 @@ You can use several software tools to create a bootable USB drive, such as [bale
 :::
 
 
-# Validate
+## Validate
 
 1. In the build server, validate the output directory containing the ISO file.
 
@@ -225,7 +222,7 @@ You can use several software tools to create a bootable USB drive, such as [bale
 3. You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the Edge hosts. The simulation process will require you to complete the installation process and reset the device after the validation.
 
 
-# Next Steps
+## Next Steps
 
 You now have an Edge artifact that you can use to create an Edge host. You can start the site deployment process. Check out the [Site Deployment](/clusters/edge/site-deployment) resource to learn more about the Site Deployment process.
 

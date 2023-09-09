@@ -3,7 +3,7 @@ sidebar_label: "Prepare User Data"
 title: "Prepare User Data"
 description: "Learn about building your staging user data"
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 30
 tags: ["edge"]
 ---
 

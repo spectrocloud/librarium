@@ -16,11 +16,11 @@ tags: ['packs', 'kubernetes-dashboard', 'monitoring']
 The Kubernetes Dashboard pack you can use to access the dashboard requires the Spectro Proxy pack to expose the dashboard.
 <br /> 
 
-<InfoBox>
+:::info
 
 Palette supports provisioning a reverse proxy that can expose the Kubernetes dashboard. Use the [Spectro Proxy](/integrations/frp) pack to enable this capability. 
 
-</InfoBox>
+:::
 
 A user-friendly version of this pack is available, Spectro Kubernetes Dashboard, which requires minimal configuration when used with the default settings. To learn more, check out [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard).
 
@@ -697,14 +697,14 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | | | | By default, a ClusterRole (k8s-dashboard-readonly) with ReadOnly access to most of the resources is deployed. |
 | k8s-dashboard.certDuration | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `8760h` (365 days) | Validity for the Self-signed certificate, specified in hours. |
 | k8s-dashboard.certRenewal | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
-| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. <WarningBox>It is highly recommended to use ClusterIP service type to restrict access to the cluster</WarningBox> |
-| k8s-dashboard.skipLogin | True, False | False | Flag to skip authentications in the Dashboard UI. <WarningBox> Enabling this might expose a security risk. Use this only for demo purposes.</WarningBox> |
+| k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommended to use ClusterIP service type to restrict access to the cluster.|
+| k8s-dashboard.skipLogin | True, False | False | Flag to skip authentications in the Dashboard UI. Enabling this might expose a security risk. Use this only for demo purposes. |
 
-<WarningBox>
+:::caution
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the Spectro Kubernetes Dashboard integrated pack. 
 
-</WarningBox>
+:::
 
 
 ## Accessing the dashboard

@@ -36500,6 +36500,41 @@
     "version": "v1"
   },
   "paths": {
+    "/cluster/{uid}/manifest": {
+      "get": {
+        "description": "Deprecated",
+        "operationId": "v1SpectroClustersUidInstallerManifest",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "download file",
+            "headers": {
+              "Content-Disposition": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Returns the specified cluster's installer manifest file",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/apiKeys": {
       "get": {
         "operationId": "v1ApiKeysList",
@@ -37761,6 +37796,34 @@
           }
         },
         "summary": "Authenticates the user for the specified crendentials",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "description": "Deprecated. Returns the authentication type for the specified user email id",
+        "operationId": "v1AuthLogin",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AuthLogins"
+            }
+          }
+        },
+        "summary": "Deprecated. Returns the authentication type for the specified user email id",
         "tags": [
           "v1"
         ]
@@ -48179,6 +48242,38 @@
         }
       ]
     },
+    "/v1/clustergroups/{uid}/clusters": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "description": "Deprecated: Use PUT /v1/clustergroups/{uid}/hostCluster",
+        "operationId": "v1ClusterGroupsUidClustersUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterGroupClusterRefs"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified cluster groups clusters",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/clustergroups/{uid}/hostCluster": {
       "parameters": [
         {
@@ -48205,6 +48300,38 @@
           }
         },
         "summary": "Updates cluster reference and host cluster config",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/clustergroups/{uid}/hostCluster/config": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "description": "Deprecated: Use PUT /v1/clustergroups/{uid}/hostCluster",
+        "operationId": "v1ClusterGroupsUidHostClusterConfigUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterGroupClustersConfig"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the host cluster config in cluster group",
         "tags": [
           "v1"
         ]
@@ -48242,6 +48369,63 @@
       }
     },
     "/v1/clusterprofiles": {
+      "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/clusterprofiles",
+        "operationId": "v1ClusterProfilesList",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster profile items",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterProfiles"
+            }
+          }
+        },
+        "summary": "Retrieves a list of cluster profiles",
+        "tags": [
+          "v1"
+        ]
+      },
       "post": {
         "operationId": "v1ClusterProfilesCreate",
         "parameters": [
@@ -49700,6 +49884,53 @@
       }
     },
     "/v1/dashboard/projects": {
+      "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/projects",
+        "operationId": "v1ProjectsSummary",
+        "parameters": [
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "default": 60,
+            "description": "Metric period in minutes defines latest metrics by period",
+            "format": "int32",
+            "in": "query",
+            "name": "metricPeriod",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of project summary items",
+            "schema": {
+              "$ref": "#/definitions/v1ProjectsSummary"
+            }
+          }
+        },
+        "summary": "Retrieves a list of project summary",
+        "tags": [
+          "v1"
+        ]
+      },
       "post": {
         "operationId": "v1ProjectsFilterSummary",
         "parameters": [
@@ -49765,6 +49996,54 @@
           }
         },
         "summary": "Retrieves a list of projects metadata",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/dashboard/spectroclusters": {
+      "post": {
+        "description": "Deprecated: Use POST /v1/dashboard/spectroclusters/search",
+        "operationId": "v1SpectroClustersFilterSummary",
+        "parameters": [
+          {
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "maximum": 20,
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterSummarySpec"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersSummary"
+            }
+          }
+        },
+        "summary": "Retrieves a list of cluster summary with provided filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "tags": [
           "v1"
         ]
@@ -52068,6 +52347,29 @@
         ]
       }
     },
+    "/v1/installers/spectro/vsphere/{uid}": {
+      "delete": {
+        "description": "Deprecated: please use the generic api",
+        "operationId": "v1SpectroInstallerDeleteDeprecated",
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "summary": "Deletes the spectroinstaller entity",
+        "tags": [
+          "v1"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/metrics/{resourceKind}/values": {
       "get": {
         "description": "Returns all the metrics for a given resource kind",
@@ -53771,6 +54073,63 @@
       }
     },
     "/v1/projects": {
+      "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/projects",
+        "operationId": "v1ProjectsList",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of projects",
+            "schema": {
+              "$ref": "#/definitions/v1Projects"
+            }
+          }
+        },
+        "summary": "Retrieves a list of projects",
+        "tags": [
+          "v1"
+        ]
+      },
       "post": {
         "operationId": "v1ProjectsCreate",
         "parameters": [
@@ -55622,6 +55981,65 @@
           }
         },
         "summary": "Returns a service manifest for a given service name and version",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/spectroclusters": {
+      "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/spectroclusters",
+        "operationId": "v1SpectroClustersList",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusters"
+            }
+          }
+        },
+        "summary": "Retrieves a list of clusters",
         "tags": [
           "v1"
         ]
@@ -59861,6 +60279,40 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/packs/{packName}/config": {
+      "get": {
+        "description": "Deprecated",
+        "operationId": "v1SpectroClustersUidPacksConfigGet",
+        "parameters": [
+          {
+            "description": "cluster uid",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "pack name",
+            "in": "path",
+            "name": "packName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster pack values",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterPackConfigList"
+            }
+          }
+        },
+        "summary": "Returns the specified cluster's pack configuration",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/spectroclusters/{uid}/profile": {
       "parameters": [
         {
@@ -61451,6 +61903,63 @@
       }
     },
     "/v1/teams/summary": {
+      "get": {
+        "description": "Deprecated, Use Post api - Returns a list of team summaries",
+        "operationId": "v1TeamsSummary",
+        "parameters": [
+          {
+            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
+            "in": "query",
+            "name": "fields",
+            "type": "string"
+          },
+          {
+            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
+            "in": "query",
+            "name": "filters",
+            "type": "string"
+          },
+          {
+            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
+            "in": "query",
+            "name": "orderBy",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TeamsSummary"
+            }
+          }
+        },
+        "summary": "Retrieves a list of team summary",
+        "tags": [
+          "v1"
+        ]
+      },
       "post": {
         "operationId": "v1TeamsSummaryGet",
         "parameters": [
@@ -63872,6 +64381,45 @@
       }
     },
     "/v1/users/summary": {
+      "get": {
+        "description": "Deprecated, Use Post api - Returns a list of user summaries",
+        "operationId": "v1UsersSummary",
+        "parameters": [
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UsersSummary"
+            }
+          }
+        },
+        "summary": "Returns the specified user summary list",
+        "tags": [
+          "v1"
+        ]
+      },
       "post": {
         "operationId": "v1UsersSummaryGet",
         "parameters": [
@@ -64873,6 +65421,38 @@
           }
         },
         "summary": "Updates the specified workspace meta",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/workspaces/{uid}/resourceAllocations": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "description": "Deprecated",
+        "operationId": "v1WorkspacesUidResourceAllocationsUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1WorkspaceResourceAllocationsEntity"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "summary": "Updates the specified workspace resource allocations",
         "tags": [
           "v1"
         ]
