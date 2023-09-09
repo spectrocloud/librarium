@@ -4,8 +4,6 @@ sidebar_label: "Postman Collection"
 description: "Spectro Cloud API Postman Collection"
 icon: ""
 hide_table_of_contents: true
-
-hiddenFromNav: false
 ---
 
 Spectro Cloud provides a Postman collection for your convenience to help you interact with the Spectro Cloud API.

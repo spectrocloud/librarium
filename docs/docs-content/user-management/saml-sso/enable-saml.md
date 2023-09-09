@@ -4,7 +4,6 @@ title: 'Enable SSO in Palette'
 description: 'Learn how to enable SSO in Palette'
 icon: ""
 hide_table_of_contents: false
-hiddenFromNav: false
 sidebar_position: 0
 tags: ["user-management", "saml-sso"]
 ---

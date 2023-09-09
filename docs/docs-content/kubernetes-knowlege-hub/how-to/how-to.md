@@ -3,7 +3,6 @@ sidebar_label: "How to"
 title: "Get started with a quick Kubernetes How-to"
 description: "Kubernetes School"
 hide_table_of_contents: false
-hiddenFromNav: false
 sidebar_custom_props: 
   icon: "book"
 tags: ["k8s-tips"]

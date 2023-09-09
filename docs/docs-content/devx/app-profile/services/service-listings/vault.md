@@ -5,7 +5,6 @@ description: "Learn how to use Vault with Palette Dev Engine."
 hide_table_of_contents: false
 type: "appTier"
 category: ['security']
-hiddenFromNav: false
 sidebar_position: 40
 logoUrl: "https://icon-library.com/images/padlock-icon-png/padlock-icon-png-29.jpg"
 ---

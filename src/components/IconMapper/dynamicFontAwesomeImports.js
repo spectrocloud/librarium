@@ -1,4 +1,5 @@
 import { faCubes } from '@fortawesome/free-solid-svg-icons';
+import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons';
 import { faObjectGroup } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,7 @@ import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
+  "cloud-download-alt": faCloudDownloadAlt,
   "object-group": faObjectGroup,
   "envelope-open-text": faEnvelopeOpenText,
   "database": faDatabase,

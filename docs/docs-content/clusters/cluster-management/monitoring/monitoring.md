@@ -2,7 +2,7 @@
 sidebar_label: 'Cluster Monitoring'
 title: 'Cluster Monitoring'
 description: 'Learn how to set up cluster monitoring with Prometheus'
-hiddenFromNav: false
+hide_table_of_contents: false
 tags: ["clusters", "cluster management", "monitoring"]
 ---
 

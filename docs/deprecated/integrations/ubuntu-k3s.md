@@ -2,7 +2,7 @@
 sidebar_label: 'Ubuntu-K3s'
 title: 'Ubuntu Lightweight Kubernetes K3s'
 description: 'Choosing K3s with Ubuntu within the Palette console'
-hiddenFromNav: true
+hide_table_of_contents: true
 type: "integration"
 category: ['system app']
 logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image/png'

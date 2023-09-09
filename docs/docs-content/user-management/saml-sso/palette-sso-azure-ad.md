@@ -5,7 +5,6 @@ description: 'Learn how to enable SSO in Palette with Azure Active Directory'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-hiddenFromNav: false
 tags: ["user-management", "saml-sso"]
 ---
 

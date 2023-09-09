@@ -3,7 +3,6 @@ title: "Introduction"
 sidebar_label: "Introduction"
 description: "Palette API Introduction"
 hide_table_of_contents: false
-hiddenFromNav: false
 sidebar_custom_props: 
   icon: "graph"
 ---

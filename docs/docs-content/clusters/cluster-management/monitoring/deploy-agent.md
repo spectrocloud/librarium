@@ -2,7 +2,6 @@
 sidebar_label: 'Enable Monitoring on Host Cluster'
 title: 'Enable Monitoring on Host Cluster'
 description: 'Learn how to configure your host cluster to forward metrics to a Prometheus server.'
-hiddenFromNav: false
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["clusters", "cluster management", "monitoring"]

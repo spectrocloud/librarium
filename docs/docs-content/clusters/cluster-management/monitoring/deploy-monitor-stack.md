@@ -2,7 +2,6 @@
 sidebar_label: 'Deploy Monitoring Stack'
 title: 'Deploy Monitoring Stack'
 description: 'Learn how to deploy a monitoring stack in your Palette environment.'
-hiddenFromNav: false
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["clusters", "cluster management", "monitoring"]

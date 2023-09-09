@@ -5,7 +5,6 @@ description: 'Set up Palette SSO with Microsoft Active Directory Federation Serv
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-hiddenFromNav: false
 tags: ["user-management", "saml-sso"]
 ---
 

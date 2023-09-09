@@ -5,7 +5,6 @@ description: "Palette Dev Engine Redis Database Service"
 hide_table_of_contents: false
 type: "appTier"
 category: ['databases']
-hiddenFromNav: false
 sidebar_position: 30
 logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M2p1W4t8H70OKpRY2breg&usqp=CAU"
 tags: ["devx", "app mode", "pde", "databases"]

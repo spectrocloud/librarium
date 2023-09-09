@@ -4,13 +4,13 @@ title: "Add Virtual Clusters to a Host Cluster"
 description: "How to add Palette Virtual Clusters to a Host Cluster"
 icon: ""
 hide_table_of_contents: false
-
+sidebar_position: 0
 ---
 
 
 # Add Virtual Clusters to a Host Cluster
 
-:::caution
+:::warning
 
 As of Palette 3.2, this feature is deprecated. Use the [Deploy a Virtual Cluster to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) guide to learn how to deploy Palette Virtual clusters. 
 
@@ -25,7 +25,7 @@ The advantages of a virtual cluster environment are:
 
 Follow steps below to enable and deploy a virtual cluster.
 
-# Prerequisites
+## Prerequisites
 
 - A Spectro Cloud account.
 

@@ -3,9 +3,8 @@ sidebar_label: 'Deploy a Stateless Frontend Application With Kubernetes'
 title: 'Deploy a Stateless Frontend Application With Kubernetes'
 description: 'One of the key benefits of using Kubernetes is that it provides a consistent and reliable way to deploy applications across different environments, including on-premises data centers and cloud infrastructure. Learn how to deploy a stateless frontend application in Kubernetes.'
 icon: ""
-hide_table_of_contents: false
 sidebar_position: 0
-hiddenFromNav: false
+hide_table_of_contents: false
 tags: ["tutorial","k8s-tips"]
 ---
 

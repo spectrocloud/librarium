@@ -2,7 +2,7 @@
 sidebar_label: 'Kubernetes Dashboard'
 title: 'Kubernetes Dashboard'
 description: 'Kubernetes Dashboard with Spectro Proxy'
-hiddenFromNav: false
+hide_table_of_contents: false
 sidebar_position: 210
 tags: ["clusters", "cluster management", "k"]
 ---
