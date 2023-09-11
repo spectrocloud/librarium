@@ -12,6 +12,26 @@ tags: ["release-notes"]
 ---
  
 
+
+## September 1, 2023 - Release 4.0.8 
+
+This release contains minor bug fixes.
+
+### Bug Fixes
+
+- A bug that caused ARM64 Nvidia Jetson cluster deployment to fail has been resolved. 
+
+- The problem with a blank drop-down menu when trying to add a CoxEdge cloud account is resolved with a populated menu.
+
+## August 31, 2023 - Release 4.0.7
+
+This release contains minor bug fixes.
+
+### Bug Fixes
+
+- A problem with Palette retaining original pack values in manifests after users apply modifications has been resolved. 
+
+
 ## August 27, 2023 - Release 4.0.0 {#release-4-0}
 
 Palette 4.0.0 introduces new features and improvements, including [Palette VerteX](/vertex) - a FIPS-compliant edition - and the [Virtual Machine Orchestrator](/vm-management) (VMO) which enables unified management of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User Interface (UI) that improves the user experience for finding and installing packs. Check out the [Upgrade Notes](/enterprise-version/upgrade) and release notes below to learn more about the new features and improvements in Palette 4.0.0.
