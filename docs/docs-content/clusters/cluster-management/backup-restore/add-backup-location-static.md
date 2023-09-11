@@ -97,6 +97,15 @@ The following sections provide detailed instructions. Select the environment whe
 	If you skip copying the secret access key, refer to the [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) guide to learn how to create a new access key.
 
 
+* If the S3 bucket is using a customer managed AWS Key Management Service (KMS) key for server-side encryption, ensure the Palette IAM user has the necessary permissions to access the KMS key. Otherwise, Palette will be unable to put objects in the S3 bucket and result in backup or restore failure. Check out the [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to learn more about common KMS issues.
+
+	:::tip
+
+	Use the IAM Policy Simulator to verify the IAM user has the necessary permissions to access a customer managed KMS key. Refer to the [Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) guide to learn more about the IAM Policy Simulator.
+
+	:::
+
+
 
 ### Add an AWS S3 Bucket 
 
