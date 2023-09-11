@@ -21,7 +21,7 @@ This release contains minor bug fixes.
 
 - A bug that caused ARM64 Nvidia Jetson cluster deployment to fail has been resolved. 
 
-- The problem with a blank drop-down menu when trying to add a CoxEdge cloud account is resolved with a populated menu.
+- The problem with a blank **drop-down Menu** when trying to add a CoxEdge cloud account is resolved with a populated menu.
 
 ## August 31, 2023 - Release 4.0.7
 
