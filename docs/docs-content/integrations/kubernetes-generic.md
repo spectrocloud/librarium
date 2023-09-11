@@ -72,7 +72,7 @@ The Kubeadm configuration file is where you can do the following:
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain). 
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain). 
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
@@ -282,7 +282,7 @@ The Kubeadm configuration file is where you can do the following:
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?platform=AKS&versions=k8s_v1.26#change-cluster-dns-service-domain-1).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?platform=AKS&versions=k8s_v1.26#change-cluster-dns-service-domain-1).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
@@ -486,7 +486,7 @@ The Kubeadm configuration file is where you can do the following:
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?versions=k8s_v1.25#change-cluster-dns-service-domain-2).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?versions=k8s_v1.25#change-cluster-dns-service-domain-2).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
@@ -698,7 +698,7 @@ The Kubeadm configuration file is where you can do the following:
 
   As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?versions=k8s_v1.24#change-cluster-dns-service-domain-3).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes-generic?versions=k8s_v1.24#change-cluster-dns-service-domain-3).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
 
