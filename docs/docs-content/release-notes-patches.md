@@ -12,7 +12,7 @@ tags: ["release-notes"]
 ---
  
 
-## Bug Fixes
+## Bug Fixes - September 11, 2023
 
 The issues below are resolved in patch releases as dated.
 
