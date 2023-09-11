@@ -24,7 +24,7 @@ The issues below are resolved in patch releases as dated.
 ### 4.0.8 - September 1, 2023
 
 
-- A bug that caused ARM64 Nvidia Jetson cluster deployment to fail is now resolved. 
+- A bug that caused ARM64 Nvidia Jetson cluster deployment to fail has been resolved. 
 
-- The problem with a blank drop-down menu when trying to add a CoxEdge cloud account is now resolved.
+- The problem with a blank drop-down menu when trying to add a CoxEdge cloud account is resolved with a populated menu.
 
