@@ -16,12 +16,12 @@ tags: ["release-notes"]
 
 The issues below are resolved in patch releases as dated.
 
-## 4.0.7 - August 31, 2023
+### 4.0.7 - August 31, 2023
 
 - A problem with Palette retaining original pack values in manifests after users apply modifications has been resolved. 
 
 
-## 4.0.8 - September 1, 2023
+### 4.0.8 - September 1, 2023
 
 
 - A bug that caused ARM64 Nvidia Jetson cluster deployment to fail is now resolved. 
