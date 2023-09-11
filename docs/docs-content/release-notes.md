@@ -586,7 +586,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 Spectro Cloud Palette 2.7 is released with advanced features supporting Windows Worker Node Pools, Canonical Ubuntu Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and more.
 
 **Features:**
-* Spectro Cloud Palette has enhanced the import cluster functionality with ["Read-Only Mode"](/clusters/brownfield-clusters) mode and the "Full Permission Mode" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
+* Spectro Cloud Palette has enhanced the import cluster functionality with ["Read-Only Mode"](/clusters/imported-clusters) mode and the "Full Permission Mode" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
 * Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
 * Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
 * Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.

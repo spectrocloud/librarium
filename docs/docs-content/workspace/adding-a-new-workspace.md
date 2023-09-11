@@ -29,7 +29,7 @@ Provide the basic information for the workspace such as:
 
 #### 2. Associate Clusters
 
-  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters) to learn how to add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters) to learn how to add a new Cluster.) Palette clusters, as well as imported clusters, can be added to your workspace.
 
 
   * Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
@@ -61,7 +61,7 @@ Provide the basic information for the workspace such as:
 #### 4. Settings
 
 
-* [Schedule Backups](/clusters/cluster-management/backup-restore#createaworkspacebackup) - set the backup and restore policies.
+* [Schedule Backups](/clusters/cluster-management/backup-restore) - set the backup and restore policies.
     
 * [Container Image](/workspace/workload-features#restrictedcontainerimages) - list out the container images to be restricted within a Workspace namespace.
 

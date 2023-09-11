@@ -56,7 +56,7 @@ Built-in filters are available in the Palette console by default and can be sele
 |**Built-In Filters** |Description|
 |---------------------|-----------|
 |Deleted Only| To dispaly the deleted Clusters for the last 72 hours|
-|Imported Only| To display the brown field clusters|
+|Imported Only| To display the imported clusters field|
 |Updates Pending| To display the clusters with pending updates| 
 
 

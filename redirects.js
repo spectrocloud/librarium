@@ -182,7 +182,11 @@ const redirects = [
   {
     from: `/knowledgebase/how-to`,
     to: `/tags/how-to`,
-  }
+  },
+  {
+    from: `/clusters/brownfield-clusters`,
+    to: `/clusters/imported-clusters`,
+  },
 ];
 
 module.exports = redirects;
