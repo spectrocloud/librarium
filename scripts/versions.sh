@@ -101,8 +101,7 @@ for item in $(git branch --format '%(refname:short)'); do
 
     # Add version to temp_versions.json and sort it
     jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
-    # Replace the last number with 'x' to indicate it's a version branch
-    jq '.[] |= (split(".")[:-1] | join(".")) + ".x"' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+
 
 
     # Switch to the version branch
@@ -143,6 +142,9 @@ cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 
 # Remove the existing versions.json if it exists
 [ -e versions.json ] && rm versions.json
+
+# Replace the last number with 'x' to indicate it's a version branch
+jq '.[] |= (split(".")[:-1] | join(".")) + ".x"' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
 
 # Rename temp_versions.json to versions.json
 mv $tempdir/temp_versions.json $baseDir/versions.json
