@@ -23,8 +23,9 @@ env:
 jobs:
   run-ci:
     # runs-on: ubuntu-latest
-    runs-on:
-      labels: DocBot
+    # runs-on:
+    runs-on: [self-hosted, linux, x64, Repository]
+      # labels: DocBot
     defaults:
       run:
         shell: bash
@@ -39,8 +40,9 @@ jobs:
     name: Writing Checks
     needs: [run-ci]
     # runs-on: ubuntu-latest
-    runs-on:
-      labels: DocBot
+    runs-on: [self-hosted, linux, x64, Repository]
+    # runs-on:
+      # labels: DocBot
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
@@ -60,8 +62,9 @@ jobs:
     name: Build
     needs: [run-ci]
     # runs-on: ubuntu-latest
-    runs-on:
-      labels: DocBot
+    runs-on: [self-hosted, linux, x64, Repository]
+    # runs-on:
+      # labels: DocBot
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
