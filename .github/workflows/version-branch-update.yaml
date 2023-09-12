@@ -50,10 +50,6 @@ jobs:
     - run: npm ci
 
 
-    - name: Create Versions Content
-      run: |
-        make versions-ci
-
     - name: Netlify Build
       run: |
         netlify build --context deploy-preview
