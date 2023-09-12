@@ -50,7 +50,11 @@ jobs:
 
     - name: Create Versions Content
       run: |
-        ./scripts/versions.sh
+        make versions-ci
+
+    - name: Netlify Build
+      run: |
+        netlify build --context deploy-preview
 
     - name: Deploy to Netlify
       uses: nwtgck/actions-netlify@v2.1.0
