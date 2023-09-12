@@ -58,7 +58,7 @@ jobs:
 
     - name: Netlify Deploy
       run: |
-        netlify deploy --context deploy-preview
+        netlify deploy
 
     # - name: Deploy to Netlify
     #   uses: nwtgck/actions-netlify@v2.1.0
