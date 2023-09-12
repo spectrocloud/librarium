@@ -13,19 +13,19 @@ sidebar_custom_props:
 # Packs
 
 
-A **Cluster Profile** is made up of preconfigured layers, each of which is called a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorized into two types:
+A **Cluster Profile** is made up of layers, each of which is created using a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorized into two types:
 
-- **Core** packs - These packs model the core layers to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these core packs for updates. 
+- **Infrastructure** packs - These packs are used to create the core infrastructure layers required to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these infrastructure packs for updates. 
 
 
-- **Add-On** packs - These packs model the infrastructure integrations and applications that exist on top of the core packs. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts. 
+- **Add-on** packs - These packs are used to form the integrations and application layers that exist on top of the infrastructure layers. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts. 
 
-Both the core and add-on packs described above are configurable, and you can define new add-on custom packs from scratch as well. The use case for defining new add-on packs is to have desired consistent governance across your profile deployments. 
+Both the infrastructure and add-on packs described above are configurable, and you can define new add-on custom packs from scratch as well. The use case for defining new add-on packs is to have desired consistent governance across your profile deployments. 
   
 
 ## Pack Structure
 
-Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. To configure an existing pack (core or add-on) or to define a new add-on custom pack from scratch, it is essential to understand the pack structure. 
+Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. To configure an existing pack (infrastructure or add-on) or to define a new add-on custom pack from scratch, it is essential to understand the pack structure. 
 
 Each pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, and more. Ansible roles, if provided, are used to customize cluster VM images, whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical pack structure:
 
