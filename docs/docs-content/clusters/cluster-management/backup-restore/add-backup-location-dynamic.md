@@ -97,11 +97,11 @@ Use the following steps to add an S3 bucket as the backup location using the STS
 	}
 	```
 
-* If the S3 bucket is using a customer managed AWS Key Management Service (KMS) key for server-side encryption, ensure the Palette IAM role has the necessary permissions to access the KMS key. Otherwise, Palette will be unable to put objects in the S3 bucket and result in backup or restore failure. Check out the [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to learn more about common KMS issues.
+* If the S3 bucket is using a customer managed AWS Key Management Service (KMS) key for server-side encryption, ensure the Palette IAM role has the necessary permissions to access the KMS key. Otherwise, Palette will be unable to put objects in the S3 bucket, resulting in backup or restore failure. Check out the [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to learn more about common KMS issues.
 
 	:::tip
 
-	Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS key. Refer to the [Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) guide to learn more about the IAM Policy Simulator.
+	Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS key. Refer to the [Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) guide to learn more.
 
 	:::
 
