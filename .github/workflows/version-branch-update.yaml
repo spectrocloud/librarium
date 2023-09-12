@@ -26,6 +26,8 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
 
 jobs:
@@ -61,6 +63,3 @@ jobs:
       with:
         publish-dir: ./build
         deploy-message: "Manual Netlify deployment from GitHub Actions"
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
