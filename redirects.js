@@ -187,6 +187,10 @@ const redirects = [
     from: `/clusters/brownfield-clusters`,
     to: `/clusters/imported-clusters`,
   },
+  {
+    from: `/integrations/EKS-D`,
+    to: `/integrations`,
+  }
 ];
 
 module.exports = redirects;
