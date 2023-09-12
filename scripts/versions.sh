@@ -3,14 +3,15 @@
 set -e
 
 ###################################################################################################
-# This script is used to generate the versioned documentation for Docusaurus.                      
-# The script first loops through all version-* branches and runs the Docusaurus command            
+# This script is used to generate the versioned documentation for Spectro Cloud Docs.                      
+# The script first loops through all version-* branches and runs the Docusaurus command `npm run docusaurus docs:version <version>`           
 # to generate the versioned documentation.                                                        
 # The version folders and their content are moved to a temp directory specified by you through the first argument to the script. 
-# Once all the version folder are generated, the script moves the versioned folders from the temp directory to the root directory. 
-# Lastly, a nodeJS script is run to update the docusarus.config.js file.
-# The docusarus.config.js file is updated to remove the default Docusarus banner for old versions that states it's no longer maintained. 
+# Once all the version folders are generated, the script moves the versioned folders from the temp directory to the root directory of the repository. 
+# Lastly, a nodeJS script (update_docusaurs_config.js) is invoked to update the docusarus.config.js file.
+# The docusarus.config.js file is updated to remove the default Docusarus banner for old versions that states it's no longer maintained.
 # The script also updates the versions.json file to include the new versions.
+# Last note. You can use the versionsOverride.json file to customize the versions label, banner, and other properties.
 ###################################################################################################                      
 
 tempdir=$1
