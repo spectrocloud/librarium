@@ -3,7 +3,7 @@
 # List of branches to NOT create a Netlify preview
 # Master branch does not need a preview
 # Release branches get a preview through docs-latest.spectrocloud.com
-allowed_branches=("master" "release-*")
+disallowed_branches=("master" "release-*","version-*")
 
 echo "Branch name: $HEAD"
 
@@ -14,10 +14,10 @@ branch_name=$HEAD
 not_allowed=0
 
 # Compare $HEAD against the list
-for allowed in "${allowed_branches[@]}"
+for disallowed in "${disallowed_branches[@]}"
 do
   # Use double brackets and == for pattern matching
-  if [[ "$branch_name" == $allowed ]]; then
+  if [[ "$branch_name" == $disallowed ]]; then
     not_allowed=1
     break
   fi

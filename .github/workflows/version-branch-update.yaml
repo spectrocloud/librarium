@@ -1,11 +1,15 @@
 name: Version Branch Update
 
-on:
-  pull_request:
-    branches:
-      - 'backport/version-*'
-    types: [opened, synchronize, reopened]
+# on:
+#   pull_request:
+#     branches:
+#       - 'version-*'
+#     types: [opened, synchronize, reopened]
 
+
+on:
+  push:
+    branches-ignore: [ main ]
 
 concurrency:
   group: version-${{ github.ref }}
@@ -41,10 +45,18 @@ jobs:
         node-version: '18'
         cache: 'npm'
 
-
     - run: npm ci
 
 
-    - name: Build
+    - name: Create Versions Content
       run: |
-        make build
+        ./scripts/versions.sh
+
+    - name: Deploy to Netlify
+      uses: nwtgck/actions-netlify@v2.1.0
+      with:
+        publish-dir: ./build
+        deploy-message: "Manual Netlify deployment from GitHub Actions"
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
