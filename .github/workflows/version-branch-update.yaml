@@ -50,11 +50,16 @@ jobs:
       run: |
         netlify build --context deploy-preview
 
-    - name: Deploy to Netlify
-      uses: nwtgck/actions-netlify@v2.1.0
-      with:
-        publish-dir: ./build
-        deploy-message: "Manual Netlify deployment from GitHub Actions -  ${{ github.head_ref }}"
-        enable-pull-request-comment: true
-        overwrites-pull-request-comment: true
-        enable-commit-comment: true
+
+    - name: Netlify Deploy
+      run: |
+        netlify deploy --context deploy-preview
+
+    # - name: Deploy to Netlify
+    #   uses: nwtgck/actions-netlify@v2.1.0
+    #   with:
+    #     publish-dir: ./build
+    #     deploy-message: "Manual Netlify deployment from GitHub Actions -  ${{ github.head_ref }}"
+    #     enable-pull-request-comment: true
+    #     overwrites-pull-request-comment: true
+    #     enable-commit-comment: true
