@@ -194,6 +194,10 @@ const redirects = [
   {
     from: `/knowledgebase/how-to`,
     to: `/tags/how-to`,
+  },
+  {
+    from: `/integrations/EKS-D`,
+    to: `/integrations`,
   }
 ];
 
