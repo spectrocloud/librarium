@@ -2,7 +2,7 @@ name: Algolia Crawler
 
 on:
   workflow_run:
-    workflows: [Release to Production]
+    workflows: ["Release to Production", "Version Branch Update"]
     types: [completed]
 jobs:
   docsearch:
