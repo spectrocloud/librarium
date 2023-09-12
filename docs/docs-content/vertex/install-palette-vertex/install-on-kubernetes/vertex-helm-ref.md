@@ -72,6 +72,20 @@ mongo:
 
 Review the following parameters to configure Palette VerteX for your environment. The `config` section contains the following subsections:
 
+
+#### Install Mode
+
+You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation mode.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `installMode` | Specifies the installation mode. Allowed values are `connected` or `airgap`. Set the value to `airgap` when installing in an air-gapped environment. | String | `connected` |
+
+```yaml
+config:
+  installationMode: "connected"
+```
+
 ### SSO 
 
 You can configure Palette VerteX to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette VerteX. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](/user-management/saml-sso) documentation for additional guidance.
