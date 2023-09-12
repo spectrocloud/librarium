@@ -100,7 +100,10 @@ for item in $(git branch --format '%(refname:short)'); do
     echo "Extracted version: $extracted_version"
 
     # Add version to temp_versions.json and sort it
-    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+    # jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+   jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+  jq --arg verX "$extracted_versionX" '. |= [$verX] + .' $tempdir/temp_versionsX.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versionsX.json
+
     # Replace the last number with 'x' to indicate it's a version branch
     jq '.[] |= (split(".")[:-1] | join(".")) + ".x"' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
 
