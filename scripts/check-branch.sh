@@ -7,6 +7,7 @@ do
   if [[ $branch == version-* ]]; then
     echo "🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫"
     echo "Pushing to the branch '$branch' is not allowed."
+    echo "Branches that start with 'version-' are protected"
     echo "If you need to override this rule for version branch creation or manual cherry picking, use the --no-verify flag."
     echo "Ask the team if you need help or if you are unsure."
     exit 1
