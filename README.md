@@ -470,7 +470,8 @@ The semantic-release logic and the GitHub Actions in the [release.yaml](.github/
 
 ## Versioning
 
-!> Detailed documentation on versioning can be found in internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
+> [!NOTE] 
+> Detailed documentation on versioning can be found in internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
 
 All versioned content belongs to a specific version branch. The version branch name follows the naming convention `version-X-X`. The version branch is used to generate versioned content.
 
@@ -499,4 +500,5 @@ make versions
 make start
 ```
 
-!> The `docuasurus.config.js` file is updated with the versioning information. DO NOT commit this file with the updated changes. 
+> [!WARNING] 
+> The `docuasurus.config.js` file is updated with the versioning information. DO NOT commit this file with the updated changes. 
