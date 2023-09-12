@@ -85,9 +85,10 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
 
-|Version| Operating System | 
-|---|---|
-|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/linux/cli/palette) <br />  [OSX-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/osx/cli/palette)|
+|Version| Operating System |  Checksum (SHA256) |
+|---|---|---|
+|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/linux/cli/palette)| `9dd1e1c70b0b30c2a35b54d1cb54b230593842a114f8d7cbeebe4e882fa2795e`|
+|3.4.0| [OSX-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/osx/cli/palette)| `88b9e74705a0d66f9b34481002a8d33889c94ef7788a590807b1538e8513c62a`|
 
 
 
