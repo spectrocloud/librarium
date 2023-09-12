@@ -481,3 +481,22 @@ There are three files that are used for generating versioned content:
 - [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file with all the required vesioning parameters.
 
 - [`versionsOverride.json`](./versionsOverride.json) - A json file that contains the versioning overrides. This file is used to override the default versioning behavior. These values are used to update the `docusaurus.config.js` file.
+
+
+### Build Versioned Content Locally
+
+To build the versioned content, use the following steps:
+
+1. Issue the following command to generate the versioned content.
+
+```shell
+make versions
+```
+
+2. Start the local development server.
+
+```shell
+make start
+```
+
+!> The `docuasurus.config.js` file is updated with the versioning information. DO NOT commit this file with the updated changes. 
