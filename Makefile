@@ -9,15 +9,18 @@ TEMP_DIR=$(shell $TMPDIR)
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+
+initialize: ## Initialize the repository dependencies
+	@echo "initializing npm dependencies"
+	npm ci
+	npx husky-init
+
 clean: ## Clean build artifacts
 	rm -rf node_modules build public .cache .docusaurus
 	docker image rm $(IMAGE)
 
 ##@ npm Targets
 
-initialize: ## Initialize npm dependencies
-	@echo "initializing npm dependencies"
-	npm ci
 
 start: ## Start a local development server
 	npm run start
