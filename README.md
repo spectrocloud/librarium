@@ -471,22 +471,22 @@ The semantic-release logic and the GitHub Actions in the [release.yaml](.github/
 ## Versioning
 
 > [!NOTE] 
-> Detailed documentation on versioning can be found in internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
+> Detailed documentation for versioning can be found in the internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
 
 All versioned content belongs to a specific version branch. The version branch name follows the naming convention `version-X-X`. The version branch is used to generate versioned content.
 
 There are three files that are used for generating versioned content: 
 
-- [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the versions branches and generates the versionioned content.
+- [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the version branches and generates the versionioned content.
 
 - [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file with all the required vesioning parameters.
 
-- [`versionsOverride.json`](./versionsOverride.json) - A json file that contains the versioning overrides. This file is used to override the default versioning behavior. These values are used to update the `docusaurus.config.js` file.
+- [`versionsOverride.json`](./versionsOverride.json) - A JSON file that contains the versioning overrides. These values are used to update the `docusaurus.config.js` file with non-default values.
 
 
 ### Build Versioned Content Locally
 
-To build the versioned content, use the following steps:
+To build versioned content locally, use the following steps:
 
 1. Issue the following command to generate the versioned content.
 
@@ -494,11 +494,25 @@ To build the versioned content, use the following steps:
 make versions
 ```
 
-2. Start the local development server.
+2. Start a local development server to view the versioned content.
 
 ```shell
 make start
 ```
+
+
+3. Compile the versioned content to ensure a successful build.
+
+```shell
+make build
+```shell 
+
+4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file.
+
+```shell
+rm versions.json
+```
+
 
 > [!WARNING] 
 > The `docuasurus.config.js` file is updated with the versioning information. DO NOT commit this file with the updated changes. 
