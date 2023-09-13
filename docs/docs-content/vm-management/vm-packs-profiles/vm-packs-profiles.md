@@ -9,10 +9,7 @@ tags: ["vmo"]
 
 The **Virtual Machine Orchestrator** pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. You use **Virtual Machine Orchestrator** pack to create a VMO cluster profile. The pack's components are described below. All the components are enabled by default in the `charts:` section of the pack YAML configuration file. 
 
-<br />
-
 - **Spectro VM Dashboard**: Enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page when using Palette Virtual Machine Orchestrator (VMO). The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. 
-
 
 - **KubeVirt**: Allows you to create VMs within a Kubernetes cluster using open-source [KubeVirt](https://kubevirt.io). KubeVirt provides feature gates you can enable in the Virtual Machine Orchestrator pack YAML file. To learn which feature gates Palette enables by default and how you can enable additional feature gates, check out the [Feature Gates](/vm-management#featuregates) section.
 
@@ -45,7 +42,3 @@ Administrators can configure the out-of-the-box add-on packs, cluster profiles, 
 
 
 - [Feature Gates](/vm-management#featuregates)
-
-<br />
-
-<br />

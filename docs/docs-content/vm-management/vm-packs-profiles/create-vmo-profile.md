@@ -35,7 +35,6 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
 
 
 6. Use the information below to find the **Virtual Machine Orchestrator** pack:
-    
     - **Pack Type**: System App
     - **Registry**: Public Repo
     - **Pack Name**: Virtual Machine Orchestrator
@@ -44,7 +43,7 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
 
-    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired. The Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This option requires you to be on a network that can reach the IP address given to the LoadBalancer service.
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
     :::caution
 
@@ -79,8 +78,6 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
 ## Validate
 
 You can validate the profile is created. 
-
-<br />
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
