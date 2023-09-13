@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Cluster Profiles"
+sidebar_label: "Cluster Profiles Backup"
 title: "Understanding Cluster Profiles"
 description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
 hide_table_of_contents: false
