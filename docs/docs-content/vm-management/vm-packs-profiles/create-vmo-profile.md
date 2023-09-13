@@ -4,7 +4,7 @@ title: "Create a VMO Profile"
 description: "Learn how to create a cluster profile to utilize Palette Virtual Machine Orchestrator capabilities."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 5
 tags: ["vmo"]
 ---
 
