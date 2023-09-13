@@ -50,11 +50,12 @@ jobs:
 
     - run: npm ci
 
-    - name: Post Netlify Progress in PR
+    - name: Post Netlify progress
       uses: mshick/add-pr-comment@v2
       with:
         message: |
-            🤖 Starting the Netlify preview build for ${{ github.sha }}. This may take a few minutes.
+            🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
+        refresh-message-position: true
 
     - name: Netlify Build
       run: |
@@ -71,10 +72,17 @@ jobs:
         overwrites-pull-request-comment: true
         enable-commit-comment: true
 
-    - name: Post URL in PR
+    - name: Post Netlify URL
       uses: mshick/add-pr-comment@v2
       with:
         message: |
-            🚀 Deployed Netlify Preview to ${{steps.netlify.outputs.deploy-url}}. Commit: ${{ github.sha }}
+            🚀 Netlify preview deployed succesfully for commit ${{ github.sha }}. Click [here](${{steps.netlify.outputs.deploy-url}}) to preview the changes.
         message-failure: |
-            "👎 Uh oh! The Netlify Preview failed to deploy. Please check the Netlify logs for more information.""
+            👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
+        refresh-message-position: true
+
+    - name: Deploy Preview
+      run: |
+        aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
+        aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/*"

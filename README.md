@@ -505,7 +505,7 @@ make start
 
 ```shell
 make build
-```shell 
+```
 
 4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file.
 
@@ -515,4 +515,4 @@ rm versions.json
 
 
 > [!WARNING] 
-> The `docuasurus.config.js` file is updated with the versioning information. DO NOT commit this file with the updated changes. 
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docsearch.config.json) script. DO NOT commit this file with the updated changes. 
