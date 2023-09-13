@@ -223,11 +223,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-k8s-v3.3.15.bin
   ```
 
-  :::info
+:::tip
 
-   If you receive a certificate error, use the `-k` or `--insecure` flag.
-  
-  :::
+  If you receive a certificate error, use the `-k` or `--insecure` flag.
+
+:::
 
   Assign the proper permissions and start the download script.
 
@@ -268,11 +268,12 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-k8s-v3.3.15.bin
   ```
 
-  :::info
 
-   If you receive a certificate error, use the `-k` or `--insecure` flag.
-  
-  :::
+:::tip
+
+  If you receive a certificate error, use the `-k` or `--insecure` flag.
+
+:::
 
    Assign the proper permissions and start the download script.
 
@@ -311,11 +312,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-kubeadm.bin
   ```
 
-  :::info
+:::tip
 
-   If you receive a certificate error, use the `-k` or `--insecure` flag.
-  
-  :::
+  If you receive a certificate error, use the `-k` or `--insecure` flag.
+
+:::
 
    Assign the proper permissions and start the download script.
 
@@ -365,11 +366,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-ubuntu22-k3s.bin
   ```
 
-  :::info
+:::tip
 
-   If you receive a certificate error, use the `-k` or `--insecure` flag.
-  
-  :::
+  If you receive a certificate error, use the `-k` or `--insecure` flag.
+
+:::
 
  Assign the proper permissions and start the download script.
 
@@ -394,11 +395,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-ubuntu22-rke.bin
   ```
 
-  :::info
+:::tip
 
-   If you receive a certificate error, use the `-k` or `--insecure` flag.
-  
-  :::
+  If you receive a certificate error, use the `-k` or `--insecure` flag.
+
+:::
 
    Assign the proper permissions and start the download script.
 
@@ -421,11 +422,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-ubuntu22-kubeadm.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
@@ -448,11 +449,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-ubuntu20-k3s.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
@@ -475,11 +476,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-ubuntu20-rke.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
@@ -503,11 +504,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-ubuntu20-kubeadm.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
@@ -530,11 +531,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-opensuse-k3s.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
@@ -557,11 +558,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-opensuse-rke.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
@@ -584,11 +585,11 @@ If you have any questions or concerns, please feel free to contact support@spect
    --output airgap-edge-opensuse-kubeadm.bin
   ```
 
-  :::info
+:::tip
 
-  If you receive a certificate error, use the `-k` or `--insecure` flag.
+If you receive a certificate error, use the `-k` or `--insecure` flag.
 
-  :::
+:::
 
    Assign the proper permissions and start the download script.
   
