@@ -1072,6 +1072,12 @@ In addition to the default cloud account already associated with the private clo
 | **Username** | vCenter username|
 | **Password** | vCenter password|
 
+:::caution
+
+If you change the password for a user account in Vcenter, you must also change it in Palette for the same VMware cloud account. Navigate to Clusters >  
+
+:::
+
 # Deploy a VMware Cluster
 
 <video title="vmware-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/vmware.mp4"></video>
