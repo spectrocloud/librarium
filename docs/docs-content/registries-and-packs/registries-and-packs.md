@@ -13,7 +13,7 @@ sidebar_custom_props:
 # Packs
 
 
-A **Cluster Profile** is made up of layers, each of which is created using a pack.  In other words, **Packs** are the building block of a cluster profile to create layers such as operating systems, Kubernetes, network, storage, and add-ons. Packs can be broadly categorized into two types:
+A **Cluster Profile** is made up of layers, each of which is created using a pack. Packs can be broadly categorized into two types:
 
 - **Infrastructure** packs - These packs are used to create the core infrastructure layers required to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications.  Spectro Cloud builds and maintains these infrastructure packs for updates. 
 
