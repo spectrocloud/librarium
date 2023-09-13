@@ -1051,7 +1051,13 @@ In addition to the default cloud account already associated with the private clo
 
 :::caution
 
-If you change the password for a user account in Vcenter, you must also change it in Palette for the same VMware cloud account. Navigate to Clusters >  
+If you change the password for a user account in Vcenter, you must also change it in Palette for the same VMware cloud account. We suggest updating the passwords sequentially to avoid potentially locking Palette out of Vcenter.
+
+1. From the **Menu Menu** navigate to **Clusters** > **Add New Cluster** > **Deploy New Cluster** and select **VMware**. 
+2. Click on **Start VMware Configuration**.
+3. In the **Cloud Account** field, use the drop-down menu to choose the account with the changed password.
+4. Update the password in the **Password** field and click **Validate**. 
+5. Confirm your changes. 
 
 :::
 
