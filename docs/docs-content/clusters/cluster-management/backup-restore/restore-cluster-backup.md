@@ -70,7 +70,7 @@ If there is a mismatch between storage classes in the source and destination clu
 
 
 
-:::note
+:::info
 
 A restore operation only restores the specified namespaces, cluster-scoped resources, and persistent volumes from the backup. To learn more about the restore operation, refer to the Velero [Restore Reference](https://velero.io/docs/main/restore-reference).
 
@@ -166,7 +166,7 @@ Use the following steps to validate restoring a cluster backup.
 
   You restored the backup successfully when the backup status displays *Completed*.
 
-  :::note
+  :::info
 
   Remember, a backup does not include the cluster profile of the source cluster. Therefore, the restore operation will not change the cluster profile of the destination cluster.
 
