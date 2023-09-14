@@ -20,7 +20,7 @@ Palette's Edge solution requires Edge hosts to be ready with the required depend
 
 In this guide, you will use the utility, [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md), to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile.
 
-:::note
+:::info
 
 CanvOS is a utility that helps you build Edge artifacts. CanvOS is part of the EdgeForge workflow.
 
