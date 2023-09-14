@@ -1058,7 +1058,7 @@ If you change the password for a user account in vCenter, you must also change i
 
 ## Change VMware Cloud Account Password in Palette
 
-The user account password in vCenter must match the password for the same VMware cloud account in Palette. This section provides steps to change the password in Palette in the event the vCenter password changes.
+The user account password in vCenter must match the password for the corresponding VMware cloud account in Palette. This section provides steps to change the password in Palette in the event the vCenter password changes.
 
 ### Prerequisites
 
