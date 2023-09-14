@@ -1056,7 +1056,7 @@ If you change the password for a user account in vCenter, you must also change i
 :::
 
 
-## Change VMware Cloud Account Password in Palette
+## Change VMware Cloud Account Password
 
 The user account password in vCenter must match the password for the corresponding VMware cloud account in Palette. This section provides steps to change the password in Palette in the event the vCenter password changes.
 
@@ -1066,15 +1066,17 @@ The user account password in vCenter must match the password for the correspondi
 
 ### Change the Password in Palette
 
-1. From the **Menu Menu** navigate to **Clusters** > **Add New Cluster** > **Deploy New Cluster**,  and select **VMware**.
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Click on **Start VMware Configuration**.
+2. From the **Menu Menu** navigate to **Clusters** > **Add New Cluster** > **Deploy New Cluster**,  and select **VMware**.
 
-3. In the **Cloud Account** field, use the drop-down menu to choose the account with the changed password.
+3. Click on **Start VMware Configuration**.
 
-4. Update the password in the **Password** field and click the **Validate** button. 
+4. In the **Cloud Account** field, use the drop-down menu to choose the account with the changed password.
 
-5. Confirm your changes. 
+5. Update the password in the **Password** field and click the **Validate** button. 
+
+6. Confirm your changes. 
 
 ### Validation
 
