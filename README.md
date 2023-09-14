@@ -515,4 +515,4 @@ rm versions.json
 
 
 > [!WARNING] 
-> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docsearch.config.json) script. DO NOT commit this file with the updated changes. 
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO NOT commit this file with the updated changes. 
