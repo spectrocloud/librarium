@@ -18,7 +18,7 @@ You can create the following types of cluster profiles using packs and other com
 
 The diagram below illustrates how you can build on core infrastructure layers with add-on layers to build a full cluster profile. You can also create separate add-on profiles to reuse among multiple clusters.
 
-<<< PLACEHOLDER FOR UPDATED DIAGRAM >>
+![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](../../../../static/assets/docs/images/profiles_cluster-profiles_cluster-profiles.png)
 
 
 ## Profile Layers
