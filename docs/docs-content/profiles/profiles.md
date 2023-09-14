@@ -8,3 +8,22 @@ sidebar_custom_props:
 tags: ["profiles"]
 ---
 
+Profiles are composed of packs, Helm charts, or manifests and are used to ensure consistency across workload cluster deployments and Palette virtual clusters. Simultaneously, they offer the flexibility to tailor deployments to your specific needs.
+
+Palette uses the following profile types:
+
+**Cluster profiles** - You create cluster profiles to meet specific types of workloads on your Palette cluster deployments. Cluster profiles span multiple clusters and projects within a tenant.
+
+**App profiles** - You create app profiles to meet specific types of workloads on your Palette virtual clusters deployed using Palette Dev Engine (PDE) *App Mode*. For information about PDE and App Mode, check out the [Palette Dev Engine] reference. Learn about App Profiles in the [App Profiles] documentation.
+
+**System profiles** - System profiles require Palette console access. These profiles span multiple tenants and are typically used to bootstrap an edge appliance with an initial set of virtual and containerized applications. Refer to [System Profiles] to learn more.
+
+<!-- You must have Palette console access to use system profiles. -->
+
+## Resources
+
+[Cluster Profiles]
+
+[App Profiles]
+
+[System Profiles]
