@@ -82,7 +82,7 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 | cluster-3          | k8s-zone         | az3           |
 
 
-:::note
+:::info
 
 The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 
