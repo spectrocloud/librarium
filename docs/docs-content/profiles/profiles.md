@@ -5,7 +5,7 @@ description: "Understanding the Cluster Profiles Concept and how they make Spect
 hide_table_of_contents: false
 sidebar_custom_props: 
     icon: "bundles"
-tags: ["profiles"]
+tags: ["profiles", "cluster profiles", "app profiles", "system profiles"]
 ---
 
 Profiles are composed of packs, Helm charts, or manifests and are used to ensure consistency across workload cluster deployments and Palette virtual clusters. Simultaneously, they offer the flexibility to tailor deployments to your specific needs.
