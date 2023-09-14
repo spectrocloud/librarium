@@ -1081,6 +1081,10 @@ The user account password in vCenter must match the password for the correspondi
 
 Palette validates the password. Incorrect credentials will result in an error. As an extra precaution, try scaling a cluster up or down.
 
+:::info
+In addition to changing the password for a VMware account, Palette provides a way for you to also change the user associated with an account by entering a new username in the **Username** field. Ensure the new user account has the same permissions as the previous user account in vCenter.
+:::
+
 
 # Deploy a VMware Cluster
 
