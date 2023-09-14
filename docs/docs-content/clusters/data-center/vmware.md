@@ -1066,10 +1066,14 @@ The user account password in vCenter must match the password for the correspondi
 
 ### Change the Password in Palette
 
-1. From the **Menu Menu** navigate to **Clusters** > **Add New Cluster** > **Deploy New Cluster** and select **VMware**. 
+1. From the **Menu Menu** navigate to **Clusters** > **Add New Cluster** > **Deploy New Cluster**,  and select **VMware**.
+
 2. Click on **Start VMware Configuration**.
+
 3. In the **Cloud Account** field, use the drop-down menu to choose the account with the changed password.
-4. Update the password in the **Password** field and click **Validate**. 
+
+4. Update the password in the **Password** field and click the **Validate** button. 
+
 5. Confirm your changes. 
 
 ### Validation
