@@ -1,15 +1,11 @@
 name: Version Branch Update
 
-# on:
-#   pull_request:
-#     branches:
-#       - 'version-*'
-#     types: [opened, synchronize, reopened]
-
 on:
-  push:
-    branches-ignore:
-      - master
+  pull_request:
+    branches:
+      - 'version-*'
+    types: [opened, synchronize, reopened]
+
 
 
 concurrency:
