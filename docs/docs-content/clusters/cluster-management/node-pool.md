@@ -18,10 +18,17 @@ Ensure you exercise caution when modifying node pools. We recommend creating a [
 
 ## Repave Behavior and Configuration
 
-In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](/glossary-all#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool. 
+In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](/glossary-all#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed.
 
-The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 0 seconds. You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
+Different types of repaving operations may occur, contingent upon the actions that trigger them:
 
+* Control plane repave: takes place when specific alterations are made to the Kubernetes configuration, such as changing the apiServer specification, or when there are changes in the hardware specifications of the master nodes (e.g., during a scale-up operation or when changing from an instance to another). Only control plane nodes are repaved, one by one.
+
+* Worker node pool repave: takes place when alterations to the specification of a particular node pool render the existing nodes incompatible with the pool's criteria. For instance, changing the hardware specifications of a worker pool. In this case, nodes within the affected pool are sequentially replaced with new nodes that meet the updated pool specifications.
+
+* Full cluster repave: occurs if any changes are made to the OS layer or if there are modifications to the Kubernetes layer that impact all nodes (e.g., upgrading to a different version of Kubernetes). In a full cluster repaving, all nodes across all pools, including the control plane, undergo repaving one by one, with control plane nodes taking precedence, followed by worker pool nodes.
+
+You can customize the repave time interval for all node pools, with the exception of the master pool. The default repave time interval is 0 seconds. You have the flexibility to adjust the node repave time interval either during the cluster creation or after the cluster has been created. If you need to modify the repave time interval post-cluster creation, follow the [Change a Node Pool](#changeanodepool) instructions below.
 
 ## Node Pool Configuration Settings
 
