@@ -60,10 +60,6 @@ jobs:
         refresh-message-position: true
         update-only: true
 
-    - name: Install Netlify Click
-      run: |
-        npm install -g netlify-cli
-
     - name: Netlify Build
       run: |
         netlify build --context deploy-preview
