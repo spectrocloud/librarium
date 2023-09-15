@@ -6,7 +6,9 @@ on:
     types: [completed]
 jobs:
   docsearch:
-    runs-on: ubuntu-latest
+    runs-on: 
+      group: Default
+      labels: docbot
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repo
