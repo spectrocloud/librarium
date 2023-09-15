@@ -28,7 +28,7 @@ Each profile layer provides a specific functionality. Profile layers can be pack
 | **Layer** | **Description** |
 |-----------|---------------------------|
 | **Packs** | Packs are built using integration-specific templates. We maintain a public pack registry of packs that are available to all tenants. Check out the [Packs List](/integrations) reference to learn more. |
-| **Helm Charts** | Helm charts are a collection of Kubernetes resource files capable of deploying various services. We provide both a public and a private Helm registry. Additionally, your organization can add any public or private Helm registries to Palette to leverage charts from those registries. Palette promotes Container Storage Interface (CSI) and Container Network Interface (CNI) layers to be added as Helm Charts from customized Helm registries and linked to Spectro Registry packs. <<< COME BACK TO THIS SENTENCE >>> |
+| **Helm Charts** | Helm charts are a collection of Kubernetes resource files capable of deploying various services. We provide both a public and a private Helm registry. Additionally, your organization can add any public or private Helm registries to Palette to leverage charts from those registries. You can then attach customized charts to Spectro Registry packs. |
 | **Manifests** | You can construct profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Manifests also provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require the creation of secrets or Custom Resource Definitions (CRDs). By attaching a manifest file to a layer in a cluster profile, you can provision these additional resources. |
 
 
