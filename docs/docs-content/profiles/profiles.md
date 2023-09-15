@@ -22,8 +22,8 @@ Palette uses the following profile types:
 
 ## Resources
 
-[Cluster Profiles]
+[Cluster Profiles](./cluster-profiles/cluster-profiles.md)
 
-[App Profiles]
+[App Profiles](./app-profiles/app-profiles.md)
 
-[System Profiles]
+[System Profiles](./system-profiles/system-profiles.md)
