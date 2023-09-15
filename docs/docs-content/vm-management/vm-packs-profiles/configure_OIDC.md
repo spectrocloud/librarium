@@ -9,7 +9,9 @@ tags: ["vmo", "oidc"]
 ---
 
 
-Palette displays the VM dashboard based on OpenID Connect (OIDC) Identity Provider options you enable in the Kubernetes layer of the cluster profile you will use for your Virtual Machine Orchestrator (VMO) cluster.
+Palette displays the Virtual Machine dashboard based on OpenID Connect (OIDC) Identity Provider options that you enable in the Kubernetes layer of the infrastructure profile.
+
+<!-- Palette displays the VM dashboard based on OpenID Connect (OIDC) Identity Provider options that you enable in the Kubernetes layer of the cluster profile you apply to your Virtual Machine Orchestrator (VMO) cluster. -->
 
 
 ## Prerequisites
