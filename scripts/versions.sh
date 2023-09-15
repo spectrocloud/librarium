@@ -117,12 +117,12 @@ for item in $(git branch --format '%(refname:short)'); do
 
 
     # Copy the generated files to the staging directory
-    echo "Copying files to staging directory"
-    mkdir -p $tempdir/staging_docs/version-$extracted_versionX
-    mkdir -p $tempdir/staging_sidebars/version-$extracted_versionX
+    # echo "Copying files to staging directory"
+    # mkdir -p $tempdir/staging_docs/version-$extracted_versionX
+    # mkdir -p $tempdir/staging_sidebars/version-$extracted_versionX
     
-    cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/version-$extracted_versionX
-    cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/version-$extracted_versionX || true
+    cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/
+    cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/ || true
     cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
 
 
