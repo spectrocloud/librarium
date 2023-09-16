@@ -17,7 +17,7 @@ In Palette, the *tenant admin* role can access tenant settings. This role is the
 
 :::info
 
-To learn more about the permissions and privileges available to the tenant role, refer to the [Tenant Scope Roles and Permissions](/user-management/palette-rbac/tenant-scope-roles-permissions) reference page.
+To learn more about the permissions and privileges available to the tenant role, refer to the [Tenant Scope Roles and Permissions](../user-management/palette-rbac/tenant-scope-roles-permissions.md) reference page.
 
 :::
 
@@ -27,7 +27,7 @@ Use the following resources to become familiar with the available tenant setting
 
 ## Resources
 
-- [Login Banner](/tenant-settings/login-banner)
+- [Login Banner](login-banner.md)
 
 
 <br />
