@@ -9,7 +9,7 @@ tags: ["vmo"]
 ---
 
 
-The **Virtual Machine Orchestrator** pack that you use to create a cluster profile conveniently includes several components and automatically installs the [Spectro Proxy](/integrations/frp) pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](/vm-management/vm-packs-profiles).
+The **Virtual Machine Orchestrator** pack that you use to create a cluster profile conveniently includes several components and automatically installs the [Spectro Proxy](../../integrations/frp.md) pack when you use the default profile configuration. To learn about pack components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md).
 
 
 ## Prerequisites
@@ -44,7 +44,7 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
     - **Pack Version**: 1.0 or higher
 
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster. Check out the [Spectro Proxy](/integrations/frp) guide to learn more. Changing the default may require some additional configuration. 
+7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster. Check out the [Spectro Proxy](../../integrations/frp.md) guide to learn more. Changing the default may require some additional configuration. 
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -67,18 +67,6 @@ The **Virtual Machine Orchestrator** pack that you use to create a cluster profi
 
 11. Apply the profile to your cluster.
 
-
-<!-- IDP options are as follows:
-
-<br />
-
-- **Palette**: This setting makes Palette the IDP, so any user with a Palette account in the tenant and the proper permissions to view and access the project's resources can log into the Kubernetes dashboard.
-
-
-- **Inherit from Tenant**: This setting requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
-
-
-- **Specified on Kubernetes layer**: This setting requires you to configure OIDC manually in the Kubernetes pack. Refer to [Use RBAC With OIDC](/clusters/cluster-management/cluster-rbac/#userbacwithoidc) for more information. -->
 
 ## Validate
 
@@ -103,9 +91,9 @@ You can validate the profile is created.
 
 ## Next Steps
 
-You will need to configure roles and role bindings to give users access virtual clusters. You can use VM user roles and permissions or standard Kubernetes roles. For configuration guidance, refer to [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings). The [VM User Roles and Permissions](/vm-management/vm-roles-permissions) reference lists Cluster Roles and equivalent Palette Roles.
+You will need to configure roles and role bindings to give users access virtual clusters. You can use VM user roles and permissions or standard Kubernetes roles. For configuration guidance, refer to [Add Roles and Role Bindings](add-roles-and-role-bindings.md). The [VM User Roles and Permissions](../vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette Roles.
 
 
 ## Resources
 
-- [Add Roles and Role Bindings](/vm-management/vm-packs-profiles/add-roles-and-role-bindings)
+- [Add Roles and Role Bindings](add-roles-and-role-bindings.md)
