@@ -11,7 +11,7 @@ tags: ["self-hosted", "enterprise"]
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 
-This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
+This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](../architecture/networking-ports.md) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
 
 ## Prerequisites
 
@@ -311,7 +311,7 @@ If you notice that the pods in the `hubble-system` namespace are not initializin
 
 
 
-To upgrade Palette with a new Helm release, use the following steps. <br /> <br />
+To upgrade Palette with a new Helm release, use the following steps.
 
 1. Download the new version of the Helm Chart.
 
@@ -353,6 +353,6 @@ If you find yourself in this scenario, contact our support team by emailing us a
 
 ## Next Steps
 
-Start exploring the Palette system dashboard so that you become familiar with the available actions you can take as an administrator. Check out the [System Console Dashboard](/enterprise-version/system-console-dashboard) resource to learn more.
+Start exploring the Palette system dashboard so that you become familiar with the available actions you can take as an administrator. Check out the [System Console Dashboard](system-console-dashboard.md) resource to learn more.
 
 

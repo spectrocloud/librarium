@@ -12,13 +12,15 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 
 ## Prerequisites
 
-- An installed Private Cloud Gateway (PCG). Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
+- An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](install-manage-maas-pcg.md) for guidance.
+
+  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the [Architecture](architecture.md) page to learn more.
 
 
-- A MAAS account registered in Palette. Refer to the [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts) if you need to register a MAAS account in Palette.
+- A MAAS account registered in Palette. Refer to the [Register and Manage MAAS Cloud Accounts](register-manage-maas-cloud-accounts.md) if you need to register a MAAS account in Palette.
 
 
-- A cluster profile for the MAAS environment. Review [Cluster Profiles](/cluster-profiles) for more information. 
+- A cluster profile for the MAAS environment. Review [Cluster Profiles](../../../cluster-profiles/cluster-profiles.md) for more information. 
 
 
 - Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for guidance on downloading OS images for MAAS.
@@ -55,7 +57,7 @@ To deploy a new MAAS cluster:
 9. Select a domain from the **Domain drop-down Menu** and click **Next**. 
 
 
-10. Configure the master and worker node pools. The following input fields apply to MAAS master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page. Click **Next** when you are done.
+10. Configure the master and worker node pools. The following input fields apply to MAAS master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
 
     #### Master Pool configuration
 
@@ -117,7 +119,11 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scopes. To force delete a cluster, follow the same steps outlined in [Delete a MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters#deleteamaascluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
 
-<br />
+Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS cluster, refer to [Manage Clusters](../../cluster-management/cluster-updates.md). 
+
+To protect your data, we recommend you create a backup of your MAAS cluster before proceeding with any upgrades or infrastructure changes. Review instructions provided in the [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md).
+
+<br /> 
 
 :::caution
 
@@ -127,4 +133,4 @@ A force delete can result in Palette-provisioned resources being missed during t
 
 ## Next Steps
 
-Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the Day-2 operations and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about Day-2 responsibilities.
+Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We recommend you review the Day-2 operations and become familiar with the cluster management tasks. Check out the [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2 responsibilities.

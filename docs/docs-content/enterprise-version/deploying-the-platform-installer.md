@@ -53,7 +53,7 @@ The platform installer contains a web application called the Supervisor, to prov
 2. Observe the installation status in the Status tab. The page auto-refreshes to provide updated installation progress.
 3. Once the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console.
 	* On-Prem System Console: Initial login:admin/admin
-	* Management Console: Tenant credentials to be created and used [Configure System for First Time](./#configuresystemforfirsttime).		
+	* Management Console: Tenant credentials to be created and used [Configure System for First Time](#initial-configuration).		
 4. Navigate to the On-Prem System Console to perform the initial configuration. Additional administration tasks like SMTP setup, certificate management, etc. can also be performed from the On-Prem System Console.
 
 :::info

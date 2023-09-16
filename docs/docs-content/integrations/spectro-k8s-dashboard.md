@@ -11,7 +11,7 @@ tags: ['packs', 'spectro-k8s-dashboard', 'monitoring']
 ---
 
 
-Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using secure ports and conveniently includes the [Spectro Proxy](/integrations/frp) pack. 
+Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using secure ports and conveniently includes the [Spectro Proxy](frp.md) pack. 
 
 
 ## Versions Supported
@@ -22,10 +22,10 @@ Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a *Role* or a *ClusterRole*. You can create a custom role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the [Create a Role Binding](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more. 
+- Users or groups must be mapped to a Kubernetes RBAC role, either a *Role* or a *ClusterRole*. You can create a custom role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the [Create a Role Binding](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more. 
 
 
 ## Parameters 
@@ -69,7 +69,7 @@ Spectro Kubernetes Dashboard has the following Access options.
 
 <br /> 
 
-- **Proxied**:  This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured as ClusterIP and is only accessible through the proxy. To learn more, check out the [Spectro Proxy](/integrations/frp) guide.
+- **Proxied**:  This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured as ClusterIP and is only accessible through the proxy. To learn more, check out the [Spectro Proxy](frp.md) guide.
 
 
 - **Direct**: This option is meant for a private configuration where a proxy is not implemented or not desired. The Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This option requires you to be on a network that can reach the IP address given to the LoadBalancer service.

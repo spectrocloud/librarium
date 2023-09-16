@@ -13,35 +13,35 @@ tags: ["release-notes"]
  
 ## May 22, 2023 - Release 3.4.0
 
-Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) documentation.
+Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](enterprise-version/upgrade.md#palette-34) documentation.
 
 
 ### Palette
 
 #### Breaking Changes
 
-- Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](https://docs.spectrocloud.com/enterprise-version/deploying-palette-with-helm/) guide for more details.
+- Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](enterprise-version/deploying-palette-with-helm.md) guide for more details.
 
 
-- Self-hosted Palette for Kubernetes now installs Palette Ingress resources in a namespace that Palette manages. Prior versions of Palette installed internal components ingress resources in the default namespace. Review the [Upgrade Notes](/enterprise-version/upgrade#palette3.4) to learn more about this change and how to upgrade.
+- Self-hosted Palette for Kubernetes now installs Palette Ingress resources in a namespace that Palette manages. Prior versions of Palette installed internal components ingress resources in the default namespace. Review the [Upgrade Notes](enterprise-version/upgrade.md#palette-34) to learn more about this change and how to upgrade.
 
 
 #### Features
 
-- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels.
+- Palette's tenant administrators now have the ability to set up a personalized login banner for both the system and tenant levels. Refer to the [Login Banner](tenant-settings/login-banner.md) reference page to learn more.
 
 
 - You can now access a customized Amazon Machine Image (AMI) in Palette for Amazon Elastic Kubernetes Service (Amazon EKS) with support for AWS Launch Template. This allows you to personalize your EKS nodes and EBS root volumes by creating your own custom AMI.
 
 
-- Palette now supports using IAM Roles for Service Accounts (IRSA) for AWS clusters. Enable the Palette managed policy *Controllers EKS Policy* to enable this feature. Refer to the [AWS Required Policies](/clusters/public-cloud/aws/required-iam-policies) for more information about the managed policy.
+- Palette now supports using IAM Roles for Service Accounts (IRSA) for AWS clusters. Enable the Palette managed policy *Controllers EKS Policy* to enable this feature. Refer to the [AWS Required Policies](clusters/public-cloud/aws/required-iam-policies.md) for more information about the managed policy.
 
 
-- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](/clusters/public-cloud/gcp/create-gcp-gke-cluster) guide to learn how to deploy clusters to GKE with Palette.
+- You can now deploy clusters in the Google Kubernetes Engine (GKE) environment with Palette. Use the [Create and Managed GCP GKE Cluster](clusters/public-cloud/gcp/create-gcp-gke-cluster.md) guide to learn how to deploy clusters to GKE with Palette.
 
 
 
-- Palette now supports the ability for you to use image swap to override specific registries, images, or a combination of both. You can add an `imageSwap` configuration to the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](/clusters/cluster-management/image-swap) reference resource to learn more.
+- Palette now supports the ability for you to use image swap to override specific registries, images, or a combination of both. You can add an `imageSwap` configuration to the Kubernetes pack YAML to point to a different registry or image. Check out the [Image Swap](clusters/cluster-management/image-swap.md) reference resource to learn more.
 
 
 
@@ -53,7 +53,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - OpenID Connect (OIDC) identity provider configuration has now moved to the Kubernetes layer. You can now select the desired OIDC setting when selecting a Kubernetes distribution and version during a cluster profile creation.
 
 
-- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Macros Supported Variables](/registries-and-packs/pack-constraints?System%20Macros=system_macros_syntax#supportedvariables) documentation to learn more.
+- New macros for gathering attributes about a cluster profile, such as name, uid, and version, are now available. Refer to the [Macros Supported Variables](registries-and-packs/pack-constraints.md#pack-resource-constraints) documentation to learn more.
 
 
 - Cluster profiles can now be filtered by scope such as Tenant and project.
@@ -84,17 +84,17 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 
-- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](/troubleshooting/nodes#paletteagentsworkloadpayloadsizeissue) for guidance on disabling the workload report feature.
+- You can now configure the behavior of the Palette agent to disable sending workload reports to the Palette control plane. This addresses scenarios where large clusters with many nodes exceed the 1 MB payload threshold, resulting in agent failures. Refer to the [Nodes Troubleshooting](troubleshooting/nodes.md#palette-agents-workload-payload-size-issue) for guidance on disabling the workload report feature.
 
 
 ### Edge
 
 #### Breaking Changes
 
-- To enhance the security of Edge deployments, a tenant [registration token](/clusters/edge/site-deployment/site-installation/create-registration-token) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) documentation to learn more about Edge registration methods.
+- To enhance the security of Edge deployments, a tenant [registration token](clusters/edge/site-deployment/site-installation/create-registration-token.md) created by the Tenant administrator is now required for pairing an Edge host with Palette. However, you can continue to use the auto registration, QR code, and manual registration methods available today. Refer to the [Register Edge Host](clusters/edge/site-deployment/site-installation/edge-host-registration.md) documentation to learn more about Edge registration methods.
 
 
-- Prior Edge Installer versions are incompatible with Palette 3.4 and newer versions due to product enhancements and security fixes. New Edge clusters deployed with an earlier Edge Installer version will not operate in Palette. Active Edge clusters in Palette will continue to work as expected. Use the latest version of the [Edge Installer](/spectro-downloads#edgeinstallerimage) when creating Edge artifacts and deploying new Edge clusters.
+- Prior Edge Installer versions are incompatible with Palette 3.4 and newer versions due to product enhancements and security fixes. New Edge clusters deployed with an earlier Edge Installer version will not operate in Palette. Active Edge clusters in Palette will continue to work as expected. Use the latest version of the [Edge Installer](spectro-downloads.md) when creating Edge artifacts and deploying new Edge clusters.
 
 #### Features
 
@@ -107,7 +107,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 
 
-- To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](/clusters/edge/edgeforge-workflow) page to learn more.
+- To deploy an Edge host device, use the Edge Forge workflow. The workflow allows you to customize the Edge Installer, include a user-agent configuration file, preload content bundles, and perform other functions according to your preferences. Visit the [Edge Forge workflow](clusters/edge/edgeforge-workflow/edgeforge-workflow.md) page to learn more.
 
 
 #### Improvements
@@ -134,7 +134,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Palette PDE is now available in self-hosted installation of Palette.
 
 
-- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](/palette-cli/install-palette-cli) documentation page to learn more.
+- PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](palette-cli/install-palette-cli.md) documentation page to learn more.
 
 
 ### Improvements
@@ -142,10 +142,10 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - Container applications that expose a service now automatically receive ingress support with HTTPS support out-of-the-box. This means exposed service URLs automatically receive dynamic SSL certificates used for HTTPS.
 
 
-- You can now access a [new dashboard](/devx#manageresources) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
+- You can now access a [new dashboard](devx/devx.md) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
 
 
-- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](/devx/app-profile/container-deployment) guide to learn more about containerized deployments.
+- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](devx/app-profile/container-deployment.md) guide to learn more about containerized deployments.
  
 
 ### Terraform
@@ -246,10 +246,10 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 ### Education
 
--  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](/registries-and-packs/deploy-pack) tutorial.
+-  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](registries-and-packs/deploy-pack.md) tutorial.
 
 
-- An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started
+- An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](clusters/public-cloud/deploy-k8s-cluster.md) tutorial to get started
 
 
 ## March 19, 2023 - Release 3.3.0
@@ -268,7 +268,7 @@ This release contains several security fixes and new features for Edge. The Edge
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
-* Users can now [create custom Edge Installer images](/clusters/edge/edgeforge-workflow/build-kairos-os) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
+* Users can now [create custom Edge Installer images](clusters/edge/edgeforge-workflow/palette-canvos.md) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
 * Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 
@@ -287,39 +287,39 @@ This release contains several security fixes and new features for Edge. The Edge
 
 ## February 28, 2023 - Release 3.2.0
 
-Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](/devx/app-profile/services/service-listings), and many other product enhancements. 
+Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](devx/app-profile/services/service-listings/service-listings.mdx), and many other product enhancements. 
 
 ### Palette
 
 ##### Features
 
-* Support for the [Cox Edge](/clusters/public-cloud/cox-edge/) cloud provider is now available in Palette.
+* Support for the [Cox Edge](clusters/public-cloud/cox-edge/cox-edge.md) cloud provider is now available in Palette.
 * Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a member of different organizations. Palette prompts you to select the organization to log in to. If you need help remembering, you can retrieve it using “Forgot your organization name?”.
-* Palette now provides a streamlined experience for users when installing [Kubernetes dashboard](/integrations/spectro-k8s-dashboard). When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
+* Palette now provides a streamlined experience for users when installing [Kubernetes dashboard](integrations/spectro-k8s-dashboard.md). When adding Kubernetes dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
 * Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other resources. Users can expect auto cleanup to take approximately 15 minutes.
 * Additional filtering options are available to apply to clusters. Users can filter by region and country with pre-populated values based on cluster information and by ‘Unknown’ state.
 * Palette now provides a way to search and filter private cloud gateways (PCGs) by resource tag. 
 * Palette provides the ability to schedule OS patching for enterprise clusters and PCGs. OS patching applies to clusters that have a master pool with multiple nodes.
 * Palette provides a **tag.update** permission that can be assigned to user roles that allows modifying resource tags. 
-* Palette introduces a Software Bill of Materials [(SBOM) scan](/clusters/cluster-management/compliance-scan/#sbom:dependencies&vulnerabilities) capability that can be invoked manually or scheduled to run on tenant clusters. Multiple output formats are available.
+* Palette introduces a Software Bill of Materials [(SBOM) scan](clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) capability that can be invoked manually or scheduled to run on tenant clusters. Multiple output formats are available.
 * Palette offers two new app services: CockroachDB and HashiCorp Vault.
-* Palette provides access to configuration and status [logs for each application](/devx/apps/logs/). 
+* Palette provides access to configuration and status [logs for each application](devx/apps/logs.md). 
 * Palette now allows you to revise the order of layers as you create an app profile.
-* Virtual clusters now support the ability to [back up all disk volumes](/clusters/cluster-groups/cluster-group-backups) within the cluster.
-* A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](/clusters/cluster-groups/ingress-cluster-group) for cluster groups.
+* Virtual clusters now support the ability to [back up all disk volumes](clusters/cluster-groups/cluster-group-backups.md) within the cluster.
+* A system cluster profile named **nginx-ingress** is now available to help users [set up ingress endpoints](clusters/cluster-groups/ingress-cluster-group.md) for cluster groups.
 
 #### Enhancements
 
-* [Cluster groups](/clusters/cluster-groups) that were previously supported only at the tenant scope are now supported at the project scope.
+* [Cluster groups](clusters/cluster-groups/cluster-groups.md) that were previously supported only at the tenant scope are now supported at the project scope.
 * Palette has improved the launch time for virtual clusters.
-* [Virtual clusters can be resized](/devx/palette-virtual-clusters/resize-virtual-clusters) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
+* [Virtual clusters can be resized](devx/palette-virtual-clusters/resize-virtual-clusters.md) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
 * Virtual clusters now display a progress status during the creation phase.
-* The App profile container service layer contains additional [output variables](/devx/app-profile/app-profile-macros#containerserviceoutputvariables) to help services connect. Refer to the [service connectivity](/devx/app-profile/services/connectivity) document for additional guidance.
-* We optimized the Spectro Cloud Postman [collection](/api/postman-collection) to circumvent a nested levels [bug](https://github.com/postmanlabs/postman-app-support/issues/10928) in Postman.
+* The App profile container service layer contains additional [output variables](devx/app-profile/app-profile-macros.md#container-service-output-variables) to help services connect. Refer to the [service connectivity](devx/app-profile/services/connectivity.md) document for additional guidance.
+* We optimized the Spectro Cloud Postman collection to circumvent a nested levels [bug](https://github.com/postmanlabs/postman-app-support/issues/10928) in Postman.
 
 #### Deprecations
 
-* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](/clusters/cluster-groups) to enable virtual clusters moving forward. Cluster groups are also now supported at the [project](/projects) scope.
+* Enabling virtual clusters on host clusters is deprecated. Use [cluster groups](clusters/cluster-groups/create-cluster-group.md) to enable virtual clusters moving forward. Cluster groups are also now supported at the [project](projects.md) scope.
 
 ### Edge
 
@@ -379,23 +379,23 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 #### Features: 
 
-* Palette supports integration with [AWS GovCloud services](/clusters/public-cloud/aws/add-aws-accounts#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
-* [Autoscaling](/clusters/cluster-management/node-pool#workerpool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
-* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](/compliance#fips140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
-* Palette supports tagging and the ability to filter user [access](/clusters/cluster-management/cluster-tag-filter) and [visibility](/clusters/cluster-management/noc-ui#monitoryourclusterlocation) to clusters using tags. You can filter geographically dispersed clusters in the Palette map view and list view using [flexible filters](/clusters/cluster-management/noc-ui#mapfilters) to have a granular view of cluster information.
-* Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning) within the scope of a single profile name. 
-* Palette supports the [cloning](/devx/app-profile/app-profile-cloning#cloneappprofiles) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
-* Palette Dev Engine supports the manual and system update of an [App Profile](/devx/app-profile/versioning-app-profile#appprofileversioning). You can verify the update notification and apply the changes to the Apps.
-* Palette app mode now supports the use of [containers](/devx/app-profile#services). You can specify containers when creating an app profile.
-* Palette leverages [Helm and OCI registries](/devx/manage-dev-engine/registries) for custom pack management. 
-* Palette provides [out-of-the-box](/devx/app-profile#messagingsystemservices) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
-* Palette allows you to [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters#overview) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
+* Palette supports integration with [AWS GovCloud services](clusters/public-cloud/aws/add-aws-accounts.md#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
+* [Autoscaling](clusters/cluster-management/node-pool.md#worker-node-pool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
+* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](compliance.md#fips-140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
+* Palette supports tagging and the ability to filter user [access](clusters/cluster-management/cluster-tag-filter/cluster-tag-filter.md) and [visibility](clusters/cluster-management/noc-ui.md#monitor-your-cluster-location) to clusters using tags. You can filter geographically dispersed clusters in the Palette map view and list view using [flexible filters](clusters/cluster-management/noc-ui.md#map-filters) to have a granular view of cluster information.
+* Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](devx/app-profile/versioning-app-profile.md#apply-version-to-a-profile) within the scope of a single profile name. 
+* Palette supports the [cloning](devx/app-profile/app-profile-cloning.md#clone-an-app-profile) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
+* Palette Dev Engine supports the manual and system update of an [App Profile](devx/app-profile/versioning-app-profile.md#apply-version-to-a-profile). You can verify the update notification and apply the changes to the Apps.
+* Palette app mode now supports the use of [containers](devx/app-profile/app-profile.md#resources). You can specify containers when creating an app profile.
+* Palette leverages [Helm and OCI registries](devx/manage-dev-engine/registries.md) for custom pack management. 
+* Palette provides [out-of-the-box](devx/app-profile/app-profile.md) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
+* Palette allows you to [pause and resume](devx/palette-virtual-clusters/pause-restore-virtual-clusters.md) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 #### Enhancements:
 
-* [OS patch reboot](/clusters/cluster-management/os-patching#rebootifrequired) allows clusters to reboot to apply system updates if required.
+* [OS patch reboot](clusters/cluster-management/os-patching.md#reboot) allows clusters to reboot to apply system updates if required.
 
-* Palette Tencent clusters now support using [security groups](/clusters/public-cloud/tke#deployatencentcluster) for network isolation and improved security.
+* Palette Tencent clusters now support using [security groups](clusters/public-cloud/tke.md#deploy-a-tencent-cluster) for network isolation and improved security.
 
 * Reduced launch time when creating Palette Virtual Clusters.
 
@@ -418,16 +418,16 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 #### Features:
 
-* Palette supports the provision of [MicroK8s clusters](/integrations/microk8s#microk8soverview). Microk8s deployments are quick and ideal when creating disposal Kubernetes clusters. The MicroK8s pack supports automatic updates, security configuration, and the ability to self-update Kubernetes dependencies.
+* Palette supports the provision of [MicroK8s clusters](integrations/microk8s.md). Microk8s deployments are quick and ideal when creating disposal Kubernetes clusters. The MicroK8s pack supports automatic updates, security configuration, and the ability to self-update Kubernetes dependencies.
 
-#### [Spectro Image Updates](/spectro-downloads#on-premartifacts):
+#### [Spectro Image Updates](spectro-downloads.md):
 
 * Private Cloud Gateway Installer updated to version 1.4.0.
 * On-Prem Installer updated to version 2.4.0.
 * Air Gap Repo Appliance updated to version 2.1.0.
 * EDGE Installer version 2.2.23.
 
-#### [Packs and Integrations](/integrations):
+#### [Packs and Integrations](integrations/integrations.mdx):
 
 * csi-longhorn version 1.3.1 
 * csi-longhorn-addon version 1.3.1 
@@ -441,38 +441,38 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 ## October 24, 2022 - Release 3.0.0
 
-Spectro Cloud Palette 3.0.0 is released with [Native Edge](/clusters/edge), [Palette Dev Engine](/devx), [NOC-UI](/clusters/cluster-management/noc-ui), and many more exciting capabilities.
+Spectro Cloud Palette 3.0.0 is released with [Native Edge](clusters/edge/edge.md), [Palette Dev Engine](devx/devx.md), [NOC-UI](clusters/cluster-management/noc-ui.md), and many more exciting capabilities.
 
 **Features**
 
-* A new set of capabilities that improve the [developer experience](/devx) are introduced in this release:
+* A new set of capabilities that improve the [developer experience](devx/devx.md) are introduced in this release:
   * Rapid Application deployment with a smooth onboarding experience.
   * RBAC with a developer-centric view.
   * System scope resource quota.
-  * System Scope Cluster groups to host [Palette Virtual Clusters](/clusters/palette-virtual-clusters).
+  * System Scope Cluster groups to host [Palette Virtual Clusters](clusters/palette-virtual-clusters/deploy-virtual-cluster.md).
   * Out-of-the-box application profiles and applications deployment with Palette Virtual Clusters. 
   * Application profiles can consists of Helm charts, Manifests, and Database services such as MongoDB, Redis, PostgreSQL 
 
-* The Palette [Native Edge](/clusters/edge#edgenative) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
+* The Palette [Native Edge](clusters/edge/edge.md) architecture is an instance of Palette Edge Distribution. The Palette Edge instance is based on the desired version of Operating System-Kubernetes installed natively onto the edge devices. All the Day 1 and Day 2 Operations starting from Installation to Scaling, Upgrades, and Reconfigurations, will be managed by the Palette Console.
 
-* Palette provides intuitive, location-based UI that monitors clusters with [NOC-UI](/clusters/cluster-management/noc-ui). 
+* Palette provides intuitive, location-based UI that monitors clusters with [NOC-UI](clusters/cluster-management/noc-ui.md). 
 
-* Palette enterprise mode production clusters can be backed up to [Azure Blob storage](/clusters/cluster-management/backup-restore#forazureblobbackup) for convenient restoration.
+* Palette enterprise mode production clusters can be backed up to [Azure Blob storage](clusters/cluster-management/backup-restore/backup-restore.md) for convenient restoration.
 
-* Palette provisions cluster monitoring with [Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) exposed to external traffic using [Spectro Proxy](/integrations/frp) pack with RBAC authentication.
+* Palette provisions cluster monitoring with [Kubernetes Dashboard](integrations/spectro-k8s-dashboard.md) exposed to external traffic using [Spectro Proxy](integrations/frp.md) pack with RBAC authentication.
 
 **Enhancements**
 
-* Palette enables the provisioning of private Azure Kubernetes Clusters (AKS) clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](/clusters/public-cloud/azure/gateways) deployed within the same account as the private AKS clusters.
+* Palette enables the provisioning of private Azure Kubernetes Clusters (AKS) clusters within Azure Virtual networks (VNet) for enhanced security by offloading the orchestration to a [Private Cloud Gateway](clusters/public-cloud/azure/gateways.md) deployed within the same account as the private AKS clusters.
 
-* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](/clusters/cluster-management/node-pool) at any time by editing the `maxPodPerNode` value.
+* Operators can now customize the [pod limit](https://learn.microsoft.com/en-us/azure/aks/) for AKS clusters. Customize the pod limit value from the Kubernetes configuration [file](clusters/cluster-management/node-pool.md) at any time by editing the `maxPodPerNode` value.
 
-* The Kubernetes Packs for [Edge Native](/clusters/edge/architecture#kubernetesdefaults) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
+* The Kubernetes Packs for [Edge Native](clusters/edge/architecture.md) deployments disable a few items by default to allow users to install those items independently or to avoid duplication.
 
-* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](/terraform), support:
+* The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](terraform.md), support:
   * Native Edge clusters
   * Palette Virtual Clusters
-  * Fixes towards [Enhancements](/terraform#changes)
+  * Fixes towards [Enhancements](terraform.md)
 
 **Packs and Integrations**
 

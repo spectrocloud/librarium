@@ -63,7 +63,7 @@ Clone the repository and run the initialization script
 cd Work
 git clone https://github.com/spectrocloud/librarium.git
 cd librarium
-make initialize
+make init
 ```
 
 # Documentation Content

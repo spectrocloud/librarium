@@ -13,11 +13,11 @@ The Edge Installer supports using a custom configuration file in the format of a
 
 :::info
 
-Review the Edge [Install Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about all the supported configuration parameters you can use in the configuration user data.
+Review the Edge [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the supported configuration parameters you can use in the configuration user data.
 
 :::
 
-You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
+You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
 
 
 ## Multiple User Data Use Case
@@ -276,4 +276,4 @@ install:
 
 ## Next Steps
 
-The last step of the EdgeForce workflow is to build the Edge artifact. Check out the [Build Images](/clusters/edge/edgeforge-workflow/build-images) guide to learn how to build your images with the Edge Installer Builder CLI and create an Edge artifact.
+The last step of the EdgeForce workflow is to build the Edge artifact. Check out the [Build Images](../edgeforge-workflow/build-images.md) guide to learn how to build your images with the Edge Installer Builder CLI and create an Edge artifact.

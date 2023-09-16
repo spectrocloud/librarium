@@ -292,6 +292,6 @@ The user you logged in as has automatically been added to this team.
 
 - [Microsoft AD FS Reverse Proxy](https://blog.matrixpost.net/set-up-active-directory-federation-services-ad-fs-5-0-adfs-reverse-proxy-part-2/)
 
-- [Palette User Management](/user-management)
+- [Palette User Management](../user-management.md)
 
-- [Palette SSO](/user-management/saml-sso)
+- [Palette SSO](./saml-sso.md)

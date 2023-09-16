@@ -43,7 +43,7 @@ To register an Azure cloud account in the Palette console
 |[Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)| Azure secret for authentication|
 |Tenant Name| An optional tenant name|
 |[Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties)| To disable the import of Azure networking details.|
-|Toggle **Connect Private Cloud Gateway**| An option to select the [Self-Hosted PCG](/clusters/public-cloud/azure/gateways#overview) already created from the drop-down menu to link it to the cloud account. |
+|Toggle **Connect Private Cloud Gateway**| An option to select the [Self-Hosted PCG](gateways.md) already created from the drop-down menu to link it to the cloud account. |
 
 :::info
 

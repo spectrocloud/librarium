@@ -154,7 +154,7 @@ Use the following steps to learn how to use Palette's image swap functionality.
 
 
 
-10. Deploy a host cluster and use the cluster profile containing the image swap functionality. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance in deploying a host cluster.
+10. Deploy a host cluster and use the cluster profile containing the image swap functionality. Check out the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for additional guidance in deploying a host cluster.
 
 
 ### Validate
@@ -171,7 +171,7 @@ You can validate that the image swap is functioning correctly by using the follo
 3. Select the host cluster you deployed with the image swap functionality.
 
 
-4. Download the kubeconfig file to access the cluster. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for detailed steps.
+4. Download the kubeconfig file to access the cluster. Refer to the [Access Cluster with CLI](palette-webctl.md) guide for detailed steps.
 
 
 5. Review the deployment configuration of a workload using a registry or image impacted by the image swap configuration. Verify the image or registry is swapped to the expected configuration value you provided in the image swap configuration block.  

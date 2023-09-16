@@ -16,7 +16,7 @@ tags: ["k8s-tips"]
 Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette.
 
 ## Core Kubernetes
-- [How To Retrieve Images from a Private Registry in Kubernetes](/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry)
+- [How To Retrieve Images from a Private Registry in Kubernetes](how-to-retrieve-images-from-private-registry.md)
 
   
 <br />

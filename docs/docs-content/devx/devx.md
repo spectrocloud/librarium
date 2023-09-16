@@ -14,13 +14,11 @@ Palette provides two different modes for deploying and managing applications. Th
 You can leverage Spectro Cloud's complementary managed Kubernetes cluster when using App Mode. The complementary resources have a limit of 12 vCPU, 16 GiB of memory, and 20 GiB of free storage. Alternatively, you may deploy applications on Kubernetes clusters that belong to your organization and are managed by Palette.
 
 :::info
-
-Check out the in-depth explanation of [App Mode and Cluster Mode](/introduction/palette-modes) to learn more about each mode.
-
+Check out the in-depth explanation of [App Mode and Cluster Mode](../introduction/palette-modes.md) to learn more about each mode.
 :::
 
 
-<br />
+To get started with App Mode, give the tutorial [Deploy an Application using Palette Dev Engine](apps/deploy-app.md) a try so that you can learn how to use App Mode with Palette Dev Engine.
 
 
 ## Supported Platforms
@@ -66,23 +64,24 @@ You can manage PDE resources through the [Palette API](/api/introduction), [Spec
 
 Check out the [Palette CLI](/palette-cli/install-palette-cli) for installation guidance. 
 
-## Get Started
+Check out the Palette CLI [install guide](../palette-cli/install-palette-cli.md) for more information on how to install and configure the CLI.
+:::
 
-To get started with App Mode, give the tutorial [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) a try so that you can learn how to use App Mode with Palette Dev Engine.
+To get started with App Mode, give the tutorial [Deploy an Application using Palette Dev Engine](apps/deploy-app.md) a try so that you can learn how to use App Mode with Palette Dev Engine.
 
 
 ## Resources
 
-- [Use Cases](/devx/enterprise-user)
+- [Use Cases](enterprise-user.md)
 
 
-- [App Profiles](/devx/app-profile)
+- [App Profiles](app-profile/app-profile.md)
 
 
-- [Apps](/devx/app-profile)
+- [Apps](./apps/apps.md)
 
 
-- [Palette Virtual Clusters](/devx/palette-virtual-clusters)
+- [Palette Virtual Clusters](palette-virtual-clusters/palette-virtual-clusters.md)
 
 
-- [Manage Dev Engine](/devx/manage-dev-engine)
+- [Manage Dev Engine](manage-dev-engine/manage-dev-engine.md)

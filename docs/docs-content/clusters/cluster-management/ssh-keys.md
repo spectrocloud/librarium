@@ -12,7 +12,7 @@ Palette supports SSH (Secure Shell) to establish, administer, and communicate wi
 
 ## Scope of SSH Key
 
-Palette groups clusters for logical separation into [Projects](/projects). Users and teams can be assigned roles within a project for granular control over permissions within the project scope. SSH key authentication is scoped to a project. Multiple users can gain access to a single project. To access a cluster with SSH, you need a public SSH key registered in Palette.
+Palette groups clusters for logical separation into [Projects](../../projects.md). Users and teams can be assigned roles within a project for granular control over permissions within the project scope. SSH key authentication is scoped to a project. Multiple users can gain access to a single project. To access a cluster with SSH, you need a public SSH key registered in Palette.
 
 ## Prerequisites
 
@@ -94,5 +94,5 @@ During cluster creation, assign your SSH key to a cluster. You can use multiple 
 
 ## Validate
 
-You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster) tutorial for additional guidance.
+You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for additional guidance.
 

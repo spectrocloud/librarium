@@ -11,7 +11,7 @@ tags: ["self-hosted", "enterprise"]
 
 
 
-The Palette Enterprise Mode is a multi-node, highly-available installation of the Palette platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](/enterprise-version/deploying-the-platform-installer/) steps to deploy the installer VM and observe the [monitoring console](/enterprise-version/deploying-the-platform-installer/#monitorinstallation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
+The Palette Enterprise Mode is a multi-node, highly-available installation of the Palette platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](deploying-the-platform-installer.md) steps to deploy the installer VM and observe the [monitoring console](deploying-the-platform-installer.md#monitor-installation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
 
 :::info
 
@@ -32,3 +32,14 @@ Deployment of an enterprise cluster is a migration process from the quick start 
    * Data Migration - Data from the installer VM is migrated to the newly created enterprise cluster.
    * Tenant Migration - If any tenants were created prior to the enterprise cluster migration, which would typically be the case if the system was used in the quick start mode initially, all those tenants, as well as the management of any such tenant clusters previously deployed, will be migrated to the enterprise cluster.
 8. Once Enterprise Cluster is fully deployed, the On-Prem System and Management Console should be accessed on this new cluster. The platform installer VM can be safely powered off at this point.
+
+
+
+<br />
+
+## Resources
+
+- [Palette CLI](../palette-cli/install-palette-cli.md#download-and-setup)
+
+
+- [Airgap Install Instructions](air-gap-repo.md)

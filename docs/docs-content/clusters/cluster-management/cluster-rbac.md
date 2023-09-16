@@ -10,7 +10,7 @@ tags: ["clusters", "cluster management"]
 
 [*RoleBindings*](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) and *ClusterRoleBindings* are Role-Based Access Control (RBAC) concepts that allow granular control over cluster-wide resources. Palette provides you the ability to specify bindings to configure granular RBAC rules.
 
-You can configure namespaces and RBAC from within a cluster or from a [Palette Workspace](/workspace) that contains a collection of like clusters that need to be managed as a group. If a host cluster is part of a Palette workspace, then all roleBindings must occur at the namespace level. 
+You can configure namespaces and RBAC from within a cluster or from a [Palette Workspace](../../workspace/workspace.md) that contains a collection of like clusters that need to be managed as a group. If a host cluster is part of a Palette workspace, then all roleBindings must occur at the namespace level. 
 
 As you review RBAC support, use the following definitions: 
 
@@ -92,7 +92,7 @@ Use the steps below to create a RoleBinding or ClusterRoleBinding for your host 
 
 ## Palette Roles and Kubernetes Roles
 
-Palette offers a set of [default roles](/user-management/palette-rbac#palettespecific(default)roles:) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, and more.
+Palette offers a set of [default roles](../../user-management/palette-rbac/palette-rbac.md#assign-palette-specific-roles-to-users) you can assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, and more.
 
 The Kubernetes roles are used to control the actions users are allowed to do inside the cluster. For example, a user in Palette could have the *Cluster Profile Viewer* role, which grants them the ability to view cluster profiles for a specific project. In all the clusters in this project, the user could be assigned a role binding to a custom role that grants them administrative access in all the clusters.
 
@@ -112,7 +112,7 @@ Palette roles do not automatically map to a Kubernetes role. You must create a r
 
 To create a role binding the role must exist inside the host cluster. You can use any of the [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
 
-If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](/integrations/kubernetes#userbacwithoidc).
+If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more, review [Use RBAC with OIDC](../../integrations/kubernetes-generic.md#configure-custom-oidc).
 
 ### Enablement
 

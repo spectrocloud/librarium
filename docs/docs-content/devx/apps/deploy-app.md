@@ -31,7 +31,7 @@ The tutorial includes two scenarios, and for each scenario, you will deploy a se
 
 ![Architecture diagram depicting two virtual clusters](/tutorials/deploy-app/devx_apps_deploy-apps_architecture-diagram.png)
 
-The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out the [App Mode and Cluster Mode](/introduction/palette-modes) documentation.
+The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode. Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an in-depth explanation of each mode’s differences, check out the [App Mode and Cluster Mode](../../introduction/palette-modes.md) documentation.
 
 ## Deploy The Environment
 
@@ -81,7 +81,7 @@ In the following screen, you will be prompted for the cluster group, virtual clu
 
   
 
-Palette Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](/devx/manage-dev-engine/resource-quota) documentation to learn more about limits.
+Palette Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the [Palette Dev Engine and Quotas](../manage-dev-engine/resource-quota.md) documentation to learn more about limits.
 
   
 
@@ -226,7 +226,7 @@ In the next screen, assign the following values to the Postgres database.
 
   
 
-Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile [output variables](/devx/app-profile/app-profile-macros) documentation.
+Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile [output variables](../app-profile/app-profile-macros.md) documentation.
 
   
 
@@ -282,7 +282,7 @@ You can learn more about each environment variable's purpose by reviewing the AP
 
 :::info
 
-To learn more about connecting different service layers, refer to the [Service Connectivity](/devx/app-profile/services/connectivity) resource.
+To learn more about connecting different service layers, refer to the [Service Connectivity](../app-profile/services/connectivity.md) resource.
 
 :::
 
@@ -1190,7 +1190,7 @@ pack {
 :::info
 
 All container services expose their service address, Kubernetes hostname, and the exposed service ports as output variables.
-You will use output variables frequently when creating app profiles in the future. You can learn more about connecting services by referring to the [Service Connectivity](/devx/app-profile/services/connectivity) documentation.  
+You will use output variables frequently when creating app profiles in the future. You can learn more about connecting services by referring to the [Service Connectivity](../app-profile/services/connectivity.md) documentation.  
 
 :::
 
@@ -1280,9 +1280,9 @@ In this tutorial, you learned about Palette’s Dev Engine and App Mode. You dep
 To learn more about Palette Dev Engine and its capabilities, check out the references resource below.
 
 
-- [Palette Modes](/introduction/palette-modes)
+- [Palette Modes](../../introduction/palette-modes.md)
 - [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
-- [App Profiles](/devx/app-profile)
-- [App Services](/devx/app-profile/services)
-- [Palette Virtual Clusters](/devx/palette-virtual-clusters) 
+- [App Profiles](../app-profile/app-profile.md)
+- [App Services](../app-profile/services/services.md)
+- [Palette Virtual Clusters](../palette-virtual-clusters/palette-virtual-clusters.md) 
 - [Hello Universe GitHub respository](https://github.com/spectrocloud/hello-universe)

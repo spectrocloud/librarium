@@ -54,7 +54,7 @@ To initiate an SBOM scan, navigate to **Clusters** and select the cluster to sca
 
 Palette will identify every unique container image within your chosen scope and generate an SBOM for that image. Palette also runs the SBOM through a vulnerability scanner to flag any Common Vulnerabilities and Exposures (CVEs). Palette leverages two open-source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and [Grype](https://github.com/anchore/grype) for vulnerability detection.
 
-Suppose you specify a [backup location](/clusters/cluster-management/backup-restore). In that case, the SBOM for each image will be uploaded to your backup location, and you can subsequently download the SBOMs with the click of a button or using the Palette API. 
+Suppose you specify a [backup location](backup-restore/backup-restore.md). In that case, the SBOM for each image will be uploaded to your backup location, and you can subsequently download the SBOMs with the click of a button or using the Palette API. 
 
 If a backup location is not provided, Palette will preserve all of the identified dependencies and vulnerabilities, but the raw SBOMs will not be available for download. The report results are available for review regardless of their backup location setting.
 

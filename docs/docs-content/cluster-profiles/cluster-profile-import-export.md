@@ -12,13 +12,13 @@ Palette enables cluster profiles to be exported and then imported across multipl
 
 ## Prerequisites
 
-* [Export](/cluster-profiles/cluster-profile-import-export#exportclusterprofile) the cluster profile file in JSON format from Palette.
+* [Export](#export-cluster-profile) the cluster profile file in JSON format from Palette.
 
 
 * The packs in the exported profile should be available in the target environment during import.
 
 
-* The `macros` used in the exported profile should be available in the target environment during import. If not [create the macros](/clusters/cluster-management/macros#createyourmacro) at the target environment.
+* The `macros` used in the exported profile should be available in the target environment during import. If not [create the macros](../clusters/cluster-management/macros.md#create-your-macro) at the target environment.
 
 ## Use Cases
 
@@ -90,5 +90,3 @@ If there is only a single repository where the imported packs are present within
 
 :::
 
-<br />
-<br />

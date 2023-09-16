@@ -8,19 +8,19 @@ sidebar_position: 40
 tags: ["self-hosted", "enterprise"]
 ---
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm).
+You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](deploying-palette-with-helm.md).
 
 ## Required Parameters
 
 The following parameters in the **values.yaml** file are required: <br /> <br />
 
-- **env.rootDomain** - Used to configure the domain for the Palette installation. You should create a CNAME DNS record separately, and it should be a wildcard to account for Organization prefixes. Review the [Environment parameters](/enterprise-version/helm-chart-install-reference#environment) to learn more. <br /> <br />
+- **env.rootDomain** - Used to configure the domain for the Palette installation. You should create a CNAME DNS record separately, and it should be a wildcard to account for Organization prefixes. Review the [Environment parameters](helm-chart-install-reference.md#environment) to learn more. <br /> <br />
 
-- **natsUrl** - The URL format specifies how to configure NATS servers to the IP address and port. Review the [Network Address Translation (NATS) parameters](/enterprise-version/helm-chart-install-reference#networkaddresstranslation(nats)) to learn more. <br /> <br />
+- **natsUrl** - The URL format specifies how to configure NATS servers to the IP address and port. Review the [Network Address Translation (NATS) parameters](helm-chart-install-reference.md#network-address-translation-nats) to learn more. <br /> <br />
 
  
  
-- **Registry and Palette Artifact Repository** - Specifies the Docker registry where chart images are stored and the Palette Artifact Repository (PAR). Refer to the [Registry and Palette Artifact Repository parameters](/enterprise-version/helm-chart-install-reference#registryandpaletteartifactrepository(par)).
+- **Registry and Palette Artifact Repository** - Specifies the Docker registry where chart images are stored and the Palette Artifact Repository (PAR). Refer to the [Registry and Palette Artifact Repository parameters](helm-chart-install-reference.md#registry-and-palette-artifact-repository-par).
 
 ## MongoDB 
 
@@ -196,7 +196,7 @@ nats:
 
 ## Ingress 
 
-The table lists parameters used to configure the NGINX Ingress Controller, which provides an external HTTP load balancer for Kubernetes services. Refer to [Set Up Ingress](/clusters/cluster-groups/ingress-cluster-group) for more guidance.
+The table lists parameters used to configure the NGINX Ingress Controller, which provides an external HTTP load balancer for Kubernetes services. Refer to [Set Up Ingress](../clusters/cluster-groups/ingress-cluster-group.md) for more guidance.
 
 | **Parameters**                     | **Default Value** | **Type**    | **Description**                                                                                                                                       | **Required/Optional** |
 |--------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|

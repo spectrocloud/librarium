@@ -42,12 +42,10 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 3. You need an active vCenter account with all the permissions listed below in the **VMware Cloud Account Permissions** section.
 
 
-4. Install a Private Cloud Gateway for VMware as described in the [Creating a VMware Cloud Gateway](/clusters/data-center/vmware/#creatingavmwarecloudgateway) section. Installing the Private Cloud Gateway will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Creating a VMware Cloud account](/clusters/data-center/vmware#creatingavmwarecloudaccount) section.
+- An active vCenter account with all the permissions listed in [VMware Privileges](vmware.md#vmware-privileges).
 
 
-5. Subnet with egress access to the internet (direct or via proxy):
-    * For proxy: HTTP_PROXY, HTTPS_PROXY (both required).
-    * Outgoing internet connection on port 443 to api.spectrocloud.com.
+- Installed PCG for VMware. Installing the PCG will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Create VMware Cloud Account](vmware.md#create-a-vmware-cloud-account) section.
 
 
 6. The Private cloud gateway IP requirements are:
@@ -704,7 +702,7 @@ Additional properties that are required to be set only for a proxy environment. 
 1. Close the **Create New Gateway** dialog box if it is still open or navigate to the Private Cloud Gateway page under settings in case you have navigated away or been logged out.
 
 
-2. Wait for a gateway widget to be displayed on the page and for the **Configure** option to be available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the Virtual Machine is powered on. Failure of the installer to register with the Palette Management Platform portal within 10 mins of powering on the Virtual Machine on vSphere, might be indicative of an error. Please follow the troubleshooting steps to identify and resolve the issue.
+2. Wait for a gateway widget to display on the page and for the **Configure** option to become available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the VM is powered on. Failure of the installer to register with Palette within 10 minutes of powering on the Virtual Machine on vSphere might indicate an error. Follow steps in [Troubleshooting](../../troubleshooting/pcg.md) to identify and resolve the issue.
 
 
 3. Click on the **Configure** button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
@@ -801,7 +799,7 @@ Use the following steps to create a VMware cloud account.
 
 ### Prerequisites
 
-- A VMware cloud gateway must be configured. Refer to the [Create VMware Cloud Gateway](/clusters/data-center/vmware#createvmwarecloudgateway) section for guidance.
+- A VMware cloud gateway must be configured. Refer to the [Create VMware Cloud Gateway](#delete-a-vmware-cloud-gateway) section for guidance.
 
   :::info
   Enterprise version users should choose the <i>Use System Gateway</i> option.
@@ -817,7 +815,42 @@ In addition to the default cloud account already associated with the private clo
 | **Username** | vCenter username|
 | **Password** | vCenter password|
 
-# Deploying a VMware Cluster
+:::caution
+If you change the password for a user account in vCenter, you must also change it in Palette for the same VMware cloud account. We recommend updating the passwords immediately to avoid potentially locking Palette out of vCenter. For guidance, refer to [Change VMware Cloud Account Password in Palette](#change-vmware-cloud-account-password).
+:::
+
+
+## Change VMware Cloud Account Password
+
+The user account password in vCenter must match the password for the corresponding VMware cloud account in Palette. This section provides steps to change the password in Palette in the event the vCenter password changes.
+
+### Prerequisites
+
+- Access to the vCenter credentials.
+
+### Change the Password in Palette
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the **Menu Menu** navigate to **Tenant Settings** > **Cloud Accounts**.
+
+3. Click the **three-dot Menu** for the VMware account you want to update, and select **Edit**.
+ 
+
+4. In the window that opens, update the password in the **Password** field and click the **Validate** button. 
+
+5. Confirm your changes. 
+
+### Validation
+
+Palette validates the password. Incorrect credentials will result in an error. As an extra precaution, try scaling a cluster up or down.
+
+:::info
+In addition to changing the password for a VMware account, Palette provides a way for you to also change the user associated with an account by entering a new username in the **Username** field. Ensure the new user account has the same permissions as the previous user account in vCenter.
+:::
+
+
+# Deploy a VMware Cluster
 
 <video title="vmware-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/vmware.mp4"></video>
 
@@ -854,8 +887,8 @@ The following steps need to be performed to provision a new VMware cluster:
 |**Name**          |A descriptive name for the node pool.|
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
 |**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**[Labels](../cluster-management/taints.md#labels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](../cluster-management/taints.md#taints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Give the required storage size|
@@ -869,8 +902,8 @@ The following steps need to be performed to provision a new VMware cluster:
 ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
 |**Size**          |Number of VMs to be provisioned for the node pool.|
 |**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**[Labels](../cluster-management/taints.md#labels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](../cluster-management/taints.md#taints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Provide the required storage size

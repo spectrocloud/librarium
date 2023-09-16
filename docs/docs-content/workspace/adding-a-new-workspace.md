@@ -20,16 +20,17 @@ Palette enables multi-cluster management and governance capabilities by introduc
 
 ## Create Your Workspace
 
-#### 1. Add the Basic Information
+1. Add the Basic Information
 Provide the basic information for the workspace such as:
 
 * Unique Name
 * Optional Description
 * Optional Tag
 
-#### 2. Associate Clusters
 
-  * Select the cluster(s) to be added to the workspace. (See [New Clusters](/clusters) to learn how to add a new Cluster.) Palette clusters, as well as imported clusters, can be added to your workspace.
+2.Associate Clusters
+
+  * Select the cluster(s) to be added to the workspace. Check out [New Clusters](../clusters/clusters.md) to learn how to add a new Cluster. Palette clusters, as well as brownfield clusters, can be added to your workspace.
 
 
   * Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
@@ -44,7 +45,7 @@ Provide the basic information for the workspace such as:
     | **Service Account**  | a valid path segment name | Granting super-user access to all service accounts <br /> cluster-wide is strongly discouraged. Hence, grant a <br /> role to all service accounts in a namespace. |
 
   
-#### 3. Associate Namespaces
+3. Associate Namespaces
   
 * Enter one or more namespaces that need to be part of the workspace. The combination of workspace and cluster is unique across workspaces in a project. Palette ensures that all the namespaces are created for all the clusters in the workspaces, in case they are not pre-existing.
 
@@ -58,13 +59,15 @@ Provide the basic information for the workspace such as:
    * Make the selection of Subjects from the dropdown list (User, Group, or ServiceAccount). For the subject selected, provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user access to all service accounts cluster-wide is strongly discouraged due to security concerns.
    * Confirm the information provided to complete the configuration of role binding.
   
-#### 4. Settings
+4. Settings
 
 
-* [Schedule Backups](/clusters/cluster-management/backup-restore) - set the backup and restore policies.
+* [Schedule Backups](../clusters/cluster-management/backup-restore/backup-restore.md) - set the backup and restore policies.
     
-* [Container Image](/workspace/workload-features#restrictedcontainerimages) - list out the container images to be restricted within a Workspace namespace.
+* [Container Image](workload-features.md#restrict-container-images-to-a-workspace) - list out the container images to be restricted within a Workspace namespace.
 
-#### 5. Review and finish the configuration and complete the deployment.
+
+
+Review and finish the configuration and complete the deployment.
 
 

@@ -12,7 +12,7 @@ tags: ["components"]
 
 
 
-This page lists the version details of various Palette components and their respective Palette releases. Visit the [Downloads](/spectro-downloads) resource to access the download URLs.
+This page lists the version details of various Palette components and their respective Palette releases. Visit the [Downloads](spectro-downloads.md) resource to access the download URLs.
 
 ## Palette CLI Versions
 
@@ -135,7 +135,7 @@ This page lists the version details of various Palette components and their resp
 
 # Kubernetes Versions
 
-- Kubernetes: Refer to the Kubernetes [pack documentation](/integrations/kubernetes).
+- Kubernetes: Refer to the Kubernetes [pack documentation](integrations/kubernetes.md).
 
 # Operating System Layer Versions
 
@@ -152,9 +152,9 @@ This page lists the version details of various Palette components and their resp
 
 ## Network Layer Versions
 
-- Calico: Refer to the Calico [pack documentation](/integrations/calico).
+- Calico: Refer to the Calico [pack documentation](integrations/calico.md).
 
-- Cilium: Refer to the Cilium [pack documentation](/integrations/cilium).
+- Cilium: Refer to the Cilium [pack documentation](integrations/cilium.md).
 
 
 |Cilium Enterprise|Versions|
@@ -164,17 +164,18 @@ This page lists the version details of various Palette components and their resp
 
 ## Storage Layer Version
 
-- Azure Disk: Refer to the [pack documentation](/integrations/azure-disk).
-- GCE Persistent Disk: Refer to the [pack documentation](/integrations/gce).
-- NFS Subdir External Provisioner: Refer to the [pack documentation](/integrations/nfs-subdir-external).
-- Open Stack Cinder: Refer to the [pack documentation](/integrations/openstack-cinder).
-- Portworx: Refer to the [pack documentation](/integrations/portworx).
-- Rook Ceph: Refer to the [pack documentation](/integrations/rook-ceph).
-- vSphere CSI: Refer to the [pack documentation](/integrations/vsphere-csi).
-- vSphere Volume: Refer to the [pack documentation](/integrations/vsphere-volume).
+- Azure Disk: Refer to the [pack documentation](integrations/azure-disk.md).
+- GCE Persistent Disk: Refer to the [pack documentation](integrations/gce.md).
+- NFS Subdir External Provisioner: Refer to the [pack documentation](integrations/nfs-subdir-external.md).
+- Open Stack Cinder: Refer to the [pack documentation](integrations/openstack-cinder.md).
+- Portworx: Refer to the [pack documentation](integrations/portworx.md).
+- Rook Ceph: Refer to the [pack documentation](integrations/rook-ceph.md).
+- vSphere CSI: Refer to the [pack documentation](integrations/vsphere-csi.md).
+- vSphere Volume: Refer to the [pack documentation](integrations/vsphere-volume.md).
 
 ## Resources
 
-- [Packs List](/integrations#integrations)
+- [Packs List](integrations/integrations.mdx)
 
-- [Downloads](/spectro-downloads#palettedynamicartifacts)
+
+- [Downloads](spectro-downloads.md)

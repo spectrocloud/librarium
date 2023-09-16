@@ -15,8 +15,8 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account 
-- Palette integration with AWS account. Review the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) for guidance.
-- An infrastructure cluster profile for AWS EKS. Review the [Create Cluster Profiles](/cluster-profiles/task-define-profile) for guidance.
+- Palette integration with AWS account. Review the [Add AWS Account](add-aws-accounts.md) for guidance.
+- An infrastructure cluster profile for AWS EKS. Review the [Create Cluster Profiles](../../../cluster-profiles/task-define-profile.md) for guidance.
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
 - Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
     - vCPU
@@ -72,23 +72,23 @@ Use the following steps to provision a new AWS EKS cluster:
     |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.|
     |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
     |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Cluster Endpoint Access**:| Select Private or Public or Private & Public, based on how the customer want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster. 
-    |**Public Access CIDR**: |For Public or Private & Public end point access, give the CIDR values.| 
-    |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](/clusters/public-cloud/aws/eks/#eksclustersecretsencryption) for more details.|
+    |**Cluster Endpoint Access**| Select Private, Public or Private & Public, in order to control communication with the Kubernetes API endpoint. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide. :::caution If you set the cluster endpoint to Public, specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely.  :::|
+    |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.| 
+    |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
     |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
     
 
 10. Make the choice of updating the worker pool in parallel, if required. Click on **Next**.
 
 
-11. Configure the master and worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
+11. Configure the master and worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](architecture#spot-instances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
 
     |**Parameter**| **Description**|
     |-------------|----------------|
     |**Name** | A descriptive name for the node pool.|
-    |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](/clusters/public-cloud/aws/architecture#awsinstancetypeandpodcapacity) documentation for help in determining the proper instance type and size. |
-    |[Taints](/clusters/cluster-management/taints#overviewontaints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
-    |[Labels](/clusters/cluster-management/taints#overviewonlabels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
+    |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](architecture#formula-for-pod-calculation) documentation for help in determining the proper instance type and size. |
+    |[Taints](../../cluster-management/taints.md#taints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
+    |[Labels](../../cluster-management/taints.md#labels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
     |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
     
   * Cloud Configuration settings:
@@ -114,7 +114,7 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 
 :::
 
-12. An optional taint label can be applied to a node pool during the cluster creation. For a an existing cluster, the taint label can be edited, review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label.
+12. An optional taint label can be applied to a node pool during the cluster creation. For a an existing cluster, the taint label can be edited, review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more. Toggle the **Taint** button to create a label.
 
 
 13. Enable or disable node pool taints. If tainting is enabled then you need provide values for the following parameters:
@@ -135,7 +135,7 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 
 14. Click on **Next**.  
     
-15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+15. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Review the settings and make changes if needed. Click on **Validate**.
 
 16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning an AWS EKS clusters can take several minutes.
 

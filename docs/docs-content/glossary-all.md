@@ -48,7 +48,7 @@ The diagram below shows an example of a cluster profile:
 
 ![cluster_profile_new](/cluster_profile_new.png)
 
-Read more about Cluster Profiles [here](/cluster-profiles).
+Read more about Cluster Profiles [here](cluster-profiles/cluster-profiles.md).
 ## Edge Appliances
 
 Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
@@ -75,7 +75,7 @@ A Kubernetes cluster that is managed by Palette. A host cluster may contain seve
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of Palette.  As part of the Kubernetes workload cluster provisioning, the first control-plane node is launched by Palette in the management cluster or the cloud gateway. Once the first control-plane node goes to running state, all the resources are pivoted from the management cluster or the cloud gateway to the target workload cluster. After that, the target cluster self-manages the cluster and application lifecycle. All Day-2 operations which result in node changes, including OS/Kubernetes upgrades, scaling, and nodes certificate rotation, are triggered by changes to the Cluster API resources in the target workload cluster.
 ## OIDC
  
-OpenID Connect [(OIDC)](/user-management/saml-sso/#oidcbasedsso) is an open source, authentication protocol that allows users to verify their identity, based on the authentication performed by an authorization provider.
+OpenID Connect [(OIDC)](user-management/saml-sso/saml-sso.md) is an open source, authentication protocol that allows users to verify their identity, based on the authentication performed by an authorization provider.
 ## Organization 
 
 An organization is the equivalent of a Tenant. Review the [Tenant](#tenant) definition to learn more.

@@ -57,10 +57,15 @@ The resource limit can be customized according to per tenant resource requiremen
 * API operations are limited to 10 requests per second for an IP Address.
 
 
-* The API request limits are categorized by resources such as /v1/cloudconfig/:uid and /v1/cloudconfig/:uid/machinepools. Both API requests are counted for the same rate limits as both belong to the same cluster's cloud config resource.
+3. Select **Resource Limits** from the **Tenant Settings Menu**.
 
 
-* In case of too many requests, the user will receive an error with HTTP code 429 - `TooManyRequests.` In that event, it is recommended to retry the API call after a specific interval.
+4. Set the values for the different Palette resources. 
 
-<br />
-<br />
+
+5. Save your changes.
+
+
+## Validate
+
+You can validate the updated resource limits by creating a resource of the same type you updated. For example, you can create five API keys if you updated the **API Key** to five. If you attempt to create a sixth API key, you will receive an error message.

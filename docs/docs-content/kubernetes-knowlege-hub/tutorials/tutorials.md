@@ -15,5 +15,5 @@ Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud
 
 ## Core Kubernetes
 
-- [Deploy a Stateless Frontend Application on Kubernetes](/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app)
+- [Deploy a Stateless Frontend Application on Kubernetes](deploy-stateless-frontend-app.md)
 

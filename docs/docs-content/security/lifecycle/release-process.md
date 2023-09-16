@@ -43,11 +43,3 @@ A new version deployment will not proceed until all stakeholders have signed off
 ## Backup
 
 We back up the current release before starting a new one. Should a rollback be required and patching is not an option, a rollback request is submitted to the Spectro Cloud DevOps team. The DevOps team will restore from the backup and revert the production SaaS instance to the prior version.
-
-<br />
-
-<br />
-
-<br />
-
-<br />

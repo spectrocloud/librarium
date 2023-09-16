@@ -47,7 +47,7 @@ The airgap installation can be simplified into five major phases.
 5. Palette is ready for usage.
 
 
-This guide focuses on the first two installation phases, as the remaining ones are covered in the [Migrate Cluster to Enterprise](/enterprise-version/deploying-an-enterprise-cluster) guide and the [Install Using Quick-Start Mode](/enterprise-version/deploying-the-platform-installer) guide.
+This guide focuses on the first two installation phases, as the remaining ones are covered in the [Migrate Cluster to Enterprise](deploying-an-enterprise-cluster.md) guide and the [Install Using Quick-Start Mode](deploying-the-platform-installer.md) guide.
 
 
 ## Prerequisites
@@ -608,7 +608,7 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 ----
 
 
-The next step of the installation process is to begin the deployment of an appliance using the instructions in the [Migrate Cluster to Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster). If you need to review the Spectro Cloud Repository details, issue the following command for detailed output.
+The next step of the installation process is to begin the deployment of an appliance using the instructions in the [Migrate Cluster to Enterprise Mode](deploying-an-enterprise-cluster.md). If you need to review the Spectro Cloud Repository details, issue the following command for detailed output.
 
 <br />
 

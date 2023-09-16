@@ -95,7 +95,4 @@ We believe security is an ongoing process, and we are committed to constantly im
 
 We review and audit our internal setup regularly to ensure our employees have access to the tools they need while maintaining strong security standards.
 
-<br />
-
-<br />
 

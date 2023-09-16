@@ -565,8 +565,8 @@ The following steps need to be performed to provision a new OpenStack cluster:
 |**Name**          |A descriptive name for the node pool.|
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
 |**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**[Labels](../cluster-management/taints.md#labels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](../cluster-management/taints.md#taints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Give the required storage size|
@@ -580,8 +580,8 @@ The following steps need to be performed to provision a new OpenStack cluster:
 ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
 |**Size**          |Number of VMs to be provisioned for the node pool.|
 |**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**[Labels](../cluster-management/taints.md#labels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](../cluster-management/taints.md#taints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Provide the required storage size
@@ -594,7 +594,7 @@ The following steps need to be performed to provision a new OpenStack cluster:
     * Backup Policies
 
 
-7. Click to get details on [cluster management feature](/clusters/cluster-management/#cluster-updates).
+7. Click to get details on [cluster management feature](../cluster-management/cluster-management.md).
 
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.

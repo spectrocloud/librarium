@@ -14,7 +14,7 @@ Palette supports provisioning and end-to-end lifecycle management of Kubernetes 
 
 :::info
 
-Workload clusters are instantiated from cloud specific <Tooltip trigger={<u>cluster profiles</u>}><a href="/cluster-profiles">Cluster profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip>. You can use one of the cluster profiles provided out-of-the-box or create a new one.
+Workload clusters are instantiated from cloud specific cluster profiles. You can use one of the cluster profiles provided out-of-the-box or create a new one.
 
 :::
 
@@ -23,11 +23,11 @@ Workload clusters are instantiated from cloud specific <Tooltip trigger={<u>clus
 
 The following pages provide detailed instructions for setting up new workload clusters in various data center environments.
 
-- [Canonical MAAS](/clusters/data-center/maas)
+- [Canonical MAAS](maas/maas.md)
 
 
-- [OpenStack](/clusters/data-center/openstack)
+- [OpenStack](openstack.md)
 
 
-- [VMware](/clusters/data-center/vmware)
+- [VMware](vmware.md)
 

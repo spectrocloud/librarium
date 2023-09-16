@@ -21,13 +21,13 @@ Use the following steps to install and set up the Palette CLI.
 - A Palette account. Click [here](https://console.spectrocloud.com/) to create a Palette account.
 
 
-- A Palette API key. Refer to the [API Key](/user-management/user-authentication/#apikey) reference page to learn how to create an API key.
+- A Palette API key. Refer to the [API Key](../user-management/user-authentication.md#api-key) reference page to learn how to create an API key.
 
 
 
 ## Download and Setup
 
-1. Visit the [Downloads](/spectro-downloads#palettecli) page and download the Palette CLI by using the URL provided.
+1. Visit the [Downloads](../spectro-downloads.md#palette-cli) page and download the Palette CLI by using the URL provided.
 
 
 2. Open up a terminal session on your local system.
@@ -48,7 +48,7 @@ Use the following steps to install and set up the Palette CLI.
 <br />
    
 
-5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to [Validation](/palette-cli/install-palette-cli/#validation). Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
+5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to [Validation](#validate). Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
 
   <br />
 

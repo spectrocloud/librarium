@@ -199,7 +199,7 @@ http:
 
 TLS can be configured using [Let's Encrypt](https://letsencrypt.org) or custom TLS certificates:
 
-When using Let's Encrypt, your registry server must be assigned to a public IP address accessible for HTTP-based validation by the Let's Encrypt services. Check out the [Deploy Pack Registry Server with Let's Encrypt](/registries-and-packs/adding-a-custom-registry#deploypackregistryserverwithletsencrypt) guide to learn more.
+When using Let's Encrypt, your registry server must be assigned to a public IP address accessible for HTTP-based validation by the Let's Encrypt services. Check out the [Deploy Pack Registry Server with Let's Encrypt](adding-a-custom-registry.md#deploy-pack-registry-server-with-lets-encrypt) guide to learn more.
 
 <br />
 

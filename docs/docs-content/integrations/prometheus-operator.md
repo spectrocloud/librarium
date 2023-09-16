@@ -15,7 +15,7 @@ Prometheus is an open-source monitoring system that is designed to collect and a
 The Prometheus Operator is a tool that simplifies the deployment and management of Prometheus in a Kubernetes cluster. It automates tasks such as configuring Prometheus, creating and managing Prometheus rules and alerts and scaling Prometheus instances based on demand. The Operator uses Kubernetes custom resources to define and manage Prometheus instances and related resources, such as ServiceMonitors, which enable Prometheus to discover and monitor services running in the cluster.
 
 
-You can use the Prometheus Operator to create a monitoring stack that other host clusters point to and forward metrics to. Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+You can use the Prometheus Operator to create a monitoring stack that other host clusters point to and forward metrics to. Check out the guide [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 <br />
 
@@ -85,7 +85,7 @@ Review the usage section below to learn more about each preset option.
 
 ## Usage
 
-Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+Check out the guide [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 <br />
 
@@ -161,7 +161,7 @@ By default, Thanos Ruler event data is saved in object storage specified for Tha
 
 #### Remote Monitoring
 
-You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the installed [Prometheus Agent](/integrations/prometheus-agent) so that cluster metrics can be forwarded to the Prometheus server. 
+You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the installed [Prometheus Agent](prometheus-agent.md) so that cluster metrics can be forwarded to the Prometheus server. 
 
 
 
@@ -170,13 +170,13 @@ The remote monitoring feature is configured with defaults to help you consume th
 Refer to the [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
 
 
-To get started with remote monitoring, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide.
+To get started with remote monitoring, check out the [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) guide.
 
 <br />
 
 #### Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) guide to learn more.
+You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
 
 <br />
 
@@ -274,7 +274,7 @@ Review the usage section below to learn more about each preset option.
 
 ## Usage
 
-Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+Check out the guide [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 <br />
 
@@ -350,7 +350,7 @@ By default, Thanos Ruler event data is saved in object storage specified for Tha
 
 #### Remote Monitoring
 
-You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the installed [Prometheus Agent](/integrations/prometheus-agent) so that cluster metrics can be forwarded to the Prometheus server. 
+You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the installed [Prometheus Agent](prometheus-agent.md) so that cluster metrics can be forwarded to the Prometheus server. 
 
 
 
@@ -359,13 +359,13 @@ The remote monitoring feature is configured with defaults to help you consume th
 Refer to the [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
 
 
-To get started with remote monitoring, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide.
+To get started with remote monitoring, check out the [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) guide.
 
 <br />
 
 #### Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) guide to learn more.
+You can access internal Palette metrics in Grafana by adding the [Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
 
 <br />
 
@@ -437,7 +437,7 @@ Review the usage section below to learn more about each preset option.
 
 ## Usage
 
-Check out the guide [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+Check out the guide [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 <br />
 
@@ -513,14 +513,14 @@ By default, Thanos Ruler event data is saved in object storage specified for Tha
 
 #### Remote Monitoring
 
-You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) installed so that cluster metrics can be forwarded to the Prometheus server. 
+You can configure the Prometheus server to accept metrics from Prometheus agents and become a centralized aggregation point for all Kubernetes metrics. Enabling this feature will expose port 9090 of the *prometheus-operator-prometheus* service. Use the generated service URL to provide other Kubernetes clusters with the [Prometheus Agent](prometheus-agent.md) installed so that cluster metrics can be forwarded to the Prometheus server. 
 
 
 The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can change any configuration related to remote monitoring to fine-tune settings for your environment.
 
 Refer to the [Prometheus Remote Write](https://prometheus.io/docs/practices/remote_write/) resource to learn more about configuration options.
 
-To get started with remote monitoring, check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) guide.
+To get started with remote monitoring, check out the [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) guide.
 
 ### Dependencies
 
@@ -987,7 +987,7 @@ data "spectrocloud_pack_simple" "pack-info" {
 
 ## References
 
-- [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
+- [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md)
 
 
 - [Prometheus Operator GitHub](https://github.com/coreos/prometheus-operator)
@@ -1002,4 +1002,4 @@ data "spectrocloud_pack_simple" "pack-info" {
 - [Prometheus FAQ](https://prometheus.io/docs/introduction/faq)
 
 
-- [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics)
+- [Prometheus Cluster Metrics](prometheus-cluster-metrics.md)

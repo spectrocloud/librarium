@@ -20,7 +20,7 @@ The following sections describe these capabilities in detail:
 
 ------------------------
 
-<Tabs>
+<Tabs queryString="object-storage">
 <TabItem label="Workload Visibility" value="Workload Visibility">
 
 
@@ -66,7 +66,7 @@ To create your **Workspace Role**, follow the steps below:
 2. Go to the **Users and Teams** option.
 
 
-3. From the listed users, select the user to be assigned with Workspace Roles. See here for [User Creation](/projects/#projects).
+3. From the listed users, select the user to be assigned with Workspace Roles. See here for [User Creation](../user-management/new-user.md).
 
 
 4. Select the **Workspace Roles** tab and click **+ New Workspace Role** to create a new role.
@@ -89,13 +89,13 @@ Palette leverages the BackUps to the following locations:
 
 <br />
 
-#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](/workspace/workload-features#foranamazonwebservices(aws)bucketasbackuplocation), [Configure your Backup](/workspace/workload-features#configureyourbackupinawss3)
+#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](#amazon-web-services-aws-s3-buckets-prerequisitesbucketasbackuplocation-configure-your-backup)bucketasbackuplocation), [Configure your Backup](#configure-your-backup-in-aws-s3)
 
-#### Google Cloud Platform (GCP) Buckets: [Prerequisites](/workspace/workload-features#foragooglecloudplatform(gcp)backuplocation), [Configure your Backup](/workspace/workload-features#configureyourbackupingcpbucket)
+#### Google Cloud Platform (GCP) Buckets: [Prerequisites](#google-cloud-platform-gcp-buckets-prerequisites-configure-your-backup), [Configure your Backup](#configure-your-backup-in-gcp-bucket)
 
-#### MinIO S3 Buckets: [Prerequisites](/workspace/workload-features#forminios3backup), [Configure your Backup](/workspace/workload-features#configureyourbackupinminio)
+#### MinIO S3 Buckets: [Prerequisites](#minio-s3-buckets-prerequisites-configure-your-backup), [Configure your Backup](#configure-your-backup-in-minio)
 
-#### Azure Blob: [Prerequisites](/workspace/workload-features#forazureblobbackup), [Configure your Backup](/workspace/workload-features#configureyourbackupinazure:azureblob)
+#### Azure Blob: [Prerequisites](#azure-blob-prerequisites-configure-your-backup), [Configure your Backup](#configure-your-backup-in-azure-azure-blob)
 
 ## Prerequisites
 
@@ -416,7 +416,7 @@ Palette enables the users to limit resource usage within the workspace optionall
 
 ## To set your Resource Quota:
 
-1. During [Step: 3 Associate Namespaces](/workspace/adding-a-new-workspace#3.associatenamespaces) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can use the set Quota. 
+1. During [Step: 3 Associate Namespaces](adding-a-new-workspace#3-associate-namespaces) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can use the set Quota. 
 
 
 2. Namespace Quota can be set for an already deployed workspace as:
@@ -501,7 +501,7 @@ A single RoleBinding can have multiple subjects.
 
 ## Configure role bindings: Namespace Scope
 
-Users can now allocate CPU and Memory [quotas](/workspace/workload-features#workspacequota) for each **namespace** at the cluster level.
+Users can now allocate CPU and Memory [quotas](#workspace-quota) for each **namespace** at the cluster level.
 
 * Login to Palette as Project admin and select the Workspace to which the Role Binding need to be configured.
 
@@ -512,11 +512,11 @@ Users can now allocate CPU and Memory [quotas](/workspace/workload-features#work
 * Create a namespace with a custom name and add it to the list of the namespace by clicking on “add to the list”.
 
 
-* [Allocate resources](/workspace/workload-features#workspacequota) to the created namespace (CPU and Memory).
+* [Allocate resources](workload-features.md#workspace-quota) to the created namespace (CPU and Memory).
 
 
 * Click on “Add new binding” to open the “Add ClusterRoleBinding” wizard. Fill in the following details:
-  * Namespace: Select the namespace from the drop-down (the list will display the namespaces created during the previous step.
+  * Namespace: Select the namespace from the drop-down Menu. The list will display the namespaces created during the previous step.
   * Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
 
 :::info
@@ -552,7 +552,7 @@ Palette users can restrict a few container images from getting deployed into a s
 
  To restrict a container image for a particular namespace within the workspace:
 
-1. During [Step: 4 Settings](/workspace/adding-a-new-workspace#4.settings) of workspace creation, select the **Container Images** tab from the left ribbon. 
+1. During [Step: 4 Settings](adding-a-new-workspace.md#4-settings) of workspace creation, select the **Container Images** tab from the left ribbon. 
 
 
 2. Click on **+ Add New Container Image** and provide the **Namespace** and **Restricted Images**. Multiple images can be restricted within a namespace by separating them with commas.
@@ -567,16 +567,8 @@ The user can add a list of restricted images to an already deployed workspace as
 
 2. Click on **Add New Container Image** and provide the **Namespace** and **Restricted Images**. Multiple images can be restricted within a Namespace by separating them with commas.
 
-
-
-
-
 </TabItem>
 </Tabs>
-
-<br />
-<br />
-<br />
 
 
 

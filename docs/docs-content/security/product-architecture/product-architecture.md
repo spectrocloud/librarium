@@ -36,7 +36,7 @@ Palette supports three architecture models: multi-tenant SaaS, dedicated SaaS, a
 
 Palette’s robust security measures safeguard your data and ensure the integrity of our services. We adhere to industry-leading standards and continuously refine our practices to provide the highest level of security. Palette infrastructure safeguards data in your Kubernetes production environment with its zero-trust architecture, granular Role-Based Access Control (RBAC), immutable Linux distributions ([Kairos](https://kairos.io/)), and hardened clusters and Kubernetes packs.
 
-Palette's security controls ensure data protection in SaaS operation at the management platform level and the [tenant](/glossary-all#tenant) cluster level. To learn more, refer to [SaaS Operation](/security/product-architecture/saas-operation). In self-hosted operation, you must ensure security controls in your environment. Find out more about self-hosted deployment in [Self-Hosted Operation](/security/product-architecture/self-hosted-operation).
+Palette's security controls ensure data protection in SaaS operation at the management platform level and the [tenant](../../glossary-all.md#tenant) cluster level. To learn more, refer to [SaaS Operation](saas-operation.md). In self-hosted operation, you must ensure security controls in your environment. Find out more about self-hosted deployment in [Self-Hosted Operation](self-hosted-operation.md).
 
 
 ## Multi-tenancy
@@ -86,4 +86,4 @@ Palette has a common API gateway validation service that ensures there are no in
 
 You can use the gateway validation service log to trace APIs with a unique ID, Tenant UID, or Session UID. To avoid revealing unnecessary information, all UIDs are 48-bit random hex strings.
 
-Refer to the [API Authentication](https://docs.spectrocloud.com/api/v1/auth/) guide for details.
+Refer to the [API Key Authentication](../../user-management/user-authentication.md#api-key) guide for details.

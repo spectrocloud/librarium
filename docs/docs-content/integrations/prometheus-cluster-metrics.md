@@ -11,7 +11,7 @@ tags: ['packs', 'prometheus-cluster-metrics', 'monitoring']
 ---
 
 
-The Prometheus Cluster Metrics is an addon pack that exposes internal cluster resource metrics. You can access the information exposed by the pack in Grafana by visiting the **Spectro Cloud / Spectro Clusters** dashboard. The following information is exposed by the Prometheus Cluster Metrics pack. <br /> <br />
+The Prometheus Cluster Metrics is an addon pack that exposes internal cluster resource metrics. You can access the information exposed by the pack in Grafana by visiting the **Spectro Cloud / Spectro Clusters** dashboard. The following information is exposed by the Prometheus Cluster Metrics pack.
 
 - Status of all cluster profile layers.
 
@@ -36,16 +36,16 @@ The Prometheus Cluster Metrics is an addon pack that exposes internal cluster re
 
 ## Prerequisites
 
-* A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) `v45.4.X` or greater installed. Check out the [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) for instructions on how to deploy a monitoring stack.
+* A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) `v45.4.X` or greater installed. Check out the [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) for instructions on how to deploy a monitoring stack.
 
 
-* A cluster profile with the [Prometheus Agent](/integrations/prometheus-agent) pack `v19.0.X` or greater installed.
+* A cluster profile with the [Prometheus Agent](prometheus-agent.md) pack `v19.0.X` or greater installed.
 
 ## Usage
 
 The Prometheus Cluster Metrics requires no additional configuration and is designed to work out-of-the-box. 
 
-You can learn how to add the Prometheus Cluster Metrics to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
+You can learn how to add the Prometheus Cluster Metrics to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
 
 <br />
 
@@ -73,13 +73,13 @@ data "spectrocloud_pack_simple" "cluster-metrics" {
 
 ## References
 
-- [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
+- [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
 
 
-- [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
+- [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md)
 
 
-- [Prometheus Operator pack](/integrations/prometheus-operator)
+- [Prometheus Operator pack](prometheus-operator.md)
 
 
-- [Prometheus Agent](/integrations/prometheus-agent)
+- [Prometheus Agent](prometheus-agent.md)

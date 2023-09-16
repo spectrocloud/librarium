@@ -310,4 +310,4 @@ Use the following steps to validate your custom image.
 1. You can validate that the custom image is working correctly by deploying a compute instance in the respective infrastructure provider you created the image in using the custom image. Review the compute instance logs to learn more about the problems if you encounter any issues.
 
 
-2. Next, deploy a host cluster that uses the cluster profile you created containing the custom image. Verify the cluster is deployed correctly and without any issues. If you encounter any problems, review the event logs of the cluster to gain more details about the issue. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster/) tutorial for additional guidance on deploying a host cluster.
+2. Next, deploy a host cluster that uses the cluster profile you created containing the custom image. Verify the cluster is deployed correctly and without any issues. If you encounter any problems, review the event logs of the cluster to gain more details about the issue. Check out the [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for additional guidance on deploying a host cluster.

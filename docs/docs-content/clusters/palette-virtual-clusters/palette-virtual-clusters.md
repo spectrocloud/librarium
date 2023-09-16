@@ -18,7 +18,7 @@ Palette also supports Day-2 operations such as upgrades, backup, and restore to 
 ## Get Started
 
 
-To get started, refer to [Add Virtual Clusters to a Host Cluster](/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster).
+To get started, refer to [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md).
 
 
 ## Network Connectivity

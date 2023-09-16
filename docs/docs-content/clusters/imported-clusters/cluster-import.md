@@ -7,7 +7,7 @@ sidebar_position: 0
 tags: ["clusters", "imported clusters"]
 ---
 
-When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You can choose between read-only mode or full permission. Refer to the [Imported Clusters](/clusters/imported-clusters#importmodes) reference page to learn more about each mode.
+When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You can choose between read-only mode or full permission. Refer to the [Imported Clusters](imported-clusters.md#import-modes) reference page to learn more about each mode.
 
 
 Select the mode you want to use when importing a cluster into Palette.
@@ -175,6 +175,7 @@ You now have imported a cluster into Palette with full permissions.
    ```shell
    helm repo add bitnami https://charts.bitnami.com/bitnami && \
    helm install my-release bitnami/metrics-server
+   ```
 
 
 8. To install the Palette agent, issue the command displayed in the cluster details page  **Install the** read-only agent** section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains the assigned cluster ID. Below is an example output of the install command.
@@ -229,6 +230,7 @@ You now have imported a cluster into Palette in read-only mode. Keep in mind tha
 4. Review the **Cluster Status** row from the cluster details view. A successful cluster import displays cluster status as **Running**.
 
 
+
 ## Next Steps
 
-Depending on what mode you selected for the migration, your next step is to either [Attach an Add-on Profile](/clusters/imported-clusters/attach-add-on-profile) or you can [Migrate to Full Permissions](/clusters/imported-clusters/migrate-full-permissions).
+Depending on what mode you selected for the migration, your next step is to either [Attach an Add-on Profile](attach-add-on-profile.md) or you can [Migrate to Full Permissions](migrate-full-permissions.md).
