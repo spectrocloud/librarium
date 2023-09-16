@@ -87,5 +87,5 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console.
 
 
-[Click here to know How to Pause and Release your Palette Virtual Cluster](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
+[Click here to know How to Pause and Release your Palette Virtual Cluster](pause-restore-virtual-clusters.md).
 
