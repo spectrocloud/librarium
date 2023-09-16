@@ -15,7 +15,7 @@ In Kubernetes, namespaces provide a way to isolate groups of resources within a 
 - They can be used to partition resources among multiple users via resource quota – where each namespace has its own set of resources – without having to set up multiple physical clusters.
 
 
-- You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces and RBAC, check out [RBAC and NS Support](/clusters/cluster-management/cluster-rbac#createrolebindings).
+- You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces and RBAC, check out [RBAC and NS Support](cluster-rbac).
 
 
 - Namespaces can be used for different purposes such as testing, development, and production.
@@ -24,7 +24,7 @@ In Kubernetes, namespaces provide a way to isolate groups of resources within a 
 - You can use namespaces to help prevent resource naming conflicts. Resource names must be unique within a namespace but not across namespaces.
 
 
-- In environments that have hybrid containerized and virtualized applications, a separate namespace can be used to isolate virtual machines (VMs). For information about a VM environment in Palette, check out [Virtual Machine Management](/vm-management).
+- In environments that have hybrid containerized and virtualized applications, a separate namespace can be used to isolate virtual machines (VMs). For information about a VM environment in Palette, check out [Virtual Machine Management](../../vm-management/vm-management.md).
 
 
 
@@ -70,11 +70,11 @@ The following steps will guide you on how to create a namespace.
 
 
 
-6. You can assign resource quotas now or at a later time. To learn how, check out [Assign Resource Quotas](/clusters/cluster-management/namespace-management#assignresourcequotas).
+6. You can assign resource quotas now or at a later time. To learn how, check out [Assign Resource Quotas](namespace-management.md#assign-resource-quotas).
 
     <br />
 
-    For details on how to configure RBAC for namespaces, check out the [RBAC and NS Support](/clusters/cluster-management/cluster-rbac) guide.
+    For details on how to configure RBAC for namespaces, check out the [RBAC and NS Support](cluster-rbac.md#palette-roles-and-kubernetes-roles) guide.
 
 
 

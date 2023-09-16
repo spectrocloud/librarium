@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["devx", "app mode", "pde"]
 ---
 
-Palette supports the cloning of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same [tenant](/glossary-all#tenant). The ability to clone App Profiles can be useful for the following use cases.
+Palette supports the cloning of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same [tenant](../../glossary-all.md#tenant). The ability to clone App Profiles can be useful for the following use cases.
 
 * Share system scope App Profiles to projects scope.
 
@@ -16,13 +16,13 @@ Palette supports the cloning of App Profiles across multiple projects. For examp
 
 ## Prerequisites
 
-* An App Profile created in Palette. Check out the [Create an App Profile](/devx/app-profile/create-app-profile) for guidance.
+* An App Profile created in Palette. Check out the [Create an App Profile](create-app-profile.md) for guidance.
 
 ## Clone an App Profile
 
 To clone an App Profile follow the steps below:
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode)
+1. Login to [Palette](https://console.spectrocloud.com)
 
 
 2. Select **App Profiles** from the left **Main Menu**. Identify the App Profile you want to clone and click on the three dots at the right handside of the row. Click on the **Clone** button from the drop down.
@@ -45,7 +45,7 @@ In the target project specified during the clone process, you can now use the Ap
 To validate the App Profile is cloned and available in the target project conduct the following steps:
 
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode)
+1. Login to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.     

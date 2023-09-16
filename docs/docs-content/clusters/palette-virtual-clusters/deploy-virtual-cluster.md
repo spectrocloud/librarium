@@ -9,7 +9,7 @@ tags: ["clusters", "cluster groups", "virtual clusters"]
 ---
 
 
-You can deploy Palette Virtual Clusters to a [cluster group](/clusters/cluster-groups). The advantages of a virtual cluster environment are:
+You can deploy Palette Virtual Clusters to a [cluster group](../cluster-groups/cluster-groups.md). The advantages of a virtual cluster environment are:
 - You can operate with admin-level privileges while ensuring strong isolation.
 - Virtual clusters reduce operational overhead and improve resource utilization.
 
@@ -22,7 +22,7 @@ Use the following steps to deploy a virtual cluster.
 - A cluster group. Refer to the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) guide to learn how to create a cluster group.
 
 - Attach any required policies in your cloud account that must be added to your virtual cluster deployment. 
-  - For AWS, refer to the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies#globalroleadditionalpolicies) documentation.
+  - For AWS, refer to the [Required IAM Policies](../public-cloud/aws/required-iam-policies.md#global-role-additional-policies) documentation.
   - For Azure, no additional policies are required.
 
   <br />
@@ -50,7 +50,7 @@ To add node-level policies:
 
 4. You can specify any additional policies to include in virtual clusters deployed with this cloud account.
 
-    - For AWS, add the **AmazonEBSCSIDriver** policy so that the virtual clusters can access the underlying host cluster's storage. Check out the [Palette required IAM policies](/clusters/public-cloud/aws/required-iam-policies#globalroleadditionalpolicies) documentation to learn more about additional IAM policies.
+    - For AWS, add the **AmazonEBSCSIDriver** policy so that the virtual clusters can access the underlying host cluster's storage. Check out the [Palette required IAM policies](../public-cloud/aws/required-iam-policies.md) documentation to learn more about additional IAM policies.
 
 
 5. Confirm your changes.

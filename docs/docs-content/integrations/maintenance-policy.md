@@ -36,7 +36,7 @@ Add-on packs provide additional functionality that you can add to your cluster p
 - System Apps
 
 
-Check out the [Packs List](/integrations) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
+Check out the [Packs List](integrations.mdx) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
 
 <br />
 
@@ -152,7 +152,7 @@ We adhere to the following stages of deprecation:
 
 :::info
 
-For important guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
+For important guidelines on updating pack versions, review [Update the Pack Version](../cluster-profiles/task-update-profile.md#update-the-pack-version).
 
 :::
 

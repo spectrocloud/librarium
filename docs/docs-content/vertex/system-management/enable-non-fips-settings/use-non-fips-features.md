@@ -17,7 +17,7 @@ You can allow tenant users access to Palette features that are *not* FIPS-compli
 - You need tenant admin permission to enable this feature.
 
 
-- Palette can back up clusters to several locations. To learn about backup requirements, review [Backup-Restore](/clusters/cluster-management/backup-restore).
+- Palette can back up clusters to several locations. To learn about backup requirements, review [Backup-Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md).
 
 
 - There are no prerequisites for restoring clusters or performing scans.
@@ -48,7 +48,7 @@ To disable the setting, toggle this option off and confirm you want to disable i
 1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
 
 
-2. Navigate to the left **Main Me[Title](http://localhost:9000/vertex/system-management/enable-non-fips-settings/use-non-fips-features)nu** and click on **Clusters**. 
+2. Navigate to the left **Main Menu** and click on **Clusters**. 
 
 
 3. Select your cluster in the list. The **Scan** and **Backups** tabs are now displayed on the **Cluster Overview** page.
@@ -56,8 +56,8 @@ To disable the setting, toggle this option off and confirm you want to disable i
 
 ## Resources 
 
-- [Cluster Backup and Restore](/clusters/cluster-management/backup-restore)
+- [Cluster Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
 
 
-- [Scans](/clusters/cluster-management/compliance-scan)
+- [Scans](../../../clusters/cluster-management/compliance-scan.md)
 

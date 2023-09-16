@@ -14,7 +14,7 @@ Use the instructions below to create a cluster group.
 
 ## Prerequisites
 
-* To create a Palette Host Cluster Group, you need to deploy a healthy running [Palette host cluster](/clusters). 
+* To create a Palette Host Cluster Group, you need to deploy a healthy running [Palette host cluster](../clusters.md). 
 
 
 * The host clusters must match the network endpoint type of the cluster group.
@@ -66,7 +66,7 @@ s
 |--------------------------------------|-------------------------------------------|
 |Oversubscription (%):                 | The allowed oversubscription for cluster in terms of resources. Default is 120%.|
 |Cluster endpoint type:                | Load balancer or Ingress.|
-|Host DNS:                             | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](/clusters/cluster-groups/ingress-cluster-group) for additional guidance.|
+|Host DNS:                             | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance.|
 
 
 #### Palette Virtual Cluster Configuration
