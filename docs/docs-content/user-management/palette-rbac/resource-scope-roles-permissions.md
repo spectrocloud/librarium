@@ -18,7 +18,7 @@ Palette support two types of resource roles, global resource roles and custom re
 
 * Custom Resource Roles, are roles you can create in Palette using a set of permissions and operations.
   
-To learn how to create a custom role. Review the [Create Custom Role](/user-management/palette-rbac/resource-scope-roles-permissions#palettecustomresourceroles) guide.
+To learn how to create a custom role. Review the [Create Custom Role](#palette-custom-resource-roles) guide.
 
 
 ## Palette Global Resource Roles 
@@ -27,14 +27,14 @@ Palette provides the following built-in global resource roles:
 
 <br />
 
-* [Cluster](/user-management/palette-rbac/resource-scope-roles-permissions#cluster)
+* [Cluster](#cluster)
   * Resource Cluster Admin
 
   * Resource Cluster Editor
 
   * Resource Cluster Viewer
 
-* [Cluster Profile](/user-management/palette-rbac/resource-scope-roles-permissions#clusterprofile)
+* [Cluster Profile](#cluster-profile)
 
   * Resource Cluster Profile Admin
 
@@ -263,7 +263,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 <br / >
 
-The following is a list of platform permissions and operations supported by Palette. Use these permissions to [create custom role](/user-management/new-user#createcustomrole) to control the cluster access. For every **Resource Keys** available **operations** can be added as per your requirements.
+The following is a list of platform permissions and operations supported by Palette. Use these permissions to [create custom role](../new-user.md#create-custom-role) to control the cluster access. For every **Resource Keys** available **operations** can be added as per your requirements.
 
 <br / >
 
@@ -293,6 +293,6 @@ The following is a list of platform permissions and operations supported by Pale
 
 ## Resources
 
-[Resource Scope Matrix](/user-management/palette-rbac#resourcescopematrix)
+[Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)
 
 
