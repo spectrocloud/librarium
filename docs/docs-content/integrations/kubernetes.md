@@ -78,7 +78,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters.clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
 
 - Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain).
 
@@ -391,7 +391,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters.clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
 - Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configurecustomoidc).
 
@@ -710,7 +710,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters.clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
 
 - Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configurecustomoidc). 
 
@@ -1027,7 +1027,7 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters.clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
 
 - Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configurecustomoidc).
 
