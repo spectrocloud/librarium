@@ -8,13 +8,6 @@ sidebar_position: 20
 ---
 
 
-Depending on what version of Palette you are using, the internal architecture and network communication will be different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with Palette 4.0.0, the management platform communicates with the workload cluster via gRPC. Use the tabs below to view the network communication and ports for each architecture.
-
-## SaaS Network Communications and Ports
-
-
-
-# SaaS Network Communications and Ports
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
@@ -22,7 +15,7 @@ The following ports must be reachable from a network perspective for Palette Saa
 
 
 
-#### SaaS Managed
+## SaaS Managed
 
 
 ![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
@@ -30,7 +23,7 @@ The following ports must be reachable from a network perspective for Palette Saa
 
 The following ports must be reachable from a network perspective for Palette to operate properly.
 
-## Management Platform
+### Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
@@ -38,7 +31,7 @@ The following ports must be reachable from a network perspective for Palette to 
 |NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform|
 
 
-## Workload Cluster
+### Workload Cluster
 
 
 |Port            |Direction | Purpose|
@@ -54,14 +47,14 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 :::
 
 
-# Self-Hosted Network Communications and Ports
+## Self-Hosted Network
 
 The following ports must be reachable from a network perspective for Palette Sefl-Hosted to function correctly.
 
 
 ![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
 
-## Management Platform
+### Management Platform
 
 |Port            |Direction|Purpose                   |    
 |:---------------|:---------|:-----------------------|
@@ -71,7 +64,7 @@ The following ports must be reachable from a network perspective for Palette Sef
 |HTTPS (tcp/6443)|OUTBOUND       |Workload K8s cluster API Server|
 
 
-## Workload Cluster
+### Workload Cluster
 
 
 |Port |Direction | Purpose|
