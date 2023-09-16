@@ -16,6 +16,7 @@ clean: ## Clean build artifacts
 init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
 	npm ci
+	npx husky install
 
 start: ## Start a local development server
 	npm run start
