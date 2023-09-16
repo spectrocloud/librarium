@@ -799,7 +799,7 @@ Ensure your data center CIDR IP address does not overlap with the Kubernetes Pod
 ##  Proxy Requirements
 *  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
-*   Connectivity to all [Proxy Whitelist](/clusters#proxywhitelist) domains must be allowed
+*   Connectivity to all [Proxy Whitelist](../architecture/palette-public-ips.md#palette-domains) domains must be allowed
 
 
 ## Self-Hosted Configuration
