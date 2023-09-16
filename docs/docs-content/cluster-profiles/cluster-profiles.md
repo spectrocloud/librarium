@@ -12,7 +12,7 @@ sidebar_custom_props:
 # Overview
 
 
-[Cluster Profiles](/glossary-all#cluster-profile) are like templates that are created with preconfigured layers/components that are required for 
+[Cluster Profiles](../glossary-all.md#cluster-profile) are like templates that are created with preconfigured layers/components that are required for 
 workload cluster deployments. Cluster Profiles provide a way for driving consistency across workload cluster 
 deployments. You can create as many profiles as required. 
 
