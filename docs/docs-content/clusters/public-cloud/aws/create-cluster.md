@@ -17,10 +17,10 @@ The following prerequisites must be met before deploying a cluster to AWS:
 - Access to an AWS cloud account 
 
 
-- You have added an AWS account in Palette. Review the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) for guidance.
+- You have added an AWS account in Palette. Review the [Add AWS Account](add-aws-accounts.md) for guidance.
 
 
-- An infrastructure cluster profile. Review the [Create Cluster Profiles](/cluster-profiles/task-define-profile) for guidance.
+- An infrastructure cluster profile. Review the [Create Cluster Profiles](../../../cluster-profiles/task-define-profile.md) for guidance.
 
 
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
@@ -85,8 +85,8 @@ Use the following steps to provision a new AWS cluster:
   |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
   |**Region** | Choose the preferred AWS region where you would like to provision clusters.|
   |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.|
-  |**Static Placement** | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](/clusters/public-cloud/aws/create-cluster#staticplacement) table below to learn more about the required input fields.|
-  | **Private API Server LB**| Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](/clusters/data-center/maas/install-manage-maas-pcg) deployed in the environment.|
+  |**Static Placement** | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.|
+  | **Private API Server LB**| Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../data-center/maas/install-manage-maas-pcg.md) deployed in the environment.|
   
   <br />
 
@@ -100,7 +100,7 @@ Use the following steps to provision a new AWS cluster:
   
 
 
-10. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](/clusters/public-cloud/aws/architecture#spotinstances), disk size, and the number of nodes. Click on **Next** after you have completed configuring the node pool.
+10. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](architecture.md#spot-instances), disk size, and the number of nodes. Click on **Next** after you have completed configuring the node pool.
 
   <br />
 
@@ -115,7 +115,7 @@ Use the following steps to provision a new AWS cluster:
 
 
 
-12. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the taint label can be edited, review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label.
+12. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the taint label can be edited, review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more. Toggle the **Taint** button to create a label.
 
 
 13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following parameters:
@@ -168,4 +168,4 @@ You can validate that your cluster is up and available by reviewing the cluster 
 
 ## Next Steps
 
-Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the [Manage Clusters](/clusters/cluster-management) documentation to learn more about day two responsibilities. 
+Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters. We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out the [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about day two responsibilities. 

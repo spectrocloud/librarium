@@ -13,11 +13,11 @@ tags: ["user-management", "rbac"]
 
 ## Global Tenant Scope
 
-Tenant is an isolated workspace within the Palette Console. Users and teams with specific roles can be associated with the [tenants](/glossary-all#organization) and [projects](/glossary-all#project) you create.
+Tenant is an isolated workspace within the Palette Console. Users and teams with specific roles can be associated with the [tenants](../../glossary-all.md#organization) and [projects](../../glossary-all#project) you create.
 
  Each user is assigned a role and permissions, which apply to the scopes, resources, and resourceKey. The Permissions format is `resourceKey.operation`, where resourceKey refers to resource or the API functionality, and Operation refers to the permitted action or activity.
 
-To view the list of the predefined roles and permissions, ensure you are in the project scope **Tenant**. Next, navigate to the left **Main Menu** and click on  **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend permissions, create a custom role by using  the [Create Role](/user-management/palette-rbac#createcustomroleinpalette) option. 
+To view the list of the predefined roles and permissions, ensure you are in the project scope **Tenant**. Next, navigate to the left **Main Menu** and click on  **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend permissions, create a custom role by using  the [Create Role](palette-rbac.md#create-custom-role-in-palette) option. 
 
 Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope.
 

@@ -8,14 +8,14 @@ tags: ["devx", "app mode", "pde"]
 ---
 
 
-You can create as many App Profiles as needed to fit various types of workloads on your Palette Virtual Clusters. Each App Profile can contain multiple services, also called layers in the App Profile stack. You can also create multiple versions of an App Profile. For more information, visit [App Profile Versioning](/devx/app-profile/versioning-app-profile). 
+You can create as many App Profiles as needed to fit various types of workloads on your Palette Virtual Clusters. Each App Profile can contain multiple services, also called layers in the App Profile stack. You can also create multiple versions of an App Profile. For more information, visit [App Profile Versioning](versioning-app-profile.md). 
 
 Use the following steps to create an App Profile.
 
 
 :::info
 
-A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) to get started with Palette Dev Engine.
+A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](../apps/deploy-app.md) to get started with Palette Dev Engine.
 
 :::
 
@@ -46,7 +46,7 @@ To create an App Profile:
 |Tag (optional)               | Assign tags to the app profile.|
 
 
-4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](/devx/app-profile) for a list of available services. 
+4. Select one of the available services to start configuring your App Profile. Refer to [App Profiles](../app-profile/app-profile.md) for a list of available services. 
 
 
 5. Provide configuration information for the service.
@@ -83,11 +83,11 @@ To validate your App Profile is available and ready for use, use the following s
   :::
 
 
-5. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct. Review the [Create and Manage Apps](/devx/apps/create-app) to learn how to deploy an app to a virtual cluster. Check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial for a more in-depth guide.
+5. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct. Review the [Create and Manage Apps](../apps/create-app.md) to learn how to deploy an app to a virtual cluster. Check out the [Deploy an Application using Palette Dev Engine](../apps/deploy-app.md) tutorial for a more in-depth guide.
 
 
 <br />
 
 ## Next Steps
 
-Start exploring the various [out-of-the-box](/devx/app-profile/services) services Palette exposes to application authors. Use these services to quickly deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
+Start exploring the various [out-of-the-box](services/services.md) services Palette exposes to application authors. Use these services to quickly deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.

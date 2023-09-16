@@ -40,7 +40,7 @@ When you upgrade the control plane on a cluster, the PKI certificates are automa
 
 :::info
 
-You can upgrade the Kubernetes version of a cluster by updating the Kubernetes layer of the [cluster profile](/cluster-profiles) and applying the cluster profile update to the cluster. For guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
+You can upgrade the Kubernetes version of a cluster by updating the Kubernetes layer of the [cluster profile](/cluster-profiles) and applying the cluster profile update to the cluster. For guidelines on updating pack versions, review [Update the Pack Version](../../cluster-profiles/task-update-profile.md#updatethepackversion).
 
 :::
 
@@ -129,7 +129,7 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 ### Prerequisites
 
-- A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](/user-management/user-authentication/) documentation.
+- A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](../../user-management/user-authentication.md) documentation.
 
 
 - A deployed host cluster.
@@ -246,7 +246,7 @@ Using the following steps, you can validate that the cluster's PKI certificates 
 
   <br />
 
-  ```json
+  ```json hideClipboard
     {
       "machineCertificates": [
           {
@@ -305,10 +305,6 @@ Using the following steps, you can validate that the cluster's PKI certificates 
   ```
 
 
-<!-- </TabItem>
-
-</Tabs> -->
-
 <br />
 
 ## Advanced - Only Renew Control Plane Nodes
@@ -326,7 +322,7 @@ Use the following steps to configure Palette only to renew the certificates for 
 - A host cluster deployed.
 
 
-- Access to the host cluster's kubeconfig file. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide to learn how to use your cluster's kubeconfig file.
+- Access to the host cluster's kubeconfig file. Refer to the [Access Cluster with CLI](palette-webctl.md) guide to learn how to use your cluster's kubeconfig file.
 
 
 ### Configure Cluster
@@ -371,7 +367,7 @@ Use the following steps to configure Palette only to renew the certificates for 
   ```
 
 
-4. Next, trigger a certificate renewal using either [Automatic Certificate Renewal](/clusters/cluster-management/certificate-management#automaticcertificaterenewal) or [Manual Certificate Renewal](/clusters/cluster-management/certificate-management#manualcertificaterenewal).
+4. Next, trigger a certificate renewal using either [Automatic Certificate Renewal](#automatic-certificate-renewal) or [Manual Certificate Renewal](#manual-certificate-renewal).
 
 
 

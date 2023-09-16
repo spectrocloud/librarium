@@ -6,7 +6,6 @@ hide_table_of_contents: false
 sidebar_position: 60
 ---
 
-# Palette Helm Registry
 Helm Charts are a collection of Kubernetes resource files capable of deploying services of varying complexity. Palette provides some stable default Helm charts in its public Helm Chart Registry. 
 
 Palette also supports creating custom Helm registries. You can add your own public or private Helm registries to Palette's Helm registry.
@@ -68,7 +67,7 @@ The following applies when adding Helm charts to cluster profiles.
 
 ## Resources
 
-[Create Cluster Profiles](https://docs.spectrocloud.com/cluster-profiles/task-define-profile)
+[Create Cluster Profiles](../cluster-profiles/task-define-profile.md)
 
 <br />
 

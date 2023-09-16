@@ -13,7 +13,7 @@ You can deploy a Virtual Machine (VM) using Palette's out-of-the-box templates o
 
 ## Prerequisites
 
-- Configured Virtual Machine Orchestrator profile applied to your cluster. Review [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) to configure the dashboard.
+- Configured Virtual Machine Orchestrator profile applied to your cluster. Review [Create a VMO Profile](../../vm-packs-profiles/create-vmo-profile.md) to configure the dashboard.
 
 ## Deploy VM from a Template
 
@@ -98,8 +98,4 @@ VMs do not self-heal. If a VM is running on a node that fails, the VM is re-sche
 
 Try installing your applications. If you did not install the QEMU guest agent as part of the VM deployment, you can install it now. The guest agent displays additional details in the **Virtual Machines** > **Details** tab. 
 
-You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you can make in the [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration) guide.
-
-<br />
-
-<br />
+You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you can make in the [Update VM Configuration](update-vm-configuration.md) guide.

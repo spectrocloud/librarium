@@ -15,10 +15,10 @@ Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtu
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro Cloud reverse proxy.
 
 
-- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to the [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 
-- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](/clusters/cluster-management/namespace-management#createanamespace). 
+- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out [Create a Namespace](../../clusters/cluster-management/namespace-management.md#create-a-namespace). 
 
 
 ## VM Creation
@@ -27,7 +27,7 @@ You can create a VM three ways:
 
 <br />
 
-- Deploy a VM from a template. Palette provides out-of-the-box templates, or your organization may provide templates. For the latter, refer to the [Create a VM Template](/vm-management/create-manage-vm/create-vm-template) guide.
+- Deploy a VM from a template. Palette provides out-of-the-box templates, or your organization may provide templates. For the latter, refer to the [Create a VM Template](create-vm-template.md) guide.
 
 
 - Create an empty VM and install the Operating System (OS) using a standard method, such as a Preboot Execution Environment (PXE) or optical disk image (ISO).
@@ -51,15 +51,10 @@ We recommend installing the QEMU guest agent to display additional details in Pa
 
 ## Resources
 
-- [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
+- [Standard VM Operations](standard-vm-operations/standard-vm-operations.md)
 
 
-- [Deploy VM from a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+- [Deploy VM from a Template](standard-vm-operations/deploy-vm-from-template.md)
 
 
-- [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
-
-
-<br />
-
-<br />
+- [Create a VM Template](create-vm-template.md)

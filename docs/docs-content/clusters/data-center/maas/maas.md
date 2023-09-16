@@ -13,13 +13,13 @@ Palette also supports self-hosted deployment of Kubernetes clusters in the MAAS 
 
 ## Resources
 
-- [MAAS Bare-Metal Architecture](/clusters/data-center/maas/architecture)
+- [MAAS Bare-Metal Architecture](architecture.md)
 
 
-- [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg)
+- [Install and Manage MAAS Gateway](install-manage-maas-pcg.md)
 
 
-- [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts)
+- [Register and Manage MAAS Cloud Accounts](register-manage-maas-cloud-accounts.md)
 
 
-- [Create and Manage MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters)
+- [Create and Manage MAAS Cluster](create-manage-maas-clusters.md)

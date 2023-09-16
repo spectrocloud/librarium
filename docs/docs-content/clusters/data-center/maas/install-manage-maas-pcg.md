@@ -56,10 +56,10 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
-- Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page and install the CLI. Refer to the [Palette CLI Install](/palette-cli/install-palette-cli) guide to learn more.
+- Download the Palette CLI from the [Downloads](../../../spectro-downloads#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more.
 
 
-- A Palette API key. Refer to the [Create API Key](/user-management/user-authentication#apikey) page for guidance.
+- A Palette API key. Refer to the [Create API Key](../../../user-management/user-authentication.md#apikey) page for guidance.
 
   :::caution
 
@@ -127,7 +127,7 @@ The following steps will guide you on how to install a PCG cluster.
 1. In an x86 Linux host, open up a terminal session.
 
 
-2. Use the [Palette CLI](/palette-cli/install-palette-cli) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
+2. Use the [Palette CLI](../../../palette-cli/install-palette-cli.md) `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
 
     <br />
 
@@ -658,9 +658,9 @@ You can validate that your PCG has been resized by navigating to the **Private C
 
 ## Next Steps
 
-You can now create tenant clusters in the auto-created cloud account.  To get started, check out [Create and Manage MAAS Clusters](/clusters/data-center/maas/create-manage-maas-clusters).
+You can now create tenant clusters in the auto-created cloud account.  To get started, check out [Create and Manage MAAS Clusters](create-manage-maas-clusters.md).
 
-You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](/clusters/data-center/maas/register-manage-maas-cloud-accounts).
+You can also create additional cloud accounts if you need them. Refer to [Register and Manage MAAS Cloud Accounts](register-manage-maas-cloud-accounts.md).
 
 
 

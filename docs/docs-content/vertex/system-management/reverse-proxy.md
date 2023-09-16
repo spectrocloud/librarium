@@ -12,7 +12,7 @@ tags: ["vertex", "management"]
 
 You can configure a reverse proxy for Palette VerteX. The reverse proxy can be used by host clusters deployed in a private network. Host clusters deployed in a private network are not accessible from the public internet or by users in different networks. You can use a reverse proxy to access the cluster's Kubernetes API server from a different network.
 
-When you configure reverse proxy server for Palette VerteX, clusters that use the [Spectro Proxy pack](/integrations/frp) will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
+When you configure reverse proxy server for Palette VerteX, clusters that use the [Spectro Proxy pack](../../integrations/frp.md) will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
 
 
 Use the following steps to configure a reverse proxy server for Palette VerteX.
@@ -48,7 +48,7 @@ Use the following steps to configure a reverse proxy server for Palette VerteX.
 1. Open a terminal session and navigate to the directory where you stored the **values.yaml** for the Palette VerteX installation.
 
 
-2. Use a text editor and open the **values.yaml** file. Locate the `frps` section and update the following values in the **values.yaml** file. Refer to the [Spectro Proxy Helm Configuration](/enterprise-version/helm-chart-install-reference/#spectroproxy) to learn more about the configuration options.
+2. Use a text editor and open the **values.yaml** file. Locate the `frps` section and update the following values in the **values.yaml** file. Refer to the [Spectro Proxy Helm Configuration](../install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md#spectro-proxy) to learn more about the configuration options.
 
   <br />
 
@@ -188,7 +188,7 @@ Use the following steps to configure a reverse proxy server for Palette VerteX.
   204
   ```
 
-You now have a Spectro Proxy server that you can use to access Palette VerteX clusters deployed in a different network. Make sure you add the [Spectro Proxy pack](/integrations/frp) to the clusters you want to access using the Spectro Proxy server.
+You now have a Spectro Proxy server that you can use to access Palette VerteX clusters deployed in a different network. Make sure you add the [Spectro Proxy pack](../../integrations/frp.md) to the clusters you want to access using the Spectro Proxy server.
 
 
 ## Validate
