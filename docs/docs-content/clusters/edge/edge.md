@@ -65,7 +65,7 @@ Palette manages the installation and all the Day-2 activities, such as scaling, 
 
 :::caution
 
-Edge is still in active development and is subject to change. Review the Palette [release notes](/release-notes) for updates and changes.
+Edge is still in active development and is subject to change. Review the Palette [release notes](../../release-notes.md) for updates and changes.
 
 
 :::
@@ -75,23 +75,23 @@ Edge is still in active development and is subject to change. Review the Palette
 ## Get Started With Edge
 
 
-To start with Edge, review the [architecture](/clusters/edge/architecture) and the [lifecycle](/clusters/edge/edge-native-lifecycle) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](/clusters/edge/edgeforge-workflow). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](/clusters/edge/site-deployment) guide to understand what it takes to deploy an Edge host.
+To start with Edge, review the [architecture](architecture.md) and the [lifecycle](edge-native-lifecycle.md) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](edgeforge-workflow/edgeforge-workflow.md). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](site-deployment/site-deployment.md) guide to understand what it takes to deploy an Edge host.
 
 
 
 ## Resources
 
-- [Edge Native Architecture](/clusters/edge/architecture)
+- [Edge Native Architecture](architecture.md)
 
 
-- [Deployment Lifecycle](/clusters/edge/edge-native-lifecycle)
+- [Deployment Lifecycle](edge-native-lifecycle.md)
 
 
-- [Install Configuration](/clusters/edge/edge-configuration)
+- [Install Configuration](edge-configuration/edge-configuration.md)
 
 
-- [EdgeForge Workflow](/clusters/edge/edgeforge-workflow)
+- [EdgeForge Workflow](edgeforge-workflow/edgeforge-workflow.md)
 
 
-- [Site Deployment](/clusters/edge/site-deployment)
+- [Site Deployment](site-deployment/site-deployment.md)
 

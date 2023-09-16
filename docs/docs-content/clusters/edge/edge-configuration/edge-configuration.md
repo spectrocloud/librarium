@@ -64,13 +64,13 @@ You can also specify additional location-specific configurations at the site dur
 The Edge installation process supports the ability for you to customize your operating system (OS) through the usage of cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer and at the Operating System (OS) layer by customizing the OS pack. Once the edge host installation process is complete, the OS stages take effect during the boot-up process.
 
 
-To effectively use the Edge Installer, we recommend you review the Edge [installer configuration](/clusters/edge/edge-configuration/installer-reference) page so you gain an overview of all the available parameters.
+To effectively use the Edge Installer, we recommend you review the Edge [installer configuration](installer-reference.md) page so you gain an overview of all the available parameters.
 
 
 
 
 ## Resources
 
-- [Edge OS Configuration: Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init)
+- [Edge OS Configuration: Cloud-Init Stages](cloud-init.md)
 
-- [Edge Install Configuration](/clusters/edge/edge-configuration/installer-reference)
+- [Edge Install Configuration](installer-reference.md)

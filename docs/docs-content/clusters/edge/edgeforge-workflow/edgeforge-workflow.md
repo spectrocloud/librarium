@@ -21,7 +21,7 @@ EdgeForge contains three critical components.
 
 
 
-Each component plays a critical role in the [lifecycle](/clusters/edge/edge-native-lifecycle) of an Edge deployment. Review the [Edge Artifacts](/clusters/edge/edgeforge-workflow#edgeartifacts) section to learn more about each component.
+Each component plays a critical role in the [lifecycle](../edge-native-lifecycle.md) of an Edge deployment. Review the [Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each component.
 
 ![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
 
@@ -29,7 +29,7 @@ Each component plays a critical role in the [lifecycle](/clusters/edge/edge-nati
 ## Get Started
 
 
-To start building a custom Edge artifact, use the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
+To start building a custom Edge artifact, use the [Build Edge Artifacts](palette-canvos.md) guide.
 
 <br />
 
@@ -53,7 +53,7 @@ The Edge host agent container image contains the Palette Edge host agent. The ag
 
 These are [Kairos](https://kairos.io/)-based container images for each supported Operating System (OS) and Kubernetes combination. These container images are downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
 
-Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's public container registries, or a private self-hosted OCI registry and automatically downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process. However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) optimization.
+Palette provides these artifacts out-of-the-box. All the container images are hosted in Palette's public container registries, or a private self-hosted OCI registry and automatically downloaded during installation. You can use the default Palette container registries to familiarize yourself with the installation process. However, in a typical production scenario, you would need to customize these artifacts to suit your specific needs or perform some [content bundle](../edgeforge-workflow/build-content-bundle.md) optimization.
 
 <br />
 
@@ -62,7 +62,7 @@ Palette provides these artifacts out-of-the-box. All the container images are ho
 
 :::info
 
-You can specify a custom registry for the Edge Installer to use during installation with the user data parameter `registryCredentials`. Refer to the [Installer Configuration](/clusters/edge/edge-configuration/installer-reference#externalregistry) reference resource for more details.
+You can specify a custom registry for the Edge Installer to use during installation with the user data parameter `registryCredentials`. Refer to the [Installer Configuration](../edge-configuration/installer-reference.md#external-registry) reference resource for more details.
 
 :::
 
@@ -96,10 +96,13 @@ For environments that require a different runtime OS, you can specify another OS
 ## Resources
 
 
-- [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
+- [Build Edge Artifacts](palette-canvos.md)
 
 
-- [Build Preloaded Content Bundles](/clusters/edge/edgeforge-workflow/build-content-bundle)
+- [Build Preloaded Content Bundles](build-content-bundle.md)
 
 
-- [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data)
+- [Build Edge Artifacts using a Content Bundle](build-artifacts.md)
+
+
+- [Prepare User Data](prepare-user-data.md)
