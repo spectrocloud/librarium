@@ -9,11 +9,11 @@ help: ## Display this help
 
 clean: ## Clean build artifacts
 	rm -rf node_modules build public .cache .docusaurus
-	docker image rm $(IMAGE)
+	docker image rm $(IMAGE) || echo "No image exists."
 
 ##@ npm Targets
 
-initialize: ## Initialize npm dependencies
+init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
 	npm ci
 

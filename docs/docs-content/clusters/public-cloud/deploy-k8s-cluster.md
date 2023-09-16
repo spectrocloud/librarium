@@ -13,7 +13,7 @@ sidebar_position: 50
 
 Palette helps you create and manage Kubernetes clusters in various cloud environments with minimal overhead.
 
-Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](/cluster-profiles) allows you to customize the cluster infrastructure stack, allowing you to choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI). You can further customize the stack with add-on application layers. 
+Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](../../cluster-profiles/cluster-profiles.md) allows you to customize the cluster infrastructure stack, allowing you to choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI). You can further customize the stack with add-on application layers. 
 
 After defining a cluster profile, you can provide the cloud environment details, the control plane, and worker node configurations to deploy a host cluster.
 
@@ -56,13 +56,13 @@ To complete this tutorial, you will need the following.
   <br />
 
 - Register the cloud account in Palette. The following resources provide additional guidance.
-  - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
-  - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
-  - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
+  - [Register and Manage AWS Accounts](aws/add-aws-accounts.md)
+  - [Register and Manage Azure Cloud Accounts](azure/azure-cloud.md)
+  - [Register and Manage GCP Accounts](gcp/add-gcp-accounts.md)
 
   <br />
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](/clusters/cluster-management/ssh-keys) guide to learn how to create an SSH key and upload it to Palette.
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
 
   - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) tutorial.
 
@@ -77,7 +77,7 @@ The following steps will guide you through deploying the cluster infrastructure.
 
 #### Create Cluster Profile (AWS)
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
  - Kubernetes distribution and version
