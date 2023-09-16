@@ -63,7 +63,7 @@ Increasing the limit and request values could result in a virtual cluster requir
 If a user attempts to create a virtual cluster that needs more resources than the cluster group allows, the request will be denied because it exceeds the cluster group's defined limits.
 
 
-Refer to the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) to learn more about adjusting cluster group's virtual cluster settings.
+Refer to the [Create and Manage Cluster Groups](../../clusters/cluster-groups/create-cluster-group.md) to learn more about adjusting cluster group's virtual cluster settings.
 
 
 ## User Resource Quotas

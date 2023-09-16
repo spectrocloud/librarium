@@ -12,7 +12,7 @@ tags: ["vertex", "kubernetes"]
 
 Use the Palette VerteX Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment. Palette VerteX is a FIPS-compliant product that must be installed in a FIPS-compliant environment. This means that Operating System (OS) the Kubernetes cluster you are installing Palette VerteX into must be FIPS-compliant. 
 
-Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
+Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
 
 
-- We recommend the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
+- We recommend the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
 
     - 8 CPUs per node.
 
@@ -52,7 +52,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 
   :::info
 
-  Refer to the Palette VerteX [size guidelines](/vertex/install-palette-vertex#sizeguidelines) resource for additional sizing information.
+  Refer to the Palette VerteX [size guidelines](../install-palette-vertex.md#size-guidelines) resource for additional sizing information.
 
   :::
 
@@ -79,7 +79,7 @@ Review our [architecture diagrams](/architecture/networking-ports) to ensure you
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette VerteX.
 
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette VerteX](/vertex#accesspalettevertex) for instructions on how to request access to the Helm Chart.
+- Access to the Palette Helm Charts. Refer to the [Access Palette VerteX](../../vertex.md#access-palette-vertex) for instructions on how to request access to the Helm Chart.
 
 
 
@@ -166,7 +166,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
     :::info
     
-    You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref) page.
+    You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](vertex-helm-ref.md) page.
 
     :::
 
@@ -237,13 +237,13 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 <br />
 
-10. After login, a summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+10. After login, a summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette VerteX.
 
 <br />
 
 :::caution
 
-If you are planning to deploy host clusters into different networks, you may require a reverse proxy.  Check out the [Configure Reverse Proxy](/vertex/system-management/reverse-proxy) guide for instructions on configuring a reverse proxy for Palette VerteX.
+If you are planning to deploy host clusters into different networks, you may require a reverse proxy.  Check out the [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on configuring a reverse proxy for Palette VerteX.
 
 :::
 
@@ -317,4 +317,4 @@ Use the following steps to validate the Palette VerteX installation.
 
 ## Next Steps
 
-You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](/vertex/system-management/tenant-management#createatenant) page for instructions on how to create a tenant. 
+You have successfully installed Palette VerteX in a Kubernetes cluster. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant. 

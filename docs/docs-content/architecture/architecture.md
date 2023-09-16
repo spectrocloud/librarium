@@ -20,17 +20,17 @@ Palette supports three different architecture models; multi-tenant SaaS, dedicat
 
 ## Resources
 
-- [Architecture Overview](/architecture/architecture-overview/)
+- [Architecture Overview](architecture-overview.md)
 
 
-- [Provisioning Order of Operations](/architecture/orchestration-spectrocloud)
+- [Provisioning Order of Operations](orchestration-spectrocloud.md)
 
 
-- [Namespaces and Pods](/architecture/palette-namespaces-podes)
+- [Namespaces and Pods](palette-namespaces-podes.md)
 
 
-- [Network Ports](/architecture/networking-ports)
+- [Network Ports](networking-ports.md)
 
 
-- [IP Addresses](/architecture/palette-public-ips)
+- [IP Addresses](palette-public-ips.md)
 

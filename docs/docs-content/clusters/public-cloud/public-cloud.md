@@ -13,20 +13,20 @@ Workload clusters are instantiated from cloud-specific _Cluster Profiles__](/clu
 
 # Get Started
 
-Learn how to deploy a cluster to a public cloud provider by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
+Learn how to deploy a cluster to a public cloud provider by using Palette. Check out the [Deploy a Cluster with Palette](deploy-k8s-cluster.md) tutorial to get started.
 
 
 # Supported Environments
 
 The following pages provide detailed instructions for setting up new workload clusters in the various environments.
 
-* [Amazon Web Services](/clusters/public-cloud/aws)
+* [Amazon Web Services](aws/aws.md)
 
-* [Azure](/clusters/public-cloud/azure)
+* [Azure](azure/azure.md)
 
-* [Cox Edge](/clusters/public-cloud/cox-edge)
+* [Cox Edge](cox-edge/cox-edge.md)
 
-* [Google Cloud](/clusters/public-cloud/gcp)
+* [Google Cloud](gcp/gcp.md)
 
-* [Tencent](/clusters/public-cloud/tke)
+* [Tencent](tke.md)
 

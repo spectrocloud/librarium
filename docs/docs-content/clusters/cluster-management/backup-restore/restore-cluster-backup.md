@@ -93,13 +93,13 @@ A restore operation only restores the specified namespaces, cluster-scoped resou
 - The destination cluster must belong to the same project as the source cluster. 
 
 
-- A backup is created for the source cluster. Check out the [Create Cluster Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) for guidance on how to create a backup.
+- A backup is created for the source cluster. Check out the [Create Cluster Backup](create-cluster-backup.md) for guidance on how to create a backup.
 
 
 - Ensure the storage classes in the destination cluster match the storage classes in the source cluster. 
 
 
-- If the backup location is configured using dynamic credentials, such as the AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide. 
+- If the backup location is configured using dynamic credentials, such as the AWS Security Token Service (STS) authentication method, ensure you define a trust relationship with the destination cluster. The trust relationship enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guide. 
 
 
 ### Instructions
@@ -107,7 +107,7 @@ A restore operation only restores the specified namespaces, cluster-scoped resou
 Use the following instructions in Palette to restore a backup to a destination cluster. 
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to the left **Main Menu** and click on **Clusters**. 

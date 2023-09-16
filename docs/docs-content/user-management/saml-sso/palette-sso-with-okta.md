@@ -330,7 +330,7 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 - [Okta Workforce Identity Cloud](https://www.okta.com/products/single-sign-on/)
 
 
-- [Palette User Management](/user-management)
+- [Palette User Management](../user-management.md)
 
 
-- [Palette SSO](/user-management/saml-sso)
+- [Palette SSO](./saml-sso.md)

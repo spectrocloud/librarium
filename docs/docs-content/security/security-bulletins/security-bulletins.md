@@ -21,15 +21,15 @@ Our security advisories follow the [CVSS standards](https://www.first.org/cvss/v
 | Critical | 9.0 - 10.0 |
 
 
-You can review Common Vulnerabilities and Exposures (CVE) for Palette in [CVE Reports](/security/security-bulletins/cve-reports). An index of all Palette-related CVEs is availaable in the [CVE Index](/security/security-bulletins/index). 
+You can review Common Vulnerabilities and Exposures (CVE) for Palette in [CVE Reports](cve-reports.md). An index of all Palette-related CVEs is availaable in the [CVE Index](cve-index.md). 
 
 
 ## Resources
 
 
-- [CVE Reports](/security/security-bulletins/cve-reports)
+- [CVE Reports](cve-reports.md)
 
 
-- [CVE Index](/security/security-bulletins/index)
+- [CVE Index](cve-index.md)
 
 <br />

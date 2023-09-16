@@ -9,7 +9,7 @@ tags: ["security"]
 ---
 
 
-Palette has security controls for the operating system, containers, and Kubernetes. Data is protected with secure keys, encryption, and secure communication, standard authentication and authorization, and API security. Audit logs record actions taken on the platform. Review the [Audit Logs](/audit-logs) guide to learn how to access and use them.
+Palette has security controls for the operating system, containers, and Kubernetes. Data is protected with secure keys, encryption, and secure communication, standard authentication and authorization, and API security. Audit logs record actions taken on the platform. Review the [Audit Logs](../../audit-logs/audit-logs.md) guide to learn how to access and use them.
 
 
 <br />

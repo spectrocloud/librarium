@@ -15,32 +15,32 @@ Palette is available as a self-hosted platform offering. You can install the sel
 :::caution
 
 
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)  guides for additional guidance on how to install Palette.
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](deploying-an-enterprise-cluster.md), or the [Kubernetes Install Helm Chart](deploying-palette-with-helm.md)  guides for additional guidance on how to install Palette.
 
 :::
 
-- [VMware Quick Start](/enterprise-version/deploying-the-platform-installer)
+- [VMware Quick Start](deploying-the-platform-installer.md)
 
 
-- [VMware Enterprise](/enterprise-version/deploying-an-enterprise-cluster)
+- [VMware Enterprise](deploying-an-enterprise-cluster.md)
 
 
-- [Kubernetes Install Helm Chart](/enterprise-version/deploying-palette-with-helm)
+- [Kubernetes Install Helm Chart](deploying-palette-with-helm.md)
 
 
-- [AirGap Install](/enterprise-version/air-gap-repo)
+- [AirGap Install](air-gap-repo.md)
 
 ## VMware Quick Start
 
-A single-node Palette installation that is ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](/enterprise-version/deploying-the-platform-installer) guide for more details.
+A single-node Palette installation that is ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](deploying-the-platform-installer.md) guide for more details.
 
 ## VMware Enterprise
 
-A highly available multi-node Palette installation that is typically used for production purposes. Check out the [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster) guide to get started.
+A highly available multi-node Palette installation that is typically used for production purposes. Check out the [Enterprise Mode](deploying-an-enterprise-cluster.md) guide to get started.
 
 ## Kubernetes Install Helm Chart
 
-Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm) guide to learn more.
+Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm Chart Mode](deploying-palette-with-helm.md) guide to learn more.
 
 
 ## Airgap Install
@@ -64,7 +64,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 ## Upgrade Notes
 
-Review the [Upgrade Notes](/enterprise-version/upgrade) before attempting to upgrade Palette.
+Review the [Upgrade Notes](upgrade.md) before attempting to upgrade Palette.
 
 
 <br />
@@ -72,34 +72,34 @@ Review the [Upgrade Notes](/enterprise-version/upgrade) before attempting to upg
 ## Resources 
 
 
-* [System Requirements](/enterprise-version/on-prem-system-requirements)
+* [System Requirements](on-prem-system-requirements.md)
 
 
-* [Quick Start Mode](/enterprise-version/deploying-the-platform-installer)
+* [Quick Start Mode](deploying-the-platform-installer.md)
 
 
-* [Enterprise Mode](/enterprise-version/deploying-an-enterprise-cluster)
+* [Enterprise Mode](deploying-an-enterprise-cluster.md)
 
 
-* [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm)
+* [Helm Chart Mode](deploying-palette-with-helm.md)
 
 
-* [System Console Dashboard](/enterprise-version/system-console-dashboard)
+* [System Console Dashboard](system-console-dashboard.md)
 
 
-* [Creating a VMware Cloud Gateway](/clusters/data-center/vmware#creatingavmwarecloudgateway)
+* [Creating a VMware Cloud Gateway](../clusters/data-center/vmware.md#install-pcg)
 
 
-* [Create VMware Cloud Account](/clusters/data-center/vmware#creatingavmwarecloudaccount)
+* [Create VMware Cloud Account](../clusters/data-center/vmware.md#create-vmware-cloud-gateway)
 
 
-* [Deploy a VMware Cluster](/clusters/data-center/vmware#deployingavmwarecluster)
+* [Deploy a VMware Cluster](../clusters/data-center/vmware#deploy-a-vmware-cluster)
 
 
-* [Troubleshooting](/clusters/data-center/vmware#troubleshooting)
+* [PCG Troubleshooting](../troubleshooting/pcg.md)
 
 
-* [Upgrade Notes](/enterprise-version/upgrade)
+* [Upgrade Notes](upgrade.md)
 
 
 <br />

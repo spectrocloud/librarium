@@ -12,12 +12,12 @@ Use the following steps to create and deploy an app to a virtual cluster.
 
 ## Prerequisite 
 
-- An application profile. Use the guide [Create an App Profile](/devx/app-profile/create-app-profile) to learn how to create an app profile.
+- An application profile. Use the guide [Create an App Profile](../app-profile/create-app-profile.md) to learn how to create an app profile.
 
 
 :::info
 
-A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) to get started with Palette Dev Engine.
+A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out [Deploy an Application using Palette Dev Engine](deploy-app.md) to get started with Palette Dev Engine.
 
 :::
 

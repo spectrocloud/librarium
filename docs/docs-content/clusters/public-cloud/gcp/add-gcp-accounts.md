@@ -29,7 +29,7 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
     :::info
 
-    Alternatively, you can create a custom role and assign Palette the required GCP permissions. Check out the [Required IAM Permission](/clusters/public-cloud/gcp/required-permissions) for a detailed list of all permissions.
+    Alternatively, you can create a custom role and assign Palette the required GCP permissions. Check out the [Required IAM Permission](required-permissions.md) for a detailed list of all permissions.
 
     :::
 
@@ -87,4 +87,4 @@ You can validate the account is available in Palette by reviewing the list of cl
 ## Next Steps
 
 
-Now that you have added an AWS account to Palette, you deploy clusters to your GCP account. To learn how to get started with deploying Kubernetes clusters to GCP, check out the [Create and Manage GCP IaaS Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS GKE Cluster](/clusters/public-cloud/aws/eks) guide.
+Now that you have added an AWS account to Palette, you deploy clusters to your GCP account. To learn how to get started with deploying Kubernetes clusters to GCP, check out the [Create and Manage GCP IaaS Cluster](create-gcp-iaas-cluster.md) guide or the [Create and Manage AWS GKE Cluster](create-gcp-gke-cluster.md) guide.

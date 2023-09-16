@@ -102,4 +102,4 @@ The **Network Interfaces** tab lists the newly added interface.
 
 # Resources
 
-- [Multus CNI](/integrations/multus-cni)
+- [Multus CNI](../../../integrations/multus-cni.md)

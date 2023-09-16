@@ -22,7 +22,7 @@ Deploying a stateless frontend application with Kubernetes can be a straightforw
 
 In this tutorial, you will containerize a date suggester app built in React and deploy it with Kubernetes. This application is bootstrapped with [Create React App](https://create-react-app.dev/). 
 
-## Requirements
+## Prerequisites
 
 - An installation of [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine. Node is a Javascript runtime environment and will enable React to run on your machine.
 
@@ -33,7 +33,7 @@ In this tutorial, you will containerize a date suggester app built in React and 
 - A Docker account and a [Docker installation](https://docs.docker.com/engine/install/ubuntu/) on your machine.
 
 
-- An active Kubernetes cluster. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
+- An active Kubernetes cluster. Check out the [Deploy a Cluster with Palette](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial to get started.
 
 
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on your machine and connected to your cluster.
@@ -108,7 +108,7 @@ docker build --tag date-suggestions .
 
 ## Create a Kubernetes Deployment.
 
-Before continuing with this step, ensure that you have access to a Kubernetes cluster, as explained in the [prerequisites](https://www.notion.so/How-To-Deploy-A-Stateless-Frontend-App-with-Kubernetes-b885ae2307e94ef191a1b713fe29c81f). 
+Before continuing with this step, ensure that you have access to a Kubernetes cluster, as explained in the [prerequisites](#prerequisites). 
 
 In the application's root directory, create a Kubernetes Deployment file using the `kubectl` command below.
 

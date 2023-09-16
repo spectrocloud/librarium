@@ -59,23 +59,16 @@ When you select a VM from the **Clusters** > **Virtual Machines** tab, the follo
  
 ## Resources
 
-- [Deploy VM From a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+- [Deploy VM From a Template](deploy-vm-from-template.md)
 
 
-- [Update VM Configuration](/vm-management/create-manage-vm/standard-vm-operations/update-vm-configuration)
+- [Update VM Configuration](update-vm-configuration.md)
 
 
-- [Migrate VM to a Different Node](/vm-management/create-manage-vm/standard-vm-operations/migrate-vm-to-different-node)
+- [Migrate VM to a Different Node](migrate-vm-to-different-node.md)
 
 
-- [Take a VM Snapshot](/vm-management/create-manage-vm/standard-vm-operations/take-snapshot-of-vm)
+- [Take a VM Snapshot](take-snapshot-of-vm.md)
 
 
-- [Clone a VM](/vm-management/create-manage-vm/standard-vm-operations/clone-vm)
-
-
-
-
-<br />
-
-<br />
+- [Clone a VM](clone-vm.md)

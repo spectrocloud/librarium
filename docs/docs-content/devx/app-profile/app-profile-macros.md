@@ -8,7 +8,7 @@ tags: ["devx", "app mode", "pde"]
 ---
 
 
-Palette Dev Engine output variables are defined in the [app profile](/glossary-all#appprofile) and are only resolved at cluster deployment time. The output variables have the following properties:
+Palette Dev Engine output variables are defined in the [app profile](../../glossary-all.md#appprofile) and are only resolved at cluster deployment time. The output variables have the following properties:
 
 * May be referenced by specifying them during app profile creation.
 
@@ -19,7 +19,7 @@ Palette Dev Engine output variables are defined in the [app profile](/glossary-a
 
 The variables are generated when the server layer is deployed. Output variables can be consumed by the higher layers in the app profile. 
 
-Check out the [Services Connectivity](/devx/app-profile/services/connectivity) page to learn how to use output variables for establishing network connectivity between services.
+Check out the [Services Connectivity](services/connectivity.md) page to learn how to use output variables for establishing network connectivity between services.
 
 
 <br /> 
@@ -73,11 +73,11 @@ The container service type exposes the following output variables. Replace **[se
 
 ## Database Service Output Variables
 
-Each database service exposes a set of output variables. Review each database service for more details. You can find information about each database service by checking out the [Available Services](/devx/app-profile/services/service-listings) resource.
+Each database service exposes a set of output variables. Review each database service for more details. You can find information about each database service by checking out the [Available Services](services/service-listings/service-listings.mdx) resource.
 
 ## Resources
 
-* [Palette System Macros](/registries-and-packs/pack-constraints#packmacros)
+* [Palette System Macros](../../registries-and-packs/pack-constraints.md#pack-macros)
 
-* [Palette User Macros](/clusters/cluster-management/macros#overview)
+* [Palette User Macros](../../clusters/cluster-management/macros.md)
 <br />

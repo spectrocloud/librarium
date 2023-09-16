@@ -20,7 +20,7 @@ You have two options for installing Palette. You can use the Palette CLI to inst
 :::caution
 
 
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the CLI tab below, or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart) guide for additional guidance on how to install Palette.
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the CLI tab below, or the [Kubernetes Install Helm Chart](deploying-palette-with-helm.md) guide for additional guidance on how to install Palette.
 
 :::
 
@@ -45,15 +45,15 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 
 
 
-- Palette CLI installed and available. Refer to the Palette CLI [Install](/palette-cli/install-palette-cli#downloadandsetup) page for guidance.
+- Palette CLI installed and available. Refer to the Palette CLI [Install](../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 
 
-- Review required VMware vSphere [permissions](/enterprise-version/on-prem-system-requirements#vmwareprivileges).
+- Review required VMware vSphere [permissions](on-prem-system-requirements.md#vmware-privileges).
 
 
 
-- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/enterprise-version/on-prem-system-requirements#self-hostedconfiguration) for additional sizing information.
+- We recommended the following resources for Palette. Refer to the [Palette size guidelines](on-prem-system-requirements.md#self-hosted-configuration) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -78,7 +78,7 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 
-- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](/enterprise-version/on-prem-system-requirements#zonetagging) for information.
+- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](on-prem-system-requirements.md#zone-tagging) for information.
 
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
@@ -90,7 +90,7 @@ You install Palette using the Palette Command Line Interface (CLI) that guides y
 
 :::info
 
-Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the [VMware](/clusters/data-center/vmware) guide.
+Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the [VMware](../clusters/data-center/vmware.md) guide.
 
 :::
 
@@ -109,7 +109,7 @@ The video below provides a demonstration of the installation wizard and the prom
 Use the following steps to install Palette. 
 
 
-1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
+1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](../palette-cli/commands.md#ec). 
 
   ```bash
   palette ec install
@@ -172,7 +172,7 @@ Use the following steps to install Palette.
 
 <br />
 
-10. Next, specify the database storage size to allocate for Palette. The default is 20 GB. Refer to the [size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional information.
+10. Next, specify the database storage size to allocate for Palette. The default is 20 GB. Refer to the [size guidelines](on-prem-system-requirements.md#system-requirements) for additional information.
 
 
 
@@ -296,7 +296,7 @@ Use the following steps to install Palette.
 16. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette.
 
 
-17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
+17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../vertex/system-management/tenant-management.md) guide. 
 
   <br />
 
@@ -335,7 +335,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ### Enterprise Mode
 
-The Palette Enterprise Mode is a multi-node, highly-available installation of the Palette platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](/enterprise-version/deploying-the-platform-installer/) steps to deploy the installer VM and observe the [monitoring console](/enterprise-version/deploying-the-platform-installer/#monitorinstallation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
+The Palette Enterprise Mode is a multi-node, highly-available installation of the Palette platform suitable for production purposes. Installation involves instantiating the on-prem platform installer VM and invoking the "Enterprise Cluster Migration" wizard. Please follow [these](deploying-the-platform-installer.md) steps to deploy the installer VM and observe the [monitoring console](deploying-the-platform-installer.md#monitor-installation) to ensure installation is successful. After a successful installation of the platform installer, proceed to enterprise cluster migration.
 
 <br />
 
@@ -382,7 +382,7 @@ Deployment of an enterprise cluster is a migration process from the quick start 
 
 ## Resources
 
-- [Palette CLI](/palette-cli/install-palette-cli#downloadandsetup)
+- [Palette CLI](../palette-cli/install-palette-cli.md#download-and-setup)
 
 
-- [Airgap Install Instructions](/enterprise-version/air-gap-repo)
+- [Airgap Install Instructions](air-gap-repo.md)
