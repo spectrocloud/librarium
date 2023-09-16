@@ -30,7 +30,7 @@ Here are the steps to create a system profile:
 
 4. Add one or more layers using one of the following methods:
 
-  * **Add New Pack** - Add a Palette Pack from a pack registry or a [Helm Chart](/registries-and-packs/helm-charts/) from a chart registry. The public Spectro Cloud Pack registry and a few popular helm chart repositories are already available out of the box. Additional pack registries or public/private chart registries can be added to Palette.
+  * **Add New Pack** - Add a Palette Pack from a pack registry or a [Helm Chart](registries-and-packs/helm-charts.md) from a chart registry. The public Spectro Cloud Pack registry and a few popular helm chart repositories are already available out of the box. Additional pack registries or public/private chart registries can be added to Palette.
   * **Add Manifest** - Layers can be constructed using raw manifests to provide Kubernetes resources unavailable via Palette or Charts. In addition, pack Manifests provide a pass-through mechanism wherein additional Kubernetes resources can be orchestrated onto a cluster along with the rest of the stack.
 
 
@@ -40,7 +40,7 @@ Here are the steps to create a system profile:
 6. Click the `Next` button to review the information and `Finish` to create and save the system profile.
 <br />
 
-**Note:** Palette enables the [Export](/cluster-profiles/cluster-profile-import-export#exportclusterprofile) and [Import](/cluster-profiles/cluster-profile-import-export#importclusterprofile) of System profiles across multiple environments, projects and tenants.
+**Note:** Palette enables the [Export](cluster-profiles/cluster-profile-import-export.md#export-cluster-profile) and [Import](cluster-profiles/cluster-profile-import-export.md#import-cluster-profile) of System profiles across multiple environments, projects and tenants.
 
 ## Download System Profile
 
