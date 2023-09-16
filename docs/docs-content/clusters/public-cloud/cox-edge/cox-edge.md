@@ -11,13 +11,13 @@ Palette enables deployment of workloads to Cox Edge, a last-mile edge cloud prov
 
 ## Get Started
 
-To get started with Palette and Cox Edge, check out the [Create and Manage Cox Edge IaaS Cluster](/clusters/public-cloud/cox-edge/create-cox-cluster) guide.
+To get started with Palette and Cox Edge, check out the [Create and Manage Cox Edge IaaS Cluster](create-cox-cluster.md) guide.
 
 
 ## Resources
 
-- [Register and Manage Cox Edge Accounts](/clusters/public-cloud/cox-edge/add-cox-edge-accounts)
+- [Register and Manage Cox Edge Accounts](add-cox-edge-accounts.md)
 
-- [Create and Manage Cox IaaS Cluster](/clusters/public-cloud/cox-edge/create-cox-cluster)
+- [Create and Manage Cox IaaS Cluster](create-cox-cluster.md)
 
-- [Required Network Rules](/clusters/public-cloud/cox-edge/network-rules)
+- [Required Network Rules](network-rules.md)

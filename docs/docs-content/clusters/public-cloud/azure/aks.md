@@ -29,7 +29,7 @@ These prerequisites must be met before deploying an AKS workload cluster:
 2. You will need to have permissions to deploy clusters using the AKS service on Azure.
 
 
-3. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud Account](#creatinganazurecloudaccount) section below.
+3. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud Account](./azure-cloud.md) section below.
 
 
 4. You should have a cluster profile created in Palette for AKS.
@@ -59,7 +59,7 @@ There are additional prerequisites if you want to set up Azure Active Directory 
 
   :::info
 
-  Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. [Click here for more..](/clusters/public-cloud/azure/gateways#overview)
+  Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette Management Console. [Click here for more..](gateways.md)
 
   :::
 
@@ -71,7 +71,7 @@ To create an Azure cloud account you need the following Azure account informatio
 * Tenant ID
 * Client Secret
 * Tenant Name (optional)
-* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](/clusters/public-cloud/azure/gateways#overview) already created from the drop-down menu to link it to the cloud account. 
+* Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](gateways.md) already created from the drop-down menu to link it to the cloud account. 
 
 **Note:**
 
@@ -107,7 +107,7 @@ The following steps need to be performed to provision a new cluster:
 2. Fill the basic cluster profile information such as **Name**, **Description**, **Tags** and **Cloud Account**.
 
 
-3. In the **Cloud Account** dropdown list, select the Azure Cloud account or create a new one. See the [Creating an Azure Cloud Account](#creatinganazurecloudaccount) section above.
+3. In the **Cloud Account** dropdown list, select the Azure Cloud account or create a new one. See the [Creating an Azure Cloud Account](azure-cloud.md) section above.
 
 
 4. Next, in the **Cluster profile** tab from the **Managed Kubernetes** list, pick **AKS**, and select the AKS cluster profile definition.
@@ -133,7 +133,7 @@ The following steps need to be performed to provision a new cluster:
 
 :::caution
 
-If the Palette [cloud account](/clusters/public-cloud/azure#creatinganazurecloudaccount) is created with **Disable Properties** and the cluster option 
+If the Palette [cloud account](azure-cloud.md) is created with **Disable Properties** and the cluster option 
 **Static Placement** is enabled, the network information from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.
 
 :::
@@ -297,7 +297,7 @@ The above step can also be completed using Spectro RBAC pack available under the
 
 ## Resources
 
-- [Use Kubernetes RBAC with Azure AD integration](https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Faks%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+- [Use Kubernetes RBAC with Azure AD integration](https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?tabs=portal)
 
 - [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)
 

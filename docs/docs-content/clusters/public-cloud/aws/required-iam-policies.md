@@ -22,7 +22,7 @@ The following policies include all the permissions needed for cluster provisioni
 
 * **PaletteDeploymentPolicy**
 
-Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](/clusters/public-cloud/aws/required-iam-policies#controllersekspolicy) section to review the IAM policy.
+Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to review the IAM policy.
 
 
 :::caution
