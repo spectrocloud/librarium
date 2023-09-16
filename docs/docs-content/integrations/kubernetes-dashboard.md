@@ -23,10 +23,10 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -41,7 +41,7 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 :::caution
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
 :::
 
@@ -53,7 +53,7 @@ To use the Kubernetes Dashboard pack, you have to add it to your cluster profile
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 
 ### Access Kubernetes Dashboard
@@ -132,10 +132,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -149,7 +149,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk. |
 :::caution
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
 :::
 
@@ -161,7 +161,7 @@ To use the Kubernetes Dashboard pack, you have to add it to your cluster profile
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -240,10 +240,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -257,7 +257,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 :::caution
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
 :::
 
@@ -269,7 +269,7 @@ To use the Kubernetes Dashboard pack, you have to add it to your cluster profile
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -350,10 +350,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -368,7 +368,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::caution
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
 :::
 
@@ -381,7 +381,7 @@ To use the Kubernetes Dashboard pack, you have to add it to your cluster profile
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -460,10 +460,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -478,7 +478,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::caution
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
 :::
 
@@ -490,7 +490,7 @@ To use the Kubernetes Dashboard pack, you have to add it to your cluster profile
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
@@ -570,10 +570,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](/integrations/frp) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
 
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](/clusters/cluster-management/cluster-rbac#createrolebindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -588,7 +588,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::caution
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide. 
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
 :::
 
@@ -600,7 +600,7 @@ To use the Kubernetes Dashboard pack, you have to add it to your cluster profile
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](/integrations/frp) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
