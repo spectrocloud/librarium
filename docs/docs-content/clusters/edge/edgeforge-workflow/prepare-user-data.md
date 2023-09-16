@@ -13,11 +13,11 @@ The Edge Installer supports using a custom configuration file in the format of a
 
 :::info
 
-Review the Edge [Install Configuration](/clusters/edge/edge-configuration/installer-reference) resource to learn more about all the supported configuration parameters you can use in the configuration user data.
+Review the Edge [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the supported configuration parameters you can use in the configuration user data.
 
 :::
 
-You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](/clusters/edge/edge-configuration/cloud-init) to learn more.
+You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the [Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
 
 ## User Data Samples
 
@@ -276,7 +276,7 @@ To use additional user data, create a bootable device, such as a USB stick, that
 When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a USB drive.
 
 In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc. 
-Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the  [Apply Site User Data](/clusters/edge/site-deployment/site-installation/site-user-data) guide to learn more about applying secondary site-specific user data.
+Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the  [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) guide to learn more about applying secondary site-specific user data.
 
 
 
@@ -290,4 +290,4 @@ For your initial testing, your user data may include global settings and site-sp
 
 ## Next Steps
 
-The last step of the EdgeForce workflow is to build the Edge artifacts. Check out the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to create the Edge artifacts.
+The last step of the EdgeForce workflow is to build the Edge artifacts. Check out the [Build Edge Artifacts](palette-canvos.md) guide to learn how to create the Edge artifacts.

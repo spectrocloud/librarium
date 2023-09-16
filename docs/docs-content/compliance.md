@@ -34,7 +34,7 @@ Spectro Cloud is certified against SOC2 Type II, compliance with the AICPA’s (
 
 Spectro Cloud is certified against FIPS 140-2 with [Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in compliance with the Cryptographic Module Validation Program (CMVP). 
 
-Our Spectro Cloud Cryptographic Module is a general-purpose cryptographic library. The FIPS-enforced Palette VerteX edition incorporates the module in the Kubernetes Management Platform and the infrastructure components of target clusters to protect the sensitive information of regulated industries. Palette VerteX supports FIPS at the tenant level. For more information about the FIPS-enforced Palette edition, check out [Palette VerteX](/vertex). 
+Our Spectro Cloud Cryptographic Module is a general-purpose cryptographic library. The FIPS-enforced Palette VerteX edition incorporates the module in the Kubernetes Management Platform and the infrastructure components of target clusters to protect the sensitive information of regulated industries. Palette VerteX supports FIPS at the tenant level. For more information about the FIPS-enforced Palette edition, check out [Palette VerteX](vertex/vertex.md). 
 
 The module is tested against these configurations:
 

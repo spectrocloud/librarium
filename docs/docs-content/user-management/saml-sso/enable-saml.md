@@ -65,7 +65,7 @@ To set up an OIDC-based SSO in Spectro Cloud Palette perform the following steps
      - **Email** - Azure AD Example: "email"<p></p><br />
      - **First Name** - Azure AD Example: "given_name"<p></p><br />
      - **Last Name** - Azure AD Example: "family_name"<p></p><br />
-     - **Spectro Team Name** - Azure AD Example: "groups". <p></p><br />Any non-admin user that is added to a Tenant, must be added to at least one Team. This Team can be changed later if needed. See the [Teams](/glossary-all#team) section for more details on Teams.<p></p><br />
+     - **Spectro Team Name** - Azure AD Example: "groups". <p></p><br />Any non-admin user that is added to a Tenant, must be added to at least one Team. This Team can be changed later if needed. See the [Teams](../../glossary-all.md#team) section for more details on Teams.<p></p><br />
 
           - If a user is not added to a Team, the user can still log in successfully but will not be able to see the console until proper Project or Tenant permissions are applied (Tenant Admin, Project Admin, Project Viewer, and so on). The **SpectroTeam** attribute carries forward the available team(s) for the user being authorized. This gives the administrator the flexibility to grant access to Spectro Cloud Palette using either Users or Groups in their IdP or by adding users directly to a Palette Team(s).<p></p><br />
 

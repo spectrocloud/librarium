@@ -17,10 +17,14 @@ initialize: ## Initialize the repository dependencies
 
 clean: ## Clean build artifacts
 	rm -rf node_modules build public .cache .docusaurus
-	docker image rm $(IMAGE)
+	docker image rm $(IMAGE) || echo "No image exists."
 
 ##@ npm Targets
 
+init: ## Initialize npm dependencies
+	@echo "initializing npm dependencies"
+	npm ci
+	npx husky install
 
 start: ## Start a local development server
 	npm run start

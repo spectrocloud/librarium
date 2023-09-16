@@ -15,10 +15,10 @@ Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specifi
 The generic type is for a cluster that is deployed in an environment where Palette lacks integration with the underlying infrastructure provider's API. Palette can support basic operations for generic clusters, such as reporting metrics, conducting scans, scheduling backups, and applying and managing add-on profiles. However, Day-2 activities are not supported in generic clusters. 
 
 
- Refer to the [Supported Infrastructure Providers](/clusters/imported-clusters#supportedinfrastructureproviders) section to learn more about supported infrastructure environments.
+ Refer to the [Supported Infrastructure Providers](imported-clusters.md#supported-infrastructure-providers) section to learn more about supported infrastructure environments.
 
 
-To get started with a cluster import, refer to the [Import a Cluster](/clusters/imported-clusters/cluster-import) guide to learn more.
+To get started with a cluster import, refer to the [Import a Cluster](cluster-import.md) guide to learn more.
 
 ## Import Modes
 
@@ -84,18 +84,18 @@ Imported generic clusters lack many Day-2 management operations such as scaling 
 
 ## Delete Imported Cluster
 
-You can remove a cluster by following the standard cluster removal steps. Refer to the [Delete a Cluster](/clusters/cluster-management/remove-clusters) for instructions. Be aware that Palette will not delete the actual cluster. Palette will remove the link to the imported cluster and instruct the Palette agent to remove itself from the cluster and all of the agent's dependencies that were installed during the import process. To delete the cluster, you must manually perform the delete action in the hosting infrastructure provider. 
+You can remove a cluster by following the standard cluster removal steps. Refer to the [Delete a Cluster](../cluster-management/remove-clusters.md) for instructions. Be aware that Palette will not delete the actual cluster. Palette will remove the link to the imported cluster and instruct the Palette agent to remove itself from the cluster and all of the agent's dependencies that were installed during the import process. To delete the cluster, you must manually perform the delete action in the hosting infrastructure provider. 
 
 
 ## Resources
 
-- [Import a Cluster](/clusters/imported-clusters/cluster-import)
+- [Import a Cluster](cluster-import.md)
 
 
-- [Attach an Add-on Profile](/clusters/imported-clusters/attach-add-on-profile)
+- [Attach an Add-on Profile](attach-add-on-profile.md)
 
 
-- [Migrate to Full Permissions](/clusters/imported-clusters/migrate-full-permissions)
+- [Migrate to Full Permissions](migrate-full-permissions.md)
 
 
 

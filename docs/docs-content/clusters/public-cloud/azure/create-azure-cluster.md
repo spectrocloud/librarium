@@ -25,10 +25,10 @@ The following prerequisites must be met before deploying a workload cluster in A
 1. You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
 
-2. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud account](/clusters/public-cloud/azure/azure-cloud) section.
+2. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud account](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) section.
 
 
-3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
+3. A [cluster profile created](../../../cluster-profiles/task-define-profile.md) for Azure cloud.
 
 
 <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video>
@@ -49,7 +49,7 @@ The following steps need to be performed to provision a new Azure cluster:
 3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information
 
 
-4. Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](/clusters/public-cloud/azure#creatinganazurecloudaccount) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click on the **Next** button.
+4. Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click on the **Next** button.
 
 
 5. Select the **Cluster Profile** created for the Azure environment. The profile definition will be used as the cluster construction template. Click on **Next**.
@@ -58,12 +58,12 @@ The following steps need to be performed to provision a new Azure cluster:
 6. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile. Click on **Next**.
 
 
-7. Provide the Azure Cloud account placement information for cluster configuration. If you have custom storage accounts or storage container available, they will be eligible for attachment. To learn more about attaching custom storage to a cluster, check out the [Azure storage](/clusters/public-cloud/azure/architecture#azurestorage) page.
+7. Provide the Azure Cloud account placement information for cluster configuration. If you have custom storage accounts or storage container available, they will be eligible for attachment. To learn more about attaching custom storage to a cluster, check out the [Azure storage](architecture#azure-storage) page.
 
 
 :::caution
 
-If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) with the option **Disable Properties** enabled and the cluster configuration option **Static Placement** is enabled, then the network information from your Azure account will not be imported by Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty.
+If the Azure account is [registered](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) with the option **Disable Properties** enabled and the cluster configuration option **Static Placement** is enabled, then the network information from your Azure account will not be imported by Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty.
 
 :::
 
@@ -74,12 +74,12 @@ If the Azure account is [registered](/clusters/public-cloud/azure/azure-cloud) w
 | **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
 | **Region** | Select a region in Azure in which the cluster should be deployed.|
 | **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
-| **Storage Account** | Optionally provide the storage account. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases. |
-| **Storage Container**| Optionally provide the Azure storage container. Review the [Azure Storage section](/clusters/public-cloud/azure/architecture#azurestorage) for a custom storage use cases.|
+| **Storage Account** | Optionally provide the storage account. Review the [Azure Storage section](architecture#azure-storage) for a custom storage use cases. |
+| **Storage Container**| Optionally provide the Azure storage container. Review the [Azure Storage section](architecture#azure-storage) for a custom storage use cases.|
 | **SSH Key** | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats. |
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
 |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
-|**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](/clusters/public-cloud/azure/gateways). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb-table) table below for more details.|
+|**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](gateways.md). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb-table) table below for more details.|
 |**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
 
 #### Static Placement Table
@@ -113,7 +113,7 @@ When you have provided all the cluster configuration details to the wizard, clic
 
 <br />
 
-7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page.
+7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](../../cluster-management/node-pool.md) documentation page.
 
 :::info
 
@@ -124,7 +124,7 @@ You can add new worker pools to customize certain worker nodes to run specialize
 <br />
 
 
-8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click on **Validate**.
+8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Review the settings and make changes if needed. Click on **Validate**.
 
 
 9. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.

@@ -20,7 +20,7 @@ To associate a user or team with a project, use the following steps.
 
 * Tenant Admin access.
 
-* An available project. Check out the [Create a Project](/projects#createaproject) guide to learn how to create a project.
+* An available project. Check out the [Create a Project](../projects.md) guide to learn how to create a project.
 
 * A user or a team.
 
@@ -47,7 +47,7 @@ To associate a user or team with a project, use the following steps.
 7. A **drop-down Menu** containing all the available projects in the tenant is available. Select the project you want to associate with the project role.
 
 
-8.  Next, assign permissions to the project role. To learn more about each permission and available roles, check out the [Palette RBAC](/user-management/palette-rbac) documentation.
+8.  Next, assign permissions to the project role. To learn more about each permission and available roles, check out the [Palette RBAC](palette-rbac/palette-rbac.md) documentation.
 
 
 Click **Confirm** to create the project role and complete the project association process.

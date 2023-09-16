@@ -20,7 +20,7 @@ In this step, you will prepare the Edge host for installation. You will copy the
 
 :::info
 
-If you need to create any of the items mentioned above, review the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow) to learn how to create your own Edge artifacts.
+If you need to create any of the items mentioned above, review the [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) to learn how to create your own Edge artifacts.
 
 :::
 
@@ -56,10 +56,10 @@ The following items are optional and not required but may apply to your use case
 
 <br />
 
-- USB disk that contains a user data ISO. This is applicable in [multiple user data](/clusters/edge/edgeforge-workflow/prepare-user-data) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
+- USB disk that contains a user data ISO. This is applicable in [multiple user data](../edgeforge-workflow/prepare-user-data.md) scenarios where you want to override or provide additional configurations after the Edge host is powered on at the physical site.
 
 
-- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
+- USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide.
 
 
 
@@ -96,7 +96,7 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
 
 ### Prerequisites
 
-- Edge Installer ISO file. Check out the [build images](/clusters/edge/edgeforge-workflow/palette-canvos/) guide to learn how to create an Edge Installer image or use the default Edge Installer image.
+- Edge Installer ISO file. Check out the [build images](../edgeforge-workflow/palette-canvos.md) guide to learn how to create an Edge Installer image or use the default Edge Installer image.
 
 
 - vCenter environment with sufficient resources and access privileges to complete the following actions:
@@ -249,4 +249,4 @@ You can validate that the Edge host is ready for the site installation by simula
 
 ## Next Steps
 
-Now that you have completed the staging process, you can ship the Edge hosts to the destination site. Proceed to the [Perform Site Install](/clusters/edge/site-deployment/site-installation) step.
+Now that you have completed the staging process, you can ship the Edge hosts to the destination site. Proceed to the [Perform Site Install](site-installation/site-installation.md) step.

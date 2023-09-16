@@ -32,11 +32,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 The following prerequisites must be met before deploying a Kubernetes clusters in VMware:
 
-<br />
-
 - vSphere version 7.0 or above. vSphere 6.7 is supported but we do not recommend it, as it reached end of general support in 2022.
-
-  <br />
 
   Palette supports port groups as follows. Opaque networks in vCenter Server are *not* supported.
   
@@ -51,10 +47,10 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 - Network Time Protocol (NTP) configured on each ESXi host.
 
 
-- An active vCenter account with all the permissions listed in [VMware Privileges](/clusters/data-center/vmware#vmwareprivileges).
+- An active vCenter account with all the permissions listed in [VMware Privileges](vmware.md#vmware-privileges).
 
 
-- Installed PCG for VMware. Installing the PCG will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Create VMware Cloud Account](/clusters/data-center/vmware#createavmwarecloudaccount) section.
+- Installed PCG for VMware. Installing the PCG will automatically register a cloud account for VMware in Palette. You can register your additional VMware cloud accounts in Palette as described in the [Create VMware Cloud Account](vmware#create-a-vmware-cloud-account) section.
 
 
 - A subnet with egress access to the internet (direct or via proxy):
@@ -117,8 +113,6 @@ Zone tagging is required for dynamic storage allocation across fault domains whe
 | cluster-3            | k8s-zone         | az3           |
 
 
-<br />
-
 ## VMware Privileges
 
 The vSphere user account that deploys Palette must have the minimum root-level vSphere privileges listed in the table below. The **Administrator** role provides superuser access to all vSphere objects. For users without the **Administrator** role, one or more custom roles can be created based on tasks the user will perform.
@@ -126,7 +120,7 @@ Permissions and privileges vary depending on the vSphere version you are using.
 
 Select the tab for your vSphere version.
 
-<br />
+
 
 :::caution
 
@@ -134,13 +128,12 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 :::
 
-<br />
+
 
 <Tabs queryString="vm-privileges">
 
 <TabItem label="8.0" value="8.0" >
 
-<br />
 
 ## Root-Level Role Privileges
 
@@ -161,14 +154,11 @@ Root-level role privileges listed in the table are applied only to root objects 
 |**VM Storage Policies**|View VM storage policies|
 |**Storage views**|View|
 
-<br />
 
 ## Spectro Role Privileges
 
-
 The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects. 
 
-<br />
 
 :::info
 
@@ -298,7 +288,6 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 </TabItem>
 <TabItem label="7.0" value="7.0" >
 
-<br />
 
 ## Root-Level Role Privileges
 
@@ -317,14 +306,12 @@ Root-level role privileges listed in the table are applied only to root object a
 |**Profile-driven storage**|Profile-driven storage view|
 |**Storage views**|View|
 
-<br />
 
 ## Spectro Role Privileges
 
 
 The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects. 
 
-<br />
 
 :::info
 
@@ -452,7 +439,6 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 </TabItem>
 <TabItem label="6.7" value="6.7" >
 
-<br />
 
 ## Root-Level Role Privileges
 
@@ -473,13 +459,10 @@ Root-level role privileges listed in the table are applied only to root object a
 |**Profile-driven storage**|Profile-driven storage view|
 |**Storage views**|View|
 
-<br />
 
 ## Spectro Role Privileges
 
 The Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, virtual machines, templates, datastore, and network objects. 
-
-<br />
 
 :::info
 
@@ -618,7 +601,6 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 You can use two different PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
 
-<br />
 
 <Tabs>
 
@@ -631,14 +613,12 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 - Palette version 4.0.X or greater.
 
 
-- A Palette API key. Refer to the [Create API Key](/user-management/user-authentication#apikey) page for guidance.
+- A Palette API key. Refer to the [Create API Key](../../user-management/user-authentication.md#api-key) page for guidance.
 
 
-- Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page and install the CLI. Refer to the [Palette CLI Install](/palette-cli/install-palette-cli) guide to learn more.
+- Download the Palette CLI from the [Downloads](../../spectro-downloads#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
 
 - You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
-
-  <br />
 
   - Single-node cluster: 2 vCPU, 4 GB memory, 60 GB storage.
 
@@ -697,8 +677,6 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 
 4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
-
-  <br />
 
   |**Parameter**| **Description**|
   |:-------------|----------------|
@@ -801,7 +779,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
 
 The Palette CLI will now provision a PCG cluster in your VMware environment. 
-If the deployment fails due to misconfiguration, update the PCG configuration file and restart the installer. Refer to the [Edit and Redeploy PCG](/clusters/data-center/vmware#editandredeploypcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+If the deployment fails due to misconfiguration, update the PCG configuration file and restart the installer. Refer to the [Edit and Redeploy PCG](vmware#edit-and-redeploy-pcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 
 ### Validate
@@ -822,7 +800,6 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process.
 
-<br />
 
 1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
 
@@ -947,7 +924,7 @@ Proxy environments require additional property settings. Each of the proxy prope
 1. Close the **Create New Gateway** installation instructions and navigate to the Private Cloud Gateway page under **Tenant Settings** if you have navigated away or logged out.
 
 
-2. Wait for a gateway widget to display on the page and for the **Configure** option to become available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the VM is powered on. Failure of the installer to register with Palette within 10 minutes of powering on the Virtual Machine on vSphere might indicate an error. Follow steps in [Troubleshooting](/clusters/data-center/vmware#troubleshooting) to identify and resolve the issue.
+2. Wait for a gateway widget to display on the page and for the **Configure** option to become available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the VM is powered on. Failure of the installer to register with Palette within 10 minutes of powering on the Virtual Machine on vSphere might indicate an error. Follow steps in [Troubleshooting](../../troubleshooting/pcg.md) to identify and resolve the issue.
 
 
 3. Click on the **Configure** button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
@@ -1056,7 +1033,7 @@ Use the following steps to create a VMware cloud account.
 
 ### Prerequisites
 
-- A VMware cloud gateway must be configured. Refer to the [Create VMware Cloud Gateway](/clusters/data-center/vmware#createvmwarecloudgateway) section for guidance.
+- A VMware cloud gateway must be configured. Refer to the [Create VMware Cloud Gateway](#delete-a-vmware-cloud-gateway) section for guidance.
 
   :::info
   Enterprise version users should choose the <i>Use System Gateway</i> option.
@@ -1071,6 +1048,43 @@ In addition to the default cloud account already associated with the private clo
 | **vCenter Server** | IP or FQDN of the vCenter server|
 | **Username** | vCenter username|
 | **Password** | vCenter password|
+
+:::caution
+If you change the password for a user account in vCenter, you must also change it in Palette for the same VMware cloud account. We recommend updating the passwords immediately to avoid potentially locking Palette out of vCenter. For guidance, refer to [Change VMware Cloud Account Password in Palette](#change-vmware-cloud-account-password).
+:::
+
+
+## Change VMware Cloud Account Password
+
+The user account password in vCenter must match the password for the corresponding VMware cloud account in Palette. This section provides steps to change the password in Palette in the event the vCenter password changes.
+
+### Prerequisites
+
+- Access to the vCenter credentials.
+
+### Change the Password in Palette
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the **Menu Menu** navigate to **Tenant Settings** > **Cloud Accounts**.
+
+3. Click the **three-dot Menu** for the VMware account you want to update, and select **Edit**.
+ 
+
+<!-- 4. In the **Cloud Account** field, use the drop-down menu to choose the account with the changed password. -->
+
+4. In the window that opens, update the password in the **Password** field and click the **Validate** button. 
+
+5. Confirm your changes. 
+
+### Validation
+
+Palette validates the password. Incorrect credentials will result in an error. As an extra precaution, try scaling a cluster up or down.
+
+:::info
+In addition to changing the password for a VMware account, Palette provides a way for you to also change the user associated with an account by entering a new username in the **Username** field. Ensure the new user account has the same permissions as the previous user account in vCenter.
+:::
+
 
 # Deploy a VMware Cluster
 
@@ -1111,8 +1125,8 @@ Use the following steps to provision a new VMware cluster.
 |**Name**          |A descriptive name for the node pool.|
 |**Size**          |Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.|
 |**Allow worker capability**|Select this option for allowing workloads to be provisioned on master nodes.|
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**[Labels](../cluster-management/taints.md#labels)**| Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](../cluster-management/taints.md#taints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Give the required storage size|
@@ -1126,8 +1140,8 @@ Use the following steps to provision a new VMware cluster.
 ||Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value|
 |**Size**          |Number of VMs to be provisioned for the node pool.|
 |**Rolling Update**| Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.
-|**[Labels](/clusters/cluster-management/taints#overviewonlabels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
-|**[Taints](/clusters/cluster-management/taints#overviewontaints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
+|**[Labels](../cluster-management/taints.md#labels)**|Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.
+|**[Taints](../cluster-management/taints.md#taints)**|To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.|
 |**Instance type** |Select the compute instance type to be used for all nodes in the node pool.|
 |**Availability Zones**| Choose one or more availability zones. Palette provides fault tolerance to guard against hardware failures, network failures, etc., by provisioning nodes across availability zones if multiple zones are selected.|
 |**Disk Size**|Provide the required storage size

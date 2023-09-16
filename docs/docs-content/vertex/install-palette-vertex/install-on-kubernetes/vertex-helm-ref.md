@@ -11,7 +11,7 @@ tags: ["vertex", "helm"]
 
 You can use the Palette VerteX Helm Chart to install Palette VerteX in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference page lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation.
 
-To learn how to install Palette VerteX using the Helm Chart, refer to the Kubernetes [Instructions](/vertex/install-palette-vertex/install-on-kubernetes/install).
+To learn how to install Palette VerteX using the Helm Chart, refer to the Kubernetes [Instructions](install.md).
 
 ## Required Parameters
 
@@ -20,14 +20,14 @@ The following parameters are required for a successful installation of Palette V
 
 | **Parameters** | **Description** | **Type** |
 | --- | --- | --- |
-| `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref#environment) to learn more. | String |
+| `config.env.rootDomain` | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.vertex.abc.com`. Review the [Environment parameters](#environment) to learn more. | String |
 | `config.env.ociPackRegistry` or `config.env.ociPackEcrRegistry`|  Specifies the FIPS image registry for Palette VerteX. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section. | Object |
 | `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 
 :::caution
 
-If you are installing an air-gapped version of Palette VerteX, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#imageswapconfiguration) section.
+If you are installing an air-gapped version of Palette VerteX, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#image-swap-configuration) section.
 
 
 :::
@@ -72,9 +72,23 @@ mongo:
 
 Review the following parameters to configure Palette VerteX for your environment. The `config` section contains the following subsections:
 
+
+#### Install Mode
+
+You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation mode.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `installMode` | Specifies the installation mode. Allowed values are `connected` or `airgap`. Set the value to `airgap` when installing in an air-gapped environment. | String | `connected` |
+
+```yaml
+config:
+  installationMode: "connected"
+```
+
 ### SSO 
 
-You can configure Palette VerteX to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette VerteX. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](/user-management/saml-sso) documentation for additional guidance.
+You can configure Palette VerteX to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette VerteX. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](../../../user-management/saml-sso/saml-sso.md) documentation for additional guidance.
 
 To configure SSO, you must provide the following parameters.
 
@@ -101,7 +115,7 @@ config:
 
 ### Email
 
-Palette VerteX uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](/clusters/cluster-management/health-alerts#overview) are triggered. Use the following parameters to configure email settings for Palette VerteX.
+Palette VerteX uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](../../../clusters/cluster-management/health-alerts.md) are triggered. Use the following parameters to configure email settings for Palette VerteX.
 
 | **Parameters** |  **Description** |  **Type** | **Default value** |
 | --- | --- | --- | --- |
@@ -172,7 +186,7 @@ Palette VerteX requires credentials to access the required Palette VerteX images
 ### OCI Registry
 
 
-Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the [`ociPackRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
+Palette VerteX requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry provided by us, refer to the [`ociPackEcrRegistry`](#oci-ecr-registry) section to learn more about the publicly available OCI registry.
 
 
 <br />
@@ -341,7 +355,7 @@ ingress:
 
 ## Spectro Proxy
 
-You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](/integrations/frp) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](/vertex/system-management/reverse-proxy) documentation to learn more about setting up a reverse proxy server for Palette VerteX.
+You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](../../../integrations/frp.md) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](../../system-management/reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for Palette VerteX.
 
 
 | **Parameters** | **Description** | **Type** | **Default value** |

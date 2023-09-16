@@ -11,12 +11,12 @@ Palette offers you different types of services to help you model all the depende
 
 ## Container Deployment
 
-[Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload. Containers are deployed to their target environment. For steps on how to deploy a container in Palette, refer to [Container Deployment](/devx/app-profile/container-deployment).
+[Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload. Containers are deployed to their target environment. For steps on how to deploy a container in Palette, refer to [Container Deployment](../container-deployment.md).
 
 
 ## Helm
 
-Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](/registries-and-packs/helm-charts).
+Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](../../../registries-and-packs/helm-charts.md).
 
 
 ## Manifest 
@@ -48,4 +48,4 @@ A database stores structured data electronically for fast search and retrieval. 
 
 ## Available Services
 
-Check out the available service offerings in Palette by visiting the [Service Listings](/devx/app-profile/services/service-listings/) resource.
+Check out the available service offerings in Palette by visiting the [Service Listings](service-listings/service-listings.mdx) resource.

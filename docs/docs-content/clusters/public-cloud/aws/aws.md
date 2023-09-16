@@ -7,35 +7,35 @@ hide_table_of_contents: false
 ---
 
 
-Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage [Host Clusters](/glossary-all#hostcluster) in AWS. To get started check out the [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts). 
+Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage [Host Clusters](../../../glossary-all.md#hostcluster) in AWS. To get started check out the [Register and Manage AWS Accounts](add-aws-accounts.md). 
 
 
 
-# Get Started
+## Get Started
 
-Learn how to deploy a cluster to AWS by using Palette. Check out the [Deploy a Cluster with Palette](/clusters/public-cloud/deploy-k8s-cluster) tutorial to get started.
+Learn how to deploy a cluster to AWS by using Palette. Check out the [Deploy a Cluster with Palette](../deploy-k8s-cluster.md) tutorial to get started.
 
 
-# Resources
+## Resources
 
 To learn more about Palette and AWS clusters, check out the following resources:
 
-- [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
+- [Register and Manage AWS Accounts](add-aws-accounts.md)
 
 
-- [Create and Manage AWS IaaS Cluster](/clusters/public-cloud/aws/create-cluster)
+- [Create and Manage AWS IaaS Cluster](create-cluster.md)
 
 
-- [Create and Manage AWS EKS Cluster](/clusters/public-cloud/aws/eks)
+- [Create and Manage AWS EKS Cluster](eks.md)
 
 
-- [Cluster Management Day Two Operations](/clusters/cluster-management)
+- [Cluster Management Day Two Operations](../../cluster-management/cluster-management.md)
 
 
-- [AWS Architecture](/clusters/public-cloud/aws/architecture)
+- [AWS Architecture](architecture.md)
 
 
-- [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies)
+- [Required IAM Policies](required-iam-policies.md)
 
 
-- [Cluster Removal](/clusters/cluster-management/remove-clusters)
+- [Cluster Removal](../../cluster-management/remove-clusters.md)

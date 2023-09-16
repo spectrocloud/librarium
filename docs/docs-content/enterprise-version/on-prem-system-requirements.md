@@ -82,7 +82,7 @@ The following are prerequisites for deploying a Kubernetes cluster in VMware:
 | cluster-3          | k8s-zone         | az3           |
 
 
-:::note
+:::info
 
 The exact values for the kubernetes-region and kubernetes-zone tags can be different from the ones described in the example above, as long as these are unique.
 
@@ -799,7 +799,7 @@ Ensure your data center CIDR IP address does not overlap with the Kubernetes Pod
 ##  Proxy Requirements
 *  If a proxy is used for outgoing connections, it must support both HTTPS and HTTP traffic. All Palette components communicate over HTTPS by default. An HTTP proxy can be used when HTTP is the only supported protocol, such as connecting to a private image registry that only supports HTTP.
 
-*   Connectivity to all [Proxy Whitelist](/clusters#proxywhitelist) domains must be allowed
+*   Connectivity to all [Proxy Whitelist](../architecture/palette-public-ips.md#palette-domains) domains must be allowed
 
 
 ## Self-Hosted Configuration

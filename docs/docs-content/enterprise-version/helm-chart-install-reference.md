@@ -9,7 +9,7 @@ tags: ["self-hosted", "enterprise"]
 ---
 
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](/enterprise-version/deploying-palette-with-helm).
+You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to [Helm Chart Mode](deploying-palette-with-helm.md).
 
 
 Depending on what version of Palette you are using, the available parameters will be different. Select the version below that corresponds to the version of Palette you are using.
@@ -38,7 +38,7 @@ The following parameters are required for a successful installation of Palette.
 
 :::caution
 
-If you are installing an air-gapped version of Palette, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#imageswapconfiguration) section.
+If you are installing an air-gapped version of Palette, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#image-swap-configuration) section.
 
 
 :::
@@ -83,9 +83,23 @@ mongo:
 
 Review the following parameters to configure Palette for your environment. The `config` section contains the following subsections:
 
+
+#### Install Mode
+
+You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation mode.
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `installMode` | Specifies the installation mode. Allowed values are `connected` or `airgap`. Set the value to `airgap` when installing in an air-gapped environment. | String | `connected` |
+
+```yaml
+config:
+  installationMode: "connected"
+```
+
 #### SSO 
 
-You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](/user-management/saml-sso) documentation for additional guidance.
+You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](../user-management/saml-sso/saml-sso.md) documentation for additional guidance.
 
 To configure SSO, you must provide the following parameters.
 
@@ -112,7 +126,7 @@ config:
 
 #### Email
 
-Palette uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](/clusters/cluster-management/health-alerts#overview) are triggered. Use the following parameters to configure email settings for Palette.
+Palette uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](../clusters/cluster-management/health-alerts.md) are triggered. Use the following parameters to configure email settings for Palette.
 
 | **Parameters** |  **Description** |  **Type** | **Default value** |
 | --- | --- | --- | --- |
@@ -183,7 +197,7 @@ Palette requires credentials to access the required Palette images. You can conf
 #### OCI Registry
 
 
-Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide. Refer to the [`ociPackEcrRegistry`](#ociecrregistry) section to learn more about the publicly available OCI registry.
+Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide. Refer to the [`ociPackEcrRegistry`](#oci-ecr-registry) section to learn more about the publicly available OCI registry.
 
 
 
@@ -370,7 +384,7 @@ ingress:
 
 ### Spectro Proxy
 
-You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](/integrations/frp) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](/enterprise-version/reverse-proxy) documentation to learn more about setting up a reverse proxy server for Palette.
+You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](../integrations/frp.md) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for Palette.
 
 
 | **Parameters** | **Description** | **Type** | **Default value** |
@@ -453,13 +467,13 @@ You can configure Palette to use a proxy server to access the internet. Set the 
 
 The following parameters in the **values.yaml** file are required: <br /> <br />
 
-- **env.rootDomain** - Used to configure the domain for the Palette installation. You should create a CNAME DNS record separately, and it should be a wildcard to account for Organization prefixes. Review the [Environment parameters](/enterprise-version/helm-chart-install-reference#environment) to learn more. <br /> <br />
+- **env.rootDomain** - Used to configure the domain for the Palette installation. You should create a CNAME DNS record separately, and it should be a wildcard to account for Organization prefixes. Review the [Environment parameters](helm-chart-install-reference.md#environment) to learn more. <br /> <br />
 
-- **natsUrl** - The URL format specifies how to configure NATS servers to the IP address and port. Review the [Network Address Translation (NATS) parameters](/enterprise-version/helm-chart-install-reference#networkaddresstranslation(nats)) to learn more. <br /> <br />
+- **natsUrl** - The URL format specifies how to configure NATS servers to the IP address and port. Review the [Network Address Translation (NATS) parameters](helm-chart-install-reference.md#network-address-translation-nats) to learn more. <br /> <br />
 
  
  
-- **Registry and Palette Artifact Repository** - Specifies the Docker registry where chart images are stored and the Palette Artifact Repository (PAR). Refer to the [Registry and Palette Artifact Repository parameters](/enterprise-version/helm-chart-install-reference#registryandpaletteartifactrepository(par)).
+- **Registry and Palette Artifact Repository** - Specifies the Docker registry where chart images are stored and the Palette Artifact Repository (PAR). Refer to the [Registry and Palette Artifact Repository parameters](helm-chart-install-reference.md#registry-and-palette-artifact-repository-par).
 
 ### MongoDB 
 
@@ -635,7 +649,7 @@ nats:
 
 ### Ingress 
 
-The table lists parameters used to configure the NGINX Ingress Controller, which provides an external HTTP load balancer for Kubernetes services. Refer to [Set Up Ingress](/clusters/cluster-groups/ingress-cluster-group) for more guidance.
+The table lists parameters used to configure the NGINX Ingress Controller, which provides an external HTTP load balancer for Kubernetes services. Refer to [Set Up Ingress](../clusters/cluster-groups/ingress-cluster-group.md) for more guidance.
 
 | **Parameters**                     | **Default Value** | **Type**    | **Description**                                                                                                                                       | **Required/Optional** |
 |--------------------------------|---------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|

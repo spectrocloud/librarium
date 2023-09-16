@@ -85,19 +85,19 @@ You can apply these filters for both map view and cluster listing view.
 
 |Conjunction| Condition |Operator|Value
 |--|--|--|---|
-|and/or|Cloud Account|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value |
-|and/or|Name|[operator](/clusters/cluster-management/noc-ui#operators) | Custom value|
-|and/or|Profiles|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value |
-|and/or|Status|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Environment|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Environment|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Health Status|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Deleted|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Read Only Import| [operator](/clusters/cluster-management/noc-ui#operators)|Custom value|
-|and/or|Imported|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Updates Pending|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Tags|[operator](/clusters/cluster-management/noc-ui#operators) |Custom value|
-|and/or|Region| [operator](/clusters/cluster-management/noc-ui#operators)|Custom value|
+|and/or|Cloud Account|[operator](#operators) |Custom value |
+|and/or|Name|[operator](#operators) | Custom value|
+|and/or|Profiles|[operator](#operators) |Custom value |
+|and/or|Status|[operator](#operators) |Custom value|
+|and/or|Environment|[operator](#operators) |Custom value|
+|and/or|Environment|[operator](#operators) |Custom value|
+|and/or|Health Status|[operator](#operators) |Custom value|
+|and/or|Deleted|[operator](#operators) |Custom value|
+|and/or|Read Only Import| [operator](#operators)|Custom value|
+|and/or|Imported|[operator](#operators) |Custom value|
+|and/or|Updates Pending|[operator](#operators) |Custom value|
+|and/or|Tags|[operator](#operators) |Custom value|
+|and/or|Region| [operator](#operators)|Custom value|
 
 
 ### Operators

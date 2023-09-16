@@ -12,7 +12,7 @@ To optimize resource utilization, Palette allows you to pause and resume virtual
 
 ## Prerequisite
 
-* A Running [Palette Virtual Cluster](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
+* An active [Palette Virtual Cluster](palette-virtual-clusters.md).
 
 ##  Pause and Resume a Palette Virtual Cluster
 

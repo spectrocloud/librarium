@@ -8,7 +8,7 @@ hide_table_of_contents: false
 ---
 
 
-With Palette, you can bring your own operating system and use it with your Kubernetes clusters using the [Bring Your Own Operating System (BYOOS)](/glossary-all#bringyourownoperatingsystem(byoos)) feature. The BYOOS pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements.
+With Palette, you can bring your own operating system and use it with your Kubernetes clusters using the [Bring Your Own Operating System (BYOOS)](../../glossary-all.md#bringyourownoperatingsystem(byoos)) feature. The BYOOS pack allows you to upload your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements.
 
 
 
@@ -28,9 +28,9 @@ To learn more about BYOOS, use the following resources to learn more.
 
 ## Resources
 
-- [Create Images with Image Builder](/cluster-profiles/byoos/image-builder)
+- [Create Images with Image Builder](image-builder.md)
 
 
-- [BYOOS Pack](/integrations/byoos)
+- [BYOOS Pack](../../integrations/byoos.md)
 
 <br />

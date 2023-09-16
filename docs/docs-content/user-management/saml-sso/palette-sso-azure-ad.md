@@ -16,7 +16,7 @@ After configuration, your organization can integrate Microsoft Azure Active Dire
 ## Prerequisites
 
 - Microsoft Azure Active Directory with appropriate permissions to create and modify users, groups, Enterprise Applications (SAML) or App Registrations (OIDC).<p></p><br />
-- Access to Palette - Request access for a [Free Trial](/getting-started/palette-freemium).<p></p><br />
+- Access to Palette - Request access for a [Free Trial](../../getting-started/palette-freemium.md).<p></p><br />
 - Appropriate rights and [enabled token IDs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#enable-id-tokens) in Azure.<p></p><br />
 - [kubelogin](https://github.com/int128/kubelogin) - This is a `kubectl` plugin for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl` oidc-login.
 

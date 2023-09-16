@@ -30,7 +30,7 @@ Use the following steps to add Redis to an app profile.
 2. On the right side of the window, click on the **User Menu** and select **Switch to App Mode**.
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](../../create-app-profile.md). Provide the following basic information and click **Next**.
 
 |         Parameter           | Description  |
 |-----------------------------|-----------------|

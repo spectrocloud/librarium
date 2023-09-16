@@ -16,7 +16,7 @@ Palette VerteX offers regulated industries, such as government and public sector
 Palette VerteX integrates validated Federal Information Processing Standards (FIPS) 140-2 cryptographic modules in Kubernetes clusters it deploys to ensure robust data protection for your organization’s infrastructure and applications. To learn more about our FIPS 140-2 certification, review [Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349). FIPS modules, which are accessible in our private artifact repository, extend Palette’s existing security features that include security scans, powerful RBAC, and tamper-proof edge device images. Palette VerteX protects sensitive data in clusters across edge, bare metal, on-prem data centers, air-gapped environments, and cloud. 
 
 
-To learn more about FIPS in Palette VerteX, check out the [FIPS](/vertex/fips) section.
+To learn more about FIPS in Palette VerteX, check out the [FIPS](fips/fips.md) section.
 
 ## Access Palette VerteX
 
@@ -34,19 +34,13 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 ## Resources
 
-- [FIPS](/vertex/fips)
+- [FIPS](fips/fips.md)
 
 
-- [Installation](/vertex/install-palette-vertex)
+- [Installation](install-palette-vertex/install-palette-vertex.md)
 
 
-- [System Management](/vertex/system-management)
+- [System Management](system-management/system-management.md)
 
-
-
-
-<br />
-
-<br />
 
 

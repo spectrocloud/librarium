@@ -93,11 +93,11 @@ Palette App Mode supports the use of containers, a standard unit of software tha
  
 6. Click the **Review** button when you have filled out the information and are ready to conclude the wizard. 
 
-Once the container is added as a layer to the App Profile, continue with the remaining steps of the [App Profile creation](/devx/app-profile/create-app-profile) wizard. You can add more services as layers if needed.
+Once the container is added as a layer to the App Profile, continue with the remaining steps of the [App Profile creation](create-app-profile.md) wizard. You can add more services as layers if needed.
 
 ## Validate
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode).
+1. Login to [Palette](https://console.spectrocloud.com).
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.   

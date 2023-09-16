@@ -32,7 +32,7 @@ Palette supports OCI registries to serve the “filesystem bundle” unpacked on
 * Click on **Confirm** to complete the registry creation process.
 
 
-* Once the registry is created, and charts are added, they can be [attached as part of an add-on cluster profile](/registries-and-packs/oci-registry#useyourociregistry).
+* Once the registry is created, and charts are added, they can be [attached as part of an add-on cluster profile](#use-your-oci-registry).
 
 # BASIC Authentication of Azure Container Registry
 

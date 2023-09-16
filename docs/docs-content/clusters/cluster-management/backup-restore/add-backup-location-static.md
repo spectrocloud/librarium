@@ -97,6 +97,15 @@ The following sections provide detailed instructions. Select the environment whe
 	If you skip copying the secret access key, refer to the [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) guide to learn how to create a new access key.
 
 
+* If the S3 bucket is using a customer managed AWS Key Management Service (KMS) key for server-side encryption, ensure the Palette IAM user has the necessary permissions to access the KMS key. Otherwise, Palette will be unable to put objects in the S3 bucket and result in backup or restore failure. Check out the [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to learn more about common KMS issues.
+
+	:::tip
+
+	Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS key. Refer to the [Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) guide to learn more.
+
+	:::
+
+
 
 ### Add an AWS S3 Bucket 
 
@@ -121,7 +130,7 @@ The following sections provide detailed instructions. Select the environment whe
 	|**S3 URL**|Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, enable the **Force S3 path style** checkbox.|
 
 
-5. Next, choose the *Credentials* validation method. If you want to use dynamic credentials through the AWS STS service, refer to the [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) for guided instructions. 
+5. Next, choose the *Credentials* validation method. If you want to use dynamic credentials through the AWS STS service, refer to the [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) for guided instructions. 
 
 
 6. Provide the IAM user's access key if you chose the **Credentials** method. The IAM user must have the necessary IAM policy attached, which you defined in the prerequisites section above. The specified policy allows Palette to create a backup in the S3 bucket. 
@@ -208,7 +217,7 @@ You have completed configuring and adding a backup location to Palette with stat
 Use the following steps to validate adding the new backup location.
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to **Project Settings** and click on **Backup Locations**. 
@@ -289,7 +298,7 @@ You have completed configuring and adding a backup location to Palette with stat
 Use the following steps to validate adding the new backup location.
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to **Project Settings** and click on **Backup Locations**. 
@@ -334,7 +343,7 @@ Check out the [Work with Azure service principal using the Azure CLI](https://le
 ### Add an Azure Blob Container
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to **Project Settings** and click on **Backup Locations**. 
@@ -375,7 +384,7 @@ You have completed configuring and adding a backup location to Palette with stat
 Use the following steps to validate adding the new backup location.
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to **Project Settings** and click on **Backup Locations**. 
@@ -391,4 +400,4 @@ Use the following steps to validate adding the new backup location.
 
 ## Next Steps
 
-You can now use the newly added backup location to create a backup of your clusters or workspaces. Refer to the [Create a Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) guide to learn how to create a backup of your clusters or workspaces.
+You can now use the newly added backup location to create a backup of your clusters or workspaces. Refer to the [Create a Backup](create-cluster-backup.md) guide to learn how to create a backup of your clusters or workspaces.
