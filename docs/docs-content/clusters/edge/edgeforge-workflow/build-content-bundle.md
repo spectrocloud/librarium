@@ -136,4 +136,4 @@ You can validate that the ISO image has not been corrupted by attempting to flas
 
 ## Next Steps
 
-Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](../edgeforge-workflow/palette-canvos.md) guide.
+Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](../edgeforge-workflow/build-images.md) guide.

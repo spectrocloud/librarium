@@ -32,6 +32,9 @@ Use the following troubleshooting resources to help you address issues that may 
 - [Palette Dev Engine](palette-dev-engine.md)
 
 
+- [Private Cloud Gateway](pcg.md)
+
+
 - [Edge](edge.mdx)
 
 

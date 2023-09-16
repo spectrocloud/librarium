@@ -268,7 +268,7 @@ This release contains several security fixes and new features for Edge. The Edge
 
 * Edge now supports the ability to load images from an external OCI registry.
 * The Edge Installer can now include preloaded content bundles containing packages and artifacts. This is useful for scenarios where you work with limited internet bandwidth or want to optimize the installation process.
-* Users can now [create custom Edge Installer images](clusters/edge/edgeforge-workflow/palette-canvos.md) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
+* Users can now [create custom Edge Installer images](clusters/edge/edgeforge-workflow/build-images.md) to support advanced scenarios such as Bring Your Own Operating System (BYOOS), installing additional OS packages, preloading content into the installer, and more.
 * Support for creating Virtual Machine Disks (VMDK) from the Edge installer ISO is now available. Use this to simplify deployments into VMware-based environments.
 * Support for generating random UUID values for the Edge host is now available. This addresses the issue of some devices having the same Universal Unique Identifier (UUID) due to identical device identifiers.
 

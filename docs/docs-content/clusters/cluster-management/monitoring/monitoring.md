@@ -27,6 +27,3 @@ To help you get started with deploying a monitoring stack to your Palette enviro
 
 
 - [Prometheus Cluster Metrics](../../../integrations/prometheus-cluster-metrics.md)
-
-
-- [Spectro Cloud Grafana Dashboards](../../../integrations/grafana-spectrocloud-dashboards.md)

@@ -29,7 +29,7 @@ Each component plays a critical role in the [lifecycle](../edge-native-lifecycle
 ## Get Started
 
 
-To start building a custom Edge artifact, use the [Build Edge Artifacts](palette-canvos.md) guide.
+To start building a custom Edge artifact, use the [Build Edge Artifacts](build-images.md) guide.
 
 <br />
 
@@ -125,7 +125,7 @@ To start building a custom Edge artifact, use the following guides. You should r
 ## Resources
 
 
-- [Build Edge Artifacts](palette-canvos.md)
+- [Build Edge Artifacts](build-kairos-os.md)
 
 
 - [Build Preloaded Content Bundles](build-content-bundle.md)
