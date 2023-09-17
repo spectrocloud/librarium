@@ -63,7 +63,7 @@ ast.program.body.forEach((node) => {
 versionsArray.forEach((version) => {
   const override = versionsOverride.find((item) => item.version === version) || {};
   const bannerValue = override.banner || 'none';
-  const labelValue = override.label || `v${version}`;
+  const labelValue = override.label || version;
 
   const versionProperty = t.objectProperty(
     t.stringLiteral(version),
