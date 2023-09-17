@@ -341,32 +341,46 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
 
 Example 
-![Example](assets/docs/images/hide_copy_button_example.png)
+![Example](static/assets/docs/images/hide_copy_button_example.png)
 
 Result
 
-![Result](assets/docs/images/hide_copy_button.png)
+![Result](static/assets/docs/images/hide_copy_button.png)
 
 
-### Admonitions - Warning / Info Box
+### Admonitions - Warning / Info / Tip / Dange
 
 :::note
 
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _Markdown_ `syntax`. 
 
 :::
 
 
 :::caution
 
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _Markdown_ `syntax`.
+
+:::
+
+
+:::tip
+
+Some **content** with _Markdown_ `syntax`. 
+
+:::
+
+
+:::danger
+
+Some **content** with _Markdown_ `syntax`.
 
 :::
 
 https://docusaurus.io/docs/markdown-features/admonitions
 
 
-The content must have a new line at the beginning and at the end of the tag like this:
+The content must have a new line at the beginning and at the end of the tag.
 
 ### Video
 
@@ -436,7 +450,7 @@ Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/acce
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
 
 
-# Release
+## Release
 
 To create a new release, use the following steps:
 
@@ -445,8 +459,60 @@ To create a new release, use the following steps:
 3. Push up the commit and create a new pull request (PR).
 4. Merge PRs related to the upcoming release into the `release-X-X` branch.
 5. Merge the release branch.
+6. Create a new branch from the `master` branch. Use the following naming pattern `version-X-X`. This brach is used for versioning the documentation.
+7. Push the new version branch to the remote repository.
+8. Trigger a new build so that the new version is published.
 
 The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
 
 > **Warning**
 > Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.
+
+## Versioning
+
+> [!NOTE] 
+> Detailed documentation for versioning can be found in the internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
+
+All versioned content belongs to a specific version branch. The version branch name follows the naming convention `version-X-X`. The version branch is used to generate versioned content.
+
+There are three files that are used for generating versioned content: 
+
+- [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the version branches and generates the versionioned content.
+
+- [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file with all the required vesioning parameters.
+
+- [`versionsOverride.json`](./versionsOverride.json) - A JSON file that contains the versioning overrides. These values are used to update the `docusaurus.config.js` file with non-default values.
+
+
+### Build Versioned Content Locally
+
+To build versioned content locally, use the following steps:
+
+1. Issue the following command to generate the versioned content.
+
+```shell
+make versions
+```
+
+2. Start a local development server to view the versioned content.
+
+```shell
+make start
+```
+
+
+3. Compile the versioned content to ensure a successful build.
+
+```shell
+make build
+```
+
+4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file.
+
+```shell
+rm versions.json
+```
+
+
+> [!WARNING] 
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO NOT commit this file with the updated changes. 
