@@ -24,7 +24,7 @@ Palette performs a rolling upgrade on nodes when it detects a change in the `kub
 * Changes in instance types
 * Certificate renewal
 
-Logs are provided in Palette for traceability. However, these logs may be lost when the pods are relaunched. To ensure that the cause and context is persisted across repaving, a field titled **upgrades** is available in the status section of [SpectroCluster object](https://docs.spectrocloud.com/api/v1/clusters/). This field is represented in the Palette UI so that you can understand why and when repaving happened.
+Logs are provided in Palette for traceability. However, these logs may be lost when the pods are relaunched. To ensure that the cause and context is persisted across repaving, a field titled **upgrades** is available in the status section of `SpectroCluster` object in the `v1/api/clusters`. This field is represented in the Palette UI so that you can understand why and when repaving happened.
 
 For detailed information, review the cluster upgrades [page](../clusters/clusters.md).
 
