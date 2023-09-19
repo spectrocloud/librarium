@@ -94,14 +94,15 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 <br />
 
 
-<video title="aks-cluster-creation" src="/videos/clusters/public-cloud/cluster-creation-videos/aks.mp4"></video>
+<video title="aks-cluster-creation" src="/videos/clusters/public-cloud/cloud-accounts/azure.mp4"></video>
 
 
 The following steps need to be performed to provision a new cluster:
 <br />
 
 
-1. If you already have a profile to use, go to the **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select an Azure cloud. If you do not have a profile to use, reference the [Creating a Cluster Profile](https://docs.spectrocloud.com/cluster-profiles/task-define-profile) page for steps on how to create one.
+1. If you already have a profile to use, go to **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select an Azure cloud. If you do not have a profile to use, review the [Creating a Cluster Profile](../../../cluster-profiles/task-define-profile.md) page for steps to create one.
+
 
 
 2. Fill the basic cluster profile information such as **Name**, **Description**, **Tags** and **Cloud Account**.

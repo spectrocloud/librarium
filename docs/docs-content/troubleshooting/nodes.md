@@ -24,7 +24,24 @@ Palette performs a rolling upgrade on nodes when it detects a change in the `kub
 * Changes in instance types
 * Certificate renewal
 
-Logs are provided in Palette for traceability. However, these logs may be lost when the pods are relaunched. To ensure that the cause and context is persisted across repaving, a field titled **upgrades** is available in the status section of [SpectroCluster object](https://docs.spectrocloud.com/api/v1/clusters/). This field is represented in the Palette UI so that you can understand why and when repaving happened.
+Logs are provided in Palette for traceability. However, these logs may be lost when the pods are relaunched. To ensure that the cause and context is persisted across repaving, refer to the `status.upgrades: []` field in the in the `SpectroCluster` object in the `/v1/dashboard/spectroclusters/:uid/overview` API.
+
+The following example shows the `status.upgrades` field for a cluster that had Kubernetes configuration changes that resulted in a node repave. The API payload is incomplete for brevity.
+
+```json hideClipboard
+"upgrades": [
+    {
+        "reason": [
+            "{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\"oidc-client-id\"] changed from <invalid reflect.Value> to xxxxxxxxxxx",
+            "{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\"oidc-groups-claim\"] changed from <invalid reflect.Value> to groups",
+            "{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\"oidc-issuer-url\"] changed from <invalid reflect.Value> to https://console.spectrocloud.com/v1/oidc/tenant/XXXXXXXXXXXX",
+            "{v1beta1.KubeadmConfigSpec}.ClusterConfiguration.APIServer.ControlPlaneComponent.ExtraArgs[\"oidc-username-claim\"] changed from <invalid reflect.Value> to email"
+        ],
+        "timestamp": "2023-09-18T19:49:33.000Z"
+    }
+]
+```
+
 
 For detailed information, review the cluster upgrades [page](../clusters/clusters.md).
 
