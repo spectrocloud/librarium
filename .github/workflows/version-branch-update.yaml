@@ -3,7 +3,7 @@ name: Version Branch Update
 on:
   pull_request:
     branches:
-      - 'version-*'
+      - 'version-**'
     types: [opened, synchronize, reopened]
 
 
