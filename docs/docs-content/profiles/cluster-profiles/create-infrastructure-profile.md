@@ -12,7 +12,7 @@ Create an Infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
 ## Prerequisites
 
-There are no prerequisites. <<< OR >>> Your Palette account role must have the clusterProfile.create permission to create an Add-on cluster profile. Refer to the Cluster Profile permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create an infrastructure cluster profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
 
 ## Enablement
 
@@ -25,23 +25,23 @@ There are no prerequisites. <<< OR >>> Your Palette account role must have the c
 4. Fill out the following input values and ensure you select **Infrastructure** for the type. Click on **Next** to continue.
 
   | **Field** | **Description** |
-  |----|----|
+  |-----------|-----------------|
   | **Name**| The name of the profile. |
-  |**Description**| Use the description to provide context about the profile. |
   | **Version**| Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
+  |**Description**| Use the description to provide context about the profile.|
   | **Type**| **Infrastructure** |
-  | **Tags**| Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.  |
+  | **Tags**| Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.|
 
-To learn more about creating multiple profile versions, check out [Cluster Profile Versioning](/profiles/cluster-profiles/cluster-profile-versioning).
+  To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../cluster-profiles/version-cluster-profile.md).
 
 5. Select the infrastructure provider or managed Kubernetes for your environment and click **Next**.
   
-6. Configure the core layers by selecting the registry, pack name, and pack version for each layer. Click **Next** to continue. 
+6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next** to continue. 
 
 | **Layer** | **Description** |
   |----|----|
   | **Operating System**| Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYO-OS)** if you want to upload your own OS images.|  
-|**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you cana use Palette as an IDP without having to configure a third-party IDP. [Link] |
+  |**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to [Configure OIDC Identity Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information. |
   | **Network**| Select a network pack to use with your clusters. |
   | **Storage**| Select a storage pack to use with your clusters. |
 
@@ -54,7 +54,7 @@ To learn more about creating multiple profile versions, check out [Cluster Profi
 
 9. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. You can also update the profile and decide which clusters to apply the new version to. Refer to the [Update Cluster Profile](/profiles/cluster-profiles/update-cluster-profile) guide for more information about update operations.
+You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](update-cluster-profile.md) guide for more information about update operations.
 
 
 ## Validate
