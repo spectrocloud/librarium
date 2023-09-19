@@ -161,8 +161,8 @@ The index document for a folder follows the naming convention below. Here are so
 - Same name as the parent folder: `docs/Guides/Guides.md`
 
 ### Markdown Links and URLs
-
-The doc page URL is composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
+Markdown links use file path references to link to other documentation pages.
+The markdown link is composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL during the compile. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
 
 
 
@@ -213,16 +213,43 @@ If you are in the file `grpc.md` and want to reference the file `iam-permissions
 ![A list of all required IAM permissions for Palette](../aws/iam-permissions.md)
 ```
 
+#### A Heading in the Same File
+
+To link to a heading in the same file, you can use the following syntax:
+
+```md
+[Link to a heading in the same file](#heading-name)
+```
+
+The `#` symbol is used to reference a heading in the same file. The heading name must be in lowercase and spaces must be replaced with a `-` symbol. Docusaurs by default uses dashes to separate words in the URL.
+
+#### A Heading in a Different File
+
+To link to a heading in a different file, you can use the following syntax:
+
+```md
+[Link to a heading in a different file](name_of_file.md#heading-name)
+```
+For example, if you are in the file `grpc.md` and want to reference the heading `Palette gRPC API` in the file `security.md`, you would use the following syntax:
+
+```md
+[Link to a heading in a different file](../security.md#palette-grpc-api)
+```
+The important thing to remember is that the `#` comes after the file name and before the heading name.
+
 #### Exceptions
 
-As of Docusarus `2.4.1`, the ability to reference pages that belong to another plugin is unavailable. To work around this limitation, use a URL reference path. 
+As of Docusarus `2.4.1`, the ability to link to documentation pages that belong to another plugin is unavailable. To work around this limitation, reference a documentation page by the URL path versus the file path.
+
+```md 
+[Link to a page in another plugin](/api-content/authentication#api-key)
+```
 
 > [!WARNING]
 > Be aware that this approach will break versioning. The user experience will be impacted as the user will be redirected to the latest version of the page.
 
 
-In future releases, Docusaurus will support referencing pages from other plugins. Once this feature is available, we will update the documentation to reflect the changes.
-
+In future releases, Docusaurus will support linking pages from other Docusarus plugins. Once this feature is available, this documentation will be updated.
 ### Redirects
 
 To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
