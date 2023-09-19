@@ -162,7 +162,7 @@ The index document for a folder follows the naming convention below. Here are so
 
 ### Markdown Links and URLs
 
-The URL of a page will be composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
+The doc page URL is composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
 
 
 
@@ -183,7 +183,7 @@ The following example shows how to reference a page in various scenarios. Assume
 
 #### Same Folder
 
-If you want to link to a file in the same folder, you can use the following syntax:
+To link to a file in the same folder, you can use the following syntax:
 
 ```md
 ![Insert a description here](name_of_file.md)
@@ -215,7 +215,7 @@ If you are in the file `grpc.md` and want to reference the file `iam-permissions
 
 #### Exceptions
 
-As of Docusarus `2.4.1`, the ability to reference pages that belong to another plugin is not available. To work around this limitation, URL  reference path must be used. 
+As of Docusarus `2.4.1`, the ability to reference pages that belong to another plugin is unavailable. To work around this limitation, use a URL reference path. 
 
 > [!WARNING]
 > Be aware that this approach will break versioning. The user experience will be impacted as the user will be redirected to the latest version of the page.
