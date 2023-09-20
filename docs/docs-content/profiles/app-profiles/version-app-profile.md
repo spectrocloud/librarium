@@ -18,17 +18,17 @@ App profiles have a default value of `1.0.0`. When you create a new profile vers
 
 ## Enablement
 
-<!-- 1. Log in to [Palette](https://console.spectrocloud.com/). -->
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Select the **App Profiles** option from the left **Main Menu**.
 
-3. Select the App Profile to be versioned.
+3. Select the app profile that you want to version.
 
-4. From the drop-down menu next to the App Profile name, select the **Create New Version**.
+4. From the **drop-down Menu** next to the app profile name, select the **Create New Version**.
 
-5.  Give the version number per the semantic format described above.
+5. Provide the version number using `major.minor.patch` format.
 
-6.  Click on **Confirm** to complete the wizard. The UI will return a versioning successful message.
+6. Click on **Confirm**. Palette displays a versioning successful message.
 
 
 
@@ -36,11 +36,13 @@ App profiles have a default value of `1.0.0`. When you create a new profile vers
 
 To validate the App Profile is versioned and available in the target project conduct the following steps:
 
-<!-- 1. Log in to [Palette](https://console.spectrocloud.com/). -->
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Select the **App Profiles** option from the left **Main Menu**.     
+2. Select the **App Profiles** option from the left **Main Menu**. 
 
-3. This page will list all the App Profiles available to you. In addition, this should list all the versioned App Profiles as well. Use the versioned App Profile for App deployment under the target scope.
+3. Select the app profile that you versioned.
+
+4. Use the **drop-down Menu** next to the app profile name to select the new profile version. Use the versioned profile to deploy an app within the target scope.
 
 
 
