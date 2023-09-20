@@ -18,7 +18,7 @@ This release contains minor bug fixes.
 
 ### Bug Fixes
 
-- The issue where `etcd` sometimes does not reflect when a node is removed from a cluster after a scale-down operation is now resolved.
+- An issue where `etcd` sometimes retained an incorrect state entry of cluster nodes during scaling operations is now resolved.
 
 - The issue where Palette does not display Helm Charts in third-party registries that contain charts without a logo URL is now resolved.
 
