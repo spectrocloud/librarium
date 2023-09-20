@@ -15,6 +15,7 @@ This page covers common debugging scenarios for nodes and clusters after they ha
 ## Scenario - Repaved Nodes
 
 Palette performs a rolling upgrade on nodes when it detects a change in the `kubeadm` config. Below are some actions that cause the `kubeadm` configuration to change and result in nodes being upgraded:
+
 * OS layer changes
 * Kubernetes layer changes
 * Kubernetes version upgrade
