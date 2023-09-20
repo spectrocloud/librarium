@@ -22,7 +22,7 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 ## Prerequisites
 
-* A Tencent Cloud account with appropriate [permissions](/clusters/public-cloud/tke#permissionsfortkeclustercrudoperations).
+* A Tencent Cloud account with appropriate [permissions](#tencent-cloud-account-permissions).
 
 
 * Create a Cloud API **Secret ID** and **Secret Key**.
@@ -171,7 +171,7 @@ The following steps need to be performed to provision a new TKS cluster:
 
 1. Provide the basic cluster information such as:
    * **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud or data center environments.
-   * Select the desired [Tencent cloud account](/clusters/public-cloud/tke#createatencentcloudaccount). The Tencent credentials must be pre-configured in the Project/Tenant Admin settings.
+   * Select the desired [Tencent cloud account](#create-a-tencent-cloud-account). The Tencent credentials must be pre-configured in the Project/Tenant Admin settings.
 
 
   **Note**: The cloud account can be created during the cluster creation by clicking **+** next to the **Cloud Account**.
@@ -235,7 +235,7 @@ The following steps need to be performed to provision a new TKS cluster:
 6. Update Worker Pools in parallel - Patch updates to all Worker Pools simultaneously.
 
 
-7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the configuration options, review the [Node Pool](/clusters/cluster-management/node-pool) documentation page. Click on **Next** when you are done with node pool configurations.
+7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the configuration options, review the [Node Pool](../cluster-management/node-pool.md) documentation page. Click on **Next** when you are done with node pool configurations.
 
 
 8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.

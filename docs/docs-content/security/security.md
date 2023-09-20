@@ -22,7 +22,7 @@ All Spectro Cloud employees receive mandatory security training. Our developers 
 
 ## Product Security
 
-Palette uses a micro services-based architecture, and we take steps to ensure each service is secured. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, that Palette hosts and manages in SaaS mode or that users can host and manage in a self-hosted environment. Learn more by reviewing [Secure Product Architecture](/security/product-architecture).
+Palette uses a micro services-based architecture, and we take steps to ensure each service is secured. Product functionality is broken down logically into isolated services within containers. Containers are deployed in a Kubernetes cluster, called a management cluster, that Palette hosts and manages in SaaS mode or that users can host and manage in a self-hosted environment. Learn more by reviewing [Secure Product Architecture](product-architecture).
 
 <br />
 
@@ -34,7 +34,7 @@ We believe adherence to industry standards and regulations is critical to mainta
 
 ## Transparency
 
-We list any Common Vulnerabilities and Exposure (CVE) issues that affect Palette or any part of its infrastructure in our [Security Bulletins](/security/security-bulletins) along with the fix applied and any workarounds.
+We list any Common Vulnerabilities and Exposure (CVE) issues that affect Palette or any part of its infrastructure in our [Security Bulletins](security-bulletins) along with the fix applied and any workarounds.
 
 <br />
 
@@ -48,44 +48,36 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 ## Resources
 
 
-- [Core Principles](/security/core-principles)
+- [Core Principles](core-principles.md)
 
 
-- [Lifecycle](/security/lifecycle)
+- [Lifecycle](lifecycle/lifecycle.md)
 
 
-- [Secure Development](/security/lifecycle/secure-development)
+- [Secure Development](lifecycle/secure-development.md)
 
 
-- [Release Process](/security/lifecycle/release-process)
+- [Release Process](lifecycle/release-process.md)
 
 
-- [Secure Product Architecture](/security/product-architecture)
+- [Secure Product Architecture](product-architecture/product-architecture.md)
 
 
-- [Platform Security](/security/product-architecture/platform-security)
+- [Platform Security](product-architecture/platform-security.md)
 
 
-- [Data Encryption](/security/product-architecture/data-encryption)
+- [Data Encryption](product-architecture/data-encryption.md)
 
 
-- [SaaS Operation](/security/product-architecture/saas-operation)
+- [SaaS Operation](product-architecture/saas-operation.md)
 
 
-- [Self-Hosted Operation](/security/product-architecture/self-hosted-operation)
+- [Self-Hosted Operation](product-architecture/self-hosted-operation.md)
 
 
-- [Tenant Cluster Security](/security/product-architecture/tenant-cluster)
+- [Tenant Cluster Security](product-architecture/tenant-cluster.md)
 
 
-- [Security Bulletins](/security/security-bulletins)
+- [Security Bulletins](security-bulletins/security-bulletins.md)
 
-
-<br />
-
-<br />
-
-<br />
-
-<br />
 

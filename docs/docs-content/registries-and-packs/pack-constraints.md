@@ -16,7 +16,7 @@ Pack constraints are a set of rules defined at the pack level to validate the pa
 
 :::info
 
-You can find information about the JSON schema for the pack metadata file in the [JSON schema](/registries-and-packs/add-custom-packs#jsonschema) section of the documentation.
+You can find information about the JSON schema for the pack metadata file in the [JSON schema](add-custom-packs.md#json-schema) section of the documentation.
 
 :::
 

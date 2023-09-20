@@ -18,7 +18,7 @@ Use the following steps to connect to your host cluster with the kubectl CLI.
 
 :::info
 
-If you are using Palette Virtual Machine (VM) Management, you can find steps on how to connect to your virtual machines with the [virtctl CLI](https://kubevirt.io/user-guide/operations/virtctl_client_tool/) in the [Access VM Cluster with virtctl](/vm-management/create-manage-vm/access-cluster-with-virtctl) guide. The virtctl CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring files to and from a virtual machine using Secure Copy Protocol (SCP).
+If you are using Palette Virtual Machine (VM) Management, you can find steps on how to connect to your virtual machines with the [virtctl CLI](https://kubevirt.io/user-guide/operations/virtctl_client_tool/) in the [Access VM Cluster with virtctl](../../vm-management/create-manage-vm/access-cluster-with-virtctl.md) guide. The virtctl CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring files to and from a virtual machine using Secure Copy Protocol (SCP).
 
 :::
 
@@ -27,7 +27,7 @@ If you are using Palette Virtual Machine (VM) Management, you can find steps on 
 - Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for additional guidance.
 
 
-- A host cluster that is either publicly accessible OR a private host cluster that has the [Spectro Proxy](/integrations/frp) installed.
+- A host cluster that is either publicly accessible OR a private host cluster that has the [Spectro Proxy](../../integrations/frp.md) installed.
 
 
 :::caution

@@ -16,7 +16,7 @@ Prometheus is built around a time-series database that stores metrics data. It u
 
 Prometheus can be used to monitor a wide range of systems and services, including servers, containers, databases, and applications. It can be deployed in a variety of environments, including on-prem, cloud, and hybrid setups.
 
-The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/integrations/prometheus-operator). Check out the guides [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) and [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to learn how to create a monitoring stack with Prometheus for your Palette environment.
+The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](prometheus-operator.md). Check out the guides [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) and [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) to learn how to create a monitoring stack with Prometheus for your Palette environment.
 
 
 ## Versions Supported
@@ -25,7 +25,7 @@ The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](/i
 
 ## Prerequisites
 
-* A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) installed.
+* A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) installed.
 
 ## Parameters
 
@@ -43,7 +43,7 @@ charts:
         - url: ""  
 ```
 
-The `remoteWrite.url` is exposed by the [Prometheus Operator pack](/integrations/prometheus-operator) when installed in a cluster. You can find the Prometheus server URL by reviewing the details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the Prometheus service. 
+The `remoteWrite.url` is exposed by the [Prometheus Operator pack](prometheus-operator.md) when installed in a cluster. You can find the Prometheus server URL by reviewing the details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the Prometheus service. 
 
 The following image displays a host cluster with the Prometheus Operator pack installed. Use the URL exposed for port 9090 to populate the `remoteWrite.url` parameter.
 
@@ -76,7 +76,7 @@ charts:
 
 ## Usage
 
-The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](/cluster-profiles/task-update-profile) by adding the Prometheus agent pack.
+The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](../cluster-profiles/task-update-profile.md) by adding the Prometheus agent pack.
 
 
 Log in to the Grafana dashboard to view and create dashboards. You can find the Grafana dashboard URL by reviewing the details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the **prometheus-operator-kube-prometheus-stack-grafana** service.
@@ -132,7 +132,7 @@ data "spectrocloud_pack_simple" "pack-info" {
 
 # References
 
-- [Prometheus Operator pack](/integrations/prometheus-operator)
+- [Prometheus Operator pack](prometheus-operator.md)
 
 
 - [Prometheus Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus#configuration) 

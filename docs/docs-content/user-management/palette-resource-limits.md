@@ -66,8 +66,3 @@ Use the following steps to set or update resource limits for your Palette tenant
 ## Validate
 
 You can validate the updated resource limits by creating a resource of the same type you updated. For example, you can create five API keys if you updated the **API Key** to five. If you attempt to create a sixth API key, you will receive an error message.
-
-
-
-<br />
-<br />

@@ -13,7 +13,7 @@ tags: ["vertex", "non-fips"]
 
 You can allow tenant users to import Kubernetes clusters that were not deployed through Palette, including some that *are not* FIPS compliant or are only *partially* compliant. Prior to enabling cluster import, the **Import Cluster** option is not available. 
 
-Palette VerteX displays icons next to clusters to indicate their FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips/fips-status-icons).
+Palette VerteX displays icons next to clusters to indicate their FIPS compliance status or when FIPS compliance cannot be confirmed. To learn about icons that Palette VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
 
 
 
@@ -22,7 +22,7 @@ Palette VerteX displays icons next to clusters to indicate their FIPS compliance
 - You need tenant admin permission to enable this feature.
 
 
-- Refer to [Cluster Import Prerequisites](/clusters/imported-clusters/cluster-import#prerequisites).
+- Refer to [Cluster Import Prerequisites](../../../clusters/imported-clusters/cluster-import.md#prerequisites).
 
 
 ## Allow non-FIPS Cluster Import
@@ -40,7 +40,7 @@ Palette VerteX displays icons next to clusters to indicate their FIPS compliance
 
 To disable the setting, toggle this option off and confirm you want to disable it. 
 
-Refer to [Import a Cluster](/clusters/imported-clusters/cluster-import) for guidance. Check out [Import Modes](/clusters/imported-clusters#importmodes) to learn about various import modes and limitations to be aware of.
+Refer to [Import a Cluster](../../../clusters/imported-clusters/cluster-import.md) for guidance. Check out [Import Modes](../../../clusters/imported-clusters/imported-clusters.md#import-modes) to learn about various import modes and limitations to be aware of.
 
 
 ## Validate
@@ -56,10 +56,10 @@ Refer to [Import a Cluster](/clusters/imported-clusters/cluster-import) for guid
 
 ## Resources
 
-- [Import a Cluster](/clusters/imported-clusters/cluster-import)
+- [Import a Cluster](../../../clusters/imported-clusters/cluster-import.md)
 
 
-- [Import Modes](/clusters/imported-clusters#importmodes)
+- [Import Modes](../../../clusters/imported-clusters/imported-clusters.md#import-modes)
 
 
-- [Cluster Import Limitations](/clusters/imported-clusters#limitations)
+- [Cluster Import Limitations](../../../clusters/imported-clusters/imported-clusters.md#limitations)

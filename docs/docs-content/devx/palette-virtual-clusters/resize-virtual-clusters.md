@@ -11,7 +11,7 @@ You can resize virtual clusters from the default size of 4 CPU, 4 GiB Memory, 2 
 
 ## Prerequisite
 
-* An active and healthy [virtual cluster](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
+* An active and healthy [virtual cluster](palette-virtual-clusters.md).
 
 ## Resize Virtual Clusters
 
@@ -28,7 +28,7 @@ Use the following steps to resize a virtual cluster.
 3. Select the virtual cluster you want to resize, and click **Settings > Cluster Settings**.
 
 
-4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify cannot be greater than the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups. To learn more about resource quotas, refer to the [resource quota](/devx/manage-dev-engine/resource-quota) documentation.
+4. Click **Cluster Size** and specify new resource allocations for your virtual cluster. The size you specify cannot be greater than the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups. To learn more about resource quotas, refer to the [resource quota](../manage-dev-engine/resource-quota.md) documentation.
 
 
 5. Save your changes.

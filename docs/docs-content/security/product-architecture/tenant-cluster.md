@@ -9,9 +9,9 @@ tags: ["security"]
 ---
 
 
-Tenant clusters are Kubernetes clusters that Palette deploys for customers. Tenant clusters can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](/cluster-profiles). 
+Tenant clusters are Kubernetes clusters that Palette deploys for customers. Tenant clusters can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](../../glossary-all.md#cluster-profile). 
 
-[Cluster profiles](/cluster-profiles) are cluster construction templates. Palette deploys a Kubernetes cluster based on what the profile specifies.
+[Cluster profiles](../../cluster-profiles/cluster-profiles.md) are cluster construction templates. Palette deploys a Kubernetes cluster based on what the profile specifies.
 
 A cluster profile consists of core layers that consist of an Operating System (OS), a Kubernetes distribution, networking, and storage, and any add-on layers such as monitoring, logging, and more. Palette offers several out-of-the-box choices for each profile layer in the form of packs and the flexibility for you to bring your own pack for use in Palette cluster profiles.
 

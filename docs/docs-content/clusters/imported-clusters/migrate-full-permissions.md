@@ -9,7 +9,7 @@ tags: ["clusters", "imported clusters"]
 
 ## Prerequisites
 
-* An imported cluster in read-only mode. Refer to the [Import a Cluster](/clusters/imported-clusters/cluster-import) guide to learn how to import a cluster into Palette.
+* An imported cluster in read-only mode. Refer to the [Import a Cluster](cluster-import.md) guide to learn how to import a cluster into Palette.
 
 
 * Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
@@ -98,7 +98,7 @@ tags: ["clusters", "imported clusters"]
   ![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.png)
 
 
-You now have successfully migrated a read-only mode cluster to full-permissions mode. Imported clusters in full-permissions mode allow Palette to manage more Day-2 activities. You can also now deploy add-on cluster profiles to the cluster. Refer to the [Attach an Add-on Profile](/clusters/imported-clusters/attach-add-on-profile) guide to learn more.
+You now have successfully migrated a read-only mode cluster to full-permissions mode. Imported clusters in full-permissions mode allow Palette to manage more Day-2 activities. You can also now deploy add-on cluster profiles to the cluster. Refer to the [Attach an Add-on Profile](attach-add-on-profile.md) guide to learn more.
 
 ## Validate
 

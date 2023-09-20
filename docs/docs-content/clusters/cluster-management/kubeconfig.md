@@ -16,17 +16,17 @@ The kubeconfig file is crucial in enabling you and other users to issue kubectl 
 Overall, the kubeconfig file serves as a key component in connecting and interacting with a Kubernetes cluster, providing you with the necessary configuration and credentials to access the cluster's API server.
 
 
-You can download the kubeconfig file from the cluster details page in Palette. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl) guide for steps on how to download your cluster's kubeconfig file and connect to your host cluster with the kubectl CLI.
+You can download the kubeconfig file from the cluster details page in Palette. Check out the [Access Cluster with CLI](palette-webctl.md) guide for steps on how to download your cluster's kubeconfig file and connect to your host cluster with the kubectl CLI.
 
 ## Kubeconfig Files
 
 Palette exposes two kubeconfig files for each cluster deployed through Palette.
 
 
-* Kubeconfig - This kubeconfig contains OIDC and Spectro Proxy configurations. The kubeconfig file is available for all users with proper access to the cluster. The kubeconfig file can be used to access the cluster's resources and perform operations on the cluster. Refer to the [Kubeconfig Access Permissions](#kubeconfigaccesspermissions) section to learn more about access permissions for the kubeconfig file.
+* Kubeconfig - This kubeconfig contains OIDC and Spectro Proxy configurations. The kubeconfig file is available for all users with proper access to the cluster. The kubeconfig file can be used to access the cluster's resources and perform operations on the cluster. Refer to the [Kubeconfig Access Permissions](#kubeconfig-access-permissions) section to learn more about access permissions for the kubeconfig file.
 
 
-* Admin Kubeconfig - The admin kubeconfig is created without OIDC configurations. This file is ideal for those that need to access an intermediate host to access the cluster, such as a jump host. Refer to the [Kubeconfig Access Permissions](#kubeconfigaccesspermissions) section to learn more about access permissions for the admin kubeconfig file.
+* Admin Kubeconfig - The admin kubeconfig is created without OIDC configurations. This file is ideal for those that need to access an intermediate host to access the cluster, such as a jump host. Refer to the [Kubeconfig Access Permissions](#kubeconfig-access-permissions) section to learn more about access permissions for the admin kubeconfig file.
 
 ![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.png)
 
@@ -34,15 +34,15 @@ Palette exposes two kubeconfig files for each cluster deployed through Palette.
 
 Palette exposes kubeconfig files for each cluster deployed through the paltform. Depending on the cluster's configuration, the kubeconfig file may contain different configurations, such as the cluster's API server address and authentication credentials. 
 
-Your assigned [Palette permissions](/user-management/palette-rbac/project-scope-roles-permissions) determine which clusters you can access and what operations you can perform on the cluster. The permissions assigned to you in Palette determine if you can download and access the kubeconfig files for a cluster. 
+Your assigned [Palette permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md) determine which clusters you can access and what operations you can perform on the cluster. The permissions assigned to you in Palette determine if you can download and access the kubeconfig files for a cluster. 
 
-As a rule of thumb, users with the Palette role [*Cluster Admin*](/user-management/palette-rbac/project-scope-roles-permissions#cluster) can access both kubeconfig files for all clusters in the project. Users with lower-level project roles such as the  *Cluster Editor* or the *Cluster Viewer* may not be able to access the kubeconfig file of the cluster. 
+As a rule of thumb, users with the Palette role [*Cluster Admin*](../../user-management/palette-rbac/project-scope-roles-permissions#cluster) can access both kubeconfig files for all clusters in the project. Users with lower-level project roles such as the  *Cluster Editor* or the *Cluster Viewer* may not be able to access the kubeconfig file of the cluster. 
 
 
 
 :::info
 
-Palette has its own RBAC system that is separate from the [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) system in the host cluster. The permissions assigned to you in Palette determine what operations you can perform on the cluster. The permissions assigned to you in the host cluster through the Kubernetes RBAC system determine what operations you can perform inside the cluster and on its resources. Refer to the [Palette Roles and Kubernetes Roles](/clusters/cluster-management/cluster-rbac#paletterolesandkubernetesroles) for additional information.
+Palette has its own RBAC system that is separate from the [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) system in the host cluster. The permissions assigned to you in Palette determine what operations you can perform on the cluster. The permissions assigned to you in the host cluster through the Kubernetes RBAC system determine what operations you can perform inside the cluster and on its resources. Refer to the [Palette Roles and Kubernetes Roles](cluster-rbac#palette-roles-and-kubernetes-roles) for additional information.
 
 :::
 
@@ -51,7 +51,7 @@ The access you have as a user to the kubeconfig files for a cluster depends on t
 
 
 
-* Is OIDC configured for the cluster? OIDC is configured in the Kubernetes pack YAML file of the cluster profile. Refer to the respective Kubernetes distribution on the [Packs List](/integrations) page to learn more about OIDC configuration.
+* Is OIDC configured for the cluster? OIDC is configured in the Kubernetes pack YAML file of the cluster profile. Refer to the respective Kubernetes distribution on the [Packs List](../../integrations/integrations.mdx) page to learn more about OIDC configuration.
 
   :::caution
 
@@ -60,7 +60,7 @@ The access you have as a user to the kubeconfig files for a cluster depends on t
   :::
 
 
-* Is the [Spectro Proxy](/integrations/frp) enabled for the cluster?
+* Is the [Spectro Proxy](../../integrations/frp.md) enabled for the cluster?
 
 
 
@@ -98,7 +98,7 @@ Palette exposes two API endpoints that you can use to access the kubeconfig file
 
 
 * `GET https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/kubeconfig`
-  Returns the kubeconfig file for the cluster. The kubeconfig file is returned as a text string. Access to the kubeconfig file is determined by the permissions assigned to you in Palette.  For additional information, refer to the [Kubeconfig Access Permissions](#kubeconfigaccesspermissions) section. 
+  Returns the kubeconfig file for the cluster. The kubeconfig file is returned as a text string. Access to the kubeconfig file is determined by the permissions assigned to you in Palette.  For additional information, refer to the [Kubeconfig Access Permissions](#kubeconfig-access-permissions) section. 
 
 
 * `GET https://api.spectrocloud.com/v1/spectroclusters/{clusterId}/assets/adminkubeconfig`

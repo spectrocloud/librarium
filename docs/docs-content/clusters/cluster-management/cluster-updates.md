@@ -53,7 +53,7 @@ Pack Version Upgrade |The existing pack version is upgraded to a different versi
 |Update Pack Manifest|The attached pack manifest content is updated in the cluster profile|manifest security is updated in the pack Kubernetes|
 |Delete Pack Manifest |The attached pack manifest is deleted from the cluster profile|manifest security is deleted in the pack Kubernetes|
 
-:::note
+:::info
 
 Prior to applying the notifications resulting from a profile update, the notification is automatically cleared if the corresponding changes are reverted. 
  
