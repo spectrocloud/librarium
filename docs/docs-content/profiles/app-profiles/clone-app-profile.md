@@ -8,10 +8,11 @@ tags: ["profiles", "app profiles"]
 ---
 
 
-You can clone app profiles across multiple projects. For example, you can clone an app profile created in one project to another project within the same [tenant](/glossary-all#tenant).
+You can clone app profiles across multiple projects. For example, you can clone an app profile created in one project to another project within the same [tenant](../../glossary-all.md#tenant).
+
 ## Prerequisites
 
-* An App Profile created in Palette. Check out the [Create an App Profile](/devx/app-profile/create-app-profile) for guidance.
+* An App Profile created in Palette. Check out the [Create an App Profile](create-app-profile.md) for guidance.
 
 ## Enablement
 
@@ -32,7 +33,7 @@ You can clone app profiles across multiple projects. For example, you can clone 
 |**Name** | A custom name for the cloned app profile.|
 |**Profile Version** | An optional version number for the new app profile. The default value is 1.0.0. You can create multiple versions of an App Profile using the format `major.minor.patch`. |
 |**Source Profile Version**  | The version number of the source profile. | 
-|**Target Project** | The target project to which the profile is to be cloned. Select the project name from the drop-down menu.|
+|**Target Project** | The target project to which the profile is to be cloned. Select the project name from the **drop-down Menu**.|
 
 You can now use the app profile when deploying apps in the target project.
 
