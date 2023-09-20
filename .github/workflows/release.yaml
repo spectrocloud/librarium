@@ -1,15 +1,11 @@
 name: Release to Production
 
 # Run this workflow every time a new commit is pushed to the master branch
-# or when a workflow run from the Version Branch Update workflow completes.
-# In either case, the branch used for the build will be master.
+# or a version branch (e.g. version-4-0)
 
 on:
   push:
-    branches: [master]
-  workflow_run:
-    workflows: [Version Branch Update]
-    types: [completed]
+    branches: ['master', 'version-**']
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,7 +21,7 @@ env:
 
 
 concurrency:
-  group: production-${{ github.ref }}
+  group: production-${{ github.workflow }}
   cancel-in-progress: true  
 
 jobs:
