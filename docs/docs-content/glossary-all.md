@@ -158,7 +158,7 @@ Palette maintains a public pack registry containing various [packs](#pack) that 
 
 ## Repavement
 
-Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves draining the node, or in other words, migrating active workloads to another healthy node, and removing it from the cluster. A new node is created and configured with the same settings as the old node and added back to the cluster. The process is fully automated and does not require any manual intervention.
+Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves migrating active workloads to another healthy node, and removing it from the [node pool](clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). This is referred to as draining the node. A new node is created and configured with the same settings as the old node and added back to the pool. The process is fully automated and does not require manual intervention.
 
 ## Role
 
