@@ -31,11 +31,11 @@ export default function MendableAIWidget() {
           cmdShortcutKey: "l",
           icon: logoUrl,
           botIcon: botUrl,
+          isPinnable: true,
           floatingButtonStyle: {
             color: "#FFFFFF",
             backgroundColor: "#3E4FB5",
           },
-          isPinnable: true,
           style: { accentColor: "#3E4FB5" },
         });
       }
