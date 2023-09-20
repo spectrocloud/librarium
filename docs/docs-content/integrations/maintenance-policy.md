@@ -8,7 +8,7 @@ sidebar_position: 0
 tags: ["packs", "deprecation"]
 ---
 
-Palette supports two pack categories: *Infrastructure* and *Add-on*. Infrastructure packs, which we often source from third parties, are infrastructure related or have prominence in container-based environments. Packs are used to create layers in cluster profiles. Infrastructure packs are grouped as follows:
+Palette supports two pack categories: *Infrastructure* and *Add-on*. Infrastructure packs are often sourced from third parties and are infrastructure-related or support critical container-based environments. Packs are used to create layers in cluster profiles. Infrastructure packs are grouped as follows:
 
 - Kubernetes
 
