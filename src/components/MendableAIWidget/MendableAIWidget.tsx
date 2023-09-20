@@ -1,14 +1,17 @@
 import { useEffect } from "react";
-// import spectrocloudLogo from "@site/static/assets/spectrocloud-logo.png";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-// import spectrologoUser from "@site/static/assets/spectrocloud-logo-black.svg";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
-export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.158/dist/umd/mendable-bundle.min.js";
+export const MENDABLE_SCRIPT_URL =
+  "https://unpkg.com/@mendable/search@0.0.158/dist/umd/mendable-bundle.min.js";
 
 export default function MendableAIWidget() {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
+
+  const logoUrl = useBaseUrl("/spectrocloud-logo.png");
+  const botUrl = useBaseUrl("/spectrocloud-logo-black.svg");
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -26,9 +29,8 @@ export default function MendableAIWidget() {
           type: "floatingButton",
           dialogPlaceholder: "What is Palette?",
           cmdShortcutKey: "l",
-          welcomeMessage:"Ask my anything about Palette",
-          // icon: spectrocloudLogo as string,
-          // botIcon: spectrologoUser,
+          icon: logoUrl,
+          botIcon: botUrl,
           isPinnable: true,
           floatingButtonStyle: {
             color: "#FFFFFF",
