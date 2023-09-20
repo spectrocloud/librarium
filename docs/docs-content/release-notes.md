@@ -12,6 +12,20 @@ tags: ["release-notes"]
 ---
  
 
+## September 20, 2023 - Release 4.0.13
+
+This release contains minor bug fixes.
+
+### Bug Fixes
+
+- An issue where `etcd` sometimes retained an incorrect state entry of cluster nodes during scaling operations is now resolved.
+
+- The issue where Palette does not display Helm Charts in third-party registries that contain charts without a logo URL is now resolved.
+
+- Longhorn and Cilium Helm Chart-based packs are fixed to deploy with correct values.
+
+- An issue where Palette was updating clusters when *Pause Platform Updates* was enabled at the project level is fixed. This issue did not cause nodes to repave or for clusters to become unhealthy. 
+
 
 ## September 1, 2023 - Release 4.0.8 
 
