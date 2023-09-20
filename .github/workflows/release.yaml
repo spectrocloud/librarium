@@ -21,7 +21,7 @@ env:
 
 
 concurrency:
-  group: production-${{ github.ref }}
+  group: production-${{ github.workflow }}
   cancel-in-progress: true  
 
 jobs:

@@ -58,6 +58,7 @@ jobs:
 
     - name: Netlify Build
       run: |
+        make versions-ci
         netlify build --context deploy-preview
 
 
