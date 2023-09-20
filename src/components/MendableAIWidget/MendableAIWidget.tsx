@@ -3,7 +3,7 @@ import spectrocloudLogo from "@site/static/assets/spectrocloud-logo.png";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import spectrologoUser from "@site/static/assets/spectrocloud-logo-black.svg";
 
-export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.155/dist/umd/mendable-bundle.min.js";
+export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.158/dist/umd/mendable-bundle.min.js";
 
 export default function MendableAIWidget() {
   const {
@@ -26,12 +26,13 @@ export default function MendableAIWidget() {
           type: "floatingButton",
           dialogPlaceholder: "What is Palette?",
           cmdShortcutKey: "l",
+          welcomeMessage:"Ask my anything about Palette",
+          // icon: spectrocloudLogo as string,
+          // botIcon: spectrologoUser,
+          isPinnable: true,
           floatingButtonStyle: {
             color: "#FFFFFF",
             backgroundColor: "#3E4FB5",
-            icon: spectrocloudLogo as string,
-            botIcon: spectrologoUser,
-            isPinnable: true,
           },
           style: { accentColor: "#3E4FB5" },
         });
