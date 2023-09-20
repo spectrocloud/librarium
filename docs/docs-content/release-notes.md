@@ -24,7 +24,7 @@ This release contains minor bug fixes.
 
 - Longhorn and Cilium Helm Chart-based packs are fixed to deploy with correct values.
 
-- Palette sometimes updates clusters when *Pause Platform Updates* is enabled at the project level. This issue is resolved. Note that although Palette did not adhere to the setting, the issue did not cause node a repave, and clusters were healthy.
+- An issue where Palette was updating clusters when *Pause Platform Updates* was enabled at the project level is fixed. This issue did not cause nodes to repave or for clusters to become unhealthy. 
 
 
 ## September 1, 2023 - Release 4.0.8 
