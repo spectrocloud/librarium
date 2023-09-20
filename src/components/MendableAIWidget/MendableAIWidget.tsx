@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import spectrocloudLogo from "@site/static/assets/spectrocloud-logo.png";
+// import spectrocloudLogo from "@site/static/assets/spectrocloud-logo.png";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import spectrologoUser from "@site/static/assets/spectrocloud-logo-black.svg";
+// import spectrologoUser from "@site/static/assets/spectrocloud-logo-black.svg";
 
 export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.158/dist/umd/mendable-bundle.min.js";
 
