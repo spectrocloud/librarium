@@ -154,6 +154,12 @@ Projects provide a way for grouping clusters together for logical separation. Ro
 ## Public Pack Registry
 
 Palette maintains a public pack registry containing various [packs](#pack) that can be used in any [cluster profile](#cluster-profile). The pack content in this registry is constantly updated with new integrations.
+
+
+## Repavement
+
+Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves migrating active workloads to another healthy node, and removing it from the [node pool](clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). This is referred to as draining the node. A new node is created and configured with the same settings as the old node and added back to the pool. The process is fully automated and does not require manual intervention.
+
 ## Role
 
 A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: *tenant roles* and *project roles*. *Tenant roles* are a collection of tenant-level permissions such as create a new user, add a new project, etc. *Project roles* consist of permissions for various actions within the scope of a project such as create a cluster profile, create a cluster, etc.
