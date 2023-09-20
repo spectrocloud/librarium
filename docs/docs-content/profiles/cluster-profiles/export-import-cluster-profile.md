@@ -12,7 +12,8 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 ## Prerequisites
 
-- Macros used in the profile to export must be available in the target environment before you import the profile. If they are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](/clusters/cluster-management/macros#createyourmacro).
+- Macros used in the profile to export must be available in the target environment before you import the profile. If they are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
+
 
 ## Export Cluster Profile
 
@@ -24,14 +25,15 @@ Export the profile as a `.json` file.
 
 3. Select the profile to export. Palette displays the profile details and profile stack.
 
-4. Click on the **Export Profile** button at the bottom of the details panel. Palette downloads the profile as a `.json` file.
+4. Click **Export Profile** at the bottom of the details panel. Palette downloads the profile as a `.json` file.
 
 :::info
-
 During profile export, Palette masks sensitive pack values, which you must update after profile import.
 :::
 
 ## Import Cluster Profile
+
+Import the profile to one or more projects or tenants.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -41,7 +43,7 @@ During profile export, Palette masks sensitive pack values, which you must updat
 
 4. Click on the **Import Cluster Profile** button.
 
-5. In the panel that slides open from the right, In the import cluster profile wizard, click the **Upload file** button 
+5. In the slide panel that opens at right, click the **Upload file** button. 
 
 6. Navigate to the downloaded `.json` file and select it so that it opens in the slide panel.
 
@@ -51,19 +53,28 @@ During profile export, Palette masks sensitive pack values, which you must updat
 
 8. If Palette displays an error message, customize the profile name or version number to fix any issues. 
 
-9. When the profile is successfully validated, Palette displays the **Select repositories** window, which lists all the repositories that contain packs used in the profile you are importing.
+9. When the profile is successfully validated, Palette displays the **Select repositories** window. 
 
-10. Using the **drop-down Menus**, select one or more repositories from which to fetch packs. Confirm your selections. 
+<!-- which lists all the repositories that contain packs used in the profile you are importing. -->
+
+![diagram](/profiles_cluster-profiles_import-select-repos.png)
+
+10. Using the **drop-down Menus**, select one or more repositories from which to fetch packs that are in the profile you are importing. Confirm your selections. 
+
+:::info
+If any of the packs are missing in the target environment, the import will not proceed to the next step.
+:::
 
 11. Click the **Confirm** button in the slide panel to complete the import.
 
-You have successfully completed importing the profile and can use it for standard cluster operations such as deployments and updates in the new environment.
+You have successfully imported the profile and can use it for standard cluster operations such as deployments and updates in the new environment.
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Select the project or tenant where you imported the cluster profile.
+2. Select the project or tenant ppppp imported the cluster profile.
+
 3. From the left **Main Menu**, select **Profiles**.
 
 4. Select your cluster profile to review its layers or make changes.
