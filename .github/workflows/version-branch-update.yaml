@@ -50,9 +50,6 @@ jobs:
 
     - run: npm ci
 
-    - name: compile
-      run: |
-        make build
 
     - name: Post Netlify progress
       uses: mshick/add-pr-comment@v2
@@ -60,11 +57,14 @@ jobs:
         message: |
             🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
         refresh-message-position: true
-        update-only: true
 
     - name: Netlify Build
       run: |
         netlify build --context deploy-preview
+
+    - name: compile
+      run: |
+        make build
 
 
     - name: Deploy to Netlify
