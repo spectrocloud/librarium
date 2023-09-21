@@ -48,7 +48,7 @@ jobs:
         node-version: '18'
         cache: 'npm'
 
-    - run: npm ci --legacy-peer-deps
+    - run: npm ci
 
     - name: compile
       run: |
