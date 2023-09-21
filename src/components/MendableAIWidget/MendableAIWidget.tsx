@@ -28,6 +28,7 @@ export default function MendableAIWidget() {
           anon_key: customFields?.mendableKey,
           type: "floatingButton",
           dialogPlaceholder: "What is Palette?",
+          welcomeMessage: "Ask me anything about Palette",
           cmdShortcutKey: "l",
           icon: logoUrl,
           botIcon: botUrl,
