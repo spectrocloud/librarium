@@ -6,6 +6,8 @@ name: Release to Production
 on:
   push:
     branches: ['master', 'version-**']
+  workflow_dispatch:
+
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
