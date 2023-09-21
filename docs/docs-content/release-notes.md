@@ -11,6 +11,14 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
  
+## September 21, 2023 - Release 3.4.114
+
+This release contains a minor bug fix.
+
+### Bug Fix
+
+- The *Throttling* error that reports a failure to create, update, and reconcile Auto Scaling Groups (ASG) tags is fixed. Previously, Palette reconciled tags every two minutes regardless of differences. Palette now reconciles tags only when it detects differences. 
+
 ## May 22, 2023 - Release 3.4.0
 
 Palette 3.4.0 has various security upgrades, better support for multiple Kubernetes environments, a new cluster deployment platform, and increased user customization options for Palette, Edge, and Palette Dev Engine. Additionally, it includes updates for several packs and stops supporting Kubernetes 1.23 in Azure Kubernetes Service (AKS). You can find upgrade notes for self-hosted Palette 3.4 in the [Upgrade Notes](enterprise-version/upgrade.md#palette-34) documentation.
@@ -249,7 +257,8 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 -  Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the [Create and Deploy a Custom Add-On Pack](registries-and-packs/deploy-pack.md) tutorial.
 
 
-- An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](clusters/public-cloud/deploy-k8s-cluster.md) tutorial to get started
+- An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the [Deploy a Cluster](clusters/public-cloud/deploy-k8s-cluster.md) tutorial to get started.
+
 
 
 ## March 19, 2023 - Release 3.3.0
