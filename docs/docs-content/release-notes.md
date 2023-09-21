@@ -18,7 +18,7 @@ This release contains a minor bug fix.
 
 ### Bug Fix
 
-- The *Throttling* error that reports a failure to create, update, and reconcile Auto Scaling Groups (ASG) tags is fixed. Previously, Palette reconciled tags every two minutes regardless of differences. Palette now reconciles tags only when it detects differences tags. 
+- The *Throttling* error that reports a failure to create, update, and reconcile Auto Scaling Groups (ASG) tags is fixed. Previously, Palette reconciled tags every two minutes regardless of differences. Palette now reconciles tags only when it detects differences. 
 
 
 ## September 20, 2023 - Release 4.0.13
