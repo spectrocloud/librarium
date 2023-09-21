@@ -12,12 +12,12 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 ## Prerequisites
 
-- Macros used in the profile to export must be available in the target environment before you import the profile. If they are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
+- Macros used in the profile you want to export must be available in the target environment *before* you import the profile. If they are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
 
 
 ## Export Cluster Profile
 
-Export the profile as a `.json` file. 
+Use these steps to export the profile as a `.json` file. 
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -27,13 +27,15 @@ Export the profile as a `.json` file.
 
 4. Click **Export Profile** at the bottom of the details panel. Palette downloads the profile as a `.json` file.
 
+5. Verify that any macros used in the exported profile exist in the target environment before continuing to the import process. If they do not, create the macros in the target environment. Review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro) for guidance.
+
 :::info
 During profile export, Palette masks sensitive pack values, which you must update after profile import.
 :::
 
 ## Import Cluster Profile
 
-Import the profile to one or more projects or tenants.
+Use these steps to import the profile to one or more projects or tenants.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -53,7 +55,9 @@ Import the profile to one or more projects or tenants.
 
 8. If Palette displays an error message, customize the profile name or version number to fix any issues. 
 
-9. When the profile is successfully validated, Palette displays the **Select repositories** window. 
+9. In the **Select repositories** window that displays when the profile is successfully validated, use the **drop-down Menus** to select one or more repositories 
+
+When the profile is successfully validated, Palette displays the **Select repositories** window. 
 
 <!-- which lists all the repositories that contain packs used in the profile you are importing. -->
 
