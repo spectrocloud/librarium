@@ -7,6 +7,7 @@ import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faCat } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +28,7 @@ export const fontAwesomeIcons = {
   "server": faServer,
   "user-shield": faUserShield,
   "users": faUsers,
+  "cat": faCat,
   "warehouse": faWarehouse,
   "book": faBook,
   "bookmark": faBookmark,
