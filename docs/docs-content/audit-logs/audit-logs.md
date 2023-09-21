@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Audit Logs"
-title: "Audit Logss"
+title: "Audit Logs"
 description: "Learn about auditing in Palette and how to access audit logs."
 hide_table_of_contents: false
 sidebar_custom_props: 
