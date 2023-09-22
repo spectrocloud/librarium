@@ -12,7 +12,7 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.import` permission to export and import a cluster profile. 
+- Your Palette account role must have the `clusterProfile.get` permission to export a cluster profile and `clusterProfile.create` import a cluster profile. 
 
 - Macros used in the profile you want to export must be available in the target environment *before* you import the profile. If they are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
 
