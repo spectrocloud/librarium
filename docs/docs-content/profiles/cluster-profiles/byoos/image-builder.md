@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create Images with Image Builder"
 title: "Create Images with Image Builder"
-description: "Learn how to use the Image Builder project to create images for Palette"
+description: "Learn how to use the Image Builder project to create images for Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
@@ -9,7 +9,7 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure providers have tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) (KBI) project.
+You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure providers have tools that you can use to create custom images for the platform, such as [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or [Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) (KIB) project.
 
 
 ## Kubernetes Image Builder
@@ -20,7 +20,7 @@ You can use the custom images created by KIB with Palette, assuming the infrastr
 
 ![A diagram displaying the steps for creating a custom image](/cluster-profiles_byoos_image-builder_workflow-diagram.png) <br />
 
-1. You will download the KIB project and configure the image builder's **packer.json** file.
+1. Download the KIB project and configure the image builder's **packer.json** file.
 
 
 2. Use the `make` command to create a custom image containing a specific Operating System (OS) version and flavor.
@@ -29,13 +29,13 @@ You can use the custom images created by KIB with Palette, assuming the infrastr
 3. The custom image is created and distributed to the target regions you specified in the **packer.json** file.
 
 
-4. Create a cluster profile pointing to your custom image.
+4. Create a cluster profile that points to your custom image.
 
 
-5. Deploy a host cluster using your cluster profile containing the custom image.
+5. Deploy a host cluster using your cluster profile that contains the custom image.
 
 
-This guide will teach you how to use the Kubernetes Image Builder to create images for your infrastructure provider so that you can use the custom image in a cluster profile.
+This guide will teach you how to use KIB to create images for your infrastructure provider so that you can use the custom images in a Palette cluster profile.
 
 ### Prerequisites
 
@@ -64,13 +64,9 @@ To use a commercial OS, you must provide the license before starting the image c
 
 ### Create an Image
 
-The following steps will guide you through creating your image. You will create a custom Red Hat Enterprise Linux (RHEL) for Amazon Web Services (AWS). RHEL is a commercial product, so you will need license subscription credentials, but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using KIB to create the image. 
-
-<br />
+The following steps guide you through creating your image. You will create a custom Red Hat Enterprise Linux (RHEL) image for Amazon Web Services (AWS). RHEL is a commercial product, so you will need license subscription credentials, but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using KIB to create the image. 
 
 1. Clone the KIB repository.
-
-    <br />
 
     <Tabs>
     <TabItem label="HTTPS" value="https">
@@ -98,7 +94,7 @@ The following steps will guide you through creating your image. You will create 
     cd image-builder/images/capi
     ```
 
-3. Open up the image builder [documentation site](https://image-builder.sigs.k8s.io/introduction.html) in your web browser and review the steps for the infrastructure provider you want to build an image for.
+3. Open up the image builder [documentation site](https://image-builder.sigs.k8s.io/introduction.html) in your web browser, and review the steps to build an image for your specific infrastructure provider.
 
 
 
@@ -119,9 +115,7 @@ The following steps will guide you through creating your image. You will create 
     export PACKER_FLAGS=-on-error=ask
     ```
 
-5. Navigate to the **packer** folder and open up the folder for the target infrastructure provider. Review the file **packer.json**. Make any configuration changes you desire, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions etc. You must make changes in the file's `variables` section. Only a condensed version of the 'variables' object below is used for illustrative purposes to enhance the reader's experience. 
-
-    <br />
+5. Navigate to the **packer** folder and open the folder for the target infrastructure provider. Review the  **packer.json** file. Make the desired configuration changes, such as the Kubernetes version, cloud credentials, network settings, instance size, image regions, and more. You must make changes in the file's `variables` section. The following example shows a condensed version of the `variables` object. 
 
     ```json hideClipboard
      "variables": {
@@ -145,8 +139,6 @@ The following steps will guide you through creating your image. You will create 
     },
     ```
 
-    <br />
-
     :::info
 
     The file **packer.json** contains many variables you can use to customize the image. We recommend you review the KIB [documentation](https://image-builder.sigs.k8s.io/capi/capi.html) for your provider as it explains each variable.
@@ -159,7 +151,7 @@ The following steps will guide you through creating your image. You will create 
 
 
 
-7. Next, find the `make` command for your provider. You can use the following command to get a list of all available RHEL options. Replace the `grep` filter with the provider you are creating an image for.
+7. Next, find the `make` command for your provider. You can use the following command to get a list of available RHEL options. Replace the `grep` filter with your target provider.
 
     <br />
 
@@ -200,7 +192,7 @@ The following steps will guide you through creating your image. You will create 
     ....
     ```
 
-9. Once the build process is complete, note the image ID.
+9. When the build process completes, note the image ID.
 
     <br />
 
@@ -218,35 +210,28 @@ The following steps will guide you through creating your image. You will create 
     ```
 
 
-10. Login to [Palette](https://console.spectrocloud.com).
+10. Log in to [Palette](https://console.spectrocloud.com).
 
 
-
-11. Navigate to the left **Main Menu** and select **Profiles**. 
-
+11. Navigate to the left **Main Menu** and select **Profiles**.
 
 
-12. Click on the **Add Cluster Profile** to create a new cluster profile that uses your new custom image.
+12. Click on the **Add Cluster Profile** button.
 
 
-
-13. Fill out the inputs fields for **Name**, **Description**, **Type** and **Tags**. Select the type **Full** and click on **Next**.
-
-
-14. Select your infrastructure provider. In this example, **AWS** is selected.
+13. Fill out the input fields for **Name**, **Description**, **Type** and **Tags**. Select **Full** as the profile type, and click **Next**.
 
 
+14. Select your infrastructure provider. This example uses **AWS**.
 
-15. Select the **BYOOS** pack. Use the following information to find the BYOOS pack.
 
-* Pack Type: OS
-* Registry: Public Repo
-* Pack Name: Bring Your Own OS (BYO-OS)
-* Pack Version: 1.0.x or higher
+15. Select the **BYO-OS** pack. Use the following information to find the BYO-OS pack.
+    * Pack Type: OS
+    * Registry: Public Repo
+    * Pack Name: Bring Your Own OS (BYO-OS)
+    * Pack Version: 1.0.x or higher
 
-16. Update the pack YAML to point to your custom image. You can use the tag values Packer assigns to the image to help you identify the correct value to provide the pack YAML. In the example output below, the tag values `distribution_version` and `distribution` are used to determine the correct values for the YAML.
-
-    <br />
+16. Update the pack YAML to point to your custom image. You can use the tag values that Packer assigns to the image to help you identify the correct value to provide. In the example output below, the tag values `distribution_version` and `distribution` are used to determine the correct values for the YAML.
 
     ```shell hideClipboard
     ==> amazon-ebs.{{user `build_name`}}: Creating AMI tags
@@ -264,23 +249,18 @@ The following steps will guide you through creating your image. You will create 
 
     In this example, the YAML is updated to point to the RHEL image created earlier. Use the table below to learn more about each variable.
 
-    <br />
-
     | **Parameter** | **Description** | **Type** | 
     |---|----|----|
     | `osImageOverride` | The ID of the image to use as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string|
     | `osName` | The name of the OS distribution. Example: `rhel`. | string |
     | `osVersion`| The version of the OS distribution. Example: `8` | string|
 
-    <br />
-
     ```yaml
     pack:
-      osImageOverride: "ami-0f4804aff4cf9c5a2"
-      osName: "rhel"
-      osVersion: "8"
+        osImageOverride: "ami-0f4804aff4cf9c5a2"
+        osName: "rhel"
+        osVersion: "8"
     ```
-
 
   ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.png)
 
@@ -288,26 +268,22 @@ The following steps will guide you through creating your image. You will create 
 17. Click on **Next layer** to add the Kubernetes layer.
 
 
-18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to reveal the YAML editor.
+18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to display the YAML editor.
 
 
 19. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
 
-<br />
-
 :::caution
-
 When deploying a host cluster, choosing the appropriate cloud provider and region where the image was distributed is critical to successfully launching a cluster using a custom image in the cluster profile. Failure to do so may result in Palette's inability to launch a cluster.
-
 :::
 
 ### Validate
 
-Use the following steps to validate your custom image.
+Use the following steps to validate your custom image is working correctly.
 
-1. You can validate that the custom image is working correctly by deploying a compute instance in the respective infrastructure provider you created the image in using the custom image. Review the compute instance logs to learn more about the problems if you encounter any issues.
+1. Deploy a compute instance in the respective infrastructure provider using your custom image. Review the compute instance logs to learn more about any issues you may encounter.
 
 
-2. Next, deploy a host cluster that uses the cluster profile you created containing the custom image. Verify the cluster is deployed correctly and without any issues. If you encounter any problems, review the event logs of the cluster to gain more details about the issue. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster/) tutorial for additional guidance on deploying a host cluster.
+2. Next, deploy a host cluster using the cluster profile you created that contains the custom image. Verify the cluster is deployed correctly and without any issues. If you encounter any problems, review the cluster's event log to gain more details about the issue. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster/) tutorial for additional guidance on deploying a host cluster.

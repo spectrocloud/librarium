@@ -26,9 +26,9 @@ Palette on-prem installation supports Air-Gapped, a security measure in which it
 
 For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets or Custom Resource Definitions may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach Manifests can be added to a layer in a cluster profile.
 
-## Bring Your Own Operating System (BYOOS)
+## Bring Your Own Operating System (BYO-OS)
 
-A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYOOS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYOOS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
+A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYO-OS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYO-OS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
 
 ## Chart Repositories
 

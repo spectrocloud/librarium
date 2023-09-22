@@ -8,7 +8,53 @@ tags: ["profiles", "app profiles"]
 ---
 
 
-<<< Copied from Update a Cluster Profile - use as a base. >>>
+<<< MOVED FROM Version an App Profile - potentially use as a base. >>>
+
+## Update an App Profile
+
+You can make changes to the app profile, such as version updates, manifest updates, app tier additions and removals.
+
+App Profile changes will generate an update notification on all the Apps that are created from  the app profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply the update to the Apps individually at any time.
+
+
+# Apply Updates to the App
+
+To apply updates to an App follow the below steps:
+
+<!-- 1. Log in to [Palette](https://console.spectrocloud.com/). -->
+
+2. Select the **App Profiles** option from the left **Main Menu**.
+
+3. This page will list all the App Profiles available to you. Select the App Profile you want to update.
+
+4. Make the desired changes. You can add or delete layers, change pack versions, change pack values, etc. and save your changes.
+
+5. Navigate to the left **Main Menu** and click on **Apps**
+
+6. On the App page, apps eligible for an update will have an **Updates Available** badge.
+
+* Click on the App with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
+
+* An **Apply Updates** wizard will open up with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the app.
+
+
+## Validate
+
+To validate that the App profile updates are implemented on the target app, conduct the following steps:
+
+<!-- 1. Log in to [Palette](https://console.spectrocloud.com/). -->
+
+2. Select the **Apps** option from the left **Main Menu**.
+
+3. This page will list all the Apps. Click open the updated App.
+
+4.  Review the app profile details, which will include the applied updates.
+
+
+
+
+
+<<< COPIED FROM Update a Cluster Profile - potentially use as a base. >>>
 
 You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
 
