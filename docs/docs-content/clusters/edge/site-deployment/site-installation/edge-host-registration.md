@@ -24,7 +24,6 @@ A registration token is required for the Edge host registration process. Without
 :::
 
 
-
 ## Registration Method
 
 To register the Edge host, you are required to use a registration token with all three registration options. Edge hosts are registered under the default project chosen for the registration token. You can override the default project by specifying the project in the Edge Installer [user data](../../edge-configuration/installer-reference.md) configuration file.
@@ -44,8 +43,6 @@ stylus:
 
 
 <br />
-
-
 
 Select the registration method that best fits your organizational needs and review the steps to get started.
 
@@ -81,6 +78,7 @@ stylus:
 
 
 - A tenant registration token is required. Refer to the [Create a Registration Token](create-registration-token.md) guide for more information.
+
 #### Create Registration Token
 
 To create a registration token, use the following steps.
@@ -146,17 +144,17 @@ Use the following steps to manually register an Edge host in Palette.
     
     Example Output:
     ```shell
-    t¡me="2022-11-03T11:30:10Z" level=info Msg="starting stylus reset plugin"
-    t¡me="2022-11-03T11:30:102" level=info Msg="reset cached site name from uuid, cached: edge-03163342f7f0e6fe20de095ed8548c93"
+    time="2022-11-03T11:30:10Z" level=info Msg="starting stylus reset plugin"
+    time="2022-11-03T11:30:102" level=info Msg="reset cached site name from uuid, cached: edge-03163342f7f0e6fe20de095ed8548c93"
     time="2022-11-03T11:30:102" level=info Msg="reset cached site name from unid, new: edge-9e8e3342bafa9eb6d45f81c1f6714ea2" MachineD: edge-9eBe3342bafaeb6d45f81c1fb714ea2
-    t¡me="2022-11-03T11:30:192" level=info Msg="MachineIP: 10.239.10.145"
+    time="2022-11-03T11:30:192" level=info Msg="MachineIP: 10.239.10.145"
     ```
 
-    :::info
+:::info
 
      You can also specify an Edge host's unique identifier in the user data by using the `stylus.site.Name` parameter. Refer to the [Installer Configuration](../../edge-configuration/installer-reference.md) resource to learn more about available configuration parameters.
 
-    :::
+:::
 
 #### Register the Edge Host in Palette
 
