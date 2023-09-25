@@ -42,7 +42,7 @@ Use the following steps to create an ISO file containing the additional user dat
   MacOS/Linux:
 
   ```shell
-  mkisofs -output site-userr-data.iso -volid cidata -joliet -rock user-data meta-data
+  mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
   ```
 
   Windows:
