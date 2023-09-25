@@ -58,8 +58,8 @@ The API returns standard HTTP response codes:
 
 | **HTTP Code** | **Description** |
 | --- | --- |
-| 200 | For a successful response. The response payload will vary depending upon the API. Refer to the respective API response schema. |
-| 201 | For a successful resource creation. The response payload contains the uid of the created resource. |
+| 200 | Request succeeded. The response payload will vary depending upon the API. Refer to the respective API response schema. |
+| 201 | A resource was successfully created. The response payload contains the uid of the created resource. |
 | 204 | Response without any content for a successful operation. These operations include update, delete and the other actions on the resource. |
 | 400 | Bad request. The request does not adhere to the API request payload schema. |
 | 401 | Missing authorization token or invalid authorization token. |
@@ -109,7 +109,7 @@ If you do not provide the ProjectUid header, then the assumed scope is of the te
 
 ## Pagination
 
-API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the continue token. To perform pagination, you need to check whether the continue token value is present in the API response. For subsequent requests, use the `continue` token as a query parameter to paginate the remaining resource items.
+API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the `continue` token. To perform pagination, you need to check whether the `continue` token value is present in the API response. For subsequent requests, use the `continue` token as a query parameter to paginate the remaining resource items.
 
 <br />
 
@@ -140,15 +140,14 @@ curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUw
 
 The API rate limits are as follows:
 
-<br />
 * There is a limit of ten API requests per second for each source IP address. The API supports additional bursts through the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 * 5) requests in seconds before the API returns a `429 - TooManyRequests` error. Refer to the [Endpoint Prefix Rate](#endpointprefixrate) for additional information.
 
 
 
-* The API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can find a list of all resource types in the [API documentation](v1/palette-apis-4-0.info.mdx). The requests are counted together if you make multiple requests to the same resource type but use different sub-resources. For example, if you make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are counted together as ten requests to the resource `clusterprofiles`.
+* API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can find a list of all resource types in the [API documentation](v1/palette-apis-4-0.info.mdx). The requests are counted together if you make multiple requests to the same resource type but use different sub-resources. For example, if you make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are counted together as ten requests to the resource `clusterprofiles`.
 
 
-* In case of too many requests, the user will receive an error with HTTP code `429` - `TooManyRequests.` In that event, we recommend retrying the API call after a few moments. 
+* If too many requests are issued, you may receive an error with HTTP code `429` - `TooManyRequests.` We recommend retrying the API call after a few moments. 
 
 ## Endpoint Prefix Rate
 
@@ -184,7 +183,7 @@ The API rate limits are as follows:
 | /v1/registries | 10 | 5 | 50 |
 | /v1/services | 10 | 5 | 50 |
 | /v1/overlords | 10 | 5 | 50 |
-| v1/cluster | 10 | 5 | 50 |
+| /v1/cluster | 10 | 5 | 50 |
 | /v1/cloudconfigs | 10 | 5 | 50 |
 | /v1/cloudconfigs/{cloudType}/{uid}/machinePools | 10 | 5 | 50 |
 | /v1/edgehosts | 10 | 5 | 50 |
