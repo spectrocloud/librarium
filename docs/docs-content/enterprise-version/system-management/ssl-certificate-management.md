@@ -60,7 +60,7 @@ You can upload an SSL certificate in Palette by using the following steps.
 
   <br />
 
-  ![A view of the certificate upload screen](/vertex_system-management_ssl-certifiacte-management_certificate-upload.png)
+  ![A view of the certificate upload screen](/palette_system-management_ssl-certifiacte-management_certificate-upload.png)
 
 <br />
 

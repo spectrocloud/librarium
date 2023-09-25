@@ -45,7 +45,7 @@ You can create a tenant in Palette  by following these steps.
 
   <br />
 
-  ![View of a tenant activation option](/vertex_system-management_tenant-management_activate-tenant.png)
+  ![View of a tenant activation option](/enterprise-version_system-management_tenant-management_activate-tenant.png)
 
 <br />
 
@@ -93,16 +93,15 @@ You can remove a tenant in Palette  using the following steps.
 
 <br />
 
-  ![View of a tenant deletion option](/vertex_system-management_tenant-management_remove-tenant.png)
-
+  ![View of a tenant deletion option](/enterprise_version_system-management_tenant-management_remove-tenant.png)
 
   <br />
 
-  :::caution
+:::caution
 
-  If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with deletion without manually cleaning up tenant resources.
+If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with deletion without manually cleaning up tenant resources.
 
-  :::
+:::
 
 
 After the cleanup process completes, the tenant will be removed from the tenant list view.
