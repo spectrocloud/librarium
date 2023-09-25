@@ -78,7 +78,7 @@ Depending on what version of Palette you are using, the available parameters wil
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette.
 
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette](enterprise-version.md#download-palette-installer) for instructions on how to request access to the Helm Chart
+- Access to the Palette Helm Charts. Refer to the [Access Palette](enterprise-version-bkup.md#download-palette-installer) for instructions on how to request access to the Helm Chart
 
 
 
