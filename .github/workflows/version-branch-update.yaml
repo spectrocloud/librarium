@@ -62,11 +62,6 @@ jobs:
       run: |
         netlify build --context deploy-preview
 
-    - name: compile
-      run: |
-        make build
-
-
     - name: Deploy to Netlify
       id: netlify
       uses: nwtgck/actions-netlify@v2.1.0
