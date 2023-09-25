@@ -63,14 +63,6 @@ Edge is built on top of the open-source project [Kairos](https://kairos.io), whi
 Palette manages the installation and all the Day-2 activities, such as scaling, upgrades, and reconfiguration.
 
 
-:::caution
-
-Edge is still in active development and is subject to change. Review the Palette [release notes](../../release-notes.md) for updates and changes.
-
-
-:::
-
-
 
 ## Get Started With Edge
 
