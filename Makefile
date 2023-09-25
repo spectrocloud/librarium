@@ -13,6 +13,7 @@ help: ## Display this help
 initialize: ## Initialize the repository dependencies
 	@echo "initializing npm dependencies"
 	npm ci
+	touch .env
 	npx husky-init
 
 clean: ## Clean build artifacts
