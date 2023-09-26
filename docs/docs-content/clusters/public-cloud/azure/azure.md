@@ -8,7 +8,7 @@ tags:
 - azure
 ---
 
-Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us/). You can deploy and manage [Host Clusters](/glossary-all#hostcluster) in Azure. To get  started check out the [Register and Manage Azure Cloud Account](/clusters/public-cloud/azure/azure-cloud). 
+Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage [Host Clusters](../../../glossary-all.md#hostcluster) in Azure. To get  started check out the [Register and Manage Azure Cloud Account](azure-cloud.md#manage-azure-accounts). 
 
 <br />
 
@@ -16,23 +16,20 @@ Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/
 
 To learn more about Palette and Azure cluster creation and its capabilities check out the following resources:
 
-- [Register and Manage Azure Cloud Account](/clusters/public-cloud/azure/azure-cloud)
+- [Register and Manage Azure Cloud Account](azure-cloud.md)
 
 
-- [Create and Manage Azure Cluster](/clusters/public-cloud/azure/create-azure-cluster#deployinganazurecluster)
+- [Create and Manage Azure Cluster](create-azure-cluster.md#deploy-an-azure-cluster-with-palette)
 
 
-- [Deleting an Azure Cluster](/clusters/public-cloud/azure/create-azure-cluster#deletinganazurecluster)
+- [Deleting an Azure Cluster](../../cluster-management/remove-clusters.md)
 
 
-- [Force Delete a Cluster](/clusters/public-cloud/azure/create-azure-cluster#forcedeleteacluster)
+- [Cluster Management Day Two Operations](../../cluster-management/cluster-management.md)
 
 
-- [Cluster Management Day Two Operations](/clusters/cluster-management)
+- [Azure Architecture](architecture.md)
 
 
-- [Azure Architecture](/clusters/public-cloud/azure/architecture)
-
-
-- [Cluster Removal](/clusters/cluster-management/remove-clusters)
+- [Cluster Removal](../../cluster-management/remove-clusters.md)
 

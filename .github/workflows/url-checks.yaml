@@ -11,7 +11,9 @@ concurrency:
 name: Broken URL check
 jobs:
   markdown-link-check:
-    runs-on: ubuntu-latest
+    runs-on: 
+      group: Default
+      labels: docbot
     steps:
       - id: checkout
         name: Checkout Repository

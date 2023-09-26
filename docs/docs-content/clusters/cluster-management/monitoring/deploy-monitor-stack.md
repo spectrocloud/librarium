@@ -10,7 +10,7 @@ tags: ["clusters", "cluster management", "monitoring"]
 
 The monitoring stack you will deploy uses the open-source tool, [Prometheus](https://prometheus.io/docs/introduction/overview/), to support your environment's monitoring requirements. The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment. 
 
-The monitoring stack uses a server-client architecture. The monitoring stack uses the [Prometheus Operator](/integrations/prometheus-operator) pack to deploy all the dependencies the Prometheus server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes clusters with the [Prometheus Agent](/integrations/prometheus-agent) pack installed and configured.
+The monitoring stack uses a server-client architecture. The monitoring stack uses the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack to deploy all the dependencies the Prometheus server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes clusters with the [Prometheus Agent](../../../integrations/prometheus-agent.md) pack installed and configured.
 
 Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to the monitoring stack.
 
@@ -40,7 +40,7 @@ You can choose to deploy the monitoring stack with or without authentication.
 
 #### Prerequisites
 
-- An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
+- An infrastructure provider environment registered in Palette. Refer to the [Clusters](../../clusters.md) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
 
 - The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:
@@ -99,7 +99,7 @@ You can choose to deploy the monitoring stack with or without authentication.
 10. Next, click on the **Presets** button to expand the options drawer.
 
 
-11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
+11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the available options.
 
 
 
@@ -204,7 +204,7 @@ In this guide, the following domains are used to expose the monitoring stack:
   - Ability to create a public certificate for each domain.
 
 
-- An infrastructure provider environment registered in Palette. Refer to the [Clusters](/clusters) documentation for guidance on how to register your infrastructure provider environment in Palette.
+- An infrastructure provider environment registered in Palette. Refer to the [Clusters](../../clusters.md) documentation for guidance on how to register your infrastructure provider environment in Palette.
 
 
 - [htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) or similar basic auth password file generator tool.
@@ -313,7 +313,7 @@ In this guide, the following domains are used to expose the monitoring stack:
             type: ClusterIP
   ```
 
-17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](/integrations/prometheus-operator) pack documentation to learn more about the available options.
+17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the available options.
 
 
 18. Click on **Add New Pack**.
@@ -364,7 +364,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 
 
-31. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period and the word *kubeconfig*. Refer to the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#accessclusterwithcli) for additional guidance.
+31. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period and the word *kubeconfig*. Refer to the [Access Cluster with CLI](../palette-webctl.md#access-cluster-with-cli) for additional guidance.
 
 
 32. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
@@ -537,4 +537,4 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 
 ## Next Steps
 
-Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to new and existing clusters. Check out the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent) to get started.
+Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to new and existing clusters. Check out the [Enable Monitoring on Host Cluster](deploy-agent.md) to get started.

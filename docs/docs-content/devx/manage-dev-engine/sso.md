@@ -18,7 +18,7 @@ To enable SSO with third-party Social Sign-In Providers use the following steps.
 
 :::info
 
-To learn more about the Sign-In Flow, refer to the [User Authentication](/user-management/user-authentication#signinflow) documentation.
+To learn more about the Sign-In Flow, refer to the [User Authentication](../../user-management/user-authentication.md#sign-in-flow) documentation.
 
 :::
 

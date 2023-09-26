@@ -8,9 +8,9 @@ sidebar_custom_props:
 tags: ["clusters", "cluster groups"]
 ---
 
-A *Cluster Group* is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette virtual clusters. Downstream consumers can use the cluster group when using Palette in [*App Mode*](/introduction/palette-modes#whatisappmode?). 
+A *Cluster Group* is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette virtual clusters. Downstream consumers can use the cluster group when using Palette in [*App Mode*](../../introduction/palette-modes.md#what-is-app-mode). 
 
-You can create a cluster group under the Palette [tenant](/glossary-all#tenant) scope. Alternatively, you can create a cluster group at the [project](/projects) scope.
+You can create a cluster group under the Palette [tenant](../../glossary-all.md#tenant) scope. Alternatively, you can create a cluster group at the [project](../../projects.md) scope.
 
 By default, Palette exposes a managed cluster group called *beehive* that is available for users in app mode. This cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern side of the U.S. 
 
@@ -28,14 +28,14 @@ Cluster groups support two network endpoints: load balancer and ingress. All hos
 
 ## Get Started
 
-Learn how to create a cluster group by reviewing the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) guide.
+Learn how to create a cluster group by reviewing the [Create and Manage Cluster Groups](create-cluster-group.md) guide.
 
 <br />
 
 ## Resources
 
-- [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group)
+- [Create and Manage Cluster Groups](create-cluster-group.md)
 
-- [Enable Disk Backup on Virtual Clusters](/clusters/cluster-groups/cluster-group-backups)
+- [Enable Disk Backup on Virtual Clusters](cluster-group-backups.md)
 
-- [Set up Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group)
+- [Set up Ingress for a Cluster Group](ingress-cluster-group.md)

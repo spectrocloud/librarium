@@ -15,7 +15,7 @@ Palette uses [gRPC](https://grpc.io) to communicate between the management platf
 
 :::info
 
-Refer to the [Network Ports](/architecture/networking-ports) documentation for a detailed network architecture diagram with gRPC and to learn more about the ports used for communication.
+Refer to the [Network Ports](networking-ports.md) documentation for a detailed network architecture diagram with gRPC and to learn more about the ports used for communication.
 
 :::
 

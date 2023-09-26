@@ -14,7 +14,7 @@ The **Virtual Machine Orchestrator** pack provides a single-pack experience that
 - **Spectro VM Dashboard**: Enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page when using Palette Virtual Machine Orchestrator (VMO). The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. 
 
 
-- **KubeVirt**: Allows you to create VMs within a Kubernetes cluster using open-source [KubeVirt](https://kubevirt.io). KubeVirt provides feature gates you can enable in the Virtual Machine Orchestrator pack YAML file. To learn which feature gates Palette enables by default and how you can enable additional feature gates, check out the [Feature Gates](/vm-management#featuregates) section.
+- **KubeVirt**: Allows you to create VMs within a Kubernetes cluster using open-source [KubeVirt](https://kubevirt.io). KubeVirt provides feature gates you can enable in the Virtual Machine Orchestrator pack YAML file. To learn which feature gates Palette enables by default and how you can enable additional feature gates, check out the [Feature Gates](../vm-management.md#feature-gates) section.
 
     KubeVirt extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD) API. KubeVirt also includes controllers and agents that provide VM management capabilities on the cluster. Through KubeVirt you can use the Kubernetes API to manage VM resources similar to the way you manage Kubernetes resources.     
 
@@ -30,7 +30,7 @@ The **Virtual Machine Orchestrator** pack provides a single-pack experience that
 
 :::info
 
-The **Spectro Proxy** pack enables the use of a reverse proxy with a Kubernetes cluster and is automatically installed when you create the cluster with the default **Proxied** setting for **Access** during cluster profile creation. Check out the [Spectro Proxy](/integrations/frp) pack documentation to learn more. 
+The **Spectro Proxy** pack enables the use of a reverse proxy with a Kubernetes cluster and is automatically installed when you create the cluster with the default **Proxied** setting for **Access** during cluster profile creation. Check out the [Spectro Proxy](../../integrations/frp.md) pack documentation to learn more. 
 
 :::
 
@@ -41,11 +41,7 @@ Administrators can configure the out-of-the-box add-on packs, cluster profiles, 
 # Resources
 
 
-- [Spectro Proxy](/integrations/frp)
+- [Spectro Proxy](../../integrations/frp.md)
 
 
-- [Feature Gates](/vm-management#featuregates)
-
-<br />
-
-<br />
+- [Feature Gates](../vm-management.md#feature-gates)

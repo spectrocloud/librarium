@@ -1,8 +1,13 @@
 name: Release to Production
 
+# Run this workflow every time a new commit is pushed to the master branch
+# or a version branch (e.g. version-4-0)
+
 on:
   push:
-    branches: [master]
+    branches: ['master', 'version-**']
+  workflow_dispatch:
+
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -16,13 +21,24 @@ env:
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
+
+concurrency:
+  group: production-${{ github.workflow }}
+  cancel-in-progress: true  
+
 jobs:
   build:
     name: Build Website
-    runs-on: ubuntu-latest
+    runs-on: 
+      group: Default
+      labels: docbot
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: "master"
+
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
@@ -34,6 +50,7 @@ jobs:
 
       - name: Compile
         run: |
+          make versions-ci
           make build
 
       - name: Upload to AWS

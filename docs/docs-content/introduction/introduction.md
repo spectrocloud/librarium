@@ -12,7 +12,7 @@ Palette is a complete and integrated platform that enables organizations to effe
  
 With a unique approach to managing multiple clusters, Palette gives IT teams complete control, visibility, and production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their specific needs, with granular governance and enterprise-grade security.
  
- Palette VerteX edition is also available to meet the stringent requirements of regulated industries such as government and public sector organizations. Palette VerteX integrates Spectro Cloud’s Federal Information Processing Standards (FIPS) 140-2 cryptographic modules. To learn more about FIPS-enabled Palette, check out [Palette VerteX](/vertex). 
+ Palette VerteX edition is also available to meet the stringent requirements of regulated industries such as government and public sector organizations. Palette VerteX integrates Spectro Cloud’s Federal Information Processing Standards (FIPS) 140-2 cryptographic modules. To learn more about FIPS-enabled Palette, check out [Palette VerteX](../vertex/vertex.md). 
  
 ![Palette product high level overview eager-load](/docs_introduction_product-overview.png)
  
@@ -71,8 +71,8 @@ With an open and enterprise-grade platform, IT leaders can get peace of mind wit
 ## Next Steps
 Learn more about Palette and how it can improve your Kubernetes experience and those in your organization. Try [Palette](https://console.spectrocloud.com/) for free today and experience a better way of working with Kubernetes. 
 
-- [Try Palette for Free](/getting-started/palette-freemium)
+- [Try Palette for Free](../getting-started/palette-freemium.md)
 
-- [App Mode and Cluster Mode](/introduction/palette-modes)
+- [App Mode and Cluster Mode](palette-modes.md)
 
-- [Palette Architecture](/architecture/architecture-overview)
+- [Palette Architecture](../architecture/architecture-overview.md)

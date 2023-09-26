@@ -107,4 +107,4 @@ You can use the steps below or the interactive guide to help you add a Cox Edge 
 3. Your Cox Edge account is now listed with all the other infrastructure provider accounts.
 
 
-4. You can also deploy a cluster to Cox Edge to validate everything is working. Use the [Create and Manage Cox IaaS Cluster](/clusters/public-cloud/cox-edge/create-cox-cluster) guide to create and deploy a cluster to Cox Edge.
+4. You can also deploy a cluster to Cox Edge to validate everything is working. Use the [Create and Manage Cox IaaS Cluster](create-cox-cluster.md) guide to create and deploy a cluster to Cox Edge.

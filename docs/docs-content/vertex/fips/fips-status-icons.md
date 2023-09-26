@@ -11,7 +11,7 @@ tags: ["vertex", "fips"]
 
 
 While Palette VerteX brings FIPS 140-2 cryptographic modules to the Palette management platform and deployed clusters, it also provides the capability to consume features that are not FIPS compliant. For example, when the cluster import option is enabled, it allows users to import any type of Kubernetes cluster, including some that are not fully FIPS compliant. 
-Similarly, when the option to add non-FIPS add-on packs is enabled, users can add packs in cluster profiles that are not FIPS compliant. For more information about these tenant-level settings, refer to [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings).
+Similarly, when the option to add non-FIPS add-on packs is enabled, users can add packs in cluster profiles that are not FIPS compliant. For more information about these tenant-level settings, refer to [Enable non-FIPS Settings](../system-management/enable-non-fips-settings/enable-non-fips-settings.md).
 
 To avoid confusion and compliance issues, Palette VerteX displays icons to indicate the FIPS compliance status of clusters, profiles, and packs. 
 
@@ -45,8 +45,3 @@ Icons appear next to each profile layer to indicate FIPS compliance.
 In this screenshot, Palette VerteX shows FIPS status for the cluster is partially compliant because one pack in the profile is not FIPS-compliant. 
 
 ![Diagram showing FIPS status icons on Cluster Overview page.](/vertex_fips-status-icons_icons-in-cluster-overview.png)
-
-
-<br />
-
-<br />

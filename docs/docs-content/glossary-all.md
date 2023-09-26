@@ -48,7 +48,7 @@ The diagram below shows an example of a cluster profile:
 
 ![cluster_profile_new](/cluster_profile_new.png)
 
-Read more about Cluster Profiles [here](/cluster-profiles).
+Read more about Cluster Profiles [here](cluster-profiles/cluster-profiles.md).
 ## Edge Appliances
 
 Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
@@ -75,7 +75,7 @@ A Kubernetes cluster that is managed by Palette. A host cluster may contain seve
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of Palette.  As part of the Kubernetes workload cluster provisioning, the first control-plane node is launched by Palette in the management cluster or the cloud gateway. Once the first control-plane node goes to running state, all the resources are pivoted from the management cluster or the cloud gateway to the target workload cluster. After that, the target cluster self-manages the cluster and application lifecycle. All Day-2 operations which result in node changes, including OS/Kubernetes upgrades, scaling, and nodes certificate rotation, are triggered by changes to the Cluster API resources in the target workload cluster.
 ## OIDC
  
-OpenID Connect [(OIDC)](/user-management/saml-sso/#oidcbasedsso) is an open source, authentication protocol that allows users to verify their identity, based on the authentication performed by an authorization provider.
+OpenID Connect [(OIDC)](user-management/saml-sso/saml-sso.md) is an open source, authentication protocol that allows users to verify their identity, based on the authentication performed by an authorization provider.
 ## Organization 
 
 An organization is the equivalent of a Tenant. Review the [Tenant](#tenant) definition to learn more.
@@ -158,7 +158,7 @@ Palette maintains a public pack registry containing various [packs](#pack) that 
 
 ## Repavement
 
-Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves draining the node, or in other words, migrating active workloads to another healthy node, and removing it from the cluster. A new node is created and configured with the same settings as the old node and added back to the cluster. The process is fully automated and does not require any manual intervention.
+Repavement is the process of replacing a Kubernetes node with a new one. This is typically done when a node is unhealthy or needs to be upgraded. The process involves migrating active workloads to another healthy node, and removing it from the [node pool](clusters/cluster-management/node-pool.md#repave-behavior-and-configuration). This is referred to as draining the node. A new node is created and configured with the same settings as the old node and added back to the pool. The process is fully automated and does not require manual intervention.
 
 ## Role
 
@@ -183,7 +183,7 @@ Tenant represents a customer or an organization in Palette. Palette is a multi-t
 Users are members of a [tenant](#tenant) who are assigned [roles](#role) that control their access within the platform. For example, users with the tenant admin role get permissions to perform all actions across all [projects](#project) in the tenant whereas users assigned project roles, only get specific permission within the associated projects. The user's personal information (email, name) is treated as sensitive data and fully encrypted using the tenant's unique encryption key.
 
 ## VMO
-Palette [Virtual Machine Orchestrator](/vm-management) provides a unified platform for managing containerized and virtualized applications. Palette VM Orchestrator allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications. 
+Palette [Virtual Machine Orchestrator](vm-management/vm-management.md) provides a unified platform for managing containerized and virtualized applications. Palette VM Orchestrator allows organizations to onboard, deploy, manage, and scale VMs within the same cluster as their containerized applications. 
 
 ## Workload
 An application running on the Kubernetes cluster is called a Workload. It can be a set of components that work together or a single independent component, run as a set of pods. In Kubernetes terms, a Pod is a set of running containers on your cluster.

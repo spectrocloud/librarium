@@ -11,7 +11,7 @@ tags: ["self-hosted", "enterprise"]
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 
-This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](/architecture/networking-ports) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
+This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](../architecture/networking-ports.md) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
 
 
 Depending on what version of Palette you are using, the available parameters will be different. Select the tab below that corresponds to the version of Palette you are using.
@@ -43,7 +43,7 @@ Depending on what version of Palette you are using, the available parameters wil
 
 
 
-- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/enterprise-version/on-prem-system-requirements#hardwarerequirements) for additional sizing information.
+- We recommended the following resources for Palette. Refer to the [Palette size guidelines](on-prem-system-requirements.md#system-requirements) for additional sizing information.
 
     - 8 CPUs per node.
 
@@ -78,7 +78,7 @@ Depending on what version of Palette you are using, the available parameters wil
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette.
 
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette](/enterprise-version#downloadpaletteinstaller) for instructions on how to request access to the Helm Chart
+- Access to the Palette Helm Charts. Refer to the [Access Palette](enterprise-version.md#download-palette-installer) for instructions on how to request access to the Helm Chart
 
 
 
@@ -159,7 +159,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
     :::info
     
-    You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](/enterprise-version/deploying-palette-with-helm) page.
+    You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](deploying-palette-with-helm.md) page.
 
     :::
 
@@ -230,14 +230,14 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 <br />
 
-10. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette.
+10. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../vertex/system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
 
 
 <br />
 
 :::caution
 
-If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](/enterprise-version/reverse-proxy) guide for instructions on how to configure a reverse proxy for Palette VerteX.
+If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](reverse-proxy.md) guide for instructions on how to configure a reverse proxy for Palette VerteX.
 
 :::
 
@@ -311,7 +311,7 @@ Use the following steps to validate the Palette installation.
 
 ## Next Steps
 
-You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](/vertex/system-management/tenant-management#createatenant) page for instructions on how to create a tenant.
+You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](../vertex/system-management/tenant-management.md#create-a-tenant) page for instructions on how to create a tenant.
 
 
 
@@ -659,7 +659,7 @@ If you find yourself in this scenario, contact our support team by emailing us a
 
 ## Next Steps
 
-Start exploring the Palette system dashboard so that you become familiar with the available actions you can take as an administrator. Check out the [System Console Dashboard](/enterprise-version/system-console-dashboard) resource to learn more.
+Start exploring the Palette system dashboard so that you become familiar with the available actions you can take as an administrator. Check out the [System Console Dashboard](system-console-dashboard.md) resource to learn more.
 
 
 <br />

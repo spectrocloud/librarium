@@ -7,21 +7,28 @@ sidebar_position: 190
 tags: ["clusters", "cluster management"]
 ---
 
-A node pool is a group of nodes within a cluster that all have the same configuration. Node pools allow you to create pools of nodes that can be used for different workloads. For example, you can create a node pool for your production workloads and another node pool for your development workloads. You can update node pools for active clusters or create a new node pool for the cluster. 
+A node pool is a group of nodes within a cluster that all have the same configuration. You can use node pools for different workloads. For example, you can create a node pool for your production workloads and another for your development workloads. You can update node pools for active clusters or create a new one for the cluster.
 
 
 :::caution
 
-Ensure you exercise caution when modifying node pools. We recommend creating a [backup](/clusters/cluster-management/backup-restore) before you make a change in the event a configuration change causes an issue.
+Ensure you exercise caution when modifying node pools. We recommend creating a [backup](backup-restore/backup-restore.md) before you make a change in the event a configuration change causes an issue.
 
 :::
 
 ## Repave Behavior and Configuration
 
-In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](/glossary-all#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool. 
+In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](../../glossary-all.md#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool. 
 
-The ability to configure the repave time interval for all node pools except the master pool. The default repave time interval is 0 seconds. You can configure the node repave time interval during the cluster creation process or after the cluster is created. To modify the repave time interval after the cluster is created, follow the [Change a Node Pool](#changeanodepool) instructions below.
+Different types of repaving operations may occur, depending on what causes them:
 
+* **Control plane repave**: This takes place when certain changes are made to the Kubernetes configuration, such as changing the **apiServer** specification. This type of repave also occurs when there are changes in the hardware specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance type to another. Control plane nodes are repaved sequentially.
+
+* **Worker node pool repave**: This happens when changes to a node pool's specifications cause the the existing nodes to become incompatible with the pool's specified criteria. For instance, changing the hardware specifications of a worker pool. Nodes within the affected pool are sequentially replaced with new nodes that meet the updated specifications.
+
+* **Full cluster repave**: This occurs if changes are made to the Operating System (OS) layer or if modifications to the Kubernetes layer impact all nodes, such as when upgrading to a different Kubernetes version. All nodes across all pools are sequentially repaved starting with the control plane.
+
+You can customize the repave time interval for all node pools except the master pool. The default repave time interval is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to modify the repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) instructions below.
 
 ## Node Pool Configuration Settings
 
@@ -36,8 +43,8 @@ The following tables contain the configuration settings for node pools. Dependin
 | **Node pool name** | A descriptive name for the node pool. |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5. |
 | **Allow worker capability** | Select this option to allow workloads to be provisioned on master nodes. |
-| **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
-| **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
+| **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](taints.md#labels). |
+| **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](taints.md#taints).|
 | **Availability Zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 | **Disk Size** | Give the required storage size. |
 
@@ -49,8 +56,8 @@ The following tables contain the configuration settings for node pools. Dependin
 | **Node pool name** | A descriptive name for the worker pool. |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. |
 | **Node repave interval** | The time interval in seconds between repaves. The default value is 0 seconds. |
-| **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](/clusters/cluster-management/taints#overviewonlabels). |
-| **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](/clusters/cluster-management/taints#overviewontaints).|
+| **Additional Labels** | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](taints.md#labels). |
+| **Taints** | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](taints.md#apply-taints-to-nodes).|
 | **Rolling update** |  Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones. |
 | **Instance Option** | AWS options for compute capacity. **On Demand** gives you full control over the instance lifecycle without long-term commitment. **Spot** allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed. |
 | **Instance Type** |The compute size. |
@@ -102,7 +109,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 5. Click on **New Node Pool**. 
 
 
-6. Fill out the input fields in the **Add node pool** page. Refer to the [Node Pool Configuration Settings](#nodepoolconfigurationsettings) tables for more information on each field.
+6. Fill out the input fields in the **Add node pool** page. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables for more information on each field.
 
 
 7. Click on **Confirm** to create the new node pool.
@@ -158,7 +165,7 @@ You can apply changes to a node pool after a cluster is created and deployed. Yo
 5. The nodes details page is where you can review the existing node pools and their configuration. You can also add a new node pool from this page. Click on the **Edit** button to make changes to the node pool.
 
 
-6. Make the changes as needed. Refer to the [Node Pool Configuration Settings](#nodepoolconfigurationsettings) tables for more information on each field. 
+6. Make the changes as needed. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables for more information on each field. 
 
 
 7. Click on **Confirm** to update the node pool.

@@ -11,7 +11,7 @@ tags: ["vertex", "non-fips"]
 
 
 
-Palette VerteX provides the following FIPS-compliant infrastructure components in Kubernetes clusters it deploys. Review [FIPS-Compliant Components](/vertex/fips/fips-compliant-components) to learn more.
+Palette VerteX provides the following FIPS-compliant infrastructure components in Kubernetes clusters it deploys. Review [FIPS-Compliant Components](../../fips/fips-compliant-components.md) to learn more.
 
 <br />
 
@@ -24,7 +24,7 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 
 - Container Storage Interface (CSI)
 
-As shown in the screenshot below, the FIPS-compliant icon used to indicate full FIPS compliance is displayed next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](/vertex/fips/fips-status-icons).
+As shown in the screenshot below, the FIPS-compliant icon used to indicate full FIPS compliance is displayed next to Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png) 
 
@@ -80,13 +80,13 @@ Palette VerteX will display the appropriate FIPS status icon next to the pack la
 
 ## Resources
 
-- [Packs List](/integrations)
+- [Packs List](../../../integrations/integrations.mdx)
 
 
-- [Create an Add-on Profile](/cluster-profiles/create-add-on-profile)
+- [Create an Add-on Profile](../../../cluster-profiles/create-add-on-profile.md)
 
 
-- [FIPS Status Icons](/vertex/fips/fips-status-icons)
+- [FIPS Status Icons](../../fips/fips-status-icons.md)
 
 
 

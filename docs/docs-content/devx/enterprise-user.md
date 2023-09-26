@@ -17,24 +17,24 @@ Refer to the [Enterprise Users](#enterprise-users) section to learn more about e
 To enable PDE for downstream users, start by reviewing the following resources.
 
 
-1. Understand the difference between [Cluster Mode and App Mode](/introduction/palette-modes).
+1. Understand the difference between [Cluster Mode and App Mode](../introduction/palette-modes.md).
 
 
-2. Create and Manage the [Cluster Group](/clusters/cluster-groups).
+2. Create and Manage the [Cluster Group](../clusters/cluster-groups/cluster-groups.md).
 
 
-3. Allocate [User Quota](/devx/manage-dev-engine/resource-quota).
+3. Allocate [User Quota](manage-dev-engine/resource-quota.md).
 
 
 The next set of references are not required but good for Palette administrators to be aware of.
 
-- [Enable Disk Backup on Virtual Clusters](/clusters/cluster-groups/cluster-group-backups).
+- [Enable Disk Backup on Virtual Clusters](../clusters/cluster-groups/cluster-group-backups.md).
 
-- [Set Up Ingress for a Cluster Group](/clusters/cluster-groups/ingress-cluster-group).
+- [Set Up Ingress for a Cluster Group](../clusters/cluster-groups/ingress-cluster-group.md).
 
-- [Pause and Resume Palette Virtual Clusters](/devx/palette-virtual-clusters/pause-restore-virtual-clusters).
+- [Pause and Resume Palette Virtual Clusters](palette-virtual-clusters/pause-restore-virtual-clusters.md).
 
-- [Resize Palette Virtual Clusters](/devx/palette-virtual-clusters/resize-virtual-clusters).
+- [Resize Palette Virtual Clusters](palette-virtual-clusters/resize-virtual-clusters.md).
 
 
 ## Application Authors
@@ -44,15 +44,15 @@ Use PDE to deploy your containerized applications to Palette. Leverage Palette's
 
 Use the following resource to get started with PDE today.
 
-* Learn about [Palette's Free Tier Offering](/getting-started/palette-freemium).
+* Learn about [Palette's Free Tier Offering](../getting-started/palette-freemium.md).
 
-* [Quick Start with Palette App Mode](/devx#quickstartwithpaletteappmode).
+* [Tutorial](./apps/deploy-app.md).
 
-* Learn about [App Mode versus Cluster Mode](/introduction/palette-modes).
+* Learn about [App Mode versus Cluster Mode](../introduction/palette-modes.md).
 
-* Familiarize yourself with [App Profiles](/devx/app-profile).
+* Familiarize yourself with [App Profiles](app-profile/app-profile.md).
 
-* Review the supported [out-of-the-box-services](/devx/app-profile/services/service-listings).
+* Review the supported [out-of-the-box-services](app-profile/services/service-listings/service-listings.mdx).
 
 
 

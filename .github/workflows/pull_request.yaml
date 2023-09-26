@@ -3,6 +3,7 @@ name: Pre-merge Checks
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
+    branches-ignore: [ 'version-*' ]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -55,8 +56,9 @@ jobs:
   build:
     name: Build
     needs: [run-ci]
-    runs-on: ubuntu-latest
-    # runs-on: [self-hosted, linux, x64]
+    runs-on: 
+      group: Default
+      labels: docbot
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository

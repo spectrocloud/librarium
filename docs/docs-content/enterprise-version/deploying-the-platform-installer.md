@@ -17,7 +17,7 @@ As a prerequisite, download the platform installer OVA using the <Tooltip trigge
 :::caution
 
 
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart)  guides for additional guidance on how to install Palette.
+Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](deploying-an-enterprise-cluster.md), or the [Kubernetes Install Helm Chart](deploying-palette-with-helm.md)  guides for additional guidance on how to install Palette.
 
 :::
 
@@ -61,7 +61,7 @@ The platform installer contains a web application called the Supervisor, to prov
 2. Observe the installation status in the Status tab. The page auto-refreshes to provide updated installation progress.
 3. Once the final installation step is complete, you will see URLs to navigate to the On-Prem System Console as well as the Management Console.
 	* On-Prem System Console: Initial login:admin/admin
-	* Management Console: Tenant credentials to be created and used [Configure System for First Time](./#configuresystemforfirsttime).		
+	* Management Console: Tenant credentials to be created and used [Configure System for First Time](#initial-configuration).		
 4. Navigate to the On-Prem System Console to perform the initial configuration. Additional administration tasks like SMTP setup, certificate management, etc. can also be performed from the On-Prem System Console.
 
 :::info
