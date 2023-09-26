@@ -55,7 +55,7 @@ Use the following steps to configure a reverse proxy server for Palette.
   | **Parameter** | **Description** | **Type** |
   | --- | --- | ---|
   | `enabled`| Set to `true` to enable the Spectro Proxy server. | boolean |
-  | `frps.frpHostURL`| The domain name you will use for the Spectro Proxy server. For example, `frps.example.com`. |
+  | `frps.frpHostURL`| The domain name you will use for the Spectro Proxy server. For example, `frps.palette.example.com`. |
   | `server.crt`| The x509 SSL certificate file in base64 format. |
   | `server.key`| The x509 SSL certificate key file in base64 format. |
   | `ca.crt`| The x509 SSL certificate authority file in base64 format. |
@@ -70,7 +70,7 @@ Use the following steps to configure a reverse proxy server for Palette.
   frps:
     frps:
       enabled: true
-      frpHostURL: "frps..example.com"
+      frpHostURL: "frps.palette.example.com"
       server:
         crt: "LS0tLS1CRU...........tCg=="
         key: "LS0tLS1CRU...........tCg=="
@@ -103,7 +103,7 @@ Use the following steps to configure a reverse proxy server for Palette.
   <br />
 
   ```bash
-  curl --insecure --location 'https://.example.com/v1/auth/syslogin' \
+  curl --insecure --location 'https://palette.example.com/v1/auth/syslogin' \
    --header 'Content-Type: application/json' \
    --data '{
     "password": "**********",
@@ -137,7 +137,7 @@ Use the following steps to configure a reverse proxy server for Palette.
   | `clientKey`| The x509 SSL certificate key file in base64 format. | string |
   | `port` | The port number for the reverse proxy server. We recommend using port `443`. | integer |
   | `protocol` | The protocol to use for the reverse proxy server. We recommend using `https`. | string |
-  | `server`| The domain name you will use for the Spectro Proxy server. For example, `frps.example.com`. Don't include the HTTP schema in the value. | string |
+  | `server`| The domain name you will use for the Spectro Proxy server. For example, `frps.palette.example.com`. Don't include the HTTP schema in the value. | string |
 
   The following is an example payload. The SSL certificate files are truncated for brevity.
 
@@ -150,7 +150,7 @@ Use the following steps to configure a reverse proxy server for Palette.
       "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n........\n-----END RSA PRIVATE KEY-----",
       "port": 443,
       "protocol": "https",
-      "server": "frps..example.com.com"
+      "server": "frps.palette.example.com.com"
     }
   ```
 
@@ -177,7 +177,7 @@ Use the following steps to configure a reverse proxy server for Palette.
         "clientKey": "-----BEGIN RSA PRIVATE KEY-----\n............\n-----END RSA PRIVATE KEY-----\n",
         "port": 443,
         "protocol": "https",
-        "server": "frps..example.com.com"
+        "server": "frps.palette.example.com.com"
     }'
   ```
 
