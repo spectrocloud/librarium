@@ -143,7 +143,7 @@ The API rate limits are as follows:
 
 
 
-* API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can find a list of all resource types in the [API documentation](v1/palette-apis-4-0.info.mdx). The requests are counted together if you make multiple requests to the same resource type but use different sub-resources. For example, if you make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are counted together as ten requests to the resource `clusterprofiles`.
+* API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can find a list of all resource types in the [API documentation](v1/palette-apis-3-4.info.mdx). The requests are counted together if you make multiple requests to the same resource type but use different sub-resources. For example, if you make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are counted together as ten requests to the resource `clusterprofiles`.
 
 
 * If too many requests are issued, you may receive an error with HTTP code `429` - `TooManyRequests.` We recommend retrying the API call after a few moments. 
