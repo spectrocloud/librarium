@@ -36500,41 +36500,6 @@
     "version": "v1"
   },
   "paths": {
-    "/cluster/{uid}/manifest": {
-      "get": {
-        "description": "Deprecated",
-        "operationId": "v1SpectroClustersUidInstallerManifest",
-        "produces": [
-          "application/octet-stream"
-        ],
-        "responses": {
-          "200": {
-            "description": "download file",
-            "headers": {
-              "Content-Disposition": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "format": "binary",
-              "type": "string"
-            }
-          }
-        },
-        "summary": "Returns the specified cluster's installer manifest file",
-        "tags": [
-          "cluster"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
     "/v1/apiKeys": {
       "get": {
         "operationId": "v1ApiKeysList",
@@ -37796,34 +37761,6 @@
           }
         },
         "summary": "Authenticates the user for the specified crendentials",
-        "tags": [
-          "auth"
-        ]
-      }
-    },
-    "/v1/auth/login": {
-      "post": {
-        "description": "Deprecated. Returns the authentication type for the specified user email id",
-        "operationId": "v1AuthLogin",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1Login"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1AuthLogins"
-            }
-          }
-        },
-        "summary": "Deprecated. Returns the authentication type for the specified user email id",
         "tags": [
           "auth"
         ]
@@ -45213,156 +45150,6 @@
         ]
       }
     },
-    "/v1/cloudconfigs/{cloudType}/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}/maintenance": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "all",
-          "description": "Cloud type",
-          "enum": [
-            "all",
-            "aws",
-            "azure",
-            "gcp",
-            "vsphere",
-            "openstack",
-            "maas",
-            "nested",
-            "baremetal",
-            "eks",
-            "aks",
-            "edge",
-            "edge-native",
-            "libvirt",
-            "tencent",
-            "tke",
-            "coxedge",
-            "generic",
-            "gke"
-          ],
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsMachinePoolsMachineUidMaintenanceUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1MachineMaintenance"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified machine maintenance",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/{cloudType}/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}/maintenance/status": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "default": "all",
-          "description": "Cloud type",
-          "enum": [
-            "all",
-            "aws",
-            "azure",
-            "gcp",
-            "vsphere",
-            "openstack",
-            "maas",
-            "nested",
-            "baremetal",
-            "eks",
-            "aks",
-            "edge",
-            "edge-native",
-            "libvirt",
-            "tencent",
-            "tke",
-            "coxedge",
-            "generic",
-            "gke"
-          ],
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsMachinePoolsMachineUidMaintenanceStatusUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1MachineMaintenanceStatus"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified machine maintenance",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
     "/v1/cloudconfigs/{configUid}/machinePools/machineUids": {
       "get": {
         "operationId": "v1CloudConfigsMachinePoolsMachineUidsGet",
@@ -46083,45 +45870,6 @@
           }
         },
         "summary": "Validate the AWS S3 bucket",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/aws/securitygroups": {
-      "get": {
-        "operationId": "V1AwsSecurityGroups",
-        "parameters": [
-          {
-            "description": "Uid for the specific AWS cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "Region for which security groups are requested",
-            "in": "query",
-            "name": "region",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Vpc Id for which security groups are requested",
-            "in": "query",
-            "name": "vpcId",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AwsSecurityGroups"
-            }
-          }
-        },
-        "summary": "Retrieves a list of AWS security groups for the specified account",
         "tags": [
           "clouds"
         ]
@@ -47010,37 +46758,6 @@
         ]
       }
     },
-    "/v1/clouds/gcp/azs/validate": {
-      "post": {
-        "operationId": "V1GcpAzValidate",
-        "parameters": [
-          {
-            "description": "Uid for the specific GCP cloud account",
-            "in": "body",
-            "name": "entity",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1AzValidateEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Validate the specified GCP az",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
     "/v1/clouds/gcp/bucketname/validate": {
       "post": {
         "operationId": "V1GcpBucketNameValidate",
@@ -47268,44 +46985,6 @@
           }
         },
         "summary": "Retrieves a list of GCP zones for the specified account and region",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/gcp/projects/{project}/validate": {
-      "post": {
-        "operationId": "V1GcpProjectValidate",
-        "parameters": [
-          {
-            "description": "GCP project uid",
-            "in": "path",
-            "name": "project",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Uid for the specific GCP cloud account",
-            "in": "body",
-            "name": "cloudAccountUid",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CloudAccountUidEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Validate the specified GCP project",
         "tags": [
           "clouds"
         ]
@@ -48500,38 +48179,6 @@
         }
       ]
     },
-    "/v1/clustergroups/{uid}/clusters": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "description": "Deprecated: Use PUT /v1/clustergroups/{uid}/hostCluster",
-        "operationId": "v1ClusterGroupsUidClustersUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterGroupClusterRefs"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified cluster groups clusters",
-        "tags": [
-          "clustergroups"
-        ]
-      }
-    },
     "/v1/clustergroups/{uid}/hostCluster": {
       "parameters": [
         {
@@ -48558,38 +48205,6 @@
           }
         },
         "summary": "Updates cluster reference and host cluster config",
-        "tags": [
-          "clustergroups"
-        ]
-      }
-    },
-    "/v1/clustergroups/{uid}/hostCluster/config": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "description": "Deprecated: Use PUT /v1/clustergroups/{uid}/hostCluster",
-        "operationId": "v1ClusterGroupsUidHostClusterConfigUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterGroupClustersConfig"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the host cluster config in cluster group",
         "tags": [
           "clustergroups"
         ]
@@ -48627,63 +48242,6 @@
       }
     },
     "/v1/clusterprofiles": {
-      "get": {
-        "description": "Deprecated: Use POST /v1/dashboard/clusterprofiles",
-        "operationId": "v1ClusterProfilesList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cluster profile items",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfiles"
-            }
-          }
-        },
-        "summary": "Retrieves a list of cluster profiles",
-        "tags": [
-          "clusterprofiles"
-        ]
-      },
       "post": {
         "operationId": "v1ClusterProfilesCreate",
         "parameters": [
@@ -50142,53 +49700,6 @@
       }
     },
     "/v1/dashboard/projects": {
-      "get": {
-        "description": "Deprecated: Use POST /v1/dashboard/projects",
-        "operationId": "v1ProjectsSummary",
-        "parameters": [
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "default": 60,
-            "description": "Metric period in minutes defines latest metrics by period",
-            "format": "int32",
-            "in": "query",
-            "name": "metricPeriod",
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of project summary items",
-            "schema": {
-              "$ref": "#/definitions/v1ProjectsSummary"
-            }
-          }
-        },
-        "summary": "Retrieves a list of project summary",
-        "tags": [
-          "dashboard"
-        ]
-      },
       "post": {
         "operationId": "v1ProjectsFilterSummary",
         "parameters": [
@@ -50254,54 +49765,6 @@
           }
         },
         "summary": "Retrieves a list of projects metadata",
-        "tags": [
-          "dashboard"
-        ]
-      }
-    },
-    "/v1/dashboard/spectroclusters": {
-      "post": {
-        "description": "Deprecated: Use POST /v1/dashboard/spectroclusters/search",
-        "operationId": "v1SpectroClustersFilterSummary",
-        "parameters": [
-          {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "maximum": 20,
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterSummarySpec"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cluster summary items",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClustersSummary"
-            }
-          }
-        },
-        "summary": "Retrieves a list of cluster summary with provided filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "tags": [
           "dashboard"
         ]
@@ -52177,35 +51640,6 @@
         ]
       }
     },
-    "/v1/edgehosts/{uid}/reset": {
-      "parameters": [
-        {
-          "description": "Edge host uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "V1EdgeHostsUidReset",
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Reset the cluster through edge host",
-        "tags": [
-          "edgehosts"
-        ]
-      }
-    },
     "/v1/edgehosts/{uid}/spc/download": {
       "get": {
         "operationId": "v1EdgeHostDevicesUidSpcDownload",
@@ -52633,29 +52067,6 @@
           "filters"
         ]
       }
-    },
-    "/v1/installers/spectro/vsphere/{uid}": {
-      "delete": {
-        "description": "Deprecated: please use the generic api",
-        "operationId": "v1SpectroInstallerDeleteDeprecated",
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "summary": "Deletes the spectroinstaller entity",
-        "tags": [
-          "installers"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
     },
     "/v1/metrics/{resourceKind}/values": {
       "get": {
@@ -53288,31 +52699,6 @@
         ]
       }
     },
-    "/v1/overlords/maas/{uid}/clusterprofile": {
-      "get": {
-        "operationId": "v1OverlordsUidMaasClusterProfile",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfile"
-            }
-          }
-        },
-        "summary": "Returns the specified maas private gateway cluster profile",
-        "tags": [
-          "overlords"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
     "/v1/overlords/migrate": {
       "post": {
         "operationId": "V1OverlordsMigrate",
@@ -53523,31 +52909,6 @@
           "overlords"
         ]
       }
-    },
-    "/v1/overlords/openstack/{uid}/clusterprofile": {
-      "get": {
-        "operationId": "v1OverlordsUidOpenStackClusterProfile",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfile"
-            }
-          }
-        },
-        "summary": "Returns the specified OpenStack private gateway cluster profile",
-        "tags": [
-          "overlords"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
     },
     "/v1/overlords/pairing/code": {
       "get": {
@@ -53782,31 +53143,6 @@
           "overlords"
         ]
       }
-    },
-    "/v1/overlords/vsphere/{uid}/clusterprofile": {
-      "get": {
-        "operationId": "v1OverlordsUidVsphereClusterProfile",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterProfile"
-            }
-          }
-        },
-        "summary": "Returns the specified vsphere private gateway cluster profile",
-        "tags": [
-          "overlords"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
     },
     "/v1/overlords/vsphere/{uid}/pools": {
       "get": {
@@ -54246,53 +53582,6 @@
           "in": "query",
           "name": "layer",
           "type": "string"
-        },
-        {
-          "description": "Comma seperated pack states. Example values are \"deprecated\" \"deprecated,disabled\". If states is not specified or empty then by default API will return all packs except \"disabled\" packs",
-          "in": "query",
-          "name": "states",
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/packs/{packUid}/logo": {
-      "get": {
-        "operationId": "v1PacksPackUidLogo",
-        "produces": [
-          "image/png",
-          "image/gif",
-          "image/jpeg"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "headers": {
-              "Cache-Control": {
-                "description": "Cache control directive for the response",
-                "type": "string"
-              },
-              "Expires": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "format": "binary",
-              "type": "string"
-            }
-          }
-        },
-        "summary": "Returns the logo for a specified pack",
-        "tags": [
-          "packs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Pack uid",
-          "in": "path",
-          "name": "packUid",
-          "required": true,
-          "type": "string"
         }
       ]
     },
@@ -54482,63 +53771,6 @@
       }
     },
     "/v1/projects": {
-      "get": {
-        "description": "Deprecated: Use POST /v1/dashboard/projects",
-        "operationId": "v1ProjectsList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of projects",
-            "schema": {
-              "$ref": "#/definitions/v1Projects"
-            }
-          }
-        },
-        "summary": "Retrieves a list of projects",
-        "tags": [
-          "projects"
-        ]
-      },
       "post": {
         "operationId": "v1ProjectsCreate",
         "parameters": [
@@ -55512,37 +54744,6 @@
         ]
       }
     },
-    "/v1/registries/oci/basic/validate": {
-      "post": {
-        "description": "Returns no contents if oci registry is valid else error.",
-        "operationId": "v1BasicOciRegistriesValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1BasicOciRegistrySpec"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Check if oci registry is valid",
-        "tags": [
-          "registries"
-        ]
-      }
-    },
     "/v1/registries/oci/ecr": {
       "post": {
         "operationId": "v1EcrRegistriesCreate",
@@ -55570,54 +54771,6 @@
           }
         },
         "summary": "Creates a ecr registry",
-        "tags": [
-          "registries"
-        ]
-      }
-    },
-    "/v1/registries/oci/ecr/validate": {
-      "post": {
-        "description": "Returns no contents if ecr registry is valid else error.",
-        "operationId": "v1EcrRegistriesValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1EcrRegistrySpec"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Check if ecr registry is valid",
-        "tags": [
-          "registries"
-        ]
-      }
-    },
-    "/v1/registries/oci/image": {
-      "get": {
-        "operationId": "v1OciImageRegistryGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1OciImageRegistry"
-            }
-          }
-        },
-        "summary": "Creates a image registry",
         "tags": [
           "registries"
         ]
@@ -55728,61 +54881,6 @@
         ]
       }
     },
-    "/v1/registries/oci/{uid}/basic/sync": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "description": "Sync all the content from the oci registry",
-        "operationId": "v1BasicOciRegistriesUidSync",
-        "responses": {
-          "202": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Sync oci registry",
-        "tags": [
-          "registries"
-        ]
-      }
-    },
-    "/v1/registries/oci/{uid}/basic/sync/status": {
-      "get": {
-        "description": "Get sync status for the oci specified registry",
-        "operationId": "v1BasicOciRegistriesUidSyncStatus",
-        "responses": {
-          "200": {
-            "description": "Oci registry sync status",
-            "schema": {
-              "$ref": "#/definitions/v1RegistrySyncStatus"
-            }
-          }
-        },
-        "summary": "Get oci registry sync status",
-        "tags": [
-          "registries"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
     "/v1/registries/oci/{uid}/ecr": {
       "delete": {
         "operationId": "v1EcrRegistriesUidDelete",
@@ -55840,61 +54938,6 @@
           "registries"
         ]
       }
-    },
-    "/v1/registries/oci/{uid}/ecr/sync": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "description": "Sync all the content from the ecr registry",
-        "operationId": "v1EcrRegistriesUidSync",
-        "responses": {
-          "202": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Sync ecr registry",
-        "tags": [
-          "registries"
-        ]
-      }
-    },
-    "/v1/registries/oci/{uid}/ecr/sync/status": {
-      "get": {
-        "description": "Get sync status for the ecr specified registry",
-        "operationId": "v1EcrRegistriesUidSyncStatus",
-        "responses": {
-          "200": {
-            "description": "Ecr registry sync status",
-            "schema": {
-              "$ref": "#/definitions/v1RegistrySyncStatus"
-            }
-          }
-        },
-        "summary": "Get ecr registry sync status",
-        "tags": [
-          "registries"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
     },
     "/v1/registries/pack": {
       "get": {
@@ -56581,65 +55624,6 @@
         "summary": "Returns a service manifest for a given service name and version",
         "tags": [
           "services"
-        ]
-      }
-    },
-    "/v1/spectroclusters": {
-      "get": {
-        "description": "Deprecated: Use POST /v1/dashboard/spectroclusters",
-        "operationId": "v1SpectroClustersList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cluster items",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusters"
-            }
-          }
-        },
-        "summary": "Retrieves a list of clusters",
-        "tags": [
-          "spectroclusters"
         ]
       }
     },
@@ -58796,41 +57780,6 @@
         ]
       }
     },
-    "/v1/spectroclusters/{uid}/assets/adminKubeconfig": {
-      "get": {
-        "operationId": "v1SpectroClustersUidAdminKubeConfig",
-        "produces": [
-          "application/octet-stream"
-        ],
-        "responses": {
-          "200": {
-            "description": "download file",
-            "headers": {
-              "Content-Disposition": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "format": "binary",
-              "type": "string"
-            }
-          }
-        },
-        "summary": "Returns the specified cluster's kube config file",
-        "tags": [
-          "spectroclusters"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
     "/v1/spectroclusters/{uid}/assets/frpKubeconfig": {
       "delete": {
         "operationId": "v1SpectroClustersUidFrpKubeConfigDelete",
@@ -59106,38 +58055,6 @@
           }
         },
         "summary": "Deprecated. Updates the specified cluster's Cluster Role bindings",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/{uid}/clusterConfig/controlPlaneHealthCheckTimeout": {
-      "parameters": [
-        {
-          "description": "Cluster uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "patch": {
-        "operationId": "V1ControlPlaneHealthCheckTimeoutUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1ControlPlaneHealthCheckTimeoutEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified cluster controlPlane health check timeout",
         "tags": [
           "spectroclusters"
         ]
@@ -60944,40 +59861,6 @@
         ]
       }
     },
-    "/v1/spectroclusters/{uid}/packs/{packName}/config": {
-      "get": {
-        "description": "Deprecated",
-        "operationId": "v1SpectroClustersUidPacksConfigGet",
-        "parameters": [
-          {
-            "description": "cluster uid",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "pack name",
-            "in": "path",
-            "name": "packName",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cluster pack values",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterPackConfigList"
-            }
-          }
-        },
-        "summary": "Returns the specified cluster's pack configuration",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
     "/v1/spectroclusters/{uid}/profile": {
       "parameters": [
         {
@@ -62568,63 +61451,6 @@
       }
     },
     "/v1/teams/summary": {
-      "get": {
-        "description": "Deprecated, Use Post api - Returns a list of team summaries",
-        "operationId": "v1TeamsSummary",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1TeamsSummary"
-            }
-          }
-        },
-        "summary": "Retrieves a list of team summary",
-        "tags": [
-          "teams"
-        ]
-      },
       "post": {
         "operationId": "v1TeamsSummaryGet",
         "parameters": [
@@ -63162,58 +61988,6 @@
         ]
       }
     },
-    "/v1/tenants/{tenantUid}/authTokenSettings": {
-      "get": {
-        "operationId": "v1TenantUidAuthTokenSettingsGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1AuthTokenSettings"
-            }
-          }
-        },
-        "summary": "Get tenant auth token settings",
-        "tags": [
-          "tenants"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "tenantUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1TenantUidAuthTokenSettingsUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1AuthTokenSettings"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Update tenant auth token settings",
-        "tags": [
-          "tenants"
-        ]
-      }
-    },
     "/v1/tenants/{tenantUid}/contract/accept": {
       "parameters": [
         {
@@ -63600,58 +62374,6 @@
         }
       ]
     },
-    "/v1/tenants/{tenantUid}/loginBanner": {
-      "get": {
-        "operationId": "v1TenantUidLoginBannerGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1LoginBannerSettings"
-            }
-          }
-        },
-        "summary": "Get tenant login banner settings",
-        "tags": [
-          "tenants"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "tenantUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1TenantUidLoginBannerUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1LoginBannerSettings"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Update tenant login banner settings",
-        "tags": [
-          "tenants"
-        ]
-      }
-    },
     "/v1/tenants/{tenantUid}/macros": {
       "delete": {
         "operationId": "v1TenantsUidMacrosDeleteByMacroName",
@@ -64024,58 +62746,6 @@
           }
         },
         "summary": "update developer credit for a specific tenant",
-        "tags": [
-          "tenants"
-        ]
-      }
-    },
-    "/v1/tenants/{tenantUid}/preferences/fips": {
-      "get": {
-        "operationId": "v1TenantFipsSettingsGet",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1FipsSettings"
-            }
-          }
-        },
-        "summary": "Get tenant fips settings",
-        "tags": [
-          "tenants"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "tenantUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1TenantFipsSettingsUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1FipsSettings"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "summary": "Update tenant fips setting",
         "tags": [
           "tenants"
         ]
@@ -65202,45 +63872,6 @@
       }
     },
     "/v1/users/summary": {
-      "get": {
-        "description": "Deprecated, Use Post api - Returns a list of user summaries",
-        "operationId": "v1UsersSummary",
-        "parameters": [
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1UsersSummary"
-            }
-          }
-        },
-        "summary": "Returns the specified user summary list",
-        "tags": [
-          "users"
-        ]
-      },
       "post": {
         "operationId": "v1UsersSummaryGet",
         "parameters": [
@@ -66247,38 +64878,6 @@
         ]
       }
     },
-    "/v1/workspaces/{uid}/resourceAllocations": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "description": "Deprecated",
-        "operationId": "v1WorkspacesUidResourceAllocationsUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1WorkspaceResourceAllocationsEntity"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "summary": "Updates the specified workspace resource allocations",
-        "tags": [
-          "workspaces"
-        ]
-      }
-    },
     "/v1/workspaces/{uid}/restore": {
       "get": {
         "operationId": "v1WorkspaceOpsRestoreGet",
@@ -66362,10 +64961,6 @@
   "swagger": "2.0",
   "tags": [
     {
-      "name": "cluster",
-      "x-displayName": "Cluster"
-    },
-    {
       "name": "apiKeys",
       "x-displayName": "Api Keys"
     },
@@ -66424,10 +65019,6 @@
     {
       "name": "filters",
       "x-displayName": "Filters"
-    },
-    {
-      "name": "installers",
-      "x-displayName": "Installers"
     },
     {
       "name": "metrics",
