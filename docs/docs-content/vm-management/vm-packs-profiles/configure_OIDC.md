@@ -4,22 +4,22 @@ title: "Configure OIDC"
 description: "Learn how to configure OIDC so Palette displays the Spectro VM Dashboard."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 15
 tags: ["vmo", "oidc"]
 ---
 
 
-Palette displays the Virtual Machine dashboard based on OpenID Connect (OIDC) Identity Provider options that you enable in the Kubernetes layer of the infrastructure profile.
 
-<!-- Palette displays the VM dashboard based on OpenID Connect (OIDC) Identity Provider options that you enable in the Kubernetes layer of the cluster profile you apply to your Virtual Machine Orchestrator (VMO) cluster. -->
+
+Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC) Identity Provider option that you select in the Kubernetes layer of the infrastructure profile.
 
 
 ## Prerequisites
 
-- A configured cluster profile. For more information, review [Create a Cluster Profile](/cluster-profiles/task-define-profile).
+- A configured infrastructure profile. For more information, review [Create a Cluster Profile](/cluster-profiles/task-define-profile).
 
 
-## Configure OIDC Options
+## Enable OIDC
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -27,7 +27,17 @@ Palette displays the Virtual Machine dashboard based on OpenID Connect (OIDC) Id
 
 3. Select the cluster profile to update. Palette displays profile details and the profile stack.
 
-4. Select the Kubernetes layer in the profile stack, and choose **None** or **Palette** as the OIDC Identity Provider.
+4. Select the Kubernetes layer in the profile stack, and choose an OIDC Identity Provider. Refer to [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more about OIDC options.
+
+  Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
+
+  Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
+
+  :::caution
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
+
+  :::
 
 5. Click **Confirm Updates**. 
 

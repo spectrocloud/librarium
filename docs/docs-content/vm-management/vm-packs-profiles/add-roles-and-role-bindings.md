@@ -16,10 +16,6 @@ You must configure permissions for actions that users can perform on Virtual Mac
 
 - A cluster profile with the **Virtual Machine Orchestrator** add-on pack configured. Check out the [Create a VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) guide to learn more.
 
-
-- Two defined cluster role bindings for every user: ``spectro-list-namespaces``and ``spectro-list-vmtemplates``.
-
-
 - Additional cluster roles, based on the user's persona, must be associated with the user by specifying a cluster role binding or a namespace-restricted role binding:
 
     - ``spectro-vm-admin``
@@ -28,7 +24,6 @@ You must configure permissions for actions that users can perform on Virtual Mac
     - ``spectro-vm-viewer``
 
     Alternatively, you can use standard Kubernetes roles ``cluster-admin``, ``admin``, ``edit``, and ``view`` instead of defining bindings based on ``spectro-vm-*`` roles.
-
 
 - Assigned permissions to access Palette clusters. 
 
