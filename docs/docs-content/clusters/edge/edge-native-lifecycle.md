@@ -36,4 +36,4 @@ If the edge location configuration is known and predictable, then the IT/Ops tea
 
 ## Next Steps
 
-Now that you have an understanding of the deployment lifecycle, start the deployment of your Edge host by reviewing the [Site Deployment](/clusters/edge/site-deployment) instructions.
+Now that you have an understanding of the deployment lifecycle, start the deployment of your Edge host by reviewing the [Site Deployment](site-deployment/site-deployment.md) instructions.

@@ -34,7 +34,7 @@ The diagram below displays the overarching steps to build the Edge installer ISO
 
 :::caution
 
-  This how-to guide extends the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) workflow. Therefore, you must complete it before proceeding with the current guide. 
+  This how-to guide extends the [Build Edge Artifacts](palette-canvos.md) workflow. Therefore, you must complete it before proceeding with the current guide. 
 
 :::
   
@@ -54,10 +54,10 @@ To complete this guide, you will need the following items:
   - 100 GB storage. The actual storage will depend on the size of the content bundle you will use to build the Edge installer ISO image.
 
 
-* You must have completed the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to build the provider images and create a cluster profile referencing one of the provider images. 
+* You must have completed the [Build Edge Artifacts](palette-canvos.md) guide to build the provider images and create a cluster profile referencing one of the provider images. 
 
 
-* A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with Palette. Refer to the [User Authentication](https://docs.spectrocloud.com/user-management/user-authentication/#apikey) guide to create a new API key. 
+* A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with Palette. Refer to the [User Authentication](../../../user-management/user-authentication.md/#api-key) guide to create a new API key. 
 
 
 ## Instructions
@@ -65,7 +65,7 @@ To complete this guide, you will need the following items:
 Use the following instructions on your Linux machine, which this guide refers to as the development environment. 
 
 
-1.  Visit the [Downloads](https://docs.spectrocloud.com/spectro-downloads#paletteedgecli) page and download the latest Palette Edge CLI. You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL. 
+1.  Visit the [Downloads](../../../spectro-downloads#palette-edge-cli) page and download the latest Palette Edge CLI. You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL. 
 <br />
 
   ```bash
@@ -189,7 +189,7 @@ Use the following instructions on your Linux machine, which this guide refers to
   
 
 
-15. Use the command below to list all files in the current directory to verify that you created the content bundle successfully. The content bundle will have the following naming convention, `content-[randon-string]`, for example, **content-8e61a9e5**. 
+15. Use the command below to list all files in the current directory to verify that you created the content bundle successfully. The content bundle will have the following naming convention, `content-[random-string]`, for example, **content-8e61a9e5**. 
 <br />
 
   ```bash
@@ -235,7 +235,7 @@ palette-edge-installer.iso.sha256
 ```
 <br />
 
-To validate, you can prepare an edge device using the Edge installer ISO. You can follow the [Prepare Edge Host for Installation](/clusters/edge/site-deployment/stage) guide if you prepare a bare metal machine or a VMware VM as a host. Below are the high-level steps for your reference:
+To validate, you can prepare an edge device using the Edge installer ISO. You can follow the [Prepare Edge Host for Installation](../site-deployment/stage.md) guide if you prepare a bare metal machine or a VMware VM as a host. Below are the high-level steps for your reference:
 <br />
 
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive will validate the ISO image.
@@ -247,7 +247,7 @@ To validate, you can prepare an edge device using the Edge installer ISO. You ca
 3. Flash the edge device with a bootable USB drive. 
 
 
-4. The last step is to power on the edge device and start the installation process. For more information, refer to the [Perform Site Install](/clusters/edge/site-deployment/site-installation) documentation.
+4. The last step is to power on the edge device and start the installation process. For more information, refer to the [Perform Site Install](../site-deployment/site-installation/site-installation.md) documentation.
 <br />
 
 ## Next Steps
@@ -256,13 +256,13 @@ Palette's Edge solution allows you to create Edge artifacts using a content bund
 
 
 
-As the next step, we recommend you check out the end-to-end tutorial, [Deploy an Edge Cluster on VMware](/clusters/edge/site-deployment/deploy-cluster). The tutorial provides a detailed walkthrough on deploying an Edge cluster in a VMware environment. 
+As the next step, we recommend you check out the end-to-end tutorial, [Deploy an Edge Cluster on VMware](../site-deployment/deploy-cluster.md). The tutorial provides a detailed walkthrough on deploying an Edge cluster in a VMware environment. 
 
 
 Check out the reference resources below to learn more about preparing an Edge host. 
 
 
-- [Prepare Edge Host for Installation](/clusters/edge/site-deployment/stage)
+- [Prepare Edge Host for Installation](../site-deployment/stage.md)
 
 
-- [Perform Site Install](/clusters/edge/site-deployment/site-installation) 
+- [Perform Site Install](../site-deployment/site-installation/site-installation.md) 

@@ -12,15 +12,15 @@ sidebar_position: 20
 
 # Add a Custom Pack
 
-Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](/registries-and-packs/spectro-cli-reference).
+Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](spectro-cli-reference.md).
 
 ## Prerequsites
 
 The following items are required to create a custom pack.
 
-- [Spectro Cloud CLI](/registries-and-packs/spectro-cli-reference)
+- [Spectro Cloud CLI](spectro-cli-reference.md)
 - A Spectro Cloud [account](https://www.spectrocloud.com/)
-- [Custom Pack registry](/registries-and-packs/adding-a-custom-registry)
+- [Custom Pack registry](adding-a-custom-registry.md)
 
 ## JSON Schema
 

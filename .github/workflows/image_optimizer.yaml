@@ -28,7 +28,9 @@ jobs:
   image-optimizer:
     name: Image Optimization
     needs: [run-ci]
-    runs-on: ubuntu-latest
+    runs-on: 
+      group: Default
+      labels: docbot
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository

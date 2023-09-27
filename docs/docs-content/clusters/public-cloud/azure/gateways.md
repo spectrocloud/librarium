@@ -92,7 +92,7 @@ az aks create \
 
 6. Security: For network security enable **Private cluster**.
 
-In Azure CNI network configuration, select the static [virtual network created](/clusters/public-cloud/azure/gateways#createanazurevirtualnetworkintheazureconsole) from the drop-down menu. 
+In Azure CNI network configuration, select the static [virtual network created](gateways#create-a-virtual-network-in-the-azure-console) from the drop-down menu. 
 
 <br />
 
@@ -171,7 +171,7 @@ After getting connected to the Bastion host, establish a connection to the Targe
     kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
   ```
 
-6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migration](/enterprise-version/enterprise-cluster-management#palettepcgmigration) for the public cloud self-hosted PCGs as well. 
+6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migration](../../../enterprise-version/enterprise-cluster-management.md#palette-pcg-migration) for the public cloud self-hosted PCGs as well. 
 
   :::info
 
@@ -181,4 +181,4 @@ After getting connected to the Bastion host, establish a connection to the Targe
 
 ## Attach the Self Hosted PCG to the Azure Cloud Account
 
-The self-hosted PCG can be attached to an existing Azure Palette cloud account or while creating a new Azure Palette cloud account. Refer to the [Azure Cloud Account](/clusters/public-cloud/azure#creatinganazurecloudaccount) creation. 
+The self-hosted PCG can be attached to an existing Azure Palette cloud account or while creating a new Azure Palette cloud account. Refer to the [Azure Cloud Account](azure-cloud.md) creation. 

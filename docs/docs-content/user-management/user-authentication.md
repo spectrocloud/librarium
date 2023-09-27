@@ -12,11 +12,11 @@ tags: ["user-management"]
 
 Palette supports three types of user authentication methods. 
 
-* [User Interface (UI)](/user-management/user-authentication/#au-authentication) authentication
+* [User Interface (UI)](#ui-authentication) authentication
 
-* [API Key](#apikey)
+* [API Key](#api-key)
 
-* [Authorization Token](/user-management/user-authentication/#authorization-token)
+* [Authorization Token](#authorization-token)
 
 The API key and the authorization token method can be used when interacting with Palette REST APIs for automation and programmatic purposes.
 
@@ -129,7 +129,20 @@ You copy your API key from the Palette dashboard and use it for making REST API 
 
 ## Authorization Token
 
-<!-- * All requests must be authenticated with an API token that is passed using the HTTP request header `Authorization`.
-* Users can use the [`/auth/authenticate`](/api/v1/auth) API to authenticate and obtain the authorization token by supplying their username and password.
-* Every authorization token is valid for 15 min.
-* To refresh the token use: [`GET /v1/auth/refresh/{token}`](/api/v1/auth) -->
+You can use authorization tokens to authenticate requests. 
+
+To obtain an authorization token, use the `v1/auth/authenticate` endpoint with a POST request to authenticate and obtain the authorization token. Provide your API key as a header value or query parameter. The authorization token is valid for 15 minutes. You can refresh the token using the refresh token API.
+
+API requests using the authroization token must use the HTTP header `Authorization` with token as the value. For example:
+
+```bash
+TOKEN=abcd1234
+```
+
+```bash
+curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alert' \
+--header 'Authorization: $TOKEN' \
+--header 'Content-Type: application/json' 
+```
+
+To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request to refresh the authorization token.

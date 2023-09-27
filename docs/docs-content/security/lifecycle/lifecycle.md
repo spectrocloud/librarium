@@ -20,19 +20,7 @@ Our Security team reviews early in the design process and identifies real and po
 
 ## Resources
 
-- [Secure Development](/security/lifecycle/secure-development)
+- [Secure Development](secure-development.md)
 
 
-- [Release Process](/security/lifecycle/release-process)
-
-
-<br />
-
-
-<br />
-
-
-<br />
-
-
-<br />
+- [Release Process](release-process.md)

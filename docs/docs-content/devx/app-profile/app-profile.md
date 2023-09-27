@@ -8,9 +8,9 @@ tags: ["devx", "app mode", "pde"]
 
 App Profiles are templates created with pre-configured services required for Palette Virtual Cluster deployment. App Profiles provide a way to drive consistency across virtual clusters. 
 
-You create App Profiles to meet specific types of workloads on your Palette [virtual clusters](/devx/palette-virtual-clusters). You can use containers, Helm Charts, custom manifest, containers, and other out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](/devx/app-profile/services) documentation to learn more about the available services.  
+You create App Profiles to meet specific types of workloads on your Palette [virtual clusters](../palette-virtual-clusters/palette-virtual-clusters.md). You can use containers, Helm Charts, custom manifest, containers, and other out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](services/services.md) documentation to learn more about the available services.  
 
-You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](/devx/app-profile/services).
+You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](../app-profile/services/services.md).
 
 
 :::caution
@@ -26,12 +26,12 @@ namespace: yourNameHere
 
 ## Get Started
 
-Get started today by learning how to create your [App Profile](/devx/app-profile/create-app-profile).
+Get started today by learning how to create your [App Profile](create-app-profile.md).
 
 ## Resources
-- [Create an App Profile](/devx/app-profile/create-app-profile)
-- [Container Deployment](/devx/app-profile/container-deployment)
-- [App Profile Macros](/devx/app-profile/app-profile-macros)
-- [App Profile Cloning](/devx/app-profile/app-profile-cloning)
-- [App Profile Versioning](/devx/app-profile/versioning-app-profile)
+- [Create an App Profile](create-app-profile.md)
+- [Container Deployment](container-deployment.md)
+- [App Profile Macros](app-profile-macros.md)
+- [App Profile Cloning](app-profile-cloning.md)
+- [App Profile Versioning](versioning-app-profile.md)
 

@@ -50,7 +50,7 @@ The following attributes are non-editable during versioning:
 
 ### Create Version
 
-1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.
@@ -71,7 +71,7 @@ The following attributes are non-editable during versioning:
 
 To validate the App Profile is versioned and available in the target project conduct the following steps:
 
-1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.     
@@ -87,7 +87,7 @@ To validate the App Profile is versioned and available in the target project con
 
 ### Delete Profile
 
-1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.
@@ -106,7 +106,7 @@ To validate the App Profile is versioned and available in the target project con
 
 To validate the App Profile is removed and not available in the target project, conduct the following steps:
 
-1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.   
@@ -129,7 +129,7 @@ App Profile changes will generate an update notification on all the Apps that ar
 
 To apply updates to an App follow the below steps:
 
-1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **App Profiles** option from the left **Main Menu**.
@@ -155,7 +155,7 @@ To apply updates to an App follow the below steps:
 
 To validate that the App profile updates are implemented on the target app, conduct the following steps:
 
-1. Log in to [Palette](/devx#quickstartwithpaletteappmode)
+1. Log in to [Palette](https://console.spectrocloud.com)
 
 
 2. Select the **Apps** option from the left **Main Menu**.

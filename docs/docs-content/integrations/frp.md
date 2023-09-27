@@ -31,13 +31,13 @@ The reverse proxy has a server component and a client component. The reverse pro
 - Any requests to the Kubernetes API server, such as kubectl commands, will be routed to the reverse proxy. The reverse proxy forwards the request to the intended client, which is the cluster's API server. The cluster's API server authenticates the request and replies with the proper response.
 
 
-You can attach this pack to a [cluster profile](/cluster-profiles). The pack installs the Spectro Proxy client in the workload clusters and configures the cluster's API server to point to a managed proxy server.
+You can attach this pack to a [cluster profile](../cluster-profiles/cluster-profiles.md). The pack installs the Spectro Proxy client in the workload clusters and configures the cluster's API server to point to a managed proxy server.
 
 <br />
 
 :::info
 
-This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the [Enable Kubernetes Dashboard](/clusters/cluster-management/kubernetes-dashboard) guide.
+This pack can be combined with the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the [Enable Kubernetes Dashboard](../clusters/cluster-management/kubernetes-dashboard.md) guide.
 
 :::
 
@@ -220,7 +220,7 @@ The VMware dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -296,7 +296,7 @@ Add the Spectro Proxy pack to a cluster profile without making any configuration
 :::info
 
 Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard.
-Review the [Enable Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide for more information.
+Review the [Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
 
 :::
 
@@ -339,7 +339,7 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -414,7 +414,7 @@ Add the Spectro Proxy pack to a cluster profile without making any configuration
 :::info
 
 Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard.
-Review the [Enable Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide for more information.
+Review the [Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
 
 :::
 
@@ -455,7 +455,7 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -530,7 +530,7 @@ Add the Spectro Proxy pack to a cluster profile without making any configuration
 :::info
 
 Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard.
-Review the [Enable Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide for more information.
+Review the [Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
 
 :::
 
@@ -563,7 +563,7 @@ The Spectro Proxy supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -638,7 +638,7 @@ Add the Spectro Proxy pack to a cluster profile without making any configuration
 :::info
 
 Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard.
-Review the [Enable Kubernetes Dashboard](/integrations/spectro-k8s-dashboard) guide for more information.
+Review the [Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
 
 :::
 
@@ -688,7 +688,7 @@ data "spectrocloud_pack_simple" "spectro-proxy" {
 
 # References
 
-- [Enable Kubernetes Dashboard](/clusters/cluster-management/kubernetes-dashboard)
+- [Enable Kubernetes Dashboard](../clusters/cluster-management/kubernetes-dashboard.md)
 
 
 - [Terraform Data Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)

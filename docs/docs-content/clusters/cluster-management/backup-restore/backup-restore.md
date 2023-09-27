@@ -12,13 +12,13 @@ Palette supports backup and restore capabilities for Kubernetes clusters.
 
 A backup is a persistent state of Kubernetes resources, ranging from objects such as Pods, DaemonSets, and Services to persistent volumes. A backup allows you to save the current state of a cluster and restore it at a later point in time if needed. You can restore a backup to the same or a different cluster. 
 
-You can schedule a backup of a specific cluster or an entire [workspace](/workspace). You can also maintain multiple backups of a cluster or workspace. 
+You can schedule a backup of a specific cluster or an entire [workspace](../../../workspace/workspace.md). You can also maintain multiple backups of a cluster or workspace. 
 
 
 ## Get Started
 
 
-To get started with creating a backup, check out the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guide.
+To get started with creating a backup, check out the [Add a Backup Location using Static Credentials](add-backup-location-static.md) or [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guide.
 
 
 :::info
@@ -82,13 +82,13 @@ To learn more about adding a backup location, check out the [Add a Backup Locati
 ## Resources
 
 
-- [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static)
+- [Add a Backup Location using Static Credentials](add-backup-location-static.md)
 
 
-- [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic)
+- [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md)
 
 
-- [Create a Cluster Backup](/clusters/cluster-management/backup-restore/create-cluster-backup)
+- [Create a Cluster Backup](create-cluster-backup.md)
 
 
-- [Restore a Cluster Backup](/clusters/cluster-management/backup-restore/restore-cluster-backup)
+- [Restore a Cluster Backup](restore-cluster-backup.md)

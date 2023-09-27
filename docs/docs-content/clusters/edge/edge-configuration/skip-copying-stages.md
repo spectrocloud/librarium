@@ -17,15 +17,15 @@ Suppose you must add sensitive information, such as credentials, in your user da
 
 - **Staging Phase** - In the staging phase, you prepare your edge hosts using the organization-level configurations. The configurations include the Edge Installer, the user data, and, optionally, a content bundle. You boot the edge hosts using the Edge Installer and apply the configurations. All the configurations, including the user data, are copied to the edge host during installation. 
 
-  Once the edge hosts are prepared with the initial installation, you ship your devices to the site for installation. This step is also called the *installer handoff* step. Refer to the [Prepare Edge Host](/clusters/edge/site-deployment/stage#prepareedgehost) guide to learn more about driving the installer handoff step.
+  Once the edge hosts are prepared with the initial installation, you ship your devices to the site for installation. This step is also called the *installer handoff* step. Refer to the [Prepare Edge Host](../site-deployment/stage.md#prepare-edge-host) guide to learn more about driving the installer handoff step.
 
 
 - **Site Installation Phase** - In the site installation phase, you use supplementary user data to apply site-specific configurations to the edge hosts. The user data is copied to the edge host during the installation unless you follow the specific naming convention for your user data stages as described below. 
 
- Refer to the [Multiple User Data Use Case](/clusters/edge/edgeforge-workflow/prepare-user-data#multipleuserdatausecase) guide to understand the use cases for applying supplementary user data. If you need to apply a supplementary user data, refer to the [Perform Site Install](/clusters/edge/site-deployment/site-installation) guide to learn the site installation process in detail. 
+ Refer to the [Multiple User Data Use Case](../edgeforge-workflow/prepare-user-data.md#multiple-user-data-use-case) guide to understand the use cases for applying supplementary user data. If you need to apply a supplementary user data, refer to the [Perform Site Install](../site-deployment/site-installation/site-installation.md) guide to learn the site installation process in detail. 
 
 
-In both steps mentioned above, the Edge Installer copies the user data configuration file provided to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. If you want to prevent some user data stages from getting copied to the edge host's storage, you can use a specific naming convention to disable the default copy behavior. However, be aware that different persistence behaviors apply depending on which stage of the Edge deployment life cycle you provide sensitive data in the user data configuration file. Refer to the [Sensitive Information in the Site Installation](#sensitiveinformationduringthesiteinstallation) section below to learn more.
+In both steps mentioned above, the Edge Installer copies the user data configuration file provided to the **/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. If you want to prevent some user data stages from getting copied to the edge host's storage, you can use a specific naming convention to disable the default copy behavior. However, be aware that different persistence behaviors apply depending on which stage of the Edge deployment life cycle you provide sensitive data in the user data configuration file. Refer to the [Sensitive Information in the Site Installation](#sensitive-information-in-the-site-installation) section below to learn more.
 <br />
 
 ## Sensitive Information in the Installer Handoff
@@ -55,15 +55,15 @@ For example, the `skip-copy-subscribe` stage below follows the `skip-copy-[strin
     {
       x: 300,
       y: 95,
-      label: 1,
+      label: 2,
       description: "This stage follows the `skip-copy-[string]` naming convention. Therefore, the Edge Installer will skip copying the stage to the edge host.",
       tooltipPlacement: "rightTop",
     },
     {
-      x: 735,
-      y: 192,
-      label: 2,
-      description: "You can transmit a sensitive information, such as credentials, in the stage.",
+      x: 95,
+      y: 30,
+      label: 1,
+      description: "You can transmit a sensitive information, such as credentials, in the stages section.",
     }
   ]}
 >

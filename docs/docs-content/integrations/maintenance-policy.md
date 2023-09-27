@@ -8,7 +8,7 @@ sidebar_position: 0
 tags: ["packs", "deprecation"]
 ---
 
-Palette supports two pack categories: *Core* and *Add-on*. Core packs, which we often source from third parties, are infrastructure related or have prominence in container-based environments. They create the layers in Palette profiles. Core packs are grouped as follows:
+Palette supports two pack categories: *Infrastructure* and *Add-on*. Infrastructure packs are often sourced from third parties and are infrastructure-related or support critical container-based environments. Packs are used to create layers in cluster profiles. Infrastructure packs are grouped as follows:
 
 - Kubernetes
 
@@ -36,13 +36,13 @@ Add-on packs provide additional functionality that you can add to your cluster p
 - System Apps
 
 
-Check out the [Packs List](/integrations) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
+Check out the [Packs List](integrations.mdx) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
 
 <br />
 
 ## Pack Updates
 
-Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each core pack category. 
+Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each infrastructure pack category. 
 
 <br />
 
@@ -119,7 +119,7 @@ We provide add-on pack updates as follows:
 - **Patch versions**: Added within 4 weeks of release.
 
 
-## Packs Deprecation
+## Pack Deprecations
 
 
 We deprecate and remove packs when a more stable version of the pack is available or when the underlying technology becomes obsolete. When a pack is deprecated, you will still be able to create new cluster profiles using the pack and deploy clusters that use profiles containing the pack.
@@ -152,7 +152,7 @@ We adhere to the following stages of deprecation:
 
 :::info
 
-For important guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
+For important guidelines on updating pack versions, review [Update the Pack Version](../cluster-profiles/task-update-profile.md#update-the-pack-version).
 
 :::
 

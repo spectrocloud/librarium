@@ -19,9 +19,9 @@ Cluster profiles are created by configuring various layers of the Kubernetes inf
     |**Parameter**  |**Description**  |
     |---------|---------|
     |**Name**     |    Give a name for the new cluster.     |
-    |**Version**    |   Include the [Cluster Profile Version](/cluster-profiles/task-define-profile#clusterprofileversioning) number for the cluster under which the cluster profile needs to be created.  See below for more information.      |
+    |**Version**    |   Include the [Cluster Profile Version](#clusterprofileversioning) number for the cluster under which the cluster profile needs to be created.  See below for more information.      |
     |**Description**     |   Provide quick description of your cluster. This is optional. |
-    |**Profile Type (Full, Infrastructure, Add-on)**| Dictates the layers that can be configured in the cluster profile.  If the cluster profile type is Infrastructure or Full, you are able to select a Cloud Type or Data Center environments. For more information on [Add-on](/cluster-profiles/task-define-profile#Addon) types go to step four.  |
+    |**Profile Type (Full, Infrastructure, Add-on)**| Dictates the layers that can be configured in the cluster profile.  If the cluster profile type is Infrastructure or Full, you are able to select a Cloud Type or Data Center environments. For more information on Add-on types go to step four.  |
     |**Tags**     |  Tags on a cluster profile are propagated to the VMs deployed on the cloud/data center environments when clusters are created from the cluster profile. This is optional.      |
 
 

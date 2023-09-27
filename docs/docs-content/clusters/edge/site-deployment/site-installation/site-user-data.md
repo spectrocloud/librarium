@@ -7,7 +7,7 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-You can provide site-specific Edge Installer configuration user data if you need to apply new values or override default values from the Edge Installer user data you created in the [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) step or, as often referenced, the *Installer Handoff* phase.
+You can provide site-specific Edge Installer configuration user data if you need to apply new values or override default values from the Edge Installer user data you created in the [Prepare Edge Hosts for Installation](../stage.md) step or, as often referenced, the *Installer Handoff* phase.
 
 Use the following steps to create an ISO file containing the additional user data. You will load the newly created ISO to a bootable device, such as a USB stick.
 
@@ -23,7 +23,7 @@ Use the following steps to create an ISO file containing the additional user dat
 
 1. Create a file called **user-data** that contains the additional configurations you want to override or inject.
 
-    <br />
+  <br />
 
   ```shell
   touch user-data
@@ -42,7 +42,7 @@ Use the following steps to create an ISO file containing the additional user dat
   MacOS/Linux:
 
   ```shell
-  mkisofs -output site-user data.iso -volid cidata -joliet -rock user data meta-data
+  mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
   ```
 
   Windows:
@@ -77,4 +77,4 @@ You can validate that the ISO image is not corrupted by attempting to flash a bo
 
 ## Next Steps
 
-Before you register your Edge host with Palette you must have a tenant registration token. Review the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide for steps on how to create a tenant registration token.
+Before you register your Edge host with Palette you must have a tenant registration token. Review the [Create Registration Token](create-registration-token.md) guide for steps on how to create a tenant registration token.

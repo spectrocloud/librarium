@@ -17,35 +17,35 @@ Use the following troubleshooting resources to help you address issues that may 
 
 <br />
 
-- [Kubernetes Debugging](/troubleshooting/kubernetes-tips)
+- [Kubernetes Debugging](kubernetes-tips.md)
 
 
-- [Cluster Deployment](/troubleshooting/cluster-deployment)
+- [Cluster Deployment](cluster-deployment.md)
 
 
-- [Nodes & Clusters](/troubleshooting/nodes)
+- [Nodes & Clusters](nodes.md)
 
 
-- [Packs](/troubleshooting/pack-issues)
+- [Packs](pack-issues.md)
 
 
-- [Palette Dev Engine](/troubleshooting/palette-dev-engine)
+- [Palette Dev Engine](palette-dev-engine.md)
 
 
-- [Edge](/troubleshooting/edge)
+- [Edge](edge.mdx)
 
 
-- [Private Cloud Gateway](/troubleshooting/pcg)
+- [Private Cloud Gateway](pcg.md)
 
 
-- [Palette Upgrade](/troubleshooting/palette-upgrade)
+- [Palette Upgrade](palette-upgrade.md)
 
 
 
 ## Download Cluster Logs
 At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud provides the ability to aggregate logs from the clusters it manages. Problems that occur during the orchestration life cycle may require access to the various containers, nodes, and Kube system logs. Spectro Cloud automates this log collection process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on the operator to login into various cluster nodes individually and fetch these logs.
 
-Follow the link for more details: [Download Cluster Logs](/clusters/#download-cluster-logs)
+Follow the link for more details: [Download Cluster Logs](../clusters/clusters.md#download-cluster-logs)
 
 ## Event Stream
 

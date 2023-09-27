@@ -9,8 +9,8 @@ tags: ["clusters", "cluster management"]
 
 Palette provides the following platform settings:
 
-* [Pause Platform Updates](/clusters/cluster-management/palette-lock-cluster#pauseplatformupdates)
-* [Auto Remediation](/clusters/cluster-management/palette-lock-cluster#autoremediation)
+* [Pause Platform Updates](#pause-platform-updates)
+* [Auto Remediation](#auto-remediation)
 
 ## Pause Platform Updates
 

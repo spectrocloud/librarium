@@ -16,7 +16,7 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
-  # The GATSBY_FULLSTORY_ORGID is removed so that preview builds don't get recorded in FullStory
+
 
 concurrency:
   group: preview-${{ github.ref }}
@@ -25,7 +25,9 @@ concurrency:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: 
+      group: Default
+      labels: docbot
 
     steps:
       - name: Check out repository

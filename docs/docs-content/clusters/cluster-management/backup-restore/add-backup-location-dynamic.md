@@ -8,7 +8,7 @@ tags: ["clusters", "cluster management", "backup"]
 ---
 
 
-This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](/clusters/cluster-management/backup-restore#backuplocation) section to learn more about the supported service providers.
+This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](backup-restore.md#backuplocation) section to learn more about the supported service providers.
 
 
 Depending on the infrastructure provider, there may be limitations or different prerequisites.
@@ -46,7 +46,7 @@ Use the following steps to add an S3 bucket as the backup location using the STS
 * Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to self-hosted Palette and Palette VerteX customers. Palette SaaS in hosted in an AWS environment. 
 
 
-* An AWS account. This account is assumed to be the same account where you deploy Kubernetes clusters. Refer to the [Multiple Cloud Accounts with AWS STS](/clusters/cluster-management/backup-restore/add-backup-location-dynamic#multiple-cloud-accounts-with-aws-sts) section to learn how to add a backup location when the cluster deployment cloud account differs from the backup cloud account. 
+* An AWS account. This account is assumed to be the same account where you deploy Kubernetes clusters. Refer to the [Multiple Cloud Accounts with AWS STS](add-backup-location-dynamic.md#multiple-cloud-accounts-with-aws-sts) section to learn how to add a backup location when the cluster deployment cloud account differs from the backup cloud account. 
  
 
 
@@ -207,7 +207,7 @@ Suppose your Kubernetes cluster is deployed in *AWS Account A*, and you want to 
 A multi-cloud account scenario requires you to perform the following authentication steps.
 
 
-1. Grant Palette access to the cluster in AWS Account A. When you register a primary cloud account in Palette, you authenticate and authorize Palette to deploy clusters in the cloud account. Check out the [Add AWS Account](/clusters/public-cloud/aws/add-aws-accounts) to guidance on how to add an AWS account in Palette. 
+1. Grant Palette access to the cluster in AWS Account A. When you register a primary cloud account in Palette, you authenticate and authorize Palette to deploy clusters in the cloud account. Check out the [Add AWS Account](../../public-cloud/aws/add-aws-accounts.md) to guidance on how to add an AWS account in Palette. 
 
 
 2. Give Palette permission to use the S3 buckets in AWS Account B. Set the bucket permissions and link them to an IAM role. Then, update the IAM role to let Palette assume it.
@@ -434,6 +434,6 @@ Use the following steps to validate adding the new backup location.
 
 ## Next Steps
 
-You can now use the newly added backup location to create a backup of your clusters or workspaces. Refer to the [Create a Backup](/clusters/cluster-management/backup-restore/create-cluster-backup) guide to learn how to create a backup of your clusters or workspaces.
+You can now use the newly added backup location to create a backup of your clusters or workspaces. Refer to the [Create a Backup](create-cluster-backup.md) guide to learn how to create a backup of your clusters or workspaces.
 
 

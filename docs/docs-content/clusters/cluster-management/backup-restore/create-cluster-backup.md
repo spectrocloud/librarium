@@ -42,7 +42,7 @@ Use the following instructions to schedule a backup for an existing cluster.
 
 ### Prerequisites
 
-- An available backup location in Palette. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic).
+- An available backup location in Palette. Refer to the [Add a Backup Location using Static Credentials](add-backup-location-static.md) or [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md).
 
 
 - An active cluster in Palette. 
@@ -137,7 +137,7 @@ Use the following instructions to create an on-demand backup for an existing clu
 
 ### Prerequisites
 
-- An available backup location in Palette. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic).
+- An available backup location in Palette. Refer to the [Add a Backup Location using Static Credentials](add-backup-location-static.md) or [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md).
 
 ### Instructions
 
@@ -145,7 +145,7 @@ Use the following instructions to create an on-demand backup for an existing clu
 - An active cluster in Palette. 
 
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 
 2. Navigate to the left **Main Menu** and select **Clusters**. 
@@ -167,7 +167,7 @@ Use the following instructions to create an on-demand backup for an existing clu
 	|**Field**|**Description**|
 	|---|---|
 	|**Backup name**|Provide a name for the backup. |
-	|**Select backup location**|Choose a backup location. You must configure a backup location before creating a backup. Refer to the [Add a Backup Location using Static Credentials](/clusters/cluster-management/backup-restore/add-backup-location-static) or [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic) guides to learn about adding a backup location using static or dynamic credentials. |
+	|**Select backup location**|Choose a backup location. You must configure a backup location before creating a backup. Refer to the [Add a Backup Location using Static Credentials](add-backup-location-static.md) or [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guides to learn about adding a backup location using static or dynamic credentials. |
 	|**Select period until expiry**|Select an expiry duration for the backup. The backup will be automatically removed after the expiry duration.|
 	|**Include all disks**|Select this checkbox if you want to include PVs and volume snapshots in the backup.|
 	|**Include cluster resources**|Select the checkbox if you want to include cluster-scoped resources in the backup. If you do not select the checkbox, Palette will back up only the namespace-scoped resources.|
@@ -220,4 +220,4 @@ Use the following steps to validate creating a backup in Palette.
 
 ## Next Steps
 
-When the backup is available, you can restore it to the same or to a different cluster. Refer to the [Restore a Cluster Backup](/clusters/cluster-management/backup-restore/restore-cluster-backup) guide to learn more about restoring a backup.
+When the backup is available, you can restore it to the same or to a different cluster. Refer to the [Restore a Cluster Backup](restore-cluster-backup.md) guide to learn more about restoring a backup.

@@ -44,14 +44,14 @@ All services in the management plane are FIPS compiled with Go using [BoringCryp
 
 ## FIPS-Compliant Kubernetes
 
-Our customized version of Kubernetes is FIPS-compliant. Both [Palette eXtended Kubernetes (PXK)](/integrations/kubernetes) and [Palette eXtended Kubernetes-Edge (PXK-E)](/integrations/kubernetes-edge) are compiled with FIPS-compliant compiler and libraries.
+Our customized version of Kubernetes is FIPS-compliant. Both [Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) and [Palette eXtended Kubernetes-Edge (PXK-E)](../../integrations/kubernetes-edge.md) are compiled with FIPS-compliant compiler and libraries.
 
 <br />
 
 
 :::info
 
-Refer to the [Palette eXtended Kubernetes (PXK)](/integrations/kubernetes) and [Palette eXtended Kubernetes-Edge (PXK-E)](/integrations/kubernetes-edge) documentation to learn more about the each Kubernetes distribution.
+Refer to the [Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) and [Palette eXtended Kubernetes-Edge (PXK-E)](../../integrations/kubernetes-edge.md) documentation to learn more about the each Kubernetes distribution.
 
 
 :::
@@ -161,6 +161,4 @@ The Longhorn Manager component is partially FIPS-compliant. This component uses 
 
 :::
 
-
-<br />
 
