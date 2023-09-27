@@ -55,6 +55,6 @@ Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC
 
 ## Next Steps
 
-Now you are ready to create the VMO profile. Refer to [Create the VMO Profile](/vm-management/vm-packs-profiles/create-vmo-profile) for guidance.
+You are now ready to create the VMO profile. Refer to [Create the VMO Profile](../vm-packs-profiles/create-vmo-profile.md) for guidance.
 
 
