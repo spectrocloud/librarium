@@ -53,6 +53,12 @@ s
 
 :::
 
+:::info
+
+ Palette does not offer support for host clusters of these types within a cluster group: edge clusters, virtual clusters, Private Cloud Gateway (PCG) clusters, and imported clusters with read-only access.
+
+:::
+
 5. Click **Next** once you have added all the host clusters you wish to include.
 
 
