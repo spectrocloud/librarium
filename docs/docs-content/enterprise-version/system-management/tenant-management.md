@@ -19,12 +19,12 @@ Tenants are isolated environments in Palette  that contain their own clusters, u
 You can create a tenant in Palette  by following these steps.
 
 
-## Prerequisites
+### Prerequisites
 
 * Access to the Palette  system console.
 
 
-## Enablement
+### Enablement
 
 1. Log in to the Palette  system console.
 
@@ -58,7 +58,7 @@ You can create a tenant in Palette  by following these steps.
 9. Log in to the tenant console using the admin user credentials.
 
 
-## Validate 
+### Validate 
 
 1. Log in to Palette .
 
@@ -71,11 +71,11 @@ You can create a tenant in Palette  by following these steps.
 
 You can remove a tenant in Palette  using the following steps.
 
-## Prerequisites
+### Prerequisites
 
 * Access to the Palette  system console.
 
-## Removal
+### Removal
 
 1. Log in to the Palette  system console.
 
@@ -106,7 +106,7 @@ If you do not clean up the tenant's resources, such as clusters and Private Clou
 
 After the cleanup process completes, the tenant will be removed from the tenant list view.
 
-## Validate
+### Validate
 
 
 1. Log in to the Palette  system console.

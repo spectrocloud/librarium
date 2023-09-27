@@ -27,7 +27,7 @@ Enabling HTTPS is a non-disruptive operation. You can enable HTTPS at any time w
 You can upload an SSL certificate in Palette by using the following steps.
 
 
-## Prerequisites
+### Prerequisites
 
 - Access to the Palette  system console.
 
@@ -38,7 +38,7 @@ You can upload an SSL certificate in Palette by using the following steps.
 - Ensure the certificate is created for the custom domain name you specified for your Palette  installation. If you did not specify a custom domain name, the certificate must be created for the Palette  system console's IP address. You can also specify a load balancer's IP address if you are using a load balancer to access Palette .
  
 
-## Enablement
+### Enablement
 
 1. Log in to the Palette  system console.
 
@@ -69,7 +69,7 @@ You can upload an SSL certificate in Palette by using the following steps.
 If the certificate is invalid, you will receive an error message. Once the certificate is uploaded successfully, Palette will refresh its listening ports and start using the new certificate.
 
 
-## Validate
+### Validate
 
 You can validate that your certificate is uploaded correctly by using the following steps.
 
