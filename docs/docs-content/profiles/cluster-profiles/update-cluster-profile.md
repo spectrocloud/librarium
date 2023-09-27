@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Update a Cluster Profile"
 title: "Update a Cluster Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to update a cluster profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 40
 tags: ["profiles", "cluster profiles"]
@@ -27,11 +27,11 @@ Follow these steps to update basic profile information.
 
 4. Click the **Settings drop-down Menu** and choose **Edit Info**.  You can modify the name, version, description, and tags.
     
-:::info
+  :::info
 
   Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
 
-:::
+  :::
 
 5. Save your changes.
 
@@ -113,9 +113,9 @@ Packs typically contain changes between versions, such as the addition or remova
 
 When updating to a new pack version, these rules apply:
 
-- You should not copy the pack configuration from one version to another, as the newer version often contains an adjusted configuration that is tailored to that version. Instead, you should integrate your changes manually in the new version.
+- You should not copy the pack configuration from one version to another, as the newer version often contains customizations. Instead, you should integrate your changes manually in the new version.
 
-- Updating to a newer Kubernetes version must be done incrementally, one minor version at a time.
+- Update to a newer Kubernetes version incrementally, one minor version at a time.
 
 - Select a specific target version instead of a group that ends in ``.x``
 We do not recommend downgrading packs to the previous version.
@@ -132,25 +132,23 @@ We do not recommend downgrading packs to the previous version.
 
 4. Click on the pack layer to update. 
 
-5. In the **Edit Pack** page, select a specific target version, not a group that ends in ``.x``. Palette displays the difference between the current version at left and the new version at right. The target version is displayed in the header. <br /><br />
+5. In the **Edit Pack** page, select a specific target version, not a group that ends in ``.x``. Palette displays the difference between the current version at left and the new version at right. The target version is displayed in the header.
     
   Differences between the displayed configurations are as follows:
-    
   
     -  **Red highlighting**:  indicates text that is not present in the new configuration.
-          
-Red highlighting indicates lines you may have added in the current configuration. You can use the arrow icon that displays between the two configurations to transfer the lines to the new version.
-            
-These lines may also have been removed because they are no longer valid in the new configuration. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration. 
-               
-- **Green highlighting**:  indicates additions in the new configuration that are not present in the current version.
+    
+    Red highlighting indicates lines you may have added in the current configuration. You can use the arrow icon that displays between the two configurations to transfer the lines to the new version.
+    
+    These lines may also have been removed because they are no longer valid in the new configuration. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration.
+    
+    - **Green highlighting**:  indicates additions in the new configuration that are not present in the current version.
   
     #### Example of Difference Between Current and New Configurations
 
     
     ![Screenshot that shows Palette's pack diff user interface with red highlight at left and green highlight at right](/integrations_pack_diffs.png)
-
-
+    
     - **Contrasting shades** of red and green highlight in the same line indicates differences occur in only part of the line.
 
     

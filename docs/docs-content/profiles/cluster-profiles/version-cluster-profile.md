@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Version a Cluster Profile"
 title: "Version a Cluster Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to version a cluster profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 70
 tags: ["profiles", "cluster profiles"]

@@ -1,28 +1,20 @@
 ---
 sidebar_label: "System Profiles"
 title: "System Profiles"
-description: "Use system profiles to bootstrap edge appliances with an initial set of virtual and containerized applications."
+description: "Learn how to create a system profile."
 hide_table_of_contents: false
+sidebar_position: 5
 tags: ["profiles", "system profiles"]
 ---
 
 
-## About System Profiles
 
-System profiles provide a way to bootstrap an edge appliance with an initial set of virtual and containerized applications. Similar to [cluster profiles](/cluster-profiles), system profiles are templates created using one or more layers that are based on packs or helm charts.
-
-System profiles modeled on Palette UI should be downloaded and provided input to the edge system. Upon bootstrap, when the edge appliance registers back with the SaaS console, it links to the system profile. Any subsequent changes made to the profile after registration are propagated down to the edge appliance.
-<br />
-
-## Create a System Profile
-
-Here are the steps to create a system profile:
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
+2. From the left **Main Menu**, click on **Profiles** and open the **System Profile** tab
 
-2. Go to **Profiles**, open the **System Profile** tab, and click **Add System Profiles**.
-
+3. Click on the **Add System Profiles** button.
 
 3. Provide profile information such as system profile name, description (optional), and tags (optional) system profile.
 
@@ -54,7 +46,6 @@ Here are the steps to create a system profile:
 
 4. Click the `Download System Profile` button at the bottom of the panel to download the profile definition as an archive (with extension `tgz`).
 <br />
-
 
 ## Sample Snapshots
 

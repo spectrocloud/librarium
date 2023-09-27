@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Version an App Profile"
 title: "Version an App Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to version an app profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 40
 tags: ["profiles", "app profiles"]

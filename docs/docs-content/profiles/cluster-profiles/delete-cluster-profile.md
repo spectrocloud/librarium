@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Delete a Cluster Profile"
 title: "Delete a Cluster Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to delete a cluster profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 80
 tags: ["profiles", "cluster profiles"]
@@ -10,7 +10,11 @@ tags: ["profiles", "cluster profiles"]
 
 Use the following steps to delete a cluster profile. 
 
-<!-- If a profile has more than one version, take care to delete the appropriate version. -->
+:::caution
+
+If a profile has more than one version, take care to delete the appropriate version.
+
+:::
 
 ## Prerequisites 
 

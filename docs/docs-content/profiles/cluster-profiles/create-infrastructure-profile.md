@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Create an Infrastructure Profile"
 title: "Create an Infrastructure Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to create an infrastructure profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["profiles", "cluster profiles"]
 ---
 
 
-Create an Infrastructure profile by adding infrastructure layers (OS, Kubernetes, Network, and Storage).
+Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes, Network, and Storage).
 
 ## Prerequisites
 

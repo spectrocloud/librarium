@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Create a Full Profile"
 title: "Create a Full Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to create a full profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["profiles", "cluster profiles"]
 ---
 
 
-Create a Full profile by adding infrastructure layers (OS, Kubernetes, Network, and Storage) and any add-on layers to add functionality to your clusters.
+Create a full profile by adding infrastructure layers (OS, Kubernetes, Network, and Storage) and any add-on layers to add functionality to your clusters.
 
 ## Prerequisites
 

@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Create an Add-on Profile"
 title: "Create an Add-on Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to create an add-on profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["profiles", "cluster profiles"]
 ---
 
 
-Create an Add-on profile with special-purpose functionality that you can reuse among multiple clusters. Add-on profiles do not contain infrastructure packs. 
+Create an add-on profile with special-purpose functionality that you can reuse among multiple clusters. Add-on profiles do not contain infrastructure packs. 
 
 ## Prerequisites
 

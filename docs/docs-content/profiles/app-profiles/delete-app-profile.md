@@ -1,14 +1,18 @@
 ---
 sidebar_label: "Delete an App Profile"
 title: "Delete an App Profile"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how to delete an app profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["profiles", "app profiles"]
 ---
 
 
-Use the following steps to delete an app profile. If a profile has more than one version, take care to delete the appropirate version.
+Use the following steps to delete an app profile. 
+
+:::caution
+If a profile has more than one version, take care to delete the appropirate version.
+:::
 
 ## Prerequisites 
 
@@ -25,7 +29,6 @@ Use the following steps to delete an app profile. If a profile has more than one
 <!-- 3. From the list of available app profiles, select the profile to delete.
 
 x. If the app profile has only one version, use the **drop-down Menu** next to the app profile name to select the version you want to delete, and click the trash can icon.  -->
-
 
 4. To delete an app profile and all its versions, click on the **three-dot Menu** in the row of the profile you want to delete and select **Delete**. Otherwise, select the profile to display the profile Overview page and continue to step 5.
 

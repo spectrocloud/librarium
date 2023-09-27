@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Profiles"
 title: "Profiles"
-description: "Understanding the Cluster Profiles Concept and how they make Spectro Cloud powerful"
+description: "Learn how Palette uses cluster profiles to provide both consistency and flexibility across Kubernetes clusters."
 hide_table_of_contents: false
 sidebar_custom_props: 
     icon: "bundles"
 tags: ["profiles", "cluster profiles", "app profiles", "system profiles"]
 ---
 
-Profiles are composed of packs, Helm charts, or manifests and are used to ensure consistency across workload cluster deployments and Palette virtual clusters. Simultaneously, they offer the flexibility to tailor deployments to your specific needs.
+Profiles are composed of packs, Helm charts, and manifests and are used to ensure consistency across workload cluster deployments and Palette virtual clusters. Simultaneously, they offer the flexibility to tailor deployments to your specific needs.
 
 Palette uses the following profile types:
 
@@ -18,7 +18,6 @@ Palette uses the following profile types:
 
 **System profiles** - System profiles require Palette console access. These profiles span multiple tenants and are typically used to bootstrap an edge appliance with an initial set of virtual and containerized applications. Refer to [System Profiles](./system-profiles/system-profiles.md) to learn more.
 
-<!-- You must have Palette console access to use system profiles. -->
 
 ## Resources
 
