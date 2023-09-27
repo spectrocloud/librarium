@@ -27,7 +27,7 @@ Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC
 
 3. Select the cluster profile to update. Palette displays profile details and the profile stack.
 
-4. Select the Kubernetes layer in the profile stack, and choose an OIDC Identity Provider. Refer to [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more about OIDC options.
+4. Select the Kubernetes layer in the profile stack, and choose an OIDC Identity Provider option. Refer to [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more about OIDC options.
 
   Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
 
