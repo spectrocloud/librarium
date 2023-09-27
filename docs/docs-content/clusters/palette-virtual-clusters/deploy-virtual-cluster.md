@@ -79,8 +79,7 @@ Follow these steps to deploy a virtual cluster to a cluster group:
 
 ## Validate
 
-To validate that your virtual cluster is available and ready for use. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
-Select **Virtual Clusters** from the left **Main Menu**. Your cluster is ready for use if the status is **Running**.
+To validate that your virtual cluster is available and ready for use, log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**. Select **Virtual Clusters** from the left **Main Menu**. Your cluster is ready for use if the status is **Running**.
 
 
 ## Resources
