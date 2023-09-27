@@ -158,8 +158,8 @@ The following steps will guide you on how to install a PCG cluster.
 
   |**Parameter**       | **Description**|
   |:-----------------------------|---------------|
-  |**Cloud Type**| Choose OpenStack.|
-  |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: `openstack-pcg-1`.|
+  |**Cloud Type**| Choose MAAS.|
+  |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: `maas-pcg-1`.|
   |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
@@ -228,7 +228,7 @@ The following steps will guide you on how to install a PCG cluster.
   :::
 
 
-The Palette CLI will now provision a PCG cluster in your OpenStack environment. 
+The Palette CLI will now provision a PCG cluster in your MAAS environment. 
 If the deployment fails due to misconfiguration, update the PCG configuration file and restart the install process. Refer to the Edit and Redeploy PCG section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
 ### Validate
