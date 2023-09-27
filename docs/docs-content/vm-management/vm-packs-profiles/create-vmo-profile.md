@@ -41,7 +41,7 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
     - **Pack Version**: 1.0 or higher
 
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. [Spectro Proxy](../../integrations/frp.md) guide to learn more. Changing the default may require some additional configuration. 
+7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check out the [Spectro Proxy](../../integrations/frp.md) guide to learn more. Changing the default may require some additional configuration. 
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
