@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Configure OIDC"
 title: "Configure OIDC"
-description: "Learn how to configure OIDC so Palette displays the Spectro VM Dashboard."
+description: "Learn how to configure OIDC so Palette displays the Virtual Machine Dashboard."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 15
@@ -50,7 +50,7 @@ Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC
 
 2. Select the cluster profile you updated. Palette displays profile details and the profile stack.
 
-3. Select the Kubernetes layer. Palette displays the OIDC Identity Provider you selected - either **None** or **Palette**.
+3. Select the Kubernetes layer. Palette displays the OIDC Identity Provider you selected - either **None**, **Palette**, **Inherit from Tenant**, or **Custom**.
 
 
 ## Next Steps
