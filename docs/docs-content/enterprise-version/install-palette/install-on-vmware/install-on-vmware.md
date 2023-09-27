@@ -17,5 +17,8 @@ Palette can be installed on VMware vSphere with internet connectivity or an airg
 - [Install on VMware](install.md)
 
 
+- [Airgap Install Instructions](airgap-instructions.md)
+
+
 - [VMware System Requirements](vmware-system-requirements.md)
    

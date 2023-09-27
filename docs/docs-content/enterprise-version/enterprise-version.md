@@ -37,3 +37,7 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 
 - [Installation](install-palette/install-palette.md)
+
+- [System Management](system-management/system-management.md)
+
+- [Upgrade Notes](upgrade.md)

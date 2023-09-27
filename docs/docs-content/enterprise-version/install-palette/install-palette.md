@@ -10,36 +10,16 @@ tags: ["palette", "self-hosted"]
 
 Palette is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette environment hosted on VMware instances or in an existing Kubernetes cluster. Palette is available in the following modes:
 
-| **Supported Platform** | **Description**                    |
-|------------------------|------------------------------------|
-| VMware                 | Install Palette in VMware environment. |
-| Kubernetes             | Install Palette using a Helm Chart in an existing Kubernetes cluster. |
-
-The next sections describe specific requirements for installing Palette.
-
-## Proxy Requirements
-
-- A proxy used for outgoing connections should support both HTTP and HTTPS traffic.
+| **Supported Platform** | **Description**                    | **Install Guide** |
+|------------------------|------------------------------------| ------------------|
+| VMware                 | Install Palette in VMware environment. | [Install on VMware](install-on-vmware/install-on-vmware.md) |
+| Kubernetes             | Install Palette using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](install-on-kubernetes/install.md) |
 
 
-- Allow connectivity to domains and ports in the table.
 
-  <br />
 
-  | **Top-Level Domain**       | **Port** | **Description**                                 |
-  |----------------------------|----------|-------------------------------------------------|
-  | spectrocloud.com           | 443      | Spectro Cloud content repository and pack registry |
-  | s3.amazonaws.com           | 443      | Spectro Cloud VMware OVA files                  |
-  | gcr.io                     | 443      | Spectro Cloud and common third party container images |
-  | ghcr.io                    | 443      | Kubernetes VIP images                             |
-  | docker.io                  | 443      | Common third party content                       |
-  | googleapis.com             | 443      | For pulling Spectro Cloud images                 |
-  | docker.com                 | 443      | Common third party container images              |
-  | raw.githubusercontent.com  | 443      | Common third party content                       |
-  | projectcalico.org          | 443      | Calico container images                          |
-  | quay.io                    | 443      | Common 3rd party container images                |
-  | grafana.com                | 443      | Grafana container images and manifests           |
-  | github.com                 | 443      | Common third party content                       |
+The next sections provide sizing guidelines we recommend you review before installing Palette in your environment.
+
 
 
 ## Size Guidelines
@@ -76,4 +56,34 @@ The recommended maximum number of deployed nodes and clusters in the environment
 
 
 
+## Proxy Requirements
+
+- A proxy used for outgoing connections should support both HTTP and HTTPS traffic.
+
+
+- Allow connectivity to domains and ports in the table.
+
+  <br />
+
+  | **Top-Level Domain**       | **Port** | **Description**                                 |
+  |----------------------------|----------|-------------------------------------------------|
+  | spectrocloud.com           | 443      | Spectro Cloud content repository and pack registry |
+  | s3.amazonaws.com           | 443      | Spectro Cloud VMware OVA files                  |
+  | gcr.io                     | 443      | Spectro Cloud and common third party container images |
+  | ghcr.io                    | 443      | Kubernetes VIP images                             |
+  | docker.io                  | 443      | Common third party content                       |
+  | googleapis.com             | 443      | For pulling Spectro Cloud images                 |
+  | docker.com                 | 443      | Common third party container images              |
+  | raw.githubusercontent.com  | 443      | Common third party content                       |
+  | projectcalico.org          | 443      | Calico container images                          |
+  | quay.io                    | 443      | Common 3rd party container images                |
+  | grafana.com                | 443      | Grafana container images and manifests           |
+  | github.com                 | 443      | Common third party content                       |
+
 ## Resources
+
+- [Install on VMware](install-on-vmware/install-on-vmware.md)
+
+- [Install on Kubernetes](install-on-kubernetes/install.md)
+
+- [Architecture Diagram and Network Ports](../../architecture/networking-ports.md#self-hosted-network-communications-and-ports)

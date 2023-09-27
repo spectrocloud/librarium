@@ -15,18 +15,7 @@ The following Palette downloads are available:
 
 ## Self-Hosted
 
-You can deploy a self-hosted Palette to your environment. Refer to the [Self-Hosted Installation](/enterprise-version/) documentation for additional guidance on how to install Palette. Palette VerteX installation guide can be found in the [Palette VerteX install](/vertex/install-palette-vertex) document.
-
-<br />
-
-:::caution
-
-
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart) guides for additional guidance on how to install Palette.
-
-:::
-
-<br />
+You can deploy a self-hosted Palette to your environment. Refer to the [Self-Hosted Installation](enterprise-version/install-palette/install-palette.md) documentation for additional guidance on how to install Palette. Palette VerteX installation guide can be found in the [Palette VerteX install](vertex/install-palette-vertex) document.
 
 ## SAAS - Private Cloud Gateway (PCG)
 

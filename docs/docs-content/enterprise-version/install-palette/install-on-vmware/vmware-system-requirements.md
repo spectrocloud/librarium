@@ -4,7 +4,7 @@ title: "VMware System and Permission Requirements"
 description: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["palette", "self-hosted", "vmware"]
 ---
 

@@ -4,7 +4,7 @@ title: "Install in an Air Gap Environment"
 description: "Learn how to install Palette into a Kubernetes air gap environment."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 20
 tags: ["self-hosted", "enterprise", "air-gap"]
 ---
 

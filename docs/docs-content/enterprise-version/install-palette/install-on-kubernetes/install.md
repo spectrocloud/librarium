@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Install using Helm Chart"
-title: "Install using Helm Chart"
+sidebar_label: "Instructions"
+title: "Instructions"
 description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 10
 tags: ["self-hosted", "enterprise"]
 ---
 

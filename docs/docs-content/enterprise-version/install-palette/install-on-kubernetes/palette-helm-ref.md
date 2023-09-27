@@ -4,7 +4,7 @@ title: "Helm Chart Install References"
 description: "Reference for Palette Helm Chart installation parameters."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 30
 tags: ["self-hosted", "enterprise"]
 ---
 
