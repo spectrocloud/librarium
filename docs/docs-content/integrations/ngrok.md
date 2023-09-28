@@ -23,22 +23,26 @@ ngrok's platform.
 ## Prerequisites
 
 - An active [ngrok account](https://ngrok.com/signup).
-  - An ngrok authentication token. You can find your token in the dashboard. Visit the [**Your Authtoken**](https://dashboard.ngrok.com/get-started/your-authtoken) section to review our access token.
-  - An ngrok API key. You can generate an API key from the ngrok dashboard. Visit the [**API** section](https://dashboard.ngrok.com/api) of the dashboard to create and review existing key.
+  - An ngrok authentication token. You can find your token in the dashboard. Visit the [**Your Authtoken**](https://dashboard.ngrok.com/get-started/your-authtoken) section to review your access token.
+  - An ngrok API key. You can generate an API key from the ngrok dashboard. Visit the [**API** section](https://dashboard.ngrok.com/api) of the dashboard to review existing keys.
 - A static subdomain. You can obtain a static subdomain by navigating to the [**Domains**
 section](https://dashboard.ngrok.com/cloud-edge/domains) of the ngrok dashboard and clicking on **Create Domain** or **New Domain**.
 
 ## Parameters
 
-To properly deploy the ngrok Kubernetes Ingress Controller, you need to add your ngrok authentication `API_KEY` and `AUTHTOKEN` to your preset or active profile.
+To deploy the ngrok Kubernetes Ingress Controller, you need to set, at minimum, the following parameters your preset or active pack profile.
 
-```yaml
-charts:  
-  kubernetes-ingress-controller:
-    credentials:
-      apiKey: API_KEY
-      authtoken: AUTHTOKEN
-```
+| Name  | Description |
+| --- | --- |
+| `kubernetes-ingress-controller.credentials.apiKey` | Your ngrok API key for this application and domain. |
+| `kubernetes-ingress-controller.credentials.authtoken` | The authentication token for your active ngrok account. |
+| `kubernetes-ingress-controller.rules.host` | A static subdomain hosted by ngrok and associated with your account. |
+| `kubernetes-ingress-controller.rules.http.paths.path` | The path at which to route traffic to your service. |
+| `kubernetes-ingress-controller.rules.host.paths.pathType` | Specify how ingress paths should be [matched by type](https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types). `Prefix` matches based on a URL path prefix split by `/`. `Exact` matches the URL path exactly and with case sensitivity. |
+| `kubernetes-ingress-controller.rules.host.backend.service.name` | The name you've given to the service for which the ngrok Kubernetes Ingress Controller should handle traffic. |
+| `kubernetes-ingress-controller.rules.host.backend.service.port.number` | The port number where `service.name` runs. |
+
+See the [common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md) doc for more details and the [user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced configurations.
 
 :::caution
 
@@ -120,14 +124,21 @@ spec:
                   number: 80
 ```
 
-Apply the `2048.yaml` manifest to your cluster in Palette.
+## Terraform
 
-```bash
-kubectl apply -f 2048.yaml
+You can reference the ngrok Ingress Controller pack in Terraform with a data resource.
+
 ```
-
-Access your 2048 demo app by navigating to the your `NGROK_DOMAIN`, e.g. `https://one-two-three.ngrok-free.app`. ngrok's
-edge and your Ingress Controller will route traffic to your app from any device or external network.
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack_simple" "ngrok-ingress" {
+  name    = "ngrok-ingress-controller"
+  version = "0.9.0"
+  type = "operator-instance"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
 
 ## References
 
