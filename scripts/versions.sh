@@ -130,18 +130,12 @@ for item in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version:api $extracted_versionX"
     npm run docusaurus docs:version:api $extracted_versionX
 
-
-
-    # Copy the generated files to the staging directory
-    # echo "Copying files to staging directory"
-    # mkdir -p $tempdir/staging_docs/version-$extracted_versionX
-    # mkdir -p $tempdir/staging_sidebars/version-$extracted_versionX
-    
+  
     # Copy version docs content
     cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/
     cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/ || true
     cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
-  # Copy version API docs content
+    # Copy version API docs content
     cp -R api_versioned_docs/version-$extracted_versionX $tempdir/staging_api_docs/
     cp -R api_versioned_sidebars/version-$extracted_versionX $tempdir/staging_api_docs_sidebars/ || true
     cp api_versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_api_docs_sidebars/version-$extracted_versionX-sidebars.json
@@ -154,6 +148,9 @@ for item in $(git branch --format '%(refname:short)'); do
 
     rm versions.json
     rm api_versions.json
+
+    # Remove API auto-generated files
+    npm run clean-api-docs
 
     # Switch back to the original branch
     git checkout $current_branch
