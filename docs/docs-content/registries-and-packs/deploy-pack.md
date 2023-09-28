@@ -208,11 +208,10 @@ Ensure you have the following files in the current directory.
 ### Pack File Structure
 
 Go ahead and review each of the following five files in the pack.
-<br />
 
 * **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](add-custom-packs.md#json-schema) for a list of attributes and respective data types. The schema validation will happen when you push a pack to the registry.  
 
-  <br /> 
+  
 
   ```json
   {
