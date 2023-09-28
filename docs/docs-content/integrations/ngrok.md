@@ -1,7 +1,7 @@
 ---
 sidebar_label: "ngrok"
 title: "ngrok"
-description: "Learn about using ngrok Kubernetes Ingress to access applications and services in Palette."
+description: "Learn about using ngrok Kubernetes Ingress to access applications in Palette."
 hide_table_of_contents: true
 type: "integration"
 category: ["ingress", "kubernetes"]
@@ -11,9 +11,9 @@ tags: ["packs", "ngrok", "network", "kubernetes"]
 ---
 
 The ngrok [Ingress Controller for Kubernetes](https://github.com/ngrok/kubernetes-ingress-controller) adds public and
-secure ingress traffic to Kubernetes services. This open-source [Ingress
+secure ingress traffic to Kubernetes applications. This open-source [Ingress
 Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) works with Palette to provide
-ingress to your applications, APIs, or other services while also offloading network ingress and middleware execution to
+ingress to your applications, APIs, or other resources while also offloading network ingress and middleware execution to
 ngrok's platform.
 
 # Versions Supported
@@ -30,16 +30,16 @@ section](https://dashboard.ngrok.com/cloud-edge/domains) of the ngrok dashboard 
 
 ## Parameters
 
-To deploy the ngrok Kubernetes Ingress Controller, you need to set, at minimum, the following parameters your preset or active pack profile.
+To deploy the ngrok Ingress Controller, you need to set, at minimum, the following parameters your preset or active pack profile.
 
 | Name  | Description |
 | --- | --- |
 | `kubernetes-ingress-controller.credentials.apiKey` | Your ngrok API key for this application and domain. |
 | `kubernetes-ingress-controller.credentials.authtoken` | The authentication token for your active ngrok account. |
 | `kubernetes-ingress-controller.rules.host` | A static subdomain hosted by ngrok and associated with your account. |
-| `kubernetes-ingress-controller.rules.http.paths.path` | The path at which to route traffic to your service. |
+| `kubernetes-ingress-controller.rules.http.paths.path` | The path at which to route traffic to your application. For more advanced configurations, you can set multiple paths with corresponding `pathType`, `backend.service.name`, and `backend.service.name` parameters. |
 | `kubernetes-ingress-controller.rules.host.paths.pathType` | Specify how ingress paths should be [matched by type](https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types). `Prefix` matches based on a URL path prefix split by `/`. `Exact` matches the URL path exactly and with case sensitivity. |
-| `kubernetes-ingress-controller.rules.host.backend.service.name` | The name you've given to the service for which the ngrok Kubernetes Ingress Controller should handle traffic. |
+| `kubernetes-ingress-controller.rules.host.backend.service.name` | The name you've given to the application for which the ngrok Ingress Controller should handle traffic. |
 | `kubernetes-ingress-controller.rules.host.backend.service.port.number` | The port number where `service.name` runs. |
 
 See the [common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md) doc for more details and the [user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced configurations.
@@ -58,71 +58,43 @@ charts:
 
 ## Usage
 
-The following YAML content demonstrates a deployment using the [2048](https://github.com/gabrielecirulli/2048)
-
-:::tip
-
-Make sure you edit line 45 of the manifest below, which contains the `NGROK_DOMAIN` variable, with the ngrok subdomain
-you created in the previous step. It should look something like `one-two-three.ngrok-free.app`.
-
-:::
+To use the ngrok Ingress Controller pack, first create a new [add-on cluster profile](https://docs.spectrocloud.com/cluster-profiles/create-add-on-profile), search for the **ngrok Ingress Controller** pack, and overwrite the default pack configuration with your API key and authentication token like the following example YAML content:
 
 ```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: game-2048
-  namespace: ngrok-ingress-controller
-spec:
-  ports:
-    - name: http
-      port: 80
-      targetPort: 80
-  selector:
-    app: game-2048
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: game-2048
-  namespace: ngrok-ingress-controller
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: game-2048
-  template:
-    metadata:
-      labels:
-        app: game-2048
-    spec:
-      containers:
-        - name: backend
-          image: alexwhen/docker-2048
-          ports:
-            - name: http
-              containerPort: 80
----
-# ngrok Ingress Controller Configuration
+charts:  
+  kubernetes-ingress-controller:
+    ...
+    credentials:
+      apiKey: API_KEY
+      authtoken: AUTHTOKEN
+```
+
+Next, you need to create an ingress service definition for your application, which requires a new **manifest layer**, which you can add to this profile directly, or as a separate profile.
+
+The following YAML content demonstrates an example ingress service where the ngrok Ingress Controller creates a new edge to route traffic on your ngrok subdomain `example.com` to an existing `example-app` running on your Kubernetes cluster in Palette.
+
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: game-2048-ingress
+  name: example-ingress
   namespace: ngrok-ingress-controller
 spec:
   ingressClassName: ngrok
   rules:
-    - host: NGROK_DOMAIN
+    - host: example.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: game-2048
+                name: example-app
                 port:
                   number: 80
 ```
+
+Once you've defined the ngrok Ingress Controller pack, you can add it to an existing full or infrastructure profile, or as a new add-on layer to a running cluster.
 
 ## Terraform
 
@@ -144,6 +116,6 @@ data "spectrocloud_pack_simple" "ngrok-ingress" {
 
 - [Ingress Controller for Kubernetes on GitHub](https://github.com/ngrok/kubernetes-ingress-controller)
 - [ngrok documentation](https://ngrok.com/docs/)
-- [Get started with the ngrok Ingress Controller for Kubernetes](https://ngrok.com/docs/using-ngrok-with/k8s/#get-started-with-the-ngrok-ingress-controller-for-kubernetes)
+- [Get started with the ngrok Ingress Controller for Kubernetes](https://ngrok.com/docs/using-ngrok-with/k8s/)
 - [ngrok Pack GitHub](https://github.com/spectrocloud/pack-central/tree/main/packs/ngrok-ingress-controller-0.9.0)
 - [ngrok Ingress Controller Helm Documentation](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs)
