@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Deploy an Add-On Pack'
-title: 'Deploy an Add-On Pack'
-description: 'How to create and deploy an add-on pack using the manifest files or Helm charts in Spectro Cloud.'
+sidebar_label: 'Deploy a Custom Pack'
+title: 'Deploy a Custom Pack'
+description: 'How to create and deploy a custom pack using the manifest files or Helm charts in Spectro Cloud.'
 icon: ''
 hide_table_of_contents: false
 toc_min_heading_level: 2
@@ -10,8 +10,6 @@ sidebar_position: 40
 tags: ["packs", "tutorial"]
 ---
 
-
-# Deploy an Add-On Pack
 
 Custom add-on packs allow you to deploy Kubernetes applications in clusters and reuse them in multiple deployments. This ensures uniformity across your clusters. The primary use cases for creating custom packs are:
 
@@ -212,7 +210,7 @@ Ensure you have the following files in the current directory.
 Go ahead and review each of the following five files in the pack.
 <br />
 
-* **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](add-custom-packs#json-schema) for a list of attributes and respective data types. The schema validation will happen when you push a pack to the registry.  
+* **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](add-custom-packs.md#json-schema) for a list of attributes and respective data types. The schema validation will happen when you push a pack to the registry.  
 
   <br /> 
 
