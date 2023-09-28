@@ -43,8 +43,7 @@ fs.readFile("docs/api-content/api-docs/v1/api.json", "utf8", (err, data) => {
 
     jsonData.servers = [
       {
-        // url: "https://api.spectrocloud.com",
-        url: "https://stage.api.spectrocloud.com",
+        url: "https://api.spectrocloud.com",
       },
     ];
 
