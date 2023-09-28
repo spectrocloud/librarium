@@ -8,7 +8,7 @@ tags: ["clusters", "cluster groups"]
 ---
 
 
-Use a cluster group to organize your host clusters into a single logical group. A cluster group is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette virtual clusters. Downstream consumers can use the cluster group when using Palette in [App Mode](../../introduction/palette-modes.md#what-is-app-mode).
+Use a cluster group to organize your host clusters into a single logical group. A cluster group is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette Virtual Clusters. Downstream consumers can use the cluster group when using Palette in [App Mode](../../introduction/palette-modes.md#what-is-app-mode).
 
 :::info
 
