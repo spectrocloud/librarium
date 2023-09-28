@@ -438,13 +438,8 @@ Result
 ![Result](static/assets/docs/images/hide_copy_button.png)
 
 
-### Admonitions - Warning / Info / Tip / Dange
+### Admonitions - Warning / Info / Tip / Danger
 
-:::note
-
-Some **content** with _Markdown_ `syntax`. 
-
-:::
 
 
 :::caution
