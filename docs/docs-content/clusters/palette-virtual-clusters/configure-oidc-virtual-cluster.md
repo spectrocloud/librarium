@@ -86,7 +86,7 @@ Configuring OIDC requires you to map a set of users or groups to a Kubernetes RB
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Navigate to your virtual clusters, either from **Cluster Groups** > **Virtual Clusters** in *Cluster Mode* <<<if the cluster group is part of a project>>>, or by switching to *App Mode*  from the **User Menu** and selecting **Virtual Clusters**.
+2. Navigate to your virtual clusters, either from **Cluster Groups** > **Virtual Clusters** in *Cluster Mode* if the cluster group is part of a project, or by switching to *App Mode*  from the **User Menu** and selecting **Virtual Clusters**.
 
 3. Select the virtual cluster you deployed to the cluster group that has OIDC configured.
 
