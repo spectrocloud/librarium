@@ -20,6 +20,11 @@ clean: ## Clean build artifacts
 	rm -rf node_modules build public .cache .docusaurus
 	docker image rm $(IMAGE) || echo "No image exists."
 
+clean-versions: ## Clean Docusarus content versions
+	@echo "cleaning versions"
+	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs
+	git checkout -- docusaurus.config.js
+
 ##@ npm Targets
 
 init: ## Initialize npm dependencies

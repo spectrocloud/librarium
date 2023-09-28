@@ -137,6 +137,13 @@ const config = {
         path: "docs/api-content/api-docs",
         routeBasePath: "api",
         docItemComponent: "@theme/ApiItem",
+        lastVersion: "current",
+        includeCurrentVersion: true,
+        versions: {
+          current: {
+            label: "latest"
+          },
+        },
         sidebarPath: require.resolve("./apisidebar.js"),
       },
     ],
