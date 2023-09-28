@@ -1,7 +1,7 @@
 ---
 sidebar_label: "ngrok"
 title: "ngrok"
-description: "Learn about using ngrok Kubernetes Ingress to access applications and services in Spectro Cloud."
+description: "Learn about using ngrok Kubernetes Ingress to access applications and services in Palette."
 hide_table_of_contents: true
 type: "integration"
 category: ["ingress", "kubernetes"]
@@ -10,11 +10,11 @@ logoUrl: ""
 tags: ["packs", "ngrok", "network", "kubernetes"]
 ---
 
-The ngrok [Ingress Controller for Kubernetes](https://github.com/ngrok/kubernetes-ingress-controller) is the official
-controller for adding public and secure ingress traffic to your k8s services. This open source [Ingress
-Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) works with Spectro Cloud to
-provide ingress to your applications, APIs, or other services while also offloading network ingress and middleware
-execution to ngrok's platform.
+The ngrok [Ingress Controller for Kubernetes](https://github.com/ngrok/kubernetes-ingress-controller) adds public and
+secure ingress traffic to Kubernetes services. This open-source [Ingress
+Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) works with Palette to provide
+ingress to your applications, APIs, or other services while also offloading network ingress and middleware execution to
+ngrok's platform.
 
 # Versions Supported
 
@@ -23,18 +23,14 @@ execution to ngrok's platform.
 ## Prerequisites
 
 - An active [ngrok account](https://ngrok.com/signup).
-  - Your ngrok authentication token (`AUTHTOKEN`), which you can find under under [**Your
-   Authtoken**](https://dashboard.ngrok.com/get-started/your-authtoken) in the ngrok dashboard.
-  - An API key (`API_KEY`), which you can generate in the [**API** section](https://dashboard.ngrok.com/api) of the
-    ngrok dashboard.
-- A static subdomain (`NGROK_DOMAIN`), which you can obtain by navigating to the [**Domains**
-   section](https://dashboard.ngrok.com/cloud-edge/domains) of the ngrok dashboard and clicking **Create Domain** or
-   **New Domain**.
+  - An ngrok authentication token. You can find your token in the dashboard. Visit the [**Your Authtoken**](https://dashboard.ngrok.com/get-started/your-authtoken) section to review our access token.
+  - An ngrok API key. You can generate an API key from the ngrok dashboard. Visit the [**API** section](https://dashboard.ngrok.com/api) of the dashboard to create and review existing key.
+- A static subdomain. You can obtain a static subdomain by navigating to the [**Domains**
+section](https://dashboard.ngrok.com/cloud-edge/domains) of the ngrok dashboard and clicking on **Create Domain** or **New Domain**.
 
 ## Parameters
 
-To deploy properly, the ngrok Kubernetes Ingress Controller requires your ngrok authentication `API_KEY` and
-`AUTHTOKEN`, which you can add to your preset or running profile.
+To properly deploy the ngrok Kubernetes Ingress Controller, you need to add your ngrok authentication `API_KEY` and `AUTHTOKEN` to your preset or active profile.
 
 ```yaml
 charts:  
@@ -44,10 +40,9 @@ charts:
       authtoken: AUTHTOKEN
 ```
 
-:::tip
+:::caution
 
-Free ngrok accounts can have only one ngrok agent running at a time. If you have a free ngrok account, change
-the number of replicas to `1`, like the following:
+If you have a free ngrok account, you can only have one ngrok agent active at a time. This means that you will need to set the number of replicas to `1` to ensure that your ngrok agent operates properly.
 
 ```yaml
 charts:
@@ -59,8 +54,7 @@ charts:
 
 ## Usage
 
-The following `.yaml` file demonstrates an example deployment using the [2048](https://github.com/gabrielecirulli/2048)
-game and the ngrok Kubernetes Ingress Controller. 
+The following YAML content demonstrates a deployment using the [2048](https://github.com/gabrielecirulli/2048)
 
 :::tip
 
@@ -140,3 +134,5 @@ edge and your Ingress Controller will route traffic to your app from any device 
 - [Ingress Controller for Kubernetes on GitHub](https://github.com/ngrok/kubernetes-ingress-controller)
 - [ngrok documentation](https://ngrok.com/docs/)
 - [Get started with the ngrok Ingress Controller for Kubernetes](https://ngrok.com/docs/using-ngrok-with/k8s/#get-started-with-the-ngrok-ingress-controller-for-kubernetes)
+- [ngrok Pack GitHub](https://github.com/spectrocloud/pack-central/tree/main/packs/ngrok-ingress-controller-0.9.0)
+- [ngrok Ingress Controller Helm Documentation](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs)
