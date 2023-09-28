@@ -140,7 +140,7 @@ const config = {
           categoryLinkSource: "tag"
         },
         template: "api.mustache",
-        // Customize API MDX with mustache template
+        // Customize API MDX with mustache template. This file, api.mustache, is located in the root of the docs folder. 
         hideSendButton: false
       }
     }
