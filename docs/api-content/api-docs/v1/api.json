@@ -67057,7 +67057,7 @@
   ],
   "servers": [
     {
-      "url": "https://stage.api.spectrocloud.com"
+      "url": "https://api.spectrocloud.com"
     }
   ]
 }
