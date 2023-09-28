@@ -18,10 +18,7 @@ Palette Virtual Machine Orchestrator (VMO) provides a unified platform for manag
 
 Palette VM Orchestrator is particularly suitable in the following scenarios: 
 
-<br />
-
 - Organizations that want to remove their virtualization infrastructure due to an aging environment or to reduce costs. By using Palette VM Orchestrator, legacy applications and modern, containerized applications can be deployed on VMs. 
-
 
 - Edge locations with a few VMs deployed and where a hypervisor is no longer desired.
 
@@ -29,8 +26,6 @@ Palette VM Orchestrator is particularly suitable in the following scenarios:
 ## Prerequisites
 
 Palette Virtual Machine Orchestrator requires the following:
-
-<br />
 
 - Palette version 3.3.0 or higher.
 
@@ -40,8 +35,6 @@ Palette Virtual Machine Orchestrator requires the following:
 - To use VMO on Edge, contact our support team by sending an email to [support@spectrocloud.com](mailto:support@spectrocloud.com)
 
 - VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports ``ReadWriteMany`` (``RWX``) access mode for seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
-
-  <br />
 
   :::caution
 
@@ -62,8 +55,6 @@ Palette VM Orchestrator provides various methods to quickly deploy VMs from out-
 ## Feature Gates
 
 Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machnine Orchestrator** pack to manage VMs and enables the following KubeVirt feature gates by default:
-
-<br />
 
 - LiveMigration
 - Snapshot
