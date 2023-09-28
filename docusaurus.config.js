@@ -141,7 +141,7 @@ const config = {
         },
         template: "api.mustache",
         // Customize API MDX with mustache template
-        hideSendButton: false
+        hideSendButton: true
       }
     }
   }], process.env.NODE_ENV !== "production" && [() => ({
