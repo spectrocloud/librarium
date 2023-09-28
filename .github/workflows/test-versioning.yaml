@@ -1,9 +1,8 @@
 name: Version Branch Logic Test
 
 on:
-  pull_request:
-    branches:
-      - 'api-version-dropdown'
+  push:
+    branches-ignore: [ main ]
 
 concurrency:
   group: version-${{ github.ref }}
