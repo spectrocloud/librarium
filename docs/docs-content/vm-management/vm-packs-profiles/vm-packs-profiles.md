@@ -9,8 +9,6 @@ tags: ["vmo"]
 
 The **Virtual Machine Orchestrator** pack provides a single-pack experience that consolidates all the dependencies needed to deploy and manage VMs in your Kubernetes host cluster. You use **Virtual Machine Orchestrator** pack to create a VMO cluster profile. The pack's components are described below. All the components are enabled by default in the `charts:` section of the pack YAML configuration file. 
 
-<br />
-
 - **Spectro VM Dashboard**: Enables access to a web console so you can manage and monitor your VMs. The console is accessible from the **Virtual Machines** tab that appears on the cluster overview page when using Palette Virtual Machine Orchestrator (VMO). The dashboard provides a web interface to create and manage VMs in your Kubernetes cluster. 
 
 
@@ -42,6 +40,5 @@ Administrators can configure the out-of-the-box add-on packs, cluster profiles, 
 
 
 - [Spectro Proxy](../../integrations/frp.md)
-
 
 - [Feature Gates](../vm-management.md#feature-gates)
