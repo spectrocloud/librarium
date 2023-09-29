@@ -150,6 +150,7 @@ const config = {
     [
       "docusaurus-plugin-openapi-docs",
       {
+        // Visit https://docusaurus-openapi.tryingpan.dev/#config to learn more about this plugin's config options.
         id: "apidocs",
         docsPluginId: "api",
         config: {
