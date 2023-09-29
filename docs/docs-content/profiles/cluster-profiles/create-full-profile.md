@@ -12,7 +12,7 @@ Create a full profile by adding infrastructure layers (OS, Kubernetes, Network, 
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a full cluster profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
 
 ## Enablement
 
@@ -55,7 +55,7 @@ Create a full profile by adding infrastructure layers (OS, Kubernetes, Network, 
 
 8. Depending on the add-on type you selected, fill out the required input fields and click on **Confirm & Create**.
 
-![A view of the manfiest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png)
+<!-- ![A view of the manfiest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
 
 9. If you want to add additional layers, repeat steps seven and eight. Otherwise, click on **Next** to review the profile.
 

@@ -9,27 +9,27 @@ tags: ["profiles", "cluster profiles"]
 
 
 
-You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
+You can update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
 
 ## Prerequisites
 
-There are no prerequisites. <<< OR >>> Your Palette account role must have the clusterProfile.create permission to create an Add-on cluster profile. Refer to the Cluster Profile permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
 
 ## Modify Basic Profile Information
 
 Follow these steps to update basic profile information.
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 
 3. Click the profile you want to update. Palette displays the profile stack.
 
-4. Click the **Settings drop-down Menu** and choose **Edit Info**.  You can modify the name, version, description, and tags.
+4. Click on **Settings** and choose **Edit Info**. You can modify the profile name, version, description, and tags.
     
   :::info
 
-  Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
+  Updated tags will not be propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
 
   :::
 
@@ -38,7 +38,7 @@ Follow these steps to update basic profile information.
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 
@@ -50,9 +50,9 @@ Follow these steps to update basic profile information.
 
 ## Update a Pack Layer
 
-The following steps will guide you in making updates to a layer in the profile.
+The following steps will guide you in updating a profile layer.
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 
@@ -60,31 +60,29 @@ The following steps will guide you in making updates to a layer in the profile.
 
 4. You can do the following:
     
-- Edit cluster basic cluster profile information by navigating to the **Settings drop-down Menu** and choosing **Edit Info**.
+    - Select **Add New Pack** and choose a pack to add to the profile.
+    
+    - Select **Import from cluster** to import a pack from another cluster. 
 
+    - Select the pack layer you want to update, and edit pack settings in the YAML file.
 
-- Select **Add New Pack** and choose a new pack to add.
-
-
-- Select **Import from cluster** to import a pack from another cluster. 
-
-    - Click the layer you want to update, and edit pack settings in the YAML file.
+    - Click on the **Update** button to view and apply available updates to packs. To learn how to update packs you may have customized, review [Update the Pack Version](#update-the-pack-version). 
 
     - Select **Add Manifest** to add, edit, or remove a manifest.
 
     - Select **Add Helm chart** to add a Helm chart.
 
-    - Select **Add Zarf** In air-gapped environments, use Zarf to add applications.
+    - Select **Add Zarf** to add applications in air-gapped environment.
 
-    - Remove non-core pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
+    - Remove non-infrastructure pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
 
   :::info
 
-  Operating System (OS) Kubernetes, Networking, and Storage are considered core layers and cannot be removed.
+  You cannot remove Operating System (OS), Kubernetes, Networking, or Storage infrastructure layers.
 
   :::
   
-    - Delete the profile by navigating to the **Settings drop-down Menu** and choosing **Delete**.
+    - Delete the profile by selecting **Settings** and choosing **Delete**.
 
 5. Confirm your updates.
 
@@ -92,7 +90,7 @@ Clusters that use the updated profile are notified of the changes. You can updat
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 
@@ -107,24 +105,25 @@ Clusters that use the updated profile are notified of the changes. You can updat
 
 ## Update the Pack Version
 
-Packs typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations.
+Packs typically contain changes between versions, such as the addition or removal of parameters and policies. The following steps guide you in updating configurations. 
 
 :::caution
 
-When updating to a new pack version, these rules apply:
+Ensure you follow these practices when updating to a new pack version. 
 
 - You should not copy the pack configuration from one version to another, as the newer version often contains customizations. Instead, you should integrate your changes manually in the new version.
 
 - Update to a newer Kubernetes version incrementally, one minor version at a time.
 
-- Select a specific target version instead of a group that ends in ``.x``
-We do not recommend downgrading packs to the previous version.
+- Select a specific target version instead of a group that ends in ``.x`` 
+
+- We do not recommend downgrading packs to the previous version.
 
 :::
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 

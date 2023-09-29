@@ -12,7 +12,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create an infrastructure profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
 
 ## Enablement
 
@@ -38,7 +38,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
   
 6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next** to continue. 
 
-| **Layer** | **Description** |
+  | **Layer** | **Description** |
   |----|----|
   | **Operating System**| Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYO-OS)** if you want to upload your own OS images.|  
   |**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to [Configure OIDC Identity Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information. |
