@@ -21,7 +21,7 @@ Palette VerteX is a FIPS-compliant version of Palette that is available for regu
 
 ## Access Palette
 
-To set up a Palette, contact our support team by sending an email to support@spectrocloud.com. Include the following information in your email:
+To set up Palette, contact our Support team by sending an email to support@spectrocloud.com. Kindly include the following information in your email:
 
 - Your full name
 - Organization name (if applicable)
@@ -31,7 +31,7 @@ To set up a Palette, contact our support team by sending an email to support@spe
 - A brief description of your intended use of VerteX
 
 
-Our dedicated support team will promptly get in touch with you to provide the necessary assistance required to get started with self-hosted Palette.
+Our dedicated Support team will promptly get in touch with you to provide the necessary assistance required to get started with self-hosted Palette.
 
 ## Resources
 

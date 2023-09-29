@@ -76,7 +76,7 @@ The recommended maximum number of deployed nodes and clusters in the environment
   | docker.com                 | 443      | Common third party container images              |
   | raw.githubusercontent.com  | 443      | Common third party content                       |
   | projectcalico.org          | 443      | Calico container images                          |
-  | quay.io                    | 443      | Common 3rd party container images                |
+  | quay.io                    | 443      | Common third-party container images                |
   | grafana.com                | 443      | Grafana container images and manifests           |
   | github.com                 | 443      | Common third party content                       |
 

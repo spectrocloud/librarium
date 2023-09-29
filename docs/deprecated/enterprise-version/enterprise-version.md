@@ -27,11 +27,16 @@ Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm C
 
 ## Airgap Install
 
-Palette can be installed in a VMware environment without internet access, known as an air gap installation, requiring pre-download of platform manifests, required platform packages, container images for core components, third-party dependencies, and Palette Packs, all sourced from a private rather than the default public Palette repository.
+Palette can be installed in a VMware environment without internet access, known as an air gap installation, which requires advance download of the following:
+ - Platform manifests
+ - Required platform packages
+ - Container images for core components
+ - Third-party dependencies
+ - Palette packs
 
 ## Download Palette Installer
 
-To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+To request the Palette self-hosted installer image, contact our Support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
 
 - Your full name
 - Organization name (if applicable)
@@ -49,7 +54,6 @@ If you have any questions or concerns, please feel free to contact support@spect
 Review the [Upgrade Notes](upgrade.md) before attempting to upgrade Palette.
 
 
-<br />
 
 ## Resources 
 
@@ -84,7 +88,5 @@ Review the [Upgrade Notes](upgrade.md) before attempting to upgrade Palette.
 * [Upgrade Notes](upgrade.md)
 
 
-<br />
 
-<br />
 

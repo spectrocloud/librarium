@@ -8,12 +8,12 @@ sidebar_position: 50
 tags: ["palette", "management", "self-hosted", "backup", "restore"]
 ---
 
-You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palete configuration data is backed up and can be restored in case of a disaster or a cluster failure. Palette supports two modes of backup:
+You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palette configuration data is backed up and can be restored in case of a disaster or a cluster failure. Palette supports two backup modes:
 
 * File Transfer Protocol (FTP) - Send the backup data of your enterprise cluster to a dedicated FTP server. Refer to the [FTP](#ftp) section for more information.
 
 
-* Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using the AWS service S3. Refer to the [S3](#s3) section for more information.
+* Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3. Refer to the [S3](#s3) section for more information.
 
 
 ## FTP
@@ -30,7 +30,7 @@ Use the following instructions to configure FTP backup for your enterprise clust
 
 ### Instructions
 
-1. Log into the Palette system console as an administrator. Refer to the [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more information.
+1. Log in to [Palette](https://console.spectrocloud.com) as an administrator. Refer to the [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more information.
 
 
 2. From the left **Main Menu**, select **Administration**.
@@ -39,7 +39,7 @@ Use the following instructions to configure FTP backup for your enterprise clust
 3. Click on the **Backup/Restore** tab.
 
 
-4. Select the **FTP** and fill out the following fields:
+4. Select the **FTP** tab and fill out the following fields:
 
 | **Field** | **Description** |
 | --- | --- |
@@ -57,7 +57,7 @@ Use the following instructions to configure FTP backup for your enterprise clust
 
 ### Validate
 
-Validation is part of the backup configuration wizard. You can validate a backup is initiated at the scheduled time and that the backup is successfully uploaded to the FTP server. 
+Validation is part of the backup configuration wizard. You can verify that a backup initiates at the scheduled time and is successfully uploaded to the FTP server. 
 
 
 ## S3
@@ -126,7 +126,7 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 3. Click on the **Backup/Restore** tab.
 
 
-4. Select the **FTP** and fill out the following fields:
+4. Select the **FTP**tab and fill out the following fields:
 
 | **Field** | **Description** |
 | --- | --- |
@@ -143,4 +143,4 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 
 ### Validate
 
-Validation is part of the backup configuration wizard. You can validate a backup is initiated at the scheduled time and that the backup is successfully uploaded to the S3 bucket. 
+Validation is part of the backup configuration wizard. You can validate a backup initiates at the scheduled time and successfully uploads to the S3 bucket. 
