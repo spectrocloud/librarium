@@ -8,9 +8,18 @@ tags: ["clusters", "cluster groups"]
 ---
 
 
+Use a cluster group to organize your host clusters into a single logical group. A cluster group is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette Virtual Clusters. Downstream consumers can use the cluster group when using Palette in [App Mode](../../introduction/palette-modes.md#what-is-app-mode).
+
+:::info
+
+Palette does not offer support for host clusters of these types within a cluster group: 
+- Edge clusters 
+- Virtual clusters 
+- Private Cloud Gateway (PCG) cluster
+- Imported clusters with read-only access
+:::
+
 Use the instructions below to create a cluster group.
-
-
 
 ## Prerequisites
 
@@ -42,7 +51,7 @@ Use the instructions below to create a cluster group.
 
 3. Select **Next** to continue.
 
-s
+
 
 4. Use the **Select clusters** drop-down menu to add available host clusters. 
  
@@ -52,6 +61,7 @@ s
 
 
 :::
+
 
 5. Click **Next** once you have added all the host clusters you wish to include.
 
