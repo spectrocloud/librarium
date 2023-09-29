@@ -12,7 +12,7 @@ Create an add-on profile with special-purpose functionality that you can reuse a
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a full cluster profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create an add-on profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
 
 ## Enablement
 

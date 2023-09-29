@@ -12,7 +12,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create an infrastructure cluster profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create an infrastructure profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
 
 ## Enablement
 
