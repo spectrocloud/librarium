@@ -46,17 +46,17 @@ Use these steps to configure your cluster group with OIDC *before* creating a vi
     ```yaml
     vcluster:
       extraArgs:	
-        - --kube-apiserver-arg=”oidc-issuer-url=URL"
-        - --kube-apiserver-arg="oidc-client-id=ID"
-        - --kube-apiserver-arg="oidc-username-claim=EMAIL"
-        - --kube-apiserver-arg="oidc-groups-claim=GROUPS"
+      - --kube-apiserver-arg=”oidc-issuer-url=<client-url>"
+      - --kube-apiserver-arg="oidc-client-id=<client-id>"
+      - --kube-apiserver-arg="oidc-username-claim=email"
+      - --kube-apiserver-arg="oidc-groups-claim=groups"
     ```
 
-9. If are configuring Okta OIDC, you must also provide the client secret. In the `clientConfig` parameter section of cluster group YAML file, uncomment the `oidc-client-secret` parameter and provide the Okta client secret.
+9. If your identity provider requires a client secret, uncomment the `oidc-client-secret` parameter in the `clientConfig` section of cluster group YAML file, and add the client secret.
 
     ```yaml
     clientConfig:	
-      oidc-client-secret: <CLIENT-SECRET>
+      oidc-client-secret: secret-value
     ```
 
 10. From the **User Menu**, switch to *App Mode* and click on **Virtual Clusters**.  
@@ -71,9 +71,9 @@ Use these steps to configure your cluster group with OIDC *before* creating a vi
 
   When the virtual cluster is finished deploying and in **Running** state, a Kubeconfig file is generated that contains OIDC information inserted into it from the cluster group configuration.
 
-12. Use the **Kubeconfig** link to download the Kubeconfig file. This will give you access the Kubernetes cluster.
+12. Use the **Kubeconfig** link that displays on the virtual clusters overview page to download the Kubeconfig file. This will give you access to the Kubernetes cluster.
 
-<<< Placeholder for possible screenshot >>>
+  In *App Mode* click on **Virtual Clusters** and select the virtual cluster. In *Cluster Mode* navigate to **Cluster Groups** > **Virtual Clusters** and select the virtual cluster.
 
 13. Configure Role-Based Access Control (RBAC) for the virtual cluster. 
 
