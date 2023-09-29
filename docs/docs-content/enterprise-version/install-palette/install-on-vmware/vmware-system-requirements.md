@@ -9,10 +9,7 @@ tags: ["palette", "self-hosted", "vmware"]
 ---
 
 
-
-
-The sections below describe system requirements and cloud account permissions for VMware vSphere environments hosting Palette.
-
+When deploying Palette on VMware, ensure that your environment meets the following requirements:
 
 
 ## VMware Cloud Account Permissions
@@ -21,7 +18,6 @@ The vSphere user account that deploys Palette must have the minimum root-level V
 
 Select the tab for your vSphere version.
 
-<br />
 
 :::caution
 
@@ -189,15 +185,7 @@ Root-level role privileges are only applied to root objects and Data center obje
 
 ## Spectro Role Privileges
 
-Spectro role privileges listed in the table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). A separate table lists Spectro role privileges for VMs by category.
-
-<br />
-
-:::info
-
-Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-templates folder and clones images from it to create nodes.
-
-:::
+The Spectro role privileges listed in the following table must be applied to the spectro-template folder, hosts, clusters, templates, datastore, network objects, and Virtual Machines (VMs). 
 
 
 | **vSphere Object**| **Privileges**                              |
@@ -241,7 +229,7 @@ The following table lists Spectro role privileges for VMs by category.
 
 ## Zone Tagging
 
-Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required to install the Palette Platform itself and is also helpful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers(k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
+Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. This is required to install the Palette  and is also helpful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers (k8s-region) and compute clusters (k8s-zone) to create distinct zones in your environment.
   
 For example, assume your vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3, that are part of vSphere Object, Tag Category, and Tag value as shown in the table.
 
@@ -260,11 +248,9 @@ The exact values for the k8s-region and k8s-zone tags can be different from the 
 
 :::
 
-## Naming Conventions for vSphere Region and Zone Tags
+### Tag Requirements
 
 The following requirements apply to tags:
-
-<br />
 
 - A valid tag must consist of alphanumeric characters.
 
@@ -272,4 +258,4 @@ The following requirements apply to tags:
 - The tag must start and end with an alphanumeric characters.
 
 
-- The regex used for validation is ``(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?``
+- The regex used for tag validation is ``(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?``

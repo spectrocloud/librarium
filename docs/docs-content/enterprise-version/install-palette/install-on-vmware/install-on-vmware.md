@@ -1,6 +1,6 @@
 ---
 sidebar_label: "VMware"
-title: "Install Palette VerteX on VMware"
+title: "Install Palette on VMware"
 description: "Learn how to install Palette on VMware."
 icon: ""
 hide_table_of_contents: false

@@ -346,12 +346,11 @@ If you have any questions or concerns, please feel free to contact support@spect
 
 </Tabs>
 
-<br />
+
 
 17. If you will be using Edge deployments, go ahead and download the packages your Edge deployments will need. If you are not planning to use Edge, skip to end. You can come back to this step in the future and add the packages if needed. Click on the `...` tab for additional options.
 
 
-<br />
 
 <Tabs queryString="versions">
 
@@ -629,7 +628,7 @@ You can review all the logs related to the setup of the private Spectro reposito
 
 You can validate that the Spectro Repository you deployed is available and ready for the next steps of the installation process. If you provided the appliance with an SSH key then you can skip to step five.
 
-<br />
+
 1. Log in to vCenter Server by using the vSphere Client.
 
 
@@ -679,8 +678,6 @@ You can validate that the Spectro Repository you deployed is available and ready
 
 
 8. Next, validate the Spectro repository is available. Replace the IP with your appliance's IP address.
-
-  <br />
 
   ```shell
   curl --insecure --user spectro:admin@airgap https://10.1.1.1

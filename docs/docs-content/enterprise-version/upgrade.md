@@ -31,7 +31,6 @@ From the Palette system console, click the **Update version** button. Palette wi
 
 Follow the steps below to upgrade Kubernetes.
 
-<br />
 
 1. To obtain the upgraded Kubernetes YAML file for Palette 4.0, contact our support team by sending an email to support@spectrocloud.com.
 

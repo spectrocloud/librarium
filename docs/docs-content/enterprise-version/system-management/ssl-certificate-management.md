@@ -11,9 +11,8 @@ tags: ["palette", "management"]
 
 When you install Palette, a self-signed certificate is generated and used by default. You can upload your own SSL certificate to replace the default certificate.
 
-Palette  uses SSL certificates to secure external communication. Palette 's internal communication is default secured by default and uses HTTPS. External communication with Palette , such as the system console, gRPC endpoint, and API endpoint, requires you to upload an SSL certificate to enable HTTPS. 
+Palette uses SSL certificates to secure external communication. Internal components communication is by default secured and use HTTPS. External communication with Palette, such as the system console, gRPC endpoint, and API endpoint, requires you to upload an SSL certificate to enable HTTPS. 
 
-<br />
 
 :::info
 
