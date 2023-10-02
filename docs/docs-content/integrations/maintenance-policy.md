@@ -55,10 +55,10 @@ We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follow
 - **Major versions**: Assessed based on the extent of changes.
 
 
-- **Minor versions**: Provided within eight weeks of a new Kubernetes release.
+- **Minor versions**: Provided within 8 weeks of a new Kubernetes release.
 
 
-- **Patch versions**: Provided within four weeks of a new Kubernetes release.
+- **Patch versions**: Provided within 4 weeks of a new Kubernetes release.
 
 
 
