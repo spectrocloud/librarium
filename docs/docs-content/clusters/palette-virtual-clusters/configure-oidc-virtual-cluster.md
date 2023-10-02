@@ -11,8 +11,6 @@ tags: ["clusters", "cluster groups", "virtual clusters"]
 
 Enabling OpenID Connect (OIDC) Identity Provider (IDP) for Palette Virtual Clusters offers several benefits. First, it enables single sign-on, allowing you to log in once and access multiple virtual clusters without the need for separate authentication. Second, it facilitates centralized user management, making it easier to manage user accounts, permissions, and access control in a single location. Finally, OIDC integration allows for seamless integration with third-party identity providers, ensuring consistent authentication and authorization across the infrastructure. Overall, enabling OIDC enhances security, simplifies user management, and provides a seamless authentication experience for users accessing virtual clusters.
 
-<!-- Before deploying a virtual cluster, you must set up OpenID Connect (OIDC) Identity Provider (IDP) for the cluster group the virtual cluster belongs to. As virtual clusters are deployed to that cluster group, OIDC information in the cluster group configuration will be inserted into the virtual cluster configuration.  -->
-
 
 ## Prerequisites
 
@@ -22,7 +20,7 @@ Enabling OpenID Connect (OIDC) Identity Provider (IDP) for Palette Virtual Clust
 
 :::caution
 
-We recommend configuring a cluster group with OIDC *before* you create virtual clusters.
+We recommend configuring a cluster group with OIDC *before* you create virtual clusters. This will ensure that OIDC information from the cluster group configuration is properly inserted in the kubeconfig file that is generated for the virtual cluster.
 
 :::
 
@@ -83,7 +81,7 @@ We recommend configuring a cluster group with OIDC *before* you create virtual c
 
 11. Use the **Kubeconfig** link that displays on the virtual clusters overview page to download the kubeconfig file. This will give you access to the Kubernetes cluster.
 
-  From the **User Menu**, switch to *App Mode*, click on **Virtual Clusters** and select the virtual cluster. In *Cluster Mode* navigate to **Cluster Groups** and select the virtual cluster in the **Virtual Clusters** tab.
+  From the **User Menu**, switch to *App Mode*, click on **Virtual Clusters** and select the virtual cluster. In *Cluster Mode* navigate to the **Main Menu**, click on **Cluster Groups**, select the **Virtual Clusters** tab, and select the virtual cluster.
 
 12. Create the proper Kubernetes roles and *roleBindings* required to map the OIDC users with a Kubernetes role. Refer to the [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings) for additional guidance.
 
@@ -114,3 +112,5 @@ Configuring OIDC requires you to map a set of users or groups to a Kubernetes RB
 - [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings)
 
 - [Use RBAC with OIDC](../../integrations/kubernetes.md#use-rbac-with-oidc)
+
+- [Kubectl](../cluster-management/palette-webctl.md)
