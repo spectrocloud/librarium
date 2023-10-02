@@ -28,8 +28,8 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 - If you want to use the same Okta application for OIDC-based SSO into your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
 
 
-## Enablement
-## Create the Okta Application
+## Okta with OIDC
+### Create the Okta Application
 
 1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
 
@@ -124,7 +124,7 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 
 <br />
 
-## Create an Okta Authorization Server
+### Create an Okta Authorization Server
 
 To ensure Okta issues OIDC tokens with the correct claims, you must create a custom Authorization Server. A custom Authorization Server is required to customize the authorization tokens issued by Okta so that they contain the necessary OIDC claims required by Palette and Kubernetes. 
 
@@ -220,7 +220,7 @@ To ensure Okta issues OIDC tokens with the correct claims, you must create a cus
 You have now completed all configuration steps in Okta.
 <br />
 
-##  Enable OIDC SSO in Palette
+### Enable OIDC SSO in Palette
 
 22. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription.
 
@@ -247,7 +247,8 @@ Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the fol
 23. When all the information has been entered, click **Enable** to activate SSO. You will receive a message stating **OIDC configured successfully**.
 
 
-## Create Teams in Palette
+###
+ Create Teams in Palette
 
 The remaining step is to create teams in Palette for the group that you allowed to be passed in the OIDC ticket in Okta, and give them the appropriate permissions. For this example, you will create the `palette-tenant-admins` team and give it **Tenant Admin** permissions. You can repeat this for any other team that you have a matching Okta group for.
 
@@ -290,7 +291,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 You have now successfully configured Palette SSO based on OIDC with Okta.
 
 
-## Validate
+### Validate
 
 1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that users are automatically added to the `palette-tenant-admins` group in Palette. If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User  Drop-down Menu** at the top right.
 
@@ -324,6 +325,102 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 4. You are now automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to the left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click the **palette-tenant-admins** team and view the team members section.
 
 
+
+## Okta with SAML
+
+### Create the Okta Application
+
+1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
+
+  <br />
+
+  :::info
+
+   Your Okta login URL has the following format,
+    `https://{your-okta-account-id}-admin.okta.com/admin/getting-started`. 
+    Replace `{your-okta-account-id}` with your Okta account ID.
+
+  :::
+
+  <br/>
+
+2. In the screen that opens, select **SAML 2.0** for the sign-in method. Then click **Next**.
+
+  <br />
+
+  ![Configure General Settings](/saml-okta-images/okta-create-application.png)
+
+  <br />
+
+1. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from `My Web App` to `Spectro Cloud Palette SAML`. If desired, you can also upload a logo for the application. 
+
+  <br />
+
+  ![Configure General Settings](/saml-okta-images/okta-saml-general-settings.png)
+
+  <br />
+
+4. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click **SAML**. Click the button next to **Login URL** to copy the value to the clipboard.
+
+5. Set the value of **Service** to **Okta**.
+
+  <br />
+
+  ![Configure General Settings](/saml-okta-images/palette-manage-sso-okta-saml.png)
+
+  <br />
+
+6. Switch back to your Okta Admin console and paste the copied value ito the **Single sign-on URL** and **Audience URI (SP Entity ID)**.
+
+7. Specify values within **Attribute Statements** and **Group Attribute Statements** to link user values from Okta to SpectroCloud.
+
+Under **Attribute Statements (Optional)** specify the below values.
+
+| Name | Name Format | Value |
+| -- | -- | -- |
+| `FirstName` | `Unspecified` | `user.firstName` |
+| `LastName` | `Unspecified` | `user.lastName` |
+| `Email` | `Unspecified` | `user.email` |
+
+Under **Group Attribute Statements (Optional)** specify the below values.
+
+| Name | Name Format | Filter | Value |
+| -- | -- | -- | -- |
+| `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
+
+  <br />
+
+  ![Configure General Settings](/saml-okta-images/okta-saml-attribute-statements.png)
+
+  <br />
+
+8. Finish the creation of the application with default values.
+
+9. Once brought to main application page, copy the **Metadata URL**, open it up in a separate page, then copy of the contents of the XML.
+
+  <br />
+
+  ![Configure General Settings](/saml-okta-images/okta-metadata-url.png)
+
+  <br />
+
+  :::info
+  Due to some browsers that add additional formatting and spacing for XML data, you can run the below command to copy the contents to your clipboard.
+  ```sh
+  curl https://{your-okta-account-id}.com/app/{your-okta-app-id}/sso/saml/metadata | pbcopy
+  ```
+  Replace `{your-okta-account-id}` and `{your-okta-app-id}` with your Okta account ID amd app ID.
+  :::
+
+10.   Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider Metadata**.
+
+  <br />
+
+  ![Configure General Settings](/saml-okta-images/palette-manage-sso-okta-metadata.png)
+
+  <br />
+
+11. When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML configured successfully.
 
 ## Resources
 
