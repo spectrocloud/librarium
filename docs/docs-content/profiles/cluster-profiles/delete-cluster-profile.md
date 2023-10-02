@@ -26,19 +26,11 @@ If a profile has more than one version, take care to delete the appropriate vers
 
 2. Select **Profiles** from the left **Main Menu**.
 
-3. From the list of available cluster profiles, select the profile to delete.
+3. Select the profile you want to delete. To delete the profile and all its versions, click the **three-dots Menu** and select **Delete**.
 
-<!-- x. If the app profile has only one version, use the **drop-down Menu** next to the app profile name to select the version you want to delete, and click the trash can icon.  -->
+  If you are not sure whether a profile has more than one version and you want to delete a specific version, select the profile to display its details page. Use the **drop-down Menu** next to the profile name and select the version to delete, click on the **Settings** button, and select **Delete**.
 
-<!-- 4. To delete a cluster profile and all its versions, ... -->
-
-4. Click on the **three-dot Menu** in the row of the profile you want to delete and select **Delete**. 
-
-<!-- Otherwise, select the profile to display its details and continue to step 4.
-
-4. From the **drop-down Menu** next to the cluser profile name, select the version you want to delete, and click the trash can icon.  -->
-
-5. The selected cluster profile version will be deleted.
+You have successfully deleted a cluster profile or profile version.
 
 
 ## Validate
@@ -47,4 +39,4 @@ If a profile has more than one version, take care to delete the appropriate vers
 
 2. Select **Profiles** from the left **Main Menu**.   
 
-3. Verify the cluster profile is not in the list of available profiles.
+3. Verify the cluster profile is not in the list of available profiles or that its version is no longer listed in the **drop-down Menu** on the profile details page.

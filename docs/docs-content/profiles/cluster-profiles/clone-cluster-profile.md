@@ -8,7 +8,7 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-You can clone cluster profile across multiple projects. For example, you can clone a cluster profile created in one project to another project within the same [tenant](../../glossary-all.md#tenant).
+You can clone a cluster profile across multiple projects within the same [tenant](../../glossary-all.md#tenant).
 ## Prerequisites
 
 * A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create depending on your requirements. 
@@ -21,14 +21,15 @@ You can clone cluster profile across multiple projects. For example, you can clo
 
 3. Click on the **three-dot Menu** in the row of the cluster profile you want to clone and select **Clone**.
 
-4. Provide the following information for your cloned app profile and click **Confirm**.
+4. Provide the following information for your cloned cluster profile and click **Confirm**.
+
 | **Parameter**           | **Description**  |
-|-----------------------------|---------------------|
+|-------------------------|------------------|
 |**Name** | A custom name for the cloned app profile.|
 |**Profile Version** | An optional version number for the new cluster profile. The default value is 1.0.0. You can create multiple versions of a cluster profile using the format `major.minor.patch`. |
 |**Source Profile Version**  | The version number of the source profile. | 
-|**Scope** | Choose the scope that the cluster profile will apply to. If you choose **project** and there are multiple projects to choose from, select the project to which the profile is to be cloned. If you choose **tenant**, the profile will be cloned to the tenant and be available to the organization. |
-|**Project** | The target project to which the profile is to be cloned. Select the project name from the **drop-down Menu**.|
+|**Scope** | Choose the target scope the cluster profile will apply to: *project* or *tenant*. When you select *project*, a **Project** field displays. Choosing **tenant** will make the profile available to the organization. |
+|**Project** | This field displays when you select *project* scope. Select a target project from the **drop-down Menu**.|
 
 You can now use the cluster profile when deploying clusters in the target project or tenant.
 
