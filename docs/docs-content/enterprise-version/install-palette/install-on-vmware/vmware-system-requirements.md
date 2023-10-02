@@ -121,19 +121,19 @@ Select the tab for the vSphere version you are using to view the required privil
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
-| CNS               | Searchable                                  |
-| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
-| Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations: Reconfigure VM        |
-| Network           | Assign network                              |
-| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
-| Sessions          | Validate sessions                           |
-| Storage policies  | View access for VM storage policies is required.<br />Ensure ``StorageProfile.View`` is available. |
-| spectro-templates | Read only                                   |
-| Storage views     | View                 |
-| Tasks             | Create task<br />Update task                |
-| vApp              | Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance |
-| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| **CNS**               | Searchable                                  |
+| **Datastore**         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
+| **Folder**            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
+| **Host**              | Local operations: Reconfigure VM        |
+| **Network**           | Assign network                              |
+| **Resource**          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
+| **Sessions**          | Validate sessions                           |
+| **Storage policies**  | View access for VM storage policies is required.<br />Ensure ``StorageProfile.View`` is available. |
+| **spectro-templates** | Read only. This is the vSphere folder you will use during the install.                                   |
+| **Storage views**     | View                 |
+| **Tasks**             | Create task<br />Update task                |
+| **vApp**              | Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance |
+| **vSphere tagging**   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
 
 The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
@@ -160,19 +160,19 @@ The following table lists spectro role privileges for VMs by category. All privi
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
-| CNS               | Searchable                                  |
-| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
-| Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations: Reconfigure VM        |
-| Network           | Assign network                              |
-| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
-| Profile-driven storage | Profile-driven storage view            |
-| Sessions          | Validate session                            |
-| spectro-templates | Read only                                   |
-| Storage views     | Configure service<br />View                 |
-| Tasks             | Create task<br />Update task                |
-| vApp              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
-| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| **CNS**               | Searchable                                  |
+| **Datastore**         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
+| **Folder**            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
+| **Host**              | Local operations: Reconfigure VM        |
+| **Network**           | Assign network                              |
+| **Resource**          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
+| **Profile-driven storage** | Profile-driven storage view            |
+| **Sessions**          | Validate session                            |
+| **spectro-templates** | Read only. This is the vSphere folder you will use during the install.                                    |
+| **Storage views**     | Configure service<br />View                 |
+| **Tasks**             | Create task<br />Update task                |
+| **vApp**              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+| **vSphere tagging**   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
 
 
@@ -200,19 +200,19 @@ The following table lists spectro role privileges for VMs by category. All privi
 
 | **vSphere Object**| **Privileges**                              |
 |-------------------|---------------------------------------------|
-| CNS               | Searchable                                  |
-| Datastore         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
-| Folder            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
-| Host              | Local operations: Reconfigure VM            |
-| Network           | Assign network                              |
-| Profile-driven storage | Profile-driven storage view            |
-| Resource          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
-| Sessions          | Validate session                            |
-| spectro-templates | Read only                                   |
-| Storage views     | View                                        |
-| Tasks             | Create task<br />Update task                |
-| vApp              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
-| vSphere tagging   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
+| **CNS**               | Searchable                                  |
+| **Datastore**         | Allocate space<br />Browse datastore<br />Low-level file operations<br />Remove file<br />Update VM files<br />Update VM metadata |
+| **Folder**            | Create Folder<br />Delete folder<br />Move folder<br />Rename folder|
+| **Host**              | Local operations: Reconfigure VM            |
+| **Network**           | Assign network                              |
+| **Profile-driven storage** | Profile-driven storage view            |
+| **Resource**          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
+| **Sessions**          | Validate session                            |
+| **spectro-templates** | Read only. This is the vSphere folder you will use during the install.    |
+| **Storage views**     | View                                        |
+| **Tasks**             | Create task<br />Update task                |
+| **vApp**              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
+| **vSphere tagging**   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag |
 
 
 
@@ -254,10 +254,10 @@ For example, assume you have vCenter environment includes three compute clusters
 
 | **vSphere Object** | **Assigned Name** | **Tag Category** | **Tag Value** |
 |------------------- |--------------------|------------------|---------------|
-|    Datacenter      | dc-1               | k8s-region       | region1       |
-|     Cluster        | cluster-1          | k8s-zone         | az1           |
-|     Cluster        | cluster-2          | k8s-zone         | az2           |
-|     Cluster        | cluster-3          | k8s-zone         | az3           |
+|    **Datacenter**      | dc-1               | k8s-region       | region1       |
+|     **Cluster**        | cluster-1          | k8s-zone         | az1           |
+|     **Cluster**        | cluster-2          | k8s-zone         | az2           |
+|     **Cluster**        | cluster-3          | k8s-zone         | az3           |
 
 Create a tag category and tag values for each datacenter and cluster in your environment. Use the tag categories to create zones. Use a name that is meaningful and that complies with the tag requirements listed in the following section.
 
