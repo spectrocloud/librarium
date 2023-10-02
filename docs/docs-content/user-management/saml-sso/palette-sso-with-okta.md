@@ -409,7 +409,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
   ```sh
   curl https://{your-okta-account-id}.com/app/{your-okta-app-id}/sso/saml/metadata | pbcopy
   ```
-  Replace `{your-okta-account-id}` and `{your-okta-app-id}` with your Okta account ID amd app ID.
+  Replace `{your-okta-account-id}` and `{your-okta-app-id}` with your Okta account ID and app ID.
   :::
 
 10.   Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider Metadata**.
