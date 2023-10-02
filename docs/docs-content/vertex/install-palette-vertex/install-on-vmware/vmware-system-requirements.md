@@ -239,10 +239,10 @@ The following table lists spectro role privileges for VMs by category. All privi
 
 ## Zone Tagging
 
-Zone tagging is required for dynamic resource allocation across fault domains. A good use case for dynamic resource allocation is when provisioning workloads that require persistent storage. You can use vSphere [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html) to create zones in your vSphere environment and assign them to the vSphere objects.
+Zone tagging is used for dynamic resource allocation across fault domains and required for vSphere resource using the [vSphere Container Storage Plug-in](https://docs.vmware.com/en/VMware-vSphere-Container-Storage-Plug-in/3.0/vmware-vsphere-csp-getting-started/GUID-162E7582-723B-4A0F-A937-3ACE82EAFD31.html#GUID-162E7582-723B-4A0F-A937-3ACE82EAFD31). A good use case for dynamic resource allocation is when provisioning workloads that require persistent storage. You can use vSphere [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html) to create zones in your vSphere environment and assign them to the vSphere objects.
 
 
-Zone tagging is required to install Palette VerteX and is helpful for workloads deployed in the tenant clusters if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment.
+Zone tagging is required to install Palette VerteX and is helpful for Kubernetes workloads deployed in vSphere clusters through Palette VerteX if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment.
 
 :::info
 
