@@ -9,15 +9,17 @@ tags: ["clusters", "cluster groups", "virtual clusters"]
 ---
 
 
-Before deploying a virtual cluster, you must set up OpenID Connect (OIDC) Identity Provider (IDP) for the cluster group the virtual cluster belongs to. As virtual clusters are deployed to that cluster group, OIDC information in the cluster group configuration will be inserted into the virtual cluster configuration. 
+Enabling OIDC for Palette Virtual Clusters offers several benefits. First, it enables single sign-on, allowing you to log in once and access multiple virtual clusters without the need for separate authentication. Second, it facilitates centralized user management, making it easier to manage user accounts, permissions, and access control in a single location. Finally, OIDC integration allows for seamless integration with third-party identity providers, ensuring consistent authentication and authorization across the infrastructure. Overall, enabling OIDC enhances security, simplifies user management, and provides a seamless authentication experience for users accessing virtual clusters.
+
+<!-- Before deploying a virtual cluster, you must set up OpenID Connect (OIDC) Identity Provider (IDP) for the cluster group the virtual cluster belongs to. As virtual clusters are deployed to that cluster group, OIDC information in the cluster group configuration will be inserted into the virtual cluster configuration.  -->
 
 
 ## Prerequisites
 
 - A healthy host cluster that you will use to create a cluster group.
-- A cluster group to which you can add virtual clusters.
+- A cluster group to which you can add virtual clusters. Review [Create and Manage Cluster Groups](../../clusters/cluster-groups/create-cluster-group.md) for guidance.
 - An issuer URL and client ID that you obtain from your identity provider.
-- Privileges sufficient to edit cluster group settings and a viewer role to access the generated kubeconfig. If you are deploying virtual clusters, you will need admin privileges.
+- At a minimum, the `cluster.delete` permission to access the generated kubeconfig. For more information, check out [Kubeconfig files](../cluster-management/kubeconfig.md#kubeconfig-files). If you are deploying virtual clusters, you will need admin privileges.
 - [kubelogin](https://github.com/int128/kubelogin) installed. This is a kubectl plugin for Kubernetes OIDC authentication, also known as `kubectl` oidc-login.
 
 
@@ -73,7 +75,7 @@ Use these steps to configure your cluster group with OIDC *before* creating a vi
 
 12. Use the **Kubeconfig** link that displays on the virtual clusters overview page to download the Kubeconfig file. This will give you access to the Kubernetes cluster.
 
-  In *App Mode* click on **Virtual Clusters** and select the virtual cluster. In *Cluster Mode* navigate to **Cluster Groups** > **Virtual Clusters** and select the virtual cluster.
+  From the **User Menu**, switch to *App Mode*, click on **Virtual Clusters** and select the virtual cluster. In *Cluster Mode* navigate to **Cluster Groups** and select the virtual cluster in the **Virtual Clusters** tab.
 
 13. Configure Role-Based Access Control (RBAC) for the virtual cluster. 
 
@@ -88,7 +90,7 @@ Configuring OIDC requires you to map a set of users or groups to a Kubernetes RB
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Navigate to your virtual clusters, either from **Cluster Groups** > **Virtual Clusters** in *Cluster Mode* if the cluster group is part of a project, or by switching to *App Mode*  from the **User Menu** and selecting **Virtual Clusters**.
+2. Navigate to your virtual clusters. In *Cluster Mode*, if the cluster group is part of a project, navigate to the left **Main Menu**, click on **Cluster Groups** and select the **Virtual Clusters** tab. Alternatively, you can switch to *App Mode* from the **User Menu** and select **Virtual Clusters**.
 
 3. Select the virtual cluster you deployed to the cluster group that has OIDC configured.
 
