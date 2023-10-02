@@ -117,7 +117,6 @@ palette:
        identityProvider: <your_idp_selection>
 ```
 
-<br />
 
 ### Example Kubeadm Configuration File 
 
@@ -230,7 +229,6 @@ kubeadmconfig:
     #oidc-extra-scope: profile,email
 ```
 
-<br />
 
 ### Configure OIDC Identity Provider
 
@@ -248,7 +246,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -262,7 +259,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 ### Configure Custom OIDC
 
@@ -336,7 +332,6 @@ clientConfig:
 
 </Tabs>
 
-<br />
 
 ### Use RBAC with OIDC
 
@@ -545,7 +540,6 @@ kubeadmconfig:
     #oidc-extra-scope: profile,email
 ```
 
-<br />
 
 ### Configure OIDC Identity Provider
 
@@ -553,7 +547,7 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 
 
@@ -565,7 +559,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -579,7 +572,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-<br />
 
 ### Configure Custom OIDC
 
@@ -653,7 +645,6 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 </Tabs>
 
-<br />
 
 ### Use RBAC with OIDC
 
@@ -738,13 +729,11 @@ You can only specify the service domain at cluster creation. After cluster creat
 
 For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
-<br />
 
 ### Configuration Changes
 
 The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
 
-<br />
 
 ```yaml hideClipboard
 palette:
@@ -753,7 +742,6 @@ palette:
        identityProvider: <your_idp_selection>
 ```
 
-<br />
 
 ### Example Kubeadm Configuration File 
 
@@ -864,7 +852,6 @@ kubeadmconfig:
     #oidc-extra-scope: profile,email
   ```
 
-  <br />
 
 ### Configure OIDC Identity Provider
 
@@ -872,7 +859,7 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
@@ -883,7 +870,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -897,7 +883,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 ### Configure Custom OIDC
 
@@ -942,8 +927,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-<br />
-
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
 ```yaml
@@ -971,8 +954,6 @@ clientConfig:
 </TabItem>
 
 </Tabs>
-
-<br />
 
 ### Use RBAC with OIDC
 
@@ -1055,7 +1036,6 @@ You can only specify the service domain at cluster creation. After cluster creat
 
 For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
-<br />
 
 ### Configuration Changes
 
@@ -1068,7 +1048,6 @@ palette:
        identityProvider: <your_idp_selection>
 ```
 
-<br />
 
 ### Example Kubeadm Configuration File 
 
@@ -1149,7 +1128,6 @@ kubeadmconfig:
   #oidc-client-secret: yourSecretClientSecretGoesHere
   #oidc-extra-scope: profile,email
   ```
-<br />
 
 ### Configure OIDC Identity Provider
 
@@ -1157,7 +1135,7 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
@@ -1166,8 +1144,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
   :::
-
-<br />
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
@@ -1181,7 +1157,6 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-<br />
 
 ### Configure Custom OIDC
 
@@ -1226,8 +1201,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-<br />
-
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
   ```yaml
@@ -1255,8 +1228,6 @@ Follow these steps to configure OIDC for managed EKS clusters.
 </TabItem>
 
 </Tabs>
-
-<br />
 
 ### Use RBAC with OIDC
 
