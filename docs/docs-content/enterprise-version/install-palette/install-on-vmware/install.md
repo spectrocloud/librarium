@@ -28,7 +28,7 @@ Palette can be installed on VMware vSphere with internet connectivity or an airg
 
 
 
-- Review required VMware vSphere [permissions](vmware-system-requirements.md).
+- Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper custom roles and zone tags.
 
 
 
