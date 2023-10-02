@@ -370,7 +370,7 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
   <br />
 
-6. Switch back to your Okta Admin console and paste the copied value ito the **Single sign-on URL** and **Audience URI (SP Entity ID)**.
+6. Switch back to your Okta Admin console and paste the copied value to the **Single sign-on URL** and **Audience URI (SP Entity ID)**.
 
 7. Specify values within **Attribute Statements** and **Group Attribute Statements** to link user values from Okta to SpectroCloud.
 
