@@ -10,148 +10,131 @@ tags: ["profiles", "app profiles"]
 
 <<< MOVED FROM Version an App Profile - potentially use as a base. >>>
 
-## Update an App Profile
+You can update an app profile to change the configuration of one or more layers and add or remove layers. You can also update basic profile information such as the name, description, and tags.
 
-You can make changes to the app profile, such as version updates, manifest updates, app tier additions and removals.
+App profile changes will generate an update notification on all the Apps that are created from the profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply updates to Apps individually at any time.
 
-App Profile changes will generate an update notification on all the Apps that are created from  the app profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply the update to the Apps individually at any time.
-
-
-# Apply Updates to the App
-
-To apply updates to an App follow the below steps:
-
-<!-- 1. Log in to [Palette](https://console.spectrocloud.com/). -->
-
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-2. Select the **App Profiles** option from the left **Main Menu**.
-
-3. This page will list all the App Profiles available to you. Select the App Profile you want to update.
-
-4. Make the desired changes. You can add or delete layers, change pack versions, change pack values, etc. and save your changes.
-
-5. Navigate to the left **Main Menu** and click on **Apps**
-
-6. On the App page, apps eligible for an update will have an **Updates Available** badge.
-
-* Click on the App with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
-
-* An **Apply Updates** wizard will open up with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the app.
-
-
-## Validate
-
-To validate that the App profile updates are implemented on the target app, conduct the following steps:
-
-<!-- 1. Log in to [Palette](https://console.spectrocloud.com/). -->
-
-2. Select the **Apps** option from the left **Main Menu**.
-
-3. This page will list all the Apps. Click open the updated App.
-
-4.  Review the app profile details, which will include the applied updates.
-
-
-
-
-
-<<< COPIED FROM Update a Cluster Profile - potentially use as a base. >>>
-
-You update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
 
 ## Prerequisites
 
-There are no prerequisites. <<< OR >>> Your Palette account role must have the clusterProfile.create permission to create an Add-on cluster profile. Refer to the Cluster Profile permissions documentation for more information about roles and permissions.
+- An existing app profile.
+
 
 ## Modify Basic Profile Information
 
-Follow these steps to update basic profile information.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+2. From the **User Menu**, select **Switch to App Mode**.
 
-2. From the left **Main Menu**, select **Profiles**.
+3. Select **App Profiles** from the left **Main Menu**.
 
-3. Click the profile you want to update. Palette displays the profile stack.
+4. Click the profile you want to update. Palette displays the profile stack.
 
-4. Click the **Settings drop-down Menu** and choose **Edit Info**.  You can modify the name, version, description, and tags.
+5. Click on **Settings** and choose **Basic Info** in the slid-out panel.  You can modify the name, description, and tags.
     
 :::info
 
-  Updated tags are not propagated to previously created clusters. However, tag changes will apply to new clusters you create that use the updated profile.
+  Updated tags are not propagated to previously created Apps. However, tag changes will apply to new Apps you deploy that use the updated profile.
 
 :::
 
-5. Save your changes.
+6. Save your changes.
+
+To learn how to apply the changes, review [Apply Updates to Apps]. 
 
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Click the profile you updated. Palette displays the profile details and profile stack.
+3. Select **App Profiles** from the left **Main Menu**.
 
-4. Check that profile details display your changes.
+4. Select the profile you updated. Palette displays the profile details and profile stack.
 
-
-
-## Update a Pack Layer
-
-The following steps will guide you in making updates to a layer in the profile.
-
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
-
-2. From the left **Main Menu**, select **Profiles**.
-
-3. Select the profile you want to update. Palette displays the profile details and profile stack.
-
-4. You can do the following:
-    
-- Edit cluster basic cluster profile information by navigating to the **Settings drop-down Menu** and choosing **Edit Info**.
+5. Check that profile details display your changes.
 
 
-- Select **Add New Pack** and choose a new pack to add.
+## Update a Profile Layer
 
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
-- Select **Import from cluster** to import a pack from another cluster. 
+2. From the **User Menu**, select **Switch to App Mode**.
 
-    - Click the layer you want to update, and edit pack settings in the YAML file.
+3. Select **App Profiles** from the left **Main Menu**.
 
-    - Select **Add Manifest** to add, edit, or remove a manifest.
+4. Select the app profile you want to update.
 
-    - Select **Add Helm chart** to add a Helm chart.
+5. Make the desired changes. You can add or delete layers, change pack versions, change pack values, and more. 
 
-    - Select **Add Zarf** In air-gapped environments, use Zarf to add applications.
+6. Save your changes.
 
-    - Remove non-core pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
-
-  :::info
-
-  Operating System (OS) Kubernetes, Networking, and Storage are considered core layers and cannot be removed.
-
-  :::
-  
-    - Delete the profile by navigating to the **Settings drop-down Menu** and choosing **Delete**.
-
-5. Confirm your updates.
-
-Clusters that use the updated profile are notified of the changes. You can update clusters to use the latest profile definition at any time.
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the **User Menu**, select **Switch to App Mode**.
 
-3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page.
+3. Select **App Profiles** from the left **Main Menu**.
 
-4. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
+<!-- 3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page. -->
 
-5. Check that layers are added to or removed from the stack.  
+4. Select the profile you updated. Palette displays the profile details and profile stack.
+
+5. Check that services and layers are added to or removed from the stack.  
 
 6. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+
+
+
+## Apply Updates to Apps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the **User Menu**, select **Switch to App Mode**.
+
+3. Select **App Profiles** from the left **Main Menu**.
+
+4. Navigate to the left **Main Menu** and click on **Apps**.
+
+5. Apps that are eligible for an update will have an **Updates Available** badge.
+
+6. Select the app with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
+
+7. An **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the app.
+
+
+## Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the **User Menu**, select **Switch to App Mode**.
+
+3. Select **App Profiles** from the left **Main Menu**.
+
+4. Select the updated app.
+
+5. Check that layers are added to or removed from the profile stack, and verify other profile details.  
+
+6. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Update the Pack Version

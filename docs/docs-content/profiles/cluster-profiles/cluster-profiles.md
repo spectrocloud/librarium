@@ -23,7 +23,7 @@ The diagram below illustrates the components of these profile types and how you 
 
 ## Profile Layers
 
-Each profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or manifests, as described in the table.
+Each profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom manifests, as described in the table.
 
 | **Layer** | **Description** |
 |-----------|---------------------------|

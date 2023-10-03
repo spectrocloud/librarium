@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Version a Cluster Profile"
 title: "Version a Cluster Profile"
-description: "Learn how to version a cluster profile in Palette."
+description: "Learn how to create a new version of an existing cluster profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 70
 tags: ["profiles", "cluster profiles"]
@@ -30,7 +30,7 @@ Cluster profiles have a default value of `1.0.0`. When you create a new profile 
 
 6. Click on **Confirm**. Palette displays a versioning successful message.
 
-7. Configure packs as needed.
+7. Configure layers as needed.
 
 You have successfully created a new pack version.
 

@@ -9,7 +9,9 @@ tags: ["profiles", "cluster profiles"]
 
 
 
-You can update a cluster profile to change the configuration of one or more layers in the profile stack. You can also update basic profile information such as the name, description, and tags.
+You can update a cluster profile to change the configuration of one or more layers and add or remove non-infrastructure layers. You can also update basic profile information such as the name, description, and tags.
+
+Cluster profile changes will generate an update notification on all the cluster that are created from the profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply updates to clusters individually at any time.
 
 ## Prerequisites
 
@@ -17,15 +19,13 @@ You can update a cluster profile to change the configuration of one or more laye
 
 ## Modify Basic Profile Information
 
-Follow these steps to update basic profile information.
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 
 3. Click the profile you want to update. Palette displays the profile stack.
 
-4. Click on **Settings** and choose **Edit Info**. You can modify the profile name, version, description, and tags.
+4. Click on **Settings** and choose **Edit Info** from the **drop-down Menu**. You can modify the profile name, version, description, and tags.
     
   :::info
 
@@ -34,6 +34,8 @@ Follow these steps to update basic profile information.
   :::
 
 5. Save your changes.
+
+To learn how to apply the changes, review [Apply Updates to Clusters]. 
 
 
 ## Validate
@@ -48,9 +50,7 @@ Follow these steps to update basic profile information.
 
 
 
-## Update a Pack Layer
-
-The following steps will guide you in updating a profile layer.
+## Update a Profile Layer
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -94,13 +94,39 @@ Clusters that use the updated profile are notified of the changes. You can updat
 
 2. From the left **Main Menu**, select **Profiles**.
 
-3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page.
+<!-- 3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page. -->
 
-4. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
+3. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
 
-5. Check that layers are added to or removed from the stack.  
+4. Check that layers are added to or removed from the profile stack.  
 
-6. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+
+
+## Apply Updates to Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**. Clusters that are eligible for an update will have an **Updates Available** badge.
+
+3. Select the cluster with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
+
+4. An **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the cluster.
+
+
+## Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. Select the updated cluster.
+
+4. Check that layers are added to or removed from the profile stack, and verify other profile details.  
+
+5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+
+
 
 
 ## Update the Pack Version
