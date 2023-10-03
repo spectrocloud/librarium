@@ -30,7 +30,7 @@ section](https://dashboard.ngrok.com/cloud-edge/domains) of the ngrok dashboard 
 
 ## Parameters
 
-To deploy the ngrok Ingress Controller, you need to set, at minimum, the following parameters your preset or active pack profile.
+To deploy the ngrok Ingress Controller, you need to set, at minimum, the following parameters in the pack's YAML.
 
 | Name  | Description |
 | --- | --- |
@@ -40,9 +40,9 @@ To deploy the ngrok Ingress Controller, you need to set, at minimum, the followi
 | `kubernetes-ingress-controller.rules.http.paths.path` | The path at which to route traffic to your application. For more advanced configurations, you can set multiple paths with corresponding `pathType`, `backend.service.name`, and `backend.service.name` parameters. |
 | `kubernetes-ingress-controller.rules.host.paths.pathType` | Specify how ingress paths should be [matched by type](https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types). `Prefix` matches based on a URL path prefix split by `/`. `Exact` matches the URL path exactly and with case sensitivity. |
 | `kubernetes-ingress-controller.rules.host.backend.service.name` | The name you've given to the application for which the ngrok Ingress Controller should handle traffic. |
-| `kubernetes-ingress-controller.rules.host.backend.service.port.number` | The port number where `service.name` runs. |
+| `kubernetes-ingress-controller.rules.host.backend.service.port.number` | The port number for the deployed `service.name`. |
 
-See the [common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md) doc for more details and the [user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced configurations.
+Review the [common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md) document for more details on parameters. Refer to the [user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced configurations.
 
 :::caution
 
@@ -58,7 +58,7 @@ charts:
 
 ## Usage
 
-To use the ngrok Ingress Controller pack, first create a new [add-on cluster profile](https://docs.spectrocloud.com/cluster-profiles/create-add-on-profile), search for the **ngrok Ingress Controller** pack, and overwrite the default pack configuration with your API key and authentication token like the following example YAML content:
+To use the ngrok Ingress Controller pack, first create a new [add-on cluster profile](../cluster-profiles/create-add-on-profile.md), search for the **ngrok Ingress Controller** pack, and overwrite the default pack configuration with your API key and authentication token like the following example YAML content:
 
 ```yaml
 charts:  
@@ -69,9 +69,9 @@ charts:
       authtoken: AUTHTOKEN
 ```
 
-Next, you need to create an ingress service definition for your application, which requires a new **manifest layer**, which you can add to this profile directly, or as a separate profile.
+Next, you must create an ingress service definition for your application, which requires a new manifest layer. Click on the **Add Manifest** button to create a new manifest layer. 
 
-The following YAML content demonstrates an example ingress service where the ngrok Ingress Controller creates a new edge to route traffic on your ngrok subdomain `example.com` to an existing `example-app` running on your Kubernetes cluster in Palette.
+The following YAML content demonstrates an example ingress service where the ngrok Ingress Controller creates a new edge to route traffic on your ngrok subdomain `example.com` to an existing `example-app` deployed on your Kubernetes cluster in Palette.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -94,7 +94,7 @@ spec:
                   number: 80
 ```
 
-Once you've defined the ngrok Ingress Controller pack, you can add it to an existing full or infrastructure profile, or as a new add-on layer to a running cluster.
+Once you have defined the ngrok Ingress Controller pack, you can add it to an existing cluster profile, as an add-on profile, or as a new add-on layer to a deployed cluster.
 
 ## Terraform
 
