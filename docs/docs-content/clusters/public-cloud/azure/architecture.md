@@ -25,6 +25,7 @@ The following are some architectural highlights of Azure clusters deployed by Pa
 - None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is accessed through a public load balancer.
 
 
+
 ![An Azure IaaS architecture diagram](/clusters_azure_architecture_iaas-overview.png)
 
 
@@ -33,10 +34,10 @@ The following are some architectural highlights of Azure clusters deployed by Pa
 
 The integration between Palette and Azure AKS unlocks the following capabilities.
 
-- Palette platform enables containerized applications' effortless deployment and management with fully managed AKS.
+- Palette platform enables effortless deployment and management of containerized applications with fully managed AKS.
 
 
-- Palette provides the you with a with serverless Kubernetes experience, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance.
+- Palette provides you with a with serverless Kubernetes experience, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance.
 
 
 - Palette helps you unite the development and operations to a single platform.  This unification helps you achieve faster builds, delivery, and scaling of applications with credence.
@@ -47,6 +48,27 @@ The integration between Palette and Azure AKS unlocks the following capabilities
 
 - Leverage extensive authentication and authorization capabilities by using Azure Active Directory and dynamic rules enforcement, across multiple clusters with Azure Policy.
 
+- Configure Service Level Agreements (SLA)-based charging options for Azure AKS cluster control planes in the Kubernetes `values.yaml` pack. The ability to set these options in the Kubernetes YAML file allows you to embed options and overrides in cluster profiles.
+
+  Use the `managedControlPlane.sku` parameter, as shown in the example, to specify `Standard` for production clusters and `Free` for non-production or small clusters.
+
+  ```yaml
+  managedControlPlane:
+    aadProfile:
+      managed: true
+      adminGroupObjectIDs:
+      - <id>
+    sku: Standard  
+  ``` 
+
+  ```yaml
+    managedControlPlane:
+      aadProfile:
+        managed: false
+        adminGroupObjectIDs:
+        - <id>
+      sku: Free  
+  ``` 
 
 ![An Azure AKS architecture diagram](/clusters_azure_architecture_aks-diagram.png)
 
@@ -58,7 +80,7 @@ During an Azure cluster deployment, Palette creates an [Azure storage account](h
 Before the Azure cluster creation process, you must have created custom storage accounts or containers. All custom storage accounts and containers will be listed in the **Cluster config** page during the cluster creation process. If you need help creating a custom storage account or container, check out the Azure [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) guide or the Azure [Manage Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal) guide.
 
 
-The following section covers a few scenarios where you have the need to customize Azure storage in an Azure cluster.
+The following sections cover a few scenarios where you have the need to customize Azure storage in an Azure cluster.
 
 ## Custom Name
 

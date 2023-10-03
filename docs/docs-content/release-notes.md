@@ -17,9 +17,7 @@ This release contains enhancements and minor bug fixes.
 
 ## Enhancements
 
-- Configurable options to specify charging for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes `values.yaml` pack. These options are based on Service Level Agreements (SLA) that Azure provides. The ability to set these options in the Kubernetes YAML file allows you to embed options and overrides in cluster profiles.
-
-  Use the `managedControlPlane.sku` parameter to specify Azure recommended settings: `Standard` for production clusters and `Free` for non-production or small clusters.
+- Configurable options to specify charging for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes `values.yaml` pack. You can review examples of how to use the `managedControlPlane.sku` parameter in [AKS Architecture](clusters/public-cloud/azure/architecture.md#aks-architecture) highlights.
 
 - Palette now supports the space character for the `scopesDelimiter` field for OpenID Connect (OIDC) configuration. Previously, Palette used only a comma delimiter.
 
