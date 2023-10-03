@@ -25,7 +25,7 @@ This release contains enhancements and minor bug fixes.
 
 ### Bug Fixes
 
-- API calls to update edge-native machines no longer time out after 60 seconds. 
+- API calls to update edge hosts no longer time out after 60 seconds. 
 
 - An issue with frequent Hubble system pod restarts in a proxy environment has been resolved.
 
