@@ -17,7 +17,7 @@ This release contains enhancements and minor bug fixes.
 
 ## Enhancements
 
-- Configurable options to specify charging for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes `values.yaml` pack. You can review examples of how to use the `managedControlPlane.sku` parameter in [AKS Architecture](clusters/public-cloud/azure/architecture.md#aks-architecture) highlights.
+- Configurable options to specify pricing for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes **values.yaml** pack. You can review examples of how to use the `managedControlPlane.sku` parameter in [AKS Architecture](clusters/public-cloud/azure/architecture.md#pricing-options) highlights.
 
 - Palette now supports the space character for the `scopesDelimiter` field for OpenID Connect (OIDC) configuration. Previously, Palette used only a comma delimiter.
 
@@ -25,9 +25,9 @@ This release contains enhancements and minor bug fixes.
 
 - API calls to update edge hosts no longer time out after 60 seconds. 
 
-- An issue with frequent Hubble system pod restarts in a proxy environment has been resolved.
+- The issue where system pods in the `hubble-system` namespace restarted frequently is now resolved.
 
-- A UI issue is fixed where the IP address of the Network Interface Controller (NIC) used by edge hosts was not plainly listed and made updating the IP difficult.
+- The issue with Palette displaying incorrect interface of an edge host during cluster deployment is now resolved.
 
 
 ## September 20, 2023 - Release 4.0.13

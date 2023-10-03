@@ -48,27 +48,6 @@ The integration between Palette and Azure AKS unlocks the following capabilities
 
 - Leverage extensive authentication and authorization capabilities by using Azure Active Directory and dynamic rules enforcement, across multiple clusters with Azure Policy.
 
-- Configure Service Level Agreements (SLA)-based charging options for Azure AKS cluster control planes in the Kubernetes `values.yaml` pack. The ability to set these options in the Kubernetes YAML file allows you to embed options and overrides in cluster profiles.
-
-  Use the `managedControlPlane.sku` parameter, as shown in the example, to specify `Standard` for production clusters and `Free` for non-production or small clusters.
-
-  ```yaml
-  managedControlPlane:
-    aadProfile:
-      managed: true
-      adminGroupObjectIDs:
-      - <id>
-    sku: Standard  
-  ``` 
-
-  ```yaml
-    managedControlPlane:
-      aadProfile:
-        managed: false
-        adminGroupObjectIDs:
-        - <id>
-      sku: Free  
-  ``` 
 
 ![An Azure AKS architecture diagram](/clusters_azure_architecture_aks-diagram.png)
 
@@ -94,6 +73,47 @@ To restrict the user access to the storage resource, apply custom policies, or l
 ## Network Access
 
 Clusters that use a Palette self-hosted [Private Cloud Gateway](gateways.md) (PCG), should use a custom storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access and use private access for the Azure storage account.
+
+
+## Pricing Options
+
+You can configure Service Level Agreements (SLA)-based [pricing options](https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers) for Azure AKS cluster control planes. You have the ability to set these options in the Kubernetes YAML file, allowing you to embed pricing options in the cluster profile.
+
+Use the `managedControlPlane.sku` parameter, as shown in the examples, to specify `Standard` for production clusters and `Free` for non-production or small clusters.
+
+
+<Tabs queryString="charge-options">
+<TabItem label="Standard" value="standard">
+
+  ```yaml
+  managedControlPlane:
+    aadProfile:
+      managed: true
+      adminGroupObjectIDs:
+      - <id>
+    sku: Standard  
+  ``` 
+
+</TabItem>
+
+<TabItem label="Free" value="free">
+
+  ```yaml
+  managedControlPlane:
+    aadProfile:
+      managed: false
+      adminGroupObjectIDs:
+      - <id>
+    sku: Free  
+  ``` 
+
+</TabItem>
+
+</Tabs>
+
+
+
+
 
 
 ## Tags
