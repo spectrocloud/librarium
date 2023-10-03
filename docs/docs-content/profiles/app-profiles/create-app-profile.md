@@ -8,7 +8,7 @@ tags: ["profiles", "app profiles"]
 ---
 
 
-You can create as many app profiles as needed for your Palette Virtual Clusters. Each app profile can contain multiple services, which are layers in the profile stack. You can also create multiple versions of an app profile. For more information, review [Version an App Profile](version-app-profile.md). 
+You can create as many app profiles as needed for your Palette [Virtual Clusters](../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Each app profile can contain multiple services, which are layers in the profile stack. You can also create multiple versions of an app profile. For more information, review [Version an App Profile](version-app-profile.md). 
 
 Use the following steps to create an app profile.
 
@@ -37,7 +37,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 | **Parameter**           | **Description**  |
 |-------------------------|---------------------|
-|**Application** Profile Name | A custom name for the profile.|
+|**Application Profile Name** | A custom name for the app profile.|
 |**Version** | An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
 |**Description**  | Use the description to provide context about the profile. | 
 |**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.|
@@ -57,7 +57,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 9. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane.
 
-10. When you've provided the required configuration information for services, click **Review**. 
+10. When you have provided the required configuration information for services, click **Review**. 
 
 Your app profile is now created and can be deployed.  
 
@@ -88,7 +88,7 @@ Use the following steps to validate that your app profile is available and ready
 
 ## Next Steps
 
-Start exploring the various [out-of-the-box](../../devx/app-profile/services/services.md) services Palette exposes to application authors. Use these services to quickly deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
+Start exploring the various out-of-the-box [services](../../devx/app-profile/services/services.md) Palette exposes to application authors. Use these services to deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
 
 
 
