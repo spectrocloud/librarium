@@ -1,19 +1,19 @@
 ---
-sidebar_label: 'Palette SSO with Okta'
-title: 'Set up Palette SSO with Okta'
-description: 'Set up Palette SSO with Okta'
+sidebar_label: 'Palette SSO with Okta OIDC'
+title: 'Set up Palette SSO with Okta OIDC'
+description: 'Set up Palette SSO with Okta OIDC'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 hiddenFromNav: false
-tags: ["user-management", "saml-sso"]
+tags: ["user-management", "oidc-sso"]
 ---
 
 
 
 
 
-# Enable SSO with Okta
+# Enable SSO with Okta OIDC
 
 Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses certificates to establish and maintain a trust relationship between the Service Provider (SP) and an Identity Provider (IdP). Palette supports SSO based on either the Security Assertion Markup Language (SAML) or OpenID Connect (OIDC).
 
@@ -29,6 +29,7 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 
 
 ## Okta with OIDC
+
 ### Create the Okta Application
 
 1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
@@ -326,101 +327,6 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
 
 
-## Okta with SAML
-
-### Create the Okta Application
-
-1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
-
-  <br />
-
-  :::info
-
-   Your Okta login URL has the following format,
-    `https://{your-okta-account-id}-admin.okta.com/admin/getting-started`. 
-    Replace `{your-okta-account-id}` with your Okta account ID.
-
-  :::
-
-  <br/>
-
-2. In the screen that opens, select **SAML 2.0** for the sign-in method. Then click **Next**.
-
-  <br />
-
-  ![Configure General Settings](/saml-okta-images/okta-create-application.png)
-
-  <br />
-
-1. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from `My Web App` to `Spectro Cloud Palette SAML`. If desired, you can also upload a logo for the application. 
-
-  <br />
-
-  ![Configure General Settings](/saml-okta-images/okta-saml-general-settings.png)
-
-  <br />
-
-4. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click **SAML**. Click the button next to **Login URL** to copy the value to the clipboard.
-
-5. Set the value of **Service** to **Okta**.
-
-  <br />
-
-  ![Configure General Settings](/saml-okta-images/palette-manage-sso-okta-saml.png)
-
-  <br />
-
-6. Switch back to your Okta Admin console and paste the copied value to the **Single sign-on URL** and **Audience URI (SP Entity ID)**.
-
-7. Specify values within **Attribute Statements** and **Group Attribute Statements** to link user values from Okta to SpectroCloud.
-
-Under **Attribute Statements (Optional)** specify the below values.
-
-| Name | Name Format | Value |
-| -- | -- | -- |
-| `FirstName` | `Unspecified` | `user.firstName` |
-| `LastName` | `Unspecified` | `user.lastName` |
-| `Email` | `Unspecified` | `user.email` |
-
-Under **Group Attribute Statements (Optional)** specify the below values.
-
-| Name | Name Format | Filter | Value |
-| -- | -- | -- | -- |
-| `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
-
-  <br />
-
-  ![Configure General Settings](/saml-okta-images/okta-saml-attribute-statements.png)
-
-  <br />
-
-8. Finish the creation of the application with default values.
-
-9. Once brought to main application page, copy the **Metadata URL**, open it up in a separate page, then copy of the contents of the XML.
-
-  <br />
-
-  ![Configure General Settings](/saml-okta-images/okta-metadata-url.png)
-
-  <br />
-
-  :::info
-  Due to some browsers that add additional formatting and spacing for XML data, you can run the below command to copy the contents to your clipboard.
-  ```sh
-  curl https://{your-okta-account-id}.com/app/{your-okta-app-id}/sso/saml/metadata | pbcopy
-  ```
-  Replace `{your-okta-account-id}` and `{your-okta-app-id}` with your Okta account ID and app ID.
-  :::
-
-10.   Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider Metadata**.
-
-  <br />
-
-  ![Configure General Settings](/saml-okta-images/palette-manage-sso-okta-metadata.png)
-
-  <br />
-
-11. When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML configured successfully.
 
 ## Resources
 
