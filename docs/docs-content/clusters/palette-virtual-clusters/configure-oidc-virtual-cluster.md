@@ -83,7 +83,7 @@ We recommend configuring a cluster group with OIDC *before* you create virtual c
 
   From the **User Menu**, switch to *App Mode*, click on **Virtual Clusters** and select the virtual cluster. In *Cluster Mode* navigate to the **Main Menu**, click on **Cluster Groups**, select the **Virtual Clusters** tab, and select the virtual cluster.
 
-12. Create the proper Kubernetes roles and *roleBindings* required to map the OIDC users with a Kubernetes role. Refer to the [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings) for additional guidance.
+12. Create the proper Kubernetes *roles* and *roleBindings* required to map the OIDC users with a Kubernetes role. Refer to the [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings) for additional guidance.
 
 :::caution
 
@@ -100,7 +100,7 @@ Configuring OIDC requires you to map a set of users or groups to a Kubernetes RB
 
 3. Select the virtual cluster you deployed to the cluster group that has OIDC configured.
 
-4. Use the **Kubeconfig** link to download the kubeconfig file, and ensure can connect to the cluster. Refer to the [Kubectl](../cluster-management/palette-webctl.md) guide for detailed steps. 
+4. Use the **Kubeconfig** link to download the kubeconfig file, and ensure you can connect to the cluster. Refer to the [Kubectl](../cluster-management/palette-webctl.md) guide for detailed steps. 
 
 
 ## Resources
