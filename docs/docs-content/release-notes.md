@@ -47,7 +47,7 @@ This release contains enhancements and minor bug fixes.
 
 - An issue with frequent Hubble system pod restarts in a proxy environment has been resolved.
 
-- A UI issue is fixed where the IP address of the Network Interface Controller (NIC) used by edge hosts was not clearly listed and made updating the IP difficult.
+- A UI issue is fixed where the IP address of the Network Interface Controller (NIC) used by edge hosts was not plainly listed and made updating the IP difficult.
 
 
 ## September 20, 2023 - Release 4.0.13
