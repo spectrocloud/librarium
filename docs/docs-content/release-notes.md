@@ -11,13 +11,13 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## October 2, 2023 - Release 4.0.15
+## October 3, 2023 - Release 4.0.15
 
 This release contains enhancements and minor bug fixes.
 
 ## Enhancement
 
-- Configurable charging options for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes `values.yaml` pack. This allows you to embed options in cluster profiles or as overrides.
+- Configurable options for Azure Kubernetes Service (AKS) to specify charging for cluster control planes are now available in the Kubernetes `values.yaml` pack. These options are based on Service Level Agreements (SLA) that Azure provides. The ability to set these options in the Kubernetes YAML file allows you to embed options or overrides in cluster profiles.
 
   Azure recommends `Standard` for production clusters and `Free` for non-production or small clusters.
 
@@ -39,13 +39,16 @@ This release contains enhancements and minor bug fixes.
     sku: Free 
   ```
 
-- The OpenID Connect (OIDC) scopesDelimiter field `"scopesDelimiter": " ",` used to sign in to an organization now accepts a space as a delimiter.
+- Palette now supports the space character for the `scopesDelimiter` field for OpenID Connect (OIDC) configuration. Previously, Palette used only a comma delimiter.
 
 ### Bug Fixes
 
 - API calls to update edge native machines no longer time out after 60 seconds. 
 
-- (3.4) A UI issue where the IP address of the Network Interface Controller (NIC) used by edge hosts was not clearly listed and made updating the IP difficult, is fixed. 
+- An issue with frequent Hubble system pod restarts in a proxy environment has been resolved.
+
+- A UI issue is fixed where the IP address of the Network Interface Controller (NIC) used by edge hosts was not clearly listed and made updating the IP difficult.
+
 
 ## September 20, 2023 - Release 4.0.13
 
@@ -609,6 +612,7 @@ The following packs are marked as deprecated, disabled, or deleted. Refer to the
 | Spectro Proxy                 | 1.0.0           | Deprecated   |
 | Spectro Proxy                 | 1.1.0           | Deprecated   |
 
+ 
 
 ## September 21, 2023 - Release 3.4.114
 
