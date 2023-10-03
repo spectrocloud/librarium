@@ -17,7 +17,7 @@ This release contains enhancements and minor bug fixes.
 
 ## Enhancement
 
-- Configurable options for Azure Kubernetes Service (AKS) to specify charging for cluster control planes are now available in the Kubernetes `values.yaml` pack. These options are based on Service Level Agreements (SLA) that Azure provides. The ability to set these options in the Kubernetes YAML file allows you to embed options or overrides in cluster profiles.
+- Configurable options to specify charging for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes `values.yaml` pack. These options are based on Service Level Agreements (SLA) that Azure provides. The ability to set these options in the Kubernetes YAML file allows you to embed options and overrides in cluster profiles.
 
   Azure recommends `Standard` for production clusters and `Free` for non-production or small clusters.
 
@@ -43,7 +43,7 @@ This release contains enhancements and minor bug fixes.
 
 ### Bug Fixes
 
-- API calls to update edge native machines no longer time out after 60 seconds. 
+- API calls to update edge-native machines no longer time out after 60 seconds. 
 
 - An issue with frequent Hubble system pod restarts in a proxy environment has been resolved.
 
