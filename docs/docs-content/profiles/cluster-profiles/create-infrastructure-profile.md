@@ -26,7 +26,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
   | **Field** | **Description** |
   |-----------|-----------------|
-  | **Name**| The name of the profile. |
+  | **Name**| A custom name for the profile. |
   | **Version**| Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
   |**Description**| Use the description to provide context about the profile.|
   | **Type**| **Infrastructure** |

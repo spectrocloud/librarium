@@ -6,7 +6,7 @@ hide_table_of_contents: false
 tags: ["profiles", "cluster profiles"]
 ---
 
-You can create the following types of cluster profiles using packs, Helm charts, and manifests to meet specific types of workloads on your Palette cluster deployments. 
+You can create the following types of cluster profiles using packs - which are layers in the profile stack - Helm charts, and manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments. You can also create multiple cluster profile versions. For more information, review [Version a Cluster Profile](version-cluster-profile.md). 
 
 - **Cluster profiles** - You can build three types of cluster profiles:
 
@@ -31,5 +31,20 @@ Each profile layer provides a specific functionality. Profile layers can be pack
 | **Helm Charts** | Helm charts are a collection of Kubernetes resource files capable of deploying various services. We provide both a public and a private Helm registry. Additionally, your organization can add any public or private Helm registries to Palette to leverage charts from those registries. You can then attach customized charts to packs. |
 | **Manifests** | You can construct profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Manifests also provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require the creation of secrets or Custom Resource Definitions (CRDs). You can provision these additional resources by attaching a manifest file to a layer in a cluster profile. |
 
+## Resources
 
+- [Create an Infrastructure Profile](./create-infrastructure-profile.md)
 
+- [Create a Full Profile](create-full-profile.md)
+
+- [Create an Add-on Profile](create-addon-profile.md)
+
+- [Update a Cluster Profile](update-cluster-profile.md)]
+
+- [Clone a Cluster Profile](clone-cluster-profile.md)
+
+- [Export and Import a Cluster Profile](export-import-cluster-profile.md)
+
+- [Version a Cluster Profile](version-cluster-profile.md)
+
+- [Delete a Cluster Profile](delete-cluster-profile)
