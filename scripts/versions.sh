@@ -56,15 +56,22 @@ done
 
 # Remove the existing versioned directories in the temp directory.
 rm -rf $tempdir/staging_docs
+rm -rf $tempdir/staging_api_docs
 rm -rf $tempdir/staging_sidebars
+rm -rf $tempdir/staging_api_docs_sidebars
 rm -rf $tempdir/temp_versions.json
+rm -rf $tempdir/temp_api_versions.json
 
 
 # Create the staging directory for all the versions
 mkdir -p $tempdir/staging_docs
+mkdir -p $tempdir/staging_api_docs
 mkdir -p $tempdir/staging_sidebars
+mkdir -p $tempdir/staging_api_docs_sidebars
 touch $tempdir/temp_versions.json
+touch $tempdir/temp_api_versions.json
 echo '[]' > $tempdir/temp_versions.json  # Initialize as an empty array if it doesn't exist
+echo '[]' > $tempdir/temp_api_versions.json  # Initialize as an empty array if it doesn't exist
 
 
 echo "Entering the loop to generate the versioned documentation"
@@ -102,6 +109,7 @@ for item in $(git branch --format '%(refname:short)'); do
 
     # Add version to temp_versions.json and sort it
     jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_api_versions.json > $tempdir/temp_api.json && mv $tempdir/temp_api.json $tempdir/temp_api_versions.json
 
 
 
@@ -115,21 +123,34 @@ for item in $(git branch --format '%(refname:short)'); do
     echo "Running: npm run docusaurus docs:version $extracted_versionX"
     npm run docusaurus docs:version $extracted_versionX
 
+    # Generate the API docs
+    echo "Running: npm run generate-api-docs"
+    npm run generate-api-docs
 
-    # Copy the generated files to the staging directory
-    # echo "Copying files to staging directory"
-    # mkdir -p $tempdir/staging_docs/version-$extracted_versionX
-    # mkdir -p $tempdir/staging_sidebars/version-$extracted_versionX
-    
+    echo "Running: npm run docusaurus docs:version:api $extracted_versionX"
+    npm run docusaurus docs:version:api $extracted_versionX
+
+  
+    # Copy version docs content
     cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/
     cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/ || true
     cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
+    # Copy version API docs content
+    cp -R api_versioned_docs/version-$extracted_versionX $tempdir/staging_api_docs/
+    cp -R api_versioned_sidebars/version-$extracted_versionX $tempdir/staging_api_docs_sidebars/ || true
+    cp api_versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_api_docs_sidebars/version-$extracted_versionX-sidebars.json
 
 
     rm -rf versioned_docs/
     rm -rf versioned_sidebars/
+    rm -rf api_versioned_docs/
+    rm -rf api_versioned_sidebars/
 
     rm versions.json
+    rm api_versions.json
+
+    # Remove API auto-generated files
+    npm run clean-api-docs
 
     # Switch back to the original branch
     git checkout $current_branch
@@ -140,15 +161,20 @@ done
 # Rename the staging directory to the expected Docusarus versioned directory names
 cp -R $tempdir/staging_docs $baseDir/versioned_docs
 cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
+cp -R $tempdir/staging_api_docs $baseDir/api_versioned_docs
+cp -R $tempdir/staging_api_docs_sidebars $baseDir/api_versioned_sidebars
 
 # Remove the existing versions.json if it exists
 [ -e versions.json ] && rm versions.json
+[ -e api_versions.json ] && rm api_versions.json
 
 # Replace the last number with 'x' to indicate it's a version branch
 jq '.[] |= (split(".")[:-1] | join(".")) + ".x"' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+jq '.[] |= (split(".")[:-1] | join(".")) + ".x"' $tempdir/temp_api_versions.json > $tempdir/temp_api.json && mv $tempdir/temp_api.json $tempdir/temp_api_versions.json
 
 # Rename temp_versions.json to versions.json
 mv $tempdir/temp_versions.json $baseDir/versions.json
+mv $tempdir/temp_api_versions.json $baseDir/api_versions.json
 
 echo "Updating docusarus.config.js through the node script."
 node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir
