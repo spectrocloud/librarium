@@ -47,7 +47,7 @@ The product tour is followed by a Palette experience session.  Here we make sure
 
 ## Palette Workflow
 
-Palette requires the creation of a cluster profile before a workload cluster can be created. This is because [cluster profiles](/cluster-profiles) are templates created with preconfigured layers that define the required dependencies, such as the Operating System (OS) and Kubernetes version for your cluster.  The cluster profile is a core component of Palette. You can learn more about cluster profiles by reviewing the [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) reference page.
+Palette requires the creation of a cluster profile before a workload cluster can be created. This is because cluster profiles are templates created with preconfigured layers that define the required dependencies, such as the Operating System (OS) and Kubernetes version for your cluster.  The cluster profile is a core component of Palette. You can learn more about cluster profiles by reviewing the [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) reference page.
 
 ## Resources
 

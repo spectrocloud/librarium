@@ -88,4 +88,4 @@ Below are some of the characteristics of each mode. Use this to help you better 
 
 ## Next Steps
 
-Get started with [Palette](https://console.spectrocloud.com/) today and deploy an application though [app mode](/devx). Or create a Kubernetes cluster on your favorite platform and let Palette handle the challenges of maintaining Kubernetes clusters by leveraging cluster mode and [cluster profiles](/cluster-profiles).
+Get started with [Palette](https://console.spectrocloud.com/) today and deploy an application though [app mode](/devx). Or create a Kubernetes cluster on your favorite platform and let Palette handle the challenges of maintaining Kubernetes clusters by leveraging cluster mode and [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md).

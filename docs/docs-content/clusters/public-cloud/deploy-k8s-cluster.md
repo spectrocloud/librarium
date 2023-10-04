@@ -77,7 +77,7 @@ The following steps will guide you through deploying the cluster infrastructure.
 
 #### Create Cluster Profile (AWS)
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
  - Kubernetes distribution and version
@@ -235,7 +235,7 @@ Click on your cluster to review its details such as deployment status, event log
 
 #### Create Cluster Profile (Azure)
 
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
  - Operating System (OS)
  - Kubernetes distribution and version 
  - Network Container Interface (CNI)
@@ -391,7 +391,7 @@ Click on your cluster to review details such as deployment status, event logs, c
 <TabItem label="Google Cloud" value="gcp-ui">
 
 ### Create Cluster Profile (GCP)
-[Cluster profiles](https://docs.spectrocloud.com/cluster-profiles) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
  - Kubernetes distribution and version
@@ -1253,7 +1253,7 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 - [Palette Modes](/introduction/palette-modes)
 
 
-- [Cluster Profiles](/cluster-profiles)
+- [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
 
 
 - [Palette Clusters](/clusters) 
