@@ -9,10 +9,21 @@ tags: ["palette", "self-hosted", "vmware"]
 ---
 
 
-Before installing Palette on VMware, review the following system requirements and permissions. The Palette installer requires a vSphere user account with sufficient privileges to deploy Palette. The vSphere user account must have the required permissions to access the proper roles and objects in vSphere. 
+Before installing Palette on VMware, review the following system requirements and permissions. The vSphere user account used to deploy Palette must have the required permissions to access the proper roles and objects in vSphere. 
 
-Start by reviewing the [Create Required Roles](#create-required-roles) section to create the required roles in vSphere. Then review the [vSphere Permissions](#vsphere-permissions) section to ensure the created roles have the required vSphere privileges and permissions. Lastly, review the [Zone Tagging](#zone-tagging) section to ensure that the required tags are created in vSphere to ensure proper resource allocation across fault domains.
+Start by reviewing the required action items below:
 
+1. [Create Required Roles](#create-required-roles) section to create the required roles in vSphere. 
+
+2. Review the [vSphere Permissions](#vsphere-permissions) section to ensure the created roles have the required vSphere privileges and permissions. 
+
+3. Create node zones and regions for your Kubernetes clusters. Refer to the [Zone Tagging](#zone-tagging) section to ensure that the required tags are created in vSphere to ensure proper resource allocation across fault domains.
+
+
+:::info
+
+The permissions listed in this page are also needed for deploying a Private Cloud Gateway (PCG), and workload cluster in vSphere through Palette.
+:::
 
 
 ## Create Required Roles
@@ -107,7 +118,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 ### Spectro Role Privileges
 
-The spectro role privileges listed in the following table must be applied to following vSphere objects you intende to use for the Palette install. A separate table lists Spectro role privileges for VMs by category. 
+The spectro role privileges listed in the following table must be applied to following vSphere objects you intended to use for the Palette install. A separate table lists Spectro role privileges for VMs by category. 
 
 During the installation, images and Open Virtual Appliance (OVA) files are downloaded to the folder you selected. These images are cloned from the folder and applied VMs that deployed during the installation.
 
@@ -129,7 +140,7 @@ Select the tab for the vSphere version you are using to view the required privil
 | **Resource**          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
 | **Sessions**          | Validate sessions                           |
 | **Storage policies**  | View access for VM storage policies is required.<br />Ensure ``StorageProfile.View`` is available. |
-| **spectro-templates** | Read only. This is the vSphere folder you will use during the install.                                   |
+| **spectro-templates** | Read only. This is the vSphere folder created during the install. For airgap installs, you must manually create this folder.                                  |
 | **Storage views**     | View                 |
 | **Tasks**             | Create task<br />Update task                |
 | **vApp**              | Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance |
@@ -168,7 +179,7 @@ The following table lists spectro role privileges for VMs by category. All privi
 | **Resource**          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
 | **Profile-driven storage** | Profile-driven storage view            |
 | **Sessions**          | Validate session                            |
-| **spectro-templates** | Read only. This is the vSphere folder you will use during the install.                                    |
+| **spectro-templates** | Read only. This is the vSphere folder created during the install. For airgap installs, you must manually create this folder.                                    |
 | **Storage views**     | Configure service<br />View                 |
 | **Tasks**             | Create task<br />Update task                |
 | **vApp**              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
@@ -208,7 +219,7 @@ The following table lists spectro role privileges for VMs by category. All privi
 | **Profile-driven storage** | Profile-driven storage view            |
 | **Resource**          | Apply recommendation<br />Assign VM to resource pool<br />Migrate powered off VM<br />Migrate powered on VM<br />Query vMotion |
 | **Sessions**          | Validate session                            |
-| **spectro-templates** | Read only. This is the vSphere folder you will use during the install.    |
+| **spectro-templates** | Read only. This is the vSphere folder created during the install. For airgap installs, you must manually create this folder.    |
 | **Storage views**     | View                                        |
 | **Tasks**             | Create task<br />Update task                |
 | **vApp**              | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances |
@@ -238,9 +249,9 @@ The following table lists spectro role privileges for VMs by category. All privi
 
 
 ## Zone Tagging
-You can use tags to create node zones and regions for your Kubernetes clusters. The node zones and regions can be used to dynamically place Kubernetes workloads and achiveve higher availability. Kubernetes nodes inherit the zone and region tags as Labels. Kubernetes workloads can use the node labels to ensure that the workloads are deployed to the correct zone and region.
+You can use tags to create node zones and regions for your Kubernetes clusters. The node zones and regions can be used to dynamically place Kubernetes workloads and achiveve higher availability. Kubernetes nodes inherit the zone and region tags as [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). Kubernetes workloads can use the node labels to ensure that the workloads are deployed to the correct zone and region.
 
-The following is an example of the node labels that are applied to a Kubernetes node in vSphere.
+The following is an example of node labels that are discovered and inherited from vSphere tags. The tag values are applied to Kubernetes nodes in vSphere.
 
 ```yaml hideClipboard
   topology.kubernetes.io/region=usdc
@@ -256,18 +267,15 @@ To learn more about node zones and regions, refer to the [Node Zones/Regions Top
 
 :::
 
-Zone tagging is also used for dynamic resource allocation across fault domains and required for vSphere resource using the [vSphere Container Storage Plug-in](https://docs.vmware.com/en/VMware-vSphere-Container-Storage-Plug-in/3.0/vmware-vsphere-csp-getting-started/GUID-162E7582-723B-4A0F-A937-3ACE82EAFD31.html#GUID-162E7582-723B-4A0F-A937-3ACE82EAFD31). A good use case for dynamic resource allocation is when provisioning workloads that require persistent storage. You can use vSphere [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html) to create zones in your vSphere environment and assign them to the vSphere objects.
+
+Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment. You can use vSphere [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html) to create zones in your vSphere environment and assign them to vSphere objects.
 
 
-Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment.
-
-:::info
-
-The zone tags you assign to your vSphere objects, such as a datacenter and clusters are applied to the Kubernetes clusters you deploy through Palette into your vSphere environment. The tags are passed on as [node labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). Kubernetes clusters deployed to other infrastructure providers, such as public cloud may have other native mechanisms for auto discovery of zones.
-
-:::
+The zone tags you assign to your vSphere objects, such as a datacenter and clusters are applied to the Kubernetes nodes you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure providers, such as public cloud may have other native mechanisms for auto discovery of zones.
   
-For example, assume you have vCenter environment includes three compute clusters, cluster-1, cluster-2, and cluster-3. To support this environment you create the tag category `k8s-region` and `k8s-zone`. The `k8s-region` is assigne to the data center and the `k8s-zone` tag is assigned to the compute clusters. The following table lists the tag values for the data center and compute clusters.
+For example, assume a vCenter environment contains three compute clusters, cluster-1, cluster-2, and cluster-3. To support this environment you create the tag categories `k8s-region` and `k8s-zone`. The `k8s-region` is assigned to the data center and the `k8s-zone` tag is assigned to the compute clusters.
+
+The following table lists the tag values for the data center and compute clusters.
 
 | **vSphere Object** | **Assigned Name** | **Tag Category** | **Tag Value** |
 |------------------- |--------------------|------------------|---------------|
@@ -275,6 +283,7 @@ For example, assume you have vCenter environment includes three compute clusters
 |     **Cluster**        | cluster-1          | k8s-zone         | az1           |
 |     **Cluster**        | cluster-2          | k8s-zone         | az2           |
 |     **Cluster**        | cluster-3          | k8s-zone         | az3           |
+
 
 Create a tag category and tag values for each datacenter and cluster in your environment. Use the tag categories to create zones. Use a name that is meaningful and that complies with the tag requirements listed in the following section.
 
