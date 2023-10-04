@@ -10,7 +10,25 @@ sidebar_custom_props:
   icon: "audits"
 tags: ["release-notes"]
 ---
- 
+
+## October 3, 2023 - Release 4.0.15
+
+This release contains enhancements and minor bug fixes.
+
+## Enhancements
+
+- Configurable options to specify pricing for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes **values.yaml** pack. You can review examples of how to use the `managedControlPlane.sku` parameter in [AKS Architecture](clusters/public-cloud/azure/architecture.md#pricing-options) highlights.
+
+- Palette now supports the space character for the `scopesDelimiter` field for OpenID Connect (OIDC) configuration. Previously, Palette used only a comma delimiter.
+
+### Bug Fixes
+
+- API calls to update edge hosts no longer time out after 60 seconds. 
+
+- The issue where system pods in the `hubble-system` namespace restarted frequently is now resolved.
+
+- The issue with Palette displaying incorrect interface of an edge host during cluster deployment is now resolved.
+
 
 ## September 20, 2023 - Release 4.0.13
 
@@ -574,6 +592,7 @@ The following packs are marked as deprecated, disabled, or deleted. Refer to the
 | Spectro Proxy                 | 1.0.0           | Deprecated   |
 | Spectro Proxy                 | 1.1.0           | Deprecated   |
 
+ 
 
 ## September 21, 2023 - Release 3.4.114
 
