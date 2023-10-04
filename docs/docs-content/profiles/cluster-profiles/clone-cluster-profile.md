@@ -11,7 +11,7 @@ tags: ["profiles", "cluster profiles"]
 You can clone a cluster profile across multiple projects within the same [tenant](../../glossary-all.md#tenant).
 ## Prerequisites
 
-* A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create depending on your requirements. 
+- A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create depending on your requirements. 
 
 ## Enablement
 

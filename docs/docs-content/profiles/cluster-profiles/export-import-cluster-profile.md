@@ -12,6 +12,8 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 ## Prerequisites
 
+- A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create depending on your requirements.
+
 - Your Palette account role must have the `clusterProfile.get` permission to export a cluster profile and `clusterProfile.create` import a cluster profile. 
 
 - Macros used in the profile you want to export must be available in the target environment *before* you import the profile. 
