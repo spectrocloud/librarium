@@ -194,7 +194,12 @@ const redirects = [
   {
     from: `/knowledgebase/how-to`,
     to: `/tags/how-to`,
+  },
+  {
+    from: `/cluster-profiles/task-define-profile`,
+    to: `/profiles/cluster-profiles/`,
   }
+
 ];
 
 module.exports = redirects;
