@@ -8,10 +8,10 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-
 You can update a cluster profile to change the configuration of one or more layers and add or remove non-infrastructure layers. You can also update basic profile information such as the name, description, and tags.
 
 Cluster profile changes will generate an update notification on all the cluster that are created from the profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply updates to clusters individually at any time.
+
 
 ## Prerequisites
 
@@ -35,12 +35,10 @@ Cluster profile changes will generate an update notification on all the cluster 
 
   :::
 
-5. Save your changes.
-
-To learn how to apply the changes, review [Apply Updates to Clusters]. 
+5. Save your changes and apply the updates to the cluster. Review [Apply Updates to Clusters](#apply-updates-to-clusters) for guidance.
 
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -86,17 +84,14 @@ To learn how to apply the changes, review [Apply Updates to Clusters].
   
     - Delete the profile by selecting **Settings** and choosing **Delete**.
 
-5. Confirm your updates.
+5. Confirm your updates and apply the updates to the cluster. Review [Apply Updates to Clusters](#apply-updates-to-clusters) for guidance.
 
-Clusters that use the updated profile are notified of the changes. You can update clusters to use the latest profile definition at any time.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
-
-<!-- 3. If you deleted the profile, verify it is no longer displayed on the **Cluster Profiles** page. -->
 
 3. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
 
@@ -104,29 +99,7 @@ Clusters that use the updated profile are notified of the changes. You can updat
 
 5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
 
-
-## Apply Updates to Clusters
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left **Main Menu**, select **Profiles**. Clusters that are eligible for an update will have an **Updates Available** badge.
-
-3. Select the cluster with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
-
-4. An **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the cluster.
-
-
-## Validate
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left **Main Menu**, select **Profiles**.
-
-3. Select the updated cluster.
-
-4. Check that layers are added to or removed from the profile stack, and verify other profile details.  
-
-5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+To learn how to apply the changes, review [Apply Updates to Clusters](#apply-updates-to-clusters).
 
 
 ## Update the Pack Version
@@ -138,16 +111,12 @@ Packs typically contain changes between versions, such as the addition or remova
 Ensure you follow these practices when updating to a new pack version. 
 
 - You should not copy the pack configuration from one version to another, as the newer version often contains customizations. Instead, you should integrate your changes manually in the new version.
-
 - Update to a newer Kubernetes version incrementally, one minor version at a time.
-
 - Select a specific target version instead of a group that ends in ``.x`` 
-
 - We do not recommend downgrading packs to the previous version.
 
 :::
 
-## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -182,7 +151,7 @@ Ensure you follow these practices when updating to a new pack version.
     ![Screenshot that shows Palette's pack diff user interface with contrasting shades of red and green highlight in the same line](/integrations_pack_line_diffs.png)
 
 
-6. Check for red-highlighting in the configuration that is missing in the new configuration.
+6. Check for red-highlight in the configuration that is missing in the new configuration.
 
     - If there are any lines you added, use the arrow to transfer the lines to the new version.
     
@@ -195,10 +164,10 @@ Ensure you follow these practices when updating to a new pack version.
 
 9. Check for changes in the same line that have a different value. If it is not a customization you made, you should adopt the new value, as it is known to be compatible with the new version.
 
-10. Confirm your updates.
+10. Confirm your updates and apply the updates to the cluster. Review [Apply Updates to Clusters](#apply-updates-to-clusters) for guidance.
 
 
-## Validate 
+### Validate 
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -215,3 +184,25 @@ Ensure you follow these practices when updating to a new pack version.
 6. Repeat the process until Palette indicates the configuration works.
 
 
+## Apply Updates to Clusters
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**. Clusters that are eligible for an update will have an **Updates Available** badge.
+
+3. Select the cluster with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
+
+4. An **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the cluster.
+
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. Select the updated cluster.
+
+4. Check that layers are added to or removed from the profile stack, and verify other profile details.  
+
+5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.

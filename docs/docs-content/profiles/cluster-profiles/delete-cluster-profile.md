@@ -28,7 +28,7 @@ If a profile has more than one version, take care to delete the appropriate vers
 
 3. Select the profile you want to delete. To delete the profile and all its versions, click the **three-dots Menu** and select **Delete**.
 
-  If you are not sure whether a profile has more than one version and you want to delete a specific version, select the profile to display its details page. Use the **drop-down Menu** next to the profile name and select the version to delete, click on the **Settings** button, and select **Delete**.
+  If you are not sure whether a profile has more than one version, or you want to delete a specific version, select the profile to display its details page. Use the **drop-down Menu** next to the profile name and select the version to delete, click on the **Settings** button, and select **Delete**.
 
 You have successfully deleted a cluster profile or profile version.
 

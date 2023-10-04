@@ -34,17 +34,11 @@ Create an add-on profile with special-purpose functionality that you can reuse a
 
   To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../cluster-profiles/version-cluster-profile.md).
 
-5. Select the type of layer to add to the cluster profile. 
-
-  | **Type** | **Description** |
-  |----------|-----------------|
-  | **Pack** | A pack is a collection of files and configurations that can be deployed to a cluster to add functionality or customize the cluster's behavior.|
-  | **Helm Chart**| You can specify a Helm Chart as a layer in an add-on profile.|
-  | **Manifest**| A manifest is a Kubernetes configuration file that describes the desired state of a Kubernetes resource, such as deployment, service, or pod and is used to create or modify that resource in a cluster.|
+5. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers)
 
 6. Depending on the add-on type you selected, fill out the required input fields and click on **Confirm & Create**.
 
-  <!-- ![A view of the manfiest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
 
 7. If you want to add additional layers, repeat steps 5 and 6. Otherwise, click on **Next** to review the profile.
 
@@ -60,3 +54,12 @@ You now have an add-on cluster profile. You can reuse the profile and apply it t
 2.  Navigate to left **Main Menu** and select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
+
+
+## Next Steps
+
+Now you are ready to deploy a cluster using the add-on cluster profile you created.
+
+## Resources 
+
+[Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers)

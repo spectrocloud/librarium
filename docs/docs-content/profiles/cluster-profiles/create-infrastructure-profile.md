@@ -66,6 +66,13 @@ You now have an infrastructure cluster profile. You can reuse the profile and ap
 3. Select your cluster profile to review its layers or make changes.
 
 
+## Next Steps
+
+Now you are ready to deploy a cluster using the infrastructure cluster profile you created.
+
+## Resources 
+
+[Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers)
 
 
 
