@@ -13,7 +13,7 @@ Before installing Palette VerteX on VMware, review the following system requirem
 
 Start by reviewing the required action items below:
 
-1. [Create Required Roles](#create-required-roles) section to create the required roles in vSphere. 
+1. Create the two custom vSphere roles. Check out the [Create Required Roles](#create-required-roles) section to create the required roles in vSphere. 
 
 2. Review the [vSphere Permissions](#vsphere-permissions) section to ensure the created roles have the required vSphere privileges and permissions. 
 
