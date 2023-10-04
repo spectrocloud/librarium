@@ -45,7 +45,7 @@ Create a full profile by adding infrastructure layers (OS, Kubernetes, Network, 
   | **Network**| Select a network pack to use with your clusters. |
   | **Storage**| Select a storage pack to use with your clusters. |
 
-7. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers)
+7. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers).
 
 8. Depending on the add-on type you selected, fill out the required input fields and click on **Confirm & Create**.
 

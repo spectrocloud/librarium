@@ -27,7 +27,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
   | **Field** | **Description** |
   |-----------|-----------------|
   | **Name**| A custom name for the profile. |
-  | **Version**| Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
+  | **Version**| You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
   |**Description**| Use the description to provide context about the profile.|
   | **Type**| **Infrastructure** |
   | **Tags**| Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.|

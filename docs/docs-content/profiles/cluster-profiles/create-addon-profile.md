@@ -73,7 +73,7 @@ Use the following steps to create an add-on cluster profile.
 
   To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../cluster-profiles/version-cluster-profile.md).
 
-5. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers)
+5. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers).
 
 6. Depending on the add-on type you selected, fill out the required input fields and click on **Confirm & Create**.
 
