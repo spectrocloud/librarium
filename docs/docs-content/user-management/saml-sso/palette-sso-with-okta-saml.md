@@ -1,19 +1,13 @@
 ---
 sidebar_label: 'Palette SSO with Okta SAML'
-title: 'Set up Palette SSO with Okta SAML'
+title: 'Enable SSO with Okta SAML'
 description: 'Set up Palette SSO with Okta SAML'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 hiddenFromNav: false
-tags: ["user-management", "saml-sso"]
+tags: ["user-management", "saml-sso", "okta"]
 ---
-
-
-
-
-
-# Enable SSO with Okta SAML
 
 Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses certificates to establish and maintain a trust relationship between the Service Provider (SP) and an Identity Provider (IdP). Palette supports SSO based on either the Security Assertion Markup Language (SAML) or OpenID Connect (OIDC).
 
@@ -25,7 +19,7 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 - You need to have either a free or paid subscription with Okta. Okta provides free [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
 
-## Okta with SAML
+## Enablement
 
 ### Create Teams in Palette
 
@@ -79,7 +73,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
   <br />
 
-  ![Create Okta Application](/saml-okta-images/saml-okta_create-application.png)
+  ![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.png)
 
   <br />
 
@@ -87,7 +81,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
   <br />
 
-  ![Configure Okta General Settings](/saml-okta-images/saml-okta_general-settings.png)
+  ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.png)
 
   <br />
 
@@ -97,7 +91,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
   <br />
 
-  ![Configure General SSO Settings](/saml-okta-images/saml-okta_palette-manage-sso-okta-saml.png)
+  ![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
 
   <br />
 
@@ -121,7 +115,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
   <br />
 
-  ![Configure Attribute Statements](/saml-okta-images/saml-okta_attribute-statements.png)
+  ![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.png)
 
   <br />
 
@@ -131,7 +125,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
   <br />
 
-  ![Copy Okta SAML Metadata](/saml-okta-images/saml-okta_metadata-url.png)
+  ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.png)
 
   <br />
 
@@ -139,7 +133,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
   <br />
 
-  ![Paste Metadata in Palette SSO Manager](/saml-okta-images/saml-okta_palette-manage-sso-okta-metadata.png)
+  ![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
 
   <br />
 
@@ -149,7 +143,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 ### Validate
 
-1. Log in to Palette through SSO as a Okta user that is a member of the Okta application to verify SSO. If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User  Drop-down Menu** at the top right.
+1. Log in to Palette through SSO as an Okta user who is a member of the Okta application to verify SSO. If you are still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at the top right.
 
   <br />
 
@@ -181,4 +175,4 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 - [Palette User Management](../user-management.md)
 
 
-- [Palette SSO](./saml-sso.md)
+- [Palette SSO](saml-sso.md)

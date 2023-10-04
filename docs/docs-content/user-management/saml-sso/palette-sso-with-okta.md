@@ -1,19 +1,14 @@
 ---
 sidebar_label: 'Palette SSO with Okta OIDC'
-title: 'Set up Palette SSO with Okta OIDC'
+title: 'Enable SSO with Okta OIDC'
 description: 'Set up Palette SSO with Okta OIDC'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 hiddenFromNav: false
-tags: ["user-management", "oidc-sso"]
+tags: ["user-management", "oidc-sso", "okta"]
 ---
 
-
-
-
-
-# Enable SSO with Okta OIDC
 
 Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses certificates to establish and maintain a trust relationship between the Service Provider (SP) and an Identity Provider (IdP). Palette supports SSO based on either the Security Assertion Markup Language (SAML) or OpenID Connect (OIDC).
 
