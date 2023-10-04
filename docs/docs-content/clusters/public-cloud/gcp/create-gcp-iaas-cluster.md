@@ -15,10 +15,10 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 - Access to a GCP cloud account 
 
 
-- You have added a GCP account in Palette. Review the [Register and Manage GCP Accounts](/clusters/public-cloud/gcp/add-gcp-accounts) for guidance.
+- You have added a GCP account in Palette. Review [Register and Manage GCP Accounts](/clusters/public-cloud/gcp/add-gcp-accounts) for guidance.
 
 
-- An infrastructure cluster profile for GCP. Review the [Create Cluster Profiles](/cluster-profiles/task-define-profile) for guidance.
+- An infrastructure cluster profile for GCP. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-infrastructure-profile.md) for guidance.
 
 
 - An SSH Key that is uploaded to Palette and available for usage. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide to learn how to create an SSH key and upload the public key to Palette.

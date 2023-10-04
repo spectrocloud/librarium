@@ -20,7 +20,7 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
 * An imported cluster with full permissions. Refer to the [Migrate to Full Permissions](/clusters/imported-clusters/migrate-full-permissions) to learn how to migrate an imported cluster from read-only mode to full-permissions mode.
 
 
-* An add-on cluster profile. Refer to the [Create an Add-on Profile](/cluster-profiles/create-add-on-profile) to learn how to create an add-on cluster profile.
+* An add-on cluster profile. Refer to the [Create an Add-on Profile](../../profiles/cluster-profiles/create-addon-profile.md) to learn how to create an add-on cluster profile.
 
 
 ## Attach an Add-on Profile

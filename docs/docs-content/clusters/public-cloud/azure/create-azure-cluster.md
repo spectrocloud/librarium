@@ -28,7 +28,7 @@ The following prerequisites must be met before deploying a workload cluster in A
 2. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud account](/clusters/public-cloud/azure/azure-cloud) section.
 
 
-3. A [cluster profile created](/cluster-profiles/task-define-profile) for Azure cloud.
+3. A [cluster profile created](../../../profiles/cluster-profiles/create-infrastructure-profile.md) for Azure cloud.
 
 
 <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video>

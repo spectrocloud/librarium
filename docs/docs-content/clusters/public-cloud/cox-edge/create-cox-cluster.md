@@ -17,7 +17,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
 
 - A Cox Edge account registered in Palette. Check out the [Register and Manage Cox Edge Accounts](/clusters/public-cloud/cox-edge/add-cox-edge-accounts) guide to learn how to register a Cox Edge account in Palette.
 
-- A cluster profile for Cox Edge clusters. If you need guidance creating a cluster profile, check out the [Creating Cluster Profiles](/cluster-profiles/task-define-profile) guide.
+- A cluster profile for Cox Edge clusters. If you need guidance creating a cluster profile, check out [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md).
 
 
 ## Create a Cluster
@@ -42,7 +42,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
     - Cloud Account: Select your Cox Edge account.
 
 
-6. Select a cluster profile that is compatible with Cox Edge. If you need guidance creating a cluster profile, check out the [Creating Cluster Profiles](/cluster-profiles/task-define-profile) guide.
+6. Select a cluster profile that is compatible with Cox Edge. If you need guidance creating a cluster profile, check out [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md).
 
   :::caution
 

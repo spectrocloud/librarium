@@ -48,7 +48,8 @@ The diagram below shows an example of a cluster profile:
 
 ![cluster_profile_new](/cluster_profile_new.png)
 
-Read more about Cluster Profiles [here](/cluster-profiles).
+For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
+
 ## Edge Appliances
 
 Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
