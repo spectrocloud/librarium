@@ -40,7 +40,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 |**Application Profile Name** | A custom name for the app profile.|
 |**Version** | An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
 |**Description**  | Use the description to provide context about the profile. | 
-|**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.|
+|**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
 
 7. Select one of the available services to start configuring your app profile. Refer to the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
 
