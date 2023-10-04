@@ -78,7 +78,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 - Private Cloud Gateway (PCG) deployments are now available through the Palette CLI. You can now install a PCG through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure the PCG installation parameters. Check out the Palette CLI [PCG install command](/palette-cli/commands/#pcg) documentation to learn more. The previous installation method using the PCG Docker image is deprecated and unavailable in this release.
 
 
-- You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to the [Add-on Profile](/cluster-profiles/create-add-on-profile#packlabelsandannotations) documentation.
+- You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to [Create an Add-on Profile](profiles/cluster-profiles/create-addon-profile.md#pack-labels-and-annotations).
 
 
 
@@ -1063,7 +1063,7 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 **Features**
 * Palette now supports lightweight, cost-effective, secure, and resource-efficient [Palette Virtual Clusters](/clusters/palette-virtual-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
 * Palette leverages web-based [Kubectl](/clusters/cluster-management/palette-webctl#overview) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
-* Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](/cluster-profiles/cluster-profile-import-export#overview) across multiple environments, projects, and tenants. 
+* Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](profiles/cluster-profiles/export-import-cluster-profile.md) across multiple environments, projects, and tenants. 
 * Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](/integrations/rke2#rke2overview) focusing on security and compliance.
 * The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](/terraform#moduletoprovidercompatibilitymatrix), focus on:
   * Cluster resource tagging
@@ -1164,7 +1164,7 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 
 **Features:**
 
-* Palette supports multiple [versions](/cluster-profiles/task-define-profile#clusterprofileversioning) of a single-cluster profile under a unique name to allow backward compatibility. 
+* Palette supports multiple [versions](profiles/cluster-profiles/version-cluster-profile.md) of a single-cluster profile under a unique name to allow backward compatibility. 
 
 * Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/public-cloud/aws/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 

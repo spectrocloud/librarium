@@ -17,9 +17,8 @@ The ability to bring your own OS to Palette gives you more control over dependen
 
 ## Resources
 
-- [Create Images with Image Builder](/cluster-profiles/byoos/image-builder)
+- [Create Images with Image Builder](../byoos/image-builder.md)
 
-
-- [BYO-OS Pack](/integrations/byoos)
+- [BYO-OS Pack](../../../integrations/byoos.md)
 
 <br />

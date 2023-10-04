@@ -83,7 +83,7 @@ Palette VerteX will display the appropriate FIPS status icon next to the pack la
 - [Packs List](/integrations)
 
 
-- [Create an Add-on Profile](/cluster-profiles/create-add-on-profile)
+- [Create an Add-on Profile](../../../profiles/cluster-profiles/create-addon-profile.md)
 
 
 - [FIPS Status Icons](/vertex/fips/fips-status-icons)

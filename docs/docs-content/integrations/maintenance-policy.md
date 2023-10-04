@@ -152,7 +152,7 @@ We adhere to the following stages of deprecation:
 
 :::info
 
-For important guidelines on updating pack versions, review [Update the Pack Version](/cluster-profiles/task-update-profile#updatethepackversion).
+For important guidelines on updating pack versions, review [Update the Pack Version](../profiles/cluster-profiles/update-cluster-profile.md#update-the-pack-version).
 
 :::
 
