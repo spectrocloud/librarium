@@ -120,13 +120,17 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 1. Log in to your vCenter environment.
 
-2. Create a vSphere folder with the name `spectro-templates` in the Datacenter where you will deploy the air gapped Palette installation. Ensure this folder is accessible by the user account you will use to deploy the air gapped Palette installation.
+2. Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the user account you will use to deploy the air gapped Palette installation.
 
-3. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the Palette Packs. Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
 
-4. In your OCI registry, create another repository with the name `spectro-images`. and ensure the repository is public. The repositry will host Palette images.
 
-5. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped Palette installation. 
+3. Import the OVA provided by our support team. Place the OVA in the `spectro-templates` folder. Refer to the [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA) guide for information about importing an OVA in vCenter.
+
+4. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the Palette Packs. Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
+
+5. In your OCI registry, create another repository with the name `spectro-images`. and ensure the repository is public. The repositry will host Palette images.
+
+6. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped Palette installation. 
 
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
@@ -142,7 +146,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 
   You can aquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on the **View push commands** button to access the command. Refer to the [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry) documentation for more information.
 
-  Below is an example of the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to authenticate with the ECR registry. Replace the values below with your environment configuration values.
+  Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to authenticate with the ECR registry. Replace the values below with your environment configuration values.
 
   ```shell
   aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
@@ -159,29 +163,106 @@ Complete the following steps before deploying the air gapped Palette installatio
 
   :::tip
 
-  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a while. If the authentication token expires, you will need to reauthenticate to the OCI registry and restart the upload process.
+  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to reauthenticate to the OCI registry and restart the upload process.
 
   :::
 
-6. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. 
+---
 
+7. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
+
+  <Tabs groupId="oci-registry">
+  <TabItem label="Harbor" value="harbor">
+
+  <br />
+
+    - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
+    - `OCI_PACK_BASE`: The namespace or repository name that hosts the Palette Packs.
+    - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
+    - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
+
+    ```shell
+    export OCI_IMAGE_REGISTRY=<harbor-endpoint> 
+    export OCI_PACK_BASE=spectro-packs  
+    export OCI_PACK_REGISTRY=<harbor-endpoint>
+    export OCI_IMAGE_BASE=spectro-images 
+    ```
+
+    Example
+
+    ```shell hideClipboard
+    export OCI_IMAGE_REGISTRY=example.internal.com
+    export OCI_PACK_BASE=spectro-packs
+    export OCI_PACK_REGISTRY=example.internal.com
+    export OCI_IMAGE_BASE=spectro-images
+    ```
+
+  </TabItem>
+  <TabItem label="AWS ECR" value="aws-ecr">
+
+  <br />
+
+    - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
+    - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
+    - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
+    - `ECR_PACK_BASE`: The namespace or repository name that hosts the Palette Packs.
+    - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
+    - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
+
+    ```shell
+    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
+    export ECR_IMAGE_BASE=airgap-packs
+    export ECR_IMAGE_REGISTRY_REGION=us-east-1
+    export ECR_PACK_REGISTRY=<ecr-endpoint>
+    export ECR_PACK_BASE=airgap-images
+    export ECR_PACK_REGISTRY_REGION=us-east-1
+    ```
+
+    Example
+
+    ```shell hideClipboard
+    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+    export ECR_IMAGE_BASE=docs-images
+    export ECR_IMAGE_REGISTRY_REGION=us-east-1
+    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+    export ECR_PACK_BASE=spectro-packs
+    export ECR_PACK_REGISTRY_REGION=us-east-1
+    ```
+
+  </TabItem>
+  </Tabs>
+
+---
+
+8. Download the airgap setup binary. Our support team will provide you with the download link and the necessary credentials. 
+
+9. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the airgap setup binary you downloaded.
+
+  ```shell
+  chmod +x airgap-vX.X.X.bin
+  ```
+
+10. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
+
+  ```shell
+  ./airgap-vX.X.X.bin
+  ```
+  Upon completion, a success message will be displayed. The output is condensed for brevity.
   
+    ```shell hideClipboard {10}
+    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+    Uncompressing Airgap Setup - Version 4.0.17  100%
+    Setting up Packs
+    - Pushing Pack cni-calico:3.25.1
+    ...
+    Setting up Images
+    - Pushing image docker.io/kindest/kindnetd:v20230227-15197099
+    - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
+    .....
+    Setup Completed
+    ```
 
-<Tabs groupId="oci-registry">
-<TabItem label="Harbor" value="harbor">
+  :::info
 
-```shell
-export OCI_IMAGE_REGISTRY=<harbor-endpoint> #
-export OCI_PACK_BASE=airgap-packs  
-export OCI_PACK_REGISTRY=<harbor-endpoint>
-export OCI_IMAGE_BASE=airgap-images 
-```
-
-
-</TabItem>
-<TabItem label="AWS ECR" value="aws-ecr">
-s
-</TabItem>
-</Tabs>
-
-7. Download the airgap setup binary. Our support team will provide you with the download link and the necessary credentials. 
+  If you encounter an error during the airgap setup process, verify the required environment variables are set and populated correctly. If you are still having issues, reach out to our support team for assistance.
+  :::
