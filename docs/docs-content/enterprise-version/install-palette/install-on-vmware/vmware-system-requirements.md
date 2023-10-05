@@ -5,11 +5,11 @@ description: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["vertex", "self-hosted", "vmware"]
+tags: ["palette", "self-hosted", "vmware"]
 ---
 
 
-Before installing Palette VerteX on VMware, review the following system requirements and permissions. The vSphere user account used to deploy VerteX must have the required permissions to access the proper roles and objects in vSphere. 
+Before installing Palette on VMware, review the following system requirements and permissions. The vSphere user account used to deploy Palette must have the required permissions to access the proper roles and objects in vSphere. 
 
 Start by reviewing the required action items below:
 
@@ -22,20 +22,20 @@ Start by reviewing the required action items below:
 
 :::info
 
-The permissions listed in this page are also needed for deploying a Private Cloud Gateway (PCG) and workload cluster in vSphere through VerteX.
+The permissions listed in this page are also needed for deploying a Private Cloud Gateway (PCG) and workload cluster in vSphere through Palette.
 :::
 
 
 ## Create Required Roles
 
-VerteX requires two custom roles to be created in vSphere before the installation. Refer to the [Create a Custom Role](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html?hWord=N4IghgNiBcIE4HsIFMDOIC+Q) guide if you need help creating a custom role in vSphere. The required custom roles are:
+Palette requires two custom roles to be created in vSphere before the installation. Refer to the [Create a Custom Role](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html?hWord=N4IghgNiBcIE4HsIFMDOIC+Q) guide if you need help creating a custom role in vSphere. The required custom roles are:
 
 * A root-level role with access to higher-level vSphere objects. This role is referred to as the *spectro root role*. Check out the [Root-Level Role Privileges](#root-level-role-privileges) table for the list of privileges required for the root-level role.
 
 * A role with the required privileges for deploying VMs. This role is referred to as the *Spectro role*. Review the [Spectro Role Privileges](#spectro-role-privileges) table for the list of privileges required for the Spectro role. 
 
 
-The user account you use to deploy VerteX must have access to both roles. Each vSphere object required by VerteX must have a [Permission](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-4B47F690-72E7-4861-A299-9195B9C52E71.html) entry for the respective Spectro role. The following tables list the privileges required for the each custom role. 
+The user account you use to deploy Palette must have access to both roles. Each vSphere object required by Palette must have a [Permission](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-4B47F690-72E7-4861-A299-9195B9C52E71.html) entry for the respective Spectro role. The following tables list the privileges required for the each custom role. 
 
 
 
@@ -49,7 +49,7 @@ For an in-depth explanation of vSphere authorization and permissions, check out 
 
 ## vSphere Permissions
 
-The vSphere user account that deploys VerteX require access to the following vSphere objects and permissions listed in the following table. Review the vSphere objects and privileges required to ensure each role is assigned the required privileges. 
+The vSphere user account that deploys Palette require access to the following vSphere objects and permissions listed in the following table. Review the vSphere objects and privileges required to ensure each role is assigned the required privileges. 
 
 ### Spectro Root Role Privileges
 
@@ -268,10 +268,10 @@ To learn more about node zones and regions, refer to the [Node Zones/Regions Top
 :::
 
 
-Zone tagging is required to install VerteX and is helpful for Kubernetes workloads deployed in vSphere clusters through VerteX if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment. You can use vSphere [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html) to create zones in your vSphere environment and assign them to vSphere objects.
+Zone tagging is required to install Palette and is helpful for Kubernetes workloads deployed in vSphere clusters through Palette if they have persistent storage needs. Use vSphere tags on data centers and compute clusters to create distinct zones in your environment. You can use vSphere [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html) to create zones in your vSphere environment and assign them to vSphere objects.
 
 
-The zone tags you assign to your vSphere objects, such as a datacenter and clusters are applied to the Kubernetes nodes you deploy through VerteX into your vSphere environment. Kubernetes clusters deployed to other infrastructure providers, such as public cloud may have other native mechanisms for auto discovery of zones.
+The zone tags you assign to your vSphere objects, such as a datacenter and clusters are applied to the Kubernetes nodes you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure providers, such as public cloud may have other native mechanisms for auto discovery of zones.
   
 For example, assume a vCenter environment contains three compute clusters, cluster-1, cluster-2, and cluster-3. To support this environment you create the tag categories `k8s-region` and `k8s-zone`. The `k8s-region` is assigned to the datacenter, and the `k8s-zone` tag is assigned to the compute clusters.
 
