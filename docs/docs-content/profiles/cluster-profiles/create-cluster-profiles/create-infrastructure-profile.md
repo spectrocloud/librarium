@@ -12,7 +12,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
 
 ## Enablement
 
@@ -32,16 +32,16 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
   | **Type**| **Infrastructure** |
   | **Tags**| Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.|
 
-  To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../cluster-profiles/version-cluster-profile.md).
+  To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
 5. Select the infrastructure provider or managed Kubernetes for your environment and click **Next**.
   
-6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next** to continue. 
+6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next** to continue. For a description of the layers, review [Profile Layers](../cluster-profiles.md#profile-layers).
 
   | **Layer** | **Description** |
   |----|----|
   | **Operating System**| Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYO-OS)** if you want to upload your own OS images.|  
-  |**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to [Configure OIDC Identity Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information. |
+  |**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information. |
   | **Network**| Select a network pack to use with your clusters. |
   | **Storage**| Select a storage pack to use with your clusters. |
 
@@ -54,7 +54,7 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
 9. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](update-cluster-profile.md) guide for more information about update operations.
+You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
 
 
 ## Validate
@@ -72,7 +72,11 @@ Now you are ready to deploy a cluster using the infrastructure cluster profile y
 
 ## Resources 
 
-[Profile Layers](../cluster-profiles/cluster-profiles.md#profile-layers)
+- [Profile Layers](../cluster-profiles.md#profile-layers)
+
+- [Update Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md)
+
+- [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md)
 
 
 

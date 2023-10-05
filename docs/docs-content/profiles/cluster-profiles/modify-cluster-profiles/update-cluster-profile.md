@@ -17,7 +17,7 @@ Cluster profile changes will generate an update notification on all the cluster 
 
 - A cluster profile created in Palette.
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md) permissions documentation for more information about roles and permissions.
 
 ## Modify Basic Profile Information
 

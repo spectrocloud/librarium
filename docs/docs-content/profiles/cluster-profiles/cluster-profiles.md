@@ -6,15 +6,15 @@ hide_table_of_contents: false
 tags: ["profiles", "cluster profiles"]
 ---
 
-Cluster profiles are composed of layers. You can create the following types of cluster profiles using packs, Helm charts, and custom manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments. You can also create multiple cluster profile versions. For guidance on creating profile versions, review [Version a Cluster Profile](version-cluster-profile.md). 
+Cluster profiles are composed of layers using packs, Helm charts, and custom manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments. You can also create multiple cluster profile versions. For guidance on creating profile versions, review [Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md). 
 
-You can build three types of cluster profiles:
+You can create three types of cluster profiles:
 
-  - *Infrastructure* profiles provide the essential components for workload cluster deployments within a [tenant](../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these layers form the infrastructure for your cluster. For more information, review the [Create an Infrastructure Profile](./create-infrastructure-profile.md) guide.
- 
-  - *Full profiles* combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more to your cluster. Refer to the [Create a Full Profile](create-full-profile.md) guide for more details.
+  - *Infrastructure* profiles provide the essential components for workload cluster deployments within a [tenant](../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these layers form the infrastructure for your cluster. For more information, review the [Create an Infrastructure Profile](../cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide.
 
-  - *Add-on* profiles are exclusively composed of add-on layers. They do not contain infrastructure components and are instead designed for reusability across multiple clusters and multiple projects within a tenant. They provide the flexibility to configure clusters based on specific requirements. Refer to the [Create an Add-on Profile](create-addon-profile.md) guide for more information.
+  - *Add-on* profiles are exclusively composed of add-on layers. They do not contain infrastructure components and are instead designed for reusability across multiple clusters and multiple projects within a tenant. They provide the flexibility to configure clusters based on specific requirements. Refer to the [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile.md) guide for more information.
+
+  - *Full profiles* combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more to your cluster. Refer to the [Create a Full Profile](../cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for more details.
 
 The diagram below illustrates the components of these profile types and how you can build on infrastructure layers with add-on layers to create a full cluster profile. You can also create separate add-on profiles to reuse among multiple clusters.
 
@@ -43,7 +43,7 @@ Use these guidelines to configure layers and customize certain aspects of a pack
 
 ## Add a Pack Multiple Times in a Profile
 
-Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed multiple times with different configuration. For example, you may have two or more applications in the profile that need to use the Postgres database. In this case, you will need to launch the Postgres database twice with different configurations.
+Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may have two or more applications in the profile that need to use the Postgres database. In this case, you will need to launch the Postgres database twice with different configurations.
 
 In order to allow packs to be added multiple times in a profile, add the `spectrocloud.com/display-name: <custom_name>` key to the pack values in the YAML editor. The key `<custom_name>` is a name unique across a cluster profile and the cluster.
 
@@ -67,18 +67,18 @@ pack:
 
 ## Resources
 
-- [Create an Infrastructure Profile](./create-infrastructure-profile.md)
+- [Create an Infrastructure Profile](../cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
 
-- [Create a Full Profile](create-full-profile.md)
+- [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile.md)
 
-- [Create an Add-on Profile](create-addon-profile.md)
+- [Create a Full Profile](../cluster-profiles/create-cluster-profiles/create-full-profile.md)
 
-- [Update a Cluster Profile](update-cluster-profile.md)]
+- [Update a Cluster Profile](../cluster-profiles/modify-cluster-profiles/update-cluster-profile.md)
 
 - [Clone a Cluster Profile](clone-cluster-profile.md)
 
 - [Export and Import a Cluster Profile](export-import-cluster-profile.md)
 
-- [Version a Cluster Profile](version-cluster-profile.md)
+- [Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
 
 - [Delete a Cluster Profile](delete-cluster-profile)

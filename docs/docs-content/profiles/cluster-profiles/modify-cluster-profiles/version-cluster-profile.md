@@ -14,7 +14,7 @@ Cluster profiles have a default value of `1.0.0`. When you create a new profile 
 
 ## Prerequisites 
 
-- A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create depending on your requirements.
+- A cluster profile created in Palette. Check out [Cluster Profiles](../cluster-profiles.md) to learn about the different types of cluster profiles you can create depending on your requirements.
 
 ## Enablement
 
