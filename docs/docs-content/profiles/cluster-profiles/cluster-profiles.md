@@ -8,7 +8,7 @@ tags: ["profiles", "cluster profiles"]
 
 Cluster profiles are composed of layers. You can create the following types of cluster profiles using packs, Helm charts, and custom manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments. You can also create multiple cluster profile versions. For guidance on creating profile versions, review [Version a Cluster Profile](version-cluster-profile.md). 
 
-- **Cluster profiles** - You can build three types of cluster profiles:
+You can build three types of cluster profiles:
 
   - *Infrastructure* profiles provide the essential components for workload cluster deployments within a [tenant](../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these layers form the infrastructure for your cluster. For more information, review the [Create an Infrastructure Profile](./create-infrastructure-profile.md) guide.
  
@@ -39,6 +39,9 @@ Use these guidelines to configure layers and customize certain aspects of a pack
 - **Configuration parameters**: Packs provided out-of-the-box have configuration parameters that are set to values based on common best practices. You can override these parameters as needed in the configuration file. 
 
 - **Presets**: Some layers offer *Presets* that allow you to enable or configure a feature within that layer. When presets are available, they display in a slide panel in the YAML editor.
+
+
+## Add a Pack Multiple Times in a Profile
 
 Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed multiple times with different configuration. For example, you may have two or more applications in the profile that need to use the Postgres database. In this case, you will need to launch the Postgres database twice with different configurations.
 
