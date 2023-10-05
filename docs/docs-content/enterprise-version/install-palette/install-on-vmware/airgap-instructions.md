@@ -30,6 +30,9 @@ The installation process changes a bit in an air gap environment due to the lack
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment. 
 
+
+- 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompessed is approximately 20 GB. 
+
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store Palette images and packages. The OCI registry must be accessible from the VMware vSphere environment. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
 
   :::caution
