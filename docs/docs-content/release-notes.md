@@ -1164,7 +1164,7 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 
 **Features:**
 
-* Palette supports multiple [versions](profiles/cluster-profiles/version-cluster-profile.md) of a single-cluster profile under a unique name to allow backward compatibility. 
+* Palette supports multiple [versions](profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of a single-cluster profile under a unique name to allow backward compatibility. 
 
 * Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/public-cloud/aws/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 

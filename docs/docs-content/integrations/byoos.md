@@ -15,7 +15,7 @@ tags: ["packs", "byoos", "operating system"]
 
 # Bring Your Own Operating System (BYOOS) 
 
-The [Bring Your Own Operating System (BYOOS)](../profiles/cluster-profiles/byoos/byoos.md) enables you to use a custom Operating System (OS) with Palette. Palette comes with several operating systems out-of-the-box, but the existing OS list may not meet all users' needs. 
+The [Bring Your Own Operating System (BYOOS)](../byoos/byoos.md) enables you to use a custom Operating System (OS) with Palette. Palette comes with several operating systems out-of-the-box, but the existing OS list may not meet all users' needs. 
 
 Using your custom OS provides several benefits, including the ability to control your own dependencies, improve performance, and ensure compatibility with your existing applications. With BYOOS, you can choose the OS that best fits your needs, whether it's a commercial or open-source distribution, and integrate it with your Kubernetes clusters. The BYOOS pack can be used with both Edge and non-Edge environments. 
 

@@ -185,7 +185,7 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu
 ### Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-infrastructure-profile.md) guide to learn more.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
 
 
 
