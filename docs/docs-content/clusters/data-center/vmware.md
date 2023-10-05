@@ -616,7 +616,7 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 - A Palette API key. Refer to the [Create API Key](../../user-management/user-authentication.md#api-key) page for guidance.
 
 
-- Download the Palette CLI from the [Downloads](../../spectro-downloads#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
+- Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
 
 - You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
 

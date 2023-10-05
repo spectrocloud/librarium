@@ -1,32 +1,32 @@
 ---
 sidebar_label: "Tenant Management"
 title: "Tenant Management"
-description: "Learn how to create and remove tenants in Palette VerteX."
+description: "Learn how to create and remove tenants in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vertex", "management"]
+tags: ["palette", "self-hosted", "management"]
 ---
 
 
-Tenants are isolated environments in Palette VerteX that contain their own clusters, users, and resources. You can create multiple tenants in Palette VerteX to support multiple teams or projects. Instructions for creating and removing tenants are provided below.
+Tenants are isolated environments in Palette  that contain their own clusters, users, and resources. You can create multiple tenants in Palette  to support multiple teams or projects. Instructions for creating and removing tenants are provided below.
 
 
 <br />
 
 ## Create a Tenant
 
-You can create a tenant in Palette VerteX by following these steps.
+You can create a tenant in Palette by following these steps.
 
 
-## Prerequisites
+### Prerequisites
 
-* Access to the Palette VerteX system console.
+* Access to the Palette system console.
 
 
-## Enablement
+### Enablement
 
-1. Log in to the Palette VerteX system console.
+1. Log in to the Palette system console.
 
 
 2. Navigate to the left **Main Menu** and select **Tenant Management**.
@@ -45,7 +45,7 @@ You can create a tenant in Palette VerteX by following these steps.
 
   <br />
 
-  ![View of a tenant activation option](/vertex_system-management_tenant-management_activate-tenant.png)
+  ![View of a tenant activation option](/enterprise-version_system-management_tenant-management_activate-tenant.png)
 
 <br />
 
@@ -58,26 +58,26 @@ You can create a tenant in Palette VerteX by following these steps.
 9. Log in to the tenant console using the admin user credentials.
 
 
-## Validate 
+### Validate 
 
-1. Log in to Palette VerteX.
+1. Log in to Palette.
 
 
-2. Verify you can access the tenant as the admin user.
+2. Verify that you can access the tenant as the admin user.
 
 
 
 ## Remove a Tenant
 
-You can remove a tenant in Palette VerteX using the following steps.
+You can remove a tenant in Palette using the following steps.
 
-## Prerequisites
+### Prerequisites
 
-* Access to the Palette VerteX system console.
+* Access to the Palette system console.
 
-## Removal
+### Removal
 
-1. Log in to the Palette VerteX system console.
+1. Log in to the Palette system console.
 
 
 2. Navigate to the left **Main Menu** and select **Tenant Management**.
@@ -89,12 +89,11 @@ You can remove a tenant in Palette VerteX using the following steps.
 4. Select **Delete** to prepare the tenant for removal.
 
 
-5. Click on your tenant's **three dots Menu** and select **Clean up** to remove all the tenant's resources.
+5. Click on your tenant's **three dot Menu** and select **Clean up** to remove all the tenant's resources.
 
 <br />
 
-  ![View of a tenant deletion option](/vertex_system-management_tenant-management_remove-tenant.png)
-
+  ![View of a tenant deletion option](/enterprise_version_system-management_tenant-management_remove-tenant.png)
 
   <br />
 
@@ -107,10 +106,10 @@ If you do not clean up the tenant's resources, such as clusters and Private Clou
 
 After the cleanup process completes, the tenant will be removed from the tenant list view.
 
-## Validate
+### Validate
 
 
-1. Log in to the Palette VerteX system console.
+1. Log in to the Palette system console. Refert to the [Access Palette](../enterprise-version.md#access-palette) section for instructions on how to access the Palette system console.
 
 
 2. Navigate to the left **Main Menu** and select **Tenant Management**.
