@@ -5,7 +5,7 @@ description: "Learn how to use the Image Builder project to create images for Pa
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["profiles", "cluster profiles"]
+tags: ["operating system", "byoos", "profiles", "cluster profiles"]
 ---
 
 
@@ -225,10 +225,10 @@ The following steps guide you through creating your image. You will create a cus
 14. Select your infrastructure provider. This example uses **AWS**.
 
 
-15. Select the **BYO-OS** pack. Use the following information to find the BYO-OS pack.
+15. Select the **BYOOS** pack. Use the following information to find the BYOOS pack.
     * Pack Type: OS
     * Registry: Public Repo
-    * Pack Name: Bring Your Own OS (BYO-OS)
+    * Pack Name: Bring Your Own OS (BYOOS)
     * Pack Version: 1.0.x or higher
 
 16. Update the pack YAML to point to your custom image. You can use the tag values that Packer assigns to the image to help you identify the correct value to provide. In the example output below, the tag values `distribution_version` and `distribution` are used to determine the correct values for the YAML.

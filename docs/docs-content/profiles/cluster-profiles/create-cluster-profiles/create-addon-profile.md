@@ -3,7 +3,7 @@ sidebar_label: "Create an Add-on Profile"
 title: "Create an Add-on Profile"
 description: "Learn how to create an add-on profile in Palette."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["profiles", "cluster profiles"]
 ---
 

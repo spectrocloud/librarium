@@ -43,30 +43,6 @@ Use these guidelines to configure layers and customize certain aspects of a pack
 - **Presets**: Some layers offer *Presets* that allow you to enable or configure a feature within that layer. When presets are available, they display in a slide panel in the YAML editor.
 
 
-## Add a Pack Multiple Times in a Profile
-
-Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may have two or more applications in the profile that need to use the Postgres database. In this case, you will need to launch the Postgres database twice with different configurations.
-
-In order to allow packs to be added multiple times in a profile, add the `spectrocloud.com/display-name: <custom_name>` key to the pack values in the YAML editor. The key `<custom_name>` is a name unique across a cluster profile and the cluster.
-
-```yaml hideClipboard
-pack:
-namespace: "external-dns"
-spectrocloud.com/display-name: "dns-1"
-```
-
-If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Display names used for a pack across layers should be unique. 
-
-By default Palette uses the Helm chart release name in the format `packName-chartName`. In cases where a lengthy release name causes an issue, you can customize Helm chart `releaseNames` using the format below.
-
-```yaml hideClipboard
-pack:
-  namespace: kube-system
-  releaseNameOverride:
-    actual_chart_name1: custom_name1
-    actual_chart_name2: custom_name2
-```
-
 ## Resources
 
 - [Create Cluster Profiles](../cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)

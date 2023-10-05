@@ -30,3 +30,5 @@ The next sections guide you in creating each type of profile.
 - [Create an Add-on Profile](create-addon-profile.md)
 
 - [Create a Full Profile](create-full-profile.md)
+
+- [Add a Pack Multiple Times in a Profile](add-pack-multiple-times-in-profile.md)
