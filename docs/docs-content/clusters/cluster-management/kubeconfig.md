@@ -32,7 +32,7 @@ Palette exposes two kubeconfig files for each cluster deployed through Palette.
 
 ## Kubeconfig Access Permissions
 
-Palette exposes kubeconfig files for each cluster deployed through the paltform. Depending on the cluster's configuration, the kubeconfig file may contain different configurations, such as the cluster's API server address and authentication credentials. 
+Palette exposes kubeconfig files for each cluster deployed through the platform. Depending on the cluster's configuration, the kubeconfig file may contain different configurations, such as the cluster's API server address and authentication credentials. 
 
 Your assigned [Palette permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md) determine which clusters you can access and what operations you can perform on the cluster. The permissions assigned to you in Palette determine if you can download and access the kubeconfig files for a cluster. 
 
