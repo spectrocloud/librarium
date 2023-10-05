@@ -28,7 +28,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 
 #### Breaking Changes
 
-- Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](enterprise-version/deploying-palette-with-helm.md) guide for more details.
+- Installations of self-hosted Palette in a Kubernetes cluster now require [cert-manager](https://cert-manager.io/docs/installation/) to be available before installing Palette. Cert-manager is used to enable Mutual TLS (mTLS) between all of Palette's internal components. Refer to the prerequisites section of [Installing Palette using Helm Charts](enterprise-version/install-palette/install-on-kubernetes/install.md) guide for more details.
 
 
 - Self-hosted Palette for Kubernetes now installs Palette Ingress resources in a namespace that Palette manages. Prior versions of Palette installed internal components ingress resources in the default namespace. Review the [Upgrade Notes](enterprise-version/upgrade.md#palette-34) to learn more about this change and how to upgrade.
@@ -606,7 +606,7 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 **Enhancements:**
 
 * Palette [Azure CNI Pack](/integrations/azure-cni#azurecni) ensures advanced traffic flow control using Calico Policies for AKS clusters.
-* Palette supports the [migration of Private Cloud Gateway (PCG)](/enterprise-version/enterprise-cluster-management#palettepcgmigration) traffic from unhealthy to healthy PCG without compromising service availability. 
+* Palette supports the [migration of Private Cloud Gateway (PCG)](clusters/clusters.md) traffic from unhealthy to healthy PCG without compromising service availability. 
 * Palette Workspace upgraded with
   * [Resource Quota](/workspace/workload-features#workspacequota) allocation for Workspaces, Namespaces, and Clusters.
   * [Restricted Container Images](/workspace/workload-features#restrictedcontainerimages) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.
@@ -843,7 +843,7 @@ Our on-premises version gets attention to finer details with this release:
 
 - The Spectro Cloud database can now be backed up and restored.
 - Whereas previous on-premises versions allowed upgrading only to major versions, this release allows <Tooltip trigger={<u>upgrading</u>}> <a href="/enterprise-version/system-console-dashboard/#updatemanagement">Upgrades</a> to the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the console when new versions are available. </Tooltip> to minor versions of the Spectro Cloud platform.
-- Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation. </Tooltip> now provides more details when [migrating](/enterprise-version/deploying-an-enterprise-cluster/#migratequickstartmodeclustertoenterprise) from the quick start version to the enterprise version.
+- Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web application called the <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide detailed progress of the installation. </Tooltip> now provides more details when migrating from the quick start version to the enterprise version.
 - AWS and GCP clusters can now be provisioned from an on-premises Spectro Cloud system.
 
 On the VMware front, we have:
@@ -863,7 +863,7 @@ Other new features:
 In this hotfix, we added:
 
 - Compatibility for [Calico 3.16](https://www.projectcalico.org/whats-new-in-calico-3-16/).
-- The on-premises version now allows specifying [CIDR for pods](/enterprise-version/deploying-the-platform-installer/#deployplatforminstaller) to allocate them an exclusive IP range.
+- The on-premises version now allows specifying CIDR for pods to allocate them an exclusive IP range.
 - It also allows allocating an IP range in the CIDR format exclusive to the service clusters.
 
 The IP ranges for the pods, service clusters, and your IP network must not overlap with one another. This hotfix provides options to prevent node creation errors due to IP conflicts.
