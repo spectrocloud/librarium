@@ -1,10 +1,11 @@
 ---
-sidebar_label: "Bring Your Own OS (BYO-OS)"
-title: "Bring Your Own OS (BYO-OS)"
+sidebar_label: "Bring Your Own OS (BYOOS)"
+title: "Bring Your Own OS (BYOOS)"
 description: "Learn how to add your own OS images to a Palette cluster profile."
-icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+sidebar_custom_props:
+  icon: "person-walking-luggage"
 tags: ["profiles", "cluster profiles"]
 ---
 
@@ -19,6 +20,6 @@ The ability to bring your own OS to Palette gives you more control over dependen
 
 - [Create Images with Image Builder](../byoos/image-builder.md)
 
-- [BYO-OS Pack](../../../integrations/byoos.md)
+- [BYOOS Pack](../integrations/byoos.md)
 
 <br />

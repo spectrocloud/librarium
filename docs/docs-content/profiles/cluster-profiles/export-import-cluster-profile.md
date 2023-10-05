@@ -3,7 +3,7 @@ sidebar_label: "Export and Import a Cluster Profile"
 title: "Export and Import a Cluster Profile"
 description: "Learn how to export and import a cluster profile in Palette."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 50
 tags: ["profiles", "cluster profiles"]
 ---
 

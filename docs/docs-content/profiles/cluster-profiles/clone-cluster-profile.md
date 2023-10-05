@@ -3,7 +3,7 @@ sidebar_label: "Clone a Cluster Profile"
 title: "Clone a Cluster Profile"
 description: "Learn how to clone a cluster profile in Palette."
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 60
 tags: ["profiles", "cluster profiles"]
 ---
 

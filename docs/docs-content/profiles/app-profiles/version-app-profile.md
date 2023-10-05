@@ -3,7 +3,7 @@ sidebar_label: "Version an App Profile"
 title: "Version an App Profile"
 description: "Learn how to create a new version of an existing app profile in Palette."
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 30
 tags: ["profiles", "app profiles"]
 ---
 

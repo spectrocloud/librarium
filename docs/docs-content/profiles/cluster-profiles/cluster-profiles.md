@@ -6,7 +6,9 @@ hide_table_of_contents: false
 tags: ["profiles", "cluster profiles"]
 ---
 
-Cluster profiles are composed of layers using packs, Helm charts, and custom manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments. You can also create multiple cluster profile versions. For guidance on creating profile versions, review [Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md). 
+Cluster profiles are composed of layers using packs, Helm charts, and custom manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments.
+
+<!-- You can also create multiple cluster profile versions. For guidance on creating profile versions, review [Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).  -->
 
 You can create three types of cluster profiles:
 
@@ -67,13 +69,9 @@ pack:
 
 ## Resources
 
-- [Create an Infrastructure Profile](../cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+- [Create Cluster Profiles](../cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
 
-- [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile.md)
-
-- [Create a Full Profile](../cluster-profiles/create-cluster-profiles/create-full-profile.md)
-
-- [Update a Cluster Profile](../cluster-profiles/modify-cluster-profiles/update-cluster-profile.md)
+- [Modify Cluster Profiles](../cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md)
 
 - [Clone a Cluster Profile](clone-cluster-profile.md)
 

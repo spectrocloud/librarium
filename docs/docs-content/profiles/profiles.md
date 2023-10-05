@@ -4,7 +4,7 @@ title: "Profiles"
 description: "Learn how Palette uses cluster profiles to provide both consistency and flexibility across Kubernetes clusters."
 hide_table_of_contents: false
 sidebar_custom_props: 
-    icon: "bundles"
+  icon: "bundles"
 tags: ["profiles", "cluster profiles", "app profiles", "system profiles"]
 ---
 

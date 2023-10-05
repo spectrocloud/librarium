@@ -3,7 +3,7 @@ sidebar_label: "Clone an App Profile"
 title: "Clone an App Profile"
 description: "Learn how to clone an app profile in Palette."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 40
 tags: ["profiles", "app profiles"]
 ---
 
