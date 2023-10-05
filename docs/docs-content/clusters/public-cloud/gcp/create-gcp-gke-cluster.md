@@ -21,7 +21,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 - You have added a GCP account in Palette. Review [Register and Manage GCP Accounts](/clusters/public-cloud/gcp/add-gcp-accounts) for guidance.
 
 
-- An infrastructure cluster profile for GKE. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-infrastructure-profile.md) for guidance.
+- An infrastructure cluster profile for GKE. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
 
 - Palette creates compute, network, and storage resources while provisioning Kubernetes clusters. Ensure there is sufficient capacity in the preferred GCP region to create the following resources:

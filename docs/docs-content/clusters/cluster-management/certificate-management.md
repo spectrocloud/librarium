@@ -40,7 +40,7 @@ When you upgrade the control plane on a cluster, the PKI certificates are automa
 
 :::info
 
-You can upgrade the Kubernetes version of a cluster by updating the Kubernetes layer of the [cluster profile](../../profiles/cluster-profiles/update-cluster-profile.md) and applying the cluster profile update to the cluster. For guidelines on updating pack versions, review [Update the Pack Version](../../profiles/cluster-profiles/update-cluster-profile.md#update-the-pack-version).
+You can upgrade the Kubernetes version of a cluster by updating the Kubernetes layer of the cluster profile and applying the cluster profile update to the cluster. For guidelines on updating pack versions, review [Update the Pack Version](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version).
 
 :::
 

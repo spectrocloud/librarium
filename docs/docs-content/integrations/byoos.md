@@ -221,13 +221,13 @@ data "spectrocloud_pack_simple" "byoos" {
 
 ## References
 
-- [Create a Custom Cluster Profile with BYOOS](/clusters/edge/site-deployment/model-profile)
+- [Create a Custom Cluster Profile with BYOOS](../clusters/edge/site-deployment/model-profile.md)
 
 
 - [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
 
 
-- [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile)
+- [Model Edge Cluster Profile](/clusters/edge/site-deployment/model-profile)
 
 
 - [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/)

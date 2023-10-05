@@ -38,25 +38,18 @@ Add-on packs provide additional functionality that you can add to your cluster p
 
 Check out the [Packs List](/integrations) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
 
-<br />
-
 ## Pack Updates
 
 Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each core pack category. 
 
-<br />
 
 ### Kubernetes Packs
 
 We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follows:
 
-<br />
-
 - **Major versions**: Assessed based on the extent of changes.
 
-
 - **Minor versions**: Provided within eight weeks of a new Kubernetes release.
-
 
 - **Patch versions**: Provided within four weeks of a new Kubernetes release.
 
@@ -65,8 +58,6 @@ We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follow
 ### OS Packs
 
 We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
-
-<br />
 
 - **Major versions** - Added within 8 weeks of release.
 
@@ -78,13 +69,9 @@ We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
 
 We provide CNI pack updates as follows:
 
-<br />
-
 - **Major versions**: Assessed based on the extent of changes.
 
-
 - **Minor version**: Added within 6 weeks of release.
-
 
 - **Patch versions**: Added within 4 weeks of release.
 
@@ -93,13 +80,9 @@ We provide CNI pack updates as follows:
 
 We provide CSI pack updates as follows:
 
-<br />
-
 - **Major versions**: Assessed based on the extent of changes.
 
-
 - **Minor version**: Added within 6 weeks of release.
-
 
 - **Patch versions**: Added within 4 weeks of release.
 
@@ -108,13 +91,10 @@ We provide CSI pack updates as follows:
 
 We provide add-on pack updates as follows:
 
-<br />
 
 - **Major versions**: Assessed based on the extent of changes.
 
-
 - **Minor version**: Added within 6 weeks of release.
-
 
 - **Patch versions**: Added within 4 weeks of release.
 
@@ -134,25 +114,19 @@ An information icon in the profile stack also displays a message that instructs 
 
 We adhere to the following stages of deprecation: 
 
-<br />
-
 - **Deprecated**: When a pack or a pack version is deprecated, this indicates it will be removed in the future. You will still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain the pack.
 
    The pack remains in *Deprecated* state for three months before it moves to *Disabled* state.
-
-   <br />
 
 - **Disabled**: When a pack is disabled, it is no longer available for selection in Palette. When creating new profiles, you must use a newer version of the pack. You can still launch clusters using existing profiles that contain the disabled pack.
 
   The pack remains in *Disabled* state for three months before it is deleted.
 
-  <br />
-
 - **Deleted**: When a pack is deleted, it is removed from Palette. An active cluster that contains the deleted pack will continue to operate. However, you will not be able to deploy a new cluster profile that contains the deleted pack. 
 
 :::info
 
-For important guidelines on updating pack versions, review [Update the Pack Version](../profiles/cluster-profiles/update-cluster-profile.md#update-the-pack-version).
+For important guidelines on updating pack versions, review [Update the Pack Version](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version).
 
 :::
 
@@ -160,7 +134,6 @@ For important guidelines on updating pack versions, review [Update the Pack Vers
 
 A minor Kubernetes version is deprecated in Palette when the Kubernetes community announces the version is entering End of Life (EOL). 
 
-<br />
 
 ### CNI / CSI / Add-on Packs
 

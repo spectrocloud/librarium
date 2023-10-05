@@ -17,8 +17,7 @@ Boasting a comprehensive package system, Ubuntu provides a wealth of pre-compile
 
 In addition to its stability, Ubuntu's community support, extensive documentation, and commitment to free software principles make it a widely favored choice among Linux distributions. 
 
-You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when you create a cluster profile. For guidance, review [Create an Infrastructure Profile](../profiles/cluster-profiles/create-infrastructure-profile.md).
-
+You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when you create a cluster profile. For guidance, review [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
 
 <br />
 
