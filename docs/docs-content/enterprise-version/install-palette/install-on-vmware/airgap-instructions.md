@@ -128,7 +128,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 4. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the Palette Packs. Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
 
-5. In your OCI registry, create another repository with the name `spectro-images`. and ensure the repository is public. The repositry will host Palette images.
+5. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public. The repositry will host Palette images.
 
 6. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped Palette installation. 
 
