@@ -5,6 +5,7 @@ description: "Spectro Cloud upgrade notes for specific Palette versions."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 100
+tags: ["palette", "self-hosted", "upgrade"]
 ---
 
 This page is a reference resource to help you better prepare for a Palette upgrade. Review each version's upgrade notes for more information about required actions and other important messages to be aware of. If you have questions or concerns, reach out to our support team by opening up a ticket through our [support page](http://support.spectrocloud.io/).
