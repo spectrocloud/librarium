@@ -9,7 +9,7 @@ tags: ["vertex"]
 ---
 
 
-Palette VerteX offers regulated industries, such as government and public sector organizations that handle sensitive and classified information simplicity, security, and scale in production Kubernetes.
+Palette VerteX offers regulated industries, such as government and public sector organizations that handle sensitive and classified information simplicity, security, and scale in production Kubernetes. VerteX is available as a self-hosted platform offering that you can install in your data centers or public cloud providers to manage Kubernetes clusters.
 
 ## FIPS-Compliant
 
