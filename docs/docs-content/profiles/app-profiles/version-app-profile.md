@@ -8,9 +8,14 @@ tags: ["profiles", "app profiles"]
 ---
 
 
-You can create multiple versions of an app profile using the same profile name but with a different pack configuration. App profile versions use the format `major.minor.patch`. For example version `1.1.2`. 
+Palette enables you to create multiple versions of an App Profile within the scope of a single profile name.
+
+You can create multiple versions of an app profile using the same profile name but with a different version number and pack configuration. App profile versions use the format `major.minor.patch` and have a default value of `1.0.0`.
+
+App profile versions are grouped under the same name, and the version number makes them unique. The **drop-down Menu** next to the app profile name on the profile details page contains the different versions.
+
+New versions of an app profile may add or remove layers, contain new pack versions, or update a pack configuration.
          
-App profiles have a default value of `1.0.0`. When you create a new profile version, you can add or remove packs, and you can add different pack versions. 
 
 ## Prerequisites 
 

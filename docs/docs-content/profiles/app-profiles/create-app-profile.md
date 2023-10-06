@@ -74,7 +74,7 @@ Use the following steps to validate that your app profile is available and ready
 
 3. Select the app profile you created to review its details.
 
-4. To learn more about the layers, you can hover your cursor over the name of each layer to view details such as the pack name, its version, and the registry it belongs to.
+4. Hover your cursor over each app layer to learn more about the layers, including the pack name, version, and registry.
 
  ![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.png)
  

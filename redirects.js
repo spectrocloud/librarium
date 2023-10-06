@@ -196,10 +196,57 @@ const redirects = [
     to: `/tags/how-to`,
   },
   {
+    from: `/cluster-profiles`,
+    to: `/profiles/cluster-profiles`,
+  },
+  {
     from: `/cluster-profiles/task-define-profile`,
-    to: `/profiles/cluster-profiles/`,
+    to: `/profiles/cluster-profiles/create-cluster-profiles`,
+  },
+  {
+    from: `/cluster-profiles/create-add-on-profile`,
+    to: `/profiles/cluster-profiles/create-cluster-profiles/create-addon-profile`,
+  },
+  {
+    from: `/cluster-profiles/task-update-profile`,
+    to: `/profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile`,
+  },
+  {
+    from: `/cluster-profiles/cluster-profile-import-export`,
+    to: `/profiles/cluster-profiles/export-import-cluster-profile`,
+  },
+  {
+    from: `/cluster-profiles/examples`,
+    to: `/profiles/cluster-profiles`,
+  },
+  {
+    from: `/cluster-profiles/byoos`,
+    to: `/byoos`,
+  },
+  {
+    from: `/cluster-profiles/byoos/image-builder`,
+    to: `/byoos/image-builder`,
+  },
+  {
+    from: `/system-profile`,
+    to: `/profiles/`,
+  },
+  {
+    from: `/devx/app-profile/create-app-profile`,
+    to: `/profiles/app-profiles/create-app-profile`,
+  },
+  {
+    from: `/devx/app-profile/create-app-profile`,
+    to: `/profiles/app-profiles/create-app-profile`,
+  },
+  {
+    from: `/devx/app-profile/app-profile-cloning`,
+    to: `/profiles/app-profiles/clone-app-profile`,
+  },
+  {
+    from: `/devx/app-profile/app-profile-cloning`,
+    to: `/devx/app-profile/versioning-app-profile`,
   }
-
 ];
 
 module.exports = redirects;

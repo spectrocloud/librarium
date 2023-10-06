@@ -172,8 +172,7 @@ Spectro Agent bridges the information transfer between Palette SaaS and Palette 
 
 ## System Console (On-prem System Console)
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.
-## System Profiles
-System Profiles provide a way to bootstrap an edge appliance with an initial set of virtual and containerized applications. Similar to cluster profiles, System Profiles are templates created using one or more layers that are based on packs or helm charts.
+
 ## Team
 A Team is a group of [users](#user). Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users. [Roles](#role) assigned to a team grant associated tenant or [project](#project) [permissions](#permission) to all users that are part of the team.
 ## Tenant

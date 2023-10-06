@@ -7,9 +7,24 @@ tags: ["profiles", "app profiles"]
 ---
 
 
-You create app profiles using services that are required for Palette [Virtual Clusters](../../devx/palette-virtual-clusters/palette-virtual-clusters.md) deployed in Palette Dev Engine (PDE) in *App Mode*. Use app profiles to ensure consistency across virtual clusters. For more information about PDE, check out the [Palette Dev Engine](../../devx/devx.md) reference. 
+App Profiles are templates you create with pre-configured services that are required for Palette [Virtual Cluster](../../devx/palette-virtual-clusters/palette-virtual-clusters.md) deployment. App Profiles provide a way to drive consistency across virtual clusters deployed in the Palette Dev Engine (PDE) environment. For more information about PDE, check out the [Palette Dev Engine](../../devx/devx.md) documentation.
 
-App profile layers can be services, Helm Charts, or custom manifests. Palette provides several out-of-the-box services. Check out the Palette Dev Engine [Services](../../devx/app-profile/services/services.md) documentation to learn more about available services. 
+You create App Profiles to meet specific types of workloads on your Palette virtual clusters. You can use containers, Helm Charts, custom manifest, and other out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](../../devx/app-profile/services/services.md) documentation to learn more about the available services. 
+
+You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](/devx/app-profile/services).
+
+:::caution
+
+When adding a manifest-type layer to an App profile, make sure to specify a namespace. Otherwise the manifest deployment will get deployed to the `Default` namespace.
+
+```yaml
+namespace: yourNameHere
+```
+:::
+
+<!-- You create app profiles using services that are required for Palette [Virtual Clusters](../../devx/palette-virtual-clusters/palette-virtual-clusters.md) deployed in Palette Dev Engine (PDE) in *App Mode*. Use app profiles to ensure consistency across virtual clusters. For more information about PDE, check out the [Palette Dev Engine](../../devx/devx.md) reference.  -->
+
+<!-- App profile layers can be services, Helm Charts, or custom manifests. Palette provides several out-of-the-box services. Check out the Palette Dev Engine [Services](../../devx/app-profile/services/services.md) documentation to learn more about available services.  -->
 
 ## Resources
 
