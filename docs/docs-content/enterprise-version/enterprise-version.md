@@ -11,6 +11,10 @@ tags: ["self-hosted", "enterprise"]
 
 Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. 
 
+
+
+![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models-on-prem-focus.png)
+
 :::info
 
 Palette VerteX is a FIPS-compliant version of Palette that is available for regulated industries, such as government and public sector organizations that handle sensitive and classified information. To learn more about Palette VerteX, check out the [Palette VerteX](../vertex/vertex.md) section.
