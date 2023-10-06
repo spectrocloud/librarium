@@ -31,7 +31,7 @@ You can access the system console by visiting the IP address or the custom domai
 
 ## Administration and Management
 
-Platform administrators can use this console to perform the following operations:
+Platform administrators can use the system console to perform the following operations:
 
 - Configure and manage SMTP settings.
 
