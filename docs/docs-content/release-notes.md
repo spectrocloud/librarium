@@ -19,7 +19,7 @@ This release contains the following enhancements and minor bug fixes.
 
 - You can now modify registry mapping patterns that were previously hardcoded in the Palette CLI and Helm Charts.
 
-- You can now disable local accounts on existing AWS AKS clusters at the Kubernetes layer by setting the `managedControlPlane.aadProfile.disableLocalaccocunts` parameter to `true`. Using the same parameter, you can also create a new cluster with local accounts disabled and re-enable local accounts on existing clusters.
+- You can now disable local accounts on existing Azure Kubernetes Services (AKS) clusters at the Kubernetes layer by setting the `managedControlPlane.aadProfile.disableLocalaccounts` parameter to `true`. Using the same parameter, you can also create a new cluster with local accounts disabled and re-enable local accounts on existing clusters.
 
 - You can now configure OpenID Connect (OIDC) for virtual clusters. Refer to [Configure OIDC for a Virtual Cluster](https://docs.spectrocloud.com/clusters/palette-virtual-clusters/configure-oidc-virtual-cluster). 
 
