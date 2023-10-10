@@ -11,7 +11,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## October 10, 2023 - Release 4.0.17
+## October 10, 2023 - Release 4.0.19
 
 This release contains the following enhancements and minor bug fixes.
 
@@ -21,9 +21,9 @@ This release contains the following enhancements and minor bug fixes.
 
 - You can now disable local accounts on existing Azure Kubernetes Services (AKS) clusters at the Kubernetes layer by setting the `managedControlPlane.aadProfile.disableLocalaccounts` parameter to `true`. Using the same parameter, you can also create a new cluster with local accounts disabled and re-enable local accounts on existing clusters.
 
-- You can now configure OpenID Connect (OIDC) for virtual clusters. Refer to [Configure OIDC for a Virtual Cluster](https://docs.spectrocloud.com/clusters/palette-virtual-clusters/configure-oidc-virtual-cluster). 
+- You can now configure OpenID Connect (OIDC) for virtual clusters. Refer to [Configure OIDC for a Virtual Cluster](clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md). 
 
-- Cluster administrators have the ability to deploy and manage virtual clusters using add-on profiles.
+- Cluster administrators can now deploy and manage virtual clusters using add-on profiles.
 
 - When importing a cluster, Palette now supports HTTPS proxies and (Secure Sockets Layer) SSL interception of real-time certificate requests and generation based on the certificate authority (CA) path you provide.
 
@@ -34,8 +34,7 @@ This release contains the following enhancements and minor bug fixes.
 
 - The issue is fixed where RKE2 pack values were modified in the cluster configuration with the node IP address but were not being passed.
 
-- The issue that occurred when launching an EKS cluster with custom OIDC IAM Roles for Service Accounts is resolved.
-
+- The issue with Palette failing to create a target client when launching an EKS cluster with custom OIDC IAM Roles is resolved.
 
 
 ## October 10, 2023 - Release 4.0.17
