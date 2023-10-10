@@ -11,11 +11,47 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## October 10, 2023 - Release 4.0.17
+
+This release contains the following enhancements and minor bug fixes.
+
+### Enhancements
+
+- You can now modify registry mapping patterns that were previously hardcoded in the Palette CLI and Helm Charts.
+
+- You can now disable local accounts on existing AWS AKS clusters at the Kubernetes layer by setting the `managedControlPlane.aadProfile.disableLocalaccocunts` parameter to `true`. Using the same parameter, you can also create a new cluster with local accounts disabled and re-enable local accounts on existing clusters.
+
+- You can now configure OpenID Connect (OIDC) for virtual clusters. Refer to [Configure OIDC for a Virtual Cluster](https://docs.spectrocloud.com/clusters/palette-virtual-clusters/configure-oidc-virtual-cluster). 
+
+- Cluster administrators have the ability to deploy and manage virtual clusters using add-on profiles.
+
+- When importing a cluster, Palette now supports HTTPS proxies and (Secure Sockets Layer) SSL interception of real-time certificate requests and generation based on the certificate authority (CA) path you provide.
+
+
+### Bug Fixes
+
+- In Kubernetes clusters that use Suse Linux Enterprise Server as their custom OS, the missing host path for certificates is now set correctly.
+
+- The issue is fixed where RKE2 pack values were modified in the cluster configuration with the node IP address but were not being passed.
+
+- The issue that occurred when launching an EKS cluster with custom OIDC IAM Roles for Service Accounts is resolved.
+
+
+
+## October 10, 2023 - Release 4.0.17
+
+This release contains the following enhancement.
+
+### Enhancements
+
+- Palette VerteX now supports air-gapped environments.
+
+
 ## October 3, 2023 - Release 4.0.15
 
 This release contains enhancements and minor bug fixes.
 
-## Enhancements
+### Enhancements
 
 - Configurable options to specify pricing for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes **values.yaml** pack. You can review examples of how to use the `managedControlPlane.sku` parameter in [AKS Architecture](clusters/public-cloud/azure/architecture.md#pricing-options) highlights.
 
