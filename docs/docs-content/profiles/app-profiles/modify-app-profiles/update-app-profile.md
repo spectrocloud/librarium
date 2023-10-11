@@ -3,7 +3,7 @@ sidebar_label: "Update an App Profile"
 title: "Update an App Profile"
 description: "Learn how you can update an app profile in Palette."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 5
 tags: ["profiles", "app profiles"]
 ---
 

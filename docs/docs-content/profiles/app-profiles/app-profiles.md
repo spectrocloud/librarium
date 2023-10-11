@@ -28,17 +28,17 @@ namespace: yourNameHere
 
 ## Resources
 
-- [Create an App Profile](create-app-profile.md)
+- [Create an App Profile](../app-profiles/create-app-profiles/create-app-profile.md)
 
-- [Update an App Profile](update-app-profile.md)
+- [Update an App Profile](../app-profiles/modify-app-profiles/update-app-profile.md)
 
-- [Clone an App Profile](clone-app-profile.md)
+- [Clone an App Profile](../app-profiles/clone-app-profile.md)
 
-- [Version an App Profile](version-app-profile.md)
+- [Version an App Profile](../app-profiles/modify-app-profiles/version-app-profile.md)
 
-- [Delete an App Profile](delete-app-profile.md)
+- [Delete an App Profile](../app-profiles/delete-app-profile.md)
 
-- [Out-of-the-box Services](../../devx/app-profile/services/services.md)
+- [Out-of-the-box Services]
 
 - [Palette Dev Engine](../../devx/devx.md)
 

@@ -18,7 +18,7 @@ Palette supports the cloning of App Profiles across multiple projects. For examp
 
 ## Prerequisites
 
-* An app profile created in Palette. Check out [Create an App Profile](create-app-profile.md) for guidance.
+* An app profile created in Palette. Check out [Create an App Profile](../app-profiles/clone-app-profile.md) for guidance.
 
 ## Enablement
 
