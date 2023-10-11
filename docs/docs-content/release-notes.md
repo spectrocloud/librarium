@@ -11,11 +11,48 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## October 11, 2023 - Release 4.0.19
+
+This release contains the following enhancements and minor bug fixes.
+
+### Enhancements
+
+- For Helm Chart and Palette CLI installations, you can now modify previously hardcoded registry mapping patterns to fetch images from internal Open Containers Initiative (OCI) and Docker repositories. 
+
+  For example, to pull images from an internal repository serving Docker images, you would configure `docker.io::teams-jfrog.spectrocloud.dev/v2/image-registry`. 
+
+- You can now disable local accounts on existing Azure Kubernetes Services (AKS) clusters at the Kubernetes layer by setting the `managedControlPlane.aadProfile.disableLocalaccounts` parameter to `true`. Using the same parameter, you can also create a new cluster with local accounts disabled and re-enable local accounts on existing clusters.
+
+- You can now configure OpenID Connect (OIDC) for virtual clusters. Refer to [Configure OIDC for a Virtual Cluster](clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md). 
+
+- In Cluster Mode, you can now deploy add-on profiles on virtual clusters.
+
+- When importing a cluster, Palette now supports HTTPS proxies and (Secure Sockets Layer) SSL interception of real-time certificate requests and generation based on the certificate authority (CA) path you provide.
+
+
+### Bug Fixes
+
+- In Kubernetes clusters that use Suse Linux Enterprise Server as their custom OS, the missing host path for certificates is now set correctly.
+
+- The issue is fixed where RKE2 pack values were modified in the cluster configuration with the node IP address but were not being passed.
+
+- The issue with Palette failing to create a target client when launching an EKS cluster with custom OIDC IAM Roles is resolved.
+
+
+## October 11, 2023 - Release 4.0.17
+
+This release contains the following enhancement.
+
+### Enhancements
+
+- Palette VerteX now supports air-gapped environments.
+
+
 ## October 3, 2023 - Release 4.0.15
 
 This release contains enhancements and minor bug fixes.
 
-## Enhancements
+### Enhancements
 
 - Configurable options to specify pricing for Azure Kubernetes Service (AKS) cluster control planes are now available in the Kubernetes **values.yaml** pack. You can review examples of how to use the `managedControlPlane.sku` parameter in [AKS Architecture](clusters/public-cloud/azure/architecture.md#pricing-options) highlights.
 
