@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Create an App Profile for Container Deployment"
-title: "Create an App Profile for Container Deployment"
+sidebar_label: "Create App Profile for Container Deployment"
+title: "Create App Profile for Container Deployment"
 description: "Palette Dev Engine App Profile Container Deployment"
 hide_table_of_contents: false
 sidebar_position: 10

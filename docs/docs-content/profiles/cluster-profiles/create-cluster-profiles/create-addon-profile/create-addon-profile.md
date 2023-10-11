@@ -45,13 +45,13 @@ pack:
 ```
 
 
-## Create an Add-on Profile
+<!-- ## Create an Add-on Profile
 
 Use the following steps to create an add-on cluster profile.
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md)  documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
 
 ## Enablement
 
@@ -71,19 +71,19 @@ Use the following steps to create an add-on cluster profile.
   |**Type**| **Add-on** |
   |**Tags**| Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.  |
 
-  To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
+  To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../cluster-profiles.md#profile-layers).
+5. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../../cluster-profiles.md#profile-layers).
 
 6. Depending on the add-on type you selected, fill out the required input fields and click on **Confirm & Create**.
 
-  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) 
 
 7. If you want to add additional layers, repeat steps 5 and 6. Otherwise, click on **Next** to review the profile.
 
 8. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
+You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
 
 
 ## Validate
@@ -97,12 +97,12 @@ You now have an add-on cluster profile. You can reuse the profile and apply it t
 
 ## Next Steps
 
-Now you are ready to deploy a cluster using the add-on cluster profile you created.
+Now you are ready to deploy a cluster using the add-on cluster profile you created. -->
 
 ## Resources 
 
-- [Profile Layers](../cluster-profiles.md#profile-layers)
+- [Profile Layers](../../cluster-profiles.md#profile-layers)
 
-- [Update Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md)
+- [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md)
 
-- [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md)
+- [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md)
