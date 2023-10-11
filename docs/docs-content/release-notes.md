@@ -17,13 +17,15 @@ This release contains the following enhancements and minor bug fixes.
 
 ### Enhancements
 
-- You can now modify registry mapping patterns that were previously hardcoded in the Palette CLI and Helm Charts.
+- You can now modify previously hardcoded registry mapping patterns to fetch images from internal Open Containers Initiative (OCI) and Docker repositories. 
+
+  For example, to pull images from an internal repository serving Docker images, you would configure `docker.io::teams-jfrog.spectrocloud.dev/v2/image-registry`. 
 
 - You can now disable local accounts on existing Azure Kubernetes Services (AKS) clusters at the Kubernetes layer by setting the `managedControlPlane.aadProfile.disableLocalaccounts` parameter to `true`. Using the same parameter, you can also create a new cluster with local accounts disabled and re-enable local accounts on existing clusters.
 
 - You can now configure OpenID Connect (OIDC) for virtual clusters. Refer to [Configure OIDC for a Virtual Cluster](clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md). 
 
-- Cluster administrators can now deploy and manage virtual clusters using add-on profiles.
+- In Cluster Mode, you can now deploy add-on profiles on virtual clusters.
 
 - When importing a cluster, Palette now supports HTTPS proxies and (Secure Sockets Layer) SSL interception of real-time certificate requests and generation based on the certificate authority (CA) path you provide.
 
