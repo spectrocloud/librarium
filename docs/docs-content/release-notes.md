@@ -11,13 +11,13 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## October 10, 2023 - Release 4.0.19
+## October 11, 2023 - Release 4.0.19
 
 This release contains the following enhancements and minor bug fixes.
 
 ### Enhancements
 
-- You can now modify previously hardcoded registry mapping patterns to fetch images from internal Open Containers Initiative (OCI) and Docker repositories. 
+- For Helm Chart and Palette CLI installations, you can now modify previously hardcoded registry mapping patterns to fetch images from internal Open Containers Initiative (OCI) and Docker repositories. 
 
   For example, to pull images from an internal repository serving Docker images, you would configure `docker.io::teams-jfrog.spectrocloud.dev/v2/image-registry`. 
 
@@ -39,7 +39,7 @@ This release contains the following enhancements and minor bug fixes.
 - The issue with Palette failing to create a target client when launching an EKS cluster with custom OIDC IAM Roles is resolved.
 
 
-## October 10, 2023 - Release 4.0.17
+## October 11, 2023 - Release 4.0.17
 
 This release contains the following enhancement.
 
