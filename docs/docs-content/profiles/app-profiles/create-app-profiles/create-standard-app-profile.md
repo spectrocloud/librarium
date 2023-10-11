@@ -1,16 +1,18 @@
 ---
-sidebar_label: "Create an App Profile"
-title: "Create an App Profile"
-description: "Learn how to create an app profile for your Palette Virtual Clusters."
+sidebar_label: "Create Standard App Profile"
+title: "Create Standard App Profile"
+description: "Learn how to create a standard app profile for your Palette Virtual Clusters."
 hide_table_of_contents: false
-sidebar_position: 0
-tags: ["profiles", "app profiles"]
+sidebar_position: 5
+tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
 
-You can create as many app profiles as needed for your Palette [Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Each app profile can contain multiple services, which are layers in the profile stack. You can also create multiple versions of an app profile. For more information, review [Version an App Profile](../modify-app-profiles/version-app-profile.md). 
+You can create as many app profiles as needed for your Palette [Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Each app profile can contain multiple services, which are layers in the app profile stack. You can also create multiple versions of an app profile. For more information, review [Version an App Profile](../modify-app-profiles/version-app-profile.md). 
 
-Use the following steps to create an app profile.
+Use the following steps to create a standard app profile. 
+
+<!-- To learn how to creating an app profile for container deployment, and creating an app profile using Helm Charts and manifests. -->
 
 :::info
 
@@ -53,7 +55,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
   ```
   :::
 
-8. Provide configuration information for the service.
+8. Provide configuration information for the service. For steps to deploy a container service, refer to  
 
 9. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane.
 

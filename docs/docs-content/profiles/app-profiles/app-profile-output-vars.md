@@ -3,8 +3,8 @@ sidebar_label: "Output Variables"
 title: "Output Variables"
 description: "Explore Palette Dev Engine App Profile Macros"
 hide_table_of_contents: false
-sidebar_position: 20
-tags: ["devx", "app mode", "pde"]
+sidebar_position: 60
+tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
 
@@ -21,8 +21,6 @@ The variables are generated when the server layer is deployed. Output variables 
 
 Check out the [Services Connectivity](/devx/app-profile/services/connectivity) page to learn how to use output variables for establishing network connectivity between services.
 
-
-<br /> 
 
 
 ```hideClipboard

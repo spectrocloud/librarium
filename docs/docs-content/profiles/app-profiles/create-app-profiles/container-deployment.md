@@ -1,13 +1,13 @@
 ---
-sidebar_label: "Container Deployment"
-title: "Container Deployment"
+sidebar_label: "Create an App Profile for Container Deployment"
+title: "Create an App Profile for Container Deployment"
 description: "Palette Dev Engine App Profile Container Deployment"
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["devx", "app mode", "pde"]
+tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
-Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. Containers contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container tier to Palette Dev Engine App Profile, follow the steps below. 
+Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. Containers contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container layer to a Palette Dev Engine app profile, follow the steps below. 
 
 
 ## Prerequisite
