@@ -17,8 +17,10 @@ The next sections guide you in creating a standard app profile, creating an app 
 
 ## Resources
 
-- [Create a Standard App Profile](../create-app-profiles/create-standard-app-profile.md)
+- [Add Out-of-the-Box Services](../create-app-profiles/create-standard-app-profile.md)
 
-- [Create an App Profile for Container Deployment](container-deployment.md)
+- [Add a Container](container-deployment.md)
 
-- [Create an App Profile With Helm Chart](../create-app-profiles/create-helm-app-profile.md)
+- [Add a Helm Chart](../create-app-profiles/create-helm-app-profile.md)
+
+- [Add a Manifest](../create-app-profiles/create-manifest-app-profile.md)

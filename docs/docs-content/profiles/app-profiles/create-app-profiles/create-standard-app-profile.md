@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Create Standard App Profile"
-title: "Create a Standard App Profile"
-description: "Learn how to create a standard app profile for your Palette Virtual Clusters."
+sidebar_label: "Add Out-of-the-Box Services"
+title: "Add Out-of-the-Box Services"
+description: "Learn how to create an app profile for your Palette Virtual Clusters using out-of-the-box services."
 hide_table_of_contents: false
 sidebar_position: 5
 tags: ["devx", "app mode", "pde", "app profiles"]

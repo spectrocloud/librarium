@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Create App Profile With Helm Chart"
-title: "Create App Profile With Helm Chart"
+sidebar_label: "Add a Helm Chart"
+title: "Add a Helm Chart"
 description: "REVISE: Learn how to create an app profile for your Palette Virtual Clusters that uses a Helm chart."
 hide_table_of_contents: false
 sidebar_position: 20
@@ -9,7 +9,7 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 
 
 
-Use the following steps to create an app profile that contains a Helm chart.
+You can extend available Palette Dev Engine services with custom Helm charts. Use the following steps to create an app profile that contains a Helm chart.  
 
 
 :::info
@@ -23,16 +23,15 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-- One or more Helm charts downloaded to a local **charts** directory that you can reference in a `pack.json` file.
+- One or more custom Helm charts to add to your app profile. For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts)
+
+<!-- - One or more Helm charts downloaded to a local **charts** directory with their location referenced in a `pack.json` file.
 
 - A `values.yaml` file that provides configurable manifest parameters if desired.
 
-<!-- - A file called `values.yaml` that provides configurable manifest parameters.
+- One or more custom manifests to add to your app profile. -->
 
-- One or more custom manifests to add to your app profile.  -->
-
-For an example of how to create a custom add-on pack using a manifest, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts)
-
+<!-- For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts) -->
 
 ## Enablement
 

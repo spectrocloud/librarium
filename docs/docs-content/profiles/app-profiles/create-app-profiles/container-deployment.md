@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Create App Profile for Container Deployment"
-title: "Create App Profile for Container Deployment"
-description: "Palette Dev Engine App Profile Container Deployment"
+sidebar_label: "Add a Container"
+title: "Add a Container"
+description: "Learn how to create an app profile that deploys a container in your Palette Virtual Clusters."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["devx", "app mode", "pde", "app profiles"]
@@ -19,9 +19,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-
 2. Select **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right-hand side of the main screen. 
-
 
 3. Provide the wizard with the following information and click on **Next** after you have filled out the following basic information.
 
@@ -31,13 +29,11 @@ Palette App Mode supports the use of containers, a standard unit of software tha
   |**Description (optional)**   | Description of the App Profile, if any | 
   |**Tag (optional)**               | Tags on a cluster group are propagated to the infrastructure environment environments.|
 
-
 4. Next, select **Container Deployment** from the available services list.
-
 
 5. Provide the following information to the wizard.
 
-  **General Settings**:
+  **General Settings**
 
   | Parameter        | Description                                                                                            |
   | ---------------- | ------------------------------------------------------------------------------------------------------ |
@@ -58,7 +54,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   <br />
 
-  **Network Access**:
+  **Network Access**
   
   | Parameter      | Description                                                                                                   |
   | -------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -68,7 +64,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   <br />
 
-  **Environment Variables**:
+  **Environment Variables**
 
   | Parameter          | Description                                                                                       |
   | ----------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -76,7 +72,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   <br />
 
-  **Volume**:
+  **Volume**
 
   | Parameter | Description                                                 |
   | ------------- | --------------------------------------------------------------- |

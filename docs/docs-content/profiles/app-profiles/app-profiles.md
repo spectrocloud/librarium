@@ -9,7 +9,7 @@ tags: ["profiles", "app profiles"]
 
 App profiles are templates you create with pre-configured services that are required for Palette [Virtual Cluster](../../devx/palette-virtual-clusters/palette-virtual-clusters.md) deployment. App profiles provide a way to drive consistency across virtual clusters deployed in the Palette Dev Engine (PDE) environment. For more information about PDE, check out the [Palette Dev Engine](../../devx/devx.md) documentation.
 
-You create app profiles to meet specific types of workloads on your Palette virtual clusters. You can use containers, Helm charts, custom manifest, and other out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](../../devx/app-profile/services/services.md) documentation to learn more about the available services. 
+You create app profiles to meet specific types of workloads on your Palette virtual clusters. You can use containers, Helm charts, custom manifest, and out-of-the-box services such as databases, message queue systems, and object storage. Check out the Palette Dev Engine [Services](../../devx/app-profile/services/services.md) documentation to learn more about the available services. 
 
 You can also review all the Palette Dev Engine services that offer an out-of-the-box experience by reviewing the [Service Listings](/devx/app-profile/services).
 
@@ -28,7 +28,7 @@ namespace: yourNameHere
 
 ## Resources
 
-- [Create an App Profile](../app-profiles/create-app-profiles/create-standard-app-profile.md)
+- [Create App Profiles](../app-profiles/create-app-profiles/create-app-profiles.md)
 
 - [Update an App Profile](../app-profiles/modify-app-profiles/update-app-profile.md)
 

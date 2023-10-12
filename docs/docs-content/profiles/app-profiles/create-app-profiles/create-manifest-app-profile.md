@@ -1,14 +1,15 @@
 ---
-sidebar_label: "Create App Profile With Manifest"
-title: "Create App Profile With Manifest"
+sidebar_label: "Add a Manifest"
+title: "Add a Manifest"
 description: "Learn how to create an app profile for your Palette Virtual Clusters using a custom manifest."
 hide_table_of_contents: false
 sidebar_position: 15
 tags: ["devx", "app mode", "pde", "app profiles"]
 ---
+<!-- Add-on packs can be built using Kubernetes manifests. 
+These manifests contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.-->
 
-
-Add-on packs can be built using Kubernetes manifests. These manifests contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.
+You can extend available Palette Dev Engine services with custom manifests that contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.
 
 Use the following steps to create an app profile that contains a custom manifest.
 
@@ -23,11 +24,18 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-- One or more custom manifests in a local **manifests** directory that you can reference in a `pack.json` file.
+- One or more custom manifests to add to your app profile. For an example of how to create a custom add-on pack using a manifest, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#manifests)
+
+- One or more custom manifests in a local **manifests** directory with their location referenced in a `pack.json` file.
 
 - A `values.yaml` file that provides configurable manifest parameters if desired.
 
-For an example of how to create a custom add-on pack using a manifest, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#manifests)
+
+<!-- - One or more Helm charts downloaded to a local **charts** directory with their location referenced in a `pack.json` file.
+
+- A `values.yaml` file that provides configurable manifest parameters if desired.
+
+- One or more custom manifests to add to your app profile. -->
 
 
 <!-- pushed to the pack registry server.  -->
