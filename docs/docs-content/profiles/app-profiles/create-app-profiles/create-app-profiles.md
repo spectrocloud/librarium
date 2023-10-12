@@ -21,4 +21,4 @@ The next sections guide you in creating a standard app profile, creating an app 
 
 - [Create an App Profile for Container Deployment](container-deployment.md)
 
-- [Create an App Profile With Helm Chart](create-helm-profile.md)
+- [Create an App Profile With Helm Chart](../create-app-profiles/create-helm-app-profile.md)
