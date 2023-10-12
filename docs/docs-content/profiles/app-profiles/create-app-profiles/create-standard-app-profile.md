@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Create Standard App Profile"
-title: "Create Standard App Profile"
+title: "Create a Standard App Profile"
 description: "Learn how to create a standard app profile for your Palette Virtual Clusters."
 hide_table_of_contents: false
 sidebar_position: 5
@@ -8,11 +8,8 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
 
-You can create as many app profiles as needed for your Palette [Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Each app profile can contain multiple services, which are layers in the app profile stack. You can also create multiple versions of an app profile. For more information, review [Version an App Profile](../modify-app-profiles/version-app-profile.md). 
+Use the following steps to create a standard app profile that contains out-of-the-box services such as messaging system, object storage, database, and security services. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
 
-Use the following steps to create a standard app profile. 
-
-<!-- To learn how to creating an app profile for container deployment, and creating an app profile using Helm Charts and manifests. -->
 
 :::info
 
@@ -35,25 +32,25 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 4. Click the **New App Profile** button. 
 
-5. Provide the following basic information for your App Profile and click **Next**.
+5. Provide the following basic information for your app profile and click **Next**.
 
 | **Parameter**           | **Description**  |
 |-------------------------|---------------------|
-|**Application Profile Name** | A custom name for the app profile.|
+|**App Profile Name** | A custom name for the app profile.|
 |**Version** | An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
 |**Description**  | Use the description to provide context about the profile. | 
 |**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
 
-7. Select one of the available services to start configuring your app profile. Refer to the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
+7. Select one of the available services to start configuring your app profile. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
 
-  :::caution
+  <!-- :::caution
 
   When adding a manifest-type layer to an app profile, make sure to specify a namespace. Otherwise, the manifest deployment will be deployed to the `Default` namespace.
 
   ```yaml
   namespace: <yourNameHere>
   ```
-  :::
+  ::: -->
 
 8. Provide configuration information for the service. For steps to deploy a container service, refer to  
 
@@ -61,7 +58,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 10. When you have provided the required configuration information for services, click **Review**. 
 
-Your app profile is now created and can be deployed.  
+Your app profile is now created using out-of-the-box servcies and can be deployed.  
 
 
 ## Validate
@@ -92,5 +89,10 @@ Use the following steps to validate that your app profile is available and ready
 
 Start exploring the various out-of-the-box [services](../../../devx/app-profile/services/services.md) Palette exposes to application authors. Use these services to deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
 
+## Resources
 
+- [Service Listing](/devx/app-profile/services/service-listings/)
 
+- [Create and Manage Apps](../../../devx/apps/create-app.md)
+
+- [Deploy an Application using Palette Dev Engine](../../../devx/apps/deploy-app.md)

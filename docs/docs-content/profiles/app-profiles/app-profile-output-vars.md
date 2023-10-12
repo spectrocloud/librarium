@@ -12,7 +12,7 @@ Palette Dev Engine output variables are defined in the [app profile](/glossary-a
 
 * May be referenced by specifying them during app profile creation.
 
-* Output variables are inherited from the lower tiers of the app profile.
+* Output variables are inherited from the lower layers of the app profile.
 
 * Each service type exposes a set of unique output variables. 
 
@@ -24,7 +24,7 @@ Check out the [Services Connectivity](/devx/app-profile/services/connectivity) p
 
 
 ```hideClipboard
-{{.spectro.app.$appdeploymentName.<tiername>.<tierOutput_Variable_Name>}}
+{{.spectro.app.$appdeploymentName.<layerName>.<layerOutput_Variable_Name>}}
 ```
 
 ## System Output Variables
@@ -33,29 +33,29 @@ The following output variables are globally available for all services.
 
 | Output Variable | Description |
 | --- | --- |
-| `spectro.system.user.name` | The user name of the logged in user. |
-| `spectro.system.user.uid` | The id of the logged in user.|
-| `spectro.system.user.email` | The email address of the logged in user. |
-| `spectro.system.tenant.uid `| The id of the current tenant or organization. |
-| `spectro.system.project.uid` | The id of the current project. |
-| `spectro.system.project.name` | The name of the current project. |
-| `spectro.system.cluster.uid` |  The id of the current cluster. |
-| `spectro.system.cluster.name` | The name of the current cluster. |
-| `spectro.system.kubernetes.version` | The current version of Kubernetes. |
-| `spectro.system.reverseproxy.server` | The hostname of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
-| `spectro.system.reverseproxy.port` | The port of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
-| `spectro.system.reverseproxy.vhostport` | The port of the virtual host that is hosting the reverse proxy. |
-| `spectro.system.reverseproxy.protocol` | The protocol used for the Spectro Cloud reverse proxy. |
-| `spectro.system.cloud.type` | The type of cloud environment where the cluster is deployed, such as EKS, AKS, and GKE. |
-| `spectro.system.cloud.region` |  The cloud provider region where the cluster is deployed.|
-| `spectro.system.apptier.name` | The name of the service layer from the context of the app profile. |
-| `spectro.system.apptier.uid` | The id of the service layer. |
-| `spectro.system.appprofile.name` | The name of the app profile. |
-| `spectro.system.appprofile.uid` |  The  id of the app profile. |
-| `spectro.system.appdeployment.uid` | The id of the app deployment.  |
-| `spectro.system.appdeployment.name` | The name of the app deployment. |
-| `spectro.system.appdeployment.tiername` | The name of the service layer from the context of the app deployment. |
-| `spectro.system.appdeployment.ingress.host` | The ingress host pattern for a cluster group with ingress enabled. This value is dynamically generated. |
+| `spectro.system.user.name` | User name of the logged in user. |
+| `spectro.system.user.uid` | ID of the logged in user.|
+| `spectro.system.user.email` | Email address of the logged in user. |
+| `spectro.system.tenant.uid `| ID of the current tenant or organization. |
+| `spectro.system.project.uid` | ID of the current project. |
+| `spectro.system.project.name` | Name of the current project. |
+| `spectro.system.cluster.uid` |  ID of the current cluster. |
+| `spectro.system.cluster.name` | Name of the current cluster. |
+| `spectro.system.kubernetes.version` | Current version of Kubernetes. |
+| `spectro.system.reverseproxy.server` | Hostname of Spectro Cloud reverse proxy server. This value is empty when not enabled. |
+| `spectro.system.reverseproxy.port` | Port of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
+| `spectro.system.reverseproxy.vhostport` | Port of the virtual host that is hosting the reverse proxy. |
+| `spectro.system.reverseproxy.protocol` | Protocol used for the Spectro Cloud reverse proxy. |
+| `spectro.system.cloud.type` | Type of cloud environment where the cluster is deployed such as EKS, AKS, and GKE. |
+| `spectro.system.cloud.region` |  Cloud provider region where the cluster is deployed.|
+| `spectro.system.apptier.name` | Name of the service layer from the context of the app profile. |
+| `spectro.system.apptier.uid` | ID of the service layer. |
+| `spectro.system.appprofile.name` | Name of the app profile. |
+| `spectro.system.appprofile.uid` |  ID of the app profile. |
+| `spectro.system.appdeployment.uid` | ID of the app deployment.  |
+| `spectro.system.appdeployment.name` | Name of the app deployment. |
+| `spectro.system.appdeployment.tiername` | Name of the service layer from the context of the app deployment. |
+| `spectro.system.appdeployment.ingress.host` | Ingress host pattern for a cluster group with ingress enabled. This value is dynamically generated. |
 
 ## Container Service Output Variables
 
@@ -63,15 +63,15 @@ The container service type exposes the following output variables. Replace **[se
 
 | Output Variable | Description |
 | --- | --- |
-| `.spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE` | The Kubernetes namespace of the deployed container.  |
-|`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC`  | The Kubernetes DNS hostname of the service. |
-|`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT`  | The exposed port of the service. |
-| `spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME`| The Kubernetes DNS hostname of the load balancer. This value is available if the service's  to **Public** and deployed to a public cloud provider environment. |
-|`spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP`| The public URL of the load balancer. This value is available if the service's access is set to **Public** and deployed to a private cloud provider environment.|
+| `.spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE` | Kubernetes namespace of the deployed container.  |
+|`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC`  | Kubernetes DNS hostname of the service. |
+|`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_PORT`  | Exposed port of the service. |
+| `spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALHOSTNAME`| Kubernetes DNS hostname of the load balancer. This value is available if the service's  to **Public** and deployed to a public cloud provider environment. |
+|`spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC_EXTERNALIP`| Public URL of the load balancer. This value is available if the service's access is set to **Public** and deployed to a private cloud provider environment.|
 
 ## Database Service Output Variables
 
-Each database service exposes a set of output variables. Review each database service for more details. You can find information about each database service by checking out the [Available Services](/devx/app-profile/services/service-listings) resource.
+Each database service exposes a set of output variables. To learn about each database service, check out [Available Services](/devx/app-profile/services/service-listings).
 
 ## Resources
 
