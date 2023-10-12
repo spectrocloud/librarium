@@ -15,7 +15,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
 
-## Add a New Pack to a Cluster Profile
+## Add a Pack to a Cluster Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 

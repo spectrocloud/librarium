@@ -9,7 +9,7 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 
 
 
-You can extend available Palette Dev Engine services with custom Helm charts. Use the following steps to create an app profile that contains a Helm chart.  
+You can extend the list of available Palette Dev Engine services with custom Helm charts. Use the following steps to create an app profile that contains a Helm chart.  
 
 
 :::info

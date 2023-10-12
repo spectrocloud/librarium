@@ -9,7 +9,7 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 <!-- Add-on packs can be built using Kubernetes manifests. 
 These manifests contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.-->
 
-You can extend available Palette Dev Engine services with custom manifests that contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.
+You can extend the list of available Palette Dev Engine services with custom manifests that contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.
 
 Use the following steps to create an app profile that contains a custom manifest.
 
