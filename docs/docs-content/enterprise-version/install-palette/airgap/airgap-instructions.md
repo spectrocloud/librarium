@@ -245,10 +245,13 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 ---
 
-10. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the command below with the recommended version and credentials provided by our support team.
+10. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
 
   ```shell
-  VERSION=4.0.17
+  VERSION=4.0.19ßßß
+  ```
+
+  ```shell
   curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
   --output airgap-v$VERSION.bin
   ```
@@ -453,10 +456,13 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 ---
 
-4. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the command below with the recommended version and credentials provided by our support team.
+4. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
 
   ```shell
   VERSION=4.0.17
+  ```
+
+  ```shell
   curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
   --output airgap-v$VERSION.bin
   ```
