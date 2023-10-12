@@ -25,7 +25,7 @@ The next sections guide you in creating each type of profile.
 
 - [Create an Infrastructure Profile](create-infrastructure-profile.md)
 
-- [Create an Add-on Profile](create-addon-profile.md)
+- [Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/create-addon-profile.md)
 
 - [Create a Full Profile](create-full-profile.md)
 
