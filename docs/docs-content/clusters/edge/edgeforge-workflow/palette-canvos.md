@@ -101,10 +101,10 @@ Use the following instructions on your Linux machine to create all the required 
   ```
 
 
-4. Check out the newest available tag. This guide uses **v3.4.3** tag as an example. 
+4. Check out the newest available tag. This guide uses the tag **v4.0.6** as an example. 
 
   ```shell
-  git checkout v3.4.3
+  git checkout v4.0.6
   ```
 
 
@@ -130,7 +130,7 @@ Use the following instructions on your Linux machine to create all the required 
 
   :::
 
-  Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`.   
+  Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be `ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn`.   
 
   ```bash
   cat << EOF > .arg
@@ -142,6 +142,10 @@ Use the following instructions on your Linux machine to create all the required 
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   ARCH=amd64
+  HTTPS_PROXY=
+  HTTP_PROXY=
+  PROXY_CERT_PATH=
+  UPDATE_KERNEL=false
   EOF
   ```
   
@@ -159,39 +163,53 @@ Use the following instructions on your Linux machine to create all the required 
   ```
 
   
-9. Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example. 
-
-  <PointsOfInterest
-    points={[
-      {
-        x: 260,
-        y: 187,
-        label: 1,
-        description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
-        tooltipPlacement: "rightTop",
-      },
-      {
-        x: 190,
-        y: 262,
-        label: 2,
-        description: "Instructs the installer to turn the host machine off once the installation is complete.",
-      },
-      {
-        x: 190,
-        y: 340,
-        label: 3,
-        description: "Sets the login credentials for Edge hosts. The login credentials will allow you to SSH log into the edge host for debugging purposes.",
-        tooltipPlacement: "rightTop",
-      },
-    ]}
-  >
+9. Use the following command to create the **user-data** file containing the tenant registration token. 
 
   ```shell
   cat << EOF > user-data
   #cloud-config
   stylus:
     site:
+      paletteEndpoint: api.spectrocloud.com
       edgeHostToken: $token
+      projectName: stores
+      tags:
+        key1: value1
+        key2: value2
+        key3: value3
+      name: edge-randomid
+      registrationURL: https://edge-registration-app.vercel.app/
+
+      network:
+        httpProxy: http://proxy.example.com
+        httpsProxy: https://proxy.example.com
+        noProxy: 10.10.128.10,10.0.0.0/8
+
+        nameserver: 1.1.1.1
+        interfaces:
+            enp0s3:
+                type: static
+                ipAddress: 10.0.10.25/24
+                gateway: 10.0.10.1
+                nameserver: 10.10.128.8
+            enp0s4:
+                type: dhcp
+      caCerts:
+        - |
+          ------BEGIN CERTIFICATE------
+          *****************************
+          *****************************
+          ------END CERTIFICATE------
+        - |
+          ------BEGIN CERTIFICATE------
+          *****************************
+          *****************************
+          ------END CERTIFICATE------
+    registryCredentials:
+      domain: registry.example.com
+      username: bob
+      password: ####
+      insecure: false
   install:
     poweroff: true
   users:
@@ -199,8 +217,6 @@ Use the following instructions on your Linux machine to create all the required 
       passwd: kairos
   EOF
   ```
-
-  </PointsOfInterest>
 
   View the newly created user data file to ensure the token is set correctly.
 
@@ -229,19 +245,30 @@ Use the following instructions on your Linux machine to create all the required 
 
   Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 
-  ```bash
+  ```yaml
   pack:
     content:
       images:
         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+    # Below config is default value, please uncomment if you want to modify default values
+    # drain:
+      #cordon: true
+      #timeout: 60 # The length of time to wait before giving up, zero means infinite
+      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+      #ignoreDaemonSets: true
+      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+      #force: true # Continue even if there are pods that do not declare a controller
+      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
   options:
     system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
     system.registry: ttl.sh
     system.repo: ubuntu
     system.k8sDistribution: k3s
     system.osName: ubuntu
-    system.peVersion: v3.4.3
-    system.customTag: demo
+    system.peVersion: v4.0.6
+    system.customTag: palette-learn
     system.osVersion: 22
   ```
 
@@ -252,19 +279,22 @@ Use the following instructions on your Linux machine to create all the required 
   docker images --filter=reference='*/*:*palette-learn'
   ```
 
-  ```hideClipboard bash {3,4}
-  # Output
-  REPOSITORY        TAG                                IMAGE ID       CREATED         SIZE
-  ttl.sh/ubuntu     k3s-1.25.2-v3.4.3-palette-learn    b3c4956ccc0a   6 minutes ago   2.49GB
-  ttl.sh/ubuntu     k3s-1.24.6-v3.4.3-palette-learn    fe1486da25df   6 minutes ago   2.49GB
+  ```hideClipboard bash
+  REPOSITORY             TAG                                   IMAGE ID       CREATED         SIZE
+  ttl.sh/ubuntu          k3s-1.24.6-v4.0.6-palette-learn       ee67aef2a674   10 minutes ago   4.09GB
+  ttl.sh/ubuntu          k3s-1.27.2-v4.0.6-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
+  ttl.sh/ubuntu          k3s-1.25.2-v4.0.6-palette-learn       02424d29fcac   10 minutes ago   4.09GB
+  ttl.sh/ubuntu          k3s-1.26.4-v4.0.6-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
   ```
 
 
 12. To use the provider images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  Use the following commands to push the provider images to the *ttl.sh* image registry.  
 
   ```bash
-  docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-palette-learn
-  docker push ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-palette-learn
+  docker push ttl.sh/ubuntu:k3s-1.24.6-v4.0.6-palette-learn
+  docker push ttl.sh/ubuntu:k3s-1.25.2-v4.0.6-palette-learn
+  docker push ttl.sh/ubuntu:k3s-1.26.4-v4.0.6-palette-learn
+  docker push ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn
   ```
 
   :::caution
@@ -296,14 +326,25 @@ Use the following instructions on your Linux machine to create all the required 
     content:
       images:
         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+    # Below config is default value, please uncomment if you want to modify default values
+    # drain:
+      #cordon: true
+      #timeout: 60 # The length of time to wait before giving up, zero means infinite
+      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+      #ignoreDaemonSets: true
+      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+      #force: true # Continue even if there are pods that do not declare a controller
+      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
   options:
     system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
     system.registry: ttl.sh
     system.repo: ubuntu
     system.k8sDistribution: k3s
     system.osName: ubuntu
-    system.peVersion: v3.4.3
-    system.customTag: demo
+    system.peVersion: v4.0.6
+    system.customTag: palette-learn
     system.osVersion: 22
   ```
   The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
@@ -316,11 +357,11 @@ Use the following instructions on your Linux machine to create all the required 
 
   :::
 
-17. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.25.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.25.2 to the ttl.sh image registry. 
+17. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the ttl.sh image registry. 
 
   |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
   |---|---|---|---|
-  |Kubernetes|Public Repo|Palette Optimized k3s|`1.25.x`|
+  |Kubernetes|Public Repo|Palette Optimized k3s|`1.27.x`|
 
 
 18. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer. This step completes the core infrastructure layers in the cluster profile.  
@@ -427,7 +468,7 @@ Use the following instructions on your Linux machine to customize the arguments 
 4. Check out the newest available tag. This guide uses **v3.4.3** tag as an example. 
 
   ```shell
-  git checkout v3.4.3
+  git checkout v4.0.6
   ```
 
 
@@ -491,6 +532,10 @@ Use the following instructions on your Linux machine to customize the arguments 
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   ARCH=amd64
+  HTTPS_PROXY=
+  HTTP_PROXY=
+  PROXY_CERT_PATH=
+  UPDATE_KERNEL=false
   EOF
   ```
   
@@ -532,39 +577,53 @@ Use the following instructions on your Linux machine to customize the arguments 
   export token=[your_token_here]
   ```
   
-13. Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click on the *Points of Interest* numbers below to learn more about the main attributes relevant to this example. 
-
-  <PointsOfInterest
-    points={[
-      {
-        x: 260,
-        y: 187,
-        label: 1,
-        description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
-        tooltipPlacement: "rightTop",
-      },
-      {
-        x: 190,
-        y: 262,
-        label: 2,
-        description: "Instructs the installer to turn the host machine off once the installation is complete.",
-      },
-      {
-        x: 190,
-        y: 340,
-        label: 3,
-        description: "Sets the login credentials for Edge hosts. The login credentials will allow you to SSH log into the edge host for debugging purposes.",
-        tooltipPlacement: "rightTop",
-      },
-    ]}
-  >
+13. Use the following command to create the **user-data** file containing the tenant registration token. 
 
   ```shell
   cat << EOF > user-data
   #cloud-config
   stylus:
     site:
+      paletteEndpoint: api.spectrocloud.com
       edgeHostToken: $token
+      projectName: stores
+      tags:
+        key1: value1
+        key2: value2
+        key3: value3
+      name: edge-randomid
+      registrationURL: https://edge-registration-app.vercel.app/
+
+      network:
+        httpProxy: http://proxy.example.com
+        httpsProxy: https://proxy.example.com
+        noProxy: 10.10.128.10,10.0.0.0/8
+
+        nameserver: 1.1.1.1
+        interfaces:
+            enp0s3:
+                type: static
+                ipAddress: 10.0.10.25/24
+                gateway: 10.0.10.1
+                nameserver: 10.10.128.8
+            enp0s4:
+                type: dhcp
+      caCerts:
+        - |
+          ------BEGIN CERTIFICATE------
+          *****************************
+          *****************************
+          ------END CERTIFICATE------
+        - |
+          ------BEGIN CERTIFICATE------
+          *****************************
+          *****************************
+          ------END CERTIFICATE------
+    registryCredentials:
+      domain: registry.example.com
+      username: bob
+      password: ####
+      insecure: false
   install:
     poweroff: true
   users:
@@ -572,8 +631,6 @@ Use the following instructions on your Linux machine to customize the arguments 
       passwd: kairos
   EOF
   ```
-
-  </PointsOfInterest> 
 
   View the newly created user data file to ensure the token is set correctly.
 
@@ -601,24 +658,37 @@ Use the following instructions on your Linux machine to customize the arguments 
 
   :::
 
+  <br />
 
   This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion, the command will display the manifest, as shown in the example below, that you will use in your cluster profile later in this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what you defined earlier in the **.arg** file.
 
   Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 
-  ```bash
+  ```bash hideClipboard
   pack:
     content:
       images:
         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+    # Below config is default value, please uncomment if you want to modify default values
+    #drain:
+      #cordon: true
+      #timeout: 60 # The length of time to wait before giving up, zero means infinite
+      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+      #ignoreDaemonSets: true
+      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+      #force: true # Continue even if there are pods that do not declare a controller
+      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
   options:
     system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
     system.registry: docker.io/spectrocloud
     system.repo: opensuse-leap
     system.k8sDistribution: k3s
     system.osName: opensuse-leap
-    system.peVersion: v3.4.3
+    system.peVersion: v4.0.6
     system.customTag: palette-learn
+    system.osVersion:
   ```
 
 15. List the Docker images to review the provider images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` argument. 
@@ -627,11 +697,12 @@ Use the following instructions on your Linux machine to customize the arguments 
   docker images --filter=reference='*/*:*palette-learn'
   ```
 
-  ```hideClipboard bash {3,4}
-  # Output
+  ```hideClipboard bash
   REPOSITORY                   TAG                               IMAGE ID       CREATED          SIZE
-  spectrocloud/opensuse-leap   k3s-1.25.2-v3.4.3-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
-  spectrocloud/opensuse-leap   k3s-1.24.6-v3.4.3-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
+  spectrocloud/opensuse-leap   k3s-1.27.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+  spectrocloud/opensuse-leap   k3s-1.26.6-v4.0.6-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
+  spectrocloud/opensuse-leap   k3s-1.25.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+  spectrocloud/opensuse-leap   k3s-1.24.6-v4.0.6-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
   ```
 
 16. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
@@ -648,8 +719,10 @@ Use the following instructions on your Linux machine to customize the arguments 
 17. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that the utility created. 
 
   ```bash
-  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v3.4.3-palette-learn
-  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.24.6-v3.4.3-palette-learn
+  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.0.6-palette-learn
+  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.0.6-palette-learn
+  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.0.6-palette-learn
+  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.24.6-v4.0.6-palette-learn
   ```
 
 18. After pushing the provider images to the image registry, open a web browser and log in to [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a cluster profile. 
@@ -665,23 +738,35 @@ Use the following instructions on your Linux machine to customize the arguments 
   |OS|Public Repo|BYOS Edge OS|`1.0.0`|
 
 
-21. Replace the the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can pull the provider image from the ttl.sh image registry.  
+21. Replace the the cluster profile's BYOOS pack manifest with the output provided to your earlier that you copied.  
 
   The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file.  If you modified the arguments in the **.arg** file, you must modify the attribute values below accordingly.
 
-  ```yaml
+  ```yaml hideClipboard
   pack:
     content:
       images:
         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+    # Below config is default value, please uncomment if you want to modify default values
+    #drain:
+      #cordon: true
+      #timeout: 60 # The length of time to wait before giving up, zero means infinite
+      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+      #ignoreDaemonSets: true
+      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+      #force: true # Continue even if there are pods that do not declare a controller
+      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
   options:
     system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
     system.registry: docker.io/spectrocloud
     system.repo: opensuse-leap
     system.k8sDistribution: k3s
     system.osName: opensuse-leap
-    system.peVersion: v3.4.3
+    system.peVersion: v4.0.6
     system.customTag: palette-learn
+    system.osVersion:
   ```
   The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
@@ -693,11 +778,11 @@ Use the following instructions on your Linux machine to customize the arguments 
 
   :::
 
-22. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.25.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.25.2 to the ttl.sh image registry. 
+22. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the ttl.sh image registry. 
 
   |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
   |---|---|---|---|
-  |Kubernetes|Public Repo|Palette Optimized k3s|`1.25.x`|
+  |Kubernetes|Public Repo|Palette Optimized k3s|`1.27.x`|
 
 
 23. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer. This step completes the core infrastructure layers in the cluster profile.  

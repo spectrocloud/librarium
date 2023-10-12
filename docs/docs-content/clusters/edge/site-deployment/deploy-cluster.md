@@ -180,13 +180,13 @@ Use the following command to create the **user-data** file containing the tenant
       tooltipPlacement: "rightTop",
     },
     {
-      x: 170,
+      x: 500,
       y: 224,
       label: 2,
       description: "Instructs the installer to turn the host machine off once the installation is complete.",
     },
     {
-      x: 190,
+      x: 600,
       y: 300,
       label: 3,
       description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
