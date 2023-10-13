@@ -738,7 +738,7 @@ Use the following instructions on your Linux machine to customize the arguments 
   |OS|Public Repo|BYOS Edge OS|`1.0.0`|
 
 
-21. Replace the cluster profile's BYOOS pack manifest with the output provided to your earlier that you copied.  
+21. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you copied.
 
   The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file.  If you modified the arguments in the **.arg** file, you must modify the attribute values below accordingly.
 
