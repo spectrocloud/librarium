@@ -13,9 +13,9 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
 
-## Add a Pack to a Cluster Profile
+## Add a Pack to an Add-on Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -35,9 +35,11 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
   To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the type of layer to add to the cluster profile. For a description of the layers, review [Profile Layers](../../cluster-profiles.md#profile-layers).
+5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your profile. You can search packs by their name.
 
-6. Depending on the add-on type you selected, fill out the required input fields and click on **Confirm & Create**.
+<!-- Select the type of layer to add to the cluster profile. For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
+
+6. Fill out the required input fields and click on **Confirm & Create**.
 
   <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
 
@@ -45,7 +47,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
 8. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
+You now have an add-on cluster profile that contains one or more packs. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
 
 
 ## Validate
@@ -59,4 +61,4 @@ You now have an add-on cluster profile. You can reuse the profile and apply it t
 
 ## Next Steps
 
-Now you are ready to deploy a cluster using the add-on cluster profile you created.
+Now you can use the add-on profile with other profiles and across multiple environments, projects, and tenants. 

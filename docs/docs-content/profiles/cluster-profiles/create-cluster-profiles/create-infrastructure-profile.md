@@ -8,13 +8,13 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes, Network, and Storage).
+Create an infrastructure profile by adding infrastructure layers composed of an Operating System (OS), Kubernetes, Network, and Storage.
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md) reference for more information about roles and permissions.
 
-## Enablement
+## Build the Infrastructure Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -36,25 +36,26 @@ Create an infrastructure profile by adding infrastructure layers (OS, Kubernetes
 
 5. Select the infrastructure provider or managed Kubernetes for your environment and click **Next**.
   
-6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next** to continue. For a description of the layers, review [Profile Layers](../cluster-profiles.md#profile-layers).
+6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next Layer** to configure each infrastructure layer. 
+
+  For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../cluster-profiles.md#profile-layers).
 
   | **Layer** | **Description** |
   |----|----|
-  | **Operating System**| Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYO-OS)** if you want to upload your own OS images.|  
+  | **Operating System**| Select an OS to use with your Kubernetes clusters. Use **Bring Your Own OS (BYOOS)** if you want to upload your own OS images.|  
   |**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information. |
   | **Network**| Select a network pack to use with your clusters. |
   | **Storage**| Select a storage pack to use with your clusters. |
 
+  As you add each layer, Palette displays the YAML file in the editor at right. You can edit the YAML as needed.
 
-  As you add each layer, Palette displays the manifest in the editor at right. You can edit the manifest or add a new one. 
-
-7. Click on **Confirm**. Palette displays the profile stack with your specified pack layers.
+7. When all the infrastructure layers are added, click on **Confirm**. Palette displays the profile stack with your specified pack layers.
 
 8. Click on **Next** to review the profile.
 
 9. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
+You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update a Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
 
 
 ## Validate
@@ -68,9 +69,13 @@ You now have an infrastructure cluster profile. You can reuse the profile and ap
 
 ## Next Steps
 
-Now you are ready to deploy a cluster using the infrastructure cluster profile you created.
+Now you are ready to deploy a cluster using the infrastructure cluster profile you created. If desired, you can add layers to your infrastructure profile using add-on profiles. For more information, check out the [Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/) guide.
 
 ## Resources 
+
+- [Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/)
+
+- [Create a Full Profile](../create-cluster-profiles/create-full-profile.md)
 
 - [Profile Layers](../cluster-profiles.md#profile-layers)
 

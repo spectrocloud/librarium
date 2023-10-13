@@ -12,7 +12,7 @@ Below are cluster profile types you can create:
 
   - *Infrastructure* profiles provide the essential components for workload cluster deployments within a [tenant](../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these layers form the infrastructure for your cluster. For more information, review the [Create an Infrastructure Profile](../cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide.
 
-  - *Add-on* profiles are exclusively composed of add-on layers. They do not contain infrastructure components and are instead designed for reusability across multiple clusters and multiple projects within a tenant. They provide the flexibility to configure clusters based on specific requirements. Refer to the [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md) guide for more information.
+  - *Add-on* profiles are exclusively composed of add-on layers. They do not contain infrastructure components and are instead designed for reusability across multiple clusters and multiple projects within a tenant. Since they provide the flexibility to configure clusters based on specific requirements, *add-on* profiles can be added to *infrastructure* profiles to create what we call a *full profile*. For an overview of how to build add-on profiles using various types of layers, review the [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md) guide.
 
   - *Full profiles* combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more to your cluster. Refer to the [Create a Full Profile](../cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for more details.
 
@@ -23,7 +23,7 @@ The diagram below illustrates the components of these profile types and how you 
 
 ## Profile Layers
 
-Each profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom manifests, as described in the table.
+Each cluster profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom manifests, as described in the table.
 
 | **Layer** | **Description** |
 |-----------|---------------------------|
@@ -38,7 +38,7 @@ Use these guidelines to configure layers and customize certain aspects of a pack
 
 - **Configuration parameters**: Packs provided out-of-the-box have configuration parameters that are set to values based on common best practices. You can override these parameters as needed in the configuration file. 
 
-- **Presets**: Some layers offer *Presets* that allow you to enable or configure a feature within that layer. When presets are available, they display in a slide panel in the YAML editor.
+- **Presets**: Some layers offer preset options that allow you to enable or configure a feature within that layer. When presets are available, they display in a slide panel in the YAML editor.
 
 
 ## Resources

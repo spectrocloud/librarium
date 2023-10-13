@@ -15,7 +15,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
 
-## Add a Manifest to a Cluster Profile 
+## Add a Manifest to an Add-on Profile 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -39,18 +39,17 @@ You can extend the list of integrations by adding custom manifests to your clust
 
 <!-- The pack configuration file is displayed on the next page. -->
 
-6. Click on **New manifest** and provide a name for your custom manifest. Click on the blue check. to open the editor. 
+6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the editor. 
 
-7. Create your manifest, and include the `pack:namespace` parameter to identify the namespace on the target cluster to deploy the pack.
+7. Create your manifest, and include the `namespace` parameter to identify the namespace on the target cluster to deploy the pack.
 
   ```yaml
-  pack:
-   namespace: "your_namespace_here"
+  namespace: "your_namespace_here"
   ```
 
   :::caution
 
-  Palette requires a namespace name using the `pack:namespace` parameter in the configuration file to identify the namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
+  Palette requires a namespace name using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
 
   <!-- If the `values.yaml` specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not been created, Palette creates a new one using the value specified in the YAML file. If the `values.yaml` does not specify a namespace value, Palette deploys the application to the default namespace.-->
 
@@ -63,5 +62,16 @@ You can extend the list of integrations by adding custom manifests to your clust
 You now have an add-on cluster profile that contains one or more manifests. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
 
 
+## Validate
 
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2.  Navigate to left **Main Menu** and select **Profiles**.
+
+3. Select your cluster profile to review its layers or make changes.
+
+
+## Next Steps
+
+Now you can use the add-on profile with other profiles and across multiple environments, projects, and tenants.  
 

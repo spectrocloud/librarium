@@ -10,15 +10,17 @@ tags: ["profiles", "cluster profiles"]
 
 Create cluster profiles by configuring layers that contain configuration information. You can create as many profiles as needed for your workload cluster deployments, and you can create multiple versions of a cluster profile using the same profile name but with a different pack configuration. For guidance on creating profile versions, review [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
-Palette provides three types of cluster profiles, which are described in detail in [Cluster Profiles](../cluster-profiles.md): 
+Palette provides three types of cluster profiles: 
 
 - *Infrastructure* - Operating System (OS), Kubernetes, Network, and Storage.
 
 - *Add-on* - service mesh, monitoring, and more.
 
-- *Full* - contains both Infrastructure and Add-on layers.
+- *Full* - contains both infrastructure and add-on layers.
 
-The next sections guide you in creating each type of profile.
+For a detailed description of each profile type and the layers they contain, review [Cluster Profiles](../cluster-profiles.md). 
+
+The next sections provide guidance in creating each type of profile.
 
 
 ## Resources
