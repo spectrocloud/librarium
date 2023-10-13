@@ -264,12 +264,20 @@ Use the following steps to install Palette VerteX.
   <br />
 
   ```bash hideClipboard
-  ====================================
-  ==== Enterprise Cluster Details ====
-  ====================================
-  Console URL: https://10.10.189.100/system
-  Username: **********
-  Password: **********
+  ===========================================
+  ==== Enterprise Cluster System Console ====
+  ===========================================
+  Console URL: https://10.10.100.0/system
+  Username:    ************
+  Password:    ************
+
+  The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
+
+  It will take another ~30-45 minutes for the installation to complete.
+
+  You can monitor its progress via kubectl/k9s or by viewing the System Console.
+
+  export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
   ```
 
 
