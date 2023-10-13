@@ -27,7 +27,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
   | **Field** | **Description** |
   |-----------|-----------------|
-  |**Name**| The name of the profile. |
+  |**Name**| A custom name for the cluster profile. |
   |**Version**| Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
   |**Description**| Use the description to provide context about the profile. |
   |**Type**| **Add-on** |

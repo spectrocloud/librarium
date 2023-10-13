@@ -32,7 +32,7 @@ Create a full profile by adding infrastructure layers (OS, Kubernetes, Network, 
   |**Type**| **Full** |
   |**Tags**| Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`.  |
 
-  To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
+  To learn how to create multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
 5. Select the infrastructure provider or managed Kubernetes for your environment and click **Next**.
 

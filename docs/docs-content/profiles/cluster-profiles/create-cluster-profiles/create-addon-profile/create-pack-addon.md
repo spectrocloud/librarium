@@ -27,7 +27,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
   | **Field** | **Description** |
   |-----------|-----------------|
-  |**Name**| The name of the profile. |
+  |**Name**| A custom name for the cluster profile. |
   |**Version**| Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
   |**Description**| Use the description to provide context about the profile. |
   |**Type**| **Add-on** |

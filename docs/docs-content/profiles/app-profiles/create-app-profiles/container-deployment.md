@@ -21,86 +21,80 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 2. Select **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right-hand side of the main screen. 
 
-3. Provide the wizard with the following information and click on **Next** after you have filled out the following basic information.
+3. Provide the following basic information for your app profile and click **Next**.
 
-  |         Parameter           | Description  |
-  |-------------------------------|-----------------|
-  |**Application Profile Name** | A custom name for the App Profile|
-  |**Description (optional)**   | Description of the App Profile, if any | 
-  |**Tag (optional)**               | Tags on a cluster group are propagated to the infrastructure environment environments.|
+  | **Parameter** | **Description** |
+  |-----------------------------|--------------|
+  |**App Profile Name** | A custom name for the app profile|
+  |**Description**   | Use the description to provide context about the profile. | 
+  |**Tag**               | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
 
-4. Next, select **Container Deployment** from the available services list.
+4. Select **Container Deployment** to start configuring your app profile.
 
-5. Provide the following information to the wizard.
+5. Provide the following configuration information for the container.
 
   **General Settings**
 
-  | Parameter        | Description                                                                                            |
+  | **Parameter**        | **Description**                                                                                            |
   | ---------------- | ------------------------------------------------------------------------------------------------------ |
-  | **Container Name**  | A unique name for the container deployment.                                                            |
-  | **Registry**       | Select the registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image. |
-  | **Image**           | Image of the container to be deployed.                                                                 |
-  | **Replicas** | The number of application instances to be deployed. This option follows the same behavior as a [*ReplicaSet*](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file. A max of 10 replicas is supported.
-
-  <br />
+  | **Container Name**  | A custom name for the container.                                                            |
+  | **Registry**       | The registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image. |
+  | **Image**           | The container image container to deploy.                                                                 |
+  | **Replicas** | The number of application instances to deploy. This option follows the same behavior as a [*ReplicaSet*](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file. Palette supports a maximum of 10 replicas. |
 
   :::info
-
-   
     
   When adding a container image from a public [DockerHub registry](https://hub.docker.com/), you can skip the registry hostname. For instance, to download the Nginx image, specify `nginx` and it will be downloaded correctly during the provisioning process.
 
   :::
 
-  <br />
-
   **Network Access**
   
   | Parameter      | Description                                                                                                   |
   | -------------- | ------------------------------------------------------------------------------------------------------------- |
-  | **Private**        | To establish connectivity to a container service through a private network.                                    |
-  | **Public**         | To establish connectivity to a container service through the public network.                                   |
-  | **Port number**   | Exposes the container for external communication.                                                            |
-
-  <br />
+  | **Private**        | Establishes connectivity to a container service through a private network.                                    |
+  | **Public**         | Establishes connectivity to a container service through the public network.                                   |
+  | **Ports**   | Exposes the container for external communication.                                                            |
 
   **Environment Variables**
 
   | Parameter          | Description                                                                                       |
   | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-  | **Environment Variables**  | Environment variables can be specified as **Key-Value** pairs during the container deployment.         |
-
-  <br />
+  | **Environment Variables**  | A **Key-Value** pair.         |
 
   **Volume**
 
-  | Parameter | Description                                                 |
-  | ------------- | --------------------------------------------------------------- |
-  | **Volume**        | To persist the data generated by and used by the container.     |
-  | **Name**          | Volume name.                                                    |
-  | **Size**          | The size of the volume in GiB.                                   |
-  | **Mount Path**    | The path to the volume.                                         |
+    | Parameter | Description                                               |
+    | ----------| --------------------------------------------------------- |
+    | **Volume**        | To persist data the container generates and uses. |
+    | **Name**          | A custom name for the volume.                     |
+    | **Size**          | Volume size in GiB.                               |
+    | **Mount Path**    | A path to access the volume.                    |
 
 
-  <br />
+6. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides. 
 
-  * **Runtime Settings**: The command and arguments you define here will override the default command and arguments provided by the container image. 
-
- 
-6. Click the **Review** button when you have filled out the information and are ready to conclude the wizard. 
-
-Once the container is added as a layer to the App Profile, continue with the remaining steps of the [App Profile creation](/devx/app-profile/create-app-profile) wizard. You can add more services as layers if needed.
+7. When you have provided the required configuration information for the container, click **Review**. Your app profile is now created and can be deployed.
 
 ## Validate
 
-1. Login to [Palette](/devx#quickstartwithpaletteappmode).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
+2. From the **User Menu**, switch to **App Mode**.
 
-2. Select the **App Profiles** option from the left **Main Menu**.   
+3. Navigate to the left **Main Menu** and click on **App Profiles**.
 
+4. Select the app profile you created to review its details.
 
-3. In the App Profiles page, you will find your App Profile listed. Click the name of the App Profile to view the profile details. The app profile tier details will show the container added to the profile.
+5. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
 
+ ![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.png)
+ 
+ :::info
+ 
+ Use the tool-tip that displays when you select a layer to gather information required for creating Terraform templates for app profiles. Check out our Terraform registry for [Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
+ 
+ :::
 
-
+<!-- /profiles_app-profiles_create-app-profiles_container-infobox.png -->
 
