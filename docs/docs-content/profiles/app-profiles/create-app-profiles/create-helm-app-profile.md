@@ -107,11 +107,11 @@ Use the following steps to validate that your app profile is available and ready
 
 ## Next Steps
 
-Start exploring the various [services](../../../devx/app-profile/services/services.md) Palette exposes to application authors. Use these services to deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
+Start exploring the various [services](../../../devx/services/services.md) Palette exposes to application authors. Use these services to deploy applications without the overhead of managing and configuring the infrastructure required for common third-party services such as databases, message queues, and more.
 
 ## Resources
 
-- [Service Listing](/devx/app-profile/services/service-listings/)
+- [Service Listing](../../../devx/services/service-listings/service-listings.mdx)
 
 - [Create and Manage Apps](../../../devx/apps/create-app.md)
 

@@ -16,7 +16,7 @@ You can modify cluster profiles by updating the following:
 
 You can also create multiple versions of a cluster profile with different pack configurations. 
 
-In the event that more than one application in the profile needs the same pack, Palette allows you to deploy the same pack to multiple layers. Check out [Add a Pack Multiple Times in a Profile](../create-cluster-profiles/add-pack-multiple-times-in-profile.md) for more information.
+In the event that more than one application in the profile needs the same pack, Palette allows you to deploy the same pack to multiple layers. Check out [Duplicate a Pack in a Profile](../create-cluster-profiles/duplicate-pack-in-profile.md) for more information.
 
 The next sections guide you in updating and versioning a profile.
 
@@ -26,4 +26,4 @@ The next sections guide you in updating and versioning a profile.
 
 - [Version a Cluster Profile](version-cluster-profile.md)
 
-- [Add a Pack Multiple Times in a Profile](../create-cluster-profiles/add-pack-multiple-times-in-profile.md)
+- [Duplicate a Pack in a Profile](../create-cluster-profiles/duplicate-pack-in-profile.md)

@@ -31,4 +31,4 @@ The next sections provide guidance in creating each type of profile.
 
 - [Create a Full Profile](create-full-profile.md)
 
-- [Add a Pack Multiple Times in a Profile](add-pack-multiple-times-in-profile.md)
+- [Duplicate a Pack in a Profile](duplicate-pack-in-profile.md)
