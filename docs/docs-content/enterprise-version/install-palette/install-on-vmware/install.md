@@ -11,9 +11,16 @@ tags: ["palette", "self-hosted", "vmware"]
 
 
 
-Palette can be installed on VMware vSphere with internet connectivity or an airgap environment. When you install Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to [Access Palette](../../enterprise-version.md#access-palette) for instructions on requesting repository access.
+Palette can be installed on VMware vSphere with internet connectivity or in an airgap environment. When you install Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to [Access Palette](../../enterprise-version.md#access-palette) for instructions on requesting repository access.
 
 ## Prerequisites
+
+
+:::caution
+
+If you are installing an airgap Palette, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
+
+:::
 
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment. 

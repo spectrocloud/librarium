@@ -190,7 +190,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
  <details>
 <summary>Example - values.yaml</summary>
 
-```yaml {53,77-85,97-102} showLineNumbers
+```yaml {53,77-85,97-102}
 #########################
 # Spectro Cloud Palette #
 #########################

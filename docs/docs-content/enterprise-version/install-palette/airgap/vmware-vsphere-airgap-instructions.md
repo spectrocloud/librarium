@@ -49,6 +49,14 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   - [Caddy](https://caddyserver.com/)
 
+  <br />
+
+  :::caution
+
+  Take the neccessary steps to secure your file server and ensure it can automatically recover from a failure. The file server is a critical component of the airgap installation and must be available post-install for Palette to function properly.
+
+  :::
+
 
 - jq - Command-line JSON processor installed and available. Refer to the [jq](https://jqlang.github.io/jq/download/) download page for guidance. 
 
