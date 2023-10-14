@@ -12,7 +12,7 @@ Create an infrastructure profile by adding infrastructure layers composed of an 
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md) reference for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) reference for more information about roles and permissions.
 
 ## Build the Infrastructure Profile
 

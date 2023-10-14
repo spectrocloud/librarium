@@ -13,7 +13,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) documentation for more information.
 
 ## Add a Pack to an Add-on Profile 
 

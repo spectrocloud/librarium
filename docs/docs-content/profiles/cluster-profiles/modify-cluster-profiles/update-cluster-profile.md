@@ -10,14 +10,14 @@ tags: ["profiles", "cluster profiles"]
 
 You can update a cluster profile to change the configuration of one or more layers and add or remove non-infrastructure layers. You can also update basic profile information such as the name, description, and tags.
 
-Cluster profile changes will generate an update notification on all the cluster that are created from the profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply updates to clusters individually at any time.
+Cluster profile changes will generate an update notification on all the clusters that are created from the profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply cluster updates individually at any time.
 
 
 ## Prerequisites
 
 - A cluster profile created in Palette.
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md) permissions documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) reference for more information about roles and permissions.
 
 ## Modify Basic Profile Information
 
@@ -25,7 +25,7 @@ Cluster profile changes will generate an update notification on all the cluster 
 
 2. From the left **Main Menu**, select **Profiles**.
 
-3. Click the profile you want to update. Palette displays the profile stack.
+3. Select the profile you want to update. Palette displays the profile details and stack.
 
 4. Click on **Settings** and choose **Edit Info** from the **drop-down Menu**. You can modify the profile name, version, description, and tags.
     
@@ -35,7 +35,7 @@ Cluster profile changes will generate an update notification on all the cluster 
 
   :::
 
-5. Save your changes and apply the updates to the cluster. Review [Apply Updates to Clusters](#apply-updates-to-clusters) for guidance.
+5. Save your changes.
 
 
 ### Validate
@@ -44,11 +44,11 @@ Cluster profile changes will generate an update notification on all the cluster 
 
 2. From the left **Main Menu**, select **Profiles**.
 
-3. Click the profile you updated. Palette displays the profile details and profile stack.
+3. Select the profile you updated. Palette displays the profile details and stack.
 
 4. Check that profile details display your changes.
 
-
+To learn how to apply the changes to your clusters, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
 
 ## Update a Profile Layer
 
@@ -56,7 +56,7 @@ Cluster profile changes will generate an update notification on all the cluster 
 
 2. From the left **Main Menu**, select **Profiles**.
 
-3. Select the profile you want to update. Palette displays the profile details and profile stack.
+3. Select the profile you want to update. Palette displays the profile details and stack.
 
 4. You can do the following:
     
@@ -64,17 +64,17 @@ Cluster profile changes will generate an update notification on all the cluster 
     
     - Select **Import from cluster** to import a pack from another cluster. 
 
-    - Select the pack layer you want to update, and edit pack settings in the YAML file.
+    - Select the pack layer you want to update, and edit pack settings in the YAML file that displays in the YAML editor.
 
-    - Click on the **Update** button to view and apply available updates to packs. To learn how to update packs you may have customized, review [Update the Pack Version](#update-the-pack-version). 
+    - Click on the **Update** button to view and apply available updates to packs. To learn how to update your  customized packs, review [Update the Pack Version](#update-the-pack-version). 
 
     - Select **Add Manifest** to add, edit, or remove a manifest.
 
-    - Select **Add Helm chart** to add a Helm chart.
+    - Select **Add Helm chart** to add, edit, or remove a Helm chart.
 
-    - Select **Add Zarf** to add applications in air-gapped environment.
+    - Select **Add Zarf** to add applications in air-gapped environments.
 
-    - Remove non-infrastructure pack layers from the profile. Click the layer to display its details and click the **trash can** icon next to **Edit Pack**. 
+    - Remove non-infrastructure pack layers from the profile. Click the layer to display its details and click the **trash can** icon in the **Edit Pack** panel. 
 
   :::info
 
@@ -82,9 +82,9 @@ Cluster profile changes will generate an update notification on all the cluster 
 
   :::
   
-    - Delete the profile by selecting **Settings** and choosing **Delete**.
+    - Select **Settings** and choose **Delete** to delete the entire profile. You can also delete the profile when you choose **Delete** from the **three-dots Menu** on the Profiles page.
 
-5. Confirm your updates and apply the updates to the cluster. Review [Apply Updates to Clusters](#apply-updates-to-clusters) for guidance.
+5. Confirm your updates.
 
 
 ### Validate
@@ -93,13 +93,13 @@ Cluster profile changes will generate an update notification on all the cluster 
 
 2. From the left **Main Menu**, select **Profiles**.
 
-3. If you made changes, click the profile you updated. Palette displays the profile details and profile stack.
+3. If you made changes, click the profile you updated. Palette displays the profile details and stack.
 
 4. Check that layers are added to or removed from the profile stack.  
 
 5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
 
-To learn how to apply the changes, review [Apply Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
 
 
 ## Update the Pack Version
@@ -184,15 +184,15 @@ Ensure you follow these practices when updating to a new pack version.
 6. Repeat the process until Palette indicates the configuration works.
 
 
-## Apply Updates to Clusters
+## Apply Profile Updates to Clusters
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**. Clusters that are eligible for an update will have an **Updates Available** badge.
 
-3. Select the cluster with the update notification to start the **Apply** updates wizard. Click on **Apply** button.
+3. Select the cluster with the update notification to start the **Apply Updates** wizard. Click on the **Apply** button.
 
-4. An **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply the updates to the cluster.
+4. The **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply updates to the cluster.
 
 
 ### Validate

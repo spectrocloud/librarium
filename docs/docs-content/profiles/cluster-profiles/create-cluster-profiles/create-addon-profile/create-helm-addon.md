@@ -13,7 +13,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) documentation for more information.
 
 ## Add a Helm Chart to an Add-on Profile 
 

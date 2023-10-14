@@ -30,7 +30,7 @@ If a profile has more than one version, take care to delete the appropriate vers
 
   To delete a specific profile version, select the profile to display its details page. Use the **drop-down Menu** next to the profile name and select the version to delete, click on the **Settings** button, and select **Delete**.
 
-You have successfully deleted a cluster profile or profile version.
+You have successfully deleted the cluster profile or a profile version.
 
 
 ## Validate
@@ -39,4 +39,4 @@ You have successfully deleted a cluster profile or profile version.
 
 2. Select **Profiles** from the left **Main Menu**.   
 
-3. Verify the cluster profile is not in the list of available profiles or that its version is no longer listed in the **drop-down Menu** on the profile details page.
+3. If you deleted a profile, verify that it no longer displays in the list of available profiles. If you deleted a profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.

@@ -12,7 +12,7 @@ Create a full profile by first adding infrastructure layers composed of an Opera
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
+- Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) documentation for more information.
 
 ## Build a Full Profile
 
