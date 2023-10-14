@@ -441,7 +441,7 @@ reach-system:
  <details>
 <summary>Example - values.yaml</summary>
 
-```yaml {23,53,77-85,87-95,97-102,109} showLineNumbers
+```yaml {23,53,77-85,87-95,97-102,109}
 #########################
 # Spectro Cloud Palette #
 #########################
