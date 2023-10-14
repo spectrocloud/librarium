@@ -4,7 +4,7 @@ title: "Add a Pack"
 description: "Learn how to create an add-on profile in Palette that adds a pack layer."
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["profiles", "cluster profiles"]
+tags: ["profiles", "cluster profiles", "pack", "add-on"]
 ---
 
 
@@ -62,3 +62,13 @@ You now have an add-on cluster profile that contains one or more packs. You can 
 ## Next Steps
 
 Now you can use the add-on profile with other profiles and across multiple environments, projects, and tenants. 
+
+## Resources
+
+- [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md)
+
+- [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md)
+
+- [Profile Customization](../../../profile-customization.md)
+
+- [Duplicate a Pack in a Profile](../duplicate-pack-in-profile.md)

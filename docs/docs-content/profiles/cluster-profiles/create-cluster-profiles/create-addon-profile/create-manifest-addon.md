@@ -4,7 +4,7 @@ title: "Add a Manifest"
 description: "Learn how to create an add-on profile in Palette that adds a manifest layer."
 hide_table_of_contents: false
 sidebar_position: 5
-tags: ["profiles", "cluster profiles"]
+tags: ["profiles", "cluster profiles", "manifest", "add-on"]
 ---
 
 
@@ -49,7 +49,9 @@ You can extend the list of integrations by adding custom manifests to your clust
 
   :::caution
 
-  Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
+  Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For more information about customizing with namespaces, refer to [Profile Customization](../../../profile-customization.md).
+    
+  For examples of pack structure for a manifest-based pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack), and select the appropriate tab.
 
   ::: 
 
@@ -71,5 +73,13 @@ You now have an add-on cluster profile that contains one or more manifests. You 
 
 ## Next Steps
 
-Now you can use the add-on profile with other profiles and across multiple environments, projects, and tenants.  
+Now you can use the add-on profile you created with other profiles.
+
+## Resources
+
+- [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md)
+
+- [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md)
+
+- [Profile Customization](../../../profile-customization.md)
 

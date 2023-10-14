@@ -38,7 +38,7 @@ Create an infrastructure profile by adding infrastructure layers composed of an 
   
 6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next Layer** to configure each infrastructure layer. 
 
-  For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../cluster-profiles.md#profile-layers).
+  For more information about layer types, applying pack versions, configuration parameters, and presets, review [Profile Layers](../cluster-profiles.md#profile-layers).
 
   | **Layer** | **Description** |
   |----|----|

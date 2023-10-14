@@ -39,26 +39,24 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
 <!-- For a description of the layers, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 
-6. To add a chart from a public registry, select **Public Packs** from the **drop-down Menu** and choose a Helm chart from the list displayed on the next page. You can search charts by name. Pack details and the configuration file are displayed on the next page.  
+6. To add a chart from a public registry, choose a Helm chart from the list displayed on the next page. You can search charts by name. Pack details and the configuration file are displayed on the next page.  
 
-  To add a chart from a private registry, select **Private Packs** from the **drop-down Menu**. On the next page that displays, select a registry from the **drop-down Menu** and provide the chart name and version. 
+  To add a chart from a private registry, select a registry from the **drop-down Menu** and provide the chart name and version. 
 
-7. Configure parameters as needed. In the configuration file, include a Namespace name in the `pack:namespace` parameter to identify the Namespace on the target cluster to deploy the pack.
+7. Configure parameters as needed. In the configuration file, ensure you specify a namespace. Otherwise, the chart will deploy to the `Default` namespace. 
 
   ```yaml
   pack:
    namespace: "your_namespace_here"
-  ```
+  ``` 
 
   :::caution
 
-  Palette requires a Namespace name to identify the Namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
-
-  <!-- If the `values.yaml` specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not been created, Palette creates a new one using the value specified in the YAML file. If the `values.yaml` does not specify a namespace value, Palette deploys the application to the default namespace.-->
+  Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For more information about customizing with namespaces, refer to [Profile Customization](../../../profile-customization.md).
+    
+  For examples of pack structure for a Helm chart-based pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack), and select the appropriate tab.
 
   ::: 
-
-7. If you want to add manifests, click **New Manifest** and create the manifest. Ensure you include the `pack:namespace` parameter and specify a namespace name. Otherwise, click on **Confirm & Create** to review the profile.
 
 8. When you are done, click **Confirm & Create**, then click **Next** to review the profile.
 
@@ -66,7 +64,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
 9. Click **Finish Configuration** to create the cluster profile.
 
-You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
+You now have an add-on cluster profile that contains a Helm chart. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
 
 
 ## Validate
@@ -80,4 +78,12 @@ You now have an add-on cluster profile. You can reuse the profile and apply it t
 
 ## Next Steps
 
-Now you are ready to deploy a cluster using the add-on cluster profile you created.
+Now you can use the add-on profile you created with other profiles.  
+
+## Resources 
+
+- [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md)
+
+- [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md)
+
+- [Profile Customization](../../../profile-customization.md)
