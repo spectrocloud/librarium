@@ -536,7 +536,8 @@ config:
     baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
     insecureSkipVerify: true
     caCert: ""
-    mirrorRegistries: "docker.io::public.ecr.aws/v2/123456789,gcr.io::public.ecr.aws/v2/123456789,ghcr.io::public.ecr.aws/v2/123456789,k8s.gcr.io::public.ecr.aws/v2/123456789,registry.k8s.io::public.ecr.aws/v2/123456789,quay.io::public.ecr.aws/v2/123456789"
+    mirrorRegistries: "docker.io::public.ecr.aws/v2/123456789/spectro-images,gcr.io::public.ecr.aws/v2/123456789/spectro-images,ghcr.io::public.ecr.aws/v2/123456789/spectro-images,k8s.gcr.io::public.ecr.aws/v2/123456789/spectro-images,registry.k8s.io::public.ecr.aws/v2/123456789/spectro-images,quay.io::public.ecr.aws/v2/123456789/spectro-images"
+
 
   scar:
     endpoint: "http://10.15.20.15:2015" 

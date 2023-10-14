@@ -89,7 +89,23 @@ The video below provides a demonstration of the installation wizard and the prom
 
   <br />
 
+
+<Tabs groupId="mode">
+<TabItem label="Non-Airgap" value="non-airgap">
+
 <video title="palette-cli-install" src="/videos/palette-install.mp4"></video>
+
+</TabItem>
+<TabItem label="Airgap" value="airgap">
+
+
+<video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></video>
+
+</TabItem>
+
+</Tabs>
+
+
 
 
 Use the following steps to install Palette. 
