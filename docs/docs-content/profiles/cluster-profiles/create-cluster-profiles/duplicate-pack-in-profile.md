@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Add a Pack Multiple Times in a Profile"
-title: "Add a Pack Multiple Times in a Profile"
+sidebar_label: "Duplicate a Pack in a Profile"
+title: "Duplicate a Pack in a Profile"
 description: "Learn how to create an infrastructure profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 30

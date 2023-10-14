@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Add a New Pack"
-title: "Add a New Pack"
-description: "REVISE: Learn how to create an add-on profile in Palette."
+sidebar_label: "Add a Pack"
+title: "Add a Pack"
+description: "Learn how to create an add-on profile in Palette that adds a pack layer."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["profiles", "cluster profiles"]
@@ -15,7 +15,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
 
-## Add a Pack to an Add-on Profile
+## Add a Pack to an Add-on Profile 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -35,7 +35,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
   To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your profile. You can search packs by their name.
+5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your profile. You can search packs by name.
 
 <!-- Select the type of layer to add to the cluster profile. For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 

@@ -1,10 +1,10 @@
 ---
 sidebar_label: "Add a Helm Chart"
 title: "Add a Helm Chart"
-description: "REVISE: Learn how to create an add-on profile in Palette."
+description: "Learn how to create an add-on profile in Palette that adds a Helm chart layer."
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["profiles", "cluster profiles"]
+tags: ["profiles", "cluster profiles", "helm", "add-on"]
 ---
 
 
@@ -13,9 +13,9 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
 
-## Add a Helm Chart to a Cluster Profile 
+## Add a Helm Chart to an Add-on Profile 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -39,11 +39,11 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
 <!-- For a description of the layers, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 
-6. For public packs, select a registry from the **drop-down Menu** and choose a Helm chart from the list. You can search charts by name. Pack details and the configuration file are displayed on the next page.
+6. To add a chart from a public registry, select **Public Packs** from the **drop-down Menu** and choose a Helm chart from the list displayed on the next page. You can search charts by name. Pack details and the configuration file are displayed on the next page.  
 
-  For private packs, use the **drop-down Menu** to select the registry that contains your custom Helm chart. Provide the chart name and version and configure chart values as needed. Optionally, you can specify the layer install order. When multiple manifests are added to the layer, the install order determines the order in which Helm chart values and manifests in the profile are consumed. You can change the order as needed.
+  To add a chart from a private registry, select **Private Packs** from the **drop-down Menu**. On the next page that displays, select a registry from the **drop-down Menu** and provide the chart name and version. 
 
-7. Configure parameters as needed, and include a namespace name in the `pack:namespace` parameter to identify the namespace on the target cluster to deploy the pack.
+7. Configure parameters as needed. In the configuration file, include a Namespace name in the `pack:namespace` parameter to identify the Namespace on the target cluster to deploy the pack.
 
   ```yaml
   pack:
@@ -52,7 +52,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
   :::caution
 
-  Palette requires a namespace name using the `pack:namespace` parameter in the configuration file to identify the namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
+  Palette requires a Namespace name to identify the Namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
 
   <!-- If the `values.yaml` specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not been created, Palette creates a new one using the value specified in the YAML file. If the `values.yaml` does not specify a namespace value, Palette deploys the application to the default namespace.-->
 

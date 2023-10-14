@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Add a Manifest"
 title: "Add a Manifest"
-description: "REVISE: Learn how to create an add-on profile in Palette."
+description: "Learn how to create an add-on profile in Palette that adds a manifest layer."
 hide_table_of_contents: false
 sidebar_position: 5
 tags: ["profiles", "cluster profiles"]
@@ -13,7 +13,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md) documentation for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) documentation for more information.
 
 ## Add a Manifest to an Add-on Profile 
 
@@ -41,7 +41,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
 6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the editor. 
 
-7. Create your manifest, and include the `namespace` parameter to identify the namespace on the target cluster to deploy the pack.
+7. Create your manifest. Ensure you specify a namespace. Otherwise, the manifest will deploy to the `Default` namespace. 
 
   ```yaml
   namespace: "your_namespace_here"
@@ -49,9 +49,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
   :::caution
 
-  Palette requires a namespace name using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
-
-  <!-- If the `values.yaml` specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not been created, Palette creates a new one using the value specified in the YAML file. If the `values.yaml` does not specify a namespace value, Palette deploys the application to the default namespace.-->
+  Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For examples of pack file structure when building a custom pack, review [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack).
 
   ::: 
 
