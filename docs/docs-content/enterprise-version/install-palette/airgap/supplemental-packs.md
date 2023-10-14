@@ -3,7 +3,7 @@ sidebar_label: "Additional Packs"
 title: "Additional Packs"
 description: "Learn how to install additional packs for an airgap Palette install."
 icon: ""
-sidebar_position: 30
+sidebar_position: 50
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "airgap"]
 ---
@@ -77,6 +77,6 @@ $ curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/packs
 
 :::info
 
-All binaries require the OCI environment variables to be set and for the registry credentials to be available. Refer to the [Airgap Instructions](./airgap-instructions.md) for a list of required environment variables and how to authenticate with your OCI registry.
+All binaries require the OCI environment variables to be set and for the registry credentials to be available.
 
 :::

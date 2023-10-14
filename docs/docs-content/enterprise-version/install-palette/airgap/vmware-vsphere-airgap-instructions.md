@@ -1,47 +1,18 @@
 ---
-sidebar_label: "Airgap Instructions"
-title: "Install in an Air Gap Environment"
+sidebar_label: "VMware vSphere Airgap Instructions"
+title: "VMware vSphere Airgap Instructions"
 description: "Learn how to install Palette into an air gap environment."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
-tags: ["self-hosted", "enterprise", "air-gap"]
+sidebar_position: 30
+tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 ---
 
-You can install a self-hosted version of Palette into a VMware vSpheres environment without direct internet access. This type of installation is referred to as an *air gap* installation. 
 
-In a standard Palette installation, the following artifacts are downloaded by default from the public Palette repository.
-
-* Palette platform manifests and required platform packages.
+![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-* Container images for core platform components and 3rd party dependencies.
-
-
-* Palette Packs.
-
-
-The installation process for an airgap install is different due to the lack of internet access. Before the primary Palette installation step, you must download the three required Palette artifacts mentioned above. The other significant change is that Palette's default public OCI registry is not used. Instead, a private OCI registry is utilized storing images and packs.
-
-The following diagram outlines the major install steps for an airgap installation.
-
-
-![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.png)
-
-1. Download the airgap setup binary from the support team. The airgap setup binary is a self-extracting archive that contains the Palette platform manifests, images, and required packs. The airgap setup binary is used to upload the Palette images, and packs to your OCI registry.The airgap setup binary is a one-time use binary. You will not use the airgap setup binary again after the initial installation.
-
-2. Extract the manifest content from the airgap setup binary. The manifest content is hosted on a file server.
-
-3. Install Palette using the Palette CLI. The Palette CLI is used to install Palette into your vSphere environment. 
-
-4. Configure your Palette environment.
-
-
-This guide will provide instructions for how to prepare your airgap environment for a Palette installation, by ensuring you complete all the required preperatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform. Click on the platform you are installing Palette into to navigate to the installation instructions.
-
-- [VMware Instruction](#vmware-instructions)
-
-- [Kubernetes Instruction](#kubernetes-instructions)
+This guide will provide instructions for how to prepare your airgap environment for a Palette installation, by ensuring you complete all the required preperatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform.
 
 
 ## Prepare Airgap Installation
@@ -54,10 +25,10 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 :::
 
-### Prerequisites
+## Prerequisites
 
 
-- An AMD64 Linux environment with connectivity to the target platform where you are installing Palette.
+- An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing Palette.
 
 
 - 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompessed is approximately 20 GB. 
@@ -71,7 +42,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
   :::
 
 
-- A file server to host the Palette manifest. The file server must be accessible from the target environment where Palette will be installed. Below is a list of common file servers:
+- An HTTP file server to host the Palette manifest. The file server must be accessible from the target environment where Palette will be installed. Below is a list of common HTTP file servers:
   - [Apache HTTP Server](https://httpd.apache.org/)
 
   - [Nginx](https://www.nginx.com/)
@@ -86,15 +57,17 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required for AWS ECR.
 
-  - [Oras](https://oras.land/docs/installation.html) - Required for the setup script.
+  - [Oras](https://oras.land/docs/installation.html) CLI v1.1.0 or greater - Required for the setup script.
 
-  - [zip](https://linux.die.net/man/3/zip) - Required for the setup script.
+  - [zip](https://linux.die.net/man/3/zip) - required for the setup script.
+
+  - [unzip](https://linux.die.net/man/1/unzip) - or equivalent for extracting the manifest content from the airgap setup binary.
 
 
 - Palette CLI installed and available. Refer to the Palette CLI [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 
-- If you are installing Palette in a VMware vSpehre envrionment. Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](../install-on-vmware/install-on-vmware.md#vsphere-machine-configuration) for information.
+- Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](../install-on-vmware/install-on-vmware.md#vsphere-machine-configuration) for information.
 
 
 <br />
@@ -107,7 +80,7 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 
 <br />
 
-### VMware Instructions
+## Instructions
 
 
 Complete the following steps before deploying the air gapped Palette installation.
@@ -127,7 +100,9 @@ Complete the following steps before deploying the air gapped Palette installatio
 4. Append an `r_` prefix to the OVA name after the import. For example, `r_u-2204-0-k-12510-0.ova`. This prefix is required for the install process to identify the OVA.
 
 
-5. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the Palette Packs. Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
+5. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the Palette Packs. 
+    - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. 
+    - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
 
 6. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public. The repositry will host Palette images.
 
@@ -222,10 +197,10 @@ Complete the following steps before deploying the air gapped Palette installatio
 
     ```shell
     export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-    export ECR_IMAGE_BASE=airgap-packs
+    export ECR_IMAGE_BASE=spectro-images
     export ECR_IMAGE_REGISTRY_REGION=us-east-1
     export ECR_PACK_REGISTRY=<ecr-endpoint>
-    export ECR_PACK_BASE=airgap-images
+    export ECR_PACK_BASE=spectro-packs
     export ECR_PACK_REGISTRY_REGION=us-east-1
     ```
 
@@ -233,7 +208,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 
     ```shell hideClipboard
     export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-    export ECR_IMAGE_BASE=docs-images
+    export ECR_IMAGE_BASE=spectro-images
     export ECR_IMAGE_REGISTRY_REGION=us-east-1
     export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
     export ECR_PACK_BASE=spectro-packs
@@ -248,7 +223,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 10. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
 
   ```shell
-  VERSION=4.0.19ßßß
+  VERSION=4.0.19
   ```
 
   ```shell
@@ -325,7 +300,6 @@ Complete the following steps before deploying the air gapped Palette installatio
   ```
 
   ```shell hideClipboard
-    ubuntu@ubuntu:/home/ubuntu/airgap# ./airgap-pack-aws-alb-2.5.1.bin
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
     Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
     Setting up Packs
@@ -338,219 +312,8 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 You now have completed the preperation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
 
-### Kubernetes Instructions
 
-Complete the following steps before deploying the air gapped Palette installation.
-
-
-1. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps, including the Palette installation. 
-
-
-2. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped Palette installation. 
-
-  <Tabs groupId="oci-registry"> 
-  <TabItem label="Harbor" value="harbor">
-
-  Use `oras` to login to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
-
-  ```shell
-  oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere' 
-  ```
-
-  If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the `oras` command. 
-
-  ```shell
-  oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
-  ```
-
-  </TabItem>
-  <TabItem label="AWS ECR" value="aws-ecr">
-
-  You can aquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on the **View push commands** button to access the command. Refer to the [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry) documentation for more information.
-
-  Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to authenticate with the ECR registry. Replace the values below with your environment configuration values.
-
-  ```shell
-  aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
-  ```
-
-  For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your environment configuration values.
-
-  ```shell
-  aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
-  ```
-
-  </TabItem>
-  </Tabs>
-
-  :::tip
-
-  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to reauthenticate to the OCI registry and restart the upload process.
-
-  :::
-
----
-
-3. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
-
-  <Tabs groupId="oci-registry">
-  <TabItem label="Harbor" value="harbor">
-
-  <br />
-
-    - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `OCI_PACK_BASE`: The namespace or repository name that hosts the Palette Packs.
-    - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
-
-    ```shell
-    export OCI_IMAGE_REGISTRY=<harbor-endpoint> 
-    export OCI_PACK_BASE=spectro-packs  
-    export OCI_PACK_REGISTRY=<harbor-endpoint>
-    export OCI_IMAGE_BASE=spectro-images 
-    ```
-
-    Example
-
-    ```shell hideClipboard
-    export OCI_IMAGE_REGISTRY=example.internal.com
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=10.10.100.48
-    export OCI_IMAGE_BASE=spectro-images
-    ```
-
-  </TabItem>
-  <TabItem label="AWS ECR" value="aws-ecr">
-
-  <br />
-
-    - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
-    - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
-    - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
-    - `ECR_PACK_BASE`: The namespace or repository name that hosts the Palette Packs.
-    - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
-
-    ```shell
-    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-    export ECR_IMAGE_BASE=airgap-packs
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=<ecr-endpoint>
-    export ECR_PACK_BASE=airgap-images
-    export ECR_PACK_REGISTRY_REGION=us-east-1
-    ```
-
-    Example
-
-    ```shell hideClipboard
-    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-    export ECR_IMAGE_BASE=docs-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
-    ```
-
-  </TabItem>
-  </Tabs>
-
----
-
-4. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
-
-  ```shell
-  VERSION=4.0.17
-  ```
-
-  ```shell
-  curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
-  --output airgap-v$VERSION.bin
-  ```
-
-5. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the airgap setup binary you downloaded.
-
-  ```shell
-  chmod +x airgap-v$VERSION.bin
-  ```
-
-6. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
-
-  ```shell
-  ./airgap-v$VERSION.bin
-  ```
-  Upon completion, a success message will be displayed. The output is condensed for brevity.
-  
-    ```shell hideClipboard {10}
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Setup - Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack cni-calico:3.25.1
-    ...
-    Setting up Images
-    - Pushing image docker.io/kindest/kindnetd:v20230227-15197099
-    - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
-    .....
-    Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip. Extract the archive to a file server to serve as a Spectro Cloud Repository
-    Setup Completed
-    ```
-
-  :::info
-
-  If you encounter an error during the airgap setup process, verify the required environment variables are set and populated correctly. If you are still having issues, reach out to our support team for assistance.
-  :::
-
-
-7. Move the manfiest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
-
-    ```shell
-    unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
-    ```
-
-    :::tip
-
-    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one following command in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
-
-    ```shell
-    caddy file-server --listen :2015 --browse
-    ```
-
-    ```shell
-    python3 -m http.server 2015
-    ```
-
-    We do not recommend serving the manifest content over HTTP, but it is an option if you want to get started quickly. For production workloads, enable HTTPS on your file server.
-    :::    
-
-
-8. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create to cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
-
-
-
-9. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the upload process.
-
-  In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary is downloaded and started.
-
-  ```shell
-  chmod +x && ./airgap-pack-aws-alb-2.5.1.bin
-  ```
-
-  ```shell hideClipboard
-    ubuntu@ubuntu:/home/ubuntu/airgap# ./airgap-pack-aws-alb-2.5.1.bin
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack aws-alb:2.5.1
-    Setting up Images
-    Setup Completed
-  ```
-
-10. Repeat step 14 for each pack you want to install.
-
-You now have completed the preperation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
-
-
-### Validate
+## Validate
 
 Use the following steps to validate the airgap setup process completed successfully.
 
@@ -584,4 +347,4 @@ Use the following steps to validate the airgap setup process completed successfu
 
 ## Next Steps
 
-You are now ready to deploy the airgap Palette installation. The important difference is that you will specify your OCI registry and file server during the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) or [Kubernetes Install Instructions](../install-on-kubernetes/install-on-kubernetes.md) guide for detailed guidance on installing Palette. 
+You are now ready to deploy the airgap Palette installation. The important difference is that you will specify your OCI registry and file server during the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide for detailed guidance on installing Palette. 

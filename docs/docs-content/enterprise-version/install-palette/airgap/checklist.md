@@ -3,7 +3,7 @@ sidebar_label: "Checklist"
 title: "Checklist"
 description: "An airgap installation of Palette requires a few steps to be completed before the installation can begin. This checklist will help you prepare for the installation."
 icon: ""
-sidebar_position: 20
+sidebar_position: 40
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "airgap"]
 ---
@@ -15,7 +15,9 @@ Use the following checklist to ensure you have completed all the required steps 
 
 <TabItem label="Kubernetes" value="k8s">
 
-- [ ] `oras` CLI, and `aws` v2 CLI is installed and available.
+- [ ] `oras` CLI v1.1.0 or greater is installed and available.
+
+- [ ] `aws` CLI v2 or greater CLI is installed and available.
 
 - [ ] `zip` is installed and available.
 
@@ -33,9 +35,9 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
 
-- [ ] Extracted the manifest content from the airgap setup binary to a file server.
+- [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
-- [ ] Ensured the manifest content is hosted on a file server that is accessible from the environment you are installing Palette.
+- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are installing Palette.
 
 </TabItem>
 
@@ -43,7 +45,9 @@ Use the following checklist to ensure you have completed all the required steps 
 
 <TabItem label="VMware vSphere" value="vsphere">
 
-- [ ] `oras` CLI, and `aws` v2 CLI is installed and available.
+- [ ] `oras` CLI v1.1.0 or greater is installed and available.
+
+- [ ] `aws` CLI v2 or greater CLI is installed and available.
 
 - [ ] `zip` is installed and available.
 
@@ -67,9 +71,9 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
 
-- [ ] Extracted the manifest content from the airgap setup binary to a file server.
+- [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
-- [ ] Ensured the manifest content is hosted on a file server that is accessible from the vSphere environment you are installing Palette.
+- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the vSphere environment you are installing Palette.
 
 </TabItem>
 
