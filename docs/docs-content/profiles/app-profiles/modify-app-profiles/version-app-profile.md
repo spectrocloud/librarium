@@ -8,9 +8,7 @@ tags: ["profiles", "app profiles"]
 ---
 
 
-Palette enables you to create multiple versions of an App Profile within the scope of a single profile name.
-
-You can create multiple versions of an app profile using the same profile name but with a different version number and pack configuration. App profile versions use the format `major.minor.patch` and have a default value of `1.0.0`.
+Palette enables you to create multiple versions of an app profile using the same profile name but with a different version number and services configuration. App profile versions use the format `major.minor.patch` and have a default value of `1.0.0`.
 
 App profile versions are grouped under the same name, and the version number makes them unique. The **drop-down Menu** next to the app profile name on the profile details page contains the different versions.
 
@@ -21,17 +19,15 @@ New versions of an app profile may add or remove layers, contain new pack versio
 
 - An existing app profile.
 
-## Enablement
+## Create a New App Profile Version
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-2. Select **App Profiles** from the left **Main Menu**.
+3. Click on **App Profiles** in the left **Main Menu**, and select the app profile that you want to version. Palette displays the profile details.
 
-3. Select the app profile that you want to version. Palette displays the profile details.
-
-4. From the **drop-down Menu** next to the app profile name, select the **Create New Version**.
+4. From the **drop-down Menu** next to the app profile name, select **Create New Version**.
 
 5. Provide the version number using `major.minor.patch` format.
 
@@ -49,8 +45,6 @@ You can validate that the app profile is versioned and available.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Select the **App Profiles** option from the left **Main Menu**. 
+2. Click on **App Profiles** in the left **Main Menu**, and select the app profile that you versioned.
 
-3. Select the app profile that you versioned.
-
-4. Use the **drop-down Menu** next to the app profile name to select the new profile version. Use the versioned profile to deploy an app within the target scope.
+3. Use the **drop-down Menu** next to the app profile name to select the new profile version. Use the versioned profile to deploy an app within the target scope.

@@ -8,15 +8,18 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-You can create multiple versions of a cluster profile using the same profile name but with a different pack configuration. Cluster profile versions use the format `major.minor.patch`. For example version `1.1.2`. 
+Palette enables you to create multiple versions of a cluster profile using the same profile name but with a different pack configuration. Cluster profile versions use the format `major.minor.patch` and have a default value of `1.0.0`. 
          
-Cluster profiles have a default value of `1.0.0`. When you create a new profile version, you can add or remove packs, and you can add different pack versions. 
+Cluster profile versions are grouped under the same name, and the version number makes them unique. The **drop-down Menu** next to the cluster profile name on the profile details page contains the different versions.
+
+New versions of a cluster profile may add or remove layers, contain new pack versions, or update a pack configuration.
+
 
 ## Prerequisites 
 
 - A cluster profile created in Palette. Check out [Cluster Profiles](../cluster-profiles.md) to learn about the different types of cluster profiles you can create based on your requirements.
 
-## Enablement
+## Create a New Cluster Profile Version
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 

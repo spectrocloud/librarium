@@ -23,17 +23,6 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-- One or more custom Helm charts to add to your app profile. 
-
-<!-- For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts). -->
-
-<!-- - One or more Helm charts downloaded to a local **charts** directory with their location referenced in a `pack.json` file.
-
-- A `values.yaml` file that provides configurable manifest parameters if desired.
-
-- One or more custom manifests to add to your app profile. -->
-
-<!-- For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts) -->
 
 ## Add a Helm Chart to an App Profile
 

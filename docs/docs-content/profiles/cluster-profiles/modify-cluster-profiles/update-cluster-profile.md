@@ -164,7 +164,9 @@ Ensure you follow these practices when updating to a new pack version.
 
 9. Check for changes in the same line that have a different value. If it is not a customization you made, you should adopt the new value, as it is known to be compatible with the new version.
 
-10. Confirm your updates and apply the updates to the cluster. Review [Apply Updates to Clusters](#apply-updates-to-clusters) for guidance.
+10. Confirm your updates. 
+
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
 
 
 ### Validate 
@@ -188,11 +190,11 @@ Ensure you follow these practices when updating to a new pack version.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**. Clusters that are eligible for an update will have an **Updates Available** badge.
+2. From the left **Main Menu**, select **Clusters**. Clusters that are eligible for an update will have an **Updates Available** badge.
 
 3. Select the cluster with the update notification to start the **Apply Updates** wizard. Click on the **Apply** button.
 
-4. The **Apply Updates** wizard opens with the update notification. The notification contains details about the updates that will be applied. Click the **Confirm** button to apply updates to the cluster.
+4. The **Apply Updates** wizard opens with the update notification, which contains details about the updates that will be applied. Click the **Confirm** button to apply updates to the cluster.
 
 
 ### Validate
