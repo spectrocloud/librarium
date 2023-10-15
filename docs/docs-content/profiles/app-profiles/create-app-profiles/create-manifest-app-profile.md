@@ -4,7 +4,7 @@ title: "Add a Manifest"
 description: "Learn how to create an app profile for your Palette Virtual Clusters using a custom manifest."
 hide_table_of_contents: false
 sidebar_position: 15
-tags: ["devx", "app mode", "pde", "app profiles"]
+tags: ["devx", "app mode", "pde", "app profiles", "manifest"]
 ---
 <!-- Add-on packs can be built using Kubernetes manifests. 
 These manifests contain deployment specifications for Kubernetes objects such as pods, services, deployments, namespaces, or secrets.-->
@@ -24,33 +24,16 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-- One or more custom manifests to add to your app profile. For an example of how to create a custom add-on pack using a manifest, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#manifests).
 
-<!-- - One or more custom manifests in a local **manifests** directory with their location referenced in a `pack.json` file.
-
-- A `values.yaml` file that provides configurable manifest parameters if desired. -->
-
-
-<!-- - One or more Helm charts downloaded to a local **charts** directory with their location referenced in a `pack.json` file.
-
-- A `values.yaml` file that provides configurable manifest parameters if desired.
-
-- One or more custom manifests to add to your app profile. -->
-
-
-<!-- pushed to the pack registry server.  -->
-
-## Enablement
+## Add a Manifest to an App Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Select **App Profiles** from the left **Main Menu**.
+3. Select **App Profiles** in the left **Main Menu**, and click on the **New App Profile** button. 
 
-4. Click the **New App Profile** button. 
-
-5. Provide the following basic information for your app profile and click **Next**.
+4. Provide the following basic information for your app profile and click **Next**.
 
   | **Parameter**           | **Description**  |
   |-------------------------|---------------------|
@@ -59,28 +42,28 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
   |**Description**  | Use the description to provide context about the profile. | 
   |**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
 
-  To learn how to create multiple profile versions, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
+  To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
 
-6. Select **Manifest** to start configuring your app profile.
+5. Select **Manifest** to start configuring your app profile.
 
   :::caution
 
   When adding a manifest-type layer to an app profile, make sure you specify a namespace. Otherwise, the manifest deployment will be deployed to the `Default` namespace.
 
   ```yaml
-  namespace: "yourNamespaceNameHere"
+  namespace: yourNamespaceNameHere
   ```
   :::
 
-7. Provide a custom name for your manifest.
+6. Provide a custom name for your manifest.
 
-8. Click on **Add Manifests** and specify the name of the manifest to add to the profile. Click on the circled check to add the manifest. You can add more manifests as needed. 
+7. Click on **Add Manifests** and provide a name. Click on the blue button to add your manifest. You can add more manifests as needed. For an example of how to create a custom add-on pack using a manifest, review [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#manifests) guide. 
 
   ![A view showing an arrow that points to the blue-circled checkmark the user clicks to add a manifest.](/profiles_app-profiles_create-app-profiles_add-manifest.png)
 
-9. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane. 
+8. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane. 
 
-10. When you have provided the required configuration information, click **Review**.
+9. When you have provided the required configuration information, click **Review**.
 
 Your app profile is now created using a manifest and is ready to deploy. 
 
@@ -92,7 +75,7 @@ Use the following steps to validate that your app profile is available and ready
 
 2. From the **User Menu**, switch to **App Mode**.
 
-2. Navigate to the left **Main Menu** and click on **App Profiles**.
+2. Select **App Profiles** in the left **Main Menu**.
 
 3. Select the app profile you created to review its details.
 

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Add Out-of-the-Box Services"
-title: "Add Out-of-the-Box Services"
+sidebar_label: "Add an Out-of-the-Box Service"
+title: "Add an Out-of-the-Box Service"
 description: "Learn how to create an app profile for your Palette Virtual Clusters using out-of-the-box services."
 hide_table_of_contents: false
 sidebar_position: 5
@@ -8,7 +8,7 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
 
-Use the following steps to create a standard app profile that contains out-of-the-box services such as messaging system, object storage, database, and security services. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
+Use the following steps to create an app profile that contains an out-of-the-box service such as messaging system, object storage, database, and security services. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
 
 
 :::info
@@ -22,17 +22,15 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 * A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-## Enablement
+## Add an Out-of-the-Box Service to an App Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Select **App Profiles** from the left **Main Menu**.
+3. Select **App Profiles** in the left **Main Menu**, and click on the **New App Profile** button. 
 
-4. Click the **New App Profile** button. 
-
-5. Provide the following basic information for your app profile and click **Next**.
+4. Provide the following basic information for your app profile and click **Next**.
 
   | **Parameter**           | **Description**  |
   |-------------------------|---------------------|
@@ -41,24 +39,15 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
   |**Description**  | Use the description to provide context about the profile. | 
   |**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
 
-  To learn how to create multiple profile versions, check out [Version a Cluster Profile](../modify-app-profiles/version-app-profile.md).
+  To learn how to create multiple profile versions that use the same name, check out [Version a Cluster Profile](../modify-app-profiles/version-app-profile.md).
 
-7. Select one of the out-of-the-box services to start configuring your app profile. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing to learn more about specific offerings.
+5. Select one of the out-of-the-box services to start configuring your app profile. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing to learn more about specific offerings.
 
-  <!-- :::caution
+6. Provide configuration information for the service.  
 
-  When adding a manifest-type layer to an app profile, make sure to specify a namespace. Otherwise, the manifest deployment will be deployed to the `Default` namespace.
+7. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane.
 
-  ```yaml
-  namespace: <yourNameHere>
-  ```
-  ::: -->
-
-8. Provide configuration information for the service.  
-
-9. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane.
-
-10. When you have provided the required configuration information for services, click **Review**. 
+8. When you have provided the required configuration information for services, click **Review**. 
 
 Your app profile is now created using an out-of-the-box service and is ready to deploy.  
 
@@ -69,9 +58,9 @@ Use the following steps to validate that your app profile is available and ready
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the **User Menu**, switch to **App Mode**.
+2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles**.
+3. Select **App Profiles** in the left **Main Menu**.
 
 4. Select the app profile you created to review its details.
 

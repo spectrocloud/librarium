@@ -19,15 +19,18 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Select **App Profiles** from the left **Main Menu** and click on the **New App Profile** button at the top right-hand side of the main screen. 
+2. Select **App Profiles** in the left **Main Menu** and click on the **New App Profile** button. 
 
 3. Provide the following basic information for your app profile and click **Next**.
 
   | **Parameter** | **Description** |
   |-----------------------------|--------------|
-  |**App Profile Name** | A custom name for the app profile|
+  |**App Profile Name** | A custom name for the app profile. |
+  | **Version**| You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`. |
   |**Description**   | Use the description to provide context about the profile. | 
   |**Tag**               | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
+
+  To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
 
 4. Select **Container Deployment** to start configuring your app profile.
 
@@ -58,9 +61,9 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   **Environment Variables**
 
-  | Parameter          | Description                                                                                       |
-  | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-  | **Environment Variables**  | A **Key-Value** pair.         |
+  | Parameter | Description |
+  | ----------------------- | --------------- |
+  | **Environment Variables**  | A key-value pair. |
 
   **Volume**
 
@@ -69,7 +72,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
     | **Volume**        | To persist data the container generates and uses. |
     | **Name**          | A custom name for the volume.                     |
     | **Size**          | Volume size in GiB.                               |
-    | **Mount Path**    | A path to access the volume.                    |
+    | **Mount Path**    | A path to access the volume.                      |
 
 
 6. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides. 
@@ -82,7 +85,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 2. From the **User Menu**, switch to **App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles**.
+3. Select **App Profiles** in the left **Main Menu**.
 
 4. Select the app profile you created to review its details.
 
@@ -96,5 +99,4 @@ Palette App Mode supports the use of containers, a standard unit of software tha
  
  :::
 
-<!-- /profiles_app-profiles_create-app-profiles_container-infobox.png -->
 

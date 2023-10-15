@@ -47,7 +47,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
   ```yaml
   pack:
-   namespace: "your_namespace_here"
+   namespace: your_namespace_here
   ``` 
 
   :::caution

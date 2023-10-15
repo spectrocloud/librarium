@@ -37,14 +37,12 @@ You can extend the list of integrations by adding custom manifests to your clust
 
 5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can add configurable layer values and specify the layer install order. When multiple manifests are added to the layer, the install order determines the order in which manifests in the profile are consumed. You can change the order as needed.
 
-<!-- The pack configuration file is displayed on the next page. -->
-
 6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the editor. 
 
 7. Create your manifest. Ensure you specify a namespace. Otherwise, the manifest will deploy to the `Default` namespace. 
 
   ```yaml
-  namespace: "your_namespace_here"
+  namespace: your_namespace_here
   ```
 
   :::caution

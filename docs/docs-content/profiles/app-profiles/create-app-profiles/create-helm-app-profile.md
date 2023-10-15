@@ -4,7 +4,7 @@ title: "Add a Helm Chart"
 description: "REVISE: Learn how to create an app profile for your Palette Virtual Clusters that uses a Helm chart."
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["devx", "app mode", "pde", "app profiles"]
+tags: ["devx", "app mode", "pde", "app profiles", "helm"]
 ---
 
 
@@ -23,7 +23,9 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
-- One or more custom Helm charts to add to your app profile. For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts).
+- One or more custom Helm charts to add to your app profile. 
+
+<!-- For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts). -->
 
 <!-- - One or more Helm charts downloaded to a local **charts** directory with their location referenced in a `pack.json` file.
 
@@ -33,17 +35,15 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 <!-- For an example of how to create a custom add-on pack using a Helm chart, refer to [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#helm-charts) -->
 
-## Enablement
+## Add a Helm Chart to an App Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Select **App Profiles** from the left **Main Menu**.
+3. Select **App Profiles** from the left **Main Menu**, and click on the **New App Profile** button. 
 
-4. Click the **New App Profile** button. 
-
-5. Provide the following basic information for your app profile and click **Next**.
+4. Provide the following basic information for your app profile and click **Next**.
 
   | **Parameter**           | **Description**  |
   |-------------------------|---------------------|
@@ -52,11 +52,11 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
   |**Description**  | Use the description to provide context about the profile. | 
   |**Tag** | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`.|
 
-  To learn how to create multiple profile versions, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
+  To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
 
-6. Select **Helm** to start configuring your app profile.
+5. Select **Helm** to start configuring your app profile.
 
-7. Use the **drop-down Menus** to select a Helm registry, chart, and version.
+6. Use the **drop-down Menus** to select a Helm registry, chart, and version.
 
 <!-- 8. Select a registry from the **drop-down Menu**. 
 
@@ -64,20 +64,20 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 9. Select the Helm version from the **drop-down Menu**. -->
 
-8. You can add manifests to the app profile. To do this, click on **Add Manifests** and provide the manifest name.
+7. You can add manifests to the app profile. To do this, click on **Add Manifests** and provide the manifest name.
 
   :::caution
 
   When adding a manifest-type layer to an app profile, make sure you specify a namespace. Otherwise, the manifest deployment will be deployed to the `Default` namespace.
 
   ```yaml
-  namespace: "yourNamespaceNameHere"
+  namespace: yourNamespaceNameHere
   ```
   :::
 
-9. You can add services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane. 
+8. You can add services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in the profile stack in the order displayed in this pane. 
 
-10. When you have provided the required configuration information, click **Review**.
+9. When you have provided the required configuration information, click **Review**.
 
 Your app profile is now created using a Helm chart and can be deployed. 
 
@@ -89,7 +89,7 @@ Use the following steps to validate that your app profile is available and ready
 
 2. From the **User Menu**, switch to **App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles**.
+3. Select **App Profiles** from the left **Main Menu**.
 
 4. Select the app profile you created to review its details.
 
