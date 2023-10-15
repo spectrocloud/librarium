@@ -9,12 +9,7 @@ tags: ["profiles", "app profiles"]
 
 
 
-Palette supports the cloning of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same [tenant](../../glossary-all.md#tenant). The ability to clone App Profiles can be useful for the following use cases.
-
-* Share system scope App Profiles to projects scope.
-
-* Share App Profiles amongst different projects.
-
+You can clone an app profile across multiple projects within the same [tenant](../../glossary-all.md#tenant).
 
 ## Prerequisites
 
@@ -39,7 +34,9 @@ Palette supports the cloning of App Profiles across multiple projects. For examp
 |**Source Profile Version**  | The version number of the source profile. | 
 |**Target Project** | The target project to which the profile will be cloned. Select the project name from the **drop-down Menu**.|
 
-In the target project specified during the clone process, you can now use the App Profile for app deployments.
+To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../app-profiles/modify-app-profiles/version-app-profile.md).
+
+In the target project specified during the clone process, you can now use the app profile for app deployments.
 
 
 ## Validate
@@ -48,6 +45,6 @@ In the target project specified during the clone process, you can now use the Ap
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles**. Palette displays a list of all the app profiles available to you, including cloned profiles.
+3. Select **App Profiles** from the left **Main Menu**. Palette displays a list of all the app profiles available to you, including cloned profiles.
    
 4. Deploy your application to a virtual cluster using the cloned app profile.

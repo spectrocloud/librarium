@@ -9,6 +9,7 @@ tags: ["profiles", "cluster profiles"]
 
 
 You can clone a cluster profile across multiple projects within the same [tenant](../../glossary-all.md#tenant).
+
 ## Prerequisites
 
 - A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create. 
@@ -30,6 +31,8 @@ You can clone a cluster profile across multiple projects within the same [tenant
 |**Source Profile Version**  | The version number of the source profile. | 
 |**Scope** | Choose the target scope the cluster profile will apply to: **project** or **tenant**. When you select **project**, a **Project** field displays. Selecting **tenant** will make the profile available to the organization. |
 |**Project** | This field displays when you select **project** scope. Select a target project from the **drop-down Menu**.|
+
+To learn how to create multiple profile versions that use the same name, check out [Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
 You can now use the cluster profile when deploying clusters in the target project or tenant.
 

@@ -19,7 +19,7 @@ Palette Dev Engine output variables are defined in the [app profile](/glossary-a
 
 The variables are generated when the server layer is deployed. Output variables can be consumed by the higher layers in the app profile. 
 
-Check out the [Services Connectivity](/devx/app-profile/services/connectivity) page to learn how to use output variables for establishing network connectivity between services.
+Check out the [Services Connectivity](../../devx/services/connectivity.md) page to learn how to use output variables for establishing network connectivity between services.
 
 
 
@@ -42,10 +42,10 @@ The following output variables are globally available for all services.
 | `spectro.system.cluster.uid` |  ID of the current cluster. |
 | `spectro.system.cluster.name` | Name of the current cluster. |
 | `spectro.system.kubernetes.version` | Current version of Kubernetes. |
-| `spectro.system.reverseproxy.server` | Hostname of Spectro Cloud reverse proxy server. This value is empty when not enabled. |
-| `spectro.system.reverseproxy.port` | Port of the Spectro Cloud reverse proxy server. This value is empty when not enabled. |
+| `spectro.system.reverseproxy.server` | Hostname of Spectro Proxy reverse proxy server. This value is empty when not enabled. |
+| `spectro.system.reverseproxy.port` | Port of the Spectro Proxy reverse proxy server. This value is empty when not enabled. |
 | `spectro.system.reverseproxy.vhostport` | Port of the virtual host that is hosting the reverse proxy. |
-| `spectro.system.reverseproxy.protocol` | Protocol used for the Spectro Cloud reverse proxy. |
+| `spectro.system.reverseproxy.protocol` | Protocol used for the Spectro Proxy reverse proxy. |
 | `spectro.system.cloud.type` | Type of cloud environment where the cluster is deployed such as EKS, AKS, and GKE. |
 | `spectro.system.cloud.region` |  Cloud provider region where the cluster is deployed.|
 | `spectro.system.apptier.name` | Name of the service layer from the context of the app profile. |
@@ -71,7 +71,7 @@ The container service type exposes the following output variables. Replace **[se
 
 ## Database Service Output Variables
 
-Each database service exposes a set of output variables. To learn about each database service, check out [Available Services](/devx/app-profile/services/service-listings).
+Each database service exposes a set of output variables. To learn about each database service, check out [Available Services](../../devx/services/service-listings/service-listings.mdx).
 
 ## Resources
 

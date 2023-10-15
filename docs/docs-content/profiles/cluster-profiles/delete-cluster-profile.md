@@ -12,7 +12,7 @@ Use the following steps to delete a cluster profile.
 
 :::caution
 
-If a profile has more than one version, take care to delete the appropriate version.
+If a cluster profile has more than one version, ensure you delete the appropriate version by reviewing its configuration before deleting the profile.
 
 :::
 
@@ -39,4 +39,4 @@ You have successfully deleted the cluster profile or a profile version.
 
 2. Select **Profiles** from the left **Main Menu**.   
 
-3. If you deleted a profile, verify that it no longer displays in the list of available profiles. If you deleted a profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.
+3. If you deleted a cluster profile together with any versions it may have had, verify that it no longer displays in the list of available profiles. If you deleted a specific cluster profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.
