@@ -18,14 +18,13 @@ Set BorderRadius 10
 
 Show
 Type "palette ec install"
-Sleep 2s
+Sleep 5s
 Enter
 Sleep 1s
 Enter
-Type "n"
+Type "y"
 Sleep 2s
-# Enter
-# Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
+Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
 Enter
 Type "${PROD_SCAR_URL}"
 Enter
@@ -45,11 +44,14 @@ Enter
 Sleep 3s
 Enter # Select VMware vSphere
 Sleep 2s
-Enter
+Enter  # Cluster Name
 Sleep 2s
-Enter
+Enter  # HTTPS Proxy
 Sleep 2s
-Enter
+Enter  # HTTP Proxy
+Sleep 2s
+Escape
+Type ":wq"
 Sleep 2s
 Enter
 Sleep 2s
@@ -61,12 +63,6 @@ Enter # Service IP Range
 Sleep 2s
 Type "y" # Use default pack registry
 Enter
-Sleep 2s
-Enter # Database size
-Sleep 2s
-Enter # CPU limit
-Sleep 2s
-Enter # Memory limit
 Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
@@ -126,10 +122,10 @@ Enter
 Type "spectrocloud.dev" # Name Server Domain
 Enter
 Sleep 2s
-Enter # VM number of CPUs
+Down 1 # Medium VM Size
+Enter
 Sleep 2s
-Enter # VM Memory Size
-Sleep 2s
-Enter # VM Disk Size
+Type "y" # Node Affinity
+Enter
 
-Sleep 5s
+Sleep 35s

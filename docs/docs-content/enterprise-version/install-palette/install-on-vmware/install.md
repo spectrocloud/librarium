@@ -203,20 +203,8 @@ You will be provided with an opportunity to update the mirror registries values.
 </Tabs>
 
 
-
-
-10. Next, specify the database size specifications. The default is 20 GB. Refer to the [size guidelines](../install-palette.md#size-guidelines) for additional information.
-
-  #### Database Configuration
-
-  |**Parameter**                            | **Description**|
-  |-----------------------------------------|----------------|
-  |**Database Size** | The size of the database. The default is 20 GB.|
-  | **CPU Limit** | The maximum number of CPUs that can be allocated to the database. The default is 2 CPU. |
-  | **Memory Limit** | The maximum amount of memory that can be allocated to the database. The default is 4 GiB. |
-
-
-11. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
+  
+10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
 
   <br />
 
@@ -250,7 +238,7 @@ You will be provided with an opportunity to update the mirror registries values.
   |**SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference. |
 
 
-12. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
+11. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
 
   <br />
 
@@ -268,7 +256,7 @@ You will be provided with an opportunity to update the mirror registries values.
 <br />
 
 
-13. The last set of prompts is for the vSphere machine configuration. Enter the information listed in the following table.
+12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for guidance.
 
   <br />
 
@@ -276,10 +264,18 @@ You will be provided with an opportunity to update the mirror registries values.
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  | **Number of CPUs** | The number of CPUs allocated to each VM node instance.|
-  | **Memory** | The amount of memory allocated to each VM node instance.|
-  | **Disk Size** | The size of the disk allocated to each VM node instance.|
+  | **Small** |  Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit. |
+  | **Medium** | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 cpu limit and 8 GB memory limit. |
+  | **Large** | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit. |
+  | **Custom** | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage |
 
+
+
+  ### Additional vSphere Machine Configuration
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Node Affinity** | Select the node affinity. Enter "yes" to schedule all Palette pods on control plane nodes. |
 
   <br />
 

@@ -86,4 +86,6 @@ The recommended maximum number of deployed nodes and clusters in the environment
 
 - [Install on Kubernetes](install-on-kubernetes/install.md)
 
+- [Airgap Installation](airgap/airgap.md)
+
 - [Architecture Diagram and Network Ports](../../architecture/networking-ports.md#self-hosted-network-communications-and-ports)
