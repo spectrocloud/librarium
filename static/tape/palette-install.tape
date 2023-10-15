@@ -46,7 +46,16 @@ Enter  # HTTPS Proxy
 Sleep 2s
 Enter # HTTP Proxy
 Sleep 2s
-Enter # No Proxy
+# No Proxy
+Type "dd"
+Type "dd"
+Type "dd"
+Type "i"
+Type "127.0.0.1"
+Escape
+Sleep 3s
+Type@500ms ":wq"
+Enter
 Sleep 2s
 Enter # Proxy CA Cert
 Sleep 2s
