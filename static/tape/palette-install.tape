@@ -6,7 +6,7 @@
 # Assuming you have a .env file in the current directory.
 # source .env && envsubst < palette-install.tape > palette-install-creds.tape
 Require palette
-Output static/assets/videos/palette-install.mp4
+Output palette-install.mp4
 
 Set FontSize 14
 Set Width 950
@@ -27,104 +27,82 @@ Sleep 2s
 # Enter
 # Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
 Enter
-Type "https://repo-fips-rc40.rc.spectrocloud.com"
+Type "${PROD_SCAR_URL}"
 Enter
-Type@200ms "spectro"
+Type@200ms "username"
+Hide
+Backspace 15
+Type "${PROD_SCAR_USERNAME}"
 Enter
-Type "${FIPS_DEV_PACKS_REPOSITORY_PASSWORD}" # FIPS Packs Repository Password
+Show
+Sleep 2s
+Type "${PROD_SCAR_PASSWORD}" # FIPS Packs Repository Password
 Enter
 Sleep 2s
 Type "y" # Allow Insecure Connection
+Sleep 2s
 Enter
 Sleep 3s
+Enter # Select VMware vSphere
+Sleep 2s
 Enter
-Sleep 1s
-Type "spectro-mgmt-cluster"
+Sleep 2s
 Enter
 Sleep 2s
-Enter  # HTTPS Proxy
+Enter
 Sleep 2s
-Enter # HTTP Proxy
-Sleep 2s
-Enter # No Proxy
+Enter
 Sleep 2s
 Enter # Proxy CA Cert
 Sleep 2s
-Type "172.16.0.0/20"
-Enter
-Sleep 1s
-Type "10.155.0.0/24"
-Enter
-Sleep 1s
-# Type "y" # The Packs & Image repository configurations.
-Down 1 # Registry Type OCI ECR
-Enter
-Sleep 1s
-Type "Palette Registry"
+Enter # POD CIDR
+Sleep 2s
+Enter # Service IP Range
+Sleep 2s
+Type "y" # Use default pack registry
 Enter
 Sleep 2s
-Type "${NON_FIPS_OCI_ECR_URL}"
-Enter
+Enter # Database size
 Sleep 2s
-Type "${NON_FIPS_OCI_ECR_BASE_PATH}"
-Enter
+Enter # CPU limit
 Sleep 2s
-Type "y"  # Allow Insecure Connection
-Enter
-Sleep 2s
-Type "${NON_FIPS_OCI_ECR_ACCESS_KEY}" # AWS Access Key
-Enter
-Sleep 2s
-Type "${NON_FIPS_OCI_ECR_SECRET_KEY}"
-Enter
-Sleep 2s
-Type "${NON_FIPS_OCI_ECR_REGION}"
-Enter
-Sleep 2s
-Type "y" # Is Registry private?
-Enter
-Sleep 2s
-Type@500ms "y" # Pull images from public registry?
-Enter
-Sleep 3s
-Enter # Database Size
+Enter # Memory limit
 Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
 Sleep 2s
-Type "${VCENTER_USER}" # vCenter User
+Type "${VCENTER_USER}"
 Enter
 Sleep 2s
-Type "${VCENTER_PASSWORD}" # vCenter Password
+Type "${VCENTER_PASSWORD}"
 Enter
 Sleep 2s
-Type@500ms "y" # Allow Insecure
+Type "y" # Allow insecure connection
 Enter
 Sleep 4s
-Enter
-Sleep 4s
-Type "sp-karl" # vSphere folder
-Sleep 2s
+Enter # Select Datacenter
+Sleep 3s
+Type "sp-karl" # Select Folder
 Enter
 Sleep 3s
 Down 1
+Enter # Select Cluster
+Sleep 3s
+Down 1 # VM Network
 Enter
+Sleep 4s
+Enter # Resource Pool
 Sleep 3s
-Down 1
-Enter
+Enter # Storage Policy
 Sleep 3s
-Enter
-Sleep 3s
-Enter  # VM Storage Policy
-Sleep 3s
-Enter # Datastore
+Enter # Select Datastore
 Sleep 2s
-Type@500ms "n" # Fault Domain
+Type "n" # Add another fault domain
 Sleep 2s
-Enter # NPT servers
 Enter
-Sleep 2s # SSH Key
-Escape
+Sleep 2s 
+Enter # NTP Servers
+Sleep 2s
 Type "dd"
 Type "i"
 Type "ssh-rsa AAAAB3NzaC1yc2EAA...."
@@ -132,25 +110,26 @@ Escape
 Sleep 3s
 Type@500ms ":wq"
 Enter
-Sleep 2s 
-Type@300ms "10.1.1.0" # IP Start Range
-Enter
-Type@300ms "10.1.63.255" # IP End Range
+Sleep 2s
+Type "${NON_AIRGAP_IP_START_RANGE}" # IP Start Range
 Enter
 Sleep 2s
-Enter # Network CIDR
-Type@300ms "10.10.128.1" # Gateway
+Type "${NON_AIRGAP_IP_END_RANGE}" # IP End Range
 Enter
-Type@300ms "10.10.128.8" # DNS
+Sleep 2s
+Enter # Network Prefix
+Sleep 2s
+Type "${NON_AIRGAP_GATEWAY}" # Gateway
 Enter
-Type@300ms "spectrocloud.dev"
+Type "${NON_AIRGAP_DNS_SERVER}" # DNS Server
 Enter
-Sleep 3s
-Enter # Number of CPUs
-Sleep 3s
-Enter # Memory
-Sleep 3s
-Enter # Disk Size
+Type "spectrocloud.dev" # Name Server Domain
+Enter
+Sleep 2s
+Enter # VM number of CPUs
+Sleep 2s
+Enter # VM Memory Size
+Sleep 2s
+Enter # VM Disk Size
 
-
-Sleep 35s
+Sleep 5s

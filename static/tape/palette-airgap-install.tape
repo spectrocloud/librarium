@@ -35,7 +35,7 @@ Enter
 Type "admin" # Password
 Sleep 2s
 Enter
-Type "y"
+Type "y" # Allow insecure connection
 Sleep 2s
 Enter
 Sleep 3s
