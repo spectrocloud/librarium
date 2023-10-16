@@ -20,6 +20,17 @@ Palette also supports Day-2 operations such as upgrades, backup, and restore to 
 
 To get started, refer to [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md).
 
+## Kubernetes Distributions
+
+The following Kubernetes distributions are supported for virtual clusters:
+
+| **Name** | **Description** |
+| --- | --- |
+| **K3s** | [K3s](https://k3s.io) is a lightweight, certified Kubernetes distribution designed for production workloads. |
+| **CNCF K8s**| The Cloud Native Computing Foundation (CNCF) [Kubernetes distribution](https://www.cncf.io/projects/kubernetes). |
+
+
+Refer to the [Create and Manager Cluster Groups](../cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) to learn how to configure your cluster group to use a specific Kubernetes distribution.
 
 ## Network Connectivity
 
@@ -33,3 +44,9 @@ Virtual clusters support two network endpoint types: Load Balancer and Ingress. 
 
    `*.myapp.mydomain.com`
 
+
+## Resources
+
+- [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md)
+
+- [Configure OIDs for Virtual Clusters](configure-oidc-virtual-cluster.md)
