@@ -26,11 +26,17 @@ Palette supports two types of user authentication methods:
   
 ### Using the API Key
 
-Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette APIs without requiring user credentials such as username and password. The API key must be present in individual API requests in order to authenticate and authorize the request. The API Key is passed as part of the HTTP request header and in the following format:
-  * Key: ApiKey
-  * Value: API key copied from the Palette Console. E.g. QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
+Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette APIs without requiring user credentials such as username and password. The API key must be present in individual API requests to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is `apiKey` and the API key is the header value.
 
-[Read More...](/user-management/user-authentication/#usingapikey)         
+The following example shows how to pass the API key in the HTTP request header:
+
+```shell hideClipboard
+curl --location "https://api.spectrocloud.com/v1/spectroclusters/123456789?ProjectUid=12345678" \
+ --header 'Accept: application/json' \
+ --header "apiKey: 123456789"
+```
+
+Refer to the [Autentication](/user-management/authentication) section for more information.         
 ## Requests
 
 All requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*.

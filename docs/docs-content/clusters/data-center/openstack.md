@@ -375,7 +375,7 @@ The following system prerequisites are required to install an OpenStack PCG.
 - Palette version 4.0.X or greater.
 
 
-- A Palette API key. Refer to the [Create API Key](../../user-management/user-authentication.md#api-key) page for guidance.
+- A Palette API key. Refer to the [Create API Key](../../user-management/authentication//api-key/create-api-key.md) page for guidance.
 
 
 - Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
