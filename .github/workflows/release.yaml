@@ -30,7 +30,7 @@ jobs:
   build:
     name: Build Website
     runs-on: 
-      group: Default
+      group: 'Doc Runners'
       labels: docbot
     steps:
       - name: Checkout Repository
