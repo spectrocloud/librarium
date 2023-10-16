@@ -157,7 +157,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
   :::tip
 
-  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to re-authenticate to the OCI registry and restart the upload process.
+  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to the OCI registry and restart the upload process.
 
   :::
 
