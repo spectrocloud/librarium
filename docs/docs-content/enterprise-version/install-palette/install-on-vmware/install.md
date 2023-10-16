@@ -88,8 +88,6 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 
 The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
-  <br />
-
 
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
@@ -105,9 +103,6 @@ The video below provides a demonstration of the installation wizard and the prom
 </TabItem>
 
 </Tabs>
-
-
-
 
 Use the following steps to install Palette. 
 
@@ -137,7 +132,7 @@ Use the following steps to install Palette.
 6. Choose `VMware vSphere` as the cloud type. This is the default.
 
 
-7. Type an enterprise cluster name, or use the default value.
+7. Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
 
 
 8. When prompted, enter the information listed in each of the following tables.
@@ -180,7 +175,7 @@ Select the OCI registry type and provide the configuration values. Review the fo
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
   | **Registry Base Path** | Enter the registry base path. |
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n` to specify a certificate authority in the follow up prompt. |
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow up prompt. |
   | **Registry CA certificate filepath** | Specify the file path to the certificate authority. Use absolute paths. |
   | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
@@ -335,7 +330,7 @@ You will be provided with an opportunity to update the mirror registries values.
   ```
 
 
-14. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
+13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
   <br />
 
@@ -352,13 +347,13 @@ You will be provided with an opportunity to update the mirror registries values.
 <br />
 
 
-15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+14. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
   
 
-16. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
+15. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
 
 
-17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../../system-management/tenant-management.md) guide. 
+16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../../system-management/tenant-management.md) guide. 
 
   <br />
 
@@ -397,5 +392,9 @@ After you create the tenant, you are ready to configure authentication types in 
 ## Resources
 
 - [Palette CLI](../../../palette-cli/install-palette-cli.md#download-and-setup)
+
+- [VMware System Requirements](vmware-system-requirements.md)
+
+- [System Management](../../system-management/system-management.md)
 
 - [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)

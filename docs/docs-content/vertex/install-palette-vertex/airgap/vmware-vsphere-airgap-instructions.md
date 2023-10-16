@@ -102,10 +102,10 @@ Complete the following steps before deploying the air gapped VerteX installation
 3. Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the `spectro-templates` folder. Refer to the [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA) guide for information about importing an OVA in vCenter.
 
   ```url
-  https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12510-0.ova
+  https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12510-fips.ova
   ```
 
-4. Append an `r_` prefix to the OVA name after the import. For example, `r_u-2204-0-k-12510-0.ova`. This prefix is required for the install process to identify the OVA.
+4. Append an `r_` prefix to the OVA name after the import. For example, `r_u-2004-0-k-12510-fips.ova`. This prefix is required for the install process to identify the OVA.
 
 
 5. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the VerteX Packs. 
