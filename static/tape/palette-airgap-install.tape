@@ -4,7 +4,7 @@
 # Source a .env file with the variables or export them in your shell.
 # You can use the following command to generate the file. 
 # Assuming you have a .env file in the current directory.
-# source .env && envsubst < palette-airgap-install.tape > palette-airgap-install-creds.tape
+# source ../../.env && envsubst < palette-airgap-install.tape > palette-airgap-install-creds.tape
 Require palette
 Output palette-airgap-install.mp4
 
@@ -86,7 +86,10 @@ Type ":wq"
 Sleep 2s
 Enter
 Sleep 2s
-Type "y" # Allow insecure connection
+Type "n" # Allow insecure connection
+Sleep 2s
+Type "/tmp/oci-airgap.crt" # OCI Registry CA Cert
+Enter
 Sleep 2s
 Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
 Enter
@@ -113,7 +116,10 @@ Type ":wq"
 Sleep 2s
 Enter
 Sleep 2s
-Type "y" # Allow insecure connection
+Type "n" # Allow insecure connection
+Sleep 2s
+Type "/tmp/oci-airgap.crt" # OCI Registry CA Cert
+Enter
 Sleep 2s
 Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
 Enter
@@ -130,7 +136,7 @@ Sleep 2s
 Type "${VCENTER_PASSWORD}"
 Enter
 Sleep 2s
-Type "y" # Allow insecure connection
+Type "n" # Allow insecure connection
 Sleep 4s
 Enter # Select Datacenter
 Sleep 3s

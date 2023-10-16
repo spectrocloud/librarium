@@ -179,7 +179,8 @@ Select the OCI registry type and provide the configuration values. Review the fo
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
   | **Registry Base Path** | Enter the registry base path. |
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n` to specify a certificate authority in the follow up prompt. |
+  | **Registry CA certificate filepath** | Specify the file path to the certificate authority. Use absolute paths. |
   | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |

@@ -87,8 +87,10 @@ Type ":wq"
 Sleep 2s
 Enter
 Sleep 2s
-Type "y" # Allow insecure connection
+Type "n" # Allow insecure connection
 Sleep 2s
+Type "/tmp/oci-airgap.crt" # OCI Registry CA Cert
+Enter
 Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
 Enter
 Sleep 2s
@@ -114,7 +116,10 @@ Type ":wq"
 Sleep 2s
 Enter
 Sleep 2s
-Type "y" # Allow insecure connection
+Type "n" # Allow insecure connection
+Sleep 2s
+Type "/tmp/oci-airgap.crt" # OCI Registry CA Cert
+Enter
 Sleep 2s
 Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
 Enter
