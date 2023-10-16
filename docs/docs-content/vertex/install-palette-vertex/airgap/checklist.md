@@ -1,15 +1,15 @@
 ---
 sidebar_label: "Checklist"
 title: "Checklist"
-description: "An airgap installation of Palette requires a few steps to be completed before the installation can begin. This checklist will help you prepare for the installation."
+description: "An airgap installation of VerteX requires a few steps to be completed before the installation can begin. This checklist will help you prepare for the installation."
 icon: ""
 sidebar_position: 40
 hide_table_of_contents: false
-tags: ["palette", "self-hosted", "airgap"]
+tags: ["vertex", "self-hosted", "airgap"]
 ---
  
 
-Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette installation.
+Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette VerteX installation.
 
 <Tabs queryString="platform">
 
@@ -29,6 +29,8 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Authenticated with your OCI registry and aquired credentials to both respositories.
 
+- [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
+
 - [ ] Set the required environment variables for the airgap setup binary. The values are different depending on what type of OCI registry you use.
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully
@@ -37,7 +39,7 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
-- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are installing Palette.
+- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are installing VerteX.
 
 </TabItem>
 
@@ -65,6 +67,8 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Authenticated with your OCI registry and aquired credentials to both respositories.
 
+- [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
+ 
 - [ ] Set the required environment variables for the airgap setup binary. Refer to step 8 in the [Preperation](#preperation) section for information.
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully
@@ -73,7 +77,7 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
-- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the vSphere environment you are installing Palette.
+- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the vSphere environment you are installing VerteX.
 
 </TabItem>
 

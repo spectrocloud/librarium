@@ -1,11 +1,11 @@
 ---
 sidebar_label: "Additional Packs"
 title: "Additional Packs"
-description: "Learn how to install additional packs for an airgap Palette install."
+description: "Learn how to install additional packs for an airgap VerteX install."
 icon: ""
 sidebar_position: 50
 hide_table_of_contents: false
-tags: ["palette", "self-hosted", "airgap"]
+tags: ["vertex", "self-hosted", "airgap"]
 ---
  
 

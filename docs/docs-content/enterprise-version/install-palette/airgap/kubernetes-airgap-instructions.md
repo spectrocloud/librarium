@@ -278,7 +278,8 @@ Complete the following steps before deploying the air gapped Palette installatio
   In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary is downloaded and started.
 
   ```shell
-  chmod +x && ./airgap-pack-aws-alb-2.5.1.bin
+  chmod +x airgap-pack-aws-alb-2.5.1.bin && \
+  ./airgap-pack-aws-alb-2.5.1.bin
   ```
 
   ```shell hideClipboard

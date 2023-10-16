@@ -1,23 +1,23 @@
 ---
 sidebar_label: "Kubernetes Airgap Instructions"
 title: "Kubernetes Airgap Instructions"
-description: "Learn how to install Palette into an air gap environment."
+description: "Learn how to install VerteX into an air gap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
+tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 ---
 
 
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-This guide will provide instructions for how to prepare your airgap environment for a Palette installation, by ensuring you complete all the required preperatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform. 
+This guide will provide instructions for how to prepare your airgap environment for a Palette VerteX installation, by ensuring you complete all the required preperatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform. 
 
 
 ## Prepare Airgap Installation
 
-Use the following steps to prepare your airgap environment for a Palette installation. 
+Use the following steps to prepare your airgap environment for a VerteX installation. 
 
 :::tip
 
@@ -28,12 +28,12 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 ## Prerequisites
 
 
-- An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing Palette.
+- An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing VerteX.
 
 
 - 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompessed is approximately 20 GB. 
 
-- An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store Palette images and packages. The OCI registry must be accessible from the Kubernetes cluster. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
+- An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store VerteX images and packages. The OCI registry must be accessible from the Kubernetes cluster. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
 
   :::caution
 
@@ -42,7 +42,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
   :::
 
 
-- An HTTP file server to host the Palette manifest. The file server must be accessible from the target environment where Palette will be installed. Below is a list of common file servers:
+- An HTTP file server to host the VerteX manifest. The file server must be accessible from the target environment where VerteX will be installed. Below is a list of common file servers:
   - [Apache HTTP Server](https://httpd.apache.org/)
 
   - [Nginx](https://www.nginx.com/)
@@ -53,7 +53,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   :::caution
 
-  Take the neccessary steps to secure your file server and ensure it can automatically recover from a failure. The file server is a critical component of the airgap installation and must be available post-install for Palette to function properly.
+  Take the neccessary steps to secure your file server and ensure it can automatically recover from a failure. The file server is a critical component of the airgap installation and must be available post-install for VerteX to function properly.
 
   :::
 
@@ -77,22 +77,24 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 ## Instructions
 
-Complete the following steps before deploying the air gapped Palette installation.
+Complete the following steps before deploying the air gapped VerteX installation.
 
 
-1. Log in to the OCI registry where you will host the Palette images and packages.
+1. Log in to the OCI registry where you will host the VerteX images and packages.
 
-2. Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the Palette Packs. 
+2. Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the VerteX Packs. 
     - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. 
     - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
 
-3. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public. The public repositry will host the images required by Palette.
+3. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public. The public repositry will host the images required by VerteX.
 
 
-4. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps, including the Palette installation. 
+4. Download the Certificate Authority (CA) for your OCI registry. You will need to provide the installation process the CA, otherwise you may encounter errors when authenticating with the OCI registry which could result in an incomplete install. 
+
+5. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps, including the VerteX installation. 
 
 
-5. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped Palette installation. 
+6. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped VerteX installation. 
 
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
@@ -137,7 +139,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 ---
 
-6. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
+7. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
 
   <Tabs groupId="oci-registry">
   <TabItem label="Harbor" value="harbor">
@@ -145,9 +147,9 @@ Complete the following steps before deploying the air gapped Palette installatio
   <br />
 
     - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `OCI_PACK_BASE`: The namespace or repository name that hosts the Palette Packs.
+    - `OCI_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
     - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
+    - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
 
     ```shell
     export OCI_IMAGE_REGISTRY=<harbor-endpoint> 
@@ -171,9 +173,9 @@ Complete the following steps before deploying the air gapped Palette installatio
   <br />
 
     - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
-    - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
+    - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
     - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
-    - `ECR_PACK_BASE`: The namespace or repository name that hosts the Palette Packs.
+    - `ECR_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
     - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
 
@@ -202,27 +204,27 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 ---
 
-7. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+8. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
 
   ```shell
   VERSION=4.0.19
   ```
 
   ```shell
-  curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
-  --output airgap-v$VERSION.bin
+  curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap-fips/$VERSION/airgap-fips-v$VERSION.bin  \
+  --output airgap-fips-v$VERSION.bin
   ```
 
-8. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the airgap setup binary you downloaded.
+9. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the airgap setup binary you downloaded.
 
   ```shell
-  chmod +x airgap-v$VERSION.bin
+  chmod +x airgap-fips-v$VERSION.bin
   ```
 
-9. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
+10. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
 
   ```shell
-  ./airgap-v$VERSION.bin
+  ./airgap-fips-v$VERSION.bin
   ```
   Upon completion, a success message will be displayed. The output is condensed for brevity.
   
@@ -247,7 +249,7 @@ Complete the following steps before deploying the air gapped Palette installatio
   :::
 
 
-10. Move the manfiest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
+11. Move the manfiest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
 
     ```shell
     unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
@@ -269,28 +271,28 @@ Complete the following steps before deploying the air gapped Palette installatio
     :::    
 
 
-11. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create to cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
+12. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create to cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
 
 
 
-12. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the upload process.
+13. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the upload process.
 
-  In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary is downloaded and started.
+  In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary is downloaded and started.
 
   ```shell
-  chmod +x && ./airgap-pack-aws-alb-2.5.1.bin
+  chmod +x airgap-fips-pack-amazon-linux-eks-1.0.0.bin && \
+  ./airgap-fips-pack-amazon-linux-eks-1.0.0.bin
   ```
 
   ```shell hideClipboard
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
+    Uncompressing Airgap Pack - amazon-linux-eks Version 4.0.17  100%
     Setting up Packs
-    - Pushing Pack aws-alb:2.5.1
-    Setting up Images
+    - Pushing Pack amazon-linux-eks:1.0.0
     Setup Completed
   ```
 
-13. Repeat step 12 for each pack you want to install.
+14. Repeat step 13 for each pack you want to install.
 
 You now have completed the preperation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
 
@@ -300,15 +302,15 @@ You now have completed the preperation steps for an airgap installation. Check o
 Use the following steps to validate the airgap setup process completed successfully.
 
 
-1. Log in to your OCI registry and verify the Palette images and packs are available. 
+1. Log in to your OCI registry and verify the VerteX images and packs are available. 
 
 
-2. Verify the manifest file is accessible from the file server. The manifest file is required for the Palette installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The example is using Caddy as the file server.
+2. Verify the manifest file is accessible from the file server. The manifest file is required for the VerteX installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The example is using Caddy as the file server.
 
   ![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.png)
 
 
-3. Ensure your file server is accessible from the environment you are installing Palette. Use the following command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your file server hostname or IP address.
+3. Ensure your file server is accessible from the environment you are installing VerteX. Use the following command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your file server hostname or IP address.
 
   ```shell
   curl http://<hostname>:<port>/roar/nickfury/versions.yaml
@@ -329,4 +331,4 @@ Use the following steps to validate the airgap setup process completed successfu
 
 ## Next Steps
 
-You are now ready to deploy the airgap Palette installation. The important difference is that you will specify your OCI registry and file server during the installation process. Refer to the [Kubernetes Install Instructions](../install-on-kubernetes/install-on-kubernetes.md) guide for detailed guidance on installing Palette. 
+You are now ready to deploy the airgap VerteX installation. The important difference is that you will specify your OCI registry and file server during the installation process. Refer to the [Kubernetes Install Instructions](../install-on-kubernetes/install-on-kubernetes.md) guide for detailed guidance on installing VerteX. 
