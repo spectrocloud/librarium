@@ -35,7 +35,7 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
 
 
-3. From the **Main Menu** click **App Profiles** to create a new profile. Check out the [Create an App Profile](../../create-app-profile.md) guide to learn how. Provide the following basic information and click **Next**.
+3. From the **Main Menu** click **App Profiles** to create a new profile. Check out the [Create an App Profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md) guide to learn about different app profile types and how to create them. Provide the following basic information and click **Next**.
 
 |         **Parameter**   | **Description**  |
 |-------------------------|-----------------|

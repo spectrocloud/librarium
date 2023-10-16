@@ -220,7 +220,7 @@ The VMware dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -339,7 +339,7 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -455,7 +455,7 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -563,7 +563,7 @@ The Spectro Proxy supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 

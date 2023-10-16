@@ -226,7 +226,7 @@ In the next screen, assign the following values to the Postgres database.
 
   
 
-Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile [output variables](../app-profile/app-profile-macros.md) documentation.
+Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other applications connect with the database. In the next section, you will use these output variables and other output variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile [output variables](../../profiles/app-profiles/app-profile-output-vars.md) documentation.
 
   
 
@@ -282,7 +282,7 @@ You can learn more about each environment variable's purpose by reviewing the AP
 
 :::info
 
-To learn more about connecting different service layers, refer to the [Service Connectivity](../app-profile/services/connectivity.md) resource.
+To learn more about connecting different service layers, refer to the [Service Connectivity](../services/connectivity.md) resource.
 
 :::
 
@@ -1190,7 +1190,7 @@ pack {
 :::info
 
 All container services expose their service address, Kubernetes hostname, and the exposed service ports as output variables.
-You will use output variables frequently when creating app profiles in the future. You can learn more about connecting services by referring to the [Service Connectivity](../app-profile/services/connectivity.md) documentation.  
+You will use output variables frequently when creating app profiles in the future. You can learn more about connecting services by referring to the [Service Connectivity](../services/connectivity.md documentation.  
 
 :::
 
@@ -1282,7 +1282,7 @@ To learn more about Palette Dev Engine and its capabilities, check out the refer
 
 - [Palette Modes](../../introduction/palette-modes.md)
 - [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
-- [App Profiles](../app-profile/app-profile.md)
-- [App Services](../app-profile/services/services.md)
+- [App Profiles](../../profiles/app-profiles/app-profiles.md)
+- [App Services](../services/services.md)
 - [Palette Virtual Clusters](../palette-virtual-clusters/palette-virtual-clusters.md) 
 - [Hello Universe GitHub respository](https://github.com/spectrocloud/hello-universe)

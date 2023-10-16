@@ -39,7 +39,7 @@ You can use the following steps to learn how to add Postgres to your app profile
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](../../create-app-profile.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
 
 |         **Parameter**   | **Description**  |
 |-------------------------|-----------------|

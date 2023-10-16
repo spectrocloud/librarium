@@ -59,7 +59,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](../../create-app-profile.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
 
 |         Parameter           | Description  |
 |-----------------------------|-----------------|
@@ -81,7 +81,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 6. Save your changes.
 
 
-7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](../../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](../../../apps/deploy-app.md) tutorial.
+7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
 
 
 ## Validate
@@ -106,7 +106,7 @@ You can validate the Vault instance deployed successfully by using the following
 6. Click the URL to download the **kubeconfig**. 
 
 
-7. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
+7. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
 
 
 8. Export the following environment variables to prepare your environment to interact with Vault.
@@ -178,7 +178,7 @@ The Vault root token and the unseal keys are stored as a Kubernetes secret insid
 
 
 
-5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance. 
+5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance. 
 
 
 6. You need to get the Vault namespace and application name. Issue the following command to get the unique values.

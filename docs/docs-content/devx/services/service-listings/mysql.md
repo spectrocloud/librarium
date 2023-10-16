@@ -39,7 +39,7 @@ Use the following steps to add MySQL to an app profile.
 2. On the right side of the window, click on the **User Menu**, then select **Switch to App Mode**.
 
 
-3. Navigate to the left **Main Menu** and click **App Profiles** to create a [new App Profile](../../create-app-profile.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
 
 |    **Parameter**            | **Description** |
 |-----------------------------|-----------------|

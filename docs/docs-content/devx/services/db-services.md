@@ -25,13 +25,13 @@ You must allocate storage to the database service based on the available storage
 :::caution
 
 
-By default, cluster groups are configured not to back up the disk storage. This default behavior affects database services because a backup would not include the storage disk. To learn more, refer to [Enable Disk Backup on Virtual Clusters](../../../clusters/cluster-groups/cluster-group-backups.md).
+By default, cluster groups are configured not to back up the disk storage. This default behavior affects database services because a backup would not include the storage disk. To learn more, refer to [Enable Disk Backup on Virtual Clusters](../../clusters/cluster-groups/cluster-group-backups.md.
 
 :::
 
 ## Version Update
 
-You can make changes to the app profile services, such as version updates, manifest updates, app service additions, and removals. [App Profile Service update](../versioning-app-profile.md#update-an-app-profile)
+You can make changes to the app profile services, such as version updates, manifest updates, app service additions, and removals. [App Profile Service update](../../profiles/app-profiles/modify-app-profiles/version-app-profile.md) 
 will generate an update notification on all the apps created from the app profile. Update notifications include all the changes applied to the profile since the initial creation or the previous update. You can apply the update to the apps individually at any time.
 
 ## Output Variables

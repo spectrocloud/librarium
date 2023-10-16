@@ -36,7 +36,7 @@ Virtual clusters help reduce development time by allowing downstream consumers t
 
 ### What is App Mode?
 
-App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](../devx/app-profile/app-profile.md). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
+App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](../profiles/app-profiles/app-profiles.md). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
 
 App mode comes with an out-of-the-box cluster group managed by us here at Spectro Cloud called _beehive_.  This cluster group, which under the cover is a collection of Kubernetes clusters, is configured to support Palette Virtual Clusters. As a consumer, you can deploy a new virtual cluster to the beehive cluster group and get started with a Kubernetes cluster in minutes. 
 

@@ -50,9 +50,9 @@ Use the following resource to get started with PDE today.
 
 * Learn about [App Mode versus Cluster Mode](../introduction/palette-modes.md).
 
-* Familiarize yourself with [App Profiles](app-profile/app-profile.md).
+* Familiarize yourself with [App Profiles](../profiles/app-profiles/app-profiles.md).
 
-* Review the supported [out-of-the-box-services](app-profile/services/service-listings/service-listings.mdx).
+* Review the supported [out-of-the-box-services](../devx/services/service-listings/service-listings.mdx).
 
 
 

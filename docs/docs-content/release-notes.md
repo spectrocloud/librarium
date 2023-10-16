@@ -774,7 +774,7 @@ Palette 3.4.0 has various security upgrades, better support for multiple Kuberne
 - You can now access a [new dashboard](devx/devx.md) to better understand your virtual clusters, app profiles, deployed apps, and resource utilization. The dashboard provides a comprehensive overview of critical metrics and more.
 
 
-- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](devx/app-profile/container-deployment.md) guide to learn more about containerized deployments.
+- You can now increase or decrease the number of replicated instances of a container service. Check out the [Container Deployment](profiles/app-profiles/create-app-profiles/container-deployment.md) guide to learn more about containerized deployments.
  
 
 ### Terraform
@@ -917,7 +917,7 @@ This release contains several security fixes and new features for Edge. The Edge
 
 ## February 28, 2023 - Release 3.2.0
 
-Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](devx/app-profile/services/service-listings/service-listings.mdx), and many other product enhancements. 
+Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for edge devices, new [out-of-the-box services](devx/services/service-listings/service-listings.mdx, and many other product enhancements. 
 
 ### Palette
 
@@ -944,7 +944,7 @@ Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other 
 * Palette has improved the launch time for virtual clusters.
 * [Virtual clusters can be resized](devx/palette-virtual-clusters/resize-virtual-clusters.md) from the default to a size that does not exceed the system-level quota for a cluster group like Beehive or the user quota for tenant-level cluster groups.
 * Virtual clusters now display a progress status during the creation phase.
-* The App profile container service layer contains additional [output variables](devx/app-profile/app-profile-macros.md#container-service-output-variables) to help services connect. Refer to the [service connectivity](devx/app-profile/services/connectivity.md) document for additional guidance.
+* The App profile container service layer contains additional [output variables](profiles/app-profiles/app-profile-output-vars.md#container-service-output-variables) to help services connect. Refer to the [service connectivity](devx/services/connectivity.md) document for additional guidance.
 * We optimized the Spectro Cloud Postman collection to circumvent a nested levels [bug](https://github.com/postmanlabs/postman-app-support/issues/10928) in Postman.
 
 #### Deprecations
@@ -1013,12 +1013,12 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 * [Autoscaling](clusters/cluster-management/node-pool.md#worker-node-pool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
 * Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](compliance.md#fips-140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
 * Palette supports tagging and the ability to filter user [access](clusters/cluster-management/cluster-tag-filter/cluster-tag-filter.md) and [visibility](clusters/cluster-management/noc-ui.md#monitor-your-cluster-location) to clusters using tags. You can filter geographically dispersed clusters in the Palette map view and list view using [flexible filters](clusters/cluster-management/noc-ui.md#map-filters) to have a granular view of cluster information.
-* Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](devx/app-profile/versioning-app-profile.md#apply-version-to-a-profile) within the scope of a single profile name. 
-* Palette supports the [cloning](devx/app-profile/app-profile-cloning.md#clone-an-app-profile) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
-* Palette Dev Engine supports the manual and system update of an [App Profile](devx/app-profile/versioning-app-profile.md#apply-version-to-a-profile). You can verify the update notification and apply the changes to the Apps.
-* Palette app mode now supports the use of [containers](devx/app-profile/app-profile.md#resources). You can specify containers when creating an app profile.
+* Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](profiles/app-profiles/modify-app-profiles/version-app-profile.md) within the scope of a single profile name. 
+* Palette supports the [cloning](profiles/app-profiles/clone-app-profile.md) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
+* Palette Dev Engine supports the manual and system update of an [App Profile](profiles/app-profiles/modify-app-profiles/version-app-profile.md). You can verify the update notification and apply the changes to the Apps.
+* Palette app mode now supports the use of [containers](profiles/app-profiles/create-app-profiles/container-deployment.md). You can specify containers when creating an app profile.
 * Palette leverages [Helm and OCI registries](devx/manage-dev-engine/registries.md) for custom pack management. 
-* Palette provides [out-of-the-box](devx/app-profile/app-profile.md) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
+* Palette provides [out-of-the-box](profiles/app-profiles/create-app-profiles/create-out-of-box-app-profile.md) support for application services such as Kafka, MySQL, NATS, and more for Palette Dev Engine. These services can be specified when creating an App Profile.
 * Palette allows you to [pause and resume](devx/palette-virtual-clusters/pause-restore-virtual-clusters.md) virtual clusters that are not in use. This adds significant flexibility in managing the operating costs and optimizing resource management for virtual clusters.
 
 #### Enhancements:

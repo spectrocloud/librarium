@@ -526,7 +526,7 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](ubuntu.md?22.04.x#ub
 ## Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about creating cluster profiles.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about creating cluster profiles.
 
 
 
@@ -865,7 +865,7 @@ data "spectrocloud_pack_simple" "ubuntu" {
 ## References
 
 
-- [Create a Cluster Profile](../cluster-profiles/task-define-profile.md)
+- [Create a Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
 
 
 - [Ubuntu Documentation](https://docs.ubuntu.com)

@@ -39,7 +39,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new app profile. Review [Create an App Profile](../../create-app-profile.md) for more information. Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new app profile. Review [Create an App Profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
 
 |         Parameter           | Description  |
 |-----------------------------|-----------------|
@@ -72,7 +72,7 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 6. Save your changes.
 
 
-7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](../../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md#deploy-a-virtual-cluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](../../../apps/deploy-app.md) tutorial.
+7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md#deploy-a-virtual-cluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
 
 
 ### Validate
