@@ -8,7 +8,7 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-Create a full profile by first adding infrastructure layers composed of an Operating System (OS), Kubernetes, Network, and Storage. Next, add layers using add-on profiles to expand the the functionality of your clusters.
+Create a full profile by first adding infrastructure layers composed of an Operating System (OS), Kubernetes, Network, and Storage. Next, add layers using add-on profiles to expand the functionality of your clusters.
 
 ## Prerequisites
 

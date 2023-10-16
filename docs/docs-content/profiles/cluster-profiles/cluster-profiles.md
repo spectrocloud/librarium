@@ -34,7 +34,7 @@ Each cluster profile layer provides a specific functionality. Profile layers can
 
 Use these guidelines to configure layers and customize certain aspects of a pack's functionality:
 
-- **Pack version**: You can choose a specific pack version, such as `1.27.5`, or a major/minor train, such as `1.x` or `1.1.x`. A major/minor train provides dynamic version association. The latest release from that train is linked to the pack. When a pack is updated, its lastest version gets linked to the pack, ensuring clusters always use the latest released pack versions without the need to manually update cluster profiles.
+- **Pack version**: You can choose a specific pack version, such as `1.27.5`, or a major/minor train, such as `1.x` or `1.1.x`. A major/minor train provides dynamic version association. The latest release from that train is linked to the pack. When a pack is updated, its latest version gets linked to the pack, ensuring clusters always use the latest released pack versions without the need to manually update cluster profiles.
 
 - **Configuration parameters**: Packs provided out-of-the-box have configuration parameters that are set to values based on common best practices. You can override these parameters as needed in the configuration file. 
 
