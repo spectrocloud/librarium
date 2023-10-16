@@ -27,7 +27,7 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Created a public repository with the name `spectro-images` in your OCI registry. You can use a different if you prefer.
 
-- [ ] Authenticated with your OCI registry and aquired credentials to both respositories.
+- [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
 
 - [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
 
@@ -65,11 +65,11 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Created a public repository with the name `spectro-images` in your OCI registry.
 
-- [ ] Authenticated with your OCI registry and aquired credentials to both respositories.
+- [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
 
 - [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
  
-- [ ] Set the required environment variables for the airgap setup binary. Refer to step 8 in the [Preperation](#preperation) section for information.
+- [ ] Set the required environment variables for the airgap setup binary. Refer to step 8 in the [Preparation](#preperation) section for information.
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully
 

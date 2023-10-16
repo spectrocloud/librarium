@@ -136,7 +136,7 @@ Use the following steps to install Palette VerteX.
 
 
 
-5. Enter the repository credentials. The credentials to the public Spectro Cloud repository is provded to your by our support team. Airgap installations, provide the credentials to your private repository. If your HTTP file server has no authentication, provide the username and password as `admin` and `admin` respectively.
+5. Enter the repository credentials. The credentials to the public Spectro Cloud repository is provided to your by our support team. Airgap installations, provide the credentials to your private repository. If your HTTP file server has no authentication, provide the username and password as `admin` and `admin` respectively.
 
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
