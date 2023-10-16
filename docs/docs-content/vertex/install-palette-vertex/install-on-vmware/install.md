@@ -346,4 +346,5 @@ After you create the tenant, you are ready to configure authentication types in 
 ## Resources
 
 - [Create a Tenant](../../system-management/tenant-management.md) 
-   
+
+- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)   

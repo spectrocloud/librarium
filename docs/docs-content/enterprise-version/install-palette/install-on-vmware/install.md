@@ -5,6 +5,7 @@ description: "Learn how to install Palette on VMware."
 icon: ""
 sidebar_position: 10
 hide_table_of_contents: false
+toc_max_heading_level: 3
 tags: ["palette", "self-hosted", "vmware"]
 ---
 
@@ -82,7 +83,7 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 
 <br />
 
-### Deployment
+## Deployment
 
 
 The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
@@ -162,7 +163,7 @@ Use the following steps to install Palette.
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
 
-Select `y` to use the Spectro Cloud repository. 
+  Select `y` to use the Spectro Cloud repository and proceed to the next step.
 
 </TabItem>
 <TabItem label="Airgap" value="airgap">
@@ -186,7 +187,6 @@ Select the OCI registry type and provide the configuration values. Review the fo
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
   | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
   | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
-  | 
 
 
   When propmted for "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
@@ -203,7 +203,7 @@ You will be provided with an opportunity to update the mirror registries values.
 
 </Tabs>
 
-
+---
   
 10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
 
@@ -270,13 +270,13 @@ You will be provided with an opportunity to update the mirror registries values.
   | **Large** | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit. |
   | **Custom** | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage |
 
+  <br />
 
-
-  ### Additional vSphere Machine Configuration
+  #### Additional vSphere Machine Configuration
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  | **Node Affinity** | Select the node affinity. Enter "yes" to schedule all Palette pods on control plane nodes. |
+  | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
 
   <br />
 
@@ -295,6 +295,7 @@ You will be provided with an opportunity to update the mirror registries values.
   Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
   ```
 
+  <br />
 
 :::tip
 
@@ -310,15 +311,11 @@ You will be provided with an opportunity to update the mirror registries values.
   ```bash
   palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
   ```
-
-
 :::
 
   <br />
 
   When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette system console.
-
-  <br />
 
   ```bash hideClipboard
   ===========================================
@@ -379,19 +376,16 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 1. Log in to the vCenter Server by using vSphere Client.
 
 
-2. Navigate to the Datacenter and locate your VM instance. 
+2. Navigate to the Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are arvailable.
 
 
-3. Select the VM to access its details page, and verify three nodes are listed.
+3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
 
 
-4. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
+4. Log in using your credentials.
 
 
-5. Log in using your credentials.
-
-
-6. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
+5. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
  
 ## Next Steps
 
@@ -403,3 +397,5 @@ After you create the tenant, you are ready to configure authentication types in 
 ## Resources
 
 - [Palette CLI](../../../palette-cli/install-palette-cli.md#download-and-setup)
+
+- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)
