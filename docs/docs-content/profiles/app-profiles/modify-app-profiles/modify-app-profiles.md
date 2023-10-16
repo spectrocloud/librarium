@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Modify App Profiles"
 title: "Modify App Profiles"
-description: "Learn how you can update an app profile in Palette."
+description: "Learn how to update and create new versions of app profiles in Palette."
 hide_table_of_contents: false
 sidebar_position: 5
 tags: ["devx", "app mode", "pde", "app profiles"]

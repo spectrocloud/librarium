@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create an Infrastructure Profile"
 title: "Create an Infrastructure Profile"
-description: "Learn how to create an infrastructure profile in Palette."
+description: "Learn how to create an infrastructure cluster profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["profiles", "cluster profiles"]

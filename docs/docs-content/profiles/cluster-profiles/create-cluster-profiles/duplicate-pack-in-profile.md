@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Duplicate a Pack in a Profile"
 title: "Duplicate a Pack in a Profile"
-description: "Learn how to create an infrastructure profile in Palette."
+description: "Learn how to deploy the same pack to multiple layers in a Palette cluster profile."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["profiles", "cluster profiles"]

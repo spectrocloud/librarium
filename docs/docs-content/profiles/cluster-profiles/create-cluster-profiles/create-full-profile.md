@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create a Full Profile"
 title: "Create a Full Profile"
-description: "Learn how to create a full profile in Palette."
+description: "Learn how to create a full cluster profile in Palette."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["profiles", "cluster profiles"]

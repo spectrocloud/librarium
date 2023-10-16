@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create App Profiles"
 title: "Create App Profiles"
-description: "REVISE: Use app profiles to ensure consistency across your Palette Virtual Clusters."
+description: "Use app profiles to ensure consistency across your Palette Virtual Clusters."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["devx", "app mode", "pde", "app profiles"]

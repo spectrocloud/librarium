@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Add a Helm Chart"
 title: "Add a Helm Chart"
-description: "REVISE: Learn how to create an app profile for your Palette Virtual Clusters that uses a Helm chart."
+description: "Learn how to create an app profile for your Palette Virtual Clusters that uses a Helm chart."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["devx", "app mode", "pde", "app profiles", "helm"]
