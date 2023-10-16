@@ -19,12 +19,13 @@ Set BorderRadius 10
 
 Show
 Type "palette ec install"
-Sleep 4s
+Sleep 5s
 Enter
 Sleep 1s
 Enter
-Type "n"
+Type "y"
 Sleep 2s
+Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
 Enter
 Type "${AIRGAP_FILE_SERVER}" # Specify File Server
 Sleep 2s
@@ -36,19 +37,30 @@ Type "admin" # Password
 Sleep 2s
 Enter
 Type "y" # Allow insecure connection
+Sleep 4s
+Enter # Select VMware
 Sleep 2s
-Enter
-Sleep 3s
-Enter # Select VMware vSphere
+Enter # Cluster Name
 Sleep 2s
-Enter
 Type "http://10.10.180.0:3128" # HTTPS Proxy
 Sleep 2s
 Enter
 Type "http://10.10.180.0:3128" # HTTP Proxy
 Sleep 2s
 Enter
-Type "10.10.128.10,.spectrocloud.dev,10.0.0.0/8"
+Escape
+Type "dd"
+Type "dd"
+Type "dd"
+Type "i"
+Type "10.10.128.10"
+Enter
+Type ".spectrocloud.dev"
+Enter
+Type "10.0.0.0/8"
+Escape
+Sleep 2s
+Type ":wq"
 Sleep 2s
 Enter
 Sleep 2s
@@ -75,7 +87,6 @@ Sleep 2s
 Enter
 Sleep 2s
 Type "y" # Allow insecure connection
-Enter
 Sleep 2s
 Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
 Enter
@@ -85,11 +96,8 @@ Enter
 Sleep 2s
 Type "n"
 Sleep 2s
-Enter
 Sleep 2s
 Type "n"
-Sleep 2s
-Enter
 Sleep 2s
 Type "Airgap Images OCI"
 Enter
@@ -106,19 +114,12 @@ Sleep 2s
 Enter
 Sleep 2s
 Type "y" # Allow insecure connection
-Enter
 Sleep 2s
 Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
 Enter
 Sleep 2s
 Type "${AIRGAP_OCI_REGISTRY_PASSWORD}" # Password
 Enter
-Sleep 2s
-Enter # Database size
-Sleep 2s
-Enter # CPU limit
-Sleep 2s
-Enter # Memory limit
 Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
@@ -130,7 +131,6 @@ Type "${VCENTER_PASSWORD}"
 Enter
 Sleep 2s
 Type "y" # Allow insecure connection
-Enter
 Sleep 4s
 Enter # Select Datacenter
 Sleep 3s
@@ -140,7 +140,7 @@ Sleep 3s
 Down 1
 Enter # Select Cluster
 Sleep 3s
-Down 2 # VM Network
+Down 1 # VM Network
 Enter
 Sleep 4s
 Enter # Resource Pool
@@ -150,8 +150,6 @@ Sleep 3s
 Enter # Select Datastore
 Sleep 2s
 Type "n" # Add another fault domain
-Sleep 2s
-Enter
 Sleep 2s 
 Enter # NTP Servers
 Sleep 2s
@@ -178,9 +176,10 @@ Enter
 Type "spectrocloud.dev" # Name Server Domain
 Enter
 Sleep 2s
-Enter # VM number of CPUs
+Down 1 # Medium VM Size
+Enter
 Sleep 2s
-Enter # VM Memory Size
-Sleep 2s
-Enter # VM Disk Size
+Type "y" # Node Affinity
+
+
 Sleep 35s
