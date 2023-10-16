@@ -52,7 +52,7 @@ Palette CLI supports the following global flags.
 
 ## EC
 
-The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to stand up the kind cluster. You can use the `ec` command to install a [self-hosted Palette](/enterprise-version/deploying-an-enterprise-cluster) instance or a self-hosted [VerteX](/vertex/install-palette-vertex) instance. 
+The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in your target environment. The installation is conducted through an interactive wizard that guides you through the various install configurations available. A local kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to install kind or any other dependencies. The CLI includes all the required dependencies to stand up the kind cluster. You can use the `ec` command to install a [self-hosted Palette](../enterprise-version/install-palette/install-palette.md) instance or a self-hosted [VerteX](../vertex/install-palette-vertex/install-palette-vertex.md) instance. 
 
 The `ec` subcommand exposes the following subcommand.
 
@@ -70,7 +70,7 @@ The `install` subcommand installs a Palette Enterprise Cluster in your target en
   |------------|------------------------|--------------------------------------------------------------------------|---------|
   | `-f`       | `--config-file`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
   | `-o`       | `--config-only`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
-  | `-v`       | `--custom-values-file`  | Enterprise Cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#customvaluefile) section for more information. | string |
+  | `-v`       | `--custom-values-file`  | Enterprise Cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#custom-value-file) section for more information. | string |
   | `-p`       | `--update-passwords`   | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided. |   string      |
 
 
@@ -118,7 +118,7 @@ The `install` subcommand installs a Palette Enterprise Cluster in your target en
 
 ### Custom Value File
 
-You can customize the [Cluster Profile](/glossary-all#clusterprofile) that makes up the Enterprise Cluster by providing a custom **values.yaml** file that contains values for the various Cluster Profile layers that make up the Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs. This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
+You can customize the [Cluster Profile](../glossary-all.md#cluster-profile) that makes up the Enterprise Cluster by providing a custom **values.yaml** file that contains values for the various Cluster Profile layers that make up the Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs. This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
 
 
 The **values.yaml** file is made up of the following components:
@@ -293,9 +293,9 @@ Use the `install` subcommand to install a PCG cluster in the following environme
 
 | Platform | Install Guide |
 |---|---|
-| MAAS | [Link](/clusters/data-center/maas/install-manage-maas-pcg#installpcg) |
-| OpenStack | [Link](/clusters/data-center/openstack#installingprivatecloudgateway-openstack) |
-| VMware | [Link](/clusters/data-center/vmware/#createvmwareprivatecloudgateway(pcg)) |
+| MAAS | [Link](../clusters/data-center/maas/install-manage-maas-pcg.md#install-pcg) |
+| OpenStack | [Link](../clusters/data-center/openstack.md#installing-private-cloud-gateway---openstack) |
+| VMware | [Link](../clusters/data-center/vmware.md#create-vmware-cloud-gateway) |
 
 
 

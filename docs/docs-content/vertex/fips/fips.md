@@ -12,15 +12,13 @@ Palette VerteX is FIPS 140-2 compliant. This means that Palette VerteX uses FIPS
 
 ## Non-FIPS Enablement
 
-You can deploy non-FIPS-compliant components in your Palette VerteX environment by enabling non-FIPS settings. Refer to the [Enable non-FIPS Settings](/vertex/system-management/enable-non-fips-settings) guide for more information.
+You can deploy non-FIPS-compliant components in your Palette VerteX environment by enabling non-FIPS settings. Refer to the [Enable non-FIPS Settings](../system-management/enable-non-fips-settings/enable-non-fips-settings.md) guide for more information.
 
-<!-- When Palette VerteX consumes upstream binaries, it displays FIPS status based on the FIPS rating given to the third-party image.   -->
 
 Something to note when using RKE2 and K3s:
 
 <br />
 
-<!-- - Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer.  -->
 
 - When we scan the binaries, which we consume directly from Rancher's RKE2 repository, issues are reported for the following components. These components were compiled with a Go compiler that is not FIPS-compliant.
 
@@ -34,15 +32,11 @@ Something to note when using RKE2 and K3s:
   
   RKE2 is designated as FIPS-compliant per official Rancher [FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support) security documentation. Therefore, Palette VerteX designates RKE2 as FIPS-compliant.
   
-  <!-- We recommend using RKE2 [FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support) security documentation as the official source of FIPS compliance. -->
-
-
-<!-- Palette VerteX uses compiled images directly from Rancher's RKE2 repository. Since some internal RKE2 components may not be FIPS-compliant, Palette displays RKE2 as a partially compliant layer.  -->
 
 
 - Although K3s is not available as a FIPS-certified distribution, Palette VerteX supports K3s as a Kubernetes distribution for Edge clusters.
 
-Palette VerteX uses icons to show FIPS compliance status. For information about Palette VerteX status icons, review [FIPS Status Icons](/vertex/fips/fips-status-icons).
+Palette VerteX uses icons to show FIPS compliance status. For information about Palette VerteX status icons, review [FIPS Status Icons](fips-status-icons.md).
 
 
 ## Legal Notice
@@ -52,10 +46,10 @@ Spectro Cloud has performed a categorization under FIPS 199 with (client/tenant)
 
 ## Resources
 
-- [FIPS Status Icons](/vertex/fips/fips-status-icons)
+- [FIPS Status Icons](fips-status-icons.md)
 
 
-- [FIPS-Compliant Components](/vertex/fips/fips-compliant-components) 
+- [FIPS-Compliant Components](fips-compliant-components.md) 
 
 
 - [RKE2 FIPS 140-2 Enablement](https://docs.rke2.io/security/fips_support)

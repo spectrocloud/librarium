@@ -21,33 +21,33 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 <br />
 
-1. [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile)
+1. [Model Edge Native Cluster Profile](../site-deployment/model-profile.md)
 
 
-2. [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
+2. [Prepare Edge Hosts for Installation](../site-deployment/stage.md)
 
 
-3. [Perform Site Install](/clusters/edge/site-deployment/site-installation)
+3. [Perform Site Install](../site-deployment/site-installation/site-installation.md)
 
   :::info
 
-  In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](/clusters/edge/edge-native-lifecycle) resource, highlighting the various roles involved.
+  In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](../edge-native-lifecycle.md) resource, highlighting the various roles involved.
 
   :::
 
 
 ## Resources
 
-- [Model Cluster Profile](/clusters/edge/site-deployment/model-profile)
+- [Model Cluster Profile](model-profile.md)
 
 
-- [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
+- [Prepare Edge Hosts for Installation](stage.md)
 
 
-- [Perform Site Install](/clusters/edge/site-deployment/site-installation)
+- [Perform Site Install](site-installation/site-installation.md)
 
 
-- [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration)
+- [Register Edge Host](site-installation/edge-host-registration.md)
 
 
-- [Create Cluster Definition](/clusters/edge/site-deployment/site-installation/cluster-deployment)
+- [Create Cluster Definition](site-installation/cluster-deployment.md)

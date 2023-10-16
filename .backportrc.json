@@ -3,7 +3,7 @@
   "repoName": "librarium",
   "editor": "code",
 
-  "targetBranchChoices": ["master", "version-4-0", "version-3-4", "version-3-3"],
+  "targetBranchChoices": ["master", "version-4-0", "version-3-4"],
 
   "autoMerge": true,
   "autoMergeMethod": "squash",

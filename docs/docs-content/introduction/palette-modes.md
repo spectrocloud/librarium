@@ -15,7 +15,7 @@ Palette supports two consumption modes - each aimed at different use cases and, 
 
 ### What is Cluster Mode?
 
-Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a [_Host Cluster_](/glossary-all#hostcluster). 
+Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a [_Host Cluster_](../glossary-all.md#host-cluster). 
 
 Cluster mode is frequently leveraged by personas such as platform engineers, infrastructure engineers, system administrators, and others who are in a role that requires them to support infrastructure. These personas frequently leverage cluster mode to specify attributes that should make up the Kubernetes cluster, and where and how the cluster should be deployed. These operators leverage a concept we call [_Cluster Profiles_](../profiles/cluster-profiles/cluster-profiles.md). Other users such as developers, can also leverage cluster mode and cluster profiles to deploy a Kubernetes cluster for ad-hoc purposes, such as research efforts.
 
@@ -31,12 +31,12 @@ Virtual clusters are powerful and beneficial to teams due to their characteristi
 - Removes the infrastructure overhead for downstream consumers
 - Reduces the need to set up or manage complicated Kubernetes namespaces and roles. Teams can instead receive their own virtual cluster without worrying about permissions or affecting other teams’ resources.
 
-Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](/devx/palette-virtual-clusters/pause-restore-virtual-clusters) virtual clusters, which helps significantly in reducing costs. App mode heavily leverages virtual clusters. 
+Virtual clusters help reduce development time by allowing downstream consumers to focus more on application development versus addressing infrastructure overhead. You can also [pause and resume](../devx/palette-virtual-clusters/pause-restore-virtual-clusters.md) virtual clusters, which helps significantly in reducing costs. App mode heavily leverages virtual clusters. 
 
 
 ### What is App Mode?
 
-App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](/devx/app-profile). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
+App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](../devx/app-profile/app-profile.md). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
 
 App mode comes with an out-of-the-box cluster group managed by us here at Spectro Cloud called _beehive_.  This cluster group, which under the cover is a collection of Kubernetes clusters, is configured to support Palette Virtual Clusters. As a consumer, you can deploy a new virtual cluster to the beehive cluster group and get started with a Kubernetes cluster in minutes. 
 
@@ -60,7 +60,7 @@ You might ask yourself, "How do I know which mode I should use?” The answer co
 - Choose app mode if you want to simply deploy an application using Kubernetes without the infrastructure overhead. If you want to simply try out Palette, app mode is a good starting point. 
 
  
-App Mode may not meet your needs if your application requires a lot of resources. The Palette-managed cluster group, called Beehive, imposes a resource limitation that could prevent a resource-heavy application from launching successfully. Review the [Resource Quota](/devx/manage-dev-engine/resource-quota) documentation to understand App Mode limits. If you already have Palette-managed Kubernetes host clusters deployed or available to you as a cluster group with Palette Virtual Clusters enabled, then leveraging App Mode is a great fit so you can focus on the developer experience aspect.
+App Mode may not meet your needs if your application requires a lot of resources. The Palette-managed cluster group, called Beehive, imposes a resource limitation that could prevent a resource-heavy application from launching successfully. Review the [Resource Quota](../devx/manage-dev-engine/resource-quota.md) documentation to understand App Mode limits. If you already have Palette-managed Kubernetes host clusters deployed or available to you as a cluster group with Palette Virtual Clusters enabled, then leveraging App Mode is a great fit so you can focus on the developer experience aspect.
 
 Below are some of the characteristics of each mode. Use this to help you better understand the differences between the two modes. 
 

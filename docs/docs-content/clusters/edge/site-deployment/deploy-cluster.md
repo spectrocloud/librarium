@@ -71,7 +71,7 @@ You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.c
 * A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a [free trial](https://www.spectrocloud.com/free-tier/).
 
 
-* A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to generate a new registration token. For detailed instructions, refer to the [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide. Copy the newly created token to a clipboard or notepad file to use later in this tutorial. 
+* A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to generate a new registration token. For detailed instructions, refer to the [Create Registration Token](../site-deployment/site-installation/create-registration-token.md) guide. Copy the newly created token to a clipboard or notepad file to use later in this tutorial. 
 
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in Palette. 
 
@@ -159,7 +159,7 @@ cat .arg
 <br />
 
 
-Refer to the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about customizing arguments.
+Refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide to learn more about customizing arguments.
 <br />
 
 ## Create User Data
@@ -333,7 +333,7 @@ docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
 
 :::caution
 
-As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. If you want to use a different image registry, refer to the Advanced workflow in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn how to use another registry.
+As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. If you want to use a different image registry, refer to the Advanced workflow in the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide to learn how to use another registry.
 
 :::
 <br />
@@ -416,7 +416,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 - The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
 
   - The `-force` flag destroys any existing template. 
-  - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](https://docs.spectrocloud.com/clusters/edge/architecture/#minimumdevicerequirements).
+  - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](../architecture/#minimum-device-requirements).
 
 The **vsphere.hcl** file content is shown below for your reference. This tutorial does not require you to modify these configurations. 
 <br />
@@ -613,7 +613,7 @@ Open a web browser and log in to [Palette](https://console.spectrocloud.com). Na
 
 
 If the three Edge hosts are not displayed in the **Edge hosts** tab, the automatic registration failed. If this happens, you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host registration process for each of the three VMs.
-If you need help, the detailed instructions are available in the [Register Edge Host](/clusters/edge/site-deployment/site-installation/edge-host-registration) guide.
+If you need help, the detailed instructions are available in the [Register Edge Host](../site-deployment/site-installation/edge-host-registration.md) guide.
 <br />
 
 ## Deploy a Cluster
@@ -659,7 +659,7 @@ In the **Cloud Type** section, choose **Edge Native** and click on **Next** at t
 
 ### Profile Layers
 
-In the **Profile Layers** section, add the following [BYOS Edge OS](/integrations/byoos) pack to the OS layer.
+In the **Profile Layers** section, add the following [BYOS Edge OS](../../../integrations/byoos.md) pack to the OS layer.
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
@@ -709,7 +709,7 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 |Kubernetes|Public Repo|Palette Optimized K3s|`1.25.x`|
 
 
-Select the K3s version 1.25.x. 1.25.X because earlier in this tutorial, you pushed a provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](/clusters/cluster-management/macros).
+Select the K3s version 1.25.x. 1.25.X because earlier in this tutorial, you pushed a provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md).
 
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom CNI. 
@@ -835,7 +835,7 @@ Provide the following details for the master pool.
 |Node pool name| master-pool | 
 |Allow worker capability| Checked | 
 |Additional Labels (Optional) | None |
-|[Taints](/clusters/cluster-management/taints/)|Off|
+|[Taints](../../cluster-management/taints.md#taints)|Off|
 |Pool Configuration > Edge Hosts | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
 
 The screenshot below shows an Edge host added to the master pool.
@@ -985,16 +985,16 @@ Before you plan a production-level deployment at scale, you can prepare a small 
 
 To learn more about Edge,  check out the resources below.
 
-- [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos)
+- [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md)
 
 
-- [Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle)
+- [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md)
 
 
-- [Model Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile)
+- [Model Edge Native Cluster Profile](../site-deployment/model-profile.md)
 
 
-- [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage)
+- [Prepare Edge Hosts for Installation](../site-deployment/stage.md)
 
 
-- [Perform Site Install](/clusters/edge/site-deployment/site-installation)
+- [Perform Site Install](../site-deployment/site-installation/site-installation.md)

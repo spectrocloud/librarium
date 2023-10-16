@@ -15,7 +15,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
 
 - A [Cox Edge](https://portal.coxedge.com/login) account. 
 
-- A Cox Edge account registered in Palette. Check out the [Register and Manage Cox Edge Accounts](/clusters/public-cloud/cox-edge/add-cox-edge-accounts) guide to learn how to register a Cox Edge account in Palette.
+- A Cox Edge account registered in Palette. Check out the [Register and Manage Cox Edge Accounts](add-cox-edge-accounts.md) guide to learn how to register a Cox Edge account in Palette.
 
 - A cluster profile for Cox Edge clusters. If you need guidance creating a cluster profile, check out [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md).
 
@@ -46,7 +46,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
 
   :::caution
 
-  If you want to use the Kubernetes cluster autoscaler feature and you are using [Longhorn](/integrations/longhorn) for the storage container interface. Set the `charts.longhorn.defaultSettings.kubernetesClusterAutoscalerEnabled` parameter to `true`.
+  If you want to use the Kubernetes cluster autoscaler feature and you are using [Longhorn](../../../integrations/longhorn.md) for the storage container interface. Set the `charts.longhorn.defaultSettings.kubernetesClusterAutoscalerEnabled` parameter to `true`.
 
   ```yaml
   charts:
@@ -67,7 +67,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
     - Environment:  The Cox Edge environment to deploy the compute resources.
     - Update worker pools in parallel: Enable this checkbox if you wish to update worker pool nodes in parallel.
 
-9. Configure the master and worker node pools. The following input fields apply to Cox Edge master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) management page.  Click **Next** when you are done.
+9. Configure the master and worker node pools. The following input fields apply to Cox Edge master and worker node pools. For a description of input fields that are common across target platforms refer to the [Node Pools](../../cluster-management/node-pool.md) management page.  Click **Next** when you are done.
 
   <br />
 
@@ -78,13 +78,13 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
       - Deployment Name: The name to assign the Cox Edge deployment.
       - PoP: The Cox Edge location to target.
       - Instance Type: The compute size.
-      - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation.
+      - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](network-rules.md) documentation.
     
   <br />
 
   :::caution
 
-  Use the network rules specified in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation. If you fail to add the required network rules, Palette will be unable to deploy the cluster to Cox Edge.
+  Use the network rules specified in the [Network Rules](network-rules.md) documentation. If you fail to add the required network rules, Palette will be unable to deploy the cluster to Cox Edge.
 
   :::
 
@@ -94,10 +94,10 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
       - Deployment Name: The name to assign the Cox Edge deployment.
       - PoP: The Cox Edge location to target.
       - Instance Type: The compute size.
-      - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](/clusters/public-cloud/cox-edge/network-rules) documentation.
+      - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](network-rules.md) documentation.
 
 
-10. The settings page is where you can configure patching schedule, security scans, backup settings, set up role-based access control (RBAC), and enable [Palette Virtual Clusters](/devx/palette-virtual-clusters). Review the settings and make changes if needed. Click **Validate**.
+10. The settings page is where you can configure patching schedule, security scans, backup settings, set up role-based access control (RBAC), and enable [Palette Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Review the settings and make changes if needed. Click **Validate**.
 
 
 11. Review the settings summary and click **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.

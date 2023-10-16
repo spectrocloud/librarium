@@ -15,18 +15,7 @@ The following Palette downloads are available:
 
 ## Self-Hosted
 
-You can deploy a self-hosted Palette to your environment. Refer to the [Self-Hosted Installation](/enterprise-version/) documentation for additional guidance on how to install Palette. Palette VerteX installation guide can be found in the [Palette VerteX install](/vertex/install-palette-vertex) document.
-
-<br />
-
-:::caution
-
-
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](/enterprise-version/deploying-an-enterprise-cluster), or the [Kubernetes Install Helm Chart](/enterprise-version#kubernetesinstallhelmchart) guides for additional guidance on how to install Palette.
-
-:::
-
-<br />
+You can deploy a self-hosted Palette to your environment. Refer to the [Self-Hosted Installation](enterprise-version/install-palette/install-palette.md) documentation for additional guidance on how to install Palette. Palette VerteX installation guide can be found in the [Palette VerteX install](vertex/install-palette-vertex) document.
 
 ## SAAS - Private Cloud Gateway (PCG)
 
@@ -73,10 +62,12 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 |Version| Operating System |  Checksum (SHA256) |
 |---|---|---|
-|4.0.1| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.1/linux/cli/palette)| `44fe237d2dc8bec04e45878542339cbb5f279ed7374b5dfe6118c4cbe94132b4` |
+|4.0.5| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.5/linux/cli/palette)    | `6762a77c33045b05325a69cd8bcc19d233982441cacd76ebebff143b232a5fe9` | 
+|4.0.4| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.4/linux/cli/palette)    | `4c3885b6498a1d0015afca3d1a1761bca9ec8811caae6047bf3d0790f2aa5b5a` | 
+|4.0.3| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.3/linux/cli/palette)    | `55c8a0b181857e824e12d08ab9786c7b8b171a018c23228a1abd0167cb3788ca` | 
+|4.0.2| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.2/linux/cli/palette)| `01e6b9c73368319fe2855aedcf073526ab73b4ff635997257f8c10a11efd8f0c` |
+|4.0.1| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.1/linux/cli/palette)| `cd6b8fe35ded298fb5bdd0adcaea05774fcdcb62230430c6c8f915fa8464c49a` |
 |4.0.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.0.0/linux/cli/palette)| `44fe237d2dc8bec04e45878542339cbb5f279ed7374b5dfe6118c4cbe94132b4` |
-|3.4.0| [Linux-amd64](https://software.spectrocloud.com/palette-cli/v3.4.0/linux/cli/palette)| `9dd1e1c70b0b30c2a35b54d1cb54b230593842a114f8d7cbeebe4e882fa2795e`|
-|3.4.0| [OSX-arm64](https://software.spectrocloud.com/palette-cli/v3.4.0/osx/cli/palette)| `88b9e74705a0d66f9b34481002a8d33889c94ef7788a590807b1538e8513c62a`|
 
 
 
@@ -85,5 +76,4 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 |Version| Operating System |  Checksum (SHA256) |
 |-------|---| --- |
 |4.0.2 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v4.0.2/cli/linux/palette-edge) | `257d868b490979915619969815fd78aa5c7526faba374115f8d7c9d4987ba05d`|
-|3.4.3 |  [Linux-amd64](https://software.spectrocloud.com/stylus/v3.4.3/cli/linux/palette-edge) | `b53ccd28ea2a36a6eda43e0e7884c97bebd7d78922374168e1819b768df54f16`|
 

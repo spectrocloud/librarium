@@ -23,7 +23,7 @@ You can use Ubuntu as the base Operating System (OS) when deploying a host clust
 
 :::info
 
-Review [Maintenance Policy](/integrations/maintenance-policy#ospacks) to learn about pack update and deprecation schedules.
+Review [Maintenance Policy](maintenance-policy.md#os-packs) to learn about pack update and deprecation schedules.
 
 :::
 
@@ -178,7 +178,7 @@ Review the parameter documentation before you make changes to the kubeadm config
 
 :::
 
-Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu?22.04.x#ubuntupro) section below for more details.
+Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](ubuntu.md?22.04.x#ubuntupro) section below for more details.
 
 <br />
 
@@ -519,14 +519,14 @@ Review the parameter documentation before you make changes to the kubeadm config
 
 :::
 
-Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](/integrations/ubuntu?22.04.x#ubuntupro) section below for more details.
+Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](ubuntu.md?22.04.x#ubuntupro) section below for more details.
 
 <br />
 
 ## Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](/cluster-profiles/task-define-profile) guide to learn more about creating cluster profiles.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about creating cluster profiles.
 
 
 
@@ -865,7 +865,7 @@ data "spectrocloud_pack_simple" "ubuntu" {
 ## References
 
 
-- [Create a Cluster Profile](/cluster-profiles/task-define-profile)
+- [Create a Cluster Profile](../cluster-profiles/task-define-profile.md)
 
 
 - [Ubuntu Documentation](https://docs.ubuntu.com)

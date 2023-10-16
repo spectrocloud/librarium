@@ -20,13 +20,13 @@ Upon a successful sign-in to our platform, we start the onboarding process with 
 
 The product tour is followed by a Palette experience session.  Here we make sure that our users are guided through a successful deployment pipeline in their first use, instead of them just figuring things out along the way towards cluster creation.  The major components of this session are as follows:
 
-* [Create New Cluster](/clusters)
+* [Create New Cluster](../clusters/clusters.md)
 
   * Create a new cluster from scratch using any cloud environment or bare metal.
 
   * A system-level cluster profile is included for the users to explore the Palette functionalities easier and faster.
 
-* [Import Cluster](/clusters/imported-clusters)
+* [Import Cluster](../clusters/imported-clusters/cluster-import.md)
   * Bring your own cluster into Palette in two easy steps.
 
 * Out-of-the-box (OOTB) Configurations:
@@ -54,11 +54,11 @@ Palette requires the creation of a cluster profile before a workload cluster can
 * [Create your Cluster Profile](../profiles/cluster-profiles/cluster-profiles.md)
 
 
-* [Create your Cluster](/clusters)
+* [Create your Cluster](../clusters/clusters.md)
 
 
-* [Imported Clusters](/clusters/imported-clusters)
+* [Imported Clusters](../clusters/imported-clusters/cluster-import.md)
 
 
-* [Cluster Management](/clusters/cluster-management/#managecl)
+* [Cluster Management](../clusters/cluster-management/cluster-management.md)
 

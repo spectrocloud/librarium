@@ -31,7 +31,7 @@ To add an AWS cloud account using static access credentials follow these steps:
 
 - An AWS account
 - Sufficient access to create an IAM role or IAM user.
-- Palette IAM policies. Please review the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies) section for guidance.
+- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
 
 
 #### Add AWS Account to Palette
@@ -81,7 +81,7 @@ To add an AWS cloud account using STS credentials follow the steps below:
 
 - An AWS account
 - Sufficient access to create an IAM role or IAM user.
-- Palette IAM policies. Please review the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies) section for guidance.
+- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
 
 
 #### Add AWS Account to Palette
@@ -114,7 +114,7 @@ To add an AWS cloud account using STS credentials follow the steps below:
     - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 
 
-6. In the AWS console, assign the [Palette required IAM policies](/clusters/public-cloud/aws/required-iam-policies) to the role that Palette will use.
+6. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette will use.
     
 
 7. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
@@ -146,7 +146,7 @@ Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/gov
 
 - An AWS account
 - Sufficient access to create an IAM role or IAM user.
-- Palette IAM policies. Please review the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies) section for guidance.
+- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
 
 #### Add AWS GovCloud Account to Palette
 
@@ -194,7 +194,7 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
 
 - An AWS account
 - Sufficient access to create an IAM role or IAM user.
-- Palette IAM policies. Please review the [Required IAM Policies](/clusters/public-cloud/aws/required-iam-policies) section for guidance.
+- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
 
 
 #### Add AWS GovCloud Account to Palette
@@ -227,7 +227,7 @@ To add an AWS GovCloud cloud account using STS credentials follow the steps belo
     - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 
 
-6. In the AWS console, assign the [Palette required IAM policies](/clusters/public-cloud/aws/required-iam-policies) to the role that Palette will use.
+6. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette will use.
     
 
 7. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
@@ -246,4 +246,4 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 ## Next Steps
 
-Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To learn how to get started with deploying Kubernetes clusters to AWS, check out the [Create and Manage AWS IaaS Cluster](/clusters/public-cloud/aws/create-cluster) guide or the [Create and Manage AWS EKS Cluster](/clusters/public-cloud/aws/eks) guide.
+Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To learn how to get started with deploying Kubernetes clusters to AWS, check out the [Create and Manage AWS IaaS Cluster](create-cluster.md) guide or the [Create and Manage AWS EKS Cluster](eks.md) guide.

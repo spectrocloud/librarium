@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Deploy an Add-On Pack'
-title: 'Deploy an Add-On Pack'
-description: 'How to create and deploy an add-on pack using the manifest files or Helm charts in Spectro Cloud.'
+sidebar_label: 'Deploy a Custom Pack'
+title: 'Deploy a Custom Pack'
+description: 'How to create and deploy a custom pack using the manifest files or Helm charts in Spectro Cloud.'
 icon: ''
 hide_table_of_contents: false
 toc_min_heading_level: 2
@@ -10,8 +10,6 @@ sidebar_position: 40
 tags: ["packs", "tutorial"]
 ---
 
-
-# Deploy an Add-On Pack
 
 Custom add-on packs allow you to deploy Kubernetes applications in clusters and reuse them in multiple deployments. This ensures uniformity across your clusters. The primary use cases for creating custom packs are:
 
@@ -131,7 +129,7 @@ The **packs** directory contains the pack files. The **terraform** directory con
 ## Build a Pack
 
 Building a custom pack requires defining specific files. 
-As outlined in the [Adding Add-on Packs](/registries-and-packs/adding-add-on-packs) guide, you can define a custom pack in two ways: using manifest files or Helm charts. The file structure varies for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each:
+As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, you can define a custom pack in two ways: using manifest files or Helm charts. The file structure varies for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each:
 <br />
 
 <Tabs>
@@ -210,11 +208,10 @@ Ensure you have the following files in the current directory.
 ### Pack File Structure
 
 Go ahead and review each of the following five files in the pack.
-<br />
 
-* **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](/registries-and-packs/add-custom-packs#jsonschema) for a list of attributes and respective data types. The schema validation will happen when you push a pack to the registry.  
+* **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](add-custom-packs.md#json-schema) for a list of attributes and respective data types. The schema validation will happen when you push a pack to the registry.  
 
-  <br /> 
+  
 
   ```json
   {
@@ -253,7 +250,7 @@ Go ahead and review each of the following five files in the pack.
 
   <br />
 
-  You can optionally define *presets*, which are predefined values to use in the **values.yaml**. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer [Pack Presets](/registries-and-packs/pack-constraints#packpresets) for details and examples of how to define presets. 
+  You can optionally define *presets*, which are predefined values to use in the **values.yaml**. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets. 
   
   The example below shows the parameters you can configure in the **values.yaml** for the `hello-universe` manifest when you create the cluster profile. 
 
@@ -290,7 +287,7 @@ Start the registry server by issuing the following command from the bash session
 registry serve /etc/spectro/config.yml > /var/log/registry.log 2>&1 &
 ```
 
-The registry server will start in HTTP mode (not HTTPS). Refer to the [Add a Custom Registry](/registries-and-packs/adding-a-custom-registry) guide to learn more about deploying an HTTPS registry server. 
+The registry server will start in HTTP mode (not HTTPS). Refer to the [Add a Custom Registry](adding-a-custom-registry.md) guide to learn more about deploying an HTTPS registry server. 
 
 
 Next, expose the registry server to the public so that you can configure it later in Palette. Use Ngrok reverse proxy to expose the registry server listening on port 5000 via an HTTP tunnel using the following command. 
@@ -369,7 +366,7 @@ Verify the pack you pushed is listed, as shown in the screenshot below.
 
 <br />
 
-If you need help with the Spectro CLI commands, such as deleting a pack, refer to the [Spectro CLI commands](/registries-and-packs/spectro-cli-reference#commands) guide. 
+If you need help with the Spectro CLI commands, such as deleting a pack, refer to the [Spectro CLI commands](spectro-cli-reference.md#commands) guide. 
 <br /> 
 
 ### Configure the Registry Server in Palette
@@ -419,7 +416,7 @@ This tutorial guides you to create a cluster profile for AWS. However, you can c
 
 * **Cloud account**: A cloud account added to your Palette project settings. 
 
-  The AWS cloud account name in this tutorial example is **spectro-cloud**. You can choose another name if desired. The screenshot below shows how to add and verify the AWS cloud account with your project. Navigate to **Project Settings** > **Cloud Accounts** > **AWS** > **Add AWS Account** in Palette. Check out the [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts) guide for additional help. 
+  The AWS cloud account name in this tutorial example is **spectro-cloud**. You can choose another name if desired. The screenshot below shows how to add and verify the AWS cloud account with your project. Navigate to **Project Settings** > **Cloud Accounts** > **AWS** > **Add AWS Account** in Palette. Check out the [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for additional help. 
 
   <br />
 
@@ -499,7 +496,7 @@ As you add each layer, click on the **Next layer** button. After you add the **S
 Now you are ready to add the add-on layers. Click the **Add New Pack** button. 
 
 Add the Spectro Proxy pack to enable a reverse proxy to connect to the cluster's API. Adding this pack is *optional*, but it will help connect your local machine to the cluster's API for debugging. 
-Refer to the [Spectro Proxy](/integrations/frp/) guide for more details. 
+Refer to the [Spectro Proxy](../integrations/frp.md) guide for more details. 
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
@@ -946,11 +943,11 @@ Packs are the building blocks of cluster profiles, allowing you to customize you
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
 
-- [Custom OS Pack](/registries-and-packs/add-custom-packs#addinganospack)
+- [Custom OS Pack](add-custom-packs.md#add-a-custom-pack)
 
 
-- [Add-on Packs](/registries-and-packs/adding-add-on-packs)
+- [Add-on Packs](adding-add-on-packs.md)
 
 
-- [Pack Constraints](/registries-and-packs/pack-constraints)
+- [Pack Constraints](pack-constraints.md)
 

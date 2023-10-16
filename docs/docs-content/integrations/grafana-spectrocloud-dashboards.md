@@ -35,17 +35,17 @@ The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal clus
 
 ## Prerequisites
 
-* A host cluster that has the [Prometheus Operator pack](/integrations/prometheus-operator) `v45.4.X` or greater installed. Check out [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack) for instructions on how to deploy a monitoring stack.
+* A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) `v45.4.X` or greater installed. Check out [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) for instructions on how to deploy a monitoring stack.
 
 
-* A cluster profile with the [Prometheus Cluster Metrics](/integrations/prometheus-cluster-metrics) pack `v3.4.X` or greater installed.
+* A cluster profile with the [Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack `v3.4.X` or greater installed.
 
 
 ## Usage
 
 The Spectro Cloud Grafana Dashboards require no additional configuration and the pack is designed to work out-of-the-box. 
 
-You can learn how to add the Spectro Cloud Grafana Dashboards to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
+You can learn how to add the Spectro Cloud Grafana Dashboards to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
 
 <br />
 
@@ -77,13 +77,13 @@ data "spectrocloud_pack_simple" "spectro-cloud-grafana-dashboards" {
 
 ## References
 
-- [Enable Monitoring on Host Cluster](/clusters/cluster-management/monitoring/deploy-agent/).
+- [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
 
 
-- [Deploy Monitoring Stack](/clusters/cluster-management/monitoring/deploy-monitor-stack)
+- [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md)
 
 
-- [Prometheus Operator pack](/integrations/prometheus-operator)
+- [Prometheus Operator pack](prometheus-operator.md)
 
 
-- [Prometheus Agent](/integrations/prometheus-agent)
+- [Prometheus Agent](prometheus-agent.md)

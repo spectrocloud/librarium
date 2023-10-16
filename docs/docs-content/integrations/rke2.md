@@ -31,7 +31,7 @@ You can deploy RKE2 by adding this pack to a cluster profile. Once the cluster p
 
 :::caution
 
-RKE2 is only available for Edge host deployments. Refer to the [Edge](/clusters/edge) documentation to learn more about Edge.
+RKE2 is only available for Edge host deployments. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 
 :::
 
@@ -53,7 +53,7 @@ The following RKE2 versions are supported to work with Palette.
 
 - 4 CPU
 
-- An Edge host. Refer to the [Edge](/clusters/edge) documentation to learn more about Edge.
+- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 
 
 ## Usage
@@ -77,7 +77,7 @@ RKE2 offers several customization options, ranging from networking to security. 
 - [Advanced Options](https://docs.rke2.io/advanced)
 
 
-Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](/clusters/cluster-management) reference resource to learn more about Palette and Day-2 operations.
+Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about Palette and Day-2 operations.
 
 </TabItem>
 <TabItem label="1.25.x" value="k8s_rke2_1.25.x">
@@ -91,11 +91,11 @@ Many of the Day-2 cluster management responsibilities are handled by Palette. Re
 
 - 4 CPU
 
-- An Edge host. Refer to the [Edge](/clusters/edge) documentation to learn more about Edge.
+- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 
 ## Usage
 
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](/cluster-profiles/task-define-profile) guide.
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../cluster-profiles/task-define-profile.md) guide.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
 
@@ -114,7 +114,7 @@ RKE2 offers several customization options, ranging from networking to security. 
 - [Advanced Options](https://docs.rke2.io/advanced)
 
 
-Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](/clusters/cluster-management) reference resource to learn more about Palette and Day-2 operations.
+Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about Palette and Day-2 operations.
 
 </TabItem>
 <TabItem label="1.24.x" value="k8s_rke2_1.24.x">
@@ -128,12 +128,12 @@ Many of the Day-2 cluster management responsibilities are handled by Palette. Re
 
 - 4 CPU
 
-- An Edge host. Refer to the [Edge](/clusters/edge) documentation to learn more about Edge.
+- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 
 
 ## Usage
 
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](/cluster-profiles/task-define-profile) guide.
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../cluster-profiles/task-define-profile.md) guide.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
 
@@ -152,7 +152,7 @@ RKE2 offers several customization options, ranging from networking to security. 
 - [Advanced Options](https://docs.rke2.io/advanced)
 
 
-Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](/clusters/cluster-management) reference resource to learn more about Palette and Day-2 operations.
+Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about Palette and Day-2 operations.
 
 </TabItem>
 

@@ -85,7 +85,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   :::
 
 
-12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on existing clusters. Review the [Node Pool](/clusters/cluster-management/node-pool) management page to learn more. Toggle the **Taint** button to create a label. 
+12. An optional taint label can be applied to a node pool during the cluster creation. You can edit the taint label on existing clusters. Review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more. Toggle the **Taint** button to create a label. 
 
 
 
@@ -95,7 +95,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
     |-------------|---------------|
     |**Key**      |Custom key for the taint.|
     |**Value**    | Custom value for the taint key.|
-    | **Effect**  | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](/clusters/public-cloud/gcp/create-gcp-iaas-cluster#effecttable) below for more details. |
+    | **Effect**  | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](create-gcp-iaas-cluster#effect-table) below for more details. |
   
     #### Effect Table
     

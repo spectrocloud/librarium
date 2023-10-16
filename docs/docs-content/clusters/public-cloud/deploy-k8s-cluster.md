@@ -56,13 +56,13 @@ To complete this tutorial, you will need the following.
   <br />
 
 - Register the cloud account in Palette. The following resources provide additional guidance.
-  - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
-  - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
-  - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
+  - [Register and Manage AWS Accounts](aws/add-aws-accounts.md)
+  - [Register and Manage Azure Cloud Accounts](azure/azure-cloud.md)
+  - [Register and Manage GCP Accounts](gcp/add-gcp-accounts.md)
 
   <br />
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](/clusters/cluster-management/ssh-keys) guide to learn how to create an SSH key and upload it to Palette.
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
 
   - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) tutorial.
 
@@ -320,7 +320,7 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 #### Cluster Configuration
 
 
-The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account**, and **SSH Key**** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for information about uploading an SSH key.
+The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account**, and **SSH Key**** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](../cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
 
 
 <br />
@@ -332,7 +332,7 @@ When you are done selecting a **Subscription**, **Region**, **Resource Group**, 
 
 The **Nodes config** section allows you to configure the nodes that compose the control plane (master nodes) and data plane (worker nodes) of the Kubernetes cluster.
 
-Refer to the [Node Pool](https://docs.spectrocloud.com/clusters/cluster-management/node-pool) guide for a list and description of parameters.
+Refer to the [Node Pool](../cluster-management/node-pool.md) guide for a list and description of parameters.
 
 Before you proceed to next section, review the following parameters.
 
@@ -489,7 +489,7 @@ The **Nodes config** section allows you to configure the nodes that make up the 
 
 Before you proceed to the next section, review the following parameters.
 
-Refer to the [Node Pool](/clusters/cluster-management/node-pool) guide for a list and description of parameters.
+Refer to the [Node Pool](../cluster-management/node-pool.md) guide for a list and description of parameters.
 
 Before you proceed to next section, review the following parameters.
 - **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for the master pool and two for the worker pool.
@@ -730,9 +730,9 @@ To complete this tutorial, you will need the following items
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
   - [GCP](https://cloud.google.com/docs/get-started)
 - Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource for additional guidance.
-  - [Register and Manage AWS Accounts](/clusters/public-cloud/aws/add-aws-accounts)
-  - [Register and Manage Azure Cloud Accounts](/clusters/public-cloud/azure/azure-cloud)
-  - [Register and Manage GCP Accounts](/clusters/public-cloud/gcp#creatingagcpcloudaccount)
+  - [Register and Manage AWS Accounts](aws/add-aws-accounts.md)
+  - [Register and Manage Azure Cloud Accounts](azure/azure-cloud.md)
+  - [Register and Manage GCP Accounts](gcp/add-gcp-accounts.md)
 
 <br />
 
@@ -768,14 +768,14 @@ Download the tutorial image to your local machine.
 <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.5
+docker pull ghcr.io/spectrocloud/tutorials:1.0.7
 ```
 
 Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.7 bash
 ```
 
 Navigate to the tutorial code.
@@ -811,7 +811,7 @@ Check out the following git tag.
 <br />
 
 ```shell
-git checkout v1.0.4
+git checkout v1.0.7
 ```
 
 Change the directory to the tutorial code.
@@ -1235,7 +1235,7 @@ If you are using the tutorial container and want to exit the container, type `ex
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.7
 ```
 
 
@@ -1250,13 +1250,13 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 <br />
 
 
-- [Palette Modes](/introduction/palette-modes)
+- [Palette Modes](../../introduction/palette-modes.md)
 
 
 - [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
 
 
-- [Palette Clusters](/clusters) 
+- [Palette Clusters](../clusters.md) 
 
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)

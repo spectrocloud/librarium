@@ -19,17 +19,20 @@ Palette supports Single Sign-On (SSO) with a variety of Identity Providers (IDP)
 
 - OpenID Connect (OIDC) - OIDC more modern protocol designed for web and mobile applications. OIDC is built on top of [OAuth 2.0](https://www.rfc-editor.org/rfc/rfc6749), a widely used authorization framework. OIDC supports distributed identity providers and supports social login providers such as Google or GitHub.
 
-Enable SSO by following our [Enable SSO in Palette](/user-management/saml-sso/enable-saml) guide. 
+Enable SSO by following our [Enable SSO in Palette](enable-saml.md) guide. 
 
 ## Resources
 
-- [Enable SSO in Palette](/user-management/saml-sso/enable-saml)
+- [Enable SSO in Palette](enable-saml.md)
 
 
-- [Palette SSO with Azure Active Directory](/user-management/saml-sso/palette-sso-azure-ad)
+- [Palette SSO with Azure Active Directory](palette-sso-azure-ad.md)
 
 
-- [Enable SSO with Microsoft Active Directory Federation Service (AD FS)](/user-management/saml-sso/palette-sso-with-adfs)
+- [Enable SSO with Microsoft Active Directory Federation Service (AD FS)](palette-sso-with-adfs.md)
 
 
-- [Palette SSO with Okta](/user-management/saml-sso/palette-sso-with-okta)
+- [Palette SSO with Okta OIDC](palette-sso-with-okta.md)
+
+
+- [Palette SSO with Okta SAML](palette-sso-with-okta-saml.md)

@@ -51,6 +51,10 @@ NATS and the associated port, 4222, are deprecated and will be removed in a futu
 |message1.spectrocloud.com |443, 4222 |
 |message2.spectrocloud.com |443, 4222 |
 |message3.spectrocloud.com |443, 4222 |
+|msg.spectrocloud.com |443 |
+|msg1.spectrocloud.com |443 |
+|msg2.spectrocloud.com |443 |
+|msg3.spectrocloud.com |443 |
 |console.spectrocloud.com |443 |
 |proxy.console.spectrocloud.com |443 |
 |registry.spectrocloud.com |443 |

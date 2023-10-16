@@ -45,7 +45,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
 
-6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile#createedgenativeclusterprofile) guide. Click on **Next** after you have selected a cluster profile.
+6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
 
 7. Review your cluster profile values and make changes as needed. Click on **Next**.
 
@@ -76,7 +76,7 @@ After you create the cluster, the Palette Edge Host agent will start the install
 
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
-You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) guide to learn how to use `kubectl` with a host cluster.
+You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the [Access Cluster with CLI](../../../cluster-management/palette-webctl.md) guide to learn how to use `kubectl` with a host cluster.
 
 
 
@@ -137,7 +137,7 @@ The Palette Edge Host agent will start the installation process. You can track t
 
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
-You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the [Access Cluster with CLI](/clusters/cluster-management/palette-webctl#overview) to learn how to use `kubectl` with a host cluster.
+You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the [Access Cluster with CLI](../../../cluster-management/palette-webctl.md) to learn how to use `kubectl` with a host cluster.
 
 
 

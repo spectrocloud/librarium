@@ -75,7 +75,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
     | **Mount Path**    | A path to access the volume.                      |
 
 
-6. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides. 
+6. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides.
 
 7. When you have provided the required configuration information for the container, click **Review**. Your app profile is now created and can be deployed.
 

@@ -36,3 +36,15 @@ palette-docs.pdf
 
 docs/api-content/api-docs/v1/*.mdx
 docs/api-content/api-docs/v1/sidebar.js
+
+# Versions Content
+versions.json
+versioned_docs/
+versioned_sidebars/
+api_versions.json
+api_versioned_docs/
+api_versioned_sidebars/
+versioned_sidebars/*
+temp.docusaurus.config.js
+staging_docs/
+staging_sidebars/

@@ -40,10 +40,10 @@ Creating a content bundle provides several benefits that may address common use 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
 
-- Palette API key. Refer to the [User Authentication](/user-management/user-authentication/#apikey) resource to learn how to create a Palette API key.
+- Palette API key. Refer to the [User Authentication](../../../user-management/user-authentication.md/#api-key) resource to learn how to create a Palette API key.
 
 
-- An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](/clusters/edge/site-deployment/model-profile) guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach to your cluster.
+- An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach to your cluster.
 
 
 - Content tags in your profiles highlight the exact location of container images to be downloaded.
@@ -135,4 +135,4 @@ You can validate that the ISO image has not been corrupted by attempting to flas
 
 ## Next Steps
 
-Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) guide.
+Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check out the [Build Images](../edgeforge-workflow/palette-canvos.md) guide.

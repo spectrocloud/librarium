@@ -12,9 +12,9 @@ When you install the Private Cloud Gateway (PCG), a cloud account is auto-create
 
 ## Prerequisites
 
-- An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](/clusters/data-center/maas/install-manage-maas-pcg) for guidance.
+- An installed PCG if you do not have a direct connection to the MAAS environment. Review [Install and Manage MAAS Gateway](install-manage-maas-pcg.md) for guidance.
 
-  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the [Architecture](/clusters/data-center/maas/architecture) page.
+  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the [Architecture](architecture.md) page.
 
 
 
@@ -42,9 +42,9 @@ Follow these steps to create additional MAAS cloud accounts.
 
 4. In the next window that displays, enter values for properties listed in the following table.
 
-    In a self-hosted environment where Palette has direct network access to MAAS, you can register a MAAS cloud account without installing the PCG. Note the **Use System Private Gateway** setting listed in the table. refer to the System Private Gateway section in the [Architecture](/clusters/data-center/maas/architecture) page to learn more about System Private Gateway.
+    In a self-hosted environment where Palette has direct network access to MAAS, you can register a MAAS cloud account without installing the PCG. Note the **Use System Private Gateway** setting listed in the table. refer to the System Private Gateway section in the [Architecture](architecture.md) page to learn more about System Private Gateway.
 
-Refer to the Deploy with PCG and system PCG in the [Architecture](/clusters/data-center/maas/architecture) page to learn more about system PCG.
+Refer to the Deploy with PCG and system PCG in the [Architecture](architecture.md) page to learn more about system PCG.
 
 <br />
 
@@ -73,7 +73,7 @@ You can validate your MAAS cloud account is registered by reviewing the **Cloud 
 
 ## Next Steps
 
-Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and Manage MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters) for guidance.
+Deploy a Kubernetes cluster to one of your MAAS accounts. Check out [Create and Manage MAAS Cluster](create-manage-maas-clusters.md) for guidance.
 
 
 

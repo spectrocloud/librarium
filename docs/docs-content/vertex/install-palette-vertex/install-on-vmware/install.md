@@ -28,17 +28,17 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
 
 
 
-- Palette CLI installed and available. Refer to the Palette CLI [Install](/palette-cli/install-palette-cli#downloadandsetup) page for guidance.
+- Palette CLI installed and available. Refer to the Palette CLI [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
 
-- Review required VMware vSphere environment [permissions](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements).
+- Review required VMware vSphere environment [permissions](vmware-system-requirements.md).
 
 
 
-- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional sizing information.
+- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](../install-palette-vertex.md#instance-sizing) for additional sizing information.
 
     - 8 CPUs per VM.
 
@@ -63,7 +63,7 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 
-- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements#zonetagging) for information.
+- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
 
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
@@ -77,7 +77,7 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
 
 :::info
 
-Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the [VMware](/clusters/data-center/vmware) guide.
+Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
@@ -96,7 +96,7 @@ Use the following steps to install Palette VerteX.
 
 <br />
 
-1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](/palette-cli/commands#ec). 
+1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands.md#ec). 
 
   <br />
 
@@ -172,7 +172,7 @@ Use the following steps to install Palette VerteX.
 
 <br />
 
-10. Next, specify the database storage size to allocate for Palette VerteX. The default is 20 GB. Refer to the [size guidelines](/vertex/install-palette-vertex#sizeguidelines) for additional information.
+10. Next, specify the database storage size to allocate for Palette VerteX. The default is 20 GB. Refer to the [size guidelines](../install-palette-vertex.md#instance-sizing) for additional information.
 
 
 
@@ -296,7 +296,7 @@ Use the following steps to install Palette VerteX.
 16. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
 
 
-17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](/vertex/system-management/tenant-management) guide. 
+17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../../system-management/tenant-management.md) guide. 
 
   <br />
 
@@ -331,13 +331,11 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Refer to [Create a Tenant](/vertex/system-management/tenant-management) for instructions. 
+You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Refer to [Create a Tenant](../../system-management/tenant-management.md) for instructions. 
 
 After you create the tenant, you are ready to configure authentication types in tenant settings and create users and teams.
 
 ## Resources
 
-- [Create a Tenant](/vertex/system-management/tenant-management) 
-
-<br />
+- [Create a Tenant](../../system-management/tenant-management.md) 
    

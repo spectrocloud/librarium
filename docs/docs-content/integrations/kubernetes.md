@@ -16,7 +16,7 @@ We also support managed Kubernetes distributions for Elastic Kubernetes Service 
 
 We offer PXK as a core pack in Palette. 
 
-Review our [Maintenance Policy](/integrations/maintenance-policy) to learn about pack update and deprecation schedules.
+Review our [Maintenance Policy](maintenance-policy.md) to learn about pack update and deprecation schedules.
 
 ## What is PXK?
 
@@ -30,7 +30,7 @@ There are no changes to the Kubernetes source code and we also follow the same v
 
 :::info
 
-We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the [PXK-E glossary definition](/glossary-all#paletteextendedkubernetesedge(pxk-e)) to learn more about PXK-E.   
+We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the [PXK-E glossary definition](../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) to learn more about PXK-E.   
 
 :::
 
@@ -61,8 +61,8 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 |-----------|-------------|
 | `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
-| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configure-oidc-identity-provider). |
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
+| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](kubernetes.md#configure-oidc-identity-provider). |
 | `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
 | `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
 | `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
@@ -71,21 +71,20 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 | `kubeadmconfig.files` | A list of additional files to copy to the nodes.|
 | `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
 | `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
-| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configure-custom-oidc). |
-
+| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc). |
 ## Usage 
   
 The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.27#change-cluster-dns-service-domain).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain).
 
-- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configure-custom-oidc).
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configure-custom-oidc).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -118,7 +117,6 @@ palette:
        identityProvider: <your_idp_selection>
 ```
 
-<br />
 
 ### Example Kubeadm Configuration File 
 
@@ -231,7 +229,6 @@ kubeadmconfig:
     #oidc-extra-scope: profile,email
 ```
 
-<br />
 
 ### Configure OIDC Identity Provider
 
@@ -239,7 +236,7 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
@@ -249,13 +246,12 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
-- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
-- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
   :::info
 
@@ -263,18 +259,17 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 ### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs>
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 
@@ -337,11 +332,10 @@ clientConfig:
 
 </Tabs>
 
-<br />
 
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
@@ -374,8 +368,8 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 |-----------|-------------|
 | `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.26#change-cluster-dns-service-domain-1) section. |
-| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.26#change-cluster-dns-service-domain-1) section. |
+| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](kubernetes.md#configure-oidc-identity-provider). |
 | `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
 | `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
 | `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
@@ -384,7 +378,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `kubeadmconfig.files` | A list of additional files to copy to the nodes.|
 | `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
 | `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
-| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
+| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configurecustomoidc). |
 
 ## Usage 
   
@@ -392,13 +386,13 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
-- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configurecustomoidc).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.26#change-cluster-dns-service-domain-1).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.26#change-cluster-dns-service-domain-1).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -546,7 +540,6 @@ kubeadmconfig:
     #oidc-extra-scope: profile,email
 ```
 
-<br />
 
 ### Configure OIDC Identity Provider
 
@@ -554,7 +547,8 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+
 
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
@@ -565,13 +559,12 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
-- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
-- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
   :::info
 
@@ -579,18 +572,17 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-<br />
 
 ### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs>
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 
@@ -653,11 +645,10 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 </Tabs>
 
-<br />
 
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
@@ -692,8 +683,8 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 |-----------|-------------|
 | `pack.podCIDR` | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | `pack.serviceClusterIpRange` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.25#change-cluster-dns-service-domain) section. |
-| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](/integrations/kubernetes#configureoidcidentityprovider). |
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.25#change-cluster-dns-service-domain) section. |
+| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](kubernetes.md#configure-oidc-identity-provider). |
 | `kubeadmconfig.apiServer.extraArgs` | A list of additional apiServer flags you can set.|
 | `kubeadmconfig.apiServer.extraVolumes` | A list of additional volumes to mount on the apiServer.|
 | `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.|
@@ -702,7 +693,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `kubeadmconfig.files` | A list of additional files to copy to the nodes.|
 | `kubeadmconfig.preKubeadmCommands` | A list of additional commands to invoke **before** running kubeadm commands.|
 | `kubeadmconfig.postKubeadmCommands` | A list of additional commands to invoke **after** running kubeadm commands.|
-| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). |
+| `kubeadmconfig.clientConfig` | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configurecustomoidc). |
 
 ## Usage 
   
@@ -710,13 +701,13 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). 
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configurecustomoidc). 
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.25#change-cluster-dns-service-domain).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.25#change-cluster-dns-service-domain).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -738,13 +729,11 @@ You can only specify the service domain at cluster creation. After cluster creat
 
 For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
-<br />
 
 ### Configuration Changes
 
 The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the ``identityProvider`` parameter. 
 
-<br />
 
 ```yaml hideClipboard
 palette:
@@ -753,7 +742,6 @@ palette:
        identityProvider: <your_idp_selection>
 ```
 
-<br />
 
 ### Example Kubeadm Configuration File 
 
@@ -864,7 +852,6 @@ kubeadmconfig:
     #oidc-extra-scope: profile,email
   ```
 
-  <br />
 
 ### Configure OIDC Identity Provider
 
@@ -872,7 +859,7 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
@@ -883,13 +870,12 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
-- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
   :::info
 
@@ -897,18 +883,17 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-  <br />
 
 ### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs>
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 
@@ -942,8 +927,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-<br />
-
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
 ```yaml
@@ -972,11 +955,9 @@ clientConfig:
 
 </Tabs>
 
-<br />
-
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
@@ -1011,7 +992,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 |-----------|-------------|
 | ``pack.podCIDR`` | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`|
 | ``pack.serviceClusterIpRange`` | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`|
-| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.24#change-cluster-dns-service-domain) section. |
+| `pack.serviceDomain` | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.24#change-cluster-dns-service-domain) section. |
 | ``kubeadmconfig.apiServer.extraArgs`` | A list of additional apiServer flags you can set.|
 | ``kubeadmconfig.apiServer.extraVolumes`` | A list of additional volumes to mount on apiServer.|
 | ``kubeadmconfig.controllerManager.extraArgs`` | A list of additional ControllerManager flags to set.|
@@ -1027,13 +1008,13 @@ The Kubeadm configuration file is where you can do the following:
 
 - Change the default ``podCIDR`` and ``serviceClusterIpRange`` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](/clusters) guide and [Cluster Deployment Errors](https://docs.spectrocloud.com/troubleshooting/cluster-deployment). 
+  As you build your cluster, check that the ``podCIDR`` value does not overlap with any hosts or with the service network and the ``serviceClusterIpRange`` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md). 
 
-- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc).
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out [Configure Custom OIDC](#configurecustomoidc).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](/integrations/kubernetes?versions=k8s_v1.24#change-cluster-dns-service-domain). 
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.24#change-cluster-dns-service-domain). 
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](/integrations/frp) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -1055,7 +1036,6 @@ You can only specify the service domain at cluster creation. After cluster creat
 
 For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
 
-<br />
 
 ### Configuration Changes
 
@@ -1068,7 +1048,6 @@ palette:
        identityProvider: <your_idp_selection>
 ```
 
-<br />
 
 ### Example Kubeadm Configuration File 
 
@@ -1149,7 +1128,6 @@ kubeadmconfig:
   #oidc-client-secret: yourSecretClientSecretGoesHere
   #oidc-extra-scope: profile,email
   ```
-<br />
 
 ### Configure OIDC Identity Provider
 
@@ -1157,7 +1135,7 @@ Platforms that use PXK can use the OIDC IDP feature, which offers the convenienc
 
 When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below. 
 
-All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings). 
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). You can also configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
@@ -1167,13 +1145,11 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-<br />
-
-- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](/integrations/kubernetes#configurecustomoidc). This setting displays in the YAML file as `none`.
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
 
-- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](/user-management/saml-sso) guide.
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
   :::info
 
@@ -1181,18 +1157,17 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
   :::
 
-<br />
 
 ### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs>
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 
@@ -1226,8 +1201,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-<br />
-
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
   ```yaml
@@ -1256,11 +1229,9 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 </Tabs>
 
-<br />
-
 ### Use RBAC with OIDC
 
-You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](/clusters/cluster-management/cluster-rbac/#createrolebindings).
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group. 
 
@@ -1313,4 +1284,4 @@ data "spectrocloud_pack_simple" "k8s" {
 
 
 
-- [Image Swap with Palette](/clusters/cluster-management/image-swap)
+- [Image Swap with Palette](../clusters/cluster-management/image-swap.md)

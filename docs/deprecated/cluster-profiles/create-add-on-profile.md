@@ -59,7 +59,7 @@ Use the following steps to learn how to create an add-on cluster profile.
 
 ### Prerequisites
 
-* Your Palette account role must have the `clusterProfile.create` permission to create an Add-on cluster profile. Refer to the [Cluster Profile](/user-management/palette-rbac/project-scope-roles-permissions#clusterprofile) permissions documentation for more information about roles and permissions.
+* Your Palette account role must have the `clusterProfile.create` permission to create an Add-on cluster profile. Refer to the [Cluster Profile](../user-management/palette-rbac/project-scope-roles-permissions.md#clusterprofile) permissions documentation for more information about roles and permissions.
 
 
 ### Create Steps
@@ -116,7 +116,7 @@ Use the following steps to learn how to create an add-on cluster profile.
 
 
 
-You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. You can also update a cluster profile and decide what clusters to apply the new version to. Refer to the [Update Cluster Profile](/cluster-profiles/task-update-profile) guide for more information about update operations.
+You now have an add-on cluster profile. You can reuse the profile and apply it to several clusters. You can also update a cluster profile and decide what clusters to apply the new version to. Refer to the [Update Cluster Profile](../cluster-profiles/task-update-profile.md) guide for more information about update operations.
 
 
 ### Validate

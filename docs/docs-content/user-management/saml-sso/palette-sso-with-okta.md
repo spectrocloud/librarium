@@ -1,19 +1,14 @@
 ---
-sidebar_label: 'Palette SSO with Okta'
-title: 'Set up Palette SSO with Okta'
-description: 'Set up Palette SSO with Okta'
+sidebar_label: 'Palette SSO with Okta OIDC'
+title: 'Enable SSO with Okta OIDC'
+description: 'Set up Palette SSO with Okta OIDC'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 hiddenFromNav: false
-tags: ["user-management", "saml-sso"]
+tags: ["user-management", "oidc-sso", "okta"]
 ---
 
-
-
-
-
-# Enable SSO with Okta
 
 Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses certificates to establish and maintain a trust relationship between the Service Provider (SP) and an Identity Provider (IdP). Palette supports SSO based on either the Security Assertion Markup Language (SAML) or OpenID Connect (OIDC).
 
@@ -28,8 +23,9 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 - If you want to use the same Okta application for OIDC-based SSO into your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
 
 
-## Enablement
-## Create the Okta Application
+## Okta with OIDC
+
+### Create the Okta Application
 
 1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
 
@@ -124,7 +120,7 @@ The following steps will guide you on how to enable Palette SSO with [Okta Workf
 
 <br />
 
-## Create an Okta Authorization Server
+### Create an Okta Authorization Server
 
 To ensure Okta issues OIDC tokens with the correct claims, you must create a custom Authorization Server. A custom Authorization Server is required to customize the authorization tokens issued by Okta so that they contain the necessary OIDC claims required by Palette and Kubernetes. 
 
@@ -220,7 +216,7 @@ To ensure Okta issues OIDC tokens with the correct claims, you must create a cus
 You have now completed all configuration steps in Okta.
 <br />
 
-##  Enable OIDC SSO in Palette
+### Enable OIDC SSO in Palette
 
 22. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription.
 
@@ -247,7 +243,8 @@ Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the fol
 23. When all the information has been entered, click **Enable** to activate SSO. You will receive a message stating **OIDC configured successfully**.
 
 
-## Create Teams in Palette
+###
+ Create Teams in Palette
 
 The remaining step is to create teams in Palette for the group that you allowed to be passed in the OIDC ticket in Okta, and give them the appropriate permissions. For this example, you will create the `palette-tenant-admins` team and give it **Tenant Admin** permissions. You can repeat this for any other team that you have a matching Okta group for.
 
@@ -290,7 +287,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 You have now successfully configured Palette SSO based on OIDC with Okta.
 
 
-## Validate
+### Validate
 
 1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that users are automatically added to the `palette-tenant-admins` group in Palette. If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User  Drop-down Menu** at the top right.
 
@@ -325,12 +322,13 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
 
 
+
 ## Resources
 
 - [Okta Workforce Identity Cloud](https://www.okta.com/products/single-sign-on/)
 
 
-- [Palette User Management](/user-management)
+- [Palette User Management](../user-management.md)
 
 
-- [Palette SSO](/user-management/saml-sso)
+- [Palette SSO](./saml-sso.md)

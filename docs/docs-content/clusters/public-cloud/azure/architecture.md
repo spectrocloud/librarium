@@ -25,6 +25,7 @@ The following are some architectural highlights of Azure clusters deployed by Pa
 - None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is accessed through a public load balancer.
 
 
+
 ![An Azure IaaS architecture diagram](/clusters_azure_architecture_iaas-overview.png)
 
 
@@ -33,10 +34,10 @@ The following are some architectural highlights of Azure clusters deployed by Pa
 
 The integration between Palette and Azure AKS unlocks the following capabilities.
 
-- Palette platform enables containerized applications' effortless deployment and management with fully managed AKS.
+- Palette platform enables effortless deployment and management of containerized applications with fully managed AKS.
 
 
-- Palette provides the you with a with serverless Kubernetes experience, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance.
+- Palette provides you with a with serverless Kubernetes experience, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance.
 
 
 - Palette helps you unite the development and operations to a single platform.  This unification helps you achieve faster builds, delivery, and scaling of applications with credence.
@@ -58,7 +59,7 @@ During an Azure cluster deployment, Palette creates an [Azure storage account](h
 Before the Azure cluster creation process, you must have created custom storage accounts or containers. All custom storage accounts and containers will be listed in the **Cluster config** page during the cluster creation process. If you need help creating a custom storage account or container, check out the Azure [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) guide or the Azure [Manage Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal) guide.
 
 
-The following section covers a few scenarios where you have the need to customize Azure storage in an Azure cluster.
+The following sections cover a few scenarios where you have the need to customize Azure storage in an Azure cluster.
 
 ## Custom Name
 
@@ -71,12 +72,53 @@ To restrict the user access to the storage resource, apply custom policies, or l
 
 ## Network Access
 
-Clusters that use a Palette self-hosted [Private Cloud Gateway](/clusters/public-cloud/azure/gateways/) (PCG), should use a custom storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access and use private access for the Azure storage account.
+Clusters that use a Palette self-hosted [Private Cloud Gateway](gateways.md) (PCG), should use a custom storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access and use private access for the Azure storage account.
+
+
+## Pricing Options
+
+You can configure Service Level Agreements (SLA)-based [pricing options](https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers) for Azure AKS cluster control planes. You have the ability to set these options in the Kubernetes YAML file, allowing you to embed pricing options in the cluster profile.
+
+Use the `managedControlPlane.sku` parameter, as shown in the examples, to specify `Standard` for production clusters and `Free` for non-production or small clusters.
+
+
+<Tabs queryString="charge-options">
+<TabItem label="Standard" value="standard">
+
+  ```yaml
+  managedControlPlane:
+    aadProfile:
+      managed: true
+      adminGroupObjectIDs:
+      - <id>
+    sku: Standard  
+  ``` 
+
+</TabItem>
+
+<TabItem label="Free" value="free">
+
+  ```yaml
+  managedControlPlane:
+    aadProfile:
+      managed: false
+      adminGroupObjectIDs:
+      - <id>
+    sku: Free  
+  ``` 
+
+</TabItem>
+
+</Tabs>
+
+
+
+
 
 
 ## Tags
 
-You can assign tags to clusters deployed to Azure. Tags can help you with user access control management and more granularly restrict access to various Palette resources, including clusters. Check out the [Resource Filters](/clusters/cluster-management/cluster-tag-filter/create-add-filter) documentation page to learn more about using tags to restrict resource access. 
+You can assign tags to clusters deployed to Azure. Tags can help you with user access control management and more granularly restrict access to various Palette resources, including clusters. Check out the [Resource Filters](../../cluster-management/cluster-tag-filter/create-add-filter.md) documentation page to learn more about using tags to restrict resource access. 
 
 The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value pair format: `department:finance`.
 

@@ -223,7 +223,7 @@ However, if the PCG cluster provisioning gets stuck, it could hint at incorrect 
 5. Examine all events in the **Events** tab to identify specific errors or issues. Each event will have a status, timestamp, associated service name, and orchestration details. 
 
 
-6.  If you encounter one of the following error events - `Failed to deploy image: Failed to create govomiClient` or `No route to host`, refer to the remediation steps outlined in the [Scenario - Failed to Deploy Image](#scenario-failedtodeployimage) or the [Scenario - No Route to the Kubernetes API Server](#scenario-noroutetothekubernetesapiserver) section, respectively.
+6.  If you encounter one of the following error events - `Failed to deploy image: Failed to create govomiClient` or `No route to host`, refer to the remediation steps outlined in the [Scenario - Failed to Deploy Image](#scenario---failed-to-deploy-image) or the [Scenario - No Route to the Kubernetes API Server](#scenario---no-route-to-the-kubernetes-api-server) section, respectively.
 
 
 7. If you encounter errors other than the ones mentioned in the previous step, it is possible that the cluster configuration or the DNS settings are not set correctly. You can review and edit the cluster configuration in the cluster settings. The screenshot below highlights the cluster configuration section in the cluster settings blade. 
@@ -390,7 +390,7 @@ You must have the necessary permissions to provision a PCG cluster in the VMware
 ## Debug Steps
 <br />
 
-1. Ensure you have all the permissions listed in the [VMware Privileges](/clusters/data-center/vmware/#vmwareprivileges) section before proceeding to provision a PCG cluster. 
+1. Ensure you have all the permissions listed in the [VMware Privileges](../clusters/data-center/vmware.md#vmware-privileges) section before proceeding to provision a PCG cluster. 
 
 
 2. Contact your VMware administrator if you are missing any of the required permissions.

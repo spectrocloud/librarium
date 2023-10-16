@@ -39,7 +39,7 @@ You can use the following steps to learn how to add Postgres to your app profile
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
 
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](/devx/app-profile/create-app-profile/). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a [new App Profile](../../create-app-profile.md). Provide the following basic information and click **Next**.
 
 |         **Parameter**   | **Description**  |
 |-------------------------|-----------------|
@@ -65,7 +65,7 @@ You can use the following steps to learn how to add Postgres to your app profile
 :::info
 
 
-You can use the default system-generated password. If the default password is used, it can be retrieved from the Postgres secret that is created for the password. Review the [Database Password](/devx/app-profile/services/service-listings/postgresql-db/#database-password) section for guidance.
+You can use the default system-generated password. If the default password is used, it can be retrieved from the Postgres secret that is created for the password. Review the [Database Password](../../services/service-listings/postgresql-db.md#database-password) section for guidance.
 
 :::
 

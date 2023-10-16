@@ -4,18 +4,33 @@ IMAGE:=spectrocloud/librarium
 # Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
 CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
 
+TEMP_DIR=$(shell $TMPDIR)
+
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+
+initialize: ## Initialize the repository dependencies
+	@echo "initializing npm dependencies"
+	npm ci
+	touch .env
+	npx husky-init
+
 clean: ## Clean build artifacts
 	rm -rf node_modules build public .cache .docusaurus
-	docker image rm $(IMAGE)
+	docker image rm $(IMAGE) || echo "No image exists."
+
+clean-versions: ## Clean Docusarus content versions
+	@echo "cleaning versions"
+	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs
+	git checkout -- docusaurus.config.js
 
 ##@ npm Targets
 
-initialize: ## Initialize npm dependencies
+init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
 	npm ci
+	npx husky install
 
 start: ## Start a local development server
 	npm run start
@@ -25,6 +40,15 @@ build: ## Run npm build
 	npm run clear
 	rm -rf build
 	npm run build
+
+versions: ## Create Docusarus content versions
+	@echo "creating versions"
+	./scripts/versions.sh $(TMPDIR)
+
+
+versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environment
+	@echo "creating versions"
+	./scripts/versions.sh $$RUNNER_TEMP
 
 ##@ Git Targets
 
@@ -43,15 +67,22 @@ docker-start: docker-image ## Start a local development container
 	docker run --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
 
 
+##@ Writing Checks
+
 sync-vale: ## Install Vale plugins
 	vale sync
 
 check-writing: ## Run Vale lint checks
 	vale $(CHANGED_FILE) 
 
+
+##@ Clean Server Artifacts
+
 fix-server: ## Fix server issues by removing the cache folder and reinstalling node modules
 	@echo "fixing server"
-	rm -rfv node_modules && rm -rfv .cache/ && npm ci
+	rm -rfv node_modules && npm ci && npm run clear
+
+###@ PDF Generation
 
 pdf: ## Generate PDF from docs
 	@echo "generating pdf"

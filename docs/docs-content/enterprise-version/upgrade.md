@@ -5,6 +5,7 @@ description: "Spectro Cloud upgrade notes for specific Palette versions."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 100
+tags: ["palette", "self-hosted", "upgrade"]
 ---
 
 This page is a reference resource to help you better prepare for a Palette upgrade. Review each version's upgrade notes for more information about required actions and other important messages to be aware of. If you have questions or concerns, reach out to our support team by opening up a ticket through our [support page](http://support.spectrocloud.io/).
@@ -15,10 +16,10 @@ Palette 4.0 includes the following major enhancements that require user interven
 
 - **Enhanced security for Palette microservices** - To enhance security, all microservices within Palette now use `insecure-skip-tls-verify` set to `false`. When upgrading to Palette 4.0, you must provide a valid SSL certificate in the system console. 
 
-  If you already have an SSL certificate, key, and Certificate Authority (CA) certificate, you can use them when upgrading to Palette 4.0.0. To learn how to upload SSL certificates to Palette, refer to [SSL Certificate Management](/enterprise-version/ssl-certificate-management).
+  If you already have an SSL certificate, key, and Certificate Authority (CA) certificate, you can use them when upgrading to Palette 4.0.0. To learn how to upload SSL certificates to Palette, refer to [SSL Certificate Management](system-management/ssl-certificate-management.md).
 
 
-- **Self-hosted Palette Kubernetes Upgrade** - If you installed Palette using the Helm Chart method, the Kubernetes version used for Palette is upgraded from version 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will need to manually adjust custom values and include any additional configuration in the upgraded YAML that we provide. Refer to [Upgrade Kubernetes](/enterprise-version/upgrade#upgradekubernetes).
+- **Self-hosted Palette Kubernetes Upgrade** - If you installed Palette using the Helm Chart method, the Kubernetes version used for Palette is upgraded from version 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will need to manually adjust custom values and include any additional configuration in the upgraded YAML that we provide. Refer to [Upgrade Kubernetes](#upgrade-kubernetes).
 
 ### Upgrade from Palette 3.x to 4.0
 
@@ -30,7 +31,6 @@ From the Palette system console, click the **Update version** button. Palette wi
 
 Follow the steps below to upgrade Kubernetes.
 
-<br />
 
 1. To obtain the upgraded Kubernetes YAML file for Palette 4.0, contact our support team by sending an email to support@spectrocloud.com.
 

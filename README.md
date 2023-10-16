@@ -13,14 +13,23 @@ There are two local development paths available; Docker based, and non-Docker ba
 
 To contribute, we recommend having the following software installed locally on your workstation.
 
-- Text Editor
+- VScode or a text editor
+
 - [Docker](https://docs.docker.com/desktop/)
+
 - git configured and access to github repository
-- node and npm (optional)
+
+- Node.js and npm (optional)
 
 ## Local Development (Docker)
 
 To get started with the Docker based local development approach ensure you are in the root context of this repository. 
+
+Initailize the repository by issuing the following command:
+
+```shell
+make init
+```
 
 Next, issue the following command to build the Docker image.
 
@@ -32,30 +41,30 @@ make docker-image
 
 To start the Dockererized local development server, issue the command:
 
-```
+```shell
 make docker-start
 ```
 
-The local development server is ready when the following output is displayed in your terminal.
+The local development server is ready when the following output is displayed in your terminal. 
 
 ```shell
-You can now view root in the browser.
-⠀
-  Local:            http://localhost:9000/
-  On Your Network:  http://172.17.0.2:9000/
-⠀
+> spectro-cloud-docs@4.0.0 start
+> docusaurus start --host 0.0.0.0 --port 9000
 
-Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
+[INFO] Starting the development server...
+[SUCCESS] Docusaurus website is running at: http://localhost:9000/
+
+✔ Client
+  Compiled successfully in 8.39s
+
+client (webpack 5.88.2) compiled successfully
+```
+
+Open up a browser and navigate to [http://localhost:9000](http://localhost:9000) to view the documentation website.
 
 To exit from the local development Docker container. Press `Ctrl + Z`.
 
 ## Local Development Setup (Non-Docker)
-
-Make a folder somewhere you can easily find
-
-```sh
-mkdir ~/Work
-```
 
 Clone the repository and run the initialization script
 
@@ -63,34 +72,40 @@ Clone the repository and run the initialization script
 cd Work
 git clone https://github.com/spectrocloud/librarium.git
 cd librarium
-make initialize
+make init
 ```
 
-# Documentation Content
+Next, populate the `.env` file with the following content. The local development server will not start without the required environment variables. The values are not important for local development.
 
-Create a branch if needed. This will keep your work separated from the rest of your changes.
+```shell
+ALGOLIA_APP_ID=1234567890
+ALGOLIA_SEARCH_KEY=1234567890
+```
+
+## Documentation Content
+
+Create a branch to keep track of all your changes.
 
 ```sh
 git checkout -b <branch_name>
 ```
 
-To preview your changes use the following.
+Make changes to any markdown files in the [`docs/docs-content`](./docs/docs-content/) folder.
+
+
+Start the local development server and preview your changes by navigating to the documentation page you modified.
+You can start the local development server by issuing the following command:
+
 
 ```sh
 make start
 ```
 
-This will open your browser to this address: http://localhost:9000
-
-Open `~/Work/librarium/content/docs` in your editor and make changes. They should be synced up in the browser window.
-
-When you are done with some changes you can create a commit
+When you are done with your changes, stage your changes and create a commit
 
 ```sh
-make commit MESSAGE="<your message here>"
+git add -A && git commit -m "docs: your commit message here"
 ```
-
-This will open your browser with the commit. Once the pull request is created a link will be added in the comments to preview the change in a staging environment.
 
 ## Creating Pages
 
@@ -150,23 +165,96 @@ The index document for a folder follows the naming convention below. Here are so
 - Named as README (case-insensitive): `docs/Guides/README.mdx`
 - Same name as the parent folder: `docs/Guides/Guides.md`
 
-#### Referencing a page
+### Markdown Links and URLs
+Markdown links use file path references to link to other documentation pages.
+The markdown link is composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL during the compile. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
 
-The url of a page will be composed from the path of the file relative to the `content` directory.
 
-**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:9000/introduction/what-is as the url
 
-In markdown you can reference this page relatively to the root of the domain using this syntax:
+The following example shows how to reference a page in various scenarios. Assume you have the following folder structure when reviewing the examples below:
 
-```md
-[Go to introduction](/introduction/what-is)
+```shell
+.
+└── docs
+    └── docs-content
+        ├── architecture
+        │   ├── grpc.md
+        │   └── ip-addresses.md
+        ├── aws
+        │   └── iam-permissions.md
+        ├── clusters
+        └── security.md
 ```
 
-You can also reference pages that reside in the document folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
+#### Same Folder
+
+To link to a file in the same folder, you can use the following syntax:
 
 ```md
-[Go to Dev Enging](/devx)
+![Insert a description here](name_of_file.md)
 ```
+
+Because the file is in the same folder, you do not need to specify the path to the file. Docusaurus will automatically search the current folder for the file when compiling the markdown content.
+
+So, if you are in the file `grpc.md` and want to reference the file `ip-addresses.md`, you would use the following syntax:
+
+```md
+![A list of all Palette public IP addresses](ip-addresses.md)
+```
+
+#### Different Folder
+
+If you want to link to a file in a different folder, you have to specify the path to the file from where the current markdown file is located. 
+
+If you are in the file `security.md` and want to reference the file `iam-permissions.md`, you have to use the following syntax:
+
+```md
+![A list of all required IAM permissions for Palette](aws/iam-permissions.md)
+```
+
+If you are in the file `grpc.md` and want to reference the file `iam-permissions.md`, you have to use the following syntax:
+
+```md
+![A list of all required IAM permissions for Palette](../aws/iam-permissions.md)
+```
+
+#### A Heading in the Same File
+
+To link to a heading in the same file, you can use the following syntax:
+
+```md
+[Link to a heading in the same file](#heading-name)
+```
+
+The `#` symbol is used to reference a heading in the same file. The heading name must be in lowercase and spaces must be replaced with a `-` symbol. Docusaurs by default uses dashes to separate words in the URL.
+
+#### A Heading in a Different File
+
+To link to a heading in a different file, you can use the following syntax:
+
+```md
+[Link to a heading in a different file](name_of_file.md#heading-name)
+```
+For example, if you are in the file `grpc.md` and want to reference the heading `Palette gRPC API` in the file `security.md`, you would use the following syntax:
+
+```md
+[Link to a heading in a different file](../security.md#palette-grpc-api)
+```
+The important thing to remember is that the `#` comes after the file name and before the heading name.
+
+#### Exceptions
+
+As of Docusarus `2.4.1`, the ability to link to documentation pages that belong to another plugin is unavailable. To work around this limitation, reference a documentation page by the URL path versus the file path.
+
+```md 
+[Link to a page in another plugin](/api-content/authentication#api-key)
+```
+
+> [!WARNING]
+> Be aware that this approach will break versioning. The user experience will be impacted as the user will be redirected to the latest version of the page.
+
+
+In future releases, Docusaurus will support linking pages from other Docusarus plugins. Once this feature is available, this documentation will be updated.
 ### Redirects
 
 To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
@@ -178,7 +266,7 @@ To add a redirect to an existing documentation page you must add an entry to the
   },
 ```
 
-#### Multi Object Selector
+### Multi Object Selector
 
 The Packs integration page and the Service Listings page use a component to display the various offerings. 
 Packs intergations use the `<Packs />` component, whereas the Service Tiers from App Mode use the `<AppTiers />` component.
@@ -197,7 +285,7 @@ To add a Service to the Service List complete the following actions:
 - Populate the page with content.
 
 
-#### Images or other assets
+### Images or other assets
 
 All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
 
@@ -218,7 +306,7 @@ Image size loading can be customised. You can provide eager-load to images in th
 ![alt text eager-load](/clusterprofiles.png)
 ```
 
-#### Tabs component
+### Tabs component
 
 To use the tabs component you have to import it from the _shared_ folder
 
@@ -242,7 +330,7 @@ After that, you can use it like this
 - the values can be one of the tab panel keys
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
 
-#### YouTube Video
+### YouTube Video
 
 To use a Youtube video us the YouTube component.
 
@@ -251,7 +339,7 @@ In your markdown file, use the component and ensure you specify a URL.
 ```js
 <YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
 ```
-### Points of interest component
+### Points of Interest
 
 
 ```js
@@ -341,32 +429,41 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
 
 Example 
-![Example](assets/docs/images/hide_copy_button_example.png)
+![Example](static/assets/docs/images/hide_copy_button_example.png)
 
 Result
 
-![Result](assets/docs/images/hide_copy_button.png)
+![Result](static/assets/docs/images/hide_copy_button.png)
 
 
-### Admonitions - Warning / Info Box
+### Admonitions - Warning / Info / Tip / Danger
 
-:::note
-
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
-
-:::
 
 
 :::caution
 
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with _Markdown_ `syntax`.
+
+:::
+
+
+:::tip
+
+Some **content** with _Markdown_ `syntax`. 
+
+:::
+
+
+:::danger
+
+Some **content** with _Markdown_ `syntax`.
 
 :::
 
 https://docusaurus.io/docs/markdown-features/admonitions
 
 
-The content must have a new line at the beginning and at the end of the tag like this:
+The content must have a new line at the beginning and at the end of the tag.
 
 ### Video
 
@@ -436,7 +533,7 @@ Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/acce
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
 
 
-# Release
+## Release
 
 To create a new release, use the following steps:
 
@@ -445,8 +542,60 @@ To create a new release, use the following steps:
 3. Push up the commit and create a new pull request (PR).
 4. Merge PRs related to the upcoming release into the `release-X-X` branch.
 5. Merge the release branch.
+6. Create a new branch from the `master` branch. Use the following naming pattern `version-X-X`. This brach is used for versioning the documentation.
+7. Push the new version branch to the remote repository.
+8. Trigger a new build so that the new version is published.
 
 The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
 
 > **Warning**
 > Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.
+
+## Versioning
+
+> [!NOTE] 
+> Detailed documentation for versioning can be found in the internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
+
+All versioned content belongs to a specific version branch. The version branch name follows the naming convention `version-X-X`. The version branch is used to generate versioned content.
+
+There are three files that are used for generating versioned content: 
+
+- [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the version branches and generates the versionioned content.
+
+- [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file with all the required vesioning parameters.
+
+- [`versionsOverride.json`](./versionsOverride.json) - A JSON file that contains the versioning overrides. These values are used to update the `docusaurus.config.js` file with non-default values.
+
+
+### Build Versioned Content Locally
+
+To build versioned content locally, use the following steps:
+
+1. Issue the following command to generate the versioned content.
+
+```shell
+make versions
+```
+
+2. Start a local development server to view the versioned content.
+
+```shell
+make start
+```
+
+
+3. Compile the versioned content to ensure a successful build.
+
+```shell
+make build
+```
+
+4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file.
+
+```shell
+rm versions.json
+```
+
+
+> [!WARNING] 
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO NOT commit this file with the updated changes. 
