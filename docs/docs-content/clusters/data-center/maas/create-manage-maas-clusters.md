@@ -65,6 +65,8 @@ To deploy a new MAAS cluster:
 
         - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
 
+    - Tags - You can specify tags to dynamically place nodes in a pool by using MAAS automatic tags. Specify the tag values that you want to apply to all nodes in the node pool. To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation.
+
     <br />
 
     #### Worker Pool configuration
@@ -72,6 +74,8 @@ To deploy a new MAAS cluster:
     - Cloud configuration:
 
         - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.
+
+        - Tags: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://maas.io/docs/how-to-tag-machines) documentation.
 
 
 11. You can configure the following cluster management features now if needed, or you can do it later:

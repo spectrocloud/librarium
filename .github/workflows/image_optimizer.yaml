@@ -29,7 +29,7 @@ jobs:
     name: Image Optimization
     needs: [run-ci]
     runs-on: 
-      group: Default
+      group: 'Doc Runners'
       labels: docbot
     if: ${{ !github.event.pull_request.draft }}
     steps:
