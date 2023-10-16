@@ -15,7 +15,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 * Access to Palette Dev Engine App Mode.
 
 
-## Add Container to App Profile
+## Add Container to an App Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -53,7 +53,7 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   **Network Access**
   
-  | Parameter      | Description                                                                                                   |
+  | **Parameter**      | **Description**                                                                                                   |
   | -------------- | ------------------------------------------------------------------------------------------------------------- |
   | **Private**        | Establishes connectivity to a container service through a private network.                                    |
   | **Public**         | Establishes connectivity to a container service through the public network.                                   |
@@ -61,13 +61,13 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   **Environment Variables**
 
-  | Parameter | Description |
+  | **Parameter** | **Description** |
   | ----------------------- | --------------- |
   | **Environment Variables**  | A key-value pair. |
 
   **Volume**
 
-    | Parameter | Description                                               |
+    | **Parameter** | **Description**                                               |
     | ----------| --------------------------------------------------------- |
     | **Volume**        | To persist data the container generates and uses. |
     | **Name**          | A custom name for the volume.                     |
@@ -85,11 +85,9 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 2. From the **User Menu**, switch to **App Mode**.
 
-3. Select **App Profiles** in the left **Main Menu**.
+3. Click on **App Profiles** in the left **Main Menu**, and select the app profile you created to review its details.
 
-4. Select the app profile you created to review its details.
-
-5. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
+4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
 
  ![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.png)
  

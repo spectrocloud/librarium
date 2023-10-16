@@ -18,7 +18,7 @@ If an app profile has more than one version, ensure you delete the appropriate v
 
 - An existing app profile. 
 
-## Enablement
+## Delete App Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -41,4 +41,6 @@ You have successfully deleted an app profile or profile version.
 
 3. Select **App Profiles** from the left **Main Menu**.   
 
-4. If you deleted an app profile together with any versions it may have had, verify that it no longer displays in the list of available profiles. If you deleted a specific app profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.
+4. If you deleted an app profile together with any versions it may have had, verify that it no longer displays in the list of available profiles. 
+
+5. If you deleted a specific app profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.

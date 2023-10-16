@@ -14,7 +14,7 @@ You can clone a cluster profile across multiple projects within the same [tenant
 
 - A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create. 
 
-## Enablement
+## Clone Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -41,6 +41,6 @@ You can now use the cluster profile when deploying clusters in the target projec
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and click on **Profiles**. Palette displays a list of all the cluster profiles available to you, including cloned profiles.
+2. From the left **Main Menu**, click on **Profiles**. Palette displays a list of all the cluster profiles available to you, including cloned profiles.
    
 3. Deploy your application to a cluster using the cloned cluster profile.

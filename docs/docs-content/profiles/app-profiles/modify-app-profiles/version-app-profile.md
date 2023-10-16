@@ -19,7 +19,7 @@ New versions of an app profile may add or remove layers, contain new pack versio
 
 - An existing app profile.
 
-## Create a New App Profile Version
+## reate New App Profile Version
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 

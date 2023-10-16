@@ -17,7 +17,7 @@ The next sections provide guidance in creating each type of these add-on profile
 
 ## Resources 
 
-- [Add a New Pack](create-pack-addon.md)
+- [Add a Pack](create-pack-addon.md)
 
 - [Add a Manifest](create-manifest-addon.md)
 

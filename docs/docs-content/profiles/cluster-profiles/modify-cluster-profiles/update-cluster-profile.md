@@ -17,17 +17,15 @@ Cluster profile changes will generate an update notification on all the clusters
 
 - A cluster profile created in Palette.
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) reference for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) reference for more information about roles and permissions.
 
 ## Modify Basic Profile Information
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the left **Main Menu**, click on **Profiles**, and select the profile you want to update. Palette displays the profile details and stack.
 
-3. Select the profile you want to update. Palette displays the profile details and stack.
-
-4. Click on **Settings** and choose **Edit Info** from the **drop-down Menu**. You can modify the profile name, version, description, and tags.
+3. Click on **Settings** and choose **Edit Info** from the **drop-down Menu**. You can modify the profile name, version, description, and tags.
     
   :::info
 
@@ -42,23 +40,19 @@ Cluster profile changes will generate an update notification on all the clusters
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the left **Main Menu**, click on **Profiles** and select the profile you updated. Palette displays the profile details and stack.
 
-3. Select the profile you updated. Palette displays the profile details and stack.
+3. Check that profile details display your changes.
 
-4. Check that profile details display your changes.
-
-To learn how to apply the changes to your clusters, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
 
 ## Update a Profile Layer
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the left **Main Menu**, click on **Profiles** and select the profile you want to update. Palette displays the profile details and stack.
 
-3. Select the profile you want to update. Palette displays the profile details and stack.
-
-4. You can do the following:
+3. You can do the following:
     
     - Select **Add New Pack** and choose a pack to add to the profile.
     
@@ -84,14 +78,14 @@ To learn how to apply the changes to your clusters, review [Apply Profile Update
   
     - Select **Settings** and choose **Delete** to delete the entire profile. You can also delete the profile when you choose **Delete** from the **three-dots Menu** on the Profiles page.
 
-5. Confirm your updates.
+4. Confirm your updates.
 
 
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the left **Main Menu**, click on **Profiles**.
 
 3. If you made changes, click the profile you updated. Palette displays the profile details and stack.
 
@@ -201,10 +195,8 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2. From the left **Main Menu**, click on **Profiles** and select the updated cluster.
 
-3. Select the updated cluster.
+3. Check that layers are added to or removed from the profile stack, and verify other profile details.  
 
-4. Check that layers are added to or removed from the profile stack, and verify other profile details.  
-
-5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.
+4. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest changes.

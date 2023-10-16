@@ -17,23 +17,21 @@ New versions of a cluster profile may add or remove layers, contain new pack ver
 
 ## Prerequisites 
 
-- A cluster profile created in Palette. Check out [Cluster Profiles](../cluster-profiles.md) to learn about the different types of cluster profiles you can create based on your requirements.
+- A cluster profile created in Palette. Check out [Cluster Profiles](../cluster-profiles.md) to learn about the different types of cluster profiles you can create.
 
-## Create a New Cluster Profile Version
+## Create New Cluster Profile Version
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Select the **Profiles** option from the left **Main Menu**.
+2. Click on **Profiles** in the left **Main Menu**, and select the cluster profile that you want to version.
 
-3. Select the cluster profile that you want to version.
+3. From the **drop-down Menu** next to the cluster profile name, select **Create new version**.
 
-4. From the **drop-down Menu** next to the cluster profile name, select **Create new version**.
+4. Provide the version number using `major.minor.patch` format.
 
-5. Provide the version number using `major.minor.patch` format.
+5. Click on **Confirm**. Palette displays a versioning successful message.
 
-6. Click on **Confirm**. Palette displays a versioning successful message.
-
-7. Configure layers as needed and save your changes.
+6. Configure layers as needed and save your changes.
 
 You have successfully created a new pack version.
 
@@ -44,7 +42,7 @@ You can validate that the cluster profile is versioned and available in the targ
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Select the **Profiles** option from the left **Main Menu**.     
+2. Select **Profiles** from the left **Main Menu**.     
 
 3. Use the **drop-down Menu** next to the cluster profile and verify the new profile version is listed.
 

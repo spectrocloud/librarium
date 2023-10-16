@@ -18,9 +18,11 @@ If a cluster profile has more than one version, ensure you delete the appropriat
 
 ## Prerequisites 
 
-- An existing cluster profile. 
+- An existing cluster profile.
 
-## Enablement
+- Your Palette account role must have the `clusterProfile.delete` permission to delete a profile. Refer to the [Cluster Profile permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin).
+
+## Delete Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -39,4 +41,6 @@ You have successfully deleted the cluster profile or a profile version.
 
 2. Select **Profiles** from the left **Main Menu**.   
 
-3. If you deleted a cluster profile together with any versions it may have had, verify that it no longer displays in the list of available profiles. If you deleted a specific cluster profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.
+3. If you deleted a cluster profile together with any versions it may have had, verify that it no longer displays in the list of available profiles. 
+
+4. If you deleted a specific cluster profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.

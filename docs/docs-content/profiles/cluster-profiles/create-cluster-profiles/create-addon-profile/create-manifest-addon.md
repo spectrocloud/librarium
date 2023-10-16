@@ -15,7 +15,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) documentation for more information.
 
-## Add a Manifest to an Add-on Profile 
+## Add Manifest to Add-on Profile 
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 

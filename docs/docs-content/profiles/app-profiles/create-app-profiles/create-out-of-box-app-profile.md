@@ -60,11 +60,9 @@ Use the following steps to validate that your app profile is available and ready
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Select **App Profiles** in the left **Main Menu**.
+3. Click on **App Profiles** in the left **Main Menu**, and select the app profile you created to review its details.
 
-4. Select the app profile you created to review its details.
-
-5. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
+4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
 
  ![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.png)
  

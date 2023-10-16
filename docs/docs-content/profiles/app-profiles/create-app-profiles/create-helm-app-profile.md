@@ -78,11 +78,9 @@ Use the following steps to validate that your app profile is available and ready
 
 2. From the **User Menu**, switch to **App Mode**.
 
-3. Select **App Profiles** from the left **Main Menu**.
+3. Click on **App Profiles** in the left **Main Menu**, and select the app profile you created to review its details.
 
-4. Select the app profile you created to review its details.
-
-5. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
+4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
 
  ![A view of a cursor triggering the info box for a helm layer.](/profiles_app-profiles_create-app-profiles_helm-layer-infobox.png)
  
@@ -92,7 +90,7 @@ Use the following steps to validate that your app profile is available and ready
  
  :::
 
-6. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct. Review [Create and Manage Apps](../../../devx/apps/create-app.md) to learn how to deploy an app to a virtual cluster. Check out the [Deploy an Application using Palette Dev Engine](../../../devx/apps/deploy-app.md) tutorial for a more in-depth guide.
+5. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct. Review [Create and Manage Apps](../../../devx/apps/create-app.md) to learn how to deploy an app to a virtual cluster. Check out the [Deploy an Application using Palette Dev Engine](../../../devx/apps/deploy-app.md) tutorial for a more in-depth guide.
 
 ## Next Steps
 

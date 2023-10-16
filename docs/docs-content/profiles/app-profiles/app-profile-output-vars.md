@@ -31,7 +31,7 @@ Check out the [Services Connectivity](../../devx/services/connectivity.md) page 
 
 The following output variables are globally available for all services.
 
-| Output Variable | Description |
+| **Output Variable** | **Description** |
 | --- | --- |
 | `spectro.system.user.name` | User name of the logged in user. |
 | `spectro.system.user.uid` | ID of the logged in user.|
@@ -61,7 +61,7 @@ The following output variables are globally available for all services.
 
 The container service type exposes the following output variables. Replace **[service-name]** with the respective name of the service layer.
 
-| Output Variable | Description |
+| **Output Variable** | **Description** |
 | --- | --- |
 | `.spectro.app.$appDeploymentName.[service-name].CONTAINER_NAMESPACE` | Kubernetes namespace of the deployed container.  |
 |`.spectro.app.$appDeploymentName.[service-name].CONTAINER_SVC`  | Kubernetes DNS hostname of the service. |

@@ -14,7 +14,7 @@ Create an infrastructure profile by adding infrastructure layers composed of an 
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) reference for more information about roles and permissions.
 
-## Build the Infrastructure Profile
+## Create Infrastructure Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 

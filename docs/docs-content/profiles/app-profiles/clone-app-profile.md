@@ -15,7 +15,7 @@ You can clone an app profile across multiple projects within the same [tenant](.
 
 * An app profile created in Palette. Check out [Create an App Profile](../app-profiles/clone-app-profile.md) for guidance.
 
-## Enablement
+## Clone App Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

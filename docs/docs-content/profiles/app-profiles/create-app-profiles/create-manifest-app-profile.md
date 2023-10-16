@@ -75,9 +75,7 @@ Use the following steps to validate that your app profile is available and ready
 
 2. From the **User Menu**, switch to **App Mode**.
 
-2. Select **App Profiles** in the left **Main Menu**.
-
-3. Select the app profile you created to review its details.
+3. Click on **App Profiles** in the left **Main Menu**, and select the app profile you created to review its details.
 
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
 
