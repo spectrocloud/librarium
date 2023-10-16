@@ -26,7 +26,7 @@ jobs:
   build:
     name: Build
     runs-on: 
-      group: Default
+      group: 'Doc Runners'
       labels: docbot
 
     steps:
