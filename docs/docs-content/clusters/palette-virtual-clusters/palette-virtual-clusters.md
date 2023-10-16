@@ -49,4 +49,4 @@ Virtual clusters support two network endpoint types: Load Balancer and Ingress. 
 
 - [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md)
 
-- [Configure OIDs for Virtual Clusters](configure-oidc-virtual-cluster.md)
+- [Configure OIDC for Virtual Clusters](configure-oidc-virtual-cluster.md)
