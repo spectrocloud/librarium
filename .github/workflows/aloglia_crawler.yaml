@@ -7,7 +7,7 @@ on:
 jobs:
   docsearch:
     runs-on: 
-      group: Default
+      group: 'Doc Runners'
       labels: docbot
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
