@@ -12,7 +12,7 @@ tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-This guide will provide instructions for how to prepare your airgap environment for a Palette VerteX installation, by ensuring you complete all the required preperatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform.
+This guide will provide instructions for how to prepare your airgap environment for a Palette VerteX installation, by ensuring you complete all the required preparatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform.
 
 
 ## Prepare Airgap Installation
@@ -82,7 +82,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 :::info
 
-Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the VerteX console. To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection to VerteX . To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
@@ -91,12 +91,12 @@ Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) ou
 ## Instructions
 
 
-Complete the following steps before deploying the air gapped VerteX installation.
+Complete the following steps before deploying the airgap VerteX installation.
 
 1. Log in to your vCenter environment.
 
 
-2. Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the user account you will use to deploy the air gapped VerteX installation.
+2. Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the user account you will use to deploy the airgap VerteX installation.
 
 
 3. Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the `spectro-templates` folder. Refer to the [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA) guide for information about importing an OVA in vCenter.
@@ -121,7 +121,7 @@ Complete the following steps before deploying the air gapped VerteX installation
 8. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps, including the VerteX installation. 
 
 
-9. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped VerteX installation. 
+9. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need these credentials when deploying the airgap VerteX installation. 
 
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
@@ -141,7 +141,7 @@ Complete the following steps before deploying the air gapped VerteX installation
   </TabItem>
   <TabItem label="AWS ECR" value="aws-ecr">
 
-  You can aquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on the **View push commands** button to access the command. Refer to the [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry) documentation for more information.
+  You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on the **View push commands** button to access the command. Refer to the [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry) documentation for more information.
 
   Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to authenticate with the ECR registry. Replace the values below with your environment configuration values.
 
@@ -160,7 +160,7 @@ Complete the following steps before deploying the air gapped VerteX installation
 
   :::tip
 
-  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to reauthenticate to the OCI registry and restart the upload process.
+  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to re-authenticate to the OCI registry and restart the upload process.
 
   :::
 
@@ -276,7 +276,7 @@ Complete the following steps before deploying the air gapped VerteX installation
   :::
 
 
-14. Move the manfiest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
+14. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
 
     ```shell
     unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
@@ -321,7 +321,7 @@ Complete the following steps before deploying the air gapped VerteX installation
 
 17. Repeat step 16 for each pack you want to install.
 
-You now have completed the preperation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
+You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
 
 
 ## Validate

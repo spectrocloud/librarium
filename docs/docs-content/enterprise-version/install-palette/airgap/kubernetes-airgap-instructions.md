@@ -12,7 +12,7 @@ tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-This guide will provide instructions for how to prepare your airgap environment for a Palette installation, by ensuring you complete all the required preperatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform. 
+This guide will provide instructions for how to prepare your airgap environment for a Palette installation, by ensuring you complete all the required preparatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform. 
 
 
 ## Prepare Airgap Installation
@@ -77,7 +77,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 ## Instructions
 
-Complete the following steps before deploying the air gapped Palette installation.
+Complete the following steps before deploying the airgap Palette installation.
 
 
 1. Log in to the OCI registry where you will host the Palette images and packages.
@@ -92,7 +92,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 4. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps, including the Palette installation. 
 
 
-5. Authenticate with your OCI registry and aquire credentials to both respositories you created earlier. You will need these credentials when deploying the air gapped Palette installation. 
+5. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need these credentials when deploying the airgap Palette installation. 
 
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
@@ -112,7 +112,7 @@ Complete the following steps before deploying the air gapped Palette installatio
   </TabItem>
   <TabItem label="AWS ECR" value="aws-ecr">
 
-  You can aquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on the **View push commands** button to access the command. Refer to the [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry) documentation for more information.
+  You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click on the **View push commands** button to access the command. Refer to the [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry) documentation for more information.
 
   Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to authenticate with the ECR registry. Replace the values below with your environment configuration values.
 
@@ -131,7 +131,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 
   :::tip
 
-  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to reauthenticate to the OCI registry and restart the upload process.
+  Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI registry can take a approximatly an hour. If the authentication token expires, you will need to re-authenticate to the OCI registry and restart the upload process.
 
   :::
 
@@ -247,7 +247,7 @@ Complete the following steps before deploying the air gapped Palette installatio
   :::
 
 
-10. Move the manfiest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
+10. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest file to a folder accessible by the file server. Replace the file name below with the name of the manifest file provided to you by the airgap setup.
 
     ```shell
     unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
@@ -293,7 +293,7 @@ Complete the following steps before deploying the air gapped Palette installatio
 
 13. Repeat step 12 for each pack you want to install.
 
-You now have completed the preperation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
+You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
 
 
 ## Validate
