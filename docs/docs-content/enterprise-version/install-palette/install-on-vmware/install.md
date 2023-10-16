@@ -145,7 +145,7 @@ Use the following steps to install Palette.
   |:-------------|----------------|
   |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
   |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
-  |**No Proxy**| You will be prompted to provide a list of of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`|
+  |**No Proxy**| You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`|
   |**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
   |**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
   |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
@@ -184,7 +184,7 @@ Select the OCI registry type and provide the configuration values. Review the fo
   | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 
-  When propmted for "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
+  When prompted for "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
 
   <br />
 
@@ -281,7 +281,7 @@ You will be provided with an opportunity to update the mirror registries values.
 
   <br />
 
-  The Palette CLI creates a file named `ec.yaml` that contains the information you provided the wiard, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
+  The Palette CLI creates a file named `ec.yaml` that contains the information you provided the wizard, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
 
   <br />
 
@@ -371,7 +371,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 1. Log in to the vCenter Server by using vSphere Client.
 
 
-2. Navigate to the Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are arvailable.
+2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
 
 3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.

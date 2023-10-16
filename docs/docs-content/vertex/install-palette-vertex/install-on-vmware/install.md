@@ -201,7 +201,7 @@ For self-hosted OCI registries, ensure you have the server Certificate Authority
   | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 
-  When propmted for "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
+  When prompted for "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
 
   <br />
 
@@ -385,7 +385,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 1. Log in to the vCenter Server by using vSphere Client.
 
 
-2. Navigate to the Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are arvailable.
+2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
 
 3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
