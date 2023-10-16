@@ -723,17 +723,14 @@ reach-system:
 
 9. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system console.
 
-  <br />
+    The first time you visit the VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to VerteX. You can ignore this warning message and proceed.
 
-  :::info
-
-  The first time you visit the VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to VerteX. You can ignore this warning message and proceed.
-
-  :::
 
   <br />
+
 
   ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.png)
+
 
 
 10. Log in to the system console using the following default credentials. 
