@@ -76,7 +76,7 @@ charts:
 
 ## Usage
 
-The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can [update an existing cluster profile](../cluster-profiles/task-update-profile.md) by adding the Prometheus agent pack.
+The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has the Prometheus agent as an add-on pack or you can update an existing cluster profile by adding the Prometheus agent pack. For guidance, review [Update a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md).
 
 
 Log in to the Grafana dashboard to view and create dashboards. You can find the Grafana dashboard URL by reviewing the details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the **prometheus-operator-kube-prometheus-stack-grafana** service.

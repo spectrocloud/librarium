@@ -101,7 +101,7 @@ The following steps need to be performed to provision a new cluster:
 <br />
 
 
-1. If you already have a profile to use, go to **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select an Azure cloud. If you do not have a profile to use, review the [Creating a Cluster Profile](../../../cluster-profiles/task-define-profile.md) page for steps to create one.
+1. If you already have a profile to use, go to **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select an Azure cloud. If you do not have a profile to use, review the [Creating a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) page for guidance on profile types to create.
 
 
 
