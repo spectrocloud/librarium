@@ -19,9 +19,11 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Select **App Profiles** in the left **Main Menu** and click on the **New App Profile** button. 
+2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Provide the following basic information for your app profile and click **Next**.
+3. Select **App Profiles** in the left **Main Menu** and click on the **New App Profile** button. 
+
+4. Provide the following basic information for your app profile and click **Next**.
 
   | **Parameter** | **Description** |
   |-----------------------------|--------------|
@@ -32,9 +34,9 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 
   To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
 
-4. Select **Container Deployment** to start configuring your app profile.
+5. Select **Container Deployment** to start configuring your app profile.
 
-5. Provide the following configuration information for the container.
+6. Provide the following configuration information for the container.
 
   **General Settings**
 
@@ -75,9 +77,9 @@ Palette App Mode supports the use of containers, a standard unit of software tha
     | **Mount Path**    | A path to access the volume.                      |
 
 
-6. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides.
+7. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides.
 
-7. When you have provided the required configuration information for the container, click **Review**. Your app profile is now created and can be deployed.
+8. When you have provided the required configuration information for the container, click **Review**. Your app profile is now created and can be deployed.
 
 ## Validate
 

@@ -9,7 +9,13 @@ tags: ["profiles", "cluster profiles"]
 
 
 
-Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may have two or more applications in the profile that need to use the Postgres database. In this case, you will need to launch the Postgres database twice with different configurations.
+Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may need to deploy two instances of the same microservice or application but with different configurations. In this case, you will need to launch the Postgres application twice with different configurations.
+
+::: caution
+
+Depending on the application, you might have to place the duplicate pack in a different namespace, as resource conflicts could arise from the original pack having Kubernetes resources named identical to the one the second pack would create.
+
+:::
 
 In order to allow packs to be added multiple times in a profile, add the `spectrocloud.com/display-name: <custom_name>` key to the pack values in the YAML editor. The key `<custom_name>` is a name unique across a cluster profile and the cluster.
 

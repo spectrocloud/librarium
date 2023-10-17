@@ -40,7 +40,7 @@ Create a full profile by first adding infrastructure layers composed of an Opera
 
   | **Layer** | **Description** |
   |-----------|-----------------|
-  | **Operating System**| Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYOOS)** if you want to upload your own OS images.|  
+  | **Operating System**| Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYOOS)** to use a different or custom OS. Refer to the [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) section to learn more.|  
   |**Kubernetes**| The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-custom-oidc) for more information. |
   | **Network**| Select a network pack to use with your clusters. |
   | **Storage**| Select a storage pack to use with your clusters. |

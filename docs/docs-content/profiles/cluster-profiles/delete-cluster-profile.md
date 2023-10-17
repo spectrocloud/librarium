@@ -8,7 +8,7 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-Use the following steps to delete a cluster profile. 
+Use the following steps to delete a cluster profile. Clusters that are using a deleted profile will continue to operate fine.
 
 :::caution
 

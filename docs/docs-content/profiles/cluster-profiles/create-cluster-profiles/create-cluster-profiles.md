@@ -10,11 +10,18 @@ tags: ["profiles", "cluster profiles"]
 
 Create cluster profiles by configuring layers that contain configuration information. You can create as many profiles as needed for your workload cluster deployments, and you can create multiple versions of a cluster profile using the same profile name but with a different pack configuration. For guidance on creating profile versions, review [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
+
+## Cluster Profile Scope
+
+Cluster profiles can apply to a [tenant](../../../glossary-all.md#tenant) or a project. The scope you are in when you create the profile determines the profile's scope. A profile created in tenant scope applies to the tenant. A profile created in project scope applies to the project. 
+
+## Cluster Profile Types
+
 Palette provides three types of cluster profiles: 
 
-- *Infrastructure* - Operating System (OS), Kubernetes, Network, and Storage.
+- *Infrastructure* - Contains the Operating System (OS), Kubernetes, Network, and Storage.
 
-- *Add-on* - service mesh, monitoring, and more.
+- *Add-on* - Choose from various applications such as service mesh, monitoring, and more.
 
 - *Full* - contains both infrastructure and add-on layers.
 

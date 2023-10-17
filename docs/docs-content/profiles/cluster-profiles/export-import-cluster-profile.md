@@ -16,11 +16,11 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 - Your Palette account role must have the `clusterProfile.get` permission to export a cluster profile and `clusterProfile.create` to import a cluster profile. Refer to the [Cluster Profile permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin).
 
-- Macros used in the profile you want to export must be available in the target environment *before* you import the profile. 
+- [Macros](../../registries-and-packs/pack-constraints.md#pack-macros) used in the profile you want to export must be available in the target environment *before* you import the profile. 
 
 :::caution
 
-If macros are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
+If custom macros are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
 
 :::
 
@@ -35,10 +35,12 @@ Use these steps to export the profile as a `.json` file.
 
 3. Click **Export Profile** at the bottom of the details panel. Palette downloads the profile as a `.json` file.
 
-4. Verify that any macros used in the exported profile exist in the target environment before you import the profile. If they do not, create the macros in the target environment. For guidance, review [Create Your Macro](../../clusters/cluster-management/macros.md#create-your-macro).
+4. Verify that any custom macros used in the exported profile exist in the target environment before you import the profile. If they do not, create the macros in the target environment. For guidance, review [Create Your Macro](../../clusters/cluster-management/macros.md#create-your-macro).
 
 :::caution
-During profile export, Palette masks sensitive pack values, which you must update after profile import.
+
+During profile export, Palette masks fields that are marked as sensitive. You must update the value of these sensitive fields after profile import with the proper new value.
+
 :::
 
 
@@ -62,7 +64,7 @@ Use these steps to import the profile to one or more projects or tenants.
 
 ![Screenshot of the slide panel with uploaded JSON.](/profiles_cluster-profiles_json-to-import.png)
 
-7. Update any pack YAML files that contain sensitive values, such as credentials or certificates, which Palette masks during file export.
+7. Update any pack YAML files that contain sensitive values, such as credentials or certificates.
 
 8. Click the **Validate** button. Palette checks for duplicate profile names and versions in the target environment and displays an error message if it finds them. 
 
@@ -78,7 +80,7 @@ Use these steps to import the profile to one or more projects or tenants.
 
 11. Click the **Confirm** button to complete the import.
 
-12. Update any sensitive pack values and credentials in the imported profile, which Palette masks during profile export.
+12. Update any sensitive pack values and credentials in the imported profile.
 
 You have successfully imported the profile and updated any sensitive pack values. You can now use the profile for standard cluster operations, such as deployments and updates in the new environment.
 
