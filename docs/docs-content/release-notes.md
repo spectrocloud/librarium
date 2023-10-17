@@ -19,7 +19,7 @@ Placeholder for text summary
 
 #### Breaking Changes
 
-- API key values are no longer displayed in Palette. Palette will continue to support existing API keys, but will not display the values. Moving forward, Palette will not store the API key value in the database, but instead retain metadata about the key. Ensure you store the API key value in a secure location after its creation as the value will not be retrievable from Palette. To learn more about API keys, refer to the [API Key](user-management/user-authentication.md) documentation.
+- API key values are no longer displayed in Palette. Palette will continue to support existing API keys, but will not display the values. Moving forward, Palette will not store the API key value in the database, but instead retain metadata about the key. Ensure you store the API key value in a secure location after its creation as the value will not be retrievable from Palette. To learn more about API keys, refer to the [API Key](user-management//authentication/api-key/api-key.md) documentation.
 
 
 - Multiple login sessions are no longer supported. If you are logged in to Palette and attempt to log in from another device, you will be logged out of the first session. This change only applies to the Palette User Interface (UI) and does not affect the API.
@@ -36,7 +36,7 @@ Placeholder for text summary
 - Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past this was a manual action that had to be performed by the user. Now, Palette will automatically renew the certificate before it expires. All infrastructure providers are supported with the exception of Edge and Cox Edge.
 
 
-- Self-hosted Palette installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [Self-Hosted Palette](./enterprise-version/install-palette/install-palette.md) documentation.
+- Self-hosted Palette installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [Self-Hosted Palette](enterprise-version/install-palette/install-palette.md) documentation.
 
 #### Improvements
 
@@ -77,3 +77,15 @@ Placeholder for text summary
 #### Improvements
 
 - The use of non-FIPS compliant packs is now supported. Prior versions of VerteX allowed non-FIPS packs for add-on packs. This change now allows non-FIPS packs for all packs.
+
+
+### Terraform
+
+
+#### Education
+
+- The Palette documentation site got a refresh. The new site improves the navigation, search experience and adds new documentation features that improves the reader experience. 
+
+- Content versioning is now supported. You can now view the documentation for a specific version of Palette.
+
+### Packs
