@@ -18,6 +18,7 @@ Palette uses the following profile types:
 
 **System profiles** - System profiles are applied to the Enterprise cluster, which hosts Palette or Palette VerteX. You cannot create a system profile. However, if you have system console access, there may be unique scenarios, such as upgrading major Palette releases, that require updating a system profile. Our Support team would provide guidance on updating system profiles if needed.
 
+THIS IS A TEST.
 
 ## Resources
 
