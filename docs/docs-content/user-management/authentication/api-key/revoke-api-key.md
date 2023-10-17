@@ -8,10 +8,10 @@ sidebar_position: 40
 tags: ["user-management", "authentication", "api-key"]
 ---
 
-You can revoke an API key from Palette. A tenant admin can also revoke an API key created by another user within the tenant. A revoked API key cannot be used to authenticate API requests and requires a re-activation to be used again.
+You can revoke an API key you created in Palette. A tenant admin can also revoke an API key created by another user within the tenant. A revoked API key cannot be used to authenticate API requests and requires a re-activation to be used again.
 
 
-Tenant administrators have the ability to revoke an API key in the tenant. Select the tenant tab below to learn more about revoking an API key as a tenant admin.
+Tenant administrators can revoke an API key in the tenant. Select the Tenant tab below to learn more about revoking an API key as a tenant admin.
 
 
 Use the steps outlined below for the workflow you want to perform:
@@ -35,7 +35,7 @@ Use the following steps to revoke an API key.
 
   * You must have a Palette account, and you must be logged in.
 
-  * You must have an API key created. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key.
 
 </TabItem>
 <TabItem label="Tenant" value="tenant">
@@ -70,7 +70,7 @@ Use the following steps to revoke an API key.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -112,7 +112,7 @@ Use the following steps to revoke an API key.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -147,7 +147,7 @@ Use the following steps to reactivate an API key that has been revoked.
 
   * You must have a Palette account, and you must be logged in.
 
-  * An API key must be created for the user you want to edit the API key for. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key.
 
   * Tenant administrator access.
 
@@ -177,7 +177,7 @@ Use the following steps to reactivate an API key that has been revoked.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -216,7 +216,7 @@ Use the following steps to reactivate an API key that has been revoked.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.

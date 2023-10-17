@@ -24,11 +24,11 @@ Palette supports two types of API authentication methods that can be used to aut
 
 ### Authorization Token
 
-You can aquire authorization tokens from Palette that have a 15 minutes lifetime. The authorization token is passed as part of the HTTP request header.  You can use the authorization token to authenticate and authorize the request. The header name is `Authorization` and the token is the header value. Refer to the [Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization token.
+You can acquire authorization tokens from Palette that have a 15-minute lifetime. The authorization token is passed as part of the HTTP request header.  You can use the authorization token to authenticate and authorize the request. The header name is `Authorization`, and the token is the header value. Refer to the [Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization token.
   
 ### API Key
 
-You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without requiring user credentials such as username and password. The API key must be present in each individual API requests to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is `apiKey` and the API key is the header value.
+You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without requiring user credentials such as username and password. The API key must be present in each API request to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is `apiKey`, and the API key is the header value.
 
 The following example shows how to pass the API key in the HTTP request header:
 

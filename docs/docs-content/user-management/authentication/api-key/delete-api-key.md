@@ -10,7 +10,7 @@ tags: ["user-management", "authentication", "api-key"]
 
 You can delete an API key from Palette. A tenant admin can also delete an API key created by another user within the tenant. Use the following steps to delete an API key.
 
-Tenant administrators have the ability to delete an API key on behalf of any user within the tenant. Select the tenant tab below to learn more about deleting an API key as a tenant admin.
+Tenant administrators can delete an API key on behalf of any user within the tenant. Select the Tenant tab below to learn more about deleting an API key as a tenant admin.
 
 
 ## Prerequisites
@@ -29,7 +29,7 @@ Tenant administrators have the ability to delete an API key on behalf of any use
 
   * Tenant administrator access.
 
-  * An API key must be created for the user you want to delete the API key for. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key must be available.
 
 </TabItem>
 </Tabs>
@@ -56,7 +56,7 @@ Tenant administrators have the ability to delete an API key on behalf of any use
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -94,7 +94,7 @@ Tenant administrators have the ability to delete an API key on behalf of any use
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.

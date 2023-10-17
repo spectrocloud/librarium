@@ -18,7 +18,7 @@ You can edit an API key you have already created. The following attributes of an
 | **Value** | The API key value. | ❌ |
 
 
-Tenant administrators have the ability to edit an API key on behalf of any user within the tenant. Select the tenant tab below to learn more about editing an API key as a tenant admin.
+Tenant administrators can edit an API key on behalf of any user within the tenant. Select the Tenant tab below to learn more about editing an API key as a tenant admin.
 
 :::info
 
@@ -33,14 +33,14 @@ Tenant administrators can only edit the API key name, description, and expiratio
 
   * You must have a Palette account, and you must be logged in.
 
-  * You must have an API key created. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key.
 
 </TabItem>
 <TabItem label="Tenant" value="tenant">
 
   * You must have a Palette account, and you must be logged in.
 
-  * An API key must be created for the user you want to edit the API key for. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key.
 
   * Tenant administrator access.
 
@@ -72,7 +72,7 @@ Tenant administrators can only edit the API key name, description, and expiratio
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -106,7 +106,7 @@ Tenant administrators can only edit the API key name, description, and expiratio
 3. Identify your API key in the table.
 
 
-4. Verify the changes you made to the API key attributes are reflected in the table. Such as the API key name, description, and expiration date.
+4. Verify the changes you made to the API key attributes are reflected in the table, including API key name, description, and expiration date.
 
 
 </TabItem>
@@ -115,7 +115,7 @@ Tenant administrators can only edit the API key name, description, and expiratio
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
@@ -127,7 +127,7 @@ Tenant administrators can only edit the API key name, description, and expiratio
 5. Identify the altered API key in the table.
 
 
-6. Verify the changes you made to the API key attributes are reflected in the table. Such as the API key name, description, and expiration date.
+6. Verify the changes you made to the API key attributes are reflected in the table, including the API key name, description, and expiration date.
 
 </TabItem>
 </Tabs>

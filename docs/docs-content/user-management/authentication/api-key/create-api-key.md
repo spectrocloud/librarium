@@ -1,18 +1,18 @@
 ---
 sidebar_label: "Create API Key"
 title: "Create API Key"
-description: "Learn about API Key authentication method in Palette."
+description: "Create an API Key to authenticate API requests to Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["user-management", "authentication", "api-key"]
 ---
 
-You can create an API key to authenticate API requests to Palette. Use the API key to make REST API without having to provide your username and password. The API keys are limited to a single tenant and user. API keys can also be created by the tenant admin for any user within the tenant.
+You can create an API key to authenticate API requests to Palette. Use the API key to make REST API calls without providing your username and password. The API keys are limited to a single tenant and user. If you are a tenant admin, you can create API keys for any user within the tenant.
 
 Once you create an API key, you cannot view the key again. Save the key in a secure location, such as a password manager. This restrictions applies to both the Palette User Interface and the REST API. When you create an API key, you can set an expiration date for the key. The expiration date can be further customized after the key creation.
 
-Tenant administrators have the ability to create an API on behalf of any user within the tenant. Select the tenant tab below to learn more about creating an API key as a tenant admin.
+Tenant administrators have the ability to create an API on behalf of any user within the tenant. Select the Tenant tab below to learn more about creating an API key as a tenant admin.
 
  ## Prerequisites
 
@@ -51,7 +51,7 @@ Tenant administrators have the ability to create an API on behalf of any user wi
   | --- | --- |
   | **API Key Name** | Assign a name to the API key. |
   | **Description** | Provide a description for the API key. |
-  | **Expiration Date**| Select an expiration date from the options presented. You can also select a custom date by selecting **Custom**. |
+  | **Expiration Date**| Select an expiration date from the available options. You can also specify a custom date by selecting **Custom**. |
 
 5. Click the **Generate** button.
 
@@ -74,7 +74,6 @@ Tenant administrators have the ability to create an API on behalf of any user wi
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.
 
-ß
 4. From the **Tenant Settings Menu**, select **API Keys**.
 
 
@@ -88,7 +87,7 @@ Tenant administrators have the ability to create an API on behalf of any user wi
   | **API Key Name** | Assign a name to the API key. |
   | **Description** | Provide a description for the API key. |
   | **User Name** | Select the user to assign the API key. |
-  | **Expiration Date**| Select an expiration date from the options presented. You can also select a custom date by selecting **Custom**. |
+  | **Expiration Date**| Select an expiration date from the available options. You can also specify a custom date by selecting **Custom**. |
 
 5. Click the **Generate** button.
 
@@ -138,7 +137,7 @@ Tenant administrators have the ability to create an API on behalf of any user wi
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
-2. Switch to the **Tenant Admin** scope
+2. Switch to the **Tenant Admin** scope.
 
 
 3. Navigate to the left **Main Menu** and select **Tenant Settings**.

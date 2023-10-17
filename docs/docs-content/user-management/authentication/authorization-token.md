@@ -8,9 +8,9 @@ sidebar_position: 5
 tags: ["user-management", "authentication"]
 ---
 
-Palette exposes an API endpoint to generate an authorization token for a user. The authorization token is valid for 15 minutes. You can refresh the token using the refresh token API. The authorization token is valid for 15 minutes. You can refresh the token using the refresh token API endpoint.
+Palette exposes an API endpoint to generate an authorization token for a user. The authorization token is valid for 15 minutes. You can refresh the token using the refresh token API endpoint.
 
-API requests using the authroization token must use the HTTP header `Authorization` with token as the value.
+API requests using the authorization token must use the HTTP header `Authorization` with a token as the value.
 
 ```bash
 TOKEN=abcd1234
@@ -23,12 +23,12 @@ curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alert' \
 ```
 
 
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request to refresh the authorization token.
+To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request.
 
 
 ## Aquire Authorization Token
 
-To acquire an authorization token, use the `v1/auth` endpoint with a POST request to generate the authorization token. Provide the email ID, organization name, and password in the request body. For example:
+To acquire an authorization token, use the `v1/auth` endpoint with a POST request to generate the token. Provide the email ID, organization name, and password in the request body. For example:
 
 ```bash
 curl --location 'https://api.spectrocloud.com/v1/auth/authenticate' \
@@ -52,7 +52,7 @@ Use the authorization token in the `Authorization` header to make API requests.
 
 ## Refresh Authorization Token
 
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request to refresh the authorization token. Provide the refresh token as a path parameter by replacing `:token` in the URL with the refresh token. 
+To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request. Provide the refresh token as a path parameter by replacing `:token` in the URL with the refresh token. 
 
 ```bash
 curl --location 'https://api.spectrocloud.com/v1/auth/refresh/:token' \
