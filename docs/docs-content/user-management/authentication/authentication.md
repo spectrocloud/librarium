@@ -1,62 +1,50 @@
 ---
 sidebar_label: "User Authentication"
-title: "API Key for API Authentication"
-description: "Palette's API key for user authentication for API access "
+title: "User Authentication"
+description: "Palette supports three types of user authentication methods. User Interface (UI) authentication, API Key, and Authorization Token."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["user-management"]
+tags: ["user-management", "authentication"]
 ---
 
 
 
 Palette supports three types of user authentication methods. 
 
-* [User Interface (UI)](#ui-authentication) authentication
+* User Interface UI authentication
 
-* [API Key](#api-key)
+* API Key
 
-* [Authorization Token](#authorization-token)
+* Authorization Token
 
 The API key and the authorization token method can be used when interacting with Palette REST APIs for automation and programmatic purposes.
 
 
 ## UI Authentication
 <!-- vale off -->
-You can log into Palette by visiting the Palette at [http://console.spectrocloud.com](https://console.spectrocloud.com). If you are a user of a Palette Enterprise instance, then you should use the URL provided by your Palette system 
-administrator, such as `example-company.console.spectrocloud.com.` 
+You can log into Palette SaaS platform by visiting the console URL at [http://console.spectrocloud.com](https://console.spectrocloud.com). If you are a user of a self-hosted Palette or Palette VerteX, then you should use the URL provided by your system administrator, such as `palette.abc-company.com.` 
+
+To learn more the UI authentication, refer to the [UI Authentication](./ui-autentication.md) section.
+
+
+
 <!-- vale on -->
-## Account Sign Up
 
-You can sign up for a Palette SaaS account by visiting [Palette](https://console.spectrocloud.com) or an Enterprise Palette account under your organization by using your organization's custom Palette URL.
-
-When you create an account, you can create a username and password or create the account through a third-party identity provider, GitHub, Google, or other OIDC providers that are enabled for your organization. For Palette SaaS, GitHub and Google are automatically enabled for SSO integration.
-
-## Sign In Flow
-
-Starting with Palette 3.2, the user sign-in flow can be different depending on how you created your Palette account. If you created your user with a username and password, then you may be prompted to select the organization you wish to log in to. If you are a member of a single organization, then you will not be prompted for an organization selection.
-
-If you created an account through SSO and are a member of different organizations, then you must first select the organization name you wish to log in to. Click on the **Sign in to your organization** button for the option to specify the organization name. If you need help remembering the organization name, click on the **Forgot your organization name?** button and provide your email address to receive an email containing your organization name and its login URL.
-
-<br />
-
-:::info
-
-If you are a Palette Enterprise user, use the custom Palette URL for an optimized login experience and avoid specifying the organization name. 
-Ask your Palette system administrator for the custom Palette URL.
-
-:::
 
 ## API Key
 
-Palette API can also use API Keys to authenticate requests. This is the method of accessing the API without referring to the actual user.
+You can use API keys to authenticate API requests. Use the API key to make REST API without having to provide your username and password. Check the [API Key](api-key/api-key.md) section for more information.
 
-## Scope of Palette API Keys
+<!-- Key points to note about API Keys:
 
 * Tenant admin can create an API Key for any user within the tenant.
-* Users can create API Keys for themselves.
 
-## Creating an API key as a tenant admin
+* Once you create an API Key, you cannot view the key again. Save the key in a secure location, such as a password manager.
+
+* Users can create API Keys for themselves. -->
+
+<!-- ## Creating an API key as a tenant admin
 
 * Login to Palette using credential with admin role.
 * Go to Tenant Settings and select **API Keys**.
@@ -117,7 +105,7 @@ Palette API can also use API Keys to authenticate requests. This is the method o
   * Re-activate: Change the status of the key from ‘inactive’ to ‘active’ as long as expiration date has not passed.
   * Delete: Delete the key.
 
-## API Key Usage
+### API Key Usage
 
 You copy your API key from the Palette dashboard and use it for making REST API calls in one of the following ways:
 
@@ -125,24 +113,19 @@ You copy your API key from the Palette dashboard and use it for making REST API 
   `v1/spectroclusters?ApiKey=QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl`
 * Request Header - Pass the API Key as a HTTP request header in the following format:
   * Key: ApiKey
-  * Value: API key copied from the Palette Console. E.g.: QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
+  * Value: API key copied from the Palette Console. E.g.: QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl -->
 
 ## Authorization Token
 
-You can use authorization tokens to authenticate requests. 
+You can use authorization tokens to authenticate API requests.  To obtain an authorization token, use the `v1/auth/authenticate` API endpoint with a POST request to authenticate and obtain the authorization token. Provide your API key as a header value or query parameter. 
 
-To obtain an authorization token, use the `v1/auth/authenticate` endpoint with a POST request to authenticate and obtain the authorization token. Provide your API key as a header value or query parameter. The authorization token is valid for 15 minutes. You can refresh the token using the refresh token API.
+To learn more about the authorization token, refer to the [Authorization Token](authorization-token.md) section.
 
-API requests using the authroization token must use the HTTP header `Authorization` with token as the value. For example:
 
-```bash
-TOKEN=abcd1234
-```
+## Resources
 
-```bash
-curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alert' \
---header 'Authorization: $TOKEN' \
---header 'Content-Type: application/json' 
-```
+- [Authorization Token](authorization-token.md)
 
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request to refresh the authorization token.
+- [API Key](api-key/api-key.md)
+
+- [UI Authentication](authentication.md)

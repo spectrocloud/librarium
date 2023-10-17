@@ -31,7 +31,7 @@ Two forms of authentication are available to interact with the Spectro Cloud API
 or
 * An API Key with an ApiKey value.
 
-Learn more about [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) in Palette documentation.
+Learn more about [authentication methods](/user-management/authentication/api-key) in Palette documentation.
 
 ## Import the Postman Collection
 
