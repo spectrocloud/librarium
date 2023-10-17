@@ -429,12 +429,11 @@ To complete this advanced guide, you will need the following items:
 
 * An account with [Docker Hub](https://hub.docker.com/). If you do not have an account with Docker Hub already, refer to the [Create an account](https://docs.docker.com/docker-id/) page for signing-up instructions. 
 
-  :::info
+:::info
 
-  This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
+This guide uses Docker Hub as an example. You can use any other image registry that suit your requirements.
 
-  :::
-
+:::
 
 * A public repository named `opensuse-leap` in your image registry. Refer to the [Create a repository](https://docs.docker.com/docker-hub/repos/create/#create-a-repository) instructions for creating a Docker Hub repository and setting the repository's visibility to `public`. 
 
@@ -541,15 +540,18 @@ Use the following instructions on your Linux machine to customize the arguments 
   
   View the newly created file to ensure the customized arguments are set correctly.
 
+  <br />
+
   ```bash
   cat .arg
   ```
 
-  :::caution
 
-  Using the arguments defined in the **.arg** file, the final provider image name will have the following naming pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Ensure the final artifact name conforms to the Docker Hub image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`. 
+:::caution
 
-  :::
+Using the arguments defined in the **.arg** file, the final provider image name will have the following naming pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Ensure the final artifact name conforms to the Docker Hub image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`. 
+
+:::
 
 
 11. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to the Dockerfile. You can install more tools and dependencies and configure the image to meet your needs. Add your customizations below the line tagged with the `Add any other image customizations here` comment in the Dockerfile. Do not edit or add any lines before this tagged comment. 
@@ -564,11 +566,11 @@ Use the following instructions on your Linux machine to customize the arguments 
   cat Dockerfile
   ```
 
-  :::caution
+:::caution
 
-  Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The default behavior for package installations is to prompt the user for permission to install the package. A user prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the **Dockerfile**. 
+Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The default behavior for package installations is to prompt the user for permission to install the package. A user prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the **Dockerfile**. 
 
-  :::
+:::
 
 
 12. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with your actual registration token. 
@@ -652,11 +654,13 @@ Use the following instructions on your Linux machine to customize the arguments 
   ===================== Earthly Build SUCCESS ===================== 
   Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
   ```
-  :::info
-  
-  If you plan to build Edge artifacts using a content bundle, use the `+build-provider-images` option instead of the `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build the provider images but not the Edge installer ISO. 
+  <br />
 
-  :::
+:::info
+
+If you plan to build Edge artifacts using a content bundle, use the `+build-provider-images` option instead of the `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build the provider images but not the Edge installer ISO. 
+
+:::
 
   <br />
 

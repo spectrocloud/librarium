@@ -17,10 +17,10 @@ The following prerequisites must be met before deploying a cluster to AWS:
 - Access to an AWS cloud account 
 
 
-- You have added an AWS account in Palette. Review the [Add AWS Account](add-aws-accounts.md) for guidance.
+- You have added an AWS account in Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
 
-- An infrastructure cluster profile. Review the [Create Cluster Profiles](../../../cluster-profiles/task-define-profile.md) for guidance.
+- An infrastructure cluster profile. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
 
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
