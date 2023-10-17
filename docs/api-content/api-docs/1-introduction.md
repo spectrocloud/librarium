@@ -16,17 +16,19 @@ Palette offers a range of capabilities you can access through the REST APIs. The
 Every API's URI has the prefix of the version and the Palette resource, such as: `v1/spectroclusters/...`
 
 ## Authentication
-Palette supports two types of user authentication methods: 
+Palette supports two types of API authentication methods that can be used to authenticate API requests: 
 
-### Using Authorization Token
-  * All requests must be authenticated with an API token that is passed using the HTTP request header `Authorization`. 
-  * Activated users can use the `/auth/authenticate` API to authenticate and obtain the Authorization token. 
-  * Every authorization token is valid for 15 min. 
-  * To refresh the token use [this GET call](https://docs.spectrocloud.com/api/v1/auth/): `GET /v1/auth/refresh/{token}` 
+- [Authorization Token](#using-authorization-token)
+
+- [API Key](#using-the-api-key)
+
+### Authorization Token
+
+You can aquire authorization tokens from Palette that have a 15 minutes lifetime. The authorization token is passed as part of the HTTP request header.  You can use the authorization token to authenticate and authorize the request. The header name is `Authorization` and the token is the header value. Refer to the [Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization token.
   
-### Using the API Key
+### API Key
 
-Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette APIs without requiring user credentials such as username and password. The API key must be present in individual API requests to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is `apiKey` and the API key is the header value.
+You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without requiring user credentials such as username and password. The API key must be present in each individual API requests to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is `apiKey` and the API key is the header value.
 
 The following example shows how to pass the API key in the HTTP request header:
 
@@ -36,7 +38,8 @@ curl --location "https://api.spectrocloud.com/v1/spectroclusters/123456789?Proje
  --header "apiKey: 123456789"
 ```
 
-Refer to the [Autentication](/user-management/authentication) section for more information.         
+Refer to the [API Key](/user-management/authentication/api-key/) section to learn how to create and manage API keys.
+        
 ## Requests
 
 All requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*.

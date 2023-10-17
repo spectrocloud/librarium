@@ -10,8 +10,16 @@ tags: ["user-management", "authentication", "api-key"]
 
 Palette API keys can be used to authenticate requests to the Palette REST API. You can use the API key to make REST API without having to provide your username and password. You can create API keys for yourself or for other users if you are a tenant admin.
 
+Tenant administrators have additional permissions and capabilities to manage API keys. Tenant admins can create, edit, revoke, and delete API keys for any user within the tenant. Each of these actions is described in detail in the following resources.
+
 
 
 ## Resources
 
 - [Create API Key](create-api-key.md)
+
+- [Edit API Key](modify-api-key.md)
+
+- [Revoke API Key](revoke-api-key.md)
+
+- [Delete API Key](delete-api-key.md)

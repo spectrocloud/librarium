@@ -122,22 +122,6 @@ You can use authorization tokens to authenticate API requests.  To obtain an aut
 To learn more about the authorization token, refer to the [Authorization Token](authorization-token.md) section.
 
 
-<!-- The authorization token is valid for 15 minutes. You can refresh the token using the refresh token API. -->
-
-<!-- API requests using the authroization token must use the HTTP header `Authorization` with token as the value. For example:
-
-```bash
-TOKEN=abcd1234
-```
-
-```bash
-curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alert' \
---header 'Authorization: $TOKEN' \
---header 'Content-Type: application/json' 
-```
-
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request to refresh the authorization token. -->
-
 ## Resources
 
 - [Authorization Token](authorization-token.md)
