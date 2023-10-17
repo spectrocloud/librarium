@@ -58,7 +58,7 @@ The following RKE2 versions are supported to work with Palette.
 
 ## Usage
 
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to the [Create Cluster Profiles](../cluster-profiles/task-define-profile.md) guide to learn more.
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
 
@@ -95,7 +95,7 @@ Many of the Day-2 cluster management responsibilities are handled by Palette. Re
 
 ## Usage
 
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../cluster-profiles/task-define-profile.md) guide.
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
 
@@ -133,7 +133,7 @@ Many of the Day-2 cluster management responsibilities are handled by Palette. Re
 
 ## Usage
 
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../cluster-profiles/task-define-profile.md) guide.
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
 
