@@ -69,4 +69,11 @@ Placeholder for text summary
 
 #### Features
 
+- Palette VerteX now supports the deployment of Azure IaaS clusters.
+
 - Palette VerteX installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [VerteX](vertex/install-palette-vertex/install-palette-vertex.md) documentation.
+
+
+#### Improvements
+
+- The use of non-FIPS compliant packs is now supported. Prior versions of VerteX allowed non-FIPS packs for add-on packs. This change now allows non-FIPS packs for all packs.
