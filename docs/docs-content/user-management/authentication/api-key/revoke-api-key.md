@@ -42,7 +42,7 @@ Use the following steps to revoke an API key.
 
   * You must have a Palette account, and you must be logged in.
 
-  * An API key must be created for the user you want to edit the API key for. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key.
 
   * Tenant administrator access.
 
@@ -140,7 +140,7 @@ Use the following steps to reactivate an API key that has been revoked.
 
   * You must have a Palette account, and you must be logged in.
 
-  * You must have an API key created. Refer to the [Create API Key](create-api-key.md) section for more information.
+  * An existing API key.
 
 </TabItem>
 <TabItem label="Tenant" value="tenant">
