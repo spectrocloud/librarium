@@ -31,7 +31,7 @@ The reverse proxy has a server component and a client component. The reverse pro
 - Any requests to the Kubernetes API server, such as kubectl commands, will be routed to the reverse proxy. The reverse proxy forwards the request to the intended client, which is the cluster's API server. The cluster's API server authenticates the request and replies with the proper response.
 
 
-You can attach this pack to a [cluster profile](../cluster-profiles/cluster-profiles.md). The pack installs the Spectro Proxy client in the workload clusters and configures the cluster's API server to point to a managed proxy server.
+You can attach this pack to a cluster profile. For more information, refer to [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md). The pack installs the Spectro Proxy client in the workload clusters and configures the cluster's API server to point to a managed proxy server.
 
 <br />
 
@@ -220,7 +220,7 @@ The VMware dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -339,7 +339,7 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -455,7 +455,7 @@ The Kubernetes dashboard integration supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
@@ -563,7 +563,7 @@ The Spectro Proxy supports the following parameters.
 
 ## Usage
 
-To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about cluster profile creation.
+To use this pack, you have to add it to your cluster profile.  You can also add the Spectro Proxy pack when you create the cluster profile. Check out the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about cluster profile creation.
 
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you have. Use the following definitions to help you identify the type of cluster.
 
