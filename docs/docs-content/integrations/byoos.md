@@ -89,7 +89,7 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 <br />
 
-- A custom OS that you created. Refer to the [Create Images with Image Builder](../cluster-profiles/byoos/image-builder.md) guide to learn how to create a custom OS for Palette.
+- A custom OS that you created. Refer to the [Create Images with Image Builder](../byoos/image-builder.md) guide to learn how to create a custom OS for Palette.
 
 ## Parameters
 
@@ -142,7 +142,7 @@ pack:
 
 
 
-Check out the [Create Images with Image Builder](../cluster-profiles/byoos/image-builder.md) guide to learn to create a custom image for Palette. 
+Check out the [Create Images with Image Builder](../byoos/image-builder.md) guide to learn to create a custom image for Palette. 
 
 
 ---
