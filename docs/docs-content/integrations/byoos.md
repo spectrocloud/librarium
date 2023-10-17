@@ -15,7 +15,7 @@ tags: ["packs", "byoos", "operating system"]
 
 # Bring Your Own Operating System (BYOOS) 
 
-The [Bring Your Own Operating System (BYOOS)](../cluster-profiles/byoos/byoos.md) enables you to use a custom Operating System (OS) with Palette. Palette comes with several operating systems out-of-the-box, but the existing OS list may not meet all users' needs. 
+The [Bring Your Own Operating System (BYOOS)](../byoos/byoos.md) enables you to use a custom Operating System (OS) with Palette. Palette comes with several operating systems out-of-the-box, but the existing OS list may not meet all users' needs. 
 
 Using your custom OS provides several benefits, including the ability to control your own dependencies, improve performance, and ensure compatibility with your existing applications. With BYOOS, you can choose the OS that best fits your needs, whether it's a commercial or open-source distribution, and integrate it with your Kubernetes clusters. The BYOOS pack can be used with both Edge and non-Edge environments. 
 
@@ -89,7 +89,7 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 <br />
 
-- A custom OS that you created. Refer to the [Create Images with Image Builder](../cluster-profiles/byoos/image-builder.md) guide to learn how to create a custom OS for Palette.
+- A custom OS that you created. Refer to the [Create Images with Image Builder](../byoos/image-builder.md) guide to learn how to create a custom OS for Palette.
 
 ## Parameters
 
@@ -115,7 +115,7 @@ Use the BYOOS pack when selecting the OS layer during the cluster profile creati
 
 :::info
 
-Check out the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn how to create a cluster profile.
+Check out the [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) reference to learn about profile types and how to create a cluster profile.
 
 :::
 
@@ -142,7 +142,7 @@ pack:
 
 
 
-Check out the [Create Images with Image Builder](../cluster-profiles/byoos/image-builder.md) guide to learn to create a custom image for Palette. 
+Check out the [Create Images with Image Builder](../byoos/image-builder.md) guide to learn to create a custom image for Palette. 
 
 
 ---

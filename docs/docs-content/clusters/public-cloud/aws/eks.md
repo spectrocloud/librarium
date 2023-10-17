@@ -15,8 +15,8 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account 
-- Palette integration with AWS account. Review the [Add AWS Account](add-aws-accounts.md) for guidance.
-- An infrastructure cluster profile for AWS EKS. Review the [Create Cluster Profiles](../../../cluster-profiles/task-define-profile.md) for guidance.
+- Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
+- An infrastructure cluster profile for AWS EKS. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
 - Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
     - vCPU

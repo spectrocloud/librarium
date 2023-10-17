@@ -26,9 +26,9 @@ Palette on-prem installation supports Air-Gapped, a security measure in which it
 
 For integrations and add-ons orchestrated via Palette [Packs](#pack) or [Charts](#helm-charts), at times it is required to provide additional Kubernetes resources to complete the installation. Resources like additional secrets or Custom Resource Definitions may need to be installed for the integration or add-on to function correctly. Attach Manifests are additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach Manifests can be added to a layer in a cluster profile.
 
-## Bring Your Own Operating System (BYOOS)
+## Bring Your Own Operating System (BYO-OS)
 
-A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYOOS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYOOS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
+A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With the BYO-OS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your specific requirements. BYO-OS gives you greater flexibility, control, and customization options when it comes to managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements around security, compliance, or specific hardware configurations.
 
 ## Chart Repositories
 
@@ -48,7 +48,8 @@ The diagram below shows an example of a cluster profile:
 
 ![cluster_profile_new](/cluster_profile_new.png)
 
-Read more about Cluster Profiles [here](cluster-profiles/cluster-profiles.md).
+For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
+
 ## Edge Appliances
 
 Palette supports several kinds of appliances for the Edge deployment. These appliances can be registered with the Palette Management Console and used for provisioning a Virtualized or a Native OS (Native Edge Deployment). The following is the list of all the Palette supported Edge appliance types:
@@ -171,8 +172,7 @@ Spectro Agent bridges the information transfer between Palette SaaS and Palette 
 
 ## System Console (On-prem System Console)
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.
-## System Profiles
-System Profiles provide a way to bootstrap an edge appliance with an initial set of virtual and containerized applications. Similar to cluster profiles, System Profiles are templates created using one or more layers that are based on packs or helm charts.
+
 ## Team
 A Team is a group of [users](#user). Users can be part of one or more teams. Teams provide a convenient way to control platform access for a group of users. [Roles](#role) assigned to a team grant associated tenant or [project](#project) [permissions](#permission) to all users that are part of the team.
 ## Tenant

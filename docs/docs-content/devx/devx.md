@@ -75,7 +75,7 @@ To get started with App Mode, give the tutorial [Deploy an Application using Pal
 - [Use Cases](enterprise-user.md)
 
 
-- [App Profiles](app-profile/app-profile.md)
+- [App Profiles](../profiles/app-profiles/app-profiles.md)
 
 
 - [Apps](./apps/apps.md)
