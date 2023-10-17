@@ -38,7 +38,7 @@ The **Project** dashboard shows available views for non-admin users. The list be
 
 ## Tenant Admin Dashboard
 
-The Tenant Admin dashboard shows available views for tenant administrators. The list below describes the dashboard elements. 
+The **Tenant Admin** dashboard shows available views for tenant administrators. The list below describes the dashboard elements. 
 
 ![admin-dashboard](/admin-dashboard.png)
 
