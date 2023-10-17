@@ -21,7 +21,7 @@ Use the following steps to install and set up the Palette CLI.
 - A Palette account. Click [here](https://console.spectrocloud.com/) to create a Palette account.
 
 
-- A Palette API key. Refer to the [API Key](../user-management/user-authentication.md#api-key) reference page to learn how to create an API key.
+- A Palette API key. Refer to the [Create API Key](../user-management/authentication/api-key/create-api-key.md) reference page to learn how to create an API key.
 
 
 

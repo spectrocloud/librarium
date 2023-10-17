@@ -86,4 +86,4 @@ Palette has a common API gateway validation service that ensures there are no in
 
 You can use the gateway validation service log to trace APIs with a unique ID, Tenant UID, or Session UID. To avoid revealing unnecessary information, all UIDs are 48-bit random hex strings.
 
-Refer to the [API Key Authentication](../../user-management/user-authentication.md#api-key) guide for details.
+Refer to the [API Key Authentication](../../user-management/authentication/api-key/api-key.md) guide for details.

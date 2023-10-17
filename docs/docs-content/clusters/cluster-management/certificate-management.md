@@ -129,7 +129,7 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 ### Prerequisites
 
-- A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](../../user-management/user-authentication.md) documentation.
+- A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](../../user-management/authentication/authentication.md) documentation.
 
 
 - A deployed host cluster.
