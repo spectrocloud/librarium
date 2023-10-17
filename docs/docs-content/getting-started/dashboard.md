@@ -33,7 +33,7 @@ Upon login, the dashboard shows the views available for a non-admin user.
 
 
 
-5. Audit logs dusplay the log of activities with timeline.
+5. Audit logs display the log of activities with timeline.
 
 
 
