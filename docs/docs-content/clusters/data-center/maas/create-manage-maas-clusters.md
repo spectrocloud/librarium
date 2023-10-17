@@ -20,7 +20,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 - A MAAS account registered in Palette. Refer to the [Register and Manage MAAS Cloud Accounts](register-manage-maas-cloud-accounts.md) if you need to register a MAAS account in Palette.
 
 
-- A cluster profile for the MAAS environment. Review [Cluster Profiles](../../../cluster-profiles/cluster-profiles.md) for more information. 
+- A cluster profile for the MAAS environment. Review [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) for more information. 
 
 
 - Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for guidance on downloading OS images for MAAS.

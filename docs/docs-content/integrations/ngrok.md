@@ -58,7 +58,7 @@ charts:
 
 ## Usage
 
-To use the ngrok Ingress Controller pack, first create a new [add-on cluster profile](../cluster-profiles/create-add-on-profile.md), search for the **ngrok Ingress Controller** pack, and overwrite the default pack configuration with your API key and authentication token like the following example YAML content:
+To use the ngrok Ingress Controller pack, first create a new [add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md), search for the **ngrok Ingress Controller** pack, and overwrite the default pack configuration with your API key and authentication token like the following example YAML content:
 
 ```yaml
 charts:  

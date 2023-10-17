@@ -81,7 +81,7 @@ You can create and manage lightweight Kubernetes clusters from within Visual Stu
 - [Use Cases](enterprise-user.md)
 
 
-- [App Profiles](app-profile/app-profile.md)
+- [App Profiles](../profiles/app-profiles/app-profiles.md)
 
 
 - [Apps](./apps/apps.md)

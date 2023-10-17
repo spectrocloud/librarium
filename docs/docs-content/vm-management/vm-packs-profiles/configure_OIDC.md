@@ -16,7 +16,7 @@ Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC
 
 ## Prerequisites
 
-- A configured infrastructure profile. For more information, review [Create a Cluster Profile](../../cluster-profiles/task-define-profile.md).
+- A configured infrastructure profile. For more information, review [Create a Cluster Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
 
 
 ## Enable OIDC
