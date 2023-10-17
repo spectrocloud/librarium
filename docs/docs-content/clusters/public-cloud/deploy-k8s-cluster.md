@@ -13,7 +13,7 @@ sidebar_position: 50
 
 Palette helps you create and manage Kubernetes clusters in various cloud environments with minimal overhead.
 
-Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A [cluster profile](../../cluster-profiles/cluster-profiles.md) allows you to customize the cluster infrastructure stack, allowing you to choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI). You can further customize the stack with add-on application layers. 
+Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces (CSI). You can further customize the stack with add-on application layers. For more information about cluster profile types, refer to [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md).
 
 After defining a cluster profile, you can provide the cloud environment details, the control plane, and worker node configurations to deploy a host cluster.
 
@@ -77,7 +77,7 @@ The following steps will guide you through deploying the cluster infrastructure.
 
 #### Create Cluster Profile (AWS)
 
-[Cluster profiles](../../cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
  - Kubernetes distribution and version
@@ -235,7 +235,7 @@ Click on your cluster to review its details such as deployment status, event log
 
 #### Create Cluster Profile (Azure)
 
-[Cluster profiles](../../cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
  - Operating System (OS)
  - Kubernetes distribution and version 
  - Network Container Interface (CNI)
@@ -391,7 +391,7 @@ Click on your cluster to review details such as deployment status, event logs, c
 <TabItem label="Google Cloud" value="gcp-ui">
 
 ### Create Cluster Profile (GCP)
-[Cluster profiles](../../cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
+[Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
  - Kubernetes distribution and version
@@ -1253,7 +1253,7 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 - [Palette Modes](../../introduction/palette-modes.md)
 
 
-- [Cluster Profiles](../../cluster-profiles/cluster-profiles.md)
+- [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
 
 
 - [Palette Clusters](../clusters.md) 

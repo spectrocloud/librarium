@@ -12,7 +12,7 @@ Use the following steps to create and deploy an app to a virtual cluster.
 
 ## Prerequisite 
 
-- An application profile. Use the guide [Create an App Profile](../app-profile/create-app-profile.md) to learn how to create an app profile.
+- An application profile. Use the guide [Create an App Profile](../../profiles/app-profiles/create-app-profiles/create-app-profiles.md) to learn about types of app profiles you can create.
 
 
 :::info

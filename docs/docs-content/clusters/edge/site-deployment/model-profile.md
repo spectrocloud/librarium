@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 
-[Cluster profiles](../../../cluster-profiles/cluster-profiles.md) contain the desired specifications the Kubernetes cluster  Edge host makes up. The cluster profile defines the following components.
+[Cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) contain the desired specifications the Kubernetes cluster  Edge host makes up. The cluster profile defines the following components.
 
 - Kubernetes flavor and version
 

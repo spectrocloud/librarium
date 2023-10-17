@@ -17,8 +17,7 @@ Boasting a comprehensive package system, Ubuntu provides a wealth of pre-compile
 
 In addition to its stability, Ubuntu's community support, extensive documentation, and commitment to free software principles make it a widely favored choice among Linux distributions. 
 
-You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when you create a [cluster profile](../cluster-profiles/cluster-profiles.md).
-
+You can use Ubuntu as the base Operating System (OS) when deploying a host cluster by using the Ubuntu pack when you create a cluster profile. For guidance, review [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
 
 <br />
 
@@ -186,7 +185,7 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](ubuntu.md?22.04.x#ub
 ### Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about creating cluster profiles.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
 
 
 
@@ -527,7 +526,7 @@ Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](ubuntu.md?22.04.x#ub
 ## Usage
 
 
-To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](../cluster-profiles/task-define-profile.md) guide to learn more about creating cluster profiles.
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the [Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn more about creating cluster profiles.
 
 
 
@@ -866,7 +865,7 @@ data "spectrocloud_pack_simple" "ubuntu" {
 ## References
 
 
-- [Create a Cluster Profile](../cluster-profiles/task-define-profile.md)
+- [Create a Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
 
 
 - [Ubuntu Documentation](https://docs.ubuntu.com)

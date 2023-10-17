@@ -67,7 +67,7 @@ The following applies when adding Helm charts to cluster profiles.
 
 ## Resources
 
-[Create Cluster Profiles](../cluster-profiles/task-define-profile.md)
+[Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
 
 <br />
 
