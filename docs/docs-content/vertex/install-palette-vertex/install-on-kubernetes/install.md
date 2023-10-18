@@ -20,7 +20,7 @@ This installation method is common in secure environments with restricted networ
 
 :::caution
 
-If you are installing an airgap VerteX, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more information.
+If you are installing VerteX in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more information.
 
 :::
 
@@ -46,7 +46,7 @@ If you are installing an airgap VerteX, ensure you complete all the airgap pre-i
 
 
 
-- We recommended the following resources for VerteX. Refer to the [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
+- We recommend the following resources for VerteX. Refer to the [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
 
     - 8 CPUs per node.
 
@@ -81,7 +81,7 @@ If you are installing an airgap VerteX, ensure you complete all the airgap pre-i
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for VerteX.
 
 
-- Access to the VerteX Helm Charts. Refer to the [Access VerteX](../../vertex.md#access-palette-vertex) for instructions on how to request access to the Helm Chart
+- Access to the VerteX Helm Charts. Refer to the [Access VerteX](../../vertex.md#access-palette-vertex) for instructions on how to request access to the Helm Chart.
 
 
 
@@ -169,7 +169,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 ```
 
 
-4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the VerteX installation parameters, however, you must populate the following parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](vertex-helm-ref.md) page.
+4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the VerteX installation parameters. However, you must populate the following parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](vertex-helm-ref.md) page.
 
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
@@ -675,7 +675,7 @@ reach-system:
 
 
 
-5. This step only applies to those who are installing an airgap VerteX or who are using a self-hosted OCI registry with registry caching enabled. Otherwise, skip to the next step. 
+5. This step only applies when installing VerteX in an airgap environment or when using a self-hosted OCI registry with registry caching enabled. Otherwise, skip to the next step. 
 
   Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
 
@@ -723,7 +723,7 @@ reach-system:
 
 9. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system console.
 
-    The first time you visit the VerteX system console, a warning message about a not trusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to VerteX. You can ignore this warning message and proceed.
+    The first time you visit the VerteX system console, a warning message about a not-trusted SSL certificate may appear. This is expected, as you still need to upload your SSL certificate to VerteX. You can ignore this warning message and proceed.
 
 
   <br />
@@ -770,7 +770,7 @@ Use the following steps to validate the VerteX installation.
 <br />
 
 
-1. Open up a web browser and navigate to the VerteX system console. To access the system console, open a web browser and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use the IP address of the load balancer. 
+1. To access the VerteX system console, open a web browser and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use the IP address of the load balancer. 
 
 
 
