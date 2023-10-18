@@ -11,7 +11,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## October 23, 2023 - Release 4.1.0
+## October 22, 2023 - Release 4.1.0
 
 Placeholder for text summary
 
@@ -40,6 +40,12 @@ Placeholder for text summary
 #### Improvements
 
 - The enhanced pack experience introduced in Palette 4.0 for add-on packs is now available to all packs.
+
+
+- When creating an AWS EKS cluster, you can now configure the public and private CIDR ranges allowed to communicate to the cluster's Kubernetes API servers. In the past users could only configure the public CIDR range.
+
+
+- Palette now displays a warning message when you are about to trigger an action from the UI that will cause nodes to repave. Use these warnings to avoid triggering a node repave when it is not desired.
 
 ### Edge
 
@@ -92,7 +98,7 @@ Placeholder for text summary
 - Version 0.16.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 
-#### Education
+### Education
 
 - The Palette documentation website has undergone a significant upgrade, improving content navigation and search experiences and adding new documentation features that enhance the reader experience.  
 
