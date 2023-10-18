@@ -1,7 +1,7 @@
 ---
 sidebar_label: "VMware vSphere Airgap Instructions"
 title: "VMware vSphere Airgap Instructions"
-description: "Learn how to install Palette into an air gap environment."
+description: "Learn how to install Palette in an air gap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
@@ -12,7 +12,7 @@ tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-This guide will provide instructions for how to prepare your airgap environment for a Palette installation, by ensuring you complete all the required preparatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform.
+This guide provides instructions to prepare your airgap environment for a Palette installation by completing the required preparatory steps 1 and 2 shown in the diagram. The respective installation guides for each platform cover the remaining installation process.
 
 
 ## Prepare Airgap Installation
@@ -31,13 +31,13 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 - An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing Palette.
 
 
-- 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompressed is approximately 20 GB. 
+- 30 GB of disk space available for the airgap setup binary and temporary files. The uncompressed airgap content is approximately 20 GB. 
 
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store Palette images and packages. The OCI registry must be accessible from the VMware vSphere environment. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
 
   :::caution
 
-    Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry 
+    Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry.
     Refer to the [Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
   :::
 
@@ -123,7 +123,7 @@ Complete the following steps before deploying the airgap Palette installation.
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
 
-  Use `oras` to login to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
+  Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
 
   ```shell
   oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere' 
@@ -163,7 +163,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
 ---
 
-9. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
+9. The airgap setup binary requires a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
 
   <Tabs groupId="oci-registry">
   <TabItem label="Harbor" value="harbor">
@@ -228,7 +228,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
 ---
 
-10. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+10. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the placeholder values in the commands below with the recommended version and credentials that our support team provides.
 
   ```shell
   VERSION=4.0.19
@@ -250,7 +250,7 @@ Complete the following steps before deploying the airgap Palette installation.
   ```shell
   ./airgap-v$VERSION.bin
   ```
-  Upon completion, a success message will be displayed. The output is condensed for brevity.
+  Upon completion, a success message will be displayed. The output in the example is condensed for brevity.
   
     ```shell hideClipboard {10}
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
@@ -281,7 +281,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
     :::tip
 
-    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one following command in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
+    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one of the following commands in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
 
     ```shell
     caddy file-server --listen :2015 --browse
@@ -330,7 +330,7 @@ Use the following steps to validate the airgap setup process completed successfu
 1. Log in to your OCI registry and verify the Palette images and packs are available. 
 
 
-2. Verify the manifest file is accessible from the file server. The manifest file is required for the Palette installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The example is using Caddy as the file server.
+2. Verify the manifest file is accessible from the file server. The manifest file is required for the Palette installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The example uses Caddy as the file server.
 
   ![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.png)
 
@@ -356,4 +356,4 @@ Use the following steps to validate the airgap setup process completed successfu
 
 ## Next Steps
 
-You are now ready to deploy the airgap Palette installation. The important difference is that you will specify your OCI registry and file server during the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide for detailed guidance on installing Palette. 
+You are now ready to deploy the airgap Palette installation. You will specify your OCI registry and file server during the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide for detailed guidance on installing Palette. 
