@@ -15,9 +15,15 @@ initialize: ## Initialize the repository dependencies
 	npm ci
 	touch .env
 	npx husky-init
+	vale sync
 
-clean: ## Clean build artifacts
+clean: ## Clean common artifacts
+	npm run clear && npm clean-api-docs
+	rm -rfv build
+
+deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
+	npm run clear && npm clean-api-docs
 	docker image rm $(IMAGE) || echo "No image exists."
 
 clean-versions: ## Clean Docusarus content versions
