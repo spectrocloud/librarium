@@ -8,56 +8,59 @@ sidebar_position: 10
 tags: ["getting-started"]
 ---
 
-This section is a tour of the two main dashboards of the Tenant console–the **Project Dashboard** and the **Admin Dashboard**. The Project Dashboard is used to perform operations related to setting up your Kubernetes clusters such as setting up Cluster Profiles, Creating Cloud Accounts, and deploying clusters. The Admin Dashboard is used for performing administrative tasks such as setting up Single Sign On (SSO), creating user, teams and setting up Role-Based Access Control (RBAC), and setting up additional package registries. The Admin Dashboard is only available to the users who have the Tenant Admin role. Admin users can toggle between the Project Dashboard and Tenant Admin Dashboard. Users without the Tenant Admin role can only see the Project Dashboard.
+This section is a tour of Palette's two main dashboards - the **Project** dashboard and the **Tenant Admin** dashboard. The **Project** dashboard is for non-admin users to perform operations related to setting up Kubernetes clusters, creating cluster profiles, creating cloud accounts, and deploying clusters. The **Tenant Admin** dashboard is used to perform administrative tasks such as setting up Single Sign On (SSO), creating users and teams, setting up Role-Based Access Control (RBAC), and setting up additional package registries. 
+
+The **Tenant Admin** dashboard is only available to users who have the Tenant Admin role. Tenant admin users can toggle between the **Project** dashboard and **Tenant Admin** dashboard. Users without the tenant admin role can only view the **Project** dashboard.
 
 ## Project Dashboard
 
-Upon login, the dashboard shows the views available for a non-admin user. At the top, we have the <Tooltip trigger={<u>Projects</u>}> A <a href="../projects.md">Project</a> helps to organize the cluster resources in a logical grouping method.</Tooltip> button which helps to organize the cluster resources in a logical grouping. From the dropdown, we can shift between the projects. The left panel contains the <Tooltip trigger={<u>Project Overview</u>}><a href="../projects.md">Project Overview</a> gives an overview of the resource and cost consumption of the selected project.</Tooltip> (2) which gives an overview of the resource and cost consumption of the selected project. <Tooltip trigger={<u>Cluster Profiles</u>}><a href="../cluster-profiles/cluster-profiles.md">Cluster Profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> (3) of the Default Project are shown. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="..../clusters/clusters.md../clusters/clusters.md.md">clusters</a> in Palette that are instantiated from cluster profiles.</Tooltip> (4). <Tooltip trigger={<u>Workspaces</u>}><a href="../workspace/workspace.md">Workspace</a> Workspace enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams.</Tooltip> (5) enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams. <Tooltip trigger={<u>Audit logs</u>}><a href="../audit-logs/audit-logs.md">Audit Logs </a> gives the log of activities with timeline.</Tooltip> (6) gives the log of activities with timeline.
+The **Project** dashboard shows available views for non-admin users. Numbered items in the screenshot are described in the list below. 
 
+<!-- Numbered items in the screenshot are described in the list below.  -->
 
-#### Non-admin User view
+<!-- ![project-dashboard](/project-dashboard.png) -->
+![A screenshot of the Project dashboard with numbered UI elements described in this document.](/getting-started_dashboard_project-dashboard.png)
 
-Upon login, the dashboard shows the views available for a non-admin user.
+1. Projects are used to organize the cluster resources within a logical group. Use the **drop-down Menu** to shift between projects.
 
-1. The <Tooltip trigger={<u>Projects</u>}> A <a href="../projects.md">Project</a> helps to organize the cluster resources in a logical grouping method.</Tooltip> button which helps to organize the cluster resources in a logical grouping. From the dropdown, we can shift between the projects.
+2. The [Project Overview](../projects.md) shows the resource and cost consumption of the selected project. 
 
+3. [Cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) are instantiated templates that are created with pre-configured layers needed for cluster deployments.
 
-2. The left panel contains the <Tooltip trigger={<u>Project Overview</u>}><a href="../projects.md">Project Overview</a> gives an overview of the resource and cost consumption of the selected project.</Tooltip> (2) which gives an overview of the resource and cost consumption of the selected project.
+4. Kubernetes [clusters](../clusters/clusters.md) in Palette are instantiated from cluster profiles.
 
+5. [Cluster groups](../clusters/cluster-groups/cluster-groups.md) are a collection of one or more host clusters that together form a computing platform for users to deploy Palette Virtual Clusters. Downstream consumers can use the cluster group when using Palette in [App Mode](../introduction/palette-modes.md#what-is-app-mode).  
 
-3. <Tooltip trigger={<u>Cluster Profiles</u>}><a href="../cluster-profiles/cluster-profiles.md">Cluster Profiles</a> are instantiated templates that are created with pre-configured layers/components needed for cluster deployments.</Tooltip> of the Default Project are shown. The left pane in this dashboard also contains options for <Tooltip trigger={<u>clusters</u>}>Kubernetes <a href="../clusters/clusters.md">clusters</a> in Palette that are instantiated from Cluster Profiles.</Tooltip>
+6. [Workspaces](../workspace/workspace.md) enable the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams.
 
+7. [Audit logs](../audit-logs/audit-logs.md) display the log of activities within a certain time frame.
 
-
-4. Workspaces enables the coupling of relevant namespaces across multiple clusters to manage access, obtain cost, and workload visibility by applications or teams.
-
-
-
-5. Audit logs dusplay the log of activities with timeline.
-
-
-
-6. The **Settings** section (7) of the Default dashboard relates to the Cloud Account settings, Backup Location settings, and Alerts. This is an important distinction from the settings under the Admin Dashboard. It also allows the user to upload SSH keys for safekeeping. These key(s) can be recalled when deploying a cluster.
-
- ![project-dashboard](/project-dashboard.png)
-
+8. **Project Settings** allow users to configure settings for cloud accounts, backup locations, and alerts. It also allows users to upload SSH keys. Keys can be recalled when deploying a cluster. Platform settings are also available for controlling auto upgrades and auto remediation of unhealthy nodes in Palette-provisioned clusters.
 
 
 
 ## Tenant Admin Dashboard
 
+The **Tenant Admin** dashboard shows available views for tenant administrators. Numbered items in the screenshot are described in the list below. 
 
-The menu within the Tenant Admin Dashboard contains the Projects button. This is different from the Projects menu in the Default Dashboard. Within the Tenant Admin Dashboard, the Projects button provides access to modifying a project itself (edit/configure/delete and the overall status), whereas the button in the Default Dashboard provides access to the Cluster Profiles inside the project.
+<!-- ![admin-dashboard](/admin-dashboard.png) -->
+![A screenshot of the Tenant Admin dashboard with numbered UI elements described in this document.](/getting-started_dashboard_admin-dashboard.png)
 
-1. The Cluster Profiles button in the Tenant Admin Dashboard provides the ability to create and manage Global Cluster profiles that can be used for cluster creation, across all projects, within a tenant.
+1. Tenant admins use the **drop-down Menu** to switch to the **Tenant Admin** dashboard.
 
+2. The **Tenant Admin** dashboard contains a **Projects** menu option, which the **Project** dashboard does not have. The **Projects** menu option allows tenant admins to create, modify, and delete projects.
 
-2. The <Tooltip trigger={<u>Roles</u>}>A <a href="../user-management/user-management.md#rbac">Role</a> is a collection of permissions.</Tooltip> (and <Tooltip trigger={<u>Permissions</u>}><a href="../user-management/user-management.md#rbac">Permissions</a> are associated with specific actions within the platform.</Tooltip>); as well as <Tooltip trigger={<u>Users</u>}><a href="../user-management/user-management.md">Users</a> are members of a tenant who are assigned roles that control their access within the platform.</Tooltip> and <Tooltip trigger={<u>Teams</u>}>A <a href="../glossary-all.md/#team">Team</a> is a group of users.</Tooltip> Allows the admin to set or restrict these attributes for one or more team members. See the <Tooltip trigger={<u>RBAC</u>}>Palette's <a href="../user-management/user-management.md#rbac">RBAC</a> design allows granting granular access to resources and its operations.</Tooltip> section for more details.
+3. The **Cluster Profiles** menu option allows tenant admins to create and manage global cluster profiles that can be used for cluster creation across all projects within a tenant.
 
+4. Clusters created under the tenant admin scope are not visible under the project scope.
 
-3. The <Tooltip trigger={<u>audit logs(9)</u>}>The Palette management platform application captures <a href="../audit-logs/audit-logs.md">audit logs</a> to track the user interaction with the application resources along with the timeline.</Tooltip> in the admin Dashboard allow the admin to track the user interaction with the application resources along with the timeline for all projects and users. For admin users, the "audit log" button is visible for each project as well. Here, the admin can view the logs of the resources specific to the project.
+5. [Cluster groups](../clusters/cluster-groups/cluster-groups.md) are a collection of one or more host clusters that together form a computing platform for deploying virtual clusters.
 
+6. Tenant admins can assign [Roles and Permissions](../user-management/user-management.md#rbac).
 
-4. Finally, the Tenant Admin settings (10) under the Admin Dashboard provide access to the <Tooltip trigger={<u>pack registries</u>}>A <a href="../registries-and-packs/registries-and-packs.md">pack</a> is a collection of files such as manifests, Helm charts, ansible roles, configuration files, etc.</Tooltip>; <Tooltip trigger={<u>private cloud gateways</u>}>A <a href="../glossary-all.md/#private-cloud-gateway">Private Cloud Gateway</a> is a Palette component that enables the communication between Palette's management console and a VMware based private data center.</Tooltip> and [SAML SSO](../user-management/saml-sso/saml-sso.md) configurations.
+7. Tenant admins can create [Users and Teams](../user-management/user-management.md#multi-organization-support-for-users). 
 
-  ![admin-dashboard](/admin-dashboard.png)
+8. [Audit logs](../audit-logs/audit-logs.md) in the **Tenant Admin** dashboard allow tracking user interaction with application resources for all projects and users. For admin users, the **Audit Log** button is visible for each project to view the logs of the resources specific to the project.
+
+9. **Tenant Settings** give tenant admins access to the [pack registries](../registries-and-packs/registries-and-packs.md), [private cloud gateways](../glossary-all.md/#private-cloud-gateway), and [SAML and SSO](../user-management/saml-sso/saml-sso.md) setup.
+

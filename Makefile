@@ -15,9 +15,15 @@ initialize: ## Initialize the repository dependencies
 	npm ci
 	touch .env
 	npx husky-init
+	vale sync
 
-clean: ## Clean build artifacts
+clean: ## Clean common artifacts
+	npm run clear && npm run clean-api-docs
+	rm -rfv build
+
+deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
+	npm run clear && npm run clean-api-docs
 	docker image rm $(IMAGE) || echo "No image exists."
 
 clean-versions: ## Clean Docusarus content versions
@@ -49,6 +55,12 @@ versions: ## Create Docusarus content versions
 versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environment
 	@echo "creating versions"
 	./scripts/versions.sh $$RUNNER_TEMP
+
+
+api: ## Generate API docs
+	@echo "generating api docs"
+	npm run clear-api-docs
+	npm run generate-api-docs
 
 ##@ Git Targets
 
