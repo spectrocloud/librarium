@@ -21,9 +21,6 @@ Placeholder for text summary
 
 - API key values are no longer displayed in Palette. Palette will continue supporting existing API keys but not reveal the key value. Moving forward, Palette will not store the API key value in the database but instead retain metadata about the key. Ensure you store the API key value in a secure location after its creation, as the value will not be retrievable from Palette. To learn more about API keys, refer to the [API Key](user-management//authentication/api-key/api-key.md) documentation.
 
-
-- Multiple login sessions are no longer supported. If you are logged in to Palette and attempt to log in from another device, you will be logged out of the first session. This change only applies to the Palette User Interface (UI) and does not affect the API.
-
 #### Features
 
 
@@ -85,6 +82,8 @@ Placeholder for text summary
 
 
 ### Terraform
+
+Version 0.16.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 
 #### Education
