@@ -5,15 +5,23 @@ description: "Learn how to install Palette on VMware."
 icon: ""
 sidebar_position: 10
 hide_table_of_contents: false
+toc_max_heading_level: 3
 tags: ["palette", "self-hosted", "vmware"]
 ---
 
 
 
 
-Palette can be installed on VMware vSphere with internet connectivity or an airgap environment. When you install Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to [Access Palette](../../enterprise-version.md#access-palette) for instructions on requesting repository access.
+Palette can be installed on VMware vSphere with internet connectivity or in an airgap environment. When you install Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to [Access Palette](../../enterprise-version.md#access-palette) for instructions on requesting repository access.
 
 ## Prerequisites
+
+
+:::caution
+
+If you are installing Palette in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
+
+:::
 
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment. 
@@ -75,15 +83,26 @@ Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) o
 
 <br />
 
-### Deployment
+## Deployment
 
 
-The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
+The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
-  <br />
+
+<Tabs groupId="mode">
+<TabItem label="Non-Airgap" value="non-airgap">
 
 <video title="palette-cli-install" src="/videos/palette-install.mp4"></video>
 
+</TabItem>
+<TabItem label="Airgap" value="airgap">
+
+
+<video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></video>
+
+</TabItem>
+
+</Tabs>
 
 Use the following steps to install Palette. 
 
@@ -100,16 +119,20 @@ Use the following steps to install Palette.
 3. Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted to enter your Ubuntu Pro token.
 
 
-4. Provide the repository URL you received from our support team.
+
+4. Depending on that type of install of Palette you are using, the Spectro Cloud repository URL value will be different.
+    - Non-Airgap: `https://saas-repo.console.spectrocloud.com`
+    - Airgap: The URL or IP address of your HTTP file server that is hosting the manifest files.
 
 
-5. Enter the repository credentials.
+
+5. Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro Cloud repository. Airgap installations, provide the credentials to your private repository. If your HTTP file server has no authentication, provide the username and password as `admin` and `admin` respectively.
 
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
 
 
-7. Type an enterprise cluster name.
+7. Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
 
 
 8. When prompted, enter the information listed in each of the following tables.
@@ -122,7 +145,7 @@ Use the following steps to install Palette.
   |:-------------|----------------|
   |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
   |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all EC nodes and all of its target cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
-  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `maas.company.com,10.10.0.0/16`.|
+  |**No Proxy**| You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`|
   |**Proxy CA Certificate Filepath**|The default is blank. You can provide the filepath of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
   |**Pod CIDR**|Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
   |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
@@ -130,7 +153,17 @@ Use the following steps to install Palette.
 <br />
 
 
-9. Select the OCI registry type and provide the configuration values. Review the following table for more information.
+9. Select the tab below that matches your installation type for further guidance.
+
+<Tabs groupId="mode">
+<TabItem label="Non-Airgap" value="non-airgap">
+
+  Select `y` to use the Spectro Cloud repository and proceed to the next step.
+
+</TabItem>
+<TabItem label="Airgap" value="airgap">
+
+Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
   <br />
 
@@ -142,20 +175,32 @@ Use the following steps to install Palette.
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
   | **Registry Base Path** | Enter the registry base path. |
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.|
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. |
+  | **Registry CA certificate filepath** | Specify the file path to the certificate authority. Use absolute paths. |
   | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
   | **Registry Region** | Enter the registry region. This option is only available if you are using `OCI ECR`. |
   | **ECR Registry Private** | Type `y` if the registry is private. Otherwise, type `n`. |
   | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
-<br />
 
-10. Next, specify the database storage size to allocate for Palette. The default is 20 GB. Refer to the [size guidelines](../install-palette.md#size-guidelines) for additional information.
+  When prompted to "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
 
+  <br />
 
+:::info
 
-11. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
+You will be provided with an opportunity to update the mirror registries values. To exit `vi` press the `Escape` key and type `:wq` to save and exit.
+
+:::
+
+</TabItem>
+
+</Tabs>
+
+---
+  
+10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
 
   <br />
 
@@ -189,7 +234,7 @@ Use the following steps to install Palette.
   |**SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference. |
 
 
-12. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
+11. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
 
   <br />
 
@@ -207,7 +252,7 @@ Use the following steps to install Palette.
 <br />
 
 
-13. The last set of prompts is for the vSphere machine configuration. Enter the information listed in the following table.
+12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for guidance.
 
   <br />
 
@@ -215,19 +260,28 @@ Use the following steps to install Palette.
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  | **Number of CPUs** | The number of CPUs allocated to each VM node instance.|
-  | **Memory** | The amount of memory allocated to each VM node instance.|
-  | **Disk Size** | The size of the disk allocated to each VM node instance.|
+  | **Small** |  Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit. |
+  | **Medium** | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 cpu limit and 8 GB memory limit. |
+  | **Large** | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit. |
+  | **Custom** | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
+  <br />
+
+  #### Additional vSphere Machine Configuration
+
+  |**Parameter**                            | **Description**|
+  |-----------------------------------------|----------------|
+  | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
 
   <br />
 
 
-  The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
+  The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the remainder of the installation. The installation takes some time to complete. 
+
 
   <br />
 
-  Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
+  The Palette CLI creates a file named `ec.yaml` that contains the information you provided the wizard, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file. 
 
   <br />
 
@@ -238,21 +292,45 @@ Use the following steps to install Palette.
 
   <br />
 
-  When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette system console.
+:::tip
+
+  If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
+
+  ```bash
+  kind delete cluster spectro-mgmt-cluster
+  ```
+
+  Restart the install process by referencing the `ec.yaml` file that was created during the first installation attempt.
+  For example:
+
+  ```bash
+  palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+  ```
+:::
 
   <br />
 
+  When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette system console.
+
   ```bash hideClipboard
-  ====================================
-  ==== Enterprise Cluster Details ====
-  ====================================
-  Console URL: https://10.10.189.100/system
-  Username: **********
-  Password: **********
+  ===========================================
+  ==== Enterprise Cluster System Console ====
+  ===========================================
+  Console URL: https://10.10.100.0/system
+  Username:    ************
+  Password:    ************
+
+  The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
+
+  It will take another ~30-45 minutes for the installation to complete.
+
+  You can monitor its progress via kubectl/k9s or by viewing the System Console.
+
+  export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
   ```
 
 
-14. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
+13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
   <br />
 
@@ -269,13 +347,13 @@ Use the following steps to install Palette.
 <br />
 
 
-15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+14. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
   
 
-16. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
+15. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
 
 
-17. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../../system-management/tenant-management.md) guide. 
+16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../../system-management/tenant-management.md) guide. 
 
   <br />
 
@@ -293,19 +371,16 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 1. Log in to the vCenter Server by using vSphere Client.
 
 
-2. Navigate to the Datacenter and locate your VM instance. 
+2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
 
-3. Select the VM to access its details page, and verify three nodes are listed.
+3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
 
 
-4. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
+4. Log in using your credentials.
 
 
-5. Log in using your credentials.
-
-
-6. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
+5. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
  
 ## Next Steps
 
@@ -317,3 +392,9 @@ After you create the tenant, you are ready to configure authentication types in 
 ## Resources
 
 - [Palette CLI](../../../palette-cli/install-palette-cli.md#download-and-setup)
+
+- [VMware System Requirements](vmware-system-requirements.md)
+
+- [System Management](../../system-management/system-management.md)
+
+- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)
