@@ -358,4 +358,4 @@ Use the following steps to validate the airgap setup process completed successfu
 
 ## Next Steps
 
-You are now ready to deploy the airgap VerteX installation. The important difference is that you will specify your OCI registry and file server during the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide for detailed guidance on installing VerteX. 
+You are now ready to deploy the airgap VerteX installation. You will specify your OCI registry and file server during the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide for detailed guidance on installing VerteX. 
