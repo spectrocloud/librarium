@@ -196,6 +196,102 @@ const redirects = [
     to: `/tags/how-to`,
   },
   {
+    from: `/cluster-profiles`,
+    to: `/profiles/cluster-profiles`,
+  },
+  {
+    from: `/cluster-profiles/task-define-profile`,
+    to: `/profiles/cluster-profiles/create-cluster-profiles`,
+  },
+  {
+    from: `/cluster-profiles/create-add-on-profile`,
+    to: `/profiles/cluster-profiles/create-cluster-profiles/create-addon-profile`,
+  },
+  {
+    from: `/cluster-profiles/task-update-profile`,
+    to: `/profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile`,
+  },
+  {
+    from: `/cluster-profiles/cluster-profile-import-export`,
+    to: `/profiles/cluster-profiles/export-import-cluster-profile`,
+  },
+  {
+    from: `/cluster-profiles/examples`,
+    to: `/profiles/cluster-profiles`,
+  },
+  {
+    from: `/cluster-profiles/byoos`,
+    to: `/byoos`,
+  },
+  {
+    from: `/cluster-profiles/byoos/image-builder`,
+    to: `/byoos/image-builder`,
+  },
+  {
+    from: `/system-profile`,
+    to: `/profiles/`,
+  },
+  {
+    from: `/devx/app-profile/create-app-profile`,
+    to: `/profiles/app-profiles/create-app-profiles`,
+  },
+  {
+    from: `/devx/app-profile/container-deployment`,
+    to: `/profiles/app-profiles/create-app-profiles/container-deployment`,
+  },
+   {
+    from: `/devx/app-profile/app-profile-macros`,
+    to: `/profiles/app-profiles/app-profile-output-vars`,
+  },
+  {
+    from: `/devx/app-profile/app-profile-cloning`,
+    to: `/profiles/app-profiles/clone-app-profile`,
+  },
+  {
+    from: `/devx/app-profile/app-profile-versioning`,
+    to: `/profiles/app-profiles/modify-app-profiles/version-app-profile`,
+  },
+  {
+    from: `/devx/app-profile/services`,
+    to: `/devx/services`,
+  },
+  {
+    from: `/devx/app-profile/services/connectivity`,
+    to: `/devx/services/connectivity`,
+  },
+  {
+    from: `/devx/app-profile/services/db-services`,
+    to: `/devx/services/db-services`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings`,
+    to: `/devx/services/service-listings`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings/mongo-db`,
+    to: `/devx/services/service-listings/mongo-db`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings/mysql`,
+    to: `/devx/services/service-listings/mysql`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings/postgresql-db`,
+    to: `/devx/services/service-listings/postgresql-db`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings/redis-db`,
+    to: `/devx/services/service-listings/redis-db`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings/vault`,
+    to: `/devx/services/service-listings/vault`,
+  },
+  {
+    from: `/devx/app-profile/services/service-listings/cockroach-db`,
+    to: `/devx/services/service-listings/cockroach-db`,
+  },
+  {
     from: `/integrations/EKS-D`,
     to: `/integrations`,
   },

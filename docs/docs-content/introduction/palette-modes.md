@@ -17,7 +17,7 @@ Palette supports two consumption modes - each aimed at different use cases and, 
 
 Cluster mode gives you the ability to provision Kubernetes clusters to various platforms and cloud providers through Palette. Palette manages and maintains the lifecycle of these Kubernetes clusters. We call a Kubernetes cluster that Palette manages and deploys a [_Host Cluster_](../glossary-all.md#host-cluster). 
 
-Cluster mode is frequently leveraged by personas such as platform engineers, infrastructure engineers, system administrators, and others who are in a role that requires them to support infrastructure. These personas frequently leverage cluster mode to specify attributes that should make up the Kubernetes cluster, and where and how the cluster should be deployed. These operators leverage a concept we call [_Cluster Profiles_](../cluster-profiles/cluster-profiles.md). Other users such as developers, can also leverage cluster mode and cluster profiles to deploy a Kubernetes cluster for ad-hoc purposes, such as research efforts.
+Cluster mode is frequently leveraged by personas such as platform engineers, infrastructure engineers, system administrators, and others who are in a role that requires them to support infrastructure. These personas frequently leverage cluster mode to specify attributes that should make up the Kubernetes cluster, and where and how the cluster should be deployed. These operators leverage a concept we call [_Cluster Profiles_](../profiles/cluster-profiles/cluster-profiles.md). Other users such as developers, can also leverage cluster mode and cluster profiles to deploy a Kubernetes cluster for ad-hoc purposes, such as research efforts.
 
 When you operate in cluster mode, you have the ability to specify projects to control the scope of the Kubernetes cluster. The ability to specify projects is beneficial when segmenting resources for different teams. For example, a project titled “ml-modeling” could belong to a team focused on machine learning. In the project “modeling,” you could deploy various Kubernetes clusters for the machine learning team to conduct their work. These Kubernetes clusters could also be grouped together (Cluster Group) if grouping of similar resources is needed.  
 
@@ -36,7 +36,7 @@ Virtual clusters help reduce development time by allowing downstream consumers t
 
 ### What is App Mode?
 
-App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](../devx/app-profile/app-profile.md). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
+App Mode is a unique experience that Palette provides in that it removes Kubernetes infrastructure overhead as much as possible. In App mode, you can focus on creating and managing [_App Profiles_](../profiles/app-profiles/app-profiles.md). App profiles are declarative templates that you use to define all the required services, containers, and databases that make up an application. Once you define an app profile, you can deploy your application to any Palette Virtual Cluster by specifying the respective app profile.
 
 App mode comes with an out-of-the-box cluster group managed by us here at Spectro Cloud called _beehive_.  This cluster group, which under the cover is a collection of Kubernetes clusters, is configured to support Palette Virtual Clusters. As a consumer, you can deploy a new virtual cluster to the beehive cluster group and get started with a Kubernetes cluster in minutes. 
 
@@ -88,4 +88,4 @@ Below are some of the characteristics of each mode. Use this to help you better 
 
 ## Next Steps
 
-Get started with [Palette](https://console.spectrocloud.com/) today and deploy an application though [app mode](../devx/devx.md). Or create a Kubernetes cluster on your favorite platform and let Palette handle the challenges of maintaining Kubernetes clusters by leveraging cluster mode and [cluster profiles](../cluster-profiles/cluster-profiles.md).
+Get started with [Palette](https://console.spectrocloud.com/) today and deploy an application though [app mode](/devx). Or create a Kubernetes cluster on your favorite platform and let Palette handle the challenges of maintaining Kubernetes clusters by leveraging cluster mode and [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md).
