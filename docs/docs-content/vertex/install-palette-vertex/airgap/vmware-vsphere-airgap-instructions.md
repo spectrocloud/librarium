@@ -1,7 +1,7 @@
 ---
 sidebar_label: "VMware vSphere Airgap Instructions"
 title: "VMware vSphere Airgap Instructions"
-description: "Learn how to install VerteX into an air gap environment."
+description: "Learn how to install VerteX in an air gap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
@@ -12,7 +12,7 @@ tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-This guide will provide instructions for how to prepare your airgap environment for a Palette VerteX installation, by ensuring you complete all the required preparatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform.
+This guide provides instructions for preparing your airgap environment for a Palette VerteX installation, by ensuring you complete all the required preparatory steps 1 and 2 shown in the diagram. The installation process is covered in the respective installation guides for each platform.
 
 
 ## Prepare Airgap Installation
@@ -21,7 +21,7 @@ Use the following steps to prepare your airgap environment for a VerteX installa
 
 :::tip
 
-Carefully review the [prerequisites](#prerequisites) section before proceeding. This will save you time and frustration. Each prerequisite listed is required for a successful installation.
+Carefully review the [prerequisites](#prerequisites) section before proceeding. This will save you time and frustration. Each prerequisite is required for a successful installation.
 
 :::
 
@@ -31,13 +31,13 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 - An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing VerteX.
 
 
-- 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompressed is approximately 20 GB. 
+- 30 GB of disk space available for the airgap setup binary and temporary files. The uncompressed airgap content is approximately 20 GB. 
 
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store VerteX images and packages. The OCI registry must be accessible from the VMware vSphere environment. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
 
   :::caution
 
-    Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry 
+    Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry.
     Refer to the [Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
   :::
 
@@ -82,7 +82,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 :::info
 
-Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection to VerteX . To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection to VerteX. To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
@@ -115,7 +115,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 6. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public. The repositry will host VerteX images.
 
 
-7. Download the Certificate Authority (CA) for your OCI registry. You will need to provide the installation process the CA, otherwise you may encounter errors when authenticating with the OCI registry which could result in an incomplete install. 
+7. Download the Certificate Authority (CA) for your OCI registry. You will need to provide the CA during the installation process. Otherwise, you may encounter errors when authenticating with the OCI registry, which could result in an incomplete install. 
 
 
 8. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps, including the VerteX installation. 
@@ -126,7 +126,7 @@ Complete the following steps before deploying the airgap VerteX installation.
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
 
-  Use `oras` to login to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
+  Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
 
   ```shell
   oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere' 
@@ -166,7 +166,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 ---
 
-10. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
+10. The airgap setup binary requires a set of environment variables to be available and populated. The environment variables will be different depending on the OCI registry you are using. Select the OCI registry and populate the environment variables accordingly.
 
   <Tabs groupId="oci-registry">
   <TabItem label="Harbor" value="harbor">
@@ -231,7 +231,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 ---
 
-11. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+11. Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace the values in the commands below with the recommended version and credentials provided by our support team.
 
   ```shell
   VERSION=4.0.19
@@ -284,7 +284,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     :::tip
 
-    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one following command in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
+    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one of the following commands in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
 
     ```shell
     caddy file-server --listen :2015 --browse
@@ -298,7 +298,7 @@ Complete the following steps before deploying the airgap VerteX installation.
     :::
 
 
-15. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create to cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
+15. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
 
 
 
@@ -337,7 +337,7 @@ Use the following steps to validate the airgap setup process completed successfu
   ![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.png)
 
 
-3. Ensure your file server is accessible from the environment you are installing VerteX. Use the following command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your file server hostname or IP address.
+3. Ensure your file server is accessible from the environment in which you are installing VerteX. Use the following command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your file server hostname or IP address.
 
   ```shell
   curl http://<hostname>:<port>/roar/nickfury/versions.yaml

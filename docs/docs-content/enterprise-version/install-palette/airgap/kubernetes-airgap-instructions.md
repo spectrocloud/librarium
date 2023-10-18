@@ -269,7 +269,7 @@ Complete the following steps before deploying the airgap Palette installation.
     :::    
 
 
-11. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create to cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
+11. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
 
 
 

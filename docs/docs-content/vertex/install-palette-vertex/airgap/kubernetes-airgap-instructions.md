@@ -12,7 +12,7 @@ tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
 
 
-This guide will provide instructions for how to prepare your airgap environment for a Palette VerteX installation, by ensuring you complete all the required preparatory steps (step 1 - 2). The actual installation process is covered in the respective installation guides for each platform. 
+This guide provides instructions to prepare your airgap environment for a Palette VerteX installation by completing the required preparatory steps 1 and 2 shown in the diagram. The respective installation guides for each platform cover the remaining installation process.
 
 
 ## Prepare Airgap Installation
@@ -21,7 +21,7 @@ Use the following steps to prepare your airgap environment for a VerteX installa
 
 :::tip
 
-Carefully review the [prerequisites](#prerequisites) section before proceeding. This will save you time and frustration. Each prerequisite listed is required for a successful installation.
+Carefully review the [prerequisites](#prerequisites) section before proceeding. This will save you time and frustration. Each prerequisite is required for a successful installation.
 
 :::
 
@@ -37,7 +37,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   :::caution
 
-    Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry 
+    Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry.
     Refer to the [Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
   :::
 
@@ -82,7 +82,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 1. Log in to the OCI registry where you will host the VerteX images and packages.
 
-2. Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the VerteX Packs. 
+2. Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the VerteX packs. 
     - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for information about creating a repository in Harbor. 
     - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) guide for information about creating a repository in AWS ECR.
 
@@ -99,7 +99,7 @@ Complete the following steps before deploying the airgap VerteX installation.
   <Tabs groupId="oci-registry"> 
   <TabItem label="Harbor" value="harbor">
 
-  Use `oras` to login to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
+  Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI flags and examples.
 
   ```shell
   oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere' 
@@ -139,7 +139,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 ---
 
-7. The airgap setup binary require a set of environment variables to be available and populated. Depending on what OCI registry you are using, the environment variables will be different. Select the OCI registry you are using and populate the environment variables accordingly.
+7. The airgap setup binary requires a set of environment variables to be available and populated. The environment variables will be different depending on the OCI registry you are using. Select the OCI registry and populate the environment variables accordingly.
 
   <Tabs groupId="oci-registry">
   <TabItem label="Harbor" value="harbor">
@@ -204,7 +204,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 ---
 
-8. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+8. Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace the values in the commands below with our support team's recommended version and credentials.
 
   ```shell
   VERSION=4.0.19
@@ -257,7 +257,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     :::tip
 
-    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one following command in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
+    If you want to get started quickly with a file server, install [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's [http sever](https://docs.python.org/3/library/http.server.html) and issue one of the following commands in the folder where you unzipped the manifest content. Each command will start a file server on port 2015.
 
     ```shell
     caddy file-server --listen :2015 --browse
@@ -271,7 +271,7 @@ Complete the following steps before deploying the airgap VerteX installation.
     :::    
 
 
-12. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create to cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
+12. Review the additional packs available for download. The supplemental packs are optional and not required for a successful installation. However, to create cluster profiles you may require several of the packs available for download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs. 
 
 
 
