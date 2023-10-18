@@ -21,6 +21,8 @@ To contribute, we recommend having the following software installed locally on y
 
 - Node.js and npm (optional)
 
+- [Vale](https://vale.sh/docs/vale-cli/installation/)
+
 ## Local Development (Docker)
 
 To get started with the Docker based local development approach ensure you are in the root context of this repository. 
