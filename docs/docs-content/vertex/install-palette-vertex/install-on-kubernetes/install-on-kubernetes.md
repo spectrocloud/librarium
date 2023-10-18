@@ -18,7 +18,4 @@ To get started with Palette VerteX on Kubernetes, refer to the [Install Instruct
 - [Install Instructions](install.md)
 
 
-<!-- - [Airgap Install Instructions](/vertex/install-palette-vertex/install-on-kubernetes/install-airgap) -->
-
-
 - [Helm Configuration Reference](vertex-helm-ref.md)

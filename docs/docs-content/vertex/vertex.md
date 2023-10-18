@@ -42,5 +42,5 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 - [System Management](system-management/system-management.md)
 
-
+- [Enterprise Install Troubleshooting](../troubleshooting/enterprise-install.md)
 
