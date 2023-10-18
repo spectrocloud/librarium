@@ -35,9 +35,11 @@ Placeholder for text summary
 
 - Self-hosted Palette installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [Self-Hosted Palette](enterprise-version/install-palette/install-palette.md) documentation.
 
+- Palette has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface.
+
 #### Improvements
 
-
+- The enhanced pack experience introduced in Palette 4.0 for add-on packs is now available to all packs.
 
 ### Edge
 
@@ -56,6 +58,10 @@ Placeholder for text summary
 #### Features
 
 - You can now select a different Kubernetes distribution when creating a cluster group. The two supported distributions are [Kubernetes](https://kubernetes.io/) and [K3s](https://k3s.io/). To learn more about cluster groups, refer to the [Cluster Groups](./clusters/cluster-groups/cluster-groups.md) documentation.
+
+
+- Cluster groups can now be configured with default add-on profiles. All virtual clusters deployed in the cluster group will automatically install the add-on profiles. These add-on profiles defined at the cluster group allow administrators to enforce a set of add-on profiles to act as a base for all virtual clusters. To learn more about cluster groups, refer to the [Cluster Groups](./clusters/cluster-groups/cluster-groups.md) documentation.
+
 
 
 ### Virtual Machine Orchestrator (VMO)
@@ -83,7 +89,7 @@ Placeholder for text summary
 
 ### Terraform
 
-Version 0.16.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Version 0.16.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 
 #### Education
@@ -93,3 +99,82 @@ Version 0.16.0 of the [Spectro Cloud Terraform provider](https://registry.terraf
 - Content versioning is now supported. You can now view the documentation for a specific version of Palette.
 
 ### Packs
+
+
+
+#### Kubernetes
+
+| **Pack**| **New Version**|
+| :--- | :--- |
+| Kubernetes GKE| 1.27.5 |
+| Kubernetes GKE| 1.26.8 |
+| Kubernetes GKE| 1.25.13 |
+| Palette eXtended Kubernetes (PXK)| 1.28.2 |
+| Palette eXtended Kubernetes (PXK)| 1.27.5 |
+| Palette eXtended Kubernetes (PXK)| 1.26.8 |
+| Palette eXtended Kubernetes (PXK)| 1.25.13 |
+
+
+
+
+#### CNI
+
+| **Pack**| **New Version**|
+| :--- | :--- |
+| AWS VPC CNI EKS | 1.15.0|
+| Calico| 3.26.1 |
+| Calico Network Policy | 3.26.1 |
+
+
+#### CSI
+
+| **Pack**| **New Version**|
+| :--- | :--- |
+| AWS EBS CSI | 1.22.0|
+| Azure CSI Driver| 1.28.3|
+| Longhorn CSI | 1.5.1 |
+
+#### Add-on Packs
+
+#### CSI
+
+| **Pack**| **New Version**|
+| :--- | :--- |
+| AWS ALB | 2.6.0 |
+| Cilium Tetragon | 0.10.0 |
+| External DNS | 0.13.5 |
+| External Secrets Operator | 0.9.4|
+| Kong Ingress | 2.26.5 |
+| Nginx Ingress | 1.8.1 |
+| Reloader| 1.0.40|
+
+
+
+#### FIPS Packs
+
+| **Pack**| **New Version**|
+| :--- | :--- |
+| Cilium CNI OSS | 1.13.4 |
+| Palette eXtended Kubernetes (PXK)| 1.27.5 |
+| Palette eXtended Kubernetes (PXK)| 1.26.8 |
+| Palette eXtended Kubernetes (PXK)| 1.25.13|
+
+
+#### Community Packs
+
+| **Pack**| **New Version**|
+| :--- | :--- |
+| AppDynamics Collector | 1.14.714 |
+| AppDynamics Collector | 1.14.168 |
+| AppDynamics Collector | 1.13.684 |
+
+
+
+
+#### Pack Notes
+
+- ngrok published a documentation page for how to use the ngrok pack. You can review their contribution by visiting the [ngrok](./integrations/ngrok.md) documentation page.
+
+#### Deprecations and Removals
+
+- For a list of deprecated packs, check out the [Deprecated Packs](./integrations/deprecated-packs.md) page.
