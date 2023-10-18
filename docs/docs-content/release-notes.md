@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## October 22, 2023 - Release 4.1.0
 
-Placeholder for text summary
+Palette 4.1.0 introduces several new features and enhancements to the platform. New features, such as the automatic SSL control plane certificate renewal and node repavement warnings, are designed to continue to help you manage Kubernetes clusters with confidence. The new built-in platform notification system is another addition designed to help you stay up-to-date with announcements and changes by bringing the news directly to you. Check out the following sections to learn about all the new features and improvements introduced in this release.
 
 ### Palette
 
@@ -35,9 +35,8 @@ Placeholder for text summary
 
 - Self-hosted Palette installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [Self-Hosted Palette](enterprise-version/install-palette/install-palette.md) documentation.
 
-- Palette has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface.
+- Palette has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface. 
 
-#### Improvements
 
 - The enhanced pack experience introduced in Palette 4.0 for add-on packs is now available to all packs.
 
@@ -46,6 +45,11 @@ Placeholder for text summary
 
 
 - Palette now displays a warning message when you are about to trigger an action from the UI that will cause nodes to repave. Use these warnings to avoid triggering a node repave when it is not desired.
+
+
+#### Deprecations and Removals
+
+- The previous support widget used to create support tickets has been replaced with a new and improved widget. Use the new widget to create support tickets, access the Palette documentation, and more. 
 
 ### Edge
 
@@ -98,7 +102,7 @@ Placeholder for text summary
 - Version 0.16.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 
-### Education
+### Docs and Education
 
 - The Palette documentation website has undergone a significant upgrade, improving content navigation and search experiences and adding new documentation features that enhance the reader experience.  
 
@@ -179,7 +183,7 @@ Placeholder for text summary
 
 #### Pack Notes
 
-- ngrok published a documentation page for how to use the ngrok pack. You can review their contribution by visiting the [ngrok](./integrations/ngrok.md) documentation page.
+- ngrok published a documentation page where you can learn more about their ingress pack and how to use it. You can review their contribution by visiting the [ngrok](./integrations/ngrok.md) documentation page.
 
 #### Deprecations and Removals
 
