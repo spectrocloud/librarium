@@ -207,7 +207,7 @@ If you are using a self-hosted OCI registry, you must provide the required FIPS 
 | `ociPackRegistry.username` |  The username for the registry. | String| `""` |
 | `ociPackRegistry.baseContentPath`| The base path for the registry. | String | `""` |
 | `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
-| `ociPackRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. | String | `""` |
+| `ociPackRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries. | String | `""` |
 
 
 ```yaml
@@ -249,6 +249,35 @@ config:
     isPrivate: true
     insecureSkipVerify: false
     caCert: ""
+```
+
+#### OCI Image Registry
+
+You can specify an OCI registry for the images used by Palette. 
+
+| **Parameters** | **Description** | **Type** | **Default value** |
+| --- | --- | --- | --- |
+| `ociImageRegistry.endpoint` | The endpoint URL for the registry. | String| `""` |
+| `ociImageRegistry.name` |  The name of the registry. | String| `""` |
+| `ociImageRegistry.password` | The password for the registry.  | String| `""` |
+| `ociImageRegistry.username` |  The username for the registry. | String| `""` |
+| `ociImageRegistry.baseContentPath`| The base path for the registry. | String | `""` |
+| `ociImageRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean | `false` |
+| `ociImageRegistry.caCert` | The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries. | String | `""` |
+| `ociImageRegistry.mirrorRegistries` | A comma-separated list of mirror registries. | String | `""` |
+
+
+```yaml
+config:
+  ociImageRegistry:
+    endpoint: ""
+    name: "" 
+    password: "" 
+    username: "" 
+    baseContentPath: "" 
+    insecureSkipVerify: false
+    caCert: ""
+    mirrorRegistries: ""
 ```
 
 ### Spectro Cloud Artifact Repository (SCAR)

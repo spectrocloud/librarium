@@ -12,10 +12,15 @@ Palette is available as a self-hosted application that you install in your envir
 
 | **Supported Platform** | **Description**                    | **Install Guide** |
 |------------------------|------------------------------------| ------------------|
-| VMware                 | Install Palette in VMware environment. | [Install on VMware](install-on-vmware/install-on-vmware.md) |
+| VMware                 | Install Palette in VMware environment. | [Install on VMware](install-on-vmware/install.md) |
 | Kubernetes             | Install Palette using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](install-on-kubernetes/install.md) |
 
+You can also install Palette in an airgap environment. For more information, refer to the [Airgap Installation](airgap/airgap.md) section.
 
+| **Supported Airgap Platform** | **Description**                    |
+|------------------------|------------------------------------|
+| VMware                 | Install Palette in VMware environment using your own OCI registry server. |
+| Kubernetes             | Install Palette using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. |
 
 
 The next sections provide sizing guidelines we recommend you review before installing Palette in your environment.
@@ -86,4 +91,8 @@ The recommended maximum number of deployed nodes and clusters in the environment
 
 - [Install on Kubernetes](install-on-kubernetes/install.md)
 
+- [Airgap Installation](airgap/airgap.md)
+
 - [Architecture Diagram and Network Ports](../../architecture/networking-ports.md#self-hosted-network-communications-and-ports)
+
+- [Enterprise Install Troubleshooting](../../troubleshooting/enterprise-install.md)
