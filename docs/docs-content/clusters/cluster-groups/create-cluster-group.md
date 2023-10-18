@@ -68,28 +68,29 @@ Use the instructions below to create a cluster group.
 
 6. Review the configuration options for **Host Clusters Config** and **Virtual Clusters Config**.
 
+  #### Cluster Group Configurations
 
-#### Cluster Group Configurations
+      
+  |**Host Cluster Config**        |        **Description**                    |
+  |--------------------------------------|-------------------------------------------|
+  |Oversubscription (%):                 | The allowed oversubscription for cluster in terms of resources. Default is 120%.|
+  |Cluster endpoint type:                | Load balancer or Ingress.|
+  |Host DNS:                             | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance.|
 
-    
-|**Host Cluster Config**        |        **Description**                    |
-|--------------------------------------|-------------------------------------------|
-|Oversubscription (%):                 | The allowed oversubscription for cluster in terms of resources. Default is 120%.|
-|Cluster endpoint type:                | Load balancer or Ingress.|
-|Host DNS:                             | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance.|
+  #### Palette Virtual Cluster Configuration
+
+  The configuration applied to all virtual clusters launched into the host clusters. Select the Kubernetes distribution you want all virtual clusters to use. Use the **Advanced Config** for further customization. 
+
+  ![A view of the Kubernetes distribution selection menu](/clusters_cluster-groups_create-cluster-group_virtual-cluster-distro.png)
 
 
-#### Palette Virtual Cluster Configuration
+  The request sizing applies to the maximum amount of resources a virtual cluster is allowed to claim.
 
-The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for further customization. The request sizing applies to the maximum amount of resources a virtual cluster is allowed to claim.
-
-<br />
-
-|**Palette Virtual Cluster Resource ** | **Default**   |**Minimum Limit**|
-|------------------------------|-------------------|-----------------|
-|CPU (per request)             | 6                 | 4               |
-| Memory (per request)         | 8 GiB             | 4 GiB           |
-| Storage (per request)        | 10 GiB            | 2 GiB           |
+  |**Palette Virtual Cluster Resource** | **Default**   |**Minimum Limit**|
+  |------------------------------|-------------------|-----------------|
+  |CPU (per request)             | 6                 | 4               |
+  | Memory (per request)         | 8 GiB             | 4 GiB           |
+  | Storage (per request)        | 10 GiB            | 2 GiB           |
 
 
 :::caution
@@ -121,7 +122,7 @@ To enable virtual clusters for OpenShift, review the OpenShit [instructions belo
 
 8. Click **Finish Configuration**.
 
-### Validate
+## Validate
 
 To review your cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Your newly created cluster group is now displayed and ready for use. 
 
