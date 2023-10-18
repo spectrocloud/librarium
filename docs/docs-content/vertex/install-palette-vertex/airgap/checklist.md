@@ -23,9 +23,9 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Downloaded the airgap setup binary from the support team.
 
-- [ ] Created a private repository with the name `spectro-packs` in your OCI registry. You can use a different if you prefer.
+- [ ] Created a private repository with the name `spectro-packs` in your OCI registry. You can use a different name if you prefer.
 
-- [ ] Created a public repository with the name `spectro-images` in your OCI registry. You can use a different if you prefer.
+- [ ] Created a public repository with the name `spectro-images` in your OCI registry. You can use a different name if you prefer.
 
 - [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
 
@@ -33,7 +33,7 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Set the required environment variables for the airgap setup binary. The values are different depending on what type of OCI registry you use.
 
-- [ ] Started the airgap setup binary and verified the setup completed successfully
+- [ ] Started the airgap setup binary and verified the setup completed successfully.
 
 - [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
 
@@ -61,9 +61,9 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Appended an `r_` prefix to the OVA name after the import.
 
-- [ ] Created a private repository with the name `spectro-packs` in your OCI registry.
+- [ ] Created a private repository with the name `spectro-packs` in your OCI registry. You can use a different name if you prefer.
 
-- [ ] Created a public repository with the name `spectro-images` in your OCI registry.
+- [ ] Created a public repository with the name `spectro-images` in your OCI registry.  You can use a different name if you prefer.
 
 - [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
 
