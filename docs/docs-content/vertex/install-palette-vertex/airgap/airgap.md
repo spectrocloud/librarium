@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Airgap"
 title: "Airgap"
-description: "Learn how to install VerteX on VMware."
+description: "Learn about Palette VerteX in an airgap environment and how to install Palette in an airgap environment."
 icon: ""
 sidebar_position: 10
 hide_table_of_contents: false

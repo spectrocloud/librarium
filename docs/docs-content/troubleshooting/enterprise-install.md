@@ -8,7 +8,7 @@ sidebar_position: 60
 tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 ---
 
-Refer to the following sections for troubleshooting steps for errors encountered when installing an Enterprise Cluster.
+Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
 
 ## Scenario - Self-linking Error
