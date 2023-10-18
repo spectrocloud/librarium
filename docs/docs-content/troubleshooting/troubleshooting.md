@@ -17,13 +17,21 @@ Use the following troubleshooting resources to help you address issues that may 
 
 <br />
 
-- [Kubernetes Debugging](kubernetes-tips.md)
-
-
 - [Cluster Deployment](cluster-deployment.md)
 
 
+- [Edge](edge.mdx)
+
+
+- [Enterprise Install](enterprise-install.md)
+
+
 - [Nodes & Clusters](nodes.md)
+
+
+
+- [Kubernetes Debugging](kubernetes-tips.md)
+
 
 
 - [Packs](pack-issues.md)
@@ -32,13 +40,13 @@ Use the following troubleshooting resources to help you address issues that may 
 - [Palette Dev Engine](palette-dev-engine.md)
 
 
-- [Edge](edge.mdx)
+- [Palette Upgrade](palette-upgrade.md)
 
 
 - [Private Cloud Gateway](pcg.md)
 
 
-- [Palette Upgrade](palette-upgrade.md)
+
 
 
 
