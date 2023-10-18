@@ -16,7 +16,7 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
 
 :::caution
 
-If you are installing an airgap Palette, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
+If you are installing Palette VerteX in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
 
 :::
 
@@ -84,7 +84,7 @@ Self-hosted Palette VerteX installations provide a system Private Cloud Gateway 
 
 ## Deployment
 
-The video below provides a demonstration of the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
+The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
 
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
@@ -136,7 +136,7 @@ Use the following steps to install Palette VerteX.
 
 
 
-5. Enter the repository credentials. The credentials to the public Spectro Cloud repository is provided to your by our support team. Airgap installations, provide the credentials to your private repository. If your HTTP file server has no authentication, provide the username and password as `admin` and `admin` respectively.
+5. Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro Cloud repository. Airgap installations, provide the credentials to your private repository. If your HTTP file server has no authentication, provide the username and password as `admin` and `admin` respectively.
 
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
@@ -192,7 +192,7 @@ For self-hosted OCI registries, ensure you have the server Certificate Authority
   | **Registry Name** | Enter the name of the registry. |
   | **Registry Endpoint** | Enter the registry endpoint. |
   | **Registry Base Path** | Enter the registry base path. |
-  |**Allow Insecure Connection** | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow up prompt. |
+  |**Allow Insecure Connection** | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. |
   | **Registry CA certificate filepath** | Specify the file path to the certificate authority. Use absolute paths. |
   | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`. |
   | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`. |
@@ -201,7 +201,7 @@ For self-hosted OCI registries, ensure you have the server Certificate Authority
   | **Use Public Registry for Images** | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
 
-  When prompted for "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
+  When prompted to "Pull images from public registry", type `n` and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
 
   <br />
 
@@ -281,7 +281,7 @@ You will be provided with an opportunity to update the mirror registries values.
   | **Small** |  Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit. |
   | **Medium** | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 CPU limit and 8 GB memory limit. |
   | **Large** | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit. |
-  | **Custom** | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage |
+  | **Custom** | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
   <br />
 
@@ -306,7 +306,7 @@ You will be provided with an opportunity to update the mirror registries values.
 
 :::tip
 
-  Should the install encounter an error. Remove the `kind` cluster that was created and restart the installation. To remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
+  If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
 
   ```bash
   kind delete cluster spectro-mgmt-cluster
@@ -338,13 +338,13 @@ You will be provided with an opportunity to update the mirror registries values.
 
   It will take another ~30-45 minutes for the installation to complete.
 
-  You can monitor its progress via kubectl/k9s or by viewing the System Console.
+  You can monitor its progress via kubectl/k9s or by viewing the system console.
 
   export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
   ```
 
 
-13. Copy the URL to the browser to access the System Console. You will be prompted to reset the password.
+13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
   <br />
 
