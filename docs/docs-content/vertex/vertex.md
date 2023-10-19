@@ -31,6 +31,7 @@ Palette VerteX supports the following platforms for deploying Kubernetes cluster
 | **Edge**| ✅ | N/A|
 | **VMware vSphere** | ✅ | N/A|
 
+For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the [Cluster](../clusters/clusters.md) documentation.
 
 
 
