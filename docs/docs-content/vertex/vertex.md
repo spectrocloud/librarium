@@ -18,6 +18,22 @@ Palette VerteX integrates validated Federal Information Processing Standards (FI
 
 To learn more about FIPS in Palette VerteX, check out the [FIPS](fips/fips.md) section.
 
+
+## Supported Platforms
+
+Palette VerteX supports the following platforms for deploying Kubernetes clusters:
+
+| **Platform** | **Support Status** | **Government Cloud** |
+| --- | --- | --- |
+| **AWS IaaS** | ✅ |  ✅ |
+| **AWS EKS** | ✅ |  ✅ |
+| **Azure Iaas**| ✅ |  ✅|
+| **Edge**| ✅ | N/A|
+| **VMware vSphere** | ✅ | N/A|
+
+
+
+
 ## Access Palette VerteX
 
 To set up a Palette VerteX account, contact our support team by sending an email to support@spectrocloud.com. Include the following information in your email:
@@ -31,6 +47,8 @@ To set up a Palette VerteX account, contact our support team by sending an email
 
 
 Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image, credentials, and an endpoint URL to access the FIPS registry.
+
+
 
 ## Resources
 
