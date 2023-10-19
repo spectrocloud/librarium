@@ -56,7 +56,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
-- Download the Palette CLI from the [Downloads](../../../spectro-downloads#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more.
+- Download the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more.
 
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/user-authentication.md#apikey) page for guidance.
