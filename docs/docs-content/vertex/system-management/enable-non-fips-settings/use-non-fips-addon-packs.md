@@ -18,13 +18,11 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 - Container Network Interface (CNI)
 - Container Storage Interface (CSI)
 
-VerteX also provides the flexibility to utilize non-FIPS infrastructure packs. To do this, you must add the **Non-fips pack registry** to the tenant. Our support team will provide you with the registry URL.
+VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add the **Non-fips pack registry** to the tenant. Our support team will provide you with the registry URL.
 
-You can allow tenant users to use non-FIPS infrastructure packs and to customize their cluster profiles by using non-FIPS add-on packs. Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security, monitoring, logging, and more.
+The ability to use non-FIPS packs allows tenant users to tailor deployments to their specific needs by customizing cluster profiles with infrastructure or add-on functionality that meets their requirements. For more information about cluster profiles, check out the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
 The screenshot below shows the icon that VerteX displays next to FIPS-compliant infrastructure components to indicate full FIPS compliance. Other icons are used to indicate profile layers with partial, unknown, or non-FIPS compliant status. To learn about other icons VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
-
-<!-- As shown in the screenshot below, the FIPS-compliant icon that is used to indicate full FIPS compliance is displayed next to VerteX infrastructure components in the cluster profile stack. To learn about other icons VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md). -->
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png) 
 
@@ -35,7 +33,7 @@ Use the following steps to enable non-FIPS packs.
 
 - You need tenant admin permission to enable this feature.
 
-- To use non-FIPS infrastructure packs, add the **Non-fips pack registry**.
+- To use non-FIPS packs, add the **Non-fips pack registry**.
 
 
 ## Allow Non-FIPS Packs
@@ -77,7 +75,7 @@ Use these steps to verify non-FIPS packs are available.
 
 8. Click on **Add New Pack**.
 
-9. Select the **Spectro Public Packs** registry in **drop-down Menu**. Several non-FIPS packs are listed. 
+9. Select the **Non-fips pack registry** registry in **drop-down Menu**. Several non-FIPS packs are listed. 
 
 VerteX will display the appropriate FIPS status icon next to each pack layer.
    
