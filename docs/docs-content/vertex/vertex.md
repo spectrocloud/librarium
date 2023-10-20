@@ -18,6 +18,11 @@ Palette VerteX integrates validated Federal Information Processing Standards (FI
 
 To learn more about FIPS in Palette VerteX, check out the [FIPS](fips/fips.md) section.
 
+
+## Supported Platforms
+
+To learn more about infrastructure platforms supported by Palette VerteX, refer to the [Supported Platforms](supported-platforms.md) section.
+
 ## Access Palette VerteX
 
 To set up a Palette VerteX account, contact our support team by sending an email to support@spectrocloud.com. Include the following information in your email:
@@ -32,6 +37,8 @@ To set up a Palette VerteX account, contact our support team by sending an email
 
 Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image, credentials, and an endpoint URL to access the FIPS registry.
 
+
+
 ## Resources
 
 - [FIPS](fips/fips.md)
@@ -40,7 +47,12 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 - [Installation](install-palette-vertex/install-palette-vertex.md)
 
 
+- [Supported Platforms](supported-platforms.md)
+
+
 - [System Management](system-management/system-management.md)
+
+
 
 - [Enterprise Install Troubleshooting](../troubleshooting/enterprise-install.md)
 

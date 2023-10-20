@@ -89,7 +89,7 @@ Check out the following sections to learn about all the new features and improve
 
 #### Features
 
-- Palette VerteX now supports the deployment of Azure IaaS clusters.
+- Palette VerteX now supports the deployment of Azure IaaS clusters. Refer to the [Supported Platforms](./vertex/supported-platforms.md) documentation information about the supported platforms.
 
 - Palette VerteX installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [VerteX](vertex/install-palette-vertex/install-palette-vertex.md) documentation.
 
