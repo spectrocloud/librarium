@@ -21,34 +21,7 @@ To learn more about FIPS in Palette VerteX, check out the [FIPS](fips/fips.md) s
 
 ## Supported Platforms
 
-Palette VerteX supports the following infrastructure platforms for deploying Kubernetes clusters:
-
-| **Platform** | **Additional Information** |
-| --- |  --- |
-| **AWS** |   Refer to the [AWS](#aws) section for additional guidance. | 
-| **AWS Gov** |  Refer to the [AWS](#aws) section for additional guidance. |
-| **Azure**|   Refer to the [Azure](#azure) section for additional guidance. |
-| **Azure Gov**|   Refer to the [Azure](#azure) section for additional guidance. |
-| **Edge**|  
-| **VMware vSphere** |
-
-
-
-#### AWS 
-
-|  **Platform** | **AWS Gov Support?**| 
-| --- |  --- | 
-| **IaaS** |  ✅ | 
-| **EKS**|  ✅ |
-
-For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the [Cluster](../clusters/clusters.md) documentation.
-
-#### Azure
-
-|  **Platform** | **Azure Gov Support?**|
-| --- |  --- |
-| **IaaS** |  ✅ |
-
+To learn more about infrastructure platforms supported by Palette VerteX, refer to the [Supported Platforms](supported-platforms.md) section.
 
 ## Access Palette VerteX
 
@@ -74,7 +47,12 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 - [Installation](install-palette-vertex/install-palette-vertex.md)
 
 
+- [Supported Platforms](supported-platforms.md)
+
+
 - [System Management](system-management/system-management.md)
+
+
 
 - [Enterprise Install Troubleshooting](../troubleshooting/enterprise-install.md)
 
