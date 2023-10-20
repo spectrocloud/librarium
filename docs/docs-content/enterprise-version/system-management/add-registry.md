@@ -8,11 +8,11 @@ sidebar_position: 60
 tags: ["enterprise", "management", "registry"]
 ---
 
-You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For steps to add a tenant-level registry, refer to [Add a Tenant-Level Registry]... 
+You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For steps to add a tenant-level registry, refer to [Add Tenant-Level Registry](../../tenant-settings/add-registry.md). 
 
 ## Prerequisites
 
-- You need tenant admin privileges to add a system-level registry. 
+- You need tenant admin privileges. 
 
 ## Add an OCI Registry
 
@@ -28,15 +28,15 @@ Use the following steps to add a system-level OCI registry.
 
   | **Field**            | **Description**                   |
   |----------------------|-----------------------------------|
-  | Name                 |  A custom name for the registry.  |
-  | Registry Type        |  Select **OCI**.                  |
-  | Authentication Type  |  Select **ECR**. Our OCI packs are hosted in the Amazon Elastic Container Registry (ECR). |
-  | Endpoint             |  Provide the registry endpoint, and prefix the endpoint with `https://`. |
-  | Base Content Path    |  Provide the registry base path. |
+  | **Name**                 |  A custom name for the registry.  |
+  | **Registry Type**        |  Select **OCI**.                  |
+  | **OCI Authentication Type**  |  Select **ECR**. Our OCI packs are hosted in the Amazon Elastic Container Registry (ECR). |
+  | **Endpoint**             |  Provide the registry endpoint, and prefix it with `https://`. |
+  | **Base Content Path**    |  Provide the registry base path. |
 
-5. Enable the **Protected** toggle. Palette displays the **Access key** and **Secret access key** fields. Provide the credentials you received from our support team.
+5. Enable the **Protected** toggle. Palette displays the **AWS authentication method** as **Credenditals**, the **Access key** field, and **Secret access key** field. Provide the credentials you received from our support team.
 
-6. Click the **Validate** button. If the credentials you provided are correct, VerteX displays a *Credentials validated* success message with a green check.
+6. Click the **Validate** button. If the credentials you provided are correct, Palette displays a *Credentials validated* success message with a green check.
 
 7. Click **Confirm**.
 
@@ -51,7 +51,9 @@ You can verify the registry has been added if Palette displayed a *Credentials v
 
 2. From the left **Main Menu** select **Administration**. 
 
-3. Select the **Pack Registries** tab and verify the registry you added is listed.
+3. Select the **Pack Registries** tab and verify the registry you added is listed and available.
 
-<!-- 2. Try creating a cluster profile and verify the registry you added is available and packs are displayed. For guidance, review the [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md) documentation. -->
 
+## Resources
+
+- [Add Tenant-Level Registry](../../tenant-settings/add-registry.md)

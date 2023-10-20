@@ -18,7 +18,7 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 - Container Network Interface (CNI)
 - Container Storage Interface (CSI)
 
-VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add a non-FIPS compliant pack registry. Refer to [Add a Registry] for guidance. 
+VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add a non-FIPS compliant pack registry. Review the [Add a Registry](../add-registry.md) guide. 
 
 We provide an Open Container Initiative (OCI) registry and a community registry. You can add both non-FIPS registries to utilize the entire suite of packs. The table below lists these registries and their endpoints. Our support team will provide you with the required credentials.
 
@@ -27,7 +27,7 @@ We provide an Open Container Initiative (OCI) registry and a community registry.
 | **OCI Pack Registry**  | non-FIPS   | 415789037893.dkr.ecr.us-east-1.amazonaws.com | `production` |
 | **Spectro Cloud Community Registry** | non-FIPS | 415789037893.dkr.ecr.us-east-1.amazonaws.com  | `community` |
 
-The ability to use non-FIPS packs allows tenant users to tailor deployments to their specific needs by customizing cluster profiles with infrastructure or add-on functionality that meets their requirements. For more information about cluster profiles, check out the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
+The ability to use non-FIPS packs allows tenant users to tailor deployments to their specific needs by customizing cluster profiles with infrastructure or add-on functionality that meets their requirements. For more information about cluster profiles and how to create them, check out the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
 The screenshot below shows the icon that VerteX displays next to FIPS-compliant infrastructure components to indicate full FIPS compliance. Other icons are used to indicate profile layers with partial, unknown, or non-FIPS compliant status. To learn about other icons VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
 
@@ -45,7 +45,7 @@ Use the following steps to enable non-FIPS packs.
 
 ## Allow Non-FIPS Packs
 
-1. Log in to [Palette VerteX](https://console.spectrocloud.com/) as a tenant admin.
+1. Log in to the Palette VerteX system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
 
 2. Navigate to the left **Main Menu** and click on **Tenant Settings**. 
 
@@ -66,23 +66,11 @@ When packs are added to a cluster profile, VerteX applies the appropriate icon n
 
 Use these steps to verify non-FIPS packs are available.
 
-1. Log in to [Palette VerteX](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the left **Main Menu** and select **Profiles**. 
- 
-3. To confirm non-FIPS infrastructure packs are available, Click the **Add Cluster Profile** button and fill out the input values. Select **Infrastructure** for the profile type.
 
-4. Select the infrastructure provider or managed Kubernetes for your environment and click **Next**.
-
-5. Select the **Non-fips pack registry** registry in the **drop-down Menu**. Non-FIPS Operating System (OS) packs are listed.
-
-6. As you continue creating the profile, non-FIPS infrastructure packs are available for each infrastructure layer:  Kubernetes, network, and storage.
-
-7. To confirm non-FIPS add-on packs are available, select **Profiles** in the **Main Menu** and select the profile you created. 
-
-8. Click on **Add New Pack**.
-
-9. Select the **Non-fips pack registry** registry in **drop-down Menu**. Several non-FIPS packs are listed. 
+3. Try creating a cluster profile and verify the registry you added is available and packs are displayed. For guidance, review the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
 VerteX will display the appropriate FIPS status icon next to each pack layer.
    
