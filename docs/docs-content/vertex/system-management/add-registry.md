@@ -8,15 +8,15 @@ sidebar_position: 50
 tags: ["vertex", "management", "registry"]
 ---
 
-You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For guidance, check out [Add a Tenant-Level Registry](../../tenant-settings/add-registry.md).
+You can add a registry at the system level or the tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For guidance on adding a registry at the tenant scope, check out [Add a Tenant-Level Registry](../../tenant-settings/add-registry.md).
 
 ## Prerequisites
 
-- You need tenant admin privileges. 
+- Access to the Palette VerteX system console. 
 
 ## Add an OCI Registry
 
-Use the following steps to add a system-level OCI registry.
+Use the following steps to add a system-level OCI registry. To add our non-FIPS registries, refer to the table in the [Use non-FIPS Packs](../system-management/enable-non-fips-settings/use-non-fips-addon-packs.md) guide for endpoint and base path details. You will need to repeat these steps and specify the base path for each repository you want to target in the registry.
 
 1. Log in to the Palette VerteX system console. Refer to [Access the System Console](system-management.md#access-the-system-console) guide.
 
@@ -24,23 +24,22 @@ Use the following steps to add a system-level OCI registry.
 
 3. Select the **Pack Registries** tab and click on the **Add New Pack Registry** button.
 
-4. Fill out the following input values to add an OCI registry.
+4. Fill out the following input values to add an OCI registry. 
 
   | **Field**            | **Description**                   |
   |----------------------|-----------------------------------|
   | **Name**                 |  A custom name for the registry.  |
   | **Registry Type**        |  Select **OCI**.                  |
   | **OCI Authentication Type**  |  Select **ECR**. Our OCI packs are hosted in the Amazon Elastic Container Registry (ECR). |
-  | **Endpoint**             |  Provide the endpoint `415789037893.dkr.ecr.us-east-1.amazonaws.com` and prefix it with `https://`. |
-  | **Base Content Path**    |  Provide the registry base path: `production` or `community`.  |
+  | **Endpoint**             |  Provide the URL to the registry endpoint. |
+  | **Base Content Path**    |  Provide the base path or namespace of the repository you want to target in the registry. |
 
-5. Enable the **Protected** toggle. Palette displays the **AWS authentication method** as **Credenditals**, the **Access key** field, and **Secret access key** field. Provide the credentials you received from our support team.
+5. If you are adding an unprotected OCI registry, click the **Validate** button. Otherwise, enable the **Protected** toggle and provide the appropriate credentials in the fields that VerteX displays. 
 
-6. Click the **Validate** button. If the credentials you provided are correct, VerteX displays a *Credentials validated* success message with a green check.
+  If the credentials you provided are correct, a *Credentials validated* success message with a green check is displayed.
 
-7. Click **Confirm**.
+6. Click **Confirm** to complete adding the registry.
 
-8. To add both of the non-FIPS registries listed in the table in the [Use non-FIPS Packs](../system-management/enable-non-fips-settings/use-non-fips-addon-packs.md) guide, repeat steps 4 through 7 and specify a different base path than previously used - `production` or `community`.
 
 You have successfully added a system-level registry. Registries added at the system level can only be removed at that level.
 

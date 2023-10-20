@@ -8,11 +8,11 @@ sidebar_position: 60
 tags: ["enterprise", "management", "registry"]
 ---
 
-You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For steps to add a tenant-level registry, refer to [Add Tenant-Level Registry](../../tenant-settings/add-registry.md). 
+You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For guidance on adding a registry at the tenant scope, check out [Add Tenant-Level Registry](../../tenant-settings/add-registry.md). 
 
 ## Prerequisites
 
-- You need tenant admin privileges. 
+- Access to the Palette system console 
 
 ## Add an OCI Registry
 
@@ -31,14 +31,21 @@ Use the following steps to add a system-level OCI registry.
   | **Name**                 |  A custom name for the registry.  |
   | **Registry Type**        |  Select **OCI**.                  |
   | **OCI Authentication Type**  |  Select **ECR**. Our OCI packs are hosted in the Amazon Elastic Container Registry (ECR). |
-  | **Endpoint**             |  Provide the registry endpoint, and prefix it with `https://`. |
-  | **Base Content Path**    |  Provide the registry base path. |
+  | **Endpoint**             |  Provide the URL to the registry endpoint. |
+  | **Base Content Path**    |  Provide the base path or namespace of the repository you want to target in the registry. |
 
-5. Enable the **Protected** toggle. Palette displays the **AWS authentication method** as **Credenditals**, the **Access key** field, and **Secret access key** field. Provide the credentials you received from our support team.
+5. To add an unprotected OCI registry, click the **Validate** button. Otherwise, enable the **Protected** toggle and provide the appropriate credentials in the fields that Palette displays. 
+
+  If the credentials you provided are correct, a *Credentials validated* success message with a green check is displayed.
+
+6. Click **Confirm** to complete adding the registry.
+
+
+<!-- 5. Enable the **Protected** toggle. Palette displays the **AWS authentication method** as **Credenditals**, the **Access key** field, and **Secret access key** field. Provide the credentials you received from our support team.
 
 6. Click the **Validate** button. If the credentials you provided are correct, Palette displays a *Credentials validated* success message with a green check.
 
-7. Click **Confirm**.
+7. Click **Confirm** to complete adding the registry. -->
 
 You have successfully added a system-level registry. Registries added at the system level can only be removed at that level.
 

@@ -18,14 +18,14 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 - Container Network Interface (CNI)
 - Container Storage Interface (CSI)
 
-VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add a non-FIPS compliant pack registry. Review the [Add a Registry](../add-registry.md) guide. 
+VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add a non-FIPS compliant pack registry. You can add registries at the tenant scope or at the system scope. Review the [Add a Registry](../add-registry.md) guide. 
 
 We provide an Open Container Initiative (OCI) registry and a community registry. You can add both non-FIPS registries to utilize the entire suite of packs. The table below lists these registries and their endpoints. Our support team will provide you with the required credentials.
 
-| **Production**     | **Type**   | **Endpoint**       | **Base Path**   |
-| -------------------| ---------- | -------------------------- | ----------------------- |
-| **OCI Pack Registry**  | non-FIPS   | 415789037893.dkr.ecr.us-east-1.amazonaws.com | `production` |
-| **Spectro Cloud Community Registry** | non-FIPS | 415789037893.dkr.ecr.us-east-1.amazonaws.com  | `community` |
+| **Registry**                         | **Type**  | **Endpoint URL**           | **FIPS** |**Base Path**            |
+| -------------------------------------| ----------| -------------------------- | -------- |-------------------------|
+| **OCI Pack Registry**                | AWS ECR   | https://415789037893.dkr.ecr.us-east-1.amazonaws.com  | No | production |
+| **Spectro Cloud Community Registry** | AWS ECR   | https://415789037893.dkr.ecr.us-east-1.amazonaws.com  | No | community |
 
 The ability to use non-FIPS packs allows tenant users to tailor deployments to their specific needs by customizing cluster profiles with infrastructure or add-on functionality that meets their requirements. For more information about cluster profiles and how to create them, check out the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
