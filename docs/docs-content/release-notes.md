@@ -13,7 +13,9 @@ tags: ["release-notes"]
 
 ## October 22, 2023 - Release 4.1.0
 
-Palette 4.1.0 introduces several new features and enhancements to the platform. New features, such as the automatic SSL control plane certificate renewal and node repavement warnings, are designed to continue to help you manage Kubernetes clusters with confidence. The new built-in platform notification system is another addition designed to help you stay up-to-date with announcements and changes by bringing the news directly to you. Check out the following sections to learn about all the new features and improvements introduced in this release.
+Palette 4.1.0 introduces several new features and enhancements to the platform. New features, such as the automatic SSL control plane certificate renewal and node repavement warnings, are designed to continue to help you manage Kubernetes clusters with confidence. The new built-in notification system for our SaaS platform is another addition designed to help you stay up-to-date with announcements and changes by bringing the news directly to you. 
+
+Check out the following sections to learn about all the new features and improvements introduced in this release.
 
 ### Palette
 
@@ -27,18 +29,18 @@ Palette 4.1.0 introduces several new features and enhancements to the platform. 
 - Support for encrypting the root volume of EKS host clusters is now available. You can enable this feature when creating a host cluster. 
 
 
-- MAAS clusters can now be assigned tags so Palette can deploy nodes onto the MAAS machines matching the provided tags.
+- MAAS clusters can now be assigned tags so Palette can deploy nodes onto the MAAS machines matching the provided tags. Refer to the [Create and Manage MAAS Clusters](clusters/data-center/maas/create-manage-maas-clusters.md) to learn more about deploying MAAS clusters.
 
 
-- Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a manual action that had to be performed by the user. Now, Palette will automatically renew the certificate before it expires. This feature is available in all supported infrastructure providers except for Edge and Cox Edge.
+- Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a manual action that had to be performed by the user. Now, Palette will automatically renew the certificate before it expires. This feature is available in all supported infrastructure providers except for Edge and Cox Edge. Check out the [SSL Certificates](clusters/cluster-management/certificate-management.md) documentation to learn more about SSL certificates.
 
 
-- Self-hosted Palette installations now support the ability to control the node affinity for the Palette components. You can configure the Palette Enterprise cluster to deploy all internal component pods on control plane nodes. To learn more about this feature, refer to the [Self-Hosted Palette](enterprise-version/install-palette/install-palette.md) documentation.
+- Self-hosted Palette installations, and Private Cloud Gateway (PCG), now support the ability to control the node affinity for the internal Palette components. You can configure the Palette Enterprise, or PCG cluster to deploy all internal component pods on control plane nodes. This is an option you enable during the install. 
 
 - Palette has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface. 
 
 
-- The enhanced pack experience introduced in Palette 4.0 for add-on packs is now available to all packs.
+- The enhanced pack experience introduced in Palette 4.0.0 for add-on packs is now available to all packs.
 
 
 - When creating an AWS EKS cluster, you can now configure the public and private CIDR ranges allowed to communicate to the cluster's Kubernetes API servers. In the past users could only configure the public CIDR range.
@@ -143,6 +145,7 @@ Palette 4.1.0 introduces several new features and enhancements to the platform. 
 | AWS EBS CSI | 1.22.0|
 | Azure CSI Driver| 1.28.3|
 | Longhorn CSI | 1.5.1 |
+| RookCeph CSI | 1.11.9 |
 
 #### Add-on Packs
 
@@ -168,6 +171,8 @@ Palette 4.1.0 introduces several new features and enhancements to the platform. 
 | Palette eXtended Kubernetes (PXK)| 1.27.5 |
 | Palette eXtended Kubernetes (PXK)| 1.26.8 |
 | Palette eXtended Kubernetes (PXK)| 1.25.13|
+| Edge RKE2 | 1.26.2 |
+| Edge RKE2 | 1.25.10 |
 
 
 #### Community Packs
