@@ -148,17 +148,3 @@ All PXK and PXKE components and supporting open-source components are compiled i
 | Longhorn support bundle kit| Collects logs and system information for debugging. |
 
 
-
-:::info
-
-The Longhorn Manager component is partially FIPS-compliant. This component uses utiltities that are not using a FIPS-compliant version of OpenSSL. The following utilities are not FIPS-compliant:
-
-- openssl
-- curl
-- nfs-utils
-- bind-tools
-
-
-:::
-
-

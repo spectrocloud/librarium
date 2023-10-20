@@ -118,6 +118,12 @@ Check out the following sections to learn about all the new features and improve
 
 | **Pack**| **New Version**|
 | :--- | :--- |
+| Edge RKE2 | 1.27.5 |
+| Edge RKE2 | 1.26.2 |
+| Edge RKE2 | 1.25.10|
+| K3S| 1.27.5|
+| K3S| 1.26.8|
+| K3S| 1.25.13|
 | Kubernetes GKE| 1.27.5 |
 | Kubernetes GKE| 1.26.8 |
 | Kubernetes GKE| 1.25.13 |
@@ -125,7 +131,12 @@ Check out the following sections to learn about all the new features and improve
 | Palette eXtended Kubernetes (PXK)| 1.27.5 |
 | Palette eXtended Kubernetes (PXK)| 1.26.8 |
 | Palette eXtended Kubernetes (PXK)| 1.25.13 |
-
+| Palette eXtended Kubernetes - Edge (PXK-E)| 1.27.5 |
+| Palette eXtended Kubernetes - Edge (PXK-E)| 1.26.8 |
+| Palette eXtended Kubernetes - Edge (PXK-E)| 1.25.13|
+| RKE2| 1.27.5 |
+| RKE2| 1.26.8 |
+| RKE2| 1.25.13 |
 
 
 
@@ -162,17 +173,9 @@ Check out the following sections to learn about all the new features and improve
 | Reloader| 1.0.40|
 
 
-
-#### FIPS Packs
-
 | **Pack**| **New Version**|
 | :--- | :--- |
 | Cilium CNI OSS | 1.13.4 |
-| Palette eXtended Kubernetes (PXK)| 1.27.5 |
-| Palette eXtended Kubernetes (PXK)| 1.26.8 |
-| Palette eXtended Kubernetes (PXK)| 1.25.13|
-| Edge RKE2 | 1.26.2 |
-| Edge RKE2 | 1.25.10 |
 
 
 #### Community Packs
