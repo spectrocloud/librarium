@@ -32,7 +32,7 @@ Platform administrators can use the system console to perform the following oper
 
 - Configure and manage SMTP settings.
 
-- Configure and manage Pack registries.
+- [Configure and manage pack registries](../system-management/add-registry.md).
 
 - [Configure and manage SSL certificates](ssl-certificate-management.md).
 
@@ -61,10 +61,10 @@ Exercise caution when changing system settings as the changes will be applied to
 
 ## Resources
 
-* [Enable non-FIPS Settings](enable-non-fips-settings/enable-non-fips-settings.md)
+- [Enable non-FIPS Settings](enable-non-fips-settings/enable-non-fips-settings.md)
 
+- [Tenant Management](../system-management/tenant-management.md)
 
-* [Tenant Management](../system-management/tenant-management.md)
+- [SSL Certificate Management](../system-management/ssl-certificate-management.md)
 
-
-* [SSL Certificate Management](../system-management/ssl-certificate-management.md)
+- [Configure and manage pack registries](../system-management/add-registry.md).
