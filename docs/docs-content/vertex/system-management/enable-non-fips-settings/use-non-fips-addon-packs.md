@@ -18,7 +18,14 @@ Palette VerteX provides the following FIPS-compliant infrastructure components i
 - Container Network Interface (CNI)
 - Container Storage Interface (CSI)
 
-VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add the **Non-fips pack registry** to the tenant. Our support team will provide you with the registry URL.
+VerteX provides the flexibility to utilize non-FIPS packs. To do this, you must add a non-FIPS compliant pack registry. Refer to [Add a Registry] for guidance. 
+
+We provide an Open Container Initiative (OCI) registry and a community registry. You can add both non-FIPS registries to utilize the entire suite of packs. The table below lists these registries and their endpoints. Our support team will provide you with the required credentials.
+
+| **Production**     | **Type**   | **Endpoint**       | **Base Path**   |
+| -------------------| ---------- | -------------------------- | ----------------------- |
+| **OCI Pack Registry**  | non-FIPS   | 415789037893.dkr.ecr.us-east-1.amazonaws.com | `production` |
+| **Spectro Cloud Community Registry** | non-FIPS | 415789037893.dkr.ecr.us-east-1.amazonaws.com  | `community` |
 
 The ability to use non-FIPS packs allows tenant users to tailor deployments to their specific needs by customizing cluster profiles with infrastructure or add-on functionality that meets their requirements. For more information about cluster profiles, check out the [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) documentation.
 
@@ -42,7 +49,7 @@ Use the following steps to enable non-FIPS packs.
 
 2. Navigate to the left **Main Menu** and click on **Tenant Settings**. 
 
-3. On the **Tenant Settings Menu**, select **Platform Settings**.
+3. From the **Tenant Settings Menu**, select **Platform Settings**.
 
 4. Enable the **Allow non-FIPS packs** option. When you enable this option, you are prompted to confirm the use of non-FIPS packs for the tenant.
 
