@@ -18,12 +18,15 @@ Palette VerteX supports the following infrastructure platforms for deploying Kub
 | **Edge**|  
 | **VMware vSphere** |
 
-Review the following tables for additional information about the supported platforms. The term *IaaS* refers to using compute nodes that are not managed by a cloud provider, such as bare metal servers or virtual machines.  
+Review the following tables for additional information about the supported platforms. 
 
 :::info
 For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the [Cluster](../clusters/clusters.md) documentation.
 
 :::
+
+
+The term *IaaS* refers to Palette using compute nodes that are not managed by a cloud provider, such as bare metal servers or virtual machines.  
 
 #### AWS 
 
