@@ -15,7 +15,7 @@ Use the following checklist to ensure you have completed all the required steps 
 
 <TabItem label="Kubernetes" value="k8s">
 
-- [ ] `oras` CLI v1.1.0 or greater is installed and available.
+- [ ] `oras` CLI v1.0.0 is installed and available.
 
 - [ ] `aws` CLI v2 or greater CLI is installed and available.
 
@@ -45,7 +45,7 @@ Use the following checklist to ensure you have completed all the required steps 
 
 <TabItem label="VMware vSphere" value="vsphere">
 
-- [ ] `oras` CLI v1.1.0 or greater is installed and available.
+- [ ] `oras` CLI v1.0.0 is installed and available.
 
 - [ ] `aws` CLI v2 or greater CLI is installed and available.
 
