@@ -151,6 +151,9 @@ To resolve this issue, use the following steps:
   └─sda15 part /boot/efi
   sr0     rom
   ```
+  The highlighted line displays the boot device. In this example, the boot device is `sda15`, mounted at `/boot/efi`.
+  The boot device may be different for your node.
+
   :::
 
 
