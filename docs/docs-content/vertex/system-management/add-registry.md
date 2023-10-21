@@ -12,7 +12,7 @@ You can add a registry at the system level or the tenant level. Registries added
 
 :::info
 
-This section describes how to add a system-level registry. For guidance on adding a registry at the tenant scope, check out [Add a Tenant-Level Registry](../../tenant-settings/add-registry.md).
+This section describes how to add a system scope registry. For guidance on adding a registry at the tenant scope, check out [Add a Tenant-Level Registry](../../tenant-settings/add-registry.md).
 
 :::
 
