@@ -13,7 +13,7 @@ The **Virtual Machine Orchestrator** pack provides a single-pack experience that
 - **Descheduler** - Provides the ability to live migrate a VM to a different node in the node pool when the node is placed in maintenance mode. 
 
 
-- **Snapshot Controller** - Provides the ability to create snapshots of VMs. 
+- **Snapshot Controller** - Provides the ability to create VM snapshots. 
 
   :::caution
 

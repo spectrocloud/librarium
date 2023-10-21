@@ -96,7 +96,7 @@ data:
 
 ## OS Patch Fails
 
-When conducting [OS Patching](../clusters/cluster-management/os-patching.md), sometimes the patching process can timeout and fail. This issue is due to some OS patches requiring GRUB packages. GRUB updates often require user prompts, and if a user prompt is required during the OS patching process, the patching process will fail.
+When conducting [OS Patching](../clusters/cluster-management/os-patching.md), sometimes the patching process can time out and fail. This issue is due to some OS patches requiring GRUB packages. GRUB updates often require user prompts, and if a user prompt is required during the OS patching process, the patching process will fail.
 
 
 ### Debug Steps
@@ -118,7 +118,7 @@ To resolve this issue, use the following steps:
 5. Click on a cluster node to access its details page. Review the network information, such as the subnet and the network the node is in.
 
 
-6. Log in to the infrastructure provider console of where the node is deployed in and aquire the IP address of the node.
+6. Log in to the infrastructure provider console and acquire the node IP address.
 
 
 7. SSH into one of the cluster nodes and issue the following command.

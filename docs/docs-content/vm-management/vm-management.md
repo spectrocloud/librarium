@@ -73,7 +73,7 @@ For more information on KubeVirt feature gates, refer to the [KubeVirt user guid
 
 VMO includes the following Kubevirt plugins:
 
-- [Kubevirt-Velero](https://github.com/kubevirt/kubevirt-velero-plugin) - VMO includes the Kubevirt-Velero plugin, which allows you to backup and restore VMs using Velero. This installs Velero snapshot controller and Custom Resource Definitions required by Velero  Refer to the [Virtual Machine Orchestrator Pack](./vm-packs-profiles/vm-packs-profiles.md) guide for more information.
+- [Kubevirt-Velero](https://github.com/kubevirt/kubevirt-velero-plugin) - VMO includes the Kubevirt-Velero plugin, which allows you to back up and restore VMs using Velero. This installs Velero snapshot controller and Custom Resource Definitions required by Velero. Refer to the [Virtual Machine Orchestrator Pack](./vm-packs-profiles/vm-packs-profiles.md) guide for more information.
 
 
 ## Resources
