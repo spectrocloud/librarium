@@ -24,8 +24,6 @@ This section describes how to add a system scope registry. For guidance on addin
 
 Use the following steps to add a system-level OCI pack registry. 
 
-To add our non-FIPS registries, refer to the table in the [Use non-FIPS Packs](../system-management/enable-non-fips-settings/use-non-fips-addon-packs.md) guide for endpoint and base path details. You will need to repeat these steps and specify the base path for each repository you want to target in the registry.
-
 1. Log in to the Palette VerteX system console. Refer to [Access the System Console](system-management.md#access-the-system-console) guide.
 
 2. From the left **Main Menu** select **Administration**. 

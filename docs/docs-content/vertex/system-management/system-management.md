@@ -61,6 +61,8 @@ Exercise caution when changing system settings as the changes will be applied to
 
 ## Resources
 
+- [Add a Registry](add-registry.md)
+
 - [Enable non-FIPS Settings](enable-non-fips-settings/enable-non-fips-settings.md)
 
 - [Tenant Management](../system-management/tenant-management.md)
