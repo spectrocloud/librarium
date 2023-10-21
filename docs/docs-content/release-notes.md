@@ -53,6 +53,11 @@ Check out the following sections to learn about all the new features and improve
 
 - The previous support widget used to create support tickets has been replaced with a new and improved widget. Use the new widget to create support tickets, access the Palette documentation, and more. 
 
+#### Known Issues
+
+- When conducting [OS Patching](./clusters/cluster-management/os-patching.md), sometimes the patching process can time out and fail. This issue is due to some OS patches requiring GRUB packages. GRUB updates often require user prompts, and if a user prompt is required during the OS patching process, the patching process will fail. Refer to the [Nodes and Clusters](./troubleshooting/nodes.md#os-patch-fails) for guidance on resolving this issue.
+
+
 ### Edge
 
 #### Features

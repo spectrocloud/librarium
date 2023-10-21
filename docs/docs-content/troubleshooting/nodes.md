@@ -92,3 +92,70 @@ data:
 ```
 
 <br />
+
+
+## OS Patch Fails
+
+When conducting [OS Patching](../clusters/cluster-management/os-patching.md), sometimes the patching process can time out and fail. This issue is due to some OS patches requiring GRUB packages. GRUB updates often require user prompts, and if a user prompt is required during the OS patching process, the patching process will fail.
+
+
+### Debug Steps
+
+To resolve this issue, use the following steps:
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+
+2. From left **Main Menu**, select **Clusters**.
+
+
+3. Select the cluster that is experiencing the issue and click on its row to access the cluster details page.
+
+
+4. From the cluster details page, select the **Nodes** tab.
+
+
+5. Click on a cluster node to access its details page. Review the network information, such as the subnet and the network the node is in.
+
+
+6. Log in to the infrastructure provider console and acquire the node IP address.
+
+
+7. SSH into one of the cluster nodes and issue the following command.
+
+  ```shell
+  rm /var/cache/debconf/config.dat && \
+  dpkg --configure -a
+  ```
+
+8. A prompt may appear asking you to select the boot device. Select the appropriate boot device and press **Enter**.
+
+  :::tip
+
+  If you are unsure of the boot device, use a disk utility such as `lsblk`  or `fdisk` to identify the boot device. Below is an example of using `lsblk` to identify the boot device. The output is abbreviated for brevity.
+
+  ```shell
+  lsblk --output NAME,TYPE,MOUNTPOINT
+  ```
+
+  ```shell {10} hideClipboard
+  NAME    TYPE MOUNTPOINT
+  fd0     disk
+  loop0   loop /snap/core20/1974
+  ...
+  loop10  loop /snap/snapd/20092
+  loop11  loop /snap/snapd/20290
+  sda     disk
+  ├─sda1  part /
+  ├─sda14 part
+  └─sda15 part /boot/efi
+  sr0     rom
+  ```
+  The highlighted line displays the boot device. In this example, the boot device is `sda15`, mounted at `/boot/efi`.
+  The boot device may be different for your node.
+
+  :::
+
+
+9. Repeat the previous step for all nodes in the cluster.
+

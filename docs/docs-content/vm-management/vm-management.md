@@ -64,9 +64,17 @@ Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Vi
 - HotplugNICs
 - VMLiveUpdateFeatures
 
+
 KubeVirt offers other feature gates you may find useful and which you can enable using [Kubernetes feature gates](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/). To enable more KubeVirt feature gates, you can modify the ``kubevirt.kubevirtResource.additonalFeatureGates`` parameter in the **Virtual Machine Orchestrator** manifest.
 
 For more information on KubeVirt feature gates, refer to the [KubeVirt user guide](https://kubevirt.io/user-guide/operations/activating_feature_gates/).
+
+## Kubevirt Plugins 
+
+VMO includes the following Kubevirt plugins:
+
+- [Kubevirt-Velero](https://github.com/kubevirt/kubevirt-velero-plugin) - VMO includes the Kubevirt-Velero plugin, which allows you to back up and restore VMs using Velero. This installs Velero snapshot controller and Custom Resource Definitions required by Velero. Refer to the [Virtual Machine Orchestrator Pack](./vm-packs-profiles/vm-packs-profiles.md) guide for more information.
+
 
 ## Resources
 
