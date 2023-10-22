@@ -32,9 +32,6 @@ Check out the following sections to learn about all the new features and improve
 - MAAS clusters can now be assigned tags so Palette can deploy nodes onto the MAAS machines matching the provided tags. Refer to the [Create and Manage MAAS Clusters](clusters/data-center/maas/create-manage-maas-clusters.md) to learn more about deploying MAAS clusters.
 
 
-- Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a manual action that had to be performed by the user. Now, Palette will automatically renew the certificate before it expires. This feature is available in all supported infrastructure providers except for Edge and Cox Edge. Check out the [SSL Certificates](clusters/cluster-management/certificate-management.md) documentation to learn more about SSL certificates.
-
-
 - Self-hosted Palette installations, and Private Cloud Gateway (PCG), now support the ability to control the node affinity for the internal Palette components. You can configure the Palette Enterprise, or PCG cluster to deploy all internal component pods on control plane nodes. This is an option you enable during the install. 
 
 - Palette has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface. 
