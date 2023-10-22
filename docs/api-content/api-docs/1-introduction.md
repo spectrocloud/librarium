@@ -29,8 +29,7 @@ Palette supports two types of user authentication methods:
 Palette uses API keys to provide secure API authentication and authorization. This enables the usage of Palette APIs without requiring user credentials such as username and password. The API key must be present in individual API requests in order to authenticate and authorize the request. The API Key is passed as part of the HTTP request header and in the following format:
   * Key: ApiKey
   * Value: API key copied from the Palette Console. E.g. QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
-
-[Read More...](/user-management/user-authentication)         
+        
 ## Requests
 
 All requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*.

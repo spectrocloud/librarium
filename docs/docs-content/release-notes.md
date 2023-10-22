@@ -1288,7 +1288,7 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 Palette 2.3.0 includes the following enhancements:
 
 - Added support for cluster-centric detailed [**Namespace Management** and granular **RBAC**](/clusters/cluster-management/cluster-rbac). Previously this capability was only available via workspaces.
-- Enabled secure and straightforward user authentication with [**API Keys**](/user-management/user-authentication) to access the APIs without referring to user credentials.
+- Enabled secure and straightforward user authentication with **API Keys** to access the APIs without referring to user credentials.
 - Tenant administrators can now get an [**aggregated view**](/clusters/#scope) of clusters across all the projects under their tenant.
 - Added support for [**Taints**](/clusters/cluster-management/taints/#overviewontaints) that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node.
 - Added support for [**Labels**](/clusters/cluster-management/taints/#overviewonlabels) to constrain pods so that they can run on a particular set of nodes.
