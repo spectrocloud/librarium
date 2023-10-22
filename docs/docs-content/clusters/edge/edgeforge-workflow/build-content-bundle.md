@@ -54,7 +54,7 @@ Creating a content bundle provides several benefits that may address common use 
     <br />
 
     ```shell
-    VERSION=4.0.2
+    VERSION=4.1.2
     wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
     chmod +x palette-edge
     ```

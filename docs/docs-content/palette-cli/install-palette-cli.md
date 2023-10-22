@@ -68,7 +68,7 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
 
   Output:
   ```shell
-  Palette CLI version: 4.0.0
+  Palette CLI version: 4.1.0
   ```
 
 

@@ -70,6 +70,10 @@ Check out the following sections to learn about all the new features and improve
 - Palette now supports [etcd](https://etcd.io/) backup snapshots of each etcd member in the host cluster. You can use these snapshots to recover a host cluster.
 
 
+#### Known Issues
+
+- Single node Edge clusters using RKE2 versions 1.24.6, 1.25.2,1.26.4, and 1.27.2 are experiencing issues during reboots and upgrades. Use instead RKE2 versions 1.25.13, 1.26.8, and 1.27.5 when creating single node Edge clusters. These issues are absent in multi-node Edge clusters.
+
 ### Palette Dev Engine (PDE)
 
 #### Features
@@ -101,7 +105,7 @@ Check out the following sections to learn about all the new features and improve
 
 #### Improvements
 
-- The use of non-FIPS compliant packs is now supported. Prior versions of VerteX allowed non-FIPS packs for add-on packs. This change now allows non-FIPS packs for all packs.
+- The use of non-FIPS compliant packs is now supported. Prior versions of VerteX allowed non-FIPS packs for add-on packs. This change now allows non-FIPS packs for all packs. Check out the [Use non-FIPS Packs](./vertex/system-management/enable-non-fips-settings/enable-non-fips-settings.md)
 
 
 ### Terraform
@@ -195,8 +199,8 @@ Check out the following sections to learn about all the new features and improve
 
 #### Pack Notes
 
-- ngrok published a documentation page where you can learn more about their ingress pack and how to use it. You can review their contribution by visiting the [ngrok](./integrations/ngrok.md) documentation page.
+- ngrok published a documentation page where you can learn more about their ingress pack and how to use it. You can review their contribution by visiting the [ngrok](integrations/ngrok.md) documentation page.
 
 #### Deprecations and Removals
 
-- For a list of deprecated packs, check out the [Deprecated Packs](./integrations/deprecated-packs.md) page.
+- For a list of deprecated packs, check out the [Deprecated Packs](integrations/deprecated-packs.md) page.
