@@ -4,6 +4,7 @@ require("dotenv").config();
 const lightCodeTheme = require("prism-react-renderer/themes/oceanicNext");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const redirects = require("./redirects");
+const ArchivedVersions = require('./archiveVersions.json');
 const {
   pluginPacksAndIntegrationsData
 } = require("./plugins/packs-integrations");
@@ -284,7 +285,15 @@ const config = {
           {
             type: "docsVersionDropdown",
             position: "left",
-            docsPluginId: "default"
+            docsPluginId: "default",
+            dropdownItemsAfter: [
+              ...Object.entries(ArchivedVersions).map(
+                ([versionName, versionUrl]) => ({
+                  href: versionUrl,
+                  label: versionName,
+                })
+              ),
+            ],
           },
           {
             type: "docsVersionDropdown",
