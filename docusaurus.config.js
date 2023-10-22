@@ -299,6 +299,14 @@ const config = {
             type: "docsVersionDropdown",
             position: "left",
             docsPluginId: "api",
+            dropdownItemsAfter: [
+              ...Object.entries(ArchivedVersions).map(
+                ([versionName, versionUrl]) => ({
+                  href: versionUrl,
+                  label: versionName,
+                })
+              ),
+            ],
           },
         ],
         hideOnScroll: true,
