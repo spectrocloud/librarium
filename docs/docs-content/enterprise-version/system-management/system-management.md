@@ -35,7 +35,7 @@ Platform administrators can use the system console to perform the following oper
 
 - Configure and manage SMTP settings.
 
-- Configure and manage Pack registries.
+- [Configure and manage Pack registries](add-registry.md).
 
 - [Configure and manage SSL certificates](ssl-certificate-management.md).
 
@@ -60,10 +60,13 @@ Check out the following resources to learn more about these operations.
 ## Resources
 
 
-* [Tenant Management](tenant-management.md)
+- [Add a Tenant-Level Registry](add-registry.md)
 
 
-* [Configure Reverse Proxy](reverse-proxy.md)
+- [Tenant Management](tenant-management.md)
 
 
-* [SSL Certificate Management](ssl-certificate-management.md)
+- [Configure Reverse Proxy](reverse-proxy.md)
+
+
+- [SSL Certificate Management](ssl-certificate-management.md)

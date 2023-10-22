@@ -28,12 +28,6 @@ Information about the latest changes in the Spectro Cloud provider can be found 
 Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page. 
 <br />
 
-## Prerequisites
-The Spectro Cloud provider has the following requirements:
-* Spectro Cloud Palette account - [Sign up for a free trial account](https://www.spectrocloud.com/free-trial)
-* Terraform (minimum version 0.13+)
-* Kubernetes/kubectl CLI (minimum version 1.16+)
-<br />
 
 ## Usage
 

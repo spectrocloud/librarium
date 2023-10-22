@@ -592,10 +592,10 @@ make start
 make build
 ```
 
-4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file.
+4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file. Use the following command to remove all version artifacts.
 
 ```shell
-rm versions.json
+make clean-versions
 ```
 
 
