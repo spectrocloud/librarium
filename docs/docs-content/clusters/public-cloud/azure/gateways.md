@@ -171,7 +171,7 @@ After getting connected to the Bastion host, establish a connection to the Targe
     kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
   ```
 
-6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migration](../../../enterprise-version/enterprise-cluster-management.md#palette-pcg-migration) for the public cloud self-hosted PCGs as well. 
+6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account (optionally) to enjoy the enhanced security benefits. We support the [PCG migration](../../../enterprise-version/system-management/system-management.md) for the public cloud self-hosted PCGs as well. 
 
   :::info
 

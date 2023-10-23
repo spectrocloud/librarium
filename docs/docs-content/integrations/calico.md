@@ -34,6 +34,18 @@ Azure supports VXLAN encapsulation type.
 
 <Tabs queryString="versions">
 
+
+<TabItem label="3.26.x" value="3.26.x">
+
+
+
+</TabItem>
+<TabItem label="3.25.x" value="3.25.x">
+
+
+
+</TabItem>
+
 <TabItem label="3.24.x" value="3.24.x">
 
 

@@ -11,9 +11,9 @@ tags: ["vertex", "management"]
 
 When you install Palette VerteX, a self-signed certificate is generated and used by default. You can upload your own SSL certificate to replace the default certificate.
 
-Palette VerteX uses SSL certificates to secure external communication. Palette VerteX's internal communication is default secured by default and uses HTTPS. External communication with Palette VerteX, such as the system console, gRPC endpoint, and API endpoint, requires you to upload an SSL certificate to enable HTTPS. 
+Palette VerteX uses SSL certificates to secure external communication. The internal components communication is by default secured and use HTTPS. External communication with Palette VerteX, such as the system console, gRPC endpoint, and API endpoint, requires you to upload an SSL certificate to enable HTTPS. 
 
-<br />
+
 
 :::info
 

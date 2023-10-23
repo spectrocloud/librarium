@@ -27,9 +27,14 @@ The Cilium agent runs on all clusters and servers to provide networking, securit
 
 <Tabs>
 
-<TabItem label="1.10.x" value="1.10.x">
+<TabItem label="1.14.x" value="1.14.x">
 
-**1.10.9**
+
+</TabItem>
+<TabItem label="Deprecated" value="Deprecated">
+
+All versions below version 1.14.x are deprecated. We recommend you to upgrade to the latest version.
+
 
 </TabItem>
 

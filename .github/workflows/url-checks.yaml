@@ -2,6 +2,7 @@ on:
   schedule:
     # Every Monday at 6 am
     - cron: '0 6 * * 1'
+  workflow_dispatch:
   
   
 concurrency:
@@ -12,7 +13,7 @@ name: Broken URL check
 jobs:
   markdown-link-check:
     runs-on: 
-      group: Default
+      group: 'Doc Runners'
       labels: docbot
     steps:
       - id: checkout

@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Self-Hosted Installation"
-title: "Self-Hosted Installation"
-description: "Understanding, installing and operating Spectro Cloud's Enterprise Self-Hosted variant."
+sidebar_label: "Self-Hosted Palette"
+title: "Self-Hosted Palette"
+description: "Learn how to install and manage a self-hosted Palette environment."
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "warehouse"
@@ -9,100 +9,41 @@ tags: ["self-hosted", "enterprise"]
 ---
 
 
-Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. You can install Palette by using the following four methods:
+Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters. 
 
 
-:::caution
 
+![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models-on-prem-focus.png)
 
-Starting with Palette 4.0.0, the Palette CLI, and the Helm Chart, are the only supported methods for installing Palette. The Palette OVA installation method is only available for versions 3.4 and earlier. Refer to the [Install Enterprise Cluster](deploying-an-enterprise-cluster.md), or the [Kubernetes Install Helm Chart](deploying-palette-with-helm.md)  guides for additional guidance on how to install Palette.
+:::info
+
+Palette VerteX is a FIPS-compliant version of Palette that is available for regulated industries, such as government and public sector organizations that handle sensitive and classified information. To learn more about Palette VerteX, check out the [Palette VerteX](../vertex/vertex.md) section.
 
 :::
 
-- [VMware Quick Start](deploying-the-platform-installer.md)
 
 
-- [VMware Enterprise](deploying-an-enterprise-cluster.md)
+## Access Palette
 
-
-- [Kubernetes Install Helm Chart](deploying-palette-with-helm.md)
-
-
-- [AirGap Install](air-gap-repo.md)
-
-## VMware Quick Start
-
-A single-node Palette installation that is ideal for Proof of Concept (PoC) environments. Refer to the [Quick Start Installation](deploying-the-platform-installer.md) guide for more details.
-
-## VMware Enterprise
-
-A highly available multi-node Palette installation that is typically used for production purposes. Check out the [Enterprise Mode](deploying-an-enterprise-cluster.md) guide to get started.
-
-## Kubernetes Install Helm Chart
-
-Install Palette onto a Kubernetes cluster using a Helm Chart. Review the [Helm Chart Mode](deploying-palette-with-helm.md) guide to learn more.
-
-
-## Airgap Install
-
-Palette can be installed in a VMware environment without internet access, known as an air gap installation, requiring pre-download of platform manifests, required platform packages, container images for core components, third-party dependencies, and Palette Packs, all sourced from a private rather than the default public Palette repository.
-
-## Download Palette Installer
-
-To request the Palette Self-hosted installer image, please contact our support team by sending an email to support@spectrocloud.com. Kindly provide the following information in your email:
+To set up a Palette account, contact our support team by sending an email to support@spectrocloud.com. Include the following information in your email:
 
 - Your full name
 - Organization name (if applicable)
 - Email address
 - Phone number (optional)
-- A brief description of your intended use for the Palette Self-host installer image.
-
-Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the installer image. 
-
-If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
+- Target Platform (VMware or Kubernetes)
+- A brief description of your intended use of Palette
 
 
-## Upgrade Notes
+Our dedicated Support team will promptly get in touch with you to provide the necessary credentials and assistance required to get started with self-hosted Palette.
 
-Review the [Upgrade Notes](upgrade.md) before attempting to upgrade Palette.
-
-
-<br />
-
-## Resources 
+## Resources
 
 
-* [System Requirements](on-prem-system-requirements.md)
+- [Installation](install-palette/install-palette.md)
 
+- [System Management](system-management/system-management.md)
 
-* [Quick Start Mode](deploying-the-platform-installer.md)
+- [Upgrade Notes](upgrade.md)
 
-
-* [Enterprise Mode](deploying-an-enterprise-cluster.md)
-
-
-* [Helm Chart Mode](deploying-palette-with-helm.md)
-
-
-* [System Console Dashboard](system-console-dashboard.md)
-
-
-* [Creating a VMware Cloud Gateway](../clusters/data-center/vmware.md#install-pcg)
-
-
-* [Create VMware Cloud Account](../clusters/data-center/vmware.md#create-vmware-cloud-gateway)
-
-
-* [Deploy a VMware Cluster](../clusters/data-center/vmware#deploy-a-vmware-cluster)
-
-
-* [PCG Troubleshooting](../troubleshooting/pcg.md)
-
-
-* [Upgrade Notes](upgrade.md)
-
-
-<br />
-
-<br />
-
+- [Enterprise Install Troubleshooting](../troubleshooting/enterprise-install.md)

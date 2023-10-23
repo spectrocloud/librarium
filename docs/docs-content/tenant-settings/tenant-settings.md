@@ -27,7 +27,14 @@ Use the following resources to become familiar with the available tenant setting
 
 ## Resources
 
+
+- [Add Tenant-Level Registry](add-registry.md)
+
+- [API Key Management](api-key-management.md)
+
 - [Login Banner](login-banner.md)
+
+
 
 
 <br />

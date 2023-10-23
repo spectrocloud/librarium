@@ -21,6 +21,8 @@ To contribute, we recommend having the following software installed locally on y
 
 - Node.js and npm (optional)
 
+- [Vale](https://vale.sh/docs/vale-cli/installation/)
+
 ## Local Development (Docker)
 
 To get started with the Docker based local development approach ensure you are in the root context of this repository. 
@@ -590,10 +592,10 @@ make start
 make build
 ```
 
-4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file.
+4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file. Use the following command to remove all version artifacts.
 
 ```shell
-rm versions.json
+make clean-versions
 ```
 
 

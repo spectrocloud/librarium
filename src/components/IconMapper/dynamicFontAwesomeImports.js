@@ -1,4 +1,5 @@
 import { faCubes } from '@fortawesome/free-solid-svg-icons';
+import { faPersonWalkingLuggage } from '@fortawesome/free-solid-svg-icons';
 import { faObjectGroup } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +20,7 @@ import { faShield } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
+  "person-walking-luggage": faPersonWalkingLuggage,
   "object-group": faObjectGroup,
   "envelope-open-text": faEnvelopeOpenText,
   "database": faDatabase,

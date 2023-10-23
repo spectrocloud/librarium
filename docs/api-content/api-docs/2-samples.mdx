@@ -32,8 +32,7 @@ Check out the [Palette Postman collection](/api/postman-collection) resource to 
 
 - You must have a Spectro Cloud account. If you do not have an account, you can create one at [https://console.spectrocloud.com](https://console.spectrocloud.com).
 
-- An Authentication header with a token value or an API Key with an ApiKey value.
-  Learn more about authentication credentials by reviewing the [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) resource.
+- An Authentication header with a token value or an API key. Learn more about authentication credentials by reviewing the [authentication methods](https://docs.spectrocloud.com/user-management/user-authentication) resource.
 
 - The respective language runtime and package manager installed on your machine.
 
@@ -60,7 +59,7 @@ Some of the endpoints require a cluster ID.
 
 :::info
 
-If you do not provide the ProjectUid header, then the assumed scope is of the tenant.
+If you do not provide the projectUid header, then the assumed scope is of the tenant.
 
 :::
 
@@ -94,10 +93,10 @@ export PAYLOAD='{
 <TabItem label="curl" value="cluster-create-curl">
 
 ```shell
-curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?ProjectUid=$PROJECT_ID"' \
+curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?projectUid=$PROJECT_ID"' \
  --header 'Content-Type: application/json' \
  --header 'Accept: application/json' \
- --header "ApiKey: $API_KEY"
+ --header "apiKey: $API_KEY"
  --data  "$PAYLOAD"
 ```
 
@@ -111,7 +110,7 @@ const projectID = process.env.PROJECT_ID;
 const provider = process.env.PROVIDER; // Or specify the provider directly such as "aws", "aks", "openstack"
 
 // Build the request URL
-const url = `https://api.spectrocloud.com/v1/spectroclusters/${provider}?ProjectUid=${projectID}`;
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${provider}?projectUid=${projectID}`;
 
 // Define data payload for the request
 const data = {
@@ -129,7 +128,7 @@ const data = {
 const headers = new Headers({
   "Content-Type": "application/json",
   Accept: "application/json",
-  ApiKey: apiKey,
+  apiKey: apiKey,
 });
 
 // Define async function to send POST request
@@ -172,7 +171,7 @@ func main() {
 	projectID := os.Getenv("PROJECT_ID")
 	provider := os.Getenv("PROVIDER")
 
-	url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", provider, projectID)
+	url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?projectUid=%s", provider, projectID)
 
 
 	data := map[string]interface{}{
@@ -196,7 +195,7 @@ func main() {
 	headers := http.Header{}
 	headers.Set("Content-Type", "application/json")
 	headers.Set("Accept", "application/json")
-	headers.Set("ApiKey", apiKey)
+	headers.Set("apiKey", apiKey)
 
 	// Send POST request with data payload
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
@@ -232,7 +231,7 @@ def send_request():
     provider = os.environ['PROVIDER'] # Or specify the provider directly such as "aws", "aks", "openstack"
 
     # Build the request URL
-    url = f"https://api.spectrocloud.com/v1/spectroclusters/{provider}?ProjectUid={projectID}"
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{provider}?projectUid={projectID}"
 
     # Define data payload for the request
     data = {
@@ -250,7 +249,7 @@ def send_request():
     headers = {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "ApiKey": apiKey
+      "apiKey": apiKey
     }
 
     try:
@@ -302,7 +301,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let provider = env::var("PROVIDER")?;
 
     let url = format!(
-        "https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}",
+        "https://api.spectrocloud.com/v1/spectroclusters/{}?projectUid={}",
         provider, project_id
     );
 
@@ -319,7 +318,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut headers = HeaderMap::new();
     headers.insert(CONTENT_TYPE, HeaderValue::from_static("application/json"));
     headers.insert("Accept", HeaderValue::from_static("application/json"));
-    headers.insert("ApiKey", HeaderValue::from_str(&api_key)?);
+    headers.insert("apiKey", HeaderValue::from_str(&api_key)?);
 
     let resp = client.post(&url).headers(headers).json(&data).send().await?;
     let mut resp_body = String::new();
@@ -355,9 +354,9 @@ export CLUSTER_ID="Your Cluster ID"
 <TabItem label="curl" value="cluster-create-status-curl">
 
 ```shell
-curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?ProjectUid=$PROJECT_ID" \
+curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?projectUid=$PROJECT_ID" \
  --header 'Accept: application/json' \
- --header "ApiKey: $API_KEY" \
+ --header "apiKey: $API_KEY" \
  | jq -r '.status'
 ```
 
@@ -370,10 +369,10 @@ const apiKey = process.env.API_KEY;
 const projectID = process.env.PROJECT_ID;
 const clusterID = process.env.CLUSTER_ID;
 
-const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?ProjectUid=${projectID}`;
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?projectUid=${projectID}`;
 const headers = {
   Accept: "application/json",
-  ApiKey: apiKey,
+  apiKey: apiKey,
 };
 
 try {
@@ -406,7 +405,7 @@ func main() {
 	projectID := os.Getenv("PROJECT_ID")
 	apiKey := os.Getenv("API_KEY")
 
-	url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", clusterID, projectID)
+	url := fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?projectUid=%s", clusterID, projectID)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
@@ -414,7 +413,7 @@ func main() {
 	}
 
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("ApiKey", apiKey)
+	req.Header.Add("apiKey", apiKey)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
@@ -463,12 +462,12 @@ def get_cluster_status():
     clusterID = os.environ['CLUSTER_ID']
 
     # Build the request URL
-    url = f"https://api.spectrocloud.com/v1/spectroclusters/{clusterID}?ProjectUid={projectID}"
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{clusterID}?projectUid={projectID}"
 
     # Define headers for the request
     headers = {
       'Accept': 'application/json',
-      'ApiKey': apiKey,
+      'apiKey': apiKey,
     }
 
     try:
@@ -505,13 +504,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key = env::var("API_KEY").unwrap();
 
     let url = format!(
-        "https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}",
+        "https://api.spectrocloud.com/v1/spectroclusters/{}?projectUid={}",
         cluster_id, project_id
     );
 
     let mut headers = HeaderMap::new();
     headers.insert(ACCEPT, HeaderValue::from_static("application/json"));
-    headers.insert("ApiKey", HeaderValue::from_str(&api_key)?);
+    headers.insert("apiKey", HeaderValue::from_str(&api_key)?);
 
     let client = reqwest::Client::new();
     let resp = client.get(&url).headers(headers).send().await?;
@@ -550,9 +549,9 @@ export CLUSTER_ID="Your Cluster ID"
 <TabItem label="curl" value="node-status-curl">
 
 ```shell
-curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?ProjectUid=$PROJECT_ID" \
+curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?projectUid=$PROJECT_ID" \
  --header 'Accept: application/json' \
- --header "ApiKey: $API_KEY"
+ --header "apiKey: $API_KEY"
 ```
 
 </TabItem>
@@ -566,12 +565,12 @@ const projectID = process.env.PROJECT_ID;
 const clusterID = process.env.CLUSTER_ID;
 
 // Build the request URL
-const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?ProjectUid=${projectID}`;
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?projectUid=${projectID}`;
 
 // Define headers for the request
 const headers = new Headers({
   Accept: "application/json",
-  ApiKey: apiKey,
+  apiKey: apiKey,
 });
 
 // Define an async function to send the HTTP request
@@ -614,7 +613,7 @@ func main() {
 	clusterID := os.Getenv("CLUSTER_ID")
 
 	// Create a new HTTP request
-	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", clusterID, projectID), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?projectUid=%s", clusterID, projectID), nil)
 	if err != nil {
 		fmt.Println("Error creating HTTP request:", err)
 		return
@@ -622,7 +621,7 @@ func main() {
 
 	// Add headers to the request
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("ApiKey", apiKey)
+	req.Header.Add("apiKey", apiKey)
 
 	// Send the HTTP request
 	client := http.Client{}
@@ -662,12 +661,12 @@ def get_cluster_info():
     cluster_id = os.environ.get("CLUSTER_ID")
 
     # Build the request URL
-    url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?ProjectUid={project_id}"
+    url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?projectUid={project_id}"
 
     # Define headers for the request
     headers = {
       "Accept": "application/json",
-      "ApiKey": api_key
+      "apiKey": api_key
     }
 
     # Send the HTTP request using the requests library
@@ -706,7 +705,7 @@ async fn main() -> Result<(), reqwest::Error> {
     let cluster_id = env::var("CLUSTER_ID").unwrap();
 
     // Build the request URL
-    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}", cluster_id, project_id);
+    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}?projectUid={}", cluster_id, project_id);
 
     // Define headers for the request
     let mut headers = HeaderMap::new();
@@ -750,9 +749,9 @@ The values are found in the `spec.cloudConfigRef` field of the cluster object. Y
 <TabItem label="curl" value="config-identifier-curl">
 
 ```shell
-curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?ProjectUid=$PROJECT_ID" \
+curl -s --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID?projectUid=$PROJECT_ID" \
  --header 'Accept: application/json' \
- --header "ApiKey: $API_KEY" \
+ --header "apiKey: $API_KEY" \
  | jq -r '.spec.cloudConfigRef | "\(.kind) \(.uid)"'
 ```
 
@@ -767,12 +766,12 @@ const projectID = process.env.PROJECT_ID;
 const clusterID = process.env.CLUSTER_ID;
 
 // Build the request URL
-const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?ProjectUid=${projectID}`;
+const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}?projectUid=${projectID}`;
 
 // Define headers for the request
 const headers = new Headers({
   Accept: "application/json",
-  ApiKey: apiKey,
+  apiKey: apiKey,
 });
 
 // Define an async function to send the HTTP request
@@ -835,7 +834,7 @@ func main() {
 	clusterID := os.Getenv("CLUSTER_ID")
 
 	// Create a new HTTP request
-	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?ProjectUid=%s", clusterID, projectID), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://api.spectrocloud.com/v1/spectroclusters/%s?projectUid=%s", clusterID, projectID), nil)
 	if err != nil {
 		fmt.Println("Error creating HTTP request:", err)
 		return
@@ -843,7 +842,7 @@ func main() {
 
 	// Add headers to the request
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("ApiKey", apiKey)
+	req.Header.Add("apiKey", apiKey)
 
 	// Send the HTTP request
 	client := http.Client{}
@@ -888,12 +887,12 @@ project_id = os.environ.get("PROJECT_ID")
 cluster_id = os.environ.get("CLUSTER_ID")
 
 # Build the request URL
-url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?ProjectUid={project_id}"
+url = f"https://api.spectrocloud.com/v1/spectroclusters/{cluster_id}?projectUid={project_id}"
 
 # Define headers for the request
 headers = {
   "Accept": "application/json",
-  "ApiKey": api_key
+  "apiKey": api_key
 }
 
 # Send the HTTP request using the requests library
@@ -949,7 +948,7 @@ async fn main() -> Result<(), reqwest::Error> {
     let cluster_id = env::var("CLUSTER_ID").unwrap();
 
     // Build the request URL
-    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}?ProjectUid={}", cluster_id, project_id);
+    let url = format!("https://api.spectrocloud.com/v1/spectroclusters/{}?projectUid={}", cluster_id, project_id);
 
     // Define headers for the request
     let mut headers = HeaderMap::new();
@@ -1009,8 +1008,8 @@ export CLUSTER_ID="Your Cluster ID"
  curl --location "https://api.spectrocloud.com/v1/dashboard/spectroclusters/$CLUSTER_ID/workloads" \
  --header "Content-Type: application/json" \
  --header "Accept: application/json" \
- --header "ProjectUid: $PROJECT_ID" \
- --header "ApiKey: $API_KEY" \
+ --header "projectUid: $PROJECT_ID" \
+ --header "apiKey: $API_KEY" \
  --data '{
    "filter": {
      "namespaces": ["default", "myOtherNamespace"]
@@ -1034,8 +1033,8 @@ const options = {
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    ProjectUid: PROJECT_ID,
-    ApiKey: API_KEY,
+    projectUid: PROJECT_ID,
+    apiKey: API_KEY,
   },
   body: JSON.stringify({
     filter: {
@@ -1099,8 +1098,8 @@ func main() {
 
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("Accept", "application/json")
-	request.Header.Set("ProjectUid", projectID)
-	request.Header.Set("ApiKey", apiKey)
+	request.Header.Set("projectUid", projectID)
+	request.Header.Set("apiKey", apiKey)
 
 	client := &http.Client{}
 
@@ -1149,8 +1148,8 @@ def main():
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "ProjectUid": project_id,
-        "ApiKey": api_key
+        "projectUid": project_id,
+        "apiKey": api_key
     }
 
     response = requests.post(url, json=request_body, headers=headers)
@@ -1217,8 +1216,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let mut headers = HeaderMap::new();
     headers.insert(CONTENT_TYPE, HeaderValue::from_static("application/json"));
     headers.insert(ACCEPT, HeaderValue::from_static("application/json"));
-    headers.insert("ProjectUid", HeaderValue::from_str(&project_id)?);
-    headers.insert("ApiKey", HeaderValue::from_str(&api_key)?);
+    headers.insert("projectUid", HeaderValue::from_str(&project_id)?);
+    headers.insert("apiKey", HeaderValue::from_str(&api_key)?);
 
     let client = reqwest::Client::new();
     let response = client
@@ -1266,8 +1265,8 @@ In the following example, a filter for the tags `dev` and `team:bravo-2` is spec
  curl --location 'https://api.spectrocloud.com/v1/dashboard/spectroclusters/search?limit=20' \
  --header 'Content-Type: application/json' \
  --header 'Accept: application/json' \
- --header "ProjectUid: $PROJECT_ID" \
- --header "ApiKey: $API_KEY" \
+ --header "projectUid: $PROJECT_ID" \
+ --header "apiKey: $API_KEY" \
  --data '{
    "filter": {
      "conjunction": "and",
@@ -1311,8 +1310,8 @@ async function searchSpectroclusters() {
   const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",
-    ProjectUid: process.env.PROJECT_UID,
-    ApiKey: process.env.API_KEY,
+    projectUid: process.env.PROJECT_UID,
+    apiKey: process.env.API_KEY,
   };
   const body = JSON.stringify({
     filter: {
@@ -1437,8 +1436,8 @@ func main() {
 
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("ProjectUid", os.Getenv("PROJECT_UID"))
-	req.Header.Set("ApiKey", os.Getenv("API_KEY"))
+	req.Header.Set("projectUid", os.Getenv("PROJECT_UID"))
+	req.Header.Set("apiKey", os.Getenv("API_KEY"))
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
@@ -1504,8 +1503,8 @@ filter = {
 headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'ProjectUid': os.getenv('PROJECT_UID'),
-    'ApiKey': os.getenv('API_KEY')
+    'projectUid': os.getenv('PROJECT_UID'),
+    'apiKey': os.getenv('API_KEY')
 }
 
 response = requests.post(url, headers=headers, json=filter)
@@ -1596,11 +1595,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         );
         headers.insert("Accept", HeaderValue::from_static("application/json"));
         headers.insert(
-            "ProjectUid",
+            "projectUid",
             HeaderValue::from_str(&env::var("PROJECT_UID").unwrap()).unwrap(),
         );
         headers.insert(
-            "ApiKey",
+            "apiKey",
             HeaderValue::from_str(&env::var("API_KEY").unwrap()).unwrap(),
         );
         headers
@@ -1647,8 +1646,8 @@ export CLUSTER_ID="Your Cluster ID"
 ```shell
  curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig' \
  --header 'Accept: application/octet-stream' \
- --header 'ProjectUid: $PROJECT_ID' \
- --header 'ApiKey: $API_KEY'
+ --header 'projectUid: $PROJECT_ID' \
+ --header 'apiKey: $API_KEY'
 ```
 
 </TabItem>
@@ -1663,8 +1662,8 @@ const clusterID = process.env.CLUSTER_ID;
 const url = `https://api.spectrocloud.com/v1/spectroclusters/${clusterID}/assets/kubeconfig?frp=true`;
 const headers = {
   Accept: "application/octet-stream",
-  ProjectUid: projectID,
-  ApiKey: apiKey,
+  projectUid: projectID,
+  apiKey: apiKey,
 };
 
 try {
@@ -1708,8 +1707,8 @@ func main() {
 
     // Set headers for the request
     req.Header.Set("Accept", "application/octet-stream")
-    req.Header.Set("ProjectUid", projectID)
-    req.Header.Set("ApiKey", apiKey)
+    req.Header.Set("projectUid", projectID)
+    req.Header.Set("apiKey", apiKey)
 
     // Send the HTTP request
     client := &http.Client{}
@@ -1756,8 +1755,8 @@ def main():
     # Define headers for the request
     headers = {
         "Accept": "application/octet-stream",
-        "ProjectUid": project_id,
-        "ApiKey": api_key
+        "projectUid": project_id,
+        "apiKey": api_key
     }
 
     try:
@@ -1797,8 +1796,8 @@ async fn main() -> Result<(), reqwest::Error> {
     // Define headers for the request
     let mut headers = HeaderMap::new();
     headers.insert("Accept", HeaderValue::from_static("application/octet-stream"));
-    headers.insert("ProjectUid", HeaderValue::from_str(&project_id).unwrap());
-    headers.insert("ApiKey", HeaderValue::from_str(&api_key).unwrap());
+    headers.insert("projectUid", HeaderValue::from_str(&project_id).unwrap());
+    headers.insert("apiKey", HeaderValue::from_str(&api_key).unwrap());
 
     // Send the HTTP request using the reqwest library
     let response = reqwest::Client::new()

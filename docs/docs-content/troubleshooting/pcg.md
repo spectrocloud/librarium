@@ -9,8 +9,6 @@ tags: ["troubleshooting", "pcg"]
 ---
 
 
-# Private Cloud Gateway
-
 When you deploy a Kubernetes cluster in a private data center environment, you must already have a Private Cloud Gateway (PCG) cluster deployed in the data center environment. A PCG enables secure communication between Palette and the private data center environment. 
 
 The following are the high-level steps of deploying a PCG in a private data center environment:
@@ -30,7 +28,7 @@ After you finish configuring the PCG in Palette, Palette starts provisioning the
 The internal component, *Jet*, will transition to a healthy state once the PCG cluster is successfully registered with Palette. 
 <br />
 
-## Debug Steps
+### Debug Steps
 
 Wait 10-15 minutes for the PCG installation to finish so that the internal component receives the required authorization token from Palette. Once the internal component is authorized, the PCG cluster will complete the initialization successfully. 
 <br />
@@ -42,7 +40,7 @@ When deploying the PCG installer in VMware vSphere, you use an OVF template and 
 If the installer fails to register with Palette within the expected timeframe, it could indicate a bootstrapping error. The error can occur due to network connectivity issues, incorrect pairing code, or an incorrect endpoint configuration for Palette in the PCG installer template settings.
 <br />
 
-## Debug Steps
+### Debug Steps
 
 <br />
 
@@ -119,7 +117,7 @@ When deploying the PCG installer in VMware vSphere, you use an OVF template and 
 If the PCG installer VM fails to get an IP address assigned, it implies a networking error or an incomplete cloud-init. The selected IP allocation scheme specified in the network settings of the PCG installer OVF template assigns an IP address to the PCG installer VM. The IP allocation scheme offers two options - static IP or DHCP. You must check the selected IP allocation scheme for troubleshooting.
 <br />
 
-## Debug Steps
+### Debug Steps
 <br />
 
 1. If you chose the static IP allocation scheme, ensure you have correctly provided the values for the gateway IP address, DNS addresses, and static IP subnet prefix. Check that the subnet prefix you provided allows the creation of an IP pool with sufficient IP addresses to allocate to the new PCG installer VM. 
@@ -154,7 +152,7 @@ When deploying the PCG installer in VMware, you deploy the OVF template and powe
 The PCG installer deployment can fail due to internet connectivity or internal misconfigurations, such as an incorrect pairing code. 
 <br />
 
-## Debug Steps
+### Debug Steps
 
 If the PCG installer VM has a public IP address assigned, you can access the PCG installer's deployment status and system logs from the monitoring console. Follow the steps below to review the deployment status and logs.
 <br />
@@ -205,7 +203,7 @@ After you finish configuring the cloud gateway in Palette, the PCG cluster provi
 However, if the PCG cluster provisioning gets stuck, it could hint at incorrect cloud gateway configurations, unavailable IP addresses for the worker nodes, or the inability to perform a Network Time Protocol (NTP) sync. 
 <br />
 
-## Debug Steps
+### Debug Steps
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -249,7 +247,7 @@ After you finish configuring the cloud gateway in Palette, Palette starts provis
 This issue can occur when the PCG installer VM fails to connect to the Palette API endpoint and download the installation artifacts. Another potential reason is that the PCG installer may not have the required permissions to store the installation artifacts in the **spectro-templates** folder. The installer downloads the images for the worker nodes and stores them in the **spectro-templates** folder during the cluster provisioning.
 <br />
 
-## Debug Steps
+### Debug Steps
 <br />
 
 1. Check the outbound internet connectivity from the PCG installer VM. Internet connectivity is needed to communicate with the Palette API endpoint, `https://api.spectrocloud.com`, or your self-hosted Palette's API endpoint. Use the following steps to check the outbound internet connectivity:
@@ -277,7 +275,7 @@ After you finish configuring the cloud gateway in Palette, Palette starts provis
 The error can occur if there is a preceding "https://" or "http://" string in the vCenter server URL or if the PCG installer VM lacks outbound internet connectivity.
 <br />
 
-## Debug Steps
+### Debug Steps
 <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -330,7 +328,7 @@ After you finish configuring the cloud gateway in Palette, Palette starts provis
 The error indicates an issue with the PCG cluster nodes attempting to connect to the cluster's Kubernetes API server. This issue can occur due to improper networking configuration or an error in the cloud-init process. 
 <br />
 
-## Debug Steps
+### Debug Steps
 <br />
 
 1. Check the data center network settings. Ensure no network restrictions, firewalls, or security groups block communication between the nodes and the API server.
@@ -377,7 +375,7 @@ The error indicates an issue with the PCG cluster nodes attempting to connect to
 
  
 7. Examine the cloud-init and system logs for potential errors or warnings.
-<br />
+
 
 ## Scenario - Permission Denied to Provision
 
@@ -387,8 +385,8 @@ After you finish configuring the cloud gateway in Palette, Palette starts provis
 You must have the necessary permissions to provision a PCG cluster in the VMware environment. If you do not have adequate permissions, the PCG cluster provisioning will fail, and you will get the above-mentioned error in the events log. 
 <br />
 
-## Debug Steps
-<br />
+### Debug Steps
+
 
 1. Ensure you have all the permissions listed in the [VMware Privileges](../clusters/data-center/vmware.md#vmware-privileges) section before proceeding to provision a PCG cluster. 
 

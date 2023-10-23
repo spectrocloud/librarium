@@ -40,7 +40,7 @@ When you upgrade the control plane on a cluster, the PKI certificates are automa
 
 :::info
 
-You can upgrade the Kubernetes version of a cluster by updating the Kubernetes layer of the [cluster profile](/cluster-profiles) and applying the cluster profile update to the cluster. For guidelines on updating pack versions, review [Update the Pack Version](../../cluster-profiles/task-update-profile.md#updatethepackversion).
+You can upgrade the Kubernetes version of a cluster by updating the Kubernetes layer of the cluster profile and applying the cluster profile update to the cluster. For guidelines on updating pack versions, review [Update the Pack Version](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version).
 
 :::
 
@@ -129,7 +129,7 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 ### Prerequisites
 
-- A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](../../user-management/user-authentication.md) documentation.
+- A Palette API key. You can learn how to create a Palette API key by reviewing the [API Key](../../user-management/authentication/authentication.md) documentation.
 
 
 - A deployed host cluster.

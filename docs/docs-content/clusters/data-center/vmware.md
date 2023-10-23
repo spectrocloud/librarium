@@ -613,10 +613,10 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 - Palette version 4.0.X or greater.
 
 
-- A Palette API key. Refer to the [Create API Key](../../user-management/user-authentication.md#api-key) page for guidance.
+- A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for guidance.
 
 
-- Download the Palette CLI from the [Downloads](../../spectro-downloads#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
+- Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
 
 - You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
 
@@ -682,7 +682,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   |:-------------|----------------|
   |**HTTPS Proxy**|Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
   |**HTTP Proxy**|Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.|
-  |**No Proxy**|The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`.|
+  |**No Proxy**|You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`.|
   |**Proxy CA Certificate Filepath**|The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`.|
   |**Pod CIDR**|Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.|
   |**Service IP Range**|Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.|
