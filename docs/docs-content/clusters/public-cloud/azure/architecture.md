@@ -112,8 +112,27 @@ Use the `managedControlPlane.sku` parameter, as shown in the examples, to specif
 </Tabs>
 
 
+## Upgrade Channels
+
+You can configure the upgrade channel for Azure AKS cluster control planes. You have the ability to set the upgrade channel in the Kubernetes YAML file, allowing you to embed the upgrade channel in the cluster profile.  The following values are supported:
+
+- `none`
+- `patch`
+- `stable`
+- `rapid`
+- `node-image`
 
 
+Add the `managedControlPlane.autoUpgradeProfile` parameter block to the cluster profile to configure the upgrade channel. The following example shows how to configure the upgrade channel to `rapid`.
+
+```yaml
+managedControlPlane:
+  autoUpgradeProfile:
+    upgradeChannel: rapid 
+```
+
+
+To learn more about the upgrade channels, refer to the [Azure Upgrade Channel](https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster) documentation.
 
 
 ## Tags
