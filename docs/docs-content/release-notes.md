@@ -52,7 +52,7 @@ Check out the following sections to learn about all the new features and improve
 
 #### Deprecations and Removals
 
-- The previous support widget, in Palette SaaS environments, that was used to create support tickets has been replaced with a new and improved widget. Use the new widget to create support tickets, access the Palette documentation, and more. 
+- The support widget previously used in Palette SaaS environments to create support tickets has been replaced with a new and improved widget. Use the new widget to create support tickets, access the Palette documentation, and more. 
 
 #### Known Issues
 
