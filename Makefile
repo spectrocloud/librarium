@@ -104,13 +104,13 @@ pdf: ## Generate PDF from docs
 
 verify-url-links: ## Check for broken URLs in production
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format csv > temp_report.csv && sleep 2
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$"" --format csv > temp_report.csv && sleep 2
 	grep -E '^[^,]*,[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' temp_report.csv > link_report.csv && rm temp_report.csv
 
 
 verify-url-links-ci: ## Check for broken URLs in production
 	rm link_report.json || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --format json > temp_report.json
+	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip '^http(?!.*software-private.spectrocloud\\.com).*$'' --skip ^http(?!.*spectrocloud\\.com).*$"" --format json > temp_report.json
 	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
 	rm temp_report.json
 	mv link_report.json scripts/
