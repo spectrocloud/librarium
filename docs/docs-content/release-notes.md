@@ -34,6 +34,7 @@ Check out the following sections to learn about all the new features and improve
 
 - Self-hosted Palette installations, and Private Cloud Gateway (PCG), now support the ability to control the node affinity for the internal Palette components. You can configure the Palette Enterprise, or PCG cluster to deploy all internal component pods on control plane nodes. This is an option you enable during the install. 
 
+
 - Palette, in a multi-SaaS environment, has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface. 
 
 
@@ -51,7 +52,7 @@ Check out the following sections to learn about all the new features and improve
 
 #### Deprecations and Removals
 
-- The previous support widget in Palette SaaS environmented that was used to create support tickets has been replaced with a new and improved widget. Use the new widget to create support tickets, access the Palette documentation, and more. 
+- The previous support widget, in Palette SaaS environments, that was used to create support tickets has been replaced with a new and improved widget. Use the new widget to create support tickets, access the Palette documentation, and more. 
 
 #### Known Issues
 
