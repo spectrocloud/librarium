@@ -57,7 +57,7 @@ To complete this guide, you will need the following items:
 * You must have completed the [Build Edge Artifacts](palette-canvos.md) guide to build the provider images and create a cluster profile referencing one of the provider images. 
 
 
-* A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with Palette. Refer to the [User Authentication](../../../user-management/user-authentication.md/#api-key) guide to create a new API key. 
+* A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and allow it to interact with Palette. Refer to the [User Authentication](../../../user-management/authentication/api-key/create-api-key.md) guide to create a new API key. 
 
 
 ## Instructions
