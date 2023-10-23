@@ -97,7 +97,7 @@ const config = {
           includeCurrentVersion: true,
           versions: {
             current: {
-              label: "latest",
+              label: "3.4.x",
             },
           },
           // exclude: ["api/v1/palette-apis-3-4"],
@@ -149,7 +149,7 @@ const config = {
         includeCurrentVersion: true,
         versions: {
           current: {
-            label: "latest"
+            label: "3.4.x"
           },
         },
         sidebarPath: require.resolve("./apisidebar.js"),
