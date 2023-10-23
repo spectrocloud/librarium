@@ -42,4 +42,4 @@ The term *IaaS* refers to Palette using compute nodes that are not managed by a 
 
 |  **Service** | **Azure Gov Support?**|
 | --- |  --- |
-| **IaaS** |  ✅ |
+| **IaaS** |  ❌ |
