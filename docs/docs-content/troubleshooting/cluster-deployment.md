@@ -97,7 +97,7 @@ Common reasons for why a service may fail are:
 
 ## Deployment Violates Pod Security
 Cluster deployment fails with the following message. 
-When you try to deploy a cluster with such packs, you get an error message that looks like the following:
+This can happen when the cluster profile uses Kubernetes 1.25 or later and indicates the pod needs elevated privileges to be created. 
 
 ```
 Error creating: pods <name of pod> is forbidden: violates PodSecurity "baseline:v<k8s version>": non-default capabilities …
