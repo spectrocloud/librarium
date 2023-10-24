@@ -107,10 +107,11 @@ Error creating: pods <name of pod> is forbidden: violates PodSecurity "baseline:
 
 You can change the Pod Security Standards of the namepace where the Pod is being created to address this issue. 
 
-1. Log in to *Palette* and navigate to the *Profiles* tab. 
+1. Log in to **Palette** and navigate to the **Profiles** tab. 
 2. Select the profile you are trying to deploy the cluster with and choose the layer that represents your pack. 
-3. In the YAML file for your pack, under the `pack` field, add a subfield `namespaceLabels`. 4. In the `namespaceLabels` field, add a subfield with the name of your namespace as the key and `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as the value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
-   - For example, if you the pack creates a namespace called "monitoring", add the labels to the monitoring namespace:
+3. In the YAML file for your pack, under the `pack` field, add a subfield `namespaceLabels`.
+4. In the `namespaceLabels` field, add a subfield with the name of your namespace as the key and `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as the value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
+   - For example, if you the pack creates a namespace called `monitoring`, add the labels to the `monitoring` namespace:
    ```yaml
    pack:
     namespace: "monitoring"
