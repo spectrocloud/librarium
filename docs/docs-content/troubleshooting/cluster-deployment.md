@@ -96,7 +96,7 @@ Common reasons for why a service may fail are:
 6. Check stdout for errors. You can also open a support ticket. Visit our [support page](http://support.spectrocloud.io/).
 
 ## Deployment Violates Pod Security
-In profiles running Kubernetes 1.25 or later, some packs contain pods that need elevated privileges during Pod creation. 
+In cluster profiles running Kubernetes 1.25 or later, some packs contain Pods that need elevated privileges during Pod creation. 
 When you try to deploy a cluster with such packs, you get an error message that looks like the following:
 
 ```
