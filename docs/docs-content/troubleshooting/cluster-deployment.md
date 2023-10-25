@@ -102,22 +102,22 @@ Cluster deployment fails with the following message.
 Error creating: pods <name of pod> is forbidden: violates PodSecurity "baseline:v<k8s version>": non-default capabilities …
 ```
 
-This can happen when the cluster profile uses Kubernetes 1.25 or later and also includes packs that create Pods requiring elevated privileges . 
+This can happen when the cluster profile uses Kubernetes 1.25 or later and also includes packs that create pods requiring elevated privileges . 
 
 ### Debug Steps
 
-You can change the Pod Security Standards of the namepace where the Pod is being created to address this issue. 
+You can change the Pod Security Standards of the namepace where the pod is being created to address this issue. 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the left **Main Menu** and click on **Profiles**. 
 
-3. Select the profile you are trying to deploy the cluster with and choose the layer that represents your pack. 
+3. Select the profile you are trying to deploy the cluster with and choose the layer that represents your pack. The name of the Pod that failed to be created should give you a clue about which packs you need to modify. 
 
 4. In the YAML file for that pack, under the `pack` field, add a subfield `namespaceLabels` if it doesn't already exist.
 
 5. In the `namespaceLabels` field, add a subfield with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
-   - If a key matching your namespace already exists here, add the labels to the value corresponding to that key.
+   - If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
    - For example, if you the pack creates a namespace called `monitoring`, add the labels to the `monitoring` namespace:
    ```yaml
    pack:
@@ -127,6 +127,11 @@ You can change the Pod Security Standards of the namepace where the Pod is being
         "monitoring": "org=spectro,team=dev,pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.28"
    ```
 
+:::tip
+
+If your pack creates multiple namespaces, and you are not sure which namespaces need the elevated privileges, you can [access the clusteter with the kubectl CLI](https://docs.spectrocloud.com/clusters/cluster-management/palette-webctl/#access-cluster-with-cli) and run [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) to find out which pods are failing at creation in which namespaces. It's recommended that you only apply the labels to namespaces where pods are failing to be created. 
+
+:::
 
 ## Gateway Installer Registration Failures
 
