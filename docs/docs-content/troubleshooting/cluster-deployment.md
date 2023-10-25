@@ -122,7 +122,7 @@ Click on the layer in the profile stack that contains the pack configuration.
 
 :::tip
 
-If your pack creates multiple namespaces, and you are not sure which namespaces need the elevated privileges, you can [access the clusteter with the kubectl CLI](https://docs.spectrocloud.com/clusters/cluster-management/palette-webctl/#access-cluster-with-cli) and run [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) to find out which pods are failing at creation in which namespaces. We recommend that you only apply the labels to namespaces where pods are failing to be created. 
+If your pack creates multiple namespaces, and you are not sure which namespaces need the elevated privileges, you can [access the cluster with the kubectl CLI](https://docs.spectrocloud.com/clusters/cluster-management/palette-webctl/#access-cluster-with-cli) and use [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) to find out which pods are failing at creation in which namespaces. We recommend that you only apply the labels to namespaces where pods are failing to be created. 
 
 :::
 
