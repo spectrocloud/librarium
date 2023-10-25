@@ -29,6 +29,7 @@ concurrency:
 jobs:
   build:
     name: Build Website
+    # runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     runs-on: 
       group: 'Doc Runners'
       labels: docbot
@@ -50,8 +51,8 @@ jobs:
 
       - name: Compile
         run: |
-          make versions-ci
-          make build
+          make versions-ci || ./scripts/versions-ci.sh $TMPDIR
+          make build || npm run build
 
       - name: Upload to AWS
         run: |

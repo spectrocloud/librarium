@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["vertex", "management", "registry"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 You can add a registry at the system level or the tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. 

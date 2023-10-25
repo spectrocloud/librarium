@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["vertex", "fips", "compliance", "pxk", "pxke"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of Standards and Technology (NIST) in the United States for computer security and encryption algorithms. 
