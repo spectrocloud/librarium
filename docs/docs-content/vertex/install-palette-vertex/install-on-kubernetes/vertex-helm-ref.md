@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["vertex", "helm"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 

@@ -5,6 +5,7 @@ description: "Learn how to install Palette on Kubernetes."
 icon: ""
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "kubernetes"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 

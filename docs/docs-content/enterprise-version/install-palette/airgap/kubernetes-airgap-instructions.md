@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 

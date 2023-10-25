@@ -1,10 +1,9 @@
 name: Version Branch Update
 
 on:
-  pull_request:
+  push:
     branches:
       - 'version-[0-9]-[0-9]'
-    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 
@@ -31,9 +30,7 @@ env:
 jobs:
   build:
     name: Build
-    runs-on: 
-      group: 'Doc Runners'
-      labels: docbot
+    runs-on: ubuntu-latest
 
 
     steps:
@@ -51,13 +48,6 @@ jobs:
     - run: npm ci
 
 
-    - name: Post Netlify progress
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
-            🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
-        refresh-message-position: true
-
     - name: Netlify Build
       run: |
         netlify build --context deploy-preview
@@ -71,13 +61,3 @@ jobs:
         enable-pull-request-comment: true
         overwrites-pull-request-comment: true
         enable-commit-comment: true
-
-    - name: Post Netlify URL
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
-            🚀 Netlify preview deployed succesfully for commit ${{ github.sha }}. Click [here](${{steps.netlify.outputs.deploy-url}}) to preview the changes.
-        message-failure: |
-            👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
-        refresh-message-position: true
-        update-only: true

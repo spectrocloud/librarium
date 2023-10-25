@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["vertex", "enterprise"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 
@@ -417,6 +418,7 @@ reach-system:
 
 </details>
 
+
 </TabItem>
 
 
@@ -437,9 +439,7 @@ reach-system:
 
   Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
-
- 
- <details>
+<details>
 <summary>Example - values.yaml</summary>
 
 ```yaml {23,53,77-85,87-95,97-102,109}

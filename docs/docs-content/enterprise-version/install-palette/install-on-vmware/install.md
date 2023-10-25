@@ -7,6 +7,7 @@ sidebar_position: 10
 hide_table_of_contents: false
 toc_max_heading_level: 3
 tags: ["palette", "self-hosted", "vmware"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 
