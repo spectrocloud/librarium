@@ -69,4 +69,11 @@ jobs:
 
       - name: Compile
         run: |
-          make build
+          # make build
+          echo hi
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ success() }}
+    steps: 
+      - run: echo "Deploying"
