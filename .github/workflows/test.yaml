@@ -73,6 +73,7 @@ jobs:
           echo hi
 
   deploy:
+    needs: [build-large-runner, build-self-hosted-runner]
     if: always() && (needs.build-large-runner.result == 'success' || needs.build-self-hosted-runner.result == 'success')
     runs-on: ubuntu-latest
     steps: 
