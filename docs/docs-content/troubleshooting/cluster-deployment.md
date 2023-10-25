@@ -110,14 +110,14 @@ To address this issue, you can change the Pod Security Standards of the namespac
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-1. Navigate to the left **Main Menu** and click on **Profiles**. 
+2. Navigate to the left **Main Menu** and click on **Profiles**. 
 
-1. Select the profile you are using to deploy the cluster. Palette displays the profile stack and details.
+3. Select the profile you are using to deploy the cluster. Palette displays the profile stack and details.
 Click on the layer in the profile stack that contains the pack configuration.
 
-1. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
+4. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
-1. In the `namespaceLabels` section, add a subsection with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
+5. In the `namespaceLabels` section, add a subsection with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
    - If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
 
 :::tip
