@@ -4,8 +4,9 @@ name: Release to Production
 # or a version branch (e.g. version-4-0)
 
 on:
-  push:
-    branches: ['master', 'version-**']
+  schedule:
+    - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
+    - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
   workflow_dispatch:
     inputs:
       useGitHubHostedLargeRunner:
