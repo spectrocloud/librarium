@@ -6,6 +6,7 @@ hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "warehouse"
 tags: ["self-hosted", "enterprise"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 

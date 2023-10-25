@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["palette", "management", "self-hosted", "backup", "restore"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palette configuration data is backed up and can be restored in case of a disaster or a cluster failure. Palette supports two backup modes:

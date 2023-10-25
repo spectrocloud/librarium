@@ -5,6 +5,7 @@ description: "Enable settings in Palette VerteX that allow you to use non-FIPS r
 icon: ""
 hide_table_of_contents: false
 tags: ["vertex", "non-fips"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 

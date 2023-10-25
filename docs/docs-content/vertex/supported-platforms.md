@@ -5,6 +5,7 @@ description: "Review the supported platforms for deploying Kubernetes clusters w
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["vertex"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 Palette VerteX supports the following infrastructure platforms for deploying Kubernetes clusters:

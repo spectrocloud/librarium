@@ -5,6 +5,7 @@ description: "Learn about FIPS compliance in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
 tags: ["vertex", "fips"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 Palette VerteX is FIPS 140-2 compliant. This means that Palette VerteX uses FIPS 140-2 compliant algorithms and encryption methods. With its additional security scanning capabilities, Palette VerteX is designed to meet the stringent requirements of regulated industries. Palette VerteX operates on FIPS-compliant Ubuntu Pro versions.
