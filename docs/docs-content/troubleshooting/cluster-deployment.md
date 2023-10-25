@@ -117,7 +117,7 @@ To address this issue, you can change the Pod Security Standards of the namespac
 
 5. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
-6. In the `namespaceLabels` section, add a line with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
+6. In the `namespaceLabels` section, add a line with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes on your cluster. 
 7. If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
 
 :::caution
@@ -133,7 +133,7 @@ For guidance in using the CLI, review [Access Cluster with CLI](./clusters/clust
 ### Examples
 
 The following example shows a pack that creates a namespace called `"monitoring"`. In this example, the `monitoring` namespace does not have any pre-existing labels. 
-We need to add the `namespaceLabels` line as well as the corresponding key-value pair under it to apply the labels to the `monitoring` namespace. 
+You need to add the `namespaceLabels` line as well as the corresponding key-value pair under it to apply the labels to the `monitoring` namespace. 
 
 ```yaml
 pack:
@@ -144,7 +144,7 @@ pack:
 
 ```
 
-This second example is similar to the first one. However, in this example, the `monitoring` key already exists under `namespaceLabels`, with its original value being `"org=spectro,team=dev"`. Therefore, we add the labels to the existing value:
+This second example is similar to the first one. However, in this example, the `monitoring` key already exists under `namespaceLabels`, with its original value being `"org=spectro,team=dev"`. Therefore, you add the labels to the existing value:
    
 ```yaml
 pack:
