@@ -23,7 +23,8 @@ env:
 
 jobs:
   run-ci:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     defaults:
       run:
         shell: bash
