@@ -116,7 +116,9 @@ You can change the Pod Security Standards of the namepace where the pod is being
 
 4. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
-5. In the `namespaceLabels` field, add a subfield with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
+5. In the `namespaceLabels` section, add a subsection with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
+
+The example below shows `"monitoring"` as the namespace key with the key value.
    - If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
    - For example, if you the pack creates a namespace called `monitoring`, add the labels to the `monitoring` namespace:
    ```yaml
