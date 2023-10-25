@@ -121,6 +121,7 @@ You can change the Pod Security Standards of the namepace where the pod is being
 The example below shows `"monitoring"` as the namespace key with the key value.
    - If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
    - For example, if you the pack creates a namespace called `monitoring`, add the labels to the `monitoring` namespace:
+   
    ```yaml
    pack:
     namespace: "monitoring"
