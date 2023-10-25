@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["palette", "management"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 

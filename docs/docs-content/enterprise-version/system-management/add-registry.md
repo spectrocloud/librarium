@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
 tags: ["enterprise", "management", "registry"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a system-level registry. For guidance on adding a registry at the tenant scope, check out [Add Tenant-Level Registry](../../tenant-settings/add-registry.md). 

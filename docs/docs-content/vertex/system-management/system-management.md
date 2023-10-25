@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["vertex", "management"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are available at the system level and are applied to all [tenants](../../glossary-all.md#tenant) in the system. 

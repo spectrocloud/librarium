@@ -7,6 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 0
 toc_max_heading_level: 3
 tags: ["vertex", "vmware"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA). You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where Palette VerteX will be deployed. 
