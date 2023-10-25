@@ -3,6 +3,13 @@ name: Testing Versios
 on:
   push:
     branches: ['ci-**']
+  workflow_dispatch:
+    inputs:
+      useGitHubHostedLargeRunner:
+        description: 'Use the GitHub-hosted large runner'
+        required: false
+        default: false
+    
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -22,13 +29,37 @@ concurrency:
   cancel-in-progress: true  
 
 jobs:
-  build:
+  build-large-runner:
     name: Build Website
-    runs-on: ubuntu-latest
+    if : ${{ github.event.inputs.useGitHubHostedLargeRunner == 'true' }}
+    # runs-on: ${{ (inputs.useGitHubHostedLarge) && fromJSON('') || '["self-hosted", "linux", "x64", "vcenter3"]' }}
     # runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
-    # runs-on: 
-    #   group: 'Doc Runners'
-    #   labels: docbot
+    # runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    #   group: ''
+    #   labels: ''
+    runs-on: 
+      group: 'Doc Runners'
+      labels: docbot
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Compile
+        run: |
+          make build
+
+  build-self-hosted-runner:
+    name: Build Website
+    if : ${{ github.event.inputs.useGitHubHostedLargeRunner == 'false' }}
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
