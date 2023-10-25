@@ -24,17 +24,14 @@ concurrency:
 jobs:
   build:
     name: Build Website
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
+    # runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     # runs-on: 
     #   group: 'Doc Runners'
     #   labels: docbot
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: "master"
-
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
@@ -46,5 +43,4 @@ jobs:
 
       - name: Compile
         run: |
-          make versions-ci
           make build
