@@ -133,7 +133,7 @@ For guidance in using the CLI, review [Access Cluster with CLI](./clusters/clust
 ### Examples
 
 The following example shows a pack that creates a namespace called `"monitoring"`. In this example, the `monitoring` namespace does not have any pre-existing labels. 
-We need to add the `namespaceLabels` line as well as the the corresponding key-value pair under it to apply the labels to the `monitoring` namespace. 
+We need to add the `namespaceLabels` line as well as the corresponding key-value pair under it to apply the labels to the `monitoring` namespace. 
 
 ```yaml
 pack:
