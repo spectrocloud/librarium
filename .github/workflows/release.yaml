@@ -51,8 +51,8 @@ jobs:
 
       - name: Compile
         run: |
-          make versions-ci
-          make build
+          make versions-ci || ./scripts/versions-ci.sh $TMPDIR
+          make build || npm run build
 
       - name: Upload to AWS
         run: |
