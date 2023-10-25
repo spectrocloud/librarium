@@ -32,11 +32,6 @@ jobs:
   build-large-runner:
     name: Build Website
     if : ${{ github.event.inputs.useGitHubHostedLargeRunner == 'true' }}
-    # runs-on: ${{ (inputs.useGitHubHostedLarge) && fromJSON('') || '["self-hosted", "linux", "x64", "vcenter3"]' }}
-    # runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
-    # runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
-    #   group: ''
-    #   labels: ''
     runs-on: 
       group: 'Doc Runners'
       labels: docbot
@@ -58,7 +53,7 @@ jobs:
 
   build-self-hosted-runner:
     name: Build Website
-    if : ${{ github.event.inputs.useGitHubHostedLargeRunner == 'false' }}
+    if : ${{ github.event.inputs.useGitHubHostedLargeRunner == 'false' }} || (github.event_name != 'workflow_dispatch')
     runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
