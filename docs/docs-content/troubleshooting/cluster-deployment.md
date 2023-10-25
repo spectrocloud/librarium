@@ -114,7 +114,7 @@ You can change the Pod Security Standards of the namepace where the pod is being
 
 3. Select the profile you are trying to deploy the cluster with and choose the layer that represents your pack. The name of the Pod that failed to be created should give you a clue about which packs you need to modify. 
 
-4. In the YAML file for that pack, under the `pack` field, add a subfield `namespaceLabels` if it doesn't already exist.
+4. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
 5. In the `namespaceLabels` field, add a subfield with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
    - If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
