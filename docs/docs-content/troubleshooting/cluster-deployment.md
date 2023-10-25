@@ -113,7 +113,7 @@ To address this issue, you can change the Pod Security Standards of the namespac
 2. Navigate to the left **Main Menu** and click on **Profiles**. 
 
 3. Select the profile you are using to deploy the cluster. Palette displays the profile stack and details.
-Click on the layer in the profile stack that contains the pack configuration.
+3. Click on the pack layer in the profile stack that contains the pack configuration.
 
 4. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
