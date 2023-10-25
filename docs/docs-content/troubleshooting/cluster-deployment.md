@@ -102,7 +102,7 @@ Cluster deployment fails with the following message.
 Error creating: pods <name of pod> is forbidden: violates PodSecurity "baseline:v<k8s version>": non-default capabilities …
 ```
 
-This can happen when the cluster profile uses Kubernetes 1.25 or later and also includes packs that create pods requiring elevated privileges. 
+This can happen when the cluster profile uses Kubernetes 1.25 or later and also includes packs that create pods that require elevated privileges. 
 
 ### Debug Steps
 
