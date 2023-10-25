@@ -113,21 +113,38 @@ To address this issue, you can change the Pod Security Standards of the namespac
 2. Navigate to the left **Main Menu** and click on **Profiles**. 
 
 3. Select the profile you are using to deploy the cluster. Palette displays the profile stack and details.
-3. Click on the pack layer in the profile stack that contains the pack configuration.
+4. Click on the pack layer in the profile stack that contains the pack configuration.
 
-4. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
+5. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
-5. In the `namespaceLabels` section, add a subsection with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
-   - If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
+6. In the `namespaceLabels` section, add a line with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes that runs on your cluster. 
+7. If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
 
-:::tip
+:::caution
 
-If your pack creates multiple namespaces, and you are unsure which ones need the elevated privileges, you can access the cluster with the kubectl CLI and use the `kubectl get pods` command. This command lists pods and their namespaces so you can identify the pods that are failing at creation. We recommend only applying the labels to namespaces where pods fail to be created. For guidance in using the CLI, review [Access Cluster with CLI(./clusters/cluster-management/palette-webctl/#access-cluster-with-cli). To learn more about kubectl pod commands, refer to the [Kubernetes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) documentation.
+We recommend only applying the labels to namespaces where pods fail to be created. 
+If your pack creates multiple namespaces, and you are unsure which ones contain pods that need the elevated privileges, you can access the cluster with the kubectl CLI and use the `kubectl get pods` command. 
+This command lists pods and their namespaces so you can identify the pods that are failing at creation.
+
+For guidance in using the CLI, review [Access Cluster with CLI](./clusters/cluster-management/palette-webctl/#access-cluster-with-cli). To learn more about kubectl pod commands, refer to the [Kubernetes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) documentation.
 
 :::
 
-The example below shows `"monitoring"` as the namespace key with the key value. In this case, the `monitoring` key already exists under `namespaceLabels`, with its original value being `"org=spectro,team=dev"`. Therefore, we add the labels to the existing value:
+### Examples
 
+The following example shows a pack that creates a namespace called `"monitoring"`. In this example, the `monitoring` namespace does not have any pre-existing labels. 
+We need to add the `namespaceLabels` line as well as the the corresponding key-value pair under it to apply the labels to the `monitoring` namespace. 
+
+```yaml
+pack:
+  namespace: "monitoring"
+
+  namespaceLabels:
+    "monitoring": "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.28"
+
+```
+
+This second example is similar to the first one. However, in this example, the `monitoring` key already exists under `namespaceLabels`, with its original value being `"org=spectro,team=dev"`. Therefore, we add the labels to the existing value:
    
 ```yaml
 pack:
