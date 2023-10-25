@@ -5,6 +5,7 @@ description: "Review Palette system requirements and learn more about the variou
 icon: ""
 hide_table_of_contents: false
 tags: ["palette", "self-hosted"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 
