@@ -141,9 +141,8 @@ stages:
 
 #### Configure Network With Netplan
 
-You can use the `initramfs` stage and [Netplan](https://netplan.io) to configure network settings before the network initialization. Netplan is a tool that enables you to specify network configurations on Linux systems. Note that this approach is available for Linux systems with Netplan installed. Refer to the [Netplan Documentation](https://netplan.readthedocs.io/en/stable/)  for install guidance and the [Netplan How-to Guides](https://netplan.readthedocs.io/en/stable/examples/) for more information.
+You can use the `initramfs` stage and [Netplan](https://netplan.io) to configure network settings before the network initialization. Netplan is a tool that enables you to specify network configurations on Linux systems. Note that this approach is available for Linux systems with Netplan installed. Refer to the [Netplan Documentation](https://netplan.readthedocs.io/en/stable/)  for installation guidance and the [Netplan How-to Guides](https://netplan.readthedocs.io/en/stable/examples/) for more information.
 
-<br />
 
 ```yaml
 stages:
@@ -178,6 +177,16 @@ stages:
       permissions: 420
     name: Config network with Netplan
 ```
+
+:::tip
+
+When using the EdgeForge workflow with CanvOS, ensure you add Netplan to the Dockerfile. In the example below, Netplan is installed in an Ubuntu image.
+
+```shell
+apt-get update && apt-get install netplan.io -y
+```
+
+:::
 
 
 ####  Erase Partitions
