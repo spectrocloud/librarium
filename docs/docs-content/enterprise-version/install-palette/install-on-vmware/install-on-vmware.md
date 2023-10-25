@@ -5,6 +5,7 @@ description: "Learn how to install Palette on VMware."
 icon: ""
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "vmware"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 

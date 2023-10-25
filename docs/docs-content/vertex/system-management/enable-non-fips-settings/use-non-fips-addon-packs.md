@@ -6,6 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["vertex", "non-fips"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 

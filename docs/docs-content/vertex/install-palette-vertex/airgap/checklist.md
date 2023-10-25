@@ -6,6 +6,7 @@ icon: ""
 sidebar_position: 40
 hide_table_of_contents: false
 tags: ["vertex", "self-hosted", "airgap"]
+keywords: ["self-hosted", "vertex"]
 ---
  
 
