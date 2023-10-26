@@ -102,7 +102,7 @@ The following ports must be reachable from a network perspective for Palette to 
 
 ### Management Platform
 
-|Port            |Direction|Purpose                   |    
+|**Port**            |**Direction**|**Purpose**                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
 |NATS (tcp/4222) |INBOUND        |Agent running inside connecting to management platform|
@@ -111,7 +111,7 @@ The following ports must be reachable from a network perspective for Palette to 
 ### Workload Cluster
 
 
-|Port            |Direction | Purpose|
+|**Port**            |**Direction** | **Purpose**|
 |:---------------|:---------|:--------------|
 |HTTPS (tcp/443) |OUTBOUND | API access to management platform|
 |NATS (tcp/4222) |OUTBOUND       |Registry (packs, integrations), Pack containers, Application Updates|
@@ -156,7 +156,7 @@ The following ports must be reachable from a network perspective for Palette sel
 
 ### Management Platform
 
-|Port            |Direction|Purpose                   |    
+|**Port**            |**Direction**|**Purpose**                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform, gRPC|
 |NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters [Deprecated]|
@@ -167,10 +167,10 @@ The following ports must be reachable from a network perspective for Palette sel
 ### Workload Cluster
 
 
-|Port |Direction | Purpose|
+|**Port** |**Direction** | **Purpose**|
 |:---------------|:---------|:--------------|
 |HTTPS (tcp/443) |OUTBOUND | API access to management platform|
-|NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus. [Deprecated] |
+|NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus [Deprecated] |
 |HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, gRPC, Registry (packs, integrations), Pack containers, Application updates|
 
 
@@ -183,7 +183,7 @@ The following ports must be reachable from a network perspective for Palette sel
 
 ### Management Platform
 
-|Port            |Direction|Purpose                   |    
+|**Port**            |**Direction**|**Purpose**                   |    
 |:---------------|:---------|:-----------------------|
 |HTTPS (tcp/443) |INBOUND        |Browser/API access to management platform|
 |NATS (tcp/4222) |INBOUND        |Message Bus for workload clusters|
@@ -194,11 +194,11 @@ The following ports must be reachable from a network perspective for Palette sel
 ### Workload Cluster
 
 
-|Port |Direction | Purpose|
+|**Port** |**Direction** | **Purpose**|
 |:---------------|:---------|:--------------|
 |HTTPS (tcp/443) |OUTBOUND | API access to management platform|
 |NATS (tcp/4222) |OUTBOUND       |Agent communication via message bus |
-|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates.
+|HTTPS (tcp/443) |OUTBOUND       |vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates
 
 
 </TabItem>
