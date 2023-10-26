@@ -117,8 +117,8 @@ To address this issue, you can change the Pod Security Standards of the namespac
 
 5. In the pack's YAML file, add a subfield in the `pack` section called `namespaceLabels` if it does not already exist.
 
-6. In the `namespaceLabels` section, add a line with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes on your cluster. 
-7. If a key matching your namespace already exists here, add the labels to the value corresponding to that key. 
+6. In the `namespaceLabels` section, add a line with the name of your namespace as the key and add `pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>` as its value. Replace `<k8s_version>` with the version of Kubernetes on your cluster and only include the major and minor version following the lowercase letter `v`. For example, `v1.25` and `v1.28`.
+7. If a key matching your namespace already exists, add the labels to the value corresponding to that key. 
 
 :::caution
 
