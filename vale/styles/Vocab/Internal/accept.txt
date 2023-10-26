@@ -154,3 +154,4 @@ Caddy
 jumpbox
 Oras
 oras
+Netplan
