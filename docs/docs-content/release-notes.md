@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## October 22, 2023 - Release 4.1.0
 
-Palette 4.1.0 introduces several new features and enhancements to the platform. New features, such as the automatic SSL control plane certificate renewal and node repavement warnings, are designed to continue to help you manage Kubernetes clusters with confidence. The new built-in notification system for our SaaS platform is another addition designed to help you stay up-to-date with announcements and changes by bringing the news directly to you. 
+Palette 4.1.0 introduces several new features and enhancements to the platform. New features, such as static IP address for Edge hosts and node repavement warnings, are designed to continue to help you manage Kubernetes clusters with confidence. The new built-in notification system for our SaaS platform is another addition designed to help you stay up-to-date with announcements and changes by bringing the news directly to you. 
 
 Check out the following sections to learn about all the new features and improvements introduced in this release.
 
