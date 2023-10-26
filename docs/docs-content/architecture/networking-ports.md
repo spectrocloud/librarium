@@ -22,14 +22,14 @@ Depending on what version of Palette you are using, the internal architecture an
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.png "title=SaaS Network Diagram with ports")
 
 
 
 #### SaaS Managed
 
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-grpc.png)
 
 
 
@@ -73,7 +73,7 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
 
-![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.png "#title="network diagram")
 
 
 
@@ -119,15 +119,14 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-
-![SaaS Network Diagram with ports](/architecture_networking-ports_network-diagram_nats.png "title=SaaS Network Diagram with ports")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-nats.png "title=SaaS Network Diagram with ports")
 
 
 
 #### SaaS Managed
 
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge_nats.png)
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-nats.png)
 
 
 The following ports must be reachable from a network perspective for Palette to operate properly.
@@ -161,7 +160,7 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram.png "#title="network diagram")
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-nats.png "#title="network diagram")
 
 ## Management Platform
 
