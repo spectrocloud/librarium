@@ -59,7 +59,7 @@ versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environ
 
 api: ## Generate API docs
 	@echo "generating api docs"
-	npm run clear-api-docs
+	npm run clean-api-docs
 	npm run generate-api-docs
 
 ##@ Git Targets
