@@ -18,7 +18,7 @@ The following prerequisites must be met before deploying a cluster to AWS:
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 - An infrastructure cluster profile for AWS EKS. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 - An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the target region.
-- Palette creates compute, network, and storage resources in AWS during the provisioning of Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
+- Palette creates compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region for the creation of the following resources:
     - vCPU
     - VPC
     - Elastic IP
@@ -43,53 +43,109 @@ Use the following steps to provision a new AWS EKS cluster:
 
 1. Ensure you are in the correct project scope.
 
+2. From the left **Main Menu**, select **Clusters** and click on the **Add New Cluster** button.
 
-2. Navigate to the left **Main Menu** and click on **Clusters**
+3. Click on **Deploy New Cluster** on the next page Palette displays. This will allow you to deploy a cluster using your own cloud account. 
+
+4. Select **AWS** and click on the **Start AWS Configuration** button.
+
+5. Fill out the following input values, and click on **Next** to continue.
+
+  | **Field** | **Description** |
+  |-----------|-----------------|
+  | **Name**| A custom name for the cluster. |
+  | **Description**| Use the description to provide context about the cluster.|
+  | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `zone` or `region`.|
+  | **Cloud Account** | If you already have an AWS account, add the AWS cloud account name. If you do not have an account, click on **Add New Account** to a add one. |
+
+7. On the AWS cloud account form that displays, provide your AWS account name. You can add an optional description to provide context about the account.
+
+8. Select **AWS** from the **drop-down Menu**. <<< Note: check prod to see if AWS US Gov is listed >>
+
+9. If you use **Credentials**, provide these in the Access Key and Secret access key fields. To use Security Token Service, review the guidance in the right panel that displays when you select **STS**. 
+<<< The following needs different formatting - not sure it works as a tab because it would be only one. maybe the info is mentioned in prereqs? Maybe in a different doc? >>>
+    STS requires you to create the following IAM policies with the listed permissions within your AWS account:
+
+  | **Policy** | **Permissions** |
+  |-----------|-----------------|
+  | `PaletteControllerPolicy`| Controller Policy |
+  | `PaletteControlPlanePolicy`| Control Plane Policy|
+  | `PaletteNodesPolicy`| Nodes Policy|
+  | `PaletteDeploymentPolicy` | Deployment Policy |
 
 
-3. Click on **Add New Cluster**
+STS also requires you to create an IAM Role using the following options:
+
+   - Trusted Entity Type: Specify another AWS account
+
+   - Account ID: Copy this from the panel that displays when you select **STS**.
+
+   - Require External ID: **Enable**
+
+   - External ID: Copy this from the panel that displays when you select **STS**
+
+   - Permissions Policy: These are the four policies you added, which are listed in the above table.
 
 
-4. You will receive a prompt asking you if you want to deploy a new cluster or import an existing cluster. Click on **Deploy New Cluster**
+10. In the AWS Console, browse to the role details page and copy the Role ARN and paste it in the **ARN** field.
+
+11. Click the **Validate** button. If the credentials you provided are correct, a Credentials validated success message with a green check is displayed.
+
+11. Click the **Validate** button. If the ARN you provided is correct, a Credentials validated success message with a green check is displayed.
+
+12. Toggle the **Connect Private Cloud Gateway** ... <<< why does user do this?? >>>
+
+13. When you have completed inputting values and credentials are validated, click **Confirm**.
 
 
-5. Select **AWS** and click on **Start AWS Configuration**
 
 
-6. Populate the wizard page with the following information: name, description, tags and AWS account. Tags on a cluster are propagated to the VMs deployed to the target environments. Click on **Next** after you have filled out all the required information.
+14. Under **Managed Kubernetes**, select **EKS**. Select the EKS cluster profile you created and click on **Next**.
 
-7. Selected **Managed Kubernetes** and click on your cluster profile that supports AWS EKS. Click on **Next**.
-
-
-8. Review and customize pack parameters, as desired. By default, parameters for all packs are set with values, defined in the cluster profile. Click on **Next**.
+15. Review and customize parameters as desired in the YAML files for each cluster profile layer. Click on **Next** when you are done.
 
 
-9. Provide the AWS cloud account and placement information.
+16. Provide the following and placement information and click on **Next** to continue. 
 
     |**Parameter**| **Description**|
     |-------------|---------------|
-    |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.|
-    |**Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. <br /> These resources are fully managed by Palette and deleted, when the corresponding cluster is deleted. Turn on the **Static Placement** option if it's desired to place resources into preexisting VPCs and subnets.|
-    |**Region** | Choose the preferred AWS region where you would like the clusters to be provisioned.|
-    |**SSH Key Pair Name** | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the VMs provisioned.|
-    |**Cluster Endpoint Access**| Select Private, Public or Private & Public, in order to control communication with the Kubernetes API endpoint. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide. :::caution If you set the cluster endpoint to Public, specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely.  :::|
-    |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.| 
-    |**Enable Encryption**|The user can enable secret encryption by toggling **Enable Encryption**. Provide the provider KMS key ARN to complete the wizard. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
-    |**Worker Pool Update**|Optionally enable the option to update the worker pool in parallel.|
-    
+    <!-- |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.| -->
+    |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) in which cluster resources for each cluster will be placed. Palette manages these resources and deletes them when the corresponding cluster is deleted. <br /><br /> Enable the **Static Placement** option if you want to place resources into preexisting VPCs and subnets. You will need to provide the VPCID.|
+    |**Region** | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.|
+    |**SSH Key Pair Name** | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The selected key is inserted into the provisioned VMs.|
+    |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+    |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+    |**Private Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To restrict network access, enter the IP address CIDR range that will provide access to the cluster. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+    |**Enable Encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN** <<< for the cluster? >>>. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
+    |**Update worker pools in parallel**|This option allows the simultaneous update of nodes in the worker pool.| <<<  Any advantages/disadvantages in doicng this?? >>>
 
-10. Make the choice of updating the worker pool in parallel, if required. Click on **Next**.
+    :::caution
 
+    If you set the cluster endpoint to Public, ensure you specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities. <<< verify this >>>
 
-11. Configure the master and worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](architecture#spot-instances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
+    :::
+<<< In a managed environment, do we still have a control plance?? >>>
+
+11. Configure the worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](architecture#spot-instances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
 
     |**Parameter**| **Description**|
     |-------------|----------------|
-    |**Name** | A descriptive name for the node pool.|
+    |**Node pool name** | A descriptive name for the node pool.|
+    |**Number of nodes in the pool** | Specify the number of nodes.|
+    |**Additional Labels** | ??       |
+    |**Taints** | To control which workloads are placed on nodes in the pool. Toggle **Taints** on and specify a key and value. Use the **drop-down Menu** to choose the **Effect**: **NoSchedule**, **PreferNoSchedule**, or **NoExecute**. | 
+    | **Instance Option** | Choose the pricing method: **On-Demand** instances provide stable and uninterrupted compute capacity - usually at a higher cost. **Spot** instances allow you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application's requirements. | 
+    |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
+    |**Enable Nodepool Customization** | <<< Start here >>> AMI ID (optional) toggle. When this option is enabled, AMI ID, Root Disk Size, Disk Type fields are displayed. |
+    |**Fargate Profiles** | <<< ??? >>> |
+
+    <<< Check out tables below that separate out options. See how this publishes to determine which format to use. >>>
+
+
     |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](architecture#formula-for-pod-calculation) documentation for help in determining the proper instance type and size. |
     |[Taints](../../cluster-management/taints.md#taints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
     |[Labels](../../cluster-management/taints.md#labels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
-    |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
+    
     
   * Cloud Configuration settings:
 
