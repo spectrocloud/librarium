@@ -23,6 +23,7 @@ env:
 
 jobs:
   run-ci:
+    # runs-on: ubuntu-latest
     runs-on: ubuntu-latest
     defaults:
       run:
