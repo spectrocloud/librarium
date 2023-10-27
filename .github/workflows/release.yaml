@@ -36,9 +36,7 @@ jobs:
   build-self-hosted-runner:
     if: ${{ github.event.inputs.useGitHubHostedLargeRunner != 'true' || github.event_name == 'schedule' }}
     name: Build Website
-    runs-on: 
-      group: 'Doc Runners'
-      labels: docbot
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
