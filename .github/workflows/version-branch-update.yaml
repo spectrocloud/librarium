@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - 'version-[0-9]-[0-9]'
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
 
 
 
