@@ -34,10 +34,9 @@ concurrency:
 jobs:
 # This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
   build-self-hosted-runner:
+    if: ${{ github.event.inputs.useGitHubHostedLargeRunner != 'true' || github.event_name == 'schedule' }}
     name: Build Website
-    runs-on: 
-      group: 'Doc Runners'
-      labels: docbot
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -67,6 +66,7 @@ jobs:
 
 #  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
   build-large-runner:
+    if: ${{ github.event.inputs.useGitHubHostedLargeRunner == 'true' && github.event_name != 'schedule' }}
     name: Build Website
     runs-on: 
       group: 'Doc Runners'
