@@ -307,6 +307,8 @@ The `pde` command exposes the following subcommands.
 
   <br />
 
+  * `app`           -   Manage Palette Apps deployments.
+
   * `cluster-group` -   Manage Palette Cluster Groups.
 
 
@@ -314,6 +316,22 @@ The `pde` command exposes the following subcommands.
 
 
   * `virtual-cluster` - Manage Palette Virtual Clusters.
+
+
+### App
+
+Use the `app` subcommand to manage Palette Apps deployments. The `app` subcommand supports the following subcommands.
+
+  <br />
+
+  * `create` - Create a Palette App deployment.
+
+  * `delete` - Delete a Palette App deployment.
+
+  * `list`   - List Palette App deployments.
+
+  * `update` - Update a Palette App deployment.
+
 
 
 ### Cluster Group
