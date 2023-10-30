@@ -49,7 +49,7 @@ jobs:
 
     - name: Netlify Build
       run: |
-        netlify build --context deploy-preview
+        netlify build --context branch-deploy
 
     - name: Deploy to Netlify
       id: netlify
