@@ -107,44 +107,46 @@ STS also requires you to create an IAM Role using the following options:
 
 16. Provide the following and placement information and click on **Next** to continue. 
 
-    |**Parameter**| **Description**|
-    |-------------|---------------|
-    <!-- |**Cloud Account** | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.| -->
-    |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) in which cluster resources for each cluster will be placed. Palette manages these resources and deletes them when the corresponding cluster is deleted. <br /><br /> Enable the **Static Placement** option if you want to place resources into preexisting VPCs and subnets. You will need to provide the VPCID.|
-    |**Region** | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.|
-    |**SSH Key Pair Name** | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The selected key is inserted into the provisioned VMs.|
-    |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
-    |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
-    |**Private Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To restrict network access, enter the IP address CIDR range that will provide access to the cluster. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
-    |**Enable Encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN** <<< for the cluster? >>>. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
-    |**Update worker pools in parallel**|This option allows the simultaneous update of nodes in the worker pool.| <<<  Any advantages/disadvantages in doicng this?? >>>
+  |**Parameter**| **Description**|
+  |-------------|---------------|
+  |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) in which cluster resources for each cluster will be placed. Palette manages these resources and deletes them when the corresponding cluster is deleted. <br /><br /> Enable the **Static Placement** option if you want to place resources into preexisting VPCs and subnets. You will need to provide the VPCID.|
+  |**Region** | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.|
+  |**SSH Key Pair Name** | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The selected key is inserted into the provisioned VMs.|
+  |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+  |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+  |**Private Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To restrict network access, enter the IP address CIDR range that will provide access to the cluster. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+  |**Enable Encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN** <<< for the cluster? >>>. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
+  |**Update worker pools in parallel**|This option allows the simultaneous update of nodes in the worker pool.| 
+  
+  <<<  Any advantages/disadvantages in doing this?? >>>
 
-    :::caution
+  :::caution
 
-    If you set the cluster endpoint to Public, ensure you specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities. <<< verify this >>>
+  If you set the cluster endpoint to Public, ensure you specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities. <<< verify this >>>
 
-    :::
-<<< In a managed environment, do we still have a control plance?? >>>
+  :::
+
+<<< In a managed environment, do we still have a control plance - (no) ?? >>>
 
 11. Configure the worker node pools. A single master and a worker node pool are configured by default. This is the section where you can specify the availability zones (AZ), instance types, [instance cost type](architecture#spot-instances), disk size, and the number of nodes. Use the following tables to better understand the available input options.
 
-    |**Parameter**| **Description**|
-    |-------------|----------------|
-    |**Node pool name** | A descriptive name for the node pool.|
-    |**Number of nodes in the pool** | Specify the number of nodes.|
-    |**Additional Labels** | ??       |
-    |**Taints** | To control which workloads are placed on nodes in the pool. Toggle **Taints** on and specify a key and value. Use the **drop-down Menu** to choose the **Effect**: **NoSchedule**, **PreferNoSchedule**, or **NoExecute**. | 
-    | **Instance Option** | Choose the pricing method: **On-Demand** instances provide stable and uninterrupted compute capacity - usually at a higher cost. **Spot** instances allow you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application's requirements. | 
-    |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
-    |**Enable Nodepool Customization** | <<< Start here >>> AMI ID (optional) toggle. When this option is enabled, AMI ID, Root Disk Size, Disk Type fields are displayed. |
-    |**Fargate Profiles** | <<< ??? >>> |
+  |**Parameter**| **Description**|
+  |-------------|----------------|
+  |**Node pool name** | A descriptive name for the node pool.|
+  |**Number of nodes in the pool** | Specify the number of nodes.|
+  |**Additional Labels** | ??       |
+  |**Taints** | Taints are used to control which workloads are placed on nodes in the pool. Toggle **Taints** on and specify a key and value. Use the **drop-down Menu** to choose the **Effect**: **NoSchedule**, **PreferNoSchedule**, or **NoExecute**. | 
+  | **Instance Option** | Choose the pricing method: **On-Demand** instances provide stable and uninterrupted compute capacity - usually at a higher cost. **Spot** instances allow you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application's requirements. | 
+  |**Instance Type** | Select the AWS instance type to be used for all nodes in the node pool.|
+  |**Enable Nodepool Customization** | <<< Start here >>> AMI ID (optional) toggle. When this option is enabled, AMI ID, Root Disk Size, Disk Type fields are displayed. |
+  |**Fargate Profiles** | <<< ??? >>> |
 
-    <<< Check out tables below that separate out options. See how this publishes to determine which format to use. >>>
+  <<< Check out tables below that separate out options. See how this publishes to determine which format to use. >>>
 
 
-    |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](architecture#formula-for-pod-calculation) documentation for help in determining the proper instance type and size. |
-    |[Taints](../../cluster-management/taints.md#taints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
-    |[Labels](../../cluster-management/taints.md#labels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
+  |**Size** | Make your choice of minimum, maximum and desired sizes for the worker pool. The size of the worker pool will scale between the minimum and maximum size under varying workload conditions. Review the [AWS Instance Type and Pod Capacity](architecture#formula-for-pod-calculation) documentation for help in determining the proper instance type and size. |
+  |[Taints](../../cluster-management/taints.md#taints): |Optionally enable node affinity optionally to attracts pods to a set of nodes| 
+  |[Labels](../../cluster-management/taints.md#labels): |Optionally enable labels to constrain a pod to only run on a particular set of nodes|
     
     
   * Cloud Configuration settings:
