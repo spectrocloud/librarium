@@ -60,14 +60,14 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to the **master-pool** and the **worker-pool**. When you have completed configuring the node pools, click on **Next**.
 
-10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge host. If you want to specify a static IP, toggle on static IP and provide the following information:
+10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
     
     -  IP address for the Edge host
     -  IP address for the default gateway
     -  Subnet mask of your network
     -  IP address of your DNS server
 
-    After your create the cluster, you will not be able to change the IP address of your existing Edge hosts unless you remove and re-add them back to the cluster. 
+    If certain network information is already available, the corresponding fields will be pre-populated. After you create the cluster, you will not be able to change the IP address of your existing Edge hosts unless you remove and re-add them back to the cluster. 
 
 
 11.  The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
@@ -133,14 +133,14 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 
 7. Navigate to the **Edge Hosts drop-down Menu** and select your Edge host.
 
-8. (Optional) When you select your Edge host, you can optionally specify a static IP address for the Edge host. If you want to specify a static IP, toggle on static IP and provide the following information:
+8. (Optional) When you select your Edge host, you can optionally specify a static IP address for the Edge host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
     
     -  IP address for the Edge host
     -  IP address for the default gateway
     -  Subnet mask of your network
     -  IP address of your DNS server
 
-    After your create the cluster, you will not be able to change the IP address of your existing Edge hosts unless you remove and re-add them back to the cluster. 
+    If certain network information is already available, the corresponding fields will be pre-populated. After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add them back to the cluster. 
 
 9. Confirm your changes.
 
