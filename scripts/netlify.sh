@@ -6,7 +6,7 @@
 
 
 # List of branches to NOT create an automatic Netlify preview
-disallowed_branches=("master" "release-*" "version-*" "backport/**")
+disallowed_branches=("master" "release-*" "version-*")
 
 # Get current branch name
 current_branch=$(git branch --show-current)
