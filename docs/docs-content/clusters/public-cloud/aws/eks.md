@@ -53,7 +53,7 @@ Use the following steps to deploy an AWS cluster in which to provision an EKS cl
 
 6. Select **AWS** and click on the **Start AWS Configuration** button.
 
-7. Fill out the following input values, and click on **Next Step** to continue.
+7. Fill out the following basic information, and click on **Next Step** to continue.
 
   | **Field** | **Description** |
   |-----------|-----------------|
@@ -63,6 +63,31 @@ Use the following steps to deploy an AWS cluster in which to provision an EKS cl
   | **AWS Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your AWS account information.  |
 
   If you already have an AWS account, skip to section...
+
+8. Select a full or infrastructure cluster profile. To learn more about profiles, review [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md).
+
+9. Review profile layers... Click **Next Step**.
+
+10. Provide the following cluster configuration information and click on **Next** to continue. 
+
+  |**Parameter**| **Description**|
+  |-------------|---------------|
+  |**Region** | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.|
+  |**SSH Key Pair Name** | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.|
+  |**Enable static placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) in which resources for each cluster will be placed. Palette manages these resources and deletes them when the corresponding cluster is deleted.<br /><br /> Enable the **Static Placement** option if you want to place resources into pre-existing VPCs and subnets. You will need to provide the VPCID.|
+  |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**.<br /><br />**Private & Public** allows external access to the cluster endpoint while keeping worker node traffic within your VPC for balanced accessibility and security. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+  |**Public Access CIDRs** (not in protoype) |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+  |**Private Access CIDRs** (not in protoype) |This setting controls which IP address CIDR range can access the cluster. To restrict network access, enter the IP address CIDR range that will provide access to the cluster. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.<<< Currently, new design doesn't show Private Access CIDRs.>>> |
+  |**Enable key encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN**. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
+  |**Update worker pools in parallel**| This option allows the simultaneous update of nodes in the worker pool. This is an efficient way to manage various types of workloads. | 
+
+  :::caution
+
+  If you set the cluster endpoint to Public, ensure you specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities. <<< verify this >>>
+
+  :::
+
+<<< Prototype stops here >>>
 
 ### Add AWS Account
 
@@ -158,7 +183,7 @@ Use the following steps to provision a new EKS cluster.
   |**Public Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Private Access CIDR** |This setting controls which IP address CIDR range can access the cluster. To restrict network access, enter the IP address CIDR range that will provide access to the cluster. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Enable Encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN**. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
-  |**Update worker pools in parallel**| This option allows the simultaneous update of nodes in the worker pool.| 
+  |**Update worker pools in parallel**| This option allows the simultaneous update of nodes in the worker pool. This is an efficient way to manage various types of workloads. | 
 
   :::caution
 
