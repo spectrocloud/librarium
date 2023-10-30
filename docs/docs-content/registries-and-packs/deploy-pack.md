@@ -61,18 +61,18 @@ Start the Docker Desktop on your local machine and ensure the daemon is availabl
 docker ps
 ```
 
-Download the `ghcr.io/spectrocloud/tutorials:1.0.4` image to your local machine. The Docker image includes the necessary tools. 
+Download the `ghcr.io/spectrocloud/tutorials:1.0.8` image to your local machine. The Docker image includes the necessary tools. 
 <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+docker pull ghcr.io/spectrocloud/tutorials:1.0.8
 ```
 
 Next, start the container, and open a bash session into it.
 <br />
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.8 bash
 ```
 
 If port 7000 on your local machine is unavailable, you can use any other port of your choice. 
@@ -926,7 +926,7 @@ Stop the registry server by closing the tutorials container bash session that se
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.3
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.8
 ```
 
 <br /> 
