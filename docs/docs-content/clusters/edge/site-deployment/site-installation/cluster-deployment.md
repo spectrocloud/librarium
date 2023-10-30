@@ -61,7 +61,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
   | **Field** | **Description** |
   |-------|-------------|
-  | IP Address | The static IP address assigned to your your Edge host. This should be unique within your network. |
+  | IP Address | The static IP address assigned to your Edge host. This should be unique within your network. |
   | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks, including the internet. |
   | Subnet mask | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network. |
   | DNS server | The IP address of the DNS server your cluster uses for domain resolution. | 
@@ -140,7 +140,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
     
   | **Field** | **Description** |
   |-------|-------------|
-  | IP Address | The static IP address assigned to your your Edge host. This should be unique within your network. |
+  | IP Address | The static IP address assigned to your Edge host. This should be unique within your network. |
   | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks, including the internet. |
   | Subnet mask | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network. |
   | DNS server | The IP address of the DNS server your cluster uses for domain resolution. | 
