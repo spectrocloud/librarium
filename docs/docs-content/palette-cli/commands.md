@@ -202,7 +202,7 @@ The `login` subcommand authenticates the Palette CLI with Palette. The `login` s
 
   <br />
 
-| Flag                  | Description                                                                          | Type    |  |
+| **Flag**                  | **Description**                                                                          | **Type**    |  |
 |-----------------------|--------------------------------------------------------------------------------------|---------|
 | `--api-key`           | Palette API key (omit for interactive login).                                         | string  |
 | `--cluster-group-name`| Palette Cluster Group name (optional). Specifies the active Cluster Group.               | string  |
@@ -284,14 +284,14 @@ Use the `install` subcommand to install a PCG cluster in the following environme
 
 <br />
 
-  | Short Flag | Long Flag              | Description                                                              | Type    |
+  | **Short Flag** | **Long Flag**              | **Description**                                                              | **Type**    |
   |------------|------------------------|--------------------------------------------------------------------------|---------|
   | `-f`       | `--config-file`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
   | `-o`       | `--config-only`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
   | `-i`       | `--inspect-only`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
 
 
-| Platform | Install Guide |
+| **Platform** | **Install Guide** |
 |---|---|
 | MAAS | [Link](../clusters/data-center/maas/install-manage-maas-pcg.md#install-pcg) |
 | OpenStack | [Link](../clusters/data-center/openstack.md#installing-private-cloud-gateway---openstack) |
@@ -305,15 +305,12 @@ The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and it
 
 The `pde` command exposes the following subcommands.
 
-  <br />
 
   * `app`           -   Manage Palette Apps deployments.
 
   * `cluster-group` -   Manage Palette Cluster Groups.
 
-
-  * `project`       -   Manage Palette Projects. 
-
+  * `registry`      -  Manage Palette Registries for App Mode.
 
   * `virtual-cluster` - Manage Palette Virtual Clusters.
 
@@ -322,23 +319,83 @@ The `pde` command exposes the following subcommands.
 
 Use the `app` subcommand to manage Palette Apps deployments. The `app` subcommand supports the following subcommands.
 
+
+  * `create` - Create a Palette App deployment. This command contain several subcommands. Use the `--help` flag to learn more about each subcommand or refer to the [Create](#create) section.
+
+  * `delete` - Delete a Palette App deployment. Refer to the [Delete](#delete) section for more information.
+
+  * `list`   - List Palette App deployments. Refer to the [List](#list) section for more information.
+
+  * `update` - Update a Palette App deployment. Refer to the [Update](#update) section for more information.
+
+
+
+  #### Create
+
+  Use the `create` subcommand to create a Palette App deployment. The `create` subcommand supports the following subcommands.
+
+  
+  * `cluster-group` - Create a Palette App deployment inside a Cluster Group. A new Virtual Cluster will be created. Use the following flags to create a Palette App deployment inside a Cluster Group.
+
+    | **Flag**              | **Description**                                                              | **Type**    |
+    |-------------------|--------------------------------------------------------------------------|---------|
+    | `---app-profile-name`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
+    | `--app-profile-version`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
+    | `--cluster-group-name`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
+    | `--cpu` | CPUs (optional). Defaults to 4 cores. (default 4) | int |
+    | `--memory`| Memory (GB) (optional). Defaults to 4GB. (default 4) | int|
+    | `--name` | The name of the App deployment. | string |
+    | `--storage`|  Storage (GB) (optional). Defaults to 4GB. (default 4)| int |
+    | `--virtual-cluster-name`| The name of the new Virtual Cluster.  | string |
+
+  * `interactive`   - Create a Palette App deployment in an interactive mode.
+
+  * `virtual-cluster` - Create a Palette App deployment inside an existing Virtual Cluster. Use the following flags to create a Palette App deployment inside an existing Virtual Cluster.
+
+    | **Flag**              | **Description**                                                              | **Type**    |
+    |-------------------|--------------------------------------------------------------------------|---------|
+    | `---app-profile-name`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
+    | `--app-profile-version`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
+    | `--name` | The name of the App deployment. | string |
+    | `--virtual-cluster-name`| The name of the new Virtual Cluster.  | string |
+
+
+  #### Delete
+
+  Use the `delete` subcommand to delete a Palette App deployment. The `delete` requires the name of the App deployment to delete. Use the `--name` flag to specify the name of the App deployment to delete.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--name` | The name of the App deployment. | string |
+  | `--help` | Help for the `delete` subcommand. | - |
+
   <br />
 
-  * `create` - Create a Palette App deployment.
+  #### List
 
-  * `delete` - Delete a Palette App deployment.
+  Use the `list` subcommand to list all Palette App deployments. The `list` subcommand supports the following flags. 
 
-  * `list`   - List Palette App deployments.
 
-  * `update` - Update a Palette App deployment.
+  | **Flag**  | **Description**    | **Type** |
+  |-----------| ------------------ | -------- |
+  | `--name` | The name of the App deployment. | string | 
+  | `--help` | Help for the `list` subcommand. | - |
 
+
+
+  #### Update
+
+  Use the `update` subcommand to update a Palette App deployment. The `update` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  | ------------------- | --------------------------------------------------------------------------|---------|
+  | `--name` | The name of the App deployment. Only Apps pending an App Profile update are eligble for an update. | string |
+  | `--help` | Help for the `update` subcommand. | - |
 
 
 ### Cluster Group
 
 Use the `cluster-group` command to change the cluster group that commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
-
-  <br />
 
   * `list`   -      List Palette Cluster Groups.
 
@@ -347,12 +404,66 @@ Use the `cluster-group` command to change the cluster group that commands will t
   * `switch` -      Switch your active Palette Cluster Group.
 
 
+### Registry
+
+Use the `registry` subcommand to manage Palette Registries for App Mode. The `registry` subcommand supports the following subcommands.
+
+  * `create` - Create a Palette Registry.
+
+  * `delete` - Delete a Palette Registry.
+
+  * `list`   - List Palette Registries. 
+
+
+  #### Create
+
+  The `create` subcommand creates a Palette Registry. You can specify an Open Container Initiative (OCI) or a Helm registry. Use the subcommand `oci` or `helm` to specify the type of registry you want to create. The `create` subcommand supports the following subcommands. 
+
+  * `oci` - Create an OCI registry. Use the following flags to create an OCI registry.
+
+  * `helm` - Create a Helm registry. Use the following flags to create a Helm registry.
+
+  The following flags are supported by the `oci` and `helm` subcommands.
+  
+  | **Flag**              | **Description**                                                              | **Type**    |
+  |-------------------|--------------------------------------------------------------------------|---------|
+  | `--endpoint` | The endpoint of the registry. | string |
+  | `--help` | Help for the `oci` or the `helm` subcommand. | - |
+  | `--username` | The username of the OCI registry. | string |
+  | `--password` | The password of the OCI registry. | string |
+
+  The following example shows how to create an OCI registry.
+
+  ```shell hideClipboard
+  palette pde registry create oci --endpoint https://harbor.internal.abc.org  \
+  --name internal-packs --username harbor --password *********
+  ```
+
+
+
+  #### List
+
+  The `list` subcommand lists all Palette Registries availble in App Mode. The `list` subcommand supports the following flags.
+
+  | **Flag**  | **Description**      | **Type**    |
+  |-----------|----------------------|---------|
+  | `--type` | The type of registry. Allowed values are `oci` and `helm`. | string |
+  | `--help` | Help for the `list` subcommand. | - |
+
+
+  #### Delete
+
+  The `delete` subcommand deletes a Palette Registry from App Mode. You can specify an Open Container Initiative (OCI) or a Helm registry. Use the type flag `--type` to specify the type of registry you want to delete. The `delete` subcommand supports the following flags.
+
+  | **Flag**              | **Description**                                                              | **Type**    |
+  |-------------------|--------------------------------------------------------------------------|---------|
+  | `--name` | The name of the registry. | string |
+  | `--type` | The type of registry. Allowed values are `oci` and `helm`. | string |
+  | `--help` | Help for the `delete` subcommand. | - |
 
 ### Virtual Cluster
 
 You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters. Below is a list of the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
-
-  <br />
 
 - `create` - Create a Palette Virtual Cluster.
 
