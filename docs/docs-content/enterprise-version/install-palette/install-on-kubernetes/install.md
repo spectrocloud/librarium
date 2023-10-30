@@ -75,7 +75,7 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
   - x509 SSL certificate authority file in base64 format.
   
 
-- Ensure the OS and Kubernetes cluster you are installing Palette onto is FIPS-compliant. Otherwise, Palette and its operations will not be FIPS-compliant.
+- An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
 
 
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette.
@@ -181,7 +181,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
   | `env.rootDomain` | The URL name or IP address you will use for the Palette installation. | string |
   | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.| object |
   | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. These credentials are provided by our support team. | object |
-
+  | `ingress.enabled`| Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean |
 
   Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
@@ -432,7 +432,7 @@ reach-system:
   | `ociImageRegistry.mirrorRegistries`| Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.|
   | `imageSwapConfig.isEKSCluster` | Set this value to `false` if you are NOT installing Palette on an EKS cluster. | boolean |
   | `scar` | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.   | object |
-
+  | `ingress.enabled`| Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean |
 
   Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
