@@ -79,6 +79,9 @@ If you are installing VerteX in an airgap environment, ensure you complete all t
 - Ensure the OS and Kubernetes cluster you are installing VerteX onto is FIPS-compliant. Otherwise, VerteX and its operations will not be FIPS-compliant.
 
 
+- An nginx controller will be installed by default. If you already have an nginx controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
+
+
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for VerteX.
 
 
@@ -182,6 +185,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
   | `env.rootDomain` | The URL name or IP address you will use for the VerteX installation. | string |
   | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.| object |
   | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for VerteX FIPS images. These credentials are provided by our support team. | object |
+  | `ingress.enabled`| Whether to install the nginx ingress controller. Set this to `false` if you already have an nginx controller deployed in the cluster. | boolean |
 
 
   Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
@@ -435,6 +439,7 @@ reach-system:
   | `ociImageRegistry.mirrorRegistries`| Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.|
   | `imageSwapConfig.isEKSCluster` | Set this value to `false` if you are NOT installing VerteX on an EKS cluster. | boolean |
   | `scar` | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.   | object |
+  | `ingress.enabled`| Whether to install the nginx ingress controller. Set this to `false` if you already have an nginx controller deployed in the cluster. | boolean |
 
 
   Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
