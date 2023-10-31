@@ -12,10 +12,18 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 
 ## Prerequisites
 
-- Access to an AWS cloud account. 
+- Access to an AWS cloud account.
+
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
+
+<!-- - A Virtual Private Cloud (VPC) with at least two subnets in different Availability Zones (AZs). Palette requires two AZs within the VPC that you specify when creating the EKS cluster. -->
+
 - An infrastructure cluster profile for AWS EKS. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
-- An [EC2 Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) for the target region.
+
+- An [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) for the target region that provides a secure connection to your EC2 instances.
+
+- kubelogin installed. This is a kubectl plugin for Kubernetes OIDC authentication, also known as `kubectl oidc-login`.
+
 - Palette creates compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources:
     - Virtual CPU (vCPU)
     - Virtual Private Cloud (VPC)
@@ -27,7 +35,9 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 
 :::info
 
-The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name.
+To enable automatic subnet discovery for integration with AWS load balancer service, you need to add tags to the the Virtual Private Cloud (VPC) public subnets. Use the AWS [Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name.
+
+<!-- The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name. -->
 - `kubernetes.io/role/elb = 1`
 - `sigs.k8s.io/cluster-api-provider-aws/role = public`
 - `kubernetes.io/cluster/[yourClusterName] = shared` 
@@ -58,7 +68,7 @@ Use the following steps to deploy an AWS cluster in which to provision an EKS cl
   | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `zone` or `region`.|
   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your AWS account information.  |
 
-  If you already have an AWS account, skip to the [Create an EKS Cluster](#create-an-eks-cluster) section. To add a cloud account, continue to the [Add Cloud Account](#add-aws-cloud-account) section.
+  If you already have an AWS cloud account, you can skip to the [Create an EKS Cluster](#create-an-eks-cluster) section.
 
 ### Add Cloud Account
 
@@ -155,7 +165,7 @@ Click on **Next** when you are done.
 
   |**Parameter**| **Description**|
   |-------------|---------------|
-  |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) in which resources for each cluster will be placed. Palette manages these resources and deletes them when the corresponding cluster is deleted. <br /><br /> Enable the **Static Placement** option if you want to place resources into pre-existing VPCs and subnets. You will need to provide the VPCID.|
+  |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two required subnets in different Availability Zones (AZs). This is an EKS cluster requirement. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VPCs and subnets, enable the **Static Placement** option, and provide the VPCID in the **VPCID** field that displays with this option enabled.|
   |**Region** | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.|
   |**SSH Key Pair Name** | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.|
   |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
@@ -170,23 +180,30 @@ Click on **Next** when you are done.
 
   :::
 
-6. Provide the following node pool and cloud configuration information. Click on **Next** to continue.  
-
 <!-- Configure the worker node pool and provide cloud configuration information. Palette configures a single worker node pool by default.  [instance cost type](architecture#spot-instances) Use the following table to better understand the available input options. Click **Next** to continue. -->
 
-  |**Parameter**| **Description**|
-  |-------------|----------------|
-  |**Node pool name** | A descriptive name for the node pool.|
-  |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
-  |**Additional Labels** | Optionally, you can add labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `"environment": "production"` |
-  |**Taints** | You can apply optional taint labels to a node pool during the cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more. Toggle the **Taint** button to create a label. If tainting is enabled, you need to provide a custom key-value pair and use the **drop-down Menu** to choose **Effect**:<br />**NoSchedule**: Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule**: Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute**: Existing pods on nodes with this taint are evicted.  | 
-  | **Instance Option** | Choose the pricing method:<br />**On-Demand** instances provide stable and uninterrupted compute capacity at a higher cost.<br />**Spot** instances allow you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application's requirements. | 
-  |**Instance Type** | Select the instance type to use for all nodes in the node pool.|
-  |**Enable Nodepool Customization** | Toggle this option on to use a pre-configured VM image and provide the Amazon Machine Image (AMI) ID. When this option is enabled, you can use the **drop-down Menu** to specify the disk type to use. |
-  |**Root Disk size** | By default, the **Root Disk size** is `60`, which you can change. |
-  |**Fargate Profiles** | An AWS feature that allows you to run containers without the need for EC2 instances. With Fargate, you do not provision or manage the cloud infrastructure. |
+6. Provide the following node pool and cloud configuration information. Click on **Next** to continue.
 
-<<< Ask eng. about Fargate Profiles that displays in the Node pools configuration for EKS. There are no options - it should be removed because it causes confusion. >>>
+    - **Node Configuration Settings**
+    
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    |**Node pool name** | A descriptive name for the node pool.|
+    |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
+    |**Additional Labels** | Optionally, you can add labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `"environment": "production"` |
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page to learn more. Toggle the **Taint** button to create a label. If tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following options for **Effect**:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+    
+    - **Cloud Configuration settings**
+    
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    | **Instance Option** | Choose the pricing method:<br />**On-Demand** instances provide stable and uninterrupted compute capacity at a higher cost.<br />**Spot** instances allow you to bid for unused EC2 capacity at a lower cost. We recommend you base your choice on your application's requirements. | 
+    |**Instance Type** | Select the instance type to use for all nodes in the node pool.|
+    |**Enable Nodepool Customization** | To use a pre-configured VM image, toggle this option on and provide the Amazon Machine Image (AMI) ID. When this option is enabled, you can use the **drop-down Menu** to specify the disk type to use. |
+    |**Root Disk size** | You can choose disk size based on your requirements. The default size is `60`. |
+    |**Fargate Profiles** | Fargate allows running containers without the need for EC2 instances.  As an administrator, you can use Fargate profiles to specify which pods run on Fargate. Click **Add Fargate Profile** and specify subnets. Use selectors to specify the namespace that contains the pod you want to use, and add a selector for each pod. For more information about Fargate, refer to [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html). |
+
+<!-- With Fargate, you do not provision or manage the cloud infrastructure. -->
 
 :::info
 
@@ -261,6 +278,20 @@ kms:DescribeKeys
 Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
 
 You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page.
+
+
+## Connect to EKS Cluster with kubectl
+
+To connect to the EKS cluster with kubectl, use the `SpectroCloudRole` IAM role. Or does it need to be another user?
+
+1. Install aws-iam-authenticator.
+
+2. <<< What else? see Nic V. >>>
+
+3. attach a policy to the user so the user can assume the role `SpectroCloudRole`.
+new policy is assumeSpectroCloudRole. Make it a trusted entity.
+
+
 
 ## Resources
 
