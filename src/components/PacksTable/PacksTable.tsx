@@ -27,6 +27,37 @@ const statusClassNames: Record<string, string> = {
   disabled: styles.disabled,
 };
 
+
+// Format the cloud type strings so they display properly 
+const formatCloudType = (type: string): string => {
+  const cloudTypeMapping: Record<string, string> = {
+    "aws": "AWS",
+    "eks": "EKS",
+    "vsphere": "vSphere",
+    "maas": "MaaS",
+    "gcp": "GCP",
+    "libvirt": "libvirt",
+    "openstack": "OpenStack",
+    "edge-native": "Edge-Native",
+    "tke": "TKE",
+    "aks": "AKS",
+    "coxedge": "Cox Edge",
+    "gke": "GKE",
+    "all": "All",
+    "azure": "Azure"
+    // ... add other special cases as needed
+  };
+
+  return type.split(',')
+    .map(part => cloudTypeMapping[part.trim()] || capitalizeWord(part))
+    .join(', ');
+}
+
+// Capitalize the word as a default option
+const capitalizeWord = (string: string): string => {
+  return string.toUpperCase();
+}
+
 interface PacksColumn {
   title: string;
   dataIndex: keyof Pack;
@@ -42,6 +73,14 @@ const columns: PacksColumn[] = [
     dataIndex: "displayName",
     key: "displayName",
     sorter: (a: Pack, b: Pack) => a.displayName.localeCompare(b.displayName),
+    width: 200,
+  },
+  {
+    title: "Cloud Types",
+    dataIndex: "cloudTypesFormatted",
+    key: "cloudTypesFormatted",
+    sorter: (a: Pack, b: Pack) => a.cloudTypesFormatted.localeCompare(b.cloudTypesFormatted),
+    render: (value: string) => formatCloudType(value),
     width: 200,
   },
   {
