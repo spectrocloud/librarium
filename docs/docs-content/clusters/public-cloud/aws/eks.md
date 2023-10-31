@@ -35,7 +35,7 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 
 :::info
 
-To enable automatic subnet discovery for integration with AWS load balancer service, you need to add tags to the the Virtual Private Cloud (VPC) public subnets. Use the AWS [Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name.
+To enable automatic subnet discovery for integration with AWS load balancer service, you need to add tags to the the Virtual Private Cloud (VPC) public subnets. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. Refer to [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) for more information.
 
 <!-- The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name. -->
 - `kubernetes.io/role/elb = 1`
@@ -115,14 +115,14 @@ Creating the account is different depending on the authentication type you choos
 
 6. In the **Partition** field, select **AWS** in the **drop-down Menu**.
 
-7. If you have not already created the following IAM policies with the permissions listed in the table, go ahead and create them.
+7. Create the following IAM policies using the [Required IAM Policies](required-iam-policies.md) reference. 
 
-  | **Policy** | **Permission** |
-  |-----------|-----------------|
-  | `PaletteControllerPolicy`| Controller Policy |
-  | `PaletteControlPlanePolicy`| Control Plane Policy|
-  | `PaletteNodesPolicy`| Nodes Policy|
-  | `PaletteDeploymentPolicy` | Deployment Policy |
+    - `PaletteControllerPolicy`
+    - `PaletteControlPlanePolicy`
+    - `PaletteNodesPolicy`
+    - `PaletteDeploymentPolicy`
+
+    EKS requires an additional `PaletteControllersEKSPolicy` policy. To learn how to create it, review [Controllers EKS Policy](./required-iam-policies.md#controllers-eks-policy).
 
 8. Create an IAM Role that uses the following rules and options.
 
@@ -182,7 +182,7 @@ Click on **Next** when you are done.
 
 <!-- Configure the worker node pool and provide cloud configuration information. Palette configures a single worker node pool by default.  [instance cost type](architecture#spot-instances) Use the following table to better understand the available input options. Click **Next** to continue. -->
 
-6. Provide the following node pool and cloud configuration information. Click on **Next** to continue.
+6. Provide the following node pool and cloud configuration information, and click on **Next** to continue.
 
     - **Node Configuration Settings**
     
@@ -201,9 +201,17 @@ Click on **Next** when you are done.
     |**Instance Type** | Select the instance type to use for all nodes in the node pool.|
     |**Enable Nodepool Customization** | To use a pre-configured VM image, toggle this option on and provide the Amazon Machine Image (AMI) ID. When this option is enabled, you can use the **drop-down Menu** to specify the disk type to use. |
     |**Root Disk size** | You can choose disk size based on your requirements. The default size is `60`. |
-    |**Fargate Profiles** | Fargate allows running containers without the need for EC2 instances.  As an administrator, you can use Fargate profiles to specify which pods run on Fargate. Click **Add Fargate Profile** and specify subnets. Use selectors to specify the namespace that contains the pod you want to use, and add a selector for each pod. For more information about Fargate, refer to [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html). |
 
-<!-- With Fargate, you do not provision or manage the cloud infrastructure. -->
+    - **Fargate Profiles**
+
+    You can create one or more Fargate profiles for the EKS cluster to use. Click **Add Fargate Profile**. For more information about Fargate profiles, refer to [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html).
+    
+    |**Parameter**| **Description**|
+    |-------------|---------------|
+    |**Name** |A custom name for the Fargate profile.|
+    |**Subnets** |Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.|
+    |**Selectors** |Define a pod selector by providing a target namespace and option labels. Pods with matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile and a pod only needs to match one selector to run using the Fargate profile.|
+
 
 :::info
 
@@ -230,18 +238,9 @@ You can add new worker pools if you need to customize certain worker nodes to ru
 Provisioning an AWS EKS clusters can take several minutes.
 
 :::
-  
-    
-<!-- 5. Configure optional cluster settings for an OS patching schedule, security scans, backup settings, and set up role based access control (RBAC), 
-
- Review the settings and make changes if needed. Click on **Validate**.
-
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning an AWS EKS clusters can take several minutes.
-
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress. -->
 
 
-## Validate
+### Validate
 
 You can validate your cluster is up and running.
 
@@ -251,7 +250,7 @@ You can validate your cluster is up and running.
 
 3. Click on the cluster you created to view its details page.
 
-4. Ensure the **Cluster Status** field contains the value **Running**.
+4. Ensure the **Cluster Status** field displays **Running**.
 
 
 ## EKS Cluster Secrets Encryption
@@ -277,19 +276,28 @@ kms:DescribeKeys
 ```
 Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
 
-You can enable secret encryption during the EKS cluster creation process by toggling the encryption button providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page.
+You can enable secret encryption during the EKS cluster creation process by toggling the **Enable Encryption** button on and providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page.
 
 
-## Connect to EKS Cluster with kubectl
+## Configure OIDC for EKS Clusters
 
-To connect to the EKS cluster with kubectl, use the `SpectroCloudRole` IAM role. Or does it need to be another user?
+You manage OpenID Connect (OIDC) at the Kubernetes layer. To configure OIDC for managed EKS clusters, follow steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide. 
+
+:::caution
+
+Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to Create Role Bindings. Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+
+:::
+
+
+<!-- To connect to the EKS cluster with kubectl, use the `SpectroCloudRole` IAM role. Or does it need to be another user?
 
 1. Install aws-iam-authenticator.
 
-2. <<< What else? see Nic V. >>>
+2. <<< What else? . >>>
 
 3. attach a policy to the user so the user can assume the role `SpectroCloudRole`.
-new policy is assumeSpectroCloudRole. Make it a trusted entity.
+new policy is assumeSpectroCloudRole. Make it a trusted entity. -->
 
 
 
@@ -306,3 +314,7 @@ new policy is assumeSpectroCloudRole. Make it a trusted entity.
 - [EKS Cluster Encryption](#eks-cluster-secrets-encryption)
 
 - [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+
+- [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc)
+
+- [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc)
