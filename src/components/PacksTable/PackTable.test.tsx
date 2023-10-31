@@ -83,4 +83,21 @@ describe("FilteredTable Tests", () => {
       expect(screen.getByText("Failed to load Deprecated Packs")).toBeInTheDocument();
     });
   });
+
+  it("should properly format cloud types", async () => {
+    const customMockPacks = [
+      {
+        ...mockPacks[0],
+        cloudTypesFormatted: "eks,vsphere"
+      }
+    ];
+
+    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks }));
+    render(<FilteredTable />);
+
+    await waitFor(() => screen.getByText("Alpine"));
+    
+    expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
+  });
+
 });
