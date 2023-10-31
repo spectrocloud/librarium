@@ -36,7 +36,7 @@ const formatCloudType = (type: string): string => {
     "gcp": "GCP",
     "libvirt": "libvirt",
     "openstack": "OpenStack",
-    "edge-native": "Edge-Native",
+    "edge-native": "Edge",
     "tke": "TKE",
     "aks": "AKS",
     "coxedge": "Cox Edge",
