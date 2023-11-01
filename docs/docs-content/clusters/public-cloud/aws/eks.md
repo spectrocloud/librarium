@@ -3,12 +3,12 @@ sidebar_label: "Create and Manage AWS EKS Cluster"
 title: "Create and Manage AWS EKS Cluster"
 description: "Learn how to deploy and manage AWS EKS clusters with Palette."
 hide_table_of_contents: false
-tags: ["public cloud", "aws"]
+tags: ["public cloud", "aws", "eks"]
 sidebar_position: 30
 ---
 
 
-Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
+Palette supports creating and managing Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 
 :::info
 
-To enable automatic subnet discovery for integration with AWS load balancer service, you need to add tags to the Virtual Private Cloud (VPC) public subnets. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. Refer to [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) for more information.
+To enable automated subnet discovery for integration with AWS load balancer service, you need to add tags to the Virtual Private Cloud (VPC) public subnets. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. Refer to [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) for more information.
 
 <!-- The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name. -->
 - `kubernetes.io/role/elb = 1`
@@ -47,7 +47,7 @@ To enable automatic subnet discovery for integration with AWS load balancer serv
 
 ## Deploy an AWS Cluster
 
-Use the following steps to deploy an AWS cluster in which to provision an EKS cluster.
+Use the following steps to deploy an EKS cluster on AWS.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -75,13 +75,13 @@ Use the following steps to deploy an AWS cluster in which to provision an EKS cl
 
 Use the following steps to provision a new EKS cluster.
 
-1. Select **EKS** as the **Managed Kubernetes**. 
+1. Select **EKS** listed under **Managed Kubernetes**. 
 
 2. Select the EKS cluster profile you created and click on **Next**. Palette displays the cluster profile layers.
 
 3. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
 
-  You can configure OpenID Connect (OIDC) at the Kubernetes layer. To configure OIDC for managed EKS clusters, follow steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide.
+  You can configure OpenID Connect (OIDC) at the Kubernetes layer. To configure OIDC for managed EKS clusters, follow the steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide.
 
   :::caution
 
@@ -95,12 +95,12 @@ Use the following steps to provision a new EKS cluster.
 
   |**Parameter**| **Description**|
   |-------------|---------------|
-  |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VPCs and subnets, enable the **Static Placement** option, and provide the VPCID in the **VPCID** field that displays with this option enabled. You will need to specify two subnets in different Availability Zones (AZs). |
+  |**Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VPCs, enable the **Static Placement** option, and provide the VPCID in the **VPCID** field that displays with this option enabled. You will need to specify two subnets in different Availability Zones (AZs). |
   |**Region** | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.|
   |**SSH Key Pair Name** | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.|
   |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Public Access CIDRs** |This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
-  |**Private Access CIDRs** |This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.<br /><br />To restrict network access, enter the IP address CIDR range that will provide access to the cluster. Although `0.0.0.0/0` is pre-populated in this field, Palette ensures the only IPs that can reach the private endpoint are those within the VPC or any other connected VPCs. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
+  |**Private Access CIDRs** |This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.<br /><br />To restrict network access, enter the IP address CIDR range that will provide access to the cluster. Although `0.0.0.0/0` is pre-populated in this field, only IPs that can reach the private endpoint are those within the VPC or any other connected VPCs. For example, while using `0.0.0.0/0` would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR `10.0.0.0/16` would limit traffic to an individual VPC. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Enable Encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN**. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
 
   :::caution
@@ -172,7 +172,7 @@ Use the following steps to provision a new EKS cluster.
 
 ### Validate
 
-You can validate your cluster is up and running.
+You can validate your cluster is up and in **Running** state.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -207,18 +207,6 @@ kms:DescribeKeys
 Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
 
 You can enable secret encryption during the EKS cluster creation process by toggling the **Enable Encryption** button on and providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.
-
-
-
-<!-- To connect to the EKS cluster with kubectl, use the `SpectroCloudRole` IAM role. Or does it need to be another user?
-
-1. Install aws-iam-authenticator.
-
-2. <<< What else? . >>>
-
-3. attach a policy to the user so the user can assume the role `SpectroCloudRole`.
-new policy is assumeSpectroCloudRole. Make it a trusted entity. -->
-
 
 
 ## Resources

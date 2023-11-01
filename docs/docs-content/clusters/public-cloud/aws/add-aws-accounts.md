@@ -78,7 +78,7 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 ### Dynamic Access Credentials
 
-Use the steps below to add an AWS cloud account using Security token service (STS) credentials.
+Use the steps below to add an AWS cloud account using Security Token Service (STS) credentials.
 
 #### Prerequisites
 
