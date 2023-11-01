@@ -104,7 +104,7 @@ Use the steps below to add an AWS cloud account using Security token service (ST
    * Select **STS** authentication for validation.
 
 
-5. You will be provided with information on the right side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists the information provided by the wizard after your select **STS**.
+5. You will be provided with information on the right side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists the information provided by the wizard after you select **STS**.
 
     |**Parameter**|**Description**|
     |---------|---------------|
