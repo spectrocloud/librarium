@@ -11,6 +11,8 @@ type Pack = {
   cloudTypesFormatted: string;
   version: string;
   status: string;
+  prodStatus: string;
+  inProduction: string;
   packCreateDate: string;
   packLastModifiedDate: string;
   timeLastUpdated: string;
@@ -137,10 +139,25 @@ const FilteredTable: React.FC = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    debugger;
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
-        const deprecatedPackData = packData.Packs.filter((pack) => pack.status !== "active");
+        const deprecatedPackData = packData.Packs.filter((pack) => {
+          
+          if (pack.prodStatus !== "active") {
+
+              if (pack.status === "unknown") {
+                
+                return false;
+
+              }
+              return true;
+          }
+
+          return false;
+        
+        });
         setDeprecatedPacks(deprecatedPackData);
         setLoading(false);
       })
