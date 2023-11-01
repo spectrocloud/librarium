@@ -145,7 +145,7 @@ const FilteredTable: React.FC = () => {
       .then((packData: PacksData) => {
         const deprecatedPackData = packData.Packs.filter((pack) => {
           
-          return pack.prodStatus !== "active" && pack.status !== "unknown"
+          return pack.prodStatus !== "active" && pack.prodStatus !== "unknown"
         
         });
         setDeprecatedPacks(deprecatedPackData);
