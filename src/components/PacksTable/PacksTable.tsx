@@ -53,9 +53,9 @@ const columns: PacksColumn[] = [
   },
   {
     title: "Status",
-    dataIndex: "status",
-    key: "status",
-    sorter: (a: Pack, b: Pack) => a.status.localeCompare(b.status),
+    dataIndex: "prodStatus",
+    key: "prodStatus",
+    sorter: (a: Pack, b: Pack) => a.prodStatus.localeCompare(b.prodStatus),
     render: (status: string) => {
       const className = statusClassNames[status];
       return <span className={className}>{status}</span>;
