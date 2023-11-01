@@ -24,7 +24,7 @@ env:
 jobs:
   run-ci:
     # runs-on: ubuntu-latest
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -57,7 +57,7 @@ jobs:
   build:
     name: Build
     needs: [run-ci]
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository

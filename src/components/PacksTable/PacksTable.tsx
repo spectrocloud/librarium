@@ -11,6 +11,8 @@ type Pack = {
   cloudTypesFormatted: string;
   version: string;
   status: string;
+  prodStatus: string;
+  inProduction: string;
   packCreateDate: string;
   packLastModifiedDate: string;
   timeLastUpdated: string;
@@ -24,6 +26,37 @@ const statusClassNames: Record<string, string> = {
   deleted: styles.deleted,
   disabled: styles.disabled,
 };
+
+
+// Format the cloud type strings so they display properly 
+const formatCloudType = (type: string): string => {
+  const cloudTypeMapping: Record<string, string> = {
+    "aws": "AWS",
+    "eks": "EKS",
+    "vsphere": "vSphere",
+    "maas": "MaaS",
+    "gcp": "GCP",
+    "libvirt": "libvirt",
+    "openstack": "OpenStack",
+    "edge-native": "Edge",
+    "tke": "TKE",
+    "aks": "AKS",
+    "coxedge": "Cox Edge",
+    "gke": "GKE",
+    "all": "All",
+    "azure": "Azure"
+    // ... add other special cases as needed
+  };
+
+  return type.split(',')
+    .map(part => cloudTypeMapping[part.trim()] || capitalizeWord(part))
+    .join(', ');
+}
+
+// Capitalize the word as a default option
+const capitalizeWord = (string: string): string => {
+  return string.toUpperCase();
+}
 
 interface PacksColumn {
   title: string;
@@ -40,6 +73,14 @@ const columns: PacksColumn[] = [
     dataIndex: "displayName",
     key: "displayName",
     sorter: (a: Pack, b: Pack) => a.displayName.localeCompare(b.displayName),
+    width: 200,
+  },
+  {
+    title: "Cloud Types",
+    dataIndex: "cloudTypesFormatted",
+    key: "cloudTypesFormatted",
+    sorter: (a: Pack, b: Pack) => a.cloudTypesFormatted.localeCompare(b.cloudTypesFormatted),
+    render: (value: string) => formatCloudType(value),
     width: 200,
   },
   {
@@ -101,7 +142,9 @@ const FilteredTable: React.FC = () => {
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
-        const deprecatedPackData = packData.Packs.filter((pack) => pack.status !== "active");
+        const deprecatedPackData = packData.Packs.filter((pack) => {  
+          return pack.prodStatus !== "active" && pack.prodStatus !== "unknown"
+        });
         setDeprecatedPacks(deprecatedPackData);
         setLoading(false);
       })
