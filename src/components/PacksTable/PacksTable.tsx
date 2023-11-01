@@ -139,7 +139,6 @@ const FilteredTable: React.FC = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    debugger;
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
