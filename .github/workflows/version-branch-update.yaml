@@ -49,14 +49,4 @@ jobs:
 
     - name: Netlify Build
       run: |
-        netlify build --context deploy-preview
-
-    - name: Deploy to Netlify
-      id: netlify
-      uses: nwtgck/actions-netlify@v2.1.0
-      with:
-        publish-dir: ./build
-        deploy-message: 'Manual Netlify deployment from GitHub Actions -  ${{ github.sha }}'
-        enable-pull-request-comment: true
-        overwrites-pull-request-comment: true
-        enable-commit-comment: true
+        netlify deploy --build --context branch-deploy
