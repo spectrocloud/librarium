@@ -8,7 +8,7 @@ sidebar_position: 30
 ---
 
 
-Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an AWS EKS cluster in AWS that is managed by Palette.
+Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
 
 ## Prerequisites
 
@@ -18,9 +18,9 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 
 <!-- - A Virtual Private Cloud (VPC) with at least two subnets in different Availability Zones (AZs). Palette requires two AZs within the VPC that you specify when creating the EKS cluster. -->
 
-- An infrastructure cluster profile for AWS EKS. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
+- An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose Managed Kubernetes **EKS** as the cloud type. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
-- An [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) for the target region that provides a secure connection to your EC2 instances.
+- An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create a key pair, refer to the [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
 - kubelogin installed. This is a kubectl plugin for Kubernetes OIDC authentication, also known as `kubectl oidc-login`.
 
@@ -68,83 +68,8 @@ Use the following steps to deploy an AWS cluster in which to provision an EKS cl
   | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `zone` or `region`.|
   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your AWS account information.  |
 
-  If you already have an AWS cloud account, you can skip to the [Create an EKS Cluster](#create-an-eks-cluster) section.
+  To learn how to add an AWS account, review [Add an AWS Account to Palette](add-aws-accounts.md).
 
-### Add Cloud Account
-
-Follow the steps below if you have not previously added your AWS cloud account in Palette.
-
-1. At the Basic Information step in the wizard, click on the **drop-down Menu** in the **Cloud Account** field and click **Add New Account**.
-
-2. On the form that displays, provide your AWS account name and an optional description to provide context about the account.
-
-3. In the **Partition** field, select **AWS** from the **drop-down Menu**.
-
-Creating the account is different depending on the authentication type you choose. Select the tab below that applies to the authentication method you will use to configure your AWS account.
-
-<!-- If you use **Credentials**, provide these in the **Access Key** and **Secret access key** fields. To use Security Token Service, review the guidance in the right panel that displays when you select **STS**.  -->
-  
-<Tabs groupId="authentication">
-
-<TabItem label="Credentials" value="Credentials">
-
-4. Specify the account name. 
-
-5. Add an optional description to give the account some context.
-
-6. In the **Partition** field, select **AWS** in the **drop-down Menu**.
-
-7. From your AWS console, copy the access key and secret key.
-
-8. In Palette, paste the keys in the **Access key** and **Secret access key** fields.
-
-9. Click the **Validate button**.  If the credentials you provided are correct, a *Credentials validated* success message with a green check is displayed.
-
-10. To use a Private Cloud Gateway (PCG) that you installed, toggle the **Connect Private Cloud Gateway** button and select the PCG from the **drop-down Menu**.
-
-11. When you have completed inputting values and credentials are validated, click **Confirm**.
-
-</TabItem>
-
-<TabItem label="STS" value="STS">
-
-
-4. Specify the account name.
-
-5. Add an optional description to give the account some context.
-
-6. In the **Partition** field, select **AWS** in the **drop-down Menu**.
-
-7. Create the following IAM policies using the [Required IAM Policies](required-iam-policies.md) reference. 
-
-    - `PaletteControllerPolicy`
-    - `PaletteControlPlanePolicy`
-    - `PaletteNodesPolicy`
-    - `PaletteDeploymentPolicy`
-
-    EKS requires an additional `PaletteControllersEKSPolicy` policy. To learn how to create it, review [Controllers EKS Policy](./required-iam-policies.md#controllers-eks-policy).
-
-8. Create an IAM Role that uses the following rules and options.
-
-  | **Rule** | **Option** |
-  |-----------|-----------------|
-  | **Trusted Entity Type**| Controller Policy |
-  | **Account ID** | In Palette, copy this from the right panel that displays when you select **STS**.|
-  | **Require External ID** | **Enable**|
-  | **External ID** | In Palette, copy this from the right panel that displays when you select **STS**. |
-  | **Permissions Policy** | Search and select the four policies you added in step 12. |
-  | **Role Name** | Provide `SpectroCloudRole` as the role name. |
-
-9. In the AWS Console, browse to the role details page and copy the Role ARN and paste it in the **ARN** field in Palette. 
-
-10. Click the **Validate** button. If the ARN you provided is correct, a Credentials validated success message with a green check is displayed.
-
-11. To use a Private Cloud Gateway (PCG) that you installed, toggle the **Connect Private Cloud Gateway** button and select the PCG from the **drop-down Menu**.
-
-12. When you have completed inputting values and credentials are validated, click **Confirm**.
-
-</TabItem>
-</Tabs>
 
 ### Create an EKS Cluster
 
@@ -154,12 +79,17 @@ Use the following steps to provision a new EKS cluster.
 
 2. Select the EKS cluster profile you created and click on **Next**.
 
-3. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. 
+3. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
 
-4. To configure OIDC, select the Kubernetes layer and edit the Kubernetes YAML file.
+  You can configure OpenID Connect (OIDC) at the Kubernetes layer. To configure OIDC for managed EKS clusters, follow steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide.
 
+  :::caution
 
-Click on **Next** when you are done.
+  Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to Create Role Bindings. Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+
+  :::
+
+4. Click on **Next** to continue.
 
 5. Provide the following cluster configuration information and click on **Next** to continue. 
 
@@ -176,7 +106,7 @@ Click on **Next** when you are done.
 
   :::caution
 
-  If you set the cluster endpoint to Public, ensure you specify `0.0.0.0/0` in the Public Access CIDR field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities.
+  If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in the **Public Access CIDR** field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities.
 
   :::
 
@@ -277,17 +207,6 @@ kms:DescribeKeys
 Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
 
 You can enable secret encryption during the EKS cluster creation process by toggling the **Enable Encryption** button on and providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page.
-
-
-## Configure OIDC for EKS Clusters
-
-You manage OpenID Connect (OIDC) at the Kubernetes layer. To configure OIDC for managed EKS clusters, follow steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide. 
-
-:::caution
-
-Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to Create Role Bindings. Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
-
-:::
 
 
 <!-- To connect to the EKS cluster with kubectl, use the `SpectroCloudRole` IAM role. Or does it need to be another user?
