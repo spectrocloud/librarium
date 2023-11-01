@@ -308,6 +308,8 @@ The `pde` command exposes the following subcommands.
 
   * `app`           -   Manage Palette Apps deployments.
 
+  * `app-profile`  -   Manage Palette App Profiles.
+
   * `cluster-group` -   Manage Palette Cluster Groups.
 
   * `registry`      -  Manage Palette Registries for App Mode.
@@ -385,7 +387,7 @@ Use the `app` subcommand to manage Palette Apps deployments. The `app` subcomman
 
   #### Update
 
-  Use the `update` subcommand to update a Palette App deployment. The `update` subcommand supports the following flags.
+  Use the `update` subcommand to update an App deployment. The `update` subcommand supports the following flags.
 
   | **Flag**              | **Description**   | **Type**    |
   | ------------------- | --------------------------------------------------------------------------|---------|
@@ -393,13 +395,58 @@ Use the `app` subcommand to manage Palette Apps deployments. The `app` subcomman
   | `--help` | Help for the `update` subcommand. | - |
 
 
+
+### App Profile
+
+Use the `app-profile` command to manage app profiles. The `app-profile` command supports the following subcommands.
+
+  * `create` - Create an app profile
+
+  * `delete` - Delete an app profile
+
+  * `describe` - Describe an app profile
+
+  * `list`   - List app profiles
+
+  * `versions` - List the versions of an app profile
+
+
+
+  #### Create
+
+  Use the `create` subcommand to create an app profile. You have two options to create an app profile. You can create an app profile using a configuration file or in interactive mode. The `create` subcommand supports the following subcommands.
+
+  * `from-config` - Create an app profile from an app profile configuration file.
+
+  * `interactive` - Create an app profile in interactive mode.
+
+
+  ##### From Config
+
+  You can create an app profile using a configuration file. The configuration file must be in YAML format. The `from-config` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--config-file` | The path to the app profile configuration file. | string |
+  | `--help` | Help for the `from-config` subcommand. | - |s
+
+
+:::tip
+
+You can create an app profile config file with the `interactive` command and using the `--config-only` flag.
+
+```shell hideClipboard
+palette pde app-profile create interactive --config-only
+```
+
+:::
+
+
 ### Cluster Group
 
 Use the `cluster-group` command to change the cluster group that commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
 
   * `list`   -      List Palette Cluster Groups.
-
-
 
   * `switch` -      Switch your active Palette Cluster Group.
 
