@@ -16,8 +16,6 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
-<!-- - A Virtual Private Cloud (VPC) with at least two subnets in different Availability Zones (AZs). Palette requires two AZs within the VPC that you specify when creating the EKS cluster. -->
-
 - An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed Kubernetes** cloud type. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
 - An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create a key pair, refer to the [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
@@ -35,9 +33,8 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 :::info
 
-To enable automated subnet discovery for integration with AWS load balancer service, you need to add tags to the Virtual Private Cloud (VPC) public subnets. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. Refer to [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) for more information.
+To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide.  Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. To learn more about the Tag Editor, refer to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
 
-<!-- The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name. -->
 - `kubernetes.io/role/elb = 1`
 - `sigs.k8s.io/cluster-api-provider-aws/role = public`
 - `kubernetes.io/cluster/[yourClusterName] = shared` 
@@ -108,8 +105,6 @@ Use the following steps to provision a new EKS cluster.
   If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in the **Public Access CIDR** field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities.
 
   :::
-
-<!-- Configure the worker node pool and provide cloud configuration information. Palette configures a single worker node pool by default.  [instance cost type](architecture#spot-instances) Use the following table to better understand the available input options. Click **Next** to continue. -->
 
 6. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can add them here.
 
