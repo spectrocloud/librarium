@@ -35,7 +35,7 @@ Palette supports creating and managing AWS Elastic Kubernetes Service (EKS) clus
 
 :::info
 
-To enable automatic subnet discovery for integration with AWS load balancer service, you need to add tags to the the Virtual Private Cloud (VPC) public subnets. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. Refer to [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) for more information.
+To enable automatic subnet discovery for integration with AWS load balancer service, you need to add tags to the Virtual Private Cloud (VPC) public subnets. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. Refer to [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) for more information.
 
 <!-- The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name. -->
 - `kubernetes.io/role/elb = 1`
