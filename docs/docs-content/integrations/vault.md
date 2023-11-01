@@ -62,7 +62,17 @@ Vault integration has the following components:
 * UI (Optional).
 * [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (Optional).
 
+:::caution
 
+When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, insert the following fields under the `server` field in `values.yaml` for the Vault layer in your cluster profile. 
+
+```yaml
+server:
+    dataStorage:
+        storageClass: <storage class name>
+```
+
+:::
 
 ## Supported Use cases
 

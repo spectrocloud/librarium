@@ -35,6 +35,13 @@ RKE2 is only available for Edge host deployments. Refer to the [Edge](../cluster
 
 :::
 
+
+:::caution
+
+If you use the Vault add-on pack in a cluster profile that uses RKE2 as its Kubernetes layer, you need to explicitly specify a storage class for your Vault application. Refer to [the Vault pack documentation](./vault.md) for details. 
+
+:::
+
 ## Versions Supported
 
 The following RKE2 versions are supported to work with Palette.
