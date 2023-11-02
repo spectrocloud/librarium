@@ -600,6 +600,121 @@ You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters.
 
 - `resize` - Resize a Palette Virtual Cluster.
 
+
+#### Create
+
+Use the `create` subcommand to create a Palette Virtual Cluster. The `create` subcommand supports the following flags.
+
+| **Flag**              | **Description**                                                              | **Type**    |
+|-------------------|--------------------------------------------------------------------------|---------|
+| `--cluster-group-name` | The name of the Cluster Group. Defaults to the active cluster group.  | string |
+| `--cpu` | CPUs (optional). Defaults to 4 cores. (default 4) | int |
+| `--memory`| Memory (GB) (optional). Defaults to 4GB. (default 4) | int|
+| `--name` | The name of the Virtual Cluster. | string |
+| `--storage`|  Storage (GB) (optional). Defaults to 4GB. (default 4)| int |
+| `--tags`|  A list of tags seperated by commas  (optional) | strings |
+| `--help` | Help for the `create` subcommand. | - |
+
+Example
+
+```shell hideClipboard
+palette pde virtual-cluster create --cpu 4 --memory 4 --storage 4 --name dev-cluster --tags "environment:dev,cli,qa-team"
+``` 
+
+
+#### Delete
+
+Use the `delete` subcommand to delete a Palette Virtual Cluster. The `delete` subcommand requires the name of the Virtual Cluster to delete. Use the `--name` flag to specify the name of the Virtual Cluster to delete.
+
+| **Flag**              | **Description**                                                              | **Type**    |
+|-------------------|--------------------------------------------------------------------------|---------|
+| `--name` | The name of the Virtual Cluster. | string |
+| `--help` | Help for the `delete` subcommand. | - |
+
+
+
+#### Download Kubeconfig
+
+Use the `download-kubeconfig` subcommand to download the kubeconfig for virtual cluster. The `download-kubeconfig` subcommand requires the name of the Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
+
+| **Flag**    | **Description**    | **Type**    |
+|-------------------|--------------------------------------------------------------------------|---------|
+| `--name` | The name of the Virtual Cluster. | string |
+| `--path` | Download path for Kubeconfig file (optional). Default is `$HOME/.kube/<virtual-cluster-name>.conf` | string |
+| `--help` | Help for the `download-kubeconfig` subcommand. | - |
+
+
+Example
+
+```shell hideClipboard
+palette pde virtual-cluster download-kubeconfig --name cli-cluster --path ~/projects/spectro-cloud/kubeconfig/cli-cluster.config
+```
+```shell hideClipboard
+Downloaded kubeconfig for Virtual Cluster cli-cluster
+Kubeconfig location: /Users/demo/projects/spectro-cloud/kubeconfig/cli-cluster.config
+```
+
+#### Events
+
+Use the `events` subcommand to view event logs for a virtual cluster. The `events` subcommand requires the name of the Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
+
+| **Flag**    | **Description**    | **Type**    |
+|-------------|-----------------|---------|
+| `--name` | The name of the Virtual Cluster. | string |
+| `--limit`| Event limit (optional). Maximum number of events to return. (default 5) | int |
+| `--max-age`| Maximum event age in minutes (optional) (default -1) | int |
+| `--severity`| Event severity (optional). One or more of: [ Normal | Warning | Error ], comma-separated. | string
+| `--help` | Help for the `events` subcommand. | - |
+
+
+
+#### Lifecycle
+
+Use the `lifecycle` subcommand to pause or resume a virtual cluster. The `lifecycle` subcommand requires the name of the virtual cluster and the action type.  Use the `--name` flag to specify the name of the virtual cluster, and the `--action` flag to specify the action type. The action type can be `pause` or `resume`.
+
+| **Flag**    | **Description**    | **Type**    |
+|-------------|-----------------|---------|
+| `--name` | The name of the Virtual Cluster. | string |
+| `--action`| The action type. Allowed values are `pause` and `resume`. | string |
+| `--help` | Help for the `lifecycle` subcommand. | - |
+
+Example
+
+```shell hideClipboard
+palette pde virtual-cluster lifecycle --name cli-cluster --action pause
+```
+
+<br />
+
+```shell hideClipboard
+palette pde virtual-cluster lifecycle --name cli-cluster --action resume
+```
+
+#### List
+
+Use the `list` subcommand to list all available virtual clusters. No additional flags are required.
+
+#### Resize
+
+Use the `resize` subcommand to resize a virtual cluster. The `resize` subcommand requires the name of the virtual cluster and the new size.  Use the `--name` flag to specify the name of the virtual cluster, and the `--size` flag to specify the new size.
+
+| **Flag**    | **Description**    | **Type**    |
+|-------------|-----------------|---------|
+| `--name` | The name of the virtual cluster. | string |
+| `--cpu`| CPUs (optional). Defaults to 4 cores. (default 4) | int |
+| `--memory`| Memory (GB) (optional). Defaults to 4GB. (default 4) | int|
+| `--storage`|  Storage (GB) (optional). Defaults to 4GB. (default 4)| int |
+| `--help` | Help for the `resize` subcommand. | - |
+
+Example
+
+```shell hideClipboard
+palette pde virtual-cluster resize --name cli-cluster --cpu 4 --memory 4 --storage 4
+```
+```shell hideClipboard
+Resized Virtual Cluster cli-cluster
+```
+
 ## Project
 
 Use the `project` command to manage projects, the project scope for the CLI, and list all available projects.  The `project` command supports the following subcommands.
