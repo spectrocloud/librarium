@@ -10,29 +10,21 @@ tags: ["packs", "deprecation"]
 
 Palette supports two pack categories: *Infrastructure* and *Add-on*. Infrastructure packs are often sourced from third parties and are infrastructure-related or support critical container-based environments. Packs are used to create layers in cluster profiles. Infrastructure packs are grouped as follows:
 
-- Kubernetes
-
 - Operating System (OS)
-
+- Kubernetes
 - Container Network Interface (CNI)
-
 - Container Storage Interface (CSI)
 
 
 Add-on packs provide additional functionality that you can add to your cluster profile and are grouped as follows:
 
-- Load Balancer
-
-- Ingress
-
-- Logging
-
-- Monitoring
-
-- Security
-
 - Authentication
-
+- Ingress
+- Load Balancer
+- Logging
+- Monitoring
+- Security
+- Service Mesh
 - System Apps
 
 
@@ -40,12 +32,34 @@ Check out the [Packs List](integrations.mdx) document, where you can use the fil
 
 ## Pack Updates
 
-Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each infrastructure pack category. 
+Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each infrastructure pack category. For update information about verified packs, review [Palette Verified Packs](verified_packs.md).
+
+
+### OS Packs
+
+We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
+
+| **Update Version**       | **Schedule**           |
+|--------------------------|------------------------|
+| **Major**          | Added within eight weeks of release.  |
+| **Minor & Patch** | Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.    |
+
+<!-- - **Major versions** - Added within eight weeks of release.
+
+- **Patch and Minor versions**:  Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities. -->
 
 
 ### Kubernetes Packs
 
 We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follows:
+
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within eight weeks of a new Kubernetes release. |
+| **Patch** | Provided within eight weeks of a new Kubernetes release. |
+
+
 
 - **Major versions**: Assessed based on the extent of changes.
 
@@ -53,16 +67,6 @@ We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follow
 
 - **Patch versions**: Provided within four weeks of a new Kubernetes release.
 
-
-
-### OS Packs
-
-We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
-
-- **Major versions** - Added within eight weeks of release.
-
-
-- **Patch and Minor versions**:  Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.
 
 
 ### CNI Packs
