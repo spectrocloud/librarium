@@ -29,8 +29,8 @@ App Mode is available for the following Palette platforms.
 | Platform | Supported | Palette Version |
 |---|----|---|
 | SaaS | ✅| `v3.0.0` or greater. |
-| Self-hosted | ✅ | `3.4.0` or greater. |
-| Airgap Self-hosted | ❌| N/A.
+| Self-hosted | ✅ | `v3.4.0` or greater. |
+| Airgap Self-hosted | ✅ |`v4.0.0` or greater. |
 
 
 ## Manage Resources
