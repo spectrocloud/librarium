@@ -438,10 +438,62 @@ You can create an app profile config file with the `interactive` command and usi
 ```shell hideClipboard
 palette pde app-profile create interactive --config-only
 ```
-
+The configuration file will be created in the $HOME directory, under the `~/.palette/pde/app-profiles/` folder.
 
 :::
 
+
+##### Interactive
+
+Use the interactive subcommand to create an app profile in interactive mode. The `interactive` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--config-only`| Generate configuration file only. This command will not proceed with installation.     | boolean    |
+  | `--help` | Help for the `interactive` subcommand. | - |
+
+
+
+#### Delete
+
+Use the `delete` subcommand to delete an app profile. To delete an app profile, you must provide the name and version of the app profile. The `delete` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--name` | The name of the app profile. | string |
+  | `--version` | The version of the app profile. | string |
+  | `--help` | Help for the `delete` subcommand. | - |
+
+
+#### Describe
+
+Use the `describe` subcommand to describe an app profile. To describe an app profile, you must provide the name and version of the app profile. The `describe` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--name` | The name of the app profile. | string |
+  | `--version` | The version of the app profile. | string |
+  | `--help` | Help for the `describe` subcommand. | - |
+
+
+#### List
+
+Use the `list` subcommand to list all app profiles. The `list` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--name-filter` | Filter the list of app profiles by providing a name. | string |
+  | `--help` | Help for the `list` subcommand. | - |
+
+
+#### Versions
+
+Use the `versions` subcommand to list all versions of an app profile. To list all versions of an app profile, you must provide the name of the app profile. The `versions` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--name` | The name of the app profile. | string |
+  | `--help` | Help for the `versions` subcommand. | - |
 
 ### Cluster Group
 
@@ -450,6 +502,21 @@ Use the `cluster-group` command to change the cluster group that commands will t
   * `list`   -      List Palette Cluster Groups.
 
   * `switch` -      Switch your active Palette Cluster Group.
+
+
+  #### List
+
+  Use the `list` subcommand to list all Palette Cluster Groups. No additional flags are required.
+
+  #### Switch
+
+  Use the `switch` subcommand to switch your active cluster group. The `switch` subcommand supports the following flags.
+
+  | **Flag**              | **Description**   | **Type**    |
+  |-------------------|-----------------------|---------|
+  | `--name` | The name of the cluster group. | string |
+  | `--scope`| The scope of the cluster group. Allowed values are `project`, `tenant`, and `system`. | string |
+  | `--help` | Help for the `switch` subcommand. | - |
 
 
 ### Registry
