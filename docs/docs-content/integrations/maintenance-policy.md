@@ -57,15 +57,15 @@ We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follow
 |----------------------|------------------------|
 | **Major** | Assessed based on the extent of changes. |
 | **Minor** | Provided within eight weeks of a new Kubernetes release. |
-| **Patch** | Provided within eight weeks of a new Kubernetes release. |
+| **Patch** | Provided within four weeks of a new Kubernetes release. |
 
 
 
-- **Major versions**: Assessed based on the extent of changes.
+<!-- - **Major versions**: Assessed based on the extent of changes.
 
 - **Minor versions**: Provided within eight weeks of a new Kubernetes release.
 
-- **Patch versions**: Provided within four weeks of a new Kubernetes release.
+- **Patch versions**: Provided within four weeks of a new Kubernetes release. -->
 
 
 
@@ -73,34 +73,52 @@ We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follow
 
 We provide CNI pack updates as follows:
 
-- **Major versions**: Assessed based on the extent of changes.
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within six weeks of release. |
+| **Patch** | Provided within four weeks of release. |
+
+<!-- - **Major versions**: Assessed based on the extent of changes.
 
 - **Minor version**: Added within six weeks of release.
 
-- **Patch versions**: Added within four weeks of release.
+- **Patch versions**: Added within four weeks of release. -->
 
 
 ### CSI Packs
 
 We provide CSI pack updates as follows:
 
-- **Major versions**: Assessed based on the extent of changes.
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within six weeks of release. |
+| **Patch** | Provided within four weeks of release. |
+
+<!-- - **Major versions**: Assessed based on the extent of changes.
 
 - **Minor version**: Added within six weeks of release.
 
 - **Patch versions**: Added within four weeks of release.
-
+ -->
 
 ### Add-on Packs
 
 We provide add-on pack updates as follows:
 
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within six weeks of release. |
+| **Patch** | Provided within four weeks of release. |
 
-- **Major versions**: Assessed based on the extent of changes.
+
+<!-- - **Major versions**: Assessed based on the extent of changes.
 
 - **Minor version**: Added within six weeks of release.
 
-- **Patch versions**: Added within four weeks of release.
+- **Patch versions**: Added within four weeks of release. -->
 
 
 ## Pack Deprecations
