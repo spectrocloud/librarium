@@ -64,13 +64,7 @@ Vault integration has the following components:
 
 :::caution
 
-When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, insert the following fields under the `server` field in `values.yaml` for the Vault layer in your cluster profile. 
-
-```yaml
-server:
-    dataStorage:
-        storageClass: <storage class name>
-```
+When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, change the value of the field  `charts.vault.server.dataStorage.storageClass` in `values.yaml` for the Vault pack in your cluster profile from `null` to a storage class that meets your needs. Refer to [Kubernetes documentation on storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) for more details. 
 
 :::
 
