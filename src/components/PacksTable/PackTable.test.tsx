@@ -15,6 +15,7 @@ describe("FilteredTable Tests", () => {
       cloudTypesFormatted: "edge-native",
       version: "0.1.0",
       status: "deprecated",
+      prodStatus: "deprecated",
       packCreateDate: "2022-09-13",
       packLastModifiedDate: "2022-09-15",
       timeLastUpdated: "11 months",
@@ -30,6 +31,7 @@ describe("FilteredTable Tests", () => {
       cloudTypesFormatted: "eks",
       version: "1.0.0",
       status: "deprecated",
+      prodStatus: "deprecated",
       packCreateDate: "2021-04-21",
       packLastModifiedDate: "2021-05-07",
       timeLastUpdated: "2 years",
@@ -83,4 +85,21 @@ describe("FilteredTable Tests", () => {
       expect(screen.getByText("Failed to load Deprecated Packs")).toBeInTheDocument();
     });
   });
+
+  it("should properly format cloud types", async () => {
+    const customMockPacks = [
+      {
+        ...mockPacks[0],
+        cloudTypesFormatted: "eks,vsphere"
+      }
+    ];
+
+    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks }));
+    render(<FilteredTable />);
+
+    await waitFor(() => screen.getByText("Alpine"));
+    
+    expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
+  });
+
 });
