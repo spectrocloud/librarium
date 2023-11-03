@@ -11,14 +11,11 @@ Palette requires proper Amazon Web Services (AWS) permissions to operate and per
 The following policies include all the permissions needed for cluster provisioning with Palette.
  <br />
 
-* **PaletteControllersPolicy**
-
+* **PaletteControllerPolicy**
 
 * **PaletteControlPlanePolicy**
 
-
 * **PaletteNodesPolicy**
-
 
 * **PaletteDeploymentPolicy**
 
