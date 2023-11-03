@@ -89,6 +89,23 @@ If you don't want to use the Vault UI, you can also initialize and unseal Vault 
 
 :::
 
+### Terraform
+
+You can reference the Vault pack in Terraform with a data resource:
+
+```tf
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "pack-info" {
+  name         = "vault"
+  version      = "0.22.0"
+  type         = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
 </TabItem>
 
 <TabItem label="Deprecated" value="Deprecated">
