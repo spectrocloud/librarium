@@ -20,7 +20,7 @@ Verified packs are updated every six to eight weeks to ensure they are always cu
 
 Where relevant, any recently identified critical, high, or medium concerns will be addressed in an upcoming minor release, which occurs independent of Palette release timelines.
 
-To learn about our general pack maintenance policy, review the [Maintenancy Policy](maintenance-policy.md) reference.
+To learn about our general pack maintenance policy, review the [Maintenance Policy](maintenance-policy.md) reference.
 
 :::info
 
