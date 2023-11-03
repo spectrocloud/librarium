@@ -14,9 +14,9 @@ tags: ['packs', 'vault', 'security']
 
 Vault integration has the following components:
 
-* Vault server.
-* UI (Optional).
-* [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (Optional).
+* Vault server
+* UI (optional).
+* [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (optional).
 
 ## Versions Supported
 
@@ -51,7 +51,7 @@ When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you m
 HashiCorp provides many uses cases for Vault. For examples, refer to [HashiCorp Vault documentation](https://developer.hashicorp.com/vault/docs/use-cases). 
 
 
-#### Initialize and unseal Vault
+#### Initialize and Unseal Vault
 
 If you did not configure Vault to automatically initialize in the cluster profile, you need to initialize the first root token and keys that can be used to unseal Vault.
 You can do so by following these steps:
@@ -81,7 +81,7 @@ You can do so by following these steps:
     kubectl port-forward $APP_NAME 8200:8200 --namespace $VAULT_NAMESPACE
     ```
 
-8. Open your browser and visit https://localhost:8200/ui to access the Vault UI. You will receive a warning due to the usage of a self-signed certificate but you can ignore this warning. In the browser, follow the prompts on the UI to initialize your root token.
+8. Open your browser and access the [Vault UI](https://localhost:8200/ui. You will receive a warning due to using a self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
 
 :::tip
 
