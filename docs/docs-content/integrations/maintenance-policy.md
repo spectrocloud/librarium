@@ -20,12 +20,12 @@ Add-on packs provide additional functionality that you can add to your cluster p
 
 - Authentication
 - Ingress
-- Load Balancer
+- Load balancer
 - Logging
 - Monitoring
 - Security
-- Service Mesh
-- System Apps
+- Service mesh
+- System apps
 
 
 Check out the [Packs List](integrations.mdx) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
@@ -44,10 +44,6 @@ We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
 | **Major**          | Added within eight weeks of release.  |
 | **Minor & Patch** | Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.    |
 
-<!-- - **Major versions** - Added within eight weeks of release.
-
-- **Patch and Minor versions**:  Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities. -->
-
 
 ### Kubernetes Packs
 
@@ -60,15 +56,6 @@ We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follow
 | **Patch** | Provided within four weeks of a new Kubernetes release. |
 
 
-
-<!-- - **Major versions**: Assessed based on the extent of changes.
-
-- **Minor versions**: Provided within eight weeks of a new Kubernetes release.
-
-- **Patch versions**: Provided within four weeks of a new Kubernetes release. -->
-
-
-
 ### CNI Packs
 
 We provide CNI pack updates as follows:
@@ -78,12 +65,6 @@ We provide CNI pack updates as follows:
 | **Major** | Assessed based on the extent of changes. |
 | **Minor** | Provided within six weeks of release. |
 | **Patch** | Provided within four weeks of release. |
-
-<!-- - **Major versions**: Assessed based on the extent of changes.
-
-- **Minor version**: Added within six weeks of release.
-
-- **Patch versions**: Added within four weeks of release. -->
 
 
 ### CSI Packs
@@ -96,12 +77,6 @@ We provide CSI pack updates as follows:
 | **Minor** | Provided within six weeks of release. |
 | **Patch** | Provided within four weeks of release. |
 
-<!-- - **Major versions**: Assessed based on the extent of changes.
-
-- **Minor version**: Added within six weeks of release.
-
-- **Patch versions**: Added within four weeks of release.
- -->
 
 ### Add-on Packs
 
@@ -112,13 +87,6 @@ We provide add-on pack updates as follows:
 | **Major** | Assessed based on the extent of changes. |
 | **Minor** | Provided within six weeks of release. |
 | **Patch** | Provided within four weeks of release. |
-
-
-<!-- - **Major versions**: Assessed based on the extent of changes.
-
-- **Minor version**: Added within six weeks of release.
-
-- **Patch versions**: Added within four weeks of release. -->
 
 
 ## Pack Deprecations
