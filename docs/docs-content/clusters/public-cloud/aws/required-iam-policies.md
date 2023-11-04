@@ -9,7 +9,6 @@ sidebar_position: 40
 
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
 The following policies include all the permissions needed for cluster provisioning with Palette.
- <br />
 
 * **PaletteControllerPolicy**
 

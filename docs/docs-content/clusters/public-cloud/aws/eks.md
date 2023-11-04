@@ -22,7 +22,9 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - kubelogin installed. This is a [kubectl plugin](https://github.com/int128/kubelogin) for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl oidc-login`.
 
-- If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources:
+- To use secrets encryption during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](#enable-secrets-encryption-for-eks-cluster) for guidance.  
+
+- If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC. 
     - Virtual CPU (vCPU)
     - Virtual Private Cloud (VPC)
     - Elastic IP
@@ -30,9 +32,7 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
     - Elastic Load Balancers
     - Network Address Translation (NAT) Gateway
 
-    Palette does not create these resources if you specify an existing VPC.
-
-
+    
 :::info
 
 To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide.  Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. To learn more about the Tag Editor, refer to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
@@ -95,7 +95,7 @@ Use the following steps to deploy an EKS cluster on AWS.
   |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Public Access CIDRs** |This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Private Access CIDRs** |This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.<br /><br />To restrict network access, enter the IP address CIDR range that will provide access to the cluster. Although `0.0.0.0/0` is pre-populated in this field, only IPs that can reach the private endpoint are those within the VPC or any other connected VPCs. For example, while using `0.0.0.0/0` would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR `10.0.0.0/16` would limit traffic to an individual VPC. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
-  |**Enable Encryption**| To enable secret encryption, toggle the **Enable Encryption** option and use the **drop-down Menu** to the select the AWS Key Managment Service (KMS) key **ARN**. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.|
+  |**Enable Encryption**| Use this option for secrets encryption. You must have an existing AWS Key Managment Service (KMS) key you can use. Toggle the **Enable encryption** option and use the **drop-down Menu** in the **ARN** field to select the KMS key ARN.<br /><br />If you do not have a KMS key and want to create one to use this option, review [Enable Secrets Encryption for EKS Cluster](#enable-secrets-encryption-for-eks-cluster). Once your KMS key is created, return to this Cluster Config step to enable secrets encryption and specify the KMS key ARN. |
 
   :::caution
 
@@ -162,6 +162,8 @@ Use the following steps to deploy an EKS cluster on AWS.
   :::
 
 
+You can access your Kubernetes cluster by using the kubectl CLI. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+
 ### Validate
 
 You can validate your cluster is up and in **Running** state.
@@ -174,31 +176,83 @@ You can validate your cluster is up and in **Running** state.
 
 4. Ensure the **Cluster Status** field displays **Running**.
 
+<br />
 
-## EKS Cluster Secrets Encryption
+## Enable Secrets Encryption for EKS Cluster
 
 Palette encourages using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
 a defense-in-depth security strategy to protect sensitive data such as passwords, docker registry credentials, and Transport Layer Security (TLS) keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
 
+You can enable secrets encryption when you create an EKS cluster by toggling the **Enable encryption** button and providing the Amazon Resource Name (ARN) of the KMS key. The **Enable encryption** option is available on the cluster creation wizard's **Cluster Config** page for EKS.
+
 ### Prerequisites
 
-* KMS key created in the AWS account.
-* KMS key is of the type symmetric.
-* KMS key policy permits the following actions; encrypt and decrypt.
+- An AWS account added to Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
-### Configure KMS
+- IAM user or role has attached policies listed in [Required IAM Policies](required-iam-policies.md).
 
-The IAM user or IAM role that Palette is using must have the following IAM permissions.
+- A **PaletteControllersEKSPolicy** created in AWS and attached to the IAM user or role that Palette is using. To create this policy, refer to [Controllers EKS Policy](required-iam-policies.md#controllers-eks-policy).
 
-```json hideClipboard
-kms:CreateGrant,
-kms:ListAliases,
-kms:ListKeys,
-kms:DescribeKeys
-```
-Ensure the IAM role or IAM user can perform the required IAM permissions on the KMS key that will be used for EKS.
 
-You can enable secret encryption during the EKS cluster creation process by toggling the **Enable Encryption** button on and providing the Amazon Resource Name (ARN) of the encryption key. The encryption option is available on the cluster creation wizard's **Cluster Config** page. Review [EKS Cluster Encryption](#eks-cluster-secrets-encryption) for more details.
+### Configure KMS Key
+
+Use the following steps to configure a KMS key.
+
+1. In AWS, locate the Key Management Service. 
+
+2. Select the region where your Palette EKS cluster is deployed.
+
+:::caution
+
+Ensure you create the KMS key in the same region as your Palette EKS cluster. Alternatively, you can create a multi-region KMS key that can be used across different regions. To learn how to create a multi-region key, review Amazon’s [Multi-Region Keys in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) reference guide.
+
+::: 
+
+3. Create a key of type **Symmetric** and with usage **Encrypt and decrypt**.
+
+4. Ensure the IAM user or role that Palette is using has a policy attached with the following required IAM permissions. 
+
+  ```json hideClipboard
+  kms:CreateGrant,
+  kms:ListAliases,
+  kms:ListKeys,
+  kms:DescribeKeys
+  ```
+   
+   Example:
+
+   ```json
+   {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Action": [
+                "kms:ListKeys",
+                "kms:ListAliases",
+                "kms:DescribeKey",
+                "kms:CreateGrant"
+            ],
+            "Resource": "*"
+        }
+    ]
+  }
+   ```
+  
+If you need more guidance creating a KMS key, review the AWS [Creating KMS Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html) reference guide.
+
+### Validate
+
+You can verify the KMS key is integrated with Palette. When you deploy an EKS cluster on AWS and toggle the **Enable encryption** option at the Cluster Config step in the wizard, the KMS key ARN displays in the **drop-down Menu**. 
+
+<!-- You can verify the KMS key is integrated with Palette. 
+
+1. In Palette, return to the Cluster Config step in the wizard and toggle the **Enable encryption** option. Palette displays the **ARN** field. 
+
+2. Use the **drop-down Menu** to select the KMS key ARN.
+
+3. Continue configuring your EKS cluster. -->
 
 
 ## Resources
@@ -214,5 +268,3 @@ You can enable secret encryption during the EKS cluster creation process by togg
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings).
 
 - [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc)
-
-- [EKS Cluster Encryption](#eks-cluster-secrets-encryption) 
