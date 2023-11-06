@@ -195,13 +195,13 @@ Palette provides an **Enable encryption** option, which is only available during
 
 - An AWS KMS key created in the AWS region you intend to deploy cluster to with Palette.
 
-- Ensure the KMS key policy allows the IAM user or role Palette usage of the KMS key. The KMS key policy must allowed the IAM role or IAM user the following actions:
+- Ensure the KMS key policy allows the IAM user or role Palette usage of the KMS key. The KMS key policy must allow the IAM role or IAM user the following actions:
 
-      - "kms:Encrypt",
-      - "kms:Decrypt",
-      - "kms:ReEncrypt*",
-      - "kms:GenerateDataKey*",
-      - "kms:DescribeKey"
+      "kms:Encrypt",
+      "kms:Decrypt",
+      "kms:ReEncrypt*",
+      "kms:GenerateDataKey*",
+      "kms:DescribeKey"
 
   Check out the [Create a KMS Key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html) guide for more information on key policies.
 
