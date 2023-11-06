@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Palette Verified Packs"
-title: "Palette Verified Packs"
-description: "Identify Palette Verified Packs and ... ."
+sidebar_label: "Verified Packs"
+title: "Verified Packs"
+description: "Identify Verified Packs in Palette, which undergo active maintenance ."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
@@ -9,7 +9,7 @@ tags: ["packs", "verified"]
 ---
 
 
-Palette Verified Packs are packs that we at Spectro Cloud build and actively maintain with continuous updates and monitoring for security vulnerabilities. We use our extensive knowledge to ensure verified packs are configured according to best practices. We offer verified packs across the spectrum of a typical cluster profile stack - from the Operating System (OS) layer up to application layers. Verified packs are easily recognized in Palette by the green shield icon that distinguishes them from other packs. 
+Palette Verified Packs are packs we build and actively maintain with continuous updates and monitoring for security vulnerabilities. We use our extensive knowledge to ensure verified packs are configured according to best practices. We offer verified packs across the spectrum of a typical cluster profile stack - from the Operating System (OS) layer up to application layers. Verified packs are readily recognized in Palette by the green shield icon that distinguishes them from other packs. 
 
 ![A screenshot of several Verified Packs with a green shield icon.](/integrations_verified-packs-green-check.png)
 
