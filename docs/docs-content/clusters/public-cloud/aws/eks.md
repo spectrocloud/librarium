@@ -224,24 +224,30 @@ Ensure you create the KMS key in the same region as you intend to deploy EKS clu
    Example:
 
    ```json
-   {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "Statement1",
-            "Effect": "Allow",
-            "Action": [
-                "kms:ListKeys",
-                "kms:ListAliases",
-                "kms:DescribeKey",
-                "kms:CreateGrant"
-            ],
-            "Resource": "*"
-        }
-    ]
-  }
+  {
+      "Sid": "Allow Palette use of the KMS key",
+      "Effect": "Allow",
+      "Principal": {
+          "AWS": "arn:aws:iam::123456789:user/REPLACE_ME"
+      },
+      "Action": [
+          "kms:Encrypt",
+          "kms:Decrypt",
+          "kms:ReEncrypt*",
+          "kms:GenerateDataKey*",
+          "kms:DescribeKey"
+      ],
+      "Resource": "*"
+  },
    ```
+
+  :::info 
   
+  If you are using IAM to delegate access to the KMS key, you can continue to do so without modifying the KMS key 
+  policy. Ensure the Palette IAM User or role have the proper custom IAM policy attached that grants it access to the 
+  KMS key. Refer to the [Using IAM policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html) to learn more about managing KMS key with IAM policies. 
+  :::  
+
 If you need more guidance creating a KMS key, review the AWS [Creating KMS Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html) reference guide.
 
 ### Validate
