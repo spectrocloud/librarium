@@ -34,16 +34,16 @@ The table lists commonly used parameters you can configure when adding this pack
 
 | Parameters | Description | Default |
 -------------|-------------|---------|
-|`charts.server.ingress` | Enable ingress traffic to the Vault server. If you want to enable ingress traffic, make sure that `charts.server.serviceType` is set to `"ClusterIP"` or is left empty. | `false` |
-|`charts.global.tlsDisable` | Disable TLS for end-to-end encrypted transport. | `true` |
-|`charts.agent.enabled` | Enable vault agent injection to inject secrets into the pods. | `-` |
-|`charts.server.ha` | Enable high-availability mode to protect against outages by running multiple Vault servers. For more information, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/internals/high-availability). |  `false` |
-|`charts.server.dataStorage`| Controls the size, location, storage class of the persistent storage used by the Vault. | |
+|`charts.vault.server.ingress` | Enable ingress traffic to the Vault server. If you want to enable ingress traffic, make sure that `charts.server.serviceType` is set to `"ClusterIP"` or is left empty. | `False` |
+|`charts.vault.global.tlsDisable` | Disable TLS for end-to-end encrypted transport. | `True` |
+|`charts.vault.agent.enabled` | Enable vault agent injection to inject secrets into the pods. | `-` |
+|`charts.vault.server.ha` | Enable high-availability mode to protect against outages by running multiple Vault servers. For more information, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/internals/high-availability). |  `false` |
+|`charts.vault.server.dataStorage`| Controls the size, location, storage class of the persistent storage used by the Vault. | |
+|`charts.vault.server.dev` | Enable dev server mode. The dev server mode skips most setup required before you can begin to use a Vault server, including initialization and unseal, and stores all data in-memory. For more details about dev server mode, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/concepts/dev-server). | `False` |  
+|`charts.server.dev.devRootToken` | If you enabled dev server mode, this parameter specifies the root token for your Vault server. Root token has unlimited privileges and can do anything in Vault. | `"root"` |
 
 :::caution
-
-When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, change the value of the field  `charts.vault.server.dataStorage.storageClass` in `values.yaml` for the Vault pack in your cluster profile from `null` to a storage class that meets your needs. Refer to [Kubernetes documentation on storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) for more details. 
-
+Never run a dev mode server in production. It is insecure and loses data on every restart. 
 :::
 
 ### Usage
@@ -53,7 +53,9 @@ HashiCorp provides many uses cases for Vault. For examples, refer to [HashiCorp 
 
 #### Initialize and Unseal Vault
 
-If you did not configure Vault to automatically initialize in the cluster profile, you need to initialize the first root token and keys that can be used to unseal Vault.
+If you enabled dev server mode, you do not need to initialize Vault and it is already unsealed. Use the root token you configured in the `values.yaml` file to sign in to Vault directly.
+
+Before any operation can be performed on Vault, you need to initialize the first root token and keys that can be used to unseal Vault.
 You can do so by following these steps:
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -88,6 +90,17 @@ You can do so by following these steps:
 If you do not want to use the Vault UI, you can also initialize and unseal Vault using the Vault CLI or API. For more information, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run#initialize-and-unseal-vault).  
 
 :::
+
+#### Storage
+
+In a production Vault server, backend storage is on a data persistent layer, is untrusted and only stores encrypted data. In a dev mode Vault server, all data is stored in-memory and will be erased when Vault restarts. 
+
+:::caution
+
+When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, change the value of the field  `charts.vault.server.dataStorage.storageClass` in `values.yaml` for the Vault pack in your cluster profile from `null` to a storage class that meets your needs. Refer to [Kubernetes documentation on storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) for more details. 
+
+:::
+
 
 ### Terraform
 
