@@ -43,7 +43,7 @@ The table lists commonly used parameters you can configure when adding this pack
 |`charts.server.dev.devRootToken` | If you enabled dev server mode, this parameter specifies the root token for your Vault server. Root token has unlimited privileges and can do anything in Vault. | `"root"` |
 
 :::caution
-Never run a dev mode server in production. It is insecure and loses data on every restart. 
+Never operate a dev mode server in production. It is insecure and loses data on every restart. 
 :::
 
 ### Usage
