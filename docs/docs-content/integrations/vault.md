@@ -81,11 +81,11 @@ You can do so by following these steps:
     kubectl port-forward $APP_NAME 8200:8200 --namespace $VAULT_NAMESPACE
     ```
 
-8. Open your browser and access the [Vault UI](https://localhost:8200/ui. You will receive a warning due to using a self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
+8. Open your browser and access the [Vault UI](https://localhost:8200/ui). You will receive a warning due to using a self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
 
 :::tip
 
-If you don't want to use the Vault UI, you can also initialize and unseal Vault using the Vault CLI or API. For more information, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run#initialize-and-unseal-vault).  
+If you do not want to use the Vault UI, you can also initialize and unseal Vault using the Vault CLI or API. For more information, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run#initialize-and-unseal-vault).  
 
 :::
 
@@ -93,7 +93,7 @@ If you don't want to use the Vault UI, you can also initialize and unseal Vault 
 
 You can reference the Vault pack in Terraform with a data resource:
 
-```tf
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
