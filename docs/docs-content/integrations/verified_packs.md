@@ -24,6 +24,6 @@ To learn about our general pack maintenance policy, review the [Maintenance Poli
 
 :::info
 
-Your Spectro Cloud Palette subscription covers access to our Support team and product updates.
+Palette paid subscriptions cover access to our Support team and product updates.
 
 :::
