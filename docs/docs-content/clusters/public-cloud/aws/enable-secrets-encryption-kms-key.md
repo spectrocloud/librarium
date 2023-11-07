@@ -3,7 +3,7 @@ sidebar_label: "Enable Secrets Encryption for EKS Cluster"
 title: "Enable Secrets Encryption for EKS Cluster"
 description: "Learn how to create an AWS KMS key to encrypt Kubernetes secrets for EKS Clusters."
 hide_table_of_contents: false
-tags: ["public cloud", "aws", "eks"]
+tags: ["public cloud", "aws", "eks", "kms"]
 sidebar_position: 40
 ---
 

@@ -22,7 +22,7 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - kubelogin installed. This is a [kubectl plugin](https://github.com/int128/kubelogin) for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl oidc-login`.
 
-- To use secrets encryption during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.  
+- To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.  
 
 - If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC. 
     - Virtual CPU (vCPU)
@@ -75,7 +75,7 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
 
-  You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. To do this, follow the steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide. Alternatively, if you want to use AWS Identity and Access Management (IAM) for authentication, you will need to download the `aws-iam-authenticator` plugin. Review [Access EKS Cluster](#access-eks-cluster) for more information.
+  You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. To do this, follow the steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide. Alternatively, if you want to use AWS Identity and Access Management (IAM) for authentication, you will need to download the `aws-iam-authenticator` plugin. Review the [Access EKS Cluster](#access-eks-cluster) section for more information.
 
   :::caution
 
@@ -182,9 +182,15 @@ You can validate your cluster is up and in **Running** state.
 
 ## Access EKS Cluster
 
-You can access your Kubernetes cluster by using the kubectl CLI. To learn how to set up kubectl, refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+You can access your Kubernetes cluster by using the kubectl CLI. Palette automatically generates a kubeconfig file for your cluster that you can download and use to connect with your host cluster. To learn how to set up kubectl, check out the [Kubectl](../../cluster-management/palette-webctl.md) guide.
 
-You must also ...
+If you will be using AWS Identity and Access Management (IAM) for authentication, you will need to do the following: 
+
+- Install the `aws-iam-authenticator` plugin. Refer to the [Install aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) reference guide.
+
+- Link your AWS credentials locally to the EKS cluster. Refer to the [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) reference guide. 
+
+- Install and configure the AWS CLI. Refer to [Install or Update the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) reference guides.
 
 <!-- ## Enable Secrets Encryption for EKS Cluster
 
