@@ -20,7 +20,9 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create a key pair, refer to the [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
-- kubelogin installed. This is a [kubectl plugin](https://github.com/int128/kubelogin) for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl oidc-login`.
+- aws-iam-authenticator installed if you want to use AWS Identity and Access Management (IAM) to authenticate with your EKS cluster. For more information review the [Access EKS Cluster](#access-eks-cluster) section.
+
+<!-- - kubelogin installed. This is a [kubectl plugin](https://github.com/int128/kubelogin) for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl oidc-login`. -->
 
 - To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.  
 
