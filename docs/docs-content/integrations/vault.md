@@ -95,11 +95,10 @@ If you do not want to use the Vault UI, you can also initialize and unseal Vault
 
 In a production Vault server, backend storage is on a data persistent layer, is untrusted and only stores encrypted data. In a dev mode Vault server, all data is stored in-memory and will be erased when Vault restarts. 
 
-:::caution
+##### RKE2
 
 When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, change the value of the field  `charts.vault.server.dataStorage.storageClass` in `values.yaml` for the Vault pack in your cluster profile from `null` to a storage class that meets your needs. Refer to [Kubernetes documentation on storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) for more details. 
 
-:::
 
 
 ### Terraform
