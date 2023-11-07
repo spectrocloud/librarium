@@ -22,7 +22,7 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - kubelogin installed. This is a [kubectl plugin](https://github.com/int128/kubelogin) for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl oidc-login`.
 
-- To use secrets encryption during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](#enable-secrets-encryption-for-eks-cluster) for guidance.  
+- To use secrets encryption during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.  
 
 - If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC. 
     - Virtual CPU (vCPU)
@@ -75,13 +75,14 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
 
-  You can configure OpenID Connect (OIDC) at the Kubernetes layer. To configure OIDC for managed EKS clusters, follow the steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide.
+  You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. To do this, follow the steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide. Alternatively, if you want to use AWS Identity and Access Management (IAM) for authentication, you will need to download the `aws-iam-authenticator` plugin. Review [Access EKS Cluster](#access-eks-cluster) for more information.
 
   :::caution
 
   Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
 
   :::
+
 
 10. Click on **Next** to continue.
 
@@ -95,7 +96,7 @@ Use the following steps to deploy an EKS cluster on AWS.
   |**Cluster Endpoint Access**| This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Public Access CIDRs** |This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
   |**Private Access CIDRs** |This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.<br /><br />To restrict network access, enter the IP address CIDR range that will provide access to the cluster. Although `0.0.0.0/0` is pre-populated in this field, only IPs that can reach the private endpoint are those within the VPC or any other connected VPCs. For example, while using `0.0.0.0/0` would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR `10.0.0.0/16` would limit traffic to an individual VPC. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.|
-  |**Enable Encryption**| Use this option for secrets encryption. You must have an existing AWS Key Managment Service (KMS) key you can use. Toggle the **Enable encryption** option and use the **drop-down Menu** in the **ARN** field to select the KMS key ARN.<br /><br />If you do not have a KMS key and want to create one to use this option, review [Enable Secrets Encryption for EKS Cluster](#enable-secrets-encryption-for-eks-cluster). Once your KMS key is created, return to this Cluster Config step to enable secrets encryption and specify the KMS key ARN. |
+  |**Enable Encryption**| Use this option for secrets encryption. You must have an existing AWS Key Managment Service (KMS) key you can use. Toggle the **Enable encryption** option and use the **drop-down Menu** in the **ARN** field to select the KMS key ARN.<br /><br />If you do not have a KMS key and want to create one to use this option, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md). Once your KMS key is created, return to this Cluster Config step to enable secrets encryption and specify the KMS key ARN. |
 
   :::caution
 
@@ -147,7 +148,7 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 16. Schedule any backups you want Palette to perform. Review [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. RBAC configuration is required when you configure OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary. 
 
@@ -162,7 +163,8 @@ Use the following steps to deploy an EKS cluster on AWS.
   :::
 
 
-You can access your Kubernetes cluster by using the kubectl CLI. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+For information on how to access your cluster using the kubectl CLI, review [Access EKS Cluster](#access-eks-cluster).
+
 
 ## Validate
 
@@ -178,7 +180,13 @@ You can validate your cluster is up and in **Running** state.
 
 <br />
 
-## Enable Secrets Encryption for EKS Cluster
+## Access EKS Cluster
+
+You can access your Kubernetes cluster by using the kubectl CLI. To learn how to set up kubectl, refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+
+You must also ...
+
+<!-- ## Enable Secrets Encryption for EKS Cluster
 
 We encourage using AWS Key Management Service (KMS) to provide envelope encryption of Kubernetes secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters. This encryption is 
 a defense-in-depth security strategy to protect sensitive data such as passwords, docker registry credentials, and Transport Layer Security (TLS) keys stored as [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/). 
@@ -263,7 +271,7 @@ If you need more guidance creating a KMS key, review the AWS [Creating KMS Keys]
 
 ### Validate
 
-You can verify the KMS key is integrated with Palette. When you deploy an EKS cluster on AWS and toggle the **Enable encryption** option at the Cluster Config step in the wizard, the KMS key ARN displays in the **drop-down Menu**. 
+You can verify the KMS key is integrated with Palette. When you deploy an EKS cluster on AWS and toggle the **Enable encryption** option at the Cluster Config step in the wizard, the KMS key ARN displays in the **drop-down Menu**.  -->
 
 
 ## Resources
