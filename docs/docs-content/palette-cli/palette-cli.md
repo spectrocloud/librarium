@@ -21,6 +21,6 @@ To get started with the Palette CLI, check out the [Install](install-palette-cli
 - [Install](install-palette-cli.md)
 
 
-- [Commands](commands.md)
+- [Commands](./commands/commands.md)
 
 <br />
