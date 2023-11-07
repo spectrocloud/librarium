@@ -193,6 +193,10 @@ data "spectrocloud_pack_simple" "k8s" {
 }
 ```
 
+## Troubleshooting
+
+- When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. Refer to [the Vault pack page](./vault.md#parameters) for details.
+
 ## Resources
 
 - [RKE2 Documentation](https://docs.rke2.io)
