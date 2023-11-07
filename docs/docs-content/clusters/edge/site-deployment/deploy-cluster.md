@@ -80,7 +80,7 @@ You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.c
 
 ## Build Edge Artifacts
 
-In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use any image that matches the desired Kubernetes version you want to use with your cluster profile. 
+In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use any image that matches the desired Kubernetes version you want to use with your cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor architecture that has network connectivity to your VMware vCenter environment. 
 
 This tutorial builds and uses the provider image compatible with K3s v1.27.5. 
 
@@ -169,15 +169,9 @@ Use the following command to create the **user-data** file containing the tenant
       tooltipPlacement: "rightTop",
     },
     {
-      x: 500,
-      y: 224,
-      label: 2,
-      description: "Instructs the installer to turn the host machine off once the installation is complete.",
-    },
-    {
       x: 600,
       y: 300,
-      label: 3,
+      label: 2,
       description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
       tooltipPlacement: "rightTop",
     }
@@ -189,8 +183,8 @@ cat << EOF > user-data
 #cloud-config
 stylus:
   site:
-    paletteEndpoint: api.spectrocloud.com
     edgeHostToken: $token
+    paletteEndpoint: api.spectrocloud.com
 
 users:
   - name: kairos
