@@ -8,7 +8,7 @@ tags: ["palette-cli"]
 ---
 
 
-The `login` subcommand authenticates the Palette CLI with Palette. The `login` subcommand can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the subcommand with all the required values such as the API key, the organization ID, and the Palette URL.
+The `login` command authenticates the Palette CLI with Palette. The `login` command can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the command with all the required values such as the API key, the organization ID, and the Palette URL.
 
   <br />
 

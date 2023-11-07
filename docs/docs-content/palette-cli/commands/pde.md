@@ -7,7 +7,7 @@ sidebar_position: 40
 tags: ["palette-cli"]
 ---
 
-The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. 
+The `pde` command interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope. 
 
 The `pde` command exposes the following subcommands.
 
@@ -97,14 +97,14 @@ Use the `app` subcommand to manage Palette Apps deployments. The `app` subcomman
 
   | **Flag**              | **Description**   | **Type**    |
   | ------------------- | --------------------------------------------------------------------------|---------|
-  | `--name` | The name of the App deployment. Only Apps pending an App Profile update are eligble for an update. | string |
+  | `--name` | The name of the App deployment. Only Apps pending an App Profile update are eligible for an update. | string |
   | `--help` | Help for the `update` subcommand. | - |
 
 
 
 ## App Profile
 
-Use the `app-profile` command to manage app profiles. The `app-profile` command supports the following subcommands.
+Use the `app-profile` subcommand to manage app profiles. The `app-profile` command supports the following subcommands.
 
   * `create` - Create an app profile
 
@@ -139,7 +139,7 @@ Use the `app-profile` command to manage app profiles. The `app-profile` command 
 
 :::tip
 
-You can create an app profile config file with the `interactive` command and using the `--config-only` flag.
+You can create an app profile config file by using the `interactive` subcommand with the `--config-only` flag.
 
 ```shell hideClipboard
 palette pde app-profile create interactive --config-only
@@ -238,7 +238,7 @@ Use the `registry` subcommand to manage Palette Registries for App Mode. The `re
 
   ### Create
 
-  The `create` subcommand creates a Palette Registry. You can specify an Open Container Initiative (OCI) or a Helm registry. Use the subcommand `oci` or `helm` to specify the type of registry you want to create. The `create` subcommand supports the following subcommands. 
+  The `create` subcommand creates a Palette Registry. You can specify an Open Container Initiative (OCI) registry or a Helm registry. Use the subcommand `oci` or `helm` to specify the type of registry you want to create. The `create` subcommand supports the following subcommands. 
 
   * `oci` - Create an OCI registry. Use the following flags to create an OCI registry.
 
@@ -264,7 +264,7 @@ Use the `registry` subcommand to manage Palette Registries for App Mode. The `re
 
   ### List
 
-  The `list` subcommand lists all Palette Registries availble in App Mode. The `list` subcommand supports the following flags.
+  The `list` subcommand lists all Palette Registries available in App Mode. The `list` subcommand supports the following flags.
 
   | **Flag**  | **Description**      | **Type**    |
   |-----------|----------------------|---------|
@@ -274,7 +274,7 @@ Use the `registry` subcommand to manage Palette Registries for App Mode. The `re
 
   ### Delete
 
-  The `delete` subcommand deletes a Palette Registry from App Mode. You can specify an Open Container Initiative (OCI) or a Helm registry. Use the type flag `--type` to specify the type of registry you want to delete. The `delete` subcommand supports the following flags.
+  The `delete` subcommand deletes a Palette Registry from App Mode. You can specify an Open Container Initiative (OCI) registry or a Helm registry. Use the type flag `--type` to specify the type of registry you want to delete. The `delete` subcommand supports the following flags.
 
   | **Flag**              | **Description**                                                              | **Type**    |
   |-------------------|--------------------------------------------------------------------------|---------|
@@ -286,30 +286,30 @@ Use the `registry` subcommand to manage Palette Registries for App Mode. The `re
 
 You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters. Below is a list of the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
 
-- `create` - Create a Palette Virtual Cluster.
+- `create` - Create a virtual cluster.
 
 
-- `delete` - Delete a Palette Virtual Cluster.
+- `delete` - Delete a virtual cluster.
 
 
-- `download-kubeconfig` - Download the kubeconfig for a Palette Virtual Cluster.
+- `download-kubeconfig` - Download the kubeconfig for a virtual cluster.
 
 
-- `events` - View events for a Palette Virtual Cluster.
+- `events` - View events for a virtual cluster.
 
 
-- `lifecycle` - Pause or resume a Palette Virtual Cluster.
+- `lifecycle` - Pause or resume a virtual cluster.
 
 
-- `list` - List Palette Virtual Clusters.
+- `list` - List all virtual clusters.
 
 
-- `resize` - Resize a Palette Virtual Cluster.
+- `resize` - Resize a virtual cluster.
 
 
 ### Create
 
-Use the `create` subcommand to create a Palette Virtual Cluster. The `create` subcommand supports the following flags.
+Use the `create` subcommand to create a virtual cluster. The `create` subcommand supports the following flags.
 
 | **Flag**              | **Description**                                                              | **Type**    |
 |-------------------|--------------------------------------------------------------------------|---------|
@@ -318,7 +318,7 @@ Use the `create` subcommand to create a Palette Virtual Cluster. The `create` su
 | `--memory`| Memory (GB) (optional). Defaults to 4GB. (default 4) | int|
 | `--name` | The name of the Virtual Cluster. | string |
 | `--storage`|  Storage (GB) (optional). Defaults to 4GB. (default 4)| int |
-| `--tags`|  A list of tags seperated by commas  (optional) | strings |
+| `--tags`|  A list of tags separated by commas  (optional) | strings |
 | `--help` | Help for the `create` subcommand. | - |
 
 Example
