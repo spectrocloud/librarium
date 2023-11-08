@@ -96,20 +96,20 @@ git clone https://github.com/spectrocloud/CanvOS.git
 
 Change to the **CanvOS** directory.
 
-```
+```bash
 cd CanvOS
 ```
 
 
 View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 
-```
+```bash
 git tag
 ```
 
 Check out the newest available tag. This guide uses **v4.1.2** tag as an example. 
 
-```shell
+```bash
 git checkout v4.1.2
 ```
 
