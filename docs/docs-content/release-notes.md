@@ -21,7 +21,7 @@ This release contains the following minor bug fixes related to protected Helm Ch
 
 - The issue is fixed where Palette did not allow Helm charts from private or protected Helm Chart and OCI registries to be attached to cluster profiles. 
 
-- The issue is resolved where Palette did not display packs for selection that belonged to a protected Helm Chart registry, preventing cluster profile creation. 
+- An issue is fixed where Palette did not display packs for selection when they belonged to a protected Helm Chart registry, preventing cluster profile creation. 
 
 
 
