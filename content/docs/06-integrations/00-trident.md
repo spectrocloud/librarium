@@ -18,7 +18,7 @@ import Tooltip from "shared/components/ui/Tooltip";
 
 Astra Trident, is an open-source project backed and maintained by NetApp and is designed to provide persistence storage to containerized applications using industry-standard interfaces such as the Container Storage Interface (CSI).
 
-Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for Kubernetes workloads. It enables containerized applications to quickly and easily consume persistent storage from NetApp’s portfolio that includes ONTAP (AFF/FAS/Select/Cloud/Amazon FSx for NetApp ONTAP), Element software (NetApp HCI/SolidFire), as well as the Azure NetApp Files service, and Cloud Volumes Service on Google Cloud.
+Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for Kubernetes workloads. It enables containerized applications to quickly and with minimal overhead consume persistent storage from NetApp’s portfolio that includes ONTAP (AFF/FAS/Select/Cloud/Amazon FSx for NetApp ONTAP), Element software (NetApp HCI/SolidFire), as well as the Azure NetApp Files service, and Cloud Volumes Service on Google Cloud.
 
 # Versions Supported
 
@@ -41,7 +41,7 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 
 <InfoBox>
 
-The liveness/readiness probe port can be changed during installation using the `--probe-port` flag. It is important to make sure this port isn’t being used by another process on the worker nodes. 
+The liveness and readiness probe port can be changed during installation using the `--probe-port` flag. Ensure the probe port is not used by another process on the worker nodes. 
 
 </InfoBox>
 
@@ -82,9 +82,9 @@ After deploying Trident, you will need to create a backend and a storage class b
 
 <br />
 
-#### Create a backend.  
+#### Create a Storage Backend  
 
-Trident supports multiple backends and depending your storage backend, you will need to choose a backend that fits your needs. You can find example driver manifests [here](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples) and you will need to personalise them with your credentials and environment configurations. Here's an example with the ONTAP-NAS driver. 
+Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of different backends by reviewing the driver manifests examples in the official Trident [repository]((https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you decide to use one of the example configurations, make sure you update the configuration with your credentials and environment configurations. Here's an example with the ONTAP-NAS driver. 
 
 <br />
 
@@ -120,10 +120,9 @@ spec:
 
 <br />
 
-#### Create a storage class.  
+#### Create a Storage Class 
 
-Kubernetes allows us to bind statically and/or dynamically provisioned volumes to our Pods. Statically provisioned volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your NetApp storage and 
-Before you can request dynamically provisioned volumes, you will need to create a storage class. Storage classes 
+Kubernetes supports the ability to bind statically or dynamically provisioned volumes to Pods. Statically provisioned volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your NetApp storage. You must create a storage class before you can request dynamically provisioned volumes. Storage classes 
 
 <br />
 
@@ -198,6 +197,13 @@ spec:
 </Tabs>
 
 # References
+
 - [NetApp Astra Trident Docs](https://docs.netapp.com/us-en/trident/index.html)
+
+
 - [Necessary tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools)
+
+
 - [Trident Github](https://github.com/NetApp/trident)
+
+<br />
