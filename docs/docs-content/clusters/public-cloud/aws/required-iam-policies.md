@@ -860,3 +860,34 @@ roleName: "custom-ng-role"
   roleAdditionalPolicies:
   - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 ```
+
+
+## Roles and Policies for EKS 
+
+When you deploy an EKS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster, and the other IAM role for the worker node group.
+
+The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM role is named as `ng-role_worker-pool-[random-string]`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role. 
+
+|**Policy name**|**Type**|Attached to the cluster's IAM role?|Attached to the node group's IAM role?|
+|---|---|---|---|
+|PaletteBackupRestore| Customer-managed|✅ |✅ |
+|PaletteControlPlanePolicy| Customer-managed|✅ |✅ |
+|PaletteControllerPolicy| Customer-managed|✅ |✅ |
+|PaletteDeploymentPolicy| Customer-managed|✅ |✅ |
+|PaletteNodesPolicy| Customer-managed|✅ |✅ |
+|AmazonEKSClusterPolicy|AWS managed|✅ | ❌ |
+|AmazonEBSCSIDriverPolicy|AWS managed|✅ |✅ |
+|AmazonEC2ContainerRegistryReadOnly|AWS managed| ❌ |✅ |
+|AmazonEKS_CNI_Policy|AWS managed| ❌ |✅ |
+|AmazonEKSWorkerNodePolicy|AWS managed| ❌ |✅ |
+|AmazonSSMManagedInstanceCore|AWS managed| ❌ |✅ |
+
+
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail due to the IAM role policy limit.
+
+
+:::info
+
+The AmazonEBSCSIDriverPolicy policy is attached if you selected the Amazon CSI pack in your cluster profile. This IAM policy allows the CSI driver service account to make API calls to the AWS EC2 service.
+
+:::
