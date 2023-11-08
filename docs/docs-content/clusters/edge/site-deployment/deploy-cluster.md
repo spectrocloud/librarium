@@ -80,15 +80,15 @@ You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.c
 
 ## Build Edge Artifacts
 
-In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile. 
+In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use any image that matches the desired Kubernetes version you want to use with your cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor architecture that has network connectivity to your VMware vCenter environment. 
 
-This tutorial builds and uses the provider image compatible with K3s v1.25.2. 
+This tutorial builds and uses the provider image compatible with K3s v1.27.5. 
 
 ### Check Out Starter Code
 
 Issue the following and subsequent command-line instructions on your Linux machine, which this tutorial refers to as the development environment.
 
-Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts. 
+Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts.
 
 ```bash
 git clone https://github.com/spectrocloud/CanvOS.git
@@ -100,17 +100,17 @@ Change to the **CanvOS** directory.
 cd CanvOS
 ```
 
-View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
-<br />
+
+View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 
 ```bash
 git tag
 ```
 
-Check out the newest available tag. This guide uses **v3.4.3** tag as an example. 
+Check out the newest available tag. This guide uses **v4.1.2** tag as an example. 
 
-```shell
-git checkout v3.4.3
+```bash
+git checkout v4.1.2
 ```
 
 ## Define Arguments
@@ -126,7 +126,7 @@ export CUSTOM_TAG=demo
 
 Issue the command below to create the **.arg** file with the custom tag. The remaining arguments will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. The default ttl.sh image registry is free and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will expire after the 24 hrs time limit. 
 
-Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the **.arg.template** sample file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values. 
+Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values. 
 
 ```bash
 cat << EOF > .arg
@@ -137,8 +137,8 @@ IMAGE_REPO=ubuntu
 OS_VERSION=22
 K8S_DISTRIBUTION=k3s
 ISO_NAME=palette-edge-installer
-PE_VERSION=$(git describe --abbrev=0 --tags)
 ARCH=amd64
+UPDATE_KERNEL=false
 EOF
 ```
 
@@ -180,15 +180,9 @@ Use the following command to create the **user-data** file containing the tenant
       tooltipPlacement: "rightTop",
     },
     {
-      x: 500,
-      y: 224,
-      label: 2,
-      description: "Instructs the installer to turn the host machine off once the installation is complete.",
-    },
-    {
       x: 600,
       y: 300,
-      label: 3,
+      label: 2,
       description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
       tooltipPlacement: "rightTop",
     }
@@ -201,8 +195,8 @@ cat << EOF > user-data
 stylus:
   site:
     edgeHostToken: $token
-install:
-  poweroff: true
+    paletteEndpoint: api.spectrocloud.com
+
 users:
   - name: kairos
     passwd: kairos
@@ -224,9 +218,9 @@ The expected output should show that the `edgeHostToken` and login credentials f
 #cloud-config
 stylus:
   site:
+    paletteEndpoint: api.spectrocloud.com
     edgeHostToken: 62ElvdMeX5MdOESgTleBjjKQg8YkaIN3
-install:
-  poweroff: true
+
 users:
   - name: kairos
     passwd: kairos
@@ -263,7 +257,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v3.4.3
+  system.peVersion: v4.1.2
   system.customTag: demo
   system.osVersion: 22
 ```
@@ -298,18 +292,30 @@ docker images --filter=reference='*/*:*demo'
 
 ```hideClipboard bash {3,4}
 REPOSITORY      TAG                      IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.24.6-v3.4.3-demo   3a672a023bd3   45 minutes ago   4.61GB
-ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
+ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo               b25cfbaadd79   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo_linux_amd64   b25cfbaadd79   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.26.8-v4.1.2-demo                f2d870f3b8bd   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.26.8-v4.1.2-demo_linux_amd64    f2d870f3b8bd   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.27.2-v4.1.2-demo                6df130ae97e2   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.27.2-v4.1.2-demo_linux_amd64    6df130ae97e2   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.26.4-v4.1.2-demo                a14409825650   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.26.4-v4.1.2-demo_linux_amd64    a14409825650   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.27.5-v4.1.2-demo                bee555567baf   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.27.5-v4.1.2-demo_linux_amd64    bee555567baf   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.25.2-v4.1.2-demo                9c465e51a671   2 hours ago   4.1GB
+ttl.sh/ubuntu   k3s-1.25.2-v4.1.2-demo_linux_amd64    9c465e51a671   2 hours ago   4.1GB
+ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo                6a56cdd58c0b   2 hours ago   4.1GB
+ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo_linux_amd64    6a56cdd58c0b   2 hours ago   4.1GB
 ```
 
 ## Push Provider Images
 
 Push the provider images to the image registry indicated in the **.arg** file so that you can reference the provider image later in your cluster profile. 
 
-Since we used the provider image compatible with K3s v1.25 in the cluster profile, you would use the following command to push the provider image compatible with K3s v1.25 to the image registry. If you want to use the other provider image compatible with K3s v1.24 instead, push that version to the image registry. The example below and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free and does not require you to sign up to use it. Images pushed to ttl.sh are ephemeral and will expire after 24 hours.  
+Since we used the provider image compatible with K3s v1.27 in the cluster profile, you would use the following command to push the provider image compatible with K3s v1.27 to the image registry. If you want to use the other provider image, push that version to the image registry. The example below and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free and does not require you to sign up to use it. Images pushed to ttl.sh are ephemeral and will expire after 24 hours.  
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
+docker push ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
 ```
 
 :::caution
@@ -389,7 +395,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 - The `--env-file` option reads the **.packerenv** file.
 
 
-- The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.7`.
+- The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.8`.
 
 
 - The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
@@ -423,7 +429,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 
   :::info
 
-  Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer script, you must open a bash session into the container using the `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.7 bash` command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build process.   
+  Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer script, you must open a bash session into the container using the `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.8 bash` command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build process.   
 
   :::
 
@@ -434,7 +440,7 @@ Issue the following command to trigger the Packer build process to create a VM t
 docker run --interactive --tty --rm \
   --env-file .packerenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.0.7 \
+  ghcr.io/spectrocloud/tutorials:1.0.8 \
   sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
@@ -490,7 +496,7 @@ cat .goenv
 
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
 
-- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.0.7` tutorials container.
+- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.0.8` tutorials container.
 
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's **edge/vmware/clone_vm_template/** directory and invokes the **deploy-edge-host.sh** shell script. 
@@ -531,7 +537,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 
 :::info
 
-Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the previous step if it is still active, or you can open another bash session into the container using the `docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.7 bash` command. If you use an existing container bash session, create the **.goenv** file described above and source it in your container environment. Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the `./deploy-edge-host.sh` command to deploy the VMs. 
+Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the previous step if it is still active, or you can open another bash session into the container using the `docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.8 bash` command. If you use an existing container bash session, create the **.goenv** file described above and source it in your container environment. Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the `./deploy-edge-host.sh` command to deploy the VMs. 
 
 :::
 
@@ -540,7 +546,7 @@ Issue the following command to clone the VM template and provision three VMs.
 ```bash
 docker run -it --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.0.7 \
+  ghcr.io/spectrocloud/tutorials:1.0.8 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -634,7 +640,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v3.4.3
+  system.peVersion: v4.1.2
   system.customTag: demo
   system.osVersion: 22
 ``` 
@@ -653,10 +659,10 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
-|Kubernetes|Public Repo|Palette Optimized K3s|`1.25.x`|
+|Kubernetes|Public Repo|Palette Optimized K3s|`1.27.x`|
 
 
-Select the K3s version 1.25.x. 1.25.X because earlier in this tutorial, you pushed a provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md).
+Select the K3s version 1.27.x. 1.27.X because earlier in this tutorial, you pushed a provider image compatible with K3s v1.27.5 to the *ttl.sh* image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md).
 
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom CNI. 
@@ -868,7 +874,7 @@ Switch back to the **CanvOS** directory in the Linux development environment con
 
 ```bash
 docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.0.7 \
+  ghcr.io/spectrocloud/tutorials:1.0.8 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
@@ -890,8 +896,20 @@ docker images
 Note the provider image name and tags, and use the following command syntax to remove all provider images.
 
 ```bash
-docker image rm --force ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
-docker image rm --force ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
+docker rmi ttl.sh/ubuntu:k3s-1.25.13-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.25.13-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.26.8-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.26.8-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.26.4-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.26.4-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.25.2-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.25.2-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.24.6-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.24.6-v4.1.2-demo_linux_amd64
 ```
 
 ### Delete VMware vSphere Resources

@@ -10,93 +10,83 @@ tags: ["packs", "deprecation"]
 
 Palette supports two pack categories: *Infrastructure* and *Add-on*. Infrastructure packs are often sourced from third parties and are infrastructure-related or support critical container-based environments. Packs are used to create layers in cluster profiles. Infrastructure packs are grouped as follows:
 
-- Kubernetes
-
 - Operating System (OS)
-
+- Kubernetes
 - Container Network Interface (CNI)
-
 - Container Storage Interface (CSI)
 
 
 Add-on packs provide additional functionality that you can add to your cluster profile and are grouped as follows:
 
-- Load Balancer
-
-- Ingress
-
-- Logging
-
-- Monitoring
-
-- Security
-
 - Authentication
-
-- System Apps
+- Ingress
+- Load balancer
+- Logging
+- Monitoring
+- Security
+- Service mesh
+- System apps
 
 
 Check out the [Packs List](integrations.mdx) document, where you can use the filter buttons to display a list of Palette packs in each category and learn about the individual packs.
 
 ## Pack Updates
 
-Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each infrastructure pack category. 
-
-
-### Kubernetes Packs
-
-We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follows:
-
-- **Major versions**: Assessed based on the extent of changes.
-
-- **Minor versions**: Provided within eight weeks of a new Kubernetes release.
-
-- **Patch versions**: Provided within four weeks of a new Kubernetes release.
-
+Packs undergo rigorous vulnerability scans and penetration testing before they become available in Palette. The following sections describe our update schedule for each infrastructure pack category. For update information about verified packs, review [Palette Verified Packs](verified_packs.md).
 
 
 ### OS Packs
 
 We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
 
-- **Major versions** - Added within eight weeks of release.
+| **Update Version**       | **Schedule**           |
+|--------------------------|------------------------|
+| **Major**          | Added within eight weeks of release.  |
+| **Minor & Patch** | Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.    |
 
 
-- **Patch and Minor versions**:  Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot capabilities.
+### Kubernetes Packs
+
+We provide Cloud Native Computing Foundation (CNCF) Kubernetes updates as follows:
+
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within eight weeks of a new Kubernetes release. |
+| **Patch** | Provided within four weeks of a new Kubernetes release. |
 
 
 ### CNI Packs
 
 We provide CNI pack updates as follows:
 
-- **Major versions**: Assessed based on the extent of changes.
-
-- **Minor version**: Added within six weeks of release.
-
-- **Patch versions**: Added within four weeks of release.
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within six weeks of release. |
+| **Patch** | Provided within four weeks of release. |
 
 
 ### CSI Packs
 
 We provide CSI pack updates as follows:
 
-- **Major versions**: Assessed based on the extent of changes.
-
-- **Minor version**: Added within six weeks of release.
-
-- **Patch versions**: Added within four weeks of release.
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within six weeks of release. |
+| **Patch** | Provided within four weeks of release. |
 
 
 ### Add-on Packs
 
 We provide add-on pack updates as follows:
 
-
-- **Major versions**: Assessed based on the extent of changes.
-
-- **Minor version**: Added within six weeks of release.
-
-- **Patch versions**: Added within four weeks of release.
+| **Update Version**   | **Schedule**           |
+|----------------------|------------------------|
+| **Major** | Assessed based on the extent of changes. |
+| **Minor** | Provided within six weeks of release. |
+| **Patch** | Provided within four weeks of release. |
 
 
 ## Pack Deprecations
