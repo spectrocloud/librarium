@@ -828,7 +828,7 @@ The following are important points to be aware of.
 
 :::
 
-## Global Role Additional Policies:
+## Global Role Additional Policies
 
 There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
@@ -841,3 +841,62 @@ roleName: "custom-ng-role"
   roleAdditionalPolicies:
   - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 ```
+
+
+## Roles and Policies
+
+Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you deploy, either AWS EKS or IaaS (using EC2 instances), Palette creates and attaches different IAM roles and policies.
+
+Select the tab below to review the IAM roles and policies attached to the cluster's IAM role and the node group's IAM role.
+
+
+<Tabs queryString="service">
+<TabItem label="EKS" value="eks">
+
+When you deploy an EKS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster, and the other IAM role for the worker node group.
+
+The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM role is named as `ng-role_worker-pool-[random-string]`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role. 
+
+|**Policy Name**|**Type**|**Attached to the cluster's IAM role?**|**Attached to the node group's IAM role?**| **Description** |
+|---|---|---|---|---|
+|AmazonEKSClusterPolicy|AWS managed|✅ | ❌ | Provides the cluster permissision to manage compute resources. | 
+|AmazonEC2ContainerRegistryReadOnly|AWS managed| ❌ |✅ | Provides the node group permission to pull images from Amazon ECR. |
+|AmazonEKS_CNI_Policy|AWS managed| ❌ |✅ | Provides the node group permission to manage network resources. |
+|AmazonEKSWorkerNodePolicy|AWS managed| ❌ |✅ | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.|
+|AmazonSSMManagedInstanceCore|AWS managed| ❌ |✅ | The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality. |
+
+
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. 
+
+
+</TabItem>
+<TabItem label="IaaS" value="iaas">
+
+
+When you deploy an IaaS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster control nodes, and the other IAM role for the worker nodes.
+
+The control plane nodes IAM role is named `control-plane.cluster-api-provider-aws.sigs.k8s.io`, and the node group's IAM role is named as `nodes.cluster-api-provider-aws.sigs.k8s.io`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role. 
+
+|**Policy name**|**Type**|**Attached to the control plane IAM role?**|**Attached to the node group's IAM role?**| **Description** |
+|---|---|---|---|--|
+| control-plane.cluster-api-provider-aws.sigs.k8s.io | Customer-managed|✅ | ❌ | Provides the control plane nodes access to compute services such as EC, autoscaling, and more.|
+| controllers-eks.cluster-api-provider-aws.sigs.k8s.io | Customer-managed|✅ | ❌ | Provides the control plane nodes access to EKS services and AWS SSM.|
+| controllers.cluster-api-provider-aws.sigs.k8s.io | Customer-managed | ✅ | ❌ | Provides the control plane nodes access to network resources, S3, and other services. |
+| nodes.cluster-api-provider-aws.sigs.k8s.io | Customer-managed | ✅ | ✅  | Provides access to services EC2 and ECR. |
+|AmazonEKSWorkerNodePolicy|AWS managed| ❌ |✅ | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.|
+
+
+
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. Other policies may also be attached to the IAM roles depending on the storage layer and network layer pack you choose.
+
+
+</TabItem>
+
+</Tabs>
+
+
+:::caution
+
+Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail due to the IAM role policy limit. Request a [service quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for the AWS account to increase the limit.
+
+:::
