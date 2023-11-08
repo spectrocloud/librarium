@@ -11,6 +11,20 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## November 7, 2023 - Release 4.1.9
+
+This release contains the following minor bug fixes related to protected Helm Chart and Open Container Initiative (OCI) registries.
+
+### Bug Fixes
+
+- An issue where Palette was displaying the UID of protected Helm Chart and Open Container Initiative (OCI) registries instead of the expected registry name is now corrected.
+
+- The issue is fixed where Palette did not allow Helm charts from private or protected Helm Chart and OCI registries to be attached to cluster profiles. 
+
+- An issue is fixed where Palette did not display packs for selection when they belonged to a protected Helm Chart registry, preventing cluster profile creation. 
+
+
+
 ## October 22, 2023 - Release 4.1.0
 
 Palette 4.1.0 introduces several new features and enhancements to the platform. New features, such as static IP address for Edge hosts and node repavement warnings, are designed to continue to help you manage Kubernetes clusters with confidence. The new built-in notification system for our SaaS platform is another addition designed to help you stay up-to-date with announcements and changes by bringing the news directly to you. 
