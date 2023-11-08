@@ -16,6 +16,7 @@ tags: ["release-notes"]
 This release contains the following minor bug fixes related to protected Helm Chart and Open Container Initiative (OCI) registries.
 
 ### Bug Fixes
+
 - An issue where Palette was displaying the UID of protected Helm Chart and Open Container Initiative (OCI) registries instead of the expected registry name is now corrected.
 
 - The issue is fixed where Palette did not allow Helm charts from private or protected Helm Chart and OCI registries to be attached to cluster profiles. 
