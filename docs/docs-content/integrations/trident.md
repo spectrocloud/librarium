@@ -36,7 +36,7 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
   | 8443  | Backchannel HTTPS                                            |
   | 8001  | Prometheus metrics endpoint                                  |
   | 8000  | Trident REST server                                          |
-  | 17546 | Liveness/readiness probe port used by Trident daemonset pods |
+  | 17546 | Supports liveness and readiness probe used by Trident DaemonSet pods |
 
   <br />
 
@@ -53,7 +53,7 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 | ``imageRegistry`` | Identifies the registry for the trident-operator, trident, and other images.  Leave empty to accept the default. |
 | ``imagePullPolicy`` | Sets the image pull policy for the trident-operator. Default: `IfNotPresent` |
 | ``imagePullSecrets`` | Sets the image pull secrets for the trident-operator, trident, and other images. |
-| ``kubeletDir`` | Allows overriding the host location of kubelet's internal state.  Default: `/var/lib/kubelet` |
+| ``kubeletDir`` | Allows overriding the host location of Kubelet's internal state.  Default: `/var/lib/kubelet` |
 | ``operatorDebug`` | Allows enabling debug logging in trident-operator. Default: `false` |
 | ``operatorImage`` | Allows the complete override of the image for trident-operator. |
 | ``operatorImageTag`` | Allows overriding the tag of the trident-operator image. |
@@ -64,8 +64,8 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 | ``tridentSilenceAutosupport`` | Allows disabling Trident's periodic Autosupport reporting. Default: `false` |
 | ``tridentAutosupportImage`` | Allows the complete override of the image for Trident's Autosupport container. |
 | ``tridentAutosupportImageTag`` | Allows overriding the tag of the image for Trident's Autosupport container. Default: `23.01` |
-| ``tridentAutosupportProxy`` | Allows Trident's autosupport container to phone home via an HTTP proxy. |
-| ``tridentLogFormat`` | Sets the Trident logging format (text or json). Default: `text` |
+| ``tridentAutosupportProxy`` | Allows Trident's Autosupport container to phone home via an HTTP proxy. |
+| ``tridentLogFormat`` | Sets the Trident logging format (text or JSON). Default: `text` |
 | ``tridentDisableAuditLog`` | Disables Trident's audit logger. Default: `true` |
 | ``tridentImage`` | Allows the complete override of the image for Trident. |
 | ``tridentImageTag`` | Allows overriding the tag of the image for Trident. |
@@ -164,7 +164,7 @@ spec:
 
 #### Deploy a Pod and Mount the Volume.  
 
-The following code snippet is an example of a pod deployment. The Pod contains an NGINX container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the Pod and provide persistent storage to this application.    
+The following code snippet is an example of a pod deployment. The Pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the Pod and provide persistent storage to this application.    
 
 <br />
 
@@ -206,7 +206,7 @@ spec:
   | 8443  | Backchannel HTTPS                                            |
   | 8001  | Prometheus metrics endpoint                                  |
   | 8000  | Trident REST server                                          |
-  | 17546 | Liveness/readiness probe port used by Trident daemonset pods |
+  | 17546 | Supports liveness and readiness probe used by Trident DaemonSet pods |
 
   <br />
 
@@ -223,7 +223,7 @@ spec:
 | ``imageRegistry`` | Identifies the registry for the trident-operator, trident, and other images.  Leave empty to accept the default. |
 | ``imagePullPolicy`` | Sets the image pull policy for the trident-operator. Default: `IfNotPresent` |
 | ``imagePullSecrets`` | Sets the image pull secrets for the trident-operator, trident, and other images. |
-| ``kubeletDir`` | Allows overriding the host location of kubelet's internal state.  Default: `/var/lib/kubelet` |
+| ``kubeletDir`` | Allows overriding the host location of Kubelet's internal state.  Default: `/var/lib/kubelet` |
 | ``operatorDebug`` | Allows enabling debug logging in trident-operator. Default: `false` |
 | ``operatorImage`` | Allows the complete override of the image for trident-operator. |
 | ``operatorImageTag`` | Allows overriding the tag of the trident-operator image. |
@@ -234,8 +234,8 @@ spec:
 | ``tridentSilenceAutosupport`` | Allows disabling Trident's periodic Autosupport reporting. Default: `false` |
 | ``tridentAutosupportImage`` | Allows the complete override of the image for Trident's Autosupport container. |
 | ``tridentAutosupportImageTag`` | Allows overriding the tag of the image for Trident's Autosupport container. Default: `23.01` |
-| ``tridentAutosupportProxy`` | Allows Trident's autosupport container to phone home via an HTTP proxy. |
-| ``tridentLogFormat`` | Sets the Trident logging format (text or json). Default: `text` |
+| ``tridentAutosupportProxy`` | Allows Trident's Autosupport container to phone home via an HTTP proxy. |
+| ``tridentLogFormat`` | Sets the Trident logging format (text or JSON). Default: `text` |
 | ``tridentDisableAuditLog`` | Disables Trident's audit logger. Default: `true` |
 | ``tridentImage`` | Allows the complete override of the image for Trident. |
 | ``tridentImageTag`` | Allows overriding the tag of the image for Trident. |
@@ -334,7 +334,7 @@ spec:
 
 #### Deploy a Pod and Mount the Volume.  
 
-The following code snippet is an example of a pod deployment. The Pod contains an NGINX container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the Pod and provide persistent storage to this application.    
+The following code snippet is an example of a pod deployment. The Pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the Pod and provide persistent storage to this application.    
 
 <br />
 
@@ -373,5 +373,5 @@ spec:
 - [Necessary tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools)
 
 
-- [Trident Github](https://github.com/NetApp/trident)
+- [Trident GitHub](https://github.com/NetApp/trident)
 
