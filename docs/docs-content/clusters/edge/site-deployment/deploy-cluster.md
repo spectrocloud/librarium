@@ -88,11 +88,22 @@ This tutorial builds and uses the provider image compatible with K3s v1.27.5.
 
 Issue the following and subsequent command-line instructions on your Linux machine, which this tutorial refers to as the development environment.
 
-Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts, change to the **CanvOS** directory, and view the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
+Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts.
 
 ```bash
 git clone https://github.com/spectrocloud/CanvOS.git
+```
+
+Change to the **CanvOS** directory.
+
+```
 cd CanvOS
+```
+
+
+View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
+
+```
 git tag
 ```
 
