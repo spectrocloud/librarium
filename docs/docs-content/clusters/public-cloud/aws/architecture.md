@@ -46,6 +46,7 @@ Palette also supports deploying and managing AWS Elastic Kubernetes Service (EKS
 You can disable the OIDC associate provider if the service provider restricts the cluster deployment with the OIDC associate provider in the enabled state. Customize the EKS Kubernetes pack YAML values with the following option:
 
 ```yaml
+managedControlPlane:
   disableAssociateOIDCProvider: true
 ```
 
