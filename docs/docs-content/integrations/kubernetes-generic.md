@@ -194,7 +194,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
       oidc-extra-scope: profile,email,openid
   ```
 
-
 </TabItem>
 
 <TabItem label="Amazon EKS" value="Amazon EKS Setup">
@@ -229,7 +228,10 @@ clientConfig:
 
 3. Provide third-party OIDC IDP details.
 
-Alternatively, to use AWS Identity and Access Management (IAM) for authentication, refer to [Access EKS Cluster](../clusters/public-cloud/aws/eks.md/#access-eks-cluster).
+
+
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
+
 
 </TabItem>
 </Tabs>
@@ -406,6 +408,7 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
   ```
 
 
+
 </TabItem>
 
 <TabItem label="Amazon EKS" value="Amazon EKS Setup">
@@ -439,7 +442,9 @@ clientConfig:
 
 3. Provide third-party OIDC IDP details.
 
-Alternatively, to use AWS Identity and Access Management (IAM) for authentication, refer to [Access EKS Cluster](../clusters/public-cloud/aws/eks.md/#access-eks-cluster).
+
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
+
 
 </TabItem>
 </Tabs>
@@ -652,7 +657,8 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 3. Provide third-party OIDC IDP details.
 
-Alternatively, to use AWS Identity and Access Management (IAM) for authentication, refer to [Access EKS Cluster](../clusters/public-cloud/aws/eks.md/#access-eks-cluster).
+
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
 
 </TabItem>
 </Tabs>

@@ -2,7 +2,6 @@
 sidebar_label: "Enable Secrets Encryption for EKS Cluster"
 title: "Enable Secrets Encryption for EKS Cluster"
 description: "Learn how to create an AWS KMS key to encrypt Kubernetes secrets for EKS Clusters."
-hide_table_of_contents: false
 tags: ["public cloud", "aws", "eks", "kms"]
 sidebar_position: 40
 ---
@@ -24,13 +23,40 @@ Palette provides an **Enable encryption** option, which is only available during
 
 - An AWS KMS key created in the AWS region you intend to deploy cluster to with Palette.
 
-- Ensure the KMS key policy allows the IAM user or role Palette usage of the KMS key. The KMS key policy must allow the IAM role or IAM user the following actions:
+- Ensure the IAM user or role Palette uses has at a minimum, permissions to list, describe, all KMS keys in the account. The describe and create grant permissions are only required for the KMS key that Palette uses to encrypt Kubernetes secrets.
 
-      "kms:Encrypt",
-      "kms:Decrypt",
-      "kms:ReEncrypt*",
-      "kms:GenerateDataKey*",
-      "kms:DescribeKey"
+  - `kms:ListKeys`
+  - `kms:ListAliases`
+  - `kms:DescribeKey`
+  - `kms:CreateGrant`
+
+  <br />
+
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Statement1",
+        "Effect": "Allow",
+        "Action": [
+          "kms:ListKeys",
+          "kms:ListAliases"
+        ],
+        "Resource": ["*"]
+      },
+      {
+        "Sid": "Statement2",
+        "Effect": "Allow",
+        "Action": [
+          "kms:DescribeKey",
+          "kms:CreateGrant"
+          ],
+        "Resource": ["*"]
+      }
+    ]
+  }
+  ```
 
   Check out the [Create a KMS Key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-overview.html) guide for more information on key policies.
 
@@ -43,28 +69,17 @@ Use the following steps to configure a KMS key.
 
 2. Select the region where your KMS key policy is created.
 
-:::caution
+  :::caution
 
-Ensure you create the KMS key in the same region that you intend to deploy EKS clusters through Palette. Alternatively, you can create a multi-region KMS key that can be used across different regions. To learn how to create a multi-region key, review Amazon’s [Multi-Region Keys in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) reference guide.
+  Ensure you create the KMS key in the same region that you intend to deploy EKS clusters through Palette. Alternatively, you can create a multi-region KMS key that can be used across different regions. To learn how to create a multi-region key, review Amazon’s [Multi-Region Keys in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) reference guide.
 
+  ::: 
 
-::: 
+3. Create a KMS key of type **Symmetric** and with usage **Encrypt and decrypt**. Check out the AWS guide [Creating keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-symmetric-cmk) for guidance.
 
-3. Create a key of type **Symmetric** and with usage **Encrypt and decrypt**.
+4. Ensure the IAM user or role that Palette is using has a policy attached with the following required IAM permissions.  Replace the account ID and the placeholder `REPLACE_ME` with the name of IAM User. If you are using an IAM role, change the ARN to end with `:role/REPLACE_ME`.
 
-4. Ensure the IAM user or role that Palette is using has a policy attached with the following required IAM permissions.  Replace the account ID and `REPLACE_ME` with the name of IAM User. If you are using an IAM role, change the ARN to end with `:role/REPLACE_ME`.
-
-
-  ```json hideClipboard
-  kms:CreateGrant,
-  kms:ListAliases,
-  kms:ListKeys,
-  kms:DescribeKeys
-  ```
-   
-   Example:
-
-   ```json
+  ```json
   {
       "Sid": "Allow Palette use of the KMS key",
       "Effect": "Allow",
@@ -80,16 +95,16 @@ Ensure you create the KMS key in the same region that you intend to deploy EKS c
       ],
       "Resource": "*"
   },
-   ```
+    ```
 
-:::info 
-  
-If you are using IAM to delegate access to the KMS key, you can continue to do so without modifying the KMS key policy. Ensure the Palette IAM User or role have the proper custom IAM policy attached that grants it access to the KMS key. Refer to the [Using IAM policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html) to learn more about managing KMS keys with IAM policies. 
-  
-:::  
+  :::info 
+    
+  If you are using IAM to delegate access to the KMS key, you can continue to do so without modifying the KMS key policy. Ensure the Palette IAM User or role have the proper custom IAM policy attached that grants it access to the KMS key. Refer to the [Using IAM policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html) to learn more about managing KMS keys with IAM policies. 
+    
+  :::  
 
 If you need more guidance creating a KMS key, review the AWS [Creating KMS Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html) reference guide.
 
-### Validate
+## Validate
 
 You can verify the KMS key is integrated with Palette. When you deploy an EKS cluster on AWS and toggle the **Enable encryption** option at the Cluster Config step in the wizard, the KMS key ARN displays in the **drop-down Menu**. 

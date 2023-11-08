@@ -20,11 +20,8 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create a key pair, refer to the [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
-- To access your EKS cluster using kubectl, you will need one of the following plugins. For guidance, review the [Access EKS Cluster](#access-eks-cluster) section. 
+- To access your EKS cluster using kubectl, you will need the [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) plugin installed. If you are using a custom OIDC provider, you will need the [kubelogin](https://github.com/int128/kubelogin) plugin installed. Refer to the [Access EKS Cluster](#access-eks-cluster) section for more information.
 
-  - [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) to use default AWS authentication.
-
-  - [kubelogin](https://github.com/int128/kubelogin), also known as `kubectl oidc-login`, to configure custom OpenID Connect (OIDC) authentication in Palette. 
 
 - To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.  
 
@@ -36,17 +33,18 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
     - Elastic Load Balancers
     - Network Address Translation (NAT) Gateway
 
-    
-:::info
+  <br />
 
-To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide.  Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. To learn more about the Tag Editor, refer to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
+  :::info
 
-- `kubernetes.io/role/elb = 1`
-- `sigs.k8s.io/cluster-api-provider-aws/role = public`
-- `kubernetes.io/cluster/[yourClusterName] = shared` 
-- `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
+  To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide.  Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. To learn more about the Tag Editor, refer to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
 
-:::
+  - `kubernetes.io/role/elb = 1`
+  - `sigs.k8s.io/cluster-api-provider-aws/role = public`
+  - `kubernetes.io/cluster/[yourClusterName] = shared` 
+  - `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
+
+  :::
 
 Use the following steps to deploy an EKS cluster on AWS.
 
@@ -177,26 +175,30 @@ You can validate your cluster is up and in **Running** state.
 
 ## Access EKS Cluster
 
-You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you will authenticate to your EKS cluster, you need to install the appropriate plugin. The table lists the plugin required for two EKS deployment scenarios.  
+You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin required for two EKS deployment scenarios.  
 
 | **Scenario**                              | **Plugin**                              |
 | ----------------------------------------- | --------------------------------------- |
-| Deploy EKS cluster with custom OIDC       | kubelogin                               |
-| Deploy EKS cluster access with default AWS authentication | aws-iam-authenticator   |
+| Deploy EKS cluster with custom OIDC       | [kubelogin](https://github.com/int128/kubelogin)                               |
+| Deploy EKS cluster access with default AWS authentication | [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)   |
 
-For guidance in setting up kubectl, review the [Kubectl](../../cluster-management/palette-webctl.md) guide. Select the appropriate tab for your deployment.
+
+ Select the appropriate tab for your deployment.
+
 
 <Tabs queryString="oidc-authentication">
 
 <TabItem label="AWS IAM" value="AWS IAM">
 
-To use AWS Identity and Access Management (IAM), you need to do the following: 
+To access an EKS cluster with default AWS authentication, you need to do the following: 
 
 - Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
 
-- Link your AWS credentials locally to the EKS cluster. Refer to the [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) reference guide. 
+- Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer to the [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) reference guide. 
 
-- If you do not already have the AWS CLI installed and configured, you will need do this. Refer to [Install or Update the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) reference guides.
+
+- Download the kubeconfig file from the cluster details page. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+
 
 </TabItem>
 
@@ -210,11 +212,21 @@ To use custom OIDC, you need to do the following:
 
 - Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
 
+
+- Download the kubeconfig file from the cluster details page. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+
 </TabItem>
 
 </Tabs>
 
-<br />
+
+Once you have the required plugin installed and kubeconfig file downloaded, you can use kubectl to access your cluster.
+
+:::tip
+
+For guidance in setting up kubectl, review the [Kubectl](../../cluster-management/palette-webctl.md) guide.
+
+:::
 
 ## Resources
 
