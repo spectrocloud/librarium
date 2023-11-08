@@ -29,6 +29,9 @@ To learn more about Palette and AWS clusters, check out the following resources:
 - [Create and Manage AWS EKS Cluster](eks.md)
 
 
+- [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
+
+
 - [Cluster Management Day Two Operations](../../cluster-management/cluster-management.md)
 
 
