@@ -1,0 +1,45 @@
+name: Eslint and Test cases
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - "src/**"
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+      - run: exit 0
+
+  build:
+    name: Build
+    needs: [run-ci]
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Eslint
+        run: |
+          npm run lint
+      - name: Test
+        run: |
+          npm run test

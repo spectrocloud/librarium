@@ -1,0 +1,55 @@
+name: Backport
+
+on:
+  pull_request_target:
+    types: ["labeled", "closed"]
+
+jobs:
+  backport:
+    name: Backport PR
+    runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.merged == true
+      && contains(github.event.pull_request.labels.*.name, 'auto-backport')
+      && (
+        (github.event.action == 'labeled' && github.event.label.name == 'auto-backport')
+        || (github.event.action == 'closed')
+      )
+    steps:
+
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v2.7.3
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Backport Action
+        uses: sqren/backport-github-action@v9.3.0-a
+        with:
+        # We are using a PAT token through our Vault Operator to address the issue of PRs workflows not being triggered
+        # Refer to issue https://github.com/sqren/backport-github-action/issues/79 for more details.
+          github_token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          auto_backport_label_prefix: backport-
+          add_original_reviewers: true
+
+      - name: Info log
+        if: ${{ success() }}
+        run: cat ~/.backport/backport.info.log
+
+      - name: Debug log
+        if: ${{ failure() }}
+        run: cat ~/.backport/backport.debug.log
+
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'The backport automation flow failed. Review the GitHub Actions logs for more details.'

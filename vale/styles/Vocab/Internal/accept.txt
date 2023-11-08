@@ -115,4 +115,43 @@ imageSwap
 subcommand
 subcommands
 MAAS
+nameserver
+uncomment
+OAuth
 unsecure
+vMotion
+repavement
+Repavement
+repave
+Repave
+K3s
+boolean
+Velero
+MinIO
+vCluster
+Fluentbit
+Dex
+Falco
+Kibana
+Fluentd
+Libvirt
+kubenet
+Metadata Syncer
+Kubernetes NFS Subdir External Provisioner
+Splunk
+Kubevious
+Citrix
+Disable
+Hotfixes
+Hotfix
+Layer 2
+L2
+HashiCorp
+airgap
+Airgap
+jq
+Caddy
+jumpbox
+Oras
+oras
+Netplan

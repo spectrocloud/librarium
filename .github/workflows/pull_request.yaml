@@ -1,48 +1,41 @@
 name: Pre-merge Checks
 
-on: 
+on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
+    branches-ignore: [ 'version-*' ]
 
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
+  AWS_DEFAULT_REGION: us-east-1
+  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
+  MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+
 jobs:
   run-ci:
+    # runs-on: ubuntu-latest
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
     if: ${{ !github.event.pull_request.draft }}
     steps:
-    # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
-    # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
-    # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
+      # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
+      # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
+      # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
       - run: exit 0
-  
-  run-test:
-    name: Test
-    needs: [run-ci]
-    runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - run: npm ci
-      
-      - name: Test
-        run: npm run test
 
   vale:
-    # Image Optimizer docs: https://github.com/calibreapp/image-actions
     name: Writing Checks
     needs: [run-ci]
     runs-on: ubuntu-latest
@@ -63,7 +56,7 @@ jobs:
 
   build:
     name: Build
-    needs: [run-ci, run-test]
+    needs: [run-ci]
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:
@@ -73,11 +66,11 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - run: npm ci
 
       - name: Build
         run: |
-          make build
+          npm run build

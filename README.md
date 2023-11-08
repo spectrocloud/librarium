@@ -1,7 +1,7 @@
 <!-- vale off -->
 # Overview
 
-![Spectro Cloud logo with docs inline](/assets/logo_landscape_for_white.png)
+![Spectro Cloud logo with docs inline](/static/img/spectrocloud-logo-light.svg)
 
 Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README. 
 
@@ -13,14 +13,25 @@ There are two local development paths available; Docker based, and non-Docker ba
 
 To contribute, we recommend having the following software installed locally on your workstation.
 
-- Text Editor
+- VScode or a text editor
+
 - [Docker](https://docs.docker.com/desktop/)
+
 - git configured and access to github repository
-- node and npm (optional)
+
+- Node.js and npm (optional)
+
+- [Vale](https://vale.sh/docs/vale-cli/installation/)
 
 ## Local Development (Docker)
 
 To get started with the Docker based local development approach ensure you are in the root context of this repository. 
+
+Initailize the repository by issuing the following command:
+
+```shell
+make init
+```
 
 Next, issue the following command to build the Docker image.
 
@@ -32,38 +43,30 @@ make docker-image
 
 To start the Dockererized local development server, issue the command:
 
-```
+```shell
 make docker-start
 ```
 
-The local development server is ready when the following output is displayed in your terminal.
+The local development server is ready when the following output is displayed in your terminal. 
 
 ```shell
-You can now view root in the browser.
-⠀
-  Local:            http://localhost:9000/
-  On Your Network:  http://172.17.0.2:9000/
-⠀
-View GraphiQL, an in-browser IDE, to explore your site's data and schema
-⠀
-  Local:            http://localhost:9000/___graphql
-  On Your Network:  http://172.17.0.2:9000/___graphql
-⠀
-Note that the development build is not optimized.
-To create a production build, use gatsby build
+> spectro-cloud-docs@4.0.0 start
+> docusaurus start --host 0.0.0.0 --port 9000
+
+[INFO] Starting the development server...
+[SUCCESS] Docusaurus website is running at: http://localhost:9000/
+
+✔ Client
+  Compiled successfully in 8.39s
+
+client (webpack 5.88.2) compiled successfully
 ```
 
-Visit [http://localhost:9000](http://localhost:9000) to view the local development documentation site.
+Open up a browser and navigate to [http://localhost:9000](http://localhost:9000) to view the documentation website.
 
 To exit from the local development Docker container. Press `Ctrl + Z`.
 
 ## Local Development Setup (Non-Docker)
-
-Make a folder somewhere you can easily find
-
-```sh
-mkdir ~/Work
-```
 
 Clone the repository and run the initialization script
 
@@ -71,36 +74,42 @@ Clone the repository and run the initialization script
 cd Work
 git clone https://github.com/spectrocloud/librarium.git
 cd librarium
-make initialize
+make init
 ```
 
-# Documentation Content
+Next, populate the `.env` file with the following content. The local development server will not start without the required environment variables. The values are not important for local development.
 
-Create a branch if needed. This will keep your work separated from the rest of your changes.
+```shell
+ALGOLIA_APP_ID=1234567890
+ALGOLIA_SEARCH_KEY=1234567890
+```
+
+## Documentation Content
+
+Create a branch to keep track of all your changes.
 
 ```sh
 git checkout -b <branch_name>
 ```
 
-To preview your changes use the following.
+Make changes to any markdown files in the [`docs/docs-content`](./docs/docs-content/) folder.
+
+
+Start the local development server and preview your changes by navigating to the documentation page you modified.
+You can start the local development server by issuing the following command:
+
 
 ```sh
 make start
 ```
 
-This will open your browser to this address: http://localhost:9000
-
-Open `~/Work/librarium/content/docs` in your editor and make changes. They should be synced up in the browser window.
-
-When you are done with some changes you can create a commit
+When you are done with your changes, stage your changes and create a commit
 
 ```sh
-make commit MESSAGE="<your message here>"
+git add -A && git commit -m "docs: your commit message here"
 ```
 
-This will open your browser with the commit. Once the pull request is created a link will be added in the comments to preview the change in a staging environment.
-
-## Creating pages
+## Creating Pages
 
 The documentation website is structured in a sidebar with main pages and sub-pages. Main pages will contain an overview of the its sub pages.
 
@@ -108,76 +117,158 @@ The documentation website is structured in a sidebar with main pages and sub-pag
 
 The **navigation** sidebar will be something across all pages.
 
-The **header** will have a search bar and some links to different other sections of the documentation (api, glossary, integrations)
+The **header** will have a search bar and some links to different other sections of the documentation (api)
 
 The page **content** will be displayed under the header and next to the sidebar.
 On it's right there will be a **table of contents** menu that will extract all of the headers inside the content and display them in a list.
 This will follow the user as he scroll the page.
 On top of the table of contents there will be a **github link** to the content of the file. This can be used by users to submit changes to different sections of our documentation
 
-### Main pages
+### Main Pages
 
-You can create a main page by creating a `<number>-<url-using-dashes>.md` file in the root of the `content` directory.
-The number will be the position of the item in the menu. Each of the main pages can be configured by sending attributes at the start of the file"s content.
+Create a page with the filename `<url-using-dashes>.md` in the `docs-content` folder of the `content` directory. For positioning the document in the sidebar, you can use `sidebar_position: 1` in the front matter. To manage folders, create a `_category_.json` file with `{position: 1}` inside the desired directory.
 
 **Example of attributes**
 
 ```markdown
 ---
-title: "Home"
-metaTitle: "spectrocloud docs"
-metaDescription: "This is the meta description"
-icon: "home"
-hideToC: true
-fullWidth: true
+title: "Introduction"
+sidebar_label: "Introduction"
+description: "Palette API Introduction"
+hide_table_of_contents: false
+sidebar_custom_props: 
+  icon: "graph"
 ---
 ```
 
-| attribute       | type    | description                                                                                                 |
-| --------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| title           | string  | used as the label for navigation                                                                            |
-| metaTitle       | string  | will appear on the browser window / tab as the title                                                        |
-| metaDescription | string  | the text to display when a page is shared in social media platforms                                         |
-| icon            | string  | one of icons from https://fontawesome.com/icons?d=gallery                                                   |
-| hideToC         | boolean | setting this to `false` will hide the page from the navigation                                              |
-| fullWidth       | boolean | setting this to `false` this can se set to use the full width of the page and there is no table of contents |
 
+
+#### Front Matter Attributes
+
+| attribute                      | type    | description                                                                                                 |
+| ------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------- |
+| `sidebar_label`                  | string  | used as the label for navigation                                                                            |
+| `title`                          | string  | will appear on the browser window / tab as the title                                                        |
+| `description`                    | string  | the text to display when a page is shared in social media platforms                                         |
+| `sidebar_custom_props:`<br>` icon: "graph"`  | string  | one of icons from https://fontawesome.com/icons?d=gallery                                       |      
+| `hide_table_of_contents`         | boolean | setting this to `false` will hide the page from the navigation                                              |
+| `sidebar_position`               | number  | the position of the page in the navigation sidebar. The pages are sorted ascending by this value            |
+| `toc_min_heading_level`          | number | the minimum heading level to show in the table of contents.                                                  |
+| `toc_max_heading_level`          | number | the maximum heading level to show in the table of contents.                                                  | 
+| `tags`                           | array  |  A list of string that can be used for additonal categorization of content.                                  | 
+| `keywords`                      | array  |  A list of strings that areused for SEO purposes.                                                             |
 ### Sub pages
 
-Create a folder using the **same name** of the main page. Inside of it use the same name convention (`<number>-<url-using-dashes>.md`) to create subpages.
-These pages will have the same attributes as for the main page.
+Create a folder using the **same name** of the main page. Inside of it use the same name convention (`<url-using-dashes>.md`) to create subpages.
 
-#### Referencing a page
+The index document for a folder follows the naming convention below. Here are some examples:
 
-The url of a page will be composed from the path of the file relative to the `content` directory. The "number" used for ordering the menu will be stripped.
+- Named as index (case-insensitive): `docs/Guides/index.md`
+- Named as README (case-insensitive): `docs/Guides/README.mdx`
+- Same name as the parent folder: `docs/Guides/Guides.md`
 
-**Example** docs/content/1-introduction/1-what-is.md will have http://localhost:9000/introduction/what-is as the url
+### Markdown Links and URLs
+Markdown links use file path references to link to other documentation pages.
+The markdown link is composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL during the compile. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
 
-In markdown you can reference this page relatively to the root of the domain using this syntax:
 
-```md
-[Go to introduction](/introduction/what-is)
+
+The following example shows how to reference a page in various scenarios. Assume you have the following folder structure when reviewing the examples below:
+
+```shell
+.
+└── docs
+    └── docs-content
+        ├── architecture
+        │   ├── grpc.md
+        │   └── ip-addresses.md
+        ├── aws
+        │   └── iam-permissions.md
+        ├── clusters
+        └── security.md
 ```
 
-You can also reference pages that reside in the root `/docs` folder, such as index pages. An example is the Dev Engine index page `/docs/04.5-devx.md`. To reference the Dev Engine index page in a documentat page, referce the page by the title.
+#### Same Folder
+
+To link to a file in the same folder, you can use the following syntax:
 
 ```md
-[Go to Dev Enging](/devx)
+![Insert a description here](name_of_file.md)
 ```
+
+Because the file is in the same folder, you do not need to specify the path to the file. Docusaurus will automatically search the current folder for the file when compiling the markdown content.
+
+So, if you are in the file `grpc.md` and want to reference the file `ip-addresses.md`, you would use the following syntax:
+
+```md
+![A list of all Palette public IP addresses](ip-addresses.md)
+```
+
+#### Different Folder
+
+If you want to link to a file in a different folder, you have to specify the path to the file from where the current markdown file is located. 
+
+If you are in the file `security.md` and want to reference the file `iam-permissions.md`, you have to use the following syntax:
+
+```md
+![A list of all required IAM permissions for Palette](aws/iam-permissions.md)
+```
+
+If you are in the file `grpc.md` and want to reference the file `iam-permissions.md`, you have to use the following syntax:
+
+```md
+![A list of all required IAM permissions for Palette](../aws/iam-permissions.md)
+```
+
+#### A Heading in the Same File
+
+To link to a heading in the same file, you can use the following syntax:
+
+```md
+[Link to a heading in the same file](#heading-name)
+```
+
+The `#` symbol is used to reference a heading in the same file. The heading name must be in lowercase and spaces must be replaced with a `-` symbol. Docusaurs by default uses dashes to separate words in the URL.
+
+#### A Heading in a Different File
+
+To link to a heading in a different file, you can use the following syntax:
+
+```md
+[Link to a heading in a different file](name_of_file.md#heading-name)
+```
+For example, if you are in the file `grpc.md` and want to reference the heading `Palette gRPC API` in the file `security.md`, you would use the following syntax:
+
+```md
+[Link to a heading in a different file](../security.md#palette-grpc-api)
+```
+The important thing to remember is that the `#` comes after the file name and before the heading name.
+
+#### Exceptions
+
+As of Docusarus `2.4.1`, the ability to link to documentation pages that belong to another plugin is unavailable. To work around this limitation, reference a documentation page by the URL path versus the file path.
+
+```md 
+[Link to a page in another plugin](/api-content/authentication#api-key)
+```
+
+> [!WARNING]
+> Be aware that this approach will break versioning. The user experience will be impacted as the user will be redirected to the latest version of the page.
+
+
+In future releases, Docusaurus will support linking pages from other Docusarus plugins. Once this feature is available, this documentation will be updated.
 ### Redirects
 
 To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
 
 ```js
   {
-    fromPath: `/clusters/nested-clusters/`,
-    toPath: `/clusters/sandbox-clusters`,
-    redirectInBrowser: true,
-    isPermanent: true,
+    from: `/clusters/nested-clusters/`,
+    to: `/clusters/sandbox-clusters`,
   },
 ```
 
-#### Multi Object Selector
+### Multi Object Selector
 
 The Packs integration page and the Service Listings page use a component to display the various offerings. 
 Packs intergations use the `<Packs />` component, whereas the Service Tiers from App Mode use the `<AppTiers />` component.
@@ -196,7 +287,7 @@ To add a Service to the Service List complete the following actions:
 - Populate the page with content.
 
 
-#### Images or other assets
+### Images or other assets
 
 All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
 
@@ -207,68 +298,51 @@ All images must reside in the [`assets/docs/images`](./assets/docs/images/) fold
 You can add a directory to to the images folder.
 
 ```md
-![alt text](/introduction/clusterprofiles.png "#title=cluster profiles example")
+![alt text](/introduction/clusterprofiles.png "cluster profiles example")
 ```
 
-**Image size**
-Image size can be customized. You can provider either the width or the height. Units: '%', 'px' etc
+**Image Loading**
+Image size loading can be customised. You can provide eager-load to images in the first fold of the image with high priority as LCP (Largest contentful Paint) for the page will not be affected
 
 ```md
-![alt text](/clusterprofiles.png "#width=120px")
+![alt text eager-load](/clusterprofiles.png)
 ```
 
-#### Tabs component
+### Tabs component
 
 To use the tabs component you have to import it from the _shared_ folder
-
-```js
-import Tabs from "shared/components/ui/Tabs";
-```
 
 After that, you can use it like this
 
 ```js
-<Tabs>
-  <Tabs.TabPane tab="AWS" key="aws">
+<Tabs queryString="platform">
+  <TabItem label="AWS" value="aws">
     # AWS cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </Tabs.TabPane>
-  <Tabs.TabPane tab="VMware" key="vmware">
+  </TabItem>
+  <TabItem label="VMware" value="vmware">
     # VMware cluster Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </Tabs.TabPane>
+  </TabItem>
 </Tabs>
 ```
 
 **Note**: If you want to navigate from one page to another(which has tabs) and default tab to specific key then you must
 
-- provide an identifier to the `Tabs` component `<Tabs identifier="clusterType">...</Tabs>`
+- provide an identifier to the `Tabs` component `<Tabs queryString="clusterType">...</Tabs>`
 - when creating the link to this page, include (in the query) the identifier provided and the **value** you want (eg: /clusters?clusterType=aws#section1)
 - the values can be one of the tab panel keys
 - additionally you may refer to different sections from the inner tab using the anchor points(using the #section-1)
 
-#### YouTube Video
+### YouTube Video
 
 To use a Youtube video us the YouTube component.
 
-First import the component.
-
-```js
-import YouTube from 'shared/components/Video';
-```
-
-Next, in your markdown file, use the component and ensure you specify a URL.
+In your markdown file, use the component and ensure you specify a URL.
 
 ```js
 <YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
 ```
-### Points of interest component
+### Points of Interest
 
-To use this components you will have to import if from the _shared_ folder
-
-```js
-import PointsOfInterest from "shared/components/common/PointOfInterest";
-```
-
-After that you can use it like this
 
 ```js
 <PointsOfInterest
@@ -308,8 +382,6 @@ Possible placements are: _topLeft_, _top_, _topRight_, _rightTop_, _right_ (defa
 
 ### Tooltip
 
-import Tooltip from "shared/components/ui/Tooltip";
-
 ```js
 <Tooltip>tooltip content</Tooltip>
 ```
@@ -336,11 +408,11 @@ import Tooltip from "shared/components/ui/Tooltip";
 Hello <Tooltip trigger="world">tooltip content</Tooltip>! It's me Mario
 ```
 
-### Code lines highlighter
+### Code Lines Highlighter
 
 You can highlight specific lines in a block of code by adding **coloredLines** prop.
 
-_Example_: ` ```js coloredLines=2-4,5-7`.
+_Example_: ` ```js {2-4,5-7}`.
 This will color the lines from 2 to 4 and from 5 to 7.
 
 _Components_:
@@ -351,7 +423,7 @@ _Components_:
 Example 
 
 
-![Example usage of codeblocks with highlighting.](assets/docs/images/readme_codeblocks_example.png)
+https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comments
 
 
 #### Hide ClipBoard Button
@@ -359,90 +431,58 @@ Example
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
 
 Example 
-![Example](assets/docs/images/hide_copy_button_example.png)
+![Example](static/assets/docs/images/hide_copy_button_example.png)
 
 Result
 
-![Result](assets/docs/images/hide_copy_button.png)
+![Result](static/assets/docs/images/hide_copy_button.png)
 
 
-### Using Warning Box compponent/Info Box component or any component that wraps content
+### Admonitions - Warning / Info / Tip / Danger
 
-To use these components you will have to import them from the shared folder:
 
-```js
-import WarningBox from "@librarium/shared/src/components/WarningBox";
-import InfoBox from "@librarium/shared/src/components/InfoBox";
-```
 
-After that you can use them like this:
+:::caution
 
-```js
-<InfoBox>
+Some **content** with _Markdown_ `syntax`.
 
-  *Markdown cotent*
+:::
 
-</InfoBox>
 
-<WarningBox>
+:::tip
 
-  *Markdown content*
+Some **content** with _Markdown_ `syntax`. 
 
-</WarningBox>
-```
+:::
 
-The content must have a new line at the beginning and at the end of the tag like this:
 
-Example:
+:::danger
 
-```js
-  <InfoBox>
+Some **content** with _Markdown_ `syntax`.
 
-  - Point 1
-  - Point 2
-  - ...
+:::
 
-  </InfoBox>
+https://docusaurus.io/docs/markdown-features/admonitions
 
-  <WarningBox>
 
-  - Point 1
-  - Point 2
-  - ...
+The content must have a new line at the beginning and at the end of the tag.
 
-  </WarningBox>
-```
 ### Video
 
 To add a video, use the following syntax:
 
 ```
-`video: title: "<video title>": <path/to/video`
+<video src="/aws-full-profile.mp4"></video>
 ```
 
 
 ```
-`video: title: "aws-cluster-creation": ./cluster-creation-videos/aws.mp4`
-```
-## Check for Broken URLs
-
-To check for broken URLs in production issue the following command but be aware this will take approximately two to three minutes.
-
-```shell
-make verify-url-links
+<video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></video>
 ```
 
-If you want to check against your current local branch then use the following command. **Ensure the local server is stopped prior to issuing the command**. 
+## Netlify Previews
+By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In the [netlify.toml](./netlify.toml) file, a custom script is used to determine if a Netlify preview should be created. The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If you need to disable Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh) file.
 
-```shell
-make verify-url-links-local
-```
-
-An auto generated spreedsheet is created with the name **link_report.csv**. To find broken URLs filter by the status code column. Anything with a status code not in the `200` range or with the state "broken" should be inspected.
-
-### Cron Job
-
-Every Monday at 6 AM UTC a GitHub Actions cron job is triggered. The cron job logic can be found in the file [url-checks.yaml](.github/workflows/url-checks.yaml). The core logic resides in [url-checker.sh](/scripts/url-checker.sh). The Slackbot application **Docs bot** is used to post the messages to the `#docs` channel.
 
 ## Approvers/Reviewers
 
@@ -495,7 +535,7 @@ Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/acce
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
 
 
-# Release
+## Release
 
 To create a new release, use the following steps:
 
@@ -504,8 +544,60 @@ To create a new release, use the following steps:
 3. Push up the commit and create a new pull request (PR).
 4. Merge PRs related to the upcoming release into the `release-X-X` branch.
 5. Merge the release branch.
+6. Create a new branch from the `master` branch. Use the following naming pattern `version-X-X`. This brach is used for versioning the documentation.
+7. Push the new version branch to the remote repository.
+8. Trigger a new build so that the new version is published.
 
 The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
 
 > **Warning**
 > Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.
+
+## Versioning
+
+> [!NOTE] 
+> Detailed documentation for versioning can be found in the internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
+
+All versioned content belongs to a specific version branch. The version branch name follows the naming convention `version-X-X`. The version branch is used to generate versioned content.
+
+There are three files that are used for generating versioned content: 
+
+- [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the version branches and generates the versionioned content.
+
+- [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file with all the required vesioning parameters.
+
+- [`versionsOverride.json`](./versionsOverride.json) - A JSON file that contains the versioning overrides. These values are used to update the `docusaurus.config.js` file with non-default values.
+
+
+### Build Versioned Content Locally
+
+To build versioned content locally, use the following steps:
+
+1. Issue the following command to generate the versioned content.
+
+```shell
+make versions
+```
+
+2. Start a local development server to view the versioned content.
+
+```shell
+make start
+```
+
+
+3. Compile the versioned content to ensure a successful build.
+
+```shell
+make build
+```
+
+4. Remove the `versions.json` file and discard the changes to the `docusaurus.config.js` file. Use the following command to remove all version artifacts.
+
+```shell
+make clean-versions
+```
+
+
+> [!WARNING] 
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO NOT commit this file with the updated changes. 

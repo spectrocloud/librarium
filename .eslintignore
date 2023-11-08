@@ -1,0 +1,25 @@
+build
+node_modules
+src/deprecated
+
+.docusaurus
+sidebar.js
+docusaurus.config.js
+*.config.js
+
+# swizzled components
+src/theme/SchemaItem/index.js
+src/theme/CodeBlock/**
+DocSidebarItem
+
+#test files
+
+*.test.tsx
+*.test.ts
+
+*.test.js
+*.test.jsx
+
+__mocks__
+
+jest.setup.ts

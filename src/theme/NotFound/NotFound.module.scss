@@ -1,0 +1,40 @@
+.contentWrapper {
+  background-image: url("/assets/404.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: #ffffff;
+  max-width: 1200px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 20px;
+  margin: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #515e71;
+}
+
+.boundingBox {
+  display: inline-block;
+  padding: 20px;
+  width: 320px;
+}
+
+.man {
+  margin: 0 20px;
+  width: 50%;
+
+  @media (max-height: 500px) {
+    display: none;
+  }
+}
+
+.title {
+  color: #515e71;
+}

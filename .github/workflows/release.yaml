@@ -1,73 +1,108 @@
 name: Release to Production
 
+# Run this workflow every time a new commit is pushed to the master branch
+# or a version branch (e.g. version-4-0)
+
 on:
-  push:
-    branches: [ master ]
+  schedule:
+    - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
+    - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
+  workflow_dispatch:
+    inputs:
+      useGitHubHostedLargeRunner:
+        description: 'Use the GitHub-hosted large runner. Allowed values are true or false. Caution - this results in additional charges to the organization.'
+        required: false
+        default: false
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
   AWS_DEFAULT_REGION: us-east-1
-  GATSBY_APPZI_TOKEN: ${{ secrets.GATSBY_APPZI_TOKEN }}
-  GATSBY_ALGOLIA_SEARCH_KEY: ${{ secrets.GATSBY_ALGOLIA_SEARCH_KEY }}
-  GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
+  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
+  MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
-  GATSBY_MENDABLE_API_KEY:  ${{ secrets.GATSBY_MENDABLE_API_KEY }}
-  GATSBY_FULLSTORY_ORGID: ${{ secrets.GATSBY_FULLSTORY_ORGID }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+
+
+concurrency:
+  group: production-${{ github.workflow }}
+  cancel-in-progress: true  
 
 jobs:
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+# This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
+  build-self-hosted-runner:
+    if: ${{ github.event.inputs.useGitHubHostedLargeRunner != 'true' || github.event_name == 'schedule' }}
+    name: Build Website
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: "master"
+
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - run: npm ci
 
-      - name: Build
+      - name: Compile
         run: |
+          make versions-ci
           make build
-
-      - name: Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: public
-          path: public
-          retention-days: 1
-
-
-  update-site:
-    name: Update Site
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Download my-folder
-        uses: actions/download-artifact@v2
-        with:
-          name: public
-          path: public
 
       - name: Upload to AWS
         run: |
-          rm -f public/robots.txt
-          aws s3 sync --cache-control 'max-age=604800' --exclude '*.html' --exclude '*page-data/*' --exclude '*.txt' --exclude '*.xml' --exclude '*/sw.js' public/ s3://docs.spectrocloud.com --delete
-          aws s3 sync --cache-control 'max-age=0, s-maxage=604800' public/ s3://docs.spectrocloud.com --delete
-          aws cloudfront create-invalidation --distribution-id E1LK6TRNPR90DX --paths "/*"
+          aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
+          aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+
+#  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
+  build-large-runner:
+    if: ${{ github.event.inputs.useGitHubHostedLargeRunner == 'true' && github.event_name != 'schedule' }}
+    name: Build Website
+    runs-on: 
+      group: 'Doc Runners'
+      labels: docbot
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: "master"
+
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Compile
+        run: |
+          make versions-ci
+          make build
+
+      - name: Upload to AWS
+        run: |
+          aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
+          aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+
 
   release:
     name: "Release"
+    if: always() && (needs.build-large-runner.result == 'success' || needs.build-self-hosted-runner.result == 'success')
+    needs: [build-self-hosted-runner,build-large-runner]
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -81,7 +116,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci

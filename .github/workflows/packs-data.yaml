@@ -1,0 +1,52 @@
+name: Update Deprecated Packs
+
+on:
+  schedule:
+    # Runs at 5 minutes past the hour, every 6 hours.
+    - cron: "5 */6 * * *"
+  workflow_dispatch:
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
+  AWS_DEFAULT_REGION: us-east-1
+
+jobs:
+  build:
+    name: Get Pakcs data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v2.7.3
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - uses: actions-hub/gcloud@master
+        env:
+          PROJECT_ID: spectro-common-dev
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        with:
+          args: cp gs://docs-education-automation/packs_inventory/packs_report.json  ./packs_report.json
+          cli: gsutil
+
+      - name: Upload to S3
+        run: |
+          aws s3 cp ./packs_report.json s3://docs.spectrocloud.com/packs-data/
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/packs-data/packs_report.json"
+          aws s3 cp ./packs_report.json s3://docs-latest.spectrocloud.com/packs-data/
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/packs-data/packs_report.json"
+
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'The Docs cron job that generates the `packs.json` file failed. Please check the logs for more details.'

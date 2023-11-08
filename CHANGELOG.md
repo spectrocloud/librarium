@@ -1,3 +1,10 @@
+# 1.0.0 (2023-09-01)
+
+
+### Features
+
+* **release:** add release 4.1.0 ([#13](https://github.com/spectrocloud/docs-prototype/issues/13)) ([712f435](https://github.com/spectrocloud/docs-prototype/commit/712f4354da6701c28080957a7bfc72c0ad6be5e3))
+
 # [3.4.0](https://github.com/spectrocloud/librarium/compare/v3.3.0...v3.4.0) (2023-05-23)
 
 

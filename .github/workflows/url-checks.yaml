@@ -2,6 +2,7 @@ on:
   schedule:
     # Every Monday at 6 am
     - cron: '0 6 * * 1'
+  workflow_dispatch:
   
   
 concurrency:

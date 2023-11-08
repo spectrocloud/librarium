@@ -4,3 +4,4 @@ CHANGES
 .gitignore
 .cache
 prow/
+.env
