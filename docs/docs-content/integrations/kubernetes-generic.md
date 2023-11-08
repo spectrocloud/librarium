@@ -153,7 +153,7 @@ OIDC requires a *RoleBinding* for the users or groups you want to provide cluste
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
-<Tabs>
+<Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
@@ -202,7 +202,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-<br />
 
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
@@ -229,6 +228,8 @@ clientConfig:
 ```
 
 3. Provide third-party OIDC IDP details.
+
+Alternatively, to use AWS Identity and Access Management (IAM) for authentication, refer to [Access EKS Cluster](../clusters/public-cloud/aws/eks.md/#access-eks-cluster).
 
 </TabItem>
 </Tabs>
@@ -362,7 +363,7 @@ OIDC requires a *RoleBinding* for the users or groups you want to provide cluste
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
-<Tabs>
+<Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
@@ -437,6 +438,8 @@ clientConfig:
 ```
 
 3. Provide third-party OIDC IDP details.
+
+Alternatively, to use AWS Identity and Access Management (IAM) for authentication, refer to [Access EKS Cluster](../clusters/public-cloud/aws/eks.md/#access-eks-cluster).
 
 </TabItem>
 </Tabs>
@@ -569,7 +572,7 @@ OIDC requires a *RoleBinding* for the users or groups you want to provide cluste
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
-<Tabs>
+<Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
@@ -618,7 +621,6 @@ Follow these steps to configure a third-party OIDC IDP. You can apply these step
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-<br />
 
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
 
@@ -649,6 +651,8 @@ Follow these steps to configure OIDC for managed EKS clusters.
   ```
 
 3. Provide third-party OIDC IDP details.
+
+Alternatively, to use AWS Identity and Access Management (IAM) for authentication, refer to [Access EKS Cluster](../clusters/public-cloud/aws/eks.md/#access-eks-cluster).
 
 </TabItem>
 </Tabs>

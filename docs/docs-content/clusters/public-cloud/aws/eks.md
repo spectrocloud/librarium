@@ -20,9 +20,11 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create a key pair, refer to the [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
-- aws-iam-authenticator installed if you want to use AWS Identity and Access Management (IAM) to authenticate with your EKS cluster. For more information review the [Access EKS Cluster](#access-eks-cluster) section.
+- To access your EKS cluster using kubectl, you will need one of the following plugins. For guidance, review the [Access EKS Cluster](#access-eks-cluster) section. 
 
-<!-- - kubelogin installed. This is a [kubectl plugin](https://github.com/int128/kubelogin) for Kubernetes OpenID Connect (OIDC) authentication, also known as `kubectl oidc-login`. -->
+  - [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) to use default AWS authentication.
+
+  - [kubelogin](https://github.com/int128/kubelogin), also known as `kubectl oidc-login`, to configure custom OpenID Connect (OIDC) authentication in Palette. 
 
 - To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.  
 
@@ -75,18 +77,7 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 8. Select the EKS cluster profile you created and click on **Next**. Palette displays the cluster profile layers.
 
-9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-
-  You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. To do this, follow the steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc) guide. 
-
-  :::caution
-
-  Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
-
-  :::
-
-  Alternatively, to use AWS Identity and Access Management (IAM) for authentication, you will need to install the AWS IAM Authenticator. Review the [Access EKS Cluster](#access-eks-cluster) section for more information.
-
+9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Check out [Access EKS Cluster](#access-eks-cluster) if you need more guidance.
 
 10. Click on **Next** to continue.
 
@@ -186,16 +177,44 @@ You can validate your cluster is up and in **Running** state.
 
 ## Access EKS Cluster
 
-You can access your Kubernetes cluster by using the kubectl CLI. Palette automatically generates a kubeconfig file for your cluster that you can download and use to connect with your host cluster. To learn how to set up kubectl, check out the [Kubectl](../../cluster-management/palette-webctl.md) guide.
+You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you will authenticate to your EKS cluster, you need to install the appropriate plugin. The table lists the plugin required for two EKS deployment scenarios.  
 
-If you will be using AWS Identity and Access Management (IAM) for authentication, you will need to do the following: 
+| **Scenario**                              | **Plugin**                              |
+| ----------------------------------------- | --------------------------------------- |
+| Deploy EKS cluster with custom OIDC       | kubelogin                               |
+| Deploy EKS cluster access with default AWS authentication | aws-iam-authenticator   |
 
-- Install the `aws-iam-authenticator` plugin. Refer to the [Install aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) reference guide.
+For guidance in setting up kubectl, review the [Kubectl](../../cluster-management/palette-webctl.md) guide. Select the appropriate tab for your deployment.
+
+<Tabs queryString="oidc-authentication">
+
+<TabItem label="AWS IAM" value="AWS IAM">
+
+To use AWS Identity and Access Management (IAM), you need to do the following: 
+
+- Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
 
 - Link your AWS credentials locally to the EKS cluster. Refer to the [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) reference guide. 
 
 - If you do not already have the AWS CLI installed and configured, you will need do this. Refer to [Install or Update the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) reference guides.
 
+</TabItem>
+
+<TabItem label="Custom OIDC" value="Custom OIDC">
+
+To use custom OIDC, you need to do the following:
+
+- Install [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. For more information and to learn about other available helper applications, you can visit [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/). 
+
+- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes-generic.md/#configure-custom-oidc) guide.
+
+- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+
+</TabItem>
+
+</Tabs>
+
+<br />
 
 ## Resources
 
