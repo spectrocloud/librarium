@@ -4,23 +4,19 @@ title: "Required IAM Policies"
 description: "A list of required IAM policies that Palette requires."
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "iam"]
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
 The following policies include all the permissions needed for cluster provisioning with Palette.
- <br />
 
-* Controllers Policy
+* **PaletteControllerPolicy**
 
+* **PaletteControlPlanePolicy**
 
-* Control Plane Policy
+* **PaletteNodesPolicy**
 
-
-* Nodes Policy
-
-
-* Deployment Policy 
+* **PaletteDeploymentPolicy**
 
 Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the *Controllers EKS Policy*.
 
