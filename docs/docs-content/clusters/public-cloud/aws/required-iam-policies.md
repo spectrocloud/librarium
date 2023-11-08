@@ -885,7 +885,7 @@ The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-ser
 |AmazonSSMManagedInstanceCore|AWS managed| ❌ |✅ | The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality. |
 
 
-In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail due to the IAM role policy limit.
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. 
 
 
 </TabItem>
