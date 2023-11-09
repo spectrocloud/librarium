@@ -246,9 +246,9 @@ At times, you may be required to work with the Palette Support Team to troublesh
 
 ## Proxy Whitelist
 
-This table lists the proxy requirements for enabling the Palette management console.
+The following table lists the proxy requirements required by Palette. Depending on the network equipment and configuration, you may have to specify all subdomains of the top-level domains listed in the table. For example, an entry containing `gcr.io` and `*.gcr.io` may be required. Consult your network administrator for the exact requirements.
 
-| Top-level Domain          | Port | Description                                  |
+| **Top-level Domain**          | **Port** | **Description**                                  |
 | ------------------------- | ---- | -------------------------------------------- |
 | docker.io                 | 443  | Third party container images.                |
 | docker.com                | 443  | Third party container images.                |
