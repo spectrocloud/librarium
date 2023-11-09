@@ -127,7 +127,7 @@ This should display a list of namespaces as shown in the example:
 
   <br />
 
-  ```shell
+  ```shell hideClipboard
   NAME                               STATUS   AGE
   default                            Active   4d11h
   kube-system                        Active   4d11h
