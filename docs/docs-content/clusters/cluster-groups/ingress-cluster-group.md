@@ -17,7 +17,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
 ## Prerequisites
 
-- At least one infrastructure or cloud-based cluster you’ve created.
+- At least one infrastructure or cloud-based cluster.
 
 
 - The Ingress Controller must have Secure Socket Layer (SSL) passthrough enabled so that Transport Layer Security (TLS) is not terminated at the ingress controller. Palette provides the `nginx-ingress` add-on profile  where SSL passthrough can be enabled. The following example shows how you can enable SSL-passthrough for the Nginx Ingress Controller. 
@@ -33,7 +33,7 @@ When you enable **Ingress** as the endpoint for a Cluster Group, you must deploy
 
  - Palette's ```nginx-ingress``` add-on profile automatically reroutes inbound requests from port 6443 to port 443 using a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443. 
  
- If you are using an ingress controller other than the Nginx Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring Cert Manager to issue a certificate for each App's Ingress.<br /> 
+ If you are using an ingress controller other than the Nginx Ingress Controller and would like to terminate TLS at your ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you may handle all TLS termination inside the cluster by configuring cert-manager to issue a certificate for each application's ingress.<br /> 
  
  The following example shows how port rerouting is achieved for the Nginx Ingress Controller. You would add an equivalent Transmission Control Protocol (TCP) service configuration to the profile of the add-on you are using. <br /><br />
 
