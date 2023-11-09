@@ -19,6 +19,15 @@ The `validator` command exposes the following subcommands.
 - [`uninstall`](#uninstall) - Uninstall the Validator framework and remove all sValidator plugins.
 
 
+## Prerequisites
+
+The Validator requires the following dependencies.
+
+- [Docker](https://docs.docker.com/get-docker) - The Validator requires Docker. 
+
+:::caution
+Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the [Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator and its plugins.
+:::
 
 ## Install
 
@@ -63,7 +72,33 @@ Generate a configuration file without proceeding with an actual installation
 palette validator install --config-only
 ```
 
-## Review Validation Results
+
+### Configuration Files
+
+After the install wizard completes, the Validator will generate a configuration file. You can use this configuration file to install the Validator in the future. You also need this configuration file to uninstall the Validator.
+
+The configuration file will be located in the `$HOME/.palette/validator` directory. The configuration file will be named `validator.yaml`.
+
+The install output will display the location of the configuration file. In the example below, the configuration file is located at `/Users/demo/.palette/validator/validator-20231109135306/validator.yaml`. The output is truncated for brevity.
+
+```shell hideClipboard {1,11}
+validator configuration file saved: /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
+Creating cluster "validator-kind-cluster" ...
+ ✓ Ensuring node image (kindest/node:v1.24.7) 🖼
+ • Preparing nodes 📦   ...
+ • Writing configuration 📜  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-validator-kind-cluster"
+You can now use your cluster with:
+kubectl cluster-info --context kind-validator-kind-cluster --kubeconfig /Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig
+```
+
+The kubeconfig file to the kind cluster will also be located in the `$HOME/.palette/validator` directory. The kubeconfig file will be named `kind-cluster.kubeconfig`. The exact location of the kubeconfig file will be displayed in the install output.
+
+
+### Review Validation Results
 
 The Validator will generate a report after the validation process is complete. All validations are stored as a Custom Resourced Definition (CRD) in the `validator` namespace. Each plugin you specified in the installation process will have its own CRD. Additionaly, the Validator will create a CRD containing all the validation results, and the Validator configurations. 
 
@@ -161,7 +196,7 @@ Status:
   State:                   Failed
 Events:                    <none>
 ```
-### Success
+#### Success
 
 The `State` field in the `Status` section of the `ValidationResult` CRD will indicate if the validation was successful or not. If the validation was successful, the `State` field will be set to `Succeeded`. 
 
@@ -182,7 +217,7 @@ Status:
   State:                   Succeeded
 ```
 
-### Fail
+#### Fail
 
 If the validation was not successful, the `State` field will be set to `Failed`. The `Conditions.Failures` section will contain additional information about the failure. In this example, several IAM permissions are missing for the `SpectroCloudRole` IAM role. The output is truncated for brevity.
 
@@ -203,3 +238,34 @@ Status:
 ```
 
 Use the error output to help you address the failure. In this example, the user needs to add the missing IAM permissions to the `SpectroCloudRole` IAM role. Other failures may require you to update your environment to meet the validation requirements.
+
+## Uninstall
+
+Use the `uninstall` subcommand to uninstall the Validator framework and remove all Validator plugins. To remove the Validator, you must specify the `--config-file` flag.
+
+The `uninstall` subcommand accepts the following flags.
+
+| **Short Flag** | **Long Flag**  | **Description**  | **Type**    |
+|-|----------|------------------|-------------|
+| `-f` |`--config-file` | Uninstall the Validator using a configuration file (required). Provide the file path to the configuration file. | string |
+| `-d` |`--delete-cluster` | Delete the Validator kind cluster. Does not apply if using a preexisting K8s cluster. Default: true. | bool |
+| `-h` |`--help`| Help with any command. | - |
+
+
+### Examples
+
+Remove the Validator, its plugins, and the kind cluster.
+
+```shell
+palette validator uninstall  \
+--config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml \
+--delete-cluster
+```
+
+Remove the Validator, its plugins, but not the kind cluster.
+
+```shell
+palette validator uninstall  \
+--config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml \
+--delete-cluster=false
+```
