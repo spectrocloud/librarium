@@ -34,6 +34,7 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
   * [`project`](project.md) -  Manage Palette Projects.
 
+  * [`validator`](validator.md) -  Deploy a kind cluster and install the Validator framework to validate your environment is ready for Palette.
 
 
 
@@ -62,3 +63,5 @@ Palette CLI supports the following global flags.
 - [PDE](pde.md)
 
 - [Project](project.md)
+
+- [Validator](validator.md)
