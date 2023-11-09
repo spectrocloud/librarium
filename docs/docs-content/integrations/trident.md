@@ -13,7 +13,7 @@ tags: ['packs', 'trident', 'storage']
 
 Astra Trident, is an open-source project backed and maintained by [NetApp](https://www.netapp.com/) and is designed to provide persistence storage to containerized applications using industry-standard interfaces, such as the Container Storage Interface (CSI).
 
-Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for Kubernetes workloads. Containerized applications are enabled to quickly and with minimal overhead consume persistent storage from NetApp’s portfolio of solutions. 
+Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for Kubernetes workloads. Containerized applications are enabled to quickly consume persistent storage from NetApp’s portfolio of solutions with minimal overhead. 
 
 - ONTAP (AFF/FAS/Select/Cloud/Amazon FSx for NetApp ONTAP)
 - Element software (NetApp HCI/SolidFire) 
@@ -123,7 +123,7 @@ spec:
 
 #### Create a Storage Class 
 
-Kubernetes supports the ability to bind statically or dynamically provisioned volumes to Pods. Statically provisioned volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your NetApp storage. You must create a storage class before you can request dynamically provisioned volumes. 
+Kubernetes supports the ability to bind statically or dynamically provisioned volumes to pods. Statically provisioned volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your NetApp storage. You must create a storage class before you can request dynamically provisioned volumes. 
 
 
 ```yaml
@@ -164,7 +164,7 @@ spec:
 
 #### Deploy a Pod and Mount the Volume.  
 
-The following code snippet is an example of a pod deployment. The Pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the Pod and provide persistent storage to this application.    
+The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide persistent storage to this application.    
 
 <br />
 
@@ -334,7 +334,7 @@ spec:
 
 #### Deploy a Pod and Mount the Volume.  
 
-The following code snippet is an example of a pod deployment. The Pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the Pod and provide persistent storage to this application.    
+The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide persistent storage to this application.    
 
 <br />
 
