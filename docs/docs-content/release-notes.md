@@ -46,7 +46,7 @@ Check out the following sections to learn about all the new features and improve
 - MAAS clusters can now be assigned tags so Palette can deploy nodes onto the MAAS machines matching the provided tags. Refer to the [Create and Manage MAAS Clusters](clusters/data-center/maas/create-manage-maas-clusters.md) to learn more about deploying MAAS clusters.
 
 
-- Self-hosted Palette installations, and Private Cloud Gateway (PCG), now support the ability to control the node affinity for the internal Palette components. You can configure the Palette Enterprise, or PCG cluster to deploy all internal component pods on control plane nodes. This is an option you enable during the install. 
+- Self-hosted Palette installations, and Private Cloud Gateway (PCG), now support the ability to control the node affinity for the internal Palette components for VMware vSphere target clusters. You can configure the Palette Enterprise, or PCG cluster to deploy all internal component pods on control plane nodes. This is an option you enable during the install. 
 
 
 - Palette, in a multi-SaaS environment, has been updated with a new feature that allows you and your team to receive platform notifications. This feature will keep you informed of any upcoming changes, news, or releases related to Palette. Additionally, you can now access product information and more through the new widget located in the bottom right corner of the Palette user interface. 
