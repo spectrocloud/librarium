@@ -365,6 +365,23 @@ spec:
 
 </Tabs>
 
+## Terraform
+
+You can retrieve details about the Astra Trident pack by using the following Terraform code.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "astra-trident" {
+  name    = "csi-trident"
+  version = "23.01.0"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
 ## References
 
 - [NetApp Astra Trident Docs](https://docs.netapp.com/us-en/trident/index.html)
