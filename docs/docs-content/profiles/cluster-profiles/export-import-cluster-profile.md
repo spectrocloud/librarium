@@ -18,11 +18,11 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 - [Macros](../../registries-and-packs/pack-constraints.md#pack-macros) used in the profile you want to export must be available in the target environment *before* you import the profile. 
 
-:::caution
+  :::caution
 
-If custom macros are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
+  If custom macros are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
 
-:::
+  :::
 
 
 ## Export Cluster Profile
