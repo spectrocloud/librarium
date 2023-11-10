@@ -23,7 +23,7 @@ The diagram below illustrates the components of these profile types and how you 
 
 ## Profile Layers
 
-Each cluster profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom manifests, as described in the table. It is possible to add a pack multiple times to the same cluster profile. To learn more about this scenario, review [Deploy Same Pack to Multiple Layers](../cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile.md).
+Each cluster profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom manifests, as described in the table. Adding a pack multiple times to the same cluster profile is possible. To learn more about this scenario, review [Deploy Same Pack to Multiple Layers](../cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile.md).
 
 | **Layer** | **Description** |
 |-----------|---------------------------|
