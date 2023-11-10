@@ -406,6 +406,8 @@ View the file to ensure variable values are set correctly.
 cat .goenv
 ```
 
+Source the **.goenv** file so that the 
+
 Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable to bind mount the host's **build** directory to the container. 
 
 
@@ -472,7 +474,7 @@ docker run --interactive --tty --rm \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
   ghcr.io/spectrocloud/tutorials:1.0.8 \
-  sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && govc datastore.rm -ds=$vcenter_datastore /packer_cache && cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 Depending on your machine and network, the build process can take 7-10 minutes to finish. 
