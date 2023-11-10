@@ -276,7 +276,7 @@ The `uninstall` subcommand accepts the following flags.
 | **Short Flag** | **Long Flag**  | **Description**  | **Type**    |
 |-|----------|------------------|-------------|
 | `-f` |`--config-file` | Uninstall the Validator using a configuration file (required). Provide the file path to the configuration file. | string |
-| `-d` |`--delete-cluster` | Delete the Validator kind cluster. Does not apply if using a preexisting K8s cluster. Default: true. | bool |
+| `-d` |`--delete-cluster` | Delete the Validator kind cluster. This not apply if using a preexisting Kubernetes cluster. Default: true. | bool |
 | `-h` |`--help`| Help with any command. | - |
 
 
