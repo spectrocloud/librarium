@@ -355,7 +355,7 @@ Use the **heredoc** script to create the **.packerenv** file shown below that co
 
 
 ```bash
-cat << EOF > .packer_govc_env
+cat << EOF > .packerenv
 PKR_VAR_vcenter_server=$(read -ep 'Enter vCenter Server URL without http:// or https://, for example: vcenter.spectrocloud.dev ' vcenter_server && echo $vcenter_server)
 PKR_VAR_vcenter_username=$(read -ep 'Enter vCenter Username value: ' vcenter_username && echo $vcenter_username)
 PKR_VAR_vcenter_password=$(read -ep 'Enter vCenter Password value: ' vcenter_password && echo $vcenter_password)
