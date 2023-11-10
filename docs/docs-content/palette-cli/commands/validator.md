@@ -102,6 +102,16 @@ The kubeconfig file to the kind cluster will also be located in the `$HOME/.pale
 
 The Validator will generate a report after the validation process is complete. All validations are stored as a Custom Resourced Definition (CRD) in the `validator` namespace. Each plugin you specified in the installation process will have its own CRD. Additionaly, the Validator will create a CRD containing all the validation results, and the Validator configurations. 
 
+
+:::tip
+
+The kind cluster's kubeconfig file will be located in the `$HOME/.palette/validator` directory. The kubeconfig file will be named `kind-cluster.kubeconfig`. The exact location is displayed in the install output. You can use this kubeconfig file to access the kind cluster and view the CRDs.
+
+Example - `/Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig`
+
+:::
+
+
 Below is an example output of the CRDs created by the Validator after a successful validation process. Two plugins were used in this example, the `aws` plugin and the `network` plugin
 
 
@@ -239,6 +249,21 @@ Status:
 
 Use the error output to help you address the failure. In this example, the user needs to add the missing IAM permissions to the `SpectroCloudRole` IAM role. Other failures may require you to update your environment to meet the validation requirements.
 
+
+#### Resolve Failures
+
+Each plugin may have its own set of failures. Resolving failures will depend on the plugin and the failure. Use the error output to help you address the failure. Below are some tips to help you resolve failures. 
+
+| **Plugin** | **Failure Scenario**  | **Guidance**  |
+|-|----------|------------------|
+| AWS | Missing IAM permissions| The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies. |
+| AWS | Insufficient Service Quota Buffer | The usage quota for a service or multiple service quotas is above the specified buffer. Refer to AWS [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) documentation to review the default limits. Use the [Service Quotas](https://console.aws.amazon.com/servicequotas/) console to request an increase to your account, or remove resources to reduce the usage. |  
+| Network | TCP connection error | The Validator was unable to establish a TCP connection to the specified host and port. Ensure the host and port are accessible from the Validator's current network. If the current network is not in scope, then ensure you conduct the test from a network that is in scope. Refer to the [Network Ports](../../architecture/networking-ports.md) resource for a list of Palette required ports. | 
+| Network| Unable to connect | This could be caused by several issues. If you require network connections to use a proxy server, specify the usagage of a network proxy and provide the required proxy server information. |
+| Network | Unable to resolve DNS | The Validator was unable to resolve the specified DNS name. Ensure the DNS name is valid and accessible from the Validator's current network default DNS resolver. Use network tools such as `dig` and `nslookup` to debug DNS issues. |
+| Network | Insufficient IP Addresses | The Validator was unable to find a sufficient number of IP addresses in the specified IP range. Ensure the IP range is valid and has enough IP addresses to satisfy the Validator's requirements.  Discuss these findings with your network administrator. |
+| vSphere| Missing permissions | The user account used by Palette or VerteX is missing one or more required permissions. Refer to [Palette Required vSphere Permissions](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#vsphere-permissions), or the [VerteX Required vSphere Permissions](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#vsphere-permissions) resource for information about required permissions. |
+
 ## Uninstall
 
 Use the `uninstall` subcommand to uninstall the Validator framework and remove all Validator plugins. To remove the Validator, you must specify the `--config-file` flag.
@@ -269,3 +294,4 @@ palette validator uninstall  \
 --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml \
 --delete-cluster=false
 ```
+
