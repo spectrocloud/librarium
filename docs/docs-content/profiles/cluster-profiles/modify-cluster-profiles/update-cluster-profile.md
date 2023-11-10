@@ -14,7 +14,7 @@ Cluster profile changes will generate an update notification on all the clusters
 
 :::caution
 
-We do not recommend updating cluster profiles that have been used to deploy clusters. Instead, we recommend creating a new profile version and pushing out the changes to the running clusters. For information on versioning profiles, check out [Version a Cluster Profile](version-cluster-profile.md). 
+We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend creating a new profile version. For information on versioning profiles, check out [Version a Cluster Profile](version-cluster-profile.md). 
 
 :::
 
