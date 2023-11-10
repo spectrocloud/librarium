@@ -66,7 +66,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required for AWS ECR.
 
-  - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - Required for the setup script. DO NOT USE a version greater than 1.0.0.
+  - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - This version is explicitly required for the setup script.
 
   - [zip](https://linux.die.net/man/3/zip) - required for the setup script.
 

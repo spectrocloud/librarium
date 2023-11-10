@@ -14,13 +14,9 @@ To complete the Edge Installation process, an Edge host must become a member of 
 Select the workflow that best fits your needs.
 
 - [Create an Edge Native Host Cluster](#create-an-edge-native-host-cluster)
-
 - [Add an Edge Host to a Host Cluster](#add-an-edge-host-to-a-host-cluster)
 
-
 ## Create an Edge Native Host Cluster
-
-
 
 Use the following steps to create a new host cluster so that you can add Edge hosts to the node pools.
 
@@ -55,11 +51,28 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to the **master-pool** and the **worker-pool**. When you have completed configuring the node pools, click on **Next**.
 
+10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
 
-10. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
+  | **Field** | **Description** |
+  |-------|-------------|
+  | IP Address | The static IP address assigned to your Edge host. This should be unique within your network. |
+  | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks.|
+  | Subnet mask | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network. |
+  | DNS server | The IP address of the DNS server your cluster uses for domain resolution. | 
+
+  If certain network information is already available, the corresponding fields will be pre-populated. 
+  
+  :::caution
+
+    After you create the cluster, you will not be able to change the IP address of your existing Edge hosts unless you remove and re-add them back to the cluster. 
+    
+  :::
 
 
-11. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
+11.  The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
+
+
+12. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
 
 After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the *Events* tab to review detailed logs.
 
@@ -119,8 +132,24 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 
 7. Navigate to the **Edge Hosts drop-down Menu** and select your Edge host.
 
+8. (Optional) When you select your Edge host, you can optionally specify a static IP address for the Edge host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
+    
+  | **Field** | **Description** |
+  |-------|-------------|
+  | IP Address | The static IP address assigned to your Edge host. This should be unique within your network. |
+  | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
+  | Subnet mask | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network. |
+  | DNS server | The IP address of the DNS server your cluster uses for domain resolution. | 
 
-8. Confirm your changes.
+  If certain network information is already available, the corresponding fields will be pre-populated. 
+  
+  :::caution
+
+    After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add them back to the cluster. 
+
+  :::
+
+9. Confirm your changes.
 
 The Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the **Events** tab to review detailed logs.
 
