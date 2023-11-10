@@ -263,6 +263,9 @@ Each plugin may have its own set of failures. Resolving failures will depend on 
 | Network | Unable to resolve DNS | The Validator was unable to resolve the specified DNS name. Ensure the DNS name is valid and accessible from the Validator's current network default DNS resolver. Use network tools such as `dig` and `nslookup` to debug DNS issues. |
 | Network | Insufficient IP Addresses | The Validator was unable to find a sufficient number of IP addresses in the specified IP range. Ensure the IP range is valid and has enough IP addresses to satisfy the Validator's requirements.  Discuss these findings with your network administrator. |
 | vSphere| Missing permissions | The user account used by Palette or VerteX is missing one or more required permissions. Refer to [Palette Required vSphere Permissions](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#vsphere-permissions), or the [VerteX Required vSphere Permissions](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#vsphere-permissions) resource for information about required permissions. |
+| vSphere | Missing tags | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags. |
+| vSphere | Folder missing or not accessible | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install. |
+
 
 ## Uninstall
 
