@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Duplicate a Pack in a Profile"
-title: "Duplicate a Pack in a Profile"
+sidebar_label: "Deploy Same Pack to Multiple Layers"
+title: "Deploy Same Pack to Multiple Layers"
 description: "Learn how to deploy the same pack to multiple layers in a Palette cluster profile."
 hide_table_of_contents: false
 sidebar_position: 30
@@ -9,11 +9,11 @@ tags: ["profiles", "cluster profiles"]
 
 
 
-Palette allows you to deploy the same pack to multiple layers, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may need to deploy two instances of the same microservice or application but with different configurations. In this case, you will need to launch the Postgres application twice with different configurations.
+Palette allows you to add a pack multiple times to the same cluster profile, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may need to deploy two instances of the same microservice or application but with different configurations. In this case, you will need to launch the Postgres application twice with different configurations.
 
-::: caution
+:::caution
 
-Depending on the application, you might have to place the duplicate pack in a different namespace, as resource conflicts could arise from the original pack having Kubernetes resources named identical to the one the second pack would create.
+Depending on the application, you might have to place the repeated pack in a different namespace, as resource conflicts could arise from the original pack having Kubernetes resources named identical to the one the second pack would create.
 
 :::
 
