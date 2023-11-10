@@ -16,7 +16,7 @@ You can modify cluster profiles by updating the following:
 
   :::caution
 
-  We do not recommend updating cluster profiles that have been used to deploy clusters. Instead, we recommend creating a new profile version and pushing out the changes to the running clusters. You can create multiple versions of a cluster profile with different pack configurations. For information on versioning profiles, review [Version a Cluster Profile](version-cluster-profile.md) guide.
+  If you want to update cluster profiles that have been used to deploy clusters, we recommend creating a new profile version and pushing out the changes to the running clusters. To learn how to version profiles, review [Version a Cluster Profile](version-cluster-profile.md) guide.
 
   :::
 
