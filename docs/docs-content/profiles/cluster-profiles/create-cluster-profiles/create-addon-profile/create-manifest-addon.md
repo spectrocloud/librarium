@@ -9,7 +9,8 @@ tags: ["profiles", "cluster profiles", "manifest", "add-on"]
 
 
 
-You can extend the list of integrations by adding custom manifests to your cluster profile. Use the following steps to create a cluster profile that adds a custom manifest layer.
+You can extend the list of integrations by adding custom manifests to your cluster profile. Use the following steps to create a cluster profile by adding layers using manifests.
+
 
 ## Prerequisites
 

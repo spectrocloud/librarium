@@ -9,7 +9,7 @@ tags: ["profiles", "cluster profiles", "helm", "add-on"]
 
 
 
-You can extend the list of integrations by adding Helm charts from a public or private registries to your cluster profile. Use the following steps to create an add-on cluster profile that adds a Helm chart layer.
+You can extend the list of integrations by adding Helm charts from a public or private registry to your cluster profile. Use the following steps to create a cluster profile by adding layers using Helm charts.
 
 ## Prerequisites
 
