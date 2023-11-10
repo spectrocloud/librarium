@@ -30,7 +30,9 @@ K3s is only available for Edge host deployments. Refer to the Edge documentation
 |-------------|----------------|
 | `cluster.config.cluster-cidr`| Specifies the CIDR range that can be used by pods in the cluster. | 
 | `cluster.config.service-cidr`| Specifies the CIDR range that can be used by services in the cluster.|
-|
+| `kube-apiserver-arg`| This parameter contains extra arguments for the Kubernetes API server, such as enabling audit logging, enabling certain authorization modes, and setting profiling and secure-port.|
+|`kube-controller-manager-arg` | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling. |
+| `kubelet-arg` |  This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port. |
 
 ### Usage
 
