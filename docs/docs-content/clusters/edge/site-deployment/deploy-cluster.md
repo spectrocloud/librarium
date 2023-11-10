@@ -365,6 +365,15 @@ PKR_VAR_vcenter_resource_pool=$(read -ep 'Enter vCenter Resource Pool name: ' vc
 PKR_VAR_vcenter_folder=$(read -ep 'Enter vCenter Folder name: ' vcenter_folder && echo $vcenter_folder)
 PKR_VAR_vcenter_datastore=$(read -ep 'Enter vCenter Datastore name: ' vcenter_datastore && echo $vcenter_datastore)
 PKR_VAR_vcenter_network=$(read -ep 'Enter vCenter Network name: ' vcenter_network && echo $vcenter_network)
+vcenter_server=$PKR_VAR_vcenter_server
+vcenter_username=$PKR_VAR_vcenter_username
+vcenter_password=$PKR_VAR_vcenter_password
+vcenter_datacenter=$PKR_VAR_vcenter_datacenter
+vcenter_datastore=$PKR_VAR_vcenter_datastore
+vcenter_resource_pool=$PKR_VAR_vcenter_resource_pool
+vcenter_folder=$PKR_VAR_vcenter_folder
+vcenter_cluster=$PKR_VAR_vcenter_cluster
+vcenter_network=$PKR_VAR_vcenter_network
 EOF
 ```
 View the file to ensure you have filled in the details correctly. 
@@ -374,7 +383,15 @@ View the file to ensure you have filled in the details correctly.
 cat .packerenv
 ```
 
-You will use the **.packerenv** file later in the tutorial when you start Packer.
+You will use the **.packerenv** file later in the tutorial when you start Packer as well as when you provision your VMs.
+
+After you create the **.packerenv** file, source this file to set the variables in your environment.
+Echo one of the variables to ensure the variables are accessible on your host machine.
+
+```shell
+source .packerenv
+echo $PKR_VAR_vcenter_server
+```
 
 Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable to bind mount the host's **build** directory to the container. 
 
@@ -433,7 +450,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 
   :::
 
-Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also upload and keep a copy of the **palette-edge-installer.iso** to the **packer_cache/** directory in the specified datastore. 
+Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also delete any existing packer cache, upload and keep a copy of the **palette-edge-installer.iso** to the **packer_cache/** directory in the specified datastore. 
   
 
 ```bash
@@ -441,7 +458,7 @@ docker run --interactive --tty --rm \
   --env-file .packerenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
   ghcr.io/spectrocloud/tutorials:1.0.8 \
-  sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  sh -c "govc datastore.rm -ds=$vcenter_datastore /packer_cache && cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 Depending on your machine and network, the build process can take 7-10 minutes to finish. 
@@ -465,34 +482,7 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VM and reference the VM template that Packer created.  Remember that the VM instances you are deploying simulate bare metal devices.
 
 
-GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the **.packerenv** file. Use the following command to source the **.packerenv** file and echo one of the variables to ensure the variables are accessible on your host machine. 
-
-```bash
-source .packerenv
-echo $PKR_VAR_vcenter_server
-```
-
-Use the following command to create a **.goenv** environment file. The  **.goenv** file contains the VMware vCenter credentials and information required to deploy VMs in your VMware environment. 
-
-```bash
-cat << EOF > .goenv
-vcenter_server=$PKR_VAR_vcenter_server
-vcenter_username=$PKR_VAR_vcenter_username
-vcenter_password=$PKR_VAR_vcenter_password
-vcenter_datacenter=$PKR_VAR_vcenter_datacenter
-vcenter_datastore=$PKR_VAR_vcenter_datastore
-vcenter_resource_pool=$PKR_VAR_vcenter_resource_pool
-vcenter_folder=$PKR_VAR_vcenter_folder
-vcenter_cluster=$PKR_VAR_vcenter_cluster
-vcenter_network=$PKR_VAR_vcenter_network
-EOF
-```
-View the file to ensure variable values are set correctly.
-
-```bash
-cat .goenv
-```
-
+GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the **.packerenv** file. 
 
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
 
@@ -510,7 +500,7 @@ The **edge/vmware/clone_vm_template/** directory in the container has the follow
 - **delete-edge-host.sh** - Deletes the VMs.
 
 
-- **setenv.sh** - Defines the GOVC environment variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment variables refer to the variables you have defined in the **.goenv** file. 
+- **setenv.sh** - Defines the GOVC environment variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment variables refer to the variables you have defined in the **.packerenv** file. 
 
 
 Below is the **setenv.sh** file content for your reference. This tutorial does not require you to modify these configurations. 
@@ -545,7 +535,7 @@ Issue the following command to clone the VM template and provision three VMs.
 
 ```bash
 docker run -it --rm \
-  --env-file .goenv \
+  --env-file .packerenv \
   ghcr.io/spectrocloud/tutorials:1.0.8 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
