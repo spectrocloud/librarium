@@ -474,7 +474,7 @@ docker run --interactive --tty --rm \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
   ghcr.io/spectrocloud/tutorials:1.0.8 \
-  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && govc datastore.rm -ds=$vcenter_datastore /packer_cache && cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && govc datastore.rm -ds=$vcenter_datastore /packer_cache && cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 Depending on your machine and network, the build process can take 7-10 minutes to finish. 
