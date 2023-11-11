@@ -36,7 +36,22 @@ K3s is only available for Edge host deployments. Refer to the Edge documentation
 
 ### Usage
 
+You can add K3s to an Edge cluster profile as the Kubernetes layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
+
 ### Terraform
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "edge-k3s"
+  version = "1.27.5"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
 
 </TabItem>
 </Tabs>
