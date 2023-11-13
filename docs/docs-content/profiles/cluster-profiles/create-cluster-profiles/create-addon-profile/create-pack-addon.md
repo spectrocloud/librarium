@@ -9,7 +9,8 @@ tags: ["profiles", "cluster profiles", "pack", "add-on"]
 
 
 
-Use the following steps to create an add-on cluster profile that adds a pack layer.
+Use the following steps to create a cluster profile by adding one or more layers using packs.
+
 
 ## Prerequisites
 

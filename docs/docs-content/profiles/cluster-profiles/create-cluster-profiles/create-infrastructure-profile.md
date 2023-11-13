@@ -8,7 +8,7 @@ tags: ["profiles", "cluster profiles"]
 ---
 
 
-Create an infrastructure profile by adding infrastructure layers composed of an Operating System (OS), Kubernetes, Network, and Storage.
+Create an infrastructure profile by adding layers composed of an Operating System (OS), Kubernetes, Network, and Storage packs.
 
 ## Prerequisites
 
