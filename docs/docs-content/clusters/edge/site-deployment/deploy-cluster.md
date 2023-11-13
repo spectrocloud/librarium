@@ -384,7 +384,7 @@ echo $PKR_VAR_vcenter_server
 ```
 
 After you create the **.packerenv** file, create another environment variable file named **.goenv**. 
-GOVC is the tool you will be using to deploy a VM and reference the VM template that Packer created, and it requires the same variables that you provided to Packer. 
+[GOVC](https://github.com/vmware/govmomi/blob/main/govc/USAGE.md) is the tool you will be using to interact with vSphere, and it requires the same variables that you provided to Packer. 
 
 ```shell
 cat << EOF > .goenv
@@ -427,7 +427,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 
 - The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.9`.
 
-- The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"` shell sub-command deletes any pre-existing **packer_cache** because there is [a bug with Packer's vSphere plugin](https://github.com/hashicorp/packer-plugin-vsphere/issues/55) that makes it unable to overwrite the existing ISO file in **packer_cache**. We make sure to delete any existing cache so you don't end up accidentally using someone else's ISO file. 
+- The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"` shell sub-command deletes any pre-existing **packer_cache**.  A known [issue]((https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum logic to ignore previous builds,  and reuse previously created ISO found in the **packer_cache** folder. The delete script removes any existing packer cache to prevent re-using a previously created ISO.
 
 - The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **/edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
 
