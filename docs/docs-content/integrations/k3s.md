@@ -34,6 +34,8 @@ K3s is available for Edge host deployments as well as virtual clusters that you 
 |`kube-controller-manager-arg` | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling. |
 | `kubelet-arg` |  This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port. |
 
+You can add cloud-init stages, which allow you to customize your instances declaratively. The cloud-init stages are exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md) reference.
+
 ### Usage
 
 You can add K3s to an Edge cluster profile as the Kubernetes layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
