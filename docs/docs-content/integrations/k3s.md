@@ -12,8 +12,6 @@ tags: ["packs", "kubernetes", "k3s", "edge"]
 
 K3s is a lightweight distribution of Kubernetes, specifically designed for resource-constrained environments and IoT applications. Unlike standard Kubernetes with multiple binaries for its various components, K3s is packaged as a single binary with a lightweight storage backend and minimal external dependencies. For more information about K3s, refer to [K3s documentation](https://docs.k3s.io/). 
 
-K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to the Edge documentation and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
-
 ## Versions Supported
 
 <Tabs queryString="versions">
@@ -39,7 +37,7 @@ You can add cloud-init stages, which allow you to customize your instances decla
 
 ### Usage
 
-You can add K3s to an Edge cluster profile as the Kubernetes layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
+K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to tje [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
 
 #### Configure OIDC Identity Provider for Edge Deployments
 
