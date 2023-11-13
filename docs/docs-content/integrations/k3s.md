@@ -6,13 +6,13 @@ hide_table_of_contents: true
 type: "integration"
 category: ['kubernetes', 'amd64', 'fips']
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: ''
+logoUrl: 'https://registry.spectrocloud.com/v1/edge-k3s/blobs/sha256:5b7f8a80330d6938056848905238efbbd085e2f0f86fd03d7be10ccdabf791c7?type=image/png'
 tags: ["packs", "kubernetes", "k3s", "edge"]
 ---
 
-K3s is a lightweight distribution of Kubernetes, specifically designed for resource-constrained environments and IoT (Internet of Things) applications. Unlike standard Kubernetes with multiple binaries for its various components, K3s is packaged as a single binary with a lightweight storage backend, with minimal external dependencies. For more information about K3s, refer to [K3s documentation](https://docs.k3s.io/). 
+K3s is a lightweight distribution of Kubernetes, specifically designed for resource-constrained environments and IoT applications. Unlike standard Kubernetes with multiple binaries for its various components, K3s is packaged as a single binary with a lightweight storage backend and minimal external dependencies. For more information about K3s, refer to [K3s documentation](https://docs.k3s.io/). 
 
-K3s is available for Edge host deployments as well as virtual clusters that you can create from cluster groups. Refer to the Edge documentation and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
+K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to the Edge documentation and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
 
 ## Versions Supported
 
@@ -21,7 +21,7 @@ K3s is available for Edge host deployments as well as virtual clusters that you 
 
 ### Prerequisites
 
-- An edge device with AMD64(x86_64) processor architecture
+- An edge device with AMD64(x86_64) processor architecture or a Palette Virtual Cluster. 
 - A minimum of 2 CPU cores and 1GB memory. 
 
 ### Parameters
@@ -33,6 +33,7 @@ K3s is available for Edge host deployments as well as virtual clusters that you 
 | `kube-apiserver-arg`| This parameter contains extra arguments for the Kubernetes API server, such as enabling audit logging, enabling certain authorization modes, and setting profiling and secure-port.|
 |`kube-controller-manager-arg` | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling. |
 | `kubelet-arg` |  This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port. |
+| `pack.palette.config.oidc.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the K3s pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
 You can add cloud-init stages, which allow you to customize your instances declaratively. The cloud-init stages are exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md) reference.
 
@@ -45,7 +46,7 @@ You can add K3s to an Edge cluster profile as the Kubernetes layer. Refer to the
 You can modify the Kubeadm file to configure your Edge cluster to use an OIDC Identity Provider (IDP) for authentication. 
 You can use a custom third-party IDP such as Okta or you can use Palette as your IDP. 
 
-When you add the PXK-E pack to a cluster profile, Palette displays the OIDC IDP options listed below:
+When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP options listed below:
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
@@ -93,6 +94,10 @@ After you have configured the IDP for authentication, you can proceed to create 
 #### Configure OIDC Identity Provider for Palette Virtual Clusters
 
 If you are using K3s in a Palette Virtual Cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
+
+#### Add a Certificate for Reverse Proxy
+
+You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](frp.md) guide.
 
 
 ### Terraform
