@@ -464,7 +464,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 
   :::
 
-Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also delete any existing packer cache upload and keep a copy of the **palette-edge-installer.iso** to the **packer_cache/** directory in the specified datastore. 
+Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also delete any existing **packer_cache** before uploading and keeping a copy of the **palette-edge-installer.iso** to the **packer_cache/** directory in the specified datastore. 
   
 
 ```bash
