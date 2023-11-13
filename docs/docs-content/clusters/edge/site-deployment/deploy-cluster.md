@@ -373,7 +373,7 @@ View the file to ensure you have filled in the details correctly.
 cat .packerenv
 ```
 
-You will use the **.packerenv** file later in the tutorial when you start Packer as well as when you provision your VMs.
+You will use the **.packerenv** file later in the tutorial when you start Packer.
 
 After you create the **.packerenv** file, source this file to set the variables in your environment.
 Echo one of the variables to ensure the variables are accessible on your host machine.
@@ -406,8 +406,6 @@ View the file to ensure variable values are set correctly.
 cat .goenv
 ```
 
-Source the **.goenv** file so that the 
-
 Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable to bind mount the host's **build** directory to the container. 
 
 
@@ -429,8 +427,9 @@ The next step is to use the following `docker run` command to trigger Packer bui
 
 - The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.9`.
 
+- The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"` shell sub-command deletes any pre-existing **packer_cache** because there is [a bug with Packer's vSphere plugin](https://github.com/hashicorp/packer-plugin-vsphere/issues/55) that makes it unable to overwrite the existing ISO file in **packer_cache**. We make sure to delete any existing cache so you don't end up accidentally using someone else's ISO file. 
 
-- The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
+- The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **/edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
 
   - The `-force` flag destroys any existing template. 
   - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](../architecture/#minimum-device-requirements).
@@ -511,8 +510,7 @@ The next step is to use the following `docker run` command to clone the VM templ
 The **edge/vmware/clone_vm_template/** directory in the container has the following files:
 
 - **deploy-edge-host.sh** - Provisions the VMs.
-
-
+- **delete-packer-cache.sh** - Delete any cached ISO files. 
 - **delete-edge-host.sh** - Deletes the VMs.
 
 
