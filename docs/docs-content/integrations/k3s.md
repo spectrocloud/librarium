@@ -20,7 +20,7 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 ### Prerequisites
 
 - An edge device with AMD64(x86_64) processor architecture or a Palette Virtual Cluster. 
-- A minimum of 2 CPU cores and 1GB memory. 
+- A minimum of 2 CPU cores and 1 GB memory. 
 
 ### Parameters
 
@@ -30,18 +30,18 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 | `cluster.config.service-cidr`| Specifies the CIDR range that can be used by services in the cluster.|
 | `kube-apiserver-arg`| This parameter contains extra arguments for the Kubernetes API server, such as enabling audit logging, enabling certain authorization modes, and setting profiling and secure-port.|
 |`kube-controller-manager-arg` | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling. |
-| `kubelet-arg` |  This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port. |
+| `kubelet-arg` |  This parameter contains extra arguments for Kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port. |
 | `pack.palette.config.oidc.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the K3s pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
 You can add cloud-init stages, which allow you to customize your instances declaratively. The cloud-init stages are exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md) reference.
 
 ### Usage
 
-K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to tje [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
+K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
 
 #### Configure OIDC Identity Provider for Edge Deployments
 
-You can modify the Kubeadm file to configure your Edge cluster to use an OIDC Identity Provider (IDP) for authentication. 
+You can modify the kubeadm file to configure your Edge cluster to use an OIDC Identity Provider (IDP) for authentication. 
 You can use a custom third-party IDP such as Okta or you can use Palette as your IDP. 
 
 When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP options listed below:
@@ -64,7 +64,7 @@ If your IDP uses Security Assertion Markup Language (SAML) authentication, then 
 
 To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to your profile, and then follow these steps:
 
-1. Add the following OIDC parameters to the `apiServer.extraArgs` section of your Kubeadm file when creating a cluster profile.
+1. Add the following OIDC parameters to the `apiServer.extraArgs` section of your kubeadm file when creating a cluster profile.
 
    ```yaml
    cluster:
