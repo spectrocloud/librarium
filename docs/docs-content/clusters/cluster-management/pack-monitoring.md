@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Pack Monitoring"
 title: "Pack Monitoring"
-description: "Learn how-to to monitor the status of packs in Palette"
+description: "Learn how to to monitor the status of packs in Palette"
 hide_table_of_contents: false
 sidebar_position: 140
 ---
