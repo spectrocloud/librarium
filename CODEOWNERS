@@ -1,7 +1,7 @@
 # Docs & Tutorials
-content/ @spectrocloud/docs-education
+docs/docs-content/ @spectrocloud/docs-education
 # Images
-assets/docs/images/ @spectrocloud/docs-education
+static/assets/docs/images/ @spectrocloud/docs-education
 # Writing Checks
 vale/  @spectrocloud/docs-education
 # CI/CD Related
