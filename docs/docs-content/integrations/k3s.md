@@ -24,6 +24,12 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 
 ### Parameters
 
+Since you can deploy both Palette Virtual Clusters and Edge clusters using K3s, you have different configuration options depending on the type of cluster
+
+#### Edge Cluster
+
+The following is a list of notable parameters when you deploy an Edge cluster using K3s:
+
 |**Parameter**|**Description** |
 |-------------|----------------|
 | `cluster.config.cluster-cidr`| Specifies the CIDR range that can be used by pods in the cluster. | 
@@ -35,9 +41,25 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 
 You can add cloud-init stages, which allow you to customize your instances declaratively. The cloud-init stages are exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md) reference.
 
+#### Palette Virtual Cluster
+Since the Palette Virtual Cluster is a virtual cluster that you are setting up inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The kubeadm file you get includes parameters that offer you a higher degree of customization. 
+The following is a list of notable parameters when you deploy a Palette Virtual Cluster cluster using K3s:
+
+|**Parameter**|**Description** |
+|-------------|----------------|
+|`enableHA`| Determines whether the control plane is deployed in high availability mode. If you set this parameter to true, make sure to adjust the number of replicas and use an external datastore. |
+|`defaultImageRegistry` | Specifies the default registry from which images are pulled. The value of this parameter will be prepended to all deployed virtual cluster images. If an image has already been deployed as part of the virtual cluster, the deployed images within the virtual cluster will not be rewritten.|
+|`sync` | Specifies which Kubernetes resources are synced between the virtual and host clusters. |
+|`storage` | Specifies storage settings such as persistence and PVC size. By default, storage of the virtual cluster uses the same storage class as the host cluster, but you can also optionally specify a different storage class. |
+|`ingress` | Configures the ingress resource that allows you to access the virtual cluster |
+
 ### Usage
 
 K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
+
+:::info
+In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/) guide. 
+:::
 
 #### Configure OIDC Identity Provider for Edge Deployments
 
