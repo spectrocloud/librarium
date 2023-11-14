@@ -36,7 +36,7 @@ Use the `install` subcommand to install the Validator framework and configure Va
 
 :::info
 
-A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. 
+A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the [Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
 
 :::
 
@@ -100,19 +100,19 @@ The kubeconfig file to the kind cluster will also be located in the `$HOME/.pale
 
 ### Review Validation Results
 
-The Validator will generate a report after the validation process is complete. All validations are stored as a Custom Resourced Definition (CRD) in the `validator` namespace. Each plugin you specified in the installation process will have its own CRD. Additionaly, the Validator will create a CRD containing all the validation results, and the Validator configurations. 
+The Validator will generate a report after the validation process is complete. All validations are stored as a [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CR) in the `validator` namespace. Each plugin you specified in the installation process will have its own CR. Additionaly, the Validator will create a CR containing all the validation results, and the Validator configurations. 
 
 
 :::tip
 
-The kind cluster's kubeconfig file will be located in the `$HOME/.palette/validator` directory. The kubeconfig file will be named `kind-cluster.kubeconfig`. The exact location is displayed in the install output. You can use this kubeconfig file to access the kind cluster and view the CRDs.
+The kind cluster's kubeconfig file will be located in the `$HOME/.palette/validator` directory. The kubeconfig file will be named `kind-cluster.kubeconfig`. The exact location is displayed in the install output. You can use this kubeconfig file to access the kind cluster and view the CRs.
 
 Example - `/Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig`
 
 :::
 
 
-Below is an example output of the CRDs created by the Validator after a successful validation process. Two plugins were used in this example, the `aws` plugin and the `network` plugin
+Below is an example output of the CRs created by the Validator after a successful validation process. Two plugins were used in this example, the `aws` plugin and the `network` plugin
 
 
 ```shell hideClipboard
@@ -123,7 +123,7 @@ validationresults.validation.spectrocloud.labs   2023-11-09T21:02:12Z
 validatorconfigs.validation.spectrocloud.labs    2023-11-09T21:02:12Z
 ```
 
-You can use the `kubectl` command to view the validation results. To review all the results collectively, use the `describe` command to display the `validationresults` CRD. 
+You can use the `kubectl` command to view the validation results. To review all the results collectively, use the `describe` command to display the `validationresults` CR. 
 
 ```shell
 kubectl describe validationresults --namespace validator
@@ -208,9 +208,9 @@ Events:                    <none>
 ```
 #### Success
 
-The `State` field in the `Status` section of the `ValidationResult` CRD will indicate if the validation was successful or not. If the validation was successful, the `State` field will be set to `Succeeded`. 
+The `State` field in the `Status` section of the `ValidationResult` CR will indicate if the validation was successful or not. If the validation was successful, the `State` field will be set to `Succeeded`. 
 
-In the example below, the `State` field is set to `Succeeded` for the `validator-plugin-aws-validator-plugin-aws` CRD. This check was successful because the usage for all service quotas is below the specified buffer. The output is truncated for brevity.
+In the example below, the `State` field is set to `Succeeded` for the `validator-plugin-aws-validator-plugin-aws` CR. This check was successful because the usage for all service quotas is below the specified buffer. The output is truncated for brevity.
 
 ```yaml hideClipboard {12}
 Name:         validator-plugin-aws-validator-plugin-aws
@@ -297,4 +297,3 @@ palette validator uninstall  \
 --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml \
 --delete-cluster=false
 ```
-
