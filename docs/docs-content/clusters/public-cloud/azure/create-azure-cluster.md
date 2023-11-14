@@ -1,37 +1,35 @@
 ---
 sidebar_label: "Create and Manage Azure IaaS Cluster"
 title: "Create and Manage Azure IaaS Cluster"
-description: "The methods of creating an Azure cluster in Palette"
+description: "Learn how to deploy and manage Azure clusters with Palette."
 hide_table_of_contents: false
 tags: ["public cloud", "azure"]
 sidebar_position: 20
 ---
 
 
-You can deploy Azure clusters in the Palette platform. This section highlights the prerequisites and deployment steps of Palette Azure clusters.
+Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that Palette manages.
 
-Azure clusters can be created under the following scopes:
-
-* Tenant Admin
-
-* Project Scope - This is the recommended scope.
-
-Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
 ## Prerequisites
 
-The following prerequisites must be met before deploying a workload cluster in Azure:
+- Access to an Azure cloud account.
 
-1. You must have an active Azure cloud account with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
+- Palette integration with Azure account. Review [Create an Azure Cloud account](azure-cloud.md) for guidance.
 
+- An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
-2. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud account](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) section.
+- If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC. 
+    - Virtual CPU (vCPU)
+    - Virtual Network (VNet)
+    - Static Public IP addresses 
+    - Azure Virtual Private Network (VPN) Gateway
+    - Load balancers
+    - VNet Network Address Translation (NAT) Gateway
 
+  <br />
 
-3. A [cluster profile created](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for Azure cloud.
-
-
-<video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video>
+<!-- <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video> -->
 
 ## Deploy an Azure Cluster with Palette
 
@@ -39,31 +37,43 @@ The following steps need to be performed to provision a new Azure cluster:
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
+2. Ensure you are in the correct project scope.
 
-2. Click on **Clusters** from the left **Main Menu**.
+3. From the left **Main Menu** select **Clusters**, and click on the **Add New Cluster** button.
+
+4. Select **Deploy New Cluster** on the next page that Palette displays. This will allow you to deploy a cluster using your own cloud account.
+
+5. Select **Azure** and click on the **Start Azure Configuration** button.
+
+6. Fill out the following basic information, and click **Next** to continue.
+
+  | **Field** | **Description** |
+  |-----------|-----------------|
+  | **Cluster Name**| A custom name for the cluster. |
+  | **Description**| Use the description to provide context about the cluster.|
+  | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:france south`|
+  | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your Azure account information. |
+
+  To learn how to add an Azure account, review the [Register and Manage Azure Cloud Account](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) guide.
 
 
-2. In the cluster page click **+ Add New Cluster** button and select **create new cluster**.
+7. Select the Azure cluster profile you created, and click on **Next**. Palette displays the cluster profile layers.
 
 
-3. Select **Azure** as the cloud type and click on **Start Azure Configuration** to input cluster information
+8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out ??? if you need more guidance. <<<Need reference here to OIDC info.>>>
 
 
-4. Provide the basic cluster information such as **Name**, **Description** (optional), and **Tags** (optional) and select the [**Azure Cloud Account**](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) from the drop-down menu. Azure cloud accounts with credentials must be pre-configured in project settings. Click on the **Next** button.
+9. Click on **Next** to continue.
 
 
-5. Select the **Cluster Profile** created for the Azure environment. The profile definition will be used as the cluster construction template. Click on **Next**.
+10. Provide the following cluster configuration information.
 
-
-6. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the Cluster Profile. Click on **Next**.
-
-
-7. Provide the Azure Cloud account placement information for cluster configuration. If you have custom storage accounts or storage container available, they will be eligible for attachment. To learn more about attaching custom storage to a cluster, check out the [Azure storage](architecture#azure-storage) page.
+  If you have custom storage accounts or a storage container available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](architecture#azure-storage).
 
 
 :::caution
 
-If the Azure account is [registered](azure-cloud.md#enable-azure-cloud-account-registration-to-palette) with the option **Disable Properties** enabled and the cluster configuration option **Static Placement** is enabled, then the network information from your Azure account will not be imported by Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty.
+If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-properties). 
 
 :::
 
@@ -71,11 +81,11 @@ If the Azure account is [registered](azure-cloud.md#enable-azure-cloud-account-r
 
 |**Parameter**| **Description**|
 |-------------|---------------|
-| **Subscription** | From the drop-down menu, select the subscription that will be used to access Azure Services.|
-| **Region** | Select a region in Azure in which the cluster should be deployed.|
-| **Resource Group** | Select the Azure resource group in which the cluster should be deployed.|
-| **Storage Account** | Optionally provide the storage account. Review the [Azure Storage section](architecture#azure-storage) for a custom storage use cases. |
-| **Storage Container**| Optionally provide the Azure storage container. Review the [Azure Storage section](architecture#azure-storage) for a custom storage use cases.|
+| **Subscription** | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.|
+| **Region** | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.|
+| **Resource Group** | Select the name of the resource group that contains the Azure resources you will be accessing.|
+| **Storage Account** | (Optionally). If you have a custom storage account you want to use, provide the storage account name. For information about use cases for custom storage, review [Azure Storage](architecture#azure-storage).|
+| **Storage Container**| (Optional) If you will be using a custom storage account and custom container, provide the storage container name. For information about use cases for custom storage, review [Azure Storage](architecture#azure-storage).|
 | **SSH Key** | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats. |
 | **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
 |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
@@ -112,6 +122,8 @@ If the Azure account is [registered](azure-cloud.md#enable-azure-cloud-account-r
 When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
 
 <br />
+
+and click on **Next** to continue.
 
 7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](../../cluster-management/node-pool.md) documentation page.
 
