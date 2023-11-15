@@ -7,11 +7,11 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-Palette supports deploying and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that is managed by Palette.
+Palette supports deploying and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that Palette manages.
 
 ## Prerequisites
 
-* A [Palette Account](https://console.spectrocloud.com/)
+* A [Palette Account](https://console.spectrocloud.com/).
 
 * An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
@@ -21,42 +21,38 @@ Palette supports deploying and managing Kubernetes clusters in an Azure account.
 
 To register an Azure cloud account in the Palette console
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
+2. From the left **Main Menu**, select **Tenant Settings**. 
 
-2.  Navigate to the **Project Overview** drop-down and switch to the **Tenant Admin**. 
+3. Select **Cloud Accounts** in the Tenant Settings menu 
 
+4. Locate **Azure**, and click **+ Add Azure Account**.
 
-3.  Select **Tenant Settings** from the left **Main Menu**. 
+5. Fill out the following information:
 
-
-4. From the Tenant Settings go to **Cloud Accounts** and click on **+ Add Azure Account**.
-
-
-5. The Azure cloud account wizard requires the following information:
-
-|   **Basic Information** |Description|
+|   **Basic Information** |**Description**|
 |-------------------------|-----------|
-|Account Name| A custom account name|
-|Client ID| Unique client Id from Azure console|
-|Tenant ID| Unique tenant Id from Azure console|
-|[Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)| Azure secret for authentication|
-|Tenant Name| An optional tenant name|
-|[Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties)| To disable the import of Azure networking details.|
-|Toggle **Connect Private Cloud Gateway**| An option to select the [Self-Hosted PCG](gateways.md) already created from the drop-down menu to link it to the cloud account. |
+|Account Name| A custom account name.|
+|Client ID| Unique client ID from Azure Management Portal.|
+|Tenant ID| Unique tenant ID from Azure Management Portal.|
+|Client Secret| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) |
+|Tenant Name| An optional tenant name.|
+|Disable Properties| This option disables importing Azure networking details. To learn more, refer to the [Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties) section. |
+|Private Cloud Gateway| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link it to the cloud account.|
 
 :::info
 
-  For existing cloud accounts go to **Edit** and toggle the **Connect Private Cloud Gateway** option to select the created Gateway from the drop-down menu.
+  For existing cloud accounts, select the account and click **Edit**. Toggle the **Connect Private Cloud Gateway** option to select the created PCG from the **drop-down Menu**.
 :::
 
 
-6. Click on the **Confirm** button to complete the wizard.
+6. Click **Confirm** to complete the registration.
 
 
 ### Disable Properties  
 
-When the above information is provided to the cloud account creation wizard, Azure networking details will be sent to Palette console, which you can disable. To disable network calls from the Palette console to the Azure account, you can click **Disable Properties**.  
+When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the Azure account. To disable network calls, select the **Disable Properties** option.  
 
 For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the client secret:
 
@@ -69,39 +65,26 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
 
-<br />
 
 ## Validate
 
-To validate the Azure Cloud account creation in Palette console:
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+2. From the left **Main Menu**, select **Tenant Settings**. 
 
+3. Select **Cloud Accounts** in the Tenant Settings menu.
 
-2.  Navigate to the **Project Overview** drop-down and switch to the **Tenant Admin**. 
+4. The added cloud account is listed under **Azure** with all other available Azure cloud accounts. 
 
-
-3.  Select **Tenant Settings** from the left **Main Menu**. 
-
-
-4. From the Tenant Settings go to **Cloud Accounts**
-
-
-5. Below the label **Azure**, the available Azure cloud accounts are listed.
-
-<br />
 
 ## Manage Azure Accounts
 After an Azure cloud account has been registered with Palette, you can change the integration settings or remove the Azure account with **Edit and Delete** capabilities respectively.
 
 ### Edit an Azure Account
 
-To edit the Azure Cloud account created in Palette console:
+Use the following steps to edit an Azure Cloud account.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-
-2.  Navigate to the **Project Overview** drop-down and switch to the **Tenant Admin**. 
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 
 3.  Select **Tenant Settings** from the left **Main Menu**. 

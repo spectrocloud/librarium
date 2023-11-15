@@ -19,9 +19,9 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 - An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
-- If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC. 
+- If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in Azure when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred Azure region to create the following resources. Note that Palette does not create these resources if you specify an existing VNet. 
     - Virtual CPU (vCPU)
-    - Virtual Network (VNet)
+    - VNet
     - Static Public IP addresses 
     - Azure Virtual Private Network (VPN) Gateway
     - Load balancers
@@ -31,9 +31,9 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 <!-- <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video> -->
 
-## Deploy an Azure Cluster with Palette
+## Deploy an Azure Cluster
 
-The following steps need to be performed to provision a new Azure cluster:
+Use the following steps to deploy an Azure cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
