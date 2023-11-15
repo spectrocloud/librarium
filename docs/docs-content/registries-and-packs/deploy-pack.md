@@ -1,8 +1,8 @@
 ---
-sidebar_label: 'Deploy a Custom Pack'
-title: 'Deploy a Custom Pack'
-description: 'How to create and deploy a custom pack using the manifest files or Helm charts in Spectro Cloud.'
-icon: ''
+sidebar_label: "Deploy a Custom Pack"
+title: "Deploy a Custom Pack"
+description: "Learn how to deploy applications to a Kubernetes cluster with custom add-on packs. Deploy your custom pack from the Legacy or an OCI registry. Learn how to get started with Palette’s custom packs and reuse them in multiple deployments."
+icon: ""
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 2
@@ -19,117 +19,114 @@ Custom add-on packs allow you to deploy Kubernetes applications in clusters and 
 
 - Enterprises can add proprietary Kubernetes applications to a custom add-on pack.
 
-In this tutorial, you will create a custom add-on pack to package a sample Kubernetes application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), and deploy that application to a cluster. You will learn to create the pack in two ways, using manifest files and Helm charts. 
+In this tutorial, you will create a custom add-on pack to package a sample Kubernetes application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), and deploy the application to a cluster. You will learn to create the pack in two ways: using manifest files and Helm charts. 
 
-After defining the custom pack, you will set up a registry server, publish the pack to that registry, and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform.  
+After defining the custom pack, you will set up a new registry server or leverage an existing Open Container Initiative (OCI) registry. Then, you will publish the pack to the registry and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform. 
 
+The following diagram illustrates the steps required to succesfully complete this tutorial.
+
+<!-- ![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png) -->
 
 ## Prerequisites
-To complete the tutorial, you will need the following items:
-<br />
 
-1. A Spectro Cloud account. Visit [https://console.spectrocloud.com](https://console.spectrocloud.com) to create an account.
+To complete this tutorial, you will need the following items:
 
-
-2. Tenant admin access to Palette for the purpose of adding a new registry server.
-
-
-3. A cloud account, such as AWS, Azure, or GCP, added to your Palette project settings. 
-
-
-4. An SSH key created in the region where you will deploy the cluster.
-
-
-5. [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorials container. 
-
-
-6. Basic knowledge of Docker containers and Kubernetes manifest file attributes.
-
-
+- A Spectro Cloud account. Access [Spectro Cloud Console](https://console.spectrocloud.com) to create an account.
+- Tenant admin access to Palette for the purpose of adding a new registry server.
+- A cloud account, such as AWS, Azure, or GCP, added to your Palette project settings.
+- An SSH key available in the region where you will deploy the cluster.
+- An active OCI registry such as Amazon ECR or Harbor. However, this requirement is not mandatory when opting for the Legacy registry.
+- [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container. 
+- Basic knowledge of Docker containers, Kubernetes manifest file attributes, and Terraform.
 
 
 ## Set Up the Tutorial Environment
 
-You will work in a Docker container pre-configured with the necessary tools for this tutorial. However, you can practice this tutorial in any `linux/amd64` or `x86_64` environment by installing the [necessary tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. Here are the steps to start the tutorials container. 
-<br />
+In this tutorial, you will work in a Docker container pre-configured with the necessary tools. Alternatively, you can choose to practice the tutorial in any `linux/amd64` or `x86_64` environment by installing the [required tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. To initialize the tutorial container, follow the steps described below. 
 
-Start the Docker Desktop on your local machine and ensure the daemon is available by issuing a command to list the currently active containers.
+Start Docker Desktop on your local machine and ensure that the Docker daemon is available by issuing a command to list the currently active containers.
 
-<br />
 
 ```bash
 docker ps
 ```
 
-Download the `ghcr.io/spectrocloud/tutorials:1.0.8` image to your local machine. The Docker image includes the necessary tools. 
-<br />
+
+Download the `ghcr.io/spectrocloud/tutorials:1.0.9` image to your local machine. This Docker image includes the necessary tools. 
+
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.8
+docker pull ghcr.io/spectrocloud/tutorials:1.0.9
 ```
 
-Next, start the container, and open a bash session into it.
-<br />
+
+Next, start the container and open a bash session into it.
+
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.8 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.9 bash
 ```
 
-If port 7000 on your local machine is unavailable, you can use any other port of your choice. 
+
+If the port 7000 on your local machine is unavailable, you can use any other port of your choice. 
 <br /> 
+
 
 :::caution
 
-Wait to exit the container until the tutorial is complete. Otherwise, you may lose your progress. 
+Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress. 
 
 :::
 
 
-
-### Tools and Starter Code
-After opening a bash session in the active container, verify that the tools necessary for this tutorial are installed. 
 <br />
+
+### Required Tools and Directories
+
+After starting a bash session in the active container, confirm the installation of the required tools using the commands provided below. 
+
 
 Check the Spectro CLI version.
-<br />
 
 ```bash
 spectro version
 ```
 
-Check the Spectro registry server version.
-<br />
+
+Verify the Spectro registry server version.
 
 ```bash
 registry --version
 ```
 
+
 Check the Terraform version.
-<br />
 
 ```bash
 terraform --version
 ```
 
-In addition to these tools, the tutorials container has other tools, such as `ngrok`, `git`, and `nano`. 
 
-Examine the directories that pertain to the current tutorial in the **root** directory. 
-<br />
+Additionally, the tutorial container includes other tools such as `ngrok`, `git`, `nano`, `aws-cli`, and `oras`.
+
+Inspect the directories relevant to the current tutorial in the container **root** directory. 
 
 ```bash
 .
 ├── packs
-│   └── hello-universe-pack             # Contains the pack files
+│   └── hello-universe-pack     # Stores the pack files.
 └── terraform
-    └── pack-tf                         # Contains the .tf files for creating Spectro Cloud resources
+    └── pack-tf                 # Contains the Terraform files used to create Spectro Cloud resources.
 ```
-The **packs** directory contains the pack files. The **terraform** directory contains the Terraform files used to create Spectro Cloud resources, which you will use later in this tutorial.
+
+
+The **packs** directory stores the pack files. The **terraform** directory contains the Terraform files used to create Spectro Cloud resources, which you will use later in this tutorial.
 
 
 ## Build a Pack
 
 Building a custom pack requires defining specific files. 
-As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, you can define a custom pack in two ways: using manifest files or Helm charts. The file structure varies for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each:
+As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, there are two ways to define a custom pack: using manifest files or Helm charts. The file structure differs for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each.
 <br />
 
 <Tabs>
@@ -140,14 +137,14 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, you can 
 
 ```bash
 .
-├── pack.json           # Mandatory
-├── values.yaml         # Mandatory
-├── manifests           # Mandatory
+├── pack.json           # Mandatory.
+├── values.yaml         # Mandatory.
+├── manifests           # Mandatory.
     ├── manifest-1.yaml
     ├── manifest-2.yaml
 │   └── manifest-3.yaml
-├── logo.png            # Mandatory
-└── README.md           # Optional
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
 ```
 
 </TabItem>
@@ -158,10 +155,10 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, you can 
 
 ```bash
 .
-├── pack.json           # Mandatory
+├── pack.json           # Mandatory.
 ├── values.yaml         # Mandatory. Pack-level values.yaml file.
-├── charts              # Mandatory
-│   ├── chart-1         # Can have nested charts
+├── charts              # Mandatory.
+│   ├── chart-1         # Can have nested charts.
 │   │   ├── Chart.yaml
 │   │   ├── templates
 │   │   │   ├── template-1.yaml
@@ -175,8 +172,8 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, you can 
 │   │   │   └── template-2.yaml
 │   │   └── values.yaml # Chart-level values.yaml file. 
 │   └── chart-2.tgz
-├── logo.png            # Mandatory
-└── README.md           # Optional
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
 ```
 
 </TabItem>
@@ -185,34 +182,35 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, you can 
 
 <br /> 
 
-To simplify this tutorial, we provide you with the manifest file for the *Hello Universe* application in the **packs/hello-universe-pack** folder. Change the directory to the **packs/hello-universe-pack** folder.
-<br />
+For your convenience, we provide you with the manifest-based pack files for the *Hello Universe* application. These files are located in the **packs/hello-universe-pack** folder. 
+
+Navigate to the **packs/hello-universe-pack** directory.
 
 ```bash
 cd /packs/hello-universe-pack
 ```
+
+
 Ensure you have the following files in the current directory.
-<br />
 
 ```bash
 .
-├── pack.json           # Mandatory
-├── values.yaml         # Mandatory
-├── manifests           # Mandatory
+├── pack.json           # Mandatory.
+├── values.yaml         # Mandatory.
+├── manifests           # Mandatory.
 │   └── hello-universe.yaml
-├── logo.png            # Mandatory
-└── README.md           # Optional
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
 ```
-<br />
+
 
 ### Pack File Structure
 
-Go ahead and review each of the following five files in the pack.
+Review each of the following five files in the **hello-universe-pack** folder.
 
-* **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](add-custom-packs.md#json-schema) for a list of attributes and respective data types. The schema validation will happen when you push a pack to the registry.  
+* **pack.json** -  This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array. The array consists of a list of manifest files: `layer`, `name`, and `version`. Refer to the [JSON Schema](add-custom-packs.md#json-schema) for a list of attributes and respective data types. The schema validation happens when you push a pack to the registry.  
 
   
-
   ```json
   {
       "addonType":"app services",
@@ -228,8 +226,6 @@ Go ahead and review each of the following five files in the pack.
   ```
   
   <br />
-
-
 
 * **values.yaml** -  This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not been created, Palette creates a new one using the value specified in the YAML file. 
 
@@ -250,9 +246,9 @@ Go ahead and review each of the following five files in the pack.
 
   <br />
 
-  You can optionally define *presets*, which are predefined values to use in the **values.yaml**. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets. 
+  You can optionally define *presets*, which are predefined values to use in the **values.yaml**. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer to [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets. 
   
-  The example below shows the parameters you can configure in the **values.yaml** for the `hello-universe` manifest when you create the cluster profile. 
+  The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest during the creation of the cluster profile. 
 
   <br />
 
@@ -271,7 +267,8 @@ Go ahead and review each of the following five files in the pack.
 <br />
 
 
-After finalizing all files in the pack directory, the next step is to set up a registry server and publish the pack to that registry, where you can access it directly from Palette. 
+After completing the review of all files in the pack directory, the next step is to set up a registry server, publish the pack to that registry, and configure the registry in Palette.
+
 
 <br />
 
@@ -926,7 +923,7 @@ Stop the registry server by closing the tutorials container bash session that se
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.8
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.9
 ```
 
 <br /> 
