@@ -1,7 +1,7 @@
 ---
 sidebar_label: 'K3s'
 title: 'K3s'
-description: 'K3s pack in Palette Edge'
+description: "Learn about the K3s pack in Palette Edge and how you can use it within your Kubernetes clusters."
 hide_table_of_contents: true
 type: "integration"
 category: ['kubernetes', 'amd64', 'fips']
@@ -10,7 +10,7 @@ logoUrl: 'https://registry.spectrocloud.com/v1/edge-k3s/blobs/sha256:5b7f8a80330
 tags: ["packs", "kubernetes", "k3s", "edge"]
 ---
 
-K3s is a lightweight distribution of Kubernetes, specifically designed for resource-constrained environments and IoT applications. Unlike standard Kubernetes with multiple binaries for its various components, K3s is packaged as a single binary with a lightweight storage backend and minimal external dependencies. For more information about K3s, refer to [K3s documentation](https://docs.k3s.io/). 
+K3s is a lightweight distribution of Kubernetes that is specifically designed for resource-constrained environments and Internet of Things (IoT) applications. Unlike standard Kubernetes with multiple binaries for its various components, K3s is packaged as a single binary with a lightweight storage backend and minimal external dependencies. For more information about K3s, refer to [K3s documentation](https://docs.k3s.io/). 
 
 ## Versions Supported
 
@@ -24,7 +24,7 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 
 ### Parameters
 
-Since you can deploy both Palette Virtual Clusters and Edge clusters using K3s, you have different configuration options depending on the type of cluster.
+Since you can deploy both virtual clusters and Edge clusters using K3s, you have different configuration options depending on the cluster type.
 
 <Tabs queryString="cluster-types">
 
@@ -44,7 +44,7 @@ You can add cloud-init stages, which allow you to customize your instances decla
 
 <TabItem label="Palette Virtual Cluster" value="palette-virtual-cluster">
 
-Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default Kubeadm configuration file you get includes parameters that offer you a higher degree of customization.
+Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default kubeadm configuration file you get includes parameters that offer you a higher degree of customization.
 
 |**Parameter**|**Description** |
 |-------------|----------------|
@@ -52,7 +52,7 @@ Since you are setting up a virtual cluster inside another Kubernetes cluster, yo
 |`defaultImageRegistry` | Specifies the default registry from which images are pulled. The value of this parameter will be prepended to all deployed virtual cluster images. If an image has already been deployed as part of the virtual cluster, the deployed images within the virtual cluster will not be rewritten.|
 |`sync` | Specifies which Kubernetes resources are synced between the virtual and host clusters. |
 |`storage` | Specifies storage settings such as persistence and PVC size. By default, storage of the virtual cluster uses the same storage class as the host cluster, but you can also optionally specify a different storage class. |
-|`ingress` | Configures the ingress resource that allows you to access the virtual cluster |
+|`ingress` | Configures the ingress resource that allows you to access the virtual cluster. |
 </TabItem>
 </Tabs>
 
@@ -65,10 +65,10 @@ K3s is available for Edge host deployments as well as Palette Virtual Clusters t
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide. 
 :::
 
-#### Configure OIDC Identity Provider for Edge Deployments
+#### Configure OIDC Identity Provider for Edge
 
-You can modify the kubeadm file to configure your Edge cluster to use an OIDC Identity Provider (IDP) for authentication. 
-You can use a custom third-party IDP such as Okta or you can use Palette as your IDP. 
+You can modify the kubeadm file to configure your Edge cluster to use an OpenID Connect (OIDC) Identity Provider (IDP) for authentication. 
+You can use a custom third-party IDP, such as Okta, or use Palette as your IDP. 
 
 When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP options listed below:
 
