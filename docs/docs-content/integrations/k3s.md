@@ -1,7 +1,7 @@
 ---
 sidebar_label: 'K3s'
 title: 'K3s'
-description: 'K3s pack in Palette Edge'
+description: "Learn about the K3s pack in Palette Edge and how you can use it within your Kubernetes clusters."
 hide_table_of_contents: true
 type: "integration"
 category: ['kubernetes', 'amd64', 'fips']
