@@ -20,14 +20,15 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 - An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
 - If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in Azure when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred Azure region to create the following resources. Note that Palette does not create these resources if you specify an existing VNet. 
-    - Virtual CPU (vCPU)
-    - VNet
-    - Static Public IP addresses 
-    - Azure Virtual Private Network (VPN) Gateway
-    - Load balancers
-    - VNet Network Address Translation (NAT) Gateway
 
-  <br />
+  - Virtual CPU (vCPU)
+  - Virtual Network (VNet)
+  - Static Public IP addresses
+  - Virtual Network Interfaces
+  - Load Balancers
+  - Virtual Hard Disk (VHD)
+  - Managed Disks
+  - Virtual Network Address Translation (NAT) Gateway
 
 <!-- <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video> -->
 
@@ -131,8 +132,8 @@ Use the following steps to deploy an Azure cluster.
     |-------------|----------------|
     |**Node pool name** | A descriptive name for the node pool.|
     |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
-    |**Allow worker capability** | ??? |
-    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `"environment": "production"` |
+    |**Allow worker capability** | Select this option to allow workloads to be provisioned on master nodes. |
+    |**Additional Labels** | You can add optional labels to nodes in key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md/#labels).  Example: `environment:production` |
     |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
 
     - Cloud Configuration settings for master pool
@@ -198,7 +199,6 @@ Use the following steps to deploy an Azure cluster.
 To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs, refer to [Cluster Removal](../../cluster-management/remove-clusters.md). 
 
 
-
 ## Validate
 
 You can validate your cluster is up and running by reviewing the cluster details page. 
@@ -211,3 +211,18 @@ You can validate your cluster is up and running by reviewing the cluster details
 
 4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**
 
+
+## Enable Autoscale for Azure IaaS Cluster
+
+Azure autoscale allows you to provision just enough resources to support the demand on your application. Within Azure, you can add resources to handle increases in load or scale back resources when they are not needed. 
+
+To autoscale resources, log in to the [Azure Portal](https://portal.azure.com/#home). You can find Autoscale under the **Monitor** service, the **Resource Groups** service, or by searching *Autoscale*. To learn how you can scale resources in or scale out based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
+
+:::info
+
+Microsoft notes it is best practice when adding a scale rule to scale out, that a matching rule should be set to scale in when the resources are no longer needed. 
+
+:::
+
+
+ 

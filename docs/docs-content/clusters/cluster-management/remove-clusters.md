@@ -10,7 +10,7 @@ tags: ["clusters", "cluster management"]
 
 When you delete a cluster it results in the removal of all compute instances and associated resources created for the cluster. Use the following steps to delete a cluster. 
 
-### Prerequisites
+## Prerequisites
 
 * A host cluster.
 
@@ -40,8 +40,6 @@ The cluster status is updated to **Deleting** while cluster resources are remove
 
 ## Validate
 
-To validate the host cluster is deleted, use the following steps.
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 
@@ -56,11 +54,11 @@ The cluster you deleted is now listed along with other previously deleted cluste
 
 ## Force Delete a Cluster
 
-If a cluster is stuck in the **Deleting** state for a minimum of 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+If a cluster is stuck in the **Deleting** state for 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
 
-To force delete a cluster, follow the same steps outlined above. After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down Menu**. The drop-down menu will provide you with an estimated remaining time left before the force deletion becomes available.
+To force delete a cluster, follow the steps to delete the cluster. After 15 minutes, a **Force Delete Cluster** option is available in the **Settings Menu**. The **drop-down Menu** will provide you with an estimated remaining time left before the force deletion becomes available.
 
-A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources. Use the following list to help you identify resources to remove.
+A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources. Use one of the following lists for your environment to help you identify resources to remove.
 
 :::caution
 
@@ -71,11 +69,12 @@ Failure to remove provisioned resources can result in unexpected costs.
 
 **Azure**
 
+- Virtual CPU (vCPU)
 - Virtual Network (VNet)
-- Static Public IPs
+- Static Public IP addresses
 - Virtual Network Interfaces
 - Load Balancers
-- VHD
+- Virtual Hard Disk (VHD)
 - Managed Disks
 - Virtual Network Gateway
 
