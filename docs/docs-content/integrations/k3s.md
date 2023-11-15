@@ -76,7 +76,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc). This setting displays in the YAML file as `none`.
 
-- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting displays in the YAML file as `palette`.
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to use kubectl CLI to access cluster. This setting displays in the YAML file as `palette`. Selecting **Palette** in this setting and creating role bindings to configure authorization are all you need to do to enable OIDC for your cluster. You do not need to provide extra parameters such as `oidc-issuer-url` as you need to when you configure a custom OIDC provider. 
 
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
 
