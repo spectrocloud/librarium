@@ -60,89 +60,143 @@ The following steps need to be performed to provision a new Azure cluster:
 7. Select the Azure cluster profile you created, and click on **Next**. Palette displays the cluster profile layers.
 
 
-8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out ??? if you need more guidance. <<<Need reference here to OIDC info.>>>
+8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out ??? if you need more guidance. <<< Need reference here to OIDC info. >>>
 
 
 9. Click on **Next** to continue.
 
 
-10. Provide the following cluster configuration information.
+10. Provide the cluster configuration information listed in the following table.
 
   If you have custom storage accounts or a storage container available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](architecture#azure-storage).
 
+  :::caution
 
-:::caution
+  If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-properties). 
 
-If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-properties). 
+  :::
 
-:::
+  |**Parameter**| **Description**|
+  |-------------|---------------|
+  | **Subscription** | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.|
+  | **Region** | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.|
+  | **Resource Group** | Select the name of the resource group that contains the Azure resources you will be accessing.|
+  | **Storage Account** | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](architecture#azure-storage).|
+  | **Storage Container**| Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](architecture#azure-storage).|
+  | **SSH Key** | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats). |
+  | **Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Network (VNet) for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VNets, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
 
-<br />
+    - Static Placement Settings
 
-|**Parameter**| **Description**|
-|-------------|---------------|
-| **Subscription** | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.|
-| **Region** | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.|
-| **Resource Group** | Select the name of the resource group that contains the Azure resources you will be accessing.|
-| **Storage Account** | (Optionally). If you have a custom storage account you want to use, provide the storage account name. For information about use cases for custom storage, review [Azure Storage](architecture#azure-storage).|
-| **Storage Container**| (Optional) If you will be using a custom storage account and custom container, provide the storage container name. For information about use cases for custom storage, review [Azure Storage](architecture#azure-storage).|
-| **SSH Key** | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats. |
-| **Static Placement** | By default, Palette uses dynamic placement, in which a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> If you want to place resources into pre-existing VPCs and subnets, you can enable the **Static Placement** option. Review the [Static Placement](#static-placement-table) table below for available parameters for static placement.|
-|**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
-|**Private API Server LB**|This option applies when the cluster is deployed via the [Azure Private Endpoint](gateways.md). You can enable this option if your API Server must have private access. Review the [Private API Server LB](#private-api-server-lb-table) table below for more details.|
-|**Update worker pools in parallel**|If you have multiple worker pools, select the check box to enable simultaneous upgrade of all the pools. The default is sequential upgrade.|
-
-#### Static Placement Table
-
-| **Parameter**              | **Description** |
-|------------------------|------------------------------------------------------------|
-| **Network Resource Group** | The logical container for grouping related Azure resources |
-| **Virtual Network**        | Select the virtual network from the drop-down menu.        |
-| **CIDR Block**             | Select the CIDR address from the drop-down menu.           |
-| **Control Plane Subnet**   | Select the control plane network from the dropdown menu.   |
-| **Worker Network**         | Select the worker network from the drop-down menu.         |
+    | **Parameter**              | **Description** |
+    |------------------------|------------------------------------------------------------|
+    | **Network Resource Group** | The logical container for grouping related Azure resources. |
+    | **Virtual Network**        | Use the **drop-down Menu** to select the virtual network. |
+    | **CIDR Block**             | Use the **drop-down Menu** to select the CIDR address.    |
+    | **Control Plane Subnet**   | Use the **drop-down Menu** to select the control plane network. |
+    | **Worker Network**         | Use the **drop-down Menu** to select the worker network. |
 
 
 
-#### Private API Server LB Table
+<!-- #### Private API Server LB Table
 
 
 | **Parameter**            | **Description**|
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **Private DNS Zone**   | Optionally select the DNS Zone from the drop-down menu. If you do not select a DNS Zone, one will be generated and assigned.|
-| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.|
+| **IP Allocation Method** | Allocate an available IP from the private endpoint VNet. Review the [IP Allocation Method Table](#ip-allocation-method-table) below for more details.| -->
 
-##### IP Allocation Method Table
+<!-- ##### IP Allocation Method Table
 
 | **Parameter**            | **Description** |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **Dynamic**              | Use Dynamic Host Configuration Protocol (DHCP) to dynamically allocates IP addresses from the available Virtual Network IP CIDR range.|
-| **Static**               | You can specify a static IP address from the available Virtual Network IP range.|
-
-When you have provided all the cluster configuration details to the wizard, click on **Next** and proceed to node configuration.
-
-<br />
-
-and click on **Next** to continue.
-
-7. Configure the master and worker node pools. A master and a worker node pool are configured by default. To learn more about the configuration options, review the [Node Pool](../../cluster-management/node-pool.md) documentation page.
-
-:::info
-
-You can add new worker pools to customize certain worker nodes to run specialized workloads. For example, the default worker pool may be configured with the Standard_D2_v2 instance types for general-purpose workloads and another worker pool with instance type Standard_NC12s_v3 can be configured to run GPU workloads.
-
-:::
-
-<br />
+| **Static**               | You can specify a static IP address from the available Virtual Network IP range.| -->
 
 
-8. The settings page is where you can configure patching schedule, security scans, backup settings, setup role based access control (RBAC), and enable [Palette Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md). Review the settings and make changes if needed. Click on **Validate**.
+11. Click on **Next** to continue.
+
+12. Provide the following node pool and cloud configuration information. To learn more about the configuration options, review the [Node Pool](../../cluster-management/node-pool.md) documentation page.
+
+  :::info
+
+  By default, a master pool and one worker node pool are configured. You can add new worker pools to customize certain worker nodes to run specialized workloads. For example, the default worker pool may be configured with the Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type Standard_NC12s_v3 can be configured to run GPU workloads.
+
+  :::
 
 
-9. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Be aware that provisioning IaaS clusters can take several minutes.
+    - Master Pool Configuration Settings
+    
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    |**Node pool name** | A descriptive name for the node pool.|
+    |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
+    |**Allow worker capability** | ??? |
+    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `"environment": "production"` |
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+
+    - Cloud Configuration settings for master pool
+    
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    <!-- | **Instance Option** | Choose a pricing method:<br />**On-Demand** instances provide stable and uninterrupted compute capacity at a higher cost.<br />**Spot** instances allow you to bid for unused EC2 capacity at a lower cost.<br />We recommend you base your choice on your application's requirements. |  -->
+    |**Instance Type** | Select the instance type to use for all nodes in the node pool.|
+    |**Managed disk** | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference |
+    |**Root Disk size** | You can choose disk size based on your requirements. The default size is `60`. |
+
+    <<< You can Remove worker node if all you want is control plane - why would you do this? >>>
+    <<< When configuring the worker-pool, you can copy configuration settings from the Master Pool >>>
+
+    - Worker Pool Configuration Settings
+    
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    |**Node pool name** | A descriptive name for the node pool.|
+    |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
+    |**Node repave interval** | Optionally, you can specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the kubeadm config. |
+    |**Rolling update** | These options allow you to control the sequence of operations during a node pool update. Choose the **Expand first** option to add new nodes with the updated configurations to the node pool before the existing, old nodes are removed. Choose **Contract first** to remove existing nodes from the node pool before the new nodes with the updated configurations are added. |
+    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `"environment": "production"` |
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+
+    - Cloud Configuration settings for worker pool
+    
+    |**Parameter**| **Description**|
+    |-------------|----------------|
+    |**Instance Type** | Select the instance type to use for all nodes in the node pool.|
+    |**Managed disk** | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference |
+    |**Disk size** | You can choose disk size based on your requirements. The default size is `60`. |
+    |**Availability zones** | Select up to three availability zones. |
+
+    :::info
+    
+    You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads. <<< modify this for Azure. See previous example for wording. >>
+    
+    :::
+
+13. Click on **Next** to continue.
+
+14. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
+
+15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for Kubernetes configuration security, penetration testing, and conformance testing.
+
+16. Schedule any backups you want Palette to perform. Review [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
+
+17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+
+18. Click on the **Validate** button and review the cluster configuration and settings summary. 
+
+19. Click **Finish Configuration** to deploy the cluster. 
+
+  The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
+  
+  :::info
+  
+  Provisioning Azure clusters can take several minutes. <<< Fix in AWS. >>>
+  
+  :::
 
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
+<!-- The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress. -->
 
 ## Validate
 
