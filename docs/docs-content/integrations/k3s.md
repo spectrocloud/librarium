@@ -26,9 +26,9 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 
 Since you can deploy both Palette Virtual Clusters and Edge clusters using K3s, you have different configuration options depending on the type of cluster.
 
-#### Edge Cluster
+<Tabs queryString="cluster-types">
 
-The following is a list of important parameters when you deploy an Edge cluster using K3s:
+<TabItem label="Edge" value="edge">
 
 |**Parameter**|**Description** |
 |-------------|----------------|
@@ -40,10 +40,11 @@ The following is a list of important parameters when you deploy an Edge cluster 
 | `pack.palette.config.oidc.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the K3s pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
 You can add cloud-init stages, which allow you to customize your instances declaratively. The cloud-init stages are exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md) reference.
+</TabItem>
 
-#### Palette Virtual Cluster
-Since the Palette Virtual Cluster is a virtual cluster that you are setting up inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The kubeadm file you get includes parameters that offer you a higher degree of customization. 
-The following is a list of important parameters when you deploy a Palette Virtual Cluster cluster using K3s:
+<TabItem label="Palette Virtual Cluster" value="palette-virtual-cluster">
+
+Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default Kubeadm configuration file you get includes parameters that offer you a higher degree of customization.
 
 |**Parameter**|**Description** |
 |-------------|----------------|
@@ -52,13 +53,16 @@ The following is a list of important parameters when you deploy a Palette Virtua
 |`sync` | Specifies which Kubernetes resources are synced between the virtual and host clusters. |
 |`storage` | Specifies storage settings such as persistence and PVC size. By default, storage of the virtual cluster uses the same storage class as the host cluster, but you can also optionally specify a different storage class. |
 |`ingress` | Configures the ingress resource that allows you to access the virtual cluster |
+</TabItem>
+</Tabs>
+
 
 ### Usage
 
-K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](https://docs.spectrocloud.com/clusters/cluster-groups/create-cluster-group#palette-virtual-cluster-configuration) guide for more information. 
+K3s is available for Edge host deployments as well as Palette Virtual Clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more information. 
 
 :::info
-In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/) guide. 
+In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide. 
 :::
 
 #### Configure OIDC Identity Provider for Edge Deployments
@@ -119,8 +123,12 @@ If you are using K3s in a Palette Virtual Cluster inside of a cluster group, you
 
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](frp.md) guide.
 
+</TabItem>
+</Tabs>
 
 ### Terraform
+
+You can retrieve details about the K3s pack by using the following Terraform code.
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
@@ -134,9 +142,6 @@ data "spectrocloud_pack_simple" "k8s" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
-</TabItem>
-</Tabs>
 
 
 
