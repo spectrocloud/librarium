@@ -266,6 +266,14 @@ Each plugin may have its own set of failures. Resolving failures will depend on 
 | vSphere | Missing tags | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags. |
 | vSphere | Folder missing or not accessible | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install. |
 
+Every 30 seconds, the Validator will continouslly re-issue a validation and update the `ValidationResult` CR with the result of the validation. The validation results are hashed and result events are only emitted if the result has changed. Once you resolve the failure, the Validator will update the `ValidationResult` CR with the new result.
+
+Use the `kubectl describe` command to view the validation results. 
+
+```shell
+kubectl describe validationresults --namespace validator
+```
+
 
 ## Uninstall
 
