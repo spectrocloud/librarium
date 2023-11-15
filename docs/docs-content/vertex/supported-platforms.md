@@ -16,8 +16,9 @@ Palette VerteX supports the following infrastructure platforms for deploying Kub
 | **AWS Gov** |  Refer to the [AWS](#aws) section for additional guidance. |
 | **Azure**|   Refer to the [Azure](#azure) section for additional guidance. |
 | **Azure Gov**|   Refer to the [Azure](#azure) section for additional guidance. |
-| **Edge**|  
-| **VMware vSphere** |
+| **MAAS**|  Canonical Metal-As-A-Service (MAAS) is available and supported in VerteX.   | 
+| **Edge**|  Edge deployments are supported in VerteX.  |
+| **VMware vSphere** | VMware vSphere is supported in VerteX.  |
 
 Review the following tables for additional information about the supported platforms. 
 
@@ -31,6 +32,7 @@ The term *IaaS* refers to Palette using compute nodes that are not managed by a 
 
 #### AWS 
 
+VerteX supports the following AWS services.
 
 |  **Service** | **AWS Gov Support?**| 
 | --- |  --- | 
@@ -40,7 +42,19 @@ The term *IaaS* refers to Palette using compute nodes that are not managed by a 
 
 #### Azure
 
+VerteX supports the following Azure services.
 
 |  **Service** | **Azure Gov Support?**|
 | --- |  --- |
 | **IaaS** |  ❌ |
+
+
+#### VMware vSphere
+
+The following versions of VMware vSphere are supported in VerteX.
+
+| **Version** | **Supported?** |
+| --- |  --- |
+| **vSphere 6.7** |  ✅ |
+| **vSphere 7.0** |  ✅ |
+| **vSphere 8.0** |  ✅ |
