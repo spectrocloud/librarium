@@ -289,7 +289,7 @@ To add a Service to the Service List complete the following actions:
 
 ### Images or other assets
 
-All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
+All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")
@@ -486,7 +486,7 @@ By default Netlify previews are enabled for pull requests. However, some branche
 
 ## Approvers/Reviewers
 
-The content in the `docs/` folder require approval from the documentation team. The list of approvers and reviewers can be found in the [OWNERS_ALIAS](./content/OWNER_ALIASES) file. Only members of the documentation team may modify this file.
+The content in this repository requires approval from the documentation team. The approval rules can be found in the [CODEOWNERS](./CODEOWNERS) file. Only members of the documentation team may modify this file.
 
 # Check Writing
 
