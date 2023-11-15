@@ -16,7 +16,7 @@ When you delete a cluster it results in the removal of all compute instances and
 
 
 
-## Removal
+## Delete a Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
 
@@ -48,7 +48,7 @@ To validate the host cluster is deleted, use the following steps.
 2. Navigate to the left **Main Menu** and click on **Cluster**.
 
 
-4. Check the box labeled **Deleted only** to view all the clusters deleted in the last 72 hours.
+3. Check the box labeled **Deleted only** to view all the clusters deleted in the last 72 hours.
 
 The cluster you deleted is now listed along with other previously deleted clusters.
 
@@ -60,20 +60,14 @@ If a cluster is stuck in the **Deleting** state for a minimum of 15 minutes, it 
 
 To force delete a cluster, follow the same steps outlined above. After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down Menu**. The drop-down menu will provide you with an estimated remaining time left before the force deletion becomes available.
 
-<br />
-
-
 A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources. Use the following list to help you identify resources to remove.
-
-<br />
 
 :::caution
 
-Failure in removing provisioned resources can result in unexpected costs.   
+Failure to remove provisioned resources can result in unexpected costs.   
 
 :::
 
-<br />
 
 **Azure**
 

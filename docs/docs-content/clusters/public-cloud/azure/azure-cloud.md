@@ -72,7 +72,7 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 2. From the left **Main Menu**, select **Tenant Settings**. 
 
-3. Select **Cloud Accounts** in the Tenant Settings menu.
+3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
 4. The added cloud account is listed under **Azure** with all other available Azure cloud accounts. 
 
@@ -82,43 +82,30 @@ After an Azure cloud account has been registered with Palette, you can change th
 
 ### Edit an Azure Account
 
-Use the following steps to edit an Azure Cloud account.
+Use the following steps to edit Azure Cloud account information in Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
+2. From the left **Main Menu**, select **Tenant Settings**.
 
-3.  Select **Tenant Settings** from the left **Main Menu**. 
+3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
+4. Click the **three-dot Menu** in the row of the cloud account you want to edit and select **Edit**.
 
-4. From the Tenant Settings go to **Cloud Accounts**
+5. Make the required changes and click **Confirm**.
 
-
-5. Towards the name of the cloud account you want to remove, click the **three-dots Menu** and select **Edit**.
-
-
-6. Make the required changes and click on the **Confirm** button to complete the wizard.
-
-<br />
 
 ### Remove an Azure Account
 
-Use the following steps to delete an Azure cloud account from Palette,.
+Use the following steps to delete an Azure cloud account from Palette.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
+2. From the left **Main Menu**, select **Tenant Settings**.
 
-2.  Navigate to the **Project Overview** drop-down and switch to the **Tenant Admin**. 
+3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
+4. Click the **three-dot Menu** in the row of the cloud account you want to delete and select **Delete**.
 
-3.  Select **Tenant Settings** from the left **Main Menu**. 
-
-
-4. From the Tenant Settings go to **Cloud Accounts**
-
-
-5. Towards the name of the cloud account you want to remove, click the **three-dots Menu** and select **Edit**.
-
-
-6. Towards the name of the cloud account you want to remove, click the **three-dots Menu** and select **Delete**.
 
 

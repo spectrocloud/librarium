@@ -35,7 +35,7 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 Use the following steps to deploy an Azure cluster.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com). 
 
 2. Ensure you are in the correct project scope.
 
@@ -195,68 +195,19 @@ Use the following steps to deploy an Azure cluster.
   
   :::
 
-
-<!-- The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress. -->
-
-## Validate
-
-You can validate your cluster is up and running by reviewing the cluster details page. Navigate to the left **Main Menu** and click on **Clusters**. The **Clusters** page contains a list of all available clusters managed by Palette. Click on the row for the cluster you wish to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
-## Deleting an Azure IaaS Cluster
-
-The deletion of an Azure IaaS cluster results in the removal of all instances and associated resources created for the cluster. To perform a cluster deletion, use the following steps.
+To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs, refer to [Cluster Removal](../../cluster-management/remove-clusters.md). 
 
 
-1. Ensure you are in the correct project scope.
-
-
-2. Navigate to the left **Main Menu** and click on **Clusters**
-
-
-3. Click on the cluster that you want to remove.
-
-
-4. Click on the **Settings** drop-down menu.
-
-
-5. Click on **Delete Cluster**
-
-
-6. Type in the name of the cluster and click on **OK**
-
-The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
-
-## Force Delete a Cluster
-
-If a cluster is stuck in the **Deletion** state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
-To force delete a cluster follow the same steps outlined in [Deleting an Azure IaaS Cluster](#deleting-an-azure-iaas-cluster). However, after 15 minutes, a **Force Delete Cluster** option is available in the **Settings** drop-down menu. The **Settings** drop-down menu will provide you with an estimated time left before the force deletion becomes available..
-
-<br />
-
-:::caution
-
-
-A force delete can result in resources Palette provisioned being missed in the removal process. Verify there are no remaining Palette provisioned resources such as:
-
-- Virtual Network (VNet)
-- Static Public IPs
-- Virtual Network Interfaces
-- Load Balancers
-- VHD
-- Managed Disks
-- Virtual Network Gateway
-
-Failure in removing provisioned resources can result in unexpected costs.
-
-:::
 
 ## Validate
 
-To validate the Azure cluster creation and deletion status
+You can validate your cluster is up and running by reviewing the cluster details page. 
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com). 
 
+2. Ensure you are in the correct project scope.
 
-2. Click on **Cluster** on the left **Main Menu**
+3. From the left **Main Menu** select **Clusters**. Palette displays a list of all available clusters that Palette manages.
 
+4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**
 
-4. Click on the check box **Deleted only** to view all the clusters deleted in the last 72 hours.
