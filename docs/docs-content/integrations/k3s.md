@@ -24,11 +24,11 @@ K3s is a lightweight distribution of Kubernetes, specifically designed for resou
 
 ### Parameters
 
-Since you can deploy both Palette Virtual Clusters and Edge clusters using K3s, you have different configuration options depending on the type of cluster
+Since you can deploy both Palette Virtual Clusters and Edge clusters using K3s, you have different configuration options depending on the type of cluster.
 
 #### Edge Cluster
 
-The following is a list of notable parameters when you deploy an Edge cluster using K3s:
+The following is a list of important parameters when you deploy an Edge cluster using K3s:
 
 |**Parameter**|**Description** |
 |-------------|----------------|
@@ -43,7 +43,7 @@ You can add cloud-init stages, which allow you to customize your instances decla
 
 #### Palette Virtual Cluster
 Since the Palette Virtual Cluster is a virtual cluster that you are setting up inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The kubeadm file you get includes parameters that offer you a higher degree of customization. 
-The following is a list of notable parameters when you deploy a Palette Virtual Cluster cluster using K3s:
+The following is a list of important parameters when you deploy a Palette Virtual Cluster cluster using K3s:
 
 |**Parameter**|**Description** |
 |-------------|----------------|
