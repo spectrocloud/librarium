@@ -219,7 +219,7 @@ stages:
 ```
 
 
-#### Pass a Sensitive Information
+#### Pass Sensitive Information
 
 If you need to transmit sensitive information, such as credentials, during the site installation phase, you can make the Edge installer skip copying specific stages to the edge hosts. The Edge installer will skip copying the stages that follow the `skip-copy-[string]` naming convention. Refer to the [Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more. 
 <br />
