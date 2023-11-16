@@ -147,7 +147,7 @@ Select the tab for your specific role scope to learn how to create the appropria
 3. Fill out the following details:
 
   * Role Name: Define a custom role name to identify the cluster role.
-  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. 
+  * Subjects: Subjects are a group of users, services, or teams using the Kubernetes API. If you are using Palette as your IDP, you can use the Palette user's registration email address to identify the user.
   * Subject Name: Custom name to identify a subject.
 
 
