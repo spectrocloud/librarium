@@ -17,17 +17,18 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 - Palette integration with Azure account. Review [Create an Azure Cloud account](azure-cloud.md) for guidance.
 
+- A Secure Shell (SSH) key pre-configured in your Azure environment.
+
 - An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
-- If you want to use a custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the Cluster config page during the cluster creation process. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).
+- If you want to use custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the Cluster config page during the cluster creation process. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).
 
   If you need help creating a custom storage account or container, check out the [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) guide or the [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal). 
-
   
 - If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in Azure when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred Azure region to create the following resources. Note that Palette does not create these resources if you specify an existing VNet. 
 
   - Virtual CPU (vCPU)
-  - Virtual Network (VNet)
+  - VNet
   - Static Public IP addresses
   - Virtual Network Interfaces
   - Load Balancers
@@ -77,11 +78,11 @@ Use the following steps to deploy an Azure cluster.
 
 10. Provide the cluster configuration information listed in the following table.
 
-  If you have custom storage accounts or a storage container available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md/#azure-storage).
+  If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md/#azure-storage).
 
   :::caution
 
-  If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that drop-down menu selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-properties). 
+  If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that **drop-down Menu** selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-properties). 
 
   :::
 
@@ -93,16 +94,16 @@ Use the following steps to deploy an Azure cluster.
   | **Storage Account** | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).|
   | **Storage Container**| Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).|
   | **SSH Key** | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats). |
-  | **Static Placement** | By default, Palette uses dynamic placement. This creates a new Virtual Network (VNet) for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VNets, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
+  | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VNets, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
 
     - Static Placement Settings
 
     | **Parameter**              | **Description** |
     |------------------------|------------------------------------------------------------|
     | **Network Resource Group** | The logical container for grouping related Azure resources. |
-    | **Virtual Network**        | Select the virtual network. |
-    | **CIDR Block**             | Select the CIDR address.    |
-    | **Control Plane Subnet**   | Select the control plane network. |
+    | **Virtual Network**        | Select the VNet. |
+    | **CIDR Block**             | Select the IP address CIDR range.|
+    | **Control Plane Subnet**   | Select the control plane subnet. |
     | **Worker Network**         | Select the worker network. |
 
 
@@ -112,11 +113,11 @@ Use the following steps to deploy an Azure cluster.
 
   :::info
 
-  By default, a master pool and one worker node pool are configured. You can add new worker pools to customize certain worker nodes to run specialized workloads. For example, the default worker pool can be configured with the Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type Standard_NC12s_v3 can be configured to run GPU workloads.
+  By default, a master pool and one worker node pool are configured. You can add new worker pools to customize certain worker nodes for specialized workloads. For example, the default worker pool can be configured with the Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type Standard_NC12s_v3 can be configured for Graphics Processing Unit (GPU) workloads.
 
   :::
 
-  You can apply autoscale capability to dynamically increase resources during high loads and reduce them during low loads. To learn more, refer to [Enable Autoscale for Azure IaaS Clusster](#enable-autoscale-for-azure-iaas-cluster).
+  You can apply autoscale capability to dynamically increase resources during high loads and reduce them during low loads. To learn more, refer to [Enable Autoscale for Azure IaaS Cluster](#enable-autoscale-for-azure-iaas-cluster).
 
     - Master Pool Configuration Settings
     
@@ -145,9 +146,9 @@ Use the following steps to deploy an Azure cluster.
     |**Node pool name** | A descriptive name for the node pool.|
     |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
     |**Node repave interval** | Optionally, you can specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the Kubeadm configuration file. |
-    |**Rolling update** | These options allow you to control the sequence of operations during a node pool update. Choose the **Expand first** option to add new nodes with updated configurations to the node pool before the existing, old nodes are removed. Choose **Contract first** to remove existing nodes from the node pool before the new nodes with updated configurations are added. |
+    |**Rolling update** | These options allow you to control the sequence of operations during a node pool update. Choose the **Expand first** option to add new nodes with updated configurations to the node pool before the existing nodes are removed. Choose **Contract first** to remove existing nodes from the node pool before the new nodes with updated configurations are added. |
     |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `environment:production`. |
-    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. To learn more, review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
 
     - Cloud Configuration Settings for Worker Pool
 
@@ -158,7 +159,7 @@ Use the following steps to deploy an Azure cluster.
     |**Instance Type** | Select the instance type to use for all nodes in the node pool.|
     |**Managed disk** | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
     |**Disk size** | You can choose disk size based on your requirements. The default size is 60. |
-    |**Availability zones** | Select up to three availability zones. |
+    |**Availability zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 
 13. Click **Next** to continue.
 
@@ -168,7 +169,7 @@ Use the following steps to deploy an Azure cluster.
 
 16. Schedule any backups you want Palette to perform. Review [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+17. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary. 
 
@@ -187,15 +188,15 @@ To learn how to remove a cluster and what to do if a force delete is necessary s
 
 ## Validate
 
-You can validate your cluster is up and running by reviewing the cluster details page. 
+You can validate your cluster is up and and in **Running** state. 
 
 1. Log in to [Palette](https://console.spectrocloud.com). 
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**. Palette displays a list of all available clusters that Palette manages.
+3. From the left **Main Menu** select **Clusters**. The **Clusters** page displays a list of all available clusters that Palette manages.
 
-4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**
+4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
 ## Enable Autoscale for Azure IaaS Cluster

@@ -39,14 +39,14 @@ To register an Azure cloud account in the Palette console
 |**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) |
 |**Tenant Name**| An optional tenant name.|
 |**Disable Properties**| This option disables importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties) section. |
-|**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link it to the cloud account.|
+|**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|
 
 
 ### Disable Properties  
 
 When you provide your cloud account information, Azure networking details will be sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
 
-When you disable network calls with the **Disable Properties** option, you need to create a Microsoft Entra application which can be used with role-based access control. Follow the steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
+When you disable network calls from Palette, you need to create a Microsoft Entra application which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
 
 :::info
 
@@ -57,14 +57,11 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
 1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
 
-2. Next, assign yourself the [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. For guidance, refer to [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
+2. Next, assign yourself the [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in step 3. For guidance, refer to [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
-3. With UserAccessAdministrator privelege, you can now assign yourself the minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), which grants full access to manage all resources.
+3. With UserAccessAdministrator privilege, you can now assign yourself the minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), which grants full access to manage all resources.
 
   To learn about Azure roles, review [Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
-
-<!-- you will need a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) needs to be assigned. To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). The role can be assigned by following the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link. -->
-
 
 4. Create a client secret. Refer to [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret) for guidance.
 
@@ -73,9 +70,6 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
   Be sure to safely store the client secret, as it will not be available later as plain text.
 
   :::
-
-
-<!-- (https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) . Store the Client Secret safely as it will not be available as plain text later. -->
 
 
 ## Validate
