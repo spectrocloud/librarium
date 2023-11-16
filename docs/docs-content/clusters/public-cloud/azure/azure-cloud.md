@@ -29,41 +29,53 @@ To register an Azure cloud account in the Palette console
 
 4. Locate **Azure**, and click **+ Add Azure Account**.
 
-5. Fill out the following information:
+5. Fill out the following information, and click **Confirm** to complete the registration.
 
 |   **Basic Information** |**Description**|
 |-------------------------|-----------|
-|Account Name| A custom account name.|
-|Client ID| Unique client ID from Azure Management Portal.|
-|Tenant ID| Unique tenant ID from Azure Management Portal.|
-|Client Secret| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) |
-|Tenant Name| An optional tenant name.|
-|Disable Properties| This option disables importing Azure networking details. To learn more, refer to the [Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties) section. |
-|Private Cloud Gateway| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link it to the cloud account.|
-
-:::info
-
-  For existing cloud accounts, select the account and click **Edit**. Toggle the **Connect Private Cloud Gateway** option to select the created PCG from the **drop-down Menu**.
-:::
-
-
-6. Click **Confirm** to complete the registration.
+|**Account Name**| A custom account name.|
+|**Tenant ID**| Unique tenant ID from Azure Management Portal.|
+|**Client ID**| Unique client ID from Azure Management Portal.|
+|**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) |
+|**Tenant Name**| An optional tenant name.|
+|**Disable Properties**| This option disables importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties) section. |
+|**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link it to the cloud account.|
 
 
 ### Disable Properties  
 
-When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the Azure account. To disable network calls, select the **Disable Properties** option.  
+When you provide your cloud account information, Azure networking details will be sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
 
-For this, we first need to create an Azure Active Directory (AAD) Application which can be used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the client secret:
+When you disable network calls with the **Disable Properties** option, you need to create a Microsoft Entra application which can be used with role-based access control. Follow the steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
+
+:::info
+
+Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
+
+:::
 
 
-1. Follow the steps described [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) to create a new Azure Active Directory application. Note down your ClientID and TenantID.
+1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
+
+2. Next, assign yourself the [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. For guidance, refer to [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
+
+3. With UserAccessAdministrator privelege, you can now assign yourself the minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), which grants full access to manage all resources.
+
+  To learn about Azure roles, review [Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
+
+<!-- you will need a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) needs to be assigned. To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). The role can be assigned by following the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link. -->
 
 
-2. On creating the application, a minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) needs to be assigned. To assign any kind of role, the user must have a minimum role of [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator). The role can be assigned by following the [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) link.
+4. Create a client secret. Refer to [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret) for guidance.
+
+  :::caution
+
+  Be sure to safely store the client secret, as it will not be available later as plain text.
+
+  :::
 
 
-3. Follow the steps described in the [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) section to create the client application secret. Store the Client Secret safely as it will not be available as plain text later.
+<!-- (https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) . Store the Client Secret safely as it will not be available as plain text later. -->
 
 
 ## Validate
@@ -78,11 +90,12 @@ For this, we first need to create an Azure Active Directory (AAD) Application wh
 
 
 ## Manage Azure Accounts
-After an Azure cloud account has been registered with Palette, you can change the integration settings or remove the Azure account with **Edit and Delete** capabilities respectively.
+
+You can change the integration settings in your registered Azure account or remove the account.
 
 ### Edit an Azure Account
 
-Use the following steps to edit Azure Cloud account information in Palette.
+Use the following steps to edit Azure account information in Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
