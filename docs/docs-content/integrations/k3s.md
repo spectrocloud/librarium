@@ -44,7 +44,7 @@ You can add cloud-init stages, which allow you to customize your instances decla
 
 <TabItem label="Palette Virtual Cluster" value="palette-virtual-cluster">
 
-Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default kubeadm configuration file you get includes parameters that offer you a higher degree of customization.
+Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default configuration file you get includes parameters that offer you a higher degree of customization.
 
 |**Parameter**|**Description** |
 |-------------|----------------|
@@ -67,7 +67,7 @@ In order to use K3s as part of an Edge deployment, you need to go through the Ed
 
 #### Configure OIDC Identity Provider for Edge
 
-You can modify the kubeadm file to configure your Edge cluster to use an OpenID Connect (OIDC) Identity Provider (IDP) for authentication. 
+You can modify the configuration file to configure your Edge cluster to use an OpenID Connect (OIDC) Identity Provider (IDP) for authentication. 
 You can use a custom third-party IDP, such as Okta, or use Palette as your IDP. 
 
 When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP options listed below:
@@ -90,27 +90,24 @@ If your IDP uses Security Assertion Markup Language (SAML) authentication, then 
 
 To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to your profile, and then follow these steps:
 
-1. Add the following OIDC parameters to the `apiServer.extraArgs` section of your kubeadm file when creating a cluster profile.
+1. Add the following OIDC parameters to the `kube-apiserver-arg` section of your configuration file for your Kubernetes layer when creating a cluster profile.
 
    ```yaml
    cluster:
-    config:
-      clusterConfiguration:
-        apiServer:
-          extraArgs:
-            oidc-issuer-url: "provider URL"
-            oidc-client-id: "client-id"
-            oidc-groups-claim: "groups"
-            oidc-username-claim: "email"
+    config: | 
+       kube-apiserver-arg:
+        - oidc-issuer-url="provider URL"
+        - oidc-client-id="client-id"
+        - oidc-groups-claim="groups"
+        - oidc-username-claim="email"
    ```
-2. Add the following `kubeadmconfig.clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details.
+2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
-   kubeadmconfig:
-    clientConfig:
-      oidc-issuer-url: "<OIDC-ISSUER-URL>"
-      oidc-client-id: "<OIDC-CLIENT-ID>"
-      oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-      oidc-extra-scope: profile,email,openid
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 

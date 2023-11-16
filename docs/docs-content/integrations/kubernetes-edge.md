@@ -373,7 +373,7 @@ Follow these steps to configure a third-party OIDC IDP.
 
 ```yaml
 cluster:
-  config:
+  config: |
     clusterConfiguration:
       apiServer:
         extraArgs:
@@ -383,16 +383,15 @@ cluster:
           oidc-username-claim: "email"
 ```
  
-2. Add the following `kubeadmconfig.clientConfig` section that contains OIDC parameters to your Kubernetes YAML file. 
+2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file. 
 
 
 ```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+clientConfig:
+  oidc-issuer-url: "<OIDC-ISSUER-URL>"
+  oidc-client-id: "<OIDC-CLIENT-ID>"
+  oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+  oidc-extra-scope: profile,email,openid
 ```
 
 3. Provide third-party OIDC IDP details.
