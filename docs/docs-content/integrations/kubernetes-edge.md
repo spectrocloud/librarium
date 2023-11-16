@@ -71,7 +71,7 @@ You can also use pack settings described in the [Palette eXtended Kubernetes](ku
 
 ## Usage 
   
-The Kubeadm configuration file is where you can do the following:
+The Kubernetes configuration file is where you can do the following:
 
 - Manually configure a third-party OIDC IDP. For more information, check out [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
 
@@ -91,7 +91,7 @@ pack:
 ```
 
 
-#### Example Kubeadm Configuration File 
+#### Example Kubernetes Configuration File 
 
 ```yaml
 cluster:
@@ -383,7 +383,7 @@ cluster:
           oidc-username-claim: "email"
 ```
  
-2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file. 
+2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes configuration file. 
 
 
 ```yaml
