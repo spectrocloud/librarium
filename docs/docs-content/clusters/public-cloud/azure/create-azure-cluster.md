@@ -68,7 +68,7 @@ Use the following steps to deploy an Azure cluster.
 
 8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information.
 
-  :::info
+  :::caution
 
   All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings).
 
