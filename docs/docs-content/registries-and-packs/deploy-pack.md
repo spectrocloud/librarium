@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Deploy a Custom Pack"
 title: "Deploy a Custom Pack"
-description: "Learn how to deploy applications to a Kubernetes cluster with custom add-on packs. Deploy your custom pack from the Legacy or an OCI registry. Learn how to get started with Palette’s custom packs and reuse them in multiple deployments."
+description: "Learn how to deploy applications to a Kubernetes cluster with custom add-on packs. Deploy your custom pack from the Spectro Registry or an OCI registry. Learn how to get started with Palette’s custom packs and reuse them in multiple deployments."
 icon: ""
 hide_table_of_contents: false
 toc_min_heading_level: 2
@@ -25,9 +25,9 @@ After defining the custom pack, you will set up a new registry server or leverag
 
 The following diagram illustrates the steps required to succesfully complete this tutorial.
 
-<!-- ![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png) -->
+![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png)
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 To complete this tutorial, you will need the following items:
 
@@ -35,7 +35,7 @@ To complete this tutorial, you will need the following items:
 - Tenant admin access to Palette for the purpose of adding a new registry server.
 - A cloud account, such as AWS, Azure, or GCP, added to your Palette project settings.
 - An SSH key available in the region where you will deploy the cluster.
-- An active OCI registry such as Amazon ECR or Harbor. However, this requirement is not mandatory when opting for the Legacy registry.
+- An active OCI registry such as Amazon ECR or Harbor. However, this requirement is not mandatory when opting for the Spectro Registry.
 - [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container. 
 - Basic knowledge of Docker containers, Kubernetes manifest file attributes, and Terraform.
 
@@ -86,7 +86,7 @@ Do not exit the container until the tutorial is complete. Otherwise, you may los
 After starting a bash session in the active container, confirm the installation of the required tools using the commands provided below. 
 
 
-Check the Spectro CLI version.
+Check the Spectro Command Line Interface (CLI) version.
 
 ```bash
 spectro version
@@ -125,7 +125,7 @@ The **packs** directory stores the pack files. The **terraform** directory conta
 
 ## Build a Pack
 
-Building a custom pack requires defining specific files. 
+Building a custom pack involves defining specific files. 
 As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, there are two ways to define a custom pack: using manifest files or Helm charts. The file structure differs for manifest-based packs and Helm chart-based packs. Below is the reference file structure for each.
 <br />
 
@@ -202,7 +202,7 @@ Ensure you have the following files in the current directory.
 ├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
-
+<br />
 
 ### Pack File Structure
 
@@ -246,15 +246,13 @@ Review each of the following five files in the **hello-universe-pack** folder.
 
   <br />
 
-  You can optionally define *presets*, which are predefined values to use in the **values.yaml**. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer to [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets. 
+  Optionally, you can define *presets*, which are predefined values to use in the **values.yaml** file. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer to [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets. 
   
   The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest during the creation of the cluster profile. 
 
-  <br />
 
   ![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png )
 
-  <br />
 
 * **manifests** -  This directory contains the manifest files for your Kubernetes application. This tutorial has only one file, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe` element with the same name as the YAML file. 
   <br />
@@ -274,63 +272,95 @@ After completing the review of all files in the pack directory, the next step is
 
 ## Set Up the Registry Server
 
-The tutorials environment already has the Spectro registry service and other necessary tools available. The following sections will guide you to start the registry server, expose the service to the external world using [Ngrok](https://ngrok.com/) reverse proxy, and log in to the registry server to push your custom add-on pack to it.   
+You can set up a registry server using either the Spectro Registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
 
-### Start and Expose the Registry Server
-Start the registry server by issuing the following command from the bash session you opened into the tutorials container. 
+The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon Elastic Container Registry (ECR)** and **Basic**. To get started with Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. For Basic OCI Authentication, this tutorial uses a [Harbor Registry](https://goharbor.io/) as an example. Learn how to set up a Harbor registry server by referring to the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
+
+The following sections will guide you through starting the registry server, logging in, pushing your custom add-on pack, and, finally, configuring the registry server in Palette.
+
+### Start the Registry Server
+
+<Tabs>
+
+<TabItem label="Spectro Registry" value="Spectro_Registry">
+
 <br />
+
+Start the registry server by issuing the following command from the tutorial container bash session. 
 
 ```bash
 registry serve /etc/spectro/config.yml > /var/log/registry.log 2>&1 &
 ```
 
-The registry server will start in HTTP mode (not HTTPS). Refer to the [Add a Custom Registry](adding-a-custom-registry.md) guide to learn more about deploying an HTTPS registry server. 
+The registry server starts in HTTP mode. If you want to deploy an HTTPS registry server, refer to the [Add a Custom Registry](adding-a-custom-registry.md) guide. 
 
 
-Next, expose the registry server to the public so that you can configure it later in Palette. Use Ngrok reverse proxy to expose the registry server listening on port 5000 via an HTTP tunnel using the following command. 
-<br />
+Next, make the registry server accessible to the public using [Ngrok](https://ngrok.com/) reverse proxy so that you can configure it later in Palette. Execute the command below to expose the registry server listening on port 5000 via an HTTP tunnel. 
+
 
 ```bash
 ngrok http 5000 --log-level debug
 ```
 
-The command above will reserve the current bash session and display the status of each HTTP request made to the Ngrok server later in this tutorial. The screenshot below shows the registry server successfully exposed via Ngrok.  
+This command reserves the current bash session and displays the status of each HTTP request made to the Ngrok server. The image below shows the registry server successfully exposed via Ngrok.  
 
-<br />
 
 ![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.png )
 
+
+Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open your browser and go to *https://Your-URL-Here/health*, replacing the base URL with the Ngrok URL output. You should get a `{"status":"UP"}` response.
+
+</TabItem>
+
+<TabItem label="ECR" value="ECR_Registry">
+
 <br />
 
-Verify the registry server is accessible from outside the tutorials container by visiting the `/health` endpoint. Access the *https://Your-URL-Here/health* in your host browser. Replace the base URL with the Ngrok URL output you received. You should receive a `{"status":"UP"}` response.
+</TabItem>
+
+<TabItem label="Basic" value="Basic_Registry">
+
+<br />
+
+</TabItem>
+
+</Tabs>
 
 <br /> 
 
 ### Log in to the Registry Server
-Once the registry server's `/health` endpoint shows `UP` status, the next step is to log in and then push the pack to it. The pack you will push is in the tutorials container. Open another bash session into the tutorials container from your local terminal.  
-<br/>
+
+<Tabs>
+
+<TabItem label="Spectro Registry" value="Spectro_Registry">
+
+<br />
+
+Once the `/health` endpoint of the registry server displays an `UP` status, proceed to the authentication step. In a new terminal window, start another bash session in the tutorial container.  
+
 
 ```bash
 docker exec -it tutorialContainer bash
 ```
 
-Log in to the registry server using Ngrok's public URL assigned to you. Issue the command below, but replace the URL with your Ngrok URL. The command below uses these credentials to log in to the registry server: `{username: admin, password: admin}`.
-<br/>
+Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL with your Ngrok URL. The command below uses these credentials to log in to the registry server: `{username: admin, password: admin}`.
+
 
 ```bash
 spectro registry login  --insecure --default --username admin --password admin \
-f59e-49-36-220-143.ngrok-free.app
+58ec-174-119-143-38.ngrok-free.app
 ```
+<br />
 
 :::caution
 
-Do not use https:// or http:// keyword in the Ngrok URL. Using either of these keywords will result in an authorization issue. 
+Do not include the "https://" or "http://" keywords in the Ngrok URL. Using either of these keywords will result in an authorization issue. 
 
 :::
 
-
-You will receive a `Login Succeeded` response upon successful login. 
 <br />
+
+You will receive a `Login Succeeded` response upon successful login.
 
 ```bash
 # Output condensed for readability
@@ -339,72 +369,129 @@ Login Succeeded
 ```
 <br />
 
+</TabItem>
+
+<TabItem label="ECR" value="ECR_Registry">
+
+<br />
+
+</TabItem>
+
+<TabItem label="Basic" value="Basic_Registry">
+
+<br />
+
+</TabItem>
+
+</Tabs>
+
+<br />
 
 ### Push the Pack to the Registry Server
-When you are logged in, push the pack to the registry server using the following command. 
+
+<Tabs>
+
+<TabItem label="Spectro Registry" value="Spectro_Registry">
+
 <br />
+
+Once you are logged in, push the pack to the registry server using the following command. 
+
 
 ```bash
 spectro pack push /packs/hello-universe-pack/
 ```
 
-You can verify that the pack is in the registry by using the `ls` command. This command lists all packs in the registry. 
-<br />
+To confirm that the pack is now in the registry, use the `ls` command. This command lists all packs available in the registry. 
+
 
 ```bash
 spectro pack ls
 ```
 
-Verify the pack you pushed is listed, as shown in the screenshot below.  
+Check if the pushed pack is listed, as shown in the image below.  
 
-<br />
 
 ![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.png)
 
-<br />
 
-If you need help with the Spectro CLI commands, such as deleting a pack, refer to the [Spectro CLI commands](spectro-cli-reference.md#commands) guide. 
+For assistance with Spectro CLI commands, refer to the [Spectro CLI Commands](spectro-cli-reference.md#commands) guide. 
 <br /> 
 
-### Configure the Registry Server in Palette
-After you push the pack to the registry server, log in to Palette and configure the registry service so that you can access it when you create your cluster profile.   
+</TabItem>
 
+<TabItem label="ECR" value="ECR_Registry">
 
-Log in to [Palette](https://console.spectrocloud.com), and switch to the tenant admin view.
 <br />
+
+</TabItem>
+
+<TabItem label="Basic" value="Basic_Registry">
+
+<br />
+
+</TabItem>
+
+</Tabs>
+
+<br />
+
+### Configure the Registry Server in Palette
+
+<Tabs>
+
+<TabItem label="Spectro Registry" value="Spectro_Registry">
+
+<br />
+
+After pushing the pack to the registry server, follow the next steps to log in to Palette and add the registry server to it.
+
+
+Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
+
 
 ![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
 
-<br />
+
+Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section and click on **Add New Pack Registry**. Palette will open a pop-up window prompting you for the required fields to configure a custom pack registry.
+
+![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
 
 
+Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using the registry name **private-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://" as a prefix in the pack registry endpoint. Set both the username and password as **admin**.
 
-Navigate to **Tenant Settings** > **Registries** > **Pack Registries** section. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a custom pack registry, as highlighted in the screenshot below. 
+In the **TLS Configuration** section, select the **Insecure Skip TLS Verify** checkbox. This tutorial does not establish a secure HTTPS connection between Palette and your pack registry server. Therefore, you can skip the TLS verification. Instead, this tutorial uses an unencrypted  HTTP connection. However, in a production environment, you can upload your certificate in the **TLS Configuration** section if you need Palette to establish a secure HTTPS connection while communicating with the pack registry server.
 
-![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+Click on **Validate** to ensure that the provided URL and credentials are correct, then click on **Confirm** to finish the registry server configuration.
 
-
-Provide the pack registry name, endpoint, and user credentials in the pop-up window. For a consistent experience in this tutorial, we suggest using the name **private-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to use an "https://" prefix in the pack registry endpoint. 
-
-In the **TLS Configuration** section, select the **Insecure Skip TLS Verify** checkbox. This tutorial does not establish a secure HTTPS connection between Palette and your pack registry server. Therefore, you can skip the TLS verification. Instead, this tutorial uses an unencrypted  HTTP connection. However, in a production environment, you can upload your certificate in the **TLS Configuration** section if you need Palette to have a secure HTTPS connection while communicating with the pack registry server.
-
-Click on **Validate** to ensure the URL and credentials are correct, then click on **Confirm** to finish configuring the registry server.
-
-<br />
 
 ![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.png)
 
-<br />
 
+Palette automatically syncs the registry server periodically. However, you can sync it manually by clicking on the **Three-dot Menu** next to the registry server name and selecting **Sync**.  
 
-Palette syncs the registry server periodically. However, you can sync it manually the first time you add a server by clicking the **three-dot Menu** next to the registry server name and selecting **Sync**.  
-
-<br />
 
 ![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.png)
 
 <br />
 
+</TabItem>
+
+<TabItem label="ECR" value="ECR_Registry">
+
+<br />
+
+</TabItem>
+
+<TabItem label="Basic" value="Basic_Registry">
+
+<br />
+
+</TabItem>
+
+</Tabs>
+
+<br />
 
 ### Create a Cluster Profile and Deploy a Cluster
 
