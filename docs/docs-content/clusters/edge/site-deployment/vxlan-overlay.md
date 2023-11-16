@@ -27,9 +27,19 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 
 ## Enablement
 
-You can enable an overlay network for your cluster during cluster creation.
+You can enable an overlay network for your cluster during cluster creation. This guide covers the necessary configuration changes you need to make to enable network overlay. For more information on creating an Edge cluster, refer to [Model Edge Cluster Profile](./model-profile.md) and [Create Cluster Definition](./site-installation/cluster-deployment.md). 
 
-1. 
+1. When creating your Edge cluster, during the **Parameters** stage, select your network layer, and insert the following configuration to select your CNI. 
+
+2. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will open a dropdown for you to provide the necessary information to configure the overlay network. 
+
+3. In the **Select discovery method** dropdown, specify the interface to be used as the external Network Interface Controller (NIC) connected to the outside network, on top of which the overlay network will be created.:
+
+   - **Auto - Primary interface**: this selects the NIC that has the default gateway
+   - **Underlay CIDR**: this selects the NIC that matches a specific CIDR
+   - **NIC regex**: this selects the NIC based on matching the NIC name to a regex pattern
+
+4. Specify an internal IP CIDR range for the overlay network to use. You must ensure that this range does not overlap with other in-use ranges. The default value is a commonly unused /23 range that will serve well for most use cases at the edge. 
 
 ## Access Cluster with Overlay Network Enabled
 
