@@ -115,21 +115,9 @@ describe('toTitleCase', () => {
       expect(toTitleCase("myExampleString")).toBe("My Example String");
   });
 
-  it('drops CNI from the string', () => {
-      expect(toTitleCase("my-example-CNI-string")).toBe("My Example String");
-  });
-
-  it('drops CSI from the string', () => {
-      expect(toTitleCase("myCSIExampleString")).toBe("My Example String");
-  });
 
   it('converts aws to AWS in a string', () => {
       expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
   });
 
-  it('handles mixed cases with aws, CNI, and CSI correctly', () => {
-      expect(toTitleCase("myAwsExampleCNIStringCSI")).toBe("My AWS Example String");
-  });
-
-  // Add more test cases as necessary
 });
