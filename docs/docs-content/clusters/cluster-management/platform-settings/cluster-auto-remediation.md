@@ -13,6 +13,10 @@ Palette provides Cluster Auto Remediation as a node reconciliation operation. Wh
 
 * Project
 
+:::info
+This feature does not apply to EKS, AKS or TKE clusters.
+:::
+
 ## Prerequisites
 
 * Tenant admin or project admin access, depending on the scope.
@@ -52,10 +56,6 @@ Palette provides Cluster Auto Remediation as a node reconciliation operation. Wh
 </TabItem>
 
 </Tabs>
-
-:::info
-This does not apply to EKS, AKS or TKE clusters.
-:::
 
 ## Validate
 
