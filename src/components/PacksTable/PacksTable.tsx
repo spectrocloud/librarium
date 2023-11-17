@@ -142,7 +142,17 @@ const FilteredTable: React.FC = () => {
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
-        const deprecatedPackData = packData.Packs.filter((pack) => {  
+        const deprecatedPackData = packData.Packs.filter((pack) => { 
+
+          // Handle the case where the pack name is empty.
+          // This is applicable when the API returns a pack with no name.
+          // The API also does not include the last modified date for these packs.
+          if (pack.displayName == "") {
+            pack.displayName = toTitleCase(pack.name);
+            pack.timeLastUpdated = "-"
+            pack.packLastModifiedDate = "-"
+          }
+
           return pack.prodStatus !== "active" && pack.prodStatus !== "unknown"
         });
         setDeprecatedPacks(deprecatedPackData);
@@ -183,5 +193,23 @@ const FilteredTable: React.FC = () => {
     </div>
   );
 };
+
+// Convert the pack name to title case
+export function toTitleCase(str:string) {
+  return str
+      .replace(/([a-z])([A-Z])|-/g, '$1 $2')
+      // Split, filter, and capitalize words
+      .split(/\s+/)
+      .map(word => {
+        // Words that should be capitalized
+          if (['CNI', 'CSI', 'OSS', 'EBS', 'AWS'].includes(word.toUpperCase())) {
+              return word.toUpperCase();
+          }
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .filter(word => word)
+      .join(' ');
+}
+
 
 export default FilteredTable;
