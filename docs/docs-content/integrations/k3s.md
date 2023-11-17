@@ -44,7 +44,7 @@ You can add cloud-init stages, which allow you to customize your instances decla
 
 <TabItem label="Palette Virtual Cluster" value="palette-virtual-cluster">
 
-Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default configuration file you get includes parameters that offer you a higher degree of customization.
+Since you are setting up a virtual cluster inside another Kubernetes cluster, you can configure its pods and services differently than the host cluster. The default configuration file you get includes parameters that offer you a higher degree of customization. These configuration parameters are exposed in the cluster group settings page.  
 
 |**Parameter**|**Description** |
 |-------------|----------------|
@@ -76,13 +76,13 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc). This setting displays in the YAML file as `none`.
 
-- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to use kubectl CLI to access cluster. This setting displays in the YAML file as `palette`. Selecting **Palette** in this setting and creating role bindings to configure authorization are all you need to do to enable OIDC for your cluster. You do not need to provide extra parameters such as `oidc-issuer-url` as you need to when you configure a custom OIDC provider. 
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper permissions to view and access the project's resources is able to use kubectl CLI to access cluster. This setting displays in the YAML file as `palette`. When you select **Palette**, all you have to do to enable OIDC for your cluster is create role bindings to configure authorization. You do not need to provide extra parameters such as `oidc-issuer-url` as you need to when you configure a custom OIDC provider. 
 
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::info
+:::caution
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -94,7 +94,7 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 
    ```yaml
    cluster:
-    config: | 
+    config: 
        kube-apiserver-arg:
         - oidc-issuer-url="provider URL"
         - oidc-client-id="client-id"
@@ -114,11 +114,11 @@ After you have configured the IDP for authentication, you can proceed to create 
 
 #### Configure OIDC Identity Provider for Palette Virtual Clusters
 
-If you are using K3s in a Palette Virtual Cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
+If you are using K3s in a virtual cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
 
 #### Add a Certificate for Reverse Proxy
 
-You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](frp.md) guide.
+You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](frp.md) pack guide.
 
 </TabItem>
 
