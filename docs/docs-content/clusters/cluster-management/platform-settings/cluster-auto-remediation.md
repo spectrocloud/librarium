@@ -13,7 +13,7 @@ Palette provides Cluster Auto Remediation as a node reconciliation operation. Wh
 
 * Project
 
-:::info
+:::caution
 This feature does not apply to EKS, AKS or TKE clusters.
 :::
 
