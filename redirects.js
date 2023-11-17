@@ -338,6 +338,10 @@ const redirects = [
   {
     from: `/enterprise-version/ssl-certificate-management`,
     to: `/enterprise-version/system-management/ssl-certificate-management`
+  },
+  {
+    from: `/clusters/cluster-management/palette-lock-cluster`,
+    to: `/clusters/cluster-management/platform-settings`
   }
 ];
 
