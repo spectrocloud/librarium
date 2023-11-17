@@ -29,15 +29,28 @@ The following diagram illustrates the steps required to succesfully complete thi
 
 ## Prerequisites {#prerequisites}
 
-To complete this tutorial, you will need the following items:
+To complete this tutorial, ensure you have the following prerequisites in place:
 
 - A Spectro Cloud account. Access [Spectro Cloud Console](https://console.spectrocloud.com) to create an account.
 - Tenant admin access to Palette for the purpose of adding a new registry server.
-- A cloud account, such as AWS, Azure, or GCP, added to your Palette project settings.
-- An SSH key available in the region where you will deploy the cluster.
-- An active OCI registry such as Amazon ECR or Harbor. However, this requirement is not mandatory when opting for the Spectro Registry.
+- An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) for instructions.
+- An SSH key available in the region where you plan to deploy the cluster.
 - [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container. 
 - Basic knowledge of Docker containers, Kubernetes manifest file attributes, and Terraform.
+
+If you choose to use an OCI registry, you will need the following item.
+
+- An active OCI registry such as Amazon Elastic Container Registry (ECR) or Harbor.
+
+If you opt for an ECR OCI registry, you will require the following.
+
+- An AWS Identity and Access Management (IAM) user with sufficient access to create ECR repositories and push artifacts.
+
+:::caution
+
+There might be some AWS expenses associated with this tutorial. Once you have completed the tutorial, be sure to delete the infrastructure to avoid additional charges.
+
+:::
 
 
 ## Set Up the Tutorial Environment
@@ -274,7 +287,7 @@ After completing the review of all files in the pack directory, the next step is
 
 You can set up a registry server using either the Spectro Registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
 
-The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon Elastic Container Registry (ECR)** and **Basic**. To get started with Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. For Basic OCI Authentication, this tutorial uses a [Harbor Registry](https://goharbor.io/) as an example. Learn how to set up a Harbor registry server by referring to the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
+The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To get started with Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. Learn how to set up a Harbor registry server by referring to the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
 
 The following sections will guide you through starting the registry server, logging in, pushing your custom add-on pack, and, finally, configuring the registry server in Palette.
 
@@ -315,6 +328,46 @@ Check if the registry server is accessible from outside the tutorial container b
 <TabItem label="ECR" value="ECR_Registry">
 
 <br />
+
+An Amazon ECR private registry is provided to each AWS account, allowing the creation of repositories within it.
+
+The initial step to create the pack's repository in the ECR registry is to export your AWS credentials as environment variables for authentication. 
+
+In the tutorial container's bash session, export the following variables. This tutorial utilizes **us-east-1** as the default region.
+
+```bash
+export AWS_ACCESS_KEY_ID=<Your_Access_Key_ID>
+export AWS_SECRET_ACCESS_KEY=<Your_Secret_Access_Key>
+export AWS_DEFAULT_REGION=<Your_Default_Region>
+```
+
+Next, export the variables below, which will you use later to create the ECR repository and push the pack.
+
+- **REGISTRY_NAME** - the name of your ECR registry. This tutorial uses **spectro-oci-registry**.
+- **NAME** - the pack's name, which must match the name in the **pack.json** file. 
+- **VERSION** - the pack's version, which must match with the version in the **pack.json** file.
+- **ACCOUNT_ID** - your AWS account ID, containing only numerical digits and no dashes.
+
+```bash
+export REGISTRY_NAME=spectro-oci-registry
+export NAME=hellouniverse
+export VERSION=1.0.0
+export ACCOUNT_ID=<Your_AWS_Account_ID>
+```
+
+Create a base path repository to store your pack repositories using the AWS CLI, which is already installed in the tutorial container. Follow the provided structure below.
+
+```bash
+aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive --region $AWS_DEFAULT_REGION
+```
+
+Next, create the repository to store the **Hello Universe** pack.
+
+```bash
+aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
+```
+
+This configuration sets up the required environment and repositories for pushing the **Hello Universe** pack to your ECR Registry.
 
 </TabItem>
 
@@ -375,6 +428,18 @@ Login Succeeded
 
 <br />
 
+After you have created the repositories, authenticate to your ECR registry using the `aws ecr get-login-password` command. The ECR authorization token is then passed to the `oras login` command with **AWS** as username and the registry Uniform Resource Identifier (URI). [Oras](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts to and from OCI registries.
+
+```bash
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+```
+
+If the login is successful, you will receive the following confirmation message.
+
+```bash
+Login Succeeded
+```
+
 </TabItem>
 
 <TabItem label="Basic" value="Basic_Registry">
@@ -423,6 +488,34 @@ For assistance with Spectro CLI commands, refer to the [Spectro CLI Commands](sp
 <TabItem label="ECR" value="ECR_Registry">
 
 <br />
+
+Once you are authenticated to your ECR registry, navigate to the **packs** directory, which contains the pack folder, **hello-universe-pack**.
+
+```bash
+cd /packs
+```
+
+Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
+
+```bash
+tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
+```
+
+Now, proceed to push the **Hello Universe** pack to the ECR registry.
+
+```bash
+oras push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REGISTRY_NAME/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
+```
+
+You can use the `aws ecr describe-images` command to check if the pushed pack is listed in your ECR repository.
+
+```bash
+aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
+```
+
+The image below displays the output of the `aws ecr describe-images` command, confirming the presence of the **Hello Universe** pack in the repository.
+
+![Screenshot of the output of the command aws ecr describe-images](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-describe.png)
 
 </TabItem>
 
@@ -480,6 +573,35 @@ Palette automatically syncs the registry server periodically. However, you can s
 <TabItem label="ECR" value="ECR_Registry">
 
 <br />
+
+After pushing the pack to the ECR registry, follow the next steps to log in to Palette and add the ECR registry to it.
+
+
+Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
+
+
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+
+
+Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**. Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
+
+![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry.png)
+
+
+Provide the registry name. For consistency, we suggest using the registry name **ecr-registry**. Choose **Pack** as the provider and select **ECR** as the OCI authentication type. Complete the **Endpoint** field with your ECR registry URI. The URI follows the structure `123456.dkr.ecr.us-east-1.amazonaws.com` Replace **123456** with your AWS account ID and **us-east-1** with your AWS default region.
+
+Next, set the base content path as **spectro-oci-registry**, which is your ECR registry name. Toggle the **Protected** option, choose **Credentials** as the AWS authentication method, and specify your AWS access and secret access keys.
+
+Lastly, click on **Validate** to ensure that the provided URL and credentials are correct. After validation, click on **Confirm** to finish the ECR registry configuration.
+
+
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-edit.png)
+
+
+Palette automatically syncs the registry. However, you can sync it manually by clicking on the **Three-dot Menu** next to the registry name and selecting **Sync**.  
+
+
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-sync.png)
 
 </TabItem>
 
