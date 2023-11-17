@@ -197,17 +197,15 @@ const FilteredTable: React.FC = () => {
 // Convert the pack name to title case
 export function toTitleCase(str:string) {
   return str
-       // Replace 'aws' with 'AWS' and handle camelCase and dashes
-      .replace(/aws/gi, 'AWS')
       .replace(/([a-z])([A-Z])|-/g, '$1 $2')
       // Split, filter, and capitalize words
       .split(/\s+/)
       .map(word => {
         // Words that should be capitalized
-          if (['CNI', 'CSI', 'OSS', 'EBS',].includes(word.toUpperCase())) {
+          if (['CNI', 'CSI', 'OSS', 'EBS', 'AWS'].includes(word.toUpperCase())) {
               return word.toUpperCase();
           }
-          return word === 'AWS' ? 'AWS' : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
       .filter(word => word)
       .join(' ');
