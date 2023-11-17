@@ -15,39 +15,18 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 ## Prerequisites
 
-<Tabs groupId="pauseUpgrades">
 
-<TabItem value="singleCluster" label="Pause Upgrades for a Single Cluster">
-
-* User access
+* Cluster Admin permissions or Tenant Admin permissions when pausing upgrades for all clusters within tenant scope.
 
 * An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
 
-</TabItem>
-
-<TabItem value="projectScope" label="Pause Upgrades for all Clusters within Project Scope">
-
-* Tenant admin access
-
-* An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
-
-</TabItem>
-
-<TabItem value="tenantScope" label="Pause Upgrades for all Clusters within Tenant Scope">
-
-* Tenant admin access
-
-* An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
-
-</TabItem>
-
-</Tabs>
 
 ## Enablement
 
+Use the tabs below to view the instructions for enabling the **Pause Agent Upgrades** feature for a single cluster, all clusters within the project scope, or all within the tenant scope.
 <Tabs groupId="pauseUpgrades">
 
-<TabItem value="singleCluster" label="Pause Upgrades for a Single Cluster">
+<TabItem value="singleCluster" label="Single Cluster">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -63,7 +42,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 </TabItem>
 
-<TabItem value="projectScope" label="Pause Upgrades for all Clusters within Project Scope">
+<TabItem value="projectScope" label="All Clusters - Project Scope">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -77,7 +56,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 </TabItem>
 
-<TabItem value="tenantScope" label="Pause Upgrades for all Clusters within Tenant Scope">
+<TabItem value="tenantScope" label="All Clusters - Tenant Scope">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -97,7 +76,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 <Tabs groupId="pauseUpgrades">
 
-<TabItem value="singleCluster" label="Pause Upgrades for a Single Cluster">
+<TabItem value="singleCluster" label="Single Cluster">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -111,7 +90,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 </TabItem>
 
-<TabItem value="projectScope" label="Pause Upgrades for all Clusters within Project Scope">
+<TabItem value="projectScope" label="All Clusters - Project Scope">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -123,7 +102,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 </TabItem>
 
-<TabItem value="tenantScope" label="Pause Upgrades for all Clusters within Tenant Scope">
+<TabItem value="tenantScope" label="All Clusters - Tenant Scope">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
