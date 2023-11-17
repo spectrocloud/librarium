@@ -15,8 +15,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 ## Prerequisites
 
-
-* Cluster Admin permissions or Tenant Admin permissions when pausing upgrades for all clusters within tenant scope.
+* Cluster admin permissions or Tenant admin permissions when pausing upgrades for all clusters within tenant scope.
 
 * An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
 
@@ -24,6 +23,7 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 ## Enablement
 
 Use the tabs below to view the instructions for enabling the **Pause Agent Upgrades** feature for a single cluster, all clusters within the project scope, or all within the tenant scope.
+
 <Tabs groupId="pauseUpgrades">
 
 <TabItem value="singleCluster" label="Single Cluster">
