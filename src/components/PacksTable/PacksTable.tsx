@@ -142,7 +142,14 @@ const FilteredTable: React.FC = () => {
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
-        const deprecatedPackData = packData.Packs.filter((pack) => {  
+        const deprecatedPackData = packData.Packs.filter((pack) => { 
+
+          if (pack.displayName == "") {
+            pack.displayName = toTitleCase(pack.name);
+            pack.timeLastUpdated = "-"
+            pack.packLastModifiedDate = "-"
+          }
+
           return pack.prodStatus !== "active" && pack.prodStatus !== "unknown"
         });
         setDeprecatedPacks(deprecatedPackData);
@@ -183,5 +190,21 @@ const FilteredTable: React.FC = () => {
     </div>
   );
 };
+
+
+export function toTitleCase(str:string) {
+  const words = str.replace(/([A-Z])/g, ' $1').split(/-|\s/);
+  const processedWords = words.map(word => {
+      if (word.toLowerCase() === 'aws') {
+          return 'AWS';
+      } else if (word.toUpperCase() !== 'CNI' && word.toUpperCase() !== 'CSI') {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+      return '';
+  }).filter(word => word !== '');
+
+  return processedWords.join(' ');
+}
+
 
 export default FilteredTable;

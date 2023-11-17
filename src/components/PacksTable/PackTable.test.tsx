@@ -2,6 +2,7 @@ import React from "react";
 import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import fetchMock from "jest-fetch-mock";
 import FilteredTable from "./PacksTable";
+import { toTitleCase } from "./PacksTable";
 // Enable fetch mocking
 fetchMock.enableMocks();
 
@@ -102,4 +103,33 @@ describe("FilteredTable Tests", () => {
     expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
   });
 
+});
+
+
+describe('toTitleCase', () => {
+  it('converts a dasherized string to title case', () => {
+      expect(toTitleCase("my-example-string")).toBe("My Example String");
+  });
+
+  it('converts a camelCase string to title case', () => {
+      expect(toTitleCase("myExampleString")).toBe("My Example String");
+  });
+
+  it('drops CNI from the string', () => {
+      expect(toTitleCase("my-example-CNI-string")).toBe("My Example String");
+  });
+
+  it('drops CSI from the string', () => {
+      expect(toTitleCase("myCSIExampleString")).toBe("My Example String");
+  });
+
+  it('converts aws to AWS in a string', () => {
+      expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
+  });
+
+  it('handles mixed cases with aws, CNI, and CSI correctly', () => {
+      expect(toTitleCase("myAwsExampleCNIStringCSI")).toBe("My AWS Example String");
+  });
+
+  // Add more test cases as necessary
 });
