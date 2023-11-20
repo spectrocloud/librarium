@@ -1,0 +1,21 @@
+FROM node:18-alpine as builder
+
+COPY --chown=node . .
+
+ENV ALGOLIA_APP_ID 1234567890
+ENV ALGOLIA_SEARCH_KEY 1234567890
+
+WORKDIR /librarium
+
+RUN npm ci && \
+npm run build
+
+
+FROM caddy:latest
+
+COPY --from=builder build /srv
+COPY --from=builder Caddyfile /etc/caddy/Caddyfile
+
+EXPOSE 80 443 2015 2019
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
