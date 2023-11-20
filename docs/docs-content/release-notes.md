@@ -18,6 +18,7 @@ tags: ["release-notes"]
 
 ### Palette
 
+
 #### Breaking Changes
 
 
@@ -36,9 +37,13 @@ tags: ["release-notes"]
 
 ### Edge
 
+#### Breaking Changes
+
+- Edge host names are not allowed to have special characters. Validation has been added to prevent issues that may arise from using special characters in host names. Edge host names must comply with RFC1035, refer to the [Edge Installer Configuration](./clusters/edge/edge-configuration/edge-configuration.md) and review the `name` parameter for more information.
+
 #### Features
 
-
+- 
 
 
 #### Improvements
