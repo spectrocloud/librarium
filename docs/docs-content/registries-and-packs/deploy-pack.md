@@ -23,7 +23,7 @@ In this tutorial, you will create a custom add-on pack to package a sample Kuber
 
 After defining the custom pack, you will set up a new registry server or leverage an existing Open Container Initiative (OCI) registry. Then, you will publish the pack to the registry and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform. 
 
-The following diagram illustrates the steps required to succesfully complete this tutorial.
+The following diagram illustrates the steps required to successfully complete this tutorial.
 
 ![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png)
 
@@ -33,22 +33,32 @@ To complete this tutorial, ensure you have the following prerequisites in place:
 
 - A Spectro Cloud account. Access [Spectro Cloud Console](https://console.spectrocloud.com) to create an account.
 - Tenant admin access to Palette for the purpose of adding a new registry server.
-- An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) for instructions.
+- An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) guide for instructions.
 - An SSH key available in the region where you plan to deploy the cluster.
 - [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container. 
 - Basic knowledge of Docker containers, Kubernetes manifest file attributes, and Terraform.
 
 If you choose to use an OCI registry, you will need the following item.
-
-- An active OCI registry such as Amazon Elastic Container Registry (ECR) or Harbor.
+<!--- - An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or [Harbor](https://goharbor.io/).-->
+- An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/).
 
 If you opt for an ECR OCI registry, you will require the following.
 
-- An AWS Identity and Access Management (IAM) user with sufficient access to create ECR repositories and push artifacts.
+- An AWS Identity and Access Management (IAM) user with the following permissions.
+
+  - `ecr:CreateRepository`
+  - `ecr:InitiateLayerUpload`
+  - `ecr:CompleteLayerUpload`
+  - `ecr:InitiateLayerUpload`
+  - `ecr:PutImage`
+  - `ecr:UploadLayerPart`
+  - `ecr:BatchCheckLayerAvailability`
+  - `ecr:ListImages`
+  - `ecr:DescribeImages`
 
 :::caution
 
-There might be some AWS expenses associated with this tutorial. Once you have completed the tutorial, be sure to delete the infrastructure to avoid additional charges.
+There could be AWS expenses associated with this tutorial. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
 :::
 
@@ -122,7 +132,7 @@ terraform --version
 
 Additionally, the tutorial container includes other tools such as `ngrok`, `git`, `nano`, `aws-cli`, and `oras`.
 
-Inspect the directories relevant to the current tutorial in the container **root** directory. 
+Inspect the directories relevant to the current tutorial in the container root directory. 
 
 ```bash
 .
@@ -195,7 +205,7 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, there ar
 
 <br /> 
 
-For your convenience, we provide you with the manifest-based pack files for the *Hello Universe* application. These files are located in the **packs/hello-universe-pack** folder. 
+For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files are located in the **packs/hello-universe-pack** folder. 
 
 Navigate to the **packs/hello-universe-pack** directory.
 
@@ -240,7 +250,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
   
   <br />
 
-* **values.yaml** -  This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not been created, Palette creates a new one using the value specified in the YAML file. 
+* **values.yaml** -  This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not yet been created, Palette creates a new one using the value specified in the YAML file. 
 
   If the **values.yaml**  does not specify a namespace value, Palette deploys the application to the default namespace.
   
@@ -267,7 +277,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
   ![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png )
 
 
-* **manifests** -  This directory contains the manifest files for your Kubernetes application. This tutorial has only one file, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe` element with the same name as the YAML file. 
+* **manifests** -  This directory contains the manifest files for your Kubernetes application. This tutorial has only one manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe` element with the same name as the YAML file. 
   <br />
 
 * **logo.png** -  This file contains a logo that displays when you create a cluster profile. 
@@ -278,7 +288,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
 <br />
 
 
-After completing the review of all files in the pack directory, the next step is to set up a registry server, publish the pack to that registry, and configure the registry in Palette.
+After completing the review of all files in the pack directory, the next step is to set up a registry server, publish the pack to the registry, and configure the registry in Palette.
 
 
 <br />
@@ -287,13 +297,13 @@ After completing the review of all files in the pack directory, the next step is
 
 You can set up a registry server using either the Spectro Registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
 
-The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To get started with Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. Learn how to set up a Harbor registry server by referring to the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
+The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To get started with Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
 
 The following sections will guide you through starting the registry server, logging in, pushing your custom add-on pack, and, finally, configuring the registry server in Palette.
 
 ### Start the Registry Server
 
-<Tabs>
+<Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
@@ -331,9 +341,9 @@ Check if the registry server is accessible from outside the tutorial container b
 
 An Amazon ECR private registry is provided to each AWS account, allowing the creation of repositories within it.
 
-The initial step to create the pack's repository in the ECR registry is to export your AWS credentials as environment variables for authentication. 
+The initial step to creating the pack's repository in the ECR registry is to export your AWS credentials as environment variables for authentication. 
 
-In the tutorial container's bash session, export the following variables. This tutorial utilizes **us-east-1** as the default region.
+In the tutorial container bash session, export the following variables. This tutorial utilizes **us-east-1** as the default region.
 
 ```bash
 export AWS_ACCESS_KEY_ID=<Your_Access_Key_ID>
@@ -341,12 +351,12 @@ export AWS_SECRET_ACCESS_KEY=<Your_Secret_Access_Key>
 export AWS_DEFAULT_REGION=<Your_Default_Region>
 ```
 
-Next, export the variables below, which will you use later to create the ECR repository and push the pack.
+Next, export the variables below, which you will use later to create the ECR repository and push the pack.
 
-- **REGISTRY_NAME** - the name of your ECR registry. This tutorial uses **spectro-oci-registry**.
-- **NAME** - the pack's name, which must match the name in the **pack.json** file. 
-- **VERSION** - the pack's version, which must match with the version in the **pack.json** file.
-- **ACCOUNT_ID** - your AWS account ID, containing only numerical digits and no dashes.
+- `REGISTRY_NAME` - the name of your ECR registry. This tutorial uses **spectro-oci-registry**.
+- `NAME` - the pack's name, which must match the name in the **pack.json** file. 
+- `VERSION` - the pack's version, which must match the version in the **pack.json** file.
+- `ACCOUNT_ID` - your AWS account ID, containing only numerical digits and no dashes.
 
 ```bash
 export REGISTRY_NAME=spectro-oci-registry
@@ -361,21 +371,31 @@ Create a base path repository to store your pack repositories using the AWS CLI,
 aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive --region $AWS_DEFAULT_REGION
 ```
 
-Next, create the repository to store the **Hello Universe** pack.
+Next, create the repository to store the Hello Universe pack.
 
 ```bash
 aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
 ```
 
-This configuration sets up the required environment and repositories for pushing the **Hello Universe** pack to your ECR Registry.
+This configuration sets up the required environment and repositories for pushing the Hello Universe pack to your ECR Registry.
 
 </TabItem>
 
-<TabItem label="Basic" value="Basic_Registry">
+<!-- <TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-</TabItem>
+Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor credentials. If you have kept the default credentials, the administrator username and password are **admin** and **Harbor12345**, respectively.
+
+![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.png)
+
+
+Next, go to the **Projects** section and click on **New Project**. A project in Harbor contains all repositories of an application. This tutorial uses **spectro-oci-registry** as the project name. Leave the other settings as default and click on **OK**.
+
+![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.png)
+
+
+</TabItem> -->
 
 </Tabs>
 
@@ -383,7 +403,7 @@ This configuration sets up the required environment and repositories for pushing
 
 ### Log in to the Registry Server
 
-<Tabs>
+<Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
@@ -407,7 +427,7 @@ spectro registry login  --insecure --default --username admin --password admin \
 
 :::caution
 
-Do not include the "https://" or "http://" keywords in the Ngrok URL. Using either of these keywords will result in an authorization issue. 
+Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using either of these prefixes will result in an authorization issue. 
 
 :::
 
@@ -436,17 +456,37 @@ aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username 
 
 If the login is successful, you will receive the following confirmation message.
 
-```bash
+```
 Login Succeeded
 ```
 
 </TabItem>
 
-<TabItem label="Basic" value="Basic_Registry">
+<!-- <TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-</TabItem>
+After creating the project, proceed with the Harbor authentication. In the tutorial container bash session, export the `HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
+
+```bash
+export HARBOR_ADDRESS=<Your_Harbor_Address>
+```
+
+Now, issue the command `oras login`.
+
+```bash
+oras login $HARBOR_ADDRESS
+```
+
+You will be prompted for your Harbor username and password. If the login is successful, you will receive the following confirmation message.
+
+```
+Username: admin
+Password:
+Login Succeeded
+```
+
+</TabItem> -->
 
 </Tabs>
 
@@ -454,7 +494,7 @@ Login Succeeded
 
 ### Push the Pack to the Registry Server
 
-<Tabs>
+<Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
@@ -513,17 +553,59 @@ You can use the `aws ecr describe-images` command to check if the pushed pack is
 aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
 ```
 
-The image below displays the output of the `aws ecr describe-images` command, confirming the presence of the **Hello Universe** pack in the repository.
+The image below displays the output of the `aws ecr describe-images` command, confirming the presence of the Hello Universe pack in the repository.
 
 ![Screenshot of the output of the command aws ecr describe-images](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-describe.png)
 
 </TabItem>
 
-<TabItem label="Basic" value="Basic_Registry">
+<!-- <TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-</TabItem>
+Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the Harbor repository and push the pack.
+
+- `HARBOR_PROJECT` - the name of your Harbor project. This tutorial uses **spectro-oci-registry**.
+- `NAME` - the pack's name, which must match the name in the **pack.json** file. 
+- `VERSION` - the pack's version, which must match the version in the **pack.json** file.
+
+```bash
+export HARBOR_PROJECT=spectro-oci-registry
+export NAME=hellouniverse
+export VERSION=1.0.0
+```
+
+Next, navigate to the **packs** directory, which contains the pack folder, **hello-universe-pack**.
+
+```bash
+cd /packs
+```
+
+Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
+
+```bash
+tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
+```
+
+Harbor creates a repository when the user pushes an artifact to a project. 
+Create a base path repository to store your pack repositories.
+
+```bash
+oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive
+```
+
+Now, proceed to create the pack repository and push the Hello Universe pack to the Harbor registry.
+
+```bash
+oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
+```
+
+To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on **Projects**, select the **spectro-oci-registry** project, and then click on the **spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should see the pushed artifact, as shown in the image below.
+
+![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.png)
+
+
+</TabItem> -->
 
 </Tabs>
 
@@ -531,7 +613,7 @@ The image below displays the output of the `aws ecr describe-images` command, co
 
 ### Configure the Registry Server in Palette
 
-<Tabs>
+<Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
@@ -551,17 +633,17 @@ Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** secti
 ![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
 
 
-Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using the registry name **private-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://" as a prefix in the pack registry endpoint. Set both the username and password as **admin**.
+Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using the registry name **spectro-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://" as the prefix in the pack registry endpoint. Set both the username and password as **admin**.
 
 In the **TLS Configuration** section, select the **Insecure Skip TLS Verify** checkbox. This tutorial does not establish a secure HTTPS connection between Palette and your pack registry server. Therefore, you can skip the TLS verification. Instead, this tutorial uses an unencrypted  HTTP connection. However, in a production environment, you can upload your certificate in the **TLS Configuration** section if you need Palette to establish a secure HTTPS connection while communicating with the pack registry server.
 
-Click on **Validate** to ensure that the provided URL and credentials are correct, then click on **Confirm** to finish the registry server configuration.
+Click on **Validate** to ensure the provided URL and credentials are correct, then click on **Confirm** to finish the registry server configuration.
 
 
 ![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.png)
 
 
-Palette automatically syncs the registry server periodically. However, you can sync it manually by clicking on the **Three-dot Menu** next to the registry server name and selecting **Sync**.  
+Palette automatically syncs the registry server. However, you can sync it manually by clicking the **three-dot Menu** next to the registry server name and selecting **Sync**.  
 
 
 ![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.png)
@@ -588,127 +670,130 @@ Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** sectio
 ![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry.png)
 
 
-Provide the registry name. For consistency, we suggest using the registry name **ecr-registry**. Choose **Pack** as the provider and select **ECR** as the OCI authentication type. Complete the **Endpoint** field with your ECR registry URI. The URI follows the structure `123456.dkr.ecr.us-east-1.amazonaws.com` Replace **123456** with your AWS account ID and **us-east-1** with your AWS default region.
+Provide the registry name. For consistency, we suggest using the registry name **ecr-registry**. Choose **Pack** as the provider and select **ECR** as the OCI authentication type. Complete the **Endpoint** field with your ECR registry URI. The URI follows the structure `123456.dkr.ecr.us-east-1.amazonaws.com`. Replace **123456** with your AWS account ID and **us-east-1** with your AWS default region.
 
 Next, set the base content path as **spectro-oci-registry**, which is your ECR registry name. Toggle the **Protected** option, choose **Credentials** as the AWS authentication method, and specify your AWS access and secret access keys.
 
-Lastly, click on **Validate** to ensure that the provided URL and credentials are correct. After validation, click on **Confirm** to finish the ECR registry configuration.
+Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on **Confirm** to finish the ECR registry configuration.
 
 
 ![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-edit.png)
 
 
-Palette automatically syncs the registry. However, you can sync it manually by clicking on the **Three-dot Menu** next to the registry name and selecting **Sync**.  
+Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to the registry name and selecting **Sync**.  
 
 
 ![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-sync.png)
 
 </TabItem>
 
-<TabItem label="Basic" value="Basic_Registry">
+<!-- <TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-</TabItem>
+After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to it.
+
+
+Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
+
+
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+
+
+Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**. Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
+
+![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.png)
+
+
+Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor registry address. Ensure to include "https://" as the prefix.
+
+Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter your Harbor credentials in the **Username** and **Password** fields.
+
+Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on **Confirm** to complete the Harbor registry configuration.
+
+
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.png)
+
+
+Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to the registry name and selecting **Sync**.  
+
+
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.png)
+
+</TabItem> -->
 
 </Tabs>
 
 <br />
 
-### Create a Cluster Profile and Deploy a Cluster
+## Create a Cluster Profile and Deploy a Cluster
 
-This tutorial guides you to create a cluster profile for AWS. However, you can choose any other cloud service provider, provided you configure the following two items:
-<br /> 
+Once you have configured the registry, create a cluster profile and apply the profile to a cluster in Palette. This tutorial provides two workflows from which you can choose: Palette User Interface (UI) or Terraform.
 
-* **Cloud account**: A cloud account added to your Palette project settings. 
+<Tabs groupId="deploy-cluster">
 
-  The AWS cloud account name in this tutorial example is **spectro-cloud**. You can choose another name if desired. The screenshot below shows how to add and verify the AWS cloud account with your project. Navigate to **Project Settings** > **Cloud Accounts** > **AWS** > **Add AWS Account** in Palette. Check out the [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for additional help. 
-
-  <br />
-
-  ![Screenshot of Cloud Accounts in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_palette-cloud-account.png)
-
-  <br />
-
-
-* **SSH key**: An SSH key created in the region where you will deploy the cluster. 
-
-  This tutorial example will deploy the cluster in the **us-east-2**  region, and the SSH key name used in this example is **aws_key_sk_us_east_2**. You must choose the desired region and the available SSH key name from your AWS account. 
-
-<br /> 
-
-Create a cluster profile and deploy it to a cluster using either Palette or Terraform code.
-
-- [UI Workflow](#ui-workflow)
-
-- [Terraform Workflow](#terraform-workflow)
-
----
+<TabItem label="UI Workflow" value="UI_Workflow">
 
 <br />
-
-## UI Workflow
-
 
 ### Create a Cluster Profile
+
 Switch to the **Default** project scope for creating a cluster profile.  
-<br />
 
 ![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
 
-<br />
-
-Select the **Profile** section in the left **Main Menu** to create a cluster profile that will combine the core infrastructure and add-on layers. Click on the **Add Cluster Profile** button, and provide the details in the wizard that follows. The wizard displays the following sections. 
-<br />
+Next, select the **Profiles** section in the left **Menu** to create a cluster profile that combines the core infrastructure and add-on layers. Click on the **Add Cluster Profile** button.
 
 #### Basic Information
-Use the following values in the **Basic Information** section. 
+
+Complete the wizard using the values provided below.
 
 |**Field**|**Value**|
 |---|---|
 |Name|pack-tutorial-profile|
 |Version|`1.0.0`|
-|Description|Cluster profile as part of the pack tutorial.|
+|Description|Cluster profile as part of the Deploy a Custom Pack tutorial.|
 |Type|Full|
-|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:true`|
+|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:false`|
 
 Click on **Next** to continue. 
 <br />
 
 #### Cloud Type
-In the **Cloud Type** section, choose AWS as the infrastructure provider for this tutorial, and click on **Next** at the bottom to move on to the next section.   
-<br />
+In the **Cloud Type** section, select AWS as the infrastructure provider, and click on **Next** at the bottom to proceed to the next section.   
 
 :::info
 
-If you choose a different cloud service provider, the core infrastructure layers options, as outlined in the **Profile Layers** section below, will differ from this tutorial.
+If you choose a different cloud provider, note that the options for core infrastructure layers, as outlined in the **Profile Layers** section below, will differ from those presented in this tutorial.
 
 :::
 
 <br />
 
 #### Profile Layers
-In the **Profile Layers** section, add the following core infrastructure layers if you have chosen the AWS cloud service provider. To deploy your resource to Azure or Google Cloud, use the core infrastructure layers outlined in [Cloud Service Provider Configurations](https://github.com/spectrocloud/tutorials/tree/main/terraform/pack-tf/README.md#cloud-service-provider-configurations).
+In the **Profile Layers** section, add the following core infrastructure layers.
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
-|OS|Public Repo|Ubuntu|`LTS__20.4.x`|
-|Kubernetes|Public Repo|Kubernetes|`1.24.x`|
-|Network|Public Repo|Calico|`3.25.x`|
-|Storage|Public Repo|Amazon EBS CSI|`1.16.x`|
+|OS|Public Repo|Ubuntu|`LTS__22.4.x`|
+|Kubernetes|Public Repo|Palette eXtended Kubernetes|`1.28.x`|
+|Network|Public Repo|Calico|`3.26.x`|
+|Storage|Public Repo|Amazon EBS CSI|`1.22.x`|
 
-As you add each layer, click on the **Next layer** button. After you add the **Storage** layer, click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. You can select any layer to make further edits or change the version if desired. 
+As you add each layer, click on the **Next layer** button. After adding the **Storage** layer, click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered diagram. You can select any layer to make further edits or change the version if desired.
 
-Now you are ready to add the add-on layers. Click the **Add New Pack** button. 
+Next, proceed to include the add-on layers. Click on the **Add New Pack** button. 
 
 Add the Spectro Proxy pack to enable a reverse proxy to connect to the cluster's API. Adding this pack is *optional*, but it will help connect your local machine to the cluster's API for debugging. 
 Refer to the [Spectro Proxy](../integrations/frp.md) guide for more details. 
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
-|Authentication | Public Repo| Spectro Proxy | `1.3.x`|
+|Authentication | Public Repo| Spectro Proxy | `1.4.x`|
 
-Click on the **Confirm & Create** button to finish adding the Spectro Proxy pack. Also, add the following certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the `apiServer` parameter section to configure the Spectro Proxy pack.
+Click on the **Confirm & Create** button to finish adding the Spectro Proxy pack. 
+
+Now, click on the Kubernetes layer and add the following certificate Subject Alternative Name (SAN) value under the `apiServer` parameter section to configure the Spectro Proxy pack.
 <br />
 
 ```yaml
@@ -721,60 +806,60 @@ certSANs:
 
 <br />
 
-Next, add the following **Hello Universe** pack. This is the custom add-on pack you defined and pushed to the **private-pack-registry** earlier in this tutorial. 
+Finally, add the Hello Universe pack. Click on **Add New Pack** and select the registry you created earlier in this tutorial. The table below specifies the registry name corresponding to the registry type. For example, if you created an ECR registry, select **ecr-registry**.
 
-|**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
-|---|---|---|---|
-|App Services | private-pack-registry | Hello Universe | `1.0.x` |
+|**Pack Type**|**Registry Type**|**Registry Name**|**Pack Name**|**Pack Version**| 
+|---|---|---|---|---|
+|App Services | Spectro Registry | spectro-pack-registry | Hello Universe | `1.0.x` |
+|App Services | ECR | ecr-registry | Hello Universe | `1.0.x` |
 
-
-Click on the **Confirm & Create** button to finish adding the Hello Universe pack. 
-
-
-If there are no errors or compatibility issues, Palette displays the newly created full cluster profile. Verify the layers you added, and click **Next**.    
+<!--|App Services | Basic | harbor-registry | Hello Universe | `1.0.x` |-->
 
 
-<br />
+Click on the **Confirm & Create** button to finish adding the Hello Universe pack.
+
+
+If there are no errors or compatibility issues, Palette displays the cluster profile. Verify the layers you added, and click **Next**.   
+
 
 ![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.png)
 
-<br /> <br />
-
 
 #### Review
-Review once more and click **Finish Configuration**  to create the cluster profile. 
+
+Review the cluster layers and click on **Finish Configuration** to complete the creation of the cluster profile. 
 <br />
 
 ### Create a Cluster
-From the **Profile** page,  click on the newly created cluster profile to view its details page. Palette displays all the layers and allows you to edit any of them. 
 
-Click the **Deploy** button to deploy a new cluster. The cluster deployment wizard will displays the following sections. 
+Navigate to the **Profiles** page and select the recently created cluster profile. Click on the **Deploy** button to start the deployment of a new cluster.
+
 <br />
 
-### Basic Information
-Use the following values in the first section, **Basic Information**. 
+#### Basic information
+
+For the first section, **Basic information**, use the following values.
 
 |**Field**|**Value**|
 |---|---|
 |Cluster name| pack-tutorial-cluster |
-|Description| Cluster as part of the pack tutorial.|
-|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:true`|
+|Description| Cluster as part of the Deploy a Custom Pack tutorial.|
+|Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:false`|
 |Cloud Account|spectro-cloud|
 
-Note that the AWS cloud account name in this tutorial example is **spectro-cloud**. If you used a different cloud account name, choose the name configured in your Palette's project settings. 
+Note that the AWS cloud account name utilized in this tutorial is **spectro-cloud**. If you have used a different cloud account name, select the one configured in your Palette's project settings. 
 
-Click **Next** to continue.    
+Click **Next** to proceed.    
 
 <br /> 
 
 #### Parameters
 
-The **Parameters** section allows you to change the profile configurations. For example, clicking on the **Hello Universe 1.0.x** layer allows you to configure the `registry`, `repository`, and `tag` parameters defined in the **values.yaml** file. 
-<br />
+The **Parameters** section allows you to change the profile configurations. For example, by clicking on the **Hello Universe 1.0.x** layer, you can configure the `registry`, `repository`, and `tag` parameters defined in the **values.yaml** file. 
+
 
 ![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.png)
 
-<br />
 
 Keep the default values and click **Next**.
 
@@ -782,16 +867,17 @@ Keep the default values and click **Next**.
 
 #### Cluster config
 
-In the **Cluster config** section, ensure the **Static Placement** field is unchecked. If checked, the **Static Placement** will deploy the cluster in an existing VPC, and you will need the [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) (ARNs) for the existing subnets, roles, and other resources. For this tutorial, we will use dynamic placement, where Palette creates a new VPC and all other resources needed for the cluster. 
+In the **Cluster config** section, make sure to uncheck the **Static Placement** field. If it is checked, the **Static Placement** will deploy the cluster within an existing Virtual Private Cloud (VPC), and you will need to provide the [Amazon Resource Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) (ARNs) for the existing subnets, roles, and other resources. This tutorial will use dynamic placement, allowing Palette to create a new VPC along with all necessary resources for the cluster. 
 
-For the **Region** field, select the region of your choice. The tutorial example will deploy the cluster in the  **us-east-2** region. For the **SSH Key Pair Name** field, choose the SSH key pair name from the selected region. You must have an SSH key created already in the AWS region where you will deploy the cluster.
+In the **Region** field, choose the region of your preference. This tutorial will deploy the cluster in the **us-east-1** region. For the **SSH Key Pair Name** field, select the SSH key pair name available in the chosen region. Ensure that you have already created an SSH key in the AWS region where you plan to deploy the cluster.
 
 Click **Next** to continue.    
 
 <br />
 
 #### Nodes config
-In the **Nodes config** section, provide the details for the master and the worker pools. For this tutorial, you can use the following minimal configuration:
+
+In the **Nodes config** section, provide the details for the master and worker pools. For this tutorial, you can use the following minimal configuration:
 
 |**Field** | **Value for the master-pool**| **Value for the worker-pool**|
 |---| --- | ---|
@@ -801,62 +887,58 @@ In the **Nodes config** section, provide the details for the master and the work
 |Enable Autoscaler | Not applicable | No |
 |Rolling update |  Not applicable | Expand First. <br /> Launch a new node first, then shut down the old one. |
 
-Keep the **Cloud Configuration** the same for the master and worker pools.
+Keep the **Cloud Configuration** the same for both master and worker pools.
 
 |**Field** | **Value**|
 |---| --- | ---|
-|Instance Type | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores are required for the master node. |
-|Availability zones | Choose any *one* availability zone.<br /> This tutorial example will deploy to the `us-east-2a` availability zone. | 
+|Instance Type | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
+|Availability zones | Choose any *one* availability zone.<br /> This tutorial uses the `us-east-1a` availability zone. | 
 |Disk size | 60 GiB | 
 
 Click **Next** to continue.    
 <br /> 
 
 #### Settings 
-#
+
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding. Use the default values, and click on the **Validate** button.      
 
 <br /> 
 
 #### Review
-Review all configurations in this section. The **Review** page displays the cluster name, tags, cloud account name, node pools, layers, and an estimated hourly cost. If everything looks good, click on the **Finish Configuration** button to finish deploying the cluster. Deployment may take up to *20 minutes* to finish. 
 
-While deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**, and **Events**. 
+Review all configurations in this section. The **Review** page displays the cluster name, tags, cloud account name, node pools, layers, and an estimated hourly cost. If everything is correct, click on the **Finish Configuration** button to complete the cluster deployment, which may take up to *20 minutes*. 
 
-<br /> 
+While the deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the cluster to finish deploying, you can explore the various tabs on the cluster page, such as **Overview**, **Workloads**, and **Events**. 
 
-<!-- </TabItem>
+<br />
 
-<TabItem label="Terraform Workflow" value="terraform_code"> -->
+</TabItem>
 
-## Terraform Workflow
+<TabItem label="Terraform Workflow" value="Terraform_Workflow">
 
-The [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) allows you to create and manage Palette resources using Infrastructure as Code (IaC). This offers such advantages as automating infrastructure, facilitating collaboration, documenting infrastructure, and keeping all infrastructure in a single source of truth.
+The [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) allows you to create and manage Palette resources using Infrastructure as Code (IaC). This approach offers several advantages, including automating infrastructure, facilitating collaboration, documenting infrastructure, and keeping a single source of truth for all infrastructure.
 
 ### Starter Code
-Navigate back to your tutorials container bash session to locate the starter Terraform files. If you have closed the terminal session, you can reopen another bash session in the tutorials container using the following command. 
-<br />
+
+Return to your tutorial container bash session to locate the starter Terraform files. If you have closed the terminal session, you can open another bash session in the tutorial container using the following command. 
 
 ```bash
 docker exec -it tutorialContainer bash
 ```
-
-Switch to the **/terraform/pack-tf** directory, which contains the Terraform code for this tutorial. 
 <br />
+
+Navigate to the **/terraform/pack-tf** directory, which contains the Terraform code for this tutorial. 
 
 ```bash
 cd /terraform/pack-tf
 ```
+<br />
 
 ### Set Up the Spectro Cloud API Key
 
-To get started with Terraform code, you need a Spectro Cloud API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the user **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. 
+To get started with Terraform code, you need a Spectro Cloud API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. 
 
-<br />
-
-![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png )
-
-<br />
+![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
 
 Below are the steps to add and export an API key:
 
@@ -865,21 +947,20 @@ Below are the steps to add and export an API key:
 
 
 
-2. Copy the key value to your clipboard, and switch back to the tutorials container environment. 
+2. Copy the key value to your clipboard and switch back to the tutorial container environment. 
 
 
 
-3. Export the API key as an environment variable in the tutorials container bash session so the Terraform code can authenticate with Palette API.
-  <br />
+3. In your tutorial container bash session, export the API key as an environment variable. This step allows the Terraform code to authenticate with the Palette API.
 
   ```bash
   export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
   ```
 <br />
 
-### Review Terraform Files
+### Review the Terraform Files
+
 Ensure you have the following files in the current working directory.
-<br />
 
 ```bash
 .
@@ -894,52 +975,58 @@ Ensure you have the following files in the current working directory.
 
 Note that the Terraform code will deploy the resources to **AWS**. 
 
-We recommend you explore all Terraform files. Below is a high-level overview of each file:
+We recommend that you explore all Terraform files. Below is a high-level overview of each file.
 <br />
 
 -  **profile.tf** - contains the configuration for the `spectrocloud_cluster_profile` resource. Review the core infrastructure layers that make up the `spectrocloud_cluster_profile` resource. 
 
 
 
--  **cluster.tf** - contains the configuration for the `spectrocloud_cluster_aws` resource. The cluster resource depends upon the `spectrocloud_cluster_profile` resource. 
+-  **cluster.tf** - contains the configuration for the `spectrocloud_cluster_aws` resource. The cluster resource depends on the `spectrocloud_cluster_profile` resource. 
 
 
 
 - **data.tf** - contains the configuration for the resources to retrieve data from Palette dynamically. The table below lists the pack details required for each pack layer in order to deploy the `spectrocloud_cluster_profile` resource. 
 
   |**Pack Type**|**Registry**|**Pack Name**|**Tag**| **Version** |
-  |---|---|---|---|
-  |OS|Public Repo|`ubuntu-aws`|`LTS__20.4.x`| `20.04`|
-  |Kubernetes|Public Repo|`kubernetes`|`1.24.x`| `1.24.10` |
-  |Network|Public Repo|`cni-calico`|`3.25.x`|`3.25.0`|
-  |Storage|Public Repo|`csi-aws-ebs`|`1.16.x`|`1.16.0`|
-
-  Note that using this Terraform code will deploy the resources to AWS. To deploy your resource to Azure or Google Cloud, use the layer details outlined in [Cloud Service Provider Configurations] (https://github.com/spectrocloud/tutorials/tree/main/terraform/pack-tf/README.md#cloud-service-provider-configurations). 
-
-
-
-- **inputs.tf** - contains the variables used in the tutorial such as the names of cluster profile, cluster, cloud account, SSH key name, AWS region, pack name, and registry server. 
-
-  Some variables have a default value, but you *must* provide the values for `cluster_cloud_account_aws_name`, `aws_region_name`, `ssh_key_name`, and `private_pack_registry` variables. You will find a `#ToDo` tag next to each variable to update. Provide the values for these variables in a separate file, **terraform.tfvars**. Use default values for the remaining variables.
+  |---|---|---|---|---|
+  |OS|Public Repo|`ubuntu-aws`|`LTS__22.4.x`| `22.04`|
+  |Kubernetes|Public Repo|`kubernetes`|`1.28.x`| `1.28.2` |
+  |Network|Public Repo|`cni-calico`|`3.26.x`|`3.26.1`|
+  |Storage|Public Repo|`csi-aws-ebs`|`1.22.x`|`1.22.0`|
+  |Authentication|Public Repo|`spectro-proxy`|`1.4.x`|`1.4.1`|
+  |App Services|Private Repo|`hellouniverse`|`1.0.x`|`1.0.0`|
 
 
 
-- **terraform.tfvars** - contains the variable definitions. The list of variables is outlined in the code block below. You *must* specify the values for all variables that are marked `"REPLACE ME"`. Read the inline comments below to understand each variable. 
+- **inputs.tf** - contains the variables used in the tutorial, such as the names of cluster profile, cluster, cloud account, SSH key name, AWS region, pack name, and registry server. 
 
-  - For example, the value for  `cluster_cloud_account_aws_name` will be the name of the cloud account added to your Palette project settings. In this tutorial example, the cloud account name is **spectro-cloud**. 
+  Some variables have a default value, but you *must* provide the values for the `cluster_cloud_account_aws_name`, `aws_region_name`, `ssh_key_name`, and `private_pack_registry` variables. You will find a `#ToDo` tag next to each variable that needs updating. Provide the values for these variables in a separate file, **terraform.tfvars**. Use the default values for the remaining variables.
+
+
+
+- **terraform.tfvars** - contains the variable definitions. The list of variables is outlined in the code block below. You *must* specify the values for all variables marked as `"REPLACE ME"`. Read the inline comments below to understand each variable. 
+
+  - For example, the value for  `cluster_cloud_account_aws_name` should be the name of the cloud account added to your Palette project settings. In this tutorial, the cloud account name is **spectro-cloud**. 
   
-  - For `aws_region_name`, you can choose any [AWS region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for your deployment. This tutorial example uses **us-east-2** region. 
+  - For `aws_region_name`, you can choose any [AWS region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for your deployment. This tutorial uses the **us-east-1** region.
+
+  - For `aws_az_names`, you should specify the AWS availability zone (AZ) name in which you want the cluster to be available. By default, this tutorial uses the first available AZ in the region.
   
-  - The value for `ssh_key_name` will be the name of the SSH key available in the region where you will deploy the cluster. The SSH key name used in this example is **aws_key_sk_us_east_2**. 
+  - The value for `ssh_key_name` should be the name of the SSH key available in the region where you will deploy the cluster. The SSH key name used in this example is **aws_key_sk_us_east_1**. 
   
-  - Lastly, provide your registry server name for the `private_pack_registry` variable. You can provide the **private-pack-registry** as the value if you have followed the same naming convention as this tutorial. 
+  - Next, provide your registry server name for the `spectro_pack_registry` variable. For example, you can use the **spectro-pack-registry** as the value if you have followed this tutorial's naming convention and used the Spectro Registry. If you used an ECR registry, set the registry server name to **ecr-registry**. <!--Lastly, if you used a Harbor registry, set the registry server name to **harbor-registry**.-->
+
+  - Lastly, set the value of the `use_oci_registry` variable to either true or false. For instance, if you are not using an OCI registry, set this value to false. The default value is set to true.
   <br />
 
   ```bash
-  cluster_cloud_account_aws_name = "REPLACE ME"   # Name of the cloud account added to your Palette project settings
-  aws_region_name = "REPLACE ME"                  # Use "us-east-2" or any other AWS region
-  ssh_key_name = "REPLACE ME"                     # Name of the SSH key available in the region where you will deploy the cluster
-  private_pack_registry = "REPLACE ME"            # Your registry server name. This tutorial uses "private-pack-registry". 
+  cluster_cloud_account_aws_name = "REPLACE ME"   # Name of the cloud account added to your Palette project settings.
+  aws_region_name = "REPLACE ME"                  # Use "us-east-1" or any other AWS region.
+  aws_az_names = []                               # Specify the AWS availability zone name in which you want the cluster to be available. By default, only one AZ will be selected. For example: ['us-east-1a', 'us-east-1b', 'us-east-1c'].
+  ssh_key_name = "REPLACE ME"                     # Name of the SSH key available in the region where you will deploy the cluster.
+  private_pack_registry = "REPLACE ME"            # Your registry server name. This tutorial uses "spectro-pack-registry".
+  use_oci_registry = true                         # Set the use of OCI registry to true or false. The default value is set to true.
   ```
 
 
@@ -953,77 +1040,66 @@ We recommend you explore all Terraform files. Below is a high-level overview of 
 <br /> 
 
 ### Deploy Terraform
-After you update the **terraform.tfvars** file and carefully review the other files, initialize the Terraform provider.
-<br />
+
+After updating the **terraform.tfvars** file and carefully reviewing the other files, initialize the Terraform provider.
 
 ```bash
 terraform init
 ```
 
-The `init` command downloads plugins and providers from the **provider.tf** file. Next, preview the resources Terraform will create. 
-<br />
+The `init` command downloads the plugins and providers from the **provider.tf** file. Next, use the `plan` command to preview the resources that Terraform will create. 
 
 ```bash
 terraform plan
 ```
 
-The output displays the resources Terraform will create in an actual implementation. 
-<br />
+The output displays the resources that Terraform will create in an actual implementation. 
 
 ```bash
 # Output condensed for readability
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
 
-Finish creating all the resources. 
-<br />
+Complete the creation of all the resources. 
 
 ```bash
 terraform apply -auto-approve
 ```
 
-It can take up to 20 minutes to provision the cluster. When cluster provisioning completes, the following message displays. 
-<br />
+It can take up to 20 minutes to provision the cluster. Once the cluster provisioning is complete, the following message displays. 
 
 ```bash
 # Output condensed for readability
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
-You can observe the cluster deployment progress in Palette by navigating back to Palette.
-<br /> 
+You can monitor the progress of the cluster deployment in the Palette interface.
 
 
 #### Check the In-Progress Deployment
-Log into the [Palette](https://console.spectrocloud.com/), and navigate to the **Profile** section in the left **Main Menu**. If the Terraform deployment is successful, the newly created cluster profile is displayed as shown in the screenshot below. 
-
-<br />
+Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Profile** section in the left **Main Menu**. If the Terraform deployment is successful, the newly created cluster profile is displayed as shown in the screenshot below. 
 
 ![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-profile.png)
 
 <br /> 
 
-<!-- </TabItem>
+</TabItem>
 
-</Tabs> -->
+</Tabs>
 
-<br /> 
 
 ## Validate
-In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the cluster Overview page and monitor cluster provisioning progress.  
 
-<br /> 
+In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the cluster's **Overview** page and monitor the provisioning progress.  
 
 ![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.png)
 
-<br />
-
-When cluster status displays **Running** and **Healthy**, you can access the application from the exposed service URL with the port number displayed. For the Hello Universe application, port 8080 is exposed. Click on the URL to access the application.
+Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the **Services** URL to access the application.
 <br />
 
 :::caution
 
-We recommend waiting to click on the service URL, as it takes one to three minutes for DNS to properly resolve the public load balancer URL. This prevents the browser from caching an unresolved DNS request.
+We recommend waiting for one to three minutes before clicking on the service URL. This allows DNS to properly resolve the public load balancer URL, preventing the browser from caching an unresolved DNS request.
 
 :::
 
@@ -1035,76 +1111,69 @@ We recommend waiting to click on the service URL, as it takes one to three minut
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in Palette. 
 
-<br />
-
 ![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.png)
 
-<br />
-
-Using your custom pack in the cluster, you have successfully deployed the Hello Universe application to the cluster. 
+By using your custom pack, you have successfully deployed the **Hello Universe** application to the cluster. 
 
 <br />
 
 ## Cleanup
-Delete the cluster, cluster profile, and registry server, and remove the registry service configuration from Palette's settings. 
 
-The following steps will guide you in cleaning up your environment. Follow the steps for Palette if you used Palette to deploy the cluster. Use Terraform commands to delete the cluster if you used Terraform for deployment. 
+Delete the cluster, cluster profile, and registry server, and remove the registry configuration from Palette. 
 
-<br />
-
-<Tabs>
-
-<TabItem label="Palette" value="palette_ui_delete">
+The following steps will guide you in cleaning up your environment. Follow the Palette-specific steps if you used Palette to deploy the cluster. Alternatively, use Terraform commands to delete the cluster if you used Terraform for deployment.
 
 <br />
 
-####  Delete the Cluster and Profile using Palette
-Navigate to the **Cluster** section in Palette's left **Main Menu**, and view the details page of the **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the delete step. 
+<Tabs groupId="deploy-cluster">
+
+<TabItem label="Palette UI" value="palette_ui_delete">
 
 <br />
+
+####  Delete the Cluster and Cluster Profile using Palette
+
+Navigate to the **Cluster** section in Palette's left **Main Menu** and access the details page for the **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the deletion. 
+
 
 ![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
 
-<br />
 
-The cluster status displays **Deleting**. Deletion takes up to 10 minutes.
+The cluster status will display **Deleting**, and the deletion may take up to 10 minutes.
 <br />
 
 :::info
 
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. Navigate to the cluster's details page and click on **Settings**. Select **Force Delete Cluster**. Palette automatically removes clusters that are stuck in the cluster deletion phase for over 24 hours.
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. Navigate to the cluster's details page and click on **Settings**. Select **Force Delete Cluster**. Palette automatically removes clusters that are stuck in the deletion phase for over 24 hours.
 
 :::
 <br />
 
-After you delete the cluster, go ahead and delete the profile. From the left **Main Menu**, click **Profiles** and select the profile to delete. Choose the **Delete** option in the **three-dot Menu**.
+After deleting the cluster, proceed to delete the profile. In the left **Main Menu**, click on **Profiles** and select the profile you want to delete. Choose the **Delete** option in the **three-dot Menu**.
 
-<br />
 
 ![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.png)
 
-<br />
 
-Wait for the resources to clean up and ensure they are successfully deleted. 
+Wait for the resources to complete cleanup and ensure they are successfully deleted. 
 
 <br />
 
 </TabItem>
 
-<TabItem label="Terraform Code" value="terraform_ui_delete">
+<TabItem label="Terraform" value="terraform_ui_delete">
 
 <br />
 
-####  Delete the Cluster and Profile using Terraform
-If you've used Terraform to deploy the cluster, switch back to the tutorials container, and issue the following command from within the **/terraform/pack-tf** directory:
-<br />
+####  Delete the Cluster and Cluster Profile using Terraform
+
+If you deployed the cluster using Terraform, switch back to the tutorial container and issue the following command within the **/terraform/pack-tf** directory.
 
 ```bash
 terraform destroy -auto-approve
 ```
 
-Wait for the resources to clean up. Deleting the Terraform resources may take up to 10 minutes. 
-<br />
+Wait for the resources to complete cleanup. Deleting the Terraform resources may take up to 10 minutes. 
 
 ```bash
 # Output condensed for readability
@@ -1120,15 +1189,15 @@ Destroy complete! Resources: 2 destroyed.
 <br />
 
 ####  Delete the Registry Server
-After deleting the cluster and cluster profile, navigate to **Tenant Settings** > **Registries** > **Pack Registries** to delete the registry service configuration from Palette.
-<br />
+
+After deleting the cluster and cluster profile, navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section in Palette to remove the registry configuration.
 
 ![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
 
-<br />
 
-Stop the registry server by closing the tutorials container bash session that serves the Ngrok reverse proxy server. At this point, you can close all the bash sessions. To remove the container and the image from the local machine, issue the following commands:
-<br />
+Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, refer to the [Deleting a private repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-delete.html) guide to delete the ECR repositories. <!--Finally, if you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a virtual machine, for example, ensure to delete the virtual machine according to your setup.-->
+
+At this point, you can close all the bash sessions. To remove the container and the image from the local machine, issue the following commands.
 
 ```bash
 docker container rm --force tutorialContainer
@@ -1140,9 +1209,9 @@ docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.9
 
 ## Wrap-Up
 
-In this tutorial, you learned how to create a custom pack using manifest files. You packaged up an application in a custom pack that you pushed to a private registry server and added to Palette.
+In this tutorial, you learned how to create a custom pack using manifest files. You packaged up an application in a custom pack that you pushed to a registry server and added to Palette.
 
-Next, you created a cluster profile that included all the core infrastructure layers, such as the OS, Kubernetes distribution, and more. You also added your custom pack to the cluster profile so your application could be deployed to a Kubernetes cluster. 
+Next, you created a cluster profile that included all the core infrastructure layers, such as the OS, Kubernetes distribution, and more. Additionally, you added your custom pack to the cluster profile, enabling your application to be deployed to a Kubernetes cluster. 
 
 Packs are the building blocks of cluster profiles, allowing you to customize your Kubernetes clusters. Palette enables you to use different packs to create multiple cluster profiles, each for specific purposes. As a result, you can ensure all Kubernetes deployments contain all the required dependencies and applications without developing complicated deployment scripts. All you need to do is maintain the cluster profiles.  
 
@@ -1157,3 +1226,5 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 
 - [Pack Constraints](pack-constraints.md)
 
+
+- [Spectro Cloud OCI Registry](oci-registry.md)
