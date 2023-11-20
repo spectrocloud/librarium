@@ -46,7 +46,7 @@ The following software must be installed on your system:
     docker run --publish 8080:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/librarium:nightly
     ```
 
-    :::note
+    :::info
 
     If another process is using port `8080`, you can change the port mapping to use a different port. For example, to use port `8081`, use the following command:
 
