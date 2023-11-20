@@ -113,7 +113,8 @@ When you have provided all the cluster configuration details to the wizard, clic
 
 <br />
 
-7. Configure the master and worker node pools. A master and a worker node pool are configured by default. The minimum number of CPUs and amount of memory depend on your cluster profile, but in general you need at least 4 CPUs and 4 GB of memory in the master pool and across all worker pools. To learn more about the configuration options, review the [Node Pool](../../cluster-management/node-pool.md) documentation page.
+7. Configure the master and worker node pools. A master and a worker node pool are configured by default. The minimum number of CPUs and amount of memory depend on your cluster profile, but in general you need at least 4 CPUs and 4 GB of memory both in the master pool and across all worker pools. To learn more about the configuration options, review the [Node Pool](../../cluster-management/node-pool.md) documentation page.
+
 
 
 :::info
