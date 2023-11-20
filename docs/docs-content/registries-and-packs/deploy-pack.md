@@ -250,7 +250,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
   
   <br />
 
-* **values.yaml** -  This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to see if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not yet been created, Palette creates a new one using the value specified in the YAML file. 
+* **values.yaml** -  This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to confirm if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not yet been created, Palette creates a new one using the value specified in the YAML file. 
 
   If the **values.yaml**  does not specify a namespace value, Palette deploys the application to the default namespace.
   
