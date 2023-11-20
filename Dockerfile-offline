@@ -7,10 +7,6 @@ ENV ALGOLIA_SEARCH_KEY 1234567890
 
 WORKDIR /librarium
 
-RUN npm ci && \
-npm run build
-
-
 FROM caddy:latest
 
 COPY --from=builder build /srv

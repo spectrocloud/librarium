@@ -10,9 +10,22 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Compile
+        run: |
+          make versions-ci
+          make build
 
 
       - name: Set up QEMU
