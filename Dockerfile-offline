@@ -1,16 +1,7 @@
-FROM node:18-alpine as builder
-
-COPY --chown=node . .
-
-ENV ALGOLIA_APP_ID 1234567890
-ENV ALGOLIA_SEARCH_KEY 1234567890
-
-WORKDIR /librarium
-
 FROM caddy:latest
 
-COPY --from=builder build /srv
-COPY --from=builder Caddyfile /etc/caddy/Caddyfile
+COPY build /srv
+COPY Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80 443 2015 2019
 
