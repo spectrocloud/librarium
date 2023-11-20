@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -28,7 +28,6 @@ jobs:
 
       - name: Compile
         run: |
-          make versions-ci
           make build
 
 
