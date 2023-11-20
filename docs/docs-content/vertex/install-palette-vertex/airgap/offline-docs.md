@@ -27,6 +27,10 @@ The following limitations apply when using the offline documentation:
 
 The following software must be installed on your system:
 
+
+- A Linux environment in an AMD64 or ARM64 architecture. The Docker image is only available for Linux AMD64 and ARM64 architectures.
+
+
 - [Docker](https://docs.docker.com/get-docker/) - The offline documentation is provided as a Docker image.
 
 - A web browser.
