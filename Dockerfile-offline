@@ -1,0 +1,8 @@
+FROM caddy:latest
+
+COPY build /srv
+COPY Caddyfile /etc/caddy/Caddyfile
+
+EXPOSE 80 443 2015 2019
+
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
