@@ -188,7 +188,7 @@ To learn how to remove a cluster and what to do if a force delete is necessary s
 
 ## Validate
 
-You can validate your cluster is up and and in **Running** state. 
+You can validate your cluster is up and in **Running** state. 
 
 1. Log in to [Palette](https://console.spectrocloud.com). 
 
