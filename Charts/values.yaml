@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/spectrocloud/librarium
+  tag: "nightly"
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8000

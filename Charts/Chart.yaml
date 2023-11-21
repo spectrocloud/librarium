@@ -1,0 +1,4 @@
+apiVersion: v2
+name: spectrocloud-librarium
+description: A Helm chart for SpectroCloud Docs
+version: 0.1.0
