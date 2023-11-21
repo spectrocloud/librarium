@@ -15,7 +15,7 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 - Access to an Azure cloud account.
 
-- Palette integration with Azure account. Review [Create an Azure Cloud account](azure-cloud.md) for guidance.
+- Palette integration with Azure account. Review [Register and Manage Azure Cloud Account](azure-cloud.md) for guidance.
 
 - A Secure Shell (SSH) key pre-configured in your Azure environment.
 
