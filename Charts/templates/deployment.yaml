@@ -20,4 +20,10 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.service.port }}
+            failureThreshold: 1
+            periodSeconds: 60
+            terminationGracePeriodSeconds: 60

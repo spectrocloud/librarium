@@ -1,4 +1,4 @@
 apiVersion: v2
 name: spectrocloud-librarium
-description: A Helm chart for SpectroCloud Docs
+description: A Helm chart for deploying Spectro Cloud documentation offline.
 version: 0.1.0
