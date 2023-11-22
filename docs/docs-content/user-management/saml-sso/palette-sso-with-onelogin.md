@@ -18,7 +18,7 @@ This guide will guide you through the steps required to configure OneLogin as a 
 
 ## Prerequisites
 
-- An active OneLogin subscription and administrator-level permissions. If you arre using this for testing purposes, OneLogin provides a [developer subscription](https://developers.onelogin.com/). 
+- An active OneLogin subscription and administrator-level permissions. If you are using this for testing purposes, OneLogin provides a [developer subscription](https://developers.onelogin.com/). 
 
 
 - For OIDC-based SSO in your Kubernetes cluster, you will need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle the retrieval of access tokens for your cluster.
@@ -90,14 +90,14 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Add Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_app-role.png)
 
 
-13. You can optionally create a security policy if desired. To create a Security Policy, navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy".  Continue to configure the policy to your needs. Click **Save** to continue. 
+13. You can optionally create a security policy if desired. To create a Security Policy, navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy."  Continue to configure the policy to your needs. Click **Save** to continue. 
 
-14. Apply the policy to a group of users, but first, you will need a group. Navigat to  **Users** --> **Groups** and select **New Group**. Assign the new group a name, select your security policy, and click **Save**.  
+14. Apply the policy to a group of users, but first, you will need a group. Navigate to  **Users** --> **Groups** and select **New Group**. Assign the new group a name, select your security policy, and click **Save**.  
 
   ![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
 
 
-15. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users** --> **Mappings** and select **New Mapping**. Assign the mapping a name and set it to map every member of the Administrators group to assign the Admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
+15. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users** --> **Mappings** and select **New Mapping**. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
 
   ![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
 
@@ -121,7 +121,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Create New Team](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_new-team.png)
 
 
-19. Next, you need to assign the members of this team a set of permissions. Assign all members the Tenant Admin permissions. You can customize the assigned permissions as needed, but for this example admin access is granted. To set the correct permissions, navigate to left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams**. Select the team you created. Click on **Tenant Roles** --> **Add Tenant Role** and select the **Tenant Admin** box. This will auto-select all other permission boxes.  Click **Confirm**.
+19. Next, you need to assign the members of this team a set of permissions. Assign all members the **Tenant Admin** permissions. You can customize the assigned permissions as needed, but for this example admin access is granted. To set the correct permissions, navigate to left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams**. Select the team you created. Click on **Tenant Roles** --> **Add Tenant Role** and select the **Tenant Admin** box. This will auto-select all other permission boxes.  Click **Confirm**.
 
   ![Add Tenant Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_tenant-admin-role.png)
 
