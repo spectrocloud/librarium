@@ -79,7 +79,7 @@ variables to override the basic auth realm and logging level. In the following e
 ```bash
 docker run -d \
     --rm \
-    --port 443:5000 \
+    -p 443:5000 \
     --name spectro-registry\
     --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/
     -e REGISTRY_LOG_LEVEL=debug \
@@ -95,7 +95,7 @@ Alternatively, you can start the container by mounting a directory with a new co
 ```shell
 docker run -d \
     --rm \
-    --port 443:5000 \
+    -p 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
     gcr.io/spectro-images-public/release/spectro-registry:3.4.0 \
