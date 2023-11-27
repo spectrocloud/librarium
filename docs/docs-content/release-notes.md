@@ -26,6 +26,18 @@ tags: ["release-notes"]
 #### Features
 
 
+- We are intorducing a new custom internal framework that allows integration of new CAPI providers without requiring product changes. This tech preview feature enables users to onboard and use any cloud provider that already has an [official CAPI provider](https://cluster-api.sigs.k8s.io/reference/providers.html). Nutanix support is now available through this framework, and it will serve as the foundation to onboard additional CAPI-compliant providers in the future. 
+
+
+- Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/). You can deploy Kubernetes clusters on Nutanix using Palette. Support for Nutanix is currently under technical preview and subject to change as we continue to improve the integration.
+
+
+#### Improvements
+
+
+- An improved differential editor is now available. The new editor provides a side-by-side comparison of the changes that will be applied to the cluster profile. The editor also identifies YAML customziations you have added and guides you through the process of carrying over the customization to the new version of the YAML. The ability to undo changes and accept all changes is also available.
+
+- When updating a deployed cluster profile or updating an active cluster's profile, the new differantial editior is available to help you identify the changes that will be applied to the cluster profile.
 
 
 #### Deprecations and Removals
@@ -87,9 +99,13 @@ tags: ["release-notes"]
 
 #### Features
 
+- Azure Government Cloud support is now available for VerteX. You can now deploy Azure IaaS clusters on Azure Government accounts. The following Azure regions are available; US Gov Arizona, US Gov Texas, and US Gov Virginia. Refer to the [Supported Platforms](./vertex/supported-platforms.md) resource for more information.
 
 
+- Canonical MAAS support is now available for VerteX. You can now deploy Canonical MAAS clusters with VerteX. Refer to the [MAAS](./clusters/data-center/maas/maas.md) resource for more information on how to deploy MAAS clusters.
 
+
+- Multi-Factor Authentication (MFA) for the [System Console](./vertex/system-management/system-management.md#access-the-system-console) is now available. Enable MFA to secure access to the system console and help prevent unauthorized access to your VerteX administration settings.
 
 #### Improvements
 
