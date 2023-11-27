@@ -325,7 +325,7 @@ Use the following instructions on your Linux machine to create all the required 
   |OS|Public Repo|BYOS Edge OS|`1.0.0`|
 
 
-17. Replace the the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can pull the provider image from the ttl.sh image registry.  
+17. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can pull the provider image from the ttl.sh image registry.  
 
   The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file. If you modified the arguments in the **.arg** file, you must modify the attribute values below accordingly.
 
