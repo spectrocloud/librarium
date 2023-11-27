@@ -19,7 +19,7 @@ Custom add-on packs allow you to deploy Kubernetes applications in clusters and 
 
 - Enterprises can add proprietary Kubernetes applications to a custom add-on pack.
 
-In this tutorial, you will create a custom add-on pack to package a sample Kubernetes application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), and deploy the application to a cluster. You will learn to create the pack in two ways: using manifest files and Helm charts. 
+In this tutorial, you will create a custom add-on pack to package a sample Kubernetes application, [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), and deploy the application to a cluster. You will learn to create the pack in two ways - using manifest files and Helm charts. 
 
 After defining the custom pack, you will set up a new registry server or leverage an existing Open Container Initiative (OCI) registry. Then, you will publish the pack to the registry and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform. 
 
@@ -31,7 +31,7 @@ The following diagram illustrates the steps required to successfully complete th
 
 To complete this tutorial, ensure you have the following prerequisites in place:
 
-- A Spectro Cloud account. Access [Spectro Cloud Console](https://console.spectrocloud.com) to create an account.
+- A Palette account.
 - Tenant admin access to Palette for the purpose of adding a new registry server.
 - An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) guide for instructions.
 - An SSH key available in the region where you plan to deploy the cluster.
@@ -143,7 +143,7 @@ Inspect the directories relevant to the current tutorial in the container root d
 ```
 
 
-The **packs** directory stores the pack files. The **terraform** directory contains the Terraform files used to create Spectro Cloud resources, which you will use later in this tutorial.
+The **packs** directory stores the pack files. The **terraform** directory contains the Terraform files used to create Palette resources, which you may use later in this tutorial.
 
 
 ## Build a Pack
@@ -158,7 +158,7 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, there ar
 
 <br />
 
-```bash
+```bash hideClipboard
 .
 ├── pack.json           # Mandatory.
 ├── values.yaml         # Mandatory.
@@ -176,7 +176,7 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, there ar
 
 <br />
 
-```bash
+```bash hideClipboard
 .
 ├── pack.json           # Mandatory.
 ├── values.yaml         # Mandatory. Pack-level values.yaml file.
@@ -297,9 +297,9 @@ After completing the review of all files in the pack directory, the next step is
 
 You can set up a registry server using either the Spectro Registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
 
-The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To get started with Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
+The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
 
-The following sections will guide you through starting the registry server, logging in, pushing your custom add-on pack, and, finally, configuring the registry server in Palette.
+The following sections will guide you through starting the registry server, authentication, pushing your custom add-on pack, and, finally, configuring the registry server in Palette. Select the tab below that matches the registry type you want to use.
 
 ### Start the Registry Server
 
@@ -836,7 +836,7 @@ Navigate to the **Profiles** page and select the recently created cluster profil
 
 <br />
 
-#### Basic information
+#### Basic Information
 
 For the first section, **Basic information**, use the following values.
 
@@ -845,9 +845,8 @@ For the first section, **Basic information**, use the following values.
 |Cluster name| pack-tutorial-cluster |
 |Description| Cluster as part of the Deploy a Custom Pack tutorial.|
 |Tags|`spectro-cloud-education, app:hello-universe, terraform_managed:false`|
-|Cloud Account|spectro-cloud|
+|Cloud Account| Select the cloud you have registered in Palette for AWS |
 
-Note that the AWS cloud account name utilized in this tutorial is **spectro-cloud**. If you have used a different cloud account name, select the one configured in your Palette's project settings. 
 
 Click **Next** to proceed.    
 
@@ -1007,13 +1006,13 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
 
 - **terraform.tfvars** - contains the variable definitions. The list of variables is outlined in the code block below. You *must* specify the values for all variables marked as `"REPLACE ME"`. Read the inline comments below to understand each variable. 
 
-  - For example, the value for  `cluster_cloud_account_aws_name` should be the name of the cloud account added to your Palette project settings. In this tutorial, the cloud account name is **spectro-cloud**. 
+  - For example, the value for  `cluster_cloud_account_aws_name` should be the name of the cloud account added to your Palette project settings.
   
   - For `aws_region_name`, you can choose any [AWS region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for your deployment. This tutorial uses the **us-east-1** region.
 
   - For `aws_az_names`, you should specify the AWS availability zone (AZ) name in which you want the cluster to be available. By default, this tutorial uses the first available AZ in the region.
   
-  - The value for `ssh_key_name` should be the name of the SSH key available in the region where you will deploy the cluster. The SSH key name used in this example is **aws_key_sk_us_east_1**. 
+  - The value for `ssh_key_name` should be the name of the AWS SSH key pair available in the region where you will deploy the cluster.  
   
   - Next, provide your registry server name for the `spectro_pack_registry` variable. For example, you can use the **spectro-pack-registry** as the value if you have followed this tutorial's naming convention and used the Spectro Registry. If you used an ECR registry, set the registry server name to **ecr-registry**. <!--Lastly, if you used a Harbor registry, set the registry server name to **harbor-registry**.-->
 
@@ -1055,7 +1054,7 @@ terraform plan
 
 The output displays the resources that Terraform will create in an actual implementation. 
 
-```bash
+```bash hideClipboard
 # Output condensed for readability
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
@@ -1068,7 +1067,7 @@ terraform apply -auto-approve
 
 It can take up to 20 minutes to provision the cluster. Once the cluster provisioning is complete, the following message displays. 
 
-```bash
+```bash hideClipboard
 # Output condensed for readability
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
