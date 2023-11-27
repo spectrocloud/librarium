@@ -11,7 +11,7 @@ tags: ["devx", "app mode", "pde"]
 
 Palette provides two different modes for deploying and managing applications. The first mode is *Cluster Mode* - this mode enables you to create, deploy, and manage Kubernetes clusters and applications. The second mode is *App Mode* - a mode optimized for a simpler and streamlined developer experience that allows you to only focus on the building, maintenance, testing, deployment, and monitoring of your applications.
 
-You can leverage Spectro Cloud's complementary managed Kubernetes cluster when using App Mode. The complementary resources have a limit of 12 vCPU, 16 GiB of memory, and 20 GiB of free storage. Alternatively, you may deploy applications on Kubernetes clusters that belong to your organization and are managed by Palette.
+You can leverage the complementary managed Kubernetes cluster group, Beehive, when using App Mode. The complementary resources have a limit of 12 vCPU, 16 GiB of memory, and 20 GiB of free storage. Alternatively, you may deploy applications on Kubernetes clusters that belong to your organization and are managed by Palette.
 
 :::info
 Check out the in-depth explanation of [App Mode and Cluster Mode](../introduction/palette-modes.md) to learn more about each mode.

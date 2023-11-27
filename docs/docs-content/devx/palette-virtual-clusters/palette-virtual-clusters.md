@@ -6,9 +6,9 @@ hide_table_of_contents: false
 tags: ["devx", "app mode", "pde"]
 ---
 
-Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, virtual clusters use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/)
+Palette Virtual Clusters are Kubernetes clusters that are deployed as nested clusters within an existing cluster (also known as a Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default, virtual clusters use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/)
 
-The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight, Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
+Palette provisions and orchestrates all virtual clusters, reducing the overhead and challenge with using a lighwight Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard and attaching Add-on profiles.
 
 ### Create a Virtual Cluster
 
@@ -19,7 +19,7 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 2. Navigate to the top-right **User Dropdown Menu** and select **App Mode**.
 
-3. Select the `Palette Virtual Clusters` from the **left Main Menu**, click `+ Palette Virtual Clusters,` and provide the following information to the app creation wizard.
+3. Select the **Virtual Clusters** from the **left Main Menu**, click **Virtual Clusters**,` and provide the following information to the app creation wizard.
    * Select the Cluster Group: From the available host cluster group, select the cluster group to host the new virtual cluster.
    * Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    * Provide the resource limit in terms of CPU, memory, and storage.
@@ -39,7 +39,7 @@ To create your new Palette Virtual Cluster complete the following actions.
 
 <br />
 
-### Resource Tracking for Palette Virtual Clusters
+### Resource Tracking
 
 Palette users can track the available resources within a Cluster Group while launching a virtual cluster. The UI color codes give a rough estimation of available CPU, memory, and storage within the selected Cluster Group. The interpretations are as follows:
 
@@ -61,7 +61,7 @@ The example screenshot below illustrates the following scenario. The Cluster Gro
 ![color-tracking.png](/color-tracking.png)
 
 
-## Palette Virtual Cluster Pause and Resume
+## Pause and Resume
 
 Palette allows the pause and resume of Palette Virtual Clusters when not in use. This feature enables the users to optimize resource utilization by pausing the virtual clusters not in use. This adds significant flexibility in managing operating costs and resource management for the Palette Virtual Clusters.
 
@@ -87,5 +87,5 @@ Palette allows the pause and resume of Palette Virtual Clusters when not in use.
 * Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console.
 
 
-[Click here to know How to Pause and Release your Palette Virtual Cluster](pause-restore-virtual-clusters.md).
+Refer to the [Pause and Restore](pause-restore-virtual-clusters.md) guide for more information.
 

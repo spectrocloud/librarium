@@ -43,12 +43,19 @@ tags: ["release-notes"]
 
 #### Features
 
-- 
+- Overlay support for DHCP. Edge hosts can now self-discover VxLAN overlay within a single ethernet brodcast domain. Clusters using this feature will remain operational in the scenario the host IP addresses changes unexpectedly. 
+
+
+- Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads and to initialize the other edge host nodes of a cluster. Using a local registry can help you reduce the amount of data that is transferred over the network, cache images locally, and provide a backup for when internet access is not available. 
+
+- Kubernetes network interface management. You can now specify the network interface to use for your edge hosts versus versus relying on the default interface selected by Kubernetes. This feature is useful when you have multiple network interfaces on your edge hosts and you want to use a specific interface for your workloads, or if you are using the new overlay support for DHCP. 
 
 
 #### Improvements
 
+- New Edge clusters can now retrieve provider images from authenticated registries. Previously, edge hosts could only pull provider images from unauthenticated registries.
 
+- Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge clusters. You can now specify additional kube-vip configuration paramters as part of the Kubernetes pack layer configuration. 
 
 
 #### Known Issues
@@ -60,11 +67,18 @@ tags: ["release-notes"]
 #### Features
 
 
+#### Improvements
+
+- The default deployed Kubernetes version for new virtual clusters is now v1.26.
+
+
 
 
 ### Virtual Machine Orchestrator (VMO)
 
-#### Improvements
+#### Features
+
+- You can deploy edge clusters when using VMO. Edge clusters are useful when you want to deploy Kubernetes clusters in remote locations.  
 
 
 
@@ -75,13 +89,19 @@ tags: ["release-notes"]
 
 
 
+
+
 #### Improvements
 
-
+- You can now access Palette documentation offline by using the Palette documenation container. Refer to the [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md) page for more information.
 
 ### Terraform
 
+- Version 0.17.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
+### Breaking Changes
+
+- The resource `spectrocloud_cluster_edge_native` is deprecating the following arguments; `cloud_config_id`, `ssh_key`, and `host_uids`.
 
 ### Docs and Education
 
