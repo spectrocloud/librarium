@@ -293,7 +293,7 @@ echo $ISOFILEPATH
 List the Docker images to review the created provider images. By default, provider images are created for all the Palette-supported Kubernetes versions. You can identify the provider images by the image tag value you used in the **.arg** file's `CUSTOM_TAG` variable. 
 
 ```shell
-docker images --filter=reference='*/*:*demo'
+docker images --filter=reference='*/*:*demo*'
 ```
 
 ```hideClipboard bash {3,4}
