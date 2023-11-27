@@ -222,9 +222,19 @@ Use the following instructions on your Linux machine to create all the required 
 
   ```bash
   cat user-data
-  ``` 
+  ```   
 
-10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process.
+10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. By default, images are created for all the Palette-supported Kubernetes versions. Comment out the versions you do not need in the file **Earthfile** to speed up the build process and save disk space. 
+
+  ```
+  build-provider-images:
+  #    BUILD  +provider-image --K8S_VERSION=1.24.6
+    BUILD  +provider-image --K8S_VERSION=1.25.2
+    BUILD  +provider-image --K8S_VERSION=1.26.4
+    BUILD  +provider-image --K8S_VERSION=1.27.2
+  ```
+
+11. Issue the following command to start the build process.
 
   ```bash
   sudo ./earthly.sh +build-all-images
@@ -273,7 +283,7 @@ Use the following instructions on your Linux machine to create all the required 
   ```
 
 
-11. List the Docker images to review the provider images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` argument. 
+12. List the Docker images to review the provider images created. By default, provider images for all the Palette's Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag value you used in the  **.arg** file's `CUSTOM_TAG` argument. 
 
   ```shell
   docker images --filter=reference='*/*:*palette-learn'
@@ -281,17 +291,15 @@ Use the following instructions on your Linux machine to create all the required 
 
   ```hideClipboard bash
   REPOSITORY             TAG                                   IMAGE ID       CREATED         SIZE
-  ttl.sh/ubuntu          k3s-1.24.6-v4.0.6-palette-learn       ee67aef2a674   10 minutes ago   4.09GB
   ttl.sh/ubuntu          k3s-1.27.2-v4.0.6-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
   ttl.sh/ubuntu          k3s-1.25.2-v4.0.6-palette-learn       02424d29fcac   10 minutes ago   4.09GB
   ttl.sh/ubuntu          k3s-1.26.4-v4.0.6-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
   ```
 
 
-12. To use the provider images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  Use the following commands to push the provider images to the *ttl.sh* image registry.  
+13. To use the provider images in your cluster profile, push them to the image registry mentioned in the **.arg** file. The current example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to *ttl.sh* are ephemeral and will expire after the 24 hrs time limit.  Use the following commands to push the provider images to the *ttl.sh* image registry.  
 
   ```bash
-  docker push ttl.sh/ubuntu:k3s-1.24.6-v4.0.6-palette-learn
   docker push ttl.sh/ubuntu:k3s-1.25.2-v4.0.6-palette-learn
   docker push ttl.sh/ubuntu:k3s-1.26.4-v4.0.6-palette-learn
   docker push ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn
@@ -304,20 +312,20 @@ Use the following instructions on your Linux machine to create all the required 
   :::
 
 
-13. After pushing the provider images to the image registry, open a web browser and log in to [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a cluster profile. 
+14. After pushing the provider images to the image registry, open a web browser and log in to [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a cluster profile. 
 
 
-14. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill out the required basic information fields to create a cluster profile for Edge. 
+15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill out the required basic information fields to create a cluster profile for Edge. 
 
 
-15. Add the following [BYOS Edge OS](../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers** section.
+16. Add the following [BYOS Edge OS](../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers** section.
 
   |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
   |---|---|---|---|
   |OS|Public Repo|BYOS Edge OS|`1.0.0`|
 
 
-16. Replace the the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can pull the provider image from the ttl.sh image registry.  
+17. Replace the the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can pull the provider image from the ttl.sh image registry.  
 
   The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file. If you modified the arguments in the **.arg** file, you must modify the attribute values below accordingly.
 
@@ -357,24 +365,24 @@ Use the following instructions on your Linux machine to create all the required 
 
   :::
 
-17. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the ttl.sh image registry. 
+18. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the ttl.sh image registry. 
 
   |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
   |---|---|---|---|
   |Kubernetes|Public Repo|Palette Optimized k3s|`1.27.x`|
 
 
-18. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer. This step completes the core infrastructure layers in the cluster profile.  
+19. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer. This step completes the core infrastructure layers in the cluster profile.  
 
   |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
   |---|---|---|---|
   |Network|Public Repo|Calico|`3.25.x`|
     
 
-19. Add add-on layers and manifests to your cluster profile per your requirements. 
+20. Add add-on layers and manifests to your cluster profile per your requirements. 
 
 
-20. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for review. Verify the layers you added, and finish creating the cluster profile. 
+21. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for review. Verify the layers you added, and finish creating the cluster profile. 
 
 
 ### Validate
@@ -706,7 +714,6 @@ If you plan to build Edge artifacts using a content bundle, use the `+build-prov
   spectrocloud/opensuse-leap   k3s-1.27.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
   spectrocloud/opensuse-leap   k3s-1.26.6-v4.0.6-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
   spectrocloud/opensuse-leap   k3s-1.25.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
-  spectrocloud/opensuse-leap   k3s-1.24.6-v4.0.6-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
   ```
 
 16. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file. Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
@@ -726,7 +733,6 @@ If you plan to build Edge artifacts using a content bundle, use the `+build-prov
   docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.0.6-palette-learn
   docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.0.6-palette-learn
   docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.0.6-palette-learn
-  docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.24.6-v4.0.6-palette-learn
   ```
 
 18. After pushing the provider images to the image registry, open a web browser and log in to [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a cluster profile. 
