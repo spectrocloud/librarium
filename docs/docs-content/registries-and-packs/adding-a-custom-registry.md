@@ -85,7 +85,7 @@ We provide a Docker image for setting up a pack registry server. Use the followi
   ```bash
   docker run  \
       --rm \
-      --port 443:5000 \
+      -p 443:5000 \
       --name spectro-registry \
       --volume $(pwd)/spectropaxconfig/:/etc/spectropaxconfig/ \
       gcr.io/spectro-images-public/release/spectro-registry:4.0.2  \
@@ -140,7 +140,7 @@ Create a directory or mount an external volume to the desired storage location. 
 <br />
 
   ```shell
-  docker pull gcr.io/spectro-images-public/release/spectro-registry:3.4.0
+  docker pull gcr.io/spectro-images-public/release/spectro-registry:4.0.2
   ```
 
 8. Use the `docker run` command to instantiate a Docker container. If you encounter an error while instantiating the Docker container, below are some common scenarios and troubleshooting tips. 
