@@ -38,6 +38,8 @@ tags: ["release-notes"]
 #### Improvements
 
 
+- Cluster profile modifications now have an improved user experience that allows you to revert changes
+
 - An improved differential editor is now available. The new editor provides a side-by-side comparison of the changes that will be applied to the cluster profile. The editor also identifies YAML customziations you have added and guides you through the process of carrying over the customization to the new version of the YAML. The ability to undo changes and accept all changes is also available.
 
 - When updating a deployed cluster profile or updating an active cluster's profile, the new differantial editior is available to help you identify the changes that will be applied to the cluster profile.
@@ -68,7 +70,7 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- New Edge clusters can now retrieve provider images from authenticated registries. Previously, edge hosts could only pull provider images from unauthenticated registries.
+- New Edge clusters can now retrieve provider images from an authenticated registries. Previously, only public registries were supported for non-airgapped clusters, now you can use authenticated registries to store your provider images and retrieve them during cluster deployment.
 
 - Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge clusters. You can now specify additional kube-vip configuration paramters as part of the Kubernetes pack layer configuration. 
 
