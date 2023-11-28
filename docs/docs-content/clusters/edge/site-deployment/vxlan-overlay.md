@@ -53,7 +53,7 @@ You can enable an overlay network for your cluster during cluster creation. You 
 
 9. In the **Internal CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
 
-10. In **VIP** field near the top of the page, provide a a virtual IP (VIP) address. This address must be within the same internal CIDR range that you provide for the cluster. 
+10. In **VIP** field near the top of the page, provide a virtual IP (VIP) address. This address must be within the same internal CIDR range that you provide for the cluster. 
 
 11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](./site-installation/cluster-deployment.md). 
 
@@ -65,7 +65,7 @@ You can enable an overlay network for your cluster during cluster creation. You 
 
 3. Select the host cluster you created to view its details page.
 
-4. Select the **Nodes** tab, in the **Overlay IP Address** column, you should see that each host has an overlay IP address within the CIDR range you provided during cluster configuration. 
+4. Select the **Nodes** tab, in the **Overlay IP Address** column, each host has an overlay IP address within the CIDR range you provided during cluster configuration. 
 
 :::tip
 To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge Hosts** tab. The IP address displayed in the table is the external IP address.
