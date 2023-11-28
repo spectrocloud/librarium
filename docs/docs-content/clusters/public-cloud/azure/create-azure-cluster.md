@@ -21,11 +21,11 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 - An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
-- If you want to use custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the Cluster config page during the cluster creation process. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).
+- To use custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the Cluster config page during the cluster creation process. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).
 
   If you need help creating a custom storage account or container, check out the [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) guide or the [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal). 
   
-- If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in Azure when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred Azure region to create the following resources. Note that Palette does not create these resources if you specify an existing VNet. 
+- If you do not provide your own Virtual Network (VNet), Palette creates one for you with compute, network, and storage resources in Azure when it provisions Kubernetes clusters. To use a VNet that Palette creates, ensure there is sufficient capacity in the preferred Azure region to create the following resources: 
 
   - Virtual CPU (vCPU)
   - VNet
@@ -61,8 +61,6 @@ Use the following steps to deploy an Azure cluster.
   | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:france south`|
   | **Cloud Account** | If you already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your Azure account information. |
 
-  To learn how to add an Azure account, review the [Register and Manage Azure Cloud Account](azure-cloud.md) guide.
-
 
 7. Select the Azure cluster profile you created, and click on **Next**. Palette displays the cluster profile layers.
 
@@ -96,7 +94,7 @@ Use the following steps to deploy an Azure cluster.
   | **SSH Key** | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats). |
   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VNets, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
 
-    - Static Placement Settings
+    #### Static Placement Settings
 
     | **Parameter**              | **Description** |
     |------------------------|------------------------------------------------------------|
@@ -119,7 +117,7 @@ Use the following steps to deploy an Azure cluster.
 
   You can apply autoscale capability to dynamically increase resources during high loads and reduce them during low loads. To learn more, refer to [Enable Autoscale for Azure IaaS Cluster](#enable-autoscale-for-azure-iaas-cluster).
 
-    - Master Pool Configuration Settings
+    #### Master Pool Configuration Settings
     
     |**Parameter**| **Description**|
     |-------------|----------------|
@@ -129,7 +127,7 @@ Use the following steps to deploy an Azure cluster.
     |**Additional Labels** | You can add optional labels to nodes in key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md/#labels). Example: `environment:production`. |
     |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
 
-    - Cloud Configuration Settings for Master Pool
+    #### Cloud Configuration Settings for Master Pool
     
     |**Parameter**| **Description**|
     |-------------|----------------|
@@ -139,7 +137,7 @@ Use the following steps to deploy an Azure cluster.
 
     You can select **Remove** at right to remove the worker node if all you want is the control plane node.
 
-    - Worker Pool Configuration Settings
+  #### Worker Pool Configuration Settings
     
     |**Parameter**| **Description**|
     |-------------|----------------|
@@ -150,9 +148,9 @@ Use the following steps to deploy an Azure cluster.
     |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `environment:production`. |
     |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. To learn more, review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
 
-    - Cloud Configuration Settings for Worker Pool
+    #### Cloud Configuration Settings for Worker Pool
 
-      You can copy cloud configuration settings from the master pool, but be aware that the instance type might not get copied if it does not have accessible availability zones. 
+    You can copy cloud configuration settings from the master pool, but be aware that the instance type might not get copied if it does not have accessible availability zones. 
     
     |**Parameter**| **Description**|
     |-------------|----------------|
@@ -173,15 +171,9 @@ Use the following steps to deploy an Azure cluster.
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary. 
 
-19. Click **Finish Configuration** to deploy the cluster. 
+19. Click **Finish Configuration** to deploy the cluster. Provisioning Azure clusters can take several minutes.
 
   The cluster details page contains the status and details of the deployment. Use this page to track the deployment progress.
-  
-  :::info
-  
-  Provisioning Azure clusters can take several minutes.
-  
-  :::
 
 To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs, refer to [Cluster Removal](../../cluster-management/remove-clusters.md). 
 
@@ -201,9 +193,21 @@ You can validate your cluster is up and in **Running** state.
 
 ## Enable Autoscale for Azure IaaS Cluster
 
-Azure autoscale allows you to provision nodes to support the demand of your application. Within Azure, you can add resources to handle increases in load or scale back resources when they are not needed. 
+Azure autoscale allows you to provision nodes to support the demand of your application. Azure VMs autoscale using virtual machine **scale sets**, or virtual machine pool. Within Azure, you can scale out VMs to handle increases in load or scale in VMs when they are not needed. For more information, review Microsoft's [Overview of autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
-To autoscale resources, log in to the [Azure Portal](https://portal.azure.com/#home). You can find Autoscale under the **Monitor** service, the **Resource Groups** service, or by searching *Autoscale*. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
+### Prerequisites
+
+- A VM and a VM scale set created within the same resource group you specified when you created the Azure cluster in Palette.
+
+::: caution
+
+To use Autoscale capability, you must log in to the [Azure Portal](https://portal.azure.com/#home) and create a VM and a VM scale set. To learn how to create a scale set in Azure, review [Create virtual machines in a scale set using Azure portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal).
+
+:::
+
+Basic autoscaling options are available for host-based scaling when you create your scale set. To create custom autoscale rules based on schedule or metrics, you need to use Custom Autoscale. 
+
+Once you create your VM scale set, you can find Autoscale under the **Monitor** service, the **Resource Groups** service, or by searching *Autoscale*. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
 
 :::info
 

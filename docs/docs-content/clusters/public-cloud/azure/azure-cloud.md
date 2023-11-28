@@ -17,7 +17,8 @@ Palette supports deploying and managing Kubernetes clusters in an Azure account.
 
 * An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
-## Enable Azure Cloud Account Registration to Palette 
+
+## Enable Azure Cloud Account Registration
 
 To register an Azure cloud account in the Palette console
 
@@ -74,7 +75,7 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Tenant Settings**. 
 
