@@ -50,17 +50,92 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-fips-pack-ubuntu-vsphere-20.04.bin`                 | https://software-private.spectrocloud.com/airgap-fips/packs/airgap-fips-pack-ubuntu-vsphere-20.04.bin   |
 
 
-## Download Instructions
+### Usage Instructions
 
-To download a binary you must provide the username and password for the support team's private repository. Reach out to our support team to [obtain the credentials](../../vertex.md#access-palette-vertex). The following example shows how to download the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary.
+To download a binary you must provide the username and password for the support team's private repository. Reach out to our support team to [obtain the credentials](../../vertex.md#access-palette-vertex).
+
+
+
+ The following example shows how to download the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary. Replace `XXXX` with your username and `YYYY` with your password.
+
+
+<Tabs>
+<TabItem label="curl" value="curl">
+
 
 ```bash
-$ curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap-fips/packs/airgap-fips-pack-amazon-linux-eks-1.0.0.bin \
- --output airgap-fips-pack-amazon-linux-eks-1.0.0.bin
+curl --user 'XXXX:YYYY' \
+https://software-private.spectrocloud.com/airgap-fips/packs/airgap-fips-pack-amazon-linux-eks-1.0.0.bin \
+--output airgap-fips-pack-amazon-linux-eks-1.0.0.bin
 ```
+
+</TabItem> 
+
+<TabItem label="wget" value="wget">
+
+
+
+```shell
+wget --user='XXXX' --password='YYYY' \
+--output-document=airgap-fips-pack-amazon-linux-eks-1.0.0.bin \
+https://software-private.spectrocloud.com/airgap-fips/packs/airgap-fips-pack-amazon-linux-eks-1.0.0.bin
+```
+
+</TabItem> 
+</Tabs>
+
+
 
 :::info
 
 All binaries require the OCI environment variables to be set and for the registry credentials to be available.
 
 :::
+
+
+## Additional OVAs
+
+The following table lists additional OVAs that may be required depending on the Kubernetes version and distribution you want to use for your workload clusters.
+
+|**Kubernetes Version**| **OVA Name**  | **Download URL**   |
+|----------------------|---------------|--------------------|
+| Kubernetes 1.25.9    | u-2004-0-k-1259-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fips.ova`	|
+| Kubernetes 1.25.10   | u-2004-0-k-12510-fips.ova | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12510-fips.ova`	|
+| Kubernetes 1.26.4    | u-2004-0-k-1264-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1264-fips.ova`	|
+| Kubernetes 1.26.5    | u-2004-0-k-1265-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1265-fips.ova`	|
+| Kubernetes 1.27.1    | u-2004-0-k-1271-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1271-fips.ova`	|
+| Kubernetes 1.27.2    | u-2004-0-k-1272-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1272-fips.ova`	|
+| RKE2 1.25.10          | u-2004-0-k-rke2-1250-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1250-fips.ova`	|
+| RKE2 1.26.5          | u-2004-0-k-rke2-1265-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1265-fips.ova`	|
+
+
+
+### Usage Instructions
+
+Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to the `spectro-templates ` so VerteX can access it. One additional note about uploaded OVAs, the OVA name must be prefixed with `r_` to be recognized by VerteX. You can rename the OVA before you upload it or after you upload it to vSphere. 
+
+
+<Tabs>
+<TabItem label="curl" value="curl">
+
+The following example shows how to download the `u-2004-0-k-1259-fips.ova` OVA and rename it to `r_u-2004-0-k-1259-fips.ova` using `curl` and the `--output` flag. 
+
+```shell
+curl --output r_u-2004-0-k-1259-fips.ova \
+https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fips.ova
+```
+
+</TabItem> 
+
+<TabItem label="wget" value="wget">
+
+The following example shows how to download the `u-2004-0-k-1259-fips.ova` OVA and rename it to `r_u-2004-0-k-1259-fips.ova` using `wget` and the `--output-document` flag. 
+
+```shell
+wget --quiet --show-progress \
+--output-document=r_u-2004-0-k-1259-fips.ova \
+https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fips.ova
+```
+
+</TabItem> 
+</Tabs>
