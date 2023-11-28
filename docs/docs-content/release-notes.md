@@ -32,6 +32,9 @@ tags: ["release-notes"]
 - Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/). You can deploy Kubernetes clusters on Nutanix using Palette. Support for Nutanix is currently under technical preview and subject to change as we continue to improve the integration.
 
 
+- Enhanced cluster repave control and mitigation. In the Palette 4.1 release, repave notification warnings become available through the User Console (UI). In this release, cluster administrators, project administrators, and tenant administrators must acknowledge the repave notification and decide whether to proceed with the action. This feature helps prevent accidental repaves and provides a way to mitigate repaves by allowing administrators to cancel the repave action.
+
+
 #### Improvements
 
 
