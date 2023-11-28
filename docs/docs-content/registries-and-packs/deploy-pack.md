@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Deploy a Custom Pack"
 title: "Deploy a Custom Pack"
-description: "Learn how to deploy applications to a Kubernetes cluster with custom add-on packs. Deploy your custom pack from the Spectro Registry or an OCI registry. Learn how to get started with Palette’s custom packs and reuse them in multiple deployments."
+description: "Learn how to deploy applications to a Kubernetes cluster using Palette's custom packs, hosted in either the Spectro registry or an OCI registry."
 icon: ""
 hide_table_of_contents: false
 toc_min_heading_level: 2
@@ -36,7 +36,7 @@ To complete this tutorial, ensure you have the following prerequisites in place:
 - An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) guide for instructions.
 - An SSH key available in the region where you plan to deploy the cluster.
 - [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container. 
-- Basic knowledge of Docker containers, Kubernetes manifest file attributes, and Terraform.
+- Basic knowledge of Docker containers and Kubernetes manifest file attributes. Refer to the [Docker Get Started](https://docs.docker.com/get-started/) guide and [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
 
 If you choose to use an OCI registry, you will need the following item.
 <!--- - An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or [Harbor](https://goharbor.io/).-->
@@ -75,11 +75,11 @@ docker ps
 ```
 
 
-Download the `ghcr.io/spectrocloud/tutorials:1.0.9` image to your local machine. This Docker image includes the necessary tools. 
+Download the `ghcr.io/spectrocloud/tutorials:1.0.11` image to your local machine. This Docker image includes the necessary tools. 
 
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.9
+docker pull ghcr.io/spectrocloud/tutorials:1.0.11
 ```
 
 
@@ -87,7 +87,7 @@ Next, start the container and open a bash session into it.
 
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.9 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.11 bash
 ```
 
 
@@ -103,48 +103,6 @@ Do not exit the container until the tutorial is complete. Otherwise, you may los
 
 
 <br />
-
-### Required Tools and Directories
-
-After starting a bash session in the active container, confirm the installation of the required tools using the commands provided below. 
-
-
-Check the Spectro Command Line Interface (CLI) version.
-
-```bash
-spectro version
-```
-
-
-Verify the Spectro registry server version.
-
-```bash
-registry --version
-```
-
-
-Check the Terraform version.
-
-```bash
-terraform --version
-```
-
-
-Additionally, the tutorial container includes other tools such as `ngrok`, `git`, `nano`, `aws-cli`, and `oras`.
-
-Inspect the directories relevant to the current tutorial in the container root directory. 
-
-```bash
-.
-├── packs
-│   └── hello-universe-pack     # Stores the pack files.
-└── terraform
-    └── pack-tf                 # Contains the Terraform files used to create Spectro Cloud resources.
-```
-
-
-The **packs** directory stores the pack files. The **terraform** directory contains the Terraform files used to create Palette resources, which you may use later in this tutorial.
-
 
 ## Build a Pack
 
@@ -207,16 +165,16 @@ As outlined in the [Adding Add-on Packs](adding-add-on-packs.md) guide, there ar
 
 For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files are located in the **packs/hello-universe-pack** folder. 
 
-Navigate to the **packs/hello-universe-pack** directory.
+Navigate to the **packs/hello-universe-pack** directory and list its files.
 
 ```bash
-cd /packs/hello-universe-pack
+cd /packs/hello-universe-pack && ls -ll
 ```
 
 
 Ensure you have the following files in the current directory.
 
-```bash
+```bash hideClipboard
 .
 ├── pack.json           # Mandatory.
 ├── values.yaml         # Mandatory.
@@ -252,7 +210,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
 
 * **values.yaml** -  This file contains configurable parameters you can define while adding the current pack to a cluster profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to confirm if the namespace has been created. If so, Palette uses the existing namespace. If the namespace has not yet been created, Palette creates a new one using the value specified in the YAML file. 
 
-  If the **values.yaml**  does not specify a namespace value, Palette deploys the application to the default namespace.
+  Keep in mind that if the **values.yaml** does not specify a namespace value, Palette will deploy the application to the default namespace.
   
   The `manifests` section exposes the configurable parameters for each manifest file listed in the **manifests** directory. For example, in the sample code snippet below, the `hello-universe` attribute exposes the `registry`, `repository`, and `tag` parameters. 
   <br />
@@ -295,7 +253,7 @@ After completing the review of all files in the pack directory, the next step is
 
 ## Set Up the Registry Server
 
-You can set up a registry server using either the Spectro Registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
+You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
 
 The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
 
@@ -339,8 +297,6 @@ Check if the registry server is accessible from outside the tutorial container b
 
 <br />
 
-An Amazon ECR private registry is provided to each AWS account, allowing the creation of repositories within it.
-
 The initial step to creating the pack's repository in the ECR registry is to export your AWS credentials as environment variables for authentication. 
 
 In the tutorial container bash session, export the following variables. This tutorial utilizes **us-east-1** as the default region.
@@ -376,6 +332,15 @@ Next, create the repository to store the Hello Universe pack.
 ```bash
 aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
 ```
+<br />
+
+:::caution
+
+Make sure to include the **spectro-packs/archive** path in *all* your repositories to meet Palette's requirements.
+
+:::
+
+<br />
 
 This configuration sets up the required environment and repositories for pushing the Hello Universe pack to your ECR Registry.
 
@@ -416,7 +381,7 @@ Once the `/health` endpoint of the registry server displays an `UP` status, proc
 docker exec -it tutorialContainer bash
 ```
 
-Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL with your Ngrok URL. The command below uses these credentials to log in to the registry server: `{username: admin, password: admin}`.
+Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL with your Ngrok URL. The `--insecure` flag indicates that the connection to the Spectro registry should be made without verifying the TLS certificate. The command below uses these credentials to log in to the registry server: `{username: admin, password: admin}`.
 
 
 ```bash
@@ -435,7 +400,7 @@ Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using eith
 
 You will receive a `Login Succeeded` response upon successful login.
 
-```bash
+```bash hideClipboard
 # Output condensed for readability
 WARNING! Your password will be stored unencrypted in /root/.spectro/config.json.
 Login Succeeded
@@ -553,9 +518,27 @@ You can use the `aws ecr describe-images` command to check if the pushed pack is
 aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
 ```
 
-The image below displays the output of the `aws ecr describe-images` command, confirming the presence of the Hello Universe pack in the repository.
+The snippet below displays the output of the `aws ecr describe-images` command, confirming the presence of the Hello Universe pack in the repository.
 
-![Screenshot of the output of the command aws ecr describe-images](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-describe.png)
+```plainText {5-8} hideClipboard
+{
+"imageDetails": [
+{
+	"registryId": "<YourRegistryId>
+	"repositoryName": "spectro-oci-registry/spectro-packs/archive/hellouniverse",
+	"imageDigest": "sha256:<YourImageSha>",
+	"imageTags": [
+		"1.0.0"
+	],
+	"imageSizeInBytes": 19059,
+	"imagePushedAt": "2023-11-06T11:19:48+00:00",
+	"imageManifestMediaType": "application/vnd.oci.image.manifest.v1+json",
+	"artifactMediaType": "application/vnd.unknown.config.v1+json",
+	"lastRecordedPullTime": "2023-11-17T00:00:48.649000+00:00"
+		}
+	]
+}
+```
 
 </TabItem>
 
@@ -935,7 +918,7 @@ cd /terraform/pack-tf
 
 ### Set Up the Spectro Cloud API Key
 
-To get started with Terraform code, you need a Spectro Cloud API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. 
+To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide for more information.
 
 ![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
 
@@ -961,7 +944,7 @@ Below are the steps to add and export an API key:
 
 Ensure you have the following files in the current working directory.
 
-```bash
+```bash hideClipboard
 .
 ├── profile.tf		# Resource
 ├── cluster.tf		# Resource
@@ -971,8 +954,15 @@ Ensure you have the following files in the current working directory.
 ├── outputs.tf		# Output variables
 └── provider.tf		# Spectro Cloud Terraform provider 
 ```
+<br />
 
-Note that the Terraform code will deploy the resources to **AWS**. 
+:::caution
+
+Note that the Terraform code will deploy the resources to **AWS**.
+
+:::
+
+<br />
 
 We recommend that you explore all Terraform files. Below is a high-level overview of each file.
 <br />
@@ -993,7 +983,6 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
   |Kubernetes|Public Repo|`kubernetes`|`1.28.x`| `1.28.2` |
   |Network|Public Repo|`cni-calico`|`3.26.x`|`3.26.1`|
   |Storage|Public Repo|`csi-aws-ebs`|`1.22.x`|`1.22.0`|
-  |Authentication|Public Repo|`spectro-proxy`|`1.4.x`|`1.4.1`|
   |App Services|Private Repo|`hellouniverse`|`1.0.x`|`1.0.0`|
 
 
@@ -1014,7 +1003,7 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
   
   - The value for `ssh_key_name` should be the name of the AWS SSH key pair available in the region where you will deploy the cluster.  
   
-  - Next, provide your registry server name for the `spectro_pack_registry` variable. For example, you can use the **spectro-pack-registry** as the value if you have followed this tutorial's naming convention and used the Spectro Registry. If you used an ECR registry, set the registry server name to **ecr-registry**. <!--Lastly, if you used a Harbor registry, set the registry server name to **harbor-registry**.-->
+  - Next, provide your registry server name for the `spectro_pack_registry` variable. For example, you can use the **spectro-pack-registry** as the value if you have followed this tutorial's naming convention and used the Spectro registry. If you used an ECR registry, set the registry server name to **ecr-registry**. <!--Lastly, if you used a Harbor registry, set the registry server name to **harbor-registry**.-->
 
   - Lastly, set the value of the `use_oci_registry` variable to either true or false. For instance, if you are not using an OCI registry, set this value to false. The default value is set to true.
   <br />
@@ -1076,7 +1065,7 @@ You can monitor the progress of the cluster deployment in the Palette interface.
 
 
 #### Check the In-Progress Deployment
-Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Profile** section in the left **Main Menu**. If the Terraform deployment is successful, the newly created cluster profile is displayed as shown in the screenshot below. 
+Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Clusters** section in the left **Main Menu**. If the Terraform deployment is successful, the newly created cluster is displayed as shown in the screenshot below. 
 
 ![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-profile.png)
 
@@ -1174,7 +1163,7 @@ terraform destroy -auto-approve
 
 Wait for the resources to complete cleanup. Deleting the Terraform resources may take up to 10 minutes. 
 
-```bash
+```bash hideClipboard
 # Output condensed for readability
 Destroy complete! Resources: 2 destroyed.
 ```
@@ -1200,7 +1189,7 @@ At this point, you can close all the bash sessions. To remove the container and 
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.9
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.11
 ```
 
 <br /> 
