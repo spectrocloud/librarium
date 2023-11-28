@@ -201,13 +201,13 @@ You can validate your cluster is up and in **Running** state.
 
 ## Enable Autoscale for Azure IaaS Cluster
 
-Azure autoscale allows you to provision just enough resources to support the demand on your application. Within Azure, you can add resources to handle increases in load or scale back resources when they are not needed. 
+Azure autoscale allows you to provision nodes to support the demand of your application. Within Azure, you can add resources to handle increases in load or scale back resources when they are not needed. 
 
 To autoscale resources, log in to the [Azure Portal](https://portal.azure.com/#home). You can find Autoscale under the **Monitor** service, the **Resource Groups** service, or by searching *Autoscale*. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
 
 :::info
 
-Microsoft notes it is best practice when adding a scale rule to scale out resources, a matching rule should be added to scale in when the resources are no longer needed. 
+Microsoft documentation recommends adding a scale rule to scale out resources. A matching rule should be added to scale down when the resources are no longer needed. 
 
 :::
 

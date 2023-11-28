@@ -7,7 +7,7 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-Palette supports deploying and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that Palette manages.
+Palette supports deploying and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that Palette manages using Azure Virtual Machines.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ Palette supports deploying and managing Kubernetes clusters in an Azure account.
 
 To register an Azure cloud account in the Palette console
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Tenant Settings**. 
 
@@ -46,7 +46,7 @@ To register an Azure cloud account in the Palette console
 
 When you provide your cloud account information, Azure networking details will be sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
 
-When you disable network calls from Palette, you need to create a Microsoft Entra application which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
+When you disable network calls from Palette, you need to create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
 
 :::info
 
