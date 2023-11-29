@@ -182,7 +182,7 @@ Use the following steps to validate the SSO configuration.
 2. Provide a team name, such as `admins` but leave the **Members** field empty. Click on **Confirm** to create the team.
 
 
-3. Next, select the **admins** row to access the team settings page. Click on **New Project Role** and asdd the **Project Admin** role to the **Default** project. Click on **Confirm** to save the changes.
+3. Next, select the **admins** row to access the team settings page. Click on **New Project Role** and add the **Project Admin** role to the **Default** project. Click on **Confirm** to save the changes.
 
   ![alt_text](/keycloak/user-management_saml-sso_keycloak-15-palette-project.png "Palette Project")
 
