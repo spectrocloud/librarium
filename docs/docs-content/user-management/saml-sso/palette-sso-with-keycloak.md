@@ -27,7 +27,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
   :::tip
 
-  You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy to an on-premises or edge environment and use the MetalLB pack to expose a load balancer service. Check out the [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) guide for more information.
+  You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy to an on-prem or edge environment and use the MetalLB pack to expose a load balancer service. Check out the [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) guide for more information.
 
   :::
 
@@ -82,7 +82,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
   After the ingress resource is created, the following services will be available in your cluster. You can review the exposed services in the cluster details page.
 
-  ![alt_text](/keycloak/user-management_saml-sso_keycloak-01-keycloak-service.png "Keycloak Service")
+  ![View of the cluster details page](/keycloak/user-management_saml-sso_keycloak-01-keycloak-service.png "Keycloak Service")
 
 5. Create a DNS CNAME record for the URL exposed by load balancer. For example, the CNAME `keycloak.dmitry.sa.spectrodemos.com` points to the following URL exposed by the load balancer `aacf4014d5cd34825803567201217410-1398304919.us-east-1.elb.amazonaws.com`. 
 
@@ -100,19 +100,19 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
 7.  Next, log in to [Palette](https://console.spectrocloud.com), and navigate to the left **Main Menu** and select **Tenant Settings**. Next, select **SSO** from the **Tenant Menu** to access the SSO configuration page. Click on the **OIDC** tab to configure OIDC for Palette. Copy the values in the **Callback URL** and **Logout URL** fields. You will need these values to configure Keycloak.
 
-  ![alt_text](/keycloak/user-management_saml-sso_keycloak-02-callback-url.png "Callback URL")
+  ![The callback URL](/keycloak/user-management_saml-sso_keycloak-02-callback-url.png "Callback URL")
 
 8. Switch back to the Keycloak admin console and create a client for Palette. Navigate to the left **Main Menu** and select **Clients**. Click on the **Create** button to create a new client.
 
-  ![alt_text](/keycloak/user-management_saml-sso_keycloak-03-create-client.png "Create Client")
+  ![The Client create screen](/keycloak/user-management_saml-sso_keycloak-03-create-client.png "Create Client")
 
 9. Select **Client Type** value "OpenID Connect" and fill in the fields **Client ID** and **Name** with the value `palette`. Click on **Next**.
 
-  ![alt_text](/keycloak/user-management_saml-sso_keycloak-04-palette-username.png "Palette username")
+  ![Fill out the user name](/keycloak/user-management_saml-sso_keycloak-04-palette-username.png "Palette username")
 
 10. Select **Client authentication** for increased security and check the **Standard Flow** box and the **Direct Access Grants** box. Click on **Next**.
 
-  ![alt_text](/keycloak/user-management_saml-sso_keycloak-05-client-authentication.png "Client Authentication")
+  ![Client Authentication creation screen number two](/keycloak/user-management_saml-sso_keycloak-05-client-authentication.png "Client Authentication")
 
 11. Fill out the following fields with the instructions provided in the table.
 
@@ -206,6 +206,6 @@ Repeat the steps above for all users you want to add to the **admins** team. You
 
 - [Keycloak Documentation](https://www.keycloak.org/documentation)
 
-- [Keycloak Quickstarts](https://www.keycloak.org/getting-started/getting-started-kube)
+- [Keycloak Quickstart](https://www.keycloak.org/getting-started/getting-started-kube)
 
 - [Create Keycloak Users](https://www.keycloak.org/docs/latest/server_admin/index.html#proc-creating-user_server_administration_guide)
