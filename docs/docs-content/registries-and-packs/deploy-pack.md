@@ -36,7 +36,7 @@ To complete this tutorial, ensure you have the following prerequisites in place:
 - An Amazon Web Services (AWS) account added to your Palette project settings. Refer to the [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) guide for instructions.
 - An SSH key available in the region where you plan to deploy the cluster.
 - [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container. 
-- Basic knowledge of Docker containers and Kubernetes manifest file attributes. Refer to the [Docker Get Started](https://docs.docker.com/get-started/) guide and [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
+- Basic knowledge of Docker containers and Kubernetes manifest file attributes. Refer to the [Docker Get Started](https://docs.docker.com/get-started/) guide and the [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
 
 If you choose to use an OCI registry, you will need the following item.
 <!--- - An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or [Harbor](https://goharbor.io/).-->
@@ -1108,9 +1108,7 @@ By using your custom pack, you have successfully deployed the **Hello Universe**
 
 <br />
 
-## Cleanup
-
-Delete the cluster, cluster profile, and registry server, and remove the registry configuration from Palette. 
+## Cleanup 
 
 The following steps will guide you in cleaning up your environment. Follow the Palette-specific steps if you used Palette to deploy the cluster. Alternatively, use Terraform commands to delete the cluster if you used Terraform for deployment.
 
@@ -1122,7 +1120,7 @@ The following steps will guide you in cleaning up your environment. Follow the P
 
 <br />
 
-####  Delete the Cluster and Cluster Profile using Palette
+####  Delete the Cluster and Cluster Profile
 
 Navigate to the **Cluster** section in Palette's left **Main Menu** and access the details page for the **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the deletion. 
 
@@ -1156,7 +1154,7 @@ Wait for the resources to complete cleanup and ensure they are successfully dele
 
 <br />
 
-####  Delete the Cluster and Cluster Profile using Terraform
+####  Delete the Cluster and Cluster Profile
 
 If you deployed the cluster using Terraform, switch back to the tutorial container and issue the following command within the **/terraform/pack-tf** directory.
 
