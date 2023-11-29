@@ -11,9 +11,11 @@ You can use kube-vip to provide a virtual IP address for your cluster and use it
 
 Kube-vip supports DHCP environments and can request additional IP address from the DHCP server automatically. Using kube-vip, you can expose services inside your cluster externally with a virtual IP address even if you do not have control over your host's network. Kube-vip can also act as a load balancer for both your control plane and Kubernetes services of type `LoadBalancer`.
 
-## Enablement
+## Prerequisites
 
-To leverage KubeVIP to expose a Service of type `LoadBalancer` on the external network, follow these steps:
+- At least one Edge device with x86_64/AMD64 processor architecture registered in your Palette account 
+
+## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -35,23 +37,30 @@ To leverage KubeVIP to expose a Service of type `LoadBalancer` on the external n
    ```
    These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services.    
 
-8. Next, in the manifest for your load balancer service, add two parameters `loadBalancerIP: 0.0.0.0` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec:
+8. Next, in layer of your cluster profile that has the service you want to expose, add two parameters `loadBalancerIP: 0.0.0.0` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec:
    ```
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: http-app-svc
-     namespace: myapp
-   spec:
-     loadBalancerIP: 0.0.0.0
-     loadBalancerClass: kube-vip.io/kube-vip-class
-     ports:
-     - port: 80
-       protocol: TCP
-       targetPort: http
-     selector:
-       app.kubernetes.io/name: http-app
-     type: LoadBalancer
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: hello-universe-deployment
+    spec:
+      replicas: 2
+      selector:
+        matchLabels:
+          app: hello-universe
+      template:
+        metadata:
+          labels:
+            app: hello-universe
+        spec:
+          loadBalancerIP: 0.0.0.0
+          loadBalancerClass: kube-vip.io/kube-vip-class
+          containers:
+          - name: hello-universe  
+            image: ghcr.io/spectrocloud/hello-universe:1.0.12 
+            imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 8080
    ```
 
 9. Click **Next** and finish the rest of the configurations. For more information, refer to [Create Cluster Definition](./site-installation/cluster-deployment.md).
