@@ -61,6 +61,10 @@ You can enable an overlay network for your cluster during cluster creation. You 
 
 10. In **VIP** field near the top of the page, provide a virtual IP (VIP) address. This address must be within the same internal CIDR range that you provide for the cluster. 
 
+    :::caution
+    Neither the internal CIDR range nor the VIP address can be changed after the cluster creation. 
+    :::
+
 11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](./site-installation/cluster-deployment.md). 
 
 ## Validate
