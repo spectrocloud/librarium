@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a Service of type `LoadBalancer` on the external network.
+You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a service of type `LoadBalancer` on the external network.
 
 Kube-vip supports DHCP environments and can request additional IP address from the DHCP server automatically. Using kube-vip, you can expose services inside your cluster externally with a virtual IP address even if you do not have control over your host's network. Kube-vip can also act as a load balancer for both your control plane and Kubernetes services of type `LoadBalancer`.
 
@@ -28,14 +28,21 @@ Kube-vip supports DHCP environments and can request additional IP address from t
 6. Select the cluster profile that you plan to use to deploy your cluster and publish services with and click **Next**.  
 
 7. In the **Parameters** step, click on the Kubernetes layer of your profile. In the YAML file for the Kubernetes layer of your cluster profile, add the following parameters:
-   ```
+   ```yaml
    cluster:
     kubevipArgs:
       vip_interface: "ens32"
       svc_enable: true
       vip_servicesinterface: "eno1"
    ```
-   These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services.    
+
+   These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services. The following table provides you guide on how to choose the values for each parameter:   
+ 
+  | Parameter | Description |
+  |-----------|-------------|
+  | `vip_interface` | Specifies the Network Interface Controller (NIC) that kube-vip will use for handling traffic to the Kubernetes API. If you do not specify `vip_serviceinterface`, kube-vip will also use this interface for handling traffic to LoadBalancer-type services. |
+  | `svc_enable` | Enables kube-vip to handle traffic for services of type LoadBalancer. |
+  | `vip_serviceinterface` | Specifies the NIC that kube-vip will use for handling traffic to LoadBalancer-type services. If your cluster has network overlay enabled, or if your host has multiple NICs and you want to publish services on a different NIC than the one used by Kubernetes, you should specify the name of the NIC as the value of this parameter. If this parameter is not specified and you have set `svc_enable` to `true`, kube-vip will use the NIC you specified in `vip_interface` to handle traffic to LoadBalancer-type services.  |
 
 8. Next, in layer of your cluster profile that has the service you want to expose, add two parameters `loadBalancerIP: 0.0.0.0` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec:
    ```
@@ -66,18 +73,18 @@ Kube-vip supports DHCP environments and can request additional IP address from t
 9. Click **Next** and finish the rest of the configurations. For more information, refer to [Create Cluster Definition](./site-installation/cluster-deployment.md).
 
 
-When the cluster finished deploying, KubeVIP adds an annotation named `kube-vip.io/requestedIP` to the Service resource to document which IP address it has received from the external network. Whenever kube-vip restarts, it will attempt to re-request the same IP address for that service. You can remove the annotation to make kube-vip request a fresh address.
+When the cluster finished deploying, kube-vip adds an annotation named `kube-vip.io/requestedIP` to the Service resource to document which IP address it has received from the external network. Whenever kube-vip restarts, it will attempt to re-request the same IP address for that service. You can remove the annotation to make kube-vip request a fresh address.
 
 ## Validation
 
 To validate that kube-vip has been set up correctly and is performing load balancing services for your cluster:
 
 1. Access the cluster via kubectl CLI. For more information, refer to [Access Cluster with CLI](../../cluster-management/palette-webctl.md). 
-2. Issue the command `kubectl get service SERVICE_NAME` and replace `SERVICE_NAME` with the name of the service you configure with kube-vip. The output of the command displays the external IP address that kube-vip has received from the external network.
+2. Issue the command `kubectl get service SERVICE_NAME` and replace `SERVICE_NAME` with the name of the service you configure with kube-vip. The output of the command displays the external IP address that kube-vip has received from the external network or the IP address you specified in the `loadBalancerIP` parameter.
 
 ## Limitations
 
-Kube-vip has many environment variables you can use to customize its behavior. You can specify values for the environment variables with the `cluster.kubeArgs` parameter. For a complete list of environment variables in kube-vip, refer to [kube-vip documentation](https://kube-vip.io/docs/installation/flags/?query=vip_interface#environment-variables).
+Kube-vip has many environment variables you can use to customize its behavior. You can specify values for the environment variables with the `cluster.kubevipArgs` parameter. For a complete list of environment variables in kube-vip, refer to [kube-vip documentation](https://kube-vip.io/docs/installation/flags/?query=vip_interface#environment-variables).
 However, Palette has configured values for the following parameters and they cannot be changed:
 
 | Environment Variable | Description | Example Value |
