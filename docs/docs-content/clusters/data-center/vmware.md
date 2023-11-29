@@ -618,27 +618,27 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 
 - Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
 
-- You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
+- You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The following t-shirt sizes are suggested for a VMware Private Cloud Gateway PCG. The PCG size impacts the maximum number of simultaneous cluster deployments. 
 
-  - Single-node cluster: 4 vCPU, 4 GB memory, 60 GB storage.
+  Use the following tables to determine the appropriate PCG size for your environment.
 
-The following t-shirt sizes are suggested for a VMware Private Cloud Gateway PCG. The PCG size impacts the maximum number of simultaneous cluster deployments.
+  #### Single-Node Cluster
 
-| Size | Nodes | CPU | Memory | Storage | Maximum possible concurrent cluster deployments |
-|------|-------|-----|--------|---------|--------------------------------|
-| S    | 1     | 4   | 4      | 60      | 1-3                            |
-| M    | 1     | 8   | 8      | 100     | 4-6                            |
-| L    | 1     | 16  | 16     | 120     | 7-10                           |
+  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum possible concurrent cluster deployments** |
+  |------|-------|-----|--------|---------|--------------------------------|
+  | S    | 1     | 4   | 4      | 60      | 1-3                            |
+  | M    | 1     | 8   | 8      | 100     | 4-6                            |
+  | L    | 1     | 16  | 16     | 120     | 7-10                           |
 
-  - High-Availability (HA) three-node cluster: 12 vCPU, 12 GB memory, 180 GB storage.
+  #### High-Availability (HA) Cluster
 
-| Size | Nodes | CPU | Memory | Storage | Maximum possible concurrent cluster deployments |
-|------|-------|-----|--------|---------|--------------------------------|
-| S    | 3     | 4   | 4      | 60      | 4-6                             |
-| M    | 3     | 8   | 8      | 100     | 7-10                            |
-| L    | 3     | 16  | 16     | 120     | 10-15                           |
+  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum possible concurrent cluster deployments** |
+  |------|-------|-----|--------|---------|--------------------------------|
+  | S    | 3     | 4   | 4      | 60      | 4-6                             |
+  | M    | 3     | 8   | 8      | 100     | 7-10                            |
+  | L    | 3     | 16  | 16     | 120     | 10-15                           |
 
-  - Sufficient available IP addresses within the configured vSphere subnets.
+- Sufficient available IP addresses within the configured vSphere subnets.
 
 
 :::info
