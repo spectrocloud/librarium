@@ -37,7 +37,7 @@ To register an Azure cloud account in the Palette console
 |**Account Name**| A custom account name.|
 |**Tenant ID**| Unique tenant ID from Azure Management Portal.|
 |**Client ID**| Unique client ID from Azure Management Portal.|
-|**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) |
+|**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). After providing the client secret, click the **Validate** button. If the client secret you provided is correct, a *Credentials validated* success message with a green check is displayed. |
 |**Tenant Name**| An optional tenant name.|
 |**Disable Properties**| This option disables importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties) section. |
 |**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|

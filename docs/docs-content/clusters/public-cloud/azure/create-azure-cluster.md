@@ -193,27 +193,36 @@ You can validate your cluster is up and in **Running** state.
 
 ## Enable Autoscale for Azure IaaS Cluster
 
-Azure autoscale allows you to provision nodes to support the demand of your application. Azure VMs autoscale using virtual machine **scale sets**, or virtual machine pool. Within Azure, you can scale out VMs to handle increases in load or scale in VMs when they are not needed. For more information, review Microsoft's [Overview of autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
+Azure autoscale allows you to provision nodes to support the demand of your application. Azure VMs autoscale using a *virtual machine scale set*. The scale set serves as a virtual machine pool. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. For more information, review Microsoft's [Overview of autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
-### Prerequisites
+:::caution
 
-- A VM and a VM scale set created within the same resource group you specified when you created the Azure cluster in Palette.
+When using Autoscale capability, 
 
-::: caution
+- You must create a VM and a virtual machine scale set within the same resource group you specified when you created the Azure cluster in Palette. To learn how to create a scale set, review [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) Microsoft guide.
 
-To use Autoscale capability, you must log in to the [Azure Portal](https://portal.azure.com/#home) and create a VM and a VM scale set. To learn how to create a scale set in Azure, review [Create virtual machines in a scale set using Azure portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal).
+- When creating a scale set, ensure you specify the same Availability Zone (AZ) in the region you specified during cluster creation in Palette.  
 
 :::
 
-Basic autoscaling options are available for host-based scaling when you create your scale set. To create custom autoscale rules based on schedule or metrics, you need to use Custom Autoscale. 
+Once you create your scale set, you can find it in **Azure services** under **Virtual machine scale sets** using the search field. 
 
-Once you create your VM scale set, you can find Autoscale under the **Monitor** service, the **Resource Groups** service, or by searching *Autoscale*. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
+Basic autoscaling options are available for host-based scaling when you create your scale set. Use **Custom autoscale** to create custom autoscale rules based on metrics or a schedule. 
+
+![alt text](/clusters_publiccloud_azure_custom-autoscale.png)
+
+When scaling based on metrics, you add a rule to scale out and a matching rule to scale in.
+
+![alt text](/clusters_publiccloud_azure_add-rule.png)
+
+To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
 
 :::info
 
-Microsoft documentation recommends adding a scale rule to scale out resources. A matching rule should be added to scale down when the resources are no longer needed. 
+A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends for every scale rule you add to scale out resources, a matching rule should be added to scale in when the resources are no longer needed. This best practice avoids extra costs that could be incurred for unused provisioned resources.
 
 :::
+
 
 ## Resources
 
