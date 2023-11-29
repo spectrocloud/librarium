@@ -23,7 +23,7 @@ In this tutorial, you will create a custom add-on pack to package a sample Kuber
 
 After defining the custom pack, you will set up a new registry server or leverage an existing Open Container Initiative (OCI) registry. Then, you will publish the pack to the registry and configure the registry server in Palette. Lastly, you will create a cluster profile that contains your custom pack and apply the profile to a cluster using either Palette or Terraform. 
 
-The following diagram illustrates the steps required to successfully complete this tutorial.
+The following diagram illustrates the sequential steps required to successfully complete this tutorial.
 
 ![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png)
 
@@ -55,6 +55,8 @@ If you opt for an ECR OCI registry, you will require the following.
   - `ecr:BatchCheckLayerAvailability`
   - `ecr:ListImages`
   - `ecr:DescribeImages`
+  - `ecr:BatchDeleteImage`
+  - `ecr:DeleteRepository`
 
 :::caution
 
@@ -227,12 +229,12 @@ Review each of the following five files in the **hello-universe-pack** folder.
 
   <br />
 
-  Optionally, you can define *presets*, which are predefined values to use in the **values.yaml** file. You define presets in a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer to [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets. 
+  Optionally, you can define *presets*, which are pack configuration values predefined in a file called **presets.yaml** within the pack. Once defined, the **Presets** field becomes visible in both the **Clusters** and **Profile** sections of the Palette UI. Users can select any preset from the available pack presets, and upon selection, the predefined values of the chosen preset are applied to the pack. Refer to [Pack Presets](https://deploy-preview-1828--docs-spectrocloud.netlify.app/registries-and-packs/pack-constraints#pack-presets) for details and examples of how to define presets. 
   
   The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest during the creation of the cluster profile. 
 
 
-  ![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png )
+![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png )
 
 
 * **manifests** -  This directory contains the manifest files for your Kubernetes application. This tutorial has only one manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe` element with the same name as the YAML file. 
@@ -421,7 +423,7 @@ aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username 
 
 If the login is successful, you will receive the following confirmation message.
 
-```
+``` hideClipboard
 Login Succeeded
 ```
 
@@ -445,7 +447,7 @@ oras login $HARBOR_ADDRESS
 
 You will be prompted for your Harbor username and password. If the login is successful, you will receive the following confirmation message.
 
-```
+``` hideClipboard
 Username: admin
 Password:
 Login Succeeded
@@ -1065,9 +1067,10 @@ You can monitor the progress of the cluster deployment in the Palette interface.
 
 
 #### Check the In-Progress Deployment
-Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Clusters** section in the left **Main Menu**. If the Terraform deployment is successful, the newly created cluster is displayed as shown in the screenshot below. 
 
-![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-profile.png)
+Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Clusters** section in the left **Main Menu**. Locate the **pack-tutorial-cluster** and check its status, which should appear as **Provisioning** according to the provided screenshot. 
+
+![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.png)
 
 <br /> 
 
@@ -1183,7 +1186,60 @@ After deleting the cluster and cluster profile, navigate to the **Tenant Setting
 ![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
 
 
-Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, refer to the [Deleting a private repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-delete.html) guide to delete the ECR repositories. <!--Finally, if you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a virtual machine, for example, ensure to delete the virtual machine according to your setup.-->
+Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, you must first remove the pack from the repository before deleting it. 
+
+Execute the following command to delete the pack from your ECR repository. 
+
+```bash
+aws ecr batch-delete-image --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --image-ids imageDigest=$(aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION --query 'imageDetails[0].imageDigest' --output text)
+```
+
+The snippet below displays the output of the `aws ecr batch-delete-image` command, confirming the deletion of the Hello Universe pack.
+
+```plainText {4-5} hideClipboard 
+{
+    "imageIds": [
+        {
+            "imageDigest": "sha256:<YourImageSha>",
+            "imageTag": "1.0.0"
+        }
+    ],
+    "failures": []
+}
+```
+
+Next, proceed to delete the repositories.
+
+```bash
+aws ecr delete-repository --repository-name $REGISTRY_NAME/spectro-packs/archive
+aws ecr delete-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME
+```
+
+The output should provide information regarding the deleted repositories.
+
+```plainText {5,14} hideClipboard 
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:us-east-1:<YourAccountId>:repository/spectro-oci-registry/spectro-packs/archive",
+        "registryId": "<YourRegistryId>",
+        "repositoryName": "spectro-oci-registry/spectro-packs/archive",
+        "repositoryUri": "<YourAccountId>.dkr.ecr.us-east-1.amazonaws.com/spectro-oci-registry/spectro-packs/archive",
+        "createdAt": "2023-11-28T16:23:20+00:00",
+        "imageTagMutability": "MUTABLE"
+    }
+
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:us-east-1:<YourAccountId>:repository/spectro-oci-registry/spectro-packs/archive/hellouniverse",
+        "registryId": "<YourRegistryId>",
+        "repositoryName": "spectro-oci-registry/spectro-packs/archive/hellouniverse",
+        "repositoryUri": "<YourAccountId>.dkr.ecr.us-east-1.amazonaws.com/spectro-oci-registry/spectro-packs/archive/hellouniverse",
+        "createdAt": "2023-11-28T16:23:29+00:00",
+        "imageTagMutability": "MUTABLE"
+    }
+}
+```
+
+<!--Finally, if you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a virtual machine, for example, ensure to delete the virtual machine according to your setup.-->
 
 At this point, you can close all the bash sessions. To remove the container and the image from the local machine, issue the following commands.
 
