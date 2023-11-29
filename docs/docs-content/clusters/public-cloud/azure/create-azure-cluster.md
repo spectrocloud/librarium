@@ -74,7 +74,7 @@ Use the following steps to deploy an Azure cluster.
 
 9. Click **Next** to continue.
 
-10. Provide the cluster configuration information listed in the following table.
+10. Provide the cluster configuration information listed in the following table.  
 
   If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md/#azure-storage).
 
@@ -193,11 +193,13 @@ You can validate your cluster is up and in **Running** state.
 
 ## Enable Autoscale for Azure IaaS Cluster
 
-Azure autoscale allows you to provision nodes to support the demand of your application. Azure VMs autoscale using a *virtual machine scale set*. The scale set serves as a virtual machine pool. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. For more information, review Microsoft's [Overview of autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
+Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
 :::caution
 
-When using Autoscale capability, 
+To use Custom Autoscale capability, the following applies regarding scale sets: 
+
+- Custom Autoscale requires the creation of a virtual machine scale set.
 
 - You must create a VM and a virtual machine scale set within the same resource group you specified when you created the Azure cluster in Palette. To learn how to create a scale set, review [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) Microsoft guide.
 
@@ -205,23 +207,31 @@ When using Autoscale capability,
 
 :::
 
-Once you create your scale set, you can find it in **Azure services** under **Virtual machine scale sets** using the search field. 
+Once you create your scale set, you can find it by navigating to the **Azure services** home page, selecting **Virtual machine scale sets**, and using the search field. 
 
-Basic autoscaling options are available for host-based scaling when you create your scale set. Use **Custom autoscale** to create custom autoscale rules based on metrics or a schedule. 
+Basic autoscaling options are available for host-based scaling when you create your scale set. However, to create custom autoscale rules based on metrics or a schedule, use **Custom autoscale**. 
 
 ![alt text](/clusters_publiccloud_azure_custom-autoscale.png)
 
-When scaling based on metrics, you add a rule to scale out and a matching rule to scale in.
+When scaling based on a metric, you add a rule to scale out VMs and a matching rule to scale in VMs when they are no longer needed.
+
+:::caution
+
+A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends adding matching scale-in and scale-out rules to avoid extra costs that could be incurred for unused provisioned resources.
+
+:::
+
 
 ![alt text](/clusters_publiccloud_azure_add-rule.png)
 
-To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
+:::tip
 
-:::info
-
-A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends for every scale rule you add to scale out resources, a matching rule should be added to scale in when the resources are no longer needed. This best practice avoids extra costs that could be incurred for unused provisioned resources.
+The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
 
 :::
+
+To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
+
 
 
 ## Resources
