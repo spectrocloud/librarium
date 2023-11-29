@@ -10,7 +10,7 @@ tags: ["user-management", "oidc-sso", "Keycloak"]
 ---
 
 
-Keycloak is an open-source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication and authorization processes in modern applications and services. It provides a wide range of features including Single Sign-On (SSO), two-factor authentication, and social login capabilities. Keycloak is designed to manage users, credentials, roles, and groups efficiently, enabling developers to secure their applications and services with minimal additional coding. The solution supports various industry-standard protocols like OpenID Connect, OAuth 2.0, and SAML 2.0, facilitating integration with a multitude of platforms and services.
+Keycloak is an open-source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication and authorization processes in modern applications and services. It provides a wide range of features including Single Sign-On (SSO), two-factor authentication, and social login capabilities. Keycloak is designed to manage users, credentials, roles, and groups efficiently, enabling developers to secure their applications and services with minimal additional coding. Keycloak supports various industry-standard protocols like OpenID Connect, OAuth 2.0, and SAML 2.0, facilitating integration with a multitude of platforms and services.
 
 
 You can integrate Keycloak with Palette to enable SSO for your users. This guide will walk you through the steps to set up Keycloak as an OIDC provider for Palette.
@@ -21,9 +21,9 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
 1. Access to Palette as a Tenant Admin.
 
-2. The Keycloak service must be exposed on an external IP address, preferably with DNS name. Refer to the [Configuring Keycloak for production](https://www.keycloak.org/server/configuration-production) guide for more information.
+2. The Keycloak service must be exposed on an external IP address, preferably with a domain name. Refer to the [Configuring Keycloak for production](https://www.keycloak.org/server/configuration-production) guide for more information.
 
-3. Deploy a Kubernetes cluster with load balancer resources available. You will also require a set of open IP addresses for the Keycloak service.
+3. Deploy a Kubernetes cluster with load balancer resources available. You will also need a set of open IP addresses for the Keycloak service.
 
   :::tip
 
@@ -31,28 +31,28 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
   :::
 
-4. `kubectl` CLI installed and configured to access your Kubernetes cluster.
+4. Kubectl installed and configured to access your Kubernetes cluster.
 
 ## Setup
 
-1. Ensure you can access your Kubernetes cluster using the `kubectl` CLI. Refer to the [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on how to access your cluster with the `kubectl` CLI.
+1. Ensure you can access your Kubernetes cluster using the kubectl CLI. Refer to the [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on how to access your cluster with the `kubectl` CLI.
 
 
 
-2. Install Keycloak on your Kubernetes cluster using the default configuration. This will create a Keycloak deployment and a se rvice with a LoadBalancer type. The service will be exposed on an external IP address.
+2. Install Keycloak on your Kubernetes cluster using the default configurations. This will create a Keycloak deployment and a service of the LoadBalancer type. The service will be exposed on an external IP address.
 
    ```bash
    kubectl create --filename https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes/keycloak.yaml
    ```
 
-   :::note
+   :::info
 
-   You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster.
+   You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster. If you choose to do so, replace the GitHub file link in the original command with a file path to your YAML file. 
 
    :::
 
 
-3. The install will take a couple of minutes. Use the following command to retrieve the external IP address of the Keycloak service.
+3. The installation process takes a couple of minutes. After installation completes, use the following command to retrieve the external IP address of the Keycloak service.
 
   ```bash
   kubectl describe service keycloak  | grep "LoadBalancer Ingress" | awk '{print $3}' && \
@@ -64,7 +64,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
   ```
 
 
-4. Next, download the Ingress YAML definition provided by Keycloak to create an Ingress resource in your cluster. The command below will also replace the `KEYCLOAK_HOST` placeholder with the external IP address of the Keycloak service.
+4. Next, download the Ingress YAML definition provided by Keycloak to create an Ingress resource in your cluster. The command below also automatically replaces the `KEYCLOAK_HOST` placeholder with the external IP address of the Keycloak service.
 
   ```bash
   wget --quiet --output-document - https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes/keycloak-ingress.yaml | sed "s/KEYCLOAK_HOST/$IP/" | kubectl create -f -
@@ -74,23 +74,23 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
   ingress.networking.k8s.io/keycloak created
   ```
 
-  :::note
+  :::info
 
-  If `wget` and `sed` are not available, download the file and manually edit the file replacing KEYCLOAK_HOST with the external IP address of the Keycloak service.
+  If `wget` and `sed` are not available, download the file and manually edit the file to replace `KEYCLOAK_HOST` with the external IP address of the Keycloak service.
 
   :::
 
-  Upon successful installation, the following services will be available in your cluster. You can review the exposed services in the cluster details page.
+  After the ingress resource is created, the following services will be available in your cluster. You can review the exposed services in the cluster details page.
 
   ![alt_text](/keycloak/user-management_saml-sso_keycloak-01-keycloak-service.png "Keycloak Service")
 
-5. Create a DNS CNAME for the URL exposed by load balancer. For example, the CNAME `keycloak.dmitry.sa.spectrodemos.com` points to the following URL exposed by the load balancer `aacf4014d5cd34825803567201217410-1398304919.us-east-1.elb.amazonaws.com`. 
+5. Create a DNS CNAME record for the URL exposed by load balancer. For example, the CNAME `keycloak.dmitry.sa.spectrodemos.com` points to the following URL exposed by the load balancer `aacf4014d5cd34825803567201217410-1398304919.us-east-1.elb.amazonaws.com`. 
 
-6. Login to Keycloak with by using the domain name you created in the previous step, or you can use the exposed load balancer URL. The Keycloak admin console is available on port `8080/admin`. For example, `http://keycloak.dmitry.sa.spectrodemos.com:8080/admin`. Use the default credentials `admin:admin` to login to the admin console.
+6. Log in to Keycloak with by using the domain name you created in the previous step, or you can use the exposed load balancer URL. The Keycloak admin console is available on port `8080/admin`. For example, `http://keycloak.dmitry.sa.spectrodemos.com:8080/admin`. Use the default credentials `admin:admin` to log into the admin console.
 
   :::caution
 
-  We recommend that you change the default admin password after logging in to the admin console.
+  We recommend that you change the default credentials after logging in to the admin console.
 
   :::
 
@@ -98,7 +98,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
   ![Keycloak Admin console](/keycloak//user-management_palette-rback_keycloak_login.png)
 
 
-7.  Next, login to [Palette](https://console.spectrocloud.com), and navigate to the left **Main Menu** and select **Tenant Settings**. Next, select **SSO** from the **Tenant Menu** to access the SSO configuration page. Click on the **OIDC** tab to configure OIDC for Palette. Copy the values in the **Callback URL** and **Logout URL** fields. You will need these values to configure Keycloak.
+7.  Next, log in to [Palette](https://console.spectrocloud.com), and navigate to the left **Main Menu** and select **Tenant Settings**. Next, select **SSO** from the **Tenant Menu** to access the SSO configuration page. Click on the **OIDC** tab to configure OIDC for Palette. Copy the values in the **Callback URL** and **Logout URL** fields. You will need these values to configure Keycloak.
 
   ![alt_text](/keycloak/user-management_saml-sso_keycloak-02-callback-url.png "Callback URL")
 
@@ -114,7 +114,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
   ![alt_text](/keycloak/user-management_saml-sso_keycloak-05-client-authentication.png "Client Authentication")
 
-11. Fill out the following fields. Refer to the table below for more information.
+11. Fill out the following fields with the instructions provided in the table.
 
   | **Field** | **Description** |
   | --- | --- |
@@ -131,7 +131,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
   ![alt_text](/keycloak/user-management_saml-sso_keycloak-07-keycloak-credentials.png "Keycloak Credentials")
 
 
-14. Switch back to Palette and paste client secret in the **Client Secret** field. Fill out the following fields. Refer to the table below for more information.
+14. Switch back to Palette and paste client secret in the **Client Secret** field. Fill out the following fields with the instructions provided in the table below.
 
   | **Field** | **Description** |
   | --- | --- |
