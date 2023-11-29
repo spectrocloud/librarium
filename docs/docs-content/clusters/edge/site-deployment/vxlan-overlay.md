@@ -9,7 +9,13 @@ tags: ["edge"]
 
 Edge clusters are often deployed in locations where network environments are not managed by teams that maintain the edge deployments. However, a Kubernetes cluster, specifically several control plane components, require stable IP addresses. In the case of an extended network outage, it's possible that your cluster components would lose their original IP addresses when the cluster expects them to remain stable, causing the cluster to experience degraded performance or become non-operational.
 
-Palette allows you to create a virtual overlay network on top of the physical network, and the virtual IP addresses of all cluster components are managed by Palette. If the cluster experiences an outage with the overlay network enabled, components inside the cluster retain their virtual IP addresses in the overlay network, even if their IP addresses in the underlying physical network has changed, protecting the cluster from an outage. 
+Palette allows you to create a virtual overlay network on top of the physical network, and the virtual IP addresses of all cluster components are managed by Palette. Inside the cluster, the different components use the virtual IP addresses to communicate with each other instead of the underlying IP addresses that could change due to external factors. If the cluster experiences an outage with the overlay network enabled, components inside the cluster retain their virtual IP addresses in the overlay network, even if their IP addresses in the underlying physical network has changed, protecting the cluster from an outage. 
+
+<br />
+
+![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.png)
+
+<br />
 
 ## When Should You Consider Enabling Overlay Network?
 If your Edge clusters are deployed in network environments that fit the following descriptions, you should consider enabling an overlay network for your cluster:
