@@ -620,23 +620,23 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 
 - You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The following t-shirt sizes are suggested for a VMware Private Cloud Gateway PCG. The PCG size impacts the maximum number of simultaneous cluster deployments. 
 
-  Use the following tables to determine the appropriate PCG size for your environment.
+  Use the following tables to determine the appropriate PCG node resource size for your environment.
 
   #### Single-Node Cluster
 
-  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum possible concurrent cluster deployments** |
+  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
   |------|-------|-----|--------|---------|--------------------------------|
-  | S    | 1     | 4   | 4      | 60      | 1-3                            |
-  | M    | 1     | 8   | 8      | 100     | 4-6                            |
-  | L    | 1     | 16  | 16     | 120     | 7-10                           |
+  | S    | 1     | 4   | 4 GB     | 60 GB     | 1-3                            |
+  | M    | 1     | 8   | 8 GB     | 100 GB     | 4-6                            |
+  | L    | 1     | 16  | 16 GB    | 120  GB    | 7-10                           |
 
   #### High-Availability (HA) Cluster
 
-  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum possible concurrent cluster deployments** |
+  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
   |------|-------|-----|--------|---------|--------------------------------|
-  | S    | 3     | 4   | 4      | 60      | 4-6                             |
-  | M    | 3     | 8   | 8      | 100     | 7-10                            |
-  | L    | 3     | 16  | 16     | 120     | 10-15                           |
+  | S    | 3     | 4   | 4 GB     | 60 GB      | 4-6                             |
+  | M    | 3     | 8   | 8 GB    | 100 GB    | 7-10                            |
+  | L    | 3     | 16  | 16 GB   | 120 GB    | 10-15                           |
 
 - Sufficient available IP addresses within the configured vSphere subnets.
 
