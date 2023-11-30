@@ -7,7 +7,8 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-Palette supports deploying and managing Kubernetes clusters in an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that Palette manages using Azure Virtual Machines.
+
+Palette supports integration with Azure cloud accounts. This section explains how to create an Azure cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
 
 ## Prerequisites
 
@@ -18,15 +19,13 @@ Palette supports deploying and managing Kubernetes clusters in an Azure account.
 * An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 
-## Enable Azure Cloud Account Registration
+## Add Azure Cloud Account
 
-To register an Azure cloud account in the Palette console
-
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 2. From the left **Main Menu**, select **Tenant Settings**. 
 
-3. Select **Cloud Accounts** in the Tenant Settings menu 
+3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**. 
 
 4. Locate **Azure**, and click **+ Add Azure Account**.
 
@@ -39,15 +38,15 @@ To register an Azure cloud account in the Palette console
 |**Client ID**| Unique client ID from Azure Management Portal.|
 |**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). After providing the client secret, click the **Validate** button. If the client secret you provided is correct, a *Credentials validated* success message with a green check is displayed. |
 |**Tenant Name**| An optional tenant name.|
-|**Disable Properties**| This option disables importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Properties](/clusters/public-cloud/azure/azure-cloud#disableproperties) section. |
+|**Disable Properties**| This option disables Palette importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Palette Network Calls to the Account](#disable-palette-network-calls-to-the-account) section below. |
 |**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|
 
 
-### Disable Properties  
+### Disable Palette Network Calls to Azure Account  
 
-When you provide your cloud account information, Azure networking details will be sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
+When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
 
-When you disable network calls from Palette, you need to create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
+Disabling network calls requires that you create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
 
 :::info
 
@@ -58,9 +57,9 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
 1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
 
-2. Next, assign yourself the [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in step 3. For guidance, refer to [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
+2. Next, assign yourself the [User Access Administrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in step 3. For guidance, refer to [Assign a Role to the Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
-3. With UserAccessAdministrator privilege, you can now assign yourself the minimum required [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), which grants full access to manage all resources.
+3. With User Access Administrator privilege, you can now assign yourself the minimum required [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role, which grants full access to manage all resources.
 
   To learn about Azure roles, review [Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
@@ -68,12 +67,14 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
   :::caution
 
-  Be sure to safely store the client secret, as it will not be available later as plain text.
+  Safely store your client secret, as it will not be available later as plain text.
 
   :::
 
 
 ## Validate
+
+You can verify your account is added.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -86,7 +87,7 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
 ## Manage Azure Accounts
 
-You can change the integration settings in your registered Azure account or remove the account.
+You can edit Azure account information in Palette or remove the account from Palette.  
 
 ### Edit an Azure Account
 
@@ -98,22 +99,52 @@ Use the following steps to edit Azure account information in Palette.
 
 3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
-4. Click the **three-dot Menu** in the row of the cloud account you want to edit and select **Edit**.
+4. From the **three-dot Menu** in the row of the cloud account you want to edit, select **Edit**.
 
 5. Make the required changes and click **Confirm**.
+
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Tenant Settings**. 
+
+3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
+
+4. Locate **Azure**, and click the **three-dot Menu** in the row of the cloud account you edited, and select **Edit**.
+
+5. Review the changed information and make any other required changes.
+
 
 
 ### Remove an Azure Account
 
 Use the following steps to delete an Azure cloud account from Palette.
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Tenant Settings**.
 
 3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
 4. Click the **three-dot Menu** in the row of the cloud account you want to delete and select **Delete**.
+
+The added cloud account is listed under **Azure** with all other available Azure cloud accounts. 
+
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Tenant Settings**. 
+
+3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
+
+4. Locate **Azure** and verify the account is no longer listed.
+
+
+
 
 
 

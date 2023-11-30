@@ -74,7 +74,7 @@ Use the following steps to deploy an Azure cluster.
 
 9. Click **Next** to continue.
 
-10. Provide the cluster configuration information listed in the following table.  
+10. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet, ensure you also provide information listed in the Static Placement Settings table. 
 
   If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md/#azure-storage).
 
@@ -201,7 +201,7 @@ To use Custom Autoscale capability, the following applies regarding scale sets:
 
 - Custom Autoscale requires the creation of a virtual machine scale set.
 
-- You must create a VM and a virtual machine scale set within the same resource group you specified when you created the Azure cluster in Palette. To learn how to create a scale set, review [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) Microsoft guide.
+- Create the scale set within the same resource group you specified when you created the Azure cluster in Palette. To learn how to create a scale set, review [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) Microsoft guide.
 
 - When creating a scale set, ensure you specify the same Availability Zone (AZ) in the region you specified during cluster creation in Palette.  
 
