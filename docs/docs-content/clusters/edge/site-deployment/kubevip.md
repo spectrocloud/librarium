@@ -84,7 +84,7 @@ However, Palette has configured values for the following parameters and they can
 
 9. Click **Next** and finish the rest of the configurations. For more information, refer to [Create Cluster Definition](./site-installation/cluster-deployment.md).
 
-When the cluster finished deploying, kube-vip adds an annotation named `kube-vip.io/requestedIP` to the Service resource to document which IP address it has received from the external network. Whenever kube-vip restarts, it will attempt to re-request the same IP address for that service. You can remove the annotation to make kube-vip request a fresh address with the following command. Replace `SERVICE_NAME` with the name of your service, and make sure to include the minus symbol`-` symbol at the end of the annotation. 
+When the cluster finishes deploying, kube-vip adds an annotation named `kube-vip.io/requestedIP` to the Service resource to document which IP address it has received from the external network. Whenever kube-vip restarts, it will attempt to re-request the same IP address for that service. You can remove the annotation to make kube-vip request a fresh address with the following command. Replace `SERVICE_NAME` with the name of your service, and make sure to include the minus symbol`-` symbol at the end of the annotation. 
 
 ```shell
 kubectl annotate service SERVICE_NAME kube-vip.io/requestedIP- 
