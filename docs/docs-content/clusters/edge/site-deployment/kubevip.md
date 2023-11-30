@@ -55,7 +55,7 @@ However, Palette has configured values for the following parameters and they can
       vip_servicesinterface: "INTERFACE_NAME"
    ```
 
-   These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services. The following table provides you guide on how to choose the values for each parameter:   
+   These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services. The following table provides you guidance on how to choose the values for each parameter:   
  
   | **Parameter** | **Description** |
   |-----------|-------------|
