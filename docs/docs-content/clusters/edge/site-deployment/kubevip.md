@@ -13,21 +13,21 @@ Kube-vip supports DHCP environments and can request additional IP address from t
 
 ## Prerequisites
 
-- At least one Edge device with x86_64/AMD64 processor architecture registered in your Palette account 
+- At least one Edge device with x86_64 or AMD64 processor architecture registered in your Palette account 
 
 ## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu** click **Clusters > Add a New Cluster**.
+2. From the left **Main Menu** click **Clusters ** and select **Add a New Cluster**.
 
 4. Choose **Edge Native** for the cluster type and click **Start Edge Native Configuration**.
 
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
-6. Select the cluster profile that you plan to use to deploy your cluster and publish services with and click **Next**.  
+6. Select the cluster profile that you plan to use to deploy your cluster with. Click **Next**.  
 
-7. In the **Parameters** step, click on the Kubernetes layer of your profile. In the YAML file for the Kubernetes layer of your cluster profile, add the following parameters:
+7. In the **Parameters** step, click on the Kubernetes layer of your profile. In the YAML file for the Kubernetes layer of your cluster profile, add the following parameters.
    ```yaml
    cluster:
     kubevipArgs:
@@ -38,13 +38,13 @@ Kube-vip supports DHCP environments and can request additional IP address from t
 
    These are kube-vip environment variables that enable kube-vip to provide load balancing services for Kubernetes services and specify which network interface will be used by kube-vip for handling traffic to the Kubernetes API server and Kubernetes services. The following table provides you guide on how to choose the values for each parameter:   
  
-  | Parameter | Description |
+  | **Parameter** | **Description** |
   |-----------|-------------|
   | `vip_interface` | Specifies the Network Interface Controller (NIC) that kube-vip will use for handling traffic to the Kubernetes API. If you do not specify `vip_serviceinterface`, kube-vip will also use this interface for handling traffic to LoadBalancer-type services. |
   | `svc_enable` | Enables kube-vip to handle traffic for services of type LoadBalancer. |
   | `vip_serviceinterface` | Specifies the NIC that kube-vip will use for handling traffic to LoadBalancer-type services. If your cluster has network overlay enabled, or if your host has multiple NICs and you want to publish services on a different NIC than the one used by Kubernetes, you should specify the name of the NIC as the value of this parameter. If this parameter is not specified and you have set `svc_enable` to `true`, kube-vip will use the NIC you specified in `vip_interface` to handle traffic to LoadBalancer-type services.  |
 
-8. Next, in layer of your cluster profile that has the service you want to expose, add two parameters `loadBalancerIP: 0.0.0.0` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec:
+8. Next, in layer of your cluster profile that has the service you want to expose, add two parameters `loadBalancerIP: 0.0.0.0` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec. The following example manifest displays the usage of these two parameters.
    ```
     apiVersion: apps/v1
     kind: Deployment
@@ -77,7 +77,7 @@ When the cluster finished deploying, kube-vip adds an annotation named `kube-vip
 
 ## Validation
 
-To validate that kube-vip has been set up correctly and is performing load balancing services for your cluster:
+Use the following steps to validate that kube-vip has been set up correctly and is performing load balancing services for your cluster.
 
 1. Access the cluster via kubectl CLI. For more information, refer to [Access Cluster with CLI](../../cluster-management/palette-webctl.md). 
 2. Issue the command `kubectl get service SERVICE_NAME` and replace `SERVICE_NAME` with the name of the service you configure with kube-vip. The output of the command displays the external IP address that kube-vip has received from the external network or the IP address you specified in the `loadBalancerIP` parameter.
