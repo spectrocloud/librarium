@@ -191,17 +191,17 @@ You can validate your cluster is up and in **Running** state.
 4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
-## Enable Autoscale for Azure IaaS Cluster
+## Enable Autoscale for Cluster
 
 Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
 :::caution
 
-To use Custom Autoscale capability, the following applies regarding scale sets: 
+To use Custom Autoscale capability, the following details apply with regard to scale sets: 
 
-- Custom Autoscale requires the creation of a virtual machine scale set.
+- You must create a virtual machine scale set. To learn how, review Microsoft's [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) guide.
 
-- Create the scale set within the same resource group you specified when you created the Azure cluster in Palette. To learn how to create a scale set, review [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) Microsoft guide.
+- Ensure you create the scale set within the same resource group you specified during cluster creation in Palette. 
 
 - When creating a scale set, ensure you specify the same Availability Zone (AZ) in the region you specified during cluster creation in Palette.  
 
@@ -249,4 +249,6 @@ To learn how you can scale resources based on metrics you define, refer to Micro
 - [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc)
 
 - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
+
+- [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal)
  
