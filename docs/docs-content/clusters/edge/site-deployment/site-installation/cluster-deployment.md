@@ -62,7 +62,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
   If certain network information is already available, the corresponding fields will be pre-populated.   
 
-11. (Optional) When you assign an Edge host to a node pool, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster if your Edge host more than one NIC. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host.
+11. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host.
 
   If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS server to configure it.   
 
@@ -146,7 +146,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 
   If certain network information is already available, the corresponding fields will be pre-populated. 
 
-9. (Optional) When you assign an Edge host to a node pool, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster if your Edge host more than one NIC. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host. 
+9. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host. 
 
   If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS server to configure it.   
 
