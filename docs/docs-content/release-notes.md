@@ -18,7 +18,7 @@ This release contains minor bug fixes.
 ### Bug Fixes
 
 
-- An issue with downloading the backup manifest has been updated to allow the backup manifest to be downloaded by the host cluster successfully every 1-minute interval.
+- An issue with downloading the backup manifest has been resolved. Palette now allows the backup manifest to be downloaded by the host cluster at 1-minute intervals.
 
 - The issue with virtual cluster deployments failing when the cluster group's hosts used a proxy has been resolved.
 
@@ -34,7 +34,7 @@ This release contains minor bug fixes.
 
 - The issue with AWS clusters using IAM Roles for Service Accounts (IRSA) failing to deploy has been resolved.
 
-- The issue with new or repaved vSphere cluster nodes are not honoring provided Network Time Protocol (NTP) server settings have been resolved.
+- The issue with new or repaved vSphere cluster nodes not honoring provided Network Time Protocol (NTP) server settings have been resolved.
 
 - Edge hosts can now be upgraded from Palette version 4.1.2 to 4.1.4 without experiencing node repaves and unexpected reboots. 
 
