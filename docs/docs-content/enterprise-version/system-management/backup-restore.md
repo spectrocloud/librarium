@@ -17,6 +17,9 @@ You can enable backup and restore for your self-hosted Palette cluster to ensure
 * Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3. Refer to the [S3](#s3) section for more information.
 
 
+* Backup and Restore is not supported currently for self-hosted installations using helm chart. 
+
+
 ## FTP
 
 Use the following instructions to configure FTP backup for your enterprise cluster.
