@@ -55,24 +55,27 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
   | **Field** | **Description** |
   |-------|-------------|
-  | IP Address | The static IP address assigned to your Edge host. This should be unique within your network. |
+  | IP address | The static IP address assigned to your Edge host. This should be unique within your network. |
   | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks.|
   | Subnet mask | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network. |
   | DNS server | The IP address of the DNS server your cluster uses for domain resolution. | 
 
-  If certain network information is already available, the corresponding fields will be pre-populated. 
-  
+  If certain network information is already available, the corresponding fields will be pre-populated.   
+
+11. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host.
+
+  If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS server to configure it.   
+
   :::caution
 
-    After you create the cluster, you will not be able to change the IP address of your existing Edge hosts unless you remove and re-add them back to the cluster. 
+  After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless you remove and re-add them back to the cluster. 
     
   :::
 
+12.  The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
 
-11.  The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
 
-
-12. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
+13. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
 
 After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the *Events* tab to review detailed logs.
 
@@ -130,7 +133,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 6. Select the node pool to add the Edge host and click the **Edit** button.
 
 
-7. Navigate to the **Edge Hosts drop-down Menu** and select your Edge host.
+7. Navigate to the **Edge Hosts** drop-down Menu and select your Edge host.
 
 8. (Optional) When you select your Edge host, you can optionally specify a static IP address for the Edge host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
     
@@ -142,14 +145,18 @@ To learn more, check out the resource from the etcd documentation titled [Why an
   | DNS server | The IP address of the DNS server your cluster uses for domain resolution. | 
 
   If certain network information is already available, the corresponding fields will be pre-populated. 
-  
+
+9. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host. 
+
+  If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS server to configure it.   
+
   :::caution
 
-    After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add them back to the cluster. 
+  After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add them back to the cluster. 
 
   :::
 
-9. Confirm your changes.
+10. Confirm your changes.
 
 The Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The cluster overview page displays a summary of the progress. Use the **Events** tab to review detailed logs.
 
