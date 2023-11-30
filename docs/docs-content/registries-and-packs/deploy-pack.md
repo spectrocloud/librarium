@@ -259,7 +259,7 @@ You can set up a registry server using either the Spectro registry or an OCI-com
 
 The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
 
-The following sections will guide you through starting the registry server, authentication, pushing your custom add-on pack, and, finally, configuring the registry server in Palette. Select the tab below that matches the registry type you want to use.
+The following sections will guide you through starting the registry server, authenticating, pushing your custom add-on pack, and, finally, configuring the registry server in Palette. Select the tab below corresponding to the registry type you want to use.
 
 ### Start the Registry Server
 
@@ -383,7 +383,7 @@ Once the `/health` endpoint of the registry server displays an `UP` status, proc
 docker exec -it tutorialContainer bash
 ```
 
-Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL with your Ngrok URL. The `--insecure` flag indicates that the connection to the Spectro registry should be made without verifying the TLS certificate. The command below uses these credentials to log in to the registry server: `{username: admin, password: admin}`.
+Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL with your Ngrok URL. The `--insecure` flag indicates that the connection to the Spectro registry will be made without verifying the TLS certificate. The command below uses these credentials to log in to the registry server: `{username: admin, password: admin}`.
 
 
 ```bash
@@ -1122,7 +1122,7 @@ The following steps will guide you in cleaning up your environment. Follow the P
 
 ####  Delete the Cluster and Cluster Profile
 
-Navigate to the **Cluster** section in Palette's left **Main Menu** and access the details page for the **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to proceed with the deletion. 
+Navigate to the **Cluster** section in Palette's left **Main Menu** and access the details page for the **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete Cluster** option. Palette will prompt you to enter the cluster name and confirm the deletion. 
 
 
 ![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
@@ -1138,7 +1138,7 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 :::
 <br />
 
-After deleting the cluster, proceed to delete the profile. In the left **Main Menu**, click on **Profiles** and select the profile you want to delete. Choose the **Delete** option in the **three-dot Menu**.
+After deleting the cluster, proceed to delete the cluster profile. In the left **Main Menu**, click on **Profiles** and select the profile you want to delete. Next, click on the **Delete** option in the **three-dot Menu**.
 
 
 ![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.png)
