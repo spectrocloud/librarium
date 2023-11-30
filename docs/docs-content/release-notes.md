@@ -11,6 +11,32 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## November 30, 2023 - Release 4.1.11
+
+This release contains minor bug fixes.
+
+### Bug Fixes
+
+
+- An issue with downloading the backup manifest has been updated to allow the backup manifest to be downloaded by the host cluster successfully every 1-minute interval.
+
+- The issue with virtual cluster deployments failing when the cluster group's hosts used a proxy has been resolved.
+
+- An issue with EKS cluster creation failing when VPC subnets with the AWS setting **Auto Assign Public IP** set to `false` has been resolved.
+
+- The issue that caused Private Cloud Gateway (PCG) to receive the repave warning message when no repave was required has been resolved.
+
+- A bug that was introduced in Palette 4.1.7 related to image swamp containers failing to start has been resolved.
+
+- AWS clusters using Cilium CNI experiencing issues when applying a taint to a node has been resolved.
+
+- An issue that caused clusters to cycle between the status **Healthy** and **Unhealthy** every 30 minutes has been resolved.
+
+- The issue with AWS clusters using IAM Roles for Service Accounts (IRSA) failing to deploy has been resolved.
+
+- The issue with new or repaved vSphere cluster nodes are not honoring provided Network Time Protocol (NTP) server settings have been resolved.
+
+
 ## November 7, 2023 - Release 4.1.9
 
 This release contains the following minor bug fixes related to protected Helm Chart and Open Container Initiative (OCI) registries.
