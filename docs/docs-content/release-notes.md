@@ -11,7 +11,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## November 30, 2023 - Release 4.1.11
+## November 30, 2023 - Release 4.1.12
 
 This release contains minor bug fixes.
 
@@ -36,6 +36,7 @@ This release contains minor bug fixes.
 
 - The issue with new or repaved vSphere cluster nodes are not honoring provided Network Time Protocol (NTP) server settings have been resolved.
 
+- Edge hosts can now be upgraded from Palette version 4.1.2 to 4.1.4 without experiencing node repaves and unexpected reboots. 
 
 ## November 7, 2023 - Release 4.1.9
 
