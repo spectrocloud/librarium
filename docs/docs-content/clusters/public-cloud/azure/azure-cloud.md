@@ -87,9 +87,11 @@ You can verify your account is added.
 
 ## Manage Azure Accounts
 
-You can edit Azure account information in Palette or remove the account from Palette.  
+Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the account from Palette.
 
-### Edit an Azure Account
+<!-- You can edit Azure account information in Palette or remove the account from Palette using the **three-dot Menu** in the row of the cloud account by selecting **Edit** or **Delete**.   -->
+
+<!-- ### Edit an Azure Account
 
 Use the following steps to edit Azure account information in Palette.
 
@@ -141,7 +143,7 @@ The added cloud account is listed under **Azure** with all other available Azure
 
 3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
-4. Locate **Azure** and verify the account is no longer listed.
+4. Locate **Azure** and verify the account is no longer listed. -->
 
 
 
