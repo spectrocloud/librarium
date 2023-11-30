@@ -106,6 +106,6 @@ Use the following steps to validate that kube-vip has been set up correctly and 
   http-app-svc   LoadBalancer   10.100.200.10   10.10.1.100   80:30720/TCP   5m
   ```
 
-  In this example, the external IP `10.10.1.100` is the IP address that kube-vip received from the DHCP server or the IP address you specified in the `loadBalancerIP` parameter. 
+  In the above example, the external IP `10.10.1.100` is the IP address that kube-vip received from the DHCP server or the IP address you specified in the `loadBalancerIP` parameter. 
 
 
