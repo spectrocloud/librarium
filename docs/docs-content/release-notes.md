@@ -35,6 +35,9 @@ tags: ["release-notes"]
 - Enhanced cluster repave control and mitigation. In the Palette 4.1 release, repave notification warnings become available through the User Console (UI). In this release, cluster administrators, project administrators, and tenant administrators must acknowledge the repave notification and decide whether to proceed with the action. This feature helps prevent accidental repaves and provides a way to mitigate repaves by allowing administrators to cancel the repave action.
 
 
+- Palette CLI now supports intergation with [Validator](https://github.com/spectrocloud-labs/validator), an open-source framework that you can use to validate your environment. Validator performs Day 0-2 validation and configuration drift detection in a composable manner across a wide variety of systems. Use the `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX. Refer to the [Validator](./palette-cli/commands/validator.md) CLI reference for more information.
+
+
 #### Improvements
 
 
