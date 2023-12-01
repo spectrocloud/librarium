@@ -11,7 +11,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## November 30, 2023 - Release 4.1.12
+## December 1, 2023 - Release 4.1.12
 
 This release contains minor bug fixes.
 
