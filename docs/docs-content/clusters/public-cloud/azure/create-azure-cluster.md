@@ -209,7 +209,7 @@ To use Custom Autoscale capability, the following details apply with regard to s
 
 Once you create your scale set, you can find it by navigating to the **Azure services** home page, selecting **Virtual machine scale sets**, and using the search field. 
 
-Basic autoscaling options are available for host-based scaling when you create your scale set. However, to create custom autoscale rules based on metrics or a schedule, use **Custom autoscale**. 
+Basic autoscaling options are available for host-based scaling when you create your scale set. However, to create custom autoscale rules based on metrics or a schedule, use **Custom autoscale**. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
 
 ![Screenshot with an arrow that points to the Custom Autoscale option in Azure portal.](/clusters_publiccloud_azure_custom-autoscale.png)
 
@@ -229,9 +229,6 @@ A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autosc
 The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
 
 :::
-
-To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
-
 
 
 ## Resources
