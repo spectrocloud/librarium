@@ -67,7 +67,7 @@ There could be AWS expenses associated with this tutorial. After completing the 
 
 ## Set Up the Tutorial Environment
 
-In this tutorial, you will work in a Docker container pre-configured with the necessary tools. Alternatively, you can choose to practice the tutorial in any `linux/amd64` or `x86_64` environment by installing the [required tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. To initialize the tutorial container, follow the steps described below. 
+In this tutorial, you will work in a Docker container pre-configured with the necessary tools. Alternatively, you can choose to follow along with the tutorial in any `linux/amd64` or `x86_64` environment by installing the [required tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. To initialize the tutorial container, follow the steps described below. 
 
 Start Docker Desktop on your local machine and ensure that the Docker daemon is available by issuing a command to list the currently active containers.
 
@@ -234,7 +234,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
   The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest during the creation of the cluster profile. 
 
 
-![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png )
+![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png)
 
 
 * **manifests** -  This directory contains the manifest files for your Kubernetes application. This tutorial has only one manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe` element with the same name as the YAML file. 
@@ -269,7 +269,7 @@ The following sections will guide you through starting the registry server, auth
 
 <br />
 
-Start the registry server by issuing the following command from the tutorial container bash session. 
+Start the registry server by issuing the following command from the tutorial container bash session initialized in the [Set Up the Tutorial Environment](#set-up-the-tutorial-environment) section.
 
 ```bash
 registry serve /etc/spectro/config.yml > /var/log/registry.log 2>&1 &
@@ -301,7 +301,7 @@ Check if the registry server is accessible from outside the tutorial container b
 
 The initial step to creating the pack's repository in the ECR registry is to export your AWS credentials as environment variables for authentication. 
 
-In the tutorial container bash session, export the following variables. This tutorial utilizes **us-east-1** as the default region.
+In the tutorial container bash session initialized in the [Set Up the Tutorial Environment](#set-up-the-tutorial-environment) section, export the following variables. This tutorial utilizes **us-east-1** as the default region.
 
 ```bash
 export AWS_ACCESS_KEY_ID=<Your_Access_Key_ID>
@@ -524,21 +524,21 @@ The snippet below displays the output of the `aws ecr describe-images` command, 
 
 ```plainText {5-8} hideClipboard
 {
-"imageDetails": [
-{
-	"registryId": "<YourRegistryId>
-	"repositoryName": "spectro-oci-registry/spectro-packs/archive/hellouniverse",
-	"imageDigest": "sha256:<YourImageSha>",
-	"imageTags": [
-		"1.0.0"
-	],
-	"imageSizeInBytes": 19059,
-	"imagePushedAt": "2023-11-06T11:19:48+00:00",
-	"imageManifestMediaType": "application/vnd.oci.image.manifest.v1+json",
-	"artifactMediaType": "application/vnd.unknown.config.v1+json",
-	"lastRecordedPullTime": "2023-11-17T00:00:48.649000+00:00"
-		}
-	]
+    "imageDetails": [
+        {
+            "registryId": "<YourRegistryId>
+            "repositoryName": "spectro-oci-registry/spectro-packs/archive/hellouniverse",
+            "imageDigest": "sha256:<YourImageSha>",
+            "imageTags": [
+                "1.0.0"
+	        ],
+            "imageSizeInBytes": 19059,
+            "imagePushedAt": "2023-11-06T11:19:48+00:00",
+            "imageManifestMediaType": "application/vnd.oci.image.manifest.v1+json",
+            "artifactMediaType": "application/vnd.unknown.config.v1+json",
+            "lastRecordedPullTime": "2023-11-17T00:00:48.649000+00:00"
+		    }
+	  ]
 }
 ```
 
