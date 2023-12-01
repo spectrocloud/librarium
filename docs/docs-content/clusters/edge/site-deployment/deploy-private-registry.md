@@ -7,7 +7,7 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a private registry during deployment. You can configure your cluster to pull images from a private registry both during cluster creation and cluster repave. To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed to authenticate with the registry in the cluster profile. 
+Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a private registry during deployment. You can configure your cluster to pull images from a private registry for both cluster creation and cluster repave. To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed to authenticate with the registry in the cluster profile. 
 
 
 ## Limitations
