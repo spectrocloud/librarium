@@ -191,7 +191,7 @@ You can validate your cluster is up and in **Running** state.
 4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
 
-## Enable Autoscale for a Cluster
+## Configure Autoscaling in Azure Portal 
 
 Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
