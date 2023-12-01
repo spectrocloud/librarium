@@ -14,7 +14,9 @@ Palette Edge supports authentication with private image registries, which allows
 
 - A cluster cannot pull images from more than one private registry.
 
-- Once you have configured a cluster to use one certificate during authentication with the private registry, you will not be able to change that certificate. 
+- If your private registry has TLS enabled, you can only configure a new cluster to use a TLS certificate with a private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your existing registry. 
+
+- Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as AWS ECR and Google Container Registry are not supported. 
 
 ## Prerequisites
 
@@ -48,7 +50,7 @@ Palette Edge supports authentication with private image registries, which allows
     system.uri: example.io/my-images/example-custom-os:v1.4.5
   ```
 
-6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need to authenticate with your registry:
+6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need to authenticate with your registry. The `providerCredentials.password` field will be masked when you provide it in the YAML file:
 
   ```yaml {7-16}
   pack:
@@ -84,4 +86,6 @@ Palette Edge supports authentication with private image registries, which allows
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Select the new 
+3. Select the cluster that is using the profile with the registry credentials. 
+
+4. Navigate to the **Profile** tab of the cluster to confirm that the cluster is pulling images the private registry. 
