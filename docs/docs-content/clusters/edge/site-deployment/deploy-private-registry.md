@@ -7,7 +7,7 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a private registry during deployment. You can configure your cluster to pull images from a private registry for both cluster creation and cluster repave. To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed to authenticate with the registry in the cluster profile. 
+Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a private registry during deployment. You can configure your cluster to pull images from a private registry for both cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed to authenticate with the registry in the cluster profile. 
 
 :::caution
 If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored.  For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md).
@@ -41,7 +41,7 @@ If you have specified registry credentials in the `registryCredentials` field in
 
 4. Select the OS layer of your cluster profile. If you are creating a new profile, you will get to configuring the OS layer after filling out **Basic Information** and **Cloud Type**. 
 
-5. Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
+5. Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are missing a custom OS image. The following is an example configuration using the Bring Your Own Operating System (BYOOS) pack with a custom OS image.
 
   ```yaml
   pack:
