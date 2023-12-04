@@ -9,6 +9,9 @@ tags: ["edge"]
 
 Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a private registry during deployment. You can configure your cluster to pull images from a private registry for both cluster creation and cluster repave. To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed to authenticate with the registry in the cluster profile. 
 
+:::caution
+If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored.  For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md).
+:::
 
 ## Limitations
 
@@ -18,11 +21,9 @@ Palette Edge supports authentication with private image registries, which allows
 
 - Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as AWS ECR and Google Artifact Registry are not supported. 
 
-- If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md).
-
 ## Prerequisites
 
-- At least one Edge host with x86_64 or AMD64 processor architecture. 
+- At least one Edge host with an x86_64 or AMD64 processor architecture. 
 
 - A private image registry.
 
