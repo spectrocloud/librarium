@@ -51,7 +51,7 @@ You can enable an overlay network for your cluster during cluster creation. You 
 
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
-6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](./model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
+6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
 
 7. Review your cluster profile values and make changes as needed. Click on **Next**.
 
@@ -65,7 +65,7 @@ You can enable an overlay network for your cluster during cluster creation. You 
     Neither the internal CIDR range nor the VIP address can be changed after the cluster creation. 
     :::
 
-11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](./site-installation/cluster-deployment.md). 
+11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
 
 ## Validate
 
