@@ -62,6 +62,8 @@ Exercise caution when changing system settings as the changes will be applied to
 
 ## Resources
 
+- [Account Management](./account-management/account-management.md)
+
 - [Add a Registry](add-registry.md)
 
 - [Enable non-FIPS Settings](enable-non-fips-settings/enable-non-fips-settings.md)

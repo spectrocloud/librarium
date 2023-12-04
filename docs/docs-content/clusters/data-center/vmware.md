@@ -618,14 +618,27 @@ You can use two different PCG installation methods for VMware vSphere. You can u
 
 - Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
 
-- You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
+- You can set up the PCG as a single or three-node cluster based on your requirements for high availability (HA). The following t-shirt sizes are suggested for a VMware Private Cloud Gateway PCG. The PCG size impacts the maximum number of simultaneous cluster deployments. 
 
-  - Single-node cluster: 2 vCPU, 4 GB memory, 60 GB storage.
+  Use the following tables to determine the appropriate PCG node resource size for your environment.
 
-  - High-Availability (HA) three-node cluster: 6 vCPU, 12 GB memory, 70 GB storage.
+  #### Single-Node Cluster
 
+  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
+  |------|-------|-----|--------|---------|--------------------------------|
+  | S    | 1     | 4   | 4 GB     | 60 GB     | 1-3                            |
+  | M    | 1     | 8   | 8 GB     | 100 GB     | 4-6                            |
+  | L    | 1     | 16  | 16 GB    | 120  GB    | 7-10                           |
 
-- Sufficient available IP addresses within the configured OpenStack subnets.
+  #### High-Availability (HA) Cluster
+
+  | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
+  |------|-------|-----|--------|---------|--------------------------------|
+  | S    | 3     | 4   | 4 GB     | 60 GB      | 4-6                             |
+  | M    | 3     | 8   | 8 GB    | 100 GB    | 7-10                            |
+  | L    | 3     | 16  | 16 GB   | 120 GB    | 10-15                           |
+
+- Sufficient available IP addresses within the configured vSphere subnets.
 
 
 :::info
@@ -671,8 +684,8 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
     |**Parameter**       | **Description**|
     |:-----------------------------|---------------|
-    |**Cloud Type**| Choose OpenStack.|
-    |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``openstack-pcg-1``.|
+    |**Cloud Type**| Choose VMware vSphere.|
+    |**Private Cloud Gateway Name** | Enter a custom name for the PCG. Example: ``vmware-pcg-1``.|
     |**Share PCG Cloud Account across platform Projects** |Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.|
 
 
@@ -708,20 +721,20 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
   |**Parameter**                            | **Description**|
   |-----------------------------------------|----------------|
-  | **Datacenter** | The data center to target.|
-  | **Folder**| The folder to target.|
+  | **Datacenter** | The data center to target when deploying the PCG cluster.|
+  | **Folder**| The folder to target when deploying the PCG cluster.|
   | **Fault Domains**| Specify any fault domains you would like to use.|
   | **Cluster**| The compute cluster to use for the PCG deployment.|
-  | **Network**| The network the PCG cluster will use. |
+  | **Network**| The port group the PCG cluster will be connected to. |
   | **Resource Pool** | The resource pool to target when deploying the PCG cluster.|
-  | **Storage Type**| Select the datastore and VM Storage policy to apply to the PCG cluster. |
+  | **Storage Type**| Select the datastore or VM Storage policy to apply to the PCG cluster. |
   | **NTP Servers**| Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference.|
   | **SSH Public Keys**| Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. | 
   | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. | 
 
 
 
-7. Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and the VMs are assigned IP addresses from the selected pool. With DDNS, VMs are assigned IP addresses via DNS. Review the following tables to learn more about each parameter.
+7. Specify IP Pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service (DDNS). With static placement, an IP pool is created and the PCG VMs are assigned IP addresses from the selected pool. With DDNS, PCG VMs are assigned IP addresses via DNS. Review the following tables to learn more about each parameter.
 
   <br />
 
@@ -731,7 +744,7 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
   | **IP Start range** | Enter the first address in the PCG IP pool range.|
   | **IP End range** | Enter the last address in the PCG IP pool range.|
   | **Network Prefix** | Enter the network prefix for the IP pool range. Valid values are network CIDR subnet masks from the range `0 - 32`. Example: `18`.|
-  | **Gateway IP Address** | Enter the IP address of the static IP gateway.|
+  | **Gateway IP Address** | Enter the IP address of the IP gateway.|
   | **Name servers** | Comma-separated list of DNS name server IP addresses.|
   | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.|
 
