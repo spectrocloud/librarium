@@ -21,7 +21,7 @@ Palette allows you to create a virtual overlay network on top of the physical ne
 If your Edge clusters are deployed in network environments that fit the following descriptions, you should consider enabling an overlay network for your cluster:
 
 - Network environments with dynamic IP address management, such as a DHCP network.
-- Instable network environments or environments that are out of your control. For example, you are deploying an Edge host in a restaurant located in a commercial building, and the network 
+- Instable network environments or environments that are out of your control. For example, you are deploying an Edge host in a restaurant located in a commercial building, where the network is managed by the building and cannot be easily altered by your staff. 
 - Environments where you expect your edge hosts to move from one physical location to another. 
 
 ### Example Scenario
@@ -34,12 +34,16 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 
 ## Prerequisites
 
-* At least one Edge host with AMD64/X86_64 processor architecture registered with your Palette account.
+* At least one Edge host with an AMD64 or X86_64 processor architecture registered with your Palette account.
 * All Edge hosts must be on the same network. You may provision your own virtual network to connect Edge hosts that are on different physical networks, but all Edge hosts to be included in the cluster must be on the same network before cluster creation.
 
 ## Enable Overlay Network
 
-You can enable an overlay network for your cluster during cluster creation. You will not be able to change the network overlay configurations after the cluster has already been created.
+You can enable an overlay network for your cluster during cluster creation. 
+
+:::caution
+You will not be able to change the network overlay configurations after the cluster has already been created.
+:::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
