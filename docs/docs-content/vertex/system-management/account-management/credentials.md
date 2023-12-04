@@ -11,7 +11,7 @@ keywords: ["self-hosted", "vertex"]
 
 You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature support both virtual passkey and physical passkey.
 
-Use the sections below to learn how to manage user credentials, such as changing the admin password, and enabling passkeys.
+Use the sections below to learn how to manage user credentials.
 
 
 ## Change Password

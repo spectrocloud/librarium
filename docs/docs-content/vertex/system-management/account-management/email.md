@@ -11,7 +11,6 @@ keywords: ["self-hosted", "vertex"]
 
 You can manage the credentials of the admin user by logging in to the system console. Updating or changing the email address of the admin user requires the current password.
 
-## Email Address
 
 Use the following steps to change the email address of the admin user.
 
