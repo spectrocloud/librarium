@@ -41,7 +41,7 @@ This is the recommended best practice for updating a cluster in Palette.
 
 ### Update a Cluster Profile without Publishing a New Version
 
-You can make updates to a profile that is in-use by one or more active cluster, and doing so will trigger an update to all clusters that are using the cluster profile. For more information, refer to [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md). 
+You can make updates to a profile that is in-use by one or more active clusters, and doing so will trigger an update to all clusters that are using the cluster profile. For more information, refer to [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md). 
 
 :::caution
 We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend creating a new profile version, and then upgrade active clusters to the new version. 

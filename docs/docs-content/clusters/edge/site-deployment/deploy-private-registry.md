@@ -80,7 +80,7 @@ Palette Edge supports authentication with private image registries, which allows
 
 7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the new version of your cluster profile. If you are creating a new profile, click **Next layer** and finish configuring the remaining layers. 
 
-8. If you already have an active cluster that is using the original version of the cluster profile, update the cluster so that it uses the new version of the cluster profile you just published. This will trigger a full cluster repave since it includes an update to the OS layer of the cluster. For more information about cluster repave behavior, refer to [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+8. If you already have an active cluster that is using the original version of the cluster profile, update the cluster so that it uses the new version of the cluster profile you just published. For more information about updating clusters, refer to [Update a Cluster](../../cluster-management/cluster-updates.md). This will trigger a full cluster repave since it includes an update to the OS layer of the cluster. To learn more about cluster repave behavior, refer to [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
    If you don't have an active cluster yet, deploy a new cluster with the profile you just created, and the cluster will pull images from the private registry you specified. 
 
