@@ -14,4 +14,4 @@ This section describes solutions offered by Palette Edge to navigate different n
 ## Resources
 
 - [Publish Cluster Services with Kube-vip](kubevip.md)
-- Enable Overlay Network
+- [Enable Overlay Network](vxlan-overlay.md)
