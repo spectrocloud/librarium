@@ -77,7 +77,7 @@ docker ps
 ```
 
 
-Download the `ghcr.io/spectrocloud/tutorials:1.0.11` image to your local machine. This Docker image includes the necessary tools. 
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.0.11` image to your local machine. This Docker image includes the necessary tools. 
 
 
 ```bash
