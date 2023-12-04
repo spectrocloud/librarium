@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Deploy Cluster with Private Registry"
-title: "Deploy Cluster with Private Registry"
+sidebar_label: "Deploy Cluster with a Private Registry"
+title: "Deploy Cluster with a Private Registry"
 description: "Instructions for creating an Edge Native Cluster Profile"
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 60
 tags: ["edge"]
 ---
 
@@ -17,6 +17,8 @@ Palette Edge supports authentication with private image registries, which allows
 - If your private registry has TLS enabled, you can only configure a new cluster to use a TLS certificate with a private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your existing registry. 
 
 - Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as AWS ECR and Google Container Registry are not supported. 
+
+- If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md).
 
 ## Prerequisites
 
