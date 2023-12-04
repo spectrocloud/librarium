@@ -9,9 +9,10 @@ tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You can manage the credentials of the admin user by logging in to the system console. You can also enable passwordless login for the admin user by adding passkeys. 
+You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature support both virtual passkey and physical passkey.
 
-Use the sections below to learn how to manage user credentials, such as changing the admin password, and enabling passwordless login by adding passkeys.
+Use the sections below to learn how to manage user credentials, such as changing the admin password, and enabling passkeys.
+
 
 ## Change Password
 
@@ -49,13 +50,16 @@ Use the following steps to change the password of the admin user.
 A successful login indicates that the password has been changed successfully.
 
 
-## Passkeys
+## Add Passkeys
 
-VerteX supports passwordless login (using the [WebAuthn Level2 protocol](https://developers.yubico.com/WebAuthn/Concepts/WebAuthn_Level_2_Features_and_Enhancements.html)) for the admin user through passkeys. You can also use a physical device, such as a YubiKey, to log in to the system console. If you enable the passkeys, we recommend you create at least two passkeys for the admin user, in case you lose one of the passkeys.
+VerteX supports the usage of passkeys (using the [WebAuthn Level2 protocol](https://developers.yubico.com/WebAuthn/Concepts/WebAuthn_Level_2_Features_and_Enhancements.html)) to authenticate. When you enable passkeys, the admin user will still be required to provide an email address and password to log in to the system console. However, the admin user will also be required to provide a passkey to log in to the system console. 
+
+The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol.
+If you enable the passkeys, we recommend you create at least two passkeys for the admin user, in case you lose the ability to access the passkey.
 
 :::danger
 
-We recommend you to create at least two passkeys for the admin user, in case you lose one of the passkeys. If you lose all the passkeys, you will not be able to log in to the system console. Contact the support team to discuss recovery options.
+We recommend you to create at least two passkeys for the admin user, in case you lose the ability to access the passkey. If you lose all passkeys, you will not be able to log in to the system console. Contact the support team to discuss recovery options.
 
 :::
 
@@ -91,7 +95,6 @@ Use the following steps to add a passkey for the admin user.
 
 5. The passkey will be added to the list of passkeys. You can use the **Delete** button to delete the passkey.
 
-  ![View of the passkey list](/vertex_account-management_credentials_remove-passkey.png)
 
 ### Validate
 
@@ -102,3 +105,30 @@ Use the following steps to add a passkey for the admin user.
 3. Use the new passkey to log in to the system console.
 
 A successful login indicates that the passkey has been added successfully.
+
+## Delete Passkeys
+
+Use the following steps to delete a passkey for the admin user. We recommend you have at least two passkeys for the admin user, in case you lose the ability to access the passkey.
+
+### Prerequisites
+
+- Access to the Palette VerteX system console.
+
+### Delete Passkey
+
+1. Log in to the system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
+
+2. From the **left Main Menu** select **My Account**.
+
+3. Click the **Delete** button next to the passkey you want to delete.
+
+4. A confirmation dialog will appear confirming the deletion of the passkey.
+
+### Validate
+
+1. Log out of the system console. You can log out by clicking the **Logout** button in the bottom right corner of the **left Main Menu**.
+
+2. Log in to the system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
+
+3. The deleted passkey should not be available in the list of passkeys.
+
