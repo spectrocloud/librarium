@@ -14,9 +14,9 @@ Palette Edge supports authentication with private image registries, which allows
 
 - A cluster cannot pull images from more than one private registry.
 
-- If your private registry has TLS enabled, you can only configure a new cluster to use a TLS certificate with a private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your existing registry. 
+- If your private registry has TLS enabled, you can only configure a new cluster to use a TLS certificate with a private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your private registry. 
 
-- Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as AWS ECR and Google Container Registry are not supported. 
+- Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as AWS ECR and Google Artifact Registry are not supported. 
 
 - If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md).
 
@@ -24,7 +24,9 @@ Palette Edge supports authentication with private image registries, which allows
 
 - At least one Edge host with x86_64 or AMD64 processor architecture. 
 
-- A private registry that stores the provider image you created in the EdgeForge process. For more information, refer to [Build Artifacts](../edgeforge-workflow/palette-canvos.md).
+- A private image registry.
+
+- A provider image you created in the EdgeForge process stored in your private image registry. For more information, refer to [Build Artifacts](../edgeforge-workflow/palette-canvos.md).
 
 ## Enablement
 
@@ -34,7 +36,7 @@ Palette Edge supports authentication with private image registries, which allows
 
 3. If you already have a cluster profile you want to deploy the cluster with, select that profile and select **Create new version** to create a new version of the profile to save your changes.
 
-   Otherwise, click **Add new profile** to create a new 
+   Otherwise, click **Add new profile** to create a new cluster profile. 
 
 4. Select the OS layer of your cluster profile. If you are creating a new profile, you will get to configuring the OS layer after filling out **Basic Information** and **Cloud Type**. 
 
@@ -78,7 +80,7 @@ Palette Edge supports authentication with private image registries, which allows
 
 7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the new version of your cluster profile. If you are creating a new profile, click **Next layer** and finish configuring the remaining layers. 
 
-8. If you already have an active cluster that is using the original version of the cluster profile, update the cluster so that it uses the new version of the cluster profile you just published. This will trigger a full cluster repave since it includes an update to the OS layer of the cluster. During the repave, the cluster will pull images from the private registry you specified in the new profile version. For more information about cluster repave behavior, refer to [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+8. If you already have an active cluster that is using the original version of the cluster profile, update the cluster so that it uses the new version of the cluster profile you just published. This will trigger a full cluster repave since it includes an update to the OS layer of the cluster. For more information about cluster repave behavior, refer to [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
    If you don't have an active cluster yet, deploy a new cluster with the profile you just created, and the cluster will pull images from the private registry you specified. 
 
