@@ -9,9 +9,32 @@ tags: ["edge"]
 
 Palette Edge allows you provision a local Harbor image registry as part of your Edge deployment. When your Edge cluster is created for the first time, all images downloaded from the cloud are stored locally in the Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the external network. 
 
+If you built your Edge artifacts using a content bundle, Harbor also stores all images in the content bundle once the cluster is created. This removes the need for any connection to the external network and allows you to deploy your Edge cluster in an air-gapped environment. 
+
 ## Limitations
 
 ## Prerequisites
-- At least one Edge host with an x86_64 processor architecture. 
+- At least one Edge host with an x86_64 or AMD64 processor architecture. 
 
 - Each of your Edge hosts must have at least 2 CPUs, 8 GB of RAM, and your cluster needs at least 160 GB of persistent storage. We recommend that your host have 4 CPUs, 8 GB of RAM, and the cluster has at least 160 HB of  persistent storage. 
+
+- An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to [Model Edge Cluster Profile](../site-deployment/model-profile.md).
+
+## Enablement
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Profiles**.
+
+3. Select the profile you plan to use for deployment and create a new version of the profile.
+
+4. If the profile does not already have a storage layer, click **Add New Pack** to add a storage pack. You can choose any storage pack for your storage layer. 
+
+5. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile. To learn about the pack and its parameters, refer to [Harbor Edge Native Config pack documentation](../../../integrations/harbor-edge.md).
+
+6. Click **Save Changes**.
+
+7. Deploy a new Edge cluster with your updated profile. Or if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images still requires connection to the external network, but subsequent images pulls will be from the local harbor registry. 
+
+## Validation
+
