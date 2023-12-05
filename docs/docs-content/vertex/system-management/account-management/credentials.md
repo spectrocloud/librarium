@@ -91,7 +91,7 @@ Use the following steps to add a passkey for the admin user.
 
   ![View of the adding passkey view](/vertex_account-management_credentials_add-passkey.png)
 
-4. Provide a nickname for the passkey in the field **Passkey nickname**. Depending on the type of passkey you are adding, you will be propmted to select the type of passkey, such as password manager, physical device, or web browser.
+4. Provide a nickname for the passkey in the field **Passkey nickname**. Depending on the type of passkey you are adding, you will be prompted to select the type of passkey, such as password manager, physical device, or web browser.
 
 5. The passkey will be added to the list of passkeys. You can use the **Delete** button to delete the passkey.
 
