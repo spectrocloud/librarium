@@ -45,7 +45,7 @@ You can use a macro to avoid providing credentials in plain text. For more infor
 #### Use Harbor in a Connected Environment to Protect Against Outage
 You can use Harbor in an Edge cluster that is connected to external networks. Harbor stores all container images downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. For more information, refer to [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
 
-
+</TabItem>
 </Tabs>
 
 ## Terraform
