@@ -10,7 +10,7 @@ tags: ["edge"]
 Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a private registry during deployment. You can configure your cluster to pull images from a private registry for both cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed to authenticate with the registry in the cluster profile. 
 
 :::caution
-If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored.  For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md).
+If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge process, the credentials provided in the cluster profile will be ignored.  For more information, refer to [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and [Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
 :::
 
 ## Limitations
@@ -55,7 +55,7 @@ If you have specified registry credentials in the `registryCredentials` field in
     system.uri: example.io/my-images/example-custom-os:v1.4.5
   ```
 
-6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need to authenticate with your registry. The `providerCredentials.password` field will be masked when you provide it in the YAML file:
+6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need to authenticate with your registry. The `providerCredentials.password` field will be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of providing it directly in the YAML file. For more information, refer to [Macros Support](../../cluster-management/macros.md):
 
   ```yaml {7-16}
   pack:
@@ -93,4 +93,6 @@ If you have specified registry credentials in the `registryCredentials` field in
 
 3. Select the cluster that is using the profile with the registry credentials. 
 
-4. Navigate to the **Profile** tab of the cluster to confirm that the cluster is pulling images the private registry. 
+4. Navigate to the **Events** tab of the cluster to see if the cluster is instructed pull images from the private registry. 
+
+5. If the cluster is successfully provisioned and enters the **Running** state, then you have successfully configured the cluster to authenticate with and pull images from the private registry. If the cluster does not enter the **Running** state, navigate to the **Events** table and observe if the cluster is emitting errors related to image pulls. 

@@ -20,7 +20,8 @@ Palette allows you to update active clusters. You can update any layer of a clus
 
 ## Enablement
 
-### Update a Cluster to Use a Another Cluster Profile Version
+<Tabs groupId="update-method">
+<TabItem value="profile-version" label="Use a new cluster profile version">
 
 This is the recommended best practice for updating a cluster in Palette. 
 
@@ -38,8 +39,9 @@ This is the recommended best practice for updating a cluster in Palette.
 
 7. Click **Save**. Depending on the changes you made to the profile, doing so might trigger a cluster repave warning. Click **Continue** to confirm updating the cluster. 
 
+</TabItem>
 
-### Update a Cluster Profile without Publishing a New Version
+<TabItem value="update-cluster-profile" label="Update cluster profile">
 
 You can make updates to a profile that is in-use by one or more active clusters, and doing so will trigger an update to all clusters that are using the cluster profile. For more information, refer to [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md). 
 
@@ -47,7 +49,10 @@ You can make updates to a profile that is in-use by one or more active clusters,
 We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend creating a new profile version, and then upgrade active clusters to the new version. 
 :::
 
-### Override Cluster Profile Configurations
+</TabItem>
+
+<TabItem value="override-profile-config" label="Override cluster profile configurations">
+
 
 You can modify the configuration of a deployed cluster without changing the cluster profile itself to update a cluster. 
 
@@ -65,7 +70,13 @@ We do not recommend updating a currently deployed cluster's profile configuratio
 
 5. Click **Save** to confirm your changes. Acknowledge the cluster repave warning if necessary. 
 
+</TabItem>
+</Tabs>
+
 ## Validation
+
+<Tabs groupId="update-method">
+<TabItem value="profile-version" label="Use a new cluster profile version">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -74,3 +85,34 @@ We do not recommend updating a currently deployed cluster's profile configuratio
 3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster. 
 
 4. Confirm that the cluster is now using an updated profile. 
+
+</TabItem>
+
+<TabItem value="update-cluster-profile" label="Update cluster profile">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Clusters**. 
+
+3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster. 
+
+4. Confirm that the cluster is now using an updated profile. 
+
+</TabItem>
+
+<TabItem value="override-profile-config" label="Override cluster profile configurations">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Clusters**. 
+
+3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster. 
+
+4. Confirm that the cluster is now using an updated profile. 
+
+</TabItem>
+</Tabs>
+
+
+
+
