@@ -165,3 +165,4 @@ bool
 OVA
 Okta
 Keycloak
+Simple Mail Transfer Protocol

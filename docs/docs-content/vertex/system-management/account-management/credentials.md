@@ -80,7 +80,7 @@ We recommend you to create at least two passkeys for the admin user, in case you
   :::
 
 
-- If you are using a self-signed certificate, or a certificate signed by an unknown certificate authority (CA) for VerteX that is not trusted by the browser, you may have to add the certificate to the operating system's trust store or ceriticate store before you can add passkeys. Different browsers behave differently in how strict they are in enforcing the trust of the certificate. For example, Chrome is more strict than Firefox. Refer to the documentation of your operating system for guidance on how to add a certificate to the trust store or certificate store:
+- If you are using a self-signed certificate, or a certificate signed by an unknown certificate authority (CA) for VerteX that is not trusted by the browser, you may have to add the certificate to the operating system's trust store or certificate store before you can add passkeys. Different browsers behave differently in how strict they are in enforcing the trust of the certificate. For example, Chrome is more strict than Firefox. Refer to the documentation of your operating system for guidance on how to add a certificate to the trust store or certificate store:
 
   - [MacOS](https://support.apple.com/guide/keychain-access/add-certificates-to-a-keychain-kyca2431/mac) - Use the application, Keychain Access, to add the server certificate to the system keychain.
 

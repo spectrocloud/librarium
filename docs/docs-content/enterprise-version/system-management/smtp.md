@@ -9,7 +9,7 @@ tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You can configure a Simple Mail Transport Protocol (SMTP) server to send emails onbehalf of your Palette instance. An SMTP server is required to change the email address of the admin user and to send the initial tenant invitation email.
+You can configure a Simple Mail Transport Protocol (SMTP) server to send emails on behalf of your Palette instance. An SMTP server is required to change the email address of the admin user and to send the initial tenant invitation email.
 
 ## Prerequisites
 
