@@ -72,13 +72,6 @@ We recommend you to create at least two passkeys for the admin user, in case you
 - A password manager, physical device, or a web browser that supports the WebAuthn Level2 protocol to create passkeys. We recommend you use a physical device, such as a YubiKey, to create passkeys that comply with the standards and regulations of your organization.
 
 
-:::caution
-
-Not all passkey solutions are FIPS certified. Discuss with your security team to determine the best solution for your organization.
-
-:::
-
-
 ### Add Passkey
 
 Use the following steps to add a passkey for the admin user.
