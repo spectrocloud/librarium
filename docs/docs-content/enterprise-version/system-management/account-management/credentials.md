@@ -74,6 +74,13 @@ We recommend you to create at least two passkeys for the admin user, in case you
 - A password manager, physical device, or a web browser that supports the WebAuthn Level2 protocol to create passkeys. We recommend you use a physical device, such as a YubiKey, to create passkeys that comply with the standards and regulations of your organization.
 
 
+- If you are using a self-signed certificate, or a certificate signed by an unknown certificate authority (CA) for Palette that is not trusted by the browser, you may have to add the certificate to the operating system's trust store or ceriticate store before you can add passkeys. Different browsers behave differently in how strict they are in enforcing the trust of the certificate. For example, Chrome is more strict than Firefox. Refer to the documentation of your operating system for guidance on how to add a certificate to the trust store or certificate store:
+
+  - [MacOS](https://support.apple.com/guide/keychain-access/add-certificates-to-a-keychain-kyca2431/mac) - Use the application, Keychain Access, to add the server certificate to the system keychain.
+
+  - [Windows](https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/certmgr) - Use the command-line tool `CertMgr` in PowerShell to add the server certificate to the local machine store.
+
+
 ### Add Passkey
 
 Use the following steps to add a passkey for the admin user.
@@ -97,7 +104,9 @@ Use the following steps to add a passkey for the admin user.
 
 2. Log in to the system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
 
-3. Use the new passkey to log in to the system console.
+3. Use the new passkey to log in to the system console. If your passkey has additional security features, such as a PIN, you will be prompted to provide the PIN before you can log in to the system console.
+
+
 
 A successful login indicates that the passkey has been added successfully.
 
