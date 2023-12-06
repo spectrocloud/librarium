@@ -10,9 +10,7 @@ logoUrl: 'https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec6
 tags: ['packs', 'harbor-edge-native-config', 'system-app']
 ---
 
-Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster. After the initial download, the cluster can pull images from Harbor instead of an external registry, allowing your cluster to reboot containers or scale up locally within the cluster locally without a connection to the external network.
-
-If you built your Edge artifacts using a content bundle, Harbor also stores all images in the Edge artifacts once the cluster is created. Together with a self-hosted instance of Palette, the Harbor Edge Native Config add-on removes the need for any connection to the external network and allows you to provision your Edge hosts in an air-gapped environment.
+Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster. After the initial download, the cluster can pull images from Harbor instead of an external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external network.
 
 
 ## Versions Supported
@@ -43,8 +41,8 @@ You can use a macro to avoid providing credentials in plain text. For more infor
 
 ### Usage
 
-#### Use Harbor in a Connected Environment to Protect Against Outage
-You can use Harbor in an Edge cluster that is connected to external networks. Harbor stores all container images downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. For more information, refer to [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
+#### Enable Harbor on an Edge Cluster to Protect Against Outage
+You can use Harbor in an Edge cluster that is connected to external networks. Harbor stores all container images downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. If your cluster experiences an internet outage, it can still reboot containers or add new nodes using images stored locally in Harbor. For more information, refer to [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
 
 </TabItem>
 </Tabs>
