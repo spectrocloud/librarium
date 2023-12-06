@@ -6,7 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["vertex", "management", "account", "credentials"]
-keywords: ["self-hosted", "vertex"]
+keywords: ["self-hosted", "palette"]
 ---
 
 You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature support both virtual passkey and physical passkey.
@@ -20,13 +20,13 @@ Use the following steps to change the password of the admin user.
 
 ### Prerequisites
 
-- Access to the Palette VerteX system console.
+- Access to the Palette system console.
 
 - Current password of the admin user.
 
 ### Steps
 
-1. Log in to the Palette VerteX system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
+1. Log in to the Palette system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
 
 2. From the **left Main Menu** select **My Account**.
 
@@ -66,7 +66,7 @@ We recommend you to create at least two passkeys for the admin user, in case you
 
 ### Prerequisites
 
-- Access to the Palette VerteX system console.
+- Access to the Palette system console.
 
 
 - A password manager, physical device, or a web browser that supports the WebAuthn Level2 protocol to create passkeys. We recommend you use a physical device, such as a YubiKey, to create passkeys that comply with the standards and regulations of your organization.
@@ -112,7 +112,7 @@ Use the following steps to delete a passkey for the admin user. We recommend you
 
 ### Prerequisites
 
-- Access to the Palette VerteX system console.
+- Access to the Palette system console.
 
 ### Delete Passkey
 
