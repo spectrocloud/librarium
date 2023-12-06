@@ -20,6 +20,8 @@ Use the following steps to change the email address of the admin user.
 
 - Current password of the admin user.
 
+- A Simple Mail Transfer Protocol (SMTP) server must be configured in the system console. Refer to [Configure SMTP](../smtp.md) page for guidance on how to configure an SMTP server.
+
 ## Change Email Address 
 
 1. Log in to the Palette VerteX system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.

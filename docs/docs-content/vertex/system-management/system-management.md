@@ -31,7 +31,7 @@ Platform administrators can use the system console to perform the following oper
 
 - Manage FIPS enforcement behaviors and settings.
 
-- Configure and manage SMTP settings.
+- [Configure and manage SMTP settings](./smtp.md)
 
 - [Configure and manage pack registries](../system-management/add-registry.md).
 
