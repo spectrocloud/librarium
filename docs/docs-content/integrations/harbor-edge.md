@@ -34,7 +34,8 @@ You can use a macro to avoid providing credentials in plain text. For more infor
 
 | **Parameter** | **Description**  |
 |---------------|------------------|
-| `harbor-config.auth.password` | Specifies the password used to authenticate with the Harbor image registry. This is only relevant if you decide to expose Harbor as a service outside the cluster. If you don't provide password, a random password is generated and saved to a secret in the cluster named `registry-info`. |
+| `harbor-config.auth.password` | Specifies the password used with the default user name `admin` to authenticate with the Harbor image registry. You cannot change the username. If you don't provide password, a random password is generated and saved to a secret in the cluster named `registry-info`. This password is automatically configured to be used internally inside the cluster for image pulls, and you would only need it for accessing the Harbor registry from outside the cluster.|
+| `harbor-config.auth.certs` | Specifies the certificate and private key used for authentication with Harbor. The common name or subject alternative name must include the host name `spectro.registry.local` and the Edge cluster's virtual IP address. If you don't provide a certificate or private key, Palette generates a certificate and a private key to use internally within the cluster. You can find the certificate in a secret named `harbor-tls` in the `harbor` namespace. |
 | `harbor-config.service.serviceType` | Specifies the service type for the Harbor service. The default service type is NodePort. |
 | `harbor-config.service.harbor` | Specifies the ports that harbor is exposed on. |
 | `harbor-config.storage` | Specifies the size of the Harbor's persistent volume claim in GB. You can configure persistent volume claims for `registry`, `jobService`, `database`, `redis`, and `trivy`. |
