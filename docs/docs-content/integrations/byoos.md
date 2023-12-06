@@ -21,11 +21,12 @@ Using your custom OS provides several benefits, including the ability to control
 
 ## Versions Supported
 
-**1.0.x**
-
 <br />
-
 <Tabs queryString="versions">
+
+<TabItem label="1.0.x" value="1.0.x">
+
+<Tabs queryString="edge-non-edge">
 
 <TabItem label="Edge" value="edge">
 
@@ -51,8 +52,10 @@ The BYOS Edge OS pack supports the following parameters.
 | `pack.content.images` | Specifies a list of OS images to use with the pack. | list |
 | `pack.content.images.image` | An OS image to use with the pack. | string|
 | `system.uri` | The system URI specifies the location of BYOOS image. | string|  
-
-
+| `providerCredentials.registry` | Specifies the private registry for the cluster to pull images from | string |  
+| `providerCredentials.username` | Specifies the username used for authentication with a private registry. | string |
+| `providerCredentials.password` | Specifies the password used for authentication with a private registry. | string |
+| `providerCredentials.certificate` | Specifies the certificate used for authentication and encryption with a private registry | string |
 
   ```yaml
   pack:
@@ -82,6 +85,9 @@ Select the BYOOS pack and fill out the required parameters during the cluster pr
 </TabItem>
 
 <TabItem label="Non-Edge" value="Non-Edge">
+
+</TabItem>
+</Tabs>
 
 ## Prerequisites 
 
