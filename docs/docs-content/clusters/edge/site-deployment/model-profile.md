@@ -57,7 +57,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 6. Select **Edge Native** as the **Cloud Type** and click on **Next**.
 
 
-7. Select **Public Repo** in the **Registry field**.
+7. Select either **Public Repo** or **Palette Registry (OCI)** in the **Registry field**. 
 
 
 8. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
