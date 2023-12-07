@@ -57,14 +57,14 @@ You will not be able to change the network overlay configurations after the clus
 
 6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
 
-7. In the network layer of your cluster profile, specify the names of the Network Interface Controllers (NIC) on your hosts used to communicate with the cluster. Later in the cluster definition when you add Edge hosts to the node pools, you can select which NIC each host uses to communicate with the cluster. Make sure those NIC names match your configuration in the network layer. 
+7. In the network layer of your cluster profile, specify the names of the Network Interface Controllers (NIC) on your hosts used to communicate with the cluster to be `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the ovelay network. 
 
     The following are the sections of the packs you need to change depending on which CNI pack you are using:
 
     <Tabs>
     <TabItem value="calico" label="Calico">
     
-    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=scbr-100`. 
     ```yaml {11}
     manifests:
         calico:
@@ -76,12 +76,12 @@ You will not be able to change the network overlay configurations after the clus
                 #FELIX_IPV6SUPPORT: "true"
                 #CALICO_IPV6POOL_NAT_OUTGOING: "true"
                 #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-                IP_AUTODETECTION_METHOD: "interface=eno*"
+                IP_AUTODETECTION_METHOD: "interface=scbr-100"
     ```
     </TabItem>
     <TabItem value="flannel" label="Flannel">
 
-    In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+    In the Flannel pack YAML file, add a line `- "--iface=scbr-100"` in the default template under `charts.flannel.args`. 
 
     ```yaml {8}
     charts:
@@ -91,14 +91,14 @@ You will not be able to change the network overlay configurations after the clus
             args:
             - "--ip-masq"
             - "--kube-subnet-mgr"
-            - "--iface=eno*"
+            - "--iface=scbr-100"
     ```
     </TabItem>
     <TabItem value="cilium" label="Cilium">
     You do not need to make any adjustments to the Cilium pack.
     </TabItem>
     <TabItem value="other" label="Other">
-    If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
+    If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the  NIC named `scbr-100` on your Edge host.
     </TabItem>
     </Tabs>
 
@@ -114,9 +114,7 @@ You will not be able to change the network overlay configurations after the clus
 
    After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the cluster.
    
-10. In the **Nodes Config** stage, when you assign each Edge device to a node pool, you can select which network interface is used by the Edge host to communicate with the cluster. Make sure you selection corresponds with your configurations in the network layer. For example, if you use Calico and you specified `IP_AUTODETECTION_METHOD: "interface=eno*"`, you need to make sure you network interface name matches the regex `eno*`. 
-
-11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
+10. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
 
 ## Validate
 
