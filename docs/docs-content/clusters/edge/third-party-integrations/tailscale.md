@@ -52,7 +52,18 @@ This example is for Ubuntu. If you use a different OS, adjust the commands in ac
 ## Add commands to activate Tailscale to the EdgeForge user data
 
 
-After Step 9 of the [Edge artifacts creation instructions](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/palette-canvos#instructions), edit the `user-data` file to add the following content to the end of the file:
+After Step 9 of the [Edge artifacts creation instructions](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/palette-canvos#instructions), edit the `user-data` file to add the following content to the file:
+
+First, add an additional bind mount to the `install:` block so that we can persist the state for Tailscale:
+
+```
+install:
+  bind_mounts:
+  - /var/lib/tailscale
+```
+
+
+Next, add a `stages:` block to automate the registration and enabling of Tailscale:
 
 ```
 stages:
