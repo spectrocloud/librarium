@@ -98,6 +98,7 @@ You will not be able to change the network overlay configurations after the clus
     You do not need to make any adjustments to the Cilium pack.
     </TabItem>
     <TabItem value="other" label="Other">
+    
     If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the  NIC named `scbr-100` on your Edge host.
     </TabItem>
     </Tabs>
