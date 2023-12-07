@@ -87,15 +87,20 @@ If you already have a `stages:` section in your user-data file, you must merge t
 
 :::info
 
-Due to how the immutable OS in Palette Edge works, we must specify the `--hostname` parameter for Tailscale to prevent devices registering with `localhost` as their device names. In the above example, we emulate the default device naming behavior of Palette Edge by reading the motherboard's product UUID from `/sys/class/dmi/id/product_uuid` and prefixing this value with `edge-` to form the final hostname. If you use the `deviceUIDPaths` parameter in the user-data to [adjust the automatic naming](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference#device-id-uid-parameters) of your Edge devices, you should also adjust the above content to generate the same hostname that matches your custom configuration.
+Due to how the immutable OS in Palette Edge works, we must specify the `--hostname` parameter for Tailscale to prevent devices registering with `localhost` as their device names. In the above example, we emulate the default device naming behavior of Palette Edge by reading the motherboard's product UUID from `/sys/class/dmi/id/product_uuid` and prefixing this value with `edge-` to form the final hostname.
 
-While it is not required for hostnames in Tailscale to identically match with the real hostnames of your Palette Edge devices, it will make it easier to use `kubectl` over Tailscale when they are identical.
+If you use the `deviceUIDPaths` parameter in the user-data to [adjust the automatic naming](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference#device-id-uid-parameters) of your Edge devices, you can adjust the above content to generate the same hostname that matches your custom configuration.
+
+Matching the hostnames in Tailscale with the Edge host names in Palette is not a hard requirement though.
 
 :::
 
 
 ## Generate a new set of Edge artifacts
 
+Follow the remaining steps of the [Edge artifacts creation instructions](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/palette-canvos#instructions) to generate the device installation ISO and the provider images.
 
 
 ## Flash your Edge device(s) with the newly generated ISO
+
+Boot your Edge device with the generated ISO to prepare your Edge host. When the procedure completes, let your Edge device boot to the Registration mode at least once. This will start up Tailscale and register the device. The device should now show up in your Tailscale Machines list.
