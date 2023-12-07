@@ -55,7 +55,7 @@ The BYOS Edge OS pack supports the following parameters.
 | `providerCredentials.registry` | Specifies the private registry for the cluster to pull images from | string |  
 | `providerCredentials.username` | Specifies the username used for authentication with a private registry. | string |
 | `providerCredentials.password` | Specifies the password used for authentication with a private registry. | string |
-| `providerCredentials.certificate` | Specifies the certificate used for authentication and encryption with a private registry | string |
+| `providerCredentials.certificate` | Specifies the X509 certificate used for authentication and encryption with a private registry | string |
 
   ```yaml
   pack:
