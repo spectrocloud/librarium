@@ -12,6 +12,14 @@ keywords: ["self-hosted", "vertex"]
 
 If you are in an environment that requires the Palette Vertex documentation to be available offline, you can use our offline Docker image to serve the documentation locally. The image is updated nightly to ensure that the latest documentation is available. When you start the container, the documentation is available at `http://localhost:8080` and you can access it using your browser.
 
+
+:::tip
+
+You can use the Palette CLI to download and start the offline documentation container with a single command. Check out the Palette CLI `docs` command [page](../../../palette-cli/commands/docs.md) for more information.
+
+:::
+
+
 ### Limitations
 
 The following limitations apply when using the offline documentation:
