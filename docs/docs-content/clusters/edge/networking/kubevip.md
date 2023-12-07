@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a service of type `LoadBalancer` on the external network.
+You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a service of type `LoadBalancer` on the external network. You can have kube-vip dynamically request IP addresses or use a static IP address. 
 
 Kube-vip supports DHCP environments and can request additional IP address from the DHCP server automatically. Using kube-vip, you can expose services inside your cluster externally with a virtual IP address even if you do not have control over your host's network. Kube-vip can also act as a load balancer for both your control plane and Kubernetes services of type `LoadBalancer`.
 
