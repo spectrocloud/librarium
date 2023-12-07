@@ -15,6 +15,12 @@ The `ec` command exposes the following subcommand.
 
   * `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to install an EC cluster.
 
+
+## Prerequisites
+
+- Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation to learn how to install Docker on your system.
+
+
 ## Install
 
 The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts you for required values. Alternatively, you can use flags to generate a configuration file.

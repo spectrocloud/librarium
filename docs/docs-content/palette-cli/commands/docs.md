@@ -18,7 +18,7 @@ To stop the documentation site, type `Ctrl+C` in the terminal window where you s
 
 The `docs` command exposes the following flags.
 
-| Short Flag | Long Flag              | Description                                                              | Type    |
+| **Short Flag** | **Long Flag**              | **Description**                                                              | **Type**    |
 |------------|------------------------|--------------------------------------------------------------------------|---------|
 | `-d`       | `--detach`             |  Start the container in the background and print the container ID.       | boolean  |
 | `-h`       | `--help`               |  Help with any command.                                                  | N/A     |
