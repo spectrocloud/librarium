@@ -9,7 +9,7 @@ tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature support both virtual passkey and physical passkey.
+You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature supports both virtual passkey and physical passkey.
 
 Use the sections below to learn how to manage user credentials.
 
@@ -60,7 +60,7 @@ The passkey can be a password manager, a physical device, or a web browser that 
 
 :::danger
 
-We recommend you to create at least two passkeys for the admin user, in case you lose the ability to access the passkey. If you lose all passkeys, you will not be able to log in to the system console. Contact the support team to discuss recovery options.
+We recommend you create at least two passkeys for the admin user, in case you lose the ability to access the passkey. If you lose all passkeys, you will not be able to log in to the system console. Contact the support team to discuss recovery options.
 
 :::
 
