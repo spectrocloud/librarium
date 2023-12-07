@@ -3,7 +3,7 @@ sidebar_label: "Enable Local Harbor Image Registry"
 title: "Enable Local Harbor Image Registry"
 description: "Guide to enabling a local harbor registry on an Edge deployment."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 60
 tags: ["edge"]
 ---
 

@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ['system-app', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec69ae172c3e54d5fb09c176517cf7bfeb1bc740bde65c200e14115510313?type=image/png'
+logoUrl: 'https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d41a6eb2398194dd4563d31d371074375255ba8a2fc4feff4ef33?type=image/png'
 tags: ['packs', 'harbor-edge-native-config', 'system-app']
 ---
 
