@@ -160,7 +160,8 @@ With the [OpenID Connect Inspector](https://developers.onelogin.com/openid-conne
 
 ## Create Teams in Palette
 
-In order for Palette to map the groups configured in OneLogin, you need to create a team in Palette. The team name needs to match the value that is returned for the groups configured in OneLogin. In this example, you will create an **Administrators** team in Palette. This team name also matches with the Administrators value that is assigned to each member of the Administrators group in OneLogin. 
+
+You must create a team in Palette so that Palette can map the team with groups configured in OneLogin. The team name must match the value returned for the groups configured in OneLogin. In this example, you will create an Administrators team in Palette. This team name matches the Administrators value assigned to each member of the Administrators group in OneLogin.
 
 
 ### Prerequisites
@@ -211,9 +212,12 @@ To verify that the team is created and the correct permissions are assigned, log
 
 1. Log in to [Palette](https://console.spectrocloud.com/) as a user who is a member of the team you created and available in OneLogin.
 
-2. Autenticate with OneLogin once you are redirected to the login screen.
 
-A successful login will redirect you to the Palette dashboard and indicate that you are logged in as a member of the team you created. 
+2. Authenticate with OneLogin once you are redirected to the login screen. A successful login will redirect you to the Palette dashboard and indicate that you are logged in as a member of the team you created. 
+
+
+3. Attempt to access the **Tenant Settings** page to ensure you have the correct permissions. From the left **Main Menu**, select the scope, **Tenant Admin**. Next, select **Tenant Settings**. If you have the correct permissions, you will be able to access the settings page. 
+
 
 
 ## Resources
