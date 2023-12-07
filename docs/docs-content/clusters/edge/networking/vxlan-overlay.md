@@ -83,7 +83,7 @@ You will not be able to change the network overlay configurations after the clus
 
     In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
 
-    ```yaml
+    ```yaml {8}
     charts:
         flannel:
             ...
@@ -92,7 +92,6 @@ You will not be able to change the network overlay configurations after the clus
             - "--ip-masq"
             - "--kube-subnet-mgr"
             - "--iface=eno*"
-            # Backend for kube-flannel. Backend should not be changed
     ```
     </TabItem>
     <TabItem value="cilium" label="Cilium">
