@@ -64,6 +64,17 @@ The BYOS Edge OS pack supports the following parameters.
       - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
       # - image: example.io/my-other-images/example:v1.0.0 
       # - image: example.io/my-super-other-images/example:v1.0.0 
+  providerCredentials:
+    registry: domain/project
+    user: user
+    password: ******
+    certificates: |
+      -----BEGIN CERTIFICATE-----
+      MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+      ----------------------------------------------------------------
+      7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+      -----END CERTIFICATE-----
+      
     
   options: 
     system.uri: example.io/my-images/example-custom-os:v1.4.5
