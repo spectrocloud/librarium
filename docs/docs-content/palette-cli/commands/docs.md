@@ -11,7 +11,7 @@ The `docs` command starts the Palette documentation site in your local environme
 
 :::tip
 
-To stop the documentation site, type `Ctrl+C` in the terminal window where you started the documentation site.
+To stop the documentation site, type `Ctrl+C` in the terminal window where you started it.
 
 :::
 
@@ -23,7 +23,7 @@ The `docs` command exposes the following flags.
 | `-d`       | `--detach`             |  Start the container in the background and print the container ID.       | boolean  |
 | `-h`       | `--help`               |  Help with any command.                                                  | N/A     |
 |       | `--host`              |  The address of the host to expose the container on. The default value is set to `127.0.0.1`                                           | string  |
-|  | `--image` | The container image to use. The documentation image to use. Default value is `ghcr.io/spectrocloud/librarium:nightly`. | string |
+|  | `--image` | The documentation container image to use. Default value is `ghcr.io/spectrocloud/librarium:nightly`. | string |
 | | `--name` | The name of the container. Default value is `spectrocloud-docs`. | string |
 |        | `--port`               |  The port to expose the container on. The default value is set to `8080`. | string  |
 
