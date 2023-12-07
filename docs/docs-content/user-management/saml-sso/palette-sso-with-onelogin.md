@@ -1,7 +1,7 @@
 ---
 sidebar_label: 'Palette SSO with OneLogin'
 title: 'Enable SSO with OneLogin'
-description: 'Set up Palette SSO with OneLogin'
+description: 'Set up Palette SSO with OneLogin.'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
@@ -12,7 +12,7 @@ tags: ["user-management", "oidc-sso", "onelogin"]
 OneLogin is a cloud-based Identity and Access Management (IAM) provider that designs and develops enterprise-level identity management solutions. It's an Identity Provider (IdP) tool designed to secure, manage, and facilitate user access across multiple networks, applications, and devices. OneLogin's platform offers a variety of features, including Single Sign-On (SSO), Multi-Factor Authentication (MFA), user provisioning, compliance reporting, and end-user self-service. 
 
 
-You can integrate OneLogin with Palette to enable SSO for your users. This integration allows you to use OneLogin as a third-party Identity Provider (IdP) to authenticate users in Palette. This integration also allows you to use the same OneLogin application for OIDC-based SSO in your Kubernetes cluster.
+You can integrate OneLogin with Palette to enable SSO for your users. This integration allows you to use OneLogin as a third-party IdP to authenticate users in Palette. This integration also allows you to use the same OneLogin application for OIDC-based SSO in your Kubernetes cluster.
 
 This guide will guide you through the steps required to configure OneLogin as a third-party IdP in Palette.
 
@@ -21,7 +21,7 @@ This guide will guide you through the steps required to configure OneLogin as a 
 - An active OneLogin subscription and administrator-level permissions. If you are using this for testing purposes, OneLogin provides a [developer subscription](https://developers.onelogin.com/). 
 
 
-- For OIDC-based SSO in your Kubernetes cluster, you will need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle the retrieval of access tokens for your cluster.
+- For OIDC-based SSO in your Kubernetes cluster, you will need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to retrieve access tokens for your cluster.
 
 
 ## Setup
@@ -39,18 +39,18 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Search for OpenID Connect](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_search-oidc.png)  
   
 
-4. Select the "OpenID Connect" app connector to add it to your account. Next, you will be taken to the application configuration page where you can provide a **Display Name**. Use the display name **Spectro Cloud Palette OIDC** and click on **Save**. 
+4. Select the "OpenID Connect" app connector to add it to your account. Next, you will be taken to the application configuration page, where you can provide a **Display Name**. Use the display name **Spectro Cloud Palette OIDC** and click **Save**. OpenLog displays the configuration screen for your new application. 
 
   ![Enter Display Name](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-app-name.png)
 
 
-5. After clicking the **Save** button, you will be redirected to your new application configuration screen. Select the **Configuration** tab on the left. Here you will need to fill in the **Login Url**, **Redirect URI's** and **Post Logout Redirect URIs** fields. 
+5. Select the **Configuration** tab and fill out the following input values. 
 
   |**Field**|**Description**|
   |--------|--------|
-  |Login URL|This is the URL where users are sent to log in.|
-  |Redirect URIs|These are the Uniform Resource Identifiers (URI) to which OneLogin will redirect the user after successful authentication.|
-  |Post Logout Redirect URIs|These are the URIs where the user will be redirected after they successfully log out from their session.|
+  |Login URL|The URL where users are sent to log in.|
+  |Redirect URIs|The Uniform Resource Identifiers (URIs) to which OneLogin will redirect the user after successful authentication.|
+  |Post Logout Redirect URIs| The URIs where you will be redirected after successfully logging out from the current session.|
 
 
 6. The URLs needed to configure OneLogin can be found in your Palette account. From the left **Main Menu** click on **Tenant Admin**. Next, select **Tenant Settings** to access the settings page. From the settings page, select **SSO**, click on the **OIDC** tab. Copy the **Callback URL** value to your clipboard. 
@@ -73,7 +73,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![URI config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_uri-config.png)
 
 
-10. Select the **Parameters** tab and click on the **Groups** field. Make sure the bottom configuration contains the **MemberOf** value. This will ensure that the correct group value is passed.  
+10. Select the **Parameters** tab and click on the **Groups** field. Ensure the bottom configuration contains the **MemberOf** value so that the correct group value is passed.  
 
   ![Check MemberOf field](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-field.png)
 
@@ -85,14 +85,18 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 ### Create Role, Security Policy and Group
 
-12. Go to your OneLogin dashboard and select **Users**. Next, click on **Roles** to access the Role page and select **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used in this example. When selecting the app, a green checkmark will appear behind the name. Click on **Save**. 
+12. Go to your OneLogin dashboard and select **Users**. Next, click on **Roles** to access the Role page and select **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used in this example. When selecting the app, a green check will appear next to the name. Click **Save**. 
 
   ![Add Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_app-role.png)
 
 
 13. You can optionally create a security policy if desired. To create a Security Policy, navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy."  Continue to configure the policy to your needs. Click **Save** to continue. 
 
-14. Apply the policy to a group of users, but first, you will need a group. Navigate to  **Users** --> **Groups** and select **New Group**. Assign the new group a name, select your security policy, and click **Save**.  
+14. Apply the policy to a user group that you create. To create a user group, navigate to **Users** and select **Groups**.
+
+ 15. Click **New Group** and assign a group name.
+ 
+ 16. Select your security policy and click **Save**.  
 
   ![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
 
@@ -107,7 +111,13 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Add User to Group](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_user-auth-group.png)
 
 ### Enable OIDC in Palette 
-17. Navigate back to Palette and fill in the **Client ID**, **Client Secret**, and **Issuer URL** values. Add the **groups** scope to the **Scopes** field. Without the proper scopes, Palette won't receive the group name. Click **Enable** to continue. 
+17. Navigate back to Palette and fill in the **Client ID**, **Client Secret**, and **Issuer URL** values. 
+
+18. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
+
+:::caution
+The proper scope is required for Palette to receive the group name. 
+:::
 
   ![Full OIDC config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-full-palette.png)
 
@@ -146,13 +156,13 @@ Use the following steps to validate the configuration.
   ![SSO Login Screen](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-screen.png)
 
 
-3. You can check what teams you are mapped to by navigating to the left **Main Menu** and selecting **Tenant Settings**. Select **Users & Teams** --> **Users**. Find your user name to review the teams you are a member of. 
+3. To check which teams you are mapped to, navigate to the left **Main Menu** and select **Users & Teams**. In the **Users** tab, find your user name to review the teams you are a member of. 
 
   ![Check Team Member](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_team-member.png)
 
 :::tip
 
-With the [OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector), you can send requests to OneLogin and check what is sent in the payload. This way you can make sure that you are using the right claims and scopes. When using this, you will need to add the Inspector callback URL to your applications Redirect URIs list. Check out the - [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8) to learn more.
+With the [OpenID Connect Inspector](https://developers.onelogin.com/openid-connect/inspector), you can send requests to OneLogin and check what is sent in the payload. This way, you can ensure you are using the correct claims and scopes. Add the Inspector's callback URL to your application's Redirect URIs list when using the Inspector. Check out the - [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8) to learn more.
 
 
 :::info
