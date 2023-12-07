@@ -9,7 +9,7 @@ tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "palette"]
 ---
 
-You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature support both virtual passkey and physical passkey.
+You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to access the admin panel. The passkey feature supports both virtual passkey and physical passkey.
 
 Use the sections below to learn how to manage user credentials.
 
@@ -57,11 +57,11 @@ A successful login indicates that the password has been changed successfully.
 VerteX supports the usage of passkeys (using the [WebAuthn Level2 protocol](https://developers.yubico.com/WebAuthn/Concepts/WebAuthn_Level_2_Features_and_Enhancements.html)) to authenticate. When you enable passkeys, the admin user will still be required to provide an email address and password to log in to the system console. However, the admin user will also be required to provide a passkey to log in to the system console. 
 
 The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol.
-If you enable the passkeys, we recommend you create at least two passkeys for the admin user, in case you lose the ability to access the passkey. A maximum of two passkeys can be added for the admin user.
+A maximum of two passkeys can be added for the admin user.
 
 :::danger
 
-We recommend you to create at least two passkeys for the admin user, in case you lose the ability to access the passkey. If you lose all passkeys, you will not be able to log in to the system console. Contact the support team to discuss recovery options.
+We recommend you create at least two passkeys for the admin user, in case you lose the ability to access the passkey. If you lose all passkeys, you will not be able to log in to the system console. Contact the support team to discuss recovery options.
 
 :::
 
