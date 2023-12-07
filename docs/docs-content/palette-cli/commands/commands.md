@@ -16,9 +16,9 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
   * `completion` - Generate the autocompletion script for the specified shell.
 
-
   * `help`       -   Help with any command.
 
+  * [`docs`](docs.md)     -  Start the Palette documentation site in your local environment for an offline experience.
 
   * [`ec`](ec.md)         - Palette Enterprise Cluster installation & pre-validation.
 

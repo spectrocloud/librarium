@@ -27,13 +27,13 @@ Use the following steps to install and set up the Palette CLI.
 
 ## Download and Setup
 
-1. Visit the [Downloads](../spectro-downloads.md#palette-cli) page and download the Palette CLI by using the URL provided.
+1. Visit the [Downloads](../spectro-downloads.md#palette-cli) page and download the Palette CLI by using the URL provided for your operating system.
 
 
 2. Open up a terminal session on your local system.
 
 
-3. Navigate to your default download folder. For Mac and Linux environments the default location is **~/Downloads**.
+3. Navigate to your default download folder. For Linux environments the default location is **~/Downloads**.
 
 
 4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to move the binary to the **/usr/local/bin** folder.
@@ -68,7 +68,7 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
 
   Output:
   ```shell
-  Palette CLI version: 4.1.0
+  Palette CLI version: 4.2.0
   ```
 
 
