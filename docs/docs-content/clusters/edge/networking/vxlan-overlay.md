@@ -57,17 +57,65 @@ You will not be able to change the network overlay configurations after the clus
 
 6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
 
-7. Review your cluster profile values and make changes as needed. Click on **Next**.
+7. In the network layer of your cluster profile, specify the names of the Network Interface Controllers (NIC) on your hosts used to communicate with the cluster. Later in the cluster definition when you add Edge hosts to the node pools, you can select which NIC each host uses to communicate with the cluster. Make sure those NIC names match your configuration in the network layer. 
+
+    The following are the sections of the packs you need to change depending on which CNI pack you are using:
+
+    <Tabs>
+    <TabItem value="calico" label="Calico">
+    
+    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+    ```yaml {11}
+    manifests:
+        calico:
+            ...
+            env:
+            # Additional env variables for calico-node
+            calicoNode:
+                #IPV6: "autodetect"
+                #FELIX_IPV6SUPPORT: "true"
+                #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+                #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+                IP_AUTODETECTION_METHOD: "interface=eno*"
+    ```
+    </TabItem>
+    <TabItem value="flannel" label="Flannel">
+
+    In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+
+    ```yaml
+    charts:
+        flannel:
+            ...
+            # flannel command arguments
+            args:
+            - "--ip-masq"
+            - "--kube-subnet-mgr"
+            - "--iface=eno*"
+            # Backend for kube-flannel. Backend should not be changed
+    ```
+    </TabItem>
+    <TabItem value="cilium" label="Cilium">
+    You do not need to make any adjustments to the Cilium pack.
+    </TabItem>
+    <TabItem value="other" label="Other">
+    If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
+    </TabItem>
+    </Tabs>
+
+8. Review the rest of your cluster profile values and make changes as needed. Click on **Next**.
 
 8. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional configuration for your virtual overlay network. 
 
-9. In the **Internal CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
+9. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
 
-10. In **VIP** field near the top of the page, provide a virtual IP (VIP) address. This address must be within the same internal CIDR range that you provide for the cluster. 
+   :::caution
+   The overlay CIDR range cannot be changed after the cluster creation. 
+   :::
 
-    :::caution
-    Neither the internal CIDR range nor the VIP address can be changed after the cluster creation. 
-    :::
+   After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the cluster.
+   
+10. In the **Nodes Config** stage, when you assign each Edge device to a node pool, you can select which network interface is used by the Edge host to communicate with the cluster. Make sure you selection corresponds with your configurations in the network layer. For example, if you use Calico and you specified `IP_AUTODETECTION_METHOD: "interface=eno*"`, you need to make sure you network interface name matches the regex `eno*`. 
 
 11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
 
