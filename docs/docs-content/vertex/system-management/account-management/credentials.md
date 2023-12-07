@@ -1,10 +1,10 @@
 ---
-sidebar_label: "User Credentials"
-title: "User Credentials"
+sidebar_label: "Manage User Credentials"
+title: "Manage User Credentials"
 description: "Update and manage the user credentials"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
@@ -56,8 +56,7 @@ A successful login indicates that the password has been changed successfully.
 
 VerteX supports the usage of passkeys (using the [WebAuthn Level2 protocol](https://developers.yubico.com/WebAuthn/Concepts/WebAuthn_Level_2_Features_and_Enhancements.html)) to authenticate. When you enable passkeys, the admin user will still be required to provide an email address and password to log in to the system console. However, the admin user will also be required to provide a passkey to log in to the system console. 
 
-The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol.
-If you enable the passkeys, we recommend you create at least two passkeys for the admin user, in case you lose the ability to access the passkey. A maximum of two passkeys can be added for the admin user.
+The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol. A maximum of two passkeys can be added for the admin user.
 
 :::danger
 
@@ -111,9 +110,6 @@ Use the following steps to add a passkey for the admin user.
 2. Log in to the system console. Refer to [Access the System Console](../system-management.md#access-the-system-console) guide.
 
 3. Use the new passkey to log in to the system console. If your passkey has additional security features, such as a PIN, you will be prompted to provide the PIN before you can log in to the system console.
-
-
-
 
 A successful login indicates that the passkey has been added successfully.
 

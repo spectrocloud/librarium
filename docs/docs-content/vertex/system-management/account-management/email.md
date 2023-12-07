@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Email Address"
-title: "Email Address"
+sidebar_label: "Update Email Address"
+title: "Update Email Address"
 description: "Update and manage the email address of the admin user."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
