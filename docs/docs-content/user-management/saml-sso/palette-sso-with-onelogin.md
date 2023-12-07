@@ -14,8 +14,6 @@ OneLogin is a cloud-based Identity and Access Management (IAM) provider that des
 
 You can integrate OneLogin with Palette to enable SSO for your users. This integration allows you to use OneLogin as a third-party IdP to authenticate users in Palette. This integration also allows you to use the same OneLogin application for OIDC-based SSO in your Kubernetes cluster.
 
-This guide will guide you through the steps required to configure OneLogin as a third-party IdP in Palette.
-
 ## Prerequisites
 
 - An active OneLogin subscription and administrator-level permissions. If you are using this for testing purposes, OneLogin provides a [developer subscription](https://developers.onelogin.com/). 
@@ -90,57 +88,49 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Add Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_app-role.png)
 
 
-13. You can optionally create a security policy if desired. To create a Security Policy, navigate to **Security** --> **Policies** and select **New User Policy** on the top right. Fill out a name for the policy, for example, "Admin policy."  Continue to configure the policy to your needs. Click **Save** to continue. 
+13. You can create an optional security policy. To create a security policy, navigate to **Security** and select **Policies**.  
 
-14. Apply the policy to a user group that you create. To create a user group, navigate to **Users** and select **Groups**.
+14. Click **New User Policy**. Provide a policy name, such as "Admin policy", and configure the policy to meet your requirements. Click **Save** to continue. 
 
- 15. Click **New Group** and assign a group name.
- 
- 16. Select your security policy and click **Save**.  
+15. Apply the policy to a user group that you create. To create a user group, navigate to the **left Main Menu** and select **Users**. Next, **Groups**.
 
-  ![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
+16. Click **New Group** and assign a group name.
+
+17. Select your security policy and click **Save**.  
+
+![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
 
 
-15. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users** --> **Mappings** and select **New Mapping**. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
+18. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users**, followed by **Mappings** and select **New Mapping**. 
+
+19. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
 
   ![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
 
 
-16. Navigate to **Users** --> **Users** and select your user. Select the **Authentication** tab and select the group and security policy you created earlier. Click on **Save**. 
+19. Navigate to **Users** screen and select your user. 
+
+20. Select the **Authentication** tab and select the group and security policy you created earlier. Click on **Save**. 
 
   ![Add User to Group](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_user-auth-group.png)
 
 ### Enable OIDC in Palette 
-17. Navigate back to Palette and fill in the **Client ID**, **Client Secret**, and **Issuer URL** values. 
 
-18. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
+21. Navigate back to Palette, and from the **left Main Menu**, select **Tenant Settings**. Next, select **SSO** and click on the **OIDC** tab.
 
-:::caution
-The proper scope is required for Palette to receive the group name. 
-:::
+22. Fill in the fields **Client ID**, **Client Secret**, and **Issuer URL** with the values you were provided by OneLogin. 
+
+
+23. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
+
+  :::caution
+  Ensure the expected scopes are added. Otherwise, Palette may be unable to retrieve the group name. 
+  :::
 
   ![Full OIDC config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-full-palette.png)
 
 
-### Create Teams in Palette
-
-18. In order for Palette to map the groups configured in OneLogin, you need to create a team in Palette. The team name needs to match the value that is returned for the groups configured in OneLogin. In this example, you will create an **Administrators** team in Palette. This team name also matches with the Administrators value that is assigned to each member of the Administrators group in OneLogin. 
-
-  In Palette, navigate to left **Main Menu**, select **Tenant Settings** and click on **Users & Teams**. Next, select **Teams**, and click on **Create team**. You only need to fill in the team name. Don't manually add members, as OneLogin will manage the users. In OneLogin, users who are part of the mapped group, administrators, will be automatically added to the team. Click **Confirm** to continue. 
-
-  ![Create New Team](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_new-team.png)
-
-
-19. Next, you need to assign the members of this team a set of permissions. Assign all members the **Tenant Admin** permissions. You can customize the assigned permissions as needed, but for this example admin access is granted. To set the correct permissions, navigate to left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams**. Select the team you created. Click on **Tenant Roles** --> **Add Tenant Role** and select the **Tenant Admin** box. This will auto-select all other permission boxes.  Click **Confirm**.
-
-  ![Add Tenant Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_tenant-admin-role.png)
-
-
-Click **Confirm** and you should have a configuration similar to this. 
-
-  ![Permissions](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_roles-full.png)
-
-You have now configured Palette to use OneLogin as a third-party IDP. Use the above steps to create additional groups in OneLogin and Palette. As you start deploying clusters, keep in mind that if you use Palette's Extended Kubernetes distribution, you can configure the cluster to inherit OIDC configurations from the tenant. Refer to the [Palette eXtended Kubernetes](../../integrations/kubernetes.md#configure-custom-oidc) reference page to learn more about out-of-the-box support for OIDC.
+You now have a working configuration for OneLogin as a third-party IdP in Palette. Check ou the [Create Teams in Palette](#create-teams-in-palette) section to learn how to create teams in Palette and map them to groups in OneLogin.
 
 ## Validate
 
@@ -166,6 +156,65 @@ With the [OpenID Connect Inspector](https://developers.onelogin.com/openid-conne
 
 
 :::info
+
+
+## Create Teams in Palette
+
+In order for Palette to map the groups configured in OneLogin, you need to create a team in Palette. The team name needs to match the value that is returned for the groups configured in OneLogin. In this example, you will create an **Administrators** team in Palette. This team name also matches with the Administrators value that is assigned to each member of the Administrators group in OneLogin. 
+
+
+### Prerequisites
+
+- An active Palette account with administrative permissions.
+
+- A OneLogin mapping that maps the user to a group.
+
+
+### Team Creation
+
+
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant administrator.
+
+
+2. From the **left Main Menu**, select **Users & Teams**.
+
+
+3. Next, select **Teams**, and click on **Create team**. 
+
+
+4. You only need to fill in the team name. Don't manually add members, as OneLogin will manage the users. In OneLogin, users who are part of the mapped group, administrators, will be automatically added to the team. Click **Confirm** to continue. 
+
+  ![Create New Team](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_new-team.png)
+
+
+5. Next, you need to assign the members of this team a set of permissions. Assign all members the **Tenant Admin** permissions. You can customize the assigned permissions as needed, but for this example admin access is granted. 
+
+
+6. To set the correct permissions, select the team you created. Click on the **Tenant Roles** tab.
+
+
+7. Next, click on **Add Tenant Role** and select the **Tenant Admin** box. This will automatically select all other permission boxes. Click on **Confirm**.
+
+
+8. You should have a configuration similar to the following image. 
+
+  ![Permissions](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_roles-full.png)
+
+You have now configured Palette to use OneLogin as a third-party IDP. Use the above steps to create additional groups in OneLogin and Palette. 
+
+As you start deploying clusters, keep in mind that if you use Palette's [Extended Kubernetes distribution](../../integrations/kubernetes.md) (PXK), you can configure the cluster to inherit OIDC configurations from the tenant. Refer to the [Palette eXtended Kubernetes](../../integrations/kubernetes.md#configure-custom-oidc) reference page to learn more about out-of-the-box support for OIDC.
+
+
+### Validate
+
+To verify that the team is created and the correct permissions are assigned, log in to Palette as a user who is a member of the team.
+
+1. Log in to [Palette](https://console.spectrocloud.com/) as a user who is a member of the team you created and available in OneLogin.
+
+2. Autenticate with OneLogin once you are redirected to the login screen.
+
+A successful login will redirect you to the Palette dashboard and indicate that you are logged in as a member of the team you created. 
+
 
 ## Resources
 
