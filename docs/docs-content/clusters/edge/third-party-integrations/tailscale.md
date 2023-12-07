@@ -21,19 +21,20 @@ Integrating Tailscale with Palette Edge is done in 4 steps:
 
 3. Generate a new set of Edge artifacts
 
-4. Flash your Edge device(s) with the newly generated ISO
+4. Flash your Edge devices with the newly generated ISO
 
+<br/>
 
 ## Add the Tailscale package to the EdgeForge Dockerfile
 
 
-Follow the [Edge artifacts creation instructions](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/palette-canvos#instructions) to set up the CanvOS git repository on your build system. On Step 5 of those instructions ("Review the files relevant for this guide"), open the `Dockerfile` in the root of the repo to adjust its contents.
+Follow the [Edge artifacts creation instructions](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/palette-canvos#instructions) to set up the CanvOS git repository on your build system. On Step 5 of those instructions, open the `Dockerfile` in the root of the repo to adjust its contents.
 
 Add the following content to the end of the `Dockerfile`:
 
 ```
-RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/kinetic.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null && \
-    curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/kinetic.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list && \
+RUN curl -fsSL "https://pkgs.tailscale.com/stable/ubuntu/kinetic.noarmor.gpg" | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null && \
+    curl -fsSL "https://pkgs.tailscale.com/stable/ubuntu/kinetic.tailscale-keyring.list" | sudo tee /etc/apt/sources.list.d/tailscale.list && \
     apt update -y && \
     apt install -y tailscale && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -48,6 +49,7 @@ This example is for Ubuntu. If you use a different OS, adjust the commands in ac
 
 :::
 
+<br/>
 
 ## Add commands to activate Tailscale to the EdgeForge user data
 
@@ -93,7 +95,7 @@ stages:
 
 Make sure to adjust the `tailscale up --authkey=` line with the Tailscale authorization key you want to use to register the devices. You can generate this key in the Settings section of the Tailscale web console. The recommended approach is a reusable, non-ephemeral key that automatically tags the devices with one or more tags.
 
-If you already have a `stages:` section in your user-data file, you must merge the existing section together with the above content.
+If you already have a `stages:` block in your user-data file, you must merge the existing block together with the above content.
 
 
 :::info
@@ -102,16 +104,18 @@ Due to how the immutable OS in Palette Edge works, we must specify the `--hostna
 
 If you use the `deviceUIDPaths` parameter in the user-data to [adjust the automatic naming](https://docs.spectrocloud.com/clusters/edge/edge-configuration/installer-reference#device-id-uid-parameters) of your Edge devices, you can adjust the above content to generate the same hostname that matches your custom configuration.
 
-Matching the hostnames in Tailscale with the Edge host names in Palette is not a hard requirement though.
+Matching the hostnames in Tailscale with the Edge host names in Palette is not a hard requirement however, using non-matching names will work as well.
 
 :::
 
+<br/>
 
 ## Generate a new set of Edge artifacts
 
 Follow the remaining steps of the [Edge artifacts creation instructions](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/palette-canvos#instructions) to generate the device installation ISO and the provider images.
 
+<br/>
 
-## Flash your Edge device(s) with the newly generated ISO
+## Flash your Edge devices with the newly generated ISO
 
 Boot your Edge device with the generated ISO to prepare your Edge host. When the procedure completes, let your Edge device boot to the Registration mode at least once. This will start up Tailscale and register the device. The device should now show up in your Tailscale Machines list.
