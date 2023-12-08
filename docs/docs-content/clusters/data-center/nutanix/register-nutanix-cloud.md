@@ -18,6 +18,13 @@ A System Administrator registers the Nutanix cloud in Palette by invoking system
 
 - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide.
 
+- An infrastructure-components.yaml from the Nutanix space in GitHub
+
+- YAML templates:
+  - controlPlanePoolTemplate.yaml
+  - workerPoolTemplate.yaml
+  - cloudMachineTemplate.yaml
+
 
 ## Register the Cloud
 
@@ -28,3 +35,10 @@ Use the following steps to register a Nutanix cloud.
 2. 
 
 Access the [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) page on GitHub
+
+  | **Template** | **Object** |
+  |-----------|-----------------|
+  | **Control-plane**| KubeadmControlPlane (KCP): cloudMachineTemplate.yaml |
+  | **Worker**|  CloudMachineTemplate|
+  | **Cluster**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
+
