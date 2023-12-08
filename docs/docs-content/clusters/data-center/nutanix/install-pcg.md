@@ -10,11 +10,11 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A Private Cloud Gateway (PCG) is always required for Nutanix. The PCG enables Palette to securely monitor clusters in the cloud. This section guides you on installing the PCG to connect your Nutanix cloud with Palette.
+A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Palette. The PCG enables Palette to securely monitor Nutanix clusters in the cloud. This section guides you on installing the PCG.
 
 ## Prerequisites
 
-- Nutanix cloud registered in Palette.
+- A Nutanix cloud registered in Palette.
 
 - A Kubernetes cluster in Nutanix with version 1.19.x or higher, outbound internet connectivity, and
 DNS configured to resolve public internet domain names.

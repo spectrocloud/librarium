@@ -26,4 +26,6 @@ Below are key architectural highlights of Nutanix clusters provisioned through P
 
 The following diagram illustrates the Nutanix architecture.
 
-![Network flow from an architectural perspective of how Nutanix works with Palette.](/clusters_data-center_nutanix_architecture.png)
+
+
+  ![Network flow from an architectural perspective of how Nutanix works with Palette.](/clusters_data-center_nutanix_architecture.png)

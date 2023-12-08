@@ -6,12 +6,14 @@ hide_table_of_contents: false
 tags: ["data center", "nutanix"]
 ---
 
-After the Private Cloud Gateway is installed to enable Palette to securely monitor clusters, add the Nutanix cloud account to Palette. The required fields to add the cloud are pre-defined by the System Administrator during the cloud registration process. These cloud-specific fields vary based on the cloud type. The PCG name provided at the time of PCG creation is auto-filled, and you provide the account name.
+ Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account must be added to Palette. The required fields to add the cloud are pre-defined by the System Administrator during the cloud registration process. These cloud-specific fields vary based on the cloud type.
 
 ## Prerequisites
 
-A Nutanix cloud and cloud account that a System Administrator has registered with Palette.
+- A Nutanix cloud and cloud account that a System Administrator has registered with Palette.
 Add Cloud Account
+
+## Add Cloud Account
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -23,7 +25,13 @@ Add Cloud Account
 
 5. Fill out the following input values and click on **Confirm** to continue. 
 
-<<< TABLE PLACEHOLDER >>>
+  | **Field** | **Description** |
+  |-----------|-----------------|
+  | **Name**| A custom name for the account. |
+  | **Private Cloud Gateway**| This name is auto-filled based on the name you provided when you installed the PCG.|
+  | **NUTANIX_USER**| Prism Central user name.|
+  | **NUTANIX_PASSWORD** | Prism Central password.|
+  | **NUTANIX_ENDPOINT** | Prism Central IP address or fully qualified domain name (FQDN).|
 
 
 ## Validate
