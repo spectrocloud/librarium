@@ -10,7 +10,7 @@ logoUrl: 'https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d4
 tags: ['packs', 'harbor-edge-native-config', 'system-app']
 ---
 
-Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster,  including your provider images and all packs used by your cluster. After the initial download, the cluster can pull images from Harbor instead of an external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external network.
+Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and all packs used by your cluster. After the initial download, the cluster can pull images from Harbor instead of an external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external network.
 
 
 ## Versions Supported
