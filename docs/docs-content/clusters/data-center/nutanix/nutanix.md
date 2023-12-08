@@ -3,6 +3,7 @@ sidebar_label: "Nutanix"
 title: "Nutanix"
 description: "Learn how to configure Nutanix and create Nutanix clusters in Palette."
 hide_table_of_contents: false
+sidebar_position: 10
 tags: ["data center", "nutanix"]
 ---
 
