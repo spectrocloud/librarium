@@ -7,7 +7,7 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-Palette Edge allows you provision a local Harbor image registry as part of your Edge deployment. When your Edge cluster is created for the first time, all images downloaded from external registries are stored locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the external network. 
+Palette Edge allows you provision a local Harbor image registry as part of your Edge deployment. When your Edge cluster is created for the first time, all images downloaded from external registries are stored locally in the Harbor registry, including your provider images and all packs used by your cluster. Subsequent image pulls from the cluster are made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the external network. 
 
 
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
@@ -15,7 +15,9 @@ Palette Edge allows you provision a local Harbor image registry as part of your 
 ## Prerequisites
 - At least one Edge host with an x86_64 or AMD64 processor architecture. 
 
-- Each of your Edge hosts must have at least 2 CPUs (4 CPUs recommended), 8 GB of RAM, and your cluster needs at least 160 GB of persistent storage.
+- Each of your Edge hosts must have at least 2 CPUs (4 CPUs recommended), 8 GB of RAM.
+
+- At least 160 GB of persistent storage. The actual amount of storage required depends on the size of your images. 
 
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to [Model Edge Cluster Profile](../site-deployment/model-profile.md).
 
@@ -29,11 +31,13 @@ Palette Edge allows you provision a local Harbor image registry as part of your 
 
 4. If the profile does not already have a storage layer, click **Add New Pack** to add a storage pack. You can choose any storage pack for your storage layer. 
 
-5. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile. To learn about the pack and its parameters, refer to [Harbor Edge Native Config pack documentation](../../../integrations/harbor-edge.md).
+5. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile. For more information about the pack and its parameters, refer to [Harbor Edge Native Config pack documentation](../../../integrations/harbor-edge.md).
 
-6. Click **Save Changes**.
+6. In the `harbor-config.storage` parameter, make sure you allocate enough storage in the `registry` field to store all your images.
 
-7. Deploy a new Edge cluster with your updated profile. Or if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images still requires a connection to the external network, but subsequent images pulls will be from the local harbor registry. 
+7. Click **Save Changes**.
+
+8. Deploy a new Edge cluster with your updated profile. Or if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images still requires a connection to the external network, but subsequent images pulls will be from the local harbor registry. 
 
 ## Validation
 
