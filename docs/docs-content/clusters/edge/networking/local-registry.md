@@ -15,7 +15,7 @@ Palette Edge allows you provision a local Harbor image registry as part of your 
 ## Prerequisites
 - At least one Edge host with an x86_64 or AMD64 processor architecture. 
 
-- Each of your Edge hosts must have at least 2 CPUs (4 CPUs recommended), 8 GB of RAM.
+- Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
 
 - At least 160 GB of persistent storage. The actual amount of storage required depends on the size of your images. 
 
