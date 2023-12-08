@@ -35,7 +35,12 @@ Use the following steps to deploy a new Nutanix cluster.
 
 5. Fill out the following basic information, and click **Next** to continue.
 
-  <<< TABLE PLACEHOLDER >>>
+  | **Field** | **Description** |
+  |-----------|-----------------|
+  | **Cluster Name**| A custom name for the cluster. |
+  | **Description**| Use the description to provide context about the cluster.|
+  | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
+  | **Cloud Account** | If your Nutanix account is already added in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your Nutanix account information. |
 
 6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the cluster profile layers.
 

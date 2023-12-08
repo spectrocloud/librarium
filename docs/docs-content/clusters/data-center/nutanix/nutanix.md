@@ -6,19 +6,17 @@ hide_table_of_contents: false
 tags: ["data center", "nutanix"]
 ---
 
-Palette enables seamless integration with Canonical MAAS, allowing you to deploy and manage Kubernetes clusters directly on bare metal servers. Palette achieves this through the Private Cloud Gateway (PCG), establishing a secure connection from the internal network to the internet-accessible Palette instance and effectively bypassing NAT gateways and firewalls.
+[Nutanix](https://www.nutanix.com/what-we-do) is a hyper-converged infrastructure platform that combines storage, compute, and networking into a single integrated system. Palette provides a generic framework built upon the open-source CAPI initiative to support adding cloud providers. Using this framework, Palette supports integration with Nutanix as a *Tech Preview* for enabling cluster deployment within the Nutanix environment. This integration is achieved through a Private Cloud Gateway (PCG), which establishes a secure connection with Nutanix.
 
-
-Palette also supports self-hosted deployment of Kubernetes clusters in the MAAS environment, allowing direct access to MAAS through a private network without the need for a PCG. This setup ensures network connectivity and flexibility in managing Kubernetes clusters on bare metal servers, either through a VPN or by directly accessing the Palette instance in a private network.
 
 ## Resources
 
-- [Nutanix Architecture]
+- [Nutanix Architecture](architecture.md)
 
-- [Register Nutanix Cloud]
+- [Register Nutanix Cloud](register-nutanix-cloud.md)
 
-- [Install Private Cloud Gateway]
+- [Install Private Cloud Gateway](install-pcg.md)
 
-- [Add Nutanix Cloud Account]
+- [Add Nutanix Cloud Account](add-nutanix-cloud-account.md)
 
-- [Create and Manage Nutanix Cluster]
+- [Create and Manage Nutanix Cluster](create-manage-nutanix-cluster.md)
