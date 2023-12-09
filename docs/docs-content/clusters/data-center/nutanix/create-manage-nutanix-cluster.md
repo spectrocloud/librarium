@@ -14,7 +14,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - A Private Cloud Gateway (PCG) deployed.
 
-- Nutanix version <<< PLACEHOLDER >>
+- Minimum supported CAPI version v1.5.3 <<< COMPATIBILITY MATRIX LINK >>>
 
 - A cluster profile created for the Nutanix cloud. To learn how to create a profile, refer to  [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/).
 
@@ -48,7 +48,24 @@ Use the following steps to deploy a new Nutanix cluster.
 
 8. Click **Next** to continue. Palette displays the Cluster configuration YAML file.
 
-9. Review the YAML file that displays and make any adjustments to configure your cluster. Click **Next** when you are done.
+9. Review the YAML file that displays and make any adjustments to configure your cluster. Replace everything in curly braces with a value. For example, "${CLUSTER_NAME]" ==> "test-demo" Click **Next** when you are done.
+
+<<< PLACEHOLDER FOR INFO ABOUT Panel at right to be added - user fills in macro values during (Cluster config step).Macros are in the infrastructure-components.yaml. All the values should be resolved or have a default value. For xmp, {NUTANIX_INSECURE=false} Things that are user input for the cloud account. 
+Values input in Palette replace values in the infrastructure-components.yaml and in any other templates where the macro appears.
+
+:::caution
+names must match, or cluster configuration will fail. `name: "master-pool"` in the worker pool must match. follow format - "${CLUSTER_NAME-control-plane]" must be `"test-demo-control-demo"`. "${KUBERNETES_VERSION}" must be preceded with a `v`: `"v1.27.5"`
+:::
+
+variables within braces must be replaced.
+
+CSI pack changes per cloud - cloud provider interface (CPI ) is included in the pack.
+
+Scaling is specified in the UI and is reflected in the `replicas` parameter.
+
+Update and Delete cluster is also done in a yaml. >>>
+
+
 
 10. Configure the master and worker pools using the YAML files that Palette displays.
 

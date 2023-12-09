@@ -18,12 +18,12 @@ A System Administrator registers the Nutanix cloud in Palette by invoking system
 
 - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide.
 
-- An infrastructure-components.yaml from the Nutanix space in GitHub
+- Downloaded infrastructure-components.yaml from the Nutanix space in GitHub. The YAML contains all the Custom Resource Definitions (CRDs) for Nutanix cluster resources.
 
-- YAML templates:
-  - controlPlanePoolTemplate.yaml
-  - workerPoolTemplate.yaml
-  - cloudMachineTemplate.yaml
+- YAML templates, which can be found on the cloud provider release pages in GitHub:
+  - control-plane template
+  - worker template
+  - cluster template (cluster-template.yaml)
 
 
 ## Register the Cloud
@@ -34,11 +34,28 @@ Use the following steps to register a Nutanix cloud.
 
 2. 
 
-Access the [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) page on GitHub
+Access the [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) page on GitHub.
 
-  | **Template** | **Object** |
+  | **Template** | **Objects** |
   |-----------|-----------------|
-  | **Control-plane**| KubeadmControlPlane (KCP): cloudMachineTemplate.yaml |
-  | **Worker**|  CloudMachineTemplate|
-  | **Cluster**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
+  | **Control-plane**| KubeadmControlPlane (KCP)<br />NutanixdMachineTemplate |
+  | **Worker**| MachineDeployment (MD)<br />KubeadmConfigTemplate<br />NutanixMachineTemplate |
+  | **Cluster**|Cluster<br />CloudCluster<br />Secrets<br />ConfigMap<br />MachineHealthCheck |
 
+ user replaces anything in braces.
+
+ 
+ 
+ "divide into three files"
+
+Some Cluster templates contain all of these objects, and others may not contain Secrets, configMap, and healthcheck 
+
+Cluster template gets installed first. If any of the control-plane and worker objects are not 
+
+1. Get the templates. 
+:::caution
+When selecting templates, check to see if the cloud provider has a compatibility matrix ensure you download the latest CAPI version. 
+:::
+2. Register four templates using APIs. 
+
+3. 
