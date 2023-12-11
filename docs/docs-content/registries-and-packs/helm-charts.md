@@ -6,7 +6,7 @@ hide_table_of_contents: false
 sidebar_position: 60
 ---
 
-Helm Charts are a collection of Kubernetes resource files capable of deploying services of varying complexity. Palette provides some stable default Helm charts in its public Helm Chart Registry. 
+<!-- Helm Charts are a collection of Kubernetes resource files capable of deploying services of varying complexity. Palette provides some stable default Helm charts in its public Helm Chart Registry. 
 
 Palette also supports creating custom Helm registries. You can add your own public or private Helm registries to Palette's Helm registry.
 
@@ -70,4 +70,4 @@ The following applies when adding Helm charts to cluster profiles.
 [Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
 
 <br />
-
+ -->
