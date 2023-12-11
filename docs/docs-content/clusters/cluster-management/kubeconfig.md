@@ -36,7 +36,7 @@ Palette exposes kubeconfig files for each cluster deployed through the platform.
 
 Your assigned [Palette permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md) determine which clusters you can access and what operations you can perform on the cluster. The permissions assigned to you in Palette determine if you can download and access the kubeconfig files for a cluster. 
 
-As a rule of thumb, users with the Palette role [*Cluster Admin*](../../user-management/palette-rbac/project-scope-roles-permissions#cluster) can access the admin kubeconfig files for all clusters in the project. Users with lower-level project roles such as the  *Cluster Editor* or the *Cluster Viewer* may not be able to access the kubeconfig file of the cluster. 
+As a rule, users with the Palette role [*Cluster Admin*](../../user-management/palette-rbac/project-scope-roles-permissions#cluster) can access the admin kubeconfig files for all clusters in the project. Users with lower-level project roles such as the  *Cluster Editor* or the *Cluster Viewer* may not be able to access the kubeconfig file of the cluster. 
 
 
 
