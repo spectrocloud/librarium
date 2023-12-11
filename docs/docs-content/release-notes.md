@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Release Notes"
 title: "Release Notes"
-description: "Spectro Cloud release notes for Palette and its sub-components."
+description: "Release notes for Palette and its sub-components."
 hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 3
@@ -26,9 +26,6 @@ tags: ["release-notes"]
 #### Features
 
 
-- We are intorducing a new custom internal framework that allows integration of new CAPI providers without requiring product changes. This tech preview feature enables users to onboard and use any cloud provider that already has an [official CAPI provider](https://cluster-api.sigs.k8s.io/reference/providers.html). Nutanix support is now available through this framework, and it will serve as the foundation to onboard additional CAPI-compliant providers in the future. 
-
-
 - Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/). You can deploy Kubernetes clusters on Nutanix using Palette. Support for Nutanix is currently under technical preview and subject to change as we continue to improve the integration.
 
 
@@ -38,20 +35,16 @@ tags: ["release-notes"]
 - Palette CLI now supports intergation with [Validator](https://github.com/spectrocloud-labs/validator), an open-source framework that you can use to validate your environment. Validator performs Day 0-2 validation and configuration drift detection in a composable manner across a wide variety of systems. Use the `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX. Refer to the [Validator](./palette-cli/commands/validator.md) CLI reference for more information.
 
 
+- Support for passkeys is now available for the self-hosted Palette admin user. You can now use passkeys to authenticate to the admin user account when accessing the system console. Refer to the [System Console Credentials](./enterprise-version/system-management/account-management/credentials.md) resource for more information.
 #### Improvements
 
 
-- Cluster profile modifications now have an improved user experience that allows you to revert changes
+#### Improvements
+
 
 - An improved differential editor is now available. The new editor provides a side-by-side comparison of the changes that will be applied to the cluster profile. The editor also identifies YAML customziations you have added and guides you through the process of carrying over the customization to the new version of the YAML. The ability to undo changes and accept all changes is also available.
 
 - When updating a deployed cluster profile or updating an active cluster's profile, the new differantial editior is available to help you identify the changes that will be applied to the cluster profile.
-
-
-#### Deprecations and Removals
-
-#### Known Issues
-
 
 
 
@@ -63,7 +56,7 @@ tags: ["release-notes"]
 
 #### Features
 
-- Overlay support for DHCP. Edge hosts can now self-discover VxLAN overlay within a single ethernet brodcast domain. Clusters using this feature will remain operational in the scenario the host IP addresses changes unexpectedly. 
+- Overlay support for DHCP. Edge hosts can now self-discover VxLAN overlay within a single ethernet brodcast domain. Clusters using this feature will remain operational in the scenario the host IP addresses changes unexpectedly. Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
 
 
 - Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads and to initialize the other edge host nodes of a cluster. Using a local registry can help you reduce the amount of data that is transferred over the network, cache images locally, and provide a backup for when internet access is not available. 
@@ -73,9 +66,9 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- New Edge clusters can now retrieve provider images from an authenticated registries. Previously, only public registries were supported for non-airgapped clusters, now you can use authenticated registries to store your provider images and retrieve them during cluster deployment.
+- New Edge clusters can now retrieve provider images from an authenticated registries. Previously, only public registries were supported for non-airgapped clusters, now you can use authenticated registries to store your provider images and retrieve them during cluster deployment. Refer to the [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-private-registry.md) guide for more information.
 
-- Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge clusters. You can now specify additional kube-vip configuration paramters as part of the Kubernetes pack layer configuration. 
+- Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge clusters. You can now specify additional kube-vip configuration paramters as part of the Kubernetes pack layer configuration. To learn more about the available kube-vip configuration parameters, refer to the [Publish Cluster Services with Kube-vip](clusters/edge/networking/kubevip.md) resource.
 
 
 #### Known Issues
@@ -113,19 +106,20 @@ tags: ["release-notes"]
 - Canonical MAAS support is now available for VerteX. You can now deploy Canonical MAAS clusters with VerteX. Refer to the [MAAS](./clusters/data-center/maas/maas.md) resource for more information on how to deploy MAAS clusters.
 
 
-- Multi-Factor Authentication (MFA) for the [System Console](./vertex/system-management/system-management.md#access-the-system-console) is now available. Enable MFA to secure access to the system console and help prevent unauthorized access to your VerteX administration settings.
-
+- Support for passkeys is now available for the admin user. You can now use passkeys to authenticate to the admin user account when accessing the system console. Refer to the [System Console Credentials](vertex/system-management/account-management/credentials.md) resource for more information.
 #### Improvements
 
 - You can now access Palette documentation offline by using the Palette documenation container. Refer to the [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md) page for more information.
 
 ### Terraform
 
-- Version 0.17.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Version 0.17.1 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 ### Breaking Changes
 
-- The resource `spectrocloud_cluster_edge_native` is deprecating the following arguments; `cloud_config_id`, `ssh_key`, and `host_uids`.
+- The parameter `cluster_context` is now a required attribute for the resource `spectrocloud_application`.
+
+- The resource `spectrocloud_cluster_edge_native` is deprecating the following arguments; `ssh_key`, and `host_uids`.
 
 ### Docs and Education
 

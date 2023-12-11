@@ -106,7 +106,7 @@ Complete the following steps before deploying the airgap VerteX installation.
   https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12510-fips.ova
   ```
 
-4. Append an `r_` prefix to the OVA name after the import. For example, `r_u-2004-0-k-12510-fips.ova`. This prefix is required for the install process to identify the OVA.
+4. Append an `r_` prefix to the OVA name after the import. For example, `r_u-2004-0-k-12510-fips.ova`. This prefix is required for the install process to identify the OVA. Refer to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OVAs you can download and upload to your vCenter environment.
 
 
 5. In your OCI registry, create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the VerteX Packs. 
