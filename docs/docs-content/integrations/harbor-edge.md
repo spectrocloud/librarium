@@ -16,7 +16,7 @@ Harbor is an open-source registry that secures artifacts with policies and role-
 ## Versions Supported
 
 :::info
-The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile that includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on the cluster. You cannot manually choose a version for this pack.  
+The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile that includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on the cluster. You cannot manually choose a version of this pack.  
 :::
 
 <Tabs>
@@ -38,7 +38,7 @@ You can use a macro to avoid providing credentials in plain text. For more infor
 
 | **Parameter** | **Description**  |
 |---------------|------------------|
-| `harbor-config.auth.password` | Specifies the password used with the default user name `admin` to authenticate with the Harbor image registry. You cannot change the username. If you don't provide password, a random password is generated and saved to a secret in the cluster named `registry-info`. This password is automatically configured to be used internally inside the cluster for image pulls, and you would only need it for accessing the Harbor registry from outside the cluster.|
+| `harbor-config.auth.password` | Specifies the password used with the default user name `admin` to authenticate with the Harbor image registry. You cannot change the username. If you don't provide password, a random password is generated and saved to a secret in the cluster named `registry-info` in the `cluster_CLUSTER_UID` namespace, where `CLUSTER_UID` is the unique ID for your cluster. You find this namespace by listing all namespaces in your cluster. This password is automatically configured to be used internally inside the cluster for image pulls, and you would only need it for accessing the Harbor registry from outside the cluster.|
 | `harbor-config.auth.certs` | Specifies the certificate and private key used for authentication with Harbor. The common name or subject alternative name must include the host name `spectro.registry.local` and the Edge cluster's virtual IP address. If you don't provide a certificate or private key, Palette generates a certificate and a private key to use internally within the cluster. You can find the certificate in a secret named `harbor-tls` in the `harbor` namespace. |
 | `harbor-config.service.serviceType` | Specifies the service type for the Harbor service. The default service type is NodePort. |
 | `harbor-config.service.harbor` | Specifies the ports that harbor is exposed on. |
@@ -52,7 +52,7 @@ You can use Harbor in an Edge cluster that is connected to external networks. Ha
 
 #### Log in to Harbor Web UI
 
-With Harbor enabled on your Edge cluster, you can log into your Harbor via its web UI. By default, the Harbor service accessible as a NodePort-type service. with the HTTPS port being 30003. You can use the following steps to log in to Harbor via the web UI. 
+With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service accessible as a NodePort-type service. with the HTTPS port being 30003. You can use the following steps to log in to Harbor via the web UI. 
 
 
 1. Log in to [Palette](https://console.spectrocloud.com).

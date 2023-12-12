@@ -14,7 +14,7 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 
 ## Prerequisites
 
-- At least one Edge host registered with your Palette account with an AMD64/x86_64 processor architecture. 
+- At least one Edge host registered with your Palette account with an AMD64 or x86_64 processor architecture. 
 
 - Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
 
@@ -52,7 +52,7 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 
 5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning and you will be directed to Harbor's web UI. If you are using chrome, you can click anywhere in your browser tab and type "thisisunsafe" using your keyboard to dismiss the warning. 
 
-6. Type in `admin` as the username and your password to log in to Harbor. If you don't know your password, refer to [Retrieve Harbor Credentials](../../../integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve your password.  
+6. Type in your credentials to log in to Harbor. The username is always `admin`. The password is what you configured during cluster creation. If you don't know your password, refer to [Retrieve Harbor Credentials](../../../integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve your password.  
 
 7. In the **Projects** view, select the **spectro-images** project.
 
