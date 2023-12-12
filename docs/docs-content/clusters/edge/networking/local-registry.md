@@ -13,7 +13,8 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
 
 ## Prerequisites
-- At least one Edge host with an x86_64 or AMD64 processor architecture. 
+
+- At least one Edge host registered with your Palette account with an AMD64/x86_64 processor architecture. 
 
 - Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
 
@@ -43,10 +44,16 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**. 
+2. From the left **Main Menu**, navigate to **Clusters**. Choose your Edge cluster.
 
-3. Select the cluster that's configured with a local Harbor registry.
+3. Navigate to the **Nodes** tab, in the **Private Ips** column, you can find the IP addresses of your Edge hosts. 
 
-4. Add a new Edge host to the cluster. For more information about adding Edge hosts, refer to [Add an Edge Host to a Host Cluster](../site-deployment/site-installation/cluster-deployment.md#add-an-edge-host-to-a-host-cluster). 
+4. Open a new tab in your browser and navigate to `https://NODE_IP:30003` and replace `NODE_IP` with any IP address in your cluster. NodePort-type services are exposed on the same port on all nodes in your cluster. If you changed the HTTPS port in the configurations, replace the port with the HTTPS port you used. 
 
-5. Navigate to the **Events** tab, and search for the logs for image pulls. Confirm that images are being pulling from the local Harbor registry.
+5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning and you will be directed to Harbor's web UI. If you are using chrome, you can click anywhere in your browser tab and type "thisisunsafe" using your keyboard to dismiss the warning. 
+
+6. Type in `admin` as the username and your password to log in to Harbor. If you don't know your password, refer to [Retrieve Harbor Credentials](../../../integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve your password.  
+
+7. In the **Projects** view, select the **spectro-images** project.
+
+8. Confirm that all images required by the cluster are stored in the project. 
