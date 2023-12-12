@@ -52,7 +52,7 @@ You can use Harbor in an Edge cluster that is connected to external networks. Ha
 
 #### Log in to Harbor Web UI
 
-With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service accessible as a NodePort-type service. with the HTTPS port being 30003. You can use the following steps to log in to Harbor via the web UI. 
+With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service is accessible as a NodePort-type service with HTTPS enabled on port `30003`. You can use the following steps to log in to Harbor via the web UI. 
 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -63,7 +63,7 @@ With Harbor enabled on your Edge cluster, you can log in to Harbor via its web U
 
 4. Open a new tab in your browser and navigate to `https://NODE_IP:30003` and replace `NODE_IP` with any IP address in your cluster. NodePort-type services are exposed on the same port on all nodes in your cluster. If you changed the HTTPS port in the configurations, replace the port with the HTTPS port you used. 
 
-5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning and you will be directed to Harbor's web UI. If you are using chrome, you can click anywhere in your browser tab and type "thisisunsafe" using your keyboard to dismiss the warning. 
+5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning, and you will be directed to Harbor's web UI. If you use Google Chrome, you can click anywhere in your browser tab and type `this is unsafe` using your keyboard to dismiss the warning. 
 
 6. Type in `admin` as the username and your password to log in to Harbor. If you don't know your password, refer to [Retrieve Harbor Credentials](#retrieve-harbor-credentials) to retrieve your password.  
 
@@ -84,7 +84,7 @@ During cluster creation, Palette creates two secrets that store the password use
 2. Issue the following command to get the password of your Harbor user. Replace `CLUSTER-ID-NAMESPACE` with the namespace you identified in the previous step. This command outputs your password. 
 
 ```shell
-kubectl get secret registry-info --namespace CLUSTER-ID-NAMESPACE -o jsonpath="{.data.SPECTRO_USER_PASSWORD}" | base64 --decode
+kubectl get secret registry-info --namespace CLUSTER-ID-NAMESPACE --output jsonpath="{.data.SPECTRO_USER_PASSWORD}" | base64 --decode
 ```
 
 </TabItem>
@@ -93,7 +93,7 @@ kubectl get secret registry-info --namespace CLUSTER-ID-NAMESPACE -o jsonpath="{
 Issue the following command to retrieve the certificate. 
 
 ```shell
-kubectl get secret harbor-tls --namespace harbor -o jsonpath="{.data.tls\.crt}" | base64 --decode
+kubectl get secret harbor-tls --namespace harbor --output jsonpath="{.data.tls\.crt}" | base64 --decode
 ```
 
 </TabItem>
@@ -102,7 +102,7 @@ kubectl get secret harbor-tls --namespace harbor -o jsonpath="{.data.tls\.crt}" 
 Issue the following command to retrieve the private key.
 
 ```shell
-kubectl get secret harbor-tls --namespace harbor -o jsonpath="{.data.tls\.key}" | base64 --decode
+kubectl get secret harbor-tls --namespace harbor --output jsonpath="{.data.tls\.key}" | base64 --decode
 ```
 
 </TabItem>
@@ -125,7 +125,7 @@ If you didn't provide a certificate or are using a self-signed certificate, Dock
 4. Log in to Harbor from your command-line interface. The following example uses Docker, but you can use any other image management tool. Replace `NODE_IP` with the IP address of any of the nodes and replace `HARBOR_PASSWORD` with the password of your Harbor user. If you don't know your password, refer to [Retrieve Harbor Credentials](#retrieve-harbor-credentials). 
 
    ```shell
-   docker login NODE_IP:30003 -u admin -p HARBOR_PASSWORD
+   docker login NODE_IP:30003 --user admin --password HARBOR_PASSWORD
    ```
 
 5. After a successful login, you can start to pull and push images. 

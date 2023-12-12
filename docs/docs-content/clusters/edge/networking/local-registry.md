@@ -50,7 +50,7 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 
 4. Open a new tab in your browser and navigate to `https://NODE_IP:30003` and replace `NODE_IP` with any IP address in your cluster. NodePort-type services are exposed on the same port on all nodes in your cluster. If you changed the HTTPS port in the configurations, replace the port with the HTTPS port you used. 
 
-5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning and you will be directed to Harbor's web UI. If you are using chrome, you can click anywhere in your browser tab and type "thisisunsafe" using your keyboard to dismiss the warning. 
+5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning, and you will be directed to Harbor's web UI. If you are using Google Chrome, you can click anywhere in your browser tab and type `thisisunsafe` using your keyboard to dismiss the warning. 
 
 6. Type in your credentials to log in to Harbor. The username is always `admin`. The password is what you configured during cluster creation. If you don't know your password, refer to [Retrieve Harbor Credentials](../../../integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve your password.  
 
