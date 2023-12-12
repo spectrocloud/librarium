@@ -255,7 +255,7 @@ After completing the review of all files in the pack directory, the next step is
 
 ## Set Up the Registry Server
 
-You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
+You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](./oci-registry/oci-registry.md) resource for more information.
 
 The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
 
@@ -1269,4 +1269,4 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 - [Pack Constraints](pack-constraints.md)
 
 
-- [Spectro Cloud OCI Registry](oci-registry.md)
+- [OCI Registry](./oci-registry/oci-registry.md)
