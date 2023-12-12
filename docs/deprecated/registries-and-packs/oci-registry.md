@@ -1,7 +1,7 @@
 ---
 sidebar_label: "OCI Registry"
-title: "OCI Registry"
-description: "Learn how to add your own OCI Registry to Palette"
+title: "Spectro Cloud OCI Registry"
+description: "creation and usages of OCI Registry within Spectro Cloud"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 70
@@ -9,7 +9,7 @@ sidebar_position: 70
 
 
 
-<!-- Palette supports OCI registries to serve the “filesystem bundle” unpacked on disk as helm registries. Helm charts hosted in OCI registries can be added to cluster profiles and deployed to Kubernetes clusters. We support all OCI complaint registries.
+Palette supports OCI registries to serve the “filesystem bundle” unpacked on disk as helm registries. Helm charts hosted in OCI registries can be added to cluster profiles and deployed to Kubernetes clusters. We support all OCI complaint registries.
 
 ## Setup OCI Registry:
 
@@ -143,4 +143,3 @@ Charts from the OCI registry can be used in your **Add on** cluster profiles as 
 
 
 * Click done to get your OCI-helm layer added to the cluster profile.
- -->
