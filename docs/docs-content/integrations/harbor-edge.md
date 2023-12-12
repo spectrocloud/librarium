@@ -186,3 +186,9 @@ data "spectrocloud_pack_simple" "harbor-edge-native-config" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
+
+## Resources
+
+- [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md)
+
+- [Harbor documentation](https://goharbor.io/docs/2.4.0/install-config/)
