@@ -33,7 +33,6 @@ Add Cloud Account
   | **NUTANIX_PASSWORD** | Prism Central password.|
   | **NUTANIX_ENDPOINT** | Prism Central IP address or fully qualified domain name (FQDN).|
 
-<<< Is NUTANIX_PORT=9440 missing? >>>
 
 ## Validate
 

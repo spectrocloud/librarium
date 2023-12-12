@@ -30,11 +30,7 @@ A System Administrator registers the Nutanix cloud in Palette by invoking system
 
 Use the following steps to register a Nutanix cloud.
 
-1. Visit [Palette APIs](https://docs.spectrocloud.com/api/category/palette-api-v1). 
-
-2. 
-
-Access the [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) page on GitHub.
+1. Access the [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) page on GitHub.
 
   | **Template** | **Objects** |
   |-----------|-----------------|
@@ -59,3 +55,7 @@ When selecting templates, check to see if the cloud provider has a compatibility
 2. Register four templates using APIs. 
 
 3. 
+
+
+
+Visit [Palette APIs](https://docs.spectrocloud.com/api/category/palette-api-v1). 
