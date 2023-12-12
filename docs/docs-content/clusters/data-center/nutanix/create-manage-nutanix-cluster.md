@@ -10,15 +10,17 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 ## Prerequisites
 
-- A Nutanix cloud and cloud account.
+- A Nutanix Prism Central cloud account.
 
 - A Private Cloud Gateway (PCG) deployed.
 
-- Minimum supported CAPI version v1.5.3 <<< COMPATIBILITY MATRIX LINK >>>
+- Minimum supported CAPI version v1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
 
 - A cluster profile created for the Nutanix cloud. To learn how to create a profile, refer to  [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/).
 
 - A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
+
+- Three files created during cloud registration process
 
 
 ## Deploy a Nutanix Cluster
@@ -89,3 +91,6 @@ Update and Delete cluster is also done in a yaml. >>>
 4. Ensure the **Cluster Status** field displays **Running**.
 
 
+## Resources
+
+tbs
