@@ -4,7 +4,7 @@ title: "Add System-Level Registry"
 description: "Learn how to add a system-level registry in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 20
 tags: ["enterprise", "management", "registry"]
 keywords: ["self-hosted", "enterprise"]
 ---

@@ -7,7 +7,8 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a service of type `LoadBalancer` on the external network.
+You can use kube-vip to provide a virtual IP address for your cluster and use it to expose a service of type `LoadBalancer` on the external network. You can have kube-vip dynamically request IP addresses or use a static IP address. 
+
 
 Kube-vip supports DHCP environments and can request additional IP address from the DHCP server automatically. Using kube-vip, you can expose services inside your cluster externally with a virtual IP address even if you do not have control over your host's network. Kube-vip can also act as a load balancer for both your control plane and Kubernetes services of type `LoadBalancer`.
 
@@ -63,7 +64,11 @@ However, Palette has configured values for the following parameters and they can
   | `svc_enable` | Enables kube-vip to handle traffic for services of type LoadBalancer. |
   | `vip_serviceinterface` | Specifies the NIC that kube-vip will use for handling traffic to LoadBalancer-type services. If your cluster has network overlay enabled, or if your host has multiple NICs and you want to publish services on a different NIC than the one used by Kubernetes, you should specify the name of the NIC as the value of this parameter. If this parameter is not specified and you have set `svc_enable` to `true`, kube-vip will use the NIC you specified in `vip_interface` to handle traffic to LoadBalancer-type services.  |
 
-8. Next, in layer of your cluster profile that has the service you want to expose, add two parameters `loadBalancerIP: 0.0.0.0` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec. The following example manifest displays the usage of these two parameters.
+
+8. Next, in layer of your cluster profile that has the service you want to expose, add two parameters `loadBalancerIP: IP_ADDRESS` and `loadBalancerClass: kube-vip.io/kube-vip-class` to the service spec. The following example manifest displays the usage of these two parameters.
+
+  If you are deploying in a DHCP environment, use `0.0.0.0` as the value for the `loadBalancerIP` parameter. If you want kube-vip to use a static IP, specify the IP address and make sure it's unused by other hosts in the network. The following example manifest displays the usage of these two parameters.
+  
    ```yaml {7-8}
     apiVersion: v1
     kind: Service

@@ -16,6 +16,15 @@ tags: ["palette-cli"]
 Use the following steps to install and set up the Palette CLI.
 
 
+## Supported Operating Systems
+
+The Palette CLI is available for the following operating systems and architectures.
+
+| **Operating System** | **Architecture** |
+|------------------|--------------|
+| Linux            | amd64        |
+
+
 ## Prerequisites
 
 - A Palette account. Click [here](https://console.spectrocloud.com/) to create a Palette account.
@@ -23,17 +32,19 @@ Use the following steps to install and set up the Palette CLI.
 
 - A Palette API key. Refer to the [Create API Key](../user-management/authentication/api-key/create-api-key.md) reference page to learn how to create an API key.
 
+- Different Palette CLI commands may require additional prerequisites. Refer to the invividual command reference pages to learn more about the prerequisites for each command.
+
 
 
 ## Download and Setup
 
-1. Visit the [Downloads](../spectro-downloads.md#palette-cli) page and download the Palette CLI by using the URL provided.
+1. Visit the [Downloads](../spectro-downloads.md#palette-cli) page and download the Palette CLI by using the URL provided for your operating system.
 
 
 2. Open up a terminal session on your local system.
 
 
-3. Navigate to your default download folder. For Mac and Linux environments the default location is **~/Downloads**.
+3. Navigate to your default download folder. For Linux environments the default location is **~/Downloads**.
 
 
 4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to move the binary to the **/usr/local/bin** folder.
@@ -68,7 +79,7 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
 
   Output:
   ```shell
-  Palette CLI version: 4.1.0
+  Palette CLI version: 4.2.0
   ```
 
 
