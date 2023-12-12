@@ -17,6 +17,9 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 
 - Credentials to access the OCI registry. If you are using an AWS ECR registry, you must have the AWS credentials to an IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
 
+
+- If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate authority (CA), you will need the certificate to add the registry to Palette. 
+
 - Tenant admin access to Palette.
 
 - If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that you are using to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using..
@@ -63,7 +66,7 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 
 ## Add OCI Helm Registry
 
-Use the following steps to add an OCI type Helm registry to Palette. Select the tab that corresponds to the type of OCI registry you are adding.
+Use the following steps to add an OCI Helm registry to Palette. Select the tab that corresponds to the type of OCI registry you are adding.
 
 
 <Tabs groupId="registry">
