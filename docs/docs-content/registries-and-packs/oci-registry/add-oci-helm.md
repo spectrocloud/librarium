@@ -19,7 +19,7 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 
 - Tenant admin access to Palette.
 
-- If you are using an AWS ECR registry, ensure you have the following IAM permissions attached to the IAM user or role that you are using to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using..
+- If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that you are using to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using..
   
   ```json
   {
@@ -69,13 +69,77 @@ Use the following steps to add an OCI type Helm registry to Palette. Select the 
 <Tabs groupId="registry">
 <TabItem value="basic" label="Basic">
 
-a
+1. Log in to the [Palette](https://console.spectrocloud.com) as a Tenant administrator.
+
+2. From the left **Main Menu** select **Tenant Settings**. 
+
+3. From the **Tenant Settings Menu**, Select **Registries**.
+
+4. Click on the **OCI Registries** tab.
+
+5. Click **Add New OCI Registry**.
+
+6. Fill out the **Name** field and select **Helm** as the registry type.
+
+7. Select the **OCI Authentication Type** as **Basic**.
+
+8. Provide the registry URL in the **Endpoint** field.
+
+9. Fill out the **Username** and **Password** fields with the credentials to access the registry.
+
+10. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload file** to upload the certificate.
+
+11. Click **Confirm** to complete adding the registry.
 
 </TabItem>
 
 <TabItem value="aws" label="AWS ECR">
 
-b
+1. Log in to the [Palette](https://console.spectrocloud.com) as a Tenant administrator.
+
+2. From the left **Main Menu** select **Tenant Settings**. 
+
+3. From the **Tenant Settings Menu**, Select **Registries**.
+
+4. Click on the **OCI Registries** tab.
+
+5. Click **Add New OCI Registry**.
+
+6. Fill out the **Name** field and select **Helm** as the registry type.
+
+7. Select the **OCI Authentication Type** as **ECR**.
+
+8. Provide the registry URL in the **Endpoint** field. Exclude the `https://` prefix.
+
+9. If you are using a private ECR registry, toggle the **Enable Authentication** option to expose the authentication fields.
+
+10. Select the **AWS Authentication Method**. Choose **Credentials** if you want to provide the AWS credentials to an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR registry through the Security Token Service (STS). Refer to the table below to learn more about each credential type.
+
+  #### Credentials
+
+    | **Field** | **Description** |
+    | --- | --- |
+    | Access Key | The access key ID of the IAM user. |
+    | Secret access key | The secret access key of the IAM user. |
+
+  #### STS
+
+  | **Field** | **Description** |
+  | --- | --- |
+  | ARN | The Amazon Resource Name (ARN) of the IAM role to assume. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM trust relationship changes you must add to your IAM role.|
+
+  <br />
+
+  :::caution
+
+  If you selected **STS** as the authentication method, you must add a trust relationship to the IAM role you are using to access the ECR registry. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM trust relationship changes you must add to your IAM role. Failure to add the trust relationship will result in an error when you attempt to validate the registry.
+
+  :::
+
+
+11. Click **Confirm** to complete adding the registry.
+
+
 </TabItem>
 
 
@@ -85,17 +149,16 @@ b
 ## Validate
 
 
-<Tabs groupId="registry">
-<TabItem value="basic" label="Basic">
+Use the following steps to validate that the OCI registry is added to Palette correctly.
 
-a
+1. Log in to the [Palette](https://console.spectrocloud.com).
 
-</TabItem>
+2. From the left **Main Menu**, click on **Profiles**.
 
-<TabItem value="aws" label="AWS ECR">
+3. Click **Add Cluster Profile**.
 
-b
-</TabItem>
+4. Provide a name and select the type **Add-on**.
 
+5. In the following screen, click **Add Helm Chart** and select **Private**.
 
-</Tabs>
+6. Verify the Helm Chart registry you added is displayed in the **Registry drop-down Menu**.

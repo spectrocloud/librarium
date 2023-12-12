@@ -12,7 +12,7 @@ You can utilize Helm Charts in your cluster profiles and specify your own Helm C
 
 :::info
 
-You can add a private OCI based Helm Chart registry to Palette. For more information, refer to the [Add OCI Registry](./oci-registry/oci-registry.md) guide.
+You can add a private OCI based Helm Chart registry to Palette. For more information, refer to the [Add OCI Registry](./oci-registry/add-oci-helm.md) guide.
 
 :::
 

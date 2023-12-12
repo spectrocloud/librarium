@@ -11,11 +11,7 @@ Palette supports the configuration of multiple Open Container Initiative (OCI) r
 
 All registries that comply with the OCI specification and support basic authentication are supported. OCI-compliant registries with basic authentication are labeled as **Basic**. Palette also supports some third-party registry providers, such as AWS ECR.
 
-:::caution
-
-Public OCI registries are not supported. You must use a private OCI registry that supports basic authentication.
-
-:::
+## Supported OCI Registries
 
 The following type of OCI registries are supported:
 
@@ -26,6 +22,14 @@ The following type of OCI registries are supported:
 | Packs| OCI based Packs registries. | ✅ | ✅ |
 
 
+
+## Limitations
+
+- Public OCI registries are not supported. You must use a private OCI registry that supports basic authentication.
+
+- Synchronization management is not supported for OCI registries. OCI registries are automatically synchronized with Palette and the synchronization cannot be disabled.
+
+<br />
 
 To add an OCI registry to Palette, refer to the respective guide for the OCI-type registry located in the [Resources](#resources) section.
 
