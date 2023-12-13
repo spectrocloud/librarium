@@ -56,6 +56,6 @@ When selecting templates, check to see if the cloud provider has a compatibility
 
 3. 
 
-
+## Register the Cloud Account (??)
 
 Visit [Palette APIs](https://docs.spectrocloud.com/api/category/palette-api-v1). 

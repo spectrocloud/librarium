@@ -11,7 +11,7 @@ tags: ["data center", "nutanix"]
 ## Prerequisites
 
 - A Nutanix cloud and cloud account that a System Administrator has registered with Palette.
-Add Cloud Account
+
 
 ## Add Cloud Account
 
@@ -32,7 +32,8 @@ Add Cloud Account
   | **NUTANIX_USER**| Prism Central user name.|
   | **NUTANIX_PASSWORD** | Prism Central password.|
   | **NUTANIX_ENDPOINT** | Prism Central IP address or fully qualified domain name (FQDN).|
-
+  | **NUTANIX_PORT** | Specify the default in the ``cloudClusterTemplate.yaml``: 9440 |
+  | **NUTANIX_INSECURE** | Specify the default in the ``cloudClusterTemplate.yaml``: false |
 
 ## Validate
 
