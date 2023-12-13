@@ -46,76 +46,83 @@ Use the following steps to deploy a new Nutanix cluster.
   | **Cluster Name**| A custom name for the cluster. |
   | **Description**| Use the description to provide context about the cluster.|
   | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
-  | **Cloud Account** | If your Nutanix account is already added in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your Nutanix account information. |
+  | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**. If you have not yet added your account, select **Add New Account** and add your Nutanix account information. |
 
 6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the cluster profile layers.
 
-7. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. The table below lists parameters you may need to review in each profile layer.
+7. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. Click **Next** when you are done.
 
-  | **Profile Layer** | **Parameters to Check** |
-  |-------------------|-------------------------|
-  | **CSI** | `prismEndPoint`<br />`prismPort`<br />`username`<br />`password`  |
+8. In the Cluster configuration YAML file that Palette displays, edit the file to replace each occurrence of the variables within curly braces listed in the table with values that apply to your Nutanix cloud environment, and make any adjustments to configure your cluster. Click **Next** when you are done.
 
-In the Cluster configuration YAML file, replace each occurrence of the variables listed below. Values that are passed as a string, such as names and keys must be enclosed in quotes.
+  | **Variable** | **Description** |
+  |--------------|-----------------|
+  | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The host static IP address. |
+  | `${CLUSTER_ENDPOINT}`| The cluster IP address. |
 
-${CLUSTER_NAME}
-${CONTROL_PLANE_ENDPOINT_IP}  - replace with your host static IP address
-${CLUSTER_ENDPOINT}
+  Ensure your verify the port specified in the YAML. 
 
-In the Node Pool Configuration YAML file for the master pool, replace each occurrence of the variables listed below. 
+  :::caution
+  The following applies when replacing variables within curly braces: 
+  
+  - Names you provide must match. Any names in YAML file that do not match your Nutanix cluster configuration will fail. 
+  - Values that are passed as a string, such as names and keys, must be enclosed in quotes, for example " ".
+  - When replacing values, remove the dollar sign and curly braces.
+  - All the variables in the YAML files must be resolved or have a default value.
+  :::
 
-${CLUSTER_NAME}
+9. In the Node pool configuration YAML files for the master and worker pools, edit the files to replace each occurrence of the variables within curly braces listed in the tables below with values that apply to your Nutanix cloud environment. You can configure scaling by specifying the number of nodes in the pool, which corresponds to `spec.replicas` in the file.
+
+  #### Master Pool 
+
+  | **Variable** | **Description** |
+  |--------------|-----------------|
+  | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The host static IP address. |
+  | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your SSH key. |
+  | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with  'v'. For example: v.1.26.3 |
+  | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
+  | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image. |
+  | `${NUTANIX_SUBNET_NAME}` | The name of the subnet for your Nutanix Prism cluster. |
+
+
+<!-- ${CLUSTER_NAME}
 ${CONTROL_PLANE_ENDPOINT_IP}
 ${NUTANIX_SSH_AUTHORIZED_KEY}
 ${KUBERNETES_VERSION} - precede with v
 ${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}
 ${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME} - replace with OS image
-${NUTANIX_SUBNET_NAME} 
+${NUTANIX_SUBNET_NAME}  -->
 
-In the Node Pool Configuration YAML file for the worker pool, replace each occurrence of the variables listed below.
+  #### Worker-Pool
 
-${NUTANIX_SSH_AUTHORIZED_KEY}
+  | **Variable** | **Description** |
+  |--------------|-----------------|
+  | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your SSH key. |
+  | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with  'v'. For example: v.1.26.3 |
+  | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
+  | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image. |
+  | `${NUTANIX_SUBNET_NAME}` | The name of the subnet for your Nutanix Prism cluster. |
+
+
+<!-- ${NUTANIX_SSH_AUTHORIZED_KEY}
 ${KUBERNETES_VERSION} - precede with v, no quotes 
 ${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}
 ${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}
-${NUTANIX_SUBNET_NAME} 
+${NUTANIX_SUBNET_NAME}  -->
 
 
-Other variables will use the default values in the YAML files created during cloud registration.
+10. Click **Next** when you are done.
 
-8. Click **Next** to continue. Palette displays the Cluster configuration YAML file.
+11. Review the options for OS Patchine Schedule, scanning, backups, and RBAC. 
 
-9. Review the YAML file that displays and make any adjustments to configure your cluster. Replace everything in curly braces with a value. For example, "${CLUSTER_NAME]" ==> "test-demo" Click **Next** when you are done.
+12. Click **Validate** and review the cluster configuration and setting settings summary.
 
-Verify the `prismEndPoint` IP address and `prismPort`.
+13. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of the deployment. Use this page to track the deployment progress. Provisioning clusters can take several minutes to complete.
 
+14. To edit node pool configurations, from the cluster details page, click the **Nodes** tab and select the node pool you wnat to edit, and click the **Edit** button. The YAML displays. 
 
-<<< PLACEHOLDER FOR INFO ABOUT Panel at right to be added - user fills in macro values during (Cluster config step).Macros are in the infrastructure-components.yaml. All the values should be resolved or have a default value. For xmp, {NUTANIX_INSECURE=false} Things that are user input for the cloud account. 
-Values input in Palette replace values in the infrastructure-components.yaml and in any other templates where the macro appears.
-
-:::caution
-names must match, or cluster configuration will fail. `name: "master-pool"` in the worker pool must match. follow format - "${CLUSTER_NAME-control-plane]" must be `"test-demo-control-demo"`. "${KUBERNETES_VERSION}" must be preceded with a `v`: `"v1.27.5"`
-:::
-
-variables within braces must be replaced.
-
-CSI pack changes per cloud - cloud provider interface (CPI ) is included in the pack.
-
-Scaling is specified in the UI and is reflected in the `replicas` parameter.
-
-Update and Delete cluster is also done in a yaml. >>>
-
-
-
-10. Configure the master and worker pools using the YAML files that Palette displays.
-
-11. Click **Next** to continue.
-
-12. Review the options for OS Patchine Schedule, scanning, backups, and RBAC. 
-
-13. Click **Validate** and review the cluster configuration and setting settings summary.
-
-14. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of the deployment. Use this page to track the deployment progress. Provisioning clusters can take several minutes to complete.
+15. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster Configuration**. Edit the YAML that Palette displays.
 
 
 ## Validate
