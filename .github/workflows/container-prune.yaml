@@ -24,5 +24,6 @@ jobs:
         with:
           owner: spectrocloud
           name: librarium
-          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          # token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           untagged-keep-latest: 2
