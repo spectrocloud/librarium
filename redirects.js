@@ -41,11 +41,11 @@ const redirects = [
   },
   {
     from: `/devx/registries/helm-registry`,
-    to: `/registries-and-packs/helm-charts`,
+    to: `/registries-and-packs/registries/helm-charts`,
   },
   {
     from: `/devx/registries/oci-registry`,
-    to: `/registries-and-packs/oci-registry`,
+    to: `/registries-and-packs/registries/oci-registry`,
   },
   {
     from: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
