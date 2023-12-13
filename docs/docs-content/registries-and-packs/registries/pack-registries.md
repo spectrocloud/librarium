@@ -13,7 +13,7 @@ To create your own Legacy Pack Registry, you must first stand up a server-side a
 
 :::info
 
-We recommend you create an Open Container Initative (OCI) Pack Registry versus using the Legacy Pack registry. OCI Pack registries provide you with greater hosting flexibility and allow you to use existing OCI registries you may have in your environment. Refer to the [OCI Registry](./oci-registry/oci-registry.md) resource to learn more about using OCI registries in Palette.
+We recommend you create an Open Container Initiative (OCI) Pack Registry versus using the Legacy Pack registry. OCI Pack registries provide you with greater hosting flexibility and allow you to use existing OCI registries you may have in your environment. Refer to the [OCI Registry](./oci-registry/oci-registry.md) resource to learn more about using OCI registries in Palette.
 
 :::
 

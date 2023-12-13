@@ -7,7 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 30
 ---
 
-You can add an OCI type Pack registry to Palette and use the Packs in your cluster profiles. OCI oack registries are different from the legacy Pack registries. To interact with an OCI Pack registry, you use a tool, such as [Oras](https://oras.land/docs/) CLI, to push and pull OCI Packs to and from the registry.
+You can add an OCI type Pack registry to Palette and use the Packs in your cluster profiles. OCI Pack registries are different from the legacy Pack registries. To interact with an OCI Pack registry, you use a tool, such as [Oras](https://oras.land/docs/) CLI, to push and pull OCI Packs to and from the registry.
 
 :::tip
 

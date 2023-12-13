@@ -24,7 +24,7 @@ Palette supports all OCI registries that support basic authentication. OCI regis
 Registries are added at the tenant level and are available to all users in the tenant. You can add multiple registries of the same type to Palette. If you are using a self-hosted Palette instance, or Palette VerteX, you can add registries through the system console. Registries added through the system console are available to all tenants in the system. Check out the [Self-Hosted Add Registry](../../enterprise-version/system-management/add-registry.md) guide or the [VerteX Add Registry](../../vertex/system-management/add-registry.md) guide.
 
 
-## Syncronization
+## Synchronization
 
 Registries are automatically synchronized with Palette. Helm registries are different as you can choose to disable synchronization. When you disable synchronization, you must manually synchronize the Helm registry with Palette. Refer to the [Helm Registry](helm-charts.md#synchronization-behavior) resource to learn more about the synchronization behavior of Helm registries.
 
