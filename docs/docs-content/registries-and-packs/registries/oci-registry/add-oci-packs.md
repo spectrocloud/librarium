@@ -25,7 +25,7 @@ For guidance on how to add a custom pack to an OCI pack registry, check out the 
 
 - Tenant admin access to Palette.
 
-- If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that Palett will use to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using.
+- If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that Palette will use to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using.
   
   ```json
   {
