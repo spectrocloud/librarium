@@ -7,7 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 30
 ---
 
-You can add an OCI type Pack registry to Palette and use the Packs in your cluster profiles. OCI Pack registries are different from the legacy Pack registries. To interact with an OCI Pack registry, you use a tool, such as [Oras](https://oras.land/docs/) CLI, to push and pull OCI Packs to and from the registry.
+You can add an OCI Pack registry to Palette and use the packs in your cluster profiles. OCI Pack registries are different from the legacy Pack registries. To interact with an OCI Pack registry, you use a tool, such as [Oras](https://oras.land/docs/) CLI, to push and pull packs to and from the registry.
 
 :::tip
 
@@ -25,7 +25,7 @@ For guidance on how to add a custom pack to an OCI pack registry, check out the 
 
 - Tenant admin access to Palette.
 
-- If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that you are using to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using..
+- If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions attached to the IAM user or IAM role that Palett will use to access the registry. You can reduce the `Resource` scope from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using.
   
   ```json
   {
@@ -92,7 +92,7 @@ Use the following steps to add an OCI Packs registry to Palette. Select the tab 
 
 8. Provide the registry URL in the **Endpoint** field.
 
-9. Specify the **Base Content Path**. This is the path to the OCI registry where the OCI Packs are stored. For example, if the OCI registry URL is `https://registry.example.com` and the OCI Packs are stored in the `custom` repository, the base content path is `custom`.
+9. Specify the **Base Content Path**. This is the path to the OCI registry where the OCI Packs are stored. For example, if the OCI registry URL is `https://registry.example.com` and the OCI Packs are stored in the `internal` repository, the base content path is `internal`.
 
 10. Fill out the **Username** and **Password** fields with the credentials to access the registry.
 
@@ -124,7 +124,7 @@ Use the following steps to add an OCI Packs registry to Palette. Select the tab 
 
 10. If you are using a private ECR registry, toggle the **Enable Authentication** option to expose the authentication fields.
 
-11. Select the **AWS Authentication Method**. Choose **Credentials** if you want to provide the AWS credentials to an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR registry through the Security Token Service (STS). Refer to the table below to learn more about each credential type.
+11. Select the **AWS Authentication Method**. Choose **Credentials** if you want to provide the static AWS credentials for an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR registry through the Security Token Service (STS). Refer to the table below to learn more about each credential type.
 
   #### Credentials
 

@@ -21,9 +21,9 @@ You can add a private OCI based Helm Chart registry to Palette. For more informa
 
 When you add a Helm Chart registry to Palette, you can choose whether to synchronize the Helm Chart registry metadata with Palette. The synchronization behavior depends on whether the Helm Chart registry is hosted on a server accessible from Palette's management plane. The metadata is downloaded from the Helm Chart registry and stored internally in Palette. 
 
-If the Helm Chart registry is hosted on a server that will not be accessible from the Palette regularly, we recommend you do not enable synchronization. Palette will download the Helm Charts registry metadata and store it internally. This will allow you to use the Helm Charts in your cluster profiles even if the Helm Chart registry is inaccessible.
+If the Helm Chart registry is hosted on a server that will not be accessible from Palette, we recommend you do not enable synchronization. Palette will download the Helm Charts registry metadata upon registration and store it internally. This will allow you to reference the Helm Charts in your cluster profiles, including if the Helm Chart registry is inaccessible.
 
-When synchronization is disabled, you must manually synchronize the Helm Chart registry with Palette when you want to update the Helm Charts in Palette. You can use the Helm Charts from the registry in your cluster profiles if the Helm Chart registry is inaccessible. Additionally, you will not be able to search for Helm Charts in during the cluster profile creation process, nor will you be able to view the details of the Helm Charts, such as the **values.yaml** file, version, and description. You must manually specify the Helm Chart name and version to use a Helm Chart as a pack layer.
+When synchronization is disabled, you must manually synchronize the Helm Chart registry with Palette when you want to update the Helm Charts in Palette. Additionally, you will not be able to search for Helm Charts in during the cluster profile creation process, nor will you be able to view the details of the Helm Charts, such as the **values.yaml** file, version, and description. You must manually specify the Helm Chart name and version to use a specific Helm Chart from your registry as a pack layer.
 
 
 :::info
@@ -87,7 +87,7 @@ Use the following steps to add a Helm Chart repository to Palette.
    | No Authentication | Toggle this option to the enabled state if your Helm Chart registry does not require authentication. Otherwise, credentials are required. |
    | Username | The username for your Helm Chart registry. |
    | Password | The password for your Helm Chart registry. |
-   | Certificate | You can upload the 509 server X certificate to your Helm Chart registry. |
+   | Certificate | You can upload the X509 server certificate of your Helm Chart registry to Palette. This is required if your Helm Chart registry uses a self-signed certificate. |
    | Insecure Skip TLS Verify | Skip server TLS certificate validation. Check this box if your Helm Chart registry uses a self-signed certificate or if the server certificate is not signed by a trusted CA. |
 
 

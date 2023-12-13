@@ -8,14 +8,14 @@ sidebar_position: 50
 ---
 
 
-You can add an OCI Zarf registry to Palette and use the Zarf packages  cluster profiles. 
+You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster profiles. 
 
 
 ## Prerequisites
 
 - You must have an OCI registry that contains Zarf packages.  
 
-- Credentials to access the OCI registry. 
+- Credentials to access the OCI registry. Public OCI registries are not supported.
 
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate authority (CA), you will need the certificate to add the registry to Palette. 
 

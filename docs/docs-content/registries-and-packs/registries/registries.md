@@ -7,17 +7,15 @@ hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-Palette supports different types of registries that you can add to Palette and use in your cluster profiles. You can add the following types of registries to Palette:
+Palette supports different types of registries that you can add to the platform and use in your cluster profiles. You can add the following types of registries to Palette:
 
 - Open Container Initiative (OCI) Registries
-
-- Zarf Registries
 
 - Helm Registries
 
 - Legacy Pack Registries
 
-Palette supports all OCI registries that support basic authentication. OCI registries can also be used to store and serve OCI images, Helm Charts, Zarf, and Packs. Refer to the [OCI Registries](./oci-registry/oci-registry.md) resource to learn more about OCI registries. 
+Palette supports OCI registries that support basic authentication. OCI registries can also be used to store and serve images, Helm Charts, Zarf packages, and Packs. Refer to the [OCI Registries](./oci-registry/oci-registry.md) resource to learn more about OCI registries. 
 
 ## Scope
 
