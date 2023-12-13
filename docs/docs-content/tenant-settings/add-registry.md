@@ -8,7 +8,7 @@ sidebar_position: 60
 tags: ["enterprise", "management", "registry"]
 ---
 
-You can add a registry at the system level or tenant level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a tenant-level registry. For guidance on adding a registry at the system scope, check out [Add System-Level Registry](../enterprise-version/system-management/add-registry.md). 
+You can add a registry at the tenant level, or if you are using self-hosted Palette or Palette VerteX, you can add registries at the system level. Registries added at the system level are available to all the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a tenant-level registry. For guidance on adding a registry at the system scope, check out [Add System-Level Registry](../enterprise-version/system-management/add-registry.md). 
 
 
 To add a tenant-level registry, you must have tenant admin access to Palette. Use the following resources to learn more about the different types of registries that you can add to Palette:

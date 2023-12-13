@@ -49,11 +49,11 @@ Use the following steps to add a Legacy Pack registry to Palette.
    | **Insecure Skip TLS Verify** | Check this box if the registry is using a self-signed certificate or if the server certificate is not signed by a trusted CA. |
    | **Certificate** | If the registry is using a self-signed certificate or if the server certificate is not signed by a trusted CA, upload the X509 certificate. |
 
-7. Click **Validate** to validate the registry. If the credentials are valid and the Palette is able to connect to the registry, the registry is added to Palette. Otherwise, an error message is displayed.
+7. Click **Validate** to validate the registry. If the credentials are valid and Palette is able to connect to the registry, the registry is added to Palette. Otherwise, an error message is displayed.
 
    :::tip
 
-   If you are encountering issues with adding a registry, review the endpoint URL and ensure that it is accessible from the Palette. Verify the credentials and try again. Lastly, if the registry is hosted on a server using a self-signed certificate, upload the certificate to Palette and skip TLS verification.
+   If you are encountering issues with adding a registry, review the endpoint URL and ensure that it is accessible from Palette. Verify the credentials and try again. Lastly, if the registry is hosted on a server using a self-signed certificate, upload the certificate to Palette and skip TLS verification.
 
    :::
 
@@ -64,7 +64,7 @@ Use the following steps to add a Legacy Pack registry to Palette.
 
 Use the following steps to validate that the registry is added to Palette correctly.
 
-1. Log in to the [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click on **Profiles**.
 
