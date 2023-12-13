@@ -73,7 +73,7 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
-8. If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP:
+8. If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in **values.yaml** for the VMO pack:
 
     ```yaml {10}
      cdi:
@@ -101,6 +101,8 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
                 port: 443
                 targetPort: 8443
     ```
+
+    If your cluster profile does include a load balancer such as MetalLB, no changes are required. For more information about MetalLB, refer to [MetalLB pack documentation](../../integrations/metallb.md). 
 
 9. Click **Confirm & Create**. 
 
