@@ -11,10 +11,17 @@ The `docs` command starts the Palette documentation site in your local environme
 
 :::tip
 
-To stop the documentation site, type `Ctrl+C` in the terminal window where you started it.
+To stop the documentation site, press the buttons `Ctrl+C` in the terminal window where you started it.
 
 :::
 
+
+## Prerequisites
+
+- You need access to the internet to download the container image. Alternatively, you can download the Palette container image and upload it to a self-hosted registry. Check out the [Offline Documentation](../../vertex/install-palette-vertex/airgap/offline-docs.md#) to learn how to extract the container image into a tarball which you can then load into another device and upload to a self-hosted registry.
+
+
+## Docs
 
 The `docs` command exposes the following flags.
 
