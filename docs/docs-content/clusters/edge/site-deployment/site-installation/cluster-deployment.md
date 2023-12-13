@@ -66,6 +66,62 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
   If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS server to configure it.   
 
+  If you choose to change the default NIC used by your nodes, you need to make sure all the NICs in the master node pool share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
+
+  In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the NIC used by your master nodes. For example, if the NIC used by the nodes in your master pool is named `ens32`, add the following two lines.
+
+  ```yaml {3}
+  cluster:
+   kubevipArgs:
+     vip_interface: "ens32"
+  ``` 
+
+  In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the following locations.
+
+  <Tabs>
+  <TabItem value="calico" label="Calico">
+  
+  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+  
+  ```yaml {11}
+  manifests:
+      calico:
+          ...
+          env:
+          # Additional env variables for calico-node
+          calicoNode:
+              #IPV6: "autodetect"
+              #FELIX_IPV6SUPPORT: "true"
+              #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+              #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+              IP_AUTODETECTION_METHOD: "interface=eno*"
+  ```
+  </TabItem>
+  <TabItem value="flannel" label="Flannel">
+
+  In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+
+  ```yaml {8}
+  charts:
+      flannel:
+          ...
+          # flannel command arguments
+          args:
+          - "--ip-masq"
+          - "--kube-subnet-mgr"
+          - "--iface=eno*"
+  ```
+  </TabItem>
+  
+  <TabItem value="cilium" label="Cilium">
+  You do not need to make any adjustments to the Cilium pack.
+  </TabItem>
+
+  <TabItem value="other" label="Other">
+  If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
+  </TabItem>
+  </Tabs>
+
   :::caution
 
   After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless you remove and re-add them back to the cluster. 
@@ -149,6 +205,62 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 9. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you select an Edge host, Palette displays a dropdown of all NICs present on the Edge host. 
 
   If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS server to configure it.   
+
+    If you choose to change the default NIC used by your nodes, you need to make sure all the NICs in the master node pool share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
+
+  In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the NIC used by your master nodes. For example, if the NIC used by the nodes in your master pool is named `ens32`, add the following two lines.
+
+  ```yaml {2-3}
+  cluster:
+   kubevipArgs:
+     vip_interface: "ens32"
+  ``` 
+
+  In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the following locations.
+
+  <Tabs>
+  <TabItem value="calico" label="Calico">
+  
+  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+  
+  ```yaml {11}
+  manifests:
+      calico:
+          ...
+          env:
+          # Additional env variables for calico-node
+          calicoNode:
+              #IPV6: "autodetect"
+              #FELIX_IPV6SUPPORT: "true"
+              #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+              #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+              IP_AUTODETECTION_METHOD: "interface=eno*"
+  ```
+  </TabItem>
+  <TabItem value="flannel" label="Flannel">
+
+  In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the interface or a regular expression (regex) that matches the name of the interface. For example, the following code snippet works for any NIC name that starts with `eno`. 
+
+  ```yaml {8}
+  charts:
+      flannel:
+          ...
+          # flannel command arguments
+          args:
+          - "--ip-masq"
+          - "--kube-subnet-mgr"
+          - "--iface=eno*"
+  ```
+  </TabItem>
+  
+  <TabItem value="cilium" label="Cilium">
+  You do not need to make any adjustments to the Cilium pack.
+  </TabItem>
+
+  <TabItem value="other" label="Other">
+  If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
+  </TabItem>
+  </Tabs>
 
   :::caution
 
