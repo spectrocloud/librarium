@@ -82,7 +82,7 @@ Use the following steps to add an OCI Helm registry to Palette. Select the tab t
 
 5. Click **Add New OCI Registry**.
 
-6. Fill out the **Name** field and select **Helm** as the registry type.
+6. Fill out the **Name** field and select **Helm** as the provider type.
 
 7. Select the **OCI Authentication Type** as **Basic**.
 
@@ -108,7 +108,7 @@ Use the following steps to add an OCI Helm registry to Palette. Select the tab t
 
 5. Click **Add New OCI Registry**.
 
-6. Fill out the **Name** field and select **Helm** as the registry type.
+6. Fill out the **Name** field and select **Helm** as the provider type.
 
 7. Select the **OCI Authentication Type** as **ECR**.
 

@@ -7,7 +7,13 @@ hide_table_of_contents: false
 sidebar_position: 30
 ---
 
-You can add an OCI type Pack registry to Palette and use the Packs in your cluster profiles. 
+You can add an OCI type Pack registry to Palette and use the Packs in your cluster profiles. OCI oack registries are different from the legacy Pack registries. To interact with an OCI Pack registry, you use a tool, such as [Oras](https://oras.land/docs/) CLI, to push and pull OCI Packs to and from the registry.
+
+:::tip
+
+For guidance on how to add a custom pack to an OCI pack registry, check out the [Deploy a Custom Pack](../../deploy-pack.md) tutorial.
+
+:::
 
 ## Prerequisites
 
@@ -80,7 +86,7 @@ Use the following steps to add an OCI Packs registry to Palette. Select the tab 
 
 5. Click **Add New OCI Registry**.
 
-6. Fill out the **Name** field and select **Pack** as the registry type.
+6. Fill out the **Name** field and select **Pack** as the provider type.
 
 7. Select the **OCI Authentication Type** as **Basic**.
 
@@ -108,7 +114,7 @@ Use the following steps to add an OCI Packs registry to Palette. Select the tab 
 
 5. Click **Add New OCI Registry**.
 
-6. Fill out the **Name** field and select **Pack** as the registry type.
+6. Fill out the **Name** field and select **Pack** as the provider type.
 
 7. Select the **OCI Authentication Type** as **ECR**.
 

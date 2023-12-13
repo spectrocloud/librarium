@@ -3,7 +3,7 @@ sidebar_label: "Helm Registries"
 title: "Helm Registries"
 description: "Learn how to add your own Helm Registries to Palette"
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 20
 ---
 
 A Helm Chart is a collection of pre-configured Kubernetes resources that define, install, and upgrade applications on a Kubernetes cluster. Additionally, Helm Chart repositories serve as centralized locations to store and share these packaged charts for streamlined deployment and management. 
@@ -43,7 +43,7 @@ The table below summarizes the synchronization behavior.
 
 ### When to Disable Synchronization?
 
-You should disable synchronization if the Helm Chart registry is hosted on a server that may not always be accessible from Palette's management plane. For example, if the Helm Chart registry is hosted on a server that is only accessible from a private network that only deployed clusters have access to, you should disable synchronization. Although Palette may not be able to synchronize the Helm Chart registry, your clusters will be able to download the Helm Charts from the Helm Chart registry.
+You should disable synchronization if the Helm Chart registry is hosted on a server that may not always be accessible from Palette's management plane. For example, if the Helm Chart registry is hosted on a server that is only accessible from a private network that only deployed clusters have access to, you should disable synchronization. Although Palette may not be able to synchronize the Helm Chart registry, your clusters should be able to download the Helm Charts from the Helm Chart registry.
 
 
 :::caution
