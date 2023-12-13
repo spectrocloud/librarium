@@ -28,7 +28,7 @@ DNS configured to resolve public internet domain names.
 
 ## Install PCG
 
-Use the following steps to install the PCG using Palette.
+Use the following steps to install the PCG in your Kubernetes cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -38,11 +38,11 @@ Use the following steps to install the PCG using Palette.
 
 4. Select **Self Hosted** in the next window that Palette displays.
 
-5. Provide a name for the PCG and use the **drop-down Menu** to select Nutanix. Palette displays the Private Cloud Gateway Overview page. 
+5. Provide a name for the PCG and use the **drop-down Menu** to select Nutanix as the cloud type. Click **Confirm** to continue. Palette displays the Private Cloud Gateway Overview page. 
 
 6. To install the Palette agent, copy the kubectl commands from the slide-out panel into your Kubernetes cluster.
 
-7. Close the slide-out panel when you have copied both the commands. The **Cluster Status** field displays **Pending** while the PCG installs. Installation is complete when the **Cluster Status** field displays **Running**. 
+7. Close the slide-out panel when you have copied both the commands. The **Cluster Status** field on the PCG Overview page displays **Pending** while the PCG is installing. Installation is complete when the **Cluster Status** field displays **Running**.  
 
 
 ## Validate
