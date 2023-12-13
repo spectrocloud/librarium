@@ -102,13 +102,13 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
                 targetPort: 8443
     ```
 
-8. Click **Confirm & Create**. 
+9. Click **Confirm & Create**. 
 
-9. In the following screen, click **Next**. 
+10. In the following screen, click **Next**. 
 
-10. Review the profile and click **Finish Configuration**.
+11. Review the profile and click **Finish Configuration**.
 
-11. Apply the profile to your cluster. For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+12. Apply the profile to your cluster. For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
 
 </TabItem>
 
