@@ -73,7 +73,18 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
-8. If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in **values.yaml** for the VMO pack:
+8. If you are using K3s or RKE2 as the Kubernetes layer in your cluster profile, you need to update the `charts.virtual-machine-orchestrator.multus.networkController` parameter in the `values.yaml` for the VMO pack. Add a line for the parameter `enableK3SHostPath` and set its value to `true`. In addition, change `criSocketContainerPath` to `/host/run/containerd/containerd.sock`. 
+
+    ```yaml {3-4}
+    networkController:
+        criSocket:
+            enableK3SHostPath: true 
+            criSocketContainerPath: /host/run/containerd/containerd.sock
+    ```    
+
+    If you are using PKX-E, no change is required. 
+
+9. If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in **values.yaml** for the VMO pack:
 
     ```yaml {10}
      cdi:
@@ -104,13 +115,13 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
     If your cluster profile does include a load balancer such as MetalLB, no changes are required. For more information about MetalLB, refer to [MetalLB pack documentation](../../integrations/metallb.md). 
 
-9. Click **Confirm & Create**. 
+10. Click **Confirm & Create**. 
 
-10. In the following screen, click **Next**. 
+11. In the following screen, click **Next**. 
 
-11. Review the profile and click **Finish Configuration**.
+12. Review the profile and click **Finish Configuration**.
 
-12. Apply the profile to your cluster. For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+13. Add the add-on profile when you create any  For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
 
 </TabItem>
 
