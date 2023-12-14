@@ -20,6 +20,14 @@ The diagram below illustrates the components of these profile types and how you 
 
 ![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/profiles_cluster-profiles_cluster-profiles.png)
 
+:::info
+
+Cluster profiles created from the Tech Preview cloud type are part of a generic framework Palette provides that is built upon the open-source Cluster API (CAPI) initiative. The Operating System (OS) and Kubernetes layers of these profiles get populated during cluster creation from YAML files created at the system level. During cluster creation, you specify the OS image and Kubernetes version. Palette also provides out-of-the-box packs for the OS layer and for the network and storage layers.
+
+For more information about Palette's generic framework implementing Nutanix as a Tech Preview, check out our Nutanix documentation.
+
+:::
+
 
 ## Profile Layers
 

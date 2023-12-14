@@ -34,7 +34,13 @@ Create a full profile by first adding infrastructure layers composed of an Opera
 
   To learn how to create multiple profile versions that use the same name, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the infrastructure provider, managed Kubernetes, or custom cloud for your environment and click **Next**.
+5. Select the infrastructure provider, managed Kubernetes, or *Tech Preview* cloud type for your environment and click **Next**.
+
+  :::info
+
+  Cluster profiles created from the Tech Preview cloud type are part of a generic framework Palette provides that is built upon the open-source Cluster API (CAPI) initiative. The Operating System (OS) and Kubernetes layers of these profiles get populated during cluster creation from YAML files created at the system level. During cluster creation, you specify the OS image and Kubernetes version. Palette also provides out-of-the-box packs for the OS layer and for the network and storage layers.
+  
+  :::
 
 6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next Layer** to configure each infrastructure layer. 
 
