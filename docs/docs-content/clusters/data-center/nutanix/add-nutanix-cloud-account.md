@@ -10,7 +10,7 @@ tags: ["data center", "nutanix"]
 
 ## Prerequisites
 
-- A Nutanix cloud and cloud account that a System Administrator has registered with Palette.
+- A Nutanix cloud that a System Administrator has registered with Palette.
 
 
 ## Add Cloud Account
@@ -21,7 +21,7 @@ tags: ["data center", "nutanix"]
 
 3. Next, select **Cloud Accounts** in the **Tenant Settings** menu.
 
-4. Locate Nutanix and click **+ Add Nutanix Cloud**.  
+4. Locate Nutanix and click **Add Nutanix Cloud**.  
 
 5. Fill out the following input values and click on **Confirm** to continue. 
 
@@ -48,4 +48,4 @@ tags: ["data center", "nutanix"]
 
 ## Next Steps
 
-Now that you have added a Nutanix account to Palette, you can start deploying Kubernetes clusters to your Nutanix infrastructure. To learn how to get started with deploying Kubernetes clusters to Nutanix, review the [Create and Manage Nutanix](/clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.
+Now that you have added a Nutanix account to Palette, you can start deploying Kubernetes clusters to your Nutanix infrastructure. To learn how to get started with deploying Kubernetes clusters to Nutanix, review the [Create and Manage Nutanix Cluster](/clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.

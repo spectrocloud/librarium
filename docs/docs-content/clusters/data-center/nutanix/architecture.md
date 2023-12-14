@@ -8,7 +8,7 @@ tags: ["data center", "nutanix", "architecture"]
 ---
 
 
-Nutanix is a private data center-based cloud that can be registered to Palette using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. For more information about the CAPI, review  [Cluster API (CAPI) framework](#generic-framework-for-capi-clouds). Nutanix offers a hyper-converged infrastructure (HCI) that combines storage, compute, and networking into a single integrated system. 
+Nutanix is a private data center-based cloud that can be registered to Palette using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. For more information about CAPI, review [CAPI Framework](#generic-framework-for-capi-clouds). Nutanix offers a hyper-converged infrastructure (HCI) that combines storage, compute, and networking into a single integrated system. 
 
 Below are key architectural highlights of Nutanix clusters provisioned through Palette.
 
@@ -16,7 +16,9 @@ Below are key architectural highlights of Nutanix clusters provisioned through P
 
 - Nutanix Prism is a resource management platform that centralizes the monitoring and management of objects across Nutanix environments, whether hosted locally or in the cloud. Nutanix Prism has two main components: Prism Central (PC) and Prism Element (PE).
 
-  - Prism Central is required. CAPI Provider Nutanix Cloud Infrastructure (CAPX) interacts with Prism Central APIs using a Prism Central user account. For more information, refer to the Nutanix [Credential Management](https://opendocs.nutanix.com/capx/latest/credential_management/) reference guide.
+  - Prism Central is a workspace in which you can register and manage Nutanix workload clusters. The Cluster API Provider Nutanix Cloud Infrastructure (CAPX) relies on Prism Central APIs to manage the Kubernetes cluster infrastructure resources. 
+  
+  <!-- Prism Central is required. CAPI Provider Nutanix Cloud Infrastructure (CAPX) interacts with Prism Central APIs using a Prism Central user account. For more information, refer to the Nutanix [Credential Management](https://opendocs.nutanix.com/capx/latest/credential_management/) reference guide. -->
 
   - Prism Element is a localized cluster manager available for every deployed Nutanix cluster. Within Prism Element, you can configure a cluster, specifying its components such as the number of control plane and worker nodes, networking settings, and more.
 

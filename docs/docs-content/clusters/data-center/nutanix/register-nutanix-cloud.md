@@ -19,12 +19,8 @@ A System Administrator registers the Nutanix cloud in Palette by invoking system
 
 - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide.
 
-- Downloaded infrastructure-components.yaml from the Nutanix space in GitHub. The YAML contains all the Custom Resource Definitions (CRDs) for Nutanix cluster resources.
+- Downloaded infrastructure-components.yaml and cluster-template.yaml files from the [Nutanix Cluster API Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) repository. The YAML contains all the Custom Resource Definitions (CRDs) required for Nutanix cluster resources.
 
-- YAML templates, which can be found on the cloud provider release pages in GitHub:
-  - control-plane template
-  - worker template
-  - cluster template (cluster-template.yaml)
 
 
 ## Register the Cloud

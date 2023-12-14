@@ -16,7 +16,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - Minimum supported CAPI version v1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
 
-- A cluster profile created for the Nutanix cloud. To learn how to create a profile, refer to  [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/).
+- A cluster profile created for the Nutanix cloud. To learn how to create a profile, refer to [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/).
 
 - A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
@@ -29,7 +29,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 ## Deploy a Nutanix Cluster
 
-Use the following steps to deploy a new Nutanix cluster.
+Use the following steps to deploy a Kubernetes cluster on Nutanix using Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -84,7 +84,7 @@ Use the following steps to deploy a new Nutanix cluster.
   |--------------|-----------------|
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
   | `${CONTROL_PLANE_ENDPOINT_IP}`| The host static IP address. |
-  | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your SSH key. |
+  | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with  'v'. For example: v.1.26.3 |
   | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
   | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image. |
@@ -103,7 +103,7 @@ ${NUTANIX_SUBNET_NAME}  -->
 
   | **Variable** | **Description** |
   |--------------|-----------------|
-  | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your SSH key. |
+  | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with  'v'. For example: v.1.26.3 |
   | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
   | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image. |
@@ -121,11 +121,11 @@ ${NUTANIX_SUBNET_NAME}  -->
 
 11. Review the options for OS Patchine Schedule, scanning, backups, and RBAC. 
 
-12. Click **Validate** and review the cluster configuration and setting settings summary.
+12. Click **Validate** and review the cluster configuration and settings summary.
 
 13. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of the deployment. Use this page to track the deployment progress. Provisioning clusters can take several minutes to complete.
 
-14. To edit node pool configurations, from the cluster details page, click the **Nodes** tab and select the node pool you wnat to edit, and click the **Edit** button. The YAML displays. 
+14. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node pool you wnat to edit. Click the **Edit** button and edit the YAML that Palette displays. 
 
 15. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster Configuration**. Edit the YAML that Palette displays.
 
@@ -140,7 +140,3 @@ ${NUTANIX_SUBNET_NAME}  -->
 
 4. Ensure the **Cluster Status** field displays **Running**.
 
-
-## Resources
-
-tbs
