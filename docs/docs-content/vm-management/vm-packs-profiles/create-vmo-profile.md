@@ -73,7 +73,9 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
-8. If you are using K3s or RKE2 as the Kubernetes layer in your cluster profile, you need to update the `charts.virtual-machine-orchestrator.multus.networkController` parameter in the `values.yaml` for the VMO pack. Add a line for the parameter `enableK3SHostPath` and set its value to `true`. In addition, change `criSocketContainerPath` to `/host/run/containerd/containerd.sock`. 
+8. If you are using PKX-E, no change is required and you can skip this step. 
+
+    If you are using K3s or RKE2 as the Kubernetes layer in your cluster profile, you need to update the `charts.virtual-machine-orchestrator.multus.networkController` parameter in the `values.yaml` for the VMO pack. Add a line for the parameter `enableK3SHostPath` and set its value to `true`. In addition, change `criSocketContainerPath` to `/host/run/containerd/containerd.sock`. 
 
     ```yaml {3-4}
     networkController:
@@ -82,12 +84,15 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
             criSocketContainerPath: /host/run/containerd/containerd.sock
     ```    
 
-    If you are using PKX-E, no change is required. 
+9.  If your cluster profile does include a load balancer such as MetalLB, no changes are required and you can skip this step. For more information about MetalLB, refer to [MetalLB pack documentation](../../integrations/metallb.md). 
 
-9. If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in **values.yaml** for the VMO pack:
+    If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in **values.yaml** for the VMO pack:
+
+    <Tabs>
+    <TabItem value="cdi" label="cdi">
 
     ```yaml {10}
-     cdi:
+    cdi:
             enabled: true
             replicas: 1
             image:
@@ -100,6 +105,9 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
                 port: 443
                 targetPort: 8443
     ```
+    </TabItem>
+
+    <TabItem value="kubevirt" label="kubevirt">
 
     ```yaml {7}
     kubevirt:
@@ -112,8 +120,8 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
                 port: 443
                 targetPort: 8443
     ```
-
-    If your cluster profile does include a load balancer such as MetalLB, no changes are required. For more information about MetalLB, refer to [MetalLB pack documentation](../../integrations/metallb.md). 
+    </TabItem>
+    </Tabs>
 
 10. Click **Confirm & Create**. 
 
@@ -121,7 +129,7 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
 12. Review the profile and click **Finish Configuration**.
 
-13. Add the add-on profile when you create any  For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+13. Add the add-on profile when you create a cluster. For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
 
 </TabItem>
 
