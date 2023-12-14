@@ -134,7 +134,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Full OIDC config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-full-palette.png)
 
 
-You now have a working configuration for OneLogin as a third-party IdP in Palette. Check ou the [Create Teams in Palette](#create-teams-in-palette) section to learn how to create teams in Palette and map them to groups in OneLogin.
+You now have a working configuration for OneLogin as a third-party IdP in Palette. Check out the [Create Teams in Palette](#create-teams-in-palette) section to learn how to create teams in Palette and map them to groups in OneLogin.
 
 ## Validate
 
