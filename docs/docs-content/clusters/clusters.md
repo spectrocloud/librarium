@@ -269,14 +269,27 @@ The following table lists the proxy requirements required by Palette. Depending 
 
 ## Scope
 
-Clusters are launched from within Projects in Palette, and they belong to a single project. In the **Project** view, all clusters that are launched from that project are listed for users with the Project Administrator role or Cluster Administrator role. A Tenant Administrator can get an aggregated view of clusters running across all projects from the **Organization** view, as follows:
+Clusters can be launched at the project scope or at the tenant scope. A project-level cluster belongs to a single project. A tenant-level cluster does not belong to any project. 
 
-1.    Log in to the **Palette Management Console** as a Tenant Administrator.
+Access to clusters in Palette is governed by Palette's role-based access control. To be able to take any action on a cluster, you need the corresponding permission in the corresponding scope. For example, a user with the permission `cluster.create` in the project `foo` and can create clusters in the project `foo`. Tenant-level permissions allow you to take the corresponding action on clusters in all projects in the tenant, as well as tenant-level clusters. Tenant-level permissions are required to take action on any tenant-level cluster. For more information about role-based access control in Palette, refer to [Palette RBAC](../user-management/palette-rbac/palette-rbac.md). 
 
-2.    Go to the **Clusters** option from the sidebar to list all the clusters belonging to all the users under that Tenant Administrator.
+:::info
+You cannot create a tenant-level Edge cluster. This is because Edge hosts always belong to a project and cannot be added at the tenant scope. 
+:::
 
 
-# Additional Resources 
+## Resources 
 
-The next section provides details for setting workload clusters in various environments.
+- [Public Cloud Clusters](./public-cloud/public-cloud.md)
 
+- [Data Center Clusters](./data-center/data-center.md)
+
+- [Edge](./edge/edge.md)
+
+- [Palette Virtual Clusters](./palette-virtual-clusters/palette-virtual-clusters.md)
+
+- [Imported Clusters](./imported-clusters/imported-clusters.md)
+
+- [Manage Clusters](./cluster-management/)
+
+- [Cluster Groups](./cluster-groups/cluster-groups.md)
