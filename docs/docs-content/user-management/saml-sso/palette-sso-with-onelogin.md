@@ -30,6 +30,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 1. Log in to your [OneLogin account](https://www.onelogin.com/) with administrative credentials.
 
+
 2. Navigate to the **Applications** section of your OneLogin admin dashboard and click on the **Add App** button to create a new application. 
 
 3. In the search bar, type "OpenID Connect" to find the generic OIDC app connector. 
@@ -37,12 +38,15 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Search for OpenID Connect](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_search-oidc.png)  
   
 
-4. Select the "OpenID Connect" app connector to add it to your account. Next, you will be taken to the application configuration page, where you can provide a **Display Name**. Use the display name **Spectro Cloud Palette OIDC** and click **Save**. OpenLog displays the configuration screen for your new application. 
+4. Select the **OpenID Connect** app connector to add it to your account. 
+
+
+5. Next, you will be taken to the application configuration page, where you can provide a **Display Name**. Use the display name **Spectro Cloud Palette OIDC** and click **Save**. OpenLog displays the configuration screen for your new application. 
 
   ![Enter Display Name](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-app-name.png)
 
 
-5. Select the **Configuration** tab and fill out the following input values. 
+6. Select the **Configuration** tab and fill out the following input values. 
 
   |**Field**|**Description**|
   |--------|--------|
@@ -51,77 +55,77 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   |Post Logout Redirect URIs| The URIs where you will be redirected after successfully logging out from the current session.|
 
 
-6. The URLs needed to configure OneLogin can be found in your Palette account. From the left **Main Menu** click on **Tenant Admin**. Next, select **Tenant Settings** to access the settings page. From the settings page, select **SSO**, click on the **OIDC** tab. Copy the **Callback URL** value to your clipboard. 
+7. The URLs needed to configure OneLogin can be found in your Palette account. From the left **Main Menu** click on **Tenant Admin**. Next, select **Tenant Settings** to access the settings page. From the settings page, select **SSO**, click on the **OIDC** tab. Copy the **Callback URL** value to your clipboard. 
 
   ![Copy Callback URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_callbackurl.png)
 
 
-7. Paste the Palette **Callback URL** value in the **Login Url** and **Redirect URI's** sections. 
+8. Paste the Palette **Callback URL** value in the **Login Url** and **Redirect URI's** sections. 
 
   ![Add Login URL and Redirect URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-redirect-uris.png)
 
 
-8. Next, do the same for the **Logout Redirect URIs** and copy the **Logout URL** value which sits below the **Callback URL** from Palette. 
+9. Next, do the same for the **Logout Redirect URIs** and copy the **Logout URL** value which sits below the **Callback URL** from Palette. 
 
   ![Add Logout URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout-uri.png)
 
 
-9. Your configuration should look similar to the following screenshot. 
+10. Your configuration should look similar to the following screenshot. 
 
   ![URI config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_uri-config.png)
 
 
-10. Select the **Parameters** tab and click on the **Groups** field. Ensure the bottom configuration contains the **MemberOf** value so that the correct group value is passed.  
+11. Select the **Parameters** tab and click on the **Groups** field. Ensure the bottom configuration contains the **MemberOf** value so that the correct group value is passed.  
 
   ![Check MemberOf field](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-field.png)
 
 
-11. Navigate to the left **Main Menu** and select **SSO**. From the SSO settings page, copy the **Client ID**, **Client Secret**, and **Issuer URL** values. These values are important credentials that Palette will use to authenticate with OneLogin. Make sure to save them securely. Click **Save** to save all changes. 
+12. Navigate to the left **Main Menu** and select **SSO**. From the SSO settings page, copy the **Client ID**, **Client Secret**, and **Issuer URL** values. These values are important credentials that Palette will use to authenticate with OneLogin. Make sure to save them securely. Click **Save** to save all changes. 
 
   ![ClientID & Client Secret](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_clientid-clientsecret.png)
 
 
 ### Create Role, Security Policy and Group
 
-12. Go to your OneLogin dashboard and select **Users**. Next, click on **Roles** to access the Role page and select **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used in this example. When selecting the app, a green check will appear next to the name. Click **Save**. 
+13. Go to your OneLogin dashboard and select **Users**. Next, click on **Roles** to access the Role page and select **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used in this example. When selecting the app, a green check will appear next to the name. Click **Save**. 
 
   ![Add Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_app-role.png)
 
 
-13. You can create an optional security policy. To create a security policy, navigate to **Security** and select **Policies**.  
+14. You can create an optional security policy. To create a security policy, navigate to **Security** and select **Policies**.  
 
-14. Click **New User Policy**. Provide a policy name, such as "Admin policy", and configure the policy to meet your requirements. Click **Save** to continue. 
+15. Click **New User Policy**. Provide a policy name, such as "Admin policy", and configure the policy to meet your requirements. Click **Save** to continue. 
 
-15. Apply the policy to a user group that you create. To create a user group, navigate to the **left Main Menu** and select **Users**. Next, **Groups**.
+16. Apply the policy to a user group that you create. To create a user group, navigate to the **left Main Menu** and select **Users**. Next, **Groups**.
 
-16. Click **New Group** and assign a group name.
+17. Click **New Group** and assign a group name.
 
-17. Select your security policy and click **Save**.  
+18. Select your security policy and click **Save**.  
 
 ![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
 
 
-18. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users**, followed by **Mappings** and select **New Mapping**. 
+19. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users**, followed by **Mappings** and select **New Mapping**. 
 
-19. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
+20. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
 
   ![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
 
 
-19. Navigate to **Users** screen and select your user. 
+21. Navigate to **Users** screen and select your user. 
 
-20. Select the **Authentication** tab and select the group and security policy you created earlier. Click on **Save**. 
+22. Select the **Authentication** tab and select the group and security policy you created earlier. Click on **Save**. 
 
   ![Add User to Group](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_user-auth-group.png)
 
 ### Enable OIDC in Palette 
 
-21. Navigate back to Palette, and from the **left Main Menu**, select **Tenant Settings**. Next, select **SSO** and click on the **OIDC** tab.
+23. Navigate back to Palette, and from the **left Main Menu**, select **Tenant Settings**. Next, select **SSO** and click on the **OIDC** tab.
 
-22. Fill in the fields **Client ID**, **Client Secret**, and **Issuer URL** with the values you were provided by OneLogin. 
+24. Fill in the fields **Client ID**, **Client Secret**, and **Issuer URL** with the values you were provided by OneLogin. 
 
 
-23. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
+25. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
 
   :::caution
   Ensure the expected scopes are added. Otherwise, Palette may be unable to retrieve the group name. 
