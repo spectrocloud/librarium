@@ -48,7 +48,7 @@ VerteX supports the following Azure services.
 | --- |  --- |
 | **IaaS** |  ✅ |
 
-Azure Government supports all Azure Government regions with the exception of Azure Government DoD regions. Refer to the [official Azure Government documentation](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-overview-dod) to learn more about the available regions.
+All Azure Government regions are supported with the exception of Department of Defense regions. Refer to the [official Azure Government documentation](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-overview-dod) to learn more about the available regions.
 
 
 #### VMware vSphere
