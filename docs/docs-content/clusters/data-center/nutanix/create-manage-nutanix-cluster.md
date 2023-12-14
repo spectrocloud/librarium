@@ -20,11 +20,11 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- The following three YAML files created during cloud registration process:
+<!-- - The following YAML files obtained and created during cloud registration process:
   - cloudClusterTemplate.yaml
   - controlPlanePoolTemplate.yaml
   - infrastructure-component.yaml
-  - workerPoolTemplate.yaml
+  - workerPoolTemplate.yaml -->
 
 
 ## Deploy a Nutanix Cluster
@@ -58,17 +58,22 @@ Use the following steps to deploy a new Nutanix cluster.
   |--------------|-----------------|
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
   | `${CONTROL_PLANE_ENDPOINT_IP}`| The host static IP address. |
-  | `${CLUSTER_ENDPOINT}`| The cluster IP address. |
-
-  Ensure your verify the port specified in the YAML. 
+  | `${CLUSTER_ENDPOINT}`| The cluster IP address. |  
 
   :::caution
-  The following applies when replacing variables within curly braces: 
+
+  The following applies when replacing variables within curly braces in the YAML files.
+
+    - All the variables must be resolved or have a default value.
+
+    - Names you provide must match. Any names in YAML file that do not match your Nutanix cluster configuration will fail.
+
+    - Values that are passed as a string, such as names and keys, must be enclosed in quotes, for example " ".
+
+    - When replacing values, remove the dollar sign and curly braces.
+
+    - Verify the port specified in the YAML.
   
-  - Names you provide must match. Any names in YAML file that do not match your Nutanix cluster configuration will fail. 
-  - Values that are passed as a string, such as names and keys, must be enclosed in quotes, for example " ".
-  - When replacing values, remove the dollar sign and curly braces.
-  - All the variables in the YAML files must be resolved or have a default value.
   :::
 
 9. In the Node pool configuration YAML files for the master and worker pools, edit the files to replace each occurrence of the variables within curly braces listed in the tables below with values that apply to your Nutanix cloud environment. You can configure scaling by specifying the number of nodes in the pool, which corresponds to `spec.replicas` in the file.

@@ -3,6 +3,7 @@ sidebar_label: "Register Nutanix Cloud"
 title: "Register Nutanix Cloud"
 description: "Learn how to register a Nutanix cloud in Palette."
 hide_table_of_contents: false
+sidebar_position: 5
 tags: ["data center", "nutanix"]
 ---
 
@@ -38,7 +39,7 @@ Use the following steps to register a Nutanix cloud.
   | **Worker**| MachineDeployment (MD)<br />KubeadmConfigTemplate<br />NutanixMachineTemplate |
   | **Cluster**|Cluster<br />CloudCluster<br />Secrets<br />ConfigMap<br />MachineHealthCheck |
 
- user replaces anything in braces.
+ 
 
  
  
@@ -48,10 +49,12 @@ Some Cluster templates contain all of these objects, and others may not contain 
 
 Cluster template gets installed first. If any of the control-plane and worker objects are not 
 
-1. Get the templates. 
-:::caution
-When selecting templates, check to see if the cloud provider has a compatibility matrix ensure you download the latest CAPI version. 
-:::
+1. Get the templates.
+
+  :::caution
+  When selecting templates, check to see if the cloud provider has a compatibility matrix, and ensure you download the latest CAPI version. 
+  :::
+
 2. Register four templates using APIs. 
 
 3. 
