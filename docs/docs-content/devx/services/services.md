@@ -16,7 +16,7 @@ Palette offers you different types of services to help you model all the depende
 
 ## Helm
 
-Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](../../registries-and-packs/helm-charts.md).
+Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](../../registries-and-packs/registries/helm-charts.md).
 
 
 ## Manifest 
