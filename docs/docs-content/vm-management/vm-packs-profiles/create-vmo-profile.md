@@ -16,7 +16,7 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
 - A Palette permission key `create` for the resource `clusterProfile`.
 
-- If you are creating an Edge cluster profile, your profile must have a CSI pack. 
+- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface pack.  
 
 ## Create the Profile
 
@@ -69,7 +69,7 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
 6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile. 
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check out the [Spectro Proxy](../../integrations/frp.md) guide to learn more. Changing the default may require some additional configuration. 
+7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.  Changing the default may require some additional configuration. Check out the [Spectro Proxy](../../integrations/frp.md) guide to learn more
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
