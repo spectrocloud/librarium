@@ -50,6 +50,10 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 - When updating a deployed cluster profile or an active cluster's profile, the new differential editor is available to help you identify the changes that will be applied to the cluster profile.
 
 
+#### Known Issues
+
+- The ability to change the underlying node type of a node pool is not available for Google Cloud Platform GKE clusters.
+
 
 ### Edge
 
@@ -64,7 +68,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads and initialize a cluster's other edge host nodes. Using a local registry can help you reduce the amount of data transferred over the network, cache images locally, and provide a backup for when internet access is unavailable. 
 
-- Edge Kubernetes network interface management support. You can now specify the network interface for your edge hosts versus relying on the default interface selected by Kubernetes. This feature is useful when you have multiple network interfaces on your edge hosts and want to use a specific interface for your workloads or if you are using the new overlay support for DHCP. 
+- Edge Kubernetes network interface management support. You can now specify the network interface for your edge hosts versus relying on the default interface selected by Kubernetes. This feature is useful when you have multiple network interfaces on your edge hosts and want to use a specific interface for your workloads or if you are using the new overlay support for DHCP. Check out the [Create Cluster Definition](./clusters/edge/site-deployment/site-installation/cluster-deployment.md) resource for more information on how to specify the network interface for your edge hosts during cluster deployment.
 
 
 #### Improvements
@@ -86,7 +90,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 #### Features
 
-- You can deploy edge clusters when using VMO. Edge clusters are useful when deploying Kubernetes clusters in remote locations.  
+- You can deploy edge clusters when using VMO. Edge clusters are useful when deploying Kubernetes clusters in remote locations. Refer to the [Create a VMO Profile](./vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create a cluster profile for VMO that you can use to deploy edge clusters with VMO.
 
 
 ### VerteX
