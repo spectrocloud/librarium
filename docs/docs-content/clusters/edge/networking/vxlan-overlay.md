@@ -56,7 +56,7 @@ You will not be able to change the network overlay configurations after the clus
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
 6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
- 
+
 7. In the network layer of your cluster profile, specify the name of the Network Interface Controllers (NIC) on your Edge hosts to be `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the overlay network.
 
     The following are the sections of the packs you need to change depending on which CNI pack you are using:
@@ -105,9 +105,9 @@ You will not be able to change the network overlay configurations after the clus
 
 8. Review the rest of your cluster profile values and make changes as needed. Click on **Next**.
 
-8. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional configuration for your virtual overlay network. 
+9. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional configuration for your virtual overlay network. 
 
-9. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
+10. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
 
    :::caution
    The overlay CIDR range cannot be changed after the cluster creation. 
@@ -115,7 +115,7 @@ You will not be able to change the network overlay configurations after the clus
 
    After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the cluster.
    
-10. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
+11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
 
 ## Validate
 
