@@ -81,7 +81,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   <Tabs>
   <TabItem value="calico" label="Calico">
   
-  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your master node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your paster pool is `eno32`. 
+  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your master node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your master pool is `eno32`. 
   
   ```yaml {11}
   manifests:
@@ -221,7 +221,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
   <Tabs>
   <TabItem value="calico" label="Calico">
   
-  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your master node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your paster pool is `eno32`. 
+  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your master node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your master pool is `eno32`. 
   
   ```yaml {11}
   manifests:
