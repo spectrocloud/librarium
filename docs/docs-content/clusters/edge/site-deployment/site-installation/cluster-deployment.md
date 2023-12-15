@@ -46,8 +46,9 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 7. Review your cluster profile values and make changes as needed. Click on **Next**.
 
 
-8. Provide the host cluster with the Virtual IP (VIP) address used by the physical site. You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of Network Time Protocol (NTP) servers. Click on **Next**.
+8. Provide the host cluster with the Virtual IP (VIP) address used by the physical site. Ensure that this VIP is not in a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP address already used by other hosts in your network, including your Edge hosts. 
 
+  You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of Network Time Protocol (NTP) servers. Click on **Next**.
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to the **master-pool** and the **worker-pool**. When you have completed configuring the node pools, click on **Next**.
 
