@@ -109,6 +109,46 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 </TabItem>
 
+<TabItem label="BUILD" value="cli_build">
+
+## BUILD
+
+Generate Spectro Cloud pack in the target directory using a helm chart.
+
+<Tabs queryString="cliBuild">
+
+<TabItem label="Usage" value="cli_build_usage">
+
+```bash
+ spectro pack build [PACK_NAME] [TARGET_DIR]
+```
+
+</TabItem>
+
+<TabItem label="Usage" value="cli_build_example">
+```bash
+ spectro pack build my-awesome-pack ./my-awesome-pack
+```
+
+</TabItem>
+
+</Tabs>
+
+### Args
+
+PACK_NAME - Name of the pack 
+TARGET_DIR - Directory containing the pack data 
+
+### FLAGS
+
+-p, --push - Push the pack on the registry after creation
+
+-r, --registry-server - Override the default Spectro registry
+
+
+
+</TabItem>
+
 <TabItem label="PUSH" value="cli_push">
 
 ## PUSH
