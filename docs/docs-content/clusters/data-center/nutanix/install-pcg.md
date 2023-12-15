@@ -19,11 +19,11 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 - A Kubernetes cluster in Nutanix with version 1.19.x or higher, outbound internet connectivity, and
 DNS configured to resolve public internet domain names.
 
-<!-- - If you install the PCG from your local environment using Clusterctl instead of using Palette, you need to install the following applications. To install Clusterctl, refer to [The Cluster API Book](https://cluster-api.sigs.k8s.io/user/quick-start.html#install-clusterctl).
-  - Docker
-  - Kind
-  - Kubectl
-  - Clusterctl  -->
+
+## Setup
+
+create kind cluster - bootstraps workload cluster - used to deploy PCG.
+
   
 
 ## Install PCG
