@@ -269,7 +269,7 @@ The following table lists the proxy requirements required by Palette. Depending 
 
 ## Scope
 
-Clusters can be launched at the project scope or at the tenant scope. A project-level cluster belongs to a single project. A tenant-level cluster does not belong to any project. 
+Clusters can be launched at the project scope or at the tenant scope. A project-level cluster belongs to a single project. A tenant-level cluster does not belong to any project and can only be accessed by users with tenant-level permissions. 
 
 Access to clusters in Palette is governed by Palette's role-based access control. To be able to take any action on a cluster, you need the corresponding permission in the corresponding scope. For example, a user with the permission `cluster.create` in the project `foo` and can create clusters in the project `foo`. Tenant-level permissions allow you to take the corresponding action on clusters in all projects in the tenant, as well as tenant-level clusters. Tenant-level permissions are required to take action on any tenant-level cluster. For more information about role-based access control in Palette, refer to [Palette RBAC](../user-management/palette-rbac/palette-rbac.md). 
 
