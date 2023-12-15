@@ -34,13 +34,13 @@ Create an infrastructure profile by adding layers composed of an Operating Syste
 
   To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the infrastructure provider, managed Kubernetes, or *Tech Preview* cloud type for your environment and click **Next**.
+5. Select the infrastructure provider, managed Kubernetes, or technical preview cloud type for your environment and click **Next**.
 
   :::info
 
-  Cluster profiles created from the Tech Preview cloud type are part of a generic framework Palette provides that is built upon the open-source Cluster API (CAPI) initiative. The Operating System (OS) and Kubernetes layers of these profiles get populated during cluster creation from YAML files created at the system level. During cluster creation, you specify the OS image and Kubernetes version. Palette also provides out-of-the-box packs for the OS layer and for the network and storage layers.
+  Cluster profiles created from cloud types that are under technical preview are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. When creating this type of profile, you do not have to specify anything for the OS or Kubernetes layers, and out-of-the-box packs are provided for the network and storage profile layers. 
 
-  For more information about Palette's generic framework implementing Nutanix as a Tech Preview, check out our [Nutanix](../../../clusters/data-center/nutanix/nutanix.md) documentation.
+  <!-- To learn how Palette is previewing its generic framework to support adding cloud providers, check out our [Nutanix](../../../clusters/data-center/nutanix/nutanix.md) documentation. -->
   
   :::
   

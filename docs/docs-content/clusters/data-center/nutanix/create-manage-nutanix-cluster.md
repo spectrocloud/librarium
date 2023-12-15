@@ -6,7 +6,7 @@ hide_table_of_contents: false
 tags: ["data center", "nutanix"]
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed to a Nutanix infrastructure. This section guides you in creating a Kubernetes cluster in a custom Nutanix cloud managed by Palette.
+Palette supports creating and managing Kubernetes clusters deployed to a Nutanix infrastructure. This section guides you in creating a Kubernetes cluster in a Nutanix cloud managed by Palette.
 
 ## Prerequisites
 
@@ -16,15 +16,9 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - Minimum supported CAPI version v1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
 
-- A cluster profile created for the Nutanix cloud. To learn how to create a profile, refer to [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/).
+- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. The
 
 - A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
-
-<!-- - The following YAML files obtained and created during cloud registration process:
-  - cloudClusterTemplate.yaml
-  - controlPlanePoolTemplate.yaml
-  - infrastructure-component.yaml
-  - workerPoolTemplate.yaml -->
 
 
 ## Deploy a Nutanix Cluster
