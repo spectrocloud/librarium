@@ -56,7 +56,7 @@ You will not be able to change the network overlay configurations after the clus
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
 6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
-
+ 
 7. In the network layer of your cluster profile, specify the name of the Network Interface Controllers (NIC) on your Edge hosts to be `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the overlay network.
 
     The following are the sections of the packs you need to change depending on which CNI pack you are using:
