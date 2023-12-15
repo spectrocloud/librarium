@@ -8,8 +8,8 @@ tags: ["edge"]
 ---
 
 
-
 To complete the Edge Installation process, an Edge host must become a member of a host cluster. You can add an Edge host to an existing host cluster of type Edge Native, or you can create a new host cluster for Edge hosts and make the Edge host a member.
+
 
 Select the workflow that best fits your needs.
 
