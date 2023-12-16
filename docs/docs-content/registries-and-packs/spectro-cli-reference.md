@@ -106,7 +106,7 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 
 :::tip
 
-If you have access to the pack registry's Certificate Authority (CA) certificate .Place the CA certificate in the **/etc/spectro/certs.d/[SERVER]/ca.crt** folder. Replace the [SERVER] with the pack registry server name.
+If you have access to the pack registry's Certificate Authority (CA) certificate. Place the CA certificate in the **/etc/spectro/certs.d/[SERVER]/ca.crt** folder. Replace the [SERVER] with the pack registry server name.
 
 :::
 
