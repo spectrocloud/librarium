@@ -14,13 +14,13 @@ The section below describes the overall workflow.
 
 ## Workflow
 
-The following summary steps outline the CAPI cloud workflow illustrated in the diagram below. A system administrator performs the first step at the system level to make the cloud provider available to all the tenants. CAPI users perform the remaining steps in Palette.
+The following summary steps outline the CAPI cloud workflow illustrated in the diagram below. A system administrator performs the first step at the system level to make the cloud provider available to all the tenants. CAPI users perform the remaining steps in Palette and their local environment.
 
 ![Diagram showing the overall CAPI workflow for users to construct self-hosted cloud solutions tailored to their environment.](/clusters_data-center_nutanix_workflow.png)
 
 1. A system administrator registers a cloud with Palette by invoking system-level APIs. This includes defining the cloud logo, required cloud account information and key-value pairs to create the cloud account for your particular cloud. If you do not have a cloud logo, Palette provides a default cloud logo. Palette displays the cloud when registration is complete. 
 
-2. Create a self-hosted PCG for your cloud type, and install Palette agents for the PCG in your Kubernetes cluster by issuing the kubectl commands provided in Palette.
+2. Create a self-hosted PCG for your cloud type by installing Palette agents for the PCG in your Kubernetes cluster by issuing the kubectl commands provided in Palette.
 
   When the PCG status displays Running state, the Kubernetes cluster is now integrated with Palette.
 

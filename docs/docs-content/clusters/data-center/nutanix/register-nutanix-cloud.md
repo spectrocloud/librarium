@@ -13,41 +13,20 @@ A System Administrator registers the Nutanix cloud in Palette by invoking system
 
 ## Prerequisites
 
-- A Nutanix Prism Central account. <<< move to PCG?>>>
 
-- A Nutanix subnet created in Nutanix Prism Central. <<< move to PCG?>>>
 
 - A Palette account with system-level access.
 
 - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide.
-
-- A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Image](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp). <<< move to PCG?>>>
-
-- The following applications installed: Docker, kind, kubectl, and clusterctl. <<< move to PCG?>>> EXport vars section goes to PCG setup.
-
-<!-- - Downloaded infrastructure-components.yaml and cluster-template.yaml files from the [Nutanix Cluster API Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) repository. These YAML files contain all the Custom Resource Definitions (CRDs) required for Nutanix cluster resources. -->
 
 
 ## Setup
 
 Use the following steps to prepare for registering your cloud with Palette. 
 
-### Create Bootstrap Cluster 
+<!-- ### Export Variables and Deploy Workload Cluster
 
-1. Log in to your Nutanix Prism account.
-
-2. Create a local kind cluster that will be used to provision a target cluster. 
-
-```bash
-kind create cluster
-```
-
-3. 
-
-
-### Export Variables and Deploy Workload Cluster
-
-4. Copy the following required variables and export them to your terminal. Replace variables with your environment-specific information. For more information, visit the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
+4. Copy the following required variables and export them to your terminal. Replace variables with your environment-specific information. For more information, visit the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide. -->
 
 <!-- To initialize the Nutanix infrastructure, `clsuterctl` requires certain variables.  -->
 
@@ -66,7 +45,7 @@ kind create cluster
   NUTANIX_SUBNET_NAME: ""
 ```  -->
 
-```bash
+<!-- ```bash
   export NUTANIX_ENDPOINT=""    # IP or FQDN of Prism Central
   export NUTANIX_USER=""        # Prism Central user
   export NUTANIX_PASSWORD=""    # Prism Central password
@@ -85,8 +64,8 @@ kind create cluster
 
 ```bash
   clusterctl init -i nutanix
-```
-8. Deploy a workload cluster on Nutanix cloud infrastructure by issuing the following command. Replace `mytestcluster` with your cluster name and `mytestnamespace` and with your namespace. Provide your control plane endpoint IP address. 
+``` -->
+<!-- 8. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with your cluster name and `mytestnamespace` and with your namespace. Provide your control plane endpoint IP address. 
 
 ```bash
   export TEST_CLUSTER_NAME=mytestcluster
@@ -97,59 +76,66 @@ kind create cluster
     > ./cluster.yaml
   kubectl create ns ${TEST_NAMESPACE}
   kubectl apply -f ./cluster.yaml -n ${TEST_NAMESPACE}
-```
+``` -->
 
 
-### Install CNI on Workload Cluster
+<!-- ### Install CNI on Workload Cluster
 
-9. Deploy a Container Network Interface (CNI) pod network to enable pod-to-pod communication by issuing the following command:
+9. Deploy a Container Network Interface (CNI) pod network to enable pod-to-pod communication by issuing the following command: -->
 
 
 
 ### Customize YAML Configuration Files
 
-10. Download the following YAML files from the Nutanix GitHub repository:
-  - infrastructure-components.yaml
-  - cluster-template.yaml
+10. Download the following YAML files from the Nutanix GitHub repository to your local environment:
+    - `infrastructure-components.yaml`
+    - `cluster-template.yaml`
 
-11. Create two copies of cluster-template.yaml and rename them so you have these three files in addition to the infrastructure-components.yaml:
-  - cloudClusterTemplate.yaml
-  - controlPlanePoolTemplate.yaml
-  - workerPoolTemplate.yaml
+    :::caution
 
-12. Open the cloudClusterTemplate.yaml, controlPlanePoolTemplate.yaml, workerPoolTemplate.yaml files in the editor of your choice.
+    Before downloading templates, check the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix, and ensure you download the latest CAPI version. 
+
+    :::
+
+11. Create two copies of `cluster-template.yaml` and rename the original and the copies so that you the following files in addition to the `infrastructure-components.yaml`:
+    - `cloudClusterTemplate.yaml`
+    - `controlPlanePoolTemplate.yaml`
+    - `workerPoolTemplate.yaml`
+    - `infrastructure-components.yaml`
+
+12. Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in the editor of your choice.
 
 13. Modify the YAML files to remove sections so that only the sections listed in the table below remain in each file.
 
   :::tip
 
-  When editing the YAMLs, it is helpful to collapse the `spec` section.
+  When editing the YAMLs, it is helpful to collapse the `spec` section to help you identify sections to remove.
 
   :::
 
-  <<< TABLE PLACEHOLDER >>>
+  | **Templates**                   | **Objects**            |
+  |--------------------------------|------------------------|
+  | `cloudClusterTemplate.yaml`    | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
+  | `controlPlanePoolTemplate.yaml`| KubeadmControlPlane<br />NutanixMachineTemplate |
+  | `workerPoolTemplate.yaml`      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
+
+
 
 14. Edit parameters in the `cloudClusterTemplate.yaml` YAML as follows:
-  - Remove `namespace.${NAMESPACE} throughout the file. 
-  - In `NutanixMachineTemplate`, change the `providerID` to `providerID.nutanix.//$CLUSTER_NAME}-m1-cp-0.`
+    - Remove `namespace.${NAMESPACE}` throughout the file. 
+    - In `NutanixMachineTemplate`, change the `providerID` to `providerID.nutanix.//$CLUSTER_NAME}-m1-cp-0.`
 
 15. Edit parameters in the `controlPlanePoolTemplate.yaml` YAML as follows:
-  - Remove `namespace.${NAMESPACE} throughout the file.
+    - Remove `namespace.${NAMESPACE}` throughout the file.
 
-16.  Edit parameters in the `workerPoolTemplate.yaml` YAML as follows:
-  - Remove `namespace.${NAMESPACE} throughout the file. 
-  - In `NutanixMachineTemplate`, change the `providerID` to `providerID.nutanix.//$CLUSTER_NAME}-m1-cp-0.`
+16. Edit parameters in the `workerPoolTemplate.yaml` YAML as follows:
+    - Remove `namespace.${NAMESPACE}` throughout the file. 
+    - In `NutanixMachineTemplate`, change the `providerID` to `providerID.nutanix.//$CLUSTER_NAME}-m1-cp-0.`
 
 
 ## Validate
 
-Use the following steps to validate your environment and ...
-
-1. In the Nutanix web console navigate to **VM**. In the **Table** tab, verify there are two VMs listed. <<< We have to explain why there are two. >>> 
-
-2. Echo variable name in terminal. echo $CLUSTER_NAME
-
-3. 
+TBS 
 
 
 
