@@ -19,7 +19,7 @@ We recommend using an OCI registry for storing and maintaining your packs. Refer
 
 ## Prerequisites
 
-- A Legacy Pack Registry server must be avaiable and accessible from the CLI. Refer to the [Add Custom Registries](./adding-a-custom-registry.md) section for more information.
+- A Legacy Pack Registry server must be available and accessible from the CLI. Refer to the [Add Custom Registries](./adding-a-custom-registry.md) section for more information.
 
 
 ## Installation
@@ -104,9 +104,9 @@ SERVER - Spectro Cloud pack registry server in the format [host:port]
 -d, --default - Set the server as default Spectro Cloud pack registry for all the CLI commands.
 
 
-:::info
+:::tip
 
-In case of HTTPS, if you have access to the pack registry's CA certificate, there is no need for the insecure flag; simply place the CA certificate at /etc/spectro/certs.d/[SERVER]/ca.crt.
+If you have access to the pack registry's Certificate Authority (CA) certificate .Place the CA certificate in the **/etc/spectro/certs.d/[SERVER]/ca.crt** folder. Replace the [SERVER] with the pack registry server name.
 
 :::
 
