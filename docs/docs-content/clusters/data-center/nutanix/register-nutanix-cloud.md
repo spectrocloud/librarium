@@ -17,139 +17,203 @@ A System Administrator registers the Nutanix cloud in Palette by invoking system
 
 - A Palette account with system-level access.
 
-- A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide.
+<!-- - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide. -->
 
 
 ## Setup
 
-Use the following steps to prepare for registering your cloud with Palette. 
-
-<!-- ### Export Variables and Deploy Workload Cluster
-
-4. Copy the following required variables and export them to your terminal. Replace variables with your environment-specific information. For more information, visit the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide. -->
-
-<!-- To initialize the Nutanix infrastructure, `clsuterctl` requires certain variables.  -->
-
-<!-- ```bash
-  NUTANIX_ENDPOINT: ""    # IP or FQDN of Prism Central
-  NUTANIX_USER: ""        # Prism Central user
-  NUTANIX_PASSWORD: ""    # Prism Central password
-  NUTANIX_INSECURE: false # or true
-
-  KUBERNETES_VERSION: "v1.22.9"
-  WORKER_MACHINE_COUNT: 1
-  NUTANIX_SSH_AUTHORIZED_KEY: ""
-
-  NUTANIX_PRISM_ELEMENT_CLUSTER_NAME: ""
-  NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME: ""
-  NUTANIX_SUBNET_NAME: ""
-```  -->
-
-<!-- ```bash
-  export NUTANIX_ENDPOINT=""    # IP or FQDN of Prism Central
-  export NUTANIX_USER=""        # Prism Central user
-  export NUTANIX_PASSWORD=""    # Prism Central password
-  export NUTANIX_INSECURE=false # or true
-
-  export KUBERNETES_VERSION="v1.22.9"
-  export WORKER_MACHINE_COUNT=1
-  export NUTANIX_SSH_AUTHORIZED_KEY=""
-
-  export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
-  export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
-  export NUTANIX_SUBNET_NAME=""
-```
-
-7. Initantiate Nutanix Cluster API by issuing the following command:
-
-```bash
-  clusterctl init -i nutanix
-``` -->
-<!-- 8. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with your cluster name and `mytestnamespace` and with your namespace. Provide your control plane endpoint IP address. 
-
-```bash
-  export TEST_CLUSTER_NAME=mytestcluster
-  export TEST_NAMESPACE=mytestnamespace
-  CONTROL_PLANE_ENDPOINT_IP=x.x.x.x clusterctl generate cluster ${TEST_CLUSTER_NAME} \
-    -i nutanix \
-    --target-namespace ${TEST_NAMESPACE}  \
-    > ./cluster.yaml
-  kubectl create ns ${TEST_NAMESPACE}
-  kubectl apply -f ./cluster.yaml -n ${TEST_NAMESPACE}
-``` -->
-
-
-<!-- ### Install CNI on Workload Cluster
-
-9. Deploy a Container Network Interface (CNI) pod network to enable pod-to-pod communication by issuing the following command: -->
-
-
+Use the following steps to prepare to register your cloud with Palette. 
 
 ### Customize YAML Configuration Files
 
-10. Download the following YAML files from the Nutanix GitHub repository to your local environment:
+1.  Download the following YAML files from the [Nutanix Cluster API (CAPI) Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) GitHub repository:
     - `infrastructure-components.yaml`
     - `cluster-template.yaml`
 
-    :::caution
+  :::caution
+  Check the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix to ensure you download the latest CAPI version of the files. 
+  :::
 
-    Before downloading templates, check the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix, and ensure you download the latest CAPI version. 
+  Issue the commands below to download the files.
 
-    :::
+```bash
+  wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
 
-11. Create two copies of `cluster-template.yaml` and rename the original and the copies so that you the following files in addition to the `infrastructure-components.yaml`:
+  wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
+```
+
+2. Create two copies of `cluster-template.yaml` and rename them so you have the following files in addition to the `infrastructure-components.yaml`:
     - `cloudClusterTemplate.yaml`
     - `controlPlanePoolTemplate.yaml`
     - `workerPoolTemplate.yaml`
-    - `infrastructure-components.yaml`
 
-12. Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in the editor of your choice.
+  Use the following commands to copy and rename the files.
 
-13. Modify the YAML files to remove sections so that only the sections listed in the table below remain in each file.
+```bash
+  cp cluster-template.yaml cloudClusterTemplate.yaml 
+  cp cluster-template.yaml controlPlanePoolTemplate.yaml
+  mv cluster-template.yaml workerPoolTemplate.yaml
+```
+
+3. Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in the editor of your choice.
+
+4. Modify the YAML files to remove sections so that only the sections listed in the table below remain in each file.
 
   :::tip
 
-  When editing the YAMLs, it is helpful to collapse the `spec` section to help you identify sections to remove.
+  When editing the YAMLs, it is helpful to collapse the `spec` section to help you identify the sections to remove.  
 
   :::
 
-  | **Templates**                   | **Objects**            |
+  | **Templates**                   | **Objects**           |
   |--------------------------------|------------------------|
   | `cloudClusterTemplate.yaml`    | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
   | `controlPlanePoolTemplate.yaml`| KubeadmControlPlane<br />NutanixMachineTemplate |
   | `workerPoolTemplate.yaml`      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
 
 
+5. In `cloudClusterTemplate.yaml` expand `spec` in each section and remove all occurrences of `metadata.namespace.${NAMESPACE}`.
 
-14. Edit parameters in the `cloudClusterTemplate.yaml` YAML as follows:
-    - Remove `namespace.${NAMESPACE}` throughout the file. 
-    - In `NutanixMachineTemplate`, change the `providerID` to `providerID.nutanix.//$CLUSTER_NAME}-m1-cp-0.`
+6. In `controlPlanePoolTemplate.yaml` expand `spec` in both sections of the template and edit the template as follows:
+  
+    - In the KubeadmControlPlane object:
+      - Remove `metadata.namespace.${NAMESPACE}`.
+      - Rename `spec.machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.  
 
-15. Edit parameters in the `controlPlanePoolTemplate.yaml` YAML as follows:
-    - Remove `namespace.${NAMESPACE}` throughout the file.
+    - In the NutanixMachineTemplate object:
+      - Remove `metadata.namespace.${NAMESPACE}`.
+      - Rename `metadata.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.
+      - Rename `spec.template.providerID: nutanix://${CLUSTER_NAME}-m1`as `nutanix://${CLUSTER_NAME}-m1-cp-0`. 
 
-16. Edit parameters in the `workerPoolTemplate.yaml` YAML as follows:
-    - Remove `namespace.${NAMESPACE}` throughout the file. 
-    - In `NutanixMachineTemplate`, change the `providerID` to `providerID.nutanix.//$CLUSTER_NAME}-m1-cp-0.`
+      :::caution
+      The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
+      :::
 
+7. In `workerPoolTemplate.yaml` expand `spec` in each section and edit the template as follows:
+    - Remove all occurrences of `metadata.namespace.${NAMESPACE}`. 
+    - In the `NutanixMachineTemplate` object, change the `providerID` to `providerID: nutanix://$CLUSTER_NAME}-m1-mt-0`. 
+    
 
 ## Validate
 
-TBS 
-
-
+<<< Not sure with a mushy brain how to validate this. But we need this section. >>> 
 
 ## Register the Cloud
 
-Use the following steps to register a Nutanix cloud.
+Follow the steps below from your terminal to set the environment variables and invoke the APIs required to register a Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
 
-1. Curl commands ->APIs....
+:::caution
+During the registration process, the template files and logo file must be located in the same directory where you execute the curl commands in the steps below. The logo file must not exceed 100KB in size.
 
+:::
 
+1. Export your Palette URL and the cloud type you want to register as environment variables.
 
+```bash
+export ENDPOINT="https://palette.example.com"
+export CLOUD_TYPE="nutanix-custom"
+```
+
+2. To acquire a system administrator authentication token, log in to the Palette API by using the `/v1/auth/syslogin` endpoint. Use the `curl` command below and replace the URL with the custom domain URL assigned to Palette. Ensure you replace the credentials with your system console credentials.
+
+```bash
+curl --insecure --location "$ENDPOINT/v1/auth/syslogin" \
+ --header 'Content-Type: application/json' \
+ --data "{
+  "password": "**********",
+  "username": "**********"
+ }"
+```
+
+  The output contains your authorization token.
+
+```bash hideClipBoard
+{
+  "Authorization": "**********",
+  "IsPasswordReset": true
+}
+```
+
+3. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value below with the value from the output.
+
+```bash
+export TOKEN="**********"
+```
+
+4. Register the Nutanix cloud type to Palette by using the `/v1/clouds/cloudTypes/register` endpoint.
+
+```bash
+curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
+--header "Content-Type: application/json" \
+--header "Cookie: Authorization=${TOKEN}" \
+--data "{
+    "metadata": {
+        "annotations": {},
+        "labels": {},
+        "name": "${CLOUD_TYPE}"
+    },
+    "spec": {
+        "displayName": "Nutanix",
+        "isControlPlaneManaged": false
+    }
+}"
+```
+
+5. Upload the Nutanix cloud logo by using the `curl` command displayed below. 
+
+```bash
+curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
+--header "Cookie: Authorization=${TOKEN}" \
+--form "fileName=@${cloud-logo.png}"
+```
+
+6. Register the cloud provider by using the `curl` command below. 
+
+```bash
+curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
+       --header "Content-Type: multipart/form-data" \
+       --header "Cookie: Authorization=${TOKEN}" \
+       --form "fileName=@${infrastructure-components.yaml}"
+```
+
+7. Register the cluster template using the `curl` command below. 
+
+```bash
+curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
+       --header "Content-Type: multipart/form-data" \
+       --header "Cookie: Authorization=${TOKEN}" \
+       --form "fileName=@${cloudClusterTemplate.yaml}"
+```
+
+8. Register the control plane pool template using the `curl` command below. 
+
+```bash
+curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
+       --header "Content-Type: multipart/form-data" \
+       --header "Cookie: Authorization=${TOKEN}" \
+       --form "fileName=@${controlPlanePoolTemplate.yaml}"
+```
+
+9. Register the worker pool template using the `curl` command below. 
+
+```bash
+curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
+       --header "Content-Type: multipart/form-data" \
+       --header "Cookie: Authorization=${TOKEN}" \
+       --form "fileName=@${workerPoolTemplate.yaml}"
+```
 
 ## Validate
 
+Use the steps below to confirm that the Nutanix cloud is successfully registered to Palette.
+
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
+
+2. Navigate to the **left Main Menu** and select **Tenant Settings**.
+
+3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
+
+4. Verify that the added Nutanix account section is listed. You may need to scroll to view the account.
 
 
 
@@ -161,38 +225,3 @@ Use the following steps to register a Nutanix cloud.
 
 
 
-
-
-
-
-1. Access the [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) page on GitHub.
-
-  | **Template** | **Objects** |
-  |-----------|-----------------|
-  | **Control-plane**| KubeadmControlPlane (KCP)<br />NutanixdMachineTemplate |
-  | **Worker**| MachineDeployment (MD)<br />KubeadmConfigTemplate<br />NutanixMachineTemplate |
-  | **Cluster**|Cluster<br />CloudCluster<br />Secrets<br />ConfigMap<br />MachineHealthCheck |
-
- 
-
- 
- 
- "divide into three files"
-
-Some Cluster templates contain all of these objects, and others may not contain Secrets, configMap, and healthcheck 
-
-Cluster template gets installed first. If any of the control-plane and worker objects are not 
-
-1. Get the templates.
-
-  :::caution
-  When selecting templates, check to see if the cloud provider has a compatibility matrix, and ensure you download the latest CAPI version. 
-  :::
-
-2. Register four templates using APIs. 
-
-3. 
-
-## Register the Cloud Account (??)
-
-Visit [Palette APIs](https://docs.spectrocloud.com/api/category/palette-api-v1). 

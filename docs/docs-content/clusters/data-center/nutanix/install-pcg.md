@@ -14,9 +14,6 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 ## Prerequisites
 
-- A Kubernetes cluster in Nutanix with version 1.19.x or higher, outbound internet connectivity, and
-DNS configured to resolve public internet domain names.
-
 - A Nutanix Prism Central account with *Prism Admin* role. 
 
 - A Nutanix subnet created in Nutanix Prism Central.
@@ -62,7 +59,13 @@ Use the following steps to prepare for installing the PCG.
   export NUTANIX_SUBNET_NAME=""
 ```
 
-4. Initantiate Nutanix Cluster API by issuing the following command:
+  You can ensure the variables were successfully exported by issuing the following command in your terminal. 
+
+```bash
+  echo $variable_name
+```
+
+4. Instantiate Nutanix Cluster API by issuing the following command:
 
 ```bash
   clusterctl init -i nutanix
@@ -81,43 +84,51 @@ Use the following steps to prepare for installing the PCG.
   kubectl apply -f ./cluster.yaml -n ${TEST_NAMESPACE}
 ```
 
+Output
+
+```bash
+  namespace/carolina-namespace created
+  configmap/user-ca-bundle created
+  secret/carolina-cluster created
+  kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/carolina-cluster-kcfg-0 created
+  cluster.cluster.x-k8s.io/carolina-cluster created
+  machinedeployment.cluster.x-k8s.io/carolina-cluster-wmd created
+  machinehealthcheck.cluster.x-k8s.io/carolina-cluster-mhc created
+  kubeadmcontrolplane.controlplane.cluster.x-k8s.io/carolina-cluster-kcp created
+  nutanixcluster.infrastructure.cluster.x-k8s.io/carolina-cluster created
+  nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/carolina-cluster-mt-0 created
+```
+
+
 ### Install CNI on Workload Cluster
 
-6. Deploy a Container Network Interface (CNI) pod network <<< in the workload cluster? >>> to enable pod-to-pod communication. For guidance, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
-
- by issuing the following command: 
+6. Deploy a Container Network Interface (CNI) pod network in the workload cluster to enable pod-to-pod communication.   by issuing the following command. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
 
 ```bash
-  clusterctl get kubeconfig carolina-cluster > carolina-cluster.kubeconfig -n carolina-namespace
+  clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -n $TEST_NAMESPACE
 ```
 
-## Validate
-
-Use the following steps to validate your environment.
-
-1. In the Nutanix web console, verify there are two VMs in your cluster. <<< Why are there two? >>>
-
-<!-- In the Nutanix web console navigate to **VM**. In the **Table** tab, verify there are two VMs listed. <<< We have to explain why there are two. >>>  -->
-
-2. In your terminal, ensure variables are exported. 
-
-```bash
-  echo $variable_name
-```
-
-3. Verify the CNI pod network by issuing the following command. 
+7. To verify the CNI pod network, issue the following command. 
 
 ```bash
   kubectl --kubeconfig=./<cluster_name>-cluster.kubeconfig get nodes
 ```
 
-  Output
+Output
 
-```bash
+```bash hideClipBoard
 NAME                           STATUS   ROLES           AGE   VERSION
 test-cluster-kcp-qhb5h         Ready    control-plane   26h   v1.26.7
 test-cluster-wmd-gdjps-gx267   Ready    <none>          26h   v1.26.7
 ```
+
+## Validate
+
+Use the steps below to verify your VMS are created.
+
+1. In the Nutanix Prism Element web console, navigate to **VM**. 
+
+2. In the **Table** tab, verify the VMs you created are listed.
 
 
 ## Install PCG
