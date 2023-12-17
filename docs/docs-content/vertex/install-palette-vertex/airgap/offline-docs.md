@@ -99,7 +99,7 @@ To validate that the offline documentation is working, open a browser and naviga
 
 ## Container Image Authenticity
 
-The offline documentation container image is signed using [sigstore's](https://sigstore.dev/) Cosign. The container image is signed using a cryptographic keypair that is private and stored internally. The public key is available in the documentation repository at https://raw.githubusercontent.com/spectrocloud/librarium/master/static/cosign.pub and used to verify the authenticity of the container image. You can learn more about the container image signing process in the [Signing Containers](https://docs.sigstore.dev/signing/signing_with_containers) documentation page.
+The offline documentation container image is signed using [sigstore's](https://sigstore.dev/) Cosign. The container image is signed using a cryptographic keypair that is private and stored internally. The public key is available in the documentation repository at [**static/cosign.pub**](https://raw.githubusercontent.com/spectrocloud/librarium/master/static/cosign.pub). Use the public key to verify the authenticity of the container image. You can learn more about the container image signing process in the [Signing Containers](https://docs.sigstore.dev/signing/signing_with_containers) documentation page.
 
 
 :::info
@@ -152,4 +152,38 @@ The following checks were performed on each of these signatures:
     }
   }
 ]
+```
+
+
+:::danger
+
+Do not use the container image if the authenticity cannot be verified. Verify you downloaded the correct public key and that the container image is from `ghcr.io/spectrocloud/librarium:nightly`.
+
+:::
+
+If the container image is not valid, an error is displayed. The following example shows an error when the container image is not valid.
+
+```shell hideClipboard
+cosign verify --key https://raw.githubusercontent.com/spectrocloud/librarium/master/static/cosign.pub \
+ghcr.io/spectrocloud/librarium:nightly
+```
+
+```shell hideClipboard
+Error: no matching signatures: error verifying bundle: comparing public key PEMs, expected -----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEheVfGYrVn2mIUQ4cxMJ6x09oXf82
+zFEMG++p4q8Mf+y2gp7Ae4oUaXk6Q9V7aVjjltRVN6SQcoSASxf2H2EpgA==
+-----END PUBLIC KEY-----
+, got -----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYHrc2WIE3apKLmcxlFFHyVQCQZWh
+2+al5W/VMlPr3u4EZ/V/GOBm6+Y9gF3Us3twueXYgdYeFo5o7BUn70MPPw==
+-----END PUBLIC KEY-----
+
+main.go:69: error during command execution: no matching signatures: error verifying bundle: comparing public key PEMs, expected -----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEheVfGYrVn2mIUQ4cxMJ6x09oXf82
+zFEMG++p4q8Mf+y2gp7Ae4oUaXk6Q9V7aVjjltRVN6SQcoSASxf2H2EpgA==
+-----END PUBLIC KEY-----
+, got -----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYHrc2WIE3apKLmcxlFFHyVQCQZWh
+2+al5W/VMlPr3u4EZ/V/GOBm6+Y9gF3Us3twueXYgdYeFo5o7BUn70MPPw==
+-----END PUBLIC KEY-----
 ```
