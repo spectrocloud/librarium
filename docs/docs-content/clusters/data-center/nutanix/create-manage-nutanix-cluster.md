@@ -14,11 +14,9 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - A Private Cloud Gateway (PCG) deployed.
 
-- Minimum supported CAPI version v1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
+- Minimum supported CAPI version 1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
 
-- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. The
-
-- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
+- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. Select the custom packs provided at the OS and Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers. Additionally, Palette provides a Nutanix-specific storage pack.
 
 
 ## Deploy a Nutanix Cluster
@@ -46,7 +44,7 @@ Use the following steps to deploy a Kubernetes cluster on Nutanix using Palette.
 
 7. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. Click **Next** when you are done.
 
-8. In the Cluster configuration YAML file that Palette displays, edit the file to replace each occurrence of the variables within curly braces listed in the table with values that apply to your Nutanix cloud environment, and make any adjustments to configure your cluster. Click **Next** when you are done.
+8. In the Cluster configuration YAML file that Palette displays, edit the file to replace variables within curly braces listed in the table below with values that apply to your Nutanix cloud environment, and make any adjustments to configure your cluster. Click **Next** when you are done.
 
   | **Variable** | **Description** |
   |--------------|-----------------|
@@ -56,28 +54,28 @@ Use the following steps to deploy a Kubernetes cluster on Nutanix using Palette.
 
   :::caution
 
-  The following applies when replacing variables within curly braces in the YAML files.
+  The following applies when replacing variables within curly braces in the YAML configuration files.
 
     - All the variables must be resolved or have a default value.
 
-    - Names you provide must match. Any names in YAML file that do not match your Nutanix cluster configuration will fail.
+    - Names you provide must match. Any names in the YAML files that do not match your Nutanix cluster configuration will result in unsuccessful cluster deployment.
 
     - Values that are passed as a string, such as names and keys, must be enclosed in quotes, for example " ".
 
     - When replacing values, remove the dollar sign and curly braces.
 
-    - Verify the port specified in the YAML.
+    - Verify the port specified in the YAM file.
   
   :::
 
-9. In the Node pool configuration YAML files for the master and worker pools, edit the files to replace each occurrence of the variables within curly braces listed in the tables below with values that apply to your Nutanix cloud environment. You can configure scaling by specifying the number of nodes in the pool, which corresponds to `spec.replicas` in the file.
+9. In the Node pool configuration YAML files for the master and worker pools, edit the files to replace each occurrence of the variables within curly braces listed in the tables below with values that apply to your Nutanix cloud environment. You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This corresponds to `replicas` in the YAML file.
 
   #### Master Pool 
 
   | **Variable** | **Description** |
   |--------------|-----------------|
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
-  | `${CONTROL_PLANE_ENDPOINT_IP}`| The host static IP address. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix IP address. |
   | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with  'v'. For example: v.1.26.3 |
   | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
@@ -113,15 +111,15 @@ ${NUTANIX_SUBNET_NAME}  -->
 
 10. Click **Next** when you are done.
 
-11. Review the options for OS Patchine Schedule, scanning, backups, and RBAC. 
+11. Review the options for OS patching schedule, scanning, backups, and RBAC. 
 
 12. Click **Validate** and review the cluster configuration and settings summary.
 
-13. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of the deployment. Use this page to track the deployment progress. Provisioning clusters can take several minutes to complete.
+13. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to complete.
 
-14. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node pool you wnat to edit. Click the **Edit** button and edit the YAML that Palette displays. 
+14. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node pool you want to edit. Click the **Edit** button and edit the YAML file that Palette displays. 
 
-15. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster Configuration**. Edit the YAML that Palette displays.
+15. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster Configuration**. Edit the YAML file that Palette displays.
 
 
 ## Validate

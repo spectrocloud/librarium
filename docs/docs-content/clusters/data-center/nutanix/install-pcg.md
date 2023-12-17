@@ -42,7 +42,7 @@ Use the following steps to prepare for installing the PCG.
 
 ### Export Variables and Deploy Workload Cluster
 
-3. Copy the following required variables to your terminal, add your environment-specific information, and press *Enter* to export them. For more information, review the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
+3. Copy the following required variables to your terminal, add your environment-specific information, and export the variables. For more information, review the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
 
 ```bash
   export NUTANIX_ENDPOINT=""    # IP or FQDN of Prism Central
@@ -65,7 +65,7 @@ Use the following steps to prepare for installing the PCG.
   echo $variable_name
 ```
 
-4. Instantiate Nutanix Cluster API by issuing the following command:
+4. Instantiate Nutanix Cluster API.
 
 ```bash
   clusterctl init -i nutanix
@@ -102,7 +102,7 @@ Output
 
 ### Install CNI on Workload Cluster
 
-6. Deploy a Container Network Interface (CNI) pod network in the workload cluster to enable pod-to-pod communication.   by issuing the following command. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
+6. Deploy a Container Network Interface (CNI) pod network in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
 
 ```bash
   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -n $TEST_NAMESPACE
@@ -139,7 +139,7 @@ Use the following steps to install the PCG in your Kubernetes cluster.
 
 2. From the left **Main Menu**, select **Tenant Settings**.
 
-3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways** and click on **+ Add New Private Cloud Gateway**.
+3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways** and click on **Add New Private Cloud Gateway**.
 
 4. Select **Self Hosted** in the next window that Palette displays.
 
@@ -147,7 +147,7 @@ Use the following steps to install the PCG in your Kubernetes cluster.
 
 6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your Kubernetes cluster.
 
-7. Close the slide-out panel when you have copied both the commands. The **Cluster Status** field on the PCG Overview page displays **Pending** while the PCG is installing. Installation is complete when the **Cluster Status** field displays **Running**.  
+7. Close the slide-out panel when you have copied both the commands. The **Cluster Status** field on the PCG Overview page displays **Pending** while the PCG is deploying. Deployment is complete when the **Cluster Status** field displays **Running**.  
 
 
 ## Validate
@@ -168,4 +168,4 @@ When deployed, the PCG registers itself with Palette. Use the steps below to ver
 
 ## Next Steps
 
-When the PCG is in the **Running** state, you can create the Nutanix cloud account. 
+When the PCG is in the **Running** state, you can create the Nutanix cloud account. For guidance, review the [Add Nutanix Cloud Account](add-nutanix-cloud-account.md) guide. 
