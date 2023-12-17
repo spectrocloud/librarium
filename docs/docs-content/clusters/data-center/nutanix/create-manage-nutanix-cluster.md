@@ -40,9 +40,9 @@ Use the following steps to deploy a Kubernetes cluster on Nutanix using Palette.
   | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
   | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**. If you have not yet added your account, select **Add New Account** and add your Nutanix account information. |
 
-6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the cluster profile layers.
+6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
 
-7. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. Click **Next** when you are done.
+7. Review profile layers and customize parameters as desired in the YAML files that display when you select a layer. Click **Next** when you are done.
 
 8. In the Cluster configuration YAML file that Palette displays, edit the file to replace variables within curly braces listed in the table below with values that apply to your Nutanix cloud environment, and make any adjustments to configure your cluster. Click **Next** when you are done.
 
