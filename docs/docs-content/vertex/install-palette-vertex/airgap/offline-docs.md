@@ -99,12 +99,12 @@ To validate that the offline documentation is working, open a browser and naviga
 
 ## Container Image Authenticity
 
-The offline documentation container image is signed using [sigstore's](https://sigstore.dev/) Cosign. The container image is signed using a cryptographic keypair that is private and stored internally. The public key is available in the documentation repository at [**static/cosign.pub**](https://raw.githubusercontent.com/spectrocloud/librarium/master/static/cosign.pub). Use the public key to verify the authenticity of the container image. You can learn more about the container image signing process by reviewing the [Signing Containers](https://docs.sigstore.dev/signing/signing_with_containers) documentation page.
+The offline documentation container image is signed using [sigstore's](https://sigstore.dev/) Cosign. The container image is signed using a cryptographic key pair that is private and stored internally. The public key is available in the documentation repository at [**static/cosign.pub**](https://raw.githubusercontent.com/spectrocloud/librarium/master/static/cosign.pub). Use the public key to verify the authenticity of the container image. You can learn more about the container image signing process by reviewing the [Signing Containers](https://docs.sigstore.dev/signing/signing_with_containers) documentation page.
 
 
 :::info
 
-Cosign generates a keypair that uses the ECDSA-P256 algorithm for the signature and SHA256 for hashes. The keys are stored in PEM-encoded PKCS8 format.
+Cosign generates a key pair that uses the ECDSA-P256 algorithm for the signature and SHA256 for hashes. The keys are stored in PEM-encoded PKCS8 format.
 
 :::
 
@@ -116,7 +116,7 @@ cosign verify --key https://raw.githubusercontent.com/spectrocloud/librarium/mas
 ghcr.io/spectrocloud/librarium:nightly
 ```
 
-If the container image is valid, the following output is displayed. The example output is formated using `jq` to improve readability.
+If the container image is valid, the following output is displayed. The example output is formatted using `jq` to improve readability.
 
 ```shell hideClipboard
 Verification for ghcr.io/spectrocloud/librarium:nightly --
