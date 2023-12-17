@@ -29,6 +29,8 @@ Use the following steps to prepare to register your cloud with Palette.
 1.  Download the following YAML files from the [Nutanix Cluster API (CAPI) Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) GitHub repository:
     - `infrastructure-components.yaml`
     - `cluster-template.yaml`
+  
+  <br />
 
   :::caution
   Check the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix to ensure you download the latest CAPI version of the files. 
@@ -38,7 +40,6 @@ Use the following steps to prepare to register your cloud with Palette.
 
 ```bash
   wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
-
   wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
 ```
 
@@ -57,7 +58,7 @@ Use the following steps to prepare to register your cloud with Palette.
 
 3. Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in the editor of your choice.
 
-4. Modify the YAML files to remove sections so that only the sections listed in the table below remain in each file.
+4. Modify the YAML files to remove sections so that only those sections listed in the table below remain in each file.
 
   :::tip
 
@@ -72,31 +73,51 @@ Use the following steps to prepare to register your cloud with Palette.
   | `workerPoolTemplate.yaml`      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
 
 
-5. In `cloudClusterTemplate.yaml` expand `spec` in each section and remove all occurrences of `metadata.namespace.${NAMESPACE}`.
+5. In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
 
-6. In `controlPlanePoolTemplate.yaml` expand `spec` in both sections of the template and edit the template as follows:
+6. In controlPlanePoolTemplate, edit the template as follows:
   
-    - In the KubeadmControlPlane object:
-      - Remove `metadata.namespace.${NAMESPACE}`.
-      - Rename `spec.machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.  
+    - In the KubeadmControlPlane object, rename `machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.  
 
     - In the NutanixMachineTemplate object:
-      - Remove `metadata.namespace.${NAMESPACE}`.
-      - Rename `metadata.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.
-      - Rename `spec.template.providerID: nutanix://${CLUSTER_NAME}-m1`as `nutanix://${CLUSTER_NAME}-m1-cp-0`. 
+      - Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.
+      - Change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
+
+      <br /> 
 
       :::caution
       The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
       :::
 
-7. In `workerPoolTemplate.yaml` expand `spec` in each section and edit the template as follows:
-    - Remove all occurrences of `metadata.namespace.${NAMESPACE}`. 
-    - In the `NutanixMachineTemplate` object, change the `providerID` to `providerID: nutanix://$CLUSTER_NAME}-m1-mt-0`. 
+7. In workerPoolTemplate.yaml, change `providerID` to `providerID: nutanix://$CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
     
 
 ## Validate
 
-<<< Not sure with a mushy brain how to validate this. But we need this section. >>> 
+Use the steps below to confirm you have the required files and verify the required sections are removed and modified. 
+
+1. From your terminal, confirm you have the following YAML templates:
+
+```bash
+  infrastructure-components.yaml
+  cloudClusterTemplate.yaml    
+  controlPlanePoolTemplate.yaml
+  workerPoolTemplate.yaml
+  ```
+
+2. Ensure each template contains objects as listed in the table.
+
+  | **Templates**                  | **Objects**           |
+  |--------------------------------|------------------------|
+  | `cloudClusterTemplate.yaml`    | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
+  | `controlPlanePoolTemplate.yaml`| KubeadmControlPlane<br />NutanixMachineTemplate |
+  | `workerPoolTemplate.yaml`      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
+
+3. Open each file and verify that all occurrences of `${NAMESPACE}` are removed. 
+
+4. In controlPlanePoolTemplate.yaml, ensure `${CLUSTER_NAME}-cp-0` for the KubeadmControlPlane and NutanixMachineTemplate objects have the same name.
+
+5. Verify parameters are modifed as described for each template in steps 6 and 7 of [Customize YAML Configuration Files](#customize-yaml-configuration-files).
 
 ## Register the Cloud
 
