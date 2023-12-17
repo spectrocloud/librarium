@@ -18,13 +18,13 @@ The following summary steps outline the CAPI cloud workflow illustrated in the d
 
 ![Diagram showing the overall CAPI workflow for users to construct self-hosted cloud solutions tailored to their environment.](/clusters_data-center_nutanix_workflow.png)
 
-1. A system administrator registers Nutanix with Palette by invoking system-level APIs. This includes defining the logo, required cloud account information and key-value pairs to create the Nutanix cloud account. If you do not have a cloud logo, Palette provides a default logo. Palette displays the cloud when registration is complete. 
+1. A system administrator registers Nutanix with Palette by invoking system-level APIs. This includes defining the logo, required cloud account information and key-value pairs to create the Nutanix cloud account. If you do not have a cloud logo, Palette provides a default logo. 
 
-2. Create a self-hosted PCG by installing Palette agents for the PCG in your Kubernetes cluster, issuing the kubectl commands provided in Palette.
+2. Create a self-hosted PCG by preparing YAML configuration templates and installing Palette agents for the PCG in your Kubernetes cluster using the kubectl commands provided in the Palette UI.
 
   When the PCG status displays Running state, the Kubernetes cluster is integrated with Palette.
 
-  :::caution
+  :::info
 
   All clouds require the deployment of a PCG, which enables Palette to securely monitor clusters in the cloud. The PCG relies on the self-hosted Kubernetes cluster to remain operational.
 
