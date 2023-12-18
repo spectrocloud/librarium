@@ -17,7 +17,7 @@ jobs:
           owner: spectrocloud
           name: librarium
           token: ${{ secrets.GITHUB_TOKEN }}
-          untagged-keep-latest: 2
+          untagged-older-than: 1d
 
       - name: Slack Notification
         if: ${{ failure() }}
