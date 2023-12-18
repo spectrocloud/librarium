@@ -194,7 +194,7 @@ The API rate limits are as follows:
 | /v1/overlords | 10 | 5 | 50 |
 | /v1/cluster | 10 | 5 | 50 |
 | /v1/cloudconfigs | 10 | 5 | 50 |
-| /v1/cloudconfigs/{cloudType}/{uid}/machinePools | 10 | 5 | 50 |
+| /v1/cloudconfigs/\{cloudType}/\{uid}/machinePools | 10 | 5 | 50 |
 | /v1/edgehosts | 10 | 5 | 50 |
 | /v1/metrics | 10 | 5 | 50 |
 | /v1/system | 10 | 5 | 50 |
