@@ -8,13 +8,13 @@ tags: ["data center", "nutanix", "architecture"]
 ---
 
 
-Nutanix is a private data center-based cloud that can be registered to Palette using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. For more information about CAPI, review [CAPI Framework](#generic-framework-for-capi-clouds). Nutanix offers a hyper-converged infrastructure (HCI) that combines storage, compute, and networking into a single integrated system. 
+[Nutanix](https://www.nutanix.com) is a private data center-based cloud that can be registered to Palette using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. Nutanix offers a hyper-converged infrastructure (HCI) that combines storage, compute, and networking into a single integrated system. 
 
 Below are key architectural highlights of Nutanix clusters provisioned through Palette.
 
 - Palette integrates with Nutanix through the Cloud Native Computing Foundation (CNCF) [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix).
 
-- Nutanix Prism is a resource management platform that centralizes the monitoring and management of objects across Nutanix environments, whether hosted locally or in the cloud. Nutanix Prism has two main components: Prism Central (PC) and Prism Element (PE).
+- Nutanix Prism is a resource management platform that centralizes the monitoring and management of objects across Nutanix environments, whether hosted in your data center or a public cloud provider environment. Nutanix Prism has two main components: Prism Central (PC) and Prism Element (PE).
 
   - Prism Central is a workspace in which you can register and manage Nutanix workload clusters. The Cluster API Provider Nutanix Cloud Infrastructure (CAPX) relies on Prism Central APIs to manage the Kubernetes cluster infrastructure resources. 
   
@@ -24,7 +24,7 @@ Below are key architectural highlights of Nutanix clusters provisioned through P
 
 - The Kubernetes API Server endpoint is accessible through kube-vip, which is a load balancing solution for the cluster’s control plane. Kube-vip distributes API requests across control plane nodes and also has fail over capabilities.
 
-- A self-hosted Private Cloud Gateway (PCG) is required to enable Palette to securely communicate with the Nutanix cloud. The direct communication channel allows Palette to create clusters within the Nutanix cloud.
+- A Private Cloud Gateway (PCG) is required to enable Palette to securely communicate with the Nutanix cloud. The direct communication channel allows Palette to create clusters within the Nutanix cloud.
 
 The following diagram illustrates the Nutanix architecture.
 

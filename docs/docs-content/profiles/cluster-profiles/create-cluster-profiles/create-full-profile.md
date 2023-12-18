@@ -38,7 +38,7 @@ Create a full profile by first adding infrastructure layers composed of an Opera
 
   :::info
 
-  Cluster profiles created from cloud types that are under technical preview are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. When creating this type of profile, you do not have to specify anything for the OS or Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers. Additionally, Palette provides a cloud provider-specific storage pack. 
+  Cluster profiles created from cloud types that are under Technical Preview are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. When creating this type of profile, you do not have to specify anything for the OS or Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers. Additionally, Palette provides a cloud provider-specific storage pack. 
   
   :::
 

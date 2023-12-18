@@ -10,7 +10,7 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Palette. The PCG enables Palette to securely monitor Nutanix clusters in the cloud. This section guides you on installing the PCG.
+A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Palette. The PCG enables Palette to securely monitor Nutanix clusters in the deployed cloud environment. This section guides you on how to install the PCG.
 
 ## Prerequisites
 
@@ -18,11 +18,16 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix subnet created in Nutanix Prism Central.
 
-- A Nutanix cloud registered with Palette.
+- A Nutanix cloud registered with Palette. For information about registering your cloud, review [Register Nutanix Cloud](register-nutanix-cloud.md).
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- The following applications installed: Docker, kind, kubectl, and clusterctl.
+- The following applications installed. The [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) section of the [Install clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) page provides links to the applications below.
+
+  - [Docker](https://docs.docker.com/engine/install/)
+  - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or  [kind](https://kind.sigs.k8s.io/)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+  - [clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) 
 
 
 ## Setup
@@ -33,16 +38,26 @@ Use the following steps to prepare for installing the PCG.
 
 1. Log in to your Nutanix Prism account.
 
-2. Create a local kind cluster, which will be used to bootstrap the workload cluster in the Nutanix account. The workload cluster is then used to deploy the PCG. 
+2. Create a local kind cluster. This cluster will bootstrap the workload cluster in the Nutanix account. The workload cluster is then used to deploy the PCG. 
 
 ```bash
-  kind create cluster
+  kind create cluster --name pcg-pilot
 ```
 
 
 ### Export Variables and Deploy Workload Cluster
 
-3. Copy the following required variables to your terminal, add your environment-specific information, and export the variables. For more information, review the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
+3. Copy the required variables shown in the example to your terminal, add your environment-specific information, and export the variables. The table describes the environment variables. For more information, review the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
+
+  | **Variable** | **Description** |
+  |--------------|-----------------|
+  | `NUTANIX_ENDPOINT`| The Prism Central IP address or FQDN. |
+  | `NUTANIX_USER`| The Prism Central user name. |
+  | `NUTANIX_PASSWORD`| The Prism Central password. |
+  | `NUTANIX_INSECURE`| or true                 |
+  | `NUTANIX_SSH_AUTHORIZED_KEY`|                 |
+  | `NUTANIX_PRISM_ELEMENT_CLUSTER_NAME`|                 |
+  | `NUTANIX_SUBNET_NAME` |   |
 
 ```bash
   export NUTANIX_ENDPOINT=""    # IP or FQDN of Prism Central
@@ -59,16 +74,22 @@ Use the following steps to prepare for installing the PCG.
   export NUTANIX_SUBNET_NAME=""
 ```
 
-  You can ensure the variables were successfully exported by issuing the following command in your terminal. 
+  You can ensure the Nutanix variables were successfully exported by issuing the following command in your terminal. 
 
 ```bash
-  echo $variable_name
+env | grep "NUTANIX"
+```
+
+  To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the following command for each variable.
+
+```bash
+echo $variable_name
 ```
 
 4. Instantiate Nutanix Cluster API.
 
 ```bash
-  clusterctl init -i nutanix
+clusterctl init -infrastructure nutanix
 ```
 
 5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with your cluster name and `mytestnamespace` and with your namespace name. Provide your control plane endpoint IP address. 
@@ -80,23 +101,23 @@ Use the following steps to prepare for installing the PCG.
     -i nutanix \
     --target-namespace ${TEST_NAMESPACE}  \
     > ./cluster.yaml
-  kubectl create ns ${TEST_NAMESPACE}
-  kubectl apply -f ./cluster.yaml -n ${TEST_NAMESPACE}
+  kubectl create namespace ${TEST_NAMESPACE}
+  kubectl apply -filename ./cluster.yaml -namespace ${TEST_NAMESPACE}
 ```
 
 Output
 
-```bash
-  namespace/carolina-namespace created
+```bash hideClipBoard
+  namespace/mytestnamespace created
   configmap/user-ca-bundle created
-  secret/carolina-cluster created
-  kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/carolina-cluster-kcfg-0 created
-  cluster.cluster.x-k8s.io/carolina-cluster created
-  machinedeployment.cluster.x-k8s.io/carolina-cluster-wmd created
-  machinehealthcheck.cluster.x-k8s.io/carolina-cluster-mhc created
-  kubeadmcontrolplane.controlplane.cluster.x-k8s.io/carolina-cluster-kcp created
-  nutanixcluster.infrastructure.cluster.x-k8s.io/carolina-cluster created
-  nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/carolina-cluster-mt-0 created
+  secret/mytestcluster created
+  kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/mytestcluster-kcfg-0 created
+  cluster.cluster.x-k8s.io/mytestcluster created
+  machinedeployment.cluster.x-k8s.io/mytestcluster-wmd created
+  machinehealthcheck.cluster.x-k8s.io/mytestcluster-mhc created
+  kubeadmcontrolplane.controlplane.cluster.x-k8s.io/mytestcluster-kcp created
+  nutanixcluster.infrastructure.cluster.x-k8s.io/mytestcluster created
+  nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/mytestcluster-mt-0 created
 ```
 
 
@@ -105,13 +126,13 @@ Output
 6. Deploy a Container Network Interface (CNI) pod network in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
 
 ```bash
-  clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -n $TEST_NAMESPACE
+  clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
 ```
 
 7. To verify the CNI pod network, issue the following command. 
 
 ```bash
-  kubectl --kubeconfig=./<cluster_name>-cluster.kubeconfig get nodes
+  kubectl --kubeconfig=./TEST_CLUSTER_NAME-cluster.kubeconfig get nodes
 ```
 
 Output
@@ -124,7 +145,7 @@ test-cluster-wmd-gdjps-gx267   Ready    <none>          26h   v1.26.7
 
 ## Validate
 
-Use the steps below to verify your VMS are created.
+Use the steps below to verify your virtual machines (VMs) are created.
 
 1. In the Nutanix Prism Element web console, navigate to **VM**. 
 
@@ -133,7 +154,7 @@ Use the steps below to verify your VMS are created.
 
 ## Install PCG
 
-Use the following steps to install the PCG in your Kubernetes cluster.
+Use the following steps to install the PCG in your Kubernetes workload cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -143,9 +164,9 @@ Use the following steps to install the PCG in your Kubernetes cluster.
 
 4. Select **Self Hosted** in the next window that Palette displays.
 
-5. Provide a name for the PCG and use the **drop-down Menu** to select Nutanix as the cloud type. Click **Confirm** to continue. Palette displays the Private Cloud Gateway Overview page. 
+5. Provide a name for the PCG and use the **drop-down Menu** to select Nutanix as the cloud type. Click **Confirm** to continue. You will be redirected to the Private Cloud Gateway Overview page. 
 
-6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your Kubernetes cluster.
+6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your workload cluster.
 
 7. Close the slide-out panel when you have copied both the commands. The **Cluster Status** field on the PCG Overview page displays **Pending** while the PCG is deploying. Deployment is complete when the **Cluster Status** field displays **Running**.  
 

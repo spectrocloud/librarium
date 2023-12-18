@@ -6,16 +6,18 @@ hide_table_of_contents: false
 tags: ["data center", "nutanix"]
 ---
 
- Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account must be added to Palette. The required fields to add the cloud are pre-defined by the System Administrator during the cloud registration process. These cloud-specific fields vary based on the cloud type.
+ Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account must be added to Palette. The required fields to add the cloud are pre-defined by the system administrator during the cloud registration process. These cloud-specific fields vary based on the cloud type.
 
 ## Prerequisites
 
-- A Nutanix cloud that a System Administrator has registered with Palette.
+- A Nutanix cloud that a system administrator has registered with Palette. 
+
+- A PCG installed that connects the Nutanix cloud with Palette. For guidance, refer to [Install Private Cloud Gateway](install-pcg.md).
 
 
 ## Add Cloud Account
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant administrator.
 
 2. From the **left Main Menu**, select **Tenant Settings**. 
 
@@ -29,11 +31,11 @@ tags: ["data center", "nutanix"]
   |-----------|-----------------|
   | **Name**| A custom name for the account. |
   | **Private Cloud Gateway**| This name is auto-filled based on the name you provided when you installed the PCG.|
-  | **NUTANIX_USER**| Prism Central user name.|
-  | **NUTANIX_PASSWORD** | Prism Central password.|
-  | **NUTANIX_ENDPOINT** | Prism Central IP address or fully qualified domain name (FQDN).|
-  | **NUTANIX_PORT** | Specify the default in the ``cloudClusterTemplate.yaml``: 9440 |
-  | **NUTANIX_INSECURE** | Specify the default in the ``cloudClusterTemplate.yaml``: false |
+  | **NUTANIX_USER**| The Prism Central user name.|
+  | **NUTANIX_PASSWORD** | The Prism Central user password.|
+  | **NUTANIX_ENDPOINT** | The Prism Central IP address or the fully qualified domain name (FQDN) assigned to Prism.|
+  | **NUTANIX_PORT** | Specify the default port you assigned in the ``cloudClusterTemplate.yaml`` file. The default value is `9440`. |
+  | **NUTANIX_INSECURE** | Specify the SSL behavior you used in the ``cloudClusterTemplate.yaml`` file. The default behavior is `false`. |
 
 ## Validate
 
@@ -41,7 +43,7 @@ tags: ["data center", "nutanix"]
 
 2. From the **left Main Menu**, select **Tenant Settings**. 
 
-3. Next, select **Cloud Accounts** in the **Tenant Settings** menu. 
+3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**. 
 
 4. Verify the account you added is listed and available.
 
