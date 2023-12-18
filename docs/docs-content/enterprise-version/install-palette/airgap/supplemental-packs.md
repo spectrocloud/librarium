@@ -15,6 +15,7 @@ Review the following table to determine which pack binaries you need to download
 
 | **File Name**                                   | **Download URL** |
 |----------------------------------------------|--------------|
+| `airgap-pack-argo-cd-5.46.8.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-5.46.8.bin |
 | `airgap-pack-aws-alb-2.5.1.bin`              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin |
 | `airgap-pack-aws-cluster-autoscaler-1.26.3.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-cluster-autoscaler-1.26.3.bin |
 | `airgap-pack-cni-calico-3.25.1.bin`          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.25.1.bin |
@@ -54,7 +55,8 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-kubernetes-1.26.5.bin`          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.26.5.bin |
 | `airgap-pack-kubernetes-1.27.1.bin`          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.27.1.bin |
 | `airgap-pack-lb-metallb-helm-0.13.10.bin`    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.13.10.bin |
-| `airgap-pack-nginx-1.8.1.bin`                |  https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.8.1.bin |
+| `airgap-pack-nginx-1.8.1.bin`                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.8.1.bin |
+| `airgap-pack-nginx-1.9.4.bin`                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.9.4.bin  |
 | `airgap-pack-nvidia-gpu-operator-22.9.0.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nvidia-gpu-operator-22.9.0.bin |
 | `airgap-pack-prometheus-operator-46.4.0.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-46.4.0.bin |
 | `airgap-pack-spectro-grafana-dashboards-4.0.0.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-grafana-dashboards-4.0.0.bin |
