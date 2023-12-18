@@ -16,12 +16,23 @@ tags: ["palette-cli"]
 Use the following steps to install and set up the Palette CLI.
 
 
+## Supported Operating Systems
+
+The Palette CLI is available for the following operating systems and architectures.
+
+| **Operating System** | **Architecture** |
+|------------------|--------------|
+| Linux            | amd64        |
+
+
 ## Prerequisites
 
 - A Palette account. Click [here](https://console.spectrocloud.com/) to create a Palette account.
 
 
 - A Palette API key. Refer to the [Create API Key](../user-management/authentication/api-key/create-api-key.md) reference page to learn how to create an API key.
+
+- Different Palette CLI commands may require additional prerequisites. Refer to the invividual command reference pages to learn more about the prerequisites for each command.
 
 
 

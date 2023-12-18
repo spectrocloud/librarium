@@ -54,6 +54,8 @@ Palette CLI supports the following global flags.
 
 ## Resources
 
+- [Docs](docs.md)
+
 - [EC](ec.md)
 
 - [Login](login.md)
