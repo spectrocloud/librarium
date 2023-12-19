@@ -8,7 +8,7 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A System Administrator registers the Nutanix cloud in Palette by invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs required to add the cloud to Palette. They also enable uploading the YAML templates used to create the cluster, control plane, and worker nodes. This section provides instructions on how to use the APIs to register a Nutanix cloud to Palette.
+A system administrator registers the Nutanix cloud in Palette by invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs required to add the cloud to Palette. They also enable uploading the YAML templates used to create the cluster, control plane, and worker nodes. This section provides instructions on how to use the APIs to register a Nutanix cloud to Palette.
 
 
 ## Prerequisites
@@ -27,36 +27,36 @@ Use the following steps to prepare to register your cloud with Palette.
 ### Customize YAML Configuration Files
 
 1.  Download the following YAML files from the [Nutanix Cluster API (CAPI) Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) GitHub repository:
-    - `infrastructure-components.yaml`
-    - `cluster-template.yaml`
+    - **infrastructure-components.yaml**
+    - **cluster-template.yaml**
   
   <br />
 
   :::caution
-  Check the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix to ensure you download the latest CAPI version of the files. 
+  Review the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix to ensure you download the latest CAPI version of the files. 
   :::
 
   Issue the commands below to download the files.
 
 ```bash
-  wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
-  wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
+wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
+wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
 ```
 
 2. Create two copies of `cluster-template.yaml` and rename them so you have the following files in addition to the `infrastructure-components.yaml`:
-    - `cloudClusterTemplate.yaml`
-    - `controlPlanePoolTemplate.yaml`
-    - `workerPoolTemplate.yaml`
+    - **cloudClusterTemplate.yaml**
+    - **controlPlanePoolTemplate.yaml**
+    - **workerPoolTemplate.yaml**
 
   Use the following commands to copy and rename the files.
 
 ```bash
-  cp cluster-template.yaml cloudClusterTemplate.yaml 
-  cp cluster-template.yaml controlPlanePoolTemplate.yaml
-  mv cluster-template.yaml workerPoolTemplate.yaml
+cp cluster-template.yaml cloudClusterTemplate.yaml 
+cp cluster-template.yaml controlPlanePoolTemplate.yaml
+mv cluster-template.yaml workerPoolTemplate.yaml
 ```
 
-3. Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in the editor of your choice.
+3. Open the **cloudClusterTemplate.yaml**, **controlPlanePoolTemplate.yaml**, and **workerPoolTemplate.yaml** files in the editor of your choice.
 
 4. Modify the YAML files to remove sections so that only those sections listed in the table below remain in each file.
 
@@ -68,14 +68,14 @@ Use the following steps to prepare to register your cloud with Palette.
 
   | **Templates**                   | **Objects**           |
   |--------------------------------|------------------------|
-  | `cloudClusterTemplate.yaml`    | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
-  | `controlPlanePoolTemplate.yaml`| KubeadmControlPlane<br />NutanixMachineTemplate |
-  | `workerPoolTemplate.yaml`      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
+  | **cloudClusterTemplate.yaml**   | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
+  | **controlPlanePoolTemplate.yaml**| KubeadmControlPlane<br />NutanixMachineTemplate |
+  | **workerPoolTemplate.yaml**      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
 
 
 5. In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
 
-6. In controlPlanePoolTemplate, edit the template as follows:
+6. In **controlPlanePoolTemplate.yaml**, edit the template as follows:
   
     - In the KubeadmControlPlane object, rename `machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.  
 
@@ -89,29 +89,28 @@ Use the following steps to prepare to register your cloud with Palette.
       The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
       :::
 
-7. In workerPoolTemplate.yaml, change `providerID` to `providerID: nutanix://$CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
+7. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
     
 
 ## Validate
 
 Use the steps below to confirm you have the required files and verify the required sections are removed and modified. 
 
-1. From your terminal, confirm you have the following YAML templates:
+1. From your terminal, issue a command such as `ls -l` to list the files and confirm you have the following YAML templates:
 
-```bash
-  infrastructure-components.yaml
-  cloudClusterTemplate.yaml    
-  controlPlanePoolTemplate.yaml
-  workerPoolTemplate.yaml
-  ```
+    - infrastructure-components.yaml
+    - cloudClusterTemplate.yaml    
+    - controlPlanePoolTemplate.yaml
+    - workerPoolTemplate.yaml
+
 
 2. Ensure each template contains objects as listed in the table.
 
   | **Templates**                  | **Objects**           |
   |--------------------------------|------------------------|
-  | `cloudClusterTemplate.yaml`    | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
-  | `controlPlanePoolTemplate.yaml`| KubeadmControlPlane<br />NutanixMachineTemplate |
-  | `workerPoolTemplate.yaml`      | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
+  | **cloudClusterTemplate.yaml**    | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck | 
+  | **controlPlanePoolTemplate.yaml**| KubeadmControlPlane<br />NutanixMachineTemplate |
+  | **workerPoolTemplate.yaml**     | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate |
 
 3. Open each file and verify that all occurrences of `${NAMESPACE}` are removed. 
 

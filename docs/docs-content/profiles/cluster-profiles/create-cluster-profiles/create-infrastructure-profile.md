@@ -34,7 +34,7 @@ Create an infrastructure profile by adding layers composed of an Operating Syste
 
   To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the infrastructure provider, managed Kubernetes, or technical preview cloud type for your environment and click **Next**.
+5. Select the infrastructure provider, managed Kubernetes, or Technical Preview cloud type for your environment and click **Next**.
 
   :::info
 

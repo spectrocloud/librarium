@@ -21,7 +21,7 @@ tags: ["data center", "nutanix"]
 
 2. From the **left Main Menu**, select **Tenant Settings**. 
 
-3. Next, select **Cloud Accounts** in the **Tenant Settings** menu.
+3. Next, select **Cloud Accounts** in the **Tenant Setting Menu**.
 
 4. Locate Nutanix and click **Add Nutanix Cloud**.  
 
@@ -30,7 +30,7 @@ tags: ["data center", "nutanix"]
   | **Field** | **Description** |
   |-----------|-----------------|
   | **Name**| A custom name for the account. |
-  | **Private Cloud Gateway**| This name is auto-filled based on the name you provided when you installed the PCG.|
+  | **Private Cloud Gateway**| Select the PCG from the list of deployed PCGs in your setup.|
   | **NUTANIX_USER**| The Prism Central user name.|
   | **NUTANIX_PASSWORD** | The Prism Central user password.|
   | **NUTANIX_ENDPOINT** | The Prism Central IP address or the fully qualified domain name (FQDN) assigned to Prism.|
@@ -39,7 +39,7 @@ tags: ["data center", "nutanix"]
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
 2. From the **left Main Menu**, select **Tenant Settings**. 
 

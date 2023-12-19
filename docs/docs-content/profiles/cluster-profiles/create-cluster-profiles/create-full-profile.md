@@ -34,7 +34,7 @@ Create a full profile by first adding infrastructure layers composed of an Opera
 
   To learn how to create multiple profile versions that use the same name, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the infrastructure provider, managed Kubernetes, or technical preview cloud type for your environment and click **Next**.
+5. Select the infrastructure provider, managed Kubernetes, or Technical Preview cloud type for your environment and click **Next**.
 
   :::info
 
