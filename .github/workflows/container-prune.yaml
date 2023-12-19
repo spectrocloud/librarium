@@ -28,7 +28,7 @@ jobs:
           container: "librarium"
           dry-run: false
           keep-younger-than: 1 # days
-          keep-last: 1
+          # keep-last: 1
           prune-untagged: true
 
       # - name: Slack Notification
