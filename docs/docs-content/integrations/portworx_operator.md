@@ -604,7 +604,7 @@ storageCluster:
 
 ### Etcd
 
-Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
+Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal key-value store (KVDB). 
 
 #### Kvdb and Etcd Presets
 
@@ -1189,7 +1189,7 @@ storageCluster:
 
 ### Etcd
 
-Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
+Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal key-value store (KVDB). 
 
 #### Kvdb and Etcd Presets
 
@@ -1768,7 +1768,7 @@ storageCluster:
 
 ### Etcd
 
-Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
+Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal key-value store (KVDB). 
 
 #### Kvdb and Etcd Presets
 
