@@ -68,12 +68,13 @@ Starting with Portworx version 3.x.x and greater. Lighthouse is no longer availa
 
 ## Parameters
 
-The following parameters are highlighed for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
+The following parameters are highlighted for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
 
 
 | Parameter | Description | Default |
 |:----------|:------------|:--------|
-| `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select the "enterprise" type and set "activateLicense" to false. | `essentials` |
+| `portworx-generic.activateLicense`| Set to `true` to activate the Portworx license. | `true` |
+| `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select the **PX Enterprise** type and set `activateLicense` to `false`. | `essentials` |
 | `portworx-generic.Storagecluster.spec` |  Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.| `{}`|
 | `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External Etcd section below to learn more.| `{}`|
 | `portworx-generic.storageCluster.env` | Specify environment variables, such as HTTP Proxy settings, for Portworx. | `{}`| 
@@ -665,7 +666,7 @@ externalKvdb:
 
 #### Integration With External Etcd
 
-Use the folllowing steps to integrate Portworx to an external Etcd server by following the steps below.
+Use the following steps to integrate Portworx to an external Etcd server by following the steps below.
 
 
 1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
@@ -677,7 +678,7 @@ Use the folllowing steps to integrate Portworx to an external Etcd server by fol
 3. Configure the external Etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
 
-4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automtically get created by this pack.
+4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
   :::caution
 
@@ -740,12 +741,13 @@ Starting with Portworx version 3.x.x and greater. Lighthouse is no longer availa
 
 ## Parameters
 
-The following parameters are highlighed for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
+The following parameters are highlighted for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
 
 
 | Parameter | Description | Default |
 |:----------|:------------|:--------|
-| `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select the "enterprise" type and set "activateLicense" to false. | `essentials` |
+| `portworx-generic.activateLicense`| Set to `true` to activate the Portworx license. | `true` |
+| `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select **PX Enterprise** type and set `activateLicense` to `false`. | `essentials` |
 | `portworx-generic.Storagecluster.spec` |  Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.| `{}`|
 | `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External Etcd section below to learn more.| `{}`|
 | `portworx-generic.storageCluster.env` | Specify environment variables, such as HTTP Proxy settings, for Portworx. | `{}`| 
@@ -1249,7 +1251,7 @@ The pack defaults to the **Use Internal Kvdb** option. You can change to a diffe
 
 #### Integration With External Etcd
 
-Use the folllowing steps to integrate Portworx to an external Etcd server by following the steps below.
+Use the following steps to integrate Portworx to an external Etcd server by following the steps below.
 
 
 1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
@@ -1261,7 +1263,7 @@ Use the folllowing steps to integrate Portworx to an external Etcd server by fol
 3. Configure the external Etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
 
-4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automtically get created by this pack.
+4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
   :::caution
 
@@ -1322,12 +1324,13 @@ Starting with Portworx version 3.x.x and greater. Lighthouse is no longer availa
 
 ## Parameters
 
-The following parameters are highlighed for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
+The following parameters are highlighted for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
 
 
 | Parameter | Description | Default |
 |:----------|:------------|:--------|
-| `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select the "enterprise" type and set "activateLicense" to false. | `essentials` |
+| `portworx-generic.activateLicense`| Set to `true` to activate the Portworx license. | `true` |
+| `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select **PX Enterprise** and set `activateLicense` to `false`. | `essentials` |
 | `portworx-generic.Storagecluster.spec` |  Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.| `{}`|
 | `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External Etcd section below to learn more.| `{}`|
 | `portworx-generic.storageCluster.env` | Specify environment variables, such as HTTP Proxy settings, for Portworx. | `{}`| 
@@ -1832,7 +1835,7 @@ The pack defaults to the **Use Internal Kvdb** option. You can change to a diffe
 
 #### Integration With External Etcd
 
-Use the folllowing steps to integrate Portworx to an external Etcd server by following the steps below.
+Use the following steps to integrate Portworx to an external Etcd server by following the steps below.
 
 
 1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
@@ -1844,7 +1847,7 @@ Use the folllowing steps to integrate Portworx to an external Etcd server by fol
 3. Configure the external Etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
 
-4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automtically get created by this pack.
+4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
   :::caution
 
