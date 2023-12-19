@@ -179,17 +179,11 @@ charts:
     externalKvdb:
       useCertsForSSL: false
       # cacert: |
-      #   -----BEGIN CERTIFICATE-----
-      #   < KEY DATA >
-      #   -----END CERTIFICATE-----
+      #   < PEM KEY DATA >
       # key: |
-      #   -----BEGIN RSA PRIVATE KEY-----
-      #   < KEY DATA >
-      #   -----END RSA PRIVATE KEY-----
+      #   < PEM KEY DATA >
       # cert: |
-      #   -----BEGIN CERTIFICATE-----
-      #   < KEY DATA >
-      #   -----END CERTIFICATE-----
+      #   < PEM KEY DATA >
 ```
 # License Model
 
@@ -748,20 +742,14 @@ These are the three types of Presets that can be selected and modified. The pack
     externalKvdb:
       useCertsForSSL: true
       # The CA cert to use for etcd authentication. Make sure to follow the same indentation style as given in the example below
-      cacert: |-
-        -----BEGIN CERTIFICATE-----
-        < KEY DATA >
-        -----END CERTIFICATE-----
+      cacert: |
+        < PEM KEY DATA >
       # The cert to use for etcd authentication. Make sure to follow the same indentation style as given in the example below
-      cert: |-
-        -----BEGIN CERTIFICATE-----
-        < KEY DATA >
-        -----END CERTIFICATE-----
+      cert: |
+        < PEM KEY DATA >
       # The key to use for etcd authentication. Make sure to follow the same indentation style as given in the example below
-      key: |-
-        -----BEGIN RSA PRIVATE KEY-----
-       < KEY DATA >
-        -----END RSA PRIVATE KEY-----
+      key: |
+        < PEM KEY DATA >
 ```
 
 </TabItem>
