@@ -23,7 +23,7 @@ If you have specified registry credentials in the `registryCredentials` field in
 
 ## Prerequisites
 
-- At least one Edge host with an x86_64 or AMD64 processor architecture. 
+- At least one Edge host registered with your Palette account.  
 
 - A private image registry.
 
