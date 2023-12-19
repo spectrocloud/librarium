@@ -30,7 +30,7 @@ jobs:
         org-name: spectrocloud
         keep-at-least: 1
         skip-tags: nightly
-        dry-run: true
+        dry-run: false
         token-type: github-token
         token: ${{ secrets.GITHUB_TOKEN }}
 
