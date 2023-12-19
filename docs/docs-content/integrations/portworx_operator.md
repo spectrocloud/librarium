@@ -76,7 +76,7 @@ The following parameters are highlighted for this version of the pack and provid
 | `portworx-generic.activateLicense`| Set to `true` to activate the Portworx license. | `true` |
 | `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select the **PX Enterprise** type and set `activateLicense` to `false`. | `essentials` |
 | `portworx-generic.Storagecluster.spec` |  Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.| `{}`|
-| `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External Etcd section below to learn more.| `{}`|
+| `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External etcd section below to learn more.| `{}`|
 | `portworx-generic.storageCluster.env` | Specify environment variables, such as HTTP Proxy settings, for Portworx. | `{}`| 
 
 
@@ -604,13 +604,13 @@ storageCluster:
 
 ### Etcd
 
-Portworx Enterprise supports multiple Etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
+Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
 
 #### Kvdb and Etcd Presets
 
-The following pack presets are available for configuring Etcd.
+The following pack presets are available for configuring etcd.
 
-The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external Etcd server. 
+The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external etcd server. 
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
@@ -666,16 +666,16 @@ externalKvdb:
 
 #### Integration With External Etcd
 
-Use the following steps to integrate Portworx to an external Etcd server by following the steps below.
+Use the following steps to integrate Portworx to an external etcd server by following the steps below.
 
 
 1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
 
 
-2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external Etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
+2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
 
 
-3. Configure the external Etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
+3. Configure the external etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
 
 4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
@@ -749,7 +749,7 @@ The following parameters are highlighted for this version of the pack and provid
 | `portworx-generic.activateLicense`| Set to `true` to activate the Portworx license. | `true` |
 | `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select **PX Enterprise** type and set `activateLicense` to `false`. | `essentials` |
 | `portworx-generic.Storagecluster.spec` |  Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.| `{}`|
-| `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External Etcd section below to learn more.| `{}`|
+| `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External etcd section below to learn more.| `{}`|
 | `portworx-generic.storageCluster.env` | Specify environment variables, such as HTTP Proxy settings, for Portworx. | `{}`| 
 
 
@@ -1189,13 +1189,13 @@ storageCluster:
 
 ### Etcd
 
-Portworx Enterprise supports multiple Etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
+Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
 
 #### Kvdb and Etcd Presets
 
-The following pack presets are available for configuring Etcd.
+The following pack presets are available for configuring etcd.
 
-The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external Etcd server. 
+The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external etcd server. 
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
@@ -1251,16 +1251,16 @@ The pack defaults to the **Use Internal Kvdb** option. You can change to a diffe
 
 #### Integration With External Etcd
 
-Use the following steps to integrate Portworx to an external Etcd server by following the steps below.
+Use the following steps to integrate Portworx to an external etcd server by following the steps below.
 
 
 1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
 
 
-2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external Etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
+2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
 
 
-3. Configure the external Etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
+3. Configure the external etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
 
 4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
@@ -1332,7 +1332,7 @@ The following parameters are highlighted for this version of the pack and provid
 | `portworx-generic.activateLicense`| Set to `true` to activate the Portworx license. | `true` |
 | `portworx-generic.license.type` | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select **PX Enterprise** and set `activateLicense` to `false`. | `essentials` |
 | `portworx-generic.Storagecluster.spec` |  Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.| `{}`|
-| `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External Etcd section below to learn more.| `{}`|
+| `portworx-generic.externalKvdb` |  Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External etcd section below to learn more.| `{}`|
 | `portworx-generic.storageCluster.env` | Specify environment variables, such as HTTP Proxy settings, for Portworx. | `{}`| 
 
 
@@ -1768,18 +1768,13 @@ storageCluster:
 
 ### Etcd
 
-
-
-
-
-
-Portworx Enterprise supports multiple Etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
+Portworx Enterprise supports multiple etcd scenarios. Portworx will default to an internal internal key-value store (KVDB). 
 
 #### Kvdb and Etcd Presets
 
-The following pack presets are available for configuring Etcd.
+The following pack presets are available for configuring etcd.
 
-The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external Etcd server. 
+The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external etcd server. 
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
@@ -1835,16 +1830,16 @@ The pack defaults to the **Use Internal Kvdb** option. You can change to a diffe
 
 #### Integration With External Etcd
 
-Use the following steps to integrate Portworx to an external Etcd server by following the steps below.
+Use the following steps to integrate Portworx to an external etcd server by following the steps below.
 
 
 1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
 
 
-2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external Etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
+2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
 
 
-3. Configure the external Etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
+3. Configure the external etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
 
 4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
