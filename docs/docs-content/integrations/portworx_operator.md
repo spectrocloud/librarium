@@ -105,7 +105,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 This pack can install Portworx in three different licensing modes:
 
-* **Essentials**: a free Portworx license with limited functionality that allows you to run small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully-featured Portworx Enterprise version of Portworx.
+* **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully featured Portworx Enterprise version of Portworx.
 
 
 * **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
@@ -177,16 +177,16 @@ You can install Portworx in a variety of storage configurations.
 * **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
 
 
-* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
 
 
-* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
 
 
-* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
 
 
-* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
 
 
 :::tip
@@ -776,7 +776,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 This pack can install Portworx in three different licensing modes:
 
-* **Essentials**: a free Portworx license with limited functionality that allows you to run small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully-featured Portworx Enterprise version of Portworx.
+* **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully featured Portworx Enterprise version of Portworx.
 
 
 * **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
@@ -848,16 +848,16 @@ You can install Portworx in a variety of storage configurations.
 * **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
 
 
-* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
 
 
-* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
 
 
-* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
 
 
-* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
 
 
 :::tip
@@ -1359,7 +1359,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 This pack can install Portworx in three different licensing modes:
 
-* **Essentials**: a free Portworx license with limited functionality that allows you to run small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully-featured Portworx Enterprise version of Portworx.
+* **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully featured Portworx Enterprise version of Portworx.
 
 
 * **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
@@ -1431,16 +1431,16 @@ You can install Portworx in a variety of storage configurations.
 * **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
 
 
-* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+* **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
 
 
-* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+* **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
 
 
-* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+* **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
 
 
-* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+* **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
 
 
 :::tip
