@@ -40,9 +40,9 @@ Use the following steps to prepare for installing the PCG.
 
 2. Create a local kind cluster. This cluster will bootstrap the workload cluster in the Nutanix account. The workload cluster is then used to deploy the PCG. 
 
-```bash
-kind create cluster --name pcg-pilot
-```
+  ```bash
+  kind create cluster --name pcg-pilot
+  ```
 
 
 ### Export Variables and Deploy Workload Cluster
@@ -58,98 +58,98 @@ kind create cluster --name pcg-pilot
   | `NUTANIX_SSH_AUTHORIZED_KEY`| Provide your public SSH key. |
   | `NUTANIX_PRISM_ELEMENT_CLUSTER_NAME`| The workload cluster name.|
   | `NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME` | ?? |
-  | `NUTANIX_SUBNET_NAME` | The subnet of the workoad cluster. |
+  | `NUTANIX_SUBNET_NAME` | The subnet of the Nutanix workload cluster. |
   | `KUBERNETES_VERSION` | The Kubernetes version the workload cluster uses. Precede the version with `v`. |
   | `WORKER_MACHINE_COUNT` | The number of nodes in the workload cluster. |
 
-Copy the following Nutanix environment variables to your terminal, provide values, and export the variables.  
+  Copy the following Nutanix environment variables to your terminal, provide values, and export the variables.  
 
-```bash
-export NUTANIX_ENDPOINT=""
-export NUTANIX_USER=""
-export NUTANIX_PASSWORD=""
-export NUTANIX_INSECURE=false
-export NUTANIX_SSH_AUTHORIZED_KEY=""
-export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
-export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
-export NUTANIX_SUBNET_NAME=""
-```
+    ```bash
+    export NUTANIX_ENDPOINT=""
+    export NUTANIX_USER=""
+    export NUTANIX_PASSWORD=""
+    export NUTANIX_INSECURE=false
+    export NUTANIX_SSH_AUTHORIZED_KEY=""
+    export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
+    export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
+    export NUTANIX_SUBNET_NAME=""
+    ```
 
   You can ensure the Nutanix variables were successfully exported by issuing the following command in your terminal. 
 
-```bash
-env | grep "NUTANIX"
-```
+    ```bash
+    env | grep "NUTANIX"
+    ```
 
   Copy the following environment variables to your terminal, provide values, and export the variables.  
- 
-```bash
-export KUBERNETES_VERSION="v1.22.9"
-export WORKER_MACHINE_COUNT=1
-```
+  
+    ```bash
+    export KUBERNETES_VERSION="v1.22.9"
+    export WORKER_MACHINE_COUNT=1
+    ```
 
   To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the following command for each variable.
 
-```bash
-echo $variable_name
-```
+    ```bash
+    echo $variable_name
+    ```
 
 4. Instantiate Nutanix Cluster API.
 
-```bash
-clusterctl init -infrastructure nutanix
-```
+  ```bash
+  clusterctl init -infrastructure nutanix
+  ```
 
 5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with your cluster name and `mytestnamespace` and with your namespace name. Provide your control plane endpoint IP address. 
 
-```bash
-export TEST_CLUSTER_NAME=mytestcluster
-export TEST_NAMESPACE=mytestnamespace
-CONTROL_PLANE_ENDPOINT_IP=x.x.x.x clusterctl generate cluster ${TEST_CLUSTER_NAME} \
-  -i nutanix \
-  --target-namespace ${TEST_NAMESPACE}  \
-  > ./cluster.yaml
-kubectl create namespace ${TEST_NAMESPACE}
-kubectl apply -filename ./cluster.yaml -namespace ${TEST_NAMESPACE}
-```
+  ```bash
+  export TEST_CLUSTER_NAME=mytestcluster
+  export TEST_NAMESPACE=mytestnamespace
+  CONTROL_PLANE_ENDPOINT_IP=x.x.x.x clusterctl generate cluster ${TEST_CLUSTER_NAME} \
+    -i nutanix \
+    --target-namespace ${TEST_NAMESPACE}  \
+    > ./cluster.yaml
+  kubectl create namespace ${TEST_NAMESPACE}
+  kubectl apply -filename ./cluster.yaml -namespace ${TEST_NAMESPACE}
+  ```
 
-Output
+  Output
 
-```bash hideClipBoard
-namespace/mytestnamespace created
-configmap/user-ca-bundle created
-secret/mytestcluster created
-kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/mytestcluster-kcfg-0 created
-cluster.cluster.x-k8s.io/mytestcluster created
-machinedeployment.cluster.x-k8s.io/mytestcluster-wmd created
-machinehealthcheck.cluster.x-k8s.io/mytestcluster-mhc created
-kubeadmcontrolplane.controlplane.cluster.x-k8s.io/mytestcluster-kcp created
-nutanixcluster.infrastructure.cluster.x-k8s.io/mytestcluster created
-nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/mytestcluster-mt-0 created
-```
+  ```bash hideClipBoard
+  namespace/mytestnamespace created
+  configmap/user-ca-bundle created
+  secret/mytestcluster created
+  kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/mytestcluster-kcfg-0 created
+  cluster.cluster.x-k8s.io/mytestcluster created
+  machinedeployment.cluster.x-k8s.io/mytestcluster-wmd created
+  machinehealthcheck.cluster.x-k8s.io/mytestcluster-mhc created
+  kubeadmcontrolplane.controlplane.cluster.x-k8s.io/mytestcluster-kcp created
+  nutanixcluster.infrastructure.cluster.x-k8s.io/mytestcluster created
+  nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/mytestcluster-mt-0 created
+  ```
 
 
 ### Install CNI on Workload Cluster
 
 6. Deploy a Container Network Interface (CNI) pod network in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
 
-```bash
-clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
-```
+  ```bash
+  clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
+  ```
 
 7. To verify the CNI pod network, issue the following command. 
 
-```bash
-kubectl --kubeconfig=./TEST_CLUSTER_NAME-cluster.kubeconfig get nodes
-```
+  ```bash
+  kubectl --kubeconfig=./$TEST_CLUSTER_NAME.kubeconfig get nodes
+  ```
 
-Output
+  Output
 
-```bash hideClipBoard
-NAME                           STATUS   ROLES           AGE   VERSION
-test-cluster-kcp-qhb5h         Ready    control-plane   26h   v1.26.7
-test-cluster-wmd-gdjps-gx267   Ready    <none>          26h   v1.26.7
-```
+    ```bash hideClipBoard
+    NAME                           STATUS   ROLES           AGE   VERSION
+    test-cluster-kcp-qhb5h         Ready    control-plane   26h   v1.26.7
+    test-cluster-wmd-gdjps-gx267   Ready    <none>          26h   v1.26.7
+    ```
 
 ## Validate
 

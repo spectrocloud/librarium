@@ -8,14 +8,15 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A system administrator registers the Nutanix cloud in Palette by invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs required to add the cloud to Palette. They also enable uploading the YAML templates used to create the cluster, control plane, and worker nodes. This section provides instructions on how to use the APIs to register a Nutanix cloud to Palette.
+A system administrator registers the Nutanix cloud in Palette by invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs required to add the cloud to Palette. They also enable uploading the YAML templates used to create the cluster, control plane, and worker nodes. This section provides instructions on how to download and modify the YAML templates, as well as how to use the APIs to register a Nutanix cloud to Palette.
 
 
 ## Prerequisites
 
 
+- A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted instance of [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console).
 
-- A Palette account with system-level access.
+- [`curl`](https://curl.se/docs/install.html) command installed.
 
 <!-- - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide. -->
 
@@ -38,10 +39,10 @@ Use the following steps to prepare to register your cloud with Palette.
 
   Issue the commands below to download the files.
 
-```bash
-wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
-wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
-```
+    ```bash
+    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
+    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
+    ```
 
 2. Create two copies of `cluster-template.yaml` and rename them so you have the following files in addition to the `infrastructure-components.yaml`:
     - **cloudClusterTemplate.yaml**
@@ -50,11 +51,11 @@ wget https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releas
 
   Use the following commands to copy and rename the files.
 
-```bash
-cp cluster-template.yaml cloudClusterTemplate.yaml 
-cp cluster-template.yaml controlPlanePoolTemplate.yaml
-mv cluster-template.yaml workerPoolTemplate.yaml
-```
+    ```bash
+    cp cluster-template.yaml cloudClusterTemplate.yaml 
+    cp cluster-template.yaml controlPlanePoolTemplate.yaml
+    mv cluster-template.yaml workerPoolTemplate.yaml
+    ```
 
 3. Open the **cloudClusterTemplate.yaml**, **controlPlanePoolTemplate.yaml**, and **workerPoolTemplate.yaml** files in the editor of your choice.
 
@@ -75,21 +76,17 @@ mv cluster-template.yaml workerPoolTemplate.yaml
 
 5. In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
 
-6. In **controlPlanePoolTemplate.yaml**, edit the template as follows:
-  
-    - In the KubeadmControlPlane object, rename `machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.  
+6. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Rename `machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.
 
-    - In the NutanixMachineTemplate object:
-      - Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.
-      - Change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
+7. In **controlPlanePoolTemplate.yaml**, edit the NutanixMachineTemplate object. Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`, and change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
 
-      <br /> 
+ <br /> 
 
-      :::caution
-      The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
-      :::
+:::caution
+The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
+:::
 
-7. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
+8. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
     
 
 ## Validate
@@ -114,7 +111,7 @@ Use the steps below to confirm you have the required files and verify the requir
 
 3. Open each file and verify that all occurrences of `${NAMESPACE}` are removed. 
 
-4. In controlPlanePoolTemplate.yaml, ensure `${CLUSTER_NAME}-cp-0` for the KubeadmControlPlane and NutanixMachineTemplate objects have the same name.
+4. In the **controlPlanePoolTemplate.yaml** file, ensure `${CLUSTER_NAME}-cp-0` for the KubeadmControlPlane and NutanixMachineTemplate objects have the same name.
 
 5. Verify parameters are modifed as described for each template in steps 6 and 7 of [Customize YAML Configuration Files](#customize-yaml-configuration-files).
 
@@ -127,105 +124,105 @@ During the registration process, the template files and logo file must be locate
 
 :::
 
-1. Export your Palette URL and the cloud type you want to register as environment variables.
+1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. The cloud type must be set as `nutanix`.
 
-```bash
-export ENDPOINT="https://palette.example.com"
-export CLOUD_TYPE="nutanix-custom"
-```
+  ```bash
+  export ENDPOINT="https://palette.example.com"
+  export CLOUD_TYPE="nutanix"
+  ```
 
-2. To acquire a system administrator authentication token, log in to the Palette API by using the `/v1/auth/syslogin` endpoint. Use the `curl` command below and replace the URL with the custom domain URL assigned to Palette. Ensure you replace the credentials with your system console credentials.
+2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.
 
-```bash
-curl --insecure --location "$ENDPOINT/v1/auth/syslogin" \
- --header 'Content-Type: application/json' \
- --data "{
-  "password": "**********",
-  "username": "**********"
- }"
-```
+  ```bash
+  curl --insecure --location "$ENDPOINT/v1/auth/syslogin" \
+  --header 'Content-Type: application/json' \
+  --data "{
+    "password": "**********",
+    "username": "**********"
+  }"
+  ```
 
   The output contains your authorization token.
 
-```bash hideClipBoard
-{
-  "Authorization": "**********",
-  "IsPasswordReset": true
-}
-```
+  ```bash hideClipBoard
+  {
+    "Authorization": "**********",
+    "IsPasswordReset": true
+  }
+  ```
 
 3. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value below with the value from the output.
 
-```bash
-export TOKEN="**********"
-```
+  ```bash
+  export TOKEN="**********"
+  ```
 
-4. Register the Nutanix cloud type to Palette by using the `/v1/clouds/cloudTypes/register` endpoint.
+4. Register the Nutanix cloud type in Palette using the `/v1/clouds/cloudTypes/register` endpoint.
 
-```bash
-curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
---header "Content-Type: application/json" \
---header "Cookie: Authorization=${TOKEN}" \
---data "{
-    "metadata": {
-        "annotations": {},
-        "labels": {},
-        "name": "${CLOUD_TYPE}"
-    },
-    "spec": {
-        "displayName": "Nutanix",
-        "isControlPlaneManaged": false
-    }
-}"
-```
+  ```bash
+  curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
+  --header "Content-Type: application/json" \
+  --header "Cookie: Authorization=${TOKEN}" \
+  --data "{
+      "metadata": {
+          "annotations": {},
+          "labels": {},
+          "name": "${CLOUD_TYPE}"
+      },
+      "spec": {
+          "displayName": "Nutanix",
+          "isControlPlaneManaged": false
+      }
+  }"
+  ```
 
-5. Upload the Nutanix cloud logo by using the `curl` command displayed below. 
+5. Upload the Nutanix cloud logo. 
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
---header "Cookie: Authorization=${TOKEN}" \
---form "fileName=@${cloud-logo.png}"
-```
+  ```bash
+  curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
+  --header "Cookie: Authorization=${TOKEN}" \
+  --form "fileName=@${cloud-logo.png}"
+  ```
 
-6. Register the cloud provider by using the `curl` command below. 
+6. Register the cloud provider. 
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
-       --header "Content-Type: multipart/form-data" \
-       --header "Cookie: Authorization=${TOKEN}" \
-       --form "fileName=@${infrastructure-components.yaml}"
-```
+  ```bash
+  curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
+        --header "Content-Type: multipart/form-data" \
+        --header "Cookie: Authorization=${TOKEN}" \
+        --form "fileName=@${infrastructure-components.yaml}"
+  ```
 
-7. Register the cluster template using the `curl` command below. 
+7. Register the cluster template. 
 
-```bash
-curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
-       --header "Content-Type: multipart/form-data" \
-       --header "Cookie: Authorization=${TOKEN}" \
-       --form "fileName=@${cloudClusterTemplate.yaml}"
-```
+  ```bash
+  curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
+        --header "Content-Type: multipart/form-data" \
+        --header "Cookie: Authorization=${TOKEN}" \
+        --form "fileName=@${cloudClusterTemplate.yaml}"
+  ```
 
-8. Register the control plane pool template using the `curl` command below. 
+8. Register the control plane pool template. 
 
-```bash
-curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
-       --header "Content-Type: multipart/form-data" \
-       --header "Cookie: Authorization=${TOKEN}" \
-       --form "fileName=@${controlPlanePoolTemplate.yaml}"
-```
+  ```bash
+  curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
+        --header "Content-Type: multipart/form-data" \
+        --header "Cookie: Authorization=${TOKEN}" \
+        --form "fileName=@${controlPlanePoolTemplate.yaml}"
+  ```
 
-9. Register the worker pool template using the `curl` command below. 
+9. Register the worker pool template. 
 
-```bash
-curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
-       --header "Content-Type: multipart/form-data" \
-       --header "Cookie: Authorization=${TOKEN}" \
-       --form "fileName=@${workerPoolTemplate.yaml}"
-```
+  ```bash
+    curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
+          --header "Content-Type: multipart/form-data" \
+          --header "Cookie: Authorization=${TOKEN}" \
+          --form "fileName=@${workerPoolTemplate.yaml}"
+    ```
 
 ## Validate
 
-Use the steps below to confirm that the Nutanix cloud is successfully registered to Palette.
+Use the steps below to confirm that the Nutanix cloud is successfully registered in Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 

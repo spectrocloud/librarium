@@ -12,7 +12,7 @@ tags: ["data center", "nutanix", "architecture"]
 
 Below are key architectural highlights of Nutanix clusters provisioned through Palette.
 
-- Palette integrates with Nutanix through the Cloud Native Computing Foundation (CNCF) [Nutanix Cluster API infrastructure provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix).
+- Palette integrates with Nutanix through the Cloud Native Computing Foundation (CNCF) [Nutanix Cluster API Infrastructure Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix).
 
 - Nutanix Prism is a resource management platform that centralizes the monitoring and management of objects across Nutanix environments, whether hosted in your data center or a public cloud provider environment. Nutanix Prism has two main components: Prism Central (PC) and Prism Element (PE).
 
