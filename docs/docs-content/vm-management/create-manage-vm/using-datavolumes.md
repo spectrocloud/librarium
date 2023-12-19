@@ -155,7 +155,7 @@ More information about Storage Profiles is available in the [CDI documentation](
 
 :::info
 If Storage Profiles are not manually defined, CDI will automatically generate one for every Storage Class, based on the information in its internal database. It is recommend to verify these parameters are accurate for use case and if not, overwrite them by defining the Storage Profile manually.
-::::
+:::
 
 When Storage Profiles are properly defined, you can optionally replace the target `pvc` sections in your `vmTemplate` resources with a `storage` section as noted in the [CDI documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#storage):
 
