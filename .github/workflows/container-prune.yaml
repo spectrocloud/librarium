@@ -26,9 +26,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           organization: "spectrocloud"
           container: "librarium"
-          dry-run: true
+          dry-run: false
           keep-younger-than: 1 # days
-          older-than: 1 # days
           # keep-last: 2
           prune-untagged: true
 
