@@ -14,14 +14,24 @@ jobs:
     name: Prune Container Images
     runs-on: ubuntu-latest
     steps:
-      - uses: bots-house/ghcr-delete-image-action@v1.1.0
-        with:
-          owner: spectrocloud
-          name: librarium
-          token: ${{ secrets.GITHUB_TOKEN }}
-          untagged-keep-latest: 1
+      # - uses: bots-house/ghcr-delete-image-action@v1.1.0
+      #   with:
+      #     owner: spectrocloud
+      #     name: librarium
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     untagged-keep-latest: 1
 
-
+    - uses: snok/container-retention-policy@v2
+      with:
+        image-names: librarium
+        cut-off: 1 day ago UTC
+        timestamp-to-use: created_at
+        account-type: org
+        org-name: spectrocloud
+        keep-at-least: 1
+        skip-tags: nightly
+        dry-run: true
+        token: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Slack Notification
       #   if: ${{ failure() }}
