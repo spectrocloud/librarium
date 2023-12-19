@@ -750,23 +750,17 @@ These are the three types of Presets that can be selected and modified. The pack
       # The CA cert to use for etcd authentication. Make sure to follow the same indentation style as given in the example below
       cacert: |-
         -----BEGIN CERTIFICATE-----
-        MIIC3DCCAcQCCQCr1j968rOV3zANBgkqhkiG9w0BAQsFADAwMQswCQYDVQQGEwJV
-        < .. >
-        i9CNyx+CcwUCkWQzhrHBQA==
+        < KEY DATA >
         -----END CERTIFICATE-----
       # The cert to use for etcd authentication. Make sure to follow the same indentation style as given in the example below
       cert: |-
         -----BEGIN CERTIFICATE-----
-        MIIDaTCCAlGgAwIBAgIJAPLC+6M3EezhMA0GCSqGSIb3DQEBCwUAMDAxCzAJBgNV
-        < .. >
-        ptWD/oDFCiCjlffyzg==
+        < KEY DATA >
         -----END CERTIFICATE-----
       # The key to use for etcd authentication. Make sure to follow the same indentation style as given in the example below
       key: |-
         -----BEGIN RSA PRIVATE KEY-----
-        MIIEogIBAAKCAQEAsnJghz619GDZO+XLtx+UkL/w9ajQ9vtqxr79GcdvAPfCkfwX
-        < .. >
-        WsqUCBt5+DnOaDyvMkokP+T5tj/2LXemuIi4Q5nrOmw/WwVGGGs=
+       < KEY DATA >
         -----END RSA PRIVATE KEY-----
 ```
 
