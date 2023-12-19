@@ -8,16 +8,11 @@ on:
 concurrency:
   group: url-${{ github.ref }}
   cancel-in-progress: true
-
   
-
 name: Broken URL check
 jobs:
   markdown-link-check:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - id: checkout
         name: Checkout Repository
