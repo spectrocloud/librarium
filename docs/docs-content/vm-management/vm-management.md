@@ -55,9 +55,11 @@ Palette Virtual Machine Orchestrator requires the following:
 To get started, review [Virtual Machine Orchestrator Pack](vm-packs-profiles/vm-packs-profiles.md) to learn about its
 components.
 
-Review [Create a VMO Profile](vm-packs-profiles/create-vmo-profile.md) and
-[Add Roles and Role Bindings](vm-packs-profiles/add-roles-and-role-bindings.md) to learn how to create the cluster
-profile and add roles and permissions that allow users to create and manage Virtual Machines (VMs).
+Review [Create a VMO Profile](vm-packs-profiles/create-vmo-profile.md) and [Add Roles and Role Bindings](vm-packs-profiles/add-roles-and-role-bindings.md) to learn how to create the cluster profile and add roles and permissions that allow users to create and manage Virtual Machines (VMs). 
+
+Palette VM Orchestrator provides various methods to quickly deploy VMs from out-of-the-box templates or from your organization's templates. To learn more about using and creating templates, review [Deploy VM From a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md) and [Create a VM Template](create-manage-vm/create-vm-template.md).
+
+While you can import template disks from external locations at VM deployment time, this approach is generally pretty slow. To learn about leveraging the `DataVolume` resource to import template disks once and create lightning-fast clones at VM deployment time, review [Using DataVolumes for disk templates](create-manage-vm/using-datavolumes.md).
 
 Palette VM Orchestrator provides various methods to quickly deploy VMs from out-of-the-box templates or from your
 organization's templates. To learn more about using and creating templates, review
@@ -109,6 +111,10 @@ VMO includes the following KubeVirt plugins:
 - [Deploy VM from a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md)
 
 - [Create a VM Template](create-manage-vm/create-vm-template.md)
+
+
+- [Using DataVolumes for disk templates](create-manage-vm/using-datavolumes.md)
+
 
 - [VM Roles and Permissions](vm-roles-permissions.md)
 
