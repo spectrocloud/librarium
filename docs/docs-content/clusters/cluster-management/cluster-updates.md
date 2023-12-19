@@ -14,6 +14,8 @@ Palette allows you to update active clusters. You can update any layer of a clus
 
 - You cannot update a cluster while its status is still **Provisioning**. 
 
+- You cannot change the Container Network Interface (CNI) of an Edge cluster. You must delete and re-create the cluster instead. For more information about creating an Edge cluster, refer to [Create Cluster Definition](../edge/site-deployment/site-installation/cluster-deployment.md). 
+
 ## Prerequisites
 
 - An active Kubernetes cluster in Palette. 
@@ -43,10 +45,10 @@ This is the recommended best practice for updating a cluster in Palette.
 
 <TabItem value="update-cluster-profile" label="Update cluster profile">
 
-You can make updates to a profile that is in-use by one or more active clusters, and doing so will trigger an update to all clusters that are using the cluster profile. For more information, refer to [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md). 
+You can make updates to a profile that is in use by one or more active clusters. Changing a deployed cluster profile will trigger an update to all clusters using the cluster profile. For more information, refer to [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md). 
 
 :::caution
-We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend creating a new profile version, and then upgrade active clusters to the new version. 
+We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend you create a new profile version, and then upgrade active clusters to the new version. Check out the [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) for guidance on creating a new cluster profile version. 
 :::
 
 </TabItem>
@@ -57,7 +59,7 @@ We do not recommend updating a currently deployed cluster profile version to pus
 You can modify the configuration of a deployed cluster without changing the cluster profile itself to update a cluster. 
 
 :::caution
-We do not recommend updating a currently deployed cluster's profile configurations without updating the profile itself. Instead, we recommend creating a new profile version, and then upgrade active clusters to the new version. 
+We do not recommend updating a currently deployed cluster's profile configurations without updating the profile itself. Instead, we recommend creating a new profile version, and then upgrade active clusters to the new version. Check out the [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) for guidance on creating a new cluster profile version.   
 :::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -112,7 +114,3 @@ We do not recommend updating a currently deployed cluster's profile configuratio
 
 </TabItem>
 </Tabs>
-
-
-
-
