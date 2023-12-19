@@ -353,7 +353,7 @@ Once you apply the filter, only the cluster with this tag is displayed.
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the **service:hello-universe-backend** tag. You can review how to filter your clusters in the [Tag and Filter Clusters](#tag-and-filter-clusters) section.
 
-Click on the cluster to open its **Overview** tab. Make a note of the IP address of the **hello-universe-api-service** present in this cluster. You can see it by opening the **:3000** URL.
+Click on the cluster to open its **Overview** tab. Make a note of the IP address of the **hello-universe-api-service** present in this cluster. You can find it by opening the **:3000** URL.
 
 ![Image that shows where to get the hello-universe-api-service](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_api-service-ip.png)
 
@@ -427,7 +427,7 @@ spec:
             value: "https://REPLACE_ME:3000"
 ```
 
-The code snippet you added deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* README](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
+The code snippet you added deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
 
 Replace the *REPLACE_ME* placeholder in the code snippet provided with the IP address of the *hello-universe-api-service* that you made a note of earlier.
 
@@ -463,7 +463,7 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 <TabItem label="Terraform workflow" value="Terraform">
 
-Palette cluster profiles are defined with the [*spectrocloud_cluster_profile*](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile) Terraform resource. There are six resources defined in the **cluster_profiles.tf** file.
+Palette cluster profiles are defined with the [*spectrocloud_cluster_profile*](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile) Terraform resource. Six resources defined are defined in the **cluster_profiles.tf** file.
 
 | Name | Description | Platform |
 |----- |-------------|----------|
@@ -595,7 +595,7 @@ spec:
             value: ${api_uri}
 ```
 
-The manifest deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* README](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
+The manifest deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
 
 Issue the following command to find the external IP address of the `hello-universe-api-service` that you deployed in the [Set Up Clusters](#set-up-clusters) section. Replace the placeholder `REPLACE_ME` with the cloud provider that you have chosen to deploy your clusters to - `aws`, `azure` or `gcp`. 
 
@@ -673,7 +673,7 @@ resource "spectrocloud_cluster_azure" "azure-cluster" {
 }
 ```
 
-Comment out the current cluster profile `id` and uncomment the line below it. This configures the cluster to use the cluster profile named `[cloud provider]-profile-3tier` with version **1.1.0**. The following snippet shows the configuration configuration on Azure.  
+Comment out the current cluster profile `id` and uncomment the line below it. This configures the cluster to use the cluster profile named `[cloud provider]-profile-3tier` with version **1.1.0**. The following snippet shows the expected configuration on Azure.  
 
 ```hcl hideClipboard
   cluster_profile {
@@ -748,7 +748,7 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 Open your **clusters.tf** file in the code editor of your choice and find the section for your chosen cloud provider. Find the resource corresponding to your cluster named with the pattern `[cloud provider]-cluster`.
 
-Swap the `id` defined in the `cluster_profile` nested schema. This configures the cluster to use the cluster profile named `[cloud provider]-profile` with version **1.0.0**. The following snippet shows the correct configuration on Azure. 
+Swap the `id` defined in the `cluster_profile` nested schema. This configures the cluster to use the cluster profile named `[cloud provider]-profile` with version **1.0.0**. The following snippet shows the expected configuration on Azure. 
 
 ```hcl hideClipboard
   cluster_profile {
@@ -841,7 +841,7 @@ Set the replicas value to `3` in the right hand dialog. This removes your cluste
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-There are three replicas of the **hello-universe-deployment** available. The cluster profile update is now reflected by your cluster. 
+Three replicas of the **hello-universe-deployment** are available. The cluster profile update is now reflected by your cluster. 
 
 ![Image that shows the number of hello universe deployments](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployments-count-updated.png)
 
@@ -912,7 +912,7 @@ Set the replicas value to `3` in the right hand dialog. This removes your cluste
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-There are three replicas of the **hello-universe-deployment** available. The changes in the cluster profile update are now reflected by your cluster. 
+Three replicas of the **hello-universe-deployment** are available. The changes in the cluster profile update are now reflected by your cluster. 
 
 ![Image that shows the number of hello universe deployments](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployments-count-updated.png)
 
