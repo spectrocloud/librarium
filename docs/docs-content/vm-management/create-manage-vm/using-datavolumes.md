@@ -59,7 +59,7 @@ spec:
       url: "docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04"
 ```
 
-Possible `source` options are described in the [CDI Datavolumes documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source). The example above uses the `registry` source to import the data from a container disk on an external Docker registry.
+Possible `source` options are described in the [CDI DataVolumes documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source). The example above uses the `registry` source to import the data from a container disk on an external Docker registry.
 
 Note 2 important aspects of this DataVolume:
 * It sets an annotation to prevent deleting the `DataVolume` object after if finishes the import process. This is necessary to prevent Palette from continuously recreating the `DataVolume` object, resulting in error messages.
@@ -181,4 +181,4 @@ spec:
     < rest of template >
 ```
 
-Using `storage` instead of `pvc` will automatical discover default values for `accessModes`, `volumeMode` and optionally even the size from the source PVC and its associated Storage Profile. One benefit of `storage` over `pvc` is that the CDI will automatically calculate the size overhead for `Filesystem` mode Storage Classes, allowing the VM template to use the original disk size instead of one adjusted for the filesystem overhead.
+Using `storage` instead of `pvc` will automatically discover default values for `accessModes`, `volumeMode` and optionally even the size from the source PVC and its associated Storage Profile. One benefit of `storage` over `pvc` is that the CDI will automatically calculate the size overhead for `Filesystem` mode Storage Classes, allowing the VM template to use the original disk size instead of one adjusted for the filesystem overhead.
