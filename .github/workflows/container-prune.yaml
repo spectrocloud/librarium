@@ -26,11 +26,12 @@ jobs:
         image-names: librarium
         cut-off: 1 day ago UTC
         timestamp-to-use: created_at
-        account-type: org
+        account-type: personal
         org-name: spectrocloud
         keep-at-least: 1
         skip-tags: nightly
         dry-run: true
+        token-type: github-token
         token: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Slack Notification
