@@ -28,6 +28,7 @@ jobs:
           container: "librarium"
           dry-run: true
           keep-younger-than: 1 # days
+          older-than: 1 # days
           # keep-last: 2
           prune-untagged: true
 
