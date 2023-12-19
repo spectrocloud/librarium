@@ -14,19 +14,29 @@ jobs:
     name: Prune Container Images
     runs-on: ubuntu-latest
     steps:
-      - uses: bots-house/ghcr-delete-image-action@v1.1.0
-        with:
-          owner: spectrocloud
-          name: librarium
-          token: ${{ secrets.GITHUB_TOKEN }}
-          untagged-keep-latest: 1
+      # - uses: bots-house/ghcr-delete-image-action@v1.1.0
+      #   with:
+      #     owner: spectrocloud
+      #     name: librarium
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     untagged-keep-latest: 1
 
-      - name: Slack Notification
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "spectromate"
-          SLACK_ICON_EMOJI: ":robot_panic:"
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'The nightly docs container prune workflow failed. Review the GitHub Actions logs for more details.'
+      - uses: vlaurin/action-ghcr-prune@v0.5.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          organization: "spectrocloud"
+          container: "librarium"
+          dry-run: true
+          keep-younger-than: 1 # days
+          # keep-last: 2
+          prune-untagged: true
+
+      # - name: Slack Notification
+      #   if: ${{ failure() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_USERNAME: "spectromate"
+      #     SLACK_ICON_EMOJI: ":robot_panic:"
+      #     SLACK_COLOR: ${{ job.status }}
+      #     SLACK_MESSAGE: 'The nightly docs container prune workflow failed. Review the GitHub Actions logs for more details.'
