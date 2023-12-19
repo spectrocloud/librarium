@@ -49,7 +49,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - When updating a deployed cluster profile or an active cluster's profile, the new differential editor is available to help you identify the changes that will be applied to the cluster profile.
 
-- Private Cloud Gateway deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version was 1.24. Existing Private Cloud Gateway deployments will require a manual reconciliation of the cluster profile to update the Kubernetes version to 1.26. Make sure you carry over any customizations the current cluster profile may have, such as pod CIDR and service CIDR before updating the cluster profile with the new Kubernetes version. Refer to the [Update a Cluster Profile](./profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version) guide to learn more on reconciling a cluster profile pack layer change.
+- Private Cloud Gateway deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version was 1.24. Use the latest version of the [Palette CLI](./spectro-downloads.md#palette-cli) to install PCG clusters. Existing Private Cloud Gateway deployments will require a manual reconciliation of the cluster profile to update the Kubernetes version to 1.26. Make sure you carry over any customizations the current cluster profile may have, such as pod CIDR and service CIDR before updating the cluster profile with the new Kubernetes version. Refer to the [Update a Cluster Profile](./profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version) guide to learn more on reconciling a cluster profile pack layer change.
 
 
 #### Known Issues
