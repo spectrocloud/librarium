@@ -20,6 +20,7 @@ tags: ['packs', 'portworx', 'storage']
 
 * **2.11.x**
 * **2.12.x**
+* **2.13.x**
 
 </TabItem>
 <TabItem label="3.x" value="3.x">
@@ -29,10 +30,11 @@ tags: ['packs', 'portworx', 'storage']
 </TabItem>
 </Tabs>
 
+<br />
+
 ## Prerequisites
 
 For deploying Portworx with Operator for Kubernetes, make sure to configure the properties in the pack:
-<br />
 
 * Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
 
@@ -45,7 +47,6 @@ For deploying Portworx with Operator for Kubernetes, make sure to configure the 
 ## Contents
 
 The default installation of Portworx /w Operator will deploy the following components in the Kubernetes cluster:
-<br />
 
 * Portworx Operator
 
@@ -185,6 +186,9 @@ charts:
       # cert: |
       #   < PEM KEY DATA >
 ```
+
+<br />
+
 # License Model
 
 This pack can install Portworx in three different licensing modes:
@@ -249,6 +253,7 @@ Use the presets in the pack user interface to select which license model you wan
 </TabItem>
 </Tabs>
 
+<br />
 
 ## Storage Specification
 
@@ -669,12 +674,13 @@ Alternatively, you can attach a manifest to the Portworx /w Operator pack that c
 </TabItem>
 </Tabs>
 
+<br />
+
 ## Integration With External Etcd
 
 Portworx Enterprise supports multiple Etcd scenarios.
 
 Portworx will default use its internal key-value store (KVDB). However, you can integrate Portworx to an external Etcd server by following the steps below.
-<br />
 
 1. Select the `Use External Kvdb over HTTP` or `Use External Kvdb over SSL` preset in the pack user interface. If your external Etcd server requires certificate authentication, you need the `Use External Kvdb over SSL` preset.
 
@@ -684,9 +690,9 @@ Portworx will default use its internal key-value store (KVDB). However, you can 
 
 3. When using the `Use External Kvdb over SSL` preset, leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth` since that is the name of the secret that will be created by this pack.
 
+<br />
 
 When using the `Use External Kvdb over SSL` preset, you additionally need to configure the `charts.portworx-generic.externalKvdb` section:
-<br />
 
 1. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication.
 
@@ -698,12 +704,11 @@ When using the `Use External Kvdb over SSL` preset, you additionally need to con
 Make sure to follow the provided indentation style; otherwise, certs will not be imported correctly and will result in Portworx deployment failure.
 :::
 
+<br />
 
 ## Kvdb and Etcd Presets
 
 These are the three types of Presets that can be selected and modified. The pack defaults to the `Use Internal Kvdb` option. Change to a different preset if you need to connect to an external Etcd server.
-
-<br />
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
