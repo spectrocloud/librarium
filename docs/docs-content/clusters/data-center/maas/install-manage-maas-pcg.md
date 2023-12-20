@@ -48,7 +48,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 - Canonical [MAAS installed](https://maas.io/docs/how-to-install-maas), set up, and available in your environment.
 
 
-- Download the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more. Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. 
+- Download the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page and install it. Refer to the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more. Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. 
 
 
 
