@@ -357,7 +357,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 ## Installing Private Cloud Gateway - OpenStack
 
 
-Use the following steps to install a PCG cluster in your OpenStack environment. The [Palette CLI](../../palette-cli/palette-cli.md) will faciliate the deployment of a PCG cluster. 
+Use the following steps to install a PCG cluster in your OpenStack environment. The [Palette CLI](../../palette-cli/palette-cli.md) will facilitate the deployment of a PCG cluster. 
 
 :::caution
 
