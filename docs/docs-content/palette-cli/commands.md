@@ -269,6 +269,14 @@ workspaceLoc: /Users/demo/.palette
 The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as installing a PCG cluster and validating its installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to facilitate creating the PCG cluster in the target environment. You do not need to install kind or any other dependencies, the CLI includes all the required dependencies to stand up the kind cluster.  
 
 
+
+:::caution
+
+Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../spectro-downloads.md#palette-cli) page.
+
+:::
+
+
 The `pcg` command exposes the following subcommand.
 
   <br />
