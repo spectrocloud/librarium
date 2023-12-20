@@ -64,7 +64,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
     - When replacing values, remove the dollar sign and curly braces.
 
-    - Verify the port specified in the YAM file.
+    - Verify the default values specified in the YAML file (such as the port).
   
   :::
 
@@ -77,8 +77,8 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
   | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix Prism Central IP address. |
   | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
-  | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v.1.26.3` |
-  | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
+  | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3` |
+  | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster (as defined in Prism). |
   | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**.|
   | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the virtual machines (VMs) deployed in this cluster. |
 
@@ -87,8 +87,8 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
     | **Variable** | **Description** |
     |--------------|-----------------|
     | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
-    | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v.1.26.3` |
-    | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
+    | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3` |
+    | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster (as defined in Prism). |
     | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**. |
     | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the VMs deployed in this cluster. |
 

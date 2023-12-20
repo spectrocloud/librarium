@@ -8,7 +8,7 @@ tags: ["data center", "nutanix"]
 ---
 
 
-[Nutanix](https://www.nutanix.com/what-we-do) is a hyper-converged infrastructure platform that combines storage, compute, and networking into a single integrated system. Palette provides a generic framework built upon the open-source [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io) initiative to support adding cloud providers. As a Technical Preview of implementing this framework, you can deploy Kubernetes clusters on Nutanix using Palette.  Integration with Nutanix is achieved through a Private Cloud Gateway (PCG), which establishes a secure connection with Nutanix.
+[Nutanix](https://www.nutanix.com/what-we-do) is a hyper-converged infrastructure platform that combines storage, compute, and networking into a single integrated system. Palette provides a generic framework built upon the open-source [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io) initiative to support adding cloud providers. As a Technical Preview of implementing this framework, you can deploy Kubernetes clusters on Nutanix using Palette. Integration with Nutanix is achieved through a Self-hosted Private Cloud Gateway (PCG), which establishes a secure connection with Nutanix Prism.
 
 ## Get Started
 
@@ -18,9 +18,9 @@ The section below describes the workflow to register Nutanix with Palette and de
 
 ## Workflow
 
-The following summary steps outline the CAPI cloud workflow illustrated in the diagram. Since only self-hosted instances of Palette have access to the system console by a system administrator, the registration step is performed at the system level, making the cloud provider available to all the tenants. CAPI users perform the remaining steps in Palette and their local environment.
+The following summary steps outline the Nutanix cloud workflow illustrated in the diagram. Since only self-hosted instances of Palette have access to the system console by a system administrator, the registration step is performed at the system level, making the Nutanix cloud available to all the tenants. Regular Palette users perform the remaining steps in Palette and their local environment.
 
-![Diagram showing the overall CAPI workflow for users to construct self-hosted cloud solutions tailored to their environment.](/clusters_data-center_nutanix_workflow.png)
+![Diagram showing the overall Nutanix workflow for users to construct self-hosted cloud solutions tailored to their environment.](/clusters_data-center_nutanix_workflow.png)
 
 1. A system administrator registers Nutanix with Palette by preparing YAML templates to configure the cluster and node pools and invokes APIs to define the logo, required cloud account information and key-value pairs to create the Nutanix cloud account. Palette renders a default logo if no logo is specified. 
 
@@ -31,17 +31,17 @@ The following summary steps outline the CAPI cloud workflow illustrated in the d
   :::
 
 
-2. Create a self-hosted PCG by preparing YAML configuration templates and installing Palette agents for the PCG in your Kubernetes cluster using kubectl commands provided in the Palette UI. For guidance, review [Install Private Cloud Gateway](install-pcg.md).
+2. Create a Nutanix self-hosted PCG by installing Palette agents in your existing Kubernetes cluster using kubectl commands provided in the Palette UI. For guidance, review [Install Private Cloud Gateway](install-pcg.md).
 
-  When the PCG status displays the state **Running**, the Kubernetes cluster is integrated with Palette.
+  When the PCG status displays the state **Running**, the PCG Kubernetes cluster is integrated with Palette.
 
   :::info
 
-  All custom providers clouds require the deployment of a PCG, which enables Palette to monitor clusters in the infrastructure provider environment. The PCG instance is installed on an existing Kubernetes cluster that must remain operational.
+  Nutanix cloud requires the deployment of a PCG, which enables Palette to monitor clusters in the infrastructure provider environment. The PCG instance is installed on an existing Kubernetes cluster that must remain operational.
 
   :::
 
-3. Next, add the cloud account to Palette. The required fields to add the cloud are pre-defined by the system administrator during cloud registration in step 1. Use the **drop-down Menu** to select the PCG name you provided when you configured it in the previous step. You must fill out the account name and account details.
+3. Next, add the Nutanix cloud account to Palette. The required fields to add the cloud are pre-defined by the system administrator during cloud registration in step 1. Use the **drop-down Menu** to select the PCG name you provided when you configured it in the previous step. You must fill out the account name and account details.
 
 4. Create a cluster profile by selecting Nutanix as the cloud type. 
 
