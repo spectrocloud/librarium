@@ -31,3 +31,6 @@ The following pages provide detailed instructions for setting up new workload cl
 
 - [VMware](vmware.md)
 
+
+- [Nutanix](nutanix/nutanix.md)
+

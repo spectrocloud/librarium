@@ -118,15 +118,21 @@ Use the steps below to confirm you have the required files and verify the requir
 Follow the steps below from your terminal to set the environment variables and invoke the APIs required to register a Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
 
 :::caution
-During the registration process, the template files and logo file must be located in the same directory where you execute the curl commands in the steps below. The logo file must not exceed 100KB in size.
+
+The Nutanix logo file must not exceed 100KB in size.
 
 :::
 
-1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. 
+1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. Additionally, export the path to the YAML templates and to the logo file.
 
   ```bash
   export ENDPOINT="https://palette.example.com"
   export CLOUD_TYPE="nutanix"
+  export cloudLogo="/path/to/the/file/cloud-logo.png"
+  export infraComponents="/path/to/the/file/infrastructure-components.yaml"
+  export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
+  export  controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
+  export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
   ```
 
   :::caution
@@ -164,7 +170,7 @@ During the registration process, the template files and logo file must be locate
   ```bash
   curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
   --header "Content-Type: application/json" \
-  --header "Cookie: Authorization=${TOKEN}" \
+  --header "Authorization: ${TOKEN}" \
   --data "{
       "metadata": {
           "annotations": {},
@@ -182,8 +188,8 @@ During the registration process, the template files and logo file must be locate
 
   ```bash
   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
-  --header "Cookie: Authorization=${TOKEN}" \
-  --form "fileName=@${cloud-logo.png}"
+  --header "Authorization: ${TOKEN}" \
+  --form "fileName=@${cloudLogo}"
   ```
 
 6. Register the cloud provider. 
@@ -191,8 +197,8 @@ During the registration process, the template files and logo file must be locate
   ```bash
   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
         --header "Content-Type: multipart/form-data" \
-        --header "Cookie: Authorization=${TOKEN}" \
-        --form "fileName=@${infrastructure-components.yaml}"
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${infraComponents}"
   ```
 
 7. Register the cluster template. 
@@ -200,8 +206,8 @@ During the registration process, the template files and logo file must be locate
   ```bash
   curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
         --header "Content-Type: multipart/form-data" \
-        --header "Cookie: Authorization=${TOKEN}" \
-        --form "fileName=@${cloudClusterTemplate.yaml}"
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${cloudClusterTemplate}"
   ```
 
 8. Register the control plane pool template. 
@@ -209,8 +215,8 @@ During the registration process, the template files and logo file must be locate
   ```bash
   curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
         --header "Content-Type: multipart/form-data" \
-        --header "Cookie: Authorization=${TOKEN}" \
-        --form "fileName=@${controlPlanePoolTemplate.yaml}"
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${controlPlanePoolTemplate}"
   ```
 
 9. Register the worker pool template. 
@@ -218,8 +224,8 @@ During the registration process, the template files and logo file must be locate
   ```bash
     curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
           --header "Content-Type: multipart/form-data" \
-          --header "Cookie: Authorization=${TOKEN}" \
-          --form "fileName=@${workerPoolTemplate.yaml}"
+          --header "Authorization: ${TOKEN}" \
+          --form "fileName=@${workerPoolTemplate}"
     ```
 
 ## Validate

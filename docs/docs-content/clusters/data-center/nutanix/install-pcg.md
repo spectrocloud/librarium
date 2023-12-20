@@ -18,7 +18,7 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix subnet created in Nutanix Prism Central.
 
-- A Kubernetes cluster.
+- A Kubernetes cluster. A suggested configuration is provided in the [Setup](#setup) section of this page.
 
 - A Nutanix cloud registered with Palette. For information about registering your cloud, review [Register Nutanix Cloud](register-nutanix-cloud.md).
 
@@ -58,8 +58,8 @@ Use the following steps to prepare for deploying the PCG.
   | `NUTANIX_PASSWORD`| The Prism Central user password. |
   | `NUTANIX_INSECURE`| The SSL behavior you used in the ``cloudClusterTemplate.yaml`` file. The default behavior is `false`. |
   | `NUTANIX_SSH_AUTHORIZED_KEY`| Provide your public SSH key. |
-  | `NUTANIX_PRISM_ELEMENT_CLUSTER_NAME`| The workload cluster name.|
-  | `NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME` | ?? |
+  | `NUTANIX_PRISM_ELEMENT_CLUSTER_NAME`| The Nutanix Prism Element cluster name.|
+  | `NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME` | The Nutanix CAPI OS Image |
   | `NUTANIX_SUBNET_NAME` | The subnet of the Nutanix workload cluster. |
   | `KUBERNETES_VERSION` | The Kubernetes version the workload cluster uses. Precede the version with `v`. |
   | `WORKER_MACHINE_COUNT` | The number of nodes in the workload cluster. |
@@ -99,7 +99,7 @@ Use the following steps to prepare for deploying the PCG.
 4. Instantiate Nutanix Cluster API.
 
   ```bash
-  clusterctl init -infrastructure nutanix
+  clusterctl init --infrastructure nutanix
   ```
 
 5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name that you assigned to your workload cluster and `mytestnamespace` and with your namespace name. Provide the Nutanix Prism Central IP address for CONTROL_PLANE_ENDPOINT_IP. 
@@ -133,19 +133,26 @@ Use the following steps to prepare for deploying the PCG.
 
 ### Install CNI on Workload Cluster
 
-6. Deploy a Container Network Interface (CNI) pod network in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
+6. After your Nutanix workload cluster is deployed, retrieve its Kubeconfig file with the command described below.
 
   ```bash
   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
   ```
 
-7. To verify the CNI pod network, issue the following command. 
+
+7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference. [Calico](https://docs.tigera.io/calico/latest/about/) is used as the CNI solution in this example.
+
+  ```bash
+  kubectl apply --filename https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
+  ```
+
+8. To verify that the CNI was deployed successfully, issue the following command. 
 
   ```bash
   kubectl --kubeconfig=./$TEST_CLUSTER_NAME.kubeconfig get nodes
   ```
 
-  Output
+  The output should display your nodes with a **Ready** status.
 
     ```bash hideClipBoard
     NAME                           STATUS   ROLES           AGE   VERSION
