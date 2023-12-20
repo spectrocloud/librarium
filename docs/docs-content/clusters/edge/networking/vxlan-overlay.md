@@ -133,11 +133,7 @@ You will not be able to change the network overlay configurations after the clus
 
 3. Select the host cluster you created to view its details page.
 
-4. Select the **Nodes** tab, in the **Private Ips** column, each host has an overlay IP address within the CIDR range you provided during cluster configuration. 
-
-:::tip
-To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge Hosts** tab. The IP address displayed in the table is the external IP address.
-:::
+4. Select the **Nodes** tab, in the **Node IP** column, each host has an overlay IP address within the CIDR range you provided during cluster configuration. The external IP of the Edge host is displayed in the **Host IP** column. 
 
 ## Access Cluster with Overlay Network Enabled
 
