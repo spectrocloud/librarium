@@ -18,13 +18,11 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix subnet created in Nutanix Prism Central.
 
-- A Kubernetes cluster. A suggested configuration is provided in the [Setup](#setup) section of this page.
-
 - A Nutanix cloud registered with Palette. For information about registering your cloud, review [Register Nutanix Cloud](register-nutanix-cloud.md).
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- The following applications installed. These are needed to deploy the kind cluster and workload cluster. We recommend using Docker, as it has been validated with this workflow. The [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) section of the [Install clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) page provides links to the applications below.
+- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used for the PCG. However, the [Setup](#setup) section in this guide uses the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and its specified [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites). This method requires installing the following applications:
 
   - [Docker](https://docs.docker.com/engine/install/)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)

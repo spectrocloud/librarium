@@ -79,8 +79,8 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v.1.26.3` |
   | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
-  | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image. |
-  | `${NUTANIX_SUBNET_NAME}` | The name of the subnet for your Nutanix Prism cluster. |
+  | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**.|
+  | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the virtual machines (VMs) deployed in this cluster. |
 
   #### Worker-Pool
 
@@ -89,8 +89,8 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
     | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
     | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v.1.26.3` |
     | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
-    | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image. |
-    | `${NUTANIX_SUBNET_NAME}` | The name of the subnet for your Nutanix Prism cluster. |
+    | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**. |
+    | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the VMs deployed in this cluster. |
 
 
 10. Click **Next** when you are done.

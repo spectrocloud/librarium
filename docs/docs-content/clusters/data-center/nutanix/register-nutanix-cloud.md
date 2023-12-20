@@ -16,6 +16,8 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 
 - A Nutanix cloud created with the minimum supported CAPI version 1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
 
+- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix). To locate created images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**.
+
 - A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
 
 - [`curl`](https://curl.se/docs/install.html) command installed.
