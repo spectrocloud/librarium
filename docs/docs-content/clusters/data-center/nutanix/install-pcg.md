@@ -18,21 +18,23 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix subnet created in Nutanix Prism Central.
 
+- A Kubernetes cluster.
+
 - A Nutanix cloud registered with Palette. For information about registering your cloud, review [Register Nutanix Cloud](register-nutanix-cloud.md).
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- The following applications installed. The [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) section of the [Install clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) page provides links to the applications below.
+- The following applications installed. These are needed to deploy the kind cluster and workload cluster. The [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) section of the [Install clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) page provides links to the applications below.
 
   - [Docker](https://docs.docker.com/engine/install/)
-  - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) or  [kind](https://kind.sigs.k8s.io/) ??
+  - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
   - [clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) 
 
 
 ## Setup
 
-Use the following steps to prepare for installing the PCG.
+Use the following steps to prepare for deploying the PCG.
 
 ### Create Bootstrap Cluster 
 
@@ -100,7 +102,7 @@ Use the following steps to prepare for installing the PCG.
   clusterctl init -infrastructure nutanix
   ```
 
-5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with your cluster name and `mytestnamespace` and with your namespace name. Provide your control plane endpoint IP address. 
+5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name that you assigned to your workload cluster and `mytestnamespace` and with your namespace name. Provide the Nutanix Prism Central IP address for CONTROL_PLANE_ENDPOINT_IP. 
 
   ```bash
   export TEST_CLUSTER_NAME=mytestcluster
@@ -162,7 +164,7 @@ Use the steps below to verify your virtual machines (VMs) are created.
 
 ## Install PCG
 
-Use the following steps to install the PCG in your Kubernetes workload cluster.
+Once you have deployed a workload cluster, exported variables, created a Nutanix Cluster API instance, and deployed a container network interface, you are ready to install the PCG. Use the following steps to install the PCG in your Kubernetes workload cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -192,7 +194,7 @@ When deployed, the PCG registers itself with Palette. Use the steps below to ver
 3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways**.
 
 
-4. Locate the PCG and verify it is installed and in the **Running** state. 
+4. Locate the PCG and verify it is installed and in the **Running** state. With the PCG successfully deployed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster. 
 
 
 ## Next Steps

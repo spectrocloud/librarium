@@ -78,13 +78,11 @@ Use the following steps to prepare to register your cloud with Palette.
 
 6. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Rename `machineTemplate.name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`.
 
-7. In **controlPlanePoolTemplate.yaml**, edit the NutanixMachineTemplate object. Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`, and change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
+7. In **controlPlanePoolTemplate.yaml**, edit the NutanixMachineTemplate object. Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`, and change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`. 
 
- <br /> 
-
-:::caution
-The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
-:::
+  :::caution
+  The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
+  :::
 
 8. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
     
@@ -124,12 +122,16 @@ During the registration process, the template files and logo file must be locate
 
 :::
 
-1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. The cloud type must be set as `nutanix`.
+1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. 
 
   ```bash
   export ENDPOINT="https://palette.example.com"
   export CLOUD_TYPE="nutanix"
   ```
+
+  :::caution
+  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used for the `name` value in the `/v1/clouds/cloudTypes/register` cloud registration API in step 4 below. Setting `name` as `nutanix` will make the out-of-the-box Nutanix CSI pack available when you create your cluster in Palette. 
+  :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.
 

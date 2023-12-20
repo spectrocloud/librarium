@@ -49,7 +49,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | **Variable** | **Description** |
   |--------------|-----------------|
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
-  | `${CONTROL_PLANE_ENDPOINT_IP}`| The host static IP address. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix Prism Central IP address. |
   | `${CLUSTER_ENDPOINT}`| The cluster IP address. |  
 
   :::caution
@@ -75,7 +75,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | **Variable** | **Description** |
   |--------------|-----------------|
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
-  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix IP address. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix Prism Central IP address. |
   | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v.1.26.3` |
   | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix Prism cluster. |
