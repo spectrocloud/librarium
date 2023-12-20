@@ -6,7 +6,7 @@ hide_table_of_contents: false
 tags: ["data center", "nutanix"]
 ---
 
- Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account must be added to Palette. The required fields to add the cloud are pre-defined by the system administrator during the cloud registration process. These cloud-specific fields vary based on the cloud type.
+ Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account must be added to Palette.
 
 ## Prerequisites
 

@@ -10,13 +10,13 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 ## Prerequisites
 
-- A Nutanix Prism Central cloud account. For more information, review [Add Nutanix Cloud Account](add-nutanix-cloud-account.md). 
+- A Nutanix cloud account added to Palette. Refer to [Add Nutanix Cloud Account](add-nutanix-cloud-account.md).
 
-- A Private Cloud Gateway (PCG) deployed. For guidance, review [Install Private Cloud Gateway](install-pcg.md).
+<!-- A Nutanix Prism Central cloud account. For more information, review [Add Nutanix Cloud Account](add-nutanix-cloud-account.md).  -->
 
-- The minimum supported CAPI version 1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
+- A Nutanix Private Cloud Gateway (PCG) deployed. For guidance, review [Install Private Cloud Gateway](install-pcg.md).
 
-- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. Select the custom packs provided at the OS and Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers. Additionally, Palette provides a Nutanix-specific storage pack.
+- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. Select the custom packs provided at the OS and Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the **Nutanix CSI** storage pack.
 
 
 ## Deploy a Nutanix Cluster
@@ -42,7 +42,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
 6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
 
-7. Review profile layers and customize parameters as desired in the YAML files that display when you select a layer. Click **Next** when you are done.
+7. Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML files that display when you select the network and storage layers. Click **Next** when you are done.
 
 8. In the Cluster configuration YAML file that Palette displays, edit the file to replace variables within curly braces listed in the table below with values that apply to your Nutanix cloud environment, and make any adjustments to configure your cluster. Click **Next** when you are done.
 
@@ -50,7 +50,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   |--------------|-----------------|
   | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
   | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix Prism Central IP address. |
-  | `${CLUSTER_ENDPOINT}`| The cluster IP address. |  
+  | `${NUTANIX_ENDPOINT}`| The Nutanix cluster IP address. |  
 
   :::caution
 

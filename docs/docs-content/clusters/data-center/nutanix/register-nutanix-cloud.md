@@ -14,7 +14,9 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 ## Prerequisites
 
 
-- A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted instance of [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console).
+- A Nutanix cloud created with the minimum supported CAPI version 1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
+
+- A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
 
 - [`curl`](https://curl.se/docs/install.html) command installed.
 
@@ -111,7 +113,7 @@ Use the steps below to confirm you have the required files and verify the requir
 
 4. In the **controlPlanePoolTemplate.yaml** file, ensure `${CLUSTER_NAME}-cp-0` for the KubeadmControlPlane and NutanixMachineTemplate objects have the same name.
 
-5. Verify parameters are modifed as described for each template in steps 6 and 7 of [Customize YAML Configuration Files](#customize-yaml-configuration-files).
+5. Verify parameters are modified as described for each template in steps 6 and 7 of [Customize YAML Configuration Files](#customize-yaml-configuration-files).
 
 ## Register the Cloud
 
@@ -119,7 +121,7 @@ Follow the steps below from your terminal to set the environment variables and i
 
 :::caution
 
-The Nutanix logo file must not exceed 100KB in size.
+The logo file must not exceed 100KB in size. To ensure image quality ensure at least one dimension in either width or height is 40 pixels. It is preferable that the image be transparent. 
 
 :::
 

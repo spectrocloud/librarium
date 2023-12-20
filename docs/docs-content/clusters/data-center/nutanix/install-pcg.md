@@ -24,7 +24,7 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- The following applications installed. These are needed to deploy the kind cluster and workload cluster. The [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) section of the [Install clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) page provides links to the applications below.
+- The following applications installed. These are needed to deploy the kind cluster and workload cluster. We recommend using Docker, as it has been validated with this workflow. The [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) section of the [Install clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) page provides links to the applications below.
 
   - [Docker](https://docs.docker.com/engine/install/)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
@@ -133,7 +133,7 @@ Use the following steps to prepare for deploying the PCG.
 
 ### Install CNI on Workload Cluster
 
-6. After your Nutanix workload cluster is deployed, retrieve its Kubeconfig file with the command described below.
+6. After your Nutanix workload cluster is deployed, retrieve its kubeconfig file with the command described below.
 
   ```bash
   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
