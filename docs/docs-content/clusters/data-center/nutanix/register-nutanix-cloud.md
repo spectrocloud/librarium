@@ -247,7 +247,7 @@ Use the steps below to confirm that the Nutanix cloud is successfully registered
 
 ## Next Steps
 
-Now that your cloud is successfully registered with Palette, the Private Cloud Gateway (PCG) must be deployed. For guidance, review the [Install Private Cloud Gateway](install-pcg.md) guide.
+Now that your cloud is successfully registered with Palette, a Self-hosted Private Cloud Gateway (PCG) must be deployed. For guidance, review the [Install Private Cloud Gateway](install-pcg.md) guide.
 
 
 
