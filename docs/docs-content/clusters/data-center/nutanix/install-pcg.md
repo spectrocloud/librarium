@@ -10,11 +10,13 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Palette. The PCG enables Palette to securely monitor Nutanix clusters in the deployed cloud environment. This section guides you on how to install the PCG.
+A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Palette. The PCG enables Palette to create and monitor Nutanix clusters in the deployed cloud environment. This section guides you on how to install the PCG.
 
 ## Prerequisites
 
-- A Nutanix Prism Central account with *Prism Admin* role. 
+- A Nutanix Prism Central account with *Prism Admin* role.
+
+- A Nutanix Prism Element cluster created.
 
 - A Nutanix subnet created in Nutanix Prism Central.
 
@@ -38,7 +40,7 @@ Use the following steps to prepare for deploying the PCG.
 
 1. Log in to your Nutanix Prism account.
 
-2. Create a local kind cluster. This cluster will bootstrap the workload cluster in the Nutanix account. The workload cluster is then used to deploy the PCG. 
+2. Create a local kind cluster. This cluster will bootstrap Cluster API and provision the target workload cluster in the Nutanix account. The workload cluster is then used to deploy the PCG. 
 
   ```bash
   kind create cluster --name pcg-pilot

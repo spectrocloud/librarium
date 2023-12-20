@@ -24,6 +24,8 @@ The following summary steps outline the Nutanix cloud workflow illustrated in th
 
 1. A system administrator registers Nutanix with Palette by preparing YAML templates to configure the cluster and node pools and invokes APIs to define the logo, required cloud account information and key-value pairs to create the Nutanix cloud account. Palette renders a default logo if no logo is specified. 
 
+  A Nutanix user with the *Prism Admin* role creates an Operating System (OS) image to be used for the Nutanix cluster that will be created in Palette. This can be done using an image creation application such as [Image Builder](https://image-builder.sigs.k8s.io/introduction.html). For guidance, review [Create Images with Image Builder](../../../byoos/image-builder.md).
+
   :::caution
   To make the Palette-provided **Nutanix CSI** pack available to users, the Nutanix cloud must be registered using the name `nutanix`. For guidance in using registration APIs and providing required variable values, review [Register the Cloud](register-nutanix-cloud.md#register-the-cloud).
   
@@ -45,7 +47,7 @@ The following summary steps outline the Nutanix cloud workflow illustrated in th
 
 4. Create a cluster profile by selecting Nutanix as the cloud type. 
 
-  Palette displays out-of-the-box packs for the network and storage profile layers. Additionally, Palette provides an out-of-the-box **Nutanix CSI** pack that is available when the cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your registry. To learn how to add a pack registry, review [Add a Custom Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry/#configure-a-custom-pack-registry-in-palette).
+  When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the **Nutanix CSI** storage pack. The **Nutanix CSI** pack is available when the cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your registry. To learn how to add a pack registry, review [Add a Custom Registry](https://docs.spectrocloud.com/registries-and-packs/adding-a-custom-registry/#configure-a-custom-pack-registry-in-palette).
 
 5. Deploy a cluster by specifying Nutanix, listed under **Tech Preview**, as the cluster type. Select the cloud account you added and make any needed changes to the profile layers by using the YAML editor. At the **Cluster Config** step, customize the Cluster configuration and Node configuration YAML files by replacing any undefined variables in curly braces, such as `${CLUSTER_NAME}`, with values for your environment. Make any other adjustments in the files to customize the cluster for your environment. You provide your own Operating System (OS) image.
 
