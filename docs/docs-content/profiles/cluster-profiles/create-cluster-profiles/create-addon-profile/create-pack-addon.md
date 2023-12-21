@@ -63,7 +63,7 @@ You now have an add-on cluster profile that contains one or more packs. You can 
 
 Install order can be applied to the layers of a cluster profile. The "install order" value accepts negative and positive numbers, as well as 0. The default install order value is 0.
 
-The install order determines the order in which manifests in the profile are applied. The lowest numbered packs will be installed first. Palette will wait for some time when moving from one install order value to another, so an addon profile that has many install order values will take a few minutes longer to install than an addon profile that has several layers at the same install order.
+The install order determines the order in which manifests in the profile are applied. The lowest-numbered packs will be installed first. Palette will wait for some time when moving from one install order value to another, so an addon profile that has many install order values will take a few minutes longer to install than an addon profile that has several layers at the same install order.
 
 You can change the order as needed.
 
