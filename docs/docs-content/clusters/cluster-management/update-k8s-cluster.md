@@ -1,10 +1,10 @@
 ---
 sidebar_label: "Deploy Cluster Profile Updates"
 title: "Deploy Cluster Profile Updates"
-description: "Learn how to update a Kubernetes cluster deployed in a public cloud provider with Palette. "
+description: "Learn how to update your deployed clusters using Palette Cluster Profiles. This tutorial teaches you how to: create Cluster Profile versions, apply cluster updates and roll back to previous versions. Get started with the basics of cluster maintenance in Azure with this hands-on exercise."
 icon: ""
 hide_table_of_contents: false
-tags: ["public cloud", "aws", "azure", "gcp", "cluster profiles", "tutorial"]
+tags: [ "cluster profiles", "tutorial"]
 sidebar_position: 240
 ---
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain the versions of the container images that Palette will install for you. Cluster profiles provide consistency across environments during the cluster creation process, as well as when maintaining your clusters. Check out the [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about how to create and use them. Once provisioned, there are three main ways to update your Palette deployments.
@@ -52,7 +52,7 @@ To complete this tutorial, you will need the following items.
   - [Register and Manage Azure Cloud Accounts](../public-cloud/azure/azure-cloud.md)
   - [Register and Manage GCP Accounts](../public-cloud/gcp/add-gcp-accounts.md)
 - Install the [Terraform CLI](https://developer.hashicorp.com/terraform/install) v1.4.0 or greater according to the setup steps for your operating system.
-- A Spectro Cloud API key is required to interact with the Palette API. To create an API key, log in to [Palette](https://console.spectrocloud.com). Click on the **User Menu** and select **My API Keys**. Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**. Click on **Confirm** to create the API key. Copy the key value to your clipboard, as it will only be shown once.
+- A Spectro Cloud API key is required to interact with the Palette API. Use the [Create API Key] guide to learn how to create one.
 
 In your terminal session, issue the following command to export the API key as an environment variable. Replace the placeholder `YourAPIKeyHere` with your previously copied API key. 
 
@@ -399,7 +399,7 @@ spec:
         - containerPort: 8080
         env:
           - name: API_URI
-            value: "https://REPLACE_ME:3000"
+            value: "http://REPLACE_ME:3000"
 ```
 
 The code snippet you added deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
