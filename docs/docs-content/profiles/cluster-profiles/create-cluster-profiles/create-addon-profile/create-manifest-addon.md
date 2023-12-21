@@ -69,6 +69,8 @@ You now have an add-on cluster profile that contains one or more manifests. You 
 
 3. Select your cluster profile to review its layers or make changes.
 
+## Next Steps 
+
 Now you can use the add-on profile you created with other profiles.
 
 ## Resources
