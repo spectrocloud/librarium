@@ -18,13 +18,15 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix Prism Element cluster created.
 
-- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in this cluster.
+- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Nutanix cluster to deploy your PCG, check out the [Set Up Environment and Deploy Cluster](#set-up-environment-and-deploy-cluster) section below, that describes one possible option. 
+
+- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the Kubernetes cluster.
 
 - A Nutanix cloud registered with Palette. For more information, review [Register Nutanix Cloud](register-nutanix-cloud.md).
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. For guidance in  creating a Nutanix cluster to deploy your PCG, check out the [Setup] section below, that describes one possible option using the process documented in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource. 
+
 
 
 ## Install PCG
@@ -65,13 +67,13 @@ When deployed, the PCG registers itself with Palette. Use the steps below to ver
   kind delete cluster --name pcg-pilot
   ```
 
-## Setup
+## Set Up Environment and Deploy Cluster
 
-This section provides one possible method for creating a Nutanix cluster to deploy your PCG using the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies. 
+This section describes one possible method for creating a Nutanix cluster to deploy your PCG using the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies.
 
 ### Prerequisites
 
-This process requires installing the following applications:
+This method requires installing the following applications:
 
   - [Docker](https://docs.docker.com/engine/install/)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
