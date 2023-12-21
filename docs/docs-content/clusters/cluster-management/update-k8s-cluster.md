@@ -3,12 +3,11 @@ sidebar_label: "Deploy Cluster Profile Updates"
 title: "Deploy Cluster Profile Updates"
 description: "Learn how to update a Kubernetes cluster deployed in a public cloud provider with Palette. "
 icon: ""
-category: ["tutorial"]
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "azure", "gcp", "cluster profiles", "tutorial"]
 sidebar_position: 240
 ---
-Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts or cluster manifests. They serve as blueprints to the provisioning and deployment process, as they contain the versions of the container images that Palette will install for you. Cluster profiles provide consistency across environments during the cluster creation process, as well as when maintaining your clusters. Check out the [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about how to create and use them. Once provisioned, there are three main ways to update your Palette deployments.
+Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain the versions of the container images that Palette will install for you. Cluster profiles provide consistency across environments during the cluster creation process, as well as when maintaining your clusters. Check out the [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about how to create and use them. Once provisioned, there are three main ways to update your Palette deployments.
 
 | Method | Description               | Cluster application process |
 |--------|---------------------------|-----------------------------|
@@ -16,7 +15,7 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 | Cluster profile updates | Change the cluster profile in place. | Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update. |
 | Cluster overrides | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.|
 
-This tutorial will teach you how to update a cluster deployed to Palette with Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You will explore each cluster update method and learn how to apply these changes using either Palette or Terraform.
+This tutorial will teach you how to update a cluster deployed with Palette to Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You will explore each cluster update method and learn how to apply these changes using either Palette or Terraform.
 
 ## Prerequisites
 To complete this tutorial, you will need the following items.
@@ -280,7 +279,7 @@ Repeat the steps above for the `[cloud provider]-cluster-api` cluster you deploy
 
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then select the **Add custom filter** option.
 
-Use the dropdown boxes to fill in the values of the filter. Select **Tags** in the left-hand dropdown menu. Select **is** in the middle dropdown menu. Fill in **service:hello-universe-frontend** in the right-hand input box. 
+Use the drop-down boxes to fill in the values of the filter. Select **Tags** in the left-hand **drop-down Menu**. Select **is** in the middle **drop-down Menu**. Fill in **service:hello-universe-frontend** in the right-hand input box. 
 
 Click on **Apply Filter**. 
 
@@ -328,9 +327,9 @@ Once you apply the filter, only the `[cloud provider]-cluster` with this tag is 
 </Tabs>
 
 ## Version Cluster Profiles
- Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with better change visibility and control over the layers in your host clusters. Profile versions are commonly used for adding/removing layers and pack configuration updates. 
+ Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with better change visibility and control over the layers in your host clusters. Profile versions are commonly used for adding or removing layers and pack configuration updates. 
  
- The version number of a given profile must be unique and use the format `major.minor.patch`. If you do not specify a version for your cluster profile, it defaults to **1.0.0**.
+ The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. If you do not specify a version for your cluster profile, it defaults to **1.0.0**.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
@@ -345,7 +344,7 @@ Navigate to the left **Main Menu** and select **Profiles** to view the cluster p
 
 The current version is displayed in the dropdown menu next to the profile name. This profile has the default value of **1.0.0**, as you did not specify another value when you created it. The cluster profile also shows the host clusters that are currently deployed with this cluster profile version.
 
-Click on the version dropdown menu. Select the **Create new version** option.
+Click on the version **drop-down Menu**. Select the **Create new version** option.
 
 A dialog box appears. Fill in the **Version** input with **1.1.0**. Click on **Confirm**.
 
@@ -438,7 +437,7 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 <TabItem label="Terraform workflow" value="Terraform">
 
-Palette cluster profiles are defined with the [*spectrocloud_cluster_profile*](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile) Terraform resource. Six resources defined are defined in the **cluster_profiles.tf** file.
+Palette cluster profiles are defined with the Terraform resource [*spectrocloud_cluster_profile*](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile) . Six resources defined are defined in the **cluster_profiles.tf** file.
 
 | Name | Description | Platform |
 |----- |-------------|----------|
@@ -449,7 +448,7 @@ Palette cluster profiles are defined with the [*spectrocloud_cluster_profile*](h
 | `gcp-profile` | Cluster profile for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | GCP |
 | `gcp-profile-api` | Cluster profile for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | GCP |
 
-The `spectrocloud_cluster_profile` resource provides all the basic information that Palette needs to display it, such as the name, description and cloud type. It also provides the optional version field, which has a default value of **1.0.0**. You can create another version of the cluster profile by specifying another resource with the same profile name, but different version value. 
+The `spectrocloud_cluster_profile` resource provides all the basic information that Palette needs to create the cluster profile and display its attributes, such as the name, description, and cloud type. The resource also provides the optional version field, which has a default value of **1.0.0**. You can create another version of the cluster profile by specifying another resource with the same profile name but with a different version value. 
 
 ```hcl {9} hideClipboard
 resource "spectrocloud_cluster_profile" "azure-profile" {
@@ -586,7 +585,7 @@ Open your **terraform.tfvars** file in the code editor of your choice and find t
 azure-hello-universe-api-uri = "http://REPLACE_ME:3000" # Set IP address of hello-universe API once deployed
 ```
 
-Open your **clusters.tf** file in the code editor of your choice and find the section for your chosen cloud provider. This file contains the host cluster definitions that this plan deploys to Palette. The following six resources are defined in this file.
+Open your **clusters.tf** file in the code editor of your choice and find the section for your chosen cloud provider. This file contains the host cluster definitions that Terraform uses to deploy to Palette. The following six resources are defined in this file.
 
 | Name | Description | Terraform resource | Platform |
 |----- |-------------|--------------------|----------|
@@ -597,7 +596,7 @@ Open your **clusters.tf** file in the code editor of your choice and find the se
 | `gcp-cluster` | Cluster for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp) | GCP |
 | `gcp-cluster-api` | Cluster for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp) | GCP |
 
-The cluster terraform resource provides all the definitions the Palette requires to create it. The `cluster_profile` nested schema specifies which cluster profile should be used to deploy the host cluster. The cluster profile currently configured to be used is the **1.0.0** version of the cluster profile.
+The cluster terraform resource provides all the definitions Palette requires to create it. The `cluster_profile` nested schema specifies which cluster profile should be used to deploy the host cluster. The cluster profile currently configured to be used is the **1.0.0** version of the cluster profile.
 
 ```hcl {15,16,17,18} hideClipboard
 resource "spectrocloud_cluster_azure" "azure-cluster" {
@@ -680,7 +679,7 @@ Log in to [Palette](https://console.spectrocloud.com).
 
 Navigate to the left **Main Menu** and select **Profiles**. Find the cluster profile that with the name pattern `tf-[cloud provider]-profile` corresponding to your cloud provider. Select it to view its details. 
 
-The version dropdown displays the two versions of this profile. Select option **1.1.0**. The overview of this version displays the profile layers of this cluster profile and shows that it is in use on one cluster.
+The version drop-down displays the two versions of this profile. Select option **1.1.0**. The overview of this version displays the profile layers of this cluster profile and shows that it is in use on one cluster.
 
 ![Image that shows TF cluster profile version 1.1.0](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_tf-profile-new-version.png)
 
@@ -876,7 +875,7 @@ A dialog appears. Input the cluster name to confirm the delete action.
 
 The deletion process takes several minutes to complete. Repeat the same steps for the other cluster.
 
-Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. 
+Once the clusters are deleted, navigate to the left **Main Menu** and click on **Profiles**. 
 
 Find the cluster profile you created named with the pattern `[cloud provider]-profile`. Click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile. Make sure you delete both versions of this profile.
 
@@ -901,7 +900,7 @@ Destroy complete! Resources: 7 destroyed.
 
 ## Wrap-Up
 
-In this tutorial, you created two clusters and cluster profiles. After the clusters deployed to your chosen cloud provider, you updated one cluster profile in three different methods: create a new cluster profile version, update cluster profile in place and cluster overrides. After you made your changes, the Hello Universe application functioned as a three-tier application with a REST API backend server.
+In this tutorial, you created two clusters and cluster profiles. After the clusters deployed to your chosen cloud provider, you updated one cluster profile in through three different methods: create a new cluster profile version, update a cluster profile in place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a three-tier application with a REST API backend server.
 
 Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters. They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or rolling back workloads across your environments. 
 
