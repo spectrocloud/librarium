@@ -342,7 +342,7 @@ Navigate to the left **Main Menu** and select **Profiles** to view the cluster p
 
 ![Image that shows the frontend cluster profile with cluster linked to it](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-with-cluster.png)
 
-The current version is displayed in the dropdown menu next to the profile name. This profile has the default value of **1.0.0**, as you did not specify another value when you created it. The cluster profile also shows the host clusters that are currently deployed with this cluster profile version.
+The current version is displayed in the **drop-down Menu** next to the profile name. This profile has the default value of **1.0.0**, as you did not specify another value when you created it. The cluster profile also shows the host clusters that are currently deployed with this cluster profile version.
 
 Click on the version **drop-down Menu**. Select the **Create new version** option.
 
