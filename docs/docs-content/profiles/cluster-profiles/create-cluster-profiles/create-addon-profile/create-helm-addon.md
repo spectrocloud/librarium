@@ -49,6 +49,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
   pack:
    namespace: your_namespace_here
   ``` 
+  Optionally, you can add configurable layer values and specify the layer [install order](./create-pack-addon.md#install-order).
 
   :::caution
 

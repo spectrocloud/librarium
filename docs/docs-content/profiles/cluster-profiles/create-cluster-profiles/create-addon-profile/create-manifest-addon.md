@@ -36,7 +36,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
   To learn how to create multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can add configurable layer values and specify the layer [install order](#install-order). 
+5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can add configurable layer values and specify the layer [install order](./create-pack-addon.md#install-order). 
 
 6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the editor. 
 
@@ -68,17 +68,6 @@ You now have an add-on cluster profile that contains one or more manifests. You 
 2.  Navigate to left **Main Menu** and select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
-
-## Install Order
-
-Install order can be applied to the layers of a cluster profile. The "install order" value accepts negative and positive numbers, as well as 0. The default install order value is 0. 
-
-The install order determines the order in which manifests in the profile are applied. The lowest numbered packs will be installed first. Palette will wait for some time when moving from one install order value to another, so an addon profile that has many install order values will take a few minutes longer to install than an addon profile that has several layers at the same install order. 
-
-You can change the order as needed.
-
-
-## Next Steps
 
 Now you can use the add-on profile you created with other profiles.
 
