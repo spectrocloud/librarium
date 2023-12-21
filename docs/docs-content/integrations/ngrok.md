@@ -100,7 +100,7 @@ Once you have defined the ngrok Ingress Controller pack, you can add it to an ex
 
 You can reference the ngrok Ingress Controller pack in Terraform with a data resource.
 
-```
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }

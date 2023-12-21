@@ -596,15 +596,18 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 
 ## Create VMware Cloud Gateway
 
-<video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></video>
+<!-- <video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></video> -->
 
 
-You can use two different PCG installation methods for VMware vSphere. You can use the Palette CLI, or you can use an OVA/OVF template. Review the prerequisites for each option to help you identify the correct installation method.
+Use the Palette CLI to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct installation method.
 
 
-<Tabs>
+:::caution
 
-<TabItem label="Palette CLI" value="palette-cli">
+Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
+
+:::
+
 
 
 ### Prerequisites
@@ -837,145 +840,6 @@ To change the PCG install values, restart the installation process using the `pa
   ```bash hideClipboard
   palette pcg install --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
   ```
-
-
-</TabItem>
-
-
-<TabItem label="OVA/OVF Template" value="ova-ovf-template">
-
-## PCG Install With OVA/OVF
-
-
-The following points give an overview of what you will do to set up the PCG:
-
-  <br />
-
-  - Initiate the installation from the tenant portal.
-
-
-  - Deploy the gateway installer VM in VMware vSphere.
-
-
-  - Launch the cloud gateway from the tenant portal.
-
-:::info
-
-Self-hosted Palette installations provide a system gateway out-of-the-box and typically do not require a PCG. However, you can create additional gateways as needed to support provisioning into remote data centers that do not have a direct incoming connection from the management console.
-
-:::
-
-
-<video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></video>
-
-
-### Prerequisites
-
-
-- Palette version 3.4.X or older. 
-
-
-- You can set up the PCG as a single- or three-node cluster based on your requirements for high availability (HA). The minimum PCG resource requirements are the following.
-  - Single-node cluster: 2 vCPU, 4 GB memory, 60 GB storage.
-
-  - High-Availability (HA) three-node cluster: 6 vCPU, 12 GB memory, 70 GB storage.
-
-### Install PCG
-
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
-
-
-2. Navigate to the left **Main Menu** and select **Tenant Settings** > **Private Cloud Gateway**.
-
-
-3. Click the **Create Private Cloud Gateway** button and select **VMware**. Private Gateway installation instructions are displayed.
-
-
-4. Copy the gateway-installer link. Alternatively, you can download the OVA and upload it to an accessible location and import it as a local file.
-
-
-### vSphere - Deploy Gateway Installer
-
-1. Deploy a new OVF template by providing the link to the installer OVA as the URL.
-
-
-2. Proceed through the OVF deployment wizard, selecting the desired Name, Placement, Compute, Storage, and Network options.
-
-
-3. At the **Customize Template** step, specify Palette properties as follows:
-
-<br />
-
-| **Parameter** | **Value** | **Description** |
-|---|---|---|
-|**Installer Name** | Desired Palette Gateway Name. | The name will be used to identify the gateway instance. Typical environments may only require a single gateway to be deployed. However, multiple gateways may be required to manage clusters across multiple vCenters. We recommend choosing a name that readily identifies the environment for which this gateway instance is being configured.|
-| **Console endpoint** | URL to Palette management platform portal. | Default: https://console.spectrocloud.com |
-|**Pairing Code** | PIN displayed on the Palette management platform portal's 'Create a new gateway' dialogue. | |
-| **SSH Public Key** | Optional key for troubleshooting purposes. | We recommended having an SSH key, as it enables SSH access to the VM as 'ubuntu' user. |
-| **Pod CIDR** | Optional IP range exclusive to pods. | This range should be different to prevent an overlap with your network CIDR. |
-| **Service cluster IP range** | Optional IP range in the CIDR format exclusive to the service clusters. | This range also must not overlap with either the pod CIDR or your network CIDR. |
-
-
-Proxy environments require additional property settings. Each of the proxy properties may or may not have the same value but all the three properties are required.
-
-
-| **Parameter** | **Value** | **Remarks** |
-|---|---|---|
-|HTTP PROXY | Endpoint for the HTTP proxy server. | This setting will be propagated to all the nodes launched in the proxy network. For example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT` |
-| HTTPS PROXY | Endpoint for the HTTPS proxy server. | This setting will be propagated to all the nodes launched in the proxy network. For example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT` |
-| NO Proxy | A comma-separated list of vCenter server, local network CIDR, hostnames, and domain names that should be excluded from proxying. | This setting will be propagated to all the nodes to bypass the proxy server. For example: `vcenter.company.com`, `.company.org`, and `10.10.0.0/16` |
-| Certificate | The base64-encoded value of the proxy server's certificate OR the base64-encoded root and issuing certificate authority (CA) certificates used to sign the proxy server's certificate. | Depending on how the certificate is decoded, an additional `=` character may appear at the end of the value. You can use this command to properly encode the certificate: `base64 -w0 &vert; sed "s/=$//"`.
-
-4. Complete the OVF deployment wizard and wait for the OVA to be imported and the Virtual Machine (VM) to be deployed.
-
-
-5. Power on the VM.
-
-
-## Tenant Portal - Launch Cloud Gateway
-
-1. Close the **Create New Gateway** installation instructions and navigate to the Private Cloud Gateway page under **Tenant Settings** if you have navigated away or logged out.
-
-
-2. Wait for a gateway widget to display on the page and for the **Configure** option to become available. The IP address of the installer VM will be displayed on the gateway widget. This may take a few minutes after the VM is powered on. Failure of the installer to register with Palette within 10 minutes of powering on the Virtual Machine on vSphere might indicate an error. Follow steps in [Troubleshooting](../../troubleshooting/pcg.md) to identify and resolve the issue.
-
-
-3. Click on the **Configure** button to invoke the Palette Configuration dialogue. Provide vCenter credentials and proceed to the next configuration step.
-
-
-4. Choose the desired values for the Data Center, Compute Cluster, Datastore, Network, Resource pool, and Folder. Optionally, provide one or more SSH Keys or NTP server addresses.
-
-  <br />
-
-  Virtual machine port groups and distributed port groups are listed with their names. NSX-T distributed virtual port groups that exist in vSphere will be listed with their name and segment IDs.
-
-
-5. Choose the IP Allocation Scheme - Static IP or DHCP. Selecting static IP enables the option to create an IP pool. To create an IP pool, provide an IP range or a subnet. The IP addresses from the IP pool will be assigned to the gateway cluster. By default, the IP pool is available for use by other tenant clusters. You can prevent this by toggling on the **Restrict to a single cluster** option. 
-
-<!-- A detailed description of all the fields involved in the creation of an IP pool can be found [here](/clusters?clusterType=vmware_cluster#ipaddressmanagement). -->
-
-
-6. Click on **Confirm** to initiate gateway cluster provisioning. Cluster status should change to **Provisioning** and eventually to **Running**, when the gateway cluster is fully provisioned. This process can take about 10 minutes.
-
-  You can click on the Cloud Gateway widget in the UI to view a detailed provisioning sequence on the **Cluster Details** page. If gateway cluster provisioning results in errors or gets stuck, you can view the details on the **Summary** tab or the **Events** tab of the **Cluster Details** page.
-
-  In certain cases where provisioning of the gateway cluster is stuck or failed due to invalid configuration, you can reset the process from the Cloud Gateway widget.
-
-
-7. When the Gateway transitions to the **Running** state, it is fully provisioned and ready to bootstrap tenant cluster requests.
-
-
-8. Power off the installer OVA that you initially imported at the start of this installation process.
-
-:::info
-
-A Gateway cluster installation automatically creates a cloud account using the credentials entered at the time the gateway cluster is deployed. You can use this account to provision clusters across all tenant projects.
-
-:::
-
-</TabItem>
-
-</Tabs>
 
 ---
 ## Upgrade PCG
