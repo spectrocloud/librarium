@@ -4,7 +4,7 @@ title: "Backup and Restore"
 description: "Learn how to enable backup and restore for self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 30
 tags: ["palette", "management", "self-hosted", "backup", "restore"]
 keywords: ["self-hosted", "enterprise"]
 ---

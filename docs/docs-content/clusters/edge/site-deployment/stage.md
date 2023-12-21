@@ -171,13 +171,13 @@ You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and up
   nohup make vmdk &
   ```
 
-    :::info
+  :::info
 
-    If you are using a *Tenant Registration Token* for auto-registration, you can omit the environment variable `REGISTRATION_URL`. 
+  If you are using a *Tenant Registration Token* for auto-registration, you can omit the environment variable `REGISTRATION_URL`. 
 
-    :::
+  :::
 
-    A VMDK file was generated in the **stylus-image-builder/images** folder. Rename this VMDK to a preferred installer name. Ensure the VMDK file retains the `.vmdk` extension.
+  A VMDK file was generated in the **stylus-image-builder/images** folder. Rename this VMDK to a preferred installer name. Ensure the VMDK file retains the `.vmdk` extension.
 
 
 6. Transfer the VMDK to a datastore in your VMware environment. Review the commands below and ensure you replace the placeholders with the respective values from your environment.

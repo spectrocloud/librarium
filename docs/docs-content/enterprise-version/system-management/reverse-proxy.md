@@ -4,7 +4,7 @@ title: "Configure Reverse Proxy"
 description: "Learn how to configure a reverse proxy for Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 50
 tags: ["palette", "management"]
 keywords: ["self-hosted", "enterprise"]
 ---

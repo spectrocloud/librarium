@@ -16,9 +16,9 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
   * `completion` - Generate the autocompletion script for the specified shell.
 
-
   * `help`       -   Help with any command.
 
+  * [`docs`](docs.md)     -  Start the Palette documentation site in your local environment for an offline experience.
 
   * [`ec`](ec.md)         - Palette Enterprise Cluster installation & pre-validation.
 
@@ -34,6 +34,7 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
   * [`project`](project.md) -  Manage Palette Projects.
 
+  * [`validator`](validator.md) -  Deploy a kind cluster and install the Validator framework to validate your environment is ready for Palette.
 
 
 
@@ -53,6 +54,8 @@ Palette CLI supports the following global flags.
 
 ## Resources
 
+- [Docs](docs.md)
+
 - [EC](ec.md)
 
 - [Login](login.md)
@@ -62,3 +65,5 @@ Palette CLI supports the following global flags.
 - [PDE](pde.md)
 
 - [Project](project.md)
+
+- [Validator](validator.md)

@@ -160,6 +160,12 @@ Astra
 FSx
 liveness
 Autosupport
+Validator
+bool
+OVA
 Okta
 Keycloak
 Tailscale
+Simple Mail Transfer Protocol
+NIC
+
