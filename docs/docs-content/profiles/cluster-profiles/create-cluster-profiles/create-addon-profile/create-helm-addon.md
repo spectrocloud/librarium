@@ -37,7 +37,6 @@ You can extend the list of integrations by adding Helm charts from a public or p
 
 5. Select **Add Helm Chart** and use the **drop-down Menu** to choose public or private packs. 
 
-<!-- For a description of the layers, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 
 6. To add a chart from a public registry, choose a Helm chart from the list displayed on the next page. You can search charts by name. Pack details and the configuration file are displayed on the next page.  
 
@@ -49,7 +48,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
   pack:
    namespace: your_namespace_here
   ``` 
-  Optionally, you can add configurable layer values and specify the layer [install order](./create-pack-addon.md#install-order).
+  Optionally, you can add configurable layer values and specify the layer [install order](./create-addon-profile.md#install-order).
 
   :::caution
 

@@ -40,7 +40,7 @@ Use the following steps to create a cluster profile by adding one or more layers
 
 <!-- Select the type of layer to add to the cluster profile. For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 
-6. Fill out the required input fields and click on **Confirm & Create**. Optionally, you can configure values specific to the layer in Helm values.yaml form, and specify the layer [install order](#install-order).
+6. Fill out the required input fields and click on **Confirm & Create**. Optionally, you can configure values specific to the layer in Helm values.yaml form, and specify the layer [install order](./create-addon-profile.md#install-order).
 
   <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
 
@@ -58,14 +58,6 @@ You now have an add-on cluster profile that contains one or more packs. You can 
 2.  Navigate to left **Main Menu** and select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
-
-## Install Order
-
-Install order can be applied to the layers of a cluster profile. The install order value accepts negative and positive numbers and 0. The default install order value is 0.
-
-The install order determines the order in which manifests in the profile are applied. The lowest-numbered packs will be installed first. Palette will wait for some time when moving from one install order value to another, so an addon profile that has many install order values will take a few minutes longer to install than an addon profile that has several layers at the same install order.
-
-You can change the order as needed.
 
 
 ## Next Steps

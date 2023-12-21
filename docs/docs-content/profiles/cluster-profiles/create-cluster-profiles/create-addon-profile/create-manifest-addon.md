@@ -36,7 +36,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
   To learn how to create multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can specify the layer [install order](./create-pack-addon.md#install-order). 
+5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can specify the layer [install order](./create-addon-profile.md#install-order). 
 
 6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the editor. 
 
