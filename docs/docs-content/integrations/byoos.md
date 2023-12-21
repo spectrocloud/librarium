@@ -52,7 +52,7 @@ The BYOS Edge OS pack supports the following parameters.
 | `pack.content.images` | Specifies a list of OS images to use with the pack. | list |
 | `pack.content.images.image` | An OS image to use with the pack. | string|
 | `system.uri` | The system URI specifies the location of BYOOS image. | string|  
-| `providerCredentials.registry` | Specifies the private registry for the cluster to pull images from. If you are using a Harbor registry, provide the Harbor domain as well as the name of the project. For example, `harbor.spectrocloud.com/default`. If you are using a Docker registry, provide the domain of the registry. For example, `registry-1.docker.io`. | string |  
+| `providerCredentials.registry` | Specifies the private registry for the cluster from which to pull images. If you are using a Harbor registry, provide the Harbor domain and the project's name. For example, `harbor.spectrocloud.com/default.` If you are using a Docker registry, provide the domain of the registry. For example, `registry-1.docker.io`. | string |  
 | `providerCredentials.username` | Specifies the username used for authentication with a private registry. | string |
 | `providerCredentials.password` | Specifies the password used for authentication with a private registry. | string |
 | `providerCredentials.certificate` | Specifies the X509 certificate used for authentication and encryption with a private registry | string |

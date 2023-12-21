@@ -116,7 +116,7 @@ You will not be able to change the network overlay configurations after the clus
 
 10. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional configuration for your virtual overlay network. 
 
-11. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
+11. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides a default range that is typically unused. We suggest you keep the default range unless you have a specific IP range you want to use. 
 
    :::caution
    The overlay CIDR range cannot be changed after the cluster creation. 
@@ -134,7 +134,7 @@ You will not be able to change the network overlay configurations after the clus
 
 3. Select the host cluster you created to view its details page.
 
-4. Select the **Nodes** tab, in the **Private Ips** column, each host has an overlay IP address within the CIDR range you provided during cluster configuration. 
+4. Select the **Nodes** tab. For each host, the **Private Ips** column lists an overlay IP address within the CIDR range you provided during cluster configuration.
 
 :::tip
 To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge Hosts** tab. The IP address displayed in the table is the external IP address.
