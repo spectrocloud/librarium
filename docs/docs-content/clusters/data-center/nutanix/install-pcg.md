@@ -24,17 +24,59 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used for the PCG. However, the [Setup](#setup) section in this guide uses the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies. This process requires installing the following applications:
+- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. For guidance in  creating a Nutanix cluster to deploy your PCG, check out the [Setup] section below, that describes one possible option using the process documented in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource. 
+
+
+## Install PCG
+
+Use the following steps to install the PCG in your Kubernetes workload cluster.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left **Main Menu**, select **Tenant Settings**.
+
+3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways** and click on **Add New Private Cloud Gateway**.
+
+4. Select **Self Hosted** in the next window that Palette displays.
+
+5. Provide a name for the PCG and use the **drop-down Menu** to select Nutanix as the cloud type. Click **Confirm** to continue. You will be redirected to the Private Cloud Gateway Overview page. 
+
+6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your workload cluster.
+
+7. Close the slide-out panel when you have copied both commands. The PCG Overview page **Cluster Status** field will display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status** field displays the status **Running**.  
+
+
+## Validate
+
+When deployed, the PCG registers itself with Palette. Use the steps below to verify if the PCG registration is successful.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+
+2. Navigate to the **left Main Menu** and select **Tenant Settings**.
+
+
+3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways**.
+
+
+4. Locate the PCG and verify it is installed and in the **Running** state. With the PCG successfully deployed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster. 
+
+  ```bash
+  kind delete cluster --name pcg-pilot
+  ```
+
+## Setup
+
+This section provides one possible method for creating a Nutanix cluster to deploy your PCG using the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies. 
+
+### Prerequisites
+
+This process requires installing the following applications:
 
   - [Docker](https://docs.docker.com/engine/install/)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
   - [clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start#install-clusterctl) 
-
-
-## Setup
-
-Use the following steps to prepare for deploying the PCG.
 
 ### Create Bootstrap Cluster 
 
@@ -45,7 +87,6 @@ Use the following steps to prepare for deploying the PCG.
   ```bash
   kind create cluster --name pcg-pilot
   ```
-
 
 ### Export Variables and Deploy Workload Cluster
 
@@ -168,44 +209,6 @@ Use the steps below to verify your virtual machines (VMs) are created.
 
 2. Next, in the **Table** tab, verify the VMs you created are listed.
 
-
-## Install PCG
-
-Once you have deployed a workload cluster, exported variables, created a Nutanix Cluster API instance, and deployed a container network interface, you are ready to install the PCG. Use the following steps to install the PCG in your Kubernetes workload cluster.
-
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-2. From the left **Main Menu**, select **Tenant Settings**.
-
-3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways** and click on **Add New Private Cloud Gateway**.
-
-4. Select **Self Hosted** in the next window that Palette displays.
-
-5. Provide a name for the PCG and use the **drop-down Menu** to select Nutanix as the cloud type. Click **Confirm** to continue. You will be redirected to the Private Cloud Gateway Overview page. 
-
-6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your workload cluster.
-
-7. Close the slide-out panel when you have copied both commands. The PCG Overview page **Cluster Status** field will display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status** field displays the status **Running**.  
-
-
-## Validate
-
-When deployed, the PCG registers itself with Palette. Use the steps below to verify if the PCG registration is successful.
-
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-
-2. Navigate to the **left Main Menu** and select **Tenant Settings**.
-
-
-3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways**.
-
-
-4. Locate the PCG and verify it is installed and in the **Running** state. With the PCG successfully deployed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster. 
-
-  ```bash
-  kind delete cluster --name pcg-pilot
-  ```
 
 ## Next Steps
 

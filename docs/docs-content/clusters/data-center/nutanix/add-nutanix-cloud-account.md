@@ -19,13 +19,15 @@ tags: ["data center", "nutanix"]
 
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant administrator.
 
-2. From the **left Main Menu**, select **Tenant Settings**. 
+2. Ensure you are in the correct project scope.
 
-3. Next, select **Cloud Accounts** in the **Tenant Setting Menu**.
+3. From the **left Main Menu**, select **Tenant Settings**. 
 
-4. Locate Nutanix and click **Add Nutanix Cloud**.  
+4. Next, select **Cloud Accounts** in the **Tenant Setting Menu**.
 
-5. Fill out the following input values and click **Confirm** to continue. 
+5. Locate Nutanix and click **Add Nutanix Cloud**.  
+
+6. Fill out the following input values and click **Confirm** to continue. 
 
   | **Field** | **Description** |
   |-----------|-----------------|

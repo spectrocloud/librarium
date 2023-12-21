@@ -14,17 +14,17 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 ## Prerequisites
 
 
-- A Nutanix cloud created with the minimum supported CAPI version 1.5.3. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
+- Nutanix Prism Central with a supported version for CAPI version 1.2.x. Refer to the Nutanix [Validated Integrations](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix.
 
-- The Nutanix CAPI version must be compatibe with Palette's CAPI version.
+- The Nutanix CAPI version must be v1.2.x.
 
-- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix). Images can be found in the Nutanix Prism dashboard under **Compute & Storage**.
+- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix). Images can be found in the Nutanix Prism Central dashboard under **Compute & Storage**.
 
 - A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
 
 - A Nutanix logo downloaded. Review logo requirements in [Register the Cloud](#register-the-cloud).
 
-- [`curl`](https://curl.se/docs/install.html) command installed.
+- [`curl`](https://curl.se/docs/install.html) command installed or the method of your choice to issue API commands for standard Palette and Palette VerteX.
 
 <!-- - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide. -->
 
@@ -35,7 +35,8 @@ Use the following steps to prepare to register your cloud with Palette.
 
 ### Customize YAML Configuration Files
 
-1.  Download the following YAML files from the [Nutanix Cluster API (CAPI) Provider](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix) GitHub repository:
+1.  Download the following YAML files from a specific version of CAPX found on the [Nutanix Releases](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases) page in the GitHub repository.
+
     - **infrastructure-components.yaml**
     - **cluster-template.yaml**
   
@@ -45,12 +46,12 @@ Use the following steps to prepare to register your cloud with Palette.
   Review the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix to ensure you download the latest CAPI version of the files for your environment. 
   :::
 
-  Issue the commands below to download the latest files.
+  <!-- Issue the commands below to download the latest files.
 
     ```bash
     curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
     curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
-    ```
+    ``` -->
 
 2. Create two copies of `cluster-template.yaml` and rename them so you have the following files in addition to the `infrastructure-components.yaml`:
     - **cloudClusterTemplate.yaml**
@@ -144,22 +145,23 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   ```
 
   :::caution
-  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used for the `name` value in the `/v1/clouds/cloudTypes/register` cloud registration API in step 4 below. Setting `name` as `nutanix` will make the out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette. 
+  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used for the `name` value in the following steps. 
+  
+  In the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette. 
   :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.
 
   ```bash
-  curl --insecure --location "$ENDPOINT/v1/auth/syslogin" \
+  curl --location "${ENDPOINT}/v1/auth/syslogin" \
   --header 'Content-Type: application/json' \
-  --header 'Accept: application/json' \
-  --data "{
+  --data '{
     "password": "**********",
     "username": "**********"
-  }"
+  }'
   ```
 
-  The output contains your authorization token.
+  The output contains your authorization token. The token is valid for 15 minutes. 
 
   ```bash hideClipBoard
   {
@@ -180,17 +182,17 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
   --header "Content-Type: application/json" \
   --header "Authorization: ${TOKEN}" \
-  --data "{
+  --data '{
       "metadata": {
           "annotations": {},
           "labels": {},
-          "name": "${CLOUD_TYPE}"
+          "name": "nutanix"
       },
       "spec": {
           "displayName": "Nutanix",
           "isControlPlaneManaged": false
       }
-  }"
+  }'
   ```
 
 5. Upload the Nutanix cloud logo. 

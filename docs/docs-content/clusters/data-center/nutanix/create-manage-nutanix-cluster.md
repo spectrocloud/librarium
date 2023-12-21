@@ -35,9 +35,9 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
   | **Field** | **Description** |
   |-----------|-----------------|
-  | **Cluster Name**| A custom name for the cluster. |
+  | **Cluster Name**| A custom name for the cluster. Use this cluster name for `${CLUSTER_NAME}` variable in the YAML configuration files. |
   | **Description**| Use the description to provide context about the cluster.|
-  | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
+  | **Tags**| Assign any desired cluster tags. |
   | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**. |
 
 6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
@@ -48,9 +48,9 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
   | **Variable** | **Description** |
   |--------------|-----------------|
-  | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
-  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix Prism Central IP address. |
-  | `${NUTANIX_ENDPOINT}`| The Nutanix cluster IP address. |  
+  | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. Use the same cluster name you specified in step 5. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Kubernetes API IP endpoint for the cluster you are creating. |
+  | `${NUTANIX_ENDPOINT}`| The Nutanix Prism Central IP address. |  
 
   :::caution
 
@@ -75,8 +75,8 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
   | **Variable** | **Description** |
   |--------------|-----------------|
-  | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. |
-  | `${CONTROL_PLANE_ENDPOINT_IP}`| The API IP endpoint for kube-vip. |
+  | `${CLUSTER_NAME}`| The name of the Nutanix workload cluster. Use the same cluster name you specified in step 5. |
+  | `${CONTROL_PLANE_ENDPOINT_IP}`| The Kubernetes API IP endpoint for the cluster you are creating. |
   | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3` |
   | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster as defined in Prism. |
