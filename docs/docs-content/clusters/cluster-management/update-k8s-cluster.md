@@ -311,7 +311,7 @@ resource "spectrocloud_cluster_azure" "azure-cluster-api" {
 }
 ```
 
-Log in to [Palette](https://console.spectrocloud.com).
+Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser.
 
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then select the **Add custom filter** option.
 
@@ -675,7 +675,7 @@ To deploy all the resources, use the `apply` command.
 terraform apply -auto-approve
 ```
 
-Log in to [Palette](https://console.spectrocloud.com).
+Switch back to [Palette](https://console.spectrocloud.com) in the browser.
 
 Navigate to the left **Main Menu** and select **Profiles**. Find the cluster profile that with the name pattern `tf-[cloud provider]-profile` corresponding to your cloud provider. Select it to view its details. 
 
@@ -742,7 +742,7 @@ To deploy all the resources, use the `apply` command.
 terraform apply -auto-approve
 ```
 
-Log in to [Palette](https://console.spectrocloud.com).
+Navigate back to [Palette](https://console.spectrocloud.com) in the browser.
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
@@ -798,7 +798,7 @@ Three replicas of the **hello-universe-deployment** are available. The cluster p
 </TabItem>
 <TabItem label="Terraform workflow" value="Terraform">
 
-Log in to [Palette](https://console.spectrocloud.com).
+Switch back to [Palette](https://console.spectrocloud.com) in the browser.
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
@@ -835,7 +835,7 @@ To deploy all the resources, use the `apply` command.
 terraform apply -auto-approve
 ```
 
-Log in to [Palette](https://console.spectrocloud.com).
+Navigate back to your [Palette](https://console.spectrocloud.com) tab in the browser.
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the clusters with the **service** tag. Both of your clusters match this filter. Palette indicates that the cluster associated with the cluster profile you updated has an update available.
 
