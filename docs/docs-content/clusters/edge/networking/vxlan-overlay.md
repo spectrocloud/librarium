@@ -34,7 +34,8 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 
 ## Prerequisites
 
-* At least one Edge host with an AMD64 or X86_64 processor architecture registered with your Palette account.
+* At least one Edge host registered with your Palette account.
+* Your cluster profile must have K3s as its Kubernetes distribution. 
 * All Edge hosts must be on the same network. You may provision your own virtual network to connect Edge hosts that are on different physical networks, but all Edge hosts to be included in the cluster must be on the same network before cluster creation.
 
 ## Enable Overlay Network
