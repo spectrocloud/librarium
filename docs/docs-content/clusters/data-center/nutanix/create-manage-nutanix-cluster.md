@@ -27,7 +27,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
 2. From the left **Main Menu** select **Clusters**.
 
-3. Click on **Add New Cluster** and select **Deploy New Cluster** on the next page Palette displays. 
+3. Click on **Add New Cluster** and select **Deploy New Cluster** on the next page that Palette displays. 
 
 4. Select **Nutanix** and click the **Start Nutanix Configuration** button.
 
@@ -38,7 +38,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | **Cluster Name**| A custom name for the cluster. |
   | **Description**| Use the description to provide context about the cluster.|
   | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments.|
-  | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**. If you have not yet added your account, select **Add New Account** and add your Nutanix account information. |
+  | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**. |
 
 6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
 
@@ -58,13 +58,14 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
     - All the variables must be resolved or have a default value.
 
+    - Verify default values such as the port.
+
     - Names you provide must match. Any names in the YAML files that do not match your Nutanix cluster configuration will result in unsuccessful cluster deployment.
 
     - Values that are passed as a string, such as names and keys, must be enclosed in quotes, for example `" "`.
 
     - When replacing values, remove the dollar sign and curly braces.
 
-    - Verify the default values specified in the YAML file (such as the port).
   
   :::
 
@@ -78,7 +79,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | `${CONTROL_PLANE_ENDPOINT_IP}`| The Nutanix Prism Central IP address. |
   | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
   | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3` |
-  | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster (as defined in Prism). |
+  | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster as defined in Prism. |
   | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**.|
   | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the virtual machines (VMs) deployed in this cluster. |
 
@@ -88,7 +89,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
     |--------------|-----------------|
     | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
     | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3` |
-    | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster (as defined in Prism). |
+    | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster as defined in Prism. |
     | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**. |
     | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the VMs deployed in this cluster. |
 

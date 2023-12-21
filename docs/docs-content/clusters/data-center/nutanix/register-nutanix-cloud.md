@@ -18,7 +18,7 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 
 - The Nutanix CAPI version must be compatibe with Palette's CAPI version.
 
-- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix). To locate created images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**.
+- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix). Images can be found in the Nutanix Prism dashboard under **Compute & Storage**.
 
 - A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
 
@@ -131,7 +131,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
 
 :::
 
-1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. Additionally, export the path to the YAML templates and to the logo file.
+1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables. Additionally, export the path to the YAML templates and logo file.
 
   ```bash
   export ENDPOINT="https://palette.example.com"
@@ -144,7 +144,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   ```
 
   :::caution
-  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used for the `name` value in the `/v1/clouds/cloudTypes/register` cloud registration API in step 4 below. Setting `name` as `nutanix` will make the out-of-the-box Nutanix CSI pack available when you create your cluster in Palette. 
+  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used for the `name` value in the `/v1/clouds/cloudTypes/register` cloud registration API in step 4 below. Setting `name` as `nutanix` will make the out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette. 
   :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.
@@ -152,6 +152,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   ```bash
   curl --insecure --location "$ENDPOINT/v1/auth/syslogin" \
   --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
   --data "{
     "password": "**********",
     "username": "**********"
@@ -251,7 +252,7 @@ Use the steps below to confirm that the Nutanix cloud is successfully registered
 
 ## Next Steps
 
-Now that your cloud is successfully registered with Palette, a Self-hosted Private Cloud Gateway (PCG) must be deployed. For guidance, review the [Install Private Cloud Gateway](install-pcg.md) guide.
+Now that your cloud is successfully registered with Palette, you are ready to deploy a self-hosted Private Cloud Gateway (PCG). For guidance, review [Install Private Cloud Gateway](install-pcg.md).
 
 
 

@@ -10,7 +10,7 @@ tags: ["data center", "nutanix"]
 
 ## Prerequisites
 
-- A Nutanix cloud that a system administrator has registered with Palette. 
+- A Nutanix cloud registered with Palette. For more information, refer to [Register Nutanix Cloud](register-nutanix-cloud.md). 
 
 - A PCG installed that connects the Nutanix cloud with Palette. For guidance, refer to [Install Private Cloud Gateway](install-pcg.md).
 
@@ -25,7 +25,7 @@ tags: ["data center", "nutanix"]
 
 4. Locate Nutanix and click **Add Nutanix Cloud**.  
 
-5. Fill out the following input values and click on **Confirm** to continue. 
+5. Fill out the following input values and click **Confirm** to continue. 
 
   | **Field** | **Description** |
   |-----------|-----------------|

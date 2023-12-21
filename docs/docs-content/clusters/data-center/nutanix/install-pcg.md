@@ -18,13 +18,13 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix Prism Element cluster created.
 
-- A Nutanix subnet created in Nutanix Prism Central.
+- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in this cluster.
 
-- A Nutanix cloud registered with Palette. For information about registering your cloud, review [Register Nutanix Cloud](register-nutanix-cloud.md).
+- A Nutanix cloud registered with Palette. For more information, review [Register Nutanix Cloud](register-nutanix-cloud.md).
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used for the PCG. However, the [Setup](#setup) section in this guide uses the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and its specified [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites). This method requires installing the following applications:
+- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used for the PCG. However, the [Setup](#setup) section in this guide uses the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies. This process requires installing the following applications:
 
   - [Docker](https://docs.docker.com/engine/install/)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
@@ -140,7 +140,7 @@ Use the following steps to prepare for deploying the PCG.
   ```
 
 
-7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the Nutanix [Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference. [Calico](https://docs.tigera.io/calico/latest/about/) is used as the CNI solution in this example.
+7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the [Nutanix Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference. [Calico](https://docs.tigera.io/calico/latest/about/) is used as the CNI solution in this example.
 
   ```bash
   kubectl apply --filename https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
@@ -166,7 +166,7 @@ Use the steps below to verify your virtual machines (VMs) are created.
 
 1. In the Nutanix Prism Element web console, navigate to **VM**. 
 
-2. In the **Table** tab, verify the VMs you created are listed.
+2. Next, in the **Table** tab, verify the VMs you created are listed.
 
 
 ## Install PCG
@@ -203,6 +203,9 @@ When deployed, the PCG registers itself with Palette. Use the steps below to ver
 
 4. Locate the PCG and verify it is installed and in the **Running** state. With the PCG successfully deployed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster. 
 
+  ```bash
+  kind delete cluster --name pcg-pilot
+  ```
 
 ## Next Steps
 

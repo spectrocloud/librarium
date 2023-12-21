@@ -25,12 +25,10 @@ The following pages provide detailed instructions for setting up new workload cl
 
 - [Canonical MAAS](maas/maas.md)
 
+- [Nutanix](nutanix/nutanix.md)
 
 - [OpenStack](openstack.md)
 
-
 - [VMware](vmware.md)
 
-
-- [Nutanix](nutanix/nutanix.md)
 
