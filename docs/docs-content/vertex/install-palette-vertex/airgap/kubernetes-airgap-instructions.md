@@ -207,7 +207,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 8. Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace the values in the commands below with our support team's recommended version and credentials.
 
   ```shell
-  VERSION=4.1.6
+  VERSION=X.X.X
   ```
 
   ```shell

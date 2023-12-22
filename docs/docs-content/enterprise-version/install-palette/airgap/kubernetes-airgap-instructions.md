@@ -205,7 +205,7 @@ Complete the following steps before deploying the airgap Palette installation.
 7. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the commands below with the recommended version and credentials provided by our support team.
 
   ```shell
-  VERSION=4.1.6
+  VERSION=X.X.X
   ```
 
   ```shell
