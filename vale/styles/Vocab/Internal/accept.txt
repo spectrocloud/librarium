@@ -158,3 +158,4 @@ liveness
 Autosupport
 Okta
 Keycloak
+autoscale
