@@ -35,14 +35,7 @@ module.exports = {
         type: "generated-index",
         title: "Palette API V1",
       },
-      items: (() => {
-        try {
-          return require("./docs/api-content/api-docs/v1/sidebar.ts");
-        } catch (error) {
-          console.log(error);
-          return [];
-        }
-      })(),
+      items: require("./docs/api-content/api-docs/v1/sidebar.ts"),
     },
   ],
 };
