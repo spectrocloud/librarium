@@ -11,9 +11,9 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 ## Prerequisites
 
-- A Tailscale account. Tailscale provides a [free tier](https://tailscale.com/pricing/) that can be used up to 100 devices. Visit [Tailscale official website](https://login.tailscale.com/start) to register a Tailscale account. 
+- A Tailscale account. Visit [Tailscale official website](https://login.tailscale.com/start) to register a Tailscale account. 
 
-- A Tailscale authorization key. We recommend you use a reusable, non-ephemeral key that automatically tags the devices with one or more tags. For mor information about auth keys, refer to [Tailscale documentation](https://tailscale.com/kb/1085/auth-keys). 
+- A Tailscale authorization key. We recommend you use a reusable, non-ephemeral key that automatically tags the devices with one or more tags. For more information about auth keys, refer to [Tailscale documentation](https://tailscale.com/kb/1085/auth-keys). 
 
 - A host machine with an AMD64 processor architecture. You will use this host machine to build Edge artifacts using CanvOS. 
 
