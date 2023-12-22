@@ -44,6 +44,11 @@ The following RKE2 versions are supported to work with Palette.
 <Tabs queryString="versions">
 <TabItem label="1.27.x" value="k8s_rke2_1.27.x">
 
+:::caution
+
+The 1.27.2 version of the RKE2 pack is deprecated. If you want to use a 1.27.x version of this pack, use a version that is later than 1.27.2. 
+
+:::
 
 ## Prerequisites
 
