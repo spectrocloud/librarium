@@ -191,7 +191,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 11. Build the Edge device installation ISO and providers images. Afterward, push the provider images to an image registry. For more information, refer to [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md).
 
-12. Flash your external volume with the Edge installer ISO image. We recommend using balena etcher to flash your volume. 
+12. Flash your external volume with the Edge installer ISO image. We recommend using [balena etcher](https://etcher.balena.io/) to flash your volume. 
 
 13. Plug the external volume into your Edge device and boot up the device using the volume to prepare your Edge device for installation. For more information, refer to [Prepare Edge Host for Installation](../site-deployment/stage.md). 
 
