@@ -102,12 +102,16 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 18. Select your security policy and click **Save**.  
 
-![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
+  ![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
 
 
 19. Automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users**, followed by **Mappings** and select **New Mapping**. 
 
-20. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
+20. Assign the mapping a name and set it to map every member of the Administrators group. Set the **MemberOf** value to **Administrators**. 
+
+  :::caution
+  Setting the **MemberOf** value to **Administrators** is essential so the response from OneLogin contains the group name, which you will match with a Team in Palette. If you do not explicitly set the **MemberOf** value, Palette will not receive the group name. As a result, Palette will not be able to set the correct RBAC settings for your user. 
+  :::
 
   ![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
 
