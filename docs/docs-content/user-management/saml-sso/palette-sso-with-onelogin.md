@@ -9,7 +9,7 @@ hiddenFromNav: false
 tags: ["user-management", "oidc-sso", "onelogin"]
 ---
 
-OneLogin is a cloud-based Identity and Access Management (IAM) provider that designs and develops enterprise-level identity management solutions. It's an Identity Provider (IdP) tool designed to secure, manage, and facilitate user access across multiple networks, applications, and devices. OneLogin's platform offers a variety of features, including Single Sign-On (SSO), Multi-Factor Authentication (MFA), user provisioning, compliance reporting, and end-user self-service. 
+OneLogin is a cloud-based Identity and Access Management (IAM) provider that designs and develops enterprise-level identity management solutions. It is an Identity Provider (IdP) tool designed to secure, manage, and facilitate user access across multiple networks, applications, and devices. OneLogin's platform offers a variety of features, including Single Sign-On (SSO), Multi-Factor Authentication (MFA), user provisioning, compliance reporting, and end-user self-service. 
 
 
 You can integrate OneLogin with Palette to enable SSO for your users. This integration allows you to use OneLogin as a third-party IdP to authenticate users in Palette. This integration also allows you to use the same OneLogin application for OIDC-based SSO in your Kubernetes cluster.
@@ -52,10 +52,10 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   |--------|--------|
   |Login URL|The URL where users are sent to log in.|
   |Redirect URIs|The Uniform Resource Identifiers (URIs) to which OneLogin will redirect the user after successful authentication.|
-  |Post Logout Redirect URIs| The URIs where you will be redirected after successfully logging out from the current session.|
+  |Post Logout Redirect URIs| The URIs where you will be redirected after successfully logging out of the current session.|
 
 
-7. The URLs needed to configure OneLogin can be found in your Palette account. From the left **Main Menu** click on **Tenant Admin**. Next, select **Tenant Settings** to access the settings page. From the settings page, select **SSO**, click on the **OIDC** tab. Copy the **Callback URL** value to your clipboard. 
+7. The URLs needed to configure OneLogin can be found in your Palette account. From the left **Main Menu** click on **Tenant Admin**. Next, select **Tenant Settings** to access the settings page. From the settings page, select **SSO** and click on the **OIDC** tab. Copy the **Callback URL** value to your clipboard. 
 
   ![Copy Callback URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_callbackurl.png)
 
@@ -65,7 +65,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![Add Login URL and Redirect URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-redirect-uris.png)
 
 
-9. Next, do the same for the **Logout Redirect URIs** and copy the **Logout URL** value which sits below the **Callback URL** from Palette. 
+9. Next, do the same for the **Logout Redirect URIs** and copy the **Logout URL** value located below the **Callback URL** from Palette. 
 
   ![Add Logout URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout-uri.png)
 
@@ -85,7 +85,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
   ![ClientID & Client Secret](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_clientid-clientsecret.png)
 
 
-### Create Role, Security Policy and Group
+### Create Role, Security Policy, and Group
 
 13. Go to your OneLogin dashboard and select **Users**. Next, click on **Roles** to access the Role page and select **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used in this example. When selecting the app, a green check will appear next to the name. Click **Save**. 
 
@@ -96,7 +96,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 15. Click **New User Policy**. Provide a policy name, such as "Admin policy", and configure the policy to meet your requirements. Click **Save** to continue. 
 
-16. Apply the policy to a user group that you create. To create a user group, navigate to the **left Main Menu** and select **Users**. Next, **Groups**.
+16. Apply the policy to a user group that you create. To create a user group, navigate to the left **Main Menu**, select **Users**, and then select **Groups**.
 
 17. Click **New Group** and assign a group name.
 
@@ -105,14 +105,14 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 ![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
 
 
-19. You will automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users**, followed by **Mappings** and select **New Mapping**. 
+19. Automate the mapping of a user to a role and group by creating a *Mapping*. Navigate to **Users**, followed by **Mappings** and select **New Mapping**. 
 
 20. Assign the mapping a name and set it to map every member of the Administrators group to assign the admin role automatically. Set the **MemberOf** value to **Administrators**. The latter step is essential, so the response from OneLogin contains the group name, which you will match with a Team in Palette. Without explicitly setting the **MemberOf** value, Palette will not get the group name and will not be able to set the correct RBAC settings for your user. 
 
   ![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
 
 
-21. Navigate to **Users** screen and select your user. 
+21. Navigate to the **Users** screen and select your user. 
 
 22. Select the **Authentication** tab and select the group and security policy you created earlier. Click on **Save**. 
 
@@ -120,9 +120,9 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 ### Enable OIDC in Palette 
 
-23. Navigate back to Palette, and from the **left Main Menu**, select **Tenant Settings**. Next, select **SSO** and click on the **OIDC** tab.
+23. Navigate back to Palette, and from the left **Main Menu**, select **Tenant Settings**. Next, select **SSO** and click on the **OIDC** tab.
 
-24. Fill in the fields **Client ID**, **Client Secret**, and **Issuer URL** with the values you were provided by OneLogin. 
+24. Fill in the fields **Client ID**, **Client Secret**, and **Issuer URL** with the values that OneLogin provided. 
 
 
 25. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
@@ -140,12 +140,12 @@ You now have a working configuration for OneLogin as a third-party IdP in Palett
 
 Use the following steps to validate the configuration.
 
-1. Log out of Palette by clicking on the user **drop-down Menu** in the top-right corner and selecting **Log Out**. You will be redirected to a new login screen.
+1. Log out of Palette by navigating to the top right **User Menu** and selecting **Log Out**. You will be redirected to a new login screen.
 
   ![Logout](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout.png)
 
 
-2. The login screen now defaults to a **Sign In** button. Click on **Sign In**. You will be required to authenticate with OneLogin. If you are already authenticated with OneLogin you will be automatically signed in to Palette with the proper permissions inherited from the respective Palette team you are a member of. If you cannot sign in, you can use the username and password method. 
+2. In the login screen that displays, click the **Sign In** button. You will be required to authenticate with OneLogin. If you are already authenticated with OneLogin, you will be signed in automatically to Palette with the proper permissions inherited from the Palette team you are a member of. If you cannot sign in, you can use the username and password method. 
 
   ![SSO Login Screen](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-screen.png)
 
@@ -181,21 +181,21 @@ You must create a team in Palette so that Palette can map the team with groups c
 1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant administrator.
 
 
-2. From the **left Main Menu**, select **Users & Teams**.
+2. From the left **Main Menu**, select **Users & Teams**.
 
 
 3. Next, select **Teams**, and click on **Create team**. 
 
 
-4. You only need to fill in the team name. Don't manually add members, as OneLogin will manage the users. In OneLogin, users who are part of the mapped group, administrators, will be automatically added to the team. Click **Confirm** to continue. 
+4. You only need to fill in the team name. Do not manually add members, as OneLogin will manage the users. In OneLogin, users who are part of the mapped administrators group will be automatically added to the team. Click **Confirm** to continue. 
 
   ![Create New Team](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_new-team.png)
 
 
-5. Next, you need to assign the members of this team a set of permissions. Assign all members the **Tenant Admin** permissions. You can customize the assigned permissions as needed, but for this example admin access is granted. 
+5. Next, you need to assign the members of this team a set of permissions. Assign all members the **Tenant Admin** permissions. You can customize the assigned permissions as needed. For this example admin access is granted. 
 
 
-6. To set the correct permissions, select the team you created. Click on the **Tenant Roles** tab.
+6. To set the correct permissions, select the team you created, and click on the **Tenant Roles** tab.
 
 
 7. Next, click on **Add Tenant Role** and select the **Tenant Admin** box. This will automatically select all other permission boxes. Click on **Confirm**.
@@ -207,12 +207,12 @@ You must create a team in Palette so that Palette can map the team with groups c
 
 You have now configured Palette to use OneLogin as a third-party IDP. Use the above steps to create additional groups in OneLogin and Palette. 
 
-As you start deploying clusters, keep in mind that if you use Palette's [Extended Kubernetes distribution](../../integrations/kubernetes.md) (PXK), you can configure the cluster to inherit OIDC configurations from the tenant. Refer to the [Palette eXtended Kubernetes](../../integrations/kubernetes.md#configure-custom-oidc) reference page to learn more about out-of-the-box support for OIDC.
+As you start deploying clusters, keep in mind that if you use the [Palette eXtended Kubernetes (PKE)](../../integrations/kubernetes.md) distribution, you can configure the cluster to inherit OIDC configurations from the tenant. Refer to the [Palette eXtended Kubernetes](../../integrations/kubernetes.md#configure-custom-oidc) reference page to learn more about out-of-the-box support for OIDC.
 
 
 ### Validate
 
-To verify that the team is created and the correct permissions are assigned, log in to Palette as a user who is a member of the team.
+To verify the team is created and the correct permissions are assigned, log in to Palette as a user who is a member of the team.
 
 1. Log in to [Palette](https://console.spectrocloud.com/) as a user who is a member of the team you created and available in OneLogin.
 
@@ -220,7 +220,7 @@ To verify that the team is created and the correct permissions are assigned, log
 2. Authenticate with OneLogin once you are redirected to the login screen. A successful login will redirect you to the Palette dashboard and indicate that you are logged in as a member of the team you created. 
 
 
-3. Attempt to access the **Tenant Settings** page to ensure you have the correct permissions. From the left **Main Menu**, select the scope, **Tenant Admin**. Next, select **Tenant Settings**. If you have the correct permissions, you will be able to access the settings page. 
+3. Ensure you can access the **Tenant Settings** page. Select the **Tenant Admin** scope. From the left **Main Menu**, select **Tenant Settings**. If you have the correct permissions, you will be able to access the settings page. 
 
 
 
