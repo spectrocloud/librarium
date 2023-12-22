@@ -11,23 +11,15 @@ logoUrl: 'https://registry.dev.spectrocloud.com/v1/kubernetes-rke2/blobs/sha256:
 
 [RKE2](https://docs.rke2.io/) is a fully conformant Kubernetes distribution focusing on security and compliance within the U.S. Federal Government sector. To meet the Kubernetes security and compliance goals required by the U.S. Federal Government, RKE2 establishes the following:
 
-  <br />
-
 1. Provides defaults and configuration options that allow clusters to pass the CIS Kubernetes Benchmark v1.6 with minimal operator intervention.
-
 
 2. Enables Federal Information Processing Standard 140-2 (FIPS 140-2) compliance.
 
-
 3. Scans components regularly for Common Vulnerabilities and Exposures (CVEs) using Trivy in the build pipeline.
-
 
 RKE2 launches control plane components as static pods, managed by the kubelet instead of relying on Docker. Additionally, the embedded container runtime is containerd.
 
 You can deploy RKE2 by adding this pack to a cluster profile. Once the cluster profile is created, you can deploy the RKE2-based Kubernetes clusters through Palette.
-
-
-<br />
 
 :::caution
 
@@ -38,8 +30,6 @@ RKE2 is only available for Edge host deployments. Refer to the [Edge](../cluster
 ## Versions Supported
 
 The following RKE2 versions are supported to work with Palette.
-
-<br />
 
 <Tabs queryString="versions">
 <TabItem label="1.27.x" value="k8s_rke2_1.27.x">
@@ -66,9 +56,6 @@ The 1.27.2 version of the RKE2 pack is deprecated. If you want to use a 1.27.x v
 You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
-
-<br />
-
 
 - [Configuration Options](https://docs.rke2.io/install/configuration)
 
@@ -105,8 +92,6 @@ You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to th
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
 
-<br />
-
 
 - [Configuration Options](https://docs.rke2.io/install/configuration)
 
@@ -141,9 +126,6 @@ Many of the Day-2 cluster management responsibilities are handled by Palette. Re
 You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the [Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
 
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
-
-<br />
-
 
 - [Configuration Options](https://docs.rke2.io/install/configuration)
 
