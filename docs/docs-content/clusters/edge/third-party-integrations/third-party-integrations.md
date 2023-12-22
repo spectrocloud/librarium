@@ -10,5 +10,5 @@ Additional third party software can be combined with Palette Edge to solve speci
 
 The documented integrations are listed below.
 
-* [Tailscale](tailscale.md): ensuring worldwide remote access to your Palette Edge hosts
+* [Use Tailscale to Ensure Remote Host Access](tailscale.md)
 

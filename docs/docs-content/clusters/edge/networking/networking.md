@@ -16,4 +16,4 @@ This section describes solutions offered by Palette Edge to navigate different n
 - [Publish Cluster Services with Kube-vip](kubevip.md)
 - [Enable Overlay Network](vxlan-overlay.md)
 - [Enable Local Harbor Image Registry](local-registry.md)
-
+- [Use Tailscale to Ensure Remote Host Access](../third-party-integrations/tailscale.md)
