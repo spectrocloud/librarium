@@ -34,7 +34,7 @@ You can learn more about each option in the following sections.
 
 ## Automatic Certificate Renewal
 
-Palette will automatically update the cluster PKI certificates 30 days before they expire. The automatic renewal process will not cause a cluster repave. The automatic renewal process will only renew the certificates for the control plane nodes. The worker nodes will renew once the control plane nodes are updated and available.
+Palette will automatically update the cluster PKI certificates 30 days before they expire. The automatic renewal process will not cause a cluster repave. The automatic renewal process will only renew the certificates for the control plane nodes. 
 
 Another scenario that results in new PKI certificates is upgrading a cluster's Kubernetes version. Upgrading a cluster's Kubernetes version, whether a minor patch or a major release, results in renewed PKI certificates. We recommend regularly updating your clusters to stay current with security fixes and best practices.
 
