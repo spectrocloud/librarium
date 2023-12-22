@@ -8,7 +8,14 @@ sidebar_position: 20
 ---
 
 
-Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how to create a Kubernetes cluster in Azure that Palette manages.
+Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how to create an IaaS Kubernetes cluster in Azure that Palette manages.
+
+:::caution
+
+Autoscaling is not supported for Azure IaaS clusters. 
+
+:::
+
 
 
 ## Prerequisites
@@ -17,7 +24,7 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
 
 - Palette integration with Azure account. Review [Register and Manage Azure Cloud Account](azure-cloud.md) for guidance.
 
-- A Secure Shell (SSH) key pre-configured in your Azure environment.
+- A Secure Shell (SSH) key pre-configured in your Azure environment. Refer to the [SSH Keys](../../cluster-management/ssh-keys.md) guide for more information about creating and managing SSH keys in Palette.
 
 - An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
@@ -36,7 +43,6 @@ Palette supports creating and managing Kubernetes clusters deployed to an Azure 
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
 
-<!-- <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/azure.mp4"></video> -->
 
 ## Deploy an Azure Cluster
 
@@ -58,7 +64,7 @@ Use the following steps to deploy an Azure cluster.
   |-----------|-----------------|
   | **Cluster Name**| A custom name for the cluster. |
   | **Description**| Use the description to provide context about the cluster.|
-  | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:france south`|
+  | **Tags**| Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`|
   | **Cloud Account** | If you already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your Azure account information. |
 
 
@@ -190,7 +196,7 @@ You can validate your cluster is up and in **Running** state.
 
 4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
-
+<!-- 
 ## Configure Autoscaling in Azure Portal 
 
 Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
@@ -228,7 +234,7 @@ A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autosc
 
 The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
 
-:::
+::: -->
 
 
 ## Resources
@@ -245,7 +251,7 @@ The link to access the Add Rules page is displayed within a caution message in t
 
 - [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc)
 
-- [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
+<!-- - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
 
-- [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal)
+- [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) -->
  
