@@ -10,7 +10,11 @@ tags:
 
 Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage [Host Clusters](../../../glossary-all.md#hostcluster) in Azure. To get  started check out the [Register and Manage Azure Cloud Account](azure-cloud.md#manage-azure-accounts). 
 
-<br />
+
+
+## Get Started
+
+Learn how to deploy a cluster to Azure by using Palette. Check out the [Deploy a Cluster](../deploy-k8s-cluster.md) with Palette tutorial to get started.
 
 ## Resources
 
