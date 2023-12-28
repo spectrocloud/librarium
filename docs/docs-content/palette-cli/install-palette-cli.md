@@ -66,8 +66,8 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
   palette version
   ```
 
-  Output:
-  ```shell
+
+  ```shell hideClipboard
   Palette CLI version: 4.1.0
   ```
 
