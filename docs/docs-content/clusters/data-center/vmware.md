@@ -4,8 +4,6 @@ title: "VMware"
 description: "Learn how to configure VMware to create VMware clusters in Palette."
 hide_table_of_contents: false
 sidebar_position: 30
-toc_min_heading_level: 2
-toc_max_heading_level: 3
 tags: ["data center", "vmware"]
 ---
 
