@@ -5,7 +5,6 @@ description: "A reference sheet for the Spectro Cloud CLI tool"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-toc_max_heading_level: 3
 ---
 
 
