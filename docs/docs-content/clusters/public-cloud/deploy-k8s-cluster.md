@@ -6,8 +6,6 @@ icon: ""
 category: ["tutorial"]
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "azure", "gcp", "tutorial"]
-toc_min_heading_level: 2
-toc_max_heading_level: 3
 sidebar_position: 50
 ---
 

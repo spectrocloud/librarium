@@ -4,8 +4,6 @@ title: "Install and Manage MAAS Private Cloud Gateway"
 description: "Learn how to install and manage the MAAS Private Cloud Gateway in Palette."
 hide_table_of_contents: false
 sidebar_position: 10
-toc_min_heading_level: 2
-toc_max_heading_level: 3
 tags: ["data center", "maas"]
 ---
 
