@@ -5,7 +5,6 @@ description: "Learn how to deploy Palette VerteX on VMware."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-toc_max_heading_level: 3
 tags: ["vertex", "vmware"]
 ---
 
