@@ -3,8 +3,6 @@ sidebar_label: "Release Notes"
 title: "Release Notes"
 description: "Spectro Cloud release notes for Palette and its sub-components."
 hide_table_of_contents: false
-toc_min_heading_level: 2
-toc_max_heading_level: 3
 sidebar_position: 0
 sidebar_custom_props: 
   icon: "audits"
