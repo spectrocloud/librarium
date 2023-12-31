@@ -126,6 +126,8 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - The [Deploy a Custom Pack](./registries-and-packs/deploy-pack.md) tutorial has been updated to include instructions on deploying a custom pack with a custom OCI Pack registry.
 
+- The Palette Offline Documentation container image is now cryptographically signed. You can verify the authenticity of the container image by using the [Cosign CLI](https://docs.sigstore.dev/signing/quickstart) and the public key. Refer to the [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md#container-image-authenticity) page for more information.
+
 ### Packs
 
 
@@ -134,7 +136,34 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 | **Pack**| **New Version**|
 | :--- | :--- |
-
+| Kubernetes Azure AKS | 1.28.2|
+| Kubernetes Amazon EKS | 1.28.2|
+| Kubernetes Cox Edge | 1.28.2 |
+| Kubernetes Cox Edge | 1.27.6 |
+| Kubernetes Cox Edge | 1.26.9 |
+| Kubernetes Cox Edge | 1.25.14 |
+| Kubernetes Google GKE | 1.27.6|
+| Kubernetes Google GKE | 1.26.9|
+| Kubernetes Google GKE | 1.25.14|
+| K3s | 1.28.2|
+| K3s | 1.27.7|
+| K3s | 1.26.10|
+| K3s | 1.25.15|
+| Palette eXtended Kubernetes - Edge | 1.28.2|
+| Palette eXtended Kubernetes - Edge | 1.27.7|
+| Palette eXtended Kubernetes - Edge | 1.26.10|
+| Palette eXtended Kubernetes - Edge | 1.25.15|
+| Palette eXtended Kubernetes| 1.28.3|
+| Palette eXtended Kubernetes| 1.27.7|
+| Palette eXtended Kubernetes| 1.26.10|
+| Palette eXtended Kubernetes| 1.25.15|
+| RKE2 | 1.28.2|
+| RKE2 | 1.27.8|
+| RKE2 | 1.26.11|
+| RKE2 - Edge  | 1.28.4|
+| RKE2 - Edge | 1.27.7|
+| RKE2 - Edge | 1.26.10|
+| RKE2 - Edge | 1.25.15|
 
 
 
@@ -142,38 +171,75 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 | **Pack**| **New Version**|
 | :--- | :--- |
+| AWS VPC CNI | 1.15.1|
+| Calico CNI | 3.26.3|
+| Ciliium OSS| 1.14.3|
+| Flannel CNI | 0.23.0 |
 
 
 #### CSI
 
 | **Pack**| **New Version**|
 | :--- | :--- |
-
+| Azure Disk CSI Driver | 1.29.1|
+| AWS EBS CSI | 1.24.0|
+| Longhorn CSI | 1.5.3|
+| Nutanix CSI | 2.6.6 |
+| Portworx CSI | 3.0.4|
+| Rook Ceph CSI | 1.12.7|
 
 #### Add-on Packs
 
 | **Pack**| **New Version**|
 | :--- | :--- |
-
+| External Secrets Operator | 0.9.7 |
+| Flux2 | 2.10.2|
+| Harbor Edge Native Config | 1.0.0|
+| Istio | 1.17.2 |
+| Kong Ingress| 2.32.0 |
+| MetalLB | 0.13.11|
+| Nginx Ingress | 1.9.4|
+| Nvidia GPU Operator | 23.9.1|
+| Open Policy Agent | 3.13.2|
+| Prometheus Operator | 51.0.3|
+| Reloader | 1.0.43 |
+| Imageswap | 1.5.3 |
 
 
 #### FIPS Packs
 
 | **Pack**| **New Version**|
 | :--- | :--- |
+| Azure CSI Driver | 1.28.3 |
+| Palette eXtended Kubernetes | 1.28.3|
+| Palette eXtended Kubernetes | 1.27.7|
+| Palette eXtended Kubernetes | 1.26.10|
+| Palette eXtended Kubernetes | 1.25.15|
+| Palette eXtended Kubernetes - Edge | 1.27.2|
+| Palette eXtended Kubernetes - Edge | 1.26.4|
+| Palette eXtended Kubernetes - Edge | 1.25.9|
+| RKE2 | 1.28.6 |
+| RKE2 | 1.27.8 |
+| RKE2 | 1.26.11 |
+| RKE2 - Edge | 1.27.2 |
+| RKE2 - Edge | 1.26.4 |
+| RKE2 - Edge | 1.25.2 |
 
 
-
-#### Community Packs
+<!-- #### Community Packs
 
 | **Pack**| **New Version**|
-| :--- | :--- |
+| :--- | :--- | -->
 
 
 
 
 #### Pack Notes
 
+- ArgoCD is now a verified pack, starting with version 5.46.8.
+- Spot.io is now a verified pack, starting with version 1.0.117.
+- Edge cluster nodes deployed in a single node configuration using RKE2 version 1.26.X must upgrade to the latest minor version of 1.26.10 before upgrading to 1.27.7.
+- The prior issue related to Edge clusters deployed in a single node configuration using RKE2 version 1.26.X has been resolved starting with version 1.26.10.
 
 #### Deprecations and Removals
 
