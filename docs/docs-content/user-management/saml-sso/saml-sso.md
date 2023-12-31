@@ -35,6 +35,9 @@ Enable SSO by following our [Enable SSO in Palette](enable-saml.md) guide.
 - [Palette SSO with Okta OIDC](palette-sso-with-okta.md)
 
 
+- [Palette SSO with Microsoft Entra ID OIDC](palette-sso-with-entra-id.md)
+
+
 - [Palette SSO with Okta SAML](palette-sso-with-okta-saml.md)
 
 
