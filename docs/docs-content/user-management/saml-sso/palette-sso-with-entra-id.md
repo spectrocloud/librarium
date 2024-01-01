@@ -61,7 +61,8 @@ For our purposes in this guide, please consider Microsoft Entra ID and Azure AD 
 
 ![OIDC_Callback]/Users/jesse/Documents/work/git/1231-doc-489/librarium/docs/docs-content/user-management/saml-sso/images-entra-id/PalettewEntraID.png
 
-
+![enterprise-app-registration](/oidc-azure-images/enterprise-app-registration.png)
+<p></p>
 2. Log in to your Entra ID Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
 
   <br />
