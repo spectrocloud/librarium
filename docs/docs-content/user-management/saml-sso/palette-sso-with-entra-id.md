@@ -1,85 +1,239 @@
 ---
-sidebar_label: 'Palette SSO with Entra ID'
-title: 'Enable SSO with Entra ID'
-description: 'Set up Palette SSO with Entra ID'
+sidebar_label: 'Palette SSO with Microsoft Entra ID'
+title: 'Enable SSO with Microsoft Entra ID'
+description: 'Set up Palette SSO with Microsoft Entra ID'
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
 hiddenFromNav: false
-tags: ["user-management", "oidc-sso", "entra-id"]
+tags: ["user-management", "oidc-sso", "entra-id", "azure-ad"]
 ---
 
 
 Single sign-on (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses certificates to establish and maintain trust between the service provider (SP) and an identity provider. 
 
-This following steps will guide you with end-to-end steps for deploying and enabling SSO with Microsoft Entra -formerly named Azure AD- based on OpenID Connect (OIDC) for integration with Palette and Kubernetes clusters.
-
+This following steps will guide you with end-to-end steps for deploying and enabling SSO with Palette and Microsoft Entra based on OpenID Connect (OIDC).
 
 ## Prerequisites
 
 - Palette version 4.0.X or greater. 
 
-You need to have either a free or paid subscription with Entra ID. Entra ID provides free [developer subscriptions](https://developer.Entra ID.com/signup/) for testing purposes.
+- [Microsoft Entra ID](https://entra.microsoft.com/#home) subscription (free or paid). You will need an account with one of the following roles: Global Administrator, Cloud Application Administrator, Application Administrator, or owner of the service principal. 
 
-- [Microsoft Entra ID](https://entra.microsoft.com/#home)account with one of the following roles: Global Administrator, Cloud Application Administrator, Application Administrator, or owner of the service principal. 
-
-- If you want to use the same Entra ID application for OIDC-based SSO into your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
+- If you want to use the same Microsoft Entra ID application for OIDC-based SSO into your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
 
 
 ## OpenID Connect Authentication (OIDC)
 
-The design goal of OIDC is "making simple things simple and complicated things possible." OIDC lets developers authenticate users across websites and apps without owning and managing password files. This technology allows Palette to verify the identity of the person currently using the browser or application.
-
-The user's authentication in this guide uses Microsoft Entra ID, where the user's session or credentials will be checked. To do that, you need a trusted agent. Native apps usually launch the system browser for that purpose.  
-
+OIDC lets developers authenticate users across websites and apps without owning and managing password files. This technology allows Palette to verify the identity of the person currently using the browser or application.
 
 ## Microsoft Entra ID
 
-In October 2023, Microsoft renamed [Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name) to Microsoft Entra ID.
+In October 2023, Microsoft renamed [Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name) to Microsoft Entra ID. For our purposes in this guide, please consider Microsoft Entra ID and Azure AD to be synonymous.
 
 Microsoft Entra ID securely manages anything to do with the user's information, access, and the trust relationships between parties in a flow. It authenticates the user's identity, grants, and revokes access to resources, and issues tokens.
 
 To learn the differences between Active Directory and Microsoft Entra ID, see [Compare Active Directory to Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/fundamentals/compare). 
 
-For our purposes in this guide, please consider Microsoft Entra ID and Azure AD to be synonymous.
-
 ## Architecture
 
   <br />
 
-  ![Palette and EntraID](/Users/jesse/Documents/work/git/1231-doc-489/librarium/docs/docs-content/user-management/saml-sso/images-entra-id/PalettewEntraID.png)
+  ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
 
   <br />
 
-  ![KubeFlow]/Users/jesse/Documents/work/git/1231-doc-489/librarium/docs/docs-content/user-management/saml-sso/images-entra-id/Kubeflow.png
+  
+  ![KubeFlow](/oidc-entra-id-images/Kubeflow.png)
 
-## Entra ID with OIDC
-
-### Register the Entra ID Application
-
-1. Login to Palette. Browse to Tenant Settings, SSO, Configure, SSO Auth type.
-
-![OIDC_Callback]/Users/jesse/Documents/work/git/1231-doc-489/librarium/docs/docs-content/user-management/saml-sso/images-entra-id/PalettewEntraID.png
-
-![enterprise-app-registration](/oidc-azure-images/enterprise-app-registration.png)
-<p></p>
-2. Log in to your Entra ID Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
+## Integrating Palette and Microsoft Entra ID with OIDC
 
   <br />
 
-  :::info
+### Register Spectro Cloud Palette as a Microsoft Entra ID Application
 
-   Your Entra ID login URL has the following format,
-    `https://{your-Entra ID-account-id}-admin.Entra ID.com/admin/getting-started`. 
-    Replace `{your-Entra ID-account-id}` with your Entra ID account ID.
+  <br />
 
-  :::
+1. Login to **Spectro Cloud Palette**. Browse to **Tenant Settings** -> **SSO** -> **Configure,** -> **SSO Auth type**.
+
+![OIDC_Callback](/oidc-entra-id-images/oidccallback.png)
+  <br />
+
+  For future use, copy the **Palette Callback URL**, which will be used in the next step to configure Microsoft Entra ID.
+
+  <br />
+
+2. In a new tab, log in to the **Microsoft Entra ID Admin console** and open the [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+
+![App-registration-blade](/oidc-entra-id-images/new-registration.png)
+
+In this example, name thew new registration `palette_oidc`, select **Web**, and paste the Palette Callback URL from the previous into the **Redirect URL (optional)** field.
+
+![Palette_Registration](/oidc-entra-id-images/palette-registration.png)
+
+Click **Register**.
+
+  <br />
+
+3. Now, click on the **Certificates & secrets** blade and select **New client secret**. 
+
+Name and save the client's secret value in a password keeper. In the screen that opens, select **OIDC - OpenID Connect**` for the sign-in method, then select **Web Application** for the application type. Then click **Next**.
+
+![Palette_Secret](/oidc-entra-id-images/secret.png)
+
+In this example, my palette secret expires after six months. 
+### Configure Optional Claims
+
+Click on the **Token configuration** sub-blade and select the **Add optional claim** button.
+
+![Add_claims](/oidc-entra-id-images/claims.png)
+  <br />
+
+Choose **Token type** as **ID**, and add the claims **email** and **preferred_username**.
+
+![Add_claims](/oidc-entra-id-images/twooptionalclaims.png)
+  <br />
+
+Click the **Add** button.
+  <br />
 
 
-2. In the screen that opens, select **OIDC - OpenID Connect**` for the sign-in method, then select **Web Application** for the application type. Then click **Next**.
+## Configure Groups claim
+
+In addition to allowing individual user authentication, Palette provides groups claim functionality, allowing an OpenID Connect identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette.
+
+Select the **Add groups claim** button.
+
+Select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
+
+![Add_claims](/oidc-entra-id-images/groupsclaim.png)
+  <br />
+
+When completed, the **Token Configuration** page will look like this:
+
+![Token_Configuration](/oidc-entra-id-images/token-configuration.png)
+
+Click on the **Overview** sub-blade. 
+
+Save the following information for when we configure Spectro Cloud Palette:
+
+- Application (client) ID
+- Object ID
+- Directory (tenant) ID
+
+![Palette_OIDC_Overview](/oidc-entra-id-images/app_obj_dir_ids.png)
+  <br />
 
 
-3. The following screen allows you to configure the new Web App Integration. On the **App integration name** field, change the name from `My Web App` to `Spectro Cloud Palette OIDC`. If desired, you can also upload a logo for the application. Leave the **Grant type** to its default value - **Authorization Code**.
+# Configure Microsoft Entra ID with Users and Groups
+## Add Groups for Testing SSO with Palette
+
+Open the [Groups Blade](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups) in Microsoft Entra ID. We will create six (6) Test Groups in Microsoft Entra ID:
+
+Create four (4) new Secruity Groups in Entra ID: 
+
+        palette_tenant_admins
+  <br />
+
+        palette_default_project_admins
+  <br />
+
+        k8s_cluster_admins
+  <br />
+
+        k8s_cluster-editor
+  <br />
+
+
+ When completed, you should have at least four Entra ID group objects:
+
+![Entra_Groups](/oidc-entra-id-images/allgroups.png)
+  <br />
+
+Record for future steps the group name and **Object ID** of each group. We will use this information in Palette.  Example:
+
+| Entra ID Group    | Group ID Example                                                          |
+|-------------------|--------------------------------------------------------------------|
+| palette_tenant_admins     | e3ac07cc-bd12-4edc-92a4-983d783153ba |
+| palette_default_project_admins     | 88f61c49-1dd1-40c3-a820-68a513a38725 |
+| k8s_cluster_admins     | 3f33c3a5-e0af-4ef6-9671-c7545fe264f3 |
+| k8s_cluster-editor     | c4606295-e8b0-4df0-891b-de4428d7e54f |
+
+
+## Add & Edit Users for Testing 
+
+Open the [Users Blade](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/) in Microsoft Entra ID. We will create three (3) Test Users in Microsoft Entra ID:
+
+1.	Create the new user **Defaultprojectadmin** with the following inputs:
+      - User principal name example: defaultprojectadmin@SpectroCloud500.onmicrosoft.com  
+      - Display name example: defaultprojectadmin
+      - Browse to Properties, Edit First Name: DefaultProject
+      - Browse to Properties, Edit Last Name: Admin
+      - Browse to Properties, add Email: defaultprojectadmin@SpectroCloud500.onmicrosoft.com  
+      - add this account to the Entra ID group "Palette_default_project_admins"
+  <br />
+2.	Create the new user **Test User** with the following inputs:
+      - User principal name example: testuser@SpectroCloud500.onmicrosoft.com    
+      - Display name example: Test User
+      - Browse to Properties, Edit First Name: Test
+      - Browse to Properties, Edit Last Name: User
+      - Browse to Properties, add Email: testuser@SpectroCloud500.onmicrosoft.com
+      - Do not add this account to any groups 
+  <br />
+3.	Create an external user with your corporate/personal emaail account:
+      - User principal name example: your corporate email address  
+      - Display name example: Your First Name and Last Name
+      - Browse to Properties, Edit First Name
+      - Browse to Properties, Edit Last Name
+      - Browse to Properties, add your corporatee email addresss
+      - add this account to the Entra ID groups "palette_tenant_admins" and "k8s_cluster_admins"
+  <br />
+4.	Modify your Entra ID admin account with group memberships
+      - add this account to the Entra ID groups **palette_tenant_admins** and **k8s_cluster-editor**
+<br />
+After creating, you should have at least four Entra ID user objects (including the admin account used to access first access Entra ID):
+
+![Test_Users](/oidc-entra-id-images/testusers.png)
+  <br />
+
+## Palette SSO 
+
+Your Palette tenant will need information from Microsoft to complete the setup. Please perform the following steps under Users & Teams in Palette:
+
+1. Login to **Spectro Cloud Palette**. Browse to **Users and Teams** -> **Teams** -> **Create New Team**
+
+2. Create (4) Palette teams with each team named after the "Entra ID Group ID" from Azuure ID. 
+
+| Palette Team Name = Entra Group ID | Entra ID Group Name     |  
+|-------------------|--------------------------------------------------------------------|
+| e3ac07cc-bd12-4edc-92a4-983d783153ba |  palette_tenant_admins     |  
+| 88f61c49-1dd1-40c3-a820-68a513a38725 |  palette_default_project_admins    
+| 3f33c3a5-e0af-4ef6-9671-c7545fe264f3 |  k8s_cluster_admins     | Project      
+| c4606295-e8b0-4df0-891b-de4428d7e54f |  k8s_cluster-editor     | Project     
+
+Assign the following Roles to each Folder
+
+
+| Palette Team Name | Role    |  
+|-------------------|--------------------------------------------------------------------|
+| e3ac07cc-bd12-4edc-92a4-983d783153ba |  Tenant Admin     |  
+| 88f61c49-1dd1-40c3-a820-68a513a38725 |  Default Project Admin
+| 3f33c3a5-e0af-4ef6-9671-c7545fe264f3 |  -     |   
+| c4606295-e8b0-4df0-891b-de4428d7e54f |  -  | 
+
+
+![gid_example](/oidc-entra-id-images/gid_example.png)
+  <br />
+
+![gid_example](/oidc-entra-id-images/ba_tenantadmin.png)
+  <br />
+
+![gid_example](/oidc-entra-id-images/25_def_project_admin.png)
+  <br />
+
+
+
+The following screen allows you to configure the new Web App Integration. On the **App integration name** field, change the name from `My Web App` to `Spectro Cloud Palette OIDC`. If desired, you can also upload a logo for the application. Leave the **Grant type** to its default value - **Authorization Code**.
 
   <br />
 
@@ -88,7 +242,7 @@ For our purposes in this guide, please consider Microsoft Entra ID and Azure AD 
   <br />
 
 
-4. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click **OIDC**. Click the button next to **Callback URL** to copy the value to the clipboard.
+5. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click **OIDC**. Click the button next to **Callback URL** to copy the value to the clipboard.
 
   <br />
 
@@ -96,7 +250,7 @@ For our purposes in this guide, please consider Microsoft Entra ID and Azure AD 
 
   <br />
 
-5. Switch back to your Entra ID Admin console and paste the copied value into the **Sign-in redirect URIs** field, replacing the existing value:
+6. Switch back to your Entra ID Admin console and paste the copied value into the **Sign-in redirect URIs** field, replacing the existing value:
 
   <br />
 
@@ -104,7 +258,7 @@ For our purposes in this guide, please consider Microsoft Entra ID and Azure AD 
 
   <br />
 
-6. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy the value to the clipboard.
+7. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy the value to the clipboard.
 
   <br />
 
