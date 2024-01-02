@@ -20,7 +20,7 @@ Below are key architectural highlights of Nutanix clusters provisioned through P
 
   - Prism Element is a localized cluster manager available for every deployed Nutanix cluster. Within Prism Element, you can configure a cluster, specifying its components such as the number of control plane and worker nodes, networking settings, and more.
 
-- The Kubernetes API Server endpoint is accessible through kube-vip, which is a load balancing solution for the cluster’s control plane. Kube-vip distributes API requests across control plane nodes and also has failover capabilities.
+- The Kubernetes API Server endpoint is accessible through [kube-vip](https://kube-vip.io/), which is a load balancing solution for the cluster’s control plane. Kube-vip distributes API requests across control plane nodes and also has failover capabilities.
 
 - A Private Cloud Gateway (PCG) is required to enable Palette to securely communicate with the Nutanix cloud. The direct communication channel allows Palette to create and monitor clusters within the Nutanix cloud. A self-hosted cluster is needed for the PCG deployment. The [Setup](install-pcg.md/#setup) section of the [Install Private Cloud Gateway](install-pcg.md) guide provides the steps to deploy a self-hosted cluster within the Nutanix infrastructure.
 

@@ -10,7 +10,7 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Palette. The PCG enables Palette to create and monitor Nutanix clusters in the deployed cloud environment. This section guides you on how to install the PCG.
+A Private Cloud Gateway (PCG) is required to connect your Nutanix environment with Palette. The PCG enables Palette to create and monitor Nutanix clusters in the deployed cloud environment. This section guides you on how to install the PCG.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix cloud with Pal
 
 - A Nutanix Prism Element cluster created.
 
-- A Kubernetes cluster created that has network connectivity with Nutanix Prism. This cluster will connect the Nutanix cloud with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Nutanix cluster to deploy your PCG, check out the [Set Up Environment and Deploy Cluster](#set-up-environment-and-deploy-cluster) section below, that describes one possible option. 
+- An existing Kubernetes cluster created that has network connectivity with Nutanix Prism Central. This cluster will connect the Nutanix infrastructure with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Kubernetes cluster on Nutanix to deploy your PCG, check out the [Set Up Environment and Deploy Cluster](#set-up-environment-and-deploy-cluster) section below, that describes one possible option.
 
 - A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the Kubernetes cluster.
 
@@ -69,7 +69,7 @@ When deployed, the PCG registers itself with Palette. Use the steps below to ver
 
 ## Set Up Environment and Deploy Cluster
 
-This section describes one possible method for creating a Nutanix cluster to deploy your PCG using the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies.
+This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG using the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies.
 
 ### Prerequisites
 
@@ -90,7 +90,7 @@ This method requires installing the following applications:
   kind create cluster --name pcg-pilot
   ```
 
-### Export Variables and Deploy Workload Cluster
+### Deploy Workload Cluster
 
 3. Copy the required variables shown in the examples below to your terminal, add your environment-specific information, and export the variables. The table describes the environment variables. For more information, review the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
 

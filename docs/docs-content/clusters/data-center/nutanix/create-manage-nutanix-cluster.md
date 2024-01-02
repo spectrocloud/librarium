@@ -35,7 +35,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
   | **Field** | **Description** |
   |-----------|-----------------|
-  | **Cluster Name**| A custom name for the cluster. Use this cluster name for `${CLUSTER_NAME}` variable in the YAML configuration files. |
+  | **Cluster Name**| A custom name for the cluster. Use this cluster name for the `${CLUSTER_NAME}` variable in the YAML configuration files. |
   | **Description**| Use the description to provide context about the cluster.|
   | **Tags**| Assign any desired cluster tags. |
   | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**. |
