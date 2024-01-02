@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/cni-flannel/blobs/sha256:24e56da9
 tags: ["packs", "flannel", "cni"]
 ---
 
-Flannel is a network layer three fabric for Kubernetes. Flannel is designed to work with Linux routing infrastructure and creates a virtual network that gives each computing host a subnet. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data such as the host’s public IP address. To learn more about Flannel, refer to the [official documentation](https://github.com/flannel-io/flannel/tree/master?tab=readme-ov-file#how-it-works).
+Flannel is a network layer, layer three, fabric for Kubernetes. It is designed to work with Linux routing infrastructure and creates a virtual network that gives each computing host a subnet. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data such as the host’s public IP address. To learn more about Flannel, refer to the [official documentation](https://github.com/flannel-io/flannel/tree/master?tab=readme-ov-file#how-it-works).
 
 The Flannel pack includes the Container Network Interface (CNI) plugins required use Flannel in your cluster.
 
@@ -24,17 +24,17 @@ The Flannel pack includes the Container Network Interface (CNI) plugins required
 
 - Kubernetes version 1.22 or later.
 
-- Existing cluster profiles that use Flannel version 0.21.x or earlier cannot upgrade to Flannel version 0.23.x. You must create a new cluster profile to use Flannel version 0.23.x. All Flannel versions 0.21.x and earlier are manifest. The newer versions are pack based with additional logic that builds on top of the Helm chart..
+- Existing cluster profiles that use Flannel version 0.21.x or earlier cannot upgrade to Flannel version 0.23.x. You must create a new cluster profile to use Flannel version 0.23.x. All Flannel versions 0.21.x and earlier are manifest based. The newer versions are pack based with additional logic that builds on top of the Helm chart.
 
 
 ## Parameters
 
-The following table lists commonly used parameters for Flannel version 0.22.x. Refer to the pack YAML file for the complete list of parameters.
+The following table lists commonly used parameters for Flannel version 0.23.x. Refer to the pack YAML file for the complete list of parameters.
 
 
 | Parameter | Description | Default |
 | --- | --- | --- |
-| `pack.namespace`| The namespace to install Flannel. If the namespace does not exists, it will be created. | `kube-system` |
+| `pack.namespace`| The namespace to install Flannel. If the namespace does not exist, it will be created. | `kube-system` |
 | `charts.flannel.podCidr`| The IPv4 CIDR range to assign to the pod network. This should match the Kubernetes `PodCIDR`. | `192.168.0.0/16` |
 | `charts.flannel.podCidrv6`| The IPv6 CIDR range to assign to the service network.  | `""` |
 | `charts.flannel.backend`| The backend to use for Flannel. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/backends.md) to learn more about supported backends.  | `vxlan` |
@@ -108,7 +108,7 @@ charts:
 
 - Kubernetes version 1.22 or later.
 
-- Existing cluster profiles that use Flannel version 0.21.x or earlier cannot upgrade to Flannel version 0.23.x. You must create a new cluster profile to use Flannel version 0.23.x. All Flannel versions 0.21.x and earlier are manifest. The newer versions are pack based with additional logic that builds on top of the Helm chart.
+- Existing cluster profiles that use Flannel version 0.21.x or earlier cannot upgrade to Flannel version 0.22.x. You must create a new cluster profile to use Flannel version 0.22.x. All Flannel versions 0.21.x and earlier are manifest. The newer versions are pack based with additional logic that builds on top of the Helm chart.
 
 
 
@@ -119,7 +119,7 @@ The following table lists commonly used parameters for Flannel version 0.22.x. R
 
 | Parameter | Description | Default |
 | --- | --- | --- |
-| `pack.namespace`| The namespace to install Flannel. If the namespace does not exists, it will be created. | `kube-system` |
+| `pack.namespace`| The namespace to install Flannel. If the namespace does not exist, it will be created. | `kube-system` |
 | `charts.flannel.podCidr`| The IPv4 CIDR range to assign to the pod network. This should match the Kubernetes `PodCIDR`. | `192.168.0.0/16` |
 | `charts.flannel.podCidrv6`| The IPv6 CIDR range to assign to the service network.  | `""` |
 | `charts.flannel.backend`| The backend to use for Flannel. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/backends.md) to learn more about supported backends.  | `vxlan` |
