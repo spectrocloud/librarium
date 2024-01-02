@@ -24,7 +24,7 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 
 - A Nutanix logo downloaded. Review logo requirements in [Register the Cloud](#register-the-cloud).
 
-- [`curl`](https://curl.se/docs/install.html) command installed or the method of your choice to issue API commands for standard Palette and Palette VerteX.
+- [`curl`](https://curl.se/docs/install.html) command installed or the method of your choice to make API calls for standard Palette and Palette VerteX.
 
 <!-- - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide. -->
 
@@ -140,14 +140,14 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   export cloudLogo="/path/to/the/file/cloud-logo.png"
   export infraComponents="/path/to/the/file/infrastructure-components.yaml"
   export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
-  export  controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
+  export controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
   export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
   ```
 
   :::caution
-  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used for the `name` value in the following steps. 
+  The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps. 
   
-  In the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette. 
+  Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette. 
   :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.
@@ -215,7 +215,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
 7. Register the cluster template. 
 
   ```bash
-  curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
+  curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
         --header "Content-Type: multipart/form-data" \
         --header "Authorization: ${TOKEN}" \
         --form "fileName=@${cloudClusterTemplate}"
@@ -224,7 +224,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
 8. Register the control plane pool template. 
 
   ```bash
-  curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
+  curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
         --header "Content-Type: multipart/form-data" \
         --header "Authorization: ${TOKEN}" \
         --form "fileName=@${controlPlanePoolTemplate}"
@@ -233,11 +233,27 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
 9. Register the worker pool template. 
 
   ```bash
-    curl --location --request PUT "${ENDPOINT}v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
+    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
           --header "Content-Type: multipart/form-data" \
           --header "Authorization: ${TOKEN}" \
           --form "fileName=@${workerPoolTemplate}"
     ```
+
+10. Register the cloud account keys.
+
+  ```bash
+  curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/cloudAccountKeys" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: ${TOKEN}" \
+  --data '{
+      "keys": [
+          "NUTANIX_USER",
+          "NUTANIX_PASSWORD",
+          "NUTANIX_ENDPOINT",
+          "NUTANIX_INSECURE"
+      ]
+  }'
+  ```
 
 ## Validate
 
