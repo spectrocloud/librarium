@@ -37,17 +37,17 @@ The following table lists commonly used parameters for Flannel version 0.22.x. R
 | `pack.namespace`| The namespace to install Flannel. If the namespace does not exists, it will be created. | `kube-system` |
 | `charts.flannel.podCidr`| The IPv4 CIDR range to assign to the pod network. This should match the Kubernetes `PodCIDR`. | `192.168.0.0/16` |
 | `charts.flannel.podCidrv6`| The IPv6 CIDR range to assign to the service network.  | `""` |
-| `charts.flannel.backend`| The backend to use for Flannel. Refer to the offical [backend documentation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/backends.md) to learn more about supported backends.  | `vxlan` |
+| `charts.flannel.backend`| The backend to use for Flannel. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/backends.md) to learn more about supported backends.  | `vxlan` |
 | `charts.flannel.image_cni.repository`| The Flannel CNI image repository. | `docker.io/flannel/flannel-cni-plugin` |
 | `charts.flannel.image_cni.tag`| The Flannel CNI image tag. | `v1.1.2` |
-| `charts.flannel.args`| Additional arguments to pass to the Flannel daemon. Refer to the [key command line options documenation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/configuration.md#key-command-line-options) for a list of supported values. | `["--ip-masq","--kube-subnet-mgr"]` |
+| `charts.flannel.args`| Additional arguments to pass to the Flannel daemon. Refer to the [key command line options documentation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/configuration.md#key-command-line-options) for a list of supported values. | `["--ip-masq","--kube-subnet-mgr"]` |
 
 
 ## Usage
 
-### Modify the Backend
+### Change the Backend
 
-If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the offical [backend documentation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/backends.md) to learn more about supported backends.
+If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.23.0/Documentation/backends.md) to learn more about supported backends.
 
 ```yaml
 charts:
@@ -57,7 +57,7 @@ charts:
 ```
 
 
-### Modify MTU 
+### Change MTU 
 
 By default, Flannel will use the Maximum Transmission Unit (MTU) of the host interface. If you need to change the MTU, you can do so by updating the pack YAML. The parameter `charts.flannel.mtu` can be used to change the MTU value.
 
@@ -122,17 +122,17 @@ The following table lists commonly used parameters for Flannel version 0.22.x. R
 | `pack.namespace`| The namespace to install Flannel. If the namespace does not exists, it will be created. | `kube-system` |
 | `charts.flannel.podCidr`| The IPv4 CIDR range to assign to the pod network. This should match the Kubernetes `PodCIDR`. | `192.168.0.0/16` |
 | `charts.flannel.podCidrv6`| The IPv6 CIDR range to assign to the service network.  | `""` |
-| `charts.flannel.backend`| The backend to use for Flannel. Refer to the offical [backend documentation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/backends.md) to learn more about supported backends.  | `vxlan` |
+| `charts.flannel.backend`| The backend to use for Flannel. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/backends.md) to learn more about supported backends.  | `vxlan` |
 | `charts.flannel.image_cni.repository`| The Flannel CNI image repository. | `docker.io/flannel/flannel-cni-plugin` |
 | `charts.flannel.image_cni.tag`| The Flannel CNI image tag. | `v1.1.2` |
-| `charts.flannel.args`| Additional arguments to pass to the Flannel daemon. Refer to the [key command line options documenation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/configuration.md#key-command-line-options) for a list of supported values. | `["--ip-masq","--kube-subnet-mgr"]` |
+| `charts.flannel.args`| Additional arguments to pass to the Flannel daemon. Refer to the [key command line options documentation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/configuration.md#key-command-line-options) for a list of supported values. | `["--ip-masq","--kube-subnet-mgr"]` |
 
 
 ## Usage
 
-### Modify the Backend
+### Change the Backend
 
-If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the offical [backend documentation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/backends.md) to learn more about supported backends.
+If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.22.3/Documentation/backends.md) to learn more about supported backends.
 
 ```yaml
 charts:
@@ -142,7 +142,7 @@ charts:
 ```
 
 
-### Modify MTU 
+### Change MTU 
 
 By default, Flannel will use the Maximum Transmission Unit (MTU) of the host interface. If you need to change the MTU, you can do so by updating the pack YAML. The parameter `charts.flannel.mtu` can be used to change the MTU value.
 
@@ -205,14 +205,14 @@ The following table lists commonly used parameters for Flannel version 0.21.x. R
 | `manifests.flannel.cniPluginsImage`| The image used for installing the core-cni-plugins through the *initContainer*. | `gcr.io/spectro-images-public/release/cni-plugins/cni-plugins:v1.2.0` |
 | `manifests.flannel.image_cni.repository`| The Flannel CNI image repository. | `docker.io/flannel/flannel-cni-plugin` |
 | `manifests.flannel.image_cni.tag`| The Flannel CNI image tag. | `v1.1.2` |
-| `manifests.flannel.args`| Additional arguments to pass to the Flannel daemon. Refer to the [key command line options documenation](https://github.com/flannel-io/flannel/blob/v0.21.5/Documentation/configuration.md#key-command-line-options) for a list of supported values. | `["--ip-masq","--kube-subnet-mgr"]` |
+| `manifests.flannel.args`| Additional arguments to pass to the Flannel daemon. Refer to the [key command line options documentation](https://github.com/flannel-io/flannel/blob/v0.21.5/Documentation/configuration.md#key-command-line-options) for a list of supported values. | `["--ip-masq","--kube-subnet-mgr"]` |
 
 
 ## Usage
 
-### Modify the Backend
+### Change the Backend
 
-If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the offical [backend documentation](https://github.com/flannel-io/flannel/blob/v0.21.5/Documentation/backends.md) to learn more about supported backends.
+If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.21.5/Documentation/backends.md) to learn more about supported backends.
 
 ```yaml
 manifests:
@@ -222,7 +222,7 @@ manifests:
 ```
 
 
-### Modify MTU 
+### Change MTU 
 
 By default, Flannel will use the Maximum Transmission Unit (MTU) of the host interface. If you need to change the MTU, you can do so by updating the pack YAML. The parameter `charts.flannel.mtu` can be used to change the MTU value.
 
@@ -254,9 +254,9 @@ The following table lists commonly used parameters for Flannel version 0.20.x. R
 
 ## Usage
 
-### Modify the Backend
+### Change the Backend
 
-If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the offical [backend documentation](https://github.com/flannel-io/flannel/blob/v0.21.5/Documentation/backends.md) to learn more about supported backends.
+If you need to change the backend type or update the backend port due to firewall or other restrictions, you can do so by updating the pack YAML. The parameters `charts.flannel.backend` and `charts.flannel.backendPort` can be used to change the default behavior. Refer to the official [backend documentation](https://github.com/flannel-io/flannel/blob/v0.21.5/Documentation/backends.md) to learn more about supported backends.
 
 ```yaml
 manifests:
@@ -266,7 +266,7 @@ manifests:
 ```
 
 
-### Modify MTU 
+### Change MTU 
 
 By default, Flannel will use the Maximum Transmission Unit (MTU) of the host interface. If you need to change the MTU, you can do so by updating the pack YAML. The parameter `charts.flannel.mtu` can be used to change the MTU value.
 
