@@ -108,7 +108,7 @@ charts:
 
 - Kubernetes version 1.22 or later.
 
-- Existing cluster profiles that use Flannel version 0.21.x or earlier cannot upgrade to Flannel version 0.22.x. You must create a new cluster profile to use Flannel version 0.22.x. All Flannel versions 0.21.x and earlier are manifest. The newer versions are pack based with additional logic that builds on top of the Helm chart.
+- Existing cluster profiles that use Flannel version 0.21.x or earlier cannot upgrade to Flannel version 0.22.x. You must create a new cluster profile to use Flannel version 0.22.x. All Flannel versions 0.21.x and earlier are manifest based. The newer versions are pack based with additional logic that builds on top of the Helm chart.
 
 
 
