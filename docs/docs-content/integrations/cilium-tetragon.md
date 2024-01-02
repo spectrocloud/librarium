@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ['monitoring', 'amd64']
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://soak.stage.spectrocloud.com/assets/monitoring_layer.3b14cf5b.svg'
+logoUrl: 'https://registry.spectrocloud.com/v1/tetragon/blobs/sha256:4b14874658de77afc1c966119c156f5a0c28477debc7cb1276f9e1fb63ba9cae?type=image/png'
 tags: ["packs", "cilium-tetragon", "monitoring"]
 ---
 
