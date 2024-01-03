@@ -46,7 +46,7 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
             - ethtool -K ens160 tx-udp_tnl-segmentation off
             - ethtool -K ens160 tx-udp_tnl-csum-segmentation off
   ```
-  This is related to a bug in VMWare's VMXNET3 adapter, which is widely used in different virtual machine management services, including VMWare vSphere and Hyper-V. 
+  This is related to a known issue in VMWare's VMXNET3 adapter, which is widely used in different virtual machine management services, including VMWare vSphere and Hyper-V. 
 
 
 ## Enable Overlay Network
