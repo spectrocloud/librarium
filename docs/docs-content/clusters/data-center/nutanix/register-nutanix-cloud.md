@@ -250,6 +250,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
           "NUTANIX_USER",
           "NUTANIX_PASSWORD",
           "NUTANIX_ENDPOINT",
+          "NUTANIX_PORT",
           "NUTANIX_INSECURE"
       ]
   }'

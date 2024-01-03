@@ -14,19 +14,9 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix environment wi
 
 ## Prerequisites
 
-- A Nutanix Prism Central account with *Prism Admin* role.
-
-- A Nutanix Prism Element cluster created.
-
-- An existing Kubernetes cluster created that has network connectivity with Nutanix Prism Central. This cluster will connect the Nutanix infrastructure with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Kubernetes cluster on Nutanix to deploy your PCG, check out the [Set Up Environment and Deploy Cluster](#set-up-environment-and-deploy-cluster) section below, that describes one possible option.
-
-- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the Kubernetes cluster.
+- An existing Kubernetes cluster created that has network connectivity with Nutanix Prism Central. This cluster will connect the Nutanix infrastructure with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Kubernetes cluster to deploy your PCG, check out the [Deploy a Kubernetes Cluster to Host the PCG](#deploy-a-kubernetes-cluster-to-host-the-pcg) section below. This section provides one possible option and explains how to deploy a Kubernetes cluster within the Nutanix environment.
 
 - A Nutanix cloud registered with Palette. For more information, review [Register Nutanix Cloud](register-nutanix-cloud.md).
-
-- A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
-
-
 
 
 ## Install PCG
@@ -61,19 +51,33 @@ When deployed, the PCG registers itself with Palette. Use the steps below to ver
 3. Next, on the **Tenant Settings Menu**, select **Private Cloud Gateways**.
 
 
-4. Locate the PCG and verify it is installed and in the **Running** state. With the PCG successfully deployed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster. 
+4. Locate the PCG and verify it is installed and in the **Running** state.
 
-  ```bash
-  kind delete cluster --name pcg-pilot
-  ```
 
-## Set Up Environment and Deploy Cluster
+## Next Steps
 
-This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG using the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies.
+When the PCG is in the **Running** state, you can create the Nutanix cloud account. For guidance, review the [Add Nutanix Cloud Account](add-nutanix-cloud-account.md) guide.
+
+<br />
+
+---
+
+
+## Deploy a Kubernetes Cluster to Host the PCG
+
+This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG following the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies.
 
 ### Prerequisites
 
-This method requires installing the following applications:
+- A Nutanix Prism Central account with *Prism Admin* role.
+
+- A Nutanix Prism Element cluster created.
+
+- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the Kubernetes cluster.
+
+- A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
+
+- The following software installed on the machine that will be used to create the clusters:
 
   - [Docker](https://docs.docker.com/engine/install/)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
@@ -203,7 +207,7 @@ This method requires installing the following applications:
     test-cluster-wmd-gdjps-gx267   Ready    <none>          26h   v1.26.7
     ```
 
-## Validate
+### Validate
 
 Use the steps below to verify your virtual machines (VMs) are created.
 
@@ -212,6 +216,10 @@ Use the steps below to verify your virtual machines (VMs) are created.
 2. Next, in the **Table** tab, verify the VMs you created are listed.
 
 
-## Next Steps
+### Cleanup
 
-When the PCG is in the **Running** state, you can create the Nutanix cloud account. For guidance, review the [Add Nutanix Cloud Account](add-nutanix-cloud-account.md) guide. 
+With the PCG successfully installed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster.
+  
+```bash
+kind delete cluster --name pcg-pilot
+```
