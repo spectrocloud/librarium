@@ -17,6 +17,39 @@ Longhorn creates a dedicated storage controller for each block device volume and
 ## Version Supported
 
 <Tabs queryString="versions">
+<TabItem label="1.5.x" value="1.5.x">
+
+
+## Prerequisites
+
+- Kubernetes cluster is 1.21 or higher.
+
+## Parameters
+
+The table lists commonly used parameters you can configure when adding this pack.
+
+| Parameter                | Description                                            | Default                                     |
+|-------------------------|--------------------------------------------------------|---------------------------------------------|
+| `defaultClass`            | The volume type to be used. | `true` |
+| `defaultFsType`           | The default file system.    | `ext4` |
+| `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
+| `defaultDataLocality`     | The default location where data computation will occur. | `disabled` Best effort |
+| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
+| `migratable`              | The ability to transfer data to another data storage systems | `false`   |
+| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector.enable.jobList [ ]`  | `false`   |
+
+## Usage
+
+Longhorn provides these features:
+
+- Enterprise-grade distributed storage with no single point of failure.
+- Incremental snapshots of block storage.
+- Backup to secondary storage (NFSv4 or S3-compatible object storage) built on change block detection.
+- Recurring snapshot and backup.
+
+For more information, check out Longhorn guide on [How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
+
+</TabItem>
 
 <TabItem label="1.4.x" value="1.4.x">
 
@@ -31,13 +64,14 @@ The table lists commonly used parameters you can configure when adding this pack
 
 | Parameter                | Description                                            | Default                                     |
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
-| defaultClass            | The volume type to be used. | `true` |
-| defaultFsType           | The default file system.    | `ext4` |
-| defaultClassReplicaCount| The default number of copies of data store in your cluster.   | `3`         |
-| defaultDataLocality     | The default location where data computation will occur. | `disabled` Best effort |
-| reclaimPolicy           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
-| migratable              | The ability to transfer data to another data storage systems | `false`   |
-| recurringJobSelector:enable    | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector:enable:jobList [ ]`  | `false`   |
+| `defaultClass`            | The volume type to be used. | `true` |
+| `defaultFsType`           | The default file system.    | `ext4` |
+| `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
+| `defaultDataLocality`     | The default location where data computation will occur. | `disabled` Best effort |
+| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
+| `migratable`              | The ability to transfer data to another data storage systems | `false`   |
+| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector.enable.jobList [ ]`  | `false`   |
+curringJobSelector:enable    | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector:enable:jobList [ ]`  | `false`   |
 
 ## Usage
 
@@ -65,13 +99,13 @@ The table lists commonly used parameters you can configure when adding this pack
 
 | Parameter                | Description                                            | Default                                     |
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
-| defaultClass            | The volume type to be used. | `true` |
-| defaultFsType           | The default file system.    | `ext4` |
-| defaultClassReplicaCount| The default number of copies of data store in your cluster.   | `3`         |
-| defaultDataLocality     | The default location where data computation will occur. | `disabled` Best effort |
-| reclaimPolicy           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
-| migratable              | The ability to transfer data to another data storage systems | `false`   |
-| recurringJobSelector:enable    | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector:enable:jobList [ ]`  | `false`   |
+| `defaultClass`            | The volume type to be used. | `true` |
+| `defaultFsType`           | The default file system.    | `ext4` |
+| `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
+| `defaultDataLocality`     | The default location where data computation will occur. | `disabled` Best effort |
+| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
+| `migratable`              | The ability to transfer data to another data storage systems | `false`   |
+| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector.enable.jobList [ ]`  | `false`   |
 
 ## Usage
 
