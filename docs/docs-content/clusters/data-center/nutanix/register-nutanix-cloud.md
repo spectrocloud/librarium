@@ -93,7 +93,25 @@ Use the following steps to prepare to register your cloud with Palette.
   The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
   :::
 
-8. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object. 
+8. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object.
+
+  :::caution
+  The following modifications are only applicable to VerteX instances.  
+  :::
+
+9. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
+
+  ```bash
+  kubeletExtraArgs:
+    rotate-server-certificates: "true"
+  ```
+
+10. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object. Include a new line with `rotate-server-certificates: "true"` below the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
+
+  ```bash
+  kubeletExtraArgs:
+    rotate-server-certificates: "true"
+  ```
     
 
 ## Validate
