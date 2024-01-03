@@ -37,6 +37,14 @@ Use the `install` subcommand to install a PCG cluster in the following environme
   | `-i`       | `--inspect-only`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
 
 
+:::caution
+
+Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
+
+:::
+
+
+
 ### Supported Environments
 
 You can use the `install` subcommand to install a PCG cluster in the following environments.

@@ -5,7 +5,6 @@ description: "A reference sheet for the Spectro Cloud CLI tool"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-toc_max_heading_level: 3
 ---
 
 
@@ -13,7 +12,7 @@ The Spectro CLI tool is a command-line interface to interact with Palette regist
 
 :::info
 
-We recommend using an OCI registry for storing and maintaining your packs. Refer to the [OCI registry](registries/oci-registry/oci-registry.md) section for more information.
+We recommend using an OCI registry to store and maintain your packs. Refer to the [OCI registry](registries/oci-registry/oci-registry.md) section for more information.
 
 :::
 

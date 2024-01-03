@@ -34,7 +34,8 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 
 ## Prerequisites
 
-* At least one Edge host with an AMD64 or X86_64 processor architecture registered with your Palette account.
+* At least one Edge host registered with your Palette account.
+* Your cluster profile must have K3s as its Kubernetes distribution. 
 * All Edge hosts must be on the same network. You may provision your own virtual network to connect Edge hosts that are on different physical networks, but all Edge hosts to be included in the cluster must be on the same network before cluster creation.
 
 ## Enable Overlay Network
@@ -57,7 +58,15 @@ You will not be able to change the network overlay configurations after the clus
 
 6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have selected a cluster profile.
 
-7. In the network layer of your cluster profile, specify the name of the Network Interface Controllers (NIC) on your Edge hosts to be `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the overlay network.
+7. In the Kubernetes layer of the cluster profile, add the parameter `cluster.kubevipArgs.vip_interface` and set its value to `scbr-100`:
+
+    ```yaml
+    cluster:
+        kubevipArgs:
+            vip_interface: "scbr-100"
+    ```
+
+8. In the network layer of your cluster profile, specify the name of the Network Interface Controllers (NIC) on your Edge hosts to be `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the overlay network.
 
     The following are the sections of the packs you need to change depending on which CNI pack you are using:
 
@@ -103,11 +112,11 @@ You will not be able to change the network overlay configurations after the clus
     </TabItem>
     </Tabs>
 
-8. Review the rest of your cluster profile values and make changes as needed. Click on **Next**.
+9. Review the rest of your cluster profile values and make changes as needed. Click on **Next**.
 
-9. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional configuration for your virtual overlay network. 
+10. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional configuration for your virtual overlay network. 
 
-10. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure that this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides with a default commonly unused range. We suggest you keep the default range unless you have a specific IP range you want to use. 
+11. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides a default range that is typically unused. We suggest you keep the default range unless you have a specific IP range you want to use. 
 
    :::caution
    The overlay CIDR range cannot be changed after the cluster creation. 
@@ -115,7 +124,7 @@ You will not be able to change the network overlay configurations after the clus
 
    After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the cluster.
    
-11. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
+12. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md). 
 
 ## Validate
 
@@ -125,7 +134,7 @@ You will not be able to change the network overlay configurations after the clus
 
 3. Select the host cluster you created to view its details page.
 
-4. Select the **Nodes** tab, in the **Overlay IP Address** column, each host has an overlay IP address within the CIDR range you provided during cluster configuration. 
+4. Select the **Nodes** tab. For each host, the **Private Ips** column lists an overlay IP address within the CIDR range you provided during cluster configuration.
 
 :::tip
 To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge Hosts** tab. The IP address displayed in the table is the external IP address.
