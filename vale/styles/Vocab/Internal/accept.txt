@@ -169,3 +169,4 @@ Simple Mail Transfer Protocol
 NIC
 autoscale
 initContainer
+Entra

@@ -102,3 +102,8 @@ You can verify your account is added.
 Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the account from Palette.
 
 :::
+
+
+## Next Steps
+
+After you have added your Azure cloud account to Palette or VerteX, you can start deploying an Azure IaaS cluster by following the  [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide, or if you prefer an Azure Managed Kubernetes Service (AKS) cluster, refer to the [Create and Manage Azure AKS Cluster](./azure.md) guide. We also encourage you to check out the [Deploy a Cluster tutorial](../deploy-k8s-cluster.md) for a detailed walkthrough of the cluster creation process.
