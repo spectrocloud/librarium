@@ -30,6 +30,8 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - Enhanced cluster repave control and mitigation. In the Palette 4.1 release, repave notification warnings become available through the User Console (UI). In this release, cluster administrators, project administrators, and tenant administrators must acknowledge the repave notification and decide whether to proceed with the action. This feature helps prevent accidental node upgrades that may cause downtime and provides a way to mitigate repaves by allowing administrators to cancel the repave action.
 
+- A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional information about a pack in the [Packs List](./integrations/integrations.mdx) page.
+
 
 - Palette CLI now supports integration with [Validator](https://github.com/spectrocloud-labs/validator), an open-source framework that you can use to validate your self-hosted Palette, VerteX, or workload cluster environment. Validator performs Day 0-2 validation and configuration drift detection in a composable manner across various systems. Use the `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX. You can also use Validator to verify the environment requirements for deploying a cluster. For more information, refer to the [Validator](./palette-cli/commands/validator.md) CLI reference.
 
@@ -226,16 +228,10 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 | RKE2 - Edge | 1.25.2 |
 
 
-<!-- #### Community Packs
-
-| **Pack**| **New Version**|
-| :--- | :--- | -->
-
-
-
 
 #### Pack Notes
 
+- A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional information about a pack in the [Packs List](./integrations/integrations.mdx) page.
 - ArgoCD is now a verified pack, starting with version 5.46.8.
 - Spot.io is now a verified pack, starting with version 1.0.117.
 - Edge cluster nodes deployed in a single node configuration using RKE2 version 1.26.X must upgrade to the latest minor version of 1.26.10 before upgrading to 1.27.7.
