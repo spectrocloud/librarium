@@ -162,3 +162,5 @@ liveness
 Autosupport
 Okta
 Keycloak
+autoscale
+initContainer

@@ -48,12 +48,12 @@ Use the following steps to install and set up the Palette CLI.
 <br />
    
 
-5. If you will use Palette Dev Engine (PDE) complete this step. Otherwise you can skip to [Validation](#validate). Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance, replace the `--console-url` with your custom Palette URL.
+5. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance or Palette VerteX, replace the `--console-url` with your custom Palette URL.
 
   <br />
 
   ```shell
-  palette pde login --api-key <YOUR-API-KEY> --console-url https://console.spectrocloud.com/
+  palette login --api-key <YOUR-API-KEY> --console-url https://console.spectrocloud.com/
   ```
 
 ## Validate
@@ -66,8 +66,8 @@ Verify the Palette CLI is part of your system path by issuing the Palette CLI `v
   palette version
   ```
 
-  Output:
-  ```shell
+
+  ```shell hideClipboard
   Palette CLI version: 4.1.0
   ```
 

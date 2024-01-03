@@ -56,20 +56,17 @@ The cluster you deleted is now listed along with other previously deleted cluste
 
 ## Force Delete a Cluster
 
-If a cluster is stuck in the **Deleting** state for a minimum of 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
+If a cluster is stuck in the **Deleting** state for 15 minutes, it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scope.
 
-To force delete a cluster, follow the same steps outlined above. After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down Menu**. The drop-down menu will provide you with an estimated remaining time left before the force deletion becomes available.
+To force delete a cluster, follow the steps to delete the cluster. After 15 minutes, a **Force Delete Cluster** option is available in the **Settings Menu**. The **drop-down Menu** will provide you with an estimated remaining time left before the force deletion becomes available.
 
-<br />
-
-
-A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources. Use the following list to help you identify resources to remove.
+A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no remaining resources by visiting the deployed resources in the target cluster's infrastructure provider environment. Use one of the following lists for your environment to help you identify resources to remove.
 
 <br />
 
 :::caution
 
-Failure in removing provisioned resources can result in unexpected costs.   
+Failure to remove provisioned resources can result in unexpected costs.  
 
 :::
 
@@ -78,10 +75,10 @@ Failure in removing provisioned resources can result in unexpected costs.
 **Azure**
 
 - Virtual Network (VNet)
-- Static Public IPs
+- Static Public IP addresses
 - Virtual Network Interfaces
 - Load Balancers
-- VHD
+- Virtual Hard Disk (VHD)
 - Managed Disks
 - Virtual Network Gateway
 
@@ -90,18 +87,18 @@ Failure in removing provisioned resources can result in unexpected costs.
 **AWS**
 
 - VPC
-- Elastic IP
+- Elastic IP addresses
 - Elastic Network Interfaces
 - Internet Gateway
 - Elastic Load Balancers
 - EBS Volumes
-- NAT Gateway
+- Network Address Translation (NAT) Gateway
 
 
 **GCP**
 
 - Virtual Private Cloud (VPC) Network
-- Static External IP Address
+- Static External IP addresses
 - Network Interfaces 
 - Cloud NAT
 - Cloud Load Balancing
