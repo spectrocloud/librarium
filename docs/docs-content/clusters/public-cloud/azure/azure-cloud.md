@@ -24,8 +24,7 @@ Palette supports integration with Azure and [Azure Government](https://azure.mic
 
 ## Add Azure Cloud Account
 
-<Tabs groupId="account">
-<TabItem label="Azure" value="azure-nongov">
+Use the following steps to add an Azure or Azure Government account in Palette or Palette VerteX.
 
 1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
@@ -42,22 +41,28 @@ Palette supports integration with Azure and [Azure Government](https://azure.mic
 |**Account Name**| A custom account name.|
 |**Tenant ID**| Unique tenant ID from Azure Management Portal.|
 |**Client ID**| Unique client ID from Azure Management Portal.|
-|**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). After providing the client secret, click the **Validate** button. If the client secret you provided is correct, a *Credentials validated* success message with a green check is displayed. |
+|**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).  |
+| **Cloud** | Select **Azure Public Cloud** or **Azure US Government**. |
 |**Tenant Name**| An optional tenant name.|
 |**Disable Properties**| This option disables Palette importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Palette Network Calls to the Account](#disable-palette-network-calls-to-the-account) section below. |
 |**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|
 
+6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a *Credentials validated* success message with a green check is displayed.
+
+7. Click **Confirm** to complete the registration.
+
 
 #### Disable Palette Network Calls to Azure Account  
 
+<details>
+ <summary>Expand to learn more about disabling properties.</summary>
+
 When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
 
-Disabling network calls requires that you create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret. 
+Disabling network calls requires that you create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret.  
 
-:::info
-
+:::tip
 Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
-
 :::
 
 
@@ -77,10 +82,7 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
   :::
 
-</TabItem>
-<TabItem label="Azure Gov" value="azure-gov">
-</TabItem>
-</Tabs>
+</details>
 
 ## Validate
 
