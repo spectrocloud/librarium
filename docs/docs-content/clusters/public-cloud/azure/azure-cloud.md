@@ -8,20 +8,26 @@ sidebar_position: 10
 ---
 
 
-Palette supports integration with Azure cloud accounts. This section explains how to create an Azure cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
+Palette supports integration with Azure and [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud accounts. This section explains how to add an Azure cloud account in Palette or Palette VerteX. You can use any of the following authentication methods to register your cloud account.
+
 
 ## Prerequisites
 
-* A [Palette Account](https://console.spectrocloud.com/).
+* A [Palette](https://console.spectrocloud.com/), or VerteX account. 
 
 * An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
 
 * An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 
+
+
 ## Add Azure Cloud Account
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+<Tabs groupId="account">
+<TabItem label="Azure" value="azure-nongov">
+
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
 2. From the left **Main Menu**, select **Tenant Settings**. 
 
@@ -42,7 +48,7 @@ Palette supports integration with Azure cloud accounts. This section explains ho
 |**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|
 
 
-### Disable Palette Network Calls to Azure Account  
+#### Disable Palette Network Calls to Azure Account  
 
 When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
 
@@ -71,6 +77,10 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
   :::
 
+</TabItem>
+<TabItem label="Azure Gov" value="azure-gov">
+</TabItem>
+</Tabs>
 
 ## Validate
 
