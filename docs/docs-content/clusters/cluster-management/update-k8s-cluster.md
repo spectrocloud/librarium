@@ -18,7 +18,7 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 This tutorial will teach you how to update a cluster deployed with Palette to Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You will explore each cluster update method and learn how to apply these changes using either Palette or Terraform.
 
 ## Prerequisites
-To complete this tutorial, you will need the following items.
+This tutorial builds upon the resources and steps outlined in the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. To complete it, you will need the following items.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
@@ -88,8 +88,6 @@ cd terraform/iaas-cluster-update-tf/
 </Tabs>
 
 ## Set Up Clusters
-
-This tutorial builds upon the resources and steps outlined in the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. 
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
@@ -224,12 +222,17 @@ Next, issue the `plan` command to preview the changes.
 terraform plan
 ```
 
-Output:
+You will see the following output for Azure. 
 ```shell
 Plan: 6 to add, 0 to change, 0 to destroy.
 ```
 
-If you change the desired cloud provider's toggle variable to `true,` you will receive an output message that the following six new resources are planned.
+For other AWS and GCP, you will see one less resource created. 
+```shell
+Plan: 5 to add, 0 to change, 0 to destroy.
+```
+
+If you change the desired cloud provider's toggle variable to `true,` you will receive an output message that the following new resources are planned.
 - A cluster profile and a host cluster for the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application.
 - A cluster profile and a host cluster for the [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application.
 - The [*kubeconfig*](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file of the provisioned *hello-universe-api* cluster. This is a local file that is created in your current working directory. You will need this file later, so do not to delete it.
@@ -240,6 +243,8 @@ To deploy all the resources, use the `apply` command.
 ```shell
 terraform apply -auto-approve
 ```
+
+Make a note of the command output by this step. You will need it later.
 
 Once you have completed these steps and the host cluster creation process has finished, log in to [Palette](https://console.spectrocloud.com). 
 
@@ -571,13 +576,11 @@ spec:
 
 The manifest deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
 
-Issue the following command to find the external IP address of the `hello-universe-api-service` that you deployed in the [Set Up Clusters](#set-up-clusters) section. Replace the placeholder `REPLACE_ME` with the cloud provider that you have chosen to deploy your clusters to - `aws`, `azure` or `gcp`. 
+Find the command output by the `terraform apply` step in the [Set up Clusters](#set-up-clusters) section. Issue the command to find the external IP address of the `hello-universe-api-service` that you deployed. It has the following form on Azure, but may be different for your chosen cloud provider. 
 
 ```shell
-export KUBECONFIG=$(pwd)/REPLACE_ME-cluster-api.kubeconfig && kubectl get service hello-universe-api-service --namespace hello-universe-api --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
+export KUBECONFIG=$(pwd)/azure-cluster-api.kubeconfig && kubectl get service hello-universe-api-service --namespace hello-universe-api --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
-
-This command was also output by your `terraform apply` step.
 
 Open your **terraform.tfvars** file in the code editor of your choice and find the section for your chosen cloud provider. Each cloud provider has a variable named using the pattern `[cloud provider]-hello-universe-api-uri`. Replace the `REPLACE_ME` placeholder with the external IP address of your `hello-universe-api-service`. 
 
