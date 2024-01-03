@@ -222,12 +222,12 @@ Next, issue the `plan` command to preview the changes.
 terraform plan
 ```
 
-You will see the following output for Azure. 
+Terraform will display the following output for Azure. 
 ```shell
 Plan: 6 to add, 0 to change, 0 to destroy.
 ```
 
-For other AWS and GCP, you will see one less resource created. 
+For other AWS and GCP, Terraform will create one less resource. 
 ```shell
 Plan: 5 to add, 0 to change, 0 to destroy.
 ```
