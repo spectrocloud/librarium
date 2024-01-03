@@ -25,7 +25,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 - Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/). You can deploy Kubernetes clusters on Nutanix using Palette. Support for Nutanix is currently under technical preview and subject to change as we continue to improve the integration.
 
 
-- Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a manual action that had to be performed by the user, which also caused node repaves. Palette will automatically renew the certificate 30 days before the expiration date without triggering a node repave. This feature is available in all supported infrastructure providers except for Edge. For more information, refer to the [Certificate Management](./clusters/cluster-management/certificate-management.md) resource.
+- Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a manual action that had to be performed by the user, which also caused node repaves. Palette will now automatically renew the certificate 30 days before the expiration date without triggering a node repave. This feature is available in all supported infrastructure providers except for Edge. For more information, refer to the [Certificate Management](./clusters/cluster-management/certificate-management.md) resource.
 
 
 - Enhanced cluster repave control and mitigation. In the Palette 4.1 release, repave notification warnings become available through the User Console (UI). In this release, cluster administrators, project administrators, and tenant administrators must acknowledge the repave notification and decide whether to proceed with the action. This feature helps prevent accidental node upgrades that may cause downtime and provides a way to mitigate repaves by allowing administrators to cancel the repave action.
@@ -45,11 +45,11 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - MicroK8S is now available for MAAS clusters. Create a cluster profile with MicroK8S as the Kubernetes pack to deploy a MAAS cluster with MicroK8S. 
 
-- An improved differential editor is now available. The new editor provides a side-by-side comparison of the changes that will be applied to the cluster profile. The editor also identifies the YAML customizations you have added and guides you through carrying over the customization to the new version of the YAML. The ability to undo changes and accept all changes is also available.
+- An improved differential editor is now available. The new editor provides a side-by-side comparison of the changes that will be applied to the cluster profile. The editor also identifies the YAML customizations you have added and guides you through carrying over the customizations to the new version of the YAML. The ability to undo changes and accept all changes is also available.
 
 - When updating a deployed cluster profile or an active cluster's profile, the new differential editor is available to help you identify the changes that will be applied to the cluster profile.
 
-- Private Cloud Gateway deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version was 1.24. Use the latest version of the [Palette CLI](./spectro-downloads.md#palette-cli) to install PCG clusters. Existing Private Cloud Gateway deployments will require a manual reconciliation of the cluster profile to update the Kubernetes version to 1.26. Make sure you carry over any customizations the current cluster profile may have, such as pod CIDR and service CIDR before updating the cluster profile with the new Kubernetes version. Refer to the [Update a Cluster Profile](./profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version) guide to learn more on reconciling a cluster profile pack layer change.
+- Private Cloud Gateway (PCG) deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version was 1.24. Use the latest version of the [Palette CLI](./spectro-downloads.md#palette-cli) to install PCG clusters. Existing Private Cloud Gateway deployments will require a manual reconciliation of the cluster profile to update the Kubernetes version to 1.26. Make sure you carry over any customizations the current cluster profile may have, such as pod CIDR and service CIDR before updating the cluster profile with the new Kubernetes version. Refer to the [Update a Cluster Profile](./profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version) guide to learn more on reconciling a cluster profile pack layer change.
 
 
 #### Known Issues
@@ -61,11 +61,11 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 #### Breaking Changes
 
-- Edge hostnames are not allowed to have special characters. Validation has been added to prevent issues arising from using special characters in host names. Edge host names must comply with RFC1035, refer to the [Edge Installer Configuration](./clusters/edge/edge-configuration/edge-configuration.md) and review the `name` parameter for more information.
+- Edge hostnames are not allowed to have special characters. Validation has been added to prevent issues arising from using special characters in host names. Edge hostnames must comply with [RFC1035](https://datatracker.ietf.org/doc/html/rfc1035), refer to the [Edge Installer Configuration](./clusters/edge/edge-configuration/edge-configuration.md) and review the `name` parameter for more information.
 
 #### Features
 
-- Overlay support for DHCP. Edge hosts can now self-discover VxLAN overlay within a single ethernet broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly. Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
+- Overlay support for DHCP. Edge clusters can now establish an VxLAN overlay network during cluster creation, and Edge hosts can self-discover the overlay network within a single ethernet broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly. Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
 
 
 - Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads and initialize a cluster's other edge host nodes. Using a local registry can help you reduce the amount of data transferred over the network, cache images locally, and provide a backup for when internet access is unavailable. 
@@ -92,7 +92,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 #### Features
 
-- You can deploy edge clusters when using VMO. Edge clusters are useful when deploying Kubernetes clusters in remote locations. Refer to the [Create a VMO Profile](./vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create a cluster profile for VMO that you can use to deploy edge clusters with VMO.
+- You can now deploy virtual machines using VMO on an Edge cluster. Edge clusters are useful when deploying Kubernetes clusters in remote locations. Refer to the [Create a VMO Profile](./vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create an Edge cluster profile for VMO.
 
 
 ### VerteX
@@ -106,7 +106,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 - Canonical MAAS support is now available for VerteX. You can now deploy Canonical MAAS clusters with VerteX. Refer to the [MAAS](./clusters/data-center/maas/maas.md) resource for more information on deploying MAAS clusters.
 
 
-- Support for passkeys is now available for the admin user. When accessing the system console, you can now use passkeys to authenticate to the admin user account. For more information, refer to the [System Console Credentials](vertex/system-management/account-management/credentials.md) resource.
+- Support for passkeys is now available for the admin user. When accessing the system console, you can now use passkeys to authenticate the admin user account. For more information, refer to the [System Console Credentials](vertex/system-management/account-management/credentials.md) resource.
 
 #### Improvements
 
