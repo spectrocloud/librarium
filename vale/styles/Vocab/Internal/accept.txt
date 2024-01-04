@@ -170,3 +170,4 @@ NIC
 autoscale
 initContainer
 Entra
+README
