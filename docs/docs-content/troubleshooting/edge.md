@@ -32,9 +32,9 @@ If you need to override or reconfigure the read-only file system, you can do so 
 
 6. Reboot the system to resume the default read-only file system.
 
-## Scenario - Cluster with Overlay Enabled Goes into Unknown State After Reboot
+## Scenario - Pod State Unknown After Reboot with Overlay Network Enabled
 
-On slower networks, it's possible that this is due to KubeVip leader election timeouts. You can manually adjust the values of the following environment variables in the KubeVip daemon set following the steps below. 
+On slower networks, it's possible that this is due to KubeVip leader election timeouts. To debug, you can manually adjust the values of related environment variables in the KubeVip DaemonSet with the following steps.
 
 ### Debug Steps
 
@@ -46,13 +46,18 @@ On slower networks, it's possible that this is due to KubeVip leader election ti
   kubectl edit ds kube-vip-ds -n kube-system
   ```
 
-3. In the `env`  of the KubeVip service, modify the values of the following environment variables:
+3. In the `env`  of the KubeVip service, modify the environment variables to have the following corresponding values:
 
-  ```yaml
-  - name: vip_leaseduration
-    value: "30"
-  - name: vip_renewdeadline
-    value: "20"
-  - name: vip_retryperiod
-    value: "4"
+  ```yaml {4-9}
+  env:
+    - name: vip_leaderelection
+      value: "true"
+    - name: vip_leaseduration
+      value: "30"
+    - name: vip_renewdeadline
+      value: "20"
+    - name: vip_retryperiod
+      value: "4"
   ```
+
+4. Within a minute, the old Pods in unknown state will be terminated and Pods will come up with the updated values.
