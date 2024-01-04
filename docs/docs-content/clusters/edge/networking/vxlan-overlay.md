@@ -37,7 +37,7 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 * At least one Edge host registered with your Palette account.
 * Your cluster profile must have K3s as its Kubernetes distribution. 
 * All Edge hosts must be on the same Layer-2 network.
-* If your Edge hosts are using virtual ethernet adapters and you are using either Cilium or Flannel as your container network interface (CNI), ensure that you add the following commands in the **user-data** file at the boot stage. Replace `INTERFACE_NAME` with the name of the network interface on your Edge host.
+* If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as your container network interface (CNI), ensure that you add the following commands in the **user-data** file at the boot stage. Replace `INTERFACE_NAME` with the name of the network interface on your Edge host.
   ```yaml {2-6}
   stages:
     boot:
