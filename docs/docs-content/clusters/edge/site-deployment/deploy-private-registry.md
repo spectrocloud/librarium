@@ -23,7 +23,7 @@ If you have specified registry credentials in the `registryCredentials` field in
 
 ## Prerequisites
 
-- At least one Edge host with an x86_64 or AMD64 processor architecture. 
+- At least one Edge host registered with your Palette account.  
 
 - A private image registry.
 
@@ -65,7 +65,8 @@ If you have specified registry credentials in the `registryCredentials` field in
       # - image: example.io/my-other-images/example:v1.0.0 
       # - image: example.io/my-super-other-images/example:v1.0.0
   providerCredentials:
-    registry: domain/project
+    registry: <registry_domain or IP Address>
+    # - e.x. registry: registry-1.docker.io 
     user: user
     password: ******
     certificates: |
