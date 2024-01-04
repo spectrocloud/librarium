@@ -169,5 +169,7 @@ Simple Mail Transfer Protocol
 NIC
 autoscale
 initContainer
+ethernet
+hostname
 Entra
 README
