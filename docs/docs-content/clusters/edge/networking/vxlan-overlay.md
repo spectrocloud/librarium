@@ -159,3 +159,9 @@ You can access a cluster with overlay network enabled in the following ways:
 - Access LoadBalancer services. You can provision LoadBalancer services in your Kubernetes cluster and expose them to external traffic. For example, refer to [Publish Cluster Services with Kube-vip](kubevip.md).
 - Access a node by IP address. You can use the node's external IP address to access the node directly. The overlay IP addresses are internal to the cluster itself and cannot be accessed from outside the cluster.
 
+
+## Resources
+
+- [Publish Cluster Services with Kube-vip](kubevip.md)
+- [Troubleshooting - Edge](../../../troubleshooting/edge.md)
+
