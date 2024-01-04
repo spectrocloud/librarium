@@ -13,7 +13,7 @@ tags: ["data center", "nutanix"]
 
 - A Nutanix cloud registered with Palette. For more information, refer to [Register Nutanix Cloud](register-nutanix-cloud.md). 
 
-- A PCG installed that connects the Nutanix cloud with Palette. For guidance, refer to [Install Private Cloud Gateway](install-pcg.md).
+- A PCG installed that connects the Nutanix cloud with Palette. For guidance, refer to [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
 
 ## Add Cloud Account

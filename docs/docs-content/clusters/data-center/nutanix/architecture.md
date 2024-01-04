@@ -22,7 +22,7 @@ Below are key architectural highlights of Nutanix clusters provisioned through P
 
 - The Kubernetes API Server endpoint is accessible through [kube-vip](https://kube-vip.io/), which is a load balancing solution for the cluster’s control plane. Kube-vip distributes API requests across control plane nodes and also has failover capabilities.
 
-- A Private Cloud Gateway (PCG) is required to enable Palette to securely communicate with the Nutanix cloud. The direct communication channel allows Palette to create and monitor clusters within the Nutanix cloud. A self-hosted cluster is needed for the PCG deployment. The [Setup](install-pcg.md/#setup) section of the [Install Private Cloud Gateway](install-pcg.md) guide provides the steps to deploy a self-hosted cluster within the Nutanix infrastructure.
+- A Private Cloud Gateway (PCG) is required to enable Palette to securely communicate with the Nutanix cloud. The direct communication channel allows Palette to create and monitor clusters within the Nutanix cloud. A self-hosted cluster is needed for the PCG deployment. The [Deploy a Kubernetes Cluster to Host the PCG](./install-pcg/deploy-kubernetes-cluster-pcg.md) page provides the steps to deploy a self-hosted cluster within the Nutanix infrastructure.
 
 The following diagram illustrates the Nutanix architecture.
 
