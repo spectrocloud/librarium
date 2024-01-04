@@ -50,7 +50,7 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 
 8. Click **Save Changes**.
 
-9. Deploy a new Edge cluster with your updated profile. Or if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images still requires a connection to the external network, but subsequent images pulls will be from the local harbor registry. 
+9. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images will require a connection to the external network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local Harbor registry. 
 
 ## Validation
 
