@@ -18,8 +18,6 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 
 - The Nutanix CAPI version must be v1.2.x.
 
-- A Cluster API (CAPI) image created for the Nutanix cloud platform. For guidance, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix). Images can be found in the Nutanix Prism Central dashboard under **Compute & Storage**.
-
 - A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
 
 - A Nutanix logo downloaded. Review logo requirements in [Register the Cloud](#register-the-cloud).
@@ -35,7 +33,7 @@ Use the following steps to prepare to register your cloud with Palette.
 
 ### Customize YAML Configuration Files
 
-1.  Download the following YAML files from a specific version of CAPX found on the [Nutanix Releases](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases) page in the GitHub repository.
+1. Access the [Nutanix CAPI Provider Releases](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases) GitHub page and execute the commands below to download the following YAML files from a specific version of the Nutanix Cluster API Provider (CAPX) that is compatible with your environment. 
 
     - **infrastructure-components.yaml**
     - **cluster-template.yaml**
@@ -43,15 +41,21 @@ Use the following steps to prepare to register your cloud with Palette.
   <br />
 
   :::caution
-  Review the [Nutanix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) compatibility matrix to ensure you download the latest CAPI version of the files for your environment. 
+  Review the [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) to ensure you download a compatible CAPX version of the files. 
   :::
 
-  <!-- Issue the commands below to download the latest files.
+  Export the CAPX version as an environment variable. For example, if you want to download version **v1.2.4**, issue the following command.
+
+  ```bash
+  export CAPX_VERSION="v1.2.4"
+  ```
+
+  Next, issue the commands below to download the files.
 
     ```bash
-    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/cluster-template.yaml
-    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/latest/download/infrastructure-components.yaml
-    ``` -->
+    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
+    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
+    ```
 
 2. Create two copies of `cluster-template.yaml` and rename them so you have the following files in addition to the `infrastructure-components.yaml`:
     - **cloudClusterTemplate.yaml**
@@ -289,7 +293,7 @@ Use the steps below to confirm that the Nutanix cloud is successfully registered
 
 ## Next Steps
 
-Now that your cloud is successfully registered with Palette, you are ready to deploy a self-hosted Private Cloud Gateway (PCG). For guidance, review [Install Private Cloud Gateway](install-pcg.md).
+Now that your cloud is successfully registered with Palette, you are ready to deploy a self-hosted Private Cloud Gateway (PCG). For guidance, review [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
 
 

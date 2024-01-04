@@ -37,13 +37,9 @@ Create an infrastructure profile by adding layers composed of an Operating Syste
 5. Select the Infrastructure Provider, Managed Kubernetes, or Tech Preview cloud type for your environment and click **Next**. 
 
   :::info
-  Nutanix is a Tech Preview cloud type intended for Nutanix clusters deployed using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.
-
-  When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the **Nutanix CSI** storage pack.
-
-  <!-- <<< Save this text for future when more clouds may be listed under Tech Preview:>>> Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.  
+  Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.  
  
-  When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers. Additionally, Palette provides a cloud-specific storage pack, such as *Nutanix CSI*, that displays based on the cloud name provided during cloud registration. -->
+  When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers.
   :::
   
 6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next Layer** to configure each infrastructure layer. 

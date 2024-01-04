@@ -24,16 +24,14 @@ The following summary steps outline the Nutanix cloud workflow illustrated in th
 
 1. A system administrator registers Nutanix with Palette by preparing YAML templates to configure the cluster and node pools and invokes APIs to define the logo, required cloud account information and key-value pairs to create the Nutanix cloud account. Palette renders a default logo if no logo is specified. 
 
-  A Nutanix user with the *Prism Admin* role creates an Operating System (OS) image to be used for the Nutanix cluster that will be created in Palette. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
-
   :::caution
-  To make the Palette-provided **Nutanix CSI** pack available to users during profile creation, the Nutanix cloud must be registered using the name `nutanix`. For guidance in using registration APIs and providing required variable values, review [Register the Cloud](register-nutanix-cloud.md#register-the-cloud).
+  To make the Palette-provided **Nutanix CSI ---link to Nutanix CSI pack page that is being created---** pack available to users during profile creation, the Nutanix cloud must be registered using the name `nutanix`. For guidance in using registration APIs and providing required variable values, review [Register the Cloud](register-nutanix-cloud.md#register-the-cloud).
   
   <!-- To use the **Nutanix CSI** pack, the Nutanix cloud must be registered using the name `nutanix`. For guidance in using registration APIs and providing required variable values, review [Register the Cloud](register-nutanix-cloud.md#register-the-cloud). -->
   :::
 
 
-2. Create a Nutanix self-hosted PCG by installing Palette agents in your existing Kubernetes cluster using kubectl commands provided in the Palette UI. For guidance, review [Install Private Cloud Gateway](install-pcg.md).
+2. Create a Nutanix self-hosted PCG by installing Palette agents in your existing Kubernetes cluster using kubectl commands provided in the Palette UI. For guidance, review [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
   When the PCG status displays the state **Running**, the workload cluster is integrated with Palette.
 
@@ -47,9 +45,9 @@ The following summary steps outline the Nutanix cloud workflow illustrated in th
 
 4. Create a cluster profile by selecting Nutanix as the cloud type. 
 
-  When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the **Nutanix CSI** storage pack. The **Nutanix CSI** pack is available when the cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your registry. To learn how to add a pack registry, review [Add a Custom Registry](/docs/docs-content/registries-and-packs/adding-a-custom-registry.md).
+  When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the **Nutanix CSI---link to Nutanix CSI pack page that is being created---** storage pack. The **Nutanix CSI** pack is available when the cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your registry. To learn how to add a pack registry, review [Add a Custom Registry](/docs/docs-content/registries-and-packs/adding-a-custom-registry.md).
 
-5. Deploy a cluster by specifying Nutanix, listed under **Tech Preview**, as the cluster type. Select the cloud account you added and make any needed changes to the profile layers by using the YAML editor. At the **Cluster Config** step, customize the Cluster configuration and Node configuration YAML files by replacing any undefined variables in curly braces, such as `${CLUSTER_NAME}`, with values for your environment. Make any other adjustments in the files to customize the cluster for your environment. Provide an OS image created in step 1 by a Nutanix user with the *Prism Admin* role.
+5. Deploy a cluster by specifying Nutanix, listed under **Tech Preview**, as the cluster type. Select the cloud account you added and make any needed changes to the profile layers by using the YAML editor. At the **Cluster Config** step, customize the Cluster configuration and Node configuration YAML files by replacing any undefined variables in curly braces, such as `${CLUSTER_NAME}`, with values for your environment. Make any other adjustments in the files to customize the cluster for your environment. Provide an OS image created by a Nutanix user with the *Prism Admin* role. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
 
 ## Resources
@@ -58,7 +56,7 @@ The following summary steps outline the Nutanix cloud workflow illustrated in th
 
 - [Register Nutanix Cloud](register-nutanix-cloud.md)
 
-- [Install Private Cloud Gateway](install-pcg.md)
+- [Install Private Cloud Gateway](./install-pcg/install-pcg.md)
 
 - [Add Nutanix Cloud Account](add-nutanix-cloud-account.md)
 
