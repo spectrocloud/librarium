@@ -30,6 +30,7 @@ The table lists commonly used parameters you can configure when adding this pack
 
 | Parameter                | Description                                            | Default                                     |
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
+| `namespace`               | The namespace where the Longhorn will be installed. | `longhorn-system` |
 | `defaultClass`            | The volume type to be used. | `true` |
 | `defaultFsType`           | The default file system.    | `ext4` |
 | `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
@@ -49,9 +50,24 @@ Longhorn provides these features:
 
 For more information, check out Longhorn guide on [How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
 
+
+## Troubleshooting
+
+### Deadlock With RWX Mode
+
+Starting with version 1.5.X, a known issue exists where a deadlock occurs when using RWX mode. 
+
+To resolve 
+
+
+
+You can learn more about the issue in by following the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359) on GitHub.
+
+
 </TabItem>
 
 <TabItem label="1.4.x" value="1.4.x">
+
 
 
 ## Prerequisites
@@ -64,6 +80,7 @@ The table lists commonly used parameters you can configure when adding this pack
 
 | Parameter                | Description                                            | Default                                     |
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
+| `namespace`               | The namespace where the Longhorn will be installed. | `longhorn-system` |
 | `defaultClass`            | The volume type to be used. | `true` |
 | `defaultFsType`           | The default file system.    | `ext4` |
 | `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
@@ -99,6 +116,7 @@ The table lists commonly used parameters you can configure when adding this pack
 
 | Parameter                | Description                                            | Default                                     |
 |-------------------------|--------------------------------------------------------|---------------------------------------------|
+| `namespace`               | The namespace where the Longhorn will be installed. | `longhorn-system` |
 | `defaultClass`            | The volume type to be used. | `true` |
 | `defaultFsType`           | The default file system.    | `ext4` |
 | `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
