@@ -171,3 +171,4 @@ autoscale
 initContainer
 ethernet
 hostname
+Entra

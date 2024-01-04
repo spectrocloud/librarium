@@ -8,7 +8,7 @@ tags:
 - azure
 ---
 
-Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage [Host Clusters](../../../glossary-all.md#hostcluster) in Azure. To get  started check out the [Register and Manage Azure Cloud Account](azure-cloud.md#manage-azure-accounts). 
+Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage [Host Clusters](../../../glossary-all.md#hostcluster) in Azure or Azure Government. To get  started check out the [Register and Manage Azure Cloud Account](azure-cloud.md#manage-azure-accounts). 
 
 
 
