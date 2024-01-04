@@ -63,7 +63,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   If you already have commands in your `Dockerfile` that install packages, you can either merge these together with the above content, or keep them as separate RUN statements. Note that every RUN statement creates its own image layer and fewer layers are generally better.
 
-3. Review the **.arg.template** file containing the customizable arguments and create an **.arg** file. Below is a command you can run to create an example **.arg** file. For more information, refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide. 
+3. Review the **.arg.template** file containing the customizable arguments and create an **.arg** file. Below is a command you can use to create an example **.arg** file. For more information, refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide. 
 
   ```bash
   cat << EOF > .arg
