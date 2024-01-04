@@ -22,7 +22,7 @@ For a Tenant admin, the password shall be set upon the initial login. The Tenant
 * Using Palette credentials on the login page.
   
 * SSO using Identity Providers that use SAML 2.0:
-  * Azure Active Directory
+  * Microsoft Entra ID (formerly Azure Active Directory)
   * Okta
   * Keycloak
   * OneLogin

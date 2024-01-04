@@ -31,17 +31,14 @@ Microsoft Entra ID securely manages anything to do with the user's information, 
 
   <br />
 
-  
-  ![KubeFlow](/oidc-entra-id-images/Kubeflow.png)
-
-## Integrating Palette and Microsoft Entra ID with OIDC
+ ## Integrating Palette and Microsoft Entra ID with OIDC
   <br />
 
 ### Register Spectro Cloud Palette as a Microsoft Entra ID Application
 
   <br />
 
-1. Login to **Spectro Cloud Palette**. Browse to **Tenant Settings** -> **SSO** -> **Configure** -> **SSO Auth type**.
+1. Login to **Spectro Cloud Palette**. Select *Tenant Settings on the left Main Menu. From the Tenant Menu, select **SSO**, then **Configure** and **SSO Auth type**.
 
 ![OIDC_Callback](/oidc-entra-id-images/oidccallback.png)
 
@@ -49,54 +46,30 @@ Microsoft Entra ID securely manages anything to do with the user's information, 
 
   For integration with Microsoft Entra ID, we will copy the listed  **Palette Callback URL** to our clipboard, which will be used in the next step to configure Microsoft Entra ID.
 
-  <br />
 
 2. In a separate tab, log in to the **Microsoft Entra ID Admin console** and open the [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 
-![App-registration-blade](/oidc-entra-id-images/new-registration.png)
-  <br />
+Select **New registration**.  Name the new registration. 
 
-Name the new registration. In our example, we named the **App** `palette_oidc`.  Next, select **Web**, and paste the Palette Callback URL from the previous setup from you clipboard into the **Redirect URL (optional)** field.
+In our example, we named the **App** `palette_oidc`.  Next, select **Web**, and paste the Palette Callback URL from the previous setup from you clipboard into the **Redirect URL (optional)** field, and Click **Register**.
 
 ![Palette_Registration](/oidc-entra-id-images/palette-registration.png)
  
-Click **Register**.
-  <br />
-
-3. Click on the **Certificates & secrets** blade and select **New client secret**. 
-
-  <br />
-
-Name and save the client's **Secret value** in a password keeper.  
-
-![Palette_Secret](/oidc-entra-id-images/secret.png)
-  <br />
+3. Select the **Certificates & secrets** blade and select **New client secret**. Name and save the client's **Secret value** in a password keeper.  
 
 In this example, our palette secret expires after six months and the **Description** is `palette`.
- <br />
 
- 
 ### Configure Optional Claims
 Click on the **Token configuration** sub-blade and select the **Add optional claim** button.
 
-![Add_claims](/oidc-entra-id-images/claims.png)
-  <br />
-
-Choose **Token type** as **ID**, and add the claims **email** and **preferred_username**. 
+Choose **Token type** as **ID**, and add the claims **email** and **preferred_username**. When finished, click the **Add** button.
 
 ![Add_claims](/oidc-entra-id-images/twooptionalclaims.png)
-  <br />
-
-When finished, click the **Add** button.
-  <br />
-
 ## Configure Groups claim
 
 In addition to allowing individual user authentication, Spectro Cloud Palette provides groups claim functionality, allowing an OpenID Connect identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette.
 
-To do so, select the **Add groups claim** button.
-
-Select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
+To do so, select the **Add groups claim** button. Then select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
 
 ![Add_claims](/oidc-entra-id-images/groupsclaim.png)
   <br />
@@ -107,11 +80,7 @@ When completed, the **Token Configuration** page will look similar to this:
 
 Click on the **Overview** sub-blade. 
 
-
-![Palette_OIDC_Overview](/oidc-entra-id-images/app_obj_dir_ids.png)
-  <br />
-
-From the Overview selection, save the following information for when we configure Spectro Cloud Palette:
+From the **Overview** selection, save the following information for when we configure Spectro Cloud Palette:
 
 | Entra ID Essential   | Example                                                          |
 |-------------------|--------------------------------------------------------------------|
@@ -139,14 +108,12 @@ Create four (4) new Secruity Groups in Entra ID:
         k8s_cluster-editor
   <br />
  When completed, you should have at least four Entra ID group objects:
-
-![Entra_Groups](/oidc-entra-id-images/allgroups.png)
   <br />
 
 
 Record for future steps the group name and **Object ID** of each group. We will use this information in Palette.  Example:
 
-| Entra ID Group    | Group ID Example                                                          |
+| Entra ID Group    | Entra ID Object ID (Palette Team Name)                                                         |
 |-------------------|--------------------------------------------------------------------|
 | palette_tenant_admins     | e3ac07cc-bd12-4edc-92a4-983d783153ba |
 | palette_default_project_admins     | 88f61c49-1dd1-40c3-a820-68a513a38725 |
@@ -196,16 +163,13 @@ Open the [Users Blade](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndT
 
 After creating, you should have at least four Entra ID user objects (including the admin account used to access first access Entra ID):
 
-![Test_Users](/oidc-entra-id-images/testusers.png)
-  <br />
-
 ## Palette SSO 
 
 Your Palette tenant will need information from Microsoft to complete the OIDC setup. Please perform the following steps:
 
-1. Login to **Spectro Cloud Palette**. -> **Users and Teams** -> **Teams** -> **Create New Team**.
+1. Login to **Spectro Cloud Palette** and select **Users and Teams**, choose **Teams** and then select **Create New Team**.
 
-2. Create (4) Palette teams with each team named after the **Entra ID Group ID*** for thje Entra **Group**.
+2. Create **(4)** Palette teams with each team named after the **Entra ID Group ID*** for thje Entra **Group**.
 
 | Palette Team Name is the Entra Group ID | Entra ID Group Name     |  
 |-------------------|--------------------------------------------------------------------|
@@ -223,10 +187,7 @@ Assign the following **Roles** to each Palette Team:
 | 3f33c3a5-e0af-4ef6-9671-c7545fe264f3 |  -     |   
 | c4606295-e8b0-4df0-891b-de4428d7e54f |  -  | 
 
-See here for examples of the Palette Teams:
-
-![gid_example](/oidc-entra-id-images/gid_example.png)
-  <br />
+See here for examples of the Palette Teams and Roles assigned:
 
 ![gid_example](/oidc-entra-id-images/ba_tenantadmin.png)
   <br />
@@ -234,10 +195,9 @@ See here for examples of the Palette Teams:
 ![gid_example](/oidc-entra-id-images/25_def_project_admin.png)
   <br />
 
-
 ## Palette SSO OIDC Configuration
 
-Open [Palette](https://console.spectrocloud.com). Navigate to **Tenant Settings** --> **SSO** --> **OIDC**. 
+Open [Palette](https://console.spectrocloud.com), on the left-hand pane navigate to **Tenant Settings** and select the sub-category **SSO** and then **OIDC**. 
 
 We will enter the following information:
 
@@ -270,10 +230,8 @@ Palette will provide a message that **OIDC configured successfully**.
 ### Validate
 
 1. Log in to Palette through SSO with each Entra ID user created/modified above.  
-<br />
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field. Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without SSO. Click on the **Sign in** button to log in via SSO.
-<br />
 
 3. If this is the first time you are logging in with SSO, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
   <br />
@@ -284,112 +242,80 @@ Palette will provide a message that **OIDC configured successfully**.
 
 <br />
 
-
 **Troubleshooting**
 
 Add the following redirect URIs to Microsoft Entra App to enable integartion with the Kubernetes Dashboard:
 
 You can also add additional redirect URIs. The URIs in the table below are useful when you want to use Entra ID for OIDC authentication into your Kubernetes clusters.
 
-  <br />
-
   | URL | Type of Access |
   | --- | --- |
   | `http://localhost:8000` | Using kubectl with the kube-login plugin from a workstation. |
   | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard. |
 
-  <br />
-
 ## Resources
 
 - [Palette User Management](../user-management.md)
 
-
 - [Palette SSO](./saml-sso.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Integrating OIDC SSO for authenticating access to Kubernetes clusters using Microsoft Entra ID
 
 This section describes how to enable - Entra ID SSO authentication to access a Kubernetes cluster.
 
-1. From the sidebar menu, select **Tenant Settings** and ensure the **Tenant Admin** from dropdown is selected.<p></p><br />
-2. Go to **Profiles** from within Tenant Admin or a Project and select an existing Cluster Profile. Alternatively, if a Cluster Profile does not exist, create a new Cluster Profile with a CNCF Kubernetes distribution. Once you select a profile, you will see the Infrastructure layers in the picture.<p></p><br />
-3. Choose the **Kubernetes** layer and select the **Pack Values** to modify.<p></p><br />
-4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.<p></p><br />
+1. From the sidebar menu, select **Tenant Settings** and ensure the **Tenant Admin** from dropdown is selected.
+
+2. Go to **Profiles** from within Tenant Admin or a Project and select an existing Cluster Profile. Alternatively, if a Cluster Profile does not exist, create a new Cluster Profile with a CNCF Kubernetes distribution. Once you select a profile, you will see the Infrastructure layers in the picture.
+
+3. Choose the **Kubernetes** layer and select the **Pack Values** to modify.
+
+4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.
 
 ## Configuring the Application OpenID Configuration in the Cluster
 
-1.  Go to the **Kubeadminconfig**:**apiServer**:**extraArgs** section of the pack layer. <p></p><br />
+1.  Go to the **Kubeadminconfig**:**apiServer**:**extraArgs** section of the pack layer. 
 
-    - **oidc-groups-claim** - "Groups"<p></p><br />
-    - **oidc-username-claim** - "Email"<p></p><br />
-    - **oidc-issuer-url** -  "Issuer's URL"<p></p><br />
-    - **oidc-client-id** - "Client ID"<p></p><br />
+    - **oidc-groups-claim** - "Groups" 
+    - **oidc-username-claim** - "Email" 
+    - **oidc-issuer-url** -  "Issuer's URL" 
+    - **oidc-client-id** - "Client ID" 
 
-Here is an example with a different Entra ID configuration than used to configure Palette SSO.  
+Here is an example with of a an Entra ID configuration to configure SSO in a Kubernetes cluster:
        ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.png)
 
-<p></p><br />
 
-2.  Next, find the **clientConfig** section and modify the following parameters:<p></p><br />
+2.  Next, find the **clientConfig** section and modify the following parameters:
 
-    - **oidc-issuer-url** - This is the provider URL which allows the Palette to discover public signing keys.<p></p><br />
-    - **oid-client-id** - The client ID is found under the Application Registration/Enterprise Application.<p></p><br />
-    - **oidc-client-secret** - The secret provided by - Entra ID.<p></p><br />
-    - **oidc-extra-scope** - The scope tags.<p></p><br />
+    - **oidc-issuer-url** - This is the provider URL which allows the Palette to discover public signing keys.
+    - **oid-client-id** - The client ID is found under the Application Registration/Enterprise Application.
+    - **oidc-client-secret** - The secret provided by - Entra ID. 
+    - **oidc-extra-scope** - The scope tags. 
 
 ![oidc](/oidc-azure-images/client-config.png)
-<p></p><br />
-
+ 
 ## Binding the Cluster Admin Role AD to Cluster Admin via RBAC
 
-Configure the Role Based Access Control Pack (RBAC).<p></p><br />
-
+Configure the Role Based Access Control Pack (RBAC).
 ### Adding an RBAC Pack
 
-1. Under **Tenant Admin**, create an **RBAC Cluster** profile. <p></p><br />
-2. Go to **Cluster Profile** > +**Add Cluster Profile** and complete the Basic Information.<p></p><br />
-3. Enter the **Name**, **Version**, and **Description** (Optional) and click **Next**. <p></p><br />
-4. Under **Type**, select **+Add-on New Pack**.<p></p><br />
-5. Select **Authentication** as the Pack Type.<p></p><br />
-6. From the **Registry** dropdown, click **Public Repo**.<p></p><br />
-7. Choose **Spectro RBAC** as the Pack Name.<p></p><br />
-8. Select the Pack Version.<p></p><br />
-9. Click the **spectro-rbac 1.0.0** Pack Values to edit the pack layer settings.<p></p>
-   **Note**: This is where you will edit the role settings.<p></p><br />
-10. Click the **Confirm & Create** button.<p></p><br />
+1. Under **Tenant Admin**, create an **RBAC Cluster** profile.  
+2. Go to **Cluster Profile** > +**Add Cluster Profile** and complete the Basic Information. 
+3. Enter the **Name**, **Version**, and **Description** (Optional) and click **Next**.  
+4. Under **Type**, select **+Add-on New Pack**. 
+5. Select **Authentication** as the Pack Type. 
+6. From the **Registry** dropdown, click **Public Repo**. 
+7. Choose **Spectro RBAC** as the Pack Name. 
+8. Select the Pack Version. 
+9. Click the **spectro-rbac 1.0.0** Pack Values to edit the pack layer settings. 
+   **Note**: This is where you will edit the role settings. 
+10. Click the **Confirm & Create** button. 
 
 ### Editing the RBAC Cluster Profile
 
-1. From Palette, go to **Profiles** and choose the **RBAC** cluster profile.<p></p><br />
-2. Click the layer image and specify the ClusterRoleBindings.<p></p><br />
-3. Go to the **clusterRoleBindings**:**role** section and type **cluster-admin**.<p></p><br />
-4. Change the settings to your requirements and specific groups.<p></p><br />
+1. From Palette, go to **Profiles** and choose the **RBAC** cluster profile. 
+2. Click the layer image and specify the ClusterRoleBindings. 
+3. Go to the **clusterRoleBindings**:**role** section and type **cluster-admin**. 
+4. Change the settings to your requirements and specific groups. 
 
 For - Entra ID integration with RBAC, edit your RBAC pack value to below. Or, copy and paste the entire block to your RBAC pack and modify you inputs where appropriate:
 
@@ -489,8 +415,7 @@ charts:
 ![oidc](/oidc-azure-images/client-config.png)
 
 ## Results
-
-You have now established SSO authentication integrating Microsoft - Entra ID and Spectro Cloud Palette using OIDC.
+You have now established SSO authentication integrating Microsoft - Entra ID, Spectro Cloud Palette and Kubernetes clusters using OIDC.
 
 ## References
 
