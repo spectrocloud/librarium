@@ -19,41 +19,17 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 - At least one Edge device with an AMD64 processor architecture registered with your Palette account.
 
-- Your Edge devices must be able to connect to Tailscale. This usually means the edge device must have an Internet connection. 
+- Your Edge devices must be able to connect to Tailscale. This usually means the Edge device must have an internet connection. 
 
 - An external volume that can be flashed with the Edge installer ISO. For example, a USB drive. 
 
-- This how-to uses the EdgeForge workflow to build artifacts used to provision Edge hosts. Review [EdgeForge Workflow](https://docs.spectrocloud.com/clusters/edge/edgeforge-workflow/) to become familiar with how to build EdgeForge artifacts. 
+- This how-to uses the EdgeForge workflow to build artifacts used to provision Edge hosts. Review [EdgeForge Workflow](../edgeforge-workflow/palette-canvos.md) to become familiar with how to build EdgeForge artifacts. 
 
-### Use Tailscale to Remotely Connect to Your Edge Cluster
+## Use Tailscale to Remotely Connect to Your Edge Cluster
 
-1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code. 
+1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository. Change to the **CanvOS** directory and choose a version tag. 
 
-  ```bash
-  git clone https://github.com/spectrocloud/CanvOS.git
-  ```
-
-2. Change to the **CanvOS/** directory. 
-
-  ```bash
-  cd CanvOS
-  ```
-
-
-3. View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
-
-  ```bash
-  git tag
-  ```
-
-
-4. Check out the newest available tag. This guide uses the tag **v4.0.6** as an example. 
-
-  ```shell
-  git checkout v4.0.6
-  ```
-
-5. Add the following content to the end of the file `Dockerfile`:
+2. Add the following content to the end of the file `Dockerfile`:
 
   <Tabs>
   <TabItem value="ubuntu" label="Ubuntu">
@@ -87,15 +63,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   If you already have commands in your `Dockerfile` that install packages, you can either merge these together with the above content, or keep them as separate RUN statements. Note that every RUN statement creates its own image layer and fewer layers are generally better.
 
-6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide uses the value `tailscale` as an example. However, you can assign any lowercase and alphanumeric string to the `CUSTOM_TAG` argument. 
-
-  ```bash
-  export CUSTOM_TAG=tailscale
-  ```
-
-7. Issue the command below to create the **.arg** file containing the custom tag. The remaining arguments in the **.arg** file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing **.arg.template** file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the available customizable arguments.
-
-  Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be `ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn`.   
+3. Review the **.arg.template** file containing the customizable arguments and create an **.arg** file. Below is a command you can run to create an example **.arg** file. For more information, refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide. 
 
   ```bash
   cat << EOF > .arg
@@ -113,21 +81,14 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
   UPDATE_KERNEL=false
   EOF
   ```
-  
-  View the newly created file to ensure the customized arguments are set correctly.
- 
-  ```bash
-  cat .arg
-  ```
 
-8. Issue the command below to save your tenant registration token to an environment variable. Replace `[your_token_here]` with your actual registration token. 
+4. Issue the command below to save your tenant registration token to an environment variable. Replace `[your_token_here]` with your actual registration token. 
 
   ```bash
   export token=[your_token_here]
   ```
 
-
-9. Issue the following command to create the **user-data** file. 
+5. Issue the following command to create the **user-data** file. 
 
   ```yaml
   cat << EOF > user-data
@@ -147,7 +108,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
   EOF
   ```
 
-10. Next, add a `stages` block to the **user-data** file to automatically enable Tailscale and register the Edge device. Replace `AUTH-KEY` with your authorization key from Tailscale:
+6. Next, add a `stages` block to the **user-data** file to automatically enable Tailscale and register the Edge device. Replace `AUTH-KEY` with your authorization key from Tailscale:
 
   ```yaml {14}
   stages:
@@ -177,7 +138,6 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   If you already have a `stages` block in your user-data file, you must merge the existing block together with the above content. The `stages` block is based on Kairos cloud-init stages. For more information on cloud init stages, refer to [Cloud Init Stages](../edge-configuration/cloud-init.md).
 
-
   :::info
 
   In the above `stages` block, you are using the device ID of your Edge device as the hostname with which to register your device with Tailscale. For more information about how this ID is generated, refer to [Install Configurations](../edge-configuration/installer-reference.md#device-id-uid-parameters).
@@ -186,13 +146,13 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   :::
 
-11. Build the Edge device installation ISO and providers images. Afterward, push the provider images to an image registry. For more information, refer to [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md).
+7. Build the Edge device installation ISO and providers images. Afterward, push the provider images to an image registry. For more information, refer to [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md).
 
-12. Flash your external volume with the Edge installer ISO image. We recommend using [balena etcher](https://etcher.balena.io/) to flash your volume. 
+8. Flash your external volume with the Edge installer ISO image. We recommend using [balena etcher](https://etcher.balena.io/) to flash your volume. 
 
-13. Plug the external volume into your Edge device and boot up the device using the volume to prepare your Edge device for installation. For more information, refer to [Prepare Edge Host for Installation](../site-deployment/stage.md). 
+9. Plug the external volume into your Edge device and boot up the device using the volume to prepare your Edge device for installation. For more information, refer to [Prepare Edge Host for Installation](../site-deployment/stage.md). 
 
-14. Remove the volume and boot up your device again to register your Edge host. If the Edge host has internet access, it will start up Tailscale and register your device with Tailscale. 
+10. Remove the volume and boot up your device again to register your Edge host. If the Edge host has internet access, it will start up Tailscale and register your device with Tailscale. 
 
 
 ## Validate
