@@ -53,16 +53,31 @@ For more information, check out Longhorn guide on [How to Create Volumes](https:
 
 ## Troubleshooting
 
+Below are some common issues you may encounter when using Longhorn. Use the following information to help you troubleshoot and resolve the issue.
+
 ### Deadlock With RWX Mode
 
-Starting with version 1.5.X, a known issue exists where a deadlock occurs when using RWX mode. 
+Starting with version 1.5.X, a known issue exists where a deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a known issue in the [Longhorn GitHub repository](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153).   
 
-To resolve 
+To resolve the deadlock, you must manually update the status of the Longhorn Storage Manager. Use the following command to resolve the deadlock. Replace `PVC-ID` with the ID of the Persistent Volume Claim (PVC) that is stuck in the `error` state.
+
+```bash
+kubectl --namespace longhorn-system patch lhsm PVC-ID \
+--type=merge --subresource status --patch 'status: {state: error}'
+```
+
+:::tip
+
+To identify the ID of the PVC, use the following command to list all PVCs in the `longhorn-system` namespace. Seach for the PVC that has the **ACCESS MODE** set to **RWX**.
 
 
+```bash
+kubectl get pvc --namespace longhorn-system 
+```
+:::
 
-You can learn more about the issue in by following the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359) on GitHub.
 
+There are other workaround solutions provided by the community in the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359) that you may explore if you are searching for an alternative solution. 
 
 </TabItem>
 
