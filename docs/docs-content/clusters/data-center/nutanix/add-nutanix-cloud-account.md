@@ -3,6 +3,7 @@ sidebar_label: "Add Nutanix Cloud Account"
 title: "Add Nutanix Cloud Account"
 description: "Learn how to add a Nutanix cloud account in Palette."
 hide_table_of_contents: false
+sidebar_position: 20
 tags: ["data center", "nutanix"]
 ---
 
