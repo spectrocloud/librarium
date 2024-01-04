@@ -40,7 +40,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
   ```
 
 
-3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+3. View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 
   ```bash
   git tag
@@ -68,15 +68,12 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   </TabItem>
 
-  <TabItem value="debian" label="Debian">
+  <TabItem value="redhat" label="RedHat">
 
-  ```
-  RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null && \
-      curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list && \
-      sudo apt-get update
-      sudo apt-get install tailscale
-      sudo tailscale up
-      tailscale ip -4
+  ```dockerfile
+  RUN dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/9/tailscale.repo && \
+      dnf install tailscale && \
+      dnf clean all
   ```
 
   </TabItem>
@@ -154,7 +151,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   ```yaml {14}
   stages:
-    network.after:
+    boot.after:
       - name: "Register device with Tailscale"
         if: '[ ! -f "/run/cos/recovery_mode" ] && ! grep _current-profile /var/lib/tailscale/tailscaled.state'
         commands:
