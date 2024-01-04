@@ -104,7 +104,7 @@ This section describes one possible method for creating a Kubernetes cluster tha
   kubectl apply -filename ./cluster.yaml -namespace ${TEST_NAMESPACE}
   ```
 
-  Output
+  The snippet below displays the output of the command.
 
   ```bash hideClipBoard
   namespace/mytestnamespace created

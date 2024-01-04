@@ -8,7 +8,7 @@ tags: ["data center", "nutanix"]
 ---
 
 
-A system administrator registers the Nutanix cloud in Palette by invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs required to add the cloud to Palette. They also enable uploading the YAML templates used to create the cluster, control plane, and worker nodes. This section provides instructions on how to download and modify the YAML templates, as well as how to use the APIs to register a Nutanix cloud to Palette.
+A [system administrator](../../../glossary-all.md#system-administrator) registers the Nutanix cloud in Palette by invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs required to add the cloud to Palette. They also enable uploading the YAML templates used to create the cluster, control plane, and worker nodes. This section provides instructions on how to download and modify the YAML templates, as well as how to use the APIs to register a Nutanix cloud to Palette.
 
 
 ## Prerequisites
@@ -18,7 +18,7 @@ A system administrator registers the Nutanix cloud in Palette by invoking system
 
 - The Nutanix CAPI version must be v1.2.x.
 
-- A Palette account with system console access. The user with this privilege is the *admin user* of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
+- A Palette account with system console access. The user with this privilege is the [*system administrator*](../../../glossary-all.md#system-administrator) user of the self-hosted [Palette](https://docs.spectrocloud.com/enterprise-version/system-management/#system-console) or [VerteX](https://docs.spectrocloud.com/vertex/system-management/#system-console) instance.
 
 - A Nutanix logo downloaded. Review logo requirements in [Register the Cloud](#register-the-cloud).
 

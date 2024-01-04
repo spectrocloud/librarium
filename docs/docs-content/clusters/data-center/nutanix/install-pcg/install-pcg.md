@@ -14,7 +14,7 @@ A Private Cloud Gateway (PCG) is required to connect your Nutanix environment wi
 
 ## Prerequisites
 
-- An existing Kubernetes cluster created that has network connectivity with Nutanix Prism Central. This cluster will connect the Nutanix infrastructure with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Kubernetes cluster to deploy your PCG, check out the [Deploy a Kubernetes Cluster to Host the PCG](/docs/docs-content/clusters/data-center/nutanix/deploy-kubernetes-cluster-pcg.md) section below. This section provides one possible option and explains how to deploy a Kubernetes cluster within the Nutanix environment.
+- An existing Kubernetes cluster created that has network connectivity with Nutanix Prism Central. This cluster will connect the Nutanix infrastructure with Palette via the PCG. Various types of Kubernetes clusters can be used to deploy the PCG. If you need guidance in creating a Kubernetes cluster to deploy your PCG, check out the [Deploy a Kubernetes Cluster to Host the PCG](deploy-kubernetes-cluster-pcg.md) page. This section provides one possible option and explains how to deploy a Kubernetes cluster within the Nutanix environment.
 
 - A Nutanix cloud registered with Palette. For more information, review [Register Nutanix Cloud](/docs/docs-content/clusters/data-center/nutanix/register-nutanix-cloud.md).
 
