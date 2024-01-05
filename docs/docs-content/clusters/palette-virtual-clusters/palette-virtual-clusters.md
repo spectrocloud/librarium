@@ -32,7 +32,7 @@ The following Kubernetes distributions are supported for virtual clusters:
 
 Refer to the [Create and Manager Cluster Groups](../cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) to learn how to configure your cluster group to use a specific Kubernetes distribution.
 
-### Minumum Resource Requirements
+### Minimum Resource Requirements
 
 The following table lists the minimum resource requirements for virtual clusters and the minimum resource requirements for the underlying Kubernetes distribution.
 
