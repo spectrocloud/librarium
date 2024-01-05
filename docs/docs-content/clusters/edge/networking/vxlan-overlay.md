@@ -35,7 +35,7 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 ## Limitations
 - When adding multiple nodes to an existing cluster with overlay enabled, failure to add one node will block the addition of the other nodes.
 
-- When deleting an Edge host from a cluster with overlay enabled, ensure the node doesn't have the `palette-webhook` pod on it, or the node will be stuck in the deleting state. You can use the command `kubectl get pods -all-namespaces -output wide` to identify which node `palette-webhook` is on.
+- When deleting an Edge host from a cluster with overlay enabled, ensure the node doesn't have the `palette-webhook` pod on it, or the node will be stuck in the deleting state. You can use the command `kubectl get pods --all-namespaces --output wide` to identify which node `palette-webhook` is on.
 
 ## Prerequisites
 
