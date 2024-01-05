@@ -34,7 +34,7 @@ Refer to the [Create and Manager Cluster Groups](../cluster-groups/create-cluste
 
 ### Minimum Resource Requirements
 
-The following table lists the minimum resource requirements for virtual clusters and the minimum resource requirements for the underlying Kubernetes distribution.
+The following table lists the minimum resource requirements for virtual clusters and the underlying Kubernetes distribution.
 
  |**Resource Type** | **Default**   |**K3s Minimum Limit**| **Kubernetes Minimum Limit**|
  |------------------------------|-------------------|-----------------| -----------------|
