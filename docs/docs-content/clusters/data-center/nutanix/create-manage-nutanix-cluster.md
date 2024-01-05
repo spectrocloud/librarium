@@ -17,7 +17,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - A Nutanix Private Cloud Gateway (PCG) deployed. For guidance, review [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
-- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. Select the custom packs provided at the OS and Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the **Nutanix CSI** storage pack.
+- An infrastructure cluster profile created for the Nutanix cloud. For guidance on creating a profile, refer to [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md). At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. Select the custom packs provided at the OS and Kubernetes layers. Palette provides out-of-the-box packs for the network and storage profile layers, including the [**Nutanix CSI**](../../../integrations/nutanix-csi.md) storage pack.
 
 - A Nutanix Prism Central account with *Prism Admin* role.
 

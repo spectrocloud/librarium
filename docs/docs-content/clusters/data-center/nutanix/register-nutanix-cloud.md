@@ -97,20 +97,34 @@ Use the following steps to prepare to register your cloud with Palette.
   The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
   :::
 
-8. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object.
+8. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object to enable the [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack. Include a new line with the `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as illustrated below.
+
+  ```bash
+  preKubeadmCommands:
+    - systemctl enable --now iscsid
+  ```
+
+9. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the `NutanixMachineTemplate` object.
+
+10. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object to enable the [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack. Include a new line with the `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as illustrated below.
+
+  ```bash
+  preKubeadmCommands:
+    - systemctl enable --now iscsid
+  ```
 
   :::caution
-  The following modifications in steps 9 and 10 are only applicable to VerteX instances.  
+  The following modifications in steps 11 and 12 are only applicable to VerteX instances.  
   :::
 
-9. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
+10. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
 
   ```bash
   kubeletExtraArgs:
     rotate-server-certificates: "true"
   ```
 
-10. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object. Include a new line with `rotate-server-certificates: "true"` below the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
+11. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object. Include a new line with `rotate-server-certificates: "true"` below the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
 
   ```bash
   kubeletExtraArgs:
@@ -169,7 +183,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   :::caution
   The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps. 
   
-  Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette. 
+  Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack available to users when they create a cluster profile in Palette. 
   :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.
