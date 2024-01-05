@@ -20,7 +20,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 #### Features
 
 
-- Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/). You can deploy Kubernetes clusters on Nutanix using Palette. Support for Nutanix is currently under technical preview and subject to change as we continue to improve the integration.
+- Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/), as a Technical Preview feature. You can deploy Kubernetes clusters on Nutanix using Palette. Technical Preview features are subject to change as we continue to improve the integration. Refer to the [Nutanix](./clusters/data-center/nutanix/nutanix.md) resource to learn more about deploying Nutanix clusters with Palette.
 
 
 - Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a manual action that had to be performed by the user, which also caused node repaves. Palette will now automatically renew the certificate 30 days before the expiration date without triggering a node repave. This feature is available in all supported infrastructure providers except for Edge. For more information, refer to the [Certificate Management](./clusters/cluster-management/certificate-management.md) resource.
@@ -94,13 +94,13 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - In a multi-node cluster with [PXK-E](./integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its default value.
 
-- The following known issues apply to Harbor when deployed with the Longhorn Container Storage Interface (CSI) driver:
+- The following known issues apply to [Harbor Edge Native Config](./integrations/harbor-edge.md) when deployed with the [Longhorn](./integrations/longhorn.md) Container Storage Interface (CSI) driver:
 
-  - The Harbor job service pod is in a *Terminating* and *ContainerCreating* state in an Edge Native High Availability (HA) cluster after a Day-2 operation when Longhorn is used.
+  - The Harbor job service pod is in a *Terminating* and *ContainerCreating* state in an Edge Native High Availability (HA) cluster after a Day-2 operation.
 
   - The Harbor core, database, and jobs service pods are in a state of CrashLoopBackOff on a long-running cluster with a single node using RKE2.
 
-  - A cluster may get stuck in the provisioning process when using the Longhorn CSI and the [Harbor Edge Native Config](./integrations/harbor-edge.md) pack together. If this happens, remove the cluster and try again.
+  - A cluster may get stuck in the provisioning. If this happens, remove the cluster and try again.
 
 ### Palette Dev Engine (PDE)
 
