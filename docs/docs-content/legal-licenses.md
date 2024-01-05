@@ -227,11 +227,6 @@ If you have any questions or concerns, contact us at support@spectrocloud.com
 | github.com/dsnet/compress                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/hashicorp/hcl                                                                      | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)      |
 | github.com/spf13/viper                                                                        | [MIT](https://opensource.org/license/mit/)          |
-| github.com/loft-sh/cluster-api-provider-vcluster/api/v1alpha1                                 | Unknown      |
-| github.com/canonical/cluster-api-bootstrap-provider-microk8s/apis/v1beta1                     | Unknown      |
-| github.com/canonical/cluster-api-control-plane-provider-microk8s/api/v1beta1                  | Unknown      |
-| github.com/coxedge/cluster-api-provider-cox/api/v1beta1                                       | Unknown      |
-| github.com/xi2/xz                                                                             | Unknown      |
 | github.com/pelletier/go-toml/v2                                                               | [MIT](https://opensource.org/license/mit/)          |
 | golang.org/x/mod/sumdb/dirhash                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | k8s.io/apimachinery/pkg                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -371,7 +366,6 @@ If you have any questions or concerns, contact us at support@spectrocloud.com
 | github.com/qeesung/image2ascii                                                                | [MIT](https://opensource.org/license/mit/)          |
 | sigs.k8s.io/yaml/goyaml.v2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/rubenv/sql-migrate                                                                 | [MIT](https://opensource.org/license/mit/)          |
-| github.com/willdonnelly/passwd                                                                | Unknown      |
 | github.com/mudler/go-pluggable                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/sergi/go-diff/diffmatchpatch                                                       | [MIT](https://opensource.org/license/mit/)          |
 | github.com/cheggaaa/pb                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -460,7 +454,7 @@ If you have any questions or concerns, contact us at support@spectrocloud.com
 | github.com/pborman/uuid                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | kubevirt.io/containerized-data-importer-api/pkg/apis/core                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/kyverno/go-wildcard                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/juliangruber/go-intersect                                                          | Unknown      |
+| github.com/juliangruber/go-intersect                                                          | [MIT](https://opensource.org/license/mit/)      |
 | kubevirt.io/controller-lifecycle-operator-sdk/api                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/validator.v2                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | golang.org/x/crypto/ed25519                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
@@ -475,6 +469,7 @@ If you have any questions or concerns, contact us at support@spectrocloud.com
 | k8s.io/klog                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/flynn/go-shlex                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | golang.org/x/crypto/pkcs12                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/xi2/xz#License-1-ov-file                                                           | [Custom License](https://github.com/xi2/xz#License-1-ov-file) |
 
 <br />
 
