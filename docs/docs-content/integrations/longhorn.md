@@ -50,7 +50,7 @@ The table lists commonly used parameters you can configure when adding this pack
 
 The official Longhorn documentation contains several guides and examples. The following guides are a good place to start when learning how to use Longhorn.
 
-- [How to Create Volumes](https://longhorn.io/docs/1.5.3/volumes-and-nodes/create-volumes/).
+- [How to Create Volumes](https://longhorn.io/docs/1.5.3/volumes-and-nodes/create-volumes/)
 
 - [Access the Longhorn UI](https://longhorn.io/docs/1.5.3/deploy/accessing-the-ui/)
 
