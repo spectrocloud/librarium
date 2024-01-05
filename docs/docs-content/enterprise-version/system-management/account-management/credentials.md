@@ -5,7 +5,7 @@ description: "Update and manage the user credentials"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["vertex", "management", "account", "credentials"]
+tags: ["palette", "management", "account", "credentials"]
 keywords: ["self-hosted", "palette"]
 ---
 
@@ -56,7 +56,7 @@ A successful login indicates that the password has been changed successfully.
 
 VerteX supports the usage of passkeys (using the [WebAuthn Level2 protocol](https://developers.yubico.com/WebAuthn/Concepts/WebAuthn_Level_2_Features_and_Enhancements.html)) to authenticate. When you enable passkeys, the admin user will still be required to provide an email address and password to log in to the system console. However, the admin user will also be required to provide a passkey to log in to the system console. 
 
-The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol. A maximum of two passkeys can be added for the admin user.
+The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol.
 
 :::danger
 
@@ -135,3 +135,119 @@ Use the following steps to delete a passkey for the admin user. We recommend you
 
 3. The deleted passkey should not be available in the list of passkeys.
 
+
+## Passkeys and API Access
+
+When you enable passkeys, you cannot authenticate system API calls with the JSON Web Token (JWT) returned by the login endpoint. The normal flow to access the system console API endpoint is to provide the username and password of the admin user to the `/v1/auth/syslogin` endpoint and use the JWT token returned in future API requests by providing the token in the `Authorization` header.  
+
+  ```bash
+  curl --insecure --location 'https://palette.domain.example/v1/auth/syslogin' \
+   --header 'Content-Type: application/json' \
+   --data '{
+    "password": "**********",
+    "username": "**********"
+   }'
+  ```
+
+  ```json hideClipboard
+  {
+    "Authorization": "**********",
+    "IsEmailSet":true,
+    "IsEmailVerified":false,
+    "IsMfa":true,
+    "IsPasswordReset":true
+  }
+  ```
+
+However, when you enable passkeys, you cannot use the JWT token returned by the `/v1/auth/syslogin` endpoint to access the system API endpoints. To circumvent this limitation, you must use the Authorization cookie created when you authenticate into the system console through a web browser. Use the following steps to access the system API endpoints with passkeys enabled.
+
+### Prerequisites
+
+- Access to the Palette VerteX system console.  Refer to [Access the System Console](../system-management.md#access-the-system-console) for guidance on how to access the system console.
+
+- The admin user must have at least one passkey configured.
+
+- An Internet browser that contains developer tools.
+
+### Steps
+
+The following steps assume you are using the Chrome browser. The steps may vary slightly if you are using a different browser.
+
+1. Log in to the system console.
+
+2. Open up the browser's developer tools. You can open the developer tools by clicking the **three-dot Menu** in the top right corner of the browser and select **More tools** and then **Developer tools**.
+
+3. Navigate to the **Application** tab in the developer tools window.
+
+4. From the **left Main Menu** select **Storage** and expand the **Local Storage** section.
+
+5. Click on the entry that matches the URL of the system console. For example, if the URL of the system console is `https://palette.domain.example`, then click on the entry that matches `https://palette.domain.example`.
+
+6. Copy the value of the **lscache-loginauthToken** cookie. The image below highlights the sections of importance.
+
+  ![View of the auth cookie](/enterprise-version-account-management_credentials_browser-cache-token.png)
+
+7. Access the system console API endpoints using the Authorization header with the value of **lscache-loginauthToken** cookie.
+
+
+### Validate
+
+You can validate that you can access the system console API endpoint by attempting a query. For example, you can query the `/v1/system/tenant` endpoint to get information about the available tenants. 
+
+
+1. Use the following `curl` command and replace the placeholder `REPLACE_ME` with the value of the **lscache-loginauthToken** cookie and use your Vertex URL instead of `palette.domain.example` that is used in the example.
+
+  ```bash
+  curl --location 'https://palette.domain.example/v1/tenants' \
+  --header 'Authorization: REPLACE_ME'
+  ```
+
+  ```json hideClipboard
+  {
+    "items": [
+      {
+        "metadata": {
+          "annotations": {
+            "ownerUid": "sysadmin",
+            "permissions": "tag.update,tenant.delete,tenant.get,tenant.list,tenant.update",
+            "scope": "tenant",
+            "scopeVisibility": "5",
+            "tenantUid": "657cf2da4be57501577a0ffc"
+          },
+          "creationTimestamp": "2023-12-16T00:44:10.010Z",
+          "deletionTimestamp": "0001-01-01T00:00:00.000Z",
+          "lastModifiedTimestamp": "2023-12-16T00:44:10.955Z",
+          "uid": "657cf2da4be57501577a0ffc"
+        },
+        "spec": {
+          "address": {},
+          "authType": "password",
+          "defaultLoginMode": "devops",
+          "orgEmailId": "example@spectrocloud.com",
+          "orgName": "example",
+          "planUid": "123456789"
+        },
+        "status": {
+          "cleanUpStatus": {
+            "cleanUpTimestamp": "0001-01-01T00:00:00.000Z",
+            "cleanedResources": null,
+            "isCompleted": false,
+            "isInProgress": false
+          },
+          "isActive": true,
+          "toBeDeleted": false
+        }
+      }
+    ],
+    "listmeta": {
+      "continue": "",
+      "count": 1,
+      "limit": 50,
+      "offset": 0
+    }
+  }
+  ```
+
+
+
+2. A successful query indicates that you are able to access the system console API endpoint with passkeys enabled. Use the same method to access other system console API endpoints.
