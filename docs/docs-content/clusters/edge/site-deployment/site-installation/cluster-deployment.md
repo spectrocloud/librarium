@@ -20,6 +20,10 @@ Select the workflow that best fits your needs.
 
 Use the following steps to create a new host cluster so that you can add Edge hosts to the node pools.
 
+### Limitations
+
+- In a multi-node cluster with PXK-E as its Kubernetes layer, you cannot change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its default value. 
+
 ### Prerequisites
 
 - A registered Edge host.
@@ -156,6 +160,10 @@ You can also use the command `kubectl get nodes` to review the status of all nod
 ## Add an Edge Host to a Host Cluster
 
 You can add Edge hosts to the node pool of an existing host cluster. Use the following steps to add the Edge host to the node pool.
+
+### Limitations
+
+- In a multi-node cluster with PXK-E as its Kubernetes layer, you cannot change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its default value. 
 
 ### Prerequisites
 

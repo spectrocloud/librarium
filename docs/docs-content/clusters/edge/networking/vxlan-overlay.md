@@ -32,6 +32,11 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 |---------------------|-----------------------|
 | Upon recovery, each Kubernetes component inside in the Edge host requests an IP address from the DHCP server, and receives a different IP address than their original IP address before the outage happened. Since Kubernetes expects several components in the control plane to have stable IP addresses, the cluster becomes non-operational and assembly line is unable to resume operations | Each Kubernetes component inside in the Edge host has a virtual IP address in the overlay network. Upon recovery, their IP addresses in the overlay network remain the same despite their IP addresses changing in the underlying DHCP network. The Edge host is able to assume its workload and the assembly line resumes operations | 
 
+## Limitations
+- When adding multiple nodes to an existing cluster with overlay enabled, failure to add one node will block the addition of the other nodes.
+
+- When deleting an Edge host from a cluster with overlay enabled, ensure the node doesn't have the `palette-webhook` pod on it, or the node will be stuck in the deleting state. You can use the command `kubectl get pods -all-namespaces -output wide` to identify which node `palette-webhook` is on.
+
 ## Prerequisites
 
 * At least one Edge host registered with your Palette account.
@@ -84,7 +89,7 @@ You will not be able to change the network overlay configurations after the clus
     <Tabs>
     <TabItem value="calico" label="Calico">
     
-    In the Calico pack YAML file default template, uncomment `FELIX_IPV6SUPPORT` and set its value to `scbr-100` and uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=scbr-100`.  
+    In the Calico pack YAML file default template, uncomment `FELIX_MTUIFACEPATTERN` and set its value to `scbr-100` and uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=scbr-100`.  
     ```yaml {8,11}
     manifests:
         calico:
@@ -93,7 +98,7 @@ You will not be able to change the network overlay configurations after the clus
             # Additional env variables for calico-node
             calicoNode:
                 #IPV6: "autodetect"
-                FELIX_IPV6SUPPORT: "scbr-100"
+                FELIX_MTUIFACEPATTERN: "scbr-100"
                 #CALICO_IPV6POOL_NAT_OUTGOING: "true"
                 #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
                 IP_AUTODETECTION_METHOD: "interface=scbr-100"
