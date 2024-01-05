@@ -54,7 +54,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - The ability to change the underlying node type of a node pool is not available for Google Cloud Platform GKE clusters.
 
-- Clusters launched in VMware vSphere with the Container Network Interface (CNI) Cilium, loses node-to-node connectivity when the vSphere adapter is configured to use VMXNET3. This is a known issue with Cilium and VMXNET3. Refer to the [GitHub issue discussion](https://github.com/cilium/cilium/issues/21801) to learn more about this issue.
+- Clusters launched in VMware vSphere with the Container Network Interface (CNI) Cilium, lose node-to-node connectivity when the vSphere adapter is configured to use VMXNET3. This is a known issue with Cilium and VMXNET3. Refer to the [GitHub issue discussion](https://github.com/cilium/cilium/issues/21801) to learn more about this issue.
 
 
 - Enabling [passkeys](/enterprise-version/system-management/account-management/credentials.md) in a self-hosted Palette instance will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer to the [Passkeys and API Access](./enterprise-version/system-management/account-management/credentials.md#passkeys-and-api-access) resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the regular Palette API used by clusters and users.
@@ -98,9 +98,9 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
   - The Harbor job service pod is in a *Terminating* and *ContainerCreating* state in an Edge Native High Availability (HA) cluster after a Day-2 operation.
 
-  - The Harbor core, database, and jobs service pods are in a state of CrashLoopBackOff on a long-running cluster with a single node using RKE2.
+  - The Harbor database pod might fail to start due to file permission issues. This is a [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository.
 
-  - A cluster may get stuck in the provisioning. If this happens, remove the cluster and try again.
+  - A cluster may get stuck in the provisioning state. If this happens, remove the cluster and try again.
 
 ### Palette Dev Engine (PDE)
 
