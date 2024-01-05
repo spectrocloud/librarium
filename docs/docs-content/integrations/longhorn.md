@@ -70,7 +70,9 @@ We also recommend you check out the [Examples](https://longhorn.io/docs/1.5.3/re
 The following known issues exist in the Longhorn 1.5.X release.
 
 
-- A deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a known issue in the [Longhorn GitHub repository](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153) and a fix is on the roadmap. Workarounds provided by the community can be found in the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359). 
+- A deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a [known issue](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153) in the Longhorn GitHub repository] and a fix is on the roadmap. Workarounds provided by the community can be found in the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359). 
+
+- Rebooting or upgrading a cluster with Longhorn has a small possibility of triggering a race condition that causes pods to be stuck in the terminating state. This issue is related to a [known issue](https://github.com/longhorn/longhorn/issues/6962) in the Longhorn GitHub repository and a fix is on the roadmap. 
 
 </TabItem>
 
