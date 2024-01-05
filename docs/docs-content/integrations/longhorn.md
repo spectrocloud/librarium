@@ -42,7 +42,7 @@ The table lists commonly used parameters you can configure when adding this pack
 | `charts.longhorn.global.persistence.defaultFsType`           | The default file system.    | `ext4` |
 | `charts.longhorn.global.persistence.defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
 | `charts.longhorn.global.persistence.defaultDataLocality`     | The default location where data computation will occur. | `disabled`|
-| `charts.longhorn.global.persistence.reclaimPolicy`           | TThe policy that regulates dynamically provisioned volumes when its corresponding PersistentVolumeClaim is deleted. The default policy is `Delete`. This means that a dynamically provisioned volume will be automatically deleted when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy. | `Delete`  |
+| `charts.longhorn.global.persistence.reclaimPolicy`           | The policy that regulates dynamically provisioned volumes when its corresponding PersistentVolumeClaim is deleted. The default policy is `Delete`. This means that a dynamically provisioned volume will be automatically deleted when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy. | `Delete`  |
 | `charts.longhorn.global.persistence.migratable`              | The ability to transfer data to another data storage systems. | `false`   |
 | `charts.longhorn.global.persistence.recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to activate.  | `false`   |
 
