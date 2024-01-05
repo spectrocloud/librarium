@@ -167,7 +167,7 @@ However, when you enable passkeys, you cannot use the JWT token returned by the 
 
 - The admin user must have at least one passkey configured.
 
-- An internet browser that contains developer tools.
+- An Internet browser that contains developer tools.
 
 ### Steps
 
@@ -187,7 +187,7 @@ The following steps assume you are using the Chrome browser. The steps may vary 
 
   ![View of the auth cookie](/enterprise-version-account-management_credentials_browser-cache-token.png)
 
-7. Access the system console API endpoints using the Authorization header with the value of **lscache-loginauthToken** cookie. .
+7. Access the system console API endpoints using the Authorization header with the value of **lscache-loginauthToken** cookie.
 
 
 ### Validate
