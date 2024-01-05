@@ -190,7 +190,7 @@ When you start a cluster with the Harbor pack, the **harbor-database** pod might
   kubectl get pods --namespace harbor -o wide 
   ```
 
-2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are multiple pods, run the command for each pod. 
+2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are multiple pods, use the command for each pod. 
 
   ```shell
   kubectl delete pod POD_NAME --namespace harbor
