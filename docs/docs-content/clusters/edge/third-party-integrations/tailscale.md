@@ -185,15 +185,28 @@ Recently, Tailscale announced that it is now possible to limit the IP address ra
 
 ```yaml {14}
 stages:
-  reconcile:
+  initramfs:
+    - name: "Tailscale adjustment script"
+      files:
+        - path: /etc/palette/tailscale-iptables.sh
+          permissions: 0755
+          owner: 0
+          group: 0
+          content: |
+            while true
+            do
+              if iptables -L ts-input | grep DROP | grep 100.64.0.0/10; then
+                RULEFWD=$(iptables -L ts-forward --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
+                RULEINP=$(iptables -L ts-input --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
+                iptables -R ts-forward $RULEFWD -s 100.74.0.0/16 -o tailscale0 -j DROP
+                iptables -R ts-input $RULEINP -s 100.74.0.0/16 -o tailscale0 -j DROP
+              fi
+              sleep 5
+            done
+  network:
     - name: "Reduce scope of traffic dropped by Tailscale to just the Tailscale ipPool"
-      if: 'iptables -L ts-input | grep DROP | grep 100.64.0.0/10'
       commands:
-        - |
-          RULEFWD=$(iptables -L ts-forward --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
-          RULEINP=$(iptables -L ts-input --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
-          iptables -R ts-forward $RULEFWD -s 100.74.0.0/16 -o tailscale0 -j DROP
-          iptables -R ts-input $RULEINP -s 100.74.0.0/16 -o tailscale0 -j DROP
+        - /etc/palette/tailscale-iptables.sh &
 ```
 
 This will ensure Tailscale does not drop traffic for IP ranges that it doesn't own.
