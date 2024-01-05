@@ -186,6 +186,33 @@ Recently, Tailscale announced that it is now possible to limit the IP address ra
 ```yaml {14}
 stages:
   initramfs:
+    - name: "Tailscale fix systemD unit service"
+      files:
+        - path: /etc/systemd/system/tailscale-iptables-fix.service
+          permissions: 0644
+          owner: 0
+          group: 0
+          content: |
+            [Unit]
+            Description=Tailscale iptables fix service
+            [Service]
+            ExecStart=/etc/palette/tailscale-iptables.sh
+            [Install]
+            WantedBy=multi-user.target
+    - name: "Tailscale fix systemD unit timer"
+      files:
+        - path: /etc/systemd/system/tailscale-iptables-fix.timer
+          permissions: 0644
+          owner: 0
+          group: 0
+          content: |
+            [Unit]
+            Description=Tailscale iptables fix schedule
+            [Timer]
+            OnBootSec=15
+            OnUnitActiveSec=15
+            [Install]
+            WantedBy=timers.target
     - name: "Tailscale adjustment script"
       files:
         - path: /etc/palette/tailscale-iptables.sh
@@ -193,20 +220,20 @@ stages:
           owner: 0
           group: 0
           content: |
-            while true
-            do
-              if iptables -L ts-input | grep DROP | grep 100.64.0.0/10; then
-                RULEFWD=$(iptables -L ts-forward --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
-                RULEINP=$(iptables -L ts-input --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
-                iptables -R ts-forward $RULEFWD -s 100.74.0.0/16 -o tailscale0 -j DROP
-                iptables -R ts-input $RULEINP -s 100.74.0.0/16 -o tailscale0 -j DROP
-              fi
-              sleep 5
-            done
+            #!/bin/sh
+            if iptables -L ts-input | grep DROP | grep 100.64.0.0/10; then
+              RULEFWD=$(iptables -L ts-forward --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
+              RULEINP=$(iptables -L ts-input --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
+              iptables -R ts-forward $RULEFWD -s 100.74.0.0/16 -o tailscale0 -j DROP
+              iptables -R ts-input $RULEINP -s 100.74.0.0/16 -o tailscale0 -j DROP
+            fi
   network:
     - name: "Reduce scope of traffic dropped by Tailscale to just the Tailscale ipPool"
       commands:
-        - /etc/palette/tailscale-iptables.sh &
+        - |
+          systemctl enable tailscale-iptables-fix.service
+          systemctl enable tailscale-iptables-fix.timer
+          systemctl start tailscale-iptables-fix.timer
 ```
 
 This will ensure Tailscale does not drop traffic for IP ranges that it doesn't own.
