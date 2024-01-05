@@ -81,7 +81,7 @@ If you have any questions or concerns, contact us at support@spectrocloud.com
 | github.com/mitchellh/copystructure                                                            | [MIT](https://opensource.org/license/mit/)          |
 | github.com/jessevdk/go-flags                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/stripe/stripe-go/v71                                                               | [MIT](https://opensource.org/license/mit/)          |
-| github.com/gorhill/cronexpr                                                                   | Unknown      |
+| github.com/gorhill/cronexpr                                                                   | [APL-2.0](https://www.apache.org/licenses/LICENSE-2.0)      |
 | github.com/go-openapi/runtime                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | google.golang.org/api                                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | google.golang.org/appengine                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
