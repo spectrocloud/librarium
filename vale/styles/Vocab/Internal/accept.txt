@@ -167,6 +167,7 @@ Okta
 Keycloak
 Simple Mail Transfer Protocol
 NIC
+Nutanix
 autoscale
 initContainer
 ethernet

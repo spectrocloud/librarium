@@ -11,11 +11,11 @@ Edge clusters are often deployed in locations where network environments are not
 
 Palette allows you to create a virtual overlay network on top of the physical network, and the virtual IP addresses of all cluster components are managed by Palette. Inside the cluster, the different components use the virtual IP addresses to communicate with each other instead of the underlying IP addresses that could change due to external factors. If the cluster experiences an outage with the overlay network enabled, components inside the cluster retain their virtual IP addresses in the overlay network, even if their IP addresses in the underlying physical network has changed, protecting the cluster from an outage. 
 
-<br />
-
 ![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.png)
 
-<br />
+:::caution
+Enabling overlay network on a cluster is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. 
+:::
 
 ## When Should You Consider Enabling Overlay Network?
 If your Edge clusters are deployed in network environments that fit the following descriptions, you should consider enabling an overlay network for your cluster:
@@ -31,6 +31,11 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 |Without Overlay Network |With Overlay Network|
 |---------------------|-----------------------|
 | Upon recovery, each Kubernetes component inside in the Edge host requests an IP address from the DHCP server, and receives a different IP address than their original IP address before the outage happened. Since Kubernetes expects several components in the control plane to have stable IP addresses, the cluster becomes non-operational and assembly line is unable to resume operations | Each Kubernetes component inside in the Edge host has a virtual IP address in the overlay network. Upon recovery, their IP addresses in the overlay network remain the same despite their IP addresses changing in the underlying DHCP network. The Edge host is able to assume its workload and the assembly line resumes operations | 
+
+## Limitations
+- When adding multiple Edge hosts to an existing cluster with overlay enabled, failure to add one host will block the addition of the other hosts.
+
+- When a cluster has overlay enabled, you cannot delete an Edge host that has the `palette-webhook` pod on it, or the Edge host will be stuck in the deleting state. You can use the command `kubectl get pods --all-namespaces --output wide` to identify which node `palette-webhook` is on. If you need to remove an Edge host that has the `palette-webhook` pod on it, please reach out to our support team by opening a ticket through our [support page](http://support.spectrocloud.io/). 
 
 ## Prerequisites
 
@@ -84,7 +89,7 @@ You will not be able to change the network overlay configurations after the clus
     <Tabs>
     <TabItem value="calico" label="Calico">
     
-    In the Calico pack YAML file default template, uncomment `FELIX_IPV6SUPPORT` and set its value to `scbr-100` and uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=scbr-100`.  
+    In the Calico pack YAML file default template, uncomment `FELIX_MTUIFACEPATTERN` and set its value to `scbr-100` and uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=scbr-100`.  
     ```yaml {8,11}
     manifests:
         calico:
@@ -93,7 +98,7 @@ You will not be able to change the network overlay configurations after the clus
             # Additional env variables for calico-node
             calicoNode:
                 #IPV6: "autodetect"
-                FELIX_IPV6SUPPORT: "scbr-100"
+                FELIX_MTUIFACEPATTERN: "scbr-100"
                 #CALICO_IPV6POOL_NAT_OUTGOING: "true"
                 #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
                 IP_AUTODETECTION_METHOD: "interface=scbr-100"
