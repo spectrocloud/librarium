@@ -163,7 +163,7 @@ You can add Edge hosts to the node pool of an existing host cluster. Use the fol
 
 ### Limitations
 
-- In a multi-node cluster with PXK-E as its Kubernetes layer, you cannot change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its default value. 
+- In a multi-node cluster with [PXK-E](../../../../integrations/kubernetes-edge.md) as its Kubernetes layer, you cannot change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its default value. 
 
 ### Prerequisites
 
