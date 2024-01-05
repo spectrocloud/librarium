@@ -24,16 +24,9 @@ The following summary steps outline the Nutanix cloud workflow illustrated in th
 
 1. A [system administrator](../../../glossary-all.md#system-administrator) registers Nutanix with Palette by preparing YAML templates to configure the cluster and node pools and invokes APIs to define the logo, required cloud account information and key-value pairs to create the Nutanix cloud account. Palette renders a default logo if no logo is specified. 
 
-  :::caution
-  To make the Palette-provided **Nutanix CSI ---link to Nutanix CSI pack page that is being created---** pack available to users during profile creation, the Nutanix cloud must be registered using the name `nutanix`. For guidance in using registration APIs and providing required variable values, review [Register the Cloud](register-nutanix-cloud.md#register-the-cloud).
-  
-  <!-- To use the **Nutanix CSI** pack, the Nutanix cloud must be registered using the name `nutanix`. For guidance in using registration APIs and providing required variable values, review [Register the Cloud](register-nutanix-cloud.md#register-the-cloud). -->
-  :::
-
-
 2. Create a Nutanix self-hosted PCG by installing Palette agents in your existing Kubernetes cluster using kubectl commands provided in the Palette UI. For guidance, review [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
-  When the PCG status displays the state **Running**, the workload cluster is integrated with Palette.
+  When the PCG status displays the state **Running**, the PCG cluster is integrated with Palette.
 
   :::info
 

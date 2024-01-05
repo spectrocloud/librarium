@@ -7,7 +7,7 @@ sidebar_position: 15
 tags: ["data center", "nutanix"]
 ---
 
-This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG following the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) it specifies.
+This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG following the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) specified in the guide.
 
 ## Prerequisites
 

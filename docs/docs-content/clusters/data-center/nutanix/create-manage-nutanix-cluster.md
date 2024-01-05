@@ -23,7 +23,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Nutanix
 
 - A Nutanix Prism Element cluster created.
 
-- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the Kubernetes cluster.
+- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) that will make up the Kubernetes cluster.
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
