@@ -56,7 +56,7 @@ A successful login indicates that the password has been changed successfully.
 
 VerteX supports the usage of passkeys (using the [WebAuthn Level2 protocol](https://developers.yubico.com/WebAuthn/Concepts/WebAuthn_Level_2_Features_and_Enhancements.html)) to authenticate. When you enable passkeys, the admin user will still be required to provide an email address and password to log in to the system console. However, the admin user will also be required to provide a passkey to log in to the system console. 
 
-The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol. A maximum of two passkeys can be added for the admin user.
+The passkey can be a password manager, a physical device, or a web browser that supports the WebAuthn Level2 protocol.
 
 :::danger
 
