@@ -54,6 +54,11 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - The ability to change the underlying node type of a node pool is not available for Google Cloud Platform GKE clusters.
 
+- Clusters launched in VMware vSphere with the Container Network Interface (CNI) Cilium, loses node-to-node connectivity when the VSphere adapter is configured to use VMXNET3. This is a known issue with Cilium and VMXNET3. Refer to the [GitHub issue discussion](https://github.com/cilium/cilium/issues/21801) to learn more about this issue.
+
+
+- Enabling [passkeys](/enterprise-version/system-management/account-management/credentials.md) in a self-hosted Palette instance will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer to the [Passkeys and API Access](./enterprise-version/system-management/account-management/credentials.md#passkeys-and-api-access) resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the regular Palette API used by clusters and users.
+
 
 ### Edge
 
@@ -63,7 +68,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 #### Features
 
-- Overlay support for DHCP. Edge clusters can now establish an VxLAN overlay network during cluster creation, and Edge hosts can self-discover the overlay network within a single ethernet broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly. Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
+- Overlay support for DHCP is now available as a Tech Preview feature. Edge clusters can now establish an VxLAN overlay network during cluster creation, and Edge hosts can self-discover the overlay network within a single ethernet broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly. Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
 
 
 - Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads and initialize a cluster's other edge host nodes. Using a local registry can help you reduce the amount of data transferred over the network, cache images locally, and provide a backup for when internet access is unavailable. 
@@ -77,6 +82,25 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 - Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge clusters. You can now specify additional kube-vip configuration parameters as part of the Kubernetes pack layer configuration. To learn more about the available kube-vip configuration parameters, refer to the [Publish Cluster Services with Kube-vip](clusters/edge/networking/kubevip.md) resource.
 
+
+
+#### Known Issues
+
+- The following known issues apply to the VxLAN network overlay feature:
+
+  - When adding multiple nodes to an existing cluster with overlay enabled, failure to add one node will block the addition of the other nodes.
+
+  - When deleting an Edge host from a cluster with overlay enabled, ensure the node doesn't have the `palette-webhook` pod on it, or the node will be stuck in the deleting state. You can use the command `kubectl get pods --all-namespaces --output wide` to identify which node the pod `palette-webhook` is on. Reach out to our support team [support@spectrocloud.com](mailto:support@spectrocloud.com) if you need to remove a node with the `palette-webhook` pod on it.
+
+- In a multi-node cluster with [PXK-E](./integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its default value.
+
+- The following known issues apply to Harbor when deployed with the Longhorn Container Storage Interface (CSI) driver:
+
+  - The Harbor job service pod is in a *Terminating* and *ContainerCreating* state in an Edge Native High Availability (HA) cluster after a Day-2 operation when Longhorn is used.
+
+  - The Harbor core, database, and jobs service pods are in a state of CrashLoopBackOff on a long-running cluster with a single node using RKE2.
+
+  - A cluster may get stuck in the provisioning process when using the Longhorn CSI and the [Harbor Edge Native Config](./integrations/harbor-edge.md) pack together. If this happens, remove the cluster and try again.
 
 ### Palette Dev Engine (PDE)
 
@@ -109,6 +133,11 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 #### Improvements
 
 - To better support airgap installs and customers in internet-restricted environments. You can now access Palette documentation offline by using the Palette documentation container. For more information, refer to the [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md) page.
+
+
+####  Known Issues
+
+- Enabling [passkeys](./vertex/system-management/account-management/credentials.md#add-passkeys) in a VerteX instance will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer to the [Passkeys and API Access](./vertex/system-management/account-management/credentials.md#passkeys-and-api-access) resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the regular VerteX API used by clusters and users.
 
 ### Terraform
 
