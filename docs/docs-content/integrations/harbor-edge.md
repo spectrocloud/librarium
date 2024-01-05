@@ -171,7 +171,7 @@ If you didn't provide a certificate or are using a self-signed certificate, Dock
 
 The following known issues exist in the Harbor 1.0.0 release.
 
-- The Harbor DB pod might fail to start due to file permission issues. This is a [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.   
+- The Harbor database pod might fail to start due to file permission issues. This is a [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.   
 
 </TabItem>
 </Tabs>
@@ -187,7 +187,7 @@ When you start a cluster with the Harbor pack, the **harbor-database** pod might
 1. Issue the following command to identify the pods with names that start with `harbor-database`.
 
   ```shell
-  kubectl get pods --namespace harbor -o wide 
+  kubectl get pods --namespace harbor --output wide 
   ```
 
 2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are multiple pods, use the command for each pod. 
