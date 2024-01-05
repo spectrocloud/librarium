@@ -35,9 +35,9 @@ The table lists commonly used parameters you can configure when adding this pack
 | `defaultFsType`           | The default file system.    | `ext4` |
 | `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
 | `defaultDataLocality`     | The default location where data computation will occur. | `disabled` Best effort |
-| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
+| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy. | `Delete`  |
 | `migratable`              | The ability to transfer data to another data storage systems | `false`   |
-| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector.enable.jobList [ ]`  | `false`   |
+| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to activate.  | `false`   |
 
 ## Usage
 
@@ -51,33 +51,13 @@ Longhorn provides these features:
 For more information, check out Longhorn guide on [How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
 
 
-## Troubleshooting
+## Known Issues
 
-Below are some common issues you may encounter when using Longhorn. Use the following information to help you troubleshoot and resolve the issue.
+The following known issues exist in the Longhorn 1.5.X release.
 
 ### Deadlock With RWX Mode
 
-Starting with version 1.5.X, a known issue exists where a deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a known issue in the [Longhorn GitHub repository](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153).   
-
-To resolve the deadlock, you must manually update the status of the Longhorn Storage Manager. Use the following command to resolve the deadlock. Replace `PVC-ID` with the ID of the Persistent Volume Claim (PVC) that is in the `longhorn-system` namespace that and in **RWX** mode.
-
-```bash
-kubectl --namespace longhorn-system patch lhsm PVC-ID \
---type=merge --subresource status --patch 'status: {state: error}'
-```
-
-:::tip
-
-To identify the ID of the PVC, use the following command to list all PVCs in the `longhorn-system` namespace. Seach for the PVC that has the **ACCESS MODE** set to **RWX**.
-
-
-```bash
-kubectl get pvc --namespace longhorn-system 
-```
-:::
-
-
-There are other workaround solutions provided by the community in the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359) that you may explore if you are searching for an alternative solution. 
+Starting with version 1.5.X, a known issue exists where a deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a known issue in the [Longhorn GitHub repository](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153) and a fix is on the roadmap. There are workaround solutions provided by the community in the [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359). 
 
 </TabItem>
 
@@ -100,10 +80,9 @@ The table lists commonly used parameters you can configure when adding this pack
 | `defaultFsType`           | The default file system.    | `ext4` |
 | `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
 | `defaultDataLocality`     | The default location where data computation will occur. | `disabled` Best effort |
-| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
+| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy. | `Delete`  |
 | `migratable`              | The ability to transfer data to another data storage systems | `false`   |
-| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector.enable.jobList [ ]`  | `false`   |
-curringJobSelector:enable    | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector:enable:jobList [ ]`  | `false`   |
+| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to activate.  | `false`   |
 
 ## Usage
 
@@ -136,9 +115,9 @@ The table lists commonly used parameters you can configure when adding this pack
 | `defaultFsType`           | The default file system.    | `ext4` |
 | `defaultClassReplicaCount`| The default number of copies of data store in your cluster.   | `3`         |
 | `defaultDataLocality`     | The default location where data computation will occur. | `disabled` Best effort |
-| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy | `Delete`  |
+| `reclaimPolicy`           | This means that a dynamically provisioned volume will be automatically deleted when deletes when corresponding PersistentVolumeClaim is deleted. For important data, it is more appropriate to use the "Retain" policy. | `Delete`  |
 | `migratable`              | The ability to transfer data to another data storage systems | `false`   |
-| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to run: `recurringJobSelector.enable.jobList [ ]`  | `false`   |
+| `recurringJobSelector.enable`   | The management of recurring jobs. You can enable this feature and type a comma-separated list of jobs to activcate. | `false`   |
 
 ## Usage
 
