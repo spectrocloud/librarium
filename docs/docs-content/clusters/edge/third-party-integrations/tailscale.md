@@ -29,7 +29,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository. Change to the **CanvOS** directory and choose a version tag. 
 
-2. Add the following content to the end of the file `Dockerfile`:
+2. Add the following content to the end of the file `Dockerfile` to include the Tailscale package in the Edge OS build:
 
   <Tabs>
   <TabItem value="ubuntu" label="Ubuntu">
@@ -88,7 +88,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
   export token=[your_token_here]
   ```
 
-5. Issue the following command to create the **user-data** file. 
+5. Issue the following command to create the **user-data** file. Note that we're adding a bind mount for `/var/lib/tailscale` to ensure the state of Tailscale is persisted across node reboots.
 
   ```yaml
   cat << EOF > user-data
@@ -108,7 +108,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
   EOF
   ```
 
-6. Next, add a `stages` block to the **user-data** file to automatically enable Tailscale and register the Edge device. Replace `AUTH-KEY` with your authorization key from Tailscale:
+6. Next, add a `stages` block to the **user-data** file to automatically enable Tailscale and register the Edge device. Replace `$AUTH-KEY` with your authorization key from Tailscale:
 
   ```yaml {14}
   stages:
@@ -124,7 +124,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
               systemctl start tailscaled
               tailscale up --ssh --hostname="edge-${ID}"
             else
-              tailscale up --authkey=AUTH-KEY --ssh --hostname=$ID
+              tailscale up --authkey=$AUTH-KEY --ssh --hostname="edge-${ID}"
               mkdir /oem/tailscale
               cp /var/lib/tailscale/tailscaled.state /oem/tailscale/tailscaled.state
             fi
@@ -140,9 +140,9 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
   :::info
 
-  In the above `stages` block, you are using the device ID of your Edge device as the hostname with which to register your device with Tailscale. For more information about how this ID is generated, refer to [Install Configurations](../edge-configuration/installer-reference.md#device-id-uid-parameters).
+  In the above `stages` block, you are using the device ID of your Edge device (read from `/sys/class/dmi/id/product_uuid`) as the hostname with which to register your device with Tailscale. For more information about how this ID is generated, refer to [Install Configurations](../edge-configuration/installer-reference.md#device-id-uid-parameters).
 
-  If you want to use a different hostname, you can change the parameter to the hostname you'd like to use. However, you cannot use `localhost` as the hostname. 
+  If you want to use a different hostname, especially when using the `deviceUIDPaths` parameter in the user-data, you can adjust the two `ID=$(cat /sys/class/dmi/id/product_uuid)` lines in the content above to match your custom device naming configuration.
 
   :::
 
@@ -159,4 +159,41 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 1. Log in to [Tailscale console](https://login.tailscale.com/admin/machines). 
 
-2. In the **Machines** tab, your Edge device is displayed in the Machines list. You can SSH to your 
+2. In the **Machines** tab, your Edge device is displayed in the Machines list. You can SSH to your host from any device that is also connected to your Tailscale network.
+
+## Troubleshooting
+
+Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That means that by default, this address range (or parts of it) cannot be used for any of the following:
+* Kubernetes cluster pod CIDR
+* Kubernetes cluster service CIDR
+* Palette Edge Overlay network CIDR
+
+Recently, Tailscale announced that it is now possible to limit the IP address range that your Tailnet uses to a fraction of the 100.64.0.0/10 range. For example, you could reduce the IP pool to 100.74.0.0/16, allowing the rest of the range to be used for other non-Tailscale purposes. If you would like to use this capability so that you can use parts of the 100.64.0.0/10 range for your Kubernetes clusters or your Palette Edge Overlay networks, you need to do the following:
+
+1. First, configure an IP Pool in Tailscale. We have found the following configuration works well to assign addresses in the new range to all nodes:
+
+```json
+	"nodeAttrs": [
+		{
+			"target": ["*"],
+			"ipPool": ["100.74.0.0/16"],
+		},
+	],
+```
+
+2. Next, we need to deal with a known bug (at time of writing) in Tailscale. Even though we restricted the IP Pool, Tailscale still puts in `iptables` rule on every node that drops unknown traffic from any address in the entire 100.64.0.0/10 range. This rule clashes with our desire to use the address space for other purposes and needs to be adjusted. Fortunately we can leverage Palette Edge to do this automatically for us. In the cluster profile for your Palette Edge cluster, add the following:
+
+```yaml {14}
+stages:
+  reconcile:
+    - name: "Reduce scope of traffic dropped by Tailscale to just the Tailscale ipPool"
+      if: 'iptables -L ts-input | grep DROP | grep 100.64.0.0/10'
+      commands:
+        - |
+          RULEFWD=$(iptables -L ts-forward --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
+          RULEINP=$(iptables -L ts-input --line-numbers | grep DROP | grep 100.64.0.0/10 | awk '{print $1}')
+          iptables -R ts-forward $RULEFWD -s 100.74.0.0/16 -o tailscale0 -j DROP
+          iptables -R ts-input $RULEINP -s 100.74.0.0/16 -o tailscale0 -j DROP
+```
+
+This will ensure Tailscale does not drop traffic for IP ranges that it doesn't own.
