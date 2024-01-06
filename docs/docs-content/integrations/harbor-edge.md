@@ -173,6 +173,8 @@ The following known issues exist in the Harbor 1.0.0 release.
 
 - The Harbor database pod might fail to start due to file permission issues. This is a [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.   
 
+- A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove the cluster and try again.
+
 </TabItem>
 </Tabs>
 
