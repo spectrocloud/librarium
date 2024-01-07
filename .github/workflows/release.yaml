@@ -112,6 +112,16 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
       - name: Setup Nodejs
         uses: actions/setup-node@v3
         with:
@@ -123,5 +133,5 @@ jobs:
 
       - name: "release"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: npx semantic-release
