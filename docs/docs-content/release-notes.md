@@ -149,7 +149,7 @@ Palette 4.2.0 is a release that includes new features and various improvements. 
 
 #### Features 
 
-- Version 0.17.1 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Version 0.17.2 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 ### Docs and Education
 
