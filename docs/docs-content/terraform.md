@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Palette Terraform Support"
-title: "Palette Terraform Support"
-description: "Understanding, installing and operating Spectro Cloud's Terraform Provider."
+sidebar_label: "Terraform Support"
+title: "Terraform Support"
+description: "Learn how to use Terraform with Palette and Palette VerteX."
 hide_table_of_contents: false
 sidebar_position: 200
 sidebar_custom_props: 
@@ -17,14 +17,16 @@ Terraform organizes cloud APIs into declarative, configuration files. Terraform 
 
 ## Spectro Cloud Provider
 
-Spectro Cloud Palette's SaaS and On-Premise management API can be used with the Spectro Cloud Terraform provider. The provider is available in the HashiCorp Terraform registry as [Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). 
+Palette and Palette VerteX API can be used with the Spectro Cloud Terraform provider. The provider is available in the HashiCorp Terraform registry as [Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). 
 <br />
 
 ### Release Notes
+
 Information about the latest changes in the Spectro Cloud provider can be found in the [release notes](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 <br />
 
 ### Provider Documentation
+
 Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page. 
 <br />
 

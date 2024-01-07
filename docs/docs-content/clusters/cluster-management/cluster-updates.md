@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Cluster Updates"
-title: "Cluster Updates"
-description: "Events and Notifications on Cluster Updates"
+sidebar_label: "Update a Cluster"
+title: "Update a Cluster"
+description: "Guide to updating a cluster in Palette."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["clusters", "cluster management"]

@@ -25,6 +25,7 @@ Palette provides three types of cluster profiles:
 
 - *Full* - contains both infrastructure and add-on layers.
 
+
 For a detailed description of each profile type and the layers they contain, review [Cluster Profiles](../cluster-profiles.md). 
 
 The next sections provide guidance in creating each type of profile.

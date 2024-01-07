@@ -1,6 +1,6 @@
 ---
-sidebar_label: 'Advanced Configuration'
-title: 'Advanced Configuration'
+sidebar_label: 'Advanced CLI Configuration'
+title: 'Advanced CLI Configuration'
 description: 'Learn how to apply advanced concepts by customizing the deployments of the Packs registry.'
 icon: ''
 hide_table_of_contents: false
