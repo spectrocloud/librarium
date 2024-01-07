@@ -32,7 +32,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
     <TabItem label="OSX" value="osx_cli">
     
     ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v4.1.0/osx/spectro
+    wget https://spectro-cli.s3.amazonaws.com/v4.2.0/osx/spectro
     ```
     
     </TabItem>
@@ -40,7 +40,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
     <TabItem label="Linux" value="linux_cli">
     
     ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v4.1.0/linux/spectro
+    wget ttps://spectro-cli.s3.amazonaws.com/v4.2.0/linux/spectro
     ```
     
     </TabItem>
@@ -351,5 +351,5 @@ spectro version
 
 
 ```bash hideClipboard
-Spectro ClI Version 4.1.0 linux/amd64
+Spectro ClI Version 4.2.0 linux/amd64
 ```
