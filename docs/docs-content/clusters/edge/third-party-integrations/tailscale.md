@@ -163,6 +163,14 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 ## Troubleshooting
 
+### MagicDNS is not compatible with Palette Overlay Networking
+
+When you use the Overlay Networking feature in Palette, you must disable MagicDNS in Tailscale or otherwise ensure you don't use the 100.100.100.100 DNS server that MagicDNS configures. This is because the Tailnet VPN connection to MagicDNS partly breaks when Palette reconfigures VXLAN segments as cluster nodes join and leave the cluster. This goes undetected by Tailscale and results in the cluster no longer being able to perform DNS lookups until the `tailscaled`` service is restarted.
+
+To prevent the issue from occurring, disable MagicDNS in Tailscale.
+
+### Tailscale drops all traffic for 100.64.0.0/10, preventing the use of CIDRs in that range for your cluster
+
 Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That means that by default, this address range (or parts of it) cannot be used for any of the following:
 * Kubernetes cluster pod CIDR
 * Kubernetes cluster service CIDR
