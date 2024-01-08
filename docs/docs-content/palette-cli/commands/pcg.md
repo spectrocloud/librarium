@@ -17,7 +17,12 @@ The `pcg` command exposes the following subcommand.
   * `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.
 
 
-<br />
+
+## Prerequisites
+
+- Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation to learn how to install Docker on your system.
+
+
 
 ## Install
 

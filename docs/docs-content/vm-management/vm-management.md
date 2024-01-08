@@ -29,10 +29,9 @@ Palette Virtual Machine Orchestrator requires the following:
 
 - Palette version 3.3.0 or higher.
 
-
 - For data centers, production VMs are supported on bare metal Kubernetes clusters deployed on Canonical MAAS. To learn how to configure MAAS and create MAAS clusters in Palette, refer to the [Install and Manage MAAS Gateway](../clusters/data-center/maas/install-manage-maas-pcg.md) guide.
 
-- To use VMO on Edge, contact our support team by sending an email to [support@spectrocloud.com](mailto:support@spectrocloud.com)
+- For Edge deployment, your Edge cluster profile must have a CSI pack. For more information, refer to [Create VMO Profile](./vm-packs-profiles/create-vmo-profile.md#create-the-profile) in the **Edge** tab. 
 
 - VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports ``ReadWriteMany`` (``RWX``) access mode for seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
 
@@ -71,7 +70,7 @@ For more information on KubeVirt feature gates, refer to the [KubeVirt user guid
 
 ## Kubevirt Plugins 
 
-VMO includes the following Kubevirt plugins:
+VMO includes the following KubeVirt plugins:
 
 - [Kubevirt-Velero](https://github.com/kubevirt/kubevirt-velero-plugin) - VMO includes the Kubevirt-Velero plugin, which allows you to back up and restore VMs using Velero. This installs Velero snapshot controller and Custom Resource Definitions required by Velero. Refer to the [Virtual Machine Orchestrator Pack](./vm-packs-profiles/vm-packs-profiles.md) guide for more information.
 

@@ -4,7 +4,7 @@ title: "Tenant Management"
 description: "Learn how to create and remove tenants in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 90
 tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---

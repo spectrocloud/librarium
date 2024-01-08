@@ -27,10 +27,20 @@ The following Kubernetes distributions are supported for virtual clusters:
 | **Name** | **Description** |
 | --- | --- |
 | **K3s** | [K3s](https://k3s.io) is a lightweight, certified Kubernetes distribution designed for production workloads. |
-| **CNCF K8s**| The Cloud Native Computing Foundation (CNCF) [Kubernetes distribution](https://www.cncf.io/projects/kubernetes). |
+| **Kubernetes**| The Cloud Native Computing Foundation (CNCF) [Kubernetes distribution](https://www.cncf.io/projects/kubernetes). |
 
 
 Refer to the [Create and Manager Cluster Groups](../cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) to learn how to configure your cluster group to use a specific Kubernetes distribution.
+
+### Minimum Resource Requirements
+
+The following table lists the minimum resource requirements for virtual clusters and the underlying Kubernetes distribution.
+
+ |**Resource Type** | **Default**   |**K3s Minimum Limit**| **Kubernetes Minimum Limit**|
+ |------------------------------|-------------------|-----------------| -----------------|
+ | CPU (per request)            | 4                 | 4               | 4               |
+ | Memory (per request)         | 4 GiB             | 3 GiB           | 4 GiB         |
+ | Storage (per request)        | 2 GiB            | 0 GiB           | 2 GiB           |
 
 ## Network Connectivity
 
