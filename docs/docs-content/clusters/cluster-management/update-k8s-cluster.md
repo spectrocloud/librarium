@@ -227,7 +227,7 @@ Terraform will display the following output for Azure.
 Plan: 6 to add, 0 to change, 0 to destroy.
 ```
 
-For other AWS and GCP, Terraform will create one less resource. 
+For AWS and GCP, Terraform will create one less resource. 
 ```shell
 Plan: 5 to add, 0 to change, 0 to destroy.
 ```
@@ -576,7 +576,7 @@ spec:
 
 The manifest deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
 
-Find the command output by the `terraform apply` step in the [Set up Clusters](#set-up-clusters) section. Issue the command to find the external IP address of the `hello-universe-api-service` that you deployed. It has the following form on Azure, but may be different for your chosen cloud provider. 
+Find the command output by the `terraform apply` step in the [Set Up Clusters](#set-up-clusters) section. Issue the command to find the external IP address of the `hello-universe-api-service` that you deployed. It has the following form on Azure, but may be different for your chosen cloud provider. 
 
 ```shell
 export KUBECONFIG=$(pwd)/azure-cluster-api.kubeconfig && kubectl get service hello-universe-api-service --namespace hello-universe-api --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
