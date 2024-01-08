@@ -212,13 +212,19 @@ The following steps will guide you on how to install a PCG cluster.
 
   :::info
 
-  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the [PCG command](../../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
 
   :::
 
 
 The Palette CLI will now provision a PCG cluster in your MAAS environment. 
-If the deployment fails due to misconfiguration, update the PCG configuration file and restart the install process. Refer to the Edit and Redeploy PCG section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+
+:::caution
+
+You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+:::
 
 ### Validate
 
@@ -235,38 +241,6 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 
 4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
-
-
-
-### Edit and Redeploy PCG
-
-To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process. 
-
-<br />
-
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as Vi or Nano to update the PCG install configuration file.
-
-  <br />
-
-  ```shell hideClipboard
-  ==== Create PCG reference config ====
-  ==== PCG config saved ====
-  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
-  ```
-
-  ```bash hideClipboard
-  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
-
-
-
-2. To redeploy the PCG, use the `install` command with the flag `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
-
-  <br />
-
-  ```bash hideClipboard
-  palette pcg install --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
 
 ## Update and Manage the PCG
 
@@ -289,12 +263,10 @@ Follow these steps to delete a MAAS gateway.
 2. Navigate to the **Main menu** and select **Tenant Settings > Private Cloud Gateways**.
 
 
-3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**.
+3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**. Palette checks for active tenant clusters associated with the gateway instance and displays an error message if it detects any. 
+  
 
-    Palette checks for running tenant clusters associated with the gateway instance and displays an error message if it detects any. 
-    <br />
-
-4. If there are running clusters, delete them and retry deleting the gateway instance.
+4. If there are active clusters, delete them and retry deleting the gateway instance.
 
 <br />
 
