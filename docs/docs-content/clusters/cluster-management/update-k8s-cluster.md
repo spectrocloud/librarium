@@ -919,4 +919,4 @@ To learn more about Palette, we encourage you to check out the reference resourc
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 
-- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api)
+- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api) 
