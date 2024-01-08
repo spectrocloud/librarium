@@ -103,10 +103,10 @@ For this tutorial, use the following packs:
 
 | Pack Name          | Version   | Layer              |
 |--------------------|-----------|--------------------|
-| ubuntu-aws LTS     | 20.4.x    | Operating System   |
-| Kubernetes         | 1.24.x  | Kubernetes         |
-| cni-calico         | 3.24.x    | Network            |
-| csi-aws-ebs        | 1.16.x | Storage            |
+| ubuntu-aws LTS     | 22.4.x    | Operating System   |
+| Kubernetes         | 1.27.x  | Kubernetes         |
+| cni-calico         | 3.26.x    | Network            |
+| csi-aws-ebs        | 1.22.x | Storage            |
 
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
@@ -152,7 +152,7 @@ A list is displayed of available profiles you can choose to deploy to AWS. Selec
 
 #### Parameters
 
-The **Parameters** section displays the core and add-on layers in the cluster profile.
+The **Parameters** section displays all the layers in the cluster profile.
 
 ![Palette clusters parameters](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_creation_parameters.png)
 
@@ -250,7 +250,7 @@ You can view the list of available cluster profiles. To create a cluster profile
 
 Follow the wizard to create a new profile.
 
-In the **Basic Information** section, assign the name **azure-profile**, a brief profile description, select the type as **Full**, and assign the tag  **env:azure***. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
+In the **Basic Information** section, assign the name **azure-profile**, a brief profile description, select the type as **Full**, and assign the tag  **env:azure**. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
 
 **Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select **Azure** and click on **Next**.
 
@@ -261,10 +261,10 @@ For this tutorial, use the following packs:
 
 | Pack Name          | Version                                          | Layer              |
 |--------------------|--------------------------------------------------|--------------------|
-| ubuntu-azure LTS   | 20.4.x    | Operating System   |
-| Kubernetes         | 1.24.x     | Kubernetes         |
-| cni-calico-azure   | 3.24.x                                 | Network            |
-| Azure Disk         | 1.25.x       | Storage            |
+| ubuntu-azure LTS   | 22.4.x    | Operating System   |
+| Kubernetes         | 1.27.x     | Kubernetes         |
+| cni-calico-azure   | 3.26.x                                 | Network            |
+| Azure Disk         | 1.28.x       | Storage            |
 
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
@@ -307,7 +307,7 @@ A list is displayed of available profiles you can choose to deploy to Azure. Sel
 
 #### Parameters
 
-The **Parameters** section displays all the layers and add-on components in the cluster profile.
+The **Parameters** section displays all the layers in the cluster profile.
 
 ![palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_parameters.png)
 
@@ -318,7 +318,7 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 #### Cluster Configuration
 
 
-The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account**, and **SSH Key**** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](../cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
+The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](../cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
 
 
 <br />
@@ -388,7 +388,7 @@ Click on your cluster to review details such as deployment status, event logs, c
 </TabItem>
 <TabItem label="Google Cloud" value="gcp-ui">
 
-### Create Cluster Profile (GCP)
+#### Create Cluster Profile (GCP)
 [Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
  - Operating System (OS)
@@ -406,7 +406,7 @@ You can view the list of available cluster profiles. To create a cluster profile
 
 Follow the wizard to create a new profile.
 
-In the **Basic Information** section, assign the name **gcp-profile**, provide a profile description, select the type as **Full**, and assign the tag **env:gcp**. You can leave the version empty if you want to. Just be aware that the version defaults to 1.0.0. Click on **Next**.
+In the **Basic Information** section, assign the name **gcp-profile**, provide a profile description, select the type as **Full**, and assign the tag **env:gcp**. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
 
 Cloud Type allows you to choose the infrastructure provider with which this cluster profile is associated. Select **Google Cloud** and click on **Next**.
 
@@ -417,10 +417,10 @@ For this tutorial, use the following packs:
 
 | Pack Name          | Version                  | Layer              |
 |--------------------|--------------------------|--------------------|
-| ubuntu-gcp LTS     | 20.4.x                   | Operating System   |
-| Kubernetes         | 1.24.x                   | Kubernetes         |
-| cni-calico         | 3.24.x                   | Network            |
-| csi-gcp-driver     | 1.7.x                    | Storage            |
+| ubuntu-gcp LTS     | 22.4.x                   | Operating System   |
+| Kubernetes         | 1.27.x                   | Kubernetes         |
+| cni-calico         | 3.26.x                   | Network            |
+| csi-gcp-driver     | 1.8.x                    | Storage            |
 
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
@@ -464,7 +464,7 @@ A list is displayed of available profiles you can choose to deploy to GCP. Selec
 
 #### Parameters
 
-The **Parameters** section displays all the layers and add-on components in the cluster profile.
+The **Parameters** section displays all the layers in the cluster profile.
 
 ![Palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
@@ -609,7 +609,7 @@ spec:
     spec:
       containers:
       - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.12
+        image: ghcr.io/spectrocloud/hello-universe:1.1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -621,7 +621,7 @@ The code snippet you added will deploy the [*hello-universe*](https://github.com
 
 The manifest defines a replica set for the application to simulate a distributed environment with a web application deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single access point and distribute the workload to both containers.
 
-Click on **Confirm & Create** to save your changes.
+Click on **Confirm & Create** to save the manifest. Click on **Save Changes** to save this new layer to the cluster profile.
 
 <br />
 
@@ -766,14 +766,14 @@ Download the tutorial image to your local machine.
 <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.7
+docker pull ghcr.io/spectrocloud/tutorials:1.1.0
 ```
 
 Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.7 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.0 bash
 ```
 
 Navigate to the tutorial code.
@@ -809,7 +809,7 @@ Check out the following git tag.
 <br />
 
 ```shell
-git checkout v1.0.7
+git checkout v1.1.0
 ```
 
 Change the directory to the tutorial code.
@@ -992,14 +992,14 @@ You may have noticed that each `pack {}` block contains references to a data res
 
 [Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query Palette for information about a specific pack. You can get information about the pack using the data resource such as unique ID, registry ID, available versions, and the pack's YAML values.
 
-Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.24.10`.
+Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.27.5`.
 
 <br />
 
 ```hcl
 data "spectrocloud_pack" "aws_k8s" {
   name    = "kubernetes"
-  version = "1.24.10"
+  version = "1.27.5"
 }
 ```
 
@@ -1233,7 +1233,7 @@ If you are using the tutorial container and want to exit the container, type `ex
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.7
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.0
 ```
 
 
