@@ -16,30 +16,24 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
 - A Palette permission key `create` for the resource `clusterProfile`.
 
+- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface pack.  
 
 ## Create the Profile
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+<Tabs>
+<TabItem value="non-edge" label="Non-edge">
 
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
 
-
 3. Enter basic information for the profile: name, version if desired, and optional description.
-
 
 4. Select type **Add-on**, and click **Next**.
 
-
 5. In the following screen, click **Add New Pack**. 
 
-
-6. Use the information below to find the **Virtual Machine Orchestrator** pack:
-    - **Pack Type**: System App
-    - **Registry**: Public Repo
-    - **Pack Name**: Virtual Machine Orchestrator
-    - **Pack Version**: 1.0 or higher
-
+6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile. 
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check out the [Spectro Proxy](../../integrations/frp.md) guide to learn more. Changing the default may require some additional configuration. 
 
@@ -53,14 +47,93 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
 8. Click **Confirm & Create**. 
 
-
 9. In the following screen, click **Next**. 
-
 
 10. Review the profile and click **Finish Configuration**.
 
+11. Apply the profile to your cluster. For more information, refer to [Create a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md). 
 
-11. Apply the profile to your cluster.
+</TabItem>
+
+<TabItem value="edge" label="Edge">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
+
+3. Enter basic information for the profile: name, version if desired, and optional description.
+
+4. Select type **Add-on**, and click **Next**.
+
+5. In the following screen, click **Add New Pack**. 
+
+6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile. 
+
+7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.  Changing the default may require some additional configuration. Check out the [Spectro Proxy](../../integrations/frp.md) guide to learn more
+
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+
+8. If you are using PKX-E, no change is required and you can skip this step. 
+
+    If you are using K3s or RKE2 as the Kubernetes layer in your cluster profile, you need to update the `charts.virtual-machine-orchestrator.multus.networkController` parameter in the `values.yaml` for the VMO pack. Add a line for the parameter `enableK3SHostPath` and set its value to `true`. In addition, change `criSocketContainerPath` to `/host/run/containerd/containerd.sock`. 
+
+    ```yaml {3-4}
+    networkController:
+        criSocket:
+            enableK3SHostPath: true 
+            criSocketContainerPath: /host/run/containerd/containerd.sock
+    ```    
+
+9.  If your cluster profile does include a load balancer such as MetalLB, no changes are required and you can skip this step. For more information about MetalLB, refer to [MetalLB pack documentation](../../integrations/metallb.md). 
+
+    If your cluster profile does not include a load balancer, update the services `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in **values.yaml** for the VMO pack:
+
+    <Tabs>
+    <TabItem value="cdi" label="cdi">
+
+    ```yaml {10}
+    cdi:
+            enabled: true
+            replicas: 1
+            image:
+                repository: quay.io/kubevirt/cdi-operator
+                pullPolicy: IfNotPresent
+                # Overrides the image tag whose default is the chart appVersion.
+                tag: "v1.56.0"
+            service:
+                type: ClusterIP
+                port: 443
+                targetPort: 8443
+    ```
+    </TabItem>
+
+    <TabItem value="kubevirt" label="kubevirt">
+
+    ```yaml {7}
+    kubevirt:
+            enabled: true
+            # defaults to kubevirt
+            namespace: kubevirt
+            replicas: 1
+            service:
+                type: ClusterIP
+                port: 443
+                targetPort: 8443
+    ```
+    </TabItem>
+    </Tabs>
+
+10. Click **Confirm & Create**. 
+
+11. In the following screen, click **Next**. 
+
+12. Review the profile and click **Finish Configuration**.
+
+13. Add the add-on profile when you create a cluster. For more information, refer to [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+
+</TabItem>
+
+</Tabs>
 
 
 ## Validate

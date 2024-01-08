@@ -4,8 +4,6 @@ title: "OpenStack"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
 sidebar_position: 20
-toc_min_heading_level: 2
-toc_max_heading_level: 3
 tags: ["data center", "openstack"]
 ---
 

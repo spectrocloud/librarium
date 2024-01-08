@@ -160,5 +160,17 @@ Astra
 FSx
 liveness
 Autosupport
+Validator
+bool
+OVA
 Okta
 Keycloak
+Simple Mail Transfer Protocol
+NIC
+Nutanix
+autoscale
+initContainer
+ethernet
+hostname
+Entra
+README

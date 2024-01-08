@@ -5,7 +5,6 @@ description: "A reference sheet for the Spectro Cloud CLI tool"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-toc_max_heading_level: 3
 ---
 
 
@@ -13,7 +12,7 @@ The Spectro CLI tool is a command-line interface to interact with Palette regist
 
 :::info
 
-We recommend using an OCI registry for storing and maintaining your packs. Refer to the [OCI registry](oci-registry.md) section for more information.
+We recommend using an OCI registry to store and maintain your packs. Refer to the [OCI registry](registries/oci-registry/oci-registry.md) section for more information.
 
 :::
 
@@ -33,7 +32,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
     <TabItem label="OSX" value="osx_cli">
     
     ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v4.1.0/osx/spectro
+    wget https://spectro-cli.s3.amazonaws.com/v4.2.0/osx/spectro
     ```
     
     </TabItem>
@@ -41,7 +40,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
     <TabItem label="Linux" value="linux_cli">
     
     ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v4.1.0/linux/spectro
+    wget ttps://spectro-cli.s3.amazonaws.com/v4.2.0/linux/spectro
     ```
     
     </TabItem>
@@ -352,5 +351,5 @@ spectro version
 
 
 ```bash hideClipboard
-Spectro ClI Version 4.1.0 linux/amd64
+Spectro ClI Version 4.2.0 linux/amd64
 ```

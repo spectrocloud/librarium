@@ -250,7 +250,7 @@ const config = {
       },
       tableOfContents: {
         minHeadingLevel: 2,
-        maxHeadingLevel: 6,
+        maxHeadingLevel: 3,
       },
       // Replace with your project's social card
       image: "img/spectro-cloud-social-card.png",

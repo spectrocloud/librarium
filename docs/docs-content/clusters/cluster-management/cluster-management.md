@@ -65,10 +65,10 @@ The following sections describe these capabilities in detail:
 
 
 
-* [Platform Management](palette-lock-cluster.md) - Palette supports the Cluster(s) Management feature to exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded.
+* [Platform Settings](./platform-settings/platform-settings.md) - Palette supports two Cluster Management features: exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded and disable auto remediation of unhealthy cluster nodes.
 
 
-* [NOC UI](palette-lock-cluster.md) - Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations. For public cloud clusters Palette displays the `Region` set during the cluster creation process and displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
+* [NOC UI](noc-ui.md) - Palette provides Intuitive UI-based location monitoring for the clusters running at multiple locations. For public cloud clusters Palette displays the `Region` set during the cluster creation process and displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI. The user can monitor the location details of all the clusters running under a specific scope. 
 
 * [Palette Access Control](cluster-tag-filter/cluster-tag-filter.md) - Palette provides the ability to manage user and role access privileges through tags. This feature helps you reduce the overhead in managing user and role access to clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls to the tag rather than to each cluster, user, or role. This reduces the overhead of managing access controls for individual users and clusters.
 
