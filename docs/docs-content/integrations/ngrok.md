@@ -11,10 +11,10 @@ tags: ["packs", "ngrok", "network", "kubernetes"]
 ---
 
 The ngrok [Ingress Controller for Kubernetes](https://github.com/ngrok/kubernetes-ingress-controller) adds public and
-secure ingress traffic to Kubernetes applications. This open-source [Ingress
+secure ingress traffic to Kubernetes applications. Enforce authentication and authorization at the edge with ngrok, preventing unauthorized traffic from ever reaching your cluster and rogue webhooks from looping and spamming your service. This open-source [Ingress
 Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) works with Palette to provide
 ingress to your applications, APIs, or other resources while also offloading network ingress and middleware execution to
-ngrok's platform.
+ngrok's platform. Balance traffic between multiple redundant Points of Presence (PoPs) in ngrok’s global network, and rely on ngrok’s built-in global service load balancer to automatically route traffic to the PoP with the lowest latency. The ngrok Ingress Controller for Kubernetes equips you to serve apps and APIs without needing to configure networking details such as ELBs, IPs, network interfaces, or VPC routing, radically simplifying ingress into Kubernetes.
 
 # Versions Supported
 
@@ -100,7 +100,7 @@ Once you have defined the ngrok Ingress Controller pack, you can add it to an ex
 
 You can reference the ngrok Ingress Controller pack in Terraform with a data resource.
 
-```
+```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }

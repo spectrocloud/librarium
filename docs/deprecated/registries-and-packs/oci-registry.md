@@ -143,4 +143,3 @@ Charts from the OCI registry can be used in your **Add on** cluster profiles as 
 
 
 * Click done to get your OCI-helm layer added to the cluster profile.
-

@@ -70,4 +70,3 @@ The following applies when adding Helm charts to cluster profiles.
 [Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
 
 <br />
-

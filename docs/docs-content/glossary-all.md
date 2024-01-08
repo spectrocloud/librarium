@@ -170,6 +170,9 @@ TUI is initially used as an interface to site operator to provide site-specific 
 ## Spectro Agent
 Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects information such as metrics, workloads, and heartbeats and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
 
+## System Administrator
+The self-hosted Palette or Palette VerteX user with access to the [system console](#system-console-on-prem-system-console).
+
 ## System Console (On-prem System Console)
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.
 

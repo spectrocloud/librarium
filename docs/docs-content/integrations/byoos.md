@@ -21,11 +21,12 @@ Using your custom OS provides several benefits, including the ability to control
 
 ## Versions Supported
 
-**1.0.x**
-
 <br />
-
 <Tabs queryString="versions">
+
+<TabItem label="1.0.x" value="1.0.x">
+
+<Tabs queryString="edge-non-edge">
 
 <TabItem label="Edge" value="edge">
 
@@ -51,8 +52,10 @@ The BYOS Edge OS pack supports the following parameters.
 | `pack.content.images` | Specifies a list of OS images to use with the pack. | list |
 | `pack.content.images.image` | An OS image to use with the pack. | string|
 | `system.uri` | The system URI specifies the location of BYOOS image. | string|  
-
-
+| `providerCredentials.registry` | Specifies the private registry for the cluster from which to pull images. If you are using a Harbor registry, provide the Harbor domain and the project's name. For example, `harbor.spectrocloud.com/default.` If you are using a Docker registry, provide the domain of the registry. For example, `registry-1.docker.io`. | string |  
+| `providerCredentials.username` | Specifies the username used for authentication with a private registry. | string |
+| `providerCredentials.password` | Specifies the password used for authentication with a private registry. | string |
+| `providerCredentials.certificate` | Specifies the X509 certificate used for authentication and encryption with a private registry | string |
 
   ```yaml
   pack:
@@ -61,6 +64,17 @@ The BYOS Edge OS pack supports the following parameters.
       - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
       # - image: example.io/my-other-images/example:v1.0.0 
       # - image: example.io/my-super-other-images/example:v1.0.0 
+  providerCredentials:
+    registry: registry-1.docker.io
+    user: user
+    password: ******
+    certificates: |
+      -----BEGIN CERTIFICATE-----
+      MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+      ----------------------------------------------------------------
+      7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+      -----END CERTIFICATE-----
+      
     
   options: 
     system.uri: example.io/my-images/example-custom-os:v1.4.5
@@ -82,6 +96,9 @@ Select the BYOOS pack and fill out the required parameters during the cluster pr
 </TabItem>
 
 <TabItem label="Non-Edge" value="Non-Edge">
+
+</TabItem>
+</Tabs>
 
 ## Prerequisites 
 

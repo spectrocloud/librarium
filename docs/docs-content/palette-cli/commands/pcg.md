@@ -17,7 +17,12 @@ The `pcg` command exposes the following subcommand.
   * `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.
 
 
-<br />
+
+## Prerequisites
+
+- Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation to learn how to install Docker on your system.
+
+
 
 ## Install
 
@@ -30,6 +35,14 @@ Use the `install` subcommand to install a PCG cluster in the following environme
   | `-f`       | `--config-file`      |  Install using a configuration file (optional). Use `-config-only` to generate a configuration file.  | string  |
   | `-o`       | `--config-only`      | Generate configuration file only. This command will not proceed with installation.     | boolean    |
   | `-i`       | `--inspect-only`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
+
+
+:::caution
+
+Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
+
+:::
+
 
 
 ### Supported Environments
