@@ -299,12 +299,59 @@ Use the `install` subcommand to install a PCG cluster in the following environme
   | `-i`       | `--inspect-only`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
 
 
+:::caution
+
+Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../spectro-downloads.md#palette-cli) page.
+
+:::
+
+
+
+### Generate a Configuration File
+
+Use the `--config-only` flag to generate a configuration file. The configuration file is used to install a PCG cluster with pre-defined values without having to go through the interactive wizard. 
+
+
+```shell
+palette pcg install --config-only
+```
+
+Upon completion of the wizard installation, the configuration file is generated in the HOME directory under the folder path **.palette/pcg/**. The configuration file is named **pcg.yaml**. 
+
+
+
+```shell hideClipboard
+==== Create PCG reference config ====
+==== PCG config saved ====
+Location: /Users/demo/.palette/pcg/pcg-20240108150653/pcg.yaml
+```
+
+
+### Install With a Configuration File
+
+Use the `--config-file` flag to install a PCG cluster with a configuration file. You can generate a configuration file using the `--config-only` flag. Refer to the [Generate a Configuration File](#generate-a-configuration-file) section for more information.
+
+```shell
+palette pcg install --config-file <path-to-config-file>
+```
+
+
+### Update Passwords
+
+You can update the Ubuntu Pro token and the platform credentials in the configuration file using the `--update-passwords` flag. The `--config-file` flag must be provided. The `--update-passwords` flag does not proceed with installation. 
+
+```shell
+palette pcg install --config-file <path-to-config-file> --update-passwords
+```
+
+
+### Supported Environments
+
 | Platform | Install Guide |
 |---|---|
 | MAAS | [Link](../clusters/data-center/maas/install-manage-maas-pcg.md#install-pcg) |
 | OpenStack | [Link](../clusters/data-center/openstack.md#installing-private-cloud-gateway---openstack) |
 | VMware | [Link](../clusters/data-center/vmware.md#create-vmware-cloud-gateway) |
-
 
 
 ## PDE
