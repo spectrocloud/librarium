@@ -611,7 +611,7 @@ spec:
     spec:
       containers:
       - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.12
+        image: ghcr.io/spectrocloud/hello-universe:1.1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -768,14 +768,14 @@ Download the tutorial image to your local machine.
 <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.12
+docker pull ghcr.io/spectrocloud/tutorials:1.1.0
 ```
 
 Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.12 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.0 bash
 ```
 
 Navigate to the tutorial code.
@@ -811,7 +811,7 @@ Check out the following git tag.
 <br />
 
 ```shell
-git checkout v1.0.12
+git checkout v1.1.0
 ```
 
 Change the directory to the tutorial code.
@@ -1235,7 +1235,7 @@ If you are using the tutorial container and want to exit the container, type `ex
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.12
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.0
 ```
 
 
