@@ -105,9 +105,9 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
   clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-issuer-url: "OIDC-ISSUER-URL"
+    oidc-client-id: "OIDC-CLIENT-ID"
+    oidc-client-secret: "OIDC-CLIENT-SECRET"
     oidc-extra-scope: profile,email,openid
    ```
 
@@ -215,9 +215,9 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 
    ```yaml
    clientConfig:
-      oidc-issuer-url: "<OIDC-ISSUER-URL>"
-      oidc-client-id: "<OIDC-CLIENT-ID>"
-      oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
       oidc-extra-scope: profile,email,openid
    ```
 
@@ -322,9 +322,9 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
    clientConfig:
-      oidc-issuer-url: "<OIDC-ISSUER-URL>"
-      oidc-client-id: "<OIDC-CLIENT-ID>"
-      oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
       oidc-extra-scope: profile,email,openid
    ```
 
@@ -429,9 +429,9 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
    clientConfig:
-      oidc-issuer-url: "<OIDC-ISSUER-URL>"
-      oidc-client-id: "<OIDC-CLIENT-ID>"
-      oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
       oidc-extra-scope: profile,email,openid
    ```
 

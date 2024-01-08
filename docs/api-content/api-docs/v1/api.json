@@ -9774,7 +9774,7 @@
           "uniqueItems": true
         },
         "useControlPlaneAsWorker": {
-          "description": "If IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -9821,7 +9821,7 @@
           "uniqueItems": true
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         },
@@ -34954,7 +34954,7 @@
       "type": "object"
     },
     "v1VmFieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:\u003cname\u003e', where \u003cname\u003e is the name of a field in a struct, or key in a map 'v:\u003cvalue\u003e', where \u003cvalue\u003e is the exact json formatted value of a list item 'i:\\\\\u003cindex\u003e', where \\\\\u003cindex\u003e is position of a item in a list 'k:\u003ckeys\u003e', where \u003ckeys\u003e is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:\\<index>', where \\<index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "properties": {
         "Raw": {
           "items": {
@@ -41690,7 +41690,7 @@
         ],
         "summary": "Retrieves a list of cloud accounts by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       },
       "parameters": [
@@ -41744,7 +41744,7 @@
         ],
         "summary": "Creates an cloud account of specific cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       }
     },
@@ -41774,7 +41774,7 @@
         ],
         "summary": "Deletes the specified account by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       },
       "get": {
@@ -41805,7 +41805,7 @@
         ],
         "summary": "Returns the specified account by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       },
       "parameters": [
@@ -41856,245 +41856,7 @@
         ],
         "summary": "Updates the specified account by cloud type",
         "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudaccounts/cloudTypes/{cloudType}": {
-      "get": {
-        "operationId": "v1CloudAccountsCustomList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cloud account by specified cloud type items",
-            "schema": {
-              "$ref": "#/definitions/v1CustomAccounts"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of cloud accounts by cloud type",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Custom cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudAccountsCustomCreate",
-        "parameters": [
-          {
-            "description": "Request payload to validate Custom cloud account",
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomAccountEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates an cloud account of specific cloud type",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudaccounts/cloudTypes/{cloudType}/{uid}": {
-      "delete": {
-        "operationId": "v1CloudAccountsCustomDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified account by cloud type",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudAccountsCustomGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CustomAccount"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified account by cloud type",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Custom cloud account uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Custom cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudAccountsCustomUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomAccountEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified account by cloud type",
-        "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       }
     },
@@ -45646,7 +45408,7 @@
         ],
         "summary": "Returns the specified Custom cloud config",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -45715,7 +45477,7 @@
         ],
         "summary": "Updates the cluster configuration information",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45777,7 +45539,7 @@
         ],
         "summary": "Creates an Custom cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45807,7 +45569,7 @@
         ],
         "summary": "Deletes the specified machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -45865,7 +45627,7 @@
         ],
         "summary": "Updates the specified Custom cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45937,7 +45699,7 @@
         ],
         "summary": "Retrieves a list of Custom machines",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -46004,7 +45766,7 @@
         ],
         "summary": "Adds the machine to cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -46034,7 +45796,7 @@
         ],
         "summary": "Deletes the specified Custom machine",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "get": {
@@ -46065,7 +45827,7 @@
         ],
         "summary": "Returns the specified Custom machine",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -46130,524 +45892,7 @@
         ],
         "summary": "Updates the specified machine to the cloud config's machine pool",
         "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudTypes/{cloudType}/{configUid}": {
-      "get": {
-        "operationId": "v1CloudConfigsCustomGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudConfig"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified Custom cloud config",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudconfigs/cloudTypes/{cloudType}/{configUid}/clusterConfig": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCustomUidClusterConfig",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudClusterConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the cluster configuration information",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudTypes/{cloudType}/{configUid}/machinePools": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsCustomMachinePoolCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates an Custom cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudTypes/{cloudType}/{configUid}/machinePools/{machinePoolName}": {
-      "delete": {
-        "operationId": "v1CloudConfigsCustomMachinePoolDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified machine pool",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCustomMachinePoolUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified Custom cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudTypes/{cloudType}/{configUid}/machinePools/{machinePoolName}/machines": {
-      "get": {
-        "operationId": "v1CloudConfigsCustomPoolMachinesList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of Custom machine items",
-            "schema": {
-              "$ref": "#/definitions/v1CustomMachines"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of Custom machines",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsCustomPoolMachinesAdd",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Adds the machine to cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/cloudTypes/{cloudType}/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
-      "delete": {
-        "operationId": "v1CloudConfigsCustomPoolMachinesUidDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified Custom machine",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudConfigsCustomPoolMachinesUidGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CustomMachine"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified Custom machine",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCustomPoolMachinesUidUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified machine to the cloud config's machine pool",
-        "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -53776,61 +53021,7 @@
         ],
         "summary": "Get AWS KMS key by Id",
         "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/aws/regions/{region}/kms/{keyId}": {
-      "get": {
-        "operationId": "V1AwsKmsKeyGet",
-        "parameters": [
-          {
-            "description": "Region for which AWS KMS key belongs",
-            "in": "path",
-            "name": "region",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "The globally unique identifier for the KMS key",
-            "in": "path",
-            "name": "keyId",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Uid for the specific AWS cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1AwsKmsKeyEntity"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get AWS KMS key by Id",
-        "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54953,7 +54144,7 @@
         ],
         "summary": "Returns the custom cloud types",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55000,7 +54191,7 @@
         ],
         "summary": "Registers the custom cloud type",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55037,7 +54228,7 @@
         ],
         "summary": "Deletes the custom cloud type",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55070,7 +54261,7 @@
         ],
         "summary": "Returns valid keys for the cloud account used for custom cloud type",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55122,7 +54313,7 @@
         ],
         "summary": "Update the custom cloud type cloud account keys",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55152,7 +54343,7 @@
         ],
         "summary": "Delete the custom cloud type bootstrap",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -55183,7 +54374,7 @@
         ],
         "summary": "Returns the custom cloud type bootstrap",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55234,7 +54425,7 @@
         ],
         "summary": "Update the custom cloud type bootstrap",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55264,7 +54455,7 @@
         ],
         "summary": "Delete the custom cloud type cloud provider",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -55295,7 +54486,7 @@
         ],
         "summary": "Returns the custom cloud type cloud provider",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55346,7 +54537,7 @@
         ],
         "summary": "Update the custom cloud type cloud provider",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55376,7 +54567,7 @@
         ],
         "summary": "Delete the custom cloud type control plane",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -55407,7 +54598,7 @@
         ],
         "summary": "Returns the custom cloud type control plane",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55458,7 +54649,7 @@
         ],
         "summary": "Update the custom cloud type control plane",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55488,7 +54679,7 @@
         ],
         "summary": "Delete the custom cloud type cluster template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -55519,7 +54710,7 @@
         ],
         "summary": "Returns the custom cloud type cluster template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55570,7 +54761,7 @@
         ],
         "summary": "Update the custom cloud type cluster template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55600,7 +54791,7 @@
         ],
         "summary": "Delete the custom cloud type controlPlane pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -55631,7 +54822,7 @@
         ],
         "summary": "Returns the custom cloud type controlPlane pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55682,7 +54873,7 @@
         ],
         "summary": "Update the custom cloud type controlPlane pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55712,7 +54903,7 @@
         ],
         "summary": "Delete the custom cloud type worker pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -55743,7 +54934,7 @@
         ],
         "summary": "Returns the custom cloud type worker pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55794,7 +54985,7 @@
         ],
         "summary": "Update the custom cloud type worker pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55836,7 +55027,7 @@
         ],
         "summary": "Returns the custom cloud type logo",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55887,7 +55078,7 @@
         ],
         "summary": "Update the custom cloud type logo",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55920,7 +55111,7 @@
         ],
         "summary": "Returns the custom cloud type meta",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55966,1053 +55157,7 @@
         ],
         "summary": "Update the custom cloud type meta",
         "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes": {
-      "get": {
-        "operationId": "V1CustomCloudTypesGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypes"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud types",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/register": {
-      "post": {
-        "operationId": "V1CustomCloudTypeRegister",
-        "parameters": [
-          {
-            "description": "Request payload to register custom cloud type",
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudRequestEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Registers the custom cloud type",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}": {
-      "delete": {
-        "operationId": "V1CustomCloudTypesDelete",
-        "parameters": [
-          {
-            "description": "Unique cloud type",
-            "in": "path",
-            "name": "cloudType",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the custom cloud type",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/cloudAccountKeys": {
-      "get": {
-        "operationId": "V1CustomCloudTypeCloudAccountKeysGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeCloudAccountKeys"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns valid keys for the cloud account used for custom cloud type",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "V1CustomCloudTypeCloudAccountKeysUpdate",
-        "parameters": [
-          {
-            "description": "Request payload for custom cloud meta entity",
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeCloudAccountKeys"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type cloud account keys",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/content/bootstrap": {
-      "delete": {
-        "operationId": "V1CustomCloudTypeBootstrapDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Delete the custom cloud type bootstrap",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1CustomCloudTypeBootstrapGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type bootstrap",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeBootstrapUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type bootstrap",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/content/cloudProvider": {
-      "delete": {
-        "operationId": "V1CustomCloudTypeCloudProviderDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Delete the custom cloud type cloud provider",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1CustomCloudTypeCloudProviderGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type cloud provider",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeCloudProviderUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type cloud provider",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/content/controlPlane": {
-      "delete": {
-        "operationId": "V1CustomCloudTypeControlPlaneDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Delete the custom cloud type control plane",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1CustomCloudTypeControlPlaneGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type control plane",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeControlPlaneUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type control plane",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/content/templates/clusterTemplate": {
-      "delete": {
-        "operationId": "V1CustomCloudTypeClusterTemplateDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Delete the custom cloud type cluster template",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1CustomCloudTypeClusterTemplateGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type cluster template",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeClusterTemplateUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type cluster template",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/content/templates/controlPlanePoolTemplate": {
-      "delete": {
-        "operationId": "V1CustomCloudTypeControlPlanePoolTemplateDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Delete the custom cloud type controlPlane pool template",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1CustomCloudTypeControlPlanePoolTemplateGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type controlPlane pool template",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeControlPlanePoolTemplateUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type controlPlane pool template",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/content/templates/workerPoolTemplate": {
-      "delete": {
-        "operationId": "V1CustomCloudTypeWorkerPoolTemplateDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Delete the custom cloud type worker pool template",
-        "tags": [
-          "v1"
-        ]
-      },
-      "get": {
-        "operationId": "V1CustomCloudTypeWorkerPoolTemplateGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type worker pool template",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeWorkerPoolTemplateUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type worker pool template",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/logo": {
-      "get": {
-        "operationId": "V1CustomCloudTypeLogoGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/octet-stream"
-        ],
-        "responses": {
-          "200": {
-            "description": "Download the logo",
-            "headers": {
-              "Content-Disposition": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "format": "binary",
-              "type": "string"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type logo",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "operationId": "V1CustomCloudTypeLogoUpdate",
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "fileName",
-            "type": "file"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type logo",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/cloudTypes/{cloudType}/meta": {
-      "get": {
-        "operationId": "V1CustomCloudTypeMetaGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudMetaEntity"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the custom cloud type meta",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "V1CustomCloudTypeMetaUpdate",
-        "parameters": [
-          {
-            "description": "Request payload for custom cloud meta entity",
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CustomCloudRequestEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Update the custom cloud type meta",
-        "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -72279,7 +70424,7 @@
         ],
         "summary": "Creates a Custom cluster",
         "tags": [
-          "v1"
+          "spectroclusters"
         ]
       }
     },
@@ -72328,111 +70473,7 @@
         ],
         "summary": "Validates Custom cluster create operation",
         "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/spectroclusters/cloudTypes/{cloudType}": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1SpectroClustersCustomCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCustomClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a Custom cluster",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/spectroclusters/cloudTypes/{cloudType}/validate": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud type",
-          "in": "path",
-          "name": "cloudType",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1SpectroClustersCustomValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCustomClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Custom Cluster validation response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Validates Custom cluster create operation",
-        "tags": [
-          "v1"
+          "spectroclusters"
         ]
       }
     },
@@ -80670,7 +78711,7 @@
         ],
         "summary": "Re-send the email to the user to be able to verify the email",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -80693,7 +78734,7 @@
         ],
         "summary": "Verifies the system user email using the email token",
         "tags": [
-          "v1"
+          "system"
         ]
       },
       "parameters": [
@@ -80728,7 +78769,7 @@
         ],
         "summary": "Verifies the system user email using the email token",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -80776,7 +78817,7 @@
         ],
         "summary": "Creates request to reset system password via email",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -80828,188 +78869,7 @@
         ],
         "summary": "Resets the system user password using the password token",
         "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/system/users/email/verify/resend": {
-      "patch": {
-        "description": "Re-send the email to the user to be able to verify the email",
-        "operationId": "V1SystemUsersEmailVerifyReSend",
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Re-send the email to the user to be able to verify the email",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/system/users/email/{emailToken}/verify": {
-      "get": {
-        "description": "Verifies the system user email with the help of email token",
-        "operationId": "V1SystemUsersEmailVerify",
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Verifies the system user email using the email token",
-        "tags": [
-          "v1"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Describes the expirable email token for the system user to be used for verification of email",
-          "in": "path",
-          "name": "emailToken",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/system/users/me": {
-      "get": {
-        "description": "Verifies the system user email with the help of email token",
-        "operationId": "V1SystemUsersMe",
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1SystemUserMe"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Verifies the system user email using the email token",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/system/users/password/reset": {
-      "post": {
-        "description": "Creates request to reset system password via email. Password reset email will be sent to the user. Sends 204 No Content.",
-        "operationId": "v1SystemUsersPasswordResetRequest",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "properties": {
-                "emailId": {
-                  "description": "Describes email if for which password reset email has to be sent",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "emailId"
-              ],
-              "type": "object"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates request to reset system password via email",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/system/users/password/{passwordToken}/reset": {
-      "parameters": [
-        {
-          "description": "Describes the expirable password token for the system user to be used for authentication of user",
-          "in": "path",
-          "name": "passwordToken",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "patch": {
-        "description": "Updates the new system user password with the help of password token",
-        "operationId": "v1SystemUsersPasswordReset",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "properties": {
-                "password": {
-                  "description": "Describes the new password for the system user",
-                  "format": "password",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "password"
-              ],
-              "type": "object"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Resets the system user password using the password token",
-        "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -86318,6 +84178,10 @@
     {
       "name": "spectroclusters",
       "x-displayName": "Spectroclusters"
+    },
+    {
+      "name": "system",
+      "x-displayName": "System"
     },
     {
       "name": "teams",
