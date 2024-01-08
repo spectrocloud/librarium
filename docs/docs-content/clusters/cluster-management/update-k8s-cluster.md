@@ -75,7 +75,7 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.0.12
+git checkout v1.1.0
 ```
 
 Change the directory to the tutorial code.
@@ -398,7 +398,7 @@ spec:
     spec:
       containers:
       - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.12
+        image: ghcr.io/spectrocloud/hello-universe:1.1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -565,7 +565,7 @@ spec:
     spec:
       containers:
       - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.0.12
+        image: ghcr.io/spectrocloud/hello-universe:1.1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
