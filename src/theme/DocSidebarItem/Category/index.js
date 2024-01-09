@@ -9,7 +9,7 @@ import {
 } from "@docusaurus/theme-common";
 import {
   isActiveSidebarItem,
-  findFirstCategoryLink,
+  findFirstSidebarItemLink,
   useDocSidebarItemsExpandedState,
   isSamePath,
 } from "@docusaurus/theme-common/internal";
@@ -45,11 +45,11 @@ function useCategoryHrefWithSSRFallback(item) {
       return item.href;
     }
     // In these cases, it's not necessary to render a fallback
-    // We skip the "findFirstCategoryLink" computation
+    // We skip the "findFirstSidebarItemLink" computation
     if (isBrowser || !item.collapsible) {
       return undefined;
     }
-    return findFirstCategoryLink(item);
+    return findFirstSidebarItemLink(item);
   }, [item, isBrowser]);
 }
 function CollapseButton({ categoryLabel, onClick }) {

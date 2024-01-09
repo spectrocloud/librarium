@@ -2826,7 +2826,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -3764,7 +3764,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -8905,7 +8905,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -10341,7 +10341,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -10753,7 +10753,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -11324,7 +11324,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -12292,7 +12292,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -12701,7 +12701,7 @@
           "type": "integer"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -14596,7 +14596,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         },
         "xslTemplate": {
@@ -15417,7 +15417,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -15797,7 +15797,7 @@
           "description": "Rolling update strategy for this machine pool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "If IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -18872,7 +18872,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -30187,7 +30187,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -32000,7 +32000,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -33411,7 +33411,7 @@
       "type": "object"
     },
     "v1VmFieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:\\<index>', where \\<index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "properties": {
         "Raw": {
           "items": {
@@ -33838,7 +33838,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+          "description": "matchLabels is a map of key-value pairs. A single key-value in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
           "type": "object"
         }
       },
@@ -35906,7 +35906,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
