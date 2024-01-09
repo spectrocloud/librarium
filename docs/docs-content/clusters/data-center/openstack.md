@@ -502,14 +502,20 @@ Palette provides an installer in the form of a docker container. This installer 
 
   :::info
 
-  The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+  The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the [PCG command](../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
 
   :::
 
 <br />
 
 The Palette CLI will now provision a PCG cluster in your OpenStack environment. 
-If the deployment fails due to misconfiguration, update the PCG configuration file and rerun the installer. Refer to the [Edit and Redeploy PCG](#edit-and-redeploy-pcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+
+:::caution
+
+You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+:::
 
 
 
@@ -529,37 +535,6 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **OpenStack** in the table. Verify your OpenStack account is listed.
 
-
-
-### Edit and Redeploy PCG
-
-To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process. 
-
-<br />
-
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as Vi or Nano to update the PCG install configuration file.
-
-  <br />
-
-  ```shell hideClipboard
-  ==== Create PCG reference config ====
-  ==== PCG config saved ====
-  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
-  ```
-
-  ```bash hideClipboard
-  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
-
-
-
-2. To redeploy the PCG, use the `install` command with the flag `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output.
-
-  <br />
-
-  ```bash hideClipboard
-  palette pcg install --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
 
 ## Upgrade PCG
 Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and in an upgrade notification on the PCG.
