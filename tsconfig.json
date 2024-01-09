@@ -7,7 +7,7 @@
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "esModuleInterop": true,
     "target": "es6",
-    "module": "esnext",
+    "module": "Node16",
     "jsx": "react",
     "baseUrl": ".",
     "noImplicitAny": true,
