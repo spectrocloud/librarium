@@ -155,7 +155,7 @@ The following details are required to configure a backup location in AWS:
 4. **S3 Bucket** - S3 bucket name must be pre-created on the object-store.
 
 
-5. **Configuration** - region={region-name},s3ForcePathStyle={true/false},s3Url={S3 URL}. S3 URL need not be provided for AWS S3.
+5. **Configuration** - region=\{region-name},s3ForcePathStyle=\{true/false},s3Url=\{S3 URL}. S3 URL need not be provided for AWS S3.
 
 
 6. **Account Information** - Details of the account which hosts the S3 bucket to be specified as Credentials or STS.
