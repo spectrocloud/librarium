@@ -9,6 +9,12 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## January 9, 2024 - Release 4.2.4
+
+### Bug Fixes
+
+- An invalid toggle User Interface option that appeared in the Edge cluster creation process when defining node groups has been removed. 
+
 ## January 6, 2024 - Release 4.2.0
 
 Palette 4.2.0 is a release that includes new features and various improvements. New features include support for Nutanix clusters, automatic SSL certificate renewal, and enhanced cluster repave control and mitigation. Improvements include support for MicroK8S on MAAS clusters, several network enhancements for Edge deployments, a new differential editor that helps you identify cluster profile changes, and support for a local image registry for Edge clusters. Check out the notes below to learn more about the new features and improvements.
