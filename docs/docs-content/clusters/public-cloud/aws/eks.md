@@ -105,8 +105,8 @@ Use the following steps to deploy an EKS cluster on AWS.
     |-------------|----------------|
     |**Node pool name** | A descriptive name for the node pool.|
     |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
-    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `"environment": "production"` |
-    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md#apply-labels-to-nodes).  Example: `"environment": "production"` |
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
     
     - Cloud Configuration settings
     
@@ -141,7 +141,7 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 16. Schedule any backups you want Palette to perform. Review [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary. 
 
@@ -208,9 +208,9 @@ To use custom OIDC, you need to do the following:
 
 - Install [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. For more information and to learn about other available helper applications, you can visit [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/). 
 
-- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes-generic.md/#configure-custom-oidc) guide.
+- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes-generic.md#configure-custom-oidc) guide.
 
-- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
 
 - Download the kubeconfig file from the cluster details page. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
@@ -236,8 +236,8 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [EKS Cluster Encryption](#eks-cluster-secrets-encryption)
 
-- [Configure Custom OIDC](../../../integrations/kubernetes.md/#configure-custom-oidc)
+- [Configure Custom OIDC](../../../integrations/kubernetes.md#configure-custom-oidc)
 
-- [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings).
+- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc)
+- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)

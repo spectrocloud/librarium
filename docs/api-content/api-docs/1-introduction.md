@@ -194,7 +194,7 @@ The API rate limits are as follows:
 | /v1/overlords | 10 | 5 | 50 |
 | /v1/cluster | 10 | 5 | 50 |
 | /v1/cloudconfigs | 10 | 5 | 50 |
-| /v1/cloudconfigs/{cloudType}/{uid}/machinePools | 10 | 5 | 50 |
+| /v1/cloudconfigs/\{cloudType}/\{uid}/machinePools | 10 | 5 | 50 |
 | /v1/edgehosts | 10 | 5 | 50 |
 | /v1/metrics | 10 | 5 | 50 |
 | /v1/system | 10 | 5 | 50 |
@@ -203,8 +203,8 @@ The API rate limits are as follows:
 | /v1/clouds | 10 | 5 | 50 |
 | /v1/events/components | 10 | 5 | 50 |
 | /v1/dashboard | 10 | 5 | 50 |
-| /v1/cloudconfigs/{cloudType}/:uid/machinePools/{machinePoolName}/machines | 10 | 5 | 50 |
-| /v1/cloudconfigs/{cloudType}/:uid/machinePools/{machinePoolName}/machines/:machineUid | 10 | 5 | 50 |
+| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/\machines | 10 | 5 | 50 |
+| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/\machines/:machineUid | 10 | 5 | 50 |
 | /v1/auth/authenticate | 10 | 5 | 50 |
 | /v1/auth/services/login | 10 | 5 | 50 |
 | /v1/auth/services/edge/login | 10 | 5 | 50 |
@@ -223,7 +223,7 @@ The API rate limits are as follows:
 | /v1/clusterprofiles | 50 | 5 | 250 |
 | /v1/clusterprofiles/:uid/packs | 50 | 5 | 250 |
 | /v1/clusterprofiles/:uid/packs/manifests | 50 | 5 | 250 |
-| /v1/clusterprofiles/:uid/packs/{packName}/manifests | 50 | 5 | 250 |
+| /v1/clusterprofiles/:uid/packs/\{packName}/manifests | 50 | 5 | 250 |
 | /v1/clusterprofiles/validate/packs | 50 | 5 | 250 |
 | /v1/clusterprofiles/:uid/validate/packs | 50 | 5 | 250 |
 | /v1/spectroclusters/:uid/profiles | 50 | 5 | 250 |

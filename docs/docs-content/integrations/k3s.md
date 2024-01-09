@@ -105,9 +105,9 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
   clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-issuer-url: "OIDC-ISSUER-URL"
+    oidc-client-id: "OIDC-CLIENT-ID"
+    oidc-client-secret: "OIDC-CLIENT-SECRET"
     oidc-extra-scope: profile,email,openid
    ```
 
@@ -212,12 +212,13 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
         - oidc-username-claim="email"
    ```
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
+
    ```yaml
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+   clientConfig:
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
+      oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
@@ -320,11 +321,11 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
    ```
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+   clientConfig:
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
+      oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
@@ -427,11 +428,11 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
    ```
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+   clientConfig:
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
+      oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
@@ -472,7 +473,6 @@ data "spectrocloud_pack_simple" "k8s" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
 
 
 
