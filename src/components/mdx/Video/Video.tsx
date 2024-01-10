@@ -1,7 +1,6 @@
 import React from "react";
 
 const Video = (props: any): React.JSX.Element => {
-  console.log(props);
   return (
     <video
       {...props}
