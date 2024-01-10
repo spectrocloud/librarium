@@ -341,7 +341,7 @@ Use the following steps to enable Ubuntu Pro.
   -  **Pack Version** - 20.04 or 22.04
 
 
-7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
 
 
   <br />
@@ -687,7 +687,7 @@ Use the following steps to enable Ubuntu Pro.
   -  **Pack Version** - 20.04 or 22.04
 
 
-7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the **</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the *\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
 
 
   <br />

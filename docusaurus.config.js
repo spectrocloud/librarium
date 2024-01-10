@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 require("dotenv").config();
-const lightCodeTheme = require("prism-react-renderer/themes/oceanicNext");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const themes = require('prism-react-renderer').themes;
+const lightCodeTheme = themes.oceanicNext;
+const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const {
   pluginPacksAndIntegrationsData
