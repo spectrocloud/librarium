@@ -67,16 +67,14 @@ Prior versions of Palette installed internal Palette components' ingress resourc
 
 1. Connect to the cluster using the cluster's kubeconfig file.
 
-
-
 2. Identify all Ingress resources that belong to *Hubble* - an internal Palette component.
 
- 	```shell
-  kubectl get ingress --namespace default
-  ```
+   ```shell
+   kubectl get ingress --namespace default
+   ```
 
 3. Remove each Ingress resource listed in the output that starts with the name Hubble. Use the following command to delete an Ingress resource. Replace `REPLACE_ME` with the name of the Ingress resource you are removing.
 
-  ```shell
-  kubectl delete ingress --namespace default <REPLACE_ME>
-  ```
+   ```shell
+   kubectl delete ingress --namespace default <REPLACE_ME>
+   ```

@@ -23,7 +23,7 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 ## Versions Supported
 
 <Tabs>
-<TabsItem label="23.07.x" value="trident_23.07">
+<TabItem label="23.07.x" value="trident_23.07">
 
 ## Prerequisites
 
@@ -191,9 +191,9 @@ spec:
 ```
 
 
-</TabsItem>
+</TabItem>
 
-<TabsItem label="23.01.x" value="trident_23.01">
+<TabItem label="23.01.x" value="trident_23.01">
 
 ## Prerequisites
 
@@ -361,7 +361,7 @@ spec:
 ```
 
 
-</TabsItem>
+</TabItem>
 
 </Tabs>
 
