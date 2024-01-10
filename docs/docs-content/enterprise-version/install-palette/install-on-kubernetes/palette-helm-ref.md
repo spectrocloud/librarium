@@ -98,7 +98,7 @@ You can configure Palette to use Single Sign-On (SSO) for user authentication. C
 To configure SSO, you must provide the following parameters.
 
 | **Parameters** | **Description** |  **Type** | **Default value** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | 
 | `saml.enabled` | Specifies whether to enable SSO SAML configuration by setting it to true. | Boolean | `false` |
 | `saml.acsUrlRoot` | The root URL of the Assertion Consumer Service (ACS).| String | `myfirstpalette.spectrocloud.com`|
 | `saml.acsUrlScheme` | The URL scheme of the ACS: `http` or `https`. | String | `https` |

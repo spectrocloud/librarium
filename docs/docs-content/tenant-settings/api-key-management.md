@@ -16,7 +16,7 @@ Unlike regular user accounts, tenant administrators can view all API keys create
 The following table describes the API key management tasks you can perform as a tenant administrator, and how they differ from non-tenant users.
 
 | **Action** | **Description** | **Tenant Admin** | **Non-tenant User** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | **List** | List all API keys in the tenant. | ✅ | ❌ |
 | **Create** | Create a new API key. | ✅ |  ✅ |
 | **Create for User** | Create a new API key for a different user. | ✅ | ❌ |

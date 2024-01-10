@@ -39,7 +39,7 @@ We do not recommend updating a currently deployed cluster profile version to pus
 
   :::
 
-5. Save your changes.
+4. Save your changes.
 
 
 ### Validate
