@@ -175,7 +175,7 @@ const FilteredTable: React.FC = () => {
   }, []);
 
   const filteredPacks = searchValue
-    ? deprecatedPacks.filter((pack) => pack.displayName.includes(searchValue.toLowerCase()))
+    ? deprecatedPacks.filter((pack) => pack.displayName.toLowerCase().includes(searchValue.toLowerCase()))
     : deprecatedPacks;
 
   return (
