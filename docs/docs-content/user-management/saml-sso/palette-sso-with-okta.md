@@ -173,7 +173,7 @@ To ensure Okta issues OIDC tokens with the correct claims, you must create a cus
 
   <br />
 
-17. Click **<-- Back to Authorization Servers** at the top of the page to navigate back to the list of all servers. The authorization server you created is displayed in the list. Select the **Issuer URI** shown and copy it to the clipboard. Save this value as you will use it in a later step.
+17. Click **\<-- Back to Authorization Servers** at the top of the page to navigate back to the list of all servers. The authorization server you created is displayed in the list. Select the **Issuer URI** shown and copy it to the clipboard. Save this value as you will use it in a later step.
 
   <br />
 
