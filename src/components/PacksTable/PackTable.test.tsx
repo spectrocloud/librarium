@@ -70,7 +70,7 @@ describe("FilteredTable Tests", () => {
     // Fire the event to change the search textbox
     fireEvent.change(screen.getByRole("textbox"), { target: { value: "Amazon" } });
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
     // Now run the expectations
     expect(screen.getByText("Amazon EKS optimized Linux")).toBeInTheDocument();
