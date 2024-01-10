@@ -224,10 +224,10 @@ At times, you may be required to work with the Palette Support Team to troublesh
 
     This message will display on the UI: "The request was sent successfully. The download will be available soon." There is an average wait time of five (5) minutes. 
 
-    At the end of this short log fetching interval, the message will be displayed on the UI: "The logs archive for {Cluster-name} was created successfully."
+    At the end of this short log fetching interval, the message will be displayed on the UI: "The logs archive for \{Cluster-name} was created successfully."
 
 
-5. Click **Download <*cluster-name*> logs** to download the **Logs** folder to your local machine.
+5. Click **Download \<*cluster-name*> logs** to download the **Logs** folder to your local machine.
 
 
 6. Unzip and rename the Logs folder as per the customer's choice.

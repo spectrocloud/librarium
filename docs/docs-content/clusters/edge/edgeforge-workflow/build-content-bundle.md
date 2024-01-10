@@ -40,7 +40,7 @@ Creating a content bundle provides several benefits that may address common use 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
 
-- Palette API key. Refer to the [User Authentication](../../../user-management/user-authentication.md/#api-key) resource to learn how to create a Palette API key.
+- Palette API key. Refer to the [User Authentication](../../../user-management/user-authentication.md#api-key) resource to learn how to create a Palette API key.
 
 
 - An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach to your cluster.

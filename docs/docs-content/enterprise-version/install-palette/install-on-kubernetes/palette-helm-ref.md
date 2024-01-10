@@ -97,7 +97,7 @@ You can configure Palette to use Single Sign-On (SSO) for user authentication. C
 To configure SSO, you must provide the following parameters.
 
 | **Parameters** | **Description** |  **Type** | **Default value** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | 
 | `saml.enabled` | Specifies whether to enable SSO SAML configuration by setting it to true. | Boolean | `false` |
 | `saml.acsUrlRoot` | The root URL of the Assertion Consumer Service (ACS).| String | `myfirstpalette.spectrocloud.com`|
 | `saml.acsUrlScheme` | The URL scheme of the ACS: `http` or `https`. | String | `https` |
@@ -301,7 +301,7 @@ Palette uses [NATS](https://nats.io) and gRPC for communication between Palette 
 | --- | --- | --- | --- |
 | `nats.enabled`| Specifies whether to enable the deployment of a NATS load balancer. | Boolean | `true` |
 | `nats.internal`| Specifies whether to deploy a load balancer or use the host network. If this value is set to `true`, then the remaining NATS parameters are ignored. | Boolean | `true` |
-| `nats.natsUrl`| The NATS URL. This can be a comma separated list of <dns_name:port> mappings for the NATS load balancer service. For example, "message1.dev.spectrocloud.com:4222,message2.dev.spectrocloud.com:4222". This parameter is mandatory if `nats.internal` is set to `false`. If `nats.internal` is set to `true`, you can leave this parameter empty. | String | `""` |
+| `nats.natsUrl`| The NATS URL. This can be a comma separated list of \<dns_name:port> mappings for the NATS load balancer service. For example, "message1.dev.spectrocloud.com:4222,message2.dev.spectrocloud.com:4222". This parameter is mandatory if `nats.internal` is set to `false`. If `nats.internal` is set to `true`, you can leave this parameter empty. | String | `""` |
 | `nats.annotations`| A map of key-value pairs that specifies load balancer annotations for NATS. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification. | Object | `{}` |
 | `nats.natsStaticIP`| Specify a static IP address for the NATS load balancer service. If empty, a dynamic IP address will be assigned to the load balancer. | String | `""` |
 

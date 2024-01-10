@@ -139,7 +139,7 @@ If you have already installed the PCG and are experiencing issues that you want 
 
 <Tabs>
 
-<TabsItem label="Install PCG" value="install_pcg"> 
+<TabItem label="Install PCG" value="install_pcg"> 
 
 
 ## Install the Gateway
@@ -262,9 +262,9 @@ Once installed, the gateway registers itself with Palette. To verify the gateway
 
 When you install the gateway, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
 
-</TabsItem>
+</TabItem>
 
-<TabsItem label="Edit PCG Config" value="edit_pcg_config">
+<TabItem label="Edit PCG Config" value="edit_pcg_config">
 
 
 ### Edit PCG Configuration File
@@ -323,7 +323,7 @@ The installer requests available bare metal machines in your MAAS environment on
 
 If you need assistance, please visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
-</TabsItem>
+</TabItem>
 
 </Tabs>
 

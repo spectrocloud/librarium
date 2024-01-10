@@ -8,7 +8,7 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
 
-Use the following steps to create an app profile that contains an out-of-the-box service such as messaging system, object storage, database, and security services. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing for available services.
+Use the following steps to create an app profile that contains an out-of-the-box service such as messaging system, object storage, database, and security services. Review the [Out-of-the-Box Service](/devx/services/service-listings/service-listings.mdx) listing for available services.
 
 
 :::info
@@ -41,7 +41,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
   To learn how to create multiple profile versions that use the same name, check out [Version a Cluster Profile](../modify-app-profiles/version-app-profile.md).
 
-5. Select one of the out-of-the-box services to start configuring your app profile. Review the [Out-of-the-Box Service](/devx/app-profile/services/service-listings/) listing to learn more about specific offerings.
+5. Select one of the out-of-the-box services to start configuring your app profile. Review the [Out-of-the-Box Service](/devx/services/service-listings/service-listings.mdx) listing to learn more about specific offerings.
 
 6. Provide configuration information for the service.  
 

@@ -91,14 +91,6 @@ You can validate the Edge host is ready for the site installation by simulating 
 
 You will create a Virtual Machine Disk (VMDK) from the Edge Installer ISO and upload it to a vCenter environment. In the vCenter environment, you will convert the VMDK to a VM template, and export it out as an OVF template.
 
-<br />
-
-:::info
-
-
-If you generate an OVF template and want to pre-load a content bundle, you must create a custom installer ISO. Refer to the [Create Installer Image](/clusters/edge/site-deployment/installer) to learn how to create a custom installer image.
-
-:::
 
 ### Prerequisites
 

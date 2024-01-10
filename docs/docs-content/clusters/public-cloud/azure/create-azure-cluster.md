@@ -28,7 +28,7 @@ Autoscaling is not supported for Azure IaaS clusters.
 
 - An infrastructure cluster profile for Azure. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
 
-- To use custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the Cluster config page during the cluster creation process. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).
+- To use custom storage accounts or containers, you must create them before you create your cluster. All custom storage accounts and containers will be listed on the Cluster config page during the cluster creation process. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).
 
   If you need help creating a custom storage account or container, check out the [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal) guide or the [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal). 
   
@@ -74,7 +74,7 @@ Use the following steps to deploy an Azure cluster.
 
   :::caution
 
-  All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings).
+  All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
   :::
 
@@ -82,7 +82,7 @@ Use the following steps to deploy an Azure cluster.
 
 10. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet, ensure you also provide information listed in the Static Placement Settings table. 
 
-  If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md/#azure-storage).
+  If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
 
   :::caution
 
@@ -95,8 +95,8 @@ Use the following steps to deploy an Azure cluster.
   | **Subscription** | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.|
   | **Region** | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.|
   | **Resource Group** | Select the name of the resource group that contains the Azure resources you will be accessing.|
-  | **Storage Account** | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).|
-  | **Storage Container**| Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md/#azure-storage).|
+  | **Storage Account** | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).|
+  | **Storage Container**| Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).|
   | **SSH Key** | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats). |
   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VNets, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
 
@@ -130,8 +130,8 @@ Use the following steps to deploy an Azure cluster.
     |**Node pool name** | A descriptive name for the node pool.|
     |**Number of nodes in the pool** | Specify the number of nodes in the master pool.|
     |**Allow worker capability** | Select this option to allow workloads to be provisioned on master nodes. |
-    |**Additional Labels** | You can add optional labels to nodes in key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md/#labels). Example: `environment:production`. |
-    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+    |**Additional Labels** | You can add optional labels to nodes in key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md#labels). Example: `environment:production`. |
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md#apply-taints-to-nodes) page to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
 
     #### Cloud Configuration Settings for Master Pool
     
@@ -151,8 +151,8 @@ Use the following steps to deploy an Azure cluster.
     |**Number of nodes in the pool** | Specify the number of nodes in the worker pool.|
     |**Node repave interval** | Optionally, you can specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the Kubeadm configuration file. |
     |**Rolling update** | These options allow you to control the sequence of operations during a node pool update. Choose the **Expand first** option to add new nodes with updated configurations to the node pool before the existing nodes are removed. Choose **Contract first** to remove existing nodes from the node pool before the new nodes with updated configurations are added. |
-    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md/#apply-labels-to-nodes).  Example: `environment:production`. |
-    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. To learn more, review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md/#apply-taints-to-nodes) page. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
+    |**Additional Labels** | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Apply Labels to Nodes](../../cluster-management/taints.md#apply-labels-to-nodes).  Example: `environment:production`. |
+    |**Taints** | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. To learn more, review the [Node Pool](../../cluster-management/node-pool.md) management page and [Apply Taints to Nodes](../../cluster-management/taints.md#apply-taints-to-nodes) page. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted.| 
 
     #### Cloud Configuration Settings for Worker Pool
 
@@ -173,7 +173,7 @@ Use the following steps to deploy an Azure cluster.
 
 16. Schedule any backups you want Palette to perform. Review [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc) for an example.
+17. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary. 
 
@@ -243,13 +243,13 @@ The link to access the Add Rules page is displayed within a caution message in t
 
 - [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
 
-- [Azure Storage](../azure/architecture.md/#azure-storage)
+- [Azure Storage](../azure/architecture.md#azure-storage)
 
 - [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider)
 
-- [Create Role Bindings](../../cluster-management/cluster-rbac.md/#create-role-bindings)
+- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md/#use-rbac-with-oidc)
+- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
 
 <!-- - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
 

@@ -317,7 +317,7 @@ envs:
 
 ## Files
 
-Files present in this section will be added to the pod and will be accessible while executing pre-and-post execution hooks and absolute file path would be '/var/files/<file_name>'.
+Files present in this section will be added to the pod and will be accessible while executing pre-and-post execution hooks and absolute file path would be '/var/files/\<file_name>'.
 
 <br />
 
