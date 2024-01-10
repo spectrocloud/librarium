@@ -874,7 +874,7 @@ In the **Nodes config** section, provide the details for the master and worker p
 Keep the **Cloud Configuration** the same for both master and worker pools.
 
 |**Field** | **Value**|
-|---| --- | ---|
+|---| --- | 
 |Instance Type | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
 |Availability zones | Choose any *one* availability zone.<br /> This tutorial uses the `us-east-1a` availability zone. | 
 |Disk size | 60 GiB | 
