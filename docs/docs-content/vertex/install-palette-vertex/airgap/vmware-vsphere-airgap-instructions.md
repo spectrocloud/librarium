@@ -37,8 +37,13 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   - An OVA that contains the Operating System and Kubernetes distribution required for the VerteX nodes. 
 
+- The airgap support VM requires the following resources:
 
-- 120 GB of disk space available for the airgap support VM.
+  - 6 CPU
+
+  - 8 GB of Memory
+
+  - 120 GB of disk space available for the airgap support VM.
 
 
 - Dynamic Host Configuration Protocol (DHCP) is required for the airgap support VM so that you can access the VM with SSH. You can disable DHCP or modify the IP address after the airgap support VM is deployed.
@@ -77,12 +82,55 @@ Complete the following steps before deploying the airgap VerteX installation.
 
   :::tip
 
-  You can also use the **Deploy OVF Template** wizard in vCenter to make the OVA available in the `spectro-templates` folder. Append the `r_` prefix when assiging a name and target location. You can terminate the deployment after the OVA is available in the `spectro-templates` folder.
+  You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates` folder. Append the `r_` prefix when assiging a name and target location. You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html) guide for more information about deploying an OVA in vCenter.
   :::
 
-5. 
+5. Next, deploy the install OVA by using the **Deploy OVF Template** wizard in vSphere. Insert the VerteX install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative. Click on **Next** to continue. 
+
+  ![View of the OVF deploy wizard](/vertex_airgap_vmware-vsphere-airgap-instructions_ovf-wizard.png)
 
 
+
+6. Assign a name to the virtual machine and select a target location. Click on **Next** to continue.
+
+7. Select a compute resource and click on **Next** to continue.
+
+8. Review the details and click on **Ignore All** in any of the warning messages. The OVA contains a self-signed certificate which is causing vSphere to issue a warning. Click on **Next** to continue.
+
+9. Select the storage location and click on **Next** to continue.
+
+10. Select the network and click on **Next** to continue.
+
+11. The last step is to customize the template. Review the table below to learn more about each field. Click on **Next** after you have completed the customization to continue.
+
+  | Parameter | Description | Required |
+  | --- | --- | --- |
+  | **Encoded user-data** | Enter the base64 encoded user-data for additional boot-up custmization. You can leave this field empty. | No | 
+  | **SSH Public Keys** | Provide the SSH public keys for the user account you will use to access the airgap support VM. You need to provide at least one SSH public key to access the instance. | Yes |
+  | **Default User's password** | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH.  If you set to the value to `RANDOM` then a random password will be generated, and written to the console. | No |
+  | **A Unique Instance ID for this instance** | Enter a unique instance ID for the airgap support VM. The default value is `id-ovf`. | Yes |
+  | **Hostname** | Enter a hostname for the airgap support VM. For example, `vertex.example.com`. The default value is `ubuntuguest`. | Yes |
+  | **Url to seed instance data from** | You can specify a URL to seed instance data from.  You can leave this value empty.| No |
+
+12. Review the details and click on **Finish** to deploy the airgap support VM.
+
+13. It will take a few minutes for the airgap support VM to deploy. Once the deployment is complete, you will see the VM in the vSphere inventory. The VM will be powered off. Power on the VM to continue.
+
+
+14. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the IP address or hostname of the airgap support VM. The default user account is `ubuntu`. Replace the path to the private SSH key and the IP address with the IP address of the airgap support VM.
+
+  ```shell
+  ssh -identity_file /path/to/private/key ubuntu@<ipAddress>
+  ```
+
+15. Change the password for the `ubuntu` user account. You will be prompted to change the password the first time you log in through SSH. The password requirement is strict and must meet the following criteria:
+    - At least 14 characters long
+    - Palindromes are not allowed
+    - 
+    - At least 1 uppercase letter
+    - At least 1 lowercase letter
+    - At least 1 number
+    - At least 1 special character
 
 You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
 
