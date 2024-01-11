@@ -850,7 +850,7 @@ In addition to changing the password for a VMware account, Palette provides a wa
 
 # Deploy a VMware Cluster
 
-<video title="vmware-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/vmware.mp4"></video>
+<Video title="vmware-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/vmware.mp4"></Video>
 
 
 The following steps need to be performed to provision a new VMware cluster:
