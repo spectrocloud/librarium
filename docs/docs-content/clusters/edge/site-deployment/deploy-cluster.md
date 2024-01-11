@@ -80,15 +80,15 @@ You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.c
 
 ## Build Edge Artifacts
 
-In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with your cluster profile. 
+In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds multiple provider images, so you can use any image that matches the desired Kubernetes version you want to use with your cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor architecture that has network connectivity to your VMware vCenter environment. 
 
-This tutorial builds and uses the provider image compatible with K3s v1.25.2. 
+This tutorial builds and uses the provider image compatible with K3s v1.27.5. 
 
 ### Check Out Starter Code
 
 Issue the following and subsequent command-line instructions on your Linux machine, which this tutorial refers to as the development environment.
 
-Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts. 
+Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code to build Edge artifacts.
 
 ```bash
 git clone https://github.com/spectrocloud/CanvOS.git
@@ -100,17 +100,17 @@ Change to the **CanvOS** directory.
 cd CanvOS
 ```
 
-View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
-<br />
+
+View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 
 ```bash
 git tag
 ```
 
-Check out the newest available tag. This guide uses **v3.4.3** tag as an example. 
+Check out the newest available tag. This guide uses **v4.1.2** tag as an example. 
 
-```shell
-git checkout v3.4.3
+```bash
+git checkout v4.1.2
 ```
 
 ## Define Arguments
@@ -126,7 +126,7 @@ export CUSTOM_TAG=demo
 
 Issue the command below to create the **.arg** file with the custom tag. The remaining arguments will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. The default ttl.sh image registry is free and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will expire after the 24 hrs time limit. 
 
-Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the **.arg.template** sample file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values. 
+Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be `ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values. 
 
 ```bash
 cat << EOF > .arg
@@ -137,8 +137,8 @@ IMAGE_REPO=ubuntu
 OS_VERSION=22
 K8S_DISTRIBUTION=k3s
 ISO_NAME=palette-edge-installer
-PE_VERSION=$(git describe --abbrev=0 --tags)
 ARCH=amd64
+UPDATE_KERNEL=false
 EOF
 ```
 
@@ -180,15 +180,9 @@ Use the following command to create the **user-data** file containing the tenant
       tooltipPlacement: "rightTop",
     },
     {
-      x: 500,
-      y: 224,
-      label: 2,
-      description: "Instructs the installer to turn the host machine off once the installation is complete.",
-    },
-    {
       x: 600,
       y: 300,
-      label: 3,
+      label: 2,
       description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
       tooltipPlacement: "rightTop",
     }
@@ -201,8 +195,8 @@ cat << EOF > user-data
 stylus:
   site:
     edgeHostToken: $token
-install:
-  poweroff: true
+    paletteEndpoint: api.spectrocloud.com
+
 users:
   - name: kairos
     passwd: kairos
@@ -224,9 +218,9 @@ The expected output should show that the `edgeHostToken` and login credentials f
 #cloud-config
 stylus:
   site:
+    paletteEndpoint: api.spectrocloud.com
     edgeHostToken: 62ElvdMeX5MdOESgTleBjjKQg8YkaIN3
-install:
-  poweroff: true
+
 users:
   - name: kairos
     passwd: kairos
@@ -237,6 +231,12 @@ users:
 ## Build Artifacts
 
 The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process. 
+
+:::caution
+Make sure your machine has sufficient disk space for the provider images. Each image is about 4 - 5 GB in size, and images are created for all the Palette-supported Kubernetes versions by default. In the **4.1.2** branch of **CanvOS** used in this tutorial, the script builds 14 images. If your machine does not have enough disk space, the build process will fail silently.
+
+You can exclude image versions you do not need from the build process by commenting out the lines in the `build-provider-images` parameter in the file **Earthfile** in the **CanvOS** repository. This speeds up build process and reduces the amount of space required for the build process. For an example of excluding a version from build, refer to [Build Edge Artifacts guide](../edgeforge-workflow/palette-canvos.md).
+:::
 
 ```bash
 sudo ./earthly.sh +build-all-images
@@ -263,7 +263,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v3.4.3
+  system.peVersion: v4.1.2
   system.customTag: demo
   system.osVersion: 22
 ```
@@ -293,23 +293,35 @@ echo $ISOFILEPATH
 List the Docker images to review the created provider images. By default, provider images are created for all the Palette-supported Kubernetes versions. You can identify the provider images by the image tag value you used in the **.arg** file's `CUSTOM_TAG` variable. 
 
 ```shell
-docker images --filter=reference='*/*:*demo'
+docker images --filter=reference='*/*:*demo*'
 ```
 
 ```hideClipboard bash {3,4}
 REPOSITORY      TAG                      IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.24.6-v3.4.3-demo   3a672a023bd3   45 minutes ago   4.61GB
-ttl.sh/ubuntu   k3s-1.25.2-v3.4.3-demo   0217de3b9e7c   45 minutes ago   4.61GB
+ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo               b25cfbaadd79   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo_linux_amd64   b25cfbaadd79   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.26.8-v4.1.2-demo                f2d870f3b8bd   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.26.8-v4.1.2-demo_linux_amd64    f2d870f3b8bd   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.27.2-v4.1.2-demo                6df130ae97e2   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.27.2-v4.1.2-demo_linux_amd64    6df130ae97e2   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.26.4-v4.1.2-demo                a14409825650   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.26.4-v4.1.2-demo_linux_amd64    a14409825650   2 hours ago   4.13GB
+ttl.sh/ubuntu   k3s-1.27.5-v4.1.2-demo                bee555567baf   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.27.5-v4.1.2-demo_linux_amd64    bee555567baf   2 hours ago   4.12GB
+ttl.sh/ubuntu   k3s-1.25.2-v4.1.2-demo                9c465e51a671   2 hours ago   4.1GB
+ttl.sh/ubuntu   k3s-1.25.2-v4.1.2-demo_linux_amd64    9c465e51a671   2 hours ago   4.1GB
+ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo                6a56cdd58c0b   2 hours ago   4.1GB
+ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo_linux_amd64    6a56cdd58c0b   2 hours ago   4.1GB
 ```
 
 ## Push Provider Images
 
 Push the provider images to the image registry indicated in the **.arg** file so that you can reference the provider image later in your cluster profile. 
 
-Since we used the provider image compatible with K3s v1.25 in the cluster profile, you would use the following command to push the provider image compatible with K3s v1.25 to the image registry. If you want to use the other provider image compatible with K3s v1.24 instead, push that version to the image registry. The example below and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free and does not require you to sign up to use it. Images pushed to ttl.sh are ephemeral and will expire after 24 hours.  
+Since we used the provider image compatible with K3s v1.27 in the cluster profile, you would use the following command to push the provider image compatible with K3s v1.27 to the image registry. If you want to use the other provider image, push that version to the image registry. The example below and default behavior uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free and does not require you to sign up to use it. Images pushed to ttl.sh are ephemeral and will expire after 24 hours.  
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
+docker push ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
 ```
 
 :::caution
@@ -363,12 +375,42 @@ EOF
 ```
 View the file to ensure you have filled in the details correctly. 
 
-
 ```bash
 cat .packerenv
 ```
 
 You will use the **.packerenv** file later in the tutorial when you start Packer.
+
+After you create the **.packerenv** file, source this file to set the variables in your environment.
+Echo one of the variables to ensure the variables are accessible on your host machine.
+
+```shell
+source .packerenv
+echo $PKR_VAR_vcenter_server
+```
+
+After you create the **.packerenv** file, create another environment variable file named **.goenv**. 
+[GOVC](https://github.com/vmware/govmomi/blob/main/govc/USAGE.md) is the tool you will be using to interact with vSphere, and it requires the same variables that you provided to Packer. 
+
+```shell
+cat << EOF > .goenv
+vcenter_server=$PKR_VAR_vcenter_server
+vcenter_username=$PKR_VAR_vcenter_username
+vcenter_password=$PKR_VAR_vcenter_password
+vcenter_datacenter=$PKR_VAR_vcenter_datacenter
+vcenter_datastore=$PKR_VAR_vcenter_datastore
+vcenter_resource_pool=$PKR_VAR_vcenter_resource_pool
+vcenter_folder=$PKR_VAR_vcenter_folder
+vcenter_cluster=$PKR_VAR_vcenter_cluster
+vcenter_network=$PKR_VAR_vcenter_network
+EOF
+```
+
+View the file to ensure variable values are set correctly.
+
+```shell
+cat .goenv
+```
 
 Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable to bind mount the host's **build** directory to the container. 
 
@@ -389,10 +431,11 @@ The next step is to use the following `docker run` command to trigger Packer bui
 - The `--env-file` option reads the **.packerenv** file.
 
 
-- The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.7`.
+- The `--volume ` option mounts a local directory to our official tutorials container, `ghcr.io/spectrocloud/tutorials:1.0.10`.
 
+- The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"` shell sub-command deletes any pre-existing **packer_cache**.  A known [issue]((https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum logic to ignore previous builds,  and reuse previously created ISO found in the **packer_cache** folder. The delete script removes any existing packer cache to prevent re-using a previously created ISO.
 
-- The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
+- The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **/edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
 
   - The `-force` flag destroys any existing template. 
   - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](../architecture/#minimum-device-requirements).
@@ -423,19 +466,20 @@ The next step is to use the following `docker run` command to trigger Packer bui
 
   :::info
 
-  Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer script, you must open a bash session into the container using the `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.7 bash` command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build process.   
+  Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer script, you must open a bash session into the container using the `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.10 bash` command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build process.   
 
   :::
 
-Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also upload and keep a copy of the **palette-edge-installer.iso** to the **packer_cache/** directory in the specified datastore. 
+Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will also delete any existing **packer_cache** before uploading and keeping a copy of the **palette-edge-installer.iso** to the **packer_cache/** directory in the specified datastore. 
   
 
 ```bash
 docker run --interactive --tty --rm \
   --env-file .packerenv \
+  --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.0.7 \
-  sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  ghcr.io/spectrocloud/tutorials:1.0.10 \
+  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 Depending on your machine and network, the build process can take 7-10 minutes to finish. 
@@ -459,38 +503,11 @@ Build 'vsphere-iso.edge-template' finished after 7 minutes 13 seconds.
 Once Packer creates the VM template, you can use the template when provisioning VMs. In the next steps, you will use the [GOVC](https://github.com/vmware/govmomi/tree/main/govc#govc) tool to deploy a VM and reference the VM template that Packer created.  Remember that the VM instances you are deploying simulate bare metal devices.
 
 
-GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the **.packerenv** file. Use the following command to source the **.packerenv** file and echo one of the variables to ensure the variables are accessible on your host machine. 
-
-```bash
-source .packerenv
-echo $PKR_VAR_vcenter_server
-```
-
-Use the following command to create a **.goenv** environment file. The  **.goenv** file contains the VMware vCenter credentials and information required to deploy VMs in your VMware environment. 
-
-```bash
-cat << EOF > .goenv
-vcenter_server=$PKR_VAR_vcenter_server
-vcenter_username=$PKR_VAR_vcenter_username
-vcenter_password=$PKR_VAR_vcenter_password
-vcenter_datacenter=$PKR_VAR_vcenter_datacenter
-vcenter_datastore=$PKR_VAR_vcenter_datastore
-vcenter_resource_pool=$PKR_VAR_vcenter_resource_pool
-vcenter_folder=$PKR_VAR_vcenter_folder
-vcenter_cluster=$PKR_VAR_vcenter_cluster
-vcenter_network=$PKR_VAR_vcenter_network
-EOF
-```
-View the file to ensure variable values are set correctly.
-
-```bash
-cat .goenv
-```
-
+GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the **.goenv** file. 
 
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an explanation of the options and sub-command used below:
 
-- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.0.7` tutorials container.
+- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.0.10` tutorials container.
 
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's **edge/vmware/clone_vm_template/** directory and invokes the **deploy-edge-host.sh** shell script. 
@@ -499,8 +516,7 @@ The next step is to use the following `docker run` command to clone the VM templ
 The **edge/vmware/clone_vm_template/** directory in the container has the following files:
 
 - **deploy-edge-host.sh** - Provisions the VMs.
-
-
+- **delete-packer-cache.sh** - Delete any cached ISO files. 
 - **delete-edge-host.sh** - Deletes the VMs.
 
 
@@ -531,7 +547,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 
 :::info
 
-Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the previous step if it is still active, or you can open another bash session into the container using the `docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.7 bash` command. If you use an existing container bash session, create the **.goenv** file described above and source it in your container environment. Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the `./deploy-edge-host.sh` command to deploy the VMs. 
+Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the previous step if it is still active, or you can open another bash session into the container using the `docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.10 bash` command. If you use an existing container bash session, create the **.goenv** file described above and source it in your container environment. Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the `./deploy-edge-host.sh` command to deploy the VMs. 
 
 :::
 
@@ -540,7 +556,7 @@ Issue the following command to clone the VM template and provision three VMs.
 ```bash
 docker run -it --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.0.7 \
+  ghcr.io/spectrocloud/tutorials:1.0.10 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -634,7 +650,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v3.4.3
+  system.peVersion: v4.1.2
   system.customTag: demo
   system.osVersion: 22
 ``` 
@@ -653,10 +669,10 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 |**Pack Type**|**Registry**|**Pack Name**|**Pack Version**| 
 |---|---|---|---|
-|Kubernetes|Public Repo|Palette Optimized K3s|`1.25.x`|
+|Kubernetes|Public Repo|Palette Optimized K3s|`1.27.x`|
 
 
-Select the K3s version 1.25.x. 1.25.X because earlier in this tutorial, you pushed a provider image compatible with K3s v1.25.2 to the *ttl.sh* image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md).
+Select the K3s version 1.27.x. 1.27.X because earlier in this tutorial, you pushed a provider image compatible with K3s v1.27.5 to the *ttl.sh* image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md).
 
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom CNI. 
@@ -868,7 +884,7 @@ Switch back to the **CanvOS** directory in the Linux development environment con
 
 ```bash
 docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.0.7 \
+  ghcr.io/spectrocloud/tutorials:1.0.10 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
@@ -890,8 +906,20 @@ docker images
 Note the provider image name and tags, and use the following command syntax to remove all provider images.
 
 ```bash
-docker image rm --force ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
-docker image rm --force ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
+docker rmi ttl.sh/ubuntu:k3s-1.25.13-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.25.13-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.26.8-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.26.8-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.26.4-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.26.4-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.25.2-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.25.2-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.24.6-v4.1.2-demo
+docker rmi ttl.sh/ubuntu:k3s-1.24.6-v4.1.2-demo_linux_amd64
 ```
 
 ### Delete VMware vSphere Resources

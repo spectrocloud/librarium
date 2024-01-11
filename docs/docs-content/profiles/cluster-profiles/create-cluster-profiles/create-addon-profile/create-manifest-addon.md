@@ -9,7 +9,8 @@ tags: ["profiles", "cluster profiles", "manifest", "add-on"]
 
 
 
-You can extend the list of integrations by adding custom manifests to your cluster profile. Use the following steps to create a cluster profile that adds a custom manifest layer.
+You can extend the list of integrations by adding custom manifests to your cluster profile. Use the following steps to create a cluster profile by adding layers using manifests.
+
 
 ## Prerequisites
 
@@ -35,7 +36,7 @@ You can extend the list of integrations by adding custom manifests to your clust
 
   To learn how to create multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can add configurable layer values and specify the layer install order. When multiple manifests are added to the layer, the install order determines the order in which manifests in the profile are consumed. You can change the order as needed.
+5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can specify the layer [install order](./create-addon-profile.md#install-order). 
 
 6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the editor. 
 
@@ -68,8 +69,7 @@ You now have an add-on cluster profile that contains one or more manifests. You 
 
 3. Select your cluster profile to review its layers or make changes.
 
-
-## Next Steps
+## Next Steps 
 
 Now you can use the add-on profile you created with other profiles.
 

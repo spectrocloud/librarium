@@ -9,7 +9,8 @@ tags: ["profiles", "cluster profiles", "pack", "add-on"]
 
 
 
-Use the following steps to create an add-on cluster profile that adds a pack layer.
+Use the following steps to create a cluster profile by adding one or more layers using packs.
+
 
 ## Prerequisites
 
@@ -39,7 +40,7 @@ Use the following steps to create an add-on cluster profile that adds a pack lay
 
 <!-- Select the type of layer to add to the cluster profile. For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 
-6. Fill out the required input fields and click on **Confirm & Create**.
+6. Fill out the required input fields and click on **Confirm & Create**. Optionally, you can configure values specific to the layer in Helm values.yaml form, and specify the layer [install order](./create-addon-profile.md#install-order).
 
   <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
 

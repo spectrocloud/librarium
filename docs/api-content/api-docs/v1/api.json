@@ -258,7 +258,7 @@
       "type": "object"
     },
     "v1AclMeta": {
-      "description": "Resource access control information",
+      "description": "Resource access control information (Read-only response data)",
       "properties": {
         "ownerUid": {
           "description": "User or service uid which created the resource",
@@ -2904,7 +2904,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -3836,7 +3836,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true and useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -10004,7 +10004,7 @@
       "type": "object"
     },
     "v1EdgeHostCloudProperties": {
-      "description": "Additional cloud properties of edge host",
+      "description": "Additional cloud properties of the edge host (applicable based on the cloud type)",
       "properties": {
         "vsphere": {
           "$ref": "#/definitions/v1EdgeHostVsphereCloudProperties"
@@ -10099,6 +10099,7 @@
           "$ref": "#/definitions/v1ServiceSpec"
         },
         "type": {
+          "description": "Cloudtype of the provisioned edge host",
           "enum": [
             "libvirt",
             "vsphere",
@@ -34003,7 +34004,7 @@
       "type": "object"
     },
     "v1VmFieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:\\<index>', where \\<index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "properties": {
         "Raw": {
           "items": {
@@ -34430,7 +34431,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+          "description": "matchLabels is a map of key-value pairs. A single key-value pair in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
           "type": "object"
         }
       },
@@ -39622,14 +39623,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Authenticates the user for the specified crendentials",
         "tags": [
           "auth"
@@ -39658,14 +39651,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Deprecated. Returns the authentication type for the specified user email id",
         "tags": [
           "auth"
@@ -39691,14 +39676,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns the user organization details",
         "tags": [
           "auth"
@@ -39733,14 +39710,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Creates a request to switch organization",
         "tags": [
           "auth"
@@ -39759,14 +39728,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Idp authorization code callback",
         "tags": [
           "auth"
@@ -39821,14 +39782,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Identity provider logout url for the Oidc",
         "tags": [
           "auth"
@@ -39894,14 +39847,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Identity provider callback url for the SMAL authentication",
         "tags": [
           "auth"
@@ -39949,14 +39894,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Identity provider logout url for the SMAL",
         "tags": [
           "auth"
@@ -39975,14 +39912,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns a list of user's organizations",
         "tags": [
           "auth"
@@ -40027,14 +39956,6 @@
             "description": "The resource was updated successfully"
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Updates and Activates the specified user password using the password token",
         "tags": [
           "auth"
@@ -40079,14 +40000,6 @@
             "description": "The resource was updated successfully"
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Resets the user password using the password token",
         "tags": [
           "auth"
@@ -40105,14 +40018,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Refreshes authentication token",
         "tags": [
           "auth"
@@ -40147,14 +40052,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns a list of predefined Identity Provider (IDP)",
         "tags": [
           "auth"
@@ -40180,14 +40077,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns a list of supported sso logins",
         "tags": [
           "auth"
@@ -40206,14 +40095,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns a list of supported sso auth providers",
         "tags": [
           "auth"
@@ -40232,14 +40113,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns Authorization token. Works as a callback url for the system defined sso apps",
         "tags": [
           "auth"
@@ -40303,14 +40176,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Returns No Content. Sends the user organization information via email",
         "tags": [
           "auth"
@@ -40351,14 +40216,6 @@
             }
           }
         },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
         "summary": "Creates request to reset password via email",
         "tags": [
           "auth"

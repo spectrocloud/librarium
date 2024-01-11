@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 require("dotenv").config();
-const lightCodeTheme = require("prism-react-renderer/themes/oceanicNext");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const themes = require('prism-react-renderer').themes;
+const lightCodeTheme = themes.oceanicNext;
+const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const {
   pluginPacksAndIntegrationsData
@@ -248,7 +249,7 @@ const config = {
       },
       tableOfContents: {
         minHeadingLevel: 2,
-        maxHeadingLevel: 6,
+        maxHeadingLevel: 3,
       },
       // Replace with your project's social card
       image: "img/spectro-cloud-social-card.png",

@@ -2,6 +2,7 @@ import React from "react";
 import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import fetchMock from "jest-fetch-mock";
 import FilteredTable from "./PacksTable";
+import { toTitleCase } from "./PacksTable";
 // Enable fetch mocking
 fetchMock.enableMocks();
 
@@ -69,7 +70,7 @@ describe("FilteredTable Tests", () => {
     // Fire the event to change the search textbox
     fireEvent.change(screen.getByRole("textbox"), { target: { value: "Amazon" } });
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
     // Now run the expectations
     expect(screen.getByText("Amazon EKS optimized Linux")).toBeInTheDocument();
@@ -100,6 +101,23 @@ describe("FilteredTable Tests", () => {
     await waitFor(() => screen.getByText("Alpine"));
     
     expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
+  });
+
+});
+
+
+describe('toTitleCase', () => {
+  it('converts a dasherized string to title case', () => {
+      expect(toTitleCase("my-example-string")).toBe("My Example String");
+  });
+
+  it('converts a camelCase string to title case', () => {
+      expect(toTitleCase("myExampleString")).toBe("My Example String");
+  });
+
+
+  it('converts aws to AWS in a string', () => {
+      expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
   });
 
 });

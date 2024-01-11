@@ -12,6 +12,12 @@ You can update a cluster profile to change the configuration of one or more laye
 
 Cluster profile changes will generate an update notification on all the clusters that are created from the profile. Update notifications include information about all the changes applied to the profile since the initial creation or since the previous update. You can apply cluster updates individually at any time.
 
+:::caution
+
+We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend creating a *new* profile version, and then upgrade active clusters to the new version. For information on versioning profiles, check out [Version a Cluster Profile](version-cluster-profile.md). 
+
+:::
+
 
 ## Prerequisites
 
@@ -33,7 +39,7 @@ Cluster profile changes will generate an update notification on all the clusters
 
   :::
 
-5. Save your changes.
+4. Save your changes.
 
 
 ### Validate

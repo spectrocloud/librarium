@@ -35,7 +35,7 @@ link_report.*
 palette-docs.pdf
 
 docs/api-content/api-docs/v1/*.mdx
-docs/api-content/api-docs/v1/sidebar.js
+docs/api-content/api-docs/v1/sidebar.*
 
 # Versions Content
 versions.json
@@ -48,3 +48,7 @@ versioned_sidebars/*
 temp.docusaurus.config.js
 staging_docs/
 staging_sidebars/
+
+## Cosign
+
+cosign.key

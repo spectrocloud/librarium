@@ -65,7 +65,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required for AWS ECR.
 
-  - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - Required for the setup script. DO NOT USE a version greater than 1.0.0.
+  - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - This version is explicitly required for the setup script.
 
   - [zip](https://linux.die.net/man/3/zip) - required for the setup script.
 
@@ -231,7 +231,7 @@ Complete the following steps before deploying the airgap Palette installation.
 10. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary credentials. Replace the placeholder values in the commands below with the recommended version and credentials that our support team provides.
 
   ```shell
-  VERSION=4.1.6
+  VERSION=X.X.X
   ```
 
   ```shell
