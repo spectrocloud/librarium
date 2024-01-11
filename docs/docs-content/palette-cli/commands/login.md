@@ -12,7 +12,7 @@ The `login` command authenticates the Palette CLI with Palette. The `login` comm
 
   <br />
 
-| **Flag**                  | **Description**                                                                          | **Type**    |  |
+| **Flag**                  | **Description**                                                                          | **Type**    | 
 |-----------------------|--------------------------------------------------------------------------------------|---------|
 | `--api-key`           | Palette API key (omit for interactive login).                                         | string  |
 | `--cluster-group-name`| Palette Cluster Group name (optional). Specifies the active Cluster Group.               | string  |

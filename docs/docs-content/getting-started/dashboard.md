@@ -62,5 +62,5 @@ The **Tenant Admin** dashboard shows available views for tenant administrators. 
 
 8. [Audit logs](../audit-logs/audit-logs.md) in the **Tenant Admin** dashboard allow tracking user interaction with application resources for all projects and users. For admin users, the **Audit Log** button is visible for each project to view the logs of the resources specific to the project.
 
-9. **Tenant Settings** give tenant admins access to the [pack registries](../registries-and-packs/registries-and-packs.md), [private cloud gateways](../glossary-all.md/#private-cloud-gateway), and [SAML and SSO](../user-management/saml-sso/saml-sso.md) setup.
+9. **Tenant Settings** give tenant admins access to the [pack registries](../registries-and-packs/registries-and-packs.md), [private cloud gateways](../glossary-all.md#private-cloud-gateway), and [SAML and SSO](../user-management/saml-sso/saml-sso.md) setup.
 

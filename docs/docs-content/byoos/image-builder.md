@@ -268,7 +268,7 @@ The following steps guide you through creating your image. You will create a cus
 17. Click on **Next layer** to add the Kubernetes layer.
 
 
-18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to display the YAML editor.
+18. Select the desired Kubernetes distribution and version. Click on the **\</\>** button to display the YAML editor.
 
 
 19. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
