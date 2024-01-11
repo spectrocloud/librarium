@@ -63,7 +63,7 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 8. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
 
 
-9. Click on the code editor button  **</\>** to open up the editor
+9. Click on the code editor button  **\</\>** to open up the editor
 
   <br />
 

@@ -153,7 +153,7 @@ Use the following steps to learn how to use Palette's image swap functionality.
 7. Select a Kubernetes distribution and version.
 
 
-8. Next, select the code editor button **</\>** to edit the pack YAML configuration. Within the `pack` section's scope, add your `imageSwap` configuration block. Click on **Next layer** to continue.
+8. Next, select the code editor button **\</\>** to edit the pack YAML configuration. Within the `pack` section's scope, add your `imageSwap` configuration block. Click on **Next layer** to continue.
 
   <br />
 
