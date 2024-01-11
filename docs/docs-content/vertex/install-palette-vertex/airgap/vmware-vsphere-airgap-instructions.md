@@ -107,7 +107,7 @@ Complete the following steps before deploying the airgap VerteX installation.
   | --- | --- | --- |
   | **Encoded user-data** | Enter the base64 encoded user-data for additional boot-up custmization. You can leave this field empty. | No | 
   | **SSH Public Keys** | Provide the SSH public keys for the user account you will use to access the airgap support VM. You need to provide at least one SSH public key to access the instance. | Yes |
-  | **Default User's password** | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH.  If you set to the value to `RANDOM` then a random password will be generated, and written to the console. | No |
+  | **Default User's password** | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH.  | Yes |
   | **A Unique Instance ID for this instance** | Enter a unique instance ID for the airgap support VM. The default value is `id-ovf`. | Yes |
   | **Hostname** | Enter a hostname for the airgap support VM. For example, `vertex.example.com`. The default value is `ubuntuguest`. | Yes |
   | **Url to seed instance data from** | You can specify a URL to seed instance data from.  You can leave this value empty.| No |
@@ -117,20 +117,167 @@ Complete the following steps before deploying the airgap VerteX installation.
 13. It will take a few minutes for the airgap support VM to deploy. Once the deployment is complete, you will see the VM in the vSphere inventory. The VM will be powered off. Power on the VM to continue.
 
 
-14. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the IP address or hostname of the airgap support VM. The default user account is `ubuntu`. Replace the path to the private SSH key and the IP address with the IP address of the airgap support VM.
+14. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the IP address or hostname of the airgap support VM. The default user account is `ubuntu`. Replace the path to the private SSH key and the IP address with the IP address or domain name of the airgap support VM.
 
   ```shell
-  ssh -identity_file /path/to/private/key ubuntu@<ipAddress>
+  ssh -identity_file /path/to/private/key ubuntu@vertex.example.com
   ```
 
-15. Change the password for the `ubuntu` user account. You will be prompted to change the password the first time you log in through SSH. The password requirement is strict and must meet the following criteria:
+15. Change the password for the `ubuntu` user account. You will be prompted to change the password the first time you log in through SSH. The new password must meet the following requirements:
     - At least 14 characters long
     - Palindromes are not allowed
-    - 
     - At least 1 uppercase letter
     - At least 1 lowercase letter
     - At least 1 number
     - At least 1 special character
+
+16. Once you change the password, the SSH session will be terminated. SSH back into the airgap support VM with the new password.
+
+17. If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to expand the instructions. Otherwise, proceed to the next step.
+
+  <details>
+  <summary>How to assign static IP address</summary>
+
+    Create an empty file to disable cloud-init from overriding the new network configurations you will add.
+
+    ```shell
+    sudo touch /etc/cloud/cloud-init.disabled
+    ```
+
+    Issue the following command to update cloud-init. Select the first option in the wizard Menu to disable cloud-init from managing the network configuration.
+
+    ```shell
+    sudo dpkg-reconfigure cloud-init
+    ```
+
+    Next, create a file to configure the network settings.
+
+    ```shell
+    sudo touch /etc/netplan/01-netcfg.yaml
+    ```
+
+    Modify the file to look like the example below. Replace the IP address, gateway, and DNS server with your network settings. Save the file and exit the text editor.
+
+    ```yaml
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        ens192:
+          dhcp4: false
+          addresses:
+            - 10.1.1.0/18
+          gateway4: 2.2.2.2
+          nameservers:
+              addresses: [1.1.1.1]
+    ```
+
+    Issue the following command to apply the changes.
+
+    ```shell
+    sudo netplan apply
+    ```
+
+  </details>
+
+18. Switch to the `root` user account. You will need to use the `root` user account to complete the remaining steps.
+
+  ```shell
+  sudo --login
+  ```
+
+19. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will generate a self-signed certificate for the value you provide.
+
+<Tabs>
+<TabItem label="Domain Name" value="domain">
+
+  ```shell
+  bin/airgap-setup.sh vertex.example.com
+  ```
+
+  The output of the script will look similar to the example below.
+
+  ```shell hideClipboard
+  Setting up SSL Certs
+  Setting up Harbor
+  Setup Completed
+
+  Details:
+  -------
+  Spectro Cloud Repository
+  Location: https://vertex.example.com:8443
+  UserName: ********
+  Password: ********
+  CA certificate filepath: /opt/spectro/ssl/server.crt
+
+  Pack OCI Registry
+  Endpoint: https://vertex.example.com
+  Base Content Path: spectro-packs
+  CA certificate Filepath: /opt/spectro/ssl/server.crt
+  Username: ********
+  Password: ********
+
+  Image OCI Registry
+  Endpoint: https://vertex.example.com
+  Base Content Path: spectro-images
+  CA certificate Filepath: /opt/spectro/ssl/server.crt
+  Username: ********
+  Password: ********
+  ```
+
+</TabItem>
+
+
+<TabItem label="IP Address" value="ip-address">
+
+  ```shell
+  bin/airgap-setup.sh 10.10.1.1
+  ```
+
+  The output of the script will look similar to the example below.
+
+  ```shell hideClipboard
+  Setting up SSL Certs
+  Setting up Harbor
+  Setup Completed
+
+  Details:
+  -------
+  Spectro Cloud Repository
+  Location: 10.10.1.1:8443
+  UserName: ********
+  Password: ********
+  CA certificate filepath: /opt/spectro/ssl/server.crt
+
+  Pack OCI Registry
+  Endpoint: 10.10.1.1
+  Base Content Path: spectro-packs
+  CA certificate Filepath: /opt/spectro/ssl/server.crt
+  Username: ********
+  Password: ********
+
+  Image OCI Registry
+  Endpoint: 10.10.1.1
+  Base Content Path: spectro-images
+  CA certificate Filepath: /opt/spectro/ssl/server.crt
+  Username: ********
+  Password: ********
+  ```
+
+</TabItem>
+</Tabs>
+
+20. The output of the script contains credentials and values you will need when completing the install with the Palette CLI. If you need to review information in the future, invoke the script again. 
+
+
+21. Next, start the second initializion script. This script will upload images and packs to the locally deployed Harbor registry. The upload process takes approximately 30 minutes to complete. Issue the following command to start the upload process.
+
+  ```shell
+  /bin/airgap-vertex-v4.2.3.bin
+  ```
+
+22. Once the upload process is complete, the following message will be displayed.
+
 
 You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to ensure the airgap setup process completed successfully.
 
