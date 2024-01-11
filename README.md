@@ -468,15 +468,15 @@ The content must have a new line at the beginning and at the end of the tag.
 
 ### Video
 
-To add a video, use the following syntax:
+To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
 ```
-<video src="/aws-full-profile.mp4"></video>
+<Video src="/aws-full-profile.mp4"></Video>
 ```
 
 
 ```
-<video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></video>
+<Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
 ```
 
 ## Netlify Previews
