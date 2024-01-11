@@ -1,11 +1,8 @@
 ---
-sidebar_label: "Legal & Acknowledgments"
-title: "Legal & Acknowledgments"
-description: "Review the legal and open source components used in Palette."
-sidebar_position: 280
-hide_table_of_contents: false
-sidebar_custom_props: 
-  icon: "gavel"
+sidebar_label: "Open-source Licenses"
+title: "Open-source Licenses"
+description: "Review the open-source licenses tied to the libraries and modules currently in use by Palette."
+sidebar_position: 10
 tags: ["legal", "licenses"]
 ---
 
