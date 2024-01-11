@@ -598,7 +598,7 @@ A default cloud account is automatically created when the private cloud gateway 
 
 # Deploying an OpenStack Cluster
 
-<video title="openstack-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/openstack.mp4"></video>
+<Video title="openstack-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/openstack.mp4"></Video>
 
 
 The following steps need to be performed to provision a new OpenStack cluster:
