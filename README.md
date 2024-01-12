@@ -19,7 +19,7 @@ To contribute, we recommend having the following software installed locally on y
 
 - git configured and access to github repository
 
-- Node.js and npm (optional)
+- Node.js v18 and npm.
 
 - [Vale](https://vale.sh/docs/vale-cli/installation/)
 
@@ -153,8 +153,8 @@ sidebar_custom_props:
 | `sidebar_custom_props:`<br>` icon: "graph"`  | string  | one of icons from https://fontawesome.com/icons?d=gallery                                       |      
 | `hide_table_of_contents`         | boolean | setting this to `false` will hide the page from the navigation                                              |
 | `sidebar_position`               | number  | the position of the page in the navigation sidebar. The pages are sorted ascending by this value            |
-| `toc_min_heading_level`          | number | the minimum heading level to show in the table of contents.                                                  |
-| `toc_max_heading_level`          | number | the maximum heading level to show in the table of contents.                                                  | 
+| `toc_min_heading_level`          | number | the minimum heading level to show in the table of contents. The default value for all documents is `2`.      |
+| `toc_max_heading_level`          | number | the maximum heading level to show in the table of contents. The default value for all documents is `3`.      | 
 | `tags`                           | array  |  A list of string that can be used for additonal categorization of content.                                  | 
 | `keywords`                      | array  |  A list of strings that areused for SEO purposes.                                                             |
 ### Sub pages
@@ -441,7 +441,6 @@ Result
 ### Admonitions - Warning / Info / Tip / Danger
 
 
-
 :::caution
 
 Some **content** with _Markdown_ `syntax`.
@@ -469,15 +468,15 @@ The content must have a new line at the beginning and at the end of the tag.
 
 ### Video
 
-To add a video, use the following syntax:
+To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
 ```
-<video src="/aws-full-profile.mp4"></video>
+<Video src="/aws-full-profile.mp4"></Video>
 ```
 
 
 ```
-<video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></video>
+<Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
 ```
 
 ## Netlify Previews

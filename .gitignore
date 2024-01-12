@@ -36,7 +36,7 @@ link_report.*
 palette-docs.pdf
 
 docs/api-content/api-docs/v1/*.mdx
-docs/api-content/api-docs/v1/sidebar.js
+docs/api-content/api-docs/v1/sidebar.*
 
 # Versions Content
 versions.json

@@ -12,6 +12,11 @@ tags: ['packs', 'harbor-edge-native-config', 'system-app']
 
 Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and all packs used by your cluster. After the initial download, the cluster can pull images from Harbor instead of an external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external network.
 
+:::caution
+
+The Harbor Edge Native Config pack is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. 
+
+:::
 
 ## Versions Supported
 
@@ -167,8 +172,37 @@ If you didn't provide a certificate or are using a self-signed certificate, Dock
   </TabItem>
   </Tabs>
 
+### Known Issues
+
+The following known issues exist in the Harbor 1.0.0 release.
+
+- The Harbor database pod might fail to start due to file permission issues. This is a [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.   
+
+- A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove the cluster and try again.
+
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Scenario - Harbor DB Pod Fails to Start
+
+When you start a cluster with the Harbor pack, the **harbor-database** pod might fail to start and get stuck on the **CrashLoopBackoff** state. It's possible that this is due to known issue with the Harbor pack related to file permissions. The workaround is to delete the pod and a new pod will be automatically created.
+
+#### Debug Steps
+
+1. Issue the following command to identify the pods with names that start with `harbor-database`.
+
+  ```shell
+  kubectl get pods --namespace harbor --output wide 
+  ```
+
+2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are multiple pods, use the command for each pod. 
+
+  ```shell
+  kubectl delete pod POD_NAME --namespace harbor
+  ```
+
 
 ## Terraform
 

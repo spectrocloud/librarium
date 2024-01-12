@@ -9774,7 +9774,7 @@
           "uniqueItems": true
         },
         "useControlPlaneAsWorker": {
-          "description": "If IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -9821,7 +9821,7 @@
           "uniqueItems": true
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         },
@@ -34954,7 +34954,7 @@
       "type": "object"
     },
     "v1VmFieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:\\<index>', where \\<index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "properties": {
         "Raw": {
           "items": {
@@ -35381,7 +35381,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+          "description": "matchLabels is a map of key-value pairs. A single key-value in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
           "type": "object"
         }
       },
@@ -41690,7 +41690,7 @@
         ],
         "summary": "Retrieves a list of cloud accounts by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       },
       "parameters": [
@@ -41744,7 +41744,7 @@
         ],
         "summary": "Creates an cloud account of specific cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       }
     },
@@ -41774,7 +41774,7 @@
         ],
         "summary": "Deletes the specified account by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       },
       "get": {
@@ -41805,7 +41805,7 @@
         ],
         "summary": "Returns the specified account by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       },
       "parameters": [
@@ -41856,7 +41856,7 @@
         ],
         "summary": "Updates the specified account by cloud type",
         "tags": [
-          "v1"
+          "cloudaccounts"
         ]
       }
     },
@@ -45408,7 +45408,7 @@
         ],
         "summary": "Returns the specified Custom cloud config",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -45477,7 +45477,7 @@
         ],
         "summary": "Updates the cluster configuration information",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45539,7 +45539,7 @@
         ],
         "summary": "Creates an Custom cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45569,7 +45569,7 @@
         ],
         "summary": "Deletes the specified machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -45627,7 +45627,7 @@
         ],
         "summary": "Updates the specified Custom cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45699,7 +45699,7 @@
         ],
         "summary": "Retrieves a list of Custom machines",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -45766,7 +45766,7 @@
         ],
         "summary": "Adds the machine to cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -45796,7 +45796,7 @@
         ],
         "summary": "Deletes the specified Custom machine",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "get": {
@@ -45827,7 +45827,7 @@
         ],
         "summary": "Returns the specified Custom machine",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       },
       "parameters": [
@@ -45892,7 +45892,7 @@
         ],
         "summary": "Updates the specified machine to the cloud config's machine pool",
         "tags": [
-          "v1"
+          "cloudconfigs"
         ]
       }
     },
@@ -53021,7 +53021,7 @@
         ],
         "summary": "Get AWS KMS key by Id",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54144,7 +54144,7 @@
         ],
         "summary": "Returns the custom cloud types",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54191,7 +54191,7 @@
         ],
         "summary": "Registers the custom cloud type",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54228,7 +54228,7 @@
         ],
         "summary": "Deletes the custom cloud type",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54261,7 +54261,7 @@
         ],
         "summary": "Returns valid keys for the cloud account used for custom cloud type",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54313,7 +54313,7 @@
         ],
         "summary": "Update the custom cloud type cloud account keys",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54343,7 +54343,7 @@
         ],
         "summary": "Delete the custom cloud type bootstrap",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -54374,7 +54374,7 @@
         ],
         "summary": "Returns the custom cloud type bootstrap",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54425,7 +54425,7 @@
         ],
         "summary": "Update the custom cloud type bootstrap",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54455,7 +54455,7 @@
         ],
         "summary": "Delete the custom cloud type cloud provider",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -54486,7 +54486,7 @@
         ],
         "summary": "Returns the custom cloud type cloud provider",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54537,7 +54537,7 @@
         ],
         "summary": "Update the custom cloud type cloud provider",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54567,7 +54567,7 @@
         ],
         "summary": "Delete the custom cloud type control plane",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -54598,7 +54598,7 @@
         ],
         "summary": "Returns the custom cloud type control plane",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54649,7 +54649,7 @@
         ],
         "summary": "Update the custom cloud type control plane",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54679,7 +54679,7 @@
         ],
         "summary": "Delete the custom cloud type cluster template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -54710,7 +54710,7 @@
         ],
         "summary": "Returns the custom cloud type cluster template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54761,7 +54761,7 @@
         ],
         "summary": "Update the custom cloud type cluster template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54791,7 +54791,7 @@
         ],
         "summary": "Delete the custom cloud type controlPlane pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -54822,7 +54822,7 @@
         ],
         "summary": "Returns the custom cloud type controlPlane pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54873,7 +54873,7 @@
         ],
         "summary": "Update the custom cloud type controlPlane pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -54903,7 +54903,7 @@
         ],
         "summary": "Delete the custom cloud type worker pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "get": {
@@ -54934,7 +54934,7 @@
         ],
         "summary": "Returns the custom cloud type worker pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -54985,7 +54985,7 @@
         ],
         "summary": "Update the custom cloud type worker pool template",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55027,7 +55027,7 @@
         ],
         "summary": "Returns the custom cloud type logo",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55078,7 +55078,7 @@
         ],
         "summary": "Update the custom cloud type logo",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -55111,7 +55111,7 @@
         ],
         "summary": "Returns the custom cloud type meta",
         "tags": [
-          "v1"
+          "clouds"
         ]
       },
       "parameters": [
@@ -55157,7 +55157,7 @@
         ],
         "summary": "Update the custom cloud type meta",
         "tags": [
-          "v1"
+          "clouds"
         ]
       }
     },
@@ -70424,7 +70424,7 @@
         ],
         "summary": "Creates a Custom cluster",
         "tags": [
-          "v1"
+          "spectroclusters"
         ]
       }
     },
@@ -70473,7 +70473,7 @@
         ],
         "summary": "Validates Custom cluster create operation",
         "tags": [
-          "v1"
+          "spectroclusters"
         ]
       }
     },
@@ -78711,7 +78711,7 @@
         ],
         "summary": "Re-send the email to the user to be able to verify the email",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -78734,7 +78734,7 @@
         ],
         "summary": "Verifies the system user email using the email token",
         "tags": [
-          "v1"
+          "system"
         ]
       },
       "parameters": [
@@ -78769,7 +78769,7 @@
         ],
         "summary": "Verifies the system user email using the email token",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -78817,7 +78817,7 @@
         ],
         "summary": "Creates request to reset system password via email",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -78869,7 +78869,7 @@
         ],
         "summary": "Resets the system user password using the password token",
         "tags": [
-          "v1"
+          "system"
         ]
       }
     },
@@ -84065,5 +84065,144 @@
       "type": "apiKey"
     }
   },
-  "swagger": "2.0"
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "cluster",
+      "x-displayName": "Cluster"
+    },
+    {
+      "name": "apiKeys",
+      "x-displayName": "Api Keys"
+    },
+    {
+      "name": "appDeployments",
+      "x-displayName": "App Deployments"
+    },
+    {
+      "name": "appProfiles",
+      "x-displayName": "App Profiles"
+    },
+    {
+      "name": "audits",
+      "x-displayName": "Audits"
+    },
+    {
+      "name": "auth",
+      "x-displayName": "Auth"
+    },
+    {
+      "name": "cloudaccounts",
+      "x-displayName": "Cloudaccounts"
+    },
+    {
+      "name": "cloudconfigs",
+      "x-displayName": "Cloudconfigs"
+    },
+    {
+      "name": "clouds",
+      "x-displayName": "Clouds"
+    },
+    {
+      "name": "clustergroups",
+      "x-displayName": "Clustergroups"
+    },
+    {
+      "name": "clusterprofiles",
+      "x-displayName": "Clusterprofiles"
+    },
+    {
+      "name": "dashboard",
+      "x-displayName": "Dashboard"
+    },
+    {
+      "name": "datasinks",
+      "x-displayName": "Datasinks"
+    },
+    {
+      "name": "edgehosts",
+      "x-displayName": "Edgehosts"
+    },
+    {
+      "name": "events",
+      "x-displayName": "Events"
+    },
+    {
+      "name": "filters",
+      "x-displayName": "Filters"
+    },
+    {
+      "name": "installers",
+      "x-displayName": "Installers"
+    },
+    {
+      "name": "metrics",
+      "x-displayName": "Metrics"
+    },
+    {
+      "name": "notifications",
+      "x-displayName": "Notifications"
+    },
+    {
+      "name": "overlords",
+      "x-displayName": "Overlords"
+    },
+    {
+      "name": "packs",
+      "x-displayName": "Packs"
+    },
+    {
+      "name": "pcg",
+      "x-displayName": "Pcg"
+    },
+    {
+      "name": "permissions",
+      "x-displayName": "Permissions"
+    },
+    {
+      "name": "projects",
+      "x-displayName": "Projects"
+    },
+    {
+      "name": "registries",
+      "x-displayName": "Registries"
+    },
+    {
+      "name": "roles",
+      "x-displayName": "Roles"
+    },
+    {
+      "name": "services",
+      "x-displayName": "Services"
+    },
+    {
+      "name": "spectroclusters",
+      "x-displayName": "Spectroclusters"
+    },
+    {
+      "name": "system",
+      "x-displayName": "System"
+    },
+    {
+      "name": "teams",
+      "x-displayName": "Teams"
+    },
+    {
+      "name": "tenants",
+      "x-displayName": "Tenants"
+    },
+    {
+      "name": "users",
+      "x-displayName": "Users"
+    },
+    {
+      "name": "workspaces",
+      "x-displayName": "Workspaces"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.spectrocloud.com"
+    }
+  ]
 }

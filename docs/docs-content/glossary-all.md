@@ -143,9 +143,7 @@ Presets are a subset of properties configured for a layer that is pre-configured
 ## Private Cloud Gateway
 
 A Private Cloud Gateway is a Palette component that enables the communication between Palette's management console and a private cloud/data center. The gateway needs to be installed by the users in their private cloud environments using a private cloud gateway installer appliance.
-## Private Cloud Gateway-Edge (PCG-E)
 
-Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A PCG-E is Palette's on-premises component to support remote Edge devices. Palette PCG-E, once installed on-premises, registers itself with the Palette's SaaS portal and enables secure communications between the SaaS portal and the Edge Clusters.
 ## Private Pack Registry
 
 Palette provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Palette's public pack registry. These user-defined packs need to be hosted in a private registry, which users can bring up in their environment using Palette's pack registry software.
@@ -169,6 +167,9 @@ A Role is a collection of [permissions](#permission). There are two kinds of rol
 TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP, DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
 ## Spectro Agent
 Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects information such as metrics, workloads, and heartbeats and constantly updates to the SaaS platform for user access. In addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the running cluster.
+
+## System Administrator
+The self-hosted Palette or Palette VerteX user with access to the [system console](#system-console-on-prem-system-console).
 
 ## System Console (On-prem System Console)
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem System Console provides various administrative setup tasks. Most of these are optional and can be performed at any time. To quickly start using the platform's functionality, all that is needed is to create the first tenant and activate it.Initial login:admin/admin.

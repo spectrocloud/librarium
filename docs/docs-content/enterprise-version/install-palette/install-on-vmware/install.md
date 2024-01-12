@@ -5,7 +5,6 @@ description: "Learn how to install Palette on VMware."
 icon: ""
 sidebar_position: 10
 hide_table_of_contents: false
-toc_max_heading_level: 3
 tags: ["palette", "self-hosted", "vmware"]
 keywords: ["self-hosted", "enterprise"]
 ---
@@ -93,13 +92,13 @@ The video below demonstrates the installation wizard and the prompts you will en
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
 
-<video title="palette-cli-install" src="/videos/palette-install.mp4"></video>
+<Video title="palette-cli-install" src="/videos/palette-install.mp4"></Video>
 
 </TabItem>
 <TabItem label="Airgap" value="airgap">
 
 
-<video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></video>
+<Video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></Video>
 
 </TabItem>
 

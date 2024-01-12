@@ -105,6 +105,18 @@ imageSwap:
 
 The examples provided are intended to help you get started. Refer to the official [Image Swap configuration](https://github.com/phenixblue/imageswap-webhook/blob/master/README.md#configuration) for more examples and information.
 
+## Limitations
+
+- Image swap is only supported for managed Kubernetes clusters, such as Amazon EKS, Azure AKS, and Google GKE. 
+
+- Self-hosted Palette and VerteX installations can support image swap functionality for non-managed Kubernetes clusters. This requires mirror registries to be specified during the self-hosted Palette or VerteX installation. Refer to the [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md) or [VerteX Install](../../vertex/install-palette-vertex/install-palette-vertex.md) guide for more information.
+
+  The following table summarizes the image swap support for different scenarios and what Palette deployment type is required.
+
+  | Image Swap Scenario | Supported in Palette SaaS? | Supported in Self-Hosted Palette? | Supported in VerteX? | Description |
+  | --- | --- | --- | --- | --- |
+  | Managed Kubernetes Cluster |  :white_check_mark: | :white_check_mark: | :white_check_mark: | Image swap is supported for managed Kubernetes clusters, such as AKS, EKS, and GKE. |
+  | Non-Managed Kubernetes Cluster | :x: | :white_check_mark: | :white_check_mark: | Image swap is supported for non-managed Kubernetes clusters. This requires mirror registries to be specified during the self-hosted Palette or VerteX installation.  |
 
 ## Image Swap with Palette
 
@@ -141,7 +153,7 @@ Use the following steps to learn how to use Palette's image swap functionality.
 7. Select a Kubernetes distribution and version.
 
 
-8. Next, select the code editor button **</\>** to edit the pack YAML configuration. Within the `pack` section's scope, add your `imageSwap` configuration block. Click on **Next layer** to continue.
+8. Next, select the code editor button **\</\>** to edit the pack YAML configuration. Within the `pack` section's scope, add your `imageSwap` configuration block. Click on **Next layer** to continue.
 
   <br />
 

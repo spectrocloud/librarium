@@ -9,6 +9,11 @@ tags: ["edge"]
 
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge cluster is created for the first time, all images downloaded from external registries are stored locally in the Harbor registry, including your provider images and all packs used by your cluster. Subsequent image pulls from the cluster are made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the external network. 
 
+:::caution
+
+Enabling the local Harbor image registry on an Edge cluster is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. 
+
+:::
 
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
 
@@ -32,13 +37,25 @@ Palette Edge allows you to provision a local Harbor image registry as part of yo
 
 4. If the profile does not already have a storage layer, click **Add New Pack** to add a storage pack. You can choose any storage pack for your storage layer. 
 
-5. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile. For more information about the pack and its parameters, refer to [Harbor Edge Native Config pack documentation](../../../integrations/harbor-edge.md).
+5. Select the Kubernetes layer of the profile. Under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item `enable-admission-plugins`:
 
-6. In the `harbor-config.storage` parameter, make sure you allocate enough storage in the `registry` field to store all your images.
+  ```yaml {7}
+  kube-apiserver-arg:
+    - anonymous-auth=true
+    - profiling=false
+    - disable-admission-plugins=AlwaysAdmit
+    - default-not-ready-toleration-seconds=60
+    - default-unreachable-toleration-seconds=60
+    - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
+  ```
 
-7. Click **Save Changes**.
+6. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile. For more information about the pack and its parameters, refer to [Harbor Edge Native Config pack documentation](../../../integrations/harbor-edge.md).
 
-8. Deploy a new Edge cluster with your updated profile. Or if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images still requires a connection to the external network, but subsequent images pulls will be from the local harbor registry. 
+7. In the `harbor-config.storage` parameter, make sure you allocate enough storage in the `registry` field to store all your images.
+
+8. Click **Save Changes**.
+
+9. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use the new version of the cluster profile. The initial download of the images will require a connection to the external network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local Harbor registry. 
 
 ## Validation
 
