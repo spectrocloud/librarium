@@ -174,3 +174,4 @@ ethernet
 hostname
 Entra
 README
+Tailscale
