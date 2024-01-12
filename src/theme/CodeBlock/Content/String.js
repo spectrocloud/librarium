@@ -29,7 +29,6 @@ export default function CodeBlockString({
   language: languageProp,
   hideClipboard = false,
 }) {
-  console.log(metastring)
   const {
     prism: {defaultLanguage, magicComments},
   } = useThemeConfig();
