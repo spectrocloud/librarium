@@ -6,7 +6,7 @@ sidebar_position: 70
 tags: ["troubleshooting", "har", "support"]
 ---
 
-When you report issues with Pallete to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to help us identify and resolve those issues.
+When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to help us identify and resolve those issues.
 
 :::caution
 HAR files contain all network activity for a specific page, including sensitive and confidential information, such as API keys, secrets, cookies, passwords, and more. Before sending your HAR files to us, sanitize the sensitive data. We do not recommend using any third-party tools for HAR sanitization, as they can overlook some details.
@@ -16,7 +16,7 @@ This guide explains how you can generate HAR files in Chrome, Safari, and Firefo
 
 ## Prerequisites
 
-- A browser of choice (we recommend Chrome, Safari, or Firefox).
+- A browser of choice (we recommend Chrome, Safari, or Firefox). If you're using Safari, make sure to [enable its web development features](https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features) first.
 - A text editor of choice (we recommend [Visual Studio Code](https://code.visualstudio.com/) or [Sublime](https://www.sublimetext.com/)).
 
 ## Generate and Sanitize HARs
@@ -32,9 +32,9 @@ This guide explains how you can generate HAR files in Chrome, Safari, and Firefo
 
        For alternative methods to open Developer Tools, refer to [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open).
     3. In Developer Tools, select the **Network** tab, and, on the **Network** pane:
-       - If the leftmost icon displays a circle within a circle, click it to start recording network activity.
-       - Click the **Clear network log** icon that follows it to clear the current network log.
-       - Select the **Preserve log** and **Disable cache** checkboxes.
+        1. If the leftmost icon displays a circle within a circle, click it to start recording network activity.
+        2. Click the **Clear network log** icon that follows it to clear the current network log.
+        3. Select the **Preserve log** and **Disable cache** checkboxes.
 
        ![View of the configured Chrome Developer Tools](/troubleshooting_generate-har-files_chrome-dev-tools-settings.png.png)
 
@@ -43,18 +43,18 @@ This guide explains how you can generate HAR files in Chrome, Safari, and Firefo
 
   </TabItem>
   <TabItem value="safari" label="Safari">
-    1. If you haven't yet, [enable the web development features in Safari](https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features).
-    2. Open the page with issues.
-    3. On your keyboard, press **⌥ + ⌘ + I** to open Web Inspector.
-    4. Select the **Network** tab, and, in the **Network** tab menu:
-       - Press **⌘ + K** to clear the current network items.
-       - Next to the **All** drop-down menu, click the **Other filter options** icon > **Preserve Log**. 
-       - Select the **Disable Caches** checkbox.
+    1. Open the page with issues in Safari.
+    2. On your keyboard, press **⌥ + ⌘ + I** to open Web Inspector.
+    3. Select the **Network** tab, and, in the **Network** tab menu:
+
+       1. Press **⌘ + K** to clear the current network items.
+       2. Next to the **All** drop-down menu, click the **Other filter options** icon > **Preserve Log**.
+       3. Select the **Disable Caches** checkbox.
 
        ![View of the configured Safari Web Inspector](/troubleshooting_generate-har-files_safari-web-inspector.png)
 
-    5. On the page, reproduce the issues you've encountered.
-    6. In the **Network** tab menu, select **Export**.
+    4. On the page, reproduce the issues you've encountered.
+    5. In the **Network** tab menu, select **Export**.
 
   </TabItem>
   <TabItem value="firefox" label="Firefox">
@@ -64,10 +64,12 @@ This guide explains how you can generate HAR files in Chrome, Safari, and Firefo
        - For Mac, press **Fn + F12** or **Cmd + Option + I**.
 
        For alternative methods to open DevTools, refer to [Firefox DevTools User Docs](https://firefox-source-docs.mozilla.org/devtools-user/).
+
     3. In DevTools, select the **Network** tab and, in the **Network** tab menu:
-       - Click the trash can icon to clear the current network log.
-       - If the icon next to the **Filter URLs** field displays a play button, click it to start recording network activity.
-       - Click the **Network Settings** icon > **Persist Logs**.
+
+       1. Click the trash can icon to clear the current network log.
+       2. If the icon next to the **Filter URLs** field displays a play button, click it to start recording network activity.
+       3. Click the **Network Settings** icon > **Persist Logs**.
 
        ![View of the configured Firefox DevTools](/troubleshooting_generate-har-files_firefox-devtools.png)
 
