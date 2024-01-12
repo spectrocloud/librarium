@@ -25,7 +25,9 @@ export default function AdmonitionTypeTechPreview(props) {
       {...props}
       className={clsx(infimaClassName, props.className)}
     >
-      {props.children}
+      {
+        "This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads."
+      }
     </AdmonitionLayout>
   );
 }
