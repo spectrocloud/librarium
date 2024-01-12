@@ -7,7 +7,11 @@ sidebar_position: 10
 tags: ["edge", "integrations", "tailscale"]
 ---
 
-You can use Tailscale on your Palette Edge hosts to ensure remote access to your Edge hosts that are connected to the internet. Tailscale provides point-to-point, full-mesh VPN networking with high levels of performance and security. With Tailscale installed, you can use always SSH to access your Edge hosts that have internet access, even if your Edge hosts experience problems with Kubernetes. 
+You can use Tailscale on your Palette Edge hosts to ensure remote access to your Edge hosts that are connected to the internet. Tailscale provides point-to-point, full-mesh VPN networking with high levels of performance and security. With Tailscale installed, you can use always SSH to access your Edge hosts that have internet access, even if your Edge hosts experience problems with Kubernetes.
+
+## Limitations
+
+- Tailscale magicDNS is not compatible with network overlay in Edge clusters. If your Edge cluster has [network overlay](../networking/vxlan-overlay.md) enabled, you must disable MagicDNS in Tailscale or ensure you don't use the 100.100.100.100 DNS server that MagicDNS configures.
 
 ## Prerequisites
 
@@ -163,20 +167,18 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 ## Troubleshooting
 
-### MagicDNS is not compatible with Palette Overlay Networking
-
-When you use the Overlay Networking feature in Palette, you must disable MagicDNS in Tailscale or otherwise ensure you don't use the 100.100.100.100 DNS server that MagicDNS configures. This is because the Tailnet VPN connection to MagicDNS partly breaks when Palette reconfigures VXLAN segments as cluster nodes join and leave the cluster. This goes undetected by Tailscale and results in the cluster no longer being able to perform DNS lookups until the `tailscaled`` service is restarted.
-
-To prevent the issue from occurring, disable MagicDNS in Tailscale.
 
 ### Tailscale drops all traffic for 100.64.0.0/10, preventing the use of CIDRs in that range for your cluster
 
 Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That means that by default, this address range (or parts of it) cannot be used for any of the following:
-* Kubernetes cluster pod CIDR
-* Kubernetes cluster service CIDR
-* Palette Edge Overlay network CIDR
 
-Recently, Tailscale announced that it is now possible to limit the IP address range that your Tailnet uses to a fraction of the 100.64.0.0/10 range. For example, you could reduce the IP pool to 100.74.0.0/16, allowing the rest of the range to be used for other non-Tailscale purposes. If you would like to use this capability so that you can use parts of the 100.64.0.0/10 range for your Kubernetes clusters or your Palette Edge Overlay networks, you need to do the following:
+- Kubernetes cluster pod CIDR
+- Kubernetes cluster service CIDR
+- Palette Edge Overlay network CIDR
+
+#### Debug steps
+
+If you want to use parts of the 100.64.0.0/10 range for your Kubernetes clusters or your Palette Edge Overlay networks, you must limit the IP address range that your Tailnet uses to a fraction of the 100.64.0.0/10 range. Use the following steps to limit your Tailnet range:
 
 1. First, configure an IP Pool in Tailscale. We have found the following configuration works well to assign addresses in the new range to all nodes:
 
@@ -189,7 +191,7 @@ Recently, Tailscale announced that it is now possible to limit the IP address ra
 	],
 ```
 
-2. Next, we need to deal with a known bug (at time of writing) in Tailscale. Even though we restricted the IP Pool, Tailscale still puts in `iptables` rule on every node that drops unknown traffic from any address in the entire 100.64.0.0/10 range. This rule clashes with our desire to use the address space for other purposes and needs to be adjusted. Fortunately we can leverage Palette Edge to do this automatically for us. In the cluster profile for your Palette Edge cluster, add the following:
+2. Next, in the OS pack of your cluster profile, add the following:
 
 ```yaml {14}
 stages:
@@ -244,4 +246,4 @@ stages:
           systemctl start tailscale-iptables-fix.timer
 ```
 
-This will ensure Tailscale does not drop traffic for IP ranges that it doesn't own.
+This will ensure Tailscale does not drop traffic for IP ranges that it doesn't own. This is due to a known bug in Tailscale. Even though we restricted the IP Pool, Tailscale still puts in `iptables` rule on every node that drops unknown traffic from any address in the entire 100.64.0.0/10 range. 
