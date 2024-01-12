@@ -212,10 +212,14 @@ Use the following instructions on your Linux machine to create all the required 
       insecure: false
   install:
     poweroff: true
-  users:
-    - name: kairos
-      passwd: kairos
-  EOF
+stages:
+  initramfs:
+    - name: "Setup Kairos User (Optional)"
+      users:
+        kairos:
+          groups:
+            - admin
+          passwd: kairos
   ```
 
   View the newly created user data file to ensure the token is set correctly.
