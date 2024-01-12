@@ -143,9 +143,7 @@ Presets are a subset of properties configured for a layer that is pre-configured
 ## Private Cloud Gateway
 
 A Private Cloud Gateway is a Palette component that enables the communication between Palette's management console and a private cloud/data center. The gateway needs to be installed by the users in their private cloud environments using a private cloud gateway installer appliance.
-## Private Cloud Gateway-Edge (PCG-E)
 
-Deploying Edge Clusters requires a Private Cloud Gateway-Edge (PCG-E) to be installed on the appliances for Palette to discover the appliance and provision workload clusters on them. A PCG-E is Palette's on-premises component to support remote Edge devices. Palette PCG-E, once installed on-premises, registers itself with the Palette's SaaS portal and enables secure communications between the SaaS portal and the Edge Clusters.
 ## Private Pack Registry
 
 Palette provides extensibility by providing a way for users to define [packs](#pack) for integrations beyond the ones provided by default in Palette's public pack registry. These user-defined packs need to be hosted in a private registry, which users can bring up in their environment using Palette's pack registry software.
