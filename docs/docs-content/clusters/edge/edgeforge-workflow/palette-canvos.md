@@ -138,7 +138,7 @@ Use the following instructions on your Linux machine to create all the required 
   IMAGE_REGISTRY=ttl.sh
   OS_DISTRIBUTION=ubuntu
   IMAGE_REPO=ubuntu
-  OS_VERSION=22
+  OS_VERSION=22.04
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   ARCH=amd64
