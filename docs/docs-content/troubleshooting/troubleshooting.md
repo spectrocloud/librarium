@@ -8,7 +8,6 @@ sidebar_custom_props:
 tags: ["troubleshooting"]
 ---
 
-# Troubleshooting
 
 Use the following troubleshooting resources to help you address issues that may arise. You can also reach out to our support team by opening up a ticket through our [support page](http://support.spectrocloud.io/).
 
@@ -31,6 +30,12 @@ Use the following troubleshooting resources to help you address issues that may 
 - [Palette Upgrade](palette-upgrade.md)
 
 - [Private Cloud Gateway](pcg.md)
+
+## Generate HAR Files
+
+When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to help us identify and resolve those issues.
+
+- [Generate HAR files](generate-har-files.md)
 
 ## Download Cluster Logs
 
