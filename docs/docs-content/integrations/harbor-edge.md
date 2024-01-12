@@ -16,6 +16,10 @@ all packs used by your cluster. After the initial download, the cluster can pull
 external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external
 network.
 
+:::preview
+
+:::
+
 ## Versions Supported
 
 :::info
