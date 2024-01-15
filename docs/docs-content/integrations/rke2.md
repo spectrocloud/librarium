@@ -29,7 +29,7 @@ You can deploy RKE2 by adding this pack to a cluster profile. Once the cluster p
 
 <br />
 
-:::caution
+:::warning
 
 RKE2 is only available for Edge host deployments. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 

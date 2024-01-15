@@ -91,7 +91,7 @@ Networks labeled as private do not allow inbound internet access. Inbound networ
 
 <br />
 
-:::caution
+:::warning
 
 Users that are in a different network than the cluster require the Spectro Proxy server to connect to the cluster's API server. Otherwise, requests to the cluster's API server will fail due to a lack of network connectivity.
 
@@ -237,7 +237,7 @@ Depending on the type of cluster, the usage guidance varies. Select the tab that
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control plane nodes getting repaved.
@@ -276,7 +276,7 @@ tls-san:
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes.
@@ -355,7 +355,7 @@ Depending on the type of cluster, the usage guidance varies. Select the tab that
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control plane nodes getting repaved.
@@ -394,7 +394,7 @@ tls-san:
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes.
@@ -471,7 +471,7 @@ Depending on the type of cluster, the usage guidance varies. Select the tab that
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control plane nodes getting repaved.
@@ -509,7 +509,7 @@ tls-san:
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes.
@@ -578,7 +578,7 @@ Depending on the type of cluster, the usage guidance varies. Select the tab that
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control plane nodes getting repaved.
@@ -616,7 +616,7 @@ tls-san:
 
 <br />
 
-:::caution
+:::warning
 
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to re-download the kubeconfig file to pick up the new configuration changes.

@@ -65,7 +65,7 @@ registry.hostname:
   schema: '{{ required | format "${FORMAT_TYPE:/REGEX/ OR [NUMBER RANGE] OR [LIST_OPTIONS]}" }}'
 ```
 
-:::caution
+:::warning
 
 The syntax of the regex accepted is the same general syntax used by Perl, Python, and other languages. More precisely, it is the syntax accepted by RE2 and described [here](https://golang.org/s/re2syntax).
 
@@ -267,7 +267,7 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
 
 
 
-:::caution
+:::warning
 
 If the minimum and maximum versions are not mentioned, the validation is skipped.
 

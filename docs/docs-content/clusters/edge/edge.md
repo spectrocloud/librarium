@@ -43,7 +43,7 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 <br />
 
-:::caution
+:::warning
 
 Edge is still in active development and is subject to change. Review the Palette [release notes](../../release-notes.md) for updates and changes.
 

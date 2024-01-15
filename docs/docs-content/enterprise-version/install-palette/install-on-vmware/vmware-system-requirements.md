@@ -109,7 +109,7 @@ The spectro root role privileges are only applied to root objects and data cente
 
 </Tabs>
 
-:::caution
+:::warning
 
 If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), *ReadOnly* access to the VDS without “Propagate to children” is required.
 

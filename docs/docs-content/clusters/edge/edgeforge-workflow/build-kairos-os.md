@@ -32,7 +32,7 @@ To learn how to use your own OS images with an Edge cluster profile, refer to th
 - Access to a container registry with permission to push container images. Review the registry login instructions for your respective registry for guidance on logging in.
 
 
-:::caution
+:::warning
 
 Some operating systems require credentials to download the source image, such as RHEL. An RHEL subscription is required in this example to download the RHEL Universal Base Images (UBI) needed to build the Edge provider image. Ensure you have the necessary credentials to download the OS source image.
 

@@ -10,7 +10,7 @@ tags: ["clusters", "cluster management"]
 A node pool is a group of nodes within a cluster that all have the same configuration. You can use node pools for different workloads. For example, you can create a node pool for your production workloads and another for your development workloads. You can update node pools for active clusters or create a new one for the cluster.
 
 
-:::caution
+:::warning
 
 Ensure you exercise caution when modifying node pools. We recommend creating a [backup](backup-restore/backup-restore.md) before you make a change in the event a configuration change causes an issue.
 
@@ -68,7 +68,7 @@ The following tables contain the configuration settings for node pools. Dependin
 <br />
 
 
-:::caution
+:::warning
 
 Some features may not be available for all infrastructure providers. Review each infrastructure provider's node pool configuration settings to learn more.
 

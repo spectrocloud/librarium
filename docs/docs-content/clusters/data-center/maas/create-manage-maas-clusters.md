@@ -125,7 +125,7 @@ To protect your data, we recommend you create a backup of your MAAS cluster befo
 
 <br /> 
 
-:::caution
+:::warning
 
 A force delete can result in Palette-provisioned resources being missed during the removal process. Verify that any MAAS machines associated with the cluster have been released. Failure to remove provisioned resources can result in unexpected costs.
 

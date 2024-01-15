@@ -17,7 +17,7 @@ To use an Edge host with a host cluster, you must first register it with Palette
 | QR Code |  Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry.| High |
 
 
-:::caution
+:::warning
 
 A registration token is required for the Edge host registration process. Without the registration token, the registration process will be unable to complete. Review the [Create Registration Token](create-registration-token.md) guide for steps on how to create a tenant registration token.
 
