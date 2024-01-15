@@ -63,7 +63,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
   If certain network information is already available, the corresponding fields will be pre-populated. 
   
-  :::caution
+  :::warning
 
     After you create the cluster, you will not be able to change the IP address of your existing Edge hosts unless you remove and re-add them back to the cluster. 
     
@@ -104,7 +104,7 @@ You can add Edge hosts to the node pool of an existing host cluster. Use the fol
 
 - A host cluster of type Edge Native.
 
-:::caution
+:::warning
 
 When adding a new Edge host to an existing cluster, ensure you are not creating a scenario where [etcd](https://etcd.io/) could fail in establishing a quorum. Quorum failures typically result when there is an even number of nodes.
 To learn more, check out the resource from the etcd documentation titled [Why an odd number of cluster members](https://etcd.io/docs/v3.3/faq/#why-an-odd-number-of-cluster-members).
@@ -144,7 +144,7 @@ To learn more, check out the resource from the etcd documentation titled [Why an
 
   If certain network information is already available, the corresponding fields will be pre-populated. 
   
-  :::caution
+  :::warning
 
     After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add them back to the cluster. 
 

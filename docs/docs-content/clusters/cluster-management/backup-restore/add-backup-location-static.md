@@ -277,7 +277,7 @@ Use the following steps to validate adding the new backup location.
 
 	<br />
 
-	:::caution
+	:::warning
 
 	Ensure you check the **Force S3 path style** checkbox. S3 path style is required by Velero to access the MinIO object storage. Palette uses [Velero](https://velero.io/docs) to create backups.
 

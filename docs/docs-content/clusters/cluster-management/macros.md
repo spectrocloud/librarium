@@ -185,7 +185,7 @@ Delete your system level macros via an API.
 
 </Tabs>
 
-:::caution
+:::warning
 When a Macro is deleted from the UI, it needs to be cleared from the cluster profile to avoid Macro deletion anomalies in the running cluster.
 :::
 

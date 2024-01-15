@@ -44,7 +44,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
 
 6. Select a cluster profile that is compatible with Cox Edge. If you need guidance creating a cluster profile, check out [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md).
 
-  :::caution
+  :::warning
 
   If you want to use the Kubernetes cluster autoscaler feature and you are using [Longhorn](../../../integrations/longhorn.md) for the storage container interface. Set the `charts.longhorn.defaultSettings.kubernetesClusterAutoscalerEnabled` parameter to `true`.
 
@@ -82,7 +82,7 @@ Palette supports creating and managing Kubernetes clusters deployed to a Cox Edg
     
   <br />
 
-  :::caution
+  :::warning
 
   Use the network rules specified in the [Network Rules](network-rules.md) documentation. If you fail to add the required network rules, Palette will be unable to deploy the cluster to Cox Edge.
 

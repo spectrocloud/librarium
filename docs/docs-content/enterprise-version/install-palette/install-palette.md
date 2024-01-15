@@ -34,7 +34,7 @@ This section lists resource requirements for Palette for various capacity levels
 
 <br />
 
-:::caution
+:::warning
 
 The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested the performance of Palette with the recommended maximum number of deployed nodes and clusters. Exceeding these limits can negatively impact performance and result in instability. The active workload limit refers to the maximum number of active nodes and pods at any given time. 
 

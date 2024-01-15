@@ -185,7 +185,7 @@ stylus:
 
 <br />
 
-:::caution
+:::warning
 
 The length of the UID truncates to a maximum allowed length of 128 characters. The following characters are unsupported:
 

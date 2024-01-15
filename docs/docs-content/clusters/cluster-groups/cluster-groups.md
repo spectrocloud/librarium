@@ -18,7 +18,7 @@ You can create a cluster group that is made up of various types of host clusters
 
 <br />
 
-:::caution
+:::warning
 
 Cluster groups support two network endpoints: load balancer and ingress. All host clusters added to a cluster group must support the endpoint type configured for the cluster. Example: A host cluster configured for ingress as the endpoint type cannot be added to a cluster group configured for the endpoint type load balancer and vice versa.
 

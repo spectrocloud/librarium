@@ -33,7 +33,7 @@ Use the `install` subcommand to install a PCG cluster in the following environme
   | `-p`       | `--update-passwords` | Use to update the PCG password. This does not proceed with installation. The `--config-file` flag must be provided. Default: false. | boolean |
 
 
-:::caution
+:::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
 

@@ -42,7 +42,7 @@ The table lists commonly used parameters you can configure when adding this pack
 |`charts.vault.server.dev` | Enable dev server mode. The dev server mode skips most setup required before you can begin to use a Vault server, including initialization and unseal, and stores all data in-memory. For more details about dev server mode, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/concepts/dev-server). | `False` |  
 |`charts.vault.server.dev.devRootToken` | If you enabled dev server mode, this parameter specifies the root token for your Vault server. Root token has unlimited privileges and can do anything in Vault. | `"root"` |
 
-:::caution
+:::warning
 Never operate a dev mode server in production. It is insecure and loses data on every restart. 
 :::
 
@@ -122,7 +122,7 @@ data "spectrocloud_pack_simple" "pack-info" {
 
 <TabItem label="Deprecated" value="Deprecated">
 
-:::caution
+:::warning
 
 All versions of the manifest-based pack less than v0.22.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
