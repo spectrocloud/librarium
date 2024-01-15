@@ -19,7 +19,7 @@ This installation method is common in secure environments with restricted networ
 ## Prerequisites
 
 
-:::caution
+:::warning
 
 If you are installing VerteX in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more information.
 
@@ -91,7 +91,7 @@ If you are installing VerteX in an airgap environment, ensure you complete all t
 
 <br />
 
-:::caution
+:::warning
 
 Do not use a VerteX-managed Kubernetes cluster when installing VerteX. VerteX-managed clusters contain the VerteX agent and VerteX-created Kubernetes resources that will interfere with the installation of VerteX.
 
@@ -757,7 +757,7 @@ reach-system:
 
 <br />
 
-:::caution
+:::warning
 
 If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse proxy for VerteX.
 

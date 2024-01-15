@@ -40,7 +40,7 @@ Use the following steps to prepare to register your cloud with Palette.
   
   <br />
 
-  :::caution
+  :::warning
   Review the [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) to ensure you download a compatible CAPX version of the files. 
   :::
 
@@ -93,7 +93,7 @@ Use the following steps to prepare to register your cloud with Palette.
 
 7. In **controlPlanePoolTemplate.yaml**, edit the NutanixMachineTemplate object. Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`, and change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`. 
 
-  :::caution
+  :::warning
   The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
   :::
 
@@ -113,7 +113,7 @@ Use the following steps to prepare to register your cloud with Palette.
     - systemctl enable --now iscsid
   ```
 
-  :::caution
+  :::warning
   The following modifications in steps 11 and 12 are only applicable to VerteX instances.  
   :::
 
@@ -162,7 +162,7 @@ Use the steps below to confirm you have the required files and verify the requir
 
 Follow the steps below from your terminal to set the environment variables and invoke the APIs required to register a Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
 
-:::caution
+:::warning
 
 The logo file must not exceed 100KB in size. To ensure image quality ensure at least one dimension in either width or height is 40 pixels. It is preferable that the image be transparent. 
 
@@ -180,7 +180,7 @@ The logo file must not exceed 100KB in size. To ensure image quality ensure at l
   export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
   ```
 
-  :::caution
+  :::warning
   The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps. 
   
   Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack available to users when they create a cluster profile in Palette. 

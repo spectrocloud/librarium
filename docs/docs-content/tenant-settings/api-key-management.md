@@ -27,7 +27,7 @@ The following table describes the API key management tasks you can perform as a 
 | **View** | View the sensitive API key value. | ❌ | ❌ |
 
 
-:::caution
+:::warning
 
 Once an API key is created, the API key value is only displayed once. You must save the API key value in a secure location, such as a password manager. If you or a user lose the API key value, a new API key must be created.
 

@@ -71,7 +71,7 @@ pack:
 |Support|Supported by Azure Support and Engineering team|Calico community support.|
 |Logging|Rules added or deleted in IP Tables are logged on every host under `/var/log/azure-npm.log`|For more information, see [Calico component logs](https://projectcalico.docs.tigera.io/maintenance/troubleshoot/component-logs)|
 
-:::caution
+:::warning
 
 Make sure to use Azure CNI with the Windows operating system as the kubenet is not available for the Windows environment.
 

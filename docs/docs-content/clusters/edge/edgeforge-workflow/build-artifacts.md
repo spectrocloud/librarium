@@ -32,7 +32,7 @@ The diagram below displays the overarching steps to build the Edge installer ISO
 
 # Prerequisites
 
-:::caution
+:::warning
 
   This how-to guide extends the [Build Edge Artifacts](palette-canvos.md) workflow. Therefore, you must complete it before proceeding with the current guide. 
 

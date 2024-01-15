@@ -109,7 +109,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 20. Assign the mapping a name and set it to map every member of the Administrators group. Set the **MemberOf** value to **Administrators**. 
 
-  :::caution
+  :::warning
   Setting the **MemberOf** value to **Administrators** is essential so the response from OneLogin contains the group name, which you will match with a Team in Palette. If you do not explicitly set the **MemberOf** value, Palette will not receive the group name. As a result, Palette will not be able to set the correct RBAC settings for your user. 
   :::
 
@@ -131,7 +131,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 25. Next, add the **groups** scope in the **Scopes** field, and click **Enable** to continue. 
 
-  :::caution
+  :::warning
   Ensure the expected scopes are added. Otherwise, Palette may be unable to retrieve the group name. 
   :::
 
