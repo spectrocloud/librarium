@@ -194,7 +194,3 @@ Workload / Tenant / Application Clusters are a collection of master and worker n
 ## Workspace
 
 The multi-cluster management and governance capabilities are supervised with Palette Workspaces. Workspaces enable the logical grouping of clusters and namespaces to provide application or team-specific governance and visibility into workloads, cost, and usage metrics. For example, the application or team workload may be deployed into namespaces across clusters for achieving High Availability (HA), Disaster Recovery (DR), organization-specific placement policies, etc. Grouping the namespaces and clusters into a workspace provide central management and governance in a multi-cluster distributed environment.
-
-navbar
-
-three dots
