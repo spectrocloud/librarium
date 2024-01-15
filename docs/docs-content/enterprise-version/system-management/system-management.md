@@ -13,7 +13,7 @@ Palette contains many system settings you can configure to meet your organizatio
 
 
 
-:::caution
+:::warning
 
 Exercise caution when changing system settings, as the changes will be applied to all tenants in the system.
 

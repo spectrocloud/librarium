@@ -1526,7 +1526,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 

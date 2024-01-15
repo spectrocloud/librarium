@@ -441,7 +441,7 @@ Result
 ### Admonitions - Warning / Info / Tip / Danger
 
 
-:::caution
+:::warning
 
 Some **content** with _Markdown_ `syntax`.
 

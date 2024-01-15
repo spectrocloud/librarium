@@ -87,7 +87,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -299,7 +299,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -512,7 +512,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -721,7 +721,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -878,7 +878,7 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
