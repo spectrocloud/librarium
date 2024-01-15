@@ -55,7 +55,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 7. You can add manifests to the app profile. To do this, click on **Add Manifests** and provide the manifest name.
 
-  :::caution
+  :::warning
 
   When adding a manifest-type layer to an app profile, make sure you specify a namespace. Otherwise, the manifest deployment will be deployed to the `Default` namespace.
 

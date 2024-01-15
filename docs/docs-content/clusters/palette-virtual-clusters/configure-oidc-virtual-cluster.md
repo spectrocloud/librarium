@@ -18,7 +18,7 @@ Enabling OpenID Connect (OIDC) Identity Provider (IDP) for Palette Virtual Clust
 
 - A cluster group. Review [Create and Manage Cluster Groups](../../clusters/cluster-groups/create-cluster-group.md) for guidance.
 
-:::caution
+:::warning
 
 We recommend configuring a cluster group with OIDC *before* you create virtual clusters. This will ensure that OIDC information from the cluster group configuration is properly inserted in the kubeconfig file that is generated for the virtual cluster.
 
@@ -85,7 +85,7 @@ We recommend configuring a cluster group with OIDC *before* you create virtual c
 
 12. Create the proper Kubernetes *roles* and *roleBindings* required to map the OIDC users with a Kubernetes role. Refer to the [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings) for additional guidance.
 
-:::caution
+:::warning
 
 Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings). Refer to [Use RBAC with OIDC](../../integrations/kubernetes.md#use-rbac-with-oidc) for an example. 
 

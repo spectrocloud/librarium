@@ -49,7 +49,7 @@ You can learn how to add the Spectro Cloud Grafana Dashboards to your cluster by
 
 <br />
 
-:::caution
+:::warning
 
 Pods without the defined attributes `request` and `limit` will not display metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
 

@@ -70,7 +70,7 @@ VM status will display as **Starting** for several minutes while the required re
 
 <br />
 
-:::caution
+:::warning
 
 VMs do not self-heal. If a VM is running on a node that fails, the VM is re-scheduled to a different node. Similar to live migration, to provide high availability, the disks should be ``ReadWriteMany`` so that they can be mounted on other nodes when the VM is restarting.
 

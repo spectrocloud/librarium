@@ -83,7 +83,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -191,7 +191,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -299,7 +299,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -406,7 +406,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -448,7 +448,7 @@ You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy all
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 :::
 
