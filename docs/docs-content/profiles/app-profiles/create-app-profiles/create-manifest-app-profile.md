@@ -46,7 +46,7 @@ A tutorial is available to help you learn how to use Palette Dev Engine by deplo
 
 5. Select **Manifest** to start configuring your app profile.
 
-  :::caution
+  :::warning
 
   When adding a manifest-type layer to an app profile, make sure you specify a namespace. Otherwise, the manifest deployment will be deployed to the `Default` namespace.
 

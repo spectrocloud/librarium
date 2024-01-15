@@ -80,7 +80,7 @@ A restore operation only restores the specified namespaces, cluster-scoped resou
 
 - The source cluster is available and healthy in Palette. 
 
-  :::caution
+  :::warning
 
   If the source cluster is unavailable in Palette, you cannot restore its backup. 
 

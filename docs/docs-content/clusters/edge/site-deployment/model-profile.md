@@ -135,7 +135,7 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 ## Without Custom OS
 
-:::caution
+:::warning
 
 This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to learn how to use a custom OS with your cluster profile.
 

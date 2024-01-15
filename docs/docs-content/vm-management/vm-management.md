@@ -36,7 +36,7 @@ Palette Virtual Machine Orchestrator requires the following:
 
 - VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports ``ReadWriteMany`` (``RWX``) access mode for seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
 
-  :::caution
+  :::warning
 
   In environments that use nested virtualization, where VMs operate inside of VMs due to lack of hardware to host VMs, it is technically possible to operate VMs in Kubernetes by setting the KubeVirt resource ``useEmulation`` to true. However, we do not recommend this approach.
 

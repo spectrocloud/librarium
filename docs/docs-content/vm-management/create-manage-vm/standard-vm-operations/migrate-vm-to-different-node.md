@@ -86,7 +86,7 @@ Compute nodes can be placed into maintenance mode using Palette or manually usin
 
     <br />
 
-    :::caution
+    :::warning
 
     Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
 

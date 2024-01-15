@@ -51,7 +51,7 @@ You can renew the cluster PKI certificates on-demand using the Palette API or th
 
 <br />
 
-:::caution
+:::warning
 
 A manual renewal of cluster PKI certificates results in all cluster nodes becoming repaved.
 

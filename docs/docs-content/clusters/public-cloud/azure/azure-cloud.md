@@ -65,7 +65,7 @@ Microsoft Entra replaces the Azure Active Directory (AAD) application. For more 
 
 4. Create a client secret. Refer to [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret) for guidance.
 
-  :::caution
+  :::warning
 
   Safely store your client secret, as it will not be available later as plain text.
 

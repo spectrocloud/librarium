@@ -98,7 +98,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -240,7 +240,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -406,7 +406,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -553,7 +553,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -721,7 +721,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -864,7 +864,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -1028,7 +1028,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -1139,7 +1139,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -1246,7 +1246,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 
 All versions less than v1.23.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 

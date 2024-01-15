@@ -424,7 +424,7 @@ Select the **1.1.0** version. Click on **Save** to confirm your profile version 
 ![Image that shows how to select a new profile version for the cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-version-selection.png)
 
 
-:::caution
+:::warning
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate backups before you make any cluster profile version changes in your production environments. You can learn more in the [Backup and Restore](./backup-restore) section. 
 

@@ -52,7 +52,7 @@ Platform administrators can use the system console to perform the following oper
 
 Check out the following resources to learn more about these operations.
 
-:::caution
+:::warning
 
 Exercise caution when changing system settings as the changes will be applied to all tenants in the system.
 
