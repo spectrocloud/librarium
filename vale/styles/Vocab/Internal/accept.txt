@@ -175,3 +175,4 @@ hostname
 Entra
 README
 Tailscale
+Tailnet

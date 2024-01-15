@@ -168,7 +168,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 ## Troubleshooting
 
 
-### Tailscale drops all traffic for 100.64.0.0/10, preventing the use of CIDRs in that range for your cluster
+### All Traffic Dropped for 100.64.0.0/10 CIDR Range 
 
 Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That means that by default, this address range (or parts of it) cannot be used for any of the following:
 
@@ -176,7 +176,7 @@ Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That m
 - Kubernetes cluster service CIDR
 - Palette Edge Overlay network CIDR
 
-#### Debug steps
+#### Debug Steps
 
 If you want to use parts of the 100.64.0.0/10 range for your Kubernetes clusters or your Palette Edge Overlay networks, you must limit the IP address range that your Tailnet uses to a fraction of the 100.64.0.0/10 range. Use the following steps to limit your Tailnet range:
 
