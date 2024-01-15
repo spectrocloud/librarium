@@ -30,6 +30,8 @@ Use the following troubleshooting resources to help you address issues that may 
 
 - [Private Cloud Gateway](pcg.md)
 
+- [Generate HAR Files](generate-har-files)
+
 ## Generate HAR Files
 
 When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to help us identify and resolve those issues.
