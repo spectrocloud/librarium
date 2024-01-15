@@ -43,7 +43,7 @@ Additionally, Virtio is a virtualization standard for network and disk device dr
 
 <br />
 
-:::caution
+:::warning
 
 We recommend installing the QEMU guest agent to display additional details in Palette Virtual Machine Orchestrator. We also recommend installing VirtIO drivers to ensure you can use the paravirtualized hardware properly.
 

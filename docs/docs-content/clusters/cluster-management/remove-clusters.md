@@ -64,7 +64,7 @@ A force delete can result in Palette-provisioned resources being missed in the r
 
 <br />
 
-:::caution
+:::warning
 
 Failure to remove provisioned resources can result in unexpected costs.  
 

@@ -10,7 +10,7 @@ tags: ["data center", "nutanix"]
 
 [Nutanix](https://www.nutanix.com/what-we-do) is a hyper-converged infrastructure platform that combines storage, compute, and networking into a single integrated system. Palette provides a generic framework built upon the open-source [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io) initiative to support adding cloud providers. As a Tech Preview of implementing this framework, you can deploy Kubernetes clusters on Nutanix using Palette. Integration with Nutanix is achieved through a Self-hosted Private Cloud Gateway (PCG), which establishes a secure connection with Nutanix Prism Central and allows Palette to monitor Nutanix clusters.
 
-:::caution
+:::warning
 Nutanix is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
 :::
 

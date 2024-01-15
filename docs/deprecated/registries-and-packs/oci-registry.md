@@ -66,7 +66,7 @@ Choose among one of the following ECR protection modes:
 	* For the credentials method of authentication, use the Access Key and Secret Access Key of the role created and validate the credentials.
 	* For STS, use the unique ARN  of the AWS role and validate.
 
-:::caution
+:::warning
 To provision ECR based OCI Authentication make sure that the User's STS Role has the ECR policy configured.
 :::
 

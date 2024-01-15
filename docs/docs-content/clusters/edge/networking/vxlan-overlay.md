@@ -13,7 +13,7 @@ Palette allows you to create a virtual overlay network on top of the physical ne
 
 ![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.png)
 
-:::caution
+:::warning
 Enabling overlay network on a cluster is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. 
 :::
 
@@ -58,7 +58,7 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 
 You can enable an overlay network for your cluster during cluster creation. 
 
-:::caution
+:::warning
 You will not be able to change the network overlay configurations after the cluster has already been created.
 :::
 
@@ -134,7 +134,7 @@ You will not be able to change the network overlay configurations after the clus
 
 11. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides a default range that is typically unused. We suggest you keep the default range unless you have a specific IP range you want to use. 
 
-   :::caution
+   :::warning
    The overlay CIDR range cannot be changed after the cluster creation. 
    :::
 
