@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Using DataVolumes for disk templates"
 title: "Using DataVolumes for disk templates"
-description: "Using DataVolumes to quickly create VMs from template disks in Palette Virtual Machine Orchestrator"
+description: "Create VMs from template disks in Palette Virtual Machine Orchestrator"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
