@@ -113,7 +113,7 @@ VMO includes the following KubeVirt plugins:
 - [Create a VM Template](create-manage-vm/create-vm-template.md)
 
 
-- [Using DataVolumes for disk templates](create-manage-vm/using-datavolumes.md)
+- [Create disk templates](create-manage-vm/using-datavolumes.md)
 
 
 - [VM Roles and Permissions](vm-roles-permissions.md)
