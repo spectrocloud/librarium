@@ -25,7 +25,7 @@ The following diagram illustrates the cloning strategy that the steps covered in
 
 <br />
 
-## Implementation
+## Create templates
 
 The following reference implementation details the recommended approach to implementing the components mentioned above. Version 4.2.0 and higher of the VMO pack contain native support for this approach:
 * Template disks will be imported into the `vmo-golden-images` namespace
