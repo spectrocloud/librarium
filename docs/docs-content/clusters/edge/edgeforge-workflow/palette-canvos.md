@@ -288,7 +288,7 @@ Use the following instructions on your Linux machine to create all the required 
   ```
   <br />
 
-  :::caution
+  :::warning
 
   As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. Refer to the Advanced workflow in the current guide to learn how to use another registry, such as Docker Hub, and tag the docker images accordingly.
 
@@ -537,7 +537,7 @@ Use the following instructions on your Linux machine to customize the arguments 
   ```
 
 
-:::caution
+:::warning
 
 Using the arguments defined in the **.arg** file, the final provider image name will have the following naming pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Ensure the final artifact name conforms to the Docker Hub image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`. 
 
@@ -558,7 +558,7 @@ Using the arguments defined in the **.arg** file, the final provider image name 
   cat Dockerfile
   ```
 
-:::caution
+:::warning
 
 Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The default behavior for package installations is to prompt the user for permission to install the package. A user prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the **Dockerfile**. 
 

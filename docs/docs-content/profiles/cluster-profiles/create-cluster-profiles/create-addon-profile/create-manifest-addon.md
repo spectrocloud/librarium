@@ -46,7 +46,7 @@ You can extend the list of integrations by adding custom manifests to your clust
   namespace: your_namespace_here
   ```
 
-  :::caution
+  :::warning
 
   Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For more information about customizing with namespaces, refer to [Profile Customization](../../../profile-customization.md).
     

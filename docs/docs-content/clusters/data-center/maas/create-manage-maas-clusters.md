@@ -124,7 +124,7 @@ To protect your data, we recommend you create a backup of your MAAS cluster befo
 
 <br /> 
 
-:::caution
+:::warning
 
 Ensure that the Operating System (OS) image selected for your cluster are downloaded and available for your MAAS configuration to eliminate errors in Palette. You can refer to the [How to use standard images](https://maas.io/docs/how-to-customise-images) guide for instructions on downloading OS images compatible with their respective MAAS environment.
 

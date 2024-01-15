@@ -50,7 +50,7 @@ You can refer to the [Prepare the DHCP Server for vSphere](https://docs.vmware.c
   ```
   <br />
 
-  :::caution
+  :::warning
 
   The Linux machine must have network connectivity to your VMware vCenter environment. 
 
@@ -331,7 +331,7 @@ Since we used the provider image compatible with K3s v1.25 in the cluster profil
 docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
 ```
 
-:::caution
+:::warning
 
 As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. If you want to use a different image registry, refer to the Advanced workflow in the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide to learn how to use another registry.
 
@@ -596,7 +596,7 @@ Edge Host ID   VM demo-1 : edge-97f2384233b498f6aa8dec90c3437c28
 
 For each of the three VMs, copy the Edge host ID. An Edge host ID looks similar to `edge-97f2384233b498f6aa8dec90c3437c28`. 
 
-:::caution
+:::warning
 
 You must copy the Edge host IDs for future reference. In addition, if auto registration fails you will need the Edge host IDs to manually register Edge hosts in Palette. 
 
@@ -694,7 +694,7 @@ The screenshot below shows you how to reference your provider OS image in a clus
 ![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_edit-profile.png)
 
 
-:::caution
+:::warning
 
  *ttl.sh* is a short-lived image registry. If you do not use the provider image in your cluster profile within 24 hours of pushing to *ttl.sh*, they will no longer exist and must be re-pushed. In a production environment, use a custom registry for hosting provider images.
 
@@ -887,7 +887,7 @@ The screenshot below highlights the NodePort to access the application.
 Clicking on the exposed NodePort displays the Hello Universe application. 
 <br />
 
-:::caution
+:::warning
 
 We recommend waiting to click on the service URL, as it takes one to three minutes for DNS to properly resolve the public NodePort URL. This prevents the browser from caching an unresolved DNS request.
 

@@ -185,7 +185,7 @@ manifests:
 
 <TabItem label="Deprecated" value="Deprecated">
 
-:::caution
+:::warning
 
 All versions of the manifest-based pack less than v0.9.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 

@@ -357,7 +357,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 Use the following steps to install a PCG cluster in your OpenStack environment. The [Palette CLI](../../palette-cli/palette-cli.md) will facilitate the deployment of a PCG cluster. 
 
-:::caution
+:::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
 
@@ -511,7 +511,7 @@ Palette provides an installer in the form of a docker container. This installer 
 The Palette CLI will now provision a PCG cluster in your OpenStack environment. 
 
 
-:::caution
+:::warning
 
 You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../palette-cli/commands.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
@@ -704,6 +704,6 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
-:::caution
+:::warning
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
 :::

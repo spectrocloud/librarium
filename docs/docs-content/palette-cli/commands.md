@@ -270,7 +270,7 @@ The `pcg` subcommand supports Private Cloud Gateway (PCG) operations, such as in
 
 
 
-:::caution
+:::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../spectro-downloads.md#palette-cli) page.
 
@@ -299,7 +299,7 @@ Use the `install` subcommand to install a PCG cluster in the following environme
   | `-i`       | `--inspect-only`   | Validate prerequisites for environment. Do not proceed with installation. |  boolean      |
 
 
-:::caution
+:::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../spectro-downloads.md#palette-cli) page.
 
