@@ -14,7 +14,7 @@ You install Palette VerteX using the Palette Command Line Interface (CLI) that g
 
 ## Prerequisites
 
-:::caution
+:::warning
 
 If you are installing Palette VerteX in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
 
@@ -120,7 +120,7 @@ Use the following steps to install Palette VerteX.
 
   <br />
 
-  :::caution
+  :::warning
 
   To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
 
@@ -176,7 +176,7 @@ Use the following steps to install Palette VerteX.
 
 Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
-:::caution
+:::warning
 
 For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on the host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA certificate. Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the [Self-linking Error](../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting guide for more information.
 

@@ -141,7 +141,7 @@ Use the following steps to add an OCI Packs registry to Palette. Select the tab 
 
   <br />
 
-  :::caution
+  :::warning
 
   If you selected **STS** as the authentication method, you must add a trust relationship to the IAM role you are using to access the ECR registry. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM trust relationship changes you must add to your IAM role. Failure to add the trust relationship will result in an error when you attempt to validate the registry.
 
