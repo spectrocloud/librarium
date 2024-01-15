@@ -10,7 +10,7 @@ tags: ["vmo"]
 
 
 
-When VMs are deployed from template, they almost always include a disk template containing a preinstalled copy of the desired OS. The Kubevirt CDI is used to import these templates through a concept called [Data Volumes](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md) and it supports multiple different approaches to do so. Some approaches are vastly quicker than others though. Hence, designing this correctly is important. This page details how to do that.
+Palette Virtual Machine Orchestrator (VMO) streamlines the deployment of VMs through the ability to create and manage templates. Check out the [Create a VM Template](./create-vm-template.md) guide to learn more. When VMs are deployed from template, they often include a disk template containing a pre-installed copy of the desired OS. The [Kubevirt Containerized Data Importer (CDI)](https://github.com/kubevirt/containerized-data-importer/tree/main) imports templates through [Data Volumes](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md). This tutorial teaches you how to implement your own disk templates using Kubevirt Data Volumes.
 
 
 ## Overview
