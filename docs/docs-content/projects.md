@@ -96,7 +96,7 @@ You can remove projects by following these steps.
 6. A pop-up box will ask you to confirm the action. Confirm the deletion.
 
 
-:::caution
+:::warning
 
 You can delete projects with force as long as there are no active clusters. Force deleting will eliminate all resources linked to the project, such as app profiles, cluster profiles, workspaces, audit logs, and custom project settings. However, if a project has active clusters, you must remove them first before deleting the project.
 

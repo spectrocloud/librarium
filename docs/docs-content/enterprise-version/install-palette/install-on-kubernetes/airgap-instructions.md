@@ -201,7 +201,7 @@ If you have any questions or concerns, please feel free to contact support@spect
 
   <br />
 
-  :::caution
+  :::warning
 
   You must download the following three resources. Our support team will provide you with the credentials and download URL.
   Click on each tab to learn more about each resource and steps for downloading.

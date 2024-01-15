@@ -78,7 +78,7 @@ This installation method is common in secure environments with restricted networ
 
 <br />
 
-:::caution
+:::warning
 
 Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette-managed clusters contain the Palette agent and Palette-created Kubernetes resources that will interfere with the installation of Palette.
 
@@ -229,7 +229,7 @@ The following instructions are written agnostic to the Kubernetes distribution y
 
 <br />
 
-:::caution
+:::warning
 
 If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse proxy for Palette.
 

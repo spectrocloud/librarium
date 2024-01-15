@@ -444,7 +444,7 @@ Result
 
 
 
-:::caution
+:::warning
 
 Some **content** with _Markdown_ `syntax`.
 

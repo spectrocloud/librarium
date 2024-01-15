@@ -78,7 +78,7 @@ docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr
 If port 7000 on your local machine is unavailable, you can use any other port of your choice. 
 <br /> 
 
-:::caution
+:::warning
 
 Wait to exit the container until the tutorial is complete. Otherwise, you may lose your progress. 
 
@@ -325,7 +325,7 @@ spectro registry login  --insecure --default --username admin --password admin \
 f59e-49-36-220-143.ngrok-free.app
 ```
 
-:::caution
+:::warning
 
 Do not use https:// or http:// keyword in the Ngrok URL. Using either of these keywords will result in an authorization issue. 
 
@@ -815,7 +815,7 @@ In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, se
 When cluster status displays **Running** and **Healthy**, you can access the application from the exposed service URL with the port number displayed. For the Hello Universe application, port 8080 is exposed. Click on the URL to access the application.
 <br />
 
-:::caution
+:::warning
 
 We recommend waiting to click on the service URL, as it takes one to three minutes for DNS to properly resolve the public load balancer URL. This prevents the browser from caching an unresolved DNS request.
 

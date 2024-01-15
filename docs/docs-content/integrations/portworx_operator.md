@@ -59,7 +59,7 @@ Portworx Operator has the following prerequisites for installation. You can lear
 * Identify and set up the type of storage you want to use.
 
 
-:::caution
+:::warning
 
 Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides monitoring capabilities.
 
@@ -680,7 +680,7 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
-  :::caution
+  :::warning
 
     When inserting SSL certificate values into the YAML. Ensure you follow the provided indentation style. Otherwise, SSL certificates will not be imported correctly and will result in Portworx deployment failure.
   :::
@@ -732,7 +732,7 @@ Portworx Operator has the following prerequisites for installation. You can lear
 * Identify and set up the type of storage you want to use.
 
 
-:::caution
+:::warning
 
 Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides monitoring capabilities.
 
@@ -1265,7 +1265,7 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
-  :::caution
+  :::warning
 
     When inserting SSL certificate values into the YAML. Ensure you follow the provided indentation style. Otherwise, SSL certificates will not be imported correctly and will result in Portworx deployment failure.
   :::
@@ -1315,7 +1315,7 @@ Portworx Operator has the following prerequisites for installation. You can lear
 * Identify and set up the type of storage you want to use.
 
 
-:::caution
+:::warning
 
 Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides monitoring capabilities.
 
@@ -1844,7 +1844,7 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
-  :::caution
+  :::warning
 
   When inserting SSL certificate values into the YAML. Ensure you follow the provided indentation style. Otherwise, SSL certificates will not be imported correctly and will result in Portworx deployment failure.
   :::
@@ -1853,7 +1853,7 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 
 All versions less than 2.12.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 

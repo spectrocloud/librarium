@@ -43,7 +43,7 @@ Palette Virtual Machine Orchestrator requires the following:
 
   <br />
 
-  :::caution
+  :::warning
 
   In environments that use nested virtualization, where VMs operate inside of VMs due to lack of hardware to host VMs, it is technically possible to operate VMs in Kubernetes by setting the KubeVirt resource ``useEmulation`` to true. However, we do not recommend this approach.
 

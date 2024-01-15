@@ -10,7 +10,7 @@ tags: ["profiles", "app profiles"]
 
 Use the following steps to delete an app profile. 
 
-:::caution
+:::warning
 If an app profile has more than one version, ensure you delete the appropriate version by reviewing its configuration before deleting the profile.
 :::
 

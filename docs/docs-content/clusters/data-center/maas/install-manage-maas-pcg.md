@@ -34,7 +34,7 @@ Palette provides an installer in the form of a Docker container that is temporar
 <br />
 
 
-:::caution
+:::warning
 
 The installer does not work on Apple Mac operating systems with Apple silicon chips.
 
@@ -61,7 +61,7 @@ The installer does not work on Apple Mac operating systems with Apple silicon ch
 
 - Sufficient available IPs within the configured MAAS subnets.
 
-:::caution
+:::warning
 
 By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by the bare metal machines that MAAS manages.
 
@@ -90,7 +90,7 @@ By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (
 
     In the MAAS subnets configuration, you can specify which DNS servers those servers in the MAAS subnet should use. 
     
-:::caution 
+:::warning 
 
 If you configure a different DNS server than the MAAS DNS server, you must be sure to create a DNS delegation in the other DNS server, so that it can forward DNS requests for zones that are hosted by MAAS to the MAAS DNS server.
 
@@ -152,7 +152,7 @@ The following steps will guide you to install the PCG.
 
 2. If you have Single or Social Sign-On (SSO) enabled, you will need to use or create a local non-SSO tenant admin account in Palette and use the credentials for that account in step **7**.
 
-:::caution
+:::warning
 
 The installer does not work with SSO or Social sign on credentials. You must use a username and password from a local tenant admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used to keep the PCG connected to Palette, so you can disable the account if desired.
 
@@ -229,7 +229,7 @@ The installer does not work with SSO or Social sign on credentials. You must use
 
   <br />
   
-  :::caution
+  :::warning
 
    Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone 
    and resource pool combination.
@@ -296,7 +296,7 @@ cp /tmp/install-User-define-MaaS-Gateway-Name-20210805155034/pcg.yaml  /tmp
 
 <br />
 
-:::caution
+:::warning
 
 Issues can occur with the PCG installation if the pairing code in Palette changes during the time it takes to modify the configuration file. Ensure pairing codes in Palette and the configuration file match before you redeploy the gateway.  
 
@@ -396,7 +396,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 Two new nodes will be added to the PCG cluster.
 
 
-:::caution
+:::warning
 
 Ensure the MAAS server has two more machines in the **Ready** state in the same Availability Zone and Resource Pool combination.
 

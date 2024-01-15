@@ -18,7 +18,7 @@ Instead of rebuilding cluster profiles, you can export them in JSON format and t
 
 - [Macros](../../registries-and-packs/pack-constraints.md#pack-macros) used in the profile you want to export must be available in the target environment *before* you import the profile. 
 
-  :::caution
+  :::warning
 
   If custom macros are not available in the target environment, create them there before importing the profile. For instructions on macro creation, review [Macro Support](../../clusters/cluster-management/macros.md#create-your-macro).
 
@@ -37,7 +37,7 @@ Use these steps to export the profile as a `.json` file.
 
 4. Verify that any custom macros used in the exported profile exist in the target environment before you import the profile. If they do not, create the macros in the target environment. For guidance, review [Create Your Macro](../../clusters/cluster-management/macros.md#create-your-macro).
 
-:::caution
+:::warning
 
 During profile export, Palette masks fields that are marked as sensitive. You must update the value of these sensitive fields after profile import with the proper new value.
 
@@ -72,7 +72,7 @@ Use these steps to import the profile to one or more projects or tenants.
 
 10. In the **Select repositories** window that displays when the profile is successfully validated, use the **drop-down Menus** to select one or more repositories in which profile packs exist so Palette can fetch them.
 
-  :::caution
+  :::warning
   If any of the packs are missing in the target environment, profile import will not proceed.
   :::
 

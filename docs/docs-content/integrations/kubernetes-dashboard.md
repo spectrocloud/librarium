@@ -53,7 +53,7 @@ A user-friendly version of this pack is available, Spectro Kubernetes Dashboard,
 | `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk. |
 
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
@@ -161,7 +161,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
 | `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk. |
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
@@ -269,7 +269,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.certRenewal` | A Go time.Duration string format in s (seconds), m (minutes), and h (hour) suffixes | `720h` (30 days) | Certificate renew before expiration duration |
 | `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
@@ -380,7 +380,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
@@ -490,7 +490,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
@@ -600,7 +600,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | `k8s-dashboard.serviceType` | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommend using ClusterIP service type to restrict access to the cluster.|
 | `k8s-dashboard.skipLogin` | True, False | False | A flag to skip authentications in the Kubernetes Dashboard UI. We recommend using this only for demo purposes, as enabling it could expose a security risk.|
 
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide. 
 
@@ -700,7 +700,7 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 | k8s-dashboard.serviceType | ClusterIP, LoadBalancer | ClusterIP | The ServiceType for dashboard. We recommended to use ClusterIP service type to restrict access to the cluster.|
 | k8s-dashboard.skipLogin | True, False | False | Flag to skip authentications in the Dashboard UI. Enabling this might expose a security risk. Use this only for demo purposes. |
 
-:::caution
+:::warning
 
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the Spectro Kubernetes Dashboard integrated pack. 
 

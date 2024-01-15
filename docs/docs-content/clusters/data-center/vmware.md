@@ -118,7 +118,7 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 <br />
 
-:::caution
+:::warning
 
 If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” is required.
 
@@ -813,7 +813,7 @@ In addition to the default cloud account already associated with the private clo
 | **Username** | vCenter username|
 | **Password** | vCenter password|
 
-:::caution
+:::warning
 If you change the password for a user account in vCenter, you must also change it in Palette for the same VMware cloud account. We recommend updating the passwords immediately to avoid potentially locking Palette out of vCenter. For guidance, refer to [Change VMware Cloud Account Password in Palette](#change-vmware-cloud-account-password).
 :::
 
@@ -948,7 +948,7 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 
-:::caution
+:::warning
 
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
 

@@ -21,7 +21,7 @@ The following policies include all the permissions needed for cluster provisioni
 Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the *Controllers EKS Policy*.
 
 
-:::caution
+:::warning
 
 You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies into a custom-managed policy.
 You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
@@ -895,7 +895,7 @@ In addition to the policies listed above, if you specified other IAM policies du
 </Tabs>
 
 
-:::caution
+:::warning
 
 Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail due to the IAM role policy limit. Request a [service quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for the AWS account to increase the limit.
 

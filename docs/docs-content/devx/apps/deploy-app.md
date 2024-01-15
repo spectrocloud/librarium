@@ -128,7 +128,7 @@ Next, click the radio button **Deploy in An Existing Palette Virtual Cluster**. 
 
   
 
-:::caution
+:::warning
 
   
 
@@ -157,7 +157,7 @@ When the application is deployed and ready for use, the **Services** row on the 
   
   
 
-:::caution
+:::warning
 
   
   
@@ -349,7 +349,7 @@ Name the app `multiple-app-scenario`, select the app profile **hello-universe-co
 
   
 
-:::caution
+:::warning
 
   
 
@@ -838,7 +838,7 @@ Log in to [Palette](https://console.spectrocloud.com), navigate to the left **Ma
 
 <br />
 
-:::caution
+:::warning
 
   
 It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
@@ -1228,7 +1228,7 @@ Click on the UI’s service URL for port **8080** to access the Hello Universe a
 
 <br />
 
-:::caution
+:::warning
 
   
 It takes between one to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.

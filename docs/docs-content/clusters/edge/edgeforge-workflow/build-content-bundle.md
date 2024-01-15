@@ -11,7 +11,7 @@ tags: ["edge"]
 Content bundles are archives of all the required container images required for a cluster profiles. The content bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster. [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for building these content bundles.
 
 
-:::caution
+:::warning
 
 Currently, the content bundles include Helm charts and Packs. However, keep in mind that the container images of the Helm Charts and Packs are extracted and predeployed into the container runtime [containerd](https://containerd.io/) for optimization. In the future, Palette will include a built-in OCI registry to host Helm Charts and other artifacts to avoid downloading these from the internet if included in a content bundle
 

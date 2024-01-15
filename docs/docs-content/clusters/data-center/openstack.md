@@ -631,6 +631,6 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
 
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
-:::caution
+:::warning
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
 :::

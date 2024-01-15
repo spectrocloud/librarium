@@ -21,7 +21,7 @@ The guidance on this page is based on the upstream Kubernetes documentation and 
 
 <br />
 
-:::caution
+:::warning
 
 Enabling audit logging causes the API server to consume more memory, as it needs to store additional context for each request to facilitate auditing. Memory consumption depends on the audit logging configuration.
 

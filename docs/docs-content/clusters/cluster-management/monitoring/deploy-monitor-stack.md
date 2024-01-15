@@ -15,7 +15,7 @@ Use the following steps to deploy a monitoring stack, and learn how to configure
 
 <br />
 
-:::caution
+:::warning
 
 We recommend you avoid installing applications in your monitoring stack. The monitoring stack will require all the allocated resources to support Prometheus and incoming metrics from all other clusters.
 
@@ -382,7 +382,7 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 
 
-  :::caution
+  :::warning
 
   The following steps can be complex, depending on your environment and your access. Discuss the remaining step with your network administrator team if you need additional guidance.
 

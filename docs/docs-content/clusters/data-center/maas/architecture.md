@@ -61,7 +61,7 @@ A System Private Gateway can be used if a self-hosted Palette instance can commu
 
 <br />
 
-:::caution
+:::warning
 
 Only self-hosted Palette instances support the option of using the System Private Gateway. Use the default [PCG deployment](#private-cloud-gatewayy) option if you have NAT gateways or network firewalls between Palette and MAAS.
 
