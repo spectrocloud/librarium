@@ -3,4 +3,6 @@
 
 npx lint-staged
 
+npx prettier --ignore-unknown --write ${staged}
+
 npm run clean-api-docs
