@@ -15,7 +15,7 @@ Palette Virtual Machine Orchestrator (VMO) streamlines the deployment of VMs thr
 
 ## Overview
 
-The following diagram illustrates the sequential steps covered in this guide.
+The following diagram illustrates the cloning strategy that the steps covered in this guide will implement.
 
 ![Image cloning with CDI](/cdi-disk-clone.png)
 1. Create a `DataVolume` resource to import an external disk image into the cluster, saving it as a template PVC on the cluster
