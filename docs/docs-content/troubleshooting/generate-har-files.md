@@ -16,8 +16,8 @@ This guide explains how you can generate HAR files in Chrome, Safari, and Firefo
 
 ## Prerequisites
 
-- A browser of choice (we recommend Chrome, Safari, or Firefox). If you're using Safari, make sure to [enable its web development features](https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features) first.
-- A text editor of choice (we recommend [Visual Studio Code](https://code.visualstudio.com/) or [Sublime](https://www.sublimetext.com/)).
+- A browser of choice. For instance, you could use Chrome, Safari, or Firefox. If you're using Safari, make sure to [enable its web development features](https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features) first.
+- A text editor of choice. For example, you could use [Visual Studio Code](https://code.visualstudio.com/) or [Sublime](https://www.sublimetext.com/).
 
 ## Generate and Sanitize HARs
 
