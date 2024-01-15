@@ -16,9 +16,7 @@ Use the following troubleshooting resources to help you address issues that may 
 
 - [Cluster Deployment](cluster-deployment.md)
 
-- [Edge](edge.md)
-
-- [Enterprise Install](enterprise-install.md)
+- [Edge](edge.mdx)
 
 - [Nodes & Clusters](nodes.md)
 
