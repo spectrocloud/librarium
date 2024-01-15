@@ -34,7 +34,7 @@ The following reference implementation details the recommended approach to imple
 
 <br />
 
-### Importing disk images as templates
+### Import disk images as templates
 
 The following manifest can be added to a manifest layer in a Palette cluster profile to define a `DataVolume` that imports the example disk template for Ubuntu 22.04 into the `vmo-golden-images` namespace:
 
@@ -73,7 +73,7 @@ As soon as the `DataVolume` resource above is applied to the cluster, the CDI wi
 
 <br />
 
-### Creating vmTemplates with CSI-assisted cloning
+### Create vmTemplates with CSI-assisted cloning
 
 The next step is to create a `vmTemplate` resource that clones the PVC in the `vmo-golden-images` namespace. This is done through the `dataVolumeTemplates` section:
 
@@ -112,7 +112,7 @@ To enable CSI-assisted cloning into larger PVCs than the source PVC, the Storage
 
 <br />
 
-### Setting up RBAC permissions for cloning across namespaces
+### Set up RBAC permissions for cloning across namespaces
 
 When the CDI performs a cloning operation, it runs under the `default` serviceaccount in the namespace of the target PVC. When the source PVC is in a different namespace, required permissions must be given to the serviceaccount. Version 4.2.0 of the VMO pack does this automatically, you can specify the namespaces for which the permissions are configured through the `vmEnabledNamespaces` option in the pack:
 
@@ -131,7 +131,7 @@ charts:
 
 <br />
 
-### Defining StorageProfiles to ensure CSI-assisted cloning
+### Define StorageProfiles to ensure CSI-assisted cloning
 
 While the CDI contains an internal database of CSIs and their supported access modes, volume modes and CSI-assisted cloning support, it is still recommended to create a `StorageProfile` to force these parameters to what we want them to be. For example:
 
