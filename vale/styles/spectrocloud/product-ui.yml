@@ -1,11 +1,11 @@
 extends: substitution
 message: "Use approved terms for product UI elements"
 ignorecase: true
-level: warning
+level: error
 swap:
-  "navbar": "Main Menu",
-  "nav bar": "Main Menu",
-  "user dropdown": "User Menu",
-  "nested navbar": "<feature> Menu",
+  "navbar": "Main Menu"
+  "nav bar": "Main Menu"
+  "user dropdown": "User Menu"
+  "nested navbar": "<feature> Menu"
   "nested nav bar": "<feature> Menu"
   "three dots": "Three-Dot Menu"
