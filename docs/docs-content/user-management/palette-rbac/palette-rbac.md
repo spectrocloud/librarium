@@ -109,7 +109,7 @@ Tenant is an isolated workspace within the Palette. `Users` and `Teams` with spe
 
 ### Project
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a namespace for resource management. Users and Teams with specific roles can be associated with the project, cluster, or cluster profile you create. Users are members of a tenant who are assigned [project scope roles](project-scope-roles-permissions.md#global-project-scope) that control their access within the platform.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a namespace for resource management. Users and Teams with specific roles can be associated with the project, cluster, or cluster profile you create. Users are members of a tenant who are assigned [project scope roles](./project-scope-roles-permissions.md#global-project-scope) that control their access within the platform.
 <br />
 
 ## Palette Specific (Default) Roles:
@@ -292,7 +292,7 @@ To create a custom role, login to the Palette console as `Tenant Admin`:
 
 **Example:**
 
-If the user is creating a role under the Tenant scope for API Key operations, select the `API Key Permissions` and then from the drop-down menu of that permission, check (tick) the required API operations listed under API Key permissions. Similarly, several permissions can be combined to create a **Custom Role**. [The created role can be assigned to an existing or new user.](/user-management#rolesandpermissions)
+If the user is creating a role under the Tenant scope for API Key operations, select the `API Key Permissions` and then from the drop-down menu of that permission, check (tick) the required API operations listed under API Key permissions. Similarly, several permissions can be combined to create a **Custom Role**. The created role can be assigned to an existing or new user.
 
 <br />
 <br />

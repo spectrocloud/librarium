@@ -74,7 +74,7 @@ Palette applies a default set of configuration options when deploying Ubuntu. Yo
 | `controllerManager` | Extra settings for the Kubernetes controller manager control plane component. Review the [Kubernetes controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) documentation for more information.  | object | No |
 | `scheduler` | Extra settings for the Kubernetes scheduler control plane component. Refer to the [Kube scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler) documenation for more details. | object | No |
 | `kubeletExtraArgs` | Extra arguments for kubelet. Refer to the [Kubeadm init](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init) documentation for more details. | map | No |
-| `files` | Create or specify additional files for the `kubeadmconfig`. Refer to the [Customize Pack](/integrations/ubuntu?22.04.x#customizepack) section to learn more. | list | No |
+| `files` | Create or specify additional files for the `kubeadmconfig`. Refer to the [Customize Pack](#customize-pack) section to learn more. | list | No |
 | `preKubeadmCommands` | Extra commands to issue before kubeadm starts. | list | No |
 | `postKubeadmCommands` | Extra commands to issue after kubeadm starts. | list | No |
 | `imageRepository` | The container registry to pull images from. If empty, `k8s.gcr.io` will be used by default. | string | No |
@@ -178,7 +178,7 @@ Review the parameter documentation before you make changes to the kubeadm config
 
 :::
 
-Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](ubuntu.md?22.04.x#ubuntupro) section below for more details.
+Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](#ubuntu-pro) section below for more details.
 
 <br />
 

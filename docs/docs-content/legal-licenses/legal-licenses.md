@@ -1,8 +1,8 @@
 ---
-sidebar_label: "Legal & Acknowledgments"
-title: "Legal & Acknowledgments"
-description: "Review the legal and open source components used in Palette."
-sidebar_position: 10
+sidebar_label: "Compliance & Legal"
+title: "Compliance & Legal"
+description: "Review legal, compliance, and open source components used in Palette."
+sidebar_position: 0
 hide_table_of_contents: false
 sidebar_custom_props: 
   icon: "gavel"
