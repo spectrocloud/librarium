@@ -193,7 +193,7 @@ If you want to use parts of the 100.64.0.0/10 range for your Kubernetes clusters
 
 2. Next, in the OS pack of your cluster profile, add the following:
 
-```yaml {14}
+```yaml
 stages:
   initramfs:
     - name: "Tailscale fix systemD unit service"
