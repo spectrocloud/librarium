@@ -7,8 +7,6 @@ sidebar_position: 30
 tags: ["profiles", "cluster profiles"]
 ---
 
-
-
 Palette allows you to add a pack multiple times to the same cluster profile, which can be required in certain scenarios where an integration needs to be installed more than once with different configurations. For example, you may need to deploy two instances of the same microservice or application but with different configurations. In this case, you will need to launch the Postgres application twice with different configurations.
 
 :::caution
@@ -25,7 +23,7 @@ namespace: "external-dns"
 spectrocloud.com/display-name: "dns-1"
 ```
 
-If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Display names used for a pack across layers should be unique. 
+If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as `dns-2`. Display names used for a pack across layers should be unique.
 
 By default Palette uses the Helm chart release name in the format `packName-chartName`. In cases where a lengthy release name causes an issue, you can customize Helm chart `releaseNames` using the format below.
 

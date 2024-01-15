@@ -4,31 +4,35 @@ title: "Deploy Cluster Profile Updates"
 description: "Learn how to update your deployed clusters using Palette Cluster Profiles. This tutorial teaches you how to: create Cluster Profile versions, apply cluster updates and roll back to previous versions. Get started with the basics of cluster maintenance in Azure with this hands-on exercise."
 icon: ""
 hide_table_of_contents: false
-tags: [ "cluster profiles", "tutorial"]
+tags: ["cluster profiles", "tutorial"]
 sidebar_position: 240
 ---
+
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain the versions of the container images that Palette will install for you. Cluster profiles provide consistency across environments during the cluster creation process, as well as when maintaining your clusters. Check out the [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about how to create and use them. Once provisioned, there are three main ways to update your Palette deployments.
 
-| Method | Description               | Cluster application process |
-|--------|---------------------------|-----------------------------|
-| Cluster profile versions | Create a new version of the cluster profile with your updates. | Select the new version of the cluster profile. Apply this new profile version to the clusters you want to update. |
-| Cluster profile updates | Change the cluster profile in place. | Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update. |
-| Cluster overrides | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.|
+| Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster profile versions | Create a new version of the cluster profile with your updates.                     | Select the new version of the cluster profile. Apply this new profile version to the clusters you want to update.                                                                                          |
+| Cluster profile updates  | Change the cluster profile in place.                                               | Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update. |
+| Cluster overrides        | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.                                                                                                                                                    |
 
 This tutorial will teach you how to update a cluster deployed with Palette to Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You will explore each cluster update method and learn how to apply these changes using either Palette or Terraform.
 
 ## Prerequisites
+
 This tutorial builds upon the resources and steps outlined in the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. To complete it, you will need the following items.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
 
 - A public cloud account from one of these providers:
+
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
   - [GCP](https://cloud.google.com/docs/get-started)
 
 - Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource for additional guidance.
+
   - [Register and Manage AWS Accounts](../public-cloud/aws/add-aws-accounts.md)
   - [Register and Manage Azure Cloud Accounts](../public-cloud/azure/azure-cloud.md)
   - [Register and Manage GCP Accounts](../public-cloud/gcp/add-gcp-accounts.md)
@@ -54,13 +58,13 @@ This tutorial builds upon the resources and steps outlined in the [Deploy a Clus
 - Install the [Terraform CLI](https://developer.hashicorp.com/terraform/install) v1.4.0 or greater according to the setup steps for your operating system.
 - A Spectro Cloud API key is required to interact with the Palette API. Use the [Create API Key] guide to learn how to create one.
 
-In your terminal session, issue the following command to export the API key as an environment variable. Replace the placeholder `YourAPIKeyHere` with your previously copied API key. 
+In your terminal session, issue the following command to export the API key as an environment variable. Replace the placeholder `YourAPIKeyHere` with your previously copied API key.
 
 ```shell
 export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 ```
 
-Open a terminal window and download the tutorial code from GitHub. 
+Open a terminal window and download the tutorial code from GitHub.
 
 ```shell
 git clone git@github.com:spectrocloud/tutorials.git
@@ -92,7 +96,7 @@ cd terraform/iaas-cluster-update-tf/
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
 
-Follow the instructions of the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial to create a cluster profile and cluster with the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. Your cluster should be successfully provisioned and in a healthy state in the cloud of your choosing. 
+Follow the instructions of the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial to create a cluster profile and cluster with the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be successfully provisioned and in a healthy state in the cloud of your choosing.
 
 The cluster profile name follows the pattern `[cloud provider]-profile`. The cluster name follows the pattern `[cloud provider]-cluster`. This tutorial uses Azure for illustration purposes.
 
@@ -102,11 +106,11 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.png)
 
-Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile corresponding to your cluster in the list of profiles. Click on the **three-dot Menu** and select **Clone**. 
+Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile corresponding to your cluster in the list of profiles. Click on the **three-dot Menu** and select **Clone**.
 
-A dialog appears to confirm the details of the cloned cluster profile. Fill in the **Name** input using the pattern `[cloud provider]-profile-api`. Click on **Confirm** to create the profile. 
+A dialog appears to confirm the details of the cloned cluster profile. Fill in the **Name** input using the pattern `[cloud provider]-profile-api`. Click on **Confirm** to create the profile.
 
-The list of cluster profiles appears. Select the cloned cluster profile to view its details. 
+The list of cluster profiles appears. Select the cloned cluster profile to view its details.
 
 Select the **hello-universe** manifest. The editor appears. In the manifest editor, replace the existing code with the following content.
 
@@ -124,9 +128,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
   selector:
     app: hello-universe-api
 ---
@@ -138,9 +142,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - protocol: TCP
-    port: 5432
-    targetPort: 5432
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
   selector:
     app: hello-universe-db
 ---
@@ -160,14 +164,14 @@ spec:
         app: hello-universe-api
     spec:
       containers:
-      - name: hello-universe-api
-        image: ghcr.io/spectrocloud/hello-universe-api:1.0.9
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 3000
-        env:
-          - name: DB_HOST
-            value: "hello-universe-db-service.hello-universe-api.svc.cluster.local"
+        - name: hello-universe-api
+          image: ghcr.io/spectrocloud/hello-universe-api:1.0.9
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              value: "hello-universe-db-service.hello-universe-api.svc.cluster.local"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -185,20 +189,20 @@ spec:
         app: hello-universe-db
     spec:
       containers:
-      - name: hello-universe-db
-        image: ghcr.io/spectrocloud/hello-universe-db:1.0.0
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 5432
+        - name: hello-universe-db
+          image: ghcr.io/spectrocloud/hello-universe-db:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
 ```
 
-The code snippet you added deploys the [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) and [*hello-universe-db*](https://github.com/spectrocloud/hello-universe-db) applications. These applications serve as the API server and database for the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application.
+The code snippet you added deploys the [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) and [_hello-universe-db_](https://github.com/spectrocloud/hello-universe-db) applications. These applications serve as the API server and database for the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.
 
-Click on **Confirm Updates** and close the editor. 
+Click on **Confirm Updates** and close the editor.
 
 Click on **Save Changes** to confirm your updates.
 
-Deploy this cluster profile to a new cluster using the same steps outlined in the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial. 
+Deploy this cluster profile to a new cluster using the same steps outlined in the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial.
 
 Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
 
@@ -222,20 +226,23 @@ Next, issue the `plan` command to preview the changes.
 terraform plan
 ```
 
-Terraform will display the following output for Azure. 
+Terraform will display the following output for Azure.
+
 ```shell
 Plan: 6 to add, 0 to change, 0 to destroy.
 ```
 
-For AWS and GCP, Terraform will create one less resource. 
+For AWS and GCP, Terraform will create one less resource.
+
 ```shell
 Plan: 5 to add, 0 to change, 0 to destroy.
 ```
 
 If you change the desired cloud provider's toggle variable to `true,` you will receive an output message that the following new resources are planned.
-- A cluster profile and a host cluster for the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application.
-- A cluster profile and a host cluster for the [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application.
-- The [*kubeconfig*](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file of the provisioned *hello-universe-api* cluster. This is a local file that is created in your current working directory. You will need this file later, so do not to delete it.
+
+- A cluster profile and a host cluster for the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.
+- A cluster profile and a host cluster for the [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application.
+- The [_kubeconfig_](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file of the provisioned _hello-universe-api_ cluster. This is a local file that is created in your current working directory. You will need this file later, so do not to delete it.
 - An SSH key required for deployment to Azure. This resource is not created if you choose to deploy to another cloud provider.
 
 To deploy all the resources, use the `apply` command.
@@ -246,9 +253,9 @@ terraform apply -auto-approve
 
 Make a note of the command output by this step. You will need it later.
 
-Once you have completed these steps and the host cluster creation process has finished, log in to [Palette](https://console.spectrocloud.com). 
+Once you have completed these steps and the host cluster creation process has finished, log in to [Palette](https://console.spectrocloud.com).
 
-Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters. The cluster with the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application is named using the pattern `[cloud provider]-cluster`. The cluster with the [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application is named using the pattern `[cloud provider]-cluster-api`.
+Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters. The cluster with the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application is named using the pattern `[cloud provider]-cluster`. The cluster with the [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application is named using the pattern `[cloud provider]-cluster-api`.
 
 ![Image that shows the two clusters in the clusters list](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-clusters-start-setup.png)
 
@@ -265,33 +272,33 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 ## Tag and Filter Clusters
 
-Palette provides the ability to add tags to your cluster profiles and clusters. This helps you organize and categorize your clusters based on your custom criteria. You can add tags during the creation process or by editing the resource after it has been created. 
+Palette provides the ability to add tags to your cluster profiles and clusters. This helps you organize and categorize your clusters based on your custom criteria. You can add tags during the creation process or by editing the resource after it has been created.
 
-Adding tags to your clusters helps you find and identify your clusters, without having to rely on cluster naming. This is especially important when operating with many clusters or multiple cloud deployments. 
+Adding tags to your clusters helps you find and identify your clusters, without having to rely on cluster naming. This is especially important when operating with many clusters or multiple cloud deployments.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
 
-Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Find the `[cloud provider]-cluster` you deployed with the *hello-universe* application. Click on it to view its **Overview** tab. 
+Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Find the `[cloud provider]-cluster` you deployed with the _hello-universe_ application. Click on it to view its **Overview** tab.
 
-Click on the **Settings** dropdown menu in the upper right corner and select **Cluster Settings**. 
+Click on the **Settings** dropdown menu in the upper right corner and select **Cluster Settings**.
 
-Fill **service:hello-universe-frontend** in the **Tags (Optional)** input box. Click on **Save Changes**. Close the panel. 
+Fill **service:hello-universe-frontend** in the **Tags (Optional)** input box. Click on **Save Changes**. Close the panel.
 
 ![Image that shows how to add a cluster tag](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_add-service-tag.png)
 
-Repeat the steps above for the `[cloud provider]-cluster-api` cluster you deployed with the *hello-universe-api*. Add the **service:hello-universe-backend** tag to it. 
+Repeat the steps above for the `[cloud provider]-cluster-api` cluster you deployed with the _hello-universe-api_. Add the **service:hello-universe-backend** tag to it.
 
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then select the **Add custom filter** option.
 
-Use the drop-down boxes to fill in the values of the filter. Select **Tags** in the left-hand **drop-down Menu**. Select **is** in the middle **drop-down Menu**. Fill in **service:hello-universe-frontend** in the right-hand input box. 
+Use the drop-down boxes to fill in the values of the filter. Select **Tags** in the left-hand **drop-down Menu**. Select **is** in the middle **drop-down Menu**. Fill in **service:hello-universe-frontend** in the right-hand input box.
 
-Click on **Apply Filter**. 
+Click on **Apply Filter**.
 
 ![Image that shows how to add a frontend service filter](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_apply-frontend-filter.png)
 
 Once you apply the filter, only the `[cloud provider]-cluster` with this tag is displayed.
- 
+
 </TabItem>
 
 <TabItem label="Terraform workflow" value="Terraform">
@@ -320,9 +327,9 @@ Navigate back to your [Palette](https://console.spectrocloud.com) tab in the bro
 
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then select the **Add custom filter** option.
 
-Use the dropdown boxes to fill in the values of the filter. Select **Tags** in the left-hand dropdown menu. Select **is** in the middle dropdown menu. Fill in **service:hello-universe-frontend** in the right-hand input box. 
+Use the dropdown boxes to fill in the values of the filter. Select **Tags** in the left-hand dropdown menu. Select **is** in the middle dropdown menu. Fill in **service:hello-universe-frontend** in the right-hand input box.
 
-Click on **Apply Filter**. 
+Click on **Apply Filter**.
 
 ![Image that shows how to add a frontend service filter](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_apply-frontend-filter.png)
 
@@ -332,9 +339,10 @@ Once you apply the filter, only the `[cloud provider]-cluster` with this tag is 
 </Tabs>
 
 ## Version Cluster Profiles
- Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with better change visibility and control over the layers in your host clusters. Profile versions are commonly used for adding or removing layers and pack configuration updates. 
- 
- The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. If you do not specify a version for your cluster profile, it defaults to **1.0.0**.
+
+Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with better change visibility and control over the layers in your host clusters. Profile versions are commonly used for adding or removing layers and pack configuration updates.
+
+The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. If you do not specify a version for your cluster profile, it defaults to **1.0.0**.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
@@ -343,7 +351,7 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 
 Select cluster to open its **Overview** tab. Make a note of the IP address of the **hello-universe-api-service** present in this cluster. You can find it by opening the **:3000** URL.
 
-Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile corresponding to your *hello-universe-frontend* cluster. It should be named using the pattern `[cloud provider]-profile`. Select it to view its details.
+Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile corresponding to your _hello-universe-frontend_ cluster. It should be named using the pattern `[cloud provider]-profile`. Select it to view its details.
 
 ![Image that shows the frontend cluster profile with cluster linked to it](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-with-cluster.png)
 
@@ -366,7 +374,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: hello-universe
---- 
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -375,9 +383,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
   selector:
     app: hello-universe
 ---
@@ -397,36 +405,35 @@ spec:
         app: hello-universe
     spec:
       containers:
-      - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.1.0
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-        env:
-          - name: API_URI
-            value: "http://REPLACE_ME:3000"
+        - name: hello-universe
+          image: ghcr.io/spectrocloud/hello-universe:1.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_URI
+              value: "http://REPLACE_ME:3000"
 ```
 
-The code snippet you added deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
+The code snippet you added deploys the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the _hello-universe_ API server. Check out the [_hello-universe_ readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the _hello-universe_ application with an API Server.
 
-Replace the *REPLACE_ME* placeholder in the code snippet provided with the IP address of the *hello-universe-api-service* that you made a note of earlier.
+Replace the _REPLACE_ME_ placeholder in the code snippet provided with the IP address of the _hello-universe-api-service_ that you made a note of earlier.
 
-Click on **Confirm Updates**. The manifest editor closes. 
+Click on **Confirm Updates**. The manifest editor closes.
 
 Click on **Save Changes** to finish the configuration of this cluster profile version.
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the **service:hello-universe-frontend** tag. Select it to view its **Overview** tab.
 
-Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version dropdown. 
+Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version dropdown.
 
 Select the **1.1.0** version. Click on **Save** to confirm your profile version selection.
 
 ![Image that shows how to select a new profile version for the cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-version-selection.png)
 
-
 :::caution
 
-Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate backups before you make any cluster profile version changes in your production environments. You can learn more in the [Backup and Restore](./backup-restore) section. 
+Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate backups before you make any cluster profile version changes in your production environments. You can learn more in the [Backup and Restore](./backup-restore) section.
 
 :::
 
@@ -442,18 +449,18 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 <TabItem label="Terraform workflow" value="Terraform">
 
-Palette cluster profiles are defined with the Terraform resource [*spectrocloud_cluster_profile*](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile) . Six resources defined are defined in the **cluster_profiles.tf** file.
+Palette cluster profiles are defined with the Terraform resource [_spectrocloud_cluster_profile_](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile) . Six resources defined are defined in the **cluster_profiles.tf** file.
 
-| Name | Description | Platform |
-|----- |-------------|----------|
-| `aws-profile` | Cluster profile for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | AWS |
-| `aws-profile-api` | Cluster profile for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | AWS |
-| `azure-profile` | Cluster profile for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | Azure |
-| `azure-profile-api` | Cluster profile for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | Azure |
-| `gcp-profile` | Cluster profile for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | GCP |
-| `gcp-profile-api` | Cluster profile for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | GCP |
+| Name                | Description                                                                                                 | Platform |
+| ------------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
+| `aws-profile`       | Cluster profile for [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.         | AWS      |
+| `aws-profile-api`   | Cluster profile for [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application. | AWS      |
+| `azure-profile`     | Cluster profile for [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.         | Azure    |
+| `azure-profile-api` | Cluster profile for [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application. | Azure    |
+| `gcp-profile`       | Cluster profile for [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.         | GCP      |
+| `gcp-profile-api`   | Cluster profile for [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application. | GCP      |
 
-The `spectrocloud_cluster_profile` resource provides all the basic information that Palette needs to create the cluster profile and display its attributes, such as the name, description, and cloud type. The resource also provides the optional version field, which has a default value of **1.0.0**. You can create another version of the cluster profile by specifying another resource with the same profile name but with a different version value. 
+The `spectrocloud_cluster_profile` resource provides all the basic information that Palette needs to create the cluster profile and display its attributes, such as the name, description, and cloud type. The resource also provides the optional version field, which has a default value of **1.0.0**. You can create another version of the cluster profile by specifying another resource with the same profile name but with a different version value.
 
 ```hcl {9} hideClipboard
 resource "spectrocloud_cluster_profile" "azure-profile" {
@@ -468,7 +475,7 @@ resource "spectrocloud_cluster_profile" "azure-profile" {
 }
 ```
 
-The cluster profile resources also specify packs for each of their layers using the [*pack*](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile#nested-schema-for-pack) nested schema. Check out the [Deploy a Custom Pack](../../registries-and-packs/deploy-pack.md) tutorial to learn more about creating your own packs.
+The cluster profile resources also specify packs for each of their layers using the [_pack_](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile#nested-schema-for-pack) nested schema. Check out the [Deploy a Custom Pack](../../registries-and-packs/deploy-pack.md) tutorial to learn more about creating your own packs.
 
 The **cluster_profiles.tf** file also contains 3 resources that have been commented out, one for each public cloud provider. They are named using the pattern `[cloud provider]-profile-3tier`. Uncomment the cluster profile resource for the cloud provider of your choice. This resource has the following key differences compared to the already defined cluster profiles.
 
@@ -526,14 +533,14 @@ resource "spectrocloud_cluster_profile" "azure-profile-3tier" {
 }
 ```
 
-This resource declares the version as **1.1.0**. The definition of the `hello-universe` pack has also been modified to use a different YAML file which uses an environment variable as part of its template. The `hello-universe-3tier.yaml` manifest has the following content. 
+This resource declares the version as **1.1.0**. The definition of the `hello-universe` pack has also been modified to use a different YAML file which uses an environment variable as part of its template. The `hello-universe-3tier.yaml` manifest has the following content.
 
 ```yaml {41,42,43} hideClipboard
 apiVersion: v1
 kind: Namespace
 metadata:
   name: hello-universe
---- 
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -542,9 +549,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
   selector:
     app: hello-universe
 ---
@@ -564,25 +571,25 @@ spec:
         app: hello-universe
     spec:
       containers:
-      - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.1.0
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-        env:
-          - name: API_URI
-            value: ${api_uri}
+        - name: hello-universe
+          image: ghcr.io/spectrocloud/hello-universe:1.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_URI
+              value: ${api_uri}
 ```
 
-The manifest deploys the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the *hello-universe* API server. Check out the [*hello-universe* readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the *hello-universe* application with an API Server.
+The manifest deploys the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for the _hello-universe_ API server. Check out the [_hello-universe_ readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to learn more about how to expand the capabilities of the _hello-universe_ application with an API Server.
 
-Find the command output by the `terraform apply` step in the [Set Up Clusters](#set-up-clusters) section. Issue the command to find the external IP address of the `hello-universe-api-service` that you deployed. It has the following form on Azure, but may be different for your chosen cloud provider. 
+Find the command output by the `terraform apply` step in the [Set Up Clusters](#set-up-clusters) section. Issue the command to find the external IP address of the `hello-universe-api-service` that you deployed. It has the following form on Azure, but may be different for your chosen cloud provider.
 
 ```shell
 export KUBECONFIG=$(pwd)/azure-cluster-api.kubeconfig && kubectl get service hello-universe-api-service --namespace hello-universe-api --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
-Open your **terraform.tfvars** file in the code editor of your choice and find the section for your chosen cloud provider. Each cloud provider has a variable named using the pattern `[cloud provider]-hello-universe-api-uri`. Replace the `REPLACE_ME` placeholder with the external IP address of your `hello-universe-api-service`. 
+Open your **terraform.tfvars** file in the code editor of your choice and find the section for your chosen cloud provider. Each cloud provider has a variable named using the pattern `[cloud provider]-hello-universe-api-uri`. Replace the `REPLACE_ME` placeholder with the external IP address of your `hello-universe-api-service`.
 
 ```hcl hideClipboard
 azure-hello-universe-api-uri = "http://REPLACE_ME:3000" # Set IP address of hello-universe API once deployed
@@ -590,14 +597,14 @@ azure-hello-universe-api-uri = "http://REPLACE_ME:3000" # Set IP address of hell
 
 Open your **clusters.tf** file in the code editor of your choice and find the section for your chosen cloud provider. This file contains the host cluster definitions that Terraform uses to deploy to Palette. The following six resources are defined in this file.
 
-| Name | Description | Terraform resource | Platform |
-|----- |-------------|--------------------|----------|
-| `aws-cluster` | Cluster for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws) | AWS |
-| `aws-cluster-api` | Cluster for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws) | AWS |
-| `azure-cluster` | Cluster for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure)| Azure |
-| `azure-cluster-api` | Cluster for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure)| Azure |
-| `gcp-cluster` | Cluster for [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp) | GCP |
-| `gcp-cluster-api` | Cluster for [*hello-universe-api*](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp) | GCP |
+| Name                | Description                                                                                         | Terraform resource                                                                                                                    | Platform |
+| ------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `aws-cluster`       | Cluster for [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.         | [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)     | AWS      |
+| `aws-cluster-api`   | Cluster for [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)     | AWS      |
+| `azure-cluster`     | Cluster for [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.         | [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure) | Azure    |
+| `azure-cluster-api` | Cluster for [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure) | Azure    |
+| `gcp-cluster`       | Cluster for [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.         | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)     | GCP      |
+| `gcp-cluster-api`   | Cluster for [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) application. | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)     | GCP      |
 
 The cluster terraform resource provides all the definitions Palette requires to create it. The `cluster_profile` nested schema specifies which cluster profile should be used to deploy the host cluster. The cluster profile currently configured to be used is the **1.0.0** version of the cluster profile.
 
@@ -650,7 +657,7 @@ resource "spectrocloud_cluster_azure" "azure-cluster" {
 }
 ```
 
-Comment out the current cluster profile `id` and uncomment the line below it. This configures the cluster to use the cluster profile named `[cloud provider]-profile-3tier` with version **1.1.0**. The following snippet shows the expected configuration on Azure.  
+Comment out the current cluster profile `id` and uncomment the line below it. This configures the cluster to use the cluster profile named `[cloud provider]-profile-3tier` with version **1.1.0**. The following snippet shows the expected configuration on Azure.
 
 ```hcl hideClipboard
   cluster_profile {
@@ -666,6 +673,7 @@ terraform plan
 ```
 
 Output:
+
 ```shell
 Plan: 2 to add, 4 to change, 1 to destroy.
 ```
@@ -680,7 +688,7 @@ terraform apply -auto-approve
 
 Switch back to [Palette](https://console.spectrocloud.com) in the browser.
 
-Navigate to the left **Main Menu** and select **Profiles**. Find the cluster profile that with the name pattern `tf-[cloud provider]-profile` corresponding to your cloud provider. Select it to view its details. 
+Navigate to the left **Main Menu** and select **Profiles**. Find the cluster profile that with the name pattern `tf-[cloud provider]-profile` corresponding to your cloud provider. Select it to view its details.
 
 The version drop-down displays the two versions of this profile. Select option **1.1.0**. The overview of this version displays the profile layers of this cluster profile and shows that it is in use on one cluster.
 
@@ -696,6 +704,7 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 </Tabs>
 
 ## Roll back Cluster Profiles
+
 One of the key advantages of using cluster profile versions is that they make it possible to maintain a copy of previously known working states. The ability to roll back to a previously working cluster profile in one action shortens the time to recovery in the event of an incident.
 
 The process to roll back to a previous version is identical to the process for applying a new version.
@@ -705,7 +714,7 @@ The process to roll back to a previous version is identical to the process for a
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the **service:hello-universe-frontend** tag. Select it to view its **Overview** tab.
 
-Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section, [Version Cluster Profiles](#version-cluster-profiles). Click on **Save** to confirm your changes. 
+Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section, [Version Cluster Profiles](#version-cluster-profiles). Click on **Save** to confirm your changes.
 
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
 
@@ -717,7 +726,7 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 
 Open your **clusters.tf** file in the code editor of your choice and find the section for your chosen cloud provider. Find the resource corresponding to your cluster named with the pattern `[cloud provider]-cluster`.
 
-Swap the `id` defined in the `cluster_profile` nested schema. This configures the cluster to use the cluster profile named `[cloud provider]-profile` with version **1.0.0**. The following snippet shows the expected configuration on Azure. 
+Swap the `id` defined in the `cluster_profile` nested schema. This configures the cluster to use the cluster profile named `[cloud provider]-profile` with version **1.0.0**. The following snippet shows the expected configuration on Azure.
 
 ```hcl hideClipboard
   cluster_profile {
@@ -733,6 +742,7 @@ terraform plan
 ```
 
 Output:
+
 ```shell
 Plan: 1 to add, 5 to change, 1 to destroy.
 ```
@@ -755,6 +765,7 @@ Click on the URL for port **:8080** to access the Hello Universe application. Th
 </Tabs>
 
 ## Pending Updates
+
 Cluster profiles can also be updated in place, without the need to create a new cluster profile version. Palette monitors the state of your clusters and notifies you when updates are available for your host clusters. You may then choose to apply your changes at a convenient time.
 
 The previous state of the cluster profile will not be saved once it is overwritten.
@@ -764,7 +775,7 @@ The previous state of the cluster profile will not be saved once it is overwritt
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the `replicas` field to `1` on line `26`. Click on **Save**. The editor closes. 
+Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the `replicas` field to `1` on line `26`. Click on **Save**. The editor closes.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided for the single cluster over its cluster profile and begins making the appropriate changes.
 
@@ -772,9 +783,9 @@ Once these changes are complete, select the **Workloads** tab. Then, select the 
 
 One replica of the **hello-universe-deployment** is available, instead of the two specified by your cluster profile. Your override has been successfully applied.
 
-Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile corresponding to your *hello-universe-frontend* cluster. Its name follows the pattern `[cloud provider]-profile`. 
+Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile corresponding to your _hello-universe-frontend_ cluster. Its name follows the pattern `[cloud provider]-profile`.
 
-Click on it to view its details. Select **1.0.0** in the version dropdown. 
+Click on it to view its details. Select **1.0.0** in the version dropdown.
 
 Select the **hello-universe** manifest. The editor appears. Change the `replicas` field to `3` on line `26`. Click on **Confirm Updates**. The editor closes.
 
@@ -805,18 +816,18 @@ Switch back to [Palette](https://console.spectrocloud.com) in the browser.
 
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
-Click on the **Profile** tab. Select the **hello-universe** manifest. Change the `replicas` field to `1` on line `26`. Click on **Save**. The editor closes. 
+Click on the **Profile** tab. Select the **hello-universe** manifest. Change the `replicas` field to `1` on line `26`. Click on **Save**. The editor closes.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided for the single cluster over its cluster profile and begins making the appropriate changes.
 
 Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-One replica of the **hello-universe-deployment**  is available, instead of the two specified by your cluster profile. Your override has been successfully applied.
+One replica of the **hello-universe-deployment** is available, instead of the two specified by your cluster profile. Your override has been successfully applied.
 
-Open the **hello-universe.yaml** file in the **manifests** folder in the code editor of your choice. Change the value of the `replicas` field on line `26` to the value `3`. 
+Open the **hello-universe.yaml** file in the **manifests** folder in the code editor of your choice. Change the value of the `replicas` field on line `26` to the value `3`.
 
-```hcl 
-  replicas: 3 
+```hcl
+  replicas: 3
 ```
 
 Next, issue the `plan` command in your terminal to preview any changes.
@@ -826,6 +837,7 @@ terraform plan
 ```
 
 Output:
+
 ```shell
 Plan: 1 to add, 5 to change, 1 to destroy.
 ```
@@ -848,7 +860,6 @@ Select this cluster to open its **Overview** tab. Click on **Updates Available**
 
 ![Image that shows the Updates Available button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.png)
 
-
 A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the `replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
 
 ![Image that shows the available updates dialog ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_tf-available-updates-dialog.png)
@@ -863,6 +874,7 @@ Three replicas of the **hello-universe-deployment** are available. The changes i
 </Tabs>
 
 ## Cleanup
+
 Use the following steps to clean up the resources you created for the tutorial.
 
 <Tabs groupId="tutorial">
@@ -874,11 +886,11 @@ Select one of the clusters to view its **Overview** tab.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-A dialog appears. Input the cluster name to confirm the delete action. 
+A dialog appears. Input the cluster name to confirm the delete action.
 
 The deletion process takes several minutes to complete. Repeat the same steps for the other cluster.
 
-Once the clusters are deleted, navigate to the left **Main Menu** and click on **Profiles**. 
+Once the clusters are deleted, navigate to the left **Main Menu** and click on **Profiles**.
 
 Find the cluster profile you created named with the pattern `[cloud provider]-profile`. Click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile. Make sure you delete both versions of this profile.
 
@@ -895,9 +907,11 @@ terraform destroy --auto-approve
 ```
 
 Output:
+
 ```shell
 Destroy complete! Resources: 7 destroyed.
 ```
+
 </TabItem>
 </Tabs>
 
@@ -905,7 +919,7 @@ Destroy complete! Resources: 7 destroyed.
 
 In this tutorial, you created two clusters and cluster profiles. After the clusters deployed to your chosen cloud provider, you updated one cluster profile in through three different methods: create a new cluster profile version, update a cluster profile in place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a three-tier application with a REST API backend server.
 
-Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters. They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or rolling back workloads across your environments. 
+Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters. They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or rolling back workloads across your environments.
 
 To learn more about Palette, we encourage you to check out the reference resources below.
 
@@ -919,4 +933,4 @@ To learn more about Palette, we encourage you to check out the reference resourc
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 
-- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api) 
+- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api)

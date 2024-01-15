@@ -1,14 +1,13 @@
 on:
   schedule:
     # Every Monday at 6 am
-    - cron: '0 6 * * 1'
+    - cron: "0 6 * * 1"
   workflow_dispatch:
-  
-  
+
 concurrency:
   group: url-${{ github.ref }}
   cancel-in-progress: true
-  
+
 name: Broken URL check
 jobs:
   markdown-link-check:
@@ -28,7 +27,7 @@ jobs:
 
       - name: URL Checker
         run: make verify-url-links-ci
-  
+
       - name: Post Comment
         run: |
           cd scripts

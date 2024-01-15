@@ -8,7 +8,6 @@ hide_table_of_contents: false
 tags: ["vertex", "self-hosted", "airgap"]
 keywords: ["self-hosted", "vertex"]
 ---
- 
 
 Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette VerteX installation.
 
@@ -36,15 +35,13 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully.
 
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
+- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry.
 
 - [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
 - [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are installing VerteX.
 
 </TabItem>
-
-
 
 <TabItem label="VMware vSphere" value="vsphere">
 
@@ -64,23 +61,22 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Created a private repository with the name `spectro-packs` in your OCI registry. You can use a different name if you prefer.
 
-- [ ] Created a public repository with the name `spectro-images` in your OCI registry.  You can use a different name if you prefer.
+- [ ] Created a public repository with the name `spectro-images` in your OCI registry. You can use a different name if you prefer.
 
 - [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
 
 - [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
- 
+
 - [ ] Set the required environment variables for the airgap setup binary. Refer to step 8 in the [Preparation](#preperation) section for information.
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully
 
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
+- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry.
 
 - [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
 - [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the vSphere environment you are installing VerteX.
 
 </TabItem>
-
 
 </Tabs>

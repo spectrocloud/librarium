@@ -9,13 +9,11 @@ tags: ["clusters", "imported clusters"]
 
 When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You can choose between read-only mode or full permission. Refer to the [Imported Clusters](imported-clusters.md#import-modes) reference page to learn more about each mode.
 
-
 Select the mode you want to use when importing a cluster into Palette.
 
 - [Full Permissions](#full-permissions)
 
 - [Read-Only Mode](#read-only-mode)
-
 
 ## Full Permissions
 
@@ -23,42 +21,32 @@ Select the mode you want to use when importing a cluster into Palette.
 
 - Kubernetes version >= 1.19.X
 
-
 - Ensure your environment has network access to Palette SaaS or your self-hosted Palette instance.
-
 
 - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
-
-- Access to your cluster environment through kubectl. 
-
+- Access to your cluster environment through kubectl.
 
 ### Import a Cluster
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-
 2. Navigate to the left **Main Menu** and select **Clusters**.
-
 
 3. Click on **Add New Cluster** and select **Import Cluster** in the pop-up box.
 
-
 4. Fill out the required information and make your selections:
-   * Cluster Name - The name of the cluster you want to import.
-   * Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment list doesn't contain your specific environment, but be aware of the limitations with generic clusters.
-   * Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
-   * No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
+
+   - Cluster Name - The name of the cluster you want to import.
+   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment list doesn't contain your specific environment, but be aware of the limitations with generic clusters.
+   - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
+   - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
 
 5. Select **Full-permission mode** and click on **Create & Open Cluster Instance** to start the import.
-
-
-
 
 6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the right side of the screen. You will need to issue the following commands to complete the import process.
 
    <br />
-
 
    ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.png)
 
@@ -82,6 +70,7 @@ Select the mode you want to use when importing a cluster into Palette.
    ```
 
    Output
+
    ```hideClipboard shell
    namespace/cluster-6491d4a94c39ad82d3cc30ae created
    serviceaccount/cluster-management-agent created
@@ -108,21 +97,15 @@ Select the mode you want to use when importing a cluster into Palette.
 
 You now have imported a cluster into Palette with full permissions.
 
-
-
 ### Validate
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-
 2. Navigate to the left **Main Menu** and select **Clusters**.
-
 
 3. Select your imported cluster from the cluster list.
 
-
 4. Review the **Cluster Status** row from the cluster details view. A successful cluster import will have the cluster status **Running**.
-
 
 ## Read-only Mode
 
@@ -130,39 +113,32 @@ You now have imported a cluster into Palette with full permissions.
 
 - Kubernetes version >= 1.19.X
 
-
 - Ensure your environment has network access to Palette SaaS or your self-hosted Palette instance.
-
 
 - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
-
-- Access to your cluster environment through kubectl. 
+- Access to your cluster environment through kubectl.
 
 ### Import a Cluster
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-
 2. Navigate to the left **Main Menu** and select **Clusters**.
-
 
 3. Click on **Add New Cluster** and select **Import Cluster** in the pop-up box.
 
-
 4. Fill out the required information and make the proper selections:
-   * Cluster Name - The name of the cluster you want to import.
-   * Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment list doesn't contain your specific environment but be aware of the limitations with generic clusters.
-   * Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
-   * No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
+
+   - Cluster Name - The name of the cluster you want to import.
+   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment list doesn't contain your specific environment but be aware of the limitations with generic clusters.
+   - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
+   - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
 
 5. Select **Read-only mode** and click on **Create & Open Cluster Instance** to start the import action.
 
-
-6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the right-hand side of the screen. You will need to issue the following commands to complete the import process. 
+6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the right-hand side of the screen. You will need to issue the following commands to complete the import process.
 
    <br />
-
 
    ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.png)
 
@@ -177,8 +153,7 @@ You now have imported a cluster into Palette with full permissions.
    helm install my-release bitnami/metrics-server
    ```
 
-
-8. To install the Palette agent, issue the command displayed in the cluster details page  **Install the** read-only agent** section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains the assigned cluster ID. Below is an example output of the install command.
+8. To install the Palette agent, issue the command displayed in the cluster details page **Install the** read-only agent\*\* section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains the assigned cluster ID. Below is an example output of the install command.
 
    <br />
 
@@ -187,6 +162,7 @@ You now have imported a cluster into Palette with full permissions.
    ```
 
    Output
+
    ```hideClipboard shell
    namespace/cluster-6491d4a94c39ad82d3cc30ae created
    serviceaccount/cluster-management-agent created
@@ -211,25 +187,17 @@ You now have imported a cluster into Palette with full permissions.
 
    <br />
 
-
 You now have imported a cluster into Palette in read-only mode. Keep in mind that a cluster imported in read-only mode has limited capabilities. You can migrate to full permissions anytime by clicking **Migrate To Full Permissions**.
-
-
 
 ### Validate
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-
 2. Navigate to the left **Main Menu** and select **Clusters**.
-
 
 3. Select your imported cluster from the cluster list.
 
-
 4. Review the **Cluster Status** row from the cluster details view. A successful cluster import displays cluster status as **Running**.
-
-
 
 ## Next Steps
 

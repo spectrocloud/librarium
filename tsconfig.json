@@ -26,7 +26,9 @@
       ],
       "@site/src/*": ["src/*"],
       "@site/static/*": ["static/*"],
-      "@theme-original/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],
+      "@theme-original/*": [
+        "./node_modules/@docusaurus/theme-classic/lib/theme/*"
+      ],
       "@theme-init/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],
       "@theme/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],
       "@docusaurus/*": ["./node_modules/@docusaurus/core/src/client/exports/*"],

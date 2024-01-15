@@ -12,13 +12,15 @@ describe("CategorySelector Component", () => {
         categories={categories}
         selected="all"
         selectCategory={mockSelectCategory}
-      />
+      />,
     );
   });
 
   it("renders all categories", () => {
     categories.forEach((category) => {
-      expect(screen.getByText(category.split("_").join(" "))).toBeInTheDocument();
+      expect(
+        screen.getByText(category.split("_").join(" ")),
+      ).toBeInTheDocument();
     });
   });
 

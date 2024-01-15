@@ -53,22 +53,30 @@ describe("FilteredTable Tests", () => {
   });
 
   it("should hide loader and display packs after API call", async () => {
-    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: mockPacks }));
+    fetchMock.mockResponseOnce(
+      JSON.stringify({ dateCreated: "2022-08-25", Packs: mockPacks }),
+    );
     const { container } = render(<FilteredTable />);
 
-    await waitFor(() => expect(container.querySelector(".loader")).not.toBeInTheDocument());
+    await waitFor(() =>
+      expect(container.querySelector(".loader")).not.toBeInTheDocument(),
+    );
     expect(screen.getByText("Alpine")).toBeInTheDocument();
     expect(screen.getByText("Amazon EKS optimized Linux")).toBeInTheDocument();
   });
 
   it("should filter packs based on search", async () => {
-    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: mockPacks }));
+    fetchMock.mockResponseOnce(
+      JSON.stringify({ dateCreated: "2022-08-25", Packs: mockPacks }),
+    );
     render(<FilteredTable />);
 
     await waitFor(() => screen.getByText("Alpine"));
 
     // Fire the event to change the search textbox
-    fireEvent.change(screen.getByRole("textbox"), { target: { value: "Amazon" } });
+    fireEvent.change(screen.getByRole("textbox"), {
+      target: { value: "Amazon" },
+    });
 
     await new Promise((resolve) => setTimeout(resolve, 800));
 
@@ -83,7 +91,9 @@ describe("FilteredTable Tests", () => {
     render(<FilteredTable />);
 
     await waitFor(() => {
-      expect(screen.getByText("Failed to load Deprecated Packs")).toBeInTheDocument();
+      expect(
+        screen.getByText("Failed to load Deprecated Packs"),
+      ).toBeInTheDocument();
     });
   });
 
@@ -91,33 +101,31 @@ describe("FilteredTable Tests", () => {
     const customMockPacks = [
       {
         ...mockPacks[0],
-        cloudTypesFormatted: "eks,vsphere"
-      }
+        cloudTypesFormatted: "eks,vsphere",
+      },
     ];
 
-    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks }));
+    fetchMock.mockResponseOnce(
+      JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks }),
+    );
     render(<FilteredTable />);
 
     await waitFor(() => screen.getByText("Alpine"));
-    
+
     expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
   });
-
 });
 
-
-describe('toTitleCase', () => {
-  it('converts a dasherized string to title case', () => {
-      expect(toTitleCase("my-example-string")).toBe("My Example String");
+describe("toTitleCase", () => {
+  it("converts a dasherized string to title case", () => {
+    expect(toTitleCase("my-example-string")).toBe("My Example String");
   });
 
-  it('converts a camelCase string to title case', () => {
-      expect(toTitleCase("myExampleString")).toBe("My Example String");
+  it("converts a camelCase string to title case", () => {
+    expect(toTitleCase("myExampleString")).toBe("My Example String");
   });
 
-
-  it('converts aws to AWS in a string', () => {
-      expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
+  it("converts aws to AWS in a string", () => {
+    expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
   });
-
 });

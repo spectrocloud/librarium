@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: {{ .Chart.Name }}
+  name: { { .Chart.Name } }
   labels:
-    name: {{ .Chart.Name }}
+    name: { { .Chart.Name } }

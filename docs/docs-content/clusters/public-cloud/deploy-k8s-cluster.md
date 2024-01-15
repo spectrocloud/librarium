@@ -15,11 +15,11 @@ Palette offers profile-based management for Kubernetes, enabling consistency, re
 
 After defining a cluster profile, you can provide the cloud environment details, the control plane, and worker node configurations to deploy a host cluster.
 
-This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You can deploy a cluster using either Palette or Terraform. You will learn about *Cluster Mode* and *Cluster Profiles* and how these components enable you to deploy customized applications to Kubernetes with minimal effort.
+This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You can deploy a cluster using either Palette or Terraform. You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy customized applications to Kubernetes with minimal effort.
 
-## Architecture 
+## Architecture
 
-As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: control plane nodes, often called *master nodes*, and *worker nodes* where you will deploy applications. The result is a host cluster that Palette manages.
+As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: control plane nodes, often called _master nodes_, and _worker nodes_ where you will deploy applications. The result is a host cluster that Palette manages.
 
 ![A view of Palette managing the Kubernetes lifecycle](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.png)
 
@@ -35,10 +35,7 @@ Select the workflow you want to learn more about.
 
 <br />
 
-
-
 ## UI Workflow
-
 
 You can create and manage clusters directly from the Palette dashboard. Use the following steps to learn how to deploy a host cluster to multiple cloud providers.
 
@@ -47,6 +44,7 @@ You can create and manage clusters directly from the Palette dashboard. Use the 
 To complete this tutorial, you will need the following.
 
 - A public cloud account from one of these providers:
+
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
   - [GCP](https://cloud.google.com/docs/get-started)
@@ -54,6 +52,7 @@ To complete this tutorial, you will need the following.
   <br />
 
 - Register the cloud account in Palette. The following resources provide additional guidance.
+
   - [Register and Manage AWS Accounts](aws/add-aws-accounts.md)
   - [Register and Manage Azure Cloud Accounts](azure/azure-cloud.md)
   - [Register and Manage GCP Accounts](gcp/add-gcp-accounts.md)
@@ -77,11 +76,10 @@ The following steps will guide you through deploying the cluster infrastructure.
 
 [Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
- - Operating System (OS)
- - Kubernetes distribution and version
- - Network Container Interface (CNI)
- - Storage Container Interface (CSI)
- 
+- Operating System (OS)
+- Kubernetes distribution and version
+- Network Container Interface (CNI)
+- Storage Container Interface (CSI)
 
 You customize profiles by choosing the type of component and version. In this way, profiles offer a reproducible way to create clusters.
 
@@ -101,13 +99,12 @@ Every pack requires you to select the **Pack Type**, **Registry**, and **Pack Na
 
 For this tutorial, use the following packs:
 
-| Pack Name          | Version   | Layer              |
-|--------------------|-----------|--------------------|
-| ubuntu-aws LTS     | 22.4.x    | Operating System   |
-| Kubernetes         | 1.27.x  | Kubernetes         |
-| cni-calico         | 3.26.x    | Network            |
-| csi-aws-ebs        | 1.22.x | Storage            |
-
+| Pack Name      | Version | Layer            |
+| -------------- | ------- | ---------------- |
+| ubuntu-aws LTS | 22.4.x  | Operating System |
+| Kubernetes     | 1.27.x  | Kubernetes       |
+| cni-calico     | 3.26.x  | Network          |
+| csi-aws-ebs    | 1.22.x  | Storage          |
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
@@ -115,13 +112,11 @@ Click on **Confirm** after you have completed filling out all the core layers.
 
 ![A view of the cluster profile stack](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_clusters_parameters.png)
 
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to create the cluster profile. 
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to create the cluster profile.
 
-
-You can modify cluster profiles after you create them by adding, removing, or editing the layers. 
+You can modify cluster profiles after you create them by adding, removing, or editing the layers.
 
 <br />
-
 
 #### Create a New Cluster
 
@@ -133,7 +128,6 @@ Palette will prompt you to either deploy a new cluster or import an existing one
 
 <br />
 
-
 #### Basic information
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
@@ -142,13 +136,11 @@ In the **Basic information** section, insert the general information about the c
 
 <br />
 
-
 #### Cluster Profile
 
 A list is displayed of available profiles you can choose to deploy to AWS. Select the cluster profile you created earlier and click on **Next**.
 
 <br />
-
 
 #### Parameters
 
@@ -160,35 +152,29 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 
 <br />
 
-
 #### Cluster Configuration
 
-The **Cluster config** section allows you to select the **Region** in which to deploy the host cluster and specify other options such as the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you have selected the **Region** and your **SSH Key Pair Name**, click on **Next**. 
+The **Cluster config** section allows you to select the **Region** in which to deploy the host cluster and specify other options such as the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you have selected the **Region** and your **SSH Key Pair Name**, click on **Next**.
 
 #### Nodes Configuration
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the host cluster. 
-
+The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the host cluster.
 
 Before you proceed to next section, review the following parameters. <br /> <br />
-- **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for the master pool and two for the worker pool.
 
+- **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for the master pool and two for the worker pool.
 
 - **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
 
-
-- **Instance Type** -  Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select `m4.2xlarge`.
-
+- **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select `m4.2xlarge`.
 
 - **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an availability zone.
-
-
 
 - **Disk size** - Set the disk size to **60 GiB**.
 
 <br />
 
-- **Instance Option** -  This option allows you to choose [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) or [spot instance](https://aws.amazon.com/ec2/spot/) for worker nodes. Select **On Demand**.
+- **Instance Option** - This option allows you to choose [on-demand instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html) or [spot instance](https://aws.amazon.com/ec2/spot/) for worker nodes. Select **On Demand**.
 
 <br />
 
@@ -198,15 +184,13 @@ Select **Next** to proceed with the cluster deployment.
 
 <br />
 
-
 #### Settings
 
 In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans, manage backups, add role-based access control (RBAC) bindings, and more.
 
-For this tutorial, you can use the default settings. Click on **Validate** to continue. 
+For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 <br />
-
 
 #### Review
 
@@ -214,10 +198,9 @@ The **Review** section allows you to review the cluster configuration prior to d
 
 ![Configuration overview of newly created AWS cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_profile_cluster_profile_review.png)
 
+<br />
 
-<br /> 
-
-Navigate to the left **Main Menu** and select **Clusters**. 
+Navigate to the left **Main Menu** and select **Clusters**.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_aws_create_cluster.png)
 
@@ -227,19 +210,19 @@ Click on your cluster to review its details such as deployment status, event log
 
 ![A view of the cluster details page](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_details.png)
 
-
 </TabItem>
 <TabItem label="Azure" value="azure-ui">
 
 #### Create Cluster Profile (Azure)
 
 [Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
- - Operating System (OS)
- - Kubernetes distribution and version 
- - Network Container Interface (CNI)
- - Storage Container Interface (CSI)
- 
-A cluster profile contains these core and additional add-on layers, such as security, monitoring, logging, etc.  
+
+- Operating System (OS)
+- Kubernetes distribution and version
+- Network Container Interface (CNI)
+- Storage Container Interface (CSI)
+
+A cluster profile contains these core and additional add-on layers, such as security, monitoring, logging, etc.
 
 You customize profiles by choosing the type of component and version. In this way, profiles offer a reproducible way to create clusters.
 
@@ -250,7 +233,7 @@ You can view the list of available cluster profiles. To create a cluster profile
 
 Follow the wizard to create a new profile.
 
-In the **Basic Information** section, assign the name **azure-profile**, a brief profile description, select the type as **Full**, and assign the tag  **env:azure**. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
+In the **Basic Information** section, assign the name **azure-profile**, a brief profile description, select the type as **Full**, and assign the tag **env:azure**. You can leave the version empty if you want to. Just be aware that the version defaults to **1.0.0**. Click on **Next**.
 
 **Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select **Azure** and click on **Next**.
 
@@ -259,13 +242,12 @@ Every pack requires you to select the **Pack Type**, **Registry**, and **Pack Na
 
 For this tutorial, use the following packs:
 
-| Pack Name          | Version                                          | Layer              |
-|--------------------|--------------------------------------------------|--------------------|
-| ubuntu-azure LTS   | 22.4.x    | Operating System   |
-| Kubernetes         | 1.27.x     | Kubernetes         |
-| cni-calico-azure   | 3.26.x                                 | Network            |
-| Azure Disk         | 1.28.x       | Storage            |
-
+| Pack Name        | Version | Layer            |
+| ---------------- | ------- | ---------------- |
+| ubuntu-azure LTS | 22.4.x  | Operating System |
+| Kubernetes       | 1.27.x  | Kubernetes       |
+| cni-calico-azure | 3.26.x  | Network          |
+| Azure Disk       | 1.28.x  | Storage          |
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
@@ -273,13 +255,11 @@ Click on **Confirm** after you have completed filling out all the core layers.
 
 ![Azure cluster profile overview page](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_profile_stack.png)
 
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to finish creating the cluster profile. 
+The review section gives an overview of the cluster profile configuration you selected. Click on **Finish Configuration** to finish creating the cluster profile.
 
-
-You can modify cluster profiles after you create them by adding, removing, or editing the layers. 
+You can modify cluster profiles after you create them by adding, removing, or editing the layers.
 
 <br />
-
 
 ### Create a New Cluster
 
@@ -291,7 +271,6 @@ Click on **Deploy New Cluster** to access the cluster deployment wizard. Select 
 
 <br />
 
-
 #### Basic information
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name, Description, Tags, and Cloud account. Click on **Next**.
@@ -299,7 +278,6 @@ In the **Basic information** section, insert the general information about the c
 ![Palette clusters basic information](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_clusters_basic_info.png)
 
 <br />
-
 
 #### Cluster Profile
 
@@ -317,13 +295,11 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 
 #### Cluster Configuration
 
-
 The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage account**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](../cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
-
 
 <br />
 
-When you are done selecting a **Subscription**, **Region**, **Resource Group**, **Storage account** and **SSH Key**, click on **Next**. 
+When you are done selecting a **Subscription**, **Region**, **Resource Group**, **Storage account** and **SSH Key**, click on **Next**.
 <br />
 
 #### Nodes Configuration
@@ -336,24 +312,19 @@ Before you proceed to next section, review the following parameters.
 
 <br />
 
-
 **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for both the master and worker pools.
 
 **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
 
-
 - **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select **Standard_A8_v2**.
 
-
 - **Managed disk** - Used to select the storage class. Select **Standard LRS** and set the disk size to **60**.
-
 
 - **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an availability zone.
 
 ![Palette clusters nodes configuration](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_cluster_nodes_config.png)
 
 <br />
-
 
 #### Settings
 
@@ -363,13 +334,11 @@ For this tutorial, you can use the default settings. Click on **Validate** to co
 
 <br />
 
-
 #### Review
 
 The Review section allows you to review the cluster configuration before deploying the cluster. Review all the settings and click on **Finish Configuration** to deploy the cluster.
 
 ![Configuration overview of newly created Azure cluster](/tutorials/deploy-clusters/azure/clusters_public-cloud_deploy-k8s-cluster_profile_review.png)
-
 
 <br />
 
@@ -389,13 +358,13 @@ Click on your cluster to review details such as deployment status, event logs, c
 <TabItem label="Google Cloud" value="gcp-ui">
 
 #### Create Cluster Profile (GCP)
+
 [Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are templates you create with the following core layers and any add-on layers such as security, monitoring, logging, and more.
 
- - Operating System (OS)
- - Kubernetes distribution and version
- - Network Container Interface (CNI)
- - Storage Container Interface (CSI)
- 
+- Operating System (OS)
+- Kubernetes distribution and version
+- Network Container Interface (CNI)
+- Storage Container Interface (CSI)
 
 You customize profiles by choosing the type of component and version. In this way, profiles offer a reproducible way to create clusters.
 
@@ -412,16 +381,14 @@ Cloud Type allows you to choose the infrastructure provider with which this clus
 
 Profile Layers, this is the main configuration step where you specify the packs that compose the profile. You can choose from four required infrastructure packs and several optional add-on packs. Every pack requires you to select the Pack Type, Registry, and Pack Name.
 
-
 For this tutorial, use the following packs:
 
-| Pack Name          | Version                  | Layer              |
-|--------------------|--------------------------|--------------------|
-| ubuntu-gcp LTS     | 22.4.x                   | Operating System   |
-| Kubernetes         | 1.27.x                   | Kubernetes         |
-| cni-calico         | 3.26.x                   | Network            |
-| csi-gcp-driver     | 1.8.x                    | Storage            |
-
+| Pack Name      | Version | Layer            |
+| -------------- | ------- | ---------------- |
+| ubuntu-gcp LTS | 22.4.x  | Operating System |
+| Kubernetes     | 1.27.x  | Kubernetes       |
+| cni-calico     | 3.26.x  | Network          |
+| csi-gcp-driver | 1.8.x   | Storage          |
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
@@ -443,7 +410,6 @@ Click on **Deploy New Cluster** to access the cluster deployment wizard. Select 
 
 <br />
 
-
 #### Basic information
 
 In the **Basic information** section, insert the general information about the cluster, such as the **Cluster name**, **Description**, **Tags**, and **Cloud account**. Click on **Next**.
@@ -452,7 +418,6 @@ In the **Basic information** section, insert the general information about the c
 
 <br />
 
-
 #### Cluster Profile
 
 A list is displayed of available profiles you can choose to deploy to GCP. Select the cluster profile you created earlier and click on **Next**.
@@ -460,7 +425,6 @@ A list is displayed of available profiles you can choose to deploy to GCP. Selec
 ![Palette clusters basic information](/tutorials/deploy-clusters/gcp/clusters_public-cloud_deploy-k8s-cluster_cluster_gcp_profile.png)
 
 <br />
-
 
 #### Parameters
 
@@ -472,15 +436,14 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 
 <br />
 
-
 #### Cluster Configuration
 
 The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys) guide for information about uploading an SSH key.
 
-
 <br />
 
-After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**. 
+After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**.
+
 ### Nodes Configuration
 
 The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data plane (worker nodes) of the host cluster.
@@ -490,15 +453,14 @@ Before you proceed to the next section, review the following parameters.
 Refer to the [Node Pool](../cluster-management/node-pool.md) guide for a list and description of parameters.
 
 Before you proceed to next section, review the following parameters.
+
 - **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool. For this tutorial, set the count to one for the master pool and two for the worker pool.
 
 - **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot instances are used as worker nodes. You can check this box if you want to.
 
-
 - **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and hourly cost of the instance. Select **n1-standard-4**.
 
 - **Disk size** - Set the disk size to **60**.
-
 
 - **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an availability zone.
 
@@ -507,7 +469,6 @@ Before you proceed to next section, review the following parameters.
 <br />
 
 Select **Next** to proceed with the cluster deployment.
-
 
 #### Settings
 
@@ -538,7 +499,6 @@ Click on your cluster to review details such as deployment status, event logs, c
 </TabItem>
 </Tabs>
 
-
 The cluster deployment process can take 15 to 30 min. The deployment time varies depending on the cloud provider, cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Click on the **Events** tab to view the log.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
@@ -548,7 +508,6 @@ The cluster deployment process can take 15 to 30 min. The deployment time varies
 While you wait for the cluster deployment process to complete, feel free to check out a video where we discuss the growing pains of using Kubernetes and how Palette can help your address these pain points.
 
 <br />
-
 
 <YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
 
@@ -568,8 +527,7 @@ Click on **Add Manifest** at the top of the page and fill out the following inpu
 
 - **Layer name** - The name of the layer. Assign the name **application**.
 
-
-- **Manifests**  - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the internal manifest and click on the blue button  An empty editor will be displayed on the right side of the screen.
+- **Manifests** - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the internal manifest and click on the blue button An empty editor will be displayed on the right side of the screen.
 
 ![Screenshot of unopened manifest editor](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest_blue_btn.png)
 
@@ -587,9 +545,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
   selector:
     app: hello-universe
 ---
@@ -608,14 +566,14 @@ spec:
         app: hello-universe
     spec:
       containers:
-      - name: hello-universe
-        image: ghcr.io/spectrocloud/hello-universe:1.1.0
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
+        - name: hello-universe
+          image: ghcr.io/spectrocloud/hello-universe:1.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
 ```
 
-The code snippet you added will deploy the [*hello-universe*](https://github.com/spectrocloud/hello-universe) application. You may have noticed that the code snippet you added is a Kubernetes configuration. Manifest files are a method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes configuration to a manifest file.
+The code snippet you added will deploy the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application. You may have noticed that the code snippet you added is a Kubernetes configuration. Manifest files are a method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes configuration to a manifest file.
 
 ![Screenshot of manifest in the editor](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_manifest.png)
 
@@ -625,19 +583,15 @@ Click on **Confirm & Create** to save the manifest. Click on **Save Changes** to
 
 <br />
 
-
 #### Deployment
 
 Navigate to the left **Main Menu** and select **Clusters**. Click on the host cluster you deployed to open its details page.
 
-
-On the top right-hand corner is a blue button **Updates Available**. Click on the button to review the available updates. 
+On the top right-hand corner is a blue button **Updates Available**. Click on the button to review the available updates.
 
 ![The cluster details page with a view of pending updates](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_update_available.png)
 
-
 Compare the new changes against the previous cluster profile definition. The only difference is the addition of a manifest that will deploy the Hello Universe application.
-
 
 ![Available updates details](/tutorials/deploy-clusters/deploy_app/clusters_public-cloud_deploy-k8s-cluster_update_details_compare.png)
 
@@ -645,21 +599,17 @@ Click on **Confirm updates** to apply the updates to the host cluster. Depending
 
 <br />
 
-
 ### Verify the Application
 
-Navigate to the cluster's details page and verify you are in the **Overview** tab. When the application is deployed and ready for network traffic, indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the Hello Universe application. 
+Navigate to the cluster's details page and verify you are in the **Overview** tab. When the application is deployed and ready for network traffic, indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the Hello Universe application.
 
 ![Cluster details page with service URL highlighted](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_service_url.png)
 
-
 <br />
-
 
 :::caution
 
 It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
-
 
 :::
 
@@ -671,8 +621,7 @@ It can take up to three minutes for DNS to properly resolve the public load bala
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the counter and for a fun image change.
 
-You have deployed your first application to a cluster managed by Palette. Your first application is a single container application with no upstream dependencies. 
-
+You have deployed your first application to a cluster managed by Palette. Your first application is a single container application with no upstream dependencies.
 
 ### Cleanup
 
@@ -694,16 +643,13 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 
 :::
 
-
 <br />
 
-Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile. 
+Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile.
 
+## Terraform Workflow
 
-
-##  Terraform Workflow
-
-The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). Some notable reasons why you would want to utilize IaC are: 
+The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider enables you to create and manage Palette resources in a codified manner by leveraging Infrastructure as Code (IaC). Some notable reasons why you would want to utilize IaC are:
 
 - The ability to automate infrastructure.
 
@@ -711,9 +657,9 @@ The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectroclo
 
 - Self-documentation of infrastructure through code.
 
-- Allows tracking all infrastructure in a single source of truth. 
+- Allows tracking all infrastructure in a single source of truth.
 
-If want to become more familiar with Terraform, we recommend you check out the [Terraform](https://developer.hashicorp.com/terraform/intro) learning resources from HashiCorp. 
+If want to become more familiar with Terraform, we recommend you check out the [Terraform](https://developer.hashicorp.com/terraform/intro) learning resources from HashiCorp.
 
 <br />
 
@@ -736,14 +682,13 @@ To complete this tutorial, you will need the following items
 
 ### Set Up Local Environment
 
-You can clone the tutorials repository locally or follow along by downloading a Docker image that contains the tutorial code and all dependencies. 
+You can clone the tutorials repository locally or follow along by downloading a Docker image that contains the tutorial code and all dependencies.
 
 <br />
 
 :::caution
 
 If you choose to clone the repository instead of using the tutorial container make sure you have Terraform v1.4.0 or greater installed.
-
 
 :::
 
@@ -752,7 +697,6 @@ If you choose to clone the repository instead of using the tutorial container ma
 <Tabs>
 
 <TabItem label="Docker" value="docker">
-
 
 Ensure Docker Desktop on your local machine is available. Use the following command and ensure you receive an output displaying the version number.
 
@@ -784,11 +728,10 @@ Navigate to the tutorial code.
 cd /terraform/iaas-cluster-deployment-tf
 ```
 
-
 </TabItem>
 <TabItem label="Git" value="git">
 
-Open a terminal window and download the tutorial code from GitHub. 
+Open a terminal window and download the tutorial code from GitHub.
 
 <br />
 
@@ -822,16 +765,15 @@ cd terraform/iaas-cluster-deployment-tf/
 
 </TabItem>
 
-
 </Tabs>
 
 ---
 
 ### Create an API Key
 
-Before you can get started with the Terraform code, you need a Spectro Cloud API key. 
+Before you can get started with the Terraform code, you need a Spectro Cloud API key.
 
-To create an API key, log in to [Palette](https://console.spectrocloud.com) and click on the user **User Menu** and select **My API Keys**. 
+To create an API key, log in to [Palette](https://console.spectrocloud.com) and click on the user **User Menu** and select **My API Keys**.
 
 ![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.png)
 
@@ -848,8 +790,7 @@ export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 ```
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider requires credentials to interact with the Palette API.
-The Spectro Cloud Terraform provider will use the environment variable to authenticate with the Spectro Cloud API endpoint. 
-
+The Spectro Cloud Terraform provider will use the environment variable to authenticate with the Spectro Cloud API endpoint.
 
 ### Resources Review
 
@@ -859,21 +800,15 @@ To help you get started with Terraform, the tutorial code is structured to suppo
 
 - **providers.tf** - This file contains the Terraform providers that are used to support the deployment of the cluster.
 
-
 - **inputs.tf** - This file contains all the Terraform variables for the deployment logic.
-
 
 - **data.tf** - This file contains all the query resources that perform read actions.
 
-
 - **cluster_profiles.tf** - This file contains the cluster profile definitions for each cloud provider.
-
 
 - **cluster.tf** - This file has all the required cluster configurations to deploy a host cluster to one of the cloud providers.
 
-
 - **terraform.tfvars** - Use this file to customize the deployment and target a specific cloud provider. This is the primary file you will modify.
-
 
 - **outputs.tf** - This file contains content that will be output in the terminal session upon a successful Terraform `apply` action.
 
@@ -886,7 +821,6 @@ The following section allows you to review the core Terraform resources more clo
 The **provider.tf** file contains the Terraform providers and their respective versions. The tutorial uses two providers - the Spectro Cloud Terraform provider and the TLS Terraform provider. Note how the project name is specified in the `provider "spectrocloud" {}` block. You can change the target project by changing the value specified in the `project_name` parameter.
 
 <br />
-
 
 ```hcl
 terraform {
@@ -914,10 +848,9 @@ The next file you should become familiar with is the **cluster-profiles.tf** fil
 The Spectro Cloud Terraform provider has several resources available for use. When creating a cluster profile, use `spectrocloud_cluster_profile`.
 This resource can be used to customize all layers of a cluster profile. You can specify all the different packs and versions to use and add a manifest or Helm chart.
 
+In the **cluster-profiles.tf** file, the cluster profile resource is declared three times. Each instance of the resource is for a specific cloud provider. Using the AWS cluster profile as an example, note how the **cluster-profiles.tf** file uses `pack {}` blocks to specify each layer of the profile. The order in which you arrange contents of the `pack {}` blocks plays an important role, as each layer maps to the core infrastructure in a cluster profile.
 
-In the **cluster-profiles.tf** file, the cluster profile resource is declared three times. Each instance of the resource is for a specific cloud provider. Using the AWS cluster profile as an example, note how the **cluster-profiles.tf** file uses `pack {}` blocks to specify each layer of the profile. The order in which you arrange contents of the `pack {}` blocks plays an important role, as each layer maps to the core infrastructure in a cluster profile. 
-
-The first listed `pack {}` block must be the OS, followed by Kubernetes, the container network interface, and the container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile. Ensure you define the bottom layer of the cluster profile - the OS layer -  first in the list of `pack {}` blocks.
+The first listed `pack {}` block must be the OS, followed by Kubernetes, the container network interface, and the container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile. Ensure you define the bottom layer of the cluster profile - the OS layer - first in the list of `pack {}` blocks.
 
 <br />
 
@@ -972,13 +905,11 @@ resource "spectrocloud_cluster_profile" "aws-profile" {
 
 The last `pack {}` block contains a manifest file with all the Kubernetes configurations for the [Hello Universe](https://github.com/spectrocloud/hello-universe) application. Including the application in the profile ensures the application is installed during cluster deployment. If you wonder what all the data resources are for, head to the next section to review them.
 
-
 #### Data Resources
 
-You may have noticed that each `pack {}` block contains references to a data resource. 
+You may have noticed that each `pack {}` block contains references to a data resource.
 
 <br />
-
 
 ```hcl
   pack {
@@ -988,6 +919,7 @@ You may have noticed that each `pack {}` block contains references to a data res
     values = data.spectrocloud_pack.aws_csi.values
   }
 ```
+
 <br />
 
 [Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query Palette for information about a specific pack. You can get information about the pack using the data resource such as unique ID, registry ID, available versions, and the pack's YAML values.
@@ -1015,11 +947,11 @@ In this tutorial, the following Terraform cluster resources are used.
 
 <br />
 
-| Terraform Resource | Platform |
-|---|---|
-| [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws) | AWS | 
-| [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure) | Azure |
-| [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp) | GCP |
+| Terraform Resource                                                                                                                    | Platform |
+| ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| [`spectrocloud_cluster_aws`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)     | AWS      |
+| [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure) | Azure    |
+| [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)     | GCP      |
 
 Using the `spectrocloud_cluster_azure` resource in this tutorial as an example, note how the resource accepts a set of parameters. When deploying a cluster, you can change the same parameters in the Palette user interface (UI). You can learn more about each parameter by reviewing the resource documentation page hosted in the Terraform registry.
 
@@ -1070,6 +1002,7 @@ resource "spectrocloud_cluster_azure" "cluster" {
   }
 }
 ```
+
 ### Deploy Cluster
 
 To deploy a cluster using Terraform, you must first modify the **terraform.tfvars** file. Open the **terraform.tfvars** file in the editor of your choice, and locate the cloud provider you will use to deploy a host cluster.
@@ -1123,8 +1056,8 @@ Next, issue the `plan` command to preview the changes.
 terraform plan
 ```
 
-
 Output:
+
 ```shell
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
@@ -1139,20 +1072,15 @@ To deploy all the resources, use the `apply` command.
 terraform apply -auto-approve
 ```
 
-
 #### Verify the Profile
-
 
 To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name pattern `tf-[cloud provier]-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
 
 ![A view of the cluster profile](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_cluster_profile_view.png)
 
-
 <br />
 
-
 #### Verify the Cluster
-
 
 You can also check the cluster creation process by navigating to the left **Main Menu** and selecting **Clusters**.
 
@@ -1174,7 +1102,6 @@ While you wait for the cluster deployment process to complete, feel free to chec
 
 <br />
 
-
 <YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
 
 <br />
@@ -1182,17 +1109,15 @@ While you wait for the cluster deployment process to complete, feel free to chec
 ### Validate
 
 When the cluster deploys, you can access the Hello Universe application.
-From the cluster's **Overview** page, click on the URL for port **:8080** next to the **hello-universe-service** in the **Services** row. This URL will take you to the application landing page. 
+From the cluster's **Overview** page, click on the URL for port **:8080** next to the **hello-universe-service** in the **Services** row. This URL will take you to the application landing page.
 
 <br />
-
 
 :::caution
 
 It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
 
 :::
-
 
 ![Deployed application](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_app.png)
 
@@ -1201,7 +1126,6 @@ It can take up to three minutes for DNS to properly resolve the public load bala
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click on the logo to increase the counter and for a fun image change.
 
 You have deployed your first application to a cluster managed by Palette through Terraform. Your first application is a single container application with no upstream dependencies.
-
 
 ### Cleanup
 
@@ -1214,6 +1138,7 @@ terraform destroy --auto-approve
 ```
 
 Output:
+
 ```shell
 Destroy complete! Resources: 2 destroyed.
 ```
@@ -1226,7 +1151,6 @@ If a cluster remains in the delete phase for over 15 minutes, it becomes eligibl
 
 :::
 
-
 If you are using the tutorial container and want to exit the container, type `exit` in your terminal session and press the **Enter** key. Next, issue the following command to stop the container.
 
 <br />
@@ -1235,7 +1159,6 @@ If you are using the tutorial container and want to exit the container, type `ex
 docker stop tutorialContainer && \
 docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.0
 ```
-
 
 ## Wrap-up
 
@@ -1247,15 +1170,10 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 
 <br />
 
-
 - [Palette Modes](../../introduction/palette-modes.md)
-
 
 - [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
 
-
-- [Palette Clusters](../clusters.md) 
-
+- [Palette Clusters](../clusters.md)
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
-

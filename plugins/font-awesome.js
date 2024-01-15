@@ -30,7 +30,10 @@ function camelCase(str) {
   return str
     .split("-")
     .map((s, index) => {
-      return (index === 0 ? s[0].toLowerCase() : s[0].toUpperCase()) + s.slice(1).toLowerCase();
+      return (
+        (index === 0 ? s[0].toLowerCase() : s[0].toUpperCase()) +
+        s.slice(1).toLowerCase()
+      );
     })
     .join("");
 }
@@ -40,7 +43,9 @@ async function pluginImportFontAwesomeIcons() {
     name: "import-font-awesome-icons",
     async contentLoaded({ allContent }) {
       const appFontAwesomeIcons = {};
-      allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs.map((doc) => {
+      allContent[
+        "docusaurus-plugin-content-docs"
+      ].default.loadedVersions[0].docs.map((doc) => {
         if (
           doc.frontMatter?.sidebar_custom_props?.icon &&
           !assetIcons[doc.frontMatter?.sidebar_custom_props?.icon]
@@ -62,7 +67,9 @@ async function pluginImportFontAwesomeIcons() {
 
       // Create the object mapping for icons
       const iconMapping = Object.keys(appFontAwesomeIcons)
-        .map((iconName) => `"${iconName}": fa${capitalize(camelCase(iconName))}`)
+        .map(
+          (iconName) => `"${iconName}": fa${capitalize(camelCase(iconName))}`,
+        )
         .join(",\n  ");
 
       // Create the content for dynamicFontAwesomeImports.js
@@ -84,7 +91,7 @@ async function pluginImportFontAwesomeIcons() {
           if (err) {
             console.error("An error occurred while writing the file:", err);
           }
-        }
+        },
       );
     },
   };

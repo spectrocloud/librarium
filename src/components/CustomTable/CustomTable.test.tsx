@@ -32,7 +32,7 @@ describe("CustomTable", () => {
         dataSource={dataSource}
         loading={false}
         pagination={{ pageSize: 2 }}
-      />
+      />,
     );
     expect(screen.getByText("Name")).toBeInTheDocument();
     expect(screen.getByText("Age")).toBeInTheDocument();
@@ -45,7 +45,7 @@ describe("CustomTable", () => {
         dataSource={dataSource}
         loading={false}
         pagination={{ pageSize: 2 }}
-      />
+      />,
     );
     expect(screen.getByText("John")).toBeInTheDocument();
     expect(screen.getByText("Jane")).toBeInTheDocument();
@@ -58,7 +58,7 @@ describe("CustomTable", () => {
         dataSource={dataSource}
         loading={false}
         pagination={{ pageSize: 2 }}
-      />
+      />,
     );
     fireEvent.click(screen.getByText(">"));
     expect(screen.getByText("Doe")).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("CustomTable", () => {
         dataSource={dataSource}
         loading={true}
         pagination={{ pageSize: 2 }}
-      />
+      />,
     );
     const { container } = render(
       <CustomTable
@@ -79,7 +79,7 @@ describe("CustomTable", () => {
         dataSource={dataSource}
         pagination={{ pageSize: 2 }}
         loading={true}
-      />
+      />,
     );
     const loader = container.querySelector(`.${styles.loader}`);
     expect(loader).toBeInTheDocument();

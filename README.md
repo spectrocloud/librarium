@@ -1,13 +1,14 @@
 <!-- vale off -->
+
 # Overview
 
 ![Spectro Cloud logo with docs inline](/static/img/spectrocloud-logo-light.svg)
 
-Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README. 
+Welcome to the Spectro Cloud documentation repository. To get started with contributions, please review the entire README.
 
-For internal Spectro Cloud users, please review the [contributions](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765572627/Contribution) section of the Documentation & Education's teams home page. 
+For internal Spectro Cloud users, please review the [contributions](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765572627/Contribution) section of the Documentation & Education's teams home page.
 
-There are two local development paths available; Docker based, and non-Docker based. To reduce complexities, we recommended the Docker based development approach. 
+There are two local development paths available; Docker based, and non-Docker based. To reduce complexities, we recommended the Docker based development approach.
 
 ## Prerequisites
 
@@ -25,7 +26,7 @@ To contribute, we recommend having the following software installed locally on y
 
 ## Local Development (Docker)
 
-To get started with the Docker based local development approach ensure you are in the root context of this repository. 
+To get started with the Docker based local development approach ensure you are in the root context of this repository.
 
 Initailize the repository by issuing the following command:
 
@@ -47,7 +48,7 @@ To start the Dockererized local development server, issue the command:
 make docker-start
 ```
 
-The local development server is ready when the following output is displayed in your terminal. 
+The local development server is ready when the following output is displayed in your terminal.
 
 ```shell
 > spectro-cloud-docs@4.0.0 start
@@ -94,10 +95,8 @@ git checkout -b <branch_name>
 
 Make changes to any markdown files in the [`docs/docs-content`](./docs/docs-content/) folder.
 
-
 Start the local development server and preview your changes by navigating to the documentation page you modified.
 You can start the local development server by issuing the following command:
-
 
 ```sh
 make start
@@ -136,27 +135,26 @@ title: "Introduction"
 sidebar_label: "Introduction"
 description: "Palette API Introduction"
 hide_table_of_contents: false
-sidebar_custom_props: 
+sidebar_custom_props:
   icon: "graph"
 ---
 ```
 
-
-
 #### Front Matter Attributes
 
-| attribute                      | type    | description                                                                                                 |
-| ------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------- |
-| `sidebar_label`                  | string  | used as the label for navigation                                                                            |
-| `title`                          | string  | will appear on the browser window / tab as the title                                                        |
-| `description`                    | string  | the text to display when a page is shared in social media platforms                                         |
-| `sidebar_custom_props:`<br>` icon: "graph"`  | string  | one of icons from https://fontawesome.com/icons?d=gallery                                       |      
-| `hide_table_of_contents`         | boolean | setting this to `false` will hide the page from the navigation                                              |
-| `sidebar_position`               | number  | the position of the page in the navigation sidebar. The pages are sorted ascending by this value            |
-| `toc_min_heading_level`          | number | the minimum heading level to show in the table of contents. The default value for all documents is `2`.      |
-| `toc_max_heading_level`          | number | the maximum heading level to show in the table of contents. The default value for all documents is `3`.      | 
-| `tags`                           | array  |  A list of string that can be used for additonal categorization of content.                                  | 
-| `keywords`                      | array  |  A list of strings that areused for SEO purposes.                                                             |
+| attribute                                   | type    | description                                                                                             |
+| ------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| `sidebar_label`                             | string  | used as the label for navigation                                                                        |
+| `title`                                     | string  | will appear on the browser window / tab as the title                                                    |
+| `description`                               | string  | the text to display when a page is shared in social media platforms                                     |
+| `sidebar_custom_props:`<br>` icon: "graph"` | string  | one of icons from https://fontawesome.com/icons?d=gallery                                               |
+| `hide_table_of_contents`                    | boolean | setting this to `false` will hide the page from the navigation                                          |
+| `sidebar_position`                          | number  | the position of the page in the navigation sidebar. The pages are sorted ascending by this value        |
+| `toc_min_heading_level`                     | number  | the minimum heading level to show in the table of contents. The default value for all documents is `2`. |
+| `toc_max_heading_level`                     | number  | the maximum heading level to show in the table of contents. The default value for all documents is `3`. |
+| `tags`                                      | array   | A list of string that can be used for additonal categorization of content.                              |
+| `keywords`                                  | array   | A list of strings that areused for SEO purposes.                                                        |
+
 ### Sub pages
 
 Create a folder using the **same name** of the main page. Inside of it use the same name convention (`<url-using-dashes>.md`) to create subpages.
@@ -168,10 +166,9 @@ The index document for a folder follows the naming convention below. Here are so
 - Same name as the parent folder: `docs/Guides/Guides.md`
 
 ### Markdown Links and URLs
+
 Markdown links use file path references to link to other documentation pages.
 The markdown link is composed of the file path to the page in context from the current file. All references to a another documentation page must end with the `.md` extension. Docusaurus will automatically remove the `.md` extension from the URL during the compile. The file path is needed for Docuasurus to generate the correct URL for the page when versioning is enabled.
-
-
 
 The following example shows how to reference a page in various scenarios. Assume you have the following folder structure when reviewing the examples below:
 
@@ -206,7 +203,7 @@ So, if you are in the file `grpc.md` and want to reference the file `ip-addresse
 
 #### Different Folder
 
-If you want to link to a file in a different folder, you have to specify the path to the file from where the current markdown file is located. 
+If you want to link to a file in a different folder, you have to specify the path to the file from where the current markdown file is located.
 
 If you are in the file `security.md` and want to reference the file `iam-permissions.md`, you have to use the following syntax:
 
@@ -237,26 +234,28 @@ To link to a heading in a different file, you can use the following syntax:
 ```md
 [Link to a heading in a different file](name_of_file.md#heading-name)
 ```
+
 For example, if you are in the file `grpc.md` and want to reference the heading `Palette gRPC API` in the file `security.md`, you would use the following syntax:
 
 ```md
 [Link to a heading in a different file](../security.md#palette-grpc-api)
 ```
+
 The important thing to remember is that the `#` comes after the file name and before the heading name.
 
 #### Exceptions
 
 As of Docusarus `2.4.1`, the ability to link to documentation pages that belong to another plugin is unavailable. To work around this limitation, reference a documentation page by the URL path versus the file path.
 
-```md 
+```md
 [Link to a page in another plugin](/api-content/authentication#api-key)
 ```
 
 > [!WARNING]
 > Be aware that this approach will break versioning. The user experience will be impacted as the user will be redirected to the latest version of the page.
 
-
 In future releases, Docusaurus will support linking pages from other Docusarus plugins. Once this feature is available, this documentation will be updated.
+
 ### Redirects
 
 To add a redirect to an existing documentation page you must add an entry to the [redirects.js](/src/shared/utils/redirects.js) file. Below is an example of what a redirect entry should look like.
@@ -270,7 +269,7 @@ To add a redirect to an existing documentation page you must add an entry to the
 
 ### Multi Object Selector
 
-The Packs integration page and the Service Listings page use a component to display the various offerings. 
+The Packs integration page and the Service Listings page use a component to display the various offerings.
 Packs intergations use the `<Packs />` component, whereas the Service Tiers from App Mode use the `<AppTiers />` component.
 
 To add a Pack to the list complete the following actions:
@@ -279,13 +278,11 @@ To add a Pack to the list complete the following actions:
 - In the frontmatter set the type to the following value: `type: "integration"`.
 - Populate the page with content.
 
-
 To add a Service to the Service List complete the following actions:
 
 - Add a new markdown page for the App Mode Service.
 - In the frontmatter set the type to the following value: `type: "appTier"`.
 - Populate the page with content.
-
 
 ### Images or other assets
 
@@ -339,10 +336,13 @@ To use a Youtube video us the YouTube component.
 In your markdown file, use the component and ensure you specify a URL.
 
 ```js
-<YouTube url="https://www.youtube.com/embed/wM3hcrHbAC0" title="Three Common Kubernetes Growing Pains  - and how to solve them" />
+<YouTube
+  url="https://www.youtube.com/embed/wM3hcrHbAC0"
+  title="Three Common Kubernetes Growing Pains  - and how to solve them"
+/>
 ```
-### Points of Interest
 
+### Points of Interest
 
 ```js
 <PointsOfInterest
@@ -420,26 +420,22 @@ _Components_:
 - `2-4` - lines interval to be colored
 - `,` - separator for different colored lines intervals
 
-Example 
-
+Example
 
 https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comments
 
-
 #### Hide ClipBoard Button
 
-The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks. 
+The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter value `hideClipboard` in the markdown declaration of the code blocks.
 
-Example 
+Example
 ![Example](static/assets/docs/images/hide_copy_button_example.png)
 
 Result
 
 ![Result](static/assets/docs/images/hide_copy_button.png)
 
-
 ### Admonitions - Warning / Info / Tip / Danger
-
 
 :::caution
 
@@ -447,13 +443,11 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 
-
 :::tip
 
-Some **content** with _Markdown_ `syntax`. 
+Some **content** with _Markdown_ `syntax`.
 
 :::
-
 
 :::danger
 
@@ -462,7 +456,6 @@ Some **content** with _Markdown_ `syntax`.
 :::
 
 https://docusaurus.io/docs/markdown-features/admonitions
-
 
 The content must have a new line at the beginning and at the end of the tag.
 
@@ -474,14 +467,13 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 <Video src="/aws-full-profile.mp4"></Video>
 ```
 
-
 ```
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
 ```
 
 ## Netlify Previews
-By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In the [netlify.toml](./netlify.toml) file, a custom script is used to determine if a Netlify preview should be created. The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If you need to disable Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh) file.
 
+By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In the [netlify.toml](./netlify.toml) file, a custom script is used to determine if a Netlify preview should be created. The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If you need to disable Netlify previews for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh) file.
 
 ## Approvers/Reviewers
 
@@ -502,12 +494,12 @@ make sync-vale
 To execute the writing check, issue the command below. The command below will identify files that are modified by comparing the current git branch against the `master` branch. Ensure your local `master` branch is up to date for accurate results.
 
 ```
-make check-writing 
+make check-writing
 ```
 
-You may also use the Vale CLI to directly scan a file and receive feedback. 
+You may also use the Vale CLI to directly scan a file and receive feedback.
 
-Example: 
+Example:
 
 ```shell
 vale content/docs/08-user-management.md
@@ -518,9 +510,11 @@ vale content/docs/08-user-management.md
 The [vale.ini](vale.ini) file contains the configuration for Vale. Changes to [vale.ini](vale.ini), [accept.txt](/vale/styles/Vocab/Internal/accept.txt), and [reject.txt](/vale/styles/Vocab/Internal/reject.txt) require approval by the [docs-education](https://github.com/orgs/spectrocloud/teams/docs-education) team.
 
 ### Disable Rule
-To disable a specific rule, add the rule name and the word "NO" to the  vale.ini](vale.ini) file.
+
+To disable a specific rule, add the rule name and the word "NO" to the vale.ini](vale.ini) file.
 
 Example:
+
 ```
 Google.Headings = NO
 ```
@@ -532,7 +526,6 @@ Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/acce
 ### Rejected Words
 
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
-
 
 ## Release
 
@@ -547,26 +540,25 @@ To create a new release, use the following steps:
 7. Push the new version branch to the remote repository.
 8. Trigger a new build so that the new version is published.
 
-The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created. 
+The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the new release tag is created.
 
 > **Warning**
 > Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Versioning
 
-> [!NOTE] 
+> [!NOTE]
 > Detailed documentation for versioning can be found in the internal [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
 
 All versioned content belongs to a specific version branch. The version branch name follows the naming convention `version-X-X`. The version branch is used to generate versioned content.
 
-There are three files that are used for generating versioned content: 
+There are three files that are used for generating versioned content:
 
 - [`versions.sh`](./scripts/versions.sh) - A bash script that loops through all the version branches and generates the versionioned content.
 
 - [`update_docusaurs_config.js`](./docsearch.config.json) - A node script that updates the `docusaurus.config.js` file with all the required vesioning parameters.
 
 - [`versionsOverride.json`](./versionsOverride.json) - A JSON file that contains the versioning overrides. These values are used to update the `docusaurus.config.js` file with non-default values.
-
 
 ### Build Versioned Content Locally
 
@@ -584,7 +576,6 @@ make versions
 make start
 ```
 
-
 3. Compile the versioned content to ensure a successful build.
 
 ```shell
@@ -597,6 +588,5 @@ make build
 make clean-versions
 ```
 
-
-> [!WARNING] 
-> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO NOT commit this file with the updated changes. 
+> [!WARNING]
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO NOT commit this file with the updated changes.

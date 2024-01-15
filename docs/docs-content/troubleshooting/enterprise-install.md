@@ -10,11 +10,10 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
-
 ## Scenario - Self-linking Error
 
-When installing an Enterprise Cluster, you may encounter an error stating that the enterprise cluster is unable to self-link. Self-linking is the process of Palette or VerteX becoming aware of the Kubernetes cluster it is installed on. 
-This error may occur if the self-hosted pack registry specified in the installation is missing the Certificate Authority (CA). 
+When installing an Enterprise Cluster, you may encounter an error stating that the enterprise cluster is unable to self-link. Self-linking is the process of Palette or VerteX becoming aware of the Kubernetes cluster it is installed on.
+This error may occur if the self-hosted pack registry specified in the installation is missing the Certificate Authority (CA).
 This issue can be resolved by adding the CA to the pack registry.
 
 ### Debug Steps
@@ -29,10 +28,10 @@ This issue can be resolved by adding the CA to the pack registry.
 
 5. Click on the **three-dot Menu** icon for the pack registry that you specified in the installation and select **Edit**.
 
-6. Click on the **Upload file** button and upload the CA certificate that you downloaded in step 2. 
+6. Click on the **Upload file** button and upload the CA certificate that you downloaded in step 2.
 
 7. Check the box **Insecure Skip TLS Verify** and click on **Confirm**.
 
-  ![A pack registry configuration screen.](/troubleshooting_enterprise-install_pack-registry-tls.png)
+![A pack registry configuration screen.](/troubleshooting_enterprise-install_pack-registry-tls.png)
 
 After a few moments, a system profile will be created and Palette or VerteX will be able to self-link successfully. If you continue to encounter issues, contact our support team by emailing [support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.

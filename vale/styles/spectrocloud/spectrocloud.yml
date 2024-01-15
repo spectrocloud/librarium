@@ -4,12 +4,12 @@ level: error
 ignorecase: true
 nonword: true
 tokens:
-  - 'spectrocloud'
-  - 'spectro cloud'
-  - 'SpectroCloud'
-  - 'SpectroCloud'
-  - 'Spectro cloud'
-  - 'spectro Cloud'
+  - "spectrocloud"
+  - "spectro cloud"
+  - "SpectroCloud"
+  - "SpectroCloud"
+  - "Spectro cloud"
+  - "spectro Cloud"
 scope: sentence
 exceptions:
   - '\w*\.spectrocloud\.\w*'

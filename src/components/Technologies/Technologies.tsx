@@ -28,7 +28,7 @@ export default function Technologies({ data }: TechnologiesProps) {
         });
         return accumulator;
       },
-      new Set(["all"])
+      new Set(["all"]),
     );
     return new Set([...categoriesSet].sort());
   }, [data]);
@@ -56,7 +56,9 @@ export default function Technologies({ data }: TechnologiesProps) {
 
     if (selectedCategory !== "all") {
       technologies =
-        technologies.filter(({ fields }) => fields.category.includes(selectedCategory)) || [];
+        technologies.filter(({ fields }) =>
+          fields.category.includes(selectedCategory),
+        ) || [];
     }
 
     return technologies;
@@ -78,7 +80,12 @@ export default function Technologies({ data }: TechnologiesProps) {
         {technologies.map(({ fields }) => {
           const { title, slug, logoUrl } = fields;
           return (
-            <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug}></TechnologyCard>
+            <TechnologyCard
+              title={title}
+              slug={slug}
+              logoUrl={logoUrl}
+              key={slug}
+            ></TechnologyCard>
           );
         })}
       </div>

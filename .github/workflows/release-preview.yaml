@@ -17,7 +17,6 @@ env:
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
-
 concurrency:
   group: preview-${{ github.ref }}
   cancel-in-progress: true
@@ -49,13 +48,12 @@ jobs:
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/*"
 
-
       - name: Post Netlify URL
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-              🚀 docs-latest.spectrocloud.com preview deployed succesfully for commit ${{ github.sha }}. Click [here](https://docs-latest.spectrocloud.com) to preview the changes.
+            🚀 docs-latest.spectrocloud.com preview deployed succesfully for commit ${{ github.sha }}. Click [here](https://docs-latest.spectrocloud.com) to preview the changes.
           message-failure: |
-              👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
+            👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
           refresh-message-position: true
           update-only: true

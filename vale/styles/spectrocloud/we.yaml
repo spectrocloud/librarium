@@ -1,6 +1,6 @@
 extends: existence
 message: "Try to avoid using first-person plural. Use terms like '%s' instead of '%s'."
-link: 'https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Active-voice'
+link: "https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Active-voice"
 level: warning
 ignorecase: true
 tokens:

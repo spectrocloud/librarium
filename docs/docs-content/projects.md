@@ -4,13 +4,10 @@ title: "Concept: Projects"
 description: "Understanding what Spectro Cloud projects are"
 hide_table_of_contents: false
 sidebar_position: 110
-sidebar_custom_props: 
+sidebar_custom_props:
   icon: "cog"
 tags: ["projects"]
 ---
-
-
-
 
 # Projects
 
@@ -18,16 +15,15 @@ A **Project** helps you organize the cluster resources in a logical grouping. Th
 
 ## Project Dashboard
 
-The **Tenant Admin** > **Projects** page displays the project-related dashboard cards for all projects in the tenant. 
-
+The **Tenant Admin** > **Projects** page displays the project-related dashboard cards for all projects in the tenant.
 
 ## Project Card
 
 The **Project card** shows the status and relevant details of a cluster, grouping information about healthy, unhealthy, and errored clusters. It calculates cluster health by evaluating the health of each node, taking into account factors such as memory and CPU utilization, disk pressure, and network availability. Additionally, it displays the number of clusters imported and those provisioned by Palette.
+
 ### Cores per Project Usage
 
 By default, the active worker node usage of CPU **Cores** is grouped across all projects and shown as an hourly interval. You can change the interval value to days or months.
-
 
 ## Create a Project
 
@@ -43,15 +39,13 @@ You can associate users and teams with a project. Check out the [Project Associa
 
 ## Prerequisites
 
-* Tenant admin access
+- Tenant admin access
 
 ## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-
 2. Navigate to **Tenant Admin** > **Projects** and click the **Create Project** button.
-
 
 3. Fill out the following fields: **Name**, **Description**, and **Tags** to create a Project.
 
@@ -59,42 +53,33 @@ You can associate users and teams with a project. Check out the [Project Associa
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-
-2. Navigate to **Tenant Admin** > **Projects** 
+2. Navigate to **Tenant Admin** > **Projects**
 
 Your newly created project is listed along with other existing projects.
 
-
 ## Delete a Project
-
 
 You can remove projects by following these steps.
 
 ## Prerequisites
 
-* Tenant admin access.
+- Tenant admin access.
 
-* No active clusters in the project. 
+- No active clusters in the project.
 
 ## Remove Project
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-
 2. Switch to **Tenant Admin** scope.
-
 
 3. Navigate to the left **Main Menu** and select **Projects**.
 
-
 4. Locate the project card for the project you want to remove.
-
 
 5. Click on the **three-dot Menu** and select **Delete**.
 
-
 6. A pop-up box will ask you to confirm the action. Confirm the deletion.
-
 
 :::caution
 
@@ -102,11 +87,9 @@ You can delete projects with force as long as there are no active clusters. Forc
 
 :::
 
-
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-
 
 2. Navigate to **Tenant Admin** > **Projects** .
 

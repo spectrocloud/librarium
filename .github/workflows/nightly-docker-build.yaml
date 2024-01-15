@@ -2,7 +2,7 @@ name: Nighly Docker Build
 
 on:
   schedule:
-    - cron: '15 22 * * 1-5'  # 22:15 UTC, Monday through Friday
+    - cron: "15 22 * * 1-5" # 22:15 UTC, Monday through Friday
   workflow_dispatch:
 
 env:
@@ -30,13 +30,11 @@ jobs:
         run: |
           make build
 
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-
 
       - name: Extract Docker metadata
         id: meta
@@ -57,7 +55,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile-offline
-          # build-args: 
+          # build-args:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/${{ github.repository }}:nightly

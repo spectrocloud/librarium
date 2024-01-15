@@ -7,9 +7,7 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-
-
-The Edge Installer supports using a custom configuration file in the format of a YAML that you can use to customize the installation process. You can provide the customized configuration to the Edge Installer as a user data file. 
+The Edge Installer supports using a custom configuration file in the format of a YAML that you can use to customize the installation process. You can provide the customized configuration to the Edge Installer as a user data file.
 
 :::info
 
@@ -21,7 +19,7 @@ You can also use the Operating System (OS) pack to apply additional customizatio
 
 ## User Data Samples
 
-You may encounter the following scenarios when creating an Edge Installer configuration user data file. Use these examples as a starting point to help you create user data configurations that fit your needs. 
+You may encounter the following scenarios when creating an Edge Installer configuration user data file. Use these examples as a starting point to help you create user data configurations that fit your needs.
 
 ```yaml
 #cloud-config
@@ -63,17 +61,17 @@ stylus:
       nameserver: 1.1.1.1
       # configure interface specific info. If omitted all interfaces will default to dhcp
       interfaces:
-           enp0s3:
-               # type of network dhcp or static
-               type: static
-               # Ip address including the mask bits
-               ipAddress: 10.0.10.25/24
-               # Gateway for the static ip.
-               gateway: 10.0.10.1
-               # interface specific nameserver
-               nameserver: 10.10.128.8
-           enp0s4:
-               type: dhcp
+        enp0s3:
+          # type of network dhcp or static
+          type: static
+          # Ip address including the mask bits
+          ipAddress: 10.0.10.25/24
+          # Gateway for the static ip.
+          gateway: 10.0.10.1
+          # interface specific nameserver
+          nameserver: 10.10.128.8
+        enp0s4:
+          type: dhcp
     caCerts:
       - |
         ------BEGIN CERTIFICATE------
@@ -86,7 +84,7 @@ stylus:
         *****************************
         ------END CERTIFICATE------
 
-# There is no password specified to the default kairos user. You must specify authorized keys or passwords to access the Edge host console. 
+# There is no password specified to the default kairos user. You must specify authorized keys or passwords to access the Edge host console.
 stages:
   initramfs:
     - users:
@@ -106,22 +104,22 @@ In this example, two configuration user user data files are used. The first one 
 #cloud-config
 stylus:
   site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: <yourRegistrationToken>
-      tags:
-        city: chicago
-        building: building-1
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: <yourRegistrationToken>
+    tags:
+      city: chicago
+      building: building-1
 
 install:
   poweroff: true
 
 stages:
   initramfs:
-      - users:
-          kairos:
-          groups:
-              - sudo
-          passwd: kairos
+    - users:
+        kairos:
+        groups:
+          - sudo
+        passwd: kairos
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides project information specified in the `edgeHostToken` parameter. You can add optional tags to identify the city, building, and zip-code. If the edge site requires a proxy for an outbound connection, provide it in the network section of the site user data.
@@ -137,7 +135,7 @@ stylus:
 
 ### Connected Sites - Single User Data
 
-This example configuration is for a *connected site*.
+This example configuration is for a _connected site_.
 In this scenario, only a single Edge Installer configuration user data is used for the entire deployment process.
 
 <br />
@@ -146,13 +144,13 @@ In this scenario, only a single Edge Installer configuration user data is used f
 #cloud-config
 stylus:
   site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: <yourRegistrationToken>
-      projectName: edge-sites
-      tags:
-        city: chicago
-        building: building-1
-        zip-code: 95135
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: <yourRegistrationToken>
+    projectName: edge-sites
+    tags:
+      city: chicago
+      building: building-1
+      zip-code: 95135
 
 install:
   poweroff: true
@@ -162,11 +160,11 @@ stages:
     - users:
         kairos:
         groups:
-            - sudo
+          - sudo
         passwd: kairos
 ```
 
-### Apply Proxy & Certificate Settings 
+### Apply Proxy & Certificate Settings
 
 This example showcases how you can include network settings in a user data configuration.
 
@@ -184,7 +182,7 @@ stylus:
   network:
       httpProxy: http://proxy.example.com
       httpsProxy: https://proxy.example.com
-      noProxy: 10.10.128.10,10.0.0.0/8    
+      noProxy: 10.10.128.10,10.0.0.0/8
       nameserver: 1.1.1.1
       # configure interface specific info. If omitted all interfaces will default to dhcp
       interfaces:
@@ -198,7 +196,7 @@ stylus:
               # interface specific nameserver
               nameserver: 10.10.128.8
           enp0s4:
-              type: dhcp 
+              type: dhcp
     caCerts:
       - |
         ------BEGIN CERTIFICATE------
@@ -243,7 +241,7 @@ stylus:
     caCerts:
       - |
         -----BEGIN CERTIFICATE-----
-        
+
         -----END CERTIFICATE-----
 
 install:
@@ -257,7 +255,6 @@ stages:
             - sudo
           passwd: kairos
 ```
-
 
 ## Multiple User Data Use Case
 
@@ -275,18 +272,14 @@ To use additional user data, create a bootable device, such as a USB stick, that
 
 When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a USB drive.
 
-In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc. 
-Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the  [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) guide to learn more about applying secondary site-specific user data.
-
-
+In the staging phase, you may identify user data parameter values that apply uniformly to all your edge sites. But you may also have some edge locations that require different configurations such as site network proxy, site certs, users and groups, etc.
+Site-specific configurations are typically not included in the Edge installer image. For the latter scenario, you can use a secondary user data configuration. Refer to the [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) guide to learn more about applying secondary site-specific user data.
 
 :::info
 
 For your initial testing, your user data may include global settings and site-specific properties in a single user data. As you gain more experience, you should evaluate whether secondary site-specific user data is a better design for your use case.
 
 :::
-
-
 
 ## Next Steps
 

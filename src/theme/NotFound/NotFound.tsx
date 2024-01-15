@@ -23,11 +23,15 @@ export default function NotFound() {
                 <div className={styles.boundingBox}>
                   <h1 className={styles.title}>404 Lost in Space</h1>
                   <p>
-                    Oooops. Looks like the page you&apos;re are trying to reach is no longer
-                    available.
+                    Oooops. Looks like the page you&apos;re are trying to reach
+                    is no longer available.
                   </p>
                 </div>
-                <Image className={styles.man} img={hero as string} alt={"space-man"} />
+                <Image
+                  className={styles.man}
+                  img={hero as string}
+                  alt={"space-man"}
+                />
               </div>
             </div>
           </div>

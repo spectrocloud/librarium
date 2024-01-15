@@ -5,12 +5,12 @@ name: Release to Production
 
 on:
   schedule:
-    - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
-    - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
+    - cron: "0 20 * * 1-5" # At 12:00 PM PST (8 PM UTC), Monday through Friday
+    - cron: "0 5 * * 2-6" # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
   workflow_dispatch:
     inputs:
       useGitHubHostedLargeRunner:
-        description: 'Use the GitHub-hosted large runner. Allowed values are true or false. Caution - this results in additional charges to the organization.'
+        description: "Use the GitHub-hosted large runner. Allowed values are true or false. Caution - this results in additional charges to the organization."
         required: false
         default: false
 
@@ -26,13 +26,12 @@ env:
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
-
 concurrency:
   group: production-${{ github.workflow }}
-  cancel-in-progress: true  
+  cancel-in-progress: true
 
 jobs:
-# This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
+  # This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
   build-self-hosted-runner:
     if: ${{ github.event.inputs.useGitHubHostedLargeRunner != 'true' || github.event_name == 'schedule' }}
     name: Build Website (Self-Hosted Runner)
@@ -44,7 +43,6 @@ jobs:
           fetch-depth: 0
           ref: "master"
 
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -64,12 +62,12 @@ jobs:
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
-#  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
+  #  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
   build-large-runner:
     if: ${{ github.event.inputs.useGitHubHostedLargeRunner == 'true' && github.event_name != 'schedule' }}
     name: Build Website (GitHub-Hosted Large Runner)
-    runs-on: 
-      group: 'Doc Runners'
+    runs-on:
+      group: "Doc Runners"
       labels: docbot
     steps:
       - name: Checkout Repository
@@ -78,7 +76,6 @@ jobs:
           fetch-depth: 0
           ref: "master"
 
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -98,11 +95,10 @@ jobs:
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
-
   release:
     name: "Release"
     if: always() && (needs.build-large-runner.result == 'success' || needs.build-self-hosted-runner.result == 'success')
-    needs: [build-self-hosted-runner,build-large-runner]
+    needs: [build-self-hosted-runner, build-large-runner]
     runs-on: ubuntu-latest
     steps:
       - id: checkout

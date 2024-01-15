@@ -8,7 +8,11 @@ interface TechnologyCardProps {
   logoUrl: string;
 }
 
-export default function TechnologyCard({ title, slug, logoUrl }: TechnologyCardProps) {
+export default function TechnologyCard({
+  title,
+  slug,
+  logoUrl,
+}: TechnologyCardProps) {
   return (
     <Link key={title} to={slug}>
       <div className={styles.card}>

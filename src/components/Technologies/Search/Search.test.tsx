@@ -5,14 +5,19 @@ import Search from "./Search";
 describe("Search component", () => {
   it("should render correctly", () => {
     const { container } = render(
-      <Search placeholder={"Search for integration..."} onSearch={jest.fn()} />
+      <Search placeholder={"Search for integration..."} onSearch={jest.fn()} />,
     );
     expect(container).toBeInTheDocument();
   });
 
   it("should call onSearch when typing", () => {
     const onSearchMock = jest.fn();
-    render(<Search placeholder={"Search for integration..."} onSearch={onSearchMock} />);
+    render(
+      <Search
+        placeholder={"Search for integration..."}
+        onSearch={onSearchMock}
+      />,
+    );
 
     fireEvent.change(screen.getByPlaceholderText("Search for integration..."), {
       target: { value: "Amazon" },
@@ -23,9 +28,11 @@ describe("Search component", () => {
 
   it("should clear input and focus when clicking clear icon", () => {
     const { container } = render(
-      <Search placeholder={"Search for integration..."} onSearch={jest.fn()} />
+      <Search placeholder={"Search for integration..."} onSearch={jest.fn()} />,
     );
-    const input = screen.getByPlaceholderText("Search for integration...") as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      "Search for integration...",
+    ) as HTMLInputElement;
 
     fireEvent.change(input, {
       target: { value: "Amazon" },

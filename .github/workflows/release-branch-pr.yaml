@@ -16,7 +16,6 @@ env:
   ALGOLIA_APP_ID: ${{ secrets.DEV_GATSBY_ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.DEV_GATSBY_ALGOLIA_SEARCH_KEY }}
 
-
 concurrency:
   group: preview-${{ github.ref }}
   cancel-in-progress: true
@@ -26,44 +25,42 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    - name: Check out repository
-      uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
-        cache: "npm"
+      - run: npm ci
 
-    - run: npm ci
-
-    - name: Post Netlify progress
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
+      - name: Post Netlify progress
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
             🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
-        refresh-message-position: true
+          refresh-message-position: true
 
-    - run: npm run build
+      - run: npm run build
 
-    - name: Deploy to Netlify
-      id: netlify
-      uses: nwtgck/actions-netlify@v2.1.0
-      with:
-        publish-dir: ./build
-        deploy-message: 'Manual Netlify deployment from GitHub Actions -  ${{ github.sha }}'
-        enable-pull-request-comment: true
-        overwrites-pull-request-comment: true
-        enable-commit-comment: true
+      - name: Deploy to Netlify
+        id: netlify
+        uses: nwtgck/actions-netlify@v2.1.0
+        with:
+          publish-dir: ./build
+          deploy-message: "Manual Netlify deployment from GitHub Actions -  ${{ github.sha }}"
+          enable-pull-request-comment: true
+          overwrites-pull-request-comment: true
+          enable-commit-comment: true
 
-    - name: Post Netlify URL
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
+      - name: Post Netlify URL
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
             🚀 Netlify preview deployed succesfully for commit ${{ github.sha }}. Click [here](${{steps.netlify.outputs.deploy-url}}) to preview the changes.
-        message-failure: |
+          message-failure: |
             👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
-        refresh-message-position: true
-        update-only: true
-
+          refresh-message-position: true
+          update-only: true

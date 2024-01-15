@@ -59,9 +59,10 @@ function CollapseButton({ categoryLabel, onClick }) {
         {
           id: "theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel",
           message: "Toggle the collapsible sidebar category '{label}'",
-          description: "The ARIA label to toggle the collapsible sidebar category",
+          description:
+            "The ARIA label to toggle the collapsible sidebar category",
         },
-        { label: categoryLabel }
+        { label: categoryLabel },
       )}
       type="button"
       className="clean-btn menu__caret"
@@ -104,7 +105,12 @@ export default function DocSidebarItemCategory({
   };
   useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed });
   useEffect(() => {
-    if (collapsible && expandedItem != null && expandedItem !== index && autoCollapseCategories) {
+    if (
+      collapsible &&
+      expandedItem != null &&
+      expandedItem !== index &&
+      autoCollapseCategories
+    ) {
       setCollapsed(true);
     }
   }, [collapsible, expandedItem, index, setCollapsed, autoCollapseCategories]);
@@ -117,7 +123,7 @@ export default function DocSidebarItemCategory({
         {
           "menu__list-item--collapsed": collapsed,
         },
-        className
+        className,
       )}
     >
       <div
@@ -152,7 +158,9 @@ export default function DocSidebarItemCategory({
           {...props}
         >
           {item?.customProps?.icon && (
-            <div className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}>
+            <div
+              className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}
+            >
               <IconMapper type={item?.customProps?.icon}></IconMapper>
             </div>
           )}

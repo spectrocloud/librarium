@@ -5,7 +5,7 @@ import PacksIntegrationsPluginData from "../IntegrationTypes";
 
 export default function AppTiers() {
   const { integrations } = usePluginData(
-    "plugin-packs-integrations"
+    "plugin-packs-integrations",
   ) as PacksIntegrationsPluginData;
   return <Integrations data={integrations} />;
 }

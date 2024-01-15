@@ -3,12 +3,12 @@ sidebar_label: "Security"
 title: "Spectro Cloud Security"
 description: "Get an overview of Palette's security controls, security-aware culture, and where you can report any security issues."
 hide_table_of_contents: false
-sidebar_custom_props: 
+sidebar_custom_props:
   icon: "lock"
 tags: ["security"]
 ---
 
-We view security as more than a feature. It is a fundamental aspect of our business and culture through transparency, continuous learning, and a security-first mindset. 
+We view security as more than a feature. It is a fundamental aspect of our business and culture through transparency, continuous learning, and a security-first mindset.
 
 By instilling a sense of collective responsibility for security, everyone at Spectro Cloud contributes to our overall security posture. Our dedication to security helps protect your interests and enhances the quality and reliability of our software and services.
 
@@ -42,42 +42,28 @@ We list any Common Vulnerabilities and Exposure (CVE) issues that affect Palette
 
 Please contact our Security team at security@spectrocloud.com to report any security issues.
 
-
 <br />
 
 ## Resources
 
-
 - [Core Principles](core-principles.md)
-
 
 - [Lifecycle](lifecycle/lifecycle.md)
 
-
 - [Secure Development](lifecycle/secure-development.md)
-
 
 - [Release Process](lifecycle/release-process.md)
 
-
 - [Secure Product Architecture](product-architecture/product-architecture.md)
-
 
 - [Platform Security](product-architecture/platform-security.md)
 
-
 - [Data Encryption](product-architecture/data-encryption.md)
-
 
 - [SaaS Operation](product-architecture/saas-operation.md)
 
-
 - [Self-Hosted Operation](product-architecture/self-hosted-operation.md)
-
 
 - [Tenant Cluster Security](product-architecture/tenant-cluster.md)
 
-
 - [Security Bulletins](security-bulletins/security-bulletins.md)
-
-

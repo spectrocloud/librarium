@@ -7,10 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 50
 ---
 
-
-
-
-Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster *before* it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
+Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster _before_ it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
 
 <br />
 
@@ -19,7 +16,6 @@ Pack constraints are a set of rules defined at the pack level to validate the pa
 You can find information about the JSON schema for the pack metadata file in the [JSON schema](add-custom-packs.md#json-schema) section of the documentation.
 
 :::
-
 
 ## Pack Values Constraints
 
@@ -50,7 +46,6 @@ The pack value is not editable if marked as readonly.
 registry.hostname:
  schema: '{{ readonly }}'
 ```
-
 
 **Format**
 
@@ -96,7 +91,7 @@ The number format type checks if the input value is a number, and supports the r
 registry.port:
   schema: '{{ format "${number}" }}'
 registry.port:
-  schema: '{{ format "${number:[5000-5005]}" }}'  
+  schema: '{{ format "${number:[5000-5005]}" }}'
 registry.port:
   schema: '{{ format "${number:/^(500[0-5])$/}" }}'
 ```
@@ -173,8 +168,6 @@ registry.type:
 
 </Tabs>
 
-
-
 **Examples**
 
 Schema constraints can be combined to support multiple validations using a single template.
@@ -192,11 +185,11 @@ registry.addresses.$[]:
 
 **Examples**:
 
-10.10.10.10 - 10.10.10.255  → valid
+10.10.10.10 - 10.10.10.255 → valid
 
-10.10.10.10  → invalid
+10.10.10.10 → invalid
 
-10.10.10.10-10.10.10.255  → invalid
+10.10.10.10-10.10.10.255 → invalid
 
 </TabItem>
 
@@ -232,9 +225,7 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
 ```json
 {
   "addonType": "system app",
-  "cloudTypes": [
-    "all"
-  ],
+  "cloudTypes": ["all"],
   "displayName": "Test Pack",
   "kubeManifests": [],
   "layer": "addon",
@@ -264,8 +255,6 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
   }
 }
 ```
-
-
 
 :::caution
 
@@ -354,9 +343,7 @@ Pack resource constraints must be defined in the `pack.json` file. The sample pa
 ```json
 {
   "addonType": "system app",
-  "cloudTypes": [
-    "all"
-  ],
+  "cloudTypes": ["all"],
   "displayName": "Test Pack",
   "kubeManifests": [],
   "layer": "addon",
@@ -403,9 +390,9 @@ Pack resource constraints must be defined in the `pack.json` file. The sample pa
 
 The type of resource
 
-* cpu
-* memory
-* diskSize
+- cpu
+- memory
+- diskSize
 
 </TabItem>
 
@@ -413,9 +400,9 @@ The type of resource
 
 The minimum limit of the resource will be considered during the machine pool validation. The resource limit value is required to have the below unit depending on the resource type. Any change of unit will cause inaccurate computation of the total minimum requirement.
 
-* cpu  - millicore (m)
-* memory - Mibibyte (Mi)
-* diskSize - Gigabyte (GB)
+- cpu - millicore (m)
+- memory - Mibibyte (Mi)
+- diskSize - Gigabyte (GB)
 
 </TabItem>
 
@@ -449,9 +436,9 @@ The Kubernetes pod can run in one or more replicas based on the replica count co
 
 Kubernetes provides a way to schedule the pods on master/worker nodes or both. Pack Constraints framework must know where the pods are scheduled because the resource validation validates only the master machine pool when the pods are scheduled on master nodes. Similarily, if the pods are scheduled on worker nodes, then only the worker machine pool will be validated. In the case of daemon sets, the pods are scheduled in both master and worker nodes, and the framework validates both master and worker machine pool configurations before the cluster is submitted for deployment.
 
-* master - pods are scheduled only on master nodes
-* worker - pods are scheduled only on worker nodes
-* all -  pods are scheduled on both master and worker nodes
+- master - pods are scheduled only on master nodes
+- worker - pods are scheduled only on worker nodes
+- all - pods are scheduled on both master and worker nodes
 
 </TabItem>
 
@@ -469,8 +456,8 @@ Pack Presets are the predefined values in a file called `presets.yaml` in the pa
 
 This `presets.yaml` shows two presets
 
-* `privatePackRegistry`
-* `publicPackRegistry`
+- `privatePackRegistry`
+- `publicPackRegistry`
 
 with a different set of pre-defined values.
 
@@ -506,25 +493,25 @@ presets:
 
 <TabItem label="name" value="preset_attributes_name">
 
-*Name of the preset.* It must be unique.
+_Name of the preset._ It must be unique.
 
 </TabItem>
 
 <TabItem label="displayName" value="preset_attributes_displayName">
 
-*Name of the preset.* It is visible in the parameters configuration
+_Name of the preset._ It is visible in the parameters configuration
 
 </TabItem>
 
 <TabItem label="remove" value="preset_attributes_remove">
 
-*An array of parameter names.* These are removed from the pack values when a preset is selected.
+_An array of parameter names._ These are removed from the pack values when a preset is selected.
 
 </TabItem>
 
 <TabItem label="add" value="preset_attributes_add">
 
-*A set of values in YAML format.* These are added/updated in the pack values when a preset is selected.
+_A set of values in YAML format._ These are added/updated in the pack values when a preset is selected.
 
 </TabItem>
 
@@ -559,33 +546,32 @@ user:
 
 ### Supported Variables
 
-
-| Macro | Description |
-|-------|-------------|
-| `{{.spectro.system.user.name}}`| The name of the user currently logged in. |
-| `{{.spectro.system.user.uid}}`  | The unique identifier of the user currently logged in. |
-| `{{.spectro.system.user.email}}`  | The email address of the user currently logged in. |
-| `{{.spectro.system.tenant.uid}}`  | The unique identifier of the current tenant. |
-| `{{.spectro.system.project.name}}`  | The name of the project. |
-| `{{.spectro.system.project.uid}}`  | The unique identifier of the project. |
-| `{{.spectro.system.clusterprofile.name}}`| The name of the cluster profile associated with the current project. |
-| `{{.spectro.system.clusterprofile.uid}}` | The unique identifier of the cluster profile the pack is part of. |
-| `{{.spectro.system.clusterprofile.version}}`| The current version of the cluster profile the pack is part of.|
-| `{{.spectro.system.cluster.name}}`  | The name of the cluster. |
-| `{{.spectro.system.cluster.uid}}`  | The unique identifier of the cluster. |
-| `{{.spectro.system.cloudaccount.name}}`  | The name of the cloud account associated with the current project. |
-| `{{.spectro.system.cloudaccount.uid}}`  | The unique identifier of the cloud account associated with the current project. |
-| `{{.spectro.system.kubernetes.version}}`  | The version of Kubernetes currently running on the cluster. |
-| `{{.spectro.system.reverseproxy.server}}`  | The hostname of the reverse proxy server. |
-| `{{.spectro.system.reverseproxy.port}}`  | The port number of the reverse proxy server. |
-| `{{.spectro.system.reverseproxy.protocol}}`  | The protocol used by the reverse proxy server, either HTTP or HTTPS. |
-| `{{.spectro.system.reverseproxy.vhostport}}`  | The port number used by the virtual host on the reverse proxy server. |
-| `{{.spectro.system.cloud.type }}`  | The type of cloud provider being used, such as AWS, GCP, Azure or other providers. |
-| `{{.spectro.system.cloud.region }}`   | The region where the cloud resources are located. |
-| `{{.spectro.system.clusterprofile.infra.name}}`    | The name of the cluster profile. |
-| `{{.spectro.system.clusterprofile.infra.uid}}`   | The unique identifier of the cluster profile. |
-| `{{.spectro.system.clusterprofile.infra.version}}`  | The version of the cluster profile. |
-| `{{.spectro.system.cluster.kubevip}}`| The IP address of the virtual IP (VIP) assigned to the cluster and load balancer for the control plane. This macro is only available for Edge and vSphere cluster deployments. |
+| Macro                                              | Description                                                                                                                                                                    |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `{{.spectro.system.user.name}}`                    | The name of the user currently logged in.                                                                                                                                      |
+| `{{.spectro.system.user.uid}}`                     | The unique identifier of the user currently logged in.                                                                                                                         |
+| `{{.spectro.system.user.email}}`                   | The email address of the user currently logged in.                                                                                                                             |
+| `{{.spectro.system.tenant.uid}}`                   | The unique identifier of the current tenant.                                                                                                                                   |
+| `{{.spectro.system.project.name}}`                 | The name of the project.                                                                                                                                                       |
+| `{{.spectro.system.project.uid}}`                  | The unique identifier of the project.                                                                                                                                          |
+| `{{.spectro.system.clusterprofile.name}}`          | The name of the cluster profile associated with the current project.                                                                                                           |
+| `{{.spectro.system.clusterprofile.uid}}`           | The unique identifier of the cluster profile the pack is part of.                                                                                                              |
+| `{{.spectro.system.clusterprofile.version}}`       | The current version of the cluster profile the pack is part of.                                                                                                                |
+| `{{.spectro.system.cluster.name}}`                 | The name of the cluster.                                                                                                                                                       |
+| `{{.spectro.system.cluster.uid}}`                  | The unique identifier of the cluster.                                                                                                                                          |
+| `{{.spectro.system.cloudaccount.name}}`            | The name of the cloud account associated with the current project.                                                                                                             |
+| `{{.spectro.system.cloudaccount.uid}}`             | The unique identifier of the cloud account associated with the current project.                                                                                                |
+| `{{.spectro.system.kubernetes.version}}`           | The version of Kubernetes currently running on the cluster.                                                                                                                    |
+| `{{.spectro.system.reverseproxy.server}}`          | The hostname of the reverse proxy server.                                                                                                                                      |
+| `{{.spectro.system.reverseproxy.port}}`            | The port number of the reverse proxy server.                                                                                                                                   |
+| `{{.spectro.system.reverseproxy.protocol}}`        | The protocol used by the reverse proxy server, either HTTP or HTTPS.                                                                                                           |
+| `{{.spectro.system.reverseproxy.vhostport}}`       | The port number used by the virtual host on the reverse proxy server.                                                                                                          |
+| `{{.spectro.system.cloud.type }}`                  | The type of cloud provider being used, such as AWS, GCP, Azure or other providers.                                                                                             |
+| `{{.spectro.system.cloud.region }}`                | The region where the cloud resources are located.                                                                                                                              |
+| `{{.spectro.system.clusterprofile.infra.name}}`    | The name of the cluster profile.                                                                                                                                               |
+| `{{.spectro.system.clusterprofile.infra.uid}}`     | The unique identifier of the cluster profile.                                                                                                                                  |
+| `{{.spectro.system.clusterprofile.infra.version}}` | The version of the cluster profile.                                                                                                                                            |
+| `{{.spectro.system.cluster.kubevip}}`              | The IP address of the virtual IP (VIP) assigned to the cluster and load balancer for the control plane. This macro is only available for Edge and vSphere cluster deployments. |
 
 </TabItem>
 

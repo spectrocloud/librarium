@@ -12,8 +12,6 @@ Palette API keys can be used to authenticate requests to the Palette REST API ca
 
 Tenant administrators have additional permissions and capabilities to manage API keys. Tenant admins can create, edit, revoke, and delete API keys for any user within the tenant. Each of these actions is described in detail in the following resources. Refer to the [Tenant Admin API Key Management](../../../tenant-settings/api-key-management.md) section for more information.
 
-
-
 ## Resources
 
 - [Tenant Admin API Key Management](../../../tenant-settings/api-key-management.md)

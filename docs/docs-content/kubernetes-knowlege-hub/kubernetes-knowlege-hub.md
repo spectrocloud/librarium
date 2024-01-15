@@ -3,12 +3,9 @@ sidebar_label: "Kubernetes Knowledge Hub"
 title: "Kubernetes Knowledge Hub"
 description: "Kubernetes Knowledge Hub Repository"
 hide_table_of_contents: true
-sidebar_custom_props: 
+sidebar_custom_props:
   icon: "bookmark"
 ---
-
-
-
 
 # Welcome to the Spectro Cloud Knowledge Portal
 
@@ -19,8 +16,6 @@ If you have a topic in mind you would like to see, use the Feedback app on the l
 
 - [How-To](/kubernetes-knowlege-hub/how-to)
 
-
 - [Tutorials](/kubernetes-knowlege-hub/tutorials)
-  
 
 <br />

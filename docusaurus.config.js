@@ -6,7 +6,9 @@ const lightCodeTheme = themes.oceanicNext;
 const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
-const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
+const {
+  pluginPacksAndIntegrationsData,
+} = require("./plugins/packs-integrations");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 
 /** @type {import('@docusaurus/types').Config} */
@@ -105,7 +107,10 @@ const config = {
           // exclude: ["api/v1/palette-apis-3-4"],
 
           sidebarPath: require.resolve("./sidebars.js"),
-          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          async sidebarItemsGenerator({
+            defaultSidebarItemsGenerator,
+            ...args
+          }) {
             const { docs } = args;
             const filteredDocs = docs.filter((doc) => {
               return true;
@@ -287,10 +292,12 @@ const config = {
             position: "left",
             docsPluginId: "default",
             dropdownItemsAfter: [
-              ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-                href: versionUrl,
-                label: versionName,
-              })),
+              ...Object.entries(ArchivedVersions).map(
+                ([versionName, versionUrl]) => ({
+                  href: versionUrl,
+                  label: versionName,
+                }),
+              ),
             ],
           },
           {
@@ -298,10 +305,12 @@ const config = {
             position: "left",
             docsPluginId: "api",
             dropdownItemsAfter: [
-              ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-                href: versionUrl,
-                label: versionName,
-              })),
+              ...Object.entries(ArchivedVersions).map(
+                ([versionName, versionUrl]) => ({
+                  href: versionUrl,
+                  label: versionName,
+                }),
+              ),
             ],
           },
         ],
@@ -365,7 +374,15 @@ const config = {
         defaultLanguage: "json",
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ["hcl", "bash", "json", "powershell", "go", "javascript", "rust"],
+        additionalLanguages: [
+          "hcl",
+          "bash",
+          "json",
+          "powershell",
+          "go",
+          "javascript",
+          "rust",
+        ],
         magicComments: [
           {
             className: "theme-code-block-highlighted-line",

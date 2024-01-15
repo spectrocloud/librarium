@@ -7,7 +7,11 @@ interface YouTubeProps {
 
 const YouTube = ({ url, title }: YouTubeProps) => {
   if (!url) {
-    return <p style={{ textAlign: "center", color: "red" }}>Error: No YouTube URL provided.</p>;
+    return (
+      <p style={{ textAlign: "center", color: "red" }}>
+        Error: No YouTube URL provided.
+      </p>
+    );
   }
 
   const embedURL = `${url}`;

@@ -27,9 +27,10 @@ function SchemaItem({
     nullable = schema.nullable;
   }
 
-  const renderRequired = guard(Array.isArray(required) ? required.includes(name) : required, () => (
-    <span className="openapi-schema__required">required</span>
-  ));
+  const renderRequired = guard(
+    Array.isArray(required) ? required.includes(name) : required,
+    () => <span className="openapi-schema__required">required</span>,
+  );
 
   const renderDeprecated = guard(deprecated, () => (
     <span className="openapi-schema__deprecated">deprecated</span>
@@ -62,7 +63,10 @@ function SchemaItem({
 
   const renderQualifierMessage = guard(qualifierMessage, (message) => (
     <div>
-      <ReactMarkdown children={createDescription(message)} rehypePlugins={[rehypeRaw]} />
+      <ReactMarkdown
+        children={createDescription(message)}
+        rehypePlugins={[rehypeRaw]}
+      />
     </div>
   ));
 
@@ -72,7 +76,7 @@ function SchemaItem({
       <div className="">
         <ReactMarkdown children={`**Default value:** \`${value}\``} />
       </div>
-    )
+    ),
   );
 
   const schemaContent = (
@@ -86,9 +90,13 @@ function SchemaItem({
           {name}
         </strong>
         <span className="openapi-schema__name">
-          {typeof schemaName === "object" ? JSON.stringify(schemaName) : schemaName}
+          {typeof schemaName === "object"
+            ? JSON.stringify(schemaName)
+            : schemaName}
         </span>
-        {(nullable || required || deprecated) && <span className="openapi-schema__divider"></span>}
+        {(nullable || required || deprecated) && (
+          <span className="openapi-schema__divider"></span>
+        )}
         {renderNullable}
         {!deprecated && renderRequired}
         {renderDeprecated}

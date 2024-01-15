@@ -9,16 +9,15 @@ tags: ["clusters", "cluster management"]
 
 Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a group of clusters from getting automatically upgraded when Palette is upgraded. The three ways to activate this feature are:
 
-* Pause Upgrades for a Single Cluster
-* Pause Upgrades for all Clusters within Project Scope
-* Pause Upgrades for all Clusters within Tenant Scope
+- Pause Upgrades for a Single Cluster
+- Pause Upgrades for all Clusters within Project Scope
+- Pause Upgrades for all Clusters within Tenant Scope
 
 ## Prerequisites
 
-* Cluster admin permissions or Tenant admin permissions when pausing upgrades for all clusters within tenant scope.
+- Cluster admin permissions or Tenant admin permissions when pausing upgrades for all clusters within tenant scope.
 
-* An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
-
+- An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
 
 ## Enablement
 
@@ -34,7 +33,7 @@ Use the tabs below to view the instructions for enabling the **Pause Agent Upgra
 
 3. Select your cluster.
 
-4.  Select **Settings** > **Cluster Settings**.
+4. Select **Settings** > **Cluster Settings**.
 
 5. Toggle the **Pause Agent Upgrades** button to pause cluster upgrades.
 

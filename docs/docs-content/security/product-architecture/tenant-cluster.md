@@ -8,22 +8,21 @@ sidebar_position: 40
 tags: ["security"]
 ---
 
-
-Tenant clusters are Kubernetes clusters that Palette deploys for customers. Tenant clusters can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](../../glossary-all.md#cluster-profile). 
+Tenant clusters are Kubernetes clusters that Palette deploys for customers. Tenant clusters can be launched in the customer's choice of public or private cloud or bare metal environment. Palette offers complete flexibility and control in designing these tenant clusters through a construct called [Cluster Profiles](../../glossary-all.md#cluster-profile).
 
 [Cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) are cluster construction templates. Palette deploys a Kubernetes cluster based on what the profile specifies.
 
 A cluster profile consists of core layers that consist of an Operating System (OS), a Kubernetes distribution, networking, and storage, and any add-on layers such as monitoring, logging, and more. Palette offers several out-of-the-box choices for each profile layer in the form of packs and the flexibility for you to bring your own pack for use in Palette cluster profiles.
 
-Palette's flexibility and extensibility make the security of tenant clusters a shared responsibility, as listed in the table. 
+Palette's flexibility and extensibility make the security of tenant clusters a shared responsibility, as listed in the table.
 
-|Layer            |Out of the box Pack | Custom Pack|
-|:---------------|:---------|:--------------|
-|Operating System |Spectro Cloud Responsibility|Customer Responsibility|
-|Kubernetes|Spectro Cloud Responsibility|Customer Responsibility|
-|Storage|Spectro Cloud Responsibility|Customer Responsibility|
-|Networking|Spectro Cloud Responsibility|Customer Responsibility|
-|Add-Ons|Spectro Cloud & Customer Responsibility|Customer Responsibility|
+| Layer            | Out of the box Pack                     | Custom Pack             |
+| :--------------- | :-------------------------------------- | :---------------------- |
+| Operating System | Spectro Cloud Responsibility            | Customer Responsibility |
+| Kubernetes       | Spectro Cloud Responsibility            | Customer Responsibility |
+| Storage          | Spectro Cloud Responsibility            | Customer Responsibility |
+| Networking       | Spectro Cloud Responsibility            | Customer Responsibility |
+| Add-Ons          | Spectro Cloud & Customer Responsibility | Customer Responsibility |
 
 We ensure our out-of-the-box core layer packs are secure. You ensure security for custom packs and add-on packs you bring to Palette. Palette provides defaults for its out-of-the-box add-on layers based on third-party best practices. You have the flexibility to tune the configuration to fit your needs, making security a shared responsibility.
 
@@ -49,9 +48,7 @@ Palette's OS hardening utility performs the following tasks:
 
 - Applies the latest available security updates.
 
-
 - Hardens SSH server parameters, network parameters (sysctl), and system files by ensuring proper file permissions are set.
-
 
 - Removes legacy services and Graphical User Interface (GUI) packages.
 

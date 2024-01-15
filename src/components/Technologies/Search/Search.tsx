@@ -8,7 +8,10 @@ interface IntegrationSearchProps {
   placeholder: string;
 }
 
-export default function IntegrationSearch({ onSearch, placeholder }: IntegrationSearchProps) {
+export default function IntegrationSearch({
+  onSearch,
+  placeholder,
+}: IntegrationSearchProps) {
   const [inputValue, setInputValue] = useState("");
   const ref = useRef<HTMLInputElement>(null);
 

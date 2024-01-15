@@ -26,4 +26,4 @@ jobs:
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'The Docs Algolia crawler job failed. Please check the GitHub Actions logs for more details.'
+          SLACK_MESSAGE: "The Docs Algolia crawler job failed. Please check the GitHub Actions logs for more details."

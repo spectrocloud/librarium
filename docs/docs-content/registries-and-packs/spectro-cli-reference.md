@@ -7,7 +7,6 @@ hide_table_of_contents: false
 sidebar_position: 10
 ---
 
-
 The Spectro CLI tool is a command-line interface to interact with Palette registry server. You can use the CLI to upload or download packs and perform other operations.
 
 :::info
@@ -20,51 +19,50 @@ We recommend using an OCI registry to store and maintain your packs. Refer to th
 
 - A Legacy Pack Registry server must be available and accessible from the CLI. Refer to the [Add Custom Registries](./adding-a-custom-registry.md) section for more information.
 
-
 ## Installation
 
 The Spectro CLI tool is currently available for OSX and Linux.
 
 1. Download the CLI file for your operating system.
 
-    <Tabs>
-    
-    <TabItem label="OSX" value="osx_cli">
-    
-    ```bash
-    wget https://spectro-cli.s3.amazonaws.com/v4.2.0/osx/spectro
-    ```
-    
-    </TabItem>
-    
-    <TabItem label="Linux" value="linux_cli">
-    
-    ```bash
-    wget ttps://spectro-cli.s3.amazonaws.com/v4.2.0/linux/spectro
-    ```
-    
-    </TabItem>
-    
-    </Tabs>
+   <Tabs>
+
+   <TabItem label="OSX" value="osx_cli">
+
+   ```bash
+   wget https://spectro-cli.s3.amazonaws.com/v4.2.0/osx/spectro
+   ```
+
+   </TabItem>
+
+   <TabItem label="Linux" value="linux_cli">
+
+   ```bash
+   wget ttps://spectro-cli.s3.amazonaws.com/v4.2.0/linux/spectro
+   ```
+
+   </TabItem>
+
+   </Tabs>
 
 2. Provide the executable permission to the CLI spectro.
 
-    ```bash
-    chmod +x spectro
-    ```
+   ```bash
+   chmod +x spectro
+   ```
 
 ## Global Flags
 
 The following flags are available for all the Spectro CLI commands
 
-| Short Flag | Long Flag  | Description | Type |
-| ---- | ---| ----------- | -------- |
-| `-h` | `--help` | Help for the command |  boolean |
-| `-s` | `--home` | Spectro home directory (default: $HOME/.spectro) | string |
+| Short Flag | Long Flag | Description                                      | Type    |
+| ---------- | --------- | ------------------------------------------------ | ------- |
+| `-h`       | `--help`  | Help for the command                             | boolean |
+| `-s`       | `--home`  | Spectro home directory (default: $HOME/.spectro) | string  |
 
 ## Commands
 
-Reference information for all the Spectro CLI commands. 
+Reference information for all the Spectro CLI commands.
 
 ## Registry
 
@@ -72,11 +70,9 @@ Reference information for all the Spectro CLI commands.
 
 Authenticate user with Spectro Cloud pack registry by using the login command:
 
-
 ```bash
  spectro registry login [SERVER]
 ```
-
 
 #### Examples
 
@@ -90,18 +86,15 @@ Authenticate user with Spectro Cloud pack registry by using the login command:
 
 <br />
 
-
 #### Arguments
 
 SERVER - Spectro Cloud pack registry server in the format [host:port]
-
 
 #### Flags
 
 -i, --insecure - Insecure is used when the pack registry is installed in HTTP or HTTPS with self-signed certificates.
 
 -d, --default - Set the server as default Spectro Cloud pack registry for all the CLI commands.
-
 
 :::tip
 
@@ -119,11 +112,9 @@ The following subcommands are available for the `pack` command.
 
 Generate a pack in the target directory using a Helm Chart.
 
-
 ```bash
  spectro pack build [PACK_NAME] [TARGET_DIR]
 ```
-
 
 #### Examples
 
@@ -131,12 +122,10 @@ Generate a pack in the target directory using a Helm Chart.
  spectro pack build my-awesome-pack ./my-awesome-pack
 ```
 
-
-
 #### Arguments
 
-PACK_NAME - Name of the pack 
-TARGET_DIR - Directory containing the pack data 
+PACK_NAME - Name of the pack
+TARGET_DIR - Directory containing the pack data
 
 #### Flags
 
@@ -144,15 +133,11 @@ TARGET_DIR - Directory containing the pack data
 
 -r, --registry-server - Override the default Spectro registry
 
-
-
 <br />
 
 ### Push
 
 Upload the pack content from the pack source dir to the Spectro Cloud pack registry.
-
-
 
 ```bash
  spectro pack push [PACK_SOURCE_DIR] [flags]
@@ -172,7 +157,6 @@ Upload the pack content from the pack source dir to the Spectro Cloud pack regis
  spectro pack push /tmp/packs/nginx-1.16.1 --force --message "updated nginx pack values"
 ```
 
-
 #### Arguments
 
 PACK_SOURCE_DIR: Directory location where pack content is located.
@@ -181,19 +165,17 @@ PACK_SOURCE_DIR: Directory location where pack content is located.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry
 
--f, --force - If a pack with the same tag already exists in the registry, then the *force* option can be used to overwrite the pack contents in the registry.
+-f, --force - If a pack with the same tag already exists in the registry, then the _force_ option can be used to overwrite the pack contents in the registry.
 
 -m, --message - A short description about the pack changes. It is mandatory to set this flag when the force option is enabled.
 
---skip-digest-check - By default, the *force* option can push the pack only if the pack content digest is different than the registry pack digest. So the *skip digest* command can be used to skip the comparison of the digests.
+--skip-digest-check - By default, the _force_ option can push the pack only if the pack content digest is different than the registry pack digest. So the _skip digest_ command can be used to skip the comparison of the digests.
 
 <br />
 
 ### List
 
 List all the packs from the Spectro Cloud pack registry:
-
-
 
 ```bash
  spectro pack ls [flags]
@@ -217,11 +199,7 @@ List all the packs from the Spectro Cloud pack registry:
 
 -r, --registry-server string - To override the default pack registry
 
-
-
 Download the packs from the pack registry to a pack target location:
-
-
 
 ```bash
  spectro pack pull NAME[:TAG|@DIGEST] TARGET_DIR [flags]
@@ -239,7 +217,6 @@ Download the packs from the pack registry to a pack target location:
 
 ### Tag
 
-
 #### Arguments
 
 PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a sha digest.
@@ -250,17 +227,11 @@ PACK_TARGET_DIR - Directory location where pack content will be pulled.
 
 -r, --registry-server string - To override the default pack registry.
 
-
-
-
 Create a new tag to a pack which is already pushed to the pack registry:
-
-
 
 ```bash
  spectro pack tag add SOURCE_PACK:TAG TARGET_LABEL [flags]
 ```
-
 
 #### Examples
 
@@ -272,23 +243,19 @@ Create a new tag to a pack which is already pushed to the pack registry:
  spectro pack tag add ubuntu:lts__14.4.3 14.4.3-beta -g lts -r spectro.io:5000
 ```
 
-
 :::info
 
 Tag is a combination of label and the group name. The label is mandatory, whereas the group is optional.
 
 :::
 
-
 Using the example `lts___14.4.3`, the following is the breakdown of the tag:
 
-| Element | Description | Required |
-| --- | ----------- | -------- |
-| `lts`| The group name. | No |
-| `14.4.3 `| The label. | Yes |
-| `lts__14.4.3` | The tag, which is a combination of the group name and the label.| Yes |
-
-
+| Element       | Description                                                      | Required |
+| ------------- | ---------------------------------------------------------------- | -------- |
+| `lts`         | The group name.                                                  | No       |
+| `14.4.3 `     | The label.                                                       | Yes      |
+| `lts__14.4.3` | The tag, which is a combination of the group name and the label. | Yes      |
 
 #### Arguments
 
@@ -304,15 +271,11 @@ TARGET_LABEL - Target tag label.
 
 <br />
 
-
-
 To remove a tag from a pack which is already pushed to the pack registry use the `pack tag delete` subcommand.
-
 
 ```bash
  spectro pack tag delete PACK:TAG [flags]
 ```
-
 
 #### Examples
 
@@ -323,8 +286,6 @@ To remove a tag from a pack which is already pushed to the pack registry use the
 ```bash
  spectro pack tag delete ubuntu:14.4.3 -r spectro.io:5000
 ```
-
-
 
 :::info
 
@@ -340,7 +301,6 @@ PACK_NAME: TAG - Pack name and Tag which needs to be deleted.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry.
 
-
 ## Version
 
 Check the version of the Spectro CLI that is currently installed.
@@ -348,7 +308,6 @@ Check the version of the Spectro CLI that is currently installed.
 ```shell
 spectro version
 ```
-
 
 ```bash hideClipboard
 Spectro ClI Version 4.2.0 linux/amd64

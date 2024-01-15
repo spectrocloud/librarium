@@ -8,7 +8,13 @@ import IconExternalLink from "@theme/Icon/ExternalLink";
 import styles from "./styles.module.css";
 import IconMapper from "@site/src/components/IconMapper/IconMapper";
 
-export default function DocSidebarItemLink({ item, onItemClick, activePath, level, ...props }) {
+export default function DocSidebarItemLink({
+  item,
+  onItemClick,
+  activePath,
+  level,
+  ...props
+}) {
   const { href, label, className, autoAddBaseUrl } = item;
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
@@ -18,14 +24,18 @@ export default function DocSidebarItemLink({ item, onItemClick, activePath, leve
         ThemeClassNames.docs.docSidebarItemLink,
         ThemeClassNames.docs.docSidebarItemLinkLevel(level),
         "menu__list-item",
-        className
+        className,
       )}
       key={label}
     >
       <Link
-        className={clsx("menu__link", !isInternalLink && styles.menuExternalLink, {
-          "menu__link--active": isActive,
-        })}
+        className={clsx(
+          "menu__link",
+          !isInternalLink && styles.menuExternalLink,
+          {
+            "menu__link--active": isActive,
+          },
+        )}
         autoAddBaseUrl={autoAddBaseUrl}
         aria-current={isActive ? "page" : undefined}
         to={href}
@@ -35,7 +45,9 @@ export default function DocSidebarItemLink({ item, onItemClick, activePath, leve
         {...props}
       >
         {item?.customProps?.icon && (
-          <div className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}>
+          <div
+            className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}
+          >
             <IconMapper type={item?.customProps?.icon}></IconMapper>
           </div>
         )}

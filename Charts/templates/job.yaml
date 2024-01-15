@@ -2,14 +2,14 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: restart-docs
-  namespace: {{ .Chart.Name }}
+  namespace: { { .Chart.Name } }
 spec:
   concurrencyPolicy: Forbid
-  schedule: '0 0 * * *'
+  schedule: "0 0 * * *"
   jobTemplate:
     spec:
-      backoffLimit: 2 
-      activeDeadlineSeconds: 600 
+      backoffLimit: 2
+      activeDeadlineSeconds: 600
       template:
         spec:
           serviceAccountName: restart-docs
@@ -18,16 +18,16 @@ spec:
             - name: kubectl
               image: bitnami/kubectl
               command:
-                - 'kubectl'
-                - 'rollout'
-                - 'restart'
-                - 'deployment/{{ .Chart.Name }}'
+                - "kubectl"
+                - "rollout"
+                - "restart"
+                - "deployment/{{ .Chart.Name }}"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: restart-docs
-  namespace: {{ .Chart.Name }}
+  namespace: { { .Chart.Name } }
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -35,13 +35,13 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: restart-docs
-    namespace: {{ .Chart.Name }}
+    namespace: { { .Chart.Name } }
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: restart-docs
-  namespace: {{ .Chart.Name }}
+  namespace: { { .Chart.Name } }
 rules:
   - apiGroups: ["apps", "extensions"]
     resources: ["deployments"]
@@ -52,4 +52,4 @@ kind: ServiceAccount
 apiVersion: v1
 metadata:
   name: restart-docs
-  namespace: {{ .Chart.Name }}
+  namespace: { { .Chart.Name } }

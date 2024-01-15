@@ -33,7 +33,10 @@ window.addEventListener("ucEvent", function (e) {
     // Please replace the ad service name here with the customized service
     var ucAdService = "Google Ads Remarketing";
 
-    if (e.detail.hasOwnProperty(ucAnalyticsService) && e.detail.hasOwnProperty(ucAdService)) {
+    if (
+      e.detail.hasOwnProperty(ucAnalyticsService) &&
+      e.detail.hasOwnProperty(ucAdService)
+    ) {
       gtag("consent", "update", {
         ad_storage: e.detail[ucAdService] ? "granted" : "denied",
         analytics_storage: e.detail[ucAnalyticsService] ? "granted" : "denied",
@@ -46,7 +49,9 @@ window.addEventListener("ucEvent", function (e) {
       }
       if (e.detail.hasOwnProperty(ucAnalyticsService)) {
         gtag("consent", "update", {
-          analytics_storage: e.detail[ucAnalyticsService] ? "granted" : "denied",
+          analytics_storage: e.detail[ucAnalyticsService]
+            ? "granted"
+            : "denied",
         });
       }
     }

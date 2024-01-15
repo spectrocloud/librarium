@@ -6,28 +6,21 @@ hide_table_of_contents: false
 tags: ["edge"]
 ---
 
-
-*EdgeForge* is the process or workflow of preparing an Edge host with all the required components and dependencies. The EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a successful site deployment. 
+_EdgeForge_ is the process or workflow of preparing an Edge host with all the required components and dependencies. The EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a successful site deployment.
 
 EdgeForge contains three critical components.
 
-* Edge Installer ISO.
+- Edge Installer ISO.
 
+- Edge Host Agent Container Image.
 
-* Edge Host Agent Container Image.
-
-
-* Edge Provider Container Images.
-
-
+- Edge Provider Container Images.
 
 Each component plays a critical role in the [lifecycle](../edge-native-lifecycle.md) of an Edge deployment. Review the [Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each component.
 
 ![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
 
-
 ## Get Started
-
 
 To start building a custom Edge artifact, use the [Build Edge Artifacts](palette-canvos.md) guide.
 
@@ -57,8 +50,7 @@ Palette provides these artifacts out-of-the-box. All the container images are ho
 
 <br />
 
-  ![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.png)
-
+![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.png)
 
 :::info
 
@@ -73,36 +65,28 @@ The Edge Installer supports various deployment scenarios. You can customize your
 <br />
 
 - **Additional Packages**:
-You may need to install additional OS packages for your specific needs, such as an NVIDIA driver or a network package essential for your hardware to establish an outgoing network connection. These additional OS packages would need to be added to the Edge Installer and the Edge Provider images.
-
+  You may need to install additional OS packages for your specific needs, such as an NVIDIA driver or a network package essential for your hardware to establish an outgoing network connection. These additional OS packages would need to be added to the Edge Installer and the Edge Provider images.
 
 - **Installer OS Restriction**:
-Palette's out-of-the-box Edge Installer is based on the OpenSUSE OS. If you want to install an Ubuntu or an RHEL-based Edge cluster, you may need an Edge Installer based on another OS.
-
+  Palette's out-of-the-box Edge Installer is based on the OpenSUSE OS. If you want to install an Ubuntu or an RHEL-based Edge cluster, you may need an Edge Installer based on another OS.
 
 - **Optimize Bandwidth**:
-In your Edge environments, you may have internet connectivity but limited bandwidth. You can optimize the installation process by embedding all the required components such as the Edge Host Container Image, the Edge Provider Container Images, and content bundles into the Edge Installer. By embedding the required components in the Edge Installer, you remove the need to download the components during installation.
-
+  In your Edge environments, you may have internet connectivity but limited bandwidth. You can optimize the installation process by embedding all the required components such as the Edge Host Container Image, the Edge Provider Container Images, and content bundles into the Edge Installer. By embedding the required components in the Edge Installer, you remove the need to download the components during installation.
 
 - **Bootstrap Install Configuration**:
-You can embed the Edge Installer configuration user data into the Edge Installer. This removes the need to create separate user data uploaded as an ISO through a USB drive. Check out the [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data) guide to learn more about user data and when to use multiple user data files.
-
+  You can embed the Edge Installer configuration user data into the Edge Installer. This removes the need to create separate user data uploaded as an ISO through a USB drive. Check out the [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data) guide to learn more about user data and when to use multiple user data files.
 
 - **Bring Your Own OS (BYOOS)**:
-For environments that require a different runtime OS, you can specify another OS through the [BYOOS](/integrations/byoos) option. Follow the instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about how you can customize the OS used in an Edge deployment.
+  For environments that require a different runtime OS, you can specify another OS through the [BYOOS](/integrations/byoos) option. Follow the instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about how you can customize the OS used in an Edge deployment.
 
 <br />
 
 ## Resources
 
-
 - [Build Edge Artifacts](palette-canvos.md)
-
 
 - [Build Preloaded Content Bundles](build-content-bundle.md)
 
-
 - [Build Edge Artifacts using a Content Bundle](build-artifacts.md)
-
 
 - [Prepare User Data](prepare-user-data.md)

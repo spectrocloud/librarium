@@ -9,15 +9,11 @@ tags: ["self-hosted", "enterprise"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 
-This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully. 
-
-
+This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully.
 
 ## Prerequisites
-
 
 :::caution
 
@@ -25,47 +21,34 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
 
 :::
 
-
-
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available.
-
 
 - [Helm](https://helm.sh/docs/intro/install/) is installed and available.
 
-
 - Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette. We recommend using a role with cluster-admin permissions to install Palette.
-
 
 - The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
 
-
-
 - Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager configuration to be installed as part of the installation process. If Cert Manager is already installed, you must uninstall it before installing Palette.
-
 
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
-
-
 - We recommended the following resources for Palette. Refer to the [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
 
-    - 8 CPUs per node.
+  - 8 CPUs per node.
 
-    - 16 GB Memory per node.
+  - 16 GB Memory per node.
 
-    - 100 GB Disk Space per node.
-    
-    - A Container Storage Interface (CSI) for persistent data.
+  - 100 GB Disk Space per node.
+  - A Container Storage Interface (CSI) for persistent data.
 
-    - A minimum of three worker nodes or three untainted control plane nodes.
-
+  - A minimum of three worker nodes or three untainted control plane nodes.
 
 - The following network ports must be accessible for Palette to operate successfully.
 
-  - TCP/443: Inbound and outbound to and from the Palette management cluster. 
+  - TCP/443: Inbound and outbound to and from the Palette management cluster.
 
   - TCP/6443: Outbound traffic from the Palette management cluster to the deployed clusters' Kubernetes API server.
-
 
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
 
@@ -74,17 +57,12 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
   - x509 SSL certificate key file in base64 format.
 
   - x509 SSL certificate authority file in base64 format.
-  
 
 - An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
 
-
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette.
 
-
 - Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for instructions on how to request access to the Helm Chart
-
-
 
 <br />
 
@@ -94,97 +72,83 @@ Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette
 
 :::
 
-
 ## Install Palette
 
 The following instructions are written agnostic to the Kubernetes distribution you are using. Depending on the underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your environment. Reach out to our support team if you need assistance.
 
-
 1. Open a terminal session and navigate to the directory where you downloaded the Palette Helm Charts provided by our support. We recommend you place all the downloaded files into the same directory. You should have the following Helm Charts:
 
-    - Spectro Management Plane Helm Chart.
+   - Spectro Management Plane Helm Chart.
 
-    - Cert Manager Helm Chart.
+   - Cert Manager Helm Chart.
 
-    - Image Swap Helm Chart - Only required if you are using a private OCI registry with remote registry caching enabled or installing Palette in an air-gapped environment.
+   - Image Swap Helm Chart - Only required if you are using a private OCI registry with remote registry caching enabled or installing Palette in an air-gapped environment.
 
-    <br />
+   <br />
 
-    ```shell hideClipboard
-    .
-    ├── cert-manager
-    ├── cert-manager-1.11.0.tgz
-    ├── image-swap
-    ├── image-swap-1.5.2.tgz
-    ├── spectro-mgmt-plane
-    └── spectro-mgmt-plane-4.0.19.tgz
+   ```shell hideClipboard
+   .
+   ├── cert-manager
+   ├── cert-manager-1.11.0.tgz
+   ├── image-swap
+   ├── image-swap-1.5.2.tgz
+   ├── spectro-mgmt-plane
+   └── spectro-mgmt-plane-4.0.19.tgz
 
-    3 directories, 3 files
-    ```
-
+   3 directories, 3 files
+   ```
 
 2. Extract each Helm Chart into its directory. Use the commands below as a reference. Do this for all the provided Helm Charts.
 
 <Tabs groupId="mode">
   <TabItem label="Non-Airgap" value="non-airgap">
 
+```shell
+tar xzvf spectro-mgmt-plane-*.tgz
+```
 
-  ```shell
-  tar xzvf spectro-mgmt-plane-*.tgz
-  ``` 
-
-
-  ```shell
-  tar xzvf cert-manager-*.tgz
-  ```
-
+```shell
+tar xzvf cert-manager-*.tgz
+```
 
   </TabItem>
 
   <TabItem label="Airgap" value="airgap">
 
+```shell
+tar xzvf spectro-mgmt-plane-*.tgz
+```
 
-  ```shell
-  tar xzvf spectro-mgmt-plane-*.tgz
-  ``` 
+```shell
+tar xzvf cert-manager-*.tgz
+```
 
-
-  ```shell
-  tar xzvf cert-manager-*.tgz
-  ```
-
-  ```shell
-  tar xzvf image-swap-*.tgz
-  ```
+```shell
+tar xzvf image-swap-*.tgz
+```
 
   </TabItem>
 </Tabs>
 
-
-
 3. Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with the one you downloaded, as the version number may be different.
-
 
 ```shell
   helm upgrade --values cert-manager/values.yaml cert-manager cert-manager-1.11.0.tgz --install
 ```
-
 
 4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the Palette installation parameters, however, you must populate the following parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](palette-helm-ref.md) page.
 
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
 
+| **Parameter**                             | **Description**                                                                                                                       | **Type** |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                 | string   |
+| `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                              | object   |
+| `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. These credentials are provided by our support team. | object   |
+| `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean  |
 
-
-  | **Parameter** | **Description** | **Type** |
-  | --- | --- | --- |
-  | `env.rootDomain` | The URL name or IP address you will use for the Palette installation. | string |
-  | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.| object |
-  | `scar` | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. These credentials are provided by our support team. | object |
-  | `ingress.enabled`| Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean |
-
-  Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
+Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
 <details>
 <summary>Example - values.yaml</summary>
@@ -209,10 +173,10 @@ mongo:
   cpuLimit: "2000m"
   memoryLimit: "4Gi"
   pvcSize: "20Gi"
-  storageClass: ""  # leave empty to use the default storage class
+  storageClass: "" # leave empty to use the default storage class
 
 config:
-  installationMode: "connected" #values can be connected or airgap. 
+  installationMode: "connected" #values can be connected or airgap.
 
   # SSO SAML Configuration (Optional for self-hosted type)
   sso:
@@ -242,29 +206,29 @@ config:
     #
     # IMPORTANT: a DNS record must be created separately and it must be a wildcard to account for Organization prefixes
     # E.g., *.myfirstpalette.spectrocloud.com
-    rootDomain: "palette.example.com"    
-    
-  # stableEndpointAccess is used when deploying EKS clusters in Private network type. 
+    rootDomain: "palette.example.com"
+
+  # stableEndpointAccess is used when deploying EKS clusters in Private network type.
   # When your Saas installed instance have connectivity to the private VPC where you want to launch the cluster set the stableEndpointAccess to true
   cluster:
     stableEndpointAccess: false
 
-#  registry:
-#    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-#    name: "" #<Contact Spectro Cloud Sales for More info>
-#    password: "" #<Contact Spectro Cloud Sales for More info>
-#    username: "" #<Contact Spectro Cloud Sales for More info>
-#    insecureSkipVerify: false
-#    caCert: ""
+  #  registry:
+  #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+  #    name: "" #<Contact Spectro Cloud Sales for More info>
+  #    password: "" #<Contact Spectro Cloud Sales for More info>
+  #    username: "" #<Contact Spectro Cloud Sales for More info>
+  #    insecureSkipVerify: false
+  #    caCert: ""
 
-#  ociPackRegistry:
-#    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-#    name: "" #<Contact Spectro Cloud Sales for More info>
-#    password: "" #<Contact Spectro Cloud Sales for More info>
-#    username: "" #<Contact Spectro Cloud Sales for More info>
-#    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-#    insecureSkipVerify: false
-#    caCert: ""
+  #  ociPackRegistry:
+  #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+  #    name: "" #<Contact Spectro Cloud Sales for More info>
+  #    password: "" #<Contact Spectro Cloud Sales for More info>
+  #    username: "" #<Contact Spectro Cloud Sales for More info>
+  #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+  #    insecureSkipVerify: false
+  #    caCert: ""
 
   ociPackEcrRegistry:
     endpoint: "15789037893.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
@@ -287,9 +251,9 @@ config:
   #   mirrorRegistries: ""
 
   scar:
-    endpoint: "https://saas-repo.console.spectrocloud.com" 
-    username: "**********" 
-    password: "**********" 
+    endpoint: "https://saas-repo.console.spectrocloud.com"
+    username: "**********"
+    password: "**********"
     insecureSkipVerify: true
     caCert: ""
 
@@ -300,13 +264,12 @@ config:
   imageSwapConfig:
     isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
 
-
 nats:
   # Should we install nats as part of the nats chart bundled with hubble charts
   # If not enabled NATS service should be installed as a separate service.
 
   enabled: true
-  
+
   # Whether to front NATS with a cloud load balancer (internal == false) or
   # either share the ingress load balancer or use hostNetwork (internal == true).
   # See nats.natsUrl comments for further detail.
@@ -353,7 +316,7 @@ ingress:
   enabled: true
 
   ingress:
-    # Whether to front NGINX Ingress Controller with a cloud 
+    # Whether to front NGINX Ingress Controller with a cloud
     # load balancer (internal == false) or use host network
     internal: false
 
@@ -391,10 +354,10 @@ frps:
       crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
       key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
     ca:
-      crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+      crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
     service:
       annotations: {}
-      
+
 ui-system:
   enabled: true
   ui:
@@ -410,32 +373,28 @@ reach-system:
       http_proxy: ""
       https_proxy: ""
       no_proxy: ""
-      ca_crt_path: "" 
-
+      ca_crt_path: ""
 ```
 
 </details>
 
 </TabItem>
 
-
 <TabItem label="Airgap" value="airgap">
 
+| **Parameter**                       | **Description**                                                                                                                                                                                   | **Type** |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `env.rootDomain`                    | The URL name or IP address you will use for the Palette installation.                                                                                                                             | string   |
+| `config.installationMode`           | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                         | string   |
+| `ociPackEcrRegistry`                | The OCI registry credentials for the Palette FIPS packs repository.                                                                                                                               | object   |
+| `ociImageRegistry`                  | The OCI registry credentials for the Palette images repository.                                                                                                                                   | object   |
+| `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.                                                                             |
+| `imageSwapConfig.isEKSCluster`      | Set this value to `false` if you are NOT installing Palette on an EKS cluster.                                                                                                                    | boolean  |
+| `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`. | object   |
+| `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                             | boolean  |
 
-  | **Parameter** | **Description** | **Type** |
-  | --- | --- | --- |
-  | `env.rootDomain` | The URL name or IP address you will use for the Palette installation. | string |
-  | `config.installationMode` | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`. | string |
-  | `ociPackEcrRegistry` | The OCI registry credentials for the Palette FIPS packs repository.| object |
-  | `ociImageRegistry` | The OCI registry credentials for the Palette images repository.| object |
-  | `ociImageRegistry.mirrorRegistries`| Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.|
-  | `imageSwapConfig.isEKSCluster` | Set this value to `false` if you are NOT installing Palette on an EKS cluster. | boolean |
-  | `scar` | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.   | object |
-  | `ingress.enabled`| Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean |
+Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
-  Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
-
- 
 <details>
 <summary>Example - values.yaml</summary>
 
@@ -459,10 +418,10 @@ mongo:
   cpuLimit: "2000m"
   memoryLimit: "4Gi"
   pvcSize: "20Gi"
-  storageClass: ""  # leave empty to use the default storage class
+  storageClass: "" # leave empty to use the default storage class
 
 config:
-  installationMode: "airgap" #values can be connected or airgap. 
+  installationMode: "airgap" #values can be connected or airgap.
 
   # SSO SAML Configuration (Optional for self-hosted type)
   sso:
@@ -492,29 +451,29 @@ config:
     #
     # IMPORTANT: a DNS record must be created separately and it must be a wildcard to account for Organization prefixes
     # E.g., *.myfirstpalette.spectrocloud.com
-    rootDomain: "palette.example.com"    
-    
-  # stableEndpointAccess is used when deploying EKS clusters in Private network type. 
+    rootDomain: "palette.example.com"
+
+  # stableEndpointAccess is used when deploying EKS clusters in Private network type.
   # When your Saas installed instance have connectivity to the private VPC where you want to launch the cluster set the stableEndpointAccess to true
   cluster:
     stableEndpointAccess: false
 
-#  registry:
-#    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-#    name: "" #<Contact Spectro Cloud Sales for More info>
-#    password: "" #<Contact Spectro Cloud Sales for More info>
-#    username: "" #<Contact Spectro Cloud Sales for More info>
-#    insecureSkipVerify: false
-#    caCert: ""
+  #  registry:
+  #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+  #    name: "" #<Contact Spectro Cloud Sales for More info>
+  #    password: "" #<Contact Spectro Cloud Sales for More info>
+  #    username: "" #<Contact Spectro Cloud Sales for More info>
+  #    insecureSkipVerify: false
+  #    caCert: ""
 
-#  ociPackRegistry:
-#    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-#    name: "" #<Contact Spectro Cloud Sales for More info>
-#    password: "" #<Contact Spectro Cloud Sales for More info>
-#    username: "" #<Contact Spectro Cloud Sales for More info>
-#    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-#    insecureSkipVerify: false
-#    caCert: ""
+  #  ociPackRegistry:
+  #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+  #    name: "" #<Contact Spectro Cloud Sales for More info>
+  #    password: "" #<Contact Spectro Cloud Sales for More info>
+  #    username: "" #<Contact Spectro Cloud Sales for More info>
+  #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+  #    insecureSkipVerify: false
+  #    caCert: ""
 
   ociPackEcrRegistry:
     endpoint: "123456789.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
@@ -536,11 +495,10 @@ config:
     caCert: ""
     mirrorRegistries: "docker.io::public.ecr.aws/v2/123456789/spectro-images,gcr.io::public.ecr.aws/v2/123456789/spectro-images,ghcr.io::public.ecr.aws/v2/123456789/spectro-images,k8s.gcr.io::public.ecr.aws/v2/123456789/spectro-images,registry.k8s.io::public.ecr.aws/v2/123456789/spectro-images,quay.io::public.ecr.aws/v2/123456789/spectro-images"
 
-
   scar:
-    endpoint: "http://10.15.20.15:2015" 
-    username: "YWRtaW4=" 
-    password: "YWRtaW4=" 
+    endpoint: "http://10.15.20.15:2015"
+    username: "YWRtaW4="
+    password: "YWRtaW4="
     insecureSkipVerify: true
     caCert: ""
 
@@ -551,13 +509,12 @@ config:
   imageSwapConfig:
     isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
 
-
 nats:
   # Should we install nats as part of the nats chart bundled with hubble charts
   # If not enabled NATS service should be installed as a separate service.
 
   enabled: true
-  
+
   # Whether to front NATS with a cloud load balancer (internal == false) or
   # either share the ingress load balancer or use hostNetwork (internal == true).
   # See nats.natsUrl comments for further detail.
@@ -604,7 +561,7 @@ ingress:
   enabled: true
 
   ingress:
-    # Whether to front NGINX Ingress Controller with a cloud 
+    # Whether to front NGINX Ingress Controller with a cloud
     # load balancer (internal == false) or use host network
     internal: false
 
@@ -642,10 +599,10 @@ frps:
       crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
       key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
     ca:
-      crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+      crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
     service:
       annotations: {}
-      
+
 ui-system:
   enabled: true
   ui:
@@ -661,91 +618,80 @@ reach-system:
       http_proxy: ""
       https_proxy: ""
       no_proxy: ""
-      ca_crt_path: "" 
-
+      ca_crt_path: ""
 ```
 
 </details>
 
-
 </TabItem>
 </Tabs>
 
+5. This step only applies to those who are installing an airgap Palette or who are using a self-hosted OCI registry with registry caching enabled. Otherwise, skip to the next step.
 
-
-5. This step only applies to those who are installing an airgap Palette or who are using a self-hosted OCI registry with registry caching enabled. Otherwise, skip to the next step. 
-
-  Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
+Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
 
   <br />
 
-  ```shell
-  helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0.tgz --install
-  ```
+```shell
+helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0.tgz --install
+```
 
-    
 6. Install the Palette Helm Chart using the following command.
 
-    <br />
+   <br />
 
-    ```shell
-    helm upgrade --values spectro-mgmt-plane/values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
-    ```
+   ```shell
+   helm upgrade --values spectro-mgmt-plane/values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
+   ```
 
+7. Track the installation process using the command below. Palette is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The installation takes between two to three minutes to complete.
 
-7. Track the installation process using the command below. Palette is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the *Ready* state. The installation takes between two to three minutes to complete.
+   <br />
 
-    <br />
-
-    ```shell
-    kubectl get pods --all-namespaces --watch
-    ```
-
+   ```shell
+   kubectl get pods --all-namespaces --watch
+   ```
 
 8. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the following command to retrieve the load balancer IP address. You may require the assistance of your network administrator to create the DNS record.
 
-    <br />
+   <br />
 
-    ```shell
-    kubectl get service ingress-nginx-controller --namespace ingress-nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
-    ```
+   ```shell
+   kubectl get service ingress-nginx-controller --namespace ingress-nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+   ```
 
-    <br />
+   <br />
 
-    :::info
+   :::info
 
-    As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer.
+   As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer.
 
-    :::
-
+   :::
 
 9. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system console.
 
-  The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and proceed.
-
+The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and proceed.
 
   <br />
 
-  ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
 
-
-10. Log in to the system console using the following default credentials. 
+10. Log in to the system console using the following default credentials.
 
     <br />
 
     | **Parameter** | **Value** |
-    | --- | --- |
-    | Username | `admin` |
-    | Password | `admin` |
+    | ------------- | --------- |
+    | Username      | `admin`   |
+    | Password      | `admin`   |
 
     <br />
 
-  After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
 <br />
 
 11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
-
 
 <br />
 
@@ -755,9 +701,7 @@ If you plan to deploy host clusters into different networks, you may require a r
 
 :::
 
-
 You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
-
 
 ## Validate
 
@@ -765,63 +709,58 @@ Use the following steps to validate the Palette installation.
 
 <br />
 
-
-1. Open up a web browser and navigate to the Palette system console. To access the system console, open a web browser and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use the IP address of the load balancer. 
-
-
+1. Open up a web browser and navigate to the Palette system console. To access the system console, open a web browser and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use the IP address of the load balancer.
 
 2. Log in using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
-
 3. Open a terminal session and issue the following command to verify the Palette installation. The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` namespaces.
 
-    <br />
+   <br />
 
-    ```shell
-    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-    | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
-    ```
+   ```shell
+   kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   ```
 
-    Your output should look similar to the following.
+   Your output should look similar to the following.
 
-    ```shell hideClipboard
-    cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-    hubble-system   auth-85b748cbf4-6drkn                      Running
-    hubble-system   auth-85b748cbf4-dwhw2                      Running
-    hubble-system   cloud-fb74b8558-lqjq5                      Running
-    hubble-system   cloud-fb74b8558-zkfp5                      Running
-    hubble-system   configserver-685fcc5b6d-t8f8h              Running
-    hubble-system   event-68568f54c7-jzx5t                     Running
-    hubble-system   event-68568f54c7-w9rnh                     Running
-    hubble-system   foreq-6b689f54fb-vxjts                     Running
-    hubble-system   hashboard-897bc9884-pxpvn                  Running
-    hubble-system   hashboard-897bc9884-rmn69                  Running
-    hubble-system   hutil-6d7c478c96-td8q4                     Running
-    hubble-system   hutil-6d7c478c96-zjhk4                     Running
-    hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-    hubble-system   mongo-0                                    Running
-    hubble-system   mongo-1                                    Running
-    hubble-system   mongo-2                                    Running
-    hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-    hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-    hubble-system   packsync-28205220-bmzcg                    Succeeded
-    hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-    hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-    hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-    hubble-system   system-686d77b947-8949z                    Running
-    hubble-system   system-686d77b947-cgzx6                    Running
-    hubble-system   timeseries-7865bc9c56-5q87l                Running
-    hubble-system   timeseries-7865bc9c56-scncb                Running
-    hubble-system   timeseries-7865bc9c56-sxmgb                Running
-    hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-    hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-    ingress-nginx   ingress-nginx-controller-2txsv             Running
-    ingress-nginx   ingress-nginx-controller-55pk2             Running
-    ingress-nginx   ingress-nginx-controller-gmps9             Running
-    jet-system      jet-6599b9856d-t9mr4                       Running
-    ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
-    ```
-
+   ```shell hideClipboard
+   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system   auth-85b748cbf4-6drkn                      Running
+   hubble-system   auth-85b748cbf4-dwhw2                      Running
+   hubble-system   cloud-fb74b8558-lqjq5                      Running
+   hubble-system   cloud-fb74b8558-zkfp5                      Running
+   hubble-system   configserver-685fcc5b6d-t8f8h              Running
+   hubble-system   event-68568f54c7-jzx5t                     Running
+   hubble-system   event-68568f54c7-w9rnh                     Running
+   hubble-system   foreq-6b689f54fb-vxjts                     Running
+   hubble-system   hashboard-897bc9884-pxpvn                  Running
+   hubble-system   hashboard-897bc9884-rmn69                  Running
+   hubble-system   hutil-6d7c478c96-td8q4                     Running
+   hubble-system   hutil-6d7c478c96-zjhk4                     Running
+   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system   mongo-0                                    Running
+   hubble-system   mongo-1                                    Running
+   hubble-system   mongo-2                                    Running
+   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system   packsync-28205220-bmzcg                    Succeeded
+   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system   system-686d77b947-8949z                    Running
+   hubble-system   system-686d77b947-cgzx6                    Running
+   hubble-system   timeseries-7865bc9c56-5q87l                Running
+   hubble-system   timeseries-7865bc9c56-scncb                Running
+   hubble-system   timeseries-7865bc9c56-sxmgb                Running
+   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx   ingress-nginx-controller-2txsv             Running
+   ingress-nginx   ingress-nginx-controller-55pk2             Running
+   ingress-nginx   ingress-nginx-controller-gmps9             Running
+   jet-system      jet-6599b9856d-t9mr4                       Running
+   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   ```
 
 ## Next Steps
 

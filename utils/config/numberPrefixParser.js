@@ -1,6 +1,7 @@
 const ignoredPrefixPattern = /^\d+[-_]\d+/;
 
-const numberPrefixPattern = /^(?<numberPrefix>\d+\.?\d*)\s*[-_.]+\s*(?<suffix>[^-_.\s].*)$/;
+const numberPrefixPattern =
+  /^(?<numberPrefix>\d+\.?\d*)\s*[-_.]+\s*(?<suffix>[^-_.\s].*)$/;
 
 const numberPrefixParser = (filename) => {
   if (ignoredPrefixPattern.test(filename)) {

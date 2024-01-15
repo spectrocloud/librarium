@@ -1,14 +1,20 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import { findFirstSidebarItemLink, useDocById } from "@docusaurus/theme-common/internal";
+import {
+  findFirstSidebarItemLink,
+  useDocById,
+} from "@docusaurus/theme-common/internal";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 import { Tooltip } from "antd";
 function CardContainer({ href, children }) {
   return (
-    <Link href={href} className={clsx("card padding--lg", styles.cardContainer)}>
+    <Link
+      href={href}
+      className={clsx("card padding--lg", styles.cardContainer)}
+    >
       {children}
     </Link>
   );
@@ -18,7 +24,10 @@ function CardLayout({ href, icon, title, description }) {
     <CardContainer href={href}>
       {title && title.length > 40 ? (
         <Tooltip color="#091e3b" title={title}>
-          <h2 className={clsx("text--truncate", styles.cardTitle)} title={title}>
+          <h2
+            className={clsx("text--truncate", styles.cardTitle)}
+            title={title}
+          >
             {icon} {`${title.substring(0, 40)} ...`}
           </h2>
         </Tooltip>
@@ -55,7 +64,7 @@ function CardCategory({ item }) {
             description:
               "The default description for a category card in the generated index about how many items this category includes",
           },
-          { count: item.items.length }
+          { count: item.items.length },
         )
       }
     />

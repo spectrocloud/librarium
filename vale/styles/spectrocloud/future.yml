@@ -3,9 +3,9 @@ message: "Avoid documenting features that are not available at present. You ment
 level: error
 ignorecase: true
 tokens:
-  - 'coming soon'
-  - 'in the future'
-  - 'not yet available'
-  - 'will be released'
-  - 'to be implemented'
-  - 'under development'
+  - "coming soon"
+  - "in the future"
+  - "not yet available"
+  - "will be released"
+  - "to be implemented"
+  - "under development"

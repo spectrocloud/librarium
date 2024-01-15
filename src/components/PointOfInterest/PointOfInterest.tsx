@@ -13,7 +13,14 @@ interface PointProps {
   index?: number;
 }
 
-function Point({ description, tooltipPlacement = "right", x, y, label, wrapRef }: PointProps) {
+function Point({
+  description,
+  tooltipPlacement = "right",
+  x,
+  y,
+  label,
+  wrapRef,
+}: PointProps) {
   const [isVisited, setIsVisited] = useState(false);
 
   return (
@@ -51,7 +58,10 @@ interface PointsOfInterestProps {
   children?: React.ReactNode;
 }
 
-export default function PointsOfInterest({ points = [], children }: PointsOfInterestProps) {
+export default function PointsOfInterest({
+  points = [],
+  children,
+}: PointsOfInterestProps) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const wrapRef = React.createRef<HTMLDivElement>();
 

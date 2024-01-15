@@ -7,7 +7,7 @@ sidebar_position: 130
 tags: ["clusters", "cluster management"]
 ---
 
-Palette supports placeholder variables as Macros in our cluster profile layers. These macros make regression and update of variables, across multiple-running clusters, easier. We encourage creating these macros and using them within any of our cluster profile layers. Hence, changes to the existing Macros get updated to the corresponding cluster profile and the clusters with these profiles attached. 
+Palette supports placeholder variables as Macros in our cluster profile layers. These macros make regression and update of variables, across multiple-running clusters, easier. We encourage creating these macros and using them within any of our cluster profile layers. Hence, changes to the existing Macros get updated to the corresponding cluster profile and the clusters with these profiles attached.
 
 ## Scope of Palette Macros
 
@@ -15,17 +15,13 @@ Palette users can declare the Macros under three different scopes:
 
 1. **Project Scope**: Create `Macros` from the project dashboard with project privileges.
 
-
 2. **Tenant Admin Scope**: Create macros from the `Tenant Admin Dashboard` with administrative privileges.
-
 
 3. **System Scope**: Includes the default system macros and user-created system macros.
 
 The Macros must have unique names within a given application, but Macros with a different Scope can have a unique name. In such cases, the precedence followed is in decreasing order (the highest precedence being Project Scope).
 
-
-  **Project Scope** > **Tenant Scope** > **System Scope**
-
+**Project Scope** > **Tenant Scope** > **System Scope**
 
 ## Create your Macro
 
@@ -34,20 +30,16 @@ Palette users can use Macros in three different Scopes. Following the user prefe
 <Tabs>
 <TabItem label="Tenant Scope Macro" value="Tenant Scope Macro">
 
-
 1. Log in to the Palette Management Console as a **Tenant Admin**.
-
 
 2. From the menu on the left-hand side, click on **Tenant Settings** and select the **Macros** tab.
 
-
-3. Click on **+Add Macro**. 
-
+3. Click on **+Add Macro**.
 
 4. Complete the following details for the same:
-    - **Name**: A custom name for the Macro.
-    - **Value**: The value to be assigned to the placeholder variable.
 
+   - **Name**: A custom name for the Macro.
+   - **Value**: The value to be assigned to the placeholder variable.
 
 5. Click the **Save changes** button to complete the wizard.
 
@@ -57,17 +49,14 @@ Palette users can use Macros in three different Scopes. Following the user prefe
 
 1. Log in to the Palette Management Console as a **Project Admin**.
 
-
 2. From the menu on the left-hand side, click on **Project Settings** and select the **Macros** tab.
-
 
 3. Click on **+Add Macro**.
 
-
 4. Complete the following details for the same:
-    * **Name**: A custom name for the Macro
-    * **Value**: The value to be assigned to the placeholder variable.
 
+   - **Name**: A custom name for the Macro
+   - **Value**: The value to be assigned to the placeholder variable.
 
 5. Click the **Save changes** button to complete the wizard.
 
@@ -80,8 +69,6 @@ Create and list your System Level macros via an API.
 </TabItem>
 
 </Tabs>
-
-
 
 ```yaml
 manifests:
@@ -97,31 +84,26 @@ manifests:
     #Setting this to WaitForFirstConsumer for AWS, so that the volumes gets created in the same AZ as that of the pods
     volumeBindingMode: "{{.spectro.macro.volumeBindingMode}}"
 ```
+
 ## Use your Macros
 
 The Macros are overridden into the Cluster Profile layers:
-* During a Cluster Profile creation.
 
+- During a Cluster Profile creation.
 
-* For a Cluster Profile used by a running cluster or during cluster provisioning.
-
-
-
+- For a Cluster Profile used by a running cluster or during cluster provisioning.
 
 ### Add a Macro to a Cluster Profile Pack:
 
 1. Log in to the Palette console and navigate to **Profiles**.
 
-
 2. From the **Cluster Profiles** tab, select the **Cluster Profile** to which the Macro is to be added.
 
-    **Note:** A macro can be attached to any Infrastructure or Add-on layers of a Profile.
-
+   **Note:** A macro can be attached to any Infrastructure or Add-on layers of a Profile.
 
 3. Add the macro name to the desired layer of the profile in the format:
 
- `{{.spectro.macro.macro-name}}`, where the *macro-name* is the **Custom name**, created by the user.
-
+`{{.spectro.macro.macro-name}}`, where the _macro-name_ is the **Custom name**, created by the user.
 
 4. Save the changes to the **Cluster Profile**. This Macro can be replaced or edited later.
 
@@ -129,33 +111,27 @@ The Macros are overridden into the Cluster Profile layers:
 
 1. ​​Log in to Palette Console and go to the **Clusters** tab.
 
-
 2. Select the **Cluster Name** to which the Macro is to be updated and navigate to the **Cluster Details** page.
-
 
 3. Go to the **Profiles** tab to select the layer to which the Macro is to be added.
 
-
 4. In the desired existing pack, replace the value with the Macro name as:
 
- `{{.spectro.macro.macro-name}}`
-
+`{{.spectro.macro.macro-name}}`
 
 5. Save the changes to the **Cluster Profile**.
 
 ## Delete Macros
+
 <Tabs queryString="delete-scope">
 
 <TabItem label="Tenant Scope Macro" value="Tenant Scope Macro">
 
 1. Log in to Palette Management Console as **Tenant Admin**.
 
-
-2. From the menu on the left-hand side, go to **Tenant Settings** and select the **Macros** tab. 
-
+2. From the menu on the left-hand side, go to **Tenant Settings** and select the **Macros** tab.
 
 3. Click the **Delete** button to remove the macro.
-
 
 4. Click the **Save changes** button to complete the wizard.
 
@@ -165,12 +141,9 @@ The Macros are overridden into the Cluster Profile layers:
 
 1. Log in to Palette Management Console as **Project Admin**.
 
-
 2. From the menu on the left-hand side, go to **Project Settings** and select the **Macros** tab.
 
-
 3. Click on the **Delete** button to remove the macro.
-
 
 4. Click the **Save changes** button to complete the wizard.
 
@@ -188,8 +161,3 @@ Delete your system level macros via an API.
 :::caution
 When a Macro is deleted from the UI, it needs to be cleared from the cluster profile to avoid Macro deletion anomalies in the running cluster.
 :::
-
-
-
-
-

@@ -3,7 +3,7 @@ name: Pre-merge Checks
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches-ignore: [ 'version-*' ]
+    branches-ignore: ["version-*"]
 
 concurrency:
   group: ci-${{ github.ref }}

@@ -3,10 +3,10 @@ message: "Avoid directing the reader to previous parts of the document. You ment
 level: error
 ignorecase: true
 tokens:
-  - 'as mentioned above'
-  - 'previously stated'
-  - 'earlier in this document'
-  - 'as described before'
-  - 'refer to the above'
-  - 'as stated above'
-  - 'see above'
+  - "as mentioned above"
+  - "previously stated"
+  - "earlier in this document"
+  - "as described before"
+  - "refer to the above"
+  - "as stated above"
+  - "see above"

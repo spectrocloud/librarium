@@ -3,21 +3,21 @@ message: Avoid using ableism terms. Use '%s' instead of '%s'.
 level: error
 ignorecase: true
 swap:
-  crazy: 'unbelievable'
-  insane: 'outrageous'
-  blind: 'unaware'
-  cripple: 'impair'
-  dumb: 'unintelligent'
-  jump: 'proceed'
-  run: 'issue'
-  idiot: 'foolish'
-  lame: 'ineffective'
-  mad: 'furious'
-  moron: 'thoughtless'
-  nuts: 'ridiculous'
-  psycho: 'unstable'
-  retard: 'delay'
-  spastic: 'clumsy'
-  stupid: 'foolish'
-  imbecile: 'foolish'
-  see: 'display'
+  crazy: "unbelievable"
+  insane: "outrageous"
+  blind: "unaware"
+  cripple: "impair"
+  dumb: "unintelligent"
+  jump: "proceed"
+  run: "issue"
+  idiot: "foolish"
+  lame: "ineffective"
+  mad: "furious"
+  moron: "thoughtless"
+  nuts: "ridiculous"
+  psycho: "unstable"
+  retard: "delay"
+  spastic: "clumsy"
+  stupid: "foolish"
+  imbecile: "foolish"
+  see: "display"

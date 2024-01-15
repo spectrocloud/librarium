@@ -53,7 +53,9 @@ describe("<Technologies />", () => {
   it("should filter technologies based on search", async () => {
     render(<Technologies data={mockData} />);
 
-    fireEvent.change(screen.getByRole("textbox"), { target: { value: "React" } });
+    fireEvent.change(screen.getByRole("textbox"), {
+      target: { value: "React" },
+    });
 
     // Assuming you're debouncing, we wait
     await waitFor(() => {}, { timeout: 300 });

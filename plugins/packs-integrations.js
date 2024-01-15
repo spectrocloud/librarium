@@ -1,5 +1,7 @@
 function generateIntegrationData(allContent) {
-  const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
+  const packsData = allContent[
+    "docusaurus-plugin-content-docs"
+  ].default.loadedVersions[0].docs
     .filter((doc) => {
       return doc.frontMatter.type === "appTier";
     })
@@ -10,7 +12,9 @@ function generateIntegrationData(allContent) {
 }
 
 function generatePacksData(allContent) {
-  const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
+  const packsData = allContent[
+    "docusaurus-plugin-content-docs"
+  ].default.loadedVersions[0].docs
     .filter((doc) => {
       return doc.frontMatter.type === "integration";
     })

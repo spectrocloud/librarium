@@ -7,32 +7,25 @@ hide_table_of_contents: false
 sidebar_position: 10
 ---
 
-
-
-
-
 # Release Process
 
-We use semantic versioning for releases, where release versions follow the *Major.Minor.Patch* numbering pattern across all components, and we utilize and maintain *Integration*, *Stage*, and *Production* environments.
+We use semantic versioning for releases, where release versions follow the _Major.Minor.Patch_ numbering pattern across all components, and we utilize and maintain _Integration_, _Stage_, and _Production_ environments.
 
 <br />
 
 ## Checklist
 
-Our release process includes a checklist of the features planned for release to ensure their completion or to ensure a completion plan is in place. 
+Our release process includes a checklist of the features planned for release to ensure their completion or to ensure a completion plan is in place.
 
-When all pre-deployment checklist items are complete, stakeholders review the checklist to make an informed decision about the state of the release and do the following: 
+When all pre-deployment checklist items are complete, stakeholders review the checklist to make an informed decision about the state of the release and do the following:
 
 <br />
 
 - Identify any steps that have not been completed.
 
-
 - Request additional information.
 
-
-- Follow up as needed. 
-
+- Follow up as needed.
 
 ## Signoff
 

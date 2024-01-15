@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: { { .Chart.Name } }
   labels:
-    app: {{ .Chart.Name }}
-    group: {{ .Chart.Name }}
+    app: { { .Chart.Name } }
+    group: { { .Chart.Name } }
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: { { .Chart.Name } }
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
-        group: {{ .Chart.Name }}
+        app: { { .Chart.Name } }
+        group: { { .Chart.Name } }
     spec:
       serviceAccountName: restart-docs
       containers:
-        - name: {{ .Chart.Name }}
+        - name: { { .Chart.Name } }
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           livenessProbe:
             httpGet:
               path: /
-              port: {{ .Values.service.port }}
+              port: { { .Values.service.port } }
             failureThreshold: 1
             periodSeconds: 60
             terminationGracePeriodSeconds: 60

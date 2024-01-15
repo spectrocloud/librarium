@@ -6,33 +6,30 @@ on:
     types: [completed]
   workflow_dispatch:
 
-
-
 jobs:
   prune:
     name: Prune Container Images
     runs-on: ubuntu-latest
     steps:
+      - uses: snok/container-retention-policy@v2
+        with:
+          image-names: librarium
+          cut-off: 1 day ago UTC
+          timestamp-to-use: created_at
+          account-type: personal
+          org-name: spectrocloud
+          keep-at-least: 1
+          skip-tags: nightly
+          dry-run: false
+          token-type: github-token
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - uses: snok/container-retention-policy@v2
-      with:
-        image-names: librarium
-        cut-off: 1 day ago UTC
-        timestamp-to-use: created_at
-        account-type: personal
-        org-name: spectrocloud
-        keep-at-least: 1
-        skip-tags: nightly
-        dry-run: false
-        token-type: github-token
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Slack Notification
-      if: ${{ failure() }}
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_USERNAME: "spectromate"
-        SLACK_ICON_EMOJI: ":robot_panic:"
-        SLACK_COLOR: ${{ job.status }}
-        SLACK_MESSAGE: 'The nightly docs container prune workflow failed. Review the GitHub Actions logs for more details.'
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "The nightly docs container prune workflow failed. Review the GitHub Actions logs for more details."

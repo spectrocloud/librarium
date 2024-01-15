@@ -11,33 +11,30 @@ This section covers the available deployment environments for Palette Virtual Cl
 
 ## Available Environments
 
-Palette Dev Engine users have access to a Palette-managed cluster group named *beehive*. The beehive cluster group is also a *system-level cluster group*, meaning that Spectro Cloud manages it. The beehive cluster group falls under the free tier of Palette and comes with its own set of resource limits. All users are subject to the following resource quotas when using the beehive cluster group.
+Palette Dev Engine users have access to a Palette-managed cluster group named _beehive_. The beehive cluster group is also a _system-level cluster group_, meaning that Spectro Cloud manages it. The beehive cluster group falls under the free tier of Palette and comes with its own set of resource limits. All users are subject to the following resource quotas when using the beehive cluster group.
 
 | Type            | Max Limit | Description                                                                                           |
-|-----------------|-----------|-------------------------------------------------------------------------------------------------------|
+| --------------- | --------- | ----------------------------------------------------------------------------------------------------- |
 | Virtual Cluster | 2         | Each user is allowed to deploy a total of two virtual clusters.                                       |
-| CPU             | 12        | Each user is allowed to consume a total of 12 CPU. This limit spans both virtual clusters.           |
+| CPU             | 12        | Each user is allowed to consume a total of 12 CPU. This limit spans both virtual clusters.            |
 | Memory          | 12 Gib    | Each user is allowed to consume a total of 12 GiB of Memory. This limit spans both virtual clusters.  |
 | Storage         | 20 GiB    | Each user is allowed to consume a total of 20 GiB of storage. This limit spans both virtual clusters. |
 
-
-Palette administrators can remove the beehive cluster, and other system-level cluster groups for all downstream users by setting the tenant developer setting **Hide system-level cluster groups from tenant users** to **true**. When this setting value is **true**, the beehive cluster is not displayed in the cluster group drop-down menu when deploying Palette virtual clusters. 
+Palette administrators can remove the beehive cluster, and other system-level cluster groups for all downstream users by setting the tenant developer setting **Hide system-level cluster groups from tenant users** to **true**. When this setting value is **true**, the beehive cluster is not displayed in the cluster group drop-down menu when deploying Palette virtual clusters.
 
 ![The deployment path for a user](/045-devx_resource-quota_is-beehive-enabled.png)
 
 You can change tenant developer settings by switching to the tenant scope and navigating from the left **Main Menu** to **Tenant Settings > Developers Settings**. Toggle the **Hide system-level cluster groups from tenant users** button.
 
-
 ## Virtual Cluster Resource Quota
 
 Virtual clusters inherit resource quotas from the parent cluster group. The cluster group's virtual cluster settings determine the maximum resources per virtual cluster, and can be used to limit the number of resources a virtual cluster can claim from the group. By default, each virtual cluster requires at least 4 CPU, 4 GiB of memory, and 2 GiB of storage. Keep the required minimum values in mind when deploying virtual clusters or when defining the cluster group's virtual cluster settings.
 
-|**Virtual Cluster** | **Minimum Limit**|
-|------------------------------|-----------------|
-|CPU (per request)             |  4              |
-|Memory (per request)         |  4 GiB           |
-|Storage (per request)        |  2 GiB           |
-
+| **Virtual Cluster**   | **Minimum Limit** |
+| --------------------- | ----------------- |
+| CPU (per request)     | 4                 |
+| Memory (per request)  | 4 GiB             |
+| Storage (per request) | 2 GiB             |
 
 :::caution
 
@@ -56,31 +53,29 @@ vcluster
       ephemeral-storage: 128Mi
 ```
 
-Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of  CPU, 4 GiB Memory, and 2 Gib of storage.
+Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of CPU, 4 GiB Memory, and 2 Gib of storage.
 
 :::
 
 If a user attempts to create a virtual cluster that needs more resources than the cluster group allows, the request will be denied because it exceeds the cluster group's defined limits.
 
-
 Refer to the [Create and Manage Cluster Groups](../../clusters/cluster-groups/create-cluster-group.md) to learn more about adjusting cluster group's virtual cluster settings.
-
 
 ## User Resource Quotas
 
-All Palette users are subject to resource quotas. The two entities that impact a user's resource quotas when interacting with virtual clusters are the tenant developer user quotas and the cluster group virtual cluster settings. 
+All Palette users are subject to resource quotas. The two entities that impact a user's resource quotas when interacting with virtual clusters are the tenant developer user quotas and the cluster group virtual cluster settings.
 
 ## Tenant Developer User Quotas
 
 The global user quotas that a Palette administrator has defined in the tenant developer settings are always evaluated first. The tenant user quotas define the maximum set of resources a user can claim.
 
-* Virtual clusters
+- Virtual clusters
 
-* CPU
+- CPU
 
-* Memory
+- Memory
 
-* Storage
+- Storage
 
 For example, assume the following tenant developer user quotas for four virtual clusters are defined as 20 CPU, 32 GiB of memory, and 60 GiB of storage. With these settings, all users could deploy four virtual clusters, each virtual cluster with a maximum size allowed by the cluster group limits.
 
@@ -91,7 +86,6 @@ Users can also deploy a single virtual cluster that consumes 20 CPU, 32 GiB of m
 :::info
 
 To change tenant user quotas, switch the scope to **Tenant Admin** and navigate from the left **Main Menu** to **Tenant Settings** > **Developer Settings**. In the **User Quota** section, you can adjust the maximum number of resources for users.
-
 
 :::
 
@@ -105,40 +99,39 @@ The following diagram displays the evaluation process Palette uses to determine 
 
 To better understand this concept, use the following examples.
 
-* Tenant Developer User Quotas:
-    * Number of virtual clusters: 4 
-    * CPU: 20
-    * Memory: 32 GiB
-    * Storage: 60 GiB
-* Hide system-level cluster groups from tenant users: false
+- Tenant Developer User Quotas:
+  - Number of virtual clusters: 4
+  - CPU: 20
+  - Memory: 32 GiB
+  - Storage: 60 GiB
+- Hide system-level cluster groups from tenant users: false
 
+- Cluster Group _dev-special_ Virtual Cluster Settings
 
-* Cluster Group *dev-special* Virtual Cluster Settings
-    * CPU (per requests): 8
-    * Memory (per requests): 12 GiB
-    * Storage (per requests): 12 GiB
+  - CPU (per requests): 8
+  - Memory (per requests): 12 GiB
+  - Storage (per requests): 12 GiB
 
+- User A's Current Resource Utilization
 
-* User A's Current Resource Utilization
-    * 1 virtual Cluster in dev-special
-    * 8 CPU
-    * 12 GiB Memory
-    * 20 GiB of Storage
+  - 1 virtual Cluster in dev-special
+  - 8 CPU
+  - 12 GiB Memory
+  - 20 GiB of Storage
 
-
-* User B's Current Resource Utilization
-    * 4 Virtual Cluster in dev-special
-    * 16 CPU
-    * 32 GiB Memory
-    * 60 GiB of Storage
-
+- User B's Current Resource Utilization
+  - 4 Virtual Cluster in dev-special
+  - 16 CPU
+  - 32 GiB Memory
+  - 60 GiB of Storage
 
 ### Scenario 1
 
 User A is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:
-* 8 CPU
-* 12 GiB Memory
-* 20 GiB Memory
+
+- 8 CPU
+- 12 GiB Memory
+- 20 GiB Memory
 
 **Request**: ✅
 
@@ -149,9 +142,10 @@ User A is creating a request to deploy a virtual cluster to the dev-special clus
 ### Scenario 2
 
 User B is creating a request to deploy a virtual cluster to the dev-special cluster group. The virtual cluster is requesting the following resources:
-* 4 CPU
-* 8 GiB Memory
-* 4 GiB Storage
+
+- 4 CPU
+- 8 GiB Memory
+- 4 GiB Storage
 
 **Request**: ❌
 
@@ -162,11 +156,11 @@ User B is creating a request to deploy a virtual cluster to the dev-special clus
 ### Scenario 3
 
 User B is creating a request to deploy a virtual cluster to the beehive cluster group. The virtual cluster is requesting the following resources:
-* 4 CPU
-* 8 GiB Memory
-* 4 GiB Storage
+
+- 4 CPU
+- 8 GiB Memory
+- 4 GiB Storage
 
 **Request**: ✅
- 
-**Explanation**: The request is accepted because it targets a system-level cluster group, the beehive cluster group and not a cluster group managed by the tenant. Based on the cluster group quota, the number of requested resources falls within the within the approved limits of the system-level quota.
 
+**Explanation**: The request is accepted because it targets a system-level cluster group, the beehive cluster group and not a cluster group managed by the tenant. Based on the cluster group quota, the number of requested resources falls within the within the approved limits of the system-level quota.

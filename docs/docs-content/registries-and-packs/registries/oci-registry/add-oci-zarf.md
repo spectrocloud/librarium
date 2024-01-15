@@ -7,20 +7,17 @@ hide_table_of_contents: false
 sidebar_position: 50
 ---
 
-
-You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster profiles. 
-
+You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster profiles.
 
 ## Prerequisites
 
-- You must have an OCI registry that contains Zarf packages.  
+- You must have an OCI registry that contains Zarf packages.
 
 - Credentials to access the OCI registry. Public OCI registries are not supported.
 
-- If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate authority (CA), you will need the certificate to add the registry to Palette. 
+- If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate authority (CA), you will need the certificate to add the registry to Palette.
 
 - Tenant admin access to Palette.
-
 
 ## Add OCI Zarf Registry
 
@@ -28,7 +25,7 @@ Use the following steps to add an OCI Zarf registry to Palette.
 
 1. Log in to the [Palette](https://console.spectrocloud.com) as a Tenant administrator.
 
-2. From the left **Main Menu** select **Tenant Settings**. 
+2. From the left **Main Menu** select **Tenant Settings**.
 
 3. From the **Tenant Settings Menu**, Select **Registries**.
 
@@ -49,7 +46,6 @@ Use the following steps to add an OCI Zarf registry to Palette.
 11. Click **Confirm** to complete adding the registry.
 
 ## Validate
-
 
 Use the following steps to validate that the OCI registry is added to Palette correctly.
 

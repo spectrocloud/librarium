@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Palette SSO with Azure Active Directory'
-title: 'Palette SSO with Azure Active Directory'
-description: 'Learn how to enable SSO in Palette with Azure Active Directory'
+sidebar_label: "Palette SSO with Azure Active Directory"
+title: "Palette SSO with Azure Active Directory"
+description: "Learn how to enable SSO in Palette with Azure Active Directory"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
@@ -26,7 +26,7 @@ After configuration, your organization can integrate Microsoft Azure Active Dire
 
   <br />
 
- ![kubelogin](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg "Credential Plugin Diagram from kubelogin")
+![kubelogin](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg "Credential Plugin Diagram from kubelogin")
 
 <br />
 
@@ -41,6 +41,7 @@ From within Microsoft Azure AD, log in and find the Azure Active Directory servi
 2. **Enterprise applications** - You will use Azure AD Enterprise registrations to configure SAML SSO with Spectro Cloud Palette. <p></p><br />
 
 ![enterprise-app-registration](/oidc-azure-images/enterprise-app-registration.png)
+
 <p></p>
 
 ## Integrating OIDC SSO for authenticating access to Kubernetes clusters using Microsoft Azure Active Directory
@@ -58,10 +59,10 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
 
     - **oidc-groups-claim** - "Groups"<p></p><br />
     - **oidc-username-claim** - "Email"<p></p><br />
-    - **oidc-issuer-url** -  "Issuer's URL"<p></p><br />
+    - **oidc-issuer-url** - "Issuer's URL"<p></p><br />
     - **oidc-client-id** - "Client ID"<p></p><br />
 
-       ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.png)
+      ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.png)
 
 <p></p><br />
 
@@ -73,6 +74,7 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
     - **oidc-extra-scope** - The scope tags.<p></p><br />
 
 ![oidc](/oidc-azure-images/client-config.png)
+
 <p></p><br />
 
 ## Binding the Cluster Admin Role AD to Cluster Admin via RBAC
@@ -114,79 +116,79 @@ charts:
         name: bind-cluster-admin-role-to-cluster-admin
         subjects:
           #- type: User
-            #name: user5
+          #name: user5
           - type: Group
-          # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "70d19fd6-####-####-####-##c6c915e301" is tied to the Azure AD Security Group with the display name of "cluster-admin-role".
-          # name: "AZURE AD GROUP ID NAME"
+            # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
+            # Example: Azure AD Group Object Id "70d19fd6-####-####-####-##c6c915e301" is tied to the Azure AD Security Group with the display name of "cluster-admin-role".
+            # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Cluster Admins"
       - role: admin
         name: bind-admin-role-to-admin
         subjects:
           #- type: User
-            #name: user5
+          #name: user5
           - type: Group
-          # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "064f2e40-####-####-####-##b9f7927976" is tied to the Azure AD Security Group with the display name of "admin-role".
-          # name: "AZURE AD GROUP ID NAME"
+            # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
+            # Example: Azure AD Group Object Id "064f2e40-####-####-####-##b9f7927976" is tied to the Azure AD Security Group with the display name of "admin-role".
+            # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Admins"
       - role: view
         name: bind-view-role-to-view
         subjects:
           #- type: User
-            #name: user6
+          #name: user6
           - type: Group
-          # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "732edc96--####-####-####-##851dee3380" is tied to the Azure AD Security Group with the display name of "view-role".
-          # name: "AZURE AD GROUP ID NAME"
+            # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
+            # Example: Azure AD Group Object Id "732edc96--####-####-####-##851dee3380" is tied to the Azure AD Security Group with the display name of "view-role".
+            # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Viewers"
           #- type: ServiceAccount
-            #name: group6
-            #namespace: foo
+          #name: group6
+          #namespace: foo
       - role: edit
         name: bind-edit-role-to-edit
         subjects:
           #- type: User
-            #name: user6
+          #name: user6
           - type: Group
-          # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
-          # Example: Azure AD Group Object Id "21b55c08-6-####-####-####-##a3e2245ad7" is tied to the Azure AD Security Group with the display name of "edit-role".
-          # name: "AZURE AD GROUP ID NAME"
+            # For "name", input the Azure AD Group ID name and add a comment on what the Azure AD displayname is that corresponds to the Azure AD Group Name
+            # Example: Azure AD Group Object Id "21b55c08-6-####-####-####-##a3e2245ad7" is tied to the Azure AD Security Group with the display name of "edit-role".
+            # name: "AZURE AD GROUP ID NAME"
             name: "INSERT AZURE AD GROUP ID For Edit"
           #- type: ServiceAccount
-            #name: group6
-            #namespace: foo
+          #name: group6
+          #namespace: foo
     #namespaces:
-      # Specify one or more RoleBindings
-      #- namespace: team1
-        #createNamespace: true
-        #roleBindings:
-          #- role: admin
-            #name: special-override-name-admin-role
-            #kind: ClusterRole
-            #subjects:
-              #- type: User
-                #name: user3
-              #- type: Group
-                #name: team1namespaceadmin
-          #- role: view
-            #kind: ClusterRole
-            #subjects:
-              #- type: User
-                #name: user4
-              #- type: Group
-                #name: team1namespaceview
-      #- namespace: team2
-        #createNamespace: true
-        #roleBindings:
-          #- role: admin
-            #name: special
-            #kind: ClusterRole
-            #subjects:
-              #- type: User
-                #name: user1
-              #- type: Group
-                #name: group1
+    # Specify one or more RoleBindings
+    #- namespace: team1
+    #createNamespace: true
+    #roleBindings:
+    #- role: admin
+    #name: special-override-name-admin-role
+    #kind: ClusterRole
+    #subjects:
+    #- type: User
+    #name: user3
+    #- type: Group
+    #name: team1namespaceadmin
+    #- role: view
+    #kind: ClusterRole
+    #subjects:
+    #- type: User
+    #name: user4
+    #- type: Group
+    #name: team1namespaceview
+    #- namespace: team2
+    #createNamespace: true
+    #roleBindings:
+    #- role: admin
+    #name: special
+    #kind: ClusterRole
+    #subjects:
+    #- type: User
+    #name: user1
+    #- type: Group
+    #name: group1
 ```
 
 **Example**:
