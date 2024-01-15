@@ -109,7 +109,7 @@ Tenant is an isolated workspace within the Palette. `Users` and `Teams` with spe
 
 ### Project
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a namespace for resource management. Users and Teams with specific roles can be associated with the project, cluster, or cluster profile you create. Users are members of a tenant who are assigned [project scope roles](./project-scope-roles-permissions.md#global-project-scope) that control their access within the platform.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a namespace for resource management. Users and Teams with specific roles can be associated with the project, cluster, or cluster profile you create. Users are members of a tenant who are assigned [project scope roles](./project-scope-roles-permissions.md) that control their access within the platform.
 <br />
 
 ## Palette Specific (Default) Roles:
@@ -203,7 +203,7 @@ The Default (built-in) roles of Palette can be directly assigned to a user. The 
 1. Login to Palette console as `Tenant Admin`.
 
 
-2. Select **Users and Teams** from the left **Main Menu** to list the [created users](../user-management.md#user-management).
+2. Select **Users and Teams** from the left **Main Menu** to list the created users.
 
 
 3. From the list of users **select the user** to be assigned with role to open the role addition wizard.
@@ -302,7 +302,7 @@ If the user is creating a role under the Tenant scope for API Key operations, se
 1. Login to Palette console as `Tenant Admin`.
 
 
-2. Select **Users and Teams** from the left ribbon menu to list the [created users](../user-management.md#user-management).
+2. Select **Users and Teams** from the left ribbon menu to list the [created users](../user-management.md).
 
 
 3. From the list of users **select the user** to be assigned with role to open the role addition wizard.
