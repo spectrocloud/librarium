@@ -9,23 +9,36 @@ sidebar_custom_props:
 tags: ["compliance", "soc2", "fips"]
 ---
 
-We have two Security Operations Center (SOC) certifications and a FIPS certificate for a Cryptographic Module. 
+
+
+## ISO 27001
+
+The International Organization for Standardization 27001 Standard (ISO 27001) is one of the leading international standards focused on information security. Spectro Cloud has obtained the ISO 27001 Certification and undergoes periodic audits to maintain this certification. ISO 27001 Certification provides assurances that Spectro Cloud is identifying and managing risks effectively, consistently, and measurably. 
+
+
+Below are some reasons of why a ISO 27001 Certification is important:
+
+- Customer Trust and Confidence: Clients and partners often look for assurances that their sensitive information is handled securely. Achieving ISO 27001 certification can enhance customer trust and confidence, potentially leading to increased business opportunities.
+
+- Risk Management: By implementing ISO controls and measures, companies can mitigate these risks, protecting sensitive data from unauthorized access or disclosure.
+
+- Legal and Regulatory Compliance: Adhering to ISO 27001 demonstrates a commitment to information security, which can help organizations comply with various legal and regulatory requirements related to data protection and privacy.
+
+- Global Recognition: ISO 27001 is globally recognized, this helps organizations communicate their commitment to information security across borders. 
+
 
 ## SOC 2 Type II
 
 ![soc2.png](/soc2.png "#width=180px")
 
-Spectro Cloud is certified against SOC2 Type II, compliance with the AICPA’s (American Institute of Certified Public Accountants) TSC (Trust Services Criteria).
-* Spectro Cloud SOC 2 Type II audit report assures our organization’s:
-   * Security
-   * Availability
-   * Processing integrity
-   * Confidentiality
-   * Privacy
-* SOC 2 audits are an important component in regulatory oversight, vendor management programs, internal governance, and risk management.
-* These reports help the users and their auditors to understand the Spectro Cloud controls established to support operations and compliance.
-* The annual certification of SOC2 is Independent 3rd Party Auditor.
-* Spectro Cloud SOC 2 Type II report is available upon request for any customers or prospects with signed MNDA.
+The American Institute of Certified Public Accountants (AICPA) Service Organization Controls (SOC) Attestation provides assurances over control environments. Spectro Cloud’s SOC 2 Type II audit report provides assurances of our organization’s security and availability.
+
+- SOC 2 audits are an important component in regulatory oversight, vendor management programs, internal governance, and risk management.
+
+- These reports help our users and their auditors understand the controls established at Spectro Cloud to support operations and compliance.
+
+- Spectro Cloud’s SOC 2 Type II report is available upon request for any customers or prospects with a signed Non-Disclosure Agreement in place.
+
 
 ## FIPS 140-2
 
