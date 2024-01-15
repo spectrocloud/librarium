@@ -138,7 +138,7 @@ Use the following instructions on your Linux machine to create all the required 
   IMAGE_REGISTRY=ttl.sh
   OS_DISTRIBUTION=ubuntu
   IMAGE_REPO=ubuntu
-  OS_VERSION=22
+  OS_VERSION=22.04
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   ARCH=amd64
@@ -166,56 +166,22 @@ Use the following instructions on your Linux machine to create all the required 
 9. Use the following command to create the **user-data** file containing the tenant registration token. 
 
   ```shell
-  cat << EOF > user-data
-  #cloud-config
-  stylus:
-    site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: $token
-      projectName: stores
-      tags:
-        key1: value1
-        key2: value2
-        key3: value3
-      name: edge-randomid
-      registrationURL: https://edge-registration-app.vercel.app/
-
-      network:
-        httpProxy: http://proxy.example.com
-        httpsProxy: https://proxy.example.com
-        noProxy: 10.10.128.10,10.0.0.0/8
-
-        nameserver: 1.1.1.1
-        interfaces:
-            enp0s3:
-                type: static
-                ipAddress: 10.0.10.25/24
-                gateway: 10.0.10.1
-                nameserver: 10.10.128.8
-            enp0s4:
-                type: dhcp
-      caCerts:
-        - |
-          ------BEGIN CERTIFICATE------
-          *****************************
-          *****************************
-          ------END CERTIFICATE------
-        - |
-          ------BEGIN CERTIFICATE------
-          *****************************
-          *****************************
-          ------END CERTIFICATE------
-    registryCredentials:
-      domain: registry.example.com
-      username: bob
-      password: ####
-      insecure: false
-  install:
-    poweroff: true
-  users:
-    - name: kairos
-      passwd: kairos
-  EOF
+cat <<EOF > user-data
+#cloud-config
+stylus:
+  site:
+    edgeHostToken: $token
+install:
+  poweroff: true
+stages:
+  initramfs:
+    - name: "Core system setup"
+      users:
+        kairos:
+          groups:
+            - admin
+          passwd: kairos
+EOF
   ```
 
   View the newly created user data file to ensure the token is set correctly.
