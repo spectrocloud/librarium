@@ -15,9 +15,9 @@ Palette Virtual Machine Orchestrator (VMO) streamlines the deployment of VMs thr
 
 ## Overview
 
-![Image cloning with CDI](/cdi-disk-clone.png)
+The following diagram illustrates the sequential steps covered in this guide.
 
-The diagram above is a representation of best approach:
+![Image cloning with CDI](/cdi-disk-clone.png)
 1. Create a `DataVolume` resource to import an external disk image into the cluster, saving it as a template PVC on the cluster
 2. Configure a `vmTemplate` resource to clone the template PVC into a new PVC for use by the VM. This is also achieved through a `DataVolume` specification, but this time inside the VM specification.
 3. Set up RBAC permissions within the cluster to ensure Data Volumes can be used across namespaces.
