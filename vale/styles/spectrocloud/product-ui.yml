@@ -1,5 +1,5 @@
 extends: substitution
-message: "Use approved terms for product UI elements"
+message: "Use the approved UI element term '%s' instead of '%s'"
 ignorecase: true
 level: error
 swap:
