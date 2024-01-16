@@ -21,7 +21,13 @@
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,md,mdx}": [
+      "prettier --write"
+    ]
   },
   "overrides": {
     "react-live": ">=3.1.1 <4.0.0"
