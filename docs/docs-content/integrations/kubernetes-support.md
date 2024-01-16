@@ -41,9 +41,6 @@ The diagram below illustrates the support lifecycle of a Kubernetes version. A d
  
 Additional support may be extended for PXK and PXK-E. Discuss this with our support team if you need extended support. You can contact our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
-
-This is at spectrocloud support discretion and is not guaranteed.
-
 ## Other Kubernetes Distributions
 
 We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section.
