@@ -25,7 +25,7 @@ Palette provides the following four out-of-the-box Cluster roles for Palette Vir
 
 <br />
 
-:::caution
+:::warning
 
 These roles are currently only relevant to access Palette Virtual Machine Orchestrator APIs. To access the Virtual Machines console, users must have permissions to access the host clusters. These permissions can be granted through the [default Kubernetes roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) Admin/Editor/Viewer.
 

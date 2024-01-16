@@ -33,7 +33,7 @@ Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC
 
   Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 

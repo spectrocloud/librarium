@@ -49,7 +49,7 @@ Spectro Cloud maintains an event stream with low-level details of the various or
 
 <br />
 
-:::caution
+:::warning
 
 Due to Spectro Cloud’s reconciliation logic, intermittent errors show up in the event stream. As an example, after launching a node, errors might show up in the event stream regarding being unable to reach the node. However, the errors clear up once the node comes up.<p></p>
 Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an indication of a real problem.

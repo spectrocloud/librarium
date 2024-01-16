@@ -36,7 +36,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store VerteX images and packages. The OCI registry must be accessible from the Kubernetes cluster. We have verified the installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
 
-  :::caution
+  :::warning
 
     Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry.
     Refer to the [Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
@@ -52,7 +52,7 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
   <br />
 
-  :::caution
+  :::warning
 
   Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file server is a critical component of the airgap installation and must be available post-install for VerteX to function properly.
 

@@ -39,7 +39,7 @@ The **Virtual Machine Orchestrator** pack conveniently includes several componen
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
-    :::caution
+    :::warning
 
     We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack. 
 

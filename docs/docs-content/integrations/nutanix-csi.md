@@ -63,7 +63,7 @@ storageContainer: "test-container"
 
 Nutanix Volumes utilize an Internet Small Computer System Interface (iSCSI) data service IP address to provide access to cluster storage. In the Prism Element UI, go to the **Cluster Details** page and configure the iSCSI Data services IP address as described in the [Adding an ISCSI Data Services IP Address](https://portal.nutanix.com/page/documents/details?targetId=Volumes-Guide:vol-cluster-details-modify-wc-t.html) guide.
 
-:::caution
+:::warning
 The iSCSI daemon needs to be enabled during the Nutanix cloud registration step. Refer to the [Register Nutanix Cloud](../clusters/data-center/nutanix/register-nutanix-cloud.md) to learn more about the Nutanix registration process.
 :::
 

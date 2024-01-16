@@ -39,7 +39,7 @@ Virtual clusters inherit resource quotas from the parent cluster group. The clus
 |Storage (per request)        |  2 GiB           |
 
 
-:::caution
+:::warning
 
 A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
 
