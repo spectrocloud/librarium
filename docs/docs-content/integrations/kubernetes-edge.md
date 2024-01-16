@@ -48,7 +48,7 @@ The combined usage of PXK-E and Palette VerteX provides a secure and FIPS-compli
 
 ### Support Lifecycle
 
-We support PXK-E for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our Kubernetes support lifecycle in the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide.
+We support PXK-E for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
 # Versions Supported
 

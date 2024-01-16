@@ -14,7 +14,7 @@ MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubern
 
 ### Support Lifecycle
 
-We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our Kubernetes support lifecycle in the [Kubernetes Support Lifecycle](./kubernetes-support.md#other-kubernetes-distributions) page.
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
 ## Prerequisites
 
