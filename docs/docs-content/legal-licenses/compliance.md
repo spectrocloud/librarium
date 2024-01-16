@@ -11,6 +11,8 @@ tags: ["compliance", "soc2", "fips"]
 
 ## ISO 27001
 
+![](/legal-licenses_compliance_iso-27001.png "#width=300px")
+
 The International Organization for Standardization 27001 Standard (ISO 27001) is one of the leading international standards focused on information security. Spectro Cloud has obtained the ISO 27001 Certification and undergoes periodic audits to maintain this certification. ISO 27001 Certification provides assurances that Spectro Cloud is identifying and managing risks effectively, consistently, and measurably. 
 
 
