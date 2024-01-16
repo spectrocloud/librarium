@@ -12,6 +12,10 @@ tags: ['packs', 'microk8s', 'kubernetes']
 
 MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubernetes deployment that runs entirely on your workstation or edge device. It runs all Kubernetes services natively without virtual machines and packs all the required libraries and binaries.
 
+### Support Lifecycle
+
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+
 ## Prerequisites
 
 - One of the following Ubuntu environments to run commands:
