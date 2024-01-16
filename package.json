@@ -25,9 +25,7 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,md,mdx}": [
-      "prettier --write"
-    ]
+    "**/*.{js,jsx,ts,tsx,md,mdx}": "npm run format"
   },
   "overrides": {
     "react-live": ">=3.1.1 <4.0.0"
