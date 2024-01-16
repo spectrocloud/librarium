@@ -244,18 +244,21 @@ Pack dependency constraints must be defined in the `pack.json` file. The sample 
     "dependencies": [
       {
         "packName": "vault",
+        "layer": "addon",
         "minVersion": "0.6.0",
         "maxVersion": "",
         "type": "optional"
       },
       {
         "packName": "csi-vsphere-volume",
+        "layer": "csi",
         "minVersion": "1.0.0",
         "maxVersion": "",
         "type": "notSupported"
       },
       {
         "packName": "kubernetes",
+        "layer": "k8s",
         "minVersion": "1.17.0",
         "maxVersion": "1.18.6",
         "type": "required"
@@ -282,6 +285,54 @@ If the minimum and maximum versions are not mentioned, the validation is skipped
 Name of the dependent pack.
 
 **Example**: In the example, the three dependent packs are identified by unique pack names such as `vault`, `csi-vsphere-volume`, and `kubernetes`.
+
+</TabItem>
+
+<TabItem label="layer" value="pack_dependency_attribute_layer">
+
+<Tabs queryString="Pack dependency layers">
+
+<TabItem label="os" value="pack_dependency_os">
+
+The dependent pack can only be found in the OS layer of the Cluster Profile. 
+
+**Example**: The `os` layer contains packs like Ubuntu, CentOS or Bring Your Own OS (BYO-OS). This can differ per cloud provider.
+
+</TabItem>
+
+<TabItem label="k8s" value="pack_dependency_k8s">
+
+The dependent pack can only be found in the Kubernetes layer of the Cluster Profile.
+
+**Example**: The `k8s` layer contains packs like Palette eXtended Kubernetes, RKE2, K3S or MicroK8s. This can differ per cloud provider.
+
+</TabItem>
+
+<TabItem label="cni" value="pack_dependency_cni">
+
+The dependent pack can only be found in the network layer of the Cluster Profile.
+
+**Example**: The `cni` layer contains packs like Calico, Cilium, Flannel and Antrea. This can differ per cloud provider.
+
+</TabItem>
+
+<TabItem label="csi" value="pack_dependency_csi">
+
+The dependent pack can only be found in the storage layer of the Cluster Profile.
+
+**Example**: The `csi` layer contains packs like vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx. This can differ per cloud provider.
+
+</TabItem>
+
+<TabItem label="addon" value="pack_dependency_addon">
+
+The dependent pack can only be found in the add-on layers of the Cluster Profile.
+
+**Example**: The `addon` layer contains packs like ArgoCD, Vault, NGINX, and many more.
+
+</TabItem>
+
+</Tabs>
 
 </TabItem>
 
