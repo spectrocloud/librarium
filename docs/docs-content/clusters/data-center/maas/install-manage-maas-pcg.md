@@ -52,7 +52,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) page for guidance.
 
-  :::caution
+  :::warning
 
   The installation does not work with Single Sign-On (SSO) credentials. You must use an API key from a local tenant admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used to keep the PCG connected to Palette, so you can disable the account if desired.
 
@@ -70,7 +70,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
 - Sufficient available IPs within the configured MAAS subnets.
 
-  :::caution
+  :::warning
 
   By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by the bare metal machines that MAAS manages.
 
@@ -96,7 +96,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
     In the MAAS subnets configuration, you can specify which DNS servers those servers in the MAAS subnet should use. 
     
-:::caution 
+:::warning 
 
 If you configure a different DNS server than the MAAS DNS server, you must be sure to create a DNS delegation in the other DNS server, so that it can forward DNS requests for zones that are hosted by MAAS to the MAAS DNS server.
 
@@ -193,7 +193,7 @@ The following steps will guide you on how to install a PCG cluster.
   | **Resource Pool** | Select the MAAS resource pool.   | 
   | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. |                        |
   
-  :::caution
+  :::warning
 
    Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone 
    and resource pool combination.
@@ -220,7 +220,7 @@ The following steps will guide you on how to install a PCG cluster.
 The Palette CLI will now provision a PCG cluster in your MAAS environment. 
 
 
-:::caution
+:::warning
 
 You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
@@ -307,7 +307,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 Two new nodes will be added to the PCG cluster.
 
 
-:::caution
+:::warning
 
 Ensure the MAAS server has two more machines in the **Ready** state in the same Availability Zone and Resource Pool combination.
 

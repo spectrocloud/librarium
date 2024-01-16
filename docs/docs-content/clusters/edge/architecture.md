@@ -62,7 +62,7 @@ Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. Ho
 
 <br />
 
-:::caution
+:::warning
 
   ARM64 support is a preview feature and requires Palette version 4.0.0 or later.
 

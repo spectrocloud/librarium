@@ -30,7 +30,7 @@ The following parameters are required for a successful installation of Palette.
 | `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 
-:::caution
+:::warning
 
 If you are installing an air-gapped version of Palette, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#image-swap-configuration) section.
 
@@ -161,7 +161,7 @@ config:
 ```
 <br />
 
-:::caution
+:::warning
 
 As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example, if you create a tenant named tenant1 and the domain name you assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example, `*.palette.example.com`.
 

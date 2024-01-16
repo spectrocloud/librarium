@@ -20,7 +20,7 @@ To support dynamic credentials with AWS, Palette uses the AWS Security Token Ser
 
 <br />
 
-:::caution
+:::warning
 
 Palette supports AWS STS only when your Palette’s hosting environment and the backup location service provider are the same. Palette SaaS is hosted on AWS, so you can use AWS STS to add an S3 bucket as the backup location. Similarly, if you have a self-hosted Palette or Palette VerteX deployed in AWS, you can use AWS STS to add an S3 bucket as the backup location. Otherwise, you cannot use AWS STS to add an S3 bucket as the backup location.
 

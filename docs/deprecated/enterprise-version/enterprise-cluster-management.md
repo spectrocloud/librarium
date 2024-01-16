@@ -134,7 +134,7 @@ Any changes can be made to the existing configuration and saved for reuse.
 
 ### S3 Backup Location
 
-:::caution
+:::warning
 
 An AWS S3 bucket created is a prerequisite.
 

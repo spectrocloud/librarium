@@ -34,6 +34,17 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 :::
 
+### PXK and Palette VerteX
+
+The PXK used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our [NIST-certified FIPS crypto module](../compliance.md#fips-140-2). PXK is by default enabled with [Ubuntu Pro](https://ubuntu.com/pro) with FIPS mode enabled. Additionally, the Operating System (OS) is hardened based on the NIST-800 standard. However, if you use a different OS through the [BYOOS](./byoos.md) pack, then you are responsible for ensuring FIPS compliance and hardening of the OS.
+
+The combined usage of PXK and Palette VerteX provides a secure and FIPS-compliant experience as the Kubernetes distribution, OS, and management platform VerteX is FIPS-compliant.
+
+
+### Support Lifecycle
+
+We support PXK for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+
 ## Versions Supported
 
 
@@ -98,7 +109,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -240,7 +251,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -407,7 +418,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -549,7 +560,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -715,7 +726,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -862,7 +873,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -1030,7 +1041,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -1173,7 +1184,7 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as `noauth`. 
 
-  :::caution
+  :::warning
 
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
 
@@ -1281,7 +1292,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 

@@ -30,7 +30,7 @@ If you are using Palette Virtual Machine (VM) Management, you can find steps on 
 - A host cluster that is either publicly accessible OR a private host cluster that has the [Spectro Proxy](../../integrations/frp.md) installed.
 
 
-:::caution
+:::warning
 
 If you are using [OIDC](./cluster-rbac.md) with your host cluster, you will need the kubelogin plugin. Refer to the kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) for installation guidance.
 

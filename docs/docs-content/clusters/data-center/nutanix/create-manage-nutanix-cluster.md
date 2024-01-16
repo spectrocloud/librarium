@@ -61,7 +61,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
   | `${CONTROL_PLANE_ENDPOINT_IP}`| The Kubernetes API IP endpoint for the cluster you are creating. |
   | `${NUTANIX_ENDPOINT}`| The Nutanix Prism Central IP address. |  
 
-  :::caution
+  :::warning
 
   The following applies when replacing variables within curly braces in the YAML configuration files.
 

@@ -58,7 +58,7 @@ You can also enable virtual cluster disk backup during the cluster group creatio
     podSecurityStandard: privileged
     ```
 
-:::caution
+:::warning
 
 Setting the `podSecurityStandard` to `privileged` can introduce privilege escalations. We recommend you discuss this with your security system administrator.
 

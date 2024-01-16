@@ -31,7 +31,7 @@ In both steps mentioned above, the Edge Installer copies the user data configura
 ## Sensitive Information in the Installer Handoff
 
 
-:::caution
+:::warning
 
 We do not recommend inserting sensitive information in the user data configuration file provided in the installer handoff phase. Use a supplementary user data configuration file and apply it at the site installation phase. 
 
