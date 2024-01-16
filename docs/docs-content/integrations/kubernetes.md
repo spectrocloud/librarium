@@ -34,6 +34,13 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 :::
 
+### PXK and Palette VerteX
+
+The PXK used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our [NIST-certified FIPS crypto module](../compliance.md#fips-140-2). PXK is by default enabled with [Ubuntu Pro](https://ubuntu.com/pro) with FIPS mode enabled. Additionally, the Operating System (OS) is hardened based on the NIST-800 standard. However, if you use a different OS through the [BYOOS](./byoos.md) pack, then you are responsible for ensuring FIPS compliance and hardening of the OS.
+
+The combined usage of PXK and Palette VerteX provides a secure and FIPS-compliant experience as the Kubernetes distribution, OS, and management platform VerteX is FIPS-compliant.
+
+
 ### Support Lifecycle
 
 We support PXK for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our Kubernetes support lifecycle in the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide.
