@@ -46,7 +46,7 @@ The table below summarizes the synchronization behavior.
 You should disable synchronization if the Helm Chart registry is hosted on a server that may not always be accessible from Palette's management plane. For example, if the Helm Chart registry is hosted on a server that is only accessible from a private network that only deployed clusters have access to, you should disable synchronization. Although Palette may not be able to synchronize the Helm Chart registry, your clusters should be able to download the Helm Charts from the Helm Chart registry.
 
 
-:::caution
+:::warning
 
 The clusters you deploy will always require network access to the Helm Chart registry to download the Helm Charts.
 

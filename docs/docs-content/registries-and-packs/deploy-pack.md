@@ -58,7 +58,7 @@ If you opt for an ECR OCI registry, you will require the following.
   - `ecr:BatchDeleteImage`
   - `ecr:DeleteRepository`
 
-:::caution
+:::warning
 
 There could be AWS expenses associated with this tutorial. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
@@ -97,7 +97,7 @@ If the port 7000 on your local machine is unavailable, you can use any other por
 <br /> 
 
 
-:::caution
+:::warning
 
 Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress. 
 
@@ -336,7 +336,7 @@ aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive
 ```
 <br />
 
-:::caution
+:::warning
 
 Make sure to include the **spectro-packs/archive** path in *all* your repositories to meet Palette's requirements.
 
@@ -392,7 +392,7 @@ spectro registry login  --insecure --default --username admin --password admin \
 ```
 <br />
 
-:::caution
+:::warning
 
 Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using either of these prefixes will result in an authorization issue. 
 
@@ -874,7 +874,7 @@ In the **Nodes config** section, provide the details for the master and worker p
 Keep the **Cloud Configuration** the same for both master and worker pools.
 
 |**Field** | **Value**|
-|---| --- | ---|
+|---| --- | 
 |Instance Type | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
 |Availability zones | Choose any *one* availability zone.<br /> This tutorial uses the `us-east-1a` availability zone. | 
 |Disk size | 60 GiB | 
@@ -958,7 +958,7 @@ Ensure you have the following files in the current working directory.
 ```
 <br />
 
-:::caution
+:::warning
 
 Note that the Terraform code will deploy the resources to **AWS**.
 
@@ -1088,7 +1088,7 @@ In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, se
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the **Services** URL to access the application.
 <br />
 
-:::caution
+:::warning
 
 We recommend waiting for one to three minutes before clicking on the service URL. This allows DNS to properly resolve the public load balancer URL, preventing the browser from caching an unresolved DNS request.
 

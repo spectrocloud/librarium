@@ -10,7 +10,7 @@ tags: ["profiles", "app profiles"]
 
 Use the following steps to delete an app profile. 
 
-:::caution
+:::warning
 If an app profile has more than one version, ensure you delete the appropriate version by reviewing its configuration before deleting the profile.
 :::
 
@@ -28,7 +28,7 @@ If an app profile has more than one version, ensure you delete the appropriate v
 
 4. To delete an app profile and all its versions, click on the **three-dot Menu** in the row of the profile to delete and select **Delete**. 
 
-  To delete a specific profile version, select the profile to display its details. Use the **drop-down Menu** next to the profile name and select the version to delete. Click the trash can icon to delete that version. 
+   To delete a specific profile version, select the profile to display its details. Use the **drop-down Menu** next to the profile name and select the version to delete. Click the trash can icon to delete that version. 
 
 You have successfully deleted an app profile or profile version.
 

@@ -12,6 +12,11 @@ tags: ["packs", "kubernetes", "k3s", "edge"]
 
 K3s is a lightweight distribution of Kubernetes that is specifically designed for resource-constrained environments and Internet of Things (IoT) applications. Unlike standard Kubernetes with multiple binaries for its various components, K3s is packaged as a single binary with a lightweight storage backend and minimal external dependencies. For more information about K3s, refer to [K3s documentation](https://docs.k3s.io/). 
 
+
+### Support Lifecycle
+
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+
 ## Versions Supported
 
 <Tabs queryString="versions">
@@ -83,7 +88,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -105,9 +110,9 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
   clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-issuer-url: "OIDC-ISSUER-URL"
+    oidc-client-id: "OIDC-CLIENT-ID"
+    oidc-client-secret: "OIDC-CLIENT-SECRET"
     oidc-extra-scope: profile,email,openid
    ```
 
@@ -192,7 +197,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -212,12 +217,13 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
         - oidc-username-claim="email"
    ```
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
+
    ```yaml
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+   clientConfig:
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
+      oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
@@ -299,7 +305,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -320,11 +326,11 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
    ```
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+   clientConfig:
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
+      oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
@@ -406,7 +412,7 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings). 
 
-:::caution
+:::warning
 
 If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC authentication and not SAML authentication.
 
@@ -427,11 +433,11 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
    ```
 2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes YAML file and replace the placeholders with your third-party OIDC IDP details. The `clientConfig` section must be placed at the root level of the YAML file. 
    ```yaml
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
+   clientConfig:
+      oidc-issuer-url: "OIDC-ISSUER-URL"
+      oidc-client-id: "OIDC-CLIENT-ID"
+      oidc-client-secret: "OIDC-CLIENT-SECRET"
+      oidc-extra-scope: profile,email,openid
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
@@ -448,7 +454,7 @@ You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy all
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 :::
 

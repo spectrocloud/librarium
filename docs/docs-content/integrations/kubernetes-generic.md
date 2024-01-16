@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "kubernetes"]
 ---
 
-The Kubernetes pack supports several cloud and data center infrastructure providers. This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends.
+The Cloud Native Computing Foundation's (CNCF) Kubernetes pack supports several cloud and data center infrastructure providers. This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends.
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE). 
 
@@ -19,6 +19,10 @@ Review the [Maintenance Policy](maintenance-policy.md) to learn about pack updat
 :::
 
 <br />
+
+### Support Lifecycle
+
+We support CNCF Kubernetes for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
 ## Versions Supported
 
@@ -87,7 +91,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -299,7 +303,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -512,7 +516,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -721,7 +725,7 @@ pack:
   serviceDomain: "<your_cluster_DNS_service_domain>"
 ```
 
-:::caution
+:::warning
 
 You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`. 
 
@@ -878,7 +882,7 @@ Follow these steps to configure OIDC for managed EKS clusters.
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::caution
+:::warning
 
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 

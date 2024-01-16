@@ -17,7 +17,7 @@ Palette can be installed on VMware vSphere with internet connectivity or in an a
 ## Prerequisites
 
 
-:::caution
+:::warning
 
 If you are installing Palette in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
 
@@ -92,13 +92,13 @@ The video below demonstrates the installation wizard and the prompts you will en
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
 
-<video title="palette-cli-install" src="/videos/palette-install.mp4"></video>
+<Video title="palette-cli-install" src="/videos/palette-install.mp4"></Video>
 
 </TabItem>
 <TabItem label="Airgap" value="airgap">
 
 
-<video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></video>
+<Video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></Video>
 
 </TabItem>
 

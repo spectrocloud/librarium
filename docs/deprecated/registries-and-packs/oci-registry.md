@@ -66,7 +66,7 @@ Choose among one of the following ECR protection modes:
 	* For the credentials method of authentication, use the Access Key and Secret Access Key of the role created and validate the credentials.
 	* For STS, use the unique ARN  of the AWS role and validate.
 
-:::caution
+:::warning
 To provision ECR based OCI Authentication make sure that the User's STS Role has the ECR policy configured.
 :::
 
@@ -113,7 +113,7 @@ To provision ECR based OCI Authentication make sure that the User's STS Role has
 ```
 ## Multi-Region Support for AWS ECR registries:
 
-Palette supports the parameterization of AWS ECR registry endpoint to support cross-region replicated registries. For performance considerations, Helm chart content may be replicated across multiple AWS regions and served to the clusters from within the region of cluster deployment. To support this, the variable “{{.spectro.system.aws.region}}” can be used in the registry endpoint. This variable is substituted at the time of cluster deployment with the region selected for deployment. 
+Palette supports the parameterization of AWS ECR registry endpoint to support cross-region replicated registries. For performance considerations, Helm chart content may be replicated across multiple AWS regions and served to the clusters from within the region of cluster deployment. To support this, the variable “\{\{.spectro.system.aws.region}}” can be used in the registry endpoint. This variable is substituted at the time of cluster deployment with the region selected for deployment. 
 
 
 **Region Parameter:**

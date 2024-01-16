@@ -27,7 +27,7 @@ Use the `project` command to manage projects, the project scope for the CLI, and
 
 Use the `deactivate` subcommand to deactivate your active Palette project. This command requires you to have tenant admin privileges. 
 
-:::caution
+:::warning
 
 Before you deactivate your active Palette project, ensure all active resources are deleted. You will not be to remove a project with active resources.
 

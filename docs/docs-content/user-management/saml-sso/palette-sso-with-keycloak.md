@@ -88,7 +88,7 @@ You can integrate Keycloak with Palette to enable SSO for your users. This guide
 
 6. Log in to Keycloak with by using the domain name you created in the previous step, or you can use the exposed load balancer URL. The Keycloak admin console is available on port `8080/admin`. For example, `http://keycloak.dmitry.sa.spectrodemos.com:8080/admin`. Use the default credentials `admin:admin` to log into the admin console.
 
-  :::caution
+  :::warning
 
   We recommend that you change the default credentials after logging in to the admin console.
 

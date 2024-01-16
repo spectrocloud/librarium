@@ -16,7 +16,7 @@ Unlike regular user accounts, tenant administrators can view all API keys create
 The following table describes the API key management tasks you can perform as a tenant administrator, and how they differ from non-tenant users.
 
 | **Action** | **Description** | **Tenant Admin** | **Non-tenant User** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | **List** | List all API keys in the tenant. | ✅ | ❌ |
 | **Create** | Create a new API key. | ✅ |  ✅ |
 | **Create for User** | Create a new API key for a different user. | ✅ | ❌ |
@@ -27,7 +27,7 @@ The following table describes the API key management tasks you can perform as a 
 | **View** | View the sensitive API key value. | ❌ | ❌ |
 
 
-:::caution
+:::warning
 
 Once an API key is created, the API key value is only displayed once. You must save the API key value in a secure location, such as a password manager. If you or a user lose the API key value, a new API key must be created.
 

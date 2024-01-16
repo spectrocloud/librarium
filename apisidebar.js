@@ -11,6 +11,14 @@
 //   versionCrumb,
 // } = require("docusaurus-plugin-openapi-docs/lib/sidebars/utils");
 
+const fs = require('fs');
+const sidebarFilePath = './docs/api-content/api-docs/v1/sidebar.ts';
+
+let sidebarItems = [];
+if (fs.existsSync(sidebarFilePath)) {
+  sidebarItems = require(sidebarFilePath);
+}
+
 module.exports = {
   apiSidebar: [
     {
@@ -35,13 +43,7 @@ module.exports = {
         type: "generated-index",
         title: "Palette API V1",
       },
-      items: (() => {
-        try {
-          return require("./docs/api-content/api-docs/v1/sidebar.js");
-        } catch (error) {
-          return [];
-        }
-      })(),
+      items: sidebarItems,
     },
   ],
 };

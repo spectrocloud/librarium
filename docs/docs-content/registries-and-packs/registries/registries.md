@@ -33,7 +33,7 @@ Registries are automatically synchronized with Palette. Helm registries are diff
 Palette comes with a set of default registries that are available to all SaaS tenants, and non-airgap self-hosted Palette environments. The default registries are listed below:
 
 | **Name** | **Provider** | **Description** | **URL** | **Base Path** |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Bitnami | Helm | A Helm Chart registry containing Helm Charts maintained and supported by Bitnami. | `https://charts.bitnami.com/bitnami` | - |
 | Public Spectro Helm Repo | Helm | A Helm Chart registry containing Helm Charts maintained and supported by us. | `https://spectrocloud.github.io/helm-charts` | - |
 | Public Repo | Legacy Packs | A packs registry containing packs maintained and supported by us. |  `https://registry.spectrocloud.com` | - |
