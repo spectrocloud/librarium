@@ -17,7 +17,7 @@ The table below lists the Kubernetes distributions we support and the duration o
 
 | Kubernetes Distribution | Supported Minor Versions | Support Duration | Notes |
 | ----------------------- | ------------------ | ---------------- | ----- |
-| CNF Kubernetes     | N-3                | 14 months        |  The official open-source version of [Kubernetes](https://kubernetes.io/).    |
+| CNCF Kubernetes     | N-3                | 14 months        |  The official open-source version of [Kubernetes](https://kubernetes.io/).    |
 | Palette eXtended Kubernetes (PXK) | N-3                | 14 months   | Additional support may be extended. Discuss this with our support team if you need additional support. |
 | Palette eXtended Kubernetes - Edge (PXK-E) | N-3                | 14 months        | Additional support may be extended. Discuss this with our support team if you need additional support. |
 | Other       | N-3                | EOL       | Other distributions available in Palette such as K3s, Microk8s, and RKE2, we only support until their official EOL. The EOL is set by the respective owner. |

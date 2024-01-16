@@ -34,6 +34,10 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 :::
 
+### Support Lifecycle
+
+We support PXK for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our Kubernetes support lifecycle in the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide.
+
 ## Versions Supported
 
 
