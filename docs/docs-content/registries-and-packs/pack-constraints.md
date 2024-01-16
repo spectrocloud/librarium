@@ -304,7 +304,7 @@ The dependent pack can only be found in the OS layer of the Cluster Profile.
 
 The dependent pack can only be found in the Kubernetes layer of the Cluster Profile.
 
-**Example**: The `k8s` layer contains packs like Palette eXtended Kubernetes, RKE2, K3S or MicroK8s. This can differ per cloud provider.
+**Example**: The `k8s` layer contains packs like Palette eXtended Kubernetes, RKE2, K3s or MicroK8s. This can differ per cloud provider.
 
 </TabItem>
 
@@ -328,7 +328,7 @@ The dependent pack can only be found in the storage layer of the Cluster Profile
 
 The dependent pack can only be found in the add-on layers of the Cluster Profile.
 
-**Example**: The `addon` layer contains packs like ArgoCD, Vault, NGINX, and many more.
+**Example**: The `addon` layer contains packs like ArgoCD, Vault, Nginx, and many more.
 
 </TabItem>
 
