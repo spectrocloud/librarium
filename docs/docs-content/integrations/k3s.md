@@ -118,9 +118,6 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
 
-#### Configure OIDC Identity Provider for Palette Virtual Clusters
-
-If you are using K3s in a virtual cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
 
 #### Add a Certificate for Reverse Proxy
 
@@ -228,9 +225,6 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
 
-#### Configure OIDC Identity Provider for Palette Virtual Clusters
-
-If you are using K3s in a virtual cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
 
 #### Add a Certificate for Reverse Proxy
 
@@ -335,10 +329,6 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
 
-#### Configure OIDC Identity Provider for Palette Virtual Clusters
-
-If you are using K3s in a virtual cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
-
 #### Add a Certificate for Reverse Proxy
 
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more information, refer to the [Spectro Proxy](frp.md) pack guide.
@@ -441,10 +431,6 @@ To configure a custom OIDC IDP, choose **Custom** when adding the K3s pack to yo
    ```
 
 After you have configured the IDP for authentication, you can proceed to create role bindings to configure authorization in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for more guidance. 
-
-#### Configure OIDC Identity Provider for Palette Virtual Clusters
-
-If you are using K3s in a virtual clusters inside of a cluster group, you can also configure OIDC for your cluster. Refer to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for more guidance.
 
 #### Add a Certificate for Reverse Proxy
 

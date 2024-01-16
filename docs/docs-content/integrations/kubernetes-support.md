@@ -64,6 +64,3 @@ To learn more about upgrading your cluster and cluster profiles, check out the r
 
 - [Update a Cluster](../clusters/cluster-management/cluster-updates.md)
 - [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
-
-
-We also recommend you check out  [Deploy Cluster Profile Updates](../clusters/cluster-management/update-k8s-cluster.md) tutorial to learn how to update your cluster profile.
