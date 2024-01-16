@@ -49,7 +49,7 @@ Upon creating a filter, a display message will pop up to confirm the successful 
 
 You can assign the resource filter created, in combination with roles, to a [user](../../../user-management/new-user.md#create-a-new-user) to enforce access restriction. Palette provisions two types of roles:
 
-* [Palette Global Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-global-resource-roles), the set of roles that are available in Palette console
+* [Palette Global Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-global-resource-roles), the set of roles that are available in Palette by default.
 
 * [Custom Resource Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-custom-resource-roles),  can be generated according to your requirements from the available set of permissions and operations. 
 

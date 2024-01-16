@@ -261,7 +261,7 @@ Palette enables the users to have custom Roles. These custom roles can be create
 To create a custom role, login to the Palette console as `Tenant Admin`:
 
 
-1. Go to **Roles** from the left ribbon menu
+1.From the left **Main Menu**, click on **Tenant Settings** and select **Roles**.
 
 
 2. Click **Create Role**, to open the `Add New Role` wizard
