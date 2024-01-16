@@ -23,6 +23,9 @@
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md}\"",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,md,mdx}": "npm run format"
+  },
   "overrides": {
     "react-live": ">=3.1.1 <4.0.0"
   },
@@ -84,7 +87,7 @@
     "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^13.2.3",
     "netlify-cli": "^16.3.2",
-    "prettier": "^3.0.1",
+    "prettier": "3.2.2",
     "semantic-release": "^20.1.0",
     "test-links": "^0.0.1",
     "ts-jest": "^29.1.1",

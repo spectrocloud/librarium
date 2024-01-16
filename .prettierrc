@@ -6,6 +6,13 @@
   "trailingComma": "es5",
   "semi": true,
   "arrowParens": "always",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": "vale/**/*.{yml,txt}",
+      "options": {
+        "singleQuote": true
+      }
+    }
+  ]
 }
-
