@@ -27,13 +27,11 @@ RKE2 launches control plane components as static pods, managed by the kubelet in
 You can deploy RKE2 by adding this pack to a cluster profile. Once the cluster profile is created, you can deploy the RKE2-based Kubernetes clusters through Palette.
 
 
-<br />
+### Support Lifecycle
 
-:::warning
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
-RKE2 is only available for Edge host deployments. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 
-:::
 
 ## Versions Supported
 

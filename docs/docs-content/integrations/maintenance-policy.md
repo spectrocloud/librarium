@@ -129,7 +129,7 @@ For important guidelines on updating pack versions, review [Update the Pack Vers
 
 ### Kubernetes Packs
 
-A minor Kubernetes version is deprecated in Palette when the Kubernetes community announces the version is entering End of Life (EOL). 
+Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md) page to learn about the Kubernetes versions we support and the duration of support.
 
 
 ### CNI / CSI / Add-on Packs
