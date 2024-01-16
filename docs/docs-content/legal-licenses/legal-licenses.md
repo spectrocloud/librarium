@@ -16,6 +16,7 @@ This section contains legal information and acknowledgments for Palette and Pale
 ## Resources
 
 - [About Us](https://www.spectrocloud.com/company)
+- [Compliance](compliance.md)
 - [Open-Source Licenses](oss-licenses.md)
 - [Partners](https://www.spectrocloud.com/partners)
 - [Security Bulletins](../security/security-bulletins/security-bulletins.md)
