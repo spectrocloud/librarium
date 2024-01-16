@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Palette SSO with Okta SAML'
-title: 'Enable SSO with Okta SAML'
-description: 'Set up Palette SSO with Okta SAML'
+sidebar_label: "Palette SSO with Okta SAML"
+title: "Enable SSO with Okta SAML"
+description: "Set up Palette SSO with Okta SAML"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
@@ -13,11 +13,9 @@ Single Sign-On (SSO) is an authentication method that enables users to log in to
 
 The following steps will guide you on how to enable Palette SSO with [Okta Workforce Identity Cloud](https://www.okta.com/products/single-sign-on/) based on SAML.
 
-
 ## Prerequisites
 
 - You need to have either a free or paid subscription with Okta. Okta provides free [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
-
 
 ## Enablement
 
@@ -37,7 +35,7 @@ This step is to create teams in Palette that will be used for Okta SAML, this wi
 
 <br />
 
-3. The list of teams displays again. Select the newly created **Okta Team** team to review its details. To give this team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select  **Tenant Roles**  and click **+ Add Tenant Role**:
+3. The list of teams displays again. Select the newly created **Okta Team** team to review its details. To give this team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select **Tenant Roles** and click **+ Add Tenant Role**:
 
 ![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.png)
 
@@ -59,13 +57,13 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
   <br />
 
-  :::info
+:::info
 
-   Your Okta login URL has the following format,
-    `https://{your-okta-account-id}-admin.okta.com/admin/getting-started`. 
-    Replace `{your-okta-account-id}` with your Okta account ID.
+Your Okta login URL has the following format,
+`https://{your-okta-account-id}-admin.okta.com/admin/getting-started`.
+Replace `{your-okta-account-id}` with your Okta account ID.
 
-  :::
+:::
 
   <br/>
 
@@ -73,15 +71,15 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
   <br />
 
-  ![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.png)
+![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.png)
 
   <br />
 
-1. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from `My Web App` to `Spectro Cloud Palette SAML`. If desired, you can also upload a logo for the application. 
+1. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from `My Web App` to `Spectro Cloud Palette SAML`. If desired, you can also upload a logo for the application.
 
   <br />
 
-  ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.png)
+![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.png)
 
   <br />
 
@@ -91,7 +89,7 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
   <br />
 
-  ![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
+![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
 
   <br />
 
@@ -101,21 +99,21 @@ You will receive a message stating **Roles have been updated**. Repeat this proc
 
 Under **Attribute Statements (Optional)** specify the below values.
 
-| Name | Name Format | Value |
-| -- | -- | -- |
+| Name        | Name Format   | Value            |
+| ----------- | ------------- | ---------------- |
 | `FirstName` | `Unspecified` | `user.firstName` |
-| `LastName` | `Unspecified` | `user.lastName` |
-| `Email` | `Unspecified` | `user.email` |
+| `LastName`  | `Unspecified` | `user.lastName`  |
+| `Email`     | `Unspecified` | `user.email`     |
 
 Under **Group Attribute Statements (Optional)** specify the below values.
 
-| Name | Name Format | Filter | Value |
-| -- | -- | -- | -- |
+| Name          | Name Format   | Filter          | Value |
+| ------------- | ------------- | --------------- | ----- |
 | `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
 
   <br />
 
-  ![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.png)
+![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.png)
 
   <br />
 
@@ -125,7 +123,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
   <br />
 
-  ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.png)
+![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.png)
 
   <br />
 
@@ -133,13 +131,13 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
   <br />
 
-  ![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
+![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
 
   <br />
 
 11. Under **Default Teams**, search for then click the Palette team we created called **Okta Team**. This connects all Okta users with the team and the team permissions we set earlier.
 
-12.   When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML configured successfully.
+12. When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML configured successfully.
 
 ### Validate
 
@@ -147,16 +145,15 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
   <br />
 
-  ![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
+![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
 
 <br />
-
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field. Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without SSO. Click on the **Sign in** button to log in via SSO.
 
   <br />
 
-  ![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.png)
+![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.png)
 
 <br />
 
@@ -166,13 +163,10 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 4. You are now automatically added to the `Okta Team` team in Palette. To verify, navigate to the left **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click on the **Okta Team** team and view the team members section.
 
-
 ## Resources
 
 - [Okta Workforce Identity Cloud](https://www.okta.com/products/single-sign-on/)
 
-
 - [Palette User Management](../user-management.md)
-
 
 - [Palette SSO](saml-sso.md)

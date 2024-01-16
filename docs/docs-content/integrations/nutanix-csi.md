@@ -16,11 +16,9 @@ The Nutanix Container Storage Interface (CSI) Volume Driver chart leverages Nuta
 
 The Nutanix Cloud Provider chart is a plugin that allows the integration of the Nutanix Acropolis Hypervisor (AHV) platform with Kubernetes by implementing a node controller function.
 
-
 ## Versions Supported
 
 - 2.6.6
-
 
 ## Prerequisites
 
@@ -32,24 +30,22 @@ The Nutanix Cloud Provider chart is a plugin that allows the integration of the 
 
 - The cluster must use Kubernetes version 1.20 or higher.
 
-
 ## Parameters
 
 The table below lists commonly used parameters you can configure when adding the Nutanix CSI pack. Review the [Nutanix CSI Pack](https://github.com/spectrocloud/pax/edit/master/stable/storage/nutanix-csi-2.6.6/README.md) GitHub page for a complete parameters list.
 
-|**Parameter**|**Description**|**Default**|
-|-------------|---------------|-----------|
-|`nutanix-cloud-provider.createConfig`| Creates a config for the Nutanix Cloud Provider. The existing config will be used if this parameter is set as `false`. |`true`|
-|`nutanix-cloud-provider.configName`| Name of the ConfigMap for the Nutanix Cloud Provider config. |`nutanix-config`|
-|`nutanix-cloud-provider.createSecret`| Creates a secret for the Nutanix Cloud Provider. The existing secret will be used if this parameter is set as `false`. |`true`|
-|`nutanix-cloud-provider.enableCustomLabeling`| Adds additional and custom Nutanix labels to nodes. |`false`|
-|`nutanix-cloud-provider.topologyDiscovery.type`| Defines how topology will be discovered (Prism or Categories). |`Prism`|
-|`nutanix-cloud-provider.podAnnotations`| Adds annotations to the Cloud Provider Pod. |`{}`|
-|`nutanix-csi-storage.volumeClass`| Activates the Nutanix Volumes Storage Class. |`false`|
-|`nutanix-csi-storage.volumeClassName`| Name of the Nutanix Volumes Storage Class. |`nutanix-volume`|
-|`nutanix-csi-storage.volumeClassRetention`| Retention policy for the Volumes Storage Class (Delete or Retain). |`Delete`|
-|`nutanix-csi-storage.fileClass`| Activates Nutanix Files Storage Class. |`false`|
-
+| **Parameter**                                   | **Description**                                                                                                        | **Default**      |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `nutanix-cloud-provider.createConfig`           | Creates a config for the Nutanix Cloud Provider. The existing config will be used if this parameter is set as `false`. | `true`           |
+| `nutanix-cloud-provider.configName`             | Name of the ConfigMap for the Nutanix Cloud Provider config.                                                           | `nutanix-config` |
+| `nutanix-cloud-provider.createSecret`           | Creates a secret for the Nutanix Cloud Provider. The existing secret will be used if this parameter is set as `false`. | `true`           |
+| `nutanix-cloud-provider.enableCustomLabeling`   | Adds additional and custom Nutanix labels to nodes.                                                                    | `false`          |
+| `nutanix-cloud-provider.topologyDiscovery.type` | Defines how topology will be discovered (Prism or Categories).                                                         | `Prism`          |
+| `nutanix-cloud-provider.podAnnotations`         | Adds annotations to the Cloud Provider Pod.                                                                            | `{}`             |
+| `nutanix-csi-storage.volumeClass`               | Activates the Nutanix Volumes Storage Class.                                                                           | `false`          |
+| `nutanix-csi-storage.volumeClassName`           | Name of the Nutanix Volumes Storage Class.                                                                             | `nutanix-volume` |
+| `nutanix-csi-storage.volumeClassRetention`      | Retention policy for the Volumes Storage Class (Delete or Retain).                                                     | `Delete`         |
+| `nutanix-csi-storage.fileClass`                 | Activates Nutanix Files Storage Class.                                                                                 | `false`          |
 
 ## Usage
 
@@ -67,7 +63,6 @@ Nutanix Volumes utilize an Internet Small Computer System Interface (iSCSI) data
 The iSCSI daemon needs to be enabled during the Nutanix cloud registration step. Refer to the [Register Nutanix Cloud](../clusters/data-center/nutanix/register-nutanix-cloud.md) to learn more about the Nutanix registration process.
 :::
 
-
 ## Terraform
 
 You can reference the Nutanix CSI pack in Terraform with the following data resource.
@@ -83,7 +78,6 @@ data "spectrocloud_pack_simple" "nutanix-csi" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
 
 ## References
 

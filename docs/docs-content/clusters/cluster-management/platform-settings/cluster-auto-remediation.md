@@ -9,9 +9,9 @@ tags: ["clusters", "cluster management"]
 
 Palette provides Cluster Auto Remediation as a node reconciliation operation. When Cluster Auto Remediation is on, unhealthy nodes in all the Palette-provisioned clusters will automatically be replaced with new nodes. Turning off this feature will disable auto remediation. This feature can work under two scopes:
 
-* Tenant
+- Tenant
 
-* Project
+- Project
 
 :::warning
 This feature does not apply to EKS, AKS or TKE clusters.
@@ -19,9 +19,9 @@ This feature does not apply to EKS, AKS or TKE clusters.
 
 ## Prerequisites
 
-* Tenant admin or project admin access, depending on the scope.
+- Tenant admin or project admin access, depending on the scope.
 
-* An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
+- An existing cluster. Follow this [tutorial](../../clusters.md) to get started.
 
 ## Enablement
 
@@ -86,4 +86,3 @@ This feature does not apply to EKS, AKS or TKE clusters.
 </TabItem>
 
 </Tabs>
-

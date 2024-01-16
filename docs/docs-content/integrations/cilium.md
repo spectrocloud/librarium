@@ -1,15 +1,14 @@
 ---
-sidebar_label: 'Cilium'
-title: 'Cilium'
-description: 'Cilium network pack for Spectro Cloud Palette'
+sidebar_label: "Cilium"
+title: "Cilium"
+description: "Cilium network pack for Spectro Cloud Palette"
 hide_table_of_contents: true
 type: "integration"
-category: ['network', 'amd64']
+category: ["network", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://registry.dev.spectrocloud.com/v1/cni-cilium/blobs/sha256:dbc239ac739ea2939ef41dd0743b82281bc82c360326cd7c536f73f0053e2cd2?type=image/png'
+logoUrl: "https://registry.dev.spectrocloud.com/v1/cni-cilium/blobs/sha256:dbc239ac739ea2939ef41dd0743b82281bc82c360326cd7c536f73f0053e2cd2?type=image/png"
 tags: ["packs", "cilium", "network"]
 ---
-
 
 Palette Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. For more Kubernetes network model design goals visit [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
@@ -19,7 +18,7 @@ The Cilium agent runs on all clusters and servers to provide networking, securit
 
 ## Prerequisite
 
-* If the user is going for the BYO (Bring your own) Operating system use case then, HWE (Hardware Enabled) Kernel or a Kernel that supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
+- If the user is going for the BYO (Bring your own) Operating system use case then, HWE (Hardware Enabled) Kernel or a Kernel that supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
 
 **Palette OS images are by default provisioned with the above pre-requisite.**
 
@@ -29,17 +28,14 @@ The Cilium agent runs on all clusters and servers to provide networking, securit
 
 <TabItem label="1.14.x" value="1.14.x">
 
-
 </TabItem>
 <TabItem label="Deprecated" value="Deprecated">
 
 All versions below version 1.14.x are deprecated. We recommend you to upgrade to the latest version.
 
-
 </TabItem>
 
 </Tabs>
-
 
 ## References
 

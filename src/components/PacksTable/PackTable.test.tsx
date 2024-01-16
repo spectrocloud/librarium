@@ -91,33 +91,31 @@ describe("FilteredTable Tests", () => {
     const customMockPacks = [
       {
         ...mockPacks[0],
-        cloudTypesFormatted: "eks,vsphere"
-      }
+        cloudTypesFormatted: "eks,vsphere",
+      },
     ];
 
-    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks }));
+    fetchMock.mockResponseOnce(
+      JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks })
+    );
     render(<FilteredTable />);
 
     await waitFor(() => screen.getByText("Alpine"));
-    
+
     expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
   });
-
 });
 
-
-describe('toTitleCase', () => {
-  it('converts a dasherized string to title case', () => {
-      expect(toTitleCase("my-example-string")).toBe("My Example String");
+describe("toTitleCase", () => {
+  it("converts a dasherized string to title case", () => {
+    expect(toTitleCase("my-example-string")).toBe("My Example String");
   });
 
-  it('converts a camelCase string to title case', () => {
-      expect(toTitleCase("myExampleString")).toBe("My Example String");
+  it("converts a camelCase string to title case", () => {
+    expect(toTitleCase("myExampleString")).toBe("My Example String");
   });
 
-
-  it('converts aws to AWS in a string', () => {
-      expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
+  it("converts aws to AWS in a string", () => {
+    expect(toTitleCase("my-example-aws-string")).toBe("My Example AWS String");
   });
-
 });

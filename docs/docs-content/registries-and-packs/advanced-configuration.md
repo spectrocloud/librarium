@@ -1,12 +1,11 @@
 ---
-sidebar_label: 'Advanced CLI Configuration'
-title: 'Advanced CLI Configuration'
-description: 'Learn how to apply advanced concepts by customizing the deployments of the Packs registry.'
-icon: ''
+sidebar_label: "Advanced CLI Configuration"
+title: "Advanced CLI Configuration"
+description: "Learn how to apply advanced concepts by customizing the deployments of the Packs registry."
+icon: ""
 hide_table_of_contents: false
 sidebar_position: 80
 ---
-
 
 You can modify the deployment of the pack registry by providing a YAML configuration file. You can also override default configuration options through the usage of environment variables.
 
@@ -21,7 +20,6 @@ log:
   fields:
     environment: test
 ```
-
 
 The key `version` has a number value. The `log` key has a value with multiple keys, which in turn have more keys.
 
@@ -55,12 +53,12 @@ storage:
 http:
   addr: :5000
   headers:
-    X-Content-Type-Options: [ nosniff ]
-    Strict-Transport-Security: [ max-age=63072000; includeSubdomains; preload ]
-    Content-Security-Policy: [ img-src 'self'; script-src 'self';  style-src 'self ]
-    X-Frame-Options: [ DENY ]
-    X-XSS-Protection: [ 1; mode=block ]
-    Referrer-Policy: [ same-origin ]
+    X-Content-Type-Options: [nosniff]
+    Strict-Transport-Security: [max-age=63072000; includeSubdomains; preload]
+    Content-Security-Policy: [img-src 'self'; script-src 'self';  style-src 'self]
+    X-Frame-Options: [DENY]
+    X-XSS-Protection: [1; mode=block]
+    Referrer-Policy: [same-origin]
 auth:
   htpasswd:
     realm: basic-realm
@@ -101,6 +99,7 @@ docker run -d \
     gcr.io/spectro-images-public/release/spectro-registry:3.4.0 \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
+
 ## Storage Backend
 
 The pack registry can store data on a file system through a mounted
@@ -169,16 +168,18 @@ For serving content on all interfaces on port 5000:
 
 ```yaml
 http:
-    addr: :5000
+  addr: :5000
 ```
+
 Alternatively, the server can bind to a single IP and different port:
 
 <br />
 
 ```yaml
 http:
-    addr: 192.168.122.77:25000
+  addr: 192.168.122.77:25000
 ```
+
 ### HTTP Headers
 
 The following headers are the default, and can be overridden:
@@ -188,13 +189,14 @@ The following headers are the default, and can be overridden:
 ```yaml
 http:
   headers:
-    X-Content-Type-Options: [ nosniff ]
-    Strict-Transport-Security: [ max-age=63072000; includeSubdomains; preload ]
-    Content-Security-Policy: [ img-src 'self'; script-src 'self';  style-src 'self ]
-    X-Frame-Options: [ DENY ]
-    X-XSS-Protection: [ 1; mode=block ]
-    Referrer-Policy: [ same-origin ]
+    X-Content-Type-Options: [nosniff]
+    Strict-Transport-Security: [max-age=63072000; includeSubdomains; preload]
+    Content-Security-Policy: [img-src 'self'; script-src 'self';  style-src 'self]
+    X-Frame-Options: [DENY]
+    X-XSS-Protection: [1; mode=block]
+    Referrer-Policy: [same-origin]
 ```
+
 ### TLS
 
 TLS can be configured using [Let's Encrypt](https://letsencrypt.org) or custom TLS certificates:
@@ -211,7 +213,7 @@ http:
       cachefile: le-cache
       email: oz@spectrocloud.com
       hosts:
-      - pax-registry.spectrocloud.com
+        - pax-registry.spectrocloud.com
 ```
 
 Let's Encrypt limits the number of free certificates issued for each domain for a set time.

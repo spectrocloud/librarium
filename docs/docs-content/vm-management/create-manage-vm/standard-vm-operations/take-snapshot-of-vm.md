@@ -8,8 +8,7 @@ sidebar_position: 30
 tags: ["vmo"]
 ---
 
-
-A snapshot is a copy of a virtual machine's (VM) disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time. 
+A snapshot is a copy of a virtual machine's (VM) disk file at a given point in time. Snapshots provide a change log for the virtual disk and are used to restore a VM to a particular point in time.
 
 You can take a snapshot of a VM that is online (**Running** state) or offline (**Stopped** state). When you take a snapshot of an active VM, the controller checks for the QEMU guest agent in the VM. If the guest agent is present, the controller freezes the VM file system before it takes the snapshot and unfreezes the file system afterwards. This provides for crash consistency.
 
@@ -19,7 +18,7 @@ You can take a snapshot of a VM that is online (**Running** state) or offline (*
 
 For optimal snapshots, we recommend taking snapshots of online VMs that have the QEMU Guest Agent installed. If the guest agent is not installed, a best effort snapshot is taken.
 
-To check whether the VM has the ``qemu-guest-agent`` active, look for ``AgentConnected`` in the **Virtual Machines > Snapshots** tab. The ``vmSnapshot Status`` will display if the snapshot was taken online and with or without guest agent participation.
+To check whether the VM has the `qemu-guest-agent` active, look for `AgentConnected` in the **Virtual Machines > Snapshots** tab. The `vmSnapshot Status` will display if the snapshot was taken online and with or without guest agent participation.
 
 :::
 
@@ -29,19 +28,15 @@ You can take a snapshot of an online VM that has hotplugged disks. Only persiste
 
 ## Prerequisites
 
-- A deployed VM. 
-
+- A deployed VM.
 
 ## Take a Snapshot
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-
 2. From the left **Main Menu**, click **Clusters** and select your cluster.
 
-
 3. Navigate to **Virtual Machines > Snapshots**, and click the **Take snapshot** button.
-
 
 :::warning
 
@@ -49,13 +44,11 @@ In some situations, such as with the Fedora operating system, SELinux on the gue
 
 - Generate an appropriate local security module that permits `qemu-ga` to operate correctly. This is the preferred workaround.
 
-
 - Turn off SELinux **Enforcing** mode before the snapshot by issuing the `setenforce 0` command as the root user. Enforcing can be re-enabled after the snapshot using the `setenforce 1` command.
 
 :::
 
-
-The **Snapshots** tab displays the ``vmSnapshot Status`` parameter with snapshot phases for the VM: **InProgress**, **Succeeded**, or **Failed**.
+The **Snapshots** tab displays the `vmSnapshot Status` parameter with snapshot phases for the VM: **InProgress**, **Succeeded**, or **Failed**.
 
 The default time for a snapshot is five minutes. If the snapshot has not successfully completed within that time, it's status will display as **Failed**. The VM will be unfrozen and the snapshot content will be cleaned up if necessary. The snapshot will remain in **Failed** state until you delete it. You can change the default snapshot time to meet your workload requirements.
 
@@ -69,14 +62,6 @@ Snapshots should not be used as a backup method, as running a VM on a snapshot f
 
 ## Validate
 
-1. From the **Snapshots** tab, verify the ``vmSnapshot Status`` parameter displays **Succeeded**.
+1. From the **Snapshots** tab, verify the `vmSnapshot Status` parameter displays **Succeeded**.
 
-
-2. If the snapshot status displays as **Failed**, delete the snapshot and take a new one. You may need to change the default snapshot time in the VM configuration. 
-
-
-
-
-
-
-
+2. If the snapshot status displays as **Failed**, delete the snapshot and take a new one. You may need to change the default snapshot time in the VM configuration.

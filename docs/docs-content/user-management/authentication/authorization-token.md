@@ -19,12 +19,10 @@ TOKEN=abcd1234
 ```bash
 curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alert' \
 --header 'Authorization: $TOKEN' \
---header 'Content-Type: application/json' 
+--header 'Content-Type: application/json'
 ```
 
-
 To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request.
-
 
 ## Aquire Authorization Token
 
@@ -43,35 +41,32 @@ curl --location 'https://api.spectrocloud.com/v1/auth/authenticate' \
 
 ```json hideClipboard
 {
-    "Authorization": "eyJhbGc.........."
+  "Authorization": "eyJhbGc.........."
 }
 ```
 
 Use the authorization token in the `Authorization` header to make API requests.
 
-
 ## Refresh Authorization Token
 
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request. Provide the refresh token as a path parameter by replacing `:token` in the URL with the refresh token. 
+To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request. Provide the refresh token as a path parameter by replacing `:token` in the URL with the refresh token.
 
 ```bash
 curl --location 'https://api.spectrocloud.com/v1/auth/refresh/:token' \
---header 'Accept: application/json' 
+--header 'Accept: application/json'
 ```
 
-
 The response contains the authorization token. Use the new authorization token in the `Authorization` header to make API requests.
-
 
 The following example shows how to refresh the authorization token using the refresh token. The refresh token is abriviated for brevity.
 
 ```bash hideClipboard
 curl --location 'https://api.spectrocloud.com/v1/auth/refresh/eyJhbGc..........' \
---header 'Accept: application/json' 
+--header 'Accept: application/json'
 ```
 
 ```json hideClipboard
 {
-    "Authorization": "eyJhbGc.........."
+  "Authorization": "eyJhbGc.........."
 }
 ```

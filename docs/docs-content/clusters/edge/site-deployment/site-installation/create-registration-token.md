@@ -7,9 +7,7 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-
 To successfully register an Edge host with Palette you must provide the Edge Installer with a tenant registration token. To create a registration token, use the following steps.
-
 
 ## Prerequisites
 
@@ -21,31 +19,23 @@ To successfully register an Edge host with Palette you must provide the Edge Ins
 
 1. Log into [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-
 2. Switch to the tenant scope.
-
 
 3. Navigate to the left **Main Menu** and select **Settings**.
 
-
 4. Select **Registration Tokens** in the **Tenant Settings Menu**.
-
 
 5. Click **Add New Registration Token**.
 
-
 6. Fill out the input fields for and **Confirm** your changes.
 
-    - **Registration Token Name** - Used to name the token.
+   - **Registration Token Name** - Used to name the token.
 
-    - **Description** - An optional value used to explain the context usage of the token.
+   - **Description** - An optional value used to explain the context usage of the token.
 
-    - **Default Project** - Set a default project for Edge host registration.
+   - **Default Project** - Set a default project for Edge host registration.
 
-    - **Expiration Date** - Set an expiration date for the token.
-
-
-
+   - **Expiration Date** - Set an expiration date for the token.
 
 7. Save the **Token** value.
 
@@ -53,18 +43,13 @@ To successfully register an Edge host with Palette you must provide the Edge Ins
 
 ## Validate
 
-
 1. Log into [Palette](https://console.spectrocloud.com) as a tenant admin.
-
 
 2. Switch to the tenant scope.
 
-
 3. Navigate to the left **Main Menu** and select **Settings**.
 
-
 4. Select **Registration Tokens** in the **Tenant Settings Menu**.
-
 
 5. Validate the tenant registration token is available
 

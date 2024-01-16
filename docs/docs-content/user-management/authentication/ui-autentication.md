@@ -28,7 +28,7 @@ If you created an account through SSO and are a member of different organization
 
 :::info
 
-If you are a Palette Enterprise user, use the custom Palette URL for an optimized login experience and avoid specifying the organization name. 
+If you are a Palette Enterprise user, use the custom Palette URL for an optimized login experience and avoid specifying the organization name.
 Ask your Palette system administrator for the custom Palette URL.
 
 :::

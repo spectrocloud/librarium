@@ -10,15 +10,12 @@ Palette provides the ability to manage user and role access privileges through t
 
 To get started with an attribute access control through tags, check out the [Create Resource Filter](create-add-filter.md) guide.
 
-
 ## Resources
 
 - [Cluster Resource Filter](create-add-filter.md)
-    
 - [Create Resource Filter](create-add-filter.md#createresourcefilter)
 
 - [Add Resource Role](create-add-filter.md#addresourcerole)
-
 
 - [Palette Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md)
 
@@ -29,6 +26,3 @@ To get started with an attribute access control through tags, check out the [Cre
 - [Create Custom Role](../../../user-management/new-user.md#createcustomrole)
 
 - [Create New User in Palette](../../../user-management/new-user.md#createanewuser)
-
-
-

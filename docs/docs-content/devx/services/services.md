@@ -8,18 +8,15 @@ tags: ["devx", "app mode", "pde"]
 
 Palette offers you different types of services to help you model all the dependencies and resources required to deploy an application. You can choose from several different service types in Palette.
 
-
 ## Container Deployment
 
 [Containers](https://www.docker.com/resources/what-container/) are methods of building, packaging, and deploying an application. A container includes the code, run-time, libraries, and all the dependencies required by a containerized workload. Containers are deployed to their target environment. For steps on how to deploy a container in Palette, refer to [Container Deployment](../../profiles/app-profiles/create-app-profiles/container-deployment.md).
-
 
 ## Helm
 
 Palette provides out-of-the-box Helm registries and allows you to add registries. For more information, visit [Palette Helm Registry](../../registries-and-packs/registries/helm-charts.md).
 
-
-## Manifest 
+## Manifest
 
 You can construct App Profile layers using raw manifests to provision Kubernetes resources that are unavailable in Palette or Helm Charts. Pack Manifests provide a pass-through mechanism to orchestrate Kubernetes resources in a cluster. For example, specific integrations may require the creation of secrets or Custom Resource Definitions (CRDs). To achieve this, you can attach a Manifest file to the layer.
 
@@ -38,7 +35,6 @@ A messaging system service is a platform that enables the exchange of messages b
 Object storage is a data storage solution for unlimited, unstructured data like images, videos, and backups. Uploaded data is managed as objects, not files or blocks, and is scalable and durable.
 
 <br />
-
 
 ### Database Services
 

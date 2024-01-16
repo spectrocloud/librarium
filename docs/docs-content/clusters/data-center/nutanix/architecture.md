@@ -7,8 +7,7 @@ sidebar_position: 0
 tags: ["data center", "nutanix", "architecture"]
 ---
 
-
-[Nutanix](https://www.nutanix.com) is a private data center-based cloud that can be registered to Palette using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. Nutanix offers a hyper-converged infrastructure (HCI) that combines storage, compute, and networking into a single integrated system. 
+[Nutanix](https://www.nutanix.com) is a private data center-based cloud that can be registered to Palette using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative. Nutanix offers a hyper-converged infrastructure (HCI) that combines storage, compute, and networking into a single integrated system.
 
 Below are key architectural highlights of Nutanix clusters provisioned through Palette.
 
@@ -26,5 +25,4 @@ Below are key architectural highlights of Nutanix clusters provisioned through P
 
 The following diagram illustrates the Nutanix architecture.
 
-  
 ![Network flow from an architectural perspective of how Nutanix works with Palette.](/clusters_data-center_nutanix_architecture.png)

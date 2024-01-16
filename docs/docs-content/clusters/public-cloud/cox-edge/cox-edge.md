@@ -6,13 +6,11 @@ hide_table_of_contents: false
 tags: ["public cloud", "cox edge"]
 ---
 
-Palette enables deployment of workloads to Cox Edge, a last-mile edge cloud provider. Using the Cox Edge network allows you to deploy compute resources closer to the location of your application consumers, reducing latency and enhancing the user experience. 
-
+Palette enables deployment of workloads to Cox Edge, a last-mile edge cloud provider. Using the Cox Edge network allows you to deploy compute resources closer to the location of your application consumers, reducing latency and enhancing the user experience.
 
 ## Get Started
 
 To get started with Palette and Cox Edge, check out the [Create and Manage Cox Edge IaaS Cluster](create-cox-cluster.md) guide.
-
 
 ## Resources
 

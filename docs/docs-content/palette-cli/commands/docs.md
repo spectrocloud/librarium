@@ -15,18 +15,16 @@ To stop the documentation site, type `Ctrl+C` in the terminal window where you s
 
 :::
 
-
 The `docs` command exposes the following flags.
 
-| **Short Flag** | **Long Flag**              | **Description**                                                              | **Type**    |
-|------------|------------------------|--------------------------------------------------------------------------|---------|
-| `-d`       | `--detach`             |  Start the container in the background and print the container ID.       | boolean  |
-| `-h`       | `--help`               |  Help with any command.                                                  | N/A     |
-|       | `--host`              |  The address of the host to expose the container on. The default value is set to `127.0.0.1`                                           | string  |
-|  | `--image` | The documentation container image to use. Default value is `ghcr.io/spectrocloud/librarium:nightly`. | string |
-| | `--name` | The name of the container. Default value is `spectrocloud-docs`. | string |
-|        | `--port`               |  The port to expose the container on. The default value is set to `8080`. | string  |
-
+| **Short Flag** | **Long Flag** | **Description**                                                                                      | **Type** |
+| -------------- | ------------- | ---------------------------------------------------------------------------------------------------- | -------- |
+| `-d`           | `--detach`    | Start the container in the background and print the container ID.                                    | boolean  |
+| `-h`           | `--help`      | Help with any command.                                                                               | N/A      |
+|                | `--host`      | The address of the host to expose the container on. The default value is set to `127.0.0.1`          | string   |
+|                | `--image`     | The documentation container image to use. Default value is `ghcr.io/spectrocloud/librarium:nightly`. | string   |
+|                | `--name`      | The name of the container. Default value is `spectrocloud-docs`.                                     | string   |
+|                | `--port`      | The port to expose the container on. The default value is set to `8080`.                             | string   |
 
 ### Examples
 
@@ -71,7 +69,6 @@ palette docs --detach --name palette-offline
 Started ghcr.io/spectrocloud/librarium:nightly at 127.0.0.1:8080
 94928fc8b2dd9118fe66c72dd7e977f1075f85e234a131832f43537d91e27bc3
 ```
-
 
 Start the documentation site in the background and change container image to a self-hosted registry. Check put the [Offline Documentation](../../vertex/install-palette-vertex/airgap/offline-docs.md) to learn how to extract the container image into a tarball which you can then load into another device and upload to a self-hosted registry.
 

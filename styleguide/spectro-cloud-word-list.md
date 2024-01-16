@@ -1,8 +1,8 @@
 # Spectro Cloud Word List
 
-The Spectro Cloud Word List is a reference to ensure we speak the same language.  It provides unified language and terminology across our communication materials, including documentation, marketing content, and internal communications. 
+The Spectro Cloud Word List is a reference to ensure we speak the same language. It provides unified language and terminology across our communication materials, including documentation, marketing content, and internal communications.
 
-We believe in clear and consistent communication and use this reference to reflect a unified voice and consistent messaging.  Review this list to avoid confusion, misinterpretation, or inconsistency when discussing key concepts and ideas. 
+We believe in clear and consistent communication and use this reference to reflect a unified voice and consistent messaging. Review this list to avoid confusion, misinterpretation, or inconsistency when discussing key concepts and ideas.
 
 - <<feature>feature> menu - When referring to a feature’s sub-menu, such as tenant settings, refer to the menu by the features name, ex: tenant settings menu.
 
@@ -16,9 +16,9 @@ We believe in clear and consistent communication and use this reference to refle
 
 - drop-down menu - hyphen.
 
-- load balancer - two words when used as a noun. 
+- load balancer - two words when used as a noun.
 
-- log in - use as a verb. 
+- log in - use as a verb.
 
 - login - (noun, adj).
 

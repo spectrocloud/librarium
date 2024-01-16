@@ -27,36 +27,36 @@ const statusClassNames: Record<string, string> = {
   disabled: styles.disabled,
 };
 
-
-// Format the cloud type strings so they display properly 
+// Format the cloud type strings so they display properly
 const formatCloudType = (type: string): string => {
   const cloudTypeMapping: Record<string, string> = {
-    "aws": "AWS",
-    "eks": "EKS",
-    "vsphere": "vSphere",
-    "maas": "MaaS",
-    "gcp": "GCP",
-    "libvirt": "libvirt",
-    "openstack": "OpenStack",
+    aws: "AWS",
+    eks: "EKS",
+    vsphere: "vSphere",
+    maas: "MaaS",
+    gcp: "GCP",
+    libvirt: "libvirt",
+    openstack: "OpenStack",
     "edge-native": "Edge",
-    "tke": "TKE",
-    "aks": "AKS",
-    "coxedge": "Cox Edge",
-    "gke": "GKE",
-    "all": "All",
-    "azure": "Azure"
+    tke: "TKE",
+    aks: "AKS",
+    coxedge: "Cox Edge",
+    gke: "GKE",
+    all: "All",
+    azure: "Azure",
     // ... add other special cases as needed
   };
 
-  return type.split(',')
-    .map(part => cloudTypeMapping[part.trim()] || capitalizeWord(part))
-    .join(', ');
-}
+  return type
+    .split(",")
+    .map((part) => cloudTypeMapping[part.trim()] || capitalizeWord(part))
+    .join(", ");
+};
 
 // Capitalize the word as a default option
 const capitalizeWord = (string: string): string => {
   return string.toUpperCase();
-}
+};
 
 interface PacksColumn {
   title: string;
@@ -142,18 +142,17 @@ const FilteredTable: React.FC = () => {
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
-        const deprecatedPackData = packData.Packs.filter((pack) => { 
-
+        const deprecatedPackData = packData.Packs.filter((pack) => {
           // Handle the case where the pack name is empty.
           // This is applicable when the API returns a pack with no name.
           // The API also does not include the last modified date for these packs.
           if (pack.displayName == "") {
             pack.displayName = toTitleCase(pack.name);
-            pack.timeLastUpdated = "-"
-            pack.packLastModifiedDate = "-"
+            pack.timeLastUpdated = "-";
+            pack.packLastModifiedDate = "-";
           }
 
-          return pack.prodStatus !== "active" && pack.prodStatus !== "unknown"
+          return pack.prodStatus !== "active" && pack.prodStatus !== "unknown";
         });
         setDeprecatedPacks(deprecatedPackData);
         setLoading(false);
@@ -175,7 +174,9 @@ const FilteredTable: React.FC = () => {
   }, []);
 
   const filteredPacks = searchValue
-    ? deprecatedPacks.filter((pack) => pack.displayName.toLowerCase().includes(searchValue.toLowerCase()))
+    ? deprecatedPacks.filter((pack) =>
+        pack.displayName.toLowerCase().includes(searchValue.toLowerCase())
+      )
     : deprecatedPacks;
 
   return (
@@ -195,21 +196,22 @@ const FilteredTable: React.FC = () => {
 };
 
 // Convert the pack name to title case
-export function toTitleCase(str:string) {
-  return str
-      .replace(/([a-z])([A-Z])|-/g, '$1 $2')
+export function toTitleCase(str: string) {
+  return (
+    str
+      .replace(/([a-z])([A-Z])|-/g, "$1 $2")
       // Split, filter, and capitalize words
       .split(/\s+/)
-      .map(word => {
+      .map((word) => {
         // Words that should be capitalized
-          if (['CNI', 'CSI', 'OSS', 'EBS', 'AWS'].includes(word.toUpperCase())) {
-              return word.toUpperCase();
-          }
-          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        if (["CNI", "CSI", "OSS", "EBS", "AWS"].includes(word.toUpperCase())) {
+          return word.toUpperCase();
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
-      .filter(word => word)
-      .join(' ');
+      .filter((word) => word)
+      .join(" ")
+  );
 }
-
 
 export default FilteredTable;

@@ -6,10 +6,9 @@ hide_table_of_contents: false
 sidebar_position: 70
 ---
 
-A Pack Registry is a server-side application that stores and serves packs to its clients. These packs are retrieved and presented as options during the creation of a cluster profile. You can add your own Pack Registry to Palette and use the packs in your cluster profiles. 
+A Pack Registry is a server-side application that stores and serves packs to its clients. These packs are retrieved and presented as options during the creation of a cluster profile. You can add your own Pack Registry to Palette and use the packs in your cluster profiles.
 
 To create your own Legacy Pack Registry, you must first stand up a server-side application registry that serves the packs using the Spectro CLI. Refer to the [Add a Custom Registry](../adding-a-custom-registry.md) resource to learn how to start a server-side application registry that serves packs.
-
 
 :::info
 
@@ -39,15 +38,15 @@ Use the following steps to add a Legacy Pack registry to Palette.
 
 6. Fill out the following fields.
 
-   | **Field** | **Description** |
-   | --- | --- |
-   | **Name** | Enter a name for the registry. |
-   | **Endpoint** | Enter the URL of the registry. |
-   | **Authentication Type** | Select the authentication type used by the registry. |
-   | **Username** | Enter the username to access the registry. |
-   | **Password** | Enter the password to access the registry. |
-   | **Insecure Skip TLS Verify** | Check this box if the registry is using a self-signed certificate or if the server certificate is not signed by a trusted CA. |
-   | **Certificate** | If the registry is using a self-signed certificate or if the server certificate is not signed by a trusted CA, upload the X509 certificate. |
+   | **Field**                    | **Description**                                                                                                                             |
+   | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**                     | Enter a name for the registry.                                                                                                              |
+   | **Endpoint**                 | Enter the URL of the registry.                                                                                                              |
+   | **Authentication Type**      | Select the authentication type used by the registry.                                                                                        |
+   | **Username**                 | Enter the username to access the registry.                                                                                                  |
+   | **Password**                 | Enter the password to access the registry.                                                                                                  |
+   | **Insecure Skip TLS Verify** | Check this box if the registry is using a self-signed certificate or if the server certificate is not signed by a trusted CA.               |
+   | **Certificate**              | If the registry is using a self-signed certificate or if the server certificate is not signed by a trusted CA, upload the X509 certificate. |
 
 7. Click **Validate** to validate the registry. If the credentials are valid and Palette is able to connect to the registry, the registry is added to Palette. Otherwise, an error message is displayed.
 
@@ -58,7 +57,6 @@ Use the following steps to add a Legacy Pack registry to Palette.
    :::
 
 8. Click **Confirm** to complete adding the registry.
-
 
 ## Validate
 

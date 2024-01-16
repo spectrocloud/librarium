@@ -8,7 +8,6 @@ hide_table_of_contents: false
 tags: ["palette", "self-hosted", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
- 
 
 Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette installation.
 
@@ -34,15 +33,13 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully.
 
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
+- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry.
 
 - [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
 - [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are installing Palette.
 
 </TabItem>
-
-
 
 <TabItem label="VMware vSphere" value="vsphere">
 
@@ -70,13 +67,12 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully
 
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
+- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry.
 
 - [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
 
 - [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the vSphere environment you are installing Palette.
 
 </TabItem>
-
 
 </Tabs>

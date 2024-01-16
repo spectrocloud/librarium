@@ -1,15 +1,14 @@
 ---
-sidebar_label: 'external-secrets-operator'
-title: 'External Secrets Operator'
-description: 'external-secrets-operator pack in Palette'
+sidebar_label: "external-secrets-operator"
+title: "External Secrets Operator"
+description: "external-secrets-operator pack in Palette"
 hide_table_of_contents: true
 type: "integration"
-category: ['authentication', 'amd64']
+category: ["authentication", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://registry.spectrocloud.com/v1/external-secrets-operator/blobs/sha256:ee6f7f347d381852582f688c70b2564b0a346c2b2ed1221310889075a4453c6d?type=image/png'
+logoUrl: "https://registry.spectrocloud.com/v1/external-secrets-operator/blobs/sha256:ee6f7f347d381852582f688c70b2564b0a346c2b2ed1221310889075a4453c6d?type=image/png"
 tags: ["packs", "external-secrets-operator", "security"]
 ---
-
 
 External Secrets Operator (ESO) is a Kubernetes operator that integrates external secret management
 systems like AWS Secrets Manager, HashiCorp Vault, Google Secrets Manager, or Azure Key Vault. The operator reads information from external APIs and automatically injects the values into a Kubernetes Secret.
@@ -22,25 +21,23 @@ Starting from Palette version 3.1, Palette no longer supports upgrades to Kubern
 
 :::
 
-
 ## Versions Supported
 
 <Tabs>
 
 <TabItem label="0.6.x" value="0.6.x">
 
-* **0.7.1**
-* **0.6.0**
+- **0.7.1**
+- **0.6.0**
 
 </TabItem>
 
 <TabItem label="0.5.x" value="0.5.x">
 
-* **0.5.6**
+- **0.5.6**
 
 </TabItem>
 </Tabs>
-
 
 ### Sample SecretStore
 
@@ -85,7 +82,7 @@ spec:
         # points to a secret that contains a vault token
         # https://www.vaultproject.io/docs/auth/token
         tokenSecretRef:
-          name: "vault-token1"  # Custom name and key
+          name: "vault-token1" # Custom name and key
           key: "token1"
 ---
 apiVersion: v1

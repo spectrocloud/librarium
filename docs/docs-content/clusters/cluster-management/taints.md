@@ -7,9 +7,6 @@ sidebar_position: 100
 tags: ["clusters", "cluster management"]
 ---
 
-
-
-
 ## Taints
 
 Node affinity is a property of Pods that attracts them to a set of nodes (either as a preference or a hard requirement. Taints are the opposite -- they allow a node to repel a set of pods.
@@ -24,18 +21,18 @@ Palette enables Taints to be applied to a node pool to restrict a set of intoler
 
 Taints can be applied to worker pools while creating a new cluster from the node pool configuration page as follows:
 
-* Enable the “Taint” select button.
-* To apply the Taint, set the following parameters:
-  * Key: Custom key for the Taint
-  * Value: Custom value for the Taint key
-  * Effect: The effects define what will happen to the pods that do not tolerate a Taint. There are 3 Taint effects:
-    * NoSchedule: A pod that cannot tolerate the node Taint, should not be scheduled to the node.
-    * PreferNoSchedule: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
-    * NoExecute: New pods will not be scheduled on the node, and existing pods on the node, if any will be evicted if they do not tolerate the Taint.
+- Enable the “Taint” select button.
+- To apply the Taint, set the following parameters:
+  - Key: Custom key for the Taint
+  - Value: Custom value for the Taint key
+  - Effect: The effects define what will happen to the pods that do not tolerate a Taint. There are 3 Taint effects:
+    - NoSchedule: A pod that cannot tolerate the node Taint, should not be scheduled to the node.
+    - PreferNoSchedule: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
+    - NoExecute: New pods will not be scheduled on the node, and existing pods on the node, if any will be evicted if they do not tolerate the Taint.
 
 Eg: Key = key1;
-  Value = value1;
- Effect = NoSchedule
+Value = value1;
+Effect = NoSchedule
 
 Taints can also be updated on a running cluster by editing a worker node pool from the 'Nodes' tab of the cluster details page.
 
