@@ -60,7 +60,7 @@ The PDE dashboard provides a snapshot of resource utilization in your PDE enviro
 
 ## Automation Support
 
-You can manage PDE resources through the [Palette API](/api/introduction), [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), and the Palette CLI. Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page to start programmatically using PDE.
+You can manage PDE resources through the [Palette API](/api/introduction), [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), and the Palette CLI. Download the Palette CLI from the [Downloads](../spectro-downloads.md#palette-cli) page to start programmatically using PDE.
 
 ![A view of the Palette CLI menu from a terminal](/devx_devx_cli-display.png)
 

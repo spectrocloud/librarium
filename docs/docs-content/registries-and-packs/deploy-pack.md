@@ -920,7 +920,7 @@ cd /terraform/pack-tf
 
 ### Set Up the Spectro Cloud API Key
 
-To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide for more information.
+To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](../user-management/authentication/api-key/create-api-key.md) guide for more information.
 
 ![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
 
@@ -1260,7 +1260,7 @@ Packs are the building blocks of cluster profiles, allowing you to customize you
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
 
-- [Custom OS Pack](add-custom-packs.md#add-a-custom-pack)
+- [Custom OS Pack](../integrations/byoos.md)
 
 
 - [Add-on Packs](adding-add-on-packs.md)

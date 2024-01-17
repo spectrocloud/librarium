@@ -15,20 +15,20 @@ To get started with an attribute access control through tags, check out the [Cre
 
 - [Cluster Resource Filter](create-add-filter.md)
     
-- [Create Resource Filter](create-add-filter.md#createresourcefilter)
+- [Create Resource Filter](create-add-filter.md#create-resource-filter)
 
-- [Add Resource Role](create-add-filter.md#addresourcerole)
+- [Add Resource Role](create-add-filter.md#add-resource-role)
 
 
 - [Palette Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md)
 
-- [Palette Global Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md#paletteglobalresourceroles)
+- [Palette Global Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md#palette-global-resource-roles)
 
-- [Palette Custom Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md#palettecustomresourceroles)
+- [Palette Custom Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md#palette-custom-resource-roles)
 
-- [Create Custom Role](../../../user-management/new-user.md#createcustomrole)
+- [Create Custom Role](../../../user-management/new-user.md#create-custom-role)
 
-- [Create New User in Palette](../../../user-management/new-user.md#createanewuser)
+- [Create New User in Palette](../../../user-management/new-user.md#create-a-new-user)
 
 
 
