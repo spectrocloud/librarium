@@ -10,17 +10,13 @@ tags: ["downloads"]
 ---
 
 
-The following Palette downloads are available:
 
-
-
-# Overview
 
 
 Use the following resources to support your on-prem and SaaS operations when using Palette. 
 
 
-# Self-Hosted
+## Self-Hosted
 
 You can deploy a self-hosted flavor of Palette to your own environment. The following resources are available for self-hosted environments.
 
@@ -39,11 +35,11 @@ Our dedicated support team will promptly get in touch with you to provide the ne
 
 If you have any questions or concerns, please feel free to contact support@spectrocloud.com.
 
-# Air-Gapped Installation
+## Air-Gapped Installation
 
 You can install Palette in a VMware environment with no internet connection. Use the following resources to support an air-gapped environment.
 
-# SAAS - Private Cloud Gateway (PCG)
+## SAAS - Private Cloud Gateway (PCG)
 
 
 Palette supports on-prem environments through the Private Cloud Gateway (PCG) component. PCG provides support for isolated private cloud or data center environments. When installed on-prem, PCG registers itself with Palette, allowing for secure communication between the SaaS portal and the private cloud environment. The gateway also enables end-to-end lifecycle management of Kubernetes clusters in private cloud environments directly from the SaaS portal. 
@@ -81,7 +77,7 @@ Palette supports on-prem environments through the Private Cloud Gateway (PCG) co
 
 ---
 
-# Palette CLI
+## Palette CLI
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.  
 
@@ -92,7 +88,7 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 
 
 
-# Palette Edge CLI
+## Palette Edge CLI
 
 CLI Version| Operating System |  
 -------|---|

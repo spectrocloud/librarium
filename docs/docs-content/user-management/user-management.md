@@ -9,10 +9,6 @@ tags: ["user-management"]
 ---
 
 
-
-
-# User Management
-
 This section touches upon the initial login aspects for Tenant Admins and non-admin users and the RBAC setup within Palette.
 
 ## User Login

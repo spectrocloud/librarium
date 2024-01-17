@@ -235,7 +235,7 @@ kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
 # Use RBAC With OIDC
 
 
-This section explains how to use RBAC with OIDC providers. You can apply these steps to all the public cloud providers except [Azure-AKS](/clusters/public-cloud/azure/aks/#configureanazureactivedirectory) and [EKS](/integrations/oidc-eks/) clusters. Azure AKS and AWS EKS require different configurations. 
+This section explains how to use RBAC with OIDC providers. You can apply these steps to all the public cloud providers except [Azure-AKS](../public-cloud/azure/aks.md) and [EKS](../../integrations/oidc-eks.md) clusters. Azure AKS and AWS EKS require different configurations. 
 
 Add the following parameters to your Kubernetes pack when creating a cluster profile.
 

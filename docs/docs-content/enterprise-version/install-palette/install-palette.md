@@ -86,4 +86,4 @@ The recommended maximum number of deployed nodes and clusters in the environment
 
 - [Install on Kubernetes](install-on-kubernetes/install.md)
 
-- [Architecture Diagram and Network Ports](../../architecture/networking-ports.md#self-hosted-network-communications-and-ports)
+- [Architecture Diagram and Network Ports](../../architecture/networking-ports.md#self-hosted-network)

@@ -388,7 +388,7 @@ Palette 3.1 is released with support for AWS GovCloud, FIPS compliant PXK, and P
 
 * Palette supports integration with [AWS GovCloud services](clusters/public-cloud/aws/add-aws-accounts.md#prerequisites) to meet the compliance mandates for safeguarding sensitive data by strengthening identity management, improving cloud visibility, and protecting accounts and workloads to support mission-critical workloads for government customers.
 * [Autoscaling](clusters/cluster-management/node-pool.md#worker-node-pool) capabilities for Palette IaaS clusters to ensure better availability and cost management for dynamic workloads.
-* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](compliance.md#fips-140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
+* Palette is now compliant with FIPS compliance and provides a [FIPS-compliant](./legal-licenses/compliance.md#fips-140-2) version of Kubernetes (PXK and PXK-E).  Palette FIPS support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant infrastructure layer cluster profiles.
 * Palette supports tagging and the ability to filter user [access](clusters/cluster-management/cluster-tag-filter/cluster-tag-filter.md) and [visibility](clusters/cluster-management/noc-ui.md#monitor-your-cluster-location) to clusters using tags. You can filter geographically dispersed clusters in the Palette map view and list view using [flexible filters](clusters/cluster-management/noc-ui.md#map-filters) to have a granular view of cluster information.
 * Palette supports app profile versioning. Versioning enables users to create multiple [versions of an App Profile](profiles/app-profiles/modify-app-profiles/version-app-profile.md) within the scope of a single profile name. 
 * Palette supports the [cloning](profiles/app-profiles/clone-app-profile.md) of App Profiles across multiple projects. For example, you can clone an app profile created under a specific project to another project within the same tenant. 
@@ -516,10 +516,10 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
 
 **Features**
 * Palette now supports lightweight, cost-effective, secure, and resource-efficient [Palette Virtual Clusters](/clusters/palette-virtual-clusters) to rapidly create securely-isolated environments for applications without the infrastructure and operational overhead of additional Kubernetes clusters.
-* Palette leverages web-based [Kubectl](/clusters/cluster-management/palette-webctl#overview) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
+* Palette leverages web-based [Kubectl](./clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) for the users to deploy applications, inspect and manage cluster resources, and view logs via the Palette terminal without an external terminal. 
 * Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be [exported and imported](profiles/cluster-profiles/export-import-cluster-profile.md) across multiple environments, projects, and tenants. 
-* Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](/integrations/rke2#rke2overview) focusing on security and compliance.
-* The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](/terraform#moduletoprovidercompatibilitymatrix), focus on:
+* Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](./integrations/rke2.md) focusing on security and compliance.
+* The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](./terraform.md#modules), focus on:
   * Cluster resource tagging
   * Static placement of AKS clusters
   * VMware cloud-type support of Terraform modules 
@@ -536,16 +536,16 @@ Spectro Cloud Palette 2.8.0 is now available with the support of Palette Virtual
    
    * The PCG and On-Premise images now have all the latest OS patches updated
 
-* Palette enables [Cluster(s) Lock](/clusters/cluster-management/palette-lock-cluster#overview) to restrict the cluster(s) under the Tenant, Project, or single cluster from being upgraded from cluster management services upgrade on the upgrade of the Palette.
+* Palette enables [Cluster(s) Lock](./clusters/cluster-management/palette-lock-cluster.md) to restrict the clusters under the Tenant, Project, or single cluster from being upgraded from cluster management services upgrade on the upgrade of the Palette.
 * Palette feeds observability of [OS patching details](/clusters/cluster-management/os-patching#monitoring) such as `Last Applied Patch Time` and `The date and time of the last OS Patch.`
 * Palette boards the mapping between cluster profiles and clusters in cluster profiles details UI page listing the clusters created using a specific cluster profile.
 * Palette promotes VNet Resource Group filtering for AKS clusters, allowing the VNet to be a part of a different resource group than the AKS resource group.
-* Palette enables the users to override the [custom folder](/clusters/data-center/vmware#deployingavmwarecluster) for vSphere templates, in addition to the default image template folder, `spectro-templates` for the vSphere environment.
-* [Regex Expression](/workspace#regexfornamespaces) for mass selection of workspace names for role binding. 
-* Palette also leverages the single sign-on, using SAML/OIDC integration with [Google Identity](/user-management/saml-sso#oidcbasedsso).
+* Palette enables the users to override the [custom folder](./clusters/data-center/vmware.md) for vSphere templates, in addition to the default image template folder, `spectro-templates` for the vSphere environment.
+* [Regex Expression](./workspace/workspace.md) for mass selection of workspace names for role binding. 
+* Palette also leverages the single sign-on, using SAML/OIDC integration with [Google Identity](./user-management/saml-sso/enable-saml.md).
 * Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/public-cloud/aws/eks) for EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
-* Tenant administrators can now set the [Palette resource limits](/user-management/palette-resource-limits#setresourcelimit) though the Palette console.
-* Palette provisions user's [infrastructure privacy](/clusters/public-cloud/azure#deployinganazurecluster) for the Azure cloud account.
+* Tenant administrators can now set the [Palette resource limits](./user-management/palette-resource-limits.md#default-palette-resource-limits) though the Palette console.
+* Palette provisions user's [infrastructure privacy](./clusters/public-cloud/azure/azure-cloud.md) for the Azure cloud account.
 
 **Deprecations**
 
@@ -595,22 +595,22 @@ Spectro Cloud Palette 2.7 is released with advanced features supporting Windows 
 **Features:**
 * Spectro Cloud Palette has enhanced the import cluster functionality with ["Read-Only Mode"](/clusters/imported-clusters) mode and the "Full Permission Mode" mode. Users can start exploring Palette by importing a cluster in a minimal model without granting the full administrative set of permissions. Over time, users can grant additional permissions to manage Day 2 operations.
 * Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the  Linux worker nodes for Azure Kubernetes Services (AKS) clusters.
-* Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](/integrations/ubuntu#ubuntuadvantage) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
+* Palette ensures Security and OS patching benefits with [Canonical's Ubuntu Advantage](./integrations/ubuntu.md#ubuntu-pro) for Infrastructure subscription with Ubuntu as an OS layer for multiple operating environments.
 * Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.
 * Palette leverages the Container Storage Interface (CSI) and Container Network Interface (CNI) layers using Helm Chart  in addition to manifest-based deployment.
-* Palette introduces a well-defined [color scheme to monitor](/clusters/cluster-management/pack-monitoring#packmonitoring) the different stages of pack deployment during cluster creation.
+* Palette introduces a well-defined [color scheme to monitor](./clusters/cluster-management/pack-monitoring.md#cluster-profiles-pack-status) the different stages of pack deployment during cluster creation.
 * Palette [Edge Clusters](/clusters/edge) deployed on remote bare metal or virtual machines appliances providing end-to-end support on deployment, scaling, upgrades and reconfiguration.
  
 **Enhancements:**
 
-* Palette [Azure CNI Pack](/integrations/azure-cni#azurecni) ensures advanced traffic flow control using Calico Policies for AKS clusters.
+* Palette [Azure CNI Pack](./integrations/azure-cni.md) ensures advanced traffic flow control using Calico Policies for AKS clusters.
 * Palette supports the [migration of Private Cloud Gateway (PCG)](clusters/clusters.md) traffic from unhealthy to healthy PCG without compromising service availability. 
 * Palette Workspace upgraded with
-  * [Resource Quota](/workspace/workload-features#workspacequota) allocation for Workspaces, Namespaces, and Clusters.
-  * [Restricted Container Images](/workspace/workload-features#restrictedcontainerimages) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.
-  * Enable the collective role binding of namespaces using [regular expressions for namespaces](/workspace#regexfornamespaces) selection.
-  * Selective [Resource Restore](/workspace/workload-features#restoreyourbackup) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
-* Palette provides visibility into [Role Binding and Cluster Role Binding](/clusters/cluster-management/workloads#overview) resources running inside our workload clusters.
+  * [Resource Quota](./workspace/workload-features.md#workspace-quota) allocation for Workspaces, Namespaces, and Clusters.
+  * [Restricted Container Images](./workspace/workload-features.md#restricted-container-images) feature to restrict the accidental deployment of a delisted or unwanted container to a specific namespace.
+  * Enable the collective role binding of namespaces using [regular expressions for namespaces](./workspace/workspace.md) selection.
+  * Selective [Resource Restore](./workspace/workload-features.md#restore-a-backup) from Workspace Backup across Cluster resources, Node Ports, and Persistent Volumes. 
+* Palette provides visibility into [Role Binding and Cluster Role Binding](./clusters/cluster-management/workloads.md) resources running inside our workload clusters.
 
 ## May 30, 2022 - Release 2.6.0
 
@@ -620,9 +620,9 @@ Spectro Cloud Palette 2.6 is released to support Cluster Profile Version, EKS Se
 
 * Palette supports multiple [versions](profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) of a single-cluster profile under a unique name to allow backward compatibility. 
 
-* Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](/clusters/public-cloud/aws/eks#eksclustersecretsencryption) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
+* Palette leverages AWS Key Management Service (KMS) to provide envelope [encryption](./clusters/public-cloud/aws/enable-secrets-encryption-kms-key.md) of Kubernetes Secrets stored in Amazon Elastic Kubernetes Service (EKS) clusters.
 
-* Palette covers a long list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for the [csi-aws-1.0.0](/integrations/aws-ebs#parametersupportcsi-aws-1.0.0packmanifest) pack manifest. 
+* Palette covers a long list of [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization capabilities for the [csi-aws-1.0.0](./integrations/aws-ebs.md) pack manifest. 
 
 **Enhancement:**
 
@@ -639,21 +639,21 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 
 **Features:**
 
-- Palette now supports [Tencent Kubernetes Engine (TKE)](/clusters/public-cloud/tke#overview)—a fully-managed Kubernetes service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters, effortlessly.
-- Palette introduces **Placeholder Variables** as [Macros](/clusters/cluster-management/macros#overview) in our Cluster Profile layers for advanced regression and easier update of variables, across multiple running clusters.
-- Palette displays a well-organized [Product Onboarding](/getting-started/onboarding-workflow#paletteonboardingworkflow) process to streamline user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
+- Palette now supports [Tencent Kubernetes Engine (TKE)](./clusters/public-cloud/tke.md) a fully-managed Kubernetes service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters, effortlessly.
+- Palette introduces **Placeholder Variables** as [Macros](./clusters/cluster-management/macros.md) in our Cluster Profile layers for advanced regression and easier update of variables, across multiple running clusters.
+- Palette displays a well-organized [Product Onboarding](./getting-started/onboarding-workflow.md) process to streamline user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
 - Palette helps out new users in their purchase decision by offering free tier services.
-  - [Palette Freemium](/getting-started/palette-freemium#trypaletteforfree) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
-  - [Free Cloud Credit](/getting-started/palette-freemium) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
+  - [Palette Freemium](./getting-started/palette-freemium.md) to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster deployments.
+  - [Free Cloud Credit](./getting-started/palette-freemium.md) offers access to a free cloud account, with sufficient permissions and credentials, to have a first impression on our product journey.
 
 **Enhancements:**
 
-- Palette users can now manually [Force Delete a Cluster](/clusters/public-cloud/aws#forcedeleteacluster), stuck in the **Deletion** state for more than **15 minutes**, through the User Interface.
-- Palette production clusters can be backed up to object storage of [GCP Buckets](/clusters/cluster-management/backup-restore#configureyourbackupingcpbucket) for convenient restoration.
+- Palette users can now manually [Force Delete a Cluster](./clusters/cluster-management/remove-clusters.md), stuck in the **Deletion** state for more than **15 minutes**, through the User Interface.
+- Palette production clusters can be backed up to object storage of [GCP Buckets](./clusters/cluster-management/backup-restore/backup-restore.md) for convenient restoration.
 
 **Bug Fixes:**
 
-- We request our users to please add the `ec2:DeleteNetworkInterface` permission to their AWS cloud account Controller Policy Permissions to detach and delete the network interface for [AWS](/clusters/public-cloud/aws#awscloudaccountpermissions) and [EKS](/clusters/public-cloud/aws/eks) clusters.
+- We request our users to please add the `ec2:DeleteNetworkInterface` permission to their AWS cloud account Controller Policy Permissions to detach and delete the network interface for [AWS](./clusters/public-cloud/aws/required-iam-policies.md) and [EKS](./clusters/public-cloud/aws/eks.md) clusters.
 
 **Packs and Integrations:**
 
@@ -665,15 +665,15 @@ Spectro Cloud Palette 2.5.0 was released with support for Tencent Kubernetes Eng
 Palette 2.3.0 includes the following enhancements:
 
 - Added support for cluster-centric detailed [**Namespace Management** and granular **RBAC**](/clusters/cluster-management/cluster-rbac). Previously this capability was only available via workspaces.
-- Enabled secure and straightforward user authentication with [**API Keys**](/user-management/user-authentication/#apikey) to access the APIs without referring to user credentials.
+- Enabled secure and straightforward user authentication with [**API Keys**](./user-management/user-authentication.md#api-key) to access the APIs without referring to user credentials.
 - Tenant administrators can now get an [**aggregated view**](/clusters/#scope) of clusters across all the projects under their tenant.
-- Added support for [**Taints**](/clusters/cluster-management/taints/#overviewontaints) that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node.
-- Added support for [**Labels**](/clusters/cluster-management/taints/#overviewonlabels) to constrain pods so that they can run on a particular set of nodes.
-- Enable multi-cluster [**backup and restore from workspaces**](/clusters/cluster-management/backup-restore/#workspacebackupandrestore).
-- New [**workspace user roles**](/clusters/cluster-management/backup-restore#workspaceoperator) that provide granular control to specific actions within a workspace:
+- Added support for [**Taints**](./clusters/cluster-management/taints.md) that can be applied to a node pool to restrict a set of intolerant pods getting scheduled to an inadequate node.
+- Added support for [**Labels**](./clusters/cluster-management/taints.md) to constrain pods so that they can run on a particular set of nodes.
+- Enable multi-cluster [**backup and restore from workspaces**](./clusters/cluster-management/backup-restore/backup-restore.md).
+- New [**workspace user roles**](./clusters/cluster-management/backup-restore/backup-restore.md) that provide granular control to specific actions within a workspace:
   - _Workspace Operator_ - Allows only backup and restore capabilities within a workspace
   - _Workspace Admin_ - Administrative privileges within a workspace
-- Palette will now perform a [**rolling upgrade**](/clusters/#rollingupgrade) on the nodes for any fundamental changes to the cluster config. Palette will keep track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview** > **Upgrade details**.
+- Palette will now perform a [**rolling upgrade**](./clusters/clusters.md#rolling-upgrade) on the nodes for any fundamental changes to the cluster config. Palette will keep track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible under **Cluster Overview** > **Upgrade details**.
 - Enable deployment of the single pack across [**multiple layers**](https://docs-latest.spectrocloud.com/cluster-profiles/task-define-profile/#creatingclusterprofiles) cluster profile layers.
 - Palette introduces a VM operator to allow Virtual Machine based applications to be modeled as Cluster Profile layers.
 
@@ -903,8 +903,8 @@ Release 1.1.0 is all about enhancing the user experience, providing tighter cont
 
 - On the UI side, the login has been made faster. Additionally, users can now set up alerts to monitor cluster health. A `Revert to default values` button for cluster profiles is added.
 - Clusters are easier to launch with the `Copy from Master` button; bad deployments are now prevented for certain instances; scaling is easier with the `Scale Strategy`.
-- Private gateways can now be provisioned on static IPs with greater control on IP allocation using [IP pools](/clusters?clusterType=vmware_cluster#ipaddressmanagement).
-- Updates to the CLI tool include more [flags](/registries-and-packs/spectro-cli-reference?cliCommands=cli_push#flags) to the `PUSH` command for forcibly overwriting registry packs.
+- Private gateways can now be provisioned on static IPs with greater control on IP allocation using IP pools.
+- Updates to the CLI tool include more [flags](./registries-and-packs//spectro-cli-reference.md) to the `PUSH` command for forcibly overwriting registry packs.
 - Bug Fixes: BET-806 related to SSO login and BET-403 related to validation of dependencies for availability zones have been resolved.
 
 ## July 3, 2020 - Release 1.0.2

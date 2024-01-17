@@ -58,10 +58,9 @@ With Palette’s Cluster Profiles, teams can define full-stack clusters that inc
 Development teams will get the flexibility and freedom they are looking for to increase the speed of innovation, whether it is the cluster template with the add-on application services or choosing a Kubernetes version with integrations like logging, monitoring, and service mesh for your application development. They need not worry about Kubernetes configurations but focus on the stuff that matters.
  
 ### IT Operations and SREs
- 
-Declarative management makes life easier for IT teams, with consistency, repeatability, and all the enterprise-grade controls and governance they need - especially when moving to production [Cluster Profiles](/glossary-all#clusterprofile) enable them to define and re-use full-stack clusters and support them across the entire lifecycle without having to write scripts, as well as integrate with existing tools and methodologies.
- 
- 
+
+Declarative management makes life easier for IT teams, with consistency, repeatability, and all the enterprise-grade controls and governance they need - especially when moving to production [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) enable them to define and re-use full-stack clusters and support them across the entire lifecycle without having to write scripts, as well as integrate with existing tools and methodologies.
+
 ### IT Executives
  
 With an open and enterprise-grade platform, IT leaders can get peace of mind without being locked into proprietary orchestration technologies or one-size-fits-all solutions. This helps lower the total cost of ownership (TCO) and reduce operational risk.
