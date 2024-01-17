@@ -325,11 +325,11 @@ The `layer` attribute defines the layer where the dependent pack can be found in
 
 | Layer | Description |
 |-------|-------------|
-| `os` | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS). This can differ per cluster type. |
-| `k8s`  | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as Palette eXtended Kubernetes, RKE2, K3S or MicroK8s. This can differ per cluster type. |
-| `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea. This can differ per cluster type. |
-| `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx. This can differ per cluster type. |
-| `addon`  | The dependent pack can only be found in the add-on layers of the Cluster Profile. The `addon` layer contains packs such as ArgoCD, Vault, NGINX, and many more. |
+| `os` | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS). |
+| `k8s`  | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as Palette eXtended Kubernetes, RKE2, K3S or MicroK8s. |
+| `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea. |
+| `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx.|
+| `addon`  | The dependent pack can only be found in the add-on layers of the Cluster Profile. The `addon` layer contains packs such as ArgoCD, Vault, Nginx, and many more. |
 
 
 #### Dependency Types
@@ -340,122 +340,8 @@ The `type` attribute defines the type of dependency. The following table lists t
 |-------|-------------|
 | `optional` | The dependent pack is optional but validates minimum or maximum versions if the pack is selected. In the example, the `vault` pack is optional. |
 | `required`  | The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined. In the example, the `kubernetes` pack is required with a minimum version of `1.17.0` and a max version of `1.18.6`. Any Kubernetes version below `1.17.0` and above `1.18.6` is not valid. |
-| `notSupported`  | Pack versions within the range of the mentioned minimum and maximum are not supported. The `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions. |
+| `notSupported`  | The pack versions within the range of the mentioned minimum and maximum are not supported. The `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions. |
 
-
-<!-- <Tabs queryString="Pack Dependency Attributes">
-
-<TabItem label="packName" value="pack_dependency_attribute_packName">
-
-Name of the dependent pack.
-
-**Example**: In the example, the three dependent packs are identified by unique pack names such as `vault`, `csi-vsphere-volume`, and `kubernetes`.
-
-</TabItem>
-
-<TabItem label="layer" value="pack_dependency_attribute_layer">
-
-<Tabs queryString="Pack dependency layers">
-
-<TabItem label="os" value="pack_dependency_os">
-
-The dependent pack can only be found in the OS layer of the Cluster Profile. 
-
-**Example**: The `os` layer contains packs like Ubuntu, CentOS or Bring Your Own OS (BYO-OS). This can differ per cloud provider.
-
-</TabItem>
-
-<TabItem label="k8s" value="pack_dependency_k8s">
-
-The dependent pack can only be found in the Kubernetes layer of the Cluster Profile.
-
-**Example**: The `k8s` layer contains packs like Palette eXtended Kubernetes, RKE2, K3s or MicroK8s. This can differ per cloud provider.
-
-</TabItem>
-
-<TabItem label="cni" value="pack_dependency_cni">
-
-The dependent pack can only be found in the network layer of the Cluster Profile.
-
-**Example**: The `cni` layer contains packs like Calico, Cilium, Flannel and Antrea. This can differ per cloud provider.
-
-</TabItem>
-
-<TabItem label="csi" value="pack_dependency_csi">
-
-The dependent pack can only be found in the storage layer of the Cluster Profile.
-
-**Example**: The `csi` layer contains packs like vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx. This can differ per cloud provider.
-
-</TabItem>
-
-<TabItem label="addon" value="pack_dependency_addon">
-
-The dependent pack can only be found in the add-on layers of the Cluster Profile.
-
-**Example**: The `addon` layer contains packs like ArgoCD, Vault, Nginx, and many more.
-
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-
-<TabItem label="minVersion" value="pack_dependency_attribute_minVersion">
-
-Minimum supported dependent pack version, any version below the minimum version is not valid.
-
-**Example**: pack `pack-constraints-test` must require pack `vault` of min version `0.6.0`.
-
-</TabItem>
-
-<TabItem label="maxVersion" value="pack_dependency_attribute_maxVersion">
-
-Maximum supported dependent pack version, any version above the maximum version is not valid.
-
-**Example**: pack `pack-constraints-test` must require pack `kubernetes` of min version `1.18.6`.
-
-</TabItem>
-
-<TabItem label="type" value="pack_dependency_attribute_type">
-
-<Tabs queryString="Pack dependency types">
-
-<TabItem label="optional" value="pack_dependency_optional">
-
-The dependent pack is optional but validates minimum or maximum versions if the pack is selected.
-
-**Example**: `vault` pack is optional.
-
-</TabItem>
-
-<TabItem label="required" value="pack_dependency_required">
-
-The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined.
-
-**Example**: `kubernetes` pack must be required of min version `1.17.0` and max version `1.18.6`. Any Kubernetes version below `1.17.0` and above `1.18.6` is not valid.
-
-</TabItem>
-
-<TabItem label="notSupported" value="pack_dependency_notSupported">
-
-Pack versions within the range of the mentioned minimum and maximum (including the minimum and maximum) are not supported.
-
-**Example**: `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions.
-
-:::info
-
-If the minimum and maximum versions are not mentioned, the validation is skipped and all versions are allowed.
-
-:::
-
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-
-</Tabs> -->
 
 ## Pack Resource Constraints
 
