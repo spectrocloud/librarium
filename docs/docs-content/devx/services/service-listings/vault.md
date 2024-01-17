@@ -140,7 +140,7 @@ You can validate the Vault instance deployed successfully by using the following
 
 10. Open your browser and visit [https://localhost:8200/ui](https://localhost:8200/ui) to access the Vault UI. You will receive a warning due to the usage of a self-signed certificate but you can ignore this warning. 
 
-To acquire the Vault root token, review the [Vault Credentials](vault.md#vault-credentials) section.
+To acquire the Vault root token, review the [Vault Credentials](#vault-credentials) section.
 
 
 # Output Variables
