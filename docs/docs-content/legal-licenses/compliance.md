@@ -11,12 +11,12 @@ tags: ["compliance", "soc2", "fips"]
 
 ## ISO 27001
 
-![](/legal-licenses_compliance_iso-27001.png "#width=300px")
+![ISO 27001 logo](/legal-licenses_compliance_iso-27001.png "#width=300px")
 
 The International Organization for Standardization 27001 Standard (ISO 27001) is one of the leading international standards focused on information security. Spectro Cloud has obtained the ISO 27001 Certification and undergoes periodic audits to maintain this certification. ISO 27001 Certification provides assurances that Spectro Cloud is identifying and managing risks effectively, consistently, and measurably. 
 
 
-Below are some reasons why a ISO 27001 Certification is important:
+Below are some reasons why an ISO 27001 Certification is important:
 
 - Customer trust and confidence: Clients and partners often look for assurances that their sensitive information is handled securely. Achieving ISO 27001 certification can enhance customer trust and confidence, potentially leading to increased business opportunities.
 
@@ -45,7 +45,7 @@ The American Institute of Certified Public Accountants (AICPA) Service Organizat
 
 ![FIPS-Compliance](/docs_compliance_compliance_fips-logo.png "#width=180px")
 
-Spectro Cloud is certified against FIPS 140-2 with [Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in compliance with the Cryptographic Module Validation Program (CMVP). 
+Spectro Cloud is validated against FIPS 140-2 with [Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in compliance with the Cryptographic Module Validation Program (CMVP). 
 
 Our Spectro Cloud Cryptographic Module is a general-purpose cryptographic library. The FIPS-enforced Palette VerteX edition incorporates the module in the Kubernetes Management Platform and the infrastructure components of target clusters to protect the sensitive information of regulated industries. Palette VerteX supports FIPS at the tenant level. For more information about the FIPS-enforced Palette edition, check out [Palette VerteX](vertex/vertex.md). 
 
