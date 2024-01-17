@@ -943,7 +943,7 @@ Packs are the building blocks of cluster profiles, allowing you to customize you
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
 
-- [Custom OS Pack](add-custom-packs.md#add-a-custom-pack)
+- [Custom OS Pack](../integrations/byoos.md)
 
 
 - [Add-on Packs](adding-add-on-packs.md)

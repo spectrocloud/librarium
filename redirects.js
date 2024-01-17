@@ -330,6 +330,10 @@ const redirects = [
   {
     from: `/enterprise-version/ssl-certificate-management`,
     to: `/enterprise-version/system-management/ssl-certificate-management`
+  },
+  {
+    from: `/compliance`,
+    to: `/legal-licenses/compliance`
   }
 ];
 
