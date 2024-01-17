@@ -7,7 +7,7 @@ hide_table_of_contents: false
 ---
 
 
-Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage [Host Clusters](../../../glossary-all.md#hostcluster) in AWS. To get started check out the [Register and Manage AWS Accounts](add-aws-accounts.md). 
+Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage [Host Clusters](../../../glossary-all.md#host-cluster) in AWS. To get started check out the [Register and Manage AWS Accounts](add-aws-accounts.md). 
 
 
 
