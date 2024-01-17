@@ -287,9 +287,7 @@ A pack can have one or more dependencies defined in the `dependencies` array. Ea
 | `layer`  | The dependent pack can only be found in the OS layer of the Cluster Profile. Refer to the [Layer Types](#layer-types) section to learn more. |
 | `minVersion`  | Minimum supported dependent pack version, any version below the minimum version is not valid. |
 | `maxVersion`  | Maximum supported dependent pack version, any version above the maximum version is not valid. |
-| `type`  | The dependent pack is optional but validates minimum or maximum versions if the pack is selected. |
-| `required`| The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined. |
-| `notSupported`  | Pack versions within the range of the mentioned minimum and maximum (including the minimum and maximum) are not supported. |
+| `type`  | The defined type for the dependency. Refer to the [Dependency Types](#dependency-types) section to learn more.|
 
 
 In the example code snippet from earlier, the three dependent packs are identified by unique pack names such as `vault`, `csi-vsphere-volume`, and `kubernetes`. A `minVersion`, `maxVersion`, and `type` are defined for each dependent pack.
@@ -332,6 +330,17 @@ The `layer` attribute defines the layer where the dependent pack can be found in
 | `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. |
 | `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. |
 | `addon`  | The dependent pack can only be found in the add-on layers of the Cluster Profile. |
+
+
+#### Dependency Types
+
+The `type` attribute defines the type of dependency. The following table lists the different dependency types.
+
+| Type | Description |
+|-------|-------------|
+| `optional` | The dependent pack is optional but validates minimum or maximum versions if the pack is selected. In the example, the `vault` pack is optional. |
+| `required`  | The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined. In the example, the `kubernetes` pack is required with a minimum version of `1.17.0` and a max version of `1.18.6`. Any Kubernetes version below `1.17.0` and above `1.18.6` is not valid. |
+| `notSupported`  | Pack versions within the range of the mentioned minimum and maximum are not supported. The `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions. |
 
 
 <!-- <Tabs queryString="Pack Dependency Attributes">
