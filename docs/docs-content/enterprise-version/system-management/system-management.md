@@ -13,7 +13,7 @@ Palette contains many system settings you can configure to meet your organizatio
 
 
 
-:::caution
+:::warning
 
 Exercise caution when changing system settings, as the changes will be applied to all tenants in the system.
 
@@ -34,7 +34,9 @@ You can access the system console by visiting the IP address or the custom domai
 
 Platform administrators can use the system console to perform the following operations:
 
-- Configure and manage SMTP settings.
+- [Account management](account-management/account-management.md)
+
+- [Configure and manage SMTP settings](smtp.md).
 
 - [Configure and manage Pack registries](add-registry.md).
 

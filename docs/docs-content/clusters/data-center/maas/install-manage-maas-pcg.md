@@ -52,7 +52,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) page for guidance.
 
-  :::caution
+  :::warning
 
   The installation does not work with Single Sign-On (SSO) credentials. You must use an API key from a local tenant admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used to keep the PCG connected to Palette, so you can disable the account if desired.
 
@@ -70,7 +70,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
 - Sufficient available IPs within the configured MAAS subnets.
 
-  :::caution
+  :::warning
 
   By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by the bare metal machines that MAAS manages.
 
@@ -96,7 +96,7 @@ Use the following steps to install a PCG cluster in your MAAS environment. You c
 
     In the MAAS subnets configuration, you can specify which DNS servers those servers in the MAAS subnet should use. 
     
-:::caution 
+:::warning 
 
 If you configure a different DNS server than the MAAS DNS server, you must be sure to create a DNS delegation in the other DNS server, so that it can forward DNS requests for zones that are hosted by MAAS to the MAAS DNS server.
 
@@ -193,7 +193,7 @@ The following steps will guide you on how to install a PCG cluster.
   | **Resource Pool** | Select the MAAS resource pool.   | 
   | **Cluster Size** |  The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. |                        |
   
-  :::caution
+  :::warning
 
    Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone 
    and resource pool combination.
@@ -212,13 +212,19 @@ The following steps will guide you on how to install a PCG cluster.
 
   :::info
 
-  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the [PCG command](../../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
 
   :::
 
 
 The Palette CLI will now provision a PCG cluster in your MAAS environment. 
-If the deployment fails due to misconfiguration, update the PCG configuration file and restart the install process. Refer to the Edit and Redeploy PCG section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+
+:::warning
+
+You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+:::
 
 ### Validate
 
@@ -235,38 +241,6 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 
 4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **MAAS** in the table. Verify your MAAS account is listed.
-
-
-
-### Edit and Redeploy PCG
-
-To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process. 
-
-<br />
-
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as Vi or Nano to update the PCG install configuration file.
-
-  <br />
-
-  ```shell hideClipboard
-  ==== Create PCG reference config ====
-  ==== PCG config saved ====
-  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
-  ```
-
-  ```bash hideClipboard
-  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
-
-
-
-2. To redeploy the PCG, use the `install` command with the flag `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output. 
-
-  <br />
-
-  ```bash hideClipboard
-  palette pcg install --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
 
 ## Update and Manage the PCG
 
@@ -289,12 +263,10 @@ Follow these steps to delete a MAAS gateway.
 2. Navigate to the **Main menu** and select **Tenant Settings > Private Cloud Gateways**.
 
 
-3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**.
+3. Click the **three-dot Menu** for the gateway instance you want to delete and choose **Delete**. Palette checks for active tenant clusters associated with the gateway instance and displays an error message if it detects any. 
+  
 
-    Palette checks for running tenant clusters associated with the gateway instance and displays an error message if it detects any. 
-    <br />
-
-4. If there are running clusters, delete them and retry deleting the gateway instance.
+4. If there are active clusters, delete them and retry deleting the gateway instance.
 
 <br />
 
@@ -335,7 +307,7 @@ Follow these steps to resize a single-node gateway to three nodes.
 Two new nodes will be added to the PCG cluster.
 
 
-:::caution
+:::warning
 
 Ensure the MAAS server has two more machines in the **Ready** state in the same Availability Zone and Resource Pool combination.
 

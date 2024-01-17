@@ -27,7 +27,7 @@ If you specify `requests` but not `limits`, the default limits imposed by the Li
 
 <br />
 
-```hideClipboard shell
+```shell hideClipboard
 Invalid value: "300m": must be less than or equal to CPU limit spec.containers[0].resources.requests: Invalid value: "512Mi": must be less than or equal to memory limit
 ```
 <br />

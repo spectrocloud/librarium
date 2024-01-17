@@ -138,7 +138,7 @@ Use the following instructions on your Linux machine to create all the required 
   IMAGE_REGISTRY=ttl.sh
   OS_DISTRIBUTION=ubuntu
   IMAGE_REPO=ubuntu
-  OS_VERSION=22
+  OS_VERSION=22.04
   K8S_DISTRIBUTION=k3s
   ISO_NAME=palette-edge-installer
   ARCH=amd64
@@ -166,56 +166,22 @@ Use the following instructions on your Linux machine to create all the required 
 9. Use the following command to create the **user-data** file containing the tenant registration token. 
 
   ```shell
-  cat << EOF > user-data
-  #cloud-config
-  stylus:
-    site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: $token
-      projectName: stores
-      tags:
-        key1: value1
-        key2: value2
-        key3: value3
-      name: edge-randomid
-      registrationURL: https://edge-registration-app.vercel.app/
-
-      network:
-        httpProxy: http://proxy.example.com
-        httpsProxy: https://proxy.example.com
-        noProxy: 10.10.128.10,10.0.0.0/8
-
-        nameserver: 1.1.1.1
-        interfaces:
-            enp0s3:
-                type: static
-                ipAddress: 10.0.10.25/24
-                gateway: 10.0.10.1
-                nameserver: 10.10.128.8
-            enp0s4:
-                type: dhcp
-      caCerts:
-        - |
-          ------BEGIN CERTIFICATE------
-          *****************************
-          *****************************
-          ------END CERTIFICATE------
-        - |
-          ------BEGIN CERTIFICATE------
-          *****************************
-          *****************************
-          ------END CERTIFICATE------
-    registryCredentials:
-      domain: registry.example.com
-      username: bob
-      password: ####
-      insecure: false
-  install:
-    poweroff: true
-  users:
-    - name: kairos
-      passwd: kairos
-  EOF
+cat <<EOF > user-data
+#cloud-config
+stylus:
+  site:
+    edgeHostToken: $token
+install:
+  poweroff: true
+stages:
+  initramfs:
+    - name: "Core system setup"
+      users:
+        kairos:
+          groups:
+            - admin
+          passwd: kairos
+EOF
   ```
 
   View the newly created user data file to ensure the token is set correctly.
@@ -305,7 +271,7 @@ Use the following instructions on your Linux machine to create all the required 
   docker push ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn
   ```
 
-  :::caution
+  :::warning
 
   As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in your cluster profile within 24 hours of pushing to *ttl.sh*, they will expire and must be re-pushed. Refer to the Advanced workflow in the current guide to learn how to use another registry, such as Docker Hub, and tag the docker images accordingly.
 
@@ -555,7 +521,7 @@ Use the following instructions on your Linux machine to customize the arguments 
   ```
 
 
-:::caution
+:::warning
 
 Using the arguments defined in the **.arg** file, the final provider image name will have the following naming pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Ensure the final artifact name conforms to the Docker Hub image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`. 
 
@@ -574,7 +540,7 @@ Using the arguments defined in the **.arg** file, the final provider image name 
   cat Dockerfile
   ```
 
-:::caution
+:::warning
 
 Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The default behavior for package installations is to prompt the user for permission to install the package. A user prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the **Dockerfile**. 
 
@@ -641,6 +607,10 @@ Using the `-y` option with the `sudo zypper install` command is critical to succ
       passwd: kairos
   EOF
   ```
+
+  :::info
+  If you need to pull images from a private image registry, you can supply the credentials for the registry in the user data file in the `registryCredentials` field or in the cluster profile. Credentials specified in **user-data** overwrites the credentials provided in the cluster profile. To learn how to provide credentials in cluster profiles, refer to [Deploy Cluster with a Private Registry](../site-deployment/deploy-private-registry.md). 
+  :::
 
   View the newly created user data file to ensure the token is set correctly.
 

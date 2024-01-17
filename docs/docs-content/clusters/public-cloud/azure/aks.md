@@ -64,7 +64,7 @@ There are additional prerequisites if you want to set up Azure Active Directory 
   :::
 
 
-  <video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></video>
+  <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></Video>
 
 To create an Azure cloud account you need the following Azure account information:
 * Client ID
@@ -94,7 +94,7 @@ For Azure cloud account creation, we first need to create an Azure Active Direct
 <br />
 
 
-<video title="aks-cluster-creation" src="/videos/clusters/public-cloud/cloud-accounts/azure.mp4"></video>
+<Video title="aks-cluster-creation" src="/videos/clusters/public-cloud/cloud-accounts/azure.mp4"></Video>
 
 
 The following steps need to be performed to provision a new cluster:
@@ -132,7 +132,7 @@ The following steps need to be performed to provision a new cluster:
     || **Worker Network**: Select the worker network from the dropdown.
     |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
 
-:::caution
+:::warning
 
 If the Palette [cloud account](azure-cloud.md) is created with **Disable Properties** and the cluster option 
 **Static Placement** is enabled, the network information from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.

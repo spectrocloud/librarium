@@ -57,13 +57,13 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 6. Select **Edge Native** as the **Cloud Type** and click on **Next**.
 
 
-7. Select **Public Repo** in the **Registry field**.
+7. Select either **Public Repo** or **Palette Registry (OCI)** in the **Registry field**. 
 
 
 8. Select **BYOS Edge OS** in the **Pack Name** field and the pack version. 
 
 
-9. Click on the code editor button  **</\>** to open up the editor
+9. Click on the code editor button  **\</\>** to open up the editor
 
   <br />
 
@@ -135,7 +135,7 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 ## Without Custom OS
 
-:::caution
+:::warning
 
 This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to learn how to use a custom OS with your cluster profile.
 
@@ -187,7 +187,7 @@ You now have a cluster profile you can use for deploying Edge hosts.
 
 Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If you need remote access to the cluster, consider adding the [Spectro Proxy](../../../integrations/frp.md) pack to one of the add-on profiles.
 
-Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/helm-charts.md) or [OCI](../../../registries-and-packs/oci-registry.md) registry to learn more.
+Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/registries/helm-charts.md) or [OCI](../../../registries-and-packs/registries/oci-registry/oci-registry.md) registry to learn more.
 
 ### Validate
 

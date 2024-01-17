@@ -51,7 +51,7 @@ The following image displays a host cluster with the Prometheus Operator pack in
 
 <br />
 
-:::caution
+:::warning
 
 The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. 
 Example: `http://a2c938972938b4f0daee5f56edbd40af-1690032247.us-east-1.elb.amazonaws.com:9090/api/v1/write`

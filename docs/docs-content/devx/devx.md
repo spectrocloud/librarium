@@ -24,13 +24,14 @@ To get started with App Mode, give the tutorial [Deploy an Application using Pal
 
 ## Supported Platforms
 
-App Mode is available for the following Palette platforms.
+App Mode is available for the following Palette and VerteX platforms.
 
-| Platform | Supported | Palette Version |
+| Platform | Supported |  Version |
 |---|----|---|
-| SaaS | ✅| `v3.0.0` or greater. |
-| Self-hosted | ✅ | `v3.4.0` or greater. |
-| Airgap Self-hosted | ✅ |`v4.0.0` or greater. |
+| Palette SaaS | ✅| `v3.0.0` or greater. |
+| Self-hosted Palette | ✅ | `v3.4.0` or greater. |
+| Palette Airgap Self-hosted | ✅ |`v4.0.0` or greater. |
+| VerteX | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. |
 
 
 ## Manage Resources
@@ -60,7 +61,7 @@ The PDE dashboard provides a snapshot of resource utilization in your PDE enviro
 
 ## Automation Support
 
-You can manage PDE resources through the [Palette API](/api/introduction), [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), and the Palette CLI. Download the Palette CLI from the [Downloads](/spectro-downloads#palettecli) page to start programmatically using PDE.
+You can manage PDE resources through the [Palette API](/api/introduction), [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs), and the Palette CLI. Download the Palette CLI from the [Downloads](../spectro-downloads.md#palette-cli) page to start programmatically using PDE.
 
 ![A view of the Palette CLI menu from a terminal](/devx_devx_cli-display.png)
 

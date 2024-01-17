@@ -56,7 +56,7 @@ This guide will teach you how to use KIB to create images for your infrastructur
 
 <br />
 
-:::caution
+:::warning
 
 To use a commercial OS, you must provide the license before starting the image creation process.
 
@@ -268,14 +268,14 @@ The following steps guide you through creating your image. You will create a cus
 17. Click on **Next layer** to add the Kubernetes layer.
 
 
-18. Select the desired Kubernetes distribution and version. Click on the **</\>** button to display the YAML editor.
+18. Select the desired Kubernetes distribution and version. Click on the **\</\>** button to display the YAML editor.
 
 
 19. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
 
 You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project. 
 
-:::caution
+:::warning
 When deploying a host cluster, choosing the appropriate cloud provider and region where the image was distributed is critical to successfully launching a cluster using a custom image in the cluster profile. Failure to do so may result in Palette's inability to launch a cluster.
 :::
 

@@ -58,7 +58,7 @@ If you opt for an ECR OCI registry, you will require the following.
   - `ecr:BatchDeleteImage`
   - `ecr:DeleteRepository`
 
-:::caution
+:::warning
 
 There could be AWS expenses associated with this tutorial. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
@@ -97,7 +97,7 @@ If the port 7000 on your local machine is unavailable, you can use any other por
 <br /> 
 
 
-:::caution
+:::warning
 
 Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress. 
 
@@ -229,7 +229,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
 
   <br />
 
-  Optionally, you can define *presets*, which are pack configuration values predefined in a file called **presets.yaml** within the pack. Once defined, the **Presets** field becomes visible in both the **Clusters** and **Profile** sections of the Palette UI. Users can select any preset from the available pack presets, and upon selection, the predefined values of the chosen preset are applied to the pack. Refer to [Pack Presets](https://deploy-preview-1828--docs-spectrocloud.netlify.app/registries-and-packs/pack-constraints#pack-presets) for details and examples of how to define presets. 
+  Optionally, you can define *presets*, which are pack configuration values predefined in a file called **presets.yaml** within the pack. Once defined, the **Presets** field becomes visible in both the **Clusters** and **Profile** sections of the Palette UI. Users can select any preset from the available pack presets, and upon selection, the predefined values of the chosen preset are applied to the pack. Refer to [Pack Presets](./pack-constraints.md#preset-attributes) for details and examples of how to define presets. 
   
   The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest during the creation of the cluster profile. 
 
@@ -255,7 +255,7 @@ After completing the review of all files in the pack directory, the next step is
 
 ## Set Up the Registry Server
 
-You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](https://docs.spectrocloud.com/registries-and-packs/oci-registry/) resource for more information.
+You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all OCI-compliant registries, and you can refer to the [Spectro Cloud OCI Registry](./registries/oci-registry/oci-registry.md) resource for more information.
 
 The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide. <!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
 
@@ -336,7 +336,7 @@ aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive
 ```
 <br />
 
-:::caution
+:::warning
 
 Make sure to include the **spectro-packs/archive** path in *all* your repositories to meet Palette's requirements.
 
@@ -392,7 +392,7 @@ spectro registry login  --insecure --default --username admin --password admin \
 ```
 <br />
 
-:::caution
+:::warning
 
 Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using either of these prefixes will result in an authorization issue. 
 
@@ -874,7 +874,7 @@ In the **Nodes config** section, provide the details for the master and worker p
 Keep the **Cloud Configuration** the same for both master and worker pools.
 
 |**Field** | **Value**|
-|---| --- | ---|
+|---| --- | 
 |Instance Type | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
 |Availability zones | Choose any *one* availability zone.<br /> This tutorial uses the `us-east-1a` availability zone. | 
 |Disk size | 60 GiB | 
@@ -920,7 +920,7 @@ cd /terraform/pack-tf
 
 ### Set Up the Spectro Cloud API Key
 
-To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide for more information.
+To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](../user-management/authentication/api-key/create-api-key.md) guide for more information.
 
 ![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
 
@@ -958,7 +958,7 @@ Ensure you have the following files in the current working directory.
 ```
 <br />
 
-:::caution
+:::warning
 
 Note that the Terraform code will deploy the resources to **AWS**.
 
@@ -1088,7 +1088,7 @@ In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, se
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the **Services** URL to access the application.
 <br />
 
-:::caution
+:::warning
 
 We recommend waiting for one to three minutes before clicking on the service URL. This allows DNS to properly resolve the public load balancer URL, preventing the browser from caching an unresolved DNS request.
 
@@ -1260,7 +1260,7 @@ Packs are the building blocks of cluster profiles, allowing you to customize you
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
 
-- [Custom OS Pack](add-custom-packs.md#add-a-custom-pack)
+- [Custom OS Pack](../integrations/byoos.md)
 
 
 - [Add-on Packs](adding-add-on-packs.md)
@@ -1269,4 +1269,4 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 - [Pack Constraints](pack-constraints.md)
 
 
-- [Spectro Cloud OCI Registry](oci-registry.md)
+- [OCI Registry](registries/oci-registry/oci-registry.md)

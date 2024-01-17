@@ -27,13 +27,11 @@ RKE2 launches control plane components as static pods, managed by the kubelet in
 You can deploy RKE2 by adding this pack to a cluster profile. Once the cluster profile is created, you can deploy the RKE2-based Kubernetes clusters through Palette.
 
 
-<br />
+### Support Lifecycle
 
-:::caution
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
-RKE2 is only available for Edge host deployments. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
 
-:::
 
 ## Versions Supported
 
@@ -42,6 +40,45 @@ The following RKE2 versions are supported to work with Palette.
 <br />
 
 <Tabs queryString="versions">
+<TabItem label="1.28.x" value="k8s_rke2_1.28.x">
+
+## Prerequisites
+
+- A Linux operating system. Refer to the official [RKE2 requirements](https://docs.rke2.io/install/requirements) for more details on supported Linux distributions and versions.
+
+- 8 GB Memory 
+
+- 4 CPU
+
+- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
+
+
+## Usage
+
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide to learn more.
+
+RKE2 offers several customization options, ranging from networking to security. We recommend you review the following RKE2 documentation:
+
+<br />
+
+
+- [Configuration Options](https://docs.rke2.io/install/configuration)
+
+
+- [Inbound Network Rules](https://docs.rke2.io/install/requirements#inbound-network-rules)
+
+
+- [Registries Configuration](https://docs.rke2.io/install/containerd_registry_configuration)
+
+
+- [Advanced Options](https://docs.rke2.io/advanced)
+
+
+Many of the Day-2 cluster management responsibilities are handled by Palette. Review the [Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about Palette and Day-2 operations.
+
+
+
+</TabItem>
 <TabItem label="1.27.x" value="k8s_rke2_1.27.x">
 
 

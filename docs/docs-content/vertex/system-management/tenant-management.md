@@ -4,7 +4,7 @@ title: "Tenant Management"
 description: "Learn how to create and remove tenants in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 90
 tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---
@@ -99,7 +99,7 @@ You can remove a tenant in Palette VerteX using the following steps.
 
   <br />
 
-:::caution
+:::warning
 
 If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with deletion without manually cleaning up tenant resources.
 

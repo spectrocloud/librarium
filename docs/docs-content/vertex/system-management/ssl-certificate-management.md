@@ -4,7 +4,7 @@ title: "SSL Certificate"
 description: "Upload and manage SSL certificates in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 70
 tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---

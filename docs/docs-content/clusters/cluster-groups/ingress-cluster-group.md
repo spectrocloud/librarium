@@ -59,7 +59,7 @@ The following steps describe how to enable an Ingress Controller for a Cluster G
     
     - Existing host clusters that you will add to a new Cluster Group. <br /><br />
 
-3. Either add the `nginx-ingress` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](ingress-cluster-group.md/#prerequisites) section. 
+3. Either add the `nginx-ingress` add-on profile to each host cluster, or manually configure your own ingress controller add-on profile with the customizations described in the [Prerequisites](ingress-cluster-group.md#prerequisites) section. 
   
   a. From the **Main Menu**, choose **Clusters** and select a cluster.
 

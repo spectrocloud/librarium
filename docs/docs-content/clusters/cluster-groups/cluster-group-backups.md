@@ -11,7 +11,7 @@ Palette [Virtual Clusters](../palette-virtual-clusters/palette-virtual-clusters.
 
 ## Prerequisites
 
-* A project or tenant backup location. Refer to the [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md#clusterbackupandrestore) document to learn how to configure a backup location.
+* A project or tenant backup location. Refer to the [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md#get-started) document to learn how to configure a backup location.
 
 * Cluster group modification [permissions](../../user-management/palette-rbac/palette-rbac.md).
 
@@ -58,7 +58,7 @@ You can also enable virtual cluster disk backup during the cluster group creatio
     podSecurityStandard: privileged
     ```
 
-:::caution
+:::warning
 
 Setting the `podSecurityStandard` to `privileged` can introduce privilege escalations. We recommend you discuss this with your security system administrator.
 

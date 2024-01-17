@@ -10,7 +10,7 @@ tags: ["profiles", "cluster profiles"]
 
 Use the following steps to delete a cluster profile. Clusters that are using a deleted profile will continue to operate fine.
 
-:::caution
+:::warning
 
 If a cluster profile has more than one version, ensure you delete the appropriate version by reviewing its configuration before deleting the profile.
 

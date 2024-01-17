@@ -4,7 +4,7 @@ title: "Backup and Restore"
 description: "Learn how to enable backup and restore for self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 30
 tags: ["palette", "management", "self-hosted", "backup", "restore"]
 keywords: ["self-hosted", "enterprise"]
 ---
@@ -16,7 +16,7 @@ You can enable backup and restore for your self-hosted Palette cluster to ensure
 
 * Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3. Refer to the [S3](#s3) section for more information.
 
-:::caution
+:::warning
 
 Backup and Restore is not supported for self-hosted installations using the Helm Chart. 
 

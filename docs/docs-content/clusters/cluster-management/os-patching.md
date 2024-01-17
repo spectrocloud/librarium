@@ -48,7 +48,7 @@ To perform an **On-Demand** update for an active cluster. Navigate to the **Main
 
 <br />
 
-:::caution
+:::warning
 This operation is not available for existing Kubernetes clusters imported into Palette.
 This operation is not available for managed Kubernetes Services such as EKS and AKS. For EKS clusters, an OS update can be triggered from Palette. This would initiate a request on AWS to update cluster node groups to the latest patch version. 
 :::

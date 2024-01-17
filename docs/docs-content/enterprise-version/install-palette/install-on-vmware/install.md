@@ -17,7 +17,7 @@ Palette can be installed on VMware vSphere with internet connectivity or in an a
 ## Prerequisites
 
 
-:::caution
+:::warning
 
 If you are installing Palette in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
 
@@ -65,7 +65,7 @@ If you are installing Palette in an airgap environment, ensure you complete all 
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 
-- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](../install-on-vmware/install-on-vmware.md#vsphere-machine-configuration) for information.
+- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](../install-on-vmware/vmware-system-requirements.md) for information.
 
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
@@ -92,13 +92,13 @@ The video below demonstrates the installation wizard and the prompts you will en
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
 
-<video title="palette-cli-install" src="/videos/palette-install.mp4"></video>
+<Video title="palette-cli-install" src="/videos/palette-install.mp4"></Video>
 
 </TabItem>
 <TabItem label="Airgap" value="airgap">
 
 
-<video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></video>
+<Video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></Video>
 
 </TabItem>
 

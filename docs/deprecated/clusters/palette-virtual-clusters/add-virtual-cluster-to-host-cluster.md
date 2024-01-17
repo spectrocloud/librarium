@@ -10,7 +10,7 @@ hide_table_of_contents: false
 
 # Add Virtual Clusters to a Host Cluster
 
-:::caution
+:::warning
 
 As of Palette 3.2, this feature is deprecated. Use the [Deploy a Virtual Cluster to a Cluster Group](/clusters/palette-virtual-clusters/deploy-virtual-cluster) guide to learn how to deploy Palette Virtual clusters. 
 

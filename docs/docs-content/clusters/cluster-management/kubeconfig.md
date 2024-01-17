@@ -36,7 +36,7 @@ Palette exposes kubeconfig files for each cluster deployed through the platform.
 
 Your assigned [Palette permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md) determine which clusters you can access and what operations you can perform on the cluster. The permissions assigned to you in Palette determine if you can download and access the kubeconfig files for a cluster. 
 
-As a rule of thumb, users with the Palette role [*Cluster Admin*](../../user-management/palette-rbac/project-scope-roles-permissions#cluster) can access both kubeconfig files for all clusters in the project. Users with lower-level project roles such as the  *Cluster Editor* or the *Cluster Viewer* may not be able to access the kubeconfig file of the cluster. 
+As a rule, users with the Palette role [*Cluster Admin*](../../user-management/palette-rbac/project-scope-roles-permissions#cluster) can access the admin kubeconfig files for all clusters in the project. Users with lower-level project roles such as the  *Cluster Editor* or the *Cluster Viewer* may not be able to access the kubeconfig file of the cluster. 
 
 
 
@@ -53,7 +53,7 @@ The access you have as a user to the kubeconfig files for a cluster depends on t
 
 * Is OIDC configured for the cluster? OIDC is configured in the Kubernetes pack YAML file of the cluster profile. Refer to the respective Kubernetes distribution on the [Packs List](../../integrations/integrations.mdx) page to learn more about OIDC configuration.
 
-  :::caution
+  :::warning
 
     When enabling OIDC, ensure the parameter `oidc-issuer-url` and the `clientConfig` block are properly configured in the Kubernetes Pack YAML. Properly configuring both parameters ensures the kubeconfig file is available for all project users. Otherwise, the kubeconfig file will only be available for Cluster Admins or custom roles that have the *delete* permission for the resource key *cluster*.
 
@@ -75,7 +75,7 @@ The following table shows the *Cluster Admin* role or equivalent provides access
  **Is OIDC Configured?** | **Is Spectro Proxy Enabled?** | **Access to Kubeconfig File** | **Access to Admin Kubeconfig File** |
  --- | --- | --- | --- |
 Yes | Yes | ✅ | ✅ |
-No | Yes| ✅ | ✅ |
+No | Yes| ❌ | ✅ |
 Yes | No | ✅ | ✅ |
 
 ### Non-Cluster Admin

@@ -58,7 +58,7 @@ Tenant administrators have the ability to create an API on behalf of any user wi
 
 6. Copy the API key and save it in a secure location, such as a password manager.
 
-  :::caution
+  :::warning
 
   Ensure you save the API key in a secure location. You will not be able to view the API key again.
   :::
@@ -94,7 +94,7 @@ Tenant administrators have the ability to create an API on behalf of any user wi
 
 6. Copy the API key and save it in a secure location, such as a password manager. Share the API key with the user you created the API key for.
 
-  :::caution
+  :::warning
 
   Ensure you save the API key in a secure location. You will not be able to view the API key again.
   :::

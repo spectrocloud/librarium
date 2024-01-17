@@ -120,7 +120,7 @@ Select the tab for your vSphere version.
 
 
 
-:::caution
+:::warning
 
 If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), ReadOnly access to the VDS without “Propagate to children” is required.
 
@@ -600,7 +600,7 @@ Palette downloads images and Open Virtual Appliance (OVA) files to the spectro-t
 Use the Palette CLI to deploy a PCG cluster. Review the prerequisites for each option to help you identify the correct installation method.
 
 
-:::caution
+:::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
 
@@ -788,12 +788,17 @@ Self-hosted Palette installations provide a system PCG out-of-the-box and typica
 
   :::info
 
-  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, restart the installation process using the `palette pcg install` command.
+  The ``CloudAccount.apiKey`` and ``Mgmt.apiKey`` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the [PCG command](../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
   :::
 
 
 The Palette CLI will now provision a PCG cluster in your VMware environment. 
-If the deployment fails due to misconfiguration, update the PCG configuration file and restart the installer. Refer to the [Edit and Redeploy PCG](vmware#edit-and-redeploy-pcg) section below. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+:::warning
+
+You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+:::
 
 
 ### Validate
@@ -808,36 +813,6 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 
 3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
-
-
-### Edit and Redeploy PCG
-
-To change the PCG install values, restart the installation process using the `palette pcg install` command.  Use the following steps to redeploy the PCG or restart the install process.
-
-
-1. Make the necessary changes to the PCG configuration file the CLI created during the installation, if needed. Use a text editor, such as vi or nano to update the PCG install configuration file.
-
-  <br />
-
-  ```shell hideClipboard
-  ==== Create PCG reference config ====
-  ==== PCG config saved ====
-  Location: /Users/demo/.palette/pcg/pcg-20230717114807/pcg.yaml
-  ```
-
-  ```bash hideClipboard
-  vi /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
-
-
-
-2. To redeploy the PCG, use the `install` command with the flag `--config-file`. Provide the file path to the generated PCG config file that was generated and displayed in the output.
-
-  <br />
-
-  ```bash hideClipboard
-  palette pcg install --config-file /home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
-  ```
 
 ---
 ## Upgrade PCG
@@ -924,7 +899,7 @@ In addition to the default cloud account already associated with the private clo
 | **Username** | vCenter username|
 | **Password** | vCenter password|
 
-:::caution
+:::warning
 If you change the password for a user account in vCenter, you must also change it in Palette for the same VMware cloud account. We recommend updating the passwords immediately to avoid potentially locking Palette out of vCenter. For guidance, refer to [Change VMware Cloud Account Password in Palette](#change-vmware-cloud-account-password).
 :::
 
@@ -963,7 +938,7 @@ In addition to changing the password for a VMware account, Palette provides a wa
 
 # Deploy a VMware Cluster
 
-<video title="vmware-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/vmware.mp4"></video>
+<Video title="vmware-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/vmware.mp4"></Video>
 
 
 Use the following steps to provision a new VMware cluster.
@@ -1063,6 +1038,6 @@ A cluster stuck in the **Deletion** state can be force deleted by the user throu
       - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
 
 
-:::caution
+:::warning
 If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
 :::

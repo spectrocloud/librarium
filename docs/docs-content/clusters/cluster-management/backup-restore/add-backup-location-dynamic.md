@@ -8,7 +8,7 @@ tags: ["clusters", "cluster management", "backup"]
 ---
 
 
-This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](backup-restore.md#backuplocation) section to learn more about the supported service providers.
+This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](./backup-restore.md#backup-locations-and-credentials) section to learn more about the supported service providers.
 
 
 Depending on the infrastructure provider, there may be limitations or different prerequisites.
@@ -20,7 +20,7 @@ To support dynamic credentials with AWS, Palette uses the AWS Security Token Ser
 
 <br />
 
-:::caution
+:::warning
 
 Palette supports AWS STS only when your Palette’s hosting environment and the backup location service provider are the same. Palette SaaS is hosted on AWS, so you can use AWS STS to add an S3 bucket as the backup location. Similarly, if you have a self-hosted Palette or Palette VerteX deployed in AWS, you can use AWS STS to add an S3 bucket as the backup location. Otherwise, you cannot use AWS STS to add an S3 bucket as the backup location.
 
