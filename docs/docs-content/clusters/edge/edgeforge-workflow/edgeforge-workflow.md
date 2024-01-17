@@ -37,7 +37,7 @@ To start building a custom Edge artifact, use the [Build Edge Artifacts](build-i
 
 ### Edge Installer ISO
 
-An ISO file that bootstraps the installation process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The default Edge Installer ISO download URL is in the [Downloads](/spectro-downloads#edgeinstallimages) resource.
+An ISO file that bootstraps the installation process. The ISO image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The default Edge Installer ISO download URL is in the [Downloads](../../../spectro-downloads.md#palette-edge-cli) resource.
 
 <br />
 

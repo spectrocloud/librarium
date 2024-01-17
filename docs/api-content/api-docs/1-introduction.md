@@ -29,7 +29,7 @@ Palette uses API keys to provide secure API authentication and authorization. Th
   * Key: ApiKey
   * Value: API key copied from the Palette Console. E.g. QMOI1ZVKVIoW6LM6uXqSWFPsjmt0juvl
 
-[Read More...](/user-management/user-authentication/#usingapikey)         
+[Read More...](/user-management/user-authentication)         
 ## Requests
 
 All requests are in the `JSON` format. In general, the request payload has three sections: *metadata, spec and status*.

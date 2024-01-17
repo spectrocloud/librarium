@@ -19,7 +19,7 @@ Palette provides an **Enable encryption** option, which is only available during
 
 - IAM user or role has attached policies listed in [Required IAM Policies](required-iam-policies.md).
 
-- A **PaletteControllersEKSPolicy** created in AWS and attached to the IAM user or role that Palette is using. To create this policy, refer to [Controllers EKS Policy](required-iam-policies.md#controllers-eks-policy).
+- A **PaletteControllersEKSPolicy** created in AWS and attached to the IAM user or role that Palette is using. To create this policy, refer to [Controllers EKS Policy](required-iam-policies.md).
 
 - An AWS KMS key created in the AWS region you intend to deploy cluster to with Palette.
 

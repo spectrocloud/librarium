@@ -117,7 +117,7 @@ The cluster status is updated to **Deleting** while cluster resources are being 
 
 ## Force Delete a Cluster
 
-If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scopes. To force delete a cluster, follow the same steps outlined in [Delete a MAAS Cluster](/clusters/data-center/maas/create-manage-maas-clusters#deleteamaascluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
+If a cluster is stuck in the Deletion state for a minimum of 15 minutes it becomes eligible for force deletion. You can force delete a cluster from the tenant and project admin scopes. To force delete a cluster, follow the same steps outlined in [Delete a MAAS Cluster](./create-manage-maas-clusters.md#delete-a-maas-cluster). After 15 minutes, a **Force Delete Cluster** option is available in the **Settings drop-down menu**. The drop-down menu will provide you with an estimated remaining duration before the force deletion becomes available.
 
 Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS cluster, refer to [Manage Clusters](../../cluster-management/cluster-updates.md). 
 

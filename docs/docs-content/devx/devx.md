@@ -62,7 +62,6 @@ You can manage PDE resources through the [Palette API](/api/introduction), [Spec
 
 ![A view of the Palette CLI menu from a terminal](/devx_devx_cli-display.png)
 
-Check out the [Palette CLI](/palette-cli/install-palette-cli) for installation guidance. 
 
 Check out the Palette CLI [install guide](../palette-cli/install-palette-cli.md) for more information on how to install and configure the CLI.
 :::
