@@ -21,9 +21,9 @@ Palette supports integration with Google Cloud Platform (GCP) accounts. This sec
 
     - [Compute Admin](https://cloud.google.com/iam/docs/understanding-roles#compute.admin)
 
-    - [Service Account User](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountUser)
-
     - [Storage Object Viewer](https://cloud.google.com/iam/docs/understanding-roles#storage.objectViewer)
+
+    - [Service Account Token Creator](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountTokenCreator)
 
     <br />
 
