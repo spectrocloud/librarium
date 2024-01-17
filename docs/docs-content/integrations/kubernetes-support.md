@@ -28,7 +28,7 @@ The table below lists the Kubernetes distributions we support and the duration o
 Kubernetes follows the [semantic version schema](https://semver.org/). Versions are annotated as x.y.z, where x is the major version, y is the minor version, and z is the patch version.
 :::
 
-We support N-3 Kubernetes minor versions until the official End-Of-Life (EOL). Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section. 
+We support N-3 Kubernetes minor versions until the official End-Of-Life (EOL). Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#packs-deprecation) section. 
 
 
 ## Palette eXtended Kubernetes Support
@@ -43,7 +43,7 @@ Additional support may be extended for PXK and PXK-E. Discuss this with our supp
 
 ## Other Kubernetes Distributions
 
-We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section.
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#packs-deprecation) section.
 
 
 ![Diagram of other Kubernetes Support Lifecycle. Other distros are supported until their EOL. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle_other.png)
