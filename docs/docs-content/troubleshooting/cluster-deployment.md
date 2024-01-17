@@ -126,7 +126,7 @@ We recommend only applying the labels to namespaces where pods fail to be create
 If your pack creates multiple namespaces, and you are unsure which ones contain pods that need the elevated privileges, you can access the cluster with the kubectl CLI and use the `kubectl get pods` command. 
 This command lists pods and their namespaces so you can identify the pods that are failing at creation.
 
-For guidance in using the CLI, review [Access Cluster with CLI](../clusters/cluster-management/palette-webctl/#access-cluster-with-cli). To learn more about kubectl pod commands, refer to the [Kubernetes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) documentation.
+For guidance in using the CLI, review [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli). To learn more about kubectl pod commands, refer to the [Kubernetes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) documentation.
 
 :::
 

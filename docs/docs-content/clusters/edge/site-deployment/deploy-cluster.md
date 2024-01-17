@@ -438,7 +438,7 @@ The next step is to use the following `docker run` command to trigger Packer bui
 - The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to the container's **/edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The `packer build` command has the following options: 
 
   - The `-force` flag destroys any existing template. 
-  - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](../architecture/#minimum-device-requirements).
+  - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name, VM configuration, and ISO file name to use. The VM configuration conforms to the [minimum device requirements](../architecture.md#minimum-device-requirements).
 
   The **vsphere.hcl** file content is shown below for your reference. This tutorial does not require you to modify these configurations. 
 
