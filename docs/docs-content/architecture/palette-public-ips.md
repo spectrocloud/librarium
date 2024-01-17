@@ -50,7 +50,6 @@ Palette uses the following domains for communication between the management plat
 |proxy.console.spectrocloud.com |443 |
 |registry.spectrocloud.com |443 |
 |saas-repo.console.spectrocloud.com |443 |
-|registry.spectrocloud.com |443 |
 |maasgoldenimage-console.s3.amazonaws.com |443 |
 |openstackgoldenimage-console.s3.amazonaws.com |443 |
 |edgegoldenimage-console.s3.amazonaws.com |443 |
