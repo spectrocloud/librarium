@@ -8,7 +8,7 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
 
-Palette Dev Engine output variables are defined in the [app profile](/glossary-all#appprofile) and are only resolved at cluster deployment time. The output variables have the following properties:
+Palette Dev Engine output variables are defined in the [app profile](../../glossary-all.md#app-profile) and are only resolved at cluster deployment time. The output variables have the following properties:
 
 * May be referenced by specifying them during app profile creation.
 
@@ -75,7 +75,7 @@ Each database service exposes a set of output variables. To learn about each dat
 
 ## Resources
 
-* [Palette System Macros](/registries-and-packs/pack-constraints#packmacros)
+* [Palette System Macros](../../registries-and-packs/pack-constraints.md#pack-macros)
 
-* [Palette User Macros](/clusters/cluster-management/macros#overview)
+* [Palette User Macros](../../clusters/cluster-management/macros.md)
 <br />

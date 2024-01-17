@@ -8,7 +8,7 @@ tags: ["clusters", "cluster management", "backup"]
 ---
 
 
-This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](backup-restore.md#backuplocation) section to learn more about the supported service providers.
+This guide provides instructions for how to add a backup location in Palette using dynamic access credentials. You use the dynamic access credentials to authenticate Palette with the backup location service provider. Refer to the [Backup Location](./backup-restore.md#backup-locations-and-credentials) section to learn more about the supported service providers.
 
 
 Depending on the infrastructure provider, there may be limitations or different prerequisites.
