@@ -278,7 +278,63 @@ If the minimum and maximum versions are not mentioned, the validation is skipped
 
 ## Pack Dependency Attributes
 
-<Tabs queryString="Pack Dependency Attributes">
+A pack can have one or more dependencies defined in the `dependencies` array. Each dependency consists of the following attributes.
+
+
+| Attribute | Description |
+|-------|-------------|
+| `packName` | Name of the dependent pack. |
+| `layer`  | The dependent pack can only be found in the OS layer of the Cluster Profile. Refer to the [Layer Types](#layer-types) section to learn more. |
+| `minVersion`  | Minimum supported dependent pack version, any version below the minimum version is not valid. |
+| `maxVersion`  | Maximum supported dependent pack version, any version above the maximum version is not valid. |
+| `type`  | The dependent pack is optional but validates minimum or maximum versions if the pack is selected. |
+| `required`| The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined. |
+| `notSupported`  | Pack versions within the range of the mentioned minimum and maximum (including the minimum and maximum) are not supported. |
+
+
+In the example code snippet from earlier, the three dependent packs are identified by unique pack names such as `vault`, `csi-vsphere-volume`, and `kubernetes`. A `minVersion`, `maxVersion`, and `type` are defined for each dependent pack.
+
+```json {3,10,17} hideClipboard
+"dependencies": [
+    {
+      "packName": "vault",
+      "layer": "addon",
+      "minVersion": "0.6.0",
+      "maxVersion": "",
+      "type": "optional"
+    },
+    {
+      "packName": "csi-vsphere-volume",
+      "layer": "csi",
+      "minVersion": "1.0.0",
+      "maxVersion": "",
+      "type": "notSupported"
+    },
+    {
+      "packName": "kubernetes",
+      "layer": "k8s",
+      "minVersion": "1.17.0",
+      "maxVersion": "1.18.6",
+      "type": "required"
+    }
+  ]
+```
+
+
+#### Layer Types
+
+The `layer` attribute defines the layer where the dependent pack can be found in the Cluster Profile. The following table lists the different layer types.
+
+| Layer | Description |
+|-------|-------------|
+| `os` | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS). This can differ per cloud provider. |
+| `k8s`  | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. |
+| `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. |
+| `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. |
+| `addon`  | The dependent pack can only be found in the add-on layers of the Cluster Profile. |
+
+
+<!-- <Tabs queryString="Pack Dependency Attributes">
 
 <TabItem label="packName" value="pack_dependency_attribute_packName">
 
@@ -390,7 +446,7 @@ If the minimum and maximum versions are not mentioned, the validation is skipped
 
 </TabItem>
 
-</Tabs>
+</Tabs> -->
 
 ## Pack Resource Constraints
 
