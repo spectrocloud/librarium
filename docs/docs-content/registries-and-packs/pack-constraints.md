@@ -325,10 +325,10 @@ The `layer` attribute defines the layer where the dependent pack can be found in
 
 | Layer | Description |
 |-------|-------------|
-| `os` | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS). This can differ per cluster type. |
-| `k8s`  | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as Palette eXtended Kubernetes, RKE2, K3S or MicroK8s. This can differ per cluster type. |
-| `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea. This can differ per cluster type. |
-| `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx. This can differ per cluster type. |
+| `os` | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS). |
+| `k8s`  | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as Palette eXtended Kubernetes, RKE2, K3S or MicroK8s. |
+| `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea. |
+| `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx. |
 | `addon`  | The dependent pack can only be found in the add-on layers of the Cluster Profile. The `addon` layer contains packs such as ArgoCD, Vault, NGINX, and many more. |
 
 
