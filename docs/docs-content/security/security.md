@@ -28,7 +28,7 @@ Palette uses a micro services-based architecture, and we take steps to ensure ea
 
 ## Compliance & Standards
 
-We believe adherence to industry standards and regulations is critical to maintaining the highest levels of security for our customers. We ensure our software complies with all relevant laws and regulations, and we continuously evaluate and update our compliance efforts to stay current with emerging regulations and requirements. To learn about our product certifications, check out the [Compliance](/compliance) reference.
+We believe adherence to industry standards and regulations is critical to maintaining the highest levels of security for our customers. We ensure our software complies with all relevant laws and regulations, and we continuously evaluate and update our compliance efforts to stay current with emerging regulations and requirements. To learn about our product certifications, check out the [Compliance](../legal-licenses/compliance.md) reference.
 
 <br />
 
