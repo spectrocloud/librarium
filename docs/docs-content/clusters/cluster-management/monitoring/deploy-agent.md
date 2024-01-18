@@ -151,7 +151,7 @@ charts:
         - url: "https://metrics.example.com:9090/api/v1/write"
 ```
 
-8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](deploy-monitor-stack.md#deployamonitoringstack) with authentication guide, then the username is `agent`.
+8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](deploy-monitor-stack.md#deploy-a-monitoring-stack) with authentication guide, then the username is `agent`.
 
 <br />
 

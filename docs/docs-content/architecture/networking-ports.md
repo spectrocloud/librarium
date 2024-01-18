@@ -104,13 +104,14 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 <Tabs groupId="architecture">
 <TabItem label="gRPC" value="gRPC">
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.png "#title="network diagram")
+
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.png)
 
 </TabItem>
 
 <TabItem label="NATS" value="nats">
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-nats.png "#title="network diagram")
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-nats.png)
 
 </TabItem>
 </Tabs>

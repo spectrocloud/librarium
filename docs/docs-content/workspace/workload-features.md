@@ -362,7 +362,8 @@ Palette enables the users to limit resource usage within the workspace optionall
 
 ## To set your Resource Quota:
 
-1. During [Step: 3 Associate Namespaces](adding-a-new-workspace#3-associate-namespaces) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can use the set Quota.
+1. During [Step: 3 Associate Namespaces](./adding-a-new-workspace.md#create-your-workspace) of Namespace creation, **Workspace Quota** can be set by giving the **Maximum CPU** and **Maximum Memory**. Then, all the clusters launched within the Namespace can use the set Quota. 
+
 
 2. Namespace Quota can be set for an already deployed workspace as:
    `Workspace Settings -> Namespaces -> Workspace Quota`
@@ -481,7 +482,9 @@ Palette users can restrict a few container images from getting deployed into a s
 
 ## Restrict container images to a workspace
 
-To restrict a container image for a particular namespace within the workspace:
+ To restrict a container image for a particular namespace within the workspace:
+
+1. During [Step: 4 Settings](adding-a-new-workspace.md#create-your-workspace) of workspace creation, select the **Container Images** tab from the left ribbon. 
 
 1. During [Step: 4 Settings](adding-a-new-workspace.md#4-settings) of workspace creation, select the **Container Images** tab from the left ribbon.
 

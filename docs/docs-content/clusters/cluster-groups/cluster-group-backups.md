@@ -19,6 +19,7 @@ within a virtual cluster using the following steps.
 
 ## Prerequisites
 
+* A project or tenant backup location. Refer to the [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md#get-started) document to learn how to configure a backup location.
 
 
 

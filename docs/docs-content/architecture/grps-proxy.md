@@ -28,7 +28,7 @@ The following sections provide more information about gRPC and proxies.
 
 ## Proxy Without SSL Bump
 
-Because gRPC is based on HTTP/2, any proxy server that supports the [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) method can be used to forward gRPC traffic. No configuration is required for this scenario. The exception is when the proxy server performs an SSL bump, discussed in the [Proxy With SSL Bump](/architecture/grps-proxy#proxywithsslbump) section.
+Because gRPC is based on HTTP/2, any proxy server that supports the [HTTP CONNECT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) method can be used to forward gRPC traffic. No configuration is required for this scenario. The exception is when the proxy server performs an SSL bump, discussed in the [Proxy With SSL Bump](#proxy-with-ssl-bump) section.
 
 :::info
 

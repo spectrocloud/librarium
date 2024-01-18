@@ -23,7 +23,7 @@ Registries are added at the tenant level and are available to all users in the t
 
 ## Synchronization
 
-Registries are automatically synchronized with Palette. Helm registries are different as you can choose to disable synchronization. When you disable synchronization, you must manually synchronize the Helm registry with Palette. Refer to the [Helm Registry](helm-charts.md#synchronization-behavior) resource to learn more about the synchronization behavior of Helm registries.
+Registries are automatically synchronized with Palette every 24 hours. Helm registries are different as you can choose to disable synchronization. When you disable synchronization, you must manually synchronize the Helm registry with Palette. Refer to the [Helm Registry](helm-charts.md#synchronization-behavior) resource to learn more about the synchronization behavior of Helm registries.
 
 ## Default Registries
 

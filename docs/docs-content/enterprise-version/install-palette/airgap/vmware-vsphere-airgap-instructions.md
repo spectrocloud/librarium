@@ -67,7 +67,8 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 
 - Palette CLI installed and available. Refer to the Palette CLI [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
-- Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](../install-on-vmware/install-on-vmware.md#vsphere-machine-configuration) for information.
+
+- Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](../install-on-vmware/vmware-system-requirements.md) for information.
 
 <br />
 

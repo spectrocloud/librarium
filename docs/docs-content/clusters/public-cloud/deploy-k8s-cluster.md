@@ -1166,7 +1166,7 @@ In this tutorial, you created a cluster profile, which is a template that contai
 
 Palette assures consistency across cluster deployments through cluster profiles. Palette also enables you to quickly deploy applications to a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of [virtual clusters](/glossary-all#palettevirtualcluster). Feel free to check out the reference links below to learn more about Palette.
+We encourage you to check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of [virtual clusters](../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to learn more about Palette.
 
 <br />
 

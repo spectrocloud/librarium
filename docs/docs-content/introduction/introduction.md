@@ -54,7 +54,7 @@ Development teams will get the flexibility and freedom they are looking for to i
 
 ### IT Operations and SREs
 
-Declarative management makes life easier for IT teams, with consistency, repeatability, and all the enterprise-grade controls and governance they need - especially when moving to production [Cluster Profiles](/glossary-all#clusterprofile) enable them to define and re-use full-stack clusters and support them across the entire lifecycle without having to write scripts, as well as integrate with existing tools and methodologies.
+Declarative management makes life easier for IT teams, with consistency, repeatability, and all the enterprise-grade controls and governance they need - especially when moving to production [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) enable them to define and re-use full-stack clusters and support them across the entire lifecycle without having to write scripts, as well as integrate with existing tools and methodologies.
 
 ### IT Executives
 
