@@ -9,3 +9,4 @@ tokens:
 nonword: true
 exceptions:
   - master node
+  - master branch
