@@ -45,3 +45,5 @@ Enable SSO by following our [Enable SSO in Palette](enable-saml.md) guide.
 
 
 - [Palette SSO with Keycloak](palette-sso-with-keycloak.md)
+
+- [Palette SSO with Microsoft Entra ID](./palette-sso-with-entra-id.md)
