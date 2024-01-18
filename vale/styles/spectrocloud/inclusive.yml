@@ -8,5 +8,4 @@ tokens:
   - slave
 nonword: true
 exceptions:
-  - master node
   - master branch
