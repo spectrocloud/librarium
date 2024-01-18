@@ -58,7 +58,7 @@ If you opt for an ECR OCI registry, you will require the following.
   - `ecr:BatchDeleteImage`
   - `ecr:DeleteRepository`
 
-:::caution
+:::warning
 
 There could be AWS expenses associated with this tutorial. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
@@ -97,7 +97,7 @@ If the port 7000 on your local machine is unavailable, you can use any other por
 <br /> 
 
 
-:::caution
+:::warning
 
 Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress. 
 
@@ -336,7 +336,7 @@ aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive
 ```
 <br />
 
-:::caution
+:::warning
 
 Make sure to include the **spectro-packs/archive** path in *all* your repositories to meet Palette's requirements.
 
@@ -392,7 +392,7 @@ spectro registry login  --insecure --default --username admin --password admin \
 ```
 <br />
 
-:::caution
+:::warning
 
 Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using either of these prefixes will result in an authorization issue. 
 
@@ -920,7 +920,7 @@ cd /terraform/pack-tf
 
 ### Set Up the Spectro Cloud API Key
 
-To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide for more information.
+To get started with Terraform code, you need a Palette API key to authenticate and interact with the Palette API endpoint. To add a new API key, log in to Palette, click on the **User Menu** at the top right, and select **My API Keys**, as shown in the screenshot below. Visit the [Create API Key](../user-management/authentication/api-key/create-api-key.md) guide for more information.
 
 ![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
 
@@ -958,7 +958,7 @@ Ensure you have the following files in the current working directory.
 ```
 <br />
 
-:::caution
+:::warning
 
 Note that the Terraform code will deploy the resources to **AWS**.
 
@@ -1088,7 +1088,7 @@ In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, se
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the **Services** URL to access the application.
 <br />
 
-:::caution
+:::warning
 
 We recommend waiting for one to three minutes before clicking on the service URL. This allows DNS to properly resolve the public load balancer URL, preventing the browser from caching an unresolved DNS request.
 
@@ -1260,7 +1260,7 @@ Packs are the building blocks of cluster profiles, allowing you to customize you
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
 
-- [Custom OS Pack](add-custom-packs.md#add-a-custom-pack)
+- [Custom OS Pack](../integrations/byoos.md)
 
 
 - [Add-on Packs](adding-add-on-packs.md)

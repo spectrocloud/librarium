@@ -38,7 +38,7 @@ To get started with creating a backup, check out the [Add a Backup Location usin
 
 :::info
 
-If you are using a workspace, refer to the [Manage Palette Workspace](/workspace/workload-features#managepaletteworkspace) guide to learn more about backup and restore actions for a workspace.
+If you are using a workspace, refer to the [Manage Palette Workspace](../../../workspace/workload-features.md) guide to learn more about backup and restore actions for a workspace.
 
 :::
 

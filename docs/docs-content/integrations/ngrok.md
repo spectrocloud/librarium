@@ -44,7 +44,7 @@ To deploy the ngrok Ingress Controller, you need to set, at minimum, the followi
 
 Review the [common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md) document for more details on parameters. Refer to the [user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced configurations.
 
-:::caution
+:::warning
 
 If you have a free ngrok account, you can only have one ngrok agent active at a time. This means that you will need to set the number of replicas to `1` to ensure that your ngrok agent operates properly.
 

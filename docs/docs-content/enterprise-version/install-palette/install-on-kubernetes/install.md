@@ -19,7 +19,7 @@ This installation method is common in secure environments with restricted networ
 ## Prerequisites
 
 
-:::caution
+:::warning
 
 If you are installing an airgap Palette, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more information.
 
@@ -88,7 +88,7 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
 
 <br />
 
-:::caution
+:::warning
 
 Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette-managed clusters contain the Palette agent and Palette-created Kubernetes resources that will interfere with the installation of Palette.
 
@@ -749,7 +749,7 @@ reach-system:
 
 <br />
 
-:::caution
+:::warning
 
 If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse proxy for Palette.
 

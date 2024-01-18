@@ -15,7 +15,7 @@ The **Virtual Machine Orchestrator** pack provides a single-pack experience that
 
 - **Snapshot Controller** - Provides the ability to create VM snapshots. 
 
-  :::caution
+  :::warning
 
   The snapshot controller is installed automatically when you initiate or schedule a backup for your cluster. If you are deploying the VMO pack and your cluster already has a backup schedule configured or you have taken an on-demand backup in the past, then the snapshot controller will already be installed. To prevent any resource conflicts, you can disable the snapshot controller in the pack YAML file
 

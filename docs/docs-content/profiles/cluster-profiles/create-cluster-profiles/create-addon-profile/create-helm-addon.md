@@ -50,7 +50,7 @@ You can extend the list of integrations by adding Helm charts from a public or p
   ``` 
   Optionally, you can add configurable layer values and specify the layer [install order](./create-addon-profile.md#install-order).
 
-  :::caution
+  :::warning
 
   Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the target cluster. For more information about customizing with namespaces, refer to [Profile Customization](../../../profile-customization.md).
     

@@ -36,7 +36,7 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
     <br /> 
 
-:::caution
+:::warning
 
 The CIDR IP specified in Palette using the ``podCIDR`` parameter in the Kubernetes manifest always takes precedence. 
     

@@ -74,7 +74,7 @@ A few restrictions apply to all cluster imports that you need to be aware of bef
 <br />
 
 
-:::caution
+:::warning
 
 Imported generic clusters lack many Day-2 management operations such as scaling nodes, adding worker pools, or any operations that require Palette to have knowledge of the underlying infrastructure.
 
