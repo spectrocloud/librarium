@@ -23,7 +23,14 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 
 :::
 
-## Prerequisites
+## Architecture
+
+
+  ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
+
+## Enable OIDC SSO in Palette
+
+### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater. 
 
@@ -33,21 +40,13 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 
 
 
-## Architecture
-
-
-  ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
-
-
-
-## Enable OIDC SSO in Palette
-
+### Configure Microsoft Entra ID with Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**. 
 
 2. Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then **Configure** and lastly, click on the **OIDC** tab.
 
-  ![A view of the callback URL field](/oidc-entra-id-images/oidccallback.png)
+    ![A view of the callback URL field](/oidc-entra-id-images/oidcallback.png)
 
 3. Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID. 
 
@@ -59,45 +58,57 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 
 6. Next, select **Web**, and paste the *Palette Callback URL* value from your clipboard into the **Redirect URL (optional)** field, and Click **Register**.
 
-  ![Azure application creation screen](/oidc-entra-id-images/palette-registration.png)
+    ![Azure application creation screen](/oidc-entra-id-images/palette-registration.png)
  
 7. From the app overview page, navigate to the left **Main Menu** and select **Certificates & secrets**. In the following screen, click on **New client secret**. 
 
 
 8. Add a description for the secret and select an expiration period. Click on **Add** to create the secret. 
 
-  :::warning
+    :::warning
 
-  We recommend you store the secret value in a secure location, such as a password manager. You will need this value later when you configure Palette.
+    We recommend you store the secret value in a secure location, such as a password manager. You will need this value later when you configure Palette.
 
-  :::
+    :::
 
 9. From the application overview page, navigate to the left **Main Menu** and select **Token configuration**.
 
 
 10. Select **Add optional claim** button. Choose **Token type** as **ID**, and add the claims **email** and **preferred_username**. When finished, click the **Add** button.
 
-  ![Add a claim button](/oidc-entra-id-images/twooptionalclaims.png)
+    ![Add a claim button](/oidc-entra-id-images/twooptionalclaims.png)
 
 
 11. In addition to allowing individual user authentication, Palette provides groups claim functionality, allowing an OpenID Connect identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette. To enable group membership, select the **Add groups claim** button. Then select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
 
-  ![Groups and inviduals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
+    ![Groups and inviduals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
 
 
 
 When completed, the **Token Configuration** page will look similar to image below.
 
-  ![A view of the token configuration screen](/oidc-entra-id-images/token-configuration.png)
+    ![A view of the token configuration screen](/oidc-entra-id-images/token-configuration.png)
 
-12. From the application overview page, navigate to the left **Main Menu** and select the **Overview** tab.  From the **Overview** selection, save the following fields for the next steps in you will complete in Palette.
+12. From the application overview page, navigate to the left **Main Menu** and select the **Overview** tab. From the **Overview** selection, save the following fields for the next steps in you will complete in Palette.
 
-| Field  | Description   |
-| ------------ | ------------ |
-| **Application (client) ID**  | The Application ID, also known as the client ID. This is a unique identifier for your Azure application.  |
-| **Object ID**     | The Object ID is the unique identifier for the application in Azure AD.  |
-| **Directory (tenant) ID**    | The Directory ID is the unique identifier for your Azure AD tenant.  |
-| **Secret Value**    | The Secret Value is the value of the client secret you created in the previous steps.  |
+    | Field  | Description   |
+    | ------------ | ------------ |
+    | **Application (client) ID**  | The Application ID, also known as the client ID. This is a unique identifier for your Azure application.  |
+    | **Object ID**     | The Object ID is the unique identifier for the application in Azure AD.  |
+    | **Directory (tenant) ID**    | The Directory ID is the unique identifier for your Azure AD tenant.  |
+    | **Secret Value**    | The Secret Value is the value of the client secret you created in the previous steps.  |
+
+
+  <details>
+  <summary>Additional Redirect URLs</summary>
+
+  You can also add additional redirect URIs if needed. For example, to enable integration with the Kubernetes Dashboard add the following redirect URI to the list of redirect URIs in the Azure AD application:
+
+    | URL | Type of Access |
+    | --- | --- |
+    | `http://localhost:8000` | UsUseing kubectl with the kube-login plugin from a workstation |
+    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to autenticate and log in to the Kubernetes Dashboard |
+  </details>
 
 #### Configure Microsoft Entra ID with Users and Groups
 
@@ -106,10 +117,10 @@ When completed, the **Token Configuration** page will look similar to image belo
 
 
 14. Select **New Group** and assign a name to the new group. Repeat this step to create the remaining groups. Use the following names for the groups:
-  - `palette_tenant_admins`
-  - `palette_default_project_admins`
-  - `k8s_cluster_admins`
-  - `k8s_cluster-editor`
+    - `palette_tenant_admins`
+    - `palette_default_project_admins`
+    - `k8s_cluster_admins`
+    - `k8s_cluster-editor`
 
  
 15. Record for future steps the group name and **Object ID** of each group. You will use this information in future steps to configure Palette. 
@@ -120,29 +131,29 @@ When completed, the **Token Configuration** page will look similar to image belo
 
 17. Click on **New User** and assign a name to the new user. Repeat this step to create the remaining users. Use the following information for the users:
 
-- Create the new user **Defaultprojectadmin** with the following inputs:
-      - User principal name example: `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`  
-      - Display name example: `defaultprojectadmin`
-      - Browse to Properties, Edit First Name: `DefaultProject`
-      - Browse to Properties, Edit Last Name: `Admin`
-      - Browse to Properties, add Email: `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`  
-      - Add this account to the Entra ID group `Palette_default_project_admins`
+    - Create the new user **Defaultprojectadmin** with the following inputs:
+          - User principal name example: `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`  
+          - Display name example: `defaultprojectadmin`
+          - Browse to Properties, Edit First Name: `DefaultProject`
+          - Browse to Properties, Edit Last Name: `Admin`
+          - Browse to Properties, add Email: `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`  
+          - Add this account to the Entra ID group `Palette_default_project_admins`
 
--	Create the new user **Test User** with the following inputs:
-      - User principal name example: `testuser@SpectroCloud500.onmicrosoft.com`    
-      - Display name example: Test `User`
-      - Browse to Properties, Edit First Name: `Test`
-      - Browse to Properties, Edit Last Name: `User`
-      - Browse to Properties, add Email: `testuser@SpectroCloud500.onmicrosoft.com`
-      - Do not add this account to any groups 
+    -	Create the new user **Test User** with the following inputs:
+          - User principal name example: `testuser@SpectroCloud500.onmicrosoft.com`    
+          - Display name example: Test `User`
+          - Browse to Properties, Edit First Name: `Test`
+          - Browse to Properties, Edit Last Name: `User`
+          - Browse to Properties, add Email: `testuser@SpectroCloud500.onmicrosoft.com`
+          - Do not add this account to any groups 
 
-- Create an external user with your corporate/personal email account:
-      - User principal name example: your corporate email address  
-      - Display name example: Your First Name and Last Name
-      - Browse to Properties, Edit First Name
-      - Browse to Properties, Edit Last Name
-      - Browse to Properties, add your corporate email address
-      - Add this account to the Entra ID Group `palette_tenant_admins`
+    - Create an external user with your corporate/personal email account:
+          - User principal name example: your corporate email address  
+          - Display name example: Your First Name and Last Name
+          - Browse to Properties, Edit First Name
+          - Browse to Properties, Edit Last Name
+          - Browse to Properties, add your corporate email address
+          - Add this account to the Entra ID Group `palette_tenant_admins`
         
 18.	Change your Entra ID admin account with group membership. This is the account you used to create the **App** in Microsoft Entra ID. Add the following groups to this account, `palette_tenant_admins` and `k8s_cluster_admins`. 
 
@@ -156,28 +167,28 @@ When completed, the **Token Configuration** page will look similar to image belo
 
 21. Create four Palette teams with each team named after the **Entra ID Group ID*** you created in the previous steps.  Use the table below as an example reference.
 
-| Palette Team Name is the Entra Group ID | Entra ID Group Name     |  
-|-------------------|-------------------------------------------------|
-| `e3ac07cc-bd12-4edc-92a4-983d783153ba` | `palette_tenant_admins`     |  
-| `88f61c49-1dd1-40c3-a820-68a513a38725` |  `palette_default_project_admins` |   
-| `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` |  `k8s_cluster_admins`     |      
-| `c4606295-e8b0-4df0-891b-de4428d7e54f` |  `k8s_cluster-editor`     |    
+    | Palette Team Name is the Entra Group ID | Entra ID Group Name     |  
+    |-------------------|-------------------------------------------------|
+    | `e3ac07cc-bd12-4edc-92a4-983d783153ba` | `palette_tenant_admins`     |  
+    | `88f61c49-1dd1-40c3-a820-68a513a38725` |  `palette_default_project_admins` |   
+    | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` |  `k8s_cluster_admins`     |      
+    | `c4606295-e8b0-4df0-891b-de4428d7e54f` |  `k8s_cluster-editor`     |    
 
 22. Assign the following **Roles** to each Palette team. For example purposes, the same Entra Group ID values used in the table above are used in the table below.
 
-| Palette Team Name | Role    | Entra ID Group Name |
-|-------------------|---------| ------------------- |
-| `e3ac07cc-bd12-4edc-92a4-983d783153ba` |  Tenant Admin     |   `palette_tenant_admins` |
-| `88f61c49-1dd1-40c3-a820-68a513a38725` |  Project Admin   |   `palette_default_project_admins` |
-| `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` |  No role assigned    |   `k8s_cluster_admins` |
-| `c4606295-e8b0-4df0-891b-de4428d7e54f` |  No role assigned   |  `k8s_cluster-editor` |
+    | Palette Team Name | Role    | Entra ID Group Name |
+    |-------------------|---------| ------------------- |
+    | `e3ac07cc-bd12-4edc-92a4-983d783153ba` |  Tenant Admin     |   `palette_tenant_admins` |
+    | `88f61c49-1dd1-40c3-a820-68a513a38725` |  Project Admin   |   `palette_default_project_admins` |
+    | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` |  No role assigned    |   `k8s_cluster_admins` |
+    | `c4606295-e8b0-4df0-891b-de4428d7e54f` |  No role assigned   |  `k8s_cluster-editor` |
 
 Refer to the images below to ensure you have the correct settings.
 
-  ![Example of IDs](/oidc-entra-id-images/ba_tenantadmin.png)
+    ![Example of IDs](/oidc-entra-id-images/ba_tenantadmin.png)
 
 
-  ![Example of IDs with Palette roles attached to a team](/oidc-entra-id-images/25_def_project_admin.png)
+    ![Example of IDs with Palette roles attached to a team](/oidc-entra-id-images/25_def_project_admin.png)
 
 
 #### Palette SSO OIDC Configuration
@@ -199,12 +210,12 @@ Refer to the images below to ensure you have the correct settings.
 
 25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will receive a message stating OIDC is configured successfully.
 
-  ![Example of Palette with populated input fields](/oidc-entra-id-images/enable.png)
+    ![Example of Palette with populated input fields](/oidc-entra-id-images/enable.png)
 
 
 You have now successfully configured OIDC SSO in Palette. Next, validate the configuration by logging in to Palette with an Entra ID user account.
 
-## Validate
+### Validate
 
 1. Log out of Palette. To log out, click on **User Menu** in the top right corner of the screen and select **Sign Out**. 
 
@@ -223,179 +234,204 @@ You have now successfully configured OIDC SSO in Palette. Next, validate the con
 
 ## Enable OIDC in Kubernetes Clusters With Entra ID
 
-This section describes how to enable - Entra ID SSO authentication to access a Kubernetes cluster.
 
-1. From the sidebar menu, select **Tenant Settings** and ensure the **Tenant Admin** from dropdown is selected.
+### Prerequisites
 
-2. Go to **Profiles** from within Tenant Admin or a Project and select an existing Cluster Profile. Alternatively, if a Cluster Profile does not exist, create a new Cluster Profile with a CNCF Kubernetes distribution. Once you select a profile, you will see the Infrastructure layers in the picture.
+- Palette or Palette VerteX version 4.0.X or greater.
 
-3. Choose the **Kubernetes** layer and select the **Pack Values** to modify.
+- OIDC configured in Palette with Microsoft Entra ID. Refer to the [Enable OIDC SSO in Palette](#enable-oidc-sso-in-palette) section for detailed guidance on how to configure OIDC in Palette.
 
-4. The Pack Version Settings are exposed with the appropriate privileges (Tenant Admin). Notate the following **Variable** within the pack settings.
-
-#### Configuring the Application OpenID Configuration in the Cluster
-
-1.  Go to the **Kubeadminconfig**:**apiServer**:**extraArgs** section of the pack layer. 
-
-    - **oidc-groups-claim** - "Groups" 
-    - **oidc-username-claim** - "Email" 
-    - **oidc-issuer-url** -  "Issuer's URL" 
-    - **oidc-client-id** - "Client ID" 
-
-Here is an example with of a an Entra ID configuration to configure SSO in a Kubernetes cluster:
-       ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.png)
+- [kubelogin](https://github.com/Azure/kubelogin) installed on your local workstation. 
 
 
-2.  Next, find the **clientConfig** section and modify the following parameters:
+### Create Cluster Profile With RoleBindings
 
-    - **oidc-issuer-url** - This is the provider URL which allows the Palette to discover public signing keys.
-    - **oid-client-id** - The client ID is found under the Application Registration/Enterprise Application.
-    - **oidc-client-secret** - The secret provided by - Entra ID. 
-    - **oidc-extra-scope** - The scope tags. 
+This section describes how to enable Entra ID SSO authentication to access a Kubernetes cluster.
 
-![Palette OIDC configuration steps](/oidc-azure-images/client-config.png)
- 
-#### Binding the Cluster Admin Role AD to Cluster Admin via RBAC
+1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
 
-Configure the Role Based Access Control Pack (RBAC).
-#### Adding an RBAC Pack
+2. Navigate to the left **Main Menu** and select **Profiles**.
 
-1. Under **Tenant Admin**, create an **RBAC Cluster** profile.  
-2. Go to **Cluster Profile** > +**Add Cluster Profile** and complete the Basic Information. 
-3. Enter the **Name**, **Version**, and **Description** (Optional) and click **Next**.  
-4. Under **Type**, select **+Add-on New Pack**. 
-5. Select **Authentication** as the Pack Type. 
-6. From the **Registry** dropdown, click **Public Repo**. 
-7. Choose **Spectro RBAC** as the Pack Name. 
-8. Select the Pack Version. 
-9. Click the **spectro-rbac 1.0.0** Pack Values to edit the pack layer settings. 
-   **Note**: This is where you will edit the role settings. 
-10. Click the **Confirm & Create** button. 
+3. Create a new Cluster Profile of the type **Full**. Select an OS, and proceed to the Kubernetes selection step.
 
-#### Editing the RBAC Cluster Profile
+4. Choose the **Kubernetes** layer and click on **Values** to modify the pack YAML values.
 
-1. From Palette, go to **Profiles** and choose the **RBAC** cluster profile. 
-2. Click the layer image and specify the ClusterRoleBindings. 
-3. Go to the **clusterRoleBindings**:**role** section and type **cluster-admin**. 
-4. Change the settings to your requirements and specific groups. 
+5. Navigate to the `kubeadminconfig.apiServer.extraArgs` section of the pack layer. Modify the following parameters:
 
-For - Entra ID integration with RBAC, edit your RBAC pack value to below. Or, copy and paste the entire block to your RBAC pack and modify you inputs where appropriate:
+    | Parameter | Description |
+    |-----------|-------------|
+    | **oidc-username-claim** | The claim to use as the user name. This is the claim that will be used to identify the user in Kubernetes |
+    | **oidc-groups-claim** | The claim to use as the user's group membership. This is the claim that will be used to identify the user's group membership in Kubernetes |
+    | **oidc-issuer-url** | The URL of the OIDC provider |
+    | **oidc-client-id** | The client ID for the OIDC provider. This is the client ID that will be used to authenticate to the OIDC provider |
+    
 
-```yml
-pack:
-  spectrocloud.com/install-priority: "0"
-charts:
-  spectro-rbac:
-    # Specify one or more ClusterRoleBinding
-    # Note that the _name_ attribute is optional
-    clusterRoleBindings:
-      - role: cluster-admin
-        name: bind-cluster-admin-role-to-cluster-admin
-        subjects:
-          #- type: User
-            #name: user5
-          - type: Group
-          # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
-          # Example: - Entra ID Group Object Id "70d19fd6-####-####-####-##c6c915e301" is tied to the - Entra ID Security Group with the display name of "cluster-admin-role".
-          # name: "- Entra ID GROUP ID NAME"
-            name: "INSERT - Entra ID GROUP ID For Cluster Admins"
-      - role: admin
-        name: bind-admin-role-to-admin
-        subjects:
-          #- type: User
-            #name: user5
-          - type: Group
-          # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
-          # Example: - Entra ID Group Object Id "064f2e40-####-####-####-##b9f7927976" is tied to the - Entra ID Security Group with the display name of "admin-role".
-          # name: "- Entra ID GROUP ID NAME"
-            name: "INSERT - Entra ID GROUP ID For Admins"
-      - role: view
-        name: bind-view-role-to-view
-        subjects:
-          #- type: User
-            #name: user6
-          - type: Group
-          # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
-          # Example: - Entra ID Group Object Id "732edc96--####-####-####-##851dee3380" is tied to the - Entra ID Security Group with the display name of "view-role".
-          # name: "- Entra ID GROUP ID NAME"
-            name: "INSERT - Entra ID GROUP ID For Viewers"
-          #- type: ServiceAccount
-            #name: group6
-            #namespace: foo
-      - role: edit
-        name: bind-edit-role-to-edit
-        subjects:
-          #- type: User
-            #name: user6
-          - type: Group
-          # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
-          # Example: - Entra ID Group Object Id "21b55c08-6-####-####-####-##a3e2245ad7" is tied to the - Entra ID Security Group with the display name of "edit-role".
-          # name: "- Entra ID GROUP ID NAME"
-            name: "INSERT - Entra ID GROUP ID For Edit"
-          #- type: ServiceAccount
-            #name: group6
-            #namespace: foo
-    #namespaces:
-      # Specify one or more RoleBindings
-      #- namespace: team1
-        #createNamespace: true
-        #roleBindings:
-          #- role: admin
-            #name: special-override-name-admin-role
-            #kind: ClusterRole
-            #subjects:
+    ```yaml hideClipboard
+    kubeadminconfig:
+      apiServer:
+        extraArgs:
+          oidc-groups-claim: "groups"
+          oidc-username-claim: "email"
+          oidc-issuer-url: "https://sts.windows.net/************"
+          oidc-client-id: "**************"
+    ```
+
+6.  Next, find the `clientConfig` section and modify the following parameters with the values you saved when you created the Azure Entra ID application.
+
+    | Parameter | Description |
+    |-----------|-------------|
+    | **oidc-issuer-url** | The URL of the OIDC provider | 
+    | **oidc-client-id** | The client ID for the OIDC provider. This is the client ID that will be used to authenticate to the OIDC provider |
+    | **oidc-client-secret** | The client secret for the OIDC provider. This is the client secret that will be used to authenticate to the OIDC provider |
+    | **oidc-extra-scope** | The scope tags |
+
+    ```yaml hideClipboard
+    clientConfig:
+      oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+      oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+      oidc-client-secret: "**************************"
+      oidc-extra-scope: "profile,email"
+    ```
+ 7. Complete the remaining steps to create the cluster profile. Once you have specified the container network interface and the storage container interface, select **Add New Pack** to add the RBAC addon pack. 
+
+
+8. Select the **Spectro RBAC** from the **Public Repo** or the **Palette Registry**.
+
+9. Select the latest version and click on the **Values** button to modify the pack YAML values.
+
+10. Navigate to the `clusterRoleBindings` section of the pack layer. For Entra ID integration with RBAC, edit your RBAC pack values to match the YAML snippet below. Or, copy and paste the entire block to your RBAC pack and modify you inputs where appropriate. Replace all the `name` fields that start with the value `INSERT` with the Entra groups' ID you created in Azure.
+
+    ```yml {17,27,37,50}
+    pack:
+      spectrocloud.com/install-priority: "0"
+    charts:
+      spectro-rbac:
+        # Specify one or more ClusterRoleBinding
+        # Note that the _name_ attribute is optional
+        clusterRoleBindings:
+          - role: cluster-admin
+            name: bind-cluster-admin-role-to-cluster-admin
+            subjects:
               #- type: User
-                #name: user3
-              #- type: Group
-                #name: team1namespaceadmin
-          #- role: view
-            #kind: ClusterRole
-            #subjects:
+                #name: user5
+              - type: Group
+              # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
+              # Example: - Entra ID Group Object Id "70d19fd6-####-####-####-##c6c915e301" is tied to the - Entra ID Security Group with the display name of "cluster-admin-role".
+              # name: "- Entra ID GROUP ID NAME"
+                name: "INSERT - Entra ID GROUP ID For Cluster Admins"
+          - role: admin
+            name: bind-admin-role-to-admin
+            subjects:
               #- type: User
-                #name: user4
-              #- type: Group
-                #name: team1namespaceview
-      #- namespace: team2
-        #createNamespace: true
-        #roleBindings:
-          #- role: admin
-            #name: special
-            #kind: ClusterRole
-            #subjects:
+                #name: user5
+              - type: Group
+              # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
+              # Example: - Entra ID Group Object Id "064f2e40-####-####-####-##b9f7927976" is tied to the - Entra ID Security Group with the display name of "admin-role".
+              # name: "- Entra ID GROUP ID NAME"
+                name: "INSERT - Entra ID GROUP ID For Admins"
+          - role: view
+            name: bind-view-role-to-view
+            subjects:
               #- type: User
-                #name: user1
-              #- type: Group
-                #name: group1
-```
+                #name: user6
+              - type: Group
+              # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
+              # Example: - Entra ID Group Object Id "732edc96--####-####-####-##851dee3380" is tied to the - Entra ID Security Group with the display name of "view-role".
+              # name: "- Entra ID GROUP ID NAME"
+                name: "INSERT - Entra ID GROUP ID For Viewers"
+              #- type: ServiceAccount
+                #name: group6
+                #namespace: foo
+          - role: edit
+            name: bind-edit-role-to-edit
+            subjects:
+              #- type: User
+                #name: user6
+              - type: Group
+              # For "name", input the - Entra ID Group ID name and add a comment on what the - Entra ID displayname is that corresponds to the - Entra ID Group Name
+              # Example: - Entra ID Group Object Id "21b55c08-6-####-####-####-##a3e2245ad7" is tied to the - Entra ID Security Group with the display name of "edit-role".
+              # name: "- Entra ID GROUP ID NAME"
+                name: "INSERT - Entra ID GROUP ID For Edit"
+              #- type: ServiceAccount
+                #name: group6
+                #namespace: foo
+        #namespaces:
+          # Specify one or more RoleBindings
+          #- namespace: team1
+            #createNamespace: true
+            #roleBindings:
+              #- role: admin
+                #name: special-override-name-admin-role
+                #kind: ClusterRole
+                #subjects:
+                  #- type: User
+                    #name: user3
+                  #- type: Group
+                    #name: team1namespaceadmin
+              #- role: view
+                #kind: ClusterRole
+                #subjects:
+                  #- type: User
+                    #name: user4
+                  #- type: Group
+                    #name: team1namespaceview
+          #- namespace: team2
+            #createNamespace: true
+            #roleBindings:
+              #- role: admin
+                #name: special
+                #kind: ClusterRole
+                #subjects:
+                  #- type: User
+                    #name: user1
+                  #- type: Group
+                    #name: group1
+    ```
 
-**Example**:
+    You are matching the out-of-the-box Kubernetes roles *cluster-admin*, *admin*, *view*, and *edit* to the Entra ID groups you created in the previous steps. Members of the Entra ID group will be assigned the corresponding Kubernetes role. For example, members of the Entra ID group `k8s_cluster_admins` will be assigned the Kubernetes role `cluster-admin`. You can change the YAML and use *roleBindings* to assign roles to specific namespaces versus using a *clusterRoleBinding* to assign roles to the entire cluster.
 
-**- Entra ID Group Object ID** "70\*\*\*\*\*\*\-355a-453b-aadf-\*\*\*\*\*\*\*\*\*301" is linked to the **- Entra ID Security Group** with the display name of **cluster-admin-role**.
+11. Click on **Confirm & Create** to proceed with the cluster profile creation. Click on **Next** to proceed to the **Review** step.
 
-**name**: "- Entra ID GROUP ID NAME"
+12. Review the cluster profile settings and click on **Finish Configuration** to create the cluster profile.
 
-![Azure OIDC details view](/oidc-azure-images/client-config.png)
+You now have a cluster profile that will enable Entra ID SSO authentication to access a Kubernetes cluster. You can now create a cluster using this profile. When you log in to the cluster, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
 
+### Validate
 
-  <details>
-  <summary>Additional Redirect URLs</summary>
+You can validate the Entra ID SSO integration by deploying a Kubernetes cluster with the cluster profile you created in the previous steps. Once the cluster is deployed, you can log in to the cluster by using kubectl with the kube-login plugin from a workstation that has kubelogin installed.
 
-  Add the following redirect URIs to Microsoft Entra App to enable integration with the Kubernetes Dashboard:
+1. Log in to [Palette](https://console.spectrocloud.com) as a user that is a member of one of the Entra ID groups you created in the previous steps.
 
-  You can also add additional redirect URIs. The URIs in the table below are useful when you want to use Entra ID for OIDC authentication into your Kubernetes clusters.
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
-    | URL | Type of Access |
-    | --- | --- |
-    | `http://localhost:8000` | Using kubectl with the kube-login plugin from a workstation. |
-    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard. |
-  </details>
+3. Deploy a cluster using the cluster profile you created in the previous steps. Check out the tutorial [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) for detailed guidance on how to deploy a cluster.
 
+4. Once the cluster is deployed, select the cluster from the cluster list view to access the cluster details page.
+
+5. Download the kubeconfig file for the cluster. 
+
+6. Configure kubectl to use the kubeconfig file you downloaded in the previous step. Refer to the [Configure kubectl](../../clusters/cluster-management/palette-webctl.md) documentation for detailed guidance on how to configure kubectl.
+
+7. Issue a kubectl command to access the cluster. For example, you can issue the following command to view the nodes in the cluster.
+
+    ```shell
+    kubectl get pods --all-namespaces
+    ```
+
+8. You will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
+
+
+9. Once you have successfully authenticated, you will be redirected back to the terminal and the kubectl command will be issued. 
+
+If everything is configured correctly, a list of pods in the cluster will be displayed. If you are not able to access the cluster, check the kubeconfig file to ensure the OIDC configuration is correct. Also make sure you have [kubelogin](https://github.com/Azure/kubelogin) installed on your workstation. Refer to the [Configure kubectl](../../clusters/cluster-management/palette-webctl.md) documentation for detailed guidance on how to configure kubectl.
 
 ## References
 
-- [Palette User Management](../user-management.md)
-- [Palette SSO](./saml-sso.md)
-- [Microsoft Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) 
 - [Credential Plugin Diagram](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg)
 - [kubelogin](https://github.com/int128/kubelogin)
+- [Microsoft Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) 
+- [Palette SSO](./saml-sso.md)
+- [Palette User Management](../user-management.md)
+
+
