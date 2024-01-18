@@ -46,6 +46,7 @@ chmod +x /usr/local/bin/palette
 
 <br />
 
+
 5. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using a Palette self-hosted instance or Palette VerteX, replace the `--console-url` with your custom Palette URL.
 
   <br />
