@@ -20,7 +20,7 @@
     "run-api-parser": "node utils/api-parser/index.js",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
     "prepare": "husky install"
   },
   "lint-staged": {

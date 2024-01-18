@@ -1,24 +1,24 @@
 .categoryItem {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 16px;
-    color: #aeb1be;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  color: #aeb1be;
 }
 
 .categoryItem svg {
-    stroke-width: 0;
-    fill: #aeb1be;
-    stroke: #aeb1be;
+  stroke-width: 0;
+  fill: #aeb1be;
+  stroke: #aeb1be;
 }
 
 .categoryItem.active {
-    color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
 }
 
 .categoryItem.active svg {
-    fill: var(--ifm-color-primary);
-    stroke: var(--ifm-color-primary);
+  fill: var(--ifm-color-primary);
+  stroke: var(--ifm-color-primary);
 }

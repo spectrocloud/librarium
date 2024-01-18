@@ -41,11 +41,10 @@ There are additional prerequisites if you want to set up Azure Active Directory 
 
 2. For the Azure client used in the Azure cloud account, these API permissions have to be provided:
 
-
-    |                 |                                       |
-    | --------------- | ------------------------------------- |
-    | Microsoft Graph | Group.Read.All (Application Type)     |
-    | Microsoft Graph | Directory.Read.All (Application Type) |
+   |                 |                                       |
+   | --------------- | ------------------------------------- |
+   | Microsoft Graph | Group.Read.All (Application Type)     |
+   | Microsoft Graph | Directory.Read.All (Application Type) |
 
 3. You can configure these permissions from the Azure cloud console under **App registrations** > **API permissions** for the specified application.
 

@@ -145,7 +145,7 @@ After getting connected to the Bastion host, establish a connection to the Targe
 - Private cloud gateway name: Custom gateway name
 - Cloud type: Select the cloud type as Azure for Azure self-hosted PCG.
 
-5.Install the Palette agent (also check for prerequisites and instructions on Palette UI)
+  5.Install the Palette agent (also check for prerequisites and instructions on Palette UI)
 
 **Example:**
 
