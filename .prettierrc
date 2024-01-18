@@ -1,5 +1,6 @@
 {
-  "printWidth": 100,
+  "printWidth": 120,
+  "proseWrap": "always",
   "jsxBracketSameLine": false,
   "singleQuote": false,
   "tabWidth": 2,

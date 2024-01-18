@@ -75,7 +75,7 @@ jobs:
 
   build:
     name: Build
-    needs: [run-ci]
+    needs: [run-ci, prettier]
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:
