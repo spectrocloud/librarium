@@ -9,7 +9,7 @@ tags: ["user-management", "oidc-sso", "entra-id", "azure-ad"]
 ---
 
 
-Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses Secure Socker Layer (SSL) certificates to establish and maintain trust between the Service Provider (SP) and an Identity Provider (IDP).
+Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with one set of credentials. SSO uses Secure Socket Layer (SSL) certificates to establish and maintain trust between the Service Provider (SP) and an Identity Provider (IDP).
 
 OpenID Connect (OIDC) lets developers authenticate users across websites and apps without owning and managing password files. This technology allows Palette to verify the identity of the person currently using the browser or application.
 
@@ -43,11 +43,11 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 ## Enable OIDC SSO in Palette
 
 
-1. Log in to [Palett](https://console.spectrocloud.com) as a **Tenant Admin**. 
+1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**. 
 
 2. Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then **Configure** and lastly, click on the **OIDC** tab.
 
-  ![OIDC_Callback](/oidc-entra-id-images/oidccallback.png)
+  ![A view of the callback URL field](/oidc-entra-id-images/oidccallback.png)
 
 3. Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID. 
 
@@ -57,9 +57,9 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 5. Click on **New registration** and assign a name to new registration. In this guide, the example app registration is named *palette_oidc*.  
 
 
-6. Next, select **Web**, and paste the *Palette Callback URL* value from youe clipboard into the **Redirect URL (optional)** field, and Click **Register**.
+6. Next, select **Web**, and paste the *Palette Callback URL* value from your clipboard into the **Redirect URL (optional)** field, and Click **Register**.
 
-  ![Palette_Registration](/oidc-entra-id-images/palette-registration.png)
+  ![Azure application creation screen](/oidc-entra-id-images/palette-registration.png)
  
 7. From the app overview page, navigate to the left **Main Menu** and select **Certificates & secrets**. In the following screen, click on **New client secret**. 
 
@@ -77,18 +77,18 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 
 10. Select **Add optional claim** button. Choose **Token type** as **ID**, and add the claims **email** and **preferred_username**. When finished, click the **Add** button.
 
-  ![Add_claims](/oidc-entra-id-images/twooptionalclaims.png)
+  ![Add a claim button](/oidc-entra-id-images/twooptionalclaims.png)
 
 
 11. In addition to allowing individual user authentication, Palette provides groups claim functionality, allowing an OpenID Connect identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette. To enable group membership, select the **Add groups claim** button. Then select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
 
-  ![Add_claims](/oidc-entra-id-images/groupsclaim.png)
+  ![Groups and inviduals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
 
 
 
 When completed, the **Token Configuration** page will look similar to image below.
 
-  ![Token_Configuration](/oidc-entra-id-images/token-configuration.png)
+  ![A view of the token configuration screen](/oidc-entra-id-images/token-configuration.png)
 
 12. From the application overview page, navigate to the left **Main Menu** and select the **Overview** tab.  From the **Overview** selection, save the following fields for the next steps in you will complete in Palette.
 
@@ -102,7 +102,7 @@ When completed, the **Token Configuration** page will look similar to image belo
 #### Configure Microsoft Entra ID with Users and Groups
 
 
-13. Navigate to the [Microsoft Entra ID Groups page]([Groups Blade](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups). You can use existing groups or create new ones. In this guide, we will create four new groups for testing purposes.
+13. Navigate to the [Microsoft Entra ID Groups page](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups). You can use existing groups or create new ones. In this guide, we will create four new groups for testing purposes.
 
 
 14. Select **New Group** and assign a name to the new group. Repeat this step to create the remaining groups. Use the following names for the groups:
@@ -136,15 +136,15 @@ When completed, the **Token Configuration** page will look similar to image belo
       - Browse to Properties, add Email: `testuser@SpectroCloud500.onmicrosoft.com`
       - Do not add this account to any groups 
 
-- Create an external user with your corporate/personal emaail account:
+- Create an external user with your corporate/personal email account:
       - User principal name example: your corporate email address  
       - Display name example: Your First Name and Last Name
       - Browse to Properties, Edit First Name
       - Browse to Properties, Edit Last Name
-      - Browse to Properties, add your corporatee email addresss
+      - Browse to Properties, add your corporate email address
       - Add this account to the Entra ID Group `palette_tenant_admins`
         
-18.	Modify your Entra ID admin account with group membership. This is the account you used to create the **App** in Microsoft Entra ID. Add the following groups to this account, `palette_tenant_admins` and `k8s_cluster_admins`. 
+18.	Change your Entra ID admin account with group membership. This is the account you used to create the **App** in Microsoft Entra ID. Add the following groups to this account, `palette_tenant_admins` and `k8s_cluster_admins`. 
 
 
 
@@ -158,26 +158,26 @@ When completed, the **Token Configuration** page will look similar to image belo
 
 | Palette Team Name is the Entra Group ID | Entra ID Group Name     |  
 |-------------------|-------------------------------------------------|
-| e3ac07cc-bd12-4edc-92a4-983d783153ba | `palette_tenant_admins`     |  
-| 88f61c49-1dd1-40c3-a820-68a513a38725 |  `palette_default_project_admins` |   
-| 3f33c3a5-e0af-4ef6-9671-c7545fe264f3 |  `k8s_cluster_admins`     |      
-| c4606295-e8b0-4df0-891b-de4428d7e54f |  `k8s_cluster-editor`     |    
+| `e3ac07cc-bd12-4edc-92a4-983d783153ba` | `palette_tenant_admins`     |  
+| `88f61c49-1dd1-40c3-a820-68a513a38725` |  `palette_default_project_admins` |   
+| `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` |  `k8s_cluster_admins`     |      
+| `c4606295-e8b0-4df0-891b-de4428d7e54f` |  `k8s_cluster-editor`     |    
 
 22. Assign the following **Roles** to each Palette team. For example purposes, the same Entra Group ID values used in the table above are used in the table below.
 
 | Palette Team Name | Role    | Entra ID Group Name |
 |-------------------|---------| ------------------- |
-| e3ac07cc-bd12-4edc-92a4-983d783153ba |  Tenant Admin     |   `palette_tenant_admins` |
-| 88f61c49-1dd1-40c3-a820-68a513a38725 |  Project Admin   |   `palette_default_project_admins` |
-| 3f33c3a5-e0af-4ef6-9671-c7545fe264f3 |  No role assigned    |   `k8s_cluster_admins` |
-| c4606295-e8b0-4df0-891b-de4428d7e54f |  No role assigned   |  `k8s_cluster-editor` |
+| `e3ac07cc-bd12-4edc-92a4-983d783153ba` |  Tenant Admin     |   `palette_tenant_admins` |
+| `88f61c49-1dd1-40c3-a820-68a513a38725` |  Project Admin   |   `palette_default_project_admins` |
+| `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` |  No role assigned    |   `k8s_cluster_admins` |
+| `c4606295-e8b0-4df0-891b-de4428d7e54f` |  No role assigned   |  `k8s_cluster-editor` |
 
 Refer to the images below to ensure you have the correct settings.
 
-  ![gid_example](/oidc-entra-id-images/ba_tenantadmin.png)
+  ![Example of IDs](/oidc-entra-id-images/ba_tenantadmin.png)
 
 
-  ![gid_example](/oidc-entra-id-images/25_def_project_admin.png)
+  ![Example of IDs with Palette roles attached to a team](/oidc-entra-id-images/25_def_project_admin.png)
 
 
 #### Palette SSO OIDC Configuration
@@ -209,7 +209,7 @@ Using this example, our inputs are:
 Leave other fields with the default values and click **Enable**.
 <br />
 
-![gid_example](/oidc-entra-id-images/enable.png)
+![Example of Palette with populated input fields](/oidc-entra-id-images/enable.png)
 
 Palette will provide a message that **OIDC configured successfully**.
 
@@ -230,7 +230,7 @@ Palette will provide a message that **OIDC configured successfully**.
 
 **Troubleshooting**
 
-Add the following redirect URIs to Microsoft Entra App to enable integartion with the Kubernetes Dashboard:
+Add the following redirect URIs to Microsoft Entra App to enable integration with the Kubernetes Dashboard:
 
 You can also add additional redirect URIs. The URIs in the table below are useful when you want to use Entra ID for OIDC authentication into your Kubernetes clusters.
 
@@ -274,7 +274,7 @@ Here is an example with of a an Entra ID configuration to configure SSO in a Kub
     - **oidc-client-secret** - The secret provided by - Entra ID. 
     - **oidc-extra-scope** - The scope tags. 
 
-![oidc](/oidc-azure-images/client-config.png)
+![Palette OIDC configuration steps](/oidc-azure-images/client-config.png)
  
 #### Binding the Cluster Admin Role AD to Cluster Admin via RBAC
 
@@ -395,13 +395,13 @@ charts:
 
 **name**: "- Entra ID GROUP ID NAME"
 
-![oidc](/oidc-azure-images/client-config.png)
+![Azure OIDC details view](/oidc-azure-images/client-config.png)
 
 
-## Resources
+## References
 
 - [Palette User Management](../user-management.md)
 - [Palette SSO](./saml-sso.md)
 - [Microsoft Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) 
 - [Credential Plugin Diagram](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg)
-- [kubelogin](https://github.com/int128/kubelogin)<br />
+- [kubelogin](https://github.com/int128/kubelogin)
