@@ -182,67 +182,46 @@ Refer to the images below to ensure you have the correct settings.
 
 #### Palette SSO OIDC Configuration
 
-23. Navigate to left **Main Menu**, select **Tenant Settings**. Next and click on **SSO** and select the **OIDC** tab. 
+23. Navigate to left **Main Menu**, select **Tenant Settings**. Next, click on **SSO** and select the **OIDC** tab. 
 
-We will enter the following information:
+24. You will now configure the OIDC settings in Palette. Use the table below as a reference and populate the fields with the information you saved from the previous steps.
 
-| Palette Parameter                 | Value                                                             |
-|-------------------------|--------------------------------------------------------------------|
-| Issuer URL        | https://sts.windows.net/[Directory(tenant)ID]
-| Client ID         | Application (client) ID from Entra ID|
-| Client Secret     | The shared secret that you generated under **Certificates & secrets** blade in Entra ID |
-| Default Teams     | Leave blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group. |
-| Scopes            | Keep `openid`, `profile` and `email` as the default. Add `allatclaims` |
-| Email             | Keep `email` as the default.  |
 
-Using this example, our inputs are:
+| Field| Description |
+|------|-------------|
+| **Issuer URL**        | Add your tenant URL. The tenant URL looks like the following but with your unique tenant ID at the end `https://sts.windows.net/xxxxxxx`|
+| **Client ID**        | The application ID from Entra ID |
+| **Client Secret**     | The application secret you created  |
+| **Default Teams**     | Leave blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group |
+| **Scopes**            | Add `allatclaims`, `openid`, `profile` and `email`.  |
+| **Email**             | Use `email` as the default value  |
 
-| Palette Parameter                 | Value                                                             |
-|-------------------------|--------------------------------------------------------------------|
-| Issuer URL        | `https://sts.windows.net/3077b90b-275e-4ace-b9c8-e40be0cdaafb`
-| Client ID         | e8ab7251-e836-4a63-be41-1ac1966fa92e|
-| Client Secret     | ECFxxxxxxxxxxxxxxxxxxxxxxxxx |
-| Default Teams     | [Leave Blank] |
-| Scopes            | Keep `openid`, `profile` ,`email` and `allatclaims` |
-| Email             | Keep `email` as the default.  |
 
-Leave other fields with the default values and click **Enable**.
-<br />
+25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will receive a message stating OIDC is configured successfully.
 
-![Example of Palette with populated input fields](/oidc-entra-id-images/enable.png)
+  ![Example of Palette with populated input fields](/oidc-entra-id-images/enable.png)
 
-Palette will provide a message that **OIDC configured successfully**.
+
+You have now successfully configured OIDC SSO in Palette. Next, validate the configuration by logging in to Palette with an Entra ID user account.
 
 ## Validate
 
-1. Log in to Palette through SSO with each Entra ID user created/modified above.  
+1. Log out of Palette. To log out, click on **User Menu** in the top right corner of the screen and select **Sign Out**. 
 
-2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field. Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without SSO. Click on the **Sign in** button to log in via SSO.
-
-3. If this is the first time you are logging in with SSO, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
+2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field. If this is the first time you are logging in with SSO, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication). Make sure you log in as a user that is a member of the `palette-tenant-admins` group in Entra ID. Once authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
 
 
-  :::info
-  Make sure you log in as a user that is a member of the `palette-tenant-admins` group in Entra ID. Once authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
+3. Navigate to the left **Main Menu** and ensure the **Tenant Settings** option is available. If you do not see the **Tenant Settings** option, you are not logged in as a user that is a member of the `palette-tenant-admins` group in Entra ID.
+
+  :::tip
+
+  Below the **Sign In** button, there is a link titled **SSO issues? --> Use your password**. The link can be used to bypass SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without SSO.
+
   :::
 
-<br />
-
-**Troubleshooting**
-
-Add the following redirect URIs to Microsoft Entra App to enable integration with the Kubernetes Dashboard:
-
-You can also add additional redirect URIs. The URIs in the table below are useful when you want to use Entra ID for OIDC authentication into your Kubernetes clusters.
-
-  | URL | Type of Access |
-  | --- | --- |
-  | `http://localhost:8000` | Using kubectl with the kube-login plugin from a workstation. |
-  | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard. |
 
 
-
-
-## Enable OIDC in Kubernetes Clusters
+## Enable OIDC in Kubernetes Clusters With Entra ID
 
 This section describes how to enable - Entra ID SSO authentication to access a Kubernetes cluster.
 
@@ -396,6 +375,21 @@ charts:
 **name**: "- Entra ID GROUP ID NAME"
 
 ![Azure OIDC details view](/oidc-azure-images/client-config.png)
+
+
+
+  <details>
+  <summary>Additional Redirect URLs</summary>
+
+  Add the following redirect URIs to Microsoft Entra App to enable integration with the Kubernetes Dashboard:
+
+  You can also add additional redirect URIs. The URIs in the table below are useful when you want to use Entra ID for OIDC authentication into your Kubernetes clusters.
+
+    | URL | Type of Access |
+    | --- | --- |
+    | `http://localhost:8000` | Using kubectl with the kube-login plugin from a workstation. |
+    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard. |
+  </details>
 
 
 ## References
