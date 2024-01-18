@@ -59,7 +59,6 @@ NATS and the associated port, 4222, are deprecated and will be removed in a futu
 |proxy.console.spectrocloud.com |443 |
 |registry.spectrocloud.com |443 |
 |saas-repo.console.spectrocloud.com |443 |
-|registry.spectrocloud.com |443 |
 |maasgoldenimage-console.s3.amazonaws.com |443 |
 |openstackgoldenimage-console.s3.amazonaws.com |443 |
 |edgegoldenimage-console.s3.amazonaws.com |443 |
