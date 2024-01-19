@@ -24,7 +24,7 @@ The following use cases are supported:
 
 - [Dynamic Placement](#dynamic-placement) - Palette will create a new Azure resource group and deploy clusters on it.
 
-- [Validator](#validation) - Use the Validator open-source framework to validate the permissions required by Palette.
+- [Validator](#validator) - Use the Validator open-source framework to validate the permissions required by Palette.
 
 ## Static Placement
 
