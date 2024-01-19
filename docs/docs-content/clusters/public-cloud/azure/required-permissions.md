@@ -22,7 +22,7 @@ The following use cases are supported:
 
 - [Static Placement](#static-placement) - Palette will deploy clusters on a pre-existing network resources specified by you.
 
-- [Dynamic Placement](#dynamic-placement) - Palette will create the nework resources required for the cluster.
+- [Dynamic Placement](#dynamic-placement) - Palette will create the network resources required for the cluster.
 
 - [Validator](#validator) - Use the Validator open-source framework to validate the permissions required by Palette.
 
