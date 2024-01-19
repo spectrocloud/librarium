@@ -13,8 +13,7 @@ Palette requires a set of permissions to properly deploy and manage the lifecycl
 
 :::warning
 
-Creating a custom role allows you to provide only those permissions that Palette requires. If you don't want to create a custom role, you can assign the built-in Azure [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role to the service principal you want Palette to use. However, note that the Contributor role has all the required permissions and also has additional permissions that Palette does not require. 
-
+We recommend you don't use the Azure build-in role, [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), as the role assigned to the service principal you want Palette to use. Creating a custom role allows you to provide only those permissions required by Palette.
 :::
 
 
