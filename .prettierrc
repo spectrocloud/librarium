@@ -1,7 +1,6 @@
 {
   "printWidth": 120,
   "proseWrap": "always",
-  "jsxBracketSameLine": false,
   "singleQuote": false,
   "tabWidth": 2,
   "trailingComma": "es5",
