@@ -34,7 +34,7 @@ You can use the [Validator](https://github.com/spectrocloud-labs/validator) with
 - Microsoft.Authorization/roleDefinitions/read
 
 
-You can use the Palette CLI to get started with the Validator. Check out the [Validator](../../../palette-cli/commands/validator.md) command reference for more information.
+You can use the Validator with the Palette CLUI. Check out the Palette CLI [Validator](../../../palette-cli/commands/validator.md) command reference page for more information.
 
 :::
 
@@ -219,15 +219,9 @@ Choose static placement when you want Palette to use pre-existing network resour
 </Tabs>
 
 
-
-
-
-
-
-
 ## Dynamic Placement
 
-If you want to support dynamic placement use cases, ensure Palette has the following actions at the subscription level: 
+Dynamic placement is the default deployment method when you are deploying Azure clusters through Palette. With dynamic placement, Palette creates the network resources required for your cluster. To support dynamic placement, ensure Palette has the following actions at the subscription level scope. 
 
 
 | Actions                                             | Scope level  |
