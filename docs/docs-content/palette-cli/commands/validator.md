@@ -25,7 +25,7 @@ The Validator requires the following dependencies.
 
 - [Docker](https://docs.docker.com/get-docker) - The Validator requires Docker. 
 
-:::caution
+:::warning
 Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the [Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator and its plugins.
 :::
 

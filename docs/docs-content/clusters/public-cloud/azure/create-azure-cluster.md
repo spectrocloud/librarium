@@ -10,7 +10,7 @@ sidebar_position: 20
 
 Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
-:::caution
+:::warning
 
 Autoscaling is not supported for Azure IaaS clusters. 
 
@@ -72,7 +72,7 @@ Use the following steps to deploy an Azure cluster.
 
 8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more information.
 
-  :::caution
+  :::warning
 
   All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
@@ -84,9 +84,9 @@ Use the following steps to deploy an Azure cluster.
 
   If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
 
-  :::caution
+  :::warning
 
-  If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that **drop-down Menu** selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-properties). 
+  If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that **drop-down Menu** selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-palette-network-calls-to-azure-account). 
 
   :::
 
@@ -201,7 +201,7 @@ You can validate your cluster is up and in **Running** state.
 
 Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
-:::caution
+:::warning
 
 To use Custom Autoscale capability, the following details apply with regard to scale sets: 
 
@@ -221,7 +221,7 @@ Basic autoscaling options are available for host-based scaling when you create y
 
 When scaling based on a metric, you add a rule to scale out VMs and a matching rule to scale in VMs when they are no longer needed.
 
-:::caution
+:::warning
 
 A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends adding matching scale-in and scale-out rules to avoid extra costs that could be incurred for unused provisioned resources.
 

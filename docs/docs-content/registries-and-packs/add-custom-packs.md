@@ -510,7 +510,7 @@ In all the previous examples, additional customization in the form of an Ansible
 
 Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is constructed, push it to the pack registry using the Spectro CLI tool.
 
-:::caution
+:::warning
 
 During the image customization phase of a cluster deployment, failures related to missing packages or package version mismatch could occur when using a custom OS pack. These errors are presented on the console. The image needs to be updated to resolve any such issues.
 

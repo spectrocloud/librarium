@@ -26,7 +26,7 @@ The following parameters are required for a successful installation of Palette V
 | `scar`| The Spectro Cloud Artifact Repository (SCAR) credentials for Palette VerteX FIPS images.  Our support team provides these credentials. For more information, refer to the [Registry](#registries) section. | Object |
 
 
-:::caution
+:::warning
 
 If you are installing an air-gapped version of Palette VerteX, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#image-swap-configuration) section.
 
@@ -157,7 +157,7 @@ config:
 ```
 <br />
 
-:::caution
+:::warning
 
 As you create tenants in Palette VerteX, the tenant name is prefixed to the domain name you assigned to Palette VerteX. For example, if you create a tenant named tenant1 and the domain name you assigned to Palette VerteX is `vertex.example.com`, the tenant URL will be `tenant1.vertex.example.com`. We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette VerteX load balancer. For example, `*.vertex.example.com`.
 
@@ -192,7 +192,7 @@ Palette VerteX requires access to an OCI registry that contains all the required
 
 <br />
 
-:::caution
+:::warning
 
 If you are using a self-hosted OCI registry, you must provide the required FIPS packs to the registry. Contact support for additional guidance on how to add the required FIPS packs to your OCI registry.
 

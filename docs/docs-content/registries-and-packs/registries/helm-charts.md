@@ -19,7 +19,7 @@ You can add a private OCI based Helm Chart registry to Palette. For more informa
 
 ## Synchronization Behavior
 
-When you add a Helm Chart registry to Palette, you can choose whether to synchronize the Helm Chart registry metadata with Palette. The synchronization behavior depends on whether the Helm Chart registry is hosted on a server accessible from Palette's management plane. The metadata is downloaded from the Helm Chart registry and stored internally in Palette. 
+When you add a Helm Chart registry to Palette, you can choose whether to synchronize the Helm Chart registry metadata with Palette. The synchronization behavior depends on whether the Helm Chart registry is hosted on a server accessible from Palette's management plane. The metadata is downloaded from the Helm Chart registry and stored internally in Palette. If synchronization is enabled, Palette will automatically synchronize the Helm Chart registry metadata every 24 hours.
 
 If the Helm Chart registry is hosted on a server that will not be accessible from Palette, we recommend you do not enable synchronization. Palette will download the Helm Charts registry metadata upon registration and store it internally. This will allow you to reference the Helm Charts in your cluster profiles, including if the Helm Chart registry is inaccessible.
 
@@ -46,7 +46,7 @@ The table below summarizes the synchronization behavior.
 You should disable synchronization if the Helm Chart registry is hosted on a server that may not always be accessible from Palette's management plane. For example, if the Helm Chart registry is hosted on a server that is only accessible from a private network that only deployed clusters have access to, you should disable synchronization. Although Palette may not be able to synchronize the Helm Chart registry, your clusters should be able to download the Helm Charts from the Helm Chart registry.
 
 
-:::caution
+:::warning
 
 The clusters you deploy will always require network access to the Helm Chart registry to download the Helm Charts.
 

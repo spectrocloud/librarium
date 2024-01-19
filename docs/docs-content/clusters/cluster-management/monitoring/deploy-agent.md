@@ -67,7 +67,7 @@ Use the following steps to create an add-on profile and deploy a host cluster wi
 
 <br />
 
-:::caution
+:::warning
 
 The Prometheus server URL must be in the format of `http://HOST:PORT/api/v1/write`. 
 Example: `http://a2c938972938b4f0daee5f56edbd40af-1690032247.us-east-1.elb.amazonaws.com:9090/api/v1/write`
@@ -162,7 +162,7 @@ After the cluster deployment process, you will have a host cluster with the Prom
 
 <br />
 
-:::caution
+:::warning
 
 The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. 
 Example: `https://metrics.example.com:9090/api/v1/write`
@@ -177,7 +177,7 @@ Example: `https://metrics.example.com:9090/api/v1/write`
           - url: "https://metrics.example.com:9090/api/v1/write"
   ```
 
-8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](deploy-monitor-stack.md#deployamonitoringstack) with authentication guide, then the username is `agent`.
+8. Add the `basic_auth` parameters shown below. Replace `<USERNAME>` and `<PASSWORD>` with the actual credential values. Use the username you created to authenticate with the Prometheus API server. If you followed the [Deploy a Monitoring Stack](deploy-monitor-stack.md#deploy-a-monitoring-stack) with authentication guide, then the username is `agent`.
 
 <br />
 
@@ -273,7 +273,7 @@ To validate that the Prometheus agent is successfully installed and sending metr
 
 <br />
 
-:::caution
+:::warning
 
 Pods without the defined attributes `request` and `limit` will display no metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
 

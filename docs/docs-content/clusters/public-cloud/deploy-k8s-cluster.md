@@ -656,7 +656,7 @@ Navigate to the cluster's details page and verify you are in the **Overview** ta
 <br />
 
 
-:::caution
+:::warning
 
 It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
 
@@ -740,7 +740,7 @@ You can clone the tutorials repository locally or follow along by downloading a 
 
 <br />
 
-:::caution
+:::warning
 
 If you choose to clone the repository instead of using the tutorial container make sure you have Terraform v1.4.0 or greater installed.
 
@@ -1187,7 +1187,7 @@ From the cluster's **Overview** page, click on the URL for port **:8080** next t
 <br />
 
 
-:::caution
+:::warning
 
 It can take up to three minutes for DNS to properly resolve the public load balancer URL. We recommend waiting a few moments before clicking on the service URL to prevent the browser from caching an unresolved DNS request.
 
@@ -1243,7 +1243,7 @@ In this tutorial, you created a cluster profile, which is a template that contai
 
 Palette assures consistency across cluster deployments through cluster profiles. Palette also enables you to quickly deploy applications to a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes, you were able to provision a new Kubernetes cluster and deploy an application.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of [virtual clusters](/glossary-all#palettevirtualcluster). Feel free to check out the reference links below to learn more about Palette.
+We encourage you to check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of [virtual clusters](../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to learn more about Palette.
 
 <br />
 

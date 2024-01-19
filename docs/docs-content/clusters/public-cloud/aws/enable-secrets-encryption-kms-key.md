@@ -69,7 +69,7 @@ Use the following steps to configure a KMS key.
 
 2. Select the region where your KMS key policy is created.
 
-  :::caution
+  :::warning
 
   Ensure you create the KMS key in the same region that you intend to deploy EKS clusters through Palette. Alternatively, you can create a multi-region KMS key that can be used across different regions. To learn how to create a multi-region key, review Amazon’s [Multi-Region Keys in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) reference guide.
 

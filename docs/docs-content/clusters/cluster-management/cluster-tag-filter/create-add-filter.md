@@ -47,17 +47,17 @@ Upon creating a filter, a display message will pop up to confirm the successful 
 
 ## Add Resource Role
 
-You can assign the resource filter created, in combination with roles, to a [user](../../../user-management/new-user.md#createanewuser) to enforce access restriction. Palette provisions two types of roles:
+You can assign the resource filter created, in combination with roles, to a [user](../../../user-management/new-user.md#create-a-new-user) to enforce access restriction. Palette provisions two types of roles:
 
-* [Palette Global Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#paletteglobalresourceroles), the set of roles that are available in Palette console
+* [Palette Global Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-global-resource-roles), the set of roles that are available in Palette by default.
 
-* [Custom Resource Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palettecustomresourceroles),  can be generated according to your requirements from the available set of permissions and operations. 
+* [Custom Resource Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-custom-resource-roles),  can be generated according to your requirements from the available set of permissions and operations. 
 
 ### Prerequisites
 
 * A [Palette account](https://console.spectrocloud.com) with Tenant scope privileges.
 
-* A [user created](../../../user-management/new-user.md#createanewuser) to assign the resource privileges.
+* A [user created](../../../user-management/new-user.md#create-a-new-user) to assign the resource privileges.
 
 To assign the resource roles and filter to the user follow the below steps:
 <br />
@@ -104,5 +104,5 @@ Upon creating a filter, a display message will pop up to confirm the successful 
 
 ## Resource
 
-* [Create a New User](../../..//user-management/new-user.md#createanewuser)
+* [Create a New User](../../..//user-management/new-user.md#create-a-new-user)
 
