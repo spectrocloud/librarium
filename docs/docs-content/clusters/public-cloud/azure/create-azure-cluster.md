@@ -88,7 +88,6 @@ Use the following steps to deploy an Azure cluster.
   :::warning
 
   If you enable the setting **Disable Properties** when [registrating an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), you disable the ability for Palette to create an Azure virtual network and must manually specify a virtual network during the cluster creation process. 
-
   :::
 
   |**Parameter**| **Description**|
