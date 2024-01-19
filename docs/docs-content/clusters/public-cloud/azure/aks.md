@@ -125,7 +125,8 @@ The following steps need to be performed to provision a new cluster:
     | **Region**         | Select a region in Azure in where the cluster should be deployed.                            | 
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
     | **SSH Key**        | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                     |
-   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing a VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
+   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
+
 
 
     #### Static Placement Settings
