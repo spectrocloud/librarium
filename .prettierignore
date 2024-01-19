@@ -7,5 +7,6 @@ vale/
 **/*.yaml
 **/*.yml
 
-# Troublesome docs
+# Troublesome files
+tsconfig.json
 docs/docs-content/user-management/user-management.md
