@@ -9,20 +9,20 @@ sidebar_position: 100
 ---
 
 
-Palette requires a set of permissions to properly deploy and manage the lifecycle of clusters deployed on Azure. We recommend you create a custom role with all the required permissions for Palette or VerteX to deploy and manage clusters on Azure. Create a [role assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that has the service principal you want to use with Palette and the appropriate [scope level](https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview). By using the subscription as the scope level for the role assignment, you can ensure all use cases for Palette and VerteX are supported. 
+Palette requires a set of permissions to properly deploy and manage the lifecycle of clusters deployed to Azure. We recommend creating a [role assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that has the service principal you want to use with Palette and the appropriate [scope level](https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview). To ensure that Palette and VerteX can deploy and manage clusters on Azure in all use cases, use a subscription as the scope level for the role assignment.
 
 :::warning
 
-A custom role allows you to limit the permissions to only what is required by Palette. If you don't want to create a custom role, you can assign the Azure  build-in [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role to the service principal used by Palette. The Contributor role has all the required permissions, but it also has additional permissions that are not required by Palette. 
+Creating a custom role allows you to provide only those permissions that Palette requires. If you don't want to create a custom role, you can assign the built-in Azure [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role to the service principal you want Palette to use. However, note that the Contributor role has all the required permissions and also has additional permissions that Palette does not require. 
 
 :::
 
 
-The following use cases are supported:
+We support the following use cases:
 
-- [Static Placement](#static-placement) - Palette will deploy clusters on a pre-existing network resources specified by you.
+- [Static Placement](#static-placement) - Palette deploys clusters on the pre-existing network resources you specify.
 
-- [Dynamic Placement](#dynamic-placement) - Palette will create the network resources required for the cluster.
+- [Dynamic Placement](#dynamic-placement) - Palette creates network resources required for your cluster.
 
 
 :::tip
@@ -41,10 +41,7 @@ You can use the Palette CLI to get started with the Validator. Check out the [Va
 
 ## Static Placement
 
-Static placement is when you have a pre-existing network resource group, VNet, subnets and security groups you want Palette to use when deploying a cluster. Static placement supports three use cases. The required actions are all the same but the scope levels for each use case are different.
-
-
-Review the table below for the required actions and the different scope levels for each use case.
+Choose static placement when you want Palette to use pre-existing network resource groups, VNets, subnets, and security groups. Review the table below for the required actions and the different scope levels for each use case.
 
 <Tabs>
 
