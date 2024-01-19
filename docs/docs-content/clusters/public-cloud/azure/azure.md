@@ -29,6 +29,8 @@ To learn more about Palette and Azure cluster creation and its capabilities chec
 
 - [Create and Manage Azure AKS Cluster](aks.md)
 
+- [Running Windows Workloads](windows.md)
+
 - [Create and Manage IaaS Azure Cluster](create-azure-cluster.md)
 
 - [Deleting an Azure Cluster](../../cluster-management/remove-clusters.md)

@@ -236,8 +236,19 @@ for more details on pool limitations.
 
 6. Enter the **Managed Disk** information and its size.
 
-7. If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to create
-   the next node.
+   :::info
+
+   Additional worker node pools may be added after you create the system node pool if you want to customize specific
+   worker nodes to run specialized workloads. As an example, the system worker pool may be configured with the
+   <i>Standard_D2_v2</i> instance types for general-purpose workloads, and another worker pool with the instance type
+   <i>Standard_NC12s_v3</i> can be configured to run GPU workloads.
+
+   You can also select **OS Type** **Windows** to create a worker pool to run Windows workloads.
+
+   :::
+
+7. If you require additional or multiple nodes pools to run different types of workloads, click the **Add Worker Pool**
+   button to create the next node pool.
 
 ## Configure Node Pools
 
