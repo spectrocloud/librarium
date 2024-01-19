@@ -44,7 +44,7 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 |**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).  |
 | **Cloud** | Select **Azure Public Cloud** or **Azure US Government**. |
 |**Tenant Name**| An optional tenant name.|
-|**Disable Properties**| This option disables the ability for Palette or VerteX to create a dynamic network. Cluster deployments will require all users to manually specify network details during the cluster creation process. |
+|**Disable Properties**| This option disables the ability for Palette or VerteX to create an Azure Virtual Network (VNET) on your behalf. Static placement deployments will require all users to manually specify a pre-existing VNET during the cluster creation process. |
 |**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|
 
 6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a *Credentials validated* success message with a green check is displayed.

@@ -84,9 +84,10 @@ Use the following steps to deploy an Azure cluster.
 
   If you have custom storage accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
 
+
   :::warning
 
-  If the Azure account is registered with **Disable Properties** and **Static Placement** options enabled, then Palette will not import the network information from your Azure account. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**, but be aware that **drop-down Menu** selections will be empty. To learn more about these settings and certain requirements to use them, refer to [Disable Properties](azure-cloud.md#disable-palette-network-calls-to-azure-account). 
+  If you enable the setting **Disable Properties** when [registrating an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), you disable the ability for Palette to create an Azure virtual network and must manually specify a virtual network during the cluster creation process. 
 
   :::
 

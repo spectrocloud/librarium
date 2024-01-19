@@ -9,7 +9,7 @@ sidebar_position: 100
 ---
 
 
-Palette requires a set of permissions to properly deploy and manage the lifecycle of clusters deployed on Azure. We recommend you create a a custom role with all the required permissions for Palette or VerteX to deploy and manage clusters on Azure. Create a [role assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that has the service principal you want to use with Palette and the appropriate [scope level](https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview). By using the subscription as the scope level for the role assignment, you can ensure all use cases for Palette and VerteX are supported. 
+Palette requires a set of permissions to properly deploy and manage the lifecycle of clusters deployed on Azure. We recommend you create a custom role with all the required permissions for Palette or VerteX to deploy and manage clusters on Azure. Create a [role assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that has the service principal you want to use with Palette and the appropriate [scope level](https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview). By using the subscription as the scope level for the role assignment, you can ensure all use cases for Palette and VerteX are supported. 
 
 :::warning
 
