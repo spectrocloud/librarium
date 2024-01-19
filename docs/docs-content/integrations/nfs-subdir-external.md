@@ -10,7 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-nfs-subdir-external/blobs
 tags: ["packs", "nfs-subdir-external", "storage"]
 ---
 
-NFS Subdir External Provisioner is an automatic provisioner for Kubernetes that uses the already configured NFS server, automatically creating Persistent storage volumes. It installs the storage classes and NFS client provisioner into the workload cluster
+NFS Subdir External Provisioner is an automatic provisioner for Kubernetes that uses the already configured NFS server,
+automatically creating Persistent storage volumes. It installs the storage classes and NFS client provisioner into the
+workload cluster
 
 ## Prerequisites
 

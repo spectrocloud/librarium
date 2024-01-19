@@ -11,7 +11,8 @@ You can clone a cluster profile across multiple projects within the same [tenant
 
 ## Prerequisites
 
-- A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different types of cluster profiles you can create.
+- A cluster profile created in Palette. Check out [Cluster Profiles](cluster-profiles.md) to learn about the different
+  types of cluster profiles you can create.
 
 ## Clone Profile
 
@@ -31,7 +32,8 @@ You can clone a cluster profile across multiple projects within the same [tenant
 | **Scope**                  | Choose the target scope the cluster profile will apply to: **project** or **tenant**. When you select **project**, a **Project** field displays. Selecting **tenant** will make the profile available to the organization. |
 | **Project**                | This field displays when you select **project** scope. Select a target project from the **drop-down Menu**.                                                                                                                |
 
-To learn how to create multiple profile versions that use the same name, check out [Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
+To learn how to create multiple profile versions that use the same name, check out
+[Version a Cluster Profile](../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
 You can now use the cluster profile when deploying clusters in the target project or tenant.
 
@@ -39,5 +41,6 @@ You can now use the cluster profile when deploying clusters in the target projec
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click on **Profiles**. Palette displays a list of all the cluster profiles available to you, including cloned profiles.
+2. From the left **Main Menu**, click on **Profiles**. Palette displays a list of all the cluster profiles available to
+   you, including cloned profiles.
 3. Deploy your application to a cluster using the cloned cluster profile.

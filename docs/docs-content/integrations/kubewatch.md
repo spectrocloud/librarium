@@ -10,7 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/kubewatch/blobs/sha256:a277fb
 tags: ["packs", "kube-watch", "monitoring"]
 ---
 
-Kubewatch is a Kubernetes watcher that currently publishes notification to available collaboration hubs/notification channels. It is run in the k8s cluster for monitoring resource changes and event notifications are obtained through webhooks. The supported webhooks are:
+Kubewatch is a Kubernetes watcher that currently publishes notification to available collaboration hubs/notification
+channels. It is run in the k8s cluster for monitoring resource changes and event notifications are obtained through
+webhooks. The supported webhooks are:
 
 - slack
 - hipchat
@@ -21,8 +23,7 @@ Kubewatch is a Kubernetes watcher that currently publishes notification to avail
 
 ## Usage:
 
-kubewatch [flags]
-kubewatch [command]
+kubewatch [flags] kubewatch [command]
 
 ## Versions Supported
 

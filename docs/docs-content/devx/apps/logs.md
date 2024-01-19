@@ -7,7 +7,8 @@ sidebar_position: 20
 tags: ["devx", "app mode", "pde"]
 ---
 
-Palette Dev Engine (PDE) provides access to application configuration and status logs for each application. The following files are available for download.
+Palette Dev Engine (PDE) provides access to application configuration and status logs for each application. The
+following files are available for download.
 
 | **File**                  | **Description**                                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -17,7 +18,8 @@ Palette Dev Engine (PDE) provides access to application configuration and status
 
 :::info
 
-To download cluster logs, navigate to the cluster's **Overview** page and select **Settings** > **Download Logs**. Select the log files you want to review.
+To download cluster logs, navigate to the cluster's **Overview** page and select **Settings** > **Download Logs**.
+Select the log files you want to review.
 
 :::
 
@@ -51,4 +53,5 @@ Use the steps below to download application logs. The download bundle is a zip f
 
 ### Validate
 
-To review the logs, locate a zip file with file name format `[clusterNameHere]-logs-[currentTimeStamp]` in the downloads folder on your device.
+To review the logs, locate a zip file with file name format `[clusterNameHere]-logs-[currentTimeStamp]` in the downloads
+folder on your device.

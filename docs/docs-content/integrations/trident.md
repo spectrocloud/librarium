@@ -10,9 +10,13 @@ logoUrl: "https://registry.spectrocloud.com/v1/csi-trident/blobs/sha256:d4dd2ecf
 tags: ["packs", "trident", "storage"]
 ---
 
-Astra Trident, is an open-source project backed and maintained by [NetApp](https://www.netapp.com/) and is designed to provide persistence storage to containerized applications using industry-standard interfaces, such as the Container Storage Interface (CSI).
+Astra Trident, is an open-source project backed and maintained by [NetApp](https://www.netapp.com/) and is designed to
+provide persistence storage to containerized applications using industry-standard interfaces, such as the Container
+Storage Interface (CSI).
 
-Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for Kubernetes workloads. Containerized applications are enabled to quickly consume persistent storage from NetApp’s portfolio of solutions with minimal overhead.
+Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storage orchestration services for Kubernetes
+workloads. Containerized applications are enabled to quickly consume persistent storage from NetApp’s portfolio of
+solutions with minimal overhead.
 
 - ONTAP (AFF/FAS/Select/Cloud/Amazon FSx for NetApp ONTAP)
 - Element software (NetApp HCI/SolidFire)
@@ -26,7 +30,10 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 
 ## Prerequisites
 
-- All worker nodes in the Kubernetes cluster must be able to mount the volumes you have provisioned for your pods. To prepare the worker nodes, you must install NFS or iSCSI tools based on your driver selection. Check out the [Selecting the right tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools) guide for more information.
+- All worker nodes in the Kubernetes cluster must be able to mount the volumes you have provisioned for your pods. To
+  prepare the worker nodes, you must install NFS or iSCSI tools based on your driver selection. Check out the
+  [Selecting the right tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools)
+  guide for more information.
 
 - The following ports must be exposed on the worker nodes.
 
@@ -41,7 +48,8 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 
   :::info
 
-  The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the probe port is not used by another process on the worker nodes.
+  The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the
+  probe port is not used by another process on the worker nodes.
 
   :::
 
@@ -77,11 +85,16 @@ Astra Trident deploys in Kubernetes clusters as pods and provides dynamic storag
 
 ## Usage
 
-After deploying Trident, you will need to create a backend and a storage class before you can start provisioning volumes and mounting those to any pods.
+After deploying Trident, you will need to create a backend and a storage class before you can start provisioning volumes
+and mounting those to any pods.
 
 ### Create a Storage Backend
 
-Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of different backends by reviewing the driver manifests examples in the official Trident [repository](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you decide to use one of the example configurations, make sure you update the configuration with your credentials and environment configurations.
+Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of
+different backends by reviewing the driver manifests examples in the official Trident
+[repository](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you
+decide to use one of the example configurations, make sure you update the configuration with your credentials and
+environment configurations.
 
 The example below creates a backend with the ONTAP-NAS driver.
 
@@ -117,7 +130,9 @@ spec:
 
 #### Create a Storage Class
 
-Kubernetes supports the ability to bind statically or dynamically provisioned volumes to pods. Statically provisioned volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your NetApp storage. You must create a storage class before you can request dynamically provisioned volumes.
+Kubernetes supports the ability to bind statically or dynamically provisioned volumes to pods. Statically provisioned
+volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your
+NetApp storage. You must create a storage class before you can request dynamically provisioned volumes.
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -155,7 +170,9 @@ spec:
 
 #### Deploy a Pod and Mount the Volume.
 
-The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide persistent storage to this application.
+The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the
+previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide
+persistent storage to this application.
 
 <br />
 
@@ -187,7 +204,10 @@ spec:
 
 ## Prerequisites
 
-- All worker nodes in the Kubernetes cluster must be able to mount the volumes you have provisioned for your pods. To prepare the worker nodes, you must install NFS or iSCSI tools based on your driver selection. Check out the [Selecting the right tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools) guide for more information.
+- All worker nodes in the Kubernetes cluster must be able to mount the volumes you have provisioned for your pods. To
+  prepare the worker nodes, you must install NFS or iSCSI tools based on your driver selection. Check out the
+  [Selecting the right tools](https://docs.netapp.com/us-en/trident/trident-use/worker-node-prep.html#selecting-the-right-tools)
+  guide for more information.
 
 - The following ports must be exposed on the worker nodes.
 
@@ -202,7 +222,8 @@ spec:
 
   :::info
 
-  The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the probe port is not used by another process on the worker nodes.
+  The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the
+  probe port is not used by another process on the worker nodes.
 
   :::
 
@@ -238,11 +259,16 @@ spec:
 
 ## Usage
 
-After deploying Trident, you will need to create a backend and a storage class before you can start provisioning volumes and mounting those to any pods.
+After deploying Trident, you will need to create a backend and a storage class before you can start provisioning volumes
+and mounting those to any pods.
 
 ### Create a Storage Backend
 
-Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of different backends by reviewing the driver manifests examples in the official Trident [repository](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you decide to use one of the example configurations, make sure you update the configuration with your credentials and environment configurations.
+Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of
+different backends by reviewing the driver manifests examples in the official Trident
+[repository](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you
+decide to use one of the example configurations, make sure you update the configuration with your credentials and
+environment configurations.
 
 The example below creates a backend with the ONTAP-NAS driver.
 
@@ -278,7 +304,9 @@ spec:
 
 #### Create a Storage Class
 
-Kubernetes supports the ability to bind statically or dynamically provisioned volumes to Pods. Statically provisioned volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your NetApp storage. You must create a storage class before you can request dynamically provisioned volumes.
+Kubernetes supports the ability to bind statically or dynamically provisioned volumes to Pods. Statically provisioned
+volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your
+NetApp storage. You must create a storage class before you can request dynamically provisioned volumes.
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -316,7 +344,9 @@ spec:
 
 #### Deploy a Pod and Mount the Volume.
 
-The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide persistent storage to this application.
+The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the
+previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide
+persistent storage to this application.
 
 <br />
 

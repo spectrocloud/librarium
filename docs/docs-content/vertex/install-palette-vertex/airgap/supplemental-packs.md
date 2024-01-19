@@ -49,9 +49,11 @@ Review the following table to determine which pack binaries you need to download
 
 ### Usage Instructions
 
-To download a binary you must provide the username and password for the support team's private repository. Reach out to our support team to [obtain the credentials](../../vertex.md#access-palette-vertex).
+To download a binary you must provide the username and password for the support team's private repository. Reach out to
+our support team to [obtain the credentials](../../vertex.md#access-palette-vertex).
 
-The following example shows how to download the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary. Replace `XXXX` with your username and `YYYY` with your password.
+The following example shows how to download the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary. Replace `XXXX`
+with your username and `YYYY` with your password.
 
 <Tabs>
 <TabItem label="curl" value="curl">
@@ -83,7 +85,8 @@ All binaries require the OCI environment variables to be set and for the registr
 
 ## Additional OVAs
 
-The following table lists additional OVAs that may be required depending on the Kubernetes version and distribution you want to use for your workload clusters.
+The following table lists additional OVAs that may be required depending on the Kubernetes version and distribution you
+want to use for your workload clusters.
 
 | **Kubernetes Version** | **OVA Name**                  | **Download URL**                                                                             |
 | ---------------------- | ----------------------------- | -------------------------------------------------------------------------------------------- |
@@ -98,12 +101,15 @@ The following table lists additional OVAs that may be required depending on the 
 
 ### Usage Instructions
 
-Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to the `spectro-templates ` so VerteX can access it. One additional note about uploaded OVAs, the OVA name must be prefixed with `r_` to be recognized by VerteX. You can rename the OVA before you upload it or after you upload it to vSphere.
+Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to
+the `spectro-templates ` so VerteX can access it. One additional note about uploaded OVAs, the OVA name must be prefixed
+with `r_` to be recognized by VerteX. You can rename the OVA before you upload it or after you upload it to vSphere.
 
 <Tabs>
 <TabItem label="curl" value="curl">
 
-The following example shows how to download the `u-2004-0-k-1259-fips.ova` OVA and rename it to `r_u-2004-0-k-1259-fips.ova` using `curl` and the `--output` flag.
+The following example shows how to download the `u-2004-0-k-1259-fips.ova` OVA and rename it to
+`r_u-2004-0-k-1259-fips.ova` using `curl` and the `--output` flag.
 
 ```shell
 curl --output r_u-2004-0-k-1259-fips.ova \
@@ -114,7 +120,8 @@ https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fip
 
 <TabItem label="wget" value="wget">
 
-The following example shows how to download the `u-2004-0-k-1259-fips.ova` OVA and rename it to `r_u-2004-0-k-1259-fips.ova` using `wget` and the `--output-document` flag.
+The following example shows how to download the `u-2004-0-k-1259-fips.ova` OVA and rename it to
+`r_u-2004-0-k-1259-fips.ova` using `wget` and the `--output-document` flag.
 
 ```shell
 wget --quiet --show-progress \

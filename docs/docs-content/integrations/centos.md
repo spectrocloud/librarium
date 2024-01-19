@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/centos-vsphere/blobs/sha256:fe519
 tags: ["packs", "centos", "operating system"]
 ---
 
-CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of Red Hat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloud provides CentOS as a development framework for its users.
+CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of Red
+Hat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloud
+provides CentOS as a development framework for its users.
 
 ## Version Supported
 

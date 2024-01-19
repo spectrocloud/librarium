@@ -7,7 +7,9 @@ sidebar_position: 0
 tags: ["clusters", "imported clusters"]
 ---
 
-When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You can choose between read-only mode or full permission. Refer to the [Imported Clusters](imported-clusters.md#import-modes) reference page to learn more about each mode.
+When importing a cluster into Palette, you can select the mode you want Palette to use when managing the cluster. You
+can choose between read-only mode or full permission. Refer to the
+[Imported Clusters](imported-clusters.md#import-modes) reference page to learn more about each mode.
 
 Select the mode you want to use when importing a cluster into Palette.
 
@@ -38,13 +40,15 @@ Select the mode you want to use when importing a cluster into Palette.
 4. Fill out the required information and make your selections:
 
    - Cluster Name - The name of the cluster you want to import.
-   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment list doesn't contain your specific environment, but be aware of the limitations with generic clusters.
+   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment
+     list doesn't contain your specific environment, but be aware of the limitations with generic clusters.
    - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
    - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
 
 5. Select **Full-permission mode** and click on **Create & Open Cluster Instance** to start the import.
 
-6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the right side of the screen. You will need to issue the following commands to complete the import process.
+6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the right
+   side of the screen. You will need to issue the following commands to complete the import process.
 
    <br />
 
@@ -52,7 +56,10 @@ Select the mode you want to use when importing a cluster into Palette.
 
    <br />
 
-7. We recommend you install the metrics server so that Palette can expose and provide you with information about the cluster. Installing the metrics server is not required but is needed for Palette to expose cluster metrics. To enable the metrics server, open a terminal session and issue the commands below against the Kubernetes cluster you want to import.
+7. We recommend you install the metrics server so that Palette can expose and provide you with information about the
+   cluster. Installing the metrics server is not required but is needed for Palette to expose cluster metrics. To enable
+   the metrics server, open a terminal session and issue the commands below against the Kubernetes cluster you want to
+   import.
 
    <br />
 
@@ -61,7 +68,9 @@ Select the mode you want to use when importing a cluster into Palette.
    helm install my-release bitnami/metrics-server
    ```
 
-8. To install the Palette agent, issue the command displayed in the cluster details page **Install the agent** section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains the assigned cluster ID. Below is an example output of the install command.
+8. To install the Palette agent, issue the command displayed in the cluster details page **Install the agent** section
+   against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains the
+   assigned cluster ID. Below is an example output of the install command.
 
    <br />
 
@@ -87,7 +96,8 @@ Select the mode you want to use when importing a cluster into Palette.
    secret/hubble-secrets created
    ```
 
-9. When the Palette agent completes initializing, the cluster import procedures at right will disappear, and your cluster will transition to **Running** status within a few minutes.
+9. When the Palette agent completes initializing, the cluster import procedures at right will disappear, and your
+   cluster will transition to **Running** status within a few minutes.
 
    <br />
 
@@ -105,7 +115,8 @@ You now have imported a cluster into Palette with full permissions.
 
 3. Select your imported cluster from the cluster list.
 
-4. Review the **Cluster Status** row from the cluster details view. A successful cluster import will have the cluster status **Running**.
+4. Review the **Cluster Status** row from the cluster details view. A successful cluster import will have the cluster
+   status **Running**.
 
 ## Read-only Mode
 
@@ -130,13 +141,15 @@ You now have imported a cluster into Palette with full permissions.
 4. Fill out the required information and make the proper selections:
 
    - Cluster Name - The name of the cluster you want to import.
-   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment list doesn't contain your specific environment but be aware of the limitations with generic clusters.
+   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment
+     list doesn't contain your specific environment but be aware of the limitations with generic clusters.
    - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
    - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
 
 5. Select **Read-only mode** and click on **Create & Open Cluster Instance** to start the import action.
 
-6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the right-hand side of the screen. You will need to issue the following commands to complete the import process.
+6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the
+   right-hand side of the screen. You will need to issue the following commands to complete the import process.
 
    <br />
 
@@ -144,7 +157,10 @@ You now have imported a cluster into Palette with full permissions.
 
    <br />
 
-7. We recommend you install the metrics server so that Palette can expose and provide you with information about the cluster. Installing the metrics server is not required but is needed for Palette to expose cluster metrics. Open a terminal session and issue the commands below against the Kubernetes cluster you want to import if you want to enable the metrics server.
+7. We recommend you install the metrics server so that Palette can expose and provide you with information about the
+   cluster. Installing the metrics server is not required but is needed for Palette to expose cluster metrics. Open a
+   terminal session and issue the commands below against the Kubernetes cluster you want to import if you want to enable
+   the metrics server.
 
    <br />
 
@@ -153,7 +169,9 @@ You now have imported a cluster into Palette with full permissions.
    helm install my-release bitnami/metrics-server
    ```
 
-8. To install the Palette agent, issue the command displayed in the cluster details page **Install the** read-only agent\*\* section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains the assigned cluster ID. Below is an example output of the install command.
+8. To install the Palette agent, issue the command displayed in the cluster details page **Install the** read-only
+   agent\*\* section against the Kubernetes cluster you want to import. The command is customized for your cluster as it
+   contains the assigned cluster ID. Below is an example output of the install command.
 
    <br />
 
@@ -179,7 +197,8 @@ You now have imported a cluster into Palette with full permissions.
    secret/hubble-secrets created
    ```
 
-9. Once the Palette agent completes the initialization, the side view drawer on the right will disappear, and your cluster will transition to a status of **Running** after a few moments.
+9. Once the Palette agent completes the initialization, the side view drawer on the right will disappear, and your
+   cluster will transition to a status of **Running** after a few moments.
 
    <br />
 
@@ -187,7 +206,8 @@ You now have imported a cluster into Palette with full permissions.
 
    <br />
 
-You now have imported a cluster into Palette in read-only mode. Keep in mind that a cluster imported in read-only mode has limited capabilities. You can migrate to full permissions anytime by clicking **Migrate To Full Permissions**.
+You now have imported a cluster into Palette in read-only mode. Keep in mind that a cluster imported in read-only mode
+has limited capabilities. You can migrate to full permissions anytime by clicking **Migrate To Full Permissions**.
 
 ### Validate
 
@@ -197,8 +217,11 @@ You now have imported a cluster into Palette in read-only mode. Keep in mind tha
 
 3. Select your imported cluster from the cluster list.
 
-4. Review the **Cluster Status** row from the cluster details view. A successful cluster import displays cluster status as **Running**.
+4. Review the **Cluster Status** row from the cluster details view. A successful cluster import displays cluster status
+   as **Running**.
 
 ## Next Steps
 
-Depending on what mode you selected for the migration, your next step is to either [Attach an Add-on Profile](attach-add-on-profile.md) or you can [Migrate to Full Permissions](migrate-full-permissions.md).
+Depending on what mode you selected for the migration, your next step is to either
+[Attach an Add-on Profile](attach-add-on-profile.md) or you can
+[Migrate to Full Permissions](migrate-full-permissions.md).

@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/cni-multus/blobs/sha256:3727499ea
 tags: ["packs", "multus", "network"]
 ---
 
-The Multus Container Network Interface (CNI) plugin enables multiple, network interfaces to attach to pods within Kubernetes. Palette provisions the CNI-Multus 3.8.0 Add-on pack, so you can create a multi-homed pod for Kubernetes right within the orchestrator.
+The Multus Container Network Interface (CNI) plugin enables multiple, network interfaces to attach to pods within
+Kubernetes. Palette provisions the CNI-Multus 3.8.0 Add-on pack, so you can create a multi-homed pod for Kubernetes
+right within the orchestrator.
 
 <br />
 

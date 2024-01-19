@@ -11,7 +11,10 @@ logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a data cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction, transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
+[Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a data
+cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction,
+transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability
+via Redis Sentinel and automatic partitioning with Redis Cluster.
 
 ## Add Redis to an App Profile
 
@@ -27,7 +30,9 @@ Use the following steps to add Redis to an app profile.
 
 2. On the right side of the window, click on the **User Menu** and select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new
+   [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic
+   information and click **Next**.
 
 | Parameter                | Description                                                                                                              |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -42,7 +47,8 @@ Use the following steps to add Redis to an app profile.
 
 - **Name:** The database name.
 - **Password:** The password for the database service.
-- **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters.
+- **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual
+  clusters.
 
 6. Save your changes.
 
@@ -54,7 +60,8 @@ Use the following steps to add Redis to an app profile.
 
 3. Select the application that contains Redis.
 
-4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of
+   the service deployment.
 
 | **Color Code** | **Description**       |
 | -------------- | --------------------- |
@@ -76,7 +83,8 @@ The exposed output variables. Use these variables when connecting higher-level s
 
 ## Database Password
 
-You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format.
+You can get the database secret by reading the content of the Kubernetes secret created for the database user. To
+retrieve the password for the Redis database, use the following command format.
 
 ```shell
 kubectl get secret <app-name>-<service-name>-redis-auth \
@@ -107,7 +115,9 @@ kubectl get secret  app-tarfful-redis-4-redis-auth \
 
 ## Next Steps
 
-You can add Redis to your application profile and start integrating Redis with your applications. To learn more about integrating Redis with your applications, check out the [Using Redis](https://redis.io/docs/manual/) documentation from Redis.
+You can add Redis to your application profile and start integrating Redis with your applications. To learn more about
+integrating Redis with your applications, check out the [Using Redis](https://redis.io/docs/manual/) documentation from
+Redis.
 
 ## Resources
 

@@ -10,7 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec6
 tags: ["packs", "heart-beat", "monitoring"]
 ---
 
-Heartbeat is a lightweight daemon installed to a remote server for periodically checking the status of the services and determine whether they are currently available and reachable. Heartbeat is useful to verify that your service level agreements are met during the service uptime.
+Heartbeat is a lightweight daemon installed to a remote server for periodically checking the status of the services and
+determine whether they are currently available and reachable. Heartbeat is useful to verify that your service level
+agreements are met during the service uptime.
 
 ## Versions Supported
 

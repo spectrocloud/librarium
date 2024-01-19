@@ -7,19 +7,25 @@ sidebar_position: 120
 tags: ["clusters", "cluster management"]
 ---
 
-In Kubernetes, namespaces provide a way to isolate groups of resources within a single cluster. Some of the benefits of namespaces are:
+In Kubernetes, namespaces provide a way to isolate groups of resources within a single cluster. Some of the benefits of
+namespaces are:
 
 <br />
 
-- They can be used to partition resources among multiple users via resource quota – where each namespace has its own set of resources – without having to set up multiple physical clusters.
+- They can be used to partition resources among multiple users via resource quota – where each namespace has its own set
+  of resources – without having to set up multiple physical clusters.
 
-- You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces and RBAC, check out [RBAC and NS Support](cluster-rbac).
+- You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces
+  and RBAC, check out [RBAC and NS Support](cluster-rbac).
 
 - Namespaces can be used for different purposes such as testing, development, and production.
 
-- You can use namespaces to help prevent resource naming conflicts. Resource names must be unique within a namespace but not across namespaces.
+- You can use namespaces to help prevent resource naming conflicts. Resource names must be unique within a namespace but
+  not across namespaces.
 
-- In environments that have hybrid containerized and virtualized applications, a separate namespace can be used to isolate virtual machines (VMs). For information about a VM environment in Palette, check out [Virtual Machine Management](../../vm-management/vm-management.md).
+- In environments that have hybrid containerized and virtualized applications, a separate namespace can be used to
+  isolate virtual machines (VMs). For information about a VM environment in Palette, check out
+  [Virtual Machine Management](../../vm-management/vm-management.md).
 
 ## Create a Namespace
 
@@ -51,11 +57,13 @@ The following steps will guide you on how to create a namespace.
 
 5. Type a unique namespace name in the **Namespace name or Regex** field and click **Add to List** at right.
 
-6. You can assign resource quotas now or at a later time. To learn how, check out [Assign Resource Quotas](namespace-management.md#assign-resource-quotas).
+6. You can assign resource quotas now or at a later time. To learn how, check out
+   [Assign Resource Quotas](namespace-management.md#assign-resource-quotas).
 
    <br />
 
-   For details on how to configure RBAC for namespaces, check out the [RBAC and NS Support](cluster-rbac.md#palette-roles-and-kubernetes-roles) guide.
+   For details on how to configure RBAC for namespaces, check out the
+   [RBAC and NS Support](cluster-rbac.md#palette-roles-and-kubernetes-roles) guide.
 
 ### Validate
 
@@ -105,7 +113,8 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 ## Delete a Namespace
 
-When you delete a namespace, all the resources that were created within the namespace will also be deleted, such as pods, services and endpoints, config maps, and more.
+When you delete a namespace, all the resources that were created within the namespace will also be deleted, such as
+pods, services and endpoints, config maps, and more.
 
 ### Prerequisites
 
@@ -117,9 +126,11 @@ When you delete a namespace, all the resources that were created within the name
 
 2. Select the cluster in which you want to create a namespace.
 
-3. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button. The **Settings** pane displays with **RBAC** preselected and the **Namespaces** tab opened by default.
+3. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button. The **Settings** pane
+   displays with **RBAC** preselected and the **Namespaces** tab opened by default.
 
-4. Select the namespace you want to delete, which is listed in the **Workspace Quota** section, and click the trash can icon.
+4. Select the namespace you want to delete, which is listed in the **Workspace Quota** section, and click the trash can
+   icon.
 
 ### Validate
 

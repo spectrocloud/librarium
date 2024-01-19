@@ -7,13 +7,18 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-The installation process supports all the cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/). Kairos is an open-source project that is used to create immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before locking down the image.
+The installation process supports all the cloud-init stages exposed by
+[Kairos](https://kairos.io/docs/architecture/cloud-init/). Kairos is an open-source project that is used to create
+immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before
+locking down the image.
 
 The following diagram displays the available cloud-init stages you can use to customize the device installation.
 
 ![A diagram that displays all the cloud-init stages supported. The stages are listed in the markdown table below.](/clusters_edge_cloud-init_cloud-init-stages-supported.png)
 
-You can read more about Kairos and cloud-init by reviewing [Kairo's cloud-init](https://kairos.io/docs/architecture/cloud-init/) resource. For your convenience, all the supported cloud-init stages are listed below.
+You can read more about Kairos and cloud-init by reviewing
+[Kairo's cloud-init](https://kairos.io/docs/architecture/cloud-init/) resource. For your convenience, all the supported
+cloud-init stages are listed below.
 
 | Stage                  | Description                                                                                                                                                                                                                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -35,29 +40,35 @@ You can read more about Kairos and cloud-init by reviewing [Kairo's cloud-init](
 
 :::info
 
-Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use `network.after` to verify network connectivity.
+Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use
+`network.after` to verify network connectivity.
 
 :::
 
 ## Where to Apply Cloud-Init Stages?
 
-You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of cloud-init stages. Use the following statements to help you decide.
-<br />
+You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of
+cloud-init stages. Use the following statements to help you decide. <br />
 
-- If you need to apply a set of configurations to a specific site, then use the Edge Installer user data configuration file and its cloud-init stages to provide site settings to that specific site.
+- If you need to apply a set of configurations to a specific site, then use the Edge Installer user data configuration
+  file and its cloud-init stages to provide site settings to that specific site.
 
-- If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init stages to apply those configurations.
+- If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init
+  stages to apply those configurations.
 
 ## Example Use Cases
 
-To help you become familiar with the cloud-init stages and better understand how to use them to achieve your goals, check out the following use cases.
+To help you become familiar with the cloud-init stages and better understand how to use them to achieve your goals,
+check out the following use cases.
 
 <br />
 
 :::warning
 
-Remember that the following code snippets are only intended to help you understand how cloud-init can be used to customize the edge host.
-You can use countless combinations of the Edge Installer and OS cloud-init stages to achieve the desired customization. Check out the Kairos [stages](https://kairos.io/docs/reference/configuration/#stages) resource to learn more about other key terms, options, and advanced examples.
+Remember that the following code snippets are only intended to help you understand how cloud-init can be used to
+customize the edge host. You can use countless combinations of the Edge Installer and OS cloud-init stages to achieve
+the desired customization. Check out the Kairos [stages](https://kairos.io/docs/reference/configuration/#stages)
+resource to learn more about other key terms, options, and advanced examples.
 
 :::
 
@@ -103,7 +114,8 @@ stages:
 
 #### Configure a Registry Mirror
 
-For situations where you need to configure a registry mirror, you can use the following example that uses the `initramfs` stage.
+For situations where you need to configure a registry mirror, you can use the following example that uses the
+`initramfs` stage.
 
 ```yaml
 stages:
@@ -131,7 +143,11 @@ stages:
 
 #### Configure Network With Netplan
 
-You can use the `initramfs` stage and [Netplan](https://netplan.io) to configure network settings before the network initialization. Netplan is a tool that enables you to specify network configurations on Linux systems. Note that this approach is available for Linux systems with Netplan installed. Refer to the [Netplan Documentation](https://netplan.readthedocs.io/en/stable/) for installation guidance and the [Netplan How-to Guides](https://netplan.readthedocs.io/en/stable/examples/) for more information.
+You can use the `initramfs` stage and [Netplan](https://netplan.io) to configure network settings before the network
+initialization. Netplan is a tool that enables you to specify network configurations on Linux systems. Note that this
+approach is available for Linux systems with Netplan installed. Refer to the
+[Netplan Documentation](https://netplan.readthedocs.io/en/stable/) for installation guidance and the
+[Netplan How-to Guides](https://netplan.readthedocs.io/en/stable/examples/) for more information.
 
 ```yaml
 stages:
@@ -169,7 +185,8 @@ stages:
 
 :::tip
 
-When using the EdgeForge workflow with CanvOS, ensure you add Netplan to the Dockerfile. In the example below, Netplan is installed in an Ubuntu image.
+When using the EdgeForge workflow with CanvOS, ensure you add Netplan to the Dockerfile. In the example below, Netplan
+is installed in an Ubuntu image.
 
 ```shell
 apt-get update && apt-get install netplan.io -y
@@ -207,8 +224,10 @@ stages:
 
 #### Pass Sensitive Information
 
-If you need to transmit sensitive information, such as credentials, during the site installation phase, you can make the Edge installer skip copying specific stages to the edge hosts. The Edge installer will skip copying the stages that follow the `skip-copy-[string]` naming convention. Refer to the [Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more.
-<br />
+If you need to transmit sensitive information, such as credentials, during the site installation phase, you can make the
+Edge installer skip copying specific stages to the edge hosts. The Edge installer will skip copying the stages that
+follow the `skip-copy-[string]` naming convention. Refer to the
+[Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more. <br />
 
 ```yaml
 stages:
@@ -221,7 +240,8 @@ stages:
 
 #### Complete Example
 
-This is an Edge Installer user data configuration that configures the user `kairos` and prepares the edge host by providing network settings and adding SSL certificates.
+This is an Edge Installer user data configuration that configures the user `kairos` and prepares the edge host by
+providing network settings and adding SSL certificates.
 
 <br />
 
@@ -266,14 +286,15 @@ stylus:
 
 ## OS User Data Stages
 
-You can also customize the device by using the OS cloud-init stages. As mentioned previously, use OS cloud-init stages to apply common configurations to many edge hosts.
+You can also customize the device by using the OS cloud-init stages. As mentioned previously, use OS cloud-init stages
+to apply common configurations to many edge hosts.
 
 <br />
 
 #### Assign User to Group
 
-In this example snippet, the OS pack is using the cloud-init stage `initramfs` to assign a default password to the user `kairos` and add the user to the `sudo` group.
-<br />
+In this example snippet, the OS pack is using the cloud-init stage `initramfs` to assign a default password to the user
+`kairos` and add the user to the `sudo` group. <br />
 
 ```yaml
 stages:
@@ -287,8 +308,8 @@ stages:
 
 #### Custom Commands
 
-This is an example of moving files to a different location prior to another stage or boot-up process that requires the file.
-<br />
+This is an example of moving files to a different location prior to another stage or boot-up process that requires the
+file. <br />
 
 ```yaml
 stages:
@@ -316,8 +337,7 @@ stages:
 
 #### Invoke Custom Script
 
-An example of applying logic after the device has booted by using the `boot.after` stage.
-<br />
+An example of applying logic after the device has booted by using the `boot.after` stage. <br />
 
 ```yaml
 boot.after:

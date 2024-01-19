@@ -11,9 +11,13 @@ The following are some highlights of OpenStack clusters provisioned by Palette:
 
 1. Palette enables the ability to use OpenStack as an application platform for engineering team.
 
-2. To facilitate communication between Palette and the OpenStack controllers installed in the private data center, a Private Cloud Gateway (PCG) must be set up within the environment.
+2. To facilitate communication between Palette and the OpenStack controllers installed in the private data center, a
+   Private Cloud Gateway (PCG) must be set up within the environment.
 
-3. Private Cloud Gateway (PCG) is Palette's self-hosted component to support isolated private cloud or data center environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication between the SaaS portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
+3. Private Cloud Gateway (PCG) is Palette's self-hosted component to support isolated private cloud or data center
+   environments. Once installed, the PCG registers itself with Palette's SaaS portal and enables secure communication
+   between the SaaS portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle
+   management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
 ![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
 
@@ -27,11 +31,15 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 3. Shared Storage between OpenStack hosts.
 
-4. You must have an active OpenStack account with access to all the projects that you would like to provision clusters into. The account should have all the permissions listed below in the "OpenStack Cloud Account Permissions" section.
+4. You must have an active OpenStack account with access to all the projects that you would like to provision clusters
+   into. The account should have all the permissions listed below in the "OpenStack Cloud Account Permissions" section.
 
 5. You should have an Infrastructure cluster profile created in Palette for OpenStack.
 
-6. Install a Private Cloud Gateway for OpenStack as described in the **Installing Private Cloud Gateway - OpenStack** section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in Palette. You can register your additional OpenStack cloud accounts in Palette as described in the **Creating a OpenStack Cloud account** section below.
+6. Install a Private Cloud Gateway for OpenStack as described in the **Installing Private Cloud Gateway - OpenStack**
+   section below. Installing the Private Cloud Gateway will automatically register a cloud account for OpenStack in
+   Palette. You can register your additional OpenStack cloud accounts in Palette as described in the **Creating a
+   OpenStack Cloud account** section below.
 
 7. Egress access to the internet (direct or via proxy):
 
@@ -332,11 +340,13 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 ## Installing Private Cloud Gateway - OpenStack
 
-Use the following steps to install a PCG cluster in your OpenStack environment. The [Palette CLI](../../palette-cli/palette-cli.md) will facilitate the deployment of a PCG cluster.
+Use the following steps to install a PCG cluster in your OpenStack environment. The
+[Palette CLI](../../palette-cli/palette-cli.md) will facilitate the deployment of a PCG cluster.
 
 :::warning
 
-Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
+Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can
+find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
 
 :::
 
@@ -346,9 +356,11 @@ The following system prerequisites are required to install an OpenStack PCG.
 
 - Palette version 4.0.X or greater.
 
-- A Palette API key. Refer to the [Create API Key](../../user-management/authentication//api-key/create-api-key.md) page for guidance.
+- A Palette API key. Refer to the [Create API Key](../../user-management/authentication//api-key/create-api-key.md) page
+  for guidance.
 
-- Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
+- Download the Palette CLI from the [Downloads](../../spectro-downloads.md#palette-cli) page and install the CLI. Refer
+  to the [Palette CLI Install](../../palette-cli/install-palette-cli.md) guide to learn more.
 
 The following system requirements should be met in order to install a private cloud gateway for OpenStack:
 
@@ -356,7 +368,8 @@ The following system requirements should be met in order to install a private cl
   - 1 IP for a 1 node PCG or 3 IPs for a 3 node PCG
   - 1 IP for Kubernetes control-plane
 
-Palette provides an installer in the form of a docker container. This installer can be run on any system that has docker daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
+Palette provides an installer in the form of a docker container. This installer can be run on any system that has docker
+daemon installed and has connectivity to the Palette Management console as well as OpenStack controller.
 
 - One additional Kubernetes control plane IP address for rolling upgrades.
 - A Linux x86-64 host with the Docker daemon installed.
@@ -365,7 +378,8 @@ Palette provides an installer in the form of a docker container. This installer 
 
 1. In an x86 Linux host, open up a terminal session.
 
-2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed in the following table.
+2. Use the Palette CLI `login` command to authenticate the CLI with Palette. When prompted, enter the information listed
+   in the following table.
 
    <br />
 
@@ -383,7 +397,8 @@ Palette provides an installer in the form of a docker container. This installer 
    | **Spectro Cloud Organization** | Enter your Palette Organization name.                                                                                                                                                         |
    | **Spectro Cloud Project**      | Enter your desired project name within the selected Organization.                                                                                                                             |
 
-3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted, enter the information listed in each of the following tables.
+3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted,
+   enter the information listed in each of the following tables.
 
    <br />
 
@@ -399,9 +414,12 @@ Palette provides an installer in the form of a docker container. This installer 
    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `openstack-pcg-1`.                                                                                                                                                        |
    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope. |
 
-4. Next, provide environment configurations for the cluster. Refer to the following table for information about each option.
+4. Next, provide environment configurations for the cluster. Refer to the following table for information about each
+   option.
 
-  <br />
+{" "}
+
+<br />
 
 | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
 | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -412,9 +430,12 @@ Palette provides an installer in the form of a docker container. This installer 
 | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
 | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-5. After the environment options, the next set of prompts is for configuring the PCG cluster for the OpenStack environment. The following table contains information about each prompt.
+5. After the environment options, the next set of prompts is for configuring the PCG cluster for the OpenStack
+   environment. The following table contains information about each prompt.
 
-  <br />
+{" "}
+
+<br />
 
 | **Parameter**                   | **Description**                                                                                                                                            |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -426,7 +447,9 @@ Palette provides an installer in the form of a docker container. This installer 
 
 6. Next, fill out additional OpenStack configurations.
 
-  <br />
+{" "}
+
+<br />
 
 | **Parameter**                             | **Description**                                                                                                                                                                                                                                                               |
 | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -444,16 +467,21 @@ Palette provides an installer in the form of a docker container. This installer 
 
 7. Configure the OpenStack PCG Machine by answering the following prompts.
 
-  <br />
+{" "}
+
+<br />
 
 | **Parameter**         | **Description**                                                                                                       |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | **Availability Zone** | Select the availability zone.                                                                                         |
 | **PCG Cluster Size**  | Select the node size of the PCG cluster. You can choose between **1** node or **3** nodes for High Availability (HA). |
 
-8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output similar to the following.
+8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
+   similar to the following.
 
-  <br />
+{" "}
+
+<br />
 
 ```bash hideClipboard
 ==== PCG config saved ====
@@ -462,7 +490,9 @@ Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
 
 :::info
 
-The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the [PCG command](../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
+The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To
+change these values, use the `palette pcg install --update-passwords` command. Refer to the
+[PCG command](../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
 
 :::
 
@@ -472,7 +502,12 @@ The Palette CLI will now provision a PCG cluster in your OpenStack environment.
 
 :::warning
 
-You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag to save the configuration file without deploying the PCG cluster. Refer to the [Generate a Configuration File](../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more. For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the
+cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only` flag
+to save the configuration file without deploying the PCG cluster. Refer to the
+[Generate a Configuration File](../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn more.
+For additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals)
+portal.
 
 :::
 
@@ -484,15 +519,22 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 2. Navigate to the left **Main Menu** and select **Tenant Settings**
 
-3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the list of PCG clusters displayed.
+3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the
+   list of PCG clusters displayed.
 
-4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant Settings > Cloud Accounts** and locate **OpenStack** in the table. Verify your OpenStack account is listed.
+4. When you install the PCG, a cloud account is auto-created. To verify the cloud account is created, go to **Tenant
+   Settings > Cloud Accounts** and locate **OpenStack** in the table. Verify your OpenStack account is listed.
 
 ## Upgrade PCG
 
-Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required and in an upgrade notification on the PCG.
+Palette maintains the OS image and all configurations for the PCG. Periodically, the OS images, configurations, or other
+components need to be upgraded to resolve security or functionality issues. Palette releases such upgrades when required
+and in an upgrade notification on the PCG.
 
-Administrators should review the changes and apply them at a suitable time. Upgrading a PCG does not result in any downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily unavailable. New cluster requests are queued while the PCG is being upgraded and are processed as soon as the PCG upgrade is complete.
+Administrators should review the changes and apply them at a suitable time. Upgrading a PCG does not result in any
+downtime for the tenant clusters. During the upgrade process, the provisioning of new clusters might be temporarily
+unavailable. New cluster requests are queued while the PCG is being upgraded and are processed as soon as the PCG
+upgrade is complete.
 
 ## Delete the PCG
 
@@ -502,19 +544,25 @@ The following steps need to be performed to delete a PCG:
 
 2. Invoke the **Delete** action on the cloud gateway instance that needs to be deleted.
 
-3. The system performs a validation to ensure that there are no running tenant clusters associated with the gateway instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant clusters and retry the deletion of the cloud gateway.
+3. The system performs a validation to ensure that there are no running tenant clusters associated with the gateway
+   instance being deleted. If such instances are found, the system presents an error. Delete relevant running tenant
+   clusters and retry the deletion of the cloud gateway.
 
 4. Delete the gateway.
 
 :::info
 
-The delete gateway operation deletes the gateway instance registered in the management console, however the gateway infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. need to be deleted on the OpenStack console.
+The delete gateway operation deletes the gateway instance registered in the management console, however the gateway
+infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. need to be deleted on the
+OpenStack console.
 
 :::
 
 ## Resize the PCG
 
-You can set up the PCG as a single-node or three-node cluster for high availability (HA). For production environments, we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the following steps to resize a single-node PCG cluster to a three-node PCG cluster.
+You can set up the PCG as a single-node or three-node cluster for high availability (HA). For production environments,
+we recommend three nodes. A PCG can be initially set up with one node and resized to three nodes later. Use the
+following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 
 1. As a tenant administrator, navigate to the Private Cloud Gateway page under settings.
 
@@ -522,11 +570,13 @@ You can set up the PCG as a single-node or three-node cluster for high availabil
 
 3. Update the size from 1 to 3.
 
-4. The gateway upgrade begins shortly after the update. Two new nodes are created, and the gateway is upgraded to a 3-node cluster.
+4. The gateway upgrade begins shortly after the update. Two new nodes are created, and the gateway is upgraded to a
+   3-node cluster.
 
 # Creating an OpenStack Cloud Account
 
-A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
+A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be
+used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
 
 1. To create an OpenStack cloud account, proceed to project settings and select 'create cloud account' under OpenStack.
 
@@ -546,19 +596,27 @@ A default cloud account is automatically created when the private cloud gateway 
 
 # Deploying an OpenStack Cluster
 
-<Video title="openstack-cluster-creation" src="/videos/clusters/data-center/cluster-creation-videos/openstack.mp4"></Video>
+<Video
+  title="openstack-cluster-creation"
+  src="/videos/clusters/data-center/cluster-creation-videos/openstack.mp4"
+></Video>
 
 The following steps need to be performed to provision a new OpenStack cluster:
 
-1. Provide basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the VMs deployed on the cloud/data center environments.
+1. Provide basic cluster information like Name, Description, and Tags. Tags are currently not propagated to the VMs
+   deployed on the cloud/data center environments.
 
-2. Select a Cluster Profile created for the OpenStack environment. The profile definition will be used as the cluster construction template.
+2. Select a Cluster Profile created for the OpenStack environment. The profile definition will be used as the cluster
+   construction template.
 
-3. Review and override Pack Parameters as desired. By default, Parameters for all packs are set with values defined in the Cluster Profile.
+3. Review and override Pack Parameters as desired. By default, Parameters for all packs are set with values defined in
+   the Cluster Profile.
 
 4. Provide an OpenStack Cloud account and placement information.
 
-   - **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available for provisioning of tenant clusters if permitted by the administrator.
+   - **Cloud Account** - Select the desired cloud account. OpenStack cloud accounts with credentials need to be
+     preconfigured in project settings. An account is auto-created as part of the cloud gateway setup and is available
+     for provisioning of tenant clusters if permitted by the administrator.
      - Domain
      - Region
      - Project
@@ -571,7 +629,8 @@ The following steps need to be performed to provision a new OpenStack cluster:
          - Subnet CIDR
          - DNS Name Server
 
-5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following table contains an explanation of the available input parameters.
+5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following
+   table contains an explanation of the available input parameters.
 
 ### Master Pool
 
@@ -609,40 +668,51 @@ The following steps need to be performed to provision a new OpenStack cluster:
 
 7. Click to get details on [cluster management feature](../cluster-management/cluster-management.md).
 
-8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
+   to track progress.
 
 ## Deleting an OpenStack Cluster
 
-The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created for the cluster. The following tasks need to be performed to delete an OpenStack cluster:
+The deletion of an OpenStack cluster results in the removal of all Virtual machines and associated storage disks created
+for the cluster. The following tasks need to be performed to delete an OpenStack cluster:
 
 1. Select the cluster to be deleted from the **Cluster** **View** page and navigate to the **Cluster Overview** page.
 
-2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete** **Cluster**.
+2. Invoke a delete action available on the page: **Cluster** > **Settings** > **Cluster** **Settings** > **Delete**
+   **Cluster**.
 
 3. Click **Confirm** to delete.
 
-The Cluster Status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status changes to **Deleted** and is removed from the list of clusters.
+The Cluster Status is updated to **Deleting** while cluster resources are being deleted. Provisioning status is updated
+with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status
+changes to **Deleted** and is removed from the list of clusters.
 
 :::info
 
-Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of being provisioned, the 'Abort' action is available to stop provisioning and delete all resources.
+Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of
+being provisioned, the 'Abort' action is available to stop provisioning and delete all resources.
 
 :::
 
 # Force Delete a Cluster
 
-A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette enables cluster force delete from the Tenant Admin and Project Admin scope.
+A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go
+for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette
+enables cluster force delete from the Tenant Admin and Project Admin scope.
 
 1. Log in to the Palette Management Console.
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-   - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+   - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings**
+     dropdown.
 
-   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
+   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the
+     estimated time for the auto-enabling of the **Force Delete** button.
 
 :::warning
 
-If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force deletion.
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force
+deletion.
 
 :::

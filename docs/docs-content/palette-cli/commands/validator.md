@@ -7,7 +7,9 @@ sidebar_position: 50
 tags: ["palette-cli"]
 ---
 
-The Palette CLI has built-in support for the open-source [Validator](https://github.com/spectrocloud-labs/validator) framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
+The Palette CLI has built-in support for the open-source [Validator](https://github.com/spectrocloud-labs/validator)
+framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation
+of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
 
 The `validator` command exposes the following subcommands.
 
@@ -23,17 +25,24 @@ The Validator requires the following dependencies.
 
 :::warning
 
-Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the [Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator and its plugins.
+Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS
+plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the
+[Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator
+and its plugins.
 
 :::
 
 ## Install
 
-Use the `install` subcommand to install the Validator framework and configure Validator plugins. An interactive wizard will guide you through the installation process. You can also use a configuration file to install the Validator.
+Use the `install` subcommand to install the Validator framework and configure Validator plugins. An interactive wizard
+will guide you through the installation process. You can also use a configuration file to install the Validator.
 
 :::info
 
-A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the [Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
+A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind
+cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You
+can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the
+[Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
 
 :::
 
@@ -70,11 +79,16 @@ palette validator install --config-only
 
 ### Configuration Files
 
-After the install wizard completes, the Validator will generate a configuration file. You can use the generated configuration file to install the Validator using with the same configuration you specified in the wizard. You also need this configuration file to uninstall the Validator.
+After the install wizard completes, the Validator will generate a configuration file. You can use the generated
+configuration file to install the Validator using with the same configuration you specified in the wizard. You also need
+this configuration file to uninstall the Validator.
 
-Once Validator is installed, the configuration file is located in the `$HOME/.palette/validator` directory and is named `validator.yaml`.
+Once Validator is installed, the configuration file is located in the `$HOME/.palette/validator` directory and is named
+`validator.yaml`.
 
-The install output displays the location of the configuration file. In the example below, the configuration file is located at `/Users/demo/.palette/validator/validator-20231109135306/validator.yaml`. The output is truncated for brevity.
+The install output displays the location of the configuration file. In the example below, the configuration file is
+located at `/Users/demo/.palette/validator/validator-20231109135306/validator.yaml`. The output is truncated for
+brevity.
 
 ```shell hideClipboard {1,11}
 validator configuration file saved: /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
@@ -90,21 +104,28 @@ You can now use your cluster with:
 kubectl cluster-info --context kind-validator-kind-cluster --kubeconfig /Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig
 ```
 
-The kubeconfig file to the kind cluster is also located in the `$HOME/.palette/validator` directory and is named `kind-cluster.kubeconfig`. Its location is displayed in the install output.
+The kubeconfig file to the kind cluster is also located in the `$HOME/.palette/validator` directory and is named
+`kind-cluster.kubeconfig`. Its location is displayed in the install output.
 
 ### Review Validation Results
 
-The Validator generates a report after the validation process is complete. All validations are stored as a [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CR) in the `validator` namespace. Each plugin you specified during installation will have its own CR. Additionally, the Validator creates a CR containing all the validation results and Validator configurations.
+The Validator generates a report after the validation process is complete. All validations are stored as a
+[Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CR) in the
+`validator` namespace. Each plugin you specified during installation will have its own CR. Additionally, the Validator
+creates a CR containing all the validation results and Validator configurations.
 
 :::tip
 
-The kind cluster's kubeconfig file is located in the `$HOME/.palette/validator` directory and is named `kind-cluster.kubeconfig`. Its location is displayed in the install output. You can use this kubeconfig file to access the kind cluster and view the CRs.
+The kind cluster's kubeconfig file is located in the `$HOME/.palette/validator` directory and is named
+`kind-cluster.kubeconfig`. Its location is displayed in the install output. You can use this kubeconfig file to access
+the kind cluster and view the CRs.
 
 Example: `/Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig`
 
 :::
 
-Below is example output of the CRs the Validator creates after a successful validation process. Two plugins were used in this example: the `aws` plugin and the `network` plugin.
+Below is example output of the CRs the Validator creates after a successful validation process. Two plugins were used in
+this example: the `aws` plugin and the `network` plugin.
 
 ```shell hideClipboard
 NAME                                             CREATED AT
@@ -114,7 +135,8 @@ validationresults.validation.spectrocloud.labs   2023-11-09T21:02:12Z
 validatorconfigs.validation.spectrocloud.labs    2023-11-09T21:02:12Z
 ```
 
-You can use the `kubectl` command to view the validation results. To review all the results collectively, use the `describe` command to display the `validationresults` CR.
+You can use the `kubectl` command to view the validation results. To review all the results collectively, use the
+`describe` command to display the `validationresults` CR.
 
 ```shell
 kubectl describe validationresults --namespace validator
@@ -200,9 +222,12 @@ Events:                    <none>
 
 #### Success
 
-The `State` field in the `Status` section of the `ValidationResult` CR indicates if the validation was successful or not. If the validation was successful, the `State` field is set to `Succeeded`.
+The `State` field in the `Status` section of the `ValidationResult` CR indicates if the validation was successful or
+not. If the validation was successful, the `State` field is set to `Succeeded`.
 
-In the example below, the `State` field is set to `Succeeded` for the `validator-plugin-aws-validator-plugin-aws` CR. This check was successful because the usage for all service quotas is below the specified buffer. The output is truncated for brevity.
+In the example below, the `State` field is set to `Succeeded` for the `validator-plugin-aws-validator-plugin-aws` CR.
+This check was successful because the usage for all service quotas is below the specified buffer. The output is
+truncated for brevity.
 
 ```yaml hideClipboard {12}
 Name:         validator-plugin-aws-validator-plugin-aws
@@ -221,7 +246,9 @@ Status:
 
 #### Fail
 
-If the validation is not successful, the `State` field is set to `Failed`. The `Conditions.Failures` section contains additional information about the failure. In this example, several IAM permissions are missing for the `SpectroCloudRole` IAM role. The output is truncated for brevity.
+If the validation is not successful, the `State` field is set to `Failed`. The `Conditions.Failures` section contains
+additional information about the failure. In this example, several IAM permissions are missing for the
+`SpectroCloudRole` IAM role. The output is truncated for brevity.
 
 ```yaml hideClipboard {6,8,12}
 Name:         validator-plugin-aws-aws-validator-spectro-cloud-base
@@ -238,11 +265,14 @@ Status:
   State:                   Failed
 ```
 
-Use the error output to help you address the failure. In this example, you would need to add the missing IAM permissions to the `SpectroCloudRole` IAM role. Other failures may require you to update your environment to meet the validation requirements.
+Use the error output to help you address the failure. In this example, you would need to add the missing IAM permissions
+to the `SpectroCloudRole` IAM role. Other failures may require you to update your environment to meet the validation
+requirements.
 
 #### Resolve Failures
 
-Each plugin may have its own set of failures. Resolving failures will depend on the plugin and the failure. Use the error output to help you address the failure. Below are some tips to help you resolve failures.
+Each plugin may have its own set of failures. Resolving failures will depend on the plugin and the failure. Use the
+error output to help you address the failure. Below are some tips to help you resolve failures.
 
 | **Plugin** | **Failure Scenario**              | **Guidance**                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -256,7 +286,9 @@ Each plugin may have its own set of failures. Resolving failures will depend on 
 | vSphere    | Missing tags                      | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags.                                                     |
 | vSphere    | Folder missing or not accessible  | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install.                                                                                                                                                                                             |
 
-Every 30 seconds, the Validator will continuously re-issue a validation and update the `ValidationResult` CR with the result of the validation. The validation results are hashed, and result events are only emitted if the result has changed. Once you resolve the failure, the Validator will update the `ValidationResult` CR with the new result.
+Every 30 seconds, the Validator will continuously re-issue a validation and update the `ValidationResult` CR with the
+result of the validation. The validation results are hashed, and result events are only emitted if the result has
+changed. Once you resolve the failure, the Validator will update the `ValidationResult` CR with the new result.
 
 Use the `kubectl describe` command to view the validation results.
 
@@ -266,7 +298,8 @@ kubectl describe validationresults --namespace validator
 
 ## Uninstall
 
-Use the `uninstall` subcommand to uninstall the Validator framework and remove all Validator plugins. To remove the Validator, you must specify the `--config-file` flag.
+Use the `uninstall` subcommand to uninstall the Validator framework and remove all Validator plugins. To remove the
+Validator, you must specify the `--config-file` flag.
 
 The `uninstall` subcommand accepts the following flags.
 

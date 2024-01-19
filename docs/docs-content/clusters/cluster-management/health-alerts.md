@@ -7,7 +7,12 @@ sidebar_position: 40
 tags: ["clusters", "cluster management"]
 ---
 
-Palette monitors the health of all Workload Clusters and raises an alert when the Cluster goes to an unhealthy state. Besides displaying the alert on the User Interface (UI) console, Palette provides the ability to have these alerts pushed out to a variety of channels. Users can set up simple email alerts to receive a notice when the Health Status of their cluster changes. Additionally, they can set up Webhooks to integrate alerts with a variety of IT Service Management (ITSM) tools such as ServiceNow, Slack, or Microsoft Teams. These alerts are set up at the Project level and apply to all Clusters within the Project.
+Palette monitors the health of all Workload Clusters and raises an alert when the Cluster goes to an unhealthy state.
+Besides displaying the alert on the User Interface (UI) console, Palette provides the ability to have these alerts
+pushed out to a variety of channels. Users can set up simple email alerts to receive a notice when the Health Status of
+their cluster changes. Additionally, they can set up Webhooks to integrate alerts with a variety of IT Service
+Management (ITSM) tools such as ServiceNow, Slack, or Microsoft Teams. These alerts are set up at the Project level and
+apply to all Clusters within the Project.
 
 The Palette Management Server relies on the following to trigger Cluster-health Alerts:
 
@@ -15,7 +20,9 @@ The Palette Management Server relies on the following to trigger Cluster-health 
 
 - Machines' info and heartbeat from the agent.
 
-  Management server has a timeout of 10 mins for heartbeat detection. An alert is triggered if agent heartbeat is not received within the fixed timeout. Cluster will be marked as "unhealthy" when the agent is down/paused for troubleshooting. This behavior is applicable for:
+  Management server has a timeout of 10 mins for heartbeat detection. An alert is triggered if agent heartbeat is not
+  received within the fixed timeout. Cluster will be marked as "unhealthy" when the agent is down/paused for
+  troubleshooting. This behavior is applicable for:
 
   - Both workload clusters and management cluster of public cloud.
   - Management clusters of on-premises, enterprise infrastructure.
@@ -28,7 +35,8 @@ The Palette Management Server relies on the following to trigger Cluster-health 
 
 3. Enable **ClusterHealth**.
 
-4. Select **Email all project members** option if the alert needs to be received by every Project Member or specify the email Ids of members who are supposed to receive the alerts.
+4. Select **Email all project members** option if the alert needs to be received by every Project Member or specify the
+   email Ids of members who are supposed to receive the alerts.
 
 5. Save the settings to start receiving the health alerts from your workload cluster.
 

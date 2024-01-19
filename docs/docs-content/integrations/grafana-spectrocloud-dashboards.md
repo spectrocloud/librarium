@@ -9,7 +9,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/spectrocloud-grafana-dashboards/b
 tags: ["packs", "spectrocloud-grafana-dashboards", "monitoring"]
 ---
 
-The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal cluster resource metrics. You can access the information exposed by the pack in Grafana by visiting the **Spectro Cloud / Spectro Clusters** dashboard. The following information is exposed by the Spectro Cloud Grafana Dashboards. <br /> <br />
+The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal cluster resource metrics. You can access the
+information exposed by the pack in Grafana by visiting the **Spectro Cloud / Spectro Clusters** dashboard. The following
+information is exposed by the Spectro Cloud Grafana Dashboards. <br /> <br />
 
 - Status of all cluster profile layers.
 
@@ -29,21 +31,27 @@ The Spectro Cloud Grafana Dashboards is an addon pack that exposes internal clus
 
 ## Prerequisites
 
-- A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) `v45.4.X` or greater installed. Check out [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) for instructions on how to deploy a monitoring stack.
+- A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) `v45.4.X` or greater installed. Check
+  out [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) for instructions on
+  how to deploy a monitoring stack.
 
-- A cluster profile with the [Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack `v3.4.X` or greater installed.
+- A cluster profile with the [Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack `v3.4.X` or greater
+  installed.
 
 ## Usage
 
-The Spectro Cloud Grafana Dashboards require no additional configuration and the pack is designed to work out-of-the-box.
+The Spectro Cloud Grafana Dashboards require no additional configuration and the pack is designed to work
+out-of-the-box.
 
-You can learn how to add the Spectro Cloud Grafana Dashboards to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
+You can learn how to add the Spectro Cloud Grafana Dashboards to your cluster by following the steps outlined in the
+[Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
 
 <br />
 
 :::warning
 
-Pods without the defined attributes `request` and `limit` will not display metrics data in the Grafana out-of-the-box Kubernetes Pods dashboard.
+Pods without the defined attributes `request` and `limit` will not display metrics data in the Grafana out-of-the-box
+Kubernetes Pods dashboard.
 
 :::
 

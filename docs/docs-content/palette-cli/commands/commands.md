@@ -7,7 +7,9 @@ sidebar_position: 10
 tags: ["palette-cli"]
 ---
 
-You start the Palette CLI with a single command, `palette`. The CLI accepts various subcommands such as `pde`, `help`, and more. The Palette CLI will return a non-zero exit status during error scenarios. You can use the CLI flags `-h` and `--help` to learn more about each subcommand.
+You start the Palette CLI with a single command, `palette`. The CLI accepts various subcommands such as `pde`, `help`,
+and more. The Palette CLI will return a non-zero exit status during error scenarios. You can use the CLI flags `-h` and
+`--help` to learn more about each subcommand.
 
 The following list contains all the supported Palette CLI subcommands. Click on a subcommand to learn more about it.
 
@@ -27,7 +29,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`project`](project.md) - Manage Palette Projects.
 
-- [`validator`](validator.md) - Deploy a kind cluster and install the Validator framework to validate your environment is ready for Palette.
+- [`validator`](validator.md) - Deploy a kind cluster and install the Validator framework to validate your environment
+  is ready for Palette.
 
 ## Global Flags
 

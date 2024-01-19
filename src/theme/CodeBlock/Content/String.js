@@ -32,9 +32,7 @@ export default function CodeBlockString({
   const {
     prism: { defaultLanguage, magicComments },
   } = useThemeConfig();
-  const language = normalizeLanguage(
-    languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage
-  );
+  const language = normalizeLanguage(languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage);
   const prismTheme = usePrismTheme();
   const wordWrap = useCodeWordWrap();
   // We still parse the metastring in case we want to support more syntax in the
@@ -68,12 +66,7 @@ export default function CodeBlockString({
               className={clsx(className, styles.codeBlock, "thin-scrollbar")}
               style={style}
             >
-              <code
-                className={clsx(
-                  styles.codeBlockLines,
-                  showLineNumbers && styles.codeBlockLinesWithNumbering
-                )}
-              >
+              <code className={clsx(styles.codeBlockLines, showLineNumbers && styles.codeBlockLinesWithNumbering)}>
                 {tokens.map((line, i) => (
                   <Line
                     key={i}

@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed9
 tags: ["packs", "dex", "security"]
 ---
 
-Dex is an identity service to drive authentication for Kubernetes API Server through the [OpenID Connect](https://openid.net/connect/) plugin. Clients such as kubectl can act on behalf of users who can log in to the cluster through any identity provider that dex supports.
+Dex is an identity service to drive authentication for Kubernetes API Server through the
+[OpenID Connect](https://openid.net/connect/) plugin. Clients such as kubectl can act on behalf of users who can log in
+to the cluster through any identity provider that dex supports.
 
 ## Versions Supported
 
@@ -54,7 +56,8 @@ Dex integration in Spectro Cloud will deploy the following components:
 - Dex.
 - Dex Client (dex-k8s-authenticator).
 
-The integration will create self-signed certificates, will cross-configure Dex, Dex Client components & will set appropriate flags on the Kubernetes API Server.
+The integration will create self-signed certificates, will cross-configure Dex, Dex Client components & will set
+appropriate flags on the Kubernetes API Server.
 
 ## Ingress
 
@@ -72,7 +75,8 @@ Follow below steps to configure Ingress on Dex Client
    - Enable Ingress; Change enabled from false to "true"
    - Set Ingress rules like annotations, path, hosts, etc.
 
-With these config changes, you can access Dex, Dex Client service(s) on the Ingress Controller LoadBalancer hostname / IP
+With these config changes, you can access Dex, Dex Client service(s) on the Ingress Controller LoadBalancer hostname /
+IP
 
 ## References
 

@@ -10,9 +10,14 @@ logoUrl: "https://registry.spectrocloud.com/v1/tetragon/blobs/sha256:4b14874658d
 tags: ["packs", "cilium-tetragon", "monitoring"]
 ---
 
-[Tetragon](https://github.com/cilium/tetragon) is an eBPF based security observability and runtime enforcement. eBPF is used to safely and efficiently extend the kernel's capabilities without requiring changing the kernel source code or loading kernel modules. Tetragon is a Cilium community open-source project that enables profound visibility with filtering and aggregation with the eBPF collector support to deliver visibility at depth with minimal overhead.
+[Tetragon](https://github.com/cilium/tetragon) is an eBPF based security observability and runtime enforcement. eBPF is
+used to safely and efficiently extend the kernel's capabilities without requiring changing the kernel source code or
+loading kernel modules. Tetragon is a Cilium community open-source project that enables profound visibility with
+filtering and aggregation with the eBPF collector support to deliver visibility at depth with minimal overhead.
 
-Palette supports Cilium Tetragon as an add-on pack for monitoring services. Refer to the [Create an Add-on Profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md) guide for more information on how to use an add-on pack.
+Palette supports Cilium Tetragon as an add-on pack for monitoring services. Refer to the
+[Create an Add-on Profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
+guide for more information on how to use an add-on pack.
 
 ## Versions Supported
 

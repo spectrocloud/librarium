@@ -1,6 +1,10 @@
 # Troubleshooting Layout
 
-All Spectro Cloud troubleshooting guides are expected to have the same look and feel. The troubleshooting text and voice must adhere to the Spectro Cloud [style guide](https://github.com/rahulhazra97/Documentation-Guide/wiki/Spectro-Cloud-Style-Guide) for a universal look and feel. The guide must also feel familiar to the reader. Therefore, all troubleshooting guides must follow the layout standard described on this page.
+All Spectro Cloud troubleshooting guides are expected to have the same look and feel. The troubleshooting text and voice
+must adhere to the Spectro Cloud
+[style guide](https://github.com/rahulhazra97/Documentation-Guide/wiki/Spectro-Cloud-Style-Guide) for a universal look
+and feel. The guide must also feel familiar to the reader. Therefore, all troubleshooting guides must follow the layout
+standard described on this page.
 
 # Table of Contents
 
@@ -10,7 +14,8 @@ All Spectro Cloud troubleshooting guides are expected to have the same look and 
 
 ## Markdown Layout
 
-The following is a high-level overview of the markdown structure that all troubleshooting guides must contain. Take note of the markdown heading sizes.
+The following is a high-level overview of the markdown structure that all troubleshooting guides must contain. Take note
+of the markdown heading sizes.
 
 ```
 # Scenario - <Insert Short Scenario Name>

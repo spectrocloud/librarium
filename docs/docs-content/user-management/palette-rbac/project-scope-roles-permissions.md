@@ -10,11 +10,15 @@ tags: ["user-management", "rbac"]
 
 # Global Project Scope
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with
+specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a resource or the API functionality, and _operation_ refers to the action or activity allowed.
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the
+Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a
+resource or the API functionality, and _operation_ refers to the action or activity allowed.
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option.
+To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the
+list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option.
 
 Below is the predefined list of Roles and Permissions for the Global Project Scope:
 
@@ -39,13 +43,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Deployment Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -72,13 +80,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Deployment Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -107,13 +119,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Deployment Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -156,13 +172,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Profile Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -180,13 +200,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Profile Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -206,13 +230,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Profile Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -247,13 +275,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -284,13 +316,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -323,13 +359,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -378,13 +418,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -404,13 +448,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -430,13 +478,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -477,13 +529,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -513,13 +569,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -549,13 +609,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -603,13 +667,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Account Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -626,13 +694,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Account Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -649,13 +721,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Account Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -688,13 +764,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Workspace Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -711,13 +791,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Workspace Operator
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -751,13 +835,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Virtual Cluster Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -778,13 +866,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Virtual Cluster Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -807,13 +899,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Virtual Cluster Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 

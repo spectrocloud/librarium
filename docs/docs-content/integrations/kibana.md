@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/elastic-fluentd-kibana/blobs/sha2
 tags: ["packs", "elastic-fluentd-kibana", "logging"]
 ---
 
-The logging integration installs a production-grade ElasticSearch cluster with Kibana and Fluentd by default on the Kubernetes cluster. This integration provides a rich set of logging features like forwarding, aggregating & parsing logs from the Kubernetes cluster.
+The logging integration installs a production-grade ElasticSearch cluster with Kibana and Fluentd by default on the
+Kubernetes cluster. This integration provides a rich set of logging features like forwarding, aggregating & parsing logs
+from the Kubernetes cluster.
 
 ## Contents
 

@@ -1,7 +1,9 @@
 ---
 sidebar_label: "Spectro Kubernetes Dashboard"
 title: "Spectro Kubernetes Dashboard"
-description: "Palette's pre-configured Kubernetes Dashboard Monitoring pack reduces the complexity of standing up the Kubernetes dashboard for a cluster."
+description:
+  "Palette's pre-configured Kubernetes Dashboard Monitoring pack reduces the complexity of standing up the Kubernetes
+  dashboard for a cluster."
 hide_table_of_contents: true
 type: "integration"
 category: ["monitoring", "arm64", "amd64"]
@@ -10,7 +12,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "spectro-k8s-dashboard", "monitoring"]
 ---
 
-Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using secure ports and conveniently includes the [Spectro Proxy](frp.md) pack.
+Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using
+secure ports and conveniently includes the [Spectro Proxy](frp.md) pack.
 
 ## Versions Supported
 
@@ -20,9 +23,12 @@ Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a _Role_ or a _ClusterRole_. You can create a custom role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the [Create a Role Binding](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a _Role_ or a _ClusterRole_. You can create a custom
+  role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the
+  [Create a Role Binding](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -53,7 +59,8 @@ These settings are also included in the manifest as `access` and `identityProvid
 
 ## Usage
 
-To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. Spectro Kubernetes Dashboard supports several public cloud and data center cloud environments. To learn more, refer to [Clusters](/clusters).
+To use the Spectro Kubernetes Dashboard pack, you have to add it to your cluster profile. Spectro Kubernetes Dashboard
+supports several public cloud and data center cloud environments. To learn more, refer to [Clusters](/clusters).
 
 Use the following information to find the Kubernetes Dashboard pack.
 
@@ -66,9 +73,13 @@ Spectro Kubernetes Dashboard has the following Access options.
 
 <br />
 
-- **Proxied**: This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured as ClusterIP and is only accessible through the proxy. To learn more, check out the [Spectro Proxy](frp.md) guide.
+- **Proxied**: This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro
+  Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured
+  as ClusterIP and is only accessible through the proxy. To learn more, check out the [Spectro Proxy](frp.md) guide.
 
-- **Direct**: This option is meant for a private configuration where a proxy is not implemented or not desired. The Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This option requires you to be on a network that can reach the IP address given to the LoadBalancer service.
+- **Direct**: This option is meant for a private configuration where a proxy is not implemented or not desired. The
+  Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This
+  option requires you to be on a network that can reach the IP address given to the LoadBalancer service.
 
 ## Terraform
 

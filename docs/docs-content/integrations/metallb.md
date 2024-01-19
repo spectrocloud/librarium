@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab
 tags: ["packs", "metallb", "network"]
 ---
 
-MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters that uses standard routing protocols. This integration is recommended for self-hosted clouds and helps external services obtain an IP address when the service type is set to LoadBalancer.
+MetalLB is a load-balancer implementation for bare metal [Kubernetes](https://kubernetes.io/) clusters that uses
+standard routing protocols. This integration is recommended for self-hosted clouds and helps external services obtain an
+IP address when the service type is set to LoadBalancer.
 
 MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonSet on all nodes.
 
@@ -22,19 +24,24 @@ MetalLB deploys a controller and a speaker. The speaker is deployed as a DaemonS
 
 ## Prerequisites
 
-- A Kubernetes cluster with Kubernetes version 1.13.0 or later that does not already have network load-balancing functionality.
+- A Kubernetes cluster with Kubernetes version 1.13.0 or later that does not already have network load-balancing
+  functionality.
 
-- A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation
+- A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official
+  Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation
 
 - Ensure sufficient IPv4 addresses for MetalLB are available for the number of services in each cluster.
 
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
 
-- When using the Layer 2 (L2) operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed.
+- When using the Layer 2 (L2) operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP)
+  traffic on port 7946 must be allowed between nodes, as required by the
+  [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed.
 
 ## Parameters
 
-The `addresses` parameter applies to the manifest-based MetalLB pack. You can provide multiple entries, but usually only one is needed.
+The `addresses` parameter applies to the manifest-based MetalLB pack. You can provide multiple entries, but usually only
+one is needed.
 
 | **Parameter** | **Description**                                                                                                        |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -42,13 +49,16 @@ The `addresses` parameter applies to the manifest-based MetalLB pack. You can pr
 
 ## Usage
 
-The _lb-metallb_ manifest-based pack supports direct configuration of an L2 IP address set. The _lb-metallb-helm_ Helm-based pack provides an L2 address pool.
+The _lb-metallb_ manifest-based pack supports direct configuration of an L2 IP address set. The _lb-metallb-helm_
+Helm-based pack provides an L2 address pool.
 
 <br />
 
 ### Manifest
 
-Manifest-based MetalLB supports direct configuration of an L2 IP address set. You can set either a range of addresses or use CIDR format, such as `192.168.250.48/29`. A more advanced MetalLB configuration, such as Border Gateway Protocol (BGP) routing requires you to write your own manifests and add them to the Palette cluster profile.
+Manifest-based MetalLB supports direct configuration of an L2 IP address set. You can set either a range of addresses or
+use CIDR format, such as `192.168.250.48/29`. A more advanced MetalLB configuration, such as Border Gateway Protocol
+(BGP) routing requires you to write your own manifests and add them to the Palette cluster profile.
 
 The example shows the syntax used to set an address range.
 
@@ -70,9 +80,12 @@ manifests:
 
 ### Helm Chart
 
-Helm-based MetalLB default gives you an L2 address pool by default. It has two sections, `charts:metallb-full:configuration` and `charts:metallb-full:metallb`, as shown in the following examples.
+Helm-based MetalLB default gives you an L2 address pool by default. It has two sections,
+`charts:metallb-full:configuration` and `charts:metallb-full:metallb`, as shown in the following examples.
 
-Use the `charts:metallb-full:configuration` parameter section to set resource types that MetalLB supports. The pack default gives you an L2 address pool. To set up a more advanced scenario, you can use the other resource types provided in the pack. The pack includes a commented-out example for each resource.
+Use the `charts:metallb-full:configuration` parameter section to set resource types that MetalLB supports. The pack
+default gives you an L2 address pool. To set up a more advanced scenario, you can use the other resource types provided
+in the pack. The pack includes a commented-out example for each resource.
 
 <br />
 
@@ -102,7 +115,9 @@ charts:
 
 <br />
 
-The `charts:metallb-full:metallb` parameter section provides access to all the options of the base chart that installs MetalLB. You don’t need to change anything unless you want to install MetalLB in Free Range Routing (FRR) mode. To use FRR mode, set the option to `true`, as the example shows.
+The `charts:metallb-full:metallb` parameter section provides access to all the options of the base chart that installs
+MetalLB. You don’t need to change anything unless you want to install MetalLB in Free Range Routing (FRR) mode. To use
+FRR mode, set the option to `true`, as the example shows.
 
 <br />
 
@@ -121,19 +136,24 @@ charts:
 
 ## Prerequisites
 
-- A Kubernetes cluster with Kubernetes version 1.13.0 or later that does not already have network load-balancing functionality.
+- A Kubernetes cluster with Kubernetes version 1.13.0 or later that does not already have network load-balancing
+  functionality.
 
-- A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation.
+- A cluster network configuration that does not conflict with MetalLB. For more information, refer to the official
+  Kubernetes [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking) documentation.
 
 - Ensure sufficient IPv4 addresses for MetalLB are available for the number of services in each cluster.
 
 - When using the Border Gateway Protocol (BGP), one or more BGP-capable routers are required.
 
-- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port 7946 must be allowed between nodes, as required by the [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed.
+- When using the L2 operating mode, Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) traffic on port
+  7946 must be allowed between nodes, as required by the
+  [HashiCorp memberlist](https://github.com/hashicorp/memberlist). You can configure other port as needed.
 
 ## Parameters
 
-The `addresses` parameter applies to the manifest-based MetalLB pack. You can provide multiple entries but only one is typically needed.
+The `addresses` parameter applies to the manifest-based MetalLB pack. You can provide multiple entries but only one is
+typically needed.
 
 | **Parameter** | **Description**                                                                                                        |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -141,7 +161,9 @@ The `addresses` parameter applies to the manifest-based MetalLB pack. You can pr
 
 ## Usage
 
-The _lb-metallb_ manifest-based pack supports direct configuration of an L2 IP address set. You can set either a range of addresses or use CIDR format, such as `192.168.250.48/29`. A more advanced MetalLB configuration, such as Border Gateway Protocol (BGP) routing requires you to write your own manifests and add them to the Palette cluster profile.
+The _lb-metallb_ manifest-based pack supports direct configuration of an L2 IP address set. You can set either a range
+of addresses or use CIDR format, such as `192.168.250.48/29`. A more advanced MetalLB configuration, such as Border
+Gateway Protocol (BGP) routing requires you to write your own manifests and add them to the Palette cluster profile.
 
 The example shows the syntax used to set an address range.
 
@@ -165,7 +187,8 @@ manifests:
 
 :::warning
 
-All versions of the manifest-based pack less than v0.9.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+All versions of the manifest-based pack less than v0.9.x are considered deprecated. Upgrade to a newer version to take
+advantage of new features.
 
 :::
 
@@ -176,9 +199,11 @@ All versions of the manifest-based pack less than v0.9.x are considered deprecat
 
 ## Troubleshooting
 
-If controller and speaker pods are not assigning new IP addresses that you provided in the MetalLB pack, it is likely pods in existing deployments do not have the latest configMap file.
+If controller and speaker pods are not assigning new IP addresses that you provided in the MetalLB pack, it is likely
+pods in existing deployments do not have the latest configMap file.
 
-IP addresses you specify in MetalLB pack values go into a configMap called `config` in the `metallb-system` namespace. The MetalLB controller and speakers use the configMap as a volume mount.
+IP addresses you specify in MetalLB pack values go into a configMap called `config` in the `metallb-system` namespace.
+The MetalLB controller and speakers use the configMap as a volume mount.
 
 Any changed IP addresses will get updated in the configMap. You can confirm this by issuing the following command.
 
@@ -189,13 +214,15 @@ kubectl describe cm config --namespace metallb-system
 ```
 
 <br />
-	
-Since the controller and speaker pods are using a previous copy of the configMap, existing deployments are unaware of the changes made to configMap.
+Since the controller and speaker pods are using a previous copy of the configMap, existing deployments are unaware of the
+changes made to configMap.
 
 <br />
 <br />
 
-To ensure updated addresses are reflected in the configMap, you need to restart the controller and speaker pods so they fetch the new configMap and start assigning new addresses correctly. Issue the commands below to restart the controller and speaker.
+To ensure updated addresses are reflected in the configMap, you need to restart the controller and speaker pods so they
+fetch the new configMap and start assigning new addresses correctly. Issue the commands below to restart the controller
+and speaker.
 
 <br />
 

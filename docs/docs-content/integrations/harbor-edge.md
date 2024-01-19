@@ -10,7 +10,11 @@ logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d4
 tags: ["packs", "harbor-edge-native-config", "system-app"]
 ---
 
-Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and all packs used by your cluster. After the initial download, the cluster can pull images from Harbor instead of an external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external network.
+Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install
+Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and
+all packs used by your cluster. After the initial download, the cluster can pull images from Harbor instead of an
+external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external
+network.
 
 :::preview
 
@@ -20,7 +24,9 @@ Harbor is an open-source registry that secures artifacts with policies and role-
 
 :::info
 
-The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile that includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on the cluster. You cannot manually choose a version of this pack.
+The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile that
+includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on the
+cluster. You cannot manually choose a version of this pack.
 
 :::
 
@@ -31,7 +37,8 @@ The Harbor Edge-Native Config pack is a system application pack. When you provis
 
 - All Edge devices in your cluster must have at least 4 CPUs and 8 GB of RAM.
 
-- At least 160 GB of persistent storage volume for the cluster. The actual volume required depends on the size of the images used by your cluster.
+- At least 160 GB of persistent storage volume for the cluster. The actual volume required depends on the size of the
+  images used by your cluster.
 
 - A Container Storage Interface (CSI) pack is required in your cluster profile.
 
@@ -39,7 +46,8 @@ The Harbor Edge-Native Config pack is a system application pack. When you provis
 
 :::tip
 
-You can use a macro to avoid providing credentials in plain text. For more information about macros, refer to [Macros guide](../clusters/cluster-management/macros.md).
+You can use a macro to avoid providing credentials in plain text. For more information about macros, refer to
+[Macros guide](../clusters/cluster-management/macros.md).
 
 :::
 
@@ -56,11 +64,17 @@ You can use a macro to avoid providing credentials in plain text. For more infor
 
 #### Enable Harbor to Protect Against Outage
 
-You can use Harbor in an Edge cluster that is connected to external networks. Harbor stores all container images downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. If your cluster experiences an internet outage, it can still reboot containers or add new nodes using images stored locally in Harbor. For more information, refer to [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
+You can use Harbor in an Edge cluster that is connected to external networks. Harbor stores all container images
+downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. If your
+cluster experiences an internet outage, it can still reboot containers or add new nodes using images stored locally in
+Harbor. For more information, refer to
+[Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
 
 #### Log in to Harbor Web UI
 
-With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service is accessible as a NodePort-type service with HTTPS enabled on port `30003`. You can use the following steps to log in to Harbor via the web UI.
+With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service is
+accessible as a NodePort-type service with HTTPS enabled on port `30003`. You can use the following steps to log in to
+Harbor via the web UI.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -68,26 +82,37 @@ With Harbor enabled on your Edge cluster, you can log in to Harbor via its web U
 
 3. Navigate to the **Nodes** tab, in the **Private Ips** column, you can find the IP addresses of your Edge hosts.
 
-4. Ensure you have network access to your Edge hosts. Open a new tab in your browser and navigate to `https://NODE_IP:30003` and replace `NODE_IP` with any IP address in your cluster. NodePort-type services are exposed on the same port on all nodes in your cluster. If you changed the HTTPS port in the configurations, replace the port with the HTTPS port you used.
+4. Ensure you have network access to your Edge hosts. Open a new tab in your browser and navigate to
+   `https://NODE_IP:30003` and replace `NODE_IP` with any IP address in your cluster. NodePort-type services are exposed
+   on the same port on all nodes in your cluster. If you changed the HTTPS port in the configurations, replace the port
+   with the HTTPS port you used.
 
-5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe connection. Dismiss the warning, and you will be directed to Harbor's web UI. If you use Google Chrome, you can click anywhere in your browser tab and type `this is unsafe` using your keyboard to dismiss the warning.
+5. If you didn't provide a certificate or used a self-signed certificate, your browser might warn you about an unsafe
+   connection. Dismiss the warning, and you will be directed to Harbor's web UI. If you use Google Chrome, you can click
+   anywhere in your browser tab and type `this is unsafe` using your keyboard to dismiss the warning.
 
-6. Type in `admin` as the username and your password to log in to Harbor. If you don't know your password, refer to [Retrieve Harbor Credentials](#retrieve-harbor-credentials) to retrieve your password.
+6. Type in `admin` as the username and your password to log in to Harbor. If you don't know your password, refer to
+   [Retrieve Harbor Credentials](#retrieve-harbor-credentials) to retrieve your password.
 
 #### Retrieve Harbor Credentials
 
-During cluster creation, Palette creates two secrets that store the password used to authenticate the `admin` user in Harbor and the X509 certificate used for TLS. You can access both of these credentials using the following steps:
+During cluster creation, Palette creates two secrets that store the password used to authenticate the `admin` user in
+Harbor and the X509 certificate used for TLS. You can access both of these credentials using the following steps:
 
-1. Configure kubectl to access your Kubernetes cluster. For more information, refer to [Access a Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+1. Configure kubectl to access your Kubernetes cluster. For more information, refer to
+   [Access a Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
 
 2. Depending on the credential you want to retrieve, use the commands described below.
 
 <Tabs>
 <TabItem value="password" label="Password">
 
-1. Issue the command `kubectl get namespaces` to get all namespaces. Look for a namespace called `cluster-CLUSTER-ID`, where `CLUSTER-ID` is a string of alphanumeric characters. This is the namespace where the secret for your Harbor password is stored.
+1. Issue the command `kubectl get namespaces` to get all namespaces. Look for a namespace called `cluster-CLUSTER-ID`,
+   where `CLUSTER-ID` is a string of alphanumeric characters. This is the namespace where the secret for your Harbor
+   password is stored.
 
-2. Issue the following command to get the password of your Harbor user. Replace `CLUSTER-ID-NAMESPACE` with the namespace you identified in the previous step. This command outputs your password.
+2. Issue the following command to get the password of your Harbor user. Replace `CLUSTER-ID-NAMESPACE` with the
+   namespace you identified in the previous step. This command outputs your password.
 
 ```shell
 kubectl get secret registry-info --namespace CLUSTER-ID-NAMESPACE --output jsonpath="{.data.SPECTRO_USER_PASSWORD}" | base64 --decode
@@ -120,7 +145,11 @@ You can use the following steps to push images to and pull images from the Harbo
 
 :::info
 
-If you didn't provide a certificate or are using a self-signed certificate, Docker will refuse to connect to the registry unless you configure Docker to trust the certificate authority or use a insecure connection for your Harbor registry. You can configure Docker to use a insecure connection by adding a line `"insecure-registries": ["REGISTRY_URL"]` in your Docker `daemon.json` file. For more information about `daemon.json`, refer to [Docker documentation](https://docs.docker.com/config/daemon/).
+If you didn't provide a certificate or are using a self-signed certificate, Docker will refuse to connect to the
+registry unless you configure Docker to trust the certificate authority or use a insecure connection for your Harbor
+registry. You can configure Docker to use a insecure connection by adding a line
+`"insecure-registries": ["REGISTRY_URL"]` in your Docker `daemon.json` file. For more information about `daemon.json`,
+refer to [Docker documentation](https://docs.docker.com/config/daemon/).
 
 :::
 
@@ -130,7 +159,10 @@ If you didn't provide a certificate or are using a self-signed certificate, Dock
 
 3. Navigate to the **Nodes** tab, in the **Private Ips** column, you can find the IP addresses of your Edge hosts.
 
-4. Ensure you have network access to your Edge hosts. Log in to Harbor from your command-line interface. The following example uses Docker, but you can use any other image management tool. Replace `NODE_IP` with the IP address of any of the nodes and replace `HARBOR_PASSWORD` with the password of your Harbor user. If you don't know your password, refer to [Retrieve Harbor Credentials](#retrieve-harbor-credentials).
+4. Ensure you have network access to your Edge hosts. Log in to Harbor from your command-line interface. The following
+   example uses Docker, but you can use any other image management tool. Replace `NODE_IP` with the IP address of any of
+   the nodes and replace `HARBOR_PASSWORD` with the password of your Harbor user. If you don't know your password, refer
+   to [Retrieve Harbor Credentials](#retrieve-harbor-credentials).
 
    ```shell
    docker login NODE_IP:30003 --user admin --password HARBOR_PASSWORD
@@ -181,9 +213,12 @@ docker push 10.10.137.220:30003/spectro-images/alpine:latest
 
 The following known issues exist in the Harbor 1.0.0 release.
 
-- The Harbor database pod might fail to start due to file permission issues. This is a [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.
+- The Harbor database pod might fail to start due to file permission issues. This is a
+  [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the
+  [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.
 
-- A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove the cluster and try again.
+- A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove
+  the cluster and try again.
 
 </TabItem>
 </Tabs>
@@ -192,7 +227,9 @@ The following known issues exist in the Harbor 1.0.0 release.
 
 ### Scenario - Harbor DB Pod Fails to Start
 
-When you start a cluster with the Harbor pack, the **harbor-database** pod might fail to start and get stuck on the **CrashLoopBackoff** state. It's possible that this is due to known issue with the Harbor pack related to file permissions. The workaround is to delete the pod and a new pod will be automatically created.
+When you start a cluster with the Harbor pack, the **harbor-database** pod might fail to start and get stuck on the
+**CrashLoopBackoff** state. It's possible that this is due to known issue with the Harbor pack related to file
+permissions. The workaround is to delete the pod and a new pod will be automatically created.
 
 #### Debug Steps
 
@@ -202,7 +239,8 @@ When you start a cluster with the Harbor pack, the **harbor-database** pod might
 kubectl get pods --namespace harbor --output wide
 ```
 
-2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are multiple pods, use the command for each pod.
+2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are
+   multiple pods, use the command for each pod.
 
 ```shell
 kubectl delete pod POD_NAME --namespace harbor

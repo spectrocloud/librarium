@@ -12,11 +12,18 @@ logoUrl: "https://icon-library.com/images/padlock-icon-png/padlock-icon-png-29.j
 
 # Vault
 
-Palette Dev Engine (PDE) users can deploy Vault onto their virtual cluster using the out-of-the-box Vault offering. Vault deployed through PDE is using Banzai Cloud Bank-Vaults. Bank-Vaults is a wrapper for the official [Vault](https://www.vaultproject.io/) client. Vault is a tool that helps you securely manage and protect sensitive information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault client by adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider.
+Palette Dev Engine (PDE) users can deploy Vault onto their virtual cluster using the out-of-the-box Vault offering.
+Vault deployed through PDE is using Banzai Cloud Bank-Vaults. Bank-Vaults is a wrapper for the official
+[Vault](https://www.vaultproject.io/) client. Vault is a tool that helps you securely manage and protect sensitive
+information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault client by
+adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider.
 
-Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them. Vault also tracks who has accessed which secrets and when, making it easier to maintain security. You can use Vault to govern access to secrets, automate application delivery, and consume secrets programmatically.
+Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them.
+Vault also tracks who has accessed which secrets and when, making it easier to maintain security. You can use Vault to
+govern access to secrets, automate application delivery, and consume secrets programmatically.
 
-Vault is deployed behind the scenes through the use of the [Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator).
+Vault is deployed behind the scenes through the use of the
+[Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator).
 
 <br />
 
@@ -50,7 +57,9 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 
 2. Click on the **User Menu** at top right, and select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new
+   [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic
+   information and click **Next**.
 
 | Parameter                | Description                                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
@@ -64,11 +73,14 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 5. Provide the following information to the wizard:
 
 - **Name:** The application name.
-- **PersistentVolumeClaim Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster.
+- **PersistentVolumeClaim Size (GiB):** Select the volume as per the storage volume available in the cluster group and
+  virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster.
 
 6. Save your changes.
 
-7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
+7. Deploy the app profile to a Palette Virtual Cluster. Use the
+   [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md) guide for additional
+   guidance or check out the [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
 
 ## Validate
 
@@ -86,7 +98,8 @@ You can validate the Vault instance deployed successfully by using the following
 
 6. Click the URL to download the **kubeconfig**.
 
-7. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
+7. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the
+   [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
 
 8. Export the following environment variables to prepare your environment to interact with Vault.
 
@@ -102,7 +115,8 @@ You can validate the Vault instance deployed successfully by using the following
    export VAULT_SKIP_VERIFY=true
    ```
 
-9. Configure port forwarding between your local workstation and the pod hosting Vault. Use the following commands to configure the port forward.
+9. Configure port forwarding between your local workstation and the pod hosting Vault. Use the following commands to
+   configure the port forward.
 
    <br />
 
@@ -117,7 +131,8 @@ You can validate the Vault instance deployed successfully by using the following
    kubectl port-forward $(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.name}') 8200:8200 --namespace $VAULT_NAMESPACE
    ```
 
-10. Open your browser and visit [https://localhost:8200/ui](https://localhost:8200/ui) to access the Vault UI. You will receive a warning due to the usage of a self-signed certificate but you can ignore this warning.
+10. Open your browser and visit [https://localhost:8200/ui](https://localhost:8200/ui) to access the Vault UI. You will
+    receive a warning due to the usage of a self-signed certificate but you can ignore this warning.
 
 To acquire the Vault root token, review the [Vault Credentials](#vault-credentials) section.
 
@@ -134,7 +149,8 @@ The exposed output variables. Use these variables when connecting higher-level s
 
 # Vault Credentials
 
-The Vault root token and the unseal keys are stored as a Kubernetes secret inside the virtual cluster. You can retrieve the Vault root token by following these steps. <br /> <br />
+The Vault root token and the unseal keys are stored as a Kubernetes secret inside the virtual cluster. You can retrieve
+the Vault root token by following these steps. <br /> <br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
@@ -144,7 +160,8 @@ The Vault root token and the unseal keys are stored as a Kubernetes secret insid
 
 4. Download the cluster **kubeconfig** file.
 
-5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
+5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the
+   [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
 
 6. You need to get the Vault namespace and application name. Issue the following command to get the unique values.
 
@@ -174,7 +191,9 @@ The Vault root token and the unseal keys are stored as a Kubernetes secret insid
 
 # Next Steps
 
-You can add Vault to your application profile and start integrating Vault with your applications. To learn more about integrating Vault with your applications, check out the [Vault App Integrations](https://developer.hashicorp.com/vault/tutorials/app-integration) tutorials from HashiCorp.
+You can add Vault to your application profile and start integrating Vault with your applications. To learn more about
+integrating Vault with your applications, check out the
+[Vault App Integrations](https://developer.hashicorp.com/vault/tutorials/app-integration) tutorials from HashiCorp.
 
 # Resources
 

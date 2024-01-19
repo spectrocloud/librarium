@@ -1,12 +1,17 @@
 # Tutorial Layout
 
-To create an impactful tutorial guide, you must create a tutorial plan and obtain stakeholder approval for alignment. Adhere to the [Tutorial Plan](#tutorial-plan) section, and the [Tutorial Layout](#tutorial-layout) section to deliver accurate, user-friendly, and impactful tutorials consistently.
+To create an impactful tutorial guide, you must create a tutorial plan and obtain stakeholder approval for alignment.
+Adhere to the [Tutorial Plan](#tutorial-plan) section, and the [Tutorial Layout](#tutorial-layout) section to deliver
+accurate, user-friendly, and impactful tutorials consistently.
 
 ## [Tutorial Plan Template](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Plan-Template)
 
-All tutorials require a tutorial plan document with stakeholder signoff before authoring. Writing the plan out prevents incorrect deliverables and reduces the chance of time spent inefficiently. The tutorial plan process will help you create a much higher-quality tutorial.
+All tutorials require a tutorial plan document with stakeholder signoff before authoring. Writing the plan out prevents
+incorrect deliverables and reduces the chance of time spent inefficiently. The tutorial plan process will help you
+create a much higher-quality tutorial.
 
-Find the tutorial plan template from the [Tutorial Plan Template](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Plan-Template) page.
+Find the tutorial plan template from the
+[Tutorial Plan Template](https://github.com/rahulhazra97/Documentation-Guide/wiki/Tutorial-Plan-Template) page.
 
 Reach out to us at spectro-docs@spectrocloud.com, to propose a tutorial plan template.
 
@@ -20,11 +25,15 @@ Reach out to us at spectro-docs@spectrocloud.com, to propose a tutorial plan tem
 
 ## Tutorial Layout
 
-All Spectro Cloud tutorials are expected to have the same look and feel. The tutorial text and voice must adhere to the Spectro Cloud [style guide](https://github.com/rahulhazra97/Documentation-Guide/wiki/Spectro-Cloud-Style-Guide) for a universal look and feel. The tutorial layout must also feel familiar to the reader, therefore, all tutorials must follow the layout standard described on this page.
+All Spectro Cloud tutorials are expected to have the same look and feel. The tutorial text and voice must adhere to the
+Spectro Cloud [style guide](https://github.com/rahulhazra97/Documentation-Guide/wiki/Spectro-Cloud-Style-Guide) for a
+universal look and feel. The tutorial layout must also feel familiar to the reader, therefore, all tutorials must follow
+the layout standard described on this page.
 
 ## Markdown Layout
 
-The following is a high-level overview of the markdown structure that all tutorials should contain. Make a note of the markdown heading sizes.
+The following is a high-level overview of the markdown structure that all tutorials should contain. Make a note of the
+markdown heading sizes.
 
 ```
 # Title

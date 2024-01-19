@@ -7,11 +7,13 @@ tags: ["public cloud", "tencent", "tke"]
 sidebar_position: 40
 ---
 
-Palette supports the deployment of tenant workloads with Tencent Kubernetes Engine (TKE). The following are the detailing of the Tencent TKE cluster provisioning through Palette:
+Palette supports the deployment of tenant workloads with Tencent Kubernetes Engine (TKE). The following are the
+detailing of the Tencent TKE cluster provisioning through Palette:
 
 1. Palette enables the effortless deployment and management of containerized applications with fully managed TKE.
 
-2. TKE is fully compatible with the native Kubernetes APIs and extends Kubernetes plugins such as CBS and CLB on the Tencent Cloud.
+2. TKE is fully compatible with the native Kubernetes APIs and extends Kubernetes plugins such as CBS and CLB on the
+   Tencent Cloud.
 
 3. The Palette-supported TKE architecture is represented diagrammatically as below:
 
@@ -25,11 +27,14 @@ Palette supports the deployment of tenant workloads with Tencent Kubernetes Engi
 
 - Create the **Virtual Private Network** and **Subnet** to the region where the workload cluster needs to be deployed.
 
-- The [**NAT Gateway**](https://intl.cloud.tencent.com/document/product/457/38369) is to be created to support IP address translation and to enable Internet access to resources in Tencent Cloud.
+- The [**NAT Gateway**](https://intl.cloud.tencent.com/document/product/457/38369) is to be created to support IP
+  address translation and to enable Internet access to resources in Tencent Cloud.
 
-- A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have internet capability.
+- A Route table set to accept external traffic, so that the nodes getting created in the associated subnets will have
+  internet capability.
 
-- Create a security group for network security isolation and add Inbound traffic rule that allows the TCP/HTTPS protocol for port 443 from all IPv6 and IPv4 sources through this security group.
+- Create a security group for network security isolation and add Inbound traffic rule that allows the TCP/HTTPS protocol
+  for port 443 from all IPv6 and IPv4 sources through this security group.
 
 ## Tencent Cloud Account Permissions
 
@@ -149,7 +154,8 @@ Create a Tencent Cloud account in Palette from the Tenant Admin or Project Admin
 
 4. Click **Confirm** button to complete the cloud account create wizard.
 
-**Note**: The cloud account can be created during the first step of cluster creation when you fill in the basic information by clicking the **+** next to **Cloud Account**.
+**Note**: The cloud account can be created during the first step of cluster creation when you fill in the basic
+information by clicking the **+** next to **Cloud Account**.
 
 ## Deploy a Tencent Cluster
 
@@ -157,15 +163,20 @@ The following steps need to be performed to provision a new TKS cluster:
 
 1. Provide the basic cluster information such as:
 
-   - **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud or data center environments.
-   - Select the desired [Tencent cloud account](#create-a-tencent-cloud-account). The Tencent credentials must be pre-configured in the Project/Tenant Admin settings.
+   - **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud or data
+     center environments.
+   - Select the desired [Tencent cloud account](#create-a-tencent-cloud-account). The Tencent credentials must be
+     pre-configured in the Project/Tenant Admin settings.
 
-   **Note**: The cloud account can be created during the cluster creation by clicking **+** next to the **Cloud Account**.
-   <br />
+   **Note**: The cloud account can be created during the cluster creation by clicking **+** next to the **Cloud
+   Account**. <br />
 
-2. Select the cluster profile created for Tencent Cloud. The profile definition will be used as the cluster deployment template.
+2. Select the cluster profile created for Tencent Cloud. The profile definition will be used as the cluster deployment
+   template.
 
-3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in the cluster profile. While configuring the Operating System layer of the TKE cluster profile, configure the value of the OS pack file with any one of the following images:
+3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in
+   the cluster profile. While configuring the Operating System layer of the TKE cluster profile, configure the value of
+   the OS pack file with any one of the following images:
 
    ```yaml
    "OsName": "centos7.6.0_x64"
@@ -185,7 +196,8 @@ The following steps need to be performed to provision a new TKS cluster:
 
    :::warning
 
-   While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in multiples of 10.
+   While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in
+   multiples of 10.
 
    Example:
 
@@ -215,21 +227,26 @@ The following steps need to be performed to provision a new TKS cluster:
 
    :::info
 
-   Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported in the near future.
-   
+   Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported
+   in the near future.
+
    :::
 
 5. Public Access CIDRs - To enable access restrictions.
 
 6. Update Worker Pools in parallel - Patch updates to all Worker Pools simultaneously.
 
-7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the configuration options, review the [Node Pool](../cluster-management/node-pool.md) documentation page. Click on **Next** when you are done with node pool configurations.
+7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the
+   configuration options, review the [Node Pool](../cluster-management/node-pool.md) documentation page. Click on
+   **Next** when you are done with node pool configurations.
 
-8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available to track progress.
+8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
+   to track progress.
 
 # Delete a Tencent Cluster
 
-The deletion of a Tencent cluster results in the removal of all Virtual Machines and associated Storage Disks created for the cluster. The following tasks need to be performed to delete a Tencent cluster:
+The deletion of a Tencent cluster results in the removal of all Virtual Machines and associated Storage Disks created
+for the cluster. The following tasks need to be performed to delete a Tencent cluster:
 
 1. Ensure you are in the correct project scope.
 
@@ -243,19 +260,23 @@ The deletion of a Tencent cluster results in the removal of all Virtual Machines
 
 6. Type in the name of the cluster and click on **OK**
 
-The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
+The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are
+successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
 
 ## Force Delete a Cluster
 
-In Tenant Admin and Project Admin scope, Palette allows you to force the deletion of a cluster that's been stuck in **Deletion** state for a minimum of **15 minutes**.
+In Tenant Admin and Project Admin scope, Palette allows you to force the deletion of a cluster that's been stuck in
+**Deletion** state for a minimum of **15 minutes**.
 
 1. Log in to the Palette Management Console.
 
 2. Navigate to the **Cluster Details** page of the cluster stuck in deletion.
 
-   - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings** dropdown.
+   - If the deletion is stuck for more than 15 minutes, click the **Force Delete Cluster** button from the **Settings**
+     dropdown.
 
-   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the estimated time for the auto-enabling of the **Force Delete** button.
+   - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the
+     estimated time for the auto-enabling of the **Force Delete** button.
 
    :::warning
 

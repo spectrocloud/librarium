@@ -10,7 +10,10 @@ logoUrl: "https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:
 tags: ["packs", "prometheus-cluster-metrics", "monitoring"]
 ---
 
-The Prometheus Cluster Metrics pack exposes Palette-specific host cluster metrics to Prometheus. You can use this data to learn about the state of your clusters, resource utilization, and more. Use the [Spectro Cloud Grafana Dashboards](grafana-spectrocloud-dashboards.md) pack to access the metric data through Grafana dashboards.
+The Prometheus Cluster Metrics pack exposes Palette-specific host cluster metrics to Prometheus. You can use this data
+to learn about the state of your clusters, resource utilization, and more. Use the
+[Spectro Cloud Grafana Dashboards](grafana-spectrocloud-dashboards.md) pack to access the metric data through Grafana
+dashboards.
 
 ## Versions Supported
 
@@ -18,7 +21,9 @@ The Prometheus Cluster Metrics pack exposes Palette-specific host cluster metric
 
 ## Prerequisites
 
-- A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) `v45.4.X` or greater installed. Check out the [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) for instructions on how to deploy a monitoring stack.
+- A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) `v45.4.X` or greater installed. Check
+  out the [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) for instructions
+  on how to deploy a monitoring stack.
 
 - A cluster profile with the [Prometheus Agent](prometheus-agent.md) pack `v19.0.X` or greater installed.
 
@@ -26,9 +31,11 @@ The Prometheus Cluster Metrics pack exposes Palette-specific host cluster metric
 
 The Prometheus Cluster Metrics requires no additional configuration and is designed to work out-of-the-box.
 
-You can learn how to add the Prometheus Cluster Metrics to your cluster by following the steps outlined in the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
+You can learn how to add the Prometheus Cluster Metrics to your cluster by following the steps outlined in the
+[Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md).
 
-Use the [Spectro Cloud Grafana Dashboards](grafana-spectrocloud-dashboards.md) pack to access the metric data through Grafana dashboards.
+Use the [Spectro Cloud Grafana Dashboards](grafana-spectrocloud-dashboards.md) pack to access the metric data through
+Grafana dashboards.
 
 ## Terraform
 

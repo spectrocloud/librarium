@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubevirt/blobs/sha256:185e7a7658c
 tags: ["packs", "kubevirt", "system app"]
 ---
 
-KubeVirt is a virtual machine management add-on for Kubernetes clusters. Create predefine virtual machines using KubeVirt, and Palette will provision KubeVirt as an Add-on Pack to manage the VM resources within the orchestrator.
+KubeVirt is a virtual machine management add-on for Kubernetes clusters. Create predefine virtual machines using
+KubeVirt, and Palette will provision KubeVirt as an Add-on Pack to manage the VM resources within the orchestrator.
 
 <br />
 

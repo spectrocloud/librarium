@@ -7,9 +7,13 @@ sidebar_position: 20
 tags: ["palette-cli"]
 ---
 
-The `login` command authenticates the Palette CLI with Palette. The `login` command can be used in interactive mode, which prompts you for required values. Or, you can use flags to provide the command with all the required values such as the API key, the organization ID, and the Palette URL.
+The `login` command authenticates the Palette CLI with Palette. The `login` command can be used in interactive mode,
+which prompts you for required values. Or, you can use flags to provide the command with all the required values such as
+the API key, the organization ID, and the Palette URL.
 
-  <br />
+{" "}
+
+<br />
 
 | **Flag**                | **Description**                                                                                                            | **Type** |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -42,7 +46,10 @@ palette login  \
  --project dev-team
 ```
 
-Upon successful login, a local configuration file named **palette.yaml** is created. This file contains the metadata for CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an example of a **palette.yaml** configuration file. Sensitive values, such as passwords, tokens, and API keys are encrypted at rest.
+Upon successful login, a local configuration file named **palette.yaml** is created. This file contains the metadata for
+CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an
+example of a **palette.yaml** configuration file. Sensitive values, such as passwords, tokens, and API keys are
+encrypted at rest.
 
 <br />
 

@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9a
 tags: ["packs", "portworx", "storage"]
 ---
 
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers via container orchestrators such as Kubernetes. You can include Portworx in your Kubernetes cluster by using the Portworx Operator pack.
+[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for
+applications deployed as containers via container orchestrators such as Kubernetes. You can include Portworx in your
+Kubernetes cluster by using the Portworx Operator pack.
 
 ## Versions Supported
 
@@ -19,11 +21,13 @@ tags: ["packs", "portworx", "storage"]
 
 ## Prerequisites
 
-Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
+Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx
+requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
 
 - The Kubernetes cluster must have at least three nodes of the type bare metal or virtual machine.
 
-- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block storage.
+- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block
+  storage.
 
 - The backing drive must be at least 8 GB in size.
 
@@ -49,19 +53,23 @@ Portworx Operator has the following prerequisites for installation. You can lear
 
 * Docker version 1.13.1 or higher is required.
 
-- Ensure you use a [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
+- Ensure you use a
+  [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
 
 - Identify and set up the type of storage you want to use.
 
 :::warning
 
-Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides monitoring capabilities.
+Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can
+install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides
+monitoring capabilities.
 
 :::
 
 ## Parameters
 
-The following parameters are highlighted for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
+The following parameters are highlighted for this version of the pack and provide a preset option when configured
+through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
 
 | Parameter                              | Description                                                                                                                                                                                                               | Default      |
 | :------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------- |
@@ -81,7 +89,8 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 - `StorageClass` resource for dynamic provisioning of `PersistentVolumes`` using the `pxd.portworx.com` provisioner.
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html). Portworx's storage scheduler for Kubernetes.
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html).
+  Portworx's storage scheduler for Kubernetes.
 
 <!-- Optionally for Portworx 2.x, you can enable Lighthouse for basic monitoring of the Portworx cluster. -->
 
@@ -91,13 +100,19 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 This pack can install Portworx in three different licensing modes:
 
-- **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully featured Portworx Enterprise version of Portworx.
+- **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or
+  proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as
+  the fully featured Portworx Enterprise version of Portworx.
 
-- **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
+- **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will
+  automatically enter a 30-day trial mode.
 
-- **Enterprise SaaS PAYG**: the fully featured version of Portworx but using a SaaS license key that allows unlimited use and in-arrears billing. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
+- **Enterprise SaaS PAYG**: the fully featured version of Portworx but using a SaaS license key that allows unlimited
+  use and in-arrears billing. If you install this model without a valid key, Portworx will automatically enter a 30-day
+  trial mode.
 
-Use the presets in the pack user interface to select which license model you want to use, then update the `charts.portworx-generic.license` section for your chosen license model.
+Use the presets in the pack user interface to select which license model you want to use, then update the
+`charts.portworx-generic.license` section for your chosen license model.
 
 <br />
 
@@ -152,25 +167,33 @@ license:
 
 You can install Portworx in a variety of storage configurations.
 
-- **Existing disks (generic)**: This mode does not integrate with any particular storage solution, it uses existing disks available on the nodes.
+- **Existing disks (generic)**: This mode does not integrate with any particular storage solution, it uses existing
+  disks available on the nodes.
 
-- **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
+- **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes
+  clusters to dynamically attach EBS volumes to worker nodes for Portworx.
 
-- **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+- **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure
+  Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
 
-- **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+- **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google
+  Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
 
-- **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+- **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on
+  vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
 
-- **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+- **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to
+  dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
 
 :::tip
 
-Use the presets in the pack user interface to select which storage specification you want to use, then update the `charts.portworx-generic.storageCluster` section to your specific needs.
+Use the presets in the pack user interface to select which storage specification you want to use, then update the
+`charts.portworx-generic.storageCluster` section to your specific needs.
 
 :::
 
-Select the tab below for the storage specification you want to use. Use the example YAML as a starting point for your configuration.
+Select the tab below for the storage specification you want to use. Use the example YAML as a starting point for your
+configuration.
 
 <br />
 
@@ -224,8 +247,8 @@ storageCluster:
 </TabItem>
 <TabItem label="AWS" value="AWS">
 
-To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role.
-<br/>
+To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the
+`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. <br/>
 
 ```yaml
 {
@@ -257,9 +280,14 @@ To deploy Portworx in an AWS environment, ensure the following IAM policy is cre
 }
 ```
 
-- When deploying a regular Kubernetes cluster on an AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. Or alternatively, edit the AWS cloud account in Palette, enable the `Add IAM Policies` option, and select the Portworx IAM policy described above. This will automatically attach the IAM policy to the correct IAM role..
+- When deploying a regular Kubernetes cluster on an AWS EC2 using Palette, attach the policy to the
+  `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. Or alternatively, edit the AWS cloud account in Palette, enable
+  the `Add IAM Policies` option, and select the Portworx IAM policy described above. This will automatically attach the
+  IAM policy to the correct IAM role..
 
-- When deploying an AWS EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the Kubernetes pack layer YAML to automatically attach the Portworx IAM policy to the EKS worker pool IAM role . The example below shows how to attach the Portworx IAM policy to the EKS worker pool IAM role.
+- When deploying an AWS EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the Kubernetes pack
+  layer YAML to automatically attach the Portworx IAM policy to the EKS worker pool IAM role . The example below shows
+  how to attach the Portworx IAM policy to the EKS worker pool IAM role.
 
 ```yaml
 managedMachinePool:
@@ -501,7 +529,11 @@ vsphereSecret:
 </TabItem>
 <TabItem label="Pure Flash Array" value="Pure Flash Array">
 
-To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your cluster containing your [Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx). The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `portworx` by default.
+To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
+cluster containing your
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `portworx` by
+default.
 
 Use the following command to create the secret:
 
@@ -575,7 +607,8 @@ Portworx Enterprise supports multiple etcd scenarios. Portworx will default to a
 
 The following pack presets are available for configuring etcd.
 
-The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external etcd server.
+The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an
+external etcd server.
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
@@ -631,13 +664,21 @@ externalKvdb:
 
 Use the following steps to integrate Portworx to an external etcd server by following the steps below.
 
-1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
+1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right
+   corner of the pack user interface.
 
-2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
+2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external
+   etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
 
-3. Configure the external etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
+3. Configure the external etcd endpoints in the YAML parameter block named
+   `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
-4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
+4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the
+   `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true`
+   to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of
+   `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with
+   your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its
+   default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
 :::warning
 
@@ -653,11 +694,13 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 ## Prerequisites
 
-Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
+Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx
+requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
 
 - The Kubernetes cluster must have at least three nodes of the type bare metal or virtual machine.
 
-- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block storage.
+- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block
+  storage.
 
 - The backing drive must be at least 8 GB in size.
 
@@ -683,19 +726,23 @@ Portworx Operator has the following prerequisites for installation. You can lear
 
 * Docker version 1.13.1 or higher is required.
 
-- Ensure you use a [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
+- Ensure you use a
+  [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
 
 - Identify and set up the type of storage you want to use.
 
 :::warning
 
-Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides monitoring capabilities.
+Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can
+install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides
+monitoring capabilities.
 
 :::
 
 ## Parameters
 
-The following parameters are highlighted for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
+The following parameters are highlighted for this version of the pack and provide a preset option when configured
+through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
 
 | Parameter                              | Description                                                                                                                                                                                                           | Default      |
 | :------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
@@ -715,9 +762,11 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 - `StorageClass` resource for dynamic provisioning of `PersistentVolumes`` using the `pxd.portworx.com` provisioner.
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html). Portworx's storage scheduler for Kubernetes.
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html).
+  Portworx's storage scheduler for Kubernetes.
 
-- [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/). Portworx's monitoring and alerting solution for Kubernetes.
+- [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/). Portworx's monitoring and alerting
+  solution for Kubernetes.
 
 <br />
 
@@ -725,13 +774,19 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 This pack can install Portworx in three different licensing modes:
 
-- **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully featured Portworx Enterprise version of Portworx.
+- **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or
+  proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as
+  the fully featured Portworx Enterprise version of Portworx.
 
-- **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
+- **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will
+  automatically enter a 30-day trial mode.
 
-- **Enterprise SaaS PAYG**: the fully featured version of Portworx but using a SaaS license key that allows unlimited use and in-arrears billing. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
+- **Enterprise SaaS PAYG**: the fully featured version of Portworx but using a SaaS license key that allows unlimited
+  use and in-arrears billing. If you install this model without a valid key, Portworx will automatically enter a 30-day
+  trial mode.
 
-Use the presets in the pack user interface to select which license model you want to use, then update the `charts.portworx-generic.license` section for your chosen license model.
+Use the presets in the pack user interface to select which license model you want to use, then update the
+`charts.portworx-generic.license` section for your chosen license model.
 
 <br />
 
@@ -786,25 +841,33 @@ license:
 
 You can install Portworx in a variety of storage configurations.
 
-- **Existing disks (generic)**: This mode does not integrate with any particular storage solution, it uses existing disks available on the nodes.
+- **Existing disks (generic)**: This mode does not integrate with any particular storage solution, it uses existing
+  disks available on the nodes.
 
-- **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
+- **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes
+  clusters to dynamically attach EBS volumes to worker nodes for Portworx.
 
-- **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+- **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure
+  Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
 
-- **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+- **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google
+  Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
 
-- **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+- **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on
+  vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
 
-- **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+- **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to
+  dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
 
 :::tip
 
-Use the presets in the pack user interface to select which storage specification you want to use, then update the `charts.portworx-generic.storageCluster` section to your specific needs.
+Use the presets in the pack user interface to select which storage specification you want to use, then update the
+`charts.portworx-generic.storageCluster` section to your specific needs.
 
 :::
 
-Select the tab below for the storage specification you want to use. Use the example YAML as a starting point for your configuration.
+Select the tab below for the storage specification you want to use. Use the example YAML as a starting point for your
+configuration.
 
 <br />
 
@@ -843,8 +906,8 @@ storageCluster:
 </TabItem>
 <TabItem label="AWS" value="AWS">
 
-To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role.
-<br/>
+To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the
+`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. <br/>
 
 ```yaml
 {
@@ -876,9 +939,14 @@ To deploy Portworx in an AWS environment, ensure the following IAM policy is cre
 }
 ```
 
-- When deploying a regular Kubernetes cluster on an AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. Or alternatively, edit the AWS cloud account in Palette, enable the `Add IAM Policies` option, and select the Portworx IAM policy described above. This will automatically attach the IAM policy to the correct IAM role..
+- When deploying a regular Kubernetes cluster on an AWS EC2 using Palette, attach the policy to the
+  `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. Or alternatively, edit the AWS cloud account in Palette, enable
+  the `Add IAM Policies` option, and select the Portworx IAM policy described above. This will automatically attach the
+  IAM policy to the correct IAM role..
 
-- When deploying an AWS EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the Kubernetes pack layer YAML to automatically attach the Portworx IAM policy to the EKS worker pool IAM role . The example below shows how to attach the Portworx IAM policy to the EKS worker pool IAM role.
+- When deploying an AWS EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the Kubernetes pack
+  layer YAML to automatically attach the Portworx IAM policy to the EKS worker pool IAM role . The example below shows
+  how to attach the Portworx IAM policy to the EKS worker pool IAM role.
 
 ```yaml
 managedMachinePool:
@@ -1068,7 +1136,11 @@ vsphereSecret:
 </TabItem>
 <TabItem label="Pure Flash Array" value="Pure Flash Array">
 
-To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your cluster containing your [Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx). The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system` by default.
+To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
+cluster containing your
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system`
+by default.
 
 Use the following command to create the secret:
 
@@ -1124,7 +1196,8 @@ Portworx Enterprise supports multiple etcd scenarios. Portworx will default to a
 
 The following pack presets are available for configuring etcd.
 
-The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external etcd server.
+The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an
+external etcd server.
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
@@ -1180,13 +1253,21 @@ externalKvdb:
 
 Use the following steps to integrate Portworx to an external etcd server by following the steps below.
 
-1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
+1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right
+   corner of the pack user interface.
 
-2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
+2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external
+   etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
 
-3. Configure the external etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
+3. Configure the external etcd endpoints in the YAML parameter block named
+   `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
-4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
+4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the
+   `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true`
+   to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of
+   `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with
+   your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its
+   default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
 :::warning
 
@@ -1202,11 +1283,13 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 ## Prerequisites
 
-Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
+Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx
+requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
 
 - The Kubernetes cluster must have at least three nodes of the type bare metal or virtual machine.
 
-- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block storage.
+- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block
+  storage.
 
 - The backing drive must be at least 8 GB in size.
 
@@ -1232,19 +1315,23 @@ Portworx Operator has the following prerequisites for installation. You can lear
 
 * Docker version 1.13.1 or higher is required.
 
-- Ensure you use a [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
+- Ensure you use a
+  [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
 
 - Identify and set up the type of storage you want to use.
 
 :::warning
 
-Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides monitoring capabilities.
+Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can
+install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides
+monitoring capabilities.
 
 :::
 
 ## Parameters
 
-The following parameters are highlighted for this version of the pack and provide a preset option when configured through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
+The following parameters are highlighted for this version of the pack and provide a preset option when configured
+through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
 
 | Parameter                              | Description                                                                                                                                                                                                      | Default      |
 | :------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
@@ -1264,9 +1351,11 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 - `StorageClass` resource for dynamic provisioning of `PersistentVolumes`` using the `pxd.portworx.com` provisioner.
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html). Portworx's storage scheduler for Kubernetes.
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html).
+  Portworx's storage scheduler for Kubernetes.
 
-- [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/). Portworx's monitoring and alerting solution for Kubernetes.
+- [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/). Portworx's monitoring and alerting
+  solution for Kubernetes.
 
 <br />
 
@@ -1274,13 +1363,19 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 This pack can install Portworx in three different licensing modes:
 
-- **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as the fully featured Portworx Enterprise version of Portworx.
+- **Essentials**: a free Portworx license with limited functionality that allows you to deploy a small production or
+  proof-of-concept workloads. Essentials limits capacity and advanced features, but otherwise functions the same way as
+  the fully featured Portworx Enterprise version of Portworx.
 
-- **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
+- **Enterprise**: the fully featured version of Portworx. If you install this model without a valid key, Portworx will
+  automatically enter a 30-day trial mode.
 
-- **Enterprise SaaS PAYG**: the fully featured version of Portworx but using a SaaS license key that allows unlimited use and in-arrears billing. If you install this model without a valid key, Portworx will automatically enter a 30-day trial mode.
+- **Enterprise SaaS PAYG**: the fully featured version of Portworx but using a SaaS license key that allows unlimited
+  use and in-arrears billing. If you install this model without a valid key, Portworx will automatically enter a 30-day
+  trial mode.
 
-Use the presets in the pack user interface to select which license model you want to use, then update the `charts.portworx-generic.license` section for your chosen license model.
+Use the presets in the pack user interface to select which license model you want to use, then update the
+`charts.portworx-generic.license` section for your chosen license model.
 
 <br />
 
@@ -1335,25 +1430,33 @@ license:
 
 You can install Portworx in a variety of storage configurations.
 
-- **Existing disks (generic)**: This mode does not integrate with any particular storage solution, it uses existing disks available on the nodes.
+- **Existing disks (generic)**: This mode does not integrate with any particular storage solution, it uses existing
+  disks available on the nodes.
 
-- **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes clusters to dynamically attach EBS volumes to worker nodes for Portworx.
+- **AWS Cloud Storage**: This mode integrates with Amazon EBS block volumes and allows AWS EKS and EC2 based Kubernetes
+  clusters to dynamically attach EBS volumes to worker nodes for Portworx.
 
-- **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
+- **Azure Cloud Storage**: This mode integrates with Azure block storage and allows Azure AKS and regular Azure
+  Kubernetes clusters to dynamically attach Azure block storage to worker nodes for Portworx.
 
-- **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
+- **Google Cloud Storage**: This mode integrates with Google persistent disks and allows GKE and regular Google
+  Kubernetes clusters to dynamically attach persistent disks to worker nodes for Portworx.
 
-- **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
+- **VMware vSphere Datastores**: This mode integrates with VMware vSphere storage and allows Kubernetes clusters on
+  vSphere to dynamically attach vSAN and regular Datastore disks to worker nodes for Portworx.
 
-- **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
+- **Pure Storage Flash Array**: This mode integrates with Pure Storage Flash Arrays and allows Kubernetes clusters to
+  dynamically attach Flash Array disks over iSCSI to worker nodes for Portworx.
 
 :::tip
 
-Use the presets in the pack user interface to select which storage specification you want to use, then update the `charts.portworx-generic.storageCluster` section to your specific needs.
+Use the presets in the pack user interface to select which storage specification you want to use, then update the
+`charts.portworx-generic.storageCluster` section to your specific needs.
 
 :::
 
-Select the tab below for the storage specification you want to use. Use the example YAML as a starting point for your configuration.
+Select the tab below for the storage specification you want to use. Use the example YAML as a starting point for your
+configuration.
 
 <br />
 
@@ -1392,8 +1495,8 @@ storageCluster:
 </TabItem>
 <TabItem label="AWS" value="AWS">
 
-To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role.
-<br/>
+To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the
+`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. <br/>
 
 ```yaml
 {
@@ -1425,9 +1528,14 @@ To deploy Portworx in an AWS environment, ensure the following IAM policy is cre
 }
 ```
 
-- When deploying a regular Kubernetes cluster on an AWS EC2 using Palette, attach the policy to the `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. Or alternatively, edit the AWS cloud account in Palette, enable the `Add IAM Policies` option, and select the Portworx IAM policy described above. This will automatically attach the IAM policy to the correct IAM role..
+- When deploying a regular Kubernetes cluster on an AWS EC2 using Palette, attach the policy to the
+  `nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. Or alternatively, edit the AWS cloud account in Palette, enable
+  the `Add IAM Policies` option, and select the Portworx IAM policy described above. This will automatically attach the
+  IAM policy to the correct IAM role..
 
-- When deploying an AWS EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the Kubernetes pack layer YAML to automatically attach the Portworx IAM policy to the EKS worker pool IAM role . The example below shows how to attach the Portworx IAM policy to the EKS worker pool IAM role.
+- When deploying an AWS EKS cluster, use the `managedMachinePool.roleAdditionalPolicies` option in the Kubernetes pack
+  layer YAML to automatically attach the Portworx IAM policy to the EKS worker pool IAM role . The example below shows
+  how to attach the Portworx IAM policy to the EKS worker pool IAM role.
 
 ```yaml
 managedMachinePool:
@@ -1617,7 +1725,11 @@ vsphereSecret:
 </TabItem>
 <TabItem label="Pure Flash Array" value="Pure Flash Array">
 
-To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your cluster containing your [Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx). The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system` by default.
+To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
+cluster containing your
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system`
+by default.
 
 Use the following command to create the secret:
 
@@ -1673,7 +1785,8 @@ Portworx Enterprise supports multiple etcd scenarios. Portworx will default to a
 
 The following pack presets are available for configuring etcd.
 
-The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an external etcd server.
+The pack defaults to the **Use Internal Kvdb** option. You can change to a different preset if you need to connect to an
+external etcd server.
 
 <Tabs queryString="keyvalue">
 <TabItem label="Use Internal Kvdb" value="Use Internal Kvdb">
@@ -1729,17 +1842,26 @@ externalKvdb:
 
 Use the following steps to integrate Portworx to an external etcd server by following the steps below.
 
-1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right corner of the pack user interface.
+1. During the cluster profile creation, select the Portworx pack and click on the **Presets** button in the top right
+   corner of the pack user interface.
 
-2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
+2. Select the **Use External Kvdb over HTTP** or **Use External Kvdb over SSL** preset in the pack UI. If your external
+   etcd server requires certificate authentication, select **Use External Kvdb over SSL** preset.
 
-3. Configure the external etcd endpoints in the YAML parameter block named `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
+3. Configure the external etcd endpoints in the YAML parameter block named
+   `charts.portworx-generic.storageCluster.spec.kvdb.endpoints`.
 
-4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true` to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
+4. If you selected the **Use External Kvdb over SSL** preset, you will also need to configure the
+   `charts.portworx-generic.externalKvdb` section. Set `charts.portworx-generic.externalKvdb.useCertsForSSL` to `true`
+   to enable certificate authentication. Input your SSL certificates in the `cacert`, `cert`, and `key` sections of
+   `charts.portworx-generic.externalKvdb`. The preset will give you cropped example values that you can overwrite with
+   your actual PEM certificates. Leave the `charts.portworx-generic.storageCluster.spec.kvdb.endpoints` option to its
+   default of `px-kvdb-auth`. The name of the Kubernetes secret will automatically get created by this pack.
 
 :::warning
 
-When inserting SSL certificate values into the YAML. Ensure you follow the provided indentation style. Otherwise, SSL certificates will not be imported correctly and will result in Portworx deployment failure.
+When inserting SSL certificate values into the YAML. Ensure you follow the provided indentation style. Otherwise, SSL
+certificates will not be imported correctly and will result in Portworx deployment failure.
 
 :::
 

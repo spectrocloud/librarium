@@ -7,7 +7,8 @@ tags: ["public cloud", "aws", "eks"]
 sidebar_position: 30
 ---
 
-Palette supports creating and managing Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) clusters deployed to an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
+Palette supports creating and managing Amazon Web Services (AWS) Elastic Kubernetes Service (EKS) clusters deployed to
+an AWS account. This section guides you on how to create an EKS cluster in AWS that Palette manages.
 
 ## Prerequisites
 
@@ -15,15 +16,28 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
-- An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed Kubernetes** cloud type. Review [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) for guidance.
+- An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed
+  Kubernetes** cloud type. Review
+  [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  for guidance.
 
-- An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create a key pair, refer to the [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
+- An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create
+  a key pair, refer to the
+  [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
-- To access your EKS cluster using kubectl, you will need the [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) plugin installed. If you are using a custom OIDC provider, you will need the [kubelogin](https://github.com/int128/kubelogin) plugin installed. Refer to the [Access EKS Cluster](#access-eks-cluster) section for more information.
+- To access your EKS cluster using kubectl, you will need the
+  [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) plugin
+  installed. If you are using a custom OIDC provider, you will need the [kubelogin](https://github.com/int128/kubelogin)
+  plugin installed. Refer to the [Access EKS Cluster](#access-eks-cluster) section for more information.
 
-- To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key Management Service (KMS) key. If you do not have one, review [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.
+- To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key
+  Management Service (KMS) key. If you do not have one, review
+  [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.
 
-- If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred AWS region to create the following resources. Note that Palette does not create these resources if you specify an existing VPC.
+- If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and
+  storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred
+  AWS region to create the following resources. Note that Palette does not create these resources if you specify an
+  existing VPC.
 
   - Virtual CPU (vCPU)
   - Virtual Private Cloud (VPC)
@@ -36,7 +50,12 @@ Palette supports creating and managing Amazon Web Services (AWS) Elastic Kuberne
 
   :::info
 
-  To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName` with your cluster's name. To learn more about the Tag Editor, refer to the [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
+  To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private
+  Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
+  [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS
+  Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName`
+  with your cluster's name. To learn more about the Tag Editor, refer to the
+  [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
 
   - `kubernetes.io/role/elb = 1`
   - `sigs.k8s.io/cluster-api-provider-aws/role = public`
@@ -53,7 +72,8 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 3. From the left **Main Menu** select **Clusters**, and click on the **Add New Cluster** button.
 
-4. Select **Deploy New Cluster** on the next page Palette displays. This will allow you to deploy a cluster using your own cloud account.
+4. Select **Deploy New Cluster** on the next page Palette displays. This will allow you to deploy a cluster using your
+   own cloud account.
 
 5. Select **AWS** and click on the **Start AWS Configuration** button.
 
@@ -74,7 +94,9 @@ To learn how to add an AWS account, review the [Add an AWS Account to Palette](a
 
 8. Select the EKS cluster profile you created and click on **Next**. Palette displays the cluster profile layers.
 
-9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer. You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Check out [Access EKS Cluster](#access-eks-cluster) if you need more guidance.
+9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
+   You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Check out
+   [Access EKS Cluster](#access-eks-cluster) if you need more guidance.
 
 10. Click on **Next** to continue.
 
@@ -92,11 +114,14 @@ To learn how to add an AWS account, review the [Add an AWS Account to Palette](a
 
 :::warning
 
-If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in the **Public Access CIDR** field to open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the **Private & Public** option to cover all the possibilities.
+If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in the **Public Access CIDR** field to
+open it to all possible IP addresses. Otherwise, Palette will not open it up entirely. We recommend specifying the
+**Private & Public** option to cover all the possibilities.
 
 :::
 
-12. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can add them here.
+12. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
+    add them here.
 
     - Node Configuration Settings
 
@@ -118,7 +143,9 @@ If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in
 
     - Fargate Profiles
 
-    You can create one or more Fargate profiles for the EKS cluster to use. Click **+ Add Fargate Profile**. For more information about Fargate profiles, refer to the [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html) reference guide.
+    You can create one or more Fargate profiles for the EKS cluster to use. Click **+ Add Fargate Profile**. For more
+    information about Fargate profiles, refer to the
+    [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html) reference guide.
 
     | **Parameter** | **Description**                                                                                                                                                                                                                                                                                                                    |
     | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -128,7 +155,9 @@ If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in
 
     :::info
 
-    You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
+    You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an
+    example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads,
+    and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
 
     :::
 
@@ -136,17 +165,23 @@ If you set the cluster endpoint to **Public**, ensure you specify `0.0.0.0/0` in
 
 14. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
 
-15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for Kubernetes configuration security, penetration testing, and conformance testing.
+15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+    Kubernetes configuration security, penetration testing, and conformance testing.
 
-16. Schedule any backups you want Palette to perform. Review [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
+16. Schedule any backups you want Palette to perform. Review
+    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
+    RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
+    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary.
 
 19. Click **Finish Configuration** to deploy the cluster.
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the deployment progress.
+The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
+deployment progress.
 
 :::info
 
@@ -162,7 +197,8 @@ You can validate your cluster is up and in **Running** state.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Navigate to the left **Main Menu** and select **Clusters**. The **Clusters** page displays a list of all available clusters that Palette manages.
+2. Navigate to the left **Main Menu** and select **Clusters**. The **Clusters** page displays a list of all available
+   clusters that Palette manages.
 
 3. Click on the cluster you created to view its details page.
 
@@ -172,7 +208,9 @@ You can validate your cluster is up and in **Running** state.
 
 ## Access EKS Cluster
 
-You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin required for two EKS deployment scenarios.
+You can access your Kubernetes cluster by using the kubectl CLI, which requires authentication. Depending on how you
+will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin
+required for two EKS deployment scenarios.
 
 | **Scenario**                                              | **Plugin**                                                                                                   |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -189,9 +227,13 @@ To access an EKS cluster with default AWS authentication, you need to do the fol
 
 - Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
 
-- Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer to the [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) reference guide.
+- Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer
+  to the
+  [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+  reference guide.
 
-- Download the kubeconfig file from the cluster details page. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+- Download the kubeconfig file from the cluster details page. Refer to the
+  [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
 
 </TabItem>
 
@@ -199,13 +241,19 @@ To access an EKS cluster with default AWS authentication, you need to do the fol
 
 To use custom OIDC, you need to do the following:
 
-- Install [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. For more information and to learn about other available helper applications, you can visit [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/).
+- Install [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. For
+  more information and to learn about other available helper applications, you can visit
+  [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/).
 
-- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the [Configure Custom OIDC](../../../integrations/kubernetes-generic.md#configure-custom-oidc) guide.
+- Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the
+  [Configure Custom OIDC](../../../integrations/kubernetes-generic.md#configure-custom-oidc) guide.
 
-- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+- Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
+  refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
+  [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-- Download the kubeconfig file from the cluster details page. Refer to the [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
+- Download the kubeconfig file from the cluster details page. Refer to the
+  [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
 
 </TabItem>
 

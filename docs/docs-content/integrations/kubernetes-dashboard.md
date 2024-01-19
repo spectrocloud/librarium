@@ -1,7 +1,9 @@
 ---
 sidebar_label: "Kubernetes Dashboard"
 title: "Kubernetes Dashboard"
-description: "Learn how to manage Kubernetes clusters and applications deployed in them by using the Kubernetes Dashboard Monitoring pack."
+description:
+  "Learn how to manage Kubernetes clusters and applications deployed in them by using the Kubernetes Dashboard
+  Monitoring pack."
 type: "integration"
 hide_table_of_contents: true
 category: ["monitoring", "amd64"]
@@ -10,7 +12,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "kubernetes-dashboard", "monitoring"]
 ---
 
-The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack is a general-purpose, web-based UI that allows you to manage clusters and the applications deployed in them.
+The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack is a general-purpose, web-based UI that
+allows you to manage clusters and the applications deployed in them.
 
 <br />
 
@@ -22,9 +25,12 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role
+  through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the
+  [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -39,24 +45,29 @@ The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack 
 
 :::warning
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
 :::
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
+the Kubernetes Dashboard pack.
 
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
+Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080.
+When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
+Dashboard on port 8080.
 
 <br />
 
@@ -109,9 +120,11 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes.
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress
+controller exposes.
 
-Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
+more about which hostname to use.
 
 <br />
 
@@ -125,9 +138,12 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role
+  through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the
+  [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -142,26 +158,31 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
 :::
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
+the Kubernetes Dashboard pack.
 
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
+Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes Dashboard on port 8080.
+When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes
+Dashboard on port 8080.
 
 <br />
 
@@ -213,9 +234,11 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes.
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress
+controller exposes.
 
-Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
+more about which hostname to use.
 
 <br />
 
@@ -229,9 +252,12 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role
+  through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the
+  [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -246,26 +272,31 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
 :::
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
+the Kubernetes Dashboard pack.
 
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
+Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 8080.
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
+Dashboard on port 8080.
 
 <br />
 
@@ -317,9 +348,11 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes.
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress
+controller exposes.
 
-Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
+more about which hostname to use.
 
 <br />
 
@@ -333,9 +366,12 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role
+  through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the
+  [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -350,26 +386,31 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
 :::
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
+the Kubernetes Dashboard pack.
 
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
+Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 80.
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
+Dashboard on port 80.
 
 <br />
 
@@ -421,9 +462,11 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes.
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress
+controller exposes.
 
-Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
+more about which hostname to use.
 
 <br />
 
@@ -437,9 +480,12 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role
+  through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the
+  [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -454,26 +500,31 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
 :::
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
+the Kubernetes Dashboard pack.
 
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
+Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 80.
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
+Dashboard on port 80.
 
 <br />
 
@@ -525,9 +576,11 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes.
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress
+controller exposes.
 
-Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
+more about which hostname to use.
 
 <br />
 
@@ -541,9 +594,12 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the [Spectro Proxy](frp.md) reverse proxy.
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
+  [Spectro Proxy](frp.md) reverse proxy.
 
-- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+- Users or groups must be mapped to a Kubernetes RBAC role, either a Role or a ClusterRole. You can create a custom role
+  through a manifest and use Palette's roleBinding feature to associate the users or groups with the role. Refer to the
+  [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
 
 ## Parameters
 
@@ -558,26 +614,31 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
-Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack. To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
 :::
 
 ## Usage
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find the Kubernetes Dashboard pack.
+To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
+the Kubernetes Dashboard pack.
 
 - **Pack Type**: Monitoring
 - **Registry**: Public Repo
 - **Pack Name**: Kubernetes Dashboard
 - **Pack Version**: 2.0.x or higher
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
+Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 <br />
 
 ### Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes Dashboard on port 80.
+When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
+Dashboard on port 80.
 
 <br />
 
@@ -629,9 +690,11 @@ Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
 3. Set ingress rules, such as annotations, path, hosts, and any other rules.
 
-This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress controller exposes.
+This allows you to access the Kubernetes Dashboard in hostname or IP format using the IP address that the ingress
+controller exposes.
 
-Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn more about which hostname to use.
+Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
+more about which hostname to use.
 
 <br />
 
@@ -645,9 +708,11 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 # Troubleshooting
 
-- If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in the **Running** state.
+- If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is
+  in the **Running** state.
 
-- When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the commands shown above.
+- When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the
+  commands shown above.
 
 # Terraform
 

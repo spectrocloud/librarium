@@ -9,7 +9,10 @@ toc_max_heading_level: 2
 sidebar_position: 20
 ---
 
-Depending on what version of Palette you are using, the internal architecture and network communication will be different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with Palette 4.0.0, the management platform communicates with the workload cluster via gRPC. Use the tabs below to view the network communication and ports for each architecture.
+Depending on what version of Palette you are using, the internal architecture and network communication will be
+different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with
+Palette 4.0.0, the management platform communicates with the workload cluster via gRPC. Use the tabs below to view the
+network communication and ports for each architecture.
 
 ## SaaS Network Communications and Ports
 
@@ -95,7 +98,8 @@ The following ports must be reachable from a network perspective for Palette to 
 
 :::info
 
-You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
+You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This
+is entirely optional and not required for Palette to operate appropriately.
 
 :::
 
@@ -103,7 +107,6 @@ You can expose inbound port 22 for SSH if you would like to access your cluster 
 
 <Tabs groupId="architecture">
 <TabItem label="gRPC" value="gRPC">
-
 
 ![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.png)
 
@@ -164,6 +167,7 @@ The following ports must be reachable from a network perspective for Palette sel
 
 :::info
 
-You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This is entirely optional and not required for Palette to operate appropriately.
+You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This
+is entirely optional and not required for Palette to operate appropriately.
 
 :::

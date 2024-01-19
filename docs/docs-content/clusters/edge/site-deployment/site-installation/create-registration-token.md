@@ -7,7 +7,8 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-To successfully register an Edge host with Palette you must provide the Edge Installer with a tenant registration token. To create a registration token, use the following steps.
+To successfully register an Edge host with Palette you must provide the Edge Installer with a tenant registration token.
+To create a registration token, use the following steps.
 
 ## Prerequisites
 
@@ -57,4 +58,5 @@ To successfully register an Edge host with Palette you must provide the Edge Ins
 
 ## Next Steps
 
-The next stage in the Edge host site installation process is registering the Edge host. Go ahead and review the instructions in the [Register Edge Host](edge-host-registration.md) guide.
+The next stage in the Edge host site installation process is registering the Edge host. Go ahead and review the
+instructions in the [Register Edge Host](edge-host-registration.md) guide.

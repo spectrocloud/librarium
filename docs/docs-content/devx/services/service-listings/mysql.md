@@ -10,7 +10,10 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/mysql-operator/blobs/sha256:2
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[MySQL](https://www.mysql.com/) is an open-source relational database management system commonly used in web applications and other software that requires a database. It is known for its reliability, ease of use, and flexibility. MySQL is covered under the GNU license and uses structured query language (SQL) to manage data with the following properties:
+[MySQL](https://www.mysql.com/) is an open-source relational database management system commonly used in web
+applications and other software that requires a database. It is known for its reliability, ease of use, and flexibility.
+MySQL is covered under the GNU license and uses structured query language (SQL) to manage data with the following
+properties:
 
 - Creates a database for storing and manipulating data and defining the relationship of each table.
 
@@ -34,7 +37,9 @@ Use the following steps to add MySQL to an app profile.
 
 2. On the right side of the window, click on the **User Menu**, then select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click **App Profiles** to create a new
+   [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic
+   information and click **Next**.
 
 | **Parameter**            | **Description**                                                                                                          |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -50,7 +55,8 @@ Use the following steps to add MySQL to an app profile.
 - **Name:** The database name. You can use the auto-generated name or create a custom name.
 - **Root Password:** The root password for the database service.
 
-- Database Volume Size (GiB): Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.
+- Database Volume Size (GiB): Select the volume size for the database. Ensure you stay within the storage amount
+  available in the cluster group and virtual clusters.
 
 - Select the version from the **Version** drop-down menu.
 
@@ -64,7 +70,8 @@ Use the following steps to add MySQL to an app profile.
 
 3. Select the application that contains MySQL.
 
-4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of
+   the service deployment.
 
 | **Color Code** | **Description**       |
 | -------------- | --------------------- |
@@ -74,7 +81,8 @@ Use the following steps to add MySQL to an app profile.
 
 ## Output Variables
 
-The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
+The exposed output variables of this service layer may be used in other service layers. These output variables are
+typically used for connectivity purposes:
 
 | Parameter              | Output Variable                                                              | Description                                                 |
 | ---------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -85,7 +93,8 @@ The exposed output variables of this service layer may be used in other service 
 
 ## Database Password
 
-You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve the password for the MySQL database root user, use the following command format.
+You can get the database password by reading the content of the Kubernetes secret created for the database. To retrieve
+the password for the MySQL database root user, use the following command format.
 
 ```shell
 kubectl get secret <app-name>-<service-name>-user \
@@ -116,7 +125,9 @@ kubectl get secret app-tarfful-mysql-2-user \
 
 ## Next Steps
 
-You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about integrating MySQL with your applications, check out the [MySQL](https://redis.io/docs/manual/) documentation from Oracle.
+You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about
+integrating MySQL with your applications, check out the [MySQL](https://redis.io/docs/manual/) documentation from
+Oracle.
 
 ## Resources
 

@@ -9,27 +9,35 @@ tags: ["vertex", "vmware"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a configuration file and a three-node enterprise cluster for high availability (HA). You can invoke the Palette CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where Palette VerteX will be deployed.
+You install Palette VerteX using the Palette Command Line Interface (CLI) that guides you for details to create a
+configuration file and a three-node enterprise cluster for high availability (HA). You can invoke the Palette CLI on any
+Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where Palette
+VerteX will be deployed.
 
 ## Prerequisites
 
 :::warning
 
-If you are installing Palette VerteX in an airgap environment, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
+If you are installing Palette VerteX in an airgap environment, ensure you complete all the airgap pre-install steps
+before proceeding with the installation. Refer to the
+[VMware vSphere Airgap Instructions](../airgap/vmware-vsphere-airgap-instructions.md) guide for more information.
 
 :::
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment.
 
-- [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux host.
+- [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
+  host.
 
-- Palette CLI installed and available. Refer to the Palette CLI [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+- Palette CLI installed and available. Refer to the Palette CLI
+  [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
 - Review required VMware vSphere environment [permissions](vmware-system-requirements.md).
 
-- We recommended the following resources for Palette VerteX. Refer to the [Palette VerteX size guidelines](../install-palette-vertex.md#instance-sizing) for additional sizing information.
+- We recommended the following resources for Palette VerteX. Refer to the
+  [Palette VerteX size guidelines](../install-palette-vertex.md#instance-sizing) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -41,9 +49,12 @@ If you are installing Palette VerteX in an airgap environment, ensure you comple
 
   - TCP/443: Inbound to and outbound from the Palette VerteX management cluster.
 
-  - TCP/6443: Outbound traffic from the Palette VerteX management cluster to the deployed cluster's Kubernetes API server.
+  - TCP/6443: Outbound traffic from the Palette VerteX management cluster to the deployed cluster's Kubernetes API
+    server.
 
-- Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
+- Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this
+  to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the
+  SSL certificate. You need the following files:
 
   - x509 SSL certificate file in base64 format.
 
@@ -51,7 +62,8 @@ If you are installing Palette VerteX in an airgap environment, ensure you comple
 
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
-- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
+- Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
+  persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
@@ -61,13 +73,19 @@ If you are installing Palette VerteX in an airgap environment, ensure you comple
 
 :::info
 
-Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do
+not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning
+into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install
+a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
 ## Deployment
 
-The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the playback speed.
+The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the
+video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use
+the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the
+playback speed.
 
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
@@ -85,12 +103,15 @@ The video below demonstrates the installation wizard and the prompts you will en
 
 Use the following steps to install Palette VerteX.
 
-Use the following steps to install Palette VerteX. 
+Use the following steps to install Palette VerteX.
 
+1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
+   interactive CLI prompts you for configuration details and then initiates the installation. For more information about
+   the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands/ec.md).
 
-1. Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands/ec.md). 
+{" "}
 
-  <br />
+<br />
 
 ```bash
 palette ec install
@@ -100,7 +121,9 @@ palette ec install
 
 3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted.
 
-  <br />
+{" "}
+
+<br />
 
 :::warning
 
@@ -115,7 +138,9 @@ To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
    - Non-Airgap: `https://saas-repo-fips.console.spectrocloud.com`
    - Airgap: The URL or IP address of your HTTP file server that is hosting the manifest files.
 
-5. Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro Cloud repository. Airgap installations, provide the credentials to your private repository. If your HTTP file server has no authentication, provide the username and password as `admin` and `admin` respectively.
+5. Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
+   Cloud repository. Airgap installations, provide the credentials to your private repository. If your HTTP file server
+   has no authentication, provide the username and password as `admin` and `admin` respectively.
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
 
@@ -123,7 +148,9 @@ To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
 
 8. When prompted, enter the information listed in each of the following tables.
 
-  <br />
+{" "}
+
+<br />
 
 #### Environment Configuration
 
@@ -152,11 +179,17 @@ Select the OCI registry type and provide the configuration values. Review the fo
 
 :::warning
 
-For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on the host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA certificate. Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the [Self-linking Error](../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting guide for more information.
+For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on the
+host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA certificate.
+Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the
+[Self-linking Error](../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting guide
+for more information.
 
 :::
 
-  <br />
+{" "}
+
+<br />
 
 #### Pack & Image Registry Configuration
 
@@ -174,13 +207,17 @@ For self-hosted OCI registries, ensure you have the server Certificate Authority
 | **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                                                                                                   |
 | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
 
-When prompted to "Pull images from public registry", type `n` and specify the OCI registry configuration values for your image registry. Refer to the table above for more information.
+When prompted to "Pull images from public registry", type `n` and specify the OCI registry configuration values for your
+image registry. Refer to the table above for more information.
 
-  <br />
+{" "}
+
+<br />
 
 :::info
 
-You will be provided with an opportunity to update the mirror registries values. To exit `vi` press the `Escape` key and type `:wq` to save and exit.
+You will be provided with an opportunity to update the mirror registries values. To exit `vi` press the `Escape` key and
+type `:wq` to save and exit.
 
 :::
 
@@ -190,9 +227,12 @@ You will be provided with an opportunity to update the mirror registries values.
 
 ---
 
-10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following table.
+10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
+    table.
 
-  <br />
+{" "}
+
+<br />
 
 #### VMware vSphere Account Information
 
@@ -203,13 +243,19 @@ You will be provided with an opportunity to update the mirror registries values.
 | **vSphere Password**          | VMware vSphere account password.                                                                                                                                                              |
 | **Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.                                    |
 
-  <br />
+{" "}
+
+<br />
 
 #### VMware vSphere Cluster Configuration
 
-This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you to select from.
+This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use
+the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you
+to select from.
 
-  <br />
+{" "}
+
+<br />
 
 | **Parameter**       | **Description**                                                                                                                                                                                                                                                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -223,9 +269,13 @@ This information determines where Palette will be deployed in your VMware vSpher
 | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
 | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-11. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses using DNS.
+11. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing
+    static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
+    using DNS.
 
-  <br />
+{" "}
+
+<br />
 
 #### Static Placement Configuration
 
@@ -240,9 +290,12 @@ This information determines where Palette will be deployed in your VMware vSpher
 
 <br />
 
-12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for guidance.
+12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
+    guidance.
 
-  <br />
+{" "}
+
+<br />
 
 #### vSphere Machine Configuration
 
@@ -253,7 +306,9 @@ This information determines where Palette will be deployed in your VMware vSpher
 | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
 | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
-  <br />
+{" "}
+
+<br />
 
 #### Additional vSphere Machine Configuration
 
@@ -261,20 +316,26 @@ This information determines where Palette will be deployed in your VMware vSpher
 | ----------------- | ---------------------------------------------------------------------------------------- |
 | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
 
-The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the remainder of the installation. The installation takes some time.
+The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the
+remainder of the installation. The installation takes some time.
 
-Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided, and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
+Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided, and
+its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
 
 ```bash hideClipboard
 ==== Enterprise Cluster config saved ====
 Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
 
-  <br />
+{" "}
+
+<br />
 
 :::tip
 
-If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
+If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
+remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if
+you used a different name.
 
 ```bash
 kind delete cluster spectro-mgmt-cluster
@@ -289,11 +350,16 @@ palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 
 :::
 
-  <br />
+{" "}
 
-When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed in the terminal. You will use these to access the Palette VerteX System Console.
+<br />
 
-  <br />
+When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed
+in the terminal. You will use these to access the Palette VerteX System Console.
+
+{" "}
+
+<br />
 
 ```bash hideClipboard
 ===========================================
@@ -314,33 +380,49 @@ export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
 
 13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
-  <br />
+{" "}
+
+<br />
 
 :::info
 
-The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this warning message and proceed.
+The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may
+appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this
+warning message and proceed.
 
 :::
 
-  <br />
+{" "}
+
+<br />
 
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
 
 <br />
 
-14. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette VerteX system console.
+14. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login,
+    you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
+    the Palette VerteX system console.
 
-15. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+15. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
+    a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
+    files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the
+    [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to
+    upload the SSL certificate files to Palette VerteX.
 
-16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the [Tenant Management](../../system-management/tenant-management.md) guide.
+16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+    [Tenant Management](../../system-management/tenant-management.md) guide.
 
-  <br />
+{" "}
+
+<br />
 
 ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
 
 ## Validate
 
-You can verify the installation is successful if you can access the system console using the IP address provided in Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
+You can verify the installation is successful if you can access the system console using the IP address provided in
+Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
 
 You can also validate that a three-node Kubernetes cluster is launched and Palette VerteX is deployed on it.
 
@@ -348,19 +430,26 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 1. Log in to the vCenter Server by using vSphere Client.
 
-2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
+2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you
+   provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named
+   `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
-3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
+3. Open a web browser session, and use the IP address provided in Enterprise Cluster Details at the completion of the
+   installation to connect to the Palette system console. Copy the IP address to the address bar and append `/system`.
 
 4. Log in using your credentials.
 
-5. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial installation, the **Summary** page shows there are zero tenants.
+5. A **Summary** page will be displayed that contains a tile with a **Go to Tenant Management** button. After initial
+   installation, the **Summary** page shows there are zero tenants.
 
 ## Next Steps
 
-You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your organization. Start by creating the first tenant to host your users. Refer to [Create a Tenant](../../system-management/tenant-management.md) for instructions.
+You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your
+organization. Start by creating the first tenant to host your users. Refer
+to [Create a Tenant](../../system-management/tenant-management.md) for instructions.
 
-After you create the tenant, you are ready to configure authentication types in tenant settings and create users and teams.
+After you create the tenant, you are ready to configure authentication types in tenant settings and create users and
+teams.
 
 ## Resources
 

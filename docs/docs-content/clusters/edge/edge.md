@@ -8,11 +8,17 @@ sidebar_custom_props:
 tags: ["edge"]
 ---
 
-Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or virtual machines and are managed by operators at remote sites.
+Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and
+restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or virtual machines
+and are managed by operators at remote sites.
 
-Palette provisions workload clusters on Edge hosts from the Palette management console. Palette also provides end-to-end cluster management through scaling, upgrades, and reconfiguration operations.
+Palette provisions workload clusters on Edge hosts from the Palette management console. Palette also provides end-to-end
+cluster management through scaling, upgrades, and reconfiguration operations.
 
-Edge computing brings computing and data storage closer to the source, reducing latency and bandwidth issues that result from central computing and improving overall application performance. Industries such as retail, restaurants, manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that require content data and processing to be closer to their applications.
+Edge computing brings computing and data storage closer to the source, reducing latency and bandwidth issues that result
+from central computing and improving overall application performance. Industries such as retail, restaurants,
+manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that
+require content data and processing to be closer to their applications.
 
 <br />
 
@@ -38,11 +44,14 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 - Support for pre-provisioned and on-site device registration
 
-Palette's Edge solution is designed for sites that typically have one or more small devices, such as [Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
+Palette's Edge solution is designed for sites that typically have one or more small devices, such as
+[Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance
+of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
 
 :::info
 
-Edge is built on top of the open-source project [Kairos](https://kairos.io), which provides a tamper-proof immutable operating system with zero downtime rolling upgrade.
+Edge is built on top of the open-source project [Kairos](https://kairos.io), which provides a tamper-proof immutable
+operating system with zero downtime rolling upgrade.
 
 :::
 
@@ -50,7 +59,12 @@ Palette manages the installation and all the Day-2 activities, such as scaling, 
 
 ## Get Started With Edge
 
-To start with Edge, review the [architecture](architecture.md) and the [lifecycle](edge-native-lifecycle.md) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](edgeforge-workflow/edgeforge-workflow.md). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](site-deployment/site-deployment.md) guide to understand what it takes to deploy an Edge host.
+To start with Edge, review the [architecture](architecture.md) and the [lifecycle](edge-native-lifecycle.md) resource to
+gain a high-level understanding of the Edge components and installation process. Next, become familiar with the
+[EdgeForge workflow](edgeforge-workflow/edgeforge-workflow.md). EdgeForge is the workflow you will use to customize the
+Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts
+for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the
+[Deployment](site-deployment/site-deployment.md) guide to understand what it takes to deploy an Edge host.
 
 ## Resources
 

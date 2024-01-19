@@ -10,7 +10,9 @@ logoUrl: "https://newrelic.com/sites/default/files/styles/800w/public/2021-10/mo
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[MongoDB](https://www.mongodb.com/) is a developer data platform that quickly builds applications with optimal performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition, this multi-cloud database service provides you with resilience, data privacy, and security.
+[MongoDB](https://www.mongodb.com/) is a developer data platform that quickly builds applications with optimal
+performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition,
+this multi-cloud database service provides you with resilience, data privacy, and security.
 
 ## Add MongoDB to an App Profile
 
@@ -32,7 +34,9 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
 
-3. From the **Main Menu** click **App Profiles** to create a new profile. Check out the [Create an App Profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md) guide to learn about different app profile types and how to create them. Provide the following basic information and click **Next**.
+3. From the **Main Menu** click **App Profiles** to create a new profile. Check out the
+   [Create an App Profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md) guide to learn
+   about different app profile types and how to create them. Provide the following basic information and click **Next**.
 
 | **Parameter**            | **Description**                                                                                                          |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -48,7 +52,8 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 - **Name:** The DB name. You can use the default Palette-generated name or create a custom name.
 - **Username:** The user name for database access control.
 - **Password:** The password for the username.
-- **Database Volume Size:** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.
+- **Database Volume Size:** Select the volume size for the database. Ensure you stay within the storage amount available
+  in the cluster group and virtual clusters.
 
 - **Version:** Select the version from the **Version** drop-down.
 
@@ -62,7 +67,8 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 
 3. Select the application that contains MongoDB.
 
-4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of
+   the service deployment.
 
 | **Color Code** | **Description**       |
 | -------------- | --------------------- |
@@ -72,7 +78,8 @@ You can use the following steps to learn how to add MongoDB to your app profile.
 
 ## Output Variables
 
-The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes.
+The exposed output variables of this service layer may be used in other service layers. These output variables are
+typically used for connectivity purposes.
 
 | Parameter              | Output Variable                                                    | Description                                                                                                                                                                                |
 | ---------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -83,7 +90,8 @@ The exposed output variables of this service layer may be used in other service 
 
 ## Database Password
 
-You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the MongoDB database user, use the following command format.
+You can get the database password by reading the content of the Kubernetes secret created for the database user. To
+retrieve the password for the MongoDB database user, use the following command format.
 
 ```shell
 kubectl get secret <app-name>-<service-name>-<user-name> \
@@ -117,7 +125,10 @@ kubectl get secret app-tarfful-mongodb-1-myuser  \
 
 ## Next Steps
 
-Palette Dev Engine removes the traditional challenges encountered when deploying a MongoDB instance. You can add MongoDB to your application profile and get started with MongoDB today. Check out the [MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/) to learn how to integrate MongoDB with your applications.
+Palette Dev Engine removes the traditional challenges encountered when deploying a MongoDB instance. You can add MongoDB
+to your application profile and get started with MongoDB today. Check out the
+[MongoDB Tutorials](https://www.mongodb.com/docs/manual/tutorial/) to learn how to integrate MongoDB with your
+applications.
 
 ## Resources
 

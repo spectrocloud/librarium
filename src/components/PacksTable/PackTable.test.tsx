@@ -95,9 +95,7 @@ describe("FilteredTable Tests", () => {
       },
     ];
 
-    fetchMock.mockResponseOnce(
-      JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks })
-    );
+    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: customMockPacks }));
     render(<FilteredTable />);
 
     await waitFor(() => screen.getByText("Alpine"));

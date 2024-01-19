@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9a
 tags: ["packs", "portworx", "storage"]
 ---
 
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers, via container orchestrators such as Kubernetes. You can use Palette to install Portworx on the cloud or on-premises.
+[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for
+applications deployed as containers, via container orchestrators such as Kubernetes. You can use Palette to install
+Portworx on the cloud or on-premises.
 
 ## Versions Supported
 
@@ -50,7 +52,8 @@ tags: ["packs", "portworx", "storage"]
 
 For deploying Portworx for Kubernetes, make sure to configure the properties in the pack:
 
-- Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
+- Have at least three nodes with the proper
+  [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
 
 - Ensure you are using a supported Kubernetes version.
 
@@ -68,7 +71,8 @@ The default installation of Portworx will deploy the following components in the
 
 - [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/)
 
-- [Stork](https://github.com/libopenstorage/stork) and [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
+- [Stork](https://github.com/libopenstorage/stork) and
+  [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
 
 - Storage class making use of portworx-volume provisioner.
 
@@ -131,13 +135,15 @@ manifests:
 
 Starting Portworx v2.6.1, you can use the presets feature to toggle between the available ETCD options.
 
-By default, Portworx is set to use internal KVDB. However, you can integrate Portworx to an external etcd server by following the steps below.
+By default, Portworx is set to use internal KVDB. However, you can integrate Portworx to an external etcd server by
+following the steps below.
 
 1. Enable `useExternalKvdb` flag by setting it to _true_.
 
 2. Configure the external etcd endpoints in `externalKvdb.endpoints`.
 
-If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the following:
+If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the
+following:
 
 1. Enable `externalKvdb.useCertsForSSL` flag by setting it to _true_.
 
@@ -145,7 +151,8 @@ If the external etcd server is configured to authenticate via certificates, addi
 
 :::warning
 
-Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will result in Portworx deployment failure.
+Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will result in
+Portworx deployment failure.
 
 :::
 
@@ -291,7 +298,7 @@ vsphere-cloud-controller-manager:
 
 # Environments
 
-<br/>
+<br />
 
 <Tabs>
 <TabItem label="vSphere" value="vSphere">
@@ -336,13 +343,15 @@ Portworx pack values allow you to configure vSphere user credentials in two ways
 
 2. Secret - (`portworx.vsphereConfig.userCredsSecret` is available with v2.6.1 and above).
 
-If you chose the latter, make sure to create the secret in the target cluster manually or by bringing your own (BYO) manifest Add-on pack.
+If you chose the latter, make sure to create the secret in the target cluster manually or by bringing your own (BYO)
+manifest Add-on pack.
 
 <br />
 
 :::warning
 
-Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is configured, reconciliation should recover Portworx.
+Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is configured,
+reconciliation should recover Portworx.
 
 :::
 
@@ -373,15 +382,15 @@ manifests:
       userCredsSecret: "px-vsphere-secret"
 ```
 
-Ensure to follow the correct indentation style; otherwise, certificates will not be imported correctly and resulting in a Portworx deployment failure.
+Ensure to follow the correct indentation style; otherwise, certificates will not be imported correctly and resulting in
+a Portworx deployment failure.
 
 </TabItem>
 <TabItem label="AWS" value="AWS">
 
 ## AWS Environment
 
-Palette provisions Portworx in an AWS environment. The following are the packs supported:
-<br />
+Palette provisions Portworx in an AWS environment. The following are the packs supported: <br />
 
 ### Packs Supported
 

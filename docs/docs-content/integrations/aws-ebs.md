@@ -9,7 +9,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b
 tags: ["packs", "aws-ebs", "storage"]
 ---
 
-AWS Elastic Block Store is an easy to use, high performance block storage at any scale. It helps in the easy deployment, management, and scaling of the most demanding and high-performance tenant workloads. AWS EBS also ensures availability with replication and durability.
+AWS Elastic Block Store is an easy to use, high performance block storage at any scale. It helps in the easy deployment,
+management, and scaling of the most demanding and high-performance tenant workloads. AWS EBS also ensures availability
+with replication and durability.
 
 ## Prerequisites
 
@@ -50,7 +52,8 @@ Palette requires the following IAM policies to be attached to the IAM role that 
 
 ## KMS Encryption Policy
 
-If you want to use KMS encryption, you must attach the following IAM policy to the Palette IAM role that is used to create the cluster.
+If you want to use KMS encryption, you must attach the following IAM policy to the Palette IAM role that is used to
+create the cluster.
 
 ```json
 {
@@ -78,9 +81,11 @@ If you want to use KMS encryption, you must attach the following IAM policy to t
 | encrypted            | true, false                                                                 | true                 | Denotes whether the EBS volume should be encrypted or not.                                                                                                                 |
 | kmsKeyId (optional)  | The full Amazon Resource Name of the key to use when encrypting the volume. | --                   | If you don't provide the full Amazon Resource Name but **encrypted** is true, AWS [generates a key](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs). |
 
-You can view the full parameter list [here](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters).
+You can view the full parameter list
+[here](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters).
 
-Storage classes that Palette creates are named `spectro-storage-class` and can be fetched from kubectl using the following CLI command:
+Storage classes that Palette creates are named `spectro-storage-class` and can be fetched from kubectl using the
+following CLI command:
 
 ```bash
 kubectl get storageclass --all-namespaces

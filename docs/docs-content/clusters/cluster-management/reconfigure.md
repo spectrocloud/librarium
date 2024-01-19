@@ -7,7 +7,8 @@ sidebar_position: 0
 tags: ["clusters", "cluster management"]
 ---
 
-Scaling a cluster up or down involves changing the size of node pools. The following are the steps to scale up/down a cluster:
+Scaling a cluster up or down involves changing the size of node pools. The following are the steps to scale up/down a
+cluster:
 
 - Access the ‘Nodes’ view of the cluster.
 - For the desired node pool, change the size directly from the nodes panel or edit node pool settings.
@@ -16,7 +17,8 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 
 :::info
 
-The master node pool is scaled from 1 to 3 or 3 to 5 nodes, etc. However, the scale-down operation is not supported for master nodes.
+The master node pool is scaled from 1 to 3 or 3 to 5 nodes, etc. However, the scale-down operation is not supported for
+master nodes.
 
 :::
 
@@ -27,7 +29,9 @@ The following are the steps to reconfigure worker pool nodes:
 - Access the 'Nodes' view for the cluster.
 - Edit the settings of the desired node pool.
 - Change the number of nodes, rolling update setting, availability zones, flavor, and Disk size to the desired settings.
-- Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a few minutes. The older nodes in the node pool are deleted and replaced by new nodes launched with a new instance type configured.
+- Save the node pool settings. After the node pool settings are updated, the node pool reconfiguration begins within a
+  few minutes. The older nodes in the node pool are deleted and replaced by new nodes launched with a new instance type
+  configured.
 - Provisioning status is updated with the ongoing progress of nodes being deleted and added.
 
 ## Adding a New Worker Pool
@@ -41,7 +45,8 @@ The following are the steps to add a new worker node pool to a cluster:
   - Rolling update setting, availability zones, flavor, and Disk size settings
   - Save the node pool settings
 
-The new worker pool settings are updated, and cluster updates begin within a few minutes. Provisioning status updates will be available with the ongoing progress of tasks related to adding new nodes.
+The new worker pool settings are updated, and cluster updates begin within a few minutes. Provisioning status updates
+will be available with the ongoing progress of tasks related to adding new nodes.
 
 ## Removing a Worker Pool
 

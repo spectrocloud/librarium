@@ -8,13 +8,16 @@ sidebar_position: 0
 tags: ["tenant-administration"]
 ---
 
-You can set up a login banner message that all users must acknowledge and accept before they log in to Palette. The message is limited to 1300 characters, and only plain text is supported.
+You can set up a login banner message that all users must acknowledge and accept before they log in to Palette. The
+message is limited to 1300 characters, and only plain text is supported.
 
 <br />
 
 :::warning
 
-The login banner message is only accessible when users attempt to log in to Palette through the tenant URL. Using the default Palette SaaS login URL of `https://console.spectrocloud.com` will not display the login banner message. Users of self-hosted Palette use the tenant URL defined during the Palette installation.
+The login banner message is only accessible when users attempt to log in to Palette through the tenant URL. Using the
+default Palette SaaS login URL of `https://console.spectrocloud.com` will not display the login banner message. Users of
+self-hosted Palette use the tenant URL defined during the Palette installation.
 
 :::
 
@@ -34,11 +37,15 @@ The login banner message is only accessible when users attempt to log in to Pale
 
 5. Fill out the text box with the message you want all Palette users in your tenant to acknowledge before a login.
 
-  <br />
+{" "}
+
+<br />
 
 ![A view of the tenant settings platform page with an example login banner message.](/tenant-settings_login-banner_settings-page-view.png)
 
-  <br />
+{" "}
+
+<br />
 
 6. Select **Save Message** to save your changes.
 
@@ -52,16 +59,22 @@ You can validate the banner message is set up correctly by using the following s
 
 2. From your web browser, navigate to the Palette tenant URL for your organization.
 
-  <br />
+{" "}
+
+<br />
 
 :::info
 
-For Palette SaaS, the tenant URL is prefixed with your tenant name. For example, the tenant `spectrodocs` has the URL `spectrodocs-spectrocloud.console.spectrocloud.com`. Users of self-hosted instances of Palette should use the tenant URL defined during the Palette installation.
+For Palette SaaS, the tenant URL is prefixed with your tenant name. For example, the tenant `spectrodocs` has the URL
+`spectrodocs-spectrocloud.console.spectrocloud.com`. Users of self-hosted instances of Palette should use the tenant URL
+defined during the Palette installation.
 
 :::
 
 3. Acknowledge the login banner message.
 
-  <br />
+{" "}
+
+<br />
 
 ![A view of a tenant login banner message](/tenant-settings_login-banner_tenant-banner-view.png)

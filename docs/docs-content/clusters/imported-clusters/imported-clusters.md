@@ -8,19 +8,28 @@ sidebar_custom_props:
 tags: ["clusters", "imported clusters"]
 ---
 
-Existing Kubernetes clusters not deployed through Palette can be imported into Palette for visibility, limited Day -2 management, and additional capabilities such as application lifecycle management. You can import Kubernetes clusters from various infrastructure providers, such as public and private clouds and bare-metal environments.
+Existing Kubernetes clusters not deployed through Palette can be imported into Palette for visibility, limited Day -2
+management, and additional capabilities such as application lifecycle management. You can import Kubernetes clusters
+from various infrastructure providers, such as public and private clouds and bare-metal environments.
 
-Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality because Palette understands how to interact with the infrastructure provider's API. Cloud-specific clusters provide the same experience as Palette deployed clusters.
+Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality
+because Palette understands how to interact with the infrastructure provider's API. Cloud-specific clusters provide the
+same experience as Palette deployed clusters.
 
-The generic type is for a cluster that is deployed in an environment where Palette lacks integration with the underlying infrastructure provider's API. Palette can support basic operations for generic clusters, such as reporting metrics, conducting scans, scheduling backups, and applying and managing add-on profiles. However, Day-2 activities are not supported in generic clusters.
+The generic type is for a cluster that is deployed in an environment where Palette lacks integration with the underlying
+infrastructure provider's API. Palette can support basic operations for generic clusters, such as reporting metrics,
+conducting scans, scheduling backups, and applying and managing add-on profiles. However, Day-2 activities are not
+supported in generic clusters.
 
-Refer to the [Supported Infrastructure Providers](imported-clusters.md#supported-infrastructure-providers) section to learn more about supported infrastructure environments.
+Refer to the [Supported Infrastructure Providers](imported-clusters.md#supported-infrastructure-providers) section to
+learn more about supported infrastructure environments.
 
 To get started with a cluster import, refer to the [Import a Cluster](cluster-import.md) guide to learn more.
 
 ## Import Modes
 
-To determine Palette's control over the imported cluster, you can choose the management mode you prefer. Refer to the table below for more information on each mode.
+To determine Palette's control over the imported cluster, you can choose the management mode you prefer. Refer to the
+table below for more information on each mode.
 
 | Mode            | Description                                                                                                                                                              |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -29,7 +38,8 @@ To determine Palette's control over the imported cluster, you can choose the man
 
 ## Supported Infrastructure Providers
 
-The following infrastructure providers are supported for cluster imports. If an environment is not listed below, select the **Generic** type when importing a cluster.
+The following infrastructure providers are supported for cluster imports. If an environment is not listed below, select
+the **Generic** type when importing a cluster.
 
 <br />
 
@@ -47,7 +57,8 @@ The following infrastructure providers are supported for cluster imports. If an 
 
 ### Self-Hosted Support
 
-Self-hosted Palette also supports importing clusters. You must ensure network connectivity is available between the target import cluster and the Palette instance.
+Self-hosted Palette also supports importing clusters. You must ensure network connectivity is available between the
+target import cluster and the Palette instance.
 
 <br />
 
@@ -66,7 +77,8 @@ A few restrictions apply to all cluster imports that you need to be aware of bef
 
 :::warning
 
-Imported generic clusters lack many Day-2 management operations such as scaling nodes, adding worker pools, or any operations that require Palette to have knowledge of the underlying infrastructure.
+Imported generic clusters lack many Day-2 management operations such as scaling nodes, adding worker pools, or any
+operations that require Palette to have knowledge of the underlying infrastructure.
 
 :::
 
@@ -74,7 +86,11 @@ Imported generic clusters lack many Day-2 management operations such as scaling 
 
 ## Delete Imported Cluster
 
-You can remove a cluster by following the standard cluster removal steps. Refer to the [Delete a Cluster](../cluster-management/remove-clusters.md) for instructions. Be aware that Palette will not delete the actual cluster. Palette will remove the link to the imported cluster and instruct the Palette agent to remove itself from the cluster and all of the agent's dependencies that were installed during the import process. To delete the cluster, you must manually perform the delete action in the hosting infrastructure provider.
+You can remove a cluster by following the standard cluster removal steps. Refer to the
+[Delete a Cluster](../cluster-management/remove-clusters.md) for instructions. Be aware that Palette will not delete the
+actual cluster. Palette will remove the link to the imported cluster and instruct the Palette agent to remove itself
+from the cluster and all of the agent's dependencies that were installed during the import process. To delete the
+cluster, you must manually perform the delete action in the hosting infrastructure provider.
 
 ## Resources
 

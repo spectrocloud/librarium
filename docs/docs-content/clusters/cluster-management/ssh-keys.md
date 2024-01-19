@@ -7,11 +7,15 @@ sidebar_position: 10
 tags: ["clusters", "cluster management"]
 ---
 
-Palette supports SSH (Secure Shell) to establish, administer, and communicate with remote clusters. This section describes creating and managing SSH Keys in the Palette Management Console.
+Palette supports SSH (Secure Shell) to establish, administer, and communicate with remote clusters. This section
+describes creating and managing SSH Keys in the Palette Management Console.
 
 ## Scope of SSH Key
 
-Palette groups clusters for logical separation into [Projects](../../projects.md). Users and teams can be assigned roles within a project for granular control over permissions within the project scope. SSH key authentication is scoped to a project. Multiple users can gain access to a single project. To access a cluster with SSH, you need a public SSH key registered in Palette.
+Palette groups clusters for logical separation into [Projects](../../projects.md). Users and teams can be assigned roles
+within a project for granular control over permissions within the project scope. SSH key authentication is scoped to a
+project. Multiple users can gain access to a single project. To access a cluster with SSH, you need a public SSH key
+registered in Palette.
 
 ## Prerequisites
 
@@ -33,7 +37,8 @@ Follow these steps to create an SSH key using the terminal and upload it to Pale
     ls -la ~/.ssh
    ```
 
-   If you see files named **id_rsa** and **id_rsa.pub**, you already have an SSH key pair and can skip to step 8. If not, proceed to step 3.
+   If you see files named **id_rsa** and **id_rsa.pub**, you already have an SSH key pair and can skip to step 8. If
+   not, proceed to step 3.
 
 3. Generate a new SSH key pair by issuing the following command.
 
@@ -79,8 +84,11 @@ You can edit or delete SSH keys later by using the **three-dot Menu** to the rig
 
 :::
 
-During cluster creation, assign your SSH key to a cluster. You can use multiple keys to a project, but only one key can be assigned to an individual cluster.
+During cluster creation, assign your SSH key to a cluster. You can use multiple keys to a project, but only one key can
+be assigned to an individual cluster.
 
 ## Validate
 
-You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for additional guidance.
+You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host
+cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the
+[Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for additional guidance.

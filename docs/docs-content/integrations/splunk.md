@@ -10,7 +10,8 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/splunk/blobs/sha256:1729cfced
 tags: ["packs", "splunk", "logging"]
 ---
 
-Splunk Connect for Kubernetes imports and searches the Kubernetes loggings, objects, and metrics data in Splunk platform deployment. It supports the importing and searching of container logs.
+Splunk Connect for Kubernetes imports and searches the Kubernetes loggings, objects, and metrics data in Splunk platform
+deployment. It supports the importing and searching of container logs.
 
 ## Versions Supported
 

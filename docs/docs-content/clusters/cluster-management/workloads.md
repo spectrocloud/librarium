@@ -7,8 +7,9 @@ sidebar_position: 90
 tags: ["clusters", "cluster management"]
 ---
 
-Palette provides visibility into the resources running inside workload clusters. Workloads are displayed for all infrastructure providers.
-These resources are displayed on the cluster details page. Following is the list of resources shown in the workload browser:
+Palette provides visibility into the resources running inside workload clusters. Workloads are displayed for all
+infrastructure providers. These resources are displayed on the cluster details page. Following is the list of resources
+shown in the workload browser:
 
 | **Resource**          | **Description**                                                                                          |
 | --------------------- | -------------------------------------------------------------------------------------------------------- |

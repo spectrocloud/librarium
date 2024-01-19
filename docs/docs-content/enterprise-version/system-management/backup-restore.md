@@ -9,11 +9,14 @@ tags: ["palette", "management", "self-hosted", "backup", "restore"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palette configuration data is backed up and can be restored in case of a disaster or a cluster failure. Palette supports two backup modes:
+You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palette configuration data is
+backed up and can be restored in case of a disaster or a cluster failure. Palette supports two backup modes:
 
-- File Transfer Protocol (FTP) - Send the backup data of your enterprise cluster to a dedicated FTP server. Refer to the [FTP](#ftp) section for more information.
+- File Transfer Protocol (FTP) - Send the backup data of your enterprise cluster to a dedicated FTP server. Refer to the
+  [FTP](#ftp) section for more information.
 
-- Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3. Refer to the [S3](#s3) section for more information.
+- Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3.
+  Refer to the [S3](#s3) section for more information.
 
 :::warning
 
@@ -33,7 +36,9 @@ Use the following instructions to configure FTP backup for your enterprise clust
 
 ### Instructions
 
-1. Log in to [Palette](https://console.spectrocloud.com) as an administrator. Refer to the [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more information.
+1. Log in to [Palette](https://console.spectrocloud.com) as an administrator. Refer to the
+   [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more
+   information.
 
 2. From the left **Main Menu**, select **Administration**.
 
@@ -51,11 +56,14 @@ Use the following instructions to configure FTP backup for your enterprise clust
 | **Retention Period** | The number of days to retain the backup.                                  |
 | **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
 
-5. Click on **Validate** to validate the FTP server configuration. If the validation is successful, the **Save** button is enabled. Otherwise, an error message is displayed. In case of an error, correct verify the FTP server configuration and click on **Validate** again.
+5. Click on **Validate** to validate the FTP server configuration. If the validation is successful, the **Save** button
+   is enabled. Otherwise, an error message is displayed. In case of an error, correct verify the FTP server
+   configuration and click on **Validate** again.
 
 ### Validate
 
-Validation is part of the backup configuration wizard. You can verify that a backup initiates at the scheduled time and is successfully uploaded to the FTP server.
+Validation is part of the backup configuration wizard. You can verify that a backup initiates at the scheduled time and
+is successfully uploaded to the FTP server.
 
 ## S3
 
@@ -67,7 +75,8 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 
 - An AWS S3 bucket.
 
-- An AWS IAM user with the following IAM permissions attached. Ensure you replace the bucket name in the `Resource` field with the name of your S3 bucket.
+- An AWS IAM user with the following IAM permissions attached. Ensure you replace the bucket name in the `Resource`
+  field with the name of your S3 bucket.
 
   ```json
   {
@@ -83,10 +92,7 @@ Use the following instructions to configure S3 backup for your enterprise cluste
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": [
-          "arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME",
-          "arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*"
-        ]
+        "Resource": ["arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*"]
       },
       {
         "Sid": "ec2Permissions",
@@ -109,7 +115,9 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 
 ### Instructions
 
-1. Log into the Palette system console as an administrator. Refer to the [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more information.
+1. Log into the Palette system console as an administrator. Refer to the
+   [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more
+   information.
 
 2. From the left **Main Menu**, select **Administration**.
 
@@ -127,8 +135,11 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 | **Retention Period** | The number of days to retain the backup.                                  |
 | **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
 
-5. Click on **Validate** to validate the S3 configuration. If the validation is successful, the **Save** button is enabled. Otherwise, an error message is displayed. In case of an error, correct verify the S3 configuration and click on **Validate** again.
+5. Click on **Validate** to validate the S3 configuration. If the validation is successful, the **Save** button is
+   enabled. Otherwise, an error message is displayed. In case of an error, correct verify the S3 configuration and click
+   on **Validate** again.
 
 ### Validate
 
-Validation is part of the backup configuration wizard. You can validate a backup initiates at the scheduled time and successfully uploads to the S3 bucket.
+Validation is part of the backup configuration wizard. You can validate a backup initiates at the scheduled time and
+successfully uploads to the S3 bucket.

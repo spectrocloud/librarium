@@ -9,7 +9,8 @@ sidebar_custom_props:
 tags: ["components"]
 ---
 
-This page lists the version details of various Palette components and their respective Palette releases. Visit the [Downloads](spectro-downloads.md) resource to access the download URLs.
+This page lists the version details of various Palette components and their respective Palette releases. Visit the
+[Downloads](spectro-downloads.md) resource to access the download URLs.
 
 ## Palette CLI Versions
 

@@ -69,7 +69,9 @@ Review the following table to determine which pack binaries you need to download
 
 ## Download Instructions
 
-To download a binary you must provide the username and password for the support team's private repository. Reach out to our support team to [obtain the credentials](../../enterprise-version.md#access-palette). The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` binary.
+To download a binary you must provide the username and password for the support team's private repository. Reach out to
+our support team to [obtain the credentials](../../enterprise-version.md#access-palette). The following example shows
+how to download the `airgap-pack-aws-alb-2.5.1.bin` binary.
 
 ```bash
 $ curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin \

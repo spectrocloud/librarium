@@ -7,27 +7,38 @@ hide_table_of_contents: false
 sidebar_position: 50
 ---
 
-Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster _before_ it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
+Pack constraints are a set of rules defined at the pack level to validate the packs for a Profile or a Cluster _before_
+it gets created or updated. Packs must be validated before the cluster is submitted to ensure a successful deployment.
 
 <br />
 
 :::info
 
-You can find information about the JSON schema for the pack metadata file in the [JSON schema](add-custom-packs.md#json-schema) section of the documentation.
+You can find information about the JSON schema for the pack metadata file in the
+[JSON schema](add-custom-packs.md#json-schema) section of the documentation.
 
 :::
 
 ## Pack Values Constraints
 
-A Spectro Pack currently supports various configurations through a configuration file called `values.yaml`. The values defined in the config file are applied while deploying the Kubernetes cluster. The values defined in the pack are default values and can be overridden in the Cluster Profile or during the Cluster deployment.
+A Spectro Pack currently supports various configurations through a configuration file called `values.yaml`. The values
+defined in the config file are applied while deploying the Kubernetes cluster. The values defined in the pack are
+default values and can be overridden in the Cluster Profile or during the Cluster deployment.
 
-Since the default pack values can be overridden, users may inadvertently set incorrect values leading to cluster deployment failure. These failures can occur at any point during the cluster deployment process. If the system is capable of detecting invalid pack values before the cluster is submitted for deployment, then deployment failures can be overcome to some extent.
+Since the default pack values can be overridden, users may inadvertently set incorrect values leading to cluster
+deployment failure. These failures can occur at any point during the cluster deployment process. If the system is
+capable of detecting invalid pack values before the cluster is submitted for deployment, then deployment failures can be
+overcome to some extent.
 
-Pack value constraints are additional information provided through a template file called `schema.yaml` in the pack. They define the schema format of the pack values. The pack constraints framework auto-checks for any schema constraints defined in the pack and validates the pack values. This checking occurs while creating or updating Cluster Profiles and Clusters.
+Pack value constraints are additional information provided through a template file called `schema.yaml` in the pack.
+They define the schema format of the pack values. The pack constraints framework auto-checks for any schema constraints
+defined in the pack and validates the pack values. This checking occurs while creating or updating Cluster Profiles and
+Clusters.
 
 ## Schema Constraints
 
-Every schema constraint consists of a key name and the schema template. The key name must be the complete path of the parameter which is defined in the config file.
+Every schema constraint consists of a key name and the schema template. The key name must be the complete path of the
+parameter which is defined in the config file.
 
 **Required**
 
@@ -62,7 +73,8 @@ registry.hostname:
 
 :::warning
 
-The syntax of the regex accepted is the same general syntax used by Perl, Python, and other languages. More precisely, it is the syntax accepted by RE2 and described [here](https://golang.org/s/re2syntax).
+The syntax of the regex accepted is the same general syntax used by Perl, Python, and other languages. More precisely,
+it is the syntax accepted by RE2 and described [here](https://golang.org/s/re2syntax).
 
 :::
 
@@ -72,7 +84,8 @@ The syntax of the regex accepted is the same general syntax used by Perl, Python
 
 <TabItem label="string" value="pack_constraint_format_string">
 
-The string format type checks if the input value is a string and supports the regex in the template. If regex is specified in the template then the input value must match the regex.
+The string format type checks if the input value is a string and supports the regex in the template. If regex is
+specified in the template then the input value must match the regex.
 
 ```bash
 registry.hostname:
@@ -85,7 +98,8 @@ registry.hostname:
 
 <TabItem label="number" value="pack_constraint_format_number">
 
-The number format type checks if the input value is a number, and supports the regex and the number range in the template.
+The number format type checks if the input value is a number, and supports the regex and the number range in the
+template.
 
 ```bash
 registry.port:
@@ -157,7 +171,9 @@ registry.version:
 
 <TabItem label="hints" value="pack_constraint_format_hints">
 
-Hints are optional short descriptions of the parameter. If defined in the schema template, these descriptions are visible in the UI while configuring the pack parameters in the Profile or the Cluster. One or more descriptions can be combined by using the pipe(|) separator.
+Hints are optional short descriptions of the parameter. If defined in the schema template, these descriptions are
+visible in the UI while configuring the pack parameters in the Profile or the Cluster. One or more descriptions can be
+combined by using the pipe(|) separator.
 
 ```bash
 registry.type:
@@ -181,7 +197,8 @@ registry.addresses.$[]:
  schema: '{{ required | format "${ipv4} - ${ipv4}" | hints "ip pool range"}}'
 ```
 
-`registry.addresses.$[]` is an array data type in the config file. The schema template defines that the value is required and the format must match - `${ipv4} - ${ipv4}`
+`registry.addresses.$[]` is an array data type in the config file. The schema template defines that the value is
+required and the format must match - `${ipv4} - ${ipv4}`
 
 **Examples**:
 
@@ -214,13 +231,20 @@ type-zeroedthick, size=s → invalid
 
 ## Pack Dependency Constraints
 
-Spectro Cloud provides the flexibility to choose any pack of any version in the profile. Clusters are deployed based on the packs selected in the profile. While this works for most of the cases, it is sometimes required to select a minimum or maximum pack version, or to have dependencies between the packs to ensure the Kubernetes cluster is deployed successfully as desired.
+Spectro Cloud provides the flexibility to choose any pack of any version in the profile. Clusters are deployed based on
+the packs selected in the profile. While this works for most of the cases, it is sometimes required to select a minimum
+or maximum pack version, or to have dependencies between the packs to ensure the Kubernetes cluster is deployed
+successfully as desired.
 
-Pack dependency constraints are the rules defined in the pack metadata file `pack.json`. They are used to define the minimum and maximum supported versions, and also to specify which pack is required or not supported. The pack constraints framework auto-checks for any schema constraints defined in the pack and validates the pack values. This checking occurs while creating or updating Cluster Profiles and Clusters.
+Pack dependency constraints are the rules defined in the pack metadata file `pack.json`. They are used to define the
+minimum and maximum supported versions, and also to specify which pack is required or not supported. The pack
+constraints framework auto-checks for any schema constraints defined in the pack and validates the pack values. This
+checking occurs while creating or updating Cluster Profiles and Clusters.
 
 ## Pack metadata JSON
 
-Pack dependency constraints must be defined in the `pack.json` file. The sample pack metadata shown below defines the dependencies under `constraints` key.
+Pack dependency constraints must be defined in the `pack.json` file. The sample pack metadata shown below defines the
+dependencies under `constraints` key.
 
 ```json
 {
@@ -267,19 +291,19 @@ If the minimum and maximum versions are not mentioned, the validation is skipped
 
 ## Pack Dependency Attributes
 
-A pack can have one or more dependencies defined in the `dependencies` array. Each dependency consists of the following attributes.
+A pack can have one or more dependencies defined in the `dependencies` array. Each dependency consists of the following
+attributes.
 
+| Attribute    | Description                                                                                                    |
+| ------------ | -------------------------------------------------------------------------------------------------------------- |
+| `packName`   | Name of the dependent pack.                                                                                    |
+| `layer`      | The layer type of the dependent pack. Refer to the [Layer Types](#layer-types) section to learn more.          |
+| `minVersion` | Minimum supported dependent pack version, any version below the minimum version is not valid.                  |
+| `maxVersion` | Maximum supported dependent pack version, any version above the maximum version is not valid.                  |
+| `type`       | The defined type for the dependency. Refer to the [Dependency Types](#dependency-types) section to learn more. |
 
-| Attribute | Description |
-|-------|-------------|
-| `packName` | Name of the dependent pack. |
-| `layer`  | The layer type of the dependent pack. Refer to the [Layer Types](#layer-types) section to learn more. |
-| `minVersion`  | Minimum supported dependent pack version, any version below the minimum version is not valid. |
-| `maxVersion`  | Maximum supported dependent pack version, any version above the maximum version is not valid. |
-| `type`  | The defined type for the dependency. Refer to the [Dependency Types](#dependency-types) section to learn more.|
-
-
-In the example code snippet from earlier, the three dependent packs are identified by unique pack names such as `vault`, `csi-vsphere-volume`, and `kubernetes`. A `minVersion`, `maxVersion`, and `type` are defined for each dependent pack.
+In the example code snippet from earlier, the three dependent packs are identified by unique pack names such as `vault`,
+`csi-vsphere-volume`, and `kubernetes`. A `minVersion`, `maxVersion`, and `type` are defined for each dependent pack.
 
 ```json {3,10,17} hideClipboard
 "dependencies": [
@@ -307,40 +331,47 @@ In the example code snippet from earlier, the three dependent packs are identifi
   ]
 ```
 
-
 #### Layer Types
 
-The `layer` attribute defines the layer where the dependent pack can be found in the Cluster Profile. The following table lists the different layer types.
+The `layer` attribute defines the layer where the dependent pack can be found in the Cluster Profile. The following
+table lists the different layer types.
 
-| Layer | Description |
-|-------|-------------|
-| `os` | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS). |
-| `k8s`  | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as [Palette eXtended Kubernetes](../integrations/kubernetes.md), RKE2, k3s or MicroK8s. |
-| `cni`  | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea. |
-| `csi`  | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx.|
-| `addon`  | The dependent pack can only be found in the add-on layers of the Cluster Profile. The `addon` layer contains packs such as ArgoCD, Vault, Nginx, and many more. |
-
+| Layer   | Description                                                                                                                                                                                                      |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `os`    | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS).                                    |
+| `k8s`   | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as [Palette eXtended Kubernetes](../integrations/kubernetes.md), RKE2, k3s or MicroK8s. |
+| `cni`   | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea.                                                     |
+| `csi`   | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx.                       |
+| `addon` | The dependent pack can only be found in the add-on layers of the Cluster Profile. The `addon` layer contains packs such as ArgoCD, Vault, Nginx, and many more.                                                  |
 
 #### Dependency Types
 
 The `type` attribute defines the type of dependency. The following table lists the different dependency types.
 
-| Type | Description |
-|-------|-------------|
-| `optional` | The dependent pack is optional but validates minimum or maximum versions if the pack is selected. In the example, the `vault` pack is optional. |
-| `required`  | The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined. In the example, the `kubernetes` pack is required with a minimum version of `1.17.0` and a max version of `1.18.6`. Any Kubernetes version below `1.17.0` and above `1.18.6` is not valid. |
-| `notSupported`  | The pack versions within the range of the mentioned minimum and maximum are not supported. The `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions. |
-
+| Type           | Description                                                                                                                                                                                                                                                                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `optional`     | The dependent pack is optional but validates minimum or maximum versions if the pack is selected. In the example, the `vault` pack is optional.                                                                                                                                                                     |
+| `required`     | The dependent pack is mandatory and must contain a version within the minimum or maximum supported versions, if defined. In the example, the `kubernetes` pack is required with a minimum version of `1.17.0` and a max version of `1.18.6`. Any Kubernetes version below `1.17.0` and above `1.18.6` is not valid. |
+| `notSupported` | The pack versions within the range of the mentioned minimum and maximum are not supported. The `csi-vsphere-volume` pack is not supported if the version selected falls within the min and max versions.                                                                                                            |
 
 ## Pack Resource Constraints
 
-A successful Kubernetes Cluster deployment is possible only when the cluster has sufficient hardware requirements. We consider the CPU, Memory, and Disk size as the hardware requirements. The minimum resource requests can be varied depending on the workload to be deployed in the cluster. Spectro Cloud users are allowed to select the desired instance type, and the disk size while configuring the machine pool in the Cluster deployment procedure. If the user selects the instance type which does not satisfy the minimum CPU or Memory or Disk size requirements, then there is a high probability that the cluster deployment may not succeed due to insufficient CPU or Memory or Disk size.
+A successful Kubernetes Cluster deployment is possible only when the cluster has sufficient hardware requirements. We
+consider the CPU, Memory, and Disk size as the hardware requirements. The minimum resource requests can be varied
+depending on the workload to be deployed in the cluster. Spectro Cloud users are allowed to select the desired instance
+type, and the disk size while configuring the machine pool in the Cluster deployment procedure. If the user selects the
+instance type which does not satisfy the minimum CPU or Memory or Disk size requirements, then there is a high
+probability that the cluster deployment may not succeed due to insufficient CPU or Memory or Disk size.
 
-Pack Resource Constraints are a set of rules defined in the pack metadata `pack.json` to specify the minimum CPU, Memory, and Disk size requirements. The pack constraints framework auto-checks the resource constraints and validates the user-selected instance type specifications before the cluster is submitted for deployment. The total input resource capacity is evaluated against the machine pool size with the actual hardware specifications of a selected instance type.
+Pack Resource Constraints are a set of rules defined in the pack metadata `pack.json` to specify the minimum CPU,
+Memory, and Disk size requirements. The pack constraints framework auto-checks the resource constraints and validates
+the user-selected instance type specifications before the cluster is submitted for deployment. The total input resource
+capacity is evaluated against the machine pool size with the actual hardware specifications of a selected instance type.
 
 ## Pack metadata JSON
 
-Pack resource constraints must be defined in the `pack.json` file. The sample pack metadata is shown below to define the `resources` under `constraints` key.
+Pack resource constraints must be defined in the `pack.json` file. The sample pack metadata is shown below to define the
+`resources` under `constraints` key.
 
 ```json
 {
@@ -400,7 +431,9 @@ The type of resource
 
 <TabItem label="minLimit" value="pack_resources_minLimit">
 
-The minimum limit of the resource will be considered during the machine pool validation. The resource limit value is required to have the below unit depending on the resource type. Any change of unit will cause inaccurate computation of the total minimum requirement.
+The minimum limit of the resource will be considered during the machine pool validation. The resource limit value is
+required to have the below unit depending on the resource type. Any change of unit will cause inaccurate computation of
+the total minimum requirement.
 
 - cpu - millicore (m)
 - memory - Mibibyte (Mi)
@@ -410,7 +443,10 @@ The minimum limit of the resource will be considered during the machine pool val
 
 <TabItem label="components" value="pack_resources_components">
 
-The minLimit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for the basic resource validation, but in some cases where the pack contains one or more associated components, then each component can define its CPU or memory resource requests in the config file `values.yaml`. In this case, a single `minLimit` value is not sufficient as the minimum requirements can be different for each component.
+The minLimit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for the
+basic resource validation, but in some cases where the pack contains one or more associated components, then each
+component can define its CPU or memory resource requests in the config file `values.yaml`. In this case, a single
+`minLimit` value is not sufficient as the minimum requirements can be different for each component.
 
 :::info
 
@@ -424,19 +460,28 @@ The `components` field is an array of the component which consists of these attr
 
 <TabItem label="resourceRequestParamRef" value="pack_resources_resourceRequestParamRef">
 
-Resource requests and limits can be defined in the pack `values.yaml`. It is required for the pack constraints framework to know the parameter name from where the resource request value can be read during the resource validation. So, the `resourceRequestParamRef` is the configuration parameter name of the resource request defined in the `values.yaml`.
+Resource requests and limits can be defined in the pack `values.yaml`. It is required for the pack constraints framework
+to know the parameter name from where the resource request value can be read during the resource validation. So, the
+`resourceRequestParamRef` is the configuration parameter name of the resource request defined in the `values.yaml`.
 
 </TabItem>
 
 <TabItem label="replicaCountParamRef" value="pack_resources_replicaCountParamRef">
 
-The Kubernetes pod can run in one or more replicas based on the replica count configured in the `values.yaml` file. The resource request values defined in `values.yaml` are for one replica, and the requests must be multiplied by the number of replicas which gives the actual minimum requirement. So, the `replicaCountParamRef` is the configuration parameter name of the replica count defined in the `values.yaml`
+The Kubernetes pod can run in one or more replicas based on the replica count configured in the `values.yaml` file. The
+resource request values defined in `values.yaml` are for one replica, and the requests must be multiplied by the number
+of replicas which gives the actual minimum requirement. So, the `replicaCountParamRef` is the configuration parameter
+name of the replica count defined in the `values.yaml`
 
 </TabItem>
 
 <TabItem label="scheduleType" value="pack_resources_scheduleType">
 
-Kubernetes provides a way to schedule the pods on master/worker nodes or both. Pack Constraints framework must know where the pods are scheduled because the resource validation validates only the master machine pool when the pods are scheduled on master nodes. Similarily, if the pods are scheduled on worker nodes, then only the worker machine pool will be validated. In the case of daemon sets, the pods are scheduled in both master and worker nodes, and the framework validates both master and worker machine pool configurations before the cluster is submitted for deployment.
+Kubernetes provides a way to schedule the pods on master/worker nodes or both. Pack Constraints framework must know
+where the pods are scheduled because the resource validation validates only the master machine pool when the pods are
+scheduled on master nodes. Similarily, if the pods are scheduled on worker nodes, then only the worker machine pool will
+be validated. In the case of daemon sets, the pods are scheduled in both master and worker nodes, and the framework
+validates both master and worker machine pool configurations before the cluster is submitted for deployment.
 
 - master - pods are scheduled only on master nodes
 - worker - pods are scheduled only on worker nodes
@@ -452,7 +497,11 @@ Kubernetes provides a way to schedule the pods on master/worker nodes or both. P
 
 ## Pack Presets
 
-Pack Presets are the predefined values in a file called `presets.yaml` in the pack. It contains an array of the presets for the pack, and is visible in the pack parameters of the Cluster profile and the Cluster. Users can select any preset from the available pack presets, and the predefined values of a selected preset are applied automatically by the Spectro Cloud UI. Presets make pack configuration much easier as multiple pack values are updated at a time and the user does not need to understand all the configuration parameters which get changed depending on various factors.
+Pack Presets are the predefined values in a file called `presets.yaml` in the pack. It contains an array of the presets
+for the pack, and is visible in the pack parameters of the Cluster profile and the Cluster. Users can select any preset
+from the available pack presets, and the predefined values of a selected preset are applied automatically by the Spectro
+Cloud UI. Presets make pack configuration much easier as multiple pack values are updated at a time and the user does
+not need to understand all the configuration parameters which get changed depending on various factors.
 
 ## Presets Metadata YAML
 
@@ -519,7 +568,8 @@ _A set of values in YAML format._ These are added/updated in the pack values whe
 
 <TabItem label="group" value="preset_attributes_group">
 
-One or more presets can be categorized into a common group, but only one preset can be selected from the same group of presets.
+One or more presets can be categorized into a common group, but only one preset can be selected from the same group of
+presets.
 
 </TabItem>
 
@@ -527,7 +577,8 @@ One or more presets can be categorized into a common group, but only one preset 
 
 ## Pack Macros
 
-Pack macros are the variables defined in the Cluster profile or in Cluster pack values, and these variables are resolved only at the cluster deployment time.
+Pack macros are the variables defined in the Cluster profile or in Cluster pack values, and these variables are resolved
+only at the cluster deployment time.
 
 ## Types of Macros
 
@@ -535,7 +586,8 @@ Pack macros are the variables defined in the Cluster profile or in Cluster pack 
 
 <TabItem label="System Macros" value="system_macros">
 
-System macros are variables defined by the system. Users are allowed to use these variables and the system is capable of resolving all the variables to values at the time of cluster deployment.
+System macros are variables defined by the system. Users are allowed to use these variables and the system is capable of
+resolving all the variables to values at the time of cluster deployment.
 
 <Tabs queryString="System Macros">
 
@@ -593,7 +645,9 @@ user:
 
 <TabItem label="Pack Reference Macros" value="pack_reference_macros">
 
-Pack reference macros are custom variables that must be defined in a pack and then can be used as a variable in any pack. If the variable is not defined with a value, then the default value is applied, if specified. If the default value is not specified, then the variable will be resolved to an empty value.
+Pack reference macros are custom variables that must be defined in a pack and then can be used as a variable in any
+pack. If the variable is not defined with a value, then the default value is applied, if specified. If the default value
+is not specified, then the variable will be resolved to an empty value.
 
 <Tabs queryString="Pack Reference Macros">
 
@@ -639,7 +693,8 @@ version: 1.18.0
 
 ### Sprig Template Functions
 
-Users are allowed to use the [sprig template functions](http://masterminds.github.io/sprig/) to modify the resolved variable value.
+Users are allowed to use the [sprig template functions](http://masterminds.github.io/sprig/) to modify the resolved
+variable value.
 
 **Examples**
 
@@ -659,6 +714,7 @@ k8s:
 
 :::info
 
-If the variable `version` is not defined in the pack `kubernetes`, then the default value `1.19.0` will be applied at deployment. In case the default value is not specified then the empty value will be applied.
+If the variable `version` is not defined in the pack `kubernetes`, then the default value `1.19.0` will be applied at
+deployment. In case the default value is not specified then the empty value will be applied.
 
 :::

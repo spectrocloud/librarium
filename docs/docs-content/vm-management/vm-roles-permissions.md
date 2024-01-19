@@ -8,9 +8,12 @@ sidebar_position: 20
 tags: ["vmo"]
 ---
 
-You must configure roles and role binding before any user, including you as administrator, can access Palette Virtual Machine Orchestrator (VMO). There are two sets of roles: Cluster Roles and Palette Roles, along with the required bindings configuration.
+You must configure roles and role binding before any user, including you as administrator, can access Palette Virtual
+Machine Orchestrator (VMO). There are two sets of roles: Cluster Roles and Palette Roles, along with the required
+bindings configuration.
 
-Palette provides the following four out-of-the-box Cluster roles for Palette Virtual Machine Orchestrator. The table also lists the corresponding Palette roles.
+Palette provides the following four out-of-the-box Cluster roles for Palette Virtual Machine Orchestrator. The table
+also lists the corresponding Palette roles.
 
 <br />
 
@@ -25,16 +28,24 @@ Palette provides the following four out-of-the-box Cluster roles for Palette Vir
 
 :::warning
 
-These roles are currently only relevant to access Palette Virtual Machine Orchestrator APIs. To access the Virtual Machines console, users must have permissions to access the host clusters. These permissions can be granted through the [default Kubernetes roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings) Admin/Editor/Viewer.
+These roles are currently only relevant to access Palette Virtual Machine Orchestrator APIs. To access the Virtual
+Machines console, users must have permissions to access the host clusters. These permissions can be granted through the
+[default Kubernetes roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings)
+Admin/Editor/Viewer.
 
 :::
 
 <br />
 
-You can create additional roles based on the permissions granularity that Palette offers. Palette provides the ability to specify bindings to configure granular Role-Based Access Control (RBAC) rules.
+You can create additional roles based on the permissions granularity that Palette offers. Palette provides the ability
+to specify bindings to configure granular Role-Based Access Control (RBAC) rules.
 
 <br />
 
-You can configure namespaces and RBAC from within a cluster or from a Palette workspace that contains a cluster group. In a cluster group, all RoleBindings must occur at the namespace level. For details, review the [Cluster RBAC](../clusters/cluster-management/cluster-rbac.md) and [workspace RBAC](../workspace/workspace.md#role-based-access-controlrbac) guides.
+You can configure namespaces and RBAC from within a cluster or from a Palette workspace that contains a cluster group.
+In a cluster group, all RoleBindings must occur at the namespace level. For details, review the
+[Cluster RBAC](../clusters/cluster-management/cluster-rbac.md) and
+[workspace RBAC](../workspace/workspace.md#role-based-access-controlrbac) guides.
 
-Palette leverages Regex Pattern matching so you can select multiple namespaces to apply role bindings. Check out [Regex for Namespaces](../workspace/workload-features.md#regex-for-namespaces) to learn more.
+Palette leverages Regex Pattern matching so you can select multiple namespaces to apply role bindings. Check out
+[Regex for Namespaces](../workspace/workload-features.md#regex-for-namespaces) to learn more.

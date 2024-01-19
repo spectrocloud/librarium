@@ -8,11 +8,16 @@ sidebar_position: 0
 tags: ["user-management", "authentication", "api-key"]
 ---
 
-You can create an API key to authenticate API requests to Palette. Use the API key to make REST API calls without providing your username and password. The API keys are limited to a single tenant and user. If you are a tenant admin, you can create API keys for any user within the tenant.
+You can create an API key to authenticate API requests to Palette. Use the API key to make REST API calls without
+providing your username and password. The API keys are limited to a single tenant and user. If you are a tenant admin,
+you can create API keys for any user within the tenant.
 
-Once you create an API key, you cannot view the key again. Save the key in a secure location, such as a password manager. This restrictions applies to both the Palette User Interface and the REST API. When you create an API key, you can set an expiration date for the key. The expiration date can be further customized after the key creation.
+Once you create an API key, you cannot view the key again. Save the key in a secure location, such as a password
+manager. This restrictions applies to both the Palette User Interface and the REST API. When you create an API key, you
+can set an expiration date for the key. The expiration date can be further customized after the key creation.
 
-Tenant administrators have the ability to create an API on behalf of any user within the tenant. Select the Tenant tab below to learn more about creating an API key as a tenant admin.
+Tenant administrators have the ability to create an API on behalf of any user within the tenant. Select the Tenant tab
+below to learn more about creating an API key as a tenant admin.
 
 ## Prerequisites
 
@@ -86,7 +91,8 @@ Ensure you save the API key in a secure location. You will not be able to view t
 
 5. Click the **Generate** button.
 
-6. Copy the API key and save it in a secure location, such as a password manager. Share the API key with the user you created the API key for.
+6. Copy the API key and save it in a secure location, such as a password manager. Share the API key with the user you
+   created the API key for.
 
 :::warning
 
@@ -109,7 +115,8 @@ Ensure you save the API key in a secure location. You will not be able to view t
 
 3. Verify your API key is listed in the table.
 
-4. Test your API against the Palette API. Issue the command below in your terminal, replace `PLACE_YOUR_API_KEY_HERE` with your API key.
+4. Test your API against the Palette API. Issue the command below in your terminal, replace `PLACE_YOUR_API_KEY_HERE`
+   with your API key.
 
 ```shell
 API_KEY=PLACE_YOUR_API_KEY_HERE

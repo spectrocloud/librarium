@@ -8,7 +8,10 @@ sidebar_position: 60
 tags: ["self-hosted", "enterprise"]
 ---
 
-Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through Palette On-Premises Enterprise Mode. It provides several capabilities across clusters to keep your clusters secure, compliant, up-to-date, and perform ongoing management operations like backup/restore and cluster migration across Private Cloud Gateway (PCGs).
+Palette supports several Day-2 operations to manage the end-to-end lifecycle of the Kubernetes clusters launched through
+Palette On-Premises Enterprise Mode. It provides several capabilities across clusters to keep your clusters secure,
+compliant, up-to-date, and perform ongoing management operations like backup/restore and cluster migration across
+Private Cloud Gateway (PCGs).
 
 <Tabs queryString="pcg">
 
@@ -16,7 +19,9 @@ Palette supports several Day-2 operations to manage the end-to-end lifecycle of 
 
 ## Palette PCG Migration
 
-Palette enables PCG migration to route the traffic between PCGs to ensure uninterrupted PCG service availability. If a PCG goes unhealthy, it can be deleted after migrating the clusters launched through that PCG to another healthy PCG. This ensures that cluster operations such as deletion are carried out without interruption.
+Palette enables PCG migration to route the traffic between PCGs to ensure uninterrupted PCG service availability. If a
+PCG goes unhealthy, it can be deleted after migrating the clusters launched through that PCG to another healthy PCG.
+This ensures that cluster operations such as deletion are carried out without interruption.
 
 ## When Will You Migrate
 
@@ -28,22 +33,24 @@ The possible conditions of PCG migration are:
 
 ## How to Migrate a PCG Traffic
 
-To migrate the traffic from a PCG:
-<br />
+To migrate the traffic from a PCG: <br />
 
 1. Log in as **Tenant Admin** to the Palette Console.
 
 2. From the **Tenant Settings**, go to the **Private Cloud Gateways** tab to list all PCGs.
 
-3. Click the 'Kebab' menu (three-dot ellipsis) towards the PCG to be migrated to see the drop-down option of **Migrate**.
+3. Click the 'Kebab' menu (three-dot ellipsis) towards the PCG to be migrated to see the drop-down option of
+   **Migrate**.
 
 4. Click the **Migrate** option to open the wizard to select your destination PCG.
 
-5. The wizard will display the drop-down list of all healthy PCGs to which traffic can be migrated. Select the PCG of your choice from the drop-down.
+5. The wizard will display the drop-down list of all healthy PCGs to which traffic can be migrated. Select the PCG of
+   your choice from the drop-down.
 
 6. Confirm the migration operation to get a UI confirmation of the successful migration.
 
-7. Once the migration is completed, the unhealthy/source PCG can be deleted successfully. Clear the residual resources manually to complete the deletion process.
+7. Once the migration is completed, the unhealthy/source PCG can be deleted successfully. Clear the residual resources
+   manually to complete the deletion process.
 
 8. The **Audit Logs** gives the migration update.
 
@@ -53,15 +60,21 @@ To migrate the traffic from a PCG:
 
 ## Backup and Restore for Enterprise Clusters
 
-Palette provides convenient backup options to backup the Enterprise Kubernetes cluster state into object storage. It restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes native objects like Pods, DaemonSets, Services, etc., a snapshot of the persistent volume is taken and maintained as part of the backup. The two options of backup creation are:
+Palette provides convenient backup options to backup the Enterprise Kubernetes cluster state into object storage. It
+restores it at a later point in time if required to the same or a different cluster. Besides backing up Kubernetes
+native objects like Pods, DaemonSets, Services, etc., a snapshot of the persistent volume is taken and maintained as
+part of the backup. The two options of backup creation are:
 
 - FTP
 
 - S3
 
-FTP mode backup is sending the backup data of your enterprise cluster to a dedicated FTP server using the File Transfer Protocol (FTP).
+FTP mode backup is sending the backup data of your enterprise cluster to a dedicated FTP server using the File Transfer
+Protocol (FTP).
 
-S3 buckets for backup make it trivial for everyone to use Amazon’s infrastructure for remote backups and secure cluster objects online. In addition, this feature provides the advantages of scheduling, strong encryption, compression, easy access to your backup files.
+S3 buckets for backup make it trivial for everyone to use Amazon’s infrastructure for remote backups and secure cluster
+objects online. In addition, this feature provides the advantages of scheduling, strong encryption, compression, easy
+access to your backup files.
 
 ### Instructions
 
@@ -97,7 +110,8 @@ The following information is filled to create a backup location in FTP mode:
    - **Retention period** for backup in days.
    - **Hours of the day** (UTC 0 to 23 hours) specifies the time of the specified day to take the backup.
 
-5. This configuration is saved and used for creating an FTP backup by clicking the **+Create FTP backup** button on the top-right corner of the page.
+5. This configuration is saved and used for creating an FTP backup by clicking the **+Create FTP backup** button on the
+   top-right corner of the page.
 
 6. The configuration can be edited as per the requirements.
 
@@ -105,8 +119,8 @@ The following information is filled to create a backup location in FTP mode:
 
 :::info
 
-The saved configuration details can be used to create multiple backup locations.
-Any changes can be made to the existing configuration and saved for reuse.
+The saved configuration details can be used to create multiple backup locations. Any changes can be made to the existing
+configuration and saved for reuse.
 
 :::
 
@@ -187,15 +201,18 @@ The following information is needed:
 
 - Validate the information and save the configurations.
 
-- The saved configuration is used for creating an S3 backup by clicking the **+Create S3 backup** button on the top-right corner of the page.
+- The saved configuration is used for creating an S3 backup by clicking the **+Create S3 backup** button on the
+  top-right corner of the page.
 
-- Once the backup is created, the details such as Backup uid, Mode, Status, Finish Time, and Actions is viewed from the console for the individual backup.
+- Once the backup is created, the details such as Backup uid, Mode, Status, Finish Time, and Actions is viewed from the
+  console for the individual backup.
 
 - Delete/Restore a specific backup from the actions panel.
 
 :::info
 
-The saved configuration details can be used to create multiple backup locations. Any changes can be made to the existing configuration and saved for reuse.
+The saved configuration details can be used to create multiple backup locations. Any changes can be made to the existing
+configuration and saved for reuse.
 
 :::
 

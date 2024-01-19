@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd
 tags: ["packs", "vault", "security"]
 ---
 
-[Vault](https://www.vaultproject.io/) helps secure, store, and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets, and other sensitive data using a UI, CLI, or HTTP API.
+[Vault](https://www.vaultproject.io/) helps secure, store, and tightly control access to tokens, passwords,
+certificates, encryption keys for protecting secrets, and other sensitive data using a UI, CLI, or HTTP API.
 
 Vault integration has the following components:
 
@@ -50,14 +51,16 @@ Never operate a dev mode server in production. It is insecure and loses data on 
 
 ### Usage
 
-HashiCorp provides many uses cases for Vault. For examples, refer to [HashiCorp Vault documentation](https://developer.hashicorp.com/vault/docs/use-cases).
+HashiCorp provides many uses cases for Vault. For examples, refer to
+[HashiCorp Vault documentation](https://developer.hashicorp.com/vault/docs/use-cases).
 
 #### Initialize and Unseal Vault
 
-If you enabled dev server mode, you do not need to initialize Vault and it is already unsealed. Use the root token you configured in the `values.yaml` file to sign in to Vault directly.
+If you enabled dev server mode, you do not need to initialize Vault and it is already unsealed. Use the root token you
+configured in the `values.yaml` file to sign in to Vault directly.
 
-Before any operation can be performed on Vault, you need to initialize the first root token and keys that can be used to unseal Vault.
-You can do so by following these steps:
+Before any operation can be performed on Vault, you need to initialize the first root token and keys that can be used to
+unseal Vault. You can do so by following these steps:
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -67,7 +70,8 @@ You can do so by following these steps:
 
 4. Download the cluster **kubeconfig** file.
 
-5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
+5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
 
 6. You need to get the Vault namespace and application name. Issue the following command to get the unique values.
 
@@ -84,21 +88,30 @@ You can do so by following these steps:
    kubectl port-forward $APP_NAME 8200:8200 --namespace $VAULT_NAMESPACE
    ```
 
-8. Open your browser and access the [Vault UI](https://localhost:8200/ui). You will receive a warning due to using a self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
+8. Open your browser and access the [Vault UI](https://localhost:8200/ui). You will receive a warning due to using a
+   self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
 
 :::tip
 
-If you do not want to use the Vault UI, you can also initialize and unseal Vault using the Vault CLI or API. For more information, refer to [Vault documentation](https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run#initialize-and-unseal-vault).
+If you do not want to use the Vault UI, you can also initialize and unseal Vault using the Vault CLI or API. For more
+information, refer to
+[Vault documentation](https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run#initialize-and-unseal-vault).
 
 :::
 
 #### Storage
 
-In a production Vault server, backend storage is on a data persistent layer, is untrusted and only stores encrypted data. In a dev mode Vault server, all data is stored in-memory and will be erased when Vault restarts.
+In a production Vault server, backend storage is on a data persistent layer, is untrusted and only stores encrypted
+data. In a dev mode Vault server, all data is stored in-memory and will be erased when Vault restarts.
 
 ##### RKE2
 
-When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class for the Vault server. To specify a storage class, change the value of the field `charts.vault.server.dataStorage.storageClass` in `values.yaml` for the Vault pack in your cluster profile from `null` to a storage class that meets your needs. Refer to [Kubernetes documentation on storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) for more details.
+When using Vault with the RKE2 distribution of Kubernetes in Palette Edge, you must explicitly specify a storage class
+for the Vault server. To specify a storage class, change the value of the field
+`charts.vault.server.dataStorage.storageClass` in `values.yaml` for the Vault pack in your cluster profile from `null`
+to a storage class that meets your needs. Refer to
+[Kubernetes documentation on storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) for more
+details.
 
 ### Terraform
 
@@ -123,7 +136,8 @@ data "spectrocloud_pack_simple" "pack-info" {
 
 :::warning
 
-All versions of the manifest-based pack less than v0.22.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+All versions of the manifest-based pack less than v0.22.x are considered deprecated. Upgrade to a newer version to take
+advantage of new features.
 
 :::
 

@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/istio/blobs/sha256:c80cf596d48592
 tags: ["packs", "istio", "network"]
 ---
 
-This Integration aims to automate and simplify the rollout of the various Istio components which helps with service mesh use cases.
+This Integration aims to automate and simplify the rollout of the various Istio components which helps with service mesh
+use cases.
 
 ## Versions Supported
 

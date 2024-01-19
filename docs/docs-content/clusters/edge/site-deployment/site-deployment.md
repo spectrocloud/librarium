@@ -28,7 +28,9 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 :::info
 
-In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed by people with different roles. The Palette Edge lifecycle is explained in detail in the [lifecycle](../edge-native-lifecycle.md) resource, highlighting the various roles involved.
+In a lab environment, you must perform all the steps. In a non-learning environment, these steps are typically performed
+by people with different roles. The Palette Edge lifecycle is explained in detail in the
+[lifecycle](../edge-native-lifecycle.md) resource, highlighting the various roles involved.
 
 :::
 

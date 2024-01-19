@@ -7,7 +7,10 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 10
 ---
 
-Palette supports integration with AWS Cloud Accounts. This also includes support for [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc) accounts. This section explains how to create an AWS cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
+Palette supports integration with AWS Cloud Accounts. This also includes support for
+[AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc)
+accounts. This section explains how to create an AWS cloud account in Palette. You can use any of the following
+authentication methods to register your cloud account.
 
 - AWS
   - [Static Access Credentials](#static-access-credentials)
@@ -60,11 +63,14 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 8. Once the credentials are validated, the **Add IAM Policies** toggle displays. Toggle **Add IAM Policies** on.
 
-9. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM policies you want to assign to Palette IAM role or IAM user.
+9. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
+   policies you want to assign to Palette IAM role or IAM user.
 
 #### Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts, navigate to the left **Main Menu** and click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS section.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of
+cloud accounts, navigate to the left **Main Menu** and click on **Tenant Settings**. Next, click on **Cloud Accounts**.
+Your newly added AWS cloud account is listed under the AWS section.
 
 ### Dynamic Access Credentials
 
@@ -90,7 +96,8 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
    - **Description**: Optional description for the cloud account.
    - Select **STS** authentication for validation.
 
-5. You will be provided with information on the right side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists the information provided by the wizard after you select **STS**.
+5. You will be provided with information on the right side of the wizard. You will need this information to create an
+   IAM Role for Palette. The following table lists the information provided by the wizard after you select **STS**.
 
    | **Parameter**           | **Description**                                  |
    | ----------------------- | ------------------------------------------------ |
@@ -106,7 +113,8 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
    - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html).
    - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 
-7. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette will use.
+7. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette
+   will use.
 
 8. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
 
@@ -116,11 +124,16 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 
 #### Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS section.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of
+cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your
+newly added AWS cloud account is listed under the AWS section.
 
 ## AWS GovCloud Account
 
-Palette supports integration with [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc). Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance in creating an AWS GovCloud account that uses static or dynamic access credentials.
+Palette supports integration with
+[AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc).
+Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance in
+creating an AWS GovCloud account that uses static or dynamic access credentials.
 
 ### Static Access Credentials
 
@@ -162,11 +175,14 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 8. Once the credentials are validated, the **Add IAM Policies** toggle displays. Toggle **Add IAM Policies** on.
 
-9. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM policies you want to assign to Palette IAM role or IAM user.
+9. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
+   policies you want to assign to Palette IAM role or IAM user.
 
 #### Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS section.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of
+cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click **Cloud Accounts**. Your
+newly added AWS cloud account is listed under the AWS section.
 
 ### Dynamic Access Credentials
 
@@ -192,7 +208,8 @@ Use the steps below to add an AWS cloud account using STS credentials.
    - **Description**
    - Select **STS** authentication for validation:
 
-5. You will be provided with information on the right side of the wizard. You will need this information to create an IAM Role for Palette. The following table lists the information provided by the wizard after you select **STS**.
+5. You will be provided with information on the right side of the wizard. You will need this information to create an
+   IAM Role for Palette. The following table lists the information provided by the wizard after you select **STS**.
 
    | **Parameter**           | **Description**                                   |
    | ----------------------- | ------------------------------------------------- |
@@ -208,7 +225,8 @@ Use the steps below to add an AWS cloud account using STS credentials.
    - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html).
    - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 
-7. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette will use.
+7. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette
+   will use.
 
 8. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
 
@@ -218,8 +236,12 @@ Use the steps below to add an AWS cloud account using STS credentials.
 
 #### Validate
 
-You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your newly added AWS cloud account is listed under the AWS sections.
+You can validate the account is available in Palette by reviewing the list of cloud accounts. To review the list of
+cloud accounts navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your
+newly added AWS cloud account is listed under the AWS sections.
 
 ## Next Steps
 
-Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To learn how to get started with deploying Kubernetes clusters to AWS, check out the [Create and Manage AWS IaaS Cluster](create-cluster.md) guide or the [Create and Manage AWS EKS Cluster](eks.md) guide.
+Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To
+learn how to get started with deploying Kubernetes clusters to AWS, check out the
+[Create and Manage AWS IaaS Cluster](create-cluster.md) guide or the [Create and Manage AWS EKS Cluster](eks.md) guide.

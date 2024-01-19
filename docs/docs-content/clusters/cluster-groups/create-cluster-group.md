@@ -7,7 +7,10 @@ sidebar_position: 0
 tags: ["clusters", "cluster groups"]
 ---
 
-Use a cluster group to organize your host clusters into a single logical group. A cluster group is a collection of one or more host clusters that together form a computing platform for you and your users to deploy Palette Virtual Clusters. Downstream consumers can use the cluster group when using Palette in [App Mode](../../introduction/palette-modes.md#what-is-app-mode).
+Use a cluster group to organize your host clusters into a single logical group. A cluster group is a collection of one
+or more host clusters that together form a computing platform for you and your users to deploy Palette Virtual Clusters.
+Downstream consumers can use the cluster group when using Palette in
+[App Mode](../../introduction/palette-modes.md#what-is-app-mode).
 
 :::info
 
@@ -34,7 +37,8 @@ Use the instructions below to create a cluster group.
 
 2. Navigate to the left **Main Menu** and select **Cluster Groups**.
 
-3. Click **+New Cluster Groups** to create a new cluster group and provide the following information to the creation wizard.
+3. Click **+New Cluster Groups** to create a new cluster group and provide the following information to the creation
+   wizard.
 
    - **Basic Information**:
 
@@ -50,7 +54,9 @@ Use the instructions below to create a cluster group.
 
 :::info
 
-Only host clusters created under the current scope are available to add to a cluster group. You can add host clusters created under the current project or at the tenant scope. You cannot add host clusters that were created in another project scope.
+Only host clusters created under the current scope are available to add to a cluster group. You can add host clusters
+created under the current project or at the tenant scope. You cannot add host clusters that were created in another
+project scope.
 
 :::
 
@@ -68,7 +74,8 @@ Only host clusters created under the current scope are available to add to a clu
 
 #### Palette Virtual Cluster Configuration
 
-The configuration applied to all virtual clusters launched into the host clusters. Select the Kubernetes distribution you want all virtual clusters to use. Use the **Advanced Config** for further customization.
+The configuration applied to all virtual clusters launched into the host clusters. Select the Kubernetes distribution
+you want all virtual clusters to use. Use the **Advanced Config** for further customization.
 
 ![A view of the Kubernetes distribution selection menu](/clusters_cluster-groups_create-cluster-group_virtual-cluster-distro.png)
 
@@ -82,7 +89,8 @@ The request sizing applies to the maximum amount of resources a virtual cluster 
 
 :::warning
 
-A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The default settings in the cluster group virtual cluster configuration YAML file has the following values:
+A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The default
+settings in the cluster group virtual cluster configuration YAML file has the following values:
 
 ```yaml
 vcluster
@@ -97,11 +105,13 @@ vcluster
       ephemeral-storage: 128Mi
 ```
 
-Increasing the limit and request values could result in a virtual cluster requiring more resources than the default values of 4 CPU, 4 GiB of memory, and 2 Gib of storage.
+Increasing the limit and request values could result in a virtual cluster requiring more resources than the default
+values of 4 CPU, 4 GiB of memory, and 2 Gib of storage.
 
 :::
 
-To enable virtual clusters for OpenShift, review the OpenShit [instructions below](#enable-virtual-cluster-for-openshift).
+To enable virtual clusters for OpenShift, review the OpenShit
+[instructions below](#enable-virtual-cluster-for-openshift).
 
 7. Click **Next** to complete the cluster group creation process.
 
@@ -109,19 +119,26 @@ To enable virtual clusters for OpenShift, review the OpenShit [instructions belo
 
 ## Validate
 
-To review your cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Your newly created cluster group is now displayed and ready for use.
+To review your cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Your newly created
+cluster group is now displayed and ready for use.
 
 ## Manage your Cluster Group
 
-Once the cluster group is created, the day two operations can be performed from the cluster group's **Settings** options. To access cluster group settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select a cluster group, and click the **Settings** button.
+Once the cluster group is created, the day two operations can be performed from the cluster group's **Settings**
+options. To access cluster group settings, navigate to the left **Main Menu** and select **Cluster Groups**. Select a
+cluster group, and click the **Settings** button.
 
 ### Add a Host Cluster to the Group
 
-You can add additional host clusters to a cluster group. Navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to add additional host clusters. Click on the **+ Add Host Cluster**. Select the desired host clusters and verify the oversubscription and cluster endpoint type settings.
+You can add additional host clusters to a cluster group. Navigate to the left **Main Menu** and select **Cluster
+Groups**. Select the cluster group you want to add additional host clusters. Click on the **+ Add Host Cluster**. Select
+the desired host clusters and verify the oversubscription and cluster endpoint type settings.
 
 ### Delete your Cluster Group
 
-To delete a cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group you want to review or modify the settings. Click on the **Settings** button. Select **Delete Cluster**, enter the cluster name, and confirm the delete operation.
+To delete a cluster group, navigate to the left **Main Menu** and select **Cluster Groups**. Select the cluster group
+you want to review or modify the settings. Click on the **Settings** button. Select **Delete Cluster**, enter the
+cluster name, and confirm the delete operation.
 
 ## Enable Virtual Clusters for OpenShift
 

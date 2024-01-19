@@ -32,9 +32,7 @@ const findApiDocsPluginVersionsObject = () => {
   }
 
   // Find the "plugins" property in the "config" declaration
-  const pluginsProperty = configDeclaration.declarations[0].init.properties.find(
-    (prop) => prop.key.name === "plugins"
-  );
+  const pluginsProperty = configDeclaration.declarations[0].init.properties.find((prop) => prop.key.name === "plugins");
 
   // If the "plugins" property is not found, log an error and return
   if (!pluginsProperty) {
@@ -52,15 +50,10 @@ const findApiDocsPluginVersionsObject = () => {
   // Loop through the elements of the "plugins" array
   pluginsArray.elements.forEach((element) => {
     // If the element is an array containing the API docs plugin, get its versions object
-    if (
-      element.type === "ArrayExpression" &&
-      element.elements[0].value === "@docusaurus/plugin-content-docs"
-    ) {
+    if (element.type === "ArrayExpression" && element.elements[0].value === "@docusaurus/plugin-content-docs") {
       const idProperty = element.elements[1].properties.find((prop) => prop.key.name === "id");
       if (idProperty && idProperty.value.value === "api") {
-        apiVersionsObject = element.elements[1].properties.find(
-          (prop) => prop.key.name === "versions"
-        ).value;
+        apiVersionsObject = element.elements[1].properties.find((prop) => prop.key.name === "versions").value;
       }
     }
   });

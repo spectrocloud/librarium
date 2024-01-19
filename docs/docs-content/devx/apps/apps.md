@@ -6,8 +6,10 @@ hide_table_of_contents: false
 tags: ["devx", "app mode", "pde"]
 ---
 
-Applications are the combination of an [App Profile](../../profiles/app-profiles/create-app-profiles/create-app-profiles.md)
-and a [Palette Virtual Cluster](../palette-virtual-clusters/palette-virtual-clusters.md). When you specify an application profile and deploy it to a virtual cluster, you create an application.
+Applications are the combination of an
+[App Profile](../../profiles/app-profiles/create-app-profiles/create-app-profiles.md) and a
+[Palette Virtual Cluster](../palette-virtual-clusters/palette-virtual-clusters.md). When you specify an application
+profile and deploy it to a virtual cluster, you create an application.
 
 Check out the resource links below to learn more about Apps.
 

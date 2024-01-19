@@ -10,7 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/prismacloud/blobs/sha256:9ddb
 tags: ["packs", "prismacloud", "security"]
 ---
 
-Prisma Cloud Compute is a cloud workload protection platform (CWPP) offering protection for hosts, containers, and server-less deployments in any cloud, and across the software lifecycle. Prisma Cloud Compute is cloud-native and API-enabled. It can protect tenant workloads, regardless of the underlying compute technology or the cloud deployment.
+Prisma Cloud Compute is a cloud workload protection platform (CWPP) offering protection for hosts, containers, and
+server-less deployments in any cloud, and across the software lifecycle. Prisma Cloud Compute is cloud-native and
+API-enabled. It can protect tenant workloads, regardless of the underlying compute technology or the cloud deployment.
 
 ## Versions Supported
 

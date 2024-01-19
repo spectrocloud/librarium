@@ -8,14 +8,17 @@ tags: ["vertex"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Palette VerteX is available in the following modes:
+Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version
+is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Palette
+VerteX is available in the following modes:
 
 | **Supported Platform** | **Description**                                                              | **Install Guide**                                           |
 | ---------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | VMware                 | Install Palette VerteX in VMware environment.                                | [Install on VMware](./install-on-vmware/install.md)         |
 | Kubernetes             | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](./install-on-kubernetes/install.md) |
 
-You can also install Palette VerteX in an airgap environment. For more information, refer to the [Airgap Installation](airgap/airgap.md) section.
+You can also install Palette VerteX in an airgap environment. For more information, refer to the
+[Airgap Installation](airgap/airgap.md) section.
 
 | **Supported Airgap Platform** | **Description**                                                                                                               |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -26,13 +29,18 @@ The next sections describe specific requirements for installing Palette VerteX.
 
 ## Size Guidelines
 
-This section lists resource requirements for Palette VerteX for various capacity levels. In Palette VerteX, the terms _small_, _medium_, and _large_ are used to describe the instance size of worker pools that Palette VerteX is installed on. The following table lists the resource requirements for each size.
+This section lists resource requirements for Palette VerteX for various capacity levels. In Palette VerteX, the terms
+_small_, _medium_, and _large_ are used to describe the instance size of worker pools that Palette VerteX is installed
+on. The following table lists the resource requirements for each size.
 
 <br />
 
 :::warning
 
-The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested the performance of Palette VerteX with the recommended maximum number of deployed nodes and clusters. Exceeding these limits can negatively impact performance and result in instability. The active workload limit refers to the maximum number of active nodes and pods at any given time.
+The recommended maximum number of deployed nodes and clusters in the environment should not be exceeded. We have tested
+the performance of Palette VerteX with the recommended maximum number of deployed nodes and clusters. Exceeding these
+limits can negatively impact performance and result in instability. The active workload limit refers to the maximum
+number of active nodes and pods at any given time.
 
 :::
 

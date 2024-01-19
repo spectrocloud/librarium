@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:2
 tags: ["packs", "generic-vm-libvirt", "system app"]
 ---
 
-Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
+Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster
+profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing
+but the values. Users will then have the ability to modify the add-on pack for the different applications.
 
 ## Version Supported
 
@@ -23,11 +25,12 @@ Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtu
 </TabItem>
 </Tabs>
 
-<br/>
+<br />
 
 ## Configuring Palette Generic VM Libvirt Add-on
 
-To configure the Generic-VM-Libvirt add-on pack for the application cluster, begin by editing the manifest namespace value.
+To configure the Generic-VM-Libvirt add-on pack for the application cluster, begin by editing the manifest namespace
+value.
 
 `cluster-{{ .spectro.system.cluster.uid }}`
 
@@ -37,7 +40,9 @@ To configure the Generic-VM-Libvirt add-on pack for the application cluster, beg
 namespace: jet-system
 ```
 
-If multiple instances of this pack have to be deployed on the cluster for different virtual machine applications, then modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with distinctive names to make it unique across all the packs in the cluster.
+If multiple instances of this pack have to be deployed on the cluster for different virtual machine applications, then
+modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with distinctive names to make it unique across all
+the packs in the cluster.
 
 <br />
 
@@ -171,15 +176,18 @@ charts:
 
 ## Virtual Machine Hooks
 
-The Generic-VM-Libvirt pack supports various hooks, while deploying VM applications and supports multiple use-cases of customizing workflow, as customers require.
+The Generic-VM-Libvirt pack supports various hooks, while deploying VM applications and supports multiple use-cases of
+customizing workflow, as customers require.
 
 <br />
 
 ## Using preExecCmd and postExecCmd
 
-The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval.
+The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at
+approximately a 2-minute interval.
 
-If you want to run the command or script only, whenever the virtual machine is getting created or after the virtual machine is destroyed, use **preVMInitCmd** and **postVMInitCmd**, respectively.
+If you want to run the command or script only, whenever the virtual machine is getting created or after the virtual
+machine is destroyed, use **preVMInitCmd** and **postVMInitCmd**, respectively.
 
 <br />
 
@@ -195,7 +203,8 @@ postExecCmd: "bash /var/files/pre-exec.sh"
 
 ## Using preVMInitCmd and postVMInitCmd
 
-The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
+The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the
+**postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
 **Note**: These commands will not be executed in each reconciliation.
 
@@ -213,7 +222,9 @@ postVMInitCmd: "echo 'Ooho! VM is created.'"
 
 ## Using preVMDestroyCmd
 
-Any command or script provided in this virtual machine hook will execute before the VM gets destroyed. It will be executed only when the VM is being deleted. A virtual machine deletion can happen for any reason, like changing anything in cloud-init or removing the pack from the profile.
+Any command or script provided in this virtual machine hook will execute before the VM gets destroyed. It will be
+executed only when the VM is being deleted. A virtual machine deletion can happen for any reason, like changing anything
+in cloud-init or removing the pack from the profile.
 
 <br />
 
@@ -225,7 +236,9 @@ preVMDestroyCmd: ""
 
 :::info
 
-During a first-time deployment, <b> preVMDestroyCmd</b> will not be invoked. However, if there is any change in cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is executed successfully, only then will the VM resource be deleted.
+During a first-time deployment, <b> preVMDestroyCmd</b> will not be invoked. However, if there is any change in
+cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once
+preVMDestroyCmd is executed successfully, only then will the VM resource be deleted.
 
 <br />
 <br />
@@ -261,7 +274,9 @@ extraDomainHclConfig: |
 
 ## Mounts
 
-Mount the data inside the existing configuration maps or secrets into the pod as files, where pre-and-post hooks are executed. This allows the data present in the configuration map or the secrets file to be accessible while running pre-and-post exec hooks.
+Mount the data inside the existing configuration maps or secrets into the pod as files, where pre-and-post hooks are
+executed. This allows the data present in the configuration map or the secrets file to be accessible while running
+pre-and-post exec hooks.
 
 <br />
 
@@ -283,7 +298,9 @@ mounts:
 
 ## Environment Variables
 
-The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running pre-and-post exec hooks.
+The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where
+pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running
+pre-and-post exec hooks.
 
 <br />
 

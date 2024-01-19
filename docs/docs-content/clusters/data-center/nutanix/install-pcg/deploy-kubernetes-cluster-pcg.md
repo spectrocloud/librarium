@@ -7,7 +7,10 @@ sidebar_position: 15
 tags: ["data center", "nutanix"]
 ---
 
-This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG following the process described in the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the [Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) specified in the guide.
+This section describes one possible method for creating a Kubernetes cluster that will be used to deploy your PCG
+following the process described in the
+[Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) resource and the
+[Common Prerequisites](https://cluster-api.sigs.k8s.io/user/quick-start#common-prerequisites) specified in the guide.
 
 ## Prerequisites
 
@@ -15,9 +18,11 @@ This section describes one possible method for creating a Kubernetes cluster tha
 
 - A Nutanix Prism Element cluster created.
 
-- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the Kubernetes cluster.
+- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) deployed in the
+  Kubernetes cluster.
 
-- A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
+- A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
+  [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
 - The following software installed on the machine that will be used to create the clusters:
 
@@ -30,7 +35,8 @@ This section describes one possible method for creating a Kubernetes cluster tha
 
 1. Log in to your Nutanix Prism account.
 
-2. Create a local kind cluster. This cluster will bootstrap Cluster API and provision the target workload cluster in the Nutanix account. The workload cluster is then used to deploy the PCG.
+2. Create a local kind cluster. This cluster will bootstrap Cluster API and provision the target workload cluster in the
+   Nutanix account. The workload cluster is then used to deploy the PCG.
 
 ```bash
 kind create cluster --name pcg-pilot
@@ -38,7 +44,9 @@ kind create cluster --name pcg-pilot
 
 ## Deploy Workload Cluster
 
-3. Copy the required variables shown in the examples below to your terminal, add your environment-specific information, and export the variables. The table describes the environment variables. For more information, review the [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
+3. Copy the required variables shown in the examples below to your terminal, add your environment-specific information,
+   and export the variables. The table describes the environment variables. For more information, review the
+   [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
 
 | **Variable**                          | **Description**                                                                                     |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -79,7 +87,8 @@ Copy the following environment variables to your terminal, provide values, and e
     export WORKER_MACHINE_COUNT=1
     ```
 
-To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the following command for each variable.
+To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the
+following command for each variable.
 
     ```bash
     echo $variable_name
@@ -91,7 +100,9 @@ To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were success
 clusterctl init --infrastructure nutanix
 ```
 
-5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name that you assigned to your workload cluster and `mytestnamespace` and with your namespace name. Provide the Nutanix Prism Central IP address for CONTROL_PLANE_ENDPOINT_IP.
+5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name
+   that you assigned to your workload cluster and `mytestnamespace` and with your namespace name. Provide the Nutanix
+   Prism Central IP address for CONTROL_PLANE_ENDPOINT_IP.
 
 ```bash
 export TEST_CLUSTER_NAME=mytestcluster
@@ -127,7 +138,11 @@ nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/mytestcluster-mt-0 create
 clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
 ```
 
-7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more information, refer to [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the [Nutanix Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference. [Calico](https://docs.tigera.io/calico/latest/about/) is used as the CNI solution in this example.
+7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more
+   information, refer to
+   [Deploy a CNI solution](https://cluster-api.sigs.k8s.io/user/quick-start.html#deploy-a-cni-solution) in the
+   [Nutanix Quick Start](https://cluster-api.sigs.k8s.io/user/quick-start.htm) reference.
+   [Calico](https://docs.tigera.io/calico/latest/about/) is used as the CNI solution in this example.
 
 ```bash
 kubectl apply --filename https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
@@ -157,7 +172,8 @@ Use the steps below to verify your virtual machines (VMs) are created.
 
 ## Cleanup
 
-With the PCG successfully installed in your Kubernetes workload cluster, you can delete the kind cluster that was used to bootstrap the workload cluster.
+With the PCG successfully installed in your Kubernetes workload cluster, you can delete the kind cluster that was used
+to bootstrap the workload cluster.
 
 ```bash
 kind delete cluster --name pcg-pilot

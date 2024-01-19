@@ -7,7 +7,9 @@ sidebar_position: 40
 tags: ["public cloud", "gcp", "iam"]
 ---
 
-This table contains the required Google Cloud Platform (GCP) permissions to create a custom GCP role tailored for usage with Palette. When creating a custom role, ensure you include all the permissions listed below to prevent Palette from having issues when deploying a host cluster.
+This table contains the required Google Cloud Platform (GCP) permissions to create a custom GCP role tailored for usage
+with Palette. When creating a custom role, ensure you include all the permissions listed below to prevent Palette from
+having issues when deploying a host cluster.
 
 | Permissions                                            | Description                                                                                     |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |

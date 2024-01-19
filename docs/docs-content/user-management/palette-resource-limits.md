@@ -1,7 +1,8 @@
 ---
 sidebar_label: "Palette Resource Limits"
 title: "Default Palette Resource Limits"
-description: "Understand the default resource limits for Palette and learn how to set resource limits for your Palette tenant."
+description:
+  "Understand the default resource limits for Palette and learn how to set resource limits for your Palette tenant."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
@@ -10,7 +11,9 @@ tags: ["user-management"]
 
 ## Default Palette Resource Limits
 
-Tenant admins can set and update resource limits for Palette. The resource limits determine the maximum number of resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects in the tenant.
+Tenant admins can set and update resource limits for Palette. The resource limits determine the maximum number of
+resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects in
+the tenant.
 
 The following table lists the default resource limits for Palette:
 
@@ -56,4 +59,6 @@ Use the following steps to set or update resource limits for your Palette tenant
 
 ## Validate
 
-You can validate the updated resource limits by creating a resource of the same type you updated. For example, you can create five API keys if you updated the **API Key** to five. If you attempt to create a sixth API key, you will receive an error message.
+You can validate the updated resource limits by creating a resource of the same type you updated. For example, you can
+create five API keys if you updated the **API Key** to five. If you attempt to create a sixth API key, you will receive
+an error message.

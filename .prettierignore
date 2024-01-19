@@ -6,3 +6,6 @@ src/deprecated
 vale/
 **/*.yaml
 **/*.yml
+
+# Troublesome docs
+docs/docs-content/user-management/user-management.md

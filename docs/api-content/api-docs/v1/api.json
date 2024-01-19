@@ -3372,12 +3372,7 @@
         "azureEnvironment": {
           "default": "AzurePublicCloud",
           "description": "Contains configuration for Azure cloud",
-          "enum": [
-            "AzureChinaCloud",
-            "AzurePublicCloud",
-            "AzureUSGovernment",
-            "AzureUSGovernmentCloud"
-          ],
+          "enum": ["AzureChinaCloud", "AzurePublicCloud", "AzureUSGovernment", "AzureUSGovernmentCloud"],
           "type": "string"
         },
         "clientId": {
@@ -4764,16 +4759,7 @@
           "$ref": "#/definitions/v1MachineHealth"
         },
         "instanceState": {
-          "enum": [
-            "Pending",
-            "Provisioning",
-            "Provisioned",
-            "Running",
-            "Deleting",
-            "Deleted",
-            "Failed",
-            "Unknown"
-          ],
+          "enum": ["Pending", "Provisioning", "Provisioned", "Running", "Deleting", "Deleted", "Failed", "Unknown"],
           "type": "string"
         },
         "maintenanceStatus": {
@@ -6492,13 +6478,7 @@
       "type": "string"
     },
     "v1ClusterProfileSortFields": {
-      "enum": [
-        "profileName",
-        "environment",
-        "profileType",
-        "creationTimestamp",
-        "lastModifiedTimestamp"
-      ],
+      "enum": ["profileName", "environment", "profileType", "creationTimestamp", "lastModifiedTimestamp"],
       "type": "string",
       "x-nullable": true
     },
@@ -25510,14 +25490,7 @@
           "type": "string"
         },
         "type": {
-          "enum": [
-            "ReadyForInstall",
-            "Installed",
-            "Ready",
-            "Error",
-            "UpgradeAvailable",
-            "WaitingForOtherLayers"
-          ],
+          "enum": ["ReadyForInstall", "Installed", "Ready", "Error", "UpgradeAvailable", "WaitingForOtherLayers"],
           "type": "string"
         }
       },
@@ -25962,13 +25935,7 @@
       "type": "object"
     },
     "v1SpectroClusterSortFields": {
-      "enum": [
-        "environment",
-        "clusterName",
-        "healthState",
-        "creationTimestamp",
-        "lastModifiedTimestamp"
-      ],
+      "enum": ["environment", "clusterName", "healthState", "creationTimestamp", "lastModifiedTimestamp"],
       "type": "string",
       "x-nullable": true
     },

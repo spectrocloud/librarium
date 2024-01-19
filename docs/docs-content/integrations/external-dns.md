@@ -14,7 +14,9 @@ The integration helps configure public DNS servers with information about Kubern
 
 ## Prerequisites
 
-Providers have to be set up for this pack to get deployed and work seamlessly. For a list of supported providers and the prerequisites to be set up, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers) section
+Providers have to be set up for this pack to get deployed and work seamlessly. For a list of supported providers and the
+prerequisites to be set up, visit [providers](https://github.com/kubernetes-sigs/external-dns#status-of-providers)
+section
 
 ## Versions Supported
 
@@ -44,7 +46,8 @@ Integration deploys the following components:
 
 ### Setup prerequisites for AWS Route53
 
-- Create the following IAM policy in the AWS account. This is needed for externalDNS to list and create Route53 resources.
+- Create the following IAM policy in the AWS account. This is needed for externalDNS to list and create Route53
+  resources.
 
 ```json
 {
@@ -64,7 +67,8 @@ Integration deploys the following components:
 }
 ```
 
-- Create an IAM role and associate the policy created above. Make a note of the role ARN which will be used in ExternalDNS deployment later
+- Create an IAM role and associate the policy created above. Make a note of the role ARN which will be used in
+  ExternalDNS deployment later
 - Setup hosted zone in AWS Route53
   ```bash
   # Create a DNS zone through AWS CLI
@@ -73,8 +77,8 @@ Integration deploys the following components:
 
 ### Deploy ExternalDNS on the cluster
 
-- Add ExternalDNS pack to the desired profile and deploy it to the cluster.
-  You may want to configure the following in pack values.yaml
+- Add ExternalDNS pack to the desired profile and deploy it to the cluster. You may want to configure the following in
+  pack values.yaml
 
   - Configure AWS provider details (line #86)
 
@@ -96,8 +100,8 @@ Integration deploys the following components:
 - Add Prometheus-Operator addon to the same profile where ExternalDNS is added
 
   - Change serviceType to ClusterIP (line #408)
-  - Enable Ingress for the add-on packs. In this example, let us use Prometheus-Operator integration.
-    Ingress config for Grafana will look like the following:
+  - Enable Ingress for the add-on packs. In this example, let us use Prometheus-Operator integration. Ingress config for
+    Grafana will look like the following:
 
     ```yaml
     #Ingress config
@@ -113,7 +117,8 @@ Integration deploys the following components:
       path: /
     ```
 
-    When Prometheus-Operator gets deployed in the Cluster, Ingress resource for Grafana will also get created and will look like
+    When Prometheus-Operator gets deployed in the Cluster, Ingress resource for Grafana will also get created and will
+    look like
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -145,12 +150,15 @@ Integration deploys the following components:
       --query "ResourceRecordSets[?Name == 'grafana.external-dns-test.my-org.com.']|[?Type == 'A']"
   ```
 
-- After which, if you access http://grafana.external-dns-test.my-org.com on your browser, you will be able to view the Grafana login page
+- After which, if you access http://grafana.external-dns-test.my-org.com on your browser, you will be able to view the
+  Grafana login page
 
 ### Troubleshooting
 
-- Make sure Ingress resource gets created for the Applications deployed and a LoadBalancer hostname / IP address is set on the Ingress resource
-- Check the `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change `logLevel` to debug to see additional info on the logs
+- Make sure Ingress resource gets created for the Applications deployed and a LoadBalancer hostname / IP address is set
+  on the Ingress resource
+- Check the `external-dns` pod for any issues with ExternalDNS not inserting records. If required, change `logLevel` to
+  debug to see additional info on the logs
 
 ## References
 

@@ -6,11 +6,16 @@ hide_table_of_contents: true
 type: "integration"
 category: ["security", "amd64", "arm64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://registry.dev.spectrocloud.com/v1/open-policy-agent/blobs/sha256:fcbad202dc9ca5e7a756562d8f9fc180ee77474034447dabc302d8a5a2bbe148?type=image/png" alt="OpenPolicyAgent logo'
+logoUrl:
+  'https://registry.dev.spectrocloud.com/v1/open-policy-agent/blobs/sha256:fcbad202dc9ca5e7a756562d8f9fc180ee77474034447dabc302d8a5a2bbe148?type=image/png"
+  alt="OpenPolicyAgent logo'
 tags: ["packs", "open-policy-agent", "security"]
 ---
 
-Palette users can leverage the **Open Policy Agent (OPA) Gatekeeper** to strengthen the security administration of Kubernetes environment. The major motivation behind the deployment is admission customization via configurations without code. Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints. Palette supports **Gatekeeper v3.0**.
+Palette users can leverage the **Open Policy Agent (OPA) Gatekeeper** to strengthen the security administration of
+Kubernetes environment. The major motivation behind the deployment is admission customization via configurations without
+code. Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and
+admin configurable constraints. Palette supports **Gatekeeper v3.0**.
 
 The major features of OPA are:
 

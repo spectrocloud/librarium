@@ -10,11 +10,18 @@ logoUrl: "https://registry.spectrocloud.com/v1/cni-calico/blobs/sha256:9a08103cc
 tags: ["packs", "calico", "network"]
 ---
 
-Palette Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for the Kubernetes network model can be found [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
+Palette Network Pack(s) helps provision resources for setting up Cluster networking in Kubernetes. Design goals for the
+Kubernetes network model can be found
+[here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
-[Project Calico](http://docs.projectcalico.org/) is an open-source container networking provider and network policy engine.
+[Project Calico](http://docs.projectcalico.org/) is an open-source container networking provider and network policy
+engine.
 
-Calico provides highly scalable networking and network policy solution for connecting Kubernetes pods based on the same IP networking principles as the internet, for both Linux (open source) and Windows (proprietary - available from [Tigera](https://www.tigera.io/essentials/)). Calico can be deployed without encapsulation or overlays to provide high-performance, high-scale data center networking. Calico also provides a fine-grained, intent-based network security policy for Kubernetes pods via its distributed firewall.
+Calico provides highly scalable networking and network policy solution for connecting Kubernetes pods based on the same
+IP networking principles as the internet, for both Linux (open source) and Windows (proprietary - available from
+[Tigera](https://www.tigera.io/essentials/)). Calico can be deployed without encapsulation or overlays to provide
+high-performance, high-scale data center networking. Calico also provides a fine-grained, intent-based network security
+policy for Kubernetes pods via its distributed firewall.
 
 Calico manifest used for networking does the following:
 
@@ -26,9 +33,7 @@ Calico manifest used for networking does the following:
 
 :::warning
 
-Limitations:
-AWS, VMWare supports IP-in-IP encapsulation type.
-Azure supports VXLAN encapsulation type.
+Limitations: AWS, VMWare supports IP-in-IP encapsulation type. Azure supports VXLAN encapsulation type.
 
 :::
 

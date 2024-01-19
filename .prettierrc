@@ -8,12 +8,5 @@
   "semi": true,
   "arrowParens": "always",
   "bracketSpacing": true,
-  "overrides": [
-    {
-      "files": "vale/**/*.{yml,txt}",
-      "options": {
-        "singleQuote": true
-      }
-    }
-  ]
+  "overrides": [{ "files": "**/*.{md,mx}", "options": { "parser": "mdx" } }]
 }

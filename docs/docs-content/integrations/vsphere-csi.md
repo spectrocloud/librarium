@@ -10,7 +10,10 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-vsphere-volume/blobs/sha2
 tags: ["packs", "vSphere-csi", "storage"]
 ---
 
-The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes users. It offers an in-tree volume driver that has been actively used on various Kubernetes platforms by service providers, including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage for Kubernetes and is also enterprise ready.
+The main goal of vSphere Container Storage Interface (CSI) is to expose vSphere storage and features to Kubernetes
+users. It offers an in-tree volume driver that has been actively used on various Kubernetes platforms by service
+providers, including on-prem. Cloud Native Storage (CNS) is a result of evolution and productization of vSphere Storage
+for Kubernetes and is also enterprise ready.
 
 ## vSphere CSI Driver Components
 
@@ -50,7 +53,8 @@ The vSphere CSI driver includes the following components:
 
 ## Troubleshooting
 
-Storage classes created by Spectro Cloud are named "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+Storage classes created by Spectro Cloud are named "spectro-storage-class" and can be fetched from kubectl using the
+following CLI command:
 
 ```bash
 kubectl get storageclass

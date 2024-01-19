@@ -11,9 +11,11 @@ Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account mus
 
 ## Prerequisites
 
-- A Nutanix cloud registered with Palette. For more information, refer to [Register Nutanix Cloud](register-nutanix-cloud.md).
+- A Nutanix cloud registered with Palette. For more information, refer to
+  [Register Nutanix Cloud](register-nutanix-cloud.md).
 
-- A PCG installed that connects the Nutanix cloud with Palette. For guidance, refer to [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
+- A PCG installed that connects the Nutanix cloud with Palette. For guidance, refer to
+  [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
 ## Add Cloud Account
 
@@ -51,4 +53,6 @@ Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account mus
 
 ## Next Steps
 
-Now that you have added a Nutanix account to Palette, you can start deploying Kubernetes clusters to your Nutanix infrastructure. To learn how to get started deploying Kubernetes clusters to Nutanix, review the [Create and Manage Nutanix Cluster](/clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.
+Now that you have added a Nutanix account to Palette, you can start deploying Kubernetes clusters to your Nutanix
+infrastructure. To learn how to get started deploying Kubernetes clusters to Nutanix, review the
+[Create and Manage Nutanix Cluster](/clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.

@@ -8,25 +8,35 @@ sidebar_position: 0
 tags: ["clusters", "cluster management", "monitoring"]
 ---
 
-The monitoring stack you will deploy uses the open-source tool, [Prometheus](https://prometheus.io/docs/introduction/overview/), to support your environment's monitoring requirements. The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment.
+The monitoring stack you will deploy uses the open-source tool,
+[Prometheus](https://prometheus.io/docs/introduction/overview/), to support your environment's monitoring requirements.
+The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The
+monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment.
 
-The monitoring stack uses a server-client architecture. The monitoring stack uses the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack to deploy all the dependencies the Prometheus server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes clusters with the [Prometheus Agent](../../../integrations/prometheus-agent.md) pack installed and configured.
+The monitoring stack uses a server-client architecture. The monitoring stack uses the
+[Prometheus Operator](../../../integrations/prometheus-operator.md) pack to deploy all the dependencies the Prometheus
+server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes
+clusters with the [Prometheus Agent](../../../integrations/prometheus-agent.md) pack installed and configured.
 
-Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to the monitoring stack.
+Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to
+the monitoring stack.
 
 <br />
 
 :::warning
 
-We recommend you avoid installing applications in your monitoring stack. The monitoring stack will require all the allocated resources to support Prometheus and incoming metrics from all other clusters.
+We recommend you avoid installing applications in your monitoring stack. The monitoring stack will require all the
+allocated resources to support Prometheus and incoming metrics from all other clusters.
 
 :::
 
 ## Deploy a Monitoring Stack
 
-The steps below will deploy a new host cluster with the Prometheus Operator pack. You can add the Prometheus Operator pack to an existing cluster if you already have a host cluster deployed in your environment.
+The steps below will deploy a new host cluster with the Prometheus Operator pack. You can add the Prometheus Operator
+pack to an existing cluster if you already have a host cluster deployed in your environment.
 
-The Prometheus Operator pack will install an unsecured Prometheus server by default. Use the **With Authentication and Encryption** tab for guidance on how to enable authentication.
+The Prometheus Operator pack will install an unsecured Prometheus server by default. Use the **With Authentication and
+Encryption** tab for guidance on how to enable authentication.
 
 You can choose to deploy the monitoring stack with or without authentication.
 
@@ -39,9 +49,11 @@ You can choose to deploy the monitoring stack with or without authentication.
 
 #### Prerequisites
 
-- An infrastructure provider environment registered in Palette. Refer to the [Clusters](../../clusters.md) documentation for guidance on how to register your infrastructure provider environment in Palette.
+- An infrastructure provider environment registered in Palette. Refer to the [Clusters](../../clusters.md) documentation
+  for guidance on how to register your infrastructure provider environment in Palette.
 
-- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:
+- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the
+  monitoring stack have 1.5x to 2x the minimum required size:
 
   Recommended size:
 
@@ -49,7 +61,9 @@ You can choose to deploy the monitoring stack with or without authentication.
   - 16 GB Memory
   - 20 GB Storage.
 
-  As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:
+  As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider
+  increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the
+  following resources from the monitoring stack:
 
   Each added agent:
 
@@ -59,7 +73,9 @@ You can choose to deploy the monitoring stack with or without authentication.
 
     <br />
 
-  Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
+  Refer to the
+  [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects)
+  documentation for additional guidance.
 
 #### Create Cluster Profile and Deploy
 
@@ -73,7 +89,9 @@ You can choose to deploy the monitoring stack with or without authentication.
 
 5. Select the infrastructure provider and continue.
 
-6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting core infrastructure for the profile, click **Confirm**.
+6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and
+   container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting
+   core infrastructure for the profile, click **Confirm**.
 
 7. In the next screen that displays, select **Add New Pack**.
 
@@ -84,11 +102,15 @@ You can choose to deploy the monitoring stack with or without authentication.
    - Pack Name: Prometheus Grafana
    - Pack Version: 44.25.X or newer. <br />
 
-9. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
+9. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `adminPassword`.
+   Input the password value for the admin user. The default admin user name is `admin`.
 
 10. Next, click on the **Presets** button to expand the options drawer.
 
-11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the available options.
+11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several
+    options to expand the functionality of the monitoring stack. Review the
+    [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the
+    available options.
 
 12. Confirm your changes by selecting **Confirm & Create**.
 
@@ -126,11 +148,13 @@ You can choose to deploy the monitoring stack with or without authentication.
 
 24. Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
 
-When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from Prometheus agents.
+When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from
+Prometheus agents.
 
 #### Validate
 
-To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
+To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the
+following steps.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -146,9 +170,13 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 
 ### With Authentication and Encryption
 
-To enable Hypertext Transfer Protocol Secure (HTTPS), you must make several architectural decisions and decide on various options for setting up the environment. These options range from choosing what will generate the Secure Socket Layer (SSL) certificates to how incoming requests for Grafana or Prometheus are handled.
+To enable Hypertext Transfer Protocol Secure (HTTPS), you must make several architectural decisions and decide on
+various options for setting up the environment. These options range from choosing what will generate the Secure Socket
+Layer (SSL) certificates to how incoming requests for Grafana or Prometheus are handled.
 
-The approach presented in this guide is one pattern you can use. However, we encourage you to discuss this pattern with your system administrator or platform engineering team before changing your infrastructure and Domain Name System (DNS) resources.
+The approach presented in this guide is one pattern you can use. However, we encourage you to discuss this pattern with
+your system administrator or platform engineering team before changing your infrastructure and Domain Name System (DNS)
+resources.
 
 The following diagram represents the infrastructure pattern you will use in this guide to enable HTTPS.
 
@@ -163,19 +191,24 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 #### Prerequisites
 
-- Experience with DNS and setting up custom domains that use SSL certificates are required for this guide. In addition, the following actions are needed.
+- Experience with DNS and setting up custom domains that use SSL certificates are required for this guide. In addition,
+  the following actions are needed.
 
   - Ability to create and update DNS record names.
 
-  - Two custom domain names. One domain is for the Grafana dashboard, and another is for host clusters to forward metrics to the monitoring stack.
+  - Two custom domain names. One domain is for the Grafana dashboard, and another is for host clusters to forward
+    metrics to the monitoring stack.
 
   - Ability to create a public certificate for each domain.
 
-- An infrastructure provider environment registered in Palette. Refer to the [Clusters](../../clusters.md) documentation for guidance on how to register your infrastructure provider environment in Palette.
+- An infrastructure provider environment registered in Palette. Refer to the [Clusters](../../clusters.md) documentation
+  for guidance on how to register your infrastructure provider environment in Palette.
 
-- [htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) or similar basic auth password file generator tool.
+- [htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) or similar basic auth password file generator
+  tool.
 
-- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the monitoring stack have 1.5x to 2x the minimum required size:
+- The minimum required size for the Prometheus server is 4 CPU, 8 GB Memory, and 10 GB Storage. We recommend the
+  monitoring stack have 1.5x to 2x the minimum required size:
 
   Recommended size:
 
@@ -183,7 +216,9 @@ In this guide, the following domains are used to expose the monitoring stack:
   - 16 GB Memory
   - 20 GB Storage.
 
-  As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the following resources from the monitoring stack:
+  As new clusters with the Prometheus agent are added to your environment, review the resource utilization and consider
+  increasing resources if needed. As the Prometheus documentation recommends, each additional agent requires the
+  following resources from the monitoring stack:
 
   Each added agent:
 
@@ -191,7 +226,9 @@ In this guide, the following domains are used to expose the monitoring stack:
   - 250 MiB Memory
   - 1 GB Storage.
 
-  Refer to the [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects) documentation for additional guidance.
+  Refer to the
+  [Prometheus Operational aspects](https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects)
+  documentation for additional guidance.
 
 #### Create Cluster Profile and Deploy
 
@@ -205,7 +242,9 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 5. Select the infrastructure provider and continue.
 
-6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting core infrastructure for the profile, click **Confirm**.
+6. Go ahead and select the desired operating system, Kubernetes distribution, container network interface (CNI), and
+   container storage interface (CSI). Click on **Next Layer** after each selection. When you have completed selecting
+   core infrastructure for the profile, click **Confirm**.
 
 7. In the next screen that displays, select **Add New Pack**.
 
@@ -218,7 +257,9 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 9. Review the YAML configuration on the right and add the following changes:
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 charts:
@@ -243,9 +284,12 @@ charts:
 
 14. Scroll down the presets option menu and enable **Remote Monitoring**.
 
-15. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `grafana.adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
+15. Review the YAML configuration on the right. Scroll down in the file until you find the parameter
+    `grafana.adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 charts:
@@ -256,7 +300,9 @@ charts:
 
 16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 charts:
@@ -266,7 +312,9 @@ charts:
         type: ClusterIP
 ```
 
-17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the available options.
+17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality
+    of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack
+    documentation to learn more about the available options.
 
 18. Click on **Add New Pack**.
 
@@ -302,21 +350,29 @@ charts:
 
 29. Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
 
-30. Once the host cluster is deployed, navigate to the left **Main Menu** and select **Clusters**. Click on your cluster to display the details page and ensure its status is **Running**.
+30. Once the host cluster is deployed, navigate to the left **Main Menu** and select **Clusters**. Click on your cluster
+    to display the details page and ensure its status is **Running**.
 
-31. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period and the word _kubeconfig_. Refer to the [Access Cluster with CLI](../palette-webctl.md#access-cluster-with-cli) for additional guidance.
+31. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period
+    and the word _kubeconfig_. Refer to the [Access Cluster with CLI](../palette-webctl.md#access-cluster-with-cli) for
+    additional guidance.
 
 32. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
 
-  <br />
+{" "}
+
+<br />
 
 ```shell
 export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
 ```
 
-33. Create an htpasswd file for the user `agent` and assign a password. You can choose a different username if you prefer.
+33. Create an htpasswd file for the user `agent` and assign a password. You can choose a different username if you
+    prefer.
 
-  <br />
+{" "}
+
+<br />
 
 ```shell
 htpasswd -c auth agent
@@ -333,7 +389,9 @@ Adding password for user agent
 
 34. Convert the htpasswd file into a Kubernetes secret.
 
-  <br />
+{" "}
+
+<br />
 
 ```shell
   kubectl create secret generic basic-auth --from-file=auth --namespace monitoring
@@ -345,11 +403,15 @@ Output:
   secret "basic-auth" created
 ```
 
-35. Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left **Main Menu** > **Profiles** > select your cluster profile. Click on the Prometheus operator layer to edit the YAML.
+35. Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left **Main
+    Menu** > **Profiles** > select your cluster profile. Click on the Prometheus operator layer to edit the YAML.
 
-36. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values provided below. Replace the `hosts` parameter with your custom domain.
+36. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values
+    provided below. Replace the `hosts` parameter with your custom domain.
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 ingress:
@@ -373,11 +435,14 @@ ingress:
 
 :::warning
 
-The following steps can be complex, depending on your environment and your access. Discuss the remaining step with your network administrator team if you need additional guidance.
+The following steps can be complex, depending on your environment and your access. Discuss the remaining step with your
+network administrator team if you need additional guidance.
 
 :::
 
-41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the CNAME's record value. Use the table below to identify which mapping to use between the domain and each load balancer hostname.
+41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the
+    CNAME's record value. Use the table below to identify which mapping to use between the domain and each load balancer
+    hostname.
 
 | Service                                             | Domain                   | CNAME Value Example                                                       |
 | --------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------- |
@@ -404,13 +469,19 @@ kubectl get service nginx-ingress-controller --namespace nginx -o jsonpath='{.st
 
 :::
 
-42. Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate manager service to generate a public certificate that you can attach to the load balancers with minimal overhead. On-prem, use the default certificate manager used by your organization.
+42. Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate
+    manager service to generate a public certificate that you can attach to the load balancers with minimal overhead.
+    On-prem, use the default certificate manager used by your organization.
 
 43. Update the network rules for each of the load balancers to allow inbound port 443.
 
-  <br />
+{" "}
 
-44. Next, update the load balancer listeners to forward requests from port 443 to the respective target port on the monitoring stack. The following table will map the service's load balancer listener with the respective configuration. Refer to the architecture diagram from the introduction to help you visualize the mapping.
+<br />
+
+44. Next, update the load balancer listeners to forward requests from port 443 to the respective target port on the
+    monitoring stack. The following table will map the service's load balancer listener with the respective
+    configuration. Refer to the architecture diagram from the introduction to help you visualize the mapping.
 
 | Inbound Load Balancer Port | Domain                   | Monitoring Stack Port                                               | Service                                             |
 | -------------------------- | ------------------------ | ------------------------------------------------------------------- | --------------------------------------------------- |
@@ -423,7 +494,8 @@ Your monitoring stack is now enabled with authentication and network encryption.
 
 #### Validate
 
-To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the following steps.
+To validate the monitoring stack is successfully deployed and ready to receive Prometheus agent requests, use the
+following steps.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -433,22 +505,26 @@ To validate the monitoring stack is successfully deployed and ready to receive P
 
 4. Ensure the cluster is in **Running** state.
 
-5. Next, open up your web browser and visit the domain name you specified for the Grafana dashboard. Example: `https://monitoring.example.com`.
+5. Next, open up your web browser and visit the domain name you specified for the Grafana dashboard. Example:
+   `https://monitoring.example.com`.
 
 <br />
 
 6. Log in to the Grafana dashboard using the user `admin` and the password you specified in the cluster profile.
 
-7. After you have verified you can log in to the Grafana dashboard, open a new tab and visit the Prometheus endpoint. Example: `https://metrics.example.com`
+7. After you have verified you can log in to the Grafana dashboard, open a new tab and visit the Prometheus endpoint.
+   Example: `https://metrics.example.com`
 
 8. Log in with the user `agent` and use the password you specified in the htpasswd file.
 
 :::info
 
-A common error is not updating the network rules to allow inbound connections for port 443 to the load balancers. Ensure you have updated all the required network rules to allow inbound network requests for port 443.
+A common error is not updating the network rules to allow inbound connections for port 443 to the load balancers. Ensure
+you have updated all the required network rules to allow inbound network requests for port 443.
 
 :::
 
 ## Next Steps
 
-Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to new and existing clusters. Check out the [Enable Monitoring on Host Cluster](deploy-agent.md) to get started.
+Now that you have a monitoring stack deployed and available in your environment, start adding the Prometheus agent to
+new and existing clusters. Check out the [Enable Monitoring on Host Cluster](deploy-agent.md) to get started.

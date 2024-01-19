@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/outcold-monitoring/blobs/sha256:3
 tags: ["packs", "outcold-monitoring", "monitoring"]
 ---
 
-Integration provides Kubernetes monitoring solution that includes log aggregation, performance and system metrics, metrics from the control plane and application metrics, a dashboard for reviewing network activity, and alerts to notify you about cluster or application performance issues.
+Integration provides Kubernetes monitoring solution that includes log aggregation, performance and system metrics,
+metrics from the control plane and application metrics, a dashboard for reviewing network activity, and alerts to notify
+you about cluster or application performance issues.
 
 ## Versions Supported
 

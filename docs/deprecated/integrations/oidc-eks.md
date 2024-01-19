@@ -10,7 +10,10 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/aws-eks-oidc/blobs/sha256:f86
 
 # OIDC identity provider authentication for Amazon EKS
 
-OpenID Connect (OIDC) Identity Provider (IDP) authentication for Amazon EKS clusters. This feature allows customers to integrate an OIDC identity provider with a new or existing Amazon EKS cluster running Kubernetes version 1.16 or later. OpenID Connect is an interoperable authentication protocol based on the OAuth 2.0 family of specifications. It adds a thin layer that sits on top of OAuth 2.0 that adds login and profile information about the identity of who is logged in.
+OpenID Connect (OIDC) Identity Provider (IDP) authentication for Amazon EKS clusters. This feature allows customers to
+integrate an OIDC identity provider with a new or existing Amazon EKS cluster running Kubernetes version 1.16 or later.
+OpenID Connect is an interoperable authentication protocol based on the OAuth 2.0 family of specifications. It adds a
+thin layer that sits on top of OAuth 2.0 that adds login and profile information about the identity of who is logged in.
 
 ## Versions Supported
 

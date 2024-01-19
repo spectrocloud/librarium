@@ -10,7 +10,8 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-azure/blobs/sha256:0787b7
 tags: ["packs", "azure-disk", "storage"]
 ---
 
-Azure Disk storage is designed to be used with Azure virtual machines for the tenant workloads. It offers high-performance, durable block storage with sub-millisecond latency and throughput for transaction-intensive workloads.
+Azure Disk storage is designed to be used with Azure virtual machines for the tenant workloads. It offers
+high-performance, durable block storage with sub-millisecond latency and throughput for transaction-intensive workloads.
 
 ## Versions Supported
 
@@ -37,7 +38,8 @@ Azure Disk storage is designed to be used with Azure virtual machines for the te
 
 ## Troubleshooting
 
-Storage classes created by Palette are named `spectro-storage-class` and can be fetched from kubectl using the following CLI command:
+Storage classes created by Palette are named `spectro-storage-class` and can be fetched from kubectl using the following
+CLI command:
 
 ```bash
 kubectl get storageclass --all-namespaces

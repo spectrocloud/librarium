@@ -17,11 +17,13 @@ You can edit an API key you have already created. The following attributes of an
 | **Expiration Date** | The expiration date of the key.        | ✅       |
 | **Value**           | The API key value.                     | ❌       |
 
-Tenant administrators can edit an API key on behalf of any user within the tenant. Select the Tenant tab below to learn more about editing an API key as a tenant admin.
+Tenant administrators can edit an API key on behalf of any user within the tenant. Select the Tenant tab below to learn
+more about editing an API key as a tenant admin.
 
 :::info
 
-Tenant administrators can only edit the API key name, description, and expiration date. The API key value and the assigned user cannot be edited.
+Tenant administrators can only edit the API key name, description, and expiration date. The API key value and the
+assigned user cannot be edited.
 
 :::
 
@@ -92,7 +94,8 @@ Tenant administrators can only edit the API key name, description, and expiratio
 
 3. Identify your API key in the table.
 
-4. Verify the changes you made to the API key attributes are reflected in the table, including API key name, description, and expiration date.
+4. Verify the changes you made to the API key attributes are reflected in the table, including API key name,
+   description, and expiration date.
 
 </TabItem>
 <TabItem label="Tenant" value="tenant">
@@ -107,7 +110,8 @@ Tenant administrators can only edit the API key name, description, and expiratio
 
 5. Identify the altered API key in the table.
 
-6. Verify the changes you made to the API key attributes are reflected in the table, including the API key name, description, and expiration date.
+6. Verify the changes you made to the API key attributes are reflected in the table, including the API key name,
+   description, and expiration date.
 
 </TabItem>
 </Tabs>

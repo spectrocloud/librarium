@@ -21,9 +21,12 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 - Edge supports adding multiple devices to the site to form a multi-node Kubernetes cluster.
 
-- Operating system (OS) images are derived from immutable container-based OS images provided by the [Kairos](http://kairos.io) open-source project.
+- Operating system (OS) images are derived from immutable container-based OS images provided by the
+  [Kairos](http://kairos.io) open-source project.
 
-- The installation is bootstrapped using a relatively small distribution-agnostic _Stylus_ installer image. The operating system and Kubernetes version are derived from cluster profile settings associated with the edge site and dynamically downloaded and installed.
+- The installation is bootstrapped using a relatively small distribution-agnostic _Stylus_ installer image. The
+  operating system and Kubernetes version are derived from cluster profile settings associated with the edge site and
+  dynamically downloaded and installed.
 
 - Palette Edge Distribution supports use cases that require customizing OS packages, device drivers, and more.
 
@@ -43,7 +46,9 @@ If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
 
 ## Supported Architectures
 
-Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all hardware and software configurations will work due to the various options available in the market. We recommend that you test your hardware configuration before deploying to production.
+Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all
+hardware and software configurations will work due to the various options available in the market. We recommend that you
+test your hardware configuration before deploying to production.
 
 <br />
 
@@ -65,7 +70,8 @@ Palette provides the following distributions for edge installations.
 
 ## Supported Configurations
 
-Palette offers complete flexibility in deploying clusters at edge sites with various aspects you can customize. The table below describes these aspects and the available options.
+Palette offers complete flexibility in deploying clusters at edge sites with various aspects you can customize. The
+table below describes these aspects and the available options.
 
 | **Parameter**                     | **Choices**                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -93,7 +99,8 @@ The following items are disabled by default for RKE2 and K3s.
 
 **Example Scenario:**
 
-For the Palette optimized K3s pack, the default network component flannel is disabled to allow the user to independently use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
+For the Palette optimized K3s pack, the default network component flannel is disabled to allow the user to independently
+use any container network interface pack such as Flannel or others, as part of the network layer of a cluster profile.
 
 The component metrics server is disabled to avoid duplicating it because Palette installs the metrics server by default.
 

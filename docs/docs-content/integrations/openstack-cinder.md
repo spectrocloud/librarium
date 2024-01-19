@@ -10,7 +10,10 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-openstack-cinder/blobs/sh
 tags: ["packs", "openstack-cinder", "storage"]
 ---
 
-Unlike the traditional storage drivers of Kubernetes and the implementation of the Container Storage Interface (CSI), we can deliver storage plug-ins using a standard interface without ever having to change the core Kubernetes code. Open Stack Cinder provides OpenShift Container Platform users with storage options, such as volume snapshots that are not possible with in-tree volume plug-ins.
+Unlike the traditional storage drivers of Kubernetes and the implementation of the Container Storage Interface (CSI), we
+can deliver storage plug-ins using a standard interface without ever having to change the core Kubernetes code. Open
+Stack Cinder provides OpenShift Container Platform users with storage options, such as volume snapshots that are not
+possible with in-tree volume plug-ins.
 
 ## Versions Supported
 

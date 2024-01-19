@@ -10,7 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-gcp/blobs/sha256:af4cf792
 tags: ["packs", "storage", "gce-persistent-disk"]
 ---
 
-The GCE Persistent disk are reliable, high-performance block storage for virtual machine instances. They are designed for high durability. It provides redundant data storage to ensure data integrity. The key features of GCE Persistent Disk are:
+The GCE Persistent disk are reliable, high-performance block storage for virtual machine instances. They are designed
+for high durability. It provides redundant data storage to ensure data integrity. The key features of GCE Persistent
+Disk are:
 
 - Disk Clones
 - High Durability

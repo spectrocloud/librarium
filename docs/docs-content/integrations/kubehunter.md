@@ -10,8 +10,10 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/kubehunter/blobs/sha256:6b6b9
 tags: ["packs", "kube-hunter", "security"]
 ---
 
-Kube Hunter is an open-source tool that hunts for security issues in your Kubernetes clusters.
-It’s designed to increase awareness and visibility of the security controls in Kubernetes environments. Kube-hunter probes a domain or address range for open Kubernetes-related ports, and tests for any configuration issues that leave your cluster exposed to attackers. It can be run on a machine in the cluster, and select the option to probe all the local network interfaces.
+Kube Hunter is an open-source tool that hunts for security issues in your Kubernetes clusters. It’s designed to increase
+awareness and visibility of the security controls in Kubernetes environments. Kube-hunter probes a domain or address
+range for open Kubernetes-related ports, and tests for any configuration issues that leave your cluster exposed to
+attackers. It can be run on a machine in the cluster, and select the option to probe all the local network interfaces.
 
 ## Versions Supported
 

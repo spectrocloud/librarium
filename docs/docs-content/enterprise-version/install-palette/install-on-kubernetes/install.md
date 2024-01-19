@@ -11,13 +11,17 @@ keywords: ["self-hosted", "enterprise"]
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 
-This installation method is common in secure environments with restricted network access that prohibits using Palette SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster has the necessary network connectivity for Palette to operate successfully.
+This installation method is common in secure environments with restricted network access that prohibits using Palette
+SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
+has the necessary network connectivity for Palette to operate successfully.
 
 ## Prerequisites
 
 :::warning
 
-If you are installing an airgap Palette, ensure you complete all the airgap pre-install steps before proceeding with the installation. Refer to the [Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more information.
+If you are installing an airgap Palette, ensure you complete all the airgap pre-install steps before proceeding with the
+installation. Refer to the [Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more
+information.
 
 :::
 
@@ -25,15 +29,21 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
 
 - [Helm](https://helm.sh/docs/intro/install/) is installed and available.
 
-- Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using `kubectl` commands and have sufficient permissions to install Palette. We recommend using a role with cluster-admin permissions to install Palette.
+- Access to the target Kubernetes cluster's kubeconfig file. You must be able to interact with the cluster using
+  `kubectl` commands and have sufficient permissions to install Palette. We recommend using a role with cluster-admin
+  permissions to install Palette.
 
 - The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
 
-- Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager configuration to be installed as part of the installation process. If Cert Manager is already installed, you must uninstall it before installing Palette.
+- Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager
+  configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
+  uninstall it before installing Palette.
 
-- The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+- The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI
+  to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
-- We recommended the following resources for Palette. Refer to the [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
+- We recommended the following resources for Palette. Refer to the
+  [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -50,7 +60,9 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
 
   - TCP/6443: Outbound traffic from the Palette management cluster to the deployed clusters' Kubernetes API server.
 
-- Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL certificate. You need the following files:
+- Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to
+  enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL
+  certificate. You need the following files:
 
   - x509 SSL certificate file in base64 format.
 
@@ -58,31 +70,40 @@ If you are installing an airgap Palette, ensure you complete all the airgap pre-
 
   - x509 SSL certificate authority file in base64 format.
 
-- An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
+- An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
+  must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
 
-- A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS encryption for Palette.
+- A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
+  encryption for Palette.
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for instructions on how to request access to the Helm Chart
+- Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for
+  instructions on how to request access to the Helm Chart
 
 <br />
 
 :::warning
 
-Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette-managed clusters contain the Palette agent and Palette-created Kubernetes resources that will interfere with the installation of Palette.
+Do not use a Palette-managed Kubernetes cluster when installing Palette. Palette-managed clusters contain the Palette
+agent and Palette-created Kubernetes resources that will interfere with the installation of Palette.
 
 :::
 
 ## Install Palette
 
-The following instructions are written agnostic to the Kubernetes distribution you are using. Depending on the underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match your environment. Reach out to our support team if you need assistance.
+The following instructions are written agnostic to the Kubernetes distribution you are using. Depending on the
+underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match
+your environment. Reach out to our support team if you need assistance.
 
-1. Open a terminal session and navigate to the directory where you downloaded the Palette Helm Charts provided by our support. We recommend you place all the downloaded files into the same directory. You should have the following Helm Charts:
+1. Open a terminal session and navigate to the directory where you downloaded the Palette Helm Charts provided by our
+   support. We recommend you place all the downloaded files into the same directory. You should have the following Helm
+   Charts:
 
    - Spectro Management Plane Helm Chart.
 
    - Cert Manager Helm Chart.
 
-   - Image Swap Helm Chart - Only required if you are using a private OCI registry with remote registry caching enabled or installing Palette in an air-gapped environment.
+   - Image Swap Helm Chart - Only required if you are using a private OCI registry with remote registry caching enabled
+     or installing Palette in an air-gapped environment.
 
    <br />
 
@@ -98,7 +119,8 @@ The following instructions are written agnostic to the Kubernetes distribution y
    3 directories, 3 files
    ```
 
-2. Extract each Helm Chart into its directory. Use the commands below as a reference. Do this for all the provided Helm Charts.
+2. Extract each Helm Chart into its directory. Use the commands below as a reference. Do this for all the provided Helm
+   Charts.
 
 <Tabs groupId="mode">
   <TabItem label="Non-Airgap" value="non-airgap">
@@ -130,13 +152,17 @@ tar xzvf image-swap-*.tgz
   </TabItem>
 </Tabs>
 
-3. Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with the one you downloaded, as the version number may be different.
+3. Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
+   the one you downloaded, as the version number may be different.
 
 ```shell
   helm upgrade --values cert-manager/values.yaml cert-manager cert-manager-1.11.0.tgz --install
 ```
 
-4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml** contains the default values for the Palette installation parameters, however, you must populate the following parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the [Helm Configuration Reference](palette-helm-ref.md) page.
+4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
+   contains the default values for the Palette installation parameters, however, you must populate the following
+   parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the
+   [Helm Configuration Reference](palette-helm-ref.md) page.
 
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
@@ -148,7 +174,8 @@ tar xzvf image-swap-*.tgz
 | `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. These credentials are provided by our support team. | object   |
 | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean  |
 
-Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
+Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
+following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
 <details>
 <summary>Example - values.yaml</summary>
@@ -393,7 +420,8 @@ reach-system:
 | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`. | object   |
 | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                             | boolean  |
 
-Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the following sections to review an example of the **values.yaml** file with the required parameters highlighted.
+Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
+following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
 <details>
 <summary>Example - values.yaml</summary>
@@ -626,11 +654,15 @@ reach-system:
 </TabItem>
 </Tabs>
 
-5. This step only applies to those who are installing an airgap Palette or who are using a self-hosted OCI registry with registry caching enabled. Otherwise, skip to the next step.
+5. This step only applies to those who are installing an airgap Palette or who are using a self-hosted OCI registry with
+   registry caching enabled. Otherwise, skip to the next step.
 
-Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
+Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with
+the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
 
-  <br />
+{" "}
+
+<br />
 
 ```shell
 helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0.tgz --install
@@ -644,7 +676,9 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
    helm upgrade --values spectro-mgmt-plane/values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
    ```
 
-7. Track the installation process using the command below. Palette is ready when the deployments in the namespaces `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The installation takes between two to three minutes to complete.
+7. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+   `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
+   installation takes between two to three minutes to complete.
 
    <br />
 
@@ -652,7 +686,9 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
    kubectl get pods --all-namespaces --watch
    ```
 
-8. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the following command to retrieve the load balancer IP address. You may require the assistance of your network administrator to create the DNS record.
+8. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+   following command to retrieve the load balancer IP address. You may require the assistance of your network
+   administrator to create the DNS record.
 
    <br />
 
@@ -664,15 +700,26 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
 
    :::info
 
-   As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer.
+   As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For
+   example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is `palette.example.com`,
+   the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard DNS record to map all
+   tenant URLs to the Palette load balancer.
 
    :::
 
-9. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer. Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system console.
+9. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+   system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`.
+   Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
+   Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
+   console.
 
-The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and proceed.
+The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may appear.
+This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and
+proceed.
 
-  <br />
+{" "}
+
+<br />
 
 ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
 
@@ -687,21 +734,29 @@ The first time you visit the Palette system console, a warning message about a n
 
     <br />
 
-After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
+redirected to the Palette system console.
 
 <br />
 
-11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority files to Palette. You can upload the files using the Palette system console. Refer to the [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
+11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+    different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
+    files to Palette. You can upload the files using the Palette system console. Refer to the
+    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
+    upload the SSL certificate files to Palette.
 
 <br />
 
 :::warning
 
-If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse proxy for Palette.
+If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
+[Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse
+proxy for Palette.
 
 :::
 
-You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the **values.yaml** file as you may need it for future upgrades.
+You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the
+**values.yaml** file as you may need it for future upgrades.
 
 ## Validate
 
@@ -709,11 +764,16 @@ Use the following steps to validate the Palette installation.
 
 <br />
 
-1. Open up a web browser and navigate to the Palette system console. To access the system console, open a web browser and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use the IP address of the load balancer.
+1. Open up a web browser and navigate to the Palette system console. To access the system console, open a web browser
+   and paste the `env.rootDomain` value you provided in the address bar and append the value `/system`. You can also use
+   the IP address of the load balancer.
 
-2. Log in using the credentials you received from our support team. After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to the Palette system console.
+2. Log in using the credentials you received from our support team. After login, you will be prompted to create a new
+   password. Enter a new password and save your changes. You will be redirected to the Palette system console.
 
-3. Open a terminal session and issue the following command to verify the Palette installation. The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` namespaces.
+3. Open a terminal session and issue the following command to verify the Palette installation. The command should return
+   a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system`
+   namespaces.
 
    <br />
 
@@ -764,4 +824,6 @@ Use the following steps to validate the Palette installation.
 
 ## Next Steps
 
-You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your organization. Start by creating the first tenant to host your users. Use the [Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant.
+You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your
+organization. Start by creating the first tenant to host your users. Use the
+[Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant.

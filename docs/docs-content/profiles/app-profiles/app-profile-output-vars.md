@@ -7,8 +7,8 @@ sidebar_position: 60
 tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
-
-Palette Dev Engine output variables are defined in the [app profile](../../glossary-all.md#app-profile) and are only resolved at cluster deployment time. The output variables have the following properties:
+Palette Dev Engine output variables are defined in the [app profile](../../glossary-all.md#app-profile) and are only
+resolved at cluster deployment time. The output variables have the following properties:
 
 - May be referenced by specifying them during app profile creation.
 
@@ -16,9 +16,11 @@ Palette Dev Engine output variables are defined in the [app profile](../../gloss
 
 - Each service type exposes a set of unique output variables.
 
-The variables are generated when the server layer is deployed. Output variables can be consumed by the higher layers in the app profile.
+The variables are generated when the server layer is deployed. Output variables can be consumed by the higher layers in
+the app profile.
 
-Check out the [Services Connectivity](../../devx/services/connectivity.md) page to learn how to use output variables for establishing network connectivity between services.
+Check out the [Services Connectivity](../../devx/services/connectivity.md) page to learn how to use output variables for
+establishing network connectivity between services.
 
 ```hideClipboard
 {{.spectro.app.$appdeploymentName.<layerName>.<layerOutput_Variable_Name>}}
@@ -56,7 +58,8 @@ The following output variables are globally available for all services.
 
 ## Container Service Output Variables
 
-The container service type exposes the following output variables. Replace **[service-name]** with the respective name of the service layer.
+The container service type exposes the following output variables. Replace **[service-name]** with the respective name
+of the service layer.
 
 | **Output Variable**                                                            | **Description**                                                                                                                                             |
 | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -68,11 +71,11 @@ The container service type exposes the following output variables. Replace **[se
 
 ## Database Service Output Variables
 
-Each database service exposes a set of output variables. To learn about each database service, check out [Available Services](../../devx/services/service-listings/service-listings.mdx).
+Each database service exposes a set of output variables. To learn about each database service, check out
+[Available Services](../../devx/services/service-listings/service-listings.mdx).
 
 ## Resources
 
-* [Palette System Macros](../../registries-and-packs/pack-constraints.md#pack-macros)
+- [Palette System Macros](../../registries-and-packs/pack-constraints.md#pack-macros)
 
-* [Palette User Macros](../../clusters/cluster-management/macros.md)
-<br />
+- [Palette User Macros](../../clusters/cluster-management/macros.md) <br />

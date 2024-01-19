@@ -9,7 +9,9 @@ tags: ["vertex", "management", "account"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-As an admin user, you can update and manage your user settings, such as changing the email address and changing the credentials. You can also enable passkey to access the admin panel. The passkey feature supports both virtual passkey and physical passkey.
+As an admin user, you can update and manage your user settings, such as changing the email address and changing the
+credentials. You can also enable passkey to access the admin panel. The passkey feature supports both virtual passkey
+and physical passkey.
 
 ## Resources
 

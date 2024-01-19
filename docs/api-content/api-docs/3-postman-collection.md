@@ -16,7 +16,8 @@ To interact with the API, you will need the following:
 
 - [Postman application](https://www.postman.com/downloads/) v10.2.2 or greater.
 
-- A base URL for the Palette API. The default Palette API endpoint is `api.spectrocloud.com`, but the base URL will be different for self-hosted Palette installation. Contact your system administrator to find your base URL.
+- A base URL for the Palette API. The default Palette API endpoint is `api.spectrocloud.com`, but the base URL will be
+  different for self-hosted Palette installation. Contact your system administrator to find your base URL.
 
 - An authentication credential.
 
@@ -34,8 +35,7 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 Use the following URL to import your configuration into Postman:
 
-https://raw.githubusercontent.com/spectrocloud/librarium/master/docs/api-content/api-docs/palette-apis.json
-<br />
+https://raw.githubusercontent.com/spectrocloud/librarium/master/docs/api-content/api-docs/palette-apis.json <br />
 
 1. Open the **Import** dialog.
 
@@ -45,9 +45,9 @@ https://raw.githubusercontent.com/spectrocloud/librarium/master/docs/api-content
 
 4. Click on the **Import** button.
 
-Postman imports your collection and lists it under Import Complete.
-<br />
+Postman imports your collection and lists it under Import Complete. <br />
 
 ![Copy/paste the URL in the **Import** dialog as a link.](URL-as-a-link.png)
 
-Find details about importing in Postman's [import/export](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/) tutorial.
+Find details about importing in Postman's
+[import/export](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/) tutorial.

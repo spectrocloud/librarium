@@ -7,7 +7,8 @@ hide_table_of_contents: false
 sidebar_position: 30
 ---
 
-An Add-on Pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster. Palette provides several Add-on packs out of the box for various layers of the Kubernetes stack. For example:
+An Add-on Pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster.
+Palette provides several Add-on packs out of the box for various layers of the Kubernetes stack. For example:
 
 - **Logging** - elastic search, fluentd
 
@@ -19,7 +20,8 @@ An Add-on Pack defines deployment specifics of a Kubernetes application to be in
 
 - **Service Mesh** - Istio
 
-Custom Add-on packs can be built to extend the list of integrations. Two different methods are used in the following examples to create custom add-on packs.
+Custom Add-on packs can be built to extend the list of integrations. Two different methods are used in the following
+examples to create custom add-on packs.
 
 - [Helm Charts](#helm-charts)
 
@@ -29,7 +31,8 @@ Custom Add-on packs can be built to extend the list of integrations. Two differe
 
 ## Helm Charts
 
-The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using the Spectro Cloud CLI:
+The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using
+the Spectro Cloud CLI:
 
 1. Create the pack directory named _prometheus-grafana_.
 
@@ -54,9 +57,12 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 
 3. Download the desired version of the Prometheus-Grafana Helm charts archive.
 
-4. Create a subdirectory called **charts** and copy the downloaded Helm chart archive to this directory. Refer to the relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
+4. Create a subdirectory called **charts** and copy the downloaded Helm chart archive to this directory. Refer to the
+   relative location of this archive in the pack manifest file, `pack.json` as shown in step 2.
 
-5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file shipped within the chart. Copy the entire file as is, if all chart parameters need to be made configurable. For the Prometheus-Grafana pack, the `values.yaml` could look like this:
+5. Create a file called `values.yaml` for configurable chart parameters. This can be a subset of the `values.yaml` file
+   shipped within the chart. Copy the entire file as is, if all chart parameters need to be made configurable. For the
+   Prometheus-Grafana pack, the `values.yaml` could look like this:
 
    ```yaml
    pack:
@@ -239,9 +245,11 @@ The following example shows how to build the Prometheus-Grafana monitoring pack 
 
 ## Manifests
 
-Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for Kubernetes objects like pods, services, deployments, namespaces, or secrets.
+Add-on packs can be built using Kubernetes manifests as well. These manifests contain deployment specifications for
+Kubernetes objects like pods, services, deployments, namespaces, or secrets.
 
-The example below shows how to build the Permission Manager auth pack and push to the pack registry server using the Spectro Cloud CLI.
+The example below shows how to build the Permission Manager auth pack and push to the pack registry server using the
+Spectro Cloud CLI.
 
 1. Create the pack directory named **permission-manager**.
 
@@ -261,7 +269,10 @@ The example below shows how to build the Permission Manager auth pack and push t
 
 3. Create a sub-directory called **manifests**.
 
-4. Copy the desired manifest files to the **manifests** directory and reference them in `pack.json` as shown in step 2. If the configurability of the manifest is desired, then the manifest files must be templatized to introduce parameters. For example, _\{\{.Values.namespace}}_. These parameters are defined with default values in the `values.yaml` file and can be overridden in the cluster profile.
+4. Copy the desired manifest files to the **manifests** directory and reference them in `pack.json` as shown in step 2.
+   If the configurability of the manifest is desired, then the manifest files must be templatized to introduce
+   parameters. For example, _\{\{.Values.namespace}}_. These parameters are defined with default values in the
+   `values.yaml` file and can be overridden in the cluster profile.
 
    **permission-manager.yaml (partial)**
 

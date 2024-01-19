@@ -7,7 +7,8 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-[Cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) contain the desired specifications the Kubernetes cluster Edge host makes up. The cluster profile defines the following components.
+[Cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) contain the desired specifications the
+Kubernetes cluster Edge host makes up. The cluster profile defines the following components.
 
 - Kubernetes flavor and version
 
@@ -17,9 +18,12 @@ tags: ["edge"]
 
 - Container storage interface (CSI)
 
-You define these components in an Edge Native Infrastructure profile. As with any other environment in Palette, you can define additional add-on cluster profiles. You can use add-on profiles to define integrations or applications that must be included when Palette deploys the cluster.
+You define these components in an Edge Native Infrastructure profile. As with any other environment in Palette, you can
+define additional add-on cluster profiles. You can use add-on profiles to define integrations or applications that must
+be included when Palette deploys the cluster.
 
-The following steps will guide you on how to create a cluster profile for Edge. Choose the workflow that best fits your needs.
+The following steps will guide you on how to create a cluster profile for Edge. Choose the workflow that best fits your
+needs.
 
 - [Custom OS](#custom-os)
 
@@ -29,7 +33,8 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 ### Prerequisites
 
-- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide for details.
+- Ensure all required provider images are created and uploaded to the respective registry. Refer to the EdgeForge
+  [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide for details.
 
 ### Enablement
 
@@ -51,11 +56,15 @@ The following steps will guide you on how to create a cluster profile for Edge. 
 
 9. Click on the code editor button **\</\>** to open up the editor
 
-  <br />
+{" "}
+
+<br />
 
 ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
 
-10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are missing a custom OS image. The following is an example configuration using a custom OS image.
+10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process.
+    Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are missing a custom OS
+    image. The following is an example configuration using a custom OS image.
 
 ```yaml
 pack:
@@ -78,11 +87,16 @@ options:
   system.uri: example.io/my-images/example-custom-os:v1.4.5
 ```
 
-  <br />
+{" "}
+
+<br />
 
 :::info
 
-You can customize the node drainage behavior and specify additional images that you may have created that are part of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an `- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](../../../integrations/byoos.md) resource to learn more about the pack details.
+You can customize the node drainage behavior and specify additional images that you may have created that are part of
+the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
+`- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](../../../integrations/byoos.md) resource
+to learn more about the pack details.
 
 :::
 
@@ -110,7 +124,8 @@ Verify you created a cluster profile for Edge hosts by using the following steps
 
 :::warning
 
-This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to learn how to use a custom OS with your cluster profile.
+This workflow is unavailable for new Edge clusters. Use the **Custom OS** tab to learn how to use a custom OS with your
+cluster profile.
 
 :::
 
@@ -128,7 +143,8 @@ No prerequisites.
 
 4. Click the **Add New Profile** button.
 
-5. Provide the profile with a name, description, version, and tags. Select **Full** for the profile type. Click on **Next**.
+5. Provide the profile with a name, description, version, and tags. Select **Full** for the profile type. Click on
+   **Next**.
 
 6. Select **Edge Native** as the cloud type and click on **Next**.
 
@@ -136,7 +152,10 @@ No prerequisites.
 
 :::info
 
-You can select **Bring Your Own OS (BYOOS)** if you build your enterprise Edge artifacts. Specify the registry that hosts your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack YAML file to set up Edge host users, install other OS packages, install certificates, and more. Refer to the [Cloud-Init Stages](../edge-configuration/cloud-init.md) resource to learn more about the cloud-init stages.
+You can select **Bring Your Own OS (BYOOS)** if you build your enterprise Edge artifacts. Specify the registry that
+hosts your provider images as the system URI. You can also provide additional cloud-init configurations in the OS pack
+YAML file to set up Edge host users, install other OS packages, install certificates, and more. Refer to the
+[Cloud-Init Stages](../edge-configuration/cloud-init.md) resource to learn more about the cloud-init stages.
 
 :::
 
@@ -148,9 +167,13 @@ You can select **Bring Your Own OS (BYOOS)** if you build your enterprise Edge a
 
 You now have a cluster profile you can use for deploying Edge hosts.
 
-Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other capabilities. If you need remote access to the cluster, consider adding the [Spectro Proxy](../../../integrations/frp.md) pack to one of the add-on profiles.
+Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other
+capabilities. If you need remote access to the cluster, consider adding the
+[Spectro Proxy](../../../integrations/frp.md) pack to one of the add-on profiles.
 
-Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/registries/helm-charts.md) or [OCI](../../../registries-and-packs/registries/oci-registry/oci-registry.md) registry to learn more.
+Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on
+profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/registries/helm-charts.md) or
+[OCI](../../../registries-and-packs/registries/oci-registry/oci-registry.md) registry to learn more.
 
 ### Validate
 
@@ -168,6 +191,7 @@ You can view your newly created cluster profile on the **Cluster Profiles** page
 
 ## Next Steps
 
-Your next step in the deployment lifecycle is to prepare the Edge host for the installation. Use the [Prepare Edge Hosts for Installation](../site-deployment/stage.md) guide to continue.
+Your next step in the deployment lifecycle is to prepare the Edge host for the installation. Use the
+[Prepare Edge Hosts for Installation](../site-deployment/stage.md) guide to continue.
 
 <br />

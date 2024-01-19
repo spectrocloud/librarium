@@ -7,7 +7,9 @@ sidebar_position: 10
 tags: ["clusters", "cluster management"]
 ---
 
-Palette provides Cluster Auto Remediation as a node reconciliation operation. When Cluster Auto Remediation is on, unhealthy nodes in all the Palette-provisioned clusters will automatically be replaced with new nodes. Turning off this feature will disable auto remediation. This feature can work under two scopes:
+Palette provides Cluster Auto Remediation as a node reconciliation operation. When Cluster Auto Remediation is on,
+unhealthy nodes in all the Palette-provisioned clusters will automatically be replaced with new nodes. Turning off this
+feature will disable auto remediation. This feature can work under two scopes:
 
 - Tenant
 

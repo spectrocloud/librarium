@@ -9,7 +9,8 @@ sidebar_position: 20
 
 # Add a Custom Pack
 
-Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](spectro-cli-reference.md).
+Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with
+Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](spectro-cli-reference.md).
 
 ## Prerequsites
 
@@ -21,7 +22,8 @@ The following items are required to create a custom pack.
 
 ## JSON Schema
 
-Each pack contains a metadata file named `pack.json`. The table below explains in greater detail the JSON schema attributes.
+Each pack contains a metadata file named `pack.json`. The table below explains in greater detail the JSON schema
+attributes.
 
 | Property Name | Data type | Required | Description                                                                                                                                                                                                                                                                                                                               |
 | ------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -260,16 +262,19 @@ Follow the steps below to create a custom pack.
    }
    ```
 
-3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the end-users during the creation of a cluster profile.
+3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the
+   end-users during the creation of a cluster profile.
 
 :::info
 
-A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an empty file still needs to be added to the OS pack.
+A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an
+empty file still needs to be added to the OS pack.
 
 :::
 
 Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in the `values.yaml` file.
-_Helm_ charts natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter configuration is desired.
+_Helm_ charts natively support values override. Any values defined are merged with those defined within a chart.
+_Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter configuration is desired.
 
 ```yaml
     pack:
@@ -313,17 +318,25 @@ _Helm_ charts natively support values override. Any values defined are merged wi
 
 ## Adding an OS Pack
 
-The OS is one of the Core Layers in a cluster profile. An OS pack can be built to use a custom OS image for cluster nodes. This might be desirable if an organization wants to use an approved hardened OS image for their infrastructure. There are typically the following two scenarios for the OS image:
+The OS is one of the Core Layers in a cluster profile. An OS pack can be built to use a custom OS image for cluster
+nodes. This might be desirable if an organization wants to use an approved hardened OS image for their infrastructure.
+There are typically the following two scenarios for the OS image:
 
 <br />
 
-1. **Pre-Installed Kubernetes** - The OS image has the desired version of Kubernetes components like kubelet, kubectl, etc installed.
+1. **Pre-Installed Kubernetes** - The OS image has the desired version of Kubernetes components like kubelet, kubectl,
+   etc installed.
 
 2. **Vanilla OS Image** - Kubernetes components are not installed.
 
-Additionally, for both scenarios additional components or packages may need to be installed at runtime to prepare the final OS image. This can be done by specifying one or more Ansible roles in the pack. The following are a few examples of building custom OS pack to cover the some of these scenarios.
+Additionally, for both scenarios additional components or packages may need to be installed at runtime to prepare the
+final OS image. This can be done by specifying one or more Ansible roles in the pack. The following are a few examples
+of building custom OS pack to cover the some of these scenarios.
 
-A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for images that do not have Kubernetes components pre-installed. Palette installs these components at the time of provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInstall` to true.
+A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for
+images that do not have Kubernetes components pre-installed. Palette installs these components at the time of
+provisioning. The version of Kubernetes that gets installed depends on the Kubernetes pack configuration in the cluster
+profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInstall` to true.
 
 ## Examples
 
@@ -448,7 +461,9 @@ A few sample pack manifests for building a custom OS pack are shown in the follo
 
 ## Ansible Roles
 
-In all the previous examples, additional customization in the form of an Ansible role called `harden_os` is specified in the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The final directory structure of for the pack would be as follows:
+In all the previous examples, additional customization in the form of an Ansible role called `harden_os` is specified in
+the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The
+final directory structure of for the pack would be as follows:
 
 ```
 ./pack.json
@@ -461,10 +476,13 @@ In all the previous examples, additional customization in the form of an Ansible
 ./harden_os/files/sec_harden.sh
 ```
 
-Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is constructed, push it to the pack registry using the Spectro CLI tool.
+Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is
+constructed, push it to the pack registry using the Spectro CLI tool.
 
 :::warning
 
-During the image customization phase of a cluster deployment, failures related to missing packages or package version mismatch could occur when using a custom OS pack. These errors are presented on the console. The image needs to be updated to resolve any such issues.
+During the image customization phase of a cluster deployment, failures related to missing packages or package version
+mismatch could occur when using a custom OS pack. These errors are presented on the console. The image needs to be
+updated to resolve any such issues.
 
 :::

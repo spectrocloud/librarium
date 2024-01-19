@@ -61,13 +61,17 @@ Palette provides the following built-in global resource roles:
 
 ### Resource Cluster Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -96,13 +100,17 @@ Palette provides the following built-in global resource roles:
 
 ### Resource Cluster Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -131,13 +139,17 @@ Palette provides the following built-in global resource roles:
 
 ### Resource Cluster Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -184,13 +196,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ### Resource Cluster Profile Admin
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -209,13 +225,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ### Resource Cluster Profile Editor
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -234,13 +254,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ### Resource Cluster Profile Viewer
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -259,21 +283,27 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Palette Custom Resource Roles
 
-<br / >
+<br />
 
-The following is a list of platform permissions and operations supported by Palette. Use these permissions to [create custom role](../new-user.md#create-custom-role) to control the cluster access. For every **Resource Keys** available **operations** can be added as per your requirements.
+The following is a list of platform permissions and operations supported by Palette. Use these permissions to
+[create custom role](../new-user.md#create-custom-role) to control the cluster access. For every **Resource Keys**
+available **operations** can be added as per your requirements.
 
-<br / >
+<br />
 
 ## List of Custom Permissions
 
-<br / >
+<br />
 
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 

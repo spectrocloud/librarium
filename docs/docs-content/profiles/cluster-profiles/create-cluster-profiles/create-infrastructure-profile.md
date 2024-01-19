@@ -7,11 +7,14 @@ sidebar_position: 0
 tags: ["profiles", "cluster profiles"]
 ---
 
-Create an infrastructure profile by adding layers composed of an Operating System (OS), Kubernetes, Network, and Storage packs.
+Create an infrastructure profile by adding layers composed of an Operating System (OS), Kubernetes, Network, and Storage
+packs.
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) reference for more information about roles and permissions.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  reference for more information about roles and permissions.
 
 ## Create Infrastructure Profile
 
@@ -21,7 +24,8 @@ Create an infrastructure profile by adding layers composed of an Operating Syste
 
 3. Click on the **Add Cluster Profile** button.
 
-4. Fill out the following input values and ensure you select **Infrastructure** for the type. Click on **Next** to continue.
+4. Fill out the following input values and ensure you select **Infrastructure** for the type. Click on **Next** to
+   continue.
 
 | **Field**       | **Description**                                                                                                                                                                                                   |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,21 +35,27 @@ Create an infrastructure profile by adding layers composed of an Operating Syste
 | **Type**        | **Infrastructure**                                                                                                                                                                                                |
 | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
 
-To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
+To learn more about creating multiple profile versions, check out
+[Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select the Infrastructure Provider, Managed Kubernetes, or Tech Preview cloud type for your environment and click **Next**.
+5. Select the Infrastructure Provider, Managed Kubernetes, or Tech Preview cloud type for your environment and click
+   **Next**.
 
 :::info
 
-Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.
+Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using
+Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.
 
-When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers.
+When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes
+layers. Out-of-the-box packs are provided for the network and storage profile layers.
 
 :::
 
-6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next Layer** to configure each infrastructure layer.
+6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click
+   **Next Layer** to configure each infrastructure layer.
 
-For more information about layer types, applying pack versions, configuration parameters, and presets, review [Profile Layers](../cluster-profiles.md#profile-layers).
+For more information about layer types, applying pack versions, configuration parameters, and presets, review
+[Profile Layers](../cluster-profiles.md#profile-layers).
 
 | **Layer**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,13 +66,16 @@ For more information about layer types, applying pack versions, configuration pa
 
 As you add each layer, Palette displays the YAML file in the editor at right. You can edit the YAML as needed.
 
-7. When all the infrastructure layers are added, click on **Confirm**. Palette displays the profile stack with your specified pack layers.
+7. When all the infrastructure layers are added, click on **Confirm**. Palette displays the profile stack with your
+   specified pack layers.
 
 8. Click on **Next** to review the profile.
 
 9. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the [Update a Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
+You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the
+[Update a Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update
+operations.
 
 ## Validate
 
@@ -74,7 +87,9 @@ You now have an infrastructure cluster profile. You can reuse the profile and ap
 
 ## Next Steps
 
-Now you are ready to deploy a cluster using the infrastructure cluster profile you created. If desired, you can add layers to your infrastructure profile using add-on profiles. For more information, check out the [Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/) guide.
+Now you are ready to deploy a cluster using the infrastructure cluster profile you created. If desired, you can add
+layers to your infrastructure profile using add-on profiles. For more information, check out the
+[Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/) guide.
 
 ## Resources
 

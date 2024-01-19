@@ -10,7 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-vsphere-volume/blobs/sha2
 tags: ["packs", "vSphere-Volume", "storage"]
 ---
 
-vSphere volume virtualizes SAN/NAS arrays, enabling an efficient operational model optimized for virtualized environments and centered on the application instead of the infrastructure There are two types of provisioners for vSphere storage classes:
+vSphere volume virtualizes SAN/NAS arrays, enabling an efficient operational model optimized for virtualized
+environments and centered on the application instead of the infrastructure There are two types of provisioners for
+vSphere storage classes:
 
 - CSI provisioner: csi.vsphere.vmware.com
 - vCP provisioner: kubernetes.io/vsphere-volume
@@ -35,7 +37,8 @@ vSphere volume virtualizes SAN/NAS arrays, enabling an efficient operational mod
 
 ## Troubleshooting
 
-Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using the following CLI command:
+Storage classes created by Spectro will be with the name "spectro-storage-class" and can be fetched from kubectl using
+the following CLI command:
 
 ```bash
 kubectl get storageclass

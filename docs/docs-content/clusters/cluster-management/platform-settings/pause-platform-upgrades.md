@@ -7,7 +7,8 @@ sidebar_position: 0
 tags: ["clusters", "cluster management"]
 ---
 
-Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a group of clusters from getting automatically upgraded when Palette is upgraded. The three ways to activate this feature are:
+Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a group of clusters from getting
+automatically upgraded when Palette is upgraded. The three ways to activate this feature are:
 
 - Pause Upgrades for a Single Cluster
 - Pause Upgrades for all Clusters within Project Scope
@@ -21,7 +22,8 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 
 ## Enablement
 
-Use the tabs below to view the instructions for enabling the **Pause Agent Upgrades** feature for a single cluster, all clusters within the project scope, or all within the tenant scope.
+Use the tabs below to view the instructions for enabling the **Pause Agent Upgrades** feature for a single cluster, all
+clusters within the project scope, or all within the tenant scope.
 
 <Tabs groupId="pauseUpgrades">
 

@@ -10,7 +10,10 @@ logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephan
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-Palette supports [Postgres](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source object-relational database system with over 35 years of active deployment with a strong reputation for reliability, feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+Palette supports [Postgres](https://www.postgresql.org/) as a database service. Postgres is a powerful open-source
+object-relational database system with over 35 years of active deployment with a strong reputation for reliability,
+feature robustness, and performance. Postgres uses and extends the SQL language combined with many features that safely
+store and scale the most complicated data workloads.
 
 <br />
 
@@ -18,11 +21,14 @@ Palette supports [Postgres](https://www.postgresql.org/) as a database service. 
 
 The following are the requirements for using Postgres in Palette:
 
-- Do not use the Postgres user names `postgres` and `admin`. These user names are reserved for internal system operations and will cause internal conflicts.
+- Do not use the Postgres user names `postgres` and `admin`. These user names are reserved for internal system
+  operations and will cause internal conflicts.
 
 - The user name format does not support the special character hyphen(-). For example, `name-1` is not supported.
 
-- Clients must set `sslMode=require` or a stricter setting, as the server instance requires encryption for all connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn more about the SSL modes.
+- Clients must set `sslMode=require` or a stricter setting, as the server instance requires encryption for all
+  connections. Review the [Postgres SSL documentation](https://www.postgresql.org/docs/current/libpq-ssl.html) to learn
+  more about the SSL modes.
 
 ## Add Postgres to an App Profile
 
@@ -32,7 +38,9 @@ You can use the following steps to learn how to add Postgres to your app profile
 
 2. On the right side of the window, click the **User Menu** to expand it and select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new
+   [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic
+   information and click **Next**.
 
 | **Parameter**            | **Description**                                                                                                          |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -53,11 +61,14 @@ You can use the following steps to learn how to add Postgres to your app profile
 
 :::info
 
-You can use the default system-generated password. If the default password is used, it can be retrieved from the Postgres secret that is created for the password. Review the [Database Password](../../services/service-listings/postgresql-db.md#database-password) section for guidance.
+You can use the default system-generated password. If the default password is used, it can be retrieved from the
+Postgres secret that is created for the password. Review the
+[Database Password](../../services/service-listings/postgresql-db.md#database-password) section for guidance.
 
 :::
 
-- **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount available in the cluster group and virtual clusters.
+- **Database Volume Size (GiB):** Select the volume size for the database. Ensure you stay within the storage amount
+  available in the cluster group and virtual clusters.
 
 - **Version: **Select the version from the **Version** **drop-down Menu**.
 
@@ -71,7 +82,8 @@ You can use the default system-generated password. If the default password is us
 
 3. Select the application that contains Postgres.
 
-4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of
+   the service deployment.
 
 | **Color Code** | **Description**       |
 | -------------- | --------------------- |
@@ -81,7 +93,8 @@ You can use the default system-generated password. If the default password is us
 
 ## Output Variables
 
-The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
+The exposed output variables of this service layer may be used in other service layers. These output variables are
+typically used for connectivity purposes:
 
 | Parameter              | Output Variable                                                                     | Description                                       |
 | ---------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------- |
@@ -92,7 +105,8 @@ The exposed output variables of this service layer may be used in other service 
 
 ## Database Password
 
-You can get the database password by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Postgres database user, use the following command format.
+You can get the database password by reading the content of the Kubernetes secret created for the database user. To
+retrieve the password for the Postgres database user, use the following command format.
 
 ```shell
 kubectl get secret <app-name>-<service-name>-postgres-<user-name>-credentials \
@@ -126,7 +140,9 @@ zFniawyxEVdFtSF9uPfDsjFlOnAeDcrpndi3ReaUbqSGTMSnZ1gawSWkJCLabZR9
 
 ## Next Steps
 
-Add Postgres to your application profile and explore all the capabilities Postgres has to offer. The official Postgres documentation has several [tutorials](https://www.postgresql.org/docs/online-resources/) to help you learn more about Postgres and how to leverage Postgres with your applications.
+Add Postgres to your application profile and explore all the capabilities Postgres has to offer. The official Postgres
+documentation has several [tutorials](https://www.postgresql.org/docs/online-resources/) to help you learn more about
+Postgres and how to leverage Postgres with your applications.
 
 ## Resources
 

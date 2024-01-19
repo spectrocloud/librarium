@@ -7,11 +7,13 @@ sidebar_position: 80
 tags: ["clusters", "cluster management", "cost management"]
 ---
 
-Palette calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster node pools and usage cost breakdown by namespaces based on actual resource utilization within the namespace.
+Palette calculates estimated cloud cost for workload clusters based on the rate of the instance type used for cluster
+node pools and usage cost breakdown by namespaces based on actual resource utilization within the namespace.
 
 ## Cloud Cost
 
-Cluster cloud cost is the sum of the estimated cost of all the nodes launched in the cluster. The cost calculation is done based on the instance type and storage type selected for each machine pool.
+Cluster cloud cost is the sum of the estimated cost of all the nodes launched in the cluster. The cost calculation is
+done based on the instance type and storage type selected for each machine pool.
 
 |     | **FORMULAS FOR CALCULATION**                                                                |
 | --- | ------------------------------------------------------------------------------------------- |
@@ -35,13 +37,16 @@ Let's assume that a cluster ‘demo’ is launched with two machine pools with t
 
 :::info
 
-For private clouds like VMware, OpenStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an administrative setting. These rates are used in place of instance-type rates for cost calculation.
+For private clouds like VMware, OpenStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an
+administrative setting. These rates are used in place of instance-type rates for cost calculation.
 
 :::
 
 ## Usage Cost
 
-Usage cost is calculated based on the pods' actual CPU & Memory usage, including the claimed PVC storage size. The pod cost calculation is done by dividing the instance type rate into CPU and memory rates proportional to the instance type category.
+Usage cost is calculated based on the pods' actual CPU & Memory usage, including the claimed PVC storage size. The pod
+cost calculation is done by dividing the instance type rate into CPU and memory rates proportional to the instance type
+category.
 
 | Instance Type Category | CPU: Memory |
 | ---------------------- | ----------- |

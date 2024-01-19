@@ -8,9 +8,11 @@ sidebar_position: 50
 tags: ["user-management", "authentication", "api-key"]
 ---
 
-You can delete an API key from Palette. A tenant admin can also delete an API key created by another user within the tenant. Use the following steps to delete an API key.
+You can delete an API key from Palette. A tenant admin can also delete an API key created by another user within the
+tenant. Use the following steps to delete an API key.
 
-Tenant administrators can delete an API key on behalf of any user within the tenant. Select the Tenant tab below to learn more about deleting an API key as a tenant admin.
+Tenant administrators can delete an API key on behalf of any user within the tenant. Select the Tenant tab below to
+learn more about deleting an API key as a tenant admin.
 
 ## Prerequisites
 

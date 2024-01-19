@@ -8,11 +8,13 @@ sidebar_position: 15
 tags: ["vmo", "oidc"]
 ---
 
-Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC) Identity Provider option that you select in the Kubernetes layer of the infrastructure profile.
+Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC) Identity Provider option that you
+select in the Kubernetes layer of the infrastructure profile.
 
 ## Prerequisites
 
-- A configured infrastructure profile. For more information, review [Create a Cluster Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
+- A configured infrastructure profile. For more information, review
+  [Create a Cluster Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
 
 ## Enable OIDC
 
@@ -22,7 +24,9 @@ Palette displays the Virtual Machine dashboard based on the OpenID Connect (OIDC
 
 3. Select the cluster profile to update. Palette displays profile details and the profile stack.
 
-4. Select the Kubernetes layer in the profile stack, and choose an OIDC Identity Provider option. Refer to [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more about OIDC options.
+4. Select the Kubernetes layer in the profile stack, and choose an OIDC Identity Provider option. Refer to
+   [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more
+   about OIDC options.
 
 Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
 
@@ -30,7 +34,8 @@ Selecting **Inherit from Tenant** or **Custom** will display a link to the dashb
 
 :::warning
 
-We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that rely on OIDC.
+We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+rely on OIDC.
 
 :::
 
@@ -44,8 +49,10 @@ We do not recommend choosing **None** in a production environment, as it may dis
 
 2. Select the cluster profile you updated. Palette displays profile details and the profile stack.
 
-3. Select the Kubernetes layer. Palette displays the OIDC Identity Provider you selected - either **None**, **Palette**, **Inherit from Tenant**, or **Custom**.
+3. Select the Kubernetes layer. Palette displays the OIDC Identity Provider you selected - either **None**, **Palette**,
+   **Inherit from Tenant**, or **Custom**.
 
 ## Next Steps
 
-You are now ready to create the VMO profile. Refer to [Create the VMO Profile](../vm-packs-profiles/create-vmo-profile.md) for guidance.
+You are now ready to create the VMO profile. Refer to
+[Create the VMO Profile](../vm-packs-profiles/create-vmo-profile.md) for guidance.

@@ -9,7 +9,9 @@ tags: ["palette", "self-hosted", "management"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-Tenants are isolated environments in Palette that contain their own clusters, users, and resources. You can create multiple tenants in Palette to support multiple teams or projects. Instructions for creating and removing tenants are provided below.
+Tenants are isolated environments in Palette that contain their own clusters, users, and resources. You can create
+multiple tenants in Palette to support multiple teams or projects. Instructions for creating and removing tenants are
+provided below.
 
 <br />
 
@@ -29,19 +31,24 @@ You can create a tenant in Palette by following these steps.
 
 3. Click **Create New Tenant**.
 
-4. Fill out the **Org Name** and the properties of the admin user by providing the **First Name**, **Last Name**, and **Email**.
+4. Fill out the **Org Name** and the properties of the admin user by providing the **First Name**, **Last Name**, and
+   **Email**.
 
 5. Confirm your changes.
 
-6. From the tenant list view, find your newly created tenant and click on the **three dots Menu**. Select **Activate** to activate the tenant.
+6. From the tenant list view, find your newly created tenant and click on the **three dots Menu**. Select **Activate**
+   to activate the tenant.
 
-  <br />
+{" "}
+
+<br />
 
 ![View of a tenant activation option](/enterprise-version_system-management_tenant-management_activate-tenant.png)
 
 <br />
 
-7. A pop-up box will present you with an activation URL. Copy the URL and paste it into your browser to activate the tenant.
+7. A pop-up box will present you with an activation URL. Copy the URL and paste it into your browser to activate the
+   tenant.
 
 8. Provide the admin user with a new password.
 
@@ -77,11 +84,15 @@ You can remove a tenant in Palette using the following steps.
 
 ![View of a tenant deletion option](/enterprise_version_system-management_tenant-management_remove-tenant.png)
 
-  <br />
+{" "}
+
+<br />
 
 :::warning
 
-If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with deletion without manually cleaning up tenant resources.
+If you do not clean up the tenant's resources, such as clusters and Private Cloud Gateways (PCGs), the tenant will
+remain in a **Deleting** state. You can use **Force Cleanup & Delete** to proceed with deletion without manually
+cleaning up tenant resources.
 
 :::
 
@@ -89,7 +100,8 @@ After the cleanup process completes, the tenant will be removed from the tenant 
 
 ### Validate
 
-1. Log in to the Palette system console. Refert to the [Access Palette](../enterprise-version.md#access-palette) section for instructions on how to access the Palette system console.
+1. Log in to the Palette system console. Refert to the [Access Palette](../enterprise-version.md#access-palette) section
+   for instructions on how to access the Palette system console.
 
 2. Navigate to the left **Main Menu** and select **Tenant Management**.
 

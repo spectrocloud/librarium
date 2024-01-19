@@ -24,11 +24,13 @@ Review the following tables for additional information about the supported platf
 
 :::info
 
-For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the [Cluster](../clusters/clusters.md) documentation.
+For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the
+[Cluster](../clusters/clusters.md) documentation.
 
 :::
 
-The term _IaaS_ refers to Palette using compute nodes that are not managed by a cloud provider, such as bare metal servers or virtual machines.
+The term _IaaS_ refers to Palette using compute nodes that are not managed by a cloud provider, such as bare metal
+servers or virtual machines.
 
 #### AWS
 
@@ -47,7 +49,9 @@ VerteX supports the following Azure services.
 | ----------- | ---------------------- |
 | **IaaS**    | ✅                     |
 
-All Azure Government regions are supported with the exception of Department of Defense regions. Refer to the [official Azure Government documentation](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-overview-dod) to learn more about the available regions.
+All Azure Government regions are supported with the exception of Department of Defense regions. Refer to the
+[official Azure Government documentation](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-overview-dod)
+to learn more about the available regions.
 
 #### VMware vSphere
 

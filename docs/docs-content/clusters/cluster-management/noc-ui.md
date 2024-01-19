@@ -7,8 +7,10 @@ sidebar_position: 180
 tags: ["clusters", "cluster management"]
 ---
 
-Palette provides an intuitive user interface (UI) based on location monitoring for the clusters running at multiple locations. The Palette
-UI displays the region set during the cluster creation process for public cloud clusters and the location on the UI map. You can set the location for private cloud clusters through the Palette UI. You can also monitor the location details of all the clusters running under a specific scope.
+Palette provides an intuitive user interface (UI) based on location monitoring for the clusters running at multiple
+locations. The Palette UI displays the region set during the cluster creation process for public cloud clusters and the
+location on the UI map. You can set the location for private cloud clusters through the Palette UI. You can also monitor
+the location details of all the clusters running under a specific scope.
 
 ## Set the Cluster Location
 
@@ -36,11 +38,14 @@ The map will display all the cluster locations under that user’s scope.
 
 ## Map Filters
 
-Palette Map Filters filter out specific clusters using built-in or custom filters for an enhanced user experience. The map filter allows you to narrow down clusters that may be dispersed geographically, across multiple scopes, or different cloud providers. You have two types of filters:- **Built-in Filters** and **Custom Filters**.
+Palette Map Filters filter out specific clusters using built-in or custom filters for an enhanced user experience. The
+map filter allows you to narrow down clusters that may be dispersed geographically, across multiple scopes, or different
+cloud providers. You have two types of filters:- **Built-in Filters** and **Custom Filters**.
 
 ### Built-In Filters
 
-Built-in filters are available in the Palette console by default and can be selected from the **Add Filter** drop-down menu. You can use the following built-in filters.
+Built-in filters are available in the Palette console by default and can be selected from the **Add Filter** drop-down
+menu. You can use the following built-in filters.
 
 | **Built-In Filters** | Description                                           |
 | -------------------- | ----------------------------------------------------- |
@@ -50,8 +55,7 @@ Built-in filters are available in the Palette console by default and can be sele
 
 ### Custom Filters
 
-Palette supports a wide range of custom filters in a fixed format. To add a custom filter:
-<br />
+Palette supports a wide range of custom filters in a fixed format. To add a custom filter: <br />
 
 - Log in to Palette and select **Clusters** from the left **Main Menu**.
 

@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/fluentbit/blobs/sha256:012fbab20e
 tags: ["packs", "fluentbit", "logging"]
 ---
 
-Fluent-Bit is a multi-platform log forwarder. The default integration will help forward logs from the Kubernetes cluster to an external ElasticSearch cluster
+Fluent-Bit is a multi-platform log forwarder. The default integration will help forward logs from the Kubernetes cluster
+to an external ElasticSearch cluster
 
 ## Version
 

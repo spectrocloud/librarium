@@ -6,9 +6,13 @@ hide_table_of_contents: false
 sidebar_position: 140
 ---
 
-Palette provides a color scheme to help you monitor pack installation progress during Palette Workload Cluster deployment. Different colors represent stages of pack installation so you can track the progress of packs as they are added to a cluster.
+Palette provides a color scheme to help you monitor pack installation progress during Palette Workload Cluster
+deployment. Different colors represent stages of pack installation so you can track the progress of packs as they are
+added to a cluster.
 
-The Cluster Profile page displays the list of packs associated with the cluster you are monitoring. In addition, the page also includes information on the status and the installation progress of the installed packs. The following are the possible pack statuses.
+The Cluster Profile page displays the list of packs associated with the cluster you are monitoring. In addition, the
+page also includes information on the status and the installation progress of the installed packs. The following are the
+possible pack statuses.
 
 | **Indicator Status**                       | **Description**                                                     |
 | ------------------------------------------ | ------------------------------------------------------------------- |

@@ -21,9 +21,7 @@
       }
     ],
     "paths": {
-      "@theme/IdealImage": [
-        "node_modules/@docusaurus/plugin-ideal-image/src/theme/IdealImage/index.tsx"
-      ],
+      "@theme/IdealImage": ["node_modules/@docusaurus/plugin-ideal-image/src/theme/IdealImage/index.tsx"],
       "@site/src/*": ["src/*"],
       "@site/static/*": ["static/*"],
       "@theme-original/*": ["./node_modules/@docusaurus/theme-classic/lib/theme/*"],

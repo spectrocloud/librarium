@@ -7,7 +7,8 @@ sidebar_position: 40
 tags: ["palette-cli"]
 ---
 
-The `pde` command interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command to log in to Palette, manage virtual clusters, and switch the project scope.
+The `pde` command interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command
+to log in to Palette, manage virtual clusters, and switch the project scope.
 
 The `pde` command exposes the following subcommands.
 
@@ -25,7 +26,8 @@ The `pde` command exposes the following subcommands.
 
 Use the `app` subcommand to manage Palette Apps deployments. The `app` subcommand supports the following subcommands.
 
-- `create` - Create a Palette App deployment. This command contain several subcommands. Use the `--help` flag to learn more about each subcommand or refer to the [Create](#create) section.
+- `create` - Create a Palette App deployment. This command contain several subcommands. Use the `--help` flag to learn
+  more about each subcommand or refer to the [Create](#create) section.
 
 - `delete` - Delete a Palette App deployment. Refer to the [Delete](#delete) section for more information.
 
@@ -35,9 +37,11 @@ Use the `app` subcommand to manage Palette Apps deployments. The `app` subcomman
 
 ### Create
 
-Use the `create` subcommand to create a Palette App deployment. The `create` subcommand supports the following subcommands.
+Use the `create` subcommand to create a Palette App deployment. The `create` subcommand supports the following
+subcommands.
 
-- `cluster-group` - Create a Palette App deployment inside a Cluster Group. A new Virtual Cluster will be created. Use the following flags to create a Palette App deployment inside a Cluster Group.
+- `cluster-group` - Create a Palette App deployment inside a Cluster Group. A new Virtual Cluster will be created. Use
+  the following flags to create a Palette App deployment inside a Cluster Group.
 
   | **Flag**                 | **Description**                                                                                     | **Type** |
   | ------------------------ | --------------------------------------------------------------------------------------------------- | -------- |
@@ -52,7 +56,8 @@ Use the `create` subcommand to create a Palette App deployment. The `create` sub
 
 - `interactive` - Create a Palette App deployment in an interactive mode.
 
-- `virtual-cluster` - Create a Palette App deployment inside an existing Virtual Cluster. Use the following flags to create a Palette App deployment inside an existing Virtual Cluster.
+- `virtual-cluster` - Create a Palette App deployment inside an existing Virtual Cluster. Use the following flags to
+  create a Palette App deployment inside an existing Virtual Cluster.
 
   | **Flag**                 | **Description**                                                                                     | **Type** |
   | ------------------------ | --------------------------------------------------------------------------------------------------- | -------- |
@@ -63,14 +68,17 @@ Use the `create` subcommand to create a Palette App deployment. The `create` sub
 
 ### Delete
 
-Use the `delete` subcommand to delete a Palette App deployment. The `delete` requires the name of the App deployment to delete. Use the `--name` flag to specify the name of the App deployment to delete.
+Use the `delete` subcommand to delete a Palette App deployment. The `delete` requires the name of the App deployment to
+delete. Use the `--name` flag to specify the name of the App deployment to delete.
 
 | **Flag** | **Description**                   | **Type** |
 | -------- | --------------------------------- | -------- |
 | `--name` | The name of the App deployment.   | string   |
 | `--help` | Help for the `delete` subcommand. | -        |
 
-  <br />
+{" "}
+
+<br />
 
 ### List
 
@@ -106,7 +114,9 @@ Use the `app-profile` subcommand to manage app profiles. The `app-profile` comma
 
 ### Create
 
-Use the `create` subcommand to create an app profile. You have two options to create an app profile. You can create an app profile using a configuration file or in interactive mode. The `create` subcommand supports the following subcommands.
+Use the `create` subcommand to create an app profile. You have two options to create an app profile. You can create an
+app profile using a configuration file or in interactive mode. The `create` subcommand supports the following
+subcommands.
 
 - `from-config` - Create an app profile from an app profile configuration file.
 
@@ -114,7 +124,8 @@ Use the `create` subcommand to create an app profile. You have two options to cr
 
 #### From Config
 
-You can create an app profile using a configuration file. The configuration file must be in YAML format. The `from-config` subcommand supports the following flags.
+You can create an app profile using a configuration file. The configuration file must be in YAML format. The
+`from-config` subcommand supports the following flags.
 
 | **Flag**        | **Description**                                 | **Type** |
 | --------------- | ----------------------------------------------- | -------- | --- |
@@ -135,7 +146,8 @@ The configuration file will be created in the $HOME directory, under the `~/.pal
 
 #### Interactive
 
-Use the interactive subcommand to create an app profile in interactive mode. The `interactive` subcommand supports the following flags.
+Use the interactive subcommand to create an app profile in interactive mode. The `interactive` subcommand supports the
+following flags.
 
 | **Flag**        | **Description**                                                                    | **Type** |
 | --------------- | ---------------------------------------------------------------------------------- | -------- |
@@ -144,7 +156,8 @@ Use the interactive subcommand to create an app profile in interactive mode. The
 
 ### Delete
 
-Use the `delete` subcommand to delete an app profile. To delete an app profile, you must provide the name and version of the app profile. The `delete` subcommand supports the following flags.
+Use the `delete` subcommand to delete an app profile. To delete an app profile, you must provide the name and version of
+the app profile. The `delete` subcommand supports the following flags.
 
 | **Flag**    | **Description**                   | **Type** |
 | ----------- | --------------------------------- | -------- |
@@ -154,7 +167,8 @@ Use the `delete` subcommand to delete an app profile. To delete an app profile, 
 
 ### Describe
 
-Use the `describe` subcommand to describe an app profile. To describe an app profile, you must provide the name and version of the app profile. The `describe` subcommand supports the following flags.
+Use the `describe` subcommand to describe an app profile. To describe an app profile, you must provide the name and
+version of the app profile. The `describe` subcommand supports the following flags.
 
 | **Flag**    | **Description**                     | **Type** |
 | ----------- | ----------------------------------- | -------- |
@@ -173,7 +187,8 @@ Use the `list` subcommand to list all app profiles. The `list` subcommand suppor
 
 ### Versions
 
-Use the `versions` subcommand to list all versions of an app profile. To list all versions of an app profile, you must provide the name of the app profile. The `versions` subcommand supports the following flags.
+Use the `versions` subcommand to list all versions of an app profile. To list all versions of an app profile, you must
+provide the name of the app profile. The `versions` subcommand supports the following flags.
 
 | **Flag** | **Description**                     | **Type** |
 | -------- | ----------------------------------- | -------- |
@@ -182,7 +197,8 @@ Use the `versions` subcommand to list all versions of an app profile. To list al
 
 ## Cluster Group
 
-Use the `cluster-group` command to change the cluster group that commands will target. You can also list all available clusters. The `cluster-group` supports the following subcommands.
+Use the `cluster-group` command to change the cluster group that commands will target. You can also list all available
+clusters. The `cluster-group` supports the following subcommands.
 
 - `list` - List Palette Cluster Groups.
 
@@ -204,7 +220,8 @@ Use the `switch` subcommand to switch your active cluster group. The `switch` su
 
 ## Registry
 
-Use the `registry` subcommand to manage Palette Registries for App Mode. The `registry` subcommand supports the following subcommands.
+Use the `registry` subcommand to manage Palette Registries for App Mode. The `registry` subcommand supports the
+following subcommands.
 
 - `create` - Create a Palette Registry.
 
@@ -214,7 +231,9 @@ Use the `registry` subcommand to manage Palette Registries for App Mode. The `re
 
 ### Create
 
-The `create` subcommand creates a Palette Registry. You can specify an Open Container Initiative (OCI) registry or a Helm registry. Use the subcommand `oci` or `helm` to specify the type of registry you want to create. The `create` subcommand supports the following subcommands.
+The `create` subcommand creates a Palette Registry. You can specify an Open Container Initiative (OCI) registry or a
+Helm registry. Use the subcommand `oci` or `helm` to specify the type of registry you want to create. The `create`
+subcommand supports the following subcommands.
 
 - `oci` - Create an OCI registry. Use the following flags to create an OCI registry.
 
@@ -238,7 +257,8 @@ palette pde registry create oci --endpoint https://harbor.internal.abc.org  \
 
 ### List
 
-The `list` subcommand lists all Palette Registries available in App Mode. The `list` subcommand supports the following flags.
+The `list` subcommand lists all Palette Registries available in App Mode. The `list` subcommand supports the following
+flags.
 
 | **Flag** | **Description**                                            | **Type** |
 | -------- | ---------------------------------------------------------- | -------- |
@@ -247,7 +267,9 @@ The `list` subcommand lists all Palette Registries available in App Mode. The `l
 
 ### Delete
 
-The `delete` subcommand deletes a Palette Registry from App Mode. You can specify an Open Container Initiative (OCI) registry or a Helm registry. Use the type flag `--type` to specify the type of registry you want to delete. The `delete` subcommand supports the following flags.
+The `delete` subcommand deletes a Palette Registry from App Mode. You can specify an Open Container Initiative (OCI)
+registry or a Helm registry. Use the type flag `--type` to specify the type of registry you want to delete. The `delete`
+subcommand supports the following flags.
 
 | **Flag** | **Description**                                            | **Type** |
 | -------- | ---------------------------------------------------------- | -------- |
@@ -257,7 +279,8 @@ The `delete` subcommand deletes a Palette Registry from App Mode. You can specif
 
 ## Virtual Cluster
 
-You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters. Below is a list of the supported subcommands you can use. Use the `--help` flag to learn more about each subcommand.
+You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters. Below is a list of the supported
+subcommands you can use. Use the `--help` flag to learn more about each subcommand.
 
 - `create` - Create a virtual cluster.
 
@@ -295,7 +318,8 @@ palette pde virtual-cluster create --cpu 4 --memory 4 --storage 4 --name dev-clu
 
 ### Delete
 
-Use the `delete` subcommand to delete a Palette Virtual Cluster. The `delete` subcommand requires the name of the Virtual Cluster to delete. Use the `--name` flag to specify the name of the Virtual Cluster to delete.
+Use the `delete` subcommand to delete a Palette Virtual Cluster. The `delete` subcommand requires the name of the
+Virtual Cluster to delete. Use the `--name` flag to specify the name of the Virtual Cluster to delete.
 
 | **Flag** | **Description**                   | **Type** |
 | -------- | --------------------------------- | -------- |
@@ -304,7 +328,8 @@ Use the `delete` subcommand to delete a Palette Virtual Cluster. The `delete` su
 
 ### Download Kubeconfig
 
-Use the `download-kubeconfig` subcommand to download the kubeconfig for virtual cluster. The `download-kubeconfig` subcommand requires the name of the Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
+Use the `download-kubeconfig` subcommand to download the kubeconfig for virtual cluster. The `download-kubeconfig`
+subcommand requires the name of the Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
 
 | **Flag** | **Description**                                                                                    | **Type** |
 | -------- | -------------------------------------------------------------------------------------------------- | -------- |
@@ -325,7 +350,8 @@ Kubeconfig location: /Users/demo/projects/spectro-cloud/kubeconfig/cli-cluster.c
 
 ### Events
 
-Use the `events` subcommand to view event logs for a virtual cluster. The `events` subcommand requires the name of the Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
+Use the `events` subcommand to view event logs for a virtual cluster. The `events` subcommand requires the name of the
+Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
 
 | **Flag**     | **Description**                                                         | **Type** |
 | ------------ | ----------------------------------------------------------------------- | -------- | ------------------------- | ------ |
@@ -337,7 +363,9 @@ Use the `events` subcommand to view event logs for a virtual cluster. The `event
 
 ### Lifecycle
 
-Use the `lifecycle` subcommand to pause or resume a virtual cluster. The `lifecycle` subcommand requires the name of the virtual cluster and the action type. Use the `--name` flag to specify the name of the virtual cluster, and the `--action` flag to specify the action type. The action type can be `pause` or `resume`.
+Use the `lifecycle` subcommand to pause or resume a virtual cluster. The `lifecycle` subcommand requires the name of the
+virtual cluster and the action type. Use the `--name` flag to specify the name of the virtual cluster, and the
+`--action` flag to specify the action type. The action type can be `pause` or `resume`.
 
 | **Flag**   | **Description**                                           | **Type** |
 | ---------- | --------------------------------------------------------- | -------- |
@@ -363,7 +391,9 @@ Use the `list` subcommand to list all available virtual clusters. No additional 
 
 ### Resize
 
-Use the `resize` subcommand to resize a virtual cluster. The `resize` subcommand requires the name of the virtual cluster and the new size. Use the `--name` flag to specify the name of the virtual cluster, and the `--size` flag to specify the new size.
+Use the `resize` subcommand to resize a virtual cluster. The `resize` subcommand requires the name of the virtual
+cluster and the new size. Use the `--name` flag to specify the name of the virtual cluster, and the `--size` flag to
+specify the new size.
 
 | **Flag**    | **Description**                                       | **Type** |
 | ----------- | ----------------------------------------------------- | -------- |

@@ -10,7 +10,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3
 tags: ["packs", "generic-vm-vsphere", "system app"]
 ---
 
-Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
+Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster
+profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing
+but the values. Users will then have the ability to modify the add-on pack for the different applications.
 
 <br />
 
@@ -25,20 +27,21 @@ Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtu
 </TabItem>
 </Tabs>
 
-<br/>
+<br />
 
 ## Configuring Generic-VM-vSphere
 
 To configure the Generic-VM-vSphere Add-on pack for the application cluster, the namespace value should be as follows:
 
-`cluster-{{ .spectro.system.cluster.uid }}`
-<br />
+`cluster-{{ .spectro.system.cluster.uid }}` <br />
 
 ```yaml
 namespace: cluster-{{ .spectro.system.cluster.uid }}
 ```
 
-If multiple instances of this pack has to be deployed on the cluster for different virtual machine applications, then modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with different names to make it unique across all the packs in the cluster.
+If multiple instances of this pack has to be deployed on the cluster for different virtual machine applications, then
+modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with different names to make it unique across all
+the packs in the cluster.
 
 <br />
 
@@ -195,13 +198,15 @@ charts:
 
 ## Virtual Machine Hooks
 
-The Generic-VM-vSphere pack supports various hooks while deploying VM applications and supports multiple use-cases of customizing workflow, as customers require.
+The Generic-VM-vSphere pack supports various hooks while deploying VM applications and supports multiple use-cases of
+customizing workflow, as customers require.
 
 <br />
 
 ## Using extraVMHclConfig
 
-The extraVMHclConfig command can be used to provide an extra configuration in the virtual machine and the configuration file should be provided in HashiCorp Configuration Language (HCL) format.
+The extraVMHclConfig command can be used to provide an extra configuration in the virtual machine and the configuration
+file should be provided in HashiCorp Configuration Language (HCL) format.
 
 ```terraform
 # extraVMHclConfig: |
@@ -212,9 +217,11 @@ The extraVMHclConfig command can be used to provide an extra configuration in th
 
 ## Using preExecCmd and postExecCmd
 
-The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval.
+The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at
+approximately a 2-minute interval.
 
-**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after virtual machine creation respectively.
+**preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after
+virtual machine creation respectively.
 
 <br />
 
@@ -230,7 +237,8 @@ postExecCmd: "bash /var/files/pre-exec.sh"
 
 ## Using preVMInitCmd and postVMInitCmd
 
-The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
+The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the
+**postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
 **Note**: These commands will not be executed in each reconciliation.
 
@@ -248,7 +256,9 @@ postVMInitCmd: "echo 'Ooho! VM is created.'"
 
 ## Using preVMDestroyCmd
 
-Any command or script provided in this virtual machine hook will execute before the virtual machine is destroyed. It will be executed only when the VM is getting deleted. A virtual machine deletion can happen for any reason, like changing anything in cloud-init or removing the pack from the profile.
+Any command or script provided in this virtual machine hook will execute before the virtual machine is destroyed. It
+will be executed only when the VM is getting deleted. A virtual machine deletion can happen for any reason, like
+changing anything in cloud-init or removing the pack from the profile.
 
 <br />
 
@@ -260,7 +270,9 @@ preVMDestroyCmd: ""
 
 :::info
 
-During a first-time deployment, <b> preVMDestroyCmd</b> won't be invoked. However, if there is any change in cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is executed successfully, only then the VM resource will be deleted.
+During a first-time deployment, <b> preVMDestroyCmd</b> won't be invoked. However, if there is any change in cloud-init,
+then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd
+is executed successfully, only then the VM resource will be deleted.
 
 <br />
 <br />
@@ -273,7 +285,9 @@ Once the VM is deleted and before another virtual machine is created, <b>preVMIn
 
 ## Mounts
 
-Mount the data inside the existing configuration map or secret into the pod as files, where pre-and-post hooks are executed. This allows the data present in the configuration map or the secrets file to be accessible while running pre-and-post exec hooks.
+Mount the data inside the existing configuration map or secret into the pod as files, where pre-and-post hooks are
+executed. This allows the data present in the configuration map or the secrets file to be accessible while running
+pre-and-post exec hooks.
 
 <br />
 
@@ -295,7 +309,9 @@ mounts:
 
 ## Environment Variables
 
-The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running pre-and-post exec hooks.
+The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where
+pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running
+pre-and-post exec hooks.
 
 <br />
 
@@ -315,7 +331,8 @@ envs:
 
 ## Files
 
-Files present in this section will be added to the pod and will be accessible while executing pre-and-post execution hooks and absolute file path would be '/var/files/\<file_name>'.
+Files present in this section will be added to the pod and will be accessible while executing pre-and-post execution
+hooks and absolute file path would be '/var/files/\<file_name>'.
 
 <br />
 

@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b
 tags: ["packs", "kubevious", "monitoring"]
 ---
 
-Kubevious integration provides a graphical interface that renders easy to understand, application-centric Kubernetes configurations.
+Kubevious integration provides a graphical interface that renders easy to understand, application-centric Kubernetes
+configurations.
 
 ## Versions Supported
 
@@ -45,7 +46,8 @@ This integration deploys the following components:
 
 Follow the steps below to configure Ingress on Kubevious, according to the corresponding version
 
-1. Within the manifest, find the kubevious section **user** > **interface** > **service** > **type** and confirm/change, according to the Kubevious version as listed in the table below.
+1. Within the manifest, find the kubevious section **user** > **interface** > **service** > **type** and confirm/change,
+   according to the Kubevious version as listed in the table below.
 
    | **Versions** | **Parameters**                   | **Action**                                                           |
    | ------------ | -------------------------------- | -------------------------------------------------------------------- |
@@ -57,7 +59,8 @@ Follow the steps below to configure Ingress on Kubevious, according to the corre
    - Enable Ingress; change enabled from _false_ to **true**.
    - Set Ingress rules like annotations, path, hosts, etc.
 
-With these configuration changes, you can access the Kubevious service on the Ingress Controller LoadBalancer hostname/IP.
+With these configuration changes, you can access the Kubevious service on the Ingress Controller LoadBalancer
+hostname/IP.
 
 ## References
 

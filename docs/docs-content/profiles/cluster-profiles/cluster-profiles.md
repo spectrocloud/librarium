@@ -6,23 +6,43 @@ hide_table_of_contents: false
 tags: ["profiles", "cluster profiles"]
 ---
 
-Cluster profiles are composed of layers using packs, Helm charts, and custom manifests to meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster deployments.
+Cluster profiles are composed of layers using packs, Helm charts, and custom manifests to meet specific types of
+workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster
+deployments.
 
 Below are cluster profile types you can create:
 
-- _Infrastructure_ profiles provide the essential components for workload cluster deployments within a [tenant](../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these layers form the infrastructure for your cluster. For more information, review the [Create an Infrastructure Profile](../cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide.
+- _Infrastructure_ profiles provide the essential components for workload cluster deployments within a
+  [tenant](../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these
+  layers form the infrastructure for your cluster. For more information, review the
+  [Create an Infrastructure Profile](../cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  guide.
 
-- _Add-on_ profiles are exclusively composed of add-on layers. They usually do not contain infrastructure components and are instead designed for reusability across multiple clusters and multiple projects within a tenant. Since they provide the flexibility to configure clusters based on specific requirements, _add-on_ profiles can be added to _infrastructure_ profiles to create what we call a _full profile_. For an overview of how to build add-on profiles using various types of layers, review the [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md) guide.
+- _Add-on_ profiles are exclusively composed of add-on layers. They usually do not contain infrastructure components and
+  are instead designed for reusability across multiple clusters and multiple projects within a tenant. Since they
+  provide the flexibility to configure clusters based on specific requirements, _add-on_ profiles can be added to
+  _infrastructure_ profiles to create what we call a _full profile_. For an overview of how to build add-on profiles
+  using various types of layers, review the
+  [Create an Add-on Profile](../cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
+  guide.
 
-- _Full profiles_ combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more to your cluster. Refer to the [Create a Full Profile](../cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for more details.
+- _Full profiles_ combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster
+  functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more
+  to your cluster. Refer to the
+  [Create a Full Profile](../cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for more details.
 
-The diagram below illustrates the components of these profile types and how you can build on infrastructure layers with add-on layers to create a full cluster profile. You can also create separate add-on profiles to reuse among multiple clusters.
+The diagram below illustrates the components of these profile types and how you can build on infrastructure layers with
+add-on layers to create a full cluster profile. You can also create separate add-on profiles to reuse among multiple
+clusters.
 
 ![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/profiles_cluster-profiles_cluster-profiles.png)
 
 ## Profile Layers
 
-Each cluster profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom manifests, as described in the table. Adding a pack multiple times to the same cluster profile is possible. To learn more about this scenario, review [Deploy Same Pack to Multiple Layers](../cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile.md).
+Each cluster profile layer provides a specific functionality. Profile layers can be packs, Helm Charts, or custom
+manifests, as described in the table. Adding a pack multiple times to the same cluster profile is possible. To learn
+more about this scenario, review
+[Deploy Same Pack to Multiple Layers](../cluster-profiles/create-cluster-profiles/duplicate-pack-in-profile.md).
 
 | **Layer**       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -32,11 +52,16 @@ Each cluster profile layer provides a specific functionality. Profile layers can
 
 Use these guidelines to configure layers and customize certain aspects of a pack's functionality:
 
-- **Pack version**: You can choose a specific pack version, such as `1.27.5`, or a major/minor train, such as `1.x` or `1.1.x`. A major/minor train provides dynamic version association. The latest release from that train is linked to the pack. When a pack is updated, its latest version gets linked to the pack, ensuring clusters always use the latest released pack versions without the need to manually update cluster profiles.
+- **Pack version**: You can choose a specific pack version, such as `1.27.5`, or a major/minor train, such as `1.x` or
+  `1.1.x`. A major/minor train provides dynamic version association. The latest release from that train is linked to the
+  pack. When a pack is updated, its latest version gets linked to the pack, ensuring clusters always use the latest
+  released pack versions without the need to manually update cluster profiles.
 
-- **Configuration parameters**: Packs provide default configuration parameters that are set to values based on common best practices. You can override these parameters as needed in the configuration file.
+- **Configuration parameters**: Packs provide default configuration parameters that are set to values based on common
+  best practices. You can override these parameters as needed in the configuration file.
 
-- **Presets**: Some layers offer preset options that allow you to enable or configure a feature within that layer. When presets are available, they display in a slide panel in the YAML editor.
+- **Presets**: Some layers offer preset options that allow you to enable or configure a feature within that layer. When
+  presets are available, they display in a slide panel in the YAML editor.
 
 ## Resources
 

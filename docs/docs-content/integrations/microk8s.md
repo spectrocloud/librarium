@@ -10,11 +10,15 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubernetes-microk8s/blobs/sha256:
 tags: ["packs", "microk8s", "kubernetes"]
 ---
 
-MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubernetes deployment that runs entirely on your workstation or edge device. It runs all Kubernetes services natively without virtual machines and packs all the required libraries and binaries.
+MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubernetes deployment that runs entirely on
+your workstation or edge device. It runs all Kubernetes services natively without virtual machines and packs all the
+required libraries and binaries.
 
 ### Support Lifecycle
 
-We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by
+the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
+[Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
 ## Prerequisites
 
@@ -32,7 +36,8 @@ We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until 
 
 :::info
 
-If your environment doesn't meet these requirements, there are alternative ways to install MicroK8s, including additional OS support and an offline deployment.
+If your environment doesn't meet these requirements, there are alternative ways to install MicroK8s, including
+additional OS support and an offline deployment.
 
 :::
 
@@ -53,25 +58,28 @@ If your environment doesn't meet these requirements, there are alternative ways 
 </TabItem>
 </Tabs>
 
-MicroK8s installs a minimal, lightweight Kubernetes you can run and use on almost any machine. When installing MicroK8s you can specify a channel made up of two components:
+MicroK8s installs a minimal, lightweight Kubernetes you can run and use on almost any machine. When installing MicroK8s
+you can specify a channel made up of two components:
 
 - **Track**: denotes the upstream Kubernetes version.
 - **Risk level**: indicates the maturity level of the release, such as stable and edge.
 
-MicroK8s comes with its own packaged version of the `kubectl` command for operating Kubernetes. This avoids interfering with any version that may already be on the host machine. You can run it in a terminal like this:
-<br />
+MicroK8s comes with its own packaged version of the `kubectl` command for operating Kubernetes. This avoids interfering
+with any version that may already be on the host machine. You can run it in a terminal like this: <br />
 
 ```yaml
 microk8s kubectl
 ```
 
-If you are using or want to use a different kubectl command, you can configure it for your Linux, Mac, or Windows operating system.
+If you are using or want to use a different kubectl command, you can configure it for your Linux, Mac, or Windows
+operating system.
 
 <br />
 
 :::warning
 
-When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack `node.kubelet`` values from `/var/lib/kubelet`to`/var/snap/microk8s/common/var/lib/kubelet`.
+When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack
+`node.kubelet`` values from `/var/lib/kubelet`to`/var/snap/microk8s/common/var/lib/kubelet`.
 
 ```yaml
 node:

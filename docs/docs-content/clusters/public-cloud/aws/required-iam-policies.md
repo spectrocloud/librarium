@@ -7,8 +7,8 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 50
 ---
 
-Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
-The following policies include all the permissions needed for cluster provisioning with Palette.
+Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. The
+following policies include all the permissions needed for cluster provisioning with Palette.
 
 - **PaletteControllerPolicy**
 
@@ -18,12 +18,16 @@ The following policies include all the permissions needed for cluster provisioni
 
 - **PaletteDeploymentPolicy**
 
-Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to review the IAM policy.
+Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS)
+requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to
+review the IAM policy.
 
 :::warning
 
-You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies into a custom-managed policy.
-You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
+You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster
+deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies
+into a custom-managed policy. You can learn more about AWS IAM limits in the
+[IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
 
 :::
 
@@ -136,9 +140,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         }
       },
       "Action": ["iam:CreateServiceLinkedRole"],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
-      ],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"],
       "Effect": "Allow"
     },
     {
@@ -160,9 +162,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         }
       },
       "Action": ["iam:CreateServiceLinkedRole"],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
-      ],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"],
       "Effect": "Allow"
     },
     {
@@ -171,11 +171,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "secretsmanager:CreateSecret",
-        "secretsmanager:DeleteSecret",
-        "secretsmanager:TagResource"
-      ],
+      "Action": ["secretsmanager:CreateSecret", "secretsmanager:DeleteSecret", "secretsmanager:TagResource"],
       "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
       "Effect": "Allow"
     },
@@ -394,9 +390,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
         }
       },
       "Action": ["iam:CreateServiceLinkedRole"],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
-      ],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"],
       "Effect": "Allow"
     },
     {
@@ -520,7 +514,9 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
 
 ## Restricting Palette VPC Permissions
 
-You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the [Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS
+cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the
+[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
 <br />
 <br />
@@ -528,7 +524,8 @@ You can choose to have Palette operate in a static or dynamic environment. You c
 <Tabs queryString="min-permissions">
 <TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
 
-This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
+This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
+VPCs.
 
 <br />
 
@@ -654,7 +651,8 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
 
 <TabItem label="Minimum Static Permissions" value="Minimum Static Permissions">
 
-This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
+This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
+VPCs.
 
 <br />
 
@@ -762,13 +760,20 @@ The following are important points to be aware of.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
 
-- The following warning is expected and can be ignored: These policies define some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
+- The following warning is expected and can be ignored: These policies define some actions, resources, or conditions
+  that do not provide permissions. To grant access, policies must have an action that has an applicable resource or
+  condition.
 
 :::
 
 ## Global Role Additional Policies
 
-There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add additional node-level policies, switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
+There may be situations where additional node-level policies must be added to your deployment. For instance, when you
+create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add
+additional node-level policies, switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the
+**Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS
+credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be
+attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 <br />
 
@@ -782,16 +787,22 @@ roleName: "custom-ng-role"
 
 ## Roles and Policies
 
-Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you deploy, either AWS EKS or IaaS (using EC2 instances), Palette creates and attaches different IAM roles and policies.
+Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you
+deploy, either AWS EKS or IaaS (using EC2 instances), Palette creates and attaches different IAM roles and policies.
 
-Select the tab below to review the IAM roles and policies attached to the cluster's IAM role and the node group's IAM role.
+Select the tab below to review the IAM roles and policies attached to the cluster's IAM role and the node group's IAM
+role.
 
 <Tabs queryString="service">
 <TabItem label="EKS" value="eks">
 
-When you deploy an EKS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster, and the other IAM role for the worker node group.
+When you deploy an EKS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster,
+and the other IAM role for the worker node group.
 
-The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM role is named as `ng-role_worker-pool-[random-string]`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role.
+The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM
+role is named as `ng-role_worker-pool-[random-string]`. These two IAM roles have customer-managed and AWS-managed IAM
+policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM
+policies attached to the cluster's IAM role and the node group's IAM role.
 
 | **Policy Name**                    | **Type**    | **Attached to the cluster's IAM role?** | **Attached to the node group's IAM role?** | **Description**                                                                          |
 | ---------------------------------- | ----------- | --------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
@@ -801,14 +812,19 @@ The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-ser
 | AmazonEKSWorkerNodePolicy          | AWS managed | ❌                                      | ✅                                         | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.            |
 | AmazonSSMManagedInstanceCore       | AWS managed | ❌                                      | ✅                                         | The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality. |
 
-In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role.
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those
+policies are also attached to the cluster's IAM role and the node group's IAM role.
 
 </TabItem>
 <TabItem label="IaaS" value="iaas">
 
-When you deploy an IaaS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster control nodes, and the other IAM role for the worker nodes.
+When you deploy an IaaS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster
+control nodes, and the other IAM role for the worker nodes.
 
-The control plane nodes IAM role is named `control-plane.cluster-api-provider-aws.sigs.k8s.io`, and the node group's IAM role is named as `nodes.cluster-api-provider-aws.sigs.k8s.io`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role.
+The control plane nodes IAM role is named `control-plane.cluster-api-provider-aws.sigs.k8s.io`, and the node group's IAM
+role is named as `nodes.cluster-api-provider-aws.sigs.k8s.io`. These two IAM roles have customer-managed and AWS-managed
+IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM
+policies attached to the cluster's IAM role and the node group's IAM role.
 
 | **Policy name**                                      | **Type**         | **Attached to the control plane IAM role?** | **Attached to the node group's IAM role?** | **Description**                                                                                |
 | ---------------------------------------------------- | ---------------- | ------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
@@ -818,7 +834,9 @@ The control plane nodes IAM role is named `control-plane.cluster-api-provider-aw
 | nodes.cluster-api-provider-aws.sigs.k8s.io           | Customer-managed | ✅                                          | ✅                                         | Provides access to services EC2 and ECR.                                                       |
 | AmazonEKSWorkerNodePolicy                            | AWS managed      | ❌                                          | ✅                                         | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.                  |
 
-In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. Other policies may also be attached to the IAM roles depending on the storage layer and network layer pack you choose.
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those
+policies are also attached to the cluster's IAM role and the node group's IAM role. Other policies may also be attached
+to the IAM roles depending on the storage layer and network layer pack you choose.
 
 </TabItem>
 
@@ -826,6 +844,9 @@ In addition to the policies listed above, if you specified other IAM policies du
 
 :::warning
 
-Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail due to the IAM role policy limit. Request a [service quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for the AWS account to increase the limit.
+Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail
+due to the IAM role policy limit. Request a
+[service quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for the
+AWS account to increase the limit.
 
 :::

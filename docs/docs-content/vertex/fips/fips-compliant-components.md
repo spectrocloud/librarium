@@ -9,13 +9,16 @@ tags: ["vertex", "fips", "compliance", "pxk", "pxke"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of Standards and Technology (NIST) in the United States for computer security and encryption algorithms.
+Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of
+Standards and Technology (NIST) in the United States for computer security and encryption algorithms.
 
-FIPS 140-2 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these modules must meet to ensure their security and integrity.
+FIPS 140-2 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these
+modules must meet to ensure their security and integrity.
 
 ## FIPS Support in Clusters
 
-Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components are:
+Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components
+are:
 
 <br />
 
@@ -37,23 +40,34 @@ Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes c
 
 ## Management Plane
 
-All services in the management plane are FIPS compiled with Go using [BoringCrypto libraries](https://pkg.go.dev/crypto/internal/boring) and static linking. Refer to the [Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) resource to learn about our NIST certificate.
+All services in the management plane are FIPS compiled with Go using
+[BoringCrypto libraries](https://pkg.go.dev/crypto/internal/boring) and static linking. Refer to the
+[Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349)
+resource to learn about our NIST certificate.
 
 <br />
 
 ## FIPS-Compliant Kubernetes
 
-Our customized version of Kubernetes is FIPS-compliant. Both [Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) and [Palette eXtended Kubernetes-Edge (PXK-E)](../../integrations/kubernetes-edge.md) are compiled with FIPS-compliant compiler and libraries.
+Our customized version of Kubernetes is FIPS-compliant. Both
+[Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) and
+[Palette eXtended Kubernetes-Edge (PXK-E)](../../integrations/kubernetes-edge.md) are compiled with FIPS-compliant
+compiler and libraries.
 
 <br />
 
 :::info
 
-Refer to the [Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) and [Palette eXtended Kubernetes-Edge (PXK-E)](../../integrations/kubernetes-edge.md) documentation to learn more about the each Kubernetes distribution.
+Refer to the [Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) and
+[Palette eXtended Kubernetes-Edge (PXK-E)](../../integrations/kubernetes-edge.md) documentation to learn more about the
+each Kubernetes distribution.
 
 :::
 
-All PXK and PXKE components and supporting open-source components are compiled in their native programming language using language specific FIPS-compliant libraries and static linking. If the component is not available in the form of a FIPS-compliant binary, we compile it with FIPS-compliant compiler and libraries. The following tables list the FIPS-compliant components in PXK and PXK-E:
+All PXK and PXKE components and supporting open-source components are compiled in their native programming language
+using language specific FIPS-compliant libraries and static linking. If the component is not available in the form of a
+FIPS-compliant binary, we compile it with FIPS-compliant compiler and libraries. The following tables list the
+FIPS-compliant components in PXK and PXK-E:
 
 <br />
 

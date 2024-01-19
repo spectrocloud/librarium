@@ -7,7 +7,10 @@ sidebar_position: 10
 tags: ["devx", "app mode", "pde", "app profiles"]
 ---
 
-Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies to run applications quickly and reliably from one computing environment to another. Containers contain all the required executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with less overhead. To add a container layer to a Palette Dev Engine app profile, follow the steps below.
+Palette App Mode supports the use of containers, a standard unit of software that packages code and all its dependencies
+to run applications quickly and reliably from one computing environment to another. Containers contain all the required
+executables, binary codes, libraries, and configuration files. As a result, containers are lightweight and portable with
+less overhead. To add a container layer to a Palette Dev Engine app profile, follow the steps below.
 
 ## Prerequisite
 
@@ -30,7 +33,8 @@ Palette App Mode supports the use of containers, a standard unit of software tha
 | **Description**      | Use the description to provide context about the profile.                                                                                                                                                 |
 | **Tag**              | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`. |
 
-To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../modify-app-profiles/version-app-profile.md).
+To learn how to create multiple profile versions that use the same name, check out
+[Version an App Profile](../modify-app-profiles/version-app-profile.md).
 
 5. Select **Container Deployment** to start configuring your app profile.
 
@@ -47,7 +51,9 @@ To learn how to create multiple profile versions that use the same name, check o
 
 :::info
 
-When adding a container image from a public [DockerHub registry](https://hub.docker.com/), you can skip the registry hostname. For instance, to download the Nginx image, specify `nginx` and it will be downloaded correctly during the provisioning process.
+When adding a container image from a public [DockerHub registry](https://hub.docker.com/), you can skip the registry
+hostname. For instance, to download the Nginx image, specify `nginx` and it will be downloaded correctly during the
+provisioning process.
 
 :::
 
@@ -74,9 +80,11 @@ When adding a container image from a public [DockerHub registry](https://hub.doc
     | **Size**          | Volume size in GiB.                               |
     | **Mount Path**    | A path to access the volume.                      |
 
-7. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that the container image provides.
+7. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that
+   the container image provides.
 
-8. When you have provided the required configuration information for the container, click **Review**. Your app profile is now created and can be deployed.
+8. When you have provided the required configuration information for the container, click **Review**. Your app profile
+   is now created and can be deployed.
 
 ## Validate
 
@@ -86,12 +94,15 @@ When adding a container image from a public [DockerHub registry](https://hub.doc
 
 3. Click on **App Profiles** in the left **Main Menu**, and select the app profile you created to review its details.
 
-4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and registry.
+4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
+   registry.
 
 ![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.png)
 
 :::info
 
-Use the tool-tip that displays when you select a layer to gather information required for creating Terraform templates for app profiles. Check out our Terraform registry for [Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
+Use the tool-tip that displays when you select a layer to gather information required for creating Terraform templates
+for app profiles. Check out our Terraform registry for
+[Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
 
 :::

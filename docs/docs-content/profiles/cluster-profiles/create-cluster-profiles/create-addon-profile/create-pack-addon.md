@@ -11,7 +11,9 @@ Use the following steps to create a cluster profile by adding one or more layers
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin) documentation for more information.
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
+  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  documentation for more information.
 
 ## Add Pack to Add-on Profile
 
@@ -31,13 +33,17 @@ Use the following steps to create a cluster profile by adding one or more layers
 | **Type**        | **Add-on**                                                                                                                                                                                                        |
 | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
 
-To learn more about creating multiple profile versions, check out [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
+To learn more about creating multiple profile versions, check out
+[Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your profile. You can search packs by name.
+5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your
+   profile. You can search packs by name.
 
 <!-- Select the type of layer to add to the cluster profile. For more information about the layers, applying pack versions, configuration parameters, and presets, review [Profile Layers](../../cluster-profiles.md#profile-layers). -->
 
-6. Fill out the required input fields and click on **Confirm & Create**. Optionally, you can configure values specific to the layer in Helm values.yaml form, and specify the layer [install order](./create-addon-profile.md#install-order).
+6. Fill out the required input fields and click on **Confirm & Create**. Optionally, you can configure values specific
+   to the layer in Helm values.yaml form, and specify the layer
+   [install order](./create-addon-profile.md#install-order).
 
   <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
 
@@ -45,7 +51,9 @@ To learn more about creating multiple profile versions, check out [Version a Clu
 
 8. Click on **Finish Configuration** to create the cluster profile.
 
-You now have an add-on cluster profile that contains one or more packs. You can reuse the profile and apply it to several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update operations.
+You now have an add-on cluster profile that contains one or more packs. You can reuse the profile and apply it to
+several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide
+for more information about update operations.
 
 ## Validate
 

@@ -11,7 +11,8 @@ You can clone an app profile across multiple projects within the same [tenant](.
 
 ## Prerequisites
 
-- An app profile created in Palette. Check out [Create an App Profile](../app-profiles/clone-app-profile.md) for guidance.
+- An app profile created in Palette. Check out [Create an App Profile](../app-profiles/clone-app-profile.md) for
+  guidance.
 
 ## Clone App Profile
 
@@ -32,7 +33,8 @@ You can clone an app profile across multiple projects within the same [tenant](.
 | **Source Profile Version** | The version number of the source profile.                                                                                                                                  |
 | **Target Project**         | The target project to which the profile will be cloned. Select the project name from the **drop-down Menu**.                                                               |
 
-To learn how to create multiple profile versions that use the same name, check out [Version an App Profile](../app-profiles/modify-app-profiles/version-app-profile.md).
+To learn how to create multiple profile versions that use the same name, check out
+[Version an App Profile](../app-profiles/modify-app-profiles/version-app-profile.md).
 
 You can now use the app profile when deploying virtual clusters in the target project or tenant.
 
@@ -42,5 +44,6 @@ You can now use the app profile when deploying virtual clusters in the target pr
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Select **App Profiles** from the left **Main Menu**. Palette displays a list of all the app profiles available to you, including cloned profiles.
+3. Select **App Profiles** from the left **Main Menu**. Palette displays a list of all the app profiles available to
+   you, including cloned profiles.
 4. Deploy your application to a virtual cluster using the cloned app profile.

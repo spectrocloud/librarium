@@ -8,7 +8,8 @@ sidebar_position: 20
 tags: ["devx", "app mode", "pde"]
 ---
 
-Palette supports the ability to use Single Sign-On (SSO) and third-party Social Sign-In Providers, such as Google and GitHub. Use the following steps to either enable or disable the feature.
+Palette supports the ability to use Single Sign-On (SSO) and third-party Social Sign-In Providers, such as Google and
+GitHub. Use the following steps to either enable or disable the feature.
 
 ## Enable SSO
 
@@ -16,7 +17,8 @@ To enable SSO with third-party Social Sign-In Providers use the following steps.
 
 :::info
 
-To learn more about the Sign-In Flow, refer to the [User Authentication](../../user-management/authentication/ui-autentication.md) documentation.
+To learn more about the Sign-In Flow, refer to the
+[User Authentication](../../user-management/authentication/ui-autentication.md) documentation.
 
 :::
 
@@ -38,13 +40,15 @@ To learn more about the Sign-In Flow, refer to the [User Authentication](../../u
 
 ### Validate
 
-You can validate SSO is enabled by attempting to log into your Palette tenant through SSO. Select the third-party provider you enabled for SSO.
+You can validate SSO is enabled by attempting to log into your Palette tenant through SSO. Select the third-party
+provider you enabled for SSO.
 
 ![Palette's login view with the SSO providers highlighted.](/devx_manage-dev-engine_sso_palette-login-view.png)
 
 ## Disable SSO
 
-Palette provides the flexibility to disable SSO to restrict this capability. Use the following steps to disable SSO for Palette.
+Palette provides the flexibility to disable SSO to restrict this capability. Use the following steps to disable SSO for
+Palette.
 
 ### Prerequisites
 
@@ -62,4 +66,5 @@ Palette provides the flexibility to disable SSO to restrict this capability. Use
 
 ### Validate
 
-You can validate SSO is disabled by attempting to log into your Palette tenant through SSO. Any SSO attempts will fail due to SSO being disabled at the tenant level.
+You can validate SSO is disabled by attempting to log into your Palette tenant through SSO. Any SSO attempts will fail
+due to SSO being disabled at the tenant level.

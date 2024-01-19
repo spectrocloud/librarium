@@ -9,9 +9,11 @@ logoUrl: "https://registry.spectrocloud.com/v1/antrea/blobs/sha256:3c5704caf6652
 tags: ["packs", "antrea", "cni", "network"]
 ---
 
-Palette supports Antrea controller network interface (CNI) for VMware Kubernetes clusters. Antrea CNI enables each pod to have exclusive IP addresses from the subnet with direct accessibility.
+Palette supports Antrea controller network interface (CNI) for VMware Kubernetes clusters. Antrea CNI enables each pod
+to have exclusive IP addresses from the subnet with direct accessibility.
 
-Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod networking and security features. Open vSwitch enables Antrea to implement Kubernetes network policies efficiently.
+Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod networking and security features. Open
+vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 
 ## Supported Versions
 
@@ -19,20 +21,27 @@ Antrea leverages [Open vSwitch](https://www.openvswitch.org/) to implement pod n
 
 ## Prerequisites
 
-- Enable the integrated NodeIPAM controller in the Antrea manifest: `NodeIPAM:enable`.
+- Enable the integrated NodeIPAM controller in the Antrea manifest: `NodeIPAM:enable`. <br />
+
+- When deploying a cluster using Palette, use the `podCIDR` parameter in the Pack section of the Kubernetes manifest.
+  The classless inter-domain routing (CIDR) IP specified in the Kubernetes manifest always takes precedence.
+
+  {" "}
+
   <br />
 
-- When deploying a cluster using Palette, use the `podCIDR` parameter in the Pack section of the Kubernetes manifest. The classless inter-domain routing (CIDR) IP specified in the Kubernetes manifest always takes precedence.
+- When deploying a cluster using `kubeadm init` to use Antrea CIDRs, you would specify the `--pod-network-cidr <cidr>`
+  option and provide the IP address with the CIDR. For example:
 
-    <br />
+  {" "}
 
-- When deploying a cluster using `kubeadm init` to use Antrea CIDRs, you would specify the `--pod-network-cidr <cidr>` option and provide the IP address with the CIDR. For example:
-
-    <br />
+  <br />
 
   `--pod-network-cidr=10.244.0.0/16`
 
-    <br />
+  {" "}
+
+  <br />
 
 :::warning
 
@@ -40,7 +49,8 @@ The CIDR IP specified in Palette using the `podCIDR` parameter in the Kubernetes
 
 If you wish to use Antrea CIDRs, the `podCIDR` and `serviceCIDR` parameters must be blank in the Kubernetes manifest.
 
-To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to specify if you deploy a cluster using `kubeadm init` or as a replacement in your network plugin's YAML.
+To avoid overlapping your pod network with any of your host networks, you should think of a suitable CIDR block to
+specify if you deploy a cluster using `kubeadm init` or as a replacement in your network plugin's YAML.
 
 :::
 
@@ -67,7 +77,8 @@ The Antrea CNI pack supports the following parameters.
 
 Kubernetes network policies are supported by default.
 
-Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer that is implemented by the Kubernetes cloud provider.
+Antrea supports LoadBalancer services. Typically, implementing LoadBalancer services requires an external load balancer
+that is implemented by the Kubernetes cloud provider.
 
 Antrea provides two options for supporting LoadBalancer services without using an external load balancer:
 
@@ -77,17 +88,22 @@ Antrea provides two options for supporting LoadBalancer services without using a
 
 - Leveraging MetalLB.
 
-For detailed information, refer to Antrea’s [Service of type LoadBalancer](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer) documentation.
+For detailed information, refer to Antrea’s
+[Service of type LoadBalancer](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer) documentation.
 
-To learn more about using MetalLB, review [Using MetalLB with Antrea](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer/#using-metallb-with-antrea).
+To learn more about using MetalLB, review
+[Using MetalLB with Antrea](https://antrea.io/docs/v1.9.0/docs/service-loadbalancer/#using-metallb-with-antrea).
 
 <br />
 
 # Troubleshooting
 
-If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses or conflicting CIDR IPs.
+If routing problems occur or some hosts cannot communicate outside their subnet, this indicates overlapping IP addresses
+or conflicting CIDR IPs.
 
-Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the `podCIDR` parameter. The CIDR IP specified with the `podCIDR` parameter in the Kubernetes manifest always takes precedence.
+Ensure you have provided a non-overlapping IP address for your pod network in Palette's Kubernetes manifest using the
+`podCIDR` parameter. The CIDR IP specified with the `podCIDR` parameter in the Kubernetes manifest always takes
+precedence.
 
 If you wish to use Antrea CIDRs and have deployed a cluster using Palette, ensure that you have done the following:
 

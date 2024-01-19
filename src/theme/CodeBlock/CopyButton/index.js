@@ -37,12 +37,7 @@ export default function CopyButton({ code, className }) {
         message: "Copy",
         description: "The copy button label on code blocks",
       })}
-      className={clsx(
-        "clean-btn",
-        className,
-        styles.copyButton,
-        isCopied && styles.copyButtonCopied
-      )}
+      className={clsx("clean-btn", className, styles.copyButton, isCopied && styles.copyButtonCopied)}
       onClick={handleCopyCode}
     >
       <span className={styles.copyButtonIcons} aria-hidden="true">

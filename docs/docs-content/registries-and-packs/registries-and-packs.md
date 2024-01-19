@@ -9,19 +9,31 @@ sidebar_custom_props:
 
 # Packs
 
-A **Cluster Profile** is made up of layers, each of which is created using a pack. Packs can be broadly categorized into two types:
+A **Cluster Profile** is made up of layers, each of which is created using a pack. Packs can be broadly categorized into
+two types:
 
-- **Infrastructure** packs - These packs are used to create the core infrastructure layers required to provision a Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and the container storage interface (CSI) specifications. Spectro Cloud builds and maintains these infrastructure packs for updates.
+- **Infrastructure** packs - These packs are used to create the core infrastructure layers required to provision a
+  Kubernetes cluster. These packs include the operating system, Kubernetes, the container network interface (CNI), and
+  the container storage interface (CSI) specifications. Spectro Cloud builds and maintains these infrastructure packs
+  for updates.
 
-- **Add-on** packs - These packs are used to form the integrations and application layers that exist on top of the infrastructure layers. Examples of applications are system, authentication, security, monitoring, logging, ingress, load balancer, service mesh, or helm charts.
+- **Add-on** packs - These packs are used to form the integrations and application layers that exist on top of the
+  infrastructure layers. Examples of applications are system, authentication, security, monitoring, logging, ingress,
+  load balancer, service mesh, or helm charts.
 
-Both the infrastructure and add-on packs described above are configurable, and you can define new add-on custom packs from scratch as well. The use case for defining new add-on packs is to drive consistency across your profile deployments.
+Both the infrastructure and add-on packs described above are configurable, and you can define new add-on custom packs
+from scratch as well. The use case for defining new add-on packs is to drive consistency across your profile
+deployments.
 
 ## Pack Structure
 
-Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility through custom-built packs. To configure an existing infrastructure or add-on pack or to define a new add-on custom pack, it is essential to understand the pack structure.
+Palette provides a rich collection of out-of-the-box packs for various integrations and also offers extensibility
+through custom-built packs. To configure an existing infrastructure or add-on pack or to define a new add-on custom
+pack, it is essential to understand the pack structure.
 
-Each pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, and more. Ansible roles, if provided, are used to customize cluster VM images, whereas Kubernetes manifests and Helm charts are applied to the Kubernetes clusters after deployment. The following is a typical pack structure:
+Each pack is a collection of files such as manifests, helm charts, Ansible roles, configuration files, and more. Ansible
+roles, if provided, are used to customize cluster VM images, whereas Kubernetes manifests and Helm charts are applied to
+the Kubernetes clusters after deployment. The following is a typical pack structure:
 
 | **Pack Name**   | **Requirement** | **Description**                                                                                                 |
 | --------------- | --------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -39,7 +51,9 @@ Let's look at the examples below to better understand pack structure.
 
 <TabItem label="Helm chart-based pack" value="helm-chart-pack">
 
-The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, which is made up of two charts: _istio-controlplane_ and _istio-operator_. Each chart has its **values.yaml** file. In this example, we have a pack-level **values.yaml** file and individual chart-level **values.yaml** files. <br/> <br/>
+The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, which is made up of two charts:
+_istio-controlplane_ and _istio-operator_. Each chart has its **values.yaml** file. In this example, we have a
+pack-level **values.yaml** file and individual chart-level **values.yaml** files. <br/> <br/>
 
 ```bash
 .
@@ -63,7 +77,8 @@ The example shows the structure of a Helm chart-based pack, **istio-1.6.2**, whi
 
 <TabItem label="Manifest-based pack" value="manifest-pack">
 
-This example shows the structure of a Manifest-based pack, _kubeflow-1.2.0_, made up of **kubeflow-kfdef.yaml** and **kubeflow-operator.yaml** manifests.
+This example shows the structure of a Manifest-based pack, _kubeflow-1.2.0_, made up of **kubeflow-kfdef.yaml** and
+**kubeflow-operator.yaml** manifests.
 
 ```bash
 .
@@ -81,18 +96,26 @@ This example shows the structure of a Manifest-based pack, _kubeflow-1.2.0_, mad
 
 ## Registries
 
-The pack registry is a server-side application to store and serve packs to its clients. Packs from a pack registry are retrieved and presented as options during the creation of a cluster profile. Palette supports the configuration of multiple registries.
+The pack registry is a server-side application to store and serve packs to its clients. Packs from a pack registry are
+retrieved and presented as options during the creation of a cluster profile. Palette supports the configuration of
+multiple registries.
 
 ## Default Registry
 
-The default pack registry is Spectro Cloud's public pack registry. It consists of several packs that make it easy for a user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Palette maintains all packs in this pack registry and takes care of upgrading packs in the pack registry whenever required.
+The default pack registry is Spectro Cloud's public pack registry. It consists of several packs that make it easy for a
+user to quickly create a cluster profile and launch a Kubernetes cluster with their choice of integrations. Palette
+maintains all packs in this pack registry and takes care of upgrading packs in the pack registry whenever required.
 
 ## Custom Pack Registry
 
-Users can set up a custom pack registry using a Docker image provided by Spectro Cloud to upload and maintain custom packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the pack registry. Custom registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
+Users can set up a custom pack registry using a Docker image provided by Spectro Cloud to upload and maintain custom
+packs. Spectro Cloud provides a CLI tool to interact with and manage pack content in the pack registry. Custom
+registries offer a mechanism of extending the capabilities of a platform by defining additional integrations.
 
 ## Spectro CLI
 
-The Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud pack registry. You can use the CLI to upload and download packs. The CLI must authenticate with the pack registry before executing any CLI commands. Review the [Spectro Cloud CLI](spectro-cli-reference.md) reference page for usage instructions.
+The Spectro Cloud Command Line Interface (CLI) is a tool to interact with a Spectro Cloud pack registry. You can use the
+CLI to upload and download packs. The CLI must authenticate with the pack registry before executing any CLI commands.
+Review the [Spectro Cloud CLI](spectro-cli-reference.md) reference page for usage instructions.
 
 <br />

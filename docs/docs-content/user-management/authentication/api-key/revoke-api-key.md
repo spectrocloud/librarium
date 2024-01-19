@@ -8,9 +8,12 @@ sidebar_position: 40
 tags: ["user-management", "authentication", "api-key"]
 ---
 
-You can revoke an API key you created in Palette. A tenant admin can also revoke an API key created by another user within the tenant. A revoked API key cannot be used to authenticate API requests and requires a re-activation to be used again.
+You can revoke an API key you created in Palette. A tenant admin can also revoke an API key created by another user
+within the tenant. A revoked API key cannot be used to authenticate API requests and requires a re-activation to be used
+again.
 
-Tenant administrators can revoke an API key in the tenant. Select the Tenant tab below to learn more about revoking an API key as a tenant admin.
+Tenant administrators can revoke an API key in the tenant. Select the Tenant tab below to learn more about revoking an
+API key as a tenant admin.
 
 Use the steps outlined below for the workflow you want to perform:
 

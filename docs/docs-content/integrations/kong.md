@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/kong/blobs/sha256:600f20583f85cca
 tags: ["packs", "kong", "network"]
 ---
 
-The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. You can use the Kong as an application load balancer for your application.
+The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. You can use
+the Kong as an application load balancer for your application.
 
 ## Version Supported
 

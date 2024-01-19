@@ -349,12 +349,12 @@ const redirects = [
   },
   {
     from: `/registries-and-packs/oci-registry`,
-    to: `/registries-and-packs/registries/oci-registry`
+    to: `/registries-and-packs/registries/oci-registry`,
   },
   {
     from: `/compliance`,
-    to: `/legal-licenses/compliance`
-  }
+    to: `/legal-licenses/compliance`,
+  },
 ];
 
 module.exports = redirects;

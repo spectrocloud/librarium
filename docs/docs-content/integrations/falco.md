@@ -10,7 +10,8 @@ logoUrl: "https://registry.spectrocloud.com/v1/falco/blobs/sha256:4e37461d0a3195
 tags: ["packs", "falco", "security"]
 ---
 
-Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can use Falco to monitor the run-time security of your Kubernetes applications and internal components.
+Falco integration is a behavioral activity monitor designed to detect anomalous activity in your applications. You can
+use Falco to monitor the run-time security of your Kubernetes applications and internal components.
 
 ## Versions Supported
 

@@ -9,7 +9,10 @@ tags: ["self-hosted", "enterprise"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment. The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using the Helm Chart, refer to the[Palette Helm install](install.md) guide.
+You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
+The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters
+available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using
+the Helm Chart, refer to the[Palette Helm install](install.md) guide.
 
 <br />
 
@@ -25,7 +28,8 @@ The following parameters are required for a successful installation of Palette.
 
 :::warning
 
-If you are installing an air-gapped version of Palette, you must provide the image swap configuration. For more information, refer to the [Image Swap Configuration](#image-swap-configuration) section.
+If you are installing an air-gapped version of Palette, you must provide the image swap configuration. For more
+information, refer to the [Image Swap Configuration](#image-swap-configuration) section.
 
 :::
 
@@ -64,11 +68,13 @@ mongo:
 
 ### Config
 
-Review the following parameters to configure Palette for your environment. The `config` section contains the following subsections:
+Review the following parameters to configure Palette for your environment. The `config` section contains the following
+subsections:
 
 #### Install Mode
 
-You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation mode.
+You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation
+mode.
 
 | **Parameters** | **Description**                                                                                                                                      | **Type** | **Default value** |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -81,7 +87,9 @@ config:
 
 #### SSO
 
-You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the [SAML & SSO Setup](../../../user-management/saml-sso/saml-sso.md) documentation for additional guidance.
+You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable
+SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the
+[SAML & SSO Setup](../../../user-management/saml-sso/saml-sso.md) documentation for additional guidance.
 
 To configure SSO, you must provide the following parameters.
 
@@ -108,7 +116,9 @@ config:
 
 #### Email
 
-Palette uses email to send notifications to users. The email notification is used when inviting new users to the platform, password resets, and when [webhook alerts](../../../clusters/cluster-management/health-alerts.md) are triggered. Use the following parameters to configure email settings for Palette.
+Palette uses email to send notifications to users. The email notification is used when inviting new users to the
+platform, password resets, and when [webhook alerts](../../../clusters/cluster-management/health-alerts.md) are
+triggered. Use the following parameters to configure email settings for Palette.
 
 | **Parameters**          | **Description**                                                                                | **Type** | **Default value**          |
 | ----------------------- | ---------------------------------------------------------------------------------------------- | -------- | -------------------------- |
@@ -152,7 +162,10 @@ config:
 
 :::warning
 
-As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example, if you create a tenant named tenant1 and the domain name you assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. We recommend you create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example, `*.palette.example.com`.
+As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example,
+if you create a tenant named tenant1 and the domain name you assigned to Palette is `palette.example.com`, the tenant
+URL will be `tenant1.palette.example.com`. We recommend you create an additional wildcard DNS record to map all tenant
+URLs to the Palette load balancer. For example, `*.palette.example.com`.
 
 :::
 
@@ -172,13 +185,18 @@ config:
 
 ### Registries
 
-Palette requires credentials to access the required Palette images. You can configure different types of registries for Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required FIPS images.
+Palette requires credentials to access the required Palette images. You can configure different types of registries for
+Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for
+Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required
+FIPS images.
 
 <br />
 
 #### OCI Registry
 
-Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide. Refer to the [`ociPackEcrRegistry`](#oci-ecr-registry) section to learn more about the publicly available OCI registry.
+Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry
+and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide.
+Refer to the [`ociPackEcrRegistry`](#oci-ecr-registry) section to learn more about the publicly available OCI registry.
 
 | **Parameters**                       | **Description**                                                                                    | **Type** | **Default value** |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -204,8 +222,9 @@ config:
 
 #### OCI ECR Registry
 
-We expose a public OCI ECR registry that you can configure Palette to reference. If you want to host your own OCI registry, refer to the [OCI Registry](#oci-registry) section.
-The OCI Elastic Container Registry (ECR) is hosted in an AWS ECR registry. Our support team provides the credentials for the OCI ECR registry.
+We expose a public OCI ECR registry that you can configure Palette to reference. If you want to host your own OCI
+registry, refer to the [OCI Registry](#oci-registry) section. The OCI Elastic Container Registry (ECR) is hosted in an
+AWS ECR registry. Our support team provides the credentials for the OCI ECR registry.
 
 | **Parameters**                          | **Description**                                                                                    | **Type** | **Default value** |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -285,7 +304,9 @@ config:
 
 #### Image Swap Configuration
 
-You can configure Palette to use image swap to download the required images. This is an advanced configuration option, and it is only required for air-gapped deployments. You must also install the Palette Image Swap Helm chart to use this option, otherwise, Palette will ignore the configuration.
+You can configure Palette to use image swap to download the required images. This is an advanced configuration option,
+and it is only required for air-gapped deployments. You must also install the Palette Image Swap Helm chart to use this
+option, otherwise, Palette will ignore the configuration.
 
 | **Parameters**                 | **Description**                                                                                                         | **Type** | **Default value**                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------- |
@@ -294,7 +315,9 @@ You can configure Palette to use image swap to download the required images. Thi
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 config:
@@ -308,7 +331,10 @@ config:
 
 ### NATS
 
-Palette uses [NATS](https://nats.io) and gRPC for communication between Palette components. Dual support for NATS and gRPC is available. You can enable the deployment of an additional load balancer for NATS. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is an advanced configuration option and is not required for most deployments. Speak with your support representative before enabling this option.
+Palette uses [NATS](https://nats.io) and gRPC for communication between Palette components. Dual support for NATS and
+gRPC is available. You can enable the deployment of an additional load balancer for NATS. Host clusters deployed by
+Palette use the load balancer to communicate with the Palette control plane. This is an advanced configuration option
+and is not required for most deployments. Speak with your support representative before enabling this option.
 
 | **Parameters**      | **Description**                                                                                                                                                                                                                                                                                                                                    | **Type** | **Default value** |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -331,9 +357,16 @@ nats:
 
 ### gRPC
 
-gRPC is used for communication between Palette components. You can enable the deployment of an additional load balancer for gRPC. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is an advanced configuration option, and it is not required for most deployments. Speak with your support representative before enabling this option. Dual support for NATS and gRPC is available.
+gRPC is used for communication between Palette components. You can enable the deployment of an additional load balancer
+for gRPC. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is
+an advanced configuration option, and it is not required for most deployments. Speak with your support representative
+before enabling this option. Dual support for NATS and gRPC is available.
 
-If you want to use an external gRPC endpoint, you must provide a domain name for the gRPC endpoint and a valid x509 certificate. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the IP address of the gRPC load balancer. For example, if your Palette domain name is `palette.example.com`, you could create a CNAME DNS record for `grpc.palette.example.com` that points to the IP address of the load balancer dedicated to gRPC.
+If you want to use an external gRPC endpoint, you must provide a domain name for the gRPC endpoint and a valid x509
+certificate. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the
+IP address of the gRPC load balancer. For example, if your Palette domain name is `palette.example.com`, you could
+create a CNAME DNS record for `grpc.palette.example.com` that points to the IP address of the load balancer dedicated to
+gRPC.
 
 | **Parameters**        | **Description**                                                                              | **Type** | **Default value** |
 | --------------------- | -------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -356,7 +389,8 @@ grpc:
 
 ### Ingress
 
-Palette deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette control plane. You can change the default behavior and omit the deployment of an Nginx Ingress Controller.
+Palette deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette control plane. You
+can change the default behavior and omit the deployment of an Nginx Ingress Controller.
 
 | **Parameters**                         | **Description**                                                                                                                                                                                                                                                                                             | **Type** | **Default value** |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -382,7 +416,11 @@ ingress:
 
 ### Spectro Proxy
 
-You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the [Spectro Proxy pack](../../../integrations/frp.md) to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse Proxy](../../system-management/reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for Palette.
+You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity
+to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the
+[Spectro Proxy pack](../../../integrations/frp.md) to expose the cluster's Kubernetes API to downstream clients that are
+not in the same network. Check out the [Reverse Proxy](../../system-management/reverse-proxy.md) documentation to learn
+more about setting up a reverse proxy server for Palette.
 
 | **Parameters**    | **Description**                                                                              | **Type** | **Default value** |
 | ----------------- | -------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -406,7 +444,10 @@ frps:
 
 ### UI System
 
-The table lists parameters to configure the Palette User Interface (UI) behavior. You can disable the UI or the Network Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access token, refer to the [MapBox Access tokens](https://docs.mapbox.com/help/getting-started/access-tokens) guide.
+The table lists parameters to configure the Palette User Interface (UI) behavior. You can disable the UI or the Network
+Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a
+third-party service that provides mapping and location services. To learn more about MapBox and how to obtain an access
+token, refer to the [MapBox Access tokens](https://docs.mapbox.com/help/getting-started/access-tokens) guide.
 
 | **Parameters**                 | **Description**                                                                                                                                                                                                                                    | **Type** | **Default value** |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
@@ -427,7 +468,9 @@ ui-system:
 
 ### Reach System
 
-You can configure Palette to use a proxy server to access the internet. Set the parameter `reach-system.reachSystem.enabled` to `true` to enable the proxy server. Proxy settings are configured in the `reach-system.reachSystem.proxySettings` section.
+You can configure Palette to use a proxy server to access the internet. Set the parameter
+`reach-system.reachSystem.enabled` to `true` to enable the proxy server. Proxy settings are configured in the
+`reach-system.reachSystem.proxySettings` section.
 
 | **Parameters**                          | **Description**                                                      | **Type** | **Default value** |
 | --------------------------------------- | -------------------------------------------------------------------- | -------- | ----------------- |

@@ -7,31 +7,47 @@ sidebar_position: 190
 tags: ["clusters", "cluster management"]
 ---
 
-A node pool is a group of nodes within a cluster that all have the same configuration. You can use node pools for different workloads. For example, you can create a node pool for your production workloads and another for your development workloads. You can update node pools for active clusters or create a new one for the cluster.
+A node pool is a group of nodes within a cluster that all have the same configuration. You can use node pools for
+different workloads. For example, you can create a node pool for your production workloads and another for your
+development workloads. You can update node pools for active clusters or create a new one for the cluster.
 
 :::warning
 
-Ensure you exercise caution when modifying node pools. We recommend creating a [backup](backup-restore/backup-restore.md) before you make a change in the event a configuration change causes an issue.
+Ensure you exercise caution when modifying node pools. We recommend creating a
+[backup](backup-restore/backup-restore.md) before you make a change in the event a configuration change causes an issue.
 
 :::
 
 ## Repave Behavior and Configuration
 
-In Kubernetes, the term "repave" refers to the process of replacing a node with a new node. [Repaving](../../glossary-all.md#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or have failed. You can configure the repave time interval for a node pool.
+In Kubernetes, the term "repave" refers to the process of replacing a node with a new node.
+[Repaving](../../glossary-all.md#repavement) is a common practice in Kubernetes to ensure that nodes are deployed with
+the latest version of the operating system and Kubernetes. Repaving is also used to replace nodes that are unhealthy or
+have failed. You can configure the repave time interval for a node pool.
 
 Different types of repaving operations may occur, depending on what causes them:
 
-- **Control plane repave**: This takes place when certain changes are made to the Kubernetes configuration, such as changing the **apiServer** specification. This type of repave also occurs when there are changes in the hardware specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance type to another. Control plane nodes are repaved sequentially.
+- **Control plane repave**: This takes place when certain changes are made to the Kubernetes configuration, such as
+  changing the **apiServer** specification. This type of repave also occurs when there are changes in the hardware
+  specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance
+  type to another. Control plane nodes are repaved sequentially.
 
-- **Worker node pool repave**: This happens when changes to a node pool's specifications cause the the existing nodes to become incompatible with the pool's specified criteria. For instance, changing the hardware specifications of a worker pool. Nodes within the affected pool are sequentially replaced with new nodes that meet the updated specifications.
+- **Worker node pool repave**: This happens when changes to a node pool's specifications cause the the existing nodes to
+  become incompatible with the pool's specified criteria. For instance, changing the hardware specifications of a worker
+  pool. Nodes within the affected pool are sequentially replaced with new nodes that meet the updated specifications.
 
-- **Full cluster repave**: This occurs if changes are made to the Operating System (OS) layer or if modifications to the Kubernetes layer impact all nodes, such as when upgrading to a different Kubernetes version. All nodes across all pools are sequentially repaved starting with the control plane.
+- **Full cluster repave**: This occurs if changes are made to the Operating System (OS) layer or if modifications to the
+  Kubernetes layer impact all nodes, such as when upgrading to a different Kubernetes version. All nodes across all
+  pools are sequentially repaved starting with the control plane.
 
-You can customize the repave time interval for all node pools except the master pool. The default repave time interval is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to modify the repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) instructions below.
+You can customize the repave time interval for all node pools except the master pool. The default repave time interval
+is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to modify the
+repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) instructions below.
 
 ## Node Pool Configuration Settings
 
-The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the settings may not be available.
+The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the
+settings may not be available.
 
 <br />
 
@@ -66,7 +82,8 @@ The following tables contain the configuration settings for node pools. Dependin
 
 :::warning
 
-Some features may not be available for all infrastructure providers. Review each infrastructure provider's node pool configuration settings to learn more.
+Some features may not be available for all infrastructure providers. Review each infrastructure provider's node pool
+configuration settings to learn more.
 
 :::
 
@@ -94,7 +111,8 @@ You can create a new node pool for an active cluster. To create a new node pool 
 
 5. Click on **New Node Pool**.
 
-6. Fill out the input fields in the **Add node pool** page. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables for more information on each field.
+6. Fill out the input fields in the **Add node pool** page. Refer to the
+   [Node Pool Configuration Settings](#node-pool-configuration-settings) tables for more information on each field.
 
 7. Click on **Confirm** to create the new node pool.
 
@@ -110,11 +128,14 @@ After you create a new node pool, you can validate the node pool by following th
 
 4. Click on the **Nodes** tab.
 
-5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy status.
+5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy
+   status.
 
 ## Change a Node Pool
 
-You can apply changes to a node pool after a cluster is created and deployed. You can change the node pool's taints label, node repavement interval, number of compute instances in the node pool and more. To make changes to an active cluster's node pools, follow the steps below.
+You can apply changes to a node pool after a cluster is created and deployed. You can change the node pool's taints
+label, node repavement interval, number of compute instances in the node pool and more. To make changes to an active
+cluster's node pools, follow the steps below.
 
 ### Prerequisites
 
@@ -132,9 +153,11 @@ You can apply changes to a node pool after a cluster is created and deployed. Yo
 
 4. Click on the **Nodes** tab.
 
-5. The nodes details page is where you can review the existing node pools and their configuration. You can also add a new node pool from this page. Click on the **Edit** button to make changes to the node pool.
+5. The nodes details page is where you can review the existing node pools and their configuration. You can also add a
+   new node pool from this page. Click on the **Edit** button to make changes to the node pool.
 
-6. Make the changes as needed. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables for more information on each field.
+6. Make the changes as needed. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables
+   for more information on each field.
 
 7. Click on **Confirm** to update the node pool.
 
@@ -150,4 +173,5 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 4. Click on the **Nodes** tab.
 
-5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy status.
+5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy
+   status.

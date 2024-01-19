@@ -30,7 +30,8 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 5. Give the layer a name, and click **Edit manifest** and enter a name for the first template. Click the checkmark icon.
 
-6. In the blank manifest file at right, enter the VM definition as a YAML file. You can add multiple manifests for multiple templates in the same add-on profile. They will display as layers in the profile.
+6. In the blank manifest file at right, enter the VM definition as a YAML file. You can add multiple manifests for
+   multiple templates in the same add-on profile. They will display as layers in the profile.
 
 7. Click **Confirm and Create**, then click **Next**.
 
@@ -109,4 +110,5 @@ spec:
 
 ## Next Steps
 
-Try applying the template to your cluster. Navigate to **Clusters** and click `+` next to Addon Layers, then select the VMO profile you created.
+Try applying the template to your cluster. Navigate to **Clusters** and click `+` next to Addon Layers, then select the
+VMO profile you created.

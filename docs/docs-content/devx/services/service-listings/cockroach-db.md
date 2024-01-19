@@ -11,9 +11,15 @@ logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Cockroach_Labs_Lo
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-CockroachDB is a [distributed SQL database](https://www.cockroachlabs.com/blog/what-is-distributed-sql/) designed for cloud-native environments. CockroachDB provides a reliable and scalable solution for managing data across multiple nodes and regions. Its architecture automates data replication, sharding, and rebalancing, By simplifying operational tasks, Cockroach enables developers to concentrate on building their applications.
+CockroachDB is a [distributed SQL database](https://www.cockroachlabs.com/blog/what-is-distributed-sql/) designed for
+cloud-native environments. CockroachDB provides a reliable and scalable solution for managing data across multiple nodes
+and regions. Its architecture automates data replication, sharding, and rebalancing, By simplifying operational tasks,
+Cockroach enables developers to concentrate on building their applications.
 
-With a focus on strong consistency and horizontal scalability, CockroachDB supports fast transactions and real-time data insights. Its fault-tolerant and self-healing capabilities help reduce downtime and ensure data accuracy. As a result, CockroachDB offers a stable and efficient database solution for developers looking to build robust applications in today's demanding digital landscape.
+With a focus on strong consistency and horizontal scalability, CockroachDB supports fast transactions and real-time data
+insights. Its fault-tolerant and self-healing capabilities help reduce downtime and ensure data accuracy. As a result,
+CockroachDB offers a stable and efficient database solution for developers looking to build robust applications in
+today's demanding digital landscape.
 
 ## Deploy CockroachDB
 
@@ -32,7 +38,9 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 2. On the right side of the window, click on the **User Menu** and select **Switch to App Mode**.
 
-3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new app profile. Review [Create an App Profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic information and click **Next**.
+3. Navigate to the left **Main Menu** and click on **App Profiles** to create a new app profile. Review
+   [Create an App Profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the
+   following basic information and click **Next**.
 
 | Parameter                | Description                                                                                                              |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
@@ -53,11 +61,15 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 - **Database Name**: The name of the database to target.
 
-- **PersistentVolumeClaim Size (GiB)**: Select the volume according to the storage volume available in the cluster group and virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster.
+- **PersistentVolumeClaim Size (GiB)**: Select the volume according to the storage volume available in the cluster group
+  and virtual clusters. Ensure you do not exceed the maximum storage size for your virtual cluster.
 
 6. Save your changes.
 
-7. Deploy the app profile to a Palette Virtual Cluster. Use the [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md#deploy-a-virtual-cluster) guide for additional guidance or check out the [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
+7. Deploy the app profile to a Palette Virtual Cluster. Use the
+   [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md#deploy-a-virtual-cluster)
+   guide for additional guidance or check out the
+   [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
 
 ### Validate
 
@@ -67,7 +79,8 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 3. Select the application that contains CockroachDB.
 
-4. Validate your application is displaying the green status. The color code in the app profile box shows the status of the service deployment.
+4. Validate your application is displaying the green status. The color code in the app profile box shows the status of
+   the service deployment.
 
 | **Color Code** | **Description**       |
 | -------------- | --------------------- |
@@ -77,7 +90,8 @@ Palette users can deploy CockroachDB to a virtual cluster by using the following
 
 ## Output Variables
 
-The exposed output variables of this service layer may be used in other service layers. These output variables are typically used for connectivity purposes:
+The exposed output variables of this service layer may be used in other service layers. These output variables are
+typically used for connectivity purposes:
 
 | Parameter              | Output Variable                                                                             | Description                                       |
 | ---------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------- |
@@ -90,7 +104,8 @@ The exposed output variables of this service layer may be used in other service 
 
 ## Database Password
 
-You can get the database secret by reading the content of the Kubernetes secret created for the database user. To retrieve the password for the Redis database, use the following command format.
+You can get the database secret by reading the content of the Kubernetes secret created for the database user. To
+retrieve the password for the Redis database, use the following command format.
 
 <br />
 
@@ -123,7 +138,10 @@ Output:
 
 ## Next Steps
 
-To learn more about developing with CockroachDB, check out the [CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html). The developer guide is a great resource for understanding how to get started with CockroachDB and build applications that are scalable, resilient, and secure.
+To learn more about developing with CockroachDB, check out the
+[CockroachDB Developer Guide](https://www.cockroachlabs.com/docs/stable/developer-guide-overview.html). The developer
+guide is a great resource for understanding how to get started with CockroachDB and build applications that are
+scalable, resilient, and secure.
 
 ## Resources
 

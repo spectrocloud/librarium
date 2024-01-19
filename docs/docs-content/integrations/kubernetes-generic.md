@@ -10,9 +10,12 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "kubernetes"]
 ---
 
-The Cloud Native Computing Foundation's (CNCF) Kubernetes pack supports several cloud and data center infrastructure providers. This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes hardening standards that the Center for Internet Security (CIS) recommends.
+The Cloud Native Computing Foundation's (CNCF) Kubernetes pack supports several cloud and data center infrastructure
+providers. This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the
+Kubernetes hardening standards that the Center for Internet Security (CIS) recommends.
 
-We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE).
+We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS),
+Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE).
 
 :::info
 
@@ -24,7 +27,9 @@ Review the [Maintenance Policy](maintenance-policy.md) to learn about pack updat
 
 ### Support Lifecycle
 
-We support CNCF Kubernetes for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+We support CNCF Kubernetes for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the
+official EOL by four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to
+the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
 ## Versions Supported
 
@@ -67,17 +72,26 @@ We support CNCF Kubernetes for N-3 Kubernetes minor versions for a duration of 1
 
 The Kubeadm configuration file is where you can do the following:
 
-- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml hideClipboard
 pack:
@@ -89,11 +103,14 @@ pack:
 
 :::warning
 
-You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
 
 :::
 
-For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
 
 ### Configuration Changes
 
@@ -101,13 +118,21 @@ The Kubeadm config is updated with hardening improvements that do the following:
 
 - Meet CIS standards for operating systems (OS).
 
-- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit policy. If you want to apply your custom audit policy, refer to the [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy by adjusting API server flags.
+- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit
+  policy. If you want to apply your custom audit policy, refer to the
+  [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy
+  by adjusting API server flags.
 
-- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security
+  coverage:
 
-  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege
+    escalations.
 
-  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
+  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the
+    example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the
+    `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom
+    Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
 
     ```yaml
     kubeadmconfig:
@@ -125,9 +150,11 @@ The Kubeadm config is updated with hardening improvements that do the following:
         audit-policy-file: /etc/kubernetes/audit-policy.yaml
     ```
 
-  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn
+    and audit and identifies Pods that require privileged access.
 
-    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged
+    access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
 
     ```yaml
     pod-security.kubernetes.io/enforce: privileged
@@ -140,21 +167,34 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 ### Configure OIDC Identity Provider
 
-You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password.
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is
+an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster
+without using a password.
 
-OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding
+to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
+[default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the
+`cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to
+[Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 #### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
+EKS** tab for steps to configure OIDC for EKS clusters.
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
+   `identityProvider` value with your OIDC provider name.
 
 ```yaml
 pack:
@@ -193,7 +233,8 @@ kubeadmconfig:
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
 
 ```yaml
 oidcIdentityProvider:
@@ -219,7 +260,8 @@ clientConfig:
 
 3. Provide third-party OIDC IDP details.
 
-4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to
+   access an EKS cluster.
 
 </TabItem>
 </Tabs>
@@ -263,17 +305,26 @@ clientConfig:
 
 The Kubeadm configuration file is where you can do the following:
 
-- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml hideClipboard
 pack:
@@ -285,11 +336,14 @@ pack:
 
 :::warning
 
-You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
 
 :::
 
-For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
 
 ### Configuration Changes
 
@@ -297,13 +351,21 @@ The Kubeadm config is updated with hardening improvements that do the following:
 
 - Meet CIS standards for operating systems (OS).
 
-- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit policy. If you want to apply your custom audit policy, refer to the [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy by adjusting API server flags.
+- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit
+  policy. If you want to apply your custom audit policy, refer to the
+  [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy
+  by adjusting API server flags.
 
-- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security
+  coverage:
 
-  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege
+    escalations.
 
-  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
+  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the
+    example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the
+    `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom
+    Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
 
     ```yaml
     kubeadmconfig:
@@ -321,9 +383,11 @@ The Kubeadm config is updated with hardening improvements that do the following:
         audit-policy-file: /etc/kubernetes/audit-policy.yaml
     ```
 
-  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn
+    and audit and identifies Pods that require privileged access.
 
-    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged
+    access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
 
     ```yaml
     pod-security.kubernetes.io/enforce: privileged
@@ -336,21 +400,34 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 ### Configure OIDC Identity Provider
 
-You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password.
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is
+an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster
+without using a password.
 
-OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding
+to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
+[default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the
+`cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to
+[Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 #### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
+EKS** tab for steps to configure OIDC for EKS clusters.
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
+   `identityProvider` value with your OIDC provider name.
 
 ```yaml
 pack:
@@ -389,7 +466,8 @@ kubeadmconfig:
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
 
 ```yaml
 oidcIdentityProvider:
@@ -415,7 +493,8 @@ clientConfig:
 
 3. Provide third-party OIDC IDP details.
 
-4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to
+   access an EKS cluster.
 
 </TabItem>
 </Tabs>
@@ -460,17 +539,26 @@ clientConfig:
 
 The Kubeadm configuration file is where you can do the following:
 
-- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.26#change-cluster-dns-service-domain-1).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.26#change-cluster-dns-service-domain-1).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml
 pack:
@@ -482,11 +570,14 @@ pack:
 
 :::warning
 
-You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
 
 :::
 
-For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
 
 ### Configuration Changes
 
@@ -494,13 +585,21 @@ The Kubeadm config is updated with hardening improvements that do the following:
 
 - Meet CIS standards for operating systems (OS).
 
-- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit policy. If you want to apply your custom audit policy, refer to the [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy by adjusting API server flags.
+- Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit
+  policy. If you want to apply your custom audit policy, refer to the
+  [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy
+  by adjusting API server flags.
 
-- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security
+  coverage:
 
-  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege
+    escalations.
 
-  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
+  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the
+    example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the
+    `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom
+    Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
 
     ```yaml
     kubeadmconfig:
@@ -518,9 +617,11 @@ The Kubeadm config is updated with hardening improvements that do the following:
         audit-policy-file: /etc/kubernetes/audit-policy.yaml
     ```
 
-  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn
+    and audit and identifies Pods that require privileged access.
 
-    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged
+    access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
 
     ```yaml
     pod-security.kubernetes.io/enforce: privileged
@@ -533,23 +634,38 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 ### Configure OIDC Identity Provider
 
-You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password.
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is
+an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster
+without using a password.
 
-OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding
+to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
+[default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the
+`cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to
+[Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 #### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
+EKS** tab for steps to configure OIDC for EKS clusters.
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
+   `identityProvider` value with your OIDC provider name.
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 pack:
@@ -588,7 +704,8 @@ kubeadmconfig:
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
 
 ```yaml
 oidcIdentityProvider:
@@ -614,7 +731,8 @@ clientConfig:
 
 3. Provide third-party OIDC IDP details.
 
-4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to
+   access an EKS cluster.
 
 </TabItem>
 </Tabs>
@@ -657,17 +775,26 @@ clientConfig:
 
 The Kubeadm configuration file is where you can do the following:
 
-- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take precedence over other defined CIDR IPs in your environment.
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
 
-  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more information, refer to the [Clusters](../clusters/clusters.md) guide and [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
-- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only change the DNS domain during cluster creation. For more information, refer to [Change Cluster DNS Service Domain](kubernetes-generic.md?versions=k8s_v1.25#change-cluster-dns-service-domain-2).
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes-generic.md?versions=k8s_v1.25#change-cluster-dns-service-domain-2).
 
-- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more information, refer to the [Spectro Proxy](frp.md) guide.
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the [Spectro Proxy](frp.md) guide.
 
 ### Change Cluster DNS Service Domain
 
-The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
 
 ```yaml
 pack:
@@ -679,11 +806,14 @@ pack:
 
 :::warning
 
-You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
 
 :::
 
-For more information about networking configuration with DNS domains, refer to the Kubernetes [Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking) API documentation.
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
 
 ### Configuration Changes
 
@@ -693,11 +823,16 @@ The Kubeadm config is updated with hardening improvements that do the following:
 
 - Enable a Kubernetes audit policy in the pack that you can customize by adjusting API server flags.
 
-- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security coverage:
+- Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security
+  coverage:
 
-  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege escalations.
+  - **Privileged**: An unrestricted policy that provides wide permission levels and allows for known privilege
+    escalations.
 
-  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
+  - **Baseline**: A policy that offers minimal restrictions and prevents known privilege escalations. As shown in the
+    example below, you can override the default cluster-wide policy to set baseline enforcement by enabling the
+    `PodSecurity` Admission plugin in the `enable-admission-plugins` section of the YAML file. You can then add a custom
+    Admission configuration and set the `admission-control-config-file` flag to the custom Admission.
 
     ```yaml
     kubeadmconfig:
@@ -715,9 +850,11 @@ The Kubeadm config is updated with hardening improvements that do the following:
         audit-policy-file: /etc/kubernetes/audit-policy.yaml
     ```
 
-  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn and audit and identifies Pods that require privileged access.
+  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn
+    and audit and identifies Pods that require privileged access.
 
-    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged
+    access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
 
   ```yaml
   pod-security.kubernetes.io/enforce: privileged
@@ -730,21 +867,34 @@ The default pack YAML contains minimal configurations offered by the managed pro
 
 ### Configure OIDC Identity Provider
 
-You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster without using a password.
+You can configure an OpenID Connect (OIDC) identity provider to authenticate users and groups in your cluster. OIDC is
+an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster
+without using a password.
 
-OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the `cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding
+to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
+[default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the
+`cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to
+[Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 #### Configure Custom OIDC
 
-The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
 
 <Tabs queryString="oidc-mode">
 
 <TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
 
-Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to use Azure Active Directory (AAD) to enable OIDC integration. Refer to [Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
+EKS** tab for steps to configure OIDC for EKS clusters.
 
-1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the `identityProvider` value with your OIDC provider name.
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
+   `identityProvider` value with your OIDC provider name.
 
 ```yaml
 pack:
@@ -783,9 +933,12 @@ kubeadmconfig:
 
 Follow these steps to configure OIDC for managed EKS clusters.
 
-1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack, and enter your third-party provider details.
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 oidcIdentityProvider:
@@ -801,7 +954,9 @@ oidcIdentityProvider:
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
 
-  <br />
+{" "}
+
+<br />
 
 ```yaml
 clientConfig:
@@ -813,7 +968,8 @@ clientConfig:
 
 3. Provide third-party OIDC IDP details.
 
-4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to access an EKS cluster.
+4. Refer to the [Access EKS Cluster](../clusters/public-cloud/aws/eks.md#access-eks-cluster) for guidance on how to
+   access an EKS cluster.
 
 </TabItem>
 </Tabs>

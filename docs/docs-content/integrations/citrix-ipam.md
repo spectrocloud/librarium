@@ -12,7 +12,8 @@ tags: ["packs", "citrix-ipam", "network"]
 
 # Citrix IPAM and Ingress controller
 
-The integration helps with IP address management and provides load balancing capabilities for external services deployed on Kubernetes, especially for on-premise deployments.
+The integration helps with IP address management and provides load balancing capabilities for external services deployed
+on Kubernetes, especially for on-premise deployments.
 
 ## Versions Supported
 

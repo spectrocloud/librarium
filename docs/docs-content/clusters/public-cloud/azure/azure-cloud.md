@@ -7,13 +7,17 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-Palette supports integration with Azure and [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud accounts. This section explains how to add an Azure cloud account in Palette or Palette VerteX. You can use any of the following authentication methods to register your cloud account.
+Palette supports integration with Azure and
+[Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud accounts. This
+section explains how to add an Azure cloud account in Palette or Palette VerteX. You can use any of the following
+authentication methods to register your cloud account.
 
 ## Prerequisites
 
 - A [Palette](https://console.spectrocloud.com/), or VerteX account.
 
-- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
+- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
+  provision compute, network, and security resources in the desired regions.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
@@ -42,7 +46,8 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 | **Disable Properties**            | This option disables Palette importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Palette Network Calls to the Account](#disable-palette-network-calls-to-the-account) section below. |
 | **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                                               |
 
-6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a _Credentials validated_ success message with a green check is displayed.
+6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a
+   _Credentials validated_ success message with a green check is displayed.
 
 7. Click **Confirm** to complete the registration.
 
@@ -51,25 +56,42 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 <details>
  <summary>Expand to learn more about disabling properties.</summary>
 
-When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.
+When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network
+calls from Palette to the account. To disable network calls, select the **Disable Properties** option.
 
-Disabling network calls requires that you create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret.
+Disabling network calls requires that you create a
+[Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new
+Microsoft Entra application, assign roles, and create the client secret.
 
 :::tip
 
-Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
+Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the
+[Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+reference guide.
 
 :::
 
-1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
+1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the
+   [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+   reference guide.
 
-2. Next, assign yourself the [User Access Administrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in step 3. For guidance, refer to [Assign a Role to the Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
+2. Next, assign yourself the
+   [User Access Administrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator)
+   role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in
+   step 3. For guidance, refer to
+   [Assign a Role to the Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
-3. With User Access Administrator privilege, you can now assign yourself the minimum required [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role, which grants full access to manage all resources.
+3. With User Access Administrator privilege, you can now assign yourself the minimum required
+   [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role,
+   which grants full access to manage all resources.
 
-To learn about Azure roles, review [Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
+To learn about Azure roles, review
+[Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
-4. Create a client secret. Refer to [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret) for guidance.
+4. Create a client secret. Refer to
+   [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret)
+   for guidance.
 
 :::warning
 
@@ -93,10 +115,15 @@ You can verify your account is added.
 
 :::tip
 
-Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the account from Palette.
+Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the
+account from Palette.
 
 :::
 
 ## Next Steps
 
-After you have added your Azure cloud account to Palette or VerteX, you can start deploying an Azure IaaS cluster by following the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide, or if you prefer an Azure Managed Kubernetes Service (AKS) cluster, refer to the [Create and Manage Azure AKS Cluster](./azure.md) guide. We also encourage you to check out the [Deploy a Cluster tutorial](../deploy-k8s-cluster.md) for a detailed walkthrough of the cluster creation process.
+After you have added your Azure cloud account to Palette or VerteX, you can start deploying an Azure IaaS cluster by
+following the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide, or if you prefer an Azure Managed
+Kubernetes Service (AKS) cluster, refer to the [Create and Manage Azure AKS Cluster](./azure.md) guide. We also
+encourage you to check out the [Deploy a Cluster tutorial](../deploy-k8s-cluster.md) for a detailed walkthrough of the
+cluster creation process.

@@ -8,7 +8,10 @@ sidebar_custom_props:
   icon: "graph"
 ---
 
-Palette offers a range of capabilities you can access through the REST APIs. These REST APIs are designed in accordance with open API standards, which ensure that the platform's features can be integrated with other applications and systems. By utilizing these APIs, you can tap into the platform's capabilities through programmatic methods. Use the APIs to build custom integrations and workflows that leverage the power of the Palette.
+Palette offers a range of capabilities you can access through the REST APIs. These REST APIs are designed in accordance
+with open API standards, which ensure that the platform's features can be integrated with other applications and
+systems. By utilizing these APIs, you can tap into the platform's capabilities through programmatic methods. Use the
+APIs to build custom integrations and workflows that leverage the power of the Palette.
 
 ## Paths
 
@@ -24,11 +27,18 @@ Palette supports two types of API authentication methods that can be used to aut
 
 ### Authorization Token
 
-You can acquire authorization tokens from Palette that have a 15-minute lifetime. The authorization token is passed as part of the HTTP request header. You can use the authorization token to authenticate and authorize the request. The header name is `Authorization`, and the token is the header value. Refer to the [Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization token.
+You can acquire authorization tokens from Palette that have a 15-minute lifetime. The authorization token is passed as
+part of the HTTP request header. You can use the authorization token to authenticate and authorize the request. The
+header name is `Authorization`, and the token is the header value. Refer to the
+[Authorization Token](/user-management/authentication/authorization-token) section to learn more about the authorization
+token.
 
 ### API Key
 
-You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without requiring user credentials such as username and password. The API key must be present in each API request to authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is `apiKey`, and the API key is the header value.
+You can use API keys to authenticate with the Palette API. API keys allow you to interact with Palette APIs without
+requiring user credentials such as username and password. The API key must be present in each API request to
+authenticate and authorize the request. The API Key is passed as part of the HTTP request header. The header name is
+`apiKey`, and the API key is the header value.
 
 The following example shows how to pass the API key in the HTTP request header:
 
@@ -46,11 +56,13 @@ All requests are in the `JSON` format. In general, the request payload has three
 
 - _Metadata_ consists of common attributes for all the resources such as ids, names, creation timestamps etc.
 - _Spec_ consists of attributes that define the resource
-- _Status_ contains the status information of the resource. The API does not support creating or modifying the status section.
+- _Status_ contains the status information of the resource. The API does not support creating or modifying the status
+  section.
 
 :::info
 
-Certain update request schemas have restricted spec resource definitions, and specific fields like uid and creation timestamp cannot be modified post-creation.
+Certain update request schemas have restricted spec resource definitions, and specific fields like uid and creation
+timestamp cannot be modified post-creation.
 
 :::
 
@@ -78,7 +90,8 @@ The API returns standard HTTP response codes:
 
 ## Palette API Lifecycle
 
-Palette APIs maintain backward compatibility until deprecation. The three API phases in the lifecycle are _Production_, _Sunset_, and _Deprecated_. Spectro Cloud will inform users when APIs transition through this lifecycle.
+Palette APIs maintain backward compatibility until deprecation. The three API phases in the lifecycle are _Production_,
+_Sunset_, and _Deprecated_. Spectro Cloud will inform users when APIs transition through this lifecycle.
 
 ### Production
 
@@ -86,11 +99,14 @@ The Palette APIs are designed to work as intended and expected.
 
 ### Sunset
 
-As the API approaches deprecation because it is being replaced or will no longer be supported, a notice will be provided in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date, a notice will be shared that counts down to the end date and recommends the API to use instead.
+As the API approaches deprecation because it is being replaced or will no longer be supported, a notice will be provided
+in the documentation that outlines our intent and provides a cut-off date. Within three months of the deprecation date,
+a notice will be shared that counts down to the end date and recommends the API to use instead.
 
 ### Deprecated
 
-We indicate that an API is deprecated when it is no longer supported or recommended for use by including a tag to indicate its state. The API documentation will remain available as a subsection of deprecated APIs.
+We indicate that an API is deprecated when it is no longer supported or recommended for use by including a tag to
+indicate its state. The API documentation will remain available as a subsection of deprecated APIs.
 
 <br />
 
@@ -102,11 +118,17 @@ The API lifecycle also applies to external-facing tools such as Terraform.
 
 ## Versioning
 
-The version information is included in the API URI, such as `v1alpha1` or `v1`. Future APIs will increment the version, leaving the earlier version intact. The existing API request and response schema will be modified to add new attributes or query parameters while maintaining backward compatibility with earlier schemas. Prior notice will be given before advancing to the next version, and users will be advised to migrate to the new API.
+The version information is included in the API URI, such as `v1alpha1` or `v1`. Future APIs will increment the version,
+leaving the earlier version intact. The existing API request and response schema will be modified to add new attributes
+or query parameters while maintaining backward compatibility with earlier schemas. Prior notice will be given before
+advancing to the next version, and users will be advised to migrate to the new API.
 
 ## Scope
 
-Palette groups resources under either a Tenant or Project scope. When making API requests targeting resources belonging to a project, the project scope should be specified. To specify the project scope, use the HTTP header key `ProjectUid` with the value `<Project Uid>` in the API request. The `ProjectUid` needs to be specified for a request to be applied under a specific project scope.
+Palette groups resources under either a Tenant or Project scope. When making API requests targeting resources belonging
+to a project, the project scope should be specified. To specify the project scope, use the HTTP header key `ProjectUid`
+with the value `<Project Uid>` in the API request. The `ProjectUid` needs to be specified for a request to be applied
+under a specific project scope.
 
 **Example**:
 
@@ -125,7 +147,10 @@ If you do not provide the ProjectUid header, then the assumed scope is of the te
 
 ## Pagination
 
-API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose. The API response for the list includes the listMeta resource that contains the `continue` token. To perform pagination, you need to check whether the `continue` token value is present in the API response. For subsequent requests, use the `continue` token as a query parameter to paginate the remaining resource items.
+API endpoints that return a list have a limit of 50 items per return payload. Pagination is necessary for this purpose.
+The API response for the list includes the listMeta resource that contains the `continue` token. To perform pagination,
+you need to check whether the `continue` token value is present in the API response. For subsequent requests, use the
+`continue` token as a query parameter to paginate the remaining resource items.
 
 <br />
 
@@ -155,11 +180,19 @@ curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUw
 
 The API rate limits are as follows:
 
-- There is a limit of ten API requests per second for each source IP address. The API supports additional bursts through the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 \* 5) requests in seconds before the API returns a `429 - TooManyRequests` error. Refer to the [Endpoint Prefix Rate](#endpointprefixrate) for additional information.
+- There is a limit of ten API requests per second for each source IP address. The API supports additional bursts through
+  the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 \* 5) requests in
+  seconds before the API returns a `429 - TooManyRequests` error. Refer to the
+  [Endpoint Prefix Rate](#endpointprefixrate) for additional information.
 
-- API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can find a list of all resource types in the [API documentation](/api/category/palette-api-v1). The requests are counted together if you make multiple requests to the same resource type but use different sub-resources. For example, if you make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are counted together as ten requests to the resource `clusterprofiles`.
+- API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can
+  find a list of all resource types in the [API documentation](/api/category/palette-api-v1). The requests are counted
+  together if you make multiple requests to the same resource type but use different sub-resources. For example, if you
+  make five requests to `/v1/clusterprofiles` and five requests to `/v1/clusterprofiles/macros`, the requests are
+  counted together as ten requests to the resource `clusterprofiles`.
 
-- If too many requests are issued, you may receive an error with HTTP code `429` - `TooManyRequests.` We recommend retrying the API call after a few moments.
+- If too many requests are issued, you may receive an error with HTTP code `429` - `TooManyRequests.` We recommend
+  retrying the API call after a few moments.
 
 ## Endpoint Prefix Rate
 

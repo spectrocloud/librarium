@@ -7,7 +7,8 @@ sidebar_position: 20
 tags: ["public cloud", "cox edge"]
 ---
 
-To successfully deploy a host cluster to Cox Edge with Palette, you must add the following network rules to each deployment.
+To successfully deploy a host cluster to Cox Edge with Palette, you must add the following network rules to each
+deployment.
 
 ## Inbound
 
