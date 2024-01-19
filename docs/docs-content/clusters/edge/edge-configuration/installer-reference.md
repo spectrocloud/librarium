@@ -119,7 +119,9 @@ The `stylus.site` blocks accept the following parameters.
 | `deviceUIDPaths`     | Specify the file path for reading in product or board serial that can be used to set the device ID. The default file path is **/sys/class/dmi/id/product_uuid**. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more.                                                                                                                                                                                                                                                                               |
 
 :::info
+
 If you do not specify a hostname for the edge device, the system will generate one from the serial number of the device. If the Edge Installer cannot identify the serial number, it will generate a random ID instead. In cases where the hardware does not have a serial number, we suggest that you specify a value so there is minimal chance of duplication. Use the value `"$random"` to generate a random ID. You can also use the `DeviceUIDPaths` to read in a value from a system file.
+
 :::
 
 ### Site Network Parameters

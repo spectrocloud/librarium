@@ -15,7 +15,9 @@ The Cloud Native Computing Foundation's (CNCF) Kubernetes pack supports several 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE).
 
 :::info
+
 Review the [Maintenance Policy](maintenance-policy.md) to learn about pack update and deprecation schedules.
+
 :::
 
 <br />

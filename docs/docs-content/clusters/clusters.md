@@ -50,7 +50,9 @@ Kubernetes components and configuration are hardened in accordance with the Kube
 Palette follows security best practices recommended by the various cloud providers when provisioning and configuring the computing, network, and storage infrastructure for the Kubernetes clusters. These include practices such as isolating master and worker nodes in dedicated network domains and limiting access through the use constructs like security groups.
 
 :::info
+
 The security measures mentioned above are implemented for Palette's out-of-the-box OS and Kubernetes packs. For customized OS Kubernetes packs, users are responsible for taking the relevant measures to secure their clusters.
+
 :::
 
 ## Day-2 Management
@@ -58,7 +60,9 @@ The security measures mentioned above are implemented for Palette's out-of-the-b
 Palette provides several options to manage Kubernetes clusters on an ongoing basis. These include opportunities to scale up/down the cluster by adding/reducing the number of nodes in a node pool, add extra worker pools, resizing nodes in a node pool by modifying the instance type, and adding additional fault domains such as availability zones to a node pool.
 
 :::info
+
 Cluster management operations result updating cluster definitions in Palette's database. The updated definition is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated clusters to their desired state.
+
 :::
 
 ## Cluster Health
@@ -246,7 +250,9 @@ Clusters can be launched at the project scope or at the tenant scope. A project-
 Access to clusters in Palette is governed by Palette's role-based access control. To be able to take any action on a cluster, you need the corresponding permission in the corresponding scope. For example, a user with the permission `cluster.create` in the project `foo` and can create clusters in the project `foo`. Tenant-level permissions allow you to take the corresponding action on clusters in all projects in the tenant, as well as tenant-level clusters. Tenant-level permissions are required to take action on any tenant-level cluster. For more information about role-based access control in Palette, refer to [Palette RBAC](../user-management/palette-rbac/palette-rbac.md).
 
 :::info
+
 You cannot create a tenant-level Edge cluster. This is because Edge hosts always belong to a project and cannot be added at the tenant scope.
+
 :::
 
 ## Resources

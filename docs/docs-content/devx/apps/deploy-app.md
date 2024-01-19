@@ -1009,7 +1009,7 @@ pack {
 :::info
 
 All container services expose their service address, Kubernetes hostname, and the exposed service ports as output variables.
-You will use output variables frequently when creating app profiles. You can learn more about connecting services by referring to the [Service Connectivity](../services/connectivity.md documentation.
+You will use output variables frequently when creating app profiles. You can learn more about connecting services by referring to the [Service Connectivity](../services/connectivity.md) documentation.
 
 :::
 

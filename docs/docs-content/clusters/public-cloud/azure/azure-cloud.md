@@ -56,7 +56,9 @@ When you provide your cloud account information, Azure networking details are se
 Disabling network calls requires that you create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret.
 
 :::tip
+
 Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
+
 :::
 
 1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.

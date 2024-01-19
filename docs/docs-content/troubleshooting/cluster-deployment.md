@@ -92,7 +92,9 @@ Common reasons for why a service may fail are:
        ```
 
        :::info
-       You can obtain the URL for the Kubernetes API using this command: kubectl cluster-info
+
+       You can obtain the URL for the Kubernetes API using this command: `kubectl cluster-info`.
+
        :::
 
 6. Check stdout for errors. You can also open a support ticket. Visit our [support page](http://support.spectrocloud.io/).

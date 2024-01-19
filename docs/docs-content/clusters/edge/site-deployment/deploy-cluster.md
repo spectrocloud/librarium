@@ -221,9 +221,11 @@ users:
 The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to start the build process.
 
 :::warning
+
 Make sure your machine has sufficient disk space for the provider images. Each image is about 4 - 5 GB in size, and images are created for all the Palette-supported Kubernetes versions by default. In the **4.1.2** branch of **CanvOS** used in this tutorial, the script builds 14 images. If your machine does not have enough disk space, the build process will fail silently.
 
 You can exclude image versions you do not need from the build process by commenting out the lines in the `build-provider-images` parameter in the file **Earthfile** in the **CanvOS** repository. This speeds up build process and reduces the amount of space required for the build process. For an example of excluding a version from build, refer to [Build Edge Artifacts guide](../edgeforge-workflow/palette-canvos.md).
+
 :::
 
 ```bash

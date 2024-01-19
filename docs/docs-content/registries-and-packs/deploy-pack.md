@@ -1075,6 +1075,7 @@ The cluster status will display **Deleting**, and the deletion may take up to 10
 If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force deletion. Navigate to the cluster's details page and click on **Settings**. Select **Force Delete Cluster**. Palette automatically removes clusters that are stuck in the deletion phase for over 24 hours.
 
 :::
+
 <br />
 
 After deleting the cluster, proceed to delete the cluster profile. In the left **Main Menu**, click on **Profiles** and select the profile you want to delete. Next, click on the **Delete** option in the **three-dot Menu**.

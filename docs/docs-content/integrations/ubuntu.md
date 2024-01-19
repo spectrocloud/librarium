@@ -175,7 +175,6 @@ kubeadmconfig:
 
 Review the parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
 
-
 :::
 
 Palette also supports Ubuntu Pro. Refer to the [Ubuntu Pro](#ubuntu-pro) section below for more details.
@@ -515,7 +514,6 @@ kubeadmconfig:
 :::warning
 
 Review the parameter documentation before you make changes to the kubeadm configuration. Improper configurations can cause deployment failures.
-
 
 :::
 

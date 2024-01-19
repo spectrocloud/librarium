@@ -95,8 +95,10 @@ To establish the external connectivity for the private Kubernetes cluster, launc
 <br />
 
 :::info
+
 Port Prerequisite:
 Add an inbound network security group rule with destination port 22.
+
 :::
 
 1. Open the client terminal of your choice to execute:

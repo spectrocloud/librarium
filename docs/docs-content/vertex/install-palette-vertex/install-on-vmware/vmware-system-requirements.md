@@ -22,6 +22,7 @@ Start by reviewing the required action items below:
 :::info
 
 The permissions listed in this page are also needed for deploying a Private Cloud Gateway (PCG) and workload cluster in vSphere through VerteX.
+
 :::
 
 ## Create Required Roles

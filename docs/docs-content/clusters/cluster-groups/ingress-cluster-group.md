@@ -97,7 +97,9 @@ The CNAME record is also known as the host cluster DNS pattern.
    c. Paste the name of the wildcard CNAME record into the **Host DNS** field.
 
 :::info
+
 If you haven’t yet created a Cluster Group, you can configure each host cluster as described and add them to a new Cluster Group later.
+
 :::
 
 ## Validate

@@ -36,9 +36,11 @@ To learn more about creating multiple profile versions, check out [Version a Clu
 5. Select the Infrastructure Provider, Managed Kubernetes, or Tech Preview cloud type for your environment and click **Next**.
 
 :::info
+
 Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.
 
 When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes layers. Out-of-the-box packs are provided for the network and storage profile layers.
+
 :::
 
 6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click **Next Layer** to configure each infrastructure layer.

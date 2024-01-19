@@ -50,7 +50,9 @@ pack:
 <br />
 
 :::info
+
 Provide the networkPolicy value as none if no policy to be applied.
+
 :::
 
 <br />

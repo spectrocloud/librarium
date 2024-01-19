@@ -37,7 +37,9 @@ Use the following steps to prepare to register your cloud with Palette.
   <br />
 
 :::warning
+
 Review the [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) to ensure you download a compatible CAPX version of the files.
+
 :::
 
 Export the CAPX version as an environment variable. For example, if you want to download version **v1.2.4**, issue the following command.
@@ -89,7 +91,9 @@ When editing the YAMLs, it is helpful to collapse the `spec` section to help you
 7. In **controlPlanePoolTemplate.yaml**, edit the NutanixMachineTemplate object. Rename `name: ${CLUSTER_NAME}-mt-0` as `${CLUSTER_NAME}-cp-0`, and change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
 
 :::warning
+
 The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same name.
+
 :::
 
 8. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object to enable the [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack. Include a new line with the `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as illustrated below.
@@ -109,8 +113,10 @@ preKubeadmCommands:
 ```
 
 :::warning
+
 The following modifications in steps 11 and 12 are only applicable to VerteX instances.  
- :::
+
+:::
 
 10. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper indentation as illustrated below.
 
@@ -174,9 +180,11 @@ export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
 ```
 
 :::warning
+
 The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps.
 
 Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the out-of-the-box [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack available to users when they create a cluster profile in Palette.
+
 :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and ensure you replace the credentials with your system console credentials.

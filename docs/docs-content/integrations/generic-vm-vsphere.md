@@ -259,11 +259,13 @@ preVMDestroyCmd: ""
 <br />
 
 :::info
+
 During a first-time deployment, <b> preVMDestroyCmd</b> won't be invoked. However, if there is any change in cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is executed successfully, only then the VM resource will be deleted.
 
 <br />
 <br />
 Once the VM is deleted and before another virtual machine is created, <b>preVMInitCmd</b> will be invoked.
+
 :::
 
 <br />

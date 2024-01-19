@@ -66,7 +66,9 @@ Since you are setting up a virtual cluster inside another Kubernetes cluster, yo
 K3s is available for Edge host deployments as well as virtual clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more information.
 
 :::info
+
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
 :::
 
 #### Configure OIDC Identity Provider for Edge
@@ -173,7 +175,9 @@ Since you are setting up a virtual cluster inside another Kubernetes cluster, yo
 K3s is available for Edge host deployments as well as virtual clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more information.
 
 :::info
+
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
 :::
 
 #### Configure OIDC Identity Provider for Edge
@@ -282,7 +286,9 @@ Since you are setting up a virtual cluster inside another Kubernetes cluster, yo
 K3s is available for Edge host deployments as well as virtual clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more information.
 
 :::info
+
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
 :::
 
 #### Configure OIDC Identity Provider for Edge
@@ -390,7 +396,9 @@ Since you are setting up a virtual cluster inside another Kubernetes cluster, yo
 K3s is available for Edge host deployments as well as virtual clusters that you can create from cluster groups. Refer to the [Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md) guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more information.
 
 :::info
+
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your intended Kubernetes distribution when you build your OS image. For more information, refer to the [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
 :::
 
 #### Configure OIDC Identity Provider for Edge
@@ -454,7 +462,9 @@ You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy all
 <TabItem label="Deprecated" value="deprecated">
 
 :::warning
+
 All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+
 :::
 
 </TabItem>

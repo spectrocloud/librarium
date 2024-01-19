@@ -252,7 +252,9 @@ The following steps guide you through creating your image. You will create a cus
 You now have a cluster profile that uses the custom image you created using the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project.
 
 :::warning
+
 When deploying a host cluster, choosing the appropriate cloud provider and region where the image was distributed is critical to successfully launching a cluster using a custom image in the cluster profile. Failure to do so may result in Palette's inability to launch a cluster.
+
 :::
 
 ### Validate

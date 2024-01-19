@@ -23,6 +23,7 @@ Palette VerteX supports the following infrastructure platforms for deploying Kub
 Review the following tables for additional information about the supported platforms.
 
 :::info
+
 For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the [Cluster](../clusters/clusters.md) documentation.
 
 :::

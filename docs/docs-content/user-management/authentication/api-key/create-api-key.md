@@ -59,6 +59,7 @@ Tenant administrators have the ability to create an API on behalf of any user wi
 :::warning
 
 Ensure you save the API key in a secure location. You will not be able to view the API key again.
+
 :::
 
 </TabItem>
@@ -90,6 +91,7 @@ Ensure you save the API key in a secure location. You will not be able to view t
 :::warning
 
 Ensure you save the API key in a secure location. You will not be able to view the API key again.
+
 :::
 
 </TabItem>

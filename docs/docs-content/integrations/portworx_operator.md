@@ -1740,6 +1740,7 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 :::warning
 
 When inserting SSL certificate values into the YAML. Ensure you follow the provided indentation style. Otherwise, SSL certificates will not be imported correctly and will result in Portworx deployment failure.
+
 :::
 
 </TabItem>

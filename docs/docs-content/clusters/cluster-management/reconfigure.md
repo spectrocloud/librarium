@@ -15,7 +15,9 @@ Scaling a cluster up or down involves changing the size of node pools. The follo
 - Provisioning status is updated with the ongoing progress of the scale operation.
 
 :::info
+
 The master node pool is scaled from 1 to 3 or 3 to 5 nodes, etc. However, the scale-down operation is not supported for master nodes.
+
 :::
 
 ## Reconfiguring the Cluster Nodes
@@ -50,5 +52,7 @@ The following steps need to be performed to remove a worker pool from the cluste
 - Upon confirmation, the worker node deletion begins in a few minutes
 
 :::info
+
 Support of reconfiguration is not available for existing clusters imported into Palette for any cloud type.
+
 :::

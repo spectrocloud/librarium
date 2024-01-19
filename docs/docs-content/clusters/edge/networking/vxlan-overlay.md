@@ -14,6 +14,7 @@ Palette allows you to create a virtual overlay network on top of the physical ne
 ![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.png)
 
 :::preview
+
 :::
 
 ## When Should You Consider Enabling Overlay Network?
@@ -59,7 +60,9 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 You can enable an overlay network for your cluster during cluster creation.
 
 :::warning
+
 You will not be able to change the network overlay configurations after the cluster has already been created.
+
 :::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -138,7 +141,9 @@ You will not be able to change the network overlay configurations after the clus
 11. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure this range is not used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides a default range that is typically unused. We suggest you keep the default range unless you have a specific IP range you want to use.
 
 :::warning
+
 The overlay CIDR range cannot be changed after the cluster creation.
+
 :::
 
 After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the cluster.
@@ -156,7 +161,9 @@ After you have provided the overlay CIDR, the **VIP** field at the top of the pa
 4. Select the **Nodes** tab. For each host, the **Private Ips** column lists an overlay IP address within the CIDR range you provided during cluster configuration.
 
 :::tip
+
 To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge Hosts** tab. The IP address displayed in the table is the external IP address.
+
 :::
 
 ## Access Cluster with Overlay Network Enabled

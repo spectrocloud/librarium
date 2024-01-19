@@ -79,7 +79,7 @@ Choose the workflow that fits your needs.
 
   <br />
   
-  :::info
+:::info
 
 When using the `generate` command, the specified registry is where Edge artifacts will be uploaded.
 

@@ -159,5 +159,7 @@ kubectl get deployment REPLACE_ME \
 ```
 
 :::tip
+
 Use the command `kubectl get deployments --all-namespaces` to list all deployments in the cluster.
+
 :::

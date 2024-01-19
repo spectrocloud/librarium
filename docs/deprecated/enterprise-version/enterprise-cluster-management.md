@@ -104,8 +104,10 @@ The following information is filled to create a backup location in FTP mode:
 7. Delete/Restore a specific backup from the actions panel.
 
 :::info
+
 The saved configuration details can be used to create multiple backup locations.
 Any changes can be made to the existing configuration and saved for reuse.
+
 :::
 
 ### S3 Backup Location
@@ -192,7 +194,9 @@ The following information is needed:
 - Delete/Restore a specific backup from the actions panel.
 
 :::info
+
 The saved configuration details can be used to create multiple backup locations. Any changes can be made to the existing configuration and saved for reuse.
+
 :::
 
 </TabItem>

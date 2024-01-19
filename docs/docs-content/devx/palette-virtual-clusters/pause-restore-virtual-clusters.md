@@ -39,5 +39,7 @@ You can verify the state of a cluster by reviewing the cluster details. To revie
 - **Running**: For a resumed or running virtual cluster
 
 :::tip
+
 The status of a virtual cluster can also be viewed on the cluster listing page. The health column displays the status of the virtual cluster.
+
 :::

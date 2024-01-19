@@ -167,7 +167,9 @@ During cluster creation, you will default to a single pool.
    <br />
 
 :::info
+
 Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the <b>Cloud Configuration</b> section, as you can not to taint or change their OS from Linux. See the <a href="https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools">AKS Documentation</a> for more details on pool limitations.
+
 :::
 
 <br />
@@ -207,7 +209,9 @@ In all types of node pools, configure the following.
 <br />
 
 :::info
+
 New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU workloads.
+
 :::
 
 <br />
@@ -215,9 +219,11 @@ New worker pools may be added if you want to customize specific worker nodes to 
 - Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (GB) in the **Disk size** field.
 
 :::info
+
 A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
 
 A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
+
 :::
 
 <br />
@@ -243,7 +249,9 @@ The Azure Active Directory (AAD) could be enabled while creating and linking the
 <br />
 
 :::info
+
 The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on Packs.
+
 :::
 
 <br />

@@ -13,7 +13,9 @@ Palette provides two different modes for deploying and managing applications. Th
 You can leverage Spectro Cloud's complementary managed Kubernetes cluster when using App Mode. The complementary resources have a limit of 12 vCPU, 16 GiB of memory, and 20 GiB of free storage. Alternatively, you may deploy applications on Kubernetes clusters that belong to your organization and are managed by Palette.
 
 :::info
+
 Check out the in-depth explanation of [App Mode and Cluster Mode](../introduction/palette-modes.md) to learn more about each mode.
+
 :::
 
 ## Get Started
@@ -60,6 +62,7 @@ You can manage PDE resources through the [Palette API](/api/introduction), [Spec
 :::tip
 
 Check out the Palette CLI [install guide](../palette-cli/install-palette-cli.md) for more information on how to install and configure the CLI.
+
 :::
 
 <br />

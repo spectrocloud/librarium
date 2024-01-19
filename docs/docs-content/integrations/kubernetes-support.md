@@ -24,6 +24,7 @@ The table below lists the Kubernetes distributions we support and the duration o
 :::info
 
 Kubernetes follows the [semantic version schema](https://semver.org/). Versions are annotated as x.y.z, where x is the major version, y is the minor version, and z is the patch version.
+
 :::
 
 We support N-3 Kubernetes minor versions until the official End-Of-Life (EOL). Once we stop supporting the minor version, we initiate the deprecation process. You can learn more about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section.
