@@ -24,24 +24,17 @@ The following use cases are supported:
 
 - [Dynamic Placement](#dynamic-placement) - Palette will create a new Azure resource group and deploy clusters on it.
 
-## Validator
-
-To use Validator you need the foloowing permissions to be able to ensure the roles attached to the service principal used by Palette have the required permissions:
-
-- Microsoft.Authorization/denyAssignments/read
-- Microsoft.Authorization/roleAssignments/read
-- Microsoft.Authorization/roleDefinitions/read
-
-
-
+- [Validator](#validation) - Use the Validator open-source framework to validate the permissions required by Palette.
 
 ## Static Placement
 
-If you are using a pre-existing Azure resource group, Palette requires the following permissions:
+Static placement is when you have a pre-existing resource group and you want Palette to deploy clusters on it. Static placement supports three use cases. The required actions are all the same but the scope levels for each use case are different.
 
 
 <details>
 <summary>Expand to view all required actions</summary>
+
+Below are all the required actions for all static placement use cases without a specified scope level.
 
 - Microsoft.Compute/disks/delete
 - Microsoft.Compute/disks/read
@@ -94,75 +87,176 @@ If you are using a pre-existing Azure resource group, Palette requires the follo
 
 </details>
 
-When using static placement, the following use cases are supported. 
+Review the table below for the required actions and the different scope levels for each use case.
 
 <Tabs>
 
 
 <TabItem label="Single Cluster" value="sc">
 
-"Microsoft.Compute/disks/delete",
-		"Microsoft.Compute/disks/read",
-		"Microsoft.Compute/disks/write",
-		"Microsoft.Compute/virtualMachines/delete",
-		"Microsoft.Compute/virtualMachines/extensions/delete",
-		"Microsoft.Compute/virtualMachines/extensions/read",
-		"Microsoft.Compute/virtualMachines/extensions/write",
-		"Microsoft.Compute/virtualMachines/read",
-		"Microsoft.Compute/virtualMachines/write",
-		"Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-		"Microsoft.Network/loadBalancers/delete",
-		"Microsoft.Network/loadBalancers/inboundNatRules/delete",
-		"Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-		"Microsoft.Network/loadBalancers/inboundNatRules/read",
-		"Microsoft.Network/loadBalancers/inboundNatRules/write",
-		"Microsoft.Network/loadBalancers/read",
-		"Microsoft.Network/loadBalancers/write",
-		"Microsoft.Network/networkInterfaces/delete",
-		"Microsoft.Network/networkInterfaces/join/action",
-		"Microsoft.Network/networkInterfaces/read",
-		"Microsoft.Network/networkInterfaces/write",
-		"Microsoft.Network/networkSecurityGroups/read",
-		"Microsoft.Network/networkSecurityGroups/securityRules/delete",
-		"Microsoft.Network/networkSecurityGroups/securityRules/read",
-		"Microsoft.Network/networkSecurityGroups/securityRules/write",
-		"Microsoft.Network/privateDnsZones/A/delete",
-		"Microsoft.Network/privateDnsZones/A/read",
-		"Microsoft.Network/privateDnsZones/A/write",
-		"Microsoft.Network/privateDnsZones/delete",
-		"Microsoft.Network/privateDnsZones/read",
-		"Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete",
-		"Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
-		"Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
-		"Microsoft.Network/privateDnsZones/write",
-		"Microsoft.Network/publicIPAddresses/delete",
-		"Microsoft.Network/publicIPAddresses/join/action",
-		"Microsoft.Network/publicIPAddresses/read",
-		"Microsoft.Network/publicIPAddresses/write",
-		"Microsoft.Network/routeTables/delete",
-		"Microsoft.Network/routeTables/read",
-		"Microsoft.Network/routeTables/write",
-		"Microsoft.Network/virtualNetworks/join/action",
-		"Microsoft.Resources/subscriptions/resourceGroups/read",
+    | Action | Scope Level|
+    |--------|------------|
+    | Microsoft.Compute/disks/delete | Resource Group |
+    | Microsoft.Compute/disks/read | Resource Group |
+    | Microsoft.Compute/disks/write | Resource Group |
+    | Microsoft.Compute/virtualMachines/delete | Resource Group |
+    | Microsoft.Compute/virtualMachines/extensions/delete | Resource Group |
+    | Microsoft.Compute/virtualMachines/extensions/read | Resource Group |
+    | Microsoft.Compute/virtualMachines/extensions/write | Resource Group |
+    | Microsoft.Compute/virtualMachines/read | Resource Group |
+    | Microsoft.Compute/virtualMachines/write | Resource Group |
+    | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Resource Group |
+    | Microsoft.Network/loadBalancers/delete | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/delete | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/read | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/write | Resource Group |
+    | Microsoft.Network/loadBalancers/read | Resource Group |
+    | Microsoft.Network/loadBalancers/write | Resource Group |
+    | Microsoft.Network/networkInterfaces/delete | Resource Group |
+    | Microsoft.Network/networkInterfaces/join/action | Resource Group |
+    | Microsoft.Network/networkInterfaces/read | Resource Group |
+    | Microsoft.Network/networkInterfaces/write | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/read | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/securityRules/delete | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/securityRules/read | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/securityRules/write | Resource Group |
+    | Microsoft.Network/privateDnsZones/A/delete | Resource Group |
+    | Microsoft.Network/privateDnsZones/A/read | Resource Group |
+    | Microsoft.Network/privateDnsZones/A/write | Resource Group |
+    | Microsoft.Network/privateDnsZones/delete | Resource Group |
+    | Microsoft.Network/privateDnsZones/read | Resource Group |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete | Resource Group |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Resource Group |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Resource Group |
+    | Microsoft.Network/privateDnsZones/write | Resource Group |
+    | Microsoft.Network/publicIPAddresses/delete | Resource Group |
+    | Microsoft.Network/publicIPAddresses/join/action | Resource Group |
+    | Microsoft.Network/publicIPAddresses/read | Resource Group |
+    | Microsoft.Network/publicIPAddresses/write | Resource Group |
+    | Microsoft.Network/routeTables/delete | Resource Group |
+    | Microsoft.Network/routeTables/read | Resource Group |
+    | Microsoft.Network/routeTables/write | Resource Group |
+    | Microsoft.Network/virtualNetworks/join/action | Resource Group |
+    | Microsoft.Resources/subscriptions/resourceGroups/read | Resource Group |
+    | Microsoft.Network/virtualNetworks/read | Network Level |
+    | Microsoft.Network/virtualNetworks/subnets/join/action | Subnet Level |
+    | Microsoft.Network/virtualNetworks/subnets/read | Subnet Level |
+    | Microsoft.Compute/galleries/images/read | Compute Level |
+    | Microsoft.Compute/galleries/images/versions/read| Compute Level |
+
 
 
 </TabItem>
 <TabItem label="Multiple Cluster - Same Resource Group" value="sc2">
 
-| Action | Scope Level|
-|--------|------------|
-| Microsoft.Compute/disks/delete | Resource Group |
-|  Microsoft.Resources/subscriptions/resourceGroups/read | Subscription |
+    | Action | Scope Level|
+    |--------|------------|
+    | Microsoft.Compute/disks/delete | Resource Group |
+    | Microsoft.Compute/disks/read | Resource Group |
+    | Microsoft.Compute/disks/write | Resource Group |
+    | Microsoft.Compute/virtualMachines/delete | Resource Group |
+    | Microsoft.Compute/virtualMachines/extensions/delete | Resource Group |
+    | Microsoft.Compute/virtualMachines/extensions/read | Resource Group |
+    | Microsoft.Compute/virtualMachines/extensions/write | Resource Group |
+    | Microsoft.Compute/virtualMachines/read | Resource Group |
+    | Microsoft.Compute/virtualMachines/write | Resource Group |
+    | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Resource Group |
+    | Microsoft.Network/loadBalancers/delete | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/delete | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/read | Resource Group |
+    | Microsoft.Network/loadBalancers/inboundNatRules/write | Resource Group |
+    | Microsoft.Network/loadBalancers/read | Resource Group |
+    | Microsoft.Network/loadBalancers/write | Resource Group |
+    | Microsoft.Network/networkInterfaces/delete | Resource Group |
+    | Microsoft.Network/networkInterfaces/join/action | Resource Group |
+    | Microsoft.Network/networkInterfaces/read | Resource Group |
+    | Microsoft.Network/networkInterfaces/write | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/read | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/securityRules/delete | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/securityRules/read | Resource Group |
+    | Microsoft.Network/networkSecurityGroups/securityRules/write | Resource Group |
+    | Microsoft.Network/privateDnsZones/A/delete | Resource Group |
+    | Microsoft.Network/privateDnsZones/A/read | Resource Group |
+    | Microsoft.Network/privateDnsZones/A/write | Resource Group |
+    | Microsoft.Network/privateDnsZones/delete | Resource Group |
+    | Microsoft.Network/privateDnsZones/read | Resource Group |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete | Resource Group |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Resource Group |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Resource Group |
+    | Microsoft.Network/privateDnsZones/write | Resource Group |
+    | Microsoft.Network/publicIPAddresses/delete | Resource Group |
+    | Microsoft.Network/publicIPAddresses/join/action | Resource Group |
+    | Microsoft.Network/publicIPAddresses/read | Resource Group |
+    | Microsoft.Network/publicIPAddresses/write | Resource Group |
+    | Microsoft.Network/routeTables/delete | Resource Group |
+    | Microsoft.Network/routeTables/read | Resource Group |
+    | Microsoft.Network/routeTables/write | Resource Group |
+    | Microsoft.Network/virtualNetworks/join/action | Resource Group |
+    | Microsoft.Resources/subscriptions/resourceGroups/read | Resource Group |
+    | Microsoft.Network/virtualNetworks/read | Resource Group |
+    | Microsoft.Network/virtualNetworks/subnets/join/action | Resource Group|
+    | Microsoft.Network/virtualNetworks/subnets/read | Resource Group |
+    | Microsoft.Compute/galleries/images/read | Resource Group |
+    | Microsoft.Compute/galleries/images/versions/read| Resource Group |
 
 
 </TabItem>
 
 <TabItem label="Multiple Cluster - Single Subscription" value="sc3">
 
-| Action | Scope Level|
-|--------|------------|
-| Microsoft.Compute/disks/delete | Resource Group |
-|  Microsoft.Resources/subscriptions/resourceGroups/read | Subscription |
+    | Action | Scope Level|
+    |--------|------------|
+    | Microsoft.Compute/disks/delete | Subscription |
+    | Microsoft.Compute/disks/read | Subscription |
+    | Microsoft.Compute/disks/write | Subscription |
+    | Microsoft.Compute/virtualMachines/delete | Subscription |
+    | Microsoft.Compute/virtualMachines/extensions/delete | Subscription |
+    | Microsoft.Compute/virtualMachines/extensions/read | Subscription |
+    | Microsoft.Compute/virtualMachines/extensions/write | Subscription |
+    | Microsoft.Compute/virtualMachines/read | Subscription |
+    | Microsoft.Compute/virtualMachines/write | Subscription |
+    | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Subscription |
+    | Microsoft.Network/loadBalancers/delete | Subscription |
+    | Microsoft.Network/loadBalancers/inboundNatRules/delete | Subscription|
+    | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Subscription |
+    | Microsoft.Network/loadBalancers/inboundNatRules/read | Subscription |
+    | Microsoft.Network/loadBalancers/inboundNatRules/write | Subscription |
+    | Microsoft.Network/loadBalancers/read | Subscription |
+    | Microsoft.Network/loadBalancers/write | Subscription |
+    | Microsoft.Network/networkInterfaces/delete | Subscription |
+    | Microsoft.Network/networkInterfaces/join/action | Subscription |
+    | Microsoft.Network/networkInterfaces/read | Subscription |
+    | Microsoft.Network/networkInterfaces/write | Subscription |
+    | Microsoft.Network/networkSecurityGroups/read | Subscription |
+    | Microsoft.Network/networkSecurityGroups/securityRules/delete | Subscription |
+    | Microsoft.Network/networkSecurityGroups/securityRules/read | Subscription |
+    | Microsoft.Network/networkSecurityGroups/securityRules/write | Subscription |
+    | Microsoft.Network/privateDnsZones/A/delete | Subscription |
+    | Microsoft.Network/privateDnsZones/A/read | Subscriptionp |
+    | Microsoft.Network/privateDnsZones/A/write | Subscription |
+    | Microsoft.Network/privateDnsZones/delete | Subscription |
+    | Microsoft.Network/privateDnsZones/read | Subscription |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete | Subscription |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Subscription |
+    | Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Subscription |
+    | Microsoft.Network/privateDnsZones/write | Subscription |
+    | Microsoft.Network/publicIPAddresses/delete | Subscription |
+    | Microsoft.Network/publicIPAddresses/join/action | Subscription |
+    | Microsoft.Network/publicIPAddresses/read | Subscription |
+    | Microsoft.Network/publicIPAddresses/write | Subscription |
+    | Microsoft.Network/routeTables/delete | Subscription |
+    | Microsoft.Network/routeTables/read | Subscription |
+    | Microsoft.Network/routeTables/write | Subscription |
+    | Microsoft.Network/virtualNetworks/join/action | Subscription |
+    | Microsoft.Resources/subscriptions/resourceGroups/read | Subscription |
+    | Microsoft.Network/virtualNetworks/read | Subscription |
+    | Microsoft.Network/virtualNetworks/subnets/join/action | Subscription |
+    | Microsoft.Network/virtualNetworks/subnets/read | Subscription |
+    | Microsoft.Compute/galleries/images/read | Subscription |
+    | Microsoft.Compute/galleries/images/versions/read| Subscription |
+
 
 
 </TabItem>
@@ -179,79 +273,94 @@ When using static placement, the following use cases are supported.
 
 ## Dynamic Placement
 
-If you are using dynamic placement, Palette requires the following permissions:
-
-- Microsoft.Compute/disks/delete
-- Microsoft.Compute/disks/read
-- Microsoft.Compute/disks/write
-- Microsoft.Compute/galleries/images/read
-- Microsoft.Compute/galleries/images/versions/read
-- Microsoft.Compute/galleries/images/versions/write
-- Microsoft.Compute/galleries/images/write
-- Microsoft.Compute/galleries/read
-- Microsoft.Compute/galleries/write
-- Microsoft.Compute/images/read
-- Microsoft.Compute/images/write
-- Microsoft.Compute/virtualMachines/delete
-- Microsoft.Compute/virtualMachines/extensions/delete
-- Microsoft.Compute/virtualMachines/extensions/read
-- Microsoft.Compute/virtualMachines/extensions/write
-- Microsoft.Compute/virtualMachines/read
-- Microsoft.Compute/virtualMachines/write
-- Microsoft.Network/loadBalancers/backendAddressPools/join/action
-- Microsoft.Network/loadBalancers/delete
-- Microsoft.Network/loadBalancers/inboundNatRules/delete
-- Microsoft.Network/loadBalancers/inboundNatRules/join/action
-- Microsoft.Network/loadBalancers/inboundNatRules/read
-- Microsoft.Network/loadBalancers/inboundNatRules/write
-- Microsoft.Network/loadBalancers/read
-- Microsoft.Network/loadBalancers/write
-- Microsoft.Network/networkInterfaces/delete
-- Microsoft.Network/networkInterfaces/join/action
-- Microsoft.Network/networkInterfaces/read
-- Microsoft.Network/networkInterfaces/write
-- Microsoft.Network/networkSecurityGroups/read
-- Microsoft.Network/networkSecurityGroups/securityRules/delete
-- Microsoft.Network/networkSecurityGroups/securityRules/read
-- Microsoft.Network/networkSecurityGroups/securityRules/write
-- Microsoft.Network/privateDnsZones/A/delete
-- Microsoft.Network/privateDnsZones/A/read
-- Microsoft.Network/privateDnsZones/A/write
-- Microsoft.Network/privateDnsZones/delete
-- Microsoft.Network/privateDnsZones/read
-- Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete
-- Microsoft.Network/privateDnsZones/virtualNetworkLinks/read
-- Microsoft.Network/privateDnsZones/virtualNetworkLinks/write
-- Microsoft.Network/privateDnsZones/write
-- Microsoft.Network/publicIPAddresses/delete
-- Microsoft.Network/publicIPAddresses/join/action
-- Microsoft.Network/publicIPAddresses/read
-- Microsoft.Network/publicIPAddresses/write
-- Microsoft.Network/routeTables/delete
-- Microsoft.Network/routeTables/read
-- Microsoft.Network/routeTables/write
-- Microsoft.Network/virtualNetworks/delete
-- Microsoft.Network/virtualNetworks/join/action
-- Microsoft.Network/virtualNetworks/join/action
-- Microsoft.Network/virtualNetworks/joinLoadBalancer/action
-- Microsoft.Network/virtualNetworks/peer/action
-- Microsoft.Network/virtualNetworks/read
-- Microsoft.Network/virtualNetworks/subnets/delete
-- Microsoft.Network/virtualNetworks/subnets/join/action
-- Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action
-- Microsoft.Network/virtualNetworks/subnets/read
-- Microsoft.Network/virtualNetworks/subnets/virtualMachines/read
-- Microsoft.Network/virtualNetworks/subnets/write
-- Microsoft.Network/virtualNetworks/virtualMachines/read
-- Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete
-- Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read
-- Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write
-- Microsoft.Network/virtualNetworks/write
-- Microsoft.Resources/subscriptions/resourceGroups/read
-- Microsoft.Storage/storageAccounts/blobServices/containers/read
-- Microsoft.Storage/storageAccounts/blobServices/containers/write
-- Microsoft.Storage/storageAccounts/blobServices/listKeys/action
-- Microsoft.Storage/storageAccounts/read
-- Microsoft.Storage/storageAccounts/write
+If you want to support dynamic placement use cases, ensure Palette has the following actions at the subscription level: 
 
 
+| Actions                                             | Scope level  |
+|------------------------------------------------------|--------------|
+| Microsoft.Compute/disks/delete                       | Subscription |
+| Microsoft.Compute/disks/read                         | Subscription |
+| Microsoft.Compute/disks/write                        | Subscription |
+| Microsoft.Compute/galleries/images/read              | Subscription |
+| Microsoft.Compute/galleries/images/versions/read     | Subscription |
+| Microsoft.Compute/galleries/images/versions/write    | Subscription |
+| Microsoft.Compute/galleries/images/write             | Subscription |
+| Microsoft.Compute/galleries/read                     | Subscription |
+| Microsoft.Compute/galleries/write                    | Subscription |
+| Microsoft.Compute/images/read                        | Subscription |
+| Microsoft.Compute/images/write                       | Subscription |
+| Microsoft.Compute/virtualMachines/delete             | Subscription |
+| Microsoft.Compute/virtualMachines/extensions/delete  | Subscription |
+| Microsoft.Compute/virtualMachines/extensions/read    | Subscription |
+| Microsoft.Compute/virtualMachines/extensions/write   | Subscription |
+| Microsoft.Compute/virtualMachines/read               | Subscription |
+| Microsoft.Compute/virtualMachines/write              | Subscription |
+| Microsoft.Network/loadBalancers/backendAddressPools/join/action | Subscription |
+| Microsoft.Network/loadBalancers/delete               | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/delete | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/join/action | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/read | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/write | Subscription |
+| Microsoft.Network/loadBalancers/read                 | Subscription |
+| Microsoft.Network/loadBalancers/write                | Subscription |
+| Microsoft.Network/networkInterfaces/delete           | Subscription |
+| Microsoft.Network/networkInterfaces/join/action      | Subscription |
+| Microsoft.Network/networkInterfaces/read             | Subscription |
+| Microsoft.Network/networkInterfaces/write            | Subscription |
+| Microsoft.Network/networkSecurityGroups/read         | Subscription |
+| Microsoft.Network/networkSecurityGroups/securityRules/delete | Subscription |
+| Microsoft.Network/networkSecurityGroups/securityRules/read | Subscription |
+| Microsoft.Network/networkSecurityGroups/securityRules/write | Subscription |
+| Microsoft.Network/privateDnsZones/A/delete           | Subscription |
+| Microsoft.Network/privateDnsZones/A/read             | Subscription |
+| Microsoft.Network/privateDnsZones/A/write            | Subscription |
+| Microsoft.Network/privateDnsZones/delete             | Subscription |
+| Microsoft.Network/privateDnsZones/read               | Subscription |
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete | Subscription |
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Subscription |
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Subscription |
+| Microsoft.Network/privateDnsZones/write              | Subscription |
+| Microsoft.Network/publicIPAddresses/delete           | Subscription |
+| Microsoft.Network/publicIPAddresses/join/action      | Subscription |
+| Microsoft.Network/publicIPAddresses/read             | Subscription |
+| Microsoft.Network/publicIPAddresses/write            | Subscription |
+| Microsoft.Network/routeTables/delete                 | Subscription |
+| Microsoft.Network/routeTables/read                   | Subscription |
+| Microsoft.Network/routeTables/write                  | Subscription |
+| Microsoft.Network/virtualNetworks/delete             | Subscription |
+| Microsoft.Network/virtualNetworks/join/action        | Subscription |
+| Microsoft.Network/virtualNetworks/join/action        | Subscription |
+| Microsoft.Network/virtualNetworks/joinLoadBalancer/action | Subscription |
+| Microsoft.Network/virtualNetworks/peer/action         | Subscription |
+| Microsoft.Network/virtualNetworks/read               | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/delete     | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/join/action| Subscription |
+| Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/read       | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/write      | Subscription |
+| Microsoft.Network/virtualNetworks/virtualMachines/read | Subscription |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Subscription |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read | Subscription |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write | Subscription |
+| Microsoft.Network/virtualNetworks/write              | Subscription |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Subscription |
+| Microsoft.Storage/storageAccounts/blobServices/containers/read | Subscription |
+| Microsoft.Storage/storageAccounts/blobServices/containers/write | Subscription |
+| Microsoft.Storage/storageAccounts/blobServices/listKeys/action | Subscription |
+| Microsoft.Storage/storageAccounts/read                | Subscription |
+| Microsoft.Storage/storageAccounts/write               | Subscription |
+
+
+
+
+## Validator
+
+To use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) you need the following actions to be able to ensure the roles attached to the service principal used by Palette have the required permissions:
+
+- Microsoft.Authorization/denyAssignments/read
+- Microsoft.Authorization/roleAssignments/read
+- Microsoft.Authorization/roleDefinitions/read
+
+
+You can use the Palette CLI to get started with the Validator. Check out the [Validator](../../../palette-cli/commands/validator.md) command reference for more information.
