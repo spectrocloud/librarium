@@ -19,10 +19,9 @@ We recommend you don't use the Azure build-in role, [Contributor](https://learn.
 
 We support the following use cases:
 
-- [Static Placement](#static-placement) - Palette deploys clusters on the pre-existing network resources you specify.
-
 - [Dynamic Placement](#dynamic-placement) - Palette creates network resources required for your cluster.
 
+- [Static Placement](#static-placement) - Palette deploys clusters on the pre-existing network resources you specify.
 
 :::tip
 
@@ -36,6 +35,88 @@ You can use the [Validator](https://github.com/spectrocloud-labs/validator) with
 You can use the Validator with the Palette CLI. Check out the Palette CLI [Validator](../../../palette-cli/commands/validator.md) command reference page for more information.
 
 :::
+
+## Dynamic Placement
+
+Dynamic placement is the default method for deploying Azure clusters through Palette. With dynamic placement, Palette dynamically creates the network resources required for your cluster. 
+
+
+| Actions                                             | Scope level  |
+|------------------------------------------------------|--------------|
+| Microsoft.Compute/disks/delete                       | Subscription |
+| Microsoft.Compute/disks/read                         | Subscription |
+| Microsoft.Compute/disks/write                        | Subscription |
+| Microsoft.Compute/galleries/images/read              | Subscription |
+| Microsoft.Compute/galleries/images/versions/read     | Subscription |
+| Microsoft.Compute/galleries/images/versions/write    | Subscription |
+| Microsoft.Compute/galleries/images/write             | Subscription |
+| Microsoft.Compute/galleries/read                     | Subscription |
+| Microsoft.Compute/galleries/write                    | Subscription |
+| Microsoft.Compute/images/read                        | Subscription |
+| Microsoft.Compute/images/write                       | Subscription |
+| Microsoft.Compute/virtualMachines/delete             | Subscription |
+| Microsoft.Compute/virtualMachines/extensions/delete  | Subscription |
+| Microsoft.Compute/virtualMachines/extensions/read    | Subscription |
+| Microsoft.Compute/virtualMachines/extensions/write   | Subscription |
+| Microsoft.Compute/virtualMachines/read               | Subscription |
+| Microsoft.Compute/virtualMachines/write              | Subscription |
+| Microsoft.Network/loadBalancers/backendAddressPools/join/action | Subscription |
+| Microsoft.Network/loadBalancers/delete               | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/delete | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/join/action | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/read | Subscription |
+| Microsoft.Network/loadBalancers/inboundNatRules/write | Subscription |
+| Microsoft.Network/loadBalancers/read                 | Subscription |
+| Microsoft.Network/loadBalancers/write                | Subscription |
+| Microsoft.Network/networkInterfaces/delete           | Subscription |
+| Microsoft.Network/networkInterfaces/join/action      | Subscription |
+| Microsoft.Network/networkInterfaces/read             | Subscription |
+| Microsoft.Network/networkInterfaces/write            | Subscription |
+| Microsoft.Network/networkSecurityGroups/read         | Subscription |
+| Microsoft.Network/networkSecurityGroups/securityRules/delete | Subscription |
+| Microsoft.Network/networkSecurityGroups/securityRules/read | Subscription |
+| Microsoft.Network/networkSecurityGroups/securityRules/write | Subscription |
+| Microsoft.Network/privateDnsZones/A/delete           | Subscription |
+| Microsoft.Network/privateDnsZones/A/read             | Subscription |
+| Microsoft.Network/privateDnsZones/A/write            | Subscription |
+| Microsoft.Network/privateDnsZones/delete             | Subscription |
+| Microsoft.Network/privateDnsZones/read               | Subscription |
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete | Subscription |
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Subscription |
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Subscription |
+| Microsoft.Network/privateDnsZones/write              | Subscription |
+| Microsoft.Network/publicIPAddresses/delete           | Subscription |
+| Microsoft.Network/publicIPAddresses/join/action      | Subscription |
+| Microsoft.Network/publicIPAddresses/read             | Subscription |
+| Microsoft.Network/publicIPAddresses/write            | Subscription |
+| Microsoft.Network/routeTables/delete                 | Subscription |
+| Microsoft.Network/routeTables/read                   | Subscription |
+| Microsoft.Network/routeTables/write                  | Subscription |
+| Microsoft.Network/virtualNetworks/delete             | Subscription |
+| Microsoft.Network/virtualNetworks/join/action        | Subscription |
+| Microsoft.Network/virtualNetworks/join/action        | Subscription |
+| Microsoft.Network/virtualNetworks/joinLoadBalancer/action | Subscription |
+| Microsoft.Network/virtualNetworks/peer/action         | Subscription |
+| Microsoft.Network/virtualNetworks/read               | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/delete     | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/join/action| Subscription |
+| Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/read       | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | Subscription |
+| Microsoft.Network/virtualNetworks/subnets/write      | Subscription |
+| Microsoft.Network/virtualNetworks/virtualMachines/read | Subscription |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Subscription |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read | Subscription |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write | Subscription |
+| Microsoft.Network/virtualNetworks/write              | Subscription |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Subscription |
+| Microsoft.Storage/storageAccounts/blobServices/containers/read | Subscription |
+| Microsoft.Storage/storageAccounts/blobServices/containers/write | Subscription |
+| Microsoft.Storage/storageAccounts/blobServices/listKeys/action | Subscription |
+| Microsoft.Storage/storageAccounts/read                | Subscription |
+| Microsoft.Storage/storageAccounts/write               | Subscription |
+
+
 
 
 ## Static Placement
@@ -216,85 +297,4 @@ Choose static placement when you want Palette to use pre-existing network resour
 
 
 </Tabs>
-
-
-## Dynamic Placement
-
-Dynamic placement is the default method for deploying Azure clusters through Palette. With dynamic placement, Palette dynamically creates the network resources required for your cluster. 
-
-
-| Actions                                             | Scope level  |
-|------------------------------------------------------|--------------|
-| Microsoft.Compute/disks/delete                       | Subscription |
-| Microsoft.Compute/disks/read                         | Subscription |
-| Microsoft.Compute/disks/write                        | Subscription |
-| Microsoft.Compute/galleries/images/read              | Subscription |
-| Microsoft.Compute/galleries/images/versions/read     | Subscription |
-| Microsoft.Compute/galleries/images/versions/write    | Subscription |
-| Microsoft.Compute/galleries/images/write             | Subscription |
-| Microsoft.Compute/galleries/read                     | Subscription |
-| Microsoft.Compute/galleries/write                    | Subscription |
-| Microsoft.Compute/images/read                        | Subscription |
-| Microsoft.Compute/images/write                       | Subscription |
-| Microsoft.Compute/virtualMachines/delete             | Subscription |
-| Microsoft.Compute/virtualMachines/extensions/delete  | Subscription |
-| Microsoft.Compute/virtualMachines/extensions/read    | Subscription |
-| Microsoft.Compute/virtualMachines/extensions/write   | Subscription |
-| Microsoft.Compute/virtualMachines/read               | Subscription |
-| Microsoft.Compute/virtualMachines/write              | Subscription |
-| Microsoft.Network/loadBalancers/backendAddressPools/join/action | Subscription |
-| Microsoft.Network/loadBalancers/delete               | Subscription |
-| Microsoft.Network/loadBalancers/inboundNatRules/delete | Subscription |
-| Microsoft.Network/loadBalancers/inboundNatRules/join/action | Subscription |
-| Microsoft.Network/loadBalancers/inboundNatRules/read | Subscription |
-| Microsoft.Network/loadBalancers/inboundNatRules/write | Subscription |
-| Microsoft.Network/loadBalancers/read                 | Subscription |
-| Microsoft.Network/loadBalancers/write                | Subscription |
-| Microsoft.Network/networkInterfaces/delete           | Subscription |
-| Microsoft.Network/networkInterfaces/join/action      | Subscription |
-| Microsoft.Network/networkInterfaces/read             | Subscription |
-| Microsoft.Network/networkInterfaces/write            | Subscription |
-| Microsoft.Network/networkSecurityGroups/read         | Subscription |
-| Microsoft.Network/networkSecurityGroups/securityRules/delete | Subscription |
-| Microsoft.Network/networkSecurityGroups/securityRules/read | Subscription |
-| Microsoft.Network/networkSecurityGroups/securityRules/write | Subscription |
-| Microsoft.Network/privateDnsZones/A/delete           | Subscription |
-| Microsoft.Network/privateDnsZones/A/read             | Subscription |
-| Microsoft.Network/privateDnsZones/A/write            | Subscription |
-| Microsoft.Network/privateDnsZones/delete             | Subscription |
-| Microsoft.Network/privateDnsZones/read               | Subscription |
-| Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete | Subscription |
-| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Subscription |
-| Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Subscription |
-| Microsoft.Network/privateDnsZones/write              | Subscription |
-| Microsoft.Network/publicIPAddresses/delete           | Subscription |
-| Microsoft.Network/publicIPAddresses/join/action      | Subscription |
-| Microsoft.Network/publicIPAddresses/read             | Subscription |
-| Microsoft.Network/publicIPAddresses/write            | Subscription |
-| Microsoft.Network/routeTables/delete                 | Subscription |
-| Microsoft.Network/routeTables/read                   | Subscription |
-| Microsoft.Network/routeTables/write                  | Subscription |
-| Microsoft.Network/virtualNetworks/delete             | Subscription |
-| Microsoft.Network/virtualNetworks/join/action        | Subscription |
-| Microsoft.Network/virtualNetworks/join/action        | Subscription |
-| Microsoft.Network/virtualNetworks/joinLoadBalancer/action | Subscription |
-| Microsoft.Network/virtualNetworks/peer/action         | Subscription |
-| Microsoft.Network/virtualNetworks/read               | Subscription |
-| Microsoft.Network/virtualNetworks/subnets/delete     | Subscription |
-| Microsoft.Network/virtualNetworks/subnets/join/action| Subscription |
-| Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action | Subscription |
-| Microsoft.Network/virtualNetworks/subnets/read       | Subscription |
-| Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | Subscription |
-| Microsoft.Network/virtualNetworks/subnets/write      | Subscription |
-| Microsoft.Network/virtualNetworks/virtualMachines/read | Subscription |
-| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Subscription |
-| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read | Subscription |
-| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write | Subscription |
-| Microsoft.Network/virtualNetworks/write              | Subscription |
-| Microsoft.Resources/subscriptions/resourceGroups/read | Subscription |
-| Microsoft.Storage/storageAccounts/blobServices/containers/read | Subscription |
-| Microsoft.Storage/storageAccounts/blobServices/containers/write | Subscription |
-| Microsoft.Storage/storageAccounts/blobServices/listKeys/action | Subscription |
-| Microsoft.Storage/storageAccounts/read                | Subscription |
-| Microsoft.Storage/storageAccounts/write               | Subscription |
 
