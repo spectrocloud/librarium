@@ -20,15 +20,15 @@ A custom role allows you to limit the permissions to only what is required by Pa
 
 The following use cases are supported:
 
-- [Static Placement](#static-placement) - Palette will deploy clusters on a pre-existing Azure resource group.
+- [Static Placement](#static-placement) - Palette will deploy clusters on a pre-existing network resources specified by you.
 
-- [Dynamic Placement](#dynamic-placement) - Palette will create a new Azure resource group and deploy clusters on it.
+- [Dynamic Placement](#dynamic-placement) - Palette will create the nework resources required for the cluster.
 
 - [Validator](#validator) - Use the Validator open-source framework to validate the permissions required by Palette.
 
 ## Static Placement
 
-Static placement is when you have a pre-existing resource group and you want Palette to deploy clusters on it. Static placement supports three use cases. The required actions are all the same but the scope levels for each use case are different.
+Static placement is when you have a pre-existing network resource group, VNet, subnets and security groups you want Palette to use when deploying a cluster. Static placement supports three use cases. The required actions are all the same but the scope levels for each use case are different.
 
 
 <details>
@@ -139,11 +139,11 @@ Review the table below for the required actions and the different scope levels f
     | Microsoft.Network/routeTables/write | Resource Group |
     | Microsoft.Network/virtualNetworks/join/action | Resource Group |
     | Microsoft.Resources/subscriptions/resourceGroups/read | Resource Group |
-    | Microsoft.Network/virtualNetworks/read | Network Level |
+    | Microsoft.Network/virtualNetworks/read | Virtual Network Level |
     | Microsoft.Network/virtualNetworks/subnets/join/action | Subnet Level |
     | Microsoft.Network/virtualNetworks/subnets/read | Subnet Level |
-    | Microsoft.Compute/galleries/images/read | Compute Level |
-    | Microsoft.Compute/galleries/images/versions/read| Compute Level |
+    | Microsoft.Compute/galleries/images/read | Compute Gallery Level |
+    | Microsoft.Compute/galleries/images/versions/read| Compute Gallery Level |
 
 
 
@@ -204,7 +204,7 @@ Review the table below for the required actions and the different scope levels f
 
 </TabItem>
 
-<TabItem label="Multiple Cluster - Single Subscription" value="sc3">
+<TabItem label="Multiple Cluster - Same Subscription" value="sc3">
 
     | Action | Scope Level|
     |--------|------------|
@@ -356,7 +356,7 @@ If you want to support dynamic placement use cases, ensure Palette has the follo
 
 ## Validator
 
-To use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) you need the following actions to be able to ensure the roles attached to the service principal used by Palette have the required permissions:
+To use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) you need the following actions to be able to ensure the roles attached to the service principal used by Validator have the required permissions:
 
 - Microsoft.Authorization/denyAssignments/read
 - Microsoft.Authorization/roleAssignments/read

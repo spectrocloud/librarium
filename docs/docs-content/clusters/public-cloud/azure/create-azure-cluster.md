@@ -87,7 +87,7 @@ Use the following steps to deploy an Azure cluster.
 
   :::warning
 
-  If you enable the setting **Disable Properties** when [registrating an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), you disable the ability for Palette to create an Azure virtual network and must manually specify a virtual network during the cluster creation process. 
+  If you enable the setting **Disable Properties** when [registrating an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), you disable the ability for Palette to create an network resources and must manually specify a virtual network subnets, and security groups during the cluster creation process. 
   :::
 
   |**Parameter**| **Description**|
@@ -98,17 +98,20 @@ Use the following steps to deploy an Azure cluster.
   | **Storage Account** | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).|
   | **Storage Container**| Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).|
   | **SSH Key** | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats). |
-  | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VNets, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
+  | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing a VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
 
     #### Static Placement Settings
+
+    Each subnet allows you to specify the CIDR range and a security group. 
 
     | **Parameter**              | **Description** |
     |------------------------|------------------------------------------------------------|
     | **Network Resource Group** | The logical container for grouping related Azure resources. |
     | **Virtual Network**        | Select the VNet. |
     | **CIDR Block**             | Select the IP address CIDR range.|
+    | **Security Group Name**    | Select the security group name. |
     | **Control Plane Subnet**   | Select the control plane subnet. |
-    | **Worker Network**         | Select the worker network. |
+    | **Worker Subnet**         | Select the worker network. |
 
 
 11. Click **Next** to continue.

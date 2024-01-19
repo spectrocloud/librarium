@@ -125,19 +125,26 @@ The following steps need to be performed to provision a new cluster:
     | **Region**         | Select a region in Azure in where the cluster should be deployed.                            | 
     | **Resource Group** | Select the resource group in which the cluster should be deployed.                           |
     | **SSH Key**        | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                     |
-    | **Static Placement** | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided:
-    ||**Virtual Resource Group**: The logical container for grouping related Azure resources.
-    || **Virtual Network**: Select the virtual network from dropdown menu.
-    || **Control plane Subnet**: Select the control plane network from the dropdown menu.
-    || **Worker Network**: Select the worker network from the dropdown.
-    |**Update worker pools in parallel**| Check the box to concurrently update the worker pools.|
+   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing a VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below.|
 
-:::warning
 
-If the Palette [cloud account](azure-cloud.md) is created with **Disable Properties** and the cluster option 
-**Static Placement** is enabled, the network information from your Azure account will not be imported to Palette. You can manually input the information for the **Control Plane Subnet** and the **Worker Network**.
+    #### Static Placement Settings
 
-:::
+    Each subnet allows you to specify the CIDR range and a security group. 
+
+    | **Parameter**              | **Description** |
+    |------------------------|------------------------------------------------------------|
+    | **Network Resource Group** | The logical container for grouping related Azure resources. |
+    | **Virtual Network**        | Select the VNet. |
+    | **CIDR Block**             | Select the IP address CIDR range.|
+    | **Security Group Name**    | Select the security group name. |
+    | **Control Plane Subnet**   | Select the control plane subnet. |
+    | **Worker Subnet**         | Select the worker network. |
+
+    :::warning
+
+    If you enable the setting **Disable Properties** when [registrating an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), you disable the ability for Palette to create an network resources and must manually specify a virtual network subnets, and security groups during the cluster creation process. 
+    :::
 
 7. Click **Next** to configure the node pools.
 
