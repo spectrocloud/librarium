@@ -24,68 +24,25 @@ The following use cases are supported:
 
 - [Dynamic Placement](#dynamic-placement) - Palette will create the network resources required for the cluster.
 
-- [Validator](#validator) - Use the Validator open-source framework to validate the permissions required by Palette.
+
+:::tip
+
+You can use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) to verify you have setup the correct permissions. The Validator will also check if the service principal used by Palette has the required permissions. The Validator Azure plugin requires the following permissions:
+
+- Microsoft.Authorization/denyAssignments/read
+- Microsoft.Authorization/roleAssignments/read
+- Microsoft.Authorization/roleDefinitions/read
+
+
+You can use the Palette CLI to get started with the Validator. Check out the [Validator](../../../palette-cli/commands/validator.md) command reference for more information.
+
+:::
+
 
 ## Static Placement
 
 Static placement is when you have a pre-existing network resource group, VNet, subnets and security groups you want Palette to use when deploying a cluster. Static placement supports three use cases. The required actions are all the same but the scope levels for each use case are different.
 
-
-<details>
-<summary>Expand to view all required actions</summary>
-
-Below are all the required actions for all static placement use cases without a specified scope level.
-
-- Microsoft.Compute/disks/delete
-- Microsoft.Compute/disks/read
-- Microsoft.Compute/disks/write
-- Microsoft.Compute/galleries/images/read
-- Microsoft.Compute/galleries/images/versions/read
-- Microsoft.Compute/virtualMachines/delete
-- Microsoft.Compute/virtualMachines/extensions/delete
-- Microsoft.Compute/virtualMachines/extensions/read
-- Microsoft.Compute/virtualMachines/extensions/write
-- Microsoft.Compute/virtualMachines/read
-- Microsoft.Compute/virtualMachines/write
-- Microsoft.Network/loadBalancers/backendAddressPools/join/action
-- Microsoft.Network/loadBalancers/delete
-- Microsoft.Network/loadBalancers/inboundNatRules/delete
-- Microsoft.Network/loadBalancers/inboundNatRules/join/action
-- Microsoft.Network/loadBalancers/inboundNatRules/read
-- Microsoft.Network/loadBalancers/inboundNatRules/write
-- Microsoft.Network/loadBalancers/read
-- Microsoft.Network/loadBalancers/write
-- Microsoft.Network/networkInterfaces/delete
-- Microsoft.Network/networkInterfaces/join/action
-- Microsoft.Network/networkInterfaces/read
-- Microsoft.Network/networkInterfaces/write
-- Microsoft.Network/networkSecurityGroups/read
-- Microsoft.Network/networkSecurityGroups/securityRules/delete
-- Microsoft.Network/networkSecurityGroups/securityRules/read
-- Microsoft.Network/networkSecurityGroups/securityRules/write
-- Microsoft.Network/privateDnsZones/A/delete
-- Microsoft.Network/privateDnsZones/A/read
-- Microsoft.Network/privateDnsZones/A/write
-- Microsoft.Network/privateDnsZones/delete
-- Microsoft.Network/privateDnsZones/read
-- Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete
-- Microsoft.Network/privateDnsZones/virtualNetworkLinks/read
-- Microsoft.Network/privateDnsZones/virtualNetworkLinks/write
-- Microsoft.Network/privateDnsZones/write
-- Microsoft.Network/publicIPAddresses/delete
-- Microsoft.Network/publicIPAddresses/join/action
-- Microsoft.Network/publicIPAddresses/read
-- Microsoft.Network/publicIPAddresses/write
-- Microsoft.Network/routeTables/delete
-- Microsoft.Network/routeTables/read
-- Microsoft.Network/routeTables/write
-- Microsoft.Network/virtualNetworks/join/action
-- Microsoft.Network/virtualNetworks/read
-- Microsoft.Network/virtualNetworks/subnets/join/action
-- Microsoft.Network/virtualNetworks/subnets/read
-- Microsoft.Resources/subscriptions/resourceGroups/read
-
-</details>
 
 Review the table below for the required actions and the different scope levels for each use case.
 
@@ -351,16 +308,3 @@ If you want to support dynamic placement use cases, ensure Palette has the follo
 | Microsoft.Storage/storageAccounts/read                | Subscription |
 | Microsoft.Storage/storageAccounts/write               | Subscription |
 
-
-
-
-## Validator
-
-To use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) you need the following actions to be able to ensure the roles attached to the service principal used by Validator have the required permissions:
-
-- Microsoft.Authorization/denyAssignments/read
-- Microsoft.Authorization/roleAssignments/read
-- Microsoft.Authorization/roleDefinitions/read
-
-
-You can use the Palette CLI to get started with the Validator. Check out the [Validator](../../../palette-cli/commands/validator.md) command reference for more information.
