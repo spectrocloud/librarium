@@ -69,6 +69,7 @@ Palette manages the installation and all the Day-2 activities, such as scaling, 
 
 To start with Edge, review the [architecture](architecture.md) and the [lifecycle](edge-native-lifecycle.md) resource to gain a high-level understanding of the Edge components and installation process. Next, become familiar with the [EdgeForge workflow](edgeforge-workflow/edgeforge-workflow.md). EdgeForge is the workflow you will use to customize the Edge host installation to match your environment and organizational needs - this includes creating the Edge artifacts for Edge hosts. The last step of the Edge deployment lifecycle is the deployment step. Review the [Deployment](site-deployment/site-deployment.md) guide to understand what it takes to deploy an Edge host.
 
+You can also review [third party integrations](third-party-integrations/third-party-integrations.md) with Edge to solve specific challenges with additional software.
 
 
 ## Resources
