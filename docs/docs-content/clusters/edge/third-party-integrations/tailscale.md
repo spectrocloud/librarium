@@ -144,7 +144,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
     :::info
 
-    In the above `stages` block, you are using the device ID of your Edge device (read from `/sys/class/dmi/id/product_uuid`) as the hostname with which to register your device with Tailscale. For more information about how this ID is generated, refer to [Install Configurations](../edge-configuration/installer-reference.md#device-id-uid-parameters).
+    In the above `stages` block, you are using the device ID of your Edge device that is read from the file **/sys/class/dmi/id/product_uuid**, as the hostname with which to register your device with Tailscale. For more information about how this ID is generated, refer to [Install Configurations](../edge-configuration/installer-reference.md#device-id-uid-parameters).
 
     If you want to use a different hostname, especially when using the `deviceUIDPaths` parameter in the **user-data**, you can adjust the two `ID=$(cat /sys/class/dmi/id/product_uuid)` lines in the content above to match your custom device naming configuration.
 
@@ -165,7 +165,7 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 8. Afterward, push the provider images to an image registry. For more information, refer to [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md).
 
-8. Flash your external volume with the Edge installer ISO image. We recommend using [balena etcher](https://etcher.balena.io/) to flash your volume. 
+8. Flash your external volume with the Edge installer ISO image. You can use [balena etcher](https://etcher.balena.io/) or any other tool of your choice to flash your volume. 
 
 9. Plug the external volume into your Edge device and boot up the device using the volume to prepare your Edge device for installation. For more information, refer to [Prepare Edge Host for Installation](../site-deployment/stage.md). 
 
@@ -176,14 +176,14 @@ You can use Tailscale on your Palette Edge hosts to ensure remote access to your
 
 1. Log in to [Tailscale console](https://login.tailscale.com/admin/machines). 
 
-2. In the **Machines** tab, your Edge device is displayed in the Machines list. You can SSH to your host from any device that is also connected to your Tailscale network.
+2. In the **Machines** tab, your Edge device is displayed in the Machines list. You can SSH to your host from any device that is also connected to your Tailscale network. Check out the [Tailscale SSH](https://tailscale.com/kb/1193/tailscale-ssh) documentation page to learn more about SSH with Tailscale.
 
 ## Troubleshooting
 
 
 ### All Traffic Dropped for 100.64.0.0/10 CIDR Range 
 
-Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That means that by default, this address range (or parts of it) cannot be used for any of the following:
+Tailscale uses the 100.64.0.0/10 range of IP addresses for your Tailnets. That means that by default, this address range, or parts of it, cannot be used for any of the following:
 
 - Kubernetes cluster pod CIDR
 - Kubernetes cluster service CIDR
