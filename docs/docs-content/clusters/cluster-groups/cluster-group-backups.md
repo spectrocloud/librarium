@@ -13,11 +13,13 @@ group disable disk backups. You can back up all the volumes within a virtual clu
 
 ## Prerequisites
 
-* A project or tenant backup location. Refer to the [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md#get-started) document to learn how to configure a backup location.
+- A project or tenant backup location. Refer to the
+  [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md#get-started) document to learn how
+  to configure a backup location.
 
-* Cluster group modification [permissions](../../user-management/palette-rbac/palette-rbac.md).
+- Cluster group modification [permissions](../../user-management/palette-rbac/palette-rbac.md).
 
-* A cluster group. Review the [create a cluster group](create-cluster-group.md) for additional guidance.
+- A cluster group. Review the [create a cluster group](create-cluster-group.md) for additional guidance.
 
 :::info
 
