@@ -531,8 +531,8 @@ To restrict a container image for a particular namespace within the workspace:
 1. During [Step: 4 Settings](adding-a-new-workspace.md#create-your-workspace) of workspace creation, select the
    **Container Images** tab from the left ribbon.
 
-1. During [Step: 4 Settings](adding-a-new-workspace.md) of workspace creation, select the **Container
-   Images** tab from the left ribbon.
+1. During [Step: 4 Settings](adding-a-new-workspace.md) of workspace creation, select the **Container Images** tab from
+   the left ribbon.
 
 1. Click on **+ Add New Container Image** and provide the **Namespace** and **Restricted Images**. Multiple images can
    be restricted within a namespace by separating them with commas. <br />
