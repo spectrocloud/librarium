@@ -75,8 +75,6 @@ Use the following steps to provision a new AWS cluster:
 
 9. Provide the AWS cloud account and placement information.
 
-{" "}
-
 <br />
 
 | **Parameter**             | **Description**                                                                                                                                                                                                                                                          |
@@ -86,8 +84,6 @@ Use the following steps to provision a new AWS cluster:
 | **SSH Key Pair Name**     | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                                                          |
 | **Static Placement**      | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                                                       |
 | **Private API Server LB** | Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../data-center/maas/install-manage-maas-pcg.md) deployed in the environment. |
-
-{" "}
 
 <br />
 
@@ -103,8 +99,6 @@ Use the following steps to provision a new AWS cluster:
     section where you can specify the availability zones (AZ), instance types,
     [instance cost type](architecture.md#spot-instances), disk size, and the number of nodes. Click on **Next** after
     you have completed configuring the node pool.
-
-{" "}
 
 <br />
 

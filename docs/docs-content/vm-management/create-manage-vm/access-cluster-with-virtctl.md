@@ -56,8 +56,6 @@ chmod +x virtctl
 export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
 ```
 
-{" "}
-
 <br />
 
 9. Issue the `virtctl ssh <virtual_machinename>` or `virtctl vnc <virtual_machinename>` command to display the login
@@ -68,8 +66,6 @@ export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
 ```shell
 virtctl ssh ubuntu
 ```
-
-{" "}
 
 <br />
 

@@ -16,8 +16,6 @@ documentation to learn more about the auto-generated certificates and to better 
 This reference page focuses on how to renew the PKI certificates through Palette. You have two options for how you can
 renew the cluster PKI certificates:
 
-{" "}
-
 <br />
 
 - Automatic Certificate Renewal
@@ -92,15 +90,11 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 4. From the cluster details page, click on **View K8s Certificates**.
 
-{" "}
-
 <br />
 
 ![A view of the Palette UI with an arrow pointing to the **View K8s Certificates** button.](/clusters_cluster-management_certificate-management_cluster-details-page.png)
 
 5. Next, select **Renew All** to start the renewal process.
-
-{" "}
 
 <br />
 
@@ -142,8 +136,6 @@ Use the following steps to update the cluster PKI certificates through the Palet
 
 1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
 
-{" "}
-
 <br />
 
 ```shell
@@ -152,8 +144,6 @@ export API_KEY=REPLACE_ME
 
 2. Set the project ID as an environment variable. Add your project ID in place of `REPLACE_ME`. You can find the project
    ID on the Palette landing page. The project ID is displayed in the top right corner of the page.
-
-{" "}
 
 <br />
 
@@ -164,8 +154,6 @@ export PROJECT_ID=REPLACE_ME
 3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`. You can get the
    cluster ID from the cluster detail's page URL. The value after `clusters/` is the cluster ID.
 
-{" "}
-
 <br />
 
 ```shell
@@ -175,8 +163,6 @@ export CLUSTER_ID=REPLACE_ME
 4. Use the Palette API endpoint `https://api.spectrocloud.com/v1/spectroclusters/{uid}/k8certificates/renew` to renew a
    cluster's PKI certificates. The endpoint accepts the HTTP method `PATCH`, and the only required parameter is the
    cluster ID.
-
-{" "}
 
 <br />
 
@@ -201,8 +187,6 @@ Using the following steps, you can validate that the cluster's PKI certificates 
 
 1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
 
-{" "}
-
 <br />
 
 ```shell
@@ -210,8 +194,6 @@ export API_KEY=REPLACE_ME
 ```
 
 2. Set the project ID as an environment variable. Add your project ID in place of `REPLACE_ME`.
-
-{" "}
 
 <br />
 
@@ -221,8 +203,6 @@ export PROJECT_ID=REPLACE_ME
 
 3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`.
 
-{" "}
-
 <br />
 
 ```shell
@@ -231,8 +211,6 @@ export CLUSTER_ID=REPLACE_ME
 
 4. Retrieve the cluster's certificate information from Palette by using the
    `https://api.spectrocloud.com/v1/spectroclusters/{uid}/k8certificates` endpoint.
-
-{" "}
 
 <br />
 
@@ -246,8 +224,6 @@ curl \
 ```
 
 5. Validate the output and confirm the expiration date is one year away.
-
-{" "}
 
 <br />
 
@@ -333,8 +309,6 @@ Use the following steps to configure Palette only to renew the certificates for 
 
 1. Set your cluster name as an environment variable. Add your cluster's name in place of `REPLACE_ME`.
 
-{" "}
-
 <br />
 
 ```shell
@@ -342,8 +316,6 @@ export CLUSTER_NAME=REPLACE_ME
 ```
 
 1. Use the following command to retrieve the namespace of the CRD Palette created in your cluster.
-
-{" "}
 
 <br />
 
@@ -353,8 +325,6 @@ namespace=$(kubectl get spc --all-namespaces --output jsonpath='{range .items[?(
 
 2. Use `kubectl` to update the CRD to include the `spectrocloud.com/cert-renew-controlplane-only` annotation.
 
-{" "}
-
 <br />
 
 ```shell
@@ -362,8 +332,6 @@ kubectl annotate spc/certificate-renew --namespace $namespace spectrocloud.com/c
 ```
 
 3. Verify the annotation was set correctly with the command below. The expected output is `true`.
-
-{" "}
 
 <br />
 
@@ -401,8 +369,6 @@ nodes.
    date that is one year away.
 
 6. Navigate to the **Nodes** tab and verify the **Worker Pool** nodes' **Age** is not updated recently.
-
-{" "}
 
 <br />
 

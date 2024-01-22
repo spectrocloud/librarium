@@ -51,8 +51,6 @@ instance or a self-hosted [VerteX](../vertex/install-palette-vertex/install-pale
 
 The `ec` subcommand exposes the following subcommand.
 
-{" "}
-
 <br />
 
 - `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to
@@ -63,8 +61,6 @@ The `ec` subcommand exposes the following subcommand.
 The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or
 Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts
 you for required values. Alternatively, you can use flags to generate a configuration file.
-
-{" "}
 
 <br />
 
@@ -79,21 +75,15 @@ you for required values. Alternatively, you can use flags to generate a configur
 
 Install an Enterprise Cluster in interactive mode.
 
-{" "}
-
 <br />
 
 ```shell
 palette ec install
 ```
 
-{" "}
-
 <br />
 
 Create a configuration file for the Enterprise Cluster installation.
-
-{" "}
 
 <br />
 
@@ -101,14 +91,10 @@ Create a configuration file for the Enterprise Cluster installation.
 palette ec install --config-only
 ```
 
-{" "}
-
 <br />
 
 Install an Enterprise Cluster using a configuration file. The configuration file is generated using the `--config-only`
 flag.
-
-{" "}
 
 <br />
 
@@ -116,14 +102,10 @@ flag.
 palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml
 ```
 
-{" "}
-
 <br />
 
 Update the passwords of an Enterprise Cluster using a configuration file. The configuration file is generated using the
 `--config-only` flag.
-
-{" "}
 
 <br />
 
@@ -222,8 +204,6 @@ The `login` subcommand authenticates the Palette CLI with Palette. The `login` s
 mode, which prompts you for required values. Or, you can use flags to provide the subcommand with all the required
 values such as the API key, the organization ID, and the Palette URL.
 
-{" "}
-
 <br />
 
 | Flag                    | Description                                                                                                                | Type   |     |
@@ -305,8 +285,6 @@ find the newest version of the Palette CLI on the [Downloads](../spectro-downloa
 
 The `pcg` command exposes the following subcommand.
 
-{" "}
-
 <br />
 
 - `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.
@@ -386,8 +364,6 @@ command to log in to Palette, manage virtual clusters, and switch the project sc
 
 The `pde` command exposes the following subcommands.
 
-{" "}
-
 <br />
 
 - `cluster-group` - Manage Palette Cluster Groups.
@@ -401,8 +377,6 @@ The `pde` command exposes the following subcommands.
 Use the `cluster-group` command to change the cluster group that commands will target. You can also list all available
 clusters. The `cluster-group` supports the following subcommands.
 
-{" "}
-
 <br />
 
 - `list` - List Palette Cluster Groups.
@@ -413,8 +387,6 @@ clusters. The `cluster-group` supports the following subcommands.
 
 You can use the `virtual-cluster` subcommand to manage Palette Virtual Clusters. Below is a list of the supported
 subcommands you can use. Use the `--help` flag to learn more about each subcommand.
-
-{" "}
 
 <br />
 
@@ -436,8 +408,6 @@ subcommands you can use. Use the `--help` flag to learn more about each subcomma
 
 Use the `project` command to manage projects, the project scope for the CLI, and list all available projects. The
 `project` command supports the following subcommands.
-
-{" "}
 
 <br />
 

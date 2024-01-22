@@ -134,8 +134,6 @@ Use the following steps to learn how to use Palette's image swap functionality.
 8. Next, select the code editor button **\</\>** to edit the pack YAML configuration. Within the `pack` section's scope,
    add your `imageSwap` configuration block. Click on **Next layer** to continue.
 
-{" "}
-
 <br />
 
 ![A view of the Kubernetes layer YAML with an imageSwap configuration block.](/clusters_cluster-management_image-swap_kubernetes-layer-yaml.png)
@@ -165,8 +163,6 @@ You can validate that the image swap is functioning correctly by using the follo
 
 You can use the following command to verify the correct image and registry of the deployment. Change the `REPLACE_ME`
 value with the correct values from your environment.
-
-{" "}
 
 <br />
 

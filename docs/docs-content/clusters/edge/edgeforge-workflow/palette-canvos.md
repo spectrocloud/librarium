@@ -98,8 +98,6 @@ customization.
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-{" "}
-
 <br />
 
 ```bash
@@ -143,8 +141,6 @@ git checkout v3.4.3
 ```bash
 export CUSTOM_TAG=palette-learn
 ```
-
-{" "}
 
 <br />
 
@@ -237,8 +233,6 @@ EOF
 
   </PointsOfInterest>
 
-{" "}
-
 <br />
 
 View the newly created user data file to ensure the token is set correctly.
@@ -246,8 +240,6 @@ View the newly created user data file to ensure the token is set correctly.
 ```bash
 cat user-data
 ```
-
-{" "}
 
 <br />
 
@@ -294,8 +286,6 @@ options:
   system.osVersion: 22
 ```
 
-{" "}
-
 <br />
 
 11. List the Docker images to review the provider images created. By default, provider images for all the Palette's
@@ -314,8 +304,6 @@ ttl.sh/ubuntu     k3s-1.25.2-v3.4.3-palette-learn    b3c4956ccc0a   6 minutes ag
 ttl.sh/ubuntu     k3s-1.24.6-v3.4.3-palette-learn    fe1486da25df   6 minutes ago   2.49GB
 ```
 
-{" "}
-
 <br />
 
 12. To use the provider images in your cluster profile, push them to the image registry mentioned in the **.arg** file.
@@ -329,8 +317,6 @@ docker push ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-palette-learn
 docker push ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-palette-learn
 ```
 
-{" "}
-
 <br />
 
 :::warning
@@ -341,8 +327,6 @@ Advanced workflow in the current guide to learn how to use another registry, suc
 images accordingly.
 
 :::
-
-{" "}
 
 <br />
 
@@ -365,8 +349,6 @@ images accordingly.
 
 The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file. If you modified the
 arguments in the **.arg** file, you must modify the attribute values below accordingly.
-
-{" "}
 
 <br />
 
@@ -393,8 +375,6 @@ options:
 The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
 ![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
-
-{" "}
 
 <br />
 
@@ -535,8 +515,6 @@ git tag
 git checkout v3.4.3
 ```
 
-{" "}
-
 <br />
 
 5. Review the files relevant for this guide.
@@ -576,8 +554,6 @@ Next, you will customize these arguments to use during the build process.
 export CUSTOM_TAG=palette-learn
 ```
 
-{" "}
-
 <br />
 
 8. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
@@ -589,8 +565,6 @@ export CUSTOM_TAG=palette-learn
 export IMAGE_REGISTRY=docker.io/[DOCKER-ID]    # Follows [HOST]/[DOCKER-ID] syntax. Example: docker.io/spectrocloud
 ```
 
-{" "}
-
 <br />
 
 9. Issue the following command to use the openSUSE Leap OS distribution.
@@ -599,8 +573,6 @@ export IMAGE_REGISTRY=docker.io/[DOCKER-ID]    # Follows [HOST]/[DOCKER-ID] synt
 ```bash
 export OS_DISTRIBUTION=opensuse-leap
 ```
-
-{" "}
 
 <br />
 
@@ -623,8 +595,6 @@ EOF
 ```
 
 View the newly created file to ensure the customized arguments are set correctly.
-
-{" "}
 
 <br />
 
@@ -652,8 +622,6 @@ echo 'RUN sudo zypper refresh && sudo zypper install -y wireguard-tools' >> Dock
 
 View the newly created file to ensure the instruction to install WireGuard is appended correctly.
 
-{" "}
-
 <br />
 
 ```bash
@@ -675,8 +643,6 @@ the image creation process to fail. This guidance applies to all dependencies yo
 ```bash
 export token=[your_token_here]
 ```
-
-{" "}
 
 <br />
 13. Use the following command to create the **user-data** file containing the tenant registration token. Also, you can click
@@ -736,8 +702,6 @@ If you want further customization, check the existing **user-data.template** fil
 [Edge Configuration Stages](../edge-configuration/cloud-init.md) and
 [User Data Parameters](../edge-configuration/installer-reference.md) documents to learn more.
 
-{" "}
-
 <br />
 
 14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
@@ -753,8 +717,6 @@ sudo ./earthly.sh +build-all-images
 ===================== Earthly Build SUCCESS =====================
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
-
-{" "}
 
 <br />
 
@@ -773,8 +735,6 @@ earlier in the **.arg** file.
 
 Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 
-{" "}
-
 <br />
 
 ```bash
@@ -791,8 +751,6 @@ options:
   system.peVersion: v3.4.3
   system.customTag: palette-learn
 ```
-
-{" "}
 
 <br />
 <br />
@@ -813,8 +771,6 @@ spectrocloud/opensuse-leap   k3s-1.25.2-v3.4.3-palette-learn   2427e3667b2f   24
 spectrocloud/opensuse-leap   k3s-1.24.6-v3.4.3-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
 ```
 
-{" "}
-
 <br />
 
 16. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
@@ -830,8 +786,6 @@ docker login
 Login Succeeded
 ```
 
-{" "}
-
 <br />
 
 17. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
@@ -843,8 +797,6 @@ Login Succeeded
 docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v3.4.3-palette-learn
 docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.24.6-v3.4.3-palette-learn
 ```
-
-{" "}
 
 <br />
 
@@ -867,8 +819,6 @@ docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.24.6-v3.4.3-palette-learn
 
 The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file. If you modified the
 arguments in the **.arg** file, you must modify the attribute values below accordingly.
-
-{" "}
 
 <br />
 
@@ -894,8 +844,6 @@ options:
 The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
 ![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
-
-{" "}
 
 <br />
 

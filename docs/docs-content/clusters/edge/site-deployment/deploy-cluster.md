@@ -174,7 +174,7 @@ convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the p
 `ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo`. Refer to the **.arg.template** sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
-<br />{" "}
+<br />
 
 ```bash
 cat << EOF > .arg
@@ -432,7 +432,7 @@ variables during the build process.
 Before you invoke the **heredoc** script, have values handy in a notepad for the VMWare vCenter environment variables
 listed in the table.
 
-<br />{" "}
+<br />
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
 | ------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -968,7 +968,7 @@ Use the following values in the **Basic Information** section.
 
 Click **Next** to continue.
 
-<br />{" "}
+<br />
 
 ### Parameters
 
@@ -1029,14 +1029,14 @@ The screenshot below shows two Edge hosts added to the worker pool.
 
 Click **Next** to continue.
 
-<br />{" "}
+<br />
 
 ### Settings
 
 This section displays options for OS patching, scheduled scans, scheduled backups, cluster role binding, and location.
 Use the default values, and click on the **Validate** button.
 
-<br />{" "}
+<br />
 
 ### Review
 
@@ -1048,7 +1048,7 @@ While deployment is in progress, Palette displays the cluster status as **Provis
 to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**,
 and **Events**.
 
-<br />{" "}
+<br />
 
 ## Validate
 
@@ -1150,7 +1150,7 @@ docker image rm --force ttl.sh/ubuntu:k3s-1.25.2-v3.4.3-demo
 docker image rm --force ttl.sh/ubuntu:k3s-1.24.6-v3.4.3-demo
 ```
 
-<br />{" "}
+<br />
 
 ### Delete VMware vSphere Resources
 

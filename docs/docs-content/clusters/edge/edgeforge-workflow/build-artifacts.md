@@ -91,7 +91,7 @@ chmod 755 palette-edge
 3. Use the following command to move the palette-edge binary to the **/usr/local/bin** directory to make the binary
    available in your system $PATH. This will allow you to issue the `palette-edge` command from any directory in your
    development environment.
-   <br />{" "}
+   <br />
 
 ```bash
 mv palette-edge /usr/local/bin
