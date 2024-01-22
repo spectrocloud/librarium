@@ -1057,8 +1057,8 @@ Our on-premises version gets attention to finer details with this release:
 - Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web
   application called the
   <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide
-detailed progress of the installation. </Tooltip> now provides more details when migrating from the quick start
-version to the enterprise version.
+  detailed progress of the installation. </Tooltip> now provides more details when migrating from the quick start
+  version to the enterprise version.
 - AWS and GCP clusters can now be provisioned from an on-premises Spectro Cloud system.
 
 On the VMware front, we have:
