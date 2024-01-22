@@ -34,30 +34,32 @@ If you need to override or reconfigure the read-only file system, you can do so 
 
 ## Scenario - Pod State Unknown After Reboot with Overlay Network Enabled
 
-On slower networks, it's possible that this is due to KubeVip leader election timeouts. To debug, you can manually adjust the values of related environment variables in the KubeVip DaemonSet with the following steps.
+On slower networks, it's possible that this is due to KubeVip leader election timeouts. To debug, you can manually
+adjust the values of related environment variables in the KubeVip DaemonSet with the following steps.
 
 ### Debug Steps
 
-1. Ensure you can access the cluster using kubectl.  For more information, refer to [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+1. Ensure you can access the cluster using kubectl. For more information, refer to
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command:
 
-  ```shell
-  kubectl edit ds kube-vip-ds -n kube-system
-  ```
+```shell
+kubectl edit ds kube-vip-ds -n kube-system
+```
 
-3. In the `env`  of the KubeVip service, modify the environment variables to have the following corresponding values:
+3. In the `env` of the KubeVip service, modify the environment variables to have the following corresponding values:
 
-  ```yaml {4-9}
-  env:
-    - name: vip_leaderelection
-      value: "true"
-    - name: vip_leaseduration
-      value: "30"
-    - name: vip_renewdeadline
-      value: "20"
-    - name: vip_retryperiod
-      value: "4"
-  ```
+```yaml {4-9}
+env:
+  - name: vip_leaderelection
+    value: "true"
+  - name: vip_leaseduration
+    value: "30"
+  - name: vip_renewdeadline
+    value: "20"
+  - name: vip_retryperiod
+    value: "4"
+```
 
 4. Within a minute, the old Pods in unknown state will be terminated and Pods will come up with the updated values.
