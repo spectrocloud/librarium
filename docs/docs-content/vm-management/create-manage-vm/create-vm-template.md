@@ -37,7 +37,7 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 8. Click **Finish Configuration**.
 
-<br />{" "}
+<br />
 
 #### Example YAML for a VM template
 

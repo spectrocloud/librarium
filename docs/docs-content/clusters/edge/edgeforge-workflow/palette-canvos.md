@@ -603,8 +603,6 @@ EOF
 
 View the newly created file to ensure the customized arguments are set correctly.
 
-{" "}
-
 <br />
 
 ```bash
@@ -727,8 +725,6 @@ sudo ./earthly.sh +build-all-images
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
 
-{" "}
-
 <br />
 
 :::info
@@ -738,8 +734,6 @@ If you plan to build Edge artifacts using a content bundle, use the `+build-prov
 provider images but not the Edge installer ISO.
 
 :::
-
-{" "}
 
 <br />
 

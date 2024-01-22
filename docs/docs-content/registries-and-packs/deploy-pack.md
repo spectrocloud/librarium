@@ -108,7 +108,7 @@ docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr
 
 If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
 
-<br />{" "}
+<br />
 
 :::warning
 
@@ -178,7 +178,7 @@ structure for each.
 
 </Tabs>
 
-<br />{" "}
+<br />
 
 For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files
 are located in the **packs/hello-universe-pack** folder.
@@ -416,7 +416,7 @@ Next, go to the **Projects** section and click on **New Project**. A project in 
 
 </Tabs>
 
-<br />{" "}
+<br />
 
 ### Log in to the Registry Server
 
@@ -544,7 +544,7 @@ Check if the pushed pack is listed, as shown in the image below.
 
 For assistance with Spectro CLI commands, refer to the [Spectro CLI Commands](spectro-cli-reference.md#commands) guide.
 
-<br />{" "}
+<br />
 
 </TabItem>
 
@@ -910,7 +910,7 @@ For the first section, **Basic information**, use the following values.
 
 Click **Next** to proceed.
 
-<br />{" "}
+<br />
 
 #### Parameters
 
@@ -963,14 +963,14 @@ Keep the **Cloud Configuration** the same for both master and worker pools.
 
 Click **Next** to continue.
 
-<br />{" "}
+<br />
 
 #### Settings
 
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding.
 Use the default values, and click on the **Validate** button.
 
-<br />{" "}
+<br />
 
 #### Review
 
@@ -1126,7 +1126,7 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
 
 - **provider.tf** - contains the provider configuration and version.
 
-<br />{" "}
+<br />
 
 ### Deploy Terraform
 
@@ -1174,7 +1174,7 @@ the provided screenshot.
 
 ![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.png)
 
-<br />{" "}
+<br />
 
 </TabItem>
 
@@ -1204,7 +1204,7 @@ the public load balancer URL, preventing the browser from caching an unresolved 
 
 ![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.png)
 
-<br />{" "}
+<br />
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in
 Palette.
@@ -1363,7 +1363,7 @@ docker container rm --force tutorialContainer
 docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.11
 ```
 
-<br />{" "}
+<br />
 
 ## Wrap-Up
 

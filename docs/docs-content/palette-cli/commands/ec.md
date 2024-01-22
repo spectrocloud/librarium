@@ -16,8 +16,6 @@ instance or a self-hosted [VerteX](../../vertex/install-palette-vertex/install-p
 
 The `ec` command exposes the following subcommand.
 
-{" "}
-
 <br />
 
 - `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to
@@ -28,8 +26,6 @@ The `ec` command exposes the following subcommand.
 The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or
 Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts
 you for required values. Alternatively, you can use flags to generate a configuration file.
-
-{" "}
 
 <br />
 
@@ -44,21 +40,15 @@ you for required values. Alternatively, you can use flags to generate a configur
 
 Install an Enterprise Cluster in interactive mode.
 
-{" "}
-
 <br />
 
 ```shell
 palette ec install
 ```
 
-{" "}
-
 <br />
 
 Create a configuration file for the Enterprise Cluster installation.
-
-{" "}
 
 <br />
 
@@ -66,14 +56,10 @@ Create a configuration file for the Enterprise Cluster installation.
 palette ec install --config-only
 ```
 
-{" "}
-
 <br />
 
 Install an Enterprise Cluster using a configuration file. The configuration file is generated using the `--config-only`
 flag.
-
-{" "}
 
 <br />
 
@@ -81,14 +67,10 @@ flag.
 palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml
 ```
 
-{" "}
-
 <br />
 
 Update the passwords of an Enterprise Cluster using a configuration file. The configuration file is generated using the
 `--config-only` flag.
-
-{" "}
 
 <br />
 

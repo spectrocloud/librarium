@@ -150,15 +150,11 @@ The following steps will guide you on how to install a PCG cluster.
 3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted,
    enter the information listed in each of the following tables.
 
-{" "}
-
 <br />
 
 ```bash
 palette pcg install
 ```
-
-{" "}
 
 <br />
 
@@ -170,8 +166,6 @@ palette pcg install
 
 4. Next, provide environment configurations for the cluster. Refer to the following table for information about each
    option.
-
-{" "}
 
 <br />
 
@@ -189,8 +183,6 @@ palette pcg install
 5. After the environment options, the next set of prompts is for configuring the PCG cluster for the MAAS environment.
    The following table contains information about each prompt.
 
-{" "}
-
 <br />
 
 | **Parameter**         | **Description**                                                                                           |
@@ -200,8 +192,6 @@ palette pcg install
 
 6. Next, select the appropriate option for each of the following items to define which machines should be selected on
    the MAAS server for deployment as a PCG.
-
-{" "}
 
 <br />
 
@@ -223,8 +213,6 @@ pool combination.
 
 7. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
    similar to the following.
-
-{" "}
 
 <br />
 

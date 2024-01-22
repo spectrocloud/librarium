@@ -129,8 +129,6 @@ palette ec install
 
 8. When prompted, enter the information listed in each of the following tables.
 
-{" "}
-
 <br />
 
 #### Environment Configuration
@@ -158,8 +156,6 @@ Select `y` to use the Spectro Cloud repository and proceed to the next step.
 
 Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
-{" "}
-
 <br />
 
 #### Pack & Image Registry Configuration
@@ -181,8 +177,6 @@ Select the OCI registry type and provide the configuration values. Review the fo
 When prompted to "Pull images from public registry", type `n`. Go ahead and specify the OCI registry configuration
 values for your image registry. Refer to the table above for more information.
 
-{" "}
-
 <br />
 
 :::info
@@ -201,8 +195,6 @@ type `:wq` to save and exit.
 10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
 
-{" "}
-
 <br />
 
 #### VMware vSphere Account Information
@@ -214,8 +206,6 @@ type `:wq` to save and exit.
 | **vSphere Password**          | VMware vSphere account password.                                                                                                                                                              |
 | **Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.                                    |
 
-{" "}
-
 <br />
 
 #### VMware vSphere Cluster Configuration
@@ -223,8 +213,6 @@ type `:wq` to save and exit.
 This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use
 the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you
 to select from.
-
-{" "}
 
 <br />
 
@@ -244,8 +232,6 @@ to select from.
     static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
     using DNS.
 
-{" "}
-
 <br />
 
 #### Static Placement Configuration
@@ -264,8 +250,6 @@ to select from.
 12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
-{" "}
-
 <br />
 
 #### vSphere Machine Configuration
@@ -277,8 +261,6 @@ to select from.
 | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
 | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
-{" "}
-
 <br />
 
 #### Additional vSphere Machine Configuration
@@ -287,21 +269,15 @@ to select from.
 | ----------------- | ---------------------------------------------------------------------------------------- |
 | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
 
-{" "}
-
 <br />
 
 The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the
 remainder of the installation. The installation takes some time to complete.
 
-{" "}
-
 <br />
 
 The Palette CLI creates a file named `ec.yaml` that contains the information you provided the wizard, and its location
 is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
-
-{" "}
 
 <br />
 
@@ -309,8 +285,6 @@ is displayed in the terminal. Credentials and tokens are encrypted in the YAML f
 ==== Enterprise Cluster config saved ====
 Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
-
-{" "}
 
 <br />
 
@@ -332,8 +306,6 @@ palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
 
 :::
-
-{" "}
 
 <br />
 
@@ -359,8 +331,6 @@ export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
 
 13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
-{" "}
-
 <br />
 
 :::info
@@ -370,8 +340,6 @@ This is expected, as you have not yet uploaded your SSL certificate to Palette. 
 proceed.
 
 :::
-
-{" "}
 
 <br />
 
@@ -391,8 +359,6 @@ proceed.
 
 16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
-
-{" "}
 
 <br />
 

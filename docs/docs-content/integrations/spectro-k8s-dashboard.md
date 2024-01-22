@@ -71,7 +71,7 @@ Use the following information to find the Kubernetes Dashboard pack.
 
 Spectro Kubernetes Dashboard has the following Access options.
 
-<br />{" "}
+<br />
 
 - **Proxied**: This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro
   Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured

@@ -427,8 +427,6 @@ EKS** tab for steps to configure OIDC for EKS clusters.
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
 
-{" "}
-
 <br />
 
 ```yaml
@@ -700,8 +698,6 @@ Follow these steps to configure OIDC for managed EKS clusters.
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
    and enter your third-party provider details.
 
-{" "}
-
 <br />
 
 ```yaml
@@ -717,8 +713,6 @@ oidcIdentityProvider:
 ```
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
-
-{" "}
 
 <br />
 

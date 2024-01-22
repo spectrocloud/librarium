@@ -315,7 +315,7 @@ The following list provides more specific details to help you troubleshoot issue
 CSI driver pod logs are also available to determine the cause of the mount failures. If the volume is failing to mount,
 the efs-plugin logs are available.
 
-<br />{" "}
+<br />
 
 - **Mount Targets:** Verify the mount targets are configured correctly. Be sure to create the EFS mount targets in each
   Availability Zone where the EKS worker nodes are running.
