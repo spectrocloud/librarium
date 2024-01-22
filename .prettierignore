@@ -2,3 +2,10 @@
 build
 node_modules
 Dockerfile
+src/deprecated
+vale/
+**/*.yaml
+**/*.yml
+
+# Troublesome files
+tsconfig.json

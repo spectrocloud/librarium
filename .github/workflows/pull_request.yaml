@@ -3,7 +3,7 @@ name: Pre-merge Checks
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches-ignore: [ 'version-*' ]
+    branches-ignore: ["version-*"]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -54,9 +54,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+  prettier:
+    name: Check Code Formatting
+    needs: [run-ci]
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Prettier Check
+        run: npx prettier . --check
+
   build:
     name: Build
-    needs: [run-ci]
+    needs: [run-ci, prettier]
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.draft }}
     steps:
