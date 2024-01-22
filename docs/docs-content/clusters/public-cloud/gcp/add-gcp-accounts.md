@@ -22,8 +22,6 @@ account in Palette.
   - Service Account User
   - Storage Object Viewer
 
-  {" "}
-
   <br />
 
   :::info
@@ -49,8 +47,6 @@ account in Palette.
    - **Account Name:** Custom name for the cloud account.
 
    - **JSON Credentials:** The JSON credentials object.
-
-   {" "}
 
    <br />
 

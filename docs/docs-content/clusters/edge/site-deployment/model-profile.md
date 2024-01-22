@@ -56,8 +56,6 @@ needs.
 
 9. Click on the code editor button **\</\>** to open up the editor
 
-{" "}
-
 <br />
 
 ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
@@ -86,8 +84,6 @@ content:
 options:
   system.uri: example.io/my-images/example-custom-os:v1.4.5
 ```
-
-{" "}
 
 <br />
 

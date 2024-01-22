@@ -28,8 +28,6 @@ Cloud Palette.
 
 <center> Kubelogin Architecture</center>
 
-{" "}
-
 <br />
 
 ![kubelogin](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg "Credential Plugin Diagram from kubelogin")

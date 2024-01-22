@@ -13,8 +13,6 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/kubernetes-rke2/blobs/sha256:
 the U.S. Federal Government sector. To meet the Kubernetes security and compliance goals required by the U.S. Federal
 Government, RKE2 establishes the following:
 
-{" "}
-
 <br />
 
 1. Provides defaults and configuration options that allow clusters to pass the CIS Kubernetes Benchmark v1.6 with

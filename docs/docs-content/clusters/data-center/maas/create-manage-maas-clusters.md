@@ -128,7 +128,7 @@ To protect your data, we recommend you create a backup of your MAAS cluster befo
 infrastructure changes. Review instructions provided in the
 [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md).
 
-<br />{" "}
+<br />
 
 :::warning
 

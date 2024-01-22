@@ -73,8 +73,6 @@ the bare metal machines that MAAS manages.
 
 - Each node in the PCG cluster requires a machine from MAAS in a ready state with the following resources:
 
-  {" "}
-
   <br />
 
   - CPU: 4
@@ -91,8 +89,6 @@ the bare metal machines that MAAS manages.
 
 For details, refer to the MAAS document on
 [how to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).
-
-{" "}
 
 <br />
 
@@ -245,8 +241,6 @@ longer used to keep the PCG connected to Palette, so you can disable the account
    - Availability Zone
    - Resource Pool
    - One node (no HA) or three nodes (HA)
-
-{" "}
 
 <br />
 :::warning

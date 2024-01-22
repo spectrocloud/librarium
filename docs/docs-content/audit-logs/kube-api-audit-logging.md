@@ -57,8 +57,6 @@ levels, visit the Kubernetes API
 
 4. From a control-plane node in the target cluster, issue the following command to create your audit policy file.
 
-{" "}
-
 <br />
 
 ```bash
@@ -81,8 +79,6 @@ logs will not be lost during an unexpected outage of the node.
 5. Next, you will update the Kubernetes API server manifest file. The manifest file is located in the
    **/etc/kubernetes/manifests** folder. Before you modify the manifest file, create a backup copy.
 
-{" "}
-
 <br />
 
 ```shell
@@ -92,8 +88,6 @@ cp /etc/kubernetes/manifests/kube-apiserver.yaml  /etc/kubernetes/manifests/kube
 6. Now that you have a backup copy of the manifest file go ahead and open up the file
    **/etc/kubernetes/manifests/kube-apiserver.yaml** in a text editor such as Vi or Nano.
 
-{" "}
-
 <br />
 
 ```shell
@@ -101,8 +95,6 @@ vi /etc/kubernetes/manifests/kube-apiserver.yaml
 ```
 
 Append the following YAML configuration to your kube-apiserver manifest.
-
-{" "}
 
 <br />
 
@@ -128,8 +120,6 @@ volumes:
 7. The next step is to update the Kubernetes API parameters with audit settings. The top of the file contains the
    Kubernetes API parameters. Refer to the code snippet below to determine where to place these parameters.
 
-{" "}
-
 <br />
 
 ```yaml
@@ -143,8 +133,6 @@ spec:
 ```
 
 8. Go ahead and add the following audit parameters under the `- kube-apiserver` line.
-
-{" "}
 
 <br />
 
@@ -197,8 +185,6 @@ parameter.
 
 5. Display the audit file content by using the following command. Replace the file path with the audit folder you
    specified in the `--audit-log-path` parameter.
-
-{" "}
 
 <br />
 

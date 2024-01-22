@@ -146,8 +146,6 @@ your environment. Reach out to our support team if you need assistance.
 
    Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
 
-   {" "}
-
    <br />
 
    :::info
@@ -202,8 +200,6 @@ your environment. Reach out to our support team if you need assistance.
    Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
    console.
 
-{" "}
-
 <br />
 
 :::info
@@ -213,8 +209,6 @@ This is expected, as you have not yet uploaded your SSL certificate to Palette. 
 proceed.
 
 :::
-
-{" "}
 
 <br />
 

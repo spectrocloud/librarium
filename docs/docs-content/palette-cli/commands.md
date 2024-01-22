@@ -38,8 +38,6 @@ The `pde` subcommand interacts with the Palette Dev Engine (PDE) platform and it
 command to log in to Palette, manage virtual clusters, and switch the project scope. The `pde` command exposes the
 following subcommands.
 
-{" "}
-
 <br />
 
 - `cluster-group` - Manage Palette Cluster Groups.
@@ -55,8 +53,6 @@ following subcommands.
 Use this command to change the target cluster group commands will target. You can also list all available clusters. The
 `cluster-group` supports the following subcommands.
 
-{" "}
-
 <br />
 
 - `list` - List Palette Cluster Groups.
@@ -69,8 +65,6 @@ Use this command to authenticate with Palette. This command requires a
 [Palette API key](../user-management/user-management.md#user-login). The `login` command has no subcommands but exposes
 a set of flags to help you log in to the correct Palette environment and scope. The following CLI flags are available
 for the `login` command.
-
-{" "}
 
 <br />
 
@@ -93,8 +87,6 @@ palette pde login --api-key yourApiKeyHere --console-url https://console.spectro
 Use this command to change the project scope and list all available projects. You can also deactivate a project with
 this command. The `project` command supports the following subcommands.
 
-{" "}
-
 <br />
 
 - `deactivate` - Deactivate your active Palette project and switch to the tenant admin scope.
@@ -107,8 +99,6 @@ this command. The `project` command supports the following subcommands.
 
 You can use the `virtual-cluster` command to manage virtual cluster resources. Below is a list of all the supported
 subcommands you can use. Use the `--help` flag to learn more about each subcommand.
-
-{" "}
 
 <br />
 

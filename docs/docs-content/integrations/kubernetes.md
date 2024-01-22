@@ -944,8 +944,6 @@ kubeadmconfig:
 #oidc-extra-scope: profile,email
 ```
 
-{" "}
-
 <br />
 
 ### Configure OIDC Identity Provider

@@ -124,8 +124,6 @@ Use the following sample configuration as a starting point but feel free to chan
 for your environment. To learn more about Netplan, check out the
 [Netplan configuration examples](https://netplan.io/examples) from Canonical.
 
-{" "}
-
 <br />
 
 ```yaml
@@ -146,8 +144,6 @@ To exit Vi, press the **ESC** key and type `:wq` followed by the **Enter** key. 
 
 13. Issue the `netplan` command to update the network settings.
 
-{" "}
-
 <br />
 
 ```shell
@@ -157,8 +153,6 @@ sudo netplan apply
 14. Give the instance one to two minutes before issuing the following command. The next step is to start the airgap
     setup script that stands up the Spectro Repository. Issue the command below and replace `X.X.X.X` with the static IP
     you provided to the Netplan configuration file.
-
-{" "}
 
 <br />
 
@@ -195,8 +189,6 @@ Password: XXXXXXXXX
 15. If you need to configure the instance with proxy settings, go ahead and do so now. You can configure proxy settings
     by using environment variables. Replace the values with your environment's respective values.
 
-{" "}
-
 <br />
 
 ```shell
@@ -208,8 +200,6 @@ export no_proxy=.example.dev,10.0.0.0/8
 16. The next set of steps will download the required binaries to support a Palette installation, such as the Palette
     Installer, required Kubernetes packages, and kubeadm packages. You can download these artifacts from the instance,
     or externally and transfer them to the instance. Click on each tab for further guidance.
-
-{" "}
 
 <br />
 
@@ -228,8 +218,6 @@ URL. Click on each tab to learn more about each resource and steps for downloadi
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
-{" "}
-
 <br />
 
 ```shell
@@ -244,8 +232,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 :::
 
 Assign the proper permissions and start the download script.
-
-{" "}
 
 <br />
 
@@ -275,8 +261,6 @@ Setup Completed
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
-{" "}
-
 <br />
 
 ```shell
@@ -291,8 +275,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 :::
 
 Assign the proper permissions and start the download script.
-
-{" "}
 
 <br />
 
@@ -322,8 +304,6 @@ Setup Completed
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
-{" "}
-
 <br />
 
 ```shell
@@ -338,8 +318,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 :::
 
 Assign the proper permissions and start the download script.
-
-{" "}
 
 <br />
 
@@ -381,8 +359,6 @@ Setup Completed
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
 
-{" "}
-
 <br />
 
 ```shell
@@ -398,8 +374,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -411,8 +385,6 @@ sudo chmod 755 ./airgap-edge-ubuntu22-k3s.bin && sudo ./airgap-edge-ubuntu22-k3s
 <TabItem label="Ubuntu 22.04 - RKE " value="ubuntu-22-rke">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -429,8 +401,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -442,8 +412,6 @@ sudo chmod 755 ./airgap-edge-ubuntu22-rke.bin && sudo ./airgap-edge-ubuntu22-rke
 <TabItem label="Ubuntu 22.04 - Kubeadm" value="ubuntu-22-kubeadm">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -460,8 +428,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -473,8 +439,6 @@ sudo chmod 755 ./airgap-edge-ubuntu22-kubeadm.bin && sudo ./airgap-edge-ubuntu22
 <TabItem label="Ubuntu 20.04 - K3s" value="ubuntu-20-k3s">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -491,8 +455,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -504,8 +466,6 @@ sudo chmod 755 ./airgap-edge-ubuntu20-k3s.bin && sudo ./airgap-edge-ubuntu20-k3s
 <TabItem label="Ubuntu 20.04 - RKE" value="ubuntu-20-rke">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -522,8 +482,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -535,8 +493,6 @@ sudo chmod 755 ./airgap-edge-ubuntu20-rke.bin && sudo ./airgap-edge-ubuntu20-rke
 <TabItem label="Ubuntu 20.04 - Kubeadm" value="ubuntu-20-kubeadm">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -553,8 +509,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -566,8 +520,6 @@ sudo chmod 755 ./airgap-edge-ubuntu20-kubeadm.bin && sudo ./airgap-edge-ubuntu20
 <TabItem label="OpenSuse - K3s" value="opensuse-k3s">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -584,8 +536,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -597,8 +547,6 @@ sudo chmod 755 ./airgap-edge-opensuse-k3s.bin && sudo ./airgap-edge-opensuse-k3s
 <TabItem label="OpenSuse - RKE" value="opensuse-rke">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -615,8 +563,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 
 Assign the proper permissions and start the download script.
 
-{" "}
-
 <br />
 
 ```shell
@@ -628,8 +574,6 @@ sudo chmod 755 ./airgap-edge-opensuse-rke.bin && sudo ./airgap-edge-opensuse-rke
 <TabItem label="OpenSuse - Kubeadm" value="opensuse-kubeadm">
 
 Download the binary by using the URL provided by the Palette support team. Change the version number as needed.
-
-{" "}
 
 <br />
 
@@ -645,8 +589,6 @@ If you receive a certificate error, use the `-k` or `--insecure` flag.
 :::
 
 Assign the proper permissions and start the download script.
-
-{" "}
 
 <br />
 
@@ -696,8 +638,6 @@ process. If you provided the appliance with an SSH key then you can skip to step
    the following command, and ensure you specify the path to your SSH private key and replace the IP address with your
    appliance's static IP.
 
-{" "}
-
 <br />
 
 ```shell
@@ -705,8 +645,6 @@ ssh --identity_file ~/path/to/your/file ubuntu@10.1.1.1
 ```
 
 6. Verify the registry server is up and available. Replace the `10.1.1.1` value with your appliance's IP address.
-
-{" "}
 
 <br />
 
@@ -723,8 +661,6 @@ Example Output:
 7. Ensure you can log into your registry server. Use the credentials provided to you by the `airgap-setup.sh` script.
    Replace the `10.1.1.1` value with your appliance's IP address.
 
-{" "}
-
 <br />
 
 ```shell
@@ -738,8 +674,6 @@ Example Output:
 ```
 
 8. Next, validate the Spectro repository is available. Replace the IP with your appliance's IP address.
-
-{" "}
 
 <br />
 

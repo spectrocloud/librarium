@@ -239,7 +239,7 @@ settings and click on **Finish Configuration** to deploy the cluster.
 
 ![Configuration overview of newly created AWS cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-cluster_profile_cluster_profile_review.png)
 
-<br />{" "}
+<br />
 
 Navigate to the left **Main Menu** and select **Clusters**.
 
@@ -592,8 +592,6 @@ cluster profile, cluster size, and the node pool configurations provided. You ca
 progress by reviewing the event log. Click on the **Events** tab to view the log.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
-
-{" "}
 
 <br />
 
@@ -1262,8 +1260,6 @@ cluster profile. You can learn more about the deployment progress by reviewing t
 tab to check the event log.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
-
-{" "}
 
 <br />
 

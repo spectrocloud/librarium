@@ -37,8 +37,6 @@ As you review RBAC support, use the following definitions:
 - **Cluster Role** An entity that is assigned a set of access permissions scoped to the cluster and all of its
   Kubernetes namespaces. ClusterRoles do not have a namespace assigned.
 
-  {" "}
-
   <br />
 
   ```yaml

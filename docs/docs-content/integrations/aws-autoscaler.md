@@ -157,8 +157,6 @@ managedMachinePool:
     - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
 ```
 
-{" "}
-
 <br />
 
 :::info
@@ -223,8 +221,6 @@ The following snapshot displays two new nodes of the size **t3.medium** spin up 
 nodes will be able to handle the same workload as a single larger-sized node.
 
 ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
-
-{" "}
 
 <br />
 
@@ -352,8 +348,6 @@ managedMachinePool:
     - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
 ```
 
-{" "}
-
 <br />
 
 :::info
@@ -418,8 +412,6 @@ The following snapshot displays two new nodes of the size **t3.medium** spin up 
 nodes will be able to handle the same workload as a single larger-sized node.
 
 ![A snapshot displaying new nodes of the size **t3.medium** spin up automatically, *collectively* providing enough capacity to accommodate the current workload. ](/integrations_aws-cluster-autoscaler_two-nodes.png)
-
-{" "}
 
 <br />
 

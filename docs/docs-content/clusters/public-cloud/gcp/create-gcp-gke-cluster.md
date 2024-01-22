@@ -59,8 +59,6 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 10. Fill out the following parameters, and click on **Next** when you are done.
 
-{" "}
-
 <br />
 
 | Parameter   | Description                                                   |
@@ -70,8 +68,6 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
     number of nodes. Configure the worker node pool.
-
-{" "}
 
 <br />
 

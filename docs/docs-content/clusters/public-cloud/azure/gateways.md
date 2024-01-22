@@ -40,8 +40,6 @@ VNet contains the following network settings.
    - Azure Kubernetes Cluster
    - Azure Bastion Host (Jump Box Virtual Machine) to connect to the Azure target Kubernetes cluster securely.
 
-{" "}
-
 <br />
 
 :::info
@@ -73,8 +71,6 @@ VNet contains the following network settings.
 If this option is selected, the user needs to ensure that the VNet used is the VNet created at the previous step. This
 selection of VNet is not possible via Azure User Interface and hence can be achieved
 [programmatically](https://learn.microsoft.com/en-us/azure/aks/configure-kubenet) as below:
-
-{" "}
 
 <br />
 

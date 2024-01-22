@@ -85,7 +85,7 @@ docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr
 
 If port 7000 on your local machine is unavailable, you can use any other port of your choice.
 
-<br />{" "}
+<br />
 
 :::warning
 
@@ -200,7 +200,7 @@ structure for each:
 
 </Tabs>
 
-<br />{" "}
+<br />
 
 To simplify this tutorial, we provide you with the manifest file for the _Hello Universe_ application in the
 **packs/hello-universe-pack** folder. Change the directory to the **packs/hello-universe-pack** folder.
@@ -351,7 +351,7 @@ Verify the registry server is accessible from outside the tutorials container by
 the _https://Your-URL-Here/health_ in your host browser. Replace the base URL with the Ngrok URL output you received.
 You should receive a `{"status":"UP"}` response.
 
-<br />{" "}
+<br />
 
 ### Log in to the Registry Server
 
@@ -424,7 +424,7 @@ Verify the pack you pushed is listed, as shown in the screenshot below.
 If you need help with the Spectro CLI commands, such as deleting a pack, refer to the
 [Spectro CLI commands](spectro-cli-reference.md#commands) guide.
 
-<br />{" "}
+<br />
 
 ### Configure the Registry Server in Palette
 
@@ -478,7 +478,7 @@ clicking the **three-dot Menu** next to the registry server name and selecting *
 This tutorial guides you to create a cluster profile for AWS. However, you can choose any other cloud service provider,
 provided you configure the following two items:
 
-<br />{" "}
+<br />
 
 - **Cloud account**: A cloud account added to your Palette project settings.
 
@@ -498,7 +498,7 @@ provided you configure the following two items:
   This tutorial example will deploy the cluster in the **us-east-2** region, and the SSH key name used in this example
   is **aws_key_sk_us_east_2**. You must choose the desired region and the available SSH key name from your AWS account.
 
-<br />{" "}
+<br />
 
 Create a cluster profile and deploy it to a cluster using either Palette or Terraform code.
 
@@ -653,7 +653,7 @@ account name, choose the name configured in your Palette's project settings.
 
 Click **Next** to continue.
 
-<br />{" "}
+<br />
 
 #### Parameters
 
@@ -710,7 +710,7 @@ Keep the **Cloud Configuration** the same for the master and worker pools.
 
 Click **Next** to continue.
 
-<br />{" "}
+<br />
 
 #### Settings
 
@@ -719,7 +719,7 @@ Click **Next** to continue.
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding.
 Use the default values, and click on the **Validate** button.
 
-<br />{" "}
+<br />
 
 #### Review
 
@@ -731,7 +731,7 @@ While deployment is in progress, Palette displays the cluster status as **Provis
 to finish deploying, you can explore the various tabs on the cluster details page, such as **Overview**, **Workloads**,
 and **Events**.
 
-<br />{" "}
+<br />
 
 <!-- </TabItem>
 
@@ -868,7 +868,7 @@ We recommend you explore all Terraform files. Below is a high-level overview of 
 
 - **provider.tf** - contains the provider configuration and version.
 
-<br />{" "}
+<br />
 
 ### Deploy Terraform
 
@@ -918,7 +918,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 You can observe the cluster deployment progress in Palette by navigating back to Palette.
 
-<br />{" "}
+<br />
 
 #### Check the In-Progress Deployment
 
@@ -930,20 +930,20 @@ screenshot below.
 
 ![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-profile.png)
 
-<br />{" "}
+<br />
 
 <!-- </TabItem>
 
 </Tabs> -->
 
-<br />{" "}
+<br />
 
 ## Validate
 
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the cluster
 Overview page and monitor cluster provisioning progress.
 
-<br />{" "}
+<br />
 
 ![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.png)
 
@@ -966,7 +966,7 @@ public load balancer URL. This prevents the browser from caching an unresolved D
 
 ![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.png)
 
-<br />{" "}
+<br />
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in
 Palette.
@@ -1093,7 +1093,7 @@ docker container rm --force tutorialContainer
 docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.3
 ```
 
-<br />{" "}
+<br />
 
 ## Wrap-Up
 

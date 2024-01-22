@@ -602,8 +602,6 @@ it to create nodes.
 
 The following points give an overview of what you will do to set up the PCG:
 
-{" "}
-
 <br />
 
 - Initiate the installation from the tenant portal.

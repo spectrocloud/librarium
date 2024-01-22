@@ -286,8 +286,6 @@ option, otherwise, Palette will ignore the configuration.
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
 
-{" "}
-
 <br />
 
 ```yaml

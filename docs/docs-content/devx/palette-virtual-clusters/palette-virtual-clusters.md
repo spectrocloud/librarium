@@ -30,8 +30,6 @@ To create your new Palette Virtual Cluster complete the following actions.
    - Palette virtual cluster name: Provide a custom virtual cluster name or go with the default name.
    - Provide the resource limit in terms of CPU, memory, and storage.
 
-{" "}
-
 <br />
 
 | Palette Virtual Cluster Resource | Default | Minimum Limit |

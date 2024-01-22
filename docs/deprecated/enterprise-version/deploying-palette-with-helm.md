@@ -115,8 +115,6 @@ clusters. Steps in other tabs have instructions explicitly tailored to the targe
 You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the
 **values.yaml** file as you will need it for future upgrades.
 
-{" "}
-
 <br />
 
 </TabItem>
@@ -266,8 +264,6 @@ You now have a self-hosted instance of Palette installed in a Kubernetes cluster
 15. Install the Helm Chart using the following command. Replace the path in the command to match your local path of the
     Palette Helm Chart.
 
-{" "}
-
 <br />
 
 ```shell
@@ -313,8 +309,6 @@ You can validate that the installation of Palette is successful by visiting the 
 If you notice that the pods in the `hubble-system` namespace are not initializing as expected, it might be due to a
 delay in adding the DNS records for the rootDomain. The workaround is to terminate all pods except the pods related to
 `mongo-db` in the `hubble-system` namespace to trigger a redeployment of the pods.
-
-{" "}
 
 <br />
 

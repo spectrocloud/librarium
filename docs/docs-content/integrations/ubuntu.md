@@ -323,8 +323,6 @@ Use the following steps to enable Ubuntu Pro.
 7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the
    **\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
 
-{" "}
-
 <br />
 
 ![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
@@ -633,8 +631,6 @@ Use the following steps to enable Ubuntu Pro.
 
 7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the
    \*\</\>** button to reveal the YAML editor and expand the **Preset Drawer\*\*.
-
-{" "}
 
 <br />
 

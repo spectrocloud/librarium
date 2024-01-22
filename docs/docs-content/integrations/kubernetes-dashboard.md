@@ -19,7 +19,7 @@ itself.
 The Kubernetes Dashboard pack you can use to access the dashboard requires the Spectro Proxy pack to expose the
 dashboard.
 
-<br />{" "}
+<br />
 
 :::info
 

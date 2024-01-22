@@ -139,8 +139,6 @@ To validate that ingress is functioning as expected, do the following:
 
 This should display a list of namespaces as shown in the example:
 
-{" "}
-
 <br />
 
 ```shell hideClipboard

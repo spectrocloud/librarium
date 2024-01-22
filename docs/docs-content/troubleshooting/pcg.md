@@ -66,8 +66,6 @@ for Palette in the PCG installer template settings.
 
 2. Inspect the log file located at **/var/log/cloud-init-output.log**.
 
-{" "}
-
 <br />
 
 ```bash
@@ -467,7 +465,7 @@ This issue can occur due to improper networking configuration or an error in the
      kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz?verbose'
      ```
 
-     <br />{" "}
+     <br />
 
 5. If the PCG installer VM has a public IP address assigned, SSH into the VM using the username `ubuntu` and the public
    SSH key you provided during the OVA import.
