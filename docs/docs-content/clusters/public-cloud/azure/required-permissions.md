@@ -41,9 +41,6 @@ permissions. The Validator Azure plugin requires the following permissions:
 - Microsoft.Authorization/roleAssignments/read
 - Microsoft.Authorization/roleDefinitions/read
 
-You can use the Validator with the Palette CLI. Check out the Palette CLI
-[Validator](../../../palette-cli/commands/validator.md) command reference page for more information.
-
 :::
 
 ## Dynamic Placement
