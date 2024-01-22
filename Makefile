@@ -87,6 +87,8 @@ sync-vale: ## Install Vale plugins
 check-writing: ## Run Vale lint checks
 	vale $(CHANGED_FILE) 
 
+format: ## Apply Prettier formating to all files.
+	npm run format
 
 ##@ Clean Server Artifacts
 
