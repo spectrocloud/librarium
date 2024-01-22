@@ -40,8 +40,6 @@ frontends to help handle the traffic.
 
   **1.2.4**
 
-  {" "}
-
   <br />
 
   **1.2.3**

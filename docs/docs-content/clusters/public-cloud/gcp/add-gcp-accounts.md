@@ -26,8 +26,6 @@ account in Palette.
 
   - [Service Account Token Creator](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountTokenCreator)
 
-  {" "}
-
   <br />
 
   :::info
@@ -53,8 +51,6 @@ account in Palette.
    - **Account Name:** Custom name for the cloud account.
 
    - **JSON Credentials:** The JSON credentials object.
-
-   {" "}
 
    <br />
 

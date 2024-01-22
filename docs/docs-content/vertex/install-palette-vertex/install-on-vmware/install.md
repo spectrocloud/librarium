@@ -107,8 +107,6 @@ Use the following steps to install Palette VerteX.
    interactive CLI prompts you for configuration details and then initiates the installation. For more information about
    the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands/ec.md).
 
-{" "}
-
 <br />
 
 ```bash
@@ -118,8 +116,6 @@ palette ec install
 2. At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
 3. Type `y` to enable Ubuntu Pro, and provide your Ubuntu Pro token when prompted.
-
-{" "}
 
 <br />
 
@@ -145,8 +141,6 @@ To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
 7. Type an enterprise cluster name. Your VM instances will use this name as a prefix.
 
 8. When prompted, enter the information listed in each of the following tables.
-
-{" "}
 
 <br />
 
@@ -185,8 +179,6 @@ for more information.
 
 :::
 
-{" "}
-
 <br />
 
 #### Pack & Image Registry Configuration
@@ -208,8 +200,6 @@ for more information.
 When prompted to "Pull images from public registry", type `n` and specify the OCI registry configuration values for your
 image registry. Refer to the table above for more information.
 
-{" "}
-
 <br />
 
 :::info
@@ -228,8 +218,6 @@ type `:wq` to save and exit.
 10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
 
-{" "}
-
 <br />
 
 #### VMware vSphere Account Information
@@ -241,8 +229,6 @@ type `:wq` to save and exit.
 | **vSphere Password**          | VMware vSphere account password.                                                                                                                                                              |
 | **Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.                                    |
 
-{" "}
-
 <br />
 
 #### VMware vSphere Cluster Configuration
@@ -250,8 +236,6 @@ type `:wq` to save and exit.
 This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use
 the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you
 to select from.
-
-{" "}
 
 <br />
 
@@ -271,8 +255,6 @@ to select from.
     static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
     using DNS.
 
-{" "}
-
 <br />
 
 #### Static Placement Configuration
@@ -291,8 +273,6 @@ to select from.
 12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
-{" "}
-
 <br />
 
 #### vSphere Machine Configuration
@@ -303,8 +283,6 @@ to select from.
 | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 CPU limit and 8 GB memory limit.                                    |
 | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
 | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
-
-{" "}
 
 <br />
 
@@ -324,8 +302,6 @@ its location is displayed in the terminal. Credentials and tokens are encrypted 
 ==== Enterprise Cluster config saved ====
 Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
-
-{" "}
 
 <br />
 
@@ -348,14 +324,10 @@ palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 
 :::
 
-{" "}
-
 <br />
 
 When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed
 in the terminal. You will use these to access the Palette VerteX System Console.
-
-{" "}
 
 <br />
 
@@ -378,8 +350,6 @@ export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
 
 13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
-{" "}
-
 <br />
 
 :::info
@@ -389,8 +359,6 @@ appear. This is expected, as you have not yet uploaded your SSL certificate to P
 warning message and proceed.
 
 :::
-
-{" "}
 
 <br />
 
@@ -410,8 +378,6 @@ warning message and proceed.
 
 16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
-
-{" "}
 
 <br />
 

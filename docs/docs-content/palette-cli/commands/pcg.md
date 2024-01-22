@@ -14,8 +14,6 @@ dependencies to set up the kind cluster.
 
 The `pcg` command exposes the following subcommand.
 
-{" "}
-
 <br />
 
 - `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.

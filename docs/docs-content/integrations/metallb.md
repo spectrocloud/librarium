@@ -215,7 +215,7 @@ kubectl describe cm config --namespace metallb-system
 
 <br />
 Since the controller and speaker pods are using a previous copy of the configMap, existing deployments are unaware of the
-changes made to configMap.{" "}
+changes made to configMap.
 
 <br />
 <br />

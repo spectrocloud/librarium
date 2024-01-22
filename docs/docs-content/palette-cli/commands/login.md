@@ -11,8 +11,6 @@ The `login` command authenticates the Palette CLI with Palette. The `login` comm
 which prompts you for required values. Or, you can use flags to provide the command with all the required values such as
 the API key, the organization ID, and the Palette URL.
 
-{" "}
-
 <br />
 
 | **Flag**                | **Description**                                                                                                            | **Type** |

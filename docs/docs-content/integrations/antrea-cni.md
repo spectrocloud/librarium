@@ -28,22 +28,16 @@ vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 - When deploying a cluster using Palette, use the `podCIDR` parameter in the Pack section of the Kubernetes manifest.
   The classless inter-domain routing (CIDR) IP specified in the Kubernetes manifest always takes precedence.
 
-  {" "}
-
   <br />
 
 - When deploying a cluster using `kubeadm init` to use Antrea CIDRs, you would specify the `--pod-network-cidr <cidr>`
   option and provide the IP address with the CIDR. For example:
 
-  {" "}
-
   <br />
 
   `--pod-network-cidr=10.244.0.0/16`
 
-  {" "}
-
-  <br />{" "}
+  <br />
 
 :::warning
 

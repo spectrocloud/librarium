@@ -26,8 +26,6 @@ to a bootable device, such as a USB stick.
 
 1. Create a file called **user-data** that contains the additional configurations you want to override or inject.
 
-{" "}
-
 <br />
 
 ```shell
@@ -35,8 +33,6 @@ touch user-data
 ```
 
 2. Create an empty **meta-data** file:
-
-{" "}
 
 <br />
 
@@ -59,8 +55,6 @@ genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data met
 ```
 
 This generates an ISO file called site-user-data.iso in the current directory.
-
-{" "}
 
 <br />
 

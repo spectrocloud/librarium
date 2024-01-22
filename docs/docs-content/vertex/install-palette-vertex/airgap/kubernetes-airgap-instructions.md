@@ -166,8 +166,6 @@ OCI registry and restart the upload process.
   <Tabs groupId="oci-registry">
   <TabItem label="Harbor" value="harbor">
 
-{" "}
-
 <br />
 
     - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
@@ -193,8 +191,6 @@ OCI registry and restart the upload process.
 
   </TabItem>
   <TabItem label="AWS ECR" value="aws-ecr">
-
-{" "}
 
 <br />
 

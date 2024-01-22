@@ -660,8 +660,6 @@ reach-system:
 Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with
 the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
 
-{" "}
-
 <br />
 
 ```shell
@@ -716,8 +714,6 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
 The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may appear.
 This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and
 proceed.
-
-{" "}
 
 <br />
 

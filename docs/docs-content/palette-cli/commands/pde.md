@@ -76,8 +76,6 @@ delete. Use the `--name` flag to specify the name of the App deployment to delet
 | `--name` | The name of the App deployment.   | string   |
 | `--help` | Help for the `delete` subcommand. | -        |
 
-{" "}
-
 <br />
 
 ### List

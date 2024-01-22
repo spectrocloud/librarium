@@ -41,8 +41,6 @@ The Palette CLI is available for the following operating systems and architectur
 4. Move the binary to a folder that is part of your system's `PATH` environment variable. Use the following command to
    move the binary to the **/usr/local/bin** folder.
 
-{" "}
-
 <br />
 
 ```shell
@@ -55,8 +53,6 @@ chmod +x /usr/local/bin/palette
 5. Log in to Palette by using the `login` command. Replace `<YOUR-API-KEY>` with your Palette API key. If you are using
    a Palette self-hosted instance or Palette VerteX, replace the `--console-url` with your custom Palette URL.
 
-{" "}
-
 <br />
 
 ```shell
@@ -66,8 +62,6 @@ palette login --api-key <YOUR-API-KEY> --console-url https://console.spectroclou
 ## Validate
 
 Verify the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
-
-{" "}
 
 <br />
 

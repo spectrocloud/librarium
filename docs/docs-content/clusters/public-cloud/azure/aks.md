@@ -60,8 +60,6 @@ Management Console. [Click here for more..](gateways.md)
 
 :::
 
-{" "}
-
 <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></Video>
 
 To create an Azure cloud account you need the following Azure account information:

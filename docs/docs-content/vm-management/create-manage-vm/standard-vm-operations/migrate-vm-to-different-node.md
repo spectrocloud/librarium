@@ -114,8 +114,6 @@ You can validate evacuation completed by following the steps below.
 2. Issue the following command to mark the node as _un-schedulable_. This alerts the Kubernetes scheduler not to
    schedule any new pods on that node but allows existing pods on the node to continue to operate.
 
-   {" "}
-
    <br />
 
    Example:
