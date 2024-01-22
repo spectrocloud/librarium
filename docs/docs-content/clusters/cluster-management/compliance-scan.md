@@ -30,8 +30,8 @@ This scan examines the compliance of deployed Kubernetes security features again
 Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS
 benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test
 set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source
-tool called KubeBench from Aqua Security to perform this scan. Scans are run against master and worker nodes of the
-Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the
+tool called KubeBench from Aqua Security to perform this scan. Scans are run against control plane and worker nodes of
+the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the
 master or worker results if required.
 
 All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored cannot be automatically run,

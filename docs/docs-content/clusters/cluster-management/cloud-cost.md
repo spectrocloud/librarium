@@ -18,16 +18,16 @@ done based on the instance type and storage type selected for each machine pool.
 |     | **FORMULAS FOR CALCULATION**                                                                |
 | --- | ------------------------------------------------------------------------------------------- |
 |     | Machine Pool Cost = ( Number of Nodes X Instance Price ) + ( Storage Size X Storage Price ) |
-|     | Cluster Cloud Cost = Master Pool Cost + Worker Pool Cost                                    |
+|     | Cluster Cloud Cost = control plane pool cost + worker pool cost                             |
 
 **Example 1:**
 
 Let's assume that a cluster ‘demo’ is launched with two machine pools with the following configuration:
 
-| MACHINE POOL | SIZE | INSTANCE TYPE WITH COST     | ROOT DISK WITH COST          |
-| ------------ | ---- | --------------------------- | ---------------------------- |
-| MASTER POOL  | 3    | AWS t2.medium($0.0496/hour) | 60GB - gp2($0.00014/GB/hour) |
-| WORKER POOL  | 3    | AWS t2.large($0.0992/hour)  | 60GB - gp2($0.00014/GB/hour) |
+| MACHINE POOL  | SIZE | INSTANCE TYPE WITH COST     | ROOT DISK WITH COST          |
+| ------------- | ---- | --------------------------- | ---------------------------- |
+| Control Plane | 3    | AWS t2.medium($0.0496/hour) | 60GB - gp2($0.00014/GB/hour) |
+| Worker Pool   | 3    | AWS t2.large($0.0992/hour)  | 60GB - gp2($0.00014/GB/hour) |
 
 | Calculation for the above scenario                                    |
 | --------------------------------------------------------------------- |

@@ -17,8 +17,8 @@ cluster:
 
 :::info
 
-The master node pool is scaled from 1 to 3 or 3 to 5 nodes, etc. However, the scale-down operation is not supported for
-master nodes.
+The control plane node pool is scaled from 1 to 3 or 3 to 5 nodes, etc. However, the scale-down operation is not
+supported for control plane nodes.
 
 :::
 

@@ -68,8 +68,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
     number of nodes. Configure the worker node pool. The minimum number of CPUs and amount of memory depend on your
-    cluster profile, but in general you need at least 4 CPUs and 4 GB of memory both in the master pool and across all
-    worker pools.
+    cluster profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and
+    across all worker pools.
 
 <br />
 

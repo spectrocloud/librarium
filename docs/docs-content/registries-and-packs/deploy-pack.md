@@ -923,8 +923,8 @@ Click **Next** to continue.
 
 #### Nodes config
 
-In the **Nodes config** section, provide the details for the master and worker pools. For this tutorial, you can use the
-following minimal configuration:
+In the **Nodes config** section, provide the details for the control plane and worker pools. For this tutorial, you can
+use the following minimal configuration:
 
 | **Field**                   | **Value for the master-pool** | **Value for the worker-pool**                                             |
 | --------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
@@ -934,13 +934,13 @@ following minimal configuration:
 | Enable Autoscaler           | Not applicable                | No                                                                        |
 | Rolling update              | Not applicable                | Expand First. <br /> Launch a new node first, then shut down the old one. |
 
-Keep the **Cloud Configuration** the same for both master and worker pools.
+Keep the **Cloud Configuration** the same for both control plane and worker pools.
 
-| **Field**          | **Value**                                                                                                 |
-| ------------------ | --------------------------------------------------------------------------------------------------------- |
-| Instance Type      | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
-| Availability zones | Choose any _one_ availability zone.<br /> This tutorial uses the `us-east-1a` availability zone.          |
-| Disk size          | 60 GiB                                                                                                    |
+| **Field**          | **Value**                                                                                                        |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Instance Type      | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the control plane node. |
+| Availability zones | Choose any _one_ availability zone.<br /> This tutorial uses the `us-east-1a` availability zone.                 |
+| Disk size          | 60 GiB                                                                                                           |
 
 Click **Next** to continue.
 

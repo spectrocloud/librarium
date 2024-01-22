@@ -81,7 +81,7 @@ simplified language improves technical documentation.
 | Good ✅                                                                                   | Bad ❌                                                                                                                                           |
 | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | The core Kubernetes API is flexible and can also be extended to support custom resources. | The interior Kubernetes API is malleable and provides the capability for consumers to extended custom logic and inject custom logical resources. |
-| Choose a node to be the cluster master node.                                              | Designate a node to be the cluster master node.                                                                                                  |
+| Choose a node to be the cluster control plane node.                                       | Designate a node to be the cluster primary node.                                                                                                 |
 | Drain the node before a version upgrade.                                                  | It is essential to drain the node prior to a version upgrade.                                                                                    |
 
 ### SpectroCloud Voice

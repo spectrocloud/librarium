@@ -65,8 +65,8 @@ available to the users to apply to their existing clusters at a time convenient 
 ### Kubernetes
 
 Kubernetes components and configuration are hardened in accordance with the Kubernetes CIS Benchmark. Palette executes
-Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master and worker nodes are
-configured securely.
+Kubebench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the control plane and worker
+nodes are configured securely.
 
 ### Cloud Infrastructure
 
