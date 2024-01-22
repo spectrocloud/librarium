@@ -7,5 +7,5 @@ vale/
 **/*.yaml
 **/*.yml
 
-# Troublesome files
+# Troublesome files!
 tsconfig.json
