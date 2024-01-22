@@ -56,13 +56,11 @@ for Palette in the PCG installer template settings. <br />
 
 2. Inspect the log file located at **/var/log/cloud-init-output.log**.
 
-{" "}
+   <br />
 
-<br />
-
-```bash
-cat /var/log/cloud-init-output.log
-```
+   ```bash
+   cat /var/log/cloud-init-output.log
+   ```
 
 The **cloud-init-output.log** file will contain error messages if there are failures with connecting to Palette,
 authenticating, or downloading installation artifacts. A common cause for these errors is incorrect values provided to
@@ -452,8 +450,8 @@ log. <br />
 ### Debug Steps
 
 1. Ensure you have all the permissions listed in the
-   [VMware Privileges](../clusters/data-center/vmware.md#vmware-privileges) section before proceeding to provision a PCG
-   cluster.
+   [VMware Privileges](../clusters/data-center/vmware.md#vsphere-permissions) section before proceeding to provision a
+   PCG cluster.
 
 2. Contact your VMware administrator if you are missing any of the required permissions.
 

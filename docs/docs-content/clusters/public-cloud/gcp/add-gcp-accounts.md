@@ -56,8 +56,6 @@ account in Palette.
 
    - **JSON Credentials:** The JSON credentials object.
 
-   {" "}
-
    <br />
 
    :::info

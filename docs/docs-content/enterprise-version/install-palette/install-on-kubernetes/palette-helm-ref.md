@@ -12,7 +12,7 @@ keywords: ["self-hosted", "enterprise"]
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
 The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters
 available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using
-the Helm Chart, refer to the[Palette Helm install](install.md) guide.
+the Helm Chart, refer to the [Palette Helm install](install.md) guide.
 
 <br />
 
@@ -314,8 +314,6 @@ option, otherwise, Palette will ignore the configuration.
 | `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2`      |
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
-
-{" "}
 
 <br />
 

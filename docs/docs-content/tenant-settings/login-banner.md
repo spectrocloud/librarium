@@ -37,13 +37,9 @@ self-hosted Palette use the tenant URL defined during the Palette installation.
 
 5. Fill out the text box with the message you want all Palette users in your tenant to acknowledge before a login.
 
-{" "}
-
 <br />
 
 ![A view of the tenant settings platform page with an example login banner message.](/tenant-settings_login-banner_settings-page-view.png)
-
-{" "}
 
 <br />
 
@@ -59,8 +55,6 @@ You can validate the banner message is set up correctly by using the following s
 
 2. From your web browser, navigate to the Palette tenant URL for your organization.
 
-{" "}
-
 <br />
 
 :::info
@@ -72,8 +66,6 @@ defined during the Palette installation.
 :::
 
 3. Acknowledge the login banner message.
-
-{" "}
 
 <br />
 

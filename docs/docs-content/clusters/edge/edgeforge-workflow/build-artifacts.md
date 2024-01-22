@@ -34,7 +34,7 @@ also highlights the primary prerequisites to create a content bundle.
 
 ![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching.png)
 
-# Prerequisites
+## Prerequisites
 
 :::warning
 

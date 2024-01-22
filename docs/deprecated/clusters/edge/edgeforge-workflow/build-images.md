@@ -87,8 +87,6 @@ Choose the workflow that fits your needs.
 | `--cache-provider-images` | Additional flag to preload generated provider images into the installer ISO.             |
 | `--cloud-init-file`       | Specify the Edge Installer configuration user data file to include in the Edge artifact. |
 
-{" "}
-
 <br />
 :::info
 
@@ -158,8 +156,6 @@ Example:
 4. Review the content of the output directory you specified using `--output` flag. The output directory structure
    contains the following files.
 
-{" "}
-
 <br />
 
 ![The output directory content in a tree diagram](/clusters_edge-forge-workflow_build-images_edge-cli-output.png)
@@ -180,8 +176,6 @@ Example:
 
 7. Navigate to your output directory and issue the following command to build your Edge images. This command will take a
    few minutes to complete.
-
-{" "}
 
 <br />
 

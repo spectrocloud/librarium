@@ -18,7 +18,7 @@ Azure clusters can be created under the following scopes:
 
 Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
-# Prerequisites
+## Prerequisites
 
 These prerequisites must be met before deploying an AKS workload cluster:
 
@@ -59,8 +59,6 @@ Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked 
 Management Console. [Click here for more..](gateways.md)
 
 :::
-
-{" "}
 
 <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></Video>
 
@@ -271,18 +269,26 @@ In all types of node pools, configure the following.
 
 <br />
 
-:::info New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
+:::info
+
+New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
 example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose
 workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU
-workloads. :::
+workloads.
+
+:::
 
 <br />
 
 - Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (GB) in the **Disk size** field.
 
-:::info A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
+:::info
 
-A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes. :::
+A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
+
+A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
+
+:::
 
 <br />
 
@@ -315,8 +321,11 @@ following are the steps to create the custom user _kubeconfig_ file:
 
 <br />
 
-:::info The above step can also be completed using Spectro RBAC pack available under the Authentication section of
-Add-on Packs. :::
+:::info
+
+The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on Packs.
+
+:::
 
 <br />
 

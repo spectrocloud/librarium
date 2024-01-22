@@ -257,8 +257,6 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 9. Review the YAML configuration on the right and add the following changes:
 
-{" "}
-
 <br />
 
 ```yaml
@@ -287,30 +285,26 @@ charts:
 15. Review the YAML configuration on the right. Scroll down in the file until you find the parameter
     `grafana.adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
 
-{" "}
+    <br />
 
-<br />
-
-```yaml
-charts:
-  kube-prometheus-stack:
-    grafana:
-      adminPassword: "YourPassword"
-```
+    ```yaml
+    charts:
+      kube-prometheus-stack:
+        grafana:
+          adminPassword: "YourPassword"
+    ```
 
 16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
 
-{" "}
+    <br />
 
-<br />
-
-```yaml
-charts:
-  kube-prometheus-stack:
-    prometheus:
-      service:
-        type: ClusterIP
-```
+    ```yaml
+    charts:
+      kube-prometheus-stack:
+        prometheus:
+          service:
+            type: ClusterIP
+    ```
 
 17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality
     of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack
@@ -359,49 +353,43 @@ charts:
 
 32. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
 
-{" "}
+    <br />
 
-<br />
-
-```shell
-export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
-```
+    ```shell
+    export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
+    ```
 
 33. Create an htpasswd file for the user `agent` and assign a password. You can choose a different username if you
     prefer.
 
-{" "}
+    <br />
 
-<br />
+    ```shell
+    htpasswd -c auth agent
+    ```
 
-```shell
-htpasswd -c auth agent
-```
+    Output:
 
-Output:
-
-```shell
-New password: [agent_password_here]
-New password:
-Re-type new password:
-Adding password for user agent
-```
+    ```shell
+    New password: [agent_password_here]
+    New password:
+    Re-type new password:
+    Adding password for user agent
+    ```
 
 34. Convert the htpasswd file into a Kubernetes secret.
 
-{" "}
+    <br />
 
-<br />
+    ```shell
+      kubectl create secret generic basic-auth --from-file=auth --namespace monitoring
+    ```
 
-```shell
-  kubectl create secret generic basic-auth --from-file=auth --namespace monitoring
-```
+    Output:
 
-Output:
-
-```shell
-  secret "basic-auth" created
-```
+    ```shell
+      secret "basic-auth" created
+    ```
 
 35. Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left **Main
     Menu** > **Profiles** > select your cluster profile. Click on the Prometheus operator layer to edit the YAML.
@@ -409,21 +397,19 @@ Output:
 36. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values
     provided below. Replace the `hosts` parameter with your custom domain.
 
-{" "}
+    <br />
 
-<br />
-
-```yaml
-ingress:
-  enabled: true
-  ingressClassName: nginx
-  annotations:
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: basic-auth
-    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
-  hosts:
-    - metrics.example.com
-```
+    ```yaml
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/auth-type: basic
+        nginx.ingress.kubernetes.io/auth-secret: basic-auth
+        nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+      hosts:
+        - metrics.example.com
+    ```
 
 37. Confirm your updates on the next screen that displays.
 
@@ -474,8 +460,6 @@ kubectl get service nginx-ingress-controller --namespace nginx -o jsonpath='{.st
     On-prem, use the default certificate manager used by your organization.
 
 43. Update the network rules for each of the load balancers to allow inbound port 443.
-
-{" "}
 
 <br />
 

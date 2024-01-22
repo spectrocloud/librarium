@@ -33,13 +33,9 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
 
 4. From the cluster details page, select the **Profile** tab and click on **Attach Profile**.
 
-{" "}
-
 <br />
 
 ![The cluster details view when the profile tab is selected](/clusters_imported-clusters_attach-add-on-profile_cluster-details-profile-tab.png)
-
-{" "}
 
 <br />
 
@@ -52,8 +48,6 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
    **Cluster Profile** status displays as a green circle next to the layer. <br />
 
 ![A cluster profile with an add-on profile deployed successfully](/clusters_imported-clusters_attach-add-on-profile_cluster-details-app-deployed.png)
-
-{" "}
 
 <br />
 

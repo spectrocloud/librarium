@@ -591,8 +591,6 @@ progress by reviewing the event log. Click on the **Events** tab to view the log
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
 
-{" "}
-
 <br />
 
 While you wait for the cluster deployment process to complete, feel free to check out a video where we discuss the
@@ -1256,8 +1254,6 @@ cluster profile. You can learn more about the deployment progress by reviewing t
 tab to check the event log.
 
 ![Update the cluster](/tutorials/deploy-clusters/aws/clusters_public-cloud_deploy-k8s-event_log.png)
-
-{" "}
 
 <br />
 
