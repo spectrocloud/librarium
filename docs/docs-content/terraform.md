@@ -4,49 +4,64 @@ title: "Palette Terraform Support"
 description: "Understanding, installing and operating Spectro Cloud's Terraform Provider."
 hide_table_of_contents: false
 sidebar_position: 200
-sidebar_custom_props: 
+sidebar_custom_props:
   icon: "terraform"
 tags: ["terraform"]
 ---
 
+Palette supports the open-source Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to
+provide consistent CLI workflow support to multiple cloud services.
 
-
-Palette supports the open-source Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to provide consistent CLI workflow support to multiple cloud services. 
-
-Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write configuration files, checks whether the execution plan for a configuration matches your expectations (before deployment), and applies the changes to all the managed resources. 
+Terraform organizes cloud APIs into declarative, configuration files. Terraform supports the ability to write
+configuration files, checks whether the execution plan for a configuration matches your expectations (before
+deployment), and applies the changes to all the managed resources.
 
 ## Spectro Cloud Provider
 
-Spectro Cloud Palette's SaaS and On-Premise management API can be used with the Spectro Cloud Terraform provider. The provider is available in the HashiCorp Terraform registry as [Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). 
+Spectro Cloud Palette's SaaS and On-Premise management API can be used with the Spectro Cloud Terraform provider. The
+provider is available in the HashiCorp Terraform registry as
+[Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
 <br />
 
 ### Release Notes
-Information about the latest changes in the Spectro Cloud provider can be found in the [release notes](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+Information about the latest changes in the Spectro Cloud provider can be found in the
+[release notes](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
 <br />
 
 ### Provider Documentation
-Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page. 
+
+Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider
+[documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page.
+
 <br />
 
 ## Prerequisites
+
 The Spectro Cloud provider has the following requirements:
-* Spectro Cloud Palette account - [Sign up for a free trial account](https://www.spectrocloud.com/free-trial)
-* Terraform (minimum version 0.13+)
-* Kubernetes/kubectl CLI (minimum version 1.16+)
-<br />
+
+- Spectro Cloud Palette account - [Sign up for a free trial account](https://www.spectrocloud.com/free-trial)
+- Terraform (minimum version 0.13+)
+- Kubernetes/kubectl CLI (minimum version 1.16+)
+  <br />
 
 ## Usage
 
-For an end-to-end cluster provisioning example, check out the [end-to-end examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e).
+For an end-to-end cluster provisioning example, check out the
+[end-to-end examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e).
 
-You can find resource examples in the  [resource directory](https://registry.terraform.io/providers/spectrocloud/spectrocloud).
-
+You can find resource examples in the
+[resource directory](https://registry.terraform.io/providers/spectrocloud/spectrocloud).
 
 ## Modules
 
-There are two modules available to help you provision Spectro Cloud infrastructure resources. 
+There are two modules available to help you provision Spectro Cloud infrastructure resources.
 
 - [Palette Edge Native Terraform Module](https://registry.terraform.io/modules/spectrocloud/edge/spectrocloud/latest)
 - [Spectro Cloud Terraform Modules](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest)
 
-Review the [Spectro Cloud modules readme](https://github.com/spectrocloud/terraform-spectrocloud-modules#module-resources--requirements) document to learn more about supported provider versions and other requirements.
+Review the
+[Spectro Cloud modules readme](https://github.com/spectrocloud/terraform-spectrocloud-modules#module-resources--requirements)
+document to learn more about supported provider versions and other requirements.

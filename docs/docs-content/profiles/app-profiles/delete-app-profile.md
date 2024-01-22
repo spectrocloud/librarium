@@ -7,16 +7,14 @@ sidebar_position: 50
 tags: ["profiles", "app profiles"]
 ---
 
+Use the following steps to delete an app profile.
 
-Use the following steps to delete an app profile. 
+:::warning If an app profile has more than one version, ensure you delete the appropriate version by reviewing its
+configuration before deleting the profile. :::
 
-:::warning
-If an app profile has more than one version, ensure you delete the appropriate version by reviewing its configuration before deleting the profile.
-:::
+## Prerequisites
 
-## Prerequisites 
-
-- An existing app profile. 
+- An existing app profile.
 
 ## Delete App Profile
 
@@ -26,12 +24,13 @@ If an app profile has more than one version, ensure you delete the appropriate v
 
 3. Select **App Profiles** from the left **Main Menu**.
 
-4. To delete an app profile and all its versions, click on the **three-dot Menu** in the row of the profile to delete and select **Delete**. 
+4. To delete an app profile and all its versions, click on the **three-dot Menu** in the row of the profile to delete
+   and select **Delete**.
 
-   To delete a specific profile version, select the profile to display its details. Use the **drop-down Menu** next to the profile name and select the version to delete. Click the trash can icon to delete that version. 
+   To delete a specific profile version, select the profile to display its details. Use the **drop-down Menu** next to
+   the profile name and select the version to delete. Click the trash can icon to delete that version.
 
 You have successfully deleted an app profile or profile version.
-
 
 ## Validate
 
@@ -39,8 +38,10 @@ You have successfully deleted an app profile or profile version.
 
 2. From the **User Menu**, select **Switch to App Mode**.
 
-3. Select **App Profiles** from the left **Main Menu**.   
+3. Select **App Profiles** from the left **Main Menu**.
 
-4. If you deleted an app profile together with any versions it may have had, verify that it no longer displays in the list of available profiles. 
+4. If you deleted an app profile together with any versions it may have had, verify that it no longer displays in the
+   list of available profiles.
 
-5. If you deleted a specific app profile *version*, select the base profile to display its details, and click the **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.
+5. If you deleted a specific app profile _version_, select the base profile to display its details, and click the
+   **drop-down Menu** next to the profile name to verify the version you deleted is no longer listed.
