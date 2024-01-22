@@ -231,7 +231,9 @@ You can validate your cluster is up and in **Running** state.
 
 Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
 
+
 :::warning
+
 
 To use Custom Autoscale capability, the following details apply with regard to scale sets:
 
@@ -240,6 +242,7 @@ To use Custom Autoscale capability, the following details apply with regard to s
 - Ensure you create the scale set within the same resource group you specified during cluster creation in Palette.
 
 - When creating a scale set, ensure you specify the same Availability Zone (AZ) in the region you specified during cluster creation in Palette.
+
 
 :::
 
@@ -251,18 +254,24 @@ Basic autoscaling options are available for host-based scaling when you create y
 
 When scaling based on a metric, you add a rule to scale out VMs and a matching rule to scale in VMs when they are no longer needed.
 
+
 :::warning
 
+
 A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends adding matching scale-in and scale-out rules to avoid extra costs that could be incurred for unused provisioned resources.
+
 
 :::
 
 
 ![Screenshot of scaling options with arrows pointing to the "Scale based on metric" option and the link to add a rule.](/clusters_publiccloud_azure_add-rule.png)
 
+
 :::tip
 
+
 The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
+
 
 ::: -->
 

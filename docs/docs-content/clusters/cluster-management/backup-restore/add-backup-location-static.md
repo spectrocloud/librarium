@@ -69,12 +69,14 @@ The following sections provide detailed instructions. Select the environment whe
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3
+  :::BUCKET-NAME/*"]
       },
       {
         "Effect": "Allow",
         "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+        "Resource": ["arn:aws:s3
+  :::BUCKET-NAME"]
       }
     ]
   }
@@ -99,14 +101,14 @@ The following sections provide detailed instructions. Select the environment whe
   [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to
   learn more about common KMS issues.
 
-  :::tip
+:::tip
 
-  Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS
-  key. Refer to the
-  [Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)
-  guide to learn more.
+Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS key.
+Refer to the
+[Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)
+guide to learn more.
 
-  :::
+:::
 
 ### Add an AWS S3 Bucket
 
@@ -258,12 +260,12 @@ Use the following steps to validate adding the new backup location.
 
    <br />
 
-   :::warning
+:::warning
 
-   Ensure you check the **Force S3 path style** checkbox. S3 path style is required by Velero to access the MinIO object
-   storage. Palette uses [Velero](https://velero.io/docs) to create backups.
+Ensure you check the **Force S3 path style** checkbox. S3 path style is required by Velero to access the MinIO object
+storage. Palette uses [Velero](https://velero.io/docs) to create backups.
 
-   :::
+:::
 
 5. Next, provide the access key for the MiniIO user. The access key has two parts - the _access key ID_ and the _secret
    key_.

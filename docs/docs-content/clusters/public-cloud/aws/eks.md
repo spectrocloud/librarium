@@ -48,21 +48,21 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   <br />
 
-  :::info
+:::info
 
-  To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private
-  Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
-  [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS
-  Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName`
-  with your cluster's name. To learn more about the Tag Editor, refer to the
-  [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
+To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private
+Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
+[EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS
+Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName`
+with your cluster's name. To learn more about the Tag Editor, refer to the
+[AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
 
-  - `kubernetes.io/role/elb = 1`
-  - `sigs.k8s.io/cluster-api-provider-aws/role = public`
-  - `kubernetes.io/cluster/[yourClusterName] = shared`
-  - `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
+- `kubernetes.io/role/elb = 1`
+- `sigs.k8s.io/cluster-api-provider-aws/role = public`
+- `kubernetes.io/cluster/[yourClusterName] = shared`
+- `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
 
-  :::
+:::
 
 Use the following steps to deploy an EKS cluster on AWS.
 

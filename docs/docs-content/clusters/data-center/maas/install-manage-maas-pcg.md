@@ -52,13 +52,13 @@ correct install method.
 - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
   page for guidance.
 
-  :::warning
+:::warning
 
-  The installation does not work with Single Sign-On (SSO) credentials. You must use an API key from a local tenant
-  admin account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no
-  longer used to keep the PCG connected to Palette, so you can disable the account if desired.
+The installation does not work with Single Sign-On (SSO) credentials. You must use an API key from a local tenant admin
+account in Palette to deploy the PCG. After the PCG is configured and functioning, this local account is no longer used
+to keep the PCG connected to Palette, so you can disable the account if desired.
 
-  :::
+:::
 
 - A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The installation
   must be invoked on an up-to-date Linux system with an x86-64 architecture. ARM architecture is currently not
@@ -74,13 +74,13 @@ correct install method.
 
 - Sufficient available IPs within the configured MAAS subnets.
 
-  :::warning
+:::warning
 
-  By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure
-  that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by
-  the bare metal machines that MAAS manages.
+By default, the MAAS Kubernetes pack uses a pod classless inter-domain routing (CIDR) range of 192.168.0.0/16. Ensure
+that the pod CIDR range for any clusters you deploy after setting up the PCG does not overlap with the network used by
+the bare metal machines that MAAS manages.
 
-  :::
+:::
 
 - Each node in the PCG cluster requires a machine from MAAS in a ready state with the following resources:
 

@@ -68,6 +68,7 @@ Choose among one of the following ECR protection modes:
   - For STS, use the unique ARN of the AWS role and validate.
 
 :::warning To provision ECR based OCI Authentication make sure that the User's STS Role has the ECR policy configured.
+
 :::
 
 ## ECR Policy:

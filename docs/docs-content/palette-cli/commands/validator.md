@@ -155,7 +155,8 @@ Spec:
 Status:
   Conditions:
     Failures:
-      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3:::* from policy Controllers Policy
+      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3
+:::* from policy Controllers Policy
     Last Validation Time:  2023-11-09T21:03:14Z
     Message:               One or more required IAM permissions was not found, or a condition was not met
     Status:                False
@@ -252,7 +253,8 @@ Name:         validator-plugin-aws-aws-validator-spectro-cloud-base
 Status:
   Conditions:
     Failures:
-      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3:::* from policy Controllers Policy
+      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3
+:::* from policy Controllers Policy
     Last Validation Time:  2023-11-09T21:03:14Z
     Message:               One or more required IAM permissions was not found, or a condition was not met
     Status:                False

@@ -113,11 +113,13 @@ Use the following steps to add a Helm Chart repository to Palette.
 7. Click **Confirm**. If the credentials are valid and the Palette is able to connect to the Helm Chart registry, the
    registry is added to Palette. Otherwise, an error message is displayed.
 
-   :::tip
+:::tip
 
-   If you are encountering issues with adding a Helm Chart registry, review the endpoint URL and ensure that it is
-   accessible from the Palette. Verify the credentials and try again. Lastly, if the Helm Chart registry is hosted on a
-   server using a self-signed certificate, upload the certificate to Palette and skip TLS verification. :::
+If you are encountering issues with adding a Helm Chart registry, review the endpoint URL and ensure that it is
+accessible from the Palette. Verify the credentials and try again. Lastly, if the Helm Chart registry is hosted on a
+server using a self-signed certificate, upload the certificate to Palette and skip TLS verification.
+
+:::
 
 You now have a Helm Chart registry added to Palette. You can use the Helm Charts from this registry in your cluster
 profiles when creating a pack layer of the type Helm Chart.

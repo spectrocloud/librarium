@@ -31,11 +31,11 @@ Use the following steps to deploy a virtual cluster.
 
   <br />
 
-  :::info
+:::info
 
-  Palette does not support _Usage_ and _Cost_ metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
+Palette does not support _Usage_ and _Cost_ metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
 
-  :::
+:::
 
 ## Add Node-Level Policies in your Cloud Account
 

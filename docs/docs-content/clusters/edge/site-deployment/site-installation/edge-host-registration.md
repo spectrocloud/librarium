@@ -128,6 +128,7 @@ Use the following steps to manually register an Edge host in Palette.
 
 - Access to the Edge host's unique identifier. You can get the unique identifier or machine ID from the console output
   as the Edge host powers on. The Edge host unique identifier has the default prefix `edge-`. Example Output:
+
   ```shell
   time="2022-11-03T11:30:10Z" level=info Msg="starting stylus reset plugin"
   time="2022-11-03T11:30:102" level=info Msg="reset cached site name from uuid, cached: edge-03163342f7f0e6fe20de095ed8548c93"
@@ -137,7 +138,9 @@ Use the following steps to manually register an Edge host in Palette.
 
 :::info
 
-     You can also specify an Edge host's unique identifier in the user data by using the `stylus.site.Name` parameter. Refer to the [Installer Configuration](../../edge-configuration/installer-reference.md) resource to learn more about available configuration parameters.
+You can also specify an Edge host's unique identifier in the user data by using the `stylus.site.Name` parameter. Refer
+to the [Installer Configuration](../../edge-configuration/installer-reference.md) resource to learn more about available
+configuration parameters.
 
 :::
 

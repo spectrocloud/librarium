@@ -184,7 +184,8 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
         "s3:PutObjectAcl",
         "s3:PutObject"
       ],
-      "Resource": ["arn:*:s3:::*"],
+      "Resource": ["arn:*:s3
+:::*"],
       "Effect": "Allow"
     }
   ]

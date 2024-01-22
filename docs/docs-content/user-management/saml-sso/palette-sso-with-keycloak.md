@@ -53,12 +53,12 @@ an on-prem or edge environment and use the MetalLB pack to expose a load balance
    kubectl create --filename https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/latest/kubernetes/keycloak.yaml
    ```
 
-   :::info
+:::info
 
-   You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster. If you
-   choose to do so, replace the GitHub file link in the original command with a file path to your YAML file.
+You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster. If you
+choose to do so, replace the GitHub file link in the original command with a file path to your YAML file.
 
-   :::
+:::
 
 3. The installation process takes a couple of minutes. After installation completes, use the following command to
    retrieve the external IP address of the Keycloak service.

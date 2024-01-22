@@ -92,7 +92,9 @@ Use the following instructions to configure S3 backup for your enterprise cluste
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*"]
+        "Resource": ["arn:aws:s3
+  :::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3
+  :::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*"]
       },
       {
         "Sid": "ec2Permissions",

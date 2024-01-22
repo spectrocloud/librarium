@@ -55,10 +55,14 @@ You can make updates to a profile that is in use by one or more active clusters.
 will trigger an update to all clusters using the cluster profile. For more information, refer to
 [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md).
 
-:::warning We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we
-recommend you create a new profile version, and then upgrade active clusters to the new version. Check out the
+:::warning
+
+We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend you
+create a new profile version, and then upgrade active clusters to the new version. Check out the
 [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) for
-guidance on creating a new cluster profile version. :::
+guidance on creating a new cluster profile version.
+
+:::
 
 </TabItem>
 
@@ -70,7 +74,8 @@ You can modify the configuration of a deployed cluster without changing the clus
 profile itself. Instead, we recommend creating a new profile version, and then upgrade active clusters to the new
 version. Check out the
 [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) for
-guidance on creating a new cluster profile version.  
+guidance on creating a new cluster profile version.
+
 :::
 
 1. Log in to [Palette](https://console.spectrocloud.com).

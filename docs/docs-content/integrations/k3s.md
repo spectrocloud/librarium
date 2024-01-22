@@ -80,9 +80,13 @@ the
 guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more
 information.
 
-:::info In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s
-as your intended Kubernetes distribution when you build your OS image. For more information, refer to the
-[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide. :::
+:::info
+
+In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your
+intended Kubernetes distribution when you build your OS image. For more information, refer to the
+[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
+:::
 
 #### Configure OIDC Identity Provider for Edge
 
@@ -219,9 +223,13 @@ the
 guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more
 information.
 
-:::info In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s
-as your intended Kubernetes distribution when you build your OS image. For more information, refer to the
-[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide. :::
+:::info
+
+In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your
+intended Kubernetes distribution when you build your OS image. For more information, refer to the
+[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
+:::
 
 #### Configure OIDC Identity Provider for Edge
 
@@ -360,9 +368,13 @@ the
 guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more
 information.
 
-:::info In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s
-as your intended Kubernetes distribution when you build your OS image. For more information, refer to the
-[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide. :::
+:::info
+
+In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your
+intended Kubernetes distribution when you build your OS image. For more information, refer to the
+[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
+:::
 
 #### Configure OIDC Identity Provider for Edge
 
@@ -500,9 +512,13 @@ the
 guide and the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide for more
 information.
 
-:::info In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s
-as your intended Kubernetes distribution when you build your OS image. For more information, refer to the
-[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide. :::
+:::info
+
+In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your
+intended Kubernetes distribution when you build your OS image. For more information, refer to the
+[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+
+:::
 
 #### Configure OIDC Identity Provider for Edge
 

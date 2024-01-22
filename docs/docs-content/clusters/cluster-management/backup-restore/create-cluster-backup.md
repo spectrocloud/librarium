@@ -83,24 +83,27 @@ Use the following instructions to schedule a backup for an existing cluster.
 
 :::info
 
-    In Kubernetes, there are two types of resources: cluster-scoped and namespace-scoped.
+In Kubernetes, there are two types of resources: cluster-scoped and namespace-scoped.
 
-    Cluster-scoped resources, such as StorageClasses, ClusterRoles, and others, are visible and accessible to all users in the cluster, regardless of the namespaces.
+Cluster-scoped resources, such as StorageClasses, ClusterRoles, and others, are visible and accessible to all users in
+the cluster, regardless of the namespaces.
 
-    Namespace-scoped resources, like Pods, Deployments, Services, and others, belong to a specific namespace and can only be accessed by users with the necessary permissions.
+Namespace-scoped resources, like Pods, Deployments, Services, and others, belong to a specific namespace and can only be
+accessed by users with the necessary permissions.
 
 :::
 
-    <br />
+{" "}
+<br />
 
-    A cluster backup supports the following scheduling options:
+A cluster backup supports the following scheduling options:
 
-    * You can customize your backup to occur at a specific month, day, hour, and minute that suits your needs.
-    * Every week on Sunday at midnight
-    * Every two weeks at midnight
-    * Every month on the first at midnight
-    * Every two months on the first at midnight
-    * Never
+- You can customize your backup to occur at a specific month, day, hour, and minute that suits your needs.
+- Every week on Sunday at midnight
+- Every two weeks at midnight
+- Every month on the first at midnight
+- Every two months on the first at midnight
+- Never
 
 7. Click on the **Create Backup** button.
 
@@ -169,15 +172,20 @@ Use the following instructions to create an on-demand backup for an existing clu
 
 :::info
 
-    In Kubernetes, there are two types of resources: cluster-scoped and namespace-scoped.
+In Kubernetes, there are two types of resources: cluster-scoped and namespace-scoped.
 
-    Cluster-scoped resources, such as StorageClasses, ClusterRoles, and others, are visible and accessible to all users in the cluster, regardless of the namespaces.
+Cluster-scoped resources, such as StorageClasses, ClusterRoles, and others, are visible and accessible to all users in
+the cluster, regardless of the namespaces.
 
-    Namespace-scoped resources, like Pods, Deployments, Services, and others, belong to a specific namespace and can only be accessed by users with the necessary permissions.
+Namespace-scoped resources, like Pods, Deployments, Services, and others, belong to a specific namespace and can only be
+accessed by users with the necessary permissions.
 
 :::
 
-    <br />
+{" "}
+
+{" "}
+<br />
 
 6. Click on the **Create Backup** button.
 

@@ -89,8 +89,12 @@ contain.
 1. Open the generated HAR file in a text editor.
 2. Carefully examine the file contents and either remove or redact sensitive information.
 
-   :::tip If you're using a built-in search feature, ensure it's case-insensitive and check every instance of
-   confidential data it highlights. :::
+:::tip
+
+If you're using a built-in search feature, ensure it's case-insensitive and check every instance of confidential data it
+highlights.
+
+:::
 
 You can use the following keywords for reference.
 

@@ -35,8 +35,12 @@ Let's assume that a cluster ‘demo’ is launched with two machine pools with t
 | worker-pool cost = ( 3 X $0.0992 ) + ( 60 X $0.00014 ) = $0.306/hour  |
 | Cluster Cloud Cost = $0.1572 + $0.306 = $0.4632/hour                  |
 
-:::info For private clouds like VMware, OpenStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an
-administrative setting. These rates are used in place of instance-type rates for cost calculation. :::
+:::info
+
+For private clouds like VMware, OpenStack, MAAS, etc., the unit rate for CPU and Memory can be configured as an
+administrative setting. These rates are used in place of instance-type rates for cost calculation.
+
+:::
 
 ## Usage Cost
 
@@ -69,5 +73,8 @@ For the cluster configuration of master-pool & worker-pool considers in example 
 | Pod Storage Cost = 10GB \* $0.00014 = $0.0014/hour                              |
 | Pod Cost = $0.012896 + $0.006944 + $0.0014 = $0.02124/hour                      |
 
-:::info Cluster costs are calculated for all cluster types (new and existing) across all cloud types (public and
-private) :::
+:::info
+
+Cluster costs are calculated for all cluster types (new and existing) across all cloud types (public and private)
+
+:::

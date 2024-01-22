@@ -42,12 +42,12 @@ components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
-   :::warning
+:::warning
 
-   We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
-   settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
+settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
-   :::
+:::
 
 8. Click **Confirm & Create**.
 

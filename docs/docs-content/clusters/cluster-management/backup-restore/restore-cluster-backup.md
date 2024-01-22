@@ -87,11 +87,11 @@ backup. To learn more about the restore operation, refer to the Velero
 
 - The source cluster is available and healthy in Palette.
 
-  :::warning
+:::warning
 
-  If the source cluster is unavailable in Palette, you cannot restore its backup.
+If the source cluster is unavailable in Palette, you cannot restore its backup.
 
-  :::
+:::
 
 - A destination cluster is available and healthy in Palette.
 

@@ -37,11 +37,11 @@ Each prerequisite listed is required for a successful installation.
   images and packages. The OCI registry must be accessible from the Kubernetes cluster. We have verified the
   installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
 
-  :::warning
+:::warning
 
-  Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to
-  enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry. Refer to the
-  [Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance. :::
+Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable
+HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry. Refer to the
+[Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance. :::
 
 - An HTTP file server to host the Palette manifest. The file server must be accessible from the target environment where
   Palette will be installed. Below is a list of common file servers:
@@ -54,13 +54,13 @@ Each prerequisite listed is required for a successful installation.
 
   <br />
 
-  :::warning
+:::warning
 
-  Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
-  server is a critical component of the airgap installation and must be available post-install for Palette to function
-  properly.
+Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
+server is a critical component of the airgap installation and must be available post-install for Palette to function
+properly.
 
-  :::
+:::
 
 - jq - Command-line JSON processor installed and available. Refer to the [jq](https://jqlang.github.io/jq/download/)
   download page for guidance.
@@ -267,7 +267,9 @@ Upon completion, a success message will be displayed. The output in the example 
 :::info
 
 If you encounter an error during the airgap setup process, verify the required environment variables are set and
-populated correctly. If you are still having issues, reach out to our support team for assistance. :::
+populated correctly. If you are still having issues, reach out to our support team for assistance.
+
+:::
 
 10. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
     file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
@@ -277,7 +279,7 @@ populated correctly. If you are still having issues, reach out to our support te
     unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
     ```
 
-    :::tip
+:::tip
 
     If you want to get started quickly with a file server, install
     [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's
@@ -293,7 +295,9 @@ populated correctly. If you are still having issues, reach out to our support te
     ```
 
     We do not recommend serving the manifest content over HTTP, but it is an option if you want to get started quickly.
-    For production workloads, enable HTTPS on your file server. :::
+    For production workloads, enable HTTPS on your file server.
+
+:::
 
 11. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for

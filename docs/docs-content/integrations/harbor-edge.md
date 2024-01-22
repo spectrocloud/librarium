@@ -18,9 +18,12 @@ network.
 
 ## Versions Supported
 
-:::info The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile
-that includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on
-the cluster. You cannot manually choose a version of this pack.  
+:::info
+
+The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile that
+includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on the
+cluster. You cannot manually choose a version of this pack.
+
 :::
 
 <Tabs>
@@ -37,8 +40,12 @@ the cluster. You cannot manually choose a version of this pack.
 
 ### Parameters
 
-:::tip You can use a macro to avoid providing credentials in plain text. For more information about macros, refer to
-[Macros guide](../clusters/cluster-management/macros.md). :::
+:::tip
+
+You can use a macro to avoid providing credentials in plain text. For more information about macros, refer to
+[Macros guide](../clusters/cluster-management/macros.md).
+
+:::
 
 | **Parameter**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -132,11 +139,15 @@ kubectl get secret harbor-tls --namespace harbor --output jsonpath="{.data.tls\.
 
 You can use the following steps to push images to and pull images from the Harbor registry.
 
-:::info If you didn't provide a certificate or are using a self-signed certificate, Docker will refuse to connect to the
+:::info
+
+If you didn't provide a certificate or are using a self-signed certificate, Docker will refuse to connect to the
 registry unless you configure Docker to trust the certificate authority or use a insecure connection for your Harbor
 registry. You can configure Docker to use a insecure connection by adding a line
 `"insecure-registries": ["REGISTRY_URL"]` in your Docker `daemon.json` file. For more information about `daemon.json`,
-refer to [Docker documentation](https://docs.docker.com/config/daemon/). :::
+refer to [Docker documentation](https://docs.docker.com/config/daemon/).
+
+:::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

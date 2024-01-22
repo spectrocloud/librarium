@@ -83,6 +83,7 @@ server. The region experiences a bad weather event that causes a sustained outag
 You can enable an overlay network for your cluster during cluster creation.
 
 :::warning You will not be able to change the network overlay configurations after the cluster has already been created.
+
 :::
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
@@ -200,8 +201,12 @@ cluster.
 4. Select the **Nodes** tab. For each host, the **Private Ips** column lists an overlay IP address within the CIDR range
    you provided during cluster configuration.
 
-:::tip To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the
-**Edge Hosts** tab. The IP address displayed in the table is the external IP address. :::
+:::tip
+
+To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge
+Hosts** tab. The IP address displayed in the table is the external IP address.
+
+:::
 
 ## Access Cluster with Overlay Network Enabled
 

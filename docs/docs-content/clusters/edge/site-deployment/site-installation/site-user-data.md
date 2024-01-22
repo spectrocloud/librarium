@@ -62,14 +62,13 @@ This generates an ISO file called site-user-data.iso in the current directory.
 
    <br />
 
-   :::info
+:::info
 
-   You can use several software tools to create a bootable USB drive, such as
-   [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
-   [Fog](https://fogproject.org/download) or
-   [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
+You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://www.balena.io/etcher).
+For a PXE server, there are open-source projects such as [Fog](https://fogproject.org/download) or
+[Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
 
-   :::
+:::
 
 5. Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
    Installer will apply the new user data during the installation process.

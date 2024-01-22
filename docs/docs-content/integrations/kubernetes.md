@@ -293,12 +293,12 @@ virtual clusters. For guidance, refer to
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
-  :::warning
+:::warning
 
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-  rely on OIDC.
+We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+rely on OIDC.
 
-  :::
+:::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
@@ -313,13 +313,13 @@ virtual clusters. For guidance, refer to
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-  :::info
+:::info
 
-  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
-  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-  authentication and not SAML authentication.
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
+not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+authentication and not SAML authentication.
 
-  :::
+:::
 
 ### Configure Custom OIDC
 
@@ -634,12 +634,12 @@ virtual clusters. For guidance, refer to
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
-  :::warning
+:::warning
 
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-  rely on OIDC.
+We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+rely on OIDC.
 
-  :::
+:::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
@@ -654,13 +654,13 @@ virtual clusters. For guidance, refer to
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-  :::info
+:::info
 
-  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
-  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-  authentication and not SAML authentication.
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
+not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+authentication and not SAML authentication.
 
-  :::
+:::
 
 ### Configure Custom OIDC
 
@@ -977,12 +977,12 @@ for virtual clusters. For guidance, refer to
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
-  :::warning
+:::warning
 
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-  rely on OIDC.
+We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+rely on OIDC.
 
-  :::
+:::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
@@ -997,13 +997,13 @@ for virtual clusters. For guidance, refer to
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-  :::info
+:::info
 
-  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
-  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-  authentication and not SAML authentication.
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
+not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+authentication and not SAML authentication.
 
-  :::
+:::
 
 ### Configure Custom OIDC
 
@@ -1317,12 +1317,12 @@ for virtual clusters. For guidance, refer to
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as
   `noauth`.
 
-  :::warning
+:::warning
 
-  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-  rely on OIDC.
+We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+rely on OIDC.
 
-  :::
+:::
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the
   Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the
@@ -1337,13 +1337,13 @@ for virtual clusters. For guidance, refer to
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-  :::info
+:::info
 
-  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
-  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-  authentication and not SAML authentication.
+If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
+not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+authentication and not SAML authentication.
 
-  :::
+:::
 
 ### Configure Custom OIDC
 

@@ -763,7 +763,9 @@ Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
 
 The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To
 change these values, use the `palette pcg install --update-passwords` command. Refer to the
-[PCG command](../../palette-cli/commands/pcg.md#update-passwords) reference page for more information. :::
+[PCG command](../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
+
+:::
 
 The Palette CLI will now provision a PCG cluster in your VMware environment.
 
@@ -832,8 +834,12 @@ Use the following steps to resize a single-node PCG cluster to a three-node PCG 
 4. The gateway upgrade begins shortly after the update. Two new nodes are created on vSphere and the gateway is upgraded
    to a 3-node cluster.
 
-:::info Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched
-even for a 1-node gateway to support future expansion. :::
+:::info
+
+Scaling a 3-node cluster down to a 1-node cluster is not permitted.<p></p> A load balancer instance is launched even for
+a 1-node gateway to support future expansion.
+
+:::
 
 ## IP Address Management
 
@@ -867,7 +873,11 @@ Use the following steps to create a VMware cloud account.
 - A VMware cloud gateway must be configured. Refer to the [Create VMware Cloud Gateway](#delete-a-vmware-cloud-gateway)
   section for guidance.
 
-  :::info Enterprise version users should choose the <i>Use System Gateway</i> option. :::
+:::info
+
+Enterprise version users should choose the <i>Use System Gateway</i> option.
+
+:::
 
 In addition to the default cloud account already associated with the private cloud gateway, new user cloud accounts can
 be created for the different vSphere users.
@@ -913,9 +923,13 @@ section provides steps to change the password in Palette in the event the vCente
 Palette validates the password. Incorrect credentials will result in an error. As an extra precaution, try scaling a
 cluster up or down.
 
-:::info In addition to changing the password for a VMware account, Palette provides a way for you to also change the
-user associated with an account by entering a new username in the **Username** field. Ensure the new user account has
-the same permissions as the previous user account in vCenter. :::
+:::info
+
+In addition to changing the password for a VMware account, Palette provides a way for you to also change the user
+associated with an account by entering a new username in the **Username** field. Ensure the new user account has the
+same permissions as the previous user account in vCenter.
+
+:::
 
 # Deploy a VMware Cluster
 
@@ -980,9 +994,13 @@ Use the following steps to provision a new VMware cluster.
 6. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
    to track progress.
 
-:::info New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads.
-As an example, the default worker pool may be configured with 4 CPUs, 8 GB of memory for general-purpose workloads, and
-another worker pool with 8 CPUs, 16 GB of memory for advanced workloads that demand larger resources. :::
+:::info
+
+New worker pools may be added if it is desired to customize certain worker nodes to run specialized workloads. As an
+example, the default worker pool may be configured with 4 CPUs, 8 GB of memory for general-purpose workloads, and
+another worker pool with 8 CPUs, 16 GB of memory for advanced workloads that demand larger resources.
+
+:::
 
 # Delete a VMware Cluster
 
@@ -1000,8 +1018,12 @@ The Cluster Status is updated to **Deleting** while the Cluster Resources are be
 updated with the ongoing progress of the delete operation. Once all resources are successfully deleted, the Cluster
 Status changes to **Deleted** and is removed from the list of Clusters.
 
-:::info The Delete action is only available for Clusters that are fully provisioned. For Clusters that are still in the
-process of being provisioned, <b> Abort </b> action is available to stop provisioning and delete all resources. :::
+:::info
+
+The Delete action is only available for Clusters that are fully provisioned. For Clusters that are still in the process
+of being provisioned, <b> Abort </b> action is available to stop provisioning and delete all resources.
+
+:::
 
 # Force Delete a Cluster
 

@@ -701,14 +701,14 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
 
    <br />
 
-   :::info
+:::info
 
-   As you create tenants in VerteX, the tenant name is prefixed to the domain name you assigned to VerteX. For example,
-   if you create a tenant named `tenant1` and the domain name you assigned to VerteX is `vertex.example.com`, the tenant
-   URL will be `tenant1.vertex.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to
-   the VerteX load balancer.
+As you create tenants in VerteX, the tenant name is prefixed to the domain name you assigned to VerteX. For example, if
+you create a tenant named `tenant1` and the domain name you assigned to VerteX is `vertex.example.com`, the tenant URL
+will be `tenant1.vertex.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to the
+VerteX load balancer.
 
-   :::
+:::
 
 9. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
    system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`.

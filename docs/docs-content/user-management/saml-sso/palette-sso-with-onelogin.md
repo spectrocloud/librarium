@@ -120,6 +120,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 :::warning Setting the **MemberOf** value to **Administrators** is essential so the response from OneLogin contains the
 group name, which you will match with a Team in Palette. If you do not explicitly set the **MemberOf** value, Palette
 will not receive the group name. As a result, Palette will not be able to set the correct RBAC settings for your user.
+
 :::
 
 ![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
@@ -175,7 +176,7 @@ OneLogin and check what is sent in the payload. This way, you can ensure you are
 Add the Inspector's callback URL to your application's Redirect URIs list when using the Inspector. Check out the -
 [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8) to learn more.
 
-:::info
+:::
 
 ## Create Teams in Palette
 

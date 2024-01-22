@@ -132,8 +132,9 @@ preKubeadmCommands:
   - systemctl enable --now iscsid
 ```
 
-:::warning The following modifications in steps 11 and 12 are only applicable to VerteX instances.  
- :::
+:::warning The following modifications in steps 11 and 12 are only applicable to VerteX instances.
+
+:::
 
 10. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with
     `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper

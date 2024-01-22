@@ -15,6 +15,7 @@ achieved through a Self-hosted Private Cloud Gateway (PCG), which establishes a 
 Central and allows Palette to monitor Nutanix clusters.
 
 :::warning Nutanix is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+
 :::
 
 ## Get Started

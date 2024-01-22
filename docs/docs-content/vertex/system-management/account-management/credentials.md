@@ -80,12 +80,12 @@ recovery options.
   We recommend you use a physical device, such as a YubiKey, to create passkeys that comply with the standards and
   regulations of your organization.
 
-  :::warning
+:::warning
 
-  Not all passkey solutions are FIPS certified. Discuss with your security team to determine the best solution for your
-  organization.
+Not all passkey solutions are FIPS certified. Discuss with your security team to determine the best solution for your
+organization.
 
-  :::
+:::
 
 - If you are using a self-signed certificate, or a certificate signed by an unknown certificate authority (CA) for
   VerteX that is not trusted by the browser, you may have to add the certificate to the operating system's trust store

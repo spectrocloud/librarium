@@ -157,9 +157,12 @@ kubectl config set-cluster <CLUSTER_NAME> --insecure-skip-tls-verify=true
 
 6. This establishes the connectivity between the workload cluster and external API. Now the user can start communicating to the cluster using the ‘kubectl’ commands.
 
+
 :::info
 
+
 While creating EKS clusters with a **Private** endpoint, adding a proxy pack is mandatory for establishing Palette Web kubectl connectivity.
+
 
 :::
 

@@ -44,7 +44,9 @@ VNet contains the following network settings.
 
 :::info
 
-    **Note**: A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do not require a bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer required.
+A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network
+(VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do not require a
+bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer required.
 
 :::
 
@@ -112,7 +114,11 @@ with an SSH key attached.
 
 <br />
 
-:::info Port Prerequisite: Add an inbound network security group rule with destination port 22. :::
+:::info
+
+Port Prerequisite: Add an inbound network security group rule with destination port 22.
+
+:::
 
 1. Open the client terminal of your choice to execute:
 
