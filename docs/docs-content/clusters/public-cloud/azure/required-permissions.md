@@ -25,7 +25,7 @@ We support the following use cases:
 
 :::tip
 
-You can use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) to verify you have setup the correct permissions. The Validator will also check if the service principal used by Palette has the required permissions. The Validator Azure plugin requires the following permissions:
+You can use the [Validator](https://github.com/spectrocloud-labs/validator) with the [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) to verify you have setup the correct permissions. The Validator Azure plugin requires the following permissions:
 
 - Microsoft.Authorization/denyAssignments/read
 - Microsoft.Authorization/roleAssignments/read
