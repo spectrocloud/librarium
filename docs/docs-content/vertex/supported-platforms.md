@@ -9,37 +9,34 @@ tags: ["vertex"]
 
 Palette VerteX supports the following infrastructure platforms for deploying Kubernetes clusters:
 
-| **Platform** | **Additional Information** |
-| --- |  --- |
-| **AWS** |   Refer to the [AWS](#aws) section for additional guidance. | 
-| **AWS Gov** |  Refer to the [AWS](#aws) section for additional guidance. |
-| **Azure**|   Refer to the [Azure](#azure) section for additional guidance. |
-| **Azure Gov**|   Refer to the [Azure](#azure) section for additional guidance. |
-| **Edge**|  
+| **Platform**       | **Additional Information**                                    |
+| ------------------ | ------------------------------------------------------------- |
+| **AWS**            | Refer to the [AWS](#aws) section for additional guidance.     |
+| **AWS Gov**        | Refer to the [AWS](#aws) section for additional guidance.     |
+| **Azure**          | Refer to the [Azure](#azure) section for additional guidance. |
+| **Azure Gov**      | Refer to the [Azure](#azure) section for additional guidance. |
+| **Edge**           |
 | **VMware vSphere** |
 
-Review the following tables for additional information about the supported platforms. 
+Review the following tables for additional information about the supported platforms.
 
-:::info
-For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the [Cluster](../clusters/clusters.md) documentation.
+:::info For guidance on how to deploy a Kubernetes cluster on a supported platform, refer to the
+[Cluster](../clusters/clusters.md) documentation.
 
 :::
 
+The term _IaaS_ refers to Palette using compute nodes that are not managed by a cloud provider, such as bare metal
+servers or virtual machines.
 
-The term *IaaS* refers to Palette using compute nodes that are not managed by a cloud provider, such as bare metal servers or virtual machines.  
+#### AWS
 
-#### AWS 
-
-
-|  **Service** | **AWS Gov Support?**| 
-| --- |  --- | 
-| **IaaS** |  ✅ | 
-| **EKS**|  ✅ |
-
+| **Service** | **AWS Gov Support?** |
+| ----------- | -------------------- |
+| **IaaS**    | ✅                   |
+| **EKS**     | ✅                   |
 
 #### Azure
 
-
-|  **Service** | **Azure Gov Support?**|
-| --- |  --- |
-| **IaaS** |  ❌ |
+| **Service** | **Azure Gov Support?** |
+| ----------- | ---------------------- |
+| **IaaS**    | ❌                     |

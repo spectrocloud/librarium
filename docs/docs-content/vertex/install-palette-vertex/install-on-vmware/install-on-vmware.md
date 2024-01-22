@@ -7,15 +7,13 @@ hide_table_of_contents: false
 tags: ["vertex", "vmware"]
 ---
 
-
-
-
-Palette VerteX can be installed on VMware vSphere with internet connectivity or an airgap environment. When you install Palette VerteX, a three-node cluster is created. You use the interactive Palette CLI to install Palette VerteX on VMware vSphere. Refer to [Access Palette VerteX](../../vertex.md#access-palette-vertex) for instructions on requesting repository access.
+Palette VerteX can be installed on VMware vSphere with internet connectivity or an airgap environment. When you install
+Palette VerteX, a three-node cluster is created. You use the interactive Palette CLI to install Palette VerteX on VMware
+vSphere. Refer to [Access Palette VerteX](../../vertex.md#access-palette-vertex) for instructions on requesting
+repository access.
 
 ## Resources
 
 - [Install on VMware](install.md)
 
-
 - [VMware System Requirements](vmware-system-requirements.md)
-   
