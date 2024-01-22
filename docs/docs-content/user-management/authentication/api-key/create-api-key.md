@@ -51,7 +51,7 @@ below to learn more about creating an API key as a tenant admin.
 
 4. Fill out the following input fields:
 
-| **Input Field **    | **Description**                                                                                                   |
+| **Input Field**     | **Description**                                                                                                   |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **API Key Name**    | Assign a name to the API key.                                                                                     |
 | **Description**     | Provide a description for the API key.                                                                            |
