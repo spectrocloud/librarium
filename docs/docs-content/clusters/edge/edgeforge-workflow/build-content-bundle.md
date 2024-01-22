@@ -94,8 +94,6 @@ There are several Spectro Cloud CLI flags that you can use to customize the cont
 
 :::
 
-{" "}
-
 <br />
 
 ```shell

@@ -93,7 +93,6 @@ accessed by users with the necessary permissions.
 
 :::
 
-{" "}
 <br />
 
 A cluster backup supports the following scheduling options:
@@ -182,9 +181,6 @@ accessed by users with the necessary permissions.
 
 :::
 
-{" "}
-
-{" "}
 <br />
 
 6. Click on the **Create Backup** button.
