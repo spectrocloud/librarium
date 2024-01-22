@@ -681,8 +681,6 @@ that do not have a direct incoming connection from the management console.
 5. After the environment options, the next set of prompts is for configuring the PCG cluster for the VMware environment.
    The following table contains information about each prompt.
 
-{" "}
-
 <br />
 
 | **Parameter**                 | **Description**                                                                                                                                 |
@@ -693,8 +691,6 @@ that do not have a direct incoming connection from the management console.
 | **Allow Insecure Connection** | Enabling this option bypasses x509 verification. Enter `y` if using a vSphere instance with self-signed TLS certificates. Otherwise, enter `n`. |
 
 6. Next, fill out VMware account configurations. Specify values for the following properties.
-
-{" "}
 
 <br />
 
@@ -716,8 +712,6 @@ that do not have a direct incoming connection from the management console.
    pool. With DDNS, PCG VMs are assigned IP addresses via DNS. Review the following tables to learn more about each
    parameter.
 
-{" "}
-
 <br />
 
 ##### Static Placement Configuration
@@ -738,8 +732,6 @@ that do not have a direct incoming connection from the management console.
 
 8. Specify the cluster boot configuration.
 
-{" "}
-
 <br />
 
 | **Parameter**                             | **Description**                                                                                                                                                |
@@ -748,8 +740,6 @@ that do not have a direct incoming connection from the management console.
 | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled. |
 
 9. Enter the vSphere Machine configuration for the Private Cloud Gateway.
-
-{" "}
 
 <br />
 
@@ -761,8 +751,6 @@ that do not have a direct incoming connection from the management console.
 
 10. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
     similar to the following.
-
-{" "}
 
 <br />
 

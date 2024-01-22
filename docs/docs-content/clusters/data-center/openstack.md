@@ -417,8 +417,6 @@ daemon installed and has connectivity to the Palette Management console as well 
 4. Next, provide environment configurations for the cluster. Refer to the following table for information about each
    option.
 
-{" "}
-
 <br />
 
 | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
@@ -433,8 +431,6 @@ daemon installed and has connectivity to the Palette Management console as well 
 5. After the environment options, the next set of prompts is for configuring the PCG cluster for the OpenStack
    environment. The following table contains information about each prompt.
 
-{" "}
-
 <br />
 
 | **Parameter**                   | **Description**                                                                                                                                            |
@@ -446,8 +442,6 @@ daemon installed and has connectivity to the Palette Management console as well 
 | **CA Certificate**              | This is only required when using TLS, in which case you would provide a base64-encoded CA certificate for your OpenStack instance.                         |
 
 6. Next, fill out additional OpenStack configurations.
-
-{" "}
 
 <br />
 
@@ -467,8 +461,6 @@ daemon installed and has connectivity to the Palette Management console as well 
 
 7. Configure the OpenStack PCG Machine by answering the following prompts.
 
-{" "}
-
 <br />
 
 | **Parameter**         | **Description**                                                                                                       |
@@ -479,14 +471,12 @@ daemon installed and has connectivity to the Palette Management console as well 
 8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
    similar to the following.
 
-{" "}
+   <br />
 
-<br />
-
-```bash hideClipboard
-==== PCG config saved ====
-Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
-```
+   ```bash hideClipboard
+   ==== PCG config saved ====
+   Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+   ```
 
 :::info
 

@@ -56,13 +56,11 @@ for Palette in the PCG installer template settings. <br />
 
 2. Inspect the log file located at **/var/log/cloud-init-output.log**.
 
-{" "}
+   <br />
 
-<br />
-
-```bash
-cat /var/log/cloud-init-output.log
-```
+   ```bash
+   cat /var/log/cloud-init-output.log
+   ```
 
 The **cloud-init-output.log** file will contain error messages if there are failures with connecting to Palette,
 authenticating, or downloading installation artifacts. A common cause for these errors is incorrect values provided to

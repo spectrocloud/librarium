@@ -57,8 +57,6 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin git
 
 2. Create a workspace and download the builder code.
 
-{" "}
-
 <br />
 
 ```shell
@@ -72,8 +70,6 @@ git clone https://github.com/spectrocloud/pxke-samples
    understand the various steps involved in this process. You must supply credentials to your RHEL subscription to
    successfully build the image.
 
-{" "}
-
 <br />
 
 ```shell
@@ -86,8 +82,6 @@ git clone https://github.com/spectrocloud/pxke-samples
 ```
 
 4. Upload the image to your container registry.
-
-{" "}
 
 <br />
 

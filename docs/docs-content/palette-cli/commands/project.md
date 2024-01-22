@@ -10,8 +10,6 @@ tags: ["palette-cli"]
 Use the `project` command to manage projects, the project scope for the CLI, and list all available projects. The
 `project` command supports the following subcommands.
 
-{" "}
-
 <br />
 
 - `deactivate` - Deactivate your active Palette project. This command requires you to have tenant admin privileges.

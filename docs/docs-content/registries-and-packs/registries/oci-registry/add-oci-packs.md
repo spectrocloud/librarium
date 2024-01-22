@@ -155,8 +155,6 @@ registry you are adding.
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ARN       | The Amazon Resource Name (ARN) of the IAM role to assume. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM trust relationship changes you must add to your IAM role. |
 
-{" "}
-
 <br />
 
 :::warning

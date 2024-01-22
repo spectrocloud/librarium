@@ -68,8 +68,6 @@ to ensure they are given the appropriate permissions.
 1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App
    Integration** button.
 
-{" "}
-
 <br />
 
 :::info
@@ -79,32 +77,22 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 :::
 
-{" "}
-
 <br />
 
 2. In the screen that opens, select **SAML 2.0** for the sign-in method. Then click **Next**.
 
-{" "}
-
 <br />
 
 ![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.png)
-
-{" "}
 
 <br />
 
 1. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from
    `My Web App` to `Spectro Cloud Palette SAML`. If desired, you can also upload a logo for the application.
 
-{" "}
-
 <br />
 
 ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.png)
-
-{" "}
 
 <br />
 
@@ -113,13 +101,9 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 5. Set the value of **Service** to **Okta**.
 
-{" "}
-
 <br />
 
 ![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
-
-{" "}
 
 <br />
 
@@ -143,13 +127,9 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 | ------------- | ------------- | --------------- | ----- |
 | `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
 
-{" "}
-
 <br />
 
 ![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.png)
-
-{" "}
 
 <br />
 
@@ -158,26 +138,18 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 9. Once brought to main application page, copy the **Metadata URL**, open it up in a separate page, then copy of the
    contents of the XML.
 
-{" "}
-
 <br />
 
 ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.png)
-
-{" "}
 
 <br />
 
 10. Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider
     Metadata**.
 
-{" "}
-
 <br />
 
 ![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
-
-{" "}
 
 <br />
 
@@ -192,8 +164,6 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 1. Log in to Palette through SSO as an Okta user who is a member of the Okta application to verify SSO. If you are still
    logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at the top right.
 
-{" "}
-
 <br />
 
 ![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
@@ -204,8 +174,6 @@ Under **Group Attribute Statements (Optional)** specify the below values.
    Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass
    SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
    SSO. Click on the **Sign in** button to log in via SSO.
-
-{" "}
 
 <br />
 

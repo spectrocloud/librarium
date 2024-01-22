@@ -52,8 +52,6 @@ You can upload an SSL certificate in Palette by using the following steps.
 
 6. Copy and paste the certificate authority into the **Certificate authority** field.
 
-{" "}
-
 <br />
 
 ![A view of the certificate upload screen](/palette_system-management_ssl-certifiacte-management_certificate-upload.png)

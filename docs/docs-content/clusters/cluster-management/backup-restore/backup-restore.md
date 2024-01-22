@@ -29,8 +29,6 @@ learn more about backup and restore actions for a workspace.
 
 :::
 
-{" "}
-
 <br />
 
 ## What is a Backup Location?

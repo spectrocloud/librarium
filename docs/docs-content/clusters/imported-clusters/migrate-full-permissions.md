@@ -27,13 +27,9 @@ tags: ["clusters", "imported clusters"]
 4. From the cluster details page, click on **Migrate To Full Permissions** to start the migration process. A prompt will
    ask you to confirm your decision. Select **OK**.
 
-{" "}
-
 <br />
 
 ![The cluster details view with an arrow pointing to the migrate button](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page.png)
-
-{" "}
 
 <br />
 
@@ -44,8 +40,6 @@ tags: ["clusters", "imported clusters"]
    following command to verify the Kubernetes context. If you find yourself in an incorrect Kubernetes context, switch
    to the proper context so you are interacting with the imported cluster when using kubectl.
 
-{" "}
-
 <br />
 
 ```shell
@@ -54,8 +48,6 @@ kubectl config current-context
 
 7. Issue the command you copied in your terminal to start the migration. Your terminal output will look similar to the
    example output below.
-
-{" "}
 
 <br />
 
@@ -97,8 +89,6 @@ job.batch/palette-import-presetup-job created
 
 8. In a few minutes, the side drawer will disappear, and the **Profile**, **Workloads**, **Scan**, and **Backups** tabs
    will become unlocked and available for interaction.
-
-{" "}
 
 <br />
 
