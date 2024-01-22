@@ -7,10 +7,9 @@ sidebar_position: 50
 tags: ["palette-cli"]
 ---
 
-
-The Palette CLI has built-in support for the open-source [Validator](https://github.com/spectrocloud-labs/validator) framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette. 
-
-
+The Palette CLI has built-in support for the open-source [Validator](https://github.com/spectrocloud-labs/validator)
+framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation
+of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
 
 The `validator` command exposes the following subcommands.
 
@@ -18,36 +17,38 @@ The `validator` command exposes the following subcommands.
 
 - [`uninstall`](#uninstall) - Uninstall the Validator framework and remove all Validator plugins.
 
-
 ## Prerequisites
 
 The Validator requires the following dependencies.
 
-- [Docker](https://docs.docker.com/get-docker) - The Validator requires Docker. 
+- [Docker](https://docs.docker.com/get-docker) - The Validator requires Docker.
 
-:::warning
-Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the [Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator and its plugins.
-:::
+:::warning Credentials and other permissions may be required depending on the Validator plugins you use. For example,
+the AWS plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the
+[Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator
+and its plugins. :::
 
 ## Install
 
-Use the `install` subcommand to install the Validator framework and configure Validator plugins. An interactive wizard will guide you through the installation process. You can also use a configuration file to install the Validator. 
-
+Use the `install` subcommand to install the Validator framework and configure Validator plugins. An interactive wizard
+will guide you through the installation process. You can also use a configuration file to install the Validator.
 
 :::info
 
-A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the [Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
+A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind
+cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You
+can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the
+[Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
 
 :::
 
-
 The `install` subcommand accepts the following flags.
 
-| **Short Flag** | **Long Flag**  | **Description**  | **Type**    |
-|-|----------|------------------|-------------|
-| `-f` |`--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file. | string |
-| `-o` |`--config-only` | Generate a configuration file without proceeding with an actual install. Default: false| boolean |
-| `-h` |`--help`| Help with any command. | - |
+| **Short Flag** | **Long Flag**   | **Description**                                                                                               | **Type** |
+| -------------- | --------------- | ------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file. | string   |
+| `-o`           | `--config-only` | Generate a configuration file without proceeding with an actual install. Default: false                       | boolean  |
+| `-h`           | `--help`        | Help with any command.                                                                                        | -        |
 
 ### Examples
 
@@ -72,14 +73,18 @@ Generate a configuration file without proceeding with an actual installation
 palette validator install --config-only
 ```
 
-
 ### Configuration Files
 
-After the install wizard completes, the Validator will generate a configuration file. You can use the generated configuration file to install the Validator using with the same configuration you specified in the wizard. You also need this configuration file to uninstall the Validator.
+After the install wizard completes, the Validator will generate a configuration file. You can use the generated
+configuration file to install the Validator using with the same configuration you specified in the wizard. You also need
+this configuration file to uninstall the Validator.
 
-Once Validator is installed, the configuration file is located in the `$HOME/.palette/validator` directory and is named `validator.yaml`.
+Once Validator is installed, the configuration file is located in the `$HOME/.palette/validator` directory and is named
+`validator.yaml`.
 
-The install output displays the location of the configuration file. In the example below, the configuration file is located at `/Users/demo/.palette/validator/validator-20231109135306/validator.yaml`. The output is truncated for brevity.
+The install output displays the location of the configuration file. In the example below, the configuration file is
+located at `/Users/demo/.palette/validator/validator-20231109135306/validator.yaml`. The output is truncated for
+brevity.
 
 ```shell hideClipboard {1,11}
 validator configuration file saved: /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
@@ -95,25 +100,28 @@ You can now use your cluster with:
 kubectl cluster-info --context kind-validator-kind-cluster --kubeconfig /Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig
 ```
 
-The kubeconfig file to the kind cluster is also located in the `$HOME/.palette/validator` directory and is named `kind-cluster.kubeconfig`. Its location is displayed in the install output.
-
+The kubeconfig file to the kind cluster is also located in the `$HOME/.palette/validator` directory and is named
+`kind-cluster.kubeconfig`. Its location is displayed in the install output.
 
 ### Review Validation Results
 
-The Validator generates a report after the validation process is complete. All validations are stored as a [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CR) in the `validator` namespace. Each plugin you specified during installation will have its own CR. Additionally, the Validator creates a CR containing all the validation results and Validator configurations. 
-
+The Validator generates a report after the validation process is complete. All validations are stored as a
+[Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CR) in the
+`validator` namespace. Each plugin you specified during installation will have its own CR. Additionally, the Validator
+creates a CR containing all the validation results and Validator configurations.
 
 :::tip
 
-The kind cluster's kubeconfig file is located in the `$HOME/.palette/validator` directory and is named `kind-cluster.kubeconfig`. Its location is displayed in the install output. You can use this kubeconfig file to access the kind cluster and view the CRs.
+The kind cluster's kubeconfig file is located in the `$HOME/.palette/validator` directory and is named
+`kind-cluster.kubeconfig`. Its location is displayed in the install output. You can use this kubeconfig file to access
+the kind cluster and view the CRs.
 
 Example: `/Users/demo/.palette/validator/validator-20231109135306/kind-cluster.kubeconfig`
 
 :::
 
-
-Below is example output of the CRs the Validator creates after a successful validation process. Two plugins were used in this example: the `aws` plugin and the `network` plugin.
-
+Below is example output of the CRs the Validator creates after a successful validation process. Two plugins were used in
+this example: the `aws` plugin and the `network` plugin.
 
 ```shell hideClipboard
 NAME                                             CREATED AT
@@ -123,7 +131,8 @@ validationresults.validation.spectrocloud.labs   2023-11-09T21:02:12Z
 validatorconfigs.validation.spectrocloud.labs    2023-11-09T21:02:12Z
 ```
 
-You can use the `kubectl` command to view the validation results. To review all the results collectively, use the `describe` command to display the `validationresults` CR. 
+You can use the `kubectl` command to view the validation results. To review all the results collectively, use the
+`describe` command to display the `validationresults` CR.
 
 ```shell
 kubectl describe validationresults --namespace validator
@@ -206,11 +215,15 @@ Status:
   State:                   Failed
 Events:                    <none>
 ```
+
 #### Success
 
-The `State` field in the `Status` section of the `ValidationResult` CR indicates if the validation was successful or not. If the validation was successful, the `State` field is set to `Succeeded`. 
+The `State` field in the `Status` section of the `ValidationResult` CR indicates if the validation was successful or
+not. If the validation was successful, the `State` field is set to `Succeeded`.
 
-In the example below, the `State` field is set to `Succeeded` for the `validator-plugin-aws-validator-plugin-aws` CR. This check was successful because the usage for all service quotas is below the specified buffer. The output is truncated for brevity.
+In the example below, the `State` field is set to `Succeeded` for the `validator-plugin-aws-validator-plugin-aws` CR.
+This check was successful because the usage for all service quotas is below the specified buffer. The output is
+truncated for brevity.
 
 ```yaml hideClipboard {12}
 Name:         validator-plugin-aws-validator-plugin-aws
@@ -229,8 +242,9 @@ Status:
 
 #### Fail
 
-If the validation is not successful, the `State` field is set to `Failed`. The `Conditions.Failures` section contains additional information about the failure. In this example, several IAM permissions are missing for the `SpectroCloudRole` IAM role. The output is truncated for brevity.
-
+If the validation is not successful, the `State` field is set to `Failed`. The `Conditions.Failures` section contains
+additional information about the failure. In this example, several IAM permissions are missing for the
+`SpectroCloudRole` IAM role. The output is truncated for brevity.
 
 ```yaml hideClipboard {6,8,12}
 Name:         validator-plugin-aws-aws-validator-spectro-cloud-base
@@ -247,46 +261,49 @@ Status:
   State:                   Failed
 ```
 
-Use the error output to help you address the failure. In this example, you would need to add the missing IAM permissions to the `SpectroCloudRole` IAM role. Other failures may require you to update your environment to meet the validation requirements.
-
+Use the error output to help you address the failure. In this example, you would need to add the missing IAM permissions
+to the `SpectroCloudRole` IAM role. Other failures may require you to update your environment to meet the validation
+requirements.
 
 #### Resolve Failures
 
-Each plugin may have its own set of failures. Resolving failures will depend on the plugin and the failure. Use the error output to help you address the failure. Below are some tips to help you resolve failures. 
+Each plugin may have its own set of failures. Resolving failures will depend on the plugin and the failure. Use the
+error output to help you address the failure. Below are some tips to help you resolve failures.
 
-| **Plugin** | **Failure Scenario**  | **Guidance**  |
-|-|----------|------------------|
-| AWS | Missing IAM permissions| The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies. |
-| AWS | Insufficient Service Quota Buffer | The usage quota for a service or multiple service quotas is above the specified buffer. Refer to AWS [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) documentation to review the default limits. Use the [Service Quotas](https://console.aws.amazon.com/servicequotas/) console to request an increase to your account, or remove resources to reduce the usage. |  
-| Network | TCP connection error | The Validator could not establish a Transmission Control Protocol (TCP) connection to the specified host and port. Ensure the host and port are accessible from the Validator's current network. If the current network is not in scope, ensure you conduct the test from a network in scope. Refer to the [Network Ports](../../architecture/networking-ports.md) resource for a list of Palette required ports. | 
-| Network| Unable to connect | This could be caused by several issues. If you require network connections to use a proxy server, specify the usage of a network proxy and provide the required proxy server information. |
-| Network | Unable to resolve DNS | The Validator was unable to resolve the specified DNS name. Ensure the DNS name is valid and accessible from the Validator's current network default DNS resolver. Use network tools such as `dig` and `nslookup` to debug DNS issues. |
-| Network | Insufficient IP Addresses | The Validator was unable to find a sufficient number of IP addresses in the specified IP range. Ensure the IP range is valid and has enough IP addresses to satisfy the Validator's requirements.  Discuss these findings with your network administrator. |
-| vSphere| Missing permissions | The user account used by Palette or VerteX is missing one or more required permissions. Refer to [Palette Required vSphere Permissions](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#vsphere-permissions), or the [VerteX Required vSphere Permissions](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#vsphere-permissions) resource for information about required permissions. |
-| vSphere | Missing tags | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags. |
-| vSphere | Folder missing or not accessible | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install. |
+| **Plugin** | **Failure Scenario**              | **Guidance**                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS        | Missing IAM permissions           | The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.                                                                                                                                                                                     |
+| AWS        | Insufficient Service Quota Buffer | The usage quota for a service or multiple service quotas is above the specified buffer. Refer to AWS [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) documentation to review the default limits. Use the [Service Quotas](https://console.aws.amazon.com/servicequotas/) console to request an increase to your account, or remove resources to reduce the usage.                                                    |
+| Network    | TCP connection error              | The Validator could not establish a Transmission Control Protocol (TCP) connection to the specified host and port. Ensure the host and port are accessible from the Validator's current network. If the current network is not in scope, ensure you conduct the test from a network in scope. Refer to the [Network Ports](../../architecture/networking-ports.md) resource for a list of Palette required ports.                                                 |
+| Network    | Unable to connect                 | This could be caused by several issues. If you require network connections to use a proxy server, specify the usage of a network proxy and provide the required proxy server information.                                                                                                                                                                                                                                                                         |
+| Network    | Unable to resolve DNS             | The Validator was unable to resolve the specified DNS name. Ensure the DNS name is valid and accessible from the Validator's current network default DNS resolver. Use network tools such as `dig` and `nslookup` to debug DNS issues.                                                                                                                                                                                                                            |
+| Network    | Insufficient IP Addresses         | The Validator was unable to find a sufficient number of IP addresses in the specified IP range. Ensure the IP range is valid and has enough IP addresses to satisfy the Validator's requirements. Discuss these findings with your network administrator.                                                                                                                                                                                                         |
+| vSphere    | Missing permissions               | The user account used by Palette or VerteX is missing one or more required permissions. Refer to [Palette Required vSphere Permissions](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#vsphere-permissions), or the [VerteX Required vSphere Permissions](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#vsphere-permissions) resource for information about required permissions. |
+| vSphere    | Missing tags                      | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags.                                                     |
+| vSphere    | Folder missing or not accessible  | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install.                                                                                                                                                                                             |
 
-Every 30 seconds, the Validator will continuously re-issue a validation and update the `ValidationResult` CR with the result of the validation. The validation results are hashed, and result events are only emitted if the result has changed. Once you resolve the failure, the Validator will update the `ValidationResult` CR with the new result.
+Every 30 seconds, the Validator will continuously re-issue a validation and update the `ValidationResult` CR with the
+result of the validation. The validation results are hashed, and result events are only emitted if the result has
+changed. Once you resolve the failure, the Validator will update the `ValidationResult` CR with the new result.
 
-Use the `kubectl describe` command to view the validation results. 
+Use the `kubectl describe` command to view the validation results.
 
 ```shell
 kubectl describe validationresults --namespace validator
 ```
 
-
 ## Uninstall
 
-Use the `uninstall` subcommand to uninstall the Validator framework and remove all Validator plugins. To remove the Validator, you must specify the `--config-file` flag.
+Use the `uninstall` subcommand to uninstall the Validator framework and remove all Validator plugins. To remove the
+Validator, you must specify the `--config-file` flag.
 
 The `uninstall` subcommand accepts the following flags.
 
-| **Short Flag** | **Long Flag**  | **Description**  | **Type**    |
-|-|----------|------------------|-------------|
-| `-f` |`--config-file` | Uninstall the Validator using a configuration file (required). Provide the file path to the configuration file. | string |
-| `-d` |`--delete-cluster` | Delete the Validator kind cluster. This does not apply if using a preexisting Kubernetes cluster. Default: true. | bool |
-| `-h` |`--help`| Help with any command. | - |
-
+| **Short Flag** | **Long Flag**      | **Description**                                                                                                  | **Type** |
+| -------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file`    | Uninstall the Validator using a configuration file (required). Provide the file path to the configuration file.  | string   |
+| `-d`           | `--delete-cluster` | Delete the Validator kind cluster. This does not apply if using a preexisting Kubernetes cluster. Default: true. | bool     |
+| `-h`           | `--help`           | Help with any command.                                                                                           | -        |
 
 ### Examples
 
