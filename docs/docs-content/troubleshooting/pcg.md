@@ -450,8 +450,8 @@ log. <br />
 ### Debug Steps
 
 1. Ensure you have all the permissions listed in the
-   [VMware Privileges](../clusters/data-center/vmware.md#vmware-privileges) section before proceeding to provision a PCG
-   cluster.
+   [VMware Privileges](../clusters/data-center/vmware.md#vsphere-permissions) section before proceeding to provision a
+   PCG cluster.
 
 2. Contact your VMware administrator if you are missing any of the required permissions.
 

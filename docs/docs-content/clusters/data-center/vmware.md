@@ -43,7 +43,7 @@ The following prerequisites must be met before deploying a Kubernetes clusters i
 
 - Network Time Protocol (NTP) configured on each ESXi host.
 
-- An active vCenter account with all the permissions listed in [VMware Privileges](vmware.md#vmware-privileges).
+- An active vCenter account with all the permissions listed in [VMware Privileges](vmware.md#vsphere-permissions).
 
 - Installed PCG for VMware. Installing the PCG will automatically register a cloud account for VMware in Palette. You
   can register your additional VMware cloud accounts in Palette as described in the
