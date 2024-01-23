@@ -182,7 +182,7 @@ OneLogin and check what is sent in the payload. This way, you can ensure you are
 Add the Inspector's callback URL to your application's Redirect URIs list when using the Inspector. Check out the -
 [OpenID Connect Inspector Tutorial](https://youtu.be/do0agd71hE8) to learn more.
 
-:::info
+:::
 
 ## Create Teams in Palette
 

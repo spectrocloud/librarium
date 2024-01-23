@@ -1050,14 +1050,9 @@ This release adds a fix for the permissions of vSphere GET folders.
 Our on-premises version gets attention to finer details with this release:
 
 - The Spectro Cloud database can now be backed up and restored.
-- Whereas previous on-premises versions allowed upgrading only to major versions, this release allows <Tooltip
-  trigger={<u>upgrading</u>}> <a href="/enterprise-version/system-console-dashboard/#updatemanagement">Upgrades</a> to
-  the Spectro Cloud platform are published to the Spectro Cloud repository and a notification is displayed on the
-  console when new versions are available. </Tooltip> to minor versions of the Spectro Cloud platform.
-- Monitoring the installation using the dedicated <Tooltip trigger={<u>UI</u>}>The platform installer contains a web
-  application called the
-  <a href="/enterprise-version/deploying-the-platform-installer/#monitorinstallation">Supervisor</a>, to provide
-  detailed progress of the installation. </Tooltip> now provides more details when migrating from the quick start
+- Whereas previous on-premises versions allowed upgrading only to major versions, this release allows upgrading to minor
+  versions of the Spectro Cloud platform.
+- Monitoring the installation using the dedicated UI now provides more details when migrating from the quick start
   version to the enterprise version.
 - AWS and GCP clusters can now be provisioned from an on-premises Spectro Cloud system.
 
@@ -1071,12 +1066,8 @@ Other new features:
 
 - New customers can now sign up for free trials of Spectro Cloud. When ready, it is easy to upgrade plans and set up
   automatic payments using credit/debit cards.
-- <Tooltip trigger={<u>Pack constraints</u>}>
-    <a href="/registries-and-packs/pack-constraints/">Pack constraints</a> are a set of rules defined at the pack level
-    to validate the packs for a Profile or a Cluster before it gets created or updated. Packs must be validated before
-    the cluster is submitted to ensure a successful deployment.
-  </Tooltip> have been enabled to reduce the chances of cluster deployment failures that might occur due to incorrect values
-  being set.
+- Pack constraints have been enabled to reduce the chances of cluster deployment failures that might occur due to
+  incorrect values being set.
 - Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for
   [Kubernetes](/integrations/kubernetes/).
 

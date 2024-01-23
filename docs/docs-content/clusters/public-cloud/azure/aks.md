@@ -18,7 +18,7 @@ Azure clusters can be created under the following scopes:
 
 Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
-# Prerequisites
+## Prerequisites
 
 These prerequisites must be met before deploying an AKS workload cluster:
 
