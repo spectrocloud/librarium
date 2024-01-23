@@ -190,8 +190,8 @@ have selected the **Region** and your **SSH Key Pair Name**, click on **Next**.
 
 #### Nodes Configuration
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data
-plane (worker nodes) of the host cluster.
+The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
+host cluster.
 
 Before you proceed to next section, review the following parameters. <br /> <br />
 
@@ -359,8 +359,8 @@ click on **Next**. <br />
 
 #### Nodes Configuration
 
-The **Nodes config** section allows you to configure the nodes that compose the control plane (master nodes) and data
-plane (worker nodes) of the Kubernetes cluster.
+The **Nodes config** section allows you to configure the nodes that compose the control plane nodes and worker nodes of
+the Kubernetes cluster.
 
 Refer to the [Node Pool](../cluster-management/node-pool.md) guide for a list and description of parameters.
 
@@ -832,13 +832,13 @@ docker version
 Download the tutorial image to your local machine. <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.0
+docker pull ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 Next, start the container, and open a bash session into it. <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.0 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
 
 Navigate to the tutorial code.
@@ -873,7 +873,7 @@ Check out the following git tag.
 <br />
 
 ```shell
-git checkout v1.1.0
+git checkout v1.1.2
 ```
 
 Change the directory to the tutorial code.
@@ -1126,13 +1126,13 @@ resource "spectrocloud_cluster_azure" "cluster" {
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
-    name                    = "master-pool"
-    count                   = var.azure_master_nodes.count
-    instance_type           = var.azure_master_nodes.instance_type
-    azs                     = var.azure_master_nodes.azs
-    is_system_node_pool     = var.azure_master_nodes.is_system_node_pool
+    name                    = "control-plane-pool"
+    count                   = var.azure_control_plane_nodes.count
+    instance_type           = var.azure_control_plane_nodes.instance_type
+    azs                     = var.azure_control_plane_nodes.azs
+    is_system_node_pool     = var.azure_control_plane_nodes.is_system_node_pool
     disk {
-      size_gb = var.azure_master_nodes.disk_size_gb
+      size_gb = var.azure_control_plane_nodes.disk_size_gb
       type    = "Standard_LRS"
     }
   }
@@ -1328,7 +1328,7 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.0
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 ## Wrap-up
