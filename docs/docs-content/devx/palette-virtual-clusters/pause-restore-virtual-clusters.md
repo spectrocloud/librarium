@@ -41,5 +41,9 @@ details, do the following steps.
 - **Paused**: For a paused virtual cluster
 - **Running**: For a resumed or running virtual cluster
 
-:::tip The status of a virtual cluster can also be viewed on the cluster listing page. The health column displays the
-status of the virtual cluster. :::
+:::tip
+
+The status of a virtual cluster can also be viewed on the cluster listing page. The health column displays the status of
+the virtual cluster.
+
+:::

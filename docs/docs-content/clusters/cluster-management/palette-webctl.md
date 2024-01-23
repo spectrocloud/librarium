@@ -159,6 +159,8 @@ kubectl config set-cluster <CLUSTER_NAME> --insecure-skip-tls-verify=true
 
 :::info
 
+
+
 While creating EKS clusters with a **Private** endpoint, adding a proxy pack is mandatory for establishing Palette Web kubectl connectivity.
 
 :::

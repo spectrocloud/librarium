@@ -53,9 +53,13 @@ using the event history.
 
 <br />
 
-:::warning An AWS account with cloud trail created is the prerequisite.
+:::warning
 
-The permissions listed need to be enabled for CloudWatch. :::
+An AWS account with cloud trail created is the prerequisite.
+
+The permissions listed need to be enabled for CloudWatch.
+
+:::
 
 ### Permission List
 

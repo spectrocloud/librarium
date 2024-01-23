@@ -71,9 +71,13 @@ env:
 
 <br />
 
-:::info The service connectivity follows a fixed hierarchy in Palette. The connectivity is established for higher-level
-services using the output variable. Higher-level refers to the service added to the app profile after adding the
-database service. :::
+:::info
+
+The service connectivity follows a fixed hierarchy in Palette. The connectivity is established for higher-level services
+using the output variable. Higher-level refers to the service added to the app profile after adding the database
+service.
+
+:::
 
 <br />
 

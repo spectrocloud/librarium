@@ -233,6 +233,7 @@ Azure Autoscale allows you to provision nodes to support workload demand on your
 
 :::warning
 
+
 To use Custom Autoscale capability, the following details apply with regard to scale sets:
 
 - You must create a virtual machine scale set. To learn how, review Microsoft's [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) guide.
@@ -253,6 +254,7 @@ When scaling based on a metric, you add a rule to scale out VMs and a matching r
 
 :::warning
 
+
 A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends adding matching scale-in and scale-out rules to avoid extra costs that could be incurred for unused provisioned resources.
 
 :::
@@ -261,6 +263,7 @@ A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autosc
 ![Screenshot of scaling options with arrows pointing to the "Scale based on metric" option and the link to add a rule.](/clusters_publiccloud_azure_add-rule.png)
 
 :::tip
+
 
 The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
 

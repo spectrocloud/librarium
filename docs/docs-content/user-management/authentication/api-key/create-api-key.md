@@ -63,7 +63,9 @@ below to learn more about creating an API key as a tenant admin.
 
 :::warning
 
-Ensure you save the API key in a secure location. You will not be able to view the API key again. :::
+Ensure you save the API key in a secure location. You will not be able to view the API key again.
+
+:::
 
 </TabItem>
 <TabItem label="Tenant" value="tenant">
@@ -94,7 +96,9 @@ Ensure you save the API key in a secure location. You will not be able to view t
 
 :::warning
 
-Ensure you save the API key in a secure location. You will not be able to view the API key again. :::
+Ensure you save the API key in a secure location. You will not be able to view the API key again.
+
+:::
 
 </TabItem>
 

@@ -9,3 +9,4 @@ vale/
 
 # Troublesome files!
 tsconfig.json
+src/components/IconMapper/dynamicFontAwesomeImports.js
