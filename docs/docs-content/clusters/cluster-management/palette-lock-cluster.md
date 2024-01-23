@@ -95,4 +95,8 @@ To enable auto remediation:
 
 - Select `Platform Settings` from the left menu and toggle `Cluster Auto Remediation` toggle button.
 
-:::info This does not apply to EKS, AKS or TKE clusters. :::
+:::info
+
+This does not apply to EKS, AKS or TKE clusters.
+
+:::

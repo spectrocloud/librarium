@@ -495,9 +495,13 @@ Users can now allocate CPU and Memory [quotas](#workspace-quota) for each **name
     previous step.
   - Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
 
-:::info A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a
-ClusterRole and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a
-ClusterRole to all the namespaces in your cluster, you use a ClusterRoleBinding. :::
+:::info
+
+A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and
+bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the
+namespaces in your cluster, you use a ClusterRoleBinding.
+
+:::
 
 - Role Name: Define a custom role name to identify the cluster role
 

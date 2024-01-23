@@ -171,4 +171,8 @@ kubectl get deployment REPLACE_ME \
 --namespace REPLACE_ME -o=jsonpath='{.spec.template.spec.containers[0].image}'
 ```
 
-:::tip Use the command `kubectl get deployments --all-namespaces` to list all deployments in the cluster. :::
+:::tip
+
+Use the command `kubectl get deployments --all-namespaces` to list all deployments in the cluster.
+
+:::
