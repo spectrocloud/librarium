@@ -9,9 +9,13 @@ tags: ["troubleshooting", "har", "support"]
 When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to
 help us identify and resolve those issues.
 
-:::warning HAR files contain all network activity for a specific page, including sensitive and confidential information,
-such as API keys, secrets, cookies, passwords, and more. Before sending your HAR files to us, sanitize the sensitive
-data. We do not recommend using any third-party tools for HAR sanitization, as they can overlook some details. :::
+:::warning
+
+HAR files contain all network activity for a specific page, including sensitive and confidential information, such as
+API keys, secrets, cookies, passwords, and more. Before sending your HAR files to us, sanitize the sensitive data. We do
+not recommend using any third-party tools for HAR sanitization, as they can overlook some details.
+
+:::
 
 This guide explains how you can generate HAR files in Chrome, Safari, and Firefox and sanitize the sensitive data they
 contain.
@@ -89,16 +93,24 @@ contain.
 1. Open the generated HAR file in a text editor.
 2. Carefully examine the file contents and either remove or redact sensitive information.
 
-   :::tip If you're using a built-in search feature, ensure it's case-insensitive and check every instance of
-   confidential data it highlights. :::
+   :::tip
+
+   If you're using a built-in search feature, ensure it's case-insensitive and check every instance of confidential data
+   it highlights.
+
+   :::
 
 You can use the following keywords for reference.
 
 <details>
 <summary>Keywords for sanitization</summary>
 
-:::warning This list is not exhaustive. You should also check for data that is considered sensitive or confidential
-within your organization. :::
+:::warning
+
+This list is not exhaustive. You should also check for data that is considered sensitive or confidential within your
+organization.
+
+:::
 
 - **state**
 - **shdf**

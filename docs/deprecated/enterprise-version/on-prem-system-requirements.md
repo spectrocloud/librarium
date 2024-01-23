@@ -784,8 +784,12 @@ If the network is a Distributed Port Group under a vSphere Distributed Switch (V
 
 - Connectivity from the Virtual Machines to the vCenter.
 
-:::info Ensure your data center CIDR IP address does not overlap with the Kubernetes PodCIDR range. During installation,
-you can change the Kubernetes PodCIDR range settings. :::
+:::info
+
+Ensure your data center CIDR IP address does not overlap with the Kubernetes PodCIDR range. During installation, you can
+change the Kubernetes PodCIDR range settings.
+
+:::
 
 ## Proxy Requirements
 
@@ -806,8 +810,12 @@ The following section provides the hardware requirements for Palette Platform VM
 
 <br />
 
-:::info The size of the Tenant Cluster, in terms of the number of nodes or size of the nodes, does not impact the
-capacity guidance below. :::
+:::info
+
+The size of the Tenant Cluster, in terms of the number of nodes or size of the nodes, does not impact the capacity
+guidance below.
+
+:::
 
 ## On-premise Configurations
 

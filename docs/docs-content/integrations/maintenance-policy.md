@@ -110,7 +110,9 @@ An information icon in the profile stack also displays a message that instructs 
 
 :::info
 
-You can review deprecated packs in the [Deprecated Packs](deprecated-packs.md) resource. :::
+You can review deprecated packs in the [Deprecated Packs](deprecated-packs.md) resource.
+
+:::
 
 We adhere to the following stages of deprecation:
 

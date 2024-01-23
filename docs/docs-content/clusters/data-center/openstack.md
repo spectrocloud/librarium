@@ -476,9 +476,13 @@ The following steps need to be performed to delete a cloud gateway:
 
 4. Delete the gateway.
 
-:::info The delete gateway operation deletes the gateway instance registered in the management console, however the
-gateway infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. need to be deleted
-on the OpenStack console :::
+:::info
+
+The delete gateway operation deletes the gateway instance registered in the management console, however the gateway
+infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. need to be deleted on the
+OpenStack console.
+
+:::
 
 ## Resizing an OpenStack gateway
 
@@ -609,8 +613,12 @@ The Cluster Status is updated to **Deleting** while cluster resources are being 
 with the ongoing progress of the delete operation. Once all resources are successfully deleted, the cluster status
 changes to **Deleted** and is removed from the list of clusters.
 
-:::info Delete action is only available for clusters that are fully provisioned. For clusters that are still in the
-process of being provisioned, the 'Abort' action is available to stop provisioning and delete all resources. :::
+:::info
+
+Delete action is only available for clusters that are fully provisioned. For clusters that are still in the process of
+being provisioned, the 'Abort' action is available to stop provisioning and delete all resources.
+
+:::
 
 # Force Delete a Cluster
 
@@ -628,5 +636,9 @@ enables cluster force delete from the Tenant Admin and Project Admin scope.
    - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the
      estimated time for the auto-enabling of the **Force Delete** button.
 
-:::warning If there are any cloud resources still on the cloud, the user should cleanup those resources before going for
-the force deletion. :::
+:::warning
+
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force
+deletion.
+
+:::

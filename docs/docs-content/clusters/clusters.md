@@ -75,8 +75,12 @@ computing, network, and storage infrastructure for the Kubernetes clusters. Thes
 master and worker nodes in dedicated network domains and limiting access through the use constructs like security
 groups.
 
-:::info The security measures mentioned above are implemented for Palette's out-of-the-box OS and Kubernetes packs. For
-customized OS Kubernetes packs, users are responsible for taking the relevant measures to secure their clusters. :::
+:::info
+
+The security measures mentioned above are implemented for Palette's out-of-the-box OS and Kubernetes packs. For
+customized OS Kubernetes packs, users are responsible for taking the relevant measures to secure their clusters.
+
+:::
 
 ## Day-2 Management
 
@@ -84,9 +88,13 @@ Palette provides several options to manage Kubernetes clusters on an ongoing bas
 up/down the cluster by adding/reducing the number of nodes in a node pool, add extra worker pools, resizing nodes in a
 node pool by modifying the instance type, and adding additional fault domains such as availability zones to a node pool.
 
-:::info Cluster management operations result updating cluster definitions in Palette's database. The updated definition
-is retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated
-clusters to their desired state. :::
+:::info
+
+Cluster management operations result updating cluster definitions in Palette's database. The updated definition is
+retrieved by the management agent running in the cluster. A rolling upgrade is then performed to bring associated
+clusters to their desired state.
+
+:::
 
 ## Cluster Health
 

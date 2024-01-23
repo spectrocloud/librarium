@@ -90,9 +90,13 @@ installation. After the VM is powered on, perform the following steps to ensure 
 4. Navigate to the On-Prem System Console to perform the initial configuration. Additional administration tasks like
    SMTP setup, certificate management, etc. can also be performed from the On-Prem System Console.
 
-:::info Typically, the installation takes around 10 mins after powering on the virtual machine. If the installation
-fails or takes an unusually long time, please look for failure messages in the install status page, or access system
-logs from the "Logs" tab to get detailed information about the failure. :::
+:::info
+
+Typically, the installation takes around 10 mins after powering on the virtual machine. If the installation fails or
+takes an unusually long time, please look for failure messages in the install status page, or access system logs from
+the "Logs" tab to get detailed information about the failure.
+
+:::
 
 ## Initial Configuration
 

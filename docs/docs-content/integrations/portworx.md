@@ -149,8 +149,12 @@ following:
 
 2. Setup certificate related configuration in `externalKvdb.cacert`, `externalKvdb.cert`, and `externalKvdb.key`.
 
-:::warning Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will
-result in Portworx deployment failure. :::
+:::warning
+
+Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will result in
+Portworx deployment failure.
+
+:::
 
 ## Etcd Presets
 
@@ -344,8 +348,12 @@ manifest Add-on pack.
 
 <br />
 
-:::warning Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is
-configured, reconciliation should recover Portworx. :::
+:::warning
+
+Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is configured,
+reconciliation should recover Portworx.
+
+:::
 
 Secret can be created using the spec below,
 

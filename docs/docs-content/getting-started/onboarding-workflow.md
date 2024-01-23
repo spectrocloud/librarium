@@ -37,11 +37,17 @@ cluster creation. The major components of this session are as follows:
   - Try one of our out-of-the-box cluster profile configurations applicable on your own cluster or in our Palette
     Virtual Cluster environment.
 
+  {" "}
+
   <br />
 
-  :::info Once the user experience session is finished, the user will be familiar with Palette's workflow and deployment
+  :::info
+
+  Once the user experience session is finished, the user will be familiar with Palette's workflow and deployment
   pipeline. This section of the document is a quick start to the deployment process. The different Palette features and
-  Day-2 operations are detailed in the remainder of this documentation site. :::
+  Day-2 operations are detailed in the remainder of this documentation site.
+
+  :::
 
 ### Connect with us
 

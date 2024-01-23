@@ -227,8 +227,12 @@ The following steps need to be performed to provision a new TKS cluster:
    | **Cluster Endpoint Access** | Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.                                                                                     |
    | **Public Security Group**   | A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. |
 
-   :::info Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be
-   supported in the near future. :::
+   :::info
+
+   Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported
+   in the near future.
+
+   :::
 
 5. Public Access CIDRs - To enable access restrictions.
 

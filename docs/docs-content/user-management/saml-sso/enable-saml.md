@@ -93,7 +93,9 @@ To set up an OIDC-based SSO in Spectro Cloud Palette perform the following steps
          users. This default Palette Team/IdP group can be applied to the Palette SAML Panel as a one-time
          setting.<p></p><br />
 
-:::info Your IdP may require the following settings to configure OIDC SSO with Palette:
+:::info
+
+Your IdP may require the following settings to configure OIDC SSO with Palette:
 
 - **Callback URL** - The URL to which Auth0 redirects users after they authenticate. Ensure that this value is
   configured for the application you registered with the OIDC Identity Provider.

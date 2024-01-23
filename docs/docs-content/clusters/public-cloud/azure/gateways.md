@@ -112,7 +112,11 @@ with an SSH key attached.
 
 <br />
 
-:::info Port Prerequisite: Add an inbound network security group rule with destination port 22. :::
+:::info
+
+Port Prerequisite: Add an inbound network security group rule with destination port 22.
+
+:::
 
 1. Open the client terminal of your choice to execute:
 

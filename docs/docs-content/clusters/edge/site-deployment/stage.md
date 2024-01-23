@@ -154,6 +154,7 @@ nohup make vmdk &
 
     :::info
 
+
     If you are using a *Tenant Registration Token* for auto-registration, you can omit the environment variable `REGISTRATION_URL`.
 
     :::
