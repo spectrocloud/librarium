@@ -238,7 +238,7 @@ enumerated as a `Resource Scope Matrix` as below:
 ## Resource Scope Matrix
 
 | Component       | Resource Key   | Operations                                   | Scope          | Usage                                                       |
-| --------------- | -------------- | -------------------------------------------- | -------------- | ----------------------------------------------------------- | ------------------------------------ |
+| --------------- | -------------- | -------------------------------------------- | -------------- | ----------------------------------------------------------- |
 | API Key         | apiKey         | create, get, list, update, delete            | Tenant         | API Key related operations                                  |
 | Appliance       | edgehost       | create,get,list,update,delete                | Project        | Edge appliance deployment and management                    |
 | Audit           | audit          | get, list                                    | Tenant Project | Audit log access                                            |
@@ -250,11 +250,11 @@ enumerated as a `Resource Scope Matrix` as below:
 | Location        | location       | create,get,list,update,delete                | Tenant Project | location services related to backup and restore             |
 | Macro           | macro          | create,get,list,update,delete                | Tenant Project | Key value management for Palette resources                  |
 | Machine         | machine        | create,get,list,delete,update                | Project        | Palette node pool management                                |
-| Private Gateway | privateGateway | create,get,list,update,delete                | Tenant         | PCG creation and maintenance                                | ack Registry creation and management |
+| Private Gateway | privateGateway | create,get,list,update,delete                | Tenant         | PCG creation and maintenance                                |
 | Registry        | packRegistry   | create, get, list, update, delete            | Tenant         | Creation and management of registries                       |
 | Role            | role           | create,update,delete,get,list                | Tenant         | creation and management of Palette roles                    |
 | Project         | project        | create,get,list,delete,update                | Project        | Creation and management of Palette roles                    |
-| Workspace       | workspace      | create,list,update,delete,backup,restore,get | Project        | Workspace operations including backup and restore           |                                      |
+| Workspace       | workspace      | create,list,update,delete,backup,restore,get | Project        | Workspace operations including backup and restore           |
 | Team            | team           | create,list,update,delete,get                | Tenant         | Creation and management of user teams in Palette            |
 | User            | user           | create,update,delete,get,list                | Tenant         | Creation and management of users in Palette                 |
 

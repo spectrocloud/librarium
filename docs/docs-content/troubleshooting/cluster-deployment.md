@@ -96,7 +96,7 @@ why a service may fail are:
                 curl -k https://<KUBE_API_SERVER_IP>:6443
             ```
 
-            :::info
+      :::info
 
       You can obtain the URL for the Kubernetes API using this command: kubectl cluster-info.
 
