@@ -37,10 +37,6 @@ cluster creation. The major components of this session are as follows:
   - Try one of our out-of-the-box cluster profile configurations applicable on your own cluster or in our Palette
     Virtual Cluster environment.
 
-  {" "}
-
-  {" "}
-
   <br />
 
   :::info

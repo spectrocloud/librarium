@@ -49,35 +49,35 @@ The following table gives the namespace to pod mapping for Palette Tenant Cluste
 The following table gives the namespace to pod mapping for Palette vSphere Gateway.
 
 | PALETTE NAMESPACES  | PODS                                                   |
-| ------------------- | ------------------------------------------------------ | ----------------------- | ---------------- | --- | --- | --- | --- | ---------------- |
+| ------------------- | ------------------------------------------------------ |
 | capi-webhook-system | capi-controller-manager-< UUID >                       |
 |                     | capi-kubeadm-bootstrap-controller-manager-< UUID >     |
 |                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
 |                     | capv-controller-manager-< UUID >                       |
 | cert-manager        | cert-manager-< UUID >                                  |
 |                     | cert-manager-cainjector-< UUID >                       |
-|                     | cert-manager-webhook-< UUID >                          |                         |
+|                     | cert-manager-webhook-< UUID >                          |
 | cluster-< UUID >    | capi-controller-manager-< UUID >                       |
 |                     | capi-kubeadm-bootstrap-controller-manager-< UUID >     |
 |                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
 |                     | capv-controller-manager-< UUID >                       |
 |                     | capv-static-ip-controller-manager-< UUID >             |
 |                     | cluster-management-agent-< UUID >                      |
-|                     | ipam-controller-manager-< UUID >                       | metrics-server-< UUID > |
+|                     | ipam-controller-manager-< UUID >                       |
 |                     | palette-controller-manager-< UUID >                    |
 | jet-system          | jet-< UUID >                                           |
 |                     | spectro-cloud-driver-< UUID >                          |
 | kube-system         | calico-kube-controllers-< UUID >                       |
-|                     | calico-node-< UUID >                                   |                         | coredns-< UUID > |     |     |     |     | coredns-< UUID > |
+|                     | calico-node-< UUID >                                   |
 |                     | etcd-gateway1-cp-< UUID >                              |
 |                     | kube-apiserver-gateway1-cp-< UUID >                    |
-|                     | kube-controller-manager-gateway1-cp-< UUID >           |                         |
-|                     | kube-proxy-< UUID >                                    |                         |
-|                     | kube-scheduler-gateway1-cp-< UUID >                    |                         |
-|                     | kube-vip-gateway1-cp-< UUID                            | >                       |
-|                     | vsphere-cloud-controller-manager-< UUID >              |                         |
-|                     | vsphere-csi-controller-< UUID >                        |                         |
-|                     | vsphere-csi-node-< UUID >                              |                         |
+|                     | kube-controller-manager-gateway1-cp-< UUID >           |
+|                     | kube-proxy-< UUID >                                    |
+|                     | kube-scheduler-gateway1-cp-< UUID >                    |
+|                     | kube-vip-gateway1-cp-< UUID                            |
+|                     | vsphere-cloud-controller-manager-< UUID >              |
+|                     | vsphere-csi-controller-< UUID >                        |
+|                     | vsphere-csi-node-< UUID >                              |
 | reach-system        | reach-controller-manager-< UUID >                      |
 
 ## Enterprise NameSpaces with Pods
@@ -85,7 +85,7 @@ The following table gives the namespace to pod mapping for Palette vSphere Gatew
 The following table gives the namespace to pod mapping for Palette On-Prem Enterprise Clusters.
 
 | PALETTE NAMESPACES    | PODES                                                    |
-| --------------------- | -------------------------------------------------------- | ------------- |
+| --------------------- | -------------------------------------------------------- |
 | capi-webhook-system   | capi-controller-manager-< UUID >                         |
 |                       | capi-kubeadm-bootstrap-controller-manager-< UUID >       |
 |                       | capi-kubeadm-control-plane-controller-manager-< UUID >   |
@@ -103,7 +103,7 @@ The following table gives the namespace to pod mapping for Palette On-Prem Enter
 |                       | metrics-server-< UUID >                                  |
 |                       | palette-controller-manager-< UUID >                      |
 | cp-system             | spectro-cp-ui-< UUID >                                   |
-| hubble-system         | auth-< UUID >                                            | auth-< UUID > |
+| hubble-system         | auth-< UUID >                                            |
 |                       | cloud-fb8< UUID >                                        |
 |                       | configserver-< UUID >                                    |
 |                       | event-< UUID >                                           |
