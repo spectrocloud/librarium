@@ -72,8 +72,6 @@ charts:
    pools. For a description of input fields that are common across target platforms refer to the
    [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
 
-{" "}
-
 <br />
 
 #### Master Pool configuration:
@@ -84,8 +82,6 @@ charts:
       - PoP: The Cox Edge location to target.
       - Instance Type: The compute size.
       - Network policies: The network rules to apply to the deployment. Review the list of required network policies in the [Network Rules](network-rules.md) documentation.
-
-{" "}
 
 <br />
 

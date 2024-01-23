@@ -55,8 +55,6 @@ Use the following steps to configure a reverse proxy server for Palette VerteX.
    [Spectro Proxy Helm Configuration](../install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md#spectro-proxy)
    to learn more about the configuration options.
 
-{" "}
-
 <br />
 
 | **Parameter**     | **Description**                                                                             | **Type** |
@@ -67,14 +65,10 @@ Use the following steps to configure a reverse proxy server for Palette VerteX.
 | `server.key`      | The x509 SSL certificate key file in base64 format.                                         |
 | `ca.crt`          | The x509 SSL certificate authority file in base64 format.                                   |
 
-{" "}
-
 <br />
 
 The following is an example of the `frps` section in the **values.yaml** file. The SSL certificate files are truncated
 for brevity.
-
-{" "}
 
 <br />
 
@@ -94,8 +88,6 @@ frps:
    in the folder that contains the **values.yaml** file and the Palette VerteX Helm chart. Change the directory path if
    needed.
 
-{" "}
-
 <br />
 
 ```bash
@@ -104,8 +96,6 @@ helm upgrade --values values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
 
 4. After the new configurations are accepted, use the following command to get the Spectro Proxy server's load balancer
    IP address.
-
-{" "}
 
 <br />
 
@@ -119,8 +109,6 @@ kubectl get svc --namespace proxy-system spectro-proxy-svc
 6. Log in to the Palette VerteX System API by using the `/v1/auth/syslogin` endpoint. Use the `curl` command below and
    replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. Ensure you replace
    the credentials below with your system console credentials.
-
-{" "}
 
 <br />
 
@@ -145,8 +133,6 @@ Output
 7. Using the output you received, copy the authorization value to your clipboard and assign it to a shell variable.
    Replace the authorization value below with the value from the output.
 
-{" "}
-
 <br />
 
 ```shell hideClipboard
@@ -155,8 +141,6 @@ TOKEN=**********
 
 8. Next, prepare a payload for the`/v1/system/config/` endpoint. This endpoint is used to configure Palette VerteX to
    use a reverse proxy. The payload requires the following parameters:
-
-{" "}
 
 <br />
 
@@ -170,8 +154,6 @@ TOKEN=**********
 | `server`      | The domain name you will use for the Spectro Proxy server. For example, `frps.example.com`. Don't include the HTTP schema in the value. | string   |
 
 The following is an example payload. The SSL certificate files are truncated for brevity.
-
-{" "}
 
 <br />
 
@@ -195,15 +177,11 @@ command.
 
 :::
 
-{" "}
-
 <br />
 
 9. Issue a PUT request using the following `curl` command. Replace the URL with the custom domain URL you assigned to
    Palette VerteX or use the IP address. You can use the `TOKEN` variable you created earlier for the authorization
    header. Ensure you replace the payload below with the payload you created in the previous step.
-
-{" "}
 
 <br />
 
@@ -245,8 +223,6 @@ Use the following command to validate that the Spectro Proxy server is active.
    replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP address. Ensure you replace
    the credentials below with your system console credentials.
 
-{" "}
-
 <br />
 
 ```bash
@@ -270,8 +246,6 @@ Output
 3. Using the output you received, copy the authorization value to your clipboard and assign it to a shell variable.
    Replace the authorization value below with the value from the output.
 
-{" "}
-
 <br />
 
 ```shell hideClipboard
@@ -283,8 +257,6 @@ TOKEN=**********
    Palette VerteX or use the IP address. You can use the `TOKEN` variable you created earlier for the authorization
    header.
 
-{" "}
-
 <br />
 
 ```bash
@@ -294,8 +266,6 @@ curl --location --request GET 'https://vertex.example.com/v1/system/config/rever
 
 If the proxy server is configured correctly, you will receive an output similar to the following containing your
 settings. The SSL certificate outputs are truncated for brevity.
-
-{" "}
 
 <br />
 

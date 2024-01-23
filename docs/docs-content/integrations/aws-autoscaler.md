@@ -149,8 +149,6 @@ managedMachinePool:
     - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
 ```
 
-{" "}
-
 <br />
 
 :::info
@@ -331,8 +329,6 @@ managedMachinePool:
   roleAdditionalPolicies:
     - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
 ```
-
-{" "}
 
 <br />
 

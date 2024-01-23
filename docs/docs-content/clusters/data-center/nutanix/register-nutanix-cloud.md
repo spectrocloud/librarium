@@ -47,8 +47,6 @@ Use the following steps to prepare to register your cloud with Palette.
    - **infrastructure-components.yaml**
    - **cluster-template.yaml**
 
-{" "}
-
 <br />
 
 :::warning

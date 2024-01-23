@@ -154,15 +154,11 @@ cloud account.
 | Role name             | Provide a name of your choice.                                                      |
 | Role description      | Provide an optional description.                                                    |
 
-{" "}
-
 <br />
 
 ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.png)
 
 7. Review the details of the newly created IAM role.
-
-{" "}
 
 <br />
 
@@ -323,15 +319,11 @@ multiple cloud accounts.
 | Role name               | Provide a name of your choice.                                                      |
 | Role description        | Provide an optional description.                                                    |
 
-{" "}
-
 <br />
 
 ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.png)
 
 7. Review the details of the newly created IAM role in AWS Account B.
-
-{" "}
 
 <br />
 
@@ -343,8 +335,6 @@ multiple cloud accounts.
 9. Edit the existing trust policy of the newly created IAM role in AWS Account B. Append the following permission to the
    existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
    the `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` placeholder with the AWS account ID for AWS Account A. <br /> <br />
-
-{" "}
 
 <br />
 
@@ -362,8 +352,6 @@ multiple cloud accounts.
 
 Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
 Palette and another for the AWS Account A. <br />
-
-{" "}
 
 <br />
 
@@ -396,8 +384,6 @@ Palette and another for the AWS Account A. <br />
 
 In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you used
 while creating the IAM role.
-
-{" "}
 
 <br />
 

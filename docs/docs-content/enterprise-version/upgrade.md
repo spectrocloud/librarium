@@ -56,8 +56,6 @@ Follow the steps below to upgrade Kubernetes.
 
 5. Copy the Kubernetes YAML you received from our support team and paste it into the editor.
 
-{" "}
-
 <br />
 
 ![Screenshot of the Kubernetes YAML editor.](/enterprise-version_upgrade_ec-cluster-profile.png)

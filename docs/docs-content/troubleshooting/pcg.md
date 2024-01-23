@@ -56,8 +56,6 @@ for Palette in the PCG installer template settings. <br />
 
 2. Inspect the log file located at **/var/log/cloud-init-output.log**.
 
-{" "}
-
 <br />
 
 ```bash

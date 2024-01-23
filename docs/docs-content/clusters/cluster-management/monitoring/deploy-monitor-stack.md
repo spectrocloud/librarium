@@ -257,8 +257,6 @@ In this guide, the following domains are used to expose the monitoring stack:
 
 9. Review the YAML configuration on the right and add the following changes:
 
-{" "}
-
 <br />
 
 ```yaml
@@ -287,8 +285,6 @@ charts:
 15. Review the YAML configuration on the right. Scroll down in the file until you find the parameter
     `grafana.adminPassword`. Input the password value for the admin user. The default admin user name is `admin`.
 
-{" "}
-
 <br />
 
 ```yaml
@@ -299,8 +295,6 @@ charts:
 ```
 
 16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
-
-{" "}
 
 <br />
 
@@ -359,8 +353,6 @@ charts:
 
 32. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
 
-{" "}
-
 <br />
 
 ```shell
@@ -369,8 +361,6 @@ export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
 
 33. Create an htpasswd file for the user `agent` and assign a password. You can choose a different username if you
     prefer.
-
-{" "}
 
 <br />
 
@@ -389,8 +379,6 @@ Adding password for user agent
 
 34. Convert the htpasswd file into a Kubernetes secret.
 
-{" "}
-
 <br />
 
 ```shell
@@ -408,8 +396,6 @@ Output:
 
 36. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values
     provided below. Replace the `hosts` parameter with your custom domain.
-
-{" "}
 
 <br />
 
@@ -474,8 +460,6 @@ kubectl get service nginx-ingress-controller --namespace nginx -o jsonpath='{.st
     On-prem, use the default certificate manager used by your organization.
 
 43. Update the network rules for each of the load balancers to allow inbound port 443.
-
-{" "}
 
 <br />
 

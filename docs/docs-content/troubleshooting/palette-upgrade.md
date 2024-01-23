@@ -32,8 +32,6 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 
 2. Identify all Ingress resources that belong to _Hubble_ - an internal Palette component.
 
-{" "}
-
 <br />
 
 ```shell
@@ -42,8 +40,6 @@ kubectl get ingress --namespace default
 
 3. Remove each Ingress resource listed in the output that starts with the name Hubble. Use the following command to
    delete an Ingress resource. Replace `REPLACE_ME` with the name of the Ingress resource you are removing.
-
-{" "}
 
 <br />
 

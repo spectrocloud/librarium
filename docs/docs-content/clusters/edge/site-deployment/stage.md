@@ -103,8 +103,6 @@ vCenter environment, you will convert the VMDK to a VM template, and export it o
 
 3. Issue the following commands to prepare your server for VMDK creation.
 
-{" "}
-
 <br />
 
 ```shell
@@ -124,8 +122,6 @@ docker-compose-plugin
 
 If you need a graphical user interface (GUI), add `x11-apps` to the `apt install` command.
 
-{" "}
-
 <br />
 
 ```shell
@@ -133,8 +129,6 @@ apt install x11-apps
 ```
 
 4. You can add additional packages for content creation, compression, and preparing your workspace.
-
-{" "}
 
 <br />
 
@@ -189,8 +183,6 @@ govc datastore.cp -ds=[datastore name] [folder in datastore]]/[your-installer-na
 
 If you are using test or development environments, you may need to enable the following option. This environment
 variable is not recommended for production environments.
-
-{" "}
 
 <br />
 
