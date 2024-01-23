@@ -72,7 +72,7 @@ nodes are configured securely.
 
 Palette follows security best practices recommended by the various cloud providers when provisioning and configuring the
 computing, network, and storage infrastructure for the Kubernetes clusters. These include practices such as isolating
-master and worker nodes in dedicated network domains and limiting access through the use constructs like security
+control plane and worker nodes in dedicated network domains and limiting access through the use constructs like security
 groups.
 
 :::info

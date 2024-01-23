@@ -175,7 +175,7 @@ parameter.
 
 2. Identify one of your cluster contro-plane nodes. You find a cluster node by navigating to the left **Main Menu** and
    selecting **Clusters**. Click on your cluster to access the details pages and click on the **Nodes** tab. The tab
-   contains information about each pool, select a node from the **Master Pool** to view its IP address.
+   contains information about each pool, select a node from the **Control Plane Pool** to view its IP address.
 
 3. SSH into one of your control-plane nodes using its IP address and the SSH key you specified during the cluster
    creation process.

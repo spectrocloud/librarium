@@ -889,9 +889,9 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-| **Field**                                           | **Value for the master-pool**                                                                                        |
+| **Field**                                           | **Value for the control-plane-pool**                                                                                 |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                      | master-pool                                                                                                          |
+| Node pool name                                      | control-plane-pool                                                                                                   |
 | Allow worker capability                             | Checked                                                                                                              |
 | Additional Labels (Optional)                        | None                                                                                                                 |
 | [Taints](../../cluster-management/taints.md#taints) | Off                                                                                                                  |

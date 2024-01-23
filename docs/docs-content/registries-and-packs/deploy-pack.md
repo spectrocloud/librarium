@@ -926,13 +926,13 @@ Click **Next** to continue.
 In the **Nodes config** section, provide the details for the control plane and worker pools. For this tutorial, you can
 use the following minimal configuration:
 
-| **Field**                   | **Value for the master-pool** | **Value for the worker-pool**                                             |
-| --------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
-| Node pool name              | master-pool                   | worker-pool                                                               |
-| Number of nodes in the pool | `1`                           | `1`                                                                       |
-| Allow worker capability     | Checked                       | Not applicable                                                            |
-| Enable Autoscaler           | Not applicable                | No                                                                        |
-| Rolling update              | Not applicable                | Expand First. <br /> Launch a new node first, then shut down the old one. |
+| **Field**                   | **Value for the control-plane-pool** | **Value for the worker-pool**                                             |
+| --------------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| Node pool name              | control-plane-pool                   | worker-pool                                                               |
+| Number of nodes in the pool | `1`                                  | `1`                                                                       |
+| Allow worker capability     | Checked                              | Not applicable                                                            |
+| Enable Autoscaler           | Not applicable                       | No                                                                        |
+| Rolling update              | Not applicable                       | Expand First. <br /> Launch a new node first, then shut down the old one. |
 
 Keep the **Cloud Configuration** the same for both control plane and worker pools.
 

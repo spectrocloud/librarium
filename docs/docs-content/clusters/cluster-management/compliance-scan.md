@@ -32,7 +32,7 @@ benchmark cover different releases of Kubernetes. By default, Kubernetes configu
 set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source
 tool called KubeBench from Aqua Security to perform this scan. Scans are run against control plane and worker nodes of
 the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the
-master or worker results if required.
+control plane or worker results if required.
 
 All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored cannot be automatically run,
 and it is suggested to be tested manually.

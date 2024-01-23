@@ -55,7 +55,8 @@ You can also select any SSH keys in case you need to remote into the host cluste
 Network Time Protocol (NTP) servers. Click on **Next**.
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
-   the **master-pool** and the **worker-pool**. When you have completed configuring the node pools, click on **Next**.
+   the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
+   **Next**.
 
 10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
     host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
