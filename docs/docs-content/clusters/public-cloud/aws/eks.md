@@ -153,13 +153,13 @@ open it to all possible IP addresses. Otherwise, Palette will not open it up ent
     | **Subnets**   | Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.                                                         |
     | **Selectors** | Define a pod selector by providing a target namespace and optional labels. Pods with a matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile, and a pod only needs to match one selector to run using the Fargate profile. |
 
-    :::info
+:::info
 
     You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an
     example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads,
     and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
 
-    :::
+:::
 
 13. Click on **Next** to continue.
 

@@ -151,12 +151,12 @@ create the image.
     },
     ```
 
-    :::info
+:::info
 
     The file **packer.json** contains many variables you can use to customize the image. We recommend you review the KIB
     [documentation](https://image-builder.sigs.k8s.io/capi/capi.html) for your provider as it explains each variable.
 
-    :::
+:::
 
 6.  Set the credentials for your infrastructure provider. Each infrastructure provider supports different methods for
     providing credentials to Packer. You can review each infrastructure provider's authentication section by visiting
@@ -288,9 +288,13 @@ create the image.
 You now have a cluster profile that uses the custom image you created using the
 [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) project.
 
-:::warning When deploying a host cluster, choosing the appropriate cloud provider and region where the image was
-distributed is critical to successfully launching a cluster using a custom image in the cluster profile. Failure to do
-so may result in Palette's inability to launch a cluster. :::
+:::warning
+
+When deploying a host cluster, choosing the appropriate cloud provider and region where the image was distributed is
+critical to successfully launching a cluster using a custom image in the cluster profile. Failure to do so may result in
+Palette's inability to launch a cluster.
+
+:::
 
 ### Validate
 

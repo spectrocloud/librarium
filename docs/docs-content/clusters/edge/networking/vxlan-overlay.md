@@ -23,8 +23,12 @@ the cluster from an outage.
 
 ![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.png)
 
-:::warning Enabling overlay network on a cluster is a Tech Preview feature and is subject to change. Do not use this
-feature in production workloads. :::
+:::warning
+
+Enabling overlay network on a cluster is a Tech Preview feature and is subject to change. Do not use this feature in
+production workloads.
+
+:::
 
 ## When Should You Consider Enabling Overlay Network?
 
@@ -82,7 +86,9 @@ server. The region experiences a bad weather event that causes a sustained outag
 
 You can enable an overlay network for your cluster during cluster creation.
 
-:::warning You will not be able to change the network overlay configurations after the cluster has already been created.
+:::warning
+
+You will not be able to change the network overlay configurations after the cluster has already been created.
 
 :::
 
@@ -181,7 +187,11 @@ You can enable an overlay network for your cluster during cluster creation.
     default range that is typically unused. We suggest you keep the default range unless you have a specific IP range
     you want to use.
 
-:::warning The overlay CIDR range cannot be changed after the cluster creation. :::
+:::warning
+
+The overlay CIDR range cannot be changed after the cluster creation.
+
+:::
 
 After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP
 address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the

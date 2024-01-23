@@ -107,9 +107,12 @@ reference guide.
   ```
 
 
+
 :::info
 
+
 If you are using IAM to delegate access to the KMS key, you can continue to do so without modifying the KMS key policy. Ensure the Palette IAM User or role have the proper custom IAM policy attached that grants it access to the KMS key. Refer to the [Using IAM policies with AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html) to learn more about managing KMS keys with IAM policies.
+
 
 :::
 

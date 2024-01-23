@@ -41,7 +41,9 @@ Each prerequisite listed is required for a successful installation.
 
 Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable
 HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry. Refer to the
-[Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance. :::
+[Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
+
+:::
 
 - An HTTP file server to host the Palette manifest. The file server must be accessible from the target environment where
   Palette will be installed. Below is a list of common file servers:

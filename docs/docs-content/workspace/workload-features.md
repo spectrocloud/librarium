@@ -197,11 +197,16 @@ The following details are required to configure a backup location in AWS:
                     "s3:ListMultipartUploadParts"
                 ],
                 "Resource": [
-                    "arn:aws:s3
+                    "arn:aws:s3:::BUCKET-NAME/\*" ]
 
-:::BUCKET-NAME/\*" ] }, { "Effect": "Allow", "Action": [ "s3:ListBucket" ], "Resource": [ "arn:aws:s3 :::BUCKET-NAME" ]
-} ] }
-
+              },
+              {
+                  "Effect": "Allow",
+                  "Action": [ "s3:ListBucket" ],
+                  "Resource": [ "arn:aws:s3:::BUCKET-NAME" ]
+              }
+        ]
+    }
     ```
 
 ### Trust Setup Example
@@ -485,9 +490,13 @@ Users can now allocate CPU and Memory [quotas](#workspace-quota) for each **name
     previous step.
   - Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
 
-:::info A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a
-ClusterRole and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a
-ClusterRole to all the namespaces in your cluster, you use a ClusterRoleBinding. :::
+:::info
+
+A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and
+bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the
+namespaces in your cluster, you use a ClusterRoleBinding.
+
+:::
 
 - Role Name: Define a custom role name to identify the cluster role
 

@@ -203,18 +203,19 @@ During cluster creation, you will default to a single pool.
 
 1. Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled
    **System Node Pool**.
+
    <br />
 
 :::info
 
-Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the
-
-<b>Cloud Configuration</b> section, as you can not to taint or change their OS from Linux. See the
-<a href="https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools">
-  AKS Documentation
-</a> for more details on pool limitations.
+Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the **Cloud
+Configuration** section, as you can not to taint or change their OS from Linux. See the
+[AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools)
+for more details on pool limitations.
 
 :::
+
+{" "}
 
 <br />
 

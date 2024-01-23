@@ -890,10 +890,13 @@ be created for the different vSphere users.
 | **Username**              | vCenter username                     |
 | **Password**              | vCenter password                     |
 
-:::warning If you change the password for a user account in vCenter, you must also change it in Palette for the same
-VMware cloud account. We recommend updating the passwords immediately to avoid potentially locking Palette out of
-vCenter. For guidance, refer to
-[Change VMware Cloud Account Password in Palette](#change-vmware-cloud-account-password). :::
+:::warning
+
+If you change the password for a user account in vCenter, you must also change it in Palette for the same VMware cloud
+account. We recommend updating the passwords immediately to avoid potentially locking Palette out of vCenter. For
+guidance, refer to [Change VMware Cloud Account Password in Palette](#change-vmware-cloud-account-password).
+
+:::
 
 ## Change VMware Cloud Account Password
 
@@ -1043,5 +1046,9 @@ enables cluster force delete from the Tenant Admin and Project Admin scope.
    - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the
      estimated time for the auto-enabling of the **Force Delete** button.
 
-:::warning If there are any cloud resources still on the cloud, the user should cleanup those resources before going for
-the force deletion. :::
+:::warning
+
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force
+deletion.
+
+:::

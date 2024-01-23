@@ -92,9 +92,7 @@ Use the following instructions to configure S3 backup for your enterprise cluste
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3
-  :::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3
-  :::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*"]
+        "Resource": ["arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3:::REPLACE*ME_WITH_YOUR_BUCKET_NAME/*"]
       },
       {
         "Sid": "ec2Permissions",
@@ -107,19 +105,21 @@ Use the following instructions to configure S3 backup for your enterprise cluste
           "ec2:CreateSnapshot",
           "ec2:DeleteSnapshot"
         ],
-        "Resource": ["*"]
+        "Resource": ["_"]
       }
     ]
   }
   ```
+
+```
 
 - Credentials to the IAM user. You need the AWS access key ID and the AWS secret access key.
 
 ### Instructions
 
 1. Log into the Palette system console as an administrator. Refer to the
-   [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more
-   information.
+ [Access the System Console](../system-management/system-management.md#access-the-system-console) section for more
+ information.
 
 2. From the left **Main Menu**, select **Administration**.
 
@@ -138,10 +138,11 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 | **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
 
 5. Click on **Validate** to validate the S3 configuration. If the validation is successful, the **Save** button is
-   enabled. Otherwise, an error message is displayed. In case of an error, correct verify the S3 configuration and click
-   on **Validate** again.
+ enabled. Otherwise, an error message is displayed. In case of an error, correct verify the S3 configuration and click
+ on **Validate** again.
 
 ### Validate
 
 Validation is part of the backup configuration wizard. You can validate a backup initiates at the scheduled time and
 successfully uploads to the S3 bucket.
+```

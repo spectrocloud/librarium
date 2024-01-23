@@ -15,7 +15,11 @@ feature will disable auto remediation. This feature can work under two scopes:
 
 - Project
 
-:::warning This feature does not apply to EKS, AKS or TKE clusters. :::
+:::warning
+
+This feature does not apply to EKS, AKS or TKE clusters.
+
+:::
 
 ## Prerequisites
 

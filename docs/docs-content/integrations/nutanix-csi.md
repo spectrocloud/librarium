@@ -73,9 +73,13 @@ address as described in the
 [Adding an ISCSI Data Services IP Address](https://portal.nutanix.com/page/documents/details?targetId=Volumes-Guide:vol-cluster-details-modify-wc-t.html)
 guide.
 
-:::warning The iSCSI daemon needs to be enabled during the Nutanix cloud registration step. Refer to the
+:::warning
+
+The iSCSI daemon needs to be enabled during the Nutanix cloud registration step. Refer to the
 [Register Nutanix Cloud](../clusters/data-center/nutanix/register-nutanix-cloud.md) to learn more about the Nutanix
-registration process. :::
+registration process.
+
+:::
 
 ## Terraform
 

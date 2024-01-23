@@ -700,5 +700,9 @@ enables cluster force delete from the Tenant Admin and Project Admin scope.
    - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the
      estimated time for the auto-enabling of the **Force Delete** button.
 
-:::warning If there are any cloud resources still on the cloud, the user should cleanup those resources before going for
-the force deletion. :::
+:::warning
+
+If there are any cloud resources still on the cloud, the user should cleanup those resources before going for the force
+deletion.
+
+:::

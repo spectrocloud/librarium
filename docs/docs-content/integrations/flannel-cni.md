@@ -287,8 +287,11 @@ manifests:
 </TabItem>
 <TabItem label="Deprecated" value="deprecated">
 
-:::warning All versions less than v0.20.x are considered deprecated. Upgrade to a newer version to take advantage of new
-features. :::
+:::warning
+
+All versions less than v0.20.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+
+:::
 
 </TabItem>
 </Tabs>

@@ -23,10 +23,14 @@ The Validator requires the following dependencies.
 
 - [Docker](https://docs.docker.com/get-docker) - The Validator requires Docker.
 
-:::warning Credentials and other permissions may be required depending on the Validator plugins you use. For example,
-the AWS plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the
+:::warning
+
+Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS
+plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the
 [Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator
-and its plugins. :::
+and its plugins.
+
+:::
 
 ## Install
 
@@ -155,8 +159,7 @@ Spec:
 Status:
   Conditions:
     Failures:
-      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3
-:::* from policy Controllers Policy
+      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3:::* from policy Controllers Policy
     Last Validation Time:  2023-11-09T21:03:14Z
     Message:               One or more required IAM permissions was not found, or a condition was not met
     Status:                False
@@ -253,8 +256,7 @@ Name:         validator-plugin-aws-aws-validator-spectro-cloud-base
 Status:
   Conditions:
     Failures:
-      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3
-:::* from policy Controllers Policy
+      v1alpha1.IamRoleRule SpectroCloudRole missing action(s): [s3:DeleteObject s3:PutBucketOwnershipControls s3:PutBucketPolicy s3:PutBucketPublicAccessBlock s3:PutObjectAcl s3:PutObject] for resource arn:*:s3:::* from policy Controllers Policy
     Last Validation Time:  2023-11-09T21:03:14Z
     Message:               One or more required IAM permissions was not found, or a condition was not met
     Status:                False

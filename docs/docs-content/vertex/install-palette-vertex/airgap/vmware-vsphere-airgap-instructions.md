@@ -41,7 +41,9 @@ Each prerequisite is required for a successful installation.
 
 Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to enable
 HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry. Refer to the
-[Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance. :::
+[Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
+
+:::
 
 - An HTTP file server to host the VerteX manifest. The file server must be accessible from the target environment where
   VerteX will be installed. Below is a list of common HTTP file servers:
@@ -307,7 +309,9 @@ Upon completion, a success message will be displayed. The output is condensed fo
 :::info
 
 If you encounter an error during the airgap setup process, verify the required environment variables are set and
-populated correctly. If you are still having issues, reach out to our support team for assistance. :::
+populated correctly. If you are still having issues, reach out to our support team for assistance.
+
+:::
 
 14. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
     file to a folder accessible by the file server. Replace the file name below with the name of the manifest file

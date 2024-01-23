@@ -69,15 +69,9 @@ The following sections provide detailed instructions. Select the environment whe
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3
-  :::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
       },
-      {
-        "Effect": "Allow",
-        "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3
-  :::BUCKET-NAME"]
-      }
+      { "Effect": "Allow", "Action": ["s3:ListBucket"], "Resource": ["arn:aws:s3:::BUCKET-NAME"] }
     ]
   }
   ```
@@ -91,9 +85,9 @@ The following sections provide detailed instructions. Select the environment whe
   _access key ID_ and a _secret access key_. Copy both parts of the access key to a clipboard to use later in this
   guide. AWS will not display the secret access key again.
 
-  If you skip copying the secret access key, refer to the
-  [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
-  guide to learn how to create a new access key.
+If you skip copying the secret access key, refer to the
+[Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+guide to learn how to create a new access key.
 
 - If the S3 bucket is using a customer managed AWS Key Management Service (KMS) key for server-side encryption, ensure
   the Palette IAM user has the necessary permissions to access the KMS key. Otherwise, Palette will be unable to put
@@ -120,14 +114,14 @@ guide to learn more.
 
 4. Fill out the input fields listed in the table below.
 
-   | **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                                                 |
-   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                                            |
-   | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                                                   |
-   | **Certificate**         | Optional Service provider certificate.                                                                                                                                                                                                                                                                                    |
-   | **S3 Bucket**           | Name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                                                      |
-   | **Region**              | Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                                       |
-   | **S3 URL**              | Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, enable the **Force S3 path style** checkbox. |
+| **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                                            |
+| **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                                                   |
+| **Certificate**         | Optional Service provider certificate.                                                                                                                                                                                                                                                                                    |
+| **S3 Bucket**           | Name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                                                      |
+| **Region**              | Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                                       |
+| **S3 URL**              | Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, enable the **Force S3 path style** checkbox. |
 
 5. Next, choose the _Credentials_ validation method. If you want to use dynamic credentials through the AWS STS service,
    refer to the [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) for guided
@@ -186,12 +180,12 @@ Use the following steps to validate adding the new backup location.
 
 4. Fill out the input fields listed in the table below.
 
-   | **Field**             | **Value**                                                                                                                                                                                    |
-   | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**     | Provide a name of your choice.                                                                                                                                                               |
-   | **Location Provider** | Select GCP from the **drop-down** Menu.                                                                                                                                                      |
-   | **Bucket**            | The name of the bucket you created in the GCP object store.                                                                                                                                  |
-   | **JSON Credentials**  | Provide the JSON credentials for the external authentication of the GCP storage. Ensure the associated service account has sufficient permissions to perform the required bucket operations. |
+| **Field**             | **Value**                                                                                                                                                                                    |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Location Name**     | Provide a name of your choice.                                                                                                                                                               |
+| **Location Provider** | Select GCP from the **drop-down** Menu.                                                                                                                                                      |
+| **Bucket**            | The name of the bucket you created in the GCP object store.                                                                                                                                  |
+| **JSON Credentials**  | Provide the JSON credentials for the external authentication of the GCP storage. Ensure the associated service account has sufficient permissions to perform the required bucket operations. |
 
 5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message
    indicates a success, proceed to the next step. If the validation status message indicates an error, review the error
@@ -248,17 +242,19 @@ Use the following steps to validate adding the new backup location.
 
 4. Fill out the following input fields. Refer to the table below to learn more.
 
-   | **Field**               | **Value**                                                                   |
-   | ----------------------- | --------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                              |
-   | **Location Provider**   | Select MinIO from the drop-down field.                                      |
-   | **Certificate**         | Service provider certificate, if your organization prefers it.              |
-   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.            |
-   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`       |
-   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000` |
-   | **Force S3 path style** | This value is required for MinIO.                                           |
+| **Field**               | **Value**                                                                   |
+| ----------------------- | --------------------------------------------------------------------------- |
+| **Location Name**       | Provide a name of your choice.                                              |
+| **Location Provider**   | Select MinIO from the drop-down field.                                      |
+| **Certificate**         | Service provider certificate, if your organization prefers it.              |
+| **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.            |
+| **Region**              | The region where the MinIO server is configured. Example: `us-east-1`       |
+| **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000` |
+| **Force S3 path style** | This value is required for MinIO.                                           |
 
-   <br />
+{" "}
+
+<br />
 
 :::warning
 
@@ -293,14 +289,14 @@ Use the following steps to validate adding the new backup location.
 
 - An active Azure cloud account. You will need the following Azure items to complete the backup setup:
 
-  - Tenant ID
-  - Subscription ID
+- Tenant ID
+- Subscription ID
 
 - An Azure storage account in the Azure account. You will need to be aware of the values for the following Azure storage
   items:
-  - Resource group name
-  - Storage account name
-  - Stock-Keeping Unit (SKU)
+- Resource group name
+- Storage account name
+- Stock-Keeping Unit (SKU)
 
 Refer to the
 [Create a storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal)
@@ -312,8 +308,8 @@ guide to learn how to create an Azure storage account
 
 - An Azure service principal with sufficient permissions to perform the required read and write operations on the
   container. You will need the values of the following items:
-  - Client ID
-  - Client Secret
+- Client ID
+- Client Secret
 
 Check out the
 [Work with Azure service principal using the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli#what-is-an-azure-service-principal)
@@ -329,18 +325,18 @@ guide to learn more about Azure service principals.
 
 4. Fill out the input fields listed in the table below.
 
-   | **Field**              | **Value**                                                                        |
-   | ---------------------- | -------------------------------------------------------------------------------- |
-   | **Location Name**      | Provide a name of your choice.                                                   |
-   | **Location Provider**  | Select Azure from the **drop-down** Menu.                                        |
-   | **Container Name**     | Name of the container created in the Azure storage.                              |
-   | **Storage Name**       | Name of the Azure storage resource.                                              |
-   | **Stock-Keeping Unit** | Azure storage resource SKU.                                                      |
-   | **Tenant ID**          | Azure tenant ID.                                                                 |
-   | **Subscription ID**    | Azure subscription ID where you created the Azure storage resource.              |
-   | **Resource Group:**    | Azure resource group name.                                                       |
-   | **Client ID**          | Azure client ID of the service principal.                                        |
-   | **Client Secret**      | Azure client secret for the service principal you created for Palette to assume. |
+| **Field**              | **Value**                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| **Location Name**      | Provide a name of your choice.                                                   |
+| **Location Provider**  | Select Azure from the **drop-down** Menu.                                        |
+| **Container Name**     | Name of the container created in the Azure storage.                              |
+| **Storage Name**       | Name of the Azure storage resource.                                              |
+| **Stock-Keeping Unit** | Azure storage resource SKU.                                                      |
+| **Tenant ID**          | Azure tenant ID.                                                                 |
+| **Subscription ID**    | Azure subscription ID where you created the Azure storage resource.              |
+| **Resource Group:**    | Azure resource group name.                                                       |
+| **Client ID**          | Azure client ID of the service principal.                                        |
+| **Client Secret**      | Azure client secret for the service principal you created for Palette to assume. |
 
 5. Click on the **Validate** button. Palette will display a validation status message. If the validation status message
    indicates a success, proceed to the next step. If the validation status message indicates an error, review the error
@@ -367,3 +363,7 @@ Use the following steps to validate adding the new backup location.
 
 You can now use the newly added backup location to create a backup of your clusters or workspaces. Refer to the
 [Create a Backup](create-cluster-backup.md) guide to learn how to create a backup of your clusters or workspaces.
+
+```
+
+```

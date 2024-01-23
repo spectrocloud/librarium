@@ -602,8 +602,11 @@ information, refer to the [Spectro Proxy](frp.md) pack guide.
 
 <TabItem label="Deprecated" value="deprecated">
 
-:::warning All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new
-features. :::
+:::warning
+
+All versions less than v1.25.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+
+:::
 
 </TabItem>
 

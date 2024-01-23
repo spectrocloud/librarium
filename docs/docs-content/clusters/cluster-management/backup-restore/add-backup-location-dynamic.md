@@ -85,15 +85,9 @@ cloud account.
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3
-  :::BUCKET-NAME/*"]
+        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
       },
-      {
-        "Effect": "Allow",
-        "Action": ["s3:ListBucket"],
-        "Resource": ["arn:aws:s3
-  :::BUCKET-NAME"]
-      }
+      { "Effect": "Allow", "Action": ["s3:ListBucket"], "Resource": ["arn:aws:s3:::BUCKET-NAME"] }
     ]
   }
   ```
@@ -124,18 +118,18 @@ guide to learn more.
 3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as
    highlighted in the screenshot below.
 
-   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
+![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
 
 4. Fill out the input fields listed in the table.
 
-   | **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                     |
-   | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                |
-   | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                       |
-   | **Certificate**         | Optional service provider x509 certificate.                                                                                                                                                                                                                                                   |
-   | **S3 Bucket**           | The name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                      |
-   | **Region**              | Region where the S3 bucket is hosted. You can check region codes in the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                |
-   | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and enable the **Force S3 path style** checkbox. |
+| **Configuration Field** | **Value**                                                                                                                                                                                                                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                |
+| **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                       |
+| **Certificate**         | Optional service provider x509 certificate.                                                                                                                                                                                                                                                   |
+| **S3 Bucket**           | The name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                      |
+| **Region**              | Region where the S3 bucket is hosted. You can check region codes in the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                |
+| **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and enable the **Force S3 path style** checkbox. |
 
 5. Next, choose the **STS** authentication method. When you choose the STS authentication method, you must create a new
    IAM role and provide its Amazon Resource Name (ARN) to Palette. Check out the
@@ -238,47 +232,49 @@ multiple cloud accounts.
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
 
-<br />
+  {" "}
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:DescribeVolumes",
-        "ec2:DescribeSnapshots",
-        "ec2:CreateTags",
-        "ec2:CreateVolume",
-        "ec2:CreateSnapshot",
-        "ec2:DeleteSnapshot"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:DeleteObject",
-        "s3:PutObject",
-        "s3:AbortMultipartUpload",
-        "s3:ListMultipartUploadParts"
-      ],
-      "Resource": ["arn:aws:s3
-:::BUCKET-NAME/*"]
-    },
-    {
-      "Effect": "Allow",
-      "Action": ["s3:ListBucket"],
-      "Resource": ["arn:aws:s3
-:::BUCKET-NAME"]
-    }
-  ]
-}
-```
+  <br />
 
-<br />
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ec2:DescribeVolumes",
+          "ec2:DescribeSnapshots",
+          "ec2:CreateTags",
+          "ec2:CreateVolume",
+          "ec2:CreateSnapshot",
+          "ec2:DeleteSnapshot"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:DeleteObject",
+          "s3:PutObject",
+          "s3:AbortMultipartUpload",
+          "s3:ListMultipartUploadParts"
+        ],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+      },
+      {
+        "Effect": "Allow",
+        "Action": ["s3:ListBucket"],
+        "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+      }
+    ]
+  }
+  ```
+
+  {" "}
+
+  <br />
 
 ### Instructions
 
@@ -340,64 +336,75 @@ multiple cloud accounts.
    existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
    the `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` placeholder with the AWS account ID for AWS Account A. <br /> <br />
 
-<br />
+   {" "}
 
-```json
-{
-  "Effect": "Allow",
-  "Principal": {
-    "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
-  },
-  "Action": "sts:AssumeRole"
-}
-```
+   <br />
 
-    If you want to establish a trust relationship with a specific IAM role in AWS Account A, say *SpectroCloudRole*, you can use the `"arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:role/SpectroCloudRole"` ARN instead.
+   ```json
+   {
+     "Effect": "Allow",
+     "Principal": {
+       "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
+     },
+     "Action": "sts:AssumeRole"
+   }
+   ```
 
-Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one for
-Palette and another for the AWS Account A. <br />
+   If you want to establish a trust relationship with a specific IAM role in AWS Account A, say _SpectroCloudRole_, you
+   can use the `"arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:role/SpectroCloudRole"` ARN instead.
 
-<br />
+   Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one
+   for Palette and another for the AWS Account A. <br />
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
+   {" "}
 
-In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you used
-while creating the IAM role.
+   {" "}
 
-<br />
+   <br />
 
-:::info
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::[AWS-ACCOUNT-ID-OF-PALETTE]:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {
+           "StringEquals": {
+             "sts:ExternalId": "[YOUR-EXTERNAL-ID]"
+           }
+         }
+       },
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]:root"
+         },
+         "Action": "sts:AssumeRole"
+       }
+     ]
+   }
+   ```
 
-Check out
-[How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
-for a deep dive into the IAM trust policies.
+   In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you
+   used while creating the IAM role.
 
-:::
+   {" "}
+
+   {" "}
+
+   <br />
+
+   :::info
+
+   Check out
+   [How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
+   for a deep dive into the IAM trust policies.
+
+   :::
 
 10. Copy the IAM role ARN from AWS Account B.
 
