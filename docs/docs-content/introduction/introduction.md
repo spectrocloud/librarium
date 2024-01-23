@@ -91,9 +91,7 @@ operational risk.
 ## Next Steps
 
 Learn more about Palette and how it can improve your Kubernetes experience and those in your organization. Try
-[Palette](https://console.spectrocloud.com/) for free today and experience a better way of working with Kubernetes.
-
-- [Try Palette for Free](../getting-started/palette-freemium.md)
+[Palette](https://console.spectrocloud.com/) for [free](https://www.spectrocloud.com/free-tier) today and experience a better way of working with Kubernetes.
 
 - [App Mode and Cluster Mode](palette-modes.md)
 
