@@ -232,8 +232,6 @@ multiple cloud accounts.
   [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) for
   additional guidance.
 
-  {" "}
-
   <br />
 
   ```json
@@ -271,8 +269,6 @@ multiple cloud accounts.
     ]
   }
   ```
-
-  {" "}
 
   <br />
 
@@ -336,8 +332,6 @@ multiple cloud accounts.
    existing trust policy. This step will authorize the cluster in AWS Account A to assume the current IAM role. Replace
    the `[ACCOUNT-ID-FOR-AWS-ACCOUNT-A]` placeholder with the AWS account ID for AWS Account A. <br /> <br />
 
-   {" "}
-
    <br />
 
    ```json
@@ -355,10 +349,6 @@ multiple cloud accounts.
 
    Your IAM trust policy should be similar to the policy defined below. The IAM policy has two trust relationships, one
    for Palette and another for the AWS Account A. <br />
-
-   {" "}
-
-   {" "}
 
    <br />
 
@@ -391,10 +381,6 @@ multiple cloud accounts.
 
    In your case, the `[AWS-ACCOUNT-ID-OF-PALETTE]` and `[YOUR-EXTERNAL-ID]` placeholders will contain the values you
    used while creating the IAM role.
-
-   {" "}
-
-   {" "}
 
    <br />
 

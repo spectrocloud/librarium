@@ -146,7 +146,7 @@ The following modifications in steps 11 and 12 are only applicable to VerteX ins
 
 :::
 
-10. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with
+11. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object. Include a new line with
     `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper
     indentation as illustrated below.
 
@@ -155,7 +155,7 @@ kubeletExtraArgs:
   rotate-server-certificates: "true"
 ```
 
-11. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object. Include a new line with
+12. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object. Include a new line with
     `rotate-server-certificates: "true"` below the `kubeletExtraArgs:` line, keeping proper indentation as illustrated
     below.
 
@@ -311,12 +311,12 @@ curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/co
 
 9. Register the worker pool template.
 
-````bash
+```bash
   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
         --header "Content-Type: multipart/form-data" \
         --header "Authorization: ${TOKEN}" \
         --form "fileName=@${workerPoolTemplate}"
-  ```
+```
 
 10. Register the cloud account keys.
 
@@ -333,7 +333,7 @@ curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/cl
         "NUTANIX_INSECURE"
     ]
 }'
-````
+```
 
 ## Validate
 

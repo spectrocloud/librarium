@@ -252,8 +252,6 @@ Use the following steps to validate adding the new backup location.
 | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000` |
 | **Force S3 path style** | This value is required for MinIO.                                           |
 
-{" "}
-
 <br />
 
 :::warning
