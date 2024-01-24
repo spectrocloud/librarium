@@ -11,8 +11,8 @@
 //   versionCrumb,
 // } = require("docusaurus-plugin-openapi-docs/lib/sidebars/utils");
 
-const fs = require('fs');
-const sidebarFilePath = './docs/api-content/api-docs/v1/sidebar.ts';
+const fs = require("fs");
+const sidebarFilePath = "./docs/api-content/api-docs/v1/sidebar.ts";
 
 let sidebarItems = [];
 if (fs.existsSync(sidebarFilePath)) {

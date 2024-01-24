@@ -6,18 +6,27 @@ sidebar_position: 70
 tags: ["troubleshooting", "har", "support"]
 ---
 
-When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to help us identify and resolve those issues.
+When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to
+help us identify and resolve those issues.
 
 :::warning
-HAR files contain all network activity for a specific page, including sensitive and confidential information, such as API keys, secrets, cookies, passwords, and more. Before sending your HAR files to us, sanitize the sensitive data. We do not recommend using any third-party tools for HAR sanitization, as they can overlook some details.
+
+HAR files contain all network activity for a specific page, including sensitive and confidential information, such as
+API keys, secrets, cookies, passwords, and more. Before sending your HAR files to us, sanitize the sensitive data. We do
+not recommend using any third-party tools for HAR sanitization, as they can overlook some details.
+
 :::
 
-This guide explains how you can generate HAR files in Chrome, Safari, and Firefox and sanitize the sensitive data they contain.
+This guide explains how you can generate HAR files in Chrome, Safari, and Firefox and sanitize the sensitive data they
+contain.
 
 ## Prerequisites
 
-- A browser of choice. For instance, you could use Chrome, Safari, or Firefox. If you're using Safari, make sure to [enable its web development features](https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features) first.
-- A text editor of choice. For example, you could use [Visual Studio Code](https://code.visualstudio.com/) or [Sublime](https://www.sublimetext.com/).
+- A browser of choice. For instance, you could use Chrome, Safari, or Firefox. If you're using Safari, make sure to
+  [enable its web development features](https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features)
+  first.
+- A text editor of choice. For example, you could use [Visual Studio Code](https://code.visualstudio.com/) or
+  [Sublime](https://www.sublimetext.com/).
 
 ## Generate and Sanitize HARs
 
@@ -84,9 +93,12 @@ This guide explains how you can generate HAR files in Chrome, Safari, and Firefo
 1. Open the generated HAR file in a text editor.
 2. Carefully examine the file contents and either remove or redact sensitive information.
 
-   :::tip
-   If you're using a built-in search feature, ensure it's case-insensitive and check every instance of confidential data it highlights.
-   :::
+:::tip
+
+If you're using a built-in search feature, ensure it's case-insensitive and check every instance of confidential data it
+highlights.
+
+:::
 
 You can use the following keywords for reference.
 
@@ -94,7 +106,10 @@ You can use the following keywords for reference.
 <summary>Keywords for sanitization</summary>
 
 :::warning
-This list is not exhaustive. You should also check for data that is considered sensitive or confidential within your organization.
+
+This list is not exhaustive. You should also check for data that is considered sensitive or confidential within your
+organization.
+
 :::
 
 - **state**
@@ -173,8 +188,10 @@ Consider the following examples of how to approach redacting passwords, tokens, 
 
 ## Validate
 
-Review the generated HAR file against the list of keywords we provided for reference, and make sure you've redacted every instance of sensitive information.
+Review the generated HAR file against the list of keywords we provided for reference, and make sure you've redacted
+every instance of sensitive information.
 
 ## Next Steps
 
-After you've successfully generated and sanitized your HAR file, send it to the Support Specialist who asked you for this file.
+After you've successfully generated and sanitized your HAR file, send it to the Support Specialist who asked you for
+this file.

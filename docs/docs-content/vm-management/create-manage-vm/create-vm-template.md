@@ -8,7 +8,6 @@ sidebar_position: 10
 tags: ["vmo"]
 ---
 
-
 Although Palette provides out-of-the box templates, we recommend that you create and manage your own templates.
 
 ## Prerequisites
@@ -23,31 +22,24 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-
-2. From the left **Main Menu**, click **Profiles** and click the **Add Cluster Profile** button. 
-
+2. From the left **Main Menu**, click **Profiles** and click the **Add Cluster Profile** button.
 
 3. Give the profile a name, select type **Add-on**, and click **Next**.
 
-
-4. On the Profile Layers page, click **Add Manifest**. 
-
+4. On the Profile Layers page, click **Add Manifest**.
 
 5. Give the layer a name, and click **Edit manifest** and enter a name for the first template. Click the checkmark icon.
 
-
-6. In the blank manifest file at right, enter the VM definition as a YAML file. You can add multiple manifests for multiple templates in the same add-on profile. They will display as layers in the profile.
-
+6. In the blank manifest file at right, enter the VM definition as a YAML file. You can add multiple manifests for
+   multiple templates in the same add-on profile. They will display as layers in the profile.
 
 7. Click **Confirm and Create**, then click **Next**.
 
+8. Click **Finish Configuration**.
 
-8. Click **Finish Configuration**. 
-
-<br /> 
+<br />
 
 #### Example YAML for a VM template
-
 
 ```yaml
 apiVersion: spectrocloud.com/v1
@@ -94,7 +86,7 @@ spec:
       volumes:
         - name: containerdisk
           containerDisk:
-            image:  gcr.io/spectro-images-public/release/vm-dashboard/os/fedora-container-disk:36
+            image: gcr.io/spectro-images-public/release/vm-dashboard/os/fedora-container-disk:36
         - name: cloudinitdisk
           cloudInitNoCloud:
             # user name is fedora
@@ -110,14 +102,13 @@ spec:
                 - ["sudo", "systemctl", "enable", "--now", "qemu-guest-agent"]
 ```
 
-
 ## Validate
 
-1. Navigate to the left **Main Menu** and click **Profiles**. 
+1. Navigate to the left **Main Menu** and click **Profiles**.
 
-
-2. Verify your newly added manifest is listed. 
+2. Verify your newly added manifest is listed.
 
 ## Next Steps
 
-Try applying the template to your cluster. Navigate to **Clusters** and click `+` next to Addon Layers, then select the VMO profile you created.
+Try applying the template to your cluster. Navigate to **Clusters** and click `+` next to Addon Layers, then select the
+VMO profile you created.

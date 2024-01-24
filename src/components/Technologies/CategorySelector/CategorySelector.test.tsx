@@ -7,13 +7,7 @@ describe("CategorySelector Component", () => {
   const categories = ["all", "category_one", "category_two"];
 
   beforeEach(() => {
-    render(
-      <CategorySelector
-        categories={categories}
-        selected="all"
-        selectCategory={mockSelectCategory}
-      />
-    );
+    render(<CategorySelector categories={categories} selected="all" selectCategory={mockSelectCategory} />);
   });
 
   it("renders all categories", () => {
