@@ -1,5 +1,5 @@
-import DefaultAdmonitionTypes from '@theme-original/Admonition/Types';
-import AdmonitionTypeTechPreview from '../Admonition/Type/TechPreview';
+import DefaultAdmonitionTypes from "@theme-original/Admonition/Types";
+import AdmonitionTypeTechPreview from "../Admonition/Type/TechPreview";
 
 const AdmonitionTypes = {
   ...DefaultAdmonitionTypes,
