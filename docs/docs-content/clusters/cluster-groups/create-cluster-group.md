@@ -40,7 +40,7 @@ Use the instructions below to create a cluster group.
 3. Click **+New Cluster Groups** to create a new cluster group and provide the following information to the creation
    wizard.
 
-   - **Basic Information**:
+   **Basic Information**:
 
    | Parameter              | Description                       |
    | ---------------------- | --------------------------------- |

@@ -91,10 +91,10 @@ VNet contains the following network settings.
 
    #### Azure CNI:
 
-   Security: For network security enable **Private cluster**.
+   In Azure CNI network configuration, select the static
+   [virtual network created](gateways#create-a-virtual-network-in-the-azure-console) from the drop-down menu.
 
-In Azure CNI network configuration, select the static
-[virtual network created](gateways#create-a-virtual-network-in-the-azure-console) from the drop-down menu.
+6. Security: For network security enable **Private cluster**.
 
 ## Establish external connectivity with the Target Azure Kubernetes Cluster
 

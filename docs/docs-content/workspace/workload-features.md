@@ -83,36 +83,33 @@ To create your **Workspace Role**, follow the steps below:
 
 Palette leverages the BackUps to the following locations:
 
-- Amazon Web Services (AWS) S3 Buckets:
-  [Prerequisites](#amazon-web-services-aws-s3-buckets-prerequisitesbucketasbackuplocation-configure-your-backup),
+- Amazon Web Services (AWS) S3 Buckets: [Prerequisites](#for-an-amazon-web-services-aws-bucket-as-backup-location),
   [Configure your Backup](#configure-your-backup-in-aws-s3)
 
-- Google Cloud Platform (GCP) Buckets:
-  [Prerequisites](#google-cloud-platform-gcp-buckets-prerequisites-configure-your-backup),
+- Google Cloud Platform (GCP) Buckets: [Prerequisites](#for-a-google-cloud-platform-gcp-backup-location),
   [Configure your Backup](#configure-your-backup-in-gcp-bucket)
 
-- MinIO S3 Buckets: [Prerequisites](#minio-s3-buckets-prerequisites-configure-your-backup),
-  [Configure your Backup](#configure-your-backup-in-minio)
+- MinIO S3 Buckets: [Prerequisites](#for-minio-s3-backup), [Configure your Backup](#configure-your-backup-in-minio)
 
-- Azure Blob: [Prerequisites](#azure-blob-prerequisites-configure-your-backup),
+- Azure Blob: [Prerequisites](#for-azure-blob-backup),
   [Configure your Backup](#configure-your-backup-in-azure-azure-blob)
 
 ## Prerequisites
 
-## For an Amazon Web Services (AWS) Bucket as Backup Location
+### For an Amazon Web Services (AWS) Bucket as Backup Location
 
 - The AWS S3 permissions listed in the next section need to be configured in the AWS account to provision Backup through
   Palette.
 
 - Pre-create a bucket at the AWS or MinIO object-store.
 
-## For a Google Cloud Platform (GCP) Backup Location
+### For a Google Cloud Platform (GCP) Backup Location
 
 - GCP service account with a **Storage Admin** role.
 
 - Pre-create a bucket at the GCP object storage.
 
-## For MinIO S3 Backup
+### For MinIO S3 Backup
 
 - S3 bucket with Read/Write Access
 
@@ -120,7 +117,7 @@ Palette leverages the BackUps to the following locations:
 
 - Service provider certificate (Optional)
 
-#### For Azure Blob Backup
+### For Azure Blob Backup
 
 - An active Azure cloud account with the following pieces of information noted down:
 
@@ -169,68 +166,61 @@ The following details are required to configure a backup location in AWS:
 
 7. Palette mandates the AWS S3 Permissions while users use the static role to provision worker nodes.
 
-### AWS S3 Permissions
+   #### AWS S3 Permissions
 
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "ec2:DescribeVolumes",
-                    "ec2:DescribeSnapshots",
-                    "ec2:CreateTags",
-                    "ec2:CreateVolume",
-                    "ec2:CreateSnapshot",
-                    "ec2:DeleteSnapshot"
-                ],
-                "Resource": "*"
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "s3:GetObject",
-                    "s3:DeleteObject",
-                    "s3:PutObject",
-                    "s3:AbortMultipartUpload",
-                    "s3:ListMultipartUploadParts"
-                ],
-                "Resource": [
-                    "arn:aws:s3:::BUCKET-NAME/*"
-                ]
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "s3:ListBucket"
-                ],
-                "Resource": [
-                    "arn:aws:s3:::BUCKET-NAME"
-                ]
-            }
-        ]
-    }
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "ec2:DescribeVolumes",
+           "ec2:DescribeSnapshots",
+           "ec2:CreateTags",
+           "ec2:CreateVolume",
+           "ec2:CreateSnapshot",
+           "ec2:DeleteSnapshot"
+         ],
+         "Resource": "*"
+       },
+       {
+         "Effect": "Allow",
+         "Action": [
+           "s3:GetObject",
+           "s3:DeleteObject",
+           "s3:PutObject",
+           "s3:AbortMultipartUpload",
+           "s3:ListMultipartUploadParts"
+         ],
+         "Resource": ["arn:aws:s3:::BUCKET-NAME/*"]
+       },
+       {
+         "Effect": "Allow",
+         "Action": ["s3:ListBucket"],
+         "Resource": ["arn:aws:s3:::BUCKET-NAME"]
+       }
+     ]
+   }
+   ```
 
-    ```
+   #### Trust Setup Example
 
-### Trust Setup Example
-
-    ```json
-    {
-      "Version": "2012-10-17",
-      "Statement": [
-        {
-          "Effect": "Allow",
-          "Principal": {
-            "AWS": "arn:aws:iam::141912899XX99:root"
-          },
-          "Action": "sts:AssumeRole",
-          "Condition": {}
-        }
-      ]
-    }
-    ```
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::141912899XX99:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {}
+       }
+     ]
+   }
+   ```
 
 ## Configure your Backup in GCP Bucket
 
