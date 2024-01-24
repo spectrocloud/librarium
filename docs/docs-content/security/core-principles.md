@@ -32,8 +32,6 @@ and Auditing. Components of the CIA Triad are described below.
 - **Auditing**: Track implementation-level and domain-level events to ensure certain actions have been performed in the
   product.
 
-# Core Principles
-
 Our security philosophy is grounded in the following core principles that we apply to our decision-making and product.
 
 <br />

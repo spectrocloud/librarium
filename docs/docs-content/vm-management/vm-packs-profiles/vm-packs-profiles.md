@@ -47,7 +47,7 @@ out the [Spectro Proxy](../../integrations/frp.md) pack documentation to learn m
 Administrators can configure the out-of-the-box add-on packs, cluster profiles, and VM templates that include commonly
 used operating systems, or they can define their own VM templates to share with users.
 
-# Resources
+## Resources
 
 - [Spectro Proxy](../../integrations/frp.md)
 

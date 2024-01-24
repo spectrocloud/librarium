@@ -137,8 +137,6 @@ The following steps will guide you on how to install a PCG cluster.
    palette login
    ```
 
-   <br />
-
    | **Parameter**                  | **Description**                                                                                                                                                                               |
    | :----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Spectro Cloud Console**      | Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance. |
@@ -150,84 +148,70 @@ The following steps will guide you on how to install a PCG cluster.
 3. Once you have authenticated successfully, invoke the PCG installer by issuing the following command. When prompted,
    enter the information listed in each of the following tables.
 
-<br />
+   ```bash
+   palette pcg install
+   ```
 
-```bash
-palette pcg install
-```
-
-<br />
-
-| **Parameter**                                        | **Description**                                                                                                                                                                                                     |
-| :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cloud Type**                                       | Choose MAAS.                                                                                                                                                                                                        |
-| **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `maas-pcg-1`.                                                                                                                                                             |
-| **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope. |
+   | **Parameter**                                        | **Description**                                                                                                                                                                                                     |
+   | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cloud Type**                                       | Choose MAAS.                                                                                                                                                                                                        |
+   | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `maas-pcg-1`.                                                                                                                                                             |
+   | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope. |
 
 4. Next, provide environment configurations for the cluster. Refer to the following table for information about each
    option.
 
-<br />
-
-| **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
-| :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                   |
-| **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                     |
-| **No Proxy**                      | You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `maas.company.com,10.10.0.0/16`.   |
-| **Proxy CA Certificate Filepath** | The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`. |
-| **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
-| **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         | .   |
-
-<br />
+   | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
+   | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                   |
+   | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                     |
+   | **No Proxy**                      | You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `maas.company.com,10.10.0.0/16`.   |
+   | **Proxy CA Certificate Filepath** | The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`. |
+   | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
+   | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
 5. After the environment options, the next set of prompts is for configuring the PCG cluster for the MAAS environment.
    The following table contains information about each prompt.
 
-<br />
-
-| **Parameter**         | **Description**                                                                                           |
-| --------------------- | --------------------------------------------------------------------------------------------------------- |
-| **MAAS API Endpoint** | Enter the MAAS API endpoint. This can be a domain or IP address. Example: `http://10.11.12.13:5240/MAAS`. |
-| **MAAS API Key**      | Enter an active MAAS API key to use for authentication.                                                   |
+   | **Parameter**         | **Description**                                                                                           |
+   | --------------------- | --------------------------------------------------------------------------------------------------------- |
+   | **MAAS API Endpoint** | Enter the MAAS API endpoint. This can be a domain or IP address. Example: `http://10.11.12.13:5240/MAAS`. |
+   | **MAAS API Key**      | Enter an active MAAS API key to use for authentication.                                                   |
 
 6. Next, select the appropriate option for each of the following items to define which machines should be selected on
    the MAAS server for deployment as a PCG.
 
-<br />
+   | **Parameter**                             | **Description**                                                                                                                                 |
+   | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Domain**                                | Select the MAAS domain.                                                                                                                         |
+   | **Patch OS on boot**                      | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.                                                     |
+   | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are applied.                                                       |
+   | **Availability Zone**                     | Select the availability zones for the PCG cluster.                                                                                              |
+   | **Resource Pool**                         | Select the MAAS resource pool.                                                                                                                  |
+   | **Cluster Size**                          | The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. |
 
-| **Parameter**                             | **Description**                                                                                                                                 |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| **Domain**                                | Select the MAAS domain.                                                                                                                         |
-| **Patch OS on boot**                      | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.                                                     |
-| **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are applied.                                                       |
-| **Availability Zone**                     | Select the availability zones for the PCG cluster.                                                                                              |
-| **Resource Pool**                         | Select the MAAS resource pool.                                                                                                                  |
-| **Cluster Size**                          | The number of nodes that will make up the cluster. Available options are **1** or **3** . Use three nodes for a High Availability (HA) cluster. |     |
+   :::warning
 
-:::warning
+   Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone and resource
+   pool combination.
 
-Ensure the MAAS server has one or more machines in the **Ready** state for the chosen availability zone and resource
-pool combination.
-
-:::
+   :::
 
 7. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
    similar to the following.
 
-<br />
+   ```bash hideClipboard
+   ==== PCG config saved ====
+   Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+   ```
 
-```bash hideClipboard
-==== PCG config saved ====
-Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
-```
+   :::info
 
-:::info
+   The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated.
+   To change these values, use the `palette pcg install --update-passwords` command. Refer to the
+   [PCG command](../../../palette-cli/commands.md#update-passwords) reference page for more information.
 
-The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated. To
-change these values, use the `palette pcg install --update-passwords` command. Refer to the
-[PCG command](../../../palette-cli/commands.md#update-passwords) reference page for more information.
-
-:::
+   :::
 
 The Palette CLI will now provision a PCG cluster in your MAAS environment.
 
@@ -268,13 +252,9 @@ Review the changes in the update notification, and apply the update when you are
 Updating the cloud gateway does not result in any downtime for the tenant clusters. During the update process, new
 cluster provisioning is unavailable. New cluster requests are queued and processed when the gateway update is complete.
 
-<br />
-
 ## Delete the MAAS Gateway
 
 Follow these steps to delete a MAAS gateway.
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -285,14 +265,10 @@ Follow these steps to delete a MAAS gateway.
 
 4. If there are active clusters, delete them and retry deleting the gateway instance.
 
-<br />
-
 ## Resize the MAAS Gateway
 
 You can set up a PCG as a single-node (no HA) or three-node (HA) cluster. You can set up a PCG initially with one node
 and resize it to three nodes at a later time.
-
-<br />
 
 :::info
 

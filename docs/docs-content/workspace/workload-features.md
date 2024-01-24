@@ -17,10 +17,6 @@ visibility into the workloads running inside your cluster and cluster costs.
 
 The following sections describe these capabilities in detail:
 
-<br />
-
----
-
 <Tabs queryString="object-storage">
 <TabItem label="Workload Visibility" value="Workload Visibility">
 
@@ -87,15 +83,19 @@ To create your **Workspace Role**, follow the steps below:
 
 Palette leverages the BackUps to the following locations:
 
-<br />
+- Amazon Web Services (AWS) S3 Buckets:
+  [Prerequisites](#amazon-web-services-aws-s3-buckets-prerequisitesbucketasbackuplocation-configure-your-backup),
+  [Configure your Backup](#configure-your-backup-in-aws-s3)
 
-#### Amazon Web Services (AWS) S3 Buckets: [Prerequisites](#amazon-web-services-aws-s3-buckets-prerequisitesbucketasbackuplocation-configure-your-backup)bucketasbackuplocation), [Configure your Backup](#configure-your-backup-in-aws-s3)
+- Google Cloud Platform (GCP) Buckets:
+  [Prerequisites](#google-cloud-platform-gcp-buckets-prerequisites-configure-your-backup),
+  [Configure your Backup](#configure-your-backup-in-gcp-bucket)
 
-#### Google Cloud Platform (GCP) Buckets: [Prerequisites](#google-cloud-platform-gcp-buckets-prerequisites-configure-your-backup), [Configure your Backup](#configure-your-backup-in-gcp-bucket)
+- MinIO S3 Buckets: [Prerequisites](#minio-s3-buckets-prerequisites-configure-your-backup),
+  [Configure your Backup](#configure-your-backup-in-minio)
 
-#### MinIO S3 Buckets: [Prerequisites](#minio-s3-buckets-prerequisites-configure-your-backup), [Configure your Backup](#configure-your-backup-in-minio)
-
-#### Azure Blob: [Prerequisites](#azure-blob-prerequisites-configure-your-backup), [Configure your Backup](#configure-your-backup-in-azure-azure-blob)
+- Azure Blob: [Prerequisites](#azure-blob-prerequisites-configure-your-backup),
+  [Configure your Backup](#configure-your-backup-in-azure-azure-blob)
 
 ## Prerequisites
 
@@ -319,13 +319,13 @@ required for configuring a Workspace Backup, on demand-
 
 6. **Include Cluster Resources** - Select or deselect on your choice.
 
-| On Demand Backup                                                         |
-| ------------------------------------------------------------------------ |
-| Select the **Workspace to Backup** > **Settings** > **Schedule Backups** |
+   | On Demand Backup                                                         |
+   | ------------------------------------------------------------------------ |
+   | Select the **Workspace to Backup** > **Settings** > **Schedule Backups** |
 
-| Scheduled Backup                                            |
-| ----------------------------------------------------------- |
-| **Workspace Creation** > **Policies** > **Backup Policies** |
+   | Scheduled Backup                                            |
+   | ----------------------------------------------------------- |
+   | **Workspace Creation** > **Policies** > **Backup Policies** |
 
 ## Backup Scheduling Options
 
@@ -352,8 +352,6 @@ Backups created manually or as part of the schedule are listed under the Backup/
 
 To initiate a restore operation:
 
-<br />
-
 1. Log in to the Palette console as the **Project Admin** and go to **Workspaces** page.
 
 2. Select the **Workspace Name** to be restored.
@@ -367,11 +365,18 @@ To initiate a restore operation:
 
    - Choose of the namespaces to be restored
    - Three options are available to filter the resources to be restored:
+
      - **Include Cluster Resources** - To restore all the cluster scoped resources.
      - **Preserve Node Ports** - To preserve ports for node port service running in the cluster.
      - **Restore PVs** - To restore the persistent volumes.
 
-   **Note**: Check **Include Cluster Resource** and **Restore PVs** options together.
+     <br />
+
+     :::tip
+
+     Check **Include Cluster Resource** and **Restore PVs** options together.
+
+     :::
 
 6. Make the appropriate choice of resources as per user requirements to complete the wizard.
 
@@ -384,8 +389,6 @@ To initiate a restore operation:
 Palette enables the users to limit resource usage within the workspace optionally. The Quota is specified in terms of
 the maximum CPU and memory. Therefore, the resource utilization within the namespace should be below the Quota allocated
 across all the clusters.
-
-<br />
 
 ## To set your Resource Quota:
 
@@ -432,14 +435,16 @@ selected together for role binding.
 
    **Example:** `/^palette-ns/`
 
-   <br />
-
 2. A Regex pattern that starts with `negation symbol(~)`, will select all the namespaces that _does not match_ with the
    regex expression given.
 
    **Example:** `~/^(kube|cluster|capi|jet|cert)[-].+/`
 
-**Note**: No spaces to be added between the `~` operator and the `expression`.
+   :::info
+
+   Don't add any spaces between the `~` operator and the `expression`.
+
+   :::
 
 </TabItem>
 
@@ -491,17 +496,18 @@ Users can now allocate CPU and Memory [quotas](#workspace-quota) for each **name
 - [Allocate resources](workload-features.md#workspace-quota) to the created namespace (CPU and Memory).
 
 - Click on “Add new binding” to open the “Add ClusterRoleBinding” wizard. Fill in the following details:
+
   - Namespace: Select the namespace from the drop-down Menu. The list will display the namespaces created during the
     previous step.
   - Role Type: Select the role type from the drop-down. Either Role or Cluster Role.
 
-:::info
+    :::info
 
-A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole and
-bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all the
-namespaces in your cluster, you use a ClusterRoleBinding.
+    A RoleBinding may reference any Role in the same namespace. Alternatively, a RoleBinding can reference a ClusterRole
+    and bind that ClusterRole to the namespace of the RoleBinding. For example, if you want to bind a ClusterRole to all
+    the namespaces in your cluster, you use a ClusterRoleBinding.
 
-:::
+    :::
 
 - Role Name: Define a custom role name to identify the cluster role
 
@@ -526,8 +532,6 @@ namespaces in your cluster, you use a ClusterRoleBinding.
 Palette users can restrict a few container images from getting deployed into a specific Namespace. This helps the
 tenants from accidentally installing a delisted or unwanted container to that specific namespace.
 
-<br />
-
 ## Restrict container images to a workspace
 
 To restrict a container image for a particular namespace within the workspace:
@@ -537,7 +541,6 @@ To restrict a container image for a particular namespace within the workspace:
 
 2. Click on **+ Add New Container Image** and provide the **Namespace** and **Restricted Images**. Multiple images can
    be restricted within a namespace by separating them with commas.
-   <br />
 
 ## Restrict container images to a deployed workspace
 
