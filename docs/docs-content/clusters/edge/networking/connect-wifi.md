@@ -9,10 +9,7 @@ tags: ["edge"]
 
 This how-to walks you through how to connect an Edge host to a Wi-Fi network with
 [wpa_supplicant](https://linux.die.net/man/8/wpa_supplicant), using an Intel mini-PC as an example. You can apply the
-steps in this how-to with other hardware, but steps for configuring the network interface might be different. =======
-This how-to guides you through how to connect an Edge host to a Wi-Fi network with
-[wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using an Intel mini-PC as an example. You can apply
-the steps in this how-to with other hardware, but steps for configuring the network interface might be different.
+steps in this how-to with other hardware, but steps for configuring the network interface might be different.
 
 To connect an Edge host to Wi-Fi using `wpa_supplicant`, you need to build `wpa_supplicant` into the Operating System
 (OS) image used for the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are
