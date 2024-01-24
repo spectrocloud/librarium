@@ -9,11 +9,11 @@ tags: ["devx", "app mode", "pde", "app profiles"]
 
 You can modify app profiles by updating the following:
 
-- App profile name, version, description, and tags. 
+- App profile name, version, description, and tags.
 
 - App profile layers.
 
-You can also create multiple versions of an app profile with different services and configurations. 
+You can also create multiple versions of an app profile with different services and configurations.
 
 The next sections guide you in updating and versioning app profiles.
 
