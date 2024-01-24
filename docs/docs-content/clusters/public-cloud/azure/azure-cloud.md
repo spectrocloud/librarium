@@ -14,6 +14,10 @@ Palette. You can use any of the following authentication methods to register you
 
 - A [Palette Account](https://console.spectrocloud.com/).
 
+* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
+  provision compute, network, and security resources in the desired regions. Refer to the
+  [Required Permissions](./required-permissions.md) section for more information.
+
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
   provision compute, network, and security resources in the desired regions.
 
@@ -31,60 +35,16 @@ Palette. You can use any of the following authentication methods to register you
 
 5. Fill out the following information, and click **Confirm** to complete the registration.
 
-| **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Account Name**                  | A custom account name.                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| **Tenant ID**                     | Unique tenant ID from Azure Management Portal.                                                                                                                                                                                                                                                                                                                                                                                                       |
-| **Client ID**                     | Unique client ID from Azure Management Portal.                                                                                                                                                                                                                                                                                                                                                                                                       |
-| **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). After providing the client secret, click the **Validate** button. If the client secret you provided is correct, a _Credentials validated_ success message with a green check is displayed. |
-| **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Disable Properties**            | This option disables Palette importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Palette Network Calls to the Account](#disable-palette-network-calls-to-the-account) section below.                                                                                                                        |
-| **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                                                                                                                                                                      |
-
-### Disable Palette Network Calls to Azure Account
-
-When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network
-calls from Palette to the account. To disable network calls, select the **Disable Properties** option.
-
-Disabling network calls requires that you create a
-[Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new
-Microsoft Entra application, assign roles, and create the client secret.
-
-:::info
-
-Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the
-[Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-reference guide.
-
-:::
-
-1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the
-   [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-   reference guide.
-
-2. Next, assign yourself the
-   [User Access Administrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator)
-   role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in
-   step 3. For guidance, refer to
-   [Assign a Role to the Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
-
-3. With User Access Administrator privilege, you can now assign yourself the minimum required
-   [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role,
-   which grants full access to manage all resources.
-
-To learn about Azure roles, review
-[Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
-
-4. Create a client secret. Refer to
-   [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret)
-   for guidance.
-
-:::warning
-
-Safely store your client secret, as it will not be available later as plain text.
-
-:::
+| **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Account Name**                  | A custom account name.                                                                                                                                                                                                                                                                                 |
+| **Tenant ID**                     | Unique tenant ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
+| **Client ID**                     | Unique client ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
+| **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).                                              |
+| **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
+| **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
+| **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
+| **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                        |
 
 ## Validate
 
