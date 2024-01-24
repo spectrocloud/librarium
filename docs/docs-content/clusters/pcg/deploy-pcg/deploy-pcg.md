@@ -1,12 +1,10 @@
 ---
-sidebar_label: "Deploy a PCG"
+sidebar_label: "Deploy a PCG with Palette CLI"
 title: "Deploy a PCG"
 description: "Learn how to deploy a Private Cloud Gateway (PCG) to support Palette or VerteX deployments."
 hide_table_of_contents: false
 tags: ["pcg"]
 ---
-
-import VMwarePermissions from "../../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md";
 
 You can install a Private Cloud Gateway (PCG) on a Linux server to support Palette or VerteX deployments. Use the
 Palette CLI to install the PCG if you are targeting a VMware vSphere environment, MAAS, or OpenStack. All other
@@ -19,8 +17,6 @@ requirements and installation steps. Select the environment that matches your de
 
 <Tabs groupId="infra">
 <TabItem label="VMware vSphere" value="vmware">
-
-<VMwarePermissions />
 
 </TabItem>
 <TabItem label="MAAS" value="maas">

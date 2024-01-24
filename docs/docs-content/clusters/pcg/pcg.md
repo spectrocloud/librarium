@@ -24,15 +24,15 @@ You can deploy a PCG into most private cloud environments. Some of the infrastru
 support for PCG deployments through the Palette CLI. Other environments require a manual installation of the PCG. Refer
 to the table below to learn more about the supported environments.
 
-| Environment    | Palette CLI Install? | Description                                                                                     | Install Guide                                             |
-| -------------- | -------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| VMware vSphere | ✅                   | The PCG is deployed into a VMware vSphere environment.                                          | [Deploy a PCG](./deploy-pcg/deploy-pcg.md)                |
-| OpenStack      | ✅                   | The PCG cluster is deployed into an OpenStack environment.                                      | [Deploy a PCG](deploy-pcg/deploy-pcg.md)                  |
-| MAAS           | ✅                   | The PCG cluster is deployed into a MAAS environment.                                            | [Deploy a PCG](deploy-pcg/deploy-pcg.md)                  |
-| Other          | ❌                   | The PCG cluster is deployed into an existing Kubernetes cluster that is not managed by Palette. | [Deploy PCG to a Kubernetes Cluster](./deploy-pcg-k8s.md) |
+| Environment    | Palette CLI Install? | Description                                                                                     | Install Guide                                                         |
+| -------------- | -------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| VMware vSphere | ✅                   | The PCG is deployed into a VMware vSphere environment.                                          | [Deploy a PCG with Palette CLI](./deploy-pcg/deploy-pcg.md)           |
+| OpenStack      | ✅                   | The PCG cluster is deployed into an OpenStack environment.                                      | [Deploy a PCG with Palette CLI](deploy-pcg/deploy-pcg.md)             |
+| MAAS           | ✅                   | The PCG cluster is deployed into a MAAS environment.                                            | [Deploy a PCG with Palette CLI](deploy-pcg/deploy-pcg.md)             |
+| Other          | ❌                   | The PCG cluster is deployed into an existing Kubernetes cluster that is not managed by Palette. | [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md) |
 
 ## Resources
 
-- [Deploy a PCG](./deploy-pcg/deploy-pcg.md)
+- [Deploy a PCG with Palette CLI](./deploy-pcg/deploy-pcg.md)
 
-- [Deploy PCG to a Kubernetes Cluster](./deploy-pcg-k8s.md)
+- [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md)
