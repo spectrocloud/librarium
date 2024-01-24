@@ -14,6 +14,12 @@ import CopyButton from "@theme/CodeBlock/CopyButton";
 import WordWrapButton from "@theme/CodeBlock/WordWrapButton";
 import Container from "@theme/CodeBlock/Container";
 import styles from "./styles.module.css";
+// Prism languages are always lowercase
+// We want to fail-safe and allow both "php" and "PHP"
+// See https://github.com/facebook/docusaurus/issues/9012
+function normalizeLanguage(language) {
+  return language?.toLowerCase();
+}
 export default function CodeBlockString({
   children,
   className: blockClassName = "",
@@ -26,7 +32,7 @@ export default function CodeBlockString({
   const {
     prism: { defaultLanguage, magicComments },
   } = useThemeConfig();
-  const language = languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage;
+  const language = normalizeLanguage(languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage);
   const prismTheme = usePrismTheme();
   const wordWrap = useCodeWordWrap();
   // We still parse the metastring in case we want to support more syntax in the
@@ -39,6 +45,8 @@ export default function CodeBlockString({
     magicComments,
   });
   const showLineNumbers = showLineNumbersProp ?? containsLineNumbers(metastring);
+  hideClipboard = metastring && metastring.includes("hideClipboard");
+
   return (
     <Container
       as="div"
@@ -50,19 +58,15 @@ export default function CodeBlockString({
       {title && <div className={styles.codeBlockTitle}>{title}</div>}
       <div className={styles.codeBlockContent}>
         <Highlight theme={prismTheme} code={code} language={language ?? "text"}>
-          {({ className, tokens, getLineProps, getTokenProps }) => (
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
               /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
               tabIndex={0}
               ref={wordWrap.codeBlockRef}
               className={clsx(className, styles.codeBlock, "thin-scrollbar")}
+              style={style}
             >
-              <code
-                className={clsx(
-                  styles.codeBlockLines,
-                  showLineNumbers && styles.codeBlockLinesWithNumbering
-                )}
-              >
+              <code className={clsx(styles.codeBlockLines, showLineNumbers && styles.codeBlockLinesWithNumbering)}>
                 {tokens.map((line, i) => (
                   <Line
                     key={i}

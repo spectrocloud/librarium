@@ -7,20 +7,25 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-
-Palette supports integration with Azure and [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud accounts. This section explains how to add an Azure cloud account in Palette or Palette VerteX. You can use any of the following authentication methods to register your cloud account.
-
+Palette supports integration with Azure and
+[Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud accounts. This
+section explains how to add an Azure cloud account in Palette or Palette VerteX. You can use any of the following
+authentication methods to register your cloud account.
 
 ## Prerequisites
 
-* A [Palette](https://console.spectrocloud.com/), or VerteX account. 
+- A [Palette](https://console.spectrocloud.com/), or VerteX account.
 
-* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to provision compute, network, and security resources in the desired regions.
+- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
+  provision compute, network, and security resources in the desired regions. Refer to the
+  [Required Permissions](./required-permissions.md) section for more information.
+
+- An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
+
+* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
+  provision compute, network, and security resources in the desired regions.
 
 * An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
-
-
-
 
 ## Add Azure Cloud Account
 
@@ -28,61 +33,29 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 
 1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
-2. From the left **Main Menu**, select **Tenant Settings**. 
+2. From the left **Main Menu**, select **Tenant Settings**.
 
-3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**. 
+3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**.
 
 4. Locate **Azure**, and click **+ Add Azure Account**.
 
 5. Fill out the following information, and click **Confirm** to complete the registration.
 
-|   **Basic Information** |**Description**|
-|-------------------------|-----------|
-|**Account Name**| A custom account name.|
-|**Tenant ID**| Unique tenant ID from Azure Management Portal.|
-|**Client ID**| Unique client ID from Azure Management Portal.|
-|**Client Secret**| Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).  |
-| **Cloud** | Select **Azure Public Cloud** or **Azure US Government**. |
-|**Tenant Name**| An optional tenant name.|
-|**Disable Properties**| This option disables Palette importing Azure networking details. Disabling this option requires you to create a Microsoft Entra application and manually obtain account information. To learn more, refer to the [Disable Palette Network Calls to the Account](#disable-palette-network-calls-to-the-account) section below. |
-|**Connect Private Cloud Gateway**| If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.|
+| **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Account Name**                  | A custom account name.                                                                                                                                                                                                                                                                                 |
+| **Tenant ID**                     | Unique tenant ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
+| **Client ID**                     | Unique client ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
+| **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).                                              |
+| **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
+| **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
+| **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
+| **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                        |
 
-6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a *Credentials validated* success message with a green check is displayed.
+6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a
+   _Credentials validated_ success message with a green check is displayed.
 
 7. Click **Confirm** to complete the registration.
-
-
-#### Disable Palette Network Calls to Azure Account  
-
-<details>
- <summary>Expand to learn more about disabling properties.</summary>
-
-When you provide your cloud account information, Azure networking details are sent to Palette unless you disable network calls from Palette to the account. To disable network calls, select the **Disable Properties** option.  
-
-Disabling network calls requires that you create a [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) application, which can be used with Role-Based Access Control (RBAC). Follow the summary steps below to create a new Microsoft Entra application, assign roles, and create the client secret.  
-
-:::tip
-Microsoft Entra replaces the Azure Active Directory (AAD) application. For more information, review the [Microsoft Entra](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
-:::
-
-
-1. Create a new Microsoft Entra application and note down your ClientID and TenantID. Refer to the [Create a Microsoft Entra application and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) reference guide.
-
-2. Next, assign yourself the [User Access Administrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role to allow you to manage user access to Azure resources. You need this role assignment to assign the role in step 3. For guidance, refer to [Assign a Role to the Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
-
-3. With User Access Administrator privilege, you can now assign yourself the minimum required [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role, which grants full access to manage all resources.
-
-  To learn about Azure roles, review [Azure Roles, Microsoft Entra Roles, and Administrator Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles).
-
-4. Create a client secret. Refer to [Create a Client Secret](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-client-secret) for guidance.
-
-  :::caution
-
-  Safely store your client secret, as it will not be available later as plain text.
-
-  :::
-
-</details>
 
 ## Validate
 
@@ -90,20 +63,23 @@ You can verify your account is added.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Tenant Settings**. 
+2. From the left **Main Menu**, select **Tenant Settings**.
 
 3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
 
-4. The added cloud account is listed under **Azure** with all other available Azure cloud accounts. 
-
+4. The added cloud account is listed under **Azure** with all other available Azure cloud accounts.
 
 :::tip
 
-Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the account from Palette.
+Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the
+account from Palette.
 
 :::
 
-
 ## Next Steps
 
-After you have added your Azure cloud account to Palette or VerteX, you can start deploying an Azure IaaS cluster by following the  [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide, or if you prefer an Azure Managed Kubernetes Service (AKS) cluster, refer to the [Create and Manage Azure AKS Cluster](./azure.md) guide. We also encourage you to check out the [Deploy a Cluster tutorial](../deploy-k8s-cluster.md) for a detailed walkthrough of the cluster creation process.
+After you have added your Azure cloud account to Palette or VerteX, you can start deploying an Azure IaaS cluster by
+following the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide, or if you prefer an Azure Managed
+Kubernetes Service (AKS) cluster, refer to the [Create and Manage Azure AKS Cluster](./azure.md) guide. We also
+encourage you to check out the [Deploy a Cluster tutorial](../deploy-k8s-cluster.md) for a detailed walkthrough of the
+cluster creation process.

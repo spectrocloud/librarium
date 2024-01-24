@@ -8,32 +8,31 @@ sidebar_position: 10
 tags: ["user-management", "rbac"]
 ---
 
-
-
-
-
-
 # Global Project Scope
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
+The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with
+specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a resource or the API functionality, and *operation* refers to the action or activity allowed. 
+Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the
+Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a
+resource or the API functionality, and _operation_ refers to the action or activity allowed.
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option. 
+To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the
+list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option.
 
 Below is the predefined list of Roles and Permissions for the Global Project Scope:
 
 <br />
 
-
 ## App Deployment
---------------------------------
 
-|Role Name   | Description  |
-|---|---|
-|App Deployment Admin |Provides administrative privilege to perform all the App operations on App resources. |
-|App Deployment Editor|Allows the user to perform edit operations on an App but not to create or delete an App.|
-|App Deployment Viewer|Allows the user to view all the App resources but not to make modifications.|
+---
+
+| Role Name             | Description                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------- |
+| App Deployment Admin  | Provides administrative privilege to perform all the App operations on App resources.    |
+| App Deployment Editor | Allows the user to perform edit operations on an App but not to create or delete an App. |
+| App Deployment Viewer | Allows the user to view all the App resources but not to make modifications.             |
 
 <br />
 <br />
@@ -44,32 +43,35 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Deployment Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appDeployment**  | √          | √          | √       | √        | √          |            |             |            |             |
-| **appProfile**     |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
-| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig**| √       | √          | √       | √        | √          |            |             |            |             |
-| **virtualCluster** | √          | √          | √       | √        | √          |            |             |            |             |
-
-
+|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **appDeployment**      | √          | √          | √       | √        | √          |            |             |            |             |
+| **appProfile**         |            |            | √       | √        |            |            |             |            |             |
+| **cloudaccount**       |            |            | √       | √        |            |            |             |            |             |
+| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
+| **location**           | √          | √          | √       | √        | √          |            |             |            |             |
+| **machine**            |            |            | √       | √        |            |            |             |            |             |
+| **macro**              | √          | √          | √       | √        | √          |            |             |            |             |
+| **packRegistry**       |            |            | √       | √        |            |            |             |            |             |
+| **project**            |            |            | √       | √        |            |            |             |            |             |
+| **sshKey**             | √          | √          | √       | √        | √          |            |             |            |             |
+| **tag**                |            |            |         |          | √          |            |             |            |             |
+| **virtualCloudconfig** | √          | √          | √       | √        | √          |            |             |            |             |
+| **virtualCluster**     | √          | √          | √       | √        | √          |            |             |            |             |
 
 </TabItem>
 <TabItem label="App Deployment Editor" value="App Deployment Editor">
@@ -78,80 +80,88 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Deployment Editor
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appDeployment**  |            |            | √       | √        | √          |            |             |            |             |
-| **appProfile**     |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        | √          |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig**|         |            | √       | √        | √          |            |             |            |             |
-| **virtualCluster** |            |            | √       | √        | √          |            |             |            |             |
+|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **appDeployment**      |            |            | √       | √        | √          |            |             |            |             |
+| **appProfile**         |            |            | √       | √        |            |            |             |            |             |
+| **cloudaccount**       |            |            | √       | √        |            |            |             |            |             |
+| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
+| **location**           |            |            | √       | √        | √          |            |             |            |             |
+| **machine**            |            |            | √       | √        |            |            |             |            |             |
+| **macro**              |            |            | √       | √        |            |            |             |            |             |
+| **packRegistry**       |            |            | √       | √        |            |            |             |            |             |
+| **project**            |            |            | √       | √        |            |            |             |            |             |
+| **sshKey**             |            |            | √       | √        | √          |            |             |            |             |
+| **tag**                |            |            |         |          | √          |            |             |            |             |
+| **virtualCloudconfig** |            |            | √       | √        | √          |            |             |            |             |
+| **virtualCluster**     |            |            | √       | √        | √          |            |             |            |             |
 
 <br />
-
 
 </TabItem>
 <TabItem label="App Deployment Viewer" value="App Deployment Viewer">
 
 <br />
 
-## App Deployment Viewer 
+## App Deployment Viewer
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appDeployment**  |            |            | √       | √        |            |            |             |            |             |
-| **appProfile**     |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         |            |            | √       | √        |            |            |             |            |             |
-| **virtualCloudconfig**|         |            | √       | √        |            |            |             |            |             |
-| **virtualCluster** |            |            | √       | √        |            |            |             |            |             |
-
+|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **appDeployment**      |            |            | √       | √        |            |            |             |            |             |
+| **appProfile**         |            |            | √       | √        |            |            |             |            |             |
+| **cloudaccount**       |            |            | √       | √        |            |            |             |            |             |
+| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
+| **location**           |            |            | √       | √        |            |            |             |            |             |
+| **machine**            |            |            | √       | √        |            |            |             |            |             |
+| **macro**              |            |            | √       | √        |            |            |             |            |             |
+| **packRegistry**       |            |            | √       | √        |            |            |             |            |             |
+| **project**            |            |            | √       | √        |            |            |             |            |             |
+| **sshKey**             |            |            | √       | √        |            |            |             |            |             |
+| **virtualCloudconfig** |            |            | √       | √        |            |            |             |            |             |
+| **virtualCluster**     |            |            | √       | √        |            |            |             |            |             |
 
 </TabItem>
 </Tabs>
 
 <br />
 
-
 ## App Profile
---------------------------------
 
-|Role Names   | Description  |
-|---|---|
-|App Profile Admin |Provides administrative privilege to perform all the App operations on App profile resources. |
-|App Profile Editor|Allows the user to perform edit operations on App profiles but not to create or delete an App profile.|
-|App Profile Viewer|Allows the user to view all the App profile resources but not to modify them.|
+---
+
+| Role Names         | Description                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
+| App Profile Admin  | Provides administrative privilege to perform all the App operations on App profile resources.          |
+| App Profile Editor | Allows the user to perform edit operations on App profiles but not to create or delete an App profile. |
+| App Profile Viewer | Allows the user to view all the App profile resources but not to modify them.                          |
 
 <br />
 <br />
@@ -162,21 +172,26 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Profile Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**     | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
+|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **appProfile**   | √          | √          | √       | √        | √          |            |             |            |             |
+| **macro**        | √          | √          | √       | √        | √          |            |             |            |             |
+| **packRegistry** |            |            | √       | √        |            |            |             |            |             |
+| **project**      |            |            | √       | √        |            |            |             |            |             |
 
 </TabItem>
 <TabItem label="App Profile Editor" value="App Profile Editor">
@@ -185,63 +200,71 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## App Profile Editor
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**     |            |            | √       | √        | √          |            |             |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
+|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **appProfile**   |            |            | √       | √        | √          |            |             |            |             |
+| **macro**        |            |            | √       | √        | √          |            |             |            |             |
+| **packRegistry** |            |            | √       | √        |            |            |             |            |             |
+| **project**      |            |            | √       | √        |            |            |             |            |             |
 
 <br />
-
 
 </TabItem>
 <TabItem label="App Profile Viewer" value="App Profile Viewer">
 
 <br />
 
-## App Profile Viewer 
+## App Profile Viewer
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**     |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-
+|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **appProfile**   |            |            | √       | √        |            |            |             |            |             |
+| **macro**        |            |            | √       | √        |            |            |             |            |             |
+| **packRegistry** |            |            | √       | √        |            |            |             |            |             |
+| **project**      |            |            | √       | √        |            |            |             |            |             |
 
 </TabItem>
 </Tabs>
 
 <br />
 
-
 ## Project
---------------------------------
 
-|Role Names   | Description  |
-|---|---|
-|Project Admin |The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
-|Project Editor|The Project Editor role can perform edit operations within a project, but the user  is not able to create or delete a project|
-|Project Viewer|The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications|
+---
+
+| Role Names     | Description                                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Project Admin  | The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
+| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project  |
+| Project Viewer | The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications          |
 
 <br />
 <br />
@@ -252,12 +275,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -288,12 +316,17 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 ## Project Editor
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -319,20 +352,24 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 
 <br />
 
-
 </TabItem>
 <TabItem label="Project Viewer" value="Project Viewer">
 
 <br />
 
-## Project Viewer 
+## Project Viewer
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -354,25 +391,24 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 | **sshKey**         | √          |            |         |          | √          |            |             |            |             |
 | **workspace**      | √          |            |         |          | √          |            |             |            |             |
 
-
 </TabItem>
 </Tabs>
 
 <br />
 
-
 ## Cluster Profile
------------------------------
+
+---
 
 The user with these permissions can manage the Cluster Profiles within a project.
 
 <br />
 
-|Role Names| Description  |
-|---|---|
-|Cluster Profile Admin |Cluster Profile Admin role has admin privileges to all the cluster profile operations|
-|Cluster Profile Editor|Cluster Profile Editor role has privileges to edit and list operations on the cluster profile|
-|Cluster Profile Viewer|Cluster Profile Viewer role has read-only privileges to cluster profiles|
+| Role Names             | Description                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------- |
+| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations         |
+| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
+| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
 
 <br />
 
@@ -382,12 +418,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -407,12 +448,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Editor
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -432,12 +478,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Profile Viewer
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -455,16 +506,18 @@ The user with these permissions can manage the Cluster Profiles within a project
 <br />
 
 ## Cluster
---------------------------------------
-<br />
+
+---
 
 <br />
 
-|Role Names| Description  |
-|---|---|
-|Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation|
-|Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
-|Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations |
+<br />
+
+| Role Names     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation                                                                    |
+| Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
+| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
 
 <br />
 
@@ -476,12 +529,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -510,15 +568,20 @@ The user with these permissions can manage the Cluster Profiles within a project
 <br />
 
 ## Cluster Editor
-<br / >
+
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
-
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -545,13 +608,18 @@ The user with these permissions can manage the Cluster Profiles within a project
 <br />
 
 ## Cluster Viewer
-    
-<br / >
+
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -579,18 +647,18 @@ The user with these permissions can manage the Cluster Profiles within a project
 <br />
 
 ## Cloud Account
------------------------------
+
+---
 
 <br />
 
-|Role Names| Description |
-|---|---|
-|Cluster Account Admin  | An administrative access to cloud account operations|
-|Cluster Account Editor | An editor access to cloud cloud account operations  |
-|Cluster Account Viewer |  A read-only role for cloud account operations |
+| Role Names             | Description                                          |
+| ---------------------- | ---------------------------------------------------- |
+| Cluster Account Admin  | An administrative access to cloud account operations |
+| Cluster Account Editor | An editor access to cloud cloud account operations   |
+| Cluster Account Viewer | A read-only role for cloud account operations        |
 
 <br />
-
 
 <Tabs>
 <TabItem label="Cluster Account Admin" value="Cloud Account Admin">
@@ -599,12 +667,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Cluster Account Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -620,19 +693,25 @@ The user with these permissions can manage the Cluster Profiles within a project
 <br />
 
 ## Cluster Account Editor
-<br / >
+
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
 |                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
 | **cloudaccount** |            |            | √       | √        | √          |            |             |            |             |
- 
+
 <br />
 
 </TabItem>
@@ -640,14 +719,19 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 <br />
 
-## Cluster Account Viewer 
+## Cluster Account Viewer
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -661,14 +745,15 @@ The user with these permissions can manage the Cluster Profiles within a project
 </Tabs>
 
 ## Workspace
-------------------------------------
+
+---
 
 <br />
 
-|Role Names| Description  |
-|---|---|
-|Workspace Admin  | Administrator role to workspace operations|
-|Workspace Editor | Editor role to workspace operations |
+| Role Names       | Description                                |
+| ---------------- | ------------------------------------------ |
+| Workspace Admin  | Administrator role to workspace operations |
+| Workspace Editor | Editor role to workspace operations        |
 
 <br />
 
@@ -677,20 +762,25 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 <br />
 
-## Workspace Admin 
-<br / >
+## Workspace Admin
+
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
 |               | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
 | **workspace** | √          | √          | √       | √        | √          |            |             | √          | √           |
-
 
 <br />
 
@@ -701,12 +791,17 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Workspace Operator
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
@@ -721,15 +816,15 @@ The user with these permissions can manage the Cluster Profiles within a project
 </TabItem>
 </Tabs>
 
-
 ## Virtual Cluster
---------------------------------
 
-|Role Names   | Description  |
-|---|---|
-|Virtual Cluster Admin |Provides administrative privilege to perform all virtual cluster operations on App resources.|
-|Virtual Cluster Editor|Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster.|
-|Virtual Cluster Viewer|Allows the user to view all the virtual cluster resources but not to modify them.|
+---
+
+| Role Names             | Description                                                                                                    |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Virtual Cluster Admin  | Provides administrative privilege to perform all virtual cluster operations on App resources.                  |
+| Virtual Cluster Editor | Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster. |
+| Virtual Cluster Viewer | Allows the user to view all the virtual cluster resources but not to modify them.                              |
 
 <br />
 <br />
@@ -740,26 +835,29 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Virtual Cluster Admin
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig**| √       | √          | √       | √        | √          |            |             |            |             |
-| **virtualCluster** | √          | √          | √       | √        | √          |            |             |            |             |
-
-
+|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
+| **location**           |            |            | √       | √        |            |            |             |            |             |
+| **macro**              | √          | √          | √       | √        | √          |            |             |            |             |
+| **project**            |            |            | √       | √        |            |            |             |            |             |
+| **tag**                |            |            |         |          | √          |            |             |            |             |
+| **virtualCloudconfig** | √          | √          | √       | √        | √          |            |             |            |             |
+| **virtualCluster**     | √          | √          | √       | √        | √          |            |             |            |             |
 
 </TabItem>
 <TabItem label="Virtual Cluster Editor" value="Virtual Cluster Editor">
@@ -768,55 +866,63 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Virtual Cluster Editor
 
-<br / >
+<br />
+
 <table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
 </table>
 <hr />
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig**|         |            | √       | √        | √          |            |             |            |             |
-| **virtualCluster** |            |            | √       | √        | √          |            |             |            |             |
+|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
+| **location**           |            |            | √       | √        |            |            |             |            |             |
+| **macro**              |            |            | √       | √        | √          |            |             |            |             |
+| **project**            |            |            | √       | √        |            |            |             |            |             |
+| **tag**                |            |            |         |          | √          |            |             |            |             |
+| **virtualCloudconfig** |            |            | √       | √        | √          |            |             |            |             |
+| **virtualCluster**     |            |            | √       | √        | √          |            |             |            |             |
 
 <br />
-
 
 </TabItem>
 <TabItem label="App Deployment Viewer" value="App Deployment Viewer">
 
 <br />
 
-## Virtual Cluster Viewer 
-
-<br / >
-<table>
-    <tr>
-        <td width="400"><b>resourceKeys</b></td>
-        <td><b>Operations</b></td>
-    </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**   |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **virtualCloudconfig**|         |            | √       | √        |            |            |             |            |             |
-| **virtualCluster** |            |            | √       | √        |            |            |             |            |             |
+## Virtual Cluster Viewer
 
 <br />
 
+<table>
+  <tr>
+    <td width="400">
+      <b>resourceKeys</b>
+    </td>
+    <td>
+      <b>Operations</b>
+    </td>
+  </tr>
+</table>
+<hr />
+
+|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
+| **location**           |            |            | √       | √        |            |            |             |            |             |
+| **macro**              |            |            | √       | √        |            |            |             |            |             |
+| **project**            |            |            | √       | √        |            |            |             |            |             |
+| **virtualCloudconfig** |            |            | √       | √        |            |            |             |            |             |
+| **virtualCluster**     |            |            | √       | √        |            |            |             |            |             |
+
+<br />
 
 </TabItem>
 </Tabs>
