@@ -15,8 +15,6 @@ We use the Confidentiality, Integrity, and Availability (CIA) Triad as the frame
 controls we provide in our products and services. This framework is often extended with Authentication, Authorization,
 and Auditing. Components of the CIA Triad are described below.
 
-<br />
-
 - **Confidentiality**: Preserve authorized restrictions on information access and disclosure to protect personal privacy
   and proprietary data. This includes confirming identity and access rights to resources.
 
@@ -32,11 +30,7 @@ and Auditing. Components of the CIA Triad are described below.
 - **Auditing**: Track implementation-level and domain-level events to ensure certain actions have been performed in the
   product.
 
-# Core Principles
-
 Our security philosophy is grounded in the following core principles that we apply to our decision-making and product.
-
-<br />
 
 ## Secure by Design
 
@@ -44,16 +38,12 @@ Your data security is a core business requirement, not just a technical feature.
 design phase of our product feature development lifecycle to dramatically reduce the number of exploitable flaws and
 prevent them from being introduced in a release.
 
-<br />
-
 ## Secure by Default
 
 We believe that security should be the default setting for all of our systems and software. Our products are secure to
 use out-of-the-box with little or no configuration needed and at no additional cost – such as audit logs and access
 control for sensitive information. Palette also supports Multi-Factor authentication (MFA) using external Identify
 Providers (IDP), such as Okta.
-
-<br />
 
 ## Never Rely Just on Obscurity
 
@@ -65,14 +55,10 @@ Determined attackers use various methods to discover the hidden details of a sys
 either accidentally or deliberately. We believe that while obscurity alone is not a robust security strategy, it can be
 layered with security policies and controls. This is the principle of Defense in Depth.
 
-<br />
-
 ## Defense in Depth
 
 We believe security should be layered and redundant with multiple defenses in place to protect against different types
 of attack. The intent is to provide redundancy in the event a security control fails or a vulnerability is exploited.
-
-<br />
 
 ## Least Privilege
 
@@ -83,13 +69,9 @@ We use the principle of least privilege to ensure that all users have only the n
 job roles. To ensure the security of our users and systems, we use mechanisms such as defined access rights, regular
 reviews, restricted privileges, and system monitoring.
 
-<br />
-
 ## Secrets Handling
 
 We use the following methods for secrets handling, which contribute to a robust and resilient security infrastructure.
-
-<br />
 
 - Secure password manager.
 
