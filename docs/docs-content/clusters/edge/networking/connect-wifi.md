@@ -9,7 +9,7 @@ tags: ["edge"]
 
 This how-to walks you through how to connect an Edge host to a Wi-Fi network with
 [wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using an Intel mini-PC as an example. You can apply
-the steps in this how-to with other hardware, but steps for configuring the network interface might be be different.
+the steps in this how-to with other hardware, but steps for configuring the network interface might be different.
 
 To connect an Edge host to Wi-Fi using `wpa_supplicant`, you need to build `wpa_supplicant` into the OS image used for
 the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are managed at an
@@ -31,7 +31,8 @@ user data you use to build Edge artifacts and skip that step.
 - A [Spectro Cloud](https://console.spectrocloud.com/) account. If you have not signed up, you can sign up for a
   [free trial](https://www.spectrocloud.com/free-tier/).
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
-  generate a new registration token. For detailed instructions, refer to the Create Registration Token guide.
+  generate a new registration token. For detailed instructions, refer to the
+  [Create Registration Token](../site-deployment/site-installation/create-registration-token.md) guide.
 
 ### Procedure
 
@@ -52,8 +53,8 @@ user data you use to build Edge artifacts and skip that step.
    :::tip
 
    Consider including some other lightweight network utilities in the OS image as well that can help you troubleshoot or
-   set up network configurations alternatively if needed. For example, replace the RUN statement with the following to
-   also include network manager and ping.
+   set up network configurations alternatively if needed. For example, if you are using Ubuntu, consider replacing the
+   RUN statement with the following to also include network manager and ping.
 
    ```
    RUN apt-get update && apt-get install wpasupplicant -y && \
