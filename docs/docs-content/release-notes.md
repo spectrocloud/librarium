@@ -9,6 +9,13 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## January 25, 2024 - Release 4.2.7
+
+### Bug Fixes
+
+- Fixed an issue that caused MinIO S3 URL setting to be missing in backup location settings
+-
+
 ## January 9, 2024 - Release 4.2.4
 
 ### Bug Fixes
