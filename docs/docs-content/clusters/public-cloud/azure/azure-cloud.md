@@ -7,7 +7,8 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-Palette supports integration with Azure cloud accounts. This section explains how to create an Azure cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
+Palette supports integration with Azure cloud accounts. This section explains how to create an Azure cloud account in
+Palette. You can use any of the following authentication methods to register your cloud account.
 
 ## Prerequisites
 
@@ -45,8 +46,6 @@ Palette supports integration with Azure cloud accounts. This section explains ho
 | **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
 | **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                        |
 
-### Disable Palette Network Calls to Azure Account
-
 ## Validate
 
 You can verify your account is added.
@@ -61,6 +60,7 @@ You can verify your account is added.
 
 :::tip
 
-Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the account from Palette.
+Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the
+account from Palette.
 
 :::

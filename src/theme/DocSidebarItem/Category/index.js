@@ -1,12 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
-import {
-  ThemeClassNames,
-  useThemeConfig,
-  usePrevious,
-  Collapsible,
-  useCollapsible,
-} from "@docusaurus/theme-common";
+import { ThemeClassNames, useThemeConfig, usePrevious, Collapsible, useCollapsible } from "@docusaurus/theme-common";
 import {
   isActiveSidebarItem,
   findFirstSidebarItemLink,
@@ -69,14 +63,7 @@ function CollapseButton({ categoryLabel, onClick }) {
     />
   );
 }
-export default function DocSidebarItemCategory({
-  item,
-  onItemClick,
-  activePath,
-  level,
-  index,
-  ...props
-}) {
+export default function DocSidebarItemCategory({ item, onItemClick, activePath, level, index, ...props }) {
   const { items, label, collapsible, className, href } = item;
   const {
     docs: {

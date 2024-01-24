@@ -41,10 +41,7 @@ async function pluginImportFontAwesomeIcons() {
     async contentLoaded({ allContent }) {
       const appFontAwesomeIcons = {};
       allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs.map((doc) => {
-        if (
-          doc.frontMatter?.sidebar_custom_props?.icon &&
-          !assetIcons[doc.frontMatter?.sidebar_custom_props?.icon]
-        ) {
+        if (doc.frontMatter?.sidebar_custom_props?.icon && !assetIcons[doc.frontMatter?.sidebar_custom_props?.icon]) {
           appFontAwesomeIcons[doc.frontMatter?.sidebar_custom_props?.icon] =
             doc.frontMatter?.sidebar_custom_props?.icon;
         }
@@ -76,16 +73,11 @@ async function pluginImportFontAwesomeIcons() {
         fs.mkdirSync(directory, { recursive: true });
       }
 
-      fs.writeFile(
-        path.join(directory, "dynamicFontAwesomeImports.js"),
-        fileContent,
-        "utf8",
-        (err) => {
-          if (err) {
-            console.error("An error occurred while writing the file:", err);
-          }
+      fs.writeFile(path.join(directory, "dynamicFontAwesomeImports.js"), fileContent, "utf8", (err) => {
+        if (err) {
+          console.error("An error occurred while writing the file:", err);
         }
-      );
+      });
     },
   };
 }
