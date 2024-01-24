@@ -17,21 +17,21 @@ a VMO cluster profile. The pack's components are described below. All the compon
 
 - **Snapshot Controller** - Provides the ability to create VM snapshots.
 
-:::warning
+  :::warning
 
-The snapshot controller is installed automatically when you initiate or schedule a backup for your cluster. If you are
-deploying the VMO pack and your cluster already has a backup schedule configured or you have taken an on-demand backup
-in the past, then the snapshot controller will already be installed. To prevent any resource conflicts, you can disable
-the snapshot controller in the pack YAML file
+  The snapshot controller is installed automatically when you initiate or schedule a backup for your cluster. If you are
+  deploying the VMO pack and your cluster already has a backup schedule configured or you have taken an on-demand backup
+  in the past, then the snapshot controller will already be installed. To prevent any resource conflicts, you can
+  disable the snapshot controller in the pack YAML file
 
-```yaml
-charts:
-  virtual-machine-orchestrator:
-    snapshot-controller:
-      enabled: false
-```
+  ```yaml
+  charts:
+    virtual-machine-orchestrator:
+      snapshot-controller:
+        enabled: false
+  ```
 
-:::
+  :::
 
 - **Spectro VM Dashboard**: Enables access to a web console so you can manage and monitor your VMs. The console is
   accessible from the **Virtual Machines** tab that appears on the cluster overview page when using Palette Virtual
@@ -68,7 +68,7 @@ out the [Spectro Proxy](../../integrations/frp.md) pack documentation to learn m
 Administrators can configure the out-of-the-box add-on packs, cluster profiles, and VM templates that include commonly
 used operating systems, or they can define their own VM templates to share with users.
 
-# Resources
+## Resources
 
 - [Spectro Proxy](../../integrations/frp.md)
 
