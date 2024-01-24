@@ -1,19 +1,19 @@
 ---
 sidebar_label: "Connect Intel NUC Edge Host to Wifi"
 title: "Connect Intel NUC Edge Host to Wifi"
-description: "Learn how to connect an Edge host to wifi using wpa_supplicant."
+description: "Learn how to connect an Edge host to Wi-Fi using wpa_supplicant."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["edge"]
 ---
 
-This how-to walks you through how to connect an Edge host to a wifi network with
+This how-to walks you through how to connect an Edge host to a Wi-Fi network with
 [wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using Intel NUCs as an example. An Intel NUC is a
 mini PC that can be used as an Edge host for Palette Edge. You can apply the steps in this how-to with other hardware,
 but steps for configuring the network interface might be be different.
 
-To connect an Edge host to wifi using `wpa_supplicant`, you need to build `wpa_supplicant` into the OS image used for
-the Edge host and provide the wifi credentials to the Edge host. Depending on how Edge devices are managed at an
+To connect an Edge host to Wi-Fi using `wpa_supplicant`, you need to build `wpa_supplicant` into the OS image used for
+the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are managed at an
 organization, these two steps are often done by different teams. If they are being done by the same team or person, you
 can merge the user-data in the step [Supply Site-Specific User Data](#supply-site-specific-user-data) with the original
 user data you use to build Edge artifacts and skip that step.
@@ -81,7 +81,7 @@ the validation.
 
 ## Supply Site-Specific User Data
 
-It's likely that your wifi network name and passwords are site-specific, which means you won't be able to include the
+It's likely that your Wi-Fi network name and passwords are site-specific, which means you won't be able to include the
 network credentials in the installer. You can use site-specific user data to provide this information to you Edge hosts
 instead.
 
@@ -105,7 +105,7 @@ instead.
 
     stages:
         network.before:
-        - name: "Connect to wifi"
+        - name: "Connect to Wi-Fi"
         commands:
             - |
             # Find the first wireless network interface
