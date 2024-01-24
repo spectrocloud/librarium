@@ -21,16 +21,18 @@ Palette tutorial to get started.
 
 To learn more about Palette and Azure cluster creation and its capabilities check out the following resources:
 
-- [Register and Manage Azure Cloud Account](azure-cloud.md)
-
-- [Create and Manage IaaS Azure Cluster](create-azure-cluster.md)
-
-- [Create and Manage Azure AKS Cluster](aks.md)
-
-- [Deleting an Azure Cluster](../../cluster-management/remove-clusters.md)
+- [Azure Architecture](architecture.md)
 
 - [Cluster Management Day Two Operations](../../cluster-management/cluster-management.md)
 
-- [Azure Architecture](architecture.md)
-
 - [Cluster Removal](../../cluster-management/remove-clusters.md)
+
+- [Create and Manage Azure AKS Cluster](aks.md)
+
+- [Create and Manage IaaS Azure Cluster](create-azure-cluster.md)
+
+- [Deleting an Azure Cluster](../../cluster-management/remove-clusters.md)
+
+- [Register and Manage Azure Cloud Account](azure-cloud.md)
+
+- [Required Permissions](required-permissions.md)
