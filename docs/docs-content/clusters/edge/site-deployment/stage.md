@@ -49,8 +49,6 @@ Pick the target environment for your Edge host.
 
 The following items are optional and not required but may apply to your use case:
 
-<br />
-
 - USB disk that contains a user data ISO. This is applicable in
   [multiple user data](../edgeforge-workflow/prepare-user-data.md) scenarios where you want to override or provide
   additional configurations after the Edge host is powered on at the physical site.
@@ -101,83 +99,84 @@ vCenter environment, you will convert the VMDK to a VM template, and export it o
 
 3. Issue the following commands to prepare your server for VMDK creation.
 
-```shell
-apt update
-apt install qemu qemu-kvm \
-libvirt-clients libvirt-daemon-system bridge-utils virt-manager
-systemctl enable --now libvirtd systemctl enable --now virtlogd
-mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo \
-"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt update
-apt install docker-ce docker-ce-cli containerd.io
-docker-compose-plugin
-```
+   ```shell
+   apt update
+   apt install qemu qemu-kvm \
+   libvirt-clients libvirt-daemon-system bridge-utils virt-manager
+   systemctl enable --now libvirtd systemctl enable --now virtlogd
+   mkdir -p /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   apt update
+   apt install docker-ce docker-ce-cli containerd.io
+   docker-compose-plugin
+   ```
 
-If you need a graphical user interface (GUI), add `x11-apps` to the `apt install` command.
+   If you need a graphical user interface (GUI), add `x11-apps` to the `apt install` command.
 
-```shell
-apt install x11-apps
-```
+   ```shell
+   apt install x11-apps
+   ```
 
 4. You can add additional packages for content creation, compression, and preparing your workspace.
 
-```shell
-curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$( uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
-mkdir -p ~/workspace/
-cd workspace/
-git clone https://github.com/spectrocloud/stylus-image-builder.git
-```
+   ```shell
+   curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_$( uname -s)_$(uname -m).tar.gz" | tar -C /usr/local/bin -xvzf - govc
+   mkdir -p ~/workspace/
+   cd workspace/
+   git clone https://github.com/spectrocloud/stylus-image-builder.git
+   ```
 
-If you need ZSTD for compression or `govc` for interacting with vCenter, use the following command.
+   If you need ZSTD for compression or `govc` for interacting with vCenter, use the following command.
 
-```shell
-apt install zstd govc
-```
+   ```shell
+   apt install zstd govc
+   ```
 
 5. Build the VMDK from the Edge Installer ISO to serve as a template for deploying Edge hosts to virtual machines. Issue
    the following commands on your build server.
 
-```shell
-cd ~/workspace/stylus-image-builder/
-chmod +x entrypoint.sh
-export ISO_URL=[your-installer-name].iso
-export PALETTE_ENDPOINT=[your tenant].spectrocloud.com
-export REGISTRATION_URL=[QR Code registration app link]
-export EDGE_HOST_TOKEN=[token generated on Palette Portal]
-export DISK_SIZE=100000M
-EMBED=false make docker-build
-nohup make vmdk &
-```
+   ```shell
+   cd ~/workspace/stylus-image-builder/
+   chmod +x entrypoint.sh
+   export ISO_URL=[your-installer-name].iso
+   export PALETTE_ENDPOINT=[your tenant].spectrocloud.com
+   export REGISTRATION_URL=[QR Code registration app link]
+   export EDGE_HOST_TOKEN=[token generated on Palette Portal]
+   export DISK_SIZE=100000M
+   EMBED=false make docker-build
+   nohup make vmdk &
+   ```
 
-    :::info
+   :::info
 
+   If you are using a _Tenant Registration Token_ for auto-registration, you can omit the environment variable
+   `REGISTRATION_URL`.
 
-    If you are using a *Tenant Registration Token* for auto-registration, you can omit the environment variable `REGISTRATION_URL`.
+   :::
 
-    :::
-
-    A VMDK file was generated in the **stylus-image-builder/images** folder. Rename this VMDK to a preferred installer name. Ensure the VMDK file retains the `.vmdk` extension.
+   A VMDK file was generated in the **stylus-image-builder/images** folder. Rename this VMDK to a preferred installer
+   name. Ensure the VMDK file retains the `.vmdk` extension.
 
 6. Transfer the VMDK to a datastore in your VMware environment. Review the commands below and ensure you replace the
    placeholders with the respective values from your environment.
 
-```shell
-export GOVC_URL=https://[IP address OR the DNS of vCenter]
-export GOVC_USERNAME=[vcenter username]
-export GOVC_PASSWORD=[vcenter password]
-govc datastore.upload -ds=[datastore name] images/[your-installer-name].vmdk [folder in datastore]]/[your-installer-name].vmdk
-govc datastore.cp -ds=[datastore name] [folder in datastore]]/[your-installer-name].vmdk [folder in datastore]]/[your-installer-name]-uncompressed.vmdk
-```
+   ```shell
+   export GOVC_URL=https://[IP address OR the DNS of vCenter]
+   export GOVC_USERNAME=[vcenter username]
+   export GOVC_PASSWORD=[vcenter password]
+   govc datastore.upload -ds=[datastore name] images/[your-installer-name].vmdk [folder in datastore]]/[your-installer-name].vmdk
+   govc datastore.cp -ds=[datastore name] [folder in datastore]]/[your-installer-name].vmdk [folder in datastore]]/[your-installer-name]-uncompressed.vmdk
+   ```
 
-If you are using test or development environments, you may need to enable the following option. This environment
-variable is not recommended for production environments.
+   If you are using test or development environments, you may need to enable the following option. This environment
+   variable is not recommended for production environments.
 
-```shell
-export GOVC_INSECURE=1
-```
+   ```shell
+   export GOVC_INSECURE=1
+   ```
 
 7. Create a VM from the VMDK by logging into your vCenter console in the UI.
 

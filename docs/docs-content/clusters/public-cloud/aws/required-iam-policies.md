@@ -546,8 +546,6 @@ cluster creation into an existing VPC. The following policy allows Palette to op
 This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
 VPCs.
 
-<br />
-
 ### Minimum Dynamic Permissions
 
 ```json
@@ -673,8 +671,6 @@ VPCs.
 This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
 VPCs.
 
-<br />
-
 ### Minimum Static Permissions
 
 ```json
@@ -794,9 +790,7 @@ additional node-level policies, switch to the **Tenant Admin** project, and clic
 credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be
 attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
-<br />
-
-** AmazonEBSCSIDriverPolicy:**
+**AmazonEBSCSIDriverPolicy:**
 
 ```yml
 roleName: "custom-ng-role"

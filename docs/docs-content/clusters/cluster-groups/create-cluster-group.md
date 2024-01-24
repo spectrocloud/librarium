@@ -19,7 +19,9 @@ Palette does not offer support for host clusters of these types within a cluster
 - Edge clusters
 - Virtual clusters
 - Private Cloud Gateway (PCG) cluster
-- Imported clusters with read-only access :::
+- Imported clusters with read-only access
+
+:::
 
 Use the instructions below to create a cluster group.
 
@@ -40,79 +42,77 @@ Use the instructions below to create a cluster group.
 
    - **Basic Information**:
 
-| Parameter              | Description                       |
-| ---------------------- | --------------------------------- |
-| Group Name             | A name for the cluster group.     |
-| Description (optional) | Description of the group, if any. |
-| Tag (optional)         | Assign tags to the cluster group. |
+   | Parameter              | Description                       |
+   | ---------------------- | --------------------------------- |
+   | Group Name             | A name for the cluster group.     |
+   | Description (optional) | Description of the group, if any. |
+   | Tag (optional)         | Assign tags to the cluster group. |
 
-3. Select **Next** to continue.
+4. Select **Next** to continue.
 
-4. Use the **Select clusters** drop-down menu to add available host clusters.
+5. Use the **Select clusters** drop-down menu to add available host clusters.
 
-:::info
+   :::info
 
-Only host clusters created under the current scope are available to add to a cluster group. You can add host clusters
-created under the current project or at the tenant scope. You cannot add host clusters that were created in another
-project scope.
+   Only host clusters created under the current scope are available to add to a cluster group. You can add host clusters
+   created under the current project or at the tenant scope. You cannot add host clusters that were created in another
+   project scope.
 
-:::
+   :::
 
-5. Click **Next** once you have added all the host clusters you wish to include.
+6. Click **Next** once you have added all the host clusters you wish to include.
 
-6. Review the configuration options for **Host Clusters Config** and **Virtual Clusters Config**.
+7. Review the configuration options for **Host Clusters Config** and **Virtual Clusters Config**.
 
-#### Cluster Group Configurations
+   #### Cluster Group Configurations
 
-| **Host Cluster Config** | **Description**                                                                                                                                                                                                                                                                                                                            |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Oversubscription (%):   | The allowed oversubscription for cluster in terms of resources. Default is 120%.                                                                                                                                                                                                                                                           |
-| Cluster endpoint type:  | Load balancer or Ingress.                                                                                                                                                                                                                                                                                                                  |
-| Host DNS:               | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance. |
+   | **Host Cluster Config** | **Description**                                                                                                                                                                                                                                                                                                                            |
+   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | Oversubscription (%):   | The allowed oversubscription for cluster in terms of resources. Default is 120%.                                                                                                                                                                                                                                                           |
+   | Cluster endpoint type:  | Load balancer or Ingress.                                                                                                                                                                                                                                                                                                                  |
+   | Host DNS:               | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance. |
 
-#### Palette Virtual Cluster Configuration
+   #### Palette Virtual Cluster Configuration
 
-The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for
-further customization. The request sizing applies to the maximum amount of resources a virtual cluster is allowed to
-claim.
+   The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for
+   further customization. The request sizing applies to the maximum amount of resources a virtual cluster is allowed to
+   claim.
 
-<br />
+   | **Palette Virtual Cluster Resource** | **Default** | **Minimum Limit** |
+   | ------------------------------------ | ----------- | ----------------- |
+   | CPU (per request)                    | 6           | 4                 |
+   | Memory (per request)                 | 8 GiB       | 4 GiB             |
+   | Storage (per request)                | 10 GiB      | 2 GiB             |
 
-| **Palette Virtual Cluster Resource ** | **Default** | **Minimum Limit** |
-| ------------------------------------- | ----------- | ----------------- |
-| CPU (per request)                     | 6           | 4                 |
-| Memory (per request)                  | 8 GiB       | 4 GiB             |
-| Storage (per request)                 | 10 GiB      | 2 GiB             |
+   :::warning
 
-:::warning
+   A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The
+   default settings in the cluster group virtual cluster configuration YAML file has the following values:
 
-A virtual cluster requires a minimum of 4 CPU, 4 GiB of memory, and 2 Gib of storage to launch successfully. The default
-settings in the cluster group virtual cluster configuration YAML file has the following values:
+   ```yaml
+   vcluster
+     resources:
+       limits:
+         cpu: 1000m
+         memory: 1Gi
+         ephemeral-storage: 1Gi
+       requests:
+         cpu: 200m
+         memory: 256Mi
+         ephemeral-storage: 128Mi
+   ```
 
-```yaml
-vcluster
-  resources:
-    limits:
-      cpu: 1000m
-      memory: 1Gi
-      ephemeral-storage: 1Gi
-    requests:
-      cpu: 200m
-      memory: 256Mi
-      ephemeral-storage: 128Mi
-```
+   Increasing the limit and request values could result in a virtual cluster requiring more resources than the default
+   values of 4 CPU, 4 GiB of memory, and 2 Gib of storage.
 
-Increasing the limit and request values could result in a virtual cluster requiring more resources than the default
-values of 4 CPU, 4 GiB of memory, and 2 Gib of storage.
+   :::
 
-:::
+   To enable virtual clusters for OpenShift, review the OpenShit
+   [instructions below](#enable-virtual-cluster-for-openshift).
 
-To enable virtual clusters for OpenShift, review the OpenShit
-[instructions below](#enable-virtual-cluster-for-openshift).
+8. Click **Next** to complete the cluster group creation process.
 
-7. Click **Next** to complete the cluster group creation process.
-
-8. Click **Finish Configuration**.
+9. Click **Finish Configuration**.
 
 ### Validate
 

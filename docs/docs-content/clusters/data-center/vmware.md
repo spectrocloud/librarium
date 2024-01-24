@@ -620,7 +620,7 @@ incoming connection from the management console.
 
 :::
 
-<video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></video>
+<Video title="vsphere-pcg-creation" src="/videos/clusters/data-center/pcg-creation-video/vmware.mp4"></Video>
 
 ### Prerequisites
 
