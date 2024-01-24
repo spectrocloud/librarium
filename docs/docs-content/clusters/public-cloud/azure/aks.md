@@ -18,7 +18,7 @@ Azure clusters can be created under the following scopes:
 
 Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
-# Prerequisites
+## Prerequisites
 
 These prerequisites must be met before deploying an AKS workload cluster:
 
@@ -151,9 +151,9 @@ The following steps need to be performed to provision a new cluster:
    :::warning
 
    If you enable the **Disable Properties** setting when
-   [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-   resources on your behalf. In this case, every time you deploy a cluster, you must manually specify their virtual
-   network subnets and security groups,
+   [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot list network resources
+   on your behalf. In this case, every time you deploy a cluster, you must manually specify their virtual network
+   subnets and security groups,
 
    :::
 
@@ -280,8 +280,9 @@ In all types of node pools, configure the following.
 
   :::info
 
-  A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
-  A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
+  A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes. A minimum allocation of
+
+  <i>4Gi</i> of memory is required across all worker nodes.
 
   :::
 
@@ -316,8 +317,8 @@ following are the steps to create the custom user _kubeconfig_ file:
 
    :::info
 
-   The above step can also be completed using Spectro RBAC pack available under the Authentication section of
-   Add-on Packs.
+   The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on
+   Packs.
 
    :::
 
@@ -330,14 +331,8 @@ following are the steps to create the custom user _kubeconfig_ file:
    az aks get-credentials --resource-group <resource-group> --name <cluster-name>
    ```
 
-<br />
-
 ## Resources
 
 - [Use Kubernetes RBAC with Azure AD integration](https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?tabs=portal)
 
 - [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)
-
-```
-
-```
