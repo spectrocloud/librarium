@@ -6,9 +6,9 @@ hide_table_of_contents: false
 tags: ["pcg"]
 ---
 
-Depending on your deployment environment, you may need to meet certain requirements before deploying a Private Cloud
-Gateway (PCG). To learn more about the prerequisites for deploying a PCG, refer to the following sections for your
-deployment environment:
+Depending on your deployment environment, different requirements mut be met before deploying a Private Cloud Gateway
+(PCG). To learn more about the prerequisites for deploying a PCG, refer to the following sections for your deployment
+environment.
 
 ## MAAS
 
