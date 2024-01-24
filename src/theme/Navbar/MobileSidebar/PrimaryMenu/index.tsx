@@ -14,9 +14,7 @@ interface NavbarMobilePrimaryMenuProps {
 }
 
 // The primary menu displays the navbar items
-export default function NavbarMobilePrimaryMenu({
-  className,
-}: NavbarMobilePrimaryMenuProps): JSX.Element {
+export default function NavbarMobilePrimaryMenu({ className }: NavbarMobilePrimaryMenuProps): JSX.Element {
   const mobileSidebar = useNavbarMobileSidebar();
 
   // TODO how can the order be defined for mobile?

@@ -239,7 +239,7 @@ const redirects = [
     from: `/devx/app-profile/container-deployment`,
     to: `/profiles/app-profiles/create-app-profiles/container-deployment`,
   },
-   {
+  {
     from: `/devx/app-profile/app-profile-macros`,
     to: `/profiles/app-profiles/app-profile-output-vars`,
   },
@@ -309,40 +309,40 @@ const redirects = [
   },
   {
     from: `/enterprise-version/deploying-palette-with-helm`,
-    to: `/enterprise-version/install-palette/install-on-kubernetes/install`
+    to: `/enterprise-version/install-palette/install-on-kubernetes/install`,
   },
   {
-   from: `/enterprise-version/helm-chart-install-reference`,
-    to: `/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref` 
+    from: `/enterprise-version/helm-chart-install-reference`,
+    to: `/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref`,
   },
   {
     from: `/enterprise-version/system-console-dashboard`,
-    to: `/enterprise-version/system-management`
+    to: `/enterprise-version/system-management`,
   },
   {
     from: `/enterprise-version/enterprise-cluster-management`,
-    to: `/enterprise-version/system-management`
+    to: `/enterprise-version/system-management`,
   },
   {
     from: `/enterprise-version/monitoring`,
-    to: `/enterprise-version/system-management`
+    to: `/enterprise-version/system-management`,
   },
   {
     from: `/enterprise-version/air-gap-repo`,
-    to: `/enterprise-version/install-palette`
+    to: `/enterprise-version/install-palette`,
   },
   {
     from: `/enterprise-version/reverse-proxy`,
-    to: `/enterprise-version/system-management/reverse-proxy`
+    to: `/enterprise-version/system-management/reverse-proxy`,
   },
   {
     from: `/enterprise-version/ssl-certificate-management`,
-    to: `/enterprise-version/system-management/ssl-certificate-management`
+    to: `/enterprise-version/system-management/ssl-certificate-management`,
   },
   {
     from: `/compliance`,
-    to: `/legal-licenses/compliance`
-  }
+    to: `/legal-licenses/compliance`,
+  },
 ];
 
 module.exports = redirects;

@@ -8,21 +8,20 @@ sidebar_position: 20
 tags: ["vertex", "management"]
 ---
 
-Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are available at the system level and are applied to all [tenants](../../glossary-all.md#tenant) in the system. 
-
+Palette VerteX contains many system settings you can configure to meet your organization's needs. These settings are
+available at the system level and are applied to all [tenants](../../glossary-all.md#tenant) in the system.
 
 ## System Console
 
 The system console enables you to complete the initial setup and onboarding and manage the overall Palette environment.
 
-
 ### Access the System Console
 
-You can access the system setting by visiting the IP address or the custom domain name assigned to your Palette VerteX cluster and appending the `/system` path to the URL. For example, if your Palette VerteX cluster is hosted at `https://vertex.abc.com`, you can access the system settings at `https://vertex.abc.com/system`.
-
+You can access the system setting by visiting the IP address or the custom domain name assigned to your Palette VerteX
+cluster and appending the `/system` path to the URL. For example, if your Palette VerteX cluster is hosted at
+`https://vertex.abc.com`, you can access the system settings at `https://vertex.abc.com/system`.
 
 ![View of the VerteX system console landing page.](/vertex_system-management_overview-system-console.png)
-
 
 ## Administration and Management
 
@@ -58,13 +57,10 @@ Exercise caution when changing system settings as the changes will be applied to
 
 :::
 
-
 ## Resources
 
-* [Enable non-FIPS Settings](enable-non-fips-settings/enable-non-fips-settings.md)
+- [Enable non-FIPS Settings](enable-non-fips-settings/enable-non-fips-settings.md)
 
+- [Tenant Management](../system-management/tenant-management.md)
 
-* [Tenant Management](../system-management/tenant-management.md)
-
-
-* [SSL Certificate Management](../system-management/ssl-certificate-management.md)
+- [SSL Certificate Management](../system-management/ssl-certificate-management.md)
