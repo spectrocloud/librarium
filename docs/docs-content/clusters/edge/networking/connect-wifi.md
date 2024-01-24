@@ -1,16 +1,15 @@
 ---
-sidebar_label: "Connect Intel NUC Edge Host to Wifi"
-title: "Connect Intel NUC Edge Host to Wifi"
+sidebar_label: "Connect Edge Host to Wifi"
+title: "Connect Edge Host to Wifi"
 description: "Learn how to connect an Edge host to Wi-Fi using wpa_supplicant."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 80
 tags: ["edge"]
 ---
 
 This how-to walks you through how to connect an Edge host to a Wi-Fi network with
-[wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using Intel NUCs as an example. An Intel NUC is a
-mini PC that can be used as an Edge host for Palette Edge. You can apply the steps in this how-to with other hardware,
-but steps for configuring the network interface might be be different.
+[wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using an Intel mini-PC as an example. You can apply
+the steps in this how-to with other hardware, but steps for configuring the network interface might be be different.
 
 To connect an Edge host to Wi-Fi using `wpa_supplicant`, you need to build `wpa_supplicant` into the OS image used for
 the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are managed at an
