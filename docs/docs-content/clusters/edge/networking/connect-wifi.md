@@ -7,16 +7,16 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-This how-to walks you through how to connect an Edge host to a wifi network with wpa_supplicant, using Intel NUCs as an
-example. An Intel NUC is a mini PC that can be used as an Edge host for Palette Edge. You can apply the steps in this
-how-to with Edge hosts running other hardware, but configuring the network interface might be be different on other
-hardware.
+This how-to walks you through how to connect an Edge host to a wifi network with
+[wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using Intel NUCs as an example. An Intel NUC is a
+mini PC that can be used as an Edge host for Palette Edge. You can apply the steps in this how-to with other hardware,
+but steps for configuring the network interface might be be different.
 
-To connect an Edge host to wifi using wpa_supplicant, you need to download wpa_supplicant and provide the wifi
-credentials to the Edge host. Depending on how Edge devices are managed at an organization, these two steps are often
-done by different teams. If they are being done by the same team or person, you can merge the user-data in the step
-[Supply Site-Specific User Data](#supply-site-specific-user-data) with the original user data you use to build Edge
-artifacts and skip that step.
+To connect an Edge host to wifi using `wpa_supplicant`, you need to build `wpa_supplicant` into the OS image used for
+the Edge host and provide the wifi credentials to the Edge host. Depending on how Edge devices are managed at an
+organization, these two steps are often done by different teams. If they are being done by the same team or person, you
+can merge the user-data in the step [Supply Site-Specific User Data](#supply-site-specific-user-data) with the original
+user data you use to build Edge artifacts and skip that step.
 
 ## Build OS Image with wpa_supplicant Included
 
@@ -46,7 +46,8 @@ artifacts and skip that step.
    lines.
 
    ```
-   RUN apt-get update && apt-get install wpasupplicant
+   RUN apt-get update && apt-get install wpasupplicant && \
+       mkdir /var/lib/wpa
    ```
 
    :::tip
@@ -58,7 +59,8 @@ artifacts and skip that step.
    ```
    RUN apt-get update && apt-get install wpasupplicant -y && \
     apt-get update && apt-get install network-manager -y && \
-    apt-get install iputils-ping -y
+    apt-get install iputils-ping -y && \
+    mkdir /var/lib/wpa
    ```
 
    :::
@@ -93,14 +95,13 @@ instead.
 ### Procedure
 
 1. Create a file named `user-data`, and include the following content. Replace `network-name` and `network-password`
-   with the name and password of your Wifi network. If your base image is not Ubuntu, replace the bind mount path with
-   another bound path.
+   with the name and password of your Wifi network.
 
    ```yaml
     #cloud-config
     install:
         bind_mounts:
-            - /var/lib/ubuntu-advantage
+            - /var/lib/wpa
 
     stages:
         network.before:
@@ -119,8 +120,8 @@ instead.
 
             # Check if a wireless interface was found and connect it to WiFi
             if [ -n "$wireless_interface" ]; then
-                wpa_passphrase <network-name> <network-password> | tee /var/lib/ubuntu-advantage/wpa_supplicant.conf
-                wpa_supplicant -B -c /var/lib/ubuntu-advantage/wpa_supplicant.conf -i $wireless_interface
+                wpa_passphrase <network-name> <network-password> | tee /var/lib/wpa/wpa_supplicant.conf
+                wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
                 dhclient $wireless_interface
             else
                 echo "No wireless network interface found."
