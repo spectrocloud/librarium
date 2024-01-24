@@ -188,8 +188,6 @@ The following steps will guide you to install the PCG.
    | **Password**     | Enter your Palette Password. This is your sign-in password.                                                                                                                                 |
    | **Pairing Code** | Enter the pairing code you noted from the instructions page in step **5**.                                                                                                                  |
 
-   {" "}
-
    <br />
 
    #### Environment Configuration
@@ -201,8 +199,6 @@ The following steps will guide you to install the PCG.
    | **No Proxy(--no_proxy)**              | The default is blank. You can add a comma-separated list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `maas.company.com,10.10.0.0/16`. |
    | **Pod CIDR (--pod_cidr)**             | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                                        |
    | **Service IP Range (--svc_ip_range)** | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                         |
-
-   {" "}
 
    <br />
 
