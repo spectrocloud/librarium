@@ -40,12 +40,12 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 3. Click on **Settings** and choose **Edit Info** from the **drop-down Menu**. You can modify the profile name, version,
    description, and tags.
 
-:::info
+   :::info
 
-Updated tags will not be propagated to previously created clusters. However, tag changes will apply to new clusters you
-create that use the updated profile.
+   Updated tags will not be propagated to previously created clusters. However, tag changes will apply to new clusters
+   you create that use the updated profile.
 
-:::
+   :::
 
 4. Save your changes.
 
@@ -86,13 +86,14 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
    - Remove non-infrastructure pack layers from the profile. Click the layer to display its details and click the
      **trash can** icon in the **Edit Pack** panel.
 
-:::info
+     :::info
 
-You cannot remove Operating System (OS), Kubernetes, Networking, or Storage infrastructure layers.
+     You cannot remove Operating System (OS), Kubernetes, Networking, or Storage infrastructure layers.
 
-:::
+     :::
 
-    - Select **Settings** and choose **Delete** to delete the entire profile. You can also delete the profile when you choose **Delete** from the **three-dots Menu** on the Profiles page.
+   - Select **Settings** and choose **Delete** to delete the entire profile. You can also delete the profile when you
+     choose **Delete** from the **three-dots Menu** on the Profiles page.
 
 4. Confirm your updates.
 
@@ -128,54 +129,57 @@ Ensure you follow these practices when updating to a new pack version.
 
 :::
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles**.
+2.  From the left **Main Menu**, select **Profiles**.
 
-3. Select the profile you want to update. Palette displays profile details and the profile stack.
+3.  Select the profile you want to update. Palette displays profile details and the profile stack.
 
-4. Click on the pack layer to update.
+4.  Click on the pack layer to update.
 
-5. In the **Edit Pack** panel, select a specific target version, not a group that ends in `.x`. Palette displays the
-   difference between the current version at left and the new version at right. The target version is displayed in the
-   header.
+5.  In the **Edit Pack** panel, select a specific target version, not a group that ends in `.x`. Palette displays the
+    difference between the current version at left and the new version at right. The target version is displayed in the
+    header.
 
-Differences between the displayed configurations are as follows:
+    Differences between the displayed configurations are as follows:
 
-    -  *Red highlight* indicates text that is not present in the new configuration.
+    - _Red highlight_ indicates text that is not present in the new configuration.
 
-    These may be lines you have added in the current configuration. Use the arrow that displays between the two configurations to transfer the lines to the new pack version.
+      These may be lines you have added in the current configuration. Use the arrow that displays between the two
+      configurations to transfer the lines to the new pack version.
 
-    These lines may also have been removed because they are no longer valid in the new configuration. If you need them, you should copy the lines to the new version. Similarly, you should copy any settings from the current configuration.
+      These lines may also have been removed because they are no longer valid in the new configuration. If you need
+      them, you should copy the lines to the new version. Similarly, you should copy any settings from the current
+      configuration.
 
-    - *Green highlight* indicates additions in the new configuration that are not present in the pack version you are using.
+    - _Green highlight_ indicates additions in the new configuration that are not present in the pack version you are
+      using.
 
-    #### Example of Difference Between Current and New Configurations
+      #### Example of Difference Between Current and New Configurations
 
+      ![Screenshot that shows Palette's pack diff user interface with red highlight at left and green highlight at right](/integrations_pack_diffs.png)
 
-    ![Screenshot that shows Palette's pack diff user interface with red highlight at left and green highlight at right](/integrations_pack_diffs.png)
+    - _Contrasting shades_ of red and green highlight within the same line indicates differences occur in only part of
+      the line.
 
-    - *Contrasting shades* of red and green highlight within the same line indicates differences occur in only part of the line.
+      #### Example of Line Changes in Current and New Configurations
 
+      ![Screenshot that shows Palette's pack diff user interface with contrasting shades of red and green highlight in the same line](/integrations_pack_line_diffs.png)
 
-    #### Example of Line Changes in Current and New Configurations
+6.  Check for red-highlight in the configuration that is missing in the new configuration.
 
-    ![Screenshot that shows Palette's pack diff user interface with contrasting shades of red and green highlight in the same line](/integrations_pack_line_diffs.png)
+    - If there are any lines you added, use the arrow to transfer the lines to the new version.
+    - If there are lines you did not add that are red highlighted, they have been removed in the new version, and you
+      should _not_ copy them over.
 
-6. Check for red-highlight in the configuration that is missing in the new configuration.
+7.  Check for changed settings in the new configuration, and copy settings from the current configuration to the new
+    configuration.
 
-   - If there are any lines you added, use the arrow to transfer the lines to the new version.
-   - If there are lines you did not add that are red highlighted, they have been removed in the new version, and you
-     should _not_ copy them over.
+8.  Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new
+    configuration.
 
-7. Check for changed settings in the new configuration, and copy settings from the current configuration to the new
-   configuration.
-
-8. Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new
-   configuration.
-
-9. Check for changes in the same line that have a different value. If it is not a customization you made, you should
-   adopt the new value, as it is known to be compatible with the new version.
+9.  Check for changes in the same line that have a different value. If it is not a customization you made, you should
+    adopt the new value, as it is known to be compatible with the new version.
 
 10. Confirm your updates.
 

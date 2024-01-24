@@ -33,20 +33,24 @@ VNet contains the following network settings.
    you want to use Azure Container Networking Interface (CNI) networking and not necessary if you are using Kubenet
    networking)
 
-2. The VNet should have the ** `Microsoft.Authorization/roleAssignments/write` ** action required to connect the virtual
+2. The VNet should have the **`Microsoft.Authorization/roleAssignments/write`** action required to connect the virtual
    network to the Azure Kubernetes Cluster if the network configuration is `Azure CNI.` for the cluster.
 
 3. The VNet needs to be linked with:
+
    - Azure Kubernetes Cluster
    - Azure Bastion Host (Jump Box Virtual Machine) to connect to the Azure target Kubernetes cluster securely.
 
-<br />
+   <br />
 
-:::info
+   :::info
 
-    **Note**: A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do not require a bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer required.
+   **Note**: A bastion host is only required if accessing a Kubernetes cluster that is located inside a private Azure
+   Virtual Network (VNet) that only exposes private endpoints. If you have direct network access to the VNet then you do
+   not require a bastion host. Alternatively, you can also deploy a bastion host and remove it later if no longer
+   required.
 
-:::
+   :::
 
 ## Create an Azure Kubernetes Target Cluster in the Azure Console
 
@@ -63,42 +67,35 @@ VNet contains the following network settings.
 
 4. The scale method to be selected is manual.
 
-5. Networking: Two options available for networking configuration are **Kubenet** and **Azure CNI**
-   <br />
+5. Networking: Two options available for networking configuration are **Kubenet** and **Azure CNI**.
 
-#### Kubenet:
+   #### Kubenet:
 
-If this option is selected, the user needs to ensure that the VNet used is the VNet created at the previous step. This
-selection of VNet is not possible via Azure User Interface and hence can be achieved
-[programmatically](https://learn.microsoft.com/en-us/azure/aks/configure-kubenet) as below:
+   If this option is selected, the user needs to ensure that the VNet used is the VNet created at the previous step.
+   This selection of VNet is not possible via Azure User Interface and hence can be achieved
+   [programmatically](https://learn.microsoft.com/en-us/azure/aks/configure-kubenet) as below:
 
-<br />
+   ```
+   SUBNET_ID=$(az network vnet subnet show --resource-group resource-group-name --vnet-name vnet-name --name subnet-name --query id -o tsv)
+   ```
 
-```
-SUBNET_ID=$(az network vnet subnet show --resource-group resource-group-name --vnet-name vnet-name --name subnet-name --query id -o tsv)
-```
+   ```
+   az aks create \
+         --resource-group resource-group-name \
+         --name cluster-name \
+         --enable-private-cluster \
+         --node-count count-value \
+         --network-plugin kubenet \
+         --vnet-subnet-id $SUBNET_ID \
+         --max-pods 110
+   ```
 
-<br />
+   #### Azure CNI:
 
-```
-az aks create \
-		--resource-group resource-group-name \
-		--name cluster-name \
-		--enable-private-cluster \
-		--node-count count-value \
-		--network-plugin kubenet \
-		--vnet-subnet-id $SUBNET_ID \
-        --max-pods 110
-```
-
-#### Azure CNI:
+   In Azure CNI network configuration, select the static
+   [virtual network created](gateways#create-a-virtual-network-in-the-azure-console) from the drop-down menu.
 
 6. Security: For network security enable **Private cluster**.
-
-In Azure CNI network configuration, select the static
-[virtual network created](gateways#create-a-virtual-network-in-the-azure-console) from the drop-down menu.
-
-<br />
 
 ## Establish external connectivity with the Target Azure Kubernetes Cluster
 
@@ -110,31 +107,27 @@ get connected to the target Azure Kubernetes cluster to be imported to Palette C
 To establish the external connectivity for the private Kubernetes cluster, launch an Azure Virtual Machine as a jump-box
 with an SSH key attached.
 
-<br />
-
 :::info
 
 Port Prerequisite: Add an inbound network security group rule with destination port 22.
 
 :::
 
-1. Open the client terminal of your choice to execute:
-
-   <br />
+1. Open the client terminal of your choice to execute.
 
 2. Ensure you have read-only access to the private key. Chmod is only supported on Linux subsystems (e.g. WSL on Windows
    or Terminal on Mac).
 
-```shell
-  chmod 400 <keyname>.pem
-```
+   ```shell
+   chmod 400 <keyname>.pem
+   ```
 
 3. Issue the command below to connect to your VM. Replace the `<private key path>` with the path to your private key and
    `public-ip-address-of-bastion-jump-box` with the public IP address of your VM.
 
-```shell
-  ssh -i <private key path> azureuser@public-ip-address-of-bastion-jump-box
-```
+   ```shell
+   ssh -i <private key path> azureuser@public-ip-address-of-bastion-jump-box
+   ```
 
 ### Get connected to the Target Azure Kubernetes cluster
 
@@ -155,36 +148,34 @@ below sample instructions:
 
 ## Deploy Palette Self Hosted PCG to Palette Console
 
-<br />
+1.  Login to Palette console as Tenant Admin and go to Tenant settings.
 
-1. Login to Palette console as Tenant Admin and go to Tenant settings.
+2.  Go to Private Cloud Gateways and select + Add New Private Cloud Gateway.
 
-2. Go to Private Cloud Gateways and select + Add New Private Cloud Gateway.
+3.  From the available options, select the `Self Hosted Gateway.`
 
-3. From the available options, select the `Self Hosted Gateway.`
+4.  In the create gateway wizard,
 
-4. In the create gateway wizard,
+    - Private cloud gateway name: Custom gateway name
+    - Cloud type: Select the cloud type as Azure for Azure self-hosted PCG.
 
-- Private cloud gateway name: Custom gateway name
-- Cloud type: Select the cloud type as Azure for Azure self-hosted PCG.
+5.  Install the Palette agent (also check for prerequisites and instructions on Palette UI)
 
-  5.Install the Palette agent (also check for prerequisites and instructions on Palette UI)
+    **Example:**
 
-**Example:**
+    ```shell
+    kubectl apply -f endpoint/v1/pcg/12345678901234/services/jet/manifest
+    ```
 
-```shell
-  kubectl apply -f endpoint/v1/pcg/12345678901234/services/jet/manifest
-```
+    ```shell
+    kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
+    ```
 
-```shell
-  kubectl apply -n cluster-1234abcd -f https://endpoint/v1/pcg/12345678901234/services/ally/manifest
-```
-
-6. The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG
-   can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account
-   (optionally) to enjoy the enhanced security benefits. We support the
-   [PCG migration](../../../enterprise-version/system-management/system-management.md) for the public cloud self-hosted
-   PCGs as well.
+6.  The self-hosted PCG will be provisioned and will start running in the Palette console. The healthy self-hosted PCG
+    can be managed from the Palette UI page. The healthy self-hosted PCG can be linked to Azure Cloud Account
+    (optionally) to enjoy the enhanced security benefits. We support the
+    [PCG migration](../../../enterprise-version/system-management/system-management.md) for the public cloud self-hosted
+    PCGs as well.
 
 :::info
 
