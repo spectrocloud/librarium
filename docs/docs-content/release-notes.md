@@ -14,7 +14,9 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused MinIO S3 URL setting to be missing in backup location settings
--
+- Fixed an issue that prohibited updating Helm packs in cluster profiles.
+- Fixed an issue that caused certain OCI registries created before the Palette 4.2 upgrade to be unlisted.
+- Fixed an issue that caused HTTP 400 errors on Palette Console page due to cookie size limit.
 
 ## January 9, 2024 - Release 4.2.4
 
