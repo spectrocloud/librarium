@@ -7,21 +7,18 @@ sidebar_position: 80
 tags: ["edge"]
 ---
 
-<<<<<<< HEAD
 This how-to walks you through how to connect an Edge host to a Wi-Fi network with
 [wpa_supplicant](https://linux.die.net/man/8/wpa_supplicant), using an Intel mini-PC as an example. You can apply the
-steps in this how-to with other hardware, but steps for configuring the network interface might be different.
-=======
+steps in this how-to with other hardware, but steps for configuring the network interface might be different. =======
 This how-to guides you through how to connect an Edge host to a Wi-Fi network with
 [wpa_supplicant](https://wiki.archlinux.org/title/wpa_supplicant), using an Intel mini-PC as an example. You can apply
 the steps in this how-to with other hardware, but steps for configuring the network interface might be different.
->>>>>>> 5188a5330661d9915e8fb066d494dd2ad4b5f370
 
-To connect an Edge host to Wi-Fi using `wpa_supplicant`, you need to build `wpa_supplicant` into the Operating System (OS) image used for
-the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are managed at an
-organization, these two steps are often done by different teams. If they are being done by the same team or person, you
-can merge the user-data in the step [Supply Site-Specific User Data](#supply-site-specific-user-data) with the original
-user data you use to build Edge artifacts and skip that step.
+To connect an Edge host to Wi-Fi using `wpa_supplicant`, you need to build `wpa_supplicant` into the Operating System
+(OS) image used for the Edge host and provide the Wi-Fi credentials to the Edge host. Depending on how Edge devices are
+managed at an organization, these two steps are often done by different teams. If they are being done by the same team
+or person, you can merge the user-data in the step [Supply Site-Specific User Data](#supply-site-specific-user-data)
+with the original user data you use to build Edge artifacts and skip that step.
 
 ## Build OS Image with wpa_supplicant Included
 
@@ -126,7 +123,7 @@ instead.
 
             # Check if a wireless interface was found and connect it to WiFi
             if [ -n "$wireless_interface" ]; then
-                wpa_passphrase <network-name> <network-password> | tee /var/lib/wpa/wpa_supplicant.conf
+                wpa_passphrase network-name network-password | tee /var/lib/wpa/wpa_supplicant.conf
                 wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
                 dhclient $wireless_interface
             else
