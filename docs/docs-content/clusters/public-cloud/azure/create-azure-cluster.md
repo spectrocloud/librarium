@@ -100,7 +100,7 @@ Use the following steps to deploy an Azure cluster.
     :::warning
 
     If you enable the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
+    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot list network
     resources on your behalf. In this case, when creating clusters, you must manually specify their virtual network
     subnets and security groups.
 
@@ -134,14 +134,14 @@ Each subnet allows you to specify the CIDR range and a security group.
 12. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
-:::info
+    :::info
 
-By default, a master pool and one worker node pool are configured. You can add new worker pools to customize certain
-worker nodes for specialized workloads. For example, the default worker pool can be configured with the Standard_D2_v2
-instance types for general-purpose workloads, and another worker pool with instance type Standard_NC12s_v3 can be
-configured for Graphics Processing Unit (GPU) workloads.
+    By default, a master pool and one worker node pool are configured. You can add new worker pools to customize certain
+    worker nodes for specialized workloads. For example, the default worker pool can be configured with the
+    Standard_D2_v2 instance types for general-purpose workloads, and another worker pool with instance type
+    Standard_NC12s_v3 can be configured for Graphics Processing Unit (GPU) workloads.
 
-:::
+    :::
 
 You can apply autoscale capability to dynamically increase resources during high loads and reduce them during low loads.
 To learn more, refer to [Enable Autoscale for Azure IaaS Cluster](#enable-autoscale-for-azure-iaas-cluster).
