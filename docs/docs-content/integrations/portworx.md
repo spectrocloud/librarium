@@ -1,16 +1,18 @@
 ---
-sidebar_label: 'Portworx'
-title: 'Portworx'
-description: 'Portworx storage integration for on-prem installations'
+sidebar_label: "Portworx"
+title: "Portworx"
+description: "Portworx storage integration for on-prem installations"
 hide_table_of_contents: true
 type: "integration"
-category: ['storage', 'amd64']
+category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png'
-tags: ['packs', 'portworx', 'storage']
+logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png"
+tags: ["packs", "portworx", "storage"]
 ---
 
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for applications deployed as containers, via container orchestrators such as Kubernetes. You can use Palette to install Portworx on the cloud or on-premises.
+[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for
+applications deployed as containers, via container orchestrators such as Kubernetes. You can use Palette to install
+Portworx on the cloud or on-premises.
 
 ## Versions Supported
 
@@ -20,31 +22,28 @@ tags: ['packs', 'portworx', 'storage']
 
 <TabItem label="2.11.x" value="2.11.x">
 
-* **2.11.2**
-
+- **2.11.2**
 
 </TabItem>
 
 <TabItem label="2.10.x" value="2.10.x">
 
-* **2.10.0**
-
+- **2.10.0**
 
 </TabItem>
 <TabItem label="2.9.x" value="2.9.x">
 
-
-* **2.9.0**
+- **2.9.0**
 
 </TabItem>
 <TabItem label="2.8.x" value="2.8.x">
 
-* **2.8.0**
+- **2.8.0**
 
 </TabItem>
 <TabItem label="2.6.x" value="2.6.x">
 
-* **2.6.1**
+- **2.6.1**
 
 </TabItem>
 </Tabs>
@@ -53,15 +52,12 @@ tags: ['packs', 'portworx', 'storage']
 
 For deploying Portworx for Kubernetes, make sure to configure the properties in the pack:
 
+- Have at least three nodes with the proper
+  [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
 
-* Have at least three nodes with the proper [hardware, software, and network requirements](https://docs.portworx.com/install-portworx/prerequisites).
+- Ensure you are using a supported Kubernetes version.
 
-
-* Ensure you are using a supported Kubernetes version.
-
-
-* Identify and set up the storageType.
-
+- Identify and set up the storageType.
 
 <br />
 
@@ -69,30 +65,24 @@ For deploying Portworx for Kubernetes, make sure to configure the properties in 
 
 The default installation of Portworx will deploy the following components in the Kubernetes cluster.
 
+- Portworx
 
-* Portworx
+- CSI Provisioner
 
+- [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new)
 
-* CSI Provisioner
+- [Stork](https://github.com/libopenstorage/stork) and
+  [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
 
-
-* [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new)
-
-
-* [Stork](https://github.com/libopenstorage/stork) and [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
-
-
-* Storage class making use of portworx-volume provisioner.
+- Storage class making use of portworx-volume provisioner.
 
 ## Parameters
 
 ### Manifests - Portworx
 
 ```yaml
-
 manifests:
   portworx:
-
     # The namespace to install Portworx resources
     namespace: "portworx"
 
@@ -117,7 +107,7 @@ manifests:
         priority_io: "high"
         #sharedv4: true
 
-    k8sVersion: '{{.spectro.system.kubernetes.version}}'
+    k8sVersion: "{{.spectro.system.kubernetes.version}}"
 
     templateVersion: "v4"
 
@@ -139,32 +129,32 @@ manifests:
     # The private registry from where images will be pulled from. When left empty, images will be pulled from the public registry
     # Example, imageRegistry: "harbor.company.com/portworx"
     imageRegistry: ""
-
 ```
+
 # Integration With External etcd
 
 Starting Portworx v2.6.1, you can use the presets feature to toggle between the available ETCD options.
 
-By default, Portworx is set to use internal KVDB. However, you can integrate Portworx to an external etcd server by following the steps below.
+By default, Portworx is set to use internal KVDB. However, you can integrate Portworx to an external etcd server by
+following the steps below.
 
-1. Enable `useExternalKvdb` flag by setting it to *true*.
-
+1. Enable `useExternalKvdb` flag by setting it to _true_.
 
 2. Configure the external etcd endpoints in `externalKvdb.endpoints`.
 
+If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the
+following:
 
-If the external etcd server is configured to authenticate via certificates, additionally you may want to set up the following:
-
-1. Enable `externalKvdb.useCertsForSSL` flag by setting it to *true*.
-
+1. Enable `externalKvdb.useCertsForSSL` flag by setting it to _true_.
 
 2. Setup certificate related configuration in `externalKvdb.cacert`, `externalKvdb.cert`, and `externalKvdb.key`.
 
-
 :::warning
-Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will result in Portworx deployment failure.
-:::
 
+Make sure to follow the correct indentation style; otherwise, certs will not be imported correctly and will result in
+Portworx deployment failure.
+
+:::
 
 ## Etcd Presets
 
@@ -308,7 +298,7 @@ vsphere-cloud-controller-manager:
 
 # Environments
 
-<br/>
+<br />
 
 <Tabs>
 <TabItem label="vSphere" value="vSphere">
@@ -317,13 +307,11 @@ vsphere-cloud-controller-manager:
 
 For deploying Portworx storage on vSphere environments, make sure to configure the following properties in the pack:
 
-* vSphere Configuration file
+- vSphere Configuration file
 
+- Storage Type
 
-* Storage Type
-
-
-* Kubernetes Version
+- Kubernetes Version
 
 ### vSphere Manifest
 
@@ -332,7 +320,6 @@ Additional parameters for the manifest is as follows:
 <br />
 
 ```yaml
-
 # VSphere cloud configurations
 vsphereConfig:
   insecure: "true"
@@ -345,31 +332,32 @@ vsphereConfig:
   # Enter the name of the secret which has vsphere user credentials (Use keys VSPHERE_USER, VSPHERE_PASSWORD)
   userCredsSecret: ""
 ```
+
 <br />
 
 ## Using Secrets for vSphere User Credentials
 
 Portworx pack values allow you to configure vSphere user credentials in two ways:
 
-
 1. Username & password - (`portworx.vsphereConfig.userName` and `portworx.vsphereConfig.password`).
-
 
 2. Secret - (`portworx.vsphereConfig.userCredsSecret` is available with v2.6.1 and above).
 
-
-If you chose the latter, make sure to create the secret in the target cluster manually or by bringing your own (BYO) manifest Add-on pack.
+If you chose the latter, make sure to create the secret in the target cluster manually or by bringing your own (BYO)
+manifest Add-on pack.
 
 <br />
 
 :::warning
-Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is configured, reconciliation should recover Portworx.
+
+Until the secret is created in the cluster, Portworx deployments might fail to run. When secret is configured,
+reconciliation should recover Portworx.
+
 :::
 
 Secret can be created using the spec below,
 
 <br />
-
 
 ```yaml
 apiVersion: v1
@@ -382,6 +370,7 @@ data:
   VSPHERE_USER: "b64 encoded admin username"
   VSPHERE_PASSWORD: "b64 encoded admin password"
 ```
+
 and this secret can be referenced in the Portworx pack values as shown below:
 
 <br />
@@ -393,14 +382,16 @@ manifests:
       userCredsSecret: "px-vsphere-secret"
 ```
 
-Ensure to follow the correct indentation style; otherwise, certificates will not be imported correctly and resulting in a Portworx deployment failure.
+Ensure to follow the correct indentation style; otherwise, certificates will not be imported correctly and resulting in
+a Portworx deployment failure.
 
 </TabItem>
 <TabItem label="AWS" value="AWS">
 
-
 ## AWS Environment
+
 Palette provisions Portworx in an AWS environment. The following are the packs supported:
+
 <br />
 
 ### Packs Supported
@@ -413,12 +404,10 @@ Palette provisions Portworx in an AWS environment. The following are the packs s
 </TabItem>
 <TabItem label="2.10" value="2.10">
 
-
 **portworx-aws-2.10**
 
 </TabItem>
 </Tabs>
-
 
 <br />
 
@@ -426,43 +415,40 @@ Palette provisions Portworx in an AWS environment. The following are the packs s
 
 To deploy Portworx in an AWS environment, have the following prerequisites in place.
 
+- Ensure the Portworx Nodes have the TCP ports open at **9001-9022**.
 
-* Ensure the Portworx Nodes have the TCP ports open at **9001-9022**.
+- Ensure there is an open UDP port at **9002**.
 
-
-* Ensure there is an open UDP port at **9002**.
-
-
-* Apply the following policy to the **User** in AWS:
+- Apply the following policy to the **User** in AWS:
 
 ```yaml
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "<stmt-id>",
-            "Effect": "Allow",
-            "Action": [
-                "ec2:AttachVolume",
-                "ec2:ModifyVolume",
-                "ec2:DetachVolume",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:DeleteTags",
-                "ec2:DeleteVolume",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumeAttribute",
-                "ec2:DescribeVolumesModifications",
-                "ec2:DescribeVolumeStatus",
-                "ec2:DescribeVolumes",
-                "ec2:DescribeInstances",
-                "autoscaling:DescribeAutoScalingGroups"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Sid": "<stmt-id>",
+        "Effect": "Allow",
+        "Action":
+          [
+            "ec2:AttachVolume",
+            "ec2:ModifyVolume",
+            "ec2:DetachVolume",
+            "ec2:CreateTags",
+            "ec2:CreateVolume",
+            "ec2:DeleteTags",
+            "ec2:DeleteVolume",
+            "ec2:DescribeTags",
+            "ec2:DescribeVolumeAttribute",
+            "ec2:DescribeVolumesModifications",
+            "ec2:DescribeVolumeStatus",
+            "ec2:DescribeVolumes",
+            "ec2:DescribeInstances",
+            "autoscaling:DescribeAutoScalingGroups",
+          ],
+        "Resource": ["*"],
+      },
+    ],
 }
 ```
 
@@ -472,67 +458,64 @@ To deploy Portworx in an AWS environment, have the following prerequisites in pl
 
 ```yaml
 manifests:
-   portworx:
+  portworx:
+    # The namespace to install Portworx resources
+    namespace: "portworx"
 
-     # The namespace to install Portworx resources
-     namespace: "portworx"
+    # Portworx storage type and size
+    storageType: "type=gp3,size=150"
 
-     # Portworx storage type and size
-     storageType: "type=gp3,size=150"
+    # Max storage nodes per zone
+    maxStorageNodesPerZone: 3
 
-     # Max storage nodes per zone
-     maxStorageNodesPerZone: 3
+    # Node recovery timeout in seconds
+    nodeRecoveryTimeout: 1500
 
-     # Node recovery timeout in seconds
-     nodeRecoveryTimeout: 1500
+    # Portworx storage class config
+    storageClass:
+      enabled: true
+      isDefaultStorageClass: true
+      allowVolumeExpansion: true
+      reclaimPolicy: Retain
+      volumeBindingMode: Immediate
+      parameters:
+        repl: "3"
+        priority_io: "high"
+        #sharedv4: true
 
-     # Portworx storage class config
-     storageClass:
-       enabled: true
-       isDefaultStorageClass: true
-       allowVolumeExpansion: true
-       reclaimPolicy: Retain
-       volumeBindingMode: Immediate
-       parameters:
-         repl: "3"
-         priority_io: "high"
-         #sharedv4: true
+    # Kubernetes version.
+    k8sVersion: "{{.spectro.system.kubernetes.version}}"
 
-     # Kubernetes version.
-     k8sVersion: '{{.spectro.system.kubernetes.version}}'
+    templateVersion: "v4"
 
-     templateVersion: "v4"
+    # List of additional container args to be passed
+    args:
+      ociMonitor:
+        #- "-dedicated_cache"
+        #- "-a"
+      storkDeployment:
+        #- "--app-initializer=true"
+      storkScheduler:
+        #- "--scheduler-name=xyz"
+      autoPilot:
+      csiProvisioner:
+      csiSnapshotter:
+      csiSnapshotController:
+      csiResizer:
 
-     # List of additional container args to be passed
-     args:
-       ociMonitor:
-         #- "-dedicated_cache"
-         #- "-a"
-       storkDeployment:
-         #- "--app-initializer=true"
-       storkScheduler:
-         #- "--scheduler-name=xyz"
-       autoPilot:
-       csiProvisioner:
-       csiSnapshotter:
-       csiSnapshotController:
-       csiResizer:
+    # The private registry from where images will be pulled from. When left empty, images will be pulled from the public registry
+    # Example, imageRegistry: "harbor.company.com/portworx"
+    imageRegistry: ""
 
-     # The private registry from where images will be pulled from. When left empty, images will be pulled from the public registry
-     # Example, imageRegistry: "harbor.company.com/portworx"
-     imageRegistry: ""
+    # ECTD selection
+    useExternalKvdb: false
 
-     # ECTD selection
-     useExternalKvdb: false
-
-     # External kvdb related config
-     externalKvdb:
-
-       useCertsForSSL: false
+    # External kvdb related config
+    externalKvdb:
+      useCertsForSSL: false
 ```
 
 </TabItem>
-
 
 </Tabs>
 

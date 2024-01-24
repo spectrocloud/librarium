@@ -6,491 +6,491 @@ sidebar_position: 30
 tags: ["legal", "licenses"]
 ---
 
-
 <!-- vale off -->
 
-The following table lists the open-source licenses tied to the libraries and modules currently in use by Palette. If you have any questions or concerns, contact us at support@spectrocloud.com
+The following table lists the open-source licenses tied to the libraries and modules currently in use by Palette. If you
+have any questions or concerns, contact us at support@spectrocloud.com
 
-| Library | License| 
-|------- | -------| 
-|api | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)|
-| apimachinery | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| appengine | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| assert | [MIT](https://opensource.org/license/mit/)
-| atomic | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| aws-sdk-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| azure-sdk-for-go | [MIT](https://opensource.org/license/mit/)
-| backoff | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| beego | [MIT](https://opensource.org/license/mit/)
-| cast | [MIT](https://opensource.org/license/mit/)
-| cert-manager | [MIT](https://opensource.org/license/mit/)
-| client-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| client_golang | [MIT](https://opensource.org/license/mit/)
-| client_model | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cloud.google.com/go/container | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-bootstrap-provider-microk8s | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-control-plane-provider-microk8s | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-aws | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-azure | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-coxedge | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-gcp | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-maas | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-openstack | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-vcluster | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-api-provider-vsphere | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cluster-bootstrap | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| common | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| component-base | [MIT](https://opensource.org/license/mit/)
-| compress | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| concurrent | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| containerized-data-importer | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| controller-runtime | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| corefile-migration | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| crypto | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| easyjson | [MIT](https://opensource.org/license/mit/)
-| emperror.dev/errors | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| errors | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| errwrap | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| exp | [MIT](https://opensource.org/license/mit/)
-| flect | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| fsnotify | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| ginkgo | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)
-| github.com/andybalholm/brotli | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/apparentlymart/go-cidr | [MIT](https://opensource.org/license/mit/)
-| github.com/avast/retry-go | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/Azure/go-autorest/autorest/to | [MIT](https://opensource.org/license/mit/)
-| github.com/Azure/go-autorest/autorest/validation | [MIT](https://opensource.org/license/mit/)
-| github.com/blang/semver/v4 | [MIT](https://opensource.org/license/mit/)
-| github.com/coredns/caddy | [MIT](https://opensource.org/license/mit/)
-| github.com/docker/distribution | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/dsnet/compress | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/emicklei/go-restful/v3 | [MIT](https://opensource.org/license/mit/)
-| github.com/evanphx/json-patch/v5 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/go-errors/errors | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/golang-jwt/jwt/v4 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/google/gnostic | [MIT](https://opensource.org/license/mit/)
-| github.com/go-openapi/analysis | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/go-openapi/errors | [MIT](https://opensource.org/license/mit/)
-| github.com/go-openapi/loads | [MIT](https://opensource.org/license/mit/)
-| github.com/go-openapi/runtime | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/go-openapi/strfmt | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/go-openapi/validate | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/gophercloud/gophercloud | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/grpc-ecosystem/grpc-gateway/v2 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/jasonlvhit/gocron | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/juliangruber/go-intersect | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/klauspost/pgzip | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/lib/pq | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/Masterminds/goutils | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| github.com/Masterminds/sprig/v3 | [MIT](https://opensource.org/license/mit/)
-| github.com/mholt/archiver/v3 | [MIT](https://opensource.org/license/mit/)
-| github.com/minio/highwayhash | [MIT](https://opensource.org/license/mit/)
-| github.com/[MIT](https://opensource.org/license/mit/)chellh/copystructure | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/[MIT](https://opensource.org/license/mit/)chellh/hashstructure | [MIT](https://opensource.org/license/mit/)
-| github.com/[MIT](https://opensource.org/license/mit/)chellh/reflectwalk | [MIT](https://opensource.org/license/mit/)
-| github.com/nats-io/jwt/v2 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/nats-io/nats.go | [MIT](https://opensource.org/license/mit/)
-| github.com/nats-io/nkeys | [MIT](https://opensource.org/license/mit/)
-| github.com/nats-io/nuid | [MIT](https://opensource.org/license/mit/)
-| github.com/nwaples/rardecode | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/opencontainers/go-digest | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/openshift/custom-resource-status | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/PaesslerAG/gval | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/pborman/uuid | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| github.com/pierrec/lz4/v4 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/shopspring/decimal | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/tidwall/pretty | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/ulikunitz/xz | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/xi2/xz | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| go | [MIT](https://opensource.org/license/mit/)
-| goautoneg | [MIT](https://opensource.org/license/mit/)
-| go-autorest | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| go-client | public-domain
-| go-cmp | [MIT](https://opensource.org/license/mit/)
-| go-difflib | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| gofuzz | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-genproto | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-humanize | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-internal | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-jmespath | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| golang-lru | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| golang_protobuf_extensions | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| gomega | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| gomodules.xyz/jsonpatch/v2 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go.mongodb.org/mongo-driver | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-multierror | [MIT](https://opensource.org/license/mit/)
-| google-cloud-go | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| go.opentelemetry.io/otel/exporters/jaeger | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go.opentelemetry.io/otel/internal/metric | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)
-| go-spew | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| gotest.tools | [MIT](https://opensource.org/license/mit/)
-| govalidator | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-wildcard | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-yaml | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)
-| groupcache | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| grpc-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| harbor | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| httpsnoop | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| inf.v0 | [ISC](https://opensource.org/license/isc-license-txt)
-| intern | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| ip-address-manager | [MIT](https://opensource.org/license/mit/)
-| json | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| jsonpath | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| jsonpointer | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| jsonreference | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| k8s.io/apiextensions-apiserver | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| klog | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| kube-openapi | [MIT](https://opensource.org/license/mit/)
-| kubevirt.io/controller-lifecycle-operator-sdk/api | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| logr | [MIT](https://opensource.org/license/mit/)
-| logrus | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| mapstructure | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| martian | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| mergo | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| metrics | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| multierr | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| mux | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| mysql | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| net | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| oauth2 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| opentelemetry-go | [MIT](https://opensource.org/license/mit/)
-| opentelemetry-go-contrib | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| opentelemetry-proto-go | [MIT](https://opensource.org/license/mit/)
-| opentracing-go | [MIT](https://opensource.org/license/mit/)
-| perks | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| pflag | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| procfs | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| protobuf | [MIT](https://opensource.org/license/mit/)
-| reflect2 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| semver | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)
-| shutdown | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| sigs.k8s.io/gateway-api | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| snappy | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| spec | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| stdr | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| structured-merge-diff | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| swag | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| sys | [MIT](https://opensource.org/license/mit/)
-| system-upgrade-controller | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| tail | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| term | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| testify | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| text | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| time | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| tomb.v1 | [MIT](https://opensource.org/license/mit/)
-| ulid | [MIT](https://opensource.org/license/mit/)
-| utils | [MIT](https://opensource.org/license/mit/)
-| uuid | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| wrangler | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| xstrings | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| xxhash | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| yaml | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| yaml.v2 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| yaml.v3 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/vmware/govmomi | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| sigs.k8s.io/controller-runtime | [MIT](https://opensource.org/license/mit/)
-| ajv | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| antd | [MIT](https://opensource.org/license/mit/)
-| @ant-design/compatible | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| @ant-design/icons | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| axios | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| clipboard | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| color | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| connected-react-router | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| @fortawesome/fontawesome-svg-core | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @fortawesome/free-solid-svg-icons | [MIT](https://opensource.org/license/mit/)
-| @fortawesome/react-fontawesome | [MIT](https://opensource.org/license/mit/)
-| history | [MIT](https://opensource.org/license/mit/)
-| i18next | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| i18next-browser-languagedetector | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| i18next-xhr-backend | [MIT](https://opensource.org/license/mit/)
-| immer | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| lodash | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| lscache | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| moment | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| monaco-editor | [MIT](https://opensource.org/license/mit/)
-| monaco-themes | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| monaco-yaml | [MIT](https://opensource.org/license/mit/)
-| @nivo/core | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @nivo/line | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @nivo/pie | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| node-fetch | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| normalizr | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| prettier | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| prop-types | [MIT](https://opensource.org/license/mit/)
-| query-string | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react | [MIT](https://opensource.org/license/mit/)
-| react-dom | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react-i18next | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react-js-cron | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react-redux | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react-router | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| react-router-dom | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| @react-spring/core | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @react-spring/three | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @react-spring/web | [MIT](https://opensource.org/license/mit/)
-| react-teleporter | [MIT](https://opensource.org/license/mit/)
-| @react-three/fiber | [MIT](https://opensource.org/license/mit/)
-| react-transition-group | [MIT](https://opensource.org/license/mit/)
-| redux | [MIT](https://opensource.org/license/mit/)
-| redux-debounce-thunk | [MIT](https://opensource.org/license/mit/)
-| redux-devtools-extension | [MIT](https://opensource.org/license/mit/)
-| redux-thunk | [MIT](https://opensource.org/license/mit/)
-| reselect | [MIT](https://opensource.org/license/mit/)
-| styled-components | [MIT](https://opensource.org/license/mit/)
-| three | [MIT](https://opensource.org/license/mit/)
-| @typescript-eslint/eslint-plugin | [MIT](https://opensource.org/license/mit/)
-| @typescript-eslint/parser | [MIT](https://opensource.org/license/mit/)
-| validator | [MIT](https://opensource.org/license/mit/)
-| cryptography | [MIT](https://opensource.org/license/mit/)
-| github.com/flynn/go-shlex | [MIT](https://opensource.org/license/mit/)
-| k8s.io/klog | [MIT](https://opensource.org/license/mit/)
-| aec | [MIT](https://opensource.org/license/mit/)
-| bugsnag-go | [MIT](https://opensource.org/license/mit/)
-| cli | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| containerd | [MIT](https://opensource.org/license/mit/)
-| docker-credential-helpers | [MIT](https://opensource.org/license/mit/)
-| ghw | [MIT](https://opensource.org/license/mit/)
-| github.com/docker/docker | [MIT](https://opensource.org/license/mit/)
-| github.com/docker/go-metrics | [MIT](https://opensource.org/license/mit/)
-| github.com/gdamore/encoding | [MIT](https://opensource.org/license/mit/)
-| github.com/gomodule/redigo | [MIT](https://opensource.org/license/mit/)
-| github.com/go-ole/go-ole | [MIT](https://opensource.org/license/mit/)
-| github.com/jessevdk/go-flags | [MIT](https://opensource.org/license/mit/)
-| github.com/kardianos/osext | [MIT](https://opensource.org/license/mit/)
-| github.com/lucasb-eyer/go-colorful | [MIT](https://opensource.org/license/mit/)
-| github.com/otiai10/copy | [MIT](https://opensource.org/license/mit/)
-| github.com/power-devops/perfstat | [MIT](https://opensource.org/license/mit/)
-| github.com/rivo/uniseg | [MIT](https://opensource.org/license/mit/)
-| github.com/shirou/gopsutil | [MIT](https://opensource.org/license/mit/)
-| github.com/shirou/gopsutil/v3 | [MIT](https://opensource.org/license/mit/)
-| github.com/StackExchange/wmi | [MIT](https://opensource.org/license/mit/)
-| github.com/tklauser/go-sysconf | [MIT](https://opensource.org/license/mit/)
-| github.com/tklauser/numcpus | [MIT](https://opensource.org/license/mit/)
-| github.com/yusufpapurcu/wmi | [MIT](https://opensource.org/license/mit/)
-| go-ansiterm | [MIT](https://opensource.org/license/mit/)
-| go-connections | [MIT](https://opensource.org/license/mit/)
-| go-homedir | [MIT](https://opensource.org/license/mit/)
-| gophercloud | [MIT](https://opensource.org/license/mit/)
-| gopsutil | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| go-runewidth | [MIT](https://opensource.org/license/mit/)
-| go-units | [ISC](https://opensource.org/license/isc-license-txt)
-| go.uuid | [MIT](https://opensource.org/license/mit/)
-| go-windows-terminal-sequences | [MIT](https://opensource.org/license/mit/)
-| howett.net/plist | [MIT](https://opensource.org/license/mit/)
-| image-spec | [MIT](https://opensource.org/license/mit/)
-| json-patch | [MIT](https://opensource.org/license/mit/)
-| k8s.io/metrics | [MIT](https://opensource.org/license/mit/)
-| k8sutil | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| libtrust | [MIT](https://opensource.org/license/mit/)
-| libvirt-go-module | [MIT](https://opensource.org/license/mit/)
-| libvirt-go-xml | [ISC](https://opensource.org/license/isc-license-txt)
-| locker | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| oras.land/oras-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| panicwrap | [MIT](https://opensource.org/license/mit/)
-| pcidb | Python-2.0
-| purell | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| retry-go | [MIT](https://opensource.org/license/mit/)
-| stack | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| sync | [MIT](https://opensource.org/license/mit/)
-| tcell | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| tview | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| urlesc | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/google/go-github | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-i18n | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| validator.v2 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| websocket | [MIT](https://opensource.org/license/mit/)
-| check.v1 | [MIT](https://opensource.org/license/mit/)
-| emperror | [MIT](https://opensource.org/license/mit/)
-| gax-go | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/Azure/go-autorest/autorest/azure/cli | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/dimchansky/utfbom | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/googleapis/enterprise-certificate-proxy | [MIT](https://opensource.org/license/mit/)
-| gnostic | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-jose.v2 | [MIT](https://opensource.org/license/mit/)
-| google-api-go-client | [MIT](https://opensource.org/license/mit/)
-| libvirt.org/go/libvirt | [MIT](https://opensource.org/license/mit/)
-| logur | [MIT](https://opensource.org/license/mit/)
-| maas-client-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| opencensus-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| pretty | [MIT](https://opensource.org/license/mit/)
-| tencentcloud-sdk-go | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| xerrors | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| clockwork | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| connectproxy | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| crypt2go | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| ftp | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/Azure/azure-sdk-for-go/sdk/azidentity | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/beevik/etree | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/bxcodec/faker/v3 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/coreos/go-oidc/v3 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/dgraph-io/ristretto | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/gorhill/cronexpr | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/hashicorp/go-version | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/huandu/xstrings | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/kelseyhightower/envconfig | [MIT](https://opensource.org/license/mit/)
-| github.com/kylelemons/godebug | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/Masterminds/semver | [MIT](https://opensource.org/license/mit/)
-| github.com/mattermost/xml-roundtrip-validator | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/montanaflynn/stats | [MIT](https://opensource.org/license/mit/)
-| github.com/pkg/browser | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/robfig/cron | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/stripe/stripe-go/v71 | [MIT](https://opensource.org/license/mit/)
-| github.com/youmark/pkcs8 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| glog | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| goconvey | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| gofpdi | [MIT](https://opensource.org/license/mit/)
-| gopdf | [MIT](https://opensource.org/license/mit/)
-| gopkg.in/alexcesaro/quotedprintable.v3 | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| gopkg.in/mail.v2 | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| gosaml2 | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| goxmldsig | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)
-| mail | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| microsoft-authentication-library-for-go | [MIT](https://opensource.org/license/mit/)
-| mongo-tools | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| mongo-tools-common | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| pbkdf2 | [MIT](https://opensource.org/license/mit/)
-| rateli[MIT](https://opensource.org/license/mit/)er | [MIT](https://opensource.org/license/mit/)
-| scram | [MIT](https://opensource.org/license/mit/)
-| stringprep | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| axios-retry | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| base-64 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @datadog/browser-logs | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| fast-deep-equal | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @fullstory/browser | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| i18next-http-backend | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| leaflet | [MIT](https://opensource.org/license/mit/)
-| leaflet.markercluster | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| less | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| netmask | [MIT](https://opensource.org/license/mit/)
-| @nivo/bar | [MIT](https://opensource.org/license/mit/)
-| react-calendar | [MIT](https://opensource.org/license/mit/)
-| react-clipboard.js | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react-dev-utils | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| react-helmet | [MIT](https://opensource.org/license/mit/)
-| @stripe/react-stripe-js | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @stripe/stripe-js | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| typescript | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @types/node | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @types/react | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @types/react-dom | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @types/react-redux | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @types/react-router-dom | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @types/styled-components | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| unique-names-generator | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| url | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @visx/axis | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| @visx/event | [MIT](https://opensource.org/license/mit/)
-| @visx/gradient | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| @visx/grid | [MIT](https://opensource.org/license/mit/)
-| @visx/group | [MIT](https://opensource.org/license/mit/)
-| @visx/hierarchy | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| @visx/mock-data | [MIT](https://opensource.org/license/mit/)
-| @visx/responsive | [MIT](https://opensource.org/license/mit/)
-| @visx/scale | [MIT](https://opensource.org/license/mit/)
-| @visx/shape | [MIT](https://opensource.org/license/mit/)
-| @visx/tooltip | [MIT](https://opensource.org/license/mit/)
-| afero | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| apiextensions-apiserver | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/AzureAD/microsoft-authentication-library-for-go | [MIT](https://opensource.org/license/mit/)
-| github.com/Azure/azure-pipeline-go | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/Azure/azure-sdk-for-go/sdk/azcore | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/Azure/azure-sdk-for-go/sdk/internal | [MIT](https://opensource.org/license/mit/)
-| github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute | [MIT](https://opensource.org/license/mit/)
-| github.com/Azure/azure-storage-blob-go | [MIT](https://opensource.org/license/mit/)
-| github.com/Azure/go-autorest/autorest/azure/auth | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/golang-jwt/jwt | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/go-logr/zapr | [MIT](https://opensource.org/license/mit/)
-| github.com/mattn/go-ieproxy | [MIT](https://opensource.org/license/mit/)
-| goformation | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| mod | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| vcluster | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| zap | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cobra | public-domain
-| gojsonschema | [MIT](https://opensource.org/license/mit/)
-| handlers | [MIT](https://opensource.org/license/mit/)
-| logrus-logstash-hook | [MIT](https://opensource.org/license/mit/)
-| apiserver | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| btree | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cli-runtime | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| console | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| cursor | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| diskv | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| distribution | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| emission | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| etcd | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| filepath-securejoin | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| fuzzysearch | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/aybabtme/rgbterm | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/chai2010/gettext-go | [MIT](https://opensource.org/license/mit/)
-| github.com/cheggaaa/pb | [MIT](https://opensource.org/license/mit/)
-| github.com/containerd/containerd | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/exponent-io/jsonpath | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/gobwas/glob | [MIT](https://opensource.org/license/mit/)
-| github.com/go-gorp/gorp/v3 | [MIT](https://opensource.org/license/mit/)
-| github.com/gosuri/uitable | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/jmoiron/sqlx | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/joho/godotenv | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/lann/builder | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/lann/ps | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)
-| github.com/liggitt/tabwriter | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/MakeNowJust/heredoc | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/Masterminds/squirrel | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/mattn/go-sqlite3 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| github.com/[MIT](https://opensource.org/license/mit/)chellh/colorstring | [MIT](https://opensource.org/license/mit/)
-| github.com/[MIT](https://opensource.org/license/mit/)chellh/go-wordwrap | [ISC](https://opensource.org/license/isc-license-txt)
-| github.com/monochromegane/go-gitignore | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/rancher/wrangler | [MIT](https://opensource.org/license/mit/)
-| github.com/rubenv/sql-migrate | [MIT](https://opensource.org/license/mit/)
-| github.com/russross/blackfriday | [MIT](https://opensource.org/license/mit/)
-| github.com/skip2/go-qrcode | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/vbatts/tar-split | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| github.com/xlab/treeprint | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)
-| go-colorable | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-containerregistry | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| go-isatty | [MIT](https://opensource.org/license/mit/)
-| gojq | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| gojsonpointer | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| gojsonreference | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-pluggable | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| go.starlark.net | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| gotenv | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-toml | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| go-vfs | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| hcl | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| helm | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| httpcache | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| image | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| image2ascii | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| imaging | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| ini.v1 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| jwalterweatherman | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| kairos | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| keyboard | [MIT](https://opensource.org/license/mit/)
-| kubectl | [MIT](https://opensource.org/license/mit/)
-| kubernetes | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| kustomize | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| lumberjack.v2 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| machineid | [MIT](https://opensource.org/license/mit/)
-| mousetrap | [MIT](https://opensource.org/license/mit/)
-| objx | [MIT](https://opensource.org/license/mit/)
-| pixterm | [MIT](https://opensource.org/license/mit/)
-| progressbar | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| properties | [MIT](https://opensource.org/license/mit/)
-| pterm | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| resize | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| runtime | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| shlex | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| spdystream | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| stargz-snapshotter | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| terminal-dimensions | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| terminfo | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| timefmt-go | [MIT](https://opensource.org/license/mit/)
-| toml | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-| tools | [MIT](https://opensource.org/license/mit/)
-| viper | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)
-| yaml.v1 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+| Library                                                                   | License                                                     |
+| ------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| api                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| apimachinery                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| appengine                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| assert                                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| atomic                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| aws-sdk-go                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| azure-sdk-for-go                                                          | [MIT](https://opensource.org/license/mit/)                  |
+| backoff                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| beego                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| cast                                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| cert-manager                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| client-go                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| client_golang                                                             | [MIT](https://opensource.org/license/mit/)                  |
+| client_model                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cloud.google.com/go/container                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-bootstrap-provider-microk8s                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-control-plane-provider-microk8s                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-aws                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-azure                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-coxedge                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-gcp                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-maas                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-openstack                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-vcluster                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-api-provider-vsphere                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cluster-bootstrap                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| common                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| component-base                                                            | [MIT](https://opensource.org/license/mit/)                  |
+| compress                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| concurrent                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| containerized-data-importer                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| controller-runtime                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| corefile-migration                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| crypto                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| easyjson                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| emperror.dev/errors                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| errors                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| errwrap                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| exp                                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| flect                                                                     | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| fsnotify                                                                  | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| ginkgo                                                                    | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)            |
+| github.com/andybalholm/brotli                                             | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/apparentlymart/go-cidr                                         | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/avast/retry-go                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/Azure/go-autorest/autorest/to                                  | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/Azure/go-autorest/autorest/validation                          | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/blang/semver/v4                                                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/coredns/caddy                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/docker/distribution                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/dsnet/compress                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/emicklei/go-restful/v3                                         | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/evanphx/json-patch/v5                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/go-errors/errors                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/golang-jwt/jwt/v4                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/google/gnostic                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/go-openapi/analysis                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/go-openapi/errors                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/go-openapi/loads                                               | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/go-openapi/runtime                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/go-openapi/strfmt                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/go-openapi/validate                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/gophercloud/gophercloud                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/grpc-ecosystem/grpc-gateway/v2                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/jasonlvhit/gocron                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/juliangruber/go-intersect                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/klauspost/pgzip                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/lib/pq                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/Masterminds/goutils                                            | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| github.com/Masterminds/sprig/v3                                           | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/mholt/archiver/v3                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/minio/highwayhash                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/[MIT](https://opensource.org/license/mit/)chellh/copystructure | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/[MIT](https://opensource.org/license/mit/)chellh/hashstructure | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/[MIT](https://opensource.org/license/mit/)chellh/reflectwalk   | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/nats-io/jwt/v2                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/nats-io/nats.go                                                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/nats-io/nkeys                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/nats-io/nuid                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/nwaples/rardecode                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/opencontainers/go-digest                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/openshift/custom-resource-status                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/PaesslerAG/gval                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/pborman/uuid                                                   | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| github.com/pierrec/lz4/v4                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/shopspring/decimal                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/tidwall/pretty                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/ulikunitz/xz                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/xi2/xz                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| go                                                                        | [MIT](https://opensource.org/license/mit/)                  |
+| goautoneg                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| go-autorest                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| go-client                                                                 | public-domain                                               |
+| go-cmp                                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| go-difflib                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| gofuzz                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-genproto                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-humanize                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-internal                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-jmespath                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| golang-lru                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| golang_protobuf_extensions                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| gomega                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| gomodules.xyz/jsonpatch/v2                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go.mongodb.org/mongo-driver                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-multierror                                                             | [MIT](https://opensource.org/license/mit/)                  |
+| google-cloud-go                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| go.opentelemetry.io/otel/exporters/jaeger                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go.opentelemetry.io/otel/internal/metric                                  | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)            |
+| go-spew                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| gotest.tools                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| govalidator                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-wildcard                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-yaml                                                                   | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)            |
+| groupcache                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| grpc-go                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| harbor                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| httpsnoop                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| inf.v0                                                                    | [ISC](https://opensource.org/license/isc-license-txt)       |
+| intern                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| ip-address-manager                                                        | [MIT](https://opensource.org/license/mit/)                  |
+| json                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| jsonpath                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| jsonpointer                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| jsonreference                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| k8s.io/apiextensions-apiserver                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| klog                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| kube-openapi                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| kubevirt.io/controller-lifecycle-operator-sdk/api                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| logr                                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| logrus                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| mapstructure                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| martian                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| mergo                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| metrics                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| multierr                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| mux                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| mysql                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| net                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| oauth2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| opentelemetry-go                                                          | [MIT](https://opensource.org/license/mit/)                  |
+| opentelemetry-go-contrib                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| opentelemetry-proto-go                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| opentracing-go                                                            | [MIT](https://opensource.org/license/mit/)                  |
+| perks                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| pflag                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| procfs                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| protobuf                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| reflect2                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| semver                                                                    | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)            |
+| shutdown                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| sigs.k8s.io/gateway-api                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| snappy                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| spec                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| stdr                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| structured-merge-diff                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| swag                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| sys                                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| system-upgrade-controller                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| tail                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| term                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| testify                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| text                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| time                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| tomb.v1                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| ulid                                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| utils                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| uuid                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| wrangler                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| xstrings                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| xxhash                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| yaml                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| yaml.v2                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| yaml.v3                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/vmware/govmomi                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| sigs.k8s.io/controller-runtime                                            | [MIT](https://opensource.org/license/mit/)                  |
+| ajv                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| antd                                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| @ant-design/compatible                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| @ant-design/icons                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| axios                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| clipboard                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| color                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| connected-react-router                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| @fortawesome/fontawesome-svg-core                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @fortawesome/free-solid-svg-icons                                         | [MIT](https://opensource.org/license/mit/)                  |
+| @fortawesome/react-fontawesome                                            | [MIT](https://opensource.org/license/mit/)                  |
+| history                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| i18next                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| i18next-browser-languagedetector                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| i18next-xhr-backend                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| immer                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| lodash                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| lscache                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| moment                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| monaco-editor                                                             | [MIT](https://opensource.org/license/mit/)                  |
+| monaco-themes                                                             | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| monaco-yaml                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| @nivo/core                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @nivo/line                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @nivo/pie                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| node-fetch                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| normalizr                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| prettier                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| prop-types                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| query-string                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| react-dom                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react-i18next                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react-js-cron                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react-redux                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react-router                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| react-router-dom                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| @react-spring/core                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @react-spring/three                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @react-spring/web                                                         | [MIT](https://opensource.org/license/mit/)                  |
+| react-teleporter                                                          | [MIT](https://opensource.org/license/mit/)                  |
+| @react-three/fiber                                                        | [MIT](https://opensource.org/license/mit/)                  |
+| react-transition-group                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| redux                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| redux-debounce-thunk                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| redux-devtools-extension                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| redux-thunk                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| reselect                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| styled-components                                                         | [MIT](https://opensource.org/license/mit/)                  |
+| three                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| @typescript-eslint/eslint-plugin                                          | [MIT](https://opensource.org/license/mit/)                  |
+| @typescript-eslint/parser                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| validator                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| cryptography                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/flynn/go-shlex                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| k8s.io/klog                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| aec                                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| bugsnag-go                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| cli                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| containerd                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| docker-credential-helpers                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| ghw                                                                       | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/docker/docker                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/docker/go-metrics                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/gdamore/encoding                                               | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/gomodule/redigo                                                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/go-ole/go-ole                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/jessevdk/go-flags                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/kardianos/osext                                                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/lucasb-eyer/go-colorful                                        | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/otiai10/copy                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/power-devops/perfstat                                          | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/rivo/uniseg                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/shirou/gopsutil                                                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/shirou/gopsutil/v3                                             | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/StackExchange/wmi                                              | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/tklauser/go-sysconf                                            | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/tklauser/numcpus                                               | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/yusufpapurcu/wmi                                               | [MIT](https://opensource.org/license/mit/)                  |
+| go-ansiterm                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| go-connections                                                            | [MIT](https://opensource.org/license/mit/)                  |
+| go-homedir                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| gophercloud                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| gopsutil                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| go-runewidth                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| go-units                                                                  | [ISC](https://opensource.org/license/isc-license-txt)       |
+| go.uuid                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| go-windows-terminal-sequences                                             | [MIT](https://opensource.org/license/mit/)                  |
+| howett.net/plist                                                          | [MIT](https://opensource.org/license/mit/)                  |
+| image-spec                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| json-patch                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| k8s.io/metrics                                                            | [MIT](https://opensource.org/license/mit/)                  |
+| k8sutil                                                                   | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| libtrust                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| libvirt-go-module                                                         | [MIT](https://opensource.org/license/mit/)                  |
+| libvirt-go-xml                                                            | [ISC](https://opensource.org/license/isc-license-txt)       |
+| locker                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| oras.land/oras-go                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| panicwrap                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| pcidb                                                                     | Python-2.0                                                  |
+| purell                                                                    | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| retry-go                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| stack                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| sync                                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| tcell                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| tview                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| urlesc                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/google/go-github                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-i18n                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| validator.v2                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| websocket                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| check.v1                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| emperror                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| gax-go                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/Azure/go-autorest/autorest/azure/cli                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/dimchansky/utfbom                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/googleapis/enterprise-certificate-proxy                        | [MIT](https://opensource.org/license/mit/)                  |
+| gnostic                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-jose.v2                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| google-api-go-client                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| libvirt.org/go/libvirt                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| logur                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| maas-client-go                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| opencensus-go                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| pretty                                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| tencentcloud-sdk-go                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| xerrors                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| clockwork                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| connectproxy                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| crypt2go                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| ftp                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/Azure/azure-sdk-for-go/sdk/azidentity                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/beevik/etree                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/bxcodec/faker/v3                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/coreos/go-oidc/v3                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/dgraph-io/ristretto                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/gorhill/cronexpr                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/hashicorp/go-version                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/huandu/xstrings                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/kelseyhightower/envconfig                                      | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/kylelemons/godebug                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/Masterminds/semver                                             | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/mattermost/xml-roundtrip-validator                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/montanaflynn/stats                                             | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/pkg/browser                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/robfig/cron                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/stripe/stripe-go/v71                                           | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/youmark/pkcs8                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| glog                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| goconvey                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| gofpdi                                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| gopdf                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| gopkg.in/alexcesaro/quotedprintable.v3                                    | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| gopkg.in/mail.v2                                                          | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| gosaml2                                                                   | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| goxmldsig                                                                 | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)            |
+| mail                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| microsoft-authentication-library-for-go                                   | [MIT](https://opensource.org/license/mit/)                  |
+| mongo-tools                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| mongo-tools-common                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| pbkdf2                                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| rateli[MIT](https://opensource.org/license/mit/)er                        | [MIT](https://opensource.org/license/mit/)                  |
+| scram                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| stringprep                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| axios-retry                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| base-64                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @datadog/browser-logs                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| fast-deep-equal                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @fullstory/browser                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| i18next-http-backend                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| leaflet                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| leaflet.markercluster                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| less                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| netmask                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| @nivo/bar                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| react-calendar                                                            | [MIT](https://opensource.org/license/mit/)                  |
+| react-clipboard.js                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react-dev-utils                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| react-helmet                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| @stripe/react-stripe-js                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @stripe/stripe-js                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| typescript                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @types/node                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @types/react                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @types/react-dom                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @types/react-redux                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @types/react-router-dom                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @types/styled-components                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| unique-names-generator                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| url                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @visx/axis                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| @visx/event                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/gradient                                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| @visx/grid                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/group                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/hierarchy                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| @visx/mock-data                                                           | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/responsive                                                          | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/scale                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/shape                                                               | [MIT](https://opensource.org/license/mit/)                  |
+| @visx/tooltip                                                             | [MIT](https://opensource.org/license/mit/)                  |
+| afero                                                                     | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| apiextensions-apiserver                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/AzureAD/microsoft-authentication-library-for-go                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/Azure/azure-pipeline-go                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/Azure/azure-sdk-for-go/sdk/azcore                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/Azure/azure-sdk-for-go/sdk/internal                            | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute  | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/Azure/azure-storage-blob-go                                    | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/Azure/go-autorest/autorest/azure/auth                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/golang-jwt/jwt                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/go-logr/zapr                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/mattn/go-ieproxy                                               | [MIT](https://opensource.org/license/mit/)                  |
+| goformation                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| mod                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| vcluster                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| zap                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cobra                                                                     | public-domain                                               |
+| gojsonschema                                                              | [MIT](https://opensource.org/license/mit/)                  |
+| handlers                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| logrus-logstash-hook                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| apiserver                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| btree                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cli-runtime                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| console                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| cursor                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| diskv                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| distribution                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| emission                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| etcd                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| filepath-securejoin                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| fuzzysearch                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/aybabtme/rgbterm                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/chai2010/gettext-go                                            | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/cheggaaa/pb                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/containerd/containerd                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/exponent-io/jsonpath                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/gobwas/glob                                                    | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/go-gorp/gorp/v3                                                | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/gosuri/uitable                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/jmoiron/sqlx                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/joho/godotenv                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/lann/builder                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/lann/ps                                                        | [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0)            |
+| github.com/liggitt/tabwriter                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/MakeNowJust/heredoc                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/Masterminds/squirrel                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/mattn/go-sqlite3                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| github.com/[MIT](https://opensource.org/license/mit/)chellh/colorstring   | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/[MIT](https://opensource.org/license/mit/)chellh/go-wordwrap   | [ISC](https://opensource.org/license/isc-license-txt)       |
+| github.com/monochromegane/go-gitignore                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/rancher/wrangler                                               | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/rubenv/sql-migrate                                             | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/russross/blackfriday                                           | [MIT](https://opensource.org/license/mit/)                  |
+| github.com/skip2/go-qrcode                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/vbatts/tar-split                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| github.com/xlab/treeprint                                                 | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
+| go-colorable                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-containerregistry                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| go-isatty                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| gojq                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| gojsonpointer                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| gojsonreference                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-pluggable                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| go.starlark.net                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| gotenv                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-toml                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| go-vfs                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| hcl                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| helm                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| httpcache                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| image                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| image2ascii                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| imaging                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| ini.v1                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| jwalterweatherman                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| kairos                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| keyboard                                                                  | [MIT](https://opensource.org/license/mit/)                  |
+| kubectl                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| kubernetes                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| kustomize                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| lumberjack.v2                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| machineid                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| mousetrap                                                                 | [MIT](https://opensource.org/license/mit/)                  |
+| objx                                                                      | [MIT](https://opensource.org/license/mit/)                  |
+| pixterm                                                                   | [MIT](https://opensource.org/license/mit/)                  |
+| progressbar                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| properties                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| pterm                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| resize                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| runtime                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| shlex                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| spdystream                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| stargz-snapshotter                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| terminal-dimensions                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| terminfo                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| timefmt-go                                                                | [MIT](https://opensource.org/license/mit/)                  |
+| toml                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| tools                                                                     | [MIT](https://opensource.org/license/mit/)                  |
+| viper                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| yaml.v1                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 
 <br />
 
