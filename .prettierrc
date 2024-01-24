@@ -1,11 +1,11 @@
 {
-  "printWidth": 100,
-  "jsxBracketSameLine": false,
+  "printWidth": 120,
+  "proseWrap": "always",
   "singleQuote": false,
   "tabWidth": 2,
   "trailingComma": "es5",
   "semi": true,
   "arrowParens": "always",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "overrides": [{ "files": "**/*.{md,mx}", "options": { "parser": "mdx" } }]
 }
-

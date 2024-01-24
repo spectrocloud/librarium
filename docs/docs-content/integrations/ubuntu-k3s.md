@@ -1,20 +1,19 @@
 ---
-sidebar_label: 'Ubuntu-K3s'
-title: 'Ubuntu Lightweight Kubernetes K3s'
-description: 'Choosing K3s with Ubuntu within the Palette console'
+sidebar_label: "Ubuntu-K3s"
+title: "Ubuntu Lightweight Kubernetes K3s"
+description: "Choosing K3s with Ubuntu within the Palette console"
 hide_table_of_contents: true
 sidebar_class_name: "hide-from-sidebar"
 type: "integration"
-category: ['system app']
-logoUrl: 'https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image/png'
+category: ["system app"]
+logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image/png"
 ---
 
-
-
-
-
 # Lightweight Kubernetes on Ubuntu
-K3s is a purpose-built container orchestrator for running Kubernetes on bare-metal servers. With the bloat stripped out, the CNCF (Cloud Native Computing Foundation) accredited Kubernetes distribution orchestrator makes installation and application deployment faster. Palette supports this Lightweight Kubernetes and Ubuntu pack versions to run at scale.
+
+K3s is a purpose-built container orchestrator for running Kubernetes on bare-metal servers. With the bloat stripped out,
+the CNCF (Cloud Native Computing Foundation) accredited Kubernetes distribution orchestrator makes installation and
+application deployment faster. Palette supports this Lightweight Kubernetes and Ubuntu pack versions to run at scale.
 
 <br />
 
@@ -23,6 +22,7 @@ K3s is a purpose-built container orchestrator for running Kubernetes on bare-met
 <br />
 
 ## Ubuntu K3s
+
 <br />
 <Tabs>
 <TabItem label="Ubuntu-K3s-1.22.x" value="Ubuntu-K3s-1.22.x">
@@ -30,13 +30,10 @@ K3s is a purpose-built container orchestrator for running Kubernetes on bare-met
 <br />
 <br />
 
-Name: **Ubuntu-K3s**
-Version: **Ubuntu-K3s-1.22.9-k3s0**
-
+Name: **Ubuntu-K3s** Version: **Ubuntu-K3s-1.22.9-k3s0**
 
 <br />
 <br />
-
 
 </TabItem>
 <TabItem label="Ubuntu-K3s-1.21.x" value="Ubuntu-K3s-1.21.x">
@@ -44,8 +41,7 @@ Version: **Ubuntu-K3s-1.22.9-k3s0**
 <br />
 <br />
 
-Name: **Ubuntu-K3s**
-Version: **Ubuntu-K3s-1.21.12-k3s0**
+Name: **Ubuntu-K3s** Version: **Ubuntu-K3s-1.21.12-k3s0**
 
 <br />
 <br />
@@ -53,9 +49,7 @@ Version: **Ubuntu-K3s-1.21.12-k3s0**
 </TabItem>
 </Tabs>
 
-
 ## Manifest Parameters
-
 
 ```yaml
 pack:
@@ -66,8 +60,6 @@ pack:
 #  service-cidr: "10.40.0.0/16"
 #  cluster-cidr: "10.45.0.0/16"
 ```
-
-
 
 # References
 

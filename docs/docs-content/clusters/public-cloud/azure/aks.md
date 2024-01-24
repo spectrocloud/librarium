@@ -18,7 +18,7 @@ Azure clusters can be created under the following scopes:
 
 Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
 
-# Prerequisites
+## Prerequisites
 
 These prerequisites must be met before deploying an AKS workload cluster:
 
@@ -133,18 +133,18 @@ The following steps need to be performed to provision a new cluster:
    :::warning
 
    If you enable the **Disable Properties** setting when
-   [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-   resources on your behalf. In this case, every time you deploy a cluster, you must manually specify their virtual
-   network subnets and security groups,
+   [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot list network resources
+   on your behalf. In this case, every time you deploy a cluster, you must manually specify their virtual network
+   subnets and security groups,
 
    :::
 
 7. Click **Next** to configure the node pools.
 
-   The [maximum number](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per
-   node in an AKS cluster is 250. If you don't specify maxPods when creating new node pools, then the default value of 30
-   is applied. You can edit this value from the Kubernetes configuration file at any time by editing the `maxPodPerNode`
-   value. Refer to the snippet below:
+   The [maximum number](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods
+   per node in an AKS cluster is 250. If you don't specify maxPods when creating new node pools, then the default value
+   of 30 is applied. You can edit this value from the Kubernetes configuration file at any time by editing the
+   `maxPodPerNode` value. Refer to the snippet below:
 
    ```
    managedMachinePool:
@@ -245,8 +245,9 @@ In all types of node pools, configure the following.
 
   :::info
 
-  A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
-  A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
+  A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes. A minimum allocation of
+
+  <i>4Gi</i> of memory is required across all worker nodes.
 
   :::
 
@@ -277,8 +278,8 @@ following are the steps to create the custom user _kubeconfig_ file:
 
    :::info
 
-   The above step can also be completed using Spectro RBAC pack available under the Authentication section of
-   Add-on Packs.
+   The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on
+   Packs.
 
    :::
 
