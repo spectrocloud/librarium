@@ -187,8 +187,6 @@ A complete AKS cluster contains the following:
 
 During cluster creation, you will default to a single pool.
 
-<br />
-
 1. To add additional pools, click **Add Node Pool**.
 
 2. Provide any additional Kubernetes labels to assign to each node in the pool. This section is optional, and you can
@@ -197,39 +195,33 @@ During cluster creation, you will default to a single pool.
 
 3. To remove a pool, click **Remove** across from the title for each pool.
 
-<br />
-
 ## Create a System Node Pool
 
-1. Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled
-   **System Node Pool**.
+1.  Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled
+    **System Node Pool**.
 
-   <br />
+    :::info
 
-:::info
+    Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the **Cloud
+    Configuration** section, as you can not to taint or change their OS from Linux. See the
+    [AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools)
+    for more details on pool limitations.
 
-Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the **Cloud
-Configuration** section, as you can not to taint or change their OS from Linux. See the
-[AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools)
-for more details on pool limitations.
+    :::
 
-:::
+2.  Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
+    identifying name that matches the node in Azure.
 
-<br />
+3.  Add the **Desired size**. You can start with three for multiple nodes.
 
-2. Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
-   identifying name that matches the node in Azure.
+4.  Include **Additional Labels**. This is optional.
 
-3. Add the **Desired size**. You can start with three for multiple nodes.
+5.  In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details are present for review.
 
-4. Include **Additional Labels**. This is optional.
+6.  Enter the **Managed Disk** information and its size.
 
-5. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details are present for review.
-
-6. Enter the **Managed Disk** information and its size.
-
-7. If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to create
-   the next node.
+7.  If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to
+    create the next node.
 
 ## Configure Node Pools
 
@@ -259,30 +251,24 @@ In all types of node pools, configure the following.
 - Provide instance details for all nodes in the pool with the **Instance type** dropdown. The cost details are present
   for review.
 
-<br />
+  :::info
 
-:::info
+  New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
+  example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose
+  workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU
+  workloads.
 
-New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
-example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose
-workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU
-workloads.
-
-:::
-
-<br />
+  :::
 
 - Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (GB) in the **Disk size** field.
 
-:::info
+  :::info
 
-A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
+  A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
 
-A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
+  A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
 
-:::
-
-<br />
+  :::
 
 - When are done setting up all node pools, click **Next** to go to the **Settings** page to **Validate** and finish the
   cluster deployment wizard.
@@ -311,24 +297,21 @@ following are the steps to create the custom user _kubeconfig_ file:
 3. Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings, using
    the Admin _kubeconfig_ file.
 
-<br />
+   :::info
 
-:::info
+   The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on
+   Packs.
 
-The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on Packs.
-
-:::
-
-<br />
+   :::
 
 4. Once the roles and role bindings are created, these roles can be linked to the Groups created in Azure AD.
 
 5. The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific _kubeconfig_
    file, please run the following command:
 
-`az aks get-credentials --resource-group <resource-group> --name <cluster-name>`
-
-<br />
+   ```shell
+   az aks get-credentials --resource-group <resource-group> --name <cluster-name>
+   ```
 
 ## Resources
 
