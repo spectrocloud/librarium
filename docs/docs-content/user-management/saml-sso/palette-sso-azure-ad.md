@@ -17,8 +17,7 @@ Cloud Palette.
 ## Prerequisites
 
 - Microsoft Azure Active Directory with appropriate permissions to create and modify users, groups, Enterprise
-  Applications (SAML) or App Registrations (OIDC).<p></p><br />
-- Access to Palette - Request access for a [Free Trial](../../getting-started/palette-freemium.md).<p></p><br />
+  Applications (SAML) or App Registrations (OIDC).
 - Appropriate rights and
   [enabled token IDs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#enable-id-tokens)
   in Azure.<p></p><br />
