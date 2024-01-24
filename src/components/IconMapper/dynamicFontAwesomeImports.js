@@ -25,6 +25,8 @@ export const fontAwesomeIcons = {
   "envelope-open-text": faEnvelopeOpenText,
   "database": faDatabase,
   "hdd": faHdd,
+  "database": faDatabase,
+  "hdd": faHdd,
   "cloud-arrow-down": faCloudArrowDown,
   "server": faServer,
   "user-shield": faUserShield,
