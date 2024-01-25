@@ -132,11 +132,10 @@ To ensure FIPS compliance, be sure to enter your Ubuntu Pro token.
 4. Depending on that type of install of Palette you are using, the Spectro Cloud repository URL value will be different.
 
    - Non-Airgap: `https://saas-repo-fips.console.spectrocloud.com`
-   - Airgap: The URL or IP address of your HTTP file server that is hosting the manifest files.
+   - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
 
 5. Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
-   Cloud repository. Airgap installations, provide the credentials to your private repository. If your HTTP file server
-   has no authentication, provide the username and password as `admin` and `admin` respectively.
+   Cloud repository. Airgap installations, provide the credentials to your private repository.
 
 6. Choose `VMware vSphere` as the cloud type. This is the default.
 
@@ -185,24 +184,22 @@ for more information.
 
 #### Pack & Image Registry Configuration
 
-| **Parameter**                                    | **Description**                                                                                                                                                                                                             |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`.                                                                                                                                                        |
-| **Registry Name**                                | Enter the name of the registry.                                                                                                                                                                                             |
-| **Registry Endpoint**                            | Enter the registry endpoint.                                                                                                                                                                                                |
-| **Registry Base Path**                           | Enter the registry base path.                                                                                                                                                                                               |
-| **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt.                                                                                                                            |
-| **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths.                                                                                                                                                     |
-| **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                                                                                           |
-| **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                                                                                           |
-| **Registry Region**                              | Enter the registry region. This option is only available if you are using `OCI ECR`.                                                                                                                                        |
-| **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                                                                                                   |
-| **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. |
+| **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. Airgap users, select `OCI`.                                                                                                                                                                                                                                                    |
+| **Registry Name**                                | Enter the name of the registry.                                                                                                                                                                                                                                                                                                                     |
+| **Registry Endpoint**                            | Enter the registry endpoint. Airgap users, provide the **Spectro Cloud Repository** URL or hostname shared by the airgap setup script.                                                                                                                                                                                                              |
+| **Registry Base Path**                           | Enter the registry base path.                                                                                                                                                                                                                                                                                                                       |
+| **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select `n`.                                                                                                                                                                                                                |
+| **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the aurgap setup script.                                                                                                                                                                                                    |
+| **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
+| **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
+| **Registry Region**                              | Enter the registry region. This option is only available if you are using `OCI ECR`.                                                                                                                                                                                                                                                                |
+| **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                                                                                                                                                                                                                           |
+| **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
-When prompted to "Pull images from public registry", type `n` and specify the OCI registry configuration values for your
-image registry. Refer to the table above for more information.
-
-<br />
+When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
+your image registry. Refer to the table above for more information.
 
 :::info
 
@@ -231,15 +228,11 @@ type `:wq` to save and exit.
 | **vSphere Password**          | VMware vSphere account password.                                                                                                                                                              |
 | **Allow Insecure Connection** | Bypasses x509 verification. Type `Y` if using a VMware vSphere instance with self-signed Transport Layer Security (TLS) certificates. Otherwise, type `n`.                                    |
 
-<br />
-
 #### VMware vSphere Cluster Configuration
 
 This information determines where Palette will be deployed in your VMware vSphere environment. The Palette CLI will use
 the provided VMware credentials to retrieve information from your VMware vSphere environment and present options for you
 to select from.
-
-<br />
 
 | **Parameter**       | **Description**                                                                                                                                                                                                                                                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -257,8 +250,6 @@ to select from.
     static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
     using DNS.
 
-<br />
-
 #### Static Placement Configuration
 
 | **Parameter**                   | **Description**                                                                             |
@@ -270,12 +261,8 @@ to select from.
 | **Name servers**                | Comma-separated list of DNS name server IP addresses.                                       |
 | **Name server search suffixes** | An optional comma-separated list of DNS search domains.                                     |
 
-<br />
-
 12. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
-
-<br />
 
 #### vSphere Machine Configuration
 
@@ -285,8 +272,6 @@ to select from.
 | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 CPU limit and 8 GB memory limit.                                    |
 | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
 | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
-
-<br />
 
 #### Additional vSphere Machine Configuration
 
@@ -304,8 +289,6 @@ its location is displayed in the terminal. Credentials and tokens are encrypted 
 ==== Enterprise Cluster config saved ====
 Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 ```
-
-<br />
 
 :::tip
 
@@ -326,12 +309,10 @@ palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
 
 :::
 
-<br />
-
 When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed
-in the terminal. You will use these to access the Palette VerteX System Console.
-
-<br />
+in the terminal. You will use these to access the Palette VerteX System Console. The Palette CLI has the kubectl CLI
+included. You can find the kubectl binary in the **bin** directory of the Palette CLI configuration directory, located
+at **~/.palette/bin/kubectl**.
 
 ```bash hideClipboard
 ===========================================
@@ -352,8 +333,6 @@ export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
 
 13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
 
-<br />
-
 :::info
 
 The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may
@@ -362,11 +341,7 @@ warning message and proceed.
 
 :::
 
-<br />
-
 ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
-
-<br />
 
 14. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
@@ -381,8 +356,6 @@ warning message and proceed.
 16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-<br />
-
 ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
 
 ## Validate
@@ -391,8 +364,6 @@ You can verify the installation is successful if you can access the system conso
 Enterprise Cluster Details and if the Summary page displays the **Go to Tenant Management** button.
 
 You can also validate that a three-node Kubernetes cluster is launched and Palette VerteX is deployed on it.
-
-<br />
 
 1. Log in to the vCenter Server by using vSphere Client.
 

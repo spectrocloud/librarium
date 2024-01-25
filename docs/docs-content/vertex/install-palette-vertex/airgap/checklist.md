@@ -57,11 +57,11 @@ VerteX installation.
 - [ ] Imported the Operating System and Kubernetes distribution OVA required for the install and placed the OVA in the
       `spectro-templates` folder.
 
-- [ ] Appended an `r_` prefix to the OVA name after the import.
+- [ ] Appended an `r_` prefix and remove the `.ova` suffix to the OVA name after the import.
 
-- [ ] Started the airgap setup binary and verified the setup completed successfully
+- [ ] Started the airgap setup binary and verified the setup completed successfully.
 
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry.
+- [ ] Reviewed the list of [pack binaries](./supplemental-packs.md) to download and upload to your OCI registry.
 
 </TabItem>
 

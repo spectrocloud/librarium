@@ -19,10 +19,9 @@ respective installation guides for each platform.
 
 Use the following steps to prepare your airgap environment for a VerteX installation.
 
-:::tip
+:::info
 
-Carefully review the [prerequisites](#prerequisites) section before proceeding. This will save you time and frustration.
-Each prerequisite is required for a successful installation.
+The OVA is does not use Docker as the container runtime, instead it uses [Podman](https://podman.io/).
 
 :::
 
@@ -44,16 +43,13 @@ Each prerequisite is required for a successful installation.
 
   - 120 GB of disk space available for the airgap support VM.
 
-- 30 GB of disk space available for the airgap setup binary and temporary files. The uncompressed airgap content is
-  approximately 20 GB.
-
 - Dynamic Host Configuration Protocol (DHCP) is required for the airgap support VM so that you can access the VM with
   SSH. You can disable DHCP or modify the IP address after the airgap support VM is deployed.
 
 - Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created
   the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains
   when provisioning workloads that require persistent storage. Refer to
-  [Zone Tagging](../install-on-vmware/install-on-vmware.md#vsphere-machine-configuration) for information.
+  [Zone Tagging](../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
 
 <br />
 
@@ -83,23 +79,19 @@ Complete the following steps before deploying the airgap VerteX installation.
     guide for information about importing an OVA in vCenter.
 
     ```url
-    https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12510-fips.ova
+     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1268-fips.ova
     ```
 
-4.  Append an `r_` prefix to the OVA name after the import. For example, `r_u-2004-0-k-12510-fips.ova`. This prefix is
-    required for the install process to identify the OVA. Refer to the
-    [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OVAs you can download and
-    upload to your vCenter environment.
-
-    ```url
-    https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1268-fips.ova
-    ```
+4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
+    should look like `r_u-2004-0-k-12510-fips`. This naming convetion is required for the install process to identify
+    the OVA. Refer to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OVAs
+    you can download and upload to your vCenter environment.
 
     :::tip
 
     You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
-    folder. Append the `r_` prefix when assiging a name and target location. You can terminate the deployment after the
-    OVA is available in the `spectro-templates` folder. Refer to the
+    folder. Append the `r_` prefix, and remove the `.ova` suffix when assiging a name and target location. You can
+    terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
     [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
     guide for more information about deploying an OVA in vCenter.
 
@@ -249,10 +241,6 @@ the text editor.
         The output of the script will look similar to the example below.
 
         ```shell hideClipboard
-        Setting up SSL Certs
-        Setting up Harbor
-        Setup Completed
-
         Details:
         -------
         Spectro Cloud Repository
@@ -287,10 +275,6 @@ the text editor.
         The output of the script will look similar to the example below.
 
         ```shell hideClipboard
-        Setting up SSL Certs
-        Setting up Harbor
-        Setup Completed
-
         Details:
         -------
         Spectro Cloud Repository
@@ -320,15 +304,64 @@ the text editor.
 20. The output of the script contains credentials and values you will need when completing the install with the Palette
     CLI. If you need to review information in the future, invoke the script again.
 
+21. Review the [Additional Packs](./supplemental-packs.md) page and identify any additional packs you want to add to
+    your OCI registry. By default, the installation only includes the minimum required packs. You can also add
+    additional packs after the install is complete.
+
 You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
-ensure the airgap setup process completed successfully.
+ensure the airgap setup process completed successfully. After you validate the airgap setup process completed, review
+the [Next Steps](#next-steps)
 
 ## Validate
 
 Use the following steps to validate the airgap setup process completed successfully.
 
+1.  SSH into to the airgap support VM.
+
+2.  Switch to the `root` user account.
+
+    ```shell
+    sudo --login
+    ```
+
+3.  Issue the following command to validate the airgap setup process completed successfully. Replace the hostname or IP
+    address with the hostname or IP address of the airgap support VM.
+
+    ```shell
+    bin/airgap-setup.sh vertex.example.com
+    ```
+
+4.  Verify you have the values and credentials in the output.
+
 ## Next Steps
 
-You are now ready to deploy the airgap VerteX installation with the Palette CLI. Complete all the steps outlined in the
-[VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide from the airgap support VM. Palette CLI
-is already installed on the airgap support VM and ready to use.
+You are now ready to deploy the airgap VerteX installation with the Palette CLI. As a root user, when you are ready to
+proceed with the install, issue the Palette CLI command below to start the install. The Palette CLI is already installed
+in the airgap support VM and ready to use.
+
+    ```shell
+    palette ec install
+    ```
+
+Complete all the Palette CLI steps outlined in the [VMware Install Instructions](../install-on-vmware/install.md) guide
+from the airgap support VM.
+
+:::info
+
+The table below provides a mapping of the airgap script output values and the Palette CLI prompt the value is used. The
+example values are for reference only.
+
+| Output Value                          | Palette CLI Prompt                   | Example Value                                         |
+| ------------------------------------- | ------------------------------------ | ----------------------------------------------------- |
+| **Spectro Cloud Repository Location** | **SCAR Location**                    | `https://vertex.example.com:8443` or `10.10.1.1:8443` |
+| **CA certificate filepath**           | **SCAR CA certificate filepath**     | `/opt/spectro/ssl/server.crt`                         |
+| **OCI Registry**                      | **Registry Type**                    | `OCI`                                                 |
+| **Pack OCI Registry**                 | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1`           |
+| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                         |
+| **Image OCI Registry**                | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1`           |
+| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                         |
+
+When prompted for **Allow Insecure Connection (Bypass x509 Verification)?**, enter `n` to continue and specify the
+server certificate filepath from the script output.
+
+:::
