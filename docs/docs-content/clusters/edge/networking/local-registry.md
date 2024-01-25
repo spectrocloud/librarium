@@ -13,6 +13,10 @@ registry, including your provider images and all packs used by your cluster. Sub
 made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being
 connected to the external network.
 
+:::preview
+
+:::
+
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
 
 ## Prerequisites
