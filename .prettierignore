@@ -7,7 +7,9 @@ vale/
 **/*.yaml
 **/*.yml
 
+
 docs/api-content/**/*.json
+
 
 # Troublesome files
 tsconfig.json
