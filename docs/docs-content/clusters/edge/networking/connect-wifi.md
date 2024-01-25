@@ -30,7 +30,7 @@ with the original user data you use to build Edge artifacts and skip that step.
 - A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
 - A [Spectro Cloud](https://console.spectrocloud.com/) account. If you have not signed up, you can sign up for a
   [free trial](https://www.spectrocloud.com/free-tier/).
-- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
+- A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../site-deployment/site-installation/create-registration-token.md) guide.
 
@@ -52,7 +52,7 @@ with the original user data you use to build Edge artifacts and skip that step.
 
    :::tip
 
-   Consider including some other lightweight network utilities in the OS image as well that can help you troubleshoot or
+   Consider including some other lightweight network utilities in the OS image that can help you troubleshoot or
    set up network configurations alternatively if needed. For example, if you are using Ubuntu, consider replacing the
    RUN statement with the following to also include network manager and ping.
 
@@ -81,7 +81,7 @@ the validation.
 
 ## Supply Site-Specific User Data
 
-It's likely that your Wi-Fi network name and passwords are site-specific, which means you won't be able to include the
+It is likely that your Wi-Fi network name and passwords are site-specific, which means you won't be able to include the
 network credentials in the installer. You can use site-specific user data to provide this information to you Edge hosts
 instead.
 
@@ -128,7 +128,7 @@ instead.
             fi
    ```
 
-2. Follow the rest of the steps in [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
+2. Follow the rest of the steps in the [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) section.
 
 ### Validate
 
