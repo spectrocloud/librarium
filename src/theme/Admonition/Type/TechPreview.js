@@ -20,14 +20,8 @@ const defaultProps = {
 
 export default function AdmonitionTypeTechPreview(props) {
   return (
-    <AdmonitionLayout
-      {...defaultProps}
-      {...props}
-      className={clsx(infimaClassName, props.className)}
-    >
-      {
-        "This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads."
-      }
+    <AdmonitionLayout {...defaultProps} {...props} className={clsx(infimaClassName, props.className)}>
+      {"This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads."}
     </AdmonitionLayout>
   );
 }
