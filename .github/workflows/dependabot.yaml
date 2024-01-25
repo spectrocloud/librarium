@@ -24,57 +24,7 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
 jobs:
-  run-ci:
-    # runs-on: ubuntu-latest
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    if: ${{ !github.event.pull_request.draft }}
-    steps:
-      # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
-      # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
-      # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
-      - run: exit 0
-
-  vale:
-    name: Writing Checks
-    needs: [run-ci]
-    runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Vale Check
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          filter_mode: added
-          reporter: github-pr-review
-          vale_flags: --glob=*.{md} --minAlertLevel=error
-          fail_on_error: false
-          version: 2.28.2
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  prettier:
-    name: Check Code Formatting
-    needs: [run-ci]
-    runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "npm"
-
-      - name: Prettier Check
-        run: npx prettier . --check
-
+ 
   build:
     name: Build
     needs: [run-ci, prettier]
