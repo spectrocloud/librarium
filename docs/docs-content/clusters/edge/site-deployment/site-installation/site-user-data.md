@@ -33,7 +33,7 @@ to a bootable device, such as a USB stick.
     touch user-data
     ```
 
-    For example, you can include the following content in the **user-data** file to connect your Edge host to wifi. This
+    For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi. This
     requires wpa_supplicant to be included in your base OS image. For more information, refer to
     [Connect Intel NUC Edge Host to Wifi](../../networking/connect-wifi.md).
 
@@ -116,7 +116,7 @@ You can validate that the ISO image is not corrupted by attempting to flash a bo
 creates a bootable device will validate the ISO image before the flash process.
 
 If you have SSH access, you can also SSH into the Edge host and locate your **user-data** file in either `/oem` or
-`/run/stylus`. The site-specific user-data is named **user-data** while the original user data file is named something
+`/run/stylus`. The site-specific user data is named **user-data** while the original user data file is named something
 similar to `90_custom.yaml`. If you can find the files on the Edge host, it means the user data has been applied
 successfully.
 
