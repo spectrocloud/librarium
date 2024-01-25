@@ -136,8 +136,10 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 12. Review the details and click on **Finish** to deploy the airgap support VM.
 
-13. It will take a few minutes for the airgap support VM to deploy. Once the deployment is complete, you will see the VM
-    in the vSphere inventory. The VM will be powered off. Power on the VM to continue.
+13. It takes a while for the airgap support VM to deploy, approximately 45 min or more depending on your internet
+    connection. The download of the OVA takes up majority of the time. The image is over 30 GB and contains all the
+    dependencies required to deploy a VerteX. Once the deployment is complete, the airgap support VM is displayed in the
+    vSphere inventory. The VM will be powered off. Power on the VM to continue.
 
 14. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the
     IP address or hostname of the airgap support VM. The default user account is `ubuntu`. Replace the path to the
@@ -160,6 +162,18 @@ Complete the following steps before deploying the airgap VerteX installation.
 16. Once you change the password, the SSH session will be terminated. SSH back into the airgap support VM with the new
     password.
 
+    :::info
+
+    You may receive a warning stating the new password is already used. You can ignore this message and SSH back into
+    the airgap support VM with the new password.
+
+    ```shell hideClipboard
+    Password has been already used. Choose another.
+    passwd: Have exhausted maximum number of retries for service
+    passwd: password unchanged
+    Connection to vertex.example.com closed.
+    ```
+
 17. If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to
     expand the instructions. Otherwise, proceed to the next step.
 
@@ -181,7 +195,7 @@ Complete the following steps before deploying the airgap VerteX installation.
     Next, create a file to configure the network settings.
 
     ```shell
-    sudo touch /etc/netplan/01-netcfg.yaml
+    sudo vi /etc/netplan/01-netcfg.yaml
     ```
 
     Modify the file to look like the example below. Replace the IP address, gateway, and DNS server with your network settings. Save the file and exit the text editor.
@@ -199,6 +213,13 @@ Complete the following steps before deploying the airgap VerteX installation.
           nameservers:
               addresses: [1.1.1.1]
     ```
+
+:::tip
+
+Press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type `:wq` to save the file and exit
+the text editor.
+
+:::
 
     Issue the following command to apply the changes.
 
@@ -306,37 +327,8 @@ ensure the airgap setup process completed successfully.
 
 Use the following steps to validate the airgap setup process completed successfully.
 
-1. Log in to your OCI registry and verify the VerteX images and packs are available.
-
-2. Verify the manifest file is accessible from the file server. The manifest file is required for the VerteX
-   installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The
-   example is using Caddy as the file server.
-
-![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.png)
-
-3. Ensure your file server is accessible from the environment in which you are installing VerteX. Use the following
-   command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below
-   with your file server hostname or IP address.
-
-```shell
-curl http://<hostname>:<port>/roar/nickfury/versions.yaml
-```
-
-```yaml hideClipboard
-versions:
-  - version: "3.3"
-    filepath: "/roar/nickfury/3.3/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
-  - version: "3.4"
-    filepath: "/roar/nickfury/3.4/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
-  - version: "4.0"
-    filepath: "/roar/nickfury/4.0/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
-```
-
 ## Next Steps
 
-You are now ready to deploy the airgap VerteX installation. You will specify your OCI registry and file server during
-the installation process. Refer to the [VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide
-for detailed guidance on installing VerteX.
+You are now ready to deploy the airgap VerteX installation with the Palette CLI. Complete all the steps outlined in the
+[VMware Install Instructions](../install-on-vmware/install-on-vmware.md) guide from the airgap support VM. Palette CLI
+is already installed on the airgap support VM and ready to use.
