@@ -57,9 +57,9 @@ with the original user data you use to build Edge artifacts and skip that step.
 
    :::tip
 
-   Consider including some other lightweight network utilities in the OS image that can help you troubleshoot or
-   set up network configurations alternatively if needed. For example, if you are using Ubuntu, consider replacing the
-   RUN statement with the following to also include network manager and ping.
+   Consider including some other lightweight network utilities in the OS image that can help you troubleshoot or set up
+   network configurations alternatively if needed. For example, if you are using Ubuntu, consider replacing the RUN
+   statement with the following to also include network manager and ping.
 
    ```
    RUN apt-get update && apt-get install wpasupplicant -y && \
@@ -133,7 +133,8 @@ instead.
             fi
    ```
 
-2. Follow the rest of the steps in the [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) section.
+2. Follow the rest of the steps in the [Apply Site User Data](../site-deployment/site-installation/site-user-data.md)
+   section.
 
 ### Validate
 

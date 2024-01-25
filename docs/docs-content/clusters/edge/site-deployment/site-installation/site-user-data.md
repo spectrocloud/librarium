@@ -33,8 +33,8 @@ to a bootable device, such as a USB stick.
     touch user-data
     ```
 
-    For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi. This
-    requires wpa_supplicant to be included in your base OS image. For more information, refer to
+    For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi.
+    This requires wpa_supplicant to be included in your base OS image. For more information, refer to
     [Connect Intel NUC Edge Host to Wifi](../../networking/connect-wifi.md).
 
     ```yaml
