@@ -510,7 +510,7 @@ The content in the `docs/` folder require approval from the documentation team. 
 be found in the [OWNERS_ALIAS](./content/OWNER_ALIASES) file. Only members of the documentation team may modify this
 file.
 
-# Check Writing
+## Check Writing
 
 We leverage [Vale](https://vale.sh/) to help us enforce our writing style programmatically and to avoid common writing
 mistakes. The writing checks are executed upon a pull request. You may also conduct a writing check locally by using the
@@ -566,6 +566,72 @@ words from the list by modifying the file.
 
 Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the
 [reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
+
+## Check Formatting
+
+We use [Prettier](https://prettier.io/) to maintain uniform and consistent formatting across the docbase. When you
+commit changes, Prettier formats the staged files automatically. Then, once you create a pull request, it verifies that
+the formatting in all files complies with our Prettier configuration.
+
+> [!NOTE]  
+> The build fails if the Code Formatting check doesn't pass.
+
+To manually check the formatting before pushing your work upstream, execute the following command in your terminal:
+
+```
+make format-check
+```
+
+Console output if all files are formatted:
+
+```
+Checking formatting...
+All matched files use Prettier code style!
+```
+
+Console output if some of the files require re-formatting:
+
+```
+Checking formatting...
+[warn] README.md
+[warn] Code style issues found in the above file. Run Prettier to fix.
+```
+
+To manually format all files, issue the following command:
+
+```
+make format
+```
+
+### Known Caveats
+
+- When using callouts/admonitions,
+  [pay attention to their syntax](https://docusaurus.io/docs/markdown-features/admonitions#usage-with-prettier).
+
+  ```
+  <!-- Prettier doesn't change this -->
+  :::note
+
+  Hello world
+
+  :::
+
+  <!-- Prettier changes this -->
+
+  :::note
+  Hello world
+  :::
+
+  <!-- to this, interfering with the admonition rendering and breaking JSX components -->
+
+  ::: note Hello world:::
+
+  ```
+
+- When you add JSX or HTML syntax, Prettier can introduce empty artifacts around them `{" "}` to ensure that whitespace
+  is preserved in the rendered output – a helpful feature in React development. However, Docusaurus can sometimes parse
+  them as valid HTML, making these artifacts visible to readers. For this reason, check your docs before pushing changes
+  upstream and remove any `{" "}` you find.
 
 ## Release
 
