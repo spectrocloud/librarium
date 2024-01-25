@@ -23,6 +23,11 @@ with the original user data you use to build Edge artifacts and skip that step.
 
 - A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture to build the Edge
   artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```shell
+  uname -m
+  ```
+
 - Minimum hardware configuration of the Linux machine:
   - 4 CPU
   - 8 GB memory
@@ -65,8 +70,8 @@ with the original user data you use to build Edge artifacts and skip that step.
 
    :::
 
-3. Follow the rest of the steps in the guide Build Edge Artifact. When finished, identify the
-   **palette-edge-installer.iso** file in the **build** folder.
+3. Follow the rest of the steps in the guide [Build Edge Artifact](../edgeforge-workflow/palette-canvos.md). When
+   finished, identify the **palette-edge-installer.iso** file in the **build** folder.
 4. Plug in your bootable device and flash it with the ISO image.
 5. Plug the bootable device into the Edge host and power on the Edge host. When the Edge host powers on, open the boot
    menu by pressing F10, and select the bootable device as your boot volume.
