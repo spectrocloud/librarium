@@ -21,7 +21,7 @@ Use the following steps to prepare your airgap environment for a VerteX installa
 
 :::info
 
-The OVA is does not use Docker as the container runtime, instead it uses [Podman](https://podman.io/).
+The OVA does not use Docker as the container runtime, instead it uses [Podman](https://podman.io/).
 
 :::
 
@@ -235,7 +235,7 @@ the text editor.
         <TabItem label="Domain Name" value="domain">
 
         ```shell
-        bin/airgap-setup.sh vertex.example.com
+        /bin/airgap-setup.sh vertex.example.com
         ```
 
         The output of the script will look similar to the example below.
@@ -269,7 +269,7 @@ the text editor.
         <TabItem label="IP Address" value="ip-address">
 
         ```shell
-        bin/airgap-setup.sh 10.10.1.1
+        /bin/airgap-setup.sh 10.10.1.1
         ```
 
         The output of the script will look similar to the example below.
