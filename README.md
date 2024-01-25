@@ -570,17 +570,25 @@ Rejected words automatically get flagged by Vale. To modify the list of rejected
 
 We use [Prettier](https://prettier.io/) to maintain uniform and consistent formatting across the docbase. When you
 commit changes, Prettier formats the staged files automatically. Then, once you create a pull request, it verifies that
-all files comply with our Prettier configuration.
+the formatting in all files complies with our Prettier configuration.
 
-**Note:** The build fails if the Code Formatting check doesn't pass.
+> [!NOTE]  
+> The build fails if the Code Formatting check doesn't pass.
 
 To manually check the formatting before pushing your work upstream, execute the following command in your terminal:
 
 ```
-npm run format-check
+make format-check
 ```
 
-If you receive an output similar to the following, the Code Formatting check has failed.
+Console output if all files are formatted:
+
+```
+Checking formatting...
+All matched files use Prettier code style!
+```
+
+Console output if some of the files require re-formatting:
 
 ```
 Checking formatting...
@@ -588,10 +596,10 @@ Checking formatting...
 [warn] Code style issues found in the above file. Run Prettier to fix.
 ```
 
-In this case, issue the following command to format all files manually.
+To manually format all files, issue the following command:
 
 ```
-npm run format
+make format
 ```
 
 ### Known Caveats
@@ -609,9 +617,11 @@ npm run format
 
   <!-- Prettier changes this -->
 
-  :::note Hello world :::
+  :::note
+  Hello world
+  :::
 
-  <!-- to this -->
+  <!-- to this, interfering with the admonition rendering and breaking JSX components -->
 
   ::: note Hello world:::
 
