@@ -21,6 +21,7 @@
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
+    "format-check": "prettier . --check",
     "prepare": "husky install"
   },
   "lint-staged": {
