@@ -238,7 +238,7 @@ If you choose to change the default NIC used by your nodes, you need to make sur
 pool share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
 
 In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the
-NIC used by your control plane nodes. For example, if the NIC used by the nodes in your macontrol planeter pool is named
+NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is named
 `ens32`, add the following two lines.
 
 ```yaml {2-3}

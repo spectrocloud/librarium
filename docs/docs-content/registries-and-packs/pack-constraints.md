@@ -479,7 +479,7 @@ name of the replica count defined in the `values.yaml`
 
 Kubernetes provides a way to schedule the pods on the control plane and worker nodes. Pack Constraints framework must
 know where the pods are scheduled because the resource validation validates only the control plane machine pool when the
-pods are scheduled on control plane nodes. Similarily, if the pods are scheduled on worker nodes, then only the worker
+pods are scheduled on control plane nodes. Similarly, if the pods are scheduled on worker nodes, then only the worker
 machine pool will be validated. In the case of daemon sets, the pods are scheduled in both control plane and worker
 nodes, and the framework validates both control plane and worker machine pool configurations before the cluster is
 submitted for deployment.
