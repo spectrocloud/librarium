@@ -174,3 +174,12 @@ ethernet
 hostname
 Entra
 README
+Tailscale
+Tailnet
+Sanitization
+sanitization
+Filepath
+untrusted
+goroutines
+renegotiation
+renegotiations

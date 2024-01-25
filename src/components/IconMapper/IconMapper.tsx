@@ -48,9 +48,7 @@ export const icons: IconsMap = {
 
 function IconMapper({ type }: { type: string }): React.ReactElement {
   if (!icons[type]) {
-    return (
-      <FontAwesomeIcon icon={fontAwesomeIcons[type as keyof typeof fontAwesomeIcons] as IconProp} />
-    );
+    return <FontAwesomeIcon icon={fontAwesomeIcons[type as keyof typeof fontAwesomeIcons] as IconProp} />;
   }
 
   return icons[type];

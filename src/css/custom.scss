@@ -208,3 +208,8 @@ p img.markdown-image {
   margin-right: auto;
   border-radius: 1vw;
 }
+
+.custom-admonition {
+  border: 1px solid var(--custom-important-color);
+  background-color: var(--custom-alert-bg-color);
+}
