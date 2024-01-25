@@ -790,10 +790,10 @@ offerings, many enhancements, and bug fixes.
 - Palette displays a well-organized [Product Onboarding](./getting-started/onboarding-workflow.md) process to streamline
   user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
 - Palette helps out new users in their purchase decision by offering free tier services.
-  - [Palette Freemium](./getting-started/palette-freemium.md) to explore Palette's capabilities with free and fixed
-    kilo-Core-hour usage for finite cluster deployments.
-  - [Free Cloud Credit](./getting-started/palette-freemium.md) offers access to a free cloud account, with sufficient
-    permissions and credentials, to have a first impression on our product journey.
+  - Palette Freemium to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster
+    deployments.
+  - Free Cloud Credit offers access to a free cloud account, with sufficient permissions and credentials, to have a
+    first impression on our product journey.
 
 **Enhancements:**
 
