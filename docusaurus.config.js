@@ -99,6 +99,10 @@ const config = {
               label: "latest",
             },
           },
+          admonitions: {
+            keywords: ["preview"],
+            extendDefaults: true,
+          },
           // exclude: ["api/v1/palette-apis-3-4"],
 
           sidebarPath: require.resolve("./sidebars.js"),
