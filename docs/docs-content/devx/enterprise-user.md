@@ -41,8 +41,6 @@ started. Create your application profiles and deploy your applications to Palett
 
 Use the following resource to get started with PDE today.
 
-- Learn about [Palette's Free Tier Offering](../getting-started/palette-freemium.md).
-
 - [Tutorial](./apps/deploy-app.md).
 
 - Learn about [App Mode versus Cluster Mode](../introduction/palette-modes.md).
