@@ -7,6 +7,8 @@ vale/
 **/*.yaml
 **/*.yml
 
+
 # Troublesome files
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.js
+docs/api-content/**/*.json

@@ -1,0 +1,12 @@
+extends: substitution
+message: "Use the approved UI element term '%s' instead of '%s'"
+ignorecase: true
+level: error
+swap:
+  "navbar": "Main Menu"
+  "nav bar": "Main Menu"
+  "user dropdown": "User Menu"
+  "nested navbar": "<feature> Menu"
+  "nested nav bar": "<feature> Menu"
+  "three dots": "three-dot Menu"
+  "dropdown menu": "drop-down Menu"

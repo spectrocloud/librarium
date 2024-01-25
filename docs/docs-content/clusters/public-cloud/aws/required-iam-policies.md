@@ -7,24 +7,27 @@ tags: ["public cloud", "aws", "iam"]
 sidebar_position: 50
 ---
 
-Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf.
-The following policies include all the permissions needed for cluster provisioning with Palette.
+Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. The
+following policies include all the permissions needed for cluster provisioning with Palette.
 
-* **PaletteControllerPolicy**
+- **PaletteControllerPolicy**
 
-* **PaletteControlPlanePolicy**
+- **PaletteControlPlanePolicy**
 
-* **PaletteNodesPolicy**
+- **PaletteNodesPolicy**
 
-* **PaletteDeploymentPolicy**
+- **PaletteDeploymentPolicy**
 
-Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS) requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to review the IAM policy.
+Additional IAM policies may be required depending on the use case. For example, AWS Elastic Kubernetes Service (EKS)
+requires the **PaletteControllersEKSPolicy**. Check out the [Controllers EKS Policy](#controllers-eks-policy) section to
+review the IAM policy.
 
+:::warning
 
-:::caution
-
-You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies into a custom-managed policy.
-You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
+You can attach a maximum of ten managed policies to an IAM User or role. Exceeding this limit will result in cluster
+deployment failures. If you find yourself in a scenario where you are exceeding the limit, consider combining policies
+into a custom-managed policy. You can learn more about AWS IAM limits in the
+[IAM Quotas](https://docs.aws.amazon.com/us_en/IAM/latest/UserGuide/reference_iam-quotas.html) reference guide.
 
 :::
 
@@ -32,10 +35,9 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 <TabItem label="Controllers Policy" value="Controllers Policy">
 
-
 **Last Update**: April 20, 2023
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -116,9 +118,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "iam:CreateOpenIDConnectProvider",
         "tag:GetResources"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -130,9 +130,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "autoscaling:DeleteAutoScalingGroup",
         "autoscaling:DeleteTags"
       ],
-      "Resource": [
-        "arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"
-      ],
+      "Resource": ["arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*"],
       "Effect": "Allow"
     },
     {
@@ -141,12 +139,8 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
           "iam:AWSServiceName": "autoscaling.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"],
       "Effect": "Allow"
     },
     {
@@ -155,9 +149,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
           "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
       ],
@@ -169,32 +161,18 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
           "iam:AWSServiceName": "spot.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ],
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "secretsmanager:CreateSecret",
-        "secretsmanager:DeleteSecret",
-        "secretsmanager:TagResource"
-      ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ],
+      "Action": ["secretsmanager:CreateSecret", "secretsmanager:DeleteSecret", "secretsmanager:TagResource"],
+      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
       "Effect": "Allow"
     },
     {
@@ -206,9 +184,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "s3:PutObjectAcl",
         "s3:PutObject"
       ],
-      "Resource": [
-        "arn:*:s3:::*"
-      ],
+      "Resource": ["arn:*:s3:::*"],
       "Effect": "Allow"
     }
   ]
@@ -221,7 +197,7 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 **Last Update**: April 20, 2023
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -282,22 +258,20 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "iam:CreateServiceLinkedRole",
         "kms:DescribeKey"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     }
   ]
 }
 ```
+
 </TabItem>
 
 <TabItem label="Nodes Policy" value="Nodes Policy">
 
-
 **Last Update**: May 2, 2021
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -313,19 +287,12 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "ecr:ListImages",
         "ecr:BatchGetImage"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "secretsmanager:DeleteSecret",
-        "secretsmanager:GetSecretValue"
-      ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ],
+      "Action": ["secretsmanager:DeleteSecret", "secretsmanager:GetSecretValue"],
+      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
       "Effect": "Allow"
     },
     {
@@ -337,21 +304,20 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
         "ssmmessages:OpenDataChannel",
         "s3:GetEncryptionConfiguration"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     }
   ]
 }
 ```
+
 </TabItem>
 
 <TabItem label="Deployment Policy" value="Deployment Policy">
 
 **Last Update**: April 20, 2023
 
-``` json
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -402,7 +368,6 @@ You can learn more about AWS IAM limits in the [IAM Quotas](https://docs.aws.ama
 
 </Tabs>
 
-
 ## Controllers EKS Policy
 
 If you plan to deploy host clusters to AWS EKS, make sure to attach the **PaletteControllersEKSPolicy**.
@@ -414,12 +379,8 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": [
-        "ssm:GetParameter"
-      ],
-      "Resource": [
-        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
-      ],
+      "Action": ["ssm:GetParameter"],
+      "Resource": ["arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"],
       "Effect": "Allow"
     },
     {
@@ -428,12 +389,8 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
           "iam:AWSServiceName": "eks.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"],
       "Effect": "Allow"
     },
     {
@@ -442,9 +399,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
           "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
       ],
@@ -456,9 +411,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
           "iam:AWSServiceName": "eks-fargate.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
       ],
@@ -472,9 +425,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
         "iam:ListOpenIDConnectProviders",
         "iam:UpdateOpenIDConnectProviderThumbprint"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -487,18 +438,12 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
         "iam:TagRole",
         "iam:AttachRolePolicy"
       ],
-      "Resource": [
-        "arn:*:iam::*:role/*"
-      ],
+      "Resource": ["arn:*:iam::*:role/*"],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "iam:GetPolicy"
-      ],
-      "Resource": [
-        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-      ],
+      "Action": ["iam:GetPolicy"],
+      "Resource": ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"],
       "Effect": "Allow"
     },
     {
@@ -522,10 +467,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
         "eks:DescribeIdentityProviderConfig",
         "eks:DisassociateIdentityProviderConfig"
       ],
-      "Resource": [
-        "arn:*:eks:*:*:cluster/*",
-        "arn:*:eks:*:*:nodegroup/*/*/*"
-      ],
+      "Resource": ["arn:*:eks:*:*:cluster/*", "arn:*:eks:*:*:nodegroup/*/*/*"],
       "Effect": "Allow"
     },
     {
@@ -543,9 +485,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
         "eks:CreateFargateProfile",
         "eks:DeleteFargateProfile"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -554,12 +494,8 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
           "iam:PassedToService": "eks.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "*"
-      ],
+      "Action": ["iam:PassRole"],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -568,13 +504,8 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
           "kms:ResourceAliases": "alias/cluster-api-provider-aws-*"
         }
       },
-      "Action": [
-        "kms:CreateGrant",
-        "kms:DescribeKey"
-      ],
-      "Resource": [
-        "*"
-      ],
+      "Action": ["kms:CreateGrant", "kms:DescribeKey"],
+      "Resource": ["*"],
       "Effect": "Allow"
     }
   ]
@@ -583,26 +514,21 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
 
 ## Restricting Palette VPC Permissions
 
-You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the [Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
-
-
-<br />
-<br />
+You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS
+cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the
+[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
 <Tabs queryString="min-permissions">
 <TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
 
-This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
-
-<br />
-
+This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
+VPCs.
 
 ### Minimum Dynamic Permissions
 
-
 ```json
 {
- "Version": "2012-10-17",
+  "Version": "2012-10-17",
   "Statement": [
     {
       "Sid": "VisualEditor0",
@@ -709,12 +635,8 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
     },
     {
       "Effect": "Allow",
-      "Action": [
-         "iam:PassRole"
-      ],
-      "Resource": [
-          "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ]
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
     }
   ]
 }
@@ -724,103 +646,96 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
 
 <TabItem label="Minimum Static Permissions" value="Minimum Static Permissions">
 
-
-This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete VPCs.
-
-<br />
+This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
+VPCs.
 
 ### Minimum Static Permissions
-
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": [
-      {
-          "Sid": "VisualEditor0",
-          "Effect": "Allow",
-          "Action": [
-              "ec2:AuthorizeSecurityGroupIngress",
-              "ec2:DescribeInstances",
-            "iam:RemoveRoleFromInstanceProfile",
-            "pricing:GetProducts",
-            "sts:AssumeRole",
-            "ec2:DescribeRegions",
-            "ec2:DescribeKeyPairs",
-            "ec2:DescribeVpcs",
-            "ec2:DescribeVpcAttribute",
-            "ec2:DescribeSubnets",
-            "cloudformation:DescribeStacks",
-            "cloudformation:CreateStack",
-            "cloudformation:UpdateStack",
-            "ec2:DescribeRouteTables",
-            "ec2:DescribeNatGateways",
-            "ec2:DescribeSecurityGroups",
-            "elasticloadbalancing:DescribeLoadBalancers",
-            "elasticloadbalancing:DescribeLoadBalancerAttributes",
-            "elasticloadbalancing:DescribeTags",
-            "secretsmanager:CreateSecret",
-            "secretsmanager:TagResource",
-            "secretsmanager:GetSecretValue",
-            "secretsmanager:DeleteSecret",
-            "iam:GetInstanceProfile",
-            "iam:AddRoleToInstanceProfile",
-            "iam:CreateInstanceProfile",
-            "iam:DeleteInstanceProfile",
-            "ec2:RunInstances",
-            "ec2:ModifyInstanceAttribute",
-            "ec2:TerminateInstances",
-            "autoscaling:StartInstanceRefresh",
-            "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-            "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-            "ssm:UpdateInstanceInformation",
-            "ec2:DescribeAvailabilityZones",
-            "eks:DescribeCluster",
-            "eks:ListClusters",
-            "ec2:CreateSecurityGroup",
-            "ec2:DeleteSecurityGroup",
-            "ec2:RevokeSecurityGroupIngress",
-            "ssmmessages:CreateControlChannel",
-            "ssmmessages:CreateDataChannel",
-            "ssmmessages:OpenControlChannel",
-            "ssmmessages:OpenDataChannel",
-            "elasticloadbalancing:ConfigureHealthCheck",
-            "elasticloadbalancing:DescribeTargetHealth",
-            "ec2:CreateTags",
-            "ec2:DescribeNetworkInterfaces",
-            "elasticloadbalancing:DeleteLoadBalancer",
-            "elasticloadbalancing:CreateLoadBalancer",
-            "elasticloadbalancing:ModifyLoadBalancerAttributes",
-            "ec2:DisassociateAddress",
-            "ec2:DescribeAddresses",
-            "ec2:DescribeVolumes",
-            "ec2:DescribeImages",
-            "ec2:ModifyVpcAttribute",
-            "s3:GetEncryptionConfiguration",
-            "ec2:ModifyVolume",
-            "ec2:AttachVolume",
-            "ec2:DescribeVolumesModifications",
-            "ec2:DetachVolume",
-            "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-            "ec2:DetachInternetGateway",
-            "ec2:DeleteNetworkInterface",
-            "tag:GetResources",
-            "ec2:ReleaseAddress",
-            "ec2:ModifyNetworkInterfaceAttribute",
-            "ec2:DescribeNetworkInterfaceAttribute",
-            "ec2:AllocateAddress",
-            "ec2:AssociateAddress"
-        ],
-        "Resource": "*"
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:DescribeInstances",
+        "iam:RemoveRoleFromInstanceProfile",
+        "pricing:GetProducts",
+        "sts:AssumeRole",
+        "ec2:DescribeRegions",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeSubnets",
+        "cloudformation:DescribeStacks",
+        "cloudformation:CreateStack",
+        "cloudformation:UpdateStack",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeNatGateways",
+        "ec2:DescribeSecurityGroups",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeTags",
+        "secretsmanager:CreateSecret",
+        "secretsmanager:TagResource",
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DeleteSecret",
+        "iam:GetInstanceProfile",
+        "iam:AddRoleToInstanceProfile",
+        "iam:CreateInstanceProfile",
+        "iam:DeleteInstanceProfile",
+        "ec2:RunInstances",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:TerminateInstances",
+        "autoscaling:StartInstanceRefresh",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "ssm:UpdateInstanceInformation",
+        "ec2:DescribeAvailabilityZones",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "ec2:CreateSecurityGroup",
+        "ec2:DeleteSecurityGroup",
+        "ec2:RevokeSecurityGroupIngress",
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "ec2:CreateTags",
+        "ec2:DescribeNetworkInterfaces",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "ec2:DisassociateAddress",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeImages",
+        "ec2:ModifyVpcAttribute",
+        "s3:GetEncryptionConfiguration",
+        "ec2:ModifyVolume",
+        "ec2:AttachVolume",
+        "ec2:DescribeVolumesModifications",
+        "ec2:DetachVolume",
+        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+        "ec2:DetachInternetGateway",
+        "ec2:DeleteNetworkInterface",
+        "tag:GetResources",
+        "ec2:ReleaseAddress",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:AllocateAddress",
+        "ec2:AssociateAddress"
+      ],
+      "Resource": "*"
     },
     {
-        "Effect": "Allow",
-        "Action": [
-            "iam:PassRole"
-        ],
-        "Resource": [
-            "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-        ]
+      "Effect": "Allow",
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
     }
   ]
 }
@@ -832,24 +747,28 @@ This is a policy for those who want to restrict Palette to a single VPC and not 
 
 :::info
 
-
 The following are important points to be aware of.
 
 - Ensure that the role created contain all the policies defined above.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
 
-- The following warning is expected and can be ignored: These policies define some actions, resources, or conditions that do not provide permissions. To grant access, policies must have an action that has an applicable resource or condition.
+- The following warning is expected and can be ignored: These policies define some actions, resources, or conditions
+  that do not provide permissions. To grant access, policies must have an action that has an applicable resource or
+  condition.
 
 :::
 
 ## Global Role Additional Policies
 
-There may be situations where additional node-level policies must be added to your deployment. For instance, when you create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add additional node-level policies, switch to the **Tenant Admin**  project, and click on the **Tenant Settings** on the **Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
+There may be situations where additional node-level policies must be added to your deployment. For instance, when you
+create a host cluster with the **AWS EBS CSI** storage layer, ensure **AmazonEBSCSIDriverPolicy** is included. To add
+additional node-level policies, switch to the **Tenant Admin** project, and click on the **Tenant Settings** on the
+**Main Menu**. Click on **Cloud Accounts**. Add an account if one does not exists. After validation of the AWS
+credentials, ensure `Add IAM policies` are enabled. You can specify additional amazon resource names (ARN) to be
+attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
-<br />
-
-** AmazonEBSCSIDriverPolicy:**
+**AmazonEBSCSIDriverPolicy:**
 
 ```yml
 roleName: "custom-ng-role"
@@ -857,61 +776,68 @@ roleName: "custom-ng-role"
   - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 ```
 
-
 ## Roles and Policies
 
-Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you deploy, either AWS EKS or IaaS (using EC2 instances), Palette creates and attaches different IAM roles and policies.
+Palette creates and attaches IAM roles and policies to the clusters it deploys. Depending on which type of cluster you
+deploy, either AWS EKS or IaaS (using EC2 instances), Palette creates and attaches different IAM roles and policies.
 
-Select the tab below to review the IAM roles and policies attached to the cluster's IAM role and the node group's IAM role.
-
+Select the tab below to review the IAM roles and policies attached to the cluster's IAM role and the node group's IAM
+role.
 
 <Tabs queryString="service">
 <TabItem label="EKS" value="eks">
 
-When you deploy an EKS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster, and the other IAM role for the worker node group.
+When you deploy an EKS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster,
+and the other IAM role for the worker node group.
 
-The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM role is named as `ng-role_worker-pool-[random-string]`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role. 
+The cluster's IAM role is named in the following syntax, `[cluster-name]-iam-service-role`, and the node group's IAM
+role is named as `ng-role_worker-pool-[random-string]`. These two IAM roles have customer-managed and AWS-managed IAM
+policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM
+policies attached to the cluster's IAM role and the node group's IAM role.
 
-|**Policy Name**|**Type**|**Attached to the cluster's IAM role?**|**Attached to the node group's IAM role?**| **Description** |
-|---|---|---|---|---|
-|AmazonEKSClusterPolicy|AWS managed|✅ | ❌ | Provides the cluster permissision to manage compute resources. | 
-|AmazonEC2ContainerRegistryReadOnly|AWS managed| ❌ |✅ | Provides the node group permission to pull images from Amazon ECR. |
-|AmazonEKS_CNI_Policy|AWS managed| ❌ |✅ | Provides the node group permission to manage network resources. |
-|AmazonEKSWorkerNodePolicy|AWS managed| ❌ |✅ | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.|
-|AmazonSSMManagedInstanceCore|AWS managed| ❌ |✅ | The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality. |
+| **Policy Name**                    | **Type**    | **Attached to the cluster's IAM role?** | **Attached to the node group's IAM role?** | **Description**                                                                          |
+| ---------------------------------- | ----------- | --------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| AmazonEKSClusterPolicy             | AWS managed | ✅                                      | ❌                                         | Provides the cluster permissision to manage compute resources.                           |
+| AmazonEC2ContainerRegistryReadOnly | AWS managed | ❌                                      | ✅                                         | Provides the node group permission to pull images from Amazon ECR.                       |
+| AmazonEKS_CNI_Policy               | AWS managed | ❌                                      | ✅                                         | Provides the node group permission to manage network resources.                          |
+| AmazonEKSWorkerNodePolicy          | AWS managed | ❌                                      | ✅                                         | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.            |
+| AmazonSSMManagedInstanceCore       | AWS managed | ❌                                      | ✅                                         | The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality. |
 
-
-In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. 
-
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those
+policies are also attached to the cluster's IAM role and the node group's IAM role.
 
 </TabItem>
 <TabItem label="IaaS" value="iaas">
 
+When you deploy an IaaS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster
+control nodes, and the other IAM role for the worker nodes.
 
-When you deploy an IaaS cluster using Palette, two IAM roles are created automatically. One IAM role is for the cluster control nodes, and the other IAM role for the worker nodes.
+The control plane nodes IAM role is named `control-plane.cluster-api-provider-aws.sigs.k8s.io`, and the node group's IAM
+role is named as `nodes.cluster-api-provider-aws.sigs.k8s.io`. These two IAM roles have customer-managed and AWS-managed
+IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM
+policies attached to the cluster's IAM role and the node group's IAM role.
 
-The control plane nodes IAM role is named `control-plane.cluster-api-provider-aws.sigs.k8s.io`, and the node group's IAM role is named as `nodes.cluster-api-provider-aws.sigs.k8s.io`. These two IAM roles have customer-managed and AWS-managed IAM policies. You can attach more IAM policies to any of these IAM roles if needed. The following table lists the IAM policies attached to the cluster's IAM role and the node group's IAM role. 
+| **Policy name**                                      | **Type**         | **Attached to the control plane IAM role?** | **Attached to the node group's IAM role?** | **Description**                                                                                |
+| ---------------------------------------------------- | ---------------- | ------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| control-plane.cluster-api-provider-aws.sigs.k8s.io   | Customer-managed | ✅                                          | ❌                                         | Provides the control plane nodes access to compute services such as EC, autoscaling, and more. |
+| controllers-eks.cluster-api-provider-aws.sigs.k8s.io | Customer-managed | ✅                                          | ❌                                         | Provides the control plane nodes access to EKS services and AWS SSM.                           |
+| controllers.cluster-api-provider-aws.sigs.k8s.io     | Customer-managed | ✅                                          | ❌                                         | Provides the control plane nodes access to network resources, S3, and other services.          |
+| nodes.cluster-api-provider-aws.sigs.k8s.io           | Customer-managed | ✅                                          | ✅                                         | Provides access to services EC2 and ECR.                                                       |
+| AmazonEKSWorkerNodePolicy                            | AWS managed      | ❌                                          | ✅                                         | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.                  |
 
-|**Policy name**|**Type**|**Attached to the control plane IAM role?**|**Attached to the node group's IAM role?**| **Description** |
-|---|---|---|---|--|
-| control-plane.cluster-api-provider-aws.sigs.k8s.io | Customer-managed|✅ | ❌ | Provides the control plane nodes access to compute services such as EC, autoscaling, and more.|
-| controllers-eks.cluster-api-provider-aws.sigs.k8s.io | Customer-managed|✅ | ❌ | Provides the control plane nodes access to EKS services and AWS SSM.|
-| controllers.cluster-api-provider-aws.sigs.k8s.io | Customer-managed | ✅ | ❌ | Provides the control plane nodes access to network resources, S3, and other services. |
-| nodes.cluster-api-provider-aws.sigs.k8s.io | Customer-managed | ✅ | ✅  | Provides access to services EC2 and ECR. |
-|AmazonEKSWorkerNodePolicy|AWS managed| ❌ |✅ | This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.|
-
-
-
-In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those policies are also attached to the cluster's IAM role and the node group's IAM role. Other policies may also be attached to the IAM roles depending on the storage layer and network layer pack you choose.
-
+In addition to the policies listed above, if you specified other IAM policies during the AWS account registration, those
+policies are also attached to the cluster's IAM role and the node group's IAM role. Other policies may also be attached
+to the IAM roles depending on the storage layer and network layer pack you choose.
 
 </TabItem>
 
 </Tabs>
 
+:::warning
 
-:::caution
-
-Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail due to the IAM role policy limit. Request a [service quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for the AWS account to increase the limit.
+Be aware that AWS has a default limit of 10 policies per role. If you exceed this limit, the cluster deployment may fail
+due to the IAM role policy limit. Request a
+[service quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) for the
+AWS account to increase the limit.
 
 :::
