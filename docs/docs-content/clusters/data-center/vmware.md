@@ -904,16 +904,16 @@ The following steps need to be performed to provision a new VMware cluster:
    | **NTP Server (Optional)**  | Setup time synchronization for all the running nodes.                                                                                                                                                                                                                                                               |
    | **IP Allocation strategy** | DHCP or Static IP                                                                                                                                                                                                                                                                                                   |
 
-5. Configure the master and worker node pools. Fill out the input fields in the **Add node pool** page. The following
-   table contains an explanation of the available input parameters.
+5. Configure the control plane and worker node pools. Fill out the input fields in the **Add node pool** page. The
+   following table contains an explanation of the available input parameters.
 
-### Master Pool
+### Control Plane Pool
 
 | **Parameter**                                        | **Description**                                                                                                                                                                                                     |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Name**                                             | A descriptive name for the node pool.                                                                                                                                                                               |
-| **Size**                                             | Number of VMs to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.                                                                                                              |
-| **Allow worker capability**                          | Select this option for allowing workloads to be provisioned on master nodes.                                                                                                                                        |
+| **Size**                                             | Number of VMs to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                       |
+| **Allow worker capability**                          | Select this option for allowing workloads to be provisioned on control plane nodes.                                                                                                                                 |
 | **[Labels](../cluster-management/taints.md#labels)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                            |
 | **[Taints](../cluster-management/taints.md#taints)** | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                      |
 | **Instance type**                                    | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                         |

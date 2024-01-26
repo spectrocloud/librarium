@@ -163,7 +163,7 @@ kubeadmconfig:
     - 'echo "====> Applying kernel parameters for Kubelet"'
     - "sysctl -p /etc/sysctl.d/90-kubelet.conf"
   postKubeadmCommands:
-    # Apply the privileged PodSecurityPolicy on the first master node ; Otherwise, CNI (and other) pods won't come up
+    # Apply the privileged PodSecurityPolicy on the first control plane node ; Otherwise, CNI (and other) pods won't come up
     - "export KUBECONFIG=/etc/kubernetes/admin.conf"
     # Sometimes api server takes a little longer to respond. Retry if applying the pod-security-policy manifest fails
     - '[ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f
@@ -466,7 +466,7 @@ kubeadmconfig:
     - 'echo "====> Applying kernel parameters for Kubelet"'
     - "sysctl -p /etc/sysctl.d/90-kubelet.conf"
   postKubeadmCommands:
-    # Apply the privileged PodSecurityPolicy on the first master node ; Otherwise, CNI (and other) pods won't come up
+    # Apply the privileged PodSecurityPolicy on the first control plane node ; Otherwise, CNI (and other) pods won't come up
     - "export KUBECONFIG=/etc/kubernetes/admin.conf"
     # Sometimes api server takes a little longer to respond. Retry if applying the pod-security-policy manifest fails
     - '[ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f

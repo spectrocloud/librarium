@@ -52,11 +52,11 @@ To deploy a new MAAS cluster:
 
 9. Select a domain from the **Domain drop-down Menu** and click **Next**.
 
-10. Configure the master and worker node pools. The following input fields apply to MAAS master and worker node pools.
-    For a description of input fields that are common across target platforms refer to the
+10. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
+    node pools. For a description of input fields that are common across target platforms refer to the
     [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
 
-    #### Master Pool configuration
+    #### Control Plane Pool configuration
 
     - Cloud configuration:
 
