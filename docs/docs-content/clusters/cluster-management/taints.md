@@ -51,11 +51,11 @@ circumstances where you may want to control which node the pod deploys to - for 
 a machine with an SSD attached to it, or to co-locate pods from two different services that communicate a lot into the
 same availability zone.
 
-Palette enables our users to Label the nodes of a master and worker pool by using key/value pairs. These labels do not
-directly imply anything to the semantics of the core system but are intended to be used by users to drive use cases
-where pod affinity to specific nodes is desired. Labels can be attached to node pools in a cluster during creation and
-can be subsequently added and modified at any time. Each node pool can have a set of key/value labels defined. The key
-must be unique across all node pools for a given cluster.
+Palette enables our users to Label the nodes of a control plane and worker pool by using key/value pairs. These labels
+do not directly imply anything to the semantics of the core system but are intended to be used by users to drive use
+cases where pod affinity to specific nodes is desired. Labels can be attached to node pools in a cluster during creation
+and can be subsequently added and modified at any time. Each node pool can have a set of key/value labels defined. The
+key must be unique across all node pools for a given cluster.
 
 ### Apply Labels to Nodes
 
