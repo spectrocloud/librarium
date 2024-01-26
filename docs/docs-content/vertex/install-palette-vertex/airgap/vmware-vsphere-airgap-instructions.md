@@ -79,11 +79,11 @@ Complete the following steps before deploying the airgap VerteX installation.
     guide for information about importing an OVA in vCenter.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1268-fips.ova
+     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12610-fips.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2004-0-k-12510-fips`. This naming convetion is required for the install process to identify
+    should look like `r_u-2004-0-k-12610-fips`. This naming convetion is required for the install process to identify
     the OVA. Refer to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OVAs
     you can download and upload to your vCenter environment.
 
