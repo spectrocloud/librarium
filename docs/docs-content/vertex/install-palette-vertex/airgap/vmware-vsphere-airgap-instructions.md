@@ -92,7 +92,8 @@ Complete the following steps before deploying the airgap VerteX installation.
     :::warning
 
     If you encounter an error message during the OVA deployment stating unable to retrieve manifest, or certificate,
-    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledgebase.
+    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledgebase for guidance on how
+    to resolve the issue.
 
     :::
 

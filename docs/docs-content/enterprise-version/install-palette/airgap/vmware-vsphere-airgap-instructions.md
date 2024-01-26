@@ -89,6 +89,14 @@ Complete the following steps before deploying the airgap Palette installation.
     [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
     guide for more information about deploying an OVA in vCenter.
 
+    :::warning
+
+    If you encounter an error message during the OVA deployment stating unable to retrieve manifest, or certificate,
+    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledgebase for guidance on how
+    to resolve the issue.
+
+    :::
+
 5.  Next, deploy the airgap install OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the Palette
     install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative. Click on
     **Next** to continue.
