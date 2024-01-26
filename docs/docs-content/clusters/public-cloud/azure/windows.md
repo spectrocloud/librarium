@@ -73,13 +73,99 @@ The following steps need to be performed to to add Windows node pool to an exist
 
 <br />
 
-## Create a Windows Node Pool 
+## Create an Add-on Profile with a Windows Workload
 
-The following steps need to be performed to to add Windows node pool to an existing AKS cluster:
+<br />
 
-1. If you have an existing AKS Cluster deployed go to **Clusters** and select the cluster.
+ <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/add-win-profile.mp4"></Video>
 
-2. Go to **Nodes** and click **New Node Pool**.
+ <br />
+ <br />
+
+  :::info
+
+ Kubernetes does not automatically know if an application is Windows based and should be placed on a Windows node. When defining a Windows Application in a Profile you will need to add a manifest with  
+      **nodeSelector:
+        "kubernetes.io/os": windows**, so Kubernetes will place that application on a Windows node.
+
+  :::
+
+<br />
+
+1. Follow [Add a manifest to an add-on profile ](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon/#add-manifest-to-add-on-profile) to create a cluster profile with a custom manifest.
+
+
+2. Use the manifest below, which is for a sample asp.net app or use your own Windows application manifest.  Defining **spec** of **nodeSelector:
+        "kubernetes.io/os": windows** is required for Kubernetes to know to application needs to be place on a Windows Node.
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: win-pack
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: win-pack
+  name: sample
+  labels:
+    app: sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sample
+      labels:
+        app: sample
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": windows
+      containers:
+      - name: sample
+        image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp
+        resources:
+          limits:
+            cpu: 1
+            memory: 800M
+        ports:
+          - containerPort: 80
+  selector:
+    matchLabels:
+      app: sample
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample
+  namespace: win-pack
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+  selector:
+    app: sample
+    ```
 
  
 
+## Deploy a Windows add-on profile to an existing cluster
+
+<br />
+
+ <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/deploy-windows-pack.mp4"></Video>
+
+ <br />
+ <br />
+<br />
+
+  :::info
+
+  The existing cluster must have an existing Windows Node Pool to be able to sucessfully deploy a Windows workload.
+
+  :::
+
+<br />
+
+1. Follow [Attach on Add-on Profile](../../../clusters/imported-clusters/attach-add-on-profile/#attach-an-add-on-profile) to deploy the Windows application using the pack you created.
