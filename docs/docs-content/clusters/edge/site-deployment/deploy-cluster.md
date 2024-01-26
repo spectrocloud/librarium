@@ -884,22 +884,22 @@ Click **Next** to continue.
 ### Nodes configuration
 
 In this section, you will use the Edge hosts to create the cluster nodes. Use one of the Edge hosts as the control plane
-node and the remaining two as worker nodes. In this example, the control plane node is called the master pool, and the
-set of worker nodes is the worker pool.
+node and the remaining two as worker nodes. In this example, the control plane node is called the control plane pool,
+and the set of worker nodes is the worker pool.
 
-Provide the following details for the master pool.
+Provide the following details for the control plane pool.
 
-| **Field**                                           | **Value for the master-pool**                                                                                        |
+| **Field**                                           | **Value for the control-plane-pool**                                                                                 |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                      | master-pool                                                                                                          |
+| Node pool name                                      | control-plane-pool                                                                                                   |
 | Allow worker capability                             | Checked                                                                                                              |
 | Additional Labels (Optional)                        | None                                                                                                                 |
 | [Taints](../../cluster-management/taints.md#taints) | Off                                                                                                                  |
 | Pool Configuration > Edge Hosts                     | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
 
-The screenshot below shows an Edge host added to the master pool.
+The screenshot below shows an Edge host added to the control plane pool.
 
-![Screenshot of an Edge host added to the master pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.png)
+![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.png)
 
 Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool.
 
