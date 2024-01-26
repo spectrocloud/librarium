@@ -24,7 +24,7 @@ These prerequisites must be met before deploying a Windows Workload:
 
 ## Create a Windows Node Pool 
 
- <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/add-windows-node-pool.mp4"></Video>
+ <Video title="add-windows-node-pool" src="/videos/clusters/public-cloud/azure/add-windows-node-pool.mp4"></Video>
 
 The following steps need to be performed to to add Windows node pool to an existing AKS cluster:
 
@@ -77,7 +77,7 @@ The following steps need to be performed to to add Windows node pool to an exist
 
 <br />
 
- <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/add-win-profile.mp4"></Video>
+ <Video title="add-win-profile" src="/videos/clusters/public-cloud/azure/add-win-profile.mp4"></Video>
 
  <br />
  <br />
@@ -154,7 +154,8 @@ spec:
 
 <br />
 
- <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/deploy-windows-pack.mp4"></Video>
+ <Video title="deploy-windows-pack" src="/videos/clusters/public-cloud/azure/deploy-windows-pack.mp4"></Video>
+
 
  <br />
  <br />
