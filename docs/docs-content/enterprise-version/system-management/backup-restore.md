@@ -46,15 +46,15 @@ Use the following instructions to configure FTP backup for your enterprise clust
 
 4. Select the **FTP** tab and fill out the following fields:
 
-| **Field**            | **Description**                                                           |
-| -------------------- | ------------------------------------------------------------------------- |
-| **Server**           | The FTP server URL.                                                       |
-| **Directory**        | The directory name for the backup storage.                                |
-| **Username**         | The username to log in to the FTP server.                                 |
-| **Password**         | The password to log in to the FTP server.                                 |
-| **Interval**         | The number of days between backups.                                       |
-| **Retention Period** | The number of days to retain the backup.                                  |
-| **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
+    | **Field**            | **Description**                                                           |
+    | -------------------- | ------------------------------------------------------------------------- |
+    | **Server**           | The FTP server URL.                                                       |
+    | **Directory**        | The directory name for the backup storage.                                |
+    | **Username**         | The username to log in to the FTP server.                                 |
+    | **Password**         | The password to log in to the FTP server.                                 |
+    | **Interval**         | The number of days between backups.                                       |
+    | **Retention Period** | The number of days to retain the backup.                                  |
+    | **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
 
 5. Click on **Validate** to validate the FTP server configuration. If the validation is successful, the **Save** button
    is enabled. Otherwise, an error message is displayed. In case of an error, correct verify the FTP server
@@ -123,17 +123,17 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 
 3. Click on the **Backup/Restore** tab.
 
-4. Select the **FTP**tab and fill out the following fields:
+4. Select the **FTP** tab and fill out the following fields:
 
-| **Field**            | **Description**                                                           |
-| -------------------- | ------------------------------------------------------------------------- |
-| **Server**           | The FTP server URL.                                                       |
-| **Directory**        | The directory name for the backup storage.                                |
-| **Username**         | The username to log in to the FTP server.                                 |
-| **Password**         | The password to log in to the FTP server.                                 |
-| **Interval**         | The number of days between backups.                                       |
-| **Retention Period** | The number of days to retain the backup.                                  |
-| **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
+    | **Field**            | **Description**                                                           |
+    | -------------------- | ------------------------------------------------------------------------- |
+    | **Server**           | The FTP server URL.                                                       |
+    | **Directory**        | The directory name for the backup storage.                                |
+    | **Username**         | The username to log in to the FTP server.                                 |
+    | **Password**         | The password to log in to the FTP server.                                 |
+    | **Interval**         | The number of days between backups.                                       |
+    | **Retention Period** | The number of days to retain the backup.                                  |
+    | **Hours of the day** | The time of the day to take the backup. The time of day is in UTC format. |
 
 5. Click on **Validate** to validate the S3 configuration. If the validation is successful, the **Save** button is
    enabled. Otherwise, an error message is displayed. In case of an error, correct verify the S3 configuration and click
