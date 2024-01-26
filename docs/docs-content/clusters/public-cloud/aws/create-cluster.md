@@ -95,10 +95,12 @@ Use the following steps to provision a new AWS cluster:
 | **Control plane subnet**: Select the control plane network from the **drop-down Menu**.   |
 | **Worker Network**: Select the worker network from the **drop-down Menu**.                |
 
-10. Configure the master and worker node pools. A master and a worker node pool are configured by default. This is the
-    section where you can specify the availability zones (AZ), instance types,
+10. Configure the control plane and worker node pools. A control plane and a worker node pool are configured by default.
+    This is the section where you can specify the availability zones (AZ), instance types,
     [instance cost type](architecture.md#spot-instances), disk size, and the number of nodes. Click on **Next** after
-    you have completed configuring the node pool.
+    you have completed configuring the node pool. The minimum number of CPUs and amount of memory depend on your cluster
+    profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all
+    worker pools.
 
 <br />
 

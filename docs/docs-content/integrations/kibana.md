@@ -18,7 +18,7 @@ from the Kubernetes cluster.
 
 The default integration deployed will have the following components:
 
-- ElasticSearch Master (3 replicas).
+- ElasticSearch control plane (3 replicas).
 - ElasticSearch Data (2 replicas).
 - ElasticSearch Client (2 replicas).
 - ElasticSearch Curator.

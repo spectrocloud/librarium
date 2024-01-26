@@ -93,17 +93,17 @@ the currently active containers.
 docker ps
 ```
 
-Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.0.11` image to your local machine. This
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.2` image to your local machine. This
 Docker image includes the necessary tools.
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.11
+docker pull ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 Next, start the container and open a bash session into it.
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.11 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
 
 If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
@@ -942,24 +942,24 @@ Click **Next** to continue.
 
 #### Nodes config
 
-In the **Nodes config** section, provide the details for the master and worker pools. For this tutorial, you can use the
-following minimal configuration:
+In the **Nodes config** section, provide the details for the control plane and worker pools. For this tutorial, you can
+use the following minimal configuration:
 
-| **Field**                   | **Value for the master-pool** | **Value for the worker-pool**                                             |
-| --------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
-| Node pool name              | master-pool                   | worker-pool                                                               |
-| Number of nodes in the pool | `1`                           | `1`                                                                       |
-| Allow worker capability     | Checked                       | Not applicable                                                            |
-| Enable Autoscaler           | Not applicable                | No                                                                        |
-| Rolling update              | Not applicable                | Expand First. <br /> Launch a new node first, then shut down the old one. |
+| **Field**                   | **Value for the control-plane-pool** | **Value for the worker-pool**                                             |
+| --------------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| Node pool name              | control-plane-pool                   | worker-pool                                                               |
+| Number of nodes in the pool | `1`                                  | `1`                                                                       |
+| Allow worker capability     | Checked                              | Not applicable                                                            |
+| Enable Autoscaler           | Not applicable                       | No                                                                        |
+| Rolling update              | Not applicable                       | Expand First. <br /> Launch a new node first, then shut down the old one. |
 
-Keep the **Cloud Configuration** the same for both master and worker pools.
+Keep the **Cloud Configuration** the same for both control plane and worker pools.
 
-| **Field**          | **Value**                                                                                                 |
-| ------------------ | --------------------------------------------------------------------------------------------------------- |
-| Instance Type      | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
-| Availability zones | Choose any _one_ availability zone.<br /> This tutorial uses the `us-east-1a` availability zone.          |
-| Disk size          | 60 GiB                                                                                                    |
+| **Field**          | **Value**                                                                                                        |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Instance Type      | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the control plane node. |
+| Availability zones | Choose any _one_ availability zone.<br /> This tutorial uses the `us-east-1a` availability zone.                 |
+| Disk size          | 60 GiB                                                                                                           |
 
 Click **Next** to continue.
 
@@ -1360,7 +1360,7 @@ the following commands.
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.11
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 <br />
