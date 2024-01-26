@@ -108,9 +108,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, the following plugin must be removed. This plugin is not
-included by default and requires an internet connection to download. The plugin is not required for the monitoring stack
-to function properly.
+In the context of an airgap Palette or VerteX installation, the grafana-piechart-panel plugin must be removed. This
+plugin is not included by default and requires an internet connection to download. The plugin is not required for the
+monitoring stack to function properly.
 
 ```yaml {5}
 charts:
@@ -329,9 +329,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, the following plugin must be removed. This plugin is not
-included by default and requires an internet connection to download. The plugin is not required for the monitoring stack
-to function properly.
+In the context of an airgap Palette or VerteX installation, the grafana-piechart-panel plugin must be removed. This
+plugin is not included by default and requires an internet connection to download. The plugin is not required for the
+monitoring stack to function properly.
 
 ```yaml {5}
 charts:
@@ -550,9 +550,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, the following plugin must be removed. This plugin is not
-included by default and requires an internet connection to download. The plugin is not required for the monitoring stack
-to function properly.
+In the context of an airgap Palette or VerteX installation, the grafana-piechart-panel plugin must be removed. This
+plugin is not included by default and requires an internet connection to download. The plugin is not required for the
+monitoring stack to function properly.
 
 ```yaml {5}
 charts:
@@ -771,9 +771,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, the following plugin must be removed. This plugin is not
-included by default and requires an internet connection to download. The plugin is not required for the monitoring stack
-to function properly.
+In the context of an airgap Palette or VerteX installation, the grafana-piechart-panel plugin must be removed. This
+plugin is not included by default and requires an internet connection to download. The plugin is not required for the
+monitoring stack to function properly.
 
 ```yaml {5}
 charts:
