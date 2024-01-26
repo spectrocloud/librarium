@@ -18,22 +18,22 @@ done based on the instance type and storage type selected for each machine pool.
 |     | **FORMULAS FOR CALCULATION**                                                                |
 | --- | ------------------------------------------------------------------------------------------- |
 |     | Machine Pool Cost = ( Number of Nodes X Instance Price ) + ( Storage Size X Storage Price ) |
-|     | Cluster Cloud Cost = Master Pool Cost + Worker Pool Cost                                    |
+|     | Cluster Cloud Cost = control plane pool cost + worker pool cost                             |
 
 **Example 1:**
 
 Let's assume that a cluster ‘demo’ is launched with two machine pools with the following configuration:
 
-| MACHINE POOL | SIZE | INSTANCE TYPE WITH COST     | ROOT DISK WITH COST          |
-| ------------ | ---- | --------------------------- | ---------------------------- |
-| MASTER POOL  | 3    | AWS t2.medium($0.0496/hour) | 60GB - gp2($0.00014/GB/hour) |
-| WORKER POOL  | 3    | AWS t2.large($0.0992/hour)  | 60GB - gp2($0.00014/GB/hour) |
+| MACHINE POOL  | SIZE | INSTANCE TYPE WITH COST     | ROOT DISK WITH COST          |
+| ------------- | ---- | --------------------------- | ---------------------------- |
+| Control Plane | 3    | AWS t2.medium($0.0496/hour) | 60GB - gp2($0.00014/GB/hour) |
+| Worker Pool   | 3    | AWS t2.large($0.0992/hour)  | 60GB - gp2($0.00014/GB/hour) |
 
-| Calculation for the above scenario                                    |
-| --------------------------------------------------------------------- |
-| master-pool cost = ( 3 X $0.0496 ) + ( 60 X $0.00014 ) = $0.1572/hour |
-| worker-pool cost = ( 3 X $0.0992 ) + ( 60 X $0.00014 ) = $0.306/hour  |
-| Cluster Cloud Cost = $0.1572 + $0.306 = $0.4632/hour                  |
+| Calculation for the above scenario                                           |
+| ---------------------------------------------------------------------------- |
+| control-plane-pool cost = ( 3 X $0.0496 ) + ( 60 X $0.00014 ) = $0.1572/hour |
+| worker-pool cost = ( 3 X $0.0992 ) + ( 60 X $0.00014 ) = $0.306/hour         |
+| Cluster Cloud Cost = $0.1572 + $0.306 = $0.4632/hour                         |
 
 :::info
 
@@ -63,7 +63,7 @@ category.
 
 **Example 2**
 
-For the cluster configuration of master-pool & worker-pool considers in example 1,
+For the cluster configuration of control-plane-pool and worker-pool considers in example 1,
 
 | Calculation for the example scenario                                            |
 | ------------------------------------------------------------------------------- |

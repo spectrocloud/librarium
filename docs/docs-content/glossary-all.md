@@ -356,11 +356,11 @@ your cluster.
 
 ## Workload Cluster
 
-Workload / Tenant / Application Clusters are a collection of master and worker nodes that cooperate to execute container
-application workloads. Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are
-created within [projects](#project) and they are provisioned and managed in the user's cloud environment. Each cluster
-is provisioned from a [Cluster Profile](#cluster-profile) with additional configuration overrides and cloud-specific
-settings.
+Workload / Tenant / Application Clusters are a collection of control plane and worker nodes that cooperate to execute
+container application workloads. Kubernetes clusters provisioned by users are referred to as Workload Clusters. These
+clusters are created within [projects](#project) and they are provisioned and managed in the user's cloud environment.
+Each cluster is provisioned from a [Cluster Profile](#cluster-profile) with additional configuration overrides and
+cloud-specific settings.
 
 ## Workspace
 

@@ -20,7 +20,7 @@ backed up and can be restored in case of a disaster or a cluster failure. Palett
 
 :::warning
 
-Backup and Restore is not supported for self-hosted installations using the Helm Chart.
+Backup and Restore is not supported for self-hosted Palette installed through a Helm Chart.
 
 :::
 
