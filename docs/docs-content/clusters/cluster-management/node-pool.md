@@ -13,8 +13,8 @@ development workloads. You can update node pools for active clusters or create a
 
 :::warning
 
-Ensure you exercise caution when modifying node pools. We recommend creating a
-[backup](backup-restore/backup-restore.md) before you make a change in the event a configuration change causes an issue.
+Exercise caution when modifying node pools. We recommend creating a [backup](backup-restore/backup-restore.md) before
+you make a change in the event a configuration change causes an issue.
 
 :::
 
@@ -42,14 +42,20 @@ Different types of repaving operations may occur, depending on what causes them:
 
 You can customize the repave time interval for all node pools except the master pool. The default repave time interval
 is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to modify the
-repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) instructions below.
+repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) guide.
+
+:::info
+
+To ensure that repave operations do not interfere with your existing workloads, Palette requires explicit cluster-level
+approval to initiate them. Refer to the [Approve Cluster Repave](#approve-cluster-repave) guide to learn how to approve
+cluster repaves.
+
+:::
 
 ## Node Pool Configuration Settings
 
 The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the
 settings may not be available.
-
-<br />
 
 ### Master Node Pool
 
@@ -78,16 +84,12 @@ settings may not be available.
 | **Availability Zones**          | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. If you select public subnets, ensure those subnets have automatic public IP addresses assigned. Otherwise, node deployment errors will occur. Automatic public IP address assignment is typically handled by the infrastructure provider Palette is deploying a cluster to. Discuss this with your network team for additional guidance. |
 | **Disk Size**                   | Give the required storage size.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
-<br />
-
 :::warning
 
 Some features may not be available for all infrastructure providers. Review each infrastructure provider's node pool
 configuration settings to learn more.
 
 :::
-
-<br />
 
 ## Create a New Node Pool
 
@@ -175,3 +177,43 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy
    status.
+
+## Approve Cluster Repave
+
+### Prerequisites
+
+- A Palette-deployed cluster.
+
+- Sufficient permissions to edit the cluster.
+
+- Pending cluster repave operations.
+
+### Approve Cluster Repave
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  Navigate to the left **Main Menu** and click on **Clusters**.
+
+3.  Select a cluster with pending repave operations.
+
+4.  Click **Updates**.
+
+    ![](/clusters_cluster-management_node-pool_cluster-updates-highlight.png)
+
+5.  Review and, optionally, override changes that the repave introduces.
+
+    ![](/clusters_cluster-management_node-pool_available-updates-modal.png)
+
+6.  Click **Confirm updates**.
+
+### Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and click on **Clusters**.
+
+3. Click on the **Nodes** tab.
+
+4. Verify that all compute instances are in the healthy status and reflect the applied repave changes.
+
+   ![](/clusters_cluster-management_node-pool_cluster-nodes-healthy.png)
