@@ -56,13 +56,12 @@ caPath =
 caName =
 ```
 
-## Components
+:::tip
 
-The following workloads gets deployed on collectorforkubernetes namespace, by default
+You can find a list of all deployed components in the
+[configuration reference](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/configuration/) page.
 
-- Collectorforkubernetes - Daemonset
-- Collectorforkubernetes Master - Daemonset
-- Collectorforkubernetes Addon - Deployment
+:::
 
 ## References
 

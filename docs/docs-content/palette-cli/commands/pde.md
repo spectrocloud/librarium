@@ -126,9 +126,9 @@ You can create an app profile using a configuration file. The configuration file
 `from-config` subcommand supports the following flags.
 
 | **Flag**        | **Description**                                 | **Type** |
-| --------------- | ----------------------------------------------- | -------- | --- |
+| --------------- | ----------------------------------------------- | -------- |
 | `--config-file` | The path to the app profile configuration file. | string   |
-| `--help`        | Help for the `from-config` subcommand.          | -        | s   |
+| `--help`        | Help for the `from-config` subcommand.          | -        |
 
 :::tip
 
@@ -351,13 +351,13 @@ Kubeconfig location: /Users/demo/projects/spectro-cloud/kubeconfig/cli-cluster.c
 Use the `events` subcommand to view event logs for a virtual cluster. The `events` subcommand requires the name of the
 Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
 
-| **Flag**     | **Description**                                                         | **Type** |
-| ------------ | ----------------------------------------------------------------------- | -------- | ------------------------- | ------ |
-| `--name`     | The name of the Virtual Cluster.                                        | string   |
-| `--limit`    | Event limit (optional). Maximum number of events to return. (default 5) | int      |
-| `--max-age`  | Maximum event age in minutes (optional) (default -1)                    | int      |
-| `--severity` | Event severity (optional). One or more of: [ Normal                     | Warning  | Error ], comma-separated. | string |
-| `--help`     | Help for the `events` subcommand.                                       | -        |
+| **Flag**     | **Description**                                                                | **Type** |
+| ------------ | ------------------------------------------------------------------------------ | -------- |
+| `--name`     | The name of the Virtual Cluster.                                               | string   |
+| `--limit`    | Event limit (optional). Maximum number of events to return. (default 5)        | int      |
+| `--max-age`  | Maximum event age in minutes (optional) (default -1)                           | int      |
+| `--severity` | Event severity (optional). One or more of: [ Normal, Error ], comma-separated. | string   |
+| `--help`     | Help for the `events` subcommand.                                              | -        |
 
 ### Lifecycle
 
