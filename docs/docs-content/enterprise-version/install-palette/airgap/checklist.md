@@ -52,7 +52,7 @@ installation.
 
 <TabItem label="VMware vSphere" value="vsphere">
 
-- [ ] Creat a vSphere VM and Template folder with the name `spectro-templates`.
+- [ ] Create a vSphere VM and Template folder with the name `spectro-templates`.
 
 - [ ] Import the Operating System and Kubernetes distribution OVA required for the install and placed the OVA in the
       `spectro-templates` folder.

@@ -56,9 +56,9 @@ The default container runtime for the OVA is [Podman](https://podman.io/), not D
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
-require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
-remote data centers that do not have a direct incoming connection to Palette. To learn how to install a PCG on VMware,
-check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+require a separate, user-installed PCG. However, you can deploy additional PCG instances as needed to support
+provisioning into remote data centers that do not have a direct incoming connection to Palette. To learn how to install
+a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
@@ -78,8 +78,8 @@ Complete the following steps before deploying the airgap Palette installation.
 4.  In the **Deploy OVF Template** wizard, provide the URL below to import the Operating System (OS) and Kubernetes
     distribution OVA required for the install. Place the OVA in the **spectro-templates** folder. Append the `r_`
     prefix, and remove the `.ova` suffix when assiging a name and target location. For example, the final output should
-    look like `r_u-2004-0-k-12610`. This naming convetion is required for the install process to identify the OVA. Refer
-    to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
+    look like `r_u-2004-0-k-12610`. This naming convention is required for the install process to identify the OVA.
+    Refer to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
 
         ```url
          https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
@@ -92,7 +92,7 @@ Complete the following steps before deploying the airgap Palette installation.
     :::warning
 
     If you encounter an error message during the OVA deployment stating unable to retrieve manifest, or certificate,
-    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledgebase for guidance on how
+    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how
     to resolve the issue.
 
     :::
@@ -119,7 +119,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
     | Parameter                                  | Description                                                                                                                                                            | Required |
     | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | **Encoded user-data**                      | Enter the base64 encoded user-data for additional boot-up custmization. You can leave this field empty.                                                                | No       |
+    | **Encoded user-data**                      | Enter the base64 encoded user-data for additional boot-up customization. You can leave this field empty.                                                               | No       |
     | **SSH Public Keys**                        | Provide the SSH public keys for the user account you will use to access the airgap support VM. You need to provide at least one SSH public key to access the instance. | Yes      |
     | **Default User's password**                | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH. | Yes      |
     | **A Unique Instance ID for this instance** | Enter a unique instance ID for the airgap support VM. The default value is `id-ovf`.                                                                                   | Yes      |
@@ -309,7 +309,7 @@ the text editor.
         </Tabs>
 
 20. The output of the script contains credentials and values you will need when completing the install with the Palette
-    CLI. If you need to review information in the future, invoke the script again.
+    CLI. If you need to review information again, invoke the script again.
 
 21. Review the [Additional Packs](./supplemental-packs.md) page and identify any additional packs you want to add to
     your OCI registry. By default, the installation only includes the minimum required packs. You can also add
