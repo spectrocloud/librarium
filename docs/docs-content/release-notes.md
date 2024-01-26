@@ -9,6 +9,17 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## January 25, 2024 - Release 4.2.7
+
+### Bug Fixes
+
+- Fixed an issue that caused MinIO S3 URL setting to be missing in backup location settings.
+- Fixed an issue that prohibited updating Helm packs in cluster profiles.
+- Fixed an issue that caused certain OCI registries created before the Palette 4.2 upgrade to be unlisted.
+- Fixed an issue that caused HTTP 400 errors when visiting the
+  [Kubernetes Dashboard](./integrations/kubernetes-dashboard.md). The issue was caused by an internal cookie size limit
+  that was insufficient for the Kubernetes Dashboard.
+
 ## January 9, 2024 - Release 4.2.4
 
 ### Bug Fixes
