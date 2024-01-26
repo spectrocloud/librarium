@@ -55,7 +55,8 @@ You can also select any SSH keys in case you need to remote into the host cluste
 Network Time Protocol (NTP) servers. Click on **Next**.
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
-   the **master-pool** and the **worker-pool**. When you have completed configuring the node pools, click on **Next**.
+   the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
+   **Next**.
 
 10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
     host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
@@ -77,13 +78,13 @@ If the NIC is configured on the Edge host network, an IP address is displayed ne
 not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS
 server to configure it.
 
-If you choose to change the default NIC used by your nodes in the master node pool, you need to make sure all the NICs
-in the master node pool share the same name. You also must make corresponding changes in the Kubernetes layer and the
-Container Network Interface (CNI) layer.
+If you choose to change the default NIC used by your nodes in the control plane node pool, you need to make sure all the
+NICs in the control plane node pool share the same name. You also must make corresponding changes in the Kubernetes
+layer and the Container Network Interface (CNI) layer.
 
 In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the
-NIC used by your master nodes. For example, if the NIC used by the nodes in your master pool is named `ens32`, add the
-following two lines.
+NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is named
+`ens32`, add the following two lines.
 
 ```yaml {3}
 cluster:
@@ -97,7 +98,7 @@ following locations.
   <Tabs>
   <TabItem value="calico" label="Calico">
   
-  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your master node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your master pool is `eno32`. 
+  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your control plane node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your control plane pool is `eno32`. 
   
   ```yaml {11}
   manifests:
@@ -117,7 +118,7 @@ following locations.
 
 In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
 `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
-if the NIC name of your master nodes is `eno32`.
+if the NIC name of your control plane nodes is `eno32`.
 
 ```yaml {8}
 charts:
@@ -233,12 +234,12 @@ If the NIC is configured on the Edge host network, an IP address is displayed ne
 not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS
 server to configure it.
 
-If you choose to change the default NIC used by your nodes, you need to make sure all the NICs in the master node pool
-share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
+If you choose to change the default NIC used by your nodes, you need to make sure all the NICs in the control plane node
+pool share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
 
 In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the
-NIC used by your master nodes. For example, if the NIC used by the nodes in your master pool is named `ens32`, add the
-following two lines.
+NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is named
+`ens32`, add the following two lines.
 
 ```yaml {2-3}
 cluster:
@@ -252,7 +253,7 @@ following locations.
   <Tabs>
   <TabItem value="calico" label="Calico">
   
-  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your master node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your master pool is `eno32`. 
+  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your control plane node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your control plane pool is `eno32`. 
   
   ```yaml {11}
   manifests:
@@ -272,7 +273,7 @@ following locations.
 
 In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
 `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
-if the NIC name of your master nodes is `eno32`.
+if the NIC name of your control plane nodes is `eno32`.
 
 ```yaml {8}
 charts:
