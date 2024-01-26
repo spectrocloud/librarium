@@ -26,15 +26,15 @@ less overhead. To add a container layer to a Palette Dev Engine app profile, fol
 
 4. Provide the following basic information for your app profile and click **Next**.
 
-| **Parameter**        | **Description**                                                                                                                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **App Profile Name** | A custom name for the app profile.                                                                                                                                                                        |
-| **Version**          | You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                                            |
-| **Description**      | Use the description to provide context about the profile.                                                                                                                                                 |
-| **Tag**              | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`. |
+   | **Parameter**        | **Description**                                                                                                                                                                                           |
+   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **App Profile Name** | A custom name for the app profile.                                                                                                                                                                        |
+   | **Version**          | You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                                            |
+   | **Description**      | Use the description to provide context about the profile.                                                                                                                                                 |
+   | **Tag**              | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`. |
 
-To learn how to create multiple profile versions that use the same name, check out
-[Version an App Profile](../modify-app-profiles/version-app-profile.md).
+   To learn how to create multiple profile versions that use the same name, check out
+   [Version an App Profile](../modify-app-profiles/version-app-profile.md).
 
 5. Select **Container Deployment** to start configuring your app profile.
 
@@ -42,43 +42,43 @@ To learn how to create multiple profile versions that use the same name, check o
 
    **General Settings**
 
-| **Parameter**      | **Description**                                                                                                                                                                                                                                                  |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Container Name** | A custom name for the container.                                                                                                                                                                                                                                 |
-| **Registry**       | The registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.                                                                                                                     |
-| **Image**          | The container image container to deploy.                                                                                                                                                                                                                         |
-| **Replicas**       | The number of application instances to deploy. This option follows the same behavior as a [_ReplicaSet_](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file. Palette supports a maximum of 10 replicas. |
+   | **Parameter**      | **Description**                                                                                                                                                                                                                                                  |
+   | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Container Name** | A custom name for the container.                                                                                                                                                                                                                                 |
+   | **Registry**       | The registry from which the image will be downloaded. If specifying a non-Docker Hub registry, ensure you provide the full URL of the image.                                                                                                                     |
+   | **Image**          | The container image container to deploy.                                                                                                                                                                                                                         |
+   | **Replicas**       | The number of application instances to deploy. This option follows the same behavior as a [_ReplicaSet_](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) in the Kubernetes configuration file. Palette supports a maximum of 10 replicas. |
 
-:::info
+   :::info
 
-When adding a container image from a public [DockerHub registry](https://hub.docker.com/), you can skip the registry
-hostname. For instance, to download the Nginx image, specify `nginx` and it will be downloaded correctly during the
-provisioning process.
+   When adding a container image from a public [DockerHub registry](https://hub.docker.com/), you can skip the registry
+   hostname. For instance, to download the Nginx image, specify `nginx` and it will be downloaded correctly during the
+   provisioning process.
 
-:::
+   :::
 
-**Network Access**
+   **Network Access**
 
-| **Parameter** | **Description**                                                             |
-| ------------- | --------------------------------------------------------------------------- |
-| **Private**   | Establishes connectivity to a container service through a private network.  |
-| **Public**    | Establishes connectivity to a container service through the public network. |
-| **Ports**     | Exposes the container for external communication.                           |
+   | **Parameter** | **Description**                                                             |
+   | ------------- | --------------------------------------------------------------------------- |
+   | **Private**   | Establishes connectivity to a container service through a private network.  |
+   | **Public**    | Establishes connectivity to a container service through the public network. |
+   | **Ports**     | Exposes the container for external communication.                           |
 
-**Environment Variables**
+   **Environment Variables**
 
-| **Parameter**             | **Description**   |
-| ------------------------- | ----------------- |
-| **Environment Variables** | A key-value pair. |
+   | **Parameter**             | **Description**   |
+   | ------------------------- | ----------------- |
+   | **Environment Variables** | A key-value pair. |
 
-**Volume**
+   **Volume**
 
-    | **Parameter** | **Description**                                               |
-    | ----------| --------------------------------------------------------- |
-    | **Volume**        | To persist data the container generates and uses. |
-    | **Name**          | A custom name for the volume.                     |
-    | **Size**          | Volume size in GiB.                               |
-    | **Mount Path**    | A path to access the volume.                      |
+   | **Parameter**  | **Description**                                   |
+   | -------------- | ------------------------------------------------- |
+   | **Volume**     | To persist data the container generates and uses. |
+   | **Name**       | A custom name for the volume.                     |
+   | **Size**       | Volume size in GiB.                               |
+   | **Mount Path** | A path to access the volume.                      |
 
 7. The command and arguments you provide for **Runtime Settings** will override the default command and arguments that
    the container image provides.
@@ -97,12 +97,12 @@ provisioning process.
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
    registry.
 
-![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.png)
+   ![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.png)
 
-:::info
+   :::info
 
-Use the tool-tip that displays when you select a layer to gather information required for creating Terraform templates
-for app profiles. Check out our Terraform registry for
-[Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
+   Use the tool-tip that displays when you select a layer to gather information required for creating Terraform
+   templates for app profiles. Check out our Terraform registry for
+   [Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
 
-:::
+   :::
