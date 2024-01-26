@@ -51,7 +51,8 @@ You can also select any SSH keys in case you need to remote into the host cluste
 Network Time Protocol (NTP) servers. Click on **Next**.
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
-   the **master-pool** and the **worker-pool**. When you have completed configuring the node pools, click on **Next**.
+   the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
+   **Next**.
 
 10. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up
     Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
