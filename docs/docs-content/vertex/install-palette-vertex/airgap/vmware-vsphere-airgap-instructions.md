@@ -21,7 +21,7 @@ Use the following steps to prepare your airgap environment for a VerteX installa
 
 :::info
 
-The OVA does not use Docker as the container runtime, instead it uses [Podman](https://podman.io/).
+The default container runtime for the OVA is [Podman](https://podman.io/), not Docker.
 
 :::
 
@@ -73,23 +73,32 @@ Complete the following steps before deploying the airgap VerteX installation.
 2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
     user account you will use to deploy the airgap VerteX installation.
 
-3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
-    OVA in the `spectro-templates` folder. Refer to the
-    [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA)
-    guide for information about importing an OVA in vCenter.
+3.  Right click on your cluster or resource group and select **Deploy OVF Template**.
 
-    ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12610-fips.ova
-    ```
+4.  In the **Deploy OVF Template** wizard, provide the URL below to import the Operating System (OS) and Kubernetes
+    distribution OVA required for the install. Place the OVA in the **spectro-templates** folder. Append the `r_`
+    prefix, and remove the `.ova` suffix when assiging a name and target location. For example, the final output should
+    look like `r_u-2004-0-k-12610`. This naming convetion is required for the install process to identify the OVA. Refer
+    to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
 
-4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2004-0-k-12610-fips`. This naming convetion is required for the install process to identify
-    the OVA. Refer to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OVAs
-    you can download and upload to your vCenter environment.
+        ```url
+         https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+        ```
 
-5.  Next, deploy the install OVA by using the **Deploy OVF Template** wizard in vSphere. Insert the VerteX install OVA
-    URL in the **URL** field. The URL is provided to you by your Palette support representative. Click on **Next** to
-    continue.
+    You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
+    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+    guide for more information about deploying an OVA in vCenter.
+
+    :::warning
+
+    If you encounter an error message during the OVA deployment stating unable to retrieve manifest, or certificate,
+    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledgebase.
+
+    :::
+
+5.  Next, deploy the airgap install OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the Palette
+    install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative. Click on
+    **Next** to continue.
 
     ![View of the OVF deploy wizard](/vertex_airgap_vmware-vsphere-airgap-instructions_ovf-wizard.png)
 
@@ -308,6 +317,18 @@ the text editor.
 You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process completed successfully. After you validate the airgap setup process completed, review
 the [Next Steps](#next-steps)
+
+:::warning
+
+Do not power off the airgap support VM. The airgap support VM is required for Palette to function properly and must
+remain available at all time. If for some reason the airgap support VM is powered off, power the VM back on and restart
+the required services by navigating to the **/opt/spectro/harbor** directory and issuing the following command.
+
+```shell
+sudo docker compose up --detach
+```
+
+:::
 
 ## Validate
 
