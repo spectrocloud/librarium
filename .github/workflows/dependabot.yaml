@@ -3,7 +3,7 @@ name: Pre-merge Checks for Dependabot
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches-ignore: ["version-*"]
+    branches: ["master"]
   if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
 
 
