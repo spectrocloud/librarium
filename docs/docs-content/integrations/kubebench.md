@@ -10,8 +10,8 @@ logoUrl: https://registry-addon.spectrocloud.com/v1/kube-bench/blobs/sha256:28c2
 tags: ["packs", "kube-bench", "security"]
 ---
 
-Palette executes kube-bench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master
-and worker nodes are configured securely. It is available as an Add-on layer within Palette.
+Palette executes kube-bench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the control
+plane and worker nodes are configured securely. It is available as an Add-on layer within Palette.
 
 kube-bench runs against a series of checks specified in a `controls` YAML file. For more information on how to write
 tests and config files, refer to the [controls](https://github.com/aquasecurity/kube-bench/blob/main/docs/controls.md)
