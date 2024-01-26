@@ -17,6 +17,12 @@ backed up and can be restored in case of a disaster or a cluster failure. Palett
 - Amazon Simple Storage Service (S3) - Send the backup data of your enterprise cluster to object storage using AWS S3.
   Refer to the [S3](#s3) section for more information.
 
+:::warning
+
+Backup and Restore is not supported for self-hosted Palette installed through a Helm Chart.
+
+:::
+
 ## FTP
 
 Use the following instructions to configure FTP backup for your enterprise cluster.

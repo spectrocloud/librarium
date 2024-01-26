@@ -40,9 +40,10 @@ Different types of repaving operations may occur, depending on what causes them:
   Kubernetes layer impact all nodes, such as when upgrading to a different Kubernetes version. All nodes across all
   pools are sequentially repaved starting with the control plane.
 
-You can customize the repave time interval for all node pools except the master pool. The default repave time interval
-is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to modify the
-repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) instructions below.
+You can customize the repave time interval for all node pools except the control plane pool. The default repave time
+interval is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to
+modify the repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) instructions
+below.
 
 ## Node Pool Configuration Settings
 
@@ -51,13 +52,13 @@ settings may not be available.
 
 <br />
 
-### Master Node Pool
+### Control Plane Node Pool
 
 | **Property**                    | **Description**                                                                                                                                                                                                  |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                            |
-| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.                                                                                                         |
-| **Allow worker capability**     | Select this option to allow workloads to be provisioned on master nodes.                                                                                                                                         |
+| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                  |
+| **Allow worker capability**     | Select this option to allow workloads to be provisioned on control plane nodes.                                                                                                                                  |
 | **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](taints.md#labels).      |
 | **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](taints.md#taints).                              |
 | **Availability Zones**          | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |

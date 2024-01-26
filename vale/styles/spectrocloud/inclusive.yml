@@ -1,6 +1,6 @@
 extends: existence
 message: "Consider avoiding '%s' in favor of more inclusive language."
-link: "http://example.com/inclusivity-guidelines"
+link: "https://spectrocloud.atlassian.net/wiki/x/AQBCaQ"
 ignorecase: true
 level: error
 tokens:
