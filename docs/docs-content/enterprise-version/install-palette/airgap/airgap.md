@@ -56,6 +56,8 @@ Palette installation.
 
 ## Supported Platforms
 
+The following table outlines the platforms supported for airgap VerteX installation and the supported OCI registries.
+
 | **Platform**   | **OCI Registry** | **Supported** |
 | -------------- | ---------------- | ------------- |
 | Kubernetes     | Harbor           | ✅            |
