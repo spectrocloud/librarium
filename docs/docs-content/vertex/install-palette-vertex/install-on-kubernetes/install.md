@@ -80,6 +80,9 @@ proceeding with the installation. Refer to the
 - A custom domain and the ability to update Domain Name System (DNS) records. You will need this to enable HTTPS
   encryption for VerteX.
 
+- If you are installing VerteX behind a network proxy server, ensure you have the Certificate Authority (CA) certificate
+  file in base64 format. You will need this to enable VerteX to communicate with the network proxy server.
+
 - Access to the VerteX Helm Charts. Refer to the [Access VerteX](../../vertex.md#access-palette-vertex) for instructions
   on how to request access to the Helm Chart.
 
@@ -106,22 +109,10 @@ your environment. Reach out to our support team if you need assistance.
 
    - Cert Manager Helm Chart.
 
+   - Reach System Helm Chart - Only required if VerteX needs to communicate with a network proxy server.
+
    - Image Swap Helm Chart - Only required if you are using a private OCI registry with remote registry caching enabled
      or installing VerteX in an air-gapped environment.
-
-   <br />
-
-   ```shell hideClipboard
-   .
-   ├── cert-manager
-   ├── cert-manager-1.11.0.tgz
-   ├── image-swap
-   ├── image-swap-1.5.2.tgz
-   ├── spectro-mgmt-plane
-   └── spectro-mgmt-plane-4.0.19.tgz
-
-   3 directories, 3 files
-   ```
 
 2. Extract each Helm Chart into its directory. Use the commands below as a reference. Do this for all the provided Helm
    Charts.
@@ -135,6 +126,10 @@ tar xzvf spectro-mgmt-plane-*.tgz
 
 ```shell
 tar xzvf cert-manager-*.tgz
+```
+
+```shell
+tar xzvf reach-system-*.tgz
 ```
 
   </TabItem>
