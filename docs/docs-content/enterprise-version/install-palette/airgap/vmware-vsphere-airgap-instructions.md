@@ -104,7 +104,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how
     to resolve the issue.
 
-:::
+    :::
 
 5.  Next, deploy the airgap installation OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the
     Palette install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative.
