@@ -109,7 +109,8 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 #### Airgap Palette and VerteX
 
 In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This
-plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require this plugin to function properly.
+plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require
+this plugin to function properly.
 
 ```yaml {5}
 charts:
@@ -328,7 +329,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require this plugin to function properly.
+In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This
+plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require
+this plugin to function properly.
 
 ```yaml {5}
 charts:
@@ -444,8 +447,8 @@ You can access internal Palette metrics in Grafana by adding the
 
 #### Persistent Storage
 
-You can configure the Prometheus Operator to use persistent storage. To enable persistent storage, add the following code
-snippet to the `kube-prometheus-stack.prometheus.prometheusSpec.storageSpec` configuration block in the pack's YAML
+You can configure the Prometheus Operator to use persistent storage. To enable persistent storage, add the following
+code snippet to the `kube-prometheus-stack.prometheus.prometheusSpec.storageSpec` configuration block in the pack's YAML
 configuration file. The code snippet below creates a Persistent Volume Claim (PVC) for the Prometheus Operator.
 
 <br />
@@ -547,7 +550,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require this plugin to function properly.
+In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This
+plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require
+this plugin to function properly.
 
 ```yaml {5}
 charts:
@@ -766,7 +771,9 @@ learn how to create a monitoring stack with Prometheus for your Palette environm
 
 #### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require this plugin to function properly.
+In the context of an airgap Palette or VerteX installation, you must remove the `grafana-piechart-panel` plugin. This
+plugin is not included by default and requires an internet connection to download. The monitoring stack doesn't require
+this plugin to function properly.
 
 ```yaml {5}
 charts:
@@ -1194,7 +1201,8 @@ The Prometheus Operator pack installs the following dependencies:
 
 <TabItem label="Deprecated" value="Deprecated">
 
-All versions less than v40.x.x are considered deprecated. Upgrade to a newer version to take advantage of the new features.
+All versions less than v40.x.x are considered deprecated. Upgrade to a newer version to take advantage of the new
+features.
 
 </TabItem>
 
