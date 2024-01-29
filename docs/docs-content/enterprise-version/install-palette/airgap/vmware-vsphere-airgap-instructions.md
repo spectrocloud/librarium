@@ -15,25 +15,17 @@ installation guides for each platform.
 
 ![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.png)
 
-## Prepare Airgap Installation
-
-Use the following steps to prepare your airgap environment for a Palette installation.
-
-:::info
-
-The default container runtime for the OVA is [Podman](https://podman.io/), not Docker.
-
-:::
 
 ## Prerequisites
 
-- Internet access to download the Palette install OVA. For sensitive environments, you can download the OVA to a system
-  with internet access and transfer the OVA to your airgap environment. The two following OVAs are required for the
-  airgap installation:
+- Download the following OVAs:
+  - The Palette VerteX installation OVA.
+  - The installation OVA that deploys and initializes the airgap support VM.
+  - An OVA with the operating system and Kubernetes distribution required for the VerteX nodes.
 
-  - An install OVA that deploys an initializes the airgap support VM.
+   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your airgap environment.
 
-  - An OVA that contains the Operating System and Kubernetes distribution required for the Palette nodes.
+
 
 - The airgap support VM requires the following resources:
 
