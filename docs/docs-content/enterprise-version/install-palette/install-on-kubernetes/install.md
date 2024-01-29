@@ -33,6 +33,8 @@ information.
   `kubectl` commands and have sufficient permissions to install Palette. We recommend using a role with cluster-admin
   permissions to install Palette.
 
+- `unzip` or similar utility is installed and available to extract the Helm Charts.
+
 - The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager
@@ -97,58 +99,25 @@ The following instructions are written agnostic to the Kubernetes distribution y
 underlying infrastructure provider and your Kubernetes distribution, you may need to modify the instructions to match
 your environment. Reach out to our support team if you need assistance.
 
-1. Open a terminal session and navigate to the directory where you downloaded the Palette Helm Charts provided by our
-   support. We recommend you place all the downloaded files into the same directory. You should have the following Helm
-   Charts:
+1. Open a terminal session and navigate to the directory where you downloaded the Palette install zip file provided by
+   our support. Unzip the file to a directory named **palette-install**.
 
-   - Spectro Management Plane Helm Chart.
+   ```shell
+   unzip release-*.zip -d palette-install
+   ```
 
-   - Cert Manager Helm Chart.
+2. Navigate to the release folder inside the **vertex-install** directory.
 
-   - Reach System Helm Chart - Only required if VerteX needs to communicate with a network proxy server.
-
-   - Image Swap Helm Chart - Only required if you are using a private OCI registry with remote registry caching enabled
-     or installing Palette in an air-gapped environment.
-
-2. Extract each Helm Chart into its directory. Use the commands below as a reference. Do this for all the provided Helm
-   Charts.
-
-<Tabs groupId="mode">
-  <TabItem label="Non-Airgap" value="non-airgap">
-
-```shell
-tar xzvf spectro-mgmt-plane-*.tgz
-```
-
-```shell
-tar xzvf cert-manager-*.tgz
-```
-
-  </TabItem>
-
-  <TabItem label="Airgap" value="airgap">
-
-```shell
-tar xzvf spectro-mgmt-plane-*.tgz
-```
-
-```shell
-tar xzvf cert-manager-*.tgz
-```
-
-```shell
-tar xzvf image-swap-*.tgz
-```
-
-  </TabItem>
-</Tabs>
+   ```shell
+   cd palette-install/charts/release-*
+   ```
 
 3. Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
    the one you downloaded, as the version number may be different.
 
-```shell
-  helm upgrade --values cert-manager/values.yaml cert-manager cert-manager-1.11.0.tgz --install
-```
+   ```shell
+   helm upgrade --values cert-manager/values.yaml cert-manager cert-manager-1.11.0.tgz --install
+   ```
 
 4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
    contains the default values for the Palette installation parameters, however, you must populate the following
