@@ -9,31 +9,32 @@ tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-This guide provides instructions for preparing your airgap environment for a Palette VerteX installation, by ensuring
-you complete all the required preparatory steps shown in the diagram. The installation process is covered in the
-respective installation guides for each platform.
-
-![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.png)
-
-## Prepare Airgap Installation
-
-Use the following steps to prepare your airgap environment for a VerteX installation.
+This guide helps you to prepare your airgap environment for Palette VerteX installation.
 
 :::info
 
-The default container runtime for the OVA is [Podman](https://podman.io/), not Docker.
+This guide is for preparing your airgap environment only. For instructions on installing VerteX on
+[VMware](../install-on-vmware/install.md) or [Kubernetes](../install-on-kubernetes/install.md), refer to their
+respective guides. A checklist of the steps you will complete to prepare your airgap environment for VerteX is available
+in the [Checklist](./checklist.md) page.
 
 :::
 
+The following diagram offers a general overview of the steps you will complete to prepare your airgap environment for
+VerteX.
+
+![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.png)
+
 ## Prerequisites
 
-- Internet access to download the VerteX install OVA. For sensitive environments, you can download the OVA to a system
-  with internet access and transfer the OVA to your airgap environment. The two following OVAs are required for the
-  airgap installation:
+- Download the following OVAs:
 
-  - An install OVA that deploys an initializes the airgap support VM.
+  - The VerteX installation OVA.
+  - The installation OVA that deploys and initializes the airgap support VM.
+  - An OVA with the operating system and Kubernetes distribution required for the VerteX nodes.
 
-  - An OVA that contains the Operating System and Kubernetes distribution required for the VerteX nodes.
+  For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
+  airgap environment.
 
 - The airgap support VM requires the following resources:
 
@@ -43,11 +44,11 @@ The default container runtime for the OVA is [Podman](https://podman.io/), not D
 
   - 120 GB of disk space available for the airgap support VM.
 
-- Dynamic Host Configuration Protocol (DHCP) is required for the airgap support VM so that you can access the VM with
-  SSH. You can disable DHCP or modify the IP address after the airgap support VM is deployed.
+- Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
+  or modify the IP address after deploying the airgap support VM.
 
-- Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created
-  the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains
+- Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md) and ensure you've
+  created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
   when provisioning workloads that require persistent storage. Refer to
   [Zone Tagging](../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
 
@@ -56,34 +57,42 @@ The default container runtime for the OVA is [Podman](https://podman.io/), not D
 :::info
 
 Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
-require a separate, user-installed PCG. However, you can deploy additional PCG instances as needed to support
-provisioning into remote data centers that do not have a direct incoming connection to VerteX. To learn how to install a
-PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into
+remote data centers without a direct incoming connection to VerteX. To learn how to install a PCG on VMware, check out
+the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
 <br />
 
-## Instructions
+## Prepare for Airgap Installation
 
-Complete the following steps before deploying the airgap VerteX installation.
+Complete the following steps to prepare your airgap environment for VerteX installation.
+
+:::info
+
+The default container runtime for OVAs is [Podman](https://podman.io/), not Docker.
+
+:::
 
 1.  Log in to your vCenter environment.
 
-2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap VerteX installation.
+2.  Create a vSphere VM and Template folder named `spectro-templates`. Ensure you can access this folder with the user
+    account you plan to use when deploying the VerteX installation.
 
-3.  Right click on your cluster or resource group and select **Deploy OVF Template**.
+3.  Right-click on your cluster or resource group and select **Deploy OVF Template**.
 
-4.  In the **Deploy OVF Template** wizard, provide the URL below to import the Operating System (OS) and Kubernetes
-    distribution OVA required for the install. Place the OVA in the **spectro-templates** folder. Append the `r_`
-    prefix, and remove the `.ova` suffix when assigning a name and target location. For example, the final output should
-    look like `r_u-2004-0-k-12610`. This naming convention is required for the install process to identify the OVA.
-    Refer to the [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
+4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
+    distribution OVA required for the installation.
 
-        ```url
-         https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
-        ```
+    ```url
+     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+    ```
+
+    Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
+    assigning its name and target location. For example, the final output should look like `r_u-2004-0-k-12610`. This
+    naming convention is required for the installation process to identify the OVA. Refer to the
+    [Supplement Packs](./supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
 
     You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
     [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
@@ -91,15 +100,15 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     :::warning
 
-    If you encounter an error message during the OVA deployment stating unable to retrieve manifest, or certificate,
+    If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate,
     refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how
     to resolve the issue.
 
     :::
 
-5.  Next, deploy the airgap install OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the Palette
-    install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative. Click on
-    **Next** to continue.
+5.  Next, deploy the airgap installation OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the
+    VerteX install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative.
+    Click on **Next** to continue.
 
     ![View of the OVF deploy wizard](/vertex_airgap_vmware-vsphere-airgap-instructions_ovf-wizard.png)
 
@@ -107,8 +116,8 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 7.  Select a compute resource and click on **Next** to continue.
 
-8.  Review the details and click on **Ignore All** in any of the warning messages. The OVA contains a self-signed
-    certificate which is causing vSphere to issue a warning. Click on **Next** to continue.
+8.  Review the details and click on **Ignore All** to dismiss any warning messages. The OVA contains a self-signed
+    certificate, which causes vSphere to issue a warning. Click on **Next** to continue.
 
 9.  Select the storage location and click on **Next** to continue.
 
@@ -208,8 +217,8 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 :::tip
 
-Press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type `:wq` to save the file and exit
-the text editor.
+If you are working in Vim, press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type
+`:wq` to save the file and exit the text editor.
 
 :::
 
@@ -308,20 +317,20 @@ the text editor.
         </TabItem>
         </Tabs>
 
-20. The output of the script contains credentials and values you will need when completing the install with the Palette
-    CLI. If you need to review the information again, invoke the script again.
+20. The output of the script contains credentials and values you will need when completing the installation with the
+    Palette CLI. If you need to review this information in the future, invoke the script again.
 
 21. Review the [Additional Packs](./supplemental-packs.md) page and identify any additional packs you want to add to
-    your OCI registry. By default, the installation only includes the minimum required packs. You can also add
-    additional packs after the install is complete.
+    your OCI registry. By default, the installation includes only the minimum required packs. You can also add
+    additional packs after the installation is complete.
 
-You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
-ensure the airgap setup process completed successfully. After you validate the airgap setup process completed, review
-the [Next Steps](#next-steps)
+You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
+ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion,
+review the [Next Steps](#next-steps).
 
 :::warning
 
-Do not power off the airgap support VM. The airgap support VM is required for Palette to function properly and must
+Do not power off the airgap support VM. The airgap support VM is required for VerteX to function properly and must
 remain available at all time. If for some reason the airgap support VM is powered off, power the VM back on and restart
 the required services by navigating to the **/opt/spectro/harbor** directory and issuing the following command.
 
@@ -333,7 +342,7 @@ sudo docker compose up --detach
 
 ## Validate
 
-Use the following steps to validate the airgap setup process completed successfully.
+Use the following steps to validate that you've successfully completed the airgap setup process.
 
 1.  SSH into to the airgap support VM.
 
@@ -343,8 +352,8 @@ Use the following steps to validate the airgap setup process completed successfu
     sudo --login
     ```
 
-3.  Issue the following command to validate the airgap setup process completed successfully. Replace the hostname or IP
-    address with the hostname or IP address of the airgap support VM.
+3.  Issue the following command to validate that you've successfully completed the airgap setup process. Replace the
+    hostname or IP address with the hostname or IP address of the airgap support VM.
 
     ```shell
     bin/airgap-setup.sh vertex.example.com
@@ -352,11 +361,39 @@ Use the following steps to validate the airgap setup process completed successfu
 
 4.  Verify you have the values and credentials in the output.
 
+        ```shell hideClipboard
+        Setting up SSL Certs
+        Setting up Harbor
+
+
+        Details:
+        -------
+        Spectro Cloud Repository
+        Location: https://vertex.example.com:8443
+        UserName: ********
+        Password: ********
+        CA certificate filepath: /opt/spectro/ssl/server.crt
+
+        Pack OCI Registry
+        Endpoint: https://vertex.example.com
+        Base Content Path: spectro-packs
+        CA certificate Filepath: /opt/spectro/ssl/server.crt
+        Username: ********
+        Password: ********
+
+        Image OCI Registry
+        Endpoint: https://vertex.example.com
+        Base Content Path: spectro-images
+        CA certificate Filepath: /opt/spectro/ssl/server.crt
+        Username: ********
+        Password: ********
+        ```
+
 ## Next Steps
 
 You are now ready to deploy the airgap VerteX installation with the Palette CLI. As a root user, when you are ready to
-proceed with the install, issue the Palette CLI command below to start the install. The Palette CLI is already installed
-in the airgap support VM and ready to use.
+proceed with the install, issue the Palette CLI command below to start the installation. The Palette CLI is already
+installed in the airgap support VM and ready to use.
 
     ```shell
     palette ec install
@@ -367,7 +404,7 @@ from the airgap support VM.
 
 :::info
 
-The table below provides a mapping of the airgap script output values and the Palette CLI prompt the value is used. The
+The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The
 example values are for reference only.
 
 | Output Value                          | Palette CLI Prompt                   | Example Value                                         |

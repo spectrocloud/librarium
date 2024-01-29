@@ -9,20 +9,19 @@ tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-This guide helps you to prepare your airgap environment for Palette VerteX installation.
+This guide helps you to prepare your airgap environment for Palette installation.
 
 :::info
 
-This guide is for preparing your airgap environment only. For instructions on installing Palette VerteX on
-[VMware](enterprise-version/install-palette/install-on-vmware/install) or
-[Kubernetes](enterprise-version/install-palette/install-on-kubernetes/install), refer to their respective guides. A
-checklist of the steps you will complete to prepare your airgap environment for Palette is available in
-[Checklist](./checklist.md) page.
+This guide is for preparing your airgap environment only. For instructions on installing Palette on
+[VMware](../install-on-vmware/install.md) or [Kubernetes](../install-on-kubernetes/install.md), refer to their
+respective guides. A checklist of the steps you will complete to prepare your airgap environment for Palette is
+available in the [Checklist](./checklist.md) page.
 
 :::
 
 The following diagram offers a general overview of the steps you will complete to prepare your airgap environment for
-Palette VerteX.
+Palette.
 
 ![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.png)
 
@@ -30,9 +29,9 @@ Palette VerteX.
 
 - Download the following OVAs:
 
-  - The Palette VerteX installation OVA.
+  - The Palette installation OVA.
   - The installation OVA that deploys and initializes the airgap support VM.
-  - An OVA with the operating system and Kubernetes distribution required for the VerteX nodes.
+  - An OVA with the operating system and Kubernetes distribution required for the Palette nodes.
 
   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
   airgap environment.
@@ -59,7 +58,7 @@ Palette VerteX.
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into
-remote data centers without a direct incoming connection to VerteX. To learn how to install a PCG on VMware, check out
+remote data centers without a direct incoming connection to Palette. To learn how to install a PCG on VMware, check out
 the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
@@ -79,7 +78,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 1.  Log in to your vCenter environment.
 
 2.  Create a vSphere VM and Template folder named `spectro-templates`. Ensure you can access this folder with the user
-    account you plan to use when deploying the Palette VerteX installation.
+    account you plan to use when deploying the Palette installation.
 
 3.  Right-click on your cluster or resource group and select **Deploy OVF Template**.
 
