@@ -40,7 +40,7 @@ The following minimum device requirements must be met to deploy an Edge host suc
 
 - 8 GB Memory
 
-- 128 GB Storage
+- 100 GB Storage
 
 If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
 
