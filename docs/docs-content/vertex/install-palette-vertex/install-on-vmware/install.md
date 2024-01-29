@@ -117,14 +117,14 @@ Use the following steps to install Palette VerteX.
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2004-0-k-12610`. This naming convetion is required for the install process to identify the
+    should look like `r_u-2004-0-k-12610`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
     OVAs you can download and upload to your vCenter environment.
 
     :::tip
 
     You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
-    folder. Append the `r_` prefix, and remove the `.ova` suffix when assiging a name and target location. You can
+    folder. Append the `r_` prefix, and remove the `.ova` suffix when assigning a name and target location. You can
     terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
     [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
     guide for more information about deploying an OVA in vCenter.
