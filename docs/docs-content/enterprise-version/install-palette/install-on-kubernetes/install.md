@@ -393,14 +393,14 @@ ui-system:
       mapBoxAccessToken: "" # Leave Empty to use Default Access Token from Palette
       mapBoxStyledLayerID: "" # Leave Empty to use Default Style Layer ID
 
-reach-system:
-  reachSystem:
-    enabled: false
-    proxySettings:
-      http_proxy: ""
-      https_proxy: ""
-      no_proxy: ""
-      ca_crt_path: ""
+reachSystem:
+  enabled: false
+  proxySettings:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: ""
+    ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate.
+  scheduleOnControlPlane: true
 ```
 
 </details>
@@ -639,14 +639,14 @@ ui-system:
       mapBoxAccessToken: "" # Leave Empty to use Default Access Token from Palette
       mapBoxStyledLayerID: "" # Leave Empty to use Default Style Layer ID
 
-reach-system:
-  reachSystem:
-    enabled: false
-    proxySettings:
-      http_proxy: ""
-      https_proxy: ""
-      no_proxy: ""
-      ca_crt_path: ""
+reachSystem:
+  enabled: false
+  proxySettings:
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: ""
+    ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node.
+  scheduleOnControlPlane: true
 ```
 
 </details>
